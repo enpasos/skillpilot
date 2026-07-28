@@ -11,25 +11,25 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 ## Skill Graph
 
-- [SkillPilot Skill Graph Specification](curriculum-graph/graph-definition.md)
+- [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
-- [General Goal System and Migration](curriculum-graph/general-goal-system-and-migration.md)
+- [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.
-- [Node Types](curriculum-graph/node-types.md)
+- [Node Types](skill-graph/node-types.md)
   Node semantics and classification.
-- [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+- [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
   Scope-specific learner-facing views and placement semantics.
-- [Source And Resource Links](curriculum-graph/source-and-resource-links.md)
+- [Source And Resource Links](skill-graph/source-and-resource-links.md)
   Provenance and source/reference semantics.
-- [Atomic Goal Visualizations](curriculum-graph/atomic-goal-visualizations.md)
+- [Atomic Goal Visualizations](skill-graph/atomic-goal-visualizations.md)
   Production pipeline and review rules for optional atomic-goal image assets.
-- [Human-Readable Source Rationales](curriculum-graph/human-readable-source-rationales.md)
+- [Human-Readable Source Rationales](skill-graph/human-readable-source-rationales.md)
   Generated explanation model for tracing learning goals back to source evidence.
-- [Canonical Gymnasium Rollout Policy](curriculum-graph/canonical-gymnasium-rollout.md)
+- [Canonical Gymnasium Rollout Policy](skill-graph/canonical-gymnasium-rollout.md)
   Conceptual rollout rules for canonical German Gymnasium subjects.
-- [MEM/FWU Roundtrip Plan](curriculum-graph/mem-fwu-roundtrip-plan.md)
+- [MEM/FWU Roundtrip Plan](skill-graph/mem-fwu-roundtrip-plan.md)
   Concept plan for MEM/FWU graph interchange.
-- [Dual Curriculum Package Releases](curriculum-graph/dual-curriculum-package-releases.md)
+- [Dual Curriculum Package Releases](skill-graph/dual-curriculum-package-releases.md)
   Target architecture for equivalent JSON-runtime and FWU-ontology release packages, standalone consumption, and repository decoupling.
 
 ## Didactic Concepts

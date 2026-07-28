@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 
 import type { UiGoal } from '../src/goalTypes'
 import { normalizeLandscape, type LandscapeEntry } from '../src/hooks/useLandscapes'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   compileCompositionView,
   getCompositionProjectionRole,
@@ -362,7 +362,7 @@ const canonicalMath = JSON.parse(
     ),
     'utf8',
   ),
-) as LearningLandscape
+) as SkillLandscape
 const hesseSekundarstufeTwoLkView = JSON.parse(
   readFileSync(
     new URL(

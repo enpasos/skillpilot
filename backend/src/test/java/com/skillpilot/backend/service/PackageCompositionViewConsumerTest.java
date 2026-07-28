@@ -11,7 +11,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -87,7 +87,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void curriculaScopeUsesNeutralCrossStageForSubjectCourseProfileWithoutExplicitStage() {
-        LearningLandscape landscape = landscape();
+        SkillLandscape landscape = landscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
         CurriculaService service = curriculaService(landscapes);
@@ -112,7 +112,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void curriculaScopePreservesExplicitCrossStageWithEachSubjectCourseProfile() {
-        LearningLandscape landscape = landscape();
+        SkillLandscape landscape = landscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
         CurriculaService service = curriculaService(landscapes);
@@ -156,7 +156,7 @@ class PackageCompositionViewConsumerTest {
                 mock(ApplicationEventPublisher.class),
                 mock(PlatformTransactionManager.class));
 
-        LearningLandscape landscape = landscape();
+        SkillLandscape landscape = landscape();
         LearningGoal goal = landscape.getGoals().getFirst();
         Map<String, LearningGoal> scoped = (Map<String, LearningGoal>) ReflectionTestUtils.invokeMethod(
                 service,
@@ -175,7 +175,7 @@ class PackageCompositionViewConsumerTest {
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
         LearnerService service = learnerService(mock(LandscapeService.class), compositionViews);
-        LearningLandscape landscape = landscape();
+        SkillLandscape landscape = landscape();
         landscape.setFrameworkId("other-framework");
         LearningGoal goal = landscape.getGoals().getFirst();
 
@@ -236,7 +236,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void learnerFilteringUsesDefaultOfferingButKeepsStructuralLookupUnfiltered() {
-        LearningLandscape landscape = clusteredLandscape();
+        SkillLandscape landscape = clusteredLandscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getClosure(LANDSCAPE_ID)).thenReturn(List.of(landscape));
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
@@ -271,7 +271,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void goalEntryDoesNotExpandDescendants() {
-        LearningLandscape landscape = clusteredLandscape();
+        SkillLandscape landscape = clusteredLandscape();
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
         when(compositionViews.findMatchingView(eq(LANDSCAPE_ID), anyMap())).thenReturn(Map.of(
@@ -296,7 +296,7 @@ class PackageCompositionViewConsumerTest {
 
     @Test
     void topicAtomicIdsKeepOpaqueEntryAndSeparatelyPlacedDescendant() {
-        LearningLandscape landscape = clusteredLandscape();
+        SkillLandscape landscape = clusteredLandscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getClosure(LANDSCAPE_ID)).thenReturn(List.of(landscape));
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
@@ -322,7 +322,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void championMetricsUseDefaultForMissingPersonalization() {
-        LearningLandscape landscape = clusteredLandscape();
+        SkillLandscape landscape = clusteredLandscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
         when(landscapes.getGoalDefinition(GOAL_ID)).thenReturn(landscape.getGoals().get(0));
@@ -363,7 +363,7 @@ class PackageCompositionViewConsumerTest {
     @Test
     @SuppressWarnings("unchecked")
     void championMetricsCountOpaqueClusterGoalEntryAsProjectedLeaf() {
-        LearningLandscape landscape = clusteredLandscape();
+        SkillLandscape landscape = clusteredLandscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
         when(landscapes.getGoalDefinition(GOAL_ID)).thenReturn(landscape.getGoals().get(0));
@@ -429,19 +429,19 @@ class PackageCompositionViewConsumerTest {
                 new PackageCurriculumQualitySnapshotProvider());
     }
 
-    private static LearningLandscape landscape() {
+    private static SkillLandscape landscape() {
         LearningGoal goal = new LearningGoal();
         goal.setId(GOAL_ID);
         goal.setTitle("Goal");
         goal.setContains(List.of());
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(LANDSCAPE_ID);
         landscape.setFrameworkId("canonical-gymnasium-test");
         landscape.setGoals(List.of(goal));
         return landscape;
     }
 
-    private static LearningLandscape clusteredLandscape() {
+    private static SkillLandscape clusteredLandscape() {
         LearningGoal cluster = new LearningGoal();
         cluster.setId(GOAL_ID);
         cluster.setTitle("Cluster");
@@ -450,7 +450,7 @@ class PackageCompositionViewConsumerTest {
         child.setId(CHILD_ID);
         child.setTitle("Child");
         child.setContains(List.of());
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(LANDSCAPE_ID);
         landscape.setFrameworkId("canonical-gymnasium-test");
         landscape.setGoals(List.of(cluster, child));

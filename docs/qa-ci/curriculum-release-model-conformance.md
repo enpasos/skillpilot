@@ -18,7 +18,7 @@ Current result: DPK-004 through DPK-007a are `passed`: the real profile, fixture
 | Are image files copied into this output? | Not into the unpacked conformance-model directory. The companion ZIP materializes all 734 byte-bound package images. |
 | Is this output a standalone package? | The unpacked directory deliberately remains `conformance-model-only-not-a-package`. The DPK-007a freeze derives a structurally valid `full-standalone-v1` ZIP; DPK-006a–c safely provision, activate, load and serve it, and DPK-007 proves hermetic whole-application consumption. |
 
-The short implementation workboard and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md). The target architecture is [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
+The short implementation workboard and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md). The target architecture is [Dual Curriculum Package Releases](../concept/skill-graph/dual-curriculum-package-releases.md).
 
 ## Trusted Inputs
 

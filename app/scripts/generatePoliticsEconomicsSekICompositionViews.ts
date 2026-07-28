@@ -36,7 +36,7 @@ interface LearningGoal {
   tags?: string[]
 }
 
-interface LearningLandscape {
+interface SkillLandscape {
   goals: LearningGoal[]
 }
 
@@ -179,7 +179,7 @@ const createView = (jurisdiction: string, root: CompositionNode): CompositionVie
   rootNodes: [root],
 })
 
-const canonicalLandscape = readJson<LearningLandscape>(canonicalLandscapePath)
+const canonicalLandscape = readJson<SkillLandscape>(canonicalLandscapePath)
 const goalById = new Map(canonicalLandscape.goals.map((goal) => [goal.id, goal]))
 
 const createFromCrossStage = (jurisdiction: string): CompositionView => {

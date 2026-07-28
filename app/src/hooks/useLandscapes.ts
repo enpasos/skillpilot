@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react'
-import type { LearningLandscape } from '../landscapeTypes'
+import type { SkillLandscape } from '../landscapeTypes'
 import type { UiGoal as Goal } from '../goalTypes'
 import { convertLearningGoal } from '../goalTypes'
 
 export interface LandscapeEntry {
-  meta: LearningLandscape
+  meta: SkillLandscape
   goals: Goal[]
 }
 
@@ -26,7 +26,7 @@ function isSelfRef(ref: string, goalId: string): boolean {
   return normalizeGoalId(ref) === goalId
 }
 
-export function normalizeLandscape(raw: LearningLandscape | undefined): LandscapeEntry | null {
+export function normalizeLandscape(raw: SkillLandscape | undefined): LandscapeEntry | null {
   if (!raw || !Array.isArray(raw.goals)) return null
   return {
     meta: raw,
@@ -93,7 +93,7 @@ function applyEffectiveRequires(entries: LandscapeEntry[]): LandscapeEntry[] {
   return entries
 }
 
-export function prepareLandscapeEntries(items: LearningLandscape[]): LandscapeEntry[] {
+export function prepareLandscapeEntries(items: SkillLandscape[]): LandscapeEntry[] {
   const allGoalIds = new Set<string>()
   items.forEach((item) => {
     item.goals?.forEach((g) => allGoalIds.add(g.id))
@@ -166,7 +166,7 @@ export function useLandscapes(
 
           // Convert summaries to LandscapeEntry with empty goals
           const entries: LandscapeEntry[] = summaries.map((s: unknown) => ({
-            meta: { ...(s as LearningLandscape), goals: [] },
+            meta: { ...(s as SkillLandscape), goals: [] },
             goals: [],
           }))
           setEntries(entries)
@@ -192,7 +192,7 @@ export function useLandscapes(
           const message = (await res.text()).trim()
           throw new Error(message || `Failed to load landscape (${res.status})`)
         }
-        const json = (await res.json()) as LearningLandscape[]
+        const json = (await res.json()) as SkillLandscape[]
 
         setEntries(prepareLandscapeEntries(json))
       })

@@ -9,7 +9,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
@@ -39,11 +39,11 @@ class LearnerSelectedLandscapeRuntimeTest {
 
     @BeforeEach
     void setUp() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 List.of(goal("goal-root-runtime")),
                 List.of());
-        LearningLandscape selected = landscape(
+        SkillLandscape selected = landscape(
                 SELECTED_ID,
                 List.of(
                         goal("goal-cobalt-alpha-runtime", MODE_ALPHA),
@@ -51,7 +51,7 @@ class LearnerSelectedLandscapeRuntimeTest {
                 List.of(
                         filter(MODE_ALPHA),
                         filter(MODE_BETA)));
-        LearningLandscape foreign = landscape(
+        SkillLandscape foreign = landscape(
                 FOREIGN_ID,
                 List.of(goal("goal-foreign-runtime")),
                 List.of());
@@ -138,11 +138,11 @@ class LearnerSelectedLandscapeRuntimeTest {
                 .containsExactly("goal-root-runtime");
     }
 
-    private static LearningLandscape landscape(
+    private static SkillLandscape landscape(
             String id,
             List<LearningGoal> goals,
             List<LandscapeFilter> filters) {
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(id);
         landscape.setSubject(id);
         landscape.setFrameworkId("neutral-runtime");

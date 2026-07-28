@@ -277,7 +277,7 @@ Werte werden vor jeder Zustandsänderung abgewiesen.
 
 Die Kardinalität einer Landschaftsauswahl wird pro Gruppe explizit durch
 `minSelections` und `maxSelections` beschrieben und ist nicht auf ein Fach oder
-eine Einzelauswahl festgelegt. Eine nichtleere `LearningLandscape.filters`-Liste
+eine Einzelauswahl festgelegt. Eine nichtleere `SkillLandscape.filters`-Liste
 beschreibt dagegen weiterhin genau **eine lokale Single-Choice-Dimension** der
 betreffenden Landschaft. Daher darf eine einzelne Filterentscheidung höchstens
 eine Filteroption dieser Landschaft setzen. Diese Grenze folgt aus dem heutigen

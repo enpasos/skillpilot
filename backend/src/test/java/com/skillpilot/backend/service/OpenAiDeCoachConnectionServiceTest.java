@@ -13,7 +13,7 @@ import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
@@ -69,7 +69,7 @@ class OpenAiDeCoachConnectionServiceTest {
         when(learnerService.reopenPersonalizationForExplicitLaunch(any(Learner.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
         when(learners.findBySkillpilotIdForUpdate(SKILLPILOT_ID)).thenReturn(Optional.of(learner));
-        when(landscapeService.getById("math")).thenReturn(mock(LearningLandscape.class));
+        when(landscapeService.getById("math")).thenReturn(mock(SkillLandscape.class));
     }
 
     @Test

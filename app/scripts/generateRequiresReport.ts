@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
 import { dirname, basename, resolve } from 'node:path'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
 
 type DecisionStatus = 'ok' | 'not_ok' | 'pending'
@@ -125,7 +125,7 @@ function escapePipes(text: string): string {
 }
 
 function renderReport(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   goals: UiGoal[],
   reviews: GoalReviewData[],
   inputPath: string,
@@ -211,7 +211,7 @@ function main() {
 
   const inputAbs = resolve(process.cwd(), input)
   const raw = readFileSync(inputAbs, 'utf8')
-  const landscape = JSON.parse(raw) as LearningLandscape
+  const landscape = JSON.parse(raw) as SkillLandscape
   if (!landscape.landscapeId || !Array.isArray(landscape.goals)) {
     throw new Error(`Invalid curriculum JSON: ${inputAbs}`)
   }

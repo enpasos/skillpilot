@@ -394,7 +394,7 @@ const P = {
 
 const T = {
   skillPilotPackage: `${SP}SkillPilotPackage`,
-  learningLandscape: `${SP}LearningLandscape`,
+  learningLandscape: `${SP}SkillLandscape`,
   learningGoal: `${SP}LearningGoal`,
   atomicGoal: `${SP}AtomicGoal`,
   clusterGoal: `${SP}ClusterGoal`,
@@ -1452,7 +1452,7 @@ const reconstructLandscape = (
 ): ReconstructedLandscape => {
   const landscapeResource = resourcesOfType(model, T.learningLandscape)[0]
   if (!landscapeResource) {
-    throw new Error('No sp:LearningLandscape resource found.')
+    throw new Error('No sp:SkillLandscape resource found.')
   }
 
   const reconstructed: ReconstructedLandscape = {

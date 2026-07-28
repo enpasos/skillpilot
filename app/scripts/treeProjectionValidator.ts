@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { buildGoalIndex } from '../src/hooks/useGoalIndex'
 import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
@@ -46,12 +46,12 @@ function repoRelative(file: string): string {
   return relative(repoRoot, file).replace(/\\/g, '/')
 }
 
-function loadCanonicalLandscapes(): Array<{ file: string; landscape: LearningLandscape }> {
+function loadCanonicalLandscapes(): Array<{ file: string; landscape: SkillLandscape }> {
   return getAllJsonFiles(canonicalDir)
     .sort((a, b) => a.localeCompare(b))
     .map((file) => ({
       file,
-      landscape: JSON.parse(readFileSync(file, 'utf8')) as LearningLandscape,
+      landscape: JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape,
     }))
 }
 
@@ -84,7 +84,7 @@ function buildStageScopeConfig(scope: 'both' | 'sek1' | 'sek2'): PersonalCurricu
 }
 
 function collectTreeProjectionFindingsForLandscape(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   activeFilter: string | undefined,
   stageScope: 'both' | 'sek1' | 'sek2',
 ): TreeProjectionFinding[] {

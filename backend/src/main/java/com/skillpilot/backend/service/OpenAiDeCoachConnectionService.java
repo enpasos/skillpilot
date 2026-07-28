@@ -8,7 +8,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
@@ -217,7 +217,7 @@ public class OpenAiDeCoachConnectionService {
         String curriculumId = launch.selectedCurriculum() != null
                 ? launch.selectedCurriculum()
                 : trimToNull(learner.getSelectedCurriculum());
-        LearningLandscape curriculum = curriculumId == null ? null : landscapeService.getById(curriculumId);
+        SkillLandscape curriculum = curriculumId == null ? null : landscapeService.getById(curriculumId);
         if (launch.selectedCurriculum() != null && curriculum == null) {
             throw badLaunchRequest("selectedCurriculum is not a known curriculum.");
         }
@@ -256,10 +256,10 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private Optional<LearningGoal> findGoalInCurriculum(
-            LearningLandscape curriculum,
+            SkillLandscape curriculum,
             String curriculumId,
             String goalId) {
-        List<LearningLandscape> landscapes = new java.util.ArrayList<>(landscapeService.getClosure(curriculumId));
+        List<SkillLandscape> landscapes = new java.util.ArrayList<>(landscapeService.getClosure(curriculumId));
         if (landscapes.stream().noneMatch(candidate -> curriculumId.equals(candidate.getLandscapeId()))) {
             landscapes.add(curriculum);
         }

@@ -1,9 +1,9 @@
 import type { UiGoal } from '../goalTypes'
-import type { CompetencyCatalogEntry, LearningLandscape } from '../landscapeTypes'
+import type { CompetencyCatalogEntry, SkillLandscape } from '../landscapeTypes'
 import { goalMatchesFilter } from './goalFilters'
 
 export interface CompetencyProjectableLandscapeEntry {
-  meta: LearningLandscape
+  meta: SkillLandscape
   goals: UiGoal[]
 }
 

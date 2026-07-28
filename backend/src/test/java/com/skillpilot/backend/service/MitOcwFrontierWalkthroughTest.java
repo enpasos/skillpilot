@@ -13,7 +13,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -160,7 +160,7 @@ class MitOcwFrontierWalkthroughTest {
     }
 
     private static Set<String> atomicGoalIdsForLandscape(String landscapeId) {
-        LearningLandscape landscape = landscapeService.getById(landscapeId);
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
         if (landscape == null || landscape.getGoals() == null) {
             throw new IllegalStateException("Landscape not found or without goals: " + landscapeId);
         }

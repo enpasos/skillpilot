@@ -20,7 +20,7 @@
 # subclasses of a Core Lehrplan. Subject profiles add Core types only where the
 # reviewed semantic kind warrants them.
 sp:SkillPilotPackage a owl:Class .
-sp:LearningLandscape a owl:Class .
+sp:SkillLandscape a owl:Class .
 sp:LearningGoal a owl:Class .
 sp:PracticeAssessmentGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
 sp:ProgramStructureGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
@@ -63,7 +63,7 @@ sp:ResourceLink a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
 sp:CardMembership a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
 
 sp:hasGoalMembership a owl:ObjectProperty ;
-  rdfs:domain sp:LearningLandscape ;
+  rdfs:domain sp:SkillLandscape ;
   rdfs:range sp:GoalMembership .
 sp:membershipGoal a owl:ObjectProperty ;
   rdfs:domain sp:GoalMembership ;

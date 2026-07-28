@@ -23,7 +23,7 @@ import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.events.LearnerStateChangedEvent;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
 import org.springframework.context.ApplicationEventPublisher;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.Comparator;
@@ -2027,16 +2027,16 @@ public class LearnerService {
     }
 
     @Transactional(readOnly = true)
-    public List<LearningLandscape> getLearnerLandscapeClosure(String skillpilotId, String landscapeId, String lang) {
+    public List<SkillLandscape> getLearnerLandscapeClosure(String skillpilotId, String landscapeId, String lang) {
         Learner learner = getLearner(skillpilotId);
-        List<LearningLandscape> localizedClosure = landscapeService.getClosure(landscapeId, lang);
+        List<SkillLandscape> localizedClosure = landscapeService.getClosure(landscapeId, lang);
         Map<String, LearningGoal> visibleGoals = getFilteredGoals(landscapeId, learner.getPersonalCurriculum());
         if (localizedClosure == null || localizedClosure.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<LearningLandscape> scopedClosure = new ArrayList<>();
-        for (LearningLandscape landscape : localizedClosure) {
+        List<SkillLandscape> scopedClosure = new ArrayList<>();
+        for (SkillLandscape landscape : localizedClosure) {
             List<LearningGoal> sourceGoals = landscape.getGoals();
             if (sourceGoals == null || sourceGoals.isEmpty()) {
                 continue;
@@ -2054,7 +2054,7 @@ public class LearnerService {
                 continue;
             }
 
-            LearningLandscape scopedLandscape = objectMapper.convertValue(landscape, LearningLandscape.class);
+            SkillLandscape scopedLandscape = objectMapper.convertValue(landscape, SkillLandscape.class);
             scopedLandscape.setGoals(filteredGoals);
             if (scopedLandscape.getGoalPlacements() != null) {
                 scopedLandscape.setGoalPlacements(scopedLandscape.getGoalPlacements().stream()
@@ -2423,7 +2423,7 @@ public class LearnerService {
         // forbidden because graph structure is not a personalization protocol.
         Set<String> submittedLandscapeIds = new LinkedHashSet<>();
         for (String reference : normalizedReferences(submittedGoalIds)) {
-            LearningLandscape landscape = landscapeService.getById(reference);
+            SkillLandscape landscape = landscapeService.getById(reference);
             if (landscape != null) {
                 submittedLandscapeIds.add(landscape.getLandscapeId());
                 continue;
@@ -2514,7 +2514,7 @@ public class LearnerService {
                         org.springframework.http.HttpStatus.BAD_REQUEST,
                         "A valid authored personalization scope option is required");
             }
-            LearningLandscape landscape = landscapeService.getById(option.landscapeId());
+            SkillLandscape landscape = landscapeService.getById(option.landscapeId());
             if (landscape == null) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.CONFLICT,
@@ -2547,7 +2547,7 @@ public class LearnerService {
                     "A valid authored personalization value option is required");
         }
 
-        LearningLandscape landscape = landscapeService.getById(option.landscapeId());
+        SkillLandscape landscape = landscapeService.getById(option.landscapeId());
         if (landscape == null) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.CONFLICT,
@@ -2690,7 +2690,7 @@ public class LearnerService {
         String resolvedFilterId = null;
         String resolvedDurationModel = null;
         if (!effectiveFilters.isEmpty()) {
-            LearningLandscape targetLandscape = landscapeService.getById(targetLandscapes.iterator().next());
+            SkillLandscape targetLandscape = landscapeService.getById(targetLandscapes.iterator().next());
             if (targetLandscape == null) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2733,7 +2733,7 @@ public class LearnerService {
         }
 
         for (String landscapeId : targetLandscapes) {
-            LearningLandscape landscape = landscapeService.getById(landscapeId);
+            SkillLandscape landscape = landscapeService.getById(landscapeId);
             if (landscape == null) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -4307,7 +4307,7 @@ public class LearnerService {
         com.skillpilot.backend.landscape.LandscapeSummary curriculumSummary = null;
 
         if (curriculumId != null) {
-            LearningLandscape full = landscapeService.getById(curriculumId);
+            SkillLandscape full = landscapeService.getById(curriculumId);
             if (full != null) {
                 curriculumSummary = getAvailableLandscapes().stream()
                         .filter(s -> s.getCurriculumId().equals(curriculumId))
@@ -4368,7 +4368,7 @@ public class LearnerService {
                 // Try to resolve it from the landscape service directly.
                 String containerId = landscapeService.getLandscapeIdForGoal(pid);
                 if (containerId != null) {
-                    com.skillpilot.backend.landscape.LearningLandscape l = landscapeService.getById(containerId);
+                    com.skillpilot.backend.landscape.SkillLandscape l = landscapeService.getById(containerId);
                     if (l != null && l.getGoals() != null) {
                         g = l.getGoals().stream().filter(goal -> goal.getId().equals(pid)).findFirst().orElse(null);
                     }
@@ -4460,7 +4460,7 @@ public class LearnerService {
                                     landscapeService.getById(curriculumId),
                                     config)
                             .stream()
-                            .map(LearningLandscape::getLandscapeId)
+                            .map(SkillLandscape::getLandscapeId)
                             .filter(Objects::nonNull)
                             .collect(Collectors.toCollection(LinkedHashSet::new));
                     for (Map.Entry<String, Map<String, Object>> configEntry : config.entrySet()) {
@@ -4473,7 +4473,7 @@ public class LearnerService {
                         }
                         Object filterObj = landscapeConfig.get("filterId");
                         if (filterObj instanceof String) {
-                            LearningLandscape declaringLandscape =
+                            SkillLandscape declaringLandscape =
                                     landscapeService.getById(configEntry.getKey());
                             String f = canonicalConfiguredFilterId(declaringLandscape, filterObj);
                             if (f != null && !activeFilters.contains(f)) {
@@ -5443,7 +5443,7 @@ public class LearnerService {
         if (g == null) {
             String containerId = landscapeService.getLandscapeIdForGoal(goalId);
             if (containerId != null) {
-                LearningLandscape l = landscapeService.getById(containerId);
+                SkillLandscape l = landscapeService.getById(containerId);
                 if (l != null && l.getGoals() != null) {
                     g = l.getGoals().stream().filter(goal -> goal.getId().equals(goalId)).findFirst().orElse(null);
                 }
@@ -5703,9 +5703,9 @@ public class LearnerService {
             String curriculumId,
             String personalCurriculumJson,
             boolean ignoreCourseFilters) {
-        LearningLandscape root = landscapeService.getById(curriculumId);
+        SkillLandscape root = landscapeService.getById(curriculumId);
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
-        List<LearningLandscape> runtimeLandscapes =
+        List<SkillLandscape> runtimeLandscapes =
                 resolveRuntimeLandscapes(curriculumId, root, config);
 
         String rootFilterId = null;
@@ -5729,7 +5729,7 @@ public class LearnerService {
         Map<String, Boolean> canonicalStateCoverageCache = new HashMap<>();
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
         Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>();
-        for (LearningLandscape l : runtimeLandscapes) {
+        for (SkillLandscape l : runtimeLandscapes) {
             // Filter by landscape selection
             // With a sparse personalization configuration, descendants are active
             // only when explicitly selected. The root remains active unless it is
@@ -5826,14 +5826,14 @@ public class LearnerService {
      * curriculum-specific conventions. Unknown or unrelated configuration
      * entries therefore cannot inject a runtime landscape.</p>
      */
-    private List<LearningLandscape> resolveRuntimeLandscapes(
+    private List<SkillLandscape> resolveRuntimeLandscapes(
             String curriculumId,
-            LearningLandscape root,
+            SkillLandscape root,
             Map<String, Map<String, Object>> config) {
-        LinkedHashMap<String, LearningLandscape> resolved = new LinkedHashMap<>();
-        List<LearningLandscape> graphClosure = landscapeService.getClosure(curriculumId);
+        LinkedHashMap<String, SkillLandscape> resolved = new LinkedHashMap<>();
+        List<SkillLandscape> graphClosure = landscapeService.getClosure(curriculumId);
         if (graphClosure != null) {
-            for (LearningLandscape landscape : graphClosure) {
+            for (SkillLandscape landscape : graphClosure) {
                 addRuntimeLandscape(resolved, landscape);
             }
         }
@@ -5866,7 +5866,7 @@ public class LearnerService {
                     || !Boolean.TRUE.equals(landscapeConfig.get("selected"))) {
                 continue;
             }
-            LearningLandscape selectedLandscape =
+            SkillLandscape selectedLandscape =
                     landscapeService.getById(option.landscapeId());
             if (selectedLandscape != null
                     && option.landscapeId().equals(selectedLandscape.getLandscapeId())) {
@@ -5877,8 +5877,8 @@ public class LearnerService {
     }
 
     private void addRuntimeLandscape(
-            Map<String, LearningLandscape> target,
-            LearningLandscape landscape) {
+            Map<String, SkillLandscape> target,
+            SkillLandscape landscape) {
         if (target == null
                 || landscape == null
                 || landscape.getLandscapeId() == null
@@ -5892,7 +5892,7 @@ public class LearnerService {
             String curriculumId,
             Map<String, LearningGoal> allGoals,
             Map<String, Map<String, Object>> config,
-            List<LearningLandscape> closure) {
+            List<SkillLandscape> closure) {
         return applyCompositionViewProjection(
                 curriculumId,
                 allGoals,
@@ -5906,7 +5906,7 @@ public class LearnerService {
             Map<String, LearningGoal> allGoals,
             Map<String, LearningGoal> structuralGoals,
             Map<String, Map<String, Object>> config,
-            List<LearningLandscape> closure) {
+            List<SkillLandscape> closure) {
         if (compositionViewService == null
                 || curriculumId == null
                 || curriculumId.isBlank()
@@ -5934,7 +5934,7 @@ public class LearnerService {
             }
             authoritativeCandidateSeen = true;
         }
-        for (LearningLandscape landscape : closure) {
+        for (SkillLandscape landscape : closure) {
             if (!isCompositionViewCandidate(curriculumId, landscape, effectiveConfig)) {
                 continue;
             }
@@ -6107,7 +6107,7 @@ public class LearnerService {
     }
 
     private void addFilteredLandscapeGoalIds(
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             Map<String, LearningGoal> allGoals,
             Set<String> goalIds) {
         if (landscape == null || landscape.getGoals() == null || allGoals == null || allGoals.isEmpty() || goalIds == null) {
@@ -6122,7 +6122,7 @@ public class LearnerService {
 
     private boolean isCompositionViewCandidate(
             String curriculumId,
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             Map<String, Map<String, Object>> config) {
         if (!isCanonicalGymnasiumLandscape(landscape)) {
             return false;
@@ -6488,7 +6488,7 @@ public class LearnerService {
                 case "landscapeEntry" -> {
                     Object landscapeId = node.get("landscapeId");
                     if (landscapeId instanceof String landscapeIdText && !landscapeIdText.isBlank()) {
-                        LearningLandscape landscape = landscapeService.getById(landscapeIdText);
+                        SkillLandscape landscape = landscapeService.getById(landscapeIdText);
                         if (landscape != null && landscape.getGoals() != null) {
                             landscape.getGoals().stream()
                                     .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
@@ -6553,7 +6553,7 @@ public class LearnerService {
         } while (changed);
     }
 
-    private boolean matchesAllEffectiveFilters(LearningGoal goal, LearningLandscape landscape, List<String> effectiveFilterIds,
+    private boolean matchesAllEffectiveFilters(LearningGoal goal, SkillLandscape landscape, List<String> effectiveFilterIds,
             boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         if (effectiveFilterIds == null || effectiveFilterIds.isEmpty()) {
@@ -6568,7 +6568,7 @@ public class LearnerService {
         return true;
     }
 
-    private boolean matchesFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
+    private boolean matchesFilter(LearningGoal goal, SkillLandscape landscape, String filterId,
             boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         String authoredFilterId = filterId == null ? null : filterId.trim();
@@ -6681,7 +6681,7 @@ public class LearnerService {
         return !hasExplicitCourseRestriction;
     }
 
-    private boolean matchesStateFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
+    private boolean matchesStateFilter(LearningGoal goal, SkillLandscape landscape, String filterId,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
         if (isCanonicalGymnasiumLandscape(landscape)) {
             Boolean explicitApplicabilityMatch = matchesApplicabilityDimension(goal, APPLICABILITY_DIMENSION_JURISDICTION,
@@ -6837,7 +6837,7 @@ public class LearnerService {
                 .collect(Collectors.toSet()));
     }
 
-    private boolean isCanonicalGymnasiumLandscape(LearningLandscape landscape) {
+    private boolean isCanonicalGymnasiumLandscape(SkillLandscape landscape) {
         if (landscape == null) {
             return false;
         }
@@ -6845,7 +6845,7 @@ public class LearnerService {
         return frameworkId != null && frameworkId.startsWith("canonical-gymnasium");
     }
 
-    private boolean usesLegacyStructuredFilterSemantics(LearningLandscape landscape) {
+    private boolean usesLegacyStructuredFilterSemantics(SkillLandscape landscape) {
         return isCanonicalGymnasiumLandscape(landscape);
     }
 
@@ -6856,7 +6856,7 @@ public class LearnerService {
                 || tags.stream().anyMatch(tag -> tag != null && tag.equalsIgnoreCase(filterId));
     }
 
-    private String canonicalConfiguredFilterId(LearningLandscape landscape, Object rawFilterId) {
+    private String canonicalConfiguredFilterId(SkillLandscape landscape, Object rawFilterId) {
         if (!(rawFilterId instanceof String submitted) || submitted.isBlank()) {
             return null;
         }
@@ -6878,7 +6878,7 @@ public class LearnerService {
         return null;
     }
 
-    private String normalizeBundeslandCode(LearningLandscape landscape) {
+    private String normalizeBundeslandCode(SkillLandscape landscape) {
         if (landscape == null) {
             return null;
         }
@@ -7067,7 +7067,7 @@ public class LearnerService {
     }
 
     private List<FrontierGoal> getTopLevelModules(String curriculumId, Map<String, LearningGoal> allGoals) {
-        LearningLandscape curriculum = landscapeService.getById(curriculumId);
+        SkillLandscape curriculum = landscapeService.getById(curriculumId);
         if (curriculum == null || curriculum.getGoals() == null || curriculum.getGoals().isEmpty()) {
             return Collections.emptyList();
         }

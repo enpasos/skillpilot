@@ -12,7 +12,7 @@ import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -180,7 +180,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     private Fixture fixture(Map<String, Object> matchedView) {
-        LearningLandscape landscape = landscape();
+        SkillLandscape landscape = landscape();
         LandscapeService landscapeService = mock(LandscapeService.class);
         CompositionViewService compositionViewService = mock(CompositionViewService.class);
         LearnerRepository learnerRepository = mock(LearnerRepository.class);
@@ -222,8 +222,8 @@ class ProjectionRoleLearnerServiceTest {
                 compositionViewService);
     }
 
-    private LearningLandscape landscape() {
-        LearningLandscape landscape = new LearningLandscape();
+    private SkillLandscape landscape() {
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(LANDSCAPE_ID);
         landscape.setFrameworkId("canonical-gymnasium-projection-role-test");
         landscape.setGoals(List.of(

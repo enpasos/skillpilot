@@ -2,8 +2,8 @@
 
 This document is the implementation-oriented follow-up to:
 
-- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+- `docs/concept/skill-graph/general-goal-system-and-migration.md`
+- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 
 Use this document for:
 
@@ -12,7 +12,7 @@ Use this document for:
 - the first canonical mathematics pilot slice
 
 It does not redefine the long-term projection contract for visible trees.  
-That target contract lives in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
+That target contract lives in `docs/concept/skill-graph/view-projection-and-goal-placement.md`.
 
 It answers three narrower questions:
 
@@ -230,7 +230,7 @@ The key rule is:
 **projection is preferred when present, legacy structure is the fallback when absent.**
 
 This section defines transition precedence only.  
-The target contract for content trees, program trees, and competency views is specified separately in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
+The target contract for content trees, program trees, and competency views is specified separately in `docs/concept/skill-graph/view-projection-and-goal-placement.md`.
 
 ## 1. Structural program view
 

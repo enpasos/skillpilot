@@ -25,8 +25,8 @@ They should stay separate in tooling for the same reason they stay separate in t
 
 This mirrors the established split in the concept docs:
 
-- `docs/concept/curriculum-graph/graph-definition.md`
-- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+- `docs/concept/skill-graph/graph-definition.md`
+- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 
 ## Design objective
 

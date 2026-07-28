@@ -2,7 +2,7 @@ package com.skillpilot.backend.ui;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.landscape.LandscapeService;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,14 +40,14 @@ public class LandscapeUiController {
 
     @GetMapping("/{landscapeId}")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public LearningLandscape getLandscape(@PathVariable String landscapeId) {
+    public SkillLandscape getLandscape(@PathVariable String landscapeId) {
         assertCompatibilityLandscapeRouteActive(landscapeId);
         return landscapeService.getById(landscapeId);
     }
 
     @GetMapping("/{landscapeId}/closure")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public List<LearningLandscape> getLandscapeClosure(@PathVariable String landscapeId,
+    public List<SkillLandscape> getLandscapeClosure(@PathVariable String landscapeId,
             @RequestParam(defaultValue = "de") String lang) {
         assertCompatibilityLandscapeRouteActive(landscapeId);
         return landscapeService.getClosure(landscapeId, lang);

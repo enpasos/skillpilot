@@ -105,7 +105,7 @@ In **mathematics** within the Gymnasium landscapes, **all three node types** are
 ![Exam Node (Example)](examnode.en.png)
 
 **Formal specification:** The mathematical definition of the graph (e.g., acyclicity, Effective Requires) is publicly documented:
-[Graph definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
+[Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 #### Frontier: Next Reachable Steps
 
@@ -336,6 +336,6 @@ Note: Your **ID is the only key** to your data - store it safely.
 **More transparency:**
 [GitHub](https://github.com/enpasos/skillpilot)
 [Documentation](https://enpasos.github.io/skillpilot/)
-[Graph definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
+[Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 ---

@@ -217,6 +217,6 @@ These issues are non-blocking during the PoC. They become candidates for blockin
 
 ## Related Documents
 
-- [Human-Readable Source Rationales](../concept/curriculum-graph/human-readable-source-rationales.md)
+- [Human-Readable Source Rationales](../concept/skill-graph/human-readable-source-rationales.md)
 - [Goal Source Rationales PoC](status/goal-source-rationales-poc.md)
 - [Generated QA Status Artifact Registry](status/README.md)

@@ -8,7 +8,7 @@ It is intentionally a **design document**, not an implementation report.
 
 Related documents:
 
-- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/concept/skill-graph/canonical-gymnasium-rollout.md`
 - `docs/dev/canonical-gymnasium-implementation-plan.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
 

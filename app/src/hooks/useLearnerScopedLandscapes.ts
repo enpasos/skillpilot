@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react'
-import type { LearningLandscape } from '../landscapeTypes'
+import type { SkillLandscape } from '../landscapeTypes'
 import type { LandscapeEntry } from './useLandscapes'
 import { prepareLandscapeEntries } from './useLandscapes'
 
@@ -43,7 +43,7 @@ export function useLearnerScopedLandscapes(
           const message = (await res.text()).trim()
           throw new Error(message || `Failed to load learner-scoped landscape (${res.status})`)
         }
-        const json = (await res.json()) as LearningLandscape[]
+        const json = (await res.json()) as SkillLandscape[]
         setEntries(prepareLandscapeEntries(json))
       })
       .catch((err) => {

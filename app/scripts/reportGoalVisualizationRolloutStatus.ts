@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { isOrdinaryAtomicGoalForVisualization } from '../../scripts/goal_visualization_scope.mjs'
 
 type ReviewDecision =
@@ -267,7 +267,7 @@ function sortedRecord(record: Record<string, number>): Record<string, number> {
   return Object.fromEntries(Object.entries(record).sort(([left], [right]) => left.localeCompare(right)))
 }
 
-function primaryVisualizationLink(goal: LearningLandscape['goals'][number], subject: string) {
+function primaryVisualizationLink(goal: SkillLandscape['goals'][number], subject: string) {
   return (goal.resourceLinks ?? []).find((link) => {
     return link.type === 'goal-visualization'
       && link.resourceType === 'image'
@@ -426,7 +426,7 @@ function percent(count: number, total: number): number {
 }
 
 function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutReport {
-  const landscape = readJson<LearningLandscape>(args.landscapePath)
+  const landscape = readJson<SkillLandscape>(args.landscapePath)
   const canonicalTitleByGoalId = new Map(landscape.goals.map((goal) => [goal.id, goal.title]))
   const atomicGoals = landscape.goals.filter(isOrdinaryAtomicGoalForVisualization)
   const visualizedGoals: GoalVisualizationRow[] = atomicGoals.flatMap((goal) => {

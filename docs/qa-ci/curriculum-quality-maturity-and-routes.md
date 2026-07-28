@@ -21,7 +21,7 @@ npm run quality:curriculum-status
 
 ### Curriculum
 
-Ein Curriculum ist im Dashboard eine kanonische `LearningLandscape`-JSON-Datei aus `curricula/DE/Gymnasium/canonical/`.
+Ein Curriculum ist im Dashboard eine kanonische `SkillLandscape`-JSON-Datei aus `curricula/DE/Gymnasium/canonical/`.
 Das Dashboard bewertet nicht einzelne Bundeslandquellen, sondern die kanonische Landschaft, die daraus entstanden ist.
 
 ### Bundesland-Abdeckung
@@ -671,7 +671,7 @@ Geprueft wird:
 - Jedes `originGoalId` einer behaltenen Karte muss ein aktuelles `memory_required`-Ziel sein und das passende Deck referenzieren.
 - Karten mit `remove` duerfen als Audit-Spur im Kartenledger bleiben, muessen aber aus den aktiven Deckdateien entfernt sein.
 - Optional erzeugt `npm run quality:memory-card-review:report` daraus einen lesbaren Markdown-Audit-Report. Der Report ist keine zweite Wahrheit, sondern eine reproduzierbare Sicht auf dieselben Ledger-Daten.
-- Kanonische Memory-Decks fuer deutsche Gymnasialfaecher liegen unter `curricula/DE/Gymnasium/memory-decks/`. Sie liegen absichtlich nicht unter `curricula/DE/Gymnasium/canonical/`, weil dieser Ordner den `LearningLandscape`-JSON-Dateien vorbehalten ist. Oeffentliche Deck-IDs, aktive Karten-IDs und Runtime-Dateinamen verwenden kanonische DE/Gymnasium-Namen wie `de_gymnasium_math_*`, nicht Bundesland- oder Pilotpraefixe wie `he`, `hes` oder `DE-HE`.
+- Kanonische Memory-Decks fuer deutsche Gymnasialfaecher liegen unter `curricula/DE/Gymnasium/memory-decks/`. Sie liegen absichtlich nicht unter `curricula/DE/Gymnasium/canonical/`, weil dieser Ordner den `SkillLandscape`-JSON-Dateien vorbehalten ist. Oeffentliche Deck-IDs, aktive Karten-IDs und Runtime-Dateinamen verwenden kanonische DE/Gymnasium-Namen wie `de_gymnasium_math_*`, nicht Bundesland- oder Pilotpraefixe wie `he`, `hes` oder `DE-HE`.
 - Bundesland-Auswahl wird ueber Composition Views, Applicability, Provenance und die Review-Ledger entschieden. Sie wird nicht durch bundeslandspezifische Deck-Duplikate oder Decknamen modelliert.
 
 Ausgeschlossen sind unter anderem:

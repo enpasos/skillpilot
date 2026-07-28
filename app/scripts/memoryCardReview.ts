@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type ReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type CardReviewStatus = 'kept' | 'remove' | 'needs_developer_review'
@@ -443,7 +443,7 @@ function formatGoal(goal: LearningGoal | undefined, goalId: string): string {
   return goal ? `${goal.title} [${goalId}]` : goalId
 }
 
-function collectMemoryDeckEvidence(landscape: LearningLandscape): MemoryDeckEvidence {
+function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidence {
   const evidence: MemoryDeckEvidence = {
     memoryGoalIds: new Set(),
     deckIdsByMemoryGoalId: new Map(),
@@ -835,7 +835,7 @@ function buildMarkdownReport(input: {
 function main() {
   const args = parseArgs(process.argv.slice(2))
   const config = loadJson<ReviewConfig>(resolveRepoPath(args.configPath))
-  const landscape = loadJson<LearningLandscape>(resolveRepoPath(config.landscapePath))
+  const landscape = loadJson<SkillLandscape>(resolveRepoPath(config.landscapePath))
   if ((landscape.landscapeId ?? (landscape as { id?: string }).id) !== config.landscapeId) {
     throw new Error(`Configured landscapeId ${config.landscapeId} does not match ${config.landscapePath}`)
   }

@@ -16,7 +16,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -700,8 +700,8 @@ public class LearnerFrontierInvariantTest {
 
     private static Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson)
             throws Exception {
-        List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
-        LearningLandscape root = landscapeService.getById(curriculumId);
+        List<SkillLandscape> closure = landscapeService.getClosure(curriculumId);
+        SkillLandscape root = landscapeService.getById(curriculumId);
         if (root != null && closure.stream().noneMatch(l -> l.getLandscapeId().equals(root.getLandscapeId()))) {
             closure = new ArrayList<>(closure);
             closure.add(root);
@@ -717,7 +717,7 @@ public class LearnerFrontierInvariantTest {
         }
 
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
-        for (LearningLandscape landscape : closure) {
+        for (SkillLandscape landscape : closure) {
             boolean isSelected = true;
             String filterId = null;
 

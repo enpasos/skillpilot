@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -217,7 +217,7 @@ function renderReport(status: StatusDocument, statusPath: string): string {
         || rule?.status === 'warn'
     })
     .map((curriculum) => {
-      const landscape = readJson<LearningLandscape>(curriculum.path)
+      const landscape = readJson<SkillLandscape>(curriculum.path)
       const reviewGoals = landscape.goals.filter((goal) => isAtomicGoal(goal) && isReviewRelevantGoal(goal))
       const heuristicCandidates = reviewGoals.filter(isHeuristicMemoryCandidate)
       const memoryGoals = landscape.goals.filter(isMemoryGoal)

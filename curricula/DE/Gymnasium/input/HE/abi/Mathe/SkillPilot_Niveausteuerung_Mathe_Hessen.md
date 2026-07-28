@@ -261,9 +261,9 @@ Bewerte jede Aufgabe auf 0–2 Punkte je Kriterium (max 10):
 
 ---
 
-## 8. Einordnung in die SkillPilot-Lernlandschaft
+## 8. Einordnung in die SkillPilot-Skill-Landschaft
 
-Dieser Leitfaden steuert das **Aufgabenniveau**. Fuer die **Einordnung in die Lernlandschaft** gilt zusaetzlich:
+Dieser Leitfaden steuert das **Aufgabenniveau**. Fuer die **Einordnung in die Skill-Landschaft** gilt zusaetzlich:
 
 ### 8.1 Lokale Uebungszweige vor globalem Abi-Zweig
 

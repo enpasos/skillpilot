@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type GapLane = 'covered-sibling-mapping-gap' | 'isolated-source-expansion-gap'
 
@@ -299,7 +299,7 @@ function recommendedAction(lane: GapLane): string {
   return 'Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker.'
 }
 
-function buildIssues(landscape: LearningLandscape, sourceReport: SourceRationaleReport): GapIssue[] {
+function buildIssues(landscape: SkillLandscape, sourceReport: SourceRationaleReport): GapIssue[] {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const parentsByGoal = buildParentMap(landscape.goals)
   const itemsByGoalId = new Map(
@@ -373,7 +373,7 @@ function bucketIssues(issues: GapIssue[], keyOf: (issue: GapIssue) => string): B
 }
 
 function buildReport(args: Args, generatedAt: string): GapIssueReport {
-  const landscape = readJson<LearningLandscape>(args.landscapePath)
+  const landscape = readJson<SkillLandscape>(args.landscapePath)
   const sourceReport = readJson<SourceRationaleReport>(args.allRelevantReportPath)
   const issues = buildIssues(landscape, sourceReport)
   const byPhase = bucketIssues(issues, (issue) => issue.phase)

@@ -498,7 +498,7 @@ Empfohlen werden vier generische Bausteine:
    Liest read-only genau den aktiven Mehrpaket-Lock und löst dessen content-adressierte, bereits provisionierte Objekte auf. Es entdeckt keine Verzeichnisse, wählt kein `latest` und schreibt keinen Lock.
 
 2. **`JsonCurriculumPackageLoader`**  
-   Validiert ein Paket, baut daraus das interne `LearningLandscape`-Modell und liefert Root-Katalog, Goal-Index, Views, Mappings und Dependencies.
+   Validiert ein Paket, baut daraus das interne `SkillLandscape`-Modell und liefert Root-Katalog, Goal-Index, Views, Mappings und Dependencies.
 
 3. **`CurriculumResourceResolver`**  
    Löst Decks, Bilder und weitere Ressourcen paket- und versionsbezogen auf. Dateinamen allein sind keine globale Identität.

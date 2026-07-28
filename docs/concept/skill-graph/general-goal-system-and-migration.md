@@ -10,9 +10,9 @@ Use this document for:
 
 Use related documents for narrower questions:
 
-- `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
-- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
-- `docs/concept/curriculum-graph/graph-definition.md`
+- `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
+- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
+- `docs/concept/skill-graph/graph-definition.md`
 
 It is motivated by one concrete pressure point in the current canonical Gymnasium work:
 
@@ -250,7 +250,7 @@ This means:
 
 ## Minimal target data structures
 
-The target model should be introduced additively, not by replacing `LearningLandscape` and `LearningGoal`.
+The target model should be introduced additively, not by replacing `SkillLandscape` and `LearningGoal`.
 
 The minimal additions are:
 
@@ -267,7 +267,7 @@ That narrower restriction is a rollout decision, not a contradiction of the broa
 
 Repositories MAY additionally define separate scope-specific composition-view files for learner-facing default trees.
 
-These are separate view artifacts rather than mandatory additions to every `LearningLandscape` object, so they are not listed here as core schema additions.
+These are separate view artifacts rather than mandatory additions to every `SkillLandscape` object, so they are not listed here as core schema additions.
 
 ### Program units
 

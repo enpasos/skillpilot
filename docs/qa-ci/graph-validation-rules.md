@@ -168,7 +168,7 @@ The current CI validator still operates on the compatibility model used by the e
 - effective prerequisites are computed by inheriting `requires` from `contains` ancestors
 - rollout rules such as `GVR-004` / `GVR-005` validate motivation connectivity in that effective graph
 
-The conceptual target model described in `docs/concept/curriculum-graph/graph-definition.md` is stricter:
+The conceptual target model described in `docs/concept/skill-graph/graph-definition.md` is stricter:
 
 - the canonical didactic sequencing layer should primarily be authored on atomic goals
 - atomic/cluster semantics are defined canonically by the direct `contains` relation (leaf = atomic, non-leaf = cluster)
@@ -329,7 +329,7 @@ Recommended rollout strategy:
 
 ## Immediate implications from the updated concept spec
 
-The recent updates in `docs/concept/curriculum-graph/graph-definition.md` do **not** imply that every newly clarified concept should become a CI graph rule immediately.
+The recent updates in `docs/concept/skill-graph/graph-definition.md` do **not** imply that every newly clarified concept should become a CI graph rule immediately.
 
 ### Already implemented structural alignment
 

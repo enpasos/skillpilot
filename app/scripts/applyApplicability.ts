@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { ApplicabilityMap, LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { ApplicabilityMap, LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { buildApplicabilityCompilation, getApplicabilityReportDir, writeApplicabilityReports } from './applicabilityCompiler'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -121,7 +121,7 @@ let changedGoals = 0
 
 for (const report of selectedReports) {
   const targetFile = resolve(repoRoot, report.file)
-  const landscape = JSON.parse(readFileSync(targetFile, 'utf8')) as LearningLandscape
+  const landscape = JSON.parse(readFileSync(targetFile, 'utf8')) as SkillLandscape
   const compiledApplicabilityByGoalId = new Map(
     report.goals.map((goalReport) => [goalReport.goalId, goalReport.compiledApplicability]),
   )

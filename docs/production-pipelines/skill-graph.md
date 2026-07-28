@@ -10,7 +10,7 @@ For exam authoring workflows, see `exam-example.md`.
 ## Scope
 
 - **Input:** Any authoritative curriculum source (PDF, handbook, spreadsheet, API, internal docs).
-- **Output:** A clean `LearningLandscape` JSON under `curricula/<...>/json/<file>.json`.
+- **Output:** A clean `SkillLandscape` JSON under `curricula/<...>/json/<file>.json`.
 - **Goal:** A DAG of goals with consistent metadata, stable IDs, and minimal prerequisites.
 
 ---
@@ -66,7 +66,7 @@ Rules of thumb:
 
 ## Step 2: Generate JSON
 
-Goal: encode the outline as `LearningLandscape` JSON.
+Goal: encode the outline as `SkillLandscape` JSON.
 
 ### 2.1 Stable identifiers
 Use stable IDs so regeneration does not break references.
@@ -156,7 +156,7 @@ Migration note:
 
 References:
 
-- `../concept/curriculum-graph/graph-definition.md`
+- `../concept/skill-graph/graph-definition.md`
 - `../qa-ci/graph-validation-rules.md`
 
 ### Reference implementations

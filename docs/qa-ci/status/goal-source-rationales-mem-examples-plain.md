@@ -10,15 +10,15 @@
 > Source of truth: `curricula/DE/Gymnasium/input/`
 > Source of truth: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
 
-Erzeugt: 2026-06-02T04:11:08.539Z
+Erzeugt: 2026-07-28T10:26:46.240Z
 
-Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Wissenslandschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.
+Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Skill-Landschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.
 
 ## Kurzüberblick
 
 - Lernziele: 3
 - Klassischer Quellenweg vorhanden: 3
-- MEM/FWU-SPARQL konsistent: 3
+- MEM/FWU-SPARQL konsistent: 0
 - Bundesland-Scope: DE-BY
 
 ## 1. Brüche erweitern, kürzen und vergleichen
@@ -46,38 +46,13 @@ Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. In
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
+Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
+Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
 
-1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
-2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
+### Offene Punkte
 
-```sparql
-PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
-FROM <https://w3id.org/lehrplan/by/data>
-WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220606.de> }
-  VALUES ?goal { <https://lp-bavaria.org/3ccd6c31-d1fe-4b80-9cab-863326b4be87> }
-
-  ?plan rdfs:label ?planLabel ;
-    lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
-
-  ?year rdfs:label ?yearLabel .
-  ?goal rdfs:label ?goalLabel .
-
-  FILTER(langMatches(lang(?yearLabel), "de"))
-}
-```
-
-3. Die Abfrage sollte genau eine Zeile liefern.
-4. Prüfe die Spalten: `planLabel` sollte "Mathematik 6" sein, `yearLabel` sollte "Jahrgangsstufe 6" sein.
-5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: erläutern anhand von Beispielen, dass Erweitern und Kürzen den Wert eines Bruchs nicht verändern. Sie wählen beim Größenvergleich von Brüchen geeignete Strategien; bei Verwendung des Hauptnenners ermitteln sie diesen auch mithilfe eines algorithmischen (z. B. auf der Primfaktorzerlegung basierenden) Verfahrens.
-
-Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
+- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
 
 ## 2. Funktionsbegriff und Darstellungen verstehen
 
@@ -104,38 +79,13 @@ Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. In
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
+Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
+Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
 
-1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
-2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
+### Offene Punkte
 
-```sparql
-PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
-FROM <https://w3id.org/lehrplan/by/data>
-WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220710.de> }
-  VALUES ?goal { <https://lp-bavaria.org/ae630b9d-94f3-4e46-8606-e3bf6b5708e6> }
-
-  ?plan rdfs:label ?planLabel ;
-    lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
-
-  ?year rdfs:label ?yearLabel .
-  ?goal rdfs:label ?goalLabel .
-
-  FILTER(langMatches(lang(?yearLabel), "de"))
-}
-```
-
-3. Die Abfrage sollte genau eine Zeile liefern.
-4. Prüfe die Spalten: `planLabel` sollte "Mathematik 8" sein, `yearLabel` sollte "Jahrgangsstufe 8" sein.
-5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: verstehen eine Funktion als eindeutige Zuordnung und grenzen die zugehörigen Fachbegriffe (z. B. Funktionsterm, Graph, Definitionsmenge, Wertemenge) voneinander ab. Sie erkennen Funktionen als solche und unterscheiden diese begründet von nicht eindeutigen Zuordnungen. Graphen von Funktionen, denen Terme zugrunde lie...
-
-Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
+- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
 
 ## 3. Ableitung als Steigung im Punkt deuten
 
@@ -160,36 +110,11 @@ Die fachliche Zuordnungsprüfung bewertet die Verbindung als genauer Treffer. In
 
 ### MEM/FWU-SPARQL als Alternativweg
 
-MEM/FWU liefert über die SPARQL-Schnittstelle denselben bzw. den passenden übergeordneten Erwartungstext. So kann man das Ergebnis nachvollziehen:
+Für dieses Beispiel ist die MEM/FWU-Route nicht als konsistent gerendert. Status: `mem_sparql_review_needed`.
+Der MEM/FWU-SPARQL-Vergleich ist konfiguriert, aber für den gerenderten klassischen Quellenweg wurde kein passender MEM-Erwartungstext gefunden.
 
-1. Öffne den SPARQL-Endpunkt: https://sparql.mem.edufeed.org/sparql
-2. Kopiere die folgende Abfrage in das Query-Feld und führe sie aus.
+### Offene Punkte
 
-```sparql
-PREFIX lp: <https://w3id.org/lehrplan/ontology/>
-PREFIX bfo: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel
-FROM <https://w3id.org/lehrplan/by/data>
-WHERE {
-  VALUES ?plan { <https://lp-bavaria.org/lis_live_isb.c.220889.de> }
-  VALUES ?goal { <https://lp-bavaria.org/db09990a-aa21-4905-a389-498a5945dce2> }
-
-  ?plan rdfs:label ?planLabel ;
-    lp:LP_0000026 ?year ;
-    bfo:BFO_0000051+ ?goal .
-
-  ?year rdfs:label ?yearLabel .
-  ?goal rdfs:label ?goalLabel .
-
-  FILTER(langMatches(lang(?yearLabel), "de"))
-}
-```
-
-3. Die Abfrage sollte genau eine Zeile liefern.
-4. Prüfe die Spalten: `planLabel` sollte "Mathematik 11" sein, `yearLabel` sollte "Jahrgangsstufe 11" sein.
-5. In `goalLabel` sollte dieser Erwartungstext stehen oder beginnen: interpretieren Werte von Ableitungsfunktionen als lokale Änderungsraten und nutzen diese Interpretation auch im Sachkontext (u. a. lokale Steigung einer Straße, Momentangeschwindigkeit).
-
-Auswertung: Wenn diese Zeile erscheint und der Erwartungstext fachlich mit dem oben beschriebenen Quellenbeleg übereinstimmt, ist der MEM/FWU-Weg für dieses Lernziel als konsistenter Alternativweg nutzbar. Wenn keine Zeile erscheint oder der Text abweicht, entsteht ein nicht-blockierender Review-Fall.
+- MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten.
+- Der konfigurierte MEM/FWU-SPARQL-Vergleich fand keinen passenden MEM-Erwartungstext für den klassischen Quellenweg.
 

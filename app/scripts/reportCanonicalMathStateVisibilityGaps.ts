@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { goalMatchesFilter } from '../src/utils/goalFilters'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 interface TrackerStateRecord {
   jurisdiction: string
@@ -106,7 +106,7 @@ function formatGoalList(goalIds: string[], goalById: Map<string, LearningGoal>, 
 
 function main() {
   const tracker = loadJson<TrackerRecord>(trackerPath)
-  const landscape = loadJson<LearningLandscape>(resolve(repoRoot, tracker.landscapePath))
+  const landscape = loadJson<SkillLandscape>(resolve(repoRoot, tracker.landscapePath))
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const requestedJurisdictions = new Set(
     (process.env.JURISDICTIONS ?? '')

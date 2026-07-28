@@ -1,11 +1,11 @@
 import type { UiGoal } from '../goalTypes'
-import type { GoalPlacement, GoalPlacementContext, LearningLandscape, ProgramUnit } from '../landscapeTypes'
+import type { GoalPlacement, GoalPlacementContext, SkillLandscape, ProgramUnit } from '../landscapeTypes'
 import { normalizeDurationModel } from './durationModel'
 import { splitFilterIds } from './goalFilters'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 export interface ProjectableLandscapeEntry {
-  meta: LearningLandscape
+  meta: SkillLandscape
   goals: UiGoal[]
 }
 

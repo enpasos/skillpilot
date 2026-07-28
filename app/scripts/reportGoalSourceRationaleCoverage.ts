@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type CoverageClassification =
   | 'covered_runtime_classic_and_mem'
@@ -305,7 +305,7 @@ function classifyGoal(goal: LearningGoal, runtimeItem: RuntimeSourceRationaleIte
     : 'covered_runtime_classic_mem_pending'
 }
 
-function buildRows(landscape: LearningLandscape, runtimeByGoalId: Map<string, RuntimeSourceRationaleItem>): CoverageGoalRow[] {
+function buildRows(landscape: SkillLandscape, runtimeByGoalId: Map<string, RuntimeSourceRationaleItem>): CoverageGoalRow[] {
   const goals = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const parentsByGoal = buildParentMap(goals)
 
@@ -366,7 +366,7 @@ function bucketRows(rows: CoverageGoalRow[], key: 'phase' | 'area'): CoverageBuc
 }
 
 function buildReport(args: Args, generatedAt: string): CoverageReport {
-  const landscape = readJson<LearningLandscape>(args.landscapePath)
+  const landscape = readJson<SkillLandscape>(args.landscapePath)
   const runtimeIndex = readJson<RuntimeSourceRationaleIndex>(args.runtimeIndexPath)
   const goalsById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const runtimeItemList = runtimeItems(runtimeIndex)

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -468,7 +468,7 @@ function renderCandidateSection(title: string, rows: CandidateRow[]): string[] {
   return lines
 }
 
-function renderReport(args: Args, status: StatusDocument, curriculum: CurriculumStatus, landscape: LearningLandscape): string {
+function renderReport(args: Args, status: StatusDocument, curriculum: CurriculumStatus, landscape: SkillLandscape): string {
   const reviewGoals = landscape.goals.filter((goal) => isAtomicGoal(goal) && isReviewRelevantGoal(goal))
   const heuristicCandidates = reviewGoals
     .filter(isHeuristicMemoryCandidate)
@@ -558,7 +558,7 @@ function main() {
   const args = parseArgs(process.argv.slice(2))
   const status = readJson<StatusDocument>(args.statusPath)
   const curriculum = findCurriculum(status, args.subject)
-  const landscape = readJson<LearningLandscape>(curriculum.path)
+  const landscape = readJson<SkillLandscape>(curriculum.path)
   const outputRepoPath = args.outputPath ?? `docs/qa-ci/status/memory-card-pilot-${slugify(args.subject)}.md`
   const outputPath = resolve(repoRoot, outputRepoPath)
   const outputDir = dirname(outputPath)

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.tuple;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
@@ -28,7 +28,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void completesWithoutMandatoryChoicesWhenNoFlowIsAuthored() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
 
         PersonalizationPlan plan =
                 CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root), Map.of());
@@ -41,7 +41,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsAnExplicitlyAuthoredFlowWithoutStages() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
         root.setPersonalizationFlow(flow());
 
         PersonalizationPlan plan =
@@ -53,7 +53,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsMissingOrBlankStageAndGroupLabels() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"));
@@ -127,7 +127,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsCaseInsensitiveDuplicatesInRestrictedFilterIds() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"),
@@ -153,7 +153,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void offersExactlyTheRootFiltersDeclaredByTheAuthoredFlow() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"),
@@ -191,7 +191,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void publishesCurrentAndLaterAuthoredDecisionsInFlowOrder() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"),
@@ -234,7 +234,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void normalizesMixedCaseRestrictionsBeforeLabelAndOptionIdentityAreDerived() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("Dial-Authored", "Authored dial"),
@@ -268,12 +268,12 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void normalizesSharedMixedCaseDynamicRestrictionsPerDeclaringLandscape() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("Shared-Band", "Cobalt shared band"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("shared-band", "Ember shared band"));
@@ -337,13 +337,13 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void derivesFilterOptionsOnlyForLandscapesSelectedByAnEarlierAuthoredGroup() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("band-one", "Band One"),
                 filter("band-two", "Band Two"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("band-one", "Band One"),
@@ -387,12 +387,12 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsARestrictedDynamicFilterVocabularyThatIsNotSharedByEveryUpstreamLandscape() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("cobalt-basic", "Cobalt Basic"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("ember-basic", "Ember Basic"));
@@ -431,12 +431,12 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void usesEachSelectedLandscapesOwnFilterVocabularyWhenNoDynamicRestrictionIsAuthored() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("cobalt-basic", "Cobalt Basic"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("ember-basic", "Ember Basic"));
@@ -479,13 +479,13 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void keepsCourseProfilesPerSubjectAndLeavesStageAndDurationIndependent() {
-        LearningLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
-        LearningLandscape mathematics = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        SkillLandscape mathematics = landscape(
                 COBALT_ID,
                 "Mathematik",
                 filter("GK", "Grundkurs"),
                 filter("LK", "Leistungskurs"));
-        LearningLandscape physics = landscape(
+        SkillLandscape physics = landscape(
                 EMBER_ID,
                 "Physik",
                 filter("GK", "Grundkurs"),
@@ -536,7 +536,7 @@ class CurriculumPersonalizationPlannerTest {
                                         "durationModel",
                                         scopeValue("G8", "G8"),
                                         scopeValue("G9", "G9"))))));
-        List<LearningLandscape> landscapes = List.of(root, mathematics, physics);
+        List<SkillLandscape> landscapes = List.of(root, mathematics, physics);
 
         Map<String, Object> unresolvedRoot = new LinkedHashMap<>();
         unresolvedRoot.put("selected", true);
@@ -598,10 +598,10 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void offersExplicitCompletionAfterTheMinimumAndBeforeTheMaximum() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
-        LearningLandscape saffron = landscape(SAFFRON_ID, "Saffron");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape saffron = landscape(SAFFRON_ID, "Saffron");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -641,9 +641,9 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void anExplicitCompletionAdvancesWithoutSelectingAnotherValue() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -653,7 +653,7 @@ class CurriculumPersonalizationPlannerTest {
                         1,
                         2,
                         landscapes(COBALT_ID, EMBER_ID)))));
-        List<LearningLandscape> landscapes = List.of(root, cobalt, ember);
+        List<SkillLandscape> landscapes = List.of(root, cobalt, ember);
         Map.Entry<String, Map<String, Object>> selection =
                 entry(COBALT_ID, true, null);
 
@@ -675,9 +675,9 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void anOptionalGroupCanBeCompletedWithoutSelectingAValue() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -687,7 +687,7 @@ class CurriculumPersonalizationPlannerTest {
                         0,
                         2,
                         landscapes(COBALT_ID, EMBER_ID)))));
-        List<LearningLandscape> landscapes = List.of(root, cobalt, ember);
+        List<SkillLandscape> landscapes = List.of(root, cobalt, ember);
 
         PersonalizationPlan pending =
                 CurriculumPersonalizationPlanner.plan(ROOT_ID, landscapes, Map.of());
@@ -709,10 +709,10 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void aCompletionMarkerBeforeTheMinimumFailsClosed() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
-        LearningLandscape saffron = landscape(SAFFRON_ID, "Saffron");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape saffron = landscape(SAFFRON_ID, "Saffron");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -722,7 +722,7 @@ class CurriculumPersonalizationPlannerTest {
                         2,
                         3,
                         landscapes(COBALT_ID, EMBER_ID, SAFFRON_ID)))));
-        List<LearningLandscape> landscapes = List.of(root, cobalt, ember, saffron);
+        List<SkillLandscape> landscapes = List.of(root, cobalt, ember, saffron);
         PersonalizationPlan eligible = CurriculumPersonalizationPlanner.plan(
                 ROOT_ID,
                 landscapes,
@@ -742,12 +742,12 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void dynamicInstancesRequireIndependentCompletionActions() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("band-one", "Band One"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("band-two", "Band Two"));
@@ -770,7 +770,7 @@ class CurriculumPersonalizationPlannerTest {
                                 0,
                                 1,
                                 filtersForSelectedLandscapes("group-landscape")))));
-        List<LearningLandscape> landscapes = List.of(root, cobalt, ember);
+        List<SkillLandscape> landscapes = List.of(root, cobalt, ember);
         Map.Entry<String, Map<String, Object>> cobaltSelected =
                 entry(COBALT_ID, true, null);
         Map.Entry<String, Map<String, Object>> emberSelected =
@@ -809,11 +809,11 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void staleCompletionFromAnEarlierFlowShapeDoesNotCloseTheCurrentGroup() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
-        LearningLandscape saffron = landscape(SAFFRON_ID, "Saffron");
-        List<LearningLandscape> landscapes = List.of(root, cobalt, ember, saffron);
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape saffron = landscape(SAFFRON_ID, "Saffron");
+        List<SkillLandscape> landscapes = List.of(root, cobalt, ember, saffron);
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -852,10 +852,10 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rootNamespacesIdenticalValueAndCompletionOptionsAndCompletionState() {
-        LearningLandscape firstRoot = landscape(ROOT_ID, "Orbit");
-        LearningLandscape secondRoot = landscape(ALTERNATE_ROOT_ID, "Nova");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape firstRoot = landscape(ROOT_ID, "Orbit");
+        SkillLandscape secondRoot = landscape(ALTERNATE_ROOT_ID, "Nova");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
         firstRoot.setPersonalizationFlow(flow(stage(
                 "stage-shared",
                 1,
@@ -874,7 +874,7 @@ class CurriculumPersonalizationPlannerTest {
                         0,
                         2,
                         landscapes(COBALT_ID, EMBER_ID)))));
-        List<LearningLandscape> landscapes =
+        List<SkillLandscape> landscapes =
                 List.of(firstRoot, secondRoot, cobalt, ember);
 
         PersonalizationPlan firstPlan =
@@ -903,8 +903,8 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsAResolverThatReturnsALandscapeWithAnotherIdentity() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape wrong = landscape(EMBER_ID, "Ember");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape wrong = landscape(EMBER_ID, "Ember");
         root.setPersonalizationFlow(flow(stage(
                 "stage-shared",
                 1,
@@ -927,10 +927,10 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void doesNotOfferAlreadySelectedLandscapesWhileTheMinimumIsStillUnmet() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
-        LearningLandscape saffron = landscape(SAFFRON_ID, "Saffron");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape saffron = landscape(SAFFRON_ID, "Saffron");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -961,10 +961,10 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void arbitraryGoalContainsAndRequiresEdgesDoNotChangeExplicitFlowOptions() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
-        LearningLandscape graphOnly = landscape(SAFFRON_ID, "Saffron");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape graphOnly = landscape(SAFFRON_ID, "Saffron");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -974,7 +974,7 @@ class CurriculumPersonalizationPlannerTest {
                         1,
                         2,
                         landscapes(COBALT_ID, EMBER_ID)))));
-        List<LearningLandscape> authoredLandscapes =
+        List<SkillLandscape> authoredLandscapes =
                 List.of(root, cobalt, ember, graphOnly);
 
         PersonalizationPlan beforeGraphEdges = CurriculumPersonalizationPlanner.plan(
@@ -1006,9 +1006,9 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void rejectsAnExistingLandscapeSelectionAboveTheAuthoredMaximum() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
-        LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
-        LearningLandscape ember = landscape(EMBER_ID, "Ember");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
         root.setPersonalizationFlow(flow(stage(
                 "stage-landscape",
                 1,
@@ -1033,7 +1033,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void offersAuthoredScopeValuesIndependentlyFromLandscapeFilters() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"),
@@ -1093,7 +1093,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void recognizesConfiguredScopeValueAlongsideIndependentFilter() {
-        LearningLandscape root = landscape(
+        SkillLandscape root = landscape(
                 ROOT_ID,
                 "Orbit",
                 filter("dial-a", "Dial A"),
@@ -1129,7 +1129,7 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void migrationCompletionSuppressesNewScopeChoiceUntilExplicitReopen() {
-        LearningLandscape root = landscape(ROOT_ID, "Orbit");
+        SkillLandscape root = landscape(ROOT_ID, "Orbit");
         root.setPersonalizationFlow(flow(stage(
                 "stage-entry-scope",
                 1,
@@ -1181,11 +1181,11 @@ class CurriculumPersonalizationPlannerTest {
 
     @Test
     void canonicalizesOnlyAgainstTheDeclaringLandscapeAndPreservesAuthoredSpelling() {
-        LearningLandscape cobalt = landscape(
+        SkillLandscape cobalt = landscape(
                 COBALT_ID,
                 "Cobalt",
                 filter("band-one", "Band One"));
-        LearningLandscape ember = landscape(
+        SkillLandscape ember = landscape(
                 EMBER_ID,
                 "Ember",
                 filter("band-two", "Band Two"));
@@ -1200,11 +1200,11 @@ class CurriculumPersonalizationPlannerTest {
                 .isNull();
     }
 
-    private static LearningLandscape landscape(
+    private static SkillLandscape landscape(
             String id,
             String subject,
             LandscapeFilter... filters) {
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(id);
         landscape.setSubject(subject);
         landscape.setFilters(List.of(filters));

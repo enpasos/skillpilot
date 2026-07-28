@@ -16,7 +16,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeService;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
@@ -78,18 +78,18 @@ class LearnerPersonalizationMutationContractTest {
         when(learnerRepository.save(any(Learner.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
-        LearningLandscape rootLandscape = landscape(
+        SkillLandscape rootLandscape = landscape(
                 ROOT_LANDSCAPE_ID,
                 filter("Dial-A", "Dial A"),
                 filter("Dial-B", "Dial B"));
-        LearningLandscape firstLandscape = landscape(
+        SkillLandscape firstLandscape = landscape(
                 FIRST_LANDSCAPE_ID,
                 filter("Band-Mixed", "Mixed band"),
                 filter("Band-Alternate", "Alternate band"));
-        LearningLandscape secondLandscape = landscape(
+        SkillLandscape secondLandscape = landscape(
                 SECOND_LANDSCAPE_ID,
                 filter("Mode-Stable", "Stable mode"));
-        LearningLandscape filterlessLandscape = landscape(FILTERLESS_LANDSCAPE_ID);
+        SkillLandscape filterlessLandscape = landscape(FILTERLESS_LANDSCAPE_ID);
         rootLandscape.setPersonalizationFlow(personalizationFlow());
 
         when(landscapeService.getById(ROOT_LANDSCAPE_ID)).thenReturn(rootLandscape);
@@ -149,7 +149,7 @@ class LearnerPersonalizationMutationContractTest {
 
     @Test
     void mixedCaseRestrictionPersistsTheDeclaringLandscapesCanonicalFilterId() throws Exception {
-        LearningLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
         PersonalizationOptionSource mixedCaseRestriction =
                 landscapeFilters(FIRST_LANDSCAPE_ID);
         mixedCaseRestriction.setFilterIds(List.of("bAnD-mIxEd"));
@@ -243,7 +243,7 @@ class LearnerPersonalizationMutationContractTest {
 
     @Test
     void explicitCompletionPersistsOnlyFlowStateAndCannotBeReplayed() throws Exception {
-        LearningLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
         root.setPersonalizationFlow(flow(stage(
                 "stage-optional",
                 1,
@@ -304,8 +304,8 @@ class LearnerPersonalizationMutationContractTest {
     @Test
     void rejectsValueAndCompletionOptionsFromAnotherRootAndIgnoresItsCompletionState()
             throws Exception {
-        LearningLandscape firstRoot = landscapeService.getById(ROOT_LANDSCAPE_ID);
-        LearningLandscape secondRoot = landscape(ALTERNATE_ROOT_LANDSCAPE_ID);
+        SkillLandscape firstRoot = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        SkillLandscape secondRoot = landscape(ALTERNATE_ROOT_LANDSCAPE_ID);
         PersonalizationFlow sharedFlow = flow(stage(
                 "stage-shared",
                 1,
@@ -427,10 +427,10 @@ class LearnerPersonalizationMutationContractTest {
                 .orElseThrow();
     }
 
-    private static LearningLandscape landscape(
+    private static SkillLandscape landscape(
             String id,
             LandscapeFilter... filters) {
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(id);
         landscape.setSubject(id);
         landscape.setFilters(List.of(filters));

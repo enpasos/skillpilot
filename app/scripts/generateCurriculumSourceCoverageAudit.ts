@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import type { ApplicabilityEvidence } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
@@ -94,10 +94,10 @@ interface SurrogateEvidenceEntry {
 type CoverageReport = ReturnType<typeof buildApplicabilityCompilation>['reports'][number]
 type CoverageGoalReport = CoverageReport['goals'][number]
 
-function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {
+function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
-  return JSON.parse(readFileSync(absolutePath, 'utf8')) as LearningLandscape
+  return JSON.parse(readFileSync(absolutePath, 'utf8')) as SkillLandscape
 }
 
 function isMemoryGoal(goal: LearningGoal): boolean {

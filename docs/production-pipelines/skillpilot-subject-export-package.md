@@ -2,7 +2,7 @@
 
 This pipeline builds a reproducible legacy subject-export ZIP artifact for one SkillPilot subject landscape. It is a validated publication and roundtrip carrier, but it is not yet a `full-standalone-v1` package and must not be presented as the sole runtime input for SkillPilot.
 
-The long-term dual-release target, including the standalone JSON runtime contract, the paired FWU-ontology artifact, and their mandatory equivalence proof, is described in [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
+The long-term dual-release target, including the standalone JSON runtime contract, the paired FWU-ontology artifact, and their mandatory equivalence proof, is described in [Dual Curriculum Package Releases](../concept/skill-graph/dual-curriculum-package-releases.md).
 
 The current implementation checkpoint and remaining roadmap are tracked in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
 

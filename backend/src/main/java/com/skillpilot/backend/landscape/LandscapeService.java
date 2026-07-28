@@ -101,9 +101,9 @@ public class LandscapeService {
     private static final java.util.regex.Pattern FILENAME_PATTERN = java.util.regex.Pattern.compile(
             "^([A-Z]{2})_([A-Z]{3})_([A-Z])_([A-Z0-9]+)_([A-Z0-9]+)(?:_([A-Z0-9]+))?\\.([a-z]{2})\\.json$");
 
-    private volatile List<LearningLandscape> cachedLandscapes = Collections.emptyList();
-    private volatile Map<String, LearningLandscape> cachedById = Collections.emptyMap();
-    private volatile Map<String, LearningLandscape> cachedByLegacyId = Collections.emptyMap();
+    private volatile List<SkillLandscape> cachedLandscapes = Collections.emptyList();
+    private volatile Map<String, SkillLandscape> cachedById = Collections.emptyMap();
+    private volatile Map<String, SkillLandscape> cachedByLegacyId = Collections.emptyMap();
     private volatile Map<String, String> goalIdToLandscapeId = Collections.emptyMap();
     private volatile Map<String, String> sourceLandscapeJurisdictionById = Collections.emptyMap();
     private volatile Map<String, Map<String, Set<String>>> sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
@@ -174,12 +174,12 @@ public class LandscapeService {
                 packageState.mappingState().mappings().size());
     }
 
-    public List<LearningLandscape> getAll() {
+    public List<SkillLandscape> getAll() {
         ensureFresh();
         return cachedLandscapes;
     }
 
-    public LearningLandscape getById(String landscapeId) {
+    public SkillLandscape getById(String landscapeId) {
         ensureFresh();
         return cachedById.get(landscapeId);
     }
@@ -222,7 +222,7 @@ public class LandscapeService {
         String landscapeId = goalIdToLandscapeId.get(goalId);
         if (landscapeId == null)
             return null;
-        LearningLandscape landscape = cachedById.get(landscapeId);
+        SkillLandscape landscape = cachedById.get(landscapeId);
         if (landscape == null || landscape.getGoals() == null)
             return null;
         return landscape.getGoals().stream()
@@ -231,21 +231,21 @@ public class LandscapeService {
                 .orElse(null);
     }
 
-    public List<LearningLandscape> getClosure(String rootId) {
+    public List<SkillLandscape> getClosure(String rootId) {
         ensureFresh();
         return getClosure(rootId, "de");
     }
 
-    public List<LearningLandscape> getClosure(String rootId, String lang) {
+    public List<SkillLandscape> getClosure(String rootId, String lang) {
         ensureFresh();
-        LearningLandscape root = getById(rootId);
+        SkillLandscape root = getById(rootId);
         if (root == null) {
             return Collections.emptyList();
         }
 
         // Keep traversal insertion order so frontend module lists remain stable and
         // follow curriculum authoring order (root contains order).
-        Map<String, LearningLandscape> closure = new LinkedHashMap<>();
+        Map<String, SkillLandscape> closure = new LinkedHashMap<>();
         collectClosure(root, closure);
 
         // Localize the results
@@ -254,12 +254,12 @@ public class LandscapeService {
                 .collect(Collectors.toList());
     }
 
-    private LearningLandscape localize(LearningLandscape original, String lang) {
+    private SkillLandscape localize(SkillLandscape original, String lang) {
         if (original == null)
             return null;
         boolean english = "en".equals(lang);
 
-        LearningLandscape copy = new LearningLandscape();
+        SkillLandscape copy = new SkillLandscape();
         copy.setSchema(original.getSchema());
         copy.setLandscapeFormatVersion(original.getLandscapeFormatVersion());
         copy.setLandscapeId(original.getLandscapeId());
@@ -342,7 +342,7 @@ public class LandscapeService {
         return copy;
     }
 
-    private boolean isCanonicalGymnasiumLandscape(LearningLandscape landscape) {
+    private boolean isCanonicalGymnasiumLandscape(SkillLandscape landscape) {
         if (landscape == null) {
             return false;
         }
@@ -667,7 +667,7 @@ public class LandscapeService {
         return copy;
     }
 
-    private void collectClosure(LearningLandscape current, Map<String, LearningLandscape> visited) {
+    private void collectClosure(SkillLandscape current, Map<String, SkillLandscape> visited) {
         if (current == null || visited.containsKey(current.getLandscapeId())) {
             return;
         }
@@ -681,7 +681,7 @@ public class LandscapeService {
         }
     }
 
-    private void collectReferences(List<String> refs, Map<String, LearningLandscape> visited) {
+    private void collectReferences(List<String> refs, Map<String, SkillLandscape> visited) {
         if (refs == null)
             return;
         for (String ref : refs) {
@@ -714,9 +714,9 @@ public class LandscapeService {
             return;
         }
 
-        List<LearningLandscape> loaded = new ArrayList<>();
-        Map<String, LearningLandscape> byId = new HashMap<>();
-        Map<String, LearningLandscape> byLegacyId = new HashMap<>();
+        List<SkillLandscape> loaded = new ArrayList<>();
+        Map<String, SkillLandscape> byId = new HashMap<>();
+        Map<String, SkillLandscape> byLegacyId = new HashMap<>();
         Map<String, String> goalIndex = new HashMap<>();
         long maxLastModified = 0L;
         boolean criticalParseError = false;
@@ -753,7 +753,7 @@ public class LandscapeService {
                         continue;
                     }
 
-                    LearningLandscape landscape = objectMapper.treeToValue(root, LearningLandscape.class);
+                    SkillLandscape landscape = objectMapper.treeToValue(root, SkillLandscape.class);
                     if (!StringUtils.hasText(landscape.getLandscapeId())) {
                         log.warn("Skipping landscape without id: {}", file);
                         continue;
@@ -820,7 +820,7 @@ public class LandscapeService {
             return;
         }
 
-        for (LearningLandscape l : loaded) {
+        for (SkillLandscape l : loaded) {
             byId.put(l.getLandscapeId(), l);
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
@@ -849,14 +849,14 @@ public class LandscapeService {
         log.info("Loaded {} landscapes and {} goals from {}", loaded.size(), goalIndex.size(), dir);
     }
 
-    private long loadArchivedSourceLandscapes(Path dir, List<LearningLandscape> loaded) {
+    private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
         Path registryFile = dir.resolve(SOURCE_LANDSCAPE_REGISTRY_PATH);
         if (!Files.isRegularFile(registryFile)) {
             return 0L;
         }
         long maxLastModified = 0L;
         Set<String> loadedLandscapeIds = loaded.stream()
-                .map(LearningLandscape::getLandscapeId)
+                .map(SkillLandscape::getLandscapeId)
                 .filter(StringUtils::hasText)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         try {
@@ -887,7 +887,7 @@ public class LandscapeService {
 
                 Path snapshotFile = resolveRegistryRepoPath(dir, archiveSourcePath);
                 if (!Files.isRegularFile(snapshotFile)) {
-                    LearningLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
+                    SkillLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
                             entry,
                             dir,
                             snapshotFile,
@@ -911,7 +911,7 @@ public class LandscapeService {
                 }
 
                 try {
-                    LearningLandscape landscape = readArchivedSourceLandscape(snapshotFile, entry, dir, landscapeId);
+                    SkillLandscape landscape = readArchivedSourceLandscape(snapshotFile, entry, dir, landscapeId);
                     if (landscape == null) {
                         continue;
                     }
@@ -940,7 +940,7 @@ public class LandscapeService {
         return maxLastModified;
     }
 
-    private LearningLandscape readArchivedSourceLandscape(
+    private SkillLandscape readArchivedSourceLandscape(
             Path snapshotFile,
             JsonNode registryEntry,
             Path curriculaDir,
@@ -948,7 +948,7 @@ public class LandscapeService {
         if (isJsonLikePath(snapshotFile)) {
             try {
                 JsonNode snapshotRoot = objectMapper.readTree(snapshotFile.toFile());
-                LearningLandscape sourceExtractionLandscape = sourceExtractionToLandscape(snapshotRoot, expectedLandscapeId);
+                SkillLandscape sourceExtractionLandscape = sourceExtractionToLandscape(snapshotRoot, expectedLandscapeId);
                 if (sourceExtractionLandscape != null) {
                     return sourceExtractionLandscape;
                 }
@@ -962,14 +962,14 @@ public class LandscapeService {
                     return null;
                 }
 
-                return objectMapper.treeToValue(snapshotRoot, LearningLandscape.class);
+                return objectMapper.treeToValue(snapshotRoot, SkillLandscape.class);
             } catch (Exception e) {
                 log.error("Failed to read archived source landscape {}", snapshotFile, e);
                 return null;
             }
         }
 
-        LearningLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
+        SkillLandscape sourceExtractionLandscape = findSourceExtractionLandscape(
                 registryEntry,
                 curriculaDir,
                 snapshotFile,
@@ -987,7 +987,7 @@ public class LandscapeService {
         return filename.endsWith(".json") || filename.endsWith(".json.snapshot");
     }
 
-    private LearningLandscape findSourceExtractionLandscape(
+    private SkillLandscape findSourceExtractionLandscape(
             JsonNode registryEntry,
             Path curriculaDir,
             Path archiveSourceFile,
@@ -1017,7 +1017,7 @@ public class LandscapeService {
                         .collect(Collectors.toList());
                 for (Path candidate : candidates) {
                     try {
-                        LearningLandscape landscape = sourceExtractionToLandscape(
+                        SkillLandscape landscape = sourceExtractionToLandscape(
                                 objectMapper.readTree(candidate.toFile()),
                                 expectedLandscapeId);
                         if (landscape != null) {
@@ -1034,7 +1034,7 @@ public class LandscapeService {
         return null;
     }
 
-    private LearningLandscape sourceExtractionToLandscape(JsonNode root, String expectedLandscapeId) {
+    private SkillLandscape sourceExtractionToLandscape(JsonNode root, String expectedLandscapeId) {
         if (root == null || !root.isObject() || !root.hasNonNull("sourceLandscapeId")
                 || !root.has("sourceGoals") || !root.get("sourceGoals").isArray()) {
             return null;
@@ -1044,7 +1044,7 @@ public class LandscapeService {
             return null;
         }
 
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(sourceLandscapeId);
         landscape.setTitle(readRegistryText(root, "title"));
         landscape.setSubject(readRegistryText(root, "subject"));
@@ -1122,7 +1122,7 @@ public class LandscapeService {
     public LandscapeOverviewResponse getOverview(String lang, boolean includeCompatibility) {
         ensureFresh();
         Map<String, LandscapeSummary> summaryById = new LinkedHashMap<>();
-        for (LearningLandscape ll : cachedLandscapes) {
+        for (SkillLandscape ll : cachedLandscapes) {
             summaryById.put(ll.getLandscapeId(), toOverviewSummary(ll, lang));
         }
         for (LandscapeSummary archiveSummary : compatibilityArchiveSummariesById.values()) {
@@ -1154,7 +1154,7 @@ public class LandscapeService {
                     .filter(s -> includeCompatibility || (!s.isCompatibilityOnly() && !s.isLegacyHiddenByDefault()))
                     .filter(s -> !referencedIds.contains(s.getCurriculumId()))
                     .filter(s -> {
-                        LearningLandscape landscape = cachedById.get(s.getCurriculumId());
+                        SkillLandscape landscape = cachedById.get(s.getCurriculumId());
                         return landscape == null || !isModuleLandscape(landscape);
                     })
                     .collect(Collectors.toList());
@@ -1168,7 +1168,7 @@ public class LandscapeService {
 
     private Set<String> getReferencedLandscapeIds() {
         Set<String> referenced = new HashSet<>();
-        for (LearningLandscape l : cachedLandscapes) {
+        for (SkillLandscape l : cachedLandscapes) {
             if (l.getGoals() == null)
                 continue;
             for (LearningGoal g : l.getGoals()) {
@@ -1180,7 +1180,7 @@ public class LandscapeService {
                             // points to the ROOT goal of that other landscape.
                             // This prevents false positives when two curricula share identical sub-goals
                             // (e.g. CEFR levels).
-                            LearningLandscape refLandscape = getById(refLandscapeId);
+                            SkillLandscape refLandscape = getById(refLandscapeId);
                             if (refLandscape != null) {
                                 String refRootId = getRootGoalId(refLandscape);
                                 if (ref.equals(refRootId)) {
@@ -1195,7 +1195,7 @@ public class LandscapeService {
         return referenced;
     }
 
-    private boolean isModuleLandscape(LearningLandscape landscape) {
+    private boolean isModuleLandscape(SkillLandscape landscape) {
         if (landscape == null) {
             return false;
         }
@@ -1219,7 +1219,7 @@ public class LandscapeService {
         return normalizedTitle.matches(".*\\bmodul\\b.*") || normalizedTitle.matches(".*\\bmodule\\b.*");
     }
 
-    private LearningGoal getRootGoal(LearningLandscape landscape) {
+    private LearningGoal getRootGoal(SkillLandscape landscape) {
         if (landscape == null || landscape.getGoals() == null || landscape.getGoals().isEmpty()) {
             return null;
         }
@@ -1231,7 +1231,7 @@ public class LandscapeService {
         return landscape.getGoals().get(0);
     }
 
-    private String getRootGoalId(LearningLandscape l) {
+    private String getRootGoalId(SkillLandscape l) {
         if (l.getGoals() == null || l.getGoals().isEmpty()) {
             return null;
         }
@@ -1258,7 +1258,7 @@ public class LandscapeService {
 
     public boolean isCompatibilityOnlyLandscape(String landscapeId) {
         ensureFresh();
-        LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
+        SkillLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
         if (packageBacked) {
             return landscapeId != null
                     && (Boolean.TRUE.equals(landscape != null ? landscape.getCompatibilityOnly() : null)
@@ -1273,7 +1273,7 @@ public class LandscapeService {
 
     public boolean isLegacyHiddenByDefaultLandscape(String landscapeId) {
         ensureFresh();
-        LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
+        SkillLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
         if (packageBacked) {
             return landscapeId != null
                     && Boolean.TRUE.equals(landscape != null ? landscape.getLegacyHiddenByDefault() : null);
@@ -1284,7 +1284,7 @@ public class LandscapeService {
     }
 
     private boolean isLegacyBavariaGymnasiumLandscape(String landscapeId) {
-        LearningLandscape landscape = cachedById.get(landscapeId);
+        SkillLandscape landscape = cachedById.get(landscapeId);
         if (landscape == null) {
             return false;
         }
@@ -1298,7 +1298,7 @@ public class LandscapeService {
         if (!StringUtils.hasText(landscapeId)) {
             return null;
         }
-        LearningLandscape landscape = cachedById.get(landscapeId);
+        SkillLandscape landscape = cachedById.get(landscapeId);
         if (landscape != null) {
             String jurisdiction = normalizeBundeslandCode(landscape.getRegion());
             if (jurisdiction != null) {
@@ -1845,7 +1845,7 @@ public class LandscapeService {
         }
     }
 
-    private LandscapeSummary toOverviewSummary(LearningLandscape ll, String lang) {
+    private LandscapeSummary toOverviewSummary(SkillLandscape ll, String lang) {
         String country = ll.getCountry();
         String region = ll.getRegion();
         String mappedType = ll.getSchoolType();
@@ -1939,16 +1939,16 @@ public class LandscapeService {
         }
     }
 
-    public LearningLandscape findCurriculumByTopic(String topic) {
+    public SkillLandscape findCurriculumByTopic(String topic) {
         if (topic == null || topic.isBlank()) {
             return null;
         }
 
         String[] keywords = topic.toLowerCase().split("\\s+");
-        LearningLandscape bestMatch = null;
+        SkillLandscape bestMatch = null;
         long maxScore = 0;
 
-        for (LearningLandscape l : cachedLandscapes) {
+        for (SkillLandscape l : cachedLandscapes) {
             long score = 0;
             String title = (l.getTitle() != null ? l.getTitle() : "").toLowerCase();
             String id = l.getLandscapeId().toLowerCase();
@@ -1981,16 +1981,16 @@ public class LandscapeService {
         }
 
         // Otherwise, try to find a base curriculum that contains this match
-        final LearningLandscape matchToFind = bestMatch;
+        final SkillLandscape matchToFind = bestMatch;
         for (String baseId : baseIds) {
             // Optimization: check if we have the base loaded
-            LearningLandscape base = getById(baseId);
+            SkillLandscape base = getById(baseId);
             if (base == null)
                 continue;
 
             // Check closure (includes the base itself usually, but we want to check if
             // bestMatch is in it)
-            List<LearningLandscape> closure = getClosure(baseId);
+            List<SkillLandscape> closure = getClosure(baseId);
             boolean containsMatch = closure.stream()
                     .anyMatch(l -> l.getLandscapeId().equals(matchToFind.getLandscapeId()));
 
@@ -2009,8 +2009,8 @@ public class LandscapeService {
             return Collections.emptyList();
         }
 
-        List<LearningLandscape> closure = getClosure(landscapeId);
-        LearningLandscape root = getById(landscapeId);
+        List<SkillLandscape> closure = getClosure(landscapeId);
+        SkillLandscape root = getById(landscapeId);
         if (root != null && closure.stream().noneMatch(l -> l.getLandscapeId().equals(root.getLandscapeId()))) {
             closure = new ArrayList<>(closure);
             closure.add(root);
@@ -2020,7 +2020,7 @@ public class LandscapeService {
         List<com.skillpilot.backend.api.FrontierGoal> results = new ArrayList<>();
 
         // First pass: AND logic
-        for (LearningLandscape l : closure) {
+        for (SkillLandscape l : closure) {
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
                     if (matchesQuery(g, keywords, true)) {
@@ -2032,7 +2032,7 @@ public class LandscapeService {
 
         // Second pass: OR logic (fallback if no results)
         if (results.isEmpty()) {
-            for (LearningLandscape l : closure) {
+            for (SkillLandscape l : closure) {
                 if (l.getGoals() != null) {
                     for (LearningGoal g : l.getGoals()) {
                         if (matchesQuery(g, keywords, false)) {

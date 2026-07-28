@@ -40,7 +40,7 @@ interface LearningGoal {
   contains?: string[]
 }
 
-interface LearningLandscape {
+interface SkillLandscape {
   goals: LearningGoal[]
 }
 
@@ -439,7 +439,7 @@ const buildView = ({
   }
 }
 
-const canonicalLandscape = readJson<LearningLandscape>(canonicalLandscapePath)
+const canonicalLandscape = readJson<SkillLandscape>(canonicalLandscapePath)
 const goalById = new Map(canonicalLandscape.goals.map((goal) => [goal.id, goal]))
 const parentByChild = buildParentByChild(canonicalLandscape.goals)
 const policy = readJson<DurationPolicyDocument>(durationPolicyPath)

@@ -1,7 +1,7 @@
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { ApplicabilityMap, LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { ApplicabilityMap, LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { normalizeJurisdictionCode, type KnownJurisdiction } from '../src/utils/jurisdictionMetadata'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -64,7 +64,7 @@ interface SourceLandscapeRegistryFile {
 
 interface LoadedCanonicalLandscape {
   file: string
-  landscape: LearningLandscape
+  landscape: SkillLandscape
   goalById: Map<string, LearningGoal>
   rootGoalId: string | null
 }
@@ -208,7 +208,7 @@ export interface ApplicabilityCompilationResult {
 
 function loadSupportedJurisdictions(): SupportedJurisdiction[] {
   const json = JSON.parse(readFileSync(canonicalOverviewFile, 'utf8')) as unknown
-  if (!isLearningLandscapeJson(json)) {
+  if (!isSkillLandscapeJson(json)) {
     throw new Error(`Cannot load canonical overview landscape from ${canonicalOverviewFile}.`)
   }
 
@@ -251,9 +251,9 @@ function repoRelative(file: string): string {
   return relative(repoRoot, file).replace(/\\/g, '/')
 }
 
-function isLearningLandscapeJson(value: unknown): value is LearningLandscape {
+function isSkillLandscapeJson(value: unknown): value is SkillLandscape {
   if (!value || typeof value !== 'object') return false
-  const candidate = value as Partial<LearningLandscape>
+  const candidate = value as Partial<SkillLandscape>
   return typeof candidate.landscapeId === 'string' && Array.isArray(candidate.goals)
 }
 
@@ -323,7 +323,7 @@ function loadLandscapePathIndex() {
   for (const file of files) {
     try {
       const json = JSON.parse(readFileSync(file, 'utf8')) as unknown
-      if (!isLearningLandscapeJson(json)) continue
+      if (!isSkillLandscapeJson(json)) continue
 
       const existing = pathByLandscapeId.get(json.landscapeId)
       if (!existing) {
@@ -517,7 +517,7 @@ function loadCanonicalLandscapes(): LoadedCanonicalLandscape[] {
   return getAllJsonFiles(canonicalDir)
     .sort((a, b) => a.localeCompare(b))
     .map((file) => {
-      const landscape = JSON.parse(readFileSync(file, 'utf8')) as LearningLandscape
+      const landscape = JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape
       const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
       const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
 

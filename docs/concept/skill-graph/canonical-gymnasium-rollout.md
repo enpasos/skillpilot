@@ -5,8 +5,8 @@ This document defines the stable rollout policy for converging the existing Germ
 Use this document for Gymnasium-specific target-architecture and rollout-policy decisions.  
 General goal-system semantics and projection contracts are specified separately in:
 
-- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+- `docs/concept/skill-graph/general-goal-system-and-migration.md`
+- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 
 Execution planning and current migration status belong separately in:
 
@@ -62,7 +62,7 @@ The strategic objective is not to preserve state-specific duplication forever, b
 
 For each subject, the target state is one canonical skill graph spanning the Gymnasium path from Sekundarstufe I to Abitur readiness.
 
-This canonical graph should continue to use the existing `LearningLandscape` / `LearningGoal` structure where possible, rather than introducing a completely new graph format.
+This canonical graph should continue to use the existing `SkillLandscape` / `LearningGoal` structure where possible, rather than introducing a completely new graph format.
 
 ### 2. Legacy curricula stay alive during transition
 
@@ -215,7 +215,7 @@ Explicit scope-specific composition views are also valid later steady-state arti
 
 ### Canonical landscapes
 
-New canonical landscapes should stay inside the existing `LearningLandscape` / `LearningGoal` family.
+New canonical landscapes should stay inside the existing `SkillLandscape` / `LearningGoal` family.
 
 This preserves continuity across validation, runtime consumption, and learner-state semantics.
 
@@ -364,7 +364,7 @@ This is a policy order, not a fixed sprint plan. Concrete work packages, phase p
 
 The intended end state is not one giant undifferentiated graph, but one canonical competence base with multiple views.
 
-The exact projection contract for such views is defined in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
+The exact projection contract for such views is defined in `docs/concept/skill-graph/view-projection-and-goal-placement.md`.
 
 Examples:
 

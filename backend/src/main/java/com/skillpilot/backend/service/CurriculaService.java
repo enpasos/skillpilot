@@ -14,7 +14,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -109,8 +109,8 @@ public class CurriculaService {
                     continue;
                 }
                 long totalAtomicGoals = 0;
-                List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
-                for (LearningLandscape landscape : closure) {
+                List<SkillLandscape> closure = landscapeService.getClosure(curriculumId);
+                for (SkillLandscape landscape : closure) {
                     if (landscape.getGoals() == null) {
                         continue;
                     }
@@ -179,7 +179,7 @@ public class CurriculaService {
             List<String> topLevelTopicsEn = topicSummaries.stream()
                     .map(TopicSummary::titleEn)
                     .toList();
-            LearningLandscape landscape = landscapeService.getById(curriculumId);
+            SkillLandscape landscape = landscapeService.getById(curriculumId);
             CurriculumQualityEntry qualityEntry = qualitySnapshot.byLandscapeId().get(curriculumId);
             List<CurriculumQualityOverview> subjectQuality = buildSubjectQuality(curriculumId, topLevelTopics, qualitySnapshot);
             String titleEn = null;
@@ -611,7 +611,7 @@ public class CurriculaService {
     }
 
     private Map<String, String> deriveRuntimeCompositionScope(String landscapeId, String personalCurriculumJson) {
-        LearningLandscape landscape = landscapeService.getById(landscapeId);
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
         if (landscape == null || landscape.getFrameworkId() == null || !landscape.getFrameworkId().startsWith("canonical-gymnasium")) {
             return Collections.emptyMap();
         }
@@ -832,7 +832,7 @@ public class CurriculaService {
                 case "landscapeEntry" -> {
                     Object landscapeId = node.get("landscapeId");
                     if (landscapeId instanceof String landscapeIdText && !landscapeIdText.isBlank()) {
-                        LearningLandscape landscape = landscapeService.getById(landscapeIdText);
+                        SkillLandscape landscape = landscapeService.getById(landscapeIdText);
                         if (landscape != null && landscape.getGoals() != null) {
                             landscape.getGoals().stream()
                                     .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
@@ -848,7 +848,7 @@ public class CurriculaService {
     }
 
     private boolean isCanonicalGymnasiumLandscape(String curriculumId) {
-        LearningLandscape landscape = landscapeService.getById(curriculumId);
+        SkillLandscape landscape = landscapeService.getById(curriculumId);
         if (landscape == null) {
             return false;
         }
@@ -992,8 +992,8 @@ public class CurriculaService {
         }
 
         // This is expensive so we only do it on cache miss
-        List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
-        for (LearningLandscape l : closure) {
+        List<SkillLandscape> closure = landscapeService.getClosure(curriculumId);
+        for (SkillLandscape l : closure) {
             if (l.getLandscapeId().equals(landscapeId)) {
                 return true;
             }
@@ -1097,7 +1097,7 @@ public class CurriculaService {
         if (landscapeService.isCompatibilityOnlyLandscape(curriculumId)) {
             return landscapeService.getCompatibilityArchiveTopics(curriculumId);
         }
-        LearningLandscape landscape = landscapeService.getById(curriculumId);
+        SkillLandscape landscape = landscapeService.getById(curriculumId);
         if (landscape == null || landscape.getGoals() == null || landscape.getGoals().isEmpty()) {
             return java.util.Collections.emptyList();
         }
