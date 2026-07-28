@@ -18111,6 +18111,61 @@
       }
     },
     {
+      "entryId": "view.node-projection-role",
+      "artifactRole": "composition-view",
+      "pathPattern": "/rootNodes/**/projectionRole",
+      "classification": "scalar",
+      "cardinality": {
+        "presence": "optional"
+      },
+      "dataType": {
+        "jsonTypes": [
+          "string"
+        ],
+        "format": "none"
+      },
+      "languageSemantics": {
+        "mode": "none"
+      },
+      "presenceSemantics": {
+        "missing": "distinct",
+        "null": "forbidden",
+        "empty": "distinct",
+        "default": {
+          "mode": "none"
+        }
+      },
+      "dynamicMapKeys": {
+        "policy": "forbidden",
+        "keyNormalization": "none"
+      },
+      "normalization": {
+        "objectKeyOrder": "unicode-code-point",
+        "arrayOrder": "not-applicable",
+        "duplicateItems": "not-applicable",
+        "unicode": "preserve-code-points",
+        "pathHandling": "not-a-path"
+      },
+      "dependencySemantics": {
+        "mode": "none"
+      },
+      "rdfMapping": {
+        "strategy": "skillpilot-profile",
+        "construction": {
+          "subjectTemplate": "{recordIri}",
+          "predicate": "sp:viewNodeProjectionRole",
+          "objectMapping": "typed-literal",
+          "datatype": "xsd:string"
+        }
+      },
+      "reverseMapping": {
+        "mode": "scalar-literal",
+        "roundtrip": "exact",
+        "onMissing": "preserve-missing",
+        "onAmbiguous": "error"
+      }
+    },
+    {
       "entryId": "view.scope",
       "artifactRole": "composition-view",
       "pathPattern": "/scope",

@@ -167,7 +167,7 @@ TRUSTED_JSON_RELEASE_PROFILE = {
     "packagePath": "support/json/schemas/profiles/full-standalone-v1.profile.json",
     "mediaType": "application/json",
     "bytes": 16926,
-    "sha256": "30675f93fba5a83947512c2471737cd6641cc553143a970652f8ea953b8656aa",
+    "sha256": "27e4370dd7eecf4c308265fbad08d638976853a0c1c0b96d3c58b91d87733543",
     "schemaTrustField": "trustedContractSchemas",
     "trustedSchemaCount": 22,
 }
@@ -1559,7 +1559,7 @@ def run_mutations(fixture: dict[str, Any], schemas: dict[str, dict[str, Any]], v
     case("manifest-source-release-profile-record-substitution", "MANIFEST_EXTERNAL_SOURCE_JSON", substitute_source_release_profile_record)
     case("manifest-semantic-contract-hash", "MANIFEST_SEMANTIC_CONTRACT_BINDING", bind_source_hash_mismatch)
     case("manifest-semantic-index-record", "MANIFEST_SEMANTIC_CONTENT_INDEX", lambda value: value["manifest"]["semanticContentIndex"].update({"sha256": "f" * 64}))
-    case("manifest-field-registry-count", "MANIFEST_FIELD_REGISTRY_COVERAGE", lambda value: value["manifest"]["semanticContentIndex"].update({"fieldRegistryEntryCount": 453}))
+    case("manifest-field-registry-count", "MANIFEST_FIELD_REGISTRY_COVERAGE", lambda value: value["manifest"]["semanticContentIndex"].update({"fieldRegistryEntryCount": 455}))
     case("manifest-release-support-missing", "MANIFEST_RELEASE_SUPPORT", remove_release_support)
     case("manifest-release-support-duplicate-target", "MANIFEST_RELEASE_SUPPORT", duplicate_support_target)
     case("manifest-release-support-duplicate-id", "MANIFEST_RELEASE_SUPPORT", lambda value: value["manifest"]["releaseSupport"][1].update({"supportId": value["manifest"]["releaseSupport"][0]["supportId"]}))

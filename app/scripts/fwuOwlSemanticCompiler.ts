@@ -1187,7 +1187,7 @@ export const compileFwuOwlSemantics = (options: {
   packageProfile: JsonObject
 }): FwuOwlCompilationResult => {
   const registry = new FwuOwlFieldRegistry(options.registryValue)
-  if (registry.registryId !== 'skillpilot-fwu-field-semantics-v1' || registry.entries.length !== 454) {
+  if (registry.registryId !== 'skillpilot-fwu-field-semantics-v1' || registry.entries.length !== 456) {
     fail(`Unsupported field registry ${registry.registryId} with ${registry.entries.length} entries.`)
   }
   const vocabulary = derivePackageVocabularyDeclarations(
