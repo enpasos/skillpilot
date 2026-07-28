@@ -35,6 +35,11 @@ public class CompositionViewService {
     private static final String COURSE_PROFILE_GK = "GK";
     private static final String COURSE_PROFILE_LK = "LK";
 
+    private enum ProjectionRole {
+        TARGET,
+        PREREQUISITE_ONLY
+    }
+
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final PackageCompositionViewState packageState;
@@ -398,7 +403,9 @@ public class CompositionViewService {
 
     private Map<String, Object> readViewFile(Path path) {
         try {
-            return objectMapper.readValue(path.toFile(), MAP_TYPE);
+            Map<String, Object> view = objectMapper.readValue(path.toFile(), MAP_TYPE);
+            validateProjectionRoles(view.get("rootNodes"), path, "rootNodes");
+            return view;
         } catch (IOException e) {
             throw new IllegalStateException("Failed to parse composition view " + path, e);
         }
@@ -655,10 +662,70 @@ public class CompositionViewService {
                 first.put("children", mergeNodeMaps(children));
             } else {
                 first.remove("children");
+                applyTargetDominantProjectionRole(first, group);
             }
             merged.add(Collections.unmodifiableMap(first));
         }
         return Collections.unmodifiableList(merged);
+    }
+
+    private static void validateProjectionRoles(Object rawNodes, Path path, String nodePath) {
+        List<Map<String, Object>> nodes = asNodeList(rawNodes);
+        for (int index = 0; index < nodes.size(); index += 1) {
+            Map<String, Object> node = nodes.get(index);
+            String kind = asString(node.get("kind"));
+            String currentPath = nodePath + "[" + index + "]";
+            if (supportsProjectionRole(kind)) {
+                projectionRole(node, path, currentPath);
+            } else if ("landscapeEntry".equals(kind) && node.containsKey("projectionRole")) {
+                throw new IllegalStateException(
+                        "projectionRole is only supported on canonicalSubtree and goalEntry nodes in composition view "
+                                + path + " " + currentPath);
+            }
+            if ("structure".equals(kind)) {
+                validateProjectionRoles(node.get("children"), path, currentPath + ".children");
+            }
+        }
+    }
+
+    private static void applyTargetDominantProjectionRole(
+            Map<String, Object> merged,
+            List<Map<String, Object>> sources) {
+        String kind = asString(merged.get("kind"));
+        if (!supportsProjectionRole(kind)) {
+            return;
+        }
+        boolean hasTarget = false;
+        boolean hasPrerequisiteOnly = false;
+        for (Map<String, Object> source : sources) {
+            ProjectionRole role = projectionRole(source, null, nodeSignature(source));
+            hasTarget |= role == ProjectionRole.TARGET;
+            hasPrerequisiteOnly |= role == ProjectionRole.PREREQUISITE_ONLY;
+        }
+        if (hasTarget && hasPrerequisiteOnly) {
+            merged.put("projectionRole", "target");
+        }
+    }
+
+    private static ProjectionRole projectionRole(Map<String, Object> node, Path path, String nodePath) {
+        if (!node.containsKey("projectionRole")) {
+            return ProjectionRole.TARGET;
+        }
+        Object rawRole = node.get("projectionRole");
+        if ("target".equals(rawRole)) {
+            return ProjectionRole.TARGET;
+        }
+        if ("prerequisiteOnly".equals(rawRole)) {
+            return ProjectionRole.PREREQUISITE_ONLY;
+        }
+        String location = path == null ? nodePath : path + " " + nodePath;
+        throw new IllegalStateException("Unsupported projectionRole in composition view "
+                + location + ": " + rawRole);
+    }
+
+    private static boolean supportsProjectionRole(String kind) {
+        return "canonicalSubtree".equals(kind)
+                || "goalEntry".equals(kind);
     }
 
     private static String nodeSignature(Map<String, Object> node) {

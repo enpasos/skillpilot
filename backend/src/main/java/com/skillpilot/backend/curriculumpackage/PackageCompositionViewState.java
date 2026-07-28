@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -23,6 +24,11 @@ public final class PackageCompositionViewState {
 
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
     };
+
+    private enum ProjectionRole {
+        TARGET,
+        PREREQUISITE_ONLY
+    }
 
     private final String generationSha256;
     private final Set<String> managedLandscapeIds;
@@ -310,14 +316,14 @@ public final class PackageCompositionViewState {
             throw failure("Composition view rootNodes is not an array: " + descriptor.viewId());
         }
         Set<String> structureIds = new HashSet<>();
-        Set<String> visibleGoalIds = new HashSet<>();
+        Map<String, Set<ProjectionRole>> visibleGoalRoles = new HashMap<>();
         validateNodes(
                 rootNodes,
                 descriptor.viewId(),
                 descriptor.landscapeId(),
                 graph,
                 structureIds,
-                visibleGoalIds,
+                visibleGoalRoles,
                 "rootNodes");
         return deepFreezeMap(document);
     }
@@ -328,7 +334,7 @@ public final class PackageCompositionViewState {
             String landscapeId,
             LandscapeGraph graph,
             Set<String> structureIds,
-            Set<String> visibleGoalIds,
+            Map<String, Set<ProjectionRole>> visibleGoalRoles,
             String path) {
         for (int index = 0; index < nodes.size(); index += 1) {
             Object raw = nodes.get(index);
@@ -354,10 +360,12 @@ public final class PackageCompositionViewState {
                             landscapeId,
                             graph,
                             structureIds,
-                            visibleGoalIds,
+                            visibleGoalRoles,
                             path + "[" + index + "].children");
                 }
                 case "canonicalSubtree", "goalEntry" -> {
+                    ProjectionRole projectionRole = projectionRole(
+                            node, viewId, path + "[" + index + "]");
                     String goalId = requiredNodeText(node, "goalId", viewId, path + "[" + index + "]");
                     if (!graph.isGoalVisibleFrom(landscapeId, goalId)) {
                         throw failure("Composition view references an unknown or foreign goal: "
@@ -371,13 +379,14 @@ public final class PackageCompositionViewState {
                             throw failure("Composition view subtree crosses its landscape closure: "
                                     + viewId + " -> " + visibleGoalId);
                         }
-                        if (!visibleGoalIds.add(visibleGoalId)) {
-                            throw failure("Composition view exposes a goal more than once: "
-                                    + viewId + " -> " + visibleGoalId);
-                        }
+                        recordVisibleGoal(visibleGoalRoles, visibleGoalId, projectionRole, viewId);
                     }
                 }
                 case "landscapeEntry" -> {
+                    if (node.containsKey("projectionRole")) {
+                        throw failure("projectionRole is only supported on canonicalSubtree and goalEntry nodes: "
+                                + viewId + " " + path + "[" + index + "]");
+                    }
                     String referencedLandscapeId = requiredNodeText(
                             node, "landscapeId", viewId, path + "[" + index + "]");
                     if (!graph.isLandscapeVisibleFrom(landscapeId, referencedLandscapeId)) {
@@ -390,10 +399,7 @@ public final class PackageCompositionViewState {
                                 + viewId + " -> " + referencedLandscapeId);
                     }
                     for (String visibleGoalId : landscapeGoals) {
-                        if (!visibleGoalIds.add(visibleGoalId)) {
-                            throw failure("Composition view exposes a goal more than once: "
-                                    + viewId + " -> " + visibleGoalId);
-                        }
+                        recordVisibleGoal(visibleGoalRoles, visibleGoalId, ProjectionRole.TARGET, viewId);
                     }
                 }
                 default -> throw failure("Unsupported composition view node kind " + kind
@@ -483,7 +489,7 @@ public final class PackageCompositionViewState {
                 offering.landscapeId(),
                 graph,
                 new HashSet<>(),
-                new HashSet<>(),
+                new HashMap<>(),
                 "rootNodes");
         return new ResolvedView(
                 offering.offeringId(),
@@ -533,9 +539,9 @@ public final class PackageCompositionViewState {
         List<Map<String, Object>> merged = new ArrayList<>();
         for (List<Map<String, Object>> group : grouped.values()) {
             Map<String, Object> first = new LinkedHashMap<>(group.getFirst());
-            Map<String, Object> expectedMetadata = withoutChildren(first);
+            Map<String, Object> expectedMetadata = withoutMergeFields(first);
             for (Map<String, Object> candidate : group) {
-                if (!withoutChildren(candidate).equals(expectedMetadata)) {
+                if (!withoutMergeFields(candidate).equals(expectedMetadata)) {
                     throw failure("Conflicting node metadata while merging composition views: "
                             + nodeSignature(first));
                 }
@@ -547,16 +553,74 @@ public final class PackageCompositionViewState {
                 first.put("children", mergeNodes(children));
             } else {
                 first.remove("children");
+                applyTargetDominantProjectionRole(first, group);
             }
             merged.add(deepFreezeMap(first));
         }
         return List.copyOf(merged);
     }
 
-    private static Map<String, Object> withoutChildren(Map<String, Object> node) {
+    private static Map<String, Object> withoutMergeFields(Map<String, Object> node) {
         Map<String, Object> metadata = new LinkedHashMap<>(node);
         metadata.remove("children");
+        if (supportsProjectionRole(String.valueOf(node.getOrDefault("kind", "")))) {
+            metadata.remove("projectionRole");
+        }
         return metadata;
+    }
+
+    private static void applyTargetDominantProjectionRole(
+            Map<String, Object> merged,
+            List<Map<String, Object>> sources) {
+        String kind = String.valueOf(merged.getOrDefault("kind", ""));
+        if (!supportsProjectionRole(kind)) {
+            return;
+        }
+        boolean hasTarget = false;
+        boolean hasPrerequisiteOnly = false;
+        for (Map<String, Object> source : sources) {
+            ProjectionRole role = projectionRole(source, nodeSignature(source), "merge");
+            hasTarget |= role == ProjectionRole.TARGET;
+            hasPrerequisiteOnly |= role == ProjectionRole.PREREQUISITE_ONLY;
+        }
+        if (hasTarget && hasPrerequisiteOnly) {
+            merged.put("projectionRole", "target");
+        }
+    }
+
+    private static boolean supportsProjectionRole(String kind) {
+        return "canonicalSubtree".equals(kind)
+                || "goalEntry".equals(kind);
+    }
+
+    private static ProjectionRole projectionRole(Map<?, ?> node, String viewId, String path) {
+        if (!node.containsKey("projectionRole")) {
+            return ProjectionRole.TARGET;
+        }
+        Object rawRole = node.get("projectionRole");
+        if ("target".equals(rawRole)) {
+            return ProjectionRole.TARGET;
+        }
+        if ("prerequisiteOnly".equals(rawRole)) {
+            return ProjectionRole.PREREQUISITE_ONLY;
+        }
+        throw failure("Unsupported projectionRole in composition view "
+                + viewId + " " + path + ": " + rawRole);
+    }
+
+    private static void recordVisibleGoal(
+            Map<String, Set<ProjectionRole>> visibleGoalRoles,
+            String goalId,
+            ProjectionRole projectionRole,
+            String viewId) {
+        Set<ProjectionRole> roles = visibleGoalRoles.computeIfAbsent(
+                goalId,
+                ignored -> EnumSet.noneOf(ProjectionRole.class));
+        if (roles.add(projectionRole)) {
+            return;
+        }
+        throw failure("Composition view exposes a goal more than once: "
+                + viewId + " -> " + goalId);
     }
 
     private static String nodeSignature(Map<String, Object> node) {

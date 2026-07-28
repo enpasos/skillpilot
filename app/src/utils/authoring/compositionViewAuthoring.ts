@@ -14,6 +14,8 @@ export type CompositionViewNode =
   | CompositionGoalEntryNode
   | CompositionLandscapeEntryNode
 
+export type CompositionProjectionRole = 'target' | 'prerequisiteOnly'
+
 export interface CompositionStructureNode extends Record<string, unknown> {
   kind: 'structure'
   id: string
@@ -25,12 +27,14 @@ export interface CompositionCanonicalSubtreeNode extends Record<string, unknown>
   kind: 'canonicalSubtree'
   goalId: string
   displayLabel?: string
+  projectionRole?: CompositionProjectionRole
 }
 
 export interface CompositionGoalEntryNode extends Record<string, unknown> {
   kind: 'goalEntry'
   goalId: string
   displayLabel?: string
+  projectionRole?: CompositionProjectionRole
 }
 
 export interface CompositionLandscapeEntryNode extends Record<string, unknown> {
@@ -66,6 +70,12 @@ export interface CompositionCompileResult {
   compiledRootNodes: CompiledCompositionPreviewNode[]
   findings: CompositionViewFinding[]
 }
+
+export const getCompositionProjectionRole = (
+  node: CompositionCanonicalSubtreeNode | CompositionGoalEntryNode,
+): CompositionProjectionRole => (
+  node.projectionRole === 'prerequisiteOnly' ? 'prerequisiteOnly' : 'target'
+)
 
 const normalizeScope = (value: unknown): GoalPlacementContext => {
   const record = asRecord(value)
@@ -288,6 +298,19 @@ export const compileCompositionView = (
       return
     }
 
+    if (
+      node.projectionRole !== undefined
+      && node.projectionRole !== 'target'
+      && node.projectionRole !== 'prerequisiteOnly'
+    ) {
+      findings.push({
+        code: 'CPV-008',
+        severity: 'error',
+        nodePath: pathKey,
+        message: `Ungültige projectionRole: ${String(node.projectionRole)}`,
+      })
+    }
+
     if (node.kind === 'goalEntry') {
       if (!(node.goalId ?? '').trim()) {
         findings.push({ code: 'CPV-001', severity: 'error', nodePath: pathKey, message: 'goalEntry ohne goalId.' })
@@ -331,6 +354,10 @@ export const compileCompositionView = (
 
     if (STATE_LOOKING_TITLE_PATTERN.test(referencedGoal.title)) {
       findings.push({ code: 'CPV-102', severity: 'warning', nodePath: pathKey, goalId: node.goalId, message: 'Referenzierter kanonischer Root wirkt noch phasen- oder landesspezifisch benannt.' })
+    }
+
+    if (getCompositionProjectionRole(node) === 'prerequisiteOnly') {
+      return
     }
 
     const previousPathForSameRoot = referencedRootIds.get(node.goalId)
@@ -399,13 +426,15 @@ export const compileCompositionView = (
     const pathKey = stringifyNodePath(path)
     if (node.kind === 'structure') {
       const runtimeId = `structure:${node.id || pathKey}`
+      const children = node.children
+        .map((child, indexOfChild) => compileNode(child, runtimeId, [...path, indexOfChild]))
+        .filter((child): child is CompiledCompositionPreviewNode => child !== null)
+      if (children.length === 0) return null
       return {
         runtimeId,
         kind: 'structure',
         label: node.label,
-        children: node.children
-          .map((child, indexOfChild) => compileNode(child, runtimeId, [...path, indexOfChild]))
-          .filter((child): child is CompiledCompositionPreviewNode => child !== null),
+        children,
       }
     }
 
@@ -425,6 +454,7 @@ export const compileCompositionView = (
     }
 
     if (node.kind === 'goalEntry') {
+      if (getCompositionProjectionRole(node) === 'prerequisiteOnly') return null
       const goal = index.goalById.get(node.goalId)
       if (!goal) return null
       noteGoalOccurrence(goal.id, parentKey)
@@ -437,6 +467,7 @@ export const compileCompositionView = (
       }
     }
 
+    if (getCompositionProjectionRole(node) === 'prerequisiteOnly') return null
     return compileGoalSubtree(node.goalId, parentKey, pathKey, node.displayLabel)
   }
 

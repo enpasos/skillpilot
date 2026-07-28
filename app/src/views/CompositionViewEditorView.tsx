@@ -17,6 +17,7 @@ import {
   type CompositionCanonicalSubtreeNode,
   type CompositionGoalEntryNode,
   type CompositionLandscapeEntryNode,
+  type CompositionProjectionRole,
   type CompositionStructureNode,
   type CompositionView,
   type CompositionViewNode,
@@ -66,12 +67,14 @@ const createCanonicalSubtreeNode = (): CompositionCanonicalSubtreeNode => ({
   kind: 'canonicalSubtree',
   goalId: '',
   displayLabel: '',
+  projectionRole: 'target',
 })
 
 const createGoalEntryNode = (): CompositionGoalEntryNode => ({
   kind: 'goalEntry',
   goalId: '',
   displayLabel: '',
+  projectionRole: 'target',
 })
 
 const createLandscapeEntryNode = (): CompositionLandscapeEntryNode => ({
@@ -635,6 +638,18 @@ export const CompositionViewEditorView: React.FC = () => {
     }))
   }, [selectedNodePath, updateView])
 
+  const handleSetProjectionRole = useCallback((projectionRole: CompositionProjectionRole) => {
+    if (!selectedNodePath) return
+    const path = indicesFromPathKey(selectedNodePath)
+    updateView((current) => ({
+      ...current,
+      rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
+        if (node.kind !== 'canonicalSubtree' && node.kind !== 'goalEntry') return node
+        return { ...node, projectionRole }
+      }),
+    }))
+  }, [selectedNodePath, updateView])
+
   const handleSave = useCallback(async () => {
     if (!view) return
     if (!draftPath.trim()) {
@@ -1066,6 +1081,18 @@ export const CompositionViewEditorView: React.FC = () => {
                       />
                     </label>
 
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">projectionRole</span>
+                      <select
+                        value={selectedNode.projectionRole ?? 'target'}
+                        onChange={(event) => handleSetProjectionRole(event.target.value as CompositionProjectionRole)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
+                      >
+                        <option value="target">target — sichtbar und auswählbar</option>
+                        <option value="prerequisiteOnly">prerequisiteOnly — nur Voraussetzung</option>
+                      </select>
+                    </label>
+
                     <input
                       type="search"
                       value={candidateSearch}
@@ -1126,6 +1153,18 @@ export const CompositionViewEditorView: React.FC = () => {
                         className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
                         placeholder="z. B. Übungen"
                       />
+                    </label>
+
+                    <label className="flex flex-col gap-1 text-sm">
+                      <span className="font-semibold">projectionRole</span>
+                      <select
+                        value={selectedNode.projectionRole ?? 'target'}
+                        onChange={(event) => handleSetProjectionRole(event.target.value as CompositionProjectionRole)}
+                        className="rounded-lg border border-border-color bg-chat-bg px-3 py-2"
+                      >
+                        <option value="target">target — sichtbar und auswählbar</option>
+                        <option value="prerequisiteOnly">prerequisiteOnly — nur Voraussetzung</option>
+                      </select>
                     </label>
 
                     <input

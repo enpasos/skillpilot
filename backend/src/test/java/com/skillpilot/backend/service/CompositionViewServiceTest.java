@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LandscapeProperties;
@@ -743,6 +744,132 @@ class CompositionViewServiceTest {
         assertThat(g8Match.get("viewId")).isEqualTo("g8-seki");
         assertThat(g9Match).isNotNull();
         assertThat(g9Match.get("viewId")).isEqualTo("default-seki");
+    }
+
+    @Test
+    void findMatchingView_mergesProjectionRolesWithTargetDominance(@TempDir Path tempDir)
+            throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("gk.view.json"), """
+                {
+                  "viewId": "gk-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "GK"
+                  },
+                  "rootNodes": [{
+                    "kind": "goalEntry",
+                    "goalId": "goal-alpha",
+                    "projectionRole": "prerequisiteOnly"
+                  }]
+                }
+                """);
+        Files.writeString(viewDir.resolve("lk.view.json"), """
+                {
+                  "viewId": "lk-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "LK"
+                  },
+                  "rootNodes": [{
+                    "kind": "goalEntry",
+                    "goalId": "goal-alpha"
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        Map<String, Object> match = service.findMatchingView(
+                "test-landscape",
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "GK+LK"));
+
+        assertThat(match).isNotNull();
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> rootNodes = (List<Map<String, Object>>) match.get("rootNodes");
+        assertThat(rootNodes).singleElement()
+                .satisfies(node -> assertThat(node)
+                        .containsEntry("goalId", "goal-alpha")
+                        .containsEntry("projectionRole", "target"));
+    }
+
+    @Test
+    void findMatchingView_rejectsUnsupportedProjectionRole(@TempDir Path tempDir)
+            throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("invalid.view.json"), """
+                {
+                  "viewId": "invalid-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "LK"
+                  },
+                  "rootNodes": [{
+                    "kind": "goalEntry",
+                    "goalId": "goal-alpha",
+                    "projectionRole": "reviewOnly"
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        assertThatThrownBy(() -> service.findMatchingView(
+                        "test-landscape",
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "stage", "SekII",
+                                "courseProfile", "LK")))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Unsupported projectionRole");
+    }
+
+    @Test
+    void findMatchingView_rejectsProjectionRoleOnLandscapeEntry(@TempDir Path tempDir)
+            throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("invalid-landscape-entry.view.json"), """
+                {
+                  "viewId": "invalid-landscape-entry-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "LK"
+                  },
+                  "rootNodes": [{
+                    "kind": "landscapeEntry",
+                    "landscapeId": "test-landscape",
+                    "projectionRole": "prerequisiteOnly"
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        assertThatThrownBy(() -> service.findMatchingView(
+                        "test-landscape",
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "stage", "SekII",
+                                "courseProfile", "LK")))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("only supported on canonicalSubtree and goalEntry");
     }
 
     @Test
