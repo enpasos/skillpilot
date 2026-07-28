@@ -176,11 +176,17 @@ run_application_frontend_ci() {
   echo "--> Testing Root Route Policy"
   npm run test:root-route-policy
 
+  echo "--> Testing Service-Worker Navigation Policy"
+  npm run test:service-worker-navigation-policy
+
   echo "--> Testing Curriculum Offering Sources"
   npm run test:curriculum-offering-source
 
   echo "--> Testing Package Goal Source Evidence Consumer"
   npm run test:package-goal-source-evidence
+
+  echo "--> Testing Goal Source Rationale Deployment Smoke"
+  npm run test:goal-source-rationale-deployment-smoke
 
   echo "--> Testing Goal Visualization QA Approval Model"
   npm run test:goal-visualization-qa-status
@@ -281,8 +287,17 @@ run_curriculum_frontend_ci() {
   echo "--> Running Composition-View Validation"
   npm run validate:composition-views
 
+  echo "--> Testing Composition Projection Roles"
+  npm run test:composition-projection-roles
+
   echo "--> Running Memory-Card Review Check"
   npm run quality:memory-card-review:check:all
+
+  echo "--> Verifying Committed Curriculum Quality Status"
+  npm run quality:memory-card-review:report:all
+  npm run quality:curriculum-status
+  git diff --exit-code -- ../docs/qa-ci/status
+  test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
 
   echo "--> Preparing Generated Runtime Assets"
   npm run prepare:runtime-assets
@@ -312,6 +327,7 @@ run_frontend_quality_gate() {
   npm run lint
   npm run build:application
   if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+    npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend
     npm run check:goal-source-rationales:build-artifact
   fi
 }

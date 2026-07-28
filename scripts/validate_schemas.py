@@ -163,6 +163,78 @@ def validate_personalization_flow_contract(schema_path, schema):
     }
     invalid_flows["unknown source kind"] = unknown_source_kind
 
+    # The scopeValues source kind is authored per schema. Only schemas that
+    # declare the variant are held to its contract; the runtime schema declares
+    # it, the compiled-package schema does not yet.
+    source_variants = (
+        schema.get("$defs", {}).get("personalizationOptionSource", {}).get("oneOf", [])
+    )
+    declares_scope_values = any(
+        variant.get("properties", {}).get("kind", {}).get("const") == "scopeValues"
+        for variant in source_variants
+    )
+
+    valid_scope_values_source = {
+        "kind": "scopeValues",
+        "landscapeId": "landscape-neutral",
+        "scopeKey": "durationModel",
+        "values": [
+            {"value": "value-a", "label": "Wert A", "labelEn": "Value A"},
+            {"value": "value-b", "label": "Wert B"},
+        ],
+    }
+    if declares_scope_values:
+        valid_scope_values = copy.deepcopy(valid_flow)
+        valid_scope_values["stages"][0]["groups"][0]["source"] = copy.deepcopy(
+            valid_scope_values_source
+        )
+        if list(validator.iter_errors(valid_scope_values)):
+            print(
+                f"❌ {schema_path}: personalizationFlow rejected a valid scopeValues source"
+            )
+            return False
+
+    def scope_values_case(mutate) -> dict:
+        flow = copy.deepcopy(valid_flow)
+        source = copy.deepcopy(valid_scope_values_source)
+        mutate(source)
+        flow["stages"][0]["groups"][0]["source"] = source
+        return flow
+
+    def _drop_scope_key(source: dict) -> None:
+        del source["scopeKey"]
+
+    def _blank_scope_key(source: dict) -> None:
+        source["scopeKey"] = " \t"
+
+    def _empty_values(source: dict) -> None:
+        source["values"] = []
+
+    def _drop_label(source: dict) -> None:
+        del source["values"][0]["label"]
+
+    def _blank_label_en(source: dict) -> None:
+        source["values"][0]["labelEn"] = " "
+
+    def _foreign_filter_ids(source: dict) -> None:
+        source["filterIds"] = ["profile-a"]
+
+    def _foreign_landscape_ids(source: dict) -> None:
+        source["landscapeIds"] = ["landscape-neutral"]
+
+    if declares_scope_values:
+        invalid_flows["scopeValues without scopeKey"] = scope_values_case(_drop_scope_key)
+        invalid_flows["scopeValues with blank scopeKey"] = scope_values_case(_blank_scope_key)
+        invalid_flows["scopeValues without values"] = scope_values_case(_empty_values)
+        invalid_flows["scopeValues value without label"] = scope_values_case(_drop_label)
+        invalid_flows["scopeValues value with blank labelEn"] = scope_values_case(
+            _blank_label_en
+        )
+        invalid_flows["scopeValues with filterIds"] = scope_values_case(_foreign_filter_ids)
+        invalid_flows["scopeValues with landscapeIds"] = scope_values_case(
+            _foreign_landscape_ids
+        )
+
     for label, invalid_flow in invalid_flows.items():
         if not list(validator.iter_errors(invalid_flow)):
             print(f"❌ {schema_path}: personalizationFlow accepted {label}")

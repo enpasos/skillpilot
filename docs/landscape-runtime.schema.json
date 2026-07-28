@@ -272,8 +272,67 @@
               "$ref": "#/$defs/personalizationFilterIds"
             }
           }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeId",
+            "scopeKey",
+            "values"
+          ],
+          "properties": {
+            "kind": {
+              "const": "scopeValues"
+            },
+            "landscapeId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "$ref": "#/$defs/personalizationScopeValues"
+            }
+          }
         }
       ]
+    },
+    "personalizationScopeValues": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Independently authored entry-scope values such as a duration model. A value is selected by its opaque `value`; `label` and `labelEn` are display text only and never carry selection semantics. Values are unique per scope; the runtime compares them case-insensitively.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "label"
+        ],
+        "properties": {
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "labelEn": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      }
     },
     "personalizationFilterIds": {
       "type": "array",
