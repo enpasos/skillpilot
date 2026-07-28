@@ -3650,14 +3650,23 @@ public class LearnerService {
             return Collections.emptyList();
         }
 
-        Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allGoals);
+        GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        Map<String, LearningGoal> allGoals = projection.visibleGoals();
+        Map<String, LearningGoal> prerequisiteLookupGoals = projection.compositionViewApplied()
+                ? projection.structuralGoals()
+                : allGoals;
+        Map<String, List<String>> effectiveRequires =
+                computeEffectiveRequires(prerequisiteLookupGoals);
         Map<String, Double> masteryMap = getMastery(skillpilotId);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
-        Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(allGoals, masteryMap);
+        Map<String, Double> effectivePrereqMastery =
+                computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
+            if (!projection.targetGoalIds().contains(goal.getId())) {
+                continue;
+            }
             Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
             if (currentMastery >= 0.9) {
                 continue; // Already mastered
@@ -3667,9 +3676,21 @@ public class LearnerService {
             List<String> requires = effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    String resolvedReqId = resolveGoalRef(reqId, allGoals);
+                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
                     if (resolvedReqId == null) {
-                        // Ignore prerequisites not present in the filtered goal set
+                        // Preserve the existing optimistic behavior for prerequisites that are
+                        // unknown in the applicable lookup. A matched composition view expands
+                        // that lookup to its structural graph, where prerequisite-only goals are
+                        // known and therefore evaluated.
+                        continue;
+                    }
+                    if (projection.compositionViewApplied()
+                            && !projection.targetGoalIds().contains(resolvedReqId)
+                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        // A matched composition view distinguishes selectable targets from
+                        // intentional prerequisite-only support goals. Do not reintroduce
+                        // unrelated, globally inherited prerequisites through the structural
+                        // compatibility graph.
                         continue;
                     }
                     Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
@@ -3705,25 +3726,21 @@ public class LearnerService {
         // Check if strict mode is enabled
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
 
-        // 1. Get Filtered Goals (for display/frontier candidates)
-        Map<String, LearningGoal> allFilteredGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-
-        // 2. Get Unfiltered Goals (for structural traversal / scope calculation)
-        // We need the FULL structure to find descendants, even if the parent is
-        // filtered out.
-        Map<String, LearningGoal> allStructuralGoals = getStructuralGoals(curriculumId);
+        GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
+        Map<String, LearningGoal> allStructuralGoals = projection.structuralGoals();
 
         Map<String, Double> masteryMap = getMastery(skillpilotId);
-        // Optimistic mode: apply filters first, then evaluate requires/mastery
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
         Map<String, List<String>> effectiveRequires = computeEffectiveRequires(allFilteredGoals);
-        Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(allFilteredGoals, masteryMap);
-
-        // For strict mode: compute global effective requires and prereq mastery
-        Map<String, List<String>> globalEffectiveRequires = strictMode
+        Map<String, Double> effectivePrereqMastery =
+                computeEffectivePrereqMastery(allFilteredGoals, masteryMap);
+        boolean useStructuralPrerequisiteLookup =
+                strictMode || projection.compositionViewApplied();
+        Map<String, List<String>> globalEffectiveRequires = useStructuralPrerequisiteLookup
                 ? computeEffectiveRequires(allStructuralGoals)
                 : effectiveRequires;
-        Map<String, Double> globalEffectivePrereqMastery = strictMode
+        Map<String, Double> globalEffectivePrereqMastery = useStructuralPrerequisiteLookup
                 ? computeEffectivePrereqMastery(allStructuralGoals, masteryMap)
                 : effectivePrereqMastery;
 
@@ -3734,7 +3751,10 @@ public class LearnerService {
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
         // filter,
         // we still find its children and include them in the scope.
-        Set<String> scope = computeScope(plannedIds, allStructuralGoals, effectiveRequires);
+        Set<String> scope = computeScope(
+                plannedIds,
+                allStructuralGoals,
+                strictMode ? globalEffectiveRequires : effectiveRequires);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
@@ -3756,6 +3776,9 @@ public class LearnerService {
 
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
+            if (!projection.targetGoalIds().contains(goal.getId())) {
+                continue;
+            }
             // Filter by Scope (calculated from Structural)
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
@@ -3766,35 +3789,46 @@ public class LearnerService {
             }
 
             boolean prerequisitesMet = true;
-            // In strict mode, use global requires; otherwise use filtered requires
-            List<String> requires = strictMode
+            List<String> requires = useStructuralPrerequisiteLookup
                     ? globalEffectiveRequires.getOrDefault(goal.getId(), goal.getRequires())
                     : effectiveRequires.getOrDefault(goal.getId(), goal.getRequires());
             if (requires != null) {
                 for (String reqId : requires) {
-                    // In strict mode, resolve against ALL structural goals
-                    Map<String, LearningGoal> lookupMap = strictMode ? allStructuralGoals : allFilteredGoals;
-                    String resolvedReqId = resolveGoalRef(reqId, lookupMap);
+                    Map<String, LearningGoal> prerequisiteLookupGoals =
+                            useStructuralPrerequisiteLookup ? allStructuralGoals : allFilteredGoals;
+                    String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
                     if (resolvedReqId == null) {
                         if (strictMode) {
                             // In strict mode, unknown prerequisite means blocked
                             prerequisitesMet = false;
                             break;
                         }
-                        // Optimistic: ignore prerequisites that are filtered out or unknown
+                        // Optimistic mode only ignores truly unknown prerequisites. A known
+                        // prerequisite remains effective even when it is prerequisite-only.
+                        continue;
+                    }
+                    if (projection.compositionViewApplied()
+                            && !projection.targetGoalIds().contains(resolvedReqId)
+                            && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        // Only explicitly reached prerequisite-only goals participate in a
+                        // composition projection. Broad inherited requirements from legacy
+                        // cluster structure must not become hidden blockers.
                         continue;
                     }
 
-                    // In strict mode, do NOT skip out-of-scope prerequisites
-                    if (!strictMode && !plannedIds.isEmpty() && !scope.contains(resolvedReqId)) {
-                        // PRAGMATIC FILTERING (optimistic mode only):
-                        // If a prerequisite is NOT in scope (and we have a restricted scope), ignore
-                        // it.
-                        continue;
+                    if (!strictMode
+                            && !plannedIds.isEmpty()
+                            && !scope.contains(resolvedReqId)) {
+                        if (!projection.compositionViewApplied()
+                                || !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                            // Preserve optimistic scope behavior. The only out-of-scope goals
+                            // that a composition view deliberately keeps active are its
+                            // prerequisite-only support goals.
+                            continue;
+                        }
                     }
 
-                    // In strict mode, use global mastery; otherwise use filtered prereq mastery
-                    Double reqMastery = strictMode
+                    Double reqMastery = useStructuralPrerequisiteLookup
                             ? globalEffectivePrereqMastery.getOrDefault(resolvedReqId, 0.0)
                             : effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
                     if (reqMastery < 0.9) {
@@ -4298,9 +4332,11 @@ public class LearnerService {
         // Build a map of all goals in the closure for quick lookup
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
         Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
+        GoalProjection goalProjection = null;
         if (curriculumId != null) {
-            allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-            structuralGoals = getStructuralGoals(curriculumId);
+            goalProjection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+            allGoals = goalProjection.visibleGoals();
+            structuralGoals = goalProjection.structuralGoals();
         }
         List<FrontierGoal> sequentialAutopilotSearchAtomic = frontierAtomic;
         if (sequentialAutopilotAnchorGoalId != null
@@ -4388,10 +4424,19 @@ public class LearnerService {
             }
         }
 
-        com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
+        Set<String> projectedTargetGoalIds = goalProjection == null
+                ? allGoals.keySet()
+                : goalProjection.targetGoalIds();
+        Set<String> projectedScope = scope.isEmpty()
+                ? scope
+                : scope.stream()
+                        .filter(projectedTargetGoalIds::contains)
+                        .collect(Collectors.toCollection(LinkedHashSet::new));
+        com.skillpilot.backend.api.GoalStats personalizedStats =
+                computeAtomicStats(allGoals, projectedTargetGoalIds, mastery);
         com.skillpilot.backend.api.GoalStats scopeStats = plannedScopeIds.isEmpty()
                 ? null
-                : computeAtomicStats(allGoals, scope, mastery);
+                : computeAtomicStats(allGoals, projectedScope, mastery);
         com.skillpilot.backend.api.GoalStats focusStats = (scopeStats != null && scopeStats.total_atomic() > 0)
                 ? scopeStats
                 : personalizedStats;
@@ -5638,14 +5683,25 @@ public class LearnerService {
     }
 
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson) {
-        return getFilteredGoals(curriculumId, personalCurriculumJson, false);
+        return getGoalProjection(curriculumId, personalCurriculumJson).visibleGoals();
     }
 
     private Map<String, LearningGoal> getStructuralGoals(String curriculumId) {
-        return getFilteredGoals(curriculumId, "{}", true);
+        return getGoalProjection(curriculumId, "{}", true).structuralGoals();
     }
 
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson,
+            boolean ignoreCourseFilters) {
+        return getGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters).visibleGoals();
+    }
+
+    private GoalProjection getGoalProjection(String curriculumId, String personalCurriculumJson) {
+        return getGoalProjection(curriculumId, personalCurriculumJson, false);
+    }
+
+    private GoalProjection getGoalProjection(
+            String curriculumId,
+            String personalCurriculumJson,
             boolean ignoreCourseFilters) {
         LearningLandscape root = landscapeService.getById(curriculumId);
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
@@ -5672,6 +5728,7 @@ public class LearnerService {
         Map<String, Set<String>> mappedCanonicalGoalIdsByState = new HashMap<>();
         Map<String, Boolean> canonicalStateCoverageCache = new HashMap<>();
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>();
         for (LearningLandscape l : runtimeLandscapes) {
             // Filter by landscape selection
             // With a sparse personalization configuration, descendants are active
@@ -5730,6 +5787,7 @@ public class LearnerService {
 
             if (l.getGoals() != null) {
                 for (LearningGoal g : l.getGoals()) {
+                    structuralGoals.put(g.getId(), g);
                     if (!matchesAllEffectiveFilters(g, l, effectiveFilterIds, ignoreCourseFilters, mappedCanonicalGoalIdsByState,
                             canonicalStateCoverageCache)) {
                         continue;
@@ -5739,9 +5797,14 @@ public class LearnerService {
             }
         }
         if (!ignoreCourseFilters) {
-            return applyCompositionViewScope(curriculumId, allGoals, config, runtimeLandscapes);
+            return applyCompositionViewProjection(
+                    curriculumId,
+                    allGoals,
+                    structuralGoals,
+                    config,
+                    runtimeLandscapes);
         }
-        return allGoals;
+        return identityGoalProjection(allGoals, structuralGoals);
     }
 
     /**
@@ -5830,6 +5893,20 @@ public class LearnerService {
             Map<String, LearningGoal> allGoals,
             Map<String, Map<String, Object>> config,
             List<LearningLandscape> closure) {
+        return applyCompositionViewProjection(
+                curriculumId,
+                allGoals,
+                allGoals,
+                config,
+                closure).visibleGoals();
+    }
+
+    private GoalProjection applyCompositionViewProjection(
+            String curriculumId,
+            Map<String, LearningGoal> allGoals,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, Map<String, Object>> config,
+            List<LearningLandscape> closure) {
         if (compositionViewService == null
                 || curriculumId == null
                 || curriculumId.isBlank()
@@ -5837,16 +5914,16 @@ public class LearnerService {
                 || allGoals.isEmpty()
                 || closure == null
                 || closure.isEmpty()) {
-            return allGoals;
+            return identityGoalProjection(allGoals, structuralGoals);
         }
         boolean authoritativeCurriculum = compositionViewService.isAuthoritativeForLandscape(curriculumId);
         if ((config == null || config.isEmpty()) && !authoritativeCurriculum) {
-            return allGoals;
+            return identityGoalProjection(allGoals, structuralGoals);
         }
         Map<String, Map<String, Object>> effectiveConfig =
                 config == null ? Collections.emptyMap() : config;
 
-        LinkedHashMap<String, Boolean> referencedGoals = new LinkedHashMap<>();
+        LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         boolean authoritativeCandidateSeen = authoritativeCurriculum;
         boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
@@ -5881,44 +5958,58 @@ public class LearnerService {
                 }
                 continue;
             }
-            LinkedHashMap<String, Boolean> landscapeReferencedGoals = new LinkedHashMap<>();
+            LinkedHashMap<String, CompositionGoalReference> landscapeReferencedGoals = new LinkedHashMap<>();
             collectCompositionViewGoalReferences(matchedView.get("rootNodes"), landscapeReferencedGoals);
             if (landscapeReferencedGoals.isEmpty()) {
                 if (!authoritative) {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
             } else {
-                landscapeReferencedGoals.forEach((goalId, includeDescendants) ->
-                        referencedGoals.merge(goalId, includeDescendants, (left, right) -> left || right));
+                landscapeReferencedGoals.forEach((goalId, reference) ->
+                        referencedGoals.merge(goalId, reference, this::mergeCompositionGoalReferences));
             }
         }
 
         if (referencedGoals.isEmpty() && fallbackGoalIds.isEmpty()) {
-            return authoritativeCandidateSeen ? Collections.emptyMap() : allGoals;
+            return authoritativeCandidateSeen
+                    ? emptyGoalProjection(structuralGoals)
+                    : identityGoalProjection(allGoals, structuralGoals);
         }
 
-        LinkedHashSet<String> visibleGoalIds = new LinkedHashSet<>();
-        referencedGoals.forEach((referencedGoalId, includeDescendants) -> {
-            if (includeDescendants) {
-                collectCompositionGoalAndDescendants(referencedGoalId, allGoals, visibleGoalIds, new HashSet<>());
-            } else {
-                String exactGoalId = resolveGoalRef(referencedGoalId, allGoals);
-                if (exactGoalId != null && allGoals.containsKey(exactGoalId)) {
-                    visibleGoalIds.add(exactGoalId);
-                }
-            }
-        });
-        visibleGoalIds.addAll(fallbackGoalIds);
-        if (visibleGoalIds.isEmpty()) {
-            return authoritativeCandidateSeen ? Collections.emptyMap() : allGoals;
+        Map<String, CompositionProjectionAssignment> projectionAssignments =
+                resolveCompositionProjectionAssignments(referencedGoals, structuralGoals);
+        LinkedHashSet<String> targetGoalIds = projectionAssignments.entrySet().stream()
+                .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
+                .map(Map.Entry::getKey)
+                .filter(allGoals::containsKey)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        targetGoalIds.addAll(fallbackGoalIds);
+        if (targetGoalIds.isEmpty()) {
+            return authoritativeCandidateSeen
+                    ? emptyGoalProjection(structuralGoals)
+                    : identityGoalProjection(allGoals, structuralGoals);
         }
+
+        LinkedHashSet<String> prerequisiteOnlyGoalIds = projectionAssignments.entrySet().stream()
+                .filter(entry -> entry.getValue().role() == ProjectionRole.PREREQUISITE_ONLY)
+                .map(Map.Entry::getKey)
+                .filter(structuralGoals::containsKey)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        // Non-authoritative fallback goals are learner-facing targets.
+        prerequisiteOnlyGoalIds.removeAll(targetGoalIds);
+
+        LinkedHashSet<String> visibleGoalIds = new LinkedHashSet<>(targetGoalIds);
         addCompositionAncestors(allGoals, visibleGoalIds);
 
         Map<String, LearningGoal> scopedGoals = new LinkedHashMap<>();
         for (Map.Entry<String, LearningGoal> entry : allGoals.entrySet()) {
             if (visibleGoalIds.contains(entry.getKey())) {
                 LearningGoal scopedGoal = entry.getValue();
-                if (Boolean.FALSE.equals(referencedGoals.get(entry.getKey()))) {
+                CompositionProjectionAssignment assignment =
+                        projectionAssignments.get(entry.getKey());
+                if (assignment != null
+                        && assignment.role() == ProjectionRole.TARGET
+                        && assignment.direct()) {
                     scopedGoal = objectMapper.convertValue(scopedGoal, LearningGoal.class);
                     scopedGoal.setContains(Collections.emptyList());
                     scopedGoal.setType("atomic");
@@ -5926,7 +6017,93 @@ public class LearnerService {
                 scopedGoals.put(entry.getKey(), scopedGoal);
             }
         }
-        return scopedGoals.isEmpty() && !authoritativeCandidateSeen ? allGoals : scopedGoals;
+        if (scopedGoals.isEmpty() && !authoritativeCandidateSeen) {
+            return identityGoalProjection(allGoals, structuralGoals);
+        }
+
+        LinkedHashSet<String> effectiveTargetGoalIds = targetGoalIds.stream()
+                .filter(scopedGoals::containsKey)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        LinkedHashSet<String> effectivePrerequisiteOnlyGoalIds = prerequisiteOnlyGoalIds.stream()
+                .filter(structuralGoals::containsKey)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        return new GoalProjection(
+                immutableGoalMap(scopedGoals),
+                Collections.unmodifiableSet(effectiveTargetGoalIds),
+                Collections.unmodifiableSet(effectivePrerequisiteOnlyGoalIds),
+                immutableGoalMap(structuralGoals),
+                true);
+    }
+
+    private GoalProjection identityGoalProjection(
+            Map<String, LearningGoal> visibleGoals,
+            Map<String, LearningGoal> structuralGoals) {
+        Map<String, LearningGoal> immutableVisibleGoals = immutableGoalMap(visibleGoals);
+        Map<String, LearningGoal> immutableStructuralGoals =
+                immutableGoalMap(structuralGoals == null || structuralGoals.isEmpty()
+                        ? visibleGoals
+                        : structuralGoals);
+        LinkedHashSet<String> targetGoalIds = new LinkedHashSet<>(immutableVisibleGoals.keySet());
+        return new GoalProjection(
+                immutableVisibleGoals,
+                Collections.unmodifiableSet(targetGoalIds),
+                Collections.emptySet(),
+                immutableStructuralGoals,
+                false);
+    }
+
+    private GoalProjection emptyGoalProjection(Map<String, LearningGoal> structuralGoals) {
+        return new GoalProjection(
+                Collections.emptyMap(),
+                Collections.emptySet(),
+                Collections.emptySet(),
+                immutableGoalMap(structuralGoals),
+                true);
+    }
+
+    private Map<String, LearningGoal> immutableGoalMap(Map<String, LearningGoal> goals) {
+        if (goals == null || goals.isEmpty()) {
+            return Collections.emptyMap();
+        }
+        return Collections.unmodifiableMap(new LinkedHashMap<>(goals));
+    }
+
+    private record GoalProjection(
+            Map<String, LearningGoal> visibleGoals,
+            Set<String> targetGoalIds,
+            Set<String> prerequisiteOnlyGoalIds,
+            Map<String, LearningGoal> structuralGoals,
+            boolean compositionViewApplied) {
+    }
+
+    private enum ProjectionRole {
+        TARGET,
+        PREREQUISITE_ONLY;
+
+        private static ProjectionRole from(Object rawRole) {
+            return "prerequisiteOnly".equals(rawRole)
+                    ? PREREQUISITE_ONLY
+                    : TARGET;
+        }
+    }
+
+    private record CompositionGoalReference(
+            List<CompositionProjectionSource> sources) {
+
+        private CompositionGoalReference {
+            sources = sources == null ? List.of() : List.copyOf(sources);
+        }
+    }
+
+    private record CompositionProjectionSource(
+            boolean includeDescendants,
+            ProjectionRole role) {
+    }
+
+    private record CompositionProjectionAssignment(
+            ProjectionRole role,
+            boolean direct,
+            int subtreeDepth) {
     }
 
     private void addFilteredLandscapeGoalIds(
@@ -6132,8 +6309,155 @@ public class LearnerService {
         return selected instanceof Boolean selectedFlag ? selectedFlag : null;
     }
 
+    private CompositionGoalReference mergeCompositionGoalReferences(
+            CompositionGoalReference left,
+            CompositionGoalReference right) {
+        List<CompositionProjectionSource> mergedSources =
+                new ArrayList<>(left == null ? List.of() : left.sources());
+        if (right != null) {
+            mergedSources.addAll(right.sources());
+        }
+        return new CompositionGoalReference(mergedSources);
+    }
+
+    private Map<String, CompositionProjectionAssignment> resolveCompositionProjectionAssignments(
+            Map<String, CompositionGoalReference> references,
+            Map<String, LearningGoal> goals) {
+        LinkedHashMap<String, CompositionProjectionAssignment> assignments =
+                new LinkedHashMap<>();
+        if (references == null
+                || references.isEmpty()
+                || goals == null
+                || goals.isEmpty()) {
+            return assignments;
+        }
+        Map<String, Integer> subtreeDepths = calculateCompositionSubtreeDepths(goals);
+        references.forEach((referencedGoalId, reference) -> {
+            if (reference == null || reference.sources().isEmpty()) {
+                return;
+            }
+            String exactGoalId = resolveGoalRef(referencedGoalId, goals);
+            if (exactGoalId == null || !goals.containsKey(exactGoalId)) {
+                return;
+            }
+            int subtreeDepth = subtreeDepths.getOrDefault(exactGoalId, 0);
+            for (CompositionProjectionSource source : reference.sources()) {
+                if (source.includeDescendants()) {
+                    assignCompositionSubtreeProjection(
+                            exactGoalId,
+                            source.role(),
+                            subtreeDepth,
+                            goals,
+                            assignments,
+                            new HashSet<>());
+                } else {
+                    mergeCompositionProjectionAssignment(
+                            exactGoalId,
+                            new CompositionProjectionAssignment(
+                                    source.role(),
+                                    true,
+                                    subtreeDepth),
+                            assignments);
+                }
+            }
+        });
+        return assignments;
+    }
+
+    private Map<String, Integer> calculateCompositionSubtreeDepths(
+            Map<String, LearningGoal> goals) {
+        Map<String, Integer> depths = new HashMap<>();
+        goals.keySet().forEach(goalId -> depths.put(goalId, 0));
+        for (int iteration = 0; iteration < goals.size(); iteration++) {
+            boolean changed = false;
+            for (LearningGoal parent : goals.values()) {
+                if (parent == null || parent.getId() == null || parent.getContains() == null) {
+                    continue;
+                }
+                int parentDepth = depths.getOrDefault(parent.getId(), 0);
+                for (String childRef : parent.getContains()) {
+                    String childId = resolveGoalRef(childRef, goals);
+                    if (childId == null || !goals.containsKey(childId)) {
+                        continue;
+                    }
+                    int candidateDepth = parentDepth + 1;
+                    if (candidateDepth > depths.getOrDefault(childId, 0)) {
+                        depths.put(childId, candidateDepth);
+                        changed = true;
+                    }
+                }
+            }
+            if (!changed) {
+                break;
+            }
+        }
+        return depths;
+    }
+
+    private void assignCompositionSubtreeProjection(
+            String goalId,
+            ProjectionRole role,
+            int subtreeDepth,
+            Map<String, LearningGoal> goals,
+            Map<String, CompositionProjectionAssignment> assignments,
+            Set<String> visiting) {
+        if (goalId == null || !visiting.add(goalId)) {
+            return;
+        }
+        LearningGoal goal = goals.get(goalId);
+        if (goal == null) {
+            visiting.remove(goalId);
+            return;
+        }
+        mergeCompositionProjectionAssignment(
+                goalId,
+                new CompositionProjectionAssignment(role, false, subtreeDepth),
+                assignments);
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                String childId = resolveGoalRef(childRef, goals);
+                if (childId != null) {
+                    assignCompositionSubtreeProjection(
+                            childId,
+                            role,
+                            subtreeDepth,
+                            goals,
+                            assignments,
+                            visiting);
+                }
+            }
+        }
+        visiting.remove(goalId);
+    }
+
+    private void mergeCompositionProjectionAssignment(
+            String goalId,
+            CompositionProjectionAssignment candidate,
+            Map<String, CompositionProjectionAssignment> assignments) {
+        assignments.merge(goalId, candidate, (current, incoming) -> {
+            if (current.direct() != incoming.direct()) {
+                return incoming.direct() ? incoming : current;
+            }
+            if (!current.direct() && current.subtreeDepth() != incoming.subtreeDepth()) {
+                return incoming.subtreeDepth() > current.subtreeDepth()
+                        ? incoming
+                        : current;
+            }
+            if (current.role() == ProjectionRole.TARGET
+                    || incoming.role() == ProjectionRole.TARGET) {
+                return new CompositionProjectionAssignment(
+                        ProjectionRole.TARGET,
+                        current.direct(),
+                        Math.max(current.subtreeDepth(), incoming.subtreeDepth()));
+            }
+            return current;
+        });
+    }
+
     @SuppressWarnings("unchecked")
-    private void collectCompositionViewGoalReferences(Object rawNodes, Map<String, Boolean> goals) {
+    private void collectCompositionViewGoalReferences(
+            Object rawNodes,
+            Map<String, CompositionGoalReference> goals) {
         if (!(rawNodes instanceof List<?> nodeList)) {
             return;
         }
@@ -6151,7 +6475,14 @@ public class LearnerService {
                     Object goalId = node.get("goalId");
                     if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
                         boolean includeDescendants = "canonicalSubtree".equals(kindText);
-                        goals.merge(goalIdText, includeDescendants, (left, right) -> left || right);
+                        ProjectionRole role = ProjectionRole.from(node.get("projectionRole"));
+                        goals.merge(
+                                goalIdText,
+                                new CompositionGoalReference(List.of(
+                                        new CompositionProjectionSource(
+                                                includeDescendants,
+                                                role))),
+                                this::mergeCompositionGoalReferences);
                     }
                 }
                 case "landscapeEntry" -> {
@@ -6163,7 +6494,13 @@ public class LearnerService {
                                     .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
                                     .findFirst()
                                     .map(LearningGoal::getId)
-                                    .ifPresent(goalId -> goals.merge(goalId, true, (left, right) -> left || right));
+                                    .ifPresent(goalId -> goals.merge(
+                                            goalId,
+                                            new CompositionGoalReference(List.of(
+                                                    new CompositionProjectionSource(
+                                                            true,
+                                                            ProjectionRole.TARGET))),
+                                            this::mergeCompositionGoalReferences));
                         }
                     }
                 }

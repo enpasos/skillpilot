@@ -65,6 +65,13 @@
       "maxLength": 64,
       "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
     },
+    "projectionRole": {
+      "type": "string",
+      "enum": [
+        "target",
+        "prerequisiteOnly"
+      ]
+    },
     "scope": {
       "type": "object",
       "additionalProperties": false,
@@ -133,6 +140,9 @@
         "goalId": {
           "$ref": "#/$defs/id"
         },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
+        },
         "displayLabel": {
           "$ref": "#/$defs/nonBlankText"
         }
@@ -151,6 +161,9 @@
         },
         "goalId": {
           "$ref": "#/$defs/id"
+        },
+        "projectionRole": {
+          "$ref": "#/$defs/projectionRole"
         },
         "displayLabel": {
           "$ref": "#/$defs/nonBlankText"

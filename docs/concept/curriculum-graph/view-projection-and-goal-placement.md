@@ -258,6 +258,69 @@ The default learner-facing tree should be produced by an early deterministic com
 
 This compile step must happen early enough that programmatic validation rules can run on the compiled tree before any UI rendering logic.
 
+### Learning roles in a compiled composition view
+
+A compiled composition view distinguishes two runtime roles without changing the canonical goal graph:
+
+- `target`: a selectable learning target in this learner-facing scope
+- `prerequisiteOnly`: a supporting goal whose global mastery may block or unlock a target, but which is not itself selectable in this scope
+
+The role is authored explicitly on `canonicalSubtree` and `goalEntry` references with
+`projectionRole: "target" | "prerequisiteOnly"`. If the field is omitted, the
+reference is a `target`. Descendants of a `canonicalSubtree` inherit its authored
+role.
+
+If overlapping references assign different roles to the same canonical goal,
+the more specific reference decides:
+
+1. a direct `goalEntry` overrides a role inherited from any
+   `canonicalSubtree`
+2. among overlapping `canonicalSubtree` references, the nearest/deepest
+   matching subtree root overrides a broader subtree
+3. only when two assignments have equal specificity does `target` win
+
+This precedence lets a broad reviewed subtree remain selectable while individual
+supporting goals inside it are explicitly demoted to `prerequisiteOnly`, without
+copying or enumerating the rest of the subtree.
+
+Role assignment is intentionally **not** derived transitively from `requires`, nor
+inferred from broad metadata such as `phase`, year, or stage. The canonical
+`requires` graph still determines whether an explicitly included supporting goal
+blocks or unlocks a target. This makes that support relationship reviewable and
+prevents unrelated inherited goals from silently becoming hidden blockers.
+
+The runtime contract is:
+
+- only targets may appear in learner navigation or as frontier candidates
+- only targets contribute to scope progress and scope completion
+- a prerequisite-only goal never becomes a frontier candidate in that view
+- the global mastery value of a prerequisite-only goal still blocks or unlocks dependent targets through the unchanged canonical `requires` edges
+- targeted repetition of an earlier goal requires an explicit target reference or a separate reviewed repetition plan; it must not become selectable merely because it is an earlier-phase goal
+
+This distinction keeps bridge competencies available for sequencing while
+preventing unrelated or supporting goals from leaking into the Sek-II frontier.
+
+For the reviewed Hessen Sek-II-LK mathematics projection:
+
+- the J9/J10 bridge goals are explicitly included as `prerequisiteOnly`
+- the five formula-sheet goals and the J7 chain are explicitly included as
+  `prerequisiteOnly`: they are not frontier targets, but their existing global
+  mastery may still block or unlock genuine Sek-II targets that canonically
+  require them
+- genuine Sek-II goals are explicitly included as targets
+- if an earlier goal should become selectable for targeted repetition, the view
+  must promote it explicitly to `target` or use a separately reviewed repetition
+  plan
+
+Compilation must not:
+
+- create duplicate goal identities
+- copy or reset mastery values
+- rewrite canonical `requires` or `contains` edges
+- replace stable goal IDs
+
+The role assignment is therefore projection metadata only. Canonical goal identity, the canonical DAG, and learner mastery remain global and unchanged across composition views.
+
 ## Default content tree contract
 
 The default content tree is the canonical content-only view.

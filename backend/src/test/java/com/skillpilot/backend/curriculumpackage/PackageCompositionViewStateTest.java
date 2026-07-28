@@ -135,6 +135,149 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
+    void mergesSameGoalAcrossProjectionRolesWithTargetDominance() throws Exception {
+        CurriculumPackageTestFixture.PackageSpec base =
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
+        CurriculumPackageTestFixture.PackageSpec merge = new CurriculumPackageTestFixture.PackageSpec(
+                base.suffix(),
+                base.packageId(),
+                base.landscapeId(),
+                base.hashCharacter(),
+                base.closureHashCharacter(),
+                base.indexHashCharacter(),
+                base.definitionKey(),
+                base.definitionOwner(),
+                base.definitionDigest(),
+                base.moduleLandscapeId(),
+                true,
+                base.externalUrlScheme());
+        CurriculumRuntimeSnapshot snapshot = load(merge);
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {
+            Map<String, Object> node = new LinkedHashMap<>();
+            node.put("kind", "goalEntry");
+            node.put("goalId", "goal-alpha");
+            if (!descriptor.viewId().endsWith("secondary")) {
+                node.put("projectionRole", "prerequisiteOnly");
+            }
+            String document = mapper.writeValueAsString(Map.of(
+                    "viewId", descriptor.viewId(),
+                    "landscapeId", descriptor.landscapeId(),
+                    "scope", descriptor.scope(),
+                    "rootNodes", List.of(node)));
+            views.put(descriptor.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
+                    descriptor.packageId(),
+                    descriptor.viewId(),
+                    descriptor.landscapeId(),
+                    descriptor.language(),
+                    descriptor.scope(),
+                    descriptor.artifact(),
+                    document));
+        }
+
+        PackageCompositionViewState state = PackageCompositionViewState.load(
+                copy(snapshot, views, snapshot.offeringsById()), mapper);
+        PackageCompositionViewState.ResolvedView resolved = state.resolveOffering("offering-alpha");
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> rootNodes =
+                (List<Map<String, Object>>) resolved.document().get("rootNodes");
+        assertThat(rootNodes).singleElement()
+                .satisfies(node -> assertThat(node)
+                        .containsEntry("goalId", "goal-alpha")
+                        .containsEntry("projectionRole", "target"));
+    }
+
+    @Test
+    void allowsSameGoalOncePerProjectionRoleWithinOneView() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        CurriculumRuntimeSnapshot.ViewDescriptor original = snapshot.viewsById().get("view-alpha");
+        String document = mapper.writeValueAsString(Map.of(
+                "viewId", original.viewId(),
+                "landscapeId", original.landscapeId(),
+                "scope", original.scope(),
+                "rootNodes", List.of(
+                        Map.of(
+                                "kind", "goalEntry",
+                                "goalId", "goal-alpha",
+                                "projectionRole", "target"),
+                        Map.of(
+                                "kind", "goalEntry",
+                                "goalId", "goal-alpha",
+                                "projectionRole", "prerequisiteOnly"))));
+        CurriculumRuntimeSnapshot.ViewDescriptor view = new CurriculumRuntimeSnapshot.ViewDescriptor(
+                original.packageId(),
+                original.viewId(),
+                original.landscapeId(),
+                original.language(),
+                original.scope(),
+                original.artifact(),
+                document);
+
+        PackageCompositionViewState state = PackageCompositionViewState.load(
+                copy(snapshot, Map.of(original.viewId(), view), snapshot.offeringsById()), mapper);
+
+        assertThat(state.viewsById()).containsKey(original.viewId());
+    }
+
+    @Test
+    void rejectsUnsupportedProjectionRole() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        CurriculumRuntimeSnapshot.ViewDescriptor original = snapshot.viewsById().get("view-alpha");
+        String document = mapper.writeValueAsString(Map.of(
+                "viewId", original.viewId(),
+                "landscapeId", original.landscapeId(),
+                "scope", original.scope(),
+                "rootNodes", List.of(Map.of(
+                        "kind", "goalEntry",
+                        "goalId", "goal-alpha",
+                        "projectionRole", "reviewOnly"))));
+        CurriculumRuntimeSnapshot.ViewDescriptor invalid = new CurriculumRuntimeSnapshot.ViewDescriptor(
+                original.packageId(),
+                original.viewId(),
+                original.landscapeId(),
+                original.language(),
+                original.scope(),
+                original.artifact(),
+                document);
+
+        assertThatThrownBy(() -> PackageCompositionViewState.load(
+                        copy(snapshot, Map.of(original.viewId(), invalid), snapshot.offeringsById()), mapper))
+                .isInstanceOf(CurriculumPackageException.class)
+                .hasMessageContaining("Unsupported projectionRole");
+    }
+
+    @Test
+    void rejectsProjectionRoleOnLandscapeEntry() throws Exception {
+        CurriculumRuntimeSnapshot snapshot = load(
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        CurriculumRuntimeSnapshot.ViewDescriptor original = snapshot.viewsById().get("view-alpha");
+        String document = mapper.writeValueAsString(Map.of(
+                "viewId", original.viewId(),
+                "landscapeId", original.landscapeId(),
+                "scope", original.scope(),
+                "rootNodes", List.of(Map.of(
+                        "kind", "landscapeEntry",
+                        "landscapeId", original.landscapeId(),
+                        "projectionRole", "prerequisiteOnly"))));
+        CurriculumRuntimeSnapshot.ViewDescriptor invalid = new CurriculumRuntimeSnapshot.ViewDescriptor(
+                original.packageId(),
+                original.viewId(),
+                original.landscapeId(),
+                original.language(),
+                original.scope(),
+                original.artifact(),
+                document);
+
+        assertThatThrownBy(() -> PackageCompositionViewState.load(
+                        copy(snapshot, Map.of(original.viewId(), invalid), snapshot.offeringsById()), mapper))
+                .isInstanceOf(CurriculumPackageException.class)
+                .hasMessageContaining("only supported on canonicalSubtree and goalEntry");
+    }
+
+    @Test
     void rejectsConflictingMetadataForMergedNode() throws Exception {
         CurriculumPackageTestFixture.PackageSpec base =
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
