@@ -194,7 +194,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const goalMatchesActiveClassConfig = useCallback((goal: UiGoal | null | undefined) => {
     if (!goal) return false
     if (!activeClass) return true
-    if (!goalMatchesGlobalStageScope(goal, activeClass.personalConfig ?? {})) {
+    if (!goalMatchesGlobalStageScope(
+      goal,
+      activeClass.personalConfig ?? {},
+      { rootLandscapeId: activeClass.rootLandscapeId },
+    )) {
       return false
     }
     return goalMatchesFilters(goal, activeClassFilterIds)
@@ -786,6 +790,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
             aggregatedPlannedGoals={aggregatedPlannedGoals}
             totalStudents={activeClass.students.length}
             personalConfig={activeClass.personalConfig}
+            rootLandscapeId={activeClass.rootLandscapeId}
           />
         </div>
       </aside>

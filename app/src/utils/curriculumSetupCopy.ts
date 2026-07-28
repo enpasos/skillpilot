@@ -46,6 +46,7 @@ export interface ClassSetupCopy extends SharedCurriculumSetupCopy {
   classNameLabel: string
   classNamePlaceholder: string
   selectSubjectFirst: string
+  selectStageFirst: string
   createLearnerFailedStatus: (status: number) => string
   createLearnerFailedGeneric: string
   missingSkillpilotId: string
@@ -150,6 +151,7 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         classNameLabel: 'Bezeichnung',
         classNamePlaceholder: 'z.B. Physik LK',
         selectSubjectFirst: 'Bitte wähle zuerst ein Fach aus.',
+        selectStageFirst: 'Bitte wähle mindestens eine Sekundarstufe aus.',
         createLearnerFailedStatus: (status: number) => `Anlegen fehlgeschlagen (Status ${status}).`,
         createLearnerFailedGeneric: 'Anlegen der SkillPilot-ID fehlgeschlagen.',
         missingSkillpilotId: 'Keine SkillPilot-ID erhalten.',
@@ -169,6 +171,7 @@ export const getClassSetupCopy = (language: LabelLanguage): ClassSetupCopy => ({
         classNameLabel: 'Label',
         classNamePlaceholder: 'e.g. Physics advanced course',
         selectSubjectFirst: 'Please choose a subject first.',
+        selectStageFirst: 'Please choose at least one secondary stage.',
         createLearnerFailedStatus: (status: number) => `Creation failed (status ${status}).`,
         createLearnerFailedGeneric: 'Failed to create SkillPilot ID.',
         missingSkillpilotId: 'No SkillPilot ID returned.',

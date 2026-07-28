@@ -6146,11 +6146,6 @@ public class LearnerService {
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
         String stage = inferCompositionStageScope(config, landscapeId);
-        if (stage == null && courseProfile != null) {
-            // GK/LK is a course attribute, not an implicit Sek-II selection.
-            // Preserve both stages until the learner makes that choice explicitly.
-            stage = "CrossStage";
-        }
         String durationModel = resolveDurationModelScope(
                 readScopeValue(config, landscapeId, "durationModel"),
                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
@@ -6245,8 +6240,8 @@ public class LearnerService {
             Map<String, Map<String, Object>> config,
             String landscapeId) {
         String explicitStage = resolveStageScope(
-                readScopeValue(config, landscapeId, "stage"),
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"));
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"),
+                readScopeValue(config, landscapeId, "stage"));
         if (explicitStage != null) {
             return explicitStage;
         }

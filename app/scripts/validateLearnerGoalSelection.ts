@@ -217,8 +217,8 @@ const abi26PersonalConfig = buildAbi26PersonalCurriculumConfig('GK', {
 
 assert.deepEqual(
   abi26PersonalConfig[ABI26_ROOT_CURRICULUM_ID],
-  { selected: true, filterId: ABI26_ROOT_FILTER_ID },
-  'Abi26 personal curriculum must select the Hesse root filter.',
+  { selected: true, filterId: ABI26_ROOT_FILTER_ID, stage: 'SekII' },
+  'Abi26 personal curriculum must select the Hesse root filter and canonical Sek II stage.',
 )
 assert.deepEqual(
   abi26PersonalConfig[ABI26_MATH_LANDSCAPE_ID],
