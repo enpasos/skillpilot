@@ -6,7 +6,7 @@ Das Ziel dieses Prozesses ist es, Curricula nicht nur auf strukturelle Integrit�
 
 ## Die Methode: Curriculum Simulation (Didaktischer Linter)
 
-Der KI-Agent nimmt die Rolle einer "lernenden Person" ein und traversiert den Curriculum-Graphen. Dabei geht er wie folgt vor:
+Der KI-Agent nimmt die Rolle einer "lernenden Person" ein und traversiert den Skill-Graphen. Dabei geht er wie folgt vor:
 
 1. **Frontier-Bildung**: Der Agent ermittelt alle Lernziele, bei denen sämtliche `requires`-Vorbedingungen bereits "abgehakt" (also gelernt) sind.
 2. **Knoten-Auswahl**: Aus dieser Frontier wählt der Agent einen neuen, noch nicht behandelten Knoten (bevorzugt aus dem aktuell behandelten thematischen Cluster, um den Kontext zu wahren).

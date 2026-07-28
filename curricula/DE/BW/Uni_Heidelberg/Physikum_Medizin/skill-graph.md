@@ -1,7 +1,7 @@
-# Curriculum Graph - Physikum Medizin (Uni Heidelberg)
+# Skill Graph - Physikum Medizin (Uni Heidelberg)
 
 This document maps the Heidelberg preclinical curriculum (Physikum, 1st-4th semester)
-into a SkillPilot competence graph.
+into a SkillPilot skill graph.
 
 ## Scope
 - Program: Humanmedizin, vorklinischer Abschnitt (1.-4. Fachsemester)

@@ -10,7 +10,7 @@
  * those trees are excluded here instead of being exempted rule by rule.
  */
 import { readFileSync, readdirSync } from 'node:fs'
-import { dirname, extname, relative, resolve, sep } from 'node:path'
+import { dirname, extname, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 interface TerminologyRule {
@@ -75,14 +75,21 @@ const excludedDirectories = new Set([
 /**
  * Frozen evidence. These trees record what was captured at a point in time and
  * must not be rewritten when vocabulary changes.
+ *
+ * Hash-pinned packages are deliberately not listed here: a rename updates their
+ * wording and their pinned digests together.
  */
 const frozenEvidencePaths = [
-  'ai/openai custom gpt/knowledge_docs',
+  // Build output.
   'backend/src/main/resources/static',
+  // Retired landscapes and captured source snapshots behind coverage claims.
   'curricula/DE/Gymnasium/archive',
   'curricula/DE/Gymnasium/input',
   'tmp',
 ]
+
+/** This file lists the retired terms and would otherwise report itself. */
+const rulesFile = 'app/scripts/checkTerminology.ts'
 
 const scannedExtensions = new Set([
   '.java',
@@ -126,6 +133,7 @@ function collectScannableFiles(relativeDir: string): string[] {
       return collectScannableFiles(relativePath)
     }
     if (!entry.isFile()) return []
+    if (relativePath === rulesFile) return []
     if (!scannedExtensions.has(extname(entry.name).toLowerCase())) return []
     return [relativePath]
   })
@@ -138,22 +146,31 @@ interface Violation {
   found: string
 }
 
+/**
+ * Cheap pre-filter so that clean files cost one regex pass instead of one pass
+ * per rule per line. Most of the scanned bytes are curriculum data.
+ */
+const anyRetiredTerm = new RegExp(rules.map((rule) => `(?:${rule.retired.source})`).join('|'), 'gi')
+
 function findViolations(path: string, contents: string): Violation[] {
+  anyRetiredTerm.lastIndex = 0
+  if (!anyRetiredTerm.test(contents)) return []
+
   const violations: Violation[] = []
   contents.split('\n').forEach((line, index) => {
     for (const rule of rules) {
       const allowedRanges: Array<[number, number]> = []
       if (rule.allowedPhrase) {
-        const allowed = new RegExp(rule.allowedPhrase.source, rule.allowedPhrase.flags)
+        rule.allowedPhrase.lastIndex = 0
         let allowedMatch: RegExpExecArray | null
-        while ((allowedMatch = allowed.exec(line)) !== null) {
+        while ((allowedMatch = rule.allowedPhrase.exec(line)) !== null) {
           allowedRanges.push([allowedMatch.index, allowedMatch.index + allowedMatch[0].length])
         }
       }
 
-      const retired = new RegExp(rule.retired.source, rule.retired.flags)
+      rule.retired.lastIndex = 0
       let match: RegExpExecArray | null
-      while ((match = retired.exec(line)) !== null) {
+      while ((match = rule.retired.exec(line)) !== null) {
         const start = match.index
         const end = start + match[0].length
         const covered = allowedRanges.some(([from, to]) => start >= from && end <= to)

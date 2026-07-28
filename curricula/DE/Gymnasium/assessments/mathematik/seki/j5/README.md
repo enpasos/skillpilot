@@ -1,6 +1,6 @@
 # J5 Mathematics Exam Work Package
 
-Status: released into canonical curriculum graph
+Status: released into canonical skill graph
 
 This folder is the reviewed production package for the Jahrgangsstufe 5 exam set.
 It follows `docs/production-pipelines/seki-math-exam.md`.
