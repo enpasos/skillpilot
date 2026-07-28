@@ -230,8 +230,8 @@ Typical outputs:
 
 See also:
 
-- `../concept/curriculum-graph/node-types.md`
-- `../production-pipelines/curriculum-graph.md`
+- `../concept/skill-graph/node-types.md`
+- `../production-pipelines/skill-graph.md`
 
 Do not mix early content drafting with graph integration unless there is a strong reason.
 

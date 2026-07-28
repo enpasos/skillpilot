@@ -92,8 +92,8 @@ Interpretation rules:
 
 Reference:
 
-- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
+- `docs/concept/skill-graph/general-goal-system-and-migration.md`
+- `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 
 ---
 
@@ -387,7 +387,7 @@ Naming and ownership:
 
 * Public memory decks for canonical German Gymnasium subjects are owned by the DE/Gymnasium canonical layer, not by a Bundesland source lane.
 * Deck IDs, active card IDs, and public deck filenames must not encode source-state prefixes such as `he`, `hes`, or `DE-HE`; use canonical scope names such as `de_gymnasium_math_*`, `de_gymnasium_physics_*`, and `de_gymnasium_chemistry_*`.
-* Canonical deck source files live under `curricula/DE/Gymnasium/memory-decks/` and are deployed to runtime `/data/...` files. They intentionally do not live below `curricula/DE/Gymnasium/canonical/`, because that directory is reserved for `LearningLandscape` JSON files scanned by validators.
+* Canonical deck source files live under `curricula/DE/Gymnasium/memory-decks/` and are deployed to runtime `/data/...` files. They intentionally do not live below `curricula/DE/Gymnasium/canonical/`, because that directory is reserved for `SkillLandscape` JSON files scanned by validators.
 * Bundesland-specific visibility is handled by composition views, applicability, provenance, and review ledgers. It must not be encoded by duplicating decks or by naming a canonical deck after one source state.
 * Source-state information may remain in provenance and retained source assets, but not in learner-facing SRS deck identifiers.
 
@@ -423,7 +423,7 @@ Rule:
 
 Reference:
 
-* `docs/concept/curriculum-graph/atomic-goal-visualizations.md`
+* `docs/concept/skill-graph/atomic-goal-visualizations.md`
 
 ---
 
@@ -546,7 +546,7 @@ Package validity and publication permission stay separate. `review-required` rec
 
 Reference:
 
-* `docs/concept/curriculum-graph/dual-curriculum-package-releases.md`
+* `docs/concept/skill-graph/dual-curriculum-package-releases.md`
 * `docs/dev/dual-curriculum-package-implementation-status.md`
 
 ### 10.2 Layer B – Individuelle Lernpfade & Mastery
@@ -678,7 +678,7 @@ To keep the architecture transparent and repo-friendly, we use simple JSON files
   - Stored under `curricula/` (e.g. `curricula/<...>/json/<file>.json`).
   - Root curricula are explicitly listed in `curricula/curriculum_manifest.json` and validated in CI.
   - In the current repo they are maintained directly as committed JSON files; there is no `export:landscape` pipeline at the moment.
-  - Fields follow `LearningLandscape` / `LearningGoal` in `app/src/landscapeTypes.ts`; the backend mirrors these structures in its landscape loader types.
+  - Fields follow `SkillLandscape` / `LearningGoal` in `app/src/landscapeTypes.ts`; the backend mirrors these structures in its landscape loader types.
   - `shortKey` is an optional ASCII identifier for cross-layer references. Current committed landscapes may still omit it, so runtime code must tolerate deterministic fallback derivation from `id`.
 
 - **Layer B (learner state)**
@@ -756,11 +756,11 @@ Operational consequence for human-readable source rationales:
 - MEM/FWU SPARQL evidence may be added as a secondary or future primary route only with explicit route status such as consistent, review-needed, unavailable, or source-version-gap.
 - Public source-rationale text should explain how to reach the original source and why the mapping supports the SkillPilot goal, while avoiding long copied source passages.
 - GPT/MCP integrations must retrieve and summarize structured rationale evidence instead of inventing provenance.
-- Reference: `docs/concept/curriculum-graph/human-readable-source-rationales.md`.
+- Reference: `docs/concept/skill-graph/human-readable-source-rationales.md`.
 
 Detailed rollout plan:
 
-- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/concept/skill-graph/canonical-gymnasium-rollout.md`
 
 ---
 

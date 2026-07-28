@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { buildVisibleChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
@@ -40,10 +40,10 @@ function loadTracker(): TrackerRecord {
 }
 
 function loadLandscape(landscapePath: string): {
-  landscape: LearningLandscape
-  entry: { meta: LearningLandscape; goals: ReturnType<typeof convertLearningGoal>[] }
+  landscape: SkillLandscape
+  entry: { meta: SkillLandscape; goals: ReturnType<typeof convertLearningGoal>[] }
 } {
-  const landscape = JSON.parse(readFileSync(resolve(repoRoot, landscapePath), 'utf8')) as LearningLandscape
+  const landscape = JSON.parse(readFileSync(resolve(repoRoot, landscapePath), 'utf8')) as SkillLandscape
   return {
     landscape,
     entry: {
@@ -62,7 +62,7 @@ function countVisibleAtomicGoalsForStage({
   stageTitlePrefix,
   viewPath,
 }: {
-  baseEntry: { meta: LearningLandscape; goals: ReturnType<typeof convertLearningGoal>[] }
+  baseEntry: { meta: SkillLandscape; goals: ReturnType<typeof convertLearningGoal>[] }
   jurisdiction: string
   courseProfile?: CourseProfile
   stageTitlePrefix: string

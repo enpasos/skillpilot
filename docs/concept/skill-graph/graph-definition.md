@@ -5,11 +5,11 @@ This document defines the SkillPilot skill graph as a mathematical structure, in
 The intent is that independent implementations interpret and validate graphs in the same way.
 
 This specification covers the skill graph itself.  
-Projection contracts for user-facing trees that additionally involve `programUnits`, `goalPlacements`, or competency catalogs are specified separately in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
+Projection contracts for user-facing trees that additionally involve `programUnits`, `goalPlacements`, or competency catalogs are specified separately in `docs/concept/skill-graph/view-projection-and-goal-placement.md`.
 Layering, migration strategy, and canonical rollout policy are specified separately in:
 
-- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/concept/skill-graph/general-goal-system-and-migration.md`
+- `docs/concept/skill-graph/canonical-gymnasium-rollout.md`
 
 > Normative vs implementation: this document is the conceptual/normative definition.  
 > The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type ReviewStatus = 'atomic' | 'needs_developer_review' | 'non_atomic'
 
@@ -215,7 +215,7 @@ function serializeRecords(records: ReviewRecord[]): string {
 function main() {
   const args = parseArgs(process.argv.slice(2))
   const config = loadJson<ReviewConfig>(resolveRepoPath(args.configPath))
-  const landscape = loadJson<LearningLandscape>(resolveRepoPath(config.landscapePath))
+  const landscape = loadJson<SkillLandscape>(resolveRepoPath(config.landscapePath))
   if ((landscape.landscapeId ?? (landscape as { id?: string }).id) !== config.landscapeId) {
     throw new Error(`Configured landscapeId ${config.landscapeId} does not match ${config.landscapePath}`)
   }

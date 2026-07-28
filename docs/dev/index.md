@@ -12,7 +12,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Overall implementation direction for canonical German Gymnasium landscapes.
 - [Canonical Gymnasium Migration Status](canonical-gymnasium-migration-status.md)
   Long-running migration ledger and handoff context.
-- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot](curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md)
+- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md)
   Developer-facing schema/runtime migration note.
 - [Landscape JSON Field Reference](landscape-json-field-reference.md)
   Field-level reference for landscape JSON authoring and review.

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.CurriculumCatalogResponse;
 import com.skillpilot.backend.api.CurriculumSourceEvidenceResponse;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -549,7 +549,7 @@ public final class PackageSourceEvidenceState {
         if (descriptor == null || !packageId.equals(descriptor.packageId())) {
             throw failure("Source evidence target landscape is outside its package: " + targetLandscapeId);
         }
-        LearningLandscape landscape = domainState.landscapesById().get(targetLandscapeId);
+        SkillLandscape landscape = domainState.landscapesById().get(targetLandscapeId);
         if (landscape == null || landscape.getGoals() == null) {
             throw failure("Source evidence target landscape has no typed goals: " + targetLandscapeId);
         }

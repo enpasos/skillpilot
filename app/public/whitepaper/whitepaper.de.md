@@ -103,7 +103,7 @@ Im Fach **Mathematik** innerhalb der Gymnasium-Landschaften werden beispielsweis
 ![Exam-Knoten (Beispiel)](nodetypes.de.png)
 
 **Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:
-[Graph-Definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
+[Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 #### Frontier: Nächste erreichbare Schritte
 
@@ -337,6 +337,6 @@ Hinweis: Ihre **ID ist der einzige Schlüssel** zu Ihren Daten – speichern Sie
 **Mehr Transparenz:**
 [GitHub](https://github.com/enpasos/skillpilot)
 [Dokumentation](https://enpasos.github.io/skillpilot/)
-[Graph-Definition](https://enpasos.github.io/skillpilot/concept/curriculum-graph/graph-definition/)
+[Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 ---

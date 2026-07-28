@@ -27,13 +27,13 @@ Not the same as the skill graph derived from it. In the quality dashboard, "Curr
 
 ### Skill graph
 
-*DE: Skill-Graph* — see [Graph Definition](curriculum-graph/graph-definition.md)
+*DE: Skill-Graph* — see [Graph Definition](skill-graph/graph-definition.md)
 
 The versioned, machine-readable **operative model** derived from a curriculum: goals connected by `contains` and `requires`, together with their semantics, validity conditions, and frontier logic. The skill graph is what SkillPilot builds, validates, and navigates; the curriculum stays the normative source above it.
 
 ### Skill landscape
 
-*DE: Skill-Landschaft* — see [Graph Definition](curriculum-graph/graph-definition.md)
+*DE: Skill-Landschaft* — see [Graph Definition](skill-graph/graph-definition.md)
 
 One delimited, published instance of a skill graph: a single subject-and-school-type unit identified by a `landscapeId`, owned by champions, rated with a maturity level, and shipped as a release package. A skill landscape may be serialized into several locale files that share its ID.
 
@@ -41,7 +41,7 @@ Use *skill graph* when the point is the model, *skill landscape* when the point 
 
 ### Canonical landscape
 
-*DE: kanonische Landschaft* — see [Canonical Gymnasium Rollout Policy](curriculum-graph/canonical-gymnasium-rollout.md)
+*DE: kanonische Landschaft* — see [Canonical Gymnasium Rollout Policy](skill-graph/canonical-gymnasium-rollout.md)
 
 A skill landscape maintained once for a whole school type and reused by all jurisdictions, instead of one separately authored landscape per state. Jurisdiction-specific differences are expressed through applicability and composition views, not by copying goals.
 
@@ -65,7 +65,7 @@ A source goal is a learning objective as written in the original curriculum. The
 
 ### `sourceRef` vs `resourceLinks`
 
-*DE: Herkunftsnachweis vs. Lernressourcen* — see [Source And Resource Links](curriculum-graph/source-and-resource-links.md)
+*DE: Herkunftsnachweis vs. Lernressourcen* — see [Source And Resource Links](skill-graph/source-and-resource-links.md)
 
 Two separate goal-level fields with two separate questions:
 
@@ -76,7 +76,7 @@ Learning material must never be smuggled in as provenance, and provenance is not
 
 ### Runtime package and ontology package
 
-*DE: Runtime-Paket, Ontologie-Paket* — see [Dual Curriculum Package Releases](curriculum-graph/dual-curriculum-package-releases.md)
+*DE: Runtime-Paket, Ontologie-Paket* — see [Dual Curriculum Package Releases](skill-graph/dual-curriculum-package-releases.md)
 
 The two equivalent release artifacts of one curriculum release: a JSON runtime package consumed by the application, and an FWU-style ontology package for semantic interchange. Both are produced from the same reviewed release unit.
 
@@ -86,7 +86,7 @@ The two equivalent release artifacts of one curriculum release: a JSON runtime p
 
 ### Goal
 
-*DE: Lernziel* — see [Graph Definition §2](curriculum-graph/graph-definition.md)
+*DE: Lernziel* — see [Graph Definition §2](skill-graph/graph-definition.md)
 
 A node of the skill graph: a learnable, assessable competence, usually phrased as "Die lernende Person kann …". Every goal has a stable UUID `id`, a `title`, and a positive `weight`.
 
@@ -94,7 +94,7 @@ A year, semester, module, phase, or track is **not** a goal.
 
 ### Atomic goal
 
-*DE: atomares Lernziel* — see [Graph Definition §2.4](curriculum-graph/graph-definition.md)
+*DE: atomares Lernziel* — see [Graph Definition §2.4](skill-graph/graph-definition.md)
 
 A goal with no `contains` children. Atomic goals are the assessable units: mastery is recorded on them, the frontier is computed over them, and the didactic prerequisite layer should live between them.
 
@@ -102,19 +102,19 @@ The classification is derived from the graph structure, not authored. Stored cla
 
 ### Cluster goal
 
-*DE: Cluster-Ziel* — see [Graph Definition §2.4](curriculum-graph/graph-definition.md)
+*DE: Cluster-Ziel* — see [Graph Definition §2.4](skill-graph/graph-definition.md)
 
 A goal with at least one `contains` child. Clusters serve navigation, filtering, and aggregated progress. Their satisfaction is derived from their atomic descendants rather than recorded directly.
 
 ### Atomic basis
 
-*DE: atomare Basis* — see [Graph Definition §4.3](curriculum-graph/graph-definition.md)
+*DE: atomare Basis* — see [Graph Definition §4.3](skill-graph/graph-definition.md)
 
 Written `Atoms(g)`: the goal itself if it is atomic, otherwise its atomic descendants. It is the set whose mastery witnesses satisfaction of a cluster.
 
 ### `contains`
 
-*DE: enthält* — see [Graph Definition §4](curriculum-graph/graph-definition.md)
+*DE: enthält* — see [Graph Definition §4](skill-graph/graph-definition.md)
 
 The hierarchy relation: `(p, c)` means parent `p` bundles child `c` in **content** terms. `contains` must be acyclic but allows multiple parents (polyhierarchy). Indirect containment is the transitive closure.
 
@@ -122,13 +122,13 @@ The hierarchy relation: `(p, c)` means parent `p` bundles child `c` in **content
 
 ### `requires` (direct requires)
 
-*DE: setzt voraus* — see [Graph Definition §5](curriculum-graph/graph-definition.md)
+*DE: setzt voraus* — see [Graph Definition §5](skill-graph/graph-definition.md)
 
 The prerequisite relation: `(u, v)` means `u` must be satisfied before `v` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
 
 ### Effective requires
 
-*DE: effektive Voraussetzungen* — see [Graph Definition §6](curriculum-graph/graph-definition.md)
+*DE: effektive Voraussetzungen* — see [Graph Definition §6](skill-graph/graph-definition.md)
 
 The prerequisite relation the runtime actually evaluates: a goal's own direct `requires` plus everything its `contains` ancestors require. With multiple parents, a goal inherits the union over all ancestor paths.
 
@@ -136,19 +136,19 @@ The frontier is computed on effective requires, which is why a coarse cluster pr
 
 ### Weight
 
-*DE: Gewicht* — see [Graph Definition §2.2](curriculum-graph/graph-definition.md) and [AGENTS.md](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md)
+*DE: Gewicht* — see [Graph Definition §2.2](skill-graph/graph-definition.md) and [AGENTS.md](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md)
 
 A strictly positive number expressing a goal's share in progress and later grading. Convention in the canonical landscapes: atomic goals carry `weight = 1`, clusters carry the number of their *unique* atomic descendants, so a goal reachable through several parents is counted once.
 
 ### Goal ID and `shortKey`
 
-*DE: Lernziel-ID, Kurzschlüssel* — see [Graph Definition §2.3](curriculum-graph/graph-definition.md)
+*DE: Lernziel-ID, Kurzschlüssel* — see [Graph Definition §2.3](skill-graph/graph-definition.md)
 
 `id` is the canonical UUID identity of a goal; it may be shown to learners and coaches and is not an access credential. `shortKey` is an optional stable ASCII identifier for exports, APIs, and cross-layer references. It must be unique per logical landscape and never replaces `id`.
 
 ### Graph validity
 
-*DE: Graphgültigkeit* — see [Graph Definition §10](curriculum-graph/graph-definition.md)
+*DE: Graphgültigkeit* — see [Graph Definition §10](skill-graph/graph-definition.md)
 
 A graph is valid iff IDs are unique, `contains` and `requires` are acyclic, effective requires is acyclic, and both minimality rules hold:
 
@@ -157,19 +157,19 @@ A graph is valid iff IDs are unique, `contains` and `requires` are acyclic, effe
 
 ### Motivation anchor
 
-*DE: Motivationsanker* — see [Graph Definition §8.5](curriculum-graph/graph-definition.md)
+*DE: Motivationsanker* — see [Graph Definition §8.5](skill-graph/graph-definition.md)
 
 An atomic goal that opens a didactic route by answering "why this subject at all?", for example `Warum Physik? – Weltverständnis & Zukunft`. Route checks measure connectivity back to such an anchor.
 
 ### Terminal autonomy goal
 
-*DE: terminales Autonomieziel* — see [Graph Definition §8.5](curriculum-graph/graph-definition.md)
+*DE: terminales Autonomieziel* — see [Graph Definition §8.5](skill-graph/graph-definition.md)
 
 An atomic goal at which the learner performs independently, typically an exam-mode exercise goal such as the atomic tasks under `Übungen Q2`. It closes a didactic route.
 
 ### Route coverage
 
-*DE: Routenabdeckung* — see [Graph Definition §8.5](curriculum-graph/graph-definition.md)
+*DE: Routenabdeckung* — see [Graph Definition §8.5](skill-graph/graph-definition.md)
 
 The property that a route-relevant atomic goal lies on at least one prerequisite path from a motivation anchor to a terminal autonomy goal. The intended direction of a route is motivation → understanding → memorization where needed → independent application.
 
@@ -179,7 +179,7 @@ A skill landscape should expose teachable routes, not a loose bag of local depen
 
 ## 3. Node types (learning modes)
 
-The three node types are pedagogical goal kinds. They are orthogonal to the structural atomic/cluster split. See [Node Types](curriculum-graph/node-types.md).
+The three node types are pedagogical goal kinds. They are orthogonal to the structural atomic/cluster split. See [Node Types](skill-graph/node-types.md).
 
 ### Understanding
 
@@ -201,25 +201,25 @@ A goal carrying `examData`: an assessment task with a solution and a scoring sch
 
 ### `examData` and scoring
 
-*DE: Prüfungsdaten, Bewertung* — see [Node Types](curriculum-graph/node-types.md)
+*DE: Prüfungsdaten, Bewertung* — see [Node Types](skill-graph/node-types.md)
 
 Task content, solution content, and a scoring object with `maxPoints`, `passingPoints`, and per-step points. `total = min(sum(step points), maxPoints)`, `passed = total >= passingPoints`. Mastery is set to `1.0` on pass and left unchanged on failure.
 
 ### Exam Mode
 
-*DE: Prüfungsmodus* — see [Node Types](curriculum-graph/node-types.md)
+*DE: Prüfungsmodus* — see [Node Types](skill-graph/node-types.md)
 
 The runtime mode in which the AI acts as a strict, neutral exam supervisor: the task is delivered verbatim, no hints are given, one complete submission is graded step by step, and only then does the coaching role resume.
 
 ### SRS and SM-2
 
-*DE: Kartei, Wiederholungsplanung* — see [Node Types](curriculum-graph/node-types.md)
+*DE: Kartei, Wiederholungsplanung* — see [Node Types](skill-graph/node-types.md)
 
 Spaced repetition scheduling after the SuperMemo-2 algorithm. Each card stores `interval`, `repetition`, easiness factor `ef`, and `nextReview`. A card is **due** when `nextReview <= now` or when it has no state yet.
 
 ### Verified recall
 
-*DE: geprüfter Abruf* — see [Node Types](curriculum-graph/node-types.md)
+*DE: geprüfter Abruf* — see [Node Types](skill-graph/node-types.md)
 
 The hard recall gate on memorization cards: the coach shows only the prompt, the learner answers unaided, and only afterwards does the coach retrieve the expected answer and persist `passed` or `failed`. SRS practice alone is explicitly not a mastery proof.
 
@@ -229,7 +229,7 @@ The hard recall gate on memorization cards: the coach shows only the prompt, the
 
 ### Layer model
 
-*DE: Schichtenmodell* — see [General Goal System and Migration](curriculum-graph/general-goal-system-and-migration.md)
+*DE: Schichtenmodell* — see [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
 
 SkillPilot separates five layers that older skill landscapes still mix:
 
@@ -243,13 +243,13 @@ SkillPilot separates five layers that older skill landscapes still mix:
 
 ### Program unit
 
-*DE: Programmeinheit* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Programmeinheit* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 An explicit structural container (year, semester, module, phase, track, exam section) forming a tree via `parentUnitId` with an explicit `order`. A program-tree node must correspond one-to-one to a declared program unit; a content goal must not be reused as a stand-in for a phase.
 
 ### Goal placement
 
-*DE: Zielplatzierung* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Zielplatzierung* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 An entry attaching an unchanged goal to a program unit under a reviewed context. Relations:
 
@@ -261,13 +261,13 @@ A placement never re-parents the content tree and never creates a second occurre
 
 ### Competency axis
 
-*DE: Kompetenzachse* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Kompetenzachse* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 An orthogonal taxonomy view built from `competencyCatalog` plus `competencyRefs`, for example process competencies `K1`–`K6`. Broad capability families are taxonomy entries, not goals and not program units.
 
 ### Composition view
 
-*DE: Composition View, Sichtkomposition* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Composition View, Sichtkomposition* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 An explicit, reviewed file that defines the learner-facing upper tree for one resolved scope: structure nodes, their labels and order, and references to canonical subtree roots. It must not contain authored atomic goals, new goal payload, or new `requires` edges.
 
@@ -275,13 +275,13 @@ Where a composition view exists, it is the preferred source of truth for that sc
 
 ### Canonical subtree reference
 
-*DE: kanonische Teilbaumreferenz* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: kanonische Teilbaumreferenz* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 A pointer from a composition view to a reviewed cluster root of the canonical graph; the subtree contents stay in the canonical model. Within one compiled tree, expanded references must be pairwise disjoint.
 
 ### Projection role
 
-*DE: Projektionsrolle* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Projektionsrolle* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 Authored per composition-view reference as `projectionRole`, defaulting to `target`:
 
@@ -292,7 +292,7 @@ Roles are never inferred from `requires`, `phase`, year, or stage. On overlap, s
 
 ### Applicability
 
-*DE: Gültigkeit, Anwendbarkeit* — see [Node Types](curriculum-graph/node-types.md) and [Graph Definition §11.1](curriculum-graph/graph-definition.md)
+*DE: Gültigkeit, Anwendbarkeit* — see [Node Types](skill-graph/node-types.md) and [Graph Definition §11.1](skill-graph/graph-definition.md)
 
 Optional compiled goal metadata mapping filter dimensions (`jurisdiction`, `schoolForm`, `stage`, `durationModel`, `courseProfile`, …) to the values for which the goal is visible. An absent dimension means "unrestricted on that dimension".
 
@@ -300,25 +300,25 @@ Applicability is not a node type and never creates a parent edge; it can only hi
 
 ### Applicability override
 
-*DE: Gültigkeits-Override* — see [Graph Definition §11.1.1](curriculum-graph/graph-definition.md)
+*DE: Gültigkeits-Override* — see [Graph Definition §11.1.1](skill-graph/graph-definition.md)
 
 Review metadata under `extendedData.applicabilityOverrides` marking which in-force applicability values were added by an explicit, documented exception rather than by ordinary source alignment. It is audit information, not a second filter system; the runtime still evaluates the compiled `applicability`.
 
 ### Entry scope
 
-*DE: Einstiegskontext* — see [General Goal System and Migration](curriculum-graph/general-goal-system-and-migration.md)
+*DE: Einstiegskontext* — see [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
 
 The small set of contextual choices a learner makes before navigating content: school form, stage, jurisdiction, duration model, course profile, current year or phase. Entry scope is a query and navigation context applied to program units, placements, and applicability — it must never force duplication of goals.
 
 ### Resolved scope
 
-*DE: aufgelöster Kontext* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: aufgelöster Kontext* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 A fully determined combination such as `DE-HE / Gymnasium / SekII / Mathematik / LK`. Default trees, single-occurrence validity, and coverage checks are always evaluated relative to one resolved scope.
 
 ### Default tree
 
-*DE: Standardbaum* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Standardbaum* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 The one tree a learner sees for a resolved scope. Every visible edge must come from exactly one explicit source (`contains`, `parentUnitId`, `goalPlacements`, or `competencyRefs`); structure is never inferred from titles, labels, or `phase`.
 
@@ -326,19 +326,19 @@ The one tree a learner sees for a resolved scope. Every visible edge must come f
 
 ### Content tree, program tree, competency view
 
-*DE: Inhaltsbaum, Programmbaum, Kompetenzsicht* — see [View Projection and Goal Placement](curriculum-graph/view-projection-and-goal-placement.md)
+*DE: Inhaltsbaum, Programmbaum, Kompetenzsicht* — see [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.md)
 
 The three classic view families, each with exactly one structural source of truth: `contains` for content, `programUnits` plus `goalPlacements` for program, `competencyCatalog` plus `competencyRefs` for competency. The scope-specific composition tree is the fourth family and the preferred learner-facing default.
 
 ### `phase`
 
-*DE: Phase* — see [Graph Definition §2.2](curriculum-graph/graph-definition.md)
+*DE: Phase* — see [Graph Definition §2.2](skill-graph/graph-definition.md)
 
 Legacy compatibility metadata (`E`, `Q1`–`Q4`, …) that may drive badges, filtering, or migration tooling. It is explicitly **not** canonical graph semantics and never implies parentage: `phase: Q1` does not mean "child of the Q1 cluster".
 
 ### `ALL`
 
-*DE: `ALL`-Platzhalter* — see [Graph Definition §11.1](curriculum-graph/graph-definition.md)
+*DE: `ALL`-Platzhalter* — see [Graph Definition §11.1](skill-graph/graph-definition.md)
 
 A query sentinel meaning "do not restrict this dimension" while resolving a scope. It must never be serialized as an applicability or placement value.
 
@@ -391,7 +391,7 @@ Exactly one backend-confirmed atomic goal that is the current working target of 
 
 ### Frontier
 
-*DE: Frontier, nächste erreichbare Lernziele* — see [Graph Definition §9.1](curriculum-graph/graph-definition.md)
+*DE: Frontier, nächste erreichbare Lernziele* — see [Graph Definition §9.1](skill-graph/graph-definition.md)
 
 The set of not-yet-mastered **atomic** goals whose effective prerequisites are all satisfied — the didactic zone of proximal development, computed rather than suggested.
 
@@ -399,25 +399,25 @@ The frontier is not an AI recommendation: it is the mathematically determined se
 
 ### Satisfaction
 
-*DE: Erfüllung* — see [Graph Definition §9.1](curriculum-graph/graph-definition.md)
+*DE: Erfüllung* — see [Graph Definition §9.1](skill-graph/graph-definition.md)
 
 `Sat(g)` holds iff the goal's atomic basis is non-empty and fully mastered. An atomic goal is satisfied iff it is mastered; a cluster iff all its atomic descendants are.
 
 ### Optimistic mode
 
-*DE: optimistischer Modus* — see [Graph Definition §11.3](curriculum-graph/graph-definition.md)
+*DE: optimistischer Modus* — see [Graph Definition §11.3](skill-graph/graph-definition.md)
 
 Filter first, then check prerequisites only inside the filtered graph. Learners can start directly in the selected scope without being blocked by gaps from earlier years. This is the default exploration mode.
 
 ### Strict mode (pessimistic mode)
 
-*DE: strikter Modus, pessimistischer Modus* — see [Graph Definition §11.4](curriculum-graph/graph-definition.md)
+*DE: strikter Modus, pessimistischer Modus* — see [Graph Definition §11.4](skill-graph/graph-definition.md)
 
 Candidates still come from the filtered graph, but prerequisites are enforced globally. Used diagnostically when a learner struggles, to expose missing foundations outside the current filter. Learners toggle it via the `strictMode` preference.
 
 ### Missing prerequisites
 
-*DE: fehlende Voraussetzungen* — see [Graph Definition §11.5](curriculum-graph/graph-definition.md)
+*DE: fehlende Voraussetzungen* — see [Graph Definition §11.5](skill-graph/graph-definition.md)
 
 The unsatisfied effective prerequisites of a goal, split into gaps inside the filter and gaps outside it. This split is the diagnostic behind "why is this goal still locked?".
 

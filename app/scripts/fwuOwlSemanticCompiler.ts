@@ -817,14 +817,14 @@ const addCurriculumIdentityProjection = (
     LP_SCHOOL_TYPE,
     LP_HAS_SCHOOL_SUBJECT,
     LP_FOR_SCHOOL_TYPE,
-    `${SP}LearningLandscape`,
+    `${SP}SkillLandscape`,
     `${SP}skillpilotId`,
   ]) {
     if (![...coreTerms, ...applicationTerms].includes(required)) {
       fail(`Curriculum identity profile lacks required term ${required}.`)
     }
   }
-  addType(triples, state.rootIri, `${SP}LearningLandscape`)
+  addType(triples, state.rootIri, `${SP}SkillLandscape`)
   triples.add(state.rootIri, LP_HAS_SCHOOL_SUBJECT, iriObject(subject))
   triples.add(state.rootIri, LP_FOR_SCHOOL_TYPE, iriObject(schoolType))
   addType(triples, subject, LP_SCHOOL_SUBJECT)

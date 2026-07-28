@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import org.junit.jupiter.api.Test;
 
 class PackageLandscapeModelParityTest {
@@ -14,7 +14,7 @@ class PackageLandscapeModelParityTest {
 
     @Test
     void roundTripsCompiledLandscapeContractFields() throws Exception {
-        LearningLandscape landscape = objectMapper.readValue("""
+        SkillLandscape landscape = objectMapper.readValue("""
                 {
                   "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
                   "landscapeFormatVersion": "1.0",
@@ -69,7 +69,7 @@ class PackageLandscapeModelParityTest {
                     }
                   ]
                 }
-                """, LearningLandscape.class);
+                """, SkillLandscape.class);
 
         LearningGoal goal = landscape.getGoals().getFirst();
         assertThat(landscape.getSchema()).endsWith("compiled-landscape.schema.json");

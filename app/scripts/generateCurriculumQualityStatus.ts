@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
@@ -1642,7 +1642,7 @@ function buildParentByChild(goals: LearningGoal[]): Map<string, string[]> {
   return parentByChild
 }
 
-function buildDirectRequiresEdges(landscape: LearningLandscape): Map<string, string[]> {
+function buildDirectRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
   const edges = new Map<string, string[]>()
   landscape.goals.forEach((goal) => {
     const localRequires = (goal.requires ?? [])
@@ -1654,7 +1654,7 @@ function buildDirectRequiresEdges(landscape: LearningLandscape): Map<string, str
   return edges
 }
 
-function buildAtomicDirectRequiresEdges(landscape: LearningLandscape): Map<string, string[]> {
+function buildAtomicDirectRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const edges = new Map<string, string[]>()
   landscape.goals.forEach((goal) => {
@@ -1674,7 +1674,7 @@ function buildAtomicDirectRequiresEdges(landscape: LearningLandscape): Map<strin
   return edges
 }
 
-function buildEffectiveRequiresEdges(landscape: LearningLandscape): Map<string, string[]> {
+function buildEffectiveRequiresEdges(landscape: SkillLandscape): Map<string, string[]> {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const parentByChild = buildParentByChild(landscape.goals)
   const directEdges = buildDirectRequiresEdges(landscape)
@@ -1804,7 +1804,7 @@ function makeRule(
   }
 }
 
-function evaluateGraphIntegrity(landscape: LearningLandscape, globalGoalIds: Set<string>): RuleResult {
+function evaluateGraphIntegrity(landscape: SkillLandscape, globalGoalIds: Set<string>): RuleResult {
   const errors: string[] = []
   const goalById = new Map<string, LearningGoal>()
 
@@ -1867,7 +1867,7 @@ function evaluateGraphIntegrity(landscape: LearningLandscape, globalGoalIds: Set
   )
 }
 
-function evaluateTypeConsistency(landscape: LearningLandscape): RuleResult {
+function evaluateTypeConsistency(landscape: SkillLandscape): RuleResult {
   const mismatches = landscape.goals.filter((goal) => {
     if (!goal.type) return false
     const canonicalType = isAtomicGoal(goal) ? 'atomic' : 'cluster'
@@ -1907,7 +1907,7 @@ function terminalAutonomyGoalsForRouteScope(
 }
 
 function evaluateRouteEndpointCompositionVisibility(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   profile: RouteProfile,
   terminalAutonomyGoals: LearningGoal[],
 ): RuleResult | null {
@@ -2063,7 +2063,7 @@ function examReleaseCoverageIssues(goal: LearningGoal): string[] {
   return issues
 }
 
-function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfile): ScopeStatus {
+function evaluateRouteProfile(landscape: SkillLandscape, profile: RouteProfile): ScopeStatus {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
@@ -2403,7 +2403,7 @@ interface MemoryVisibilityReport {
   errors: string[]
 }
 
-function collectMemoryDeckEvidence(landscape: LearningLandscape): MemoryDeckEvidence {
+function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidence {
   const evidence: MemoryDeckEvidence = {
     memoryGoalIds: new Set(),
     deckIdsByMemoryGoalId: new Map(),
@@ -2694,7 +2694,7 @@ function validateMemoryCardReviewCardRecordShape(
   return errors
 }
 
-function evaluateSemanticAtomicity(landscape: LearningLandscape, configs: ReviewConfig[]): RuleResult {
+function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-301', 'not_configured', 'No semantic atomicity review config is registered for this curriculum.')
   }
@@ -2780,7 +2780,7 @@ function readSemanticConfigs(): Map<string, ReviewConfig[]> {
   return configsByLandscapeId
 }
 
-function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryCardReviewConfig[]): RuleResult {
+function evaluateMemoryCardReview(landscape: SkillLandscape, configs: MemoryCardReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-302', 'not_configured', 'No memory-card review config is registered for this curriculum.')
   }
@@ -3099,7 +3099,7 @@ function readGoalVisualizationQaLedgers(): Map<string, GoalVisualizationQaLedger
 }
 
 function evaluateGoalVisualizationQa(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   ledgersBySubject: Map<string, GoalVisualizationQaLedger>,
 ): RuleResult {
   const relevantGoals = landscape.goals.filter(isGoalVisualizationRelevantGoal)
@@ -3525,10 +3525,10 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_LATIN_LANDSCAPE_ID, 'latein'],
 ])
 
-function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {
+function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
-  return loadJson<LearningLandscape>(absolutePath)
+  return loadJson<SkillLandscape>(absolutePath)
 }
 
 function readCompositionViewFilesForLandscapeId(landscapeId: string): string[] {
@@ -3544,7 +3544,7 @@ function readCompositionViewFilesForReport(report: CoverageReport): string[] {
 }
 
 function collectRenderedAtomicGoalIdsFromCompositionView(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   viewFile: string,
 ): Set<string> {
   const entry = {
@@ -3699,7 +3699,7 @@ function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<LearningLandscape>(sourcePath)
+      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
       const atomicGoalIds = new Set(
         (sourceLandscape.goals ?? [])
           .filter((goal) => allGoalIds.has(goal.id) && isAtomicGoal(goal))
@@ -3729,7 +3729,7 @@ function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<LearningLandscape>(sourcePath)
+      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
       const goalIds = new Set(
         (sourceLandscape.goals ?? [])
           .map((goal) => goal.id),
@@ -3947,7 +3947,7 @@ function formatCourseLevelSet(levels: Set<CourseLevelTag>): string {
   return Array.from(levels).sort().join('+') || '-'
 }
 
-function evaluateCourseLevelMappingConsistency(landscape: LearningLandscape): RuleResult {
+function evaluateCourseLevelMappingConsistency(landscape: SkillLandscape): RuleResult {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const configuredMappingFiles = readAllGoalMappingFiles()
     .filter((mappingFile) =>
@@ -4090,7 +4090,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
     collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
       .flatMap((file) => {
         try {
-          const landscape = loadJson<LearningLandscape>(file)
+          const landscape = loadJson<SkillLandscape>(file)
           return landscape.goals.map((goal) => goal.id)
         } catch {
           return []
@@ -4309,9 +4309,9 @@ function createSourceSnapshotMappingPipeline(
   const sourcePath = candidatePaths.find((candidate) => existsSync(candidate))
   if (!sourcePath) return null
 
-  let sourceLandscape: LearningLandscape
+  let sourceLandscape: SkillLandscape
   try {
-    sourceLandscape = loadJson<LearningLandscape>(sourcePath)
+    sourceLandscape = loadJson<SkillLandscape>(sourcePath)
   } catch {
     return null
   }
@@ -5313,7 +5313,7 @@ function main() {
   const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
   const loadedLandscapes = canonicalFiles.map((file) => ({
     file,
-    landscape: loadJson<LearningLandscape>(file),
+    landscape: loadJson<SkillLandscape>(file),
   }))
   const globalGoalIds = new Set(loadedLandscapes.flatMap(({ landscape }) => landscape.goals.map((goal) => goal.id)))
 

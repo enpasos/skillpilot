@@ -10,9 +10,9 @@ Use this document for:
 
 Use related documents for adjacent concerns:
 
-- `docs/concept/curriculum-graph/general-goal-system-and-migration.md`
-- `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
-- `docs/concept/curriculum-graph/graph-definition.md`
+- `docs/concept/skill-graph/general-goal-system-and-migration.md`
+- `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
+- `docs/concept/skill-graph/graph-definition.md`
 
 These related documents explain the layered model, the transition strategy, and the formal skill graph. This document answers a narrower question:
 

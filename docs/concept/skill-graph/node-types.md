@@ -5,8 +5,8 @@ SkillPilot models learning goals as nodes in a skill graph. This document define
 Use this document for node-specific semantics only.  
 Graph relations, placements, and projected view contracts are specified separately in:
 
-- `docs/concept/curriculum-graph/graph-definition.md`
-- `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`
+- `docs/concept/skill-graph/graph-definition.md`
+- `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 
 The categories in this document are pedagogical goal kinds.
 

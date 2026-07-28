@@ -14,7 +14,7 @@ See also:
 - `docs/dev/canonical-gymnasium-physics-m2-lane-shortlist.md`
 - `docs/dev/canonical-gymnasium-physics-topic-workboard.md`
 - `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
-- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/concept/skill-graph/canonical-gymnasium-rollout.md`
 
 ## 1. Definition of parity
 

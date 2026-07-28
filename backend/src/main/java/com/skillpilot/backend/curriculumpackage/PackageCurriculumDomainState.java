@@ -3,7 +3,7 @@ package com.skillpilot.backend.curriculumpackage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -26,16 +26,16 @@ public final class PackageCurriculumDomainState {
     private static final String SOURCE_INDEX_ROLE = "source-index";
 
     private final String generationSha256;
-    private final List<LearningLandscape> landscapes;
-    private final Map<String, LearningLandscape> landscapesById;
+    private final List<SkillLandscape> landscapes;
+    private final Map<String, SkillLandscape> landscapesById;
     private final Map<String, String> landscapeIdByGoalId;
     private final List<String> rootLandscapeIds;
     private final PackageLandscapeMappingState.Merged mappingState;
 
     private PackageCurriculumDomainState(
             String generationSha256,
-            List<LearningLandscape> landscapes,
-            Map<String, LearningLandscape> landscapesById,
+            List<SkillLandscape> landscapes,
+            Map<String, SkillLandscape> landscapesById,
             Map<String, String> landscapeIdByGoalId,
             List<String> rootLandscapeIds,
             PackageLandscapeMappingState.Merged mappingState) {
@@ -56,15 +56,15 @@ public final class PackageCurriculumDomainState {
         ObjectMapper strictMapper = CurriculumPackageJson.strictCopy(
                 Objects.requireNonNull(objectMapper, "objectMapper"));
 
-        List<LearningLandscape> landscapes = new ArrayList<>();
-        Map<String, LearningLandscape> landscapesById = new LinkedHashMap<>();
+        List<SkillLandscape> landscapes = new ArrayList<>();
+        Map<String, SkillLandscape> landscapesById = new LinkedHashMap<>();
         Map<String, String> landscapeIdByGoalId = new LinkedHashMap<>();
         Map<String, Set<String>> landscapeIdsByPackage = new LinkedHashMap<>();
         Map<String, Set<String>> goalIdsByPackage = new LinkedHashMap<>();
 
         for (CurriculumRuntimeSnapshot.LandscapeDescriptor descriptor
                 : snapshot.landscapesById().values()) {
-            LearningLandscape landscape = parseLandscape(strictMapper, descriptor);
+            SkillLandscape landscape = parseLandscape(strictMapper, descriptor);
             validateDescriptorBinding(descriptor, landscape);
             if (landscape.getGoals() == null) {
                 throw failure("Package landscape has no goals array: " + descriptor.landscapeId());
@@ -159,11 +159,11 @@ public final class PackageCurriculumDomainState {
         return generationSha256;
     }
 
-    public List<LearningLandscape> landscapes() {
+    public List<SkillLandscape> landscapes() {
         return landscapes;
     }
 
-    public Map<String, LearningLandscape> landscapesById() {
+    public Map<String, SkillLandscape> landscapesById() {
         return landscapesById;
     }
 
@@ -179,11 +179,11 @@ public final class PackageCurriculumDomainState {
         return mappingState;
     }
 
-    private static LearningLandscape parseLandscape(
+    private static SkillLandscape parseLandscape(
             ObjectMapper objectMapper,
             CurriculumRuntimeSnapshot.LandscapeDescriptor descriptor) {
         try {
-            return objectMapper.readValue(descriptor.json(), LearningLandscape.class);
+            return objectMapper.readValue(descriptor.json(), SkillLandscape.class);
         } catch (JsonProcessingException e) {
             throw failure("Cannot bind package landscape " + descriptor.landscapeId(), e);
         }
@@ -207,7 +207,7 @@ public final class PackageCurriculumDomainState {
 
     private static void validateDescriptorBinding(
             CurriculumRuntimeSnapshot.LandscapeDescriptor descriptor,
-            LearningLandscape landscape) {
+            SkillLandscape landscape) {
         requireEqual(descriptor.landscapeId(), landscape.getLandscapeId(), "landscapeId");
         requireEqual(descriptor.locale(), landscape.getLocale(), "locale");
         requireEqual(descriptor.frameworkId(), landscape.getFrameworkId(), "frameworkId");

@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 type MappingEntry = {
   canonicalGoalId?: string
@@ -145,7 +145,7 @@ function parseGoalRef(raw: string): string {
 }
 
 function buildAtomicDescendantsByGoalId(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
 ): Map<string, Set<string>> {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const result = new Map<string, Set<string>>()
@@ -180,7 +180,7 @@ function buildAtomicDescendantsByGoalId(
   return result
 }
 
-function buildPrimaryParentByGoalId(landscape: LearningLandscape): Map<string, string> {
+function buildPrimaryParentByGoalId(landscape: SkillLandscape): Map<string, string> {
   const result = new Map<string, string>()
   const rootGoalId = landscape.goals.find((goal) => goal.tags?.includes('root'))?.id
   const goalOrder = new Map(landscape.goals.map((goal, index) => [goal.id, index]))
@@ -200,7 +200,7 @@ function buildPrimaryParentByGoalId(landscape: LearningLandscape): Map<string, s
 }
 
 function collectSourceBackedAtomicGoalIds(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   atomicDescendantsByGoalId: Map<string, Set<string>>,
   mappingPaths: string[],
 ): Set<string> {
@@ -237,7 +237,7 @@ function courseProfileAllows(goal: LearningGoal, profile: CourseProfile): boolea
 }
 
 function buildGoalGroups(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   sourceBackedAtomicGoalIds: Set<string>,
   profile: CourseProfile,
   state: StateConfig,
@@ -279,7 +279,7 @@ function buildGoalGroups(
 }
 
 function buildView(
-  landscape: LearningLandscape,
+  landscape: SkillLandscape,
   sourceBackedAtomicGoalIds: Set<string>,
   profile: CourseProfile,
   state: StateConfig,
@@ -316,7 +316,7 @@ function buildView(
   }
 }
 
-const landscape = readJson<LearningLandscape>(canonicalChemistryPath)
+const landscape = readJson<SkillLandscape>(canonicalChemistryPath)
 const atomicDescendantsByGoalId = buildAtomicDescendantsByGoalId(landscape)
 
 mkdirSync(repoPath(outputDir), { recursive: true })

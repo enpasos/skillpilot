@@ -14,7 +14,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -91,7 +91,7 @@ public class LearnerServiceReproTest {
 
     @Test
     void getRichFrontier_shouldResolveQualifiedIdsMatches() {
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(curriculumId);
 
         LearningGoal root = goal("ROOT", null, List.of("YEAR_11"));
@@ -149,7 +149,7 @@ public class LearnerServiceReproTest {
             LearningGoal itemB = goal("B", null, null);
             itemB.setTags(Collections.emptyList()); // No tags -> FAILS filter "GK"
 
-            LearningLandscape landscape = new LearningLandscape();
+            SkillLandscape landscape = new SkillLandscape();
             landscape.setLandscapeId("test-landscape");
             landscape.setTitle("Test");
             landscape.setDescription("Desc");
@@ -227,7 +227,7 @@ public class LearnerServiceReproTest {
             LearningGoal cluster = goal("Cluster", null, List.of("Hidden", "Visible"));
             cluster.setTags(List.of("LK"));
 
-            LearningLandscape landscape = new LearningLandscape();
+            SkillLandscape landscape = new SkillLandscape();
             landscape.setLandscapeId("test-landscape");
             landscape.setTitle("Test");
             landscape.setDescription("Desc");
@@ -288,7 +288,7 @@ public class LearnerServiceReproTest {
             LearningGoal root = goal("Root", null, List.of("Child"));
             LearningGoal child = goal("Child", null, null);
 
-            LearningLandscape landscape = new LearningLandscape();
+            SkillLandscape landscape = new SkillLandscape();
             landscape.setLandscapeId("test-landscape");
             landscape.setTitle("Test");
             landscape.setDescription("Desc");
@@ -356,7 +356,7 @@ public class LearnerServiceReproTest {
             LearningGoal cluster = goal("E.2", null, List.of("Target", "Prereq", "DeepPrereq"));
             cluster.setTags(List.of("GK"));
 
-            LearningLandscape landscape = new LearningLandscape();
+            SkillLandscape landscape = new SkillLandscape();
             landscape.setLandscapeId("test-landscape");
             landscape.setTitle("Test");
             landscape.setDescription("Desc");
@@ -399,7 +399,7 @@ public class LearnerServiceReproTest {
 
     @Test
     void getLearnerState_shouldOfferScopeExpansionWhenScopeCompleted() {
-        LearningLandscape landscape = new LearningLandscape();
+        SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(curriculumId);
         landscape.setTitle("Test Curriculum");
         landscape.setDescription("Test Description");

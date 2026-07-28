@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 
 interface SourceRationaleItem {
   goal?: {
@@ -62,7 +62,7 @@ function isMemoryOrNonContentLeaf(goal: LearningGoal): boolean {
     || goal.examData !== undefined
 }
 
-function relevantLeafGoalIds(landscape: LearningLandscape): string[] {
+function relevantLeafGoalIds(landscape: SkillLandscape): string[] {
   return landscape.goals
     .filter((goal) => !isClusterGoal(goal) && !isMemoryOrNonContentLeaf(goal))
     .map((goal) => goal.id)
@@ -85,7 +85,7 @@ function hasClassicRoute(item: SourceRationaleItem): boolean {
     && item.sourceRationaleStatus !== 'classic_source_gap'
 }
 
-const landscape = readJson<LearningLandscape>(landscapePath)
+const landscape = readJson<SkillLandscape>(landscapePath)
 const report = readJson<SourceRationaleReport>(reportPath)
 const expectedGoalIds = relevantLeafGoalIds(landscape)
 const expectedGoalIdSet = new Set(expectedGoalIds)

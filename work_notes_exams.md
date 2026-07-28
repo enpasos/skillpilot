@@ -6,7 +6,7 @@
 - `ai/openai custom gpt/knowledge_docs/exam_proctor.md`
 - `ai/openai custom gpt/knowledge_docs/deep_linking.md`
 - `ai/openai custom gpt/system_instructions.md` (Trigger: `examData` -> Prüfungsmodus)
-- `docs/concept/curriculum-graph/node-types.md` (Abschnitt "Exam Mode (AI exam supervisor)")
+- `docs/concept/skill-graph/node-types.md` (Abschnitt "Exam Mode (AI exam supervisor)")
 
 **Kerngedanken im aktuellen Regelwerk:**
 - Prüfungsmodus wird **nur** aktiviert, wenn das aktuelle Ziel `examData` enthaelt.
@@ -78,7 +78,7 @@ Ohne diese Aenderung bleibt das System im Trainer-Modus, selbst wenn die Regeln 
   - Einmalige Gesamtabgabe gefordert
   - Nach Bewertung: Findings-Review im Trainer-Modus
 
-- **Konzept-Doku konsistent gemacht**: `docs/concept/curriculum-graph/node-types.md`
+- **Konzept-Doku konsistent gemacht**: `docs/concept/skill-graph/node-types.md`
   - Verbatim-Task + kurzer Prüfungs‑Header + fixer Einreichungs‑Hinweis
   - Single-Submission-Flow
   - Findings-Review nach Bewertung

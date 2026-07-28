@@ -9,7 +9,7 @@ This page is the entry point for repeatable production and export pipelines. Kee
 
 ## Pipelines
 
-- [Skill Graph](curriculum-graph.md)
+- [Skill Graph](skill-graph.md)
   Pipeline notes for skill graph production.
 - [Curriculum Package Provisioning](curriculum-package-provisioning.md)
   Secure quarantine, content-addressed installation, CAS activation, and rollback for JSON runtime packages.

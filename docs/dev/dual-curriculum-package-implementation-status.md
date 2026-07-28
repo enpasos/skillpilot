@@ -1,7 +1,7 @@
 # Dual Curriculum Package Implementation Status
 
 - Stand: 2026-07-11
-- Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
+- Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/skill-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: keine; `P2` ist abgeschlossen, `P3` noch nicht begonnen
 - Nächster Umsetzungsschritt: `DPK-009 – semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar`
 - Letzter vollständig abgeschlossener Schritt: `DPK-008d – isolierter Reverse Compiler zum installierbaren JSON-Runtime-ZIP`

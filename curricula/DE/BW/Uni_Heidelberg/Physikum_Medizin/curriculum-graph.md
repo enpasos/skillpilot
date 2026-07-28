@@ -6,7 +6,7 @@ into a SkillPilot competence graph.
 ## Scope
 - Program: Humanmedizin, vorklinischer Abschnitt (1.-4. Fachsemester)
 - Institution: Medizinische Fakultaet Heidelberg
-- Output: `LearningLandscape` JSON under `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/json/`
+- Output: `SkillLandscape` JSON under `curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/json/`
 
 ## Step 0: Extract the source (done)
 

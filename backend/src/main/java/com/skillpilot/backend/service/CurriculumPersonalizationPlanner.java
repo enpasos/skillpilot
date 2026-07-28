@@ -2,7 +2,7 @@ package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.landscape.LandscapeFilter;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
@@ -43,13 +43,13 @@ public final class CurriculumPersonalizationPlanner {
 
     public static PersonalizationPlan plan(
             String rootLandscapeId,
-            Function<String, LearningLandscape> landscapeResolver,
+            Function<String, SkillLandscape> landscapeResolver,
             Map<String, Map<String, Object>> personalCurriculum) {
         if (rootLandscapeId == null || rootLandscapeId.isBlank() || landscapeResolver == null) {
             return PersonalizationPlan.invalid("personalization-root-missing");
         }
 
-        LearningLandscape root = landscapeResolver.apply(rootLandscapeId);
+        SkillLandscape root = landscapeResolver.apply(rootLandscapeId);
         if (root == null || !rootLandscapeId.equals(root.getLandscapeId())) {
             return PersonalizationPlan.invalid("personalization-root-unknown");
         }
@@ -190,11 +190,11 @@ public final class CurriculumPersonalizationPlanner {
      */
     public static PersonalizationPlan plan(
             String rootLandscapeId,
-            List<LearningLandscape> authoredLandscapes,
+            List<SkillLandscape> authoredLandscapes,
             Map<String, Map<String, Object>> personalCurriculum) {
-        Map<String, LearningLandscape> byId = new LinkedHashMap<>();
+        Map<String, SkillLandscape> byId = new LinkedHashMap<>();
         if (authoredLandscapes != null) {
-            for (LearningLandscape landscape : authoredLandscapes) {
+            for (SkillLandscape landscape : authoredLandscapes) {
                 if (landscape != null
                         && landscape.getLandscapeId() != null
                         && !landscape.getLandscapeId().isBlank()) {
@@ -208,7 +208,7 @@ public final class CurriculumPersonalizationPlanner {
     /**
      * Resolves a submitted filter in the namespace of exactly one landscape.
      */
-    public static String canonicalFilterId(LearningLandscape landscape, String candidate) {
+    public static String canonicalFilterId(SkillLandscape landscape, String candidate) {
         if (landscape == null
                 || candidate == null
                 || candidate.isBlank()
@@ -321,7 +321,7 @@ public final class CurriculumPersonalizationPlanner {
 
     private static ValidationResult validate(
             PersonalizationFlow flow,
-            Function<String, LearningLandscape> resolver) {
+            Function<String, SkillLandscape> resolver) {
         if (!SUPPORTED_FLOW_VERSION.equals(flow.getVersion())) {
             return ValidationResult.invalid("personalization-flow-version-unsupported");
         }
@@ -388,7 +388,7 @@ public final class CurriculumPersonalizationPlanner {
     private static String validateSource(
             PersonalizationGroup group,
             PersonalizationOptionSource source,
-            Function<String, LearningLandscape> resolver,
+            Function<String, SkillLandscape> resolver,
             Map<String, PersonalizationGroup> earlierGroups) {
         return switch (source.getKind()) {
             case LANDSCAPE_FILTERS -> {
@@ -399,7 +399,7 @@ public final class CurriculumPersonalizationPlanner {
                         || nonEmpty(source.getValues())) {
                     yield "personalization-filter-source-invalid";
                 }
-                LearningLandscape landscape = resolveExact(resolver, source.getLandscapeId());
+                SkillLandscape landscape = resolveExact(resolver, source.getLandscapeId());
                 if (landscape == null
                         || !authoredFiltersValid(landscape)
                         || !filtersResolve(landscape, source.getFilterIds())
@@ -446,7 +446,7 @@ public final class CurriculumPersonalizationPlanner {
                 }
                 if (source.getFilterIds() != null) {
                     for (String landscapeId : upstream.getSource().getLandscapeIds()) {
-                        LearningLandscape landscape = resolveExact(resolver, landscapeId);
+                        SkillLandscape landscape = resolveExact(resolver, landscapeId);
                         if (landscape == null
                                 || !authoredFiltersValid(landscape)) {
                             yield "personalization-dynamic-filter-unresolved";
@@ -464,7 +464,7 @@ public final class CurriculumPersonalizationPlanner {
                     }
                 } else {
                     for (String landscapeId : upstream.getSource().getLandscapeIds()) {
-                        LearningLandscape landscape = resolveExact(resolver, landscapeId);
+                        SkillLandscape landscape = resolveExact(resolver, landscapeId);
                         if (landscape == null || !authoredFiltersValid(landscape)) {
                             yield "personalization-dynamic-filter-unresolved";
                         }
@@ -481,7 +481,7 @@ public final class CurriculumPersonalizationPlanner {
                         || !scopeValuesValid(source.getValues())) {
                     yield "personalization-scope-source-invalid";
                 }
-                LearningLandscape landscape = resolveExact(resolver, source.getLandscapeId());
+                SkillLandscape landscape = resolveExact(resolver, source.getLandscapeId());
                 if (landscape == null
                         || group.getMaxSelections() > 1
                         || group.getMinSelections() > source.getValues().size()) {
@@ -497,11 +497,11 @@ public final class CurriculumPersonalizationPlanner {
             PersonalizationStage stage,
             PersonalizationGroup group,
             PersonalizationOptionSource source,
-            Function<String, LearningLandscape> resolver,
+            Function<String, SkillLandscape> resolver,
             Map<String, List<String>> selectedLandscapeIdsByGroup) {
         return switch (source.getKind()) {
             case LANDSCAPE_FILTERS -> {
-                LearningLandscape landscape = resolveExact(resolver, source.getLandscapeId());
+                SkillLandscape landscape = resolveExact(resolver, source.getLandscapeId());
                 yield List.of(filterInstance(
                         rootLandscapeId,
                         stage,
@@ -512,7 +512,7 @@ public final class CurriculumPersonalizationPlanner {
             case LANDSCAPES -> {
                 List<PersonalizationPlan.Option> options = new ArrayList<>();
                 for (String landscapeId : source.getLandscapeIds()) {
-                    LearningLandscape landscape = resolveExact(resolver, landscapeId);
+                    SkillLandscape landscape = resolveExact(resolver, landscapeId);
                     options.add(option(
                             rootLandscapeId,
                             stage,
@@ -531,7 +531,7 @@ public final class CurriculumPersonalizationPlanner {
                 }
                 List<GroupInstance> instances = new ArrayList<>();
                 for (String landscapeId : selected) {
-                    LearningLandscape landscape = resolveExact(resolver, landscapeId);
+                    SkillLandscape landscape = resolveExact(resolver, landscapeId);
                     if (landscape == null) {
                         yield null;
                     }
@@ -548,7 +548,7 @@ public final class CurriculumPersonalizationPlanner {
                 yield List.copyOf(instances);
             }
             case SCOPE_VALUES -> {
-                LearningLandscape landscape = resolveExact(resolver, source.getLandscapeId());
+                SkillLandscape landscape = resolveExact(resolver, source.getLandscapeId());
                 String instanceId = group.getId()
                         + ":"
                         + landscape.getLandscapeId()
@@ -573,7 +573,7 @@ public final class CurriculumPersonalizationPlanner {
             String rootLandscapeId,
             PersonalizationStage stage,
             PersonalizationGroup group,
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             List<String> restrictedFilterIds) {
         String instanceId = restrictedFilterIds == null
                 ? group.getId() + ":" + landscape.getLandscapeId()
@@ -608,7 +608,7 @@ public final class CurriculumPersonalizationPlanner {
             PersonalizationStage stage,
             PersonalizationGroup group,
             String instanceId,
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             String filterId) {
         String landscapeLabel = firstNonBlank(
                 landscape.getSubject(),
@@ -646,7 +646,7 @@ public final class CurriculumPersonalizationPlanner {
             PersonalizationStage stage,
             PersonalizationGroup group,
             String instanceId,
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             String scopeKey,
             PersonalizationScopeValue scopeValue) {
         String landscapeLabel = firstNonBlank(
@@ -849,7 +849,7 @@ public final class CurriculumPersonalizationPlanner {
     }
 
     private static boolean filtersResolve(
-            LearningLandscape landscape,
+            SkillLandscape landscape,
             List<String> restrictedFilterIds) {
         if (landscape == null) {
             return false;
@@ -874,7 +874,7 @@ public final class CurriculumPersonalizationPlanner {
         return true;
     }
 
-    private static boolean authoredFiltersValid(LearningLandscape landscape) {
+    private static boolean authoredFiltersValid(SkillLandscape landscape) {
         if (landscape == null || landscape.getFilters() == null) {
             return true;
         }
@@ -889,7 +889,7 @@ public final class CurriculumPersonalizationPlanner {
         return true;
     }
 
-    private static List<String> authoredFilterIds(LearningLandscape landscape) {
+    private static List<String> authoredFilterIds(SkillLandscape landscape) {
         if (landscape == null || landscape.getFilters() == null) {
             return List.of();
         }
@@ -992,13 +992,13 @@ public final class CurriculumPersonalizationPlanner {
         return CompletionState.valid(optionIds, migrationCompleted);
     }
 
-    private static LearningLandscape resolveExact(
-            Function<String, LearningLandscape> resolver,
+    private static SkillLandscape resolveExact(
+            Function<String, SkillLandscape> resolver,
             String requestedLandscapeId) {
         if (resolver == null || blank(requestedLandscapeId)) {
             return null;
         }
-        LearningLandscape resolved = resolver.apply(requestedLandscapeId);
+        SkillLandscape resolved = resolver.apply(requestedLandscapeId);
         return resolved != null && requestedLandscapeId.equals(resolved.getLandscapeId())
                 ? resolved
                 : null;

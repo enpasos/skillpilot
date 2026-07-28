@@ -13,7 +13,7 @@ top level and per goal for future layers and exports.
 - Types: `app/src/landscapeTypes.ts`
 - Loader: `app/src/hooks/useLandscapes.ts`
 
-## Top-level fields (LearningLandscape)
+## Top-level fields (SkillLandscape)
 
 ### landscapeId
 - Type: string (UUID)
@@ -215,7 +215,7 @@ The project distinguishes two different metadata concerns at goal level:
 
 Concept note:
 
-- `docs/concept/curriculum-graph/source-and-resource-links.md`
+- `docs/concept/skill-graph/source-and-resource-links.md`
 
 Design intent:
 

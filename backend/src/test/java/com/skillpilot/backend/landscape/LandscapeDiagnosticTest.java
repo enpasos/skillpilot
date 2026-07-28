@@ -34,7 +34,7 @@ public class LandscapeDiagnosticTest {
 
             // Check for Mathematics
             // 2796fc7b-ba9d-446f-8f26-711dd6d8a9a3 -> DE_HES_S_GYM_2_MATHEMATIK
-            LearningLandscape math = service.getById("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
+            SkillLandscape math = service.getById("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
             System.out.println("Math Loaded: " + (math != null));
             if (math != null) {
                 System.out.println("Math Goals Count: " + (math.getGoals() != null ? math.getGoals().size() : "null"));
@@ -47,7 +47,7 @@ public class LandscapeDiagnosticTest {
             // Check closure
             System.out.println("--- Checking Closure ---");
             // bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da -> DE_HES_S_GYM_2_OVERVIEW
-            List<LearningLandscape> closure = service.getClosure("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
+            List<SkillLandscape> closure = service.getClosure("bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da");
             System.out.println("Closure Size: " + closure.size());
             boolean mathInClosure = closure.stream()
                     .anyMatch(l -> "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3".equals(l.getLandscapeId()));
@@ -59,7 +59,7 @@ public class LandscapeDiagnosticTest {
 
             // Check if Oberstufe Math is ACTUALLY loaded
             // 2796fc7b-ba9d-446f-8f26-711dd6d8a9a3 -> DE_HES_S_GYM_2_MATHEMATIK
-            LearningLandscape math2 = service.getById("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
+            SkillLandscape math2 = service.getById("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3");
             System.out.println("Math Oberstufe Loaded: " + (math2 != null));
 
             // Check if Fächer ID is mapped correctly

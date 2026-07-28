@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import type { LearningLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
 
 type Issue = { level: 'error' | 'warn'; message: string }
@@ -174,7 +174,7 @@ const compatibilityArchiveLandscapeIds = new Set<string>()
 for (const file of landscapeFiles) {
   try {
     const raw = readFileSync(file, 'utf8')
-    const json = JSON.parse(raw) as LearningLandscape
+    const json = JSON.parse(raw) as SkillLandscape
     const landscapeId = json.landscapeId ?? (json as { id?: string }).id
     if (!landscapeId || !Array.isArray(json.goals)) {
       continue

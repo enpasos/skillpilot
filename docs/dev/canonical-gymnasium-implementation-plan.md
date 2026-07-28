@@ -6,7 +6,7 @@ This document turns the rollout strategy from the concept docs into an implement
 
 See also:
 
-- `docs/concept/curriculum-graph/canonical-gymnasium-rollout.md`
+- `docs/concept/skill-graph/canonical-gymnasium-rollout.md`
 - `docs/dev/canonical-gymnasium-migration-status.md`
 - `docs/dev/canonical-gymnasium-math-bundeslaender-status.md`
 - `docs/dev/canonical-gymnasium-applicability-design.md`
@@ -70,7 +70,7 @@ Create one first canonical mathematics landscape derived from the mature Hessen 
 
 Initial constraints:
 
-- runtime-compatible `LearningLandscape` JSON
+- runtime-compatible `SkillLandscape` JSON
 - no broad restructuring yet
 - IDs stable inside the canonical file
 - only one subject in scope
@@ -369,7 +369,7 @@ Status: `done`
 Tasks:
 
 - create the first canonical mathematics landscape file
-- keep the file close to the current `LearningLandscape` structure
+- keep the file close to the current `SkillLandscape` structure
 - document the provenance from Hessen upper-secondary mathematics
 - do not mix in Bayern or Sek I yet
 

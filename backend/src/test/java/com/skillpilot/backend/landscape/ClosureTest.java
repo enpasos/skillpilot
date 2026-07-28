@@ -29,13 +29,13 @@ public class ClosureTest {
         LandscapeService service = new LandscapeService(props, mapper);
 
         // 1. Get Closure of Overview
-        List<LearningLandscape> closure = service.getClosure(OVERVIEW_ID);
+        List<SkillLandscape> closure = service.getClosure(OVERVIEW_ID);
         System.out.println("Closure size: " + closure.size());
 
         boolean mathFound = false;
         boolean goalFound = false;
 
-        for (LearningLandscape l : closure) {
+        for (SkillLandscape l : closure) {
             if (l.getTitle().contains("Mathematik")) {
                 mathFound = true;
                 System.out.println("Found Math Landscape: " + l.getTitle() + " (" + l.getLandscapeId() + ")");

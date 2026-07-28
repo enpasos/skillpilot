@@ -166,7 +166,7 @@ export interface LearningGoal {
   nodeKind?: 'exam' | 'tutor' | 'memory'
 }
 
-export interface LearningLandscape {
+export interface SkillLandscape {
   $schema?: string
   landscapeFormatVersion?: string
   landscapeId: string

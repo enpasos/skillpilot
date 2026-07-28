@@ -1,7 +1,7 @@
 package com.skillpilot.backend.curriculumpackage;
 
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.Collections;
 import java.util.List;
 import java.util.LinkedHashMap;
@@ -266,10 +266,10 @@ public final class PackageCurriculumResourceState {
     }
 
     private static Map<GoalDeckSourceKey, DeckBinding> bindGoalDeckSources(
-            List<LearningLandscape> landscapes,
+            List<SkillLandscape> landscapes,
             Map<DeckSourceKey, DeckBinding> decksBySource) {
         Map<GoalDeckSourceKey, DeckBinding> bindings = new LinkedHashMap<>();
-        for (LearningLandscape landscape : landscapes) {
+        for (SkillLandscape landscape : landscapes) {
             if (landscape.getGoals() == null) {
                 continue;
             }

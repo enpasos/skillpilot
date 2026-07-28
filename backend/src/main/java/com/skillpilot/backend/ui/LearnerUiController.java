@@ -69,7 +69,7 @@ public class LearnerUiController {
 
     @GetMapping("/{skillpilotId}/landscapes/{landscapeId}/closure")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public java.util.List<com.skillpilot.backend.landscape.LearningLandscape> getLearnerLandscapeClosure(
+    public java.util.List<com.skillpilot.backend.landscape.SkillLandscape> getLearnerLandscapeClosure(
             @PathVariable String skillpilotId,
             @PathVariable String landscapeId,
             @RequestParam(defaultValue = "de") String lang) {

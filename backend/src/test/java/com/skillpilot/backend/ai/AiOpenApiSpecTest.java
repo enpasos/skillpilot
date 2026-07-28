@@ -60,7 +60,7 @@ class AiOpenApiSpecTest {
         JsonNode schemas = root.path("components").path("schemas");
 
         assertThat(schemas.has("LearningGoal")).isFalse();
-        assertThat(schemas.has("LearningLandscape")).isFalse();
+        assertThat(schemas.has("SkillLandscape")).isFalse();
         assertThat(schemas.has("ReleaseMetadata")).isFalse();
         assertThat(containsFieldNamed(root, "release")).isFalse();
     }

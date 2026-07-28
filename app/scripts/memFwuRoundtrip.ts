@@ -880,7 +880,7 @@ sp:sourceIndexSummaryJson a owl:DatatypeProperty ; rdfs:label "source index summ
   dcterms:description "Minimal SkillPilot profile used to test whether a SkillPilot competence landscape can be carried through a MEM-compatible RDF/OWL representation based on the FWU Lehrplan-Ontologie and reconstructed afterwards."@en .
 
 sp:SkillPilotPackage a owl:Class ; rdfs:label "SkillPilot release package"@en .
-sp:LearningLandscape a owl:Class ; rdfs:label "SkillPilot learning landscape"@en .
+sp:SkillLandscape a owl:Class ; rdfs:label "SkillPilot skill landscape"@en .
 sp:LearningGoal a owl:Class ;
   rdfs:label "SkillPilot learning goal"@en ;
   rdfs:comment "A SkillPilot graph node used for learning navigation. This application-level notion is not automatically a FWU competence or competency specification."@en .
@@ -925,13 +925,13 @@ sp:CardDeck a owl:Class ; rdfs:label "Memorization card deck"@en .
 sp:Card a owl:Class ; rdfs:label "Memorization card"@en .
 sp:ExternalGoalReference a owl:Class ; rdfs:label "External goal reference"@en .
 
-sp:hasLandscape a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:LearningLandscape .
+sp:hasLandscape a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:SkillLandscape .
 sp:fwuOntologyIri a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:label "FWU ontology IRI"@en .
 sp:fwuOntologyRepository a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:label "FWU ontology repository"@en .
-sp:hasCompetencyCatalogEntry a owl:ObjectProperty ; rdfs:domain sp:LearningLandscape ; rdfs:range sp:CompetencyCatalogEntry .
-sp:hasProgramUnit a owl:ObjectProperty ; rdfs:domain sp:LearningLandscape ; rdfs:range sp:ProgramUnit .
-sp:hasGoalPlacement a owl:ObjectProperty ; rdfs:domain sp:LearningLandscape ; rdfs:range sp:GoalPlacement .
-sp:hasGoal a owl:ObjectProperty ; rdfs:domain sp:LearningLandscape ; rdfs:range sp:LearningGoal .
+sp:hasCompetencyCatalogEntry a owl:ObjectProperty ; rdfs:domain sp:SkillLandscape ; rdfs:range sp:CompetencyCatalogEntry .
+sp:hasProgramUnit a owl:ObjectProperty ; rdfs:domain sp:SkillLandscape ; rdfs:range sp:ProgramUnit .
+sp:hasGoalPlacement a owl:ObjectProperty ; rdfs:domain sp:SkillLandscape ; rdfs:range sp:GoalPlacement .
+sp:hasGoal a owl:ObjectProperty ; rdfs:domain sp:SkillLandscape ; rdfs:range sp:LearningGoal .
 sp:placedGoal a owl:ObjectProperty ; rdfs:domain sp:GoalPlacement ; rdfs:range sp:LearningGoal .
 sp:placedInProgramUnit a owl:ObjectProperty ; rdfs:domain sp:GoalPlacement ; rdfs:range sp:ProgramUnit .
 sp:containsGoal a owl:ObjectProperty ;
@@ -1730,7 +1730,7 @@ const writeLandscapeSemantics = (
   const schoolType = KIM_GYMNASIUM
 
   write(tripleLine(packageIri(archiveRoot), `${SP}hasLandscape`, iri(landscape)))
-  write(tripleLine(landscape, `${RDF}type`, iri(`${SP}LearningLandscape`)))
+  write(tripleLine(landscape, `${RDF}type`, iri(`${SP}SkillLandscape`)))
   write(tripleLine(landscape, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
   write(tripleLine(KIM_MATHEMATICS, `${RDF}type`, iri(LP_SCHOOL_SUBJECT)))
   write(tripleLine(KIM_MATHEMATICS, `${SKOS}prefLabel`, langLiteral('Mathematik', 'de')))

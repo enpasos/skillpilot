@@ -365,8 +365,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(NRW_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(NRW_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(NRW_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(NRW_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -391,8 +391,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(RHEINLAND_PFALZ_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -417,8 +417,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(NIEDERSACHSEN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -443,10 +443,10 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape brandenburgLower = landscapeService.getById(BRANDENBURG_CHEMISTRY_LOWER_ID);
-                LearningLandscape brandenburgUpper = landscapeService.getById(BRANDENBURG_CHEMISTRY_UPPER_ID);
-                LearningLandscape berlinLower = landscapeService.getById(BERLIN_CHEMISTRY_LOWER_ID);
-                LearningLandscape berlinUpper = landscapeService.getById(BERLIN_CHEMISTRY_UPPER_ID);
+                SkillLandscape brandenburgLower = landscapeService.getById(BRANDENBURG_CHEMISTRY_LOWER_ID);
+                SkillLandscape brandenburgUpper = landscapeService.getById(BRANDENBURG_CHEMISTRY_UPPER_ID);
+                SkillLandscape berlinLower = landscapeService.getById(BERLIN_CHEMISTRY_LOWER_ID);
+                SkillLandscape berlinUpper = landscapeService.getById(BERLIN_CHEMISTRY_UPPER_ID);
 
                 assertThat(brandenburgLower).isNotNull();
                 assertThat(brandenburgUpper).isNotNull();
@@ -485,8 +485,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(BREMEN_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(BREMEN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(BREMEN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(BREMEN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -511,8 +511,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(BADEN_WUERTTEMBERG_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -537,8 +537,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(HAMBURG_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(HAMBURG_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(HAMBURG_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(HAMBURG_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -563,8 +563,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(MECKLENBURG_VORPOMMERN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -589,8 +589,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(SCHLESWIG_HOLSTEIN_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -615,8 +615,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(SAXONY_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(SAXONY_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(SAXONY_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(SAXONY_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -641,8 +641,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(SACHSEN_ANHALT_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -667,8 +667,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(THUERINGIA_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(THUERINGIA_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(THUERINGIA_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(THUERINGIA_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -693,8 +693,8 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape lower = landscapeService.getById(SAARLAND_CHEMISTRY_LOWER_ID);
-                LearningLandscape upper = landscapeService.getById(SAARLAND_CHEMISTRY_UPPER_ID);
+                SkillLandscape lower = landscapeService.getById(SAARLAND_CHEMISTRY_LOWER_ID);
+                SkillLandscape upper = landscapeService.getById(SAARLAND_CHEMISTRY_UPPER_ID);
 
                 assertThat(lower).isNotNull();
                 assertThat(upper).isNotNull();
@@ -761,7 +761,7 @@ class LandscapeServiceTest {
                 properties.setDirectory(curriculaDir.toString());
                 LandscapeService landscapeService = new LandscapeService(properties, new ObjectMapper());
 
-                LearningLandscape loaded = landscapeService.getById(sourceLandscapeId);
+                SkillLandscape loaded = landscapeService.getById(sourceLandscapeId);
 
                 assertThat(loaded).isNotNull();
                 assertThat(loaded.getTitle()).isEqualTo("Fallback Source Extraction");
@@ -1095,7 +1095,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape root = landscapeService.getById(CANONICAL_GYMNASIUM_ROOT_ID);
+                SkillLandscape root = landscapeService.getById(CANONICAL_GYMNASIUM_ROOT_ID);
 
                 assertThat(root).isNotNull();
                 assertThat(root.getTitle()).isEqualTo("Gymnasium (DE)");
@@ -1112,7 +1112,7 @@ class LandscapeServiceTest {
                                                 CANONICAL_GERMAN_ID, CANONICAL_POLITICS_ECONOMICS_ID,
                                                 CANONICAL_ECONOMICS_ID);
                 assertThat(landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID))
-                                .extracting(LearningLandscape::getLandscapeId)
+                                .extracting(SkillLandscape::getLandscapeId)
                                 .contains(CANONICAL_GYMNASIUM_ROOT_ID, CANONICAL_MATH_ID, CANONICAL_PHYSICS_ID,
                                                 CANONICAL_CHEMISTRY_ID, CANONICAL_BIOLOGY_ID, CANONICAL_INFORMATICS_ID,
                                                 CANONICAL_HISTORY_ID, CANONICAL_GERMAN_ID,
@@ -1131,7 +1131,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape landscape = landscapeService.getById(CANONICAL_MATH_ID);
+                SkillLandscape landscape = landscapeService.getById(CANONICAL_MATH_ID);
 
                 assertThat(landscape).isNotNull();
                 assertThat(landscape.getTitle()).isEqualTo("Mathematik (Gymnasium, DE)");
@@ -1157,7 +1157,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape canonicalMath = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
+                SkillLandscape canonicalMath = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
                                 .filter(landscape -> CANONICAL_MATH_ID.equals(landscape.getLandscapeId()))
                                 .findFirst()
                                 .orElseThrow();
@@ -1186,7 +1186,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape canonicalPhysics = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
+                SkillLandscape canonicalPhysics = landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID).stream()
                                 .filter(landscape -> CANONICAL_PHYSICS_ID.equals(landscape.getLandscapeId()))
                                 .findFirst()
                                 .orElseThrow();
@@ -1209,7 +1209,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_ID);
+                SkillLandscape pilot = landscapeService.getById(CANONICAL_PHYSICS_ID);
 
                 assertThat(pilot).isNotNull();
                 assertThat(pilot.getTitle()).isEqualTo("Physik (Gymnasium, DE)");
@@ -1277,7 +1277,7 @@ class LandscapeServiceTest {
                                 .containsEntry("sourceLandscapeId", "24f2ca0f-b94a-444e-bb70-677cb6f85c02")
                                 .containsEntry("sourceGoalId", "1b716911-2c34-4806-9240-7c31f71312bb");
                 assertThat(landscapeService.getClosure(CANONICAL_PHYSICS_ID))
-                                .extracting(LearningLandscape::getLandscapeId)
+                                .extracting(SkillLandscape::getLandscapeId)
                                 .contains(CANONICAL_PHYSICS_ID, CANONICAL_MATH_ID)
                                 .doesNotContain(HESSEN_UPPER_MATH_ID);
         }
@@ -1289,7 +1289,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape chemistry = landscapeService.getById(CANONICAL_CHEMISTRY_ID);
+                SkillLandscape chemistry = landscapeService.getById(CANONICAL_CHEMISTRY_ID);
 
                 assertThat(chemistry).isNotNull();
                 assertThat(chemistry.getTitle()).isEqualTo("Chemie (Gymnasium, DE)");
@@ -1316,7 +1316,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape biology = landscapeService.getById(CANONICAL_BIOLOGY_ID);
+                SkillLandscape biology = landscapeService.getById(CANONICAL_BIOLOGY_ID);
 
                 assertThat(biology).isNotNull();
                 assertThat(biology.getTitle()).isEqualTo("Biologie (Gymnasium, DE)");
@@ -1344,7 +1344,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape informatics = landscapeService.getById(CANONICAL_INFORMATICS_ID);
+                SkillLandscape informatics = landscapeService.getById(CANONICAL_INFORMATICS_ID);
 
                 assertThat(informatics).isNotNull();
                 assertThat(informatics.getTitle()).isEqualTo("Informatik (Gymnasium, DE)");
@@ -1370,7 +1370,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape history = landscapeService.getById(CANONICAL_HISTORY_ID);
+                SkillLandscape history = landscapeService.getById(CANONICAL_HISTORY_ID);
 
                 assertThat(history).isNotNull();
                 assertThat(history.getTitle()).isEqualTo("Geschichte (Gymnasium, DE)");
@@ -1396,7 +1396,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape german = landscapeService.getById(CANONICAL_GERMAN_ID);
+                SkillLandscape german = landscapeService.getById(CANONICAL_GERMAN_ID);
 
                 assertThat(german).isNotNull();
                 assertThat(german.getTitle()).isEqualTo("Deutsch (Gymnasium, DE)");
@@ -1422,7 +1422,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape politicsEconomics = landscapeService.getById(CANONICAL_POLITICS_ECONOMICS_ID);
+                SkillLandscape politicsEconomics = landscapeService.getById(CANONICAL_POLITICS_ECONOMICS_ID);
 
                 assertThat(politicsEconomics).isNotNull();
                 assertThat(politicsEconomics.getTitle()).isEqualTo("Politik und Wirtschaft (Gymnasium, DE)");
@@ -1448,7 +1448,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape english = landscapeService.getById(CANONICAL_ENGLISH_ID);
+                SkillLandscape english = landscapeService.getById(CANONICAL_ENGLISH_ID);
 
                 assertThat(english).isNotNull();
                 assertThat(english.getTitle()).isEqualTo("Englisch (Gymnasium, DE)");
@@ -1474,7 +1474,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape french = landscapeService.getById(CANONICAL_FRENCH_ID);
+                SkillLandscape french = landscapeService.getById(CANONICAL_FRENCH_ID);
 
                 assertThat(french).isNotNull();
                 assertThat(french.getTitle()).isEqualTo("Französisch (Gymnasium, DE)");
@@ -1500,7 +1500,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape latin = landscapeService.getById(CANONICAL_LATIN_ID);
+                SkillLandscape latin = landscapeService.getById(CANONICAL_LATIN_ID);
 
                 assertThat(latin).isNotNull();
                 assertThat(latin.getTitle()).isEqualTo("Latein (Gymnasium, DE)");
@@ -1526,7 +1526,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape spanish = landscapeService.getById(CANONICAL_SPANISH_ID);
+                SkillLandscape spanish = landscapeService.getById(CANONICAL_SPANISH_ID);
 
                 assertThat(spanish).isNotNull();
                 assertThat(spanish.getTitle()).isEqualTo("Spanisch (Gymnasium, DE)");
@@ -1552,7 +1552,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape greek = landscapeService.getById(CANONICAL_GREEK_ID);
+                SkillLandscape greek = landscapeService.getById(CANONICAL_GREEK_ID);
 
                 assertThat(greek).isNotNull();
                 assertThat(greek.getTitle()).isEqualTo("Griechisch (Gymnasium, DE)");
@@ -1578,7 +1578,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape chinese = landscapeService.getById(CANONICAL_CHINESE_ID);
+                SkillLandscape chinese = landscapeService.getById(CANONICAL_CHINESE_ID);
 
                 assertThat(chinese).isNotNull();
                 assertThat(chinese.getTitle()).isEqualTo("Chinesisch (Gymnasium, DE)");
@@ -1603,7 +1603,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape economics = landscapeService.getById(CANONICAL_ECONOMICS_ID);
+                SkillLandscape economics = landscapeService.getById(CANONICAL_ECONOMICS_ID);
 
                 assertThat(economics).isNotNull();
                 assertThat(economics.getTitle()).isEqualTo("Wirtschaftswissenschaften (Gymnasium, DE)");
@@ -1629,7 +1629,7 @@ class LandscapeServiceTest {
                 ObjectMapper objectMapper = new ObjectMapper();
                 LandscapeService landscapeService = new LandscapeService(properties, objectMapper);
 
-                LearningLandscape music = landscapeService.getById(CANONICAL_MUSIC_ID);
+                SkillLandscape music = landscapeService.getById(CANONICAL_MUSIC_ID);
 
                 assertThat(music).isNotNull();
                 assertThat(music.getTitle()).isEqualTo("Musik (Gymnasium, DE)");

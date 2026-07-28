@@ -20,7 +20,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -1036,7 +1036,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotElectricalEnergyGoalDependsOnReviewedVoltageBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
+        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal heatGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID.equals(goal.getId()))
                 .findFirst()
@@ -1054,7 +1054,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotPressureRouteDependsOnReviewedAtomicMechanicsAndHeatBridges() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
+        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal pressureCluster = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_PRESSURE_CLUSTER_ID.equals(goal.getId()))
                 .findFirst()
@@ -1076,7 +1076,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotHarmonicWavesEntryDependsOnReviewedSek1AcousticsBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
+        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal harmonicWavesGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_HARMONIC_WAVES_ID.equals(goal.getId()))
                 .findFirst()
@@ -1088,7 +1088,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotElectromagneticSpectrumEntryDependsOnReviewedSek1ColorsBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
+        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal electromagneticSpectrumGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_EM_SPECTRUM_ID.equals(goal.getId()))
                 .findFirst()
@@ -1100,7 +1100,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadioactivityBridge() {
-        LearningLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
+        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal upperSecondaryRadiationGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID.equals(goal.getId()))
                 .findFirst()

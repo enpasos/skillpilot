@@ -16,7 +16,7 @@ class LandscapeReleaseMetadataTest {
         properties.setDirectory("../curricula");
         LandscapeService landscapeService = new LandscapeService(properties, new ObjectMapper());
 
-        LearningLandscape german = landscapeService.getById(MATH_LANDSCAPE_ID);
+        SkillLandscape german = landscapeService.getById(MATH_LANDSCAPE_ID);
         assertThat(german).isNotNull();
 
         List<LearningGoal> releasedGoals = german.getGoals().stream()
@@ -31,7 +31,7 @@ class LandscapeReleaseMetadataTest {
                         "abi_gk_offer_2026",
                         "abi_lk_offer_2026");
 
-        LearningLandscape english = landscapeService.getClosure(MATH_LANDSCAPE_ID, "en").stream()
+        SkillLandscape english = landscapeService.getClosure(MATH_LANDSCAPE_ID, "en").stream()
                 .filter(landscape -> MATH_LANDSCAPE_ID.equals(landscape.getLandscapeId()))
                 .findFirst()
                 .orElseThrow();

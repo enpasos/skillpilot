@@ -15,7 +15,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.landscape.LandscapeService;
-import com.skillpilot.backend.landscape.LearningLandscape;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -238,7 +238,7 @@ public class LearnerServiceTest {
     @Test
     void patchPersonalCurriculumRejectsAStaleFilterForCompleteCockpitConfiguration() throws Exception {
         Map<String, Object> fullCockpitConfig = new LinkedHashMap<>();
-        for (LearningLandscape landscape : landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID)) {
+        for (SkillLandscape landscape : landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID)) {
             Map<String, Object> settings = new LinkedHashMap<>();
             settings.put("selected", true);
             if (landscape.getFilters() != null && !landscape.getFilters().isEmpty()) {
