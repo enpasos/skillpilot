@@ -257,6 +257,36 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void learnerScopeDoesNotInferSekTwoFromCourseProfile() {
+        CompositionViewService service = createService();
+
+        for (String courseProfile : List.of("GK", "LK")) {
+            assertThat(service.findLearnerScopeView(
+                            CANONICAL_MATH_ID,
+                            Map.of(
+                                    "schoolForm", "Gymnasium",
+                                    "jurisdiction", "DE-HE",
+                                    "courseProfile", courseProfile)))
+                    .as(courseProfile + " without an explicit stage")
+                    .isNull();
+        }
+    }
+
+    @Test
+    void learnerScopeResolvesExplicitHessianSekTwoPhysicsGkView() {
+        CompositionViewService service = createService();
+
+        assertThat(service.findLearnerScopeView(
+                        CANONICAL_PHYSICS_ID,
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "jurisdiction", "DE-HE",
+                                "stage", "SekII",
+                                "courseProfile", "GK")))
+                .containsEntry("viewId", "de-he-gym-sekii-physics-gk");
+    }
+
+    @Test
     void learnerScopeRejectsUnrelatedExtraDimensionsInsteadOfUsingRepositorySubsetMatching() {
         CompositionViewService service = createService();
         Map<String, String> requestedScope = Map.of(
