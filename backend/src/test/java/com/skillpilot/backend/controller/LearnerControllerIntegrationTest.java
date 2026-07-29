@@ -114,6 +114,15 @@ public class LearnerControllerIntegrationTest {
               "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
             }
             """;
+    private static final String CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG = """
+            {
+              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                "selected": true,
+                "filterId": "GK",
+                "stage": "CrossStage"
+              }
+            }
+            """;
     private static final String CANONICAL_MATH_ANALYSIS_CLUSTER_ID = "a668ea17-9226-4074-8f8e-051acbe839eb";
     private static final String CANONICAL_MATH_POWER_FUNCTIONS_ID = "30c013ac-5164-4c3c-8bc1-9a10b2f49533";
     private static final String CANONICAL_MATH_FUNCTION_CONCEPT_ID = "09f47964-2cd0-410e-93ee-9632b582fc91";
@@ -434,13 +443,8 @@ public class LearnerControllerIntegrationTest {
     void registerChampionCountsProjectedLegacyMasteryForCanonicalGymnasiumTopic() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
-                {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
-                }
-                """);
         learnerRepository.save(learner);
+        completeCanonicalSekTwoPersonalization(CANONICAL_MATH_ID);
 
         masteryRepository.saveAll(List.of(
                 new Mastery(learner, LEGACY_MATH_ASSUMPTIONS_ID, 1.0),
@@ -456,7 +460,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(289);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(288);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -467,7 +471,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(289);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(288);
                 });
     }
 
@@ -555,13 +559,8 @@ public class LearnerControllerIntegrationTest {
     void registerChampionUsesLearnerFacingLegacyEquivalentPhysicsTotalsForHessenView() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
-                {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
-                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
-                }
-                """);
         learnerRepository.save(learner);
+        completeCanonicalSekTwoPersonalization(CANONICAL_PHYSICS_ID);
 
         masteryRepository.save(new Mastery(learner, LEGACY_PHYSICS_DIAGRAMS_ID, 1.0));
 
@@ -611,7 +610,7 @@ public class LearnerControllerIntegrationTest {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learnerRepository.save(learner);
-        completeCanonicalPhysicsSekTwoPersonalization();
+        completeCanonicalSekTwoPersonalization(CANONICAL_PHYSICS_ID);
 
         learnerService.setPlannedGoals(
                 learnerId,
@@ -804,30 +803,25 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void getLearnerStateHttpTurnsMixedLegacyE2PlanAndMasteryIntoOpaqueCanonicalNewtonFrontier() throws Exception {
+    void getLearnerStateHttpTreatsAuthoredNewtonGoalEntryAsOpaqueTarget() throws Exception {
         String responseBody = getLearnerStateBody(
-                List.of(
-                        LEGACY_PHYSICS_E2_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID),
-                List.of(LEGACY_PHYSICS_ACCELERATED_ID));
+                List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
+                List.of(LEGACY_PHYSICS_ACCELERATED_ID),
+                CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
         JsonNode goalOptions = root.path("stateMachine").path("goalOptions");
         JsonNode frontier = root.path("frontier");
 
-        assertThat(planned).hasSize(1);
-        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_E2_CLUSTER_ID);
+        assertThat(jsonIds(planned))
+                .containsExactly(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
         assertThat(root.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
                 .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
                 .doesNotContain(
                         CANONICAL_PHYSICS_FIRST_LAW_ID,
-                        LEGACY_PHYSICS_ACCELERATED_ID,
-                        LEGACY_PHYSICS_E2_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID);
+                        LEGACY_PHYSICS_ACCELERATED_ID);
         assertThat(jsonIds(frontier))
                 .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
                 .doesNotContain(CANONICAL_PHYSICS_FIRST_LAW_ID);
@@ -5970,9 +5964,19 @@ public class LearnerControllerIntegrationTest {
     }
 
     private String getLearnerStateBody(List<String> plannedGoalIds, List<String> masteredGoalIds) throws Exception {
+        return getLearnerStateBody(
+                plannedGoalIds,
+                masteredGoalIds,
+                CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+    }
+
+    private String getLearnerStateBody(
+            List<String> plannedGoalIds,
+            List<String> masteredGoalIds,
+            String personalCurriculum) throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_PHYSICS_ID);
-        learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+        learner.setPersonalCurriculum(personalCurriculum);
         learnerRepository.save(learner);
 
         masteryRepository.deleteAll();
@@ -6067,7 +6071,7 @@ public class LearnerControllerIntegrationTest {
                 """.formatted(jurisdiction, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile, durationModel);
     }
 
-    private void completeCanonicalPhysicsSekTwoPersonalization() {
+    private void completeCanonicalSekTwoPersonalization(String subjectLandscapeId) {
         applyCurrentPersonalizationOption(option ->
                 "DE-HE".equals(option.filterId()));
         applyCurrentPersonalizationOption(option ->
@@ -6078,13 +6082,13 @@ public class LearnerControllerIntegrationTest {
                         && "SekII".equals(option.scopeValue()));
         applyCurrentPersonalizationOption(option ->
                 option.kind() == PersonalizationPlan.OptionKind.VALUE
-                        && CANONICAL_PHYSICS_ID.equals(option.landscapeId())
+                        && subjectLandscapeId.equals(option.landscapeId())
                         && option.filterId() == null);
         applyCurrentPersonalizationOption(option ->
                 option.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP);
         applyCurrentPersonalizationOption(option ->
                 option.kind() == PersonalizationPlan.OptionKind.VALUE
-                        && CANONICAL_PHYSICS_ID.equals(option.landscapeId())
+                        && subjectLandscapeId.equals(option.landscapeId())
                         && "GK".equals(option.filterId()));
 
         PersonalizationPlan plan = learnerService.getPersonalizationPlan(learnerId);

@@ -2779,7 +2779,7 @@ public class LearnerService {
      * non-authoritative fallback targets. Canonical IDs are retained unchanged,
      * while unknown IDs and goals visible solely as {@code prerequisiteOnly}
      * are removed. An unresolved plan cannot retain an active goal. Mastery and
-     * curriculum graph data are not modified.</p>
+     * skill graph data are not modified.</p>
      */
     private void revalidatePlannedGoalsForProjectedScope(
             Learner learner,
