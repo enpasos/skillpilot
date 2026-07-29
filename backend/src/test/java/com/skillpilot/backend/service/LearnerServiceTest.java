@@ -13,7 +13,9 @@ import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
+import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
+import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -50,11 +52,11 @@ public class LearnerServiceTest {
 
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String COMPOSITION_J8_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+            "composition:de-he-gym-math-gk-g9:structure:j8-g9";
     private static final String COMPOSITION_J9_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j9";
+            "composition:de-he-gym-math-gk-g9:structure:j9-g9";
     private static final String COMPOSITION_J10_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j10";
+            "composition:de-he-gym-math-gk-g9:structure:j10-g9";
     private static final String SEK1_EXERCISES_SCOPE_ID = "bfc4fe23-bfa4-4836-9bd2-793f4305d682";
     private static final String REMOVED_SEK1_CAPSTONE_ID = "30b62966-80d0-45f1-bdd9-b4fb815c7111";
     private static final String VISIBLE_POLYNOMIAL_FUNCTIONS_ID = "1ce8af38-082a-477b-af48-b924c92761bf";
@@ -105,23 +107,81 @@ public class LearnerServiceTest {
     @Test
     @Transactional
     void setPlannedGoals_isIdempotentForSameTargetSet() {
-        assertThatCode(() -> learnerService.setPlannedGoals(learnerId, Set.of("GOAL_1"))).doesNotThrowAnyException();
-        assertThatCode(() -> learnerService.setPlannedGoals(learnerId, Set.of("GOAL_1"))).doesNotThrowAnyException();
+        selectCompletedCanonicalMathCurriculum();
+        assertThatCode(() -> learnerService.setPlannedGoals(
+                        learnerId,
+                        Set.of(COMPOSITION_J8_SCOPE_ID)))
+                .doesNotThrowAnyException();
+        assertThatCode(() -> learnerService.setPlannedGoals(
+                        learnerId,
+                        Set.of(COMPOSITION_J8_SCOPE_ID)))
+                .doesNotThrowAnyException();
 
         var goals = plannedGoalRepository.findByLearner_SkillpilotId(learnerId);
         assertThat(goals).hasSize(1);
-        assertThat(goals.get(0).getGoalId()).isEqualTo("GOAL_1");
+        assertThat(goals.get(0).getGoalId()).isEqualTo(COMPOSITION_J8_SCOPE_ID);
     }
 
     @Test
     @Transactional
     void setPlannedGoals_updatesDiffWithoutDuplicates() {
-        learnerService.setPlannedGoals(learnerId, Set.of("G1", "G2"));
-        learnerService.setPlannedGoals(learnerId, Set.of("G2"));
+        selectCompletedCanonicalMathCurriculum();
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(COMPOSITION_J8_SCOPE_ID, COMPOSITION_J9_SCOPE_ID));
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(COMPOSITION_J9_SCOPE_ID));
 
         var goals = plannedGoalRepository.findByLearner_SkillpilotId(learnerId);
         assertThat(goals).hasSize(1);
-        assertThat(goals.get(0).getGoalId()).isEqualTo("G2");
+        assertThat(goals.get(0).getGoalId()).isEqualTo(COMPOSITION_J9_SCOPE_ID);
+    }
+
+    @Test
+    @Transactional
+    void setPlannedGoals_requiresABaseCurriculumForNonEmptyFocusButAllowsClearing() {
+        assertThatThrownBy(() ->
+                        learnerService.setPlannedGoals(learnerId, Set.of("GOAL_1")))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+
+        assertThat(learnerService.setPlannedGoals(learnerId, Set.of()))
+                .isEmpty();
+    }
+
+    @Test
+    void importLearnerPreservesCurriculumAndMasteryWhileDiscardingFocusFromIncompletePersonalization() {
+        String sourceLearnerId = "legacy-export-source";
+        String staleFocusId = "legacy-stale-focus";
+        String masteryGoalId = "legacy-global-mastery";
+        Learner sourceLearner = new Learner();
+        sourceLearner.setSkillpilotId(sourceLearnerId);
+        sourceLearner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        sourceLearner.setPersonalCurriculum("{}");
+        learnerRepository.saveAndFlush(sourceLearner);
+        plannedGoalRepository.saveAndFlush(new PlannedGoal(sourceLearner, staleFocusId));
+        masteryRepository.saveAndFlush(new Mastery(sourceLearner, masteryGoalId, 0.625));
+
+        assertThat(learnerService.getPlannedGoals(sourceLearnerId)).isEmpty();
+        var signedExport = learnerService.exportLearner(sourceLearnerId);
+        assertThat(signedExport.data().plannedGoals()).containsExactly(staleFocusId);
+
+        assertThatCode(() -> learnerService.importLearner(learnerId, signedExport))
+                .doesNotThrowAnyException();
+
+        Learner importedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(importedLearner.getSelectedCurriculum())
+                .isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(importedLearner.getPersonalCurriculum()).isEqualTo("{}");
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .isEmpty();
+        assertThat(masteryRepository.findById(new MasteryId(learnerId, masteryGoalId)))
+                .get()
+                .extracting(Mastery::getValue)
+                .isEqualTo(0.625);
     }
 
     @Test
@@ -349,13 +409,18 @@ public class LearnerServiceTest {
     void getLearnerState_resolvesCompositionViewPlannedScopeForAiFrontier() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "DE-HE",
+                    "stage": "CrossStage",
+                    "durationModel": "G9"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learnerRepository.save(learner);
 
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
@@ -390,8 +455,7 @@ public class LearnerServiceTest {
                           "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
                             "selected": true,
                             "filterId": "ALL",
-                            "stage": "CrossStage",
-                            "durationModel": "G9"
+                            "stage": "CrossStage"
                           },
                           "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                           "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
@@ -411,7 +475,7 @@ public class LearnerServiceTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                 }
                 """));
@@ -477,13 +541,13 @@ public class LearnerServiceTest {
     void verifiedRecallForSekOneFlashcardsStartsAndControlsSrsMastery() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
@@ -539,13 +603,13 @@ public class LearnerServiceTest {
     void verifiedRecallStartCanReturnOptInBatchForNewClients() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
@@ -570,13 +634,13 @@ public class LearnerServiceTest {
     void concurrentVerifiedRecallResultsPreserveBothCardUpdates() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
@@ -625,6 +689,12 @@ public class LearnerServiceTest {
     void concurrentScopeReplacementNeverMergesTwoExclusiveSelections() throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """));
         learnerRepository.saveAndFlush(learner);
         CountDownLatch ready = new CountDownLatch(2);
         CountDownLatch start = new CountDownLatch(1);
@@ -661,13 +731,13 @@ public class LearnerServiceTest {
     void verifiedRecallFailureLocksCardForRestOfDay() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
@@ -716,17 +786,19 @@ public class LearnerServiceTest {
     void getLearnerStateDoesNotOfferFlashcardGoalWhenNoCardsAreEligibleToday() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
-        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_EXERCISES_SCOPE_ID));
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
 
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -776,7 +848,7 @@ public class LearnerServiceTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "DE-HE"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                 }
                 """));
@@ -867,6 +939,26 @@ public class LearnerServiceTest {
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
         }
         throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
+    }
+
+    private void selectCompletedCanonicalMathCurriculum() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "DE-HE",
+                    "stage": "CrossStage",
+                    "durationModel": "G9"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "GK"
+                  }
+                }
+                """));
+        learnerRepository.save(learner);
     }
 
     @SuppressWarnings("unchecked")

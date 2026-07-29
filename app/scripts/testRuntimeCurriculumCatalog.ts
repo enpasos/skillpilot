@@ -6,6 +6,7 @@ import {
   resolveExplicitRuntimeOfferingId,
   resolveGoalDeckHref,
   resolveGoalResourceHref,
+  resolveLearnerRuntimeOfferingId,
   resolveRuntimeOfferingId,
   selectRuntimeLandscapeId,
   type RuntimeCurriculumCatalogState,
@@ -142,6 +143,172 @@ assert.equal(
 assert.equal(resolveRuntimeOfferingId(parsed, ROOT_ID, { schoolForm: 'Sentinel' }), undefined)
 assert.equal(resolveExplicitRuntimeOfferingId(parsed, ROOT_ID, OFFERING_ID), OFFERING_ID)
 assert.equal(resolveExplicitRuntimeOfferingId(parsed, ROOT_ID, 'unknown-offering'), undefined)
+
+const learnerOfferings = {
+  ...parsed,
+  offerings: [
+    ...parsed.offerings,
+    {
+      packageId: PACKAGE_ID,
+      offeringId: 'sentinel-sekii',
+      landscapeId: ROOT_ID,
+      scope: {
+        schoolForm: 'Gymnasium',
+        stage: 'SekII',
+        courseProfile: 'LK',
+      },
+      resolution: {
+        mode: 'single' as const,
+        viewIds: ['sentinel-view'],
+      },
+    },
+    {
+      packageId: PACKAGE_ID,
+      offeringId: 'sentinel-seki-generic',
+      landscapeId: ROOT_ID,
+      scope: {
+        schoolForm: 'Gymnasium',
+        stage: 'SekI',
+      },
+      resolution: {
+        mode: 'single' as const,
+        viewIds: ['sentinel-view'],
+      },
+    },
+    {
+      packageId: PACKAGE_ID,
+      offeringId: 'sentinel-seki-bw',
+      landscapeId: ROOT_ID,
+      scope: {
+        schoolForm: 'Gymnasium',
+        jurisdiction: 'DE-BW',
+        stage: 'SekI',
+      },
+      resolution: {
+        mode: 'single' as const,
+        viewIds: ['sentinel-view'],
+      },
+    },
+    {
+      packageId: PACKAGE_ID,
+      offeringId: 'sentinel-crossstage-generic',
+      landscapeId: ROOT_ID,
+      scope: {
+        schoolForm: 'Gymnasium',
+        stage: 'CrossStage',
+        courseProfile: 'GK',
+      },
+      resolution: {
+        mode: 'single' as const,
+        viewIds: ['sentinel-view'],
+      },
+    },
+    {
+      packageId: PACKAGE_ID,
+      offeringId: 'sentinel-sekii-he',
+      landscapeId: ROOT_ID,
+      scope: {
+        schoolForm: 'Gymnasium',
+        jurisdiction: 'DE-HE',
+        stage: 'SekII',
+        courseProfile: 'GK',
+      },
+      resolution: {
+        mode: 'single' as const,
+        viewIds: ['sentinel-view'],
+      },
+    },
+  ],
+}
+const committedUpperSecondaryScope = {
+  schoolForm: 'Gymnasium',
+  stage: 'SekII',
+  courseProfile: 'LK',
+  durationModel: 'G9',
+}
+assert.equal(
+  resolveRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    committedUpperSecondaryScope,
+  ),
+  undefined,
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    committedUpperSecondaryScope,
+  ),
+  'sentinel-sekii',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    { ...committedUpperSecondaryScope, stage: 'CrossStage' },
+  ),
+  undefined,
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    { ...committedUpperSecondaryScope, year: '12' },
+  ),
+  undefined,
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-BB',
+      stage: 'SekI',
+      durationModel: 'G8',
+    },
+  ),
+  'sentinel-seki-generic',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-BW',
+      stage: 'SekI',
+      durationModel: 'G9',
+    },
+  ),
+  'sentinel-seki-bw',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'CrossStage',
+      courseProfile: 'GK',
+    },
+  ),
+  'sentinel-crossstage-generic',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    learnerOfferings,
+    ROOT_ID,
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'ALL',
+      stage: 'SekI',
+    },
+  ),
+  undefined,
+)
 
 const packageState: RuntimeCurriculumCatalogState = {
   mode: 'package',

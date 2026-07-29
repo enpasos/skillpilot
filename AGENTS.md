@@ -77,6 +77,17 @@ Interpretation rules:
 - only concrete, assessable process skills become actual goals
 - current `phase` values should increasingly be treated as compatibility/view metadata rather than as the canonical semantic anchor
 - user-facing initial narrowing by school form, stage, jurisdiction, duration model, course profile, and current year/phase should be treated as **entry scope** over program units, placements, and applicability, not as duplicated goal semantics
+- catalog navigation (for example Schule / Hochschule / Sprachen) precedes the
+  selected base curriculum and is not learner scope; the committed Personal
+  Curriculum is backend-owned Level 2 state, edited through one authored-flow
+  contract shared by start screen, cockpit, and prospective MCP UI hosts
+- Level 2 contains jurisdiction or canonical view, applicable duration model,
+  explicit stage, selected subjects, and course profile per subject; an absent
+  stage stays unresolved, and LK is a subject attribute that never implies
+  Sekundarstufe II
+- current focus roots and the one active atomic goal are mutable Level 3 state;
+  changing Level 2 revalidates them against the new learner-facing `target`
+  projection without rewriting stable goal IDs or global Level 4 mastery
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`

@@ -1,3 +1,8 @@
+import type {
+  PersonalizationOption,
+  PersonalizationPlan,
+} from '../utils/personalCurriculumEditorApi'
+
 export type Abi26CourseLevel = 'GK' | 'LK'
 
 export interface Abi26CampaignContext {
@@ -17,11 +22,37 @@ export const ABI26_CAMPAIGN_SLUG = ''
 export const ABI26_ROOT_CURRICULUM_ID = ''
 export const ABI26_MATH_LANDSCAPE_ID = ''
 export const ABI26_ROOT_FILTER_ID = ''
+export const ABI26_DURATION_MODEL = ''
 export const ABI26_GPT_URL = ''
 export const ABI26_FEEDBACK_URL = ''
 export const ABI26_CONTEXT_STORAGE_KEY = 'skillpilot_package_campaign_disabled'
 export const ABI26_SCOPE_BY_LEVEL: Record<Abi26CourseLevel, string> = { GK: '', LK: '' }
 export const ABI26_FOCUS_GOAL_BY_LEVEL: Record<Abi26CourseLevel, string> = { GK: '', LK: '' }
+export const resolveAbi26PersonalizationOption = (
+  plan: PersonalizationPlan,
+  courseLevel: Abi26CourseLevel,
+): PersonalizationOption | undefined => {
+  void plan
+  void courseLevel
+  return undefined
+}
+export type Abi26PersonalizationRepairAction =
+  | { kind: 'COMPLETE' }
+  | { kind: 'APPLY_OPTION'; optionId: string }
+  | { kind: 'RESTART' }
+  | { kind: 'UNAVAILABLE' }
+export const resolveAbi26PersonalizationRepairAction = (
+  plan: PersonalizationPlan,
+  courseLevel: Abi26CourseLevel,
+  configMatchesCampaign: boolean,
+  hasRestarted: boolean,
+): Abi26PersonalizationRepairAction => {
+  void plan
+  void courseLevel
+  void configMatchesCampaign
+  void hasRestarted
+  return { kind: 'UNAVAILABLE' }
+}
 
 export const extractAbi26CampaignContext = (params: URLSearchParams): Abi26CampaignContext => {
   void params
@@ -36,6 +67,21 @@ export const extractAbi26CampaignContext = (params: URLSearchParams): Abi26Campa
 
 export const saveAbi26CampaignContext = (context: Abi26CampaignContext) => {
   void context
+}
+export const isAbi26PersonalizationInitialized = (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+): boolean => {
+  void skillpilotId
+  void courseLevel
+  return false
+}
+export const markAbi26PersonalizationInitialized = (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+) => {
+  void skillpilotId
+  void courseLevel
 }
 export const loadAbi26CampaignContext = (): Abi26CampaignContext | null => null
 export const buildAbi26PersonalCurriculumConfig = (

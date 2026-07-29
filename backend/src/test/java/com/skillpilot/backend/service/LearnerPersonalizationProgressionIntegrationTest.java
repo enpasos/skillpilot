@@ -32,13 +32,16 @@ class LearnerPersonalizationProgressionIntegrationTest {
     private LearnerService learnerService;
 
     @Autowired
+    private CompositionViewService compositionViewService;
+
+    @Autowired
     private LearnerRepository learnerRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-    void appliesEachCurrentStageAtomicallyBeforeAcceptingTheDescendantFilter() throws Exception {
+    void hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder() throws Exception {
         Learner learner = createLearner("personalization-progression", null);
 
         var afterJurisdiction = applyCurrentValueOption(
@@ -53,6 +56,37 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(afterJurisdiction.stateMachine().requiredAction())
                 .isEqualTo("setPersonalization");
         assertThat(afterJurisdiction.frontier()).isEmpty();
+        assertCurrentDurationModelOptions(learner.getSkillpilotId());
+
+        var afterDurationModel = applyCurrentScopeValueOption(
+                learner.getSkillpilotId(),
+                ROOT_ID,
+                "durationModel",
+                "G9");
+
+        JsonNode afterDurationConfig = persistedConfig(learner.getSkillpilotId());
+        assertThat(afterDurationConfig.path(ROOT_ID).path("filterId").asText())
+                .isEqualTo("DE-HE");
+        assertThat(afterDurationConfig.path(ROOT_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertThat(afterDurationModel.stateMachine().requiredAction())
+                .isEqualTo("setPersonalization");
+        assertThat(afterDurationModel.frontier()).isEmpty();
+        assertCurrentStageOptions(learner.getSkillpilotId());
+
+        var afterStage = applyCurrentScopeValueOption(
+                learner.getSkillpilotId(),
+                ROOT_ID,
+                "stage",
+                "SekII");
+
+        JsonNode afterStageConfig = persistedConfig(learner.getSkillpilotId());
+        assertThat(afterStageConfig.path(ROOT_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertStage(afterStageConfig, "SekII");
+        assertThat(afterStage.stateMachine().requiredAction())
+                .isEqualTo("setPersonalization");
+        assertThat(afterStage.frontier()).isEmpty();
 
         var afterSubjectSelection = applyCurrentValueOption(
                 learner.getSkillpilotId(),
@@ -62,9 +96,11 @@ class LearnerPersonalizationProgressionIntegrationTest {
         JsonNode afterSubjectConfig = persistedConfig(learner.getSkillpilotId());
         assertThat(afterSubjectConfig.path(ROOT_ID).path("filterId").asText())
                 .isEqualTo("DE-HE");
+        assertThat(afterSubjectConfig.path(ROOT_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertStage(afterSubjectConfig, "SekII");
         assertThat(afterSubjectConfig.path(MATH_ID).path("selected").asBoolean()).isTrue();
         assertThat(afterSubjectConfig.path(MATH_ID).has("filterId")).isFalse();
-        assertThat(afterSubjectConfig.size()).isEqualTo(2);
         assertThat(afterSubjectSelection.stateMachine().requiredAction())
                 .isEqualTo("setPersonalization");
 
@@ -80,52 +116,63 @@ class LearnerPersonalizationProgressionIntegrationTest {
         JsonNode afterCourseConfig = persistedConfig(learner.getSkillpilotId());
         assertThat(afterCourseConfig.path(ROOT_ID).path("filterId").asText())
                 .isEqualTo("DE-HE");
+        assertThat(afterCourseConfig.path(ROOT_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertStage(afterCourseConfig, "SekII");
         assertThat(afterCourseConfig.path(MATH_ID).path("filterId").asText())
                 .isEqualTo("LK");
         assertThat(afterCourseConfig.has(BIOLOGY_ID)).isFalse();
-        assertNoStageSelected(afterCourseConfig);
-        assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK");
+        assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK", "G9");
         assertThat(afterCourseProfile.stateMachine().requiredAction())
-                .isEqualTo("setPersonalization");
-        assertThat(afterCourseProfile.frontier()).isEmpty();
-        assertThat(afterCourseProfile.stateMachine().goalOptions()).isEmpty();
-        assertCurrentStageOptions(learner.getSkillpilotId());
+                .isNotEqualTo("setPersonalization");
+        assertThat(afterCourseProfile.frontier()).isNotEmpty();
+        assertThat(afterCourseProfile.stateMachine().goalOptions()).isNotEmpty();
 
-        var afterStage = applyCurrentScopeValueOption(
+        Map<String, Object> matchedView = compositionViewService.findMatchingView(
+                MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", afterCourseConfig.path(ROOT_ID).path("filterId").asText(),
+                        "durationModel", afterCourseConfig.path(ROOT_ID).path("durationModel").asText(),
+                        "stage", afterCourseConfig.path(ROOT_ID).path("stage").asText(),
+                        "courseProfile", afterCourseConfig.path(MATH_ID).path("filterId").asText()));
+        assertThat(matchedView).isNotNull();
+        assertThat(matchedView.get("viewId")).isEqualTo("de-he-gym-sekii-math-lk");
+    }
+
+    @Test
+    void canonicalDeSelectionUsesRepositoryOfferingsWithoutAJurisdictionScope() throws Exception {
+        Learner learner = createLearner("canonical-de-personalization", null);
+
+        applyCurrentValueOption(learner.getSkillpilotId(), ROOT_ID, "ALL");
+        assertThat(persistedConfig(learner.getSkillpilotId())
+                        .path(ROOT_ID)
+                        .path("filterId")
+                        .asText())
+                .isEqualTo("ALL");
+        assertCurrentStageOptions(learner.getSkillpilotId());
+        applyCurrentScopeValueOption(
                 learner.getSkillpilotId(),
                 ROOT_ID,
                 "stage",
-                "CrossStage");
+                "SekII");
 
-        JsonNode afterStageConfig = persistedConfig(learner.getSkillpilotId());
-        assertThat(afterStageConfig.path(MATH_ID).path("filterId").asText())
-                .isEqualTo("LK");
-        assertStage(afterStageConfig, "CrossStage");
-        assertThat(afterStage.stateMachine().requiredAction())
-                .isEqualTo("setPersonalization");
-        assertThat(afterStage.frontier()).isEmpty();
-        assertThat(afterStage.stateMachine().goalOptions()).isEmpty();
-        assertCurrentDurationModelOptions(learner.getSkillpilotId());
+        PersonalizationPlan subjectPlan =
+                learnerService.getPersonalizationPlan(learner.getSkillpilotId());
+        assertThat(subjectPlan.valid()).isTrue();
+        assertThat(subjectPlan.groupId()).isEqualTo("subject");
+        assertThat(subjectPlan.options())
+                .filteredOn(option -> option.kind() == PersonalizationPlan.OptionKind.VALUE)
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .contains(MATH_ID);
 
-        var afterDurationModel = applyCurrentScopeValueOption(
-                learner.getSkillpilotId(),
-                ROOT_ID,
-                "durationModel",
-                "G9");
-
-        JsonNode afterDurationConfig = persistedConfig(learner.getSkillpilotId());
-        assertThat(afterDurationConfig.path(ROOT_ID).path("filterId").asText())
-                .isEqualTo("DE-HE");
-        assertThat(afterDurationConfig.path(ROOT_ID).path("durationModel").asText())
-                .isEqualTo("G9");
-        assertThat(afterDurationConfig.path(MATH_ID).path("filterId").asText())
-                .isEqualTo("LK");
-        assertStage(afterDurationConfig, "CrossStage");
-        assertThat(afterDurationModel.activeFilters()).contains("DE-HE", "LK", "G9");
-        assertThat(afterDurationModel.stateMachine().requiredAction())
-                .isNotEqualTo("setPersonalization");
-        assertThat(afterDurationModel.frontier()).isNotEmpty();
-        assertThat(afterDurationModel.stateMachine().goalOptions()).isNotEmpty();
+        assertThat(compositionViewService.findMatchingView(
+                        MATH_ID,
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "stage", "SekII",
+                                "courseProfile", "LK")))
+                .containsEntry("viewId", "de-de-gym-sekii-math-lk");
     }
 
     @Test
@@ -139,6 +186,32 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(recoveredState.stateMachine().requiredAction()).isEqualTo("setPersonalization");
         assertThat(recoveredState.frontier()).isEmpty();
         assertThat(persistedConfig(learner.getSkillpilotId()).size()).isOne();
+        assertCurrentDurationModelOptions(learner.getSkillpilotId());
+
+        var afterDurationModel = applyCurrentScopeValueOption(
+                learner.getSkillpilotId(),
+                ROOT_ID,
+                "durationModel",
+                "G8");
+
+        JsonNode afterDurationConfig = persistedConfig(learner.getSkillpilotId());
+        assertThat(afterDurationConfig.path(ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(afterDurationConfig.path(ROOT_ID).path("durationModel").asText()).isEqualTo("G8");
+        assertThat(afterDurationModel.stateMachine().requiredAction())
+                .isEqualTo("setPersonalization");
+        assertCurrentStageOptions(learner.getSkillpilotId());
+
+        var afterStage = applyCurrentScopeValueOption(
+                learner.getSkillpilotId(),
+                ROOT_ID,
+                "stage",
+                "SekII");
+
+        JsonNode afterStageConfig = persistedConfig(learner.getSkillpilotId());
+        assertThat(afterStageConfig.path(ROOT_ID).path("durationModel").asText()).isEqualTo("G8");
+        assertStage(afterStageConfig, "SekII");
+        assertThat(afterStage.stateMachine().requiredAction())
+                .isEqualTo("setPersonalization");
 
         var afterSubjectSelection = applyCurrentValueOption(
                 learner.getSkillpilotId(),
@@ -147,6 +220,8 @@ class LearnerPersonalizationProgressionIntegrationTest {
 
         JsonNode selectedSubject = persistedConfig(learner.getSkillpilotId());
         assertThat(selectedSubject.path(ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(selectedSubject.path(ROOT_ID).path("durationModel").asText()).isEqualTo("G8");
+        assertStage(selectedSubject, "SekII");
         assertThat(selectedSubject.path(MATH_ID).path("selected").asBoolean()).isTrue();
         assertThat(selectedSubject.path(MATH_ID).has("filterId")).isFalse();
         assertThat(afterSubjectSelection.stateMachine().requiredAction()).isEqualTo("setPersonalization");
@@ -161,53 +236,20 @@ class LearnerPersonalizationProgressionIntegrationTest {
                 "LK");
 
         JsonNode persisted = persistedConfig(learner.getSkillpilotId());
-        assertThat(persisted.path(ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
-        assertThat(persisted.path(MATH_ID).path("selected").asBoolean()).isTrue();
-        assertThat(persisted.path(MATH_ID).path("filterId").asText()).isEqualTo("LK");
-        assertThat(persisted.has(BIOLOGY_ID)).isFalse();
-        assertNoStageSelected(persisted);
-        assertThat(afterCourseProfile.stateMachine().requiredAction())
-                .isEqualTo("setPersonalization");
-        assertThat(afterCourseProfile.frontier()).isEmpty();
-        assertThat(afterCourseProfile.stateMachine().goalOptions()).isEmpty();
-        assertCurrentStageOptions(learner.getSkillpilotId());
-
-        var afterStage = applyCurrentScopeValueOption(
-                learner.getSkillpilotId(),
-                ROOT_ID,
-                "stage",
-                "SekII");
-
-        JsonNode afterStageConfig = persistedConfig(learner.getSkillpilotId());
-        assertThat(afterStageConfig.path(MATH_ID).path("filterId").asText())
-                .isEqualTo("LK");
-        assertStage(afterStageConfig, "SekII");
-        assertThat(afterStage.stateMachine().requiredAction())
-                .isEqualTo("setPersonalization");
-        assertThat(afterStage.frontier()).isEmpty();
-        assertThat(afterStage.stateMachine().goalOptions()).isEmpty();
-        assertCurrentDurationModelOptions(learner.getSkillpilotId());
-
-        var afterDurationModel = applyCurrentScopeValueOption(
-                learner.getSkillpilotId(),
-                ROOT_ID,
-                "durationModel",
-                "G8");
-
-        JsonNode afterDurationConfig = persistedConfig(learner.getSkillpilotId());
-        assertThat(afterDurationConfig.path(ROOT_ID).path("filterId").asText())
+        assertThat(persisted.path(ROOT_ID).path("filterId").asText())
                 .isEqualTo("DE-HE");
-        assertThat(afterDurationConfig.path(ROOT_ID).path("durationModel").asText())
+        assertThat(persisted.path(ROOT_ID).path("durationModel").asText())
                 .isEqualTo("G8");
-        assertThat(afterDurationConfig.path(MATH_ID).path("selected").asBoolean()).isTrue();
-        assertThat(afterDurationConfig.path(MATH_ID).path("filterId").asText())
+        assertStage(persisted, "SekII");
+        assertThat(persisted.path(MATH_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persisted.path(MATH_ID).path("filterId").asText())
                 .isEqualTo("LK");
-        assertStage(afterDurationConfig, "SekII");
-        assertThat(afterDurationModel.activeFilters()).contains("DE-HE", "LK", "G8");
-        assertThat(afterDurationModel.stateMachine().requiredAction())
+        assertThat(persisted.has(BIOLOGY_ID)).isFalse();
+        assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK", "G8");
+        assertThat(afterCourseProfile.stateMachine().requiredAction())
                 .isNotEqualTo("setPersonalization");
-        assertThat(afterDurationModel.frontier()).isNotEmpty();
-        assertThat(afterDurationModel.stateMachine().goalOptions()).isNotEmpty();
+        assertThat(afterCourseProfile.frontier()).isNotEmpty();
+        assertThat(afterCourseProfile.stateMachine().goalOptions()).isNotEmpty();
     }
 
     @Test
@@ -372,12 +414,6 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(plan.options())
                 .extracting(PersonalizationPlan.Option::scopeValue)
                 .containsExactly("G8", "G9");
-    }
-
-    private void assertNoStageSelected(JsonNode config) {
-        assertThat(config.path(ROOT_ID).has("stage")).isFalse();
-        assertThat(config.has("__skillpilot_stage_scope_sek1__")).isFalse();
-        assertThat(config.has("__skillpilot_stage_scope_sek2__")).isFalse();
     }
 
     private void assertStage(JsonNode config, String expectedStage) {

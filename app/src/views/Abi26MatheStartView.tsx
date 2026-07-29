@@ -9,9 +9,10 @@ import {
   ABI26_ROOT_FILTER_ID,
   ABI26_SCOPE_BY_LEVEL,
   buildAbi26CockpitUrl,
-  buildAbi26PersonalCurriculumConfig,
   buildAbi26StartPrompt,
   extractAbi26CampaignContext,
+  markAbi26PersonalizationInitialized,
+  resolveAbi26PersonalizationOption,
   saveAbi26CampaignContext,
   type Abi26CourseLevel,
 } from '../utils/abi26MatheCampaign'
@@ -27,11 +28,39 @@ import {
 } from '../coachVariants/coachLaunch'
 import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
+import {
+  applyPersonalizationOption,
+  requestPersonalizationPlan,
+} from '../utils/personalCurriculumEditorApi'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 
 const TRACK_OPTIONS: Abi26CourseLevel[] = ['GK', 'LK']
+
+const configureAbi26PersonalCurriculum = async (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+) => {
+  let plan = await requestPersonalizationPlan(skillpilotId, { apiBase })
+  for (let step = 0; step < 10 && plan.stage !== 'COMPLETE'; step += 1) {
+    if (plan.stage === 'INVALID') {
+      throw new Error(`Die Lehrplankonfiguration ist ungültig (${plan.problemCode ?? 'unbekannt'}).`)
+    }
+    const option = resolveAbi26PersonalizationOption(plan, courseLevel)
+    if (!option) {
+      throw new Error('Die benötigte Hessen-Mathematik-Auswahl ist derzeit nicht verfügbar.')
+    }
+    plan = await applyPersonalizationOption(
+      skillpilotId,
+      option.optionId,
+      { apiBase },
+    )
+  }
+  if (plan.stage !== 'COMPLETE') {
+    throw new Error('Die Lehrplankonfiguration konnte nicht abgeschlossen werden.')
+  }
+}
 
 const copyText = async (value: string) => {
   if (!value) return false
@@ -117,6 +146,9 @@ export const Abi26MatheStartView: React.FC = () => {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Curriculum).')
       }
 
+      await configureAbi26PersonalCurriculum(id, courseLevel)
+      markAbi26PersonalizationInitialized(id, courseLevel)
+
       const scopeRes = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(id)}/scope`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -124,20 +156,6 @@ export const Abi26MatheStartView: React.FC = () => {
       })
       if (!scopeRes.ok) {
         throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Scope).')
-      }
-
-      const personalConfig = buildAbi26PersonalCurriculumConfig(courseLevel)
-
-      const personalCurriculumRes = await fetch(
-        toApi(`/api/ui/learners/${encodeURIComponent(id)}/personal-curriculum`),
-        {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(personalConfig),
-        },
-      )
-      if (!personalCurriculumRes.ok) {
-        throw new Error('Das Cockpit konnte nicht vorkonfiguriert werden (Kursniveau).')
       }
 
       const activeGoalRes = await fetch(

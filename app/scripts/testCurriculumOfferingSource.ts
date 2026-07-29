@@ -1,11 +1,22 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import {
   getOfferedGymnasiumDurationModels,
   getOfferedGymnasiumStages,
   isGymnasiumSubjectOfferedForStageSelection,
   resolveCurriculumOfferingSource,
 } from '../src/utils/durationModel'
-import { deriveRuntimeCompositionScope } from '../src/utils/compositionViewRuntime'
+import {
+  applyCompositionViewProjection,
+  deriveRuntimeCompositionScope,
+  shouldApplyLearnerPlacementFallback,
+} from '../src/utils/compositionViewRuntime'
+import {
+  compareLearnerCompositionScopeMatches,
+  scoreLearnerCompositionScope,
+} from '../src/utils/learnerCompositionScopeMatching'
+import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   getGlobalStageScopeSelection,
   GLOBAL_STAGE_SCOPE_CONFIG_IDS,
@@ -13,7 +24,11 @@ import {
   setGlobalStageScopeSelection,
   synchronizePersonalCurriculumStageScope,
 } from '../src/utils/personalCurriculumStageScope'
-import type { RuntimeCurriculumCatalog } from '../src/utils/runtimeCurriculumCatalog'
+import {
+  resolveLearnerRuntimeOfferingId,
+  resolveRuntimeOfferingId,
+  type RuntimeCurriculumCatalog,
+} from '../src/utils/runtimeCurriculumCatalog'
 import { migrateTrainerClassSession } from '../src/utils/trainerLandscapeContext'
 
 const canonicalGymnasiumRootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
@@ -38,11 +53,20 @@ const catalog: RuntimeCurriculumCatalog = {
     frameworkId: 'canonical-gymnasium-fixture',
     subject: 'Fixture',
     defaultOfferingId: 'fixture.default',
+  }, {
+    packageId: 'fixture.package',
+    landscapeId: canonicalMathId,
+    role: 'module',
+    locale: 'de-DE',
+    frameworkId: 'canonical-gymnasium-fixture',
+    subject: 'Mathematik',
+    parentLandscapeId: 'fixture.root',
   }],
   views: [
     { packageId: 'fixture.package', viewId: 'fixture.view.g8', landscapeId: 'fixture.root', scope: { jurisdiction: 'EDU-NORTH', stage: 'SekI', durationModel: 'G8' } },
     { packageId: 'fixture.package', viewId: 'fixture.view.g9', landscapeId: 'fixture.root', scope: { jurisdiction: 'EDU-NORTH', stage: 'SekI', durationModel: 'G9' } },
     { packageId: 'fixture.package', viewId: 'fixture.view.sekii', landscapeId: 'fixture.root', scope: { jurisdiction: 'EDU-NORTH', stage: 'SekII', courseProfile: 'GK' } },
+    { packageId: 'fixture.package', viewId: 'de-he-gym-sekii-math-lk', landscapeId: canonicalMathId, scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'LK' } },
   ],
   offerings: [
     {
@@ -65,6 +89,13 @@ const catalog: RuntimeCurriculumCatalog = {
       landscapeId: 'fixture.root',
       scope: { jurisdiction: 'EDU-NORTH', stage: 'SekII', courseProfile: 'GK' },
       resolution: { mode: 'single', viewIds: ['fixture.view.sekii'] },
+    },
+    {
+      packageId: 'fixture.package',
+      offeringId: 'fixture.he.math.sekii.lk',
+      landscapeId: canonicalMathId,
+      scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'LK' },
+      resolution: { mode: 'single', viewIds: ['de-he-gym-sekii-math-lk'] },
     },
   ],
   decks: [],
@@ -164,15 +195,16 @@ assert.equal(
   true,
 )
 
+const hessenMathRuntimeScope = deriveRuntimeCompositionScope({
+  landscapeId: canonicalMathId,
+  rootLandscapeId: canonicalGymnasiumRootId,
+  scopeEnabled: true,
+  learnerPersonalCurriculum: JSON.stringify(
+    synchronizedHessenMathLkUpperSecondary.config,
+  ),
+})
 assert.deepEqual(
-  deriveRuntimeCompositionScope({
-    landscapeId: canonicalMathId,
-    rootLandscapeId: canonicalGymnasiumRootId,
-    scopeEnabled: true,
-    learnerPersonalCurriculum: JSON.stringify(
-      synchronizedHessenMathLkUpperSecondary.config,
-    ),
-  }),
+  hessenMathRuntimeScope,
   {
     landscapeId: canonicalMathId,
     schoolForm: 'Gymnasium',
@@ -182,6 +214,197 @@ assert.deepEqual(
     durationModel: 'G9',
   },
 )
+assert.ok(hessenMathRuntimeScope)
+const {
+  landscapeId: hessenLandscapeId,
+  ...hessenMathOfferingScope
+} = hessenMathRuntimeScope
+assert.equal(hessenLandscapeId, canonicalMathId)
+assert.equal(
+  resolveRuntimeOfferingId(
+    catalog,
+    canonicalMathId,
+    hessenMathOfferingScope,
+  ),
+  undefined,
+  'Exact package identity must not pretend that a duration-neutral Sek-II offering contains G9.',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    catalog,
+    canonicalMathId,
+    hessenMathOfferingScope,
+  ),
+  'fixture.he.math.sekii.lk',
+  'The learner package adapter must resolve Hessen Mathematics LK Sek II even when G9 remains committed.',
+)
+assert.equal(
+  resolveLearnerRuntimeOfferingId(
+    catalog,
+    canonicalMathId,
+    { ...hessenMathOfferingScope, stage: 'CrossStage' },
+  ),
+  undefined,
+  'The duration-neutral fallback must never widen CrossStage.',
+)
+
+const hessenMathSekOneG9Scope = {
+  schoolForm: 'Gymnasium',
+  jurisdiction: 'DE-HE',
+  stage: 'SekI',
+  durationModel: 'G9',
+}
+assert.ok(scoreLearnerCompositionScope(
+  {
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'SekI',
+    durationModel: 'G9',
+  },
+  hessenMathSekOneG9Scope,
+))
+assert.equal(
+  scoreLearnerCompositionScope(
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'SekI',
+      durationModel: 'G8',
+    },
+    hessenMathSekOneG9Scope,
+  ),
+  null,
+  'A committed G9 learner scope must not resolve a G8 composition view.',
+)
+assert.equal(
+  scoreLearnerCompositionScope(
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'CrossStage',
+      courseProfile: 'LK',
+      durationModel: 'G9',
+    },
+    hessenMathOfferingScope,
+  ),
+  null,
+  'A more specific CrossStage view must not override the exact Sek-II stage anchor.',
+)
+assert.equal(
+  scoreLearnerCompositionScope(
+    {
+      schoolForm: 'Gymnasium',
+      jurisdiction: 'DE-HE',
+      stage: 'SekII',
+      courseProfile: 'LK',
+    },
+    {
+      ...hessenMathOfferingScope,
+      phase: 'Q1',
+    },
+  ),
+  null,
+  'Unknown learner-scope dimensions must remain fail-closed.',
+)
+
+const durationNeutralSekTwoScore = scoreLearnerCompositionScope(
+  {
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'SekII',
+    courseProfile: 'LK',
+  },
+  hessenMathOfferingScope,
+)
+const durationSpecificSekTwoScore = scoreLearnerCompositionScope(
+  {
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'SekII',
+    courseProfile: 'LK',
+    durationModel: 'G9',
+  },
+  hessenMathOfferingScope,
+)
+assert.ok(durationNeutralSekTwoScore)
+assert.ok(durationSpecificSekTwoScore)
+assert.ok(
+  compareLearnerCompositionScopeMatches(
+    durationSpecificSekTwoScore,
+    durationNeutralSekTwoScore,
+  ) < 0,
+  'An exact duration-specific view must outrank a reviewed duration-neutral subset.',
+)
+
+assert.equal(
+  shouldApplyLearnerPlacementFallback(
+    canonicalMathId,
+    new Set([canonicalMathId]),
+  ),
+  false,
+  'A composition-managed learner scope must stay fail-closed after a 204 or lookup error.',
+)
+assert.equal(
+  shouldApplyLearnerPlacementFallback(
+    canonicalMathId,
+    new Set(),
+  ),
+  true,
+  'A landscape without a composition request may still use its ordinary placement projection.',
+)
+
+const hessenMathSekTwoLkView = JSON.parse(readFileSync(
+  new URL(
+    '../../curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json',
+    import.meta.url,
+  ),
+  'utf8',
+)) as Record<string, unknown>
+assert.equal(
+  hessenMathSekTwoLkView.viewId,
+  'de-he-gym-sekii-math-lk',
+  'The resolved Hessen Mathematics LK upper-secondary scope must use its reviewed Sek-II composition view.',
+)
+
+const canonicalMathLandscape = JSON.parse(readFileSync(
+  new URL(
+    '../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+    import.meta.url,
+  ),
+  'utf8',
+)) as SkillLandscape
+const [projectedHessenMath] = applyCompositionViewProjection(
+  prepareLandscapeEntries([canonicalMathLandscape]),
+  hessenMathSekTwoLkView,
+)
+assert.ok(projectedHessenMath)
+const projectedGoalById = new Map(
+  projectedHessenMath.goals.map((goal) => [goal.id, goal]),
+)
+const projectedMathRoot = projectedHessenMath.goals.find((goal) =>
+  (goal.tags ?? []).includes('root'),
+)
+assert.ok(projectedMathRoot)
+const projectedMathRootChildTitles = projectedMathRoot.contains.map(
+  (goalId) => projectedGoalById.get(goalId)?.title,
+)
+assert.deepEqual(
+  projectedMathRootChildTitles,
+  ['Sekundarstufe II (LK)'],
+  'The learner-facing Mathematics root must expose only the authored Sek-II LK structure.',
+)
+for (const canonicalFallbackSibling of [
+  'Sekundarstufe I',
+  'Zahlen, Terme und Algebra',
+  'Geometrie und Raum',
+  'Lernkarten – Sek I Kernformeln',
+]) {
+  assert.equal(
+    projectedMathRootChildTitles.includes(canonicalFallbackSibling),
+    false,
+    `${canonicalFallbackSibling} must not remain a direct learner-facing Mathematics sibling.`,
+  )
+}
 
 const unresolvedStageConfig = {
   [canonicalGymnasiumRootId]: {

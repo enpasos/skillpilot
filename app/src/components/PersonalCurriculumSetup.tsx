@@ -25,6 +25,12 @@ import {
 } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
+import {
+    PersonalCurriculumEditor,
+} from './PersonalCurriculumEditor'
+import type {
+    PersonalCurriculumEditorProps,
+} from './PersonalCurriculumEditor'
 
 interface LandscapeSummary {
     landscapeId: string
@@ -77,12 +83,14 @@ interface PersonalCurriculumSetupProps {
     currentLandscapeId?: string
     retirementOnly?: boolean
     onApply?: (config: PersonalCurriculumConfig, preferences: PersonalCurriculumPreferences) => Promise<void> | void
+    onPreferencesApply?: (preferences: PersonalCurriculumPreferences) => Promise<void> | void
     initialConfig?: PersonalCurriculumConfig
     rootLandscapeId?: string
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
     migration?: SetupMigrationConfig
+    personalizationEditor?: PersonalCurriculumEditorProps
 }
 
 export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = ({
@@ -92,12 +100,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     currentLandscapeId,
     retirementOnly = false,
     onApply,
+    onPreferencesApply,
     initialConfig = {},
     rootLandscapeId,
     initialStrategy = 'SEQUENTIAL',
     initialAutoPilot = true,
     initialStrictMode = false,
     migration,
+    personalizationEditor,
 }) => {
     const { language } = useLanguage()
     const localizedLanguage = language === 'en' ? 'en' : 'de'
@@ -389,9 +399,43 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         })
     }
 
+    const guidedSelectionOpen = Boolean(
+        personalizationEditor?.plan
+        && (
+            personalizationEditor.plan.stage === 'SELECTION'
+            || personalizationEditor.plan.stage === 'ROOT_FILTER'
+            || personalizationEditor.plan.stage === 'DESCENDANT_FILTER'
+        ),
+    )
+    const guidedCloseBlocked = Boolean(
+        personalizationEditor
+        && !personalizationEditor.error
+        && (
+            personalizationEditor.loading
+            || personalizationEditor.busy
+            || guidedSelectionOpen
+        ),
+    )
+
     const handleApply = async () => {
         if (retirementOnly) {
             onClose()
+            return
+        }
+
+        if (personalizationEditor) {
+            if (guidedCloseBlocked) return
+            if (!onPreferencesApply) {
+                onClose()
+                return
+            }
+            setIsApplying(true)
+            try {
+                await onPreferencesApply({ strategy, autoPilot, strictMode })
+                onClose()
+            } finally {
+                setIsApplying(false)
+            }
             return
         }
 
@@ -654,7 +698,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </div>
                     <button
                         onClick={onClose}
-                        disabled={isApplying}
+                        disabled={isApplying || guidedCloseBlocked}
                         className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
                     >
                         <X size={24} />
@@ -706,6 +750,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                             <p className="mt-2 text-sm text-text-secondary">
                                 {retirementCopy.noticeBodySecondary}
                             </p>
+                        </div>
+                    )}
+
+                    {!retirementOnly && personalizationEditor && (
+                        <div className="mb-6">
+                            <PersonalCurriculumEditor {...personalizationEditor} />
                         </div>
                     )}
 
@@ -768,7 +818,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         </div>
                     )}
 
-                    {!retirementOnly && (
+                    {!retirementOnly && !personalizationEditor && (
                         <div className="flex flex-col gap-1">
                             {rootLandscape ? renderNode(rootLandscape, true) : childrenLandscapes.map(l => renderNode(l, false))}
                         </div>
@@ -780,8 +830,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         onClick={() => {
                             void handleApply()
                         }}
-                        disabled={isApplying}
-                        className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
+                        disabled={isApplying || guidedCloseBlocked}
+                        className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
                         {retirementOnly ? setupCopy.closeAction : isApplying ? setupCopy.savePending : setupCopy.doneAction}
                     </button>

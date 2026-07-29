@@ -32,27 +32,49 @@ SkillPilot starts from curriculum landscapes stored as JSON files under `curricu
 
 ## 2. The Learning Lifecycle
 
+### Before Step 1: Catalog Navigation
+
+The UI may first group available curricula into catalog areas such as school,
+university and higher education, or languages and continuing education. This
+helps the learner find a curriculum but does not become part of learner state.
+
 ### Step 1: Base Curriculum Selection
 Before learning starts, a **base curriculum** must be chosen.
 
 - Definition: the authority-defined landscape that provides the full goal universe.
-- Example: "Gymnasiale Oberstufe Hessen" or a specific university pathway.
+- Example: "Gymnasium (DE)" or a specific university pathway.
 
-### Step 2: Personal Curriculum / Filters
-The learner narrows the base curriculum to the subset relevant for their own path.
+### Step 2: Committed Personal Curriculum
+The learner narrows the base curriculum to the longer-lived subset relevant for
+their own path.
 
-- Definition: the filtered subset of the base curriculum that should currently count as in-scope.
+- Definition: the committed selection of authored curriculum dimensions that
+  should count as in-scope.
 - Example: selecting advanced Math and basic Physics while omitting unrelated subjects.
-- Result: this filtered view becomes the candidate space for frontier navigation.
+- School order: jurisdiction or explicit canonical view, applicable duration
+  model, stage, subjects, then course profile per subject.
+- Result: the resolved learner-facing composition view becomes the candidate
+  space for focus, frontier, progress, and completion.
+- Ownership: one backend-owned state is edited through the start screen, the
+  Cockpit, prospectively an MCP UI, or an unambiguous ChatCoach request. The web
+  editor is the primary control surface, not the only one.
+- Invariants: LK is a subject profile and never implies upper secondary;
+  missing stage information never means both stages; ambiguous scope requests
+  require clarification.
 
-### Step 3: Planned Scope and Active Goal
+### Step 3: Focus and Active Atomic Goal
 The learner can define focus at two different levels.
 
-- **Planned goals / scope roots:** one or more goals can be marked as planned.
+- **Level 3a — planned goals / focus roots:** one or more goals can be marked as planned.
   - Their descendants define the learner's current focus scope.
   - If no planned goals are set, the whole personal curriculum remains in scope.
-- **Active goal:** one goal can be active as the immediate working target in the UI/learning-coach loop.
+- **Level 3b — active atomic goal:** exactly one atomic goal can be active as
+  the immediate working target in the UI/learning-coach loop.
   - The active goal should normally come from the frontier, but the system can still diagnose blockers for non-frontier selections.
+
+Year, phase, or module choices are focus over program structure; they are not
+silently converted into canonical learning goals. A focus change does not
+rewrite the Personal Curriculum.
 
 ### Step 4: Frontier Calculation and Navigation Loop
 Learning proceeds along the **frontier**: the set of sensible next goals.
@@ -81,6 +103,8 @@ Runtime loop:
 Progress is stored as **mastery** on atomic goals and aggregated upward for clusters.
 
 - Atomic mastery is tracked per goal UUID on a `0.0` to `1.0` scale.
+- Mastery remains global when the Personal Curriculum, composition view, focus,
+  or active goal changes.
 - Cluster mastery is aggregated from contained descendants using goal weights.
 - Memorization/SRS goals are a special case.
   - Their mastery is derived from card state rather than manually set.

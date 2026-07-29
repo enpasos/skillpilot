@@ -32,6 +32,11 @@ export interface RuntimeCompositionScope extends GoalPlacementContext {
   landscapeId: string
 }
 
+export const shouldApplyLearnerPlacementFallback = (
+  landscapeId: string,
+  compositionManagedLandscapeIds: ReadonlySet<string>,
+) => !compositionManagedLandscapeIds.has(landscapeId)
+
 const normalizeComparableToken = (value?: string) => value?.trim().toUpperCase() ?? ''
 
 const getStructuralTreeOrder = (goal: UiGoal) =>

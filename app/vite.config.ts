@@ -10,6 +10,11 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
 import { serviceWorkerNavigationFallbackDenylist } from './serviceWorkerNavigationPolicy'
+import {
+  compareLearnerCompositionScopeMatches,
+  normalizeLearnerCompositionScope,
+  scoreLearnerCompositionScope,
+} from './src/utils/learnerCompositionScopeMatching'
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
 const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
@@ -840,69 +845,6 @@ const normalizeSemanticReviewRecord = (
   }
 }
 
-const normalizeCompositionScope = (rawScope: unknown): Record<string, string> => {
-  const record = asRecord(rawScope)
-  const normalized: Record<string, string> = {}
-  Object.entries(record).forEach(([key, value]) => {
-    const text = normalizeScopeValue(value)
-    if (!text) return
-    normalized[key] = text
-  })
-  return normalized
-}
-
-const STAGE_SCOPE_KEY = 'stage'
-const CROSS_STAGE_SCOPE = 'CROSSSTAGE'
-
-const matchCompositionStageScope = (viewStage: string, requestedStage: string): 'exact' | 'fallback' | 'none' => {
-  const normalizedViewStage = normalizeScopeValue(viewStage).toUpperCase()
-  const normalizedRequestedStage = normalizeScopeValue(requestedStage).toUpperCase()
-
-  if (!normalizedViewStage || !normalizedRequestedStage) {
-    return 'none'
-  }
-
-  if (normalizedViewStage === normalizedRequestedStage) {
-    return 'exact'
-  }
-
-  if (
-    normalizedRequestedStage === CROSS_STAGE_SCOPE
-    && (normalizedViewStage === 'SEKI' || normalizedViewStage === 'SEKII')
-  ) {
-    return 'fallback'
-  }
-
-  return 'none'
-}
-
-const scoreCompositionScopeMatch = (
-  viewScope: Record<string, string>,
-  requestedScope: Record<string, string>,
-): { scopeSize: number; stageFallbackCount: number } | null => {
-  if (Object.keys(viewScope).length === 0) {
-    return Object.keys(requestedScope).length === 0 ? { scopeSize: 0, stageFallbackCount: 0 } : null
-  }
-
-  let stageFallbackCount = 0
-  for (const [key, value] of Object.entries(viewScope)) {
-    const requestedValue = requestedScope[key]
-    if (!requestedValue) return null
-    if (key === STAGE_SCOPE_KEY) {
-      const stageMatch = matchCompositionStageScope(value, requestedValue)
-      if (stageMatch === 'none') return null
-      if (stageMatch === 'fallback') stageFallbackCount += 1
-      continue
-    }
-    if (requestedValue.toUpperCase() !== value.toUpperCase()) return null
-  }
-
-  return {
-    scopeSize: Object.keys(viewScope).length,
-    stageFallbackCount,
-  }
-}
-
 const findMatchingCompositionView = async (
   landscapeId: string,
   requestedScope: Record<string, string>,
@@ -917,8 +859,7 @@ const findMatchingCompositionView = async (
 
   const matches: Array<{
     view: Record<string, unknown>
-    scopeSize: number
-    stageFallbackCount: number
+    score: NonNullable<ReturnType<typeof scoreLearnerCompositionScope>>
     viewId: string
   }> = []
 
@@ -929,26 +870,22 @@ const findMatchingCompositionView = async (
     if (!isCompositionViewPayload(parsed)) continue
     if (normalizeScopeValue(parsed.landscapeId).toUpperCase() !== normalizeScopeValue(landscapeId).toUpperCase()) continue
 
-    const scope = normalizeCompositionScope(parsed.scope)
-    const score = scoreCompositionScopeMatch(scope, requestedScope)
+    const score = scoreLearnerCompositionScope(
+      asRecord(parsed.scope),
+      requestedScope,
+    )
     if (!score) continue
 
     matches.push({
       view: parsed,
-      scopeSize: score.scopeSize,
-      stageFallbackCount: score.stageFallbackCount,
+      score,
       viewId: normalizeScopeValue(parsed.viewId),
     })
   }
 
   matches.sort((left, right) => {
-    if (right.scopeSize !== left.scopeSize) {
-      return right.scopeSize - left.scopeSize
-    }
-    if (left.stageFallbackCount !== right.stageFallbackCount) {
-      return left.stageFallbackCount - right.stageFallbackCount
-    }
-    return left.viewId.localeCompare(right.viewId)
+    return compareLearnerCompositionScopeMatches(left.score, right.score)
+      || left.viewId.localeCompare(right.viewId)
   })
 
   return matches[0]?.view ?? null
@@ -2968,11 +2905,12 @@ const deckEditorDevPlugin = {
           }
 
           const landscapeId = requestUrl.searchParams.get('landscapeId') ?? ''
-          const requestedScope = normalizeCompositionScope({
+          const requestedScope = normalizeLearnerCompositionScope({
             schoolForm: requestUrl.searchParams.get('schoolForm'),
             jurisdiction: requestUrl.searchParams.get('jurisdiction'),
             stage: requestUrl.searchParams.get('stage'),
             courseProfile: requestUrl.searchParams.get('courseProfile'),
+            durationModel: requestUrl.searchParams.get('durationModel'),
           })
           const match = await findMatchingCompositionView(landscapeId, requestedScope)
           if (!match) {

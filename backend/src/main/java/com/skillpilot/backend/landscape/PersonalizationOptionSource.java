@@ -14,6 +14,9 @@ public class PersonalizationOptionSource {
     private List<String> filterIds;
     private String scopeKey;
     private List<PersonalizationScopeValue> values;
+    private String targetLandscapeId;
+    private List<PersonalizationScopeBinding> scopeBindings;
+    private Boolean optionalWhenUnavailable;
 
     public PersonalizationSourceKind getKind() {
         return kind;
@@ -81,5 +84,29 @@ public class PersonalizationOptionSource {
 
     public void setValues(List<PersonalizationScopeValue> values) {
         this.values = values;
+    }
+
+    public String getTargetLandscapeId() {
+        return targetLandscapeId;
+    }
+
+    public void setTargetLandscapeId(String targetLandscapeId) {
+        this.targetLandscapeId = targetLandscapeId;
+    }
+
+    public List<PersonalizationScopeBinding> getScopeBindings() {
+        return scopeBindings;
+    }
+
+    public void setScopeBindings(List<PersonalizationScopeBinding> scopeBindings) {
+        this.scopeBindings = scopeBindings;
+    }
+
+    public Boolean getOptionalWhenUnavailable() {
+        return optionalWhenUnavailable;
+    }
+
+    public void setOptionalWhenUnavailable(Boolean optionalWhenUnavailable) {
+        this.optionalWhenUnavailable = optionalWhenUnavailable;
     }
 }

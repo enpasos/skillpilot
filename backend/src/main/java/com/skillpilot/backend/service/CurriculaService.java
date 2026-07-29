@@ -585,7 +585,9 @@ public class CurriculaService {
             if (requestedScope.isEmpty()) {
                 return Collections.emptySet();
             }
-            matchedView = compositionViewService.findMatchingView(compositionLandscapeId, requestedScope);
+            matchedView = compositionViewService.findLearnerScopeView(
+                    compositionLandscapeId,
+                    requestedScope);
         }
         if (matchedView == null) {
             return Collections.emptySet();

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 import org.springframework.util.StringUtils;
 
@@ -34,6 +35,12 @@ public class CompositionViewService {
     private static final String COURSE_PROFILE_COMBINED = "GK+LK";
     private static final String COURSE_PROFILE_GK = "GK";
     private static final String COURSE_PROFILE_LK = "LK";
+    private static final Set<String> LEARNER_SCOPE_DIMENSIONS = Set.of(
+            "schoolForm",
+            "jurisdiction",
+            STAGE_KEY,
+            "durationModel",
+            COURSE_PROFILE_KEY);
 
     private enum ProjectionRole {
         TARGET,
@@ -43,6 +50,7 @@ public class CompositionViewService {
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final PackageCompositionViewState packageState;
+    private volatile RepositoryViewIndex repositoryViewIndex;
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this.properties = Objects.requireNonNull(properties, "properties");
@@ -274,55 +282,129 @@ public class CompositionViewService {
         if (packageState != null) {
             return packageState.resolveDocument(landscapeId.trim(), requestedScope);
         }
+        return findRepositoryMatchingView(landscapeId, requestedScope, false);
+    }
 
-        Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
-        if (!Files.isDirectory(baseDir)) {
+    private Map<String, Object> findRepositoryMatchingView(
+            String landscapeId,
+            Map<String, String> requestedScope,
+            boolean requireExactStage) {
+        Map<String, String> normalizedRequestedScope = normalizeScope(requestedScope);
+        List<ViewMatch> matches = repositoryViewIndex()
+                .byLandscapeId()
+                .getOrDefault(normalizeValue(landscapeId), List.of())
+                .stream()
+                .map(view -> new ViewMatch(
+                        view,
+                        scoreScopeMatch(normalizeScope(asMap(view.get("scope"))), normalizedRequestedScope)))
+                .filter(match -> match.score() != null)
+                .filter(match -> !requireExactStage
+                        || hasExactLearnerAnchorScope(
+                                asMap(match.view().get("scope")),
+                                normalizedRequestedScope))
+                .sorted(Comparator
+                        .<ViewMatch>comparingInt(match -> match.score().scopeSize())
+                        .reversed()
+                        .thenComparingInt(match -> match.score().stageFallbackCount())
+                        .thenComparingInt(match -> match.score().courseFallbackCount())
+                        .thenComparingInt(match -> match.score().coursePreferenceRank())
+                        .thenComparing(match -> asString(match.view().get("viewId"))))
+                .toList();
+        if (matches.isEmpty()) {
             return null;
         }
 
-        Map<String, String> normalizedRequestedScope = normalizeScope(requestedScope);
-
-        try (Stream<Path> stream = Files.walk(baseDir)) {
-            List<ViewMatch> matches = stream
-                    .filter(Files::isRegularFile)
-                    .filter(path -> path.getFileName().toString().endsWith(".view.json"))
-                    .map(this::readViewFile)
-                    .filter(Objects::nonNull)
-                    .filter(view -> normalizeValue(asString(view.get("landscapeId")))
-                            .equals(normalizeValue(landscapeId)))
-                    .map(view -> new ViewMatch(
-                            view,
-                            scoreScopeMatch(normalizeScope(asMap(view.get("scope"))), normalizedRequestedScope)))
-                    .filter(match -> match.score() != null)
-                    .sorted(Comparator
-                            .<ViewMatch>comparingInt(match -> match.score().scopeSize())
-                            .reversed()
-                            .thenComparingInt(match -> match.score().stageFallbackCount())
-                            .thenComparingInt(match -> match.score().courseFallbackCount())
-                            .thenComparingInt(match -> match.score().coursePreferenceRank())
-                            .thenComparing(match -> asString(match.view().get("viewId"))))
+        if (isCombinedCourseProfileRequest(normalizedRequestedScope)) {
+            MatchScore bestScore = matches.get(0).score();
+            List<Map<String, Object>> mergeCandidates = matches.stream()
+                    .filter(match -> match.score().scopeSize() == bestScore.scopeSize())
+                    .filter(match -> match.score().stageFallbackCount() == bestScore.stageFallbackCount())
+                    .filter(match -> match.score().courseFallbackCount() == bestScore.courseFallbackCount())
+                    .map(ViewMatch::view)
                     .toList();
-            if (matches.isEmpty()) {
-                return null;
+            if (mergeCandidates.size() > 1 && bestScore.courseFallbackCount() > 0) {
+                return mergeViews(landscapeId, requestedScope, mergeCandidates);
             }
-
-            if (isCombinedCourseProfileRequest(normalizedRequestedScope)) {
-                MatchScore bestScore = matches.get(0).score();
-                List<Map<String, Object>> mergeCandidates = matches.stream()
-                        .filter(match -> match.score().scopeSize() == bestScore.scopeSize())
-                        .filter(match -> match.score().stageFallbackCount() == bestScore.stageFallbackCount())
-                        .filter(match -> match.score().courseFallbackCount() == bestScore.courseFallbackCount())
-                        .map(ViewMatch::view)
-                        .toList();
-                if (mergeCandidates.size() > 1 && bestScore.courseFallbackCount() > 0) {
-                    return mergeViews(landscapeId, requestedScope, mergeCandidates);
-                }
-            }
-
-            return Collections.unmodifiableMap(new LinkedHashMap<>(matches.get(0).view()));
-        } catch (IOException e) {
-            throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
         }
+
+        return Collections.unmodifiableMap(new LinkedHashMap<>(matches.get(0).view()));
+    }
+
+    private static boolean hasExactLearnerAnchorScope(
+            Map<String, ?> authoredScope,
+            Map<String, String> normalizedRequestedScope) {
+        String requestedSchoolForm = normalizeValue(normalizedRequestedScope.get("schoolForm"));
+        String authoredSchoolForm = normalizeValue(asString(authoredScope.get("schoolForm")));
+        String requestedStage = normalizeValue(normalizedRequestedScope.get(STAGE_KEY));
+        String authoredStage = normalizeValue(asString(authoredScope.get(STAGE_KEY)));
+        return StringUtils.hasText(requestedSchoolForm)
+                && requestedSchoolForm.equals(authoredSchoolForm)
+                && StringUtils.hasText(requestedStage)
+                && requestedStage.equals(authoredStage);
+    }
+
+    /**
+     * Resolves a committed learner scope without weakening its authored stage
+     * semantics.
+     *
+     * <p>Repository composition views may deliberately omit Level-2
+     * dimensions that do not narrow their applicability, for example a
+     * DE-wide Sek-I view or a duration-neutral Sek-II view. Such a reviewed
+     * scope is a compatible authored subset, not a heuristic fallback. School
+     * form and stage must still match exactly, and unknown dimensions remain
+     * fail-closed. Package offering identity remains exact in
+     * {@link PackageCompositionViewState}; only this learner adapter selects
+     * the most specific compatible authored offering.</p>
+     */
+    public Map<String, Object> findLearnerScopeView(
+            String landscapeId,
+            Map<String, String> requestedScope) {
+        Map<String, String> normalizedRequestedScope =
+                normalizeScope(requestedScope == null ? Map.of() : requestedScope);
+        if (!isConstrainedLearnerScope(normalizedRequestedScope)) {
+            return null;
+        }
+        if (packageState == null) {
+            return findRepositoryMatchingView(
+                    landscapeId,
+                    normalizedRequestedScope,
+                    true);
+        }
+
+        if (!StringUtils.hasText(landscapeId)) {
+            return null;
+        }
+        List<PackageOfferingMatch> matches = packageState.offeringsByLandscapeId()
+                .getOrDefault(landscapeId.trim(), List.of())
+                .stream()
+                .map(offering -> new PackageOfferingMatch(
+                        offering,
+                        scoreScopeMatch(offering.scope(), normalizedRequestedScope)))
+                .filter(match -> match.score() != null)
+                .filter(match -> hasExactLearnerAnchorScope(
+                        match.offering().scope(),
+                        normalizedRequestedScope))
+                .sorted(Comparator
+                        .<PackageOfferingMatch>comparingInt(match -> match.score().scopeSize())
+                        .reversed()
+                        .thenComparingInt(match -> match.score().courseFallbackCount())
+                        .thenComparingInt(match -> match.score().coursePreferenceRank())
+                        .thenComparing(match -> match.offering().offeringId()))
+                .toList();
+        if (matches.isEmpty()) {
+            return null;
+        }
+        return packageState.resolveOfferingDocument(
+                matches.get(0).offering().offeringId());
+    }
+
+    private static boolean isConstrainedLearnerScope(
+            Map<String, String> normalizedRequestedScope) {
+        return LEARNER_SCOPE_DIMENSIONS.containsAll(normalizedRequestedScope.keySet())
+                && StringUtils.hasText(normalizedRequestedScope.get("schoolForm"))
+                && StringUtils.hasText(normalizedRequestedScope.get(STAGE_KEY))
+                && !"ALL".equals(normalizeValue(
+                        normalizedRequestedScope.get("jurisdiction")));
     }
 
     public Map<String, Object> findViewById(String viewId) {
@@ -375,30 +457,88 @@ public class CompositionViewService {
     }
 
     private Map<String, Object> findSingleViewById(String viewId) {
-        Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
-        if (!Files.isDirectory(baseDir)) {
-            return null;
-        }
-
-        try (Stream<Path> stream = Files.walk(baseDir)) {
-            return stream
-                    .filter(Files::isRegularFile)
-                    .filter(path -> path.getFileName().toString().endsWith(".view.json"))
-                    .map(this::readViewFile)
-                    .filter(Objects::nonNull)
-                    .filter(view -> normalizeValue(asString(view.get("viewId"))).equals(normalizeValue(viewId)))
-                    .findFirst()
-                    .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
-                    .orElse(null);
-        } catch (IOException e) {
-            throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
-        }
+        Map<String, Object> view =
+                repositoryViewIndex().byViewId().get(normalizeValue(viewId));
+        return view == null
+                ? null
+                : Collections.unmodifiableMap(new LinkedHashMap<>(view));
     }
 
     private record MatchScore(int scopeSize, int stageFallbackCount, int courseFallbackCount, int coursePreferenceRank) {
     }
 
     private record ViewMatch(Map<String, Object> view, MatchScore score) {
+    }
+
+    private record PackageOfferingMatch(
+            PackageCompositionViewState.Offering offering,
+            MatchScore score) {
+    }
+
+    private record RepositoryViewIndex(
+            Map<String, List<Map<String, Object>>> byLandscapeId,
+            Map<String, Map<String, Object>> byViewId) {
+    }
+
+    /**
+     * One service instance represents one repository directory snapshot. Load
+     * and validate its authored views once, then reuse immutable indexes for
+     * every offering probe and learner-facing resolution.
+     */
+    private RepositoryViewIndex repositoryViewIndex() {
+        RepositoryViewIndex current = repositoryViewIndex;
+        if (current != null) {
+            return current;
+        }
+        synchronized (this) {
+            current = repositoryViewIndex;
+            if (current == null) {
+                current = loadRepositoryViewIndex();
+                repositoryViewIndex = current;
+            }
+            return current;
+        }
+    }
+
+    private RepositoryViewIndex loadRepositoryViewIndex() {
+        Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
+        if (!Files.isDirectory(baseDir)) {
+            return new RepositoryViewIndex(Map.of(), Map.of());
+        }
+
+        try (Stream<Path> stream = Files.walk(baseDir)) {
+            List<Map<String, Object>> views = stream
+                    .filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString().endsWith(".view.json"))
+                    .sorted()
+                    .map(this::readViewFile)
+                    .filter(Objects::nonNull)
+                    .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
+                    .toList();
+            Map<String, List<Map<String, Object>>> mutableByLandscapeId =
+                    new LinkedHashMap<>();
+            Map<String, Map<String, Object>> mutableByViewId =
+                    new LinkedHashMap<>();
+            for (Map<String, Object> view : views) {
+                mutableByLandscapeId
+                        .computeIfAbsent(
+                                normalizeValue(asString(view.get("landscapeId"))),
+                                ignored -> new ArrayList<>())
+                        .add(view);
+                mutableByViewId.putIfAbsent(
+                        normalizeValue(asString(view.get("viewId"))),
+                        view);
+            }
+            Map<String, List<Map<String, Object>>> byLandscapeId =
+                    new LinkedHashMap<>();
+            mutableByLandscapeId.forEach((landscapeId, landscapeViews) ->
+                    byLandscapeId.put(landscapeId, List.copyOf(landscapeViews)));
+            return new RepositoryViewIndex(
+                    Collections.unmodifiableMap(byLandscapeId),
+                    Collections.unmodifiableMap(new LinkedHashMap<>(mutableByViewId)));
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load composition views from " + baseDir, e);
+        }
     }
 
     private Map<String, Object> readViewFile(Path path) {
