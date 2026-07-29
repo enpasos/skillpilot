@@ -201,6 +201,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setClaudePromptCopied(false)
     setLocalLoginStatus('idle')
     setLocalLoginError('')
+    setStoredLoginPassword('')
+    setLocalLoginPassword('')
     if (clearSkillpilotId) {
       setSkillpilotId('')
     }
@@ -952,15 +954,26 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
 
                       {savedLoginProfiles.length > 0 && (
-                        <div className="rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
-                          <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
-                            <LockKeyhole size={16} className="text-emerald-600 dark:text-emerald-300" />
+                        <details
+                          className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs text-text-secondary dark:bg-slate-950/30"
+                          onToggle={event => {
+                            if (!event.currentTarget.open) {
+                              setStoredLoginPassword('')
+                            }
+                          }}
+                        >
+                          <summary className="cursor-pointer font-semibold text-text-primary">
                             {t.startPage.login.storedLoginTitle}
-                          </p>
+                          </summary>
                           <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                             <select
                               value={storedLoginName}
-                              onChange={event => setStoredLoginName(event.target.value)}
+                              onChange={event => {
+                                setStoredLoginName(event.target.value)
+                                setStoredLoginPassword('')
+                                setLocalLoginStatus('idle')
+                                setLocalLoginError('')
+                              }}
                               className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
                               aria-label={t.startPage.login.storedProfileLabel}
                             >
@@ -974,6 +987,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               onChange={event => setStoredLoginPassword(event.target.value)}
                               className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
                               placeholder={t.startPage.login.passwordLabel}
+                              aria-label={t.startPage.login.passwordLabel}
                             />
                           </div>
                           <div className="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
@@ -981,7 +995,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               type="button"
                               onClick={handleLoadLocalLogin}
                               disabled={!legalAccepted || !storedLoginName || !storedLoginPassword || localLoginStatus === 'loading'}
-                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-emerald-500 bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50"
+                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               <KeyRound size={15} />
                               {localLoginStatus === 'loading' ? t.startPage.login.loadingStoredLogin : t.startPage.login.loadStoredLogin}
@@ -991,11 +1005,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               onClick={handleDeleteLocalLogin}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-border-color px-4 py-2 text-sm font-semibold text-text-secondary transition-colors hover:border-rose-300 hover:text-rose-600 dark:hover:text-rose-300"
                               title={t.startPage.login.deleteStoredLogin}
+                              aria-label={t.startPage.login.deleteStoredLogin}
                             >
                               <Trash2 size={15} />
                             </button>
                           </div>
-                        </div>
+                        </details>
                       )}
 
                       <div className="rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
@@ -1042,7 +1057,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
 
                       {sanitizeSkillpilotId(skillpilotId) && (
-                        <details className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs text-text-secondary dark:bg-slate-950/30">
+                        <details
+                          className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs text-text-secondary dark:bg-slate-950/30"
+                          onToggle={event => {
+                            if (!event.currentTarget.open) {
+                              setLocalLoginPassword('')
+                            }
+                          }}
+                        >
                           <summary className="cursor-pointer font-semibold text-text-primary">
                             {t.startPage.login.saveLocalLoginTitle}
                           </summary>
@@ -1054,6 +1076,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               onChange={event => setLocalLoginName(event.target.value)}
                               className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
                               placeholder={t.startPage.login.loginNameLabel}
+                              aria-label={t.startPage.login.loginNameLabel}
                             />
                             <input
                               type="password"
@@ -1061,6 +1084,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               onChange={event => setLocalLoginPassword(event.target.value)}
                               className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
                               placeholder={t.startPage.login.passwordLabel}
+                              aria-label={t.startPage.login.passwordLabel}
                             />
                           </div>
                           <button
