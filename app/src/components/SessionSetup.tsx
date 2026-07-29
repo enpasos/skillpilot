@@ -3,14 +3,17 @@ import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
+import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, LockKeyhole, UserPlus, Trash2, Bot, Copy } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, Copy, FileDown, FileUp } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
+type SkillpilotIdSource = 'existing' | 'generated' | 'stored' | 'file' | null
+type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
 interface ClaudeLaunchFallback {
   prompt: string
@@ -56,9 +59,15 @@ import {
   deleteLocalSkillpilotLogin,
   listLocalSkillpilotLogins,
   loadLocalSkillpilotLogin,
-  saveLocalSkillpilotLogin,
 } from '../utils/localSkillpilotLogin'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
+import {
+  decryptSkillpilotIdFileContent,
+  encryptSkillpilotIdFileContent,
+  MAX_SKILLPILOT_ID_FILE_SIZE,
+  parseSkillpilotIdFileEnvelope,
+  SKILLPILOT_ID_FILE_NAME,
+} from '../utils/skillpilotIdFile'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 import { usePersonalCurriculumEditor } from '../hooks/usePersonalCurriculumEditor'
@@ -84,6 +93,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [curriculumSaving, setCurriculumSaving] = useState(false)
   const curriculumSelectionRequestRef = React.useRef(0)
   const learnerCheckRequestRef = React.useRef(0)
+  const idAcquisitionRequestRef = React.useRef(0)
+  const idAcquisitionInFlightRef = React.useRef(createSynchronousInFlightGuard())
+  const skillpilotIdFileInputRef = React.useRef<HTMLInputElement>(null)
+  const curriculumStepRef = React.useRef<HTMLDivElement>(null)
+  const advanceToCurriculumRef = React.useRef(false)
   // Use location (ensure import is added)
   const location = useLocation()
 
@@ -104,8 +118,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search])
   const [loading, setLoading] = useState(false)
+  const [creatingNewId, setCreatingNewId] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [hasCheckedId, setHasCheckedId] = useState(false)
+  const [idStepComplete, setIdStepComplete] = useState(false)
   const [availableCurricula, setAvailableCurricula] = useState<LandscapeSummary[]>([])
 
   // Collapsible logic for Login form
@@ -113,10 +129,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [savedLoginProfiles, setSavedLoginProfiles] = useState(() => listLocalSkillpilotLogins())
   const [storedLoginName, setStoredLoginName] = useState(() => listLocalSkillpilotLogins()[0]?.name || '')
   const [storedLoginPassword, setStoredLoginPassword] = useState('')
-  const [localLoginName, setLocalLoginName] = useState('')
-  const [localLoginPassword, setLocalLoginPassword] = useState('')
-  const [localLoginStatus, setLocalLoginStatus] = useState<'idle' | 'saving' | 'saved' | 'loading' | 'loaded' | 'failed'>('idle')
+  const [localLoginStatus, setLocalLoginStatus] = useState<'idle' | 'loading' | 'loaded' | 'failed'>('idle')
   const [localLoginError, setLocalLoginError] = useState('')
+  const [skillpilotIdFileStatus, setSkillpilotIdFileStatus] = useState<SkillpilotIdFileStatus>('idle')
+  const [skillpilotIdFileDialogMode, setSkillpilotIdFileDialogMode] = useState<'save' | 'load' | null>(null)
+  const [skillpilotIdFileDialogBusy, setSkillpilotIdFileDialogBusy] = useState(false)
+  const [skillpilotIdFileDialogError, setSkillpilotIdFileDialogError] = useState('')
+  const [pendingSkillpilotIdFile, setPendingSkillpilotIdFile] = useState<{
+    name: string
+    content: string
+  } | null>(null)
+  const [skillpilotIdSource, setSkillpilotIdSource] = useState<SkillpilotIdSource>(() => (
+    sanitizeSkillpilotId(skillpilotId) ? 'existing' : null
+  ))
   const [legalAccepted, setLegalAccepted] = useState(() => {
     if (typeof window === 'undefined') return false
     return window.localStorage.getItem('skillpilot_legal_waiver_accepted') === 'true'
@@ -151,6 +176,20 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.error
     && !personalCurriculumEditor.loading
     && !personalCurriculumEditor.busy
+  const idAcquisitionBusy =
+    loading
+    || localLoginStatus === 'loading'
+    || skillpilotIdFileStatus === 'loading'
+    || skillpilotIdFileDialogBusy
+  const skillpilotIdSourceLabel = sanitizedLearnerId
+    ? skillpilotIdSource === 'generated'
+      ? t.startPage.login.idSourceGenerated
+      : skillpilotIdSource === 'stored'
+        ? t.startPage.login.idSourceStored
+        : skillpilotIdSource === 'file'
+          ? t.startPage.login.idSourceFile
+          : t.startPage.login.idSourceExisting
+    : ''
 
   const curriculumPanelCopy = React.useMemo(() => {
     if (role === 'trainer') {
@@ -186,13 +225,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const resetTransientSetupState = (clearSkillpilotId = false) => {
     curriculumSelectionRequestRef.current += 1
     learnerCheckRequestRef.current += 1
+    idAcquisitionRequestRef.current += 1
     setError(null)
     setLoading(false)
+    setCreatingNewId(false)
     setSelectedLandscapeId('')
     setPersistedLearnerLandscapeId('')
     setCurriculumSaving(false)
     setAvailableCurricula([])
     setHasCheckedId(false)
+    setIdStepComplete(false)
     setChatLaunchIssue('none')
     setChatStartLoading(false)
     setClaudeActionState('idle')
@@ -201,53 +243,165 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setClaudePromptCopied(false)
     setLocalLoginStatus('idle')
     setLocalLoginError('')
+    setSkillpilotIdFileStatus('idle')
+    setSkillpilotIdFileDialogMode(null)
+    setSkillpilotIdFileDialogBusy(false)
+    setSkillpilotIdFileDialogError('')
+    setPendingSkillpilotIdFile(null)
     setStoredLoginPassword('')
-    setLocalLoginPassword('')
+    advanceToCurriculumRef.current = false
     if (clearSkillpilotId) {
       setSkillpilotId('')
+      setSkillpilotIdSource(null)
+    }
+  }
+
+  const handleSkillpilotIdFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget
+    const file = input.files?.[0]
+    input.value = ''
+    if (!file || !idAcquisitionInFlightRef.current.tryStart()) return
+
+    const acquisitionRequestId = idAcquisitionRequestRef.current + 1
+    idAcquisitionRequestRef.current = acquisitionRequestId
+    setSkillpilotIdFileStatus('loading')
+    setError(null)
+    try {
+      if (file.size > MAX_SKILLPILOT_ID_FILE_SIZE) {
+        throw new Error('invalid-skillpilot-id-file')
+      }
+      const content = await file.text()
+      parseSkillpilotIdFileEnvelope(content)
+      if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
+
+      setPendingSkillpilotIdFile({ name: file.name, content })
+      setSkillpilotIdFileDialogError('')
+      setSkillpilotIdFileDialogMode('load')
+      setSkillpilotIdFileStatus('idle')
+    } catch {
+      if (idAcquisitionRequestRef.current === acquisitionRequestId) {
+        setSkillpilotIdFileStatus('load-failed')
+      }
+    } finally {
+      idAcquisitionInFlightRef.current.finish()
+    }
+  }
+
+  const handleOpenSaveSkillpilotIdFileDialog = () => {
+    const sanitizedId = sanitizeSkillpilotId(skillpilotId)
+    if (!sanitizedId) return
+    setSkillpilotIdFileDialogError('')
+    setSkillpilotIdFileStatus('idle')
+    setSkillpilotIdFileDialogMode('save')
+  }
+
+  const handleCloseSkillpilotIdFileDialog = () => {
+    if (skillpilotIdFileDialogBusy) return
+    setSkillpilotIdFileDialogMode(null)
+    setSkillpilotIdFileDialogError('')
+    setPendingSkillpilotIdFile(null)
+  }
+
+  const handleSkillpilotIdFilePasswordSubmit = async (password: string) => {
+    if (!skillpilotIdFileDialogMode || !idAcquisitionInFlightRef.current.tryStart()) return
+    const dialogMode = skillpilotIdFileDialogMode
+    const acquisitionRequestId = idAcquisitionRequestRef.current + 1
+    idAcquisitionRequestRef.current = acquisitionRequestId
+    setSkillpilotIdFileDialogBusy(true)
+    setSkillpilotIdFileDialogError('')
+    try {
+      if (dialogMode === 'save') {
+        const sanitizedId = sanitizeSkillpilotId(skillpilotId)
+        if (!sanitizedId) throw new Error('missing-skillpilot-id')
+        const encryptedContent = await encryptSkillpilotIdFileContent(sanitizedId, password)
+        if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
+        const blob = new Blob(
+          [encryptedContent],
+          { type: 'application/json;charset=utf-8' },
+        )
+        const downloadUrl = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = downloadUrl
+        link.download = SKILLPILOT_ID_FILE_NAME
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+        URL.revokeObjectURL(downloadUrl)
+        setSkillpilotIdFileStatus('saved')
+        setSkillpilotIdFileDialogMode(null)
+        return
+      }
+
+      if (!pendingSkillpilotIdFile) throw new Error('missing-skillpilot-id-file')
+      const loadedId = await decryptSkillpilotIdFileContent(
+        pendingSkillpilotIdFile.content,
+        password,
+      )
+      if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
+      resetTransientSetupState()
+      setSkillpilotId(loadedId)
+      setSkillpilotIdSource('file')
+      setSkillpilotIdFileStatus('loaded')
+    } catch (caught) {
+      const message = caught instanceof Error ? caught.message : ''
+      if (message === 'browser-encryption-unavailable') {
+        setSkillpilotIdFileDialogError(t.startPage.login.idFileEncryptionUnavailable)
+      } else {
+        setSkillpilotIdFileDialogError(
+          dialogMode === 'load'
+            ? t.startPage.login.idFileDecryptFailed
+            : t.startPage.login.idFileSaveFailed,
+        )
+      }
+    } finally {
+      setSkillpilotIdFileDialogBusy(false)
+      idAcquisitionInFlightRef.current.finish()
     }
   }
 
 
   const requestNewId = async () => {
-    curriculumSelectionRequestRef.current += 1
-    learnerCheckRequestRef.current += 1
+    if (!idAcquisitionInFlightRef.current.tryStart()) return
+    resetTransientSetupState()
+    const acquisitionRequestId = idAcquisitionRequestRef.current + 1
+    idAcquisitionRequestRef.current = acquisitionRequestId
     setLoading(true)
-    setError(null)
-    setHasCheckedId(false)
-    setSelectedLandscapeId('')
-    setPersistedLearnerLandscapeId('')
-    setCurriculumSaving(false)
-    setAvailableCurricula([])
+    setCreatingNewId(true)
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners` : '/api/ui/learners'
       const res = await fetch(url, { method: 'POST' })
       if (!res.ok) throw new Error(`Server ${res.status}`)
       const data = await res.json()
+      if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
       const id = data.state?.skillpilotId || data.skillpilotId || data.learnerId || data.id
       if (!id) throw new Error('Keine SkillPilot-ID im Response')
       const sanitizedId = sanitizeSkillpilotId(String(id))
       setSkillpilotId(sanitizedId)
-      if (!localLoginName) {
-        setLocalLoginName('Mein SkillPilot')
-      }
+      setSkillpilotIdSource('generated')
       setChatLaunchIssue('none')
 
       if (data.availableCurricula) {
         setAvailableCurricula(data.availableCurricula)
       }
 
-      // New ID implies no curriculum yet, but we are "checked"
-      setHasCheckedId(true)
+      // Every source fills the same field. The learner advances explicitly
+      // through the shared button below, so step 2 never opens implicitly.
+      setHasCheckedId(false)
     } catch (err) {
-      setError((err as Error).message)
+      if (idAcquisitionRequestRef.current === acquisitionRequestId) {
+        setError((err as Error).message)
+      }
     } finally {
-      setLoading(false)
+      if (idAcquisitionRequestRef.current === acquisitionRequestId) {
+        setLoading(false)
+        setCreatingNewId(false)
+      }
+      idAcquisitionInFlightRef.current.finish()
     }
   }
 
-  const checkLearner = async (id: string) => {
+  const checkLearner = async (id: string): Promise<boolean> => {
     const sanitizedId = sanitizeSkillpilotId(id)
     if (!sanitizedId) {
       curriculumSelectionRequestRef.current += 1
@@ -257,7 +411,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setCurriculumSaving(false)
       setAvailableCurricula([])
       setHasCheckedId(false)
-      return
+      return false
     }
     setHasCheckedId(false)
     setLoading(true)
@@ -273,7 +427,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         throw new Error(`Server ${res.status}`)
       }
       const data = await res.json() as Record<string, unknown>
-      if (learnerCheckRequestRef.current !== requestId) return
+      if (learnerCheckRequestRef.current !== requestId) return false
       const learnerLandscapeId = getLearnerSelectedLandscapeId(data)
       if (learnerLandscapeId) {
         setSelectedLandscapeId(learnerLandscapeId)
@@ -286,7 +440,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       }
       checked = true
     } catch (caught) {
-      if (learnerCheckRequestRef.current !== requestId) return
+      if (learnerCheckRequestRef.current !== requestId) return false
       setPersistedLearnerLandscapeId('')
       setError(caught instanceof Error ? caught.message : String(caught))
     } finally {
@@ -295,6 +449,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         setLoading(false)
       }
     }
+    return checked && learnerCheckRequestRef.current === requestId
   }
 
   const persistLearnerStart = (effectiveId: string) => {
@@ -359,6 +514,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const handleLoadLocalLogin = async () => {
+    if (!idAcquisitionInFlightRef.current.tryStart()) return
+    const acquisitionRequestId = idAcquisitionRequestRef.current + 1
+    idAcquisitionRequestRef.current = acquisitionRequestId
     curriculumSelectionRequestRef.current += 1
     learnerCheckRequestRef.current += 1
     setCurriculumSaving(false)
@@ -367,15 +525,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setLocalLoginError('')
     try {
       const payload = await loadLocalSkillpilotLogin(storedLoginName, storedLoginPassword)
+      if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
       const sanitizedId = sanitizeSkillpilotId(payload.skillpilotId)
-      curriculumSelectionRequestRef.current += 1
-      learnerCheckRequestRef.current += 1
-      setCurriculumSaving(false)
-      setLoading(false)
-      setHasCheckedId(false)
-      setPersistedLearnerLandscapeId('')
+      resetTransientSetupState()
       setRole('learner')
       setSkillpilotId(sanitizedId)
+      setSkillpilotIdSource('stored')
       localStorage.setItem('skillpilot_id', sanitizedId)
       localStorage.setItem('skillpilot_role', 'learner')
       if (payload.selectedLandscapeId) {
@@ -386,31 +541,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         }
       }
       setStoredLoginPassword('')
-      setLocalLoginName(storedLoginName)
-      await checkLearner(sanitizedId)
       setLocalLoginStatus('loaded')
     } catch (err) {
-      setLocalLoginStatus('failed')
-      setLocalLoginError((err as Error).message)
-    }
-  }
-
-  const handleSaveLocalLogin = async () => {
-    const sanitizedId = sanitizeSkillpilotId(skillpilotId)
-    if (!sanitizedId) return
-    setLocalLoginStatus('saving')
-    setLocalLoginError('')
-    try {
-      await saveLocalSkillpilotLogin(localLoginName, localLoginPassword, {
-        skillpilotId: sanitizedId,
-        selectedLandscapeId: selectedLandscapeId ? normalizeLearnerLandscapeId(selectedLandscapeId) : undefined,
-      })
-      setLocalLoginPassword('')
-      refreshSavedLoginProfiles()
-      setLocalLoginStatus('saved')
-    } catch (err) {
-      setLocalLoginStatus('failed')
-      setLocalLoginError((err as Error).message)
+      if (idAcquisitionRequestRef.current === acquisitionRequestId) {
+        setLocalLoginStatus('failed')
+        setLocalLoginError((err as Error).message)
+      }
+    } finally {
+      idAcquisitionInFlightRef.current.finish()
     }
   }
 
@@ -427,6 +565,36 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
     setLegalAccepted(true)
   }
+
+  const moveToCurriculumStep = React.useCallback(() => {
+    const curriculumStep = curriculumStepRef.current
+    if (!curriculumStep) return
+    curriculumStep.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    curriculumStep.focus({ preventScroll: true })
+  }, [])
+
+  const handleContinueToCurriculum = async () => {
+    const sanitizedId = sanitizeSkillpilotId(skillpilotId)
+    if (!sanitizedId || idAcquisitionBusy) return
+    if (idStepComplete && hasCheckedId) {
+      moveToCurriculumStep()
+      return
+    }
+    advanceToCurriculumRef.current = true
+    const checked = await checkLearner(sanitizedId)
+    if (!checked) {
+      advanceToCurriculumRef.current = false
+      return
+    }
+    setIdStepComplete(true)
+  }
+
+  React.useEffect(() => {
+    if (!idStepComplete || !hasCheckedId || !advanceToCurriculumRef.current) return
+    advanceToCurriculumRef.current = false
+    const frame = window.requestAnimationFrame(moveToCurriculumStep)
+    return () => window.cancelAnimationFrame(frame)
+  }, [hasCheckedId, idStepComplete, moveToCurriculumStep])
 
   const createCoachChatStart = async (
     effectiveId: string,
@@ -723,11 +891,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (id) {
       const sanitizedId = sanitizeSkillpilotId(id)
       setSkillpilotId(sanitizedId)
+      setSkillpilotIdSource('existing')
       if (savedLandscape) {
         setSelectedLandscapeId(savedLandscape)
-        setHasCheckedId(true)
       }
-      checkLearner(sanitizedId)
+    } else {
+      setSkillpilotId('')
+      setSkillpilotIdSource(null)
     }
     setShowLogin(true)
   }
@@ -938,19 +1108,130 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         </div>
                       )}
 
-                      <div className="rounded-lg border border-sky-100 bg-sky-50/70 p-3 dark:border-sky-500/20 dark:bg-sky-950/20">
-                        <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
-                          <UserPlus size={16} className="text-sky-600 dark:text-sky-300" />
-                          {t.startPage.login.newLoginTitle}
+                      <div className="rounded-xl border-2 border-sky-300 bg-sky-50/70 p-4 shadow-sm dark:border-sky-700 dark:bg-sky-950/20">
+                        <label htmlFor="skillpilotIdInput" className="flex items-center gap-2 text-sm font-semibold text-text-primary">
+                          <KeyRound size={16} className="text-sky-600 dark:text-sky-300" />
+                          {t.startPage.login.directIdTitle}
+                        </label>
+                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                          {t.startPage.login.idFieldHint}
                         </p>
+                        <input
+                          id="skillpilotIdInput"
+                          type="text"
+                          value={skillpilotId}
+                          onChange={(event) => {
+                            const nextId = sanitizeSkillpilotId(event.target.value)
+                            resetTransientSetupState()
+                            setSkillpilotId(nextId)
+                            setSkillpilotIdSource(nextId ? 'existing' : null)
+                          }}
+                          disabled={idAcquisitionBusy}
+                          className="mt-3 min-h-12 w-full rounded-lg border-2 border-sky-400 bg-sky-50 px-3 py-2 text-base font-mono text-text-primary shadow-sm transition-colors focus:border-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/20 disabled:cursor-wait disabled:opacity-70 dark:border-sky-500 dark:bg-sky-950/30"
+                          placeholder={t.startPage.login.idLabel}
+                          required
+                        />
+                        {skillpilotIdSourceLabel && sanitizedLearnerId && (
+                          <span className="mt-2 inline-flex rounded-full bg-sky-100 px-2 py-1 text-[11px] font-semibold text-sky-800 dark:bg-sky-900/50 dark:text-sky-100">
+                            {skillpilotIdSourceLabel}
+                          </span>
+                        )}
+                        {hasCheckedId && (
+                          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px]">
+                            <span className="rounded-full bg-emerald-100 px-2 py-1 font-semibold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200">
+                              {t.startPage.login.idConfirmed}
+                            </span>
+                          </div>
+                        )}
+                        {skillpilotIdSource === 'generated' && sanitizedLearnerId && (
+                          <span className="mt-2 block rounded border border-amber-200 bg-amber-100 px-2 py-1 text-[11px] text-amber-800 dark:border-amber-900/50 dark:bg-amber-900/20 dark:text-amber-200">
+                            {t.startPage.login.idWarning}
+                          </span>
+                        )}
                         <button
                           type="button"
-                          onClick={requestNewId}
-                          disabled={!legalAccepted || loading}
-                          className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
+                          onClick={handleOpenSaveSkillpilotIdFileDialog}
+                          disabled={!sanitizedLearnerId || idAcquisitionBusy}
+                          className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/50"
                         >
-                          {loading ? t.startPage.login.checking : t.startPage.login.requestNewId}
+                          <FileDown size={15} />
+                          {t.startPage.login.saveIdToFile}
                         </button>
+                        <p className="mt-2 text-[11px] leading-relaxed text-text-secondary">
+                          {t.startPage.login.idFileHint}
+                        </p>
+                      </div>
+
+                      <input
+                        ref={skillpilotIdFileInputRef}
+                        type="file"
+                        accept=".skillpilot,application/json"
+                        onChange={handleSkillpilotIdFileChange}
+                        className="hidden"
+                        aria-label={t.startPage.login.loadIdFromFile}
+                      />
+
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <div className="flex flex-col rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
+                          <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
+                            <FileUp size={16} className="text-sky-600 dark:text-sky-300" />
+                            {t.startPage.login.fileLoginTitle}
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => skillpilotIdFileInputRef.current?.click()}
+                            disabled={idAcquisitionBusy}
+                            className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
+                          >
+                            <FileUp size={15} />
+                            {skillpilotIdFileStatus === 'loading'
+                              ? t.startPage.login.loadingIdFromFile
+                              : t.startPage.login.loadIdFromFile}
+                          </button>
+                        </div>
+
+                        <div className="flex flex-col rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
+                          <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
+                            <UserPlus size={16} className="text-sky-600 dark:text-sky-300" />
+                            {t.startPage.login.newLoginTitle}
+                          </p>
+                          <button
+                            type="button"
+                            onClick={requestNewId}
+                            disabled={!legalAccepted || idAcquisitionBusy}
+                            className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
+                          >
+                            {creatingNewId ? t.startPage.login.creatingNewId : t.startPage.login.requestNewId}
+                          </button>
+                        </div>
+                      </div>
+
+                      <div aria-live="polite">
+                        {skillpilotIdFileStatus === 'loaded' && (
+                          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                            {t.startPage.login.idFileLoaded}
+                          </p>
+                        )}
+                        {skillpilotIdFileStatus === 'saved' && (
+                          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                            {t.startPage.login.idFileSaved}
+                          </p>
+                        )}
+                        {skillpilotIdFileStatus === 'load-failed' && (
+                          <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
+                            {t.startPage.login.idFileLoadFailed}
+                          </p>
+                        )}
+                        {skillpilotIdFileStatus === 'save-failed' && (
+                          <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
+                            {t.startPage.login.idFileSaveFailed}
+                          </p>
+                        )}
+                        {error && (
+                          <span className="block text-xs font-semibold text-rose-600 dark:text-rose-300">
+                            Fehler: {error}
+                          </span>
+                        )}
                       </div>
 
                       {savedLoginProfiles.length > 0 && (
@@ -994,7 +1275,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             <button
                               type="button"
                               onClick={handleLoadLocalLogin}
-                              disabled={!legalAccepted || !storedLoginName || !storedLoginPassword || localLoginStatus === 'loading'}
+                              disabled={!legalAccepted || idAcquisitionBusy || !storedLoginName || !storedLoginPassword}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               <KeyRound size={15} />
@@ -1013,95 +1294,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         </details>
                       )}
 
-                      <div className="rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
-                        <div className="flex items-center justify-between">
-                          <label htmlFor="skillpilotIdInput" className="flex items-center gap-2 text-sm font-semibold text-text-primary">
-                            <KeyRound size={16} className="text-slate-500" />
-                            {t.startPage.login.directIdTitle}
-                          </label>
-                        </div>
-                        <input
-                          id="skillpilotIdInput"
-                          type="text"
-                          value={skillpilotId}
-                          onChange={(event) => {
-                            setSkillpilotId(sanitizeSkillpilotId(event.target.value))
-                            resetTransientSetupState()
-                          }}
-                          onBlur={() => {
-                            if (legalAccepted && !hasCheckedId) {
-                              checkLearner(sanitizeSkillpilotId(skillpilotId))
-                            }
-                          }}
-                          className="mt-2 w-full rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary font-mono focus:border-sky-400 transition-colors"
-                          placeholder={t.startPage.login.idLabel}
-                          required
-                        />
-                        <span className="mt-2 block rounded border border-amber-200 bg-amber-100 px-2 py-1 text-[11px] text-amber-800 dark:border-amber-900/50 dark:bg-amber-900/20 dark:text-amber-200">
-                          {t.startPage.login.idWarning}
-                        </span>
-                        {error && <span className="mt-1 block text-[11px] text-rose-300">Fehler: {error}</span>}
+                      <button
+                        type="button"
+                        onClick={handleContinueToCurriculum}
+                        disabled={!legalAccepted || !sanitizedLearnerId || idAcquisitionBusy}
+                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:border-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
+                      >
+                        {loading && !creatingNewId ? t.startPage.login.checking : t.startPage.login.checkButton}
+                        <ArrowRight size={16} />
+                      </button>
 
-                        {sanitizeSkillpilotId(skillpilotId).length > 0 && !hasCheckedId && (
-                          <div className="pt-2">
-                            <button
-                              type="button"
-                              onClick={() => checkLearner(sanitizeSkillpilotId(skillpilotId))}
-                              disabled={!legalAccepted || loading}
-                              className="w-full rounded-full border border-sky-500/50 bg-sky-600/20 px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:border-sky-400 hover:bg-sky-600/30 dark:text-sky-100"
-                            >
-                              {loading ? t.startPage.login.checking : t.startPage.login.checkButton}
-                            </button>
-                          </div>
-                        )}
-                      </div>
-
-                      {sanitizeSkillpilotId(skillpilotId) && (
-                        <details
-                          className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs text-text-secondary dark:bg-slate-950/30"
-                          onToggle={event => {
-                            if (!event.currentTarget.open) {
-                              setLocalLoginPassword('')
-                            }
-                          }}
-                        >
-                          <summary className="cursor-pointer font-semibold text-text-primary">
-                            {t.startPage.login.saveLocalLoginTitle}
-                          </summary>
-                          <p className="mt-2 leading-relaxed">{t.startPage.login.saveLocalLoginHint}</p>
-                          <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                            <input
-                              type="text"
-                              value={localLoginName}
-                              onChange={event => setLocalLoginName(event.target.value)}
-                              className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
-                              placeholder={t.startPage.login.loginNameLabel}
-                              aria-label={t.startPage.login.loginNameLabel}
-                            />
-                            <input
-                              type="password"
-                              value={localLoginPassword}
-                              onChange={event => setLocalLoginPassword(event.target.value)}
-                              className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
-                              placeholder={t.startPage.login.passwordLabel}
-                              aria-label={t.startPage.login.passwordLabel}
-                            />
-                          </div>
-                          <button
-                            type="button"
-                            onClick={handleSaveLocalLogin}
-                            disabled={!legalAccepted || !localLoginName.trim() || !localLoginPassword.trim() || localLoginStatus === 'saving'}
-                            className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-sky-400 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900"
-                          >
-                            <LockKeyhole size={15} />
-                            {localLoginStatus === 'saving' ? t.startPage.login.savingLocalLogin : t.startPage.login.saveLocalLogin}
-                          </button>
-                        </details>
-                      )}
-
-                      {localLoginStatus === 'saved' && (
-                        <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{t.startPage.login.localLoginSaved}</p>
-                      )}
                       {localLoginStatus === 'loaded' && (
                         <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{t.startPage.login.localLoginLoaded}</p>
                       )}
@@ -1125,8 +1327,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role && (role !== 'learner' || (skillpilotId.length > 0 && hasCheckedId)) && (
-                  <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
+                {role && (role !== 'learner' || (skillpilotId.length > 0 && idStepComplete)) && (
+                  <div
+                    ref={curriculumStepRef}
+                    tabIndex={-1}
+                    className="scroll-mt-4 rounded-xl border border-border-color bg-white/70 p-4 shadow-sm outline-none animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50"
+                  >
                     <div className="mb-4 flex items-start gap-3">
                       {curriculumPanelCopy.showStepNumber && (
                         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1168,7 +1374,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role === 'learner' && skillpilotId.length > 0 && hasCheckedId && (
+                {role === 'learner' && skillpilotId.length > 0 && idStepComplete && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1196,7 +1402,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role === 'learner' && skillpilotId.length > 0 && hasCheckedId && (
+                {role === 'learner' && skillpilotId.length > 0 && idStepComplete && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1421,6 +1627,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
           )}
         </div>
       </div>
+
+      <SkillpilotIdFilePasswordDialog
+        isOpen={skillpilotIdFileDialogMode !== null}
+        mode={skillpilotIdFileDialogMode ?? 'save'}
+        fileName={pendingSkillpilotIdFile?.name}
+        busy={skillpilotIdFileDialogBusy}
+        error={skillpilotIdFileDialogError}
+        copy={t.startPage.login.idFileDialog}
+        onClose={handleCloseSkillpilotIdFileDialog}
+        onSubmit={handleSkillpilotIdFilePasswordSubmit}
+      />
 
       <div className="mt-10 py-6 text-xs text-slate-500 flex gap-4">
         <Link to="/privacy" className="hover:text-slate-300 transition-colors">{t.startPage.footer.privacy}</Link>

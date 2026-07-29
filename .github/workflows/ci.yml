@@ -144,6 +144,8 @@ jobs:
         run: npm run check:gpt-system-instruction-lengths
       - name: Test coach variant selection
         run: npm run test:coach-variants
+      - name: Test SkillPilot ID encryption
+        run: npm run test:skillpilot-id-file
       - name: Lint
         run: npm run lint
       - name: Build application without regenerating curriculum assets
