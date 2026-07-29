@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
@@ -607,14 +608,23 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void putPlannedGoals_isIdempotent() throws Exception {
-        learnerService.setPlannedGoals(learnerId, Set.of("PHYS_Q1"));
-        learnerService.setPlannedGoals(learnerId, Set.of("PHYS_Q1"));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learnerRepository.save(learner);
+        completeCanonicalPhysicsSekTwoPersonalization();
+
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(CANONICAL_PHYSICS_DIAGRAMS_ID));
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(CANONICAL_PHYSICS_DIAGRAMS_ID));
 
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .hasSize(1)
                 .first()
                 .extracting(pg -> pg.getGoalId())
-                .isEqualTo("PHYS_Q1");
+                .isEqualTo(CANONICAL_PHYSICS_DIAGRAMS_ID);
     }
 
     @Test
@@ -6055,6 +6065,48 @@ public class LearnerControllerIntegrationTest {
                   "%s": {"selected": true, "filterId": "%s", "durationModel": "%s"}
                 }
                 """.formatted(jurisdiction, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile, durationModel);
+    }
+
+    private void completeCanonicalPhysicsSekTwoPersonalization() {
+        applyCurrentPersonalizationOption(option ->
+                "DE-HE".equals(option.filterId()));
+        applyCurrentPersonalizationOption(option ->
+                "durationModel".equals(option.scopeKey())
+                        && "G9".equals(option.scopeValue()));
+        applyCurrentPersonalizationOption(option ->
+                "stage".equals(option.scopeKey())
+                        && "SekII".equals(option.scopeValue()));
+        applyCurrentPersonalizationOption(option ->
+                option.kind() == PersonalizationPlan.OptionKind.VALUE
+                        && CANONICAL_PHYSICS_ID.equals(option.landscapeId())
+                        && option.filterId() == null);
+        applyCurrentPersonalizationOption(option ->
+                option.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP);
+        applyCurrentPersonalizationOption(option ->
+                option.kind() == PersonalizationPlan.OptionKind.VALUE
+                        && CANONICAL_PHYSICS_ID.equals(option.landscapeId())
+                        && "GK".equals(option.filterId()));
+
+        PersonalizationPlan plan = learnerService.getPersonalizationPlan(learnerId);
+        assertThat(plan.stage())
+                .as("fixture must complete Level 2 before setting Level 3: %s", plan)
+                .isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+    }
+
+    private void applyCurrentPersonalizationOption(
+            java.util.function.Predicate<PersonalizationPlan.Option> predicate) {
+        PersonalizationPlan plan = learnerService.getPersonalizationPlan(learnerId);
+        PersonalizationPlan.Option option = plan.options().stream()
+                .filter(predicate)
+                .findFirst()
+                .orElseThrow(() -> new AssertionError(
+                        "Expected current personalization option in " + plan));
+        learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of(),
+                option.optionId());
     }
 
     private String findResultStatus(JsonNode results, String skillpilotId) {

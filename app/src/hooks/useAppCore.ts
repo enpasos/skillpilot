@@ -22,6 +22,7 @@ import {
   applyCompositionViewProjection,
   deriveRuntimeGoalPlacementFilters,
   deriveRuntimeCompositionScope,
+  shouldApplyLearnerPlacementFallback,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
@@ -29,9 +30,9 @@ import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
 import { shouldSyncRouteStateToUrl } from '../utils/rootRoutePolicy'
 import {
   findRuntimeRootLandscapeId,
+  resolveLearnerRuntimeOfferingId,
   resolveExplicitRuntimeOfferingId,
   resolveRuntimeApiHref,
-  resolveRuntimeOfferingId,
   selectRuntimeLandscapeId,
 } from '../utils/runtimeCurriculumCatalog'
 
@@ -497,7 +498,7 @@ export function useAppCore({
           scope,
           offeringId: configuredOfferingId
             ? explicitOfferingId
-            : resolveRuntimeOfferingId(
+            : resolveLearnerRuntimeOfferingId(
                 runtimeCatalogState.catalog,
                 entry.meta.landscapeId,
                 requestedScope,
@@ -599,13 +600,14 @@ export function useAppCore({
     )
     const entriesNeedingPlacementProjection = graphSourceLandscapeEntries.filter((entry) => {
       const landscapeId = entry.meta.landscapeId
-      if (!compositionManagedLandscapeIds.has(landscapeId)) {
-        return true
-      }
-      if (effectiveMatchedCompositionViewsByLandscapeId[landscapeId]) {
-        return false
-      }
-      return !loadingMatchedCompositionViews
+      // A learner scope managed by composition views is authoritative. While
+      // loading, after a 204 "no match", and after a lookup error, omit the
+      // broad canonical landscape instead of falling back to placement/title
+      // heuristics.
+      return shouldApplyLearnerPlacementFallback(
+        landscapeId,
+        compositionManagedLandscapeIds,
+      )
     })
 
     const placementProjectedEntries = entriesNeedingPlacementProjection.map((entry) => (
@@ -651,7 +653,6 @@ export function useAppCore({
     graphSourceLandscapeEntries,
     goalId,
     learnerPersonalCurriculum,
-    loadingMatchedCompositionViews,
     role,
     runtimeCatalogState,
     runtimeCompositionRequests,

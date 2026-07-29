@@ -1695,6 +1695,80 @@ public class LearnerService {
         return collapseContainedGoalIds(mappedGoalIds, visibleGoals);
     }
 
+    /**
+     * Projects stored Level-3 focus references into the current authored
+     * learner-facing target scope without rewriting the stored IDs.
+     *
+     * <p>Direct and legacy-mapped goal references survive only when the current
+     * composition projection declares the resolved canonical goal as
+     * {@code target}. Synthetic composition structure references survive only
+     * when they belong to the matched view and contain at least one target.
+     * In particular, {@code prerequisiteOnly} goals remain available in the
+     * structural graph for prerequisite checks but cannot become learner-facing
+     * focus entries.</p>
+     */
+    private List<String> resolveProjectedTargetFocusIds(
+            List<String> storedGoalIds,
+            GoalProjection projection) {
+        if (storedGoalIds == null
+                || storedGoalIds.isEmpty()
+                || projection == null
+                || projection.targetGoalIds().isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashSet<String> projectedGoalIds = new LinkedHashSet<>();
+        for (String storedGoalId : storedGoalIds) {
+            if (storedGoalId == null || storedGoalId.isBlank()) {
+                continue;
+            }
+            if (isCompositionStructureGoalId(storedGoalId)) {
+                if (isProjectedTargetFocus(storedGoalId, projection)) {
+                    projectedGoalIds.add(storedGoalId);
+                }
+                continue;
+            }
+
+            String projectedGoalId = resolveGoalIdInVisibleGoals(
+                    storedGoalId,
+                    projection.visibleGoals(),
+                    true);
+            if (projectedGoalId != null
+                    && projection.targetGoalIds().contains(projectedGoalId)) {
+                projectedGoalIds.add(projectedGoalId);
+            }
+        }
+        return collapseContainedGoalIds(
+                new ArrayList<>(projectedGoalIds),
+                projection.visibleGoals());
+    }
+
+    /**
+     * Expands already validated learner-facing focus entries for frontier and
+     * completion calculations, then retains authored targets only.
+     */
+    private List<String> resolveProjectedTargetScopeIds(
+            List<String> projectedFocusIds,
+            GoalProjection projection) {
+        if (projectedFocusIds == null
+                || projectedFocusIds.isEmpty()
+                || projection == null
+                || projection.targetGoalIds().isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<String> resolvedGoalIds = resolvePlannedGoalIdsForScope(
+                projectedFocusIds,
+                projection.structuralGoals(),
+                true);
+        List<String> targetGoalIds = resolvedGoalIds.stream()
+                .filter(projection.targetGoalIds()::contains)
+                .toList();
+        return collapseContainedGoalIds(
+                targetGoalIds,
+                projection.structuralGoals());
+    }
+
     private List<String> resolvePlannedGoalIdsForScope(List<String> goalIds,
             Map<String, LearningGoal> visibleGoals,
             boolean allowPartial) {
@@ -1919,8 +1993,10 @@ public class LearnerService {
         if (curriculumId == null || curriculumId.isBlank()) {
             return storedPlannedGoals;
         }
-        Map<String, LearningGoal> structuralGoals = getStructuralGoals(curriculumId);
-        return normalizePlannedGoalIdsForVisibleGoals(storedPlannedGoals, structuralGoals, true);
+        GoalProjection projection = getGoalProjection(
+                curriculumId,
+                learner.getPersonalCurriculum());
+        return resolveProjectedTargetFocusIds(storedPlannedGoals, projection);
     }
 
     private List<String> getStoredPlannedGoals(String skillpilotId) {
@@ -1936,17 +2012,36 @@ public class LearnerService {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
-        List<PlannedGoal> existing = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
-        Set<String> existingIds = existing.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet());
-
         Set<String> targetIds = goalIds == null ? Collections.emptySet() : goalIds;
         Set<String> saneTargetIds = targetIds.stream()
                 .filter(id -> id != null && !id.isBlank())
-                .collect(Collectors.toSet());
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        if (!saneTargetIds.isEmpty()) {
+            assertPersonalizationCompleteForLearning(learner);
+        }
+
+        List<PlannedGoal> existing = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
+        Set<String> existingIds = existing.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet());
+
         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
             Map<String, LearningGoal> structuralGoals = getStructuralGoals(learner.getSelectedCurriculum());
-            saneTargetIds = new LinkedHashSet<>(normalizePlannedGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds),
-                    structuralGoals, true));
+            LinkedHashSet<String> mappedTargetIds = new LinkedHashSet<>(
+                    mapGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds), structuralGoals, true));
+            GoalProjection projection = getGoalProjection(
+                    learner.getSelectedCurriculum(),
+                    learner.getPersonalCurriculum());
+            List<String> invalidTargetIds = mappedTargetIds.stream()
+                    .filter(id -> !isProjectedTargetFocus(id, projection))
+                    .sorted()
+                    .toList();
+            if (!invalidTargetIds.isEmpty()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "Planned goals must be learner-facing targets in the current curriculum projection: "
+                                + String.join(", ", invalidTargetIds));
+            }
+            saneTargetIds = new LinkedHashSet<>(
+                    collapseContainedGoalIds(new ArrayList<>(mappedTargetIds), structuralGoals));
         }
         final Set<String> normalizedTargetIds = saneTargetIds;
 
@@ -2154,6 +2249,10 @@ public class LearnerService {
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
         learner.setSelectedCurriculum(effectiveCurriculumId);
         if (curriculumChanged) {
+            // Level 2 and Level 3a belong to the selected root. Level 4 mastery
+            // remains global and is deliberately not touched here.
+            learner.setPersonalCurriculum(null);
+            plannedGoalRepository.deleteByLearner_SkillpilotId(skillpilotId);
             learner.setActiveGoalId(null);
         }
         learner.setLearningState(LearningState.FRONTIER);
@@ -2338,6 +2437,11 @@ public class LearnerService {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         Map<String, Object> finalConfig = normalizePersonalCurriculumPayload(config);
+        if (finalConfig.containsKey(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Personalization flow state is server-managed and cannot be written as raw config.");
+        }
         applyPersonalCurriculumMutation(learner, finalConfig, goalIds, filters);
     }
 
@@ -2378,6 +2482,85 @@ public class LearnerService {
         applyCurrentPersonalizationOption(learner, finalConfig, selectedOption);
 
         return getLearnerState(skillpilotId, null);
+    }
+
+    /**
+     * Explicitly restarts the authored personalization flow of the learner's
+     * selected base curriculum.
+     *
+     * <p>The reset is deliberately scoped to the selected root's landscape
+     * closure. Unrelated curriculum configuration, stable goal IDs and mastery
+     * remain untouched. Flow progress is removed only when it belongs to the
+     * same selected root.</p>
+     */
+    @Transactional
+    public PersonalizationPlan restartPersonalization(String skillpilotId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        String rootLandscapeId = learner.getSelectedCurriculum();
+        if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No curriculum selected for personalization.");
+        }
+
+        SkillLandscape rootLandscape = landscapeService.getById(rootLandscapeId);
+        if (rootLandscape == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected personalization curriculum is no longer available.");
+        }
+        if (rootLandscape.getPersonalizationFlow() == null) {
+            return PersonalizationPlan.complete(List.of());
+        }
+
+        PersonalizationPlan cleanPlan = CurriculumPersonalizationPlanner.plan(
+                rootLandscapeId,
+                landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
+                Map.of());
+        if (!cleanPlan.valid()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The authored personalization flow is invalid.");
+        }
+
+        Map<String, Object> personalCurriculum =
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        LinkedHashSet<String> closureLandscapeIds = new LinkedHashSet<>();
+        List<SkillLandscape> closure = landscapeService.getClosure(rootLandscapeId);
+        if (closure != null) {
+            closure.stream()
+                    .filter(Objects::nonNull)
+                    .map(SkillLandscape::getLandscapeId)
+                    .filter(Objects::nonNull)
+                    .filter(id -> !id.isBlank())
+                    .forEach(closureLandscapeIds::add);
+        }
+        closureLandscapeIds.add(rootLandscapeId);
+        closureLandscapeIds.forEach(personalCurriculum::remove);
+        personalCurriculum.remove(STAGE_SCOPE_SEK1_ID);
+        personalCurriculum.remove(STAGE_SCOPE_SEK2_ID);
+
+        Object rawFlowState =
+                personalCurriculum.get(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY);
+        if (rawFlowState instanceof Map<?, ?> flowState
+                && rootLandscapeId.equals(
+                        flowState.get(CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY))) {
+            personalCurriculum.remove(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY);
+        }
+
+        /*
+         * An active teaching goal cannot remain active while Level 2 is
+         * unresolved. Stable goal IDs are never rewritten, but the current
+         * Level-3 focus must not retain goals outside the newly projected
+         * learner-facing target scope.
+         */
+        learner.setActiveGoalId(null);
+        learner.setLearningState(LearningState.FRONTIER);
+        revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+        persistPersonalCurriculum(learner, personalCurriculum);
+        return buildPersonalizationPlan(learner);
     }
 
     /**
@@ -2499,6 +2682,7 @@ public class LearnerService {
                         "The authored personalization completion is no longer valid");
             }
             learner.setLearningState(LearningState.FRONTIER);
+            revalidatePlannedGoalsForProjectedScope(learner, finalConfig);
             persistPersonalCurriculum(learner, finalConfig);
             return;
         }
@@ -2533,8 +2717,10 @@ public class LearnerService {
              */
             settings.put(option.scopeKey(), option.scopeValue());
             finalConfig.put(option.landscapeId(), settings);
+            synchronizeCanonicalStageScope(learner, finalConfig, option);
 
             learner.setLearningState(LearningState.FRONTIER);
+            revalidatePlannedGoalsForProjectedScope(learner, finalConfig);
             persistPersonalCurriculum(learner, finalConfig);
             return;
         }
@@ -2580,12 +2766,126 @@ public class LearnerService {
         finalConfig.put(option.landscapeId(), settings);
 
         learner.setLearningState(LearningState.FRONTIER);
+        revalidatePlannedGoalsForProjectedScope(learner, finalConfig);
         persistPersonalCurriculum(learner, finalConfig);
     }
 
     /**
+     * Removes stale Level-3 focus and active-goal entries after a guided
+     * Level-2 mutation.
+     *
+     * <p>The current learner-facing projection is authoritative: only its
+     * {@code targetGoalIds} remain focusable, including intentional
+     * non-authoritative fallback targets. Canonical IDs are retained unchanged,
+     * while unknown IDs and goals visible solely as {@code prerequisiteOnly}
+     * are removed. An unresolved plan cannot retain an active goal. Mastery and
+     * curriculum graph data are not modified.</p>
+     */
+    private void revalidatePlannedGoalsForProjectedScope(
+            Learner learner,
+            Map<String, Object> projectedConfig) {
+        if (learner == null
+                || learner.getSkillpilotId() == null
+                || learner.getSkillpilotId().isBlank()) {
+            return;
+        }
+
+        List<PlannedGoal> plannedGoals =
+                plannedGoalRepository.findByLearner_SkillpilotId(learner.getSkillpilotId());
+        if (learner.getSelectedCurriculum() == null
+                || learner.getSelectedCurriculum().isBlank()) {
+            learner.setActiveGoalId(null);
+            if (plannedGoals != null && !plannedGoals.isEmpty()) {
+                plannedGoalRepository.deleteAll(plannedGoals);
+            }
+            return;
+        }
+
+        String projectedConfigJson = writePersonalCurriculumConfig(
+                projectedConfig == null ? Collections.emptyMap() : projectedConfig);
+        Map<String, Map<String, Object>> parsedProjectedConfig =
+                parsePersonalCurriculumConfig(projectedConfigJson);
+        PersonalizationPlan personalizationPlan = CurriculumPersonalizationPlanner.plan(
+                learner.getSelectedCurriculum(),
+                landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
+                parsedProjectedConfig);
+        if (!personalizationPlan.valid() || personalizationPlan.required()) {
+            learner.setActiveGoalId(null);
+            if (plannedGoals != null && !plannedGoals.isEmpty()) {
+                plannedGoalRepository.deleteAll(plannedGoals);
+            }
+            return;
+        }
+
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(),
+                projectedConfigJson);
+        String activeGoalId = learner.getActiveGoalId();
+        if (activeGoalId != null && !activeGoalId.isBlank()) {
+            String projectedActiveGoalId = resolveGoalIdInVisibleGoals(
+                    activeGoalId,
+                    projection.visibleGoals(),
+                    false);
+            if (projectedActiveGoalId == null
+                    || !projection.targetGoalIds().contains(projectedActiveGoalId)) {
+                learner.setActiveGoalId(null);
+            }
+        }
+        if (plannedGoals == null || plannedGoals.isEmpty()) {
+            return;
+        }
+        List<PlannedGoal> invalidGoals = plannedGoals.stream()
+                .filter(Objects::nonNull)
+                .filter(plannedGoal -> !isProjectedTargetFocus(plannedGoal.getGoalId(), projection))
+                .toList();
+        if (!invalidGoals.isEmpty()) {
+            plannedGoalRepository.deleteAll(invalidGoals);
+        }
+    }
+
+    private boolean isProjectedTargetFocus(
+            String storedGoalId,
+            GoalProjection projection) {
+        if (storedGoalId == null
+                || storedGoalId.isBlank()
+                || projection == null
+                || projection.targetGoalIds().isEmpty()) {
+            return false;
+        }
+
+        if (isCompositionStructureGoalId(storedGoalId)) {
+            if (compositionViewService == null) {
+                return false;
+            }
+            CompositionViewService.CompositionStructureResolution resolution =
+                    compositionViewService.resolveStructureReference(storedGoalId);
+            if (resolution == null
+                    || !projection.compositionViewIds().contains(resolution.viewId())) {
+                return false;
+            }
+            return resolution.referencedGoalIds().stream()
+                    .map(goalId -> resolveGoalIdInVisibleGoals(
+                            goalId,
+                            projection.visibleGoals(),
+                            true))
+                    .filter(Objects::nonNull)
+                    .anyMatch(projection.targetGoalIds()::contains);
+        }
+
+        String projectedGoalId = resolveGoalIdInVisibleGoals(
+                storedGoalId,
+                projection.visibleGoals(),
+                true);
+        return projectedGoalId != null
+                && projection.targetGoalIds().contains(projectedGoalId);
+    }
+
+    /**
      * Removes only the legacy migration shortcut when the learner explicitly
-     * starts the coach. Existing selections and mastery remain unchanged.
+     * starts the coach. Existing Level-2 selections and mastery remain
+     * unchanged; Level-3 focus and the active goal are revalidated against the
+     * reopened flow.
      */
     Learner reopenPersonalizationForExplicitLaunch(Learner learner) {
         if (learner == null
@@ -2601,6 +2901,10 @@ public class LearnerService {
             return learner;
         }
         learner.setPersonalCurriculum(writePersonalCurriculumConfig(personalCurriculum));
+        revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
+            learner.setLearningState(LearningState.FRONTIER);
+        }
         Learner saved = learnerRepository.save(learner);
         eventPublisher.publishEvent(
                 new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
@@ -2619,6 +2923,69 @@ public class LearnerService {
         }
         eventPublisher.publishEvent(
                 new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
+    }
+
+    @SuppressWarnings("unchecked")
+    private void synchronizeCanonicalStageScope(
+            Learner learner,
+            Map<String, Object> personalCurriculum,
+            PersonalizationPlan.Option option) {
+        if (learner == null
+                || personalCurriculum == null
+                || option == null
+                || !"stage".equals(option.scopeKey())) {
+            return;
+        }
+        String canonicalStage = resolveStageScope(option.scopeValue());
+        String rootLandscapeId = learner.getSelectedCurriculum();
+        if (canonicalStage == null
+                || rootLandscapeId == null
+                || rootLandscapeId.isBlank()) {
+            return;
+        }
+
+        Object existingRootSettings = personalCurriculum.get(rootLandscapeId);
+        Map<String, Object> rootSettings = existingRootSettings instanceof Map<?, ?> existingMap
+                ? new LinkedHashMap<>((Map<String, Object>) existingMap)
+                : new LinkedHashMap<>();
+        rootSettings.put("selected", true);
+        rootSettings.put("stage", canonicalStage);
+        personalCurriculum.put(rootLandscapeId, rootSettings);
+
+        List<SkillLandscape> rootClosure = landscapeService.getClosure(rootLandscapeId);
+        if (rootClosure != null) {
+            for (SkillLandscape landscape : rootClosure) {
+                if (landscape == null
+                        || landscape.getLandscapeId() == null
+                        || landscape.getLandscapeId().isBlank()
+                        || rootLandscapeId.equals(landscape.getLandscapeId())) {
+                    continue;
+                }
+                Object existingSettings =
+                        personalCurriculum.get(landscape.getLandscapeId());
+                if (!(existingSettings instanceof Map<?, ?> existingMap)) {
+                    continue;
+                }
+                Map<String, Object> normalizedSettings =
+                        new LinkedHashMap<>((Map<String, Object>) existingMap);
+                if (normalizedSettings.remove("stage") != null) {
+                    personalCurriculum.put(
+                            landscape.getLandscapeId(),
+                            normalizedSettings);
+                }
+            }
+        }
+
+        boolean sek1Selected =
+                "SekI".equals(canonicalStage) || "CrossStage".equals(canonicalStage);
+        boolean sek2Selected =
+                "SekII".equals(canonicalStage) || "CrossStage".equals(canonicalStage);
+        personalCurriculum.put(
+                STAGE_SCOPE_SEK1_ID,
+                new LinkedHashMap<>(Map.of("selected", sek1Selected)));
+        personalCurriculum.put(
+                STAGE_SCOPE_SEK2_ID,
+                new LinkedHashMap<>(Map.of("selected", sek2Selected)));
     }
 
     private List<String> normalizedReferences(List<String> references) {
@@ -2752,6 +3119,7 @@ public class LearnerService {
             finalConfig.put(landscapeId, settings);
         }
 
+        revalidatePlannedGoalsForProjectedScope(learner, finalConfig);
         persistPersonalCurriculum(learner, finalConfig);
     }
 
@@ -3552,6 +3920,7 @@ public class LearnerService {
             PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
                     rootLandscapeId,
                     landscapeService::getById,
+                    this::resolvePersonalizationOfferingScope,
                     parsePersonalCurriculumConfig(writePersonalCurriculumConfig(config)));
             if (!plan.valid()) {
                 throw new ResponseStatusException(
@@ -3745,7 +4114,12 @@ public class LearnerService {
                 : effectivePrereqMastery;
 
         // Calculate Scope (Plan + Descendants + Prerequisites)
-        List<String> plannedIds = resolvePlannedGoalIdsForScope(getStoredPlannedGoals(skillpilotId), allStructuralGoals, true);
+        List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
+                getStoredPlannedGoals(skillpilotId),
+                projection);
+        List<String> plannedIds = resolveProjectedTargetScopeIds(
+                projectedFocusIds,
+                projection);
 
         // CRITICAL FIX: Use Structural (Unfiltered) Goals for Scope!
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
@@ -4347,14 +4721,12 @@ public class LearnerService {
         }
 
         List<String> storedPlannedGoalIds = getStoredPlannedGoals(skillpilotId);
-        List<String> plannedIds = normalizePlannedGoalIdsForVisibleGoals(
+        List<String> plannedIds = resolveProjectedTargetFocusIds(
                 storedPlannedGoalIds,
-                structuralGoals,
-                true);
-        List<String> plannedScopeIds = resolvePlannedGoalIdsForScope(
-                storedPlannedGoalIds,
-                structuralGoals,
-                true);
+                goalProjection);
+        List<String> plannedScopeIds = resolveProjectedTargetScopeIds(
+                plannedIds,
+                goalProjection);
         List<FrontierGoal> plannedRich = new ArrayList<>();
 
         for (String pid : plannedIds) {
@@ -5141,6 +5513,7 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "goalId must not be empty.");
         }
+        assertPersonalizationCompleteForLearning(learner);
 
         Map<String, LearningGoal> visibleGoals = Collections.emptyMap();
         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
@@ -5501,7 +5874,55 @@ public class LearnerService {
         return CurriculumPersonalizationPlanner.plan(
                 curriculumId,
                 landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
                 parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
+    }
+
+    private void assertPersonalizationCompleteForLearning(Learner learner) {
+        if (learner == null
+                || learner.getSelectedCurriculum() == null
+                || learner.getSelectedCurriculum().isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "Select a base curriculum before setting a learning focus or active goal.");
+        }
+        PersonalizationPlan plan = buildPersonalizationPlan(learner);
+        if (plan.valid() && !plan.required()) {
+            return;
+        }
+        throw new ResponseStatusException(
+                org.springframework.http.HttpStatus.CONFLICT,
+                "Complete a valid personal curriculum before setting a learning focus or active goal.");
+    }
+
+    private Map<String, String> resolvePersonalizationOfferingScope(
+            String landscapeId,
+            Map<String, String> requestedScope) {
+        if (compositionViewService == null
+                || landscapeId == null
+                || landscapeId.isBlank()
+                || requestedScope == null
+                || requestedScope.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> resolvedView =
+                compositionViewService.findLearnerScopeView(
+                        landscapeId,
+                        requestedScope);
+        if (resolvedView == null || !(resolvedView.get("scope") instanceof Map<?, ?> rawScope)) {
+            return null;
+        }
+        Map<String, String> scope = new LinkedHashMap<>();
+        for (Map.Entry<?, ?> entry : rawScope.entrySet()) {
+            if (!(entry.getKey() instanceof String key)
+                    || key.isBlank()
+                    || !(entry.getValue() instanceof String value)
+                    || value.isBlank()) {
+                return null;
+            }
+            scope.put(key, value);
+        }
+        return scope.isEmpty() ? null : Map.copyOf(scope);
     }
 
     @Transactional
@@ -5849,6 +6270,7 @@ public class LearnerService {
         PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
                 curriculumId,
                 landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
                 config);
         if (!plan.valid()) {
             return List.copyOf(resolved.values());
@@ -5925,11 +6347,13 @@ public class LearnerService {
 
         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
+        LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
         boolean authoritativeCandidateSeen = authoritativeCurriculum;
         boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
         if (defaultCurriculumViewRequested) {
             Map<String, Object> defaultView = compositionViewService.findDefaultView(curriculumId);
             if (defaultView != null && !defaultView.isEmpty()) {
+                addCompositionViewId(defaultView, compositionViewIds);
                 collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
             }
             authoritativeCandidateSeen = true;
@@ -5951,13 +6375,16 @@ public class LearnerService {
                 continue;
             }
             Map<String, Object> matchedView =
-                    compositionViewService.findMatchingView(landscape.getLandscapeId(), requestedScope);
+                    compositionViewService.findLearnerScopeView(
+                            landscape.getLandscapeId(),
+                            requestedScope);
             if (matchedView == null || matchedView.isEmpty()) {
                 if (!authoritative) {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
                 continue;
             }
+            addCompositionViewId(matchedView, compositionViewIds);
             LinkedHashMap<String, CompositionGoalReference> landscapeReferencedGoals = new LinkedHashMap<>();
             collectCompositionViewGoalReferences(matchedView.get("rootNodes"), landscapeReferencedGoals);
             if (landscapeReferencedGoals.isEmpty()) {
@@ -6032,6 +6459,7 @@ public class LearnerService {
                 Collections.unmodifiableSet(effectiveTargetGoalIds),
                 Collections.unmodifiableSet(effectivePrerequisiteOnlyGoalIds),
                 immutableGoalMap(structuralGoals),
+                Collections.unmodifiableSet(compositionViewIds),
                 true);
     }
 
@@ -6049,6 +6477,7 @@ public class LearnerService {
                 Collections.unmodifiableSet(targetGoalIds),
                 Collections.emptySet(),
                 immutableStructuralGoals,
+                Collections.emptySet(),
                 false);
     }
 
@@ -6058,7 +6487,20 @@ public class LearnerService {
                 Collections.emptySet(),
                 Collections.emptySet(),
                 immutableGoalMap(structuralGoals),
+                Collections.emptySet(),
                 true);
+    }
+
+    private void addCompositionViewId(
+            Map<String, Object> view,
+            Set<String> viewIds) {
+        if (view == null || viewIds == null) {
+            return;
+        }
+        Object rawViewId = view.get("viewId");
+        if (rawViewId instanceof String viewId && !viewId.isBlank()) {
+            viewIds.add(viewId);
+        }
     }
 
     private Map<String, LearningGoal> immutableGoalMap(Map<String, LearningGoal> goals) {
@@ -6073,6 +6515,7 @@ public class LearnerService {
             Set<String> targetGoalIds,
             Set<String> prerequisiteOnlyGoalIds,
             Map<String, LearningGoal> structuralGoals,
+            Set<String> compositionViewIds,
             boolean compositionViewApplied) {
     }
 
@@ -7104,7 +7547,7 @@ public class LearnerService {
     public SignedLearnerDataDTO exportLearner(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         Map<String, MasteryEntryDTO> mastery = getMasteryWithTimestamps(skillpilotId);
-        List<String> planned = getPlannedGoals(skillpilotId);
+        List<String> planned = getStoredPlannedGoals(skillpilotId);
         return buildSignedLearnerExport(learner, mastery, planned);
     }
 
@@ -7305,9 +7748,57 @@ public class LearnerService {
         }
 
         // Restore Planned Goals
-        if (data.plannedGoals() != null) {
-            setPlannedGoals(skillpilotId, new HashSet<>(data.plannedGoals()));
+        restoreImportedPlannedGoals(existing, data.plannedGoals());
+    }
+
+    /**
+     * Restores an exported Level-3 focus as historical input and immediately
+     * revalidates it against the imported Level-2 learner-facing projection.
+     *
+     * <p>Unlike the public focus mutation, imports may legitimately contain a
+     * focus authored before the current personalization flow existed. Such a
+     * focus must not abort restoration of curriculum or global mastery. Valid
+     * current {@code target} goals survive; stale, prerequisite-only, unknown,
+     * or unresolved-scope goals are discarded by the shared revalidation
+     * semantics.</p>
+     */
+    private void restoreImportedPlannedGoals(
+            Learner learner,
+            List<String> importedPlannedGoalIds) {
+        if (importedPlannedGoalIds != null) {
+            List<PlannedGoal> existingGoals =
+                    plannedGoalRepository.findByLearner_SkillpilotId(learner.getSkillpilotId());
+            Set<String> importedGoalIds = importedPlannedGoalIds.stream()
+                    .filter(Objects::nonNull)
+                    .filter(goalId -> !goalId.isBlank())
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
+            Set<String> existingGoalIds = existingGoals.stream()
+                    .map(PlannedGoal::getGoalId)
+                    .collect(Collectors.toSet());
+
+            List<PlannedGoal> removedGoals = existingGoals.stream()
+                    .filter(plannedGoal -> !importedGoalIds.contains(plannedGoal.getGoalId()))
+                    .toList();
+            if (!removedGoals.isEmpty()) {
+                plannedGoalRepository.deleteAll(removedGoals);
+            }
+
+            List<PlannedGoal> addedGoals = importedGoalIds.stream()
+                    .filter(goalId -> !existingGoalIds.contains(goalId))
+                    .map(goalId -> new PlannedGoal(learner, goalId))
+                    .toList();
+            if (!addedGoals.isEmpty()) {
+                plannedGoalRepository.saveAll(addedGoals);
+            }
         }
+
+        revalidatePlannedGoalsForProjectedScope(
+                learner,
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum()));
+        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
+            learner.setLearningState(LearningState.FRONTIER);
+        }
+        learnerRepository.save(learner);
     }
 
     private String calculateSignature(LearnerDataDTO data) {

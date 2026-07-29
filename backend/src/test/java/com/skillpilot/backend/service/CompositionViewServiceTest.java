@@ -18,6 +18,7 @@ class CompositionViewServiceTest {
     private static final String CANONICAL_GYMNASIUM_OVERVIEW_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String CANONICAL_HISTORY_ID = "92406d94-e3c1-58ec-b7c6-12122278d25a";
 
     @Test
     void findMatchingView_matchesDeWideCrossStageViewWithoutJurisdiction() {
@@ -241,7 +242,85 @@ class CompositionViewServiceTest {
                     .containsEntry("stage", "SekII")
                     .containsEntry("courseProfile", "LK")
                     .doesNotContainEntry("stage", "CrossStage");
+
+            assertThat(service.findLearnerScopeView(
+                            CANONICAL_MATH_ID,
+                            Map.of(
+                                    "schoolForm", "Gymnasium",
+                                    "jurisdiction", "DE-HE",
+                                    "stage", "SekII",
+                                    "courseProfile", "LK",
+                                    "durationModel", durationModel)))
+                    .as(durationModel + " exact learner scope")
+                    .containsEntry("viewId", "de-he-gym-sekii-math-lk");
         }
+    }
+
+    @Test
+    void learnerScopeRejectsUnrelatedExtraDimensionsInsteadOfUsingRepositorySubsetMatching() {
+        CompositionViewService service = createService();
+        Map<String, String> requestedScope = Map.of(
+                "schoolForm", "Gymnasium",
+                "jurisdiction", "DE-HE",
+                "stage", "SekI",
+                "durationModel", "G9",
+                "year", "9");
+
+        assertThat(service.findMatchingView(CANONICAL_MATH_ID, requestedScope))
+                .isNotNull();
+        assertThat(service.findLearnerScopeView(CANONICAL_MATH_ID, requestedScope))
+                .isNull();
+    }
+
+    @Test
+    void learnerScopeAcceptsReviewedGenericSekOneViewForCommittedJurisdictionAndDuration() {
+        CompositionViewService service = createService();
+
+        assertThat(service.findLearnerScopeView(
+                        CANONICAL_MATH_ID,
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "jurisdiction", "DE-BB",
+                                "stage", "SekI",
+                                "durationModel", "G8")))
+                .containsEntry("viewId", "de-de-gym-seki-math");
+    }
+
+    @Test
+    void learnerScopePrefiltersStageBeforeChoosingTheMostSpecificAuthoredSubset() {
+        CompositionViewService service = createService();
+        Map<String, String> committedScope = Map.of(
+                "schoolForm", "Gymnasium",
+                "jurisdiction", "DE-HE",
+                "stage", "CrossStage",
+                "courseProfile", "GK");
+
+        assertThat(service.findMatchingView(CANONICAL_HISTORY_ID, committedScope))
+                .containsEntry("viewId", "de-he-gym-history-sekii-gk");
+        assertThat(service.findLearnerScopeView(CANONICAL_HISTORY_ID, committedScope))
+                .containsEntry("viewId", "de-de-gym-history-crossstage");
+    }
+
+    @Test
+    void learnerScopeChoosesTheMostSpecificReviewedSekOneSubset() {
+        CompositionViewService service = createService();
+
+        assertThat(service.findLearnerScopeView(
+                        CANONICAL_MATH_ID,
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "jurisdiction", "DE-BW",
+                                "stage", "SekI",
+                                "durationModel", "G9")))
+                .containsEntry("viewId", "de-bw-gym-seki-math");
+        assertThat(service.findLearnerScopeView(
+                        CANONICAL_MATH_ID,
+                        Map.of(
+                                "schoolForm", "Gymnasium",
+                                "jurisdiction", "DE-HE",
+                                "stage", "SekI",
+                                "durationModel", "G9")))
+                .containsEntry("viewId", "de-he-gym-seki-math-g9");
     }
 
     @Test

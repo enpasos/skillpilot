@@ -32,6 +32,7 @@ export interface LandscapeSummary {
 interface CurriculumDropdownProps {
     currentLandscapeId?: string
     onSelect: (landscapeId: string) => void
+    disabled?: boolean
     className?: string
     filterOptions?: (options: LandscapeSummary[]) => LandscapeSummary[]
     landscapes?: LandscapeSummary[]
@@ -41,6 +42,7 @@ interface CurriculumDropdownProps {
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
     onSelect,
+    disabled = false,
     className = '',
     filterOptions,
     landscapes: providedLandscapes,
@@ -183,8 +185,9 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     <button
                         key={cat}
                         type="button"
+                        disabled={disabled}
                         onClick={() => setCategory(cat)}
-                        className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${category === cat
+                        className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${category === cat
                             ? 'bg-sky-600 text-white shadow-sm'
                             : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
                             }`}
@@ -196,8 +199,9 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
             <select
                 value={currentLandscapeId || ''}
+                disabled={disabled}
                 onChange={(e) => onSelect(e.target.value)}
-                className={`bg-input-bg border border-border-color text-text-primary text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 transition-colors ${className}`}
+                className={`bg-input-bg border border-border-color text-text-primary text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5 transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
             >
                 <option value="" disabled>
                     {t.startPage.login.curriculumLabel.select}

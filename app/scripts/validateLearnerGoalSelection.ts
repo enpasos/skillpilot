@@ -14,6 +14,7 @@ import {
   buildRenderedScopeMarkerGoalIds,
 } from '../src/utils/plannedScope'
 import {
+  ABI26_DURATION_MODEL,
   ABI26_MATH_LANDSCAPE_ID,
   ABI26_ROOT_CURRICULUM_ID,
   ABI26_ROOT_FILTER_ID,
@@ -217,8 +218,13 @@ const abi26PersonalConfig = buildAbi26PersonalCurriculumConfig('GK', {
 
 assert.deepEqual(
   abi26PersonalConfig[ABI26_ROOT_CURRICULUM_ID],
-  { selected: true, filterId: ABI26_ROOT_FILTER_ID, stage: 'SekII' },
-  'Abi26 personal curriculum must select the Hesse root filter and canonical Sek II stage.',
+  {
+    selected: true,
+    filterId: ABI26_ROOT_FILTER_ID,
+    durationModel: ABI26_DURATION_MODEL,
+    stage: 'SekII',
+  },
+  'Abi26 personal curriculum must select Hesse, G9 and the canonical Sek II stage.',
 )
 assert.deepEqual(
   abi26PersonalConfig[ABI26_MATH_LANDSCAPE_ID],

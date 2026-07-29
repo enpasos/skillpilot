@@ -234,6 +234,41 @@
           "additionalProperties": false,
           "required": [
             "kind",
+            "selectedLandscapesFromGroupId",
+            "filterIds",
+            "scopeKey",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredFiltersForSelectedLandscapes"
+            },
+            "selectedLandscapesFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "filterIds": {
+              "$ref": "#/$defs/personalizationFilterIds"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            },
+            "optionalWhenUnavailable": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
             "landscapeIds"
           ],
           "properties": {
@@ -298,6 +333,212 @@
             },
             "values": {
               "$ref": "#/$defs/personalizationScopeValues"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "landscapeIds",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredLandscapes"
+            },
+            "landscapeIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "scopeKey",
+            "values",
+            "scopeBindings"
+          ],
+          "properties": {
+            "kind": {
+              "const": "offeredScopeValues"
+            },
+            "landscapeIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "targetLandscapeId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selectedLandscapesFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scopeKey": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "$ref": "#/$defs/personalizationScopeValues"
+            },
+            "scopeBindings": {
+              "$ref": "#/$defs/personalizationScopeBindings"
+            },
+            "optionalWhenUnavailable": {
+              "type": "boolean"
+            }
+          },
+          "oneOf": [
+            {
+              "required": [
+                "landscapeIds",
+                "targetLandscapeId"
+              ],
+              "not": {
+                "required": [
+                  "selectedLandscapesFromGroupId"
+                ]
+              }
+            },
+            {
+              "required": [
+                "selectedLandscapesFromGroupId"
+              ],
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "landscapeIds"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "targetLandscapeId"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "personalizationScopeBindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/personalizationScopeBinding"
+      }
+    },
+    "personalizationScopeBinding": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "value"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "values"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "x-skillpilot-caseInsensitiveUniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "selectedValueFromGroupId"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selectedValueFromGroupId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "omitValues": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "x-skillpilot-caseInsensitiveUniqueItems": true,
+              "description": "Explicit upstream values that represent an unscoped umbrella selection. A matching selection omits this dimension from the offering probe.",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": {
+              "type": "boolean"
             }
           }
         }

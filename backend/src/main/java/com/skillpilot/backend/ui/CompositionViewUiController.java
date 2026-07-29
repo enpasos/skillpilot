@@ -32,7 +32,8 @@ public class CompositionViewUiController {
         Map<String, String> requestedScope = new LinkedHashMap<>(params);
         requestedScope.remove("landscapeId");
 
-        Map<String, Object> matchedView = compositionViewService.findMatchingView(landscapeId, requestedScope);
+        Map<String, Object> matchedView =
+                compositionViewService.findLearnerScopeView(landscapeId, requestedScope);
         if (matchedView == null) {
             return ResponseEntity.noContent().build();
         }

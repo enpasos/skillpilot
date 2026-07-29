@@ -350,7 +350,10 @@ A query sentinel meaning "do not restrict this dimension" while resolving a scop
 
 *DE: Personalisierungsstufen* — see [Levels of Personalization](levels-of-personalization.md)
 
-The four-step narrowing from curriculum to individual mastery: **1** base curriculum → **2** personal curriculum → **3** concrete learning goal → **4** mastery.
+The four-step narrowing from curriculum to individual mastery: **1** base
+curriculum → **2** committed personal curriculum → **3a** current focus plus
+**3b** one active atomic goal → **4** global mastery. Catalog navigation such
+as school, university, or languages precedes Level 1 and is not learner scope.
 
 ### Base curriculum
 
@@ -362,7 +365,17 @@ The authority-defined skill landscape chosen before learning starts; it provides
 
 *DE: persönlicher Lehrplan* — see [Learning Workflow](runtime-workflows/learning-workflow.md)
 
-The subset of the base curriculum that should currently count as in scope for one learner, reflecting electives and specializations. It becomes the candidate space for frontier navigation, while the backend may still use the full graph for strict prerequisite checks.
+The committed, longer-lived subset of the base curriculum that counts as in
+scope for one learner, reflecting jurisdiction or canonical view, applicable
+duration model, stage, subjects, and course profiles per subject. It resolves
+the learner-facing composition view and becomes the candidate space for focus,
+frontier, progress, and completion, while the backend may still use the full
+graph for strict prerequisite checks.
+
+The state is backend-owned and can be edited through several hosts. The web UI
+is the primary control surface, but an MCP UI or an unambiguous ChatCoach
+request may use the same contract. It is not the learner's temporary year or
+topic focus.
 
 ### Personalization
 
@@ -378,8 +391,11 @@ Course profiles are stored per subject, so Mathematik LK and Physik GK can coexi
 
 Two decisions the coach must keep apart:
 
-- **Learning scope** is the part of the curriculum relevant for this learner.
-- **Focus** is the currently selected subtree or learning corridor that frontier and goal options are drawn from. It is expressed through planned goals (scope roots); if none are set, the whole personal curriculum stays in focus.
+- **Learning scope** is the committed Personal Curriculum relevant for this learner.
+- **Focus (Level 3a)** is the currently selected subtree or learning corridor
+  that frontier and goal options are drawn from. It is expressed through
+  planned goals (scope roots); if none are set, the whole personal curriculum
+  stays in focus. A year or phase may define focus without becoming a goal.
 
 Frontier and recommendations are only offered once scope and focus are resolved.
 
@@ -387,7 +403,10 @@ Frontier and recommendations are only offered once scope and focus are resolved.
 
 *DE: aktives Ziel* — see [Learning Workflow](runtime-workflows/learning-workflow.md)
 
-Exactly one backend-confirmed atomic goal that is the current working target of UI and coach. It should normally come from the frontier; for a non-frontier selection the system diagnoses the blockers instead of silently allowing it.
+Exactly one backend-confirmed atomic goal (**Level 3b**) that is the current
+working target of UI and coach. It should normally come from the frontier; for
+a non-frontier selection the system diagnoses the blockers instead of silently
+allowing it.
 
 ### Frontier
 

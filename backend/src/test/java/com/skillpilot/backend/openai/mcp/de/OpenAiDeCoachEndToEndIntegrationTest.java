@@ -436,7 +436,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertMcpPayloadDoesNotExposeIdentity(jurisdiction, applicationSubject);
         JsonNode jurisdictionContext = result(jurisdiction).path("structuredContent");
         assertThat(jurisdictionContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
-        String mathematicsOptionId = optionIdByLabel(jurisdictionContext, "Mathematik");
+        assertThat(jurisdictionContext.path("options"))
+                .extracting(option -> option.path("label").asText())
+                .containsExactly("G8", "G9");
         assertThat(jurisdictionContext.path("options"))
                 .allSatisfy(option -> {
                     assertThat(option.path("goalIds")).isEmpty();
@@ -451,9 +453,67 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .isEqualTo("DE-HE");
         assertThat(personalCurriculum.size()).isOne();
 
-        HttpResponse<String> subject = callTool(
+        String g9OptionId = optionIdByLabel(jurisdictionContext, "G9");
+        HttpResponse<String> durationModel = callTool(
                 accessToken,
                 5,
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                optionArguments(g9OptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(durationModel, applicationSubject);
+        JsonNode durationContext = result(durationModel).path("structuredContent");
+        assertThat(durationContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
+        assertThat(durationContext.path("options"))
+                .extracting(option -> option.path("label").asText())
+                .containsExactly(
+                        "Sekundarstufe I",
+                        "Gymnasiale Oberstufe (Sekundarstufe II)",
+                        "Sekundarstufe I und II");
+
+        Learner persistedAfterDuration =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        JsonNode durationCurriculum =
+                objectMapper.readTree(persistedAfterDuration.getPersonalCurriculum());
+        assertThat(durationCurriculum.path(CURRICULUM_ID).path("filterId").asText())
+                .isEqualTo("DE-HE");
+        assertThat(durationCurriculum.path(CURRICULUM_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+
+        String upperSecondaryOptionId =
+                optionIdByLabel(durationContext, "Gymnasiale Oberstufe (Sekundarstufe II)");
+        HttpResponse<String> stage = callTool(
+                accessToken,
+                6,
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                optionArguments(upperSecondaryOptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(stage, applicationSubject);
+        JsonNode stageContext = result(stage).path("structuredContent");
+        assertThat(stageContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
+        String mathematicsOptionId = optionIdByLabel(stageContext, "Mathematik");
+
+        Learner persistedAfterStage =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        JsonNode stageCurriculum =
+                objectMapper.readTree(persistedAfterStage.getPersonalCurriculum());
+        assertThat(stageCurriculum.path(CURRICULUM_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertThat(stageCurriculum.path(CURRICULUM_ID).path("stage").asText())
+                .isEqualTo("SekII");
+        assertThat(stageCurriculum
+                        .path("__skillpilot_stage_scope_sek1__")
+                        .path("selected")
+                        .asBoolean())
+                .isFalse();
+        assertThat(stageCurriculum
+                        .path("__skillpilot_stage_scope_sek2__")
+                        .path("selected")
+                        .asBoolean())
+                .isTrue();
+
+        HttpResponse<String> subject = callTool(
+                accessToken,
+                7,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
                 optionArguments(mathematicsOptionId),
                 resumedLearningSessionId);
@@ -468,14 +528,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 objectMapper.readTree(persistedAfterSubject.getPersonalCurriculum());
         assertThat(subjectCurriculum.path(CURRICULUM_ID).path("filterId").asText())
                 .isEqualTo("DE-HE");
+        assertThat(subjectCurriculum.path(CURRICULUM_ID).path("stage").asText())
+                .isEqualTo("SekII");
         assertThat(subjectCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("selected").asBoolean())
                 .isTrue();
         assertThat(subjectCurriculum.path(MATHEMATICS_CURRICULUM_ID).has("filterId")).isFalse();
-        assertThat(subjectCurriculum.size()).isEqualTo(2);
 
         HttpResponse<String> finishSubjectGroup = callTool(
                 accessToken,
-                6,
+                8,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
                 optionArguments(finishSubjectGroupId),
                 resumedLearningSessionId);
@@ -487,84 +548,21 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         HttpResponse<String> courseProfile = callTool(
                 accessToken,
-                7,
+                9,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
                 optionArguments(courseProfileOptionId),
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(courseProfile, applicationSubject);
         JsonNode courseContext = result(courseProfile).path("structuredContent");
-        assertThat(courseContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
+        assertThat(courseContext.path("requiredAction").asText()).isNotEqualTo("setPersonalization");
+        assertThat(courseContext.path("options")).isNotEmpty();
         assertThat(courseContext.path("options"))
-                .extracting(option -> option.path("label").asText())
-                .containsExactly(
-                        "Sekundarstufe I",
-                        "Gymnasiale Oberstufe (Sekundarstufe II)",
-                        "Sekundarstufe I und II");
-        assertThat(courseContext.path("options"))
-                .allSatisfy(option -> {
-                    assertThat(option.path("goalIds")).isEmpty();
-                    assertThat(option.path("filterIds")).isEmpty();
-                });
+                .anySatisfy(option -> assertThat(option.path("goalIds")).isNotEmpty());
 
         Learner persistedAfterCourseProfile =
                 learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
-        JsonNode courseCurriculum =
-                objectMapper.readTree(persistedAfterCourseProfile.getPersonalCurriculum());
-        assertThat(courseCurriculum.path(CURRICULUM_ID).path("filterId").asText())
-                .isEqualTo("DE-HE");
-        assertThat(courseCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("selected").asBoolean())
-                .isTrue();
-        assertThat(courseCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("filterId").asText())
-                .isEqualTo("LK");
-        assertThat(courseCurriculum.path(CURRICULUM_ID).has("durationModel")).isFalse();
-
-        String crossStageOptionId = optionIdByLabel(courseContext, "Sekundarstufe I und II");
-        HttpResponse<String> stage = callTool(
-                accessToken,
-                8,
-                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(crossStageOptionId),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(stage, applicationSubject);
-        JsonNode stageContext = result(stage).path("structuredContent");
-        assertThat(stageContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
-        assertThat(stageContext.path("options"))
-                .extracting(option -> option.path("label").asText())
-                .containsExactly("G8", "G9");
-        assertThat(stageContext.path("options"))
-                .allSatisfy(option -> {
-                    assertThat(option.path("goalIds")).isEmpty();
-                    assertThat(option.path("filterIds")).isEmpty();
-                });
-
-        Learner persistedAfterStage =
-                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
-        JsonNode stageCurriculum =
-                objectMapper.readTree(persistedAfterStage.getPersonalCurriculum());
-        assertThat(stageCurriculum.path(CURRICULUM_ID).path("stage").asText())
-                .isEqualTo("CrossStage");
-        assertThat(stageCurriculum.path(CURRICULUM_ID).has("durationModel")).isFalse();
-        assertThat(stageCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("filterId").asText())
-                .isEqualTo("LK");
-
-        String g9OptionId = optionIdByLabel(stageContext, "G9");
-        HttpResponse<String> durationModel = callTool(
-                accessToken,
-                9,
-                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(g9OptionId),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(durationModel, applicationSubject);
-        JsonNode durationContext = result(durationModel).path("structuredContent");
-        assertThat(durationContext.path("requiredAction").asText()).isNotEqualTo("setPersonalization");
-        assertThat(durationContext.path("options")).isNotEmpty();
-        assertThat(durationContext.path("options"))
-                .anySatisfy(option -> assertThat(option.path("goalIds")).isNotEmpty());
-
-        Learner persistedAfterDurationModel =
-                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
         JsonNode completedCurriculum =
-                objectMapper.readTree(persistedAfterDurationModel.getPersonalCurriculum());
+                objectMapper.readTree(persistedAfterCourseProfile.getPersonalCurriculum());
         assertThat(completedCurriculum.path(CURRICULUM_ID).path("filterId").asText())
                 .isEqualTo("DE-HE");
         assertThat(completedCurriculum.path(CURRICULUM_ID).path("durationModel").asText())
@@ -574,7 +572,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(completedCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("filterId").asText())
                 .isEqualTo("LK");
         assertThat(completedCurriculum.path(CURRICULUM_ID).path("stage").asText())
-                .isEqualTo("CrossStage");
+                .isEqualTo("SekII");
 
         HttpResponse<String> persistedRead = callTool(
                 accessToken,

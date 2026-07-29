@@ -1,17 +1,24 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
+import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -22,9 +29,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.web.server.ResponseStatusException;
 
 class ProjectionRoleLearnerServiceTest {
 
@@ -36,6 +46,8 @@ class ProjectionRoleLearnerServiceTest {
     private static final String ROOT_CLUSTER_ID = "projection-root";
     private static final String NESTED_CLUSTER_ID = "projection-nested";
     private static final String OUTSIDE_TARGET_ID = "outside-target";
+    private static final String SYNTHETIC_STRUCTURE_ID =
+            "composition:projection-role-test:structure:sek2";
     private static final String PERSONAL_CURRICULUM = """
             {
               "projection-roles": {
@@ -179,19 +191,141 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(projection.prerequisiteOnlyGoalIds()).isEmpty();
     }
 
+    @Test
+    void setPlannedGoalsRejectsPrerequisiteOnlyAndUnknownGoalsBeforePersistence() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
+
+        assertInvalidProjectedFocus(
+                () -> fixture.service().setPlannedGoals(LEARNER_ID, Set.of(PREREQUISITE_ID)),
+                PREREQUISITE_ID);
+        assertInvalidProjectedFocus(
+                () -> fixture.service().setPlannedGoals(LEARNER_ID, Set.of("unknown-goal")),
+                "unknown-goal");
+
+        assertThat(fixture.savedGoals()).isEmpty();
+        verify(fixture.plannedGoalRepository(), never())
+                .deleteAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
+    }
+
+    @Test
+    void setScopeRejectsStructurallyKnownButLearnerFacingInvisibleGoal() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+
+        assertInvalidProjectedFocus(
+                () -> fixture.service().setScope(LEARNER_ID, List.of(OUTSIDE_TARGET_ID)),
+                OUTSIDE_TARGET_ID);
+
+        assertThat(fixture.savedGoals()).isEmpty();
+    }
+
+    @Test
+    void setPlannedGoalsNormalizesLegacyTargetIdBeforeProjectionValidation() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        when(fixture.goalMappingService().findAllByLegacyGoalId("legacy-target"))
+                .thenReturn(List.of(new ResolvedGoalMapping(
+                        "legacy-landscape",
+                        LANDSCAPE_ID,
+                        "legacy-target",
+                        TARGET_ID,
+                        "exact",
+                        "test-mapping.json")));
+
+        fixture.service().setPlannedGoals(LEARNER_ID, Set.of("legacy-target"));
+
+        assertThat(fixture.savedGoals())
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(TARGET_ID);
+    }
+
+    @Test
+    void setPlannedGoalsAllowsVisibleSyntheticCompositionStructureTarget() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
+                .thenReturn(new CompositionViewService.CompositionStructureResolution(
+                        SYNTHETIC_STRUCTURE_ID,
+                        "projection-role-test",
+                        "sek2",
+                        "Sekundarstufe II",
+                        List.of(TARGET_ID)));
+
+        fixture.service().setPlannedGoals(LEARNER_ID, Set.of(SYNTHETIC_STRUCTURE_ID));
+
+        assertThat(fixture.savedGoals())
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(SYNTHETIC_STRUCTURE_ID);
+    }
+
+    @Test
+    void setPlannedGoalsStillAllowsEmptySetToClearFocus() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        PlannedGoal existingGoal = new PlannedGoal(fixture.learner(), TARGET_ID);
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(existingGoal))
+                .thenReturn(List.of());
+
+        assertThat(fixture.service().setPlannedGoals(LEARNER_ID, Set.of())).isEmpty();
+
+        @SuppressWarnings("unchecked")
+        ArgumentCaptor<Iterable<PlannedGoal>> deleted =
+                ArgumentCaptor.forClass(Iterable.class);
+        verify(fixture.plannedGoalRepository()).deleteAll(deleted.capture());
+        assertThat(deleted.getValue())
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(TARGET_ID);
+    }
+
+    @Test
+    void storedPrerequisiteOnlyFocusIsFilteredFromLearnerFacingReadsAndCannotConstrainFrontier() {
+        Fixture fixture = fixture(view(
+                canonicalSubtree(ROOT_CLUSTER_ID),
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        PlannedGoal stalePrerequisiteOnlyFocus =
+                new PlannedGoal(fixture.learner(), PREREQUISITE_ID);
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(stalePrerequisiteOnlyFocus));
+
+        assertThat(fixture.service().getPlannedGoals(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrder(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
+                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+
+        var learnerState = fixture.service().getLearnerState(LEARNER_ID);
+        assertThat(learnerState.goals().planned()).isEmpty();
+        assertThat(learnerState.frontier())
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrder(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
+                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+
+        verify(fixture.plannedGoalRepository(), never())
+                .deleteAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
+        verify(fixture.plannedGoalRepository(), never())
+                .saveAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
+    }
+
     private Fixture fixture(Map<String, Object> matchedView) {
         SkillLandscape landscape = landscape();
         LandscapeService landscapeService = mock(LandscapeService.class);
         CompositionViewService compositionViewService = mock(CompositionViewService.class);
         LearnerRepository learnerRepository = mock(LearnerRepository.class);
         MasteryRepository masteryRepository = mock(MasteryRepository.class);
+        PlannedGoalRepository plannedGoalRepository = mock(PlannedGoalRepository.class);
+        GoalMappingService goalMappingService = mock(GoalMappingService.class);
 
         when(landscapeService.getById(LANDSCAPE_ID)).thenReturn(landscape);
         when(landscapeService.getClosure(LANDSCAPE_ID)).thenReturn(List.of(landscape));
+        when(landscapeService.getOverview("de", true))
+                .thenReturn(new LandscapeOverviewResponse(List.of(), Map.of()));
         when(compositionViewService.isAuthoritativeForLandscape(LANDSCAPE_ID))
                 .thenReturn(true);
         if (matchedView != null) {
-            when(compositionViewService.findMatchingView(eq(LANDSCAPE_ID), anyMap()))
+            when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap()))
                     .thenReturn(matchedView);
         }
 
@@ -200,16 +334,30 @@ class ProjectionRoleLearnerServiceTest {
         learner.setSelectedCurriculum(LANDSCAPE_ID);
         learner.setPersonalCurriculum(PERSONAL_CURRICULUM);
         when(learnerRepository.findById(LEARNER_ID)).thenReturn(Optional.of(learner));
+        when(learnerRepository.existsById(LEARNER_ID)).thenReturn(true);
+        when(learnerRepository.findBySkillpilotIdForUpdate(LEARNER_ID))
+                .thenReturn(Optional.of(learner));
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of());
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of());
+
+        List<PlannedGoal> savedGoals = new java.util.ArrayList<>();
+        when(plannedGoalRepository.saveAll(
+                        org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any()))
+                .thenAnswer(invocation -> {
+                    Iterable<PlannedGoal> goals = invocation.getArgument(0);
+                    goals.forEach(savedGoals::add);
+                    return savedGoals;
+                });
 
         LearnerService service = new LearnerService(
                 learnerRepository,
                 mock(LearnerClientStateRepository.class),
                 masteryRepository,
-                mock(PlannedGoalRepository.class),
+                plannedGoalRepository,
                 landscapeService,
-                mock(GoalMappingService.class),
+                goalMappingService,
                 mock(DeckResourceService.class),
                 compositionViewService,
                 new ObjectMapper(),
@@ -219,7 +367,22 @@ class ProjectionRoleLearnerServiceTest {
                 service,
                 learner,
                 masteryRepository,
-                compositionViewService);
+                compositionViewService,
+                plannedGoalRepository,
+                goalMappingService,
+                savedGoals);
+    }
+
+    private void assertInvalidProjectedFocus(
+            org.assertj.core.api.ThrowableAssert.ThrowingCallable invocation,
+            String invalidGoalId) {
+        assertThatThrownBy(invocation)
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                    assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                    assertThat(exception.getReason())
+                            .contains("learner-facing targets")
+                            .contains(invalidGoalId);
+                });
     }
 
     private SkillLandscape landscape() {
@@ -308,7 +471,10 @@ class ProjectionRoleLearnerServiceTest {
             LearnerService service,
             Learner learner,
             MasteryRepository masteryRepository,
-            CompositionViewService compositionViewService) {
+            CompositionViewService compositionViewService,
+            PlannedGoalRepository plannedGoalRepository,
+            GoalMappingService goalMappingService,
+            List<PlannedGoal> savedGoals) {
     }
 
     private record ProjectionSets(

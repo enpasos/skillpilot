@@ -214,7 +214,7 @@ class PackageCompositionViewConsumerTest {
     void learnerFilteringDoesNotFallBackToAllGoalsForUnsupportedPackageScope() {
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
-        when(compositionViews.findMatchingView(eq(LANDSCAPE_ID), anyMap())).thenReturn(null);
+        when(compositionViews.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap())).thenReturn(null);
 
         LearnerService service = new LearnerService(
                 mock(LearnerRepository.class),
@@ -277,7 +277,7 @@ class PackageCompositionViewConsumerTest {
                 .thenReturn(Set.of(GOAL_ID));
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
-        when(compositionViews.findMatchingView(eq(LANDSCAPE_ID), anyMap())).thenReturn(null);
+        when(compositionViews.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap())).thenReturn(null);
 
         CurriculaService service = new CurriculaService(
                 landscapes,
@@ -347,7 +347,7 @@ class PackageCompositionViewConsumerTest {
         SkillLandscape landscape = clusteredLandscape();
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
-        when(compositionViews.findMatchingView(eq(LANDSCAPE_ID), anyMap())).thenReturn(Map.of(
+        when(compositionViews.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap())).thenReturn(Map.of(
                 "rootNodes", List.of(Map.of("kind", "goalEntry", "goalId", GOAL_ID))));
         LearnerService service = learnerService(mock(LandscapeService.class), compositionViews);
         Map<String, LearningGoal> allGoals = Map.of(
@@ -377,7 +377,7 @@ class PackageCompositionViewConsumerTest {
         when(landscapes.getGoalDefinition(CHILD_ID)).thenReturn(landscape.getGoals().get(1));
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
-        when(compositionViews.findMatchingView(eq(LANDSCAPE_ID), anyMap())).thenReturn(Map.of(
+        when(compositionViews.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap())).thenReturn(Map.of(
                 "rootNodes", List.of(
                         Map.of("kind", "goalEntry", "goalId", GOAL_ID),
                         Map.of("kind", "goalEntry", "goalId", CHILD_ID))));

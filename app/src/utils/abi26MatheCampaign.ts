@@ -1,6 +1,10 @@
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import { setGlobalStageScopeSelection } from './personalCurriculumStageScope'
 import { SKILLPILOT_GPT_URL_DE } from './skillpilotGpt'
+import type {
+  PersonalizationOption,
+  PersonalizationPlan,
+} from './personalCurriculumEditorApi'
 
 export type Abi26CourseLevel = 'GK' | 'LK'
 
@@ -24,13 +28,82 @@ export const ABI26_CAMPAIGN_SLUG = 'abi26-he-mathe-k1'
 export const ABI26_ROOT_CURRICULUM_ID = CANONICAL_GYMNASIUM_ROOT_ID
 export const ABI26_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 export const ABI26_ROOT_FILTER_ID = 'DE-HE'
+export const ABI26_DURATION_MODEL = 'G9'
 export const ABI26_GPT_URL = SKILLPILOT_GPT_URL_DE
 export const ABI26_FEEDBACK_URL = 'https://github.com/enpasos/skillpilot/issues/new/choose'
 export const ABI26_CONTEXT_STORAGE_KEY = 'skillpilot_campaign_context'
+const ABI26_PERSONALIZATION_INITIALIZED_STORAGE_PREFIX =
+  'skillpilot_abi26_personalization_initialized'
 
 export const ABI26_SCOPE_BY_LEVEL: Record<Abi26CourseLevel, string> = {
   GK: '9ad83149-3cb7-5b87-a617-3eae3715a50c',
   LK: '464a6024-a2f8-53b4-84e0-d7b9df22a0b1',
+}
+
+export const resolveAbi26PersonalizationOption = (
+  plan: PersonalizationPlan,
+  courseLevel: Abi26CourseLevel,
+): PersonalizationOption | undefined => {
+  const options = plan.options
+  return options.find((option) => (
+    option.kind === 'VALUE'
+    && option.landscapeId === ABI26_ROOT_CURRICULUM_ID
+    && option.filterId === ABI26_ROOT_FILTER_ID
+  ))
+    ?? options.find((option) => (
+      option.kind === 'SCOPE_VALUE'
+      && option.scopeKey === 'durationModel'
+      && option.scopeValue === ABI26_DURATION_MODEL
+    ))
+    ?? options.find((option) => (
+      option.kind === 'SCOPE_VALUE'
+      && option.scopeKey === 'stage'
+      && option.scopeValue === 'SekII'
+    ))
+    ?? options.find((option) => (
+      option.kind === 'VALUE'
+      && option.landscapeId === ABI26_MATH_LANDSCAPE_ID
+      && option.filterId === courseLevel
+    ))
+    ?? options.find((option) => (
+      option.kind === 'VALUE'
+      && option.landscapeId === ABI26_MATH_LANDSCAPE_ID
+      && option.filterId === null
+    ))
+    ?? options.find((option) => option.kind === 'COMPLETE_GROUP')
+}
+
+export type Abi26PersonalizationRepairAction =
+  | { kind: 'COMPLETE' }
+  | { kind: 'APPLY_OPTION'; optionId: string }
+  | { kind: 'RESTART' }
+  | { kind: 'UNAVAILABLE' }
+
+export const resolveAbi26PersonalizationRepairAction = (
+  plan: PersonalizationPlan,
+  courseLevel: Abi26CourseLevel,
+  configMatchesCampaign: boolean,
+  hasRestarted: boolean,
+): Abi26PersonalizationRepairAction => {
+  if (plan.stage === 'COMPLETE') {
+    if (configMatchesCampaign) {
+      return { kind: 'COMPLETE' }
+    }
+    return hasRestarted ? { kind: 'UNAVAILABLE' } : { kind: 'RESTART' }
+  }
+  if (plan.stage === 'INVALID') {
+    return hasRestarted ? { kind: 'UNAVAILABLE' } : { kind: 'RESTART' }
+  }
+
+  const option = resolveAbi26PersonalizationOption(plan, courseLevel)
+  if (option) {
+    return {
+      kind: 'APPLY_OPTION',
+      optionId: option.optionId,
+    }
+  }
+
+  return hasRestarted ? { kind: 'UNAVAILABLE' } : { kind: 'RESTART' }
 }
 
 export const ABI26_FOCUS_GOAL_BY_LEVEL: Record<Abi26CourseLevel, string> = {
@@ -72,6 +145,44 @@ export const saveAbi26CampaignContext = (context: Abi26CampaignContext) => {
   }
 }
 
+const abi26PersonalizationInitializationKey = (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+) => [
+  ABI26_PERSONALIZATION_INITIALIZED_STORAGE_PREFIX,
+  encodeURIComponent(skillpilotId.trim()),
+  courseLevel,
+].join(':')
+
+export const isAbi26PersonalizationInitialized = (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+): boolean => {
+  if (!skillpilotId.trim()) return false
+  try {
+    return globalThis.localStorage?.getItem(
+      abi26PersonalizationInitializationKey(skillpilotId, courseLevel),
+    ) === 'true'
+  } catch {
+    return false
+  }
+}
+
+export const markAbi26PersonalizationInitialized = (
+  skillpilotId: string,
+  courseLevel: Abi26CourseLevel,
+) => {
+  if (!skillpilotId.trim()) return
+  try {
+    globalThis.localStorage?.setItem(
+      abi26PersonalizationInitializationKey(skillpilotId, courseLevel),
+      'true',
+    )
+  } catch {
+    // The marker only prevents later campaign re-initialization.
+  }
+}
+
 export const loadAbi26CampaignContext = (): Abi26CampaignContext | null => {
   try {
     const raw = localStorage.getItem(ABI26_CONTEXT_STORAGE_KEY)
@@ -98,6 +209,10 @@ export const buildAbi26PersonalCurriculumConfig = (
   const next: Abi26PersonalCurriculumConfig = {}
 
   Object.entries(baseConfig).forEach(([landscapeId, value]) => {
+    if (landscapeId.startsWith('__skillpilot')) {
+      next[landscapeId] = { ...value }
+      return
+    }
     next[landscapeId] = {
       ...value,
       selected: false,
@@ -108,6 +223,7 @@ export const buildAbi26PersonalCurriculumConfig = (
     ...baseConfig[ABI26_ROOT_CURRICULUM_ID],
     selected: true,
     filterId: ABI26_ROOT_FILTER_ID,
+    durationModel: ABI26_DURATION_MODEL,
   }
   next[ABI26_MATH_LANDSCAPE_ID] = {
     ...baseConfig[ABI26_MATH_LANDSCAPE_ID],
@@ -153,6 +269,7 @@ export const buildAbi26StartPrompt = (context: Abi26CampaignContext) => {
     'Bitte arbeite mit mir in meinem persönlichen SkillPilot-Kontext:',
     '- Bundesland: Hessen',
     '- Schulbereich: Gymnasiale Oberstufe',
+    `- Gymnasialdauer: ${ABI26_DURATION_MODEL}`,
     '- Fach: Mathematik',
     `- Kursniveau: ${levelLabel}`,
     `- Fokus: ${focus}`,

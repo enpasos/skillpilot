@@ -13,6 +13,8 @@ import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
 import com.skillpilot.backend.api.MasteryResponse;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.FrontierResponse;
+import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.PlannedGoalsRequest;
 import com.skillpilot.backend.api.PlannedGoalsResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
@@ -65,6 +67,45 @@ public class LearnerUiController {
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getLearnerState(skillpilotId);
+    }
+
+    @GetMapping("/{skillpilotId}/personalization-plan")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public PersonalizationPlan getPersonalizationPlan(@PathVariable String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getPersonalizationPlan(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/personalization-options")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public PersonalizationPlan applyPersonalizationOption(
+            @PathVariable String skillpilotId,
+            @RequestBody PersonalizationRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        if (request == null) {
+            throw new org.springframework.web.server.ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Personalization request is required.");
+        }
+        if (request.optionId() == null || request.optionId().isBlank()) {
+            throw new org.springframework.web.server.ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A current opaque personalization option is required.");
+        }
+        learnerService.patchPersonalCurriculum(
+                skillpilotId,
+                request.config(),
+                request.goalIds(),
+                request.filters(),
+                request.optionId());
+        return learnerService.getPersonalizationPlan(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/personalization-restart")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public PersonalizationPlan restartPersonalization(@PathVariable String skillpilotId) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.restartPersonalization(skillpilotId);
     }
 
     @GetMapping("/{skillpilotId}/landscapes/{landscapeId}/closure")

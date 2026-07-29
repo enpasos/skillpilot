@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
+import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
 import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, LockKeyhole, UserPlus, Trash2, Bot, Copy } from 'lucide-react'
@@ -60,6 +61,7 @@ import {
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import { usePersonalCurriculumEditor } from '../hooks/usePersonalCurriculumEditor'
 import {
   getLearnerPathToken,
   getLearnerSelectedLandscapeId,
@@ -78,6 +80,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
     return getStoredLandscapeIdForRole(role)
   })
+  const [persistedLearnerLandscapeId, setPersistedLearnerLandscapeId] = useState('')
+  const [curriculumSaving, setCurriculumSaving] = useState(false)
+  const curriculumSelectionRequestRef = React.useRef(0)
+  const learnerCheckRequestRef = React.useRef(0)
   // Use location (ensure import is added)
   const location = useLocation()
 
@@ -126,6 +132,25 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const claudeActionLoading = claudeActionState === 'connecting'
     || claudeActionState === 'launching'
     || claudeActionState === 'disconnecting'
+  const sanitizedLearnerId = sanitizeSkillpilotId(skillpilotId)
+  const normalizedSelectedLearnerLandscapeId = normalizeLearnerLandscapeId(selectedLandscapeId)
+  const personalCurriculumEditorEnabled =
+    role === 'learner'
+    && hasCheckedId
+    && !!sanitizedLearnerId
+    && !!normalizedSelectedLearnerLandscapeId
+    && normalizedSelectedLearnerLandscapeId === persistedLearnerLandscapeId
+    && !curriculumSaving
+  const personalCurriculumEditor = usePersonalCurriculumEditor({
+    skillpilotId: sanitizedLearnerId,
+    enabled: personalCurriculumEditorEnabled,
+  })
+  const personalCurriculumReady =
+    personalCurriculumEditorEnabled
+    && personalCurriculumEditor.plan?.stage === 'COMPLETE'
+    && !personalCurriculumEditor.error
+    && !personalCurriculumEditor.loading
+    && !personalCurriculumEditor.busy
 
   const curriculumPanelCopy = React.useMemo(() => {
     if (role === 'trainer') {
@@ -159,8 +184,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const resetTransientSetupState = (clearSkillpilotId = false) => {
+    curriculumSelectionRequestRef.current += 1
+    learnerCheckRequestRef.current += 1
     setError(null)
+    setLoading(false)
     setSelectedLandscapeId('')
+    setPersistedLearnerLandscapeId('')
+    setCurriculumSaving(false)
     setAvailableCurricula([])
     setHasCheckedId(false)
     setChatLaunchIssue('none')
@@ -178,10 +208,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
 
   const requestNewId = async () => {
+    curriculumSelectionRequestRef.current += 1
+    learnerCheckRequestRef.current += 1
     setLoading(true)
     setError(null)
     setHasCheckedId(false)
     setSelectedLandscapeId('')
+    setPersistedLearnerLandscapeId('')
+    setCurriculumSaving(false)
     setAvailableCurricula([])
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -214,38 +248,56 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const checkLearner = async (id: string) => {
     const sanitizedId = sanitizeSkillpilotId(id)
     if (!sanitizedId) {
+      curriculumSelectionRequestRef.current += 1
+      learnerCheckRequestRef.current += 1
       setSelectedLandscapeId('')
+      setPersistedLearnerLandscapeId('')
+      setCurriculumSaving(false)
       setAvailableCurricula([])
       setHasCheckedId(false)
       return
     }
+    setHasCheckedId(false)
     setLoading(true)
+    setError(null)
+    const requestId = learnerCheckRequestRef.current + 1
+    learnerCheckRequestRef.current = requestId
+    let checked = false
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}` : `/api/ui/learners/${sanitizedId}`
       const res = await fetch(url)
-      if (res.ok) {
-        const data = await res.json() as Record<string, unknown>
-        const learnerLandscapeId = getLearnerSelectedLandscapeId(data)
-        if (learnerLandscapeId) {
-          setSelectedLandscapeId(learnerLandscapeId)
-        }
+      if (!res.ok) {
+        throw new Error(`Server ${res.status}`)
       }
-    } catch {
-      // Ignore errors, just means we can't pre-fill
+      const data = await res.json() as Record<string, unknown>
+      if (learnerCheckRequestRef.current !== requestId) return
+      const learnerLandscapeId = getLearnerSelectedLandscapeId(data)
+      if (learnerLandscapeId) {
+        setSelectedLandscapeId(learnerLandscapeId)
+        setPersistedLearnerLandscapeId(learnerLandscapeId)
+        localStorage.setItem('skillpilot_learner_landscape', learnerLandscapeId)
+      } else {
+        setSelectedLandscapeId('')
+        setPersistedLearnerLandscapeId('')
+        localStorage.removeItem('skillpilot_learner_landscape')
+      }
+      checked = true
+    } catch (caught) {
+      if (learnerCheckRequestRef.current !== requestId) return
+      setPersistedLearnerLandscapeId('')
+      setError(caught instanceof Error ? caught.message : String(caught))
     } finally {
-      setHasCheckedId(true)
-      setLoading(false)
+      if (learnerCheckRequestRef.current === requestId) {
+        setHasCheckedId(checked)
+        setLoading(false)
+      }
     }
   }
 
-  const persistLearnerStart = (
-    effectiveId: string,
-    options: { persistCurriculumRemotely?: boolean } = {},
-  ) => {
+  const persistLearnerStart = (effectiveId: string) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
     if (!sanitizedId) return ''
-    const persistCurriculumRemotely = options.persistCurriculumRemotely !== false
 
     localStorage.setItem('skillpilot_id', sanitizedId)
     localStorage.setItem('skillpilot_role', 'learner')
@@ -261,28 +313,65 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!normalizedLandscapeId) return ''
 
     localStorage.setItem('skillpilot_learner_landscape', normalizedLandscapeId)
-    if (persistCurriculumRemotely) {
-      try {
-        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}/curriculum` : `/api/ui/learners/${sanitizedId}/curriculum`
-        fetch(url, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ curriculumId: normalizedLandscapeId })
-        }).catch(e => console.error('Failed to save curriculum silently', e))
-      } catch (e) {
-        console.error('Failed to initiate save curriculum', e)
-      }
-    }
     return normalizedLandscapeId
   }
 
+  const handleLearnerCurriculumSelect = async (landscapeId: string) => {
+    const normalizedLandscapeId = normalizeLearnerLandscapeId(landscapeId)
+    const sanitizedId = sanitizeSkillpilotId(skillpilotId)
+    if (!normalizedLandscapeId || !sanitizedId) return
+
+    setSelectedLandscapeId(normalizedLandscapeId)
+    setError(null)
+    if (normalizedLandscapeId === persistedLearnerLandscapeId) return
+
+    const requestId = curriculumSelectionRequestRef.current + 1
+    curriculumSelectionRequestRef.current = requestId
+    setCurriculumSaving(true)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${sanitizedId}/curriculum`
+        : `/api/ui/learners/${sanitizedId}/curriculum`
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ curriculumId: normalizedLandscapeId }),
+      })
+      if (!response.ok) {
+        throw new Error(`curriculum-save-failed:${response.status}`)
+      }
+      if (curriculumSelectionRequestRef.current !== requestId) return
+
+      await checkLearner(sanitizedId)
+    } catch {
+      if (curriculumSelectionRequestRef.current !== requestId) return
+      await checkLearner(sanitizedId)
+      if (curriculumSelectionRequestRef.current !== requestId) return
+      setError(t.startPage.login.curriculumSaveFailed)
+    } finally {
+      if (curriculumSelectionRequestRef.current === requestId) {
+        setCurriculumSaving(false)
+      }
+    }
+  }
+
   const handleLoadLocalLogin = async () => {
+    curriculumSelectionRequestRef.current += 1
+    learnerCheckRequestRef.current += 1
+    setCurriculumSaving(false)
+    setLoading(false)
     setLocalLoginStatus('loading')
     setLocalLoginError('')
     try {
       const payload = await loadLocalSkillpilotLogin(storedLoginName, storedLoginPassword)
       const sanitizedId = sanitizeSkillpilotId(payload.skillpilotId)
+      curriculumSelectionRequestRef.current += 1
+      learnerCheckRequestRef.current += 1
+      setCurriculumSaving(false)
+      setLoading(false)
+      setHasCheckedId(false)
+      setPersistedLearnerLandscapeId('')
       setRole('learner')
       setSkillpilotId(sanitizedId)
       localStorage.setItem('skillpilot_id', sanitizedId)
@@ -296,7 +385,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       }
       setStoredLoginPassword('')
       setLocalLoginName(storedLoginName)
-      setHasCheckedId(true)
       await checkLearner(sanitizedId)
       setLocalLoginStatus('loaded')
     } catch (err) {
@@ -344,12 +432,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   ) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
     if (!sanitizedId) return null
-    // The OpenAI launch endpoint persists the selected curriculum atomically
-    // while issuing the fresh learning session. A parallel fire-and-forget PUT
-    // here can race that transaction and make the first click fail.
-    const normalizedLandscapeId = persistLearnerStart(sanitizedId, {
-      persistCurriculumRemotely: !openAiMcpCoachActive,
-    })
+    // Level 1 is persisted before the Level-2 editor is enabled. Launches only
+    // mirror that confirmed selection into browser-local state.
+    const normalizedLandscapeId = persistLearnerStart(sanitizedId)
     if (!normalizedLandscapeId) return null
 
     setChatStartLoading(true)
@@ -368,6 +453,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const handleOpenChatGpt = async () => {
+    if (!personalCurriculumReady) return
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return
     if (!chatStartInFlightRef.current.tryStart()) return
@@ -437,6 +523,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   }
 
   const getClaudeStartContext = () => {
+    if (!personalCurriculumReady) return null
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return null
     const normalizedLandscapeId = persistLearnerStart(effectiveId)
@@ -585,6 +672,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     if (role === 'learner' && !sanitizeSkillpilotId(skillpilotId)) return
+    if (role === 'learner' && !personalCurriculumReady) return
 
     const effectiveId = role === 'learner' ? sanitizeSkillpilotId(skillpilotId) : ''
 
@@ -1031,10 +1119,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     </label>
                     <CurriculumDropdown
                       currentLandscapeId={selectedLandscapeId}
-                      onSelect={setSelectedLandscapeId}
+                      onSelect={role === 'learner' ? handleLearnerCurriculumSelect : setSelectedLandscapeId}
+                      disabled={role === 'learner' && curriculumSaving}
                       landscapes={availableCurricula}
                       showCompatibilityViews={false}
                     />
+                    {role === 'learner' && curriculumSaving && (
+                      <p className="mt-2 text-xs text-text-secondary" role="status">
+                        {t.startPage.login.curriculumSaving}
+                      </p>
+                    )}
 
                     {role !== 'learner' && (
                       <div className="pt-4">
@@ -1057,6 +1151,34 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         3
                       </div>
                       <div>
+                        <h2 className="text-base font-bold text-text-primary">
+                          {t.startPage.login.personalCurriculumStepTitle}
+                        </h2>
+                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                          {t.startPage.login.personalCurriculumStepText}
+                        </p>
+                      </div>
+                    </div>
+
+                    {personalCurriculumEditorEnabled ? (
+                      <PersonalCurriculumEditor {...personalCurriculumEditor} />
+                    ) : (
+                      <p className="rounded-lg border border-border-color bg-slate-50 p-3 text-sm text-text-secondary dark:bg-slate-950/40">
+                        {curriculumSaving
+                          ? t.startPage.login.curriculumSaving
+                          : t.startPage.login.personalCurriculumWaitingForCurriculum}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {role === 'learner' && skillpilotId.length > 0 && hasCheckedId && (
+                  <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
+                    <div className="mb-4 flex items-start gap-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
+                        4
+                      </div>
+                      <div>
                         <h2 className="text-base font-bold text-text-primary">{t.startPage.login.startStepTitle}</h2>
                         <p className="mt-1 text-xs leading-relaxed text-text-secondary">
                           {CLAUDE_COACH_BETA_ENABLED
@@ -1067,6 +1189,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     </div>
 
                     <div className="space-y-3">
+                      {!personalCurriculumReady && (
+                        <p className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs font-semibold text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-200">
+                          {t.startPage.login.personalCurriculumRequired}
+                        </p>
+                      )}
                       <div className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40">
                         <p className="font-semibold text-text-primary">
                           {openAiMcpCoachActive
@@ -1082,7 +1209,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       <button
                         type="button"
                         onClick={handleOpenChatGpt}
-                        disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId || chatStartLoading}
+                        disabled={!personalCurriculumReady || chatStartLoading}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <MessageCircle size={16} />
@@ -1119,7 +1246,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             <button
                               type="button"
                               onClick={handleConnectClaude}
-                              disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId || claudeActionLoading}
+                              disabled={!personalCurriculumReady || claudeActionLoading}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-400 bg-white px-3 py-2 text-xs font-semibold text-violet-800 transition-colors hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-violet-200 dark:hover:bg-violet-950"
                             >
                               <KeyRound size={14} />
@@ -1130,7 +1257,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             <button
                               type="button"
                               onClick={handleLaunchClaude}
-                              disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId || claudeActionLoading}
+                              disabled={!personalCurriculumReady || claudeActionLoading}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-600 bg-violet-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-violet-500 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               <Bot size={14} />
@@ -1245,7 +1372,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       <div>
                         <button
                           type="submit"
-                          disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId}
+                          disabled={!personalCurriculumReady}
                           className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-sky-400 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-800"
                         >
                           <Compass size={16} />

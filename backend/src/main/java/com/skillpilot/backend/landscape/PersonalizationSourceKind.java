@@ -14,7 +14,10 @@ public enum PersonalizationSourceKind {
     LANDSCAPE_FILTERS("landscapeFilters"),
     LANDSCAPES("landscapes"),
     FILTERS_FOR_SELECTED_LANDSCAPES("filtersForSelectedLandscapes"),
-    SCOPE_VALUES("scopeValues");
+    SCOPE_VALUES("scopeValues"),
+    OFFERED_LANDSCAPES("offeredLandscapes"),
+    OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES("offeredFiltersForSelectedLandscapes"),
+    OFFERED_SCOPE_VALUES("offeredScopeValues");
 
     private final String wireValue;
 

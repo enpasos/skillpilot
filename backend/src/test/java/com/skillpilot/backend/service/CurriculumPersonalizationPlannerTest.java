@@ -10,9 +10,11 @@ import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
+import com.skillpilot.backend.landscape.PersonalizationScopeBinding;
 import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import com.skillpilot.backend.landscape.PersonalizationSourceKind;
 import com.skillpilot.backend.landscape.PersonalizationStage;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -1180,6 +1182,375 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
+    void migrationCompletionKeepsOnlySelectedAuthoredOfferingLandscapesWithoutInferringMissingBindings() {
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik");
+        SkillLandscape physics = landscape(EMBER_ID, "Physik");
+        PersonalizationOptionSource subjects = offeredLandscapes(COBALT_ID, EMBER_ID);
+        subjects.setScopeBindings(List.of(selectedBinding("stage", "group-stage")));
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-stage",
+                        1,
+                        group(
+                                "group-stage",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "stage",
+                                        scopeValue("SekII", "Sekundarstufe II")))),
+                stage(
+                        "stage-subject",
+                        2,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                2,
+                                subjects))));
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root, mathematics, physics),
+                (landscapeId, requestedScope) -> {
+                    throw new AssertionError("migration must not probe an unresolved offering");
+                },
+                config(
+                        entry(ROOT_ID, true, null),
+                        entry(COBALT_ID, true, "LK"),
+                        migrationCompletionEntry()));
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(plan.navigationOptions())
+                .extracting(
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::filterId)
+                .containsExactly(tuple(COBALT_ID, null));
+    }
+
+    @Test
+    void aggregatesOfferedDurationValuesAcrossSubjectsAndOmitsAuthoredCanonicalJurisdiction() {
+        SkillLandscape root = landscape(
+                ROOT_ID,
+                "Gymnasium (DE)",
+                filter("ALL", "Kanonische DE-Sicht"),
+                filter("DE-HE", "Hessen"));
+        SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik");
+        SkillLandscape physics = landscape(EMBER_ID, "Physik");
+        PersonalizationOptionSource duration = offeredScopeValues(
+                List.of(COBALT_ID, EMBER_ID),
+                ROOT_ID,
+                "durationModel",
+                scopeValue("G8", "G8"),
+                scopeValue("G9", "G9"));
+        duration.setScopeBindings(List.of(
+                fixedBinding("schoolForm", "Gymnasium"),
+                selectedBinding("jurisdiction", "group-jurisdiction", List.of("ALL"))));
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-jurisdiction",
+                        1,
+                        group(
+                                "group-jurisdiction",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(ROOT_ID))),
+                stage(
+                        "stage-duration",
+                        2,
+                        group(
+                                "group-duration",
+                                1,
+                                1,
+                                1,
+                                duration))));
+
+        List<Map<String, String>> probes = new ArrayList<>();
+        CurriculumPersonalizationOfferingResolver offerings = (landscapeId, requestedScope) -> {
+            probes.add(requestedScope);
+            if (requestedScope.containsKey("jurisdiction")) {
+                return null;
+            }
+            if (COBALT_ID.equals(landscapeId)
+                    && "G9".equals(requestedScope.get("durationModel"))) {
+                return requestedScope;
+            }
+            if (EMBER_ID.equals(landscapeId)
+                    && "G8".equals(requestedScope.get("durationModel"))) {
+                return requestedScope;
+            }
+            return null;
+        };
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root, mathematics, physics),
+                offerings,
+                config(entry(ROOT_ID, true, "ALL")));
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.groupId()).isEqualTo("group-duration");
+        assertThat(plan.options())
+                .extracting(
+                        PersonalizationPlan.Option::scopeKey,
+                        PersonalizationPlan.Option::scopeValue)
+                .containsExactly(
+                        tuple("durationModel", "G8"),
+                        tuple("durationModel", "G9"));
+        assertThat(probes)
+                .isNotEmpty()
+                .allSatisfy(scope -> assertThat(scope)
+                        .containsEntry("schoolForm", "Gymnasium")
+                        .doesNotContainKey("jurisdiction"));
+    }
+
+    @Test
+    void offersOnlyReviewedSubjectsAndCourseProfilesAsPersistableFilterOptions() {
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        SkillLandscape mathematics = landscape(
+                COBALT_ID,
+                "Mathematik",
+                filter("GK", "Grundkurs"),
+                filter("LK", "Leistungskurs"));
+        SkillLandscape physics = landscape(
+                EMBER_ID,
+                "Physik",
+                filter("GK", "Grundkurs"),
+                filter("LK", "Leistungskurs"));
+        PersonalizationOptionSource subjects = offeredLandscapes(COBALT_ID, EMBER_ID);
+        subjects.setScopeBindings(List.of(
+                fixedBinding("schoolForm", "Gymnasium"),
+                selectedBinding("stage", "group-stage"),
+                valuesBinding("courseProfile", false, "GK", "LK")));
+        PersonalizationOptionSource profiles =
+                offeredFiltersForSelectedLandscapes("group-subject", "courseProfile", "GK", "LK");
+        profiles.setScopeBindings(List.of(
+                fixedBinding("schoolForm", "Gymnasium"),
+                selectedBinding("stage", "group-stage")));
+        profiles.setOptionalWhenUnavailable(true);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-stage",
+                        1,
+                        group(
+                                "group-stage",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "stage",
+                                        scopeValue("SekI", "Sekundarstufe I"),
+                                        scopeValue("SekII", "Sekundarstufe II")))),
+                stage(
+                        "stage-subject",
+                        2,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                subjects)),
+                stage(
+                        "stage-profile",
+                        3,
+                        group(
+                                "group-profile",
+                                1,
+                                1,
+                                1,
+                                profiles))));
+        List<SkillLandscape> landscapes = List.of(root, mathematics, physics);
+        CurriculumPersonalizationOfferingResolver offerings = (landscapeId, requestedScope) -> {
+            if (!COBALT_ID.equals(landscapeId)) {
+                return null;
+            }
+            String stage = requestedScope.get("stage");
+            String profile = requestedScope.get("courseProfile");
+            if ("SekI".equals(stage)) {
+                return profile == null ? requestedScope : null;
+            }
+            if ("SekII".equals(stage)) {
+                return profile == null || "LK".equals(profile) ? requestedScope : null;
+            }
+            return null;
+        };
+
+        PersonalizationPlan subjectPlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                offerings,
+                config(entryWithScope(ROOT_ID, true, null, "stage", "SekII")));
+
+        assertThat(subjectPlan.valid()).isTrue();
+        assertThat(subjectPlan.groupId()).isEqualTo("group-subject");
+        assertThat(subjectPlan.options())
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .containsExactly(COBALT_ID);
+
+        PersonalizationPlan profilePlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                offerings,
+                config(
+                        entryWithScope(ROOT_ID, true, null, "stage", "SekII"),
+                        entry(COBALT_ID, true, null)));
+
+        assertThat(profilePlan.valid()).isTrue();
+        assertThat(profilePlan.groupId()).isEqualTo("group-profile");
+        assertThat(profilePlan.options())
+                .extracting(
+                        PersonalizationPlan.Option::kind,
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::filterId,
+                        PersonalizationPlan.Option::scopeKey,
+                        PersonalizationPlan.Option::scopeValue)
+                .containsExactly(tuple(
+                        PersonalizationPlan.OptionKind.VALUE,
+                        COBALT_ID,
+                        "LK",
+                        null,
+                        null));
+
+        PersonalizationPlan lowerSecondaryPlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                offerings,
+                config(
+                        entryWithScope(ROOT_ID, true, null, "stage", "SekI"),
+                        entry(COBALT_ID, true, null)));
+
+        assertThat(lowerSecondaryPlan.valid()).isTrue();
+        assertThat(lowerSecondaryPlan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+    }
+
+    @Test
+    void failsClosedWhenARequiredUpstreamOfferingBindingWasExplicitlyLeftUnselected() {
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik");
+        PersonalizationOptionSource subjects = offeredLandscapes(COBALT_ID);
+        subjects.setScopeBindings(List.of(selectedBinding("stage", "group-stage")));
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-stage",
+                        1,
+                        group(
+                                "group-stage",
+                                1,
+                                0,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "stage",
+                                        scopeValue("SekII", "Sekundarstufe II")))),
+                stage(
+                        "stage-subject",
+                        2,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                subjects))));
+        List<SkillLandscape> landscapes = List.of(root, mathematics);
+        CurriculumPersonalizationOfferingResolver offerings =
+                (landscapeId, requestedScope) -> requestedScope;
+
+        PersonalizationPlan optionalStage = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                offerings,
+                Map.of());
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                offerings,
+                config(completionEntry(finishOption(optionalStage))));
+
+        assertThat(plan.valid()).isFalse();
+        assertThat(plan.problemCode()).isEqualTo("personalization-upstream-state-invalid");
+    }
+
+    @Test
+    void optionalSelectedDurationBindingNeverCreatesADimensionlessSekOneProbe() {
+        SkillLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        SkillLandscape mathematics = landscape(COBALT_ID, "Mathematik");
+        PersonalizationOptionSource subjects = offeredLandscapes(COBALT_ID);
+        PersonalizationScopeBinding durationBinding =
+                selectedBinding("durationModel", "group-duration");
+        durationBinding.setRequired(false);
+        subjects.setScopeBindings(List.of(
+                fixedBinding("schoolForm", "Gymnasium"),
+                selectedBinding("stage", "group-stage"),
+                durationBinding));
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-stage",
+                        1,
+                        group(
+                                "group-stage",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "stage",
+                                        scopeValue("SekI", "Sekundarstufe I")))),
+                stage(
+                        "stage-duration",
+                        2,
+                        group(
+                                "group-duration",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "durationModel",
+                                        scopeValue("G9", "G9")))),
+                stage(
+                        "stage-subject",
+                        3,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                subjects))));
+        List<Map<String, String>> probes = new ArrayList<>();
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root, mathematics),
+                (landscapeId, requestedScope) -> {
+                    probes.add(requestedScope);
+                    // Simulate a duration-neutral Sek-I package offering. It
+                    // must not satisfy a committed G9 request.
+                    return requestedScope.containsKey("durationModel")
+                            ? null
+                            : requestedScope;
+                },
+                config(Map.entry(
+                        ROOT_ID,
+                        Map.<String, Object>of(
+                                "selected", true,
+                                "stage", "SekI",
+                                "durationModel", "G9"))));
+
+        assertThat(plan.valid()).isFalse();
+        assertThat(plan.problemCode()).isEqualTo("personalization-cardinality-unreachable");
+        assertThat(probes)
+                .isNotEmpty()
+                .allSatisfy(scope -> assertThat(scope)
+                        .containsEntry("stage", "SekI")
+                        .containsEntry("durationModel", "G9"));
+    }
+
+    @Test
     void canonicalizesOnlyAgainstTheDeclaringLandscapeAndPreservesAuthoredSpelling() {
         SkillLandscape cobalt = landscape(
                 COBALT_ID,
@@ -1278,6 +1649,25 @@ class CurriculumPersonalizationPlannerTest {
         return source;
     }
 
+    private static PersonalizationOptionSource offeredLandscapes(String... landscapeIds) {
+        PersonalizationOptionSource source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.OFFERED_LANDSCAPES);
+        source.setLandscapeIds(List.of(landscapeIds));
+        return source;
+    }
+
+    private static PersonalizationOptionSource offeredFiltersForSelectedLandscapes(
+            String groupId,
+            String scopeKey,
+            String... filterIds) {
+        PersonalizationOptionSource source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES);
+        source.setSelectedLandscapesFromGroupId(groupId);
+        source.setScopeKey(scopeKey);
+        source.setFilterIds(List.of(filterIds));
+        return source;
+    }
+
     private static PersonalizationOptionSource filtersForSelectedLandscapes(
             String groupId) {
         PersonalizationOptionSource source = new PersonalizationOptionSource();
@@ -1303,6 +1693,57 @@ class CurriculumPersonalizationPlannerTest {
         scopeValue.setValue(value);
         scopeValue.setLabel(label);
         return scopeValue;
+    }
+
+    private static PersonalizationOptionSource offeredScopeValues(
+            List<String> landscapeIds,
+            String targetLandscapeId,
+            String scopeKey,
+            PersonalizationScopeValue... values) {
+        PersonalizationOptionSource source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.OFFERED_SCOPE_VALUES);
+        source.setLandscapeIds(landscapeIds);
+        source.setTargetLandscapeId(targetLandscapeId);
+        source.setScopeKey(scopeKey);
+        source.setValues(List.of(values));
+        return source;
+    }
+
+    private static PersonalizationScopeBinding fixedBinding(
+            String dimension,
+            String value) {
+        PersonalizationScopeBinding binding = new PersonalizationScopeBinding();
+        binding.setDimension(dimension);
+        binding.setValue(value);
+        return binding;
+    }
+
+    private static PersonalizationScopeBinding selectedBinding(
+            String dimension,
+            String groupId) {
+        return selectedBinding(dimension, groupId, null);
+    }
+
+    private static PersonalizationScopeBinding selectedBinding(
+            String dimension,
+            String groupId,
+            List<String> omitValues) {
+        PersonalizationScopeBinding binding = new PersonalizationScopeBinding();
+        binding.setDimension(dimension);
+        binding.setSelectedValueFromGroupId(groupId);
+        binding.setOmitValues(omitValues);
+        return binding;
+    }
+
+    private static PersonalizationScopeBinding valuesBinding(
+            String dimension,
+            boolean required,
+            String... values) {
+        PersonalizationScopeBinding binding = new PersonalizationScopeBinding();
+        binding.setDimension(dimension);
+        binding.setValues(List.of(values));
+        binding.setRequired(required);
+        return binding;
     }
 
     @SafeVarargs

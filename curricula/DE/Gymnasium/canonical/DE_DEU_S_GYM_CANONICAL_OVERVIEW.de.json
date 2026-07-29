@@ -105,7 +105,7 @@
       },
       {
         "id": "subject",
-        "order": 20,
+        "order": 40,
         "label": "Fach auswählen",
         "labelEn": "Choose subject",
         "groups": [
@@ -117,7 +117,7 @@
             "minSelections": 1,
             "maxSelections": 20,
             "source": {
-              "kind": "landscapes",
+              "kind": "offeredLandscapes",
               "landscapeIds": [
                 "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
                 "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
@@ -139,6 +139,36 @@
                 "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
                 "f620c251-c1e1-41c1-b4e1-b10950b43608",
                 "605bdaf6-32d5-56fd-8d92-5a80c2fd2901"
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "selectedValueFromGroupId": "stage"
+                },
+                {
+                  "dimension": "durationModel",
+                  "selectedValueFromGroupId": "durationModel",
+                  "required": false
+                },
+                {
+                  "dimension": "courseProfile",
+                  "values": [
+                    "GK",
+                    "LK"
+                  ],
+                  "required": false
+                }
               ]
             }
           }
@@ -146,7 +176,7 @@
       },
       {
         "id": "subjectProfile",
-        "order": 30,
+        "order": 50,
         "label": "Kursprofil auswählen",
         "labelEn": "Choose course profile",
         "groups": [
@@ -158,15 +188,43 @@
             "minSelections": 1,
             "maxSelections": 1,
             "source": {
-              "kind": "filtersForSelectedLandscapes",
-              "selectedLandscapesFromGroupId": "subject"
+              "kind": "offeredFiltersForSelectedLandscapes",
+              "selectedLandscapesFromGroupId": "subject",
+              "scopeKey": "courseProfile",
+              "filterIds": [
+                "GK",
+                "LK"
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "selectedValueFromGroupId": "stage"
+                },
+                {
+                  "dimension": "durationModel",
+                  "selectedValueFromGroupId": "durationModel",
+                  "required": false
+                }
+              ],
+              "optionalWhenUnavailable": true
             }
           }
         ]
       },
       {
         "id": "stage",
-        "order": 40,
+        "order": 30,
         "label": "Lernumfang auswählen",
         "labelEn": "Choose learning scope",
         "groups": [
@@ -204,7 +262,7 @@
       },
       {
         "id": "durationModel",
-        "order": 50,
+        "order": 20,
         "label": "Gymnasialdauer auswählen",
         "labelEn": "Choose duration model",
         "groups": [
@@ -216,8 +274,30 @@
             "minSelections": 1,
             "maxSelections": 1,
             "source": {
-              "kind": "scopeValues",
-              "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+              "kind": "offeredScopeValues",
+              "landscapeIds": [
+                "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+                "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+                "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+                "08a43a1b-d97e-522c-9dfa-c950a493364e",
+                "7d51b38c-a149-5407-bddc-d2ce7878b020",
+                "92406d94-e3c1-58ec-b7c6-12122278d25a",
+                "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+                "51b60137-46e8-5498-973e-ea38bb32f327",
+                "c8c84073-46ae-57ec-898a-882d08d7a72f",
+                "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+                "668cf206-941e-51f8-8704-3e8938631235",
+                "90eedebf-9ea8-5247-85dd-31c147f907c3",
+                "25c6b527-10d6-5d92-9d76-fab23585f29b",
+                "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+                "f145785b-0c44-5246-af66-8a153d202cb9",
+                "0900df4c-beeb-5542-86f9-bd479c94746a",
+                "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+                "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+                "f620c251-c1e1-41c1-b4e1-b10950b43608",
+                "605bdaf6-32d5-56fd-8d92-5a80c2fd2901"
+              ],
+              "targetLandscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
               "scopeKey": "durationModel",
               "values": [
                 {
@@ -230,7 +310,37 @@
                   "label": "G9",
                   "labelEn": "G9"
                 }
-              ]
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "values": [
+                    "SekI",
+                    "SekII",
+                    "CrossStage"
+                  ]
+                },
+                {
+                  "dimension": "courseProfile",
+                  "values": [
+                    "GK",
+                    "LK"
+                  ],
+                  "required": false
+                }
+              ],
+              "optionalWhenUnavailable": true
             }
           }
         ]

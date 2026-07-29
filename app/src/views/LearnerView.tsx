@@ -34,7 +34,10 @@ import {
   ABI26_ROOT_CURRICULUM_ID,
   buildAbi26PersonalCurriculumConfig,
   extractAbi26CampaignContext,
+  isAbi26PersonalizationInitialized,
   loadAbi26CampaignContext,
+  markAbi26PersonalizationInitialized,
+  resolveAbi26PersonalizationRepairAction,
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
 import { synchronizePersonalCurriculumStageScope } from '../utils/personalCurriculumStageScope'
@@ -44,6 +47,11 @@ import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
+import {
+  beginLatestRequest,
+  invalidateLatestRequest,
+  isLatestRequestForScope,
+} from '../utils/latestRequestSequence'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
@@ -58,6 +66,9 @@ import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/
 import { buildVisibleSessionVerifiedRecallInstruction } from '../coachVariants/visibleSession/verifiedRecallPrompt'
 import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
+import {
+  usePersonalCurriculumEditor,
+} from '../hooks/usePersonalCurriculumEditor'
 import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
 import {
   buildDirectChildrenMap,
@@ -102,6 +113,21 @@ type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
   strictMode: boolean
+}
+type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
+
+const readPersonalCurriculumConfig = (value: unknown): PersonalCurriculumConfig => {
+  const parsed = typeof value === 'string'
+    ? (value.trim() ? JSON.parse(value) : {})
+    : value
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return {}
+  }
+  const nested = (parsed as Record<string, unknown>).personalCurriculum
+  if (nested && typeof nested === 'object' && !Array.isArray(nested)) {
+    return nested as PersonalCurriculumConfig
+  }
+  return parsed as PersonalCurriculumConfig
 }
 
 type BackendStats = {
@@ -297,12 +323,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onLandscapeChange,
   onLandscapeGoalChange,
 }) => {
+  const learnerStateScopeKey = `${skillpilotId}\u0000${rootLandscapeId ?? ''}`
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
   const [learnerData, setLearnerData] = useState<Learner | null>(null)
   const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
+  const [learnerStateLoadState, setLearnerStateLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const [personalConfigReloadCounter, setPersonalConfigReloadCounter] = useState(0)
   const [backendStats, setBackendStats] = useState<BackendStats | null>(null)
   const [isSetupOpen, setIsSetupOpen] = useState(false)
   const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
@@ -331,6 +373,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const lastFullRefreshAtRef = useRef(0)
   const forceActiveGoalRevealRef = useRef(false)
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+  const learnerStateRequestSequenceRef = useRef(0)
+  const learnerDataRequestSequenceRef = useRef(0)
+  const plannedGoalsRequestSequenceRef = useRef(0)
+  const personalCurriculumRefreshSequenceRef = useRef(0)
+  const currentLearnerStateScopeKeyRef = useRef(learnerStateScopeKey)
+  currentLearnerStateScopeKeyRef.current = learnerStateScopeKey
 
   const { language, setLanguage } = useLanguage();
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
@@ -380,12 +428,63 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     queryCampaignContext,
     skillpilotId,
   ])
+  const abi26PersonalizationAlreadyInitialized = useMemo(() => (
+    campaignContext
+      ? isAbi26PersonalizationInitialized(skillpilotId, campaignContext.courseLevel)
+      : false
+  ), [campaignContext, skillpilotId])
+  const [abi26PersonalizationRepairSuppressed, setAbi26PersonalizationRepairSuppressed] =
+    useState(false)
+  useEffect(() => {
+    setAbi26PersonalizationRepairSuppressed(false)
+  }, [campaignContext?.courseLevel, skillpilotId])
+  const shouldAutoRepairAbi26Personalization =
+    isAbi26CampaignSession
+    && !!campaignContext
+    && !abi26PersonalizationAlreadyInitialized
+    && !abi26PersonalizationRepairSuppressed
+  const canAutoRepairAbi26Personalization =
+    shouldAutoRepairAbi26Personalization
+    && rootLandscapeId === ABI26_ROOT_CURRICULUM_ID
 
   const currentRouteGoalId = routeGoalId ?? ''
   const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
   const effectiveActiveGoalId = stateActiveGoalId
   const hasTrackedCampaignOpenRef = useRef(false)
-  const hasAppliedCampaignFilterRef = useRef(false)
+  const guidedPersonalizationRefreshInFlightRef = useRef(0)
+  const [guidedPersonalizationRefreshing, setGuidedPersonalizationRefreshing] = useState(false)
+  const abi26PersonalizationRepairRef = useRef({
+    scopeKey: '',
+    inFlight: false,
+    restarted: false,
+    complete: false,
+    failed: false,
+    errorReported: false,
+    applySteps: 0,
+    appliedOptionIds: new Set<string>(),
+  })
+  const claimAbi26PersonalizationOwnership = useCallback(() => {
+    if (!isAbi26CampaignSession || !campaignContext) return
+    markAbi26PersonalizationInitialized(
+      skillpilotId,
+      campaignContext.courseLevel,
+    )
+    setAbi26PersonalizationRepairSuppressed(true)
+    abi26PersonalizationRepairRef.current.complete = true
+  }, [
+    campaignContext,
+    isAbi26CampaignSession,
+    skillpilotId,
+  ])
+
+  useEffect(() => {
+    if (!isSetupOpen || !canAutoRepairAbi26Personalization) return
+    claimAbi26PersonalizationOwnership()
+  }, [
+    canAutoRepairAbi26Personalization,
+    claimAbi26PersonalizationOwnership,
+    isSetupOpen,
+  ])
 
   const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
     if (!onNotify) return
@@ -1143,22 +1242,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const refreshLearnerData = useCallback(async () => {
     if (!skillpilotId) return
+    const requestSequence = beginLatestRequest(learnerDataRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learnerDataRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
+        if (!isCurrentRequest()) return
         setLearnerData(data)
         clearReportedLoadError('learner-initial-load')
         return
       }
+      if (!isCurrentRequest()) return
       notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     } catch (e) {
+      if (!isCurrentRequest()) return
       console.warn('Failed to load learner data', e)
       notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     }
-  }, [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed])
+  }, [
+    clearReportedLoadError,
+    learnerStateScopeKey,
+    notifyLoadErrorOnce,
+    skillpilotId,
+    t.notifications.learnerInitialLoadFailed,
+  ])
 
   const lowerLegacySelection = useMemo(() => inferLegacyHessenLowerSelection({
     selectedCurriculum: learnerData?.selectedCurriculum,
@@ -1185,6 +1301,37 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     hessenFilterDisplay,
   ])
   const canCutoverLegacyGymnasium = legacyCutoverUiState.canCutover
+  const usesGuidedPersonalCurriculumEditor =
+    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && !canCutoverLegacyGymnasium
+  const learnerStateLoadStatus: LearnerStateLoadStatus =
+    learnerStateLoadState.scopeKey === learnerStateScopeKey
+      ? learnerStateLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const personalConfigLoadStatus: LearnerStateLoadStatus =
+    personalConfigLoadState.scopeKey === learnerStateScopeKey
+      ? personalConfigLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const guidedPersonalizationGateReason =
+    !usesGuidedPersonalCurriculumEditor
+      ? null
+      : learnerStateLoadStatus === 'loading' || personalConfigLoadStatus === 'loading'
+        ? 'scopeLoading'
+        : learnerStateLoadStatus === 'error' || personalConfigLoadStatus === 'error'
+          ? 'scopeError'
+          : stateRequiredAction === 'setPersonalization'
+            ? 'selection'
+            : null
+  const isGuidedPersonalizationRequired =
+    guidedPersonalizationGateReason !== null
+  const personalCurriculumEditor = usePersonalCurriculumEditor({
+    skillpilotId,
+    enabled: usesGuidedPersonalCurriculumEditor
+      && (isSetupOpen || canAutoRepairAbi26Personalization),
+  })
   const supportsCompatibilityArchive = legacyCutoverUiState.supportsCompatibilityArchive
   const isCompatibilityAuditOnly = legacyCutoverUiState.isCompatibilityAuditOnly
   const currentFlashcardVerificationDisabled =
@@ -1193,11 +1340,92 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const legacyReadOnlyCopy = legacyCutoverUiState.readOnlyCopy
   const legacyErrorCopy = legacyCutoverUiState.errorCopy
   const legacyUiCopy = legacyCutoverUiState.uiCopy
+  const personalizationGateCopy = language === 'en'
+    ? guidedPersonalizationGateReason === 'scopeLoading'
+      ? {
+        title: 'Loading your learning scope',
+        body: 'The learning tree remains locked until the current personal curriculum has been verified.',
+        action: 'Please wait',
+      }
+      : guidedPersonalizationGateReason === 'scopeError'
+        ? {
+          title: 'Your learning scope could not be verified',
+          body: 'The learning tree remains locked so that no broad fallback curriculum is shown.',
+          action: 'Try again',
+        }
+        : {
+          title: 'Complete your personal curriculum',
+          body: 'Choose your lasting curriculum scope before selecting a concrete learning goal.',
+          action: 'Continue setup',
+        }
+    : guidedPersonalizationGateReason === 'scopeLoading'
+      ? {
+        title: 'Dein Lernumfang wird geladen',
+        body: 'Der Lernbaum bleibt gesperrt, bis dein persönlicher Lehrplan verlässlich geprüft ist.',
+        action: 'Bitte warten',
+      }
+      : guidedPersonalizationGateReason === 'scopeError'
+        ? {
+          title: 'Dein Lernumfang konnte nicht geprüft werden',
+          body: 'Der Lernbaum bleibt gesperrt, damit kein breiter Fallback-Lehrplan angezeigt wird.',
+          action: 'Erneut versuchen',
+        }
+        : {
+          title: 'Persönlichen Lehrplan vervollständigen',
+          body: 'Lege zuerst deinen dauerhaften Lernumfang fest, bevor du ein konkretes Lernziel auswählst.',
+          action: 'Einrichtung fortsetzen',
+        }
+  const personalizationAutoOpenKeyRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    invalidateLatestRequest(learnerDataRequestSequenceRef)
+    invalidateLatestRequest(plannedGoalsRequestSequenceRef)
+    invalidateLatestRequest(personalCurriculumRefreshSequenceRef)
+    setStateRequiredAction(null)
+  }, [learnerStateScopeKey])
+
+  useEffect(() => {
+    if (guidedPersonalizationGateReason !== 'selection') {
+      personalizationAutoOpenKeyRef.current = null
+      return
+    }
+    if (canAutoRepairAbi26Personalization) {
+      return
+    }
+    const autoOpenKey = `${skillpilotId}:setPersonalization`
+    if (personalizationAutoOpenKeyRef.current === autoOpenKey) return
+    personalizationAutoOpenKeyRef.current = autoOpenKey
+    setIsSetupOpen(true)
+  }, [
+    canAutoRepairAbi26Personalization,
+    guidedPersonalizationGateReason,
+    skillpilotId,
+  ])
 
 
   const refreshState = useCallback(
     async (cacheBust = false) => {
-      if (!skillpilotId) return
+      if (!skillpilotId) {
+        setLearnerStateLoadState({
+          scopeKey: learnerStateScopeKey,
+          status: 'ready',
+        })
+        return
+      }
+      const requestSequence = beginLatestRequest(learnerStateRequestSequenceRef)
+      const requestScopeKey = learnerStateScopeKey
+      const isCurrentRequest = () => isLatestRequestForScope(
+        learnerStateRequestSequenceRef,
+        requestSequence,
+        currentLearnerStateScopeKeyRef.current,
+        requestScopeKey,
+      )
+      setLearnerStateLoadState((current) => (
+        current.scopeKey === requestScopeKey && current.status === 'ready'
+          ? current
+          : { scopeKey: requestScopeKey, status: 'loading' }
+      ))
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const suffix = cacheBust ? `?_t=${Date.now()}` : ''
@@ -1206,8 +1434,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           : `/api/ui/learners/${skillpilotId}/state${suffix}`
         const res = await fetch(url)
         if (res.ok) {
-          setCompatibilityRouteRetired(false)
           const data = await res.json()
+          if (!isCurrentRequest()) return
+          setCompatibilityRouteRetired(false)
           const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
           if (data.frontier && Array.isArray(data.frontier)) {
             setFrontierOptions(data.frontier)
@@ -1237,49 +1466,212 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
             })
           }
+          setLearnerStateLoadState({
+            scopeKey: requestScopeKey,
+            status: 'ready',
+          })
           clearReportedLoadError('learner-initial-load')
           return
         }
         if (res.status === 409) {
+          if (!isCurrentRequest()) return
           setCompatibilityRouteRetired(true)
           setFrontierOptions([])
           setStateActiveGoalId(null)
           setLearnerData(prev => prev ? { ...prev, activeGoalId: undefined } : prev)
           setStateRequiredAction('compatibilityArchive')
           setBackendStats(null)
+          setLearnerStateLoadState({
+            scopeKey: requestScopeKey,
+            status: 'ready',
+          })
           clearReportedLoadError('learner-initial-load')
           return
         }
+        if (!isCurrentRequest()) return
+        setLearnerStateLoadState({
+          scopeKey: requestScopeKey,
+          status: 'error',
+        })
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       } catch (e) {
+        if (!isCurrentRequest()) return
         console.warn('Failed to load learner state', e)
+        setLearnerStateLoadState({
+          scopeKey: requestScopeKey,
+          status: 'error',
+        })
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       }
     },
-    [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed],
+    [
+      clearReportedLoadError,
+      learnerStateScopeKey,
+      notifyLoadErrorOnce,
+      skillpilotId,
+      t.notifications.learnerInitialLoadFailed,
+    ],
 
   )
 
+  const handlePersonalizationGateAction = useCallback(() => {
+    if (guidedPersonalizationGateReason === 'scopeError') {
+      setPersonalConfigReloadCounter((current) => current + 1)
+      return
+    }
+    if (guidedPersonalizationGateReason === 'selection') {
+      setIsSetupOpen(true)
+    }
+  }, [guidedPersonalizationGateReason])
+
+  const handleGuidedPersonalizationPlanChanged = useCallback(async (
+  ): Promise<PersonalCurriculumConfig | null> => {
+    if (!skillpilotId || !usesGuidedPersonalCurriculumEditor) return null
+    const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    guidedPersonalizationRefreshInFlightRef.current += 1
+    setGuidedPersonalizationRefreshing(true)
+    const isCurrentRefresh = () => isLatestRequestForScope(
+      personalCurriculumRefreshSequenceRef,
+      refreshSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}`
+        : `/api/ui/learners/${skillpilotId}`
+      const response = await fetch(url)
+      if (!response.ok) {
+        throw new Error(`learner-refresh-failed:${response.status}`)
+      }
+      const data = await response.json()
+      if (!isCurrentRefresh()) return null
+      const refreshedConfig = readPersonalCurriculumConfig(data.personalCurriculum)
+      setLearnerData(data)
+      setPersonalConfig(refreshedConfig)
+      setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: requestScopeKey,
+        status: 'ready',
+      })
+
+      onScopeDataRefresh?.()
+      await Promise.all([
+        refreshState(true),
+        onRefresh?.(),
+      ])
+      if (!isCurrentRefresh()) return null
+      if (
+        rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID
+      ) {
+        onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+      }
+      return refreshedConfig
+    } catch (error) {
+      if (!isCurrentRefresh()) return null
+      console.warn('Failed to refresh personalized curriculum scope', error)
+      setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: requestScopeKey,
+        status: 'error',
+      })
+      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      return null
+    } finally {
+      guidedPersonalizationRefreshInFlightRef.current = Math.max(
+        0,
+        guidedPersonalizationRefreshInFlightRef.current - 1,
+      )
+      if (guidedPersonalizationRefreshInFlightRef.current === 0) {
+        setGuidedPersonalizationRefreshing(false)
+      }
+    }
+  }, [
+    landscapeId,
+    learnerStateScopeKey,
+    onLandscapeChange,
+    onNotify,
+    onRefresh,
+    onScopeDataRefresh,
+    refreshState,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+    usesGuidedPersonalCurriculumEditor,
+  ])
+
+  const {
+    applyOption: applyPersonalCurriculumOption,
+    restart: restartPersonalCurriculum,
+  } = personalCurriculumEditor
+
+  const applyGuidedPersonalizationOption = useCallback(async (optionId: string) => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await applyPersonalCurriculumOption(optionId)
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    applyPersonalCurriculumOption,
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+  ])
+
+  const restartGuidedPersonalization = useCallback(async () => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await restartPersonalCurriculum()
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+    restartPersonalCurriculum,
+  ])
+
   const refreshPlanned = useCallback(async () => {
     if (!skillpilotId) return
+    const requestSequence = beginLatestRequest(plannedGoalsRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      plannedGoalsRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
+        if (!isCurrentRequest()) return
         if (data.goals && Array.isArray(data.goals)) {
           setPlannedGoals(new Set(data.goals))
         }
         clearReportedLoadError('learner-initial-load')
         return
       }
+      if (!isCurrentRequest()) return
       notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     } catch (e) {
+      if (!isCurrentRequest()) return
       console.warn('Failed to load planned goals', e)
       notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
     }
-  }, [clearReportedLoadError, notifyLoadErrorOnce, skillpilotId, t.notifications.learnerInitialLoadFailed])
+  }, [
+    clearReportedLoadError,
+    learnerStateScopeKey,
+    notifyLoadErrorOnce,
+    skillpilotId,
+    t.notifications.learnerInitialLoadFailed,
+  ])
 
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
     if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
@@ -1536,10 +1928,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     let cancelled = false
     if (!skillpilotId) {
       setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: learnerStateScopeKey,
+        status: 'ready',
+      })
       return
     }
 
+    const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const isCurrentRefresh = () => (
+      !cancelled
+      && isLatestRequestForScope(
+        personalCurriculumRefreshSequenceRef,
+        refreshSequence,
+        currentLearnerStateScopeKeyRef.current,
+        learnerStateScopeKey,
+      )
+    )
     setIsPersonalConfigHydrating(true)
+    setPersonalConfigLoadState({
+      scopeKey: learnerStateScopeKey,
+      status: 'loading',
+    })
     const fetchConfig = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
@@ -1547,14 +1957,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
-          if (data.personalCurriculum) {
-            const parsed = JSON.parse(data.personalCurriculum)
-            const { config, corrected } = normalizePersonalConfig(parsed || {}, availableLandscapes, rootLandscapeId)
-            if (!cancelled) {
+          if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+            if (isCurrentRefresh()) {
+              setPersonalConfig(readPersonalCurriculumConfig(data.personalCurriculum))
+            }
+          } else if (data.personalCurriculum) {
+            const parsed = readPersonalCurriculumConfig(data.personalCurriculum)
+            const { config, corrected } = normalizePersonalConfig(parsed, availableLandscapes, rootLandscapeId)
+            if (isCurrentRefresh()) {
               setPersonalConfig(config || {})
             }
 
-            if (corrected) {
+            if (corrected && isCurrentRefresh()) {
               const saveUrl = apiBase
                 ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`
                 : `/api/ui/learners/${skillpilotId}/personal-curriculum`
@@ -1564,16 +1978,35 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 body: JSON.stringify(config),
               })
             }
+          } else if (isCurrentRefresh()) {
+            setPersonalConfig({})
           }
-          clearReportedLoadError('learner-initial-load')
+          if (isCurrentRefresh()) {
+            setPersonalConfigLoadState({
+              scopeKey: learnerStateScopeKey,
+              status: 'ready',
+            })
+            clearReportedLoadError('learner-initial-load')
+          }
           return
         }
-        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        if (isCurrentRefresh()) {
+          setPersonalConfigLoadState({
+            scopeKey: learnerStateScopeKey,
+            status: 'error',
+          })
+          notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        }
       } catch (e) {
+        if (!isCurrentRefresh()) return
         console.warn('Failed to load personal curriculum', e)
+        setPersonalConfigLoadState({
+          scopeKey: learnerStateScopeKey,
+          status: 'error',
+        })
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
       } finally {
-        if (!cancelled) {
+        if (isCurrentRefresh()) {
           setIsPersonalConfigHydrating(false)
         }
       }
@@ -1586,7 +2019,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     availableLandscapes,
     clearReportedLoadError,
+    learnerStateScopeKey,
     notifyLoadErrorOnce,
+    personalConfigReloadCounter,
     refreshState,
     rootLandscapeId,
     skillpilotId,
@@ -1628,38 +2063,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     document.body.style.cursor = 'col-resize'
     document.body.style.userSelect = 'none'
   }, [resize, stopResizing])
-
-  // Save personal config to backend
-  const handleConfigChange = useCallback(async (newConfig: PersonalCurriculumConfig) => {
-    const previousConfig = personalConfig
-    setPersonalConfig(newConfig)
-    if (!skillpilotId) return
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum` : `/api/ui/learners/${skillpilotId}/personal-curriculum`
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newConfig)
-      })
-      if (!res.ok) {
-        throw new Error(`personal-curriculum-save-failed:${res.status}`)
-      }
-      onScopeDataRefresh?.()
-      await refreshState(true)
-    } catch (e) {
-      console.warn('Failed to save personal curriculum', e)
-      setPersonalConfig(previousConfig)
-      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
-    }
-  }, [
-    onNotify,
-    onScopeDataRefresh,
-    personalConfig,
-    refreshState,
-    skillpilotId,
-    t.notifications.personalCurriculumSaveFailed,
-  ])
 
   const handleCutoverCanonicalGymnasium = useCallback(async () => {
     if (!skillpilotId || isCutoverPending) return
@@ -1745,31 +2148,154 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId, isCutoverPending, onLandscapeChange, onLandscapeGoalChange, refreshLearnerData, onRefresh, legacyCutoverUiState.cutoverSuccessMessage, legacyErrorCopy, legacyUiCopy])
 
   useEffect(() => {
-    if (!isAbi26CampaignSession || !campaignContext || !rootLandscapeId) return
-    if (hasAppliedCampaignFilterRef.current) return
+    if (!canAutoRepairAbi26Personalization || !campaignContext || !rootLandscapeId) return
+    if (isSetupOpen) return
     if (isPersonalConfigHydrating) return
+    if (personalConfigLoadStatus !== 'ready') return
     if (rootLandscapeId !== ABI26_ROOT_CURRICULUM_ID) return
 
-    const nextConfig = buildAbi26PersonalCurriculumConfig(campaignContext.courseLevel, personalConfig)
-    if (personalCurriculumConfigsEqual(personalConfig, nextConfig)) {
-      hasAppliedCampaignFilterRef.current = true
+    const repairScopeKey = [
+      skillpilotId,
+      rootLandscapeId,
+      campaignContext.courseLevel,
+    ].join('\u0000')
+    if (abi26PersonalizationRepairRef.current.scopeKey !== repairScopeKey) {
+      abi26PersonalizationRepairRef.current = {
+        scopeKey: repairScopeKey,
+        inFlight: false,
+        restarted: false,
+        complete: false,
+        failed: false,
+        errorReported: false,
+        applySteps: 0,
+        appliedOptionIds: new Set<string>(),
+      }
+    }
+
+    const repairState = abi26PersonalizationRepairRef.current
+    if (personalCurriculumEditor.error) {
+      if (!repairState.errorReported) {
+        repairState.errorReported = true
+        onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+        setIsSetupOpen(true)
+      }
+      return
+    }
+    repairState.errorReported = false
+    if (
+      repairState.inFlight
+      || repairState.complete
+      || repairState.failed
+      || guidedPersonalizationRefreshing
+      || guidedPersonalizationRefreshInFlightRef.current > 0
+      || personalCurriculumEditor.loading
+      || personalCurriculumEditor.busy
+      || !personalCurriculumEditor.plan
+    ) {
       return
     }
 
-    hasAppliedCampaignFilterRef.current = true
-    void handleConfigChange(nextConfig)
-  }, [
-    campaignContext,
-    handleConfigChange,
-    isAbi26CampaignSession,
-    isPersonalConfigHydrating,
-    personalConfig,
-    rootLandscapeId,
-  ])
+    const expectedConfig = buildAbi26PersonalCurriculumConfig(
+      campaignContext.courseLevel,
+      personalConfig,
+    )
+    const action = resolveAbi26PersonalizationRepairAction(
+      personalCurriculumEditor.plan,
+      campaignContext.courseLevel,
+      personalCurriculumConfigsEqual(personalConfig, expectedConfig),
+      repairState.restarted,
+    )
 
-  useEffect(() => {
-    hasAppliedCampaignFilterRef.current = false
-  }, [skillpilotId, rootLandscapeId, campaignContext?.courseLevel])
+    if (action.kind === 'COMPLETE') {
+      repairState.complete = true
+      markAbi26PersonalizationInitialized(
+        skillpilotId,
+        campaignContext.courseLevel,
+      )
+      return
+    }
+    if (action.kind === 'UNAVAILABLE') {
+      repairState.failed = true
+      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      setIsSetupOpen(true)
+      return
+    }
+
+    repairState.inFlight = true
+    const applyRepairAction = async () => {
+      try {
+        const verifyCompletedScope = async () => {
+          const refreshedConfig = await handleGuidedPersonalizationPlanChanged()
+          if (!refreshedConfig) {
+            return
+          }
+          const refreshedExpectedConfig = buildAbi26PersonalCurriculumConfig(
+            campaignContext.courseLevel,
+            refreshedConfig,
+          )
+          if (personalCurriculumConfigsEqual(refreshedConfig, refreshedExpectedConfig)) {
+            repairState.complete = true
+            markAbi26PersonalizationInitialized(
+              skillpilotId,
+              campaignContext.courseLevel,
+            )
+          }
+        }
+
+        if (action.kind === 'RESTART') {
+          repairState.applySteps = 0
+          repairState.appliedOptionIds.clear()
+          const nextPlan = await restartPersonalCurriculum()
+          if (!nextPlan) return
+          repairState.restarted = true
+          if (nextPlan.stage === 'COMPLETE') {
+            await verifyCompletedScope()
+          }
+          return
+        }
+
+        if (
+          repairState.applySteps >= 10
+          || repairState.appliedOptionIds.has(action.optionId)
+        ) {
+          repairState.failed = true
+          onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+          setIsSetupOpen(true)
+          return
+        }
+        const nextPlan = await applyPersonalCurriculumOption(action.optionId)
+        if (!nextPlan) return
+        repairState.applySteps += 1
+        repairState.appliedOptionIds.add(action.optionId)
+        if (nextPlan.stage === 'COMPLETE') {
+          await verifyCompletedScope()
+        }
+      } finally {
+        repairState.inFlight = false
+      }
+    }
+
+    void applyRepairAction()
+  }, [
+    applyPersonalCurriculumOption,
+    canAutoRepairAbi26Personalization,
+    campaignContext,
+    guidedPersonalizationRefreshing,
+    handleGuidedPersonalizationPlanChanged,
+    isPersonalConfigHydrating,
+    isSetupOpen,
+    onNotify,
+    personalConfig,
+    personalConfigLoadStatus,
+    personalCurriculumEditor.busy,
+    personalCurriculumEditor.error,
+    personalCurriculumEditor.loading,
+    personalCurriculumEditor.plan,
+    restartPersonalCurriculum,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+  ])
 
   const handlePersonalCurriculumApply = useCallback(async (
     newConfig: PersonalCurriculumConfig,
@@ -2390,6 +2916,19 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <div className="p-8 text-center text-sm text-text-secondary">
               {t.learner.loadingGoals}
             </div>
+          ) : isGuidedPersonalizationRequired ? (
+            <div className="m-2 rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+              <h3 className="font-semibold text-text-primary">{personalizationGateCopy.title}</h3>
+              <p className="mt-1 text-text-secondary">{personalizationGateCopy.body}</p>
+              <button
+                type="button"
+                onClick={handlePersonalizationGateAction}
+                disabled={guidedPersonalizationGateReason === 'scopeLoading'}
+                className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+              >
+                {personalizationGateCopy.action}
+              </button>
+            </div>
           ) : (
             <CompetenceTree
               key={learnerTreeScopeKey}
@@ -2471,7 +3010,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <Menu size={20} />
           </button>
         )}
-        {currentGoal ? (
+        {isGuidedPersonalizationRequired ? (
+          <div className="flex min-h-full w-full max-w-xl items-center justify-center">
+            <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
+              <h2 className="text-xl font-bold text-text-primary">{personalizationGateCopy.title}</h2>
+              <p className="mt-2 text-sm text-text-secondary">{personalizationGateCopy.body}</p>
+              <button
+                type="button"
+                onClick={handlePersonalizationGateAction}
+                disabled={guidedPersonalizationGateReason === 'scopeLoading'}
+                className="mt-5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+              >
+                {personalizationGateCopy.action}
+              </button>
+            </div>
+          </div>
+        ) : currentGoal ? (
           <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
             {canCutoverLegacyGymnasium && (
               <div className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/90 p-4 shadow-sm dark:border-amber-700/60 dark:bg-amber-950/30">
@@ -2785,11 +3339,21 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         currentLandscapeId={landscapeId}
         retirementOnly={canCutoverLegacyGymnasium}
         onApply={handlePersonalCurriculumApply}
+        onPreferencesApply={(preferences) =>
+          handlePersonalCurriculumApply(personalConfig, preferences)}
         initialConfig={personalConfig}
         rootLandscapeId={rootLandscapeId}
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
+        personalizationEditor={usesGuidedPersonalCurriculumEditor
+          ? {
+            ...personalCurriculumEditor,
+            busy: personalCurriculumEditor.busy || guidedPersonalizationRefreshing,
+            applyOption: applyGuidedPersonalizationOption,
+            restart: restartGuidedPersonalization,
+          }
+          : undefined}
         migration={canCutoverLegacyGymnasium
           ? {
             title: legacyCutoverUiState.migrationTitle ?? '',

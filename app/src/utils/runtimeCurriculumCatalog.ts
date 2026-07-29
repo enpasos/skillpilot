@@ -1,3 +1,8 @@
+import {
+  compareLearnerCompositionScopeMatches,
+  scoreLearnerCompositionScope,
+} from './learnerCompositionScopeMatching'
+
 export const RUNTIME_CURRICULUM_CATALOG_API_VERSION = '1.2'
 
 export type RuntimeScope = Readonly<Record<string, string>>
@@ -501,6 +506,30 @@ export const resolveRuntimeOfferingId = (
   if (normalizedEntries.length === 0) return landscape.defaultOfferingId
   const requestedKey = scopeKey(Object.fromEntries(normalizedEntries))
   return catalog.offerings.find((entry) => entry.landscapeId === landscapeId && scopeKey(entry.scope) === requestedKey)?.offeringId
+}
+
+export const resolveLearnerRuntimeOfferingId = (
+  catalog: RuntimeCurriculumCatalog,
+  landscapeId: string,
+  scope?: Readonly<Record<string, string>> | null,
+): string | undefined => {
+  const matches = catalog.offerings
+    .filter((offering) => offering.landscapeId === landscapeId)
+    .map((offering) => {
+      const score = scoreLearnerCompositionScope(offering.scope, scope ?? {})
+      if (!score) return undefined
+      return {
+        offering,
+        score,
+      }
+    })
+    .filter((match): match is NonNullable<typeof match> => Boolean(match))
+    .sort((left, right) => (
+      compareLearnerCompositionScopeMatches(left.score, right.score)
+      || left.offering.offeringId.localeCompare(right.offering.offeringId)
+    ))
+
+  return matches[0]?.offering.offeringId
 }
 
 export const resolveExplicitRuntimeOfferingId = (
