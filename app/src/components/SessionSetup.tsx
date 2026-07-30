@@ -72,6 +72,7 @@ import {
   getStoredLandscapeIdForRole,
   normalizeLearnerLandscapeId,
 } from '../utils/learnerProfile'
+import { getLearnerSetupStepVisibility } from '../utils/sessionSetupStepVisibility'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -166,6 +167,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.error
     && !personalCurriculumEditor.loading
     && !personalCurriculumEditor.busy
+  const learnerSetupStepVisibility = getLearnerSetupStepVisibility({
+    hasSkillpilotId: !!sanitizedLearnerId,
+    idStepComplete,
+    personalCurriculumEditorEnabled,
+    personalCurriculumReady,
+  })
   const idAcquisitionBusy =
     loading
     || skillpilotIdFileStatus === 'loading'
@@ -1176,7 +1183,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role && (role !== 'learner' || (skillpilotId.length > 0 && idStepComplete)) && (
+                {role && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
                   <div
                     ref={curriculumStepRef}
                     tabIndex={-1}
@@ -1223,7 +1230,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role === 'learner' && skillpilotId.length > 0 && idStepComplete && (
+                {role === 'learner' && learnerSetupStepVisibility.personalCurriculum && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1239,19 +1246,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
                     </div>
 
-                    {personalCurriculumEditorEnabled ? (
-                      <PersonalCurriculumEditor {...personalCurriculumEditor} />
-                    ) : (
-                      <p className="rounded-lg border border-border-color bg-slate-50 p-3 text-sm text-text-secondary dark:bg-slate-950/40">
-                        {curriculumSaving
-                          ? t.startPage.login.curriculumSaving
-                          : t.startPage.login.personalCurriculumWaitingForCurriculum}
-                      </p>
-                    )}
+                    <PersonalCurriculumEditor {...personalCurriculumEditor} />
                   </div>
                 )}
 
-                {role === 'learner' && skillpilotId.length > 0 && idStepComplete && (
+                {role === 'learner' && learnerSetupStepVisibility.start && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1268,11 +1267,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     </div>
 
                     <div className="space-y-3">
-                      {!personalCurriculumReady && (
-                        <p className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs font-semibold text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-200">
-                          {t.startPage.login.personalCurriculumRequired}
-                        </p>
-                      )}
                       <p
                         role="note"
                         className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"

@@ -1,6 +1,11 @@
 import type { UiGoal } from '../goalTypes'
 import type { GoalPlacement, LandscapeFilter } from '../landscapeTypes'
-import { formatFilterValueLabel, getDisplayFiltersForSelection, type LabelLanguage } from './filterLabels'
+import {
+  formatFilterValueLabel,
+  formatRootFilterLabel,
+  getDisplayFiltersForSelection,
+  type LabelLanguage,
+} from './filterLabels'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 const CANONICAL_DE_FILTER_ID = 'ALL'
@@ -59,7 +64,7 @@ export const getDisplayFiltersForLandscapeSelection = ({
   if (jurisdictionFilters.size > 0) {
     addFilter(filtersById, {
       id: CANONICAL_DE_FILTER_ID,
-      label: language === 'de' ? 'Kanonische DE-Sicht' : 'Canonical DE View',
+      label: formatRootFilterLabel({ id: CANONICAL_DE_FILTER_ID }, language),
     })
     jurisdictionFilters.forEach((jurisdiction) => {
       addFilter(filtersById, {

@@ -122,8 +122,6 @@ export const de = {
             curriculumSaveFailed: "Das Curriculum konnte nicht gespeichert werden. Bitte versuche es erneut.",
             personalCurriculumStepTitle: "Persönliches Curriculum festlegen",
             personalCurriculumStepText: "Lege deinen dauerhaften Lernrahmen fest. Den konkreten Fokus kannst du später jederzeit ändern.",
-            personalCurriculumWaitingForCurriculum: "Speichere zuerst dein Curriculum.",
-            personalCurriculumRequired: "Schließe dein persönliches Curriculum ab, bevor du startest.",
             trainerCurriculumStepTitle: "Kurs vorbereiten",
             trainerCurriculumStepText: "Wähle das Curriculum für deine Kursansicht.",
             trainerDashboardButton: "Kursorganisation öffnen",

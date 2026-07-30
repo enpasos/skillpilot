@@ -1,13 +1,11 @@
 import React from 'react'
 import { AlertTriangle, Check, LoaderCircle, RotateCcw } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import {
-  getPersonalizationOptionLabel,
-} from '../hooks/usePersonalCurriculumEditor'
 import type {
   PersonalizationOption,
   PersonalizationPlan,
 } from '../hooks/usePersonalCurriculumEditor'
+import { getPersonalizationOptionLabel } from '../utils/personalCurriculumOptionLabel'
 
 export interface PersonalCurriculumEditorProps {
   plan: PersonalizationPlan | null
@@ -230,7 +228,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
                 className="inline-flex items-center gap-1 rounded-full bg-sky-100 px-2.5 py-1 text-sm text-sky-800 dark:bg-sky-900/40 dark:text-sky-200"
               >
                 <Check size={13} />
-                {getPersonalizationOptionLabel(option)}
+                {getPersonalizationOptionLabel(option, language)}
               </span>
             ))}
           </div>
@@ -244,7 +242,9 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
       <div className="grid gap-2 sm:grid-cols-2">
         {plan.options.map((option) => {
           const isCompletion = option.kind === 'COMPLETE_GROUP'
-          const label = isCompletion ? copy.finish : getPersonalizationOptionLabel(option)
+          const label = isCompletion
+            ? copy.finish
+            : getPersonalizationOptionLabel(option, language)
           return (
             <button
               key={option.optionId}
