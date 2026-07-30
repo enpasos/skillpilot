@@ -73,6 +73,7 @@ import {
   normalizeLearnerLandscapeId,
 } from '../utils/learnerProfile'
 import { getLearnerSetupStepVisibility } from '../utils/sessionSetupStepVisibility'
+import type { CurriculumQualityFilter } from '../utils/curriculumQualityTrafficLight'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
@@ -87,6 +88,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   })
   const [persistedLearnerLandscapeId, setPersistedLearnerLandscapeId] = useState('')
   const [curriculumSaving, setCurriculumSaving] = useState(false)
+  const [curriculumQualityFilter, setCurriculumQualityFilter] =
+    useState<CurriculumQualityFilter>('green')
   const curriculumSelectionRequestRef = React.useRef(0)
   const learnerCheckRequestRef = React.useRef(0)
   const idAcquisitionRequestRef = React.useRef(0)
@@ -1206,6 +1209,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <CurriculumDropdown
                       currentLandscapeId={selectedLandscapeId}
                       onSelect={role === 'learner' ? handleLearnerCurriculumSelect : setSelectedLandscapeId}
+                      qualityFilter={curriculumQualityFilter}
+                      onQualityFilterChange={setCurriculumQualityFilter}
                       disabled={role === 'learner' && curriculumSaving}
                       landscapes={availableCurricula}
                       showCompatibilityViews={false}
@@ -1247,7 +1252,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
                     </div>
 
-                    <PersonalCurriculumEditor {...personalCurriculumEditor} />
+                    <PersonalCurriculumEditor
+                      {...personalCurriculumEditor}
+                      qualityFilter={curriculumQualityFilter}
+                    />
                   </div>
                 )}
 

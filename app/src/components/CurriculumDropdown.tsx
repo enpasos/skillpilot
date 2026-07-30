@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
@@ -39,6 +39,8 @@ export interface LandscapeSummary {
 interface CurriculumDropdownProps {
     currentLandscapeId?: string
     onSelect: (landscapeId: string) => void
+    qualityFilter?: CurriculumQualityFilter
+    onQualityFilterChange?: (filter: CurriculumQualityFilter) => void
     disabled?: boolean
     className?: string
     filterOptions?: (options: LandscapeSummary[]) => LandscapeSummary[]
@@ -63,6 +65,8 @@ const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
     onSelect,
+    qualityFilter: controlledQualityFilter,
+    onQualityFilterChange,
     disabled = false,
     className = '',
     filterOptions,
@@ -79,7 +83,9 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     )
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState<Category>('SCHOOL')
-    const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('green')
+    const [internalQualityFilter, setInternalQualityFilter] = useState<CurriculumQualityFilter>('green')
+    const qualityFilter = controlledQualityFilter ?? internalQualityFilter
+    const autoSelectedLandscapeRef = useRef<string | null>(null)
 
     useEffect(() => {
         if (providedLandscapes && providedLandscapes.length > 0) {
@@ -163,10 +169,6 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         setCategory((prev) => (prev === targetCategory ? prev : targetCategory))
     }, [currentLandscapeId, landscapes])
 
-    if (loading && (!landscapes || landscapes.length === 0)) {
-        return <div className="text-text-secondary text-sm">{t.startPage.login.checking}</div>
-    }
-
     let filteredLandscapes = landscapes;
     if (filterOptions) {
         filteredLandscapes = filterOptions(landscapes);
@@ -209,6 +211,29 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     const visibleLegacyLandscapes = showCompatibilityViews
         ? legacyLandscapes
         : legacyLandscapes.filter((landscape) => landscape.curriculumId === currentLandscapeId)
+    const selectableLandscapes = [
+        ...primaryLandscapes,
+        ...visibleCompatibilityLandscapes,
+        ...visibleLegacyLandscapes,
+    ]
+    const soleLandscapeId = selectableLandscapes.length === 1
+        ? selectableLandscapes[0]?.curriculumId ?? null
+        : null
+
+    useEffect(() => {
+        if (!soleLandscapeId || disabled || currentLandscapeId) {
+            autoSelectedLandscapeRef.current = null
+            return
+        }
+        if (autoSelectedLandscapeRef.current === soleLandscapeId) return
+
+        autoSelectedLandscapeRef.current = soleLandscapeId
+        onSelect(soleLandscapeId)
+    }, [currentLandscapeId, disabled, onSelect, soleLandscapeId])
+
+    if (loading && landscapes.length === 0) {
+        return <div className="text-text-secondary text-sm">{t.startPage.login.checking}</div>
+    }
 
     return (
         <div className="flex flex-col gap-3">
@@ -241,7 +266,10 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                                 key={filter}
                                 type="button"
                                 disabled={disabled}
-                                onClick={() => setQualityFilter(filter)}
+                                onClick={() => {
+                                    setInternalQualityFilter(filter)
+                                    onQualityFilterChange?.(filter)
+                                }}
                                 aria-pressed={qualityFilter === filter}
                                 className={`inline-flex min-h-9 flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
                                     qualityFilter === filter
@@ -275,15 +303,11 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                 <option value="" disabled>
                     {t.startPage.login.curriculumLabel.select}
                 </option>
-                {primaryLandscapes.length > 0 && (
-                    <optgroup label={dropdownCopy.recommendedGroupLabel}>
-                        {primaryLandscapes.map((l) => (
-                            <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
-                                {getDisplayTitle(l)}
-                            </option>
-                        ))}
-                    </optgroup>
-                )}
+                {primaryLandscapes.map((l) => (
+                    <option key={l.curriculumId} value={l.curriculumId} className="bg-input-bg text-text-primary">
+                        {getDisplayTitle(l)}
+                    </option>
+                ))}
                 {visibleCompatibilityLandscapes.length > 0 && (
                     <optgroup label={dropdownCopy.compatibilityGroupLabel}>
                         {visibleCompatibilityLandscapes.map((l) => (

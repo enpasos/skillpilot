@@ -8,6 +8,8 @@ import {
 import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import {
   CANONICAL_GYMNASIUM_MATH_ID,
+  CANONICAL_GYMNASIUM_PHYSICS_ID,
+  type CurriculumQualityFilter,
 } from '../../src/utils/curriculumQualityTrafficLight'
 
 const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
@@ -50,22 +52,56 @@ const landscapes: LandscapeSummary[] = [
     title: 'Experimentelles Fach',
     schoolType: 'Gymnasium',
   },
+  {
+    curriculumId: CANONICAL_GYMNASIUM_PHYSICS_ID,
+    filename: 'university-physics.json',
+    country: 'DE',
+    region: 'DE',
+    type: 'U',
+    level: 'Hochschule',
+    subject: 'Physik',
+    locale: 'de-DE',
+    title: 'Universitätsphysik',
+    schoolType: 'U',
+  },
 ]
 
 const Fixture = () => {
   const [currentCurriculumId, setCurrentCurriculumId] = useState(
     experimentalCurriculumId,
   )
+  const [qualityFilter, setQualityFilter] =
+    useState<CurriculumQualityFilter>('green')
+  const [singleCurriculumId, setSingleCurriculumId] = useState('')
 
   return (
     <LanguageProvider>
-      <CurriculumDropdown
-        currentLandscapeId={currentCurriculumId}
-        landscapes={landscapes}
-        onSelect={setCurrentCurriculumId}
-        showCompatibilityViews={false}
-        showQualityFilter
-      />
+      <div data-testid="quality-filter-fixture">
+        <CurriculumDropdown
+          currentLandscapeId={currentCurriculumId}
+          landscapes={landscapes}
+          onSelect={setCurrentCurriculumId}
+          qualityFilter={qualityFilter}
+          onQualityFilterChange={setQualityFilter}
+          showCompatibilityViews={false}
+          showQualityFilter
+        />
+        <output data-testid="quality-filter-selection">
+          {currentCurriculumId}
+        </output>
+      </div>
+      <div data-testid="single-curriculum-fixture">
+        <CurriculumDropdown
+          currentLandscapeId={singleCurriculumId}
+          landscapes={landscapes.slice(0, 1)}
+          onSelect={setSingleCurriculumId}
+          showCompatibilityViews={false}
+          showQualityFilter
+        />
+        <output data-testid="single-curriculum-selection">
+          {singleCurriculumId}
+        </output>
+      </div>
     </LanguageProvider>
   )
 }

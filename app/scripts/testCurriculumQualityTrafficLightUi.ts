@@ -3,6 +3,7 @@ import { chromium } from 'playwright'
 import { createServer } from 'vite'
 import {
   CANONICAL_GYMNASIUM_MATH_ID,
+  CANONICAL_GYMNASIUM_PHYSICS_ID,
 } from '../src/utils/curriculumQualityTrafficLight'
 
 const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
@@ -58,11 +59,12 @@ try {
     `http://127.0.0.1:${address.port}/scripts/fixtures/curriculumQualityTrafficLightUi.html`,
   )
 
+  const qualityFixture = page.getByTestId('quality-filter-fixture')
   const qualityButtons = {
-    green: page.getByRole('button', { name: 'Menschliche QS', exact: true }),
-    orange: page.getByRole('button', { name: 'Maschinelle QS', exact: true }),
-    red: page.getByRole('button', { name: 'Experimentell', exact: true }),
-    all: page.getByRole('button', { name: 'Alle', exact: true }),
+    green: qualityFixture.getByRole('button', { name: 'Menschliche QS', exact: true }),
+    orange: qualityFixture.getByRole('button', { name: 'Maschinelle QS', exact: true }),
+    red: qualityFixture.getByRole('button', { name: 'Experimentell', exact: true }),
+    all: qualityFixture.getByRole('button', { name: 'Alle', exact: true }),
   }
   await qualityButtons.green.waitFor().catch((error: unknown) => {
     throw new Error(
@@ -84,13 +86,15 @@ try {
     'only the green filter is active initially',
   )
 
-  const select = page.locator('select')
+  const select = qualityFixture.locator('select')
   const visibleCurriculumIds = async () => select.locator('option').evaluateAll(
     (options) => options.map((option) => (option as HTMLOptionElement).value),
   )
   await page.waitForFunction(
     ({ mathId, currentId }) => {
-      const values = [...document.querySelectorAll('select option')]
+      const values = [...document.querySelectorAll(
+        '[data-testid="quality-filter-fixture"] select option',
+      )]
         .map((option) => (option as HTMLOptionElement).value)
       return values.includes(mathId) && values.includes(currentId)
     },
@@ -110,6 +114,10 @@ try {
     'the default green filter hides machine-reviewed curricula',
   )
   assert(
+    await qualityFixture.locator('optgroup[label="Empfohlene Curricula"]').count() === 0,
+    'ordinary curricula are listed without a recommended group heading',
+  )
+  assert(
     defaultIds.includes(experimentalCurriculumId)
       && await select.inputValue() === experimentalCurriculumId,
     'the currently selected experimental curriculum remains visible under the green filter',
@@ -118,7 +126,9 @@ try {
   await qualityButtons.orange.click()
   await page.waitForFunction(
     ({ orangeId, currentId }) => {
-      const values = [...document.querySelectorAll('select option')]
+      const values = [...document.querySelectorAll(
+        '[data-testid="quality-filter-fixture"] select option',
+      )]
         .map((option) => (option as HTMLOptionElement).value)
       return values.includes(orangeId) && values.includes(currentId)
     },
@@ -148,7 +158,9 @@ try {
   await qualityButtons.all.click()
   await page.waitForFunction(
     ({ greenId, orangeId, redId }) => {
-      const values = [...document.querySelectorAll('select option')]
+      const values = [...document.querySelectorAll(
+        '[data-testid="quality-filter-fixture"] select option',
+      )]
         .map((option) => (option as HTMLOptionElement).value)
       return values.includes(greenId) && values.includes(orangeId) && values.includes(redId)
     },
@@ -161,6 +173,39 @@ try {
   assert(
     await qualityButtons.all.getAttribute('aria-pressed') === 'true',
     'the all filter exposes its active state accessibly',
+  )
+  await qualityFixture.getByRole('button', {
+    name: 'Universität & Hochschule',
+    exact: true,
+  }).click()
+  await page.waitForFunction(
+    (physicsId) => {
+      const values = [...document.querySelectorAll(
+        '[data-testid="quality-filter-fixture"] select option',
+      )]
+        .map((option) => (option as HTMLOptionElement).value)
+      return values.includes(physicsId)
+    },
+    CANONICAL_GYMNASIUM_PHYSICS_ID,
+  )
+  assert(
+    await qualityFixture.getByTestId('quality-filter-selection').textContent()
+      === experimentalCurriculumId,
+    'browsing a category with one option does not overwrite an existing selection',
+  )
+
+  const singleCurriculumFixture = page.getByTestId('single-curriculum-fixture')
+  const singleCurriculumSelect = singleCurriculumFixture.locator('select')
+  await page.waitForFunction(
+    (mathId) => (
+      document.querySelector('[data-testid="single-curriculum-selection"]')?.textContent
+      === mathId
+    ),
+    CANONICAL_GYMNASIUM_MATH_ID,
+  )
+  assert(
+    await singleCurriculumSelect.inputValue() === CANONICAL_GYMNASIUM_MATH_ID,
+    'the only available curriculum is selected automatically',
   )
 } finally {
   await browser.close()

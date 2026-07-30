@@ -276,5 +276,10 @@ assertEqual(
   false,
   'the rendered default filter excludes orange and red curricula',
 )
+assertEqual(
+  dropdownMarkup.includes('Empfohlene Curricula'),
+  false,
+  'ordinary curricula render without a recommended group heading',
+)
 
 console.log('curriculum quality traffic light tests passed')
