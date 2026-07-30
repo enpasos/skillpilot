@@ -146,6 +146,8 @@ jobs:
         run: npm run test:coach-variants
       - name: Test contextual AI transparency
         run: npm run test:ai-transparency-ui
+      - name: Test remote AI transparency artifact crawler
+        run: npm run test:ai-transparency-artifact
       - name: Check AI transparency inventory
         run: npm run check:ai-transparency-inventory
       - name: Test SkillPilot ID encryption

@@ -53,12 +53,32 @@ function assetReferences(indexHtml) {
 
 function nestedJavaScriptReferences(javascript) {
   const references = new Set()
-  const pattern = /["'`]([^"'`\s]+\.js(?:\?[^"'`\s]*)?)["'`]/giu
-  let match
-  while ((match = pattern.exec(javascript)) !== null) {
-    references.add(match[1])
+  const patterns = [
+    // Vite's dependency preload map.
+    /["'`](assets\/[^"'`\s]+\.js(?:\?[^"'`\s]*)?)["'`]/giu,
+    // Dynamic and side-effect ESM imports.
+    /\bimport\s*(?:\(\s*)?["'`]([^"'`\s]+\.js(?:\?[^"'`\s]*)?)["'`]/giu,
+    // Static ESM imports and re-exports.
+    /\bfrom\s*["'`]([^"'`\s]+\.js(?:\?[^"'`\s]*)?)["'`]/giu,
+  ]
+  for (const pattern of patterns) {
+    let match
+    while ((match = pattern.exec(javascript)) !== null) {
+      references.add(match[1])
+    }
   }
   return [...references]
+}
+
+function resolveNestedJavaScriptReference(reference, scriptUrl, indexUrl) {
+  // Relative ESM imports such as "./chunk.js" are resolved from the importing
+  // script. Vite's preload map, however, stores paths such as
+  // "assets/chunk.js" relative to the document base. Resolving both forms from
+  // the script URL would turn the latter into "/assets/assets/chunk.js".
+  const resolutionBase = /^\.{1,2}\//u.test(reference)
+    ? scriptUrl
+    : indexUrl
+  return new URL(reference, resolutionBase)
 }
 
 async function fetchText(url) {
@@ -115,7 +135,11 @@ async function readArtifactText() {
     const script = await fetchText(scriptUrl)
     javascript.push(script)
     for (const reference of nestedJavaScriptReferences(script)) {
-      const nestedUrl = new URL(reference, scriptUrl)
+      const nestedUrl = resolveNestedJavaScriptReference(
+        reference,
+        scriptUrl,
+        indexUrl,
+      )
       if (
         nestedUrl.origin === indexUrl.origin
         && nestedUrl.pathname.includes('/assets/')

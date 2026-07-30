@@ -11,6 +11,7 @@
     "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
     "test:coach-variants": "tsx src/coachVariants/visibleSession/visibleSession.test.ts && tsx src/coachVariants/openAiMcp/providerEligibility.test.ts && tsx src/coachVariants/openAiMcp/openAiMcp.test.ts && tsx src/utils/synchronousInFlightGuard.test.ts && tsx src/utils/privacyViewCopy.test.ts",
     "test:ai-transparency-ui": "tsx scripts/testAiTransparencyUi.tsx",
+    "test:ai-transparency-artifact": "node ../scripts/verify_ai_transparency_artifact.test.mjs",
     "test:skillpilot-id-file": "tsx src/utils/skillpilotIdFile.test.ts",
     "test:session-setup-id-entry": "tsx scripts/testSessionSetupIdEntry.ts",
     "test:personal-curriculum-editor": "tsx src/utils/personalCurriculumEditorApi.test.ts",
