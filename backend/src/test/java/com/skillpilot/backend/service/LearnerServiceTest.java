@@ -58,6 +58,14 @@ public class LearnerServiceTest {
             "composition:de-he-gym-math-gk-g9:structure:j9-g9";
     private static final String COMPOSITION_J10_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j10-g9";
+    private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
+            "composition:de-de-gym-math-lk:structure:math-root";
+    private static final String COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID =
+            "composition:de-de-gym-physics-lk:structure:physics-root";
+    private static final String CANONICAL_SPANISH_LANDSCAPE_ID =
+            "90eedebf-9ea8-5247-85dd-31c147f907c3";
+    private static final String CANONICAL_SPANISH_ROOT_SCOPE_ID =
+            "1b23eb50-e5f6-5958-8c99-ff8ca9668031";
     private static final String SEK1_EXERCISES_SCOPE_ID = "bfc4fe23-bfa4-4836-9bd2-793f4305d682";
     private static final String REMOVED_SEK1_CAPSTONE_ID = "30b62966-80d0-45f1-bdd9-b4fb815c7111";
     private static final String VISIBLE_POLYNOMIAL_FUNCTIONS_ID = "1ce8af38-082a-477b-af48-b924c92761bf";
@@ -477,6 +485,133 @@ public class LearnerServiceTest {
                 .extracting(goal -> goal.title())
                 .doesNotContain("Mathematik", "Physik");
         assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+    }
+
+    @Test
+    @Transactional
+    void publishedCrossStageScopeOptionIsAcceptedByScopeWriteAndNavigation() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "ALL",
+                    "stage": "CrossStage"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "LK"
+                  }
+                }
+                """));
+        learnerRepository.saveAndFlush(learner);
+
+        var initialState = learnerService.getLearnerState(learnerId);
+
+        assertThat(initialState.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(initialState.frontier())
+                .singleElement()
+                .satisfies(option -> {
+                    assertThat(option.id()).isEqualTo(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+                    assertThat(option.title()).isEqualTo("Mathematik");
+                    assertThat(option.type()).isEqualTo("cluster");
+                });
+        assertThat(learnerService.getScopeNavigationOptions(learnerId))
+                .extracting(FrontierGoal::id)
+                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+
+        assertThatCode(() -> learnerService.setScope(
+                        learnerId,
+                        List.of(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID)))
+                .doesNotThrowAnyException();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+    }
+
+    @Test
+    @Transactional
+    void initialScopePublishesOneWritableRootPerSelectedCompositionLandscape() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "ALL",
+                    "stage": "CrossStage"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "LK"
+                  },
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                    "selected": true,
+                    "filterId": "LK"
+                  }
+                }
+                """));
+        learnerRepository.saveAndFlush(learner);
+
+        var initialState = learnerService.getLearnerState(learnerId);
+
+        assertThat(initialState.frontier())
+                .extracting(FrontierGoal::id)
+                .containsExactly(
+                        COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
+                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+        assertThatCode(() -> learnerService.setScope(
+                        learnerId,
+                        List.of(
+                                COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
+                                COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID)))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void initialScopeKeepsWritableTargetFallbackWhenCompositionHasNoViewId() throws Exception {
+        LearningGoal spanishRoot = landscapeService.getById(CANONICAL_SPANISH_LANDSCAPE_ID)
+                .getGoals()
+                .stream()
+                .filter(goal -> CANONICAL_SPANISH_ROOT_SCOPE_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        Map<String, LearningGoal> visibleGoals =
+                Map.of(CANONICAL_SPANISH_ROOT_SCOPE_ID, spanishRoot);
+        Class<?> projectionType = java.util.Arrays.stream(LearnerService.class.getDeclaredClasses())
+                .filter(type -> "GoalProjection".equals(type.getSimpleName()))
+                .findFirst()
+                .orElseThrow();
+        var constructor = projectionType.getDeclaredConstructor(
+                Map.class,
+                Set.class,
+                Set.class,
+                Map.class,
+                Set.class,
+                boolean.class);
+        constructor.setAccessible(true);
+        Object projection = constructor.newInstance(
+                visibleGoals,
+                Set.of(CANONICAL_SPANISH_ROOT_SCOPE_ID),
+                Set.of(),
+                visibleGoals,
+                Set.of(),
+                true);
+
+        List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "getInitialScopeOptions",
+                CANONICAL_GYMNASIUM_ROOT_ID,
+                projection);
+
+        assertThat(options)
+                .singleElement()
+                .satisfies(option -> {
+                    assertThat(option.id()).isEqualTo(CANONICAL_SPANISH_ROOT_SCOPE_ID);
+                    assertThat(option.title()).isEqualTo("Spanisch");
+                });
     }
 
     @Test

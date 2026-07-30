@@ -77,6 +77,45 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView() {
+        CompositionViewService service = createService();
+
+        List<CompositionViewService.CompositionStructureResolution> options =
+                service.findRootScopeOptions("de-he-gym-math-gk-g9");
+
+        assertThat(options).singleElement().satisfies(option -> {
+            assertThat(option.syntheticGoalId())
+                    .isEqualTo("composition:de-he-gym-math-gk-g9:structure:math-root");
+            assertThat(option.viewId()).isEqualTo("de-he-gym-math-gk-g9");
+            assertThat(option.nodeId()).isEqualTo("math-root");
+            assertThat(option.label()).isEqualTo("Mathematik");
+            assertThat(option.referencedGoalIds()).isNotEmpty();
+            assertThat(service.resolveStructureReference(option.syntheticGoalId()))
+                    .isEqualTo(option);
+        });
+    }
+
+    @Test
+    void findRootScopeOptions_preservesMergedViewIdentity() {
+        CompositionViewService service = createService();
+        String mergedViewId = "merged:de-de-gym-math-lk+de-de-gym-math-gk";
+
+        List<CompositionViewService.CompositionStructureResolution> options =
+                service.findRootScopeOptions(mergedViewId);
+
+        assertThat(options).singleElement().satisfies(option -> {
+            assertThat(option.syntheticGoalId())
+                    .isEqualTo("composition:" + mergedViewId + ":structure:math-root");
+            assertThat(option.viewId()).isEqualTo(mergedViewId);
+            assertThat(option.nodeId()).isEqualTo("math-root");
+            assertThat(option.label()).isEqualTo("Mathematik");
+            assertThat(option.referencedGoalIds()).isNotEmpty();
+            assertThat(service.resolveStructureReference(option.syntheticGoalId()))
+                    .isEqualTo(option);
+        });
+    }
+
+    @Test
     void findMatchingView_prefersExactStageViewOverCrossStageFallback() {
         CompositionViewService service = createService();
 

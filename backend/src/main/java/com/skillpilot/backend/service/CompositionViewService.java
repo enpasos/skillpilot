@@ -102,6 +102,21 @@ public class CompositionViewService {
                 List.copyOf(referencedGoalIds));
     }
 
+    public List<CompositionStructureResolution> findRootScopeOptions(String viewId) {
+        Map<String, Object> view = findViewById(viewId);
+        if (view == null) {
+            return Collections.emptyList();
+        }
+        String resolvedViewId = asString(view.get("viewId"));
+        if (!StringUtils.hasText(resolvedViewId)) {
+            return Collections.emptyList();
+        }
+        return asNodeList(view.get("rootNodes")).stream()
+                .map(node -> resolveScopeSibling(node, resolvedViewId))
+                .filter(Objects::nonNull)
+                .toList();
+    }
+
     public List<CompositionStructureResolution> findFollowingStructureSiblings(String syntheticGoalId) {
         CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
         if (reference == null) {

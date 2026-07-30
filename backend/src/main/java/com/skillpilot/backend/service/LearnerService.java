@@ -4821,12 +4821,10 @@ public class LearnerService {
         }
 
         if (scope.isEmpty()) {
-            // If scope is empty (even if plannedGoals has "Phantom" IDs), return the Top
-            // Level Modules
-            // This ensures we don't show an empty screen if the Plan refers to deleted
-            // content.
-            // (Subjects)
-            return getTopLevelModules(learner.getSelectedCurriculum(), allFilteredGoals);
+            // If the scope is empty (including stale stored IDs), publish the
+            // initial choices. Composition views must expose their writable
+            // roots; legacy projections retain their top-level modules.
+            return getInitialScopeOptions(learner.getSelectedCurriculum(), projection);
         }
 
         List<FrontierGoal> frontier = new ArrayList<>();
@@ -5352,10 +5350,10 @@ public class LearnerService {
         if (curriculumId == null || curriculumId.isBlank()) {
             return Collections.emptyList();
         }
-        Map<String, LearningGoal> filteredGoals = getFilteredGoals(
+        GoalProjection projection = getGoalProjection(
                 curriculumId,
                 learner.getPersonalCurriculum());
-        return getTopLevelModules(curriculumId, filteredGoals);
+        return getInitialScopeOptions(curriculumId, projection);
     }
 
     private UnifiedLearnerStateResponse getLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId) {
@@ -8383,6 +8381,76 @@ public class LearnerService {
             }
         }
         return roots;
+    }
+
+    private List<FrontierGoal> getInitialScopeOptions(
+            String curriculumId,
+            GoalProjection projection) {
+        if (projection == null) {
+            return Collections.emptyList();
+        }
+        if (!projection.compositionViewApplied()) {
+            return getTopLevelModules(curriculumId, projection.visibleGoals());
+        }
+        if (compositionViewService == null) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashMap<String, FrontierGoal> options = new LinkedHashMap<>();
+        LinkedHashSet<String> coveredLandscapeIds = new LinkedHashSet<>();
+        for (String viewId : projection.compositionViewIds()) {
+            boolean addedViewRoot = false;
+            for (CompositionViewService.CompositionStructureResolution rootOption :
+                    compositionViewService.findRootScopeOptions(viewId)) {
+                if (rootOption == null
+                        || rootOption.syntheticGoalId() == null
+                        || rootOption.syntheticGoalId().isBlank()
+                        || !isProjectedTargetFocus(rootOption.syntheticGoalId(), projection)) {
+                    continue;
+                }
+
+                FrontierGoal option;
+                if (isCompositionStructureGoalId(rootOption.syntheticGoalId())) {
+                    option = toCompositionStructureFrontierGoal(
+                            rootOption.syntheticGoalId(),
+                            "Module");
+                } else {
+                    String goalId = resolveGoalIdInVisibleGoals(
+                            rootOption.syntheticGoalId(),
+                            projection.visibleGoals(),
+                            true);
+                    option = goalId == null
+                            ? null
+                            : toFrontierGoal(
+                                    projection.visibleGoals().get(goalId),
+                                    "Module",
+                                    null);
+                }
+                if (option != null) {
+                    options.putIfAbsent(option.id(), option);
+                    addedViewRoot = true;
+                }
+            }
+            if (addedViewRoot) {
+                Map<String, Object> view = compositionViewService.findViewById(viewId);
+                String landscapeId = view == null ? null : readString(view.get("landscapeId"));
+                if (landscapeId != null && !landscapeId.isBlank()) {
+                    coveredLandscapeIds.add(landscapeId);
+                }
+            }
+        }
+        for (FrontierGoal topLevelOption :
+                getTopLevelModules(curriculumId, projection.visibleGoals())) {
+            if (!isProjectedTargetFocus(topLevelOption.id(), projection)) {
+                continue;
+            }
+            String landscapeId = landscapeService.getLandscapeIdForGoal(topLevelOption.id());
+            if (landscapeId != null && coveredLandscapeIds.contains(landscapeId)) {
+                continue;
+            }
+            options.putIfAbsent(topLevelOption.id(), topLevelOption);
+        }
+        return new ArrayList<>(options.values());
     }
 
     @Transactional(readOnly = true)
