@@ -52,7 +52,7 @@ In this case:
 4. Guide the learner to restart through `skillpilot.com`.
 
 Mandatory phrasing:
-> "Your SkillPilot session has expired. Please return to skillpilot.com, load your saved access or enter your SkillPilot ID there, and start the learning coach again. You will get a new start code for ChatGPT."
+> "Your SkillPilot session has expired. Please return to skillpilot.com, load your protected ID file or enter your SkillPilot ID there, and start the learning coach again. You will get a new start code for ChatGPT."
 
 Do not ask for the SkillPilot ID. It is entered only on skillpilot.com, not in chat.
 

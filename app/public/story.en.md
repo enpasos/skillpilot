@@ -1,6 +1,6 @@
 # Start SkillPilot in 5 Minutes
 
-**Status:** July 26, 2026
+**Status:** July 30, 2026
 
 SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
@@ -16,7 +16,7 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 
 1. Open [skillpilot.com](https://skillpilot.com).
 2. Click **Login**.
-3. Accept the notice and choose your login path: create a new SkillPilot ID, load a saved local login, or enter an existing SkillPilot ID.
+3. Accept the notice and choose your login path: create a new SkillPilot ID, load a protected ID file, or enter an existing SkillPilot ID.
 4. Choose your curriculum and click **Start SkillPilot Learning Coach** or **Open Cockpit**.
 5. In the ChatGPT window, send the prepared session message unchanged. It contains a visible session token valid for no more than 24 hours, but not your permanent SkillPilot ID.
 
@@ -32,7 +32,7 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 
 ## Four Important Terms
 
-**SkillPilot ID:** Your permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser.
+**SkillPilot ID:** Your permanent key to your learning progress. You can enter it directly or save it as a password-protected ID file.
 
 **Chat session token (English fallback only):** A temporary key with the prefix `sps_` that SkillPilot creates for the English Visible Session flow. It is visible in the start message and the final footer line of coach responses, and expires after no more than 24 hours. Do not share a live token publicly.
 
@@ -69,10 +69,10 @@ SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. In 
 You have three options:
 
 1. **Create a new SkillPilot ID:** For your first start.
-2. **Load a saved local login:** If you saved your login encrypted in the browser.
+2. **Load a protected ID file:** If you previously saved your ID as a password-protected file.
 3. **Enter an existing SkillPilot ID:** If you already have your ID.
 
-**Remember:** If you do not save a local login, keep your SkillPilot ID safe. Without it, you cannot reopen your previous progress later.
+**Remember:** Keep your SkillPilot ID safe or save it as a protected ID file. Without it, you cannot reopen your previous progress later.
 
 ---
 
@@ -176,11 +176,11 @@ You can still chat normally with the learning coach, upload photos of your tasks
 
 ### What Happens If I Lose My SkillPilot ID?
 
-If you have not saved a local login and lose your SkillPilot ID, you cannot reopen your previous progress. Save the local login or keep your SkillPilot ID in a safe place.
+If you have not saved a protected ID file and lose your SkillPilot ID, you cannot reopen your previous progress. Store the protected file safely or keep your SkillPilot ID in a safe place.
 
 ### What Happens If the ChatGPT Session Expires?
 
-The learning coach session in ChatGPT is valid for no more than 24 hours and is not extended by use. If it expires, return to [skillpilot.com](https://skillpilot.com), load your saved access or enter your SkillPilot ID there, and start the learning coach again. SkillPilot will create a new temporary session token. Do not enter your permanent SkillPilot ID directly in chat.
+The learning coach session in ChatGPT is valid for no more than 24 hours and is not extended by use. If it expires, return to [skillpilot.com](https://skillpilot.com), load your protected ID file or enter your SkillPilot ID there, and start the learning coach again. SkillPilot will create a new temporary session token. Do not enter your permanent SkillPilot ID directly in chat.
 
 ### Can I Switch Between Cockpit and Learning Coach?
 
