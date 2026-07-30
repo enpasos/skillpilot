@@ -78,6 +78,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String LEGACY_HIDDEN_CURRICULUM_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
     private static final String COMPATIBILITY_CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
+    private static final String HESSEN_SEKII_MATH_LK_SCOPE_ID =
+            "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
     private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
@@ -125,6 +127,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         bindingGrantRepository.deleteAllInBatch();
         learningSessionRepository.deleteAllInBatch();
         connectionRepository.deleteAllInBatch();
+        jdbcOperations.update(
+                "DELETE FROM planned_goal WHERE skillpilot_id = ?",
+                PERMANENT_SKILLPILOT_ID);
         Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseGet(() -> {
             Learner created = new Learner();
             created.setSkillpilotId(PERMANENT_SKILLPILOT_ID);
@@ -605,10 +610,13 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(courseProfile, applicationSubject);
         JsonNode courseContext = result(courseProfile).path("structuredContent");
-        assertThat(courseContext.path("requiredAction").asText()).isNotEqualTo("setPersonalization");
-        assertThat(courseContext.path("options")).isNotEmpty();
-        assertThat(courseContext.path("options"))
-                .anySatisfy(option -> assertThat(option.path("goalIds")).isNotEmpty());
+        assertThat(courseContext.path("requiredAction").asText()).isEqualTo("setScope");
+        assertThat(courseContext.path("options")).singleElement().satisfies(option -> {
+            assertThat(option.path("kind").asText()).isEqualTo("scope");
+            assertThat(optionGoalIds(option)).containsExactly(HESSEN_SEKII_MATH_LK_SCOPE_ID);
+        });
+        List<String> publishedScopeGoalIds =
+                optionGoalIds(courseContext.path("options").get(0));
 
         Learner persistedAfterCourseProfile =
                 learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
@@ -625,9 +633,94 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(completedCurriculum.path(CURRICULUM_ID).path("stage").asText())
                 .isEqualTo("SekII");
 
-        HttpResponse<String> persistedRead = callTool(
+        HttpResponse<String> scopeWrite = callTool(
                 accessToken,
                 10,
+                OpenAiDeCoachMcpContract.SET_SCOPE,
+                scopeArguments(publishedScopeGoalIds),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(scopeWrite, applicationSubject);
+        JsonNode scopeContext = result(scopeWrite).path("structuredContent");
+        assertThat(scopeContext.path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(scopeContext.path("options")).isNotEmpty();
+        assertThat(scopeContext.path("curriculum").path("curriculumId").asText())
+                .isEqualTo(CURRICULUM_ID);
+        assertThat(persistedScopeGoalIds()).containsExactlyElementsOf(publishedScopeGoalIds);
+
+        Learner persistedAfterScope =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        assertThat(persistedAfterScope.getActiveGoalId()).isNull();
+        assertThat(objectMapper.readTree(persistedAfterScope.getPersonalCurriculum()))
+                .isEqualTo(completedCurriculum);
+
+        HttpResponse<String> webLearnerRead = get(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID));
+        assertThat(webLearnerRead.statusCode())
+                .withFailMessage(webLearnerRead.body())
+                .isEqualTo(200);
+        JsonNode webLearner = objectMapper.readTree(webLearnerRead.body());
+        assertThat(webLearner.path("selectedCurriculum").asText()).isEqualTo(CURRICULUM_ID);
+        assertThat(objectMapper.readTree(webLearner.path("personalCurriculum").asText()))
+                .isEqualTo(completedCurriculum);
+
+        HttpResponse<String> webPersonalizationRead = get(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/personalization-plan");
+        assertThat(webPersonalizationRead.statusCode())
+                .withFailMessage(webPersonalizationRead.body())
+                .isEqualTo(200);
+        JsonNode webPersonalizationPlan =
+                objectMapper.readTree(webPersonalizationRead.body());
+        assertThat(webPersonalizationPlan.path("stage").asText()).isEqualTo("COMPLETE");
+        List<JsonNode> webSelectedOptions = webPersonalizationPlan.path("completedDecisions").valueStream()
+                .flatMap(decision -> decision.path("selectedOptions").valueStream())
+                .toList();
+        assertThat(webSelectedOptions)
+                .extracting(option -> option.path("filterId").asText())
+                .contains("DE-HE", "LK");
+        assertThat(webSelectedOptions)
+                .extracting(option -> option.path("scopeValue").asText())
+                .contains("G9", "SekII");
+        assertThat(webSelectedOptions)
+                .extracting(option -> option.path("landscapeId").asText())
+                .contains(MATHEMATICS_CURRICULUM_ID);
+
+        HttpResponse<String> scopeNavigation = callTool(
+                accessToken,
+                11,
+                OpenAiDeCoachMcpContract.GET_NAVIGATION,
+                "{\"target\":\"scope\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(scopeNavigation, applicationSubject);
+        JsonNode scopeNavigationContext = result(scopeNavigation).path("structuredContent");
+        assertThat(scopeNavigationContext.path("target").asText()).isEqualTo("scope");
+        assertThat(scopeNavigationContext.path("requiredAction").asText()).isEqualTo("setScope");
+        JsonNode publishedNavigationOption = scopeNavigationContext.path("options").valueStream()
+                .filter(option -> optionGoalIds(option).equals(publishedScopeGoalIds))
+                .findFirst()
+                .orElseThrow();
+
+        HttpResponse<String> idempotentScopeWrite = callTool(
+                accessToken,
+                12,
+                OpenAiDeCoachMcpContract.SET_SCOPE,
+                scopeArguments(optionGoalIds(publishedNavigationOption)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(idempotentScopeWrite, applicationSubject);
+        assertThat(result(idempotentScopeWrite)
+                        .path("structuredContent")
+                        .path("requiredAction")
+                        .asText())
+                .isEqualTo("setActiveGoal");
+        assertThat(persistedScopeGoalIds()).containsExactlyElementsOf(publishedScopeGoalIds);
+        assertThat(objectMapper.readTree(
+                        learnerRepository.findById(PERMANENT_SKILLPILOT_ID)
+                                .orElseThrow()
+                                .getPersonalCurriculum()))
+                .isEqualTo(completedCurriculum);
+
+        HttpResponse<String> persistedRead = callTool(
+                accessToken,
+                13,
                 OpenAiDeCoachMcpContract.GET_CONTEXT,
                 "{}",
                 resumedLearningSessionId);
@@ -784,6 +877,24 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
     private String optionArguments(String optionId) throws Exception {
         return objectMapper.writeValueAsString(Map.of("optionId", optionId));
+    }
+
+    private List<String> optionGoalIds(JsonNode option) {
+        return option.path("goalIds").valueStream()
+                .map(JsonNode::asText)
+                .filter(goalId -> !goalId.isBlank())
+                .toList();
+    }
+
+    private String scopeArguments(List<String> goalIds) throws Exception {
+        return objectMapper.writeValueAsString(Map.of("goalIds", goalIds));
+    }
+
+    private List<String> persistedScopeGoalIds() {
+        return jdbcOperations.queryForList(
+                "SELECT goal_id FROM planned_goal WHERE skillpilot_id = ? ORDER BY goal_id",
+                String.class,
+                PERMANENT_SKILLPILOT_ID);
     }
 
     private List<String> toolNames(HttpResponse<String> response) throws Exception {
