@@ -144,12 +144,18 @@ jobs:
         run: npm run check:gpt-system-instruction-lengths
       - name: Test coach variant selection
         run: npm run test:coach-variants
+      - name: Test contextual AI transparency
+        run: npm run test:ai-transparency-ui
+      - name: Check AI transparency inventory
+        run: npm run check:ai-transparency-inventory
       - name: Test SkillPilot ID encryption
         run: npm run test:skillpilot-id-file
       - name: Lint
         run: npm run lint
       - name: Build application without regenerating curriculum assets
         run: npm run build:application
+      - name: Check AI transparency in the built application
+        run: npm run check:ai-transparency-artifact
 
   graph-validation:
     name: Curriculum CI

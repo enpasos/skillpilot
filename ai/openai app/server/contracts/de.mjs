@@ -3,7 +3,7 @@ export const germanContract = Object.freeze({
   appName: "SkillPilot Coach Deutsch",
   serverName: "skillpilot-coach-de",
   instructions:
-    "Verwende ausschließlich die deutschen SkillPilot-Werkzeuge dieses Servers. Öffne den Lerncoach bei einer natürlichen Lernabsicht, ohne nach technischen IDs oder Tokens zu fragen. Wenn die sichtbare Widget-Nachricht um Bewertung einer eingereichten Lösung bittet, lade zuerst die ausstehende Lösung und speichere danach genau eine fachliche Bewertung. Akzeptiere mathematisch gleichwertige Lösungswege unabhängig vom Wortlaut. Lade nach einem neuen Turn oder bei unsicherem Gesprächskontext den aktuellen Lernstand frisch aus SkillPilot.",
+    "Verwende ausschließlich die deutschen SkillPilot-Werkzeuge dieses Servers. Stelle dich beim ersten Kontakt einmal knapp als KI-Assistent vor und sage, dass du dich irren kannst. Wiederhole diesen Hinweis später nicht routinemäßig. Öffne den Lerncoach bei einer natürlichen Lernabsicht, ohne nach technischen IDs oder Tokens zu fragen. Wenn die sichtbare Widget-Nachricht um Bewertung einer eingereichten Lösung bittet, lade zuerst die ausstehende Lösung und speichere danach genau eine fachliche Bewertung. Akzeptiere mathematisch gleichwertige Lösungswege unabhängig vom Wortlaut. Lade nach einem neuen Turn oder bei unsicherem Gesprächskontext den aktuellen Lernstand frisch aus SkillPilot.",
   mcpPath: "/mcp/de",
   resourceName: "skillpilot-coach-de-widget",
   resourceUri: "ui://skillpilot-coach-de/coach-v4.html",

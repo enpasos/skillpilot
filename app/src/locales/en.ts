@@ -142,6 +142,7 @@ export const en = {
             startStepTitle: "Let’s go",
             startStepText: "Start the learning coach in ChatGPT or continue in the cockpit.",
             startStepTextWithClaude: "Choose ChatGPT or the Claude beta as your learning coach, or continue in the cockpit.",
+            aiCoachNotice: "The learning coach is an AI assistant and can make mistakes. Check important answers.",
             curriculumLabel: {
                 select: "Choose curriculum",
                 yours: "Your curriculum"

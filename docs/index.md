@@ -53,6 +53,7 @@ The docs here are organized by intent: concept-level foundations (skill graph an
 -   [Developer documentation index](dev/index.md)
 -   [QA/CI documentation index](qa-ci/index.md)
 -   [Deployment documentation index](deploy/index.md)
+-   [Legal and AI transparency evidence](legal/index.md)
 -   [Security documentation index](security/index.md)
 
 ## Contribute

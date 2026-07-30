@@ -1424,6 +1424,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           {t.startPage.login.personalCurriculumRequired}
                         </p>
                       )}
+                      <p
+                        role="note"
+                        className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
+                      >
+                        <Bot size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
+                        <span>{t.startPage.login.aiCoachNotice}</span>
+                      </p>
                       <div className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40">
                         <p className="font-semibold text-text-primary">
                           {openAiMcpCoachActive

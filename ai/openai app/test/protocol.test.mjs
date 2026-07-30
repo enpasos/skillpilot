@@ -7,6 +7,19 @@ import { createAppHttpServer } from "../server/app-server.mjs";
 import { CoachStore } from "../server/coach-store.mjs";
 import { contracts } from "../server/contracts/index.mjs";
 
+const firstContactTransparency = Object.freeze({
+  de: [
+    "beim ersten Kontakt einmal knapp als KI-Assistent",
+    "dass du dich irren kannst",
+    "später nicht routinemäßig"
+  ],
+  en: [
+    "At first contact, briefly identify yourself once as an AI assistant",
+    "you can make mistakes",
+    "Do not routinely repeat this notice later"
+  ]
+});
+
 async function withServer(run) {
   const dataDir = await mkdtemp(join(tmpdir(), "skillpilot-mcp-protocol-"));
   const server = createAppHttpServer({ coachStore: new CoachStore({ dataDir }) });
@@ -118,6 +131,18 @@ test("DE and EN expose isolated, correctly annotated tool and resource contracts
       }
     }
   });
+});
+
+test("DE and EN require one concise first-contact AI notice without liability copy", () => {
+  for (const contract of Object.values(contracts)) {
+    for (const fragment of firstContactTransparency[contract.locale]) {
+      assert.ok(
+        contract.instructions.includes(fragment),
+        `${contract.locale} instructions miss first-contact transparency fragment: ${fragment}`
+      );
+    }
+    assert.doesNotMatch(contract.instructions, /banner|disclaimer|haftung|liabilit/i);
+  }
 });
 
 test("complete DE flow crosses the widget boundary without leaking opaque references", async () => {

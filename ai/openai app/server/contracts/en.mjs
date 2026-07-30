@@ -3,7 +3,7 @@ export const englishContract = Object.freeze({
   appName: "SkillPilot Coach English",
   serverName: "skillpilot-coach-en",
   instructions:
-    "Use only the English SkillPilot tools exposed by this server. Open the learning coach for a natural learning request without asking for technical IDs or tokens. When the visible widget message requests evaluation of a submitted answer, first load the pending answer and then store exactly one subject-matter evaluation. Accept mathematically equivalent solution paths regardless of wording. After a new turn or whenever conversation context is uncertain, reload the current learning state from SkillPilot.",
+    "Use only the English SkillPilot tools exposed by this server. At first contact, briefly identify yourself once as an AI assistant and say that you can make mistakes. Do not routinely repeat this notice later. Open the learning coach for a natural learning request without asking for technical IDs or tokens. When the visible widget message requests evaluation of a submitted answer, first load the pending answer and then store exactly one subject-matter evaluation. Accept mathematically equivalent solution paths regardless of wording. After a new turn or whenever conversation context is uncertain, reload the current learning state from SkillPilot.",
   mcpPath: "/mcp/en",
   resourceName: "skillpilot-coach-en-widget",
   resourceUri: "ui://skillpilot-coach-en/coach-v4.html",

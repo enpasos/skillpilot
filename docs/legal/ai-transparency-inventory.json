@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "snapshot": {
+    "asOf": "2026-07-29",
+    "sourceRevision": "c4ba0f2250e383baeb814b77faa82af316e4b04f",
+    "scope": "Repository sources and deployed frontend/backend asset copies",
+    "policy": "A changed count, provider, path, or bound file hash requires review and an intentional inventory update."
+  },
+  "artifactClasses": {
+    "goalVisualizations": {
+      "canonicalLandscapeFiles": 21,
+      "canonicalGoalCount": 5518,
+      "count": 1494,
+      "fileExtensions": {
+        "jpg": 1484,
+        "png": 10
+      },
+      "providerCounts": {
+        "Google Gemini / Nano Banana Pro": 1030,
+        "Google Gemini / Nano Banana Pro (gemini-3-pro-image)": 440,
+        "Google Gemini / Nano Banana Pro (gemini-3-pro-image, corrected no-arrow retry)": 1,
+        "Google Gemini / Nano Banana Pro (gemini-3-pro-image, minimal image-edit deck-base retry)": 1,
+        "Google Gemini / Nano Banana Pro (gemini-3-pro-image, reference-image input)": 1,
+        "Google Gemini / Nano Banana Pro (user-provided candidate)": 3,
+        "Google Gemini / Nano Banana Pro (user-provided image)": 1,
+        "OpenAI GPT Image (built-in imagegen)": 2,
+        "gemini-3-pro-image": 13,
+        "user-provided generated image": 2
+      },
+      "c2paStructure": {
+        "method": "Shallow container marker scan: JPEG c2pa plus jumb markers; PNG caBX chunk marker.",
+        "detected": 1491,
+        "notDetectedUrls": [
+          "/assets/goal-visualizations/mathematik/3016ec37-1c2e-47db-83f5-e767923bc97e/3016ec37-1c2e-47db-83f5-e767923bc97e.jpg",
+          "/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png",
+          "/assets/goal-visualizations/mathematik/fa72cf74-a31e-402e-90d7-422c118f4a5b/fa72cf74-a31e-402e-90d7-422c118f4a5b.jpg"
+        ],
+        "cryptographicallyValidated": false,
+        "complianceConclusion": "Marker presence is provenance evidence only; it is not treated as a validated Content Credential or as a substitute for a human-visible disclosure where one is required."
+      }
+    },
+    "narrativeIllustrations": {
+      "countingRule": "Source collections are counted by semantic collection; language and file-format variants remain separate physical files.",
+      "collections": [
+        {
+          "id": "whitepaper-comic",
+          "sourceDir": "docs/comic1",
+          "sourceFiles": [
+            "SkillPilot_Comic.de.jpg",
+            "SkillPilot_Comic.de.png",
+            "SkillPilot_Comic.en.jpg",
+            "SkillPilot_Comic.en.png"
+          ],
+          "sourceDigestSha256": "4ae982fc4016e3d474d10609b114da995adcccf731dfecf80c490451c6e2c553",
+          "runtimeFiles": [
+            "app/public/comic1/SkillPilot_Comic.de.jpg",
+            "app/public/comic1/SkillPilot_Comic.de.png",
+            "app/public/comic1/SkillPilot_Comic.en.jpg",
+            "app/public/comic1/SkillPilot_Comic.en.png"
+          ],
+          "runtimeDigestSha256": "58ff49139ae54289d3d29ab5877e6917fd8c41d6a33170705a47c6bcc3822e52"
+        },
+        {
+          "id": "agent-training-comic",
+          "sourceDir": "docs/comic2",
+          "sourceFiles": [
+            "SkillPilot_Agent_In_Training.de.jpg",
+            "SkillPilot_Agent_In_Training.de.png",
+            "SkillPilot_Agent_In_Training.en.jpg",
+            "SkillPilot_Agent_In_Training.en.png"
+          ],
+          "sourceDigestSha256": "f6af44bb74087662027512e775c59843b267588d72addc553d272c5fa37da4bd",
+          "runtimeFiles": [
+            "app/public/comic2/SkillPilot_Agent_In_Training.de.jpg",
+            "app/public/comic2/SkillPilot_Agent_In_Training.de.png",
+            "app/public/comic2/SkillPilot_Agent_In_Training.en.jpg",
+            "app/public/comic2/SkillPilot_Agent_In_Training.en.png"
+          ],
+          "runtimeDigestSha256": "09b785336db0eb0c5e58fc32d36eb57f944011f910682c307f1dff35b49ba1ae"
+        },
+        {
+          "id": "champion-comic",
+          "sourceDir": "docs/comic3",
+          "sourceFiles": [
+            "champion.de.png",
+            "champion.en.png"
+          ],
+          "sourceDigestSha256": "5deb5f709209263009f58dd5ffe3cdd16e5c7087ac2b15c3b6c0bde02004d601",
+          "runtimeFiles": [
+            "app/public/comic3/champion.de.png",
+            "app/public/comic3/champion.en.png"
+          ],
+          "runtimeDigestSha256": "368c59b379388b0370361dbfd703e5fa8c8f76b65f7316df69a6f3cc55668912"
+        },
+        {
+          "id": "learning-coach-comic",
+          "sourceDir": "docs/comic4",
+          "sourceFiles": [
+            "LearningCoach.en.png",
+            "Lerncoach.de.png"
+          ],
+          "sourceDigestSha256": "775b3f9701709697a370eb3b4b93d070e10e5d7d82e19debcc2e429323fb7dad",
+          "runtimeFiles": [
+            "app/public/whitepaper/LearningCoach.en.png",
+            "app/public/whitepaper/Lerncoach.de.png"
+          ],
+          "runtimeDigestSha256": "49c3744b233ea6b7798a2e990a765cc783a0801d224aaa0f6e8b10fb249ec14e"
+        },
+        {
+          "id": "quickstart-story",
+          "sourceDir": "docs/quickstart",
+          "namePattern": "^comic[0-9]+\\.(de|en)\\.png$",
+          "sourceFiles": [
+            "comic01.de.png",
+            "comic01.en.png",
+            "comic03.de.png",
+            "comic03.en.png",
+            "comic04.de.png",
+            "comic04.en.png",
+            "comic05.de.png",
+            "comic05.en.png",
+            "comic06.de.png",
+            "comic06.en.png",
+            "comic07.de.png",
+            "comic07.en.png"
+          ],
+          "sourceDigestSha256": "9f09ce13f93cddfa2a287af520f754621feb54a64e6e85288650aac52b0418b1",
+          "runtimeFiles": [
+            "app/public/comic01.de.png",
+            "app/public/comic01.en.png",
+            "app/public/comic03.de.png",
+            "app/public/comic03.en.png",
+            "app/public/comic04.de.png",
+            "app/public/comic04.en.png",
+            "app/public/comic05.de.png",
+            "app/public/comic05.en.png",
+            "app/public/comic06.de.png",
+            "app/public/comic06.en.png",
+            "app/public/comic07.de.png",
+            "app/public/comic07.en.png"
+          ],
+          "runtimeDigestSha256": "eb4daf01c4279e83c9e25ce9137de8f0ceecd3fdf6fbe83aa724be66af451852"
+        }
+      ]
+    },
+    "whitepaperRasterFigures": {
+      "classification": "Documentation and explanatory raster figures with mixed or incompletely documented provenance. Inclusion in this inventory does not assert that every file was AI-generated.",
+      "sourceDir": "docs/whitepaper",
+      "runtimeDir": "app/public/whitepaper",
+      "sourceFiles": [
+        "architecture.de.png",
+        "architecture.en.png",
+        "champion.de.png",
+        "champion.en.png",
+        "examnode.de.png",
+        "examnode.en.png",
+        "graph_example.de.png",
+        "graph_example.en.png",
+        "LearningCoach.en.png",
+        "Lerncoach.de.png",
+        "mastery.de.png",
+        "mastery.en.png",
+        "memorize.de.png",
+        "memorize.en.png",
+        "nodetypes.de.png",
+        "nodetypes.en.png",
+        "qa.de.png",
+        "qa.en.png",
+        "SkillPilotLearningCoach.png",
+        "SkillPilotLerncoach.de.png",
+        "SkillPilotProcess.de.png",
+        "SkillPilotProcess.png",
+        "velocity.de.png",
+        "velocity.en.png"
+      ],
+      "sourceDigestSha256": "f6eca71eef04d6d371be752376b2ca3c9ba5f15b2d6c769f8ca89dd9583ee913",
+      "runtimeDigestSha256": "8fde70a32c6f453eb9e16d8d488a1c35d1c77f12badebcfdbe7cdd57c0e22fde",
+      "reviewConclusion": "The figures are presented as diagrams or stylized illustrations rather than documentary records. New realistic figures still require an item-level assessment before release."
+    },
+    "podcastAudio": {
+      "provenanceStatus": "The files contain generic Google encoder and creation-time tags. Those tags do not establish the exact generation workflow or whether every voice segment is synthetic.",
+      "files": [
+        {
+          "role": "deployed-de",
+          "path": "app/public/audio/intro-de.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-de.m4a"
+          ],
+          "bytes": 35259556,
+          "sha256": "11af439ea19741567bd797d7b05314c2a1f5c416413beed5f781e2fd7d1cf196",
+          "durationSeconds": 1095.54068,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-02-03T16:58:31.000000Z"
+          }
+        },
+        {
+          "role": "deployed-en",
+          "path": "app/public/audio/intro-en.m4a",
+          "identicalRuntimeCopies": [
+            "backend/src/main/resources/static/audio/intro-en.m4a"
+          ],
+          "bytes": 28724384,
+          "sha256": "e4d53b9f15932b7b1ce863cf06a48b36323a8a1efa09f0238fe96407a471a923",
+          "durationSeconds": 892.482177,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-02-03T19:35:44.000000Z"
+          }
+        },
+        {
+          "role": "archive-de",
+          "path": "docs/notebooklm/SkillPilot_macht_Bildung_zum_Navigationssystem.m4a",
+          "bytes": 25793455,
+          "sha256": "267aafede53d9849a980cccd0304abc47c7069edee5ecac5ab8263c06c594876",
+          "durationSeconds": 801.413515,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-01-20T15:42:25.000000Z"
+          }
+        },
+        {
+          "role": "archive-en",
+          "path": "docs/notebooklm/Skill_Graphs_Tame_the_Smart_Liar.m4a",
+          "bytes": 36510563,
+          "sha256": "1542430f14f1beee4738dfa5b655b7fc1d819503a95e31dc1f02dbd580da43f8",
+          "durationSeconds": 1134.410884,
+          "genericMetadata": {
+            "encoder": "Google",
+            "creationTime": "2026-01-20T16:12:15.000000Z"
+          }
+        }
+      ]
+    },
+    "canonicalLearningContent": {
+      "countingRule": "Counts describe the canonical DE/Gymnasium source layer. Localized card records count language variants separately.",
+      "memoryDeckFiles": 56,
+      "cardRecords": 732,
+      "uniqueCardIds": 564,
+      "humanReviewPolicy": "Goal and card review evidence is evaluated by its own current, hash-bound QA ledgers; inventory presence alone is not represented as human approval."
+    },
+    "providerHostedCoach": {
+      "currentProductionReference": "German OpenAI MCP App",
+      "dialogModelOperator": "The selected provider",
+      "skillpilotRole": "SkillPilot supplies deterministic learning-state tools and provider-specific instructions; it does not run model inference in this channel.",
+      "otherProviderStatus": "Other provider integrations are separate and must not be described as production without their own release evidence."
+    }
+  }
+}

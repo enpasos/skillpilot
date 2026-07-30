@@ -51,13 +51,14 @@ The deployment process currently does all of the following:
 5.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
 6.  Deploy **whitepaper assets** into `app/public/whitepaper` and the comic folders.
 7.  Deploy **quickstart/story assets** into `app/public/`.
-8.  Install frontend dependencies and rebuild the React app.
-9.  Verify the requested coach variant in the generated backend static `version.json` and `index.html`.
-10. Build the backend jar.
-11. Restart the `skillpilot` system service.
-12. Wait until the public readiness endpoint returns HTTP 200.
-13. Verify the deployed coach variant against the public host.
-14. Run the source-rationale deployment smoke test against the public host.
+8.  Install frontend dependencies and verify the committed AI-transparency inventory against the exact assets to be deployed.
+9.  Rebuild the React app.
+10. Verify the requested coach variant in the generated backend static `version.json` and `index.html`.
+11. Build the backend jar.
+12. Restart the `skillpilot` system service.
+13. Wait until the public readiness endpoint returns HTTP 200.
+14. Verify the deployed coach variant and AI-transparency copy against the public host.
+15. Run the source-rationale deployment smoke test against the public host.
 
 ## The Deployment Engine (`scripts/deploy.sh`)
 
@@ -105,6 +106,9 @@ cd app
 echo "Installiere Abhaengigkeiten..."
 npm install
 
+echo "Pruefe KI-Transparenznachweis..."
+npm run check:ai-transparency-inventory
+
 echo "Baue Anwendung..."
 npm run build
 
@@ -112,6 +116,10 @@ echo "Pruefe Coach-Variante im Frontend-Artefakt..."
 node ../scripts/verify_frontend_coach_variant.mjs \
   ../backend/src/main/resources/static \
   "${VITE_SKILLPILOT_COACH_VARIANT}"
+
+echo "Pruefe KI-Transparenz im Frontend-Artefakt..."
+node ../scripts/verify_ai_transparency_artifact.mjs \
+  ../backend/src/main/resources/static
 
 cd ../backend
 chmod +x gradlew
@@ -130,6 +138,10 @@ node scripts/verify_frontend_coach_variant.mjs \
   "${SMOKE_BASE_URL}" \
   "${VITE_SKILLPILOT_COACH_VARIANT}"
 
+echo "Pruefe ausgelieferte KI-Transparenz..."
+node scripts/verify_ai_transparency_artifact.mjs \
+  "${SMOKE_BASE_URL}"
+
 echo "Pruefe Quellenbegruendungs-Smoke-Test..."
 cd app
 npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}"
@@ -143,14 +155,15 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     lacks a command-specific, passwordless restart grant. It never opens a
     general `sudo` password prompt.
 3.  **`git stash` + `git pull`**: the current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
-4.  **Deck/story/whitepaper deployment** must happen before the frontend build so those files are present in `app/public/`.
-5.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
-6.  **Backend build** produces the updated server artifact.
-7.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
-8.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
+4.  **Deck/story/whitepaper deployment** must happen before the inventory check and frontend build so the check sees the exact public asset set.
+5.  **AI-transparency inventory check** binds current visualization providers and C2PA container markers, illustration collections, canonical goal/card counts, and podcast hashes to the reviewed inventory under `docs/legal/`. Asset drift therefore stops deployment before a build or restart.
+6.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
+7.  **Backend build** produces the updated server artifact.
+8.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
+9.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment.
-9.  **Optional OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant
+10. **Optional OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant
     only when mTLS hardening is explicitly enabled. It verifies the separately
     installed local verifier service and loopback listeners, expects public MCP
     access without an OpenAI client certificate to fail with `403`, and expects
@@ -159,8 +172,9 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     OAuth token must still fail. The normal deploy does not install or remove
     the privileged nginx boundary; see
     [openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md).
-10. **Deployment smoke tests** check that the public host serves the intended
-    coach variant in both version metadata and HTML. The source-rationale smoke
+11. **Deployment smoke tests** check that the public host serves the intended
+    coach variant in both version metadata and HTML and contains the reviewed
+    DE/EN audio, coach, and legal transparency copy. The source-rationale smoke
     then detects the active curriculum mode: repository deployments must serve
     the two exact compatibility indexes, while package deployments must expose
     Catalog API 1.2 and working generation-bound source-evidence routes.

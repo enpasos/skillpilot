@@ -26,12 +26,22 @@ SkillPilot enthält **keine konkreten Vorlesungsskripte, Folien oder Unterrichts
 
 Der Quellcode dieses Projekts (SkillPilot Software) ist unter der **Apache License, Version 2.0** lizenziert.
 
+## KI-Transparenz
+
+**Stand: 29. Juli 2026**
+
+SkillPilot enthält dokumentiert KI-gestützte Lernziel-Visualisierungen, weitere didaktische Illustrationen und Comics, zwei Audioeinführungen, teilweise KI-unterstützt erstellte und redigierte Lerninhalte sowie den Lerncoach. Der Lerncoach läuft im Chat des jeweils gewählten, dort erkennbaren KI-Anbieters. SkillPilot stellt dafür Lernkontext und Werkzeuge bereit, betreibt aber kein eigenes Dialogmodell. Die aktuell angebotenen Verbindungswege und Datenflüsse beschreibt die [Datenschutzerklärung](/privacy).
+
+Beide Audioeinführungen werden direkt am Player vorsorglich mit dem Hinweis gekennzeichnet, dass sie KI-erzeugte Stimmen enthalten; die genaue Anbieter-, Stimmen- und Segmentprovenienz ist noch nicht abschließend belegt. Die vorhandenen Bildbestände sind überwiegend didaktische Illustrationen und Schemata. „KI-generiert“ bedeutet nicht automatisch „Deepfake“. Für die Einordnung sind Realismus, Ähnlichkeit, Kontext und mögliche Täuschungswirkung maßgeblich; realistische oder sonst zweifelhafte Inhalte werden einzeln geprüft. Soweit eine Offenlegung am betreffenden Inhalt nach [Art. 50 KI-Verordnung](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) erforderlich ist, ersetzt dieser allgemeine Hinweis sie nicht.
+
+Rechtsgrundlagen sind die [KI-Verordnung (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) und die [Änderungsverordnung (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de). Zur Auslegung von Art. 50 berücksichtigt SkillPilot die [nicht bindenden Leitlinien der Europäischen Kommission](https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems).
+
 ## Haftungsausschluss & Warnhinweise für SkillPilot
 
 SkillPilot ist ein digitales Werkzeug zur Planung, Dokumentation und Reflexion von Lernprozessen.
 Es richtet sich an **Lernende** und **Trainer:innen/Lehrende**.
 
-Mit der Nutzung von SkillPilot erkennen Sie die folgenden Punkte an:
+Für die Nutzung von SkillPilot gelten die folgenden Hinweise:
 
 ### 1. Keine Garantie für Vollständigkeit der Lernmodelle
 
@@ -84,12 +94,9 @@ Für **Trainer:innen/Lehrende**:
   * mittelbare Schäden, Folgeschäden, entgangenen Gewinn oder sonstige Vermögensschäden.
 * Unberührt bleiben gesetzlich zwingende Haftungsregeln, insbesondere bei **Vorsatz, grober Fahrlässigkeit** sowie bei **Verletzung von Leben, Körper oder Gesundheit**.
 
-### 7. Bestätigung
+### 7. Verantwortungsvolle Nutzung
 
-Mit dem Fortfahren und der Nutzung von SkillPilot bestätigen Sie, dass Sie:
-
-* diese **Hinweise gelesen und verstanden** haben und
-* SkillPilot **nur als unterstützendes Werkzeug** nutzen und **nicht als alleinige Entscheidungsgrundlage** für Prüfungen, Zertifizierungen, Personal- oder Karriereentscheidungen.
+Nutzen Sie SkillPilot **nur als unterstützendes Werkzeug** und **nicht als alleinige Entscheidungsgrundlage** für Prüfungen, Zertifizierungen, Personal- oder Karriereentscheidungen. Dieser Hinweis begründet keinen Haftungsverzicht und schränkt gesetzliche Rechte nicht ein.
 `
 
 const LEGAL_TEXT_EN = `
@@ -112,12 +119,22 @@ SkillPilot contains **no specific lecture notes, slides, or teaching materials**
 
 The source code of this project (SkillPilot Software) is licensed under the **Apache License, Version 2.0**.
 
+## AI Transparency
+
+**Date: July 29, 2026**
+
+SkillPilot includes documented AI-supported learning-goal visualizations, other educational illustrations and comics, two audio introductions, learning content that may be AI-assisted and editorially reviewed, and the learning coach. The coach runs in the chat of the selected, visibly identified AI provider. SkillPilot supplies learning context and tools but does not operate its own conversational model. The [Privacy Policy](/privacy) describes the connection options currently offered and the related data flows.
+
+Both audio introductions carry a precautionary notice directly at the player that they contain AI-generated voices; their exact provider, voice and segment provenance has not yet been conclusively established. The existing image collection consists predominantly of educational illustrations and diagrams. “AI-generated” does not automatically mean “deepfake.” The assessment considers realism, resemblance, context and potential to mislead; realistic or otherwise doubtful items are reviewed individually. Where disclosure on the content itself is required under [Article 50 of the AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), this general notice does not replace it.
+
+The legal bases are the [AI Act, Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), and [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj). For the interpretation of Article 50, SkillPilot takes account of the [European Commission’s non-binding Guidelines](https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems).
+
 ## Disclaimer & Warnings for SkillPilot
 
 SkillPilot is a digital tool for planning, documenting, and reflecting on learning processes.
 It is aimed at **Learners** and **Trainers/Instructors**.
 
-By using SkillPilot, you acknowledge the following points:
+The following notices apply when using SkillPilot:
 
 ### 1. No Guarantee for Completeness of Learning Models
 
@@ -170,12 +187,9 @@ For **Trainers/Instructors**:
   * indirect damages, consequential damages, lost profits, or other financial losses.
 * Mandatory statutory liability rules remain unaffected, especially in cases of **intent, gross negligence**, as well as **injury to life, body or health**.
 
-### 7. Confirmation
+### 7. Responsible Use
 
-By proceeding and using SkillPilot, you confirm that you:
-
-* have **read and understood these notes** and
-* use SkillPilot **only as a supporting tool** and **not as the sole basis for decision-making** for exams, certifications, personnel, or career decisions.
+Use SkillPilot **only as a supporting tool** and **not as the sole basis for decisions** concerning exams, certifications, personnel, or careers. This notice does not constitute a waiver of liability and does not restrict statutory rights.
 `
 
 export const getLegalViewCopy = (language: LabelLanguage): LegalViewCopy => (
