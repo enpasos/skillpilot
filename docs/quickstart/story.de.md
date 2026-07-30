@@ -1,6 +1,6 @@
 # SkillPilot in 5 Minuten starten
 
-**Stand:** 26. Juli 2026
+**Stand:** 30. Juli 2026
 
 SkillPilot begleitet dich Schritt für Schritt durch dein Curriculum. Du startest einen KI-Lerncoach, arbeitest an passenden Lernzielen und verfolgst deinen Fortschritt im Cockpit.
 
@@ -14,7 +14,7 @@ Du brauchst nur einen Browser und einen ChatGPT-Account, in dessen Tarif oder Wo
 
 1. Öffne [skillpilot.com](https://skillpilot.com).
 2. Klicke auf **Login**.
-3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene SkillPilot-ID eingeben.
+3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, geschützte ID-Datei laden oder vorhandene SkillPilot-ID eingeben.
 4. Wähle dein Curriculum und klicke auf **SkillPilot Lerncoach starten** oder **Cockpit öffnen**.
 5. Im ChatGPT-Fenster sendest du die vorbereitete Nachricht ab. Beim ersten Mal verbindest du einmalig die App **SkillPilot Coach (Deutsch)**. Deine SkillPilot-ID bleibt unsichtbar; die neue 24‑Stunden-Lernsession ist technisch in der vorbereiteten Nachricht enthalten und wird automatisch weiterverwendet.
 
@@ -30,7 +30,7 @@ Du brauchst nur einen Browser und einen ChatGPT-Account, in dessen Tarif oder Wo
 
 ## Fünf Begriffe, die wichtig sind
 
-**SkillPilot-ID:** Dein dauerhafter Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern.
+**SkillPilot-ID:** Dein dauerhafter Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als passwortgeschützte ID-Datei speichern.
 
 **OAuth-Verbindung:** Die einmalige, widerrufbare Verbindung der deutschen SkillPilot-App mit dem Backend. Sie erlaubt der zugelassenen App den technischen Zugriff, wählt aber noch keinen Lernstand aus.
 
@@ -69,10 +69,10 @@ SkillPilot speichert deinen Lernfortschritt unter einer pseudonymen SkillPilot-I
 Du hast drei Möglichkeiten:
 
 1. **Neue SkillPilot-ID erstellen:** Für deinen ersten Start.
-2. **Gespeicherten lokalen Login laden:** Wenn du deinen Login im Browser verschlüsselt gespeichert hast.
+2. **Geschützte ID-Datei laden:** Wenn du deine ID zuvor als passwortgeschützte Datei gespeichert hast.
 3. **Vorhandene SkillPilot-ID eingeben:** Wenn du deine ID bereits hast.
 
-**Merke:** Wenn du keinen lokalen Login speicherst, bewahre deine SkillPilot-ID gut auf. Ohne sie kannst du deinen bisherigen Fortschritt später nicht wieder öffnen.
+**Merke:** Bewahre deine SkillPilot-ID gut auf oder speichere sie als geschützte ID-Datei. Ohne sie kannst du deinen bisherigen Fortschritt später nicht wieder öffnen.
 
 ---
 
@@ -170,11 +170,11 @@ Du kannst weiterhin normal mit dem Lerncoach chatten, Fotos deiner Aufgaben oder
 
 ### Was passiert, wenn ich meine SkillPilot-ID verliere?
 
-Wenn du keinen lokalen Login gespeichert hast und deine SkillPilot-ID verlierst, kannst du deinen bisherigen Fortschritt nicht wieder öffnen. Speichere deshalb den lokalen Login oder bewahre deine SkillPilot-ID sicher auf.
+Wenn du keine geschützte ID-Datei gespeichert hast und deine SkillPilot-ID verlierst, kannst du deinen bisherigen Fortschritt nicht wieder öffnen. Speichere deshalb die geschützte Datei an einem sicheren Ort oder bewahre deine SkillPilot-ID sicher auf.
 
 ### Was passiert, wenn die ChatGPT-Session abläuft?
 
-Die Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und klicke erneut auf **Lernen starten**. In diesem Augenblick erzeugt SkillPilot eine neue Lernsession und bereitet einen neuen Chat vor. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nicht direkt im Chat ein.
+Die Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deine geschützte ID-Datei oder gib dort deine SkillPilot-ID ein und klicke erneut auf **Lernen starten**. In diesem Augenblick erzeugt SkillPilot eine neue Lernsession und bereitet einen neuen Chat vor. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nicht direkt im Chat ein.
 
 ### Kann ich zwischen Cockpit und Lerncoach wechseln?
 

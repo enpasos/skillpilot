@@ -66,7 +66,7 @@ public class LearnerAiController {
                 .body(Map.of(
                         "error", "chat_session_expired",
                         "message", "The SkillPilot chat session has expired.",
-                        "recovery", "Ask the learner to return to skillpilot.com, load their saved access or enter their SkillPilot ID there, and start the learning coach again to get a new start code for ChatGPT. Do not ask for the SkillPilot ID inside ChatGPT."));
+                        "recovery", "Ask the learner to return to skillpilot.com, load their protected ID file or enter their SkillPilot ID there, and start the learning coach again to get a new start code for ChatGPT. Do not ask for the SkillPilot ID inside ChatGPT."));
     }
 
     @PostMapping("/learners")

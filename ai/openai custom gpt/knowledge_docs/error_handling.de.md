@@ -52,7 +52,7 @@ In diesem Fall:
 4. Die lernende Person anleiten, über `skillpilot.com` neu zu starten.
 
 Pflichtformulierung:
-> „Deine SkillPilot-Session ist abgelaufen. Bitte gehe zurück zu skillpilot.com, lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Dann bekommst du einen neuen Startcode für ChatGPT.“
+> „Deine SkillPilot-Session ist abgelaufen. Bitte gehe zurück zu skillpilot.com, lade deine geschützte ID-Datei oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Dann bekommst du einen neuen Startcode für ChatGPT.“
 
 Nicht nach der SkillPilot-ID fragen. Sie wird nur auf skillpilot.com eingegeben, nicht im Chat.
 

@@ -310,10 +310,10 @@ remain responsible for preserving access keys and identity mappings.
 - Learner export/import can carry learning state to another browser context.
 - Teacher-held name-to-ID mappings must be protected outside the SkillPilot
   backend.
-- An encrypted local login helps retain a SkillPilot ID on a device without
-  storing it in plaintext.
-- Logging out clears the active browser login but does not delete explicitly
-  saved encrypted local profiles or backend learning progress.
+- A password-protected SkillPilot ID file lets learners retain the ID without
+  storing it unencrypted.
+- Logging out clears the active browser login but does not delete downloaded
+  protected ID files, inert legacy local profiles, or backend learning progress.
 
 ## 6. Residual Risks and Operating Rules
 

@@ -12,7 +12,7 @@ import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Com
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
-type SkillpilotIdSource = 'existing' | 'generated' | 'stored' | 'file' | null
+type SkillpilotIdSource = 'existing' | 'generated' | 'file' | null
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
 interface ClaudeLaunchFallback {
@@ -55,11 +55,6 @@ import {
   requestClaudeDisconnect,
   requestClaudeLaunch,
 } from '../utils/claudeCoach'
-import {
-  deleteLocalSkillpilotLogin,
-  listLocalSkillpilotLogins,
-  loadLocalSkillpilotLogin,
-} from '../utils/localSkillpilotLogin'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import {
   decryptSkillpilotIdFileContent,
@@ -126,11 +121,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   // Collapsible logic for Login form
   const [showLogin, setShowLogin] = useState(false);
-  const [savedLoginProfiles, setSavedLoginProfiles] = useState(() => listLocalSkillpilotLogins())
-  const [storedLoginName, setStoredLoginName] = useState(() => listLocalSkillpilotLogins()[0]?.name || '')
-  const [storedLoginPassword, setStoredLoginPassword] = useState('')
-  const [localLoginStatus, setLocalLoginStatus] = useState<'idle' | 'loading' | 'loaded' | 'failed'>('idle')
-  const [localLoginError, setLocalLoginError] = useState('')
   const [skillpilotIdFileStatus, setSkillpilotIdFileStatus] = useState<SkillpilotIdFileStatus>('idle')
   const [skillpilotIdFileDialogMode, setSkillpilotIdFileDialogMode] = useState<'save' | 'load' | null>(null)
   const [skillpilotIdFileDialogBusy, setSkillpilotIdFileDialogBusy] = useState(false)
@@ -178,17 +168,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.busy
   const idAcquisitionBusy =
     loading
-    || localLoginStatus === 'loading'
     || skillpilotIdFileStatus === 'loading'
     || skillpilotIdFileDialogBusy
   const skillpilotIdSourceLabel = sanitizedLearnerId
     ? skillpilotIdSource === 'generated'
       ? t.startPage.login.idSourceGenerated
-      : skillpilotIdSource === 'stored'
-        ? t.startPage.login.idSourceStored
-        : skillpilotIdSource === 'file'
-          ? t.startPage.login.idSourceFile
-          : t.startPage.login.idSourceExisting
+      : skillpilotIdSource === 'file'
+        ? t.startPage.login.idSourceFile
+        : t.startPage.login.idSourceExisting
     : ''
 
   const curriculumPanelCopy = React.useMemo(() => {
@@ -216,12 +203,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }, [role, t])
 
-  const refreshSavedLoginProfiles = () => {
-    const profiles = listLocalSkillpilotLogins()
-    setSavedLoginProfiles(profiles)
-    setStoredLoginName(prev => (prev && profiles.some(profile => profile.name === prev)) ? prev : profiles[0]?.name || '')
-  }
-
   const resetTransientSetupState = (clearSkillpilotId = false) => {
     curriculumSelectionRequestRef.current += 1
     learnerCheckRequestRef.current += 1
@@ -241,14 +222,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setClaudeInstallFallbackUrl(null)
     setClaudeLaunchFallback(null)
     setClaudePromptCopied(false)
-    setLocalLoginStatus('idle')
-    setLocalLoginError('')
     setSkillpilotIdFileStatus('idle')
     setSkillpilotIdFileDialogMode(null)
     setSkillpilotIdFileDialogBusy(false)
     setSkillpilotIdFileDialogError('')
     setPendingSkillpilotIdFile(null)
-    setStoredLoginPassword('')
     advanceToCurriculumRef.current = false
     if (clearSkillpilotId) {
       setSkillpilotId('')
@@ -511,54 +489,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         setCurriculumSaving(false)
       }
     }
-  }
-
-  const handleLoadLocalLogin = async () => {
-    if (!idAcquisitionInFlightRef.current.tryStart()) return
-    const acquisitionRequestId = idAcquisitionRequestRef.current + 1
-    idAcquisitionRequestRef.current = acquisitionRequestId
-    curriculumSelectionRequestRef.current += 1
-    learnerCheckRequestRef.current += 1
-    setCurriculumSaving(false)
-    setLoading(false)
-    setLocalLoginStatus('loading')
-    setLocalLoginError('')
-    try {
-      const payload = await loadLocalSkillpilotLogin(storedLoginName, storedLoginPassword)
-      if (idAcquisitionRequestRef.current !== acquisitionRequestId) return
-      const sanitizedId = sanitizeSkillpilotId(payload.skillpilotId)
-      resetTransientSetupState()
-      setRole('learner')
-      setSkillpilotId(sanitizedId)
-      setSkillpilotIdSource('stored')
-      localStorage.setItem('skillpilot_id', sanitizedId)
-      localStorage.setItem('skillpilot_role', 'learner')
-      if (payload.selectedLandscapeId) {
-        const normalizedLandscapeId = normalizeLearnerLandscapeId(payload.selectedLandscapeId)
-        setSelectedLandscapeId(normalizedLandscapeId)
-        if (normalizedLandscapeId) {
-          localStorage.setItem('skillpilot_learner_landscape', normalizedLandscapeId)
-        }
-      }
-      setStoredLoginPassword('')
-      setLocalLoginStatus('loaded')
-    } catch (err) {
-      if (idAcquisitionRequestRef.current === acquisitionRequestId) {
-        setLocalLoginStatus('failed')
-        setLocalLoginError((err as Error).message)
-      }
-    } finally {
-      idAcquisitionInFlightRef.current.finish()
-    }
-  }
-
-  const handleDeleteLocalLogin = () => {
-    if (!storedLoginName) return
-    deleteLocalSkillpilotLogin(storedLoginName)
-    setStoredLoginPassword('')
-    setLocalLoginStatus('idle')
-    setLocalLoginError('')
-    refreshSavedLoginProfiles()
   }
 
   const handleAcceptLegalWaiver = () => {
@@ -885,20 +815,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const openLearnerStart = () => {
     setRole('learner')
-    resetTransientSetupState()
-    const id = localStorage.getItem('skillpilot_id')
-    const savedLandscape = getStoredLandscapeIdForRole('learner')
-    if (id) {
-      const sanitizedId = sanitizeSkillpilotId(id)
-      setSkillpilotId(sanitizedId)
-      setSkillpilotIdSource('existing')
-      if (savedLandscape) {
-        setSelectedLandscapeId(savedLandscape)
-      }
-    } else {
-      setSkillpilotId('')
-      setSkillpilotIdSource(null)
-    }
+    resetTransientSetupState(true)
     setShowLogin(true)
   }
 
@@ -1234,66 +1151,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         )}
                       </div>
 
-                      {savedLoginProfiles.length > 0 && (
-                        <details
-                          className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs text-text-secondary dark:bg-slate-950/30"
-                          onToggle={event => {
-                            if (!event.currentTarget.open) {
-                              setStoredLoginPassword('')
-                            }
-                          }}
-                        >
-                          <summary className="cursor-pointer font-semibold text-text-primary">
-                            {t.startPage.login.storedLoginTitle}
-                          </summary>
-                          <div className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                            <select
-                              value={storedLoginName}
-                              onChange={event => {
-                                setStoredLoginName(event.target.value)
-                                setStoredLoginPassword('')
-                                setLocalLoginStatus('idle')
-                                setLocalLoginError('')
-                              }}
-                              className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
-                              aria-label={t.startPage.login.storedProfileLabel}
-                            >
-                              {savedLoginProfiles.map(profile => (
-                                <option key={profile.name} value={profile.name}>{profile.name}</option>
-                              ))}
-                            </select>
-                            <input
-                              type="password"
-                              value={storedLoginPassword}
-                              onChange={event => setStoredLoginPassword(event.target.value)}
-                              className="min-h-10 rounded border border-border-color bg-input-bg px-3 py-2 text-sm text-text-primary"
-                              placeholder={t.startPage.login.passwordLabel}
-                              aria-label={t.startPage.login.passwordLabel}
-                            />
-                          </div>
-                          <div className="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
-                            <button
-                              type="button"
-                              onClick={handleLoadLocalLogin}
-                              disabled={!legalAccepted || idAcquisitionBusy || !storedLoginName || !storedLoginPassword}
-                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
-                            >
-                              <KeyRound size={15} />
-                              {localLoginStatus === 'loading' ? t.startPage.login.loadingStoredLogin : t.startPage.login.loadStoredLogin}
-                            </button>
-                            <button
-                              type="button"
-                              onClick={handleDeleteLocalLogin}
-                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-border-color px-4 py-2 text-sm font-semibold text-text-secondary transition-colors hover:border-rose-300 hover:text-rose-600 dark:hover:text-rose-300"
-                              title={t.startPage.login.deleteStoredLogin}
-                              aria-label={t.startPage.login.deleteStoredLogin}
-                            >
-                              <Trash2 size={15} />
-                            </button>
-                          </div>
-                        </details>
-                      )}
-
                       <button
                         type="button"
                         onClick={handleContinueToCurriculum}
@@ -1304,14 +1161,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <ArrowRight size={16} />
                       </button>
 
-                      {localLoginStatus === 'loaded' && (
-                        <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{t.startPage.login.localLoginLoaded}</p>
-                      )}
-                      {localLoginStatus === 'failed' && (
-                        <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
-                          {t.startPage.login.localLoginFailed}{localLoginError ? ` ${localLoginError}` : ''}
-                        </p>
-                      )}
                     </div>
                   </div>
                 )}

@@ -150,6 +150,8 @@ jobs:
         run: npm run check:ai-transparency-inventory
       - name: Test SkillPilot ID encryption
         run: npm run test:skillpilot-id-file
+      - name: Test fresh SkillPilot ID entry
+        run: npm run test:session-setup-id-entry
       - name: Lint
         run: npm run lint
       - name: Build application without regenerating curriculum assets
