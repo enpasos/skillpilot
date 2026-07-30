@@ -162,7 +162,8 @@ Lernsession.
 Die genaue Abfolge steht in [TEST_AND_PLUGIN_HANDOFF.md](TEST_AND_PLUGIN_HANDOFF.md).
 Das versionierte deutsche Quellpaket liegt unter
 [`../openai plugin/skillpilot-coach-de`](<../openai plugin/skillpilot-coach-de/>).
-Es enthält Manifest, direkte MCP-Bindung und Coach-Skill. Nur die optionale
-lokale `.app.json`-Abbildung einer bereits registrierten ChatGPT-Verbindung
-wartet auf deren reale `plugin_asdk_app…`-ID; sie wird nicht durch einen
-Platzhalter ersetzt.
+Es enthält Manifest, direkte MCP-Bindung, Coach-Skill und die echte
+hostgenerierte `.app.json`-Abbildung der bereits registrierten deutschen
+Pilot-App. Diese zusätzliche Abbildung ist nur für den lokalen
+End-to-End-Test bestimmt; für die öffentliche Einreichung bleibt der direkt
+eingereichte MCP-Server maßgeblich.

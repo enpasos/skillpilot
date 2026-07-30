@@ -49,9 +49,11 @@ In ChatGPT:
    EN-MCP-Endpunkt anlegen und denselben Abnahmelauf separat durchführen.
 
 ChatGPT zeigt in den App-Metadaten unter anderem eine App-ID `asdk_app_…` und
-eine Versions-ID `asdk_app_v_…`. Diese beiden Werte sind Diagnosemetadaten. Für
-das spätere lokale Plugin-Wiring wird dagegen die Kennung aus der Browser-URL
-benötigt; sie beginnt laut OpenAI-Dokumentation mit `plugin_asdk_app_…`.
+eine Versions-ID `asdk_app_v_…`. Die `asdk_app_…`-ID ist der Wert der
+hostgenerierten `.app.json`-Abbildung; die Versions-ID dient der Diagnose. Eine
+separat sichtbare `plugin_asdk_app_…`-Kennung identifiziert die
+Remote-Plugin-Registrierung und wird nicht als App-ID in `.app.json`
+eingetragen.
 
 Die Verfügbarkeit von Installation, Authentifizierung und Nutzung kann laut
 OpenAI von Tarif, Workspace-Einstellungen, Rolle, Oberfläche, Region und
@@ -132,24 +134,21 @@ unbekannt ab, darf dieses Feld nicht entfernt werden. Maßgeblich sind der
 aktuelle offizielle Submission-Vertrag und der eingecheckte CI-Check; nach
 einem Toolupdate wird der Hilfsvalidator erneut ausgeführt.
 
-Für einen zusätzlichen **lokalen oder Workspace-internen Test über die bereits
-registrierte ChatGPT-Verbindung** benötigt `plugin-creator` die von ChatGPT im
-Developer Mode erzeugte Browserkennung `plugin_asdk_app…`. Der Creator erzeugt
-daraus die aktuell gültige `.app.json`-Abbildung; diese Abbildung und ihre
-Identifierpräfixe werden weder geraten noch manuell umgeschrieben. Deshalb wird
-keine Platzhalter-`.app.json` eingecheckt.
+Für den zusätzlichen **lokalen oder Workspace-internen Test über die bereits
+registrierte ChatGPT-Verbindung** enthält das Paket jetzt die vom Host erzeugte
+`.app.json`-Abbildung. Ihr App-Alias und ihre `asdk_app…`-ID wurden unverändert
+aus der realen Registrierung übernommen. Die separat gespeicherte
+`plugin_asdk_app…`-Kennung bezeichnet die Remote-Plugin-Registrierung und wird
+nicht in `.app.json` eingesetzt. Ein Platzhalter oder eine manuelle
+Präfixkonvertierung ist weiterhin unzulässig.
 
-Nach erfolgreichem Developer-Mode-Test die `plugin_asdk_app_…`-ID aus der
-Browser-URL an Codex übergeben. Dann wird `plugin-creator` ausschließlich
-verwendet, um das bestehende deutsche Quellpaket um die echte lokale
-App-Abbildung zu ergänzen und erneut zu validieren:
-
-```text
-Use $plugin-creator to update the existing package at
-ai/openai plugin/skillpilot-coach-de with plugin_asdk_app_<DE-ID>.
-Preserve the existing skillpilot-coach-de skill, add the local App mapping,
-and keep implicit invocation disabled.
-```
+Für den persönlichen Test wird das Quellpaket über den
+`plugin-creator`-Workflow in den persönlichen Marketplace gespiegelt. Ein
+Cachebuster wird nur auf dieser persönlichen Kopie gesetzt; die versionierte
+Quellversion bleibt stabil. Danach wird das Plugin installiert, der
+Providerhost neu geladen und der Test in einem neuen Chat ausgeführt. Erst
+dieser neue Chat kann den gebündelten Skill und die App-Werkzeuge gemeinsam
+laden.
 
 Der Skill ist aus den bewährten deutschen Coach-Inhalten unter
 `ai/openai custom gpt` und den aktuellen `COACH-*`-Policies abgeleitet. Rolle,
@@ -158,11 +157,11 @@ Mastery-Evidenz, Prüfungsführung und ehrliche Fehlerbehandlung werden
 übernommen. Nicht übernommen werden alte Startcode-, `chatSessionToken`-,
 Action-, Relay- oder modellseitige Deep-Link-Mechanismen.
 
-Danach werden die neue `.app.json`, `.codex-plugin/plugin.json`,
+Geprüft werden `.app.json`, `.codex-plugin/plugin.json`,
 `skills/skillpilot-coach-de/SKILL.md`,
 `skills/skillpilot-coach-de/agents/openai.yaml`, rechtliche Links, Screenshots
 und Installationsmetadaten für den lokalen beziehungsweise internen
-Plugin-Test geprüft. Die von `plugin-creator` erzeugte App-Abbildung wird
+Plugin-Test. Die vom Host erzeugte App-Abbildung wird
 unverändert geprüft; Präfixe werden nicht manuell konvertiert.
 
 Der Plugin-Pilot testet Aktivierung und Ausführung getrennt:
@@ -173,6 +172,9 @@ Der Plugin-Pilot testet Aktivierung und Ausführung getrennt:
 - eine allgemeine Fachfrage ohne SkillPilot-Bezug aktiviert den Skill nicht;
 - Golden Journeys, Toolspur, sichtbare Antwort und Backendzustand entsprechen
   der App-only-Baseline;
+- die Toolspur weist ausdrücklich die in `.app.json` registrierte
+  App-Verbindung nach. Ein erfolgreicher Aufruf nur über die parallele direkte
+  `.mcp.json`-Bindung ist kein Nachweis für das kombinierte Plugin;
 - fehlende App, ungültige Lernsession und Toolfehler enden kontrolliert ohne
   erfundenen Ersatzlernpfad.
 
@@ -180,7 +182,8 @@ Erst nach diesem Gate darf implizite Aktivierung freigegeben und dürfen die
 ausführlichen MCP-Server-Instruktionen schrittweise auf kurze
 werkzeugübergreifende Invarianten reduziert werden. Das englische Paket folgt
 erst nach der separaten englischen Developer-Mode-Abnahme und erhält seine
-eigene `plugin_asdk_app_…`-ID sowie einen eigenen englischen Skill.
+eigene `asdk_app_…`-Abbildung, eine getrennte Remote-Plugin-Registrierung sowie
+einen eigenen englischen Skill.
 
 ### Öffentliche Einreichung ist ein eigener Ablauf
 
@@ -188,9 +191,9 @@ Die öffentliche Directory-Einreichung verwendet im Submission-Portal die Option
 **With MCP**. Dort werden der produktive MCP-Server, Authentifizierung,
 Review-Zugang, CSP, Domain-Verifikation und Review-Material direkt angegeben und
 die Tools gescannt. OpenAI weist ausdrücklich darauf hin, dort **keine bestehende
-ChatGPT-App-ID** einzutragen. Das lokal durch `plugin-creator` erzeugte
-`.app.json` ist daher Test-Wiring und nicht das Veröffentlichungsvehikel für den
-produktiven MCP-Server.
+ChatGPT-App-ID** einzutragen. Die vom Host erzeugte und durch den
+`plugin-creator`-Workflow paketierte `.app.json` ist daher Test-Wiring und nicht
+das Veröffentlichungsvehikel für den produktiven MCP-Server.
 
 ## 5. Domain-Verifikation
 

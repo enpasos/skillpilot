@@ -15,6 +15,7 @@ const readJson = (path) => JSON.parse(read(path));
 
 const manifestSource = read(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const manifest = JSON.parse(manifestSource);
+const appConfig = readJson(resolve(pluginRoot, ".app.json"));
 const mcpConfig = readJson(resolve(pluginRoot, ".mcp.json"));
 const skill = read(resolve(skillRoot, "SKILL.md"));
 const policy = read(resolve(skillRoot, "references/coaching-policy.md"));
@@ -67,16 +68,15 @@ requireString(manifest.author?.name, "author.name", 120);
 requireHttpsUrl(manifest.author?.url, "author.url", 2048);
 assert.equal(manifest.skills, "./skills/");
 assert.equal(manifest.mcpServers, "./.mcp.json");
-assert.equal(
-  manifest.apps,
-  undefined,
-  "The repository package must not contain local App wiring without a real registered App ID.",
-);
-assert.equal(
-  existsSync(resolve(pluginRoot, ".app.json")),
-  false,
-  "Do not commit a placeholder .app.json.",
-);
+assert.equal(manifest.apps, "./.app.json");
+assert.equal(existsSync(resolve(pluginRoot, ".app.json")), true);
+assert.deepEqual(appConfig, {
+  apps: {
+    "dev-6a66d0224a888191a193f2a97b86954e": {
+      id: "asdk_app_6a66d0224a888191a193f2a97b86954e",
+    },
+  },
+});
 
 const pluginInterface = manifest.interface;
 requireString(pluginInterface?.displayName, "interface.displayName", 30);
