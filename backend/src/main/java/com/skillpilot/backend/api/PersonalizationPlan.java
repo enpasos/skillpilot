@@ -8,7 +8,7 @@ import java.util.List;
  *
  * <p>The plan contains opaque option IDs. Provider adapters must submit only
  * IDs from {@link #options()} unchanged and must not reconstruct selections
- * from labels, {@link #displayOptions()}, curriculum graph edges, subjects,
+ * from labels, {@link #displayOptions()}, skill graph edges, subjects,
  * regions, or course names.</p>
  */
 public record PersonalizationPlan(
