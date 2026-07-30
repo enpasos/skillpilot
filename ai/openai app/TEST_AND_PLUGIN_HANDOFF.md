@@ -6,14 +6,16 @@ Für einen realen ChatGPT-Test benötigt jede App einen öffentlich erreichbaren
 HTTPS-Endpunkt. Für maximale Robustheit sind zwei getrennte App-Registrierungen
 vorgesehen:
 
-| App | lokaler Endpunkt | produktiver Zielhost |
+| App | lokaler Prototyp | aktueller produktiver MCP-Endpunkt |
 | --- | --- | --- |
-| SkillPilot Coach Deutsch | `/mcp/de` | `https://coach-de-mcp.skillpilot.com/mcp` |
-| SkillPilot Coach English | `/mcp/en` | `https://coach-en-mcp.skillpilot.com/mcp` |
+| SkillPilot Coach Deutsch | `/mcp/de` | `https://skillpilot.com/api/openai/de/mcp` |
+| SkillPilot Coach English | `/mcp/en` | noch nicht freigegeben |
 
-Die getrennten Hosts sind nicht nur sprachlich sauber. Sie vermeiden auch den
-Konflikt, dass zwei getrennt veröffentlichte Plugins auf demselben MCP-Host nur
-dieselbe Domain-Challenge-URL besitzen würden.
+Getrennte sprachspezifische Hosts bleiben eine mögliche spätere
+Betriebsarchitektur. Der heute ausgelieferte deutsche Vertrag und das
+versionierte Plugin-Paket verwenden jedoch ausschließlich den produktiven
+Pfad auf `skillpilot.com`; die Prototyp-Hosts dürfen nicht als aktueller
+Produktionsendpunkt dokumentiert oder registriert werden.
 
 Für den ersten Developer-Mode-Test kann ein kurzlebiger HTTPS-Tunnel auf den
 lokalen Server zeigen. Dabei gelten zwingend:
@@ -57,29 +59,51 @@ App-Funktionen abhängen. Deshalb müssen kostenloser Zugang und festes Abo als
 getrennte reale Akzeptanzfälle geprüft werden; aus der Sichtbarkeit des Plugin-
 Verzeichnisses allein folgt noch keine Nutzbarkeit.
 
-## 3. Akzeptanzablauf je aktiver Sprache
+## 3. Produkt- und Prototyp-Akzeptanz getrennt halten
 
-1. Neuer Chat ohne alten Kontext.
-2. App explizit auswählen und natürlich formulieren:
-   „Ich möchte Mathematik in der Oberstufe in Hessen lernen.“
-3. Erwartung: genau die sichtbaren Optionen Grundkurs und Leistungskurs; keine
-   Session-ID, kein Token und kein technischer Auswahlkey.
-4. Grundkurs im Widget anklicken.
-5. Erwartung: Aufgabe erscheint ohne zusätzlichen technischen Chat-Turn.
-6. Einen fachlich richtigen, aber anders als eine Musterlösung formulierten Weg
-   einreichen.
-7. Erwartung: Das Widget bestätigt zunächst nur die sichere Einreichung und zeigt
-   **Lösung jetzt bewerten lassen**. Diesen Button anklicken.
-8. Erwartung: Das Widget bestätigt die Annahme durch die MCP-Bridge sichtbar;
-   anschließend erscheinen eine natürliche Bewertungsbitte, faire Bewertung und
-   persistiertes Feedback. Eine Ablehnung durch den Host darf nicht still bleiben.
-   Es ist keine manuell getippte Brückennachricht nötig.
-9. Einen neuen normalen User-Turn senden.
-10. Erwartung: Das Modell lädt den aktuellen SkillPilot-Zustand frisch; es fragt
-    nicht nach einer alten ID und fällt nicht auf die Kurswahl zurück.
-11. Chat neu laden und erneut fortsetzen.
-12. Längeren Dialog führen, bis Host-Kontextkompaktierung plausibel ist, und die
-    Schritte 9 bis 11 wiederholen.
+### 3.1 Aktueller UI-loser deutscher Produktpfad
+
+1. In SkillPilot mit einem geeigneten Testlernenden **Lernen starten** wählen
+   und einen neuen Chat ohne alten Kontext öffnen.
+2. Im Plugin-Pilot Plugin und Skill explizit auswählen und die von SkillPilot
+   vorbereitete Startnachricht unverändert absenden.
+3. Erwartung: Der Coach lädt vor der ersten fachlichen Antwort den frischen
+   SkillPilot-Kontext. Lernsession, Token und technische Auswahlkeys erscheinen
+   nicht in der Antwort.
+4. Bei der Testpersonalisierung „Grundkurs“ als normalen Chattext antworten.
+   Erwartung: Genau die aktuell veröffentlichten Optionen sind sichtbar, die
+   Auswahl wird bestätigt gespeichert und der Folgezustand frisch geladen.
+5. Einen fachlich richtigen, aber anders als eine Musterlösung formulierten Weg
+   einreichen. Erwartung: Der Coach bewertet fachlich statt nach Wortlaut und
+   speichert Mastery erst nach der geforderten sichtbaren Evidenz.
+6. Im Prüfungsmodus eine vollständige sichtbare Abgabe senden. Erwartung: kein
+   Scaffolding, keine Bewertung vor vollständiger Abgabe, danach faire
+   kriteriumsbezogene Punkte und nur bei bestandenem Ergebnis eine bestätigte
+   Mastery-Speicherung. Es gibt in diesem UI-losen Pfad keinen Widget-Button
+   **Lösung jetzt bewerten lassen**.
+7. Einen neuen normalen User-Turn senden. Erwartung: Das Modell lädt den
+   aktuellen Zustand frisch, fragt nicht nach einer alten ID und fällt nicht
+   auf eine abgeschlossene Auswahl zurück.
+8. Chat neu laden und erneut fortsetzen. Danach einen längeren Dialog bis zu
+   plausibler Host-Kontextkompaktierung führen und denselben
+   Rehydrationsnachweis wiederholen.
+9. Einen Plugin-Starter ohne vorbereitete Lernsession öffnen. Erwartung: kein
+   Toolaufruf und eine knappe Rückführung zu SkillPilot und **Lernen starten**.
+
+### 3.2 Widget-Prototyp als getrennte Baseline
+
+Der lokale `/mcp/de`-Prototyp behält einen eigenen UI-Akzeptanzlauf. Dieser
+belegt ausschließlich Widget- und MCP-Bridge-Verhalten und ist kein Nachweis
+für den aktuellen UI-losen Produktpfad:
+
+1. App mit dem öffentlichen Prototyp-Endpunkt explizit auswählen.
+2. Grundkurs im Widget anklicken; die Aufgabe muss ohne zusätzlichen
+   technischen Chat-Turn erscheinen.
+3. Eine vollständige Lösung einreichen. Das Widget bestätigt zunächst nur die
+   sichere Einreichung und zeigt **Lösung jetzt bewerten lassen**.
+4. Den Button anklicken. Die MCP-Bridge muss die Annahme sichtbar bestätigen;
+   anschließend erscheinen Bewertungsbitte, faire Bewertung und persistiertes
+   Feedback. Eine Host-Ablehnung darf nicht still bleiben.
 
 Zusätzlich prüfen:
 
@@ -87,31 +111,76 @@ Zusätzlich prüfen:
 - kostenloser Providerzugang und fixes Verbraucherabo;
 - Deutsch und Englisch strikt getrennt;
 - Abbruch, Retry und Doppelklick;
-- veraltetes Widget nach Reset;
+- im Prototyp ein veraltetes Widget nach Reset;
 - keine geheimen oder permanenten Kennungen in Chat, DOM-Screenshot oder
   exportiertem Gespräch.
 
-## 4. Lokales Plugin-Paket erst mit echten App-IDs erzeugen
+## 4. Versioniertes Plugin-Paket und optionales lokales App-Wiring
 
-Seit 9. Juli 2026 werden Apps über Plugins auffindbar. Für den **lokalen oder
-Workspace-internen Plugin-Test** verweist ein korrektes `.app.json` auf die von
-ChatGPT im Developer Mode erzeugte `plugin_asdk_app…`-ID. Deshalb wird kein
-Platzhaltermanifest eingecheckt.
+Das deutsche Quellpaket ist unter
+[`../openai plugin/skillpilot-coach-de`](<../openai plugin/skillpilot-coach-de/>)
+versioniert. Es enthält Pluginmanifest, direkte produktive MCP-Bindung,
+Coach-Skill, Policy-Referenz und die zunächst explizite Aktivierung. Der
+CI-Vertrag prüft außerdem die aktuellen finalen Directory-Limits,
+MCP-Pflichtlinks, die parsebare Skillmetadaten-Struktur und dass keine alte
+Action-/Relaymechanik in den Coachvertrag zurückkehrt.
+
+Der im Codex-`plugin-creator` gebündelte lokale Hilfsvalidator kann gegenüber
+dem aktuellen Directory-Schema zeitlich zurückliegen. Lehnt er beispielsweise
+das für MCP-Pakete inzwischen erforderliche `interface.supportURL` als
+unbekannt ab, darf dieses Feld nicht entfernt werden. Maßgeblich sind der
+aktuelle offizielle Submission-Vertrag und der eingecheckte CI-Check; nach
+einem Toolupdate wird der Hilfsvalidator erneut ausgeführt.
+
+Für einen zusätzlichen **lokalen oder Workspace-internen Test über die bereits
+registrierte ChatGPT-Verbindung** benötigt `plugin-creator` die von ChatGPT im
+Developer Mode erzeugte Browserkennung `plugin_asdk_app…`. Der Creator erzeugt
+daraus die aktuell gültige `.app.json`-Abbildung; diese Abbildung und ihre
+Identifierpräfixe werden weder geraten noch manuell umgeschrieben. Deshalb wird
+keine Platzhalter-`.app.json` eingecheckt.
 
 Nach erfolgreichem Developer-Mode-Test die `plugin_asdk_app_…`-ID aus der
-Browser-URL an Codex übergeben. Dann wird der Plugin-Creator zunächst nur für
-das abgenommene deutsche Paket verwendet:
+Browser-URL an Codex übergeben. Dann wird `plugin-creator` ausschließlich
+verwendet, um das bestehende deutsche Quellpaket um die echte lokale
+App-Abbildung zu ergänzen und erneut zu validieren:
 
 ```text
-$plugin-creator create a plugin for SkillPilot Coach Deutsch using
-plugin_asdk_app_<DE-ID>. Include a personal marketplace entry for local testing.
+Use $plugin-creator to update the existing package at
+ai/openai plugin/skillpilot-coach-de with plugin_asdk_app_<DE-ID>.
+Preserve the existing skillpilot-coach-de skill, add the local App mapping,
+and keep implicit invocation disabled.
 ```
 
-Danach werden `.app.json`, `.codex-plugin/plugin.json`, rechtliche Links,
-Screenshots und Installationsmetadaten für den lokalen beziehungsweise internen
-Plugin-Test geprüft. Das englische Paket folgt erst nach der separaten
-englischen Developer-Mode-Abnahme und erhält seine eigene
-`plugin_asdk_app_…`-ID.
+Der Skill ist aus den bewährten deutschen Coach-Inhalten unter
+`ai/openai custom gpt` und den aktuellen `COACH-*`-Policies abgeleitet. Rolle,
+Stil, Scaffolding, Feynman-Loop, faire Behandlung ungewöhnlicher Lösungswege,
+Mastery-Evidenz, Prüfungsführung und ehrliche Fehlerbehandlung werden
+übernommen. Nicht übernommen werden alte Startcode-, `chatSessionToken`-,
+Action-, Relay- oder modellseitige Deep-Link-Mechanismen.
+
+Danach werden die neue `.app.json`, `.codex-plugin/plugin.json`,
+`skills/skillpilot-coach-de/SKILL.md`,
+`skills/skillpilot-coach-de/agents/openai.yaml`, rechtliche Links, Screenshots
+und Installationsmetadaten für den lokalen beziehungsweise internen
+Plugin-Test geprüft. Die von `plugin-creator` erzeugte App-Abbildung wird
+unverändert geprüft; Präfixe werden nicht manuell konvertiert.
+
+Der Plugin-Pilot testet Aktivierung und Ausführung getrennt:
+
+- explizite Skill-/Plugin-Auswahl startet den SkillPilot-Workflow;
+- indirekte SkillPilot-Lernwünsche werden zunächst nur als Beobachtungsfall
+  erfasst, solange implizite Aktivierung deaktiviert ist;
+- eine allgemeine Fachfrage ohne SkillPilot-Bezug aktiviert den Skill nicht;
+- Golden Journeys, Toolspur, sichtbare Antwort und Backendzustand entsprechen
+  der App-only-Baseline;
+- fehlende App, ungültige Lernsession und Toolfehler enden kontrolliert ohne
+  erfundenen Ersatzlernpfad.
+
+Erst nach diesem Gate darf implizite Aktivierung freigegeben und dürfen die
+ausführlichen MCP-Server-Instruktionen schrittweise auf kurze
+werkzeugübergreifende Invarianten reduziert werden. Das englische Paket folgt
+erst nach der separaten englischen Developer-Mode-Abnahme und erhält seine
+eigene `plugin_asdk_app_…`-ID sowie einen eigenen englischen Skill.
 
 ### Öffentliche Einreichung ist ein eigener Ablauf
 
@@ -119,9 +188,9 @@ Die öffentliche Directory-Einreichung verwendet im Submission-Portal die Option
 **With MCP**. Dort werden der produktive MCP-Server, Authentifizierung,
 Review-Zugang, CSP, Domain-Verifikation und Review-Material direkt angegeben und
 die Tools gescannt. OpenAI weist ausdrücklich darauf hin, dort **keine bestehende
-ChatGPT-App-ID** einzutragen. Das lokale `.app.json` mit `plugin_asdk_app…` ist
-daher Test-Wiring und nicht das Veröffentlichungsvehikel für den produktiven
-MCP-Server.
+ChatGPT-App-ID** einzutragen. Das lokal durch `plugin-creator` erzeugte
+`.app.json` ist daher Test-Wiring und nicht das Veröffentlichungsvehikel für den
+produktiven MCP-Server.
 
 ## 5. Domain-Verifikation
 
@@ -134,11 +203,17 @@ Der Server stellt optional den offiziellen Challenge-Pfad bereit:
 Der Rückgabewert wird ausschließlich aus `OPENAI_APPS_CHALLENGE` gelesen und als
 reiner Text ausgegeben. Ohne Konfiguration antwortet der Pfad mit 404.
 
-In Produktion erhält jede getrennt eingereichte Sprach-App einen eigenen Host
-und damit eine eigene Challenge-URL. Dieser sprachspezifische Host ist zugleich
-die eindeutige Widget-Origin: `https://coach-de-mcp.skillpilot.com` für Deutsch
-und `https://coach-en-mcp.skillpilot.com` für Englisch. Bei abweichender
-Deployment-Topologie kann die Origin gezielt über
+In der aktuellen deutschen Produktion liegt die Challenge auf
+`skillpilot.com`; der MCP-Produktpfad bleibt
+`https://skillpilot.com/api/openai/de/mcp`. Eigene Hosts pro Sprache sind nur
+eine optionale spätere Widget- beziehungsweise Deployment-Topologie und dürfen
+nicht als heutige Produktionspflicht gelesen werden.
+
+Der lokale Widget-Prototyp verwendet standardmäßig die eindeutigen Origins
+`https://coach-de-mcp.skillpilot.com` für Deutsch und
+`https://coach-en-mcp.skillpilot.com` für Englisch. Diese Widget-Origins machen
+die gleichnamigen Hosts nicht zu produktiven MCP-Endpunkten. Bei abweichender
+Prototyp-Topologie kann die Origin gezielt über
 `SKILLPILOT_WIDGET_DOMAIN_DE` beziehungsweise
 `SKILLPILOT_WIDGET_DOMAIN_EN` überschrieben werden; eine Variable muss im
 Normalfall nicht gesetzt werden. Der Wert muss eine HTTPS-Origin ohne Pfad sein.

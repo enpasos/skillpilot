@@ -160,6 +160,7 @@ run_action_regression_ci() {
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
   npm --prefix "${PROJECT_ROOT}/ai/openai-custom-gpt-visible-session" test
+  node "${PROJECT_ROOT}/scripts/check_skillpilot_coach_plugin.mjs"
 }
 
 run_application_frontend_ci() {

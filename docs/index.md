@@ -32,7 +32,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
 -   [Dual curriculum package implementation status](dev/dual-curriculum-package-implementation-status.md)
 -   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
--   [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
+-   [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)

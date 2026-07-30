@@ -81,6 +81,8 @@ jobs:
         run: npm --prefix "ai/openai app" ci
       - name: Test DE and EN MCP App contracts and workflows
         run: npm --prefix "ai/openai app" test
+      - name: Validate SkillPilot Coach source and current submission contract
+        run: node scripts/check_skillpilot_coach_plugin.mjs
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
 

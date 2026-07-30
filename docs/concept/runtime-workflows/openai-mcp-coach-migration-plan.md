@@ -1,16 +1,21 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 26. Juli 2026
+**Stand:** 30. Juli 2026
 
 **Status:** deutsche data-only MCP-App ist der aktuelle ChatGPT-Pfad;
 serverauthentisiertes TLS und das fail-closed geprüfte OAuth-Clientprofil bilden
 die aktuelle Betriebsbasis. OpenAI-mTLS bleibt als spätere, separat
 abzunehmende Härtungsoption erhalten.
+
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
-providergehostete MCP-App wiederherstellen, ohne manuell zu übertragende
-technische Schlüssel und ohne von Custom-GPT-Action-Retention abhängig zu
-sein. Die pro Start automatisch transportierte, kurzlebige
-`learningSessionId` ist davon ausdrücklich ausgenommen.
+providergehostetes Plugin aus Coach-Skill und direkt zur Prüfung eingereichtem
+deutschen MCP-Server wiederherstellen. Das versionierte Quellpaket bindet den
+Server direkt über `.mcp.json`; eine lokale bereits registrierte Verbindung
+wird erst nach Vorliegen der echten App-ID zusätzlich über `.app.json`
+referenziert. Es gibt keine manuell zu übertragenden technischen Schlüssel und
+keine Abhängigkeit von Custom-GPT-Action-Retention; die pro Start automatisch
+transportierte, kurzlebige `learningSessionId` ist davon ausdrücklich
+ausgenommen.
 
 Die übergeordnete Architekturentscheidung ist in
 [skillpilot-owned-coach-architecture.md](skillpilot-owned-coach-architecture.md)
@@ -534,22 +539,35 @@ Beleg dafür, dass sie Mehrfachauswahl und `COMPLETE_GROUP` bereits unterstütze
 
 ## 6. Migration der bisherigen Knowledge-Dokumente
 
-Eine MCP-App besitzt nicht dieselbe Knowledge-Upload-Fläche wie ein Custom GPT.
-Die bisherigen Dokumente werden deshalb nach Funktion migriert:
+Eine MCP-App allein besitzt nicht dieselbe Knowledge-Upload-Fläche wie ein
+Custom GPT. Das versionierte Quellpaket unter
+[`ai/openai plugin/skillpilot-coach-de`](<../../../ai/openai plugin/skillpilot-coach-de/>)
+ergänzt sie deshalb um einen Coach-Skill. Die bisherigen Dokumente werden nach
+Funktion migriert:
 
 | Bisheriger Inhalt | Zielort |
 | --- | --- |
-| kurze globale Rollen-, Sprach-, Stil- und Coachingregeln | deutsche MCP-Server-`instructions` |
-| Regeln für genau einen Ablauf | Toolbeschreibung und Ein-/Ausgabeschema |
+| Rolle, Sprache, Stil, Dialogzyklus und allgemeine Coachingregeln | `ai/openai plugin/skillpilot-coach-de/skills/skillpilot-coach-de/SKILL.md` |
+| ausführliche Didaktik, Mastery-Evidenz, ungewöhnliche Lösungswege und Prüfungsverhalten | `ai/openai plugin/skillpilot-coach-de/skills/skillpilot-coach-de/references/coaching-policy.md` |
+| wenige werkzeugübergreifende Zustands-, Session- und Fail-closed-Regeln | kurze deutsche MCP-Server-`instructions` |
+| Regeln und Vorbedingungen für genau ein Werkzeug | Toolbeschreibung und Ein-/Ausgabeschema |
 | zustandsabhängige Aufgabe, Rubrik, Recall- oder Exam-Regel | dynamisches `structuredContent` des jeweiligen Tools |
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
 | Widgetdarstellung | später `_meta`; niemals fachliche Modellanweisung |
 
-Die fachliche Ausgangsbasis sind insbesondere die aktuellen Dokumente
-`coaching_and_mastery.md` und `exam_proctor.md` der Visible-Session-Pakete sowie
-die ursprünglichen deutschen Systeminstruktionen. Nicht übernommen werden die
-transportbezogenen sichtbaren Relay-Regeln.
+Die bewährte fachlich-didaktische Ausgangsbasis liegt unter
+`ai/openai custom gpt`, insbesondere in `system_instructions.de.md` sowie den
+deutschen Dokumenten zu Lerncoach, Mastery, Prüfung, Zustandsmaschine,
+Fehlerbehandlung und Deep Links. Bereits fachlich verbesserte Regeln aus dem
+Visible-Session-Paket, etwa zur fairen Anerkennung gleichwertiger Lösungswege,
+haben Vorrang. Nicht übernommen werden alte Startcode-, Action-,
+`chatSessionToken`-, Linkkonstruktions- und sichtbare Relayregeln.
+
+Während des Piloten bleiben die heutigen ausführlichen Server-Instruktionen
+unverändert als App-only-Rollback bestehen. Erst nach nachgewiesener
+Verhaltensparität mit explizit gewähltem Skill werden die Regeln an ihre
+Zielorte verschoben und die Server-Instruktionen ausgedünnt.
 
 Die vollständige Quellen-/Zielmatrix einschließlich der bewusst obsoleten
 Relay-Regeln und der verbleibenden modellseitigen Grenzen steht in
@@ -935,13 +953,30 @@ Mastery-, Curriculum- oder Coach-Semantik:
    nachweisen und Context-Rehydration mit beiden separat prüfen;
 6. eine verwendete Altclient-Allowlist nach erfolgreichem Cutover aus dem
    Environment entfernen und die vollständige Workflow-Paritätsmatrix
-   weiterführen.
+   weiterführen;
+7. das versionierte deutsche Plugin-/Skill-Quellpaket beibehalten und, sobald
+   die echte registrierte App-ID vorliegt, mit `plugin-creator` ausschließlich
+   um die lokale `.app.json`-Abbildung ergänzen;
+8. den bereits aus dem bewährten Custom-GPT-Korpus und den aktuellen
+   `COACH-*`-Policies abgeleiteten, implizit deaktivierten Coach-Skill gegen
+   App-only-Baseline, Golden Journeys sowie positive und negative
+   Aktivierungsfälle im realen Host testen;
+9. die implementierten Backendguards für die aktuelle veröffentlichte
+   Curriculumsmenge und das aktuelle sichtbare aktive Recall-Merkziel als
+   Regression-Gates beibehalten;
+10. erst nach diesem Paritäts- und Backendgate die monolithischen
+   Server-Instruktionen
+   schrittweise auf werkzeugübergreifende Invarianten reduzieren.
 
 Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
 [openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
 
 ## 13. Offizielle OpenAI-Grundlagen
 
+- [OpenAI: Plugin-Architektur](https://developers.openai.com/plugins/concepts/plugins)
+- [OpenAI: Skills bauen](https://developers.openai.com/plugins/build/skills)
+- [OpenAI: Plugins paketieren](https://developers.openai.com/plugins/build/plugins)
+- [OpenAI: MCP-Server-Instruktionen und Toolmetadaten](https://developers.openai.com/plugins/build/mcp-server)
 - [OpenAI: Plugin authentication und OAuth-Metadaten](https://developers.openai.com/plugins/build/auth)
 - [OpenAI: Client identification](https://developers.openai.com/plugins/build/auth#client-identification)
 - [OpenAI: Client registration und Authentisierung](https://developers.openai.com/plugins/build/auth#client-registration)

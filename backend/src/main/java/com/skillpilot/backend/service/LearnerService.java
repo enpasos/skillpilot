@@ -879,15 +879,18 @@ public class LearnerService {
         return new ClientStateResponse("ok", Instant.now(), storedKeys);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public VerifiedRecallPromptResponse startVerifiedRecall(
             String skillpilotId,
             String language,
             VerifiedRecallStartRequest request) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         VerifiedRecallContext context = resolveVerifiedRecallContext(
                 skillpilotId,
                 request != null ? request.goalId() : null,
-                language);
+                language,
+                learner);
         return buildVerifiedRecallPromptResponse(
                 skillpilotId,
                 language,
@@ -895,7 +898,7 @@ public class LearnerService {
                 normalizeVerifiedRecallBatchSize(request != null ? request.batchSize() : null));
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             String skillpilotId,
             String language,
@@ -904,7 +907,10 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "verified-recall answer requires cardId.");
         }
-        VerifiedRecallContext context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context =
+                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
         SrsCard card = findSrsCard(context.cards(), request.cardId());
         if (card == null) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -933,9 +939,10 @@ public class LearnerService {
                     "verified-recall result requires passed=true or passed=false.");
         }
 
-        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        VerifiedRecallContext context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language);
+        VerifiedRecallContext context =
+                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
         SrsCard card = findSrsCard(context.cards(), request.cardId());
         if (card == null) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -1013,24 +1020,12 @@ public class LearnerService {
         }
     }
 
-    private VerifiedRecallContext resolveVerifiedRecallContext(String skillpilotId, String requestedGoalId, String language) {
-        Learner learner = getLearner(skillpilotId);
-        String goalId = requestedGoalId != null && !requestedGoalId.isBlank()
-                ? requestedGoalId.trim()
-                : learner.getActiveGoalId();
-        if (goalId == null || goalId.isBlank()) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "No active memorization goal. Set an active goal or provide goalId.");
-        }
-
-        LearningGoal goal = landscapeService.getGoalDefinition(goalId);
-        if (goal == null) {
-            throw new ResponseStatusException(NOT_FOUND, "Goal not found");
-        }
-        if (!isSrsGoal(goal)) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "The selected goal is not a memorization/SRS goal.");
-        }
+    private VerifiedRecallContext resolveVerifiedRecallContext(
+            String skillpilotId,
+            String requestedGoalId,
+            String language,
+            Learner lockedLearner) {
+        LearningGoal goal = requireActiveVisibleMemoryGoal(lockedLearner, requestedGoalId);
         String source = getVocabularySource(goal, language);
         if (source == null || source.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -1043,6 +1038,67 @@ public class LearnerService {
                     "No cards match this memorization goal.");
         }
         return new VerifiedRecallContext(goal, cards, loadSrsState(skillpilotId, goal.getId()));
+    }
+
+    private LearningGoal requireActiveVisibleMemoryGoal(
+            Learner learner,
+            String requestedGoalId) {
+        if (learner == null
+                || learner.getSkillpilotId() == null
+                || learner.getSkillpilotId().isBlank()
+                || learner.getSelectedCurriculum() == null
+                || learner.getSelectedCurriculum().isBlank()) {
+            throw verifiedRecallActiveGoalConflict();
+        }
+
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(),
+                learner.getPersonalCurriculum());
+        String activeGoalId = resolveGoalIdInVisibleGoals(
+                learner.getActiveGoalId(),
+                projection.visibleGoals(),
+                false);
+        String requestedProjectedGoalId =
+                requestedGoalId == null || requestedGoalId.isBlank()
+                        ? activeGoalId
+                        : resolveGoalIdInVisibleGoals(
+                                requestedGoalId.trim(),
+                                projection.visibleGoals(),
+                                false);
+        if (activeGoalId == null
+                || requestedProjectedGoalId == null
+                || !activeGoalId.equals(requestedProjectedGoalId)
+                || !projection.targetGoalIds().contains(activeGoalId)) {
+            throw verifiedRecallActiveGoalConflict();
+        }
+
+        List<String> plannedIds = resolveProjectedTargetFocusIds(
+                getStoredPlannedGoals(learner.getSkillpilotId()),
+                projection);
+        List<String> plannedScopeIds = resolveProjectedTargetScopeIds(
+                plannedIds,
+                projection);
+        if (isGoalOutOfPlannedScope(
+                activeGoalId,
+                plannedScopeIds,
+                projection.structuralGoals(),
+                null)) {
+            throw verifiedRecallActiveGoalConflict();
+        }
+
+        LearningGoal goal = projection.visibleGoals().get(activeGoalId);
+        if (goal == null
+                || !"atomic".equalsIgnoreCase(resolveNodeType(goal))
+                || !isSrsGoal(goal)) {
+            throw verifiedRecallActiveGoalConflict();
+        }
+        return goal;
+    }
+
+    private ResponseStatusException verifiedRecallActiveGoalConflict() {
+        return new ResponseStatusException(
+                org.springframework.http.HttpStatus.CONFLICT,
+                "Verified Recall requires the current active learner-facing atomic memorization/SRS goal.");
     }
 
     private List<SrsCard> filterSrsCards(LearningGoal goal, List<SrsCard> cards) {
@@ -2100,6 +2156,10 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public void assertWritableLearningSession(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
+        assertWritableLearningSession(learner);
+    }
+
+    private void assertWritableLearningSession(Learner learner) {
         if (!isReadOnlyCompatibilitySession(learner)
                 && !isReadOnlyLowerSecondaryLegacySession(learner)
                 && !isReadOnlyBavariaLegacySession(learner)) {
@@ -2233,6 +2293,35 @@ public class LearnerService {
     public void setCurriculum(String skillpilotId, String curriculumId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        applyCurriculumSelection(learner, curriculumId);
+    }
+
+    @Transactional
+    public void setCurriculumFromPublicCatalog(String skillpilotId, String curriculumId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        assertWritableLearningSession(learner);
+
+        String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();
+        if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "curriculumId must not be empty.");
+        }
+        long publishedMatches = getAvailableBaseCurricula(false).stream()
+                .filter(Objects::nonNull)
+                .filter(summary -> effectiveCurriculumId.equals(summary.getCurriculumId()))
+                .limit(2)
+                .count();
+        if (publishedMatches != 1) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected curriculum is no longer available in the current public catalog.");
+        }
+
+        applyCurriculumSelection(learner, effectiveCurriculumId);
+    }
+
+    private void applyCurriculumSelection(Learner learner, String curriculumId) {
         String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();
         if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2252,12 +2341,15 @@ public class LearnerService {
             // Level 2 and Level 3a belong to the selected root. Level 4 mastery
             // remains global and is deliberately not touched here.
             learner.setPersonalCurriculum(null);
-            plannedGoalRepository.deleteByLearner_SkillpilotId(skillpilotId);
+            plannedGoalRepository.deleteByLearner_SkillpilotId(learner.getSkillpilotId());
             learner.setActiveGoalId(null);
         }
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
-        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CURRICULUM_UPDATE"));
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this,
+                learner.getSkillpilotId(),
+                "CURRICULUM_UPDATE"));
     }
 
     @Transactional
@@ -5814,7 +5906,7 @@ public class LearnerService {
 
         if (curriculumId == null) {
             requiredAction = "setCurriculum";
-            curriculumOptions = getAvailableBaseCurricula();
+            curriculumOptions = getAvailableBaseCurricula(false);
         } else if (personalizationRequired) {
             requiredAction = "setPersonalization";
         } else if (activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)) {

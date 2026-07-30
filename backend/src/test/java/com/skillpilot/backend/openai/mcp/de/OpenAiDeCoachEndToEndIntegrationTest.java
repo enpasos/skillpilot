@@ -76,6 +76,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String PERMANENT_SKILLPILOT_ID = "SP-E2E-PERMANENT-ID-MUST-NOT-LEAK";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String LEGACY_HIDDEN_CURRICULUM_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
+    private static final String COMPATIBILITY_CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
     private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
@@ -420,6 +422,45 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertMcpPayloadDoesNotExposeIdentity(resumed, applicationSubject);
         assertThat(result(resumed).path("structuredContent").path("requiredAction").asText())
                 .isEqualTo("setCurriculum");
+
+        HttpResponse<String> curriculumNavigation = callTool(
+                accessToken,
+                22,
+                OpenAiDeCoachMcpContract.GET_NAVIGATION,
+                "{\"target\":\"curriculum\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(curriculumNavigation, applicationSubject);
+        JsonNode publishedCurriculumOptions =
+                result(curriculumNavigation).path("structuredContent").path("options");
+        assertThat(publishedCurriculumOptions.valueStream()
+                .map(option -> option.path("id").asText())
+                        .toList())
+                .contains(CURRICULUM_ID)
+                .doesNotContain(
+                        MATHEMATICS_CURRICULUM_ID,
+                        LEGACY_HIDDEN_CURRICULUM_ID,
+                        COMPATIBILITY_CURRICULUM_ID);
+
+        HttpResponse<String> unpublishedCurriculumWrite = callTool(
+                accessToken,
+                23,
+                OpenAiDeCoachMcpContract.SET_CURRICULUM,
+                "{\"curriculumId\":\"" + MATHEMATICS_CURRICULUM_ID + "\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(unpublishedCurriculumWrite, applicationSubject);
+        JsonNode unpublishedCurriculumResult =
+                objectMapper.readTree(unpublishedCurriculumWrite.body()).path("result");
+        assertThat(unpublishedCurriculumResult.path("isError").asBoolean()).isTrue();
+        assertThat(unpublishedCurriculumResult.path("structuredContent").path("status").asText())
+                .isEqualTo("conflict");
+        assertThat(unpublishedCurriculumResult.path("structuredContent").path("stateChanged").asBoolean())
+                .isFalse();
+        assertThat(unpublishedCurriculumResult.path("structuredContent")
+                        .path("reloadContextAtMostOnce")
+                        .asBoolean())
+                .isTrue();
+        assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getSelectedCurriculum())
+                .isNull();
 
         HttpResponse<String> write = callTool(
                 accessToken,
