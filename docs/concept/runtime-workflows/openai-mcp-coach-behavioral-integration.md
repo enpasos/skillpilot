@@ -1,7 +1,9 @@
 # Verhaltensintegration des deutschen MCP-Lerncoaches
 
-**Stand:** 27. Juli 2026  
+**Stand:** 30. Juli 2026
+
 **Status:** lebendes, normatives Leitdokument und übergreifende Produktaufgabe  
+
 **Kurzname:** Coach-Verhaltensintegration
 
 ## 1. Auftrag
@@ -13,8 +15,11 @@ MCP erreichbar zu machen. Sie lautet:
 > wieder einen zusammenhängenden, verlässlichen und für Lernende natürlichen
 > Coach zu bilden.
 
-Der frühere Custom-GPT-Coach ist dafür die beobachtete Verhaltensbaseline. Seine
-technische Architektur und insbesondere das sichtbare Relay-Protokoll werden
+Der frühere Custom-GPT-Coach ist dafür die beobachtete Verhaltensbaseline. Die
+bewährten deutschen Inhalte unter
+[`ai/openai custom gpt`](<../../../ai/openai custom gpt/>) sind der
+Migrationskorpus für den künftigen Coach-Skill. Seine technische Architektur,
+alte Action-Methoden und insbesondere das sichtbare Relay-Protokoll werden
 nicht zurückgebaut. Wiederhergestellt werden sollen die Qualitäten, die aus
 Sicht der lernenden Person entscheidend waren:
 
@@ -220,21 +225,23 @@ Curriculumsmutation.
 - Der Coach darf nach einem Fehler keinen Erfolg vermuten, keinen Zustand
   weiterschreiben und keinen allgemeinen Lernpfad als Ersatz erfinden.
 
-## 6. Wie die früheren Instructions und Knowledge-Regeln heute wirken
+## 6. Wie die früheren Instructions und Knowledge-Regeln heute und künftig wirken
 
 Eine MCP-App besitzt keine Custom-GPT-Knowledge-Fläche, aus der das Modell
 automatisch alle früheren Dokumente als dauerhaftes Hintergrundwissen erhält.
-Das gewünschte Verhalten wird deshalb bewusst auf mehrere
+Das kombinierte Ziel-Plugin bündelt deshalb einen Coach-Skill mit der
+registrierten MCP-App. Das gewünschte Verhalten wird bewusst auf mehrere
 Durchsetzungsschichten verteilt:
 
-| Schicht | Aufgabe |
+| Zielschicht | Aufgabe |
 | --- | --- |
-| dieses Leitdokument und fachliche Quelldokumente | menschenlesbare, normative Produktregeln |
-| statische MCP-Server-Instruktionen | immer geltende Rolle, Sicherheits- und Dialogregeln |
-| einfache Toolnamen, Beschreibungen und Eingabeschemas | dem Modell verständlich machen, wann und wie ein Werkzeug verwendet wird |
+| dieses Leitdokument und der bewährte Custom-GPT-Korpus | menschenlesbare Produktnorm und fachlich-didaktische Migrationsquelle |
+| Plugin-Skill | Coachrolle, Didaktik, Dialogzyklus, Toolreihenfolge, Ausgabe- und Stopregeln |
+| kurze MCP-Server-Instruktionen | nur wenige über alle Werkzeuge geltende Invarianten |
+| einfache Toolnamen, Beschreibungen und Eingabeschemas | dem Modell verständlich machen, wann und wie genau dieses Werkzeug verwendet wird |
 | frische `policies` und `instruction` im projizierten Zustand | nur im aktuellen Zustand relevante Regeln und nächster Schritt |
 | Backendzustandsmaschine und Guards | fachlich und sicherheitlich harte Invarianten |
-| Acceptance-Szenarien und Tool-Traces | nachweisen, dass die Schichten als Gesamtsystem wirken |
+| Activation-Evaluation, Acceptance-Szenarien und Tool-Traces | getrennt nachweisen, dass der Skill richtig aktiviert wird und das Gesamtsystem richtig handelt |
 
 OpenAI beschreibt für Remote-MCP-Werkzeuge, dass Tooldefinitionen dem Modell
 bereitgestellt werden und das Modell abhängig vom Kontext über Aufrufe
@@ -244,17 +251,33 @@ LLM-gerechte Schemas und frische zustandsbezogene Ergebnisse Teil des
 Produktverhaltens und keine bloße technische Dokumentation. Sie ersetzen
 jedoch keine Backendguards.
 
-Aktuell liegen die Regeln technisch verteilt in:
+Im aktuellen Übergangszustand liegen die Regeln technisch verteilt in:
 
+- dem noch nicht produktiv aktivierten Quellskill unter
+  `ai/openai plugin/skillpilot-coach-de/skills/skillpilot-coach-de`;
 - `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS`;
 - den Toolverträgen in `OpenAiDeCoachMcpContract`;
 - den dynamischen Policies und Instruktionen in
   `OpenAiDeCoachContextProjector`;
 - den Domainservices, der Zustandsprojektion und ihren Guards.
 
-Die früheren sieben Knowledge-Dokumente bleiben fachliche Ausgangsspezifikation.
-Sie werden nicht zur Laufzeit hochgeladen oder automatisch als MCP-Resource
-eingelesen.
+Die ausführlichen Server-Instruktionen bleiben während des Skill-Piloten als
+Kompatibilitätsschicht bestehen. Erst nach nachgewiesener Golden-Journey- und
+Fehlerfallparität werden Coachrolle, Stil und Dialogablauf daraus entfernt.
+Session-, Zustands- und Fail-closed-Invarianten bleiben dort in kurzer Form;
+konkrete Aufrufbedingungen verbleiben an den Tools.
+
+Die deutschen Dateien `system_instructions.de.md` und `knowledge_docs/*.de.md`
+unter `ai/openai custom gpt` bleiben fachlich-didaktische
+Ausgangsspezifikation. Sie werden nicht zur Laufzeit hochgeladen oder
+automatisch als MCP-Resource eingelesen. Verwendet werden insbesondere Rolle
+und Stil, Scaffolding und Feynman-Loop, ungewöhnliche Lösungswege,
+Mastery-Evidenz, Prüfungsführung und ehrliche Fehlerkommunikation.
+
+Nicht migriert werden `startCode`, `chatSessionToken`, `redeemStartCode`, alte
+Action-Operations, sichtbare Relaywerte oder modellseitig konstruierte Deep
+Links. Ihr fachlicher Zweck wird auf die aktuelle OAuth-,
+`learningSessionId`-, MCP- und backendgenerierte Linkgrenze abgebildet.
 
 ### 6.1 Ziel für die Regelpflege
 
@@ -262,7 +285,8 @@ Jede produktionsrelevante Coach-Regel benötigt künftig eine stabile
 Policy-Referenz und eine geschlossene Nachweiskette:
 
 ```text
-menschenlesbare Regel
+bewährte Quellstelle unter ai/openai custom gpt
+  -> menschenlesbare COACH-Policy
   -> wirksame Laufzeitschicht
   -> mindestens ein Acceptance-Szenario
   -> erwartete und verbotene Toolaufrufe
@@ -272,7 +296,9 @@ menschenlesbare Regel
 
 Eine Regel ist erst vollständig migriert, wenn diese Kette geschlossen ist.
 Eine monolithische Rieseninstruktion ist ebenso wenig das Ziel wie die
-Verteilung wichtiger Regeln auf nicht auffindbare Codefragmente.
+Verteilung wichtiger Regeln auf nicht auffindbare Codefragmente. Jede Regel
+hat genau einen primären Zielort; zusätzliche Defense-in-depth-Orte werden
+ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 
 ## 7. Verbindliche Verhaltensregeln
 
@@ -641,7 +667,11 @@ durch. Dokumentiere anschließend, was bewiesen ist und was noch offen bleibt.
 
 ## 17. Referenzen
 
+- [OpenAI: Plugin-Architektur](https://developers.openai.com/plugins/concepts/plugins)
+- [OpenAI: Skills bauen](https://developers.openai.com/plugins/build/skills)
 - [OpenAI: Connectors and remote MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)
+- `ai/openai custom gpt/system_instructions.de.md`
+- `ai/openai custom gpt/knowledge_docs/`
 - `ai/openai-custom-gpt-visible-session/de/system_instructions.md`
 - `ai/openai-custom-gpt-visible-session/de/knowledge_docs/`
 - `backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContract.java`

@@ -119,7 +119,7 @@ public class CoachToolFacade {
     /** Read-only curriculum catalog for authenticated, ID-based coach adapters. */
     public List<LandscapeSummary> getCurriculumOptions(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getAvailableBaseCurricula();
+        return learnerService.getAvailableBaseCurricula(false);
     }
 
     /** Metadata-driven next personalization stage for the selected curriculum. */
@@ -258,8 +258,7 @@ public class CoachToolFacade {
     }
 
     public UnifiedLearnerStateResponse setCurriculum(String skillpilotId, UpdateCurriculumRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+        learnerService.setCurriculumFromPublicCatalog(skillpilotId, request.getCurriculumId());
         return learnerService.getLearnerState(skillpilotId);
     }
 
@@ -297,7 +296,7 @@ public class CoachToolFacade {
     /** Read-only catalog access used for explicit mid-session curriculum navigation. */
     public List<LandscapeSummary> getSessionCurriculumOptions(String sessionToken) {
         resolveSessionLearnerId(sessionToken);
-        return learnerService.getAvailableBaseCurricula();
+        return learnerService.getAvailableBaseCurricula(false);
     }
 
     /** Read-only personalized scope roots for an explicit mid-session focus switch. */

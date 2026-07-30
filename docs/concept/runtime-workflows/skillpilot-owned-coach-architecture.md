@@ -1,6 +1,6 @@
-# SkillPilot-Lerncoach: providergehostete MCP-App-Architektur
+# SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur
 
-**Stand:** 26. Juli 2026
+**Stand:** 30. Juli 2026
 
 **Status:** Die deutsche data-only App ist der aktuelle deutsche Architekturpfad
 und im Spring-Boot-Fachkern integriert. Die App authentisiert sich mit genau
@@ -12,7 +12,16 @@ exakt 24 Stunden gültige Lernsession. Ihre Referenz wird automatisch in die
 vorbereitete Startnachricht und anschließend in jeden fachlichen MCP-Aufruf
 übernommen. Visible Session ist nur Rollback beziehungsweise möglicher
 englischer Übergang. Widget und englische App folgen erst nach stabiler
-deutscher Freigabe.
+deutscher Freigabe. Das geschärfte Distributionsziel ist je Sprache ein Plugin,
+das einen fokussierten Coach-Skill mit dem direkt zur Prüfung eingereichten
+sprachspezifischen MCP-Server verbindet. Das versionierte deutsche Quellpaket
+liegt unter
+[`ai/openai plugin/skillpilot-coach-de`](<../../../ai/openai plugin/skillpilot-coach-de/>)
+und bindet den produktiven Endpunkt direkt über `.mcp.json` ein. Eine
+`.app.json`-Abbildung wird erst mit einer echten registrierten App-ID ergänzt.
+Der Skill ist noch nicht produktiv ausgerollt; bis zu seiner
+nachgewiesenen Verhaltensparität bleiben die heutigen ausführlichen
+MCP-Server-Instruktionen die Kompatibilitätsschicht.
 
 Der konkrete DE-first-Umsetzungs-, Cutover- und Rollbackplan steht in
 [openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
@@ -29,23 +38,35 @@ und überprüfbare Freigabekriterien.
 
 ## 1. Management Summary
 
-SkillPilot soll den Lerncoach primär als **providergehostete MCP App** anbieten.
-Das Modell, der freie Chat und die App-Oberfläche laufen in ChatGPT beziehungsweise
-später Claude; Curriculum, Scope, aktives Lernziel, Frontier, Mastery, Recall und
-Prüfungszustand bleiben autoritativ im SkillPilot-Backend.
+SkillPilot soll den deutschen Lerncoach öffentlich als **OpenAI-Plugin aus
+Coach-Skill und direkt eingereichtem MCP-Server** anbieten. Das Plugin ist der
+installierbare Distributionscontainer. Der Skill beschreibt den wiederholbaren
+Coaching-Workflow; der MCP-Server stellt Live-Daten, Authentisierung und
+kontrollierte Aktionen bereit. Das Modell, der freie Chat und eine optionale
+App-Oberfläche laufen in ChatGPT beziehungsweise später Claude; Curriculum,
+Scope, aktives Lernziel, Frontier, Mastery, Recall und Prüfungszustand bleiben
+autoritativ im SkillPilot-Backend.
 
-Langfristig werden für ChatGPT **zwei eigenständig registrierte Apps** gebaut:
+Langfristig werden für ChatGPT **zwei eigenständig veröffentlichte
+Plugin-Einreichungen** gebaut:
 
-- **SkillPilot Coach (Deutsch)** mit eigenem MCP-Endpunkt, deutschem Toolvertrag,
-  zunächst ohne Widget und mit eigener Acceptance Suite;
-- **SkillPilot Coach English** mit eigenem MCP-Endpunkt, englischem Toolvertrag,
-  später eigenem Widget und eigener Acceptance Suite.
+- **SkillPilot Coach (Deutsch)** mit deutschem Coach-Skill, direkt eingereichtem
+  deutschem MCP-Server, eigenem MCP-Endpunkt, deutschem Toolvertrag, zunächst
+  ohne Widget und mit eigener Acceptance Suite;
+- **SkillPilot Coach English** mit eigenem englischen Coach-Skill, eigener
+  englischer MCP-Server-Einreichung, eigenem MCP-Endpunkt, später eigenem Widget
+  und eigener Acceptance Suite.
 
 Beide Apps dürfen dieselben internen SkillPilot-Domain-Services und zunächst auch
 denselben Deployment-Prozess verwenden. Ihre externe Oberfläche wird jedoch nicht
 zu einem sprachumschaltenden Universalvertrag zusammengelegt. Robustheit,
 getrennte Freigabe und unabhängiger Rollback sind wichtiger als die Eleganz einer
 einzigen App.
+
+Terminologisch bezeichnet **MCP-App** hier das bei OpenAI registrierte
+Produkt beziehungsweise dessen Verbindung. Die technische Fähigkeitsschicht
+ist der von SkillPilot betriebene **MCP-Server**; `.app.json` ist nur die
+Kompatibilitätsabbildung dieser registrierten Verbindung in ein lokales Plugin.
 
 Diese Architektur erfüllt die wirtschaftliche Kernanforderung nur dann, wenn der
 jeweilige Provider die App im Zieltarif tatsächlich zur Verfügung stellt:
@@ -72,7 +93,7 @@ fest bepreisten Tarif sind deshalb verbindliche Produkt-Acceptance-Gates.
 | SkillPilot bleibt fachliche Autorität. | Der Provider erhält sichere Projektionen; jede relevante Mutation wird im Backend autorisiert, validiert und persistiert. |
 | Kein Vertrauen in Chat-Kontextretention. | Zustand wird bei Bedarf frisch aus dem Backend geladen. Verdeckte Action-Ergebnisse aus früheren Turns sind keine Voraussetzung. |
 | Keine dauerhafte SkillPilot-ID beim Provider. | OAuth autorisiert die App. Eine getrennte, automatisch transportierte 24h-Lernsession adressiert den Lernenden; die permanente interne SkillPilot-ID wird weder Toolargument noch Toolergebnis. |
-| Deutsch und Englisch funktionieren solide. | Zwei separat registrierte Apps mit getrennten Verträgen, Ressourcen, Tests, Veröffentlichung und Telemetrie. |
+| Deutsch und Englisch funktionieren solide. | Zwei getrennte Plugin-/App-Pakete mit eigenen Skills, Verträgen, Ressourcen, Tests, Veröffentlichung und Telemetrie. |
 | Bestehende Arbeit bleibt reversibel. | Visible-Session- und Legacy-Custom-GPT-Quellen bleiben getrennte, unveränderte Rückfallpfade. |
 | Vollständige Lernabläufe statt Methodenparität. | Freigabe erfolgt gegen Nutzerreisen und fachliche Invarianten, nicht gegen eine 1:1-Kopie alter Endpunkte. |
 
@@ -81,12 +102,12 @@ für diese Zielarchitektur ausdrücklich **keine Primäroption**: Sie würde die
 zentrale Kosten- und Zahlungsanforderung verletzen. Ein nicht-generatives
 SkillPilot-Cockpit bleibt als robuste Degradation sinnvoll.
 
-## 3. Warum zwei Apps statt einer App mit Sprachumschaltung?
+## 3. Warum zwei Plugin-/App-Pakete statt eines Pakets mit Sprachumschaltung?
 
 Die Entscheidung betrifft die **externe Produkt- und Vertragsgrenze**, nicht die
 interne Codewiederverwendung.
 
-### 3.1 Gründe für zwei registrierte Apps
+### 3.1 Gründe für zwei getrennte Pakete
 
 1. **Eindeutigere Toolauswahl:** Namen, Beschreibungen, Beispiele und
    Instruktionen sind vollständig in einer Sprache. Das reduziert konkurrierende
@@ -108,7 +129,8 @@ interne Codewiederverwendung.
 ### 3.2 Was trotzdem gemeinsam bleibt
 
 - Curriculum-Katalog und Composition-View-Auflösung;
-- Autorisierung und Abbildung eines Provider-Subjekts auf einen Lernenden;
+- OAuth-Appautorisierung und davon getrennte Auflösung der expliziten
+  Lernsession auf einen Lernenden;
 - reine Coach-State-Projektion;
 - Scope-, Ziel-, Mastery-, Recall- und Exam-Use-Cases;
 - Idempotenz-, Receipt-, Concurrency- und Auditmechanismen;
@@ -130,9 +152,10 @@ App-Registrierung EN  -> MCP-Endpunkt EN -> Vertrag EN -> Widget EN
 ```
 
 Für ChatGPT ist das Ziel daher zwei unabhängig review- und veröffentlichbare
-App-/Plugin-Registrierungen. Ob sie auf demselben Origin betrieben werden, ist
-eine Betriebsentscheidung; der Endpunktpfad und der veröffentlichte Vertrag
-bleiben getrennt.
+Plugins. Jedes bündelt genau einen sprachspezifischen Coach-Skill mit genau
+einer registrierten sprachspezifischen MCP-App. Ob die MCP-Endpunkte auf
+demselben Origin betrieben werden, ist eine Betriebsentscheidung; Skill,
+Appregistrierung, Endpunktpfad und veröffentlichter Vertrag bleiben getrennt.
 
 ## 4. Produkt- und Zahlungsmodell
 
@@ -142,7 +165,9 @@ Lernende Person
   |-- installiert/verbindet die SkillPilot-App beim Provider
   v
 Provider-Host (ChatGPT, später Claude)
-  |-- stellt Modell und Chat bereit
+  |-- installiert das sprachspezifische Plugin
+  |-- lädt dessen Coach-Skill und registrierte MCP-App
+  |-- stellt Modell, Chat und optionale MCP-UI bereit
   |-- ruft SkillPilot-MCP-Tools im Namen der Person auf
   v
 SkillPilot-MCP-Grenze
@@ -164,11 +189,13 @@ Folgende Aussagen dürfen erst nach realem Provider-Test gemacht werden:
 - „in der vorgesehenen Region, auf Web und Mobilgerät verfügbar“;
 - „für die vorgesehene Alters- und Workspace-Gruppe zulässig“.
 
-OpenAI dokumentiert, dass Plugins der zentrale Veröffentlichungsweg sind und eine
-MCP-App als App-only-Plugin oder gemeinsam mit Skills eingereicht werden kann.
-Installation und Nutzung können dennoch von Tarif, Workspace-Einstellungen,
-Rolle, Oberfläche, Region und Appfunktionen abhängen. Diese Produktabhängigkeit
-ist kein Implementierungsdetail, sondern ein Go-/No-Go-Kriterium.
+OpenAI dokumentiert, dass Plugins der zentrale Veröffentlichungsweg sind und
+Skills mit einer registrierten MCP-Verbindung bündeln können. Für SkillPilot
+ist diese kombinierte Form das Ziel; ein App-only-Plugin bleibt nur
+Übergangs- und Rollbackform. Installation und Nutzung können dennoch von Tarif,
+Workspace-Einstellungen, Rolle, Oberfläche, Region und Appfunktionen abhängen.
+Diese Produktabhängigkeit ist kein Implementierungsdetail, sondern ein
+Go-/No-Go-Kriterium.
 
 ## 5. Technischer Auslöser und Architekturgrenze
 
@@ -214,15 +241,16 @@ Zuverlässigkeit bleibt Teil der Acceptance Suite.
 ## 6. Zielarchitektur
 
 ```text
-                           OpenAI
-             .---------------------------------.
-             | ChatGPT + Plugin-Verzeichnis    |
-             |                                 |
-             |  App DE          App EN (später)|
-             |  data-only       Widget optional|
-             '-----|---------------|-----------'
-                   | HTTPS/MCP     | HTTPS/MCP
-                   v               v
+                              OpenAI
+             .-----------------------------------------.
+             | ChatGPT + Plugin-Verzeichnis            |
+             |                                         |
+             | Plugin DE             Plugin EN (später)|
+             | Skill DE + App DE     Skill EN + App EN |
+             | data-only             Widget optional   |
+             '---------|-------------------|-----------'
+                       | HTTPS/MCP         | HTTPS/MCP
+                       v                   v
              .---------------------------------.
              | SkillPilot Provider Boundary    |
              |                                 |
@@ -251,8 +279,10 @@ Claude App/MCP DE + EN -> eigener Provideradapter -> derselbe SafeCoachRuntime
 
 | Schicht | Verantwortung | Darf nicht |
 | --- | --- | --- |
-| Provider-Host | Modell, Chat, Toolauswahl, Darstellung der App | fachlichen Zustand autoritativ festlegen |
-| Sprachspezifische App | lokalisierte Tools, UI, Toolmetadaten und Hostinteraktion | einen Universalvertrag durch Laufzeit-Sprachflags simulieren |
+| Provider-Host | Modell, Chat, Skillaktivierung, Toolauswahl und Darstellung der App | fachlichen Zustand autoritativ festlegen oder Skillbefolgung garantieren |
+| Sprachspezifisches Plugin | Skill und direkt eingereichten MCP-Server als öffentliches Produkt verbinden; lokal die registrierte Verbindung referenzieren | eigenen Lernzustand oder eine zweite Fachruntime einführen |
+| Coach-Skill | Coachingrolle, Dialogablauf, Toolreihenfolge, Ausgabeform und begrenzte Fehlerbehandlung | Fakten, Berechtigungen, Zustandsübergänge oder Persistenz garantieren |
+| Sprachspezifische MCP-App | lokalisierte Tools, optionale UI, Toolmetadaten, Authentisierung und Hostinteraktion | einen Universalvertrag durch Laufzeit-Sprachflags simulieren oder den Skill als Sicherheitsgrenze behandeln |
 | Provider Boundary | OAuth, Scopes, Rate Limits, sichere Projektion, Tool-zu-Use-Case-Abbildung | rohe interne DTOs oder Identitäten weiterreichen |
 | SafeCoachRuntime | freigegebene Queries und Commands, frische Revalidierung und fachliche Transaktionsgrenzen | Modellargumente als Berechtigung behandeln |
 | SkillPilot-Domain | Curriculum, Lernpfad, Mastery, Recall, Exam und Persistenz | vom Chatverlauf als Datenbank abhängen |
@@ -268,6 +298,143 @@ Sicherheitsgrenze für eine Instanz. Sobald mehrere Backendinstanzen hinter eine
 Proxy laufen, muss der vertrauenswürdige Reverse Proxy beziehungsweise das API-
 Gateway dasselbe Limit zusätzlich instanzübergreifend durchsetzen; das lokale
 Limit bleibt als zweite Barriere aktiv.
+
+### 6.2 Versioniertes Quellpaket, lokales Wiring und öffentlicher Zielzuschnitt
+
+Das implementierte deutsche Quellpaket hat folgende Struktur:
+
+```text
+ai/openai plugin/skillpilot-coach-de/
+├── .codex-plugin/
+│   └── plugin.json
+├── .mcp.json
+└── skills/
+    └── skillpilot-coach-de/
+        ├── SKILL.md
+        ├── agents/
+        │   └── openai.yaml
+        └── references/
+            └── coaching-policy.md
+```
+
+`plugin.json` identifiziert das Paket und verweist auf `./skills/` sowie
+`./.mcp.json`. Die MCP-Konfiguration bindet ausschließlich den produktiven
+deutschen HTTPS-Endpunkt ein. `agents/openai.yaml` deklariert dieselbe
+MCP-Abhängigkeit und beginnt im Pilot mit deaktivierter impliziter Aktivierung.
+Manifest, MCP-Bindung, Skill, Policy-Referenz und Aktivierungspolicy werden in
+CI gemeinsam geprüft.
+
+Für einen lokalen beziehungsweise Workspace-internen Test über eine bereits
+registrierte ChatGPT-Verbindung darf zusätzlich `.app.json` erzeugt und im
+Manifest referenziert werden. Diese Datei wird erst ergänzt, wenn die echte
+`plugin_asdk_app...`-ID vorliegt. Der technische Identifier wird durch die
+tatsächliche Registrierung und `plugin-creator` übernommen und nicht aus Namen
+oder URL hergeleitet.
+
+Für die öffentliche Einreichung ist `.app.json` dagegen kein
+Veröffentlichungsvehikel. Im OpenAI-Portal wird **With MCP** gewählt; der
+sprachspezifische Skill und der zugehörige MCP-Server werden direkt zur Prüfung
+eingereicht. Das öffentliche Ziel bleibt damit funktional
+**Coach-Skill plus MCP-Server**, auch wenn das lokale Pilotpaket die registrierte
+Verbindung später zusätzlich über `.app.json` referenziert.
+
+Das optionale Widget bleibt eine Ressource der MCP-App. Es gehört weder in den
+Skill noch bildet es eine weitere Zustands- oder Sicherheitsgrenze.
+
+### 6.3 Verbindlicher Ort jeder Regel
+
+| Regelart | Zielort | Beispiel |
+| --- | --- | --- |
+| wiederholbares Coach-Verhalten | `SKILL.md` und bei Bedarf `references/coaching-policy.md` | erst selbst lösen lassen, deutsche Dialogführung, Toolsequenz, Stoppen bei Fehlern |
+| werkzeugübergreifende MCP-Invariante | kurze Server-`instructions` | `learningSessionId` unverändert weitergeben; Backendzustand nicht erfinden |
+| Bedingung genau eines Werkzeugs | Toolname, Beschreibung und Schema | Bewertung erst nach Antwort; Context vor neuem Lernschritt |
+| aktuell zustandsabhängige Anweisung | frisches Toolergebnis | offene Scope-Auswahl, Prüfungsmodus, Recall-Batch |
+| fachliche oder sicherheitsrelevante Garantie | Backendguard und Domainlogik | Sessionbindung, zulässiger Übergang, aktives Ziel, Idempotenz, Mastery |
+| nachvollziehbare Produktnorm | dieses Leitdokument und Policy-Referenzen | Bedeutung und Verantwortlicher einer `COACH-*`-Regel |
+
+Die MCP-Server-Instruktionen werden im Zielzustand nicht zur
+Persönlichkeits- oder Coaching-Gesamtspezifikation. Sie enthalten nur wenige
+über alle Werkzeuge geltende Invarianten, mit der wichtigsten Aussage in den
+ersten 512 Zeichen. Toolbeschreibungen bleiben handlungsspezifisch. Der Skill
+orchestriert beide, ohne die Backendguards zu ersetzen.
+
+### 6.4 State- und Konfliktgrenze
+
+Das Plugin und der Skill besitzen keinen autoritativen Lernzustand. Auch bei
+einem protokollseitig stateless betriebenen MCP-Server bleibt
+`learningSessionId` ein expliziter, kurzlebiger **Anwendungszustand** im
+SkillPilot-Backend. Sie ist weder MCP-Transportsession noch Pluginzustand,
+Skill-Memory oder Chatkonversations-ID.
+
+Bei einem Widerspruch gilt:
+
+1. Ein Backendfehler oder Guard stoppt den Ablauf; der Skill darf ihn nicht
+   durch eine Vermutung umgehen.
+2. Der jüngste erfolgreiche Toolzustand ersetzt ältere Gesprächsannahmen.
+3. Ein Toolschema oder eine Toolbeschreibung begrenzt den zulässigen Aufruf;
+   der Skill erweitert diese Berechtigung nicht.
+4. Fehlt die erforderliche App, das Tool oder die gültige Lernsession, bricht
+   der Skill kontrolliert ab und erfindet keinen Offline-Lernpfad.
+
+Bekannte Aufrufbedingungen werden nicht allein deshalb zu Garantien, weil sie
+im Skill stehen. Der deutsche MCP-Vertrag lädt deshalb vor jeder Curriculumwahl
+die aktuell veröffentlichte Optionsmenge neu und bindet alle
+Verified-Recall-Operationen an das aktuelle sichtbare aktive atomische
+Memory-/SRS-Ziel. Ob vor Mastery, Sollantwort oder Exam-Evaluation tatsächlich
+ausreichende Chat-Evidenz vorlag, kann weiterhin erst ein eigener serverseitiger
+Evidence- oder Submission-Receipt hart beweisen.
+
+Der Merksatz lautet deshalb:
+
+> Der Skill gestaltet den Coach; SkillPilot entscheidet über den Lernpfad.
+
+### 6.5 Bewährter Coach-Inhalt als Migrationsquelle
+
+Der neue Skill wird inhaltlich nicht neu erfunden. Die fachlich und didaktisch
+bewährte deutsche Ausgangsbasis liegt unter
+[`ai/openai custom gpt`](<../../../ai/openai custom gpt/>). Insbesondere
+`system_instructions.de.md` sowie die deutschen Dokumente zu Lerncoach,
+Mastery, Prüfung, Zustandsmaschine, Fehlerbehandlung und Deep Links werden als
+reviewbarer Migrationskorpus verwendet.
+
+Bei Widersprüchen gilt: aktueller Backend-/MCP-Vertrag vor neueren fachlichen
+Korrekturen der Visible-Session-Variante vor dem ursprünglichen
+Custom-GPT-Verhalten. Alte Transport- und Relayregeln sind keine fachliche
+Quelle.
+
+Die Inhalte werden nach ihrer heutigen Bedeutung übernommen, nicht als
+Dateikopie:
+
+| Bewährte Quelle | Übernommener Inhalt | Ziel im Plugin-/MCP-Modell |
+| --- | --- | --- |
+| `system_instructions.de.md` | Rolle, Deutsch, knapper dialogischer Stil, Mathematikformat und keine technischen Interna im sichtbaren Coaching | Kernregeln in `SKILL.md` |
+| `knowledge_docs/lerncoach.de.md` | Vorwissensdiagnose, Scaffolding, Feynman-Loop, kleine Schritte, Transfer und faire Prüfung ungewöhnlicher Lösungswege | Kurzzyklus in `SKILL.md`, Details in `references/coaching-policy.md` |
+| `knowledge_docs/mastery_rules.de.md` | zwei unabhängige Checks oder echter Transfer, alle Zielaspekte, keine bloße Selbsteinschätzung | Skill und Referenz; Aufrufbedingung zusätzlich an der Mastery-Toolbeschreibung |
+| `knowledge_docs/exam_proctor.de.md` | wortgetreue Aufgabe, keine Hilfe im Prüfungsmodus und kriteriumsbezogene Bewertung | Skill-Referenz, aktueller Exam-Kontext und Evaluationstool |
+| `knowledge_docs/state_machine.de.md` | frischen Zustand lesen, genau einem erlaubten Schritt folgen und danach erneut laden | Skill-Entscheidungszyklus, Toolbeschreibungen und dynamischer Kontext |
+| `knowledge_docs/error_handling.de.md` | ehrlich stoppen, keinen Erfolg vortäuschen und nur begrenzt rehydrieren | Stopregel im Skill und konkrete MCP-Fehlerresultate |
+| `knowledge_docs/deep_linking.de.md` | Ressourcen didaktisch passend einsetzen | Skill-Referenz; Verfügbarkeit und URL ausschließlich aus dem frischen Backendzustand |
+
+Nicht übernommen werden alte Transport- und Methodennamen wie `startCode`,
+`chatSessionToken`, `redeemStartCode`, sichtbare Relaywerte, frühere Action-
+Operations oder modellseitig konstruierte Deep Links. Sie werden auf die
+heutige OAuth-, `learningSessionId`-, MCP- und backendgenerierte Linkgrenze
+abgebildet. Ebenso wird keine durch das Backend bereits erzwungene Invariante
+nur deshalb wieder zur vermeintlichen Skill-Garantie, weil sie in der früheren
+Anweisung gut formuliert war.
+
+Jede migrierte Regel erhält folgende Nachweiskette:
+
+```text
+bewährte Quellstelle unter ai/openai custom gpt
+  -> stabile COACH-Policy-ID
+  -> genau ein primärer Zielort
+  -> positiver und negativer Acceptance-Fall
+```
+
+Ziel ist, das nachweislich gute Coach-Verhalten nach bestandenem
+Acceptance-Gate zu erhalten, während überholte Action- und Sessionmechanik
+bewusst zurückbleibt.
 
 ## 7. Zustand, Identität und sichtbare Daten
 
@@ -613,7 +780,8 @@ mit `structuredContent`, `outputSchema`, Annotationen und Security-Metadaten.
 
 Der deutsche Vertrag umfasst:
 
-- argumentlose Kontext-Rehydration und gezielte Navigation;
+- Kontext-Rehydration und gezielte Navigation mit unveränderter
+  `learningSessionId`;
 - Curriculum, Personalisierung, Scope und aktives Ziel;
 - kontrollierte Mastery-Aktualisierung;
 - vollständigen Verified-Recall-Ablauf;
@@ -648,11 +816,39 @@ Betriebsverfahren steht in
 OpenAI veröffentlicht Apps inzwischen innerhalb von Plugins. Für SkillPilot ist
 der robuste Zielzuschnitt:
 
-- ein unabhängig einreichbares App-only-Plugin für Deutsch;
-- ein unabhängig einreichbares App-only-Plugin für Englisch;
+- ein unabhängig einreichbares deutsches Plugin aus
+  `skillpilot-coach-de`-Skill und direkt eingereichtem deutschem MCP-Server;
+- später ein unabhängig einreichbares englisches Plugin aus eigenem
+  englischem Skill und direkt eingereichtem englischem MCP-Server;
 - jeweils ein öffentlicher HTTPS-MCP-Endpunkt, passgenaue Metadaten,
   Datenschutz-/Supportangaben, Testfälle und optional Screenshots;
 - getrennte Veröffentlichung, Telemetrie, Canary und Rollback.
+
+Das versionierte Quellpaket verwendet `.codex-plugin/plugin.json`, `skills/`
+und `.mcp.json`; die fachliche Skill-zu-MCP-Abhängigkeit wird zusätzlich in
+`agents/openai.yaml` deklariert. Eine lokale
+Kompatibilitätsabbildung `.app.json` wird nur für eine tatsächlich registrierte
+Verbindung ergänzt. Der technische Identifier wird durch die ChatGPT-
+Registrierung und `plugin-creator` erzeugt; Präfixe werden nicht manuell
+umgeschrieben oder aus dem Appnamen abgeleitet.
+
+Bei der öffentlichen Einreichung wird diese lokale `.app.json`-Referenz nicht
+als MCP-Paket veröffentlicht. Im Portal wird **With MCP** gewählt und der
+sprachspezifische Skill zusammen mit dem zugehörigen MCP-Server direkt zur
+Prüfung eingereicht.
+
+Der erste Pilot verwendet eine explizite Skillauswahl und deaktiviert die
+implizite Aktivierung, soweit die jeweilige Oberfläche diese Policy auswertet.
+Erst wenn direkte, indirekte und ausdrücklich negative Aktivierungstests grün
+sind, darf die implizite Aktivierung freigegeben werden. Eine allgemeine
+Fachfrage ohne SkillPilot-Bezug darf das Plugin weiterhin nicht in eine
+Lernsession ziehen.
+
+Die vorhandene App-only-Nutzung bleibt während der Migration verfügbar. Die
+heutigen ausführlichen `SERVER_INSTRUCTIONS` werden erst ausgedünnt, nachdem
+der gebündelte Skill dieselben Golden Journeys im realen Providerhost erfüllt.
+Der Zielzustand enthält dort nur kurze werkzeugübergreifende Invarianten;
+Coachrolle, Didaktik und Dialogablauf liegen dann im Skill.
 
 Die Einreichung scannt unter anderem Toolnamen, Beschreibungen, Schemas,
 Security-Schemes, Annotationen, `_meta`, UI-Ressourcen und CSP. Diese Metadaten
@@ -711,14 +907,22 @@ deutschen End-to-End-Lauf.
 
 ### Phase 2 – Deutsche reale Nutzerreisen
 
+- das versionierte deutsche Plugin-/Skill-Quellpaket und seinen CI-Vertrag
+  pflegen;
+- die echte lokale App-Abbildung erst nach Vorliegen der registrierten App-ID
+  mit `plugin-creator` ergänzen;
+- zunächst explizite Skillaktivierung und App-only-Rollback beibehalten;
 - natürlicher Einstieg „Mathe – Oberstufe – Hessen“;
 - fachliche GK-/LK-Auswahl ohne sichtbare technische Schlüssel;
 - aktives Ziel, Frontier, Aufgabe, faire Bewertung und Mastery;
 - Recall und Prüfung;
 - Retry-, Reload-, Langdialog-, Parallelchat- und Cross-Learner-Negativtests;
+- positive und negative Skillaktivierungsfälle sowie Tool-Trace-Parität;
 - read-only Canary vor Freigabe der Schreibwerkzeuge.
 
-**Exit:** komplette deutsche E2E-Suite im realen Providerhost.
+**Exit:** komplette deutsche E2E-Suite im realen Providerhost mit explizit
+gewähltem Skill; danach dürfen die MCP-Server-Instruktionen schrittweise auf
+werkzeugübergreifende Invarianten reduziert werden.
 
 ### Phase 3 – Widget und zusätzliche Härtung
 
@@ -732,7 +936,8 @@ Vertrag oder die Backendautorität zu schwächen.
 
 ### Phase 4 – OpenAI-Veröffentlichung, Englisch und Tarifnachweis
 
-- deutsche Veröffentlichung und reale Tarifmatrix;
+- deutsche Veröffentlichung als kombiniertes Skill-/MCP-Plugin und reale
+  Tarifmatrix;
 - danach eigener englischer Vertrag, App-Eintrag und vollständige Acceptance;
 - reale Tarif-, Regions-, Web- und Mobilmatrix;
 - gestufter Rollout mit getrennten Kill-Switches.
@@ -752,14 +957,19 @@ passgenau.
 
 ## 17. Abnahme- und Go-/No-Go-Gates
 
-| Gate | Muss vor Pilot/Standard erfüllt sein |
+Für den UI-losen Phase-2-Pilot gelten ausschließlich die data-only Gates.
+Widget-spezifische Teilanforderungen werden erst dann zu Release-Gates, wenn
+eine Widget-Oberfläche nach Phase 3 tatsächlich ausgeliefert werden soll.
+
+| Gate | Muss vor dem jeweils betroffenen Release erfüllt sein |
 | --- | --- |
 | Kostenmodell | kein SkillPilot-Modell-API-Aufruf; Zieltarife real bestätigt |
-| Appisolation | getrennte Registrierung, Endpunkte, Toolsets, Widgets, Tests und Kill-Switches |
+| Paketisolation | getrennte Plugins, Skills, Appregistrierungen, Endpunkte, Toolsets, Tests und Kill-Switches; Widgets und ihre Tests zusätzlich getrennt, sofern sie ausgeliefert werden |
 | Auth | genau ein vertraulicher OAuth-Client mit `client_secret_basic`, OAuth 2.1/PKCE, exakter Callback/Resource/Scope, automatischer Bearer-Transport, Widerruf, getrennte first-party erzeugte 24h-Lernsession und Cross-Learner-Negativtests |
 | Zustand | Backend autoritativ; Reload und Kontextkompaktierung ändern keine fachlichen Fakten |
 | UX | kein manuelles Kopieren technischer Werte; Lernsession automatisch im vorbereiteten Prompt; natürliche Einrichtung mit nur fachlich nötigen Rückfragen |
-| Invocation | kuratierte positive und negative Prompts pro Sprache; Widgetaktionen zuverlässig |
+| Regelownership | jede `COACH-*`-Regel hat genau einen primären Zielort, Legacy-Quelle und Acceptance-Nachweis |
+| Invocation | explizite und später implizite Skillaktivierung mit kuratierten positiven und negativen Prompts pro Sprache; zuverlässige Widgetaktionen nur als zusätzliches Gate für Releases mit Widget |
 | Idempotenz | keine Doppelmutation bei Retry, Hostwiederholung oder Prozessabbruch |
 | Fachqualität | alternative korrekte Lösungen werden anerkannt; keine Lösung vor Examabgabe |
 | Parität | alle Must-Nutzerreisen separat für DE und EN grün |
@@ -771,7 +981,9 @@ passgenau.
 
 | Risiko | Konsequenz | Gegenmaßnahme |
 | --- | --- | --- |
-| Provider ruft bei freiem Chat das Tool nicht auf | Nutzerreise stockt | kritische Schritte im Widget; Toolmetadaten und Prompt-Acceptance; Cockpit-Degradation |
+| Provider ruft bei freiem Chat das Tool nicht auf | Nutzerreise stockt | Toolmetadaten und Prompt-Acceptance; Cockpit-Degradation; optionale kritische Widgetaktionen erst in Phase 3 |
+| Skill wird nicht oder fälschlich aktiviert | Coachregeln fehlen oder allgemeine Fachfragen starten SkillPilot | Pilot mit expliziter Aktivierung; getrennte Aktivierungs- und Ausführungs-Evaluation; implizite Aktivierung erst nach Negativ-Gate |
+| Skill und MCP-Instruktionen driften auseinander | widersprüchliche Modellsteuerung | Policy-ID und primärer Zielort pro Regel; zeitlich begrenzte Doppelbelegung; Server-Instruktionen erst nach Paritätsnachweis ausdünnen |
 | App/Plugin im Zieltarif nicht verfügbar | Zahlungsanforderung verfehlt | Tarifmatrix als Go-/No-Go; zweiter Provider; nicht-generatives Cockpit |
 | Zielgruppe umfasst Kinder unter 13 | aktuelle OpenAI-App-Richtlinie erlaubt kein ausdrückliches Targeting | Unter-13 vom OpenAI-Kanal ausschließen; alternative zulässige Oberfläche/Provider prüfen; keine Altersableitung aus Klassenstufe |
 | Review abgelehnt oder verzögert | keine öffentliche Distribution | Developer-Mode-Pilot, Review-Checkliste, keine falsche Launchzusage |
@@ -809,19 +1021,30 @@ Kernanforderung nicht.
 
 ## 20. Unmittelbar nächste Schritte
 
-1. Den exakt vorregistrierten vertraulichen Client mit langem zufälligem Secret,
+1. Die echte `plugin_asdk_app...`-ID aus dem Developer Mode übernehmen und
+   das bestehende deutsche Quellpaket mit `plugin-creator` ausschließlich um
+   das optionale lokale `.app.json`-Wiring ergänzen; die direkte öffentliche
+   MCP-Bindung bleibt unverändert.
+2. Das versionierte Quellpaket im realen Providerhost explizit aktivieren und
+   Activation-, Tool-Trace-,
+   Golden-Journey- sowie Fehlerfall-Parität gegen die App-only-Baseline messen.
+3. Erst nach bestandenem Paritätsgate die ausführlichen
+   `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS` schrittweise auf kurze
+   werkzeugübergreifende Invarianten reduzieren.
+4. Parallel den exakt vorregistrierten vertraulichen Client mit langem
+   zufälligem Secret,
    `client_secret_basic`, PKCE und exakten Redirect-URIs produktiv aktivieren;
    DCR, CIMD, `none` und alternative Clientprofile geschlossen halten.
-2. Die App erneut verbinden und Metadata, OAuth/PKCE, exakte Redirect-,
+5. Die App erneut verbinden und Metadata, OAuth/PKCE, exakte Redirect-,
    Resource-/Audience- und Scope-Bindung sowie Client- und Toolisolation prüfen.
-3. Prüfen, dass jeder UI-Start genau eine neue Lernsession erzeugt, automatisch
+6. Prüfen, dass jeder UI-Start genau eine neue Lernsession erzeugt, automatisch
    in den Prompt einsetzt und jeder fachliche MCP-Aufruf beide Nachweise
    verlangt.
-4. Read-only Canary, danach den vollständigen deutschen Schreibpilot nach dem
+7. Read-only Canary, danach den vollständigen deutschen Schreibpilot nach dem
    Deployment-Runbook durchführen.
-5. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
+8. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
    Oberflächen-Acceptance öffentlich freigeben.
-6. Danach Widgetverbesserungen entwickeln und erst anschließend den separaten
+9. Danach Widgetverbesserungen entwickeln und erst anschließend den separaten
    englischen Appvertrag ableiten.
 
 ## 21. Referenzen
@@ -837,6 +1060,10 @@ Kernanforderung nicht.
 - [OpenAI Apps SDK: Zustandsverwaltung](https://developers.openai.com/apps-sdk/build/state-management)
 - [OpenAI Apps SDK: Authentifizierung](https://developers.openai.com/apps-sdk/build/auth)
 - [OpenAI: App für Plugin-Einreichung vorbereiten](https://developers.openai.com/apps-sdk/deploy/submission)
-- [OpenAI: Plugins einreichen](https://learn.chatgpt.com/docs/submit-plugins)
+- [OpenAI: Plugin-Architektur](https://developers.openai.com/plugins/concepts/plugins)
+- [OpenAI: Skills bauen und mit MCP-Werkzeugen verbinden](https://developers.openai.com/plugins/build/skills)
+- [OpenAI: Plugins paketieren](https://developers.openai.com/plugins/build/plugins)
+- [OpenAI: MCP-Server für Plugins](https://developers.openai.com/plugins/build/mcp-server)
+- [OpenAI: Plugins einreichen](https://developers.openai.com/plugins/deploy/submission)
 - [OpenAI Help: Plugins in ChatGPT und Codex](https://help.openai.com/de-de/articles/20001256-plugins-in-chatgpt-and-codex)
 - [Öffentlicher Reproduktionsthread](https://community.openai.com/t/custom-gpt-does-not-reuse-an-action-response-on-the-next-user-turn-reproducible-after-gpt-5-6-rollout/1386723)

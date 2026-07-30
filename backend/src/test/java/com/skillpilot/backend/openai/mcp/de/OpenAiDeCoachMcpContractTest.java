@@ -22,8 +22,11 @@ import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UpdateCurriculumRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeFilter;
@@ -300,6 +303,8 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("permanente SkillPilot-IDs")
                 .contains("zwei unabhängigen Checks")
                 .contains("URLs ausschließlich wortgetreu")
+                .contains("Fehlt ein freigegebener Link, gib keinen Link aus")
+                .doesNotContain("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com")
                 .contains("nie mit Dollar-Delimiter")
                 .contains("activeGoal.exam.hasImage=true")
                 .contains("exakt activeGoal.cockpitUrl")
@@ -456,6 +461,105 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void activeLearnerFacingMemoryGoalAllowsAnswerLookupAndResultRecording() {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+                "ready",
+                "Nächste Frage stellen.",
+                LEARNER_ID,
+                "memory-public-id",
+                "Grundwissen",
+                2,
+                1,
+                1,
+                1,
+                0,
+                null,
+                1,
+                List.of(new VerifiedRecallPromptCard("card-next", "Was kommt als Nächstes?", "Formel")),
+                "card-next",
+                "Was kommt als Nächstes?",
+                "Formel");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallAnswerResponse(
+                        "Vergleichen.",
+                        "memory-public-id",
+                        "card-public-id",
+                        "Was gilt?",
+                        "Die Sollantwort.",
+                        "Formel"));
+        when(coachTools.recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallResultResponse(
+                        "card-public-id",
+                        true,
+                        1,
+                        1,
+                        false,
+                        null,
+                        "Gespeichert.",
+                        next));
+
+        McpSchema.CallToolResult answer = call(
+                OpenAiDeCoachMcpContract.GET_RECALL_ANSWER,
+                Map.of("goalId", "memory-public-id", "cardId", "card-public-id"));
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.RECORD_RECALL_RESULT,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        "cardId", "card-public-id",
+                        "passed", true));
+
+        assertThat(answer.isError()).isFalse();
+        assertThat(result.isError()).isFalse();
+        assertThat(((OpenAiDeCoachMcpContract.RecallAnswerResult) answer.structuredContent()).expectedAnswer())
+                .isEqualTo("Die Sollantwort.");
+        assertThat(((OpenAiDeCoachMcpContract.RecallResult) result.structuredContent()).savedCardId())
+                .isEqualTo("card-public-id");
+        verify(coachTools).getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools).recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any());
+    }
+
+    @Test
+    void allRecallOperationsMapTheSharedActiveGoalGuardToReloadableConflict() {
+        ResponseStatusException conflict =
+                new ResponseStatusException(HttpStatus.CONFLICT, "active memory goal changed");
+        when(coachTools.startVerifiedRecall(eq(LEARNER_ID), eq("de"), any()))
+                .thenThrow(conflict);
+        when(coachTools.getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any()))
+                .thenThrow(conflict);
+        when(coachTools.recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any()))
+                .thenThrow(conflict);
+
+        McpSchema.CallToolResult start = call(
+                OpenAiDeCoachMcpContract.START_RECALL,
+                Map.of("goalId", "known-but-not-active-memory-id"));
+        McpSchema.CallToolResult answer = call(
+                OpenAiDeCoachMcpContract.GET_RECALL_ANSWER,
+                Map.of("goalId", "known-but-not-active-memory-id", "cardId", "foreign-card-id"));
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.RECORD_RECALL_RESULT,
+                Map.of(
+                        "goalId", "known-but-not-active-memory-id",
+                        "cardId", "foreign-card-id",
+                        "passed", true));
+
+        assertThat(List.of(start, answer, result))
+                .allSatisfy(rejected -> {
+                    assertThat(rejected.isError()).isTrue();
+                    assertThat(rejected.structuredContent()).isInstanceOfSatisfying(
+                            Map.class,
+                            content -> assertThat(content)
+                                    .containsEntry("status", "conflict")
+                                    .containsEntry("stateChanged", false)
+                                    .containsEntry("reloadContextAtMostOnce", true));
+                });
+        verify(coachTools).startVerifiedRecall(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools).getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools).recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any());
+    }
+
+    @Test
     void navigationUsesFacadeCatalogAndSafeProjectionInsteadOfInventingOptions() {
         LandscapeSummary curriculum = new LandscapeSummary(
                 "curriculum-2",
@@ -483,6 +587,42 @@ class OpenAiDeCoachMcpContractTest {
             assertThat(option.label()).isEqualTo("Mathematik Hessen");
         });
         verify(coachTools).getCurriculumOptions(LEARNER_ID);
+    }
+
+    @Test
+    void curriculumMutationForwardsExactIdToTheSharedPublicCatalogGuard() {
+        UnifiedLearnerStateResponse state = normalState("setPersonalization");
+        when(coachTools.setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class)))
+                .thenReturn(state);
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.SET_CURRICULUM,
+                Map.of("curriculumId", "curriculum-current"));
+
+        assertThat(result.isError()).isFalse();
+        ArgumentCaptor<UpdateCurriculumRequest> request =
+                ArgumentCaptor.forClass(UpdateCurriculumRequest.class);
+        verify(coachTools).setCurriculum(eq(LEARNER_ID), request.capture());
+        assertThat(request.getValue().getCurriculumId()).isEqualTo("curriculum-current");
+    }
+
+    @Test
+    void curriculumMapsAStalePublicCatalogSelectionToReloadableConflict() {
+        when(coachTools.setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class)))
+                .thenThrow(new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "curriculum is no longer in the public catalog"));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.SET_CURRICULUM,
+                Map.of("curriculumId", "known-landscape-not-currently-offered"));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("status", "conflict")
+                .containsEntry("stateChanged", false)
+                .containsEntry("reloadContextAtMostOnce", true));
+        verify(coachTools).setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class));
     }
 
     @Test
@@ -846,6 +986,23 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null);
         return state(requiredAction, active);
+    }
+
+    private UnifiedLearnerStateResponse memoryState(String goalId) {
+        FrontierGoal active = new FrontierGoal(
+                goalId,
+                "Merkziel",
+                "Rufe Fakten sicher ab.",
+                "atomic",
+                "memory",
+                "frontier",
+                List.of("memorization", "srs-deck:deck-1"),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+        return state("chooseMemoryMode", active);
     }
 
     private UnifiedLearnerStateResponse personalizationState() {

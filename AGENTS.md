@@ -616,24 +616,32 @@ Key principles for Layer C:
   provider-specific because authentication, context recovery, tool schemas,
   widgets, and retry semantics differ. Do not force them into one universal
   `submit_turn` or one-size-fits-all schema.
-- The strategic coach channels are provider-hosted MCP Apps so learners can use
-  the model under the provider's free access or fixed-price consumer subscription
-  without SkillPilot paying metered inference costs. The provider owns the free
-  conversational turn and model inference; SkillPilot owns all fachliche state,
-  authorizes every domain mutation, and exposes only passgenaue provider/language
-  adapters. A first-party SkillPilot model orchestrator is not the target while
-  this direct-provider-billing requirement remains hard.
+- The strategic public OpenAI coach channels are provider-hosted plugins that
+  combine one language-specific coaching skill with the corresponding
+  language-specific MCP server submitted directly for review. A local or
+  workspace pilot may map an already registered MCP connection through
+  `.app.json`; that compatibility wiring is not the public MCP submission.
+  Learners can use the model under the provider's free access or fixed-price
+  consumer subscription without SkillPilot paying metered inference costs. The
+  plugin packages and distributes the capability; the skill controls repeatable
+  dialogue and tool orchestration; the MCP server exposes live data,
+  authentication and controlled actions; SkillPilot owns all fachliche state,
+  authorizes every domain mutation, and exposes only passgenaue
+  provider/language adapters. A first-party SkillPilot model orchestrator is not
+  the target while this direct-provider-billing requirement remains hard.
 - The German OpenAI MCP App separates two server-owned bindings:
-  - OAuth 2.1 authenticates an opaque provider connection subject and maps it to
-    one learner through a first-party SkillPilot authorization grant.
-  - An absolute 24-hour learning session authorizes actual learner-tool use for
-    that subject. It is created or replaced only by `Lernen starten` in
-    SkillPilot, is never extended by OAuth refreshes or MCP calls, and has no
-    token or ID that the model or learner must copy.
+  - OAuth 2.1 authenticates the registered confidential App connection.
+  - An independent, absolute 24-hour learning session addresses one learner for
+    fachliche tool use. It is created anew only by `Lernen starten` in
+    SkillPilot, is never extended by OAuth refreshes or MCP calls, is inserted
+    automatically into the prepared start message, and is passed unchanged as
+    `learningSessionId` to every fachlicher MCP call. The learner never has to
+    copy or re-enter it.
   OpenAI attaches the OAuth bearer token to MCP requests automatically. The
-  backend derives the learner and current learning session from that token.
-  Because ChatGPT exposes no stable conversation identifier for this contract,
-  the current learning session is connection-wide rather than chat-specific.
+  backend requires both proofs and resolves the learner only through the
+  learning-session mapping. Because ChatGPT exposes no stable conversation
+  identifier for this contract, `learningSessionId` is explicit application
+  state, not a provider-conversation or MCP-transport session.
 - Guided curriculum personalization is an explicitly authored entry protocol,
   not a projection of the skill graph:
   - a curriculum root may declare a versioned top-level `personalizationFlow`;
@@ -813,10 +821,14 @@ Guiding principle:
 - May ask for a *nickname* to address the learner in the conversation, but must
   never ask for, display, or receive the permanent `skillpilotId` through an
   external AI adapter.
-- The current German OpenAI MCP App receives no SkillPilot learner/session
-  credential as a tool argument. ChatGPT supplies its OAuth bearer token on the
-  transport; the backend resolves the opaque subject to the learner and requires
-  an unexpired, server-side 24-hour learning session.
+- The current German OpenAI MCP App never receives the permanent
+  `skillpilotId`. `Lernen starten` inserts a newly created
+  `learningSessionId` automatically into the prepared start message, and
+  ChatGPT passes it unchanged as a required argument to every fachlicher tool
+  call. OAuth authorizes the registered App connection; the backend resolves
+  the learner only through the independent learning-session mapping, never
+  through an OAuth subject alone. The coach must not ask the learner to copy,
+  re-enter, or repeat the session value.
 - The paused Claude/MCP adapter resolves an authenticated opaque OAuth subject
   internally and has neither `skillpilotId` nor OAuth credentials as model tool
   parameters.
@@ -824,20 +836,27 @@ Guiding principle:
   the German channel is stable. Widget-only selection references may be returned
   in tool-result `_meta`, but must never appear in user-visible content or
   model-visible `structuredContent`.
-- Provider-neutral backend services may use the SkillPilot ID internally after a
-  trusted browser route, session token, or OAuth subject has been resolved. That
-  internal implementation detail must not leak into the external model context.
+- Provider-neutral backend services may use the SkillPilot ID internally after
+  the provider-specific trusted temporary context has been resolved. For the
+  current German OpenAI MCP App, this resolution happens only through the
+  explicit learning-session mapping under a valid OAuth-authorized App request,
+  not through the OAuth subject. That internal implementation detail must not
+  leak into the external model context.
 
 **User-local (browser / ChatGPT UI)**
 
 - The learner is responsible for:
   - keeping their `skillpilotId` somewhere safe (e.g. in the browser, a notes file),
   - deciding which nickname they share with the learning coach or teacher.
-- The MCP-App transcript must not contain a session token or technical
-  selection key. Human-readable learning-goal IDs may still be shown when they
-  are intentionally part of the learning product rather than access credentials.
+- The current German MCP-App transcript may contain the automatically inserted
+  `learningSessionId` in the prepared start message. It must not contain the
+  permanent `skillpilotId` or any additional access or technical selection
+  credential, and the coach must not repeat the learning-session value.
+  Human-readable learning-goal IDs may still be shown when they are
+  intentionally part of the learning product rather than access credentials.
 - The rollback-only Visible Session Custom GPT does place a temporary token in
-  the transcript; this exception must not be copied into MCP-App workflows.
+  every response footer; that separate relay convention must not be copied into
+  MCP-App workflows.
 - Local frontends (web GUI, notebooks, etc.) may:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.
@@ -866,20 +885,24 @@ Provider-facing contracts must use derived temporary context instead:
   goal ID, or Recall card prompt.
 - Paused Claude/MCP: the transport authenticates an OAuth connection subject and
   resolves it inside the backend. The model never supplies a learner ID.
-- Current German OpenAI MCP App: the browser first binds the learner to an opaque
-  OAuth subject through a short-lived, one-time authorization grant. Every
-  learner tool then requires both a valid OAuth connection and a current
-  server-side learning session. `Lernen starten` atomically creates or replaces
-  that session with an absolute lifetime of at most 24 hours. OAuth refresh,
-  tool calls, retries, and ChatGPT reconnects must not extend it. A missing or
-  expired learning session returns the bounded MCP application result
+- Current German OpenAI MCP App: OAuth authorizes the fixed registered App
+  connection but does not select or identify the learner. `Lernen starten`
+  atomically creates or replaces an independent learning session with an
+  absolute lifetime of at most 24 hours and inserts its
+  `learningSessionId` into the prepared start message. Every fachlicher tool
+  requires both a valid OAuth-authorized App request and exactly that current
+  `learningSessionId`; the backend selects the learner only through the
+  learning-session mapping. OAuth refresh, tool calls, retries, and ChatGPT
+  reconnects must not extend the learning session. A missing or expired
+  learning session returns the bounded MCP application result
   `SESSION_REQUIRED` with a normal SkillPilot start link; it is not an OAuth
   failure and must not trigger a reconnect loop.
 - German and English OpenAI MCP Apps use separate public tool catalogs, resource
   URIs, endpoints, registrations, and acceptance tests. Direct widget choices
   and answer submissions use app-only tools; later model turns reload current
-  state through argumentless read tools whose learner identity comes from OAuth
-  and the active learning session, not conversation memory.
+  state through fachliche tools that also require the unchanged
+  `learningSessionId`. Learner identity comes from the backend-owned
+  learning-session mapping, not OAuth or conversation memory.
 - Any new provider adapter must define its own minimum data projection and
   authentication/context boundary. Do not expose the permanent SkillPilot ID just
   because an internal facade accepts it.
@@ -888,9 +911,11 @@ LLM/learning-coach prompts should reinforce that:
 
 - Nicknames are for **conversation only**.
 - The permanent SkillPilot ID is never requested or exposed by an external AI.
-- Persistence uses only the authenticated provider subject plus backend-owned
-  session state, which the backend resolves internally. No learner or session
-  credential is copied through the conversation.
+- Persistence uses a valid OAuth-authorized App request plus the backend-owned
+  mapping of the current `learningSessionId`. The prepared start message
+  transports that temporary reference automatically; the learner never copies
+  or re-enters it, and the permanent SkillPilot ID never enters the
+  conversation.
 
 ---
 
@@ -898,9 +923,11 @@ LLM/learning-coach prompts should reinforce that:
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
 uses separate, provider- and language-specific adapters. The current German
-OpenAI channel is the provider-hosted MCP-App/Plugin architecture documented in
-`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`.
-The Visible Session Custom GPT remains a rollback package and must stay isolated
+OpenAI channel is the provider-hosted data-only MCP App; its target packaging
+combines that registered connection with a language-specific coaching skill as
+documented in
+`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
+Visible Session Custom GPT remains a rollback package and must stay isolated
 from the MCP-App implementation.
 
 The billing boundary is a hard product requirement: the learner uses the model
@@ -918,31 +945,48 @@ provider policy and product review explicitly permit it.
 - **Backend authority:** curriculum, personalization, scope, frontier, active goal,
   allowed transitions, Mastery, Verified Recall, and exam evaluation remain
   backend decisions.
-- **Target OpenAI Apps:** maintain two separate external MCP Apps, German and
-  English, with their own tool names, descriptions, widget resources, endpoints,
-  app registrations, plugin packaging, and tests. Sharing internal domain
-  services and widget implementation is allowed; a public `language` switch or
-  one-size-fits-all tool contract is not.
+- **Target OpenAI plugins:** maintain two separate public submissions, German
+  and English. Each combines its own coach skill with its own directly submitted
+  MCP server, tool names, descriptions, widget resources, endpoint, App
+  registration and tests. Local pilot packages may reference the corresponding
+  registered connection through `.app.json`. Sharing internal domain services
+  and widget implementation is allowed; a public `language` switch or
+  one-size-fits-all skill/tool contract is not.
+- **Coach-skill boundary:** coaching role, dialogue, didactic scaffolding, tool
+  sequence, response format and bounded error behavior belong in the skill.
+  MCP server instructions contain only short cross-tool invariants; per-tool
+  conditions stay in tool descriptions; current-step instructions stay in fresh
+  tool results. Authorization, state-transition and already implemented safety
+  guarantees stay in backend guards. Chat-only evidence is not a hard guarantee
+  until a server-side evidence or submission receipt exists. The skill is never
+  a source of learner state or authorization.
+- **Coach-content source:** synthesize the German skill from the behavior that
+  worked well under `ai/openai custom gpt/`, especially its German system
+  instructions and learning-coach, Mastery, exam, state-machine, error and
+  resource guidance. Do not copy obsolete `startCode`, `chatSessionToken`,
+  Action-operation, visible-relay, or model-built deep-link mechanics. Later
+  fachliche corrections and the current MCP/backend contract take precedence.
 - **MCP-App state rule:** user-facing labels and released learning content belong
   in `content` / `structuredContent`. In the UI-less coach, a currently valid
   opaque personalization `optionId` may also be model-visible in
   `structuredContent`, but must not be repeated in the transcript; the model
   passes it unchanged to the narrow mutation tool. Widget-only click references
-  remain in result `_meta` and app-only tools apply them directly. Authenticated,
-  argumentless read tools rehydrate state after a new turn, reload, or context
+  remain in result `_meta` and app-only tools apply them directly. Every
+  fachlicher model-facing tool, including state reads, receives the unchanged
+  `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.
-- **OpenAI identity/session rule:** OAuth identifies the opaque connection and
-  authorizes the transport. An independent, absolute 24-hour server-side
-  learning session authorizes learner tools. Only a first-party `Lernen starten`
-  action creates or replaces it; neither bearer-token refresh nor MCP activity
-  slides its expiry. `SESSION_REQUIRED` means “start again in SkillPilot”, not
-  “reconnect OAuth”.
+- **OpenAI identity/session rule:** OAuth authorizes the registered App
+  transport but does not select the learner. An independent, absolute 24-hour
+  server-side learning session addresses the learner for fachliche tools. Only
+  a first-party `Lernen starten` action creates or replaces it; neither
+  bearer-token refresh nor MCP activity slides its expiry. `SESSION_REQUIRED`
+  means “start again in SkillPilot”, not “reconnect OAuth”.
 - **Prototype boundary:** `ai/openai app/` contains an executable two-language
   Streamable-HTTP MCP Apps mechanism prototype and local host simulation. Its
   no-auth, single-demo-state store is never production auth. The production
-  German Spring Boot adapter uses OAuth subject binding, a database-backed
-  learning session, and `CoachToolFacade`; do not route real learner data through
-  the demo store.
+  German Spring Boot adapter requires OAuth App authorization plus an explicit
+  database-backed learning-session mapping and uses `CoachToolFacade`; do not
+  route real learner data through the demo store.
 - **Rollback ChatGPT projection:** nine locale-specific Visible Session Actions
   consolidate setup and navigation into numbered choices, reload state on normal
   user turns, and protect Recall answers and exam solutions behind later Actions.
@@ -974,13 +1018,16 @@ provider policy and product review explicitly permit it.
   `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
   update the two existing GPTs in place; they do not create new GPTs.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md` and
-  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. Apps are tested in Developer Mode
-  first and are then packaged and published as plugins. Do not create a plugin
-  `.app.json` with a fake placeholder: wait for the real `plugin_asdk_app...` ID
-  assigned to each language-specific app.
+  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned German source plugin
+  lives under `ai/openai plugin/skillpilot-coach-de` and directly declares the
+  production MCP server plus its language-specific coach skill. Do not create a
+  plugin `.app.json` with a fake placeholder or manually rewrite an identifier
+  prefix: add that optional local registered-connection mapping only after the
+  real `plugin_asdk_app...` ID is available, using `plugin-creator`.
 - **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
   setup and must stay unchanged so a coordinated rollback does not require Git
-  archaeology.
+  archaeology. It is also the review-only content baseline for the new coaching
+  skill; reuse its didactic meaning without reactivating its old transport.
 - **OpenAPI specs are package-local:** The legacy rollback bundle owns
   `ai/openai custom gpt/skillpilot-api-4ai.de.json` or
   `ai/openai custom gpt/skillpilot-api-4ai.en.json`. The Visible Session package

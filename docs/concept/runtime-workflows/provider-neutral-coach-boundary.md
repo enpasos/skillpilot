@@ -44,9 +44,12 @@ only justified by a future need for independent scaling, deployment or tenant
 isolation.
 
 OpenAI distributes Apps through Plugins in its current product model. That
-distribution wrapper does not change the runtime boundary: ChatGPT hosts and
-bills the model interaction, while the App's MCP server and persistent learning
-state remain SkillPilot services.
+distribution package combines one language-specific coach skill with the
+registered MCP connection. The skill owns repeatable dialogue and
+tool-orchestration guidance; it does not change the runtime boundary: ChatGPT
+hosts and bills the model interaction, while the MCP server and persistent
+learning state remain SkillPilot services. Authorization, current state and
+allowed transitions are never moved into the skill.
 
 ## Two OpenAI Apps, One Shared Application Layer
 
@@ -176,10 +179,10 @@ getExamEvaluation(attemptId, submissionReceipt)
 The OpenAI MCP App widget is a valid host for this flow: the provider embeds the
 UI, but the widget invokes the SkillPilot submission tool directly and the
 backend creates the receipt. The provider model may subsequently load the
-pending submission through a principal-bound, argumentless read operation and
-record a fachliche evaluation. Introducing complete exam attempts still changes
-persistence and privacy behavior and therefore requires its own review and
-acceptance gate; it is not retrofitted into the Visible-Session fallback.
+pending submission through a receipt- and learning-session-bound read operation
+and record a fachliche evaluation. Introducing complete exam attempts still
+changes persistence and privacy behavior and therefore requires its own review
+and acceptance gate; it is not retrofitted into the Visible-Session fallback.
 
 ## Identity, Connection And Coach State
 

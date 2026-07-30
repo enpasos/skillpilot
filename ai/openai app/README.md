@@ -135,30 +135,34 @@ Entwicklungszustand. Das ist bewusst **nicht mandantenfähig**. Ein öffentlich
 erreichbarer Tunnel darf deshalb nur kurzzeitig, nur mit Testdaten und nur für
 den Developer-Mode-Abnahmetest laufen.
 
-## Nächste Produktionsstufe
+## Produktionsgrenze neben dem Prototyp
 
-Nach dem realen Apps-SDK-Test wird der Demo-Store durch einen Adapter auf die
-vorhandene providerneutrale `CoachToolFacade` ersetzt. Gleichzeitig kommt ein
-eigener OpenAI-OAuth-Binding-Flow hinzu:
+Der produktive deutsche Spring-Boot-Pfad verwendet bereits die
+providerneutrale `CoachToolFacade`. OAuth autorisiert die feste registrierte
+App-Verbindung; unabhängig davon adressiert die bei **Lernen starten** erzeugte
+und automatisch transportierte `learningSessionId` genau einen Lernenden:
 
 ```text
-OpenAI OAuth principal (opak)
-             |
-   OpenAICoachConnection
-             |
-   interne SkillPilot-ID
-             |
- CoachToolFacade + Datenbank
+OAuth-Appautorisierung + learningSessionId
+                  |
+       serverseitige Sessionabbildung
+                  |
+        interne SkillPilot-ID
+                  |
+       CoachToolFacade + Datenbank
 ```
 
 Die permanente SkillPilot-ID erscheint weder in Toolargumenten noch in
-Toolergebnissen oder im Widget. Die app-only Referenzen bleiben kurzlebig und an
-Principal, aktuellen Zustand und konkrete Auswahl gebunden.
+Toolergebnissen oder im Widget. OAuth allein wählt keinen Lernenden; jeder
+fachliche Modellaufruf trägt die unveränderte, absolut auf 24 Stunden begrenzte
+Lernsession.
 
 ## ChatGPT- und Plugin-Test
 
 Die genaue Abfolge steht in [TEST_AND_PLUGIN_HANDOFF.md](TEST_AND_PLUGIN_HANDOFF.md).
-Wichtig ist die aktuelle Produktgrenze: Apps werden nach erfolgreichem
-Developer-Mode-Test als Bestandteil eines Plugins veröffentlicht. Die lokalen
-Plugin-Manifeste können erst korrekt erzeugt werden, nachdem ChatGPT für beide
-Apps je eine reale `plugin_asdk_app…`-ID vergeben hat.
+Das versionierte deutsche Quellpaket liegt unter
+[`../openai plugin/skillpilot-coach-de`](<../openai plugin/skillpilot-coach-de/>).
+Es enthält Manifest, direkte MCP-Bindung und Coach-Skill. Nur die optionale
+lokale `.app.json`-Abbildung einer bereits registrierten ChatGPT-Verbindung
+wartet auf deren reale `plugin_asdk_app…`-ID; sie wird nicht durch einen
+Platzhalter ersetzt.

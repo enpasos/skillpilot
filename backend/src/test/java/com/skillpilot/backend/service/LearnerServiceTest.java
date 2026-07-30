@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
@@ -64,6 +65,9 @@ public class LearnerServiceTest {
             "0756b198-0074-49d5-becd-9bb9f161a291";
     private static final String HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID = "283ec44e-747c-55e3-9a61-4a4cc70ebfab";
     private static final String SEK1_CORE_FORMULAS_FLASHCARDS_ID = "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a";
+    private static final String FUNCTIONS_FLASHCARDS_ID = "77259806-add7-5fcb-b89c-376e1b0c88d6";
+    private static final String LEGACY_HIDDEN_CURRICULUM_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
+    private static final String COMPATIBILITY_CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
 
     @Autowired
     private LearnerService learnerService;
@@ -224,7 +228,40 @@ public class LearnerServiceTest {
     @Transactional
     void getLearnerState_returnsUpdateCurriculum_whenNoCurriculumSelected() {
         var state = learnerService.getLearnerState(learnerId);
+
         assertThat(state.nextAllowedActions()).containsExactly("setCurriculum");
+        assertThat(state.stateMachine().curriculumOptions())
+                .extracting(option -> option.getCurriculumId())
+                .contains(CANONICAL_GYMNASIUM_ROOT_ID)
+                .doesNotContain(LEGACY_HIDDEN_CURRICULUM_ID, COMPATIBILITY_CURRICULUM_ID);
+    }
+
+    @Test
+    @Transactional
+    void setCurriculumFromPublicCatalogAcceptsTheCurrentPublishedRoot() {
+        learnerService.setCurriculumFromPublicCatalog(learnerId, CANONICAL_GYMNASIUM_ROOT_ID);
+
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(learner.getSelectedCurriculum()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+    }
+
+    @Test
+    @Transactional
+    void setCurriculumFromPublicCatalogRejectsCompatibilityAndLegacyHiddenRootsAsConflicts() {
+        for (String unpublishedId : List.of(
+                LEGACY_HIDDEN_CURRICULUM_ID,
+                COMPATIBILITY_CURRICULUM_ID)) {
+            assertThatThrownBy(() ->
+                            learnerService.setCurriculumFromPublicCatalog(learnerId, unpublishedId))
+                    .isInstanceOf(ResponseStatusException.class)
+                    .satisfies(error -> assertThat(
+                                    ((ResponseStatusException) error).getStatusCode())
+                            .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+        }
+
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getSelectedCurriculum())
+                .isNull();
     }
 
     @Test
@@ -596,6 +633,123 @@ public class LearnerServiceTest {
         Learner updatedLearner = learnerRepository.findById(learnerId).orElseThrow();
         assertThat(updatedLearner.getActiveGoalId()).isNull();
         assertThat(updatedLearner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+    }
+
+    @Test
+    @Transactional
+    void verifiedRecallRejectsCardOutsideTheActiveMemoryGoalBeforeAnswerOrStateWrite() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """));
+        learner.setActiveGoalId(FUNCTIONS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+
+        var foreignPrompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(FUNCTIONS_FLASHCARDS_ID, false));
+        assertThat(foreignPrompt.goalId()).isEqualTo(FUNCTIONS_FLASHCARDS_ID);
+        assertThat(foreignPrompt.cardId()).isNotBlank();
+
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learnerRepository.saveAndFlush(learner);
+
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswer(
+                        learnerId,
+                        "de",
+                        new VerifiedRecallAnswerRequest(
+                                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                foreignPrompt.cardId())))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("Card is not part of this memorization goal");
+        assertThatThrownBy(() -> learnerService.recordVerifiedRecallResult(
+                        learnerId,
+                        "de",
+                        new VerifiedRecallResultRequest(
+                                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                foreignPrompt.cardId(),
+                                true,
+                                "must not be stored")))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("Card is not part of this memorization goal");
+
+        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerService.getMastery(learnerId)
+                        .getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
+                .isZero();
+    }
+
+    @Test
+    @Transactional
+    void verifiedRecallOperationsFailClosedWhenTheLockedActiveGoalHasChanged() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """));
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+        var originalPrompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, false));
+
+        learner.setActiveGoalId(FUNCTIONS_FLASHCARDS_ID);
+        learnerRepository.saveAndFlush(learner);
+
+        assertThatThrownBy(() -> learnerService.startVerifiedRecall(
+                        learnerId,
+                        "de",
+                        new VerifiedRecallStartRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, false)))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswer(
+                        learnerId,
+                        "de",
+                        new VerifiedRecallAnswerRequest(
+                                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                originalPrompt.cardId())))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+        assertThatThrownBy(() -> learnerService.recordVerifiedRecallResult(
+                        learnerId,
+                        "de",
+                        new VerifiedRecallResultRequest(
+                                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                originalPrompt.cardId(),
+                                true,
+                                "must not be stored")))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+
+        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerService.getMastery(learnerId)
+                        .getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
+                .isZero();
     }
 
     @Test

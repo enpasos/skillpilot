@@ -95,6 +95,9 @@ class OpenAiDeCoachContextProjectorTest {
                 .contains("wortgetreu");
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
+                        .contains("Fehlt ein freigegebener Link, gib keinen Link aus")
+                        .doesNotContain("verwende nur https://skillpilot.com"))
+                .anySatisfy(policy -> assertThat(policy)
                         .contains("benötigt eine Abbildung")
                         .contains("activeGoal.cockpitUrl")
                         .contains("erfinde"));

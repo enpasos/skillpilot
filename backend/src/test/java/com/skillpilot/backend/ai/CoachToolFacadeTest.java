@@ -15,6 +15,7 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
@@ -109,7 +110,7 @@ class CoachToolFacadeTest {
                 "scope-1", "Scope", "Beschreibung", "cluster", null, null,
                 List.of(), List.of(), null, null, null, null);
         when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
-        when(learnerService.getAvailableBaseCurricula()).thenReturn(List.of(curriculum));
+        when(learnerService.getAvailableBaseCurricula(false)).thenReturn(List.of(curriculum));
         when(learnerService.getScopeNavigationOptions(skillpilotId)).thenReturn(List.of(scope));
 
         assertThat(facade.getSessionCurriculumOptions(sessionToken)).containsExactly(curriculum);
@@ -117,7 +118,7 @@ class CoachToolFacadeTest {
 
         verify(chatSessionService, org.mockito.Mockito.times(2)).resolveSkillpilotId(sessionToken);
         verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getAvailableBaseCurricula();
+        verify(learnerService).getAvailableBaseCurricula(false);
         verify(learnerService).getScopeNavigationOptions(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
@@ -129,15 +130,33 @@ class CoachToolFacadeTest {
         FrontierGoal scope = new FrontierGoal(
                 "scope-1", "Scope", "Beschreibung", "cluster", null, null,
                 List.of(), List.of(), null, null, null, null);
-        when(learnerService.getAvailableBaseCurricula()).thenReturn(List.of(curriculum));
+        when(learnerService.getAvailableBaseCurricula(false)).thenReturn(List.of(curriculum));
         when(learnerService.getScopeNavigationOptions(skillpilotId)).thenReturn(List.of(scope));
 
         assertThat(facade.getCurriculumOptions(skillpilotId)).containsExactly(curriculum);
         assertThat(facade.getScopeOptions(skillpilotId)).containsExactly(scope);
 
         verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getAvailableBaseCurricula();
+        verify(learnerService).getAvailableBaseCurricula(false);
         verify(learnerService).getScopeNavigationOptions(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void curriculumMutationDelegatesToTheAtomicPublicCatalogGuard() {
+        String skillpilotId = "learner-1";
+        UpdateCurriculumRequest request = new UpdateCurriculumRequest();
+        request.setCurriculumId("curriculum-current");
+        UnifiedLearnerStateResponse updatedState = learnerState(skillpilotId, "setPersonalization");
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(updatedState);
+
+        UnifiedLearnerStateResponse result = facade.setCurriculum(skillpilotId, request);
+
+        assertThat(result).isSameAs(updatedState);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService)
+                .setCurriculumFromPublicCatalog(skillpilotId, "curriculum-current");
+        ordered.verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 

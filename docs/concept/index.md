@@ -47,8 +47,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Normativer Nordstern, allgemeines Coach-Verhaltensmodell, Golden Journeys, objektive Acceptance und Übergabe für neue Chats auf dem Weg von technischer MCP-Migration zu echter Endnutzerparität.
 - [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
-- [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
-  Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
+- [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
+  Target architecture for separate German and English public plugin submissions that combine a coaching skill with a directly submitted MCP server; local pilots map an existing registered connection separately while preserving the authoritative SkillPilot domain core, direct provider billing, and staged production gates.
 - [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
   DE-first implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
 - [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
