@@ -53,7 +53,7 @@ export const formatRootFilterLabel = (
   language: LabelLanguage,
 ): string => {
   if (filter.id.toUpperCase() === 'ALL') {
-    return language === 'de' ? 'Kanonische DE-Sicht' : 'Canonical DE View'
+    return language === 'de' ? 'Alle Bundesländer' : 'All federal states'
   }
   const jurisdiction = normalizeJurisdictionCode(filter.id)
   if (jurisdiction) {

@@ -9,6 +9,7 @@ import { LogoutButton } from '../components/LogoutButton'
 import type { NeighborSets } from '../hooks/useCompetenceGraph'
 import { useLanguage } from '../contexts/LanguageContext'
 import { splitFilterIds } from '../utils/goalFilters'
+import { formatRootFilterLabel } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
@@ -149,7 +150,8 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   const jurisdictionFilterOptions = [
     {
       id: wildcardFilterOption?.id ?? 'all',
-      label: wildcardFilterOption?.label ?? (language === 'en' ? 'Canonical DE View' : 'Kanonische DE-Sicht'),
+      label: wildcardFilterOption?.label
+        ?? formatRootFilterLabel({ id: 'ALL' }, language),
     },
     ...jurisdictionFilters,
   ]

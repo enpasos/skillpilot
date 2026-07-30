@@ -122,8 +122,6 @@ export const en = {
             curriculumSaveFailed: "The curriculum could not be saved. Please try again.",
             personalCurriculumStepTitle: "Set your personal curriculum",
             personalCurriculumStepText: "Choose your lasting learning framework. You can change the concrete focus at any time later.",
-            personalCurriculumWaitingForCurriculum: "Save your curriculum first.",
-            personalCurriculumRequired: "Complete your personal curriculum before starting.",
             trainerCurriculumStepTitle: "Prepare course",
             trainerCurriculumStepText: "Choose the curriculum for your course view.",
             trainerDashboardButton: "Open course organization",
