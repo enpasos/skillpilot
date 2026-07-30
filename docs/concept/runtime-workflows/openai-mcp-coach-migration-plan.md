@@ -10,12 +10,12 @@ abzunehmende Härtungsoption erhalten.
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
 providergehostetes Plugin aus Coach-Skill und direkt zur Prüfung eingereichtem
 deutschen MCP-Server wiederherstellen. Das versionierte Quellpaket bindet den
-Server direkt über `.mcp.json`; eine lokale bereits registrierte Verbindung
-wird erst nach Vorliegen der echten App-ID zusätzlich über `.app.json`
-referenziert. Es gibt keine manuell zu übertragenden technischen Schlüssel und
-keine Abhängigkeit von Custom-GPT-Action-Retention; die pro Start automatisch
-transportierte, kurzlebige `learningSessionId` ist davon ausdrücklich
-ausgenommen.
+Server direkt über `.mcp.json` und referenziert für den lokalen Pilot zusätzlich
+die reale bereits registrierte deutsche Verbindung über die hostgenerierte
+`.app.json`-Abbildung. Es gibt keine manuell zu übertragenden technischen
+Schlüssel und keine Abhängigkeit von Custom-GPT-Action-Retention; die pro Start
+automatisch transportierte, kurzlebige `learningSessionId` ist davon
+ausdrücklich ausgenommen.
 
 Die übergeordnete Architekturentscheidung ist in
 [skillpilot-owned-coach-architecture.md](skillpilot-owned-coach-architecture.md)
@@ -954,9 +954,9 @@ Mastery-, Curriculum- oder Coach-Semantik:
 6. eine verwendete Altclient-Allowlist nach erfolgreichem Cutover aus dem
    Environment entfernen und die vollständige Workflow-Paritätsmatrix
    weiterführen;
-7. das versionierte deutsche Plugin-/Skill-Quellpaket beibehalten und, sobald
-   die echte registrierte App-ID vorliegt, mit `plugin-creator` ausschließlich
-   um die lokale `.app.json`-Abbildung ergänzen;
+7. das versionierte deutsche Plugin-/Skill-Quellpaket mit seiner realen lokalen
+   `.app.json`-Abbildung über den persönlichen Marketplace installieren und
+   nach jedem Paketupdate in einem neuen Chat laden;
 8. den bereits aus dem bewährten Custom-GPT-Korpus und den aktuellen
    `COACH-*`-Policies abgeleiteten, implizit deaktivierten Coach-Skill gegen
    App-only-Baseline, Golden Journeys sowie positive und negative

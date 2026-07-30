@@ -18,7 +18,9 @@ sprachspezifischen MCP-Server verbindet. Das versionierte deutsche Quellpaket
 liegt unter
 [`ai/openai plugin/skillpilot-coach-de`](<../../../ai/openai plugin/skillpilot-coach-de/>)
 und bindet den produktiven Endpunkt direkt über `.mcp.json` ein. Eine
-`.app.json`-Abbildung wird erst mit einer echten registrierten App-ID ergänzt.
+echte, vom Host erzeugte `.app.json`-Abbildung der registrierten deutschen
+Pilot-App ist zusätzlich enthalten. Sie dient ausschließlich dem lokalen
+End-to-End-Test; die direkte MCP-Bindung bleibt der öffentliche Zielvertrag.
 Der Skill ist noch nicht produktiv ausgerollt; bis zu seiner
 nachgewiesenen Verhaltensparität bleiben die heutigen ausführlichen
 MCP-Server-Instruktionen die Kompatibilitätsschicht.
@@ -307,6 +309,7 @@ Das implementierte deutsche Quellpaket hat folgende Struktur:
 ai/openai plugin/skillpilot-coach-de/
 ├── .codex-plugin/
 │   └── plugin.json
+├── .app.json
 ├── .mcp.json
 └── skills/
     └── skillpilot-coach-de/
@@ -317,26 +320,24 @@ ai/openai plugin/skillpilot-coach-de/
             └── coaching-policy.md
 ```
 
-`plugin.json` identifiziert das Paket und verweist auf `./skills/` sowie
-`./.mcp.json`. Die MCP-Konfiguration bindet ausschließlich den produktiven
-deutschen HTTPS-Endpunkt ein. `agents/openai.yaml` deklariert dieselbe
-MCP-Abhängigkeit und beginnt im Pilot mit deaktivierter impliziter Aktivierung.
-Manifest, MCP-Bindung, Skill, Policy-Referenz und Aktivierungspolicy werden in
-CI gemeinsam geprüft.
-
-Für einen lokalen beziehungsweise Workspace-internen Test über eine bereits
-registrierte ChatGPT-Verbindung darf zusätzlich `.app.json` erzeugt und im
-Manifest referenziert werden. Diese Datei wird erst ergänzt, wenn die echte
-`plugin_asdk_app...`-ID vorliegt. Der technische Identifier wird durch die
-tatsächliche Registrierung und `plugin-creator` übernommen und nicht aus Namen
-oder URL hergeleitet.
+`plugin.json` identifiziert das Paket und verweist auf `./skills/`,
+`./.mcp.json` sowie `./.app.json`. Die MCP-Konfiguration bindet ausschließlich
+den produktiven deutschen HTTPS-Endpunkt ein. Die zusätzliche App-Abbildung
+referenziert für den lokalen beziehungsweise Workspace-internen Pilot exakt die
+bereits registrierte deutsche ChatGPT-Verbindung. App-Alias und `asdk_app...`
+wurden unverändert aus den hostgenerierten Registrierungsmetadaten übernommen;
+die dort separat gespeicherte `plugin_asdk_app...`-Kennung ist nicht der Wert
+für `.app.json`. `agents/openai.yaml` deklariert dieselbe MCP-Abhängigkeit und
+beginnt im Pilot mit deaktivierter impliziter Aktivierung. Manifest, direkte
+MCP-Bindung, registrierte App-Abbildung, Skill, Policy-Referenz und
+Aktivierungspolicy werden in CI gemeinsam geprüft.
 
 Für die öffentliche Einreichung ist `.app.json` dagegen kein
 Veröffentlichungsvehikel. Im OpenAI-Portal wird **With MCP** gewählt; der
 sprachspezifische Skill und der zugehörige MCP-Server werden direkt zur Prüfung
 eingereicht. Das öffentliche Ziel bleibt damit funktional
 **Coach-Skill plus MCP-Server**, auch wenn das lokale Pilotpaket die registrierte
-Verbindung später zusätzlich über `.app.json` referenziert.
+Verbindung zusätzlich über `.app.json` referenziert.
 
 Das optionale Widget bleibt eine Ressource der MCP-App. Es gehört weder in den
 Skill noch bildet es eine weitere Zustands- oder Sicherheitsgrenze.
@@ -828,9 +829,10 @@ Das versionierte Quellpaket verwendet `.codex-plugin/plugin.json`, `skills/`
 und `.mcp.json`; die fachliche Skill-zu-MCP-Abhängigkeit wird zusätzlich in
 `agents/openai.yaml` deklariert. Eine lokale
 Kompatibilitätsabbildung `.app.json` wird nur für eine tatsächlich registrierte
-Verbindung ergänzt. Der technische Identifier wird durch die ChatGPT-
-Registrierung und `plugin-creator` erzeugt; Präfixe werden nicht manuell
-umgeschrieben oder aus dem Appnamen abgeleitet.
+Verbindung ergänzt. App-ID und Mapping werden durch die ChatGPT-Registrierung
+erzeugt; `plugin-creator` übernimmt Paketierung, Marketplace und lokale
+Installation. Präfixe werden nicht manuell umgeschrieben oder aus dem Appnamen
+abgeleitet.
 
 Bei der öffentlichen Einreichung wird diese lokale `.app.json`-Referenz nicht
 als MCP-Paket veröffentlicht. Im Portal wird **With MCP** gewählt und der
@@ -909,8 +911,8 @@ deutschen End-to-End-Lauf.
 
 - das versionierte deutsche Plugin-/Skill-Quellpaket und seinen CI-Vertrag
   pflegen;
-- die echte lokale App-Abbildung erst nach Vorliegen der registrierten App-ID
-  mit `plugin-creator` ergänzen;
+- die vorhandene echte lokale App-Abbildung über den persönlichen Marketplace
+  installieren und im neuen Chat gegen die App-only-Baseline testen;
 - zunächst explizite Skillaktivierung und App-only-Rollback beibehalten;
 - natürlicher Einstieg „Mathe – Oberstufe – Hessen“;
 - fachliche GK-/LK-Auswahl ohne sichtbare technische Schlüssel;
@@ -1021,13 +1023,14 @@ Kernanforderung nicht.
 
 ## 20. Unmittelbar nächste Schritte
 
-1. Die echte `plugin_asdk_app...`-ID aus dem Developer Mode übernehmen und
-   das bestehende deutsche Quellpaket mit `plugin-creator` ausschließlich um
-   das optionale lokale `.app.json`-Wiring ergänzen; die direkte öffentliche
-   MCP-Bindung bleibt unverändert.
-2. Das versionierte Quellpaket im realen Providerhost explizit aktivieren und
-   Activation-, Tool-Trace-,
-   Golden-Journey- sowie Fehlerfall-Parität gegen die App-only-Baseline messen.
+1. Das mit der echten hostgenerierten `.app.json`-Abbildung versehene deutsche
+   Quellpaket über den persönlichen Marketplace installieren, den
+   Providerhost neu laden und in einem neuen Chat explizit aktivieren; die
+   direkte öffentliche MCP-Bindung bleibt unverändert.
+2. Activation-, Tool-Trace-, Golden-Journey- sowie Fehlerfall-Parität gegen die
+   App-only-Baseline messen. Die Toolspur muss dabei die registrierte
+   `.app.json`-Verbindung nachweisen; ein Erfolg nur über die parallele direkte
+   `.mcp.json`-Bindung besteht dieses Gate nicht.
 3. Erst nach bestandenem Paritätsgate die ausführlichen
    `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS` schrittweise auf kurze
    werkzeugübergreifende Invarianten reduzieren.

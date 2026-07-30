@@ -1019,11 +1019,16 @@ provider policy and product review explicitly permit it.
   update the two existing GPTs in place; they do not create new GPTs.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md` and
   `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned German source plugin
-  lives under `ai/openai plugin/skillpilot-coach-de` and directly declares the
-  production MCP server plus its language-specific coach skill. Do not create a
-  plugin `.app.json` with a fake placeholder or manually rewrite an identifier
-  prefix: add that optional local registered-connection mapping only after the
-  real `plugin_asdk_app...` ID is available, using `plugin-creator`.
+  lives under `ai/openai plugin/skillpilot-coach-de`, directly declares the
+  production MCP server plus its language-specific coach skill, and contains
+  the real host-generated mapping for the registered German pilot App. Preserve
+  the App alias and `asdk_app...` value in `.app.json` exactly; the separate
+  `plugin_asdk_app...` value identifies the remote plugin registration and must
+  not be substituted into that file. The mapping is local pilot wiring, not the
+  public MCP submission. Because the pilot package also retains its direct
+  `.mcp.json` binding, host acceptance must prove from the tool trace that the
+  registered App connection was used; a successful direct-MCP fallback alone
+  is not combined Plugin-plus-App evidence.
 - **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
   setup and must stay unchanged so a coordinated rollback does not require Git
   archaeology. It is also the review-only content baseline for the new coaching
