@@ -11,6 +11,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
 import { serviceWorkerNavigationFallbackDenylist } from './serviceWorkerNavigationPolicy'
 import {
+  serviceWorkerLifecyclePolicy,
+  serviceWorkerRegisterType,
+} from './serviceWorkerLifecyclePolicy'
+import {
   compareLearnerCompositionScopeMatches,
   normalizeLearnerCompositionScope,
   scoreLearnerCompositionScope,
@@ -46,6 +50,10 @@ const PACKAGE_CONSUMER_SOURCE_REPLACEMENTS = new Map([
   [
     path.resolve(APP_ROOT, 'src', 'utils', 'curriculumDisplay'),
     path.resolve(APP_ROOT, 'src', 'packageConsumer', 'curriculumDisplay.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'curriculumQualityTrafficLight'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'curriculumQualityTrafficLight.ts'),
   ],
   [
     path.resolve(APP_ROOT, 'src', 'utils', 'trainerLandscapeContext'),
@@ -3093,13 +3101,11 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       deckEditorDevPlugin,
       VitePWA({
-        registerType: 'autoUpdate',
+        registerType: serviceWorkerRegisterType,
         injectRegister: 'inline',
         includeAssets: ['favicon/favicon.ico', 'favicon/apple-touch-icon.png', 'favicon/favicon.svg'],
         workbox: {
-          cleanupOutdatedCaches: true,
-          clientsClaim: true,
-          skipWaiting: true,
+          ...serviceWorkerLifecyclePolicy,
           maximumFileSizeToCacheInBytes: 5000000,
           globIgnores: ['**/version.json'],
           // Machine endpoints and OAuth redirects must make real network

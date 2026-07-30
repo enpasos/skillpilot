@@ -88,6 +88,55 @@ class LearnerPersonalizationProgressionIntegrationTest {
                 .isEqualTo("setPersonalization");
         assertThat(afterStage.frontier()).isEmpty();
 
+        PersonalizationPlan subjectPlan =
+                learnerService.getPersonalizationPlan(learner.getSkillpilotId());
+        assertThat(subjectPlan.groupId()).isEqualTo("subject");
+        assertThat(subjectPlan.options())
+                .extracting(PersonalizationPlan.Option::landscapeLabel)
+                .containsExactly(
+                        "Mathematik",
+                        "Physik",
+                        "Chemie",
+                        "Geschichte",
+                        "Deutsch");
+        assertThat(subjectPlan.displayOptions())
+                .extracting(PersonalizationPlan.Option::landscapeLabel)
+                .containsExactly(
+                        "Mathematik",
+                        "Physik",
+                        "Chemie",
+                        "Biologie",
+                        "Informatik",
+                        "Geschichte",
+                        "Deutsch",
+                        "Politik und Wirtschaft",
+                        "Englisch",
+                        "Französisch",
+                        "Latein",
+                        "Spanisch",
+                        "Italienisch",
+                        "Russisch",
+                        "Polnisch",
+                        "Tschechisch",
+                        "Griechisch",
+                        "Chinesisch",
+                        "Musik",
+                        "Wirtschaftswissenschaften");
+
+        PersonalizationPlan.Option unavailableBiology = subjectPlan.displayOptions().stream()
+                .filter(option -> BIOLOGY_ID.equals(option.landscapeId()))
+                .findFirst()
+                .orElseThrow();
+        JsonNode beforeUnavailableSelection = persistedConfig(learner.getSkillpilotId());
+        assertConflict(() -> learnerService.patchPersonalCurriculum(
+                learner.getSkillpilotId(),
+                Map.of(),
+                List.of(),
+                List.of(),
+                unavailableBiology.optionId()));
+        assertThat(persistedConfig(learner.getSkillpilotId()))
+                .isEqualTo(beforeUnavailableSelection);
+
         var afterSubjectSelection = applyCurrentValueOption(
                 learner.getSkillpilotId(),
                 MATH_ID,
@@ -138,6 +187,237 @@ class LearnerPersonalizationProgressionIntegrationTest {
                         "courseProfile", afterCourseConfig.path(MATH_ID).path("filterId").asText()));
         assertThat(matchedView).isNotNull();
         assertThat(matchedView.get("viewId")).isEqualTo("de-he-gym-sekii-math-lk");
+    }
+
+    @Test
+    void rewindsToSubjectWithoutRepeatingJurisdictionDurationOrStage() throws Exception {
+        Learner learner = createLearner("personalization-subject-rewind", null);
+        String learnerId = learner.getSkillpilotId();
+
+        applyCurrentValueOption(learnerId, ROOT_ID, "DE-HE");
+        applyCurrentScopeValueOption(learnerId, ROOT_ID, "durationModel", "G9");
+        applyCurrentScopeValueOption(learnerId, ROOT_ID, "stage", "SekII");
+        applyCurrentValueOption(learnerId, MATH_ID, null);
+        completeCurrentGroup(learnerId);
+        applyCurrentValueOption(learnerId, MATH_ID, "LK");
+
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(learnerId);
+        assertThat(complete.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(complete.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly(
+                        "jurisdiction",
+                        "durationModel",
+                        "stage",
+                        "subject",
+                        "subjectProfile");
+        assertThat(complete.completedDecisions().get(0).selectedOptions())
+                .extracting(PersonalizationPlan.Option::filterId)
+                .containsExactly("DE-HE");
+        assertThat(complete.completedDecisions().get(1).selectedOptions())
+                .extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly("G9");
+        assertThat(complete.completedDecisions().get(2).selectedOptions())
+                .extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly("SekII");
+        String subjectRewindId = complete.completedDecisions().stream()
+                .filter(decision -> "subject".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst()
+                .orElseThrow();
+
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(learnerId, subjectRewindId);
+
+        assertThat(rewound.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(rewound.groupId()).isEqualTo("subject");
+        assertThat(rewound.selectedCount()).isZero();
+        assertThat(rewound.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("jurisdiction", "durationModel", "stage");
+        assertThat(rewound.options())
+                .filteredOn(option -> option.kind() == PersonalizationPlan.OptionKind.VALUE)
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .contains(MATH_ID);
+
+        JsonNode persisted = persistedConfig(learnerId);
+        assertThat(persisted.path(ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persisted.path(ROOT_ID).path("durationModel").asText()).isEqualTo("G9");
+        assertStage(persisted, "SekII");
+        assertThat(persisted.has(MATH_ID)).isFalse();
+    }
+
+    @Test
+    void rewindingDurationPreservesTheIndependentStageChoice() throws Exception {
+        Learner learner = createLearner("personalization-duration-rewind", null);
+        String learnerId = learner.getSkillpilotId();
+
+        applyCurrentValueOption(learnerId, ROOT_ID, "DE-HE");
+        applyCurrentScopeValueOption(learnerId, ROOT_ID, "durationModel", "G9");
+        applyCurrentScopeValueOption(learnerId, ROOT_ID, "stage", "SekII");
+        applyCurrentValueOption(learnerId, MATH_ID, null);
+        completeCurrentGroup(learnerId);
+        applyCurrentValueOption(learnerId, MATH_ID, "LK");
+
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(learnerId);
+        String durationRewindId = complete.completedDecisions().stream()
+                .filter(decision -> "durationModel".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst()
+                .orElseThrow();
+
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(learnerId, durationRewindId);
+
+        assertThat(rewound.groupId()).isEqualTo("durationModel");
+        assertThat(rewound.preservedDecisions())
+                .extracting(PersonalizationPlan.DecisionSummary::groupId)
+                .containsExactly("stage");
+        assertThat(rewound.preservedDecisions().getFirst().selectedOptions())
+                .extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly("SekII");
+        JsonNode persisted = persistedConfig(learnerId);
+        assertThat(persisted.path(ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(persisted.path(ROOT_ID).has("durationModel")).isFalse();
+        assertStage(persisted, "SekII");
+        assertThat(persisted.has(MATH_ID)).isFalse();
+
+        applyCurrentScopeValueOption(
+                learnerId,
+                ROOT_ID,
+                "durationModel",
+                "G9");
+
+        PersonalizationPlan subjectPlan =
+                learnerService.getPersonalizationPlan(learnerId);
+        assertThat(subjectPlan.groupId()).isEqualTo("subject");
+        assertThat(subjectPlan.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("jurisdiction", "durationModel", "stage");
+    }
+
+    @Test
+    void rewindAfterMigrationRemovesHiddenDependentSelectionsButKeepsStage()
+            throws Exception {
+        Learner learner = createLearner(
+                "personalization-migrated-hidden-rewind",
+                Map.of(
+                        ROOT_ID,
+                        Map.of(
+                                "selected", true,
+                                "filterId", "DE-HE",
+                                "stage", "SekII"),
+                        MATH_ID,
+                        Map.of("selected", true, "filterId", "LK"),
+                        "__skillpilot_stage_scope_sek1__",
+                        Map.of("selected", false),
+                        "__skillpilot_stage_scope_sek2__",
+                        Map.of("selected", true),
+                        CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                        Map.of(
+                                CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                                ROOT_ID,
+                                CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                                List.of(),
+                                CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                                true)));
+        String learnerId = learner.getSkillpilotId();
+
+        PersonalizationPlan migrated =
+                learnerService.getPersonalizationPlan(learnerId);
+        assertThat(migrated.canReopenMigratedPersonalization()).isTrue();
+        assertThat(migrated.preservedDecisions())
+                .extracting(PersonalizationPlan.DecisionSummary::groupId)
+                .containsExactly(
+                        "jurisdiction",
+                        "stage",
+                        "subject",
+                        "subjectProfile");
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(learnerId);
+        assertThat(reopened.groupId()).isEqualTo("durationModel");
+        assertThat(reopened.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("jurisdiction");
+        String jurisdictionRewindId =
+                reopened.completedDecisions().getFirst().rewindId();
+
+        PersonalizationPlan jurisdiction =
+                learnerService.rewindPersonalization(
+                        learnerId,
+                        jurisdictionRewindId);
+
+        assertThat(jurisdiction.groupId()).isEqualTo("jurisdiction");
+        assertThat(jurisdiction.preservedDecisions())
+                .extracting(PersonalizationPlan.DecisionSummary::groupId)
+                .containsExactly("stage");
+        JsonNode persisted = persistedConfig(learnerId);
+        assertThat(persisted.path(ROOT_ID).has("filterId")).isFalse();
+        assertThat(persisted.path(ROOT_ID).has("durationModel")).isFalse();
+        assertStage(persisted, "SekII");
+        assertThat(persisted.path(ROOT_ID).path("selected").asBoolean()).isTrue();
+        assertThat(persisted.has(MATH_ID)).isFalse();
+        assertThat(persisted
+                        .path("__skillpilot_stage_scope_sek1__")
+                        .path("selected")
+                        .asBoolean())
+                .isFalse();
+        assertThat(persisted
+                        .path("__skillpilot_stage_scope_sek2__")
+                        .path("selected")
+                        .asBoolean())
+                .isTrue();
+    }
+
+    @Test
+    void choosingAMissingMigratedScopeRemovesHiddenDependentSelections()
+            throws Exception {
+        Learner learner = createLearner(
+                "personalization-migrated-scope-revalidation",
+                Map.of(
+                        ROOT_ID,
+                        Map.of(
+                                "selected", true,
+                                "filterId", "DE-HE",
+                                "stage", "SekII"),
+                        MATH_ID,
+                        Map.of("selected", true, "filterId", "LK"),
+                        "__skillpilot_stage_scope_sek1__",
+                        Map.of("selected", false),
+                        "__skillpilot_stage_scope_sek2__",
+                        Map.of("selected", true),
+                        CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                        Map.of(
+                                CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                                ROOT_ID,
+                                CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                                List.of(),
+                                CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                                true)));
+        String learnerId = learner.getSkillpilotId();
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(learnerId);
+        assertThat(reopened.groupId()).isEqualTo("durationModel");
+
+        applyCurrentScopeValueOption(
+                learnerId,
+                ROOT_ID,
+                "durationModel",
+                "G9");
+
+        PersonalizationPlan subjectPlan =
+                learnerService.getPersonalizationPlan(learnerId);
+        assertThat(subjectPlan.groupId()).isEqualTo("subject");
+        assertThat(subjectPlan.currentSelectedOptions()).isEmpty();
+        JsonNode persisted = persistedConfig(learnerId);
+        assertThat(persisted.path(ROOT_ID).path("filterId").asText())
+                .isEqualTo("DE-HE");
+        assertThat(persisted.path(ROOT_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertStage(persisted, "SekII");
+        assertThat(persisted.has(MATH_ID)).isFalse();
     }
 
     @Test

@@ -2,6 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { PersonalCurriculumEditor } from '../src/components/PersonalCurriculumEditor'
 import { LanguageProvider } from '../src/contexts/LanguageContext'
+import { orderedFocusCandidatesAfterSelection } from '../src/utils/personalCurriculumEditorFocus'
 import type { PersonalizationPlan } from '../src/utils/personalCurriculumEditorApi'
 
 function assert(condition: unknown, message: string): asserts condition {
@@ -69,23 +70,33 @@ const plan: PersonalizationPlan = {
       kind: 'VALUE',
     },
   ],
+  displayOptions: [],
   navigationOptions: [],
+  currentSelectedOptions: [],
+  currentRewindId: 'rewind-current-jurisdiction',
+  completedDecisions: [],
+  preservedDecisions: [],
   pendingDecisions: [],
+  canReopenMigratedPersonalization: false,
   problemCode: null,
 }
 
-const renderEditor = (language: 'de' | 'en') => {
+const renderEditor = (
+  language: 'de' | 'en',
+  currentPlan: PersonalizationPlan = plan,
+) => {
   localStorageStub.setItem('skillpilot_lang', language)
   return renderToStaticMarkup(
     createElement(
       LanguageProvider,
       null,
       createElement(PersonalCurriculumEditor, {
-        plan,
+        plan: currentPlan,
         loading: false,
         error: null,
         applyOption: () => undefined,
-        restart: () => undefined,
+        reopen: () => undefined,
+        rewind: () => undefined,
         reload: () => undefined,
       }),
     ),
@@ -116,6 +127,182 @@ assert(
 assert(
   !englishEditor.includes('Gymnasium (Deutschland)'),
   'English editor omits the redundant base curriculum prefix',
+)
+assert(
+  JSON.stringify(orderedFocusCandidatesAfterSelection(plan.options, 'all-states'))
+    === JSON.stringify(['hesse']),
+  'selection focus advances to the next remaining option without returning to the top',
+)
+
+const hesseOption = plan.options[1]
+if (!hesseOption) throw new Error('missing Hesse fixture option')
+const historyPlan: PersonalizationPlan = {
+  ...plan,
+  stageId: 'subject',
+  stageLabel: 'Fach auswählen',
+  groupId: 'subject',
+  groupLabel: 'Welches Fach möchtest du lernen?',
+  groupInstanceId: 'subject',
+  maxSelections: 20,
+  options: [{
+    ...hesseOption,
+    optionId: 'math',
+    stageId: 'subject',
+    groupId: 'subject',
+    groupInstanceId: 'subject',
+    landscapeId: 'math',
+    landscapeLabel: 'Mathematik',
+    filterId: null,
+    filterLabel: null,
+  }],
+  navigationOptions: [hesseOption],
+  completedDecisions: [{
+    rewindId: 'rewind-jurisdiction',
+    stageId: 'jurisdiction',
+    stageLabel: 'Bundesland auswählen',
+    groupId: 'jurisdiction',
+    groupLabel: 'Welches Bundesland soll gelten?',
+    groupInstanceId: 'jurisdiction:root',
+    selectedOptions: [hesseOption],
+  }],
+}
+const germanHistory = renderEditor('de', historyPlan)
+assert(
+  germanHistory.includes('Bisher ausgewählt')
+    && germanHistory.includes('Bundesland auswählen')
+    && germanHistory.includes('Hessen')
+    && germanHistory.includes('Ändern'),
+  'German editor shows the authoritative previous selection with a targeted change action',
+)
+assert(
+  germanHistory.includes('Bundesland auswählen ändern, derzeit Hessen'),
+  'targeted change action has a precise accessible name',
+)
+
+const mathOption = historyPlan.options[0]
+if (!mathOption) throw new Error('missing subject fixture option')
+const unavailablePhysics = {
+  ...mathOption,
+  optionId: 'physics',
+  landscapeId: 'physics',
+  landscapeLabel: 'Physik',
+}
+const subjectAvailability = renderEditor('de', {
+  ...historyPlan,
+  displayOptions: [mathOption, unavailablePhysics],
+})
+assert(
+  subjectAvailability.includes('Mathematik')
+    && subjectAvailability.includes('Physik')
+    && subjectAvailability.includes('1 von 2 Optionen verfügbar')
+    && subjectAvailability.includes('Für deine Auswahl noch nicht verfügbar'),
+  'the subject step shows available and currently unavailable authored subjects',
+)
+assert(
+  /<button[^>]*disabled=""[^>]*>[\s\S]*?Physik[\s\S]*?class="sr-only"/.test(subjectAvailability),
+  'an unavailable subject is a native disabled option and cannot be submitted',
+)
+
+const completeHistoryPlan: PersonalizationPlan = {
+  ...historyPlan,
+  stage: 'COMPLETE',
+  stageId: null,
+  stageLabel: null,
+  groupId: null,
+  groupLabel: null,
+  groupInstanceId: null,
+  minSelections: 0,
+  maxSelections: 0,
+  options: [],
+}
+const completeHistory = renderEditor('de', completeHistoryPlan)
+assert(
+  completeHistory.includes('Bisher ausgewählt')
+    && !completeHistory.includes('Alle Angaben neu wählen'),
+  'completed guided setup keeps individual edit actions instead of forcing a full restart',
+)
+
+const migratedComplete = renderEditor('de', {
+  ...completeHistoryPlan,
+  navigationOptions: [],
+  completedDecisions: [],
+  preservedDecisions: [{
+    stageId: 'jurisdiction',
+    stageLabel: 'Bundesland auswählen',
+    groupId: 'jurisdiction',
+    groupLabel: 'Welches Bundesland soll gelten?',
+    groupInstanceId: 'jurisdiction:root',
+    selectedOptions: [{
+      ...hesseOption,
+      optionId: 'preserved-jurisdiction',
+    }],
+  }],
+  canReopenMigratedPersonalization: true,
+})
+assert(
+  migratedComplete.includes('Auswahl prüfen und ändern')
+    && migratedComplete.includes('Aktuell ausgewählt')
+    && migratedComplete.includes('Abhängige Angaben können nach einer Änderung erneut abgefragt werden.')
+    && migratedComplete.includes('Hessen')
+    && !migratedComplete.includes('Bleibt ausgewählt')
+    && !migratedComplete.includes('Alle Angaben neu wählen'),
+  'a migrated setup distinguishes saved choices from guaranteed preserved choices',
+)
+
+const partialCurrentSelection = renderEditor('de', {
+  ...historyPlan,
+  selectedCount: 1,
+  currentSelectedOptions: [mathOption],
+  currentRewindId: 'rewind-current-subject',
+  options: [{
+    ...mathOption,
+    optionId: 'physics',
+    landscapeId: 'physics',
+    landscapeLabel: 'Physik',
+  }],
+})
+assert(
+  partialCurrentSelection.includes('In diesem Schritt ausgewählt')
+    && partialCurrentSelection.includes('Mathematik')
+    && partialCurrentSelection.includes('Auswahl dieses Schritts zurücksetzen'),
+  'a partial multi-selection can be changed without restarting earlier decisions',
+)
+
+const preservedStage = renderEditor('de', {
+  ...historyPlan,
+  stageId: 'durationModel',
+  stageLabel: 'Gymnasialdauer auswählen',
+  groupId: 'durationModel',
+  groupLabel: 'G8 oder G9?',
+  groupInstanceId: 'durationModel:root',
+  maxSelections: 1,
+  completedDecisions: historyPlan.completedDecisions,
+  preservedDecisions: [{
+    stageId: 'stage',
+    stageLabel: 'Lernumfang auswählen',
+    groupId: 'stage',
+    groupLabel: 'Welche Lernstufe?',
+    groupInstanceId: 'stage:root',
+    selectedOptions: [{
+      ...hesseOption,
+      optionId: 'preserved-stage',
+      stageId: 'stage',
+      groupId: 'stage',
+      groupInstanceId: 'stage:root',
+      filterId: null,
+      filterLabel: null,
+      scopeKey: 'stage',
+      scopeValue: 'SekII',
+      scopeLabel: 'Gymnasiale Oberstufe (Sekundarstufe II)',
+      kind: 'SCOPE_VALUE',
+    }],
+  }],
+})
+assert(
+  preservedStage.includes('Bleibt ausgewählt')
+    && preservedStage.includes('Lernumfang auswählen')
+    && preservedStage.includes('Gymnasiale Oberstufe (Sekundarstufe II)'),
+  'an independent later choice remains visible while an earlier step is being changed',
 )
 
 console.log('personal curriculum editor label render tests passed')

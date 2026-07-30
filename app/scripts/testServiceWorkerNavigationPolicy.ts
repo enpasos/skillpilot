@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict'
 
+import {
+  serviceWorkerLifecyclePolicy,
+  serviceWorkerRegisterType,
+} from '../serviceWorkerLifecyclePolicy'
 import { serviceWorkerNavigationFallbackDenylist } from '../serviceWorkerNavigationPolicy'
 
 const isDenied = (urlPath: string) =>
@@ -36,4 +40,25 @@ for (const urlPath of applicationNavigations) {
   )
 }
 
-console.log('Service-worker navigation policy passed: 9 routes checked.')
+assert.equal(
+  serviceWorkerRegisterType,
+  'prompt',
+  'a new service worker must wait for a coherent client-version transition',
+)
+assert.equal(
+  serviceWorkerLifecyclePolicy.skipWaiting,
+  false,
+  'a new service worker must not activate while an old frontend is loading',
+)
+assert.equal(
+  serviceWorkerLifecyclePolicy.clientsClaim,
+  false,
+  'a new service worker must not take over an existing frontend mid-load',
+)
+assert.equal(
+  serviceWorkerLifecyclePolicy.cleanupOutdatedCaches,
+  true,
+  'old precaches are cleaned only after the coherent worker activation',
+)
+
+console.log('Service-worker navigation and lifecycle policy passed.')

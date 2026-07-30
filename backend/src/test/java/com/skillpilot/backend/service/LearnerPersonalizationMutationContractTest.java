@@ -724,6 +724,555 @@ class LearnerPersonalizationMutationContractTest {
     }
 
     @Test
+    void rewindKeepsEarlierSelectionsAndUnrelatedConfiguration() throws Exception {
+        PlannedGoal staleFocus = new PlannedGoal(learner, "goal-before-rewind");
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(staleFocus));
+        learner.setActiveGoalId("active-before-rewind");
+        learner.setLearningState(LearningState.TEACHING);
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Dial-A"),
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Band-Mixed"),
+                SECOND_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Mode-Stable"),
+                FILTERLESS_LANDSCAPE_ID,
+                Map.of("selected", true),
+                "landscape-unrelated",
+                Map.of("selected", true, "filterId", "Keep-Me"))));
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(LEARNER_ID);
+        assertThat(complete.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(complete.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly(
+                        "group-root-filter",
+                        "group-descendant-filter",
+                        "group-filterless-selection");
+        String rewindId = complete.completedDecisions().get(1).rewindId();
+
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(LEARNER_ID, rewindId);
+
+        assertThat(rewound.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(rewound.groupId()).isEqualTo("group-descendant-filter");
+        assertThat(rewound.selectedCount()).isZero();
+        assertThat(rewound.options())
+                .extracting(PersonalizationPlan.Option::filterId)
+                .containsExactly("Band-Mixed", "Band-Alternate");
+        assertThat(rewound.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("group-root-filter");
+
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("filterId").asText())
+                .isEqualTo("Dial-A");
+        assertThat(persisted.has(FIRST_LANDSCAPE_ID)).isFalse();
+        assertThat(persisted.path(FILTERLESS_LANDSCAPE_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(persisted.path(SECOND_LANDSCAPE_ID).path("filterId").asText())
+                .isEqualTo("Mode-Stable");
+        assertThat(persisted.path("landscape-unrelated").path("filterId").asText())
+                .isEqualTo("Keep-Me");
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
+        verify(plannedGoalRepository).deleteAll(List.of(staleFocus));
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void rewindRemovesOnlyTheTargetedFieldsFromSharedLandscapeSettings()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-duration",
+                        1,
+                        group(
+                                "group-duration",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_LANDSCAPE_ID,
+                                        "durationModel",
+                                        scopeValue("G8"),
+                                        scopeValue("G9")))),
+                /*
+                 * Keep the filter after duration intentionally. Rewind replay
+                 * must restore both retained fields independent of authored
+                 * stage order.
+                 */
+                stage(
+                        "stage-region",
+                        2,
+                        group(
+                                "group-region",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(ROOT_LANDSCAPE_ID))),
+                stage(
+                        "stage-scope",
+                        3,
+                        group(
+                                "group-stage",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_LANDSCAPE_ID,
+                                        "stage",
+                                        scopeValue("SekI"),
+                                        scopeValue("SekII")))),
+                stage(
+                        "stage-subject",
+                        4,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                landscapes(FILTERLESS_LANDSCAPE_ID)))));
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of(
+                        "selected", true,
+                        "filterId", "Dial-A",
+                        "durationModel", "G9",
+                        "stage", "SekII",
+                        "keep", "untouched"),
+                FILTERLESS_LANDSCAPE_ID,
+                Map.of("selected", true),
+                "__skillpilot_stage_scope_sek1__",
+                Map.of("selected", false),
+                "__skillpilot_stage_scope_sek2__",
+                Map.of("selected", true))));
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(LEARNER_ID);
+        String rewindId = complete.completedDecisions().stream()
+                .filter(decision -> "group-stage".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst()
+                .orElseThrow();
+
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(LEARNER_ID, rewindId);
+
+        assertThat(rewound.groupId()).isEqualTo("group-stage");
+        assertThat(rewound.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("group-duration", "group-region");
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("filterId").asText())
+                .isEqualTo("Dial-A");
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("durationModel").asText())
+                .isEqualTo("G9");
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("keep").asText())
+                .isEqualTo("untouched");
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).has("stage")).isFalse();
+        assertThat(persisted.path(FILTERLESS_LANDSCAPE_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(persisted.has("__skillpilot_stage_scope_sek1__")).isFalse();
+        assertThat(persisted.has("__skillpilot_stage_scope_sek2__")).isFalse();
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void rewindOfAProfileKeepsItsPreviouslySelectedSubject() throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-subject",
+                        1,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                landscapes(FIRST_LANDSCAPE_ID))),
+                stage(
+                        "stage-profile",
+                        2,
+                        group(
+                                "group-profile",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(FIRST_LANDSCAPE_ID)))));
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Band-Mixed"))));
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(LEARNER_ID);
+        String profileRewindId = complete.completedDecisions().get(1).rewindId();
+
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(LEARNER_ID, profileRewindId);
+
+        assertThat(rewound.groupId()).isEqualTo("group-profile");
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(FIRST_LANDSCAPE_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(persisted.path(FIRST_LANDSCAPE_ID).has("filterId")).isFalse();
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void rewindingOneDynamicProfileShowsTheOtherRetainedProfile()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-subject",
+                        1,
+                        group(
+                                "group-subject",
+                                1,
+                                2,
+                                2,
+                                landscapes(
+                                        FIRST_LANDSCAPE_ID,
+                                        SECOND_LANDSCAPE_ID))),
+                stage(
+                        "stage-profile",
+                        2,
+                        group(
+                                "group-profile",
+                                1,
+                                1,
+                                1,
+                                filtersForSelectedLandscapes(
+                                        "group-subject")))));
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Band-Mixed"),
+                SECOND_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Mode-Stable"))));
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(LEARNER_ID);
+        PersonalizationPlan.CompletedDecision firstProfile =
+                complete.completedDecisions().stream()
+                        .filter(decision -> "group-profile".equals(decision.groupId()))
+                        .filter(decision -> decision.selectedOptions().stream()
+                                .anyMatch(option -> FIRST_LANDSCAPE_ID.equals(
+                                        option.landscapeId())))
+                        .findFirst()
+                        .orElseThrow();
+
+        PersonalizationPlan rewound = learnerService.rewindPersonalization(
+                LEARNER_ID,
+                firstProfile.rewindId());
+
+        assertThat(rewound.groupId()).isEqualTo("group-profile");
+        assertThat(rewound.groupInstanceId()).contains(FIRST_LANDSCAPE_ID);
+        assertThat(rewound.preservedDecisions()).hasSize(1);
+        assertThat(rewound.preservedDecisions().getFirst().selectedOptions())
+                .extracting(
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::filterId)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple(
+                                SECOND_LANDSCAPE_ID,
+                                "Mode-Stable"));
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(FIRST_LANDSCAPE_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(persisted.path(FIRST_LANDSCAPE_ID).has("filterId")).isFalse();
+        assertThat(persisted.path(SECOND_LANDSCAPE_ID).path("filterId").asText())
+                .isEqualTo("Mode-Stable");
+
+        PersonalizationPlan.Option replacementProfile = rewound.options().stream()
+                .filter(option -> FIRST_LANDSCAPE_ID.equals(
+                        option.landscapeId()))
+                .filter(option -> "Band-Mixed".equals(option.filterId()))
+                .findFirst()
+                .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                replacementProfile.optionId());
+
+        PersonalizationPlan completedAgain =
+                learnerService.getPersonalizationPlan(LEARNER_ID);
+        assertThat(completedAgain.stage())
+                .isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        JsonNode afterReplacement =
+                objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(afterReplacement
+                        .path(SECOND_LANDSCAPE_ID)
+                        .path("filterId")
+                        .asText())
+                .isEqualTo("Mode-Stable");
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test
+    void rewindCanClearAPartialCurrentMultiSelectionWithoutRestartingEarlierSteps()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-region",
+                        1,
+                        group(
+                                "group-region",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(ROOT_LANDSCAPE_ID))),
+                stage(
+                        "stage-subject",
+                        2,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                2,
+                                landscapes(FIRST_LANDSCAPE_ID, SECOND_LANDSCAPE_ID)))));
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Dial-A"),
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Band-Mixed"))));
+        PersonalizationPlan partial = learnerService.getPersonalizationPlan(LEARNER_ID);
+        assertThat(partial.groupId()).isEqualTo("group-subject");
+        assertThat(partial.currentSelectedOptions())
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .containsExactly(FIRST_LANDSCAPE_ID);
+
+        PersonalizationPlan rewound = learnerService.rewindPersonalization(
+                LEARNER_ID,
+                partial.currentRewindId());
+
+        assertThat(rewound.groupId()).isEqualTo("group-subject");
+        assertThat(rewound.selectedCount()).isZero();
+        assertThat(rewound.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("group-region");
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("filterId").asText())
+                .isEqualTo("Dial-A");
+        assertThat(persisted.has(FIRST_LANDSCAPE_ID)).isFalse();
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void rewindRejectsUnknownReferencesWithoutMutation() {
+        String originalConfig = learner.getPersonalCurriculum();
+
+        assertStatus(
+                HttpStatus.CONFLICT,
+                () -> learnerService.rewindPersonalization(
+                        LEARNER_ID,
+                        "unknown-or-stale-rewind"));
+
+        assertThat(learner.getPersonalCurriculum()).isEqualTo(originalConfig);
+        verify(learnerRepository, never()).save(any(Learner.class));
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void rewindKeepsEarlierCompletionMarkersAndRemovesTheReopenedMarker()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-pathways",
+                        1,
+                        group(
+                                "group-pathways",
+                                1,
+                                0,
+                                2,
+                                landscapes(FIRST_LANDSCAPE_ID, SECOND_LANDSCAPE_ID))),
+                stage(
+                        "stage-addition",
+                        2,
+                        group(
+                                "group-addition",
+                                1,
+                                0,
+                                1,
+                                landscapes(FILTERLESS_LANDSCAPE_ID)))));
+        learner.setPersonalCurriculum("{}");
+
+        PersonalizationPlan firstPlan = learnerService.getPersonalizationPlan(LEARNER_ID);
+        PersonalizationPlan.Option firstValue = firstPlan.options().stream()
+                .filter(option -> FIRST_LANDSCAPE_ID.equals(option.landscapeId()))
+                .findFirst()
+                .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                firstValue.optionId());
+        PersonalizationPlan.Option firstCompletion =
+                learnerService.getPersonalizationPlan(LEARNER_ID).options().stream()
+                        .filter(option -> option.kind()
+                                == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                        .findFirst()
+                        .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                firstCompletion.optionId());
+
+        PersonalizationPlan.Option secondCompletion =
+                learnerService.getPersonalizationPlan(LEARNER_ID).options().stream()
+                        .filter(option -> option.kind()
+                                == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                        .findFirst()
+                        .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                secondCompletion.optionId());
+
+        PersonalizationPlan complete = learnerService.getPersonalizationPlan(LEARNER_ID);
+        String secondRewindId = complete.completedDecisions().get(1).rewindId();
+        PersonalizationPlan rewound =
+                learnerService.rewindPersonalization(LEARNER_ID, secondRewindId);
+
+        assertThat(rewound.groupId()).isEqualTo("group-addition");
+        JsonNode completionIds = objectMapper.readTree(learner.getPersonalCurriculum())
+                .path(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)
+                .path(CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY);
+        assertThat(completionIds).hasSize(1);
+        assertThat(completionIds.get(0).asText()).isEqualTo(firstCompletion.optionId());
+        assertThat(completionIds.toString()).doesNotContain(secondCompletion.optionId());
+        assertThat(objectMapper.readTree(learner.getPersonalCurriculum())
+                        .path(FIRST_LANDSCAPE_ID)
+                        .path("selected")
+                        .asBoolean())
+                .isTrue();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test
+    void repeatedRewindsKeepAnIndependentLaterCompletionMarker()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-a",
+                        1,
+                        group(
+                                "group-a",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(ROOT_LANDSCAPE_ID))),
+                stage(
+                        "stage-b",
+                        2,
+                        group(
+                                "group-b",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(FIRST_LANDSCAPE_ID))),
+                stage(
+                        "stage-c",
+                        3,
+                        group(
+                                "group-c",
+                                1,
+                                0,
+                                1,
+                                landscapes(FILTERLESS_LANDSCAPE_ID)))));
+        learner.setPersonalCurriculum("{}");
+
+        PersonalizationPlan.Option firstA =
+                currentOption(ROOT_LANDSCAPE_ID, "Dial-A");
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                firstA.optionId());
+        PersonalizationPlan.Option firstB =
+                currentOption(FIRST_LANDSCAPE_ID, "Band-Mixed");
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                firstB.optionId());
+        PersonalizationPlan.Option completionC =
+                learnerService.getPersonalizationPlan(LEARNER_ID).options().stream()
+                        .filter(option -> option.kind()
+                                == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                        .findFirst()
+                        .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                completionC.optionId());
+
+        PersonalizationPlan complete =
+                learnerService.getPersonalizationPlan(LEARNER_ID);
+        String rewindB = complete.completedDecisions().stream()
+                .filter(decision -> "group-b".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst()
+                .orElseThrow();
+        PersonalizationPlan reopenedB =
+                learnerService.rewindPersonalization(LEARNER_ID, rewindB);
+        String rewindA = reopenedB.completedDecisions().stream()
+                .filter(decision -> "group-a".equals(decision.groupId()))
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .findFirst()
+                .orElseThrow();
+
+        PersonalizationPlan reopenedA =
+                learnerService.rewindPersonalization(LEARNER_ID, rewindA);
+
+        JsonNode completionIdsAfterRewinds =
+                objectMapper.readTree(learner.getPersonalCurriculum())
+                        .path(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)
+                        .path(CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY);
+        assertThat(completionIdsAfterRewinds)
+                .anySatisfy(id -> assertThat(id.asText())
+                        .isEqualTo(completionC.optionId()));
+        assertThat(reopenedA.groupId()).isEqualTo("group-a");
+
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                reopenedA.options().stream()
+                        .filter(option -> "Dial-A".equals(option.filterId()))
+                        .findFirst()
+                        .orElseThrow()
+                        .optionId());
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                learnerService.getPersonalizationPlan(LEARNER_ID)
+                        .options()
+                        .stream()
+                        .filter(option -> "Band-Mixed".equals(
+                                option.filterId()))
+                        .findFirst()
+                        .orElseThrow()
+                        .optionId());
+
+        assertThat(learnerService.getPersonalizationPlan(LEARNER_ID).stage())
+                .isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test
     void restartPreservesFlowProgressOwnedByAnotherRoot() throws Exception {
         learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
                 ROOT_LANDSCAPE_ID,
@@ -790,6 +1339,189 @@ class LearnerPersonalizationMutationContractTest {
         assertThat(reopened.getActiveGoalId()).isNull();
         assertThat(reopened.getLearningState()).isEqualTo(LearningState.FRONTIER);
         verify(plannedGoalRepository).deleteAll(List.of(staleFocus));
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void migratedReopenPreservesExistingChoicesAndReturnsTheFirstMissingDecision()
+            throws Exception {
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of("selected", true),
+                "landscape-unrelated",
+                Map.of("selected", true, "keep", "untouched"),
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_LANDSCAPE_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true))));
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(LEARNER_ID);
+
+        assertThat(reopened.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(reopened.groupId()).isEqualTo("group-root-filter");
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.path(ROOT_LANDSCAPE_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(persisted.path("landscape-unrelated").path("keep").asText())
+                .isEqualTo("untouched");
+        assertThat(persisted
+                        .path(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)
+                        .has(CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY))
+                .isFalse();
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void migratedSummaryDoesNotPresentOrReactivateAnInactiveResidualFilter()
+            throws Exception {
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", false, "filterId", "Band-Mixed"),
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_LANDSCAPE_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true))));
+
+        PersonalizationPlan migrated =
+                learnerService.getPersonalizationPlan(LEARNER_ID);
+        assertThat(migrated.preservedDecisions())
+                .flatExtracting(PersonalizationPlan.DecisionSummary::selectedOptions)
+                .extracting(PersonalizationPlan.Option::filterId)
+                .doesNotContain("Band-Mixed");
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(LEARNER_ID);
+        PersonalizationPlan.Option rootOption = reopened.options().stream()
+                .filter(option -> "Dial-A".equals(option.filterId()))
+                .findFirst()
+                .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                rootOption.optionId());
+
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.has(FIRST_LANDSCAPE_ID)).isFalse();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test
+    void migratedSummaryDoesNotPresentOrReplayAnUnknownAuthoredFilter()
+            throws Exception {
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                FIRST_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Removed-Profile"),
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_LANDSCAPE_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true))));
+
+        PersonalizationPlan migrated =
+                learnerService.getPersonalizationPlan(LEARNER_ID);
+        assertThat(migrated.preservedDecisions())
+                .flatExtracting(PersonalizationPlan.DecisionSummary::selectedOptions)
+                .extracting(PersonalizationPlan.Option::filterId)
+                .doesNotContain("Removed-Profile");
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(LEARNER_ID);
+        PersonalizationPlan.Option rootOption = reopened.options().stream()
+                .filter(option -> "Dial-A".equals(option.filterId()))
+                .findFirst()
+                .orElseThrow();
+        learnerService.patchPersonalCurriculum(
+                LEARNER_ID,
+                null,
+                List.of(),
+                List.of(),
+                rootOption.optionId());
+
+        JsonNode persisted = objectMapper.readTree(learner.getPersonalCurriculum());
+        assertThat(persisted.has(FIRST_LANDSCAPE_ID)).isFalse();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test
+    void migratedReopenRejectsAnInvalidAuthoredFlowWithoutChangingStoredState()
+            throws Exception {
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.getPersonalizationFlow().setVersion("unsupported-version");
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of("selected", true),
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_LANDSCAPE_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true))));
+        String originalConfig = learner.getPersonalCurriculum();
+
+        assertStatus(
+                HttpStatus.CONFLICT,
+                () -> learnerService.reopenMigratedPersonalization(LEARNER_ID));
+
+        assertThat(learner.getPersonalCurriculum()).isEqualTo(originalConfig);
+        verify(learnerRepository, never()).save(any(Learner.class));
+        verifyNoInteractions(masteryRepository);
+    }
+
+    @Test
+    void migratedReopenKeepsTeachingStateWhenTheRetainedScopeIsComplete()
+            throws Exception {
+        String activeGoalId = "goal-still-visible";
+        SkillLandscape root = landscapeService.getById(ROOT_LANDSCAPE_ID);
+        root.setGoals(List.of(goal(activeGoalId)));
+        root.setPersonalizationFlow(flow(stage(
+                "stage-region",
+                1,
+                group(
+                        "group-region",
+                        1,
+                        1,
+                        1,
+                        landscapeFilters(ROOT_LANDSCAPE_ID)))));
+        learner.setActiveGoalId(activeGoalId);
+        learner.setLearningState(LearningState.TEACHING);
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(Map.of(
+                ROOT_LANDSCAPE_ID,
+                Map.of("selected", true, "filterId", "Dial-A"),
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_LANDSCAPE_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true))));
+
+        PersonalizationPlan reopened =
+                learnerService.reopenMigratedPersonalization(LEARNER_ID);
+
+        assertThat(reopened.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(reopened.canReopenMigratedPersonalization()).isFalse();
+        assertThat(reopened.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::groupId)
+                .containsExactly("group-region");
+        assertThat(learner.getActiveGoalId()).isEqualTo(activeGoalId);
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.TEACHING);
         verifyNoInteractions(masteryRepository);
     }
 
@@ -961,6 +1693,14 @@ class LearnerPersonalizationMutationContractTest {
         PersonalizationOptionSource source = new PersonalizationOptionSource();
         source.setKind(PersonalizationSourceKind.LANDSCAPES);
         source.setLandscapeIds(List.of(landscapeIds));
+        return source;
+    }
+
+    private static PersonalizationOptionSource filtersForSelectedLandscapes(
+            String selectedLandscapesFromGroupId) {
+        PersonalizationOptionSource source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.FILTERS_FOR_SELECTED_LANDSCAPES);
+        source.setSelectedLandscapesFromGroupId(selectedLandscapesFromGroupId);
         return source;
     }
 

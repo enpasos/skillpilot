@@ -29,6 +29,25 @@ export interface PersonalizationDecisionPrompt {
   groupLabel: string | null
 }
 
+export interface PersonalizationCompletedDecision {
+  rewindId: string
+  stageId: string | null
+  stageLabel: string | null
+  groupId: string | null
+  groupLabel: string | null
+  groupInstanceId: string | null
+  selectedOptions: PersonalizationOption[]
+}
+
+export interface PersonalizationDecisionSummary {
+  stageId: string | null
+  stageLabel: string | null
+  groupId: string | null
+  groupLabel: string | null
+  groupInstanceId: string | null
+  selectedOptions: PersonalizationOption[]
+}
+
 export interface PersonalizationPlan {
   stage: PersonalizationStage
   stageId: string | null
@@ -40,8 +59,14 @@ export interface PersonalizationPlan {
   maxSelections: number
   selectedCount: number
   options: PersonalizationOption[]
+  displayOptions: PersonalizationOption[]
   navigationOptions: PersonalizationOption[]
+  currentSelectedOptions: PersonalizationOption[]
+  currentRewindId: string | null
+  completedDecisions: PersonalizationCompletedDecision[]
+  preservedDecisions: PersonalizationDecisionSummary[]
   pendingDecisions: PersonalizationDecisionPrompt[]
+  canReopenMigratedPersonalization: boolean
   problemCode: string | null
 }
 
@@ -122,17 +147,63 @@ const parseDecisionPrompt = (value: unknown): PersonalizationDecisionPrompt => {
   }
 }
 
+const parseCompletedDecision = (value: unknown): PersonalizationCompletedDecision => {
+  const decision = asRecord(value, 'Invalid personalization completed decision')
+  const rewindId = opaqueString(decision.rewindId)
+  if (!rewindId || !Array.isArray(decision.selectedOptions)) {
+    throw new Error('Invalid personalization completed decision')
+  }
+  const selectedOptions = decision.selectedOptions.map(parseOption)
+  if (selectedOptions.some((option) => option.kind === 'COMPLETE_GROUP')) {
+    throw new Error('Invalid personalization completed decision')
+  }
+  return {
+    rewindId,
+    stageId: optionalString(decision.stageId),
+    stageLabel: optionalString(decision.stageLabel),
+    groupId: optionalString(decision.groupId),
+    groupLabel: optionalString(decision.groupLabel),
+    groupInstanceId: optionalString(decision.groupInstanceId),
+    selectedOptions,
+  }
+}
+
+const parseDecisionSummary = (value: unknown): PersonalizationDecisionSummary => {
+  const decision = asRecord(value, 'Invalid personalization decision summary')
+  if (!Array.isArray(decision.selectedOptions)) {
+    throw new Error('Invalid personalization decision summary')
+  }
+  const selectedOptions = decision.selectedOptions.map(parseOption)
+  if (selectedOptions.some((option) => option.kind === 'COMPLETE_GROUP')) {
+    throw new Error('Invalid personalization decision summary')
+  }
+  return {
+    stageId: optionalString(decision.stageId),
+    stageLabel: optionalString(decision.stageLabel),
+    groupId: optionalString(decision.groupId),
+    groupLabel: optionalString(decision.groupLabel),
+    groupInstanceId: optionalString(decision.groupInstanceId),
+    selectedOptions,
+  }
+}
+
 export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan => {
   const source = asRecord(value, 'Invalid personalization plan')
   const stage = optionalString(source.stage)
   if (!stage || !PERSONALIZATION_STAGES.has(stage as PersonalizationStage)) {
     throw new Error('Invalid personalization plan: stage')
   }
-  if (
-    !Array.isArray(source.options)
+  const currentSelectedOptions = source.currentSelectedOptions ?? []
+  const displayOptions = source.displayOptions ?? source.options
+  const completedDecisions = source.completedDecisions ?? []
+  const preservedDecisions = source.preservedDecisions ?? []
+  if (!Array.isArray(source.options)
+    || !Array.isArray(displayOptions)
     || !Array.isArray(source.navigationOptions)
-    || !Array.isArray(source.pendingDecisions)
-  ) {
+    || !Array.isArray(currentSelectedOptions)
+    || !Array.isArray(completedDecisions)
+    || !Array.isArray(preservedDecisions)
+    || !Array.isArray(source.pendingDecisions)) {
     throw new Error('Invalid personalization plan: option lists')
   }
 
@@ -144,6 +215,10 @@ export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan =>
   }
 
   const parsedStage = stage as PersonalizationStage
+  const parsedOptions = source.options.map(parseOption)
+  const parsedDisplayOptions = displayOptions
+    .map(parseOption)
+    .filter((option) => option.kind !== 'COMPLETE_GROUP')
   const plan: PersonalizationPlan = {
     stage: parsedStage,
     stageId: optionalString(source.stageId),
@@ -154,9 +229,16 @@ export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan =>
     minSelections,
     maxSelections,
     selectedCount,
-    options: source.options.map(parseOption),
+    options: parsedOptions,
+    displayOptions: parsedDisplayOptions,
     navigationOptions: source.navigationOptions.map(parseOption),
+    currentSelectedOptions: currentSelectedOptions.map(parseOption),
+    currentRewindId: opaqueString(source.currentRewindId),
+    completedDecisions: completedDecisions.map(parseCompletedDecision),
+    preservedDecisions: preservedDecisions.map(parseDecisionSummary),
     pendingDecisions: source.pendingDecisions.map(parseDecisionPrompt),
+    canReopenMigratedPersonalization:
+      source.canReopenMigratedPersonalization === true,
     problemCode: optionalString(source.problemCode),
   }
 
@@ -183,7 +265,12 @@ export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan =>
 
 export const buildPersonalCurriculumEditorEndpoint = (
   skillpilotId: string,
-  action: 'personalization-plan' | 'personalization-options' | 'personalization-restart',
+  action:
+    | 'personalization-plan'
+    | 'personalization-options'
+    | 'personalization-reopen'
+    | 'personalization-rewind'
+    | 'personalization-restart',
   apiBase?: string,
 ) => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)
@@ -264,6 +351,50 @@ export const restartPersonalization = async (
     {
       method: 'POST',
       credentials: 'include',
+      signal: options.signal,
+    },
+  )
+  return readPlanResponse(response)
+}
+
+export const reopenMigratedPersonalization = async (
+  skillpilotId: string,
+  options: PersonalCurriculumEditorRequestOptions = {},
+): Promise<PersonalizationPlan> => {
+  const response = await (options.fetchImpl ?? fetch)(
+    buildPersonalCurriculumEditorEndpoint(
+      skillpilotId,
+      'personalization-reopen',
+      options.apiBase,
+    ),
+    {
+      method: 'POST',
+      credentials: 'include',
+      signal: options.signal,
+    },
+  )
+  return readPlanResponse(response)
+}
+
+export const rewindPersonalization = async (
+  skillpilotId: string,
+  rewindId: string,
+  options: PersonalCurriculumEditorRequestOptions = {},
+): Promise<PersonalizationPlan> => {
+  if (!rewindId.trim()) {
+    throw new Error('Missing personalization rewind reference')
+  }
+  const response = await (options.fetchImpl ?? fetch)(
+    buildPersonalCurriculumEditorEndpoint(
+      skillpilotId,
+      'personalization-rewind',
+      options.apiBase,
+    ),
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rewindId }),
       signal: options.signal,
     },
   )

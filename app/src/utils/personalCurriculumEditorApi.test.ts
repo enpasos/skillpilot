@@ -2,7 +2,9 @@ import {
   applyPersonalizationOption,
   buildPersonalCurriculumEditorEndpoint,
   parsePersonalizationPlan,
+  reopenMigratedPersonalization,
   requestPersonalizationPlan,
+  rewindPersonalization,
   restartPersonalization,
 } from './personalCurriculumEditorApi'
 import {
@@ -64,18 +66,79 @@ const selectionPlan = {
   maxSelections: 1,
   selectedCount: 0,
   options: [option],
+  displayOptions: [
+    option,
+    {
+      ...option,
+      optionId: 'opaque-unavailable-option',
+      landscapeId: 'physics',
+      landscapeLabel: 'Physik',
+    },
+  ],
   navigationOptions: [option],
+  currentSelectedOptions: [],
+  currentRewindId: 'opaque-current-rewind',
+  completedDecisions: [{
+    rewindId: 'opaque-rewind-1',
+    stageId: 'jurisdiction',
+    stageLabel: 'Bundesland auswählen',
+    groupId: 'jurisdiction',
+    groupLabel: 'Welches Bundesland soll gelten?',
+    groupInstanceId: 'jurisdiction:root',
+    selectedOptions: [{
+      ...option,
+      optionId: 'opaque-jurisdiction-option',
+      stageId: 'jurisdiction',
+      groupId: 'jurisdiction',
+      groupInstanceId: 'jurisdiction:root',
+      scopeKey: null,
+      scopeValue: null,
+      scopeLabel: null,
+      filterId: 'DE-HE',
+      filterLabel: 'Hessen',
+      kind: 'VALUE',
+    }],
+  }],
+  preservedDecisions: [],
   pendingDecisions: [{
     stageLabel: 'Lernumfang',
     groupLabel: 'Welche Stufe?',
   }],
+  canReopenMigratedPersonalization: false,
   problemCode: null,
 }
 
 const parsed = parsePersonalizationPlan(selectionPlan)
 assertEqual(parsed.stage, 'SELECTION', 'parses the stage')
 assertEqual(parsed.options[0]?.optionId, 'opaque-option-1', 'preserves the opaque option ID')
+assertEqual(
+  parsed.displayOptions[1]?.optionId,
+  'opaque-unavailable-option',
+  'parses display-only authored candidates separately from actions',
+)
 assertEqual(parsed.options[0]?.scopeValue, 'SekII', 'parses an authored scope value')
+assertEqual(
+  parsed.completedDecisions[0]?.rewindId,
+  'opaque-rewind-1',
+  'preserves the opaque rewind reference',
+)
+assertEqual(
+  parsed.currentRewindId,
+  'opaque-current-rewind',
+  'preserves the opaque reference for resetting a partial current selection',
+)
+assertEqual(
+  parsed.completedDecisions[0]?.selectedOptions[0]?.filterId,
+  'DE-HE',
+  'parses only the selected values in completed history',
+)
+const legacySelectionPlan = { ...selectionPlan } as Record<string, unknown>
+Reflect.deleteProperty(legacySelectionPlan, 'displayOptions')
+assertEqual(
+  parsePersonalizationPlan(legacySelectionPlan).displayOptions.length,
+  selectionPlan.options.length,
+  'older plan responses fall back to their current action options',
+)
 
 const campaignPlan = parsePersonalizationPlan({
   ...selectionPlan,
@@ -229,6 +292,40 @@ assertEqual(
 )
 assertEqual(capturedInit?.method, 'POST', 'uses POST for restart')
 assertEqual(capturedInit?.body, undefined, 'restart carries no inferred curriculum payload')
+
+await reopenMigratedPersonalization('learner-42', {
+  apiBase: 'https://api.example.test',
+  fetchImpl: planFetch,
+})
+assertEqual(
+  capturedUrl,
+  'https://api.example.test/api/ui/learners/learner-42/personalization-reopen',
+  'uses the preserving endpoint for a migrated flow',
+)
+assertEqual(capturedInit?.method, 'POST', 'uses POST for migrated reopen')
+assertEqual(capturedInit?.body, undefined, 'migrated reopen carries no inferred curriculum payload')
+
+await rewindPersonalization('learner-42', ' opaque-rewind-1 ', {
+  apiBase: 'https://api.example.test',
+  fetchImpl: planFetch,
+})
+assertEqual(
+  capturedUrl,
+  'https://api.example.test/api/ui/learners/learner-42/personalization-rewind',
+  'uses the targeted rewind endpoint',
+)
+assertEqual(capturedInit?.method, 'POST', 'uses POST for rewind')
+assertEqual(
+  capturedInit?.body,
+  JSON.stringify({ rewindId: ' opaque-rewind-1 ' }),
+  'submits only the opaque rewind reference without rewriting it',
+)
+await assertRejects(
+  () => rewindPersonalization('learner-42', ' ', {
+    fetchImpl: planFetch,
+  }),
+  'Missing personalization rewind reference',
+)
 
 await assertRejects(
   async () => parsePersonalizationPlan({

@@ -6,9 +6,10 @@ import java.util.List;
  * Provider-neutral plan for the next authored curriculum-personalization
  * decision.
  *
- * <p>The plan contains opaque option IDs. Provider adapters must submit those
- * IDs unchanged and must not reconstruct selections from labels, curriculum
- * graph edges, subjects, regions, or course names.</p>
+ * <p>The plan contains opaque option IDs. Provider adapters must submit only
+ * IDs from {@link #options()} unchanged and must not reconstruct selections
+ * from labels, {@link #displayOptions()}, curriculum graph edges, subjects,
+ * regions, or course names.</p>
  */
 public record PersonalizationPlan(
         Stage stage,
@@ -21,14 +22,27 @@ public record PersonalizationPlan(
         int maxSelections,
         int selectedCount,
         List<Option> options,
+        List<Option> displayOptions,
         List<Option> navigationOptions,
+        List<Option> currentSelectedOptions,
+        String currentRewindId,
+        List<CompletedDecision> completedDecisions,
+        List<DecisionSummary> preservedDecisions,
         List<DecisionPrompt> pendingDecisions,
+        boolean canReopenMigratedPersonalization,
         String problemCode) {
 
     public PersonalizationPlan {
         stage = stage == null ? Stage.INVALID : stage;
         options = options == null ? List.of() : List.copyOf(options);
+        displayOptions = displayOptions == null ? List.of() : List.copyOf(displayOptions);
         navigationOptions = navigationOptions == null ? List.of() : List.copyOf(navigationOptions);
+        currentSelectedOptions =
+                currentSelectedOptions == null ? List.of() : List.copyOf(currentSelectedOptions);
+        completedDecisions =
+                completedDecisions == null ? List.of() : List.copyOf(completedDecisions);
+        preservedDecisions =
+                preservedDecisions == null ? List.of() : List.copyOf(preservedDecisions);
         pendingDecisions = pendingDecisions == null ? List.of() : List.copyOf(pendingDecisions);
     }
 
@@ -47,9 +61,60 @@ public record PersonalizationPlan(
                 0,
                 0,
                 options,
+                displayValueOptions(options),
                 navigationOptions,
                 List.of(),
+                null,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
                 null);
+    }
+
+    /**
+     * Compatibility constructor for the plan shape before display-only
+     * candidates were exposed separately.
+     */
+    public PersonalizationPlan(
+            Stage stage,
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions,
+            boolean canReopenMigratedPersonalization,
+            String problemCode) {
+        this(
+                stage,
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayValueOptions(options),
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                preservedDecisions,
+                pendingDecisions,
+                canReopenMigratedPersonalization,
+                problemCode);
     }
 
     public boolean required() {
@@ -60,6 +125,30 @@ public record PersonalizationPlan(
 
     public boolean valid() {
         return stage != Stage.INVALID;
+    }
+
+    public PersonalizationPlan withPreservedDecisions(
+            List<DecisionSummary> decisions) {
+        return new PersonalizationPlan(
+                stage,
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayOptions,
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                decisions,
+                pendingDecisions,
+                canReopenMigratedPersonalization,
+                problemCode);
     }
 
     public enum Stage {
@@ -212,6 +301,64 @@ public record PersonalizationPlan(
             String groupLabel) {
     }
 
+    /**
+     * One completed authored decision in traversal order.
+     *
+     * <p>{@code rewindId} is an opaque, root- and flow-bound reference. Clients
+     * may submit it unchanged to reopen this decision, but must not derive it
+     * from labels or option values. Only {@code selectedOptions} are exposed
+     * here; {@link #navigationOptions()} deliberately retains its established
+     * meaning as all candidates seen during traversal.</p>
+     */
+    public record CompletedDecision(
+            String rewindId,
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            List<Option> selectedOptions) {
+
+        public CompletedDecision {
+            selectedOptions =
+                    selectedOptions == null ? List.of() : List.copyOf(selectedOptions);
+        }
+    }
+
+    /**
+     * A persisted, independent decision that lies after the currently open
+     * step. It is orientation only and therefore intentionally has no rewind
+     * reference until traversal reaches it again.
+     */
+    public record DecisionSummary(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            List<Option> selectedOptions) {
+
+        public DecisionSummary {
+            selectedOptions =
+                    selectedOptions == null ? List.of() : List.copyOf(selectedOptions);
+        }
+    }
+
+    /**
+     * Returns only human-facing value candidates. Protocol actions such as
+     * {@link OptionKind#COMPLETE_GROUP} must never be duplicated as display
+     * choices.
+     */
+    private static List<Option> displayValueOptions(List<Option> options) {
+        if (options == null) {
+            return List.of();
+        }
+        return options.stream()
+                .filter(option -> option != null
+                        && option.kind() != OptionKind.COMPLETE_GROUP)
+                .toList();
+    }
+
     public static PersonalizationPlan selection(
             String stageId,
             String stageLabel,
@@ -233,7 +380,12 @@ public record PersonalizationPlan(
                 maxSelections,
                 selectedCount,
                 options,
+                displayValueOptions(options),
                 navigationOptions,
+                List.of(),
+                null,
+                List.of(),
+                List.of(),
                 List.of(new DecisionPrompt(stageLabel, groupLabel)));
     }
 
@@ -249,6 +401,154 @@ public record PersonalizationPlan(
             List<Option> options,
             List<Option> navigationOptions,
             List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayValueOptions(options),
+                navigationOptions,
+                List.of(),
+                null,
+                List.of(),
+                List.of(),
+                pendingDecisions);
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> displayOptions,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayOptions,
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                List.of(),
+                pendingDecisions);
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayValueOptions(options),
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                List.of(),
+                pendingDecisions);
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayValueOptions(options),
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                preservedDecisions,
+                pendingDecisions);
+    }
+
+    /**
+     * Builds a selection plan whose visible candidates may be broader than
+     * its currently valid mutation actions.
+     *
+     * <p>{@code displayOptions} is orientation only. Clients may submit only
+     * opaque IDs present in {@code options}; this lets an authored flow show
+     * unavailable choices without weakening its reviewed offering boundary.</p>
+     */
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> displayOptions,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
         return new PersonalizationPlan(
                 Stage.SELECTION,
                 stageId,
@@ -260,12 +560,24 @@ public record PersonalizationPlan(
                 maxSelections,
                 selectedCount,
                 options,
+                displayOptions,
                 navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                preservedDecisions,
                 pendingDecisions,
+                false,
                 null);
     }
 
     public static PersonalizationPlan complete(List<Option> navigationOptions) {
+        return complete(navigationOptions, List.of());
+    }
+
+    public static PersonalizationPlan complete(
+            List<Option> navigationOptions,
+            List<CompletedDecision> completedDecisions) {
         return new PersonalizationPlan(
                 Stage.COMPLETE,
                 null,
@@ -277,8 +589,38 @@ public record PersonalizationPlan(
                 0,
                 0,
                 List.of(),
+                List.of(),
                 navigationOptions,
                 List.of(),
+                null,
+                completedDecisions,
+                List.of(),
+                List.of(),
+                false,
+                null);
+    }
+
+    public static PersonalizationPlan migratedComplete(
+            List<Option> navigationOptions) {
+        return new PersonalizationPlan(
+                Stage.COMPLETE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                0,
+                0,
+                0,
+                List.of(),
+                List.of(),
+                navigationOptions,
+                List.of(),
+                null,
+                List.of(),
+                List.of(),
+                List.of(),
+                true,
                 null);
     }
 
@@ -296,6 +638,12 @@ public record PersonalizationPlan(
                 List.of(),
                 List.of(),
                 List.of(),
+                List.of(),
+                null,
+                List.of(),
+                List.of(),
+                List.of(),
+                false,
                 problemCode == null || problemCode.isBlank()
                         ? "invalid-personalization-flow"
                         : problemCode);

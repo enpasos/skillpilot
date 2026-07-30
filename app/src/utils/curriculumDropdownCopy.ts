@@ -1,4 +1,5 @@
 import type { LabelLanguage } from './filterLabels'
+import type { CurriculumQualityFilter } from './curriculumQualityTrafficLight'
 
 export type CurriculumDropdownCategory = 'SCHOOL' | 'UNI' | 'OTHER'
 
@@ -7,6 +8,8 @@ export interface CurriculumDropdownCopy {
   recommendedGroupLabel: string
   compatibilityGroupLabel: string
   legacyGroupLabel: string
+  qualityFilterLabel: string
+  qualityFilterOptions: Record<CurriculumQualityFilter, string>
 }
 
 export const getCurriculumDropdownCopy = (
@@ -22,6 +25,13 @@ export const getCurriculumDropdownCopy = (
         recommendedGroupLabel: 'Empfohlene Curricula',
         compatibilityGroupLabel: 'Kompatibilitätsansichten',
         legacyGroupLabel: 'Legacy-Ansichten',
+        qualityFilterLabel: 'Qualitätsampel',
+        qualityFilterOptions: {
+          green: 'Grün',
+          orange: 'Orange',
+          red: 'Rot',
+          all: 'Alle',
+        },
       }
     : {
         categoryLabels: {
@@ -32,5 +42,12 @@ export const getCurriculumDropdownCopy = (
         recommendedGroupLabel: 'Recommended curricula',
         compatibilityGroupLabel: 'Compatibility views',
         legacyGroupLabel: 'Legacy views',
+        qualityFilterLabel: 'Quality status',
+        qualityFilterOptions: {
+          green: 'Green',
+          orange: 'Orange',
+          red: 'Red',
+          all: 'All',
+        },
       }
 )
