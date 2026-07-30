@@ -31,12 +31,22 @@ Der Quellcode dieses Projekts (SkillPilot Software) ist unter der **Apache Licen
 
 Dies betrifft die technische Implementierung, die Algorithmen und die Benutzeroberfläche. Die Inhalte der Curricula (siehe oben) unterliegen gesonderten Regelungen (§ 5 UrhG).
 
+## KI-Transparenz
+
+**Stand: 29. Juli 2026**
+
+SkillPilot enthält dokumentiert KI-gestützte Lernziel-Visualisierungen, weitere didaktische Illustrationen und Comics, zwei Audioeinführungen, teilweise KI-unterstützt erstellte und redigierte Lerninhalte sowie den Lerncoach. Der Lerncoach läuft im Chat des jeweils gewählten, dort erkennbaren KI-Anbieters. SkillPilot stellt dafür Lernkontext und Werkzeuge bereit, betreibt aber kein eigenes Dialogmodell. Die aktuell angebotenen Verbindungswege und Datenflüsse beschreibt die [Datenschutzerklärung](https://skillpilot.com/privacy).
+
+Beide Audioeinführungen werden direkt am Player vorsorglich mit dem Hinweis gekennzeichnet, dass sie KI-erzeugte Stimmen enthalten; die genaue Anbieter-, Stimmen- und Segmentprovenienz ist noch nicht abschließend belegt. Die vorhandenen Bildbestände sind überwiegend didaktische Illustrationen und Schemata. „KI-generiert“ bedeutet nicht automatisch „Deepfake“. Für die Einordnung sind Realismus, Ähnlichkeit, Kontext und mögliche Täuschungswirkung maßgeblich; realistische oder sonst zweifelhafte Inhalte werden einzeln geprüft. Soweit eine Offenlegung am betreffenden Inhalt nach [Art. 50 KI-Verordnung](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) erforderlich ist, ersetzt dieser allgemeine Hinweis sie nicht.
+
+Rechtsgrundlagen sind die [KI-Verordnung (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=de) und die [Änderungsverordnung (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de). Zur Auslegung von Art. 50 berücksichtigt SkillPilot die [nicht bindenden Leitlinien der Europäischen Kommission](https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems).
+
 ## Haftungsausschluss & Warnhinweise für SkillPilot
 
 SkillPilot ist ein digitales Werkzeug zur Planung, Dokumentation und Reflexion von Lernprozessen.
 Es richtet sich an **Lernende** und **Trainer:innen/Lehrende**.
 
-Mit der Nutzung von SkillPilot erkennen Sie die folgenden Punkte an:
+Für die Nutzung von SkillPilot gelten die folgenden Hinweise:
 
 ### 1. Keine Garantie für Vollständigkeit der Lernmodelle
 
@@ -89,9 +99,6 @@ Für **Trainer:innen/Lehrende**:
   * mittelbare Schäden, Folgeschäden, entgangenen Gewinn oder sonstige Vermögensschäden.
 * Unberührt bleiben gesetzlich zwingende Haftungsregeln, insbesondere bei **Vorsatz, grober Fahrlässigkeit** sowie bei **Verletzung von Leben, Körper oder Gesundheit**.
 
-### 7. Bestätigung
+### 7. Verantwortungsvolle Nutzung
 
-Mit dem Fortfahren und der Nutzung von SkillPilot bestätigen Sie, dass Sie:
-
-* diese **Hinweise gelesen und verstanden** haben und
-* SkillPilot **nur als unterstützendes Werkzeug** nutzen und **nicht als alleinige Entscheidungsgrundlage** für Prüfungen, Zertifizierungen, Personal- oder Karriereentscheidungen.
+Nutzen Sie SkillPilot **nur als unterstützendes Werkzeug** und **nicht als alleinige Entscheidungsgrundlage** für Prüfungen, Zertifizierungen, Personal- oder Karriereentscheidungen. Dieser Hinweis begründet keinen Haftungsverzicht und schränkt gesetzliche Rechte nicht ein.

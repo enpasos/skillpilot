@@ -110,6 +110,18 @@ const expectedNaturalIntake = {
     numberGuard: 'numbers-only reply is consumed by one choice',
   },
 }
+const expectedFirstContactTransparency = {
+  de: [
+    'Erstkontakt',
+    'Ich bin KI-Assistent und kann mich irren.',
+    'Hinweis später nicht wiederholen.',
+  ],
+  en: [
+    'At first contact',
+    'I am an AI assistant and can make mistakes.',
+    'Do not routinely repeat this later.',
+  ],
+}
 const knowledgeFragments = {
   'knowledge_docs/visible_session_protocol.md': [
     'getVisibleState',
@@ -287,6 +299,13 @@ for (const locale of locales) {
     instructions.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].numberGuard),
     `${locale} instructions might incorrectly relay a numbers-only reply`,
   )
+  for (const fragment of expectedFirstContactTransparency[locale]) {
+    assert.ok(
+      instructions.replace(/\s+/g, ' ').includes(fragment),
+      `${locale} instructions miss first-contact transparency fragment: ${fragment}`,
+    )
+  }
+  assert.doesNotMatch(instructions, /banner|disclaimer|haftung|liabilit/i)
   assert.ok(!instructions.includes('redeemStartCode'), `${locale} instructions contain redeemStartCode`)
   assert.ok(!/\buuid\b/i.test(instructions), `${locale} instructions incorrectly require UUID goal IDs`)
 

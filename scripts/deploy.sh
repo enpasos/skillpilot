@@ -270,6 +270,9 @@ cd app
 echo "Installiere Abhängigkeiten..."
 npm install
 
+echo "Prüfe KI-Transparenznachweis..."
+npm run check:ai-transparency-inventory
+
 echo "Baue Anwendung..."
 npm run build
 
@@ -277,6 +280,10 @@ echo "Prüfe Coach-Variante im Frontend-Artefakt..."
 node ../scripts/verify_frontend_coach_variant.mjs \
   ../backend/src/main/resources/static \
   "${VITE_SKILLPILOT_COACH_VARIANT}"
+
+echo "Prüfe KI-Transparenz im Frontend-Artefakt..."
+node ../scripts/verify_ai_transparency_artifact.mjs \
+  ../backend/src/main/resources/static
 
 echo "Baue Backend..."
 cd ../backend
@@ -320,6 +327,10 @@ echo "Prüfe ausgelieferte Coach-Variante..."
 node scripts/verify_frontend_coach_variant.mjs \
   "${SMOKE_BASE_URL}" \
   "${VITE_SKILLPILOT_COACH_VARIANT}"
+
+echo "Prüfe ausgelieferte KI-Transparenz..."
+node scripts/verify_ai_transparency_artifact.mjs \
+  "${SMOKE_BASE_URL}"
 
 echo "Prüfe Quellenbegründungs-Smoke-Test..."
 cd app
