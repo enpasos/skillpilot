@@ -323,6 +323,16 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .isEqualTo(applicationSubject);
         assertLegacyStateIsEmpty();
 
+        HttpResponse<String> modernDiscovery = postModernMcp(accessToken, """
+                {"jsonrpc":"2.0","id":"discover-1","method":"server/discover","params":{
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientInfo":{"name":"chatgpt-e2e","version":"1.0"},
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """);
+        assertThat(modernDiscovery.statusCode()).withFailMessage(modernDiscovery.body()).isEqualTo(400);
+        assertThat(modernDiscovery.body()).isEmpty();
+
         HttpResponse<String> tools = postMcp(accessToken, """
                 {"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}
                 """);
@@ -659,6 +669,19 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 request
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build(),
+                HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> postModernMcp(String accessToken, String body) throws Exception {
+        HttpRequest.Builder request = OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(
+                HttpRequest.newBuilder(localUri("/api/openai/de/mcp"))
+                        .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                        .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                        .header("MCP-Protocol-Version", "2026-07-28")
+                        .header("Mcp-Method", "server/discover"));
+        return browser.send(
+                request.POST(HttpRequest.BodyPublishers.ofString(body)).build(),
                 HttpResponse.BodyHandlers.ofString());
     }
 
