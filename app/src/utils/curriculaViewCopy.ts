@@ -26,18 +26,24 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         deregisterGoalsBadge: (count: number) => `${count} goals`,
         qualityFilterLabel: 'Quality status',
         qualityFilterOptions: {
-          green: 'Green',
-          orange: 'Orange',
-          red: 'Red',
+          green: 'Human QA',
+          orange: 'Automated QA',
+          red: 'Experimental',
           all: 'All',
         },
         qualityStatusLabels: {
-          green: 'Green',
-          orange: 'Orange',
-          red: 'Red',
+          green: 'Human QA',
+          orange: 'Automated QA',
+          red: 'Experimental',
         },
         qualityStatusTitle: (status: CurriculumQualityStatus) => (
-          `Quality status: ${status === 'green' ? 'Green' : status === 'orange' ? 'Orange' : 'Red'}`
+          `Quality status: ${
+            status === 'green'
+              ? 'Human QA'
+              : status === 'orange'
+                ? 'Automated QA'
+                : 'Experimental'
+          }`
         ),
       }
     : {
@@ -48,18 +54,24 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
         deregisterGoalsBadge: (count: number) => `${count} Ziele`,
         qualityFilterLabel: 'Qualitätsampel',
         qualityFilterOptions: {
-          green: 'Grün',
-          orange: 'Orange',
-          red: 'Rot',
+          green: 'Menschliche QS',
+          orange: 'Maschinelle QS',
+          red: 'Experimentell',
           all: 'Alle',
         },
         qualityStatusLabels: {
-          green: 'Grün',
-          orange: 'Orange',
-          red: 'Rot',
+          green: 'Menschliche QS',
+          orange: 'Maschinelle QS',
+          red: 'Experimentell',
         },
         qualityStatusTitle: (status: CurriculumQualityStatus) => (
-          `Qualitätsstatus: ${status === 'green' ? 'Grün' : status === 'orange' ? 'Orange' : 'Rot'}`
+          `Qualitätsstatus: ${
+            status === 'green'
+              ? 'Menschliche QS'
+              : status === 'orange'
+                ? 'Maschinelle QS'
+                : 'Experimentell'
+          }`
         ),
       }
 )
