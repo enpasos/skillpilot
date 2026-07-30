@@ -11,6 +11,15 @@ import { BadgeCheck, Trophy } from 'lucide-react'
 import { CANONICAL_GYMNASIUM_ROOT_ID, getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
 import { getCurriculaChampionCopy } from '../utils/curriculaChampionCopy'
 import { getCurriculaViewCopy } from '../utils/curriculaViewCopy'
+import {
+  buildGymnasiumSubjectQualityRows,
+  CURRICULUM_QUALITY_FILTER_AVAILABLE,
+  getCurriculumQualityStatus,
+  getGymnasiumSubjectQualityStatus,
+  matchesCurriculumQualityFilter,
+  type CurriculumQualityFilter,
+  type CurriculumQualityStatus,
+} from '../utils/curriculumQualityTrafficLight'
 
 interface ChampionEntry {
   curriculumId: string
@@ -98,6 +107,25 @@ const maturityClass: Record<MaturityLevel, string> = {
   M7: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
 }
 
+const qualityStatusBadgeClass: Record<CurriculumQualityStatus, string> = {
+  green: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300',
+  orange: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-800 dark:bg-orange-950/40 dark:text-orange-300',
+  red: 'border-red-300 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/40 dark:text-red-300',
+}
+
+const qualityStatusDotClass: Record<CurriculumQualityStatus, string> = {
+  green: 'bg-emerald-700',
+  orange: 'bg-orange-700',
+  red: 'bg-red-700',
+}
+
+const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
+  green: 'bg-emerald-700 text-white shadow-sm',
+  orange: 'bg-orange-700 text-white shadow-sm',
+  red: 'bg-red-700 text-white shadow-sm',
+  all: 'bg-sky-700 text-white shadow-sm',
+}
+
 const maturityCopy = {
   de: {
     label: 'Reifegrad',
@@ -171,6 +199,7 @@ export const CurriculaView: React.FC = () => {
 
   const [championFilter, setChampionFilter] = useState<ChampionFilter>('with')
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all')
+  const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('green')
   const [showRegistration, setShowRegistration] = useState(false)
   const [user, setUser] = useState<{ githubId: string; champions: ChampionEntry[] } | null>(null)
   const [showDeregisterModal, setShowDeregisterModal] = useState(false)
@@ -446,9 +475,16 @@ export const CurriculaView: React.FC = () => {
       const categoryMatch =
         categoryFilter === 'all' || getCategory(curriculum) === categoryFilter
 
-      return championMatch && categoryMatch
+      const qualityStatus = getCurriculumQualityStatus(
+        curriculum.curriculumId,
+        curriculum.qualityMaturity,
+      )
+      const qualityMatch = !CURRICULUM_QUALITY_FILTER_AVAILABLE
+        || matchesCurriculumQualityFilter(qualityStatus, qualityFilter)
+
+      return championMatch && categoryMatch && qualityMatch
     })
-  }, [data, championFilter, categoryFilter, getCategory])
+  }, [data, championFilter, categoryFilter, qualityFilter, getCategory])
 
   useEffect(() => {
     if (!selectedCurriculumId) {
@@ -1000,6 +1036,40 @@ export const CurriculaView: React.FC = () => {
                   ))}
                 </div>
               </div>
+              {CURRICULUM_QUALITY_FILTER_AVAILABLE && (
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs uppercase tracking-wider text-text-secondary">
+                    {curriculaViewCopy.qualityFilterLabel}
+                  </span>
+                  <div className="flex gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                    {(['green', 'orange', 'red', 'all'] as CurriculumQualityFilter[]).map((filter) => (
+                      <button
+                        key={filter}
+                        type="button"
+                        onClick={() => setQualityFilter(filter)}
+                        aria-pressed={qualityFilter === filter}
+                        className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+                          qualityFilter === filter
+                            ? qualityFilterActiveClass[filter]
+                            : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
+                        }`}
+                      >
+                        {filter !== 'all' && (
+                          <span
+                            aria-hidden="true"
+                            className={`h-2 w-2 rounded-full ${
+                              qualityFilter === filter
+                                ? 'bg-white'
+                                : qualityStatusDotClass[filter]
+                            }`}
+                          />
+                        )}
+                        {curriculaViewCopy.qualityFilterOptions[filter]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           {filteredCurricula.length === 0 ? (
@@ -1021,6 +1091,10 @@ export const CurriculaView: React.FC = () => {
                     const curriculumTitle = getCurriculumTitle(curriculum)
                     const curriculumQuality = getCurriculumQuality(curriculum)
                     const showCurriculumQuality = curriculumQuality && !isCanonicalGymnasiumOverview(curriculum)
+                    const qualityStatus = getCurriculumQualityStatus(
+                      curriculum.curriculumId,
+                      curriculum.qualityMaturity,
+                    )
                     return (
                       <div className="text-lg font-semibold text-text-primary flex flex-wrap items-center gap-2">
                         <span>{curriculumTitle}</span>
@@ -1033,6 +1107,18 @@ export const CurriculaView: React.FC = () => {
                             title={getQualityTooltip(curriculumQuality, qualityCopy)}
                           >
                             {curriculumQuality.maturity}
+                          </span>
+                        )}
+                        {CURRICULUM_QUALITY_FILTER_AVAILABLE && (
+                          <span
+                            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
+                            title={curriculaViewCopy.qualityStatusTitle(qualityStatus)}
+                          >
+                            <span
+                              aria-hidden="true"
+                              className={`h-2 w-2 rounded-full ${qualityStatusDotClass[qualityStatus]}`}
+                            />
+                            {curriculaViewCopy.qualityStatusLabels[qualityStatus]}
                           </span>
                         )}
                       </div>
@@ -1062,44 +1148,78 @@ export const CurriculaView: React.FC = () => {
                     </div>
                   </div>
 
-                  {isCanonicalGymnasiumOverview(curriculum) && (curriculum.subjectQuality?.length ?? 0) > 0 && (
-                    <div className="mt-4 rounded-xl border border-border-color bg-white/60 p-3 dark:bg-slate-900/30">
-                      <div className="text-xs uppercase tracking-wider text-text-secondary">
-                        {qualityCopy.subjectStatusTitle}
-                      </div>
-                      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                        {curriculum.subjectQuality?.map((quality) => (
-                          <div
-                            key={quality.subject}
-                            className="flex items-center justify-between gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs dark:bg-slate-900/40"
-                            title={getQualityTooltip(quality, qualityCopy)}
-                          >
-                            <span className="min-w-0 truncate font-medium text-text-primary">
-                              {quality.subject}
-                            </span>
-                            <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
-                              {quality.maturity}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-3 border-t border-border-color pt-3">
+                  {CURRICULUM_QUALITY_FILTER_AVAILABLE && isCanonicalGymnasiumOverview(curriculum) && (() => {
+                    const qualityRows = buildGymnasiumSubjectQualityRows(
+                      curriculum.topLevelTopics,
+                      curriculum.topLevelTopicsEn,
+                      curriculum.subjectQuality,
+                      localizedLanguage,
+                    )
+                    if (qualityRows.length === 0) return null
+                    const hasMaturityDetails = qualityRows.some((row) => row.quality != null)
+                    return (
+                      <div className="mt-4 rounded-xl border border-border-color bg-white/60 p-3 dark:bg-slate-900/30">
                         <div className="text-xs uppercase tracking-wider text-text-secondary">
-                          {qualityCopy.legendTitle}
+                          {qualityCopy.subjectStatusTitle}
                         </div>
-                        <div className="mt-2 grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
-                          {maturityOrder.map((level) => (
-                            <div key={level} className="flex items-start gap-2">
-                              <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[level]}`}>
-                                {level}
-                              </span>
-                              <span>{qualityCopy.legend[level]}</span>
+                        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {qualityRows.map(({ subject, quality }) => {
+                            const qualityStatus = getGymnasiumSubjectQualityStatus(
+                              subject,
+                              quality?.maturity,
+                            )
+                            const statusTitle = curriculaViewCopy.qualityStatusTitle(qualityStatus)
+                            return (
+                              <div
+                                key={quality?.subject ?? subject}
+                                className="flex items-center justify-between gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs dark:bg-slate-900/40"
+                                title={quality
+                                  ? `${statusTitle} · ${getQualityTooltip(quality, qualityCopy)}`
+                                  : statusTitle}
+                              >
+                                <span className="min-w-0 truncate font-medium text-text-primary">
+                                  {subject}
+                                </span>
+                                <span className="flex shrink-0 items-center gap-1.5">
+                                  <span
+                                    className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
+                                  >
+                                    <span
+                                      aria-hidden="true"
+                                      className={`h-2 w-2 rounded-full ${qualityStatusDotClass[qualityStatus]}`}
+                                    />
+                                    {curriculaViewCopy.qualityStatusLabels[qualityStatus]}
+                                  </span>
+                                  {quality && (
+                                    <span className={`rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
+                                      {quality.maturity}
+                                    </span>
+                                  )}
+                                </span>
+                              </div>
+                            )
+                          })}
+                        </div>
+                        {hasMaturityDetails && (
+                          <div className="mt-3 border-t border-border-color pt-3">
+                            <div className="text-xs uppercase tracking-wider text-text-secondary">
+                              {qualityCopy.legendTitle}
                             </div>
-                          ))}
-                        </div>
+                            <div className="mt-2 grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
+                              {maturityOrder.map((level) => (
+                                <div key={level} className="flex items-start gap-2">
+                                  <span className={`shrink-0 rounded-full border px-2 py-0.5 font-semibold ${maturityClass[level]}`}>
+                                    {level}
+                                  </span>
+                                  <span>{qualityCopy.legend[level]}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  )}
+                    )
+                  })()}
 
                   {/* Topics Preview */}
                   <div className="mt-4 border-t border-border-color pt-3">

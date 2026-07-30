@@ -15,6 +15,7 @@ import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.FrontierResponse;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
+import com.skillpilot.backend.api.PersonalizationRewindRequest;
 import com.skillpilot.backend.api.PlannedGoalsRequest;
 import com.skillpilot.backend.api.PlannedGoalsResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
@@ -106,6 +107,30 @@ public class LearnerUiController {
     public PersonalizationPlan restartPersonalization(@PathVariable String skillpilotId) {
         learnerService.assertWritableLearningSession(skillpilotId);
         return learnerService.restartPersonalization(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/personalization-reopen")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public PersonalizationPlan reopenMigratedPersonalization(
+            @PathVariable String skillpilotId) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.reopenMigratedPersonalization(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/personalization-rewind")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public PersonalizationPlan rewindPersonalization(
+            @PathVariable String skillpilotId,
+            @RequestBody(required = false) PersonalizationRewindRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        if (request == null
+                || request.rewindId() == null
+                || request.rewindId().isBlank()) {
+            throw new org.springframework.web.server.ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A current opaque personalization rewind reference is required.");
+        }
+        return learnerService.rewindPersonalization(skillpilotId, request.rewindId());
     }
 
     @GetMapping("/{skillpilotId}/landscapes/{landscapeId}/closure")

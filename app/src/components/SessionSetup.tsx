@@ -1209,6 +1209,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       disabled={role === 'learner' && curriculumSaving}
                       landscapes={availableCurricula}
                       showCompatibilityViews={false}
+                      showQualityFilter
                     />
                     {role === 'learner' && curriculumSaving && (
                       <p className="mt-2 text-xs text-text-secondary" role="status">

@@ -2476,9 +2476,18 @@ public class LearnerService {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
+        PersonalizationPlan currentPlan = buildPersonalizationPlan(learner);
         PersonalizationPlan.Option selectedOption =
-                requireCurrentPersonalizationOption(buildPersonalizationPlan(learner), optionId, goalIds, filters);
+                requireCurrentPersonalizationOption(
+                        currentPlan,
+                        optionId,
+                        goalIds,
+                        filters);
         Map<String, Object> finalConfig = mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        preparePersonalizationMutation(
+                learner,
+                finalConfig,
+                currentPlan);
         applyCurrentPersonalizationOption(learner, finalConfig, selectedOption);
 
         return getLearnerState(skillpilotId, null);
@@ -2561,6 +2570,448 @@ public class LearnerService {
         revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
         persistPersonalCurriculum(learner, personalCurriculum);
         return buildPersonalizationPlan(learner);
+    }
+
+    /**
+     * Reopens a legacy-migrated flow without discarding any existing Level-2
+     * choice.
+     *
+     * <p>The migration shortcut is removed only for the learner's current
+     * authored root. The regular planner then either exposes the first missing
+     * decision or reconstructs editable completed decisions from the retained
+     * configuration.</p>
+     */
+    @Transactional
+    public PersonalizationPlan reopenMigratedPersonalization(String skillpilotId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        String rootLandscapeId = learner.getSelectedCurriculum();
+        if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No curriculum selected for personalization.");
+        }
+        SkillLandscape rootLandscape = landscapeService.getById(rootLandscapeId);
+        if (rootLandscape == null
+                || rootLandscape.getPersonalizationFlow() == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected personalization flow is no longer available.");
+        }
+
+        Map<String, Object> personalCurriculum =
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        if (!CurriculumPersonalizationPlanner.reopenMigratedFlow(
+                personalCurriculum,
+                rootLandscapeId)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The migrated personalization flow is already open; reload the current context.");
+        }
+        List<CurriculumPersonalizationPlanner.StoredSelection> storedSelections =
+                CurriculumPersonalizationPlanner.storedSelections(
+                        rootLandscape.getPersonalizationFlow(),
+                        landscapeService::getById,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(
+                                        personalCurriculum)));
+        List<PersonalizationPlan.Option> residualValues = storedSelections.stream()
+                .filter(stored -> !stored.activeAndAuthored())
+                .map(this::storedSelectionOption)
+                .toList();
+        if (!residualValues.isEmpty()) {
+            List<PersonalizationPlan.Option> retainedValues =
+                    storedSelections.stream()
+                            .filter(
+                                    CurriculumPersonalizationPlanner.StoredSelection
+                                            ::activeAndAuthored)
+                            .map(this::storedSelectionOption)
+                            .toList();
+            clearReopenedPersonalizationValues(
+                    learner,
+                    personalCurriculum,
+                    residualValues,
+                    retainedValues);
+        }
+
+        PersonalizationPlan reopenedPlan = CurriculumPersonalizationPlanner.plan(
+                rootLandscapeId,
+                landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
+                parsePersonalCurriculumConfig(
+                        writePersonalCurriculumConfig(personalCurriculum)));
+        if (!reopenedPlan.valid()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The authored personalization flow is invalid.");
+        }
+
+        revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
+            learner.setLearningState(LearningState.FRONTIER);
+        }
+        persistPersonalCurriculum(learner, personalCurriculum);
+        return decoratePersonalizationPlan(
+                reopenedPlan,
+                rootLandscapeId,
+                personalCurriculum);
+    }
+
+    /**
+     * Reopens one completed or partially selected authored decision without
+     * restarting the entire personalization flow.
+     *
+     * <p>The opaque rewind reference is resolved against the learner's current
+     * plan while the learner row is locked. The selected values of that
+     * decision and every authored dependent decision are removed field by
+     * field. Independent choices, unrelated curriculum configuration, stable
+     * goal IDs and mastery remain untouched.</p>
+     */
+    @Transactional
+    public PersonalizationPlan rewindPersonalization(
+            String skillpilotId,
+            String rewindId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        String rootLandscapeId = learner.getSelectedCurriculum();
+        if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No curriculum selected for personalization.");
+        }
+
+        PersonalizationPlan currentPlan = buildPersonalizationPlan(learner);
+        if (!currentPlan.valid()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The authored personalization flow is invalid.");
+        }
+        SkillLandscape rootLandscape = landscapeService.getById(rootLandscapeId);
+        if (rootLandscape == null || rootLandscape.getPersonalizationFlow() == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected personalization flow is no longer available.");
+        }
+        String submittedRewindId = rewindId == null ? null : rewindId.trim();
+        List<PersonalizationPlan.CompletedDecision> matches =
+                currentPlan.completedDecisions().stream()
+                        .filter(Objects::nonNull)
+                        .filter(decision -> submittedRewindId != null
+                                && submittedRewindId.equals(decision.rewindId()))
+                        .toList();
+        boolean reopensCurrentDecision = currentPlan.required()
+                && submittedRewindId != null
+                && submittedRewindId.equals(currentPlan.currentRewindId())
+                && !currentPlan.currentSelectedOptions().isEmpty();
+        if ((!reopensCurrentDecision && matches.size() != 1)
+                || (reopensCurrentDecision && !matches.isEmpty())) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The personalization rewind reference is stale or unknown; reload the current context.");
+        }
+
+        PersonalizationPlan.CompletedDecision target =
+                reopensCurrentDecision ? null : matches.getFirst();
+        String targetStageId =
+                reopensCurrentDecision ? currentPlan.stageId() : target.stageId();
+        String targetGroupId =
+                reopensCurrentDecision ? currentPlan.groupId() : target.groupId();
+        String targetGroupInstanceId = reopensCurrentDecision
+                ? currentPlan.groupInstanceId()
+                : target.groupInstanceId();
+        Set<String> affectedGroupIds =
+                CurriculumPersonalizationPlanner.dependentGroupIds(
+                        rootLandscape.getPersonalizationFlow(),
+                        targetGroupId);
+        if (!affectedGroupIds.contains(targetGroupId)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected personalization decision can no longer be reopened.");
+        }
+
+        List<PersonalizationPlan.CompletedDecision> reopenedDecisions =
+                currentPlan.completedDecisions().stream()
+                        .filter(Objects::nonNull)
+                        .filter(decision -> submittedRewindId.equals(decision.rewindId())
+                                || (!Objects.equals(targetGroupId, decision.groupId())
+                                        && affectedGroupIds.contains(decision.groupId())))
+                        .toList();
+        Set<String> reopenedDecisionIds = reopenedDecisions.stream()
+                .map(PersonalizationPlan.CompletedDecision::rewindId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toSet());
+        List<PersonalizationPlan.CompletedDecision> retainedDecisions =
+                currentPlan.completedDecisions().stream()
+                        .filter(Objects::nonNull)
+                        .filter(decision -> !reopenedDecisionIds.contains(decision.rewindId()))
+                        .toList();
+        boolean reopensCurrentSelection = reopensCurrentDecision
+                || (currentPlan.groupId() != null
+                        && !Objects.equals(targetGroupId, currentPlan.groupId())
+                        && affectedGroupIds.contains(currentPlan.groupId()));
+
+        Map<String, Object> personalCurriculum =
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        List<PersonalizationPlan.Option> reopenedOptions = new ArrayList<>();
+        reopenedDecisions.stream()
+                .filter(Objects::nonNull)
+                .flatMap(decision -> decision.selectedOptions().stream())
+                .filter(Objects::nonNull)
+                .forEach(reopenedOptions::add);
+        if (reopensCurrentSelection) {
+            currentPlan.currentSelectedOptions().stream()
+                    .filter(Objects::nonNull)
+                    .forEach(reopenedOptions::add);
+        }
+        List<PersonalizationPlan.Option> retainedOptions = new ArrayList<>();
+        retainedDecisions.stream()
+                .flatMap(decision -> decision.selectedOptions().stream())
+                .filter(Objects::nonNull)
+                .forEach(retainedOptions::add);
+        if (!reopensCurrentSelection) {
+            currentPlan.currentSelectedOptions().stream()
+                    .filter(Objects::nonNull)
+                    .forEach(retainedOptions::add);
+        }
+
+        List<CurriculumPersonalizationPlanner.StoredSelection> storedSelections =
+                CurriculumPersonalizationPlanner.storedSelections(
+                        rootLandscape.getPersonalizationFlow(),
+                        landscapeService::getById,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(personalCurriculum)));
+        for (CurriculumPersonalizationPlanner.StoredSelection stored : storedSelections) {
+            PersonalizationPlan.Option storedOption = new PersonalizationPlan.Option(
+                    null,
+                    stored.stageId(),
+                    stored.groupId(),
+                    stored.groupInstanceId(),
+                    stored.landscapeId(),
+                    personalizationLandscapeLabel(stored.landscapeId()),
+                    stored.filterId(),
+                    personalizationFilterLabel(
+                            stored.landscapeId(),
+                            stored.filterId()),
+                    stored.scopeKey(),
+                    stored.scopeValue(),
+                    stored.scopeLabel(),
+                    stored.kind());
+            boolean targetsExactInstance =
+                    Objects.equals(targetGroupId, stored.groupId())
+                            && Objects.equals(targetGroupInstanceId, stored.groupInstanceId());
+            boolean belongsToDependentGroup =
+                    !Objects.equals(targetGroupId, stored.groupId())
+                            && affectedGroupIds.contains(stored.groupId());
+            if (!stored.activeAndAuthored()
+                    || targetsExactInstance
+                    || belongsToDependentGroup) {
+                reopenedOptions.add(storedOption);
+            } else {
+                retainedOptions.add(storedOption);
+            }
+        }
+
+        clearReopenedPersonalizationValues(
+                learner,
+                personalCurriculum,
+                reopenedOptions,
+                retainedOptions);
+        List<PersonalizationPlan.Option> validCompletionOptions =
+                CurriculumPersonalizationPlanner.validCompletionOptions(
+                        rootLandscapeId,
+                        landscapeService::getById,
+                        this::resolvePersonalizationOfferingScope,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(
+                                        personalCurriculum)));
+        Set<String> retainedCompletionIds = validCompletionOptions.stream()
+                .filter(option -> {
+                    boolean targetsExactInstance =
+                            Objects.equals(targetGroupId, option.groupId())
+                                    && Objects.equals(
+                                            targetGroupInstanceId,
+                                            option.groupInstanceId());
+                    boolean belongsToDependentGroup =
+                            !Objects.equals(targetGroupId, option.groupId())
+                                    && affectedGroupIds.contains(
+                                            option.groupId());
+                    return !targetsExactInstance
+                            && !belongsToDependentGroup;
+                })
+                .map(PersonalizationPlan.Option::optionId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        retainPersonalizationCompletionIds(
+                personalCurriculum,
+                rootLandscapeId,
+                retainedCompletionIds);
+
+        PersonalizationPlan rewoundPlan = CurriculumPersonalizationPlanner.plan(
+                rootLandscapeId,
+                landscapeService::getById,
+                this::resolvePersonalizationOfferingScope,
+                parsePersonalCurriculumConfig(
+                        writePersonalCurriculumConfig(personalCurriculum)));
+        if (!rewoundPlan.valid()
+                || !rewoundPlan.required()
+                || !Objects.equals(targetStageId, rewoundPlan.stageId())
+                || !Objects.equals(targetGroupId, rewoundPlan.groupId())
+                || !Objects.equals(targetGroupInstanceId, rewoundPlan.groupInstanceId())) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The selected personalization decision can no longer be reopened.");
+        }
+
+        learner.setLearningState(LearningState.FRONTIER);
+        revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+        persistPersonalCurriculum(learner, personalCurriculum);
+        return decoratePersonalizationPlan(
+                rewoundPlan,
+                rootLandscapeId,
+                personalCurriculum);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void clearReopenedPersonalizationValues(
+            Learner learner,
+            Map<String, Object> personalCurriculum,
+            List<PersonalizationPlan.Option> reopenedOptions,
+            List<PersonalizationPlan.Option> retainedOptions) {
+        LinkedHashSet<String> affectedLandscapeIds = reopenedOptions.stream()
+                .map(PersonalizationPlan.Option::landscapeId)
+                .filter(Objects::nonNull)
+                .filter(id -> !id.isBlank())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        boolean reopensStage = reopenedOptions.stream()
+                .anyMatch(option -> "stage".equals(option.scopeKey()));
+
+        for (PersonalizationPlan.Option option : reopenedOptions) {
+            if (option.landscapeId() == null || option.landscapeId().isBlank()) {
+                continue;
+            }
+            Object rawSettings = personalCurriculum.get(option.landscapeId());
+            if (!(rawSettings instanceof Map<?, ?> existingSettings)) {
+                continue;
+            }
+            Map<String, Object> settings =
+                    new LinkedHashMap<>((Map<String, Object>) existingSettings);
+            settings.remove("selected");
+            if (option.kind() == PersonalizationPlan.OptionKind.SCOPE_VALUE
+                    && option.scopeKey() != null
+                    && !option.scopeKey().isBlank()) {
+                settings.remove(option.scopeKey());
+            } else if (option.kind() == PersonalizationPlan.OptionKind.VALUE) {
+                if (option.filterId() != null && !option.filterId().isBlank()) {
+                    settings.remove("filterId");
+                    settings.remove("durationModel");
+                } else {
+                    /*
+                     * A landscape selection owns the downstream profile and
+                     * compatibility fields on that landscape as well. This
+                     * also removes stale profile data from a partially
+                     * completed legacy flow before the subject is selected
+                     * again.
+                     */
+                    settings.remove("filterId");
+                    settings.remove("durationModel");
+                    settings.remove("stage");
+                }
+            }
+            if (settings.isEmpty()) {
+                personalCurriculum.remove(option.landscapeId());
+            } else {
+                personalCurriculum.put(option.landscapeId(), settings);
+            }
+        }
+
+        /*
+         * Restore retained landscape/filter ownership first and explicit
+         * scope values second. A filter write removes the legacy
+         * durationModel alias, but it must not erase an independently authored
+         * durationModel scope merely because that scope appeared earlier in
+         * the flow.
+         */
+        for (PersonalizationPlan.Option option : retainedOptions) {
+            if (option == null
+                    || option.landscapeId() == null
+                    || option.landscapeId().isBlank()
+                    || !affectedLandscapeIds.contains(option.landscapeId())) {
+                continue;
+            }
+            Object rawSettings = personalCurriculum.get(option.landscapeId());
+            Map<String, Object> settings = rawSettings instanceof Map<?, ?> existingSettings
+                    ? new LinkedHashMap<>((Map<String, Object>) existingSettings)
+                    : new LinkedHashMap<>();
+            settings.put("selected", true);
+            if (option.kind() == PersonalizationPlan.OptionKind.VALUE
+                    && option.filterId() != null
+                    && !option.filterId().isBlank()) {
+                settings.put("filterId", option.filterId());
+                settings.remove("durationModel");
+            }
+            personalCurriculum.put(option.landscapeId(), settings);
+        }
+        for (PersonalizationPlan.Option option : retainedOptions) {
+            if (option == null
+                    || option.kind() != PersonalizationPlan.OptionKind.SCOPE_VALUE
+                    || option.landscapeId() == null
+                    || option.landscapeId().isBlank()
+                    || !affectedLandscapeIds.contains(option.landscapeId())
+                    || option.scopeKey() == null
+                    || option.scopeKey().isBlank()
+                    || option.scopeValue() == null
+                    || option.scopeValue().isBlank()) {
+                continue;
+            }
+            Object rawSettings = personalCurriculum.get(option.landscapeId());
+            Map<String, Object> settings = rawSettings instanceof Map<?, ?> existingSettings
+                    ? new LinkedHashMap<>((Map<String, Object>) existingSettings)
+                    : new LinkedHashMap<>();
+            settings.put("selected", true);
+            settings.put(option.scopeKey(), option.scopeValue());
+            personalCurriculum.put(option.landscapeId(), settings);
+        }
+
+        if (reopensStage) {
+            personalCurriculum.remove(STAGE_SCOPE_SEK1_ID);
+            personalCurriculum.remove(STAGE_SCOPE_SEK2_ID);
+            retainedOptions.stream()
+                    .filter(option -> "stage".equals(option.scopeKey()))
+                    .findFirst()
+                    .ifPresent(option ->
+                            synchronizeCanonicalStageScope(learner, personalCurriculum, option));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private void retainPersonalizationCompletionIds(
+            Map<String, Object> personalCurriculum,
+            String rootLandscapeId,
+            Set<String> retainedCompletionIds) {
+        Object rawFlowState =
+                personalCurriculum.get(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY);
+        if (!(rawFlowState instanceof Map<?, ?> existingFlowState)
+                || !rootLandscapeId.equals(existingFlowState.get(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY))) {
+            return;
+        }
+        Map<String, Object> flowState =
+                new LinkedHashMap<>((Map<String, Object>) existingFlowState);
+        Object rawCompletedIds =
+                flowState.get(CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY);
+        if (rawCompletedIds instanceof List<?> completedIds) {
+            List<String> remainingCompletionIds = completedIds.stream()
+                    .filter(String.class::isInstance)
+                    .map(String.class::cast)
+                    .filter(retainedCompletionIds::contains)
+                    .toList();
+            flowState.put(
+                    CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                    remainingCompletionIds);
+        }
+        personalCurriculum.put(
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                flowState);
     }
 
     /**
@@ -2647,6 +3098,146 @@ public class LearnerService {
                     "The personalization option is stale, unknown or ambiguous; reload the current context");
         }
         return matches.getFirst();
+    }
+
+    /**
+     * Reconciles sparse later selections before one current authored option is
+     * applied.
+     *
+     * <p>Ordinary forward progress has no later values yet. Legacy-migrated
+     * configurations can, however, already contain subjects and profiles
+     * behind a newly introduced missing decision. Values owned by explicit
+     * downstream dependencies are cleared so they are asked again under the
+     * new scope; later independent values remain. Persisted values in the
+     * current group that are no longer among its resolved options are removed
+     * as well, while valid partial selections and completed dynamic instances
+     * stay intact.</p>
+     */
+    private void preparePersonalizationMutation(
+            Learner learner,
+            Map<String, Object> personalCurriculum,
+            PersonalizationPlan currentPlan) {
+        if (learner == null
+                || personalCurriculum == null
+                || currentPlan == null
+                || !currentPlan.valid()
+                || !currentPlan.required()
+                || currentPlan.groupId() == null
+                || currentPlan.groupId().isBlank()) {
+            return;
+        }
+        String rootLandscapeId = learner.getSelectedCurriculum();
+        SkillLandscape rootLandscape =
+                rootLandscapeId == null
+                        ? null
+                        : landscapeService.getById(rootLandscapeId);
+        if (rootLandscape == null
+                || rootLandscape.getPersonalizationFlow() == null) {
+            return;
+        }
+
+        Set<String> affectedGroupIds =
+                CurriculumPersonalizationPlanner.dependentGroupIds(
+                        rootLandscape.getPersonalizationFlow(),
+                        currentPlan.groupId());
+        Set<String> strictDependentGroupIds = affectedGroupIds.stream()
+                .filter(groupId -> !currentPlan.groupId().equals(groupId))
+                .collect(Collectors.toSet());
+        List<PersonalizationPlan.Option> visibleSelections =
+                java.util.stream.Stream.concat(
+                                currentPlan.completedDecisions().stream()
+                                        .filter(Objects::nonNull)
+                                        .flatMap(decision ->
+                                                decision.selectedOptions()
+                                                        .stream()),
+                                currentPlan.currentSelectedOptions().stream())
+                        .filter(Objects::nonNull)
+                        .toList();
+
+        List<CurriculumPersonalizationPlanner.StoredSelection> storedSelections =
+                CurriculumPersonalizationPlanner.storedSelections(
+                        rootLandscape.getPersonalizationFlow(),
+                        landscapeService::getById,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(
+                                        personalCurriculum)));
+        List<PersonalizationPlan.Option> valuesToClear = new ArrayList<>();
+        List<PersonalizationPlan.Option> valuesToRetain = new ArrayList<>();
+        for (CurriculumPersonalizationPlanner.StoredSelection stored :
+                storedSelections) {
+            PersonalizationPlan.Option storedOption =
+                    storedSelectionOption(stored);
+            boolean isStrictDependent =
+                    strictDependentGroupIds.contains(stored.groupId());
+            boolean isUnresolvedCurrentValue =
+                    currentPlan.groupId().equals(stored.groupId())
+                            && Objects.equals(
+                                    currentPlan.groupInstanceId(),
+                                    stored.groupInstanceId())
+                            && visibleSelections.stream().noneMatch(option ->
+                                    sameStoredSelection(stored, option));
+            if (!stored.activeAndAuthored()
+                    || isStrictDependent
+                    || isUnresolvedCurrentValue) {
+                valuesToClear.add(storedOption);
+            } else {
+                valuesToRetain.add(storedOption);
+            }
+        }
+        if (!valuesToClear.isEmpty()) {
+            clearReopenedPersonalizationValues(
+                    learner,
+                    personalCurriculum,
+                    valuesToClear,
+                    valuesToRetain);
+        }
+
+        List<PersonalizationPlan.Option> validCompletions =
+                CurriculumPersonalizationPlanner.validCompletionOptions(
+                        rootLandscapeId,
+                        landscapeService::getById,
+                        this::resolvePersonalizationOfferingScope,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(
+                                        personalCurriculum)));
+        Set<String> retainedCompletionIds = validCompletions.stream()
+                .filter(option -> !strictDependentGroupIds.contains(
+                        option.groupId()))
+                .map(PersonalizationPlan.Option::optionId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        retainPersonalizationCompletionIds(
+                personalCurriculum,
+                rootLandscapeId,
+                retainedCompletionIds);
+    }
+
+    private boolean sameStoredSelection(
+            CurriculumPersonalizationPlanner.StoredSelection stored,
+            PersonalizationPlan.Option option) {
+        if (stored == null || option == null) {
+            return false;
+        }
+        return Objects.equals(stored.groupId(), option.groupId())
+                && Objects.equals(
+                        stored.groupInstanceId(),
+                        option.groupInstanceId())
+                && Objects.equals(stored.landscapeId(), option.landscapeId())
+                && stored.kind() == option.kind()
+                && equalsIgnoreCaseNullable(
+                        stored.filterId(),
+                        option.filterId())
+                && Objects.equals(stored.scopeKey(), option.scopeKey())
+                && equalsIgnoreCaseNullable(
+                        stored.scopeValue(),
+                        option.scopeValue());
+    }
+
+    private boolean equalsIgnoreCaseNullable(String left, String right) {
+        if (left == null || right == null) {
+            return left == null && right == null;
+        }
+        return left.equalsIgnoreCase(right);
     }
 
     /**
@@ -5871,11 +6462,170 @@ public class LearnerService {
             return PersonalizationPlan.complete(List.of());
         }
 
-        return CurriculumPersonalizationPlanner.plan(
+        Map<String, Object> personalCurriculum =
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
                 curriculumId,
                 landscapeService::getById,
                 this::resolvePersonalizationOfferingScope,
-                parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
+                parsePersonalCurriculumConfig(
+                        writePersonalCurriculumConfig(personalCurriculum)));
+        return decoratePersonalizationPlan(
+                plan,
+                curriculumId,
+                personalCurriculum);
+    }
+
+    private PersonalizationPlan decoratePersonalizationPlan(
+            PersonalizationPlan plan,
+            String rootLandscapeId,
+            Map<String, Object> personalCurriculum) {
+        if (plan == null
+                || !plan.valid()
+                || rootLandscapeId == null
+                || rootLandscapeId.isBlank()) {
+            return plan;
+        }
+        boolean migratedSummary = plan.canReopenMigratedPersonalization();
+        if (!migratedSummary
+                && (!plan.required() || plan.groupId() == null)) {
+            return plan;
+        }
+        SkillLandscape root = landscapeService.getById(rootLandscapeId);
+        if (root == null || root.getPersonalizationFlow() == null) {
+            return plan;
+        }
+
+        Set<String> unavailableGroupIds = migratedSummary
+                ? Set.of()
+                : CurriculumPersonalizationPlanner.dependentGroupIds(
+                        root.getPersonalizationFlow(),
+                        plan.groupId());
+        Set<String> visibleDecisionInstances = plan.completedDecisions().stream()
+                .filter(Objects::nonNull)
+                .map(decision -> decision.groupId()
+                        + "\u0000"
+                        + decision.groupInstanceId())
+                .collect(Collectors.toSet());
+        List<CurriculumPersonalizationPlanner.StoredSelection> storedSelections =
+                CurriculumPersonalizationPlanner.storedSelections(
+                        root.getPersonalizationFlow(),
+                        landscapeService::getById,
+                        parsePersonalCurriculumConfig(
+                                writePersonalCurriculumConfig(personalCurriculum)));
+
+        LinkedHashMap<String, CurriculumPersonalizationPlanner.StoredSelection> summaries =
+                new LinkedHashMap<>();
+        LinkedHashMap<String, List<PersonalizationPlan.Option>> optionsByDecision =
+                new LinkedHashMap<>();
+        for (CurriculumPersonalizationPlanner.StoredSelection stored : storedSelections) {
+            if (stored == null || !stored.activeAndAuthored()) {
+                continue;
+            }
+            boolean belongsToUnavailableDependentGroup =
+                    !Objects.equals(plan.groupId(), stored.groupId())
+                            && unavailableGroupIds.contains(stored.groupId());
+            if (belongsToUnavailableDependentGroup
+                    || Objects.equals(plan.groupInstanceId(), stored.groupInstanceId())) {
+                continue;
+            }
+            String decisionKey =
+                    stored.groupId() + "\u0000" + stored.groupInstanceId();
+            if (visibleDecisionInstances.contains(decisionKey)) {
+                continue;
+            }
+            summaries.putIfAbsent(decisionKey, stored);
+            optionsByDecision
+                    .computeIfAbsent(decisionKey, ignored -> new ArrayList<>())
+                    .add(storedSelectionOption(stored));
+        }
+        if (summaries.isEmpty()) {
+            return plan;
+        }
+
+        List<PersonalizationPlan.DecisionSummary> preservedDecisions =
+                summaries.entrySet().stream()
+                        .map(entry -> {
+                            CurriculumPersonalizationPlanner.StoredSelection stored =
+                                    entry.getValue();
+                            return new PersonalizationPlan.DecisionSummary(
+                                    stored.stageId(),
+                                    stored.stageLabel(),
+                                    stored.groupId(),
+                                    stored.groupLabel(),
+                                    stored.groupInstanceId(),
+                                    optionsByDecision.get(entry.getKey()));
+                        })
+                        .toList();
+        return plan.withPreservedDecisions(preservedDecisions);
+    }
+
+    private PersonalizationPlan.Option storedSelectionOption(
+            CurriculumPersonalizationPlanner.StoredSelection stored) {
+        String displayOptionId = "preserved-"
+                + UUID.nameUUIDFromBytes(String.join(
+                                "\u0000",
+                                Objects.toString(stored.groupId(), ""),
+                                Objects.toString(stored.groupInstanceId(), ""),
+                                Objects.toString(stored.landscapeId(), ""),
+                                Objects.toString(stored.filterId(), ""),
+                                Objects.toString(stored.scopeKey(), ""),
+                                Objects.toString(stored.scopeValue(), ""))
+                        .getBytes(StandardCharsets.UTF_8));
+        return new PersonalizationPlan.Option(
+                displayOptionId,
+                stored.stageId(),
+                stored.groupId(),
+                stored.groupInstanceId(),
+                stored.landscapeId(),
+                personalizationLandscapeLabel(stored.landscapeId()),
+                stored.filterId(),
+                personalizationFilterLabel(
+                        stored.landscapeId(),
+                        stored.filterId()),
+                stored.scopeKey(),
+                stored.scopeValue(),
+                stored.scopeLabel(),
+                stored.kind());
+    }
+
+    private String personalizationLandscapeLabel(String landscapeId) {
+        if (landscapeId == null || landscapeId.isBlank()) {
+            return null;
+        }
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape == null) {
+            return landscapeId;
+        }
+        if (landscape.getSubject() != null && !landscape.getSubject().isBlank()) {
+            return landscape.getSubject();
+        }
+        if (landscape.getTitle() != null && !landscape.getTitle().isBlank()) {
+            return landscape.getTitle();
+        }
+        return landscapeId;
+    }
+
+    private String personalizationFilterLabel(
+            String landscapeId,
+            String filterId) {
+        if (filterId == null || filterId.isBlank()) {
+            return null;
+        }
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape == null || landscape.getFilters() == null) {
+            return filterId;
+        }
+        return landscape.getFilters().stream()
+                .filter(Objects::nonNull)
+                .filter(filter -> filter.getId() != null
+                        && filter.getId().equalsIgnoreCase(filterId))
+                .map(filter -> filter.getLabel() == null
+                                || filter.getLabel().isBlank()
+                        ? filter.getId()
+                        : filter.getLabel())
+                .findFirst()
+                .orElse(filterId);
     }
 
     private void assertPersonalizationCompleteForLearning(Learner learner) {

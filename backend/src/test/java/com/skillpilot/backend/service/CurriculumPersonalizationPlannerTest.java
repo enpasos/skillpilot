@@ -37,6 +37,7 @@ class CurriculumPersonalizationPlannerTest {
 
         assertThat(plan.valid()).isTrue();
         assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(plan.canReopenMigratedPersonalization()).isFalse();
         assertThat(plan.required()).isFalse();
         assertThat(plan.options()).isEmpty();
     }
@@ -639,6 +640,138 @@ class CurriculumPersonalizationPlannerTest {
                         tuple(COBALT_ID, null),
                         tuple(EMBER_ID, null),
                         tuple(SAFFRON_ID, null));
+        assertThat(plan.currentSelectedOptions())
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .containsExactly(COBALT_ID, EMBER_ID);
+        assertThat(plan.currentRewindId()).isEqualTo(finishOption(plan).optionId());
+        assertThat(plan.completedDecisions()).isEmpty();
+    }
+
+    @Test
+    void exposesCompletedSelectionsSeparatelyFromNavigationCandidates() {
+        SkillLandscape root = landscape(
+                ROOT_ID,
+                "Orbit",
+                filter("Dial-A", "Dial A"),
+                filter("Dial-B", "Dial B"));
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        SkillLandscape ember = landscape(EMBER_ID, "Ember");
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-root",
+                        1,
+                        group(
+                                "group-root",
+                                1,
+                                1,
+                                1,
+                                landscapeFilters(ROOT_ID))),
+                stage(
+                        "stage-subject",
+                        2,
+                        group(
+                                "group-subject",
+                                1,
+                                1,
+                                1,
+                                landscapes(COBALT_ID, EMBER_ID)))));
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root, cobalt, ember),
+                config(
+                        entry(ROOT_ID, true, "Dial-A"),
+                        entry(COBALT_ID, true, null)));
+
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(plan.completedDecisions())
+                .extracting(
+                        PersonalizationPlan.CompletedDecision::stageId,
+                        PersonalizationPlan.CompletedDecision::groupId,
+                        PersonalizationPlan.CompletedDecision::groupInstanceId)
+                .containsExactly(
+                        tuple("stage-root", "group-root", "group-root:" + ROOT_ID),
+                        tuple("stage-subject", "group-subject", "group-subject"));
+        assertThat(plan.completedDecisions().get(0).selectedOptions())
+                .extracting(
+                        PersonalizationPlan.Option::filterId,
+                        PersonalizationPlan.Option::landscapeId)
+                .containsExactly(tuple("Dial-A", ROOT_ID));
+        assertThat(plan.completedDecisions().get(1).selectedOptions())
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .containsExactly(COBALT_ID);
+        assertThat(plan.completedDecisions())
+                .extracting(PersonalizationPlan.CompletedDecision::rewindId)
+                .doesNotContainNull()
+                .doesNotHaveDuplicates();
+        assertThat(plan.navigationOptions())
+                .extracting(
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::filterId)
+                .containsExactly(
+                        tuple(ROOT_ID, "Dial-A"),
+                        tuple(ROOT_ID, "Dial-B"),
+                        tuple(COBALT_ID, null),
+                        tuple(EMBER_ID, null));
+    }
+
+    @Test
+    void derivesRewindDependenciesOnlyFromExplicitAuthoredBindings() {
+        PersonalizationOptionSource jurisdiction = landscapeFilters(ROOT_ID);
+        PersonalizationOptionSource duration = landscapes(COBALT_ID);
+        duration.setScopeBindings(List.of(
+                selectedBinding("jurisdiction", "group-jurisdiction")));
+        PersonalizationOptionSource stageScope =
+                scopeValues(ROOT_ID, "stage", scopeValue("SekII", "Sekundarstufe II"));
+        PersonalizationOptionSource subject = landscapes(EMBER_ID);
+        subject.setScopeBindings(List.of(
+                selectedBinding("jurisdiction", "group-jurisdiction"),
+                selectedBinding("durationModel", "group-duration"),
+                selectedBinding("stage", "group-stage")));
+        PersonalizationOptionSource profile = new PersonalizationOptionSource();
+        profile.setKind(PersonalizationSourceKind.FILTERS_FOR_SELECTED_LANDSCAPES);
+        profile.setSelectedLandscapesFromGroupId("group-subject");
+
+        PersonalizationFlow flow = flow(
+                stage("stage-jurisdiction", 1, group(
+                        "group-jurisdiction", 1, 1, 1, jurisdiction)),
+                stage("stage-duration", 2, group(
+                        "group-duration", 1, 1, 1, duration)),
+                stage("stage-stage", 3, group(
+                        "group-stage", 1, 1, 1, stageScope)),
+                stage("stage-subject", 4, group(
+                        "group-subject", 1, 1, 1, subject)),
+                stage("stage-profile", 5, group(
+                        "group-profile", 1, 1, 1, profile)));
+
+        assertThat(CurriculumPersonalizationPlanner.dependentGroupIds(
+                        flow,
+                        "group-jurisdiction"))
+                .containsExactlyInAnyOrder(
+                        "group-jurisdiction",
+                        "group-duration",
+                        "group-subject",
+                        "group-profile")
+                .doesNotContain("group-stage");
+        assertThat(CurriculumPersonalizationPlanner.dependentGroupIds(
+                        flow,
+                        "group-duration"))
+                .containsExactlyInAnyOrder(
+                        "group-duration",
+                        "group-subject",
+                        "group-profile")
+                .doesNotContain("group-stage");
+        assertThat(CurriculumPersonalizationPlanner.dependentGroupIds(
+                        flow,
+                        "group-stage"))
+                .containsExactlyInAnyOrder(
+                        "group-stage",
+                        "group-subject",
+                        "group-profile");
+        assertThat(CurriculumPersonalizationPlanner.dependentGroupIds(
+                        flow,
+                        "group-subject"))
+                .containsExactlyInAnyOrder("group-subject", "group-profile");
     }
 
     @Test
@@ -673,6 +806,13 @@ class CurriculumPersonalizationPlannerTest {
         assertThat(completed.valid()).isTrue();
         assertThat(completed.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
         assertThat(completed.options()).isEmpty();
+        assertThat(completed.completedDecisions()).singleElement()
+                .satisfies(decision -> {
+                    assertThat(decision.rewindId()).isEqualTo(finish.optionId());
+                    assertThat(decision.selectedOptions())
+                            .extracting(PersonalizationPlan.Option::landscapeId)
+                            .containsExactly(COBALT_ID);
+                });
     }
 
     @Test
@@ -707,6 +847,8 @@ class CurriculumPersonalizationPlannerTest {
                 config(completionEntry(finishOption(pending))));
 
         assertThat(completed.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(completed.completedDecisions()).singleElement()
+                .satisfies(decision -> assertThat(decision.selectedOptions()).isEmpty());
     }
 
     @Test
@@ -901,6 +1043,56 @@ class CurriculumPersonalizationPlannerTest {
         assertThat(finishOption(secondWithFirstRootCompletion).optionId())
                 .isEqualTo(finishOption(secondPlan).optionId())
                 .isNotEqualTo(finishOption(firstPlan).optionId());
+    }
+
+    @Test
+    void recordingCompletionForAnotherRootDropsForeignMigrationState() {
+        SkillLandscape secondRoot = landscape(ALTERNATE_ROOT_ID, "Nova");
+        SkillLandscape cobalt = landscape(COBALT_ID, "Cobalt");
+        secondRoot.setPersonalizationFlow(flow(stage(
+                "stage-shared",
+                1,
+                group(
+                        "group-shared",
+                        1,
+                        0,
+                        1,
+                        landscapes(COBALT_ID)))));
+        PersonalizationPlan secondPlan =
+                CurriculumPersonalizationPlanner.plan(
+                        ALTERNATE_ROOT_ID,
+                        List.of(secondRoot, cobalt),
+                        Map.of());
+        PersonalizationPlan.Option secondCompletion =
+                finishOption(secondPlan);
+        Map<String, Object> personalCurriculum = new LinkedHashMap<>();
+        personalCurriculum.put(
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                new LinkedHashMap<>(Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of("foreign-completion"),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true)));
+
+        CurriculumPersonalizationPlanner.recordGroupCompletion(
+                personalCurriculum,
+                ALTERNATE_ROOT_ID,
+                secondCompletion);
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> flowState = (Map<String, Object>) personalCurriculum.get(
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY);
+        assertThat(flowState)
+                .containsEntry(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ALTERNATE_ROOT_ID)
+                .doesNotContainKey(
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY);
+        assertThat(flowState.get(
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY))
+                .isEqualTo(List.of(secondCompletion.optionId()));
     }
 
     @Test
@@ -1155,6 +1347,8 @@ class CurriculumPersonalizationPlannerTest {
 
         assertThat(plan.valid()).isTrue();
         assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+        assertThat(plan.canReopenMigratedPersonalization()).isTrue();
+        assertThat(plan.navigationOptions()).isEmpty();
 
         Map<String, Object> reopenedConfig = new LinkedHashMap<>();
         reopenedConfig.putAll(config(
@@ -1391,6 +1585,9 @@ class CurriculumPersonalizationPlannerTest {
         assertThat(subjectPlan.options())
                 .extracting(PersonalizationPlan.Option::landscapeId)
                 .containsExactly(COBALT_ID);
+        assertThat(subjectPlan.displayOptions())
+                .extracting(PersonalizationPlan.Option::landscapeId)
+                .containsExactly(COBALT_ID, EMBER_ID);
 
         PersonalizationPlan profilePlan = CurriculumPersonalizationPlanner.plan(
                 ROOT_ID,

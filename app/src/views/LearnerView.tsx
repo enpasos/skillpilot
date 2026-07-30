@@ -1606,6 +1606,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const {
     applyOption: applyPersonalCurriculumOption,
+    reopen: reopenPersonalCurriculum,
+    rewind: rewindPersonalCurriculum,
     restart: restartPersonalCurriculum,
   } = personalCurriculumEditor
 
@@ -1622,9 +1624,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     handleGuidedPersonalizationPlanChanged,
   ])
 
-  const restartGuidedPersonalization = useCallback(async () => {
+  const reopenGuidedPersonalization = useCallback(async () => {
     claimAbi26PersonalizationOwnership()
-    const nextPlan = await restartPersonalCurriculum()
+    const nextPlan = await reopenPersonalCurriculum()
     if (nextPlan) {
       await handleGuidedPersonalizationPlanChanged()
     }
@@ -1632,7 +1634,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     claimAbi26PersonalizationOwnership,
     handleGuidedPersonalizationPlanChanged,
-    restartPersonalCurriculum,
+    reopenPersonalCurriculum,
+  ])
+
+  const rewindGuidedPersonalization = useCallback(async (rewindId: string) => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await rewindPersonalCurriculum(rewindId)
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+    rewindPersonalCurriculum,
   ])
 
   const refreshPlanned = useCallback(async () => {
@@ -3351,7 +3366,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             ...personalCurriculumEditor,
             busy: personalCurriculumEditor.busy || guidedPersonalizationRefreshing,
             applyOption: applyGuidedPersonalizationOption,
-            restart: restartGuidedPersonalization,
+            reopen: reopenGuidedPersonalization,
+            rewind: rewindGuidedPersonalization,
           }
           : undefined}
         migration={canCutoverLegacyGymnasium

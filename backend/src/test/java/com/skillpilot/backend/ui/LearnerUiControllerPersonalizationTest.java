@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
+import com.skillpilot.backend.api.PersonalizationRewindRequest;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.util.List;
@@ -111,6 +112,90 @@ class LearnerUiControllerPersonalizationTest {
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
         ordered.verify(learnerService).restartPersonalization(LEARNER_ID);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void migratedPersonalizationReopenDelegatesToThePreservingServiceOperation() {
+        PersonalizationPlan reopened = PersonalizationPlan.selection(
+                "stage-region",
+                "Region",
+                "group-region",
+                "Bundesland",
+                "root",
+                1,
+                1,
+                0,
+                List.of(),
+                List.of());
+        when(learnerService.reopenMigratedPersonalization(LEARNER_ID))
+                .thenReturn(reopened);
+
+        PersonalizationPlan response =
+                controller.reopenMigratedPersonalization(LEARNER_ID);
+
+        assertThat(response).isSameAs(reopened);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService).reopenMigratedPersonalization(LEARNER_ID);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void personalizationRewindDelegatesTheOpaqueReferenceToTheScopedServiceOperation() {
+        PersonalizationPlan rewound = PersonalizationPlan.selection(
+                "stage-region",
+                "Region",
+                "group-region",
+                "Bundesland",
+                "root",
+                1,
+                1,
+                0,
+                List.of(),
+                List.of());
+        when(learnerService.rewindPersonalization(LEARNER_ID, "opaque-rewind-9"))
+                .thenReturn(rewound);
+
+        PersonalizationPlan response = controller.rewindPersonalization(
+                LEARNER_ID,
+                new PersonalizationRewindRequest("opaque-rewind-9"));
+
+        assertThat(response).isSameAs(rewound);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService)
+                .rewindPersonalization(LEARNER_ID, "opaque-rewind-9");
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void personalizationRewindRequiresAnOpaqueReference() {
+        assertThatThrownBy(() ->
+                        controller.rewindPersonalization(
+                                LEARNER_ID,
+                                new PersonalizationRewindRequest(" ")))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void personalizationRewindRequiresARequestBody() {
+        assertThatThrownBy(() ->
+                        controller.rewindPersonalization(LEARNER_ID, null))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
         verifyNoMoreInteractions(learnerService);
     }
 }

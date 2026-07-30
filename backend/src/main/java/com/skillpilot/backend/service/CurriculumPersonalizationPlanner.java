@@ -83,13 +83,14 @@ public final class CurriculumPersonalizationPlanner {
             return PersonalizationPlan.invalid(completionState.problemCode());
         }
         if (completionState.migrationCompleted()) {
-            return PersonalizationPlan.complete(migratedSelectedLandscapeOptions(
+            return PersonalizationPlan.migratedComplete(migratedSelectedLandscapeOptions(
                     rootLandscapeId,
                     validation.stages(),
                     landscapeResolver,
                     config));
         }
         List<PersonalizationPlan.Option> navigationOptions = new ArrayList<>();
+        List<PersonalizationPlan.CompletedDecision> completedDecisions = new ArrayList<>();
         Map<String, List<String>> selectedLandscapeIdsByGroup = new LinkedHashMap<>();
         Map<String, List<PersonalizationPlan.Option>> selectedOptionsByGroup = new LinkedHashMap<>();
 
@@ -137,6 +138,16 @@ public final class CurriculumPersonalizationPlanner {
                                 "personalization-completion-before-minimum");
                     }
                     if (explicitlyCompleted || state.selectedCount() == max) {
+                        if (max > 0 && !instance.options().isEmpty()) {
+                            completedDecisions.add(new PersonalizationPlan.CompletedDecision(
+                                    completionOption.optionId(),
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    instance.id(),
+                                    state.selected()));
+                        }
                         continue;
                     }
 
@@ -160,7 +171,11 @@ public final class CurriculumPersonalizationPlanner {
                                 max,
                                 state.selectedCount(),
                                 pendingValueOptions,
+                                instance.displayOptions(),
                                 navigationOptions,
+                                state.selected(),
+                                completionOption.optionId(),
+                                completedDecisions,
                                 pendingDecisionPrompts(
                                         validation.stages(),
                                         stage.getId(),
@@ -180,7 +195,11 @@ public final class CurriculumPersonalizationPlanner {
                             max,
                             state.selectedCount(),
                             currentOptions,
+                            instance.displayOptions(),
                             navigationOptions,
+                            state.selected(),
+                            completionOption.optionId(),
+                            completedDecisions,
                                 pendingDecisionPrompts(
                                         validation.stages(),
                                         stage.getId(),
@@ -193,7 +212,7 @@ public final class CurriculumPersonalizationPlanner {
             }
         }
 
-        return PersonalizationPlan.complete(navigationOptions);
+        return PersonalizationPlan.complete(navigationOptions, completedDecisions);
     }
 
     /**
@@ -318,6 +337,9 @@ public final class CurriculumPersonalizationPlanner {
                                 flowState.get(COMPLETED_OPTION_IDS_KEY),
                                 "Invalid personalization completion state")
                         : new LinkedHashSet<>();
+        if (!rootLandscapeId.equals(existingRoot)) {
+            flowState.clear();
+        }
         completedOptionIds.add(option.optionId());
         flowState.put(ROOT_LANDSCAPE_ID_KEY, rootLandscapeId);
         flowState.put(COMPLETED_OPTION_IDS_KEY, List.copyOf(completedOptionIds));
@@ -729,27 +751,33 @@ public final class CurriculumPersonalizationPlanner {
                     yield null;
                 }
                 List<PersonalizationPlan.Option> options = new ArrayList<>();
+                List<PersonalizationPlan.Option> displayOptions = new ArrayList<>();
                 for (String landscapeId : source.getLandscapeIds()) {
                     SkillLandscape landscape = resolveExact(resolver, landscapeId);
                     if (landscape == null) {
                         yield null;
                     }
+                    PersonalizationPlan.Option landscapeOption = option(
+                            rootLandscapeId,
+                            stage,
+                            group,
+                            group.getId(),
+                            landscape,
+                            null);
+                    displayOptions.add(landscapeOption);
                     if (hasReviewedOffering(
                             offeringResolver,
                             landscapeId,
                             scopeProbes,
                             null,
                             null)) {
-                        options.add(option(
-                                rootLandscapeId,
-                                stage,
-                                group,
-                                group.getId(),
-                                landscape,
-                                null));
+                        options.add(landscapeOption);
                     }
                 }
-                yield List.of(new GroupInstance(group.getId(), List.copyOf(options)));
+                yield List.of(new GroupInstance(
+                        group.getId(),
+                        List.copyOf(options),
+                        List.copyOf(displayOptions)));
             }
             case OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES -> {
                 List<String> selected =
@@ -1070,6 +1098,423 @@ public final class CurriculumPersonalizationPlanner {
     private static boolean selectsLandscapes(PersonalizationSourceKind kind) {
         return kind == PersonalizationSourceKind.LANDSCAPES
                 || kind == PersonalizationSourceKind.OFFERED_LANDSCAPES;
+    }
+
+    /**
+     * Resolves the authored group dependency closure for a targeted rewind.
+     *
+     * <p>Only explicit flow metadata creates dependencies: a group may consume
+     * landscapes selected by an earlier group or a scope binding may consume
+     * an earlier selected value. Authored order by itself is not a dependency,
+     * so an independent later choice can survive a rewind.</p>
+     */
+    static Set<String> dependentGroupIds(
+            PersonalizationFlow flow,
+            String targetGroupId) {
+        if (flow == null
+                || flow.getStages() == null
+                || blank(targetGroupId)) {
+            return Set.of();
+        }
+        List<PersonalizationGroup> groups = flow.getStages().stream()
+                .filter(Objects::nonNull)
+                .sorted(Comparator
+                        .comparing(
+                                PersonalizationStage::getOrder,
+                                Comparator.nullsLast(Integer::compareTo))
+                        .thenComparing(
+                                PersonalizationStage::getId,
+                                Comparator.nullsLast(String::compareTo)))
+                .flatMap(stage -> sortedGroups(stage).stream())
+                .filter(Objects::nonNull)
+                .toList();
+        if (groups.stream().noneMatch(group -> targetGroupId.equals(group.getId()))) {
+            return Set.of();
+        }
+
+        LinkedHashSet<String> affected = new LinkedHashSet<>();
+        affected.add(targetGroupId);
+        boolean changed;
+        do {
+            changed = false;
+            for (PersonalizationGroup group : groups) {
+                if (group.getId() == null
+                        || affected.contains(group.getId())
+                        || group.getSource() == null) {
+                    continue;
+                }
+                PersonalizationOptionSource source = group.getSource();
+                boolean dependsOnAffected = affected.contains(
+                        source.getSelectedLandscapesFromGroupId());
+                if (!dependsOnAffected && source.getScopeBindings() != null) {
+                    dependsOnAffected = source.getScopeBindings().stream()
+                            .filter(Objects::nonNull)
+                            .map(PersonalizationScopeBinding::getSelectedValueFromGroupId)
+                            .anyMatch(affected::contains);
+                }
+                if (dependsOnAffected) {
+                    affected.add(group.getId());
+                    changed = true;
+                }
+            }
+        } while (changed);
+        return Set.copyOf(affected);
+    }
+
+    /**
+     * Reads authored decision fields from sparse persisted configuration even
+     * when normal planning stops at an earlier unanswered group.
+     *
+     * <p>This deliberately uses only the flow's explicit landscape allowlists,
+     * authored value vocabularies and field ownership. It does not infer
+     * options from graph relationships or treat the result as a currently
+     * selectable offering. Inactive or unknown residual fields are returned
+     * for cleanup, but are marked so they cannot be presented or replayed as
+     * active choices.</p>
+     */
+    static List<StoredSelection> storedSelections(
+            PersonalizationFlow flow,
+            Function<String, SkillLandscape> landscapeResolver,
+            Map<String, Map<String, Object>> config) {
+        if (flow == null || flow.getStages() == null || config == null) {
+            return List.of();
+        }
+
+        Map<String, List<String>> candidateLandscapeIdsByGroup =
+                new LinkedHashMap<>();
+        List<StoredSelection> selections = new ArrayList<>();
+        List<PersonalizationStage> stages = flow.getStages().stream()
+                .filter(Objects::nonNull)
+                .sorted(Comparator
+                        .comparing(
+                                PersonalizationStage::getOrder,
+                                Comparator.nullsLast(Integer::compareTo))
+                        .thenComparing(
+                                PersonalizationStage::getId,
+                                Comparator.nullsLast(String::compareTo)))
+                .toList();
+
+        for (PersonalizationStage stage : stages) {
+            for (PersonalizationGroup group : sortedGroups(stage)) {
+                if (group == null || blank(group.getId()) || group.getSource() == null) {
+                    continue;
+                }
+                PersonalizationOptionSource source = group.getSource();
+                PersonalizationSourceKind kind = source.getKind();
+                if (kind == null) {
+                    continue;
+                }
+
+                List<String> candidateLandscapeIds = switch (kind) {
+                    case LANDSCAPE_FILTERS, SCOPE_VALUES ->
+                        blank(source.getLandscapeId())
+                                ? List.of()
+                                : List.of(source.getLandscapeId());
+                    case LANDSCAPES, OFFERED_LANDSCAPES ->
+                        source.getLandscapeIds() == null
+                                ? List.of()
+                                : source.getLandscapeIds();
+                    case FILTERS_FOR_SELECTED_LANDSCAPES,
+                            OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES ->
+                        candidateLandscapeIdsByGroup.getOrDefault(
+                                source.getSelectedLandscapesFromGroupId(),
+                                List.of());
+                    case OFFERED_SCOPE_VALUES -> !blank(source.getTargetLandscapeId())
+                            ? List.of(source.getTargetLandscapeId())
+                            : candidateLandscapeIdsByGroup.getOrDefault(
+                                    source.getSelectedLandscapesFromGroupId(),
+                                    List.of());
+                };
+                List<String> candidates = candidateLandscapeIds.stream()
+                        .filter(Objects::nonNull)
+                        .map(String::trim)
+                        .filter(id -> !id.isBlank())
+                        .distinct()
+                        .toList();
+                if (selectsLandscapes(kind)) {
+                    candidateLandscapeIdsByGroup.put(group.getId(), candidates);
+                }
+
+                for (String landscapeId : candidates) {
+                    Map<String, Object> settings = config.get(landscapeId);
+                    if (settings == null) {
+                        continue;
+                    }
+                    String instanceId;
+                    switch (kind) {
+                        case LANDSCAPE_FILTERS -> {
+                            Object rawFilter = settings.get("filterId");
+                            if (!(rawFilter instanceof String filterId)
+                                    || filterId.isBlank()) {
+                                continue;
+                            }
+                            String trimmedFilter = filterId.trim();
+                            String canonicalFilter = canonicalFilterId(
+                                    resolveExact(landscapeResolver, landscapeId),
+                                    trimmedFilter);
+                            boolean authoredFilter =
+                                    canonicalFilter != null
+                                            && (source.getFilterIds() == null
+                                                    || containsIgnoreCase(
+                                                            source.getFilterIds(),
+                                                            canonicalFilter));
+                            instanceId = source.getFilterIds() == null
+                                    ? group.getId() + ":" + landscapeId
+                                    : group.getId() + ":" + landscapeId + ":restricted";
+                            selections.add(new StoredSelection(
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    instanceId,
+                                    landscapeId,
+                                    PersonalizationPlan.OptionKind.VALUE,
+                                    canonicalFilter == null
+                                            ? trimmedFilter
+                                            : canonicalFilter,
+                                    null,
+                                    null,
+                                    null,
+                                    Boolean.TRUE.equals(settings.get("selected"))
+                                            && authoredFilter));
+                        }
+                        case LANDSCAPES, OFFERED_LANDSCAPES -> {
+                            if (!Boolean.TRUE.equals(settings.get("selected"))) {
+                                continue;
+                            }
+                            selections.add(new StoredSelection(
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    group.getId(),
+                                    landscapeId,
+                                    PersonalizationPlan.OptionKind.VALUE,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    true));
+                        }
+                        case FILTERS_FOR_SELECTED_LANDSCAPES -> {
+                            Object rawFilter = settings.get("filterId");
+                            if (!(rawFilter instanceof String filterId)
+                                    || filterId.isBlank()) {
+                                continue;
+                            }
+                            String trimmedFilter = filterId.trim();
+                            String canonicalFilter = canonicalFilterId(
+                                    resolveExact(landscapeResolver, landscapeId),
+                                    trimmedFilter);
+                            boolean authoredFilter =
+                                    canonicalFilter != null
+                                            && (source.getFilterIds() == null
+                                                    || containsIgnoreCase(
+                                                            source.getFilterIds(),
+                                                            canonicalFilter));
+                            instanceId = source.getFilterIds() == null
+                                    ? group.getId() + ":" + landscapeId
+                                    : group.getId() + ":" + landscapeId + ":restricted";
+                            selections.add(new StoredSelection(
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    instanceId,
+                                    landscapeId,
+                                    PersonalizationPlan.OptionKind.VALUE,
+                                    canonicalFilter == null
+                                            ? trimmedFilter
+                                            : canonicalFilter,
+                                    null,
+                                    null,
+                                    null,
+                                    Boolean.TRUE.equals(settings.get("selected"))
+                                            && authoredFilter));
+                        }
+                        case OFFERED_FILTERS_FOR_SELECTED_LANDSCAPES -> {
+                            Object rawFilter = settings.get("filterId");
+                            if (!(rawFilter instanceof String filterId)
+                                    || filterId.isBlank()) {
+                                continue;
+                            }
+                            String trimmedFilter = filterId.trim();
+                            String canonicalFilter = canonicalFilterId(
+                                    resolveExact(landscapeResolver, landscapeId),
+                                    trimmedFilter);
+                            boolean authoredFilter =
+                                    canonicalFilter != null
+                                            && containsIgnoreCase(
+                                                    source.getFilterIds(),
+                                                    canonicalFilter);
+                            instanceId = group.getId()
+                                    + ":"
+                                    + landscapeId
+                                    + ":offered-filters:"
+                                    + source.getScopeKey();
+                            selections.add(new StoredSelection(
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    instanceId,
+                                    landscapeId,
+                                    PersonalizationPlan.OptionKind.VALUE,
+                                    canonicalFilter == null
+                                            ? trimmedFilter
+                                            : canonicalFilter,
+                                    null,
+                                    null,
+                                    null,
+                                    Boolean.TRUE.equals(settings.get("selected"))
+                                            && authoredFilter));
+                        }
+                        case SCOPE_VALUES, OFFERED_SCOPE_VALUES -> {
+                            if (blank(source.getScopeKey())) {
+                                continue;
+                            }
+                            Object rawScope = settings.get(source.getScopeKey());
+                            if (!(rawScope instanceof String scopeValue)
+                                    || scopeValue.isBlank()) {
+                                continue;
+                            }
+                            instanceId = group.getId()
+                                    + ":"
+                                    + landscapeId
+                                    + (kind == PersonalizationSourceKind.SCOPE_VALUES
+                                            ? ":scope:"
+                                            : ":offered-scope:")
+                                    + source.getScopeKey();
+                            PersonalizationScopeValue authoredScope =
+                                    source.getValues().stream()
+                                    .filter(Objects::nonNull)
+                                    .filter(value -> value.getValue() != null
+                                            && value.getValue().equalsIgnoreCase(
+                                                    scopeValue.trim()))
+                                    .findFirst()
+                                    .orElse(null);
+                            String storedScopeValue = authoredScope == null
+                                    ? scopeValue.trim()
+                                    : authoredScope.getValue();
+                            String scopeLabel = authoredScope == null
+                                    ? scopeValue.trim()
+                                    : firstNonBlank(
+                                            authoredScope.getLabel(),
+                                            authoredScope.getValue());
+                            selections.add(new StoredSelection(
+                                    stage.getId(),
+                                    firstNonBlank(stage.getLabel(), stage.getId()),
+                                    group.getId(),
+                                    firstNonBlank(group.getLabel(), group.getId()),
+                                    instanceId,
+                                    landscapeId,
+                                    PersonalizationPlan.OptionKind.SCOPE_VALUE,
+                                    null,
+                                    source.getScopeKey(),
+                                    storedScopeValue,
+                                    scopeLabel,
+                                    Boolean.TRUE.equals(settings.get("selected"))
+                                            && authoredScope != null));
+                        }
+                    }
+                }
+            }
+        }
+        return List.copyOf(selections);
+    }
+
+    /**
+     * Resolves persisted group-completion tokens that are still valid for the
+     * current authored instances.
+     *
+     * <p>This deliberately traverses the complete flow instead of stopping at
+     * the first unanswered decision. Independent later groups can therefore
+     * keep their completion state while a different branch is edited. Groups
+     * whose explicit upstream bindings are unresolved do not contribute a
+     * completion token.</p>
+     */
+    static List<PersonalizationPlan.Option> validCompletionOptions(
+            String rootLandscapeId,
+            Function<String, SkillLandscape> landscapeResolver,
+            CurriculumPersonalizationOfferingResolver offeringResolver,
+            Map<String, Map<String, Object>> personalCurriculum) {
+        if (blank(rootLandscapeId) || landscapeResolver == null) {
+            return List.of();
+        }
+        SkillLandscape root = resolveExact(landscapeResolver, rootLandscapeId);
+        if (root == null || root.getPersonalizationFlow() == null) {
+            return List.of();
+        }
+        PersonalizationFlow flow = root.getPersonalizationFlow();
+        ValidationResult validation = validate(flow, landscapeResolver);
+        if (!validation.valid()
+                || (requiresOfferingResolver(validation.stages())
+                        && offeringResolver == null)) {
+            return List.of();
+        }
+
+        Map<String, Map<String, Object>> config =
+                personalCurriculum == null ? Map.of() : personalCurriculum;
+        CompletionState completionState = completionState(config, rootLandscapeId);
+        if (!completionState.valid() || completionState.migrationCompleted()) {
+            return List.of();
+        }
+
+        List<PersonalizationPlan.Option> validCompletions = new ArrayList<>();
+        Map<String, List<String>> selectedLandscapeIdsByGroup = new LinkedHashMap<>();
+        Map<String, List<PersonalizationPlan.Option>> selectedOptionsByGroup =
+                new LinkedHashMap<>();
+        for (PersonalizationStage stage : validation.stages()) {
+            for (PersonalizationGroup group : sortedGroups(stage)) {
+                PersonalizationOptionSource source = group.getSource();
+                List<GroupInstance> instances = resolveInstances(
+                        rootLandscapeId,
+                        stage,
+                        group,
+                        source,
+                        landscapeResolver,
+                        offeringResolver,
+                        selectedLandscapeIdsByGroup,
+                        selectedOptionsByGroup);
+                List<PersonalizationPlan.Option> groupSelections = new ArrayList<>();
+                List<String> groupLandscapeSelections = new ArrayList<>();
+                if (instances != null) {
+                    for (GroupInstance instance : instances) {
+                        SelectionState state = evaluate(instance, config);
+                        if (!state.valid()
+                                || state.selectedCount() > group.getMaxSelections()) {
+                            continue;
+                        }
+                        groupSelections.addAll(state.selected());
+                        if (selectsLandscapes(source.getKind())) {
+                            groupLandscapeSelections.addAll(
+                                    state.selectedLandscapeIds());
+                        }
+                        PersonalizationPlan.Option completion = completionOption(
+                                rootLandscapeId,
+                                flow,
+                                stage,
+                                group,
+                                instance);
+                        if (completionState.optionIds().contains(
+                                        completion.optionId())
+                                && state.selectedCount()
+                                        >= group.getMinSelections()) {
+                            validCompletions.add(completion);
+                        }
+                    }
+                }
+                selectedOptionsByGroup.put(
+                        group.getId(),
+                        List.copyOf(groupSelections));
+                if (selectsLandscapes(source.getKind())) {
+                    selectedLandscapeIdsByGroup.put(
+                            group.getId(),
+                            List.copyOf(groupLandscapeSelections));
+                }
+            }
+        }
+        return List.copyOf(validCompletions);
     }
 
     private static boolean requiresOfferingResolver(List<PersonalizationStage> stages) {
@@ -1611,7 +2056,34 @@ public final class CurriculumPersonalizationPlanner {
         return "";
     }
 
-    private record GroupInstance(String id, List<PersonalizationPlan.Option> options) {
+    private record GroupInstance(
+            String id,
+            List<PersonalizationPlan.Option> options,
+            List<PersonalizationPlan.Option> displayOptions) {
+
+        private GroupInstance(String id, List<PersonalizationPlan.Option> options) {
+            this(id, options, options);
+        }
+
+        private GroupInstance {
+            options = options == null ? List.of() : List.copyOf(options);
+            displayOptions = displayOptions == null ? options : List.copyOf(displayOptions);
+        }
+    }
+
+    record StoredSelection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            String landscapeId,
+            PersonalizationPlan.OptionKind kind,
+            String filterId,
+            String scopeKey,
+            String scopeValue,
+            String scopeLabel,
+            boolean activeAndAuthored) {
     }
 
     private record SelectionState(

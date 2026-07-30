@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   applyPersonalizationOption,
+  reopenMigratedPersonalization,
   requestPersonalizationPlan,
+  rewindPersonalization,
   restartPersonalization,
 } from '../utils/personalCurriculumEditorApi'
 import type { PersonalizationPlan } from '../utils/personalCurriculumEditorApi'
@@ -13,6 +15,8 @@ import {
 
 export type {
   PersonalizationDecisionPrompt,
+  PersonalizationCompletedDecision,
+  PersonalizationDecisionSummary,
   PersonalizationOption,
   PersonalizationOptionKind,
   PersonalizationPlan,
@@ -30,6 +34,8 @@ export interface PersonalCurriculumEditorController {
   busy: boolean
   error: Error | null
   applyOption: (optionId: string) => Promise<PersonalizationPlan | null>
+  reopen: () => Promise<PersonalizationPlan | null>
+  rewind: (rewindId: string) => Promise<PersonalizationPlan | null>
   restart: () => Promise<PersonalizationPlan | null>
   reload: () => Promise<PersonalizationPlan | null>
 }
@@ -152,12 +158,22 @@ export const usePersonalCurriculumEditor = ({
     mutate(() => restartPersonalization(skillpilotId ?? ''))
   ), [mutate, skillpilotId])
 
+  const reopen = useCallback(async () => (
+    mutate(() => reopenMigratedPersonalization(skillpilotId ?? ''))
+  ), [mutate, skillpilotId])
+
+  const rewind = useCallback(async (rewindId: string) => (
+    mutate(() => rewindPersonalization(skillpilotId ?? '', rewindId))
+  ), [mutate, skillpilotId])
+
   return {
     plan,
     loading: loading || (enabled && !!skillpilotId && plan === null && error === null),
     busy,
     error,
     applyOption,
+    reopen,
+    rewind,
     restart,
     reload,
   }

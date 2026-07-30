@@ -11,6 +11,12 @@ import {
     getCurriculumDropdownCopy,
     type CurriculumDropdownCategory as Category,
 } from '../utils/curriculumDropdownCopy'
+import {
+    CURRICULUM_QUALITY_FILTER_AVAILABLE,
+    filterCurriculaByQuality,
+    type CurriculumQualityFilter,
+    type CurriculumQualityStatus,
+} from '../utils/curriculumQualityTrafficLight'
 
 export interface LandscapeSummary {
     curriculumId: string
@@ -27,6 +33,7 @@ export interface LandscapeSummary {
     schoolType?: string
     compatibilityOnly?: boolean
     legacyHiddenByDefault?: boolean
+    qualityMaturity?: string | null
 }
 
 interface CurriculumDropdownProps {
@@ -37,6 +44,20 @@ interface CurriculumDropdownProps {
     filterOptions?: (options: LandscapeSummary[]) => LandscapeSummary[]
     landscapes?: LandscapeSummary[]
     showCompatibilityViews?: boolean
+    showQualityFilter?: boolean
+}
+
+const qualityStatusDotClass: Record<CurriculumQualityStatus, string> = {
+    green: 'bg-emerald-700',
+    orange: 'bg-orange-700',
+    red: 'bg-red-700',
+}
+
+const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
+    green: 'bg-emerald-700 text-white shadow-sm',
+    orange: 'bg-orange-700 text-white shadow-sm',
+    red: 'bg-red-700 text-white shadow-sm',
+    all: 'bg-sky-700 text-white shadow-sm',
 }
 
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
@@ -47,13 +68,18 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     filterOptions,
     landscapes: providedLandscapes,
     showCompatibilityViews = true,
+    showQualityFilter = false,
 }) => {
     const t = useTranslation()
     const { language } = useLanguage()
     const dropdownCopy = getCurriculumDropdownCopy(language)
-    const [landscapes, setLandscapes] = useState<LandscapeSummary[]>([])
+    const qualityFilterEnabled = showQualityFilter && CURRICULUM_QUALITY_FILTER_AVAILABLE
+    const [landscapes, setLandscapes] = useState<LandscapeSummary[]>(
+        () => providedLandscapes?.length ? providedLandscapes : [],
+    )
     const [loading, setLoading] = useState(false)
     const [category, setCategory] = useState<Category>('SCHOOL')
+    const [qualityFilter, setQualityFilter] = useState<CurriculumQualityFilter>('green')
 
     useEffect(() => {
         if (providedLandscapes && providedLandscapes.length > 0) {
@@ -148,9 +174,16 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
     // Filter by Category
     const categoryFilteredLandscapes = filteredLandscapes.filter(l => getCategory(l) === category)
+    const qualityFilteredLandscapes = qualityFilterEnabled
+        ? filterCurriculaByQuality(
+            categoryFilteredLandscapes,
+            qualityFilter,
+            currentLandscapeId,
+        )
+        : categoryFilteredLandscapes
 
     // Sort alphabetically by the displayed text
-    const sortedLandscapes = [...categoryFilteredLandscapes].sort((a, b) => {
+    const sortedLandscapes = [...qualityFilteredLandscapes].sort((a, b) => {
         const priorityDiff = getSortPriority(a) - getSortPriority(b)
         if (priorityDiff !== 0) return priorityDiff
         const textA = getDisplayTitle(a);
@@ -196,6 +229,42 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     </button>
                 ))}
             </div>
+
+            {qualityFilterEnabled && (
+                <div>
+                    <div className="mb-1 text-[11px] uppercase tracking-wider text-text-secondary">
+                        {dropdownCopy.qualityFilterLabel}
+                    </div>
+                    <div className="flex flex-wrap gap-1 rounded-lg border border-border-color bg-input-bg p-1">
+                        {(['green', 'orange', 'red', 'all'] as CurriculumQualityFilter[]).map((filter) => (
+                            <button
+                                key={filter}
+                                type="button"
+                                disabled={disabled}
+                                onClick={() => setQualityFilter(filter)}
+                                aria-pressed={qualityFilter === filter}
+                                className={`inline-flex min-h-9 flex-1 items-center justify-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
+                                    qualityFilter === filter
+                                        ? qualityFilterActiveClass[filter]
+                                        : 'text-text-secondary hover:bg-black/5 dark:hover:bg-white/5'
+                                }`}
+                            >
+                                {filter !== 'all' && (
+                                    <span
+                                        aria-hidden="true"
+                                        className={`h-2 w-2 rounded-full ${
+                                            qualityFilter === filter
+                                                ? 'bg-white'
+                                                : qualityStatusDotClass[filter]
+                                        }`}
+                                    />
+                                )}
+                                {dropdownCopy.qualityFilterOptions[filter]}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <select
                 value={currentLandscapeId || ''}
