@@ -4,6 +4,11 @@ import { PersonalCurriculumEditor } from '../src/components/PersonalCurriculumEd
 import { LanguageProvider } from '../src/contexts/LanguageContext'
 import { orderedFocusCandidatesAfterSelection } from '../src/utils/personalCurriculumEditorFocus'
 import type { PersonalizationPlan } from '../src/utils/personalCurriculumEditorApi'
+import {
+  CANONICAL_GYMNASIUM_MATH_ID,
+  CANONICAL_GYMNASIUM_PHYSICS_ID,
+  type CurriculumQualityFilter,
+} from '../src/utils/curriculumQualityTrafficLight'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -84,6 +89,7 @@ const plan: PersonalizationPlan = {
 const renderEditor = (
   language: 'de' | 'en',
   currentPlan: PersonalizationPlan = plan,
+  qualityFilter?: CurriculumQualityFilter,
 ) => {
   localStorageStub.setItem('skillpilot_lang', language)
   return renderToStaticMarkup(
@@ -98,6 +104,7 @@ const renderEditor = (
         reopen: () => undefined,
         rewind: () => undefined,
         reload: () => undefined,
+        qualityFilter,
       }),
     ),
   )
@@ -132,6 +139,12 @@ assert(
   JSON.stringify(orderedFocusCandidatesAfterSelection(plan.options, 'all-states'))
     === JSON.stringify(['hesse']),
   'selection focus advances to the next remaining option without returning to the top',
+)
+const jurisdictionWithRedQualityFilter = renderEditor('de', plan, 'red')
+assert(
+  jurisdictionWithRedQualityFilter.includes('Alle Bundesländer')
+    && jurisdictionWithRedQualityFilter.includes('>Hessen<'),
+  'the curriculum quality filter does not affect non-subject personalization steps',
 )
 
 const hesseOption = plan.options[1]
@@ -201,6 +214,63 @@ assert(
 assert(
   /<button[^>]*disabled=""[^>]*>[\s\S]*?Physik[\s\S]*?class="sr-only"/.test(subjectAvailability),
   'an unavailable subject is a native disabled option and cannot be submitted',
+)
+
+const qualitySubject = (
+  optionId: string,
+  landscapeId: string,
+  landscapeLabel: string,
+) => ({
+  ...mathOption,
+  optionId,
+  landscapeId,
+  landscapeLabel,
+})
+const humanQaOptions = [
+  qualitySubject('math-quality', CANONICAL_GYMNASIUM_MATH_ID, 'Mathematik'),
+  qualitySubject('physics-quality', CANONICAL_GYMNASIUM_PHYSICS_ID, 'Physik'),
+  qualitySubject('chemistry-quality', 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'Chemie'),
+  qualitySubject('history-quality', '92406d94-e3c1-58ec-b7c6-12122278d25a', 'Geschichte'),
+  qualitySubject('german-quality', '67bd301b-e11a-582d-94ba-4f4b1a4cefff', 'Deutsch'),
+]
+const humanQaSubjectSelection = renderEditor('de', {
+  ...historyPlan,
+  options: humanQaOptions,
+  displayOptions: humanQaOptions,
+}, 'green')
+assert(
+  humanQaSubjectSelection.includes('2 von 5 Optionen verfügbar')
+    && humanQaSubjectSelection.includes('Wähle zwischen 1 und 2 Optionen.'),
+  'the human-QA filter offers only mathematics and physics in the subject step',
+)
+for (const subject of ['Mathematik', 'Physik']) {
+  assert(
+    new RegExp(`<button(?![^>]*disabled="")[^>]*>\\s*${subject}\\s*</button>`).test(
+      humanQaSubjectSelection,
+    ),
+    `${subject} is enabled under the human-QA filter`,
+  )
+}
+for (const subject of ['Chemie', 'Geschichte', 'Deutsch']) {
+  assert(
+    new RegExp(
+      `<button[^>]*disabled=""[^>]*>\\s*${subject}\\s*<span class="sr-only">`,
+    ).test(humanQaSubjectSelection),
+    `${subject} remains visible but unavailable under the human-QA filter`,
+  )
+}
+const experimentalSubjectSelection = renderEditor('de', {
+  ...historyPlan,
+  options: humanQaOptions,
+  displayOptions: humanQaOptions,
+}, 'red')
+assert(
+  experimentalSubjectSelection.includes(
+    'Für diesen Qualitätsfilter sind derzeit nicht genügend Fächer auswählbar.',
+  )
+    && experimentalSubjectSelection.includes('Wähle einen anderen Qualitätsfilter.')
+    && !experimentalSubjectSelection.includes('Wähle zwischen 1 und 0 Optionen.'),
+  'an empty subject quality filter has actionable guidance instead of an impossible range',
 )
 
 const completeHistoryPlan: PersonalizationPlan = {

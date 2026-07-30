@@ -14,6 +14,11 @@ import type {
 } from '../hooks/usePersonalCurriculumEditor'
 import { orderedFocusCandidatesAfterSelection } from '../utils/personalCurriculumEditorFocus'
 import { getPersonalizationOptionLabel } from '../utils/personalCurriculumOptionLabel'
+import {
+  getCurriculumQualityStatus,
+  matchesCurriculumQualityFilter,
+  type CurriculumQualityFilter,
+} from '../utils/curriculumQualityTrafficLight'
 
 export interface PersonalCurriculumEditorProps {
   plan: PersonalizationPlan | null
@@ -25,6 +30,7 @@ export interface PersonalCurriculumEditorProps {
   rewind: (rewindId: string) => Promise<unknown> | unknown
   reload: () => Promise<unknown> | unknown
   onPlanChanged?: (plan: PersonalizationPlan | null) => void
+  qualityFilter?: CurriculumQualityFilter
   className?: string
 }
 
@@ -64,6 +70,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
   rewind,
   reload,
   onPlanChanged,
+  qualityFilter = 'all',
   className,
 }) => {
   const { language } = useLanguage()
@@ -102,6 +109,8 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
         optional: 'You can select more options or finish this step.',
         exact: (count: number) => `Select ${count}.`,
         range: (min: number, max: number) => `Select between ${min} and ${max}.`,
+        qualityUnavailable: 'Not enough subjects are currently available for this quality filter.',
+        chooseDifferentQualityFilter: 'Choose a different quality filter.',
         progress: (selected: number, max: number) => `${selected} of ${max} selected`,
         availability: (available: number, total: number) => `${available} of ${total} options available`,
         unavailableTitle: 'More subjects',
@@ -133,6 +142,8 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
         optional: 'Du kannst weitere Optionen auswählen oder diesen Schritt abschließen.',
         exact: (count: number) => `Wähle ${count} Option${count === 1 ? '' : 'en'}.`,
         range: (min: number, max: number) => `Wähle zwischen ${min} und ${max} Optionen.`,
+        qualityUnavailable: 'Für diesen Qualitätsfilter sind derzeit nicht genügend Fächer auswählbar.',
+        chooseDifferentQualityFilter: 'Wähle einen anderen Qualitätsfilter.',
         progress: (selected: number, max: number) => `${selected} von ${max} ausgewählt`,
         availability: (available: number, total: number) => `${available} von ${total} Optionen verfügbar`,
         unavailableTitle: 'Weitere Fächer',
@@ -470,9 +481,21 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
   const selectedOptionIds = new Set(
     selectedOptions.map((option) => option.optionId),
   )
-  const actionOptions = plan.options.filter(
-    (option) => option.kind !== 'COMPLETE_GROUP',
-  )
+  const filtersSubjectOptions = plan.groupId === 'subject'
+  const actionOptions = plan.options.filter((option) => (
+    option.kind !== 'COMPLETE_GROUP'
+    && (
+      !filtersSubjectOptions
+      || selectedOptionIds.has(option.optionId)
+      || (
+        option.landscapeId != null
+        && matchesCurriculumQualityFilter(
+          getCurriculumQualityStatus(option.landscapeId),
+          qualityFilter,
+        )
+      )
+    )
+  ))
   const actionOptionIds = new Set(
     actionOptions.map((option) => option.optionId),
   )
@@ -503,8 +526,14 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
     plan.maxSelections,
     availableOptionCount,
   )
+  const qualitySelectionUnavailable = (
+    filtersSubjectOptions
+    && effectiveMaxSelections < plan.minSelections
+  )
   const remainingRequired = Math.max(0, plan.minSelections - plan.selectedCount)
-  const instruction = plan.minSelections === effectiveMaxSelections
+  const instruction = qualitySelectionUnavailable
+    ? copy.qualityUnavailable
+    : plan.minSelections === effectiveMaxSelections
     ? copy.exact(plan.minSelections)
     : copy.range(plan.minSelections, effectiveMaxSelections)
 
@@ -539,7 +568,7 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
             className="h-full rounded-full bg-sky-500 transition-[width]"
             style={{
               width: `${effectiveMaxSelections === 0
-                ? 100
+                ? qualitySelectionUnavailable ? 0 : 100
                 : Math.min(100, (plan.selectedCount / effectiveMaxSelections) * 100)}%`,
             }}
           />
@@ -575,7 +604,11 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
       )}
 
       <p className="text-sm text-text-secondary">
-        {remainingRequired > 0 ? copy.remaining(remainingRequired) : copy.optional}
+        {qualitySelectionUnavailable
+          ? copy.chooseDifferentQualityFilter
+          : remainingRequired > 0
+          ? copy.remaining(remainingRequired)
+          : copy.optional}
       </p>
 
       <div className="grid gap-2 sm:grid-cols-2">

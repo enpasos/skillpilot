@@ -5,7 +5,6 @@ export type CurriculumDropdownCategory = 'SCHOOL' | 'UNI' | 'OTHER'
 
 export interface CurriculumDropdownCopy {
   categoryLabels: Record<CurriculumDropdownCategory, string>
-  recommendedGroupLabel: string
   compatibilityGroupLabel: string
   legacyGroupLabel: string
   qualityFilterLabel: string
@@ -22,7 +21,6 @@ export const getCurriculumDropdownCopy = (
           UNI: 'Universität & Hochschule',
           OTHER: 'Sprachen & Weiterbildung',
         },
-        recommendedGroupLabel: 'Empfohlene Curricula',
         compatibilityGroupLabel: 'Kompatibilitätsansichten',
         legacyGroupLabel: 'Legacy-Ansichten',
         qualityFilterLabel: 'Qualitätsampel',
@@ -39,7 +37,6 @@ export const getCurriculumDropdownCopy = (
           UNI: 'University & Higher Ed',
           OTHER: 'Languages & Other',
         },
-        recommendedGroupLabel: 'Recommended curricula',
         compatibilityGroupLabel: 'Compatibility views',
         legacyGroupLabel: 'Legacy views',
         qualityFilterLabel: 'Quality status',
