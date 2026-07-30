@@ -53,11 +53,11 @@ The deployment process currently does all of the following:
 7.  Deploy **quickstart/story assets** into `app/public/`.
 8.  Install frontend dependencies and verify the committed AI-transparency inventory against the exact assets to be deployed.
 9.  Rebuild the React app.
-10. Verify the requested coach variant in the generated backend static `version.json` and `index.html`.
+10. Verify the requested coach variant and the referenced CSS/JavaScript shell assets in the generated backend static artifact.
 11. Build the backend jar.
 12. Restart the `skillpilot` system service.
 13. Wait until the public readiness endpoint returns HTTP 200.
-14. Verify the deployed coach variant and AI-transparency copy against the public host.
+14. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
 15. Run the source-rationale deployment smoke test against the public host.
 
 ## The Deployment Engine (`scripts/deploy.sh`)
@@ -121,6 +121,10 @@ echo "Pruefe KI-Transparenz im Frontend-Artefakt..."
 node ../scripts/verify_ai_transparency_artifact.mjs \
   ../backend/src/main/resources/static
 
+echo "Pruefe Frontend-Shell-Assets im Build-Artefakt..."
+node ../scripts/verify_frontend_shell_assets.mjs \
+  ../backend/src/main/resources/static
+
 cd ../backend
 chmod +x gradlew
 ./gradlew clean build -x test
@@ -132,6 +136,10 @@ sudo -n -- "$(command -v systemctl)" restart "${SERVICE_NAME}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 echo "Warte auf oeffentliche Readiness..."
 # Polls /actuator/health/readiness until HTTP 200 or the configured timeout.
+
+echo "Pruefe ausgelieferte Frontend-Shell-Assets..."
+node scripts/verify_frontend_shell_assets.mjs \
+  "${SMOKE_BASE_URL}"
 
 echo "Pruefe ausgelieferte Coach-Variante..."
 node scripts/verify_frontend_coach_variant.mjs \
@@ -157,7 +165,14 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 3.  **`git stash` + `git pull`**: the current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
 4.  **Deck/story/whitepaper deployment** must happen before the inventory check and frontend build so the check sees the exact public asset set.
 5.  **AI-transparency inventory check** binds current visualization providers and C2PA container markers, illustration collections, canonical goal/card counts, and podcast hashes to the reviewed inventory under `docs/legal/`. Asset drift therefore stops deployment before a build or restart.
-6.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
+6.  **Frontend build and artifact verification** must finish before backend build
+    or restart. The shell verifier reads `index.html`, rejects cross-origin
+    stylesheet/module references, and checks that every referenced local file is
+    present and nonempty.
+7.  **Public shell verification after readiness** fetches `index.html` and the
+    exact referenced CSS/module assets with cache bypass headers. It requires
+    successful, nonempty same-origin responses with the expected content types,
+    so missing hashed assets or an HTML error page served as CSS stop deployment.
 7.  **Backend build** produces the updated server artifact.
 8.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
 9.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy

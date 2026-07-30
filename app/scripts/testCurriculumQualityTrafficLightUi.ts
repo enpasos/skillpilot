@@ -59,9 +59,9 @@ try {
   )
 
   const qualityButtons = {
-    green: page.getByRole('button', { name: 'Grün', exact: true }),
-    orange: page.getByRole('button', { name: 'Orange', exact: true }),
-    red: page.getByRole('button', { name: 'Rot', exact: true }),
+    green: page.getByRole('button', { name: 'Menschliche QS', exact: true }),
+    orange: page.getByRole('button', { name: 'Maschinelle QS', exact: true }),
+    red: page.getByRole('button', { name: 'Experimentell', exact: true }),
     all: page.getByRole('button', { name: 'Alle', exact: true }),
   }
   await qualityButtons.green.waitFor().catch((error: unknown) => {

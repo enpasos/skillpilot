@@ -148,6 +148,8 @@ jobs:
         run: npm run test:ai-transparency-ui
       - name: Test remote AI transparency artifact crawler
         run: npm run test:ai-transparency-artifact
+      - name: Test frontend shell asset verifier
+        run: npm run test:frontend-shell-assets
       - name: Check AI transparency inventory
         run: npm run check:ai-transparency-inventory
       - name: Test SkillPilot ID encryption
@@ -164,6 +166,8 @@ jobs:
         run: npm run lint
       - name: Build application without regenerating curriculum assets
         run: npm run build:application
+      - name: Check frontend shell assets in the built application
+        run: npm run check:frontend-shell-assets
       - name: Check AI transparency in the built application
         run: npm run check:ai-transparency-artifact
 

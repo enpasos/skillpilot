@@ -27,9 +27,9 @@ export const getCurriculumDropdownCopy = (
         legacyGroupLabel: 'Legacy-Ansichten',
         qualityFilterLabel: 'Qualitätsampel',
         qualityFilterOptions: {
-          green: 'Grün',
-          orange: 'Orange',
-          red: 'Rot',
+          green: 'Menschliche QS',
+          orange: 'Maschinelle QS',
+          red: 'Experimentell',
           all: 'Alle',
         },
       }
@@ -44,9 +44,9 @@ export const getCurriculumDropdownCopy = (
         legacyGroupLabel: 'Legacy views',
         qualityFilterLabel: 'Quality status',
         qualityFilterOptions: {
-          green: 'Green',
-          orange: 'Orange',
-          red: 'Red',
+          green: 'Human QA',
+          orange: 'Automated QA',
+          red: 'Experimental',
           all: 'All',
         },
       }

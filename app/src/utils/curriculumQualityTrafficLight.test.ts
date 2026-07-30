@@ -260,7 +260,7 @@ const dropdownMarkup = renderToStaticMarkup(
 )
 assertEqual(
   dropdownMarkup.includes('aria-pressed="true"')
-    && dropdownMarkup.includes('Grün')
+    && dropdownMarkup.includes('Menschliche QS')
     && dropdownMarkup.includes('bg-emerald-700 text-white'),
   true,
   'the rendered curriculum dropdown starts with the green traffic-light filter active',

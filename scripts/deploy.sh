@@ -285,6 +285,10 @@ echo "Prüfe KI-Transparenz im Frontend-Artefakt..."
 node ../scripts/verify_ai_transparency_artifact.mjs \
   ../backend/src/main/resources/static
 
+echo "Prüfe Frontend-Shell-Assets im Build-Artefakt..."
+node ../scripts/verify_frontend_shell_assets.mjs \
+  ../backend/src/main/resources/static
+
 echo "Baue Backend..."
 cd ../backend
 chmod +x gradlew
@@ -315,6 +319,10 @@ else
 fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
+
+echo "Prüfe ausgelieferte Frontend-Shell-Assets..."
+node scripts/verify_frontend_shell_assets.mjs \
+  "${SMOKE_BASE_URL}"
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
   && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
