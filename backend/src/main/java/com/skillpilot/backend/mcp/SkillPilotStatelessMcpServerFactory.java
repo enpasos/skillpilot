@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.springframework.ai.mcp.server.webmvc.transport.WebMvcStatelessServerTransport;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
@@ -29,6 +30,10 @@ import tools.jackson.databind.json.JsonMapper;
 public final class SkillPilotStatelessMcpServerFactory {
 
     private static final Duration DEFAULT_REQUEST_TIMEOUT = Duration.ofSeconds(30);
+    private static final String MODERN_PROTOCOL_VERSION = "2026-07-28";
+    private static final String PROTOCOL_VERSION_HEADER = "MCP-Protocol-Version";
+    private static final String METHOD_HEADER = "Mcp-Method";
+    private static final String DISCOVER_METHOD = "server/discover";
 
     private final McpJsonMapper jsonMapper;
 
@@ -93,7 +98,30 @@ public final class SkillPilotStatelessMcpServerFactory {
                 List.copyOf(tools),
                 transport,
                 server,
-                transport.getRouterFunction());
+                withLegacyProtocolFallback(transport.getRouterFunction()));
+    }
+
+    /**
+     * The Java MCP SDK 2.0 transport implements the initialization-based 2025-11-25 protocol. A
+     * modern client probes the server with 2026-07-28 request metadata before falling back to that
+     * legacy handshake. Passing the probe into the legacy SDK produces a 500 for the unknown
+     * {@code server/discover} method, which prevents the client from falling back.
+     *
+     * <p>For Streamable HTTP, an empty 400 response identifies a legacy server. Keep this
+     * compatibility signal outside the SDK transport and leave all legacy requests untouched.</p>
+     */
+    private static RouterFunction<ServerResponse> withLegacyProtocolFallback(
+            RouterFunction<ServerResponse> routerFunction) {
+        return routerFunction.filter((request, next) -> {
+            String protocolVersion = request.headers().firstHeader(PROTOCOL_VERSION_HEADER);
+            String method = request.headers().firstHeader(METHOD_HEADER);
+            if (HttpMethod.POST.equals(request.method())
+                    && (MODERN_PROTOCOL_VERSION.equals(protocolVersion)
+                            || DISCOVER_METHOD.equals(method))) {
+                return ServerResponse.badRequest().build();
+            }
+            return next.handle(request);
+        });
     }
 
     private static String requireEndpoint(String value) {

@@ -41,6 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class SkillPilotStatelessMcpServerFactoryTest {
 
     private static final String PROTOCOL_VERSION = "2025-11-25";
+    private static final String MODERN_PROTOCOL_VERSION = "2026-07-28";
 
     @Autowired
     private WebApplicationContext applicationContext;
@@ -113,6 +114,39 @@ class SkillPilotStatelessMcpServerFactoryTest {
                         List.of(duplicate, tool("duplicate", "two"))))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("duplicate MCP tool name: duplicate");
+    }
+
+    @Test
+    void returnsLegacyFallbackSignalForModernDiscoveryProbe() throws Exception {
+        String discoverRequest = """
+                {"jsonrpc":"2.0","id":"discover-1","method":"server/discover","params":{
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientInfo":{"name":"factory-test","version":"1.0"},
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """;
+
+        MvcResult versionedProbe = mockMvc.perform(post("/mcp/alpha")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
+                        .header("MCP-Protocol-Version", MODERN_PROTOCOL_VERSION)
+                        .content(discoverRequest))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+        MvcResult methodProbe = mockMvc.perform(post("/mcp/alpha")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
+                        .header("Mcp-Method", "server/discover")
+                        .content(discoverRequest))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        assertThat(versionedProbe.getResponse().getContentAsByteArray()).isEmpty();
+        assertThat(versionedProbe.getResolvedException()).isNull();
+        assertThat(methodProbe.getResponse().getContentAsByteArray()).isEmpty();
+        assertThat(methodProbe.getResolvedException()).isNull();
+        assertThat(toolNames(postJson("/mcp/alpha", toolsListRequest(7))))
+                .containsExactly("alpha_tool", "alpha_auth");
     }
 
     private JsonNode postJson(String endpoint, String json) throws Exception {
