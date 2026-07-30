@@ -1051,7 +1051,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             setSkillpilotIdSource(nextId ? 'existing' : null)
                           }}
                           disabled={idAcquisitionBusy}
-                          className="mt-3 min-h-12 w-full rounded-lg border-2 border-sky-400 bg-sky-50 px-3 py-2 text-base font-mono text-text-primary shadow-sm transition-colors focus:border-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/20 disabled:cursor-wait disabled:opacity-70 dark:border-sky-500 dark:bg-sky-950/30"
+                          className="mt-3 min-h-12 w-full rounded-lg border-2 border-sky-400 bg-white px-3 py-2 text-base font-mono text-text-primary shadow-sm transition-colors focus:border-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/20 disabled:cursor-wait disabled:opacity-70 dark:border-sky-500 dark:bg-slate-950"
                           placeholder={t.startPage.login.idLabel}
                           required
                         />

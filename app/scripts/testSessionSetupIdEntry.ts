@@ -41,4 +41,15 @@ assert(
   'legacy saved-access copy is absent in both languages',
 )
 
+const skillpilotIdInput = sessionSetupSource.match(
+  /<input\s+id="skillpilotIdInput"([\s\S]*?)\/>/u,
+)?.[1] ?? ''
+
+assert(skillpilotIdInput, 'SkillPilot ID input exists')
+assert(
+  skillpilotIdInput.includes('bg-white')
+    && !skillpilotIdInput.includes('bg-sky-50'),
+  'SkillPilot ID input uses a white light-mode background',
+)
+
 console.log('fresh SkillPilot ID entry tests passed')
