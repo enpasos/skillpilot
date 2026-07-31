@@ -3,7 +3,8 @@
 **Stand:** 31. Juli 2026
 
 **Status:** Der deutsche MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
-Produktkandidat; der `1.0.0`-Draft ist noch nicht öffentlich veröffentlicht.
+Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
+nicht öffentlich veröffentlichte Paketversion `1.0.0`.
 Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
 freigegeben. OpenAI-mTLS ist eine optionale spätere Härtung und keine
@@ -416,7 +417,8 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte `1.0.0`-Draft registriert genau eine read-only
+Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau eine
+read-only
 Widget-Ressource für das Bild des aktiven atomaren Lernziels.
 `get_skillpilot_context_de` und `set_skillpilot_active_goal_de` referenzieren
 sie über `ui.resourceUri` sowie den ChatGPT-Kompatibilitätsalias

@@ -547,6 +547,11 @@ export function determineReleaseVerificationMode(
   return "compatible-successor";
 }
 
+export function internalDraftLabel(candidateVersion) {
+  parseStableSemver(candidateVersion);
+  return `${candidateVersion}-SNAPSHOT`;
+}
+
 export function advancePublishedIndex(index, candidateVersion, baselinePath) {
   const verificationMode = determineReleaseVerificationMode(
     candidateVersion,

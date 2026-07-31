@@ -30,9 +30,9 @@ MCP-Server-Instruktionen die Kompatibilitätsschicht.
 Der konkrete DE-first-Umsetzungs-, Cutover- und Rollbackplan steht in
 [openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
 erste vollständige Migration bleibt bewusst **chat-first**; der
-unveröffentlichte `1.0.0`-Draft enthält bereits eine eng begrenzte visuelle
-MCP-UI, während interaktive Widgets und die englische App erst nach stabiler
-deutscher Workflow-Parität folgen.
+unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand enthält bereits eine eng
+begrenzte visuelle MCP-UI, während interaktive Widgets und die englische App
+erst nach stabiler deutscher Workflow-Parität folgen.
 Für Identität, automatischen OAuth-Token-Transport, Browser-Binding und die
 davon getrennte 24h-Lernsession ist
 [openai-mcp-oauth-learner-session-architecture.md](openai-mcp-oauth-learner-session-architecture.md)

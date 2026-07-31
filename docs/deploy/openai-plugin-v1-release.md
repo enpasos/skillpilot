@@ -20,7 +20,7 @@ veröffentlichte Linie `skillpilot-coach-de-v1`.
 | OAuth Resource/Audience | `https://mcp-v1.skillpilot.com` |
 | reservierter UI-Origin | `https://ui-v1.skillpilot.com` |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
-| Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0` |
+| Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-de-v1/` |
 
 Der noch unveröffentlichte V1-Draft enthält eine eng begrenzte, read-only
@@ -41,7 +41,7 @@ Die maschinenlesbaren Quellen der Wahrheit sind:
   `UNPUBLISHED` oder `RETIRED`;
 - `contracts/openai/skillpilot-coach-de-v1/release-index.json` ausschließlich
   für tatsächlich im OpenAI-Portal veröffentlichte Versionen;
-- `contracts/drafts/openai/skillpilot-coach-de-v1/<version>/` für den
+- `contracts/drafts/openai/skillpilot-coach-de-v1/<version>-SNAPSHOT/` für den
   fortschreibbaren internen Arbeitsstand einer noch nicht veröffentlichten
   Paketversion;
 - `contracts/published/openai/skillpilot-coach-de-v1/<version>/` für den
@@ -50,8 +50,11 @@ Die maschinenlesbaren Quellen der Wahrheit sind:
 Solange eine Paketversion nicht tatsächlich im OpenAI-Portal veröffentlicht
 wurde, bleibt ihre SemVer unverändert. Beliebig viele interne Commits,
 Deployments, Scans, Reviewkorrekturen und Draft-Aktualisierungen dürfen daher
-weiter an `1.0.0` arbeiten. Erst nach einer realen Veröffentlichung ist dieser
-Stand versiegelt und jede weitere Paketänderung benötigt eine neue SemVer.
+weiter an `1.0.0` arbeiten. Das Suffix `-SNAPSHOT` kennzeichnet ausschließlich
+den internen Draft-Pfad und die Operatorausgabe. Die öffentliche Zielversion in
+`plugin.json`, im Tar-Namen und im OpenAI-Portal bleibt `1.0.0`. Erst nach einer
+realen Veröffentlichung ist dieser Stand versiegelt und jede weitere
+Paketänderung benötigt eine neue SemVer.
 
 ## 2. Release vorbereiten
 
@@ -112,9 +115,9 @@ Stand versiegelt und jede weitere Paketänderung benötigt eine neue SemVer.
    ```
 
    `prepare` ersetzt ausschließlich
-   `contracts/drafts/openai/skillpilot-coach-de-v1/<version>/`. Es ändert weder
-   die SemVer noch den Published-Index. Ist die Version bereits veröffentlicht,
-   schlägt der Befehl fail-closed fehl.
+   `contracts/drafts/openai/skillpilot-coach-de-v1/<version>-SNAPSHOT/`. Es
+   ändert weder die öffentliche SemVer noch den Published-Index. Ist die
+   Version bereits veröffentlicht, schlägt der Befehl fail-closed fehl.
 6. Den internen Draft reproduzierbar gegen Quellen und Build prüfen:
 
    ```bash

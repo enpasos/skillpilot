@@ -20,10 +20,14 @@ import {
   assertReleaseCompatible,
   assertSuccessorVersionClassification,
   determineReleaseVerificationMode,
+  internalDraftLabel,
   listFiles,
   loadReleaseContract,
   validatePublishedIndex,
 } from "./lib/openai_plugin_contract_compatibility.mjs";
+import {
+  createReproducibleTrackedArchive,
+} from "./lib/reproducible_plugin_archive.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -44,7 +48,8 @@ const draftRoot = resolve(
   "contracts/drafts/openai",
   line.pluginIdentity,
 );
-const draftVersion = resolve(draftRoot, manifest.version);
+const draftLabel = internalDraftLabel(manifest.version);
+const draftVersion = resolve(draftRoot, draftLabel);
 const publishedRoot = resolve(
   repositoryRoot,
   "contracts/published/openai",
@@ -137,8 +142,16 @@ try {
       rmSync(output, { recursive: true, force: true });
     }
     cpSync(candidate, output, { recursive: true });
+    const candidateKind =
+      verificationMode === "initial-draft"
+        ? "Initial"
+        : verificationMode === "exact-published"
+          ? "Published"
+          : "Compatible";
+    const candidateLabel =
+      verificationMode === "exact-published" ? manifest.version : draftLabel;
     console.log(
-      `${verificationMode === "initial-draft" ? "Initial" : "Compatible"} candidate created at ${relative(repositoryRoot, output)}`,
+      `${candidateKind} candidate ${candidateLabel} created at ${relative(repositoryRoot, output)}`,
     );
   } else if (command === "prepare") {
     if (verificationMode === "exact-published") {
@@ -152,7 +165,7 @@ try {
     }
     cpSync(candidate, draftVersion, { recursive: true });
     console.log(
-      `Internal V1 release draft refreshed at ${relative(repositoryRoot, draftVersion)}`,
+      `Internal V1 release draft ${draftLabel} refreshed at ${relative(repositoryRoot, draftVersion)}`,
     );
   } else if (command === "verify") {
     if (verificationMode === "exact-published") {
@@ -163,11 +176,12 @@ try {
       assert.equal(
         existsSync(draftVersion),
         true,
-        `Missing internal draft ${relative(repositoryRoot, draftVersion)}. Run prepare first.`,
+        `Missing internal draft ${draftLabel} at ${relative(repositoryRoot, draftVersion)}. ` +
+          "Run prepare locally, review the result, and commit it before deployment.",
       );
-      assertExactReleaseTree(candidate, draftVersion);
+      assertInternalDraftTree(candidate, draftVersion);
       console.log(
-        `OpenAI plugin V1 sources exactly match internal draft ${manifest.version}`,
+        `OpenAI plugin V1 sources exactly match internal draft ${draftLabel}`,
       );
     }
   } else {
@@ -179,9 +193,10 @@ try {
     assert.equal(
       existsSync(draftVersion),
       true,
-      `Missing internal draft ${relative(repositoryRoot, draftVersion)}. Run prepare first.`,
+      `Missing internal draft ${draftLabel} at ${relative(repositoryRoot, draftVersion)}. ` +
+        "Run prepare locally, review the result, and commit it first.",
     );
-    assertExactReleaseTree(candidate, draftVersion);
+    assertInternalDraftTree(candidate, draftVersion);
     assert.equal(
       existsSync(publishedVersion),
       false,
@@ -296,23 +311,11 @@ function buildCandidate(output) {
     output,
     `${line.pluginIdentity}-${manifest.version}.tar`,
   );
-  run(
-    "tar",
-    [
-      "--format=ustar",
-      "--sort=name",
-      "--mtime=@0",
-      "--owner=0",
-      "--group=0",
-      "--numeric-owner",
-      "-cf",
-      archive,
-      "-C",
-      dirname(pluginRoot),
-      line.pluginIdentity,
-    ],
+  createReproducibleTrackedArchive({
     repositoryRoot,
-  );
+    sourceRoot: pluginRoot,
+    archivePath: archive,
+  });
 
   const files = listFiles(output)
     .filter((path) => path !== "snapshot-manifest.json")
@@ -453,6 +456,21 @@ function printSurfaceChangeReport(changes) {
     for (const change of changes.reviewRequired) {
       console.log(`- REVIEW: ${change}`);
     }
+  }
+}
+
+function assertInternalDraftTree(candidateRoot, expectedDraftRoot) {
+  try {
+    assertExactReleaseTree(candidateRoot, expectedDraftRoot);
+  } catch (error) {
+    if (error instanceof Error) {
+      error.message +=
+        `\nThe internal draft ${draftLabel} is read-only during deployment. ` +
+        "If the source change is intentional, run " +
+        "`node scripts/openai_plugin_release.mjs prepare` locally, review the " +
+        "result, and commit it before deploying.";
+    }
+    throw error;
   }
 }
 

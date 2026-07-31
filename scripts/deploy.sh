@@ -274,7 +274,7 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   node scripts/validate_openai_v1_runtime_config.mjs
 fi
 
-echo "Prüfe unveränderten veröffentlichten OpenAI-Plugin-V1-Snapshot..."
+echo "Prüfe unveränderten OpenAI-Plugin-V1-Release-/Draft-Snapshot..."
 node scripts/openai_plugin_release.mjs verify
 
 echo "Deploying Vocabulary Decks..."
