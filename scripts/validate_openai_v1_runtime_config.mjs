@@ -71,6 +71,62 @@ export function validateExplicitPublicOverrides(env) {
   }
 }
 
+export function parseServiceEnvironmentFile(environmentFile) {
+  const publicNames = new Set(Object.keys(OPENAI_V1_PUBLIC_DEFAULTS));
+  const publicOverrides = {};
+
+  for (const [index, rawLine] of environmentFile.split(/\r?\n/).entries()) {
+    const line = rawLine.trim();
+    if (line === "" || line.startsWith("#") || line.startsWith(";")) {
+      continue;
+    }
+
+    const assignment = /^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/.exec(line);
+    if (assignment === null || !publicNames.has(assignment[1])) {
+      continue;
+    }
+
+    const [, name, rawValue] = assignment;
+    if (Object.hasOwn(publicOverrides, name)) {
+      throw new Error(
+        `${name} is assigned more than once in the service environment file.`,
+      );
+    }
+    publicOverrides[name] = parseServiceEnvironmentValue(
+      name,
+      rawValue,
+      index + 1,
+    );
+  }
+
+  return publicOverrides;
+}
+
+function parseServiceEnvironmentValue(name, rawValue, lineNumber) {
+  const value = rawValue.trim();
+  if (value.startsWith("\"") || value.startsWith("'")) {
+    const quote = value[0];
+    if (value.length < 2 || value.at(-1) !== quote) {
+      throw new Error(
+        `${name} has an unsupported quoted value on environment-file line ${lineNumber}.`,
+      );
+    }
+    const unquoted = value.slice(1, -1);
+    if (unquoted.includes("\\") || unquoted.includes(quote)) {
+      throw new Error(
+        `${name} has unsupported escaping on environment-file line ${lineNumber}.`,
+      );
+    }
+    return unquoted;
+  }
+  if (/\s|["'\\]/.test(value)) {
+    throw new Error(
+      `${name} has an unsupported value on environment-file line ${lineNumber}.`,
+    );
+  }
+  return value;
+}
+
 export function validateBuiltApplication(applicationYaml, deployedCommit) {
   assert.match(
     deployedCommit,
@@ -114,12 +170,14 @@ export function validateBuiltApplication(applicationYaml, deployedCommit) {
 
 export function validateOpenAiV1RuntimeConfig({
   env = process.env,
+  serviceEnvironment = {},
   sourceApplicationYaml = readFileSync(sourceApplicationPath, "utf8"),
   builtApplicationYaml,
   deployedCommit,
 } = {}) {
   validateCanonicalPublicDefaults(sourceApplicationYaml);
   validateExplicitPublicOverrides(env);
+  validateExplicitPublicOverrides(serviceEnvironment);
 
   if (builtApplicationYaml !== undefined) {
     assert.ok(
@@ -132,19 +190,37 @@ export function validateOpenAiV1RuntimeConfig({
 }
 
 const parseArguments = (arguments_) => {
-  if (arguments_.length === 0) {
-    return {};
+  const parsed = {};
+  for (let index = 0; index < arguments_.length; index += 2) {
+    const option = arguments_[index];
+    const value = arguments_[index + 1];
+    if (value === undefined) {
+      throw new Error(`Missing value for ${option}.`);
+    }
+    if (option === "--built-application") {
+      if (parsed.builtApplicationPath !== undefined) {
+        throw new Error("--built-application may be specified only once.");
+      }
+      parsed.builtApplicationPath = resolve(value);
+      continue;
+    }
+    if (option === "--service-environment-file") {
+      if (parsed.serviceEnvironmentPath !== undefined) {
+        throw new Error(
+          "--service-environment-file may be specified only once.",
+        );
+      }
+      parsed.serviceEnvironmentPath = resolve(value);
+      continue;
+    }
+    throw new Error(`Unknown option: ${option}.`);
   }
-  if (arguments_.length === 2 && arguments_[0] === "--built-application") {
-    return { builtApplicationPath: resolve(arguments_[1]) };
-  }
-  throw new Error(
-    "Usage: node scripts/validate_openai_v1_runtime_config.mjs [--built-application <path>]",
-  );
+  return parsed;
 };
 
 export function main(arguments_ = process.argv.slice(2)) {
-  const { builtApplicationPath } = parseArguments(arguments_);
+  const { builtApplicationPath, serviceEnvironmentPath } =
+    parseArguments(arguments_);
   const deployedCommit = execFileSync(
     "git",
     ["rev-parse", "--verify", "HEAD^{commit}"],
@@ -156,15 +232,29 @@ export function main(arguments_ = process.argv.slice(2)) {
   const builtApplicationYaml = builtApplicationPath
     ? readFileSync(builtApplicationPath, "utf8")
     : undefined;
+  const serviceEnvironment = serviceEnvironmentPath
+    ? parseServiceEnvironmentFile(
+        readFileSync(serviceEnvironmentPath, "utf8"),
+      )
+    : {};
 
   validateOpenAiV1RuntimeConfig({
+    serviceEnvironment,
     builtApplicationYaml,
     deployedCommit,
   });
 
-  if (builtApplicationPath) {
+  if (builtApplicationPath && serviceEnvironmentPath) {
+    console.log(
+      `OpenAI V1 built and systemd runtime configuration are pinned to ${deployedCommit}.`,
+    );
+  } else if (builtApplicationPath) {
     console.log(
       `OpenAI V1 built runtime configuration is pinned to ${deployedCommit}.`,
+    );
+  } else if (serviceEnvironmentPath) {
+    console.log(
+      "OpenAI V1 systemd runtime configuration uses verified application defaults or exact explicit overrides.",
     );
   } else {
     console.log(

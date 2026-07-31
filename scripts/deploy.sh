@@ -7,8 +7,10 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_ROOT}"
+source "${SCRIPT_DIR}/lib/openai_v1_service_environment.sh"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
+SERVICE_ENV_FILE="${SKILLPILOT_SERVICE_ENV_FILE:-/etc/skillpilot/skillpilot.env}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 SYSTEMCTL_BIN=""
 OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED="${SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED:-false}"
@@ -272,6 +274,13 @@ node scripts/check_openai_plugin_versioning.mjs
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe exakte OpenAI-Plugin-V1-Runtime-Konfiguration..."
   node scripts/validate_openai_v1_runtime_config.mjs
+  echo "Prüfe OpenAI-V1-Konfiguration der systemd-EnvironmentFile..."
+  validate_openai_v1_service_environment \
+    "${SYSTEMCTL_BIN}" \
+    "${SERVICE_NAME}" \
+    "${SERVICE_ENV_FILE}" \
+    node \
+    "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.mjs"
 fi
 
 echo "Prüfe unveränderten OpenAI-Plugin-V1-Release-/Draft-Snapshot..."

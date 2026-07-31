@@ -274,6 +274,20 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   omitted from `/etc/skillpilot/skillpilot.env`. If an environment deliberately
   sets one, it must match the canonical value exactly or deployment and
   application startup fail closed.
+- Production uses exactly one systemd `EnvironmentFile`, normally
+  `/etc/skillpilot/skillpilot.env`. Before copying assets or building,
+  `./deploy_skillpilot.sh` verifies that this is the file configured for the
+  service and validates only the four public OpenAI V1 URL variables in it.
+  Other values, including OAuth and database secrets, are not interpreted,
+  logged, or printed. The four public URL variables must not additionally be
+  supplied by unit-level `Environment=` or `PassEnvironment=` settings. A
+  stale global systemd manager environment is rejected as well. A nonstandard
+  file path must be selected explicitly with
+  `SKILLPILOT_SERVICE_ENV_FILE`.
+- The deployment user needs read access to that one environment file for the
+  allowlisted preflight. Do not solve missing access with a general `sudo cat`
+  permission: use narrowly scoped ownership/group permissions appropriate for
+  the service operator.
 - Do not maintain `SKILLPILOT_SERVER_BUILD` in
   `/etc/skillpilot/skillpilot.env`. The backend build embeds the full Git commit
   into the jar and the deploy verifies it before restart. Rebuilding a commit
