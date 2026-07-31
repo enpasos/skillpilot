@@ -30,15 +30,14 @@ Die Matrix unterscheidet deshalb bewusst aktuellen und angestrebten
 Laufzeitort.
 
 Dieses Dokument beschreibt fachliches Verhalten, nicht die
-Transportauthentisierung. Für den TLS/OAuth-Basisschutz, die optionale
-fail-closed mTLS-Härtung am MCP-Rand, den fest vorregistrierten vertraulichen
+Transportauthentisierung. Für den TLS/OAuth-Schutz, den fest vorregistrierten vertraulichen
 OAuth-Client mit `client_secret_basic`, die exakten
 Client-ID-/Callback-/Resource-/Scope-Allowlisten und die explizite
 24h-Lernsession sind
 [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md) und
 [OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md)
-maßgeblich. Insbesondere attestiert optionales mTLS die
-OpenAI-Connector-Infrastruktur und nicht den sichtbaren App-Namen.
+maßgeblich. mTLS ist nicht Teil des `1.0.0`-Vertrags; eine spätere
+Transporthärtung bleibt eine getrennte Architekturentscheidung.
 
 Quellenpriorität für die Skill-Migration:
 

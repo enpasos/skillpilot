@@ -175,12 +175,13 @@ OAuth Authorization Code mit PKCE bleibt von der Lernsession getrennt:
   und in der SkillPilot-Serverkonfiguration. Es gehört weder ins Repository
   noch in Browsercode, Prompts, Toolargumente, Antworten oder Logs.
 - PKCE `S256`, die exakte Callback-Allowlist, die exakte
-  Resource/Audience `https://mcp-v1.skillpilot.com`, Scopes,
+  Resource/Audience `https://mcp-coach-de-v1.skillpilot.com/mcp`, Scopes,
   Ablauf und Widerruf werden weiterhin geprüft.
 - Offene Dynamic Client Registration und CIMD sind in diesem produktiven
   Profil weder erforderlich noch erlaubt.
-- Optionales mTLS kann später ausschließlich den MCP-Rand zusätzlich härten.
-  Es ersetzt die app-spezifische OAuth-Clientauthentisierung nicht.
+- mTLS gehört nicht zum Vertrag oder Deployment von `1.0.0`. Eine spätere
+  Transporthärtung benötigt eine eigene Architekturentscheidung und ersetzt
+  die app-spezifische OAuth-Clientauthentisierung nicht.
 
 Der OAuth-Principal oder ein OAuth-Subject ist kein Ersatz für die temporäre
 Lernsession. OAuth dient ausschließlich der App-Autorisierung und dem

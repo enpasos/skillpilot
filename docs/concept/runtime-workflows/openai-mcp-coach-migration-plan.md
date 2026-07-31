@@ -6,8 +6,8 @@
 Coach-Vertrag bleibt chat-first und ergänzt im noch unveröffentlichten
 `1.0.0-SNAPSHOT`-Arbeitsstand eine read-only MCP-UI für das Bild des aktiven
 atomaren Lernziels. Serverauthentisiertes TLS und das fail-closed geprüfte
-OAuth-Clientprofil bilden die aktuelle Betriebsbasis. OpenAI-mTLS bleibt als
-spätere, separat abzunehmende Härtungsoption erhalten.
+OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS ist nicht Teil von
+`1.0.0`; eine mögliche spätere Transporthärtung wird separat entworfen.
 
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
 providergehostetes Plugin aus Coach-Skill und direkt zur Prüfung eingereichtem
@@ -47,11 +47,11 @@ ChatGPT App „SkillPilot Coach DE v1“
         |
         | TLS + OAuth Bearer
         v
-Nginx / https://mcp-v1.skillpilot.com/mcp
+https://mcp-coach-de-v1.skillpilot.com/mcp
         |
-        | interner Proxyweg auf /internal/openai/de/v1/mcp, nur über Loopback
+        | dedizierter TLS-vHost; /mcp -> /internal/openai/de/v1/mcp
         v
-Spring Boot
+Spring Boot am loopback-gebundenen internen V1-Pfad
         |
         +-- isolierter OpenAI-DE-MCP-Transport und Toolvertrag
         +-- OAuth Authorization Server
@@ -136,8 +136,8 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    `client_secret_basic`. Die davon unabhängige, bei jedem **Lernen starten**
    frisch erzeugte 24h-Lernsession adressiert den gewählten Lernenden. Jeder
    fachliche Toolaufruf benötigt beides. OAuth allein erzeugt oder wählt keine
-   Lernsession; die Lernsession allein autorisiert keinen MCP-Aufruf. mTLS
-   bleibt optionale Transporthärtung und ist nicht die App-Identität.
+   Lernsession; die Lernsession allein autorisiert keinen MCP-Aufruf. mTLS ist
+   nicht Teil des `1.0.0`-Vertrags.
 
 ## 4. Zieltopologie
 
@@ -179,18 +179,16 @@ Produktividentität und wird nicht zwischen ChatGPT und Spring geschaltet.
 
 ### 4.2 Sicherheits- und Fachgrenze
 
-Nginx und Spring bilden gemeinsam die Transport- und Sicherheitsgrenze; Spring
+Reverse Proxy und Spring bilden gemeinsam die Transport- und Sicherheitsgrenze; Spring
 bleibt die Fachgrenze. Die aktuelle Betriebsbasis verwendet
 serverauthentisiertes TLS bis Nginx und verpflichtet Spring bei jedem
 MCP-Aufruf zur vollständigen OAuth-Prüfung. Discovery, Authorization, Token und
 Browser-Binding bleiben normal browserfähig.
 
-OpenAI-mTLS ist eine spätere optionale Härtung. Wird sie aktiviert, prüft Nginx
-am MCP-Ressourcenpfad Clientzertifikat, CA-Kette, `clientAuth`, Gültigkeit und
-den exakten SAN `mtls.prod.connectors.openai.com`; Spring akzeptiert die daraus
-abgeleiteten internen Header nur vom explizit konfigurierten numerischen
-Trusted Proxy. Für eine dauerhaft saubere Trennung vom Web-Cockpit ist dafür
-ein eigener MCP-Hostname beziehungsweise TLS-vHost vorzuziehen.
+mTLS ist weder Bestandteil dieses Vertrags noch der aktuellen Betriebs- und
+CI-Gates. Der dedizierte Host isoliert Domainverifikation und Plugin-Lifecycle;
+er verlangt kein Clientzertifikat. Eine spätere Transporthärtung wird als
+eigenständige Änderung mit neuer Bedrohungsanalyse geplant.
 
 Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
 `CoachStateProjection`. Er:
@@ -206,15 +204,17 @@ Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
 - protokolliert weder Token noch interne SkillPilot-ID, komplette Prompts oder
   Schülerantworten.
 
-Der MCP-Endpunkt ist ausschließlich über den dafür vorgesehenen stabilen HTTPS-
-Origin und den OAuth-geschützten Proxy erreichbar. Der Spring-Port ist auf
-Loopback gebunden und darf nicht öffentlich exponiert werden. Andere
+Der MCP-Endpunkt ist ausschließlich über den dafür vorgesehenen stabilen
+HTTPS-Origin und den OAuth-geschützten dedizierten Reverse Proxy erreichbar.
+Nginx bildet dessen `/mcp` exakt auf `/internal/openai/de/v1/mcp` ab. Der
+Spring-Port ist auf Loopback gebunden und darf nicht öffentlich exponiert
+werden. Andere
 Backendendpunkte und interne Identitäten werden dadurch nicht freigegeben.
 Falls später aus echten Betriebsgründen eine Prozesstrennung erforderlich wird,
 kann sie hinter unveränderter öffentlicher URL erfolgen.
 
-mTLS attestiert allenfalls die OpenAI-Connector-Infrastruktur, nicht den
-sichtbaren App-Namen. Die produktive App-Bindung geschieht deshalb am
+Eine mögliche spätere Transporthärtung würde allenfalls die aufrufende
+Infrastruktur attestieren, nicht den sichtbaren App-Namen. Die produktive App-Bindung geschieht deshalb am
 Authorization Server über genau einen festen vertraulichen OAuth-Client mit
 langem zufälligem Secret, `client_secret_basic`, exakter Callback-Allowlist,
 PKCE `S256`, Resource-/Audience-Bindung und engen Scopes. Offene DCR, CIMD,
@@ -229,16 +229,21 @@ verwendet:
 
 ```text
 Plugin: skillpilot-coach-de-v1
-MCP Endpoint: https://mcp-v1.skillpilot.com/mcp
-OAuth Resource/Audience: https://mcp-v1.skillpilot.com
+MCP Endpoint: https://mcp-coach-de-v1.skillpilot.com/mcp
+OAuth Resource/Audience: https://mcp-coach-de-v1.skillpilot.com/mcp
+Protected Resource Metadata: https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain Challenge: https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge
 OAuth Issuer: https://skillpilot.com/api/openai/de
 ```
 
 Der Tunnel bleibt ausschließlich Entwicklungsinfrastruktur. Ein interner
 Serverwechsel darf die veröffentlichte MCP-URL nicht verändern. Ein späterer
-Major erhält einen neuen Pluginnamen sowie einen neuen MCP- und OAuth-Origin.
-Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias. Ausschließlich
-der isolierte V1-Origin ist öffentlicher Directory-Vertrag.
+Major oder ein eigenständig veröffentlichtes englisches Plugin erhält einen
+neuen Pluginnamen sowie einen eigenen MCP-Origin und eine eigene exakte
+OAuth-Resource. Die V1-Linie besitzt keinen öffentlichen
+Kompatibilitätsalias. Ausschließlich der DE-V1-Origin ist derzeit aktiver
+Directory-Vertrag; die reservierten DE-V2/V3- und EN-V1/V2/V3-Hosts antworten
+bis zur jeweiligen Vertragsfreigabe mit `404`.
 
 ## 5. Deutscher MCP-Vertrag der ersten Version
 
@@ -668,14 +673,14 @@ OAuth erfolgreich verbinden, erhält bei fachlichen Tools jedoch
 | Access Token | 30–60 Minuten |
 | Refresh Token | höchstens 30 Tage, rotierend |
 | Lernsession | bei jedem **Lernen starten** frisch; Ablauf exakt 24 Stunden nach Erzeugung; weder Toolaufruf noch Token-Refresh verlängert sie |
-| Audience/Resource | exakt `https://mcp-v1.skillpilot.com` |
+| Audience/Resource | exakt `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | Scopes | getrenntes OpenAI-DE-Read und -Write |
 | PKCE | ausschließlich `S256` |
 | OAuth-Client | genau eine feste vertrauliche Client-ID; kein offenes DCR und kein stiller Profilwechsel |
 | Token-Endpunkt-Clientauthentisierung | ausschließlich `client_secret_basic` |
 | Client-Secret | lang, zufällig, nur in ChatGPT-Konfiguration und SkillPilot-Secret-Store; rotierbar |
 | Redirect-URI | exakte produktive Allowlist |
-| MCP-Netzwerkclient | TLS und OAuth; optional später OpenAI-mTLS mit CA-Kette, `clientAuth` und exaktem SAN |
+| MCP-Netzwerkclient | serverauthentisiertes TLS und OAuth |
 
 Der `resource`-Wert wird bei Authorization- und Token-Request exakt und ohne
 Trimmen oder Slash-Normalisierung verglichen. Spring speichert ihn im
@@ -694,10 +699,7 @@ fachlichen Tools validiert.
 Der MCP-Host veröffentlicht Protected-Resource-Metadaten. Spring liefert
 ungültige oder fehlende Autorisierung als standardkonforme
 `WWW-Authenticate`-Challenge einschließlich `_meta["mcp/www_authenticate"]`
-zurück. Im TLS/OAuth-Basismodus erreicht ein Aufruf ohne Bearer Token diese
-Prüfung und erhält `401`. Nur bei später aktivierter mTLS-Härtung wird ein
-Aufruf ohne gültiges OpenAI-Clientzertifikat bereits am Edge mit `403`
-abgewiesen.
+zurück. Ein Aufruf ohne Bearer Token erreicht diese Prüfung und erhält `401`.
 
 ## 8. Vollständige Workflow-Parität
 
@@ -864,10 +866,10 @@ sofort aktivierbarer Rückfallpfad.
 Frontendpfad. `visible-session` bleibt als isolierter Rollback erhalten und ist
 keine produktive Referenzarchitektur mehr. Die allgemeine Freigabe des
 MCP-Pfads setzt zusätzlich die vollständig abgenommene Kombination aus festem
-vertraulichem OAuth-Client und expliziter 24h-Lernsession voraus. mTLS bleibt
-optionale spätere Härtung.
+vertraulichem OAuth-Client und expliziter 24h-Lernsession voraus. mTLS ist kein
+Gate der Version `1.0.0`.
 
-### Etappe 7 – MCP-UI und zusätzliche Härtung
+### Etappe 7 – MCP-UI
 
 - read-only Lernzielbild für aktive atomare Ziele als Bestandteil des
   unveröffentlichten `1.0.0`-Drafts ausliefern;

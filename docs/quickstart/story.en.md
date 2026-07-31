@@ -4,7 +4,7 @@
 
 SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
-> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT plugin line **SkillPilot Coach DE v1** at `https://mcp-v1.skillpilot.com/mcp`, with OAuth/MCP and a separate learning-session ID valid for exactly 24 hours. SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. Visible Session is retained for English and as a rollback path; it is not the current German architecture.
+> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT plugin line **SkillPilot Coach DE v1** at `https://mcp-coach-de-v1.skillpilot.com/mcp`, with OAuth/MCP and a separate learning-session ID valid for exactly 24 hours. SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. The reserved English MCP hosts still return `404`; Visible Session is retained for English and as a rollback path and is not the current German architecture.
 
 All you need is a browser and a ChatGPT account for which the required GPT or app is available. Availability and usage limits are controlled by ChatGPT.
 

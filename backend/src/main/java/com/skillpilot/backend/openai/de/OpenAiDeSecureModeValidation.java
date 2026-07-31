@@ -1,6 +1,5 @@
 package com.skillpilot.backend.openai.de;
 
-import java.net.InetAddress;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +7,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 /** Shared fail-closed validation for the OpenAI-DE production security profile. */
 public final class OpenAiDeSecureModeValidation {
@@ -27,9 +25,6 @@ public final class OpenAiDeSecureModeValidation {
             "RS256", "RS384", "RS512",
             "PS256", "PS384", "PS512",
             "ES256", "ES384", "ES512");
-    private static final Pattern IPV4_COMPONENT = Pattern.compile("[0-9]{1,3}");
-    private static final Pattern IPV6_LITERAL = Pattern.compile("[0-9a-fA-F:.]+");
-
     private OpenAiDeSecureModeValidation() {}
 
     public static Result inspect(OpenAiDeProperties properties) {
@@ -56,12 +51,6 @@ public final class OpenAiDeSecureModeValidation {
                 normalizedAlgorithm(properties));
         boolean replayCacheConfigured =
                 properties.getOauth().getClientAssertionReplayCacheSize() > 0;
-        boolean mtlsEdgeEnabled = properties.getMtlsEdge().isEnabled();
-        List<String> trustedProxies = properties.getMtlsEdge().getTrustedProxies();
-        int trustedProxyCount = trustedProxies == null ? 0 : trustedProxies.size();
-        boolean trustedProxiesConfigured = trustedProxyCount > 0
-                && trustedProxies.stream().allMatch(OpenAiDeSecureModeValidation::isNumericIpLiteral);
-
         List<String> violations = new ArrayList<>();
         addViolation(violations, secureMode, "security.secure-mode");
         if (secureMode) {
@@ -87,9 +76,6 @@ public final class OpenAiDeSecureModeValidation {
                         replayCacheConfigured,
                         "oauth.client-assertion-replay-cache-size");
             }
-            if (mtlsEdgeEnabled) {
-                addViolation(violations, trustedProxiesConfigured, "mtls-edge.trusted-proxies");
-            }
         }
 
         return new Result(
@@ -106,9 +92,6 @@ public final class OpenAiDeSecureModeValidation {
                 jwksHttpsSameOrigin,
                 asymmetricAlgorithm,
                 replayCacheConfigured,
-                mtlsEdgeEnabled,
-                trustedProxiesConfigured,
-                trustedProxyCount,
                 List.copyOf(violations));
     }
 
@@ -238,39 +221,6 @@ public final class OpenAiDeSecureModeValidation {
         return uri.getPort() >= 0 ? uri.getPort() : 443;
     }
 
-    static boolean isNumericIpLiteral(String value) {
-        if (value == null || value.isBlank() || !value.equals(value.trim())) {
-            return false;
-        }
-        if (value.indexOf(':') >= 0) {
-            if (!IPV6_LITERAL.matcher(value).matches()) {
-                return false;
-            }
-            try {
-                return InetAddress.getByName(value).getHostAddress().contains(":");
-            } catch (Exception exception) {
-                return false;
-            }
-        }
-        String[] components = value.split("\\.", -1);
-        if (components.length != 4) {
-            return false;
-        }
-        for (String component : components) {
-            if (!IPV4_COMPONENT.matcher(component).matches()) {
-                return false;
-            }
-            try {
-                if (Integer.parseInt(component) > 255) {
-                    return false;
-                }
-            } catch (NumberFormatException exception) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public record Result(
             boolean secureMode,
             boolean oauthEnabled,
@@ -285,9 +235,6 @@ public final class OpenAiDeSecureModeValidation {
             boolean jwksHttpsSameOrigin,
             boolean asymmetricAlgorithm,
             boolean replayCacheConfigured,
-            boolean mtlsEdgeEnabled,
-            boolean trustedProxiesConfigured,
-            int trustedProxyCount,
             List<String> violations) {
 
         public boolean valid() {

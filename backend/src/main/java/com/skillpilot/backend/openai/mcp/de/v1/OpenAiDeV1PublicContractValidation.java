@@ -6,8 +6,7 @@ import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 public final class OpenAiDeV1PublicContractValidation {
 
     public static final String PROTECTED_RESOURCE_METADATA =
-            OpenAiDeV1ContractMetadata.OAUTH_RESOURCE
-                    + "/.well-known/oauth-protected-resource";
+            OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT;
 
     private OpenAiDeV1PublicContractValidation() {
     }
@@ -16,7 +15,6 @@ public final class OpenAiDeV1PublicContractValidation {
         return new Result(
                 OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT.equals(properties.getMcpUrl()),
                 OpenAiDeV1ContractMetadata.OAUTH_RESOURCE.equals(properties.getOauthResource()),
-                OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN.equals(properties.getUiOrigin()),
                 PROTECTED_RESOURCE_METADATA.equals(
                         properties.getOauth().getProtectedResourceMetadata()));
     }
@@ -34,12 +32,6 @@ public final class OpenAiDeV1PublicContractValidation {
                     "OAuth resource",
                     OpenAiDeV1ContractMetadata.OAUTH_RESOURCE,
                     properties.getOauthResource());
-        }
-        if (!result.uiOriginExact()) {
-            throw mismatch(
-                    "UI origin",
-                    OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN,
-                    properties.getUiOrigin());
         }
         if (!result.protectedResourceMetadataExact()) {
             throw mismatch(
@@ -61,13 +53,11 @@ public final class OpenAiDeV1PublicContractValidation {
     public record Result(
             boolean mcpEndpointExact,
             boolean oauthResourceExact,
-            boolean uiOriginExact,
             boolean protectedResourceMetadataExact) {
 
         public boolean valid() {
             return mcpEndpointExact
                     && oauthResourceExact
-                    && uiOriginExact
                     && protectedResourceMetadataExact;
         }
     }

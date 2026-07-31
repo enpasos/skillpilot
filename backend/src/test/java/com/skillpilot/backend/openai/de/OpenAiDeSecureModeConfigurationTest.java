@@ -133,43 +133,14 @@ class OpenAiDeSecureModeConfigurationTest {
     @Test
     void strictProtocolUrisRejectQueriesFragmentsAndSurroundingWhitespace() {
         for (String unsafeUri : new String[] {
-                "https://skillpilot.test/internal/openai/de/v1/mcp?tenant=one",
-                "https://skillpilot.test/internal/openai/de/v1/mcp#fragment",
-                " https://skillpilot.test/internal/openai/de/v1/mcp",
-                "https://skillpilot.test/internal/openai/de/v1/mcp "
+                "https://mcp-coach-de-v1.skillpilot.test/mcp?tenant=one",
+                "https://mcp-coach-de-v1.skillpilot.test/mcp#fragment",
+                " https://mcp-coach-de-v1.skillpilot.test/mcp",
+                "https://mcp-coach-de-v1.skillpilot.test/mcp "
         }) {
             assertThat(OpenAiDeSecureModeValidation.isStrictHttpsUri(unsafeUri))
                     .as(unsafeUri)
                     .isFalse();
-        }
-    }
-
-    @Test
-    void secureModeAcceptsTlsAndOauthWithMtlsEdgeDisabled() {
-        runner.withPropertyValues(
-                        securePropertiesWith(
-                                "skillpilot.openai.de.mtls-edge.enabled=false"))
-                .run(context -> {
-                    assertThat(context).hasNotFailed();
-                    OpenAiDeSecureModeValidation.Result status =
-                            OpenAiDeSecureModeValidation.inspect(
-                                    context.getBean(OpenAiDeProperties.class));
-                    assertThat(status.valid()).isTrue();
-                    assertThat(status.mtlsEdgeEnabled()).isFalse();
-                    assertThat(status.violations()).isEmpty();
-                });
-    }
-
-    @Test
-    void secureModeRejectsHostnamesAndCidrsAsTrustedProxyPeers() {
-        for (String invalidProxy : new String[] {"localhost", "127.0.0.0/8"}) {
-            runner.withPropertyValues(
-                            securePropertiesWith(
-                                    "skillpilot.openai.de.mtls-edge.trusted-proxies[0]="
-                                            + invalidProxy))
-                    .run(context -> assertSecureStartupFailure(
-                            context.getStartupFailure(),
-                            "mtls-edge.trusted-proxies"));
         }
     }
 
@@ -179,8 +150,7 @@ class OpenAiDeSecureModeConfigurationTest {
                         "skillpilot.openai.de.enabled=true",
                         "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
                         "skillpilot.openai.de.security.secure-mode=false",
-                        "skillpilot.openai.de.oauth.client-authentication-method=none",
-                        "skillpilot.openai.de.mtls-edge.enabled=false")
+                        "skillpilot.openai.de.oauth.client-authentication-method=none")
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
                         "security.secure-mode"));
@@ -195,7 +165,7 @@ class OpenAiDeSecureModeConfigurationTest {
                     OpenAiDeSecureModeValidation.Result status =
                             OpenAiDeSecureModeValidation.inspect(properties);
                     assertThat(status.valid()).isTrue();
-                    assertThat(status.trustedProxyCount()).isEqualTo(2);
+                    assertThat(status.violations()).isEmpty();
                 });
     }
 
@@ -209,10 +179,7 @@ class OpenAiDeSecureModeConfigurationTest {
             "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
             "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
             "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0",
-            "skillpilot.openai.de.mtls-edge.enabled=true",
-            "skillpilot.openai.de.mtls-edge.trusted-proxies[0]=127.0.0.1",
-            "skillpilot.openai.de.mtls-edge.trusted-proxies[1]=::1"
+            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0"
         };
     }
 

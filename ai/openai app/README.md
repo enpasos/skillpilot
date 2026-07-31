@@ -11,8 +11,8 @@ Sie sind von den Custom-GPT-Varianten unter `ai/openai custom gpt/` und
 > **Abgrenzung:** Dieser Node-Server ist ein lokales Widget- und
 > Protokoll-Testbett. Der zur Veröffentlichung vorgesehene deutsche
 > Produktvertrag ist die chat-first Linie **SkillPilot Coach DE v1** unter
-> `https://mcp-v1.skillpilot.com/mcp` mit OAuth-Resource
-> `https://mcp-v1.skillpilot.com`. Der Node-MCP-Server wird nicht produktiv
+> `https://mcp-coach-de-v1.skillpilot.com/mcp`; derselbe vollständige URL ist
+> die exakte OAuth-Resource/Audience. Der Node-MCP-Server wird nicht produktiv
 > geschaltet; die hier gebaute, selbstenthaltene read-only
 > Lernzielvisualisierung wird dagegen als versionierte Ressource vom
 > Spring-Boot-MCP-Server ausgeliefert. Der `1.0.0`-Draft ist noch nicht

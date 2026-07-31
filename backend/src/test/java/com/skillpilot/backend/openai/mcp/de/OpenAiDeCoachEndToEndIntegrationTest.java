@@ -1,6 +1,5 @@
 package com.skillpilot.backend.openai.mcp.de;
 
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -10,6 +9,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
 import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
@@ -79,11 +80,11 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.oauth.enabled=true",
         "skillpilot.openai.de.mcp.enabled=true",
         "skillpilot.openai.de.secure-cookie=false",
-        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
+        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
         "skillpilot.openai.de.oauth.client-id=chatgpt-e2e-client",
         "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeCoachEndToEndIntegrationTest {
 
@@ -414,6 +415,17 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     @Test
+    void removedMcpRoutesReturnNotFoundInTheFullProviderRuntime() throws Exception {
+        for (String path : List.of(
+                "/api/openai/de/mcp",
+                "/api/openai/de/v1/mcp",
+                OpenAiDeV1ContractMetadata.PUBLIC_MCP_PATH)) {
+            HttpResponse<String> response = get(path);
+            assertThat(response.statusCode()).as(path).isEqualTo(404);
+        }
+    }
+
+    @Test
     void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId()
             throws Exception {
         HttpResponse<String> launch = postJson(
@@ -449,7 +461,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 Map.entry("state", externalState),
                 Map.entry("code_challenge", challenge(VERIFIER)),
                 Map.entry("code_challenge_method", "S256"),
-                Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
 
         HttpResponse<String> authorize = get(authorizePath);
         assertThat(authorize.statusCode()).isEqualTo(302);
@@ -486,7 +498,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         Map.entry("redirect_uri", CALLBACK),
                         Map.entry("code", callbackQuery.get("code")),
                         Map.entry("code_verifier", VERIFIER),
-                        Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                        Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
         assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
         assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
         String accessToken = objectMapper.readTree(token.body()).path("access_token").asText();
@@ -1029,12 +1041,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     private HttpResponse<String> postMcp(String accessToken, String body) throws Exception {
-        HttpRequest.Builder request = OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(
-                HttpRequest.newBuilder(localUri("/internal/openai/de/v1/mcp"))
+        HttpRequest.Builder request = HttpRequest.newBuilder(
+                localUri(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH))
                 .header(HttpHeaders.CONTENT_TYPE, "application/json")
                 .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .header("MCP-Protocol-Version", "2025-11-25"));
+                .header("MCP-Protocol-Version", "2025-11-25");
         return browser.send(
                 request
                 .POST(HttpRequest.BodyPublishers.ofString(body))
@@ -1043,13 +1055,13 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     private HttpResponse<String> postModernMcp(String accessToken, String body) throws Exception {
-        HttpRequest.Builder request = OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(
-                HttpRequest.newBuilder(localUri("/internal/openai/de/v1/mcp"))
+        HttpRequest.Builder request = HttpRequest.newBuilder(
+                localUri(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH))
                         .header(HttpHeaders.CONTENT_TYPE, "application/json")
                         .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                         .header("MCP-Protocol-Version", "2026-07-28")
-                        .header("Mcp-Method", "server/discover"));
+                        .header("Mcp-Method", "server/discover");
         return browser.send(
                 request.POST(HttpRequest.BodyPublishers.ofString(body)).build(),
                 HttpResponse.BodyHandlers.ofString());

@@ -93,11 +93,11 @@ import tools.jackson.databind.json.JsonMapper;
         "skillpilot.openai.de.oauth.enabled=true",
         "skillpilot.openai.de.mcp.enabled=true",
         "skillpilot.openai.de.secure-cookie=false",
-        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
+        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
         "skillpilot.openai.de.oauth.client-id=chatgpt-combined-test-client",
         "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/combined-test-callback",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
 
@@ -158,7 +158,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                 openAiAuthorizations,
                 openAiClient,
                 OPENAI_SUBJECT,
-                "https://mcp-v1.skillpilot.com",
+                "https://mcp-coach-de-v1.skillpilot.com/mcp",
                 Set.of(
                         OpenAiDeOAuthConfiguration.READ_SCOPE,
                         OpenAiDeOAuthConfiguration.WRITE_SCOPE,
@@ -210,7 +210,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                         Map.entry("grant_type", "refresh_token"),
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("refresh_token", claudeTokens.refreshToken()),
-                        Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                        Map.entry("resource", "https://mcp-coach-de-v1.skillpilot.com/mcp")));
         assertInvalidGrant(openAiForeignRefresh);
 
         HttpResponse<String> claudeForeignRefresh = postForm(
@@ -327,9 +327,6 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                 .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                 .header("MCP-Protocol-Version", "2025-11-25");
-        if (path.equals("/internal/openai/de/v1/mcp")) {
-            OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(request);
-        }
         return client.send(
                 request
                         .POST(HttpRequest.BodyPublishers.ofString(requestBody))

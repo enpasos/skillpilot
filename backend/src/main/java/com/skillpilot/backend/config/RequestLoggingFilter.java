@@ -61,8 +61,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        boolean internalOpenAiMcp = isInternalOpenAiMcp(request.getRequestURI());
-        if (!request.getRequestURI().startsWith("/api") && !internalOpenAiMcp) {
+        boolean openAiMcp = isInternalOpenAiMcp(request.getRequestURI());
+        if (!request.getRequestURI().startsWith("/api") && !openAiMcp) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -77,7 +77,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || requestUri.startsWith("/api/action-regression/")
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
-                || internalOpenAiMcp
+                || openAiMcp
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")

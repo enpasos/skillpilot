@@ -28,14 +28,12 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final String contractHash;
     private final String curriculumRevision;
     private final boolean mcpEnabled;
-    private final boolean mtlsEdgeEnabled;
 
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
             Optional<OpenAiDeV1McpContractAdapter> contract,
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
-            @Value("${skillpilot.openai.de.mcp.enabled:false}") boolean mcpEnabled,
-            @Value("${skillpilot.openai.de.mtls-edge.enabled:false}") boolean mtlsEdgeEnabled) {
+            @Value("${skillpilot.openai.de.mcp.enabled:false}") boolean mcpEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
@@ -45,7 +43,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .filter(value -> !value.isBlank())
                 .orElse("unavailable");
         this.mcpEnabled = mcpEnabled;
-        this.mtlsEdgeEnabled = mtlsEdgeEnabled;
     }
 
     @Override
@@ -68,8 +65,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         boolean mcpUrlHttps = OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getMcpUrl());
         boolean oauthResourceHttps =
                 OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getOauthResource());
-        boolean uiOriginHttps =
-                OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getUiOrigin());
         boolean protectedResourceMetadataHttps = OpenAiDeSecureModeValidation.isStrictHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata());
         OpenAiDeV1PublicContractValidation.Result publicContract =
@@ -89,7 +84,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 && redirectUrisConfigured
                 && mcpUrlHttps
                 && oauthResourceHttps
-                && uiOriginHttps
                 && protectedResourceMetadataHttps
                 && publicContract.valid()
                 && serverBuildConfigured
@@ -110,7 +104,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("curriculumRevision", curriculumRevision)
                 .withDetail("curriculumRevisionAvailable", curriculumRevisionAvailable)
                 .withDetail("mcpEnabled", mcpEnabled)
-                .withDetail("mtlsEdgeEnabled", mtlsEdgeEnabled)
                 .withDetail("oauthEnabled", oauthEnabled)
                 .withDetail("writesEnabled", properties.isWritesEnabled())
                 .withDetail("clientIdConfigured", clientIdConfigured)
@@ -120,11 +113,9 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("redirectUriCount", redirectUris == null ? 0 : redirectUris.size())
                 .withDetail("mcpUrlHttps", mcpUrlHttps)
                 .withDetail("oauthResourceHttps", oauthResourceHttps)
-                .withDetail("uiOriginHttps", uiOriginHttps)
                 .withDetail("protectedResourceMetadataHttps", protectedResourceMetadataHttps)
                 .withDetail("v1McpEndpointExact", publicContract.mcpEndpointExact())
                 .withDetail("v1OauthResourceExact", publicContract.oauthResourceExact())
-                .withDetail("v1UiOriginExact", publicContract.uiOriginExact())
                 .withDetail(
                         "v1ProtectedResourceMetadataExact",
                         publicContract.protectedResourceMetadataExact())
@@ -147,8 +138,6 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("sameOriginHttpsJwksConfigured", secureMode.jwksHttpsSameOrigin())
                 .withDetail("asymmetricClientAssertionAlgorithm", secureMode.asymmetricAlgorithm())
                 .withDetail("clientAssertionReplayCacheConfigured", secureMode.replayCacheConfigured())
-                .withDetail("trustedProxiesConfigured", secureMode.trustedProxiesConfigured())
-                .withDetail("trustedProxyCount", secureMode.trustedProxyCount())
                 .withDetail("secureConfigurationViolations", secureMode.violations())
                 .withDetail("contractAvailable", contractAvailable)
                 .withDetail("contractToolCount", contractToolCount)

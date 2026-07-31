@@ -5,9 +5,13 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
 
 - technische Plugin-Identität `skillpilot-coach-de-v1`
 - MCP-Contract-Major `1`
-- öffentlicher MCP-Endpunkt `https://mcp-v1.skillpilot.com/mcp`
-- OAuth-Resource `https://mcp-v1.skillpilot.com`
-- eigener UI-Origin `https://ui-v1.skillpilot.com`
+- öffentlicher MCP-Endpunkt und exakte OAuth-Resource
+  `https://mcp-coach-de-v1.skillpilot.com/mcp`
+- pfadspezifische Protected-Resource-Metadaten unter
+  `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
+- eigener, von künftigen DE-/EN-Vertragslinien unabhängig verifizierbarer
+  MCP-Origin; OAuth-Autorisierung weiterhin über `https://skillpilot.com`
+- MCP-UI im OpenAI-Sandbox-Origin; kein eigener Widget-Origin im Draft
 - read-only MCP-UI-Karte für das Bild eines aktiven atomaren Lernziels mit
   passendem kanonischem `goal-visualization`-Link
 - automatische Anzeige nach Context-Read und erfolgreicher Zielaktivierung;
@@ -18,4 +22,4 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
 - Originaldateien unverändert aus `app/public/favicon/` übernommen
 - fortschreibbarer, noch unveröffentlichter `1.0.0`-Draft; erst die tatsächliche
   Portal-Veröffentlichung versiegelt Contract-, UI- und Skill-Bundle-Snapshot
-- kein öffentlicher Kompatibilitätsalias
+- kein öffentlicher Kompatibilitätsalias auf `skillpilot.com`

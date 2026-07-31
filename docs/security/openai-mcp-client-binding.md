@@ -4,9 +4,9 @@
 **Status:** verbindliche Sicherheitsarchitektur für den deutschen
 OpenAI-MCP-Coach
 
-Diese Sicherheitsbindung gilt für den öffentlichen MCP-Endpunkt
-`https://mcp-v1.skillpilot.com/mcp` und die davon bewusst getrennte OAuth-
-Resource `https://mcp-v1.skillpilot.com`. Die Identität und der Lifecycle der
+Diese Sicherheitsbindung gilt für den öffentlichen MCP-Endpunkt und die damit
+identische OAuth-Resource/Audience
+`https://mcp-coach-de-v1.skillpilot.com/mcp`. Die Identität und der Lifecycle der
 Linie werden im
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 festgelegt.
@@ -52,7 +52,7 @@ die Linie **SkillPilot Coach DE v1**:
 - genau die in der ChatGPT-Appverwaltung angezeigte Callback-URL;
 - Token-Endpunkt-Authentisierung ausschließlich mit `client_secret_basic`;
 - Authorization Code mit PKCE ausschließlich `S256`;
-- exakte Resource/Audience `https://mcp-v1.skillpilot.com`;
+- exakte Resource/Audience `https://mcp-coach-de-v1.skillpilot.com/mcp`;
 - getrennte Read- und Write-Scopes;
 - kurze Access-Token-Laufzeit, Refresh-Token-Rotation und Widerruf.
 
@@ -111,18 +111,14 @@ Kurzfassung:
 
 Die dauerhafte SkillPilot-ID bleibt serverseitig.
 
-## 6. Optionales mTLS
+## 6. Transporthärtung außerhalb von 1.0.0
 
-mTLS kann später als Defense-in-depth ausschließlich am eigentlichen
-MCP-Ressourcenpfad aktiviert werden. Es kann die
-OpenAI-Connector-Infrastruktur am Netzrand identifizieren, ersetzt aber nicht
-die app-spezifische vertrauliche OAuth-Clientauthentisierung.
-
-Discovery, Authorization, Token, Callback und Browser-Binding bleiben über
-normales HTTPS erreichbar. Wird mTLS aktiviert, muss es für den MCP-Pfad
-fail-closed mit CA-Kette, `clientAuth`, exaktem SAN und vertrauenswürdigem
-Proxy betrieben werden. Die optionale Betriebsanleitung steht in
-[openai-mcp-edge-mtls.md](../deploy/openai-mcp-edge-mtls.md).
+Die Linie `1.0.0` verwendet normales serverauthentisiertes HTTPS und OAuth.
+mTLS ist weder Bestandteil ihres Vertrags noch ein Deployment- oder
+Release-Gate. Der dedizierte MCP-Hostname trennt Domainverifikation und
+Plugin-Lifecycle; er ist kein mTLS-Mechanismus. Eine spätere zusätzliche
+Transporthärtung benötigt ein eigenes Design und darf die app-spezifische
+OAuth-Clientbindung nicht ersetzen oder auf andere Pfade ausgeweitet werden.
 
 ## 7. Fail-closed Secure Mode
 

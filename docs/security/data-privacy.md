@@ -115,17 +115,18 @@ expires absolutely after at most 24 hours; use does not extend it.
 The backend keeps this provider lane separate from the Visible Session tables
 and Claude connection records.
 
-The protected public V1 endpoint `https://mcp-v1.skillpilot.com/mcp` uses normal
-server-authenticated HTTPS and requires a valid OAuth access token. Nginx maps
-it to the loopback-only `/internal/openai/de/v1/mcp` handler. The
+The protected public V1 endpoint
+`https://mcp-coach-de-v1.skillpilot.com/mcp` uses normal server-authenticated
+HTTPS and requires a valid OAuth access token. Its dedicated nginx virtual
+host maps only the public `/mcp` endpoint to the loopback-only Spring handler
+`/internal/openai/de/v1/mcp`; the five reserved sibling hosts return `404`. The
 authorization server accepts exactly one configured confidential OAuth client,
 authenticated with `client_secret_basic`, together with PKCE S256 and exact
 client ID, redirect URI, resource, audience, and scopes. The client secret is
 stored only in the ChatGPT App configuration and the SkillPilot secret store.
 Open DCR, CIMD, `none`, `private_key_jwt`, and implicit profile fallback are not
-production modes. Optional mTLS may later identify OpenAI's connector
-infrastructure exclusively at the MCP edge; it is defense in depth, not the App
-identity.
+production modes. mTLS is not part of the `1.0.0` contract or deployment
+gates; any later transport hardening needs a separate design.
 
 It stores:
 
@@ -348,9 +349,7 @@ remain responsible for preserving access keys and identity mappings.
 Before a production-App cutover, the privacy notice shown in the cockpit, this
 data inventory, provider disclosures, age/guardian policy, retention
 configuration, real revocation behavior, and exact OAuth-client-profile
-binding must be reviewed together against the deployed OpenAI App version. If
-the optional edge-mTLS hardening is enabled, its path scoping and fail-closed
-validation are included in that review. The production OAuth profile uses the
+binding must be reviewed together against the deployed OpenAI App version. The production OAuth profile uses the
 fixed confidential client, protected client-secret storage and rotation,
 `client_secret_basic`, exact callback allowlisting, PKCE S256, and exact
 resource/audience and scope validation.

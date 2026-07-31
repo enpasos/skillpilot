@@ -111,9 +111,9 @@ For the OpenAI Apps, this specifically means:
   requires no manual user handling;
 - the permanent SkillPilot ID is neither a tool argument nor a tool result.
 
-Optional mTLS may later constrain the network caller to OpenAI connector
-infrastructure. It is defense in depth and not the identity of the particular
-SkillPilot App.
+mTLS is not part of the `1.0.0` contract. Any later transport hardening needs
+its own design and does not become the identity of the particular SkillPilot
+App.
 
 Provider neutrality therefore does not mean one universal external tool schema.
 The common part is the fachliche behavior and security boundary; external tools
@@ -291,9 +291,8 @@ requires all of the following:
 4. automatic start-message transport of that reference and independent
    validation of OAuth plus session on every fachlicher tool.
 
-Optional mTLS additionally constrains the network caller to OpenAI connector
-infrastructure, but does not replace the fixed confidential OAuth client as the
-App identity.
+mTLS is outside the `1.0.0` release gates and would not replace the fixed
+confidential OAuth client as the App identity.
 
 The production gate also includes full workflow parity for curriculum and scope
 selection, active goals, frontier, mastery, Verified Recall and exams; separate

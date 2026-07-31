@@ -194,7 +194,7 @@ assert.deepEqual(mcpConfig, {
   mcpServers: {
     "skillpilot-coach-de-v1": {
       type: "http",
-      url: "https://mcp-v1.skillpilot.com/mcp",
+      url: "https://mcp-coach-de-v1.skillpilot.com/mcp",
     },
   },
 });
@@ -205,15 +205,18 @@ assert.equal(
 
 const endpoint = new URL(releaseLine.publicMcpEndpoint);
 const oauthResource = new URL(releaseLine.oauthResource);
-const uiOrigin = new URL(releaseLine.publicUiOrigin);
 assert.equal(endpoint.protocol, "https:");
+assert.equal(endpoint.hostname, "mcp-coach-de-v1.skillpilot.com");
 assert.equal(endpoint.pathname, "/mcp");
-assert.equal(endpoint.origin, oauthResource.origin);
-assert.equal(releaseLine.oauthResource, oauthResource.origin);
-assert.equal(releaseLine.publicUiOrigin, uiOrigin.origin);
-assert.equal(endpoint.hostname, `mcp-v${releaseLine.contractMajor}.skillpilot.com`);
-assert.equal(uiOrigin.hostname, `ui-v${releaseLine.contractMajor}.skillpilot.com`);
-assert.notEqual(releaseLine.publicMcpEndpoint, releaseLine.oauthResource);
+assert.equal(endpoint.search, "");
+assert.equal(endpoint.hash, "");
+assert.equal(releaseLine.oauthResource, releaseLine.publicMcpEndpoint);
+assert.equal(oauthResource.href, endpoint.href);
+assert.equal(
+  Object.hasOwn(releaseLine, "publicUiOrigin"),
+  false,
+  "The V1 draft must use the OpenAI sandbox origin for MCP UI resources",
+);
 assert.equal(
   Object.hasOwn(releaseLine, "internalCompatibilityEndpoint"),
   false,
@@ -330,7 +333,7 @@ assert.deepEqual(skillAgent, {
         description:
           "SkillPilot-Lernzustand, Navigation, Mastery, Verified Recall und Prüfungen",
         transport: "streamable_http",
-        url: "https://mcp-v1.skillpilot.com/mcp",
+        url: "https://mcp-coach-de-v1.skillpilot.com/mcp",
       },
     ],
   },
@@ -422,18 +425,71 @@ assert.match(combinedSkill, /MCP-App.*Zielvisualisierung/s);
 assert.match(combinedSkill, /nicht als\s+Quelle, Beleg, Aufgabe, Lösung oder\s+Leistungsnachweis/s);
 
 const javaConstant = (name) => {
-  const match = contractMetadata.match(
-    new RegExp(`public static final (?:String|int) ${name} =\\s*(?:\"([^\"]+)\"|(\\d+));`),
+  const declaration = contractMetadata.match(
+    new RegExp(`public static final (?:String|int) ${name} =\\s*`),
   );
-  assert.ok(match, `Missing Java V1 contract constant ${name}.`);
-  return match[1] ?? Number(match[2]);
+  assert.ok(declaration, `Missing Java V1 contract constant ${name}.`);
+  const expressionStart = declaration.index + declaration[0].length;
+  let expressionEnd = expressionStart;
+  let quoted = false;
+  let escaped = false;
+  for (; expressionEnd < contractMetadata.length; expressionEnd += 1) {
+    const character = contractMetadata[expressionEnd];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (quoted && character === "\\") {
+      escaped = true;
+      continue;
+    }
+    if (character === '"') {
+      quoted = !quoted;
+      continue;
+    }
+    if (!quoted && character === ";") {
+      break;
+    }
+  }
+  assert.ok(
+    expressionEnd < contractMetadata.length,
+    `Unterminated Java V1 contract constant ${name}.`,
+  );
+  const expression = contractMetadata
+    .slice(expressionStart, expressionEnd)
+    .trim();
+  if (/^\d+$/.test(expression)) {
+    return Number(expression);
+  }
+  return expression
+    .split(/\s*\+\s*/u)
+    .map((part) => {
+      if (/^"(?:[^"\\]|\\.)*"$/u.test(part)) {
+        return JSON.parse(part);
+      }
+      assert.match(
+        part,
+        /^[A-Z][A-Z0-9_]*$/u,
+        `Unsupported Java V1 constant expression for ${name}: ${expression}`,
+      );
+      return javaConstant(part);
+    })
+    .join("");
 };
 assert.equal(javaConstant("PLUGIN_IDENTITY"), releaseLine.pluginIdentity);
 assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
 assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
-assert.equal(javaConstant("PUBLIC_UI_ORIGIN"), releaseLine.publicUiOrigin);
+assert.equal(
+  javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
+  "https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+);
+assert.doesNotMatch(
+  contractMetadata,
+  /PUBLIC_UI_ORIGIN/,
+  "The V1 draft must not declare a custom MCP UI origin",
+);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.resources[0].uri,
@@ -442,13 +498,20 @@ assert.equal(
   javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
   releaseLine.ui.resources[0].mimeType,
 );
-assert.equal(
-  javaConstant("INTERNAL_MCP_PATH"),
-  "/internal/openai/de/v1/mcp",
-);
+assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/de/v1/mcp");
 assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
 assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
 assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
+assert.doesNotMatch(
+  mcpContract,
+  /openai\/widgetDomain|"domain"\s*,/,
+  "MCP UI resources must use the OpenAI sandbox origin in the V1 draft",
+);
+assert.match(
+  mcpContract,
+  /"resourceDomains",\s*List\.of\("https:\/\/skillpilot\.com"\)/,
+  "MCP UI CSP must keep the SkillPilot asset origin allowlisted",
+);
 
 assert.match(mcpContract, /EXPECTED_STATE_VERSION = "expectedStateVersion"/);
 assert.match(mcpContract, /CLIENT_REQUEST_ID = "clientRequestId"/);

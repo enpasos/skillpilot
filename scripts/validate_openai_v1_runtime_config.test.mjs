@@ -14,6 +14,7 @@ import test from "node:test";
 
 import {
   OPENAI_V1_PUBLIC_DEFAULTS,
+  REMOVED_OPENAI_V1_PUBLIC_OVERRIDES,
   parseServiceEnvironmentFile,
   validateBuiltApplication,
   validateCanonicalPublicDefaults,
@@ -71,8 +72,8 @@ test("systemd environment files expose only canonical public URL overrides", () 
   const parsed = parseServiceEnvironmentFile(`
 # Secrets and unrelated settings must never enter validator diagnostics.
 SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=do-not-read-this
-SKILLPILOT_OPENAI_DE_MCP_URL='https://mcp-v1.skillpilot.com/mcp'
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+SKILLPILOT_OPENAI_DE_MCP_URL='https://mcp-coach-de-v1.skillpilot.com/mcp'
+SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 `);
 
   assert.deepEqual(parsed, {
@@ -83,6 +84,26 @@ SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-v1.skillpilot.com/.well-know
   });
   assert.doesNotThrow(() => validateExplicitPublicOverrides(parsed));
   assert.ok(!Object.hasOwn(parsed, "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET"));
+});
+
+test("the retired custom UI-origin override fails closed", () => {
+  assert.deepEqual(REMOVED_OPENAI_V1_PUBLIC_OVERRIDES, [
+    "SKILLPILOT_OPENAI_DE_UI_ORIGIN",
+  ]);
+  assert.throws(
+    () =>
+      validateExplicitPublicOverrides({
+        SKILLPILOT_OPENAI_DE_UI_ORIGIN: "https://ui-v1.skillpilot.com",
+      }),
+    /must not be set; the V1 draft uses the OpenAI sandbox origin/,
+  );
+  assert.throws(
+    () =>
+      validateCanonicalPublicDefaults(
+        `${canonicalSourceApplication}\nui-origin: \${SKILLPILOT_OPENAI_DE_UI_ORIGIN:https://ui-v1.skillpilot.com}`,
+      ),
+    /must not configure a custom MCP UI domain/,
+  );
 });
 
 test("a stale systemd environment-file URL fails before service restart", () => {

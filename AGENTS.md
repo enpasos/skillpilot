@@ -917,13 +917,19 @@ Provider-facing contracts must use derived temporary context instead:
   learning session returns the bounded MCP application result
   `SESSION_REQUIRED` with a normal SkillPilot start link; it is not an OAuth
   failure and must not trigger a reconnect loop.
-- The V1 public MCP endpoint is `https://mcp-v1.skillpilot.com/mcp`; its exact
-  OAuth Resource/Audience is the origin `https://mcp-v1.skillpilot.com`.
-  No public compatibility alias exists. The still-unpublished `1.0.0` draft
-  includes one read-only MCP UI resource at the dedicated
-  `https://ui-v1.skillpilot.com` origin for active atomic-goal visualizations;
-  coaching, selection, answers, and state transitions remain normal MCP/chat
-  flows.
+- The V1 public MCP endpoint and its exact OAuth Resource/Audience are both
+  `https://mcp-coach-de-v1.skillpilot.com/mcp`. Protected-resource metadata
+  is published at the RFC 9728 path-insertion URL
+  `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
+  and the OpenAI domain challenge is scoped to the same dedicated host. No
+  public compatibility alias exists. The five sibling hosts for DE V2/V3 and
+  EN V1/V2/V3 are DNS/TLS-reserved and fail closed with `404`; only DE V1 is
+  active. The still-unpublished `1.0.0` draft includes one read-only MCP UI
+  resource for active atomic-goal visualizations. Until a dedicated,
+  plugin-unique UI
+  origin is provisioned for an actual publication, the draft omits custom
+  widget-domain metadata and uses the provider sandbox; coaching, selection,
+  answers, and state transitions remain normal MCP/chat flows.
 - German and English OpenAI MCP Apps use separate public tool catalogs, resource
   URIs, endpoints, registrations, and acceptance tests. Direct widget choices
   and answer submissions use app-only tools; later model turns reload current
