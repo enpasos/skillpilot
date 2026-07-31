@@ -4,8 +4,8 @@
 
 **Status:** Die deutsche MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
 Coach-Vertrag bleibt chat-first und ergänzt im noch unveröffentlichten
-`1.0.0`-Draft eine read-only MCP-UI für das Bild des aktiven atomaren
-Lernziels. Serverauthentisiertes TLS und das fail-closed geprüfte
+`1.0.0-SNAPSHOT`-Arbeitsstand eine read-only MCP-UI für das Bild des aktiven
+atomaren Lernziels. Serverauthentisiertes TLS und das fail-closed geprüfte
 OAuth-Clientprofil bilden die aktuelle Betriebsbasis. OpenAI-mTLS bleibt als
 spätere, separat abzunehmende Härtungsoption erhalten.
 

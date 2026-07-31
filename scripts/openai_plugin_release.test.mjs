@@ -1,5 +1,15 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import {
+  chmodSync,
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import test from "node:test";
@@ -12,9 +22,13 @@ import {
   assertSuccessorVersionClassification,
   collectCompatibilityProblems,
   determineReleaseVerificationMode,
+  internalDraftLabel,
   loadReleaseContract,
   validatePublishedIndex,
 } from "./lib/openai_plugin_contract_compatibility.mjs";
+import {
+  createReproducibleTrackedArchive,
+} from "./lib/reproducible_plugin_archive.mjs";
 
 const fixturePath = fileURLToPath(
   new URL(
@@ -124,6 +138,7 @@ test("an empty published index keeps version 1.0.0 as an internal draft", () => 
     determineReleaseVerificationMode("1.0.0", index),
     "initial-draft",
   );
+  assert.equal(internalDraftLabel("1.0.0"), "1.0.0-SNAPSHOT");
 });
 
 test("published index selects exact verification for latestPublishedVersion", () => {
@@ -329,6 +344,121 @@ test("an additive stable error code is compatible but requires MINOR", () => {
   });
 });
 
+test("plugin archive is reproducible across source modes and umasks", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    const executable = resolve(pluginRoot, "bin/coach");
+    chmodSync(executable, 0o755);
+    git(root, "add", ".");
+
+    const firstArchive = resolve(root, "first.tar");
+    const secondArchive = resolve(root, "second.tar");
+    const originalUmask = process.umask(0o022);
+    try {
+      createReproducibleTrackedArchive({
+        repositoryRoot: root,
+        sourceRoot: pluginRoot,
+        archivePath: firstArchive,
+      });
+      chmodSync(resolve(pluginRoot, "plugin.json"), 0o600);
+      chmodSync(executable, 0o700);
+      chmodSync(pluginRoot, 0o777);
+      chmodSync(resolve(pluginRoot, "bin"), 0o777);
+      process.umask(0o077);
+      createReproducibleTrackedArchive({
+        repositoryRoot: root,
+        sourceRoot: pluginRoot,
+        archivePath: secondArchive,
+      });
+    } finally {
+      process.umask(originalUmask);
+    }
+
+    assert.equal(fileSha256(firstArchive), fileSha256(secondArchive));
+    const listing = run("tar", ["-tvf", secondArchive], root).stdout;
+    assert.match(
+      listing,
+      /^-rw-r--r-- .* skillpilot-coach-de-v1\/plugin\.json$/m,
+    );
+    assert.match(
+      listing,
+      /^-rwxr-xr-x .* skillpilot-coach-de-v1\/bin\/coach$/m,
+    );
+  });
+});
+
+test("plugin archive ignores inherited TAR_OPTIONS", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    git(root, "add", ".");
+    const baselineArchive = resolve(root, "baseline.tar");
+    const hostileEnvironmentArchive = resolve(root, "hostile-environment.tar");
+    createReproducibleTrackedArchive({
+      repositoryRoot: root,
+      sourceRoot: pluginRoot,
+      archivePath: baselineArchive,
+    });
+    createReproducibleTrackedArchive({
+      repositoryRoot: root,
+      sourceRoot: pluginRoot,
+      archivePath: hostileEnvironmentArchive,
+      environment: {
+        ...process.env,
+        TAR_OPTIONS: "--mtime=@123456 --owner=123 --group=456",
+      },
+    });
+
+    assert.equal(
+      fileSha256(hostileEnvironmentArchive),
+      fileSha256(baselineArchive),
+    );
+  });
+});
+
+test("plugin archive rejects untracked and ignored paths below its root", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    git(root, "add", ".");
+    writeFileSync(resolve(pluginRoot, "untracked.txt"), "not release input\n");
+    assert.throws(
+      () =>
+        createReproducibleTrackedArchive({
+          repositoryRoot: root,
+          sourceRoot: pluginRoot,
+          archivePath: resolve(root, "untracked.tar"),
+        }),
+      /Untracked path below the plugin root/,
+    );
+    rmSync(resolve(pluginRoot, "untracked.txt"));
+
+    writeFileSync(resolve(root, ".gitignore"), "skillpilot-coach-de-v1/ignored.txt\n");
+    git(root, "add", ".gitignore");
+    writeFileSync(resolve(pluginRoot, "ignored.txt"), "not release input\n");
+    assert.throws(
+      () =>
+        createReproducibleTrackedArchive({
+          repositoryRoot: root,
+          sourceRoot: pluginRoot,
+          archivePath: resolve(root, "ignored.tar"),
+        }),
+      /Ignored path below the plugin root/,
+    );
+  });
+});
+
+test("plugin archive rejects tracked symlinks", () => {
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    symlinkSync("plugin.json", resolve(pluginRoot, "plugin-link.json"));
+    git(root, "add", ".");
+    assert.throws(
+      () =>
+        createReproducibleTrackedArchive({
+          repositoryRoot: root,
+          sourceRoot: pluginRoot,
+          archivePath: resolve(root, "symlink.tar"),
+        }),
+      /Unsupported tracked plugin mode 120000/,
+    );
+  });
+});
+
 function writeRelease(root, release) {
   mkdirSync(resolve(root, "contract"), { recursive: true });
   const toolNames = release.contract.tools.map((tool) => tool.name);
@@ -417,4 +547,37 @@ function withTemporaryDirectory(callback) {
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+}
+
+function withTemporaryGitRepository(callback) {
+  withTemporaryDirectory((root) => {
+    const pluginRoot = resolve(root, "skillpilot-coach-de-v1");
+    mkdirSync(resolve(pluginRoot, "bin"), { recursive: true });
+    writeFileSync(resolve(pluginRoot, "plugin.json"), '{"version":"1.0.0"}\n');
+    writeFileSync(resolve(pluginRoot, "bin/coach"), "#!/bin/sh\nexit 0\n");
+    git(root, "init", "--quiet");
+    callback({ root, pluginRoot });
+  });
+}
+
+function git(root, ...args) {
+  return run("git", args, root);
+}
+
+function run(executable, args, cwd) {
+  const result = spawnSync(executable, args, {
+    cwd,
+    encoding: "utf8",
+    stdio: "pipe",
+  });
+  assert.equal(
+    result.status,
+    0,
+    `${executable} failed (${result.status}):\n${result.stdout}\n${result.stderr}`,
+  );
+  return result;
+}
+
+function fileSha256(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
 }

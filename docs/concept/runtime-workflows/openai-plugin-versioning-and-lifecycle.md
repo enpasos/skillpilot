@@ -199,8 +199,10 @@ nicht.
 
 Die Grenze ist der reale Veröffentlichungsstatus:
 
-- `contracts/drafts/openai/<plugin>/<version>/` ist ein reproduzierbarer, aber
-  fortschreibbarer Arbeitsstand;
+- `contracts/drafts/openai/<plugin>/<version>-SNAPSHOT/` ist ein
+  reproduzierbarer, aber fortschreibbarer Arbeitsstand. `-SNAPSHOT` ist nur
+  dessen interne Kennzeichnung; Manifest und OpenAI-Portal behalten die
+  vorgesehene öffentliche Zielversion `<version>`;
 - `contracts/published/openai/<plugin>/<version>/` darf erst nach bestätigtem
   **Publish** im OpenAI-Portal entstehen und ist danach unveränderlich;
 - der maschinenlesbare `release-index.json` enthält ausschließlich tatsächlich
@@ -620,7 +622,7 @@ Bei Unsicherheit wird die Änderung als potenziell inkompatibel behandelt, bis C
 Während der internen Arbeit wird ein reproduzierbarer Draft abgelegt:
 
 ```text
-contracts/drafts/openai/skillpilot-coach-de-v1/1.4.0/
+contracts/drafts/openai/skillpilot-coach-de-v1/1.4.0-SNAPSHOT/
 ```
 
 Dieser Draft darf bei weiteren internen Schritten derselben noch nicht
