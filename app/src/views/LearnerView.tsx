@@ -53,7 +53,11 @@ import {
   isLatestRequestForScope,
 } from '../utils/latestRequestSequence'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
-import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../utils/learnerGoalSelection'
+import {
+  getInitialLearnerGoalReveal,
+  getNextVisibleLearnerGoalSelection,
+  shouldAutoRevealActiveGoal,
+} from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
@@ -337,6 +341,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     scopeKey: learnerStateScopeKey,
     status: skillpilotId ? 'loading' : 'ready',
   })
+  const learnerStateLoadStatus: LearnerStateLoadStatus =
+    learnerStateLoadState.scopeKey === learnerStateScopeKey
+      ? learnerStateLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
   const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
     scopeKey: string
     status: LearnerStateLoadStatus
@@ -372,6 +382,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
   const forceActiveGoalRevealRef = useRef(false)
+  const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
+  const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
   const learnerStateRequestSequenceRef = useRef(0)
   const learnerDataRequestSequenceRef = useRef(0)
@@ -928,6 +940,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
       currentGoalId: currentGoal?.id,
       currentRouteGoalId,
+      learnerStateReady: learnerStateLoadStatus === 'ready',
       visibleGoalIds: visibleGoals,
       activeGoalId: effectiveActiveGoalId,
       plannedGoalIds: plannedGoals,
@@ -941,6 +954,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     currentGoal,
     currentRouteGoalId,
+    learnerStateLoadStatus,
     visibleGoals,
     effectiveActiveGoalId,
     plannedGoals,
@@ -1080,27 +1094,43 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onSelectGoal,
   ])
 
-  // Auto-reveal scope on start if no active goal exists but scope is set
-  const hasAutoRevealedScope = useRef(false)
+  // Reveal the active goal on entry, or the planned scope when no active goal exists.
+  const hasAppliedInitialGoalRevealRef = useRef(false)
   useEffect(() => {
-    // Only run once on initial load
-    if (hasAutoRevealedScope.current) return
-    // Wait until data is loaded
-    if (effectiveLearnerParentMap.size === 0) return
-    if (currentRouteGoalId) return
+    hasAppliedInitialGoalRevealRef.current = false
+    prevRevealedActiveGoalIdRef.current = null
+    pendingActiveGoalRouteSyncRef.current = null
+  }, [landscapeId, learnerStateScopeKey, learnerTreeScopeKey])
 
-    // If there's an active goal, reveal that instead
-    if (effectiveActiveGoalId) {
-      hasAutoRevealedScope.current = true
+  useEffect(() => {
+    const initialReveal = getInitialLearnerGoalReveal({
+      learnerStateReady: learnerStateLoadStatus === 'ready',
+      hasAlreadyRevealed: hasAppliedInitialGoalRevealRef.current,
+      hasLearnerTree: effectiveLearnerParentMap.size > 0,
+      currentRouteGoalId,
+      activeGoalId: effectiveActiveGoalId,
+      hasPlannedGoals: plannedGoals.size > 0,
+    })
+    if (!initialReveal) return
+
+    hasAppliedInitialGoalRevealRef.current = true
+    if (initialReveal === 'active') {
+      revealActiveGoal()
+      forceActiveGoalRevealRef.current = false
+      prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+      pendingActiveGoalRouteSyncRef.current = effectiveActiveGoalId
       return
     }
-
-    // If there's a scope but no active goal, reveal the scope
-    if (plannedGoals.size > 0) {
-      hasAutoRevealedScope.current = true
-      revealScope()
-    }
-  }, [currentRouteGoalId, effectiveActiveGoalId, plannedGoals, effectiveLearnerParentMap, revealScope])
+    revealScope()
+  }, [
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    learnerStateLoadStatus,
+    plannedGoals,
+    revealActiveGoal,
+    revealScope,
+  ])
 
   // When a connected agent changes the scope, open the new path even if the
   // learner was still routed to the completed previous scope.
@@ -1115,6 +1145,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       prevRevealedPlannedScopeKeyRef.current = null
       return
     }
+    if (learnerStateLoadStatus !== 'ready') return
     if (effectiveLearnerParentMap.size === 0) return
     if (effectiveActiveGoalId) {
       prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
@@ -1135,6 +1166,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     effectiveActiveGoalId,
     effectiveLearnerParentMap,
     landscapeId,
+    learnerStateLoadStatus,
     learnerTreeScopeKey,
     plannedGoals,
     revealScope,
@@ -1303,12 +1335,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const canCutoverLegacyGymnasium = legacyCutoverUiState.canCutover
   const usesGuidedPersonalCurriculumEditor =
     rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && !canCutoverLegacyGymnasium
-  const learnerStateLoadStatus: LearnerStateLoadStatus =
-    learnerStateLoadState.scopeKey === learnerStateScopeKey
-      ? learnerStateLoadState.status
-      : skillpilotId
-        ? 'loading'
-        : 'ready'
   const personalConfigLoadStatus: LearnerStateLoadStatus =
     personalConfigLoadState.scopeKey === learnerStateScopeKey
       ? personalConfigLoadState.status
@@ -1763,13 +1789,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Auto-reveal when active goal changes (including from SSE updates).
   // Keep at most one pending selection request per active goal while the router catches up.
-  const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
-  const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
-  useEffect(() => {
-    prevRevealedActiveGoalIdRef.current = null
-    pendingActiveGoalRouteSyncRef.current = null
-  }, [landscapeId, learnerTreeScopeKey])
-
   useEffect(() => {
     if (!effectiveActiveGoalId) {
       prevRevealedActiveGoalIdRef.current = null
@@ -1782,6 +1801,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (currentRouteGoalId === effectiveActiveGoalId) {
       pendingActiveGoalRouteSyncRef.current = null
       forceActiveGoalRevealRef.current = false
+      prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
     }
 
     if (!shouldAutoRevealActiveGoal({
@@ -2893,7 +2913,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               <button
                 className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
                 onClick={revealActiveGoal}
-                title="Gehe zum aktiven Ziel / Go to active goal"
+                title={learnerViewCopy.revealActiveGoalTitle}
               >
                 <Send size={16} className="text-amber-500" />
               </button>

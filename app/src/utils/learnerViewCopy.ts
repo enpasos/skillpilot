@@ -8,6 +8,7 @@ export interface LearnerViewCopy {
   importErrorTitle: string
   importSystemMessage: string
   revealMarkedScopeTitle: string
+  revealActiveGoalTitle: string
   memoryGoalModeTitle: string
   memoryGoalModeBody: string
   memoryModeLabel: string
@@ -40,6 +41,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importErrorTitle: 'Import-Fehler',
         importSystemMessage: 'Ein Netzwerk- oder Systemfehler ist während des Imports aufgetreten.',
         revealMarkedScopeTitle: 'Gehe zum markierten Scope',
+        revealActiveGoalTitle: 'Gehe zum aktiven Ziel',
         memoryGoalModeTitle: 'Kartenknoten',
         memoryGoalModeBody: 'Üben findet im Cockpit statt. Die harte Prüfung läuft mit dem Lerncoach, damit die Antwort ohne Kartenhilfe abgefragt und anschließend gespeichert wird.',
         memoryModeLabel: 'Modus',
@@ -69,6 +71,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         importErrorTitle: 'Import Error',
         importSystemMessage: 'A network or system error occurred during import.',
         revealMarkedScopeTitle: 'Go to marked scope',
+        revealActiveGoalTitle: 'Go to active goal',
         memoryGoalModeTitle: 'Flashcard node',
         memoryGoalModeBody: 'Practice stays in the cockpit. Hard verification runs through the Learning Coach so the answer is recalled without card help and then saved.',
         memoryModeLabel: 'Mode',
