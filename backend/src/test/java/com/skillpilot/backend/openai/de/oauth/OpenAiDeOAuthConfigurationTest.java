@@ -12,6 +12,8 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
@@ -102,6 +104,7 @@ class OpenAiDeOAuthConfigurationTest {
         String[] baseline = new String[] {
             "skillpilot.openai.de.enabled=true",
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
+            "skillpilot.openai.de.server-build=test-build",
             "skillpilot.openai.de.security.secure-mode=true",
             "skillpilot.openai.de.oauth.enabled=true",
             "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
@@ -139,6 +142,18 @@ class OpenAiDeOAuthConfigurationTest {
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
                 .withMessageContaining("redirect-uris")
                 .withMessageContaining("ChatGPT app management");
+    }
+
+    @Test
+    void enabledOauthRejectsAnUnidentifiedServerBuild() {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+        OpenAiDeProperties properties = configuredProperties();
+        properties.setServerBuild(OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD);
+
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                .withMessageContaining("server-build")
+                .withMessageContaining("must not be dev");
     }
 
     @Test
@@ -439,11 +454,11 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsNonHttpsResourceAndCallbackConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl("http://skillpilot.test/api/openai/de/mcp");
+        properties.setMcpUrl("http://skillpilot.test/internal/openai/de/v1/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
-                .withMessageContaining("MCP resource")
+                .withMessageContaining("public MCP endpoint")
                 .withMessageContaining("HTTPS");
     }
 
@@ -451,12 +466,31 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsWhitespaceAroundExactResourceConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl(" https://skillpilot.test/api/openai/de/mcp");
+        properties.setMcpUrl(" https://skillpilot.test/internal/openai/de/v1/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
-                .withMessageContaining("MCP resource")
+                .withMessageContaining("public MCP endpoint")
                 .withMessageContaining("whitespace");
+    }
+
+    @Test
+    void keepsPublicEndpointSeparateFromOAuthAndUiOrigins() {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+        OpenAiDeProperties properties = configuredProperties();
+        properties.setOauthResource("https://skillpilot.test/internal/openai/de/v1/mcp");
+
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                .withMessageContaining("OAuth resource")
+                .withMessageContaining("path");
+
+        properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
+        properties.setUiOrigin("https://ui.skillpilot.test/version/1");
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                .withMessageContaining("UI origin")
+                .withMessageContaining("path");
     }
 
     @Test
@@ -535,13 +569,16 @@ class OpenAiDeOAuthConfigurationTest {
 
     private OpenAiDeProperties configuredProperties() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
-        properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp");
+        properties.setMcpUrl(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
+        properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
+        properties.setUiOrigin(OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
+        properties.setServerBuild("test-build");
         properties.getOauth().setClientAuthenticationMethod("none");
         properties.getOauth().setClientId("chatgpt-app-client-id");
         properties.getOauth().setRedirectUris(List.of(
                 "https://chatgpt.com/connector/oauth/app-specific-callback"));
         properties.getOauth().setProtectedResourceMetadata(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource");
+                OpenAiDeV1PublicContractValidation.PROTECTED_RESOURCE_METADATA);
         return properties;
     }
 

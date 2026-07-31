@@ -3,7 +3,7 @@ package com.skillpilot.backend.openai.de.health;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,8 +14,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/** Creates a stable fingerprint of instructions and public MCP tool descriptors. */
-final class OpenAiDeCoachContractFingerprint {
+/** Creates a stable fingerprint of instructions and public MCP descriptors. */
+public final class OpenAiDeCoachContractFingerprint {
 
     private static final ObjectMapper CANONICAL_JSON = new ObjectMapper()
             .enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
@@ -23,19 +23,27 @@ final class OpenAiDeCoachContractFingerprint {
     private OpenAiDeCoachContractFingerprint() {
     }
 
-    static String sha256(OpenAiDeCoachMcpContract contract) {
+    public static String sha256(OpenAiDeV1McpContractAdapter contract) {
+        try {
+            byte[] bytes = CANONICAL_JSON.writeValueAsBytes(canonicalContract(contract));
+            return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
+        } catch (JsonProcessingException | NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("Could not fingerprint the OpenAI-DE MCP contract.", exception);
+        }
+    }
+
+    public static Map<String, Object> canonicalContract(OpenAiDeV1McpContractAdapter contract) {
         Map<String, Object> canonicalContract = new LinkedHashMap<>();
         canonicalContract.put("serverInstructions", contract.serverInstructions());
         canonicalContract.put("tools", contract.toolSpecifications().stream()
                 .map(specification -> canonicalTool(specification.tool()))
                 .sorted(Comparator.comparing(tool -> (String) tool.get("name")))
                 .toList());
-        try {
-            byte[] bytes = CANONICAL_JSON.writeValueAsBytes(canonicalContract);
-            return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
-        } catch (JsonProcessingException | NoSuchAlgorithmException exception) {
-            throw new IllegalStateException("Could not fingerprint the OpenAI-DE MCP contract.", exception);
-        }
+        canonicalContract.put("resources", contract.resourceSpecifications().stream()
+                .map(specification -> canonicalResource(specification.resource()))
+                .sorted(Comparator.comparing(resource -> (String) resource.get("uri")))
+                .toList());
+        return Map.copyOf(canonicalContract);
     }
 
     private static Map<String, Object> canonicalTool(McpSchema.Tool tool) {
@@ -48,6 +56,18 @@ final class OpenAiDeCoachContractFingerprint {
         canonical.put("annotations", canonicalAnnotations(tool.annotations()));
         canonical.put("meta", tool.meta());
         canonical.put("icons", canonicalIcons(tool.icons()));
+        return canonical;
+    }
+
+    private static Map<String, Object> canonicalResource(McpSchema.Resource resource) {
+        Map<String, Object> canonical = new LinkedHashMap<>();
+        canonical.put("uri", resource.uri());
+        canonical.put("name", resource.name());
+        putIfNotNull(canonical, "title", resource.title());
+        putIfNotNull(canonical, "description", resource.description());
+        putIfNotNull(canonical, "mimeType", resource.mimeType());
+        putIfNotNull(canonical, "meta", resource.meta());
+        canonical.put("icons", canonicalIcons(resource.icons()));
         return canonical;
     }
 

@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: 014-version-openai-de-v1-session
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: openai_de_learning_session
+        - not:
+            - columnExists:
+                tableName: openai_de_learning_session
+                columnName: state_version
+        - not:
+            - tableExists:
+                tableName: openai_de_idempotency
+      changes:
+        - addColumn:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: contract_major
+                  type: INTEGER
+                  defaultValueNumeric: 1
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_schema_version
+                  type: INTEGER
+                  defaultValueNumeric: 1
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workflow_version
+                  type: VARCHAR(80)
+                  defaultValue: coach-de@1.0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: curriculum_revision
+                  type: VARCHAR(160)
+                  defaultValue: repository@unversioned
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: openai_de_idempotency
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_openai_de_idempotency
+              - column:
+                  name: client_request_id
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_openai_de_idempotency
+              - column:
+                  name: tool_name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hash
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed_state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_text
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_json
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_idempotency
+            baseColumnNames: token_hash
+            constraintName: fk_openai_de_idempotency_session
+            referencedTableName: openai_de_learning_session
+            referencedColumnNames: token_hash
+            onDelete: CASCADE
+        - createIndex:
+            tableName: openai_de_idempotency
+            indexName: idx_openai_de_idempotency_created
+            columns:
+              - column:
+                  name: created_at

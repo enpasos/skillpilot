@@ -3,6 +3,8 @@ package com.skillpilot.backend.openai.de.oauth;
 import com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationService;
 import com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepository;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -191,7 +193,7 @@ public class OpenAiDeOAuthConfiguration {
                 .clientSecret(clientSecretBasic
                         ? encodedClientSecret(existing, properties.getOauth().getClientSecret())
                         : null)
-                .clientName("ChatGPT / SkillPilot Coach (Deutsch)")
+                .clientName("ChatGPT / SkillPilot Coach DE v1")
                 .clientAuthenticationMethods(methods -> {
                     methods.clear();
                     methods.add(clientAuthenticationMethod);
@@ -285,7 +287,7 @@ public class OpenAiDeOAuthConfiguration {
 
     @Bean
     OpenAiDeOAuthResourceValidationFilter openAiDeOAuthResourceValidationFilter(OpenAiDeProperties properties) {
-        return new OpenAiDeOAuthResourceValidationFilter(properties.getMcpUrl());
+        return new OpenAiDeOAuthResourceValidationFilter(properties.getOauthResource());
     }
 
     @Bean
@@ -299,7 +301,7 @@ public class OpenAiDeOAuthConfiguration {
                 registeredClients,
                 telemetry,
                 properties.getOauth().getClientId().trim(),
-                properties.getMcpUrl());
+                properties.getOauthResource());
     }
 
     @Bean
@@ -413,7 +415,9 @@ public class OpenAiDeOAuthConfiguration {
             HttpSecurity http,
             @Qualifier("openAiDeOpaqueTokenIntrospector") OpaqueTokenIntrospector introspector,
             OpenAiDeProperties properties) throws Exception {
-        http.securityMatcher("/api/openai/de/mcp", "/api/openai/de/mcp/**")
+        http.securityMatcher(
+                        OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH,
+                        OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/**")
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().hasAuthority("SCOPE_" + READ_SCOPE))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -522,10 +526,20 @@ public class OpenAiDeOAuthConfiguration {
             throw new IllegalStateException(
                     "OpenAI-DE current confidential client ID must not also be listed as a legacy client ID.");
         }
-        requireHttpsUri(properties.getMcpUrl(), "OpenAI-DE MCP resource");
+        requireHttpsUri(properties.getMcpUrl(), "OpenAI-DE public MCP endpoint");
+        requireHttpsOrigin(properties.getOauthResource(), "OpenAI-DE OAuth resource");
+        requireHttpsOrigin(properties.getUiOrigin(), "OpenAI-DE UI origin");
         requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
                 "OpenAI-DE protected-resource metadata URL");
+        OpenAiDeV1PublicContractValidation.requireExact(properties);
+        if (properties.getServerBuild() == null
+                || properties.getServerBuild().isBlank()
+                || OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD.equals(
+                        properties.getServerBuild().trim())) {
+            throw new IllegalStateException(
+                    "skillpilot.openai.de.server-build must identify the deployed build and must not be dev.");
+        }
         if (properties.getOauth().getAccessTokenTtl() == null
                 || properties.getOauth().getAccessTokenTtl().isZero()
                 || properties.getOauth().getAccessTokenTtl().isNegative()) {

@@ -411,13 +411,30 @@ Interpretation:
 
 ### 7.3 Atomic goal visualizations
 
-Atomic learning goals may optionally carry one or more didactic image references for cockpit use. GPT-facing flows do not render these images directly; they link learners into the cockpit when visual orientation is useful.
+Atomic learning goals may optionally carry one or more didactic image references
+for cockpit and provider UI use. The German OpenAI V1 MCP App automatically
+renders the current goal's visualization inline when the active goal is atomic
+and has a matching canonical `goal-visualization` link.
 
 Rule:
 
 * Store visualization references directly on the goal in canonical `resourceLinks`, not in a separate learner-facing branch or custom top-level image field.
 * Use `type: "goal-visualization"`, `resourceType: "image"`, and `skillpilotId` equal to the containing goal's `id`.
-* Public URLs should be root-relative under `/assets/goal-visualizations/...`; GPT-facing AI endpoints should not expose goal-visualization images as chat images. Use a normal cockpit deep link instead, such as `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
+* Public URLs should be root-relative under `/assets/goal-visualizations/...`.
+  The OpenAI-DE adapter resolves the matching active atomic goal's asset to an
+  absolute public URL and exposes it only through the bounded
+  `goalVisualization` projection used by the MCP UI. Other resources and
+  provider adapters continue to use a normal cockpit deep link such as
+  `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
+* `get_skillpilot_context_de` and a successful
+  `set_skillpilot_active_goal_de` may trigger the same read-only MCP UI resource.
+  If the active goal is not atomic, the canonical link does not match its goal
+  ID, or the image data is absent or invalid, omit `goalVisualization`; the
+  ordinary chat response must remain fully usable.
+* The inline component may show only goal ID, title, optional description,
+  public image URL, alt text, and cockpit URL from the safe projection. It does
+  not create state, authorize an action, select a goal, or expose a permanent
+  learner identity.
 * Image filenames should be the same SkillPilot ID plus image extension, using `<skillpilotId>.<ext>`, so copied assets remain self-identifying without creating Windows path-length problems.
 * Keep source image and prompt metadata under `curricula/DE/Gymnasium/visualizations/<subject>/<skillpilotId>/`.
 * For Gemini API generated images, keep `image-reconstruction-prompt.de.md` beside the canonical source image. It is a standalone alternative prompt derived from the generated image and may be offered or generated on demand in `/goal-visualization-qa` as a correction base; it does not override human review or fachliche correctness.
@@ -428,7 +445,10 @@ Rule:
 * Generated images are never accepted automatically. Treat them as technical imports until a visual fachlicher Review has checked calculations, notation, labels, geometry, age fit, text readability, and visible artifacts.
 * Reject or regenerate any visualization with a wrong or misleading value, marked digit, angle, coordinate, side property, unit conversion, sign rule, counterexample, or notation. Text that is correct does not rescue a misleading drawing.
 * If repeated Nano Banana Pro attempts for one goal remain fachlich wrong, remove the active `goal-visualization` link and published asset copies, mark the goal as `deferred_provider_limitation` in the review ledger, and revisit when the provider improves. Do not substitute a hand-drawn SVG in this cartoon visualization lane.
-* A visualization supports orientation only. It is not source evidence, not an assessment task, and not a substitute for explanation or practice.
+* A visualization supports orientation only. Whether shown in the cockpit or
+  inline in ChatGPT, it is not source evidence, not an assessment task, not a
+  solution or performance record, and not a substitute for explanation or
+  practice.
 * Before broad rollout, review every image for mathematical correctness, age fit, text readability, accessibility alt text, and licensing/copyright risk.
 * Goal-visualization QA is tracked per subject under `curricula/DE/Gymnasium/quality/goal-visualization-qa/*.qa.json`. `CQR-303` is the dashboard rule for the `M7` visualization layer: every ordinary atomic goal in the visualization scope must have a current primary image link, the QA record hash must match the active public asset, and every image must be human-approved with no open human issue. An explicit `Approved AI` decision is valid only when its separate approval hash matches the active asset hash; it is useful technical and subject-matter evidence but never replaces human approval as the release gate. Human approval overrides older ChatGPT triage fields; stale hashes reset approval state. `M7` builds on `M6` and does not weaken core `M5` or memory `M6` requirements.
 
@@ -885,7 +905,7 @@ Provider-facing contracts must use derived temporary context instead:
   goal ID, or Recall card prompt.
 - Paused Claude/MCP: the transport authenticates an OAuth connection subject and
   resolves it inside the backend. The model never supplies a learner ID.
-- Current German OpenAI MCP App: OAuth authorizes the fixed registered App
+- Current German OpenAI MCP App line `SkillPilot Coach DE v1`: OAuth authorizes the fixed registered App
   connection but does not select or identify the learner. `Lernen starten`
   atomically creates or replaces an independent learning session with an
   absolute lifetime of at most 24 hours and inserts its
@@ -897,6 +917,13 @@ Provider-facing contracts must use derived temporary context instead:
   learning session returns the bounded MCP application result
   `SESSION_REQUIRED` with a normal SkillPilot start link; it is not an OAuth
   failure and must not trigger a reconnect loop.
+- The V1 public MCP endpoint is `https://mcp-v1.skillpilot.com/mcp`; its exact
+  OAuth Resource/Audience is the origin `https://mcp-v1.skillpilot.com`.
+  No public compatibility alias exists. The still-unpublished `1.0.0` draft
+  includes one read-only MCP UI resource at the dedicated
+  `https://ui-v1.skillpilot.com` origin for active atomic-goal visualizations;
+  coaching, selection, answers, and state transitions remain normal MCP/chat
+  flows.
 - German and English OpenAI MCP Apps use separate public tool catalogs, resource
   URIs, endpoints, registrations, and acceptance tests. Direct widget choices
   and answer submissions use app-only tools; later model turns reload current
@@ -923,7 +950,8 @@ LLM/learning-coach prompts should reinforce that:
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
 uses separate, provider- and language-specific adapters. The current German
-OpenAI channel is the provider-hosted data-only MCP App; its target packaging
+OpenAI channel is the provider-hosted MCP App with a chat-first tool contract
+and one bounded read-only goal-visualization component; its target packaging
 combines that registered connection with a language-specific coaching skill as
 documented in
 `docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
@@ -967,11 +995,15 @@ provider policy and product review explicitly permit it.
   Action-operation, visible-relay, or model-built deep-link mechanics. Later
   fachliche corrections and the current MCP/backend contract take precedence.
 - **MCP-App state rule:** user-facing labels and released learning content belong
-  in `content` / `structuredContent`. In the UI-less coach, a currently valid
+  in `content` / `structuredContent`. In the chat-first coach, a currently valid
   opaque personalization `optionId` may also be model-visible in
   `structuredContent`, but must not be repeated in the transcript; the model
   passes it unchanged to the narrow mutation tool. Widget-only click references
-  remain in result `_meta` and app-only tools apply them directly. Every
+  remain in result `_meta` and app-only tools apply them directly. The
+  `goalVisualization` projection is present only for an active atomic goal with
+  a matching canonical image link and is rendered by the read-only MCP UI
+  attached to context reads and active-goal writes. Its absence must degrade to
+  the ordinary chat response. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.
@@ -1019,7 +1051,7 @@ provider policy and product review explicitly permit it.
   update the two existing GPTs in place; they do not create new GPTs.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md` and
   `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned German source plugin
-  lives under `ai/openai plugin/skillpilot-coach-de`, directly declares the
+  lives under `ai/openai plugin/skillpilot-coach-de-v1`, directly declares the
   production MCP server plus its language-specific coach skill, and contains
   the real host-generated mapping for the registered German pilot App. Preserve
   the App alias and `asdk_app...` value in `.app.json` exactly; the separate
@@ -1029,6 +1061,14 @@ provider policy and product review explicitly permit it.
   `.mcp.json` binding, host acceptance must prove from the tool trace that the
   registered App connection was used; a successful direct-MCP fallback alone
   is not combined Plugin-plus-App evidence.
+  Package SemVer, Contract Major, release drafts, published snapshots,
+  lifecycle states and major-line retirement follow
+  `docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`;
+  release operations follow `docs/deploy/openai-plugin-v1-release.md`.
+  A not-yet-published package version may be refreshed repeatedly under
+  `contracts/drafts/` without a SemVer increment. Only a confirmed publication
+  may create `contracts/published/` and advance `release-index.json`; published
+  snapshots are immutable.
 - **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
   setup and must stay unchanged so a coordinated rollback does not require Git
   archaeology. It is also the review-only content baseline for the new coaching

@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.de.security;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -47,8 +48,6 @@ public final class OpenAiDeMtlsEdgeFilter extends OncePerRequestFilter {
     public static final String VERIFIED_VALUE = "SUCCESS";
     public static final String EXPECTED_SAN = "mtls.prod.connectors.openai.com";
 
-    private static final String MCP_PATH = "/api/openai/de/mcp";
-
     private final Set<String> trustedProxyAddresses;
 
     public OpenAiDeMtlsEdgeFilter(
@@ -64,7 +63,9 @@ public final class OpenAiDeMtlsEdgeFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
-        return path == null || !(path.equals(MCP_PATH) || path.startsWith(MCP_PATH + "/"));
+        return path == null
+                || !(path.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
+                        || path.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/"));
     }
 
     @Override

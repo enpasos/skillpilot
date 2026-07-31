@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.mcp.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 import static org.mockito.ArgumentMatchers.any;
@@ -40,7 +41,7 @@ class OpenAiDeCoachPersonalizationContractTest {
     private static final String SECOND_DESCENDANT_ID = "landscape-ember";
 
     private CoachToolFacade coachTools;
-    private OpenAiDeCoachMcpContract contract;
+    private OpenAiDeV1McpContractAdapter contract;
 
     @BeforeEach
     void setUp() {
@@ -49,7 +50,7 @@ class OpenAiDeCoachPersonalizationContractTest {
         when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenReturn(LEARNER_ID);
         SimpleMeterRegistry meterRegistry = new SimpleMeterRegistry();
-        contract = new OpenAiDeCoachMcpContract(
+        contract = new OpenAiDeV1McpContractAdapter(
                 coachTools,
                 new CoachStateProjection("https://skillpilot.test"),
                 identityResolver,
@@ -70,7 +71,7 @@ class OpenAiDeCoachPersonalizationContractTest {
                 .thenReturn(after);
 
         McpSchema.CallToolResult result = call(
-                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
                 Map.of("optionId", "po-root-dial-b"));
 
         assertThat(result.isError()).isFalse();
@@ -115,7 +116,7 @@ class OpenAiDeCoachPersonalizationContractTest {
                 .thenReturn(after);
 
         McpSchema.CallToolResult result = call(
-                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
                 Map.of("optionId", "po-cobalt-shared-band"));
 
         assertThat(result.isError()).isFalse();
@@ -140,7 +141,7 @@ class OpenAiDeCoachPersonalizationContractTest {
                 .thenReturn(descendantFilterPlan());
 
         McpSchema.CallToolResult result = call(
-                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
                 Map.of("optionId", "po-unknown"));
 
         assertThat(result.isError()).isTrue();
@@ -151,7 +152,7 @@ class OpenAiDeCoachPersonalizationContractTest {
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {
         Map<String, Object> requestArguments = new java.util.LinkedHashMap<>(arguments);
         requestArguments.put(
-                OpenAiDeCoachMcpContract.LEARNING_SESSION_ID,
+                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                 LEARNING_SESSION_ID);
         McpStatelessServerFeatures.SyncToolSpecification specification =
                 contract.toolSpecifications().stream()

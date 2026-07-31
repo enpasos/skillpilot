@@ -1,8 +1,11 @@
 package com.skillpilot.backend.openai.de.health;
 
+import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,18 +26,24 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
     private final boolean contractAvailable;
     private final int contractToolCount;
     private final String contractHash;
+    private final String curriculumRevision;
     private final boolean mcpEnabled;
     private final boolean mtlsEdgeEnabled;
 
     public OpenAiDeCoachHealthIndicator(
             OpenAiDeProperties properties,
-            Optional<OpenAiDeCoachMcpContract> contract,
+            Optional<OpenAiDeV1McpContractAdapter> contract,
+            Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
             @Value("${skillpilot.openai.de.mcp.enabled:false}") boolean mcpEnabled,
             @Value("${skillpilot.openai.de.mtls-edge.enabled:false}") boolean mtlsEdgeEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
         this.contractHash = contract.map(OpenAiDeCoachContractFingerprint::sha256).orElse("unavailable");
+        this.curriculumRevision = curriculumRevisionProvider
+                .map(OpenAiDeCurriculumRevisionProvider::currentRevision)
+                .filter(value -> !value.isBlank())
+                .orElse("unavailable");
         this.mcpEnabled = mcpEnabled;
         this.mtlsEdgeEnabled = mtlsEdgeEnabled;
     }
@@ -57,18 +66,34 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 && !redirectUris.isEmpty()
                 && redirectUris.stream().allMatch(OpenAiDeSecureModeValidation::isStrictHttpsUri);
         boolean mcpUrlHttps = OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getMcpUrl());
+        boolean oauthResourceHttps =
+                OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getOauthResource());
+        boolean uiOriginHttps =
+                OpenAiDeSecureModeValidation.isStrictHttpsUri(properties.getUiOrigin());
         boolean protectedResourceMetadataHttps = OpenAiDeSecureModeValidation.isStrictHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata());
+        OpenAiDeV1PublicContractValidation.Result publicContract =
+                OpenAiDeV1PublicContractValidation.inspect(properties);
         boolean rateLimitEnabled = properties.getRateLimit().isEnabled();
         boolean rateLimitConfigured = validRateLimit(properties.getRateLimit());
         boolean contractReady = contractToolCount == EXPECTED_TOOL_COUNT;
+        boolean serverBuildConfigured = properties.getServerBuild() != null
+                && !properties.getServerBuild().isBlank()
+                && !OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD.equals(
+                        properties.getServerBuild().trim());
+        boolean curriculumRevisionAvailable = !"unavailable".equals(curriculumRevision);
         boolean ready = oauthEnabled
                 && mcpEnabled
                 && clientIdConfigured
                 && clientAuthenticationConfigured
                 && redirectUrisConfigured
                 && mcpUrlHttps
+                && oauthResourceHttps
+                && uiOriginHttps
                 && protectedResourceMetadataHttps
+                && publicContract.valid()
+                && serverBuildConfigured
+                && curriculumRevisionAvailable
                 && rateLimitEnabled
                 && rateLimitConfigured
                 && contractReady
@@ -77,6 +102,13 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
         Health.Builder health = ready ? Health.up() : Health.down();
         health.withDetail("provider", "openai")
                 .withDetail("locale", "de")
+                .withDetail("pluginLine", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)
+                .withDetail("pluginVersion", OpenAiDeV1ContractMetadata.PLUGIN_VERSION)
+                .withDetail("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)
+                .withDetail("serverBuild", properties.getServerBuild())
+                .withDetail("serverBuildConfigured", serverBuildConfigured)
+                .withDetail("curriculumRevision", curriculumRevision)
+                .withDetail("curriculumRevisionAvailable", curriculumRevisionAvailable)
                 .withDetail("mcpEnabled", mcpEnabled)
                 .withDetail("mtlsEdgeEnabled", mtlsEdgeEnabled)
                 .withDetail("oauthEnabled", oauthEnabled)
@@ -87,7 +119,15 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("redirectUrisConfigured", redirectUrisConfigured)
                 .withDetail("redirectUriCount", redirectUris == null ? 0 : redirectUris.size())
                 .withDetail("mcpUrlHttps", mcpUrlHttps)
+                .withDetail("oauthResourceHttps", oauthResourceHttps)
+                .withDetail("uiOriginHttps", uiOriginHttps)
                 .withDetail("protectedResourceMetadataHttps", protectedResourceMetadataHttps)
+                .withDetail("v1McpEndpointExact", publicContract.mcpEndpointExact())
+                .withDetail("v1OauthResourceExact", publicContract.oauthResourceExact())
+                .withDetail("v1UiOriginExact", publicContract.uiOriginExact())
+                .withDetail(
+                        "v1ProtectedResourceMetadataExact",
+                        publicContract.protectedResourceMetadataExact())
                 .withDetail("rateLimitEnabled", rateLimitEnabled)
                 .withDetail("rateLimitConfigured", rateLimitConfigured)
                 .withDetail("secureMode", secureMode.secureMode())

@@ -11,6 +11,7 @@ cd "${PROJECT_ROOT}"
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 SYSTEMCTL_BIN=""
+OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED="${SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED:-false}"
 
 require_explicit_coach_variant() {
   local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
@@ -50,6 +51,19 @@ require_openai_mtls_deploy_policy() {
       ;;
     *)
       echo "Abbruch: SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED muss true oder false sein." >&2
+      exit 1
+      ;;
+  esac
+
+  case "${OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED}" in
+    true)
+      echo "OpenAI-MCP-V1-Public-Edge-Smoke: aktiviert"
+      ;;
+    false)
+      echo "OpenAI-MCP-V1-Public-Edge-Smoke: deaktiviert (bis zum DNS/TLS-Cutover sicherer Standard)"
+      ;;
+    *)
+      echo "Abbruch: SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED muss true oder false sein." >&2
       exit 1
       ;;
   esac
@@ -252,6 +266,17 @@ else
   fi
 fi
 
+echo "Prüfe konsistente OpenAI-Plugin-V1-Versionierung..."
+node scripts/check_openai_plugin_versioning.mjs
+
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+  echo "Prüfe exakte OpenAI-Plugin-V1-Runtime-Konfiguration..."
+  node scripts/validate_openai_v1_runtime_config.mjs
+fi
+
+echo "Prüfe unveränderten veröffentlichten OpenAI-Plugin-V1-Snapshot..."
+node scripts/openai_plugin_release.mjs verify
+
 echo "Deploying Vocabulary Decks..."
 # Führt das Python-Skript aus, um die Decks von curricula/../json nach app/public/data zu kopieren
 python3 scripts/deploy_decks.py
@@ -297,17 +322,23 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe fokussierte OpenAI-Security-Verträge vor dem Service-Restart..."
   ./gradlew test \
     --tests com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest \
+    --tests com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProviderTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest \
-    --tests com.skillpilot.backend.openai.de.security.OpenAiDeMtlsEdgeFilterTest
+    --tests com.skillpilot.backend.openai.de.security.OpenAiDeMtlsEdgeFilterTest \
+    --tests com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest \
+    --tests com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest \
+    --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest \
+    --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidationTest
 fi
 cd ..
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
   && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
   echo "Prüfe OpenAI-mTLS-Sicherheitsgrenze vor dem Service-Restart..."
-  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
+    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
     ./scripts/verify_openai_mtls_edge.sh --pre-restart
 fi
 
@@ -327,8 +358,17 @@ node scripts/verify_frontend_shell_assets.mjs \
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
   && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
   echo "Prüfe produktive OpenAI-mTLS-Sicherheitsgrenze..."
-  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
+    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
     ./scripts/verify_openai_mtls_edge.sh --runtime
+fi
+
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
+  && [ "${OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED}" = "true" ]; then
+  echo "Prüfe den öffentlichen OpenAI-Plugin-V1-Edge..."
+  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
+    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+    ./scripts/verify_openai_v1_public_edge.sh
 fi
 
 echo "Prüfe ausgelieferte Coach-Variante..."

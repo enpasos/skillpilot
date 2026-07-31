@@ -8,14 +8,14 @@ vorgesehen:
 
 | App | lokaler Prototyp | aktueller produktiver MCP-Endpunkt |
 | --- | --- | --- |
-| SkillPilot Coach Deutsch | `/mcp/de` | `https://skillpilot.com/api/openai/de/mcp` |
+| SkillPilot Coach DE v1 | `/mcp/de` | `https://mcp-v1.skillpilot.com/mcp` |
 | SkillPilot Coach English | `/mcp/en` | noch nicht freigegeben |
 
-Getrennte sprachspezifische Hosts bleiben eine mögliche spätere
-Betriebsarchitektur. Der heute ausgelieferte deutsche Vertrag und das
-versionierte Plugin-Paket verwenden jedoch ausschließlich den produktiven
-Pfad auf `skillpilot.com`; die Prototyp-Hosts dürfen nicht als aktueller
-Produktionsendpunkt dokumentiert oder registriert werden.
+Der Node-Endpunkt `/mcp/de` ist ausschließlich Prototyp. Der ausgelieferte
+deutsche Vertrag und das versionierte Plugin-Paket verwenden den isolierten
+V1-Origin. Die zugehörige OAuth-Resource ist
+`https://mcp-v1.skillpilot.com`; sie ist absichtlich nicht die vollständige
+Endpoint-URL. Es gibt keinen öffentlichen Kompatibilitätsalias.
 
 Für den ersten Developer-Mode-Test kann ein kurzlebiger HTTPS-Tunnel auf den
 lokalen Server zeigen. Dabei gelten zwingend:
@@ -42,7 +42,7 @@ In ChatGPT:
 
 1. **Settings → Security and login → Developer mode** aktivieren.
 2. **Settings → Plugins** beziehungsweise `chatgpt.com/plugins` öffnen.
-3. Eine App **SkillPilot Coach Deutsch** mit dem öffentlichen DE-MCP-Endpunkt
+3. Eine App **SkillPilot Coach DE v1** mit dem öffentlichen DE-MCP-Endpunkt
    anlegen.
 4. Zuerst nur den deutschen End-to-End-Ablauf stabilisieren und abnehmen.
 5. Erst danach eine zweite App **SkillPilot Coach English** mit dem öffentlichen
@@ -63,7 +63,7 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
 
 ## 3. Produkt- und Prototyp-Akzeptanz getrennt halten
 
-### 3.1 Aktueller UI-loser deutscher Produktpfad
+### 3.1 Aktueller chat-first deutscher Produktpfad mit Zielbild-UI
 
 1. In SkillPilot mit einem geeigneten Testlernenden **Lernen starten** wählen
    und einen neuen Chat ohne alten Kontext öffnen.
@@ -71,7 +71,9 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
    vorbereitete Startnachricht unverändert absenden.
 3. Erwartung: Der Coach lädt vor der ersten fachlichen Antwort den frischen
    SkillPilot-Kontext. Lernsession, Token und technische Auswahlkeys erscheinen
-   nicht in der Antwort.
+   nicht in der Antwort. Ist das aktive Ziel atomar und besitzt einen passenden
+   kanonischen Bildlink, erscheint zusätzlich die read-only Lernzielkarte mit
+   Alttext und Cockpit-Link.
 4. Bei der Testpersonalisierung „Grundkurs“ als normalen Chattext antworten.
    Erwartung: Genau die aktuell veröffentlichten Optionen sind sichtbar, die
    Auswahl wird bestätigt gespeichert und der Folgezustand frisch geladen.
@@ -81,7 +83,7 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
 6. Im Prüfungsmodus eine vollständige sichtbare Abgabe senden. Erwartung: kein
    Scaffolding, keine Bewertung vor vollständiger Abgabe, danach faire
    kriteriumsbezogene Punkte und nur bei bestandenem Ergebnis eine bestätigte
-   Mastery-Speicherung. Es gibt in diesem UI-losen Pfad keinen Widget-Button
+   Mastery-Speicherung. Es gibt in diesem chat-first Pfad keinen Widget-Button
    **Lösung jetzt bewerten lassen**.
 7. Einen neuen normalen User-Turn senden. Erwartung: Das Modell lädt den
    aktuellen Zustand frisch, fragt nicht nach einer alten ID und fällt nicht
@@ -91,12 +93,18 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
    Rehydrationsnachweis wiederholen.
 9. Einen Plugin-Starter ohne vorbereitete Lernsession öffnen. Erwartung: kein
    Toolaufruf und eine knappe Rückführung zu SkillPilot und **Lernen starten**.
+10. Ein Clusterziel und ein atomares Ziel ohne gültiges Bild laden. Erwartung:
+    keine leere oder defekte Karte; die normale Chatdarstellung bleibt
+    vollständig nutzbar.
+11. Ein erlaubtes atomares Ziel mit passendem Bild aktivieren. Erwartung:
+    `set_skillpilot_active_goal_de` aktualisiert die Karte automatisch. Das Bild
+    wird nicht als Evidenz, Aufgabe, Lösung oder Mastery-Nachweis behandelt.
 
 ### 3.2 Widget-Prototyp als getrennte Baseline
 
 Der lokale `/mcp/de`-Prototyp behält einen eigenen UI-Akzeptanzlauf. Dieser
 belegt ausschließlich Widget- und MCP-Bridge-Verhalten und ist kein Nachweis
-für den aktuellen UI-losen Produktpfad:
+für den produktiven Spring-Vertrag oder dessen separate Zielbild-Ressource:
 
 1. App mit dem öffentlichen Prototyp-Endpunkt explizit auswählen.
 2. Grundkurs im Widget anklicken; die Aufgabe muss ohne zusätzlichen
@@ -120,7 +128,7 @@ Zusätzlich prüfen:
 ## 4. Versioniertes Plugin-Paket und optionales lokales App-Wiring
 
 Das deutsche Quellpaket ist unter
-[`../openai plugin/skillpilot-coach-de`](<../openai plugin/skillpilot-coach-de/>)
+[`../openai plugin/skillpilot-coach-de-v1`](<../openai plugin/skillpilot-coach-de-v1/>)
 versioniert. Es enthält Pluginmanifest, direkte produktive MCP-Bindung,
 Coach-Skill, Policy-Referenz und die zunächst explizite Aktivierung. Der
 CI-Vertrag prüft außerdem die aktuellen finalen Directory-Limits,
@@ -158,8 +166,9 @@ Mastery-Evidenz, Prüfungsführung und ehrliche Fehlerbehandlung werden
 Action-, Relay- oder modellseitige Deep-Link-Mechanismen.
 
 Geprüft werden `.app.json`, `.codex-plugin/plugin.json`,
-`skills/skillpilot-coach-de/SKILL.md`,
-`skills/skillpilot-coach-de/agents/openai.yaml`, rechtliche Links, Screenshots
+`release/line.json`, `release/lifecycle.json`,
+`skills/skillpilot-coach-de-v1/SKILL.md`,
+`skills/skillpilot-coach-de-v1/agents/openai.yaml`, rechtliche Links, Screenshots
 und Installationsmetadaten für den lokalen beziehungsweise internen
 Plugin-Test. Die vom Host erzeugte App-Abbildung wird
 unverändert geprüft; Präfixe werden nicht manuell konvertiert.
@@ -206,11 +215,14 @@ Der Server stellt optional den offiziellen Challenge-Pfad bereit:
 Der Rückgabewert wird ausschließlich aus `OPENAI_APPS_CHALLENGE` gelesen und als
 reiner Text ausgegeben. Ohne Konfiguration antwortet der Pfad mit 404.
 
-In der aktuellen deutschen Produktion liegt die Challenge auf
-`skillpilot.com`; der MCP-Produktpfad bleibt
-`https://skillpilot.com/api/openai/de/mcp`. Eigene Hosts pro Sprache sind nur
-eine optionale spätere Widget- beziehungsweise Deployment-Topologie und dürfen
-nicht als heutige Produktionspflicht gelesen werden.
+Für die deutsche V1 liegt die Challenge auf `mcp-v1.skillpilot.com`; der
+MCP-Produktpfad ist `https://mcp-v1.skillpilot.com/mcp`. Der separate
+`ui-v1.skillpilot.com`-Origin gehört zur read-only Zielbild-UI des weiterhin
+unveröffentlichten `1.0.0`-Drafts. Ihre Resource-URI
+`ui://skillpilot/coach/v1/1.0.0/goal-visualization.html`, Integrität, CSP,
+Alttext und Degradationsverhalten sind eigene Release-Gates. Erst eine
+tatsächliche Portal-Veröffentlichung versiegelt diesen Stand; bis dahin bleibt
+die Paketversion `1.0.0`.
 
 Der lokale Widget-Prototyp verwendet standardmäßig die eindeutigen Origins
 `https://coach-de-mcp.skillpilot.com` für Deutsch und
@@ -223,6 +235,11 @@ Normalfall nicht gesetzt werden. Der Wert muss eine HTTPS-Origin ohne Pfad sein.
 Der Server liefert ihn sowohl als
 `_meta.ui.domain` als auch über den ChatGPT-Kompatibilitätsalias
 `_meta["openai/widgetDomain"]` aus.
+
+Release, Rollback, Unpublish und Retention folgen dem
+[V1-Release-Runbook](../../docs/deploy/openai-plugin-v1-release.md). Ein
+Breaking Change wird nicht in `skillpilot-coach-de-v1` überschrieben, sondern
+als neue Plugin-Linie mit eigenem Origin und eigener OAuth-Resource aufgebaut.
 
 ## 6. Review- und Produktgrenzen
 

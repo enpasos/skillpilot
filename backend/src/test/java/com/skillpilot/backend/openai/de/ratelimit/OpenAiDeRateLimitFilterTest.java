@@ -35,9 +35,9 @@ class OpenAiDeRateLimitFilterTest {
 
     @Test
     void returns429AndRetryAfterWhenMcpBurstExceedsLimit() throws Exception {
-        MockHttpServletResponse first = invoke("/api/openai/de/mcp", "192.0.2.10");
-        MockHttpServletResponse second = invoke("/api/openai/de/mcp", "192.0.2.10");
-        MockHttpServletResponse rejected = invoke("/api/openai/de/mcp", "192.0.2.10");
+        MockHttpServletResponse first = invoke("/internal/openai/de/v1/mcp", "192.0.2.10");
+        MockHttpServletResponse second = invoke("/internal/openai/de/v1/mcp", "192.0.2.10");
+        MockHttpServletResponse rejected = invoke("/internal/openai/de/v1/mcp", "192.0.2.10");
 
         assertThat(first.getStatus()).isEqualTo(200);
         assertThat(second.getStatus()).isEqualTo(200);
@@ -61,7 +61,7 @@ class OpenAiDeRateLimitFilterTest {
         rejectedRequest.addHeader("X-Forwarded-For", "203.0.113.9");
         MockHttpServletResponse rejected = invoke(rejectedRequest);
         MockHttpServletResponse otherClient = invoke("/api/openai/de/oauth2/token", "192.0.2.12");
-        MockHttpServletResponse sameClientOtherGroup = invoke("/api/openai/de/mcp", "192.0.2.11");
+        MockHttpServletResponse sameClientOtherGroup = invoke("/internal/openai/de/v1/mcp", "192.0.2.11");
 
         assertThat(first.getStatus()).isEqualTo(200);
         assertThat(rejected.getStatus()).isEqualTo(429);

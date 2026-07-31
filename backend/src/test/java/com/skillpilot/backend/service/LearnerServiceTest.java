@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
@@ -132,6 +133,35 @@ public class LearnerServiceTest {
         var goals = plannedGoalRepository.findByLearner_SkillpilotId(learnerId);
         assertThat(goals).hasSize(1);
         assertThat(goals.get(0).getGoalId()).isEqualTo(COMPOSITION_J8_SCOPE_ID);
+    }
+
+    @Test
+    void cockpitWritesAdvanceTheCanonicalCoachStateRevision() {
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isZero();
+
+        learnerService.setCurriculum(learnerId, CANONICAL_GYMNASIUM_ROOT_ID);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isEqualTo(1L);
+
+        learnerService.upsertClientState(
+                learnerId,
+                "recall-node",
+                new ClientStateRequest(Instant.now(), Map.of("card-1", Map.of("status", "pending"))));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isEqualTo(2L);
+
+        learnerService.setPlannedGoals(learnerId, Set.of());
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isEqualTo(3L);
+
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isEqualTo(4L);
+
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow()
+                .getCoachStateRevision()).isEqualTo(4L);
     }
 
     @Test

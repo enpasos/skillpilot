@@ -14,6 +14,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.SkillLandscape;
+import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
@@ -49,6 +50,10 @@ class OpenAiDeCoachConnectionServiceTest {
         learners = mock(LearnerRepository.class);
         learnerService = mock(LearnerService.class);
         landscapeService = mock(LandscapeService.class);
+        OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider =
+                mock(OpenAiDeCurriculumRevisionProvider.class);
+        when(curriculumRevisionProvider.currentRevision())
+                .thenReturn("curricula-sha256@" + "a".repeat(64));
 
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setWritesEnabled(true);
@@ -60,6 +65,7 @@ class OpenAiDeCoachConnectionServiceTest {
                 learnerService,
                 landscapeService,
                 properties,
+                curriculumRevisionProvider,
                 SIGNING_SECRET);
 
         learner = new Learner();
@@ -97,6 +103,9 @@ class OpenAiDeCoachConnectionServiceTest {
                     assertThat(session.getTokenHash()).isNotBlank();
                     assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
                             .isEqualTo(Duration.ofHours(24));
+                    assertThat(session.getStateVersion()).isEqualTo(learner.getCoachStateRevision());
+                    assertThat(session.getCurriculumRevision())
+                            .isEqualTo("curricula-sha256@" + "a".repeat(64));
                 });
         assertThat(sessions.get(0).getTokenHash()).isNotEqualTo(first.learningSessionId());
         assertThat(sessions.get(1).getTokenHash()).isNotEqualTo(second.learningSessionId());

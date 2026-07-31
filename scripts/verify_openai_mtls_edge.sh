@@ -4,8 +4,12 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_DIR="${ROOT_DIR}/deploy/openai-mtls"
 MODE="${1:-}"
-BASE_URL="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
-BASE_URL="${BASE_URL%/}"
+V1_BASE_URL="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}"
+V1_BASE_URL="${V1_BASE_URL%/}"
+AUTHORIZATION_BASE_URL="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
+AUTHORIZATION_BASE_URL="${AUTHORIZATION_BASE_URL%/}"
+EXPECTED_RESOURCE="${SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:-${V1_BASE_URL}}"
+EXPECTED_RESOURCE="${EXPECTED_RESOURCE%/}"
 EXPECTED_CLIENT_AUTHENTICATION_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
 INSTALL_DIR="/etc/skillpilot/openai-mtls"
 INSTALLED_ROOT_CA="${INSTALL_DIR}/openai-root-ca.pem"
@@ -13,7 +17,8 @@ INSTALLED_INTERMEDIATE_CA="${INSTALL_DIR}/openai-connectors-mtls-ca.pem"
 INSTALLED_CA_BUNDLE="${INSTALL_DIR}/openai-client-ca-bundle.pem"
 INSTALLED_VERIFIER="/usr/local/libexec/skillpilot-openai-mtls-verifier.py"
 INSTALLED_UNIT="/etc/systemd/system/skillpilot-openai-mtls-verifier.service"
-INSTALLED_NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-mtls.conf"
+INSTALLED_V1_NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-v1-edge.conf"
+OBSOLETE_NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-mtls.conf"
 
 case "${MODE}" in
   ""|--pre-restart|--runtime|--installed)
@@ -142,9 +147,14 @@ assert_installed_artifacts() {
     "${SOURCE_DIR}/skillpilot-openai-mtls-verifier.service" \
     "${INSTALLED_UNIT}"
   assert_same_file \
-    installed_nginx_snippet \
-    "${SOURCE_DIR}/skillpilot-openai-de-mtls.nginx.conf" \
-    "${INSTALLED_NGINX_SNIPPET}"
+    installed_v1_nginx_snippet \
+    "${SOURCE_DIR}/skillpilot-openai-de-v1-edge.nginx.conf" \
+    "${INSTALLED_V1_NGINX_SNIPPET}"
+  if [[ -e "${OBSOLETE_NGINX_SNIPPET}" ]]; then
+    echo "CHECK obsolete_nginx_snippet FAIL remove ${OBSOLETE_NGINX_SNIPPET}" >&2
+    exit 1
+  fi
+  echo "CHECK obsolete_nginx_snippet PASS absent"
   echo "CHECK installed_artifacts PASS"
 }
 
@@ -170,7 +180,7 @@ assert_discovery_document() {
       | PYTHONDONTWRITEBYTECODE=1 python3 -B \
         "${ROOT_DIR}/scripts/validate_openai_oauth_metadata.py" \
         --kind "${kind}" \
-        --base-url "${BASE_URL}" \
+        --base-url "${AUTHORIZATION_BASE_URL}" \
         --required-client-authentication-method \
         "${EXPECTED_CLIENT_AUTHENTICATION_METHOD}"; then
       echo "CHECK oauth_metadata FAIL ${url}: invalid semantics" >&2
@@ -180,7 +190,9 @@ assert_discovery_document() {
     | PYTHONDONTWRITEBYTECODE=1 python3 -B \
       "${ROOT_DIR}/scripts/validate_openai_oauth_metadata.py" \
       --kind "${kind}" \
-      --base-url "${BASE_URL}"; then
+      --base-url "${V1_BASE_URL}" \
+      --expected-resource "${EXPECTED_RESOURCE}" \
+      --authorization-base-url "${AUTHORIZATION_BASE_URL}"; then
     echo "CHECK oauth_metadata FAIL ${url}: invalid semantics" >&2
     exit 1
   fi
@@ -251,16 +263,23 @@ echo "CHECK verifier_service PASS active"
 if [[ "${MODE}" == "--installed" ]]; then
   nginx -t
   nginx_config="$(nginx -T 2>&1)"
-  grep -Fq "skillpilot-openai-de-mtls.conf" <<<"${nginx_config}" || {
-    echo "CHECK nginx_include FAIL mTLS snippet is not active" >&2
+  grep -Fq "skillpilot-openai-de-v1-edge.conf" <<<"${nginx_config}" || {
+    echo "CHECK nginx_include FAIL V1 mTLS edge snippet is not active" >&2
     exit 1
   }
-  echo "CHECK nginx_include PASS active"
+  echo "CHECK nginx_include PASS V1 edge active"
+  if grep -Fq "skillpilot-openai-de-mtls.conf" <<<"${nginx_config}" \
+      || grep -Fq "location = /api/openai/de/mcp" <<<"${nginx_config}" \
+      || grep -Fq "location ^~ /api/openai/de/mcp/" <<<"${nginx_config}"; then
+    echo "CHECK obsolete_public_mcp_route FAIL old skillpilot.com MCP route is still active" >&2
+    exit 1
+  fi
+  echo "CHECK obsolete_public_mcp_route PASS absent"
 fi
 
 assert_loopback_listener 8792 verifier_loopback
 
-assert_http 403 "${BASE_URL}/api/openai/de/mcp"
+assert_http 403 "${V1_BASE_URL}/mcp"
 
 if [[ "${MODE}" == "--pre-restart" ]]; then
   echo "CHECK pre-restart_edge PASS"
@@ -269,7 +288,7 @@ fi
 
 assert_loopback_listener 8787 backend_loopback
 assert_discovery_document protected-resource \
-  "${BASE_URL}/.well-known/oauth-protected-resource/api/openai/de/mcp"
+  "${V1_BASE_URL}/.well-known/oauth-protected-resource"
 assert_discovery_document authorization-server \
-  "${BASE_URL}/.well-known/oauth-authorization-server/api/openai/de"
+  "${AUTHORIZATION_BASE_URL}/.well-known/oauth-authorization-server/api/openai/de"
 echo "CHECK ${MODE#--}_edge PASS"

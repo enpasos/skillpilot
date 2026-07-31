@@ -1,23 +1,30 @@
-# ChatGPT-App „SkillPilot Coach (Deutsch)“: Deployment und Cutover
+# ChatGPT-App „SkillPilot Coach DE v1“: Deployment und Cutover
 
-**Stand:** 26. Juli 2026
+**Stand:** 31. Juli 2026
 
-**Status:** Der deutsche MCP-Coach ist der aktuelle ChatGPT-Produktpfad. Die
-Clientbindung wird nach vollständiger Prüfung des ausgewählten
+**Status:** Der deutsche MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
+Produktkandidat; der `1.0.0`-Draft ist noch nicht öffentlich veröffentlicht.
+Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
 freigegeben. OpenAI-mTLS ist eine optionale spätere Härtung und keine
 Voraussetzung für den produktiven Kompatibilitätsmodus.
 
-Dieses Runbook aktiviert den deutschen, zunächst UI-losen MCP-Lerncoach. Der
-MCP-Server, OAuth-Authorization-Server und die SkillPilot-Fachlogik laufen im
-**bestehenden Spring-Boot-Prozess**. Der Node-Code unter `ai/openai app/` bleibt
-ein lokales Regressionstest- und späteres Widget-Testbett und wird nicht in den
-Produktivpfad geschaltet.
+Dieses Runbook aktiviert den deutschen, chat-first MCP-Lerncoach mit einer eng
+begrenzten read-only MCP-UI für Lernzielvisualisierungen. MCP-Server,
+OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
+laufen im **bestehenden Spring-Boot-Prozess**. Der Node-MCP-Server unter
+`ai/openai app/` bleibt ein lokales Regressionstestbett; dort liegt zugleich die
+geprüfte Quellimplementierung der Lernzielkarte, deren selbstenthaltenes
+Build-Artefakt in den Spring-Boot-Ressourcenpfad übernommen wird.
 
 Die Architektur- und Migrationsentscheidungen stehen in
 [openai-mcp-coach-migration-plan.md](../concept/runtime-workflows/openai-mcp-coach-migration-plan.md).
 Der verbindliche Identitäts- und Sitzungsablauf steht getrennt in
 [openai-mcp-oauth-learner-session-architecture.md](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
+Paket-, Contract- und Lifecycle-Versionen folgen dem
+[Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md);
+Release, Rollback und Stilllegung folgen dem
+[V1-Release-Runbook](openai-plugin-v1-release.md).
 Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
 Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
 SkillPilot-ID im Chat ein. Jeder ausdrückliche Start in SkillPilot erzeugt
@@ -30,24 +37,29 @@ MCP-Werkzeug.
 
 | Zweck | URL |
 | --- | --- |
-| MCP Resource / Server URL | `https://skillpilot.com/api/openai/de/mcp` |
-| Protected Resource Metadata | `https://skillpilot.com/.well-known/oauth-protected-resource/api/openai/de/mcp` |
-| direkter Metadata-Alias | `https://skillpilot.com/api/openai/de/oauth/protected-resource` |
+| Plugin-Identität | `skillpilot-coach-de-v1` |
+| MCP Server URL | `https://mcp-v1.skillpilot.com/mcp` |
+| OAuth Resource / Audience | `https://mcp-v1.skillpilot.com` |
+| UI-Origin | `https://ui-v1.skillpilot.com` |
+| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html` |
+| Protected Resource Metadata | `https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/de` |
 | Authorization-Server-Metadata | `https://skillpilot.com/.well-known/oauth-authorization-server/api/openai/de` |
 | Authorization Endpoint | `https://skillpilot.com/api/openai/de/oauth2/authorize` |
 | Token Endpoint | `https://skillpilot.com/api/openai/de/oauth2/token` |
 | Revocation Endpoint | `https://skillpilot.com/api/openai/de/oauth2/revoke` |
 
-Der Reverse Proxy muss diese Pfade unverändert an denselben Spring-Boot-Dienst
-weiterleiten. Der produktive App-Eintrag verwendet **Server URL**, nicht den
-Entwicklungstunnel.
+Der Reverse Proxy leitet den öffentlichen Pfad `/mcp` auf den internen
+Spring-Handler `/internal/openai/de/v1/mcp` weiter. Dieser Handler ist nur über
+Loopback erreichbar und kein öffentlicher API-Pfad. Es gibt keinen öffentlichen
+Kompatibilitätsalias. Der produktive App-Eintrag verwendet ausschließlich die
+V1-**Server URL**, nicht den Entwicklungstunnel.
 
 ## 2. Discovery-Bootstrap und OAuth-Werte
 
 Der Produktivvertrag verwendet Authorization Code mit PKCE `S256` und genau
-einen vorregistrierten **vertraulichen OAuth-Client** für die App
-`SkillPilot Coach (Deutsch)`. Dessen feste Client-ID, langes zufälliges
+einen vorregistrierten **vertraulichen OAuth-Client** für die Linie
+`SkillPilot Coach DE v1`. Dessen feste Client-ID, langes zufälliges
 Client-Secret, exakte Callback-Allowlist, feste MCP-Resource und feste Scopes
 werden vom App-Autor auf beiden Seiten konfiguriert. ChatGPT authentisiert sich
 am Token-Endpunkt mit `client_secret_basic`; SkillPilot akzeptiert weder
@@ -131,8 +143,11 @@ SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=false
 # SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
 # SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 
-SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oauth/protected-resource
+SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
+SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
+SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
+SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
+SKILLPILOT_SERVER_BUILD=<vollständiger Git-SHA des Deployments>
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
 SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
@@ -338,7 +353,7 @@ Anwendungslogs erscheinen.
 
 ## 4. ChatGPT-App konfigurieren
 
-1. Name: `SkillPilot Coach (Deutsch)`.
+1. Name: `SkillPilot Coach DE v1`.
 2. Beschreibung exakt:
 
    ```text
@@ -346,7 +361,7 @@ Anwendungslogs erscheinen.
    ```
 
 3. Verbindung: `Server URL`.
-4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
+4. MCP-URL: `https://mcp-v1.skillpilot.com/mcp`.
 5. OAuth mit der festen Client-ID, dem dazugehörigen Client-Secret und der
    exakten Callback-URL konfigurieren. Als Authentisierungsmethode am
    Token-Endpunkt `client_secret_basic` wählen. DCR, CIMD, `none` und
@@ -355,8 +370,10 @@ Anwendungslogs erscheinen.
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
    ausführen. Prüfen, dass genau die elf deutschen Produktivwerkzeuge
-   erscheinen; keine Claude-, Regression- oder Widget-Testwerkzeuge dürfen
-   sichtbar sein.
+   erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
+   dürfen sichtbar sein. Zusätzlich muss genau die versionierte
+   Lernzielbild-Ressource über `resources/list` und `resources/read` verfügbar
+   sein.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
@@ -374,11 +391,21 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Die erste Version registriert bewusst keine Widget-Ressource und kein
-`outputTemplate`. Auswahl und Coaching bleiben im normalen Chat. Die
-`learningSessionId` erscheint ausschließlich in der automatisch vorbereiteten
-Startnachricht und wird danach als Toolparameter weitergereicht; sie ist keine
-dauerhafte SkillPilot-ID und kein OAuth-Token.
+Der unveröffentlichte `1.0.0`-Draft registriert genau eine read-only
+Widget-Ressource für das Bild des aktiven atomaren Lernziels.
+`get_skillpilot_context_de` und `set_skillpilot_active_goal_de` referenzieren
+sie über `ui.resourceUri` sowie den ChatGPT-Kompatibilitätsalias
+`openai/outputTemplate`. Die übrigen Werkzeuge besitzen keine UI-Bindung;
+Auswahl und Coaching bleiben im normalen Chat. `goalVisualization` wird nur bei
+einem aktiven atomaren Ziel mit passendem kanonischem Bildlink projiziert.
+Fehlt ein gültiges Bild oder kann es nicht geladen werden, bleibt die Karte
+verborgen und der normale Chatablauf funktioniert unverändert.
+
+Die `learningSessionId` erscheint ausschließlich in der automatisch
+vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
+sie ist keine dauerhafte SkillPilot-ID und kein OAuth-Token. Die Bildkarte ist
+reine Orientierung, keine Evidenz, Aufgabe, Lösung, Bewertung oder
+Mastery-Aktion.
 
 ## 5. Technischer Smoke-Test
 
@@ -397,29 +424,30 @@ SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
 Dann:
 
 ```bash
-BASE=https://skillpilot.com
+MCP_BASE=https://mcp-v1.skillpilot.com
+AUTH_BASE=https://skillpilot.com
 
-curl -fsS "$BASE/.well-known/oauth-protected-resource/api/openai/de/mcp" \
-  | jq -e --arg resource "$BASE/api/openai/de/mcp" \
-      --arg issuer "$BASE/api/openai/de" \
+curl -fsS "$MCP_BASE/.well-known/oauth-protected-resource" \
+  | jq -e --arg resource "$MCP_BASE" \
+      --arg issuer "$AUTH_BASE/api/openai/de" \
       '.resource == $resource
        and (.authorization_servers | index($issuer))'
 
-curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
-  | jq -e --arg issuer "$BASE/api/openai/de" \
+curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/de" \
+  | jq -e --arg issuer "$AUTH_BASE/api/openai/de" \
       '.issuer == $issuer
        and (.code_challenge_methods_supported | index("S256"))
        and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'
 
 curl -sS -o /dev/null -D - \
-  -X POST "$BASE/api/openai/de/mcp" \
+  -X POST "$MCP_BASE/mcp" \
   -H 'Content-Type: application/json' \
   --data '{}' \
   | sed -n '/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'
 
 for path in oauth2/authorize oauth2/token oauth2/revoke oauth2/introspect; do
   test "$(curl -sS -o /dev/null -w '%{http_code}' \
-    "$BASE/api/openai/de/$path")" = 404
+    "$AUTH_BASE/api/openai/de/$path")" = 404
 done
 ```
 
@@ -431,7 +459,8 @@ Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
 ### 5.2 Vollbetrieb, zunächst read-only
 
 ```bash
-BASE=https://skillpilot.com
+MCP_BASE=https://mcp-v1.skillpilot.com
+AUTH_BASE=https://skillpilot.com
 MANAGEMENT_BASE=http://127.0.0.1:8080
 AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
 
@@ -441,23 +470,23 @@ curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
 curl -fsS "$MANAGEMENT_BASE/actuator/health/openAiDeCoach" \
   | jq -e '.status == "UP"'
 
-curl -fsS "$BASE/.well-known/oauth-protected-resource/api/openai/de/mcp" \
-  | jq -e --arg resource "$BASE/api/openai/de/mcp" \
-      --arg issuer "$BASE/api/openai/de" \
+curl -fsS "$MCP_BASE/.well-known/oauth-protected-resource" \
+  | jq -e --arg resource "$MCP_BASE" \
+      --arg issuer "$AUTH_BASE/api/openai/de" \
       '.resource == $resource
        and (.authorization_servers | index($issuer))
        and (.scopes_supported | index("skillpilot.openai.de.read"))
        and (.scopes_supported | index("skillpilot.openai.de.write"))'
 
-curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
-  | jq -e --arg issuer "$BASE/api/openai/de" --arg auth "$AUTH_METHOD" \
+curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/de" \
+  | jq -e --arg issuer "$AUTH_BASE/api/openai/de" --arg auth "$AUTH_METHOD" \
       '.issuer == $issuer
        and (.code_challenge_methods_supported | index("S256"))
        and (.token_endpoint_auth_methods_supported == [$auth])
        and (.registration_endpoint | not)'
 
 curl -sS -o /dev/null -D - \
-  -X POST "$BASE/api/openai/de/mcp" \
+  -X POST "$MCP_BASE/mcp" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl-smoke","version":"1"}}}' \
@@ -503,6 +532,11 @@ Produktivcoach.
   Ablauf entstanden sind.
 - `get_skillpilot_context_de` und alle Navigationsabfragen mit gültigem OAuth
   und der jeweils richtigen Session-ID prüfen.
+- Bei einem aktiven atomaren Ziel mit passendem kanonischem
+  `goal-visualization`-Link muss der Context-Read die Inline-Karte mit Bild,
+  Alttext und Cockpit-Link anzeigen. Ein Clusterziel sowie ein atomisches Ziel
+  ohne gültigen oder passenden Bildlink dürfen keine leere oder defekte Karte
+  erzeugen; der Chat bleibt normal lesbar.
 - Dasselbe Access Token ohne Session-ID, mit falscher, abgelaufener oder zu
   einem anderen Lernenden gehörender Session-ID muss scheitern.
 - Eine gültige Session-ID ohne gültiges OAuth Access Token muss ebenfalls
@@ -525,13 +559,13 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
+| `Verwende die App SkillPilot Coach DE v1 und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
 | `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context_de` läuft; eindeutige Teile werden als bestätigter Kontext genannt und nicht erneut erfragt. Alle aktuell bestimmbaren offenen Angaben werden in einer gemeinsamen Frage angeboten. |
 | Mehrere offene Angaben in einer Nachricht und in umgekehrter Reihenfolge beantworten | Der Coach übernimmt die Mehrfachabsicht unabhängig von der Antwortreihenfolge. Er wendet intern jeweils nur die aktuelle Option an, lädt danach den Plan frisch und löst erst dann die nächste Angabe auf. |
 | Eine Antwort auf eine spätere, nur orientierend angezeigte Frage geben | Keine vorweggenommene oder gespeicherte Option-ID wird geschrieben. Der Coach arbeitet zuerst die aktuelle authored Entscheidung ab und prüft die Angabe anschließend gegen die frisch projizierten Optionen; nur verbleibende Mehrdeutigkeit führt zu einer Rückfrage. |
 | `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context_de` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
 | `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
-| `Use SkillPilot Coach (Deutsch) and resume my current lesson.` | Der deutsche Bootstrap bleibt auch bei einem englischen direkten App-Auftrag auffindbar und antwortet anschließend deutsch. |
+| `Use SkillPilot Coach DE v1 and resume my current lesson.` | Der deutsche Bootstrap bleibt auch bei einem englischen direkten App-Auftrag auffindbar und antwortet anschließend deutsch. |
 
 Die Anwendung schreibt pro Toolaufruf ausschließlich eine begrenzte
 Diagnosezeile mit Toolname, Status und Dauer, beispielsweise:
@@ -552,6 +586,9 @@ Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
 1. Curriculum und Personalisierung;
 2. Scope und aktives Frontier-Ziel;
+   beim Zielwechsel muss `set_skillpilot_active_goal_de` dieselbe
+   Visualisierung aktualisieren beziehungsweise ohne gültiges Bild sauber
+   ausblenden;
 3. Erklärung, Aufgabe und fachlich alternative korrekte Lösung;
 4. Mastery-Update einschließlich Konfliktfall;
 5. Verified Recall mit Antwortfreigabe erst nach Lernendenantwort;
@@ -663,8 +700,8 @@ Client-Secret enthalten; die einmalige
    `SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=false` und
    `SKILLPILOT_OPENAI_DE_ENABLED=false` sowie
    `SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false` setzen.
-3. App in ChatGPT deaktivieren beziehungsweise die betroffene Version
-   zurückziehen.
+3. App in ChatGPT deaktivieren beziehungsweise die betroffene Version nach dem
+   [V1-Release-Runbook](openai-plugin-v1-release.md) zurückziehen.
 4. Bestehende OpenAI-DE-Verbindungen serverseitig widerrufen, falls ein
    Sicherheitsgrund vorliegt.
 

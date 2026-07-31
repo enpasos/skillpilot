@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - changeSet:
+      id: 016-prepare-openai-session-migration
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: openai_de_learning_session
+        - not:
+            - columnExists:
+                tableName: openai_de_learning_session
+                columnName: migrated_to_token_hash
+        - not:
+            - tableExists:
+                tableName: openai_de_session_migration
+      changes:
+        - addColumn:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: migrated_to_token_hash
+                  type: VARCHAR(128)
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_learning_session
+            baseColumnNames: migrated_to_token_hash
+            constraintName: fk_openai_de_learning_session_successor
+            referencedTableName: openai_de_learning_session
+            referencedColumnNames: token_hash
+            onDelete: SET NULL
+        - createTable:
+            tableName: openai_de_session_migration
+            columns:
+              - column:
+                  name: migration_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_openai_de_session_migration
+              - column:
+                  name: source_token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: target_token_hash
+                  type: VARCHAR(128)
+              - column:
+                  name: source_contract_major
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: target_contract_major
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: source_snapshot_json
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: warnings_json
+                  type: TEXT
+                  defaultValue: "[]"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - addUniqueConstraint:
+            tableName: openai_de_session_migration
+            columnNames: source_token_hash, target_contract_major
+            constraintName: uk_openai_de_session_migration_source_target_major
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_session_migration
+            baseColumnNames: source_token_hash
+            constraintName: fk_openai_de_session_migration_source
+            referencedTableName: openai_de_learning_session
+            referencedColumnNames: token_hash
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_session_migration
+            baseColumnNames: target_token_hash
+            constraintName: fk_openai_de_session_migration_target
+            referencedTableName: openai_de_learning_session
+            referencedColumnNames: token_hash
+            onDelete: SET NULL
+        - createIndex:
+            tableName: openai_de_session_migration
+            indexName: idx_openai_de_session_migration_status
+            columns:
+              - column:
+                  name: status

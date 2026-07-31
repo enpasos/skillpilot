@@ -94,14 +94,38 @@ def _normalized_https_base_url(base_url: str) -> str:
     return normalized
 
 
-def validate_protected_resource(document: Any, base_url: str) -> None:
+def validate_protected_resource(
+    document: Any,
+    base_url: str,
+    expected_resource: str | None = None,
+    authorization_base_url: str | None = None,
+) -> None:
     metadata = _require_object(document)
     base = _normalized_https_base_url(base_url)
+    authorization_base = _normalized_https_base_url(
+        authorization_base_url or base
+    )
+    resource = expected_resource or base
+    parsed_resource = urlsplit(resource)
+    if (
+        parsed_resource.scheme != "https"
+        or not parsed_resource.netloc
+        or parsed_resource.username
+        or parsed_resource.password
+        or parsed_resource.query
+        or parsed_resource.fragment
+    ):
+        raise MetadataValidationError(
+            "expected resource must be an HTTPS URL without credentials, "
+            "query, or fragment"
+        )
     _require_exact_value(
-        metadata, "resource", f"{base}/api/openai/de/mcp"
+        metadata, "resource", resource
     )
     _require_exact_value(
-        metadata, "authorization_servers", [f"{base}/api/openai/de"]
+        metadata,
+        "authorization_servers",
+        [f"{authorization_base}/api/openai/de"],
     )
     _require_exact_unique_values(
         metadata, "scopes_supported", {READ_SCOPE, WRITE_SCOPE}
@@ -210,6 +234,20 @@ def _parse_arguments() -> argparse.Namespace:
     )
     parser.add_argument("--base-url", required=True)
     parser.add_argument(
+        "--expected-resource",
+        help=(
+            "Exact protected-resource identifier. Defaults to the V1 "
+            "<base-url> origin."
+        ),
+    )
+    parser.add_argument(
+        "--authorization-base-url",
+        help=(
+            "HTTPS origin hosting the authorization server. Defaults to "
+            "--base-url."
+        ),
+    )
+    parser.add_argument(
         "--required-client-authentication-method",
         choices=("client_secret_basic", "none", "private_key_jwt"),
     )
@@ -225,8 +263,21 @@ def main() -> int:
                 raise MetadataValidationError(
                     "client authentication applies only to authorization metadata"
                 )
-            validate_protected_resource(document, arguments.base_url)
+            validate_protected_resource(
+                document,
+                arguments.base_url,
+                arguments.expected_resource,
+                arguments.authorization_base_url,
+            )
         else:
+            if (
+                arguments.expected_resource is not None
+                or arguments.authorization_base_url is not None
+            ):
+                raise MetadataValidationError(
+                    "protected-resource overrides apply only to protected "
+                    "resource metadata"
+                )
             validate_authorization_server(
                 document,
                 arguments.base_url,

@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.mcp.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
@@ -17,25 +18,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Provider-specific compaction layered on the shared AI-safety projection. */
-final class OpenAiDeCoachContextProjector {
+public final class OpenAiDeCoachContextProjector {
 
     private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
+    private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
+            "/assets/goal-visualizations/";
 
     private final CoachStateProjection stateProjection;
     private final String publicBaseUrl;
 
-    OpenAiDeCoachContextProjector(CoachStateProjection stateProjection, String publicBaseUrl) {
+    public OpenAiDeCoachContextProjector(CoachStateProjection stateProjection, String publicBaseUrl) {
         this.stateProjection = stateProjection;
         this.publicBaseUrl = publicBaseUrl == null || publicBaseUrl.isBlank()
                 ? "https://skillpilot.com"
                 : publicBaseUrl.replaceAll("/+$", "");
     }
 
-    OpenAiDeCoachContext project(UnifiedLearnerStateResponse rawState) {
+    public OpenAiDeCoachContext project(UnifiedLearnerStateResponse rawState) {
         return project(rawState, PersonalizationPlan.complete(List.of()));
     }
 
-    OpenAiDeCoachContext project(
+    public OpenAiDeCoachContext project(
             UnifiedLearnerStateResponse rawState,
             PersonalizationPlan personalizationPlan) {
         UnifiedLearnerStateResponse state = stateProjection.project(rawState);
@@ -69,6 +72,7 @@ final class OpenAiDeCoachContextProjector {
                 decision,
                 goals(state.frontier()),
                 resources(state.curriculum(), activeGoal),
+                goalVisualization(state.curriculum(), activeGoal),
                 nextAllowedTools(requiredAction, activeGoal),
                 progress(state.goals()),
                 completion,
@@ -83,12 +87,12 @@ final class OpenAiDeCoachContextProjector {
                         examHasImage));
     }
 
-    List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
+    public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
         List<FrontierGoal> projected = stateProjection.projectNavigationGoals(goals);
         return projected == null ? List.of() : projected;
     }
 
-    OpenAiDeCoachContext.Option curriculumOption(LandscapeSummary curriculum) {
+    public OpenAiDeCoachContext.Option curriculumOption(LandscapeSummary curriculum) {
         if (curriculum == null || blank(curriculum.getCurriculumId())) {
             return null;
         }
@@ -102,7 +106,7 @@ final class OpenAiDeCoachContextProjector {
                 null);
     }
 
-    OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind) {
+    public OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind) {
         if (goal == null || blank(goal.id())) {
             return null;
         }
@@ -116,7 +120,7 @@ final class OpenAiDeCoachContextProjector {
                 null);
     }
 
-    List<OpenAiDeCoachContext.Option> personalizationOptions(
+    public List<OpenAiDeCoachContext.Option> personalizationOptions(
             PersonalizationPlan plan,
             String rootLandscapeId) {
         if (plan == null || !plan.required() || plan.options().isEmpty()) {
@@ -125,7 +129,7 @@ final class OpenAiDeCoachContextProjector {
         return personalizationOptions(plan.options(), rootLandscapeId);
     }
 
-    List<OpenAiDeCoachContext.Option> personalizationNavigationOptions(
+    public List<OpenAiDeCoachContext.Option> personalizationNavigationOptions(
             PersonalizationPlan plan,
             String rootLandscapeId) {
         if (plan == null || plan.navigationOptions().isEmpty()) {
@@ -134,7 +138,7 @@ final class OpenAiDeCoachContextProjector {
         return personalizationOptions(plan.navigationOptions(), rootLandscapeId);
     }
 
-    OpenAiDeCoachContext.Decision personalizationDecision(PersonalizationPlan plan) {
+    public OpenAiDeCoachContext.Decision personalizationDecision(PersonalizationPlan plan) {
         if (plan == null
                 || !plan.valid()
                 || !plan.required()
@@ -154,7 +158,7 @@ final class OpenAiDeCoachContextProjector {
                 plan.selectedCount());
     }
 
-    OpenAiDeCoachContext.Orientation personalizationOrientation(
+    public OpenAiDeCoachContext.Orientation personalizationOrientation(
             LandscapeSummary curriculum,
             PersonalizationPlan plan) {
         if (plan == null || !plan.valid() || !plan.required()) {
@@ -375,6 +379,63 @@ final class OpenAiDeCoachContextProjector {
         return List.copyOf(resources);
     }
 
+    private OpenAiDeCoachContext.GoalVisualization goalVisualization(
+            LandscapeSummary curriculum,
+            FrontierGoal goal) {
+        if (goal == null
+                || !"atomic".equalsIgnoreCase(goal.type())
+                || blank(goal.id())
+                || goal.resourceLinks() == null) {
+            return null;
+        }
+        GoalSourceLink visualization = goal.resourceLinks().stream()
+                .filter(link -> link != null
+                        && "goal-visualization".equals(link.type())
+                        && "image".equals(link.resourceType())
+                        && goal.id().equals(link.skillpilotId())
+                        && !blank(link.url()))
+                .findFirst()
+                .orElse(null);
+        if (visualization == null) {
+            return null;
+        }
+        String imageUrl = publicAssetUrl(visualization.url());
+        String cockpitUrl = cockpitUrl(
+                curriculum == null ? null : curriculum.getCurriculumId(),
+                goal.id());
+        if (blank(imageUrl) || blank(cockpitUrl)) {
+            return null;
+        }
+        String title = compact(fallback(goal.title(), goal.id()));
+        return new OpenAiDeCoachContext.GoalVisualization(
+                goal.id(),
+                title,
+                compact(goal.description()),
+                imageUrl,
+                compact(
+                        fallback(
+                                visualization.altText(),
+                                "Didaktische Visualisierung zum Lernziel „" + title + "“."),
+                        1_000),
+                cockpitUrl);
+    }
+
+    private String publicAssetUrl(String value) {
+        if (blank(value)) {
+            return null;
+        }
+        String normalized = value.trim();
+        if (!normalized.startsWith(GOAL_VISUALIZATION_ASSET_PREFIX)
+                || normalized.contains("..")
+                || normalized.contains("\\")
+                || normalized.contains("%")
+                || normalized.contains("?")
+                || normalized.contains("#")) {
+            return null;
+        }
+        return publicBaseUrl + normalized;
+    }
+
     private OpenAiDeCoachContext.Progress progress(LearnerGoals goals) {
         if (goals == null) {
             return new OpenAiDeCoachContext.Progress(0, 0, null, null, false);
@@ -405,21 +466,21 @@ final class OpenAiDeCoachContextProjector {
 
     private List<String> nextAllowedTools(String requiredAction, FrontierGoal activeGoal) {
         List<String> tools = new ArrayList<>();
-        tools.add(OpenAiDeCoachMcpContract.GET_CONTEXT);
-        tools.add(OpenAiDeCoachMcpContract.GET_NAVIGATION);
+        tools.add(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
+        tools.add(OpenAiDeV1McpContractAdapter.GET_NAVIGATION);
         if (requiredAction != null) {
             switch (requiredAction) {
-                case "setCurriculum" -> tools.add(OpenAiDeCoachMcpContract.SET_CURRICULUM);
-                case "setPersonalization" -> tools.add(OpenAiDeCoachMcpContract.SET_PERSONALIZATION);
-                case "setScope" -> tools.add(OpenAiDeCoachMcpContract.SET_SCOPE);
-                case "setActiveGoal" -> tools.add(OpenAiDeCoachMcpContract.SET_ACTIVE_GOAL);
+                case "setCurriculum" -> tools.add(OpenAiDeV1McpContractAdapter.SET_CURRICULUM);
+                case "setPersonalization" -> tools.add(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
+                case "setScope" -> tools.add(OpenAiDeV1McpContractAdapter.SET_SCOPE);
+                case "setActiveGoal" -> tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
                 case "teachActiveGoal", "setMastery" -> {
-                    tools.add(OpenAiDeCoachMcpContract.SET_ACTIVE_GOAL);
-                    tools.add(OpenAiDeCoachMcpContract.SET_MASTERY);
+                    tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                    tools.add(OpenAiDeV1McpContractAdapter.SET_MASTERY);
                 }
                 case "chooseMemoryMode" -> {
                     if (isMemoryGoal(activeGoal)) {
-                        tools.add(OpenAiDeCoachMcpContract.START_RECALL);
+                        tools.add(OpenAiDeV1McpContractAdapter.START_RECALL);
                     }
                 }
                 default -> {
@@ -428,7 +489,7 @@ final class OpenAiDeCoachContextProjector {
             }
         }
         if (isExamGoal(activeGoal)) {
-            tools.add(OpenAiDeCoachMcpContract.GET_EXAM_EVALUATION);
+            tools.add(OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION);
         }
         return List.copyOf(tools.stream().distinct().toList());
     }
@@ -533,7 +594,7 @@ final class OpenAiDeCoachContextProjector {
                     + "Gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Gib keine "
                     + "lösungslenkenden Hinweise und stelle keine Nachfragen. Warte auf eine vollständige sichtbare "
                     + "Abgabe. Lade erst danach mit "
-                    + OpenAiDeCoachMcpContract.GET_EXAM_EVALUATION
+                    + OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION
                     + " die freigegebene Bewertungsgrundlage und bewerte abschließend.";
         }
         if (isMemoryGoal(goal)) {
@@ -561,13 +622,13 @@ final class OpenAiDeCoachContextProjector {
         };
     }
 
-    String personalizationInstruction(
+    public String personalizationInstruction(
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options) {
         return personalizationInstruction(decision, options, null);
     }
 
-    String personalizationInstruction(
+    public String personalizationInstruction(
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options,
             OpenAiDeCoachContext.Orientation orientation) {
@@ -694,11 +755,17 @@ final class OpenAiDeCoachContextProjector {
     }
 
     private String compact(String value) {
+        return compact(value, 320);
+    }
+
+    private String compact(String value, int maxLength) {
         if (value == null) {
             return null;
         }
         String normalized = value.replaceAll("\\s+", " ").trim();
-        return normalized.length() <= 320 ? normalized : normalized.substring(0, 317) + "...";
+        return normalized.length() <= maxLength
+                ? normalized
+                : normalized.substring(0, maxLength - 3) + "...";
     }
 
     private String fallback(String value, String fallback) {

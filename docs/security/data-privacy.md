@@ -115,8 +115,9 @@ expires absolutely after at most 24 hours; use does not extend it.
 The backend keeps this provider lane separate from the Visible Session tables
 and Claude connection records.
 
-The protected `/api/openai/de/mcp` endpoint and its subpaths use normal
-server-authenticated HTTPS and require a valid OAuth access token. The
+The protected public V1 endpoint `https://mcp-v1.skillpilot.com/mcp` uses normal
+server-authenticated HTTPS and requires a valid OAuth access token. Nginx maps
+it to the loopback-only `/internal/openai/de/v1/mcp` handler. The
 authorization server accepts exactly one configured confidential OAuth client,
 authenticated with `client_secret_basic`, together with PKCE S256 and exact
 client ID, redirect URI, resource, audience, and scopes. The client secret is
@@ -214,7 +215,7 @@ complete.
    derive age from a grade level and does not collect a date of birth.
 2. ChatGPT starts an OAuth Authorization Code flow with PKCE S256. The SkillPilot
    authorization server accepts only the fixed confidential client for
-   **SkillPilot Coach (Deutsch)**, authenticates it at the token endpoint with
+   **SkillPilot Coach DE v1**, authenticates it at the token endpoint with
    `client_secret_basic`, and validates the exact callback URI, resource, and
    scopes.
 3. After consent, the backend issues a short-lived authorization code and then

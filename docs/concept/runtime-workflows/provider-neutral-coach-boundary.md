@@ -55,7 +55,7 @@ allowed transitions are never moved into the skill.
 
 German and English use two separate OpenAI Apps, not a single multilingual App:
 
-- **SkillPilot Coach (Deutsch)** exposes a German-only tool catalog, descriptions,
+- **SkillPilot Coach DE v1** exposes a German-only tool catalog, descriptions,
   widget resource, OAuth client and acceptance suite;
 - **SkillPilot Coach English** exposes the corresponding English-only contract
   with its own registration, rollout and rollback.

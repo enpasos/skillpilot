@@ -22,8 +22,8 @@ public class OpenAiDeOAuthMetadataController {
 
     public static final String PROTECTED_RESOURCE_METADATA_PATH =
             "/api/openai/de/oauth/protected-resource";
-    public static final String PROTECTED_RESOURCE_WELL_KNOWN_PATH =
-            "/.well-known/oauth-protected-resource/api/openai/de/mcp";
+    public static final String V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH =
+            "/.well-known/oauth-protected-resource";
     public static final String AUTHORIZATION_SERVER_WELL_KNOWN_PATH =
             "/.well-known/oauth-authorization-server/api/openai/de";
     public static final String AUTHORIZATION_SERVER_COMPATIBILITY_PATH =
@@ -41,7 +41,10 @@ public class OpenAiDeOAuthMetadataController {
     }
 
     @GetMapping(
-            value = {PROTECTED_RESOURCE_METADATA_PATH, PROTECTED_RESOURCE_WELL_KNOWN_PATH},
+            value = {
+                    PROTECTED_RESOURCE_METADATA_PATH,
+                    V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH
+            },
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> protectedResourceMetadata() {
@@ -52,7 +55,7 @@ public class OpenAiDeOAuthMetadataController {
             String issuer,
             OpenAiDeProperties properties) {
         Map<String, Object> metadata = new LinkedHashMap<>();
-        metadata.put("resource", properties.getMcpUrl());
+        metadata.put("resource", properties.getOauthResource());
         metadata.put("authorization_servers", List.of(issuer));
         metadata.put("scopes_supported", List.of(
                 OpenAiDeOAuthConfiguration.READ_SCOPE,
@@ -106,7 +109,7 @@ public class OpenAiDeOAuthMetadataController {
     public ResponseEntity<String> connectRequired(@RequestParam(required = false) String reason) {
         String detail = "expired".equals(reason)
                 ? "Die OAuth-Autorisierung der App ist abgelaufen oder nicht mehr gültig."
-                : "Die App SkillPilot Coach (Deutsch) ist noch nicht für den Zugriff auf das SkillPilot-MCP-Backend autorisiert.";
+                : "Die App SkillPilot Coach DE v1 ist noch nicht für den Zugriff auf das SkillPilot-MCP-Backend autorisiert.";
         return htmlPage(
                 "SkillPilot-App autorisieren",
                 "<p>" + HtmlUtils.htmlEscape(detail) + "</p>"
@@ -141,7 +144,7 @@ public class OpenAiDeOAuthMetadataController {
         visibleScopes.append("</ul>");
 
         StringBuilder form = new StringBuilder();
-        form.append("<p>Du autorisierst die App SkillPilot Coach (Deutsch), das SkillPilot-MCP-Backend mit den folgenden Berechtigungen aufzurufen.</p>")
+        form.append("<p>Du autorisierst die App SkillPilot Coach DE v1, das SkillPilot-MCP-Backend mit den folgenden Berechtigungen aufzurufen.</p>")
                 .append(visibleScopes)
                 .append("<p>OAuth autorisiert nur die App. Es wählt keinen Lernenden und erzeugt keine Lernsession. "
                         + "Welche Lerndaten adressiert werden, bestimmt ausschließlich eine separat über „Lernen starten“ "

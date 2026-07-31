@@ -1,0 +1,71 @@
+{
+  "contractMajor" : 1,
+  "errors" : [ {
+    "category" : "state",
+    "code" : "STATE_VERSION_CONFLICT",
+    "recovery" : "reload_context_once",
+    "retryable" : true,
+    "stateChanged" : false
+  }, {
+    "category" : "state",
+    "code" : "IDEMPOTENCY_KEY_REUSED",
+    "recovery" : "use_new_client_request_id",
+    "retryable" : false,
+    "stateChanged" : false
+  }, {
+    "category" : "state",
+    "code" : "SESSION_VERSION_UNAVAILABLE",
+    "recovery" : "restart_learning_session",
+    "retryable" : false,
+    "stateChanged" : false
+  }, {
+    "category" : "session",
+    "code" : "SESSION_REQUIRED",
+    "recovery" : "restart_learning_session",
+    "retryable" : false,
+    "stateChanged" : false
+  }, {
+    "category" : "auth",
+    "code" : "AUTHENTICATION_REQUIRED",
+    "recovery" : "authenticate",
+    "retryable" : true,
+    "stateChanged" : false
+  }, {
+    "category" : "scope",
+    "code" : "INSUFFICIENT_SCOPE",
+    "recovery" : "grant_required_scope",
+    "retryable" : false,
+    "stateChanged" : false
+  }, {
+    "category" : "input",
+    "code" : "INVALID_INPUT",
+    "recovery" : "correct_input",
+    "retryable" : false,
+    "stateChanged" : false
+  }, {
+    "category" : "conflict",
+    "code" : "STATE_CONFLICT",
+    "recovery" : "reload_context_once",
+    "retryable" : true,
+    "stateChanged" : false
+  }, {
+    "category" : "timeout",
+    "code" : "TIMEOUT",
+    "recovery" : "retry_later",
+    "retryable" : true,
+    "stateChanged" : false
+  }, {
+    "category" : "availability",
+    "code" : "SERVICE_UNAVAILABLE",
+    "recovery" : "retry_later",
+    "retryable" : true,
+    "stateChanged" : false
+  }, {
+    "category" : "internal",
+    "code" : "INTERNAL_ERROR",
+    "recovery" : "stop_and_report_reference",
+    "retryable" : false,
+    "stateChanged" : false
+  } ],
+  "schemaVersion" : 1
+}

@@ -1,0 +1,681 @@
+{
+  "baseline": {
+    "contract": {
+      "serverInstructions": "Follow the published V1 coaching workflow.",
+      "tools": [
+        {
+          "name": "get_context",
+          "description": "Load context.",
+          "inputSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "learningSessionId"
+            ],
+            "properties": {
+              "learningSessionId": {
+                "type": "string",
+                "pattern": "^sps_"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "stateVersion"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ok",
+                  "retry"
+                ]
+              },
+              "stateVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "extensions": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {}
+              }
+            }
+          },
+          "annotations": {
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false,
+            "returnDirect": false
+          },
+          "meta": {
+            "securitySchemes": [
+              {
+                "type": "oauth2",
+                "scopes": [
+                  "skillpilot.read"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "set_scope",
+          "description": "Set scope.",
+          "inputSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "learningSessionId",
+              "expectedStateVersion",
+              "clientRequestId"
+            ],
+            "properties": {
+              "learningSessionId": {
+                "type": "string",
+                "pattern": "^sps_"
+              },
+              "expectedStateVersion": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "clientRequestId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "stateVersion"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "saved"
+                ]
+              },
+              "stateVersion": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            }
+          },
+          "annotations": {
+            "readOnlyHint": false,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false,
+            "returnDirect": false
+          },
+          "meta": {
+            "securitySchemes": [
+              {
+                "type": "oauth2",
+                "scopes": [
+                  "skillpilot.write"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "toolsList": [
+      "get_context",
+      "set_scope"
+    ],
+    "securitySchemes": {
+      "get_context": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "skillpilot.read"
+          ]
+        }
+      ],
+      "set_scope": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "skillpilot.write"
+          ]
+        }
+      ]
+    },
+    "errorCatalog": {
+      "schemaVersion": 1,
+      "contractMajor": 1,
+      "errors": [
+        {
+          "code": "STATE_VERSION_CONFLICT",
+          "category": "conflict",
+          "retryable": true,
+          "stateChanged": false,
+          "recovery": "Reload context once and retry with the fresh version."
+        }
+      ]
+    },
+    "resources": [
+      {
+        "uri": "skillpilot://v1/policy",
+        "contentSha256": "policy-v1"
+      }
+    ],
+    "skillsBundle": {
+      "schemaVersion": 1,
+      "files": [
+        {
+          "path": "coach/SKILL.md",
+          "bytes": 100,
+          "sha256": "skill-v1"
+        }
+      ]
+    },
+    "uiManifest": {
+      "schemaVersion": 1,
+      "enabled": true,
+      "origin": "https://ui-v1.skillpilot.test",
+      "resources": [
+        {
+          "uri": "ui://skillpilot/v1/cockpit",
+          "mimeType": "text/html",
+          "contentSha256": "cockpit-v1"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "name": "compatible additive optional fields and relaxed input constraints",
+      "compatible": true,
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "description"
+          ],
+          "value": "Load the current context."
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "inputSchema",
+            "properties",
+            "locale"
+          ],
+          "value": {
+            "type": "string"
+          }
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "properties",
+            "extensions",
+            "properties",
+            "traceId"
+          ],
+          "value": {
+            "type": "string"
+          }
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            1,
+            "inputSchema",
+            "properties",
+            "expectedStateVersion",
+            "maximum"
+          ],
+          "value": 200
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            1,
+            "inputSchema",
+            "required"
+          ],
+          "value": [
+            "learningSessionId",
+            "clientRequestId"
+          ]
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "required"
+          ],
+          "value": [
+            "status",
+            "stateVersion",
+            "extensions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tool removed or renamed",
+      "compatible": false,
+      "expected": "published tool was removed or renamed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "name"
+          ],
+          "value": "get_context_v2"
+        }
+      ]
+    },
+    {
+      "name": "new required input field",
+      "compatible": false,
+      "expected": "new required field locale",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "inputSchema",
+            "properties",
+            "locale"
+          ],
+          "value": {
+            "type": "string"
+          }
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "inputSchema",
+            "required"
+          ],
+          "value": [
+            "learningSessionId",
+            "locale"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "new required output field",
+      "compatible": false,
+      "expected": "new output field is forbidden",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "properties",
+            "traceId"
+          ],
+          "value": {
+            "type": "string"
+          }
+        },
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "required"
+          ],
+          "value": [
+            "status",
+            "stateVersion",
+            "traceId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "published field removed",
+      "compatible": false,
+      "expected": "published field was removed",
+      "operations": [
+        {
+          "op": "delete",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "properties",
+            "status"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "published required guarantee removed",
+      "compatible": false,
+      "expected": "published required field status changed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "required"
+          ],
+          "value": [
+            "stateVersion"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "input type narrowed",
+      "compatible": false,
+      "expected": "incompatible input type domain",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "inputSchema",
+            "properties",
+            "learningSessionId",
+            "type"
+          ],
+          "value": "integer"
+        }
+      ]
+    },
+    {
+      "name": "input lower bound tightened",
+      "compatible": false,
+      "expected": "incompatible input lower bound",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            1,
+            "inputSchema",
+            "properties",
+            "expectedStateVersion",
+            "minimum"
+          ],
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "output enum widened",
+      "compatible": false,
+      "expected": "incompatible output enum",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "properties",
+            "status",
+            "enum"
+          ],
+          "value": [
+            "ok",
+            "retry",
+            "error"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "published output enum value removed",
+      "compatible": false,
+      "expected": "incompatible output enum",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "outputSchema",
+            "properties",
+            "status",
+            "enum"
+          ],
+          "value": [
+            "ok"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "security scheme changed",
+      "compatible": false,
+      "expected": "authorization scheme or scope changed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "securitySchemes",
+            "get_context",
+            0,
+            "type"
+          ],
+          "value": "noauth"
+        }
+      ]
+    },
+    {
+      "name": "tool scope changed",
+      "compatible": false,
+      "expected": "authorization scheme or scope changed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "meta",
+            "securitySchemes",
+            0,
+            "scopes"
+          ],
+          "value": [
+            "skillpilot.read",
+            "skillpilot.write"
+          ]
+        },
+        {
+          "op": "set",
+          "path": [
+            "securitySchemes",
+            "get_context",
+            0,
+            "scopes"
+          ],
+          "value": [
+            "skillpilot.read",
+            "skillpilot.write"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "effectful annotation changed",
+      "compatible": false,
+      "expected": "effectful annotation changed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "contract",
+            "tools",
+            0,
+            "annotations",
+            "readOnlyHint"
+          ],
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "UI resource removed",
+      "compatible": false,
+      "expected": "published resource was removed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "uiManifest",
+            "resources"
+          ],
+          "value": []
+        }
+      ]
+    },
+    {
+      "name": "UI content changed under immutable URI",
+      "compatible": false,
+      "expected": "content changed under immutable URI",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "uiManifest",
+            "resources",
+            0,
+            "contentSha256"
+          ],
+          "value": "cockpit-v1-modified"
+        }
+      ]
+    },
+    {
+      "name": "MCP resource removed",
+      "compatible": false,
+      "expected": "published resource was removed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "resources"
+          ],
+          "value": []
+        }
+      ]
+    },
+    {
+      "name": "MCP content changed under immutable URI",
+      "compatible": false,
+      "expected": "content changed under immutable URI",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "resources",
+            0,
+            "contentSha256"
+          ],
+          "value": "policy-v1-modified"
+        }
+      ]
+    },
+    {
+      "name": "published skill file removed",
+      "compatible": false,
+      "expected": "published skill bundle file was removed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "skillsBundle",
+            "files"
+          ],
+          "value": []
+        }
+      ]
+    },
+    {
+      "name": "published error code removed",
+      "compatible": false,
+      "expected": "published error code was removed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "errorCatalog",
+            "errors"
+          ],
+          "value": []
+        }
+      ]
+    },
+    {
+      "name": "published error recovery contract changed",
+      "compatible": false,
+      "expected": "error semantics or recovery contract changed",
+      "operations": [
+        {
+          "op": "set",
+          "path": [
+            "errorCatalog",
+            "errors",
+            0,
+            "retryable"
+          ],
+          "value": false
+        }
+      ]
+    }
+  ]
+}

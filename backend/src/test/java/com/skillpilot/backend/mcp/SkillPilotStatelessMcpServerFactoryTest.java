@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,6 +83,41 @@ class SkillPilotStatelessMcpServerFactoryTest {
     }
 
     @Test
+    void listsAndReadsOnlyResourcesRegisteredForThatServer() throws Exception {
+        JsonNode alphaResources = postJson(
+                "/mcp/alpha",
+                """
+                {"jsonrpc":"2.0","id":20,"method":"resources/list","params":{}}
+                """);
+        assertThat(alphaResources.path("result").path("resources"))
+                .singleElement()
+                .satisfies(resource -> {
+                    assertThat(resource.path("uri").asText()).isEqualTo("ui://alpha/card.html");
+                    assertThat(resource.path("mimeType").asText())
+                            .isEqualTo("text/html;profile=mcp-app");
+                });
+
+        JsonNode read = postJson(
+                "/mcp/alpha",
+                """
+                {"jsonrpc":"2.0","id":21,"method":"resources/read","params":{
+                  "uri":"ui://alpha/card.html"}}
+                """);
+        assertThat(read.path("result").path("contents"))
+                .singleElement()
+                .satisfies(resource -> {
+                    assertThat(resource.path("uri").asText()).isEqualTo("ui://alpha/card.html");
+                    assertThat(resource.path("text").asText()).isEqualTo("<main>alpha</main>");
+                    assertThat(resource.path("_meta").path("ui").path("prefersBorder").asBoolean())
+                            .isTrue();
+                });
+
+        JsonNode betaInitialize = postJson("/mcp/beta", initializeRequest(22));
+        assertThat(betaInitialize.path("result").path("capabilities").has("resources"))
+                .isFalse();
+    }
+
+    @Test
     void preservesNativeStructuredContentAndAuthenticationMetadata() throws Exception {
         JsonNode call = postJson("/mcp/alpha", callRequest(5, "alpha_tool"));
 
@@ -114,6 +150,21 @@ class SkillPilotStatelessMcpServerFactoryTest {
                         List.of(duplicate, tool("duplicate", "two"))))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("duplicate MCP tool name: duplicate");
+
+        McpStatelessServerFeatures.SyncResourceSpecification duplicateResource =
+                resource("ui://duplicate/card.html", "duplicate", "one");
+        assertThatThrownBy(() -> serverFactory.create(
+                        "/mcp/duplicate-resource",
+                        "duplicate-resource-server",
+                        "1.0.0",
+                        "Duplicate resource test",
+                        Duration.ofSeconds(30),
+                        List.of(tool("only_tool", "only")),
+                        List.of(
+                                duplicateResource,
+                                resource("ui://duplicate/card.html", "duplicate-two", "two"))))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("duplicate MCP resource URI: ui://duplicate/card.html");
     }
 
     @Test
@@ -225,6 +276,22 @@ class SkillPilotStatelessMcpServerFactoryTest {
                 .build();
     }
 
+    private static McpStatelessServerFeatures.SyncResourceSpecification resource(
+            String uri,
+            String name,
+            String text) {
+        String mimeType = "text/html;profile=mcp-app";
+        Map<String, Object> meta = Map.of("ui", Map.of("prefersBorder", true));
+        McpSchema.Resource resource = McpSchema.Resource.builder(uri, name)
+                .mimeType(mimeType)
+                .meta(meta)
+                .build();
+        return new McpStatelessServerFeatures.SyncResourceSpecification(
+                resource,
+                (context, request) -> new McpSchema.ReadResourceResult(List.of(
+                        new McpSchema.TextResourceContents(uri, mimeType, text, meta))));
+    }
+
     @SpringBootConfiguration
     @EnableAutoConfiguration(exclude = {
             DataSourceAutoConfiguration.class,
@@ -249,7 +316,9 @@ class SkillPilotStatelessMcpServerFactoryTest {
                     "alpha-server",
                     "1.0.0",
                     "Alpha instructions",
-                    List.of(tool("alpha_tool", "alpha"), authTool()));
+                    Duration.ofSeconds(30),
+                    List.of(tool("alpha_tool", "alpha"), authTool()),
+                    List.of(resource("ui://alpha/card.html", "alpha-card", "<main>alpha</main>")));
         }
 
         @Bean(name = "alphaMcpRouter")

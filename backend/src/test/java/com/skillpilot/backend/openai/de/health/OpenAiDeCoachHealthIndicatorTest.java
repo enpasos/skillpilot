@@ -2,13 +2,17 @@ package com.skillpilot.backend.openai.de.health;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
+import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachIdentityResolver;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpTelemetry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.util.List;
@@ -25,10 +29,11 @@ class OpenAiDeCoachHealthIndicatorTest {
     @Test
     void reportsUpWithStableContractHashAndOnlyNonSecretConfigurationDetails() {
         OpenAiDeProperties properties = secureProperties();
-        OpenAiDeCoachMcpContract contract = contract();
+        OpenAiDeV1McpContractAdapter contract = contract();
         OpenAiDeCoachHealthIndicator indicator = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.of(contract),
+                Optional.of(curriculumRevisionProvider()),
                 true,
                 true);
 
@@ -48,6 +53,8 @@ class OpenAiDeCoachHealthIndicatorTest {
                 .containsEntry("redirectUrisConfigured", true)
                 .containsEntry("rateLimitEnabled", true)
                 .containsEntry("rateLimitConfigured", true)
+                .containsEntry("curriculumRevision", "curricula-sha256@" + "a".repeat(64))
+                .containsEntry("curriculumRevisionAvailable", true)
                 .containsEntry("contractToolCount", OpenAiDeCoachHealthIndicator.EXPECTED_TOOL_COUNT)
                 .doesNotContainKeys(
                         "clientId",
@@ -73,6 +80,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         var health = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.of(contract()),
+                Optional.of(curriculumRevisionProvider()),
                 true,
                 true).health();
 
@@ -98,6 +106,7 @@ class OpenAiDeCoachHealthIndicatorTest {
             var health = new OpenAiDeCoachHealthIndicator(
                     properties,
                     Optional.of(contract()),
+                    Optional.of(curriculumRevisionProvider()),
                     true,
                     true).health();
 
@@ -108,13 +117,14 @@ class OpenAiDeCoachHealthIndicatorTest {
         }
 
         OpenAiDeProperties properties = secureProperties();
-        properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp?tenant=one");
+        properties.setMcpUrl("https://skillpilot.test/internal/openai/de/v1/mcp?tenant=one");
         properties.getOauth().setProtectedResourceMetadata(
                 "https://skillpilot.test/api/openai/de/oauth/protected-resource#fragment");
 
         var health = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.of(contract()),
+                Optional.of(curriculumRevisionProvider()),
                 true,
                 true).health();
 
@@ -136,6 +146,7 @@ class OpenAiDeCoachHealthIndicatorTest {
             var health = new OpenAiDeCoachHealthIndicator(
                     properties,
                     Optional.of(contract()),
+                    Optional.of(curriculumRevisionProvider()),
                     true,
                     true).health();
 
@@ -159,6 +170,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         var health = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.of(contract()),
+                Optional.of(curriculumRevisionProvider()),
                 true,
                 true).health();
 
@@ -175,6 +187,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         OpenAiDeCoachHealthIndicator indicator = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.empty(),
+                Optional.empty(),
                 false,
                 false);
 
@@ -188,6 +201,7 @@ class OpenAiDeCoachHealthIndicatorTest {
                 .containsEntry("clientIdConfigured", false)
                 .containsEntry("redirectUrisConfigured", false)
                 .containsEntry("contractAvailable", false)
+                .containsEntry("curriculumRevisionAvailable", false)
                 .containsEntry("contractHash", "unavailable");
     }
 
@@ -199,6 +213,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         var health = new OpenAiDeCoachHealthIndicator(
                 properties,
                 Optional.of(contract()),
+                Optional.of(curriculumRevisionProvider()),
                 true,
                 false).health();
 
@@ -221,6 +236,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         runner.withPropertyValues(
                         "skillpilot.openai.de.enabled=true",
                         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
+                        "skillpilot.openai.de.server-build=test-build",
                         "skillpilot.openai.de.security.secure-mode=true",
                         "skillpilot.openai.de.oauth.enabled=true",
                         "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
@@ -241,13 +257,16 @@ class OpenAiDeCoachHealthIndicatorTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setEnabled(true);
         properties.setWritesEnabled(false);
-        properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp");
+        properties.setMcpUrl(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
+        properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
+        properties.setUiOrigin(OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
+        properties.setServerBuild("test-build");
         properties.getOauth().setEnabled(true);
         properties.getOauth().setClientId("chatgpt-app-client-id");
         properties.getOauth().setRedirectUris(List.of(
                 "https://chatgpt.com/connector/oauth/app-specific-callback"));
         properties.getOauth().setProtectedResourceMetadata(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource");
+                OpenAiDeV1PublicContractValidation.PROTECTED_RESOURCE_METADATA);
         return properties;
     }
 
@@ -263,12 +282,19 @@ class OpenAiDeCoachHealthIndicatorTest {
         return properties;
     }
 
-    private static OpenAiDeCoachMcpContract contract() {
-        return new OpenAiDeCoachMcpContract(
+    private static OpenAiDeV1McpContractAdapter contract() {
+        return new OpenAiDeV1McpContractAdapter(
                 mock(CoachToolFacade.class),
                 new CoachStateProjection("https://skillpilot.test"),
                 mock(OpenAiDeCoachIdentityResolver.class),
                 new OpenAiDeMcpTelemetry(new SimpleMeterRegistry()),
                 "https://skillpilot.test");
+    }
+
+    private static OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider() {
+        OpenAiDeCurriculumRevisionProvider provider =
+                mock(OpenAiDeCurriculumRevisionProvider.class);
+        when(provider.currentRevision()).thenReturn("curricula-sha256@" + "a".repeat(64));
+        return provider;
     }
 }

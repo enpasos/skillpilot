@@ -166,6 +166,24 @@ public class LearnerFrontierInvariantTest {
     }
 
     @Test
+    void coachReadProjectionDoesNotActivateAutopilotOrAdvanceRevision() {
+        learner.setAutoPilot(true);
+        setPlannedGoals(Q22_CLUSTER_ID);
+        setMastery(Collections.emptyMap());
+        long revisionBeforeRead = learner.getCoachStateRevision();
+
+        var coachState = learnerService.getCoachLearnerState(LEARNER_ID);
+
+        assertThat(coachState.activeGoal()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revisionBeforeRead);
+
+        var cockpitState = learnerService.getLearnerState(LEARNER_ID);
+        assertThat(cockpitState.activeGoal()).isNotNull();
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revisionBeforeRead + 1L);
+    }
+
+    @Test
     void frontierMatchesExportSnapshot() throws Exception {
         Snapshot snapshot = loadSnapshot("exports/learner_export_1c90a010.json");
 

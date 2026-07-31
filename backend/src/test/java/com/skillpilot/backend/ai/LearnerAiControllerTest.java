@@ -107,7 +107,7 @@ class LearnerAiControllerTest {
                 new StateMachineInfo("TEACHING", "chooseMemoryMode", List.of(memoryGoal), List.of(), memoryGoal));
         UnifiedLearnerStateResponse after = learnerState(skillpilotId, "teachActiveGoal", nextGoal);
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before, after);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(before, after);
         doNothing().when(learnerService).setActiveGoal(skillpilotId, nextGoalId);
 
         UnifiedLearnerStateResponse response = controller.setActiveGoal(
@@ -119,9 +119,9 @@ class LearnerAiControllerTest {
 
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, nextGoalId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -143,7 +143,7 @@ class LearnerAiControllerTest {
                 null,
                 null);
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before, after);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(before, after);
         doNothing().when(learnerService).setActiveGoal(skillpilotId, goalId);
         when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
 
@@ -154,9 +154,9 @@ class LearnerAiControllerTest {
 
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
     }
@@ -190,7 +190,7 @@ class LearnerAiControllerTest {
                 null,
                 null);
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(before);
         when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
 
         var response = controller.setMastery(skillpilotId, new MasteryUpdateRequest(null, goalId));
@@ -203,7 +203,7 @@ class LearnerAiControllerTest {
         assertThat(body.savedMastery()).isEqualTo(1.0);
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
     }
@@ -242,7 +242,7 @@ class LearnerAiControllerTest {
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(nextGoal), List.of(), nextGoal),
                 null);
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(before);
         when(learnerService.setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class))).thenReturn(masteryResponse);
 
         var response = controller.setMastery(
@@ -261,7 +261,7 @@ class LearnerAiControllerTest {
         assertThat(body.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
 
         verify(learnerService).assertWritableLearningSession(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
         verifyNoMoreInteractions(learnerService);
     }
@@ -514,7 +514,7 @@ class LearnerAiControllerTest {
                 null,
                 new StateMachineInfo("FRONTIER", "setActiveGoal", List.of(examCandidate), List.of(), null));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
@@ -527,7 +527,7 @@ class LearnerAiControllerTest {
         assertThat(state.goals().planned().get(0).examData()).isNull();
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -553,7 +553,7 @@ class LearnerAiControllerTest {
                         List.of(),
                         null));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
@@ -563,7 +563,7 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().goalOptions().get(0).examData()).isNull();
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -583,7 +583,7 @@ class LearnerAiControllerTest {
                 activeExamGoal,
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeExamGoal), List.of(), activeExamGoal));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
@@ -599,7 +599,7 @@ class LearnerAiControllerTest {
         assertThat(state.frontier().get(0).examData()).isNull();
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -619,7 +619,7 @@ class LearnerAiControllerTest {
                 activeGoal,
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeGoal), List.of(), activeGoal));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
@@ -627,7 +627,7 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().activeGoal().resourceLinks()).isEmpty();
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -651,7 +651,7 @@ class LearnerAiControllerTest {
 
         when(chatSessionService.redeemStartCode("SP-1234-5678", "de"))
                 .thenReturn(new ChatSessionService.RedeemedSession(chatSessionToken, expiresAt, skillpilotId));
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
         MockHttpServletRequest servletRequest = new MockHttpServletRequest();
 
         RedeemStartCodeResponse response = controller.redeemStartCode(
@@ -670,7 +670,7 @@ class LearnerAiControllerTest {
         assertThat(servletRequest.getAttribute("skillpilot.ai.trace.skillpilotId")).isEqualTo(skillpilotId);
 
         verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -735,7 +735,7 @@ class LearnerAiControllerTest {
                         memoryGoal,
                         List.of(practice, verify)));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
@@ -746,7 +746,7 @@ class LearnerAiControllerTest {
                 .containsExactly("openCockpitPractice", "startVerifiedRecall");
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 
@@ -766,7 +766,7 @@ class LearnerAiControllerTest {
                 activeExamGoal,
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeExamGoal), List.of(), activeExamGoal));
 
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(rawState);
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
         String json = new ObjectMapper().writeValueAsString(state);
@@ -774,7 +774,7 @@ class LearnerAiControllerTest {
         assertThat(json).doesNotContain("\"release\"");
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
     }
 

@@ -38,3 +38,36 @@ for (const contract of Object.values(contracts)) {
   await writeFile(output, html);
   console.log(`Built ${output}`);
 }
+
+const goalVisualizationResult = await build({
+  entryPoints: [join(root, "widget/src/goal-visualization-main.ts")],
+  bundle: true,
+  format: "iife",
+  platform: "browser",
+  target: "es2022",
+  write: false,
+  minify: true,
+  loader: { ".css": "text" }
+});
+const goalVisualizationBundle =
+  goalVisualizationResult.outputFiles.find((file) => file.path.endsWith(".js")) ||
+  goalVisualizationResult.outputFiles[0];
+if (!goalVisualizationBundle) {
+  throw new Error("No JavaScript bundle generated for the goal visualization widget");
+}
+const goalVisualizationHtml = template
+  .replace("__LANG__", "de")
+  .replace("__TITLE__", "SkillPilot Lernziel")
+  .replace("__BUNDLE__", goalVisualizationBundle.text.replaceAll("</script", "<\\/script"));
+const goalVisualizationOutput = join(root, "dist", "goal-visualization", "widget.html");
+await mkdir(dirname(goalVisualizationOutput), { recursive: true });
+await writeFile(goalVisualizationOutput, goalVisualizationHtml);
+console.log(`Built ${goalVisualizationOutput}`);
+
+const backendGoalVisualizationOutput = join(
+  root,
+  "../../backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html"
+);
+await mkdir(dirname(backendGoalVisualizationOutput), { recursive: true });
+await writeFile(backendGoalVisualizationOutput, goalVisualizationHtml);
+console.log(`Built ${backendGoalVisualizationOutput}`);

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -19,6 +20,136 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class OpenAiDeCoachContextProjectorTest {
+
+    @Test
+    void exposesTrustedVisualizationForMatchingActiveAtomicGoal() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        GoalSourceLink image = new GoalSourceLink(
+                "goal-visualization",
+                "Visualisierung: Energie",
+                "/assets/goal-visualizations/physik/goal-with-image/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                "Didaktische Orientierung",
+                "de",
+                "AI-generated, SkillPilot-curated",
+                "goal-with-image",
+                "primary",
+                "Skizze zur Energieerhaltung.",
+                "approved");
+
+        OpenAiDeCoachContext context = projector.project(goalVisualizationState("atomic", image));
+
+        assertThat(context.goalVisualization()).isEqualTo(
+                new OpenAiDeCoachContext.GoalVisualization(
+                        "goal-with-image",
+                        "Energie erhalten",
+                        "Die lernende Person kann Energieerhaltung erklären.",
+                        "https://skillpilot.test/assets/goal-visualizations/physik/"
+                                + "goal-with-image/goal-with-image.jpg",
+                        "Skizze zur Energieerhaltung.",
+                        "https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image"));
+        assertThat(context.resources())
+                .singleElement()
+                .satisfies(resource -> {
+                    assertThat(resource.url())
+                            .isEqualTo("https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image");
+                    assertThat(resource.requiresCockpit()).isTrue();
+                });
+    }
+
+    @Test
+    void omitsVisualizationForClustersMismatchedGoalIdsAndUntrustedAssetPaths() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        GoalSourceLink mismatched = new GoalSourceLink(
+                "goal-visualization",
+                "Falsche Zuordnung",
+                "/assets/goal-visualizations/physik/other/other.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "other-goal",
+                "primary",
+                "Falsche Zuordnung",
+                "approved");
+        GoalSourceLink external = new GoalSourceLink(
+                "goal-visualization",
+                "Externes Bild",
+                "https://untrusted.example/image.jpg",
+                "image",
+                "External",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-with-image",
+                "primary",
+                "Externes Bild",
+                "approved");
+        GoalSourceLink unrelatedRootPath = new GoalSourceLink(
+                "goal-visualization",
+                "Falscher Asset-Bereich",
+                "/assets/private/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-with-image",
+                "primary",
+                "Falscher Asset-Bereich",
+                "approved");
+        GoalSourceLink traversal = new GoalSourceLink(
+                "goal-visualization",
+                "Pfadnavigation",
+                "/assets/goal-visualizations/../private/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-with-image",
+                "primary",
+                "Pfadnavigation",
+                "approved");
+        GoalSourceLink encodedTraversal = new GoalSourceLink(
+                "goal-visualization",
+                "Kodierte Pfadnavigation",
+                "/assets/goal-visualizations/%2e%2e/private/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-with-image",
+                "primary",
+                "Kodierte Pfadnavigation",
+                "approved");
+
+        assertThat(projector.project(goalVisualizationState("cluster", mismatched)).goalVisualization())
+                .isNull();
+        assertThat(projector.project(goalVisualizationState("atomic", mismatched)).goalVisualization())
+                .isNull();
+        assertThat(projector.project(goalVisualizationState("atomic", external)).goalVisualization())
+                .isNull();
+        assertThat(projector.project(goalVisualizationState("atomic", unrelatedRootPath)).goalVisualization())
+                .isNull();
+        assertThat(projector.project(goalVisualizationState("atomic", traversal)).goalVisualization())
+                .isNull();
+        assertThat(projector.project(goalVisualizationState("atomic", encodedTraversal)).goalVisualization())
+                .isNull();
+    }
 
     @Test
     void personalizationOrientationUsesConfirmedCurriculumAndAllAuthoredOpenQuestionsInOrder()
@@ -157,6 +288,52 @@ class OpenAiDeCoachContextProjectorTest {
                 List.of("teachActiveGoal"),
                 List.of(),
                 Set.of(new CopySource("SECRET-COPY-SOURCE", Instant.parse("2026-07-22T00:00:00Z"))),
+                "learning",
+                active,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(), List.of(), active));
+    }
+
+    private static UnifiedLearnerStateResponse goalVisualizationState(
+            String goalType,
+            GoalSourceLink image) {
+        FrontierGoal active = new FrontierGoal(
+                "goal-with-image",
+                "Energie erhalten",
+                "Die lernende Person kann Energieerhaltung erklären.",
+                goalType,
+                null,
+                "frontier",
+                List.of(),
+                List.of(image),
+                null,
+                null,
+                null,
+                null);
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Physik",
+                "",
+                "DE",
+                "",
+                "school",
+                "Physik",
+                "de",
+                List.of());
+        LearnerGoals goals = new LearnerGoals(
+                List.of(active),
+                0,
+                1,
+                new GoalStats(0, 1),
+                new GoalStats(0, 1),
+                false);
+        return new UnifiedLearnerStateResponse(
+                "SECRET-LEARNER-ID",
+                curriculum,
+                List.of(active),
+                goals,
+                List.of("teachActiveGoal"),
+                List.of(),
+                Set.of(),
                 "learning",
                 active,
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(), List.of(), active));

@@ -89,6 +89,7 @@ public final class OpenAiDeSecureOAuthTestServer {
     public static void registerConfidentialSecureProperties(
             DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
+        registry.add("skillpilot.openai.de.server-build", () -> "test-build");
         registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
         registry.add(
                 "skillpilot.openai.de.oauth.client-authentication-method",
@@ -108,6 +109,7 @@ public final class OpenAiDeSecureOAuthTestServer {
      */
     public static void registerSecureProperties(DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
+        registry.add("skillpilot.openai.de.server-build", () -> "test-build");
         registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
         registry.add(
                 "skillpilot.openai.de.oauth.client-authentication-method",

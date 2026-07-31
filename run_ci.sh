@@ -160,7 +160,16 @@ run_action_regression_ci() {
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
   npm --prefix "${PROJECT_ROOT}/ai/openai-custom-gpt-visible-session" test
-  node "${PROJECT_ROOT}/scripts/check_skillpilot_coach_plugin.mjs"
+  npm --prefix "${PROJECT_ROOT}/ai/openai app" ci
+  npm --prefix "${PROJECT_ROOT}/ai/openai app" test
+  node --test "${PROJECT_ROOT}/scripts/openai_plugin_release.test.mjs"
+  node "${PROJECT_ROOT}/scripts/check_openai_plugin_versioning.mjs"
+  SKILLPILOT_OPENAI_DE_MCP_URL="https://mcp-v1.skillpilot.com/mcp" \
+    SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE="https://mcp-v1.skillpilot.com" \
+    SKILLPILOT_OPENAI_DE_UI_ORIGIN="https://ui-v1.skillpilot.com" \
+    SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource" \
+    SKILLPILOT_SERVER_BUILD="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)" \
+    node "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.mjs"
 }
 
 run_application_frontend_ci() {
@@ -455,6 +464,9 @@ run_backend_ci() {
   echo "Backend CI build dir: ${SKILLPILOT_BACKEND_BUILD_DIR}"
   ./gradlew --stop >/dev/null 2>&1 || true
   ./gradlew clean check --no-daemon --no-watch-fs
+  cd "${PROJECT_ROOT}"
+  node scripts/openai_plugin_release.mjs verify
+  cd "${PROJECT_ROOT}/backend"
   rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
   cd "${PROJECT_ROOT}"
 }

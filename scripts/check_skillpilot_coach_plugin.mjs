@@ -2,13 +2,19 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
   repositoryRoot,
-  "ai/openai plugin/skillpilot-coach-de",
+  "ai/openai plugin/skillpilot-coach-de-v1",
 );
-const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-de");
+const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
+const goalVisualizationWidget = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
+);
+const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-de-v1");
 
 const read = (path) => readFileSync(path, "utf8");
 const readJson = (path) => JSON.parse(read(path));
@@ -17,6 +23,8 @@ const manifestSource = read(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const manifest = JSON.parse(manifestSource);
 const appConfig = readJson(resolve(pluginRoot, ".app.json"));
 const mcpConfig = readJson(resolve(pluginRoot, ".mcp.json"));
+const releaseLine = readJson(resolve(pluginRoot, "release/line.json"));
+const lifecycle = readJson(resolve(pluginRoot, "release/lifecycle.json"));
 const skill = read(resolve(skillRoot, "SKILL.md"));
 const policy = read(resolve(skillRoot, "references/coaching-policy.md"));
 const openAiYaml = read(resolve(skillRoot, "agents/openai.yaml"));
@@ -25,7 +33,7 @@ const openAiYaml = read(resolve(skillRoot, "agents/openai.yaml"));
 const skillAgent = JSON.parse(openAiYaml);
 const mcpContract = read(resolve(
   repositoryRoot,
-  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContract.java",
+  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
 ));
 const contextProjector = read(resolve(
   repositoryRoot,
@@ -35,9 +43,15 @@ const launchService = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/service/OpenAiDeCoachConnectionService.java",
 ));
+const contractMetadata = read(resolve(
+  repositoryRoot,
+  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1ContractMetadata.java",
+));
 const combinedSkill = `${skill}\n${policy}`;
 const completeBehavioralSurface =
   `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
+const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
+assert.match(runtimeCurriculumRevision, /^curricula-sha256@[0-9a-f]{64}$/);
 
 // Final directory limits and required MCP listing URLs:
 // https://developers.openai.com/plugins/deploy/submission-errors#listing-and-interface-errors
@@ -55,7 +69,7 @@ const requireHttpsUrl = (value, label, maxLength) => {
   assert.equal(parsed.password, "", `${label} must not contain credentials.`);
 };
 
-assert.equal(manifest.name, "skillpilot-coach-de");
+assert.equal(manifest.name, releaseLine.pluginIdentity);
 assert.match(manifest.name, /^[A-Za-z0-9][A-Za-z0-9_-]*$/);
 assert.ok(manifest.name.length <= 64);
 assert.match(
@@ -63,6 +77,14 @@ assert.match(
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:0|[1-9]\d*|[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|[A-Za-z-][0-9A-Za-z-]*))*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/,
   "version must be strict SemVer without leading zeroes or empty identifiers.",
 );
+const [manifestMajor] = manifest.version.split(".").map(Number);
+assert.equal(manifestMajor, releaseLine.contractMajor);
+assert.equal(releaseLine.schemaVersion, 1);
+assert.equal(releaseLine.pluginIdentity, "skillpilot-coach-de-v1");
+assert.equal(releaseLine.contractMajor, 1);
+assert.equal(releaseLine.stateSchemaVersion, 1);
+assert.equal(releaseLine.workflowVersion, "coach-de@1.0");
+assert.equal(Object.hasOwn(releaseLine, "curriculumRevision"), false);
 requireString(manifest.description, "description", 1024);
 requireString(manifest.author?.name, "author.name", 120);
 requireHttpsUrl(manifest.author?.url, "author.url", 2048);
@@ -80,6 +102,7 @@ assert.deepEqual(appConfig, {
 
 const pluginInterface = manifest.interface;
 requireString(pluginInterface?.displayName, "interface.displayName", 30);
+assert.equal(pluginInterface.displayName, "SkillPilot Coach DE v1");
 requireString(pluginInterface?.shortDescription, "interface.shortDescription", 30);
 requireString(pluginInterface?.longDescription, "interface.longDescription", 4000);
 requireString(pluginInterface?.developerName, "interface.developerName", 80);
@@ -105,7 +128,6 @@ for (const field of [
   "websiteURL",
   "privacyPolicyURL",
   "termsOfServiceURL",
-  "supportURL",
 ]) {
   requireHttpsUrl(
     pluginInterface?.[field],
@@ -113,11 +135,20 @@ for (const field of [
     1024,
   );
 }
-assert.equal(
-  pluginInterface.supportURL,
-  "https://skillpilot.com/imprint",
-  "The support listing must lead to the published support contact.",
-);
+assert.equal(Object.hasOwn(pluginInterface, "supportURL"), false);
+assert.equal(pluginInterface.brandColor, "#f59e0b");
+assert.equal(pluginInterface.composerIcon, "./assets/favicon-96x96.png");
+assert.equal(pluginInterface.logo, "./assets/web-app-manifest-512x512.png");
+for (const [sourceName, pluginPath] of [
+  ["favicon-96x96.png", pluginInterface.composerIcon],
+  ["web-app-manifest-512x512.png", pluginInterface.logo],
+]) {
+  assert.deepEqual(
+    readFileSync(resolve(pluginRoot, pluginPath)),
+    readFileSync(resolve(faviconRoot, sourceName)),
+    `${pluginPath} must be an exact copy of app/public/favicon/${sourceName}.`,
+  );
+}
 assert.ok(
   Array.isArray(pluginInterface.capabilities) &&
     pluginInterface.capabilities.length <= 20,
@@ -161,12 +192,94 @@ for (const prompt of pluginInterface.defaultPrompt) {
 
 assert.deepEqual(mcpConfig, {
   mcpServers: {
-    "skillpilot-coach-de": {
+    "skillpilot-coach-de-v1": {
       type: "http",
-      url: "https://skillpilot.com/api/openai/de/mcp",
+      url: "https://mcp-v1.skillpilot.com/mcp",
     },
   },
 });
+assert.equal(
+  mcpConfig.mcpServers[releaseLine.pluginIdentity].url,
+  releaseLine.publicMcpEndpoint,
+);
+
+const endpoint = new URL(releaseLine.publicMcpEndpoint);
+const oauthResource = new URL(releaseLine.oauthResource);
+const uiOrigin = new URL(releaseLine.publicUiOrigin);
+assert.equal(endpoint.protocol, "https:");
+assert.equal(endpoint.pathname, "/mcp");
+assert.equal(endpoint.origin, oauthResource.origin);
+assert.equal(releaseLine.oauthResource, oauthResource.origin);
+assert.equal(releaseLine.publicUiOrigin, uiOrigin.origin);
+assert.equal(endpoint.hostname, `mcp-v${releaseLine.contractMajor}.skillpilot.com`);
+assert.equal(uiOrigin.hostname, `ui-v${releaseLine.contractMajor}.skillpilot.com`);
+assert.notEqual(releaseLine.publicMcpEndpoint, releaseLine.oauthResource);
+assert.equal(
+  Object.hasOwn(releaseLine, "internalCompatibilityEndpoint"),
+  false,
+  "V1 must not publish or declare a compatibility endpoint",
+);
+assert.deepEqual(releaseLine.ui, {
+  enabled: true,
+  stateSchemaVersion: 1,
+  resources: [
+    {
+      mimeType: "text/html;profile=mcp-app",
+      path: "ui/goal-visualization.html",
+      uri: "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html",
+    },
+  ],
+});
+assert.equal(existsSync(goalVisualizationWidget), true);
+const goalVisualizationHtml = read(goalVisualizationWidget);
+assert.match(goalVisualizationHtml, /^<!doctype html>/i);
+assert.match(goalVisualizationHtml, /ui\/notifications\/tool-result/);
+assert.match(goalVisualizationHtml, /goalVisualization/);
+
+assert.equal(lifecycle.schemaVersion, 1);
+assert.equal(lifecycle.pluginIdentity, releaseLine.pluginIdentity);
+assert.equal(lifecycle.contractMajor, releaseLine.contractMajor);
+assert.ok(
+  new Set(["CURRENT", "SUPPORTED", "DEPRECATED", "UNPUBLISHED", "RETIRED"])
+    .has(lifecycle.lifecycle),
+);
+const lifecycleDates = [
+  "deprecatedAt",
+  "endOfSupportAt",
+  "unpublishAt",
+  "deleteAfter",
+];
+for (const field of lifecycleDates) {
+  assert.ok(
+    lifecycle[field] === null ||
+      /^\d{4}-\d{2}-\d{2}$/.test(lifecycle[field]),
+    `${field} must be null or an ISO calendar date.`,
+  );
+}
+if (lifecycle.lifecycle === "CURRENT") {
+  assert.equal(lifecycle.successorIdentity, null);
+  for (const field of lifecycleDates) {
+    assert.equal(lifecycle[field], null);
+  }
+} else {
+  requireString(lifecycle.successorIdentity, "successorIdentity", 64);
+  assert.notEqual(lifecycle.successorIdentity, releaseLine.pluginIdentity);
+}
+if (
+  new Set(["DEPRECATED", "UNPUBLISHED", "RETIRED"]).has(
+    lifecycle.lifecycle,
+  )
+) {
+  for (const field of lifecycleDates) {
+    assert.notEqual(lifecycle[field], null, `${field} is required.`);
+  }
+  const orderedDates = lifecycleDates.map((field) => lifecycle[field]);
+  assert.deepEqual(
+    [...orderedDates].sort(),
+    orderedDates,
+    "Lifecycle dates must be chronological.",
+  );
+}
 
 const frontmatterMatch = skill.match(/^---\n([\s\S]*?)\n---(?:\n|$)/);
 assert.ok(frontmatterMatch, "SKILL.md must contain a closed YAML frontmatter block.");
@@ -189,7 +302,7 @@ assert.deepEqual(
   ["description", "name"],
   "SKILL.md frontmatter must contain exactly name and description.",
 );
-assert.equal(frontmatterEntries.get("name"), "skillpilot-coach-de");
+assert.equal(frontmatterEntries.get("name"), releaseLine.pluginIdentity);
 requireString(
   frontmatterEntries.get("description"),
   "SKILL.md description",
@@ -204,20 +317,20 @@ assert.match(
 assert.match(skill, /Zeige, wiederhole, erfrage oder rekonstruiere sie nicht\./);
 assert.deepEqual(skillAgent, {
   interface: {
-    display_name: "SkillPilot Coach (Deutsch)",
+    display_name: "SkillPilot Coach DE v1",
     short_description: "Persönlicher deutscher SkillPilot-Lerncoach",
     default_prompt:
-      "Verwende $skillpilot-coach-de und fahre mit meinem vorbereiteten SkillPilot-Lernschritt fort.",
+      "Verwende $skillpilot-coach-de-v1 und fahre mit meinem vorbereiteten SkillPilot-Lernschritt fort.",
   },
   dependencies: {
     tools: [
       {
         type: "mcp",
-        value: "skillpilot-coach-de",
+        value: "skillpilot-coach-de-v1",
         description:
           "SkillPilot-Lernzustand, Navigation, Mastery, Verified Recall und Prüfungen",
         transport: "streamable_http",
-        url: "https://skillpilot.com/api/openai/de/mcp",
+        url: "https://mcp-v1.skillpilot.com/mcp",
       },
     ],
   },
@@ -225,6 +338,10 @@ assert.deepEqual(skillAgent, {
     allow_implicit_invocation: false,
   },
 });
+assert.equal(
+  skillAgent.dependencies.tools[0].url,
+  releaseLine.publicMcpEndpoint,
+);
 
 const policyIds = [
   "COACH-STATE-001",
@@ -298,5 +415,62 @@ assert.match(
   "The SkillPilot UI launch must still carry the independent learning session.",
 );
 assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
+assert.match(combinedSkill, /expectedStateVersion/);
+assert.match(combinedSkill, /clientRequestId/);
+assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
+assert.match(combinedSkill, /MCP-App.*Zielvisualisierung/s);
+assert.match(combinedSkill, /nicht als\s+Quelle, Beleg, Aufgabe, Lösung oder\s+Leistungsnachweis/s);
 
-console.log("SkillPilot Coach plugin contract check passed.");
+const javaConstant = (name) => {
+  const match = contractMetadata.match(
+    new RegExp(`public static final (?:String|int) ${name} =\\s*(?:\"([^\"]+)\"|(\\d+));`),
+  );
+  assert.ok(match, `Missing Java V1 contract constant ${name}.`);
+  return match[1] ?? Number(match[2]);
+};
+assert.equal(javaConstant("PLUGIN_IDENTITY"), releaseLine.pluginIdentity);
+assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
+assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
+assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
+assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
+assert.equal(javaConstant("PUBLIC_UI_ORIGIN"), releaseLine.publicUiOrigin);
+assert.equal(
+  javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
+  releaseLine.ui.resources[0].uri,
+);
+assert.equal(
+  javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
+  releaseLine.ui.resources[0].mimeType,
+);
+assert.equal(
+  javaConstant("INTERNAL_MCP_PATH"),
+  "/internal/openai/de/v1/mcp",
+);
+assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
+assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
+assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
+
+assert.match(mcpContract, /EXPECTED_STATE_VERSION = "expectedStateVersion"/);
+assert.match(mcpContract, /CLIENT_REQUEST_ID = "clientRequestId"/);
+assert.match(mcpContract, /withVersionMetadataSchema/);
+assert.match(mcpContract, /OpenAiDeV1McpSessionCoordinator/);
+
+const publishedToolNames = new Set(
+  [...mcpContract.matchAll(
+    /public static final String [A-Z_]+ = "((?:get|set|start|record)_skillpilot_[a-z_]+_de)";/g,
+  )].map((match) => match[1]),
+);
+for (const toolName of new Set(
+  [...combinedSkill.matchAll(
+    /\b((?:get|set|start|record)_skillpilot_[a-z_]+_de)\b/g,
+  )].map((match) => match[1]),
+)) {
+  assert.equal(
+    publishedToolNames.has(toolName),
+    true,
+    `Skill references an unknown V1 tool: ${toolName}`,
+  );
+}
+assert.equal(/\b(?:skillpilot-coach-de-v2|mcp-v2|ui-v2)\b/.test(combinedSkill), false);
+
+console.log("SkillPilot Coach DE v1 plugin and version contract check passed.");

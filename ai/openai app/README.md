@@ -8,6 +8,16 @@ Dieser Ordner enthält zwei getrennte, ausführbare MCP-App-Prototypen:
 Sie sind von den Custom-GPT-Varianten unter `ai/openai custom gpt/` und
 `ai/openai-custom-gpt-visible-session/` vollständig getrennt.
 
+> **Abgrenzung:** Dieser Node-Server ist ein lokales Widget- und
+> Protokoll-Testbett. Der zur Veröffentlichung vorgesehene deutsche
+> Produktvertrag ist die chat-first Linie **SkillPilot Coach DE v1** unter
+> `https://mcp-v1.skillpilot.com/mcp` mit OAuth-Resource
+> `https://mcp-v1.skillpilot.com`. Der Node-MCP-Server wird nicht produktiv
+> geschaltet; die hier gebaute, selbstenthaltene read-only
+> Lernzielvisualisierung wird dagegen als versionierte Ressource vom
+> Spring-Boot-MCP-Server ausgeliefert. Der `1.0.0`-Draft ist noch nicht
+> veröffentlicht.
+
 ## Was der Prototyp beweist
 
 Der vertikale Ablauf ist protokollseitig vollständig:
@@ -78,6 +88,10 @@ Die Tests prüfen insbesondere:
 - idempotente Wiederholung von Kurswahl und Einreichung ohne Doppelmutation;
 - Persistenz nach Neuinstanziierung des Stores;
 - selbstenthaltene Widgets ohne externe Skripte, Styles oder Service Worker.
+- die separate Lernzielbild-Komponente mit
+  `ui/notifications/tool-result`, optionalem `window.openai.toolOutput`,
+  zugänglichem Alttext, `ui/open-link` und sicherer leerer Darstellung ohne
+  gültiges Bild.
 
 ## Paketstruktur
 
@@ -90,16 +104,19 @@ ai/openai app/
     create-mcp-server.mjs  MCP-Tools und UI-Ressource
     app-server.mjs         Streamable-HTTP-Endpunkte
   widget/
-    src/                    Standard-MCP-Apps-Bridge und UI
+    src/                    Standard-MCP-Apps-Bridge, Coach- und Zielbild-UI
     template.html
   scripts/build-widget.mjs
   test/
   dist/                     generiert, nicht versioniert
 ```
 
-Die Widgets werden aus derselben geprüften Implementierung separat kompiliert.
-Toolnamen und sämtliche sichtbaren Texte werden dabei fest in das jeweilige
-Sprachartefakt eingebaut.
+Die interaktiven Coach-Widgets werden aus derselben geprüften Implementierung
+separat pro Sprache kompiliert. Zusätzlich entsteht
+`dist/goal-visualization/widget.html`. Diese kompakte Komponente erwartet
+`structuredContent.goalVisualization` mit Ziel-ID, Titel, optionaler
+Beschreibung, öffentlicher HTTPS-Bild-URL, Alttext und Cockpit-Link. Ohne
+vollständige gültige Daten sowie bei einem Bildladefehler bleibt sie verborgen.
 
 ## Sicherheits- und Zustandsgrenze
 
@@ -157,13 +174,24 @@ Toolergebnissen oder im Widget. OAuth allein wählt keinen Lernenden; jeder
 fachliche Modellaufruf trägt die unveränderte, absolut auf 24 Stunden begrenzte
 Lernsession.
 
+Der Spring-Pfad registriert die Zielbild-Komponente unter
+`ui://skillpilot/coach/v1/1.0.0/goal-visualization.html` für
+`get_skillpilot_context_de` und `set_skillpilot_active_goal_de`. Das Backend
+liefert `goalVisualization` ausschließlich für ein aktives atomares Ziel mit
+passendem kanonischem Bildlink. Die Karte ist Orientierung, keine Evidenz,
+Aufgabe, Lösung, Bewertung oder Zustandsmutation. Da `1.0.0` noch nicht
+veröffentlicht wurde, gehört sie zum selben veränderlichen Draft und löst
+keinen Versionssprung aus.
+
 ## ChatGPT- und Plugin-Test
 
 Die genaue Abfolge steht in [TEST_AND_PLUGIN_HANDOFF.md](TEST_AND_PLUGIN_HANDOFF.md).
 Das versionierte deutsche Quellpaket liegt unter
-[`../openai plugin/skillpilot-coach-de`](<../openai plugin/skillpilot-coach-de/>).
+[`../openai plugin/skillpilot-coach-de-v1`](<../openai plugin/skillpilot-coach-de-v1/>).
 Es enthält Manifest, direkte MCP-Bindung, Coach-Skill und die echte
 hostgenerierte `.app.json`-Abbildung der bereits registrierten deutschen
 Pilot-App. Diese zusätzliche Abbildung ist nur für den lokalen
 End-to-End-Test bestimmt; für die öffentliche Einreichung bleibt der direkt
 eingereichte MCP-Server maßgeblich.
+Paket-, Contract- und Lifecycle-Regeln stehen im
+[Versionierungs- und Lebenszyklusplan](../../docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md).

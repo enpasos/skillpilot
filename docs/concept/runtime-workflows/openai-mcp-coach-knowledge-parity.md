@@ -3,7 +3,7 @@
 **Stand:** 30. Juli 2026
 
 **Status:** normative Current-to-Target-Paritätsmatrix für deutschen Coach-Skill
-und UI-lose MCP-App
+und chat-first MCP-App mit read-only Lernzielvisualisierung
 
 Diese Matrix weist nach, **wo** die früheren Regeln technisch wirksam werden
 sollen. Sie ist kein Nachweis, dass das Zusammenspiel von Modell, Tools,
@@ -13,14 +13,16 @@ Journeys und Acceptance-Gates stehen in
 [Verhaltensintegration des deutschen MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md).
 
 Die ChatGPT-MCP-App allein besitzt keine Knowledge-Uploadfläche wie ein Custom
-GPT. Das versionierte deutsche Quellpaket unter
-[`ai/openai plugin/skillpilot-coach-de`](<../../../ai/openai plugin/skillpilot-coach-de/>)
+GPT. Das versionierte deutsche V1-Quellpaket unter
+[`ai/openai plugin/skillpilot-coach-de-v1`](<../../../ai/openai plugin/skillpilot-coach-de-v1/>)
 ergänzt sie deshalb um einen Coach-Skill. Die bewährten deutschen Inhalte unter
 `ai/openai custom gpt` bleiben fachlich-didaktische Ausgangsspezifikation,
 werden aber nicht als alte Knowledge-Dateien zur Laufzeit gesucht oder
 hochgeladen. Sie werden nachvollziehbar in Skill, Skill-Referenz, kurze
 Server-Instruktionen, zustandsabhängige Policies, Toolbeschreibungen und
 Backendguards überführt.
+Paket-SemVer, Contract Major, öffentliche Origins und Lifecycle folgen dem
+[Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md).
 
 Bis der Skill im realen Providerhost Verhaltensparität erreicht, bleiben die
 heutigen ausführlichen Server-Instruktionen als Kompatibilitätsschicht aktiv.
@@ -80,7 +82,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Verified Recall: ganzer Batch, Sollantwort erst nach Antwort, jedes Ergebnis speichern, erst dann nächster Batch | Recall-Policy und die drei Recall-Toolbeschreibungen/-Ergebnisse | Skill-Ablauf sowie die drei Recall-Toolbeschreibungen und -Ergebnisse | alle drei Operationen verlangen das aktuelle sichtbare aktive atomische Memory-/SRS-Ziel; Karte und SRS-Typ werden zusätzlich backendseitig geprüft; ein vollständiger Evidence-Receipt bleibt eine spätere Härtung |
 | Prüfung: Aufgabe wortgetreu, keine Hinweise oder Rückfragen, Lösung erst nach vollständiger Abgabe | Exam-Policy, Context-Instruktion und Evaluationstool | Skill, Skill-Referenz, aktuelle Exam-Instruktion und Evaluationstool | Lösung/Raster fehlen im normalen Context und werden nur für das aktive freigegebene Exam ausgeliefert |
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
-| nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; Visualisierungen im Cockpit | globale Context-Policy und allowlist-projizierte Ressourcen | kurze Server-Invariante, Skill-Ausgaberegel und projizierte Ressource | private Bildpfade und interne Identität werden aus dem Providerzustand entfernt |
+| nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und in der OpenAI-MCP-UI | globale Context-Policy, allowlist-projizierte Ressourcen, optionale `goalVisualization` und versionierte UI-Ressource | kurze Server-Invariante, Skill-Ausgaberegel und sichere Projektion | nur Context-Read und Zielaktivierung binden die UI; private oder nicht passende Bildpfade und interne Identität werden entfernt; ohne gültiges Bild bleibt der normale Chat |
 | `requiresCockpit` betrifft nur die Ressource; Cockpit-Üben pausiert die Kartenprüfung | Ressourcen- und Memory-Mode-Instruktion | Skill-Referenz und aktuelle Modus-Instruktion | Cockpit-URL wird serverseitig erzeugt; keine Modellkonstruktion |
 | Fortschritt nur frisch, aktueller Scope zuerst, keine Schätzung, Abschluss ohne erfundene Ziele | globale Progress-Policy und Completion-Instruktion | Skill-Referenz sowie Progress- und Completion-Instruktion | Zahlen und Abschlussstatus stammen ausschließlich aus dem Backend |
 | Mathematik nur mit `\(...\)` und `\[...\]` | Server-Instruktionen und globale Context-Policy | Skill-Ausgaberegel | ausgelieferte freigegebene Inhalte werden zusätzlich normalisiert |
@@ -110,7 +112,7 @@ frisch rehydriert.
 
 ## Verbleibende modellseitige Grenzen
 
-In der ersten UI-losen Version kann das Backend nicht kryptografisch beweisen,
+In der ersten chat-first Version kann das Backend nicht kryptografisch beweisen,
 dass vor dem Abruf einer Recall-Sollantwort tatsächlich eine Lernendenantwort
 oder vor der Exam-Evaluation eine vollständige Chat-Abgabe vorlag. Ebenso kann
 es die fachliche Qualität zweier Mastery-Checks nicht aus einem reinen
@@ -120,4 +122,6 @@ frischen Policy-Paket und Toolergebnis.
 Eine spätere Härtungsstufe kann serverseitige Attempt-/Evidence-Receipts mit
 `learnerAnswer` beziehungsweise `submissionText` einführen. Das ist eine
 zusätzliche Sicherheitsverbesserung, keine Voraussetzung für den ersten
-UI-losen Cutover.
+chat-first Cutover. Die bereits enthaltene read-only Zielbildkarte ändert diese
+Evidenzgrenze nicht: Ein Bild ist weder Lernendenantwort noch Aufgabe, Lösung,
+Bewertung oder Mastery-Nachweis.

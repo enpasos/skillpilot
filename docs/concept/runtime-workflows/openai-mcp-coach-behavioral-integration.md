@@ -254,7 +254,7 @@ jedoch keine Backendguards.
 Im aktuellen Übergangszustand liegen die Regeln technisch verteilt in:
 
 - dem noch nicht produktiv aktivierten Quellskill unter
-  `ai/openai plugin/skillpilot-coach-de/skills/skillpilot-coach-de`;
+  `ai/openai plugin/skillpilot-coach-de-v1/skills/skillpilot-coach-de-v1`;
 - `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS`;
 - den Toolverträgen in `OpenAiDeCoachMcpContract`;
 - den dynamischen Policies und Instruktionen in

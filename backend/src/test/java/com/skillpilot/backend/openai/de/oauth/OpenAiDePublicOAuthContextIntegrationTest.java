@@ -24,6 +24,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.yaml",
         "skillpilot.openai.de.enabled=true",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
+        "skillpilot.openai.de.server-build=test-build",
         "skillpilot.openai.de.security.secure-mode=true",
         "skillpilot.openai.de.oauth.enabled=true",
         "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
@@ -35,8 +36,9 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.openai.de.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://skillpilot.test/api/openai/de/mcp",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://skillpilot.test/api/openai/de/oauth/protected-resource"
+        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
 })
 class OpenAiDePublicOAuthContextIntegrationTest {
 

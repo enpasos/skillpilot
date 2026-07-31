@@ -53,6 +53,15 @@ public class Learner {
     @Column(name = "strict_mode")
     private Boolean strictMode = false;
 
+    /**
+     * Monotone revision of the learner state shared by the cockpit and all
+     * coach transports. This is deliberately learner-scoped rather than
+     * learning-session-scoped so stale writes are detected across browser and
+     * MCP sessions.
+     */
+    @Column(name = "coach_state_revision", nullable = false)
+    private long coachStateRevision;
+
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
     private java.util.Set<CopySource> copySources = new java.util.HashSet<>();
@@ -143,6 +152,14 @@ public class Learner {
 
     public void setStrictMode(Boolean strictMode) {
         this.strictMode = strictMode;
+    }
+
+    public long getCoachStateRevision() {
+        return coachStateRevision;
+    }
+
+    public void setCoachStateRevision(long coachStateRevision) {
+        this.coachStateRevision = coachStateRevision;
     }
 
     // Needed for JPA toolchain to set generated ID

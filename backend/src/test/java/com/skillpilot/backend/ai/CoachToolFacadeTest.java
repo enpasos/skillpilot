@@ -58,7 +58,7 @@ class CoachToolFacadeTest {
         Instant expiresAt = Instant.parse("2026-07-14T10:00:00Z");
         when(chatSessionService.redeemStartCode("START-123", "de"))
                 .thenReturn(new ChatSessionService.RedeemedSession(sessionToken, expiresAt, skillpilotId));
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "setActiveGoal"));
 
         CoachToolFacade.RedeemedCoachSession result = facade.redeemStartCode("START-123", "de");
@@ -70,7 +70,7 @@ class CoachToolFacadeTest {
         assertThat(result.state().copySources()).isEmpty();
         assertThat(result.state().stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         verify(chatSessionService).redeemStartCode("START-123", "de");
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -80,7 +80,7 @@ class CoachToolFacadeTest {
         String sessionToken = "session-token";
         String goalId = "goal-2";
         when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(
                         learnerState(skillpilotId, "chooseMemoryMode"),
                         learnerState(skillpilotId, "teachActiveGoal"));
@@ -95,9 +95,9 @@ class CoachToolFacadeTest {
         ordered.verify(chatSessionService).resolveSkillpilotId(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -148,7 +148,7 @@ class CoachToolFacadeTest {
         UpdateCurriculumRequest request = new UpdateCurriculumRequest();
         request.setCurriculumId("curriculum-current");
         UnifiedLearnerStateResponse updatedState = learnerState(skillpilotId, "setPersonalization");
-        when(learnerService.getLearnerState(skillpilotId)).thenReturn(updatedState);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(updatedState);
 
         UnifiedLearnerStateResponse result = facade.setCurriculum(skillpilotId, request);
 
@@ -156,7 +156,7 @@ class CoachToolFacadeTest {
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService)
                 .setCurriculumFromPublicCatalog(skillpilotId, "curriculum-current");
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -165,7 +165,7 @@ class CoachToolFacadeTest {
         String skillpilotId = "learner-1";
         String goalId = "goal-1";
         MasteryUpdateResponse serviceResult = masteryUpdate(goalId);
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "teachActiveGoal"));
         ArgumentCaptor<MasteryUpdateRequest> requestCaptor = ArgumentCaptor.forClass(MasteryUpdateRequest.class);
         when(learnerService.setMastery(
@@ -183,7 +183,7 @@ class CoachToolFacadeTest {
         assertThat(requestCaptor.getValue().goalId()).isEqualTo(goalId);
         assertThat(requestCaptor.getValue().mastery()).containsExactlyEntriesOf(Map.of(goalId, 1.0));
         verify(learnerService).assertWritableLearningSession(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -192,7 +192,7 @@ class CoachToolFacadeTest {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";
         when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "setPersonalization"));
 
         CoachToolFacade.MasteryResult result = facade.setSessionMastery(
@@ -205,7 +205,7 @@ class CoachToolFacadeTest {
         verify(chatSessionService).resolveSkillpilotId(sessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -307,7 +307,7 @@ class CoachToolFacadeTest {
     void idBasedExamEvaluationReturnsOnlyTypedReleasedMaterialFromTheRawActiveGoal() {
         String skillpilotId = "learner-1";
         FrontierGoal examGoal = examGoal("exam-1", "released");
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "teachActiveGoal", examGoal));
 
         CoachToolFacade.ExamEvaluationResult result = facade.getExamEvaluation(
@@ -325,7 +325,7 @@ class CoachToolFacadeTest {
             assertThat(step.description()).isEqualTo("Vollständig gelöst");
         });
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        verify(learnerService).getLearnerState(skillpilotId);
+        verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -335,7 +335,7 @@ class CoachToolFacadeTest {
         String sessionToken = "session-token";
         FrontierGoal examGoal = examGoal("exam-1", "released");
         when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "teachActiveGoal", examGoal));
 
         CoachToolFacade.ExamEvaluationResult result = facade.getSessionExamEvaluation(
@@ -346,7 +346,7 @@ class CoachToolFacadeTest {
         InOrder ordered = inOrder(chatSessionService, learnerService);
         ordered.verify(chatSessionService).resolveSkillpilotId(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
-        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -354,7 +354,7 @@ class CoachToolFacadeTest {
     void examEvaluationPreservesBadRequestAndConflictGuards() {
         String skillpilotId = "learner-1";
         FrontierGoal examGoal = examGoal("exam-1", "released");
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "teachActiveGoal", examGoal));
 
         assertThatThrownBy(() -> facade.getExamEvaluation(
@@ -378,7 +378,7 @@ class CoachToolFacadeTest {
         FrontierGoal draft = examGoal("exam-draft", "needs_review");
         FrontierGoal incomplete = examGoal("exam-incomplete", "released");
         incomplete.examData().setScoring(null);
-        when(learnerService.getLearnerState(skillpilotId))
+        when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(
                         learnerState(skillpilotId, "teachActiveGoal", draft),
                         learnerState(skillpilotId, "teachActiveGoal", incomplete));

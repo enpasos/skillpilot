@@ -229,18 +229,38 @@ class OpenAiMtlsVerifierTest(unittest.TestCase):
 
 
 class NginxContractTest(unittest.TestCase):
-    def test_mtls_is_scoped_to_mcp_resource(self) -> None:
+    def test_v1_edge_routes_public_contract_without_redirect(self) -> None:
         text = (
             ROOT
             / "deploy"
             / "openai-mtls"
-            / "skillpilot-openai-de-mtls.nginx.conf"
+            / "skillpilot-openai-de-v1-edge.nginx.conf"
         ).read_text(encoding="utf-8")
+        self.assertIn("mcp-v1.skillpilot.com", text)
         self.assertIn("ssl_verify_client optional;", text)
-        self.assertIn("location = /api/openai/de/mcp", text)
-        self.assertIn("location ^~ /api/openai/de/mcp/", text)
-        self.assertNotIn("location /api/openai/de/oauth", text)
-        self.assertIn("auth_request /_skillpilot/openai-mtls/verify;", text)
+        self.assertIn("location = /mcp", text)
+        self.assertIn("location ^~ /mcp/", text)
+        self.assertIn(
+            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/mcp;",
+            text,
+        )
+        self.assertIn(
+            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/mcp/;",
+            text,
+        )
+        self.assertNotIn("return 30", text)
+        self.assertIn(
+            "location = /.well-known/oauth-protected-resource",
+            text,
+        )
+        self.assertIn(
+            "location = /.well-known/openai-apps-challenge",
+            text,
+        )
+        self.assertIn(
+            "auth_request /_skillpilot/openai-mtls/verify-v1;",
+            text,
+        )
         self.assertIn('X-Forwarded-For ""', text)
         self.assertIn('Forwarded ""', text)
         self.assertIn('X-OpenAI-Client-Cert ""', text)
@@ -251,6 +271,7 @@ class NginxContractTest(unittest.TestCase):
             text,
         )
 
+    def test_verifier_service_pins_both_ca_levels(self) -> None:
         unit = (
             ROOT
             / "deploy"
@@ -264,11 +285,12 @@ class NginxContractTest(unittest.TestCase):
 
 class OAuthMetadataContractTest(unittest.TestCase):
     BASE_URL = "https://skillpilot.com"
+    V1_RESOURCE = "https://mcp-v1.skillpilot.com"
 
-    def test_accepts_exact_protected_resource_contract(self) -> None:
+    def test_accepts_v1_origin_as_default_protected_resource(self) -> None:
         METADATA_MODULE.validate_protected_resource(
             {
-                "resource": f"{self.BASE_URL}/api/openai/de/mcp",
+                "resource": self.V1_RESOURCE,
                 "authorization_servers": [
                     f"{self.BASE_URL}/api/openai/de"
                 ],
@@ -278,7 +300,8 @@ class OAuthMetadataContractTest(unittest.TestCase):
                 ],
                 "bearer_methods_supported": ["header"],
             },
-            self.BASE_URL,
+            self.V1_RESOURCE,
+            authorization_base_url=self.BASE_URL,
         )
 
     def test_rejects_http_200_json_with_wrong_resource(self) -> None:
@@ -295,6 +318,43 @@ class OAuthMetadataContractTest(unittest.TestCase):
                     ],
                     "bearer_methods_supported": ["header"],
                 },
+                self.BASE_URL,
+            )
+
+    def test_accepts_v1_resource_with_shared_authorization_server(self) -> None:
+        METADATA_MODULE.validate_protected_resource(
+            {
+                "resource": self.V1_RESOURCE,
+                "authorization_servers": [
+                    f"{self.BASE_URL}/api/openai/de"
+                ],
+                "scopes_supported": [
+                    METADATA_MODULE.READ_SCOPE,
+                    METADATA_MODULE.WRITE_SCOPE,
+                ],
+                "bearer_methods_supported": ["header"],
+            },
+            self.V1_RESOURCE,
+            self.V1_RESOURCE,
+            self.BASE_URL,
+        )
+
+    def test_rejects_v1_metadata_bound_to_another_resource(self) -> None:
+        with self.assertRaisesRegex(MetadataValidationError, "resource"):
+            METADATA_MODULE.validate_protected_resource(
+                {
+                    "resource": f"{self.BASE_URL}/api/other/mcp",
+                    "authorization_servers": [
+                        f"{self.BASE_URL}/api/openai/de"
+                    ],
+                    "scopes_supported": [
+                        METADATA_MODULE.READ_SCOPE,
+                        METADATA_MODULE.WRITE_SCOPE,
+                    ],
+                    "bearer_methods_supported": ["header"],
+                },
+                self.V1_RESOURCE,
+                self.V1_RESOURCE,
                 self.BASE_URL,
             )
 
@@ -414,7 +474,43 @@ class DeploymentSecurityGateContractTest(unittest.TestCase):
         self.assertIn("openai-client-ca-bundle.pem", script)
         self.assertIn("skillpilot-openai-mtls-verifier.py", script)
         self.assertIn("skillpilot-openai-mtls-verifier.service", script)
-        self.assertIn("skillpilot-openai-de-mtls.conf", script)
+        self.assertIn("skillpilot-openai-de-v1-edge.conf", script)
+        self.assertIn("obsolete_nginx_snippet PASS absent", script)
+        self.assertIn("obsolete_public_mcp_route PASS absent", script)
+
+    def test_installer_removes_only_an_inactive_obsolete_edge_snippet(self) -> None:
+        script = (
+            ROOT / "scripts" / "install_openai_mtls_edge.sh"
+        ).read_text(encoding="utf-8")
+        guard_index = script.index('nginx -T 2>&1 | grep -Fq "${OBSOLETE_NGINX_SNIPPET}"')
+        remove_index = script.index('rm -f -- "${OBSOLETE_NGINX_SNIPPET}"')
+        self.assertLess(guard_index, remove_index)
+        self.assertIn("Remove the obsolete include", script)
+
+    def test_deploy_checks_v1_snapshot_before_build_and_gates_public_smoke(self) -> None:
+        script = (ROOT / "scripts" / "deploy.sh").read_text(encoding="utf-8")
+        version_index = script.index("check_openai_plugin_versioning.mjs")
+        snapshot_index = script.index("openai_plugin_release.mjs verify")
+        build_index = script.index('echo "Baue Anwendung..."')
+        self.assertLess(version_index, snapshot_index)
+        self.assertLess(snapshot_index, build_index)
+        self.assertIn(
+            "SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED",
+            script,
+        )
+        self.assertIn("verify_openai_v1_public_edge.sh", script)
+
+    def test_public_edge_smoke_is_https_only_and_checks_exact_contract(self) -> None:
+        script = (
+            ROOT / "scripts" / "verify_openai_v1_public_edge.sh"
+        ).read_text(encoding="utf-8")
+        self.assertIn("--proto '=https'", script)
+        self.assertIn("--max-redirs 0", script)
+        self.assertIn("--connect-timeout 5", script)
+        self.assertIn("--max-time 15", script)
+        self.assertIn("/.well-known/openai-apps-challenge", script)
+        self.assertIn("/.well-known/oauth-protected-resource", script)
+        self.assertIn("resource_metadata=", script)
 
     def test_focused_backend_security_tests_run_before_restart(self) -> None:
         script = (ROOT / "scripts" / "deploy.sh").read_text(encoding="utf-8")

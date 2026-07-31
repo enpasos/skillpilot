@@ -49,6 +49,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
 - [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
   Target architecture for separate German and English public plugin submissions that combine a coaching skill with a directly submitted MCP server; local pilots map an existing registered connection separately while preserving the authoritative SkillPilot domain core, direct provider billing, and staged production gates.
+- [OpenAI-Plugin: Versionierung und Lebenszyklus](runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
+  Binding version-line, compatibility, snapshot, lifecycle, release, and retirement rules for the German `SkillPilot Coach DE v1` plugin.
 - [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
   DE-first implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
 - [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)

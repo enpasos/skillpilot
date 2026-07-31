@@ -23,8 +23,10 @@ third:
    active production profile.
 3. **Optional mTLS authenticates the OpenAI connector infrastructure as the
    MCP client.** It does not by itself attest one uniquely named app. If this
-   hardening is enabled, only the resource `/api/openai/de/mcp` and its
-   subpaths require an OpenAI-managed client certificate.
+   hardening is enabled, only the V1 public resource `/mcp` on
+   `mcp-v1.skillpilot.com` and its subpaths require an OpenAI-managed client
+   certificate. Nginx maps it internally to
+   `/internal/openai/de/v1/mcp` over loopback.
 4. **A separate SkillPilot learning-session ID selects the learner context.**
    Every explicit **Lernen starten** action creates a fresh, high-entropy
    session valid for exactly 24 hours. SkillPilot inserts it automatically into
@@ -80,19 +82,37 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_openai_mtls_edge.py
 sudo ./scripts/install_openai_mtls_edge.sh
 ```
 
-Inside the existing `listen 443 ssl` server block for `skillpilot.com`, add:
+Inside the dedicated `listen 443 ssl` server block for
+`mcp-v1.skillpilot.com`, add:
 
 ```nginx
-include /etc/nginx/snippets/skillpilot-openai-de-mtls.conf;
+include /etc/nginx/snippets/skillpilot-openai-de-v1-edge.conf;
 ```
+
+Remove any old include of
+`/etc/nginx/snippets/skillpilot-openai-de-mtls.conf` from the
+`skillpilot.com` TLS server block before running the installer. The installer
+then removes the inactive stale file; it stops instead of breaking nginx when
+the include is still active. `--installed` also fails if the old route or
+snippet remains.
 
 Do not put the include at global `http` scope and do not copy its client
 certificate requirement to OAuth or well-known locations.
+The protected-resource metadata
+`https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource` remains
+public. The exact OAuth Resource/Audience is the origin
+`https://mcp-v1.skillpilot.com`, while the OAuth issuer remains on
+`https://skillpilot.com/api/openai/de`.
 
 Set:
 
 ```dotenv
 SERVER_ADDRESS=127.0.0.1
+SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
+SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
+SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
+SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
+SKILLPILOT_SERVER_BUILD=<vollständiger Git-SHA des Deployments>
 SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
 SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 ```

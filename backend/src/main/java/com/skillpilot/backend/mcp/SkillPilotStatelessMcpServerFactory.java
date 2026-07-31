@@ -60,7 +60,8 @@ public final class SkillPilotStatelessMcpServerFactory {
                 serverVersion,
                 instructions,
                 DEFAULT_REQUEST_TIMEOUT,
-                toolSpecifications);
+                toolSpecifications,
+                List.of());
     }
 
     public Registration create(
@@ -70,24 +71,50 @@ public final class SkillPilotStatelessMcpServerFactory {
             String instructions,
             Duration requestTimeout,
             List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications) {
+        return create(
+                endpoint,
+                serverName,
+                serverVersion,
+                instructions,
+                requestTimeout,
+                toolSpecifications,
+                List.of());
+    }
+
+    public Registration create(
+            String endpoint,
+            String serverName,
+            String serverVersion,
+            String instructions,
+            Duration requestTimeout,
+            List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications,
+            List<McpStatelessServerFeatures.SyncResourceSpecification> resourceSpecifications) {
         String normalizedEndpoint = requireEndpoint(endpoint);
         String normalizedName = requireText(serverName, "serverName");
         String normalizedVersion = requireText(serverVersion, "serverVersion");
         String normalizedInstructions = requireText(instructions, "instructions");
         Duration normalizedTimeout = requirePositive(requestTimeout, "requestTimeout");
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = copyAndValidateTools(toolSpecifications);
+        List<McpStatelessServerFeatures.SyncResourceSpecification> resources =
+                copyAndValidateResources(resourceSpecifications);
 
         WebMvcStatelessServerTransport transport = WebMvcStatelessServerTransport.builder()
                 .jsonMapper(jsonMapper)
                 .messageEndpoint(normalizedEndpoint)
                 .build();
 
+        McpSchema.ServerCapabilities.Builder capabilities =
+                McpSchema.ServerCapabilities.builder().tools(false);
+        if (!resources.isEmpty()) {
+            capabilities.resources(false, false);
+        }
         McpStatelessSyncServer server = McpServer.sync(transport)
                 .serverInfo(normalizedName, normalizedVersion)
                 .instructions(normalizedInstructions)
-                .capabilities(McpSchema.ServerCapabilities.builder().tools(false).build())
+                .capabilities(capabilities.build())
                 .requestTimeout(normalizedTimeout)
                 .tools(tools)
+                .resources(resources)
                 // Tool handlers rely on the request's Spring Security context. Keep execution on
                 // the servlet request thread instead of moving it to a scheduler.
                 .immediateExecution(true)
@@ -96,6 +123,7 @@ public final class SkillPilotStatelessMcpServerFactory {
         return new Registration(
                 normalizedEndpoint,
                 List.copyOf(tools),
+                List.copyOf(resources),
                 transport,
                 server,
                 withLegacyProtocolFallback(transport.getRouterFunction()));
@@ -162,6 +190,22 @@ public final class SkillPilotStatelessMcpServerFactory {
         return tools;
     }
 
+    private static List<McpStatelessServerFeatures.SyncResourceSpecification> copyAndValidateResources(
+            List<McpStatelessServerFeatures.SyncResourceSpecification> resourceSpecifications) {
+        Objects.requireNonNull(resourceSpecifications, "resourceSpecifications");
+        List<McpStatelessServerFeatures.SyncResourceSpecification> resources =
+                List.copyOf(resourceSpecifications);
+        Set<String> uris = new HashSet<>();
+        for (McpStatelessServerFeatures.SyncResourceSpecification specification : resources) {
+            Objects.requireNonNull(specification, "resourceSpecifications must not contain null");
+            String uri = requireText(specification.resource().uri(), "resource URI");
+            if (!uris.add(uri)) {
+                throw new IllegalArgumentException("duplicate MCP resource URI: " + uri);
+            }
+        }
+        return resources;
+    }
+
     /**
      * Spring owns this bean and invokes {@link #close()} during shutdown. The router is exposed as a
      * separate bean by the provider configuration so Spring MVC can compose multiple MCP routes.
@@ -169,6 +213,7 @@ public final class SkillPilotStatelessMcpServerFactory {
     public record Registration(
             String endpoint,
             List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications,
+            List<McpStatelessServerFeatures.SyncResourceSpecification> resourceSpecifications,
             WebMvcStatelessServerTransport transport,
             McpStatelessSyncServer server,
             RouterFunction<ServerResponse> routerFunction) implements AutoCloseable {

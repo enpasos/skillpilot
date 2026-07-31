@@ -113,7 +113,7 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerService.getCoachLearnerState(skillpilotId);
     }
 
     /** Read-only curriculum catalog for authenticated, ID-based coach adapters. */
@@ -125,7 +125,7 @@ public class CoachToolFacade {
     /** Metadata-driven next personalization stage for the selected curriculum. */
     public PersonalizationPlan getPersonalizationPlan(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getPersonalizationPlan(skillpilotId);
+        return learnerService.getCoachPersonalizationPlan(skillpilotId);
     }
 
     /** Read-only personalized scope roots for authenticated, ID-based coach adapters. */
@@ -137,12 +137,12 @@ public class CoachToolFacade {
     public UnifiedLearnerStateResponse setScope(String skillpilotId, ScopeRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setScope(skillpilotId, request.goalIds());
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerService.getCoachLearnerState(skillpilotId);
     }
 
     public UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
         if (!"setActiveGoal".equals(requiredAction)) {
@@ -155,7 +155,7 @@ public class CoachToolFacade {
             }
         }
         learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerService.getCoachLearnerState(skillpilotId);
     }
 
     public MasteryResult setMastery(String skillpilotId, MasteryUpdateRequest request) {
@@ -167,7 +167,7 @@ public class CoachToolFacade {
         }
         MasteryUpdateRequest effectiveRequest = normalizeMasteryRequest(request);
 
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
             // Recovery path for a conversation that selected a goal but did not persist
@@ -177,12 +177,12 @@ public class CoachToolFacade {
                 if (selectedGoalId != null && !selectedGoalId.isBlank()) {
                     try {
                         learnerService.setActiveGoal(skillpilotId, selectedGoalId);
-                        state = learnerService.getLearnerState(skillpilotId);
+                        state = learnerService.getCoachLearnerState(skillpilotId);
                         requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
                     } catch (ResponseStatusException exception) {
                         if (HttpStatus.CONFLICT.equals(exception.getStatusCode())
                                 || HttpStatus.BAD_REQUEST.equals(exception.getStatusCode())) {
-                            return MasteryResult.conflict(learnerService.getLearnerState(skillpilotId));
+                            return MasteryResult.conflict(learnerService.getCoachLearnerState(skillpilotId));
                         }
                         throw exception;
                     }
@@ -197,7 +197,7 @@ public class CoachToolFacade {
             return MasteryResult.updated(learnerService.setMastery(skillpilotId, effectiveRequest));
         } catch (ResponseStatusException exception) {
             if (HttpStatus.CONFLICT.equals(exception.getStatusCode())) {
-                return MasteryResult.conflict(learnerService.getLearnerState(skillpilotId));
+                return MasteryResult.conflict(learnerService.getCoachLearnerState(skillpilotId));
             }
             throw exception;
         }
@@ -237,7 +237,7 @@ public class CoachToolFacade {
             String skillpilotId,
             ExamEvaluationRequest request) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         if (request == null || request.goalId() == null || request.goalId().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "goalId must not be empty.");
         }
@@ -259,7 +259,7 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse setCurriculum(String skillpilotId, UpdateCurriculumRequest request) {
         learnerService.setCurriculumFromPublicCatalog(skillpilotId, request.getCurriculumId());
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerService.getCoachLearnerState(skillpilotId);
     }
 
     public UnifiedLearnerStateResponse setPersonalization(String skillpilotId, PersonalizationRequest request) {
@@ -286,11 +286,11 @@ public class CoachToolFacade {
                 session.chatSessionToken(),
                 session.expiresAt(),
                 session.skillpilotId(),
-                withoutSkillpilotId(learnerService.getLearnerState(session.skillpilotId())));
+                withoutSkillpilotId(learnerService.getCoachLearnerState(session.skillpilotId())));
     }
 
     public UnifiedLearnerStateResponse getSessionState(String sessionToken) {
-        return withoutSkillpilotId(learnerService.getLearnerState(resolveSessionLearnerId(sessionToken)));
+        return withoutSkillpilotId(learnerService.getCoachLearnerState(resolveSessionLearnerId(sessionToken)));
     }
 
     /** Read-only catalog access used for explicit mid-session curriculum navigation. */

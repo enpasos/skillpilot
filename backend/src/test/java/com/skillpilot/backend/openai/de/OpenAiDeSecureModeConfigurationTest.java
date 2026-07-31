@@ -133,10 +133,10 @@ class OpenAiDeSecureModeConfigurationTest {
     @Test
     void strictProtocolUrisRejectQueriesFragmentsAndSurroundingWhitespace() {
         for (String unsafeUri : new String[] {
-                "https://skillpilot.test/api/openai/de/mcp?tenant=one",
-                "https://skillpilot.test/api/openai/de/mcp#fragment",
-                " https://skillpilot.test/api/openai/de/mcp",
-                "https://skillpilot.test/api/openai/de/mcp "
+                "https://skillpilot.test/internal/openai/de/v1/mcp?tenant=one",
+                "https://skillpilot.test/internal/openai/de/v1/mcp#fragment",
+                " https://skillpilot.test/internal/openai/de/v1/mcp",
+                "https://skillpilot.test/internal/openai/de/v1/mcp "
         }) {
             assertThat(OpenAiDeSecureModeValidation.isStrictHttpsUri(unsafeUri))
                     .as(unsafeUri)
@@ -203,6 +203,7 @@ class OpenAiDeSecureModeConfigurationTest {
         return new String[] {
             "skillpilot.openai.de.enabled=true",
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
+            "skillpilot.openai.de.server-build=test-build",
             "skillpilot.openai.de.security.secure-mode=true",
             "skillpilot.openai.de.oauth.enabled=true",
             "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
