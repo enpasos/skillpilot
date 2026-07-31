@@ -66,20 +66,33 @@ Stand versiegelt und jede weitere Paketänderung benötigt eine neue SemVer.
    Das gilt auch für die jetzt ergänzte Lernzielvisualisierung: Da `1.0.0` noch
    nie veröffentlicht wurde, wird derselbe Draft aktualisiert und keine
    `1.0.1` erzeugt.
-3. Die produktive Service-Umgebung muss die V1-Grenzen exakt und den
-   tatsächlich ausgerollten Commit als Buildkennung enthalten:
+3. Die kanonischen V1-Grenzen haben sichere, versionierte Defaults im
+   Backend-Artefakt. Im normalen Produktivbetrieb werden die zugehörigen
+   URL-Variablen daher nicht in `/etc/skillpilot/skillpilot.env` wiederholt.
+   Falls ein Zielsystem einen Wert ausdrücklich setzt, muss er exakt dem
+   jeweiligen kanonischen V1-Wert entsprechen:
 
-   ```text
+   ```dotenv
+   # Nur als optionale, exakt übereinstimmende Overrides:
    SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
    SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
    SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
    SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
-   SKILLPILOT_SERVER_BUILD=<vollständiger Git-SHA des Deployments>
    ```
 
-   `scripts/deploy.sh` prüft diese Werte vor Build und Restart
-   fail-closed. Dieselben Werte müssen im `EnvironmentFile` des
-   `skillpilot`-Dienstes stehen; die Readiness bleibt andernfalls `DOWN`.
+   Fehlende URL-Variablen aktivieren die geprüften Defaults. Ein ausdrücklich
+   gesetzter abweichender oder leerer Wert, ein alter Alias, zusätzliche
+   Leerzeichen oder ein zusätzlicher Slash führen dagegen fail-closed zum
+   Abbruch vor Build und Restart sowie beim Anwendungsstart.
+
+   `SKILLPILOT_SERVER_BUILD` gehört nicht in das `EnvironmentFile`. Gradle
+   bettet beim Backend-Build den vollständigen lowercase Git-Commit des
+   ausgecheckten `HEAD` in
+   `skillpilot.openai.de.server-build` und
+   `skillpilot.openai.de.mcp.server-version` ein. Das Deployment prüft beide
+   Werte im verarbeiteten `application.yml` vor dem Service-Restart. Eine
+   manuell gepflegte Laufzeitvariable könnte die Artefaktidentität daher weder
+   verbessern noch überschreiben.
 4. Alle generischen CI-Gates und danach die versionsspezifischen Gates
    ausführen:
 
