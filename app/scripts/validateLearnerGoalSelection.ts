@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../src/utils/learnerGoalSelection'
+import {
+  getInitialLearnerGoalReveal,
+  getNextVisibleLearnerGoalSelection,
+  shouldAutoRevealActiveGoal,
+} from '../src/utils/learnerGoalSelection'
+import { getLearnerViewCopy } from '../src/utils/learnerViewCopy'
 import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import {
   applyCompositionViewProjection,
@@ -140,6 +145,71 @@ assert.equal(
   'Planned goals should be the next fallback when the active goal is not visible.',
 )
 
+const plannedGoalWhileLearnerStateLoads = getNextVisibleLearnerGoalSelection({
+  currentGoalId: 'hidden-root-goal',
+  currentRouteGoalId: '',
+  learnerStateReady: false,
+  visibleGoalIds: ['planned-goal'],
+  activeGoalId: null,
+  plannedGoalIds: ['planned-goal'],
+  visibleRootGoalIds: ['visible-root-goal'],
+})
+
+assert.equal(
+  plannedGoalWhileLearnerStateLoads,
+  null,
+  'Planned and root fallbacks must wait for learner state so a later active goal can win initial navigation.',
+)
+
+assert.equal(
+  getInitialLearnerGoalReveal({
+    learnerStateReady: false,
+    hasAlreadyRevealed: false,
+    hasLearnerTree: true,
+    currentRouteGoalId: '',
+    activeGoalId: null,
+    hasPlannedGoals: true,
+  }),
+  null,
+  'A planned scope must not create a route while the authoritative learner state is still loading.',
+)
+assert.equal(
+  getInitialLearnerGoalReveal({
+    learnerStateReady: true,
+    hasAlreadyRevealed: false,
+    hasLearnerTree: true,
+    currentRouteGoalId: '',
+    activeGoalId: 'active-goal',
+    hasPlannedGoals: true,
+  }),
+  'active',
+  'The active goal must win initial Cockpit navigation once learner state is ready.',
+)
+assert.equal(
+  getInitialLearnerGoalReveal({
+    learnerStateReady: true,
+    hasAlreadyRevealed: false,
+    hasLearnerTree: true,
+    currentRouteGoalId: '',
+    activeGoalId: null,
+    hasPlannedGoals: true,
+  }),
+  'scope',
+  'The planned scope is the initial fallback only after learner state confirms that no active goal exists.',
+)
+assert.equal(
+  getInitialLearnerGoalReveal({
+    learnerStateReady: true,
+    hasAlreadyRevealed: false,
+    hasLearnerTree: true,
+    currentRouteGoalId: 'deep-linked-goal',
+    activeGoalId: 'active-goal',
+    hasPlannedGoals: true,
+  }),
+  null,
+  'An explicit goal route must outrank automatic active-goal navigation.',
+)
+
 const noRedirectWhenCurrentVisible = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'visible-goal',
   currentRouteGoalId: '',
@@ -185,6 +255,27 @@ assert.equal(
   explicitRouteInsidePlannedScopeStaysStable,
   null,
   'An explicit route inside the current planned scope must remain stable.',
+)
+
+const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
+assert.equal(
+  getLearnerViewCopy('de').revealActiveGoalTitle,
+  'Gehe zum aktiven Ziel',
+  'The active-goal tooltip must use the German-only copy in German.',
+)
+assert.equal(
+  getLearnerViewCopy('en').revealActiveGoalTitle,
+  'Go to active goal',
+  'The active-goal tooltip must use the English-only copy in English.',
+)
+assert.match(
+  learnerViewSource,
+  /title=\{learnerViewCopy\.revealActiveGoalTitle\}/,
+  'LearnerView must bind the active-goal tooltip to the selected language.',
+)
+assert.ok(
+  !learnerViewSource.includes('Gehe zum aktiven Ziel / Go to active goal'),
+  'LearnerView must not expose a bilingual active-goal tooltip.',
 )
 
 const abi26CockpitUrl = buildAbi26CockpitUrl({
