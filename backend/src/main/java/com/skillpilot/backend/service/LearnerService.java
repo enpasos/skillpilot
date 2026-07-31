@@ -80,6 +80,8 @@ import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -90,6 +92,7 @@ import org.springframework.core.io.Resource;
 @Service
 public class LearnerService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
     private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
@@ -325,6 +328,11 @@ public class LearnerService {
             List<String> normalizedPlannedGoalIds,
             String normalizedActiveGoalId,
             LearningState normalizedLearningState) {
+    }
+
+    private record MutablePersonalCurriculumDocument(
+            Map<String, Object> document,
+            Map<String, Object> payload) {
     }
 
     private record BulkCanonicalGymnasiumCutoverCounters(
@@ -2567,6 +2575,7 @@ public class LearnerService {
 
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
 
         PersonalizationPlan currentPlan = buildPersonalizationPlan(learner);
         PersonalizationPlan.Option selectedOption =
@@ -2677,6 +2686,7 @@ public class LearnerService {
     public PersonalizationPlan reopenMigratedPersonalization(String skillpilotId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         String rootLandscapeId = learner.getSelectedCurriculum();
         if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
             throw new ResponseStatusException(
@@ -2765,6 +2775,7 @@ public class LearnerService {
             String rewindId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         String rootLandscapeId = learner.getSelectedCurriculum();
         if (rootLandscapeId == null || rootLandscapeId.isBlank()) {
             throw new ResponseStatusException(
@@ -3811,6 +3822,51 @@ public class LearnerService {
         parsePersonalCurriculumConfig(personalCurriculumJson)
                 .forEach((landscapeId, settings) -> mutable.put(landscapeId, new LinkedHashMap<>(settings)));
         return mutable;
+    }
+
+    /**
+     * Reads a stored personalization payload without dropping extension keys
+     * whose values are not landscape-setting maps.
+     *
+     * <p>Normal request validation intentionally coerces the payload to the
+     * supported landscape-map shape. A compatibility migration, however, must
+     * be lossless for data it does not own, so it changes only the copied root
+     * settings and serializes all other stored values again unchanged.</p>
+     */
+    private MutablePersonalCurriculumDocument readPersonalCurriculumDocument(
+            String personalCurriculumJson) {
+        if (personalCurriculumJson == null || personalCurriculumJson.isBlank()) {
+            Map<String, Object> empty = new LinkedHashMap<>();
+            return new MutablePersonalCurriculumDocument(empty, empty);
+        }
+        try {
+            Object parsed = objectMapper.readValue(personalCurriculumJson, Object.class);
+            if (!(parsed instanceof Map<?, ?> rawPayload)) {
+                Map<String, Object> empty = new LinkedHashMap<>();
+                return new MutablePersonalCurriculumDocument(empty, empty);
+            }
+            Map<String, Object> document = copyStringKeyedMap(rawPayload);
+            Map<String, Object> payload = document;
+            if (rawPayload.size() == 1
+                    && rawPayload.get("personalCurriculum") instanceof Map<?, ?> nestedPayload) {
+                payload = copyStringKeyedMap(nestedPayload);
+                document.put("personalCurriculum", payload);
+            }
+            return new MutablePersonalCurriculumDocument(document, payload);
+        } catch (Exception ignored) {
+            Map<String, Object> empty = new LinkedHashMap<>();
+            return new MutablePersonalCurriculumDocument(empty, empty);
+        }
+    }
+
+    private Map<String, Object> copyStringKeyedMap(Map<?, ?> source) {
+        Map<String, Object> copied = new LinkedHashMap<>();
+        for (Map.Entry<?, ?> entry : source.entrySet()) {
+            if (entry.getKey() instanceof String key) {
+                copied.put(key, entry.getValue());
+            }
+        }
+        return copied;
     }
 
     private boolean isSelectedInPersonalCurriculum(Object rawConfig) {
@@ -5357,7 +5413,9 @@ public class LearnerService {
     }
 
     private UnifiedLearnerStateResponse getLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         String curriculumId = learner.getSelectedCurriculum();
         com.skillpilot.backend.landscape.LandscapeSummary curriculumSummary = null;
 
@@ -6536,10 +6594,169 @@ public class LearnerService {
         return landscapeService.getOverview("de", includeCompatibility).getSummaries();
     }
 
-    @Transactional(readOnly = true)
+    /**
+     * Materializes the canonical stage for Gymnasium learners that were saved
+     * before the authored personalization flow existed.
+     *
+     * <p>The migration is deliberately narrower than normal personalization:
+     * it only recognizes the former pair of explicit stage markers, never
+     * guesses from subjects, goals or course profiles, and never revalidates
+     * Level 3 or Level 4 state. A complete legacy selection is marked as
+     * migrated so newly introduced flow decisions do not make the learner
+     * repeat established choices.</p>
+     */
+    public int migrateCanonicalGymnasiumPreFlowPersonalization() {
+        List<String> learnerIds =
+                learnerRepository.findSkillpilotIdsBySelectedCurriculum(
+                        CANONICAL_GYMNASIUM_ROOT_ID);
+        int migrated = 0;
+        int failed = 0;
+        for (String learnerId : learnerIds) {
+            try {
+                Boolean changed = transactionTemplate.execute(status -> {
+                    Learner learner = learnerRepository
+                            .findBySkillpilotIdForUpdate(learnerId)
+                            .orElse(null);
+                    return learner != null
+                            && migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(
+                                    learner);
+                });
+                if (Boolean.TRUE.equals(changed)) {
+                    migrated++;
+                }
+            } catch (RuntimeException exception) {
+                failed++;
+                LOGGER.error(
+                        "Canonical Gymnasium pre-flow personalization migration failed for one learner.",
+                        exception);
+            }
+        }
+        if (migrated > 0 || failed > 0) {
+            LOGGER.info(
+                    "Canonical Gymnasium pre-flow personalization migration finished: {} migrated, {} failed.",
+                    migrated,
+                    failed);
+        }
+        return migrated;
+    }
+
+    @SuppressWarnings("unchecked")
+    private boolean migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(
+            Learner learner) {
+        if (learner == null
+                || !CANONICAL_GYMNASIUM_ROOT_ID.equals(
+                        learner.getSelectedCurriculum())
+                || learner.getPersonalCurriculum() == null
+                || learner.getPersonalCurriculum().isBlank()) {
+            return false;
+        }
+
+        MutablePersonalCurriculumDocument storedDocument =
+                readPersonalCurriculumDocument(
+                        learner.getPersonalCurriculum());
+        Map<String, Object> storedPayload = storedDocument.payload();
+        Map<String, Map<String, Object>> parsedConfig =
+                parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        if (storedPayload.isEmpty()
+                || parsedConfig.isEmpty()
+                || storedPayload.containsKey(
+                        CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)) {
+            return false;
+        }
+        Map<String, Object> parsedRootSettings =
+                parsedConfig.get(CANONICAL_GYMNASIUM_ROOT_ID);
+        if (parsedRootSettings == null
+                || parsedRootSettings.containsKey("stage")) {
+            // A stored canonical value, including a malformed explicit value,
+            // is never overwritten by the compatibility migration.
+            return false;
+        }
+
+        Boolean sek1Selected =
+                readSelectedFlagIfPresent(parsedConfig, STAGE_SCOPE_SEK1_ID);
+        Boolean sek2Selected =
+                readSelectedFlagIfPresent(parsedConfig, STAGE_SCOPE_SEK2_ID);
+        if (sek1Selected == null || sek2Selected == null) {
+            // Both historical fields must be present and well-typed. A
+            // missing or malformed half is not enough evidence for migration.
+            return false;
+        }
+        String canonicalStage = null;
+        if (Boolean.TRUE.equals(sek1Selected)
+                && Boolean.TRUE.equals(sek2Selected)) {
+            canonicalStage = "CrossStage";
+        } else if (Boolean.TRUE.equals(sek1Selected)) {
+            canonicalStage = "SekI";
+        } else if (Boolean.TRUE.equals(sek2Selected)) {
+            canonicalStage = "SekII";
+        }
+        if (canonicalStage == null) {
+            // false/false is intentionally unresolved and must remain a real
+            // learner decision.
+            return false;
+        }
+
+        SkillLandscape rootLandscape =
+                landscapeService.getById(CANONICAL_GYMNASIUM_ROOT_ID);
+        boolean hasAuthoredRootSelection =
+                rootLandscape != null
+                        && rootLandscape.getPersonalizationFlow() != null
+                        && Boolean.TRUE.equals(parsedRootSettings.get("selected"))
+                        && canonicalConfiguredFilterId(
+                                rootLandscape,
+                                parsedRootSettings.get("filterId")) != null;
+        boolean hasAuthoredSubjectSelection =
+                hasAuthoredRootSelection
+                        && CurriculumPersonalizationPlanner.storedSelections(
+                                        rootLandscape.getPersonalizationFlow(),
+                                        landscapeService::getById,
+                                        parsedConfig)
+                                .stream()
+                                .filter(Objects::nonNull)
+                                .anyMatch(selection ->
+                                        selection.activeAndAuthored()
+                                                && "subject".equals(
+                                                        selection.groupId()));
+        if (!hasAuthoredSubjectSelection) {
+            // Do not turn a partial or foreign JSON payload into a completed
+            // personalization merely because it contains legacy marker names.
+            return false;
+        }
+
+        Map<String, Object> migratedConfig = storedPayload;
+        Object rawRootSettings =
+                migratedConfig.get(CANONICAL_GYMNASIUM_ROOT_ID);
+        if (!(rawRootSettings instanceof Map<?, ?> existingRootSettings)) {
+            return false;
+        }
+        Map<String, Object> rootSettings =
+                new LinkedHashMap<>(
+                        (Map<String, Object>) existingRootSettings);
+        rootSettings.put("stage", canonicalStage);
+        migratedConfig.put(CANONICAL_GYMNASIUM_ROOT_ID, rootSettings);
+
+        /*
+         * Do not replay the current authored flow here. Historical profiles
+         * may contain valid legacy values (for example a broad subject filter)
+         * that are no longer selectable as new per-subject choices. The
+         * compatibility marker deliberately grandfathers those values without
+         * normalizing, deleting or interpreting them.
+         */
+        CurriculumPersonalizationPlanner.markMigrationCompleted(
+                migratedConfig,
+                CANONICAL_GYMNASIUM_ROOT_ID);
+
+        learner.setPersonalCurriculum(
+                writePersonalCurriculumConfig(storedDocument.document()));
+        learnerRepository.save(learner);
+        return true;
+    }
+
+    @Transactional
     public PersonalizationPlan getPersonalizationPlan(String skillpilotId) {
-        Learner learner = learnerRepository.findById(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         return buildPersonalizationPlan(learner);
     }
 
@@ -6726,6 +6943,7 @@ public class LearnerService {
                     org.springframework.http.HttpStatus.CONFLICT,
                     "Select a base curriculum before setting a learning focus or active goal.");
         }
+        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
         PersonalizationPlan plan = buildPersonalizationPlan(learner);
         if (plan.valid() && !plan.required()) {
             return;
@@ -8615,7 +8833,8 @@ public class LearnerService {
         }
 
         LearnerDataDTO data = signedData.data();
-        Learner existing = getLearner(skillpilotId);
+        Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         // ... rest of logic
 
         // Provenance / Chain of Custody
@@ -8639,6 +8858,7 @@ public class LearnerService {
                 existing.setClientStateUpdatedAt(data.learner().getClientStateUpdatedAt());
             }
             learnerRepository.save(existing);
+            migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(existing);
         }
 
         // Restore Mastery with original timestamps
