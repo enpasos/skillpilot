@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 import {
   chmodSync,
   mkdtempSync,
+  mkdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
@@ -224,6 +225,51 @@ esac
     assert.equal(passing.status, 0, passing.stderr);
     assert.ok(!passing.stdout.includes(secretSentinel));
     assert.ok(!passing.stderr.includes(secretSentinel));
+
+    const missingEnvironmentPath = resolve(directory, "missing.env");
+    const optionalMissing = runGate({
+      FAKE_SERVICE_ENV_FILE: missingEnvironmentPath,
+      FAKE_ENVIRONMENT_FILES:
+        `${missingEnvironmentPath} (ignore_errors=yes)`,
+    });
+    assert.equal(optionalMissing.status, 0, optionalMissing.stderr);
+    assert.match(optionalMissing.stdout, /optionale EnvironmentFile fehlt/);
+
+    const requiredMissing = runGate({
+      FAKE_SERVICE_ENV_FILE: missingEnvironmentPath,
+      FAKE_ENVIRONMENT_FILES:
+        `${missingEnvironmentPath} (ignore_errors=no)`,
+    });
+    assert.notEqual(requiredMissing.status, 0);
+    assert.match(requiredMissing.stderr, /verpflichtende EnvironmentFile/);
+
+    const blockedDirectory = resolve(directory, "blocked");
+    const blockedEnvironmentPath = resolve(blockedDirectory, "skillpilot.env");
+    mkdirSync(blockedDirectory);
+    writeFileSync(blockedEnvironmentPath, "");
+    chmodSync(blockedDirectory, 0o644);
+    try {
+      const inaccessible = runGate({
+        FAKE_SERVICE_ENV_FILE: blockedEnvironmentPath,
+        FAKE_ENVIRONMENT_FILES:
+          `${blockedEnvironmentPath} (ignore_errors=yes)`,
+      });
+      assert.equal(inaccessible.status, 0, inaccessible.stderr);
+      assert.match(inaccessible.stdout, /EnvironmentFile ist root-geschützt/);
+    } finally {
+      chmodSync(blockedDirectory, 0o700);
+    }
+
+    if (process.getuid?.() !== 0) {
+      chmodSync(environmentPath, 0o000);
+      try {
+        const unreadable = runGate();
+        assert.equal(unreadable.status, 0, unreadable.stderr);
+        assert.match(unreadable.stdout, /EnvironmentFile ist root-geschützt/);
+      } finally {
+        chmodSync(environmentPath, 0o600);
+      }
+    }
 
     const failureCases = [
       {
