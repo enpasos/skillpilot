@@ -18,6 +18,9 @@ public interface LearnerRepository extends JpaRepository<Learner, String> {
     @Query("select l.createdAt from Learner l")
     List<Instant> findAllCreatedAt();
 
+    @Query("select l.skillpilotId from Learner l where l.selectedCurriculum = :curriculumId")
+    List<String> findSkillpilotIdsBySelectedCurriculum(@Param("curriculumId") String curriculumId);
+
     @Query("select distinct l.createdAt from Learner l join Mastery m on m.learner = l where m.value >= :threshold")
     List<Instant> findAllCreatedAtWithAchievements(@Param("threshold") double threshold);
 
