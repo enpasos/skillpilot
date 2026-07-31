@@ -198,9 +198,17 @@ und andere Secrets werden weder ausgewertet, protokolliert noch ausgegeben.
 Dieselben vier Variablen dürfen nicht zusätzlich über `Environment=` oder
 `PassEnvironment=` der Unit gesetzt werden. Enthält die globale
 systemd-Umgebung einen dieser Namen, bricht der Preflight ebenfalls ab.
-Ist die EnvironmentFile für den Deploy-Benutzer nicht lesbar,
-bricht der Preflight ohne Ausgabe ihres Inhalts ab; eine allgemeine
-`sudo cat`-Freigabe ist dafür ausdrücklich nicht zulässig.
+Ist die eine EnvironmentFile in systemd optional (`ignore_errors=yes`) und
+fehlt, akzeptiert der Preflight nach Prüfung der übrigen Umgebungskanäle die
+kanonischen V1-Defaults. Eine fehlende verpflichtende Datei
+(`ignore_errors=no`) bleibt ein Fehler.
+Eine EnvironmentFile mit OAuth- oder Datenbank-Secrets bleibt `root:root` und
+`0600`. Ihre Rechte dürfen für den Deployment-Preflight nicht gelockert werden.
+Kann der Deploy-Benutzer die root-geschützte Datei oder einen Elternordner nicht
+lesen beziehungsweise durchlaufen, meldet der Preflight diesen Inhaltscheck
+sichtbar als `SKIP`; die exakte Spring-Startprüfung bleibt die finale
+fail-closed-Grenze. Eine allgemeine `sudo cat`-Freigabe oder weltlesbare
+Secret-Datei ist ausdrücklich nicht zulässig.
 
 Bei der Umstellung von der früheren unversionierten Route müssen alte
 `SKILLPILOT_OPENAI_DE_MCP_URL`- und

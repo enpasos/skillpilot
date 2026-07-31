@@ -35,6 +35,13 @@ validate_openai_v1_service_environment() {
     echo "Für einen abweichenden Pfad SKILLPILOT_SERVICE_ENV_FILE ausdrücklich setzen." >&2
     return 1
   fi
+  local environment_file_ignore_errors="${environment_file_tokens[1]#\(ignore_errors=}"
+  environment_file_ignore_errors="${environment_file_ignore_errors%\)}"
+  if [ "${environment_file_ignore_errors}" != "yes" ] \
+    && [ "${environment_file_ignore_errors}" != "no" ]; then
+    echo "Abbruch: Unbekannte systemd-EnvironmentFile-Semantik für ${service_env_file}." >&2
+    return 1
+  fi
 
   local direct_environment
   if ! direct_environment="$(
@@ -105,14 +112,31 @@ validate_openai_v1_service_environment() {
     done
   done
 
+  local parent_directory
+  parent_directory="$(dirname -- "${service_env_file}")"
+  while [ "${parent_directory}" != "/" ]; do
+    if [ ! -x "${parent_directory}" ]; then
+      echo "CHECK openai_v1_service_environment SKIP: EnvironmentFile ist root-geschützt; Spring prüft die V1-Werte beim Start fail-closed."
+      return 0
+    fi
+    parent_directory="$(dirname -- "${parent_directory}")"
+  done
+
+  if [ ! -e "${service_env_file}" ]; then
+    if [ "${environment_file_ignore_errors}" = "yes" ]; then
+      echo "CHECK openai_v1_service_environment PASS: optionale EnvironmentFile fehlt; kanonische V1-Defaults gelten."
+      return 0
+    fi
+    echo "Abbruch: Die verpflichtende EnvironmentFile ${service_env_file} fehlt." >&2
+    return 1
+  fi
   if [ ! -f "${service_env_file}" ]; then
-    echo "Abbruch: Die EnvironmentFile ${service_env_file} fehlt." >&2
+    echo "Abbruch: Die EnvironmentFile ${service_env_file} ist keine reguläre Datei." >&2
     return 1
   fi
   if [ ! -r "${service_env_file}" ]; then
-    echo "Abbruch: Die EnvironmentFile ${service_env_file} ist für den Deploy-Benutzer nicht lesbar." >&2
-    echo "Die Prüfung liest ausschließlich die vier öffentlichen OpenAI-V1-URL-Variablen und gibt keine Secrets aus." >&2
-    return 1
+    echo "CHECK openai_v1_service_environment SKIP: EnvironmentFile ist root-geschützt; Spring prüft die V1-Werte beim Start fail-closed."
+    return 0
   fi
 
   "${node_bin}" "${validator_path}" \

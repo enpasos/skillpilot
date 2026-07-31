@@ -284,10 +284,16 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   stale global systemd manager environment is rejected as well. A nonstandard
   file path must be selected explicitly with
   `SKILLPILOT_SERVICE_ENV_FILE`.
-- The deployment user needs read access to that one environment file for the
-  allowlisted preflight. Do not solve missing access with a general `sudo cat`
-  permission: use narrowly scoped ownership/group permissions appropriate for
-  the service operator.
+- If systemd marks that one file as optional (`ignore_errors=yes`) and it is
+  absent, the preflight accepts the canonical application defaults after the
+  other environment channels have been checked. A missing required file
+  (`ignore_errors=no`) remains a deployment error.
+- Keep an environment file containing OAuth or database secrets root-owned and
+  mode `0600`. Do not weaken it to make the deployment preflight read it. When
+  the deploy user cannot traverse or read the root-protected file, the
+  allowlisted content check is reported as `SKIP`; Spring's exact V1 startup
+  validation remains the final fail-closed boundary. Unit-level and global
+  systemd sources are still checked before the build.
 - Do not maintain `SKILLPILOT_SERVER_BUILD` in
   `/etc/skillpilot/skillpilot.env`. The backend build embeds the full Git commit
   into the jar and the deploy verifies it before restart. Rebuilding a commit
