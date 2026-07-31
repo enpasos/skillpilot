@@ -16,6 +16,7 @@ public record OpenAiDeCoachContext(
         Decision decision,
         List<Goal> frontier,
         List<Resource> resources,
+        GoalVisualization goalVisualization,
         List<String> nextAllowedTools,
         Progress progress,
         Completion completion,
@@ -112,6 +113,22 @@ public record OpenAiDeCoachContext(
             String provider,
             String altText,
             boolean requiresCockpit) {
+    }
+
+    /**
+     * Public, learner-facing image data for the MCP Apps inline component.
+     *
+     * <p>The field is present only for an active atomic goal with a matching,
+     * canonical {@code goal-visualization} resource link.</p>
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record GoalVisualization(
+            String goalId,
+            String title,
+            String description,
+            String imageUrl,
+            String altText,
+            String cockpitUrl) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

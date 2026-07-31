@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 015-add-canonical-learner-state-revision
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: coach_state_revision
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: coach_state_revision
+                  type: BIGINT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false

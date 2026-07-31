@@ -1,6 +1,8 @@
 package com.skillpilot.backend.openai.mcp.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactory;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import java.time.Duration;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,15 +23,15 @@ import org.springframework.web.servlet.function.ServerResponse;
         havingValue = "true")
 public class OpenAiDeMcpServerConfiguration {
 
-    static final String DEFAULT_ENDPOINT = "/api/openai/de/mcp";
-    static final String DEFAULT_SERVER_NAME = "skillpilot-openai-de-mcp";
-    static final String DEFAULT_SERVER_VERSION = "0.1.0";
+    static final String DEFAULT_ENDPOINT = OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH;
+    static final String DEFAULT_SERVER_NAME = OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY;
+    static final String DEFAULT_SERVER_VERSION = OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD;
     static final Duration DEFAULT_REQUEST_TIMEOUT = Duration.ofSeconds(30);
 
     @Bean(name = "openAiDeMcpServerRegistration", destroyMethod = "close")
     SkillPilotStatelessMcpServerFactory.Registration openAiDeMcpServerRegistration(
             SkillPilotStatelessMcpServerFactory serverFactory,
-            OpenAiDeCoachMcpContract contract,
+            OpenAiDeV1McpContractAdapter contract,
             Environment environment) {
         return serverFactory.create(
                 DEFAULT_ENDPOINT,
@@ -40,7 +42,8 @@ public class OpenAiDeMcpServerConfiguration {
                         "skillpilot.openai.de.mcp.request-timeout",
                         Duration.class,
                         DEFAULT_REQUEST_TIMEOUT),
-                contract.toolSpecifications());
+                contract.toolSpecifications(),
+                contract.resourceSpecifications());
     }
 
     @Bean(name = "openAiDeMcpRouterFunction")

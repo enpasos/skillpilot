@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -60,7 +61,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (!request.getRequestURI().startsWith("/api")) {
+        boolean internalOpenAiMcp = isInternalOpenAiMcp(request.getRequestURI());
+        if (!request.getRequestURI().startsWith("/api") && !internalOpenAiMcp) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -75,8 +77,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || requestUri.startsWith("/api/action-regression/")
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
-                || requestUri.equals("/api/openai/de/mcp")
-                || requestUri.startsWith("/api/openai/de/mcp/")
+                || internalOpenAiMcp
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")
@@ -126,6 +127,12 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
             responseWrapper.copyBodyToResponse();
         }
+    }
+
+    private static boolean isInternalOpenAiMcp(String requestUri) {
+        return requestUri != null
+                && (requestUri.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
+                        || requestUri.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/"));
     }
 
     private void writeAiTrace(HttpServletRequest request,

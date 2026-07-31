@@ -78,6 +78,8 @@ public class LearnerServiceReproTest {
         learner.setSelectedCurriculum(curriculumId);
         learner.setLearningState(LearningState.FRONTIER);
         when(learnerRepository.findById(learnerId)).thenReturn(Optional.of(learner));
+        when(learnerRepository.findBySkillpilotIdForUpdate(learnerId))
+                .thenReturn(Optional.of(learner));
         when(learnerRepository.existsById(learnerId)).thenReturn(true);
         when(learnerRepository.save(any(Learner.class))).thenAnswer(i -> i.getArguments()[0]);
 

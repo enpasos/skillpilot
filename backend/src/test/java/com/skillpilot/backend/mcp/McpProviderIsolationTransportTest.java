@@ -6,7 +6,7 @@ import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpConfiguration;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpServerConfiguration;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
@@ -49,6 +49,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "skillpilot.claude.mcp.regression-enabled=true",
         "skillpilot.openai.de.enabled=true",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
+        "skillpilot.openai.de.server-build=test-build",
         "skillpilot.openai.de.oauth.enabled=true",
         "skillpilot.openai.de.mcp.enabled=true"
 })
@@ -73,14 +74,14 @@ class McpProviderIsolationTransportTest {
                 .containsExactlyInAnyOrder("createRegressionProbe", "verifyRegressionProbe")
                 .doesNotContain("openai_de_native");
 
-        assertThat(toolNames(postJson("/api/openai/de/mcp", 2)))
+        assertThat(toolNames(postJson("/internal/openai/de/v1/mcp", 2)))
                 .containsExactly("openai_de_native")
                 .doesNotContain("createRegressionProbe", "verifyRegressionProbe");
     }
 
     @Test
     void openAiEndpointPreservesNativeStructuredContent() throws Exception {
-        MvcResult result = mockMvc.perform(post("/api/openai/de/mcp")
+        MvcResult result = mockMvc.perform(post("/internal/openai/de/v1/mcp")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
                         .header("MCP-Protocol-Version", PROTOCOL_VERSION)
@@ -98,7 +99,7 @@ class McpProviderIsolationTransportTest {
 
     @Test
     void toolListPublishesTopLevelSecuritySchemesAndCompatibilityMirror() throws Exception {
-        JsonNode tool = postJson("/api/openai/de/mcp", 4)
+        JsonNode tool = postJson("/internal/openai/de/v1/mcp", 4)
                 .path("result")
                 .path("tools")
                 .get(0);
@@ -189,10 +190,11 @@ class McpProviderIsolationTransportTest {
         }
 
         @Bean
-        OpenAiDeCoachMcpContract openAiDeCoachMcpContract() {
-            OpenAiDeCoachMcpContract contract = mock(OpenAiDeCoachMcpContract.class);
+        OpenAiDeV1McpContractAdapter openAiDeCoachMcpContract() {
+            OpenAiDeV1McpContractAdapter contract = mock(OpenAiDeV1McpContractAdapter.class);
             when(contract.serverInstructions()).thenReturn("German OpenAI test instructions");
             when(contract.toolSpecifications()).thenReturn(List.of(openAiTool()));
+            when(contract.resourceSpecifications()).thenReturn(List.of());
             return contract;
         }
     }

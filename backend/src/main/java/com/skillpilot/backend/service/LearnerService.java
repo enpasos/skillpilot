@@ -49,6 +49,8 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.transaction.support.SimpleTransactionStatus;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -96,6 +98,8 @@ public class LearnerService {
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
     private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
+    private static final Object COACH_STATE_REVISION_TRANSACTION_RESOURCE =
+            LearnerService.class.getName() + ".coachStateRevision";
 
     private final LearnerRepository learnerRepository;
     private final LearnerClientStateRepository learnerClientStateRepository;
@@ -882,6 +886,7 @@ public class LearnerService {
         record.setClientState(json);
         record.setClientStateUpdatedAt(incomingAt);
         learnerClientStateRepository.save(record);
+        advanceCoachStateRevision(learner);
 
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CLIENT_STATE_UPDATED", nodeId));
         return new ClientStateResponse("ok", Instant.now(), storedKeys);
@@ -2032,7 +2037,7 @@ public class LearnerService {
         // Clear active goal after mastery and return the new frontier/state
         learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
 
         String sequentialAutopilotAnchorGoalId = masteryValue >= 0.9 ? effectiveGoalId : null;
         UnifiedLearnerStateResponse state = getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId);
@@ -2138,20 +2143,29 @@ public class LearnerService {
             }
         }
 
+        advanceCoachStateRevision(learner);
         return getPlannedGoals(skillpilotId);
     }
 
     @Transactional
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        boolean changed = false;
         if (learningStrategy != null) {
+            changed |= !Objects.equals(learner.getLearningStrategy(), learningStrategy);
             learner.setLearningStrategy(learningStrategy);
         }
         if (autoPilot != null) {
+            changed |= !Objects.equals(learner.getAutoPilot(), autoPilot);
             learner.setAutoPilot(autoPilot);
         }
         if (strictMode != null) {
+            changed |= !Objects.equals(learner.getStrictMode(), strictMode);
             learner.setStrictMode(strictMode);
+        }
+        if (changed) {
+            advanceCoachStateRevision(learner);
         }
     }
 
@@ -2353,7 +2367,7 @@ public class LearnerService {
             learner.setActiveGoalId(null);
         }
         learner.setLearningState(LearningState.FRONTIER);
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
                 this,
                 learner.getSkillpilotId(),
@@ -2362,7 +2376,8 @@ public class LearnerService {
 
     @Transactional
     public List<String> cutoverLegacyHessenGymnasiumToCanonical(String skillpilotId) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         String currentCurriculumId = learner.getSelectedCurriculum();
         if (currentCurriculumId == null || currentCurriculumId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2371,6 +2386,7 @@ public class LearnerService {
         if (CANONICAL_GYMNASIUM_ROOT_ID.equals(currentCurriculumId)) {
             materializeCanonicalMasteryFromExactMappings(skillpilotId);
             materializeCanonicalClientStateFromExactMappings(skillpilotId);
+            advanceCoachStateRevision(learner);
             return getPlannedGoals(skillpilotId);
         }
         if (!isSupportedCanonicalGymnasiumCutoverSource(currentCurriculumId)) {
@@ -2399,7 +2415,7 @@ public class LearnerService {
         Learner refreshed = getLearner(skillpilotId);
         refreshed.setActiveGoalId(plan.normalizedActiveGoalId());
         refreshed.setLearningState(plan.normalizedLearningState());
-        learnerRepository.save(refreshed);
+        advanceCoachStateRevision(refreshed);
 
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CURRICULUM_CUTOVER"));
         return plan.normalizedPlannedGoalIds();
@@ -3599,7 +3615,7 @@ public class LearnerService {
         if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
             learner.setLearningState(LearningState.FRONTIER);
         }
-        Learner saved = learnerRepository.save(learner);
+        Learner saved = advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(
                 new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
         return saved;
@@ -3609,7 +3625,7 @@ public class LearnerService {
         try {
             String json = objectMapper.writeValueAsString(finalConfig);
             learner.setPersonalCurriculum(json);
-            learnerRepository.save(learner);
+            advanceCoachStateRevision(learner);
         } catch (Exception e) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -5391,7 +5407,19 @@ public class LearnerService {
 
     @Transactional
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
-        return getLearnerState(skillpilotId, null);
+        return getLearnerState(skillpilotId, null, true);
+    }
+
+    /**
+     * Side-effect-free learner projection for read-only coach tools.
+     *
+     * <p>Unlike the cockpit projection, this method never performs a legacy
+     * personalization migration, clears a stale active goal, or activates an
+     * autopilot goal. Such changes require an explicitly versioned write tool.</p>
+     */
+    @Transactional(readOnly = true)
+    public UnifiedLearnerStateResponse getCoachLearnerState(String skillpilotId) {
+        return getLearnerState(skillpilotId, null, false);
     }
 
     /**
@@ -5412,10 +5440,24 @@ public class LearnerService {
         return getInitialScopeOptions(curriculumId, projection);
     }
 
-    private UnifiedLearnerStateResponse getLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId) {
-        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
+    private UnifiedLearnerStateResponse getLearnerState(
+            String skillpilotId,
+            String sequentialAutopilotAnchorGoalId) {
+        return getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId, true);
+    }
+
+    private UnifiedLearnerStateResponse getLearnerState(
+            String skillpilotId,
+            String sequentialAutopilotAnchorGoalId,
+            boolean allowSideEffects) {
+        Learner learner = allowSideEffects
+                ? learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                        .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"))
+                : learnerRepository.findById(skillpilotId)
+                        .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        if (allowSideEffects) {
+            migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
+        }
         String curriculumId = learner.getSelectedCurriculum();
         com.skillpilot.backend.landscape.LandscapeSummary curriculumSummary = null;
 
@@ -5516,12 +5558,16 @@ public class LearnerService {
                 && activeGoalId != null
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
         if (activeGoalMastered || activeGoalInvalidInView || activeGoalOutOfScope) {
-            clearPersistedActiveGoal(
-                    learner,
-                    skillpilotId,
-                    activeGoalInvalidInView
-                            ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW"
-                            : activeGoalOutOfScope ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE" : "ACTIVE_GOAL_CLEARED_STALE");
+            if (allowSideEffects) {
+                clearPersistedActiveGoal(
+                        learner,
+                        skillpilotId,
+                        activeGoalInvalidInView
+                                ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW"
+                                : activeGoalOutOfScope
+                                        ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE"
+                                        : "ACTIVE_GOAL_CLEARED_STALE");
+            }
             activeGoalId = null;
             activeGoalMastered = false;
         }
@@ -5529,7 +5575,12 @@ public class LearnerService {
             LearningGoal activeLearningGoal = allGoals.get(activeGoalId);
             if (isSrsGoalUnavailableForVerifiedRecall(skillpilotId, activeLearningGoal)
                     || isExamGoalUnavailableForHardCheck(activeLearningGoal)) {
-                clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_UNAVAILABLE_HARD_CHECK");
+                if (allowSideEffects) {
+                    clearPersistedActiveGoal(
+                            learner,
+                            skillpilotId,
+                            "ACTIVE_GOAL_CLEARED_UNAVAILABLE_HARD_CHECK");
+                }
                 activeGoalId = null;
                 activeGoalMastered = false;
             }
@@ -5609,14 +5660,16 @@ public class LearnerService {
         boolean personalizationRequired =
                 personalizationPlan.required() || !personalizationPlan.valid();
 
-        activeGoalId = maybeAutoActivateFrontierGoal(
-                learner,
-                activeGoalId,
-                frontierAtomic,
-                sequentialAutopilotSearchAtomic,
-                personalizationRequired,
-                sequentialAutopilotAnchorGoalId,
-                structuralGoals);
+        if (allowSideEffects) {
+            activeGoalId = maybeAutoActivateFrontierGoal(
+                    learner,
+                    activeGoalId,
+                    frontierAtomic,
+                    sequentialAutopilotSearchAtomic,
+                    personalizationRequired,
+                    sequentialAutopilotAnchorGoalId,
+                    structuralGoals);
+        }
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
 
@@ -5723,7 +5776,7 @@ public class LearnerService {
 
         learner.setActiveGoalId(nextGoal.id());
         learner.setLearningState(LearningState.TEACHING);
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(
                 new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "ACTIVE_GOAL_UPDATE_AUTOPILOT"));
         return nextGoal.id();
@@ -6282,7 +6335,7 @@ public class LearnerService {
 
         learner.setActiveGoalId(effectiveGoalId);
         learner.setLearningState(LearningState.TEACHING);
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
     }
 
@@ -6748,7 +6801,7 @@ public class LearnerService {
 
         learner.setPersonalCurriculum(
                 writePersonalCurriculumConfig(storedDocument.document()));
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
         return true;
     }
 
@@ -6757,6 +6810,14 @@ public class LearnerService {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(learner);
+        return buildPersonalizationPlan(learner);
+    }
+
+    /** Side-effect-free personalization projection for read-only coach tools. */
+    @Transactional(readOnly = true)
+    public PersonalizationPlan getCoachPersonalizationPlan(String skillpilotId) {
+        Learner learner = learnerRepository.findById(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         return buildPersonalizationPlan(learner);
     }
 
@@ -8928,7 +8989,7 @@ public class LearnerService {
         if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
             learner.setLearningState(LearningState.FRONTIER);
         }
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
     }
 
     private String calculateSignature(LearnerDataDTO data) {
@@ -9004,8 +9065,54 @@ public class LearnerService {
     private void clearPersistedActiveGoal(Learner learner, String skillpilotId, String changeType) {
         learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
-        learnerRepository.save(learner);
+        advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, changeType));
+    }
+
+    /**
+     * Advances the canonical learner-scoped revision used by every coach
+     * transport for optimistic concurrency. Call this in the same transaction
+     * as each persisted learner-state mutation so web UI and MCP writes share
+     * one conflict domain.
+     */
+    private Learner advanceCoachStateRevision(Learner learner) {
+        if (learner == null) {
+            throw new IllegalArgumentException("learner must not be null");
+        }
+        if (markCoachStateRevisionAdvance(learner.getSkillpilotId())) {
+            learner.setCoachStateRevision(Math.addExact(learner.getCoachStateRevision(), 1L));
+        }
+        return learnerRepository.save(learner);
+    }
+
+    /**
+     * Returns {@code true} once per learner and transaction. A single public
+     * mutation may touch curriculum, focus and active goal through nested
+     * helpers; all those changes belong to one optimistic-concurrency revision.
+     */
+    @SuppressWarnings("unchecked")
+    private boolean markCoachStateRevisionAdvance(String skillpilotId) {
+        if (!TransactionSynchronizationManager.isActualTransactionActive()) {
+            return true;
+        }
+        Set<String> advanced =
+                (Set<String>) TransactionSynchronizationManager.getResource(
+                        COACH_STATE_REVISION_TRANSACTION_RESOURCE);
+        if (advanced == null) {
+            advanced = new HashSet<>();
+            TransactionSynchronizationManager.bindResource(
+                    COACH_STATE_REVISION_TRANSACTION_RESOURCE,
+                    advanced);
+            TransactionSynchronizationManager.registerSynchronization(
+                    new TransactionSynchronization() {
+                        @Override
+                        public void afterCompletion(int status) {
+                            TransactionSynchronizationManager.unbindResourceIfPossible(
+                                    COACH_STATE_REVISION_TRANSACTION_RESOURCE);
+                        }
+                    });
+        }
+        return advanced.add(skillpilotId);
     }
 
 }

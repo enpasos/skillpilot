@@ -57,3 +57,16 @@ tasks.test {
     useJUnitPlatform()
     maxHeapSize = "1536m"
 }
+
+tasks.register<JavaExec>("exportOpenAiDeV1Contract") {
+    group = "verification"
+    description = "Exports the canonical public German OpenAI V1 MCP contract."
+    dependsOn(tasks.testClasses)
+    classpath = sourceSets.test.get().runtimeClasspath
+    mainClass.set(
+        "com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractExporter"
+    )
+    val outputDir = providers.gradleProperty("outputDir")
+        .orElse("../tmp/openai-contract-v1")
+    args(outputDir.get())
+}

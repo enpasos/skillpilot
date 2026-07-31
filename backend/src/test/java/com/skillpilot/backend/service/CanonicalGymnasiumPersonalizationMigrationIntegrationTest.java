@@ -455,6 +455,30 @@ class CanonicalGymnasiumPersonalizationMigrationIntegrationTest {
     }
 
     @Test
+    void coachReadsNeverPersistLegacyMigrationOrAdvanceRevision()
+            throws Exception {
+        String learnerId = "legacy-stage-coach-read";
+        Learner learner = createLearner(learnerId, legacyConfig(true, false));
+        String storedBefore = learner.getPersonalCurriculum();
+
+        learnerService.getCoachPersonalizationPlan(learnerId);
+        learnerService.getCoachLearnerState(learnerId);
+
+        Learner persisted = persistedLearner(learnerId);
+        assertThat(persisted.getPersonalCurriculum()).isEqualTo(storedBefore);
+        assertThat(persisted.getCoachStateRevision()).isZero();
+        assertThat(persistedConfig(learnerId)
+                        .path(ROOT_ID)
+                        .path("stage")
+                        .isMissingNode())
+                .isTrue();
+        assertThat(persistedConfig(learnerId)
+                        .path(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)
+                        .isMissingNode())
+                .isTrue();
+    }
+
+    @Test
     void importMigratesBeforeRevalidatingFocusAndPreservesMastery()
             throws Exception {
         String sourceId = "legacy-stage-import-source";

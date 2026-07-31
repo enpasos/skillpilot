@@ -24,7 +24,7 @@ class OpenAiDeCoachUiControllerTest {
     private static final String LEARNING_SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String PROMPT =
-            "Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten "
+            "Verwende die App SkillPilot Coach DE v1 und fahre mit dem in SkillPilot vorbereiteten "
                     + "nächsten Schritt fort.\n\nSkillPilot-Lernsession: "
                     + LEARNING_SESSION_ID
                     + "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "

@@ -1,9 +1,11 @@
 package com.skillpilot.backend.openai.de.ratelimit;
 
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthMetadataController;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -126,13 +128,15 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         if (path == null) {
             return null;
         }
-        if (path.equals("/api/openai/de/mcp") || path.startsWith("/api/openai/de/mcp/")) {
+        if (path.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
+                || path.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/")) {
             return new Limit("mcp", properties.getMcpRequests());
         }
-        if (OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_WELL_KNOWN_PATH.equals(path)
+        if (OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH.equals(path)
-                || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH.equals(path)) {
+                || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH.equals(path)
+                || OpenAiAppsChallengeController.PATH.equals(path)) {
             return new Limit("metadata", properties.getMetadataRequests());
         }
         if (path.startsWith("/api/openai/de/oauth")) {

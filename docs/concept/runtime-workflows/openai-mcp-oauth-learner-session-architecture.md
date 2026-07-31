@@ -1,10 +1,13 @@
 # OpenAI-MCP-App: OAuth- und Lernsession-Bindung
 
-**Stand:** 26. Juli 2026
+**Stand:** 31. Juli 2026
 **Status:** verbindliche Zielarchitektur für den deutschen OpenAI-MCP-Coach
 
 Dieses Dokument ist die Quelle der Wahrheit für die Identitäts- und
-Sitzungsbindung der App **SkillPilot Coach (Deutsch)**.
+Sitzungsbindung der App **SkillPilot Coach DE v1**. Für Pluginidentität,
+Contract Major und Lebenszyklus ist ergänzend der
+[Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
+verbindlich.
 
 ## 1. Architekturentscheidung
 
@@ -63,7 +66,7 @@ Jeder Klick auf **Lernen starten** ist eine eigene atomare Startoperation:
 Beispiel:
 
 ```text
-Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in
+Verwende die App SkillPilot Coach DE v1 und fahre mit dem in
 SkillPilot vorbereiteten nächsten Schritt fort.
 
 SkillPilot-Lernsession: sps_<zufälliger opaker Wert>
@@ -172,7 +175,7 @@ OAuth Authorization Code mit PKCE bleibt von der Lernsession getrennt:
   und in der SkillPilot-Serverkonfiguration. Es gehört weder ins Repository
   noch in Browsercode, Prompts, Toolargumente, Antworten oder Logs.
 - PKCE `S256`, die exakte Callback-Allowlist, die exakte
-  Resource/Audience `https://skillpilot.com/api/openai/de/mcp`, Scopes,
+  Resource/Audience `https://mcp-v1.skillpilot.com`, Scopes,
   Ablauf und Widerruf werden weiterhin geprüft.
 - Offene Dynamic Client Registration und CIMD sind in diesem produktiven
   Profil weder erforderlich noch erlaubt.

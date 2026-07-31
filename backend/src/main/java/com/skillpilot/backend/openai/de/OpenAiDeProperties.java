@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,17 @@ public class OpenAiDeProperties {
     private Duration bindingTtl = Duration.ofMinutes(5);
     private Duration launchTtl = Duration.ofMinutes(5);
     private Duration learningSessionTtl = Duration.ofHours(24);
-    private String mcpUrl = "https://skillpilot.com/api/openai/de/mcp";
+    private String mcpUrl = OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT;
+    private String oauthResource = OpenAiDeV1ContractMetadata.OAUTH_RESOURCE;
+    private String uiOrigin = OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN;
+    private String serverBuild = OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD;
+    /**
+     * Optional deployment assertion. The effective revision is derived from
+     * the loaded runtime and startup fails when this value does not match.
+     */
+    private String curriculumRevision = "";
+    private String workflowVersion = OpenAiDeV1ContractMetadata.WORKFLOW_VERSION;
+    private String openAiAppsChallenge = "";
     private String chatgptUrl = "https://chatgpt.com/";
     private final Security security = new Security();
     private final MtlsEdge mtlsEdge = new MtlsEdge();
@@ -85,6 +96,54 @@ public class OpenAiDeProperties {
 
     public void setMcpUrl(String mcpUrl) {
         this.mcpUrl = mcpUrl;
+    }
+
+    public String getOauthResource() {
+        return oauthResource;
+    }
+
+    public void setOauthResource(String oauthResource) {
+        this.oauthResource = oauthResource;
+    }
+
+    public String getUiOrigin() {
+        return uiOrigin;
+    }
+
+    public void setUiOrigin(String uiOrigin) {
+        this.uiOrigin = uiOrigin;
+    }
+
+    public String getServerBuild() {
+        return serverBuild;
+    }
+
+    public void setServerBuild(String serverBuild) {
+        this.serverBuild = serverBuild;
+    }
+
+    public String getCurriculumRevision() {
+        return curriculumRevision;
+    }
+
+    public void setCurriculumRevision(String curriculumRevision) {
+        this.curriculumRevision = curriculumRevision;
+    }
+
+    public String getWorkflowVersion() {
+        return workflowVersion;
+    }
+
+    public void setWorkflowVersion(String workflowVersion) {
+        this.workflowVersion = workflowVersion;
+    }
+
+    public String getOpenAiAppsChallenge() {
+        return openAiAppsChallenge;
+    }
+
+    public void setOpenAiAppsChallenge(String openAiAppsChallenge) {
+        this.openAiAppsChallenge = openAiAppsChallenge;
     }
 
     public String getChatgptUrl() {

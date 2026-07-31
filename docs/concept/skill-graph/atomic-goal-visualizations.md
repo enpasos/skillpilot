@@ -4,7 +4,11 @@ This document defines the production and integration convention for visualizing 
 
 ## Purpose
 
-Atomic goal visualizations are compact didactic images that help learners recognize the core idea of one atomic learning goal. They are not tasks, solutions, or curriculum evidence. A visualization supports orientation in the cockpit. GPT-based coaching does not render these images directly; it links learners into the cockpit when visual orientation is useful. The graph goal remains the source of truth.
+Atomic goal visualizations are compact didactic images that help learners
+recognize the core idea of one atomic learning goal. They are not tasks,
+solutions, or curriculum evidence. A visualization supports orientation in the
+cockpit and, for the German OpenAI V1 MCP App, in a bounded inline component in
+ChatGPT. The graph goal remains the source of truth.
 
 ## Canonical JSON Format
 
@@ -35,9 +39,57 @@ Rules:
 - Use `type: "goal-visualization"` and `resourceType: "image"`; do not introduce another top-level goal field for images.
 - The public `url` must be root-relative under `/assets/goal-visualizations/...` so the cockpit can render it locally.
 - The image filename must be the SkillPilot ID plus extension: `<skillpilotId>.<ext>`. Keep language in the link metadata (`lang`), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.
-- GPT-facing AI endpoints do not render or expose goal-visualization images as chat images. They use a normal cockpit deep link such as `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
+- The German OpenAI V1 adapter may expose a visualization only for the active
+  atomic goal and only when the canonical link has `type:
+  "goal-visualization"`, `resourceType: "image"`, and a `skillpilotId` matching
+  that goal. Other AI integrations continue to use a normal cockpit deep link
+  unless they define and review an equivalent safe UI projection.
 - A goal may have multiple visualization links, but at most one `role: "primary"` per language should be visible in ordinary learner views.
 - `reviewStatus: "pilot"` is allowed for integration pilots. Broad rollout should use reviewed assets only.
+
+## OpenAI MCP UI Delivery
+
+The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
+read-only MCP UI resource:
+
+```text
+ui://skillpilot/coach/v1/1.0.0/goal-visualization.html
+```
+
+Both `get_skillpilot_context_de` and a successful
+`set_skillpilot_active_goal_de` reference this resource. Their
+`structuredContent` contains the following optional projection:
+
+```json
+{
+  "goalVisualization": {
+    "goalId": "<active atomic goal ID>",
+    "title": "<goal title>",
+    "description": "<optional goal description>",
+    "imageUrl": "https://skillpilot.com/assets/goal-visualizations/...",
+    "altText": "<accessible image description>",
+    "cockpitUrl": "https://skillpilot.com/?l=<curriculumId>&goal=<goalId>"
+  }
+}
+```
+
+The projection and component obey these constraints:
+
+- the active goal must be atomic;
+- its canonical visualization link must match the same goal ID and resolve to a
+  safe public SkillPilot image URL;
+- the UI displays title, optional description, image, alt text, and the normal
+  cockpit link; it performs no learning-state mutation;
+- a missing, malformed, mismatched, or unloadable image hides the component and
+  leaves the ordinary ChatGPT response unchanged;
+- the image is orientation only. It is not evidence, a task, a solution, an
+  assessment, or a mastery signal, and the model must not invent unreadable
+  image details.
+
+Because `1.0.0` has not been published in the OpenAI portal, this component is
+part of the same mutable release draft and does not cause a version increment.
+After publication, its resource URI and bundled content become immutable under
+the V1 release rules.
 
 ## Asset Layout
 
@@ -72,7 +124,8 @@ Reference pools of example tasks or image inspirations may be kept locally under
 5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
 6. Add the optional `resourceLinks` entry to the canonical goal JSON.
 7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
-8. Validate graph JSON, cockpit rendering, and the GPT cockpit-link handoff.
+8. Validate graph JSON, cockpit rendering, the OpenAI MCP inline component, and
+   the cockpit-link fallback.
 
 ## Automated Nano Banana Pro Workflow
 
@@ -239,7 +292,9 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The image has no copied third-party worksheet, logo, character, or protected layout.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
-- The image works in the cockpit goal card; GPT users can reach it through the cockpit deep link.
+- The image works in the cockpit goal card and, where the German OpenAI MCP UI
+  is enabled, in the inline ChatGPT card; the cockpit deep link remains
+  available.
 - The visual does not replace the need for explanation, practice, or assessment.
 - `altText` is specific enough for non-visual use.
 - `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.

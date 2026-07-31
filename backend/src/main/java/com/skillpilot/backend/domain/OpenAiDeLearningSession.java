@@ -36,6 +36,34 @@ public class OpenAiDeLearningSession {
     @Column(name = "expires_at", nullable = false)
     private Instant expiresAt;
 
+    @Column(name = "contract_major", nullable = false)
+    private int contractMajor;
+
+    @Column(name = "state_version", nullable = false)
+    // Diagnostic snapshot only. Optimistic concurrency is based on the
+    // learner-scoped coach_state_revision, never on this session row.
+    private long stateVersion;
+
+    @Column(name = "state_schema_version", nullable = false)
+    private int stateSchemaVersion;
+
+    @Column(name = "workflow_version", nullable = false, length = 80)
+    private String workflowVersion;
+
+    @Column(name = "curriculum_revision", nullable = false, length = 160)
+    private String curriculumRevision;
+
+    /**
+     * Hash of the successor session after an explicit cross-major migration.
+     *
+     * <p>The opaque learning-session handle is never persisted. Keeping only
+     * the successor token hash preserves the existing privacy boundary while
+     * allowing a future V2 migration service to resolve the mapping
+     * server-side.</p>
+     */
+    @Column(name = "migrated_to_token_hash", length = 128)
+    private String migratedToTokenHash;
+
     public String getTokenHash() {
         return tokenHash;
     }
@@ -66,5 +94,53 @@ public class OpenAiDeLearningSession {
 
     public void setExpiresAt(Instant expiresAt) {
         this.expiresAt = expiresAt;
+    }
+
+    public int getContractMajor() {
+        return contractMajor;
+    }
+
+    public void setContractMajor(int contractMajor) {
+        this.contractMajor = contractMajor;
+    }
+
+    public long getStateVersion() {
+        return stateVersion;
+    }
+
+    public void setStateVersion(long stateVersion) {
+        this.stateVersion = stateVersion;
+    }
+
+    public int getStateSchemaVersion() {
+        return stateSchemaVersion;
+    }
+
+    public void setStateSchemaVersion(int stateSchemaVersion) {
+        this.stateSchemaVersion = stateSchemaVersion;
+    }
+
+    public String getWorkflowVersion() {
+        return workflowVersion;
+    }
+
+    public void setWorkflowVersion(String workflowVersion) {
+        this.workflowVersion = workflowVersion;
+    }
+
+    public String getCurriculumRevision() {
+        return curriculumRevision;
+    }
+
+    public void setCurriculumRevision(String curriculumRevision) {
+        this.curriculumRevision = curriculumRevision;
+    }
+
+    public String getMigratedToTokenHash() {
+        return migratedToTokenHash;
+    }
+
+    public void setMigratedToTokenHash(String migratedToTokenHash) {
+        this.migratedToTokenHash = migratedToTokenHash;
     }
 }

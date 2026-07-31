@@ -11,7 +11,7 @@ import com.skillpilot.backend.openai.de.health.OpenAiDeCoachHealthIndicator;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeHttpOutcomeTelemetryFilter;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.ratelimit.OpenAiDeRateLimitFilter;
-import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -48,8 +48,9 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.oauth.enabled=false",
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://skillpilot.test/api/openai/de/mcp",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://skillpilot.test/api/openai/de/oauth/protected-resource",
+        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource",
         "skillpilot.openai.de.rate-limit.mcp-requests=5"
 })
 class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
@@ -68,7 +69,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         assertThat(properties.isBootstrapEnabled()).isFalse();
 
-        properties.setMcpUrl("http://skillpilot.test/api/openai/de/mcp");
+        properties.setMcpUrl("http://skillpilot.test/internal/openai/de/v1/mcp");
         OpenAiDeOAuthDiscoveryBootstrapConfiguration configuration =
                 new OpenAiDeOAuthDiscoveryBootstrapConfiguration();
 
@@ -76,7 +77,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                 .isThrownBy(() -> configuration.openAiDeOAuthDiscoveryBootstrapRouterFunction(
                         "https://skillpilot.test",
                         properties))
-                .withMessageContaining("MCP resource")
+                .withMessageContaining("public MCP endpoint")
                 .withMessageContaining("HTTPS");
 
         OpenAiDeProperties safeProperties = new OpenAiDeProperties();
@@ -96,9 +97,9 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
     @Test
     void publishesOnlyDiscoveryAndAlwaysChallengesMcpRequests() throws Exception {
         JsonNode protectedResource = json(get(
-                OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_WELL_KNOWN_PATH));
+                OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH));
         assertThat(protectedResource.path("resource").asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de/mcp");
+                .isEqualTo("https://mcp-v1.skillpilot.com");
         assertThat(protectedResource.path("authorization_servers").get(0).asText())
                 .isEqualTo("https://skillpilot.test/api/openai/de");
 
@@ -120,11 +121,11 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                 .isEqualTo(authorizationServer);
 
         for (String method : new String[] {"GET", "POST", "DELETE", "OPTIONS"}) {
-            HttpResponse<String> response = request(method, "/api/openai/de/mcp");
+            HttpResponse<String> response = request(method, "/internal/openai/de/v1/mcp");
             assertThat(response.statusCode()).as(method).isEqualTo(401);
             assertThat(response.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
                     .hasValueSatisfying(value -> assertThat(value)
-                            .contains("resource_metadata=\"https://skillpilot.test/api/openai/de/oauth/protected-resource\"")
+                            .contains("resource_metadata=\"https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource\"")
                             .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                             .contains(OpenAiDeOAuthConfiguration.WRITE_SCOPE)
                             .doesNotContain("error="));
@@ -138,7 +139,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
         HttpResponse<String> arbitraryBearer = request(
                 "POST",
-                "/api/openai/de/mcp",
+                "/internal/openai/de/v1/mcp",
                 Map.of(HttpHeaders.AUTHORIZATION, "Bearer arbitrary-untrusted-value"));
         assertThat(arbitraryBearer.statusCode()).isEqualTo(401);
         assertThat(arbitraryBearer.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
@@ -146,6 +147,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         .contains("error=\"invalid_token\""));
 
         assertThat(get(OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT).statusCode()).isEqualTo(404);
+        assertThat(request("POST", "/api/openai/de/mcp").statusCode()).isEqualTo(404);
         for (String path : new String[] {
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -157,12 +159,12 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(context.containsBean("openAiDeMcpServerRegistration")).isFalse();
         assertThat(context.containsBean("registerOpenAiDeClient")).isFalse();
         assertThat(context.containsBean("openAiDeCoach")).isFalse();
-        assertThat(context.getBeansOfType(OpenAiDeCoachMcpContract.class)).isEmpty();
+        assertThat(context.getBeansOfType(OpenAiDeV1McpContractAdapter.class)).isEmpty();
         assertThat(context.getBeansOfType(OpenAiDeRateLimitFilter.class)).hasSize(1);
         assertThat(context.getBeansOfType(OpenAiDeHttpOutcomeTelemetryFilter.class)).hasSize(1);
         assertThat(context.getBeansOfType(OpenAiDeOperationalTelemetry.class)).hasSize(1);
 
-        HttpResponse<String> rateLimited = request("POST", "/api/openai/de/mcp");
+        HttpResponse<String> rateLimited = request("POST", "/internal/openai/de/v1/mcp");
         assertThat(rateLimited.statusCode()).isEqualTo(429);
         assertThat(rateLimited.headers().firstValue(HttpHeaders.RETRY_AFTER)).isPresent();
         assertThat(rateLimited.body()).contains("\"error\":\"rate_limited\"");
@@ -231,7 +233,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
             OpenAiDeOAuthConfiguration.class,
             OpenAiDeOAuthDiscoveryBootstrapConfiguration.class,
             OpenAiDeMcpServerConfiguration.class,
-            OpenAiDeCoachMcpContract.class,
+            OpenAiDeV1McpContractAdapter.class,
             OpenAiDeCoachHealthIndicator.class,
             OpenAiDeOperationalTelemetry.class,
             OpenAiDeRateLimitFilter.class,

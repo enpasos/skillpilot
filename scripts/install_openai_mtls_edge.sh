@@ -9,7 +9,8 @@ fi
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_DIR="${ROOT_DIR}/deploy/openai-mtls"
 INSTALL_DIR="/etc/skillpilot/openai-mtls"
-NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-mtls.conf"
+V1_NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-v1-edge.conf"
+OBSOLETE_NGINX_SNIPPET="/etc/nginx/snippets/skillpilot-openai-de-mtls.conf"
 VERIFIER="/usr/local/libexec/skillpilot-openai-mtls-verifier.py"
 UNIT="/etc/systemd/system/skillpilot-openai-mtls-verifier.service"
 
@@ -53,6 +54,15 @@ openssl verify \
   -CAfile "${SOURCE_DIR}/openai-root-ca.pem" \
   "${SOURCE_DIR}/openai-connectors-mtls-ca.pem"
 
+if nginx -T 2>&1 | grep -Fq "${OBSOLETE_NGINX_SNIPPET}"; then
+  echo "Remove the obsolete include ${OBSOLETE_NGINX_SNIPPET} from the skillpilot.com TLS server block, validate nginx, and rerun this installer." >&2
+  exit 1
+fi
+if [[ -e "${OBSOLETE_NGINX_SNIPPET}" ]]; then
+  rm -f -- "${OBSOLETE_NGINX_SNIPPET}"
+  echo "Removed obsolete MCP compatibility snippet ${OBSOLETE_NGINX_SNIPPET}."
+fi
+
 install -d -m 0755 "${INSTALL_DIR}" /etc/nginx/snippets /usr/local/libexec
 install -m 0644 "${SOURCE_DIR}/openai-root-ca.pem" "${INSTALL_DIR}/"
 install -m 0644 \
@@ -81,21 +91,28 @@ install -m 0644 \
   "${SOURCE_DIR}/skillpilot-openai-mtls-verifier.service" \
   "${UNIT}"
 install -m 0644 \
-  "${SOURCE_DIR}/skillpilot-openai-de-mtls.nginx.conf" \
-  "${NGINX_SNIPPET}"
-
+  "${SOURCE_DIR}/skillpilot-openai-de-v1-edge.nginx.conf" \
+  "${V1_NGINX_SNIPPET}"
 systemctl daemon-reload
 systemctl enable skillpilot-openai-mtls-verifier.service
 systemctl restart skillpilot-openai-mtls-verifier.service
 
 echo
 echo "Installed and started the local verifier."
-echo "Next: include this line inside the existing skillpilot.com TLS server block:"
-echo "  include ${NGINX_SNIPPET};"
+echo "Next: configure DNS and TLS for mcp-v1.skillpilot.com, then include this"
+echo "line inside that host's TLS server block:"
+echo "  include ${V1_NGINX_SNIPPET};"
 echo
 echo "Also set in /etc/skillpilot/skillpilot.env:"
 echo "  SERVER_ADDRESS=127.0.0.1"
+echo "  SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp"
+echo "  SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com"
+echo "  SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com"
+echo "  SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+echo "  SKILLPILOT_SERVER_BUILD=<deployed Git commit SHA>"
 echo "  SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true"
+echo "  SKILLPILOT_OPENAI_APPS_CHALLENGE=<value from OpenAI app management>"
+echo "  SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED=true"
 echo
 echo "Then run: nginx -t && systemctl reload nginx && systemctl restart skillpilot"
 echo "Finally run: scripts/verify_openai_mtls_edge.sh --installed"

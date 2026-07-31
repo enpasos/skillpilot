@@ -1,6 +1,8 @@
 package com.skillpilot.backend.openai.de.oauth;
 
+import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -55,7 +57,7 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                                         issuer,
                                         properties)))
                 .GET(
-                        OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_WELL_KNOWN_PATH,
+                        OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH,
                         request -> metadataResponse(
                                 OpenAiDeOAuthMetadataController.protectedResourceMetadata(
                                         issuer,
@@ -72,6 +74,9 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                                 OpenAiDeOAuthMetadataController.authorizationServerMetadata(
                                         issuer,
                                         properties)))
+                .GET(
+                        OpenAiAppsChallengeController.PATH,
+                        request -> challengeResponse(properties))
                 .build();
     }
 
@@ -80,7 +85,9 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
     SecurityFilterChain openAiDeOAuthDiscoveryBootstrapSecurityFilterChain(
             HttpSecurity http,
             OpenAiDeProperties properties) throws Exception {
-        http.securityMatcher("/api/openai/de/mcp", "/api/openai/de/mcp/**")
+        http.securityMatcher(
+                        OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH,
+                        OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/**")
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().denyAll())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .requestCache(cache -> cache.disable())
@@ -99,6 +106,18 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                 .header(HttpHeaders.CACHE_CONTROL, "no-store")
                 .header("X-Content-Type-Options", "nosniff")
                 .body(metadata);
+    }
+
+    private static ServerResponse challengeResponse(OpenAiDeProperties properties) {
+        String challenge = properties.getOpenAiAppsChallenge();
+        if (challenge == null || challenge.isBlank()) {
+            return ServerResponse.notFound().build();
+        }
+        return ServerResponse.ok()
+                .contentType(MediaType.TEXT_PLAIN)
+                .header(HttpHeaders.CACHE_CONTROL, "no-store")
+                .header("X-Content-Type-Options", "nosniff")
+                .body(challenge.trim());
     }
 
     private static void writeAuthenticationRequired(
@@ -129,7 +148,10 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                 "OpenAI-DE OAuth issuer");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getMcpUrl(),
-                "OpenAI-DE MCP resource");
+                "OpenAI-DE public MCP endpoint");
+        OpenAiDeOAuthConfiguration.requireHttpsOrigin(
+                properties.getOauthResource(),
+                "OpenAI-DE OAuth resource");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
                 "OpenAI-DE protected-resource metadata URL");

@@ -48,7 +48,7 @@ class OpenAiDeBindingAuthenticationFilterTest {
                 new OpenAiDeBindingAuthenticationFilter(contextRepository);
 
         filter.doFilter(
-                new MockHttpServletRequest("GET", "/api/openai/de/mcp"),
+                new MockHttpServletRequest("GET", "/internal/openai/de/v1/mcp"),
                 new MockHttpServletResponse(),
                 new MockFilterChain());
 

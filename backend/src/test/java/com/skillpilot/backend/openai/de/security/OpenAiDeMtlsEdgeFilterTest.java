@@ -14,7 +14,7 @@ class OpenAiDeMtlsEdgeFilterTest {
 
     @Test
     void acceptsOnlyVerifiedOpenAiCertificateFromTrustedProxy() throws Exception {
-        MockHttpServletRequest request = request("/api/openai/de/mcp", "127.0.0.1");
+        MockHttpServletRequest request = request("/internal/openai/de/v1/mcp", "127.0.0.1");
         request.addHeader(
                 OpenAiDeMtlsEdgeFilter.VERIFIED_HEADER,
                 OpenAiDeMtlsEdgeFilter.VERIFIED_VALUE);
@@ -32,7 +32,7 @@ class OpenAiDeMtlsEdgeFilterTest {
 
     @Test
     void rejectsForgedHeadersFromUntrustedPeer() throws Exception {
-        MockHttpServletRequest request = request("/api/openai/de/mcp", "192.0.2.10");
+        MockHttpServletRequest request = request("/internal/openai/de/v1/mcp", "192.0.2.10");
         request.addHeader(
                 OpenAiDeMtlsEdgeFilter.VERIFIED_HEADER,
                 OpenAiDeMtlsEdgeFilter.VERIFIED_VALUE);
@@ -48,11 +48,11 @@ class OpenAiDeMtlsEdgeFilterTest {
 
     @Test
     void rejectsMissingOrIncorrectVerificationData() throws Exception {
-        assertThat(invoke(request("/api/openai/de/mcp", "127.0.0.1")).getStatus())
+        assertThat(invoke(request("/internal/openai/de/v1/mcp", "127.0.0.1")).getStatus())
                 .isEqualTo(403);
 
         MockHttpServletRequest wrongSan =
-                request("/api/openai/de/mcp/messages", "127.0.0.1");
+                request("/internal/openai/de/v1/mcp/messages", "127.0.0.1");
         wrongSan.addHeader(
                 OpenAiDeMtlsEdgeFilter.VERIFIED_HEADER,
                 OpenAiDeMtlsEdgeFilter.VERIFIED_VALUE);
@@ -64,7 +64,7 @@ class OpenAiDeMtlsEdgeFilterTest {
     void leavesOAuthAndDiscoveryOutsideTheMtlsGate() throws Exception {
         for (String path : new String[] {
             "/api/openai/de/oauth2/authorize",
-            "/.well-known/oauth-protected-resource/api/openai/de/mcp",
+            "/.well-known/oauth-protected-resource",
             "/api/openai/de/.well-known/oauth-authorization-server"
         }) {
             MockHttpServletRequest request = request(path, "192.0.2.10");

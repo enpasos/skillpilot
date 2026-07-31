@@ -1,8 +1,15 @@
 # OpenAI-MCP: Bindung an den zugelassenen Client
 
-**Stand:** 26. Juli 2026  
+**Stand:** 31. Juli 2026
 **Status:** verbindliche Sicherheitsarchitektur für den deutschen
 OpenAI-MCP-Coach
+
+Diese Sicherheitsbindung gilt für den öffentlichen MCP-Endpunkt
+`https://mcp-v1.skillpilot.com/mcp` und die davon bewusst getrennte OAuth-
+Resource `https://mcp-v1.skillpilot.com`. Die Identität und der Lifecycle der
+Linie werden im
+[Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
+festgelegt.
 
 ## 1. Schutzziel
 
@@ -38,15 +45,14 @@ Lernenden. Keiner der beiden Nachweise ersetzt den anderen.
 ## 3. Verbindliches OAuth-Clientprofil
 
 Produktiv existiert genau ein vorkonfigurierter vertraulicher OAuth-Client für
-die App **SkillPilot Coach (Deutsch)**:
+die Linie **SkillPilot Coach DE v1**:
 
 - feste, vom App-Autor gewählte `client_id`;
 - langes kryptografisch zufälliges `client_secret`;
 - genau die in der ChatGPT-Appverwaltung angezeigte Callback-URL;
 - Token-Endpunkt-Authentisierung ausschließlich mit `client_secret_basic`;
 - Authorization Code mit PKCE ausschließlich `S256`;
-- exakte Resource/Audience
-  `https://skillpilot.com/api/openai/de/mcp`;
+- exakte Resource/Audience `https://mcp-v1.skillpilot.com`;
 - getrennte Read- und Write-Scopes;
 - kurze Access-Token-Laufzeit, Refresh-Token-Rotation und Widerruf.
 

@@ -1,7 +1,9 @@
 package com.skillpilot.backend.openai.de.observability;
 
+import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthMetadataController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,8 +37,11 @@ public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilt
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
         return !(path.startsWith(OPENAI_API_PREFIX)
-                || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_WELL_KNOWN_PATH.equals(path)
+                || path.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
+                || path.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/")
+                || OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
+                || OpenAiAppsChallengeController.PATH.equals(path)
                 || isOpenAiUiPath(path));
     }
 

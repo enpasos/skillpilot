@@ -9,7 +9,9 @@ import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
+import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import java.nio.charset.StandardCharsets;
@@ -67,6 +69,7 @@ public class OpenAiDeCoachConnectionService {
     private final LearnerService learnerService;
     private final LandscapeService landscapeService;
     private final OpenAiDeProperties properties;
+    private final OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider;
     private final SecureRandom secureRandom = new SecureRandom();
     private final byte[] hashSecret;
 
@@ -76,12 +79,14 @@ public class OpenAiDeCoachConnectionService {
             LearnerService learnerService,
             LandscapeService landscapeService,
             OpenAiDeProperties properties,
+            OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
         this.learningSessionRepository = learningSessionRepository;
         this.learnerRepository = learnerRepository;
         this.learnerService = learnerService;
         this.landscapeService = landscapeService;
         this.properties = properties;
+        this.curriculumRevisionProvider = curriculumRevisionProvider;
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
     }
 
@@ -196,6 +201,15 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setStartedAt(startedAt);
         Instant expiresAt = startedAt.plus(properties.getLearningSessionTtl());
         learningSession.setExpiresAt(expiresAt);
+        learningSession.setContractMajor(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
+        // Retain the revision visible when the session was issued for
+        // diagnostics. Runtime conflict checks always use the canonical
+        // learner-scoped revision so later web or parallel-session writes are
+        // visible immediately.
+        learningSession.setStateVersion(learner.getCoachStateRevision());
+        learningSession.setStateSchemaVersion(OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
+        learningSession.setWorkflowVersion(properties.getWorkflowVersion());
+        learningSession.setCurriculumRevision(curriculumRevisionProvider.currentRevision());
         learningSessionRepository.save(learningSession);
         return new IssuedLearningSession(learningSessionId, expiresAt);
     }
@@ -417,13 +431,13 @@ public class OpenAiDeCoachConnectionService {
     private String launchPrompt(NormalizedLaunch launch, String learningSessionId) {
         String instruction = switch (launch.type()) {
             case CURRENT_UNIT ->
-                    "Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten "
+                    "Verwende die App SkillPilot Coach DE v1 und fahre mit dem in SkillPilot vorbereiteten "
                             + "nächsten Schritt fort.";
             case VERIFIED_RECALL ->
-                    "Verwende die App SkillPilot Coach (Deutsch) und starte für mein aktuell ausgewähltes Lernziel "
+                    "Verwende die App SkillPilot Coach DE v1 und starte für mein aktuell ausgewähltes Lernziel "
                             + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";
             case ABI26_EXAM ->
-                    "Verwende die App SkillPilot Coach (Deutsch) und starte im Prüfungsmodus mit meiner im Cockpit "
+                    "Verwende die App SkillPilot Coach DE v1 und starte im Prüfungsmodus mit meiner im Cockpit "
                             + "ausgewählten Mathematik-Abituraufgabe für den "
                             + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
         };
