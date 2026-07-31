@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.server.resource.introspection.BadOpaq
 class OpenAiDeOpaqueTokenIntrospectorTest {
 
     private static final String CLIENT_ID = "chatgpt-client";
-    private static final String MCP_URL = "https://skillpilot.test/internal/openai/de/v1/mcp";
+    private static final String MCP_URL = "https://mcp-coach-de-v1.skillpilot.test/mcp";
     private static final String TOKEN = "opaque-access-token";
     private static final String SUBJECT = "spod_subject";
 

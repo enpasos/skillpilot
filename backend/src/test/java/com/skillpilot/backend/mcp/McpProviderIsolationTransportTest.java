@@ -6,8 +6,9 @@ import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpConfiguration;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpServerConfiguration;
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.util.List;
@@ -74,14 +75,14 @@ class McpProviderIsolationTransportTest {
                 .containsExactlyInAnyOrder("createRegressionProbe", "verifyRegressionProbe")
                 .doesNotContain("openai_de_native");
 
-        assertThat(toolNames(postJson("/internal/openai/de/v1/mcp", 2)))
+        assertThat(toolNames(postJson(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH, 2)))
                 .containsExactly("openai_de_native")
                 .doesNotContain("createRegressionProbe", "verifyRegressionProbe");
     }
 
     @Test
     void openAiEndpointPreservesNativeStructuredContent() throws Exception {
-        MvcResult result = mockMvc.perform(post("/internal/openai/de/v1/mcp")
+        MvcResult result = mockMvc.perform(post(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
                         .header("MCP-Protocol-Version", PROTOCOL_VERSION)
@@ -99,7 +100,7 @@ class McpProviderIsolationTransportTest {
 
     @Test
     void toolListPublishesTopLevelSecuritySchemesAndCompatibilityMirror() throws Exception {
-        JsonNode tool = postJson("/internal/openai/de/v1/mcp", 4)
+        JsonNode tool = postJson(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH, 4)
                 .path("result")
                 .path("tools")
                 .get(0);

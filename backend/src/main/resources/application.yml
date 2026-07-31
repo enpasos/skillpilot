@@ -81,9 +81,8 @@ skillpilot:
       binding-ttl: ${SKILLPILOT_OPENAI_DE_BINDING_TTL:PT5M}
       launch-ttl: ${SKILLPILOT_OPENAI_DE_LAUNCH_TTL:PT5M}
       learning-session-ttl: ${SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL:PT24H}
-      mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://mcp-v1.skillpilot.com/mcp}
-      oauth-resource: ${SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:https://mcp-v1.skillpilot.com}
-      ui-origin: ${SKILLPILOT_OPENAI_DE_UI_ORIGIN:https://ui-v1.skillpilot.com}
+      mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://mcp-coach-de-v1.skillpilot.com/mcp}
+      oauth-resource: ${SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:https://mcp-coach-de-v1.skillpilot.com/mcp}
       server-build: "@skillpilotOpenAiDeServerBuild@"
       # Optional assertion only. The effective revision is derived from the
       # loaded repository JSON or active package generation at startup.
@@ -95,14 +94,6 @@ skillpilot:
         # Mandatory OAuth/provider safety baseline. It mirrors provider
         # activation; an explicit false override is rejected at startup.
         secure-mode: ${SKILLPILOT_OPENAI_DE_ENABLED:false}
-      mtls-edge:
-        # Optional transport-client hardening for the MCP resource only.
-        # Disabled means normal server-authenticated TLS plus mandatory OAuth.
-        # If enabled, startup validates the trusted proxy boundary fail-closed.
-        enabled: ${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:false}
-        # Exact numeric proxy peers only. The normal single-host deployment
-        # reaches Spring from nginx via loopback.
-        trusted-proxies: ${SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES:127.0.0.1,::1}
       rate-limit:
         enabled: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_ENABLED:true}
         window: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_WINDOW:PT1M}
@@ -135,7 +126,7 @@ skillpilot:
         # persisted clients from this allowlist that still use "none" are
         # revoked and removed during an explicit client cutover.
         legacy-client-ids: ${SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS:}
-        protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource}
+        protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp}
         access-token-ttl: ${SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL:PT1H}
         refresh-token-ttl: ${SKILLPILOT_OPENAI_DE_REFRESH_TOKEN_TTL:P30D}
   curriculum:

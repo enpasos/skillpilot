@@ -16,26 +16,31 @@ veröffentlichte Linie `skillpilot-coach-de-v1`.
 | Anzeigename | `SkillPilot Coach DE v1` |
 | aktueller Paketstand | `1.0.0` |
 | Contract Major | `1` |
-| öffentlicher MCP-Endpunkt | `https://mcp-v1.skillpilot.com/mcp` |
-| OAuth Resource/Audience | `https://mcp-v1.skillpilot.com` |
-| reservierter UI-Origin | `https://ui-v1.skillpilot.com` |
+| öffentlicher MCP-Endpunkt | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| OAuth Resource/Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
+| Benutzerdefinierter UI-Origin | im unveröffentlichten Draft nicht gesetzt; Provider-Sandbox |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-de-v1/` |
 
 Der noch unveröffentlichte V1-Draft enthält eine eng begrenzte, read-only
-MCP-UI für die Visualisierung des aktiven atomaren Lernziels. Sie verwendet den
-dedizierten Origin `ui-v1.skillpilot.com` und die unveränderlich vorgesehene
+MCP-UI für die Visualisierung des aktiven atomaren Lernziels. Der
+unveröffentlichte Draft verwendet dafür die Provider-Sandbox und die
+unveränderlich vorgesehene
 Resource-URI
 `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html`. Die übrigen Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
 besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
-verwenden ausschließlich den isolierten V1-Origin.
+verwenden ausschließlich den dedizierten DE-V1-Origin. Die fünf für DE V2/V3
+und EN V1/V2/V3 reservierten Hosts antworten bis zu ihrer jeweiligen Freigabe
+mit `404`.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
 - `.codex-plugin/plugin.json` für Paket-SemVer und sichtbare Metadaten;
-- `release/line.json` für Contract Major, öffentliche Origins und
+- `release/line.json` für Contract Major, öffentlichen MCP-Endpunkt und
   Zustands-/Workflowversionen;
 - `release/lifecycle.json` für `CURRENT`, `SUPPORTED`, `DEPRECATED`,
   `UNPUBLISHED` oder `RETIRED`;
@@ -62,7 +67,7 @@ Paketänderung benötigt eine neue SemVer.
    Paketversion bestehen. Nur wenn `release-index.json` diese Version bereits
    als veröffentlicht führt, wird die nächste Änderung als `PATCH` oder
    `MINOR` eingeordnet. Eine inkompatible Änderung benötigt eine neue
-   Plugin-Identität und einen neuen Major-Origin.
+   Plugin-Identität und einen neuen MCP-Origin.
 2. Release Notes, Lifecycle und alle Contract-/Workflowangaben gezielt
    aktualisieren. Die Paketversion wird innerhalb desselben unveröffentlichten
    Drafts nicht hochgezählt.
@@ -77,13 +82,13 @@ Paketänderung benötigt eine neue SemVer.
 
    ```dotenv
    # Nur als optionale, exakt übereinstimmende Overrides:
-   SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
-   SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
-   SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
-   SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
+   SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-coach-de-v1.skillpilot.com/mcp
+   SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-coach-de-v1.skillpilot.com/mcp
+   SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
    ```
 
-   Fehlende URL-Variablen aktivieren die geprüften Defaults. Ein ausdrücklich
+   Fehlende URL-Variablen aktivieren die geprüften Defaults. Ein eigener
+   `SKILLPILOT_OPENAI_DE_UI_ORIGIN` ist im Draft unzulässig. Ein ausdrücklich
    gesetzter abweichender oder leerer Wert, ein alter Alias, zusätzliche
    Leerzeichen oder ein zusätzlicher Slash führen dagegen fail-closed zum
    Abbruch vor Build und Restart sowie beim Anwendungsstart.
@@ -156,8 +161,8 @@ Paketänderung benötigt eine neue SemVer.
 
 ## 3. Rollback innerhalb von V1
 
-Ein Rollback ändert nicht die Plugin-Identität, den Contract Major, den MCP-
-Origin oder die OAuth-Resource.
+Ein Rollback ändert nicht die Plugin-Identität, den Contract Major, den
+dedizierten MCP-Origin oder die OAuth-Resource.
 
 1. Schreiboperationen bei Datenintegritätsrisiko zuerst über den vorhandenen
    Kill-Switch deaktivieren.
@@ -181,8 +186,8 @@ normale, geprüfte Änderung veröffentlicht.
 - `DEPRECATED`: weiterhin funktionsfähig; Nachfolger, Support-Ende und
   Unpublish-Datum müssen gesetzt und nutzerverständlich kommuniziert sein.
 - `UNPUBLISHED`: keine Neuinstallation über das Verzeichnis; bestehende
-  Installationen und der MCP-Origin bleiben bis zum dokumentierten Support-Ende
-  funktionsfähig.
+  Installationen und der dedizierte MCP-Origin bleiben bis zum dokumentierten
+  Support-Ende funktionsfähig.
 - `RETIRED`: Aufrufe werden kontrolliert und ohne Datenverlust abgewiesen.
 
 Unpublish ist kein technischer Shutdown. Vor dem Abschalten müssen installierte
@@ -203,10 +208,11 @@ vorliegen:
    Sessiondaten werden nach ihrer eigenen Aufbewahrungsfrist bereinigt.
 4. Veröffentlichte Contract-Snapshots, Release Notes und Auditnachweise bleiben
    als unveränderliche Dokumentation erhalten.
-5. DNS, TLS, OAuth-Resource und UI-Artefakte werden erst nach dem letzten
-   unterstützten Client und nach Ablauf der dokumentierten Aufbewahrung
-   entfernt.
+5. Der dedizierte MCP-Origin, seine OAuth-Resource und die zugehörigen
+   UI-Artefakte werden erst nach dem letzten unterstützten Client und nach
+   Ablauf der dokumentierten Aufbewahrung entfernt. Der gemeinsam genutzte
+   OAuth-Issuer auf `skillpilot.com` bleibt davon unberührt.
 
 Eine zukünftige V2 ersetzt V1 niemals durch stilles Überschreiben. Beide Linien
-haben getrennte Plugin-Identitäten, Origins, OAuth-Resources, Skills,
-Snapshots, Telemetrie und Lebenszyklen.
+haben getrennte Plugin-Identitäten, MCP-Origins, OAuth-Resources,
+Skills, Snapshots, Telemetrie und Lebenszyklen.

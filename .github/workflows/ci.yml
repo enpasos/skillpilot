@@ -95,22 +95,16 @@ jobs:
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
 
-  openai-mtls-edge-ci:
-    name: OpenAI MCP mTLS edge CI
+  openai-v1-public-edge-ci:
+    name: OpenAI MCP V1 public edge CI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Validate installation scripts
+      - name: Validate public edge script
         run: |
-          bash -n \
-            scripts/install_openai_mtls_edge.sh \
-            scripts/verify_openai_mtls_edge.sh \
-            scripts/verify_openai_v1_public_edge.sh
-          node --check scripts/validate_openai_v1_runtime_config.mjs
-          node --test scripts/validate_openai_v1_runtime_config.test.mjs
-      - name: Test CA chain, client-auth EKU, exact SAN, and nginx scope
-        run: ./scripts/verify_openai_mtls_edge.sh
+          bash -n scripts/verify_openai_v1_public_edge.sh
+          PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_openai_v1_public_edge.py
 
   frontend-ci:
     name: Application frontend CI
@@ -385,6 +379,6 @@ jobs:
         run: chmod +x ./gradlew
       - name: Run backend tests
         run: ./gradlew check
-      - name: Verify immutable OpenAI V1 release snapshot
+      - name: Verify OpenAI V1 release or draft snapshot
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify

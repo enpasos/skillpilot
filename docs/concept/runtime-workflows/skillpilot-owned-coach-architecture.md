@@ -333,9 +333,10 @@ ai/openai plugin/skillpilot-coach-de-v1/
 
 `plugin.json` identifiziert die V1-Paketlinie und verweist auf `./skills/`,
 `./.mcp.json` sowie `./.app.json`. Die MCP-Konfiguration bindet ausschließlich
-den öffentlichen V1-Endpunkt `https://mcp-v1.skillpilot.com/mcp` ein.
-`release/line.json` hält Contract Major, OAuth-Resource, reservierten UI-Origin
-und Zustands-/Workflowversionen maschinenlesbar zusammen;
+den öffentlichen V1-Endpunkt
+`https://mcp-coach-de-v1.skillpilot.com/mcp` ein.
+`release/line.json` hält Contract Major, exakte OAuth-Resource und
+Zustands-/Workflowversionen maschinenlesbar zusammen;
 `release/lifecycle.json` führt den Betriebsstatus. Die zusätzliche App-Abbildung
 referenziert für den lokalen beziehungsweise Workspace-internen Pilot exakt die
 bereits registrierte deutsche ChatGPT-Verbindung. App-Alias und `asdk_app...`
@@ -549,9 +550,9 @@ Produktiv wird die App per OAuth 2.1 gemäß MCP-Autorisierung angebunden:
    und Toolaufruf verlängern deren absolute Frist nicht.
 
 Das vertrauliche OAuth-Clientprofil bindet den MCP-Zugriff an die konfigurierte
-App. Optionales mTLS kann später zusätzlich die OpenAI-Connector-Infrastruktur
-am MCP-Pfad identifizieren, ersetzt aber weder diese Appidentität noch die
-Lernsession.
+App. `1.0.0` verwendet normales serverauthentisiertes HTTPS und OAuth. Eine
+spätere zusätzliche Transporthärtung ist ein eigener Entwurf und ersetzt weder
+diese Appidentität noch die Lernsession.
 
 Die interne permanente SkillPilot-ID wird nicht zurückgegeben. Kurzlebige
 Widgetreferenzen sind zusätzlich an Provider, OAuth-Clientverbindung,
@@ -790,11 +791,12 @@ Diese Lücken dürfen nicht durch Testdaten oder Promptanweisungen kaschiert wer
 
 Der deutsche chat-first Vertrag samt read-only Zielbild-Ressource ist direkt im
 bestehenden Backend implementiert.
-Öffentlich ist er über die isolierte V1-Linie erreichbar:
+Öffentlich ist er über den dedizierten DE-V1-Origin erreichbar:
 
 ```text
-https://mcp-v1.skillpilot.com/mcp
-  -> Reverse Proxy auf den loopback-internen Pfad /internal/openai/de/v1/mcp
+https://mcp-coach-de-v1.skillpilot.com/mcp
+  -> dedizierter TLS-vHost ohne Client-TLS
+  -> /internal/openai/de/v1/mcp auf dem loopback-gebundenen Backend
   -> eigener WebMvcStatelessServerTransport
   -> eigener McpStatelessSyncServer
   -> genau elf OpenAI-DE-Werkzeuge
@@ -851,7 +853,7 @@ der robuste Zielzuschnitt:
 
 - die unabhängig einreichbare deutsche Linie `skillpilot-coach-de-v1` aus
   gleichnamigem Skill und direkt eingereichtem deutschem MCP-Server
-  `https://mcp-v1.skillpilot.com/mcp`;
+  `https://mcp-coach-de-v1.skillpilot.com/mcp`;
 - später ein unabhängig einreichbares englisches Plugin aus eigenem
   englischem Skill und direkt eingereichtem englischem MCP-Server;
 - jeweils ein öffentlicher HTTPS-MCP-Endpunkt, passgenaue Metadaten,
@@ -890,8 +892,8 @@ Security-Schemes, Annotationen, `_meta`, UI-Ressourcen und CSP. Diese Metadaten
 sind daher versionierte öffentliche Verträge. Kompatible PATCH- und MINOR-
 Änderungen bleiben innerhalb der V1-Identität. Ein Breaking Change, das den
 alten Vertrag später ablösen soll, erhält eine neue Plugin-Identität mit
-eigenem MCP-Origin, eigener OAuth-Resource, eigenem Skillbaum und eigenem
-Lebenszyklus. Es wird nicht als normaler Serverfix auf V1 überschrieben.
+eigenem MCP-Origin, eigener OAuth-Resource, eigenem Skillbaum und
+eigenem Lebenszyklus. Es wird nicht als normaler Serverfix auf V1 überschrieben.
 Veröffentlichte Snapshots unter
 `contracts/published/openai/skillpilot-coach-de-v1/<version>/` bleiben
 unveränderlich. Noch nicht veröffentlichte Arbeitsstände liegen getrennt unter
@@ -1106,7 +1108,6 @@ Kernanforderung nicht.
 - [Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md)
 - [Rollback: ChatGPT Visible Session](chatgpt-visible-session-flow.md)
 - [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md)
-- [OpenAI-MCP-mTLS am Edge](../../deploy/openai-mcp-edge-mtls.md)
 - [OpenAI-Plugin: Versionierung und Lebenszyklus](openai-plugin-versioning-and-lifecycle.md)
 - [SkillPilot Coach DE v1: Release, Rollback und Stilllegung](../../deploy/openai-plugin-v1-release.md)
 - [Legacy ChatGPT Startcode / Session Flow](chatgpt-startcode-session-flow.md)

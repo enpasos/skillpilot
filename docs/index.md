@@ -37,7 +37,6 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
--   [OpenAI-MCP-mTLS am Edge](deploy/openai-mcp-edge-mtls.md)
 -   [Release, Rollback und Stilllegung von SkillPilot Coach DE v1](deploy/openai-plugin-v1-release.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 -   [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)

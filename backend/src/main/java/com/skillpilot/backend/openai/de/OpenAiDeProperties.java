@@ -19,7 +19,6 @@ public class OpenAiDeProperties {
     private Duration learningSessionTtl = Duration.ofHours(24);
     private String mcpUrl = OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT;
     private String oauthResource = OpenAiDeV1ContractMetadata.OAUTH_RESOURCE;
-    private String uiOrigin = OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN;
     private String serverBuild = OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD;
     /**
      * Optional deployment assertion. The effective revision is derived from
@@ -30,7 +29,6 @@ public class OpenAiDeProperties {
     private String openAiAppsChallenge = "";
     private String chatgptUrl = "https://chatgpt.com/";
     private final Security security = new Security();
-    private final MtlsEdge mtlsEdge = new MtlsEdge();
     private final OAuth oauth = new OAuth();
     private final RateLimit rateLimit = new RateLimit();
 
@@ -106,14 +104,6 @@ public class OpenAiDeProperties {
         this.oauthResource = oauthResource;
     }
 
-    public String getUiOrigin() {
-        return uiOrigin;
-    }
-
-    public void setUiOrigin(String uiOrigin) {
-        this.uiOrigin = uiOrigin;
-    }
-
     public String getServerBuild() {
         return serverBuild;
     }
@@ -158,10 +148,6 @@ public class OpenAiDeProperties {
         return security;
     }
 
-    public MtlsEdge getMtlsEdge() {
-        return mtlsEdge;
-    }
-
     public OAuth getOauth() {
         return oauth;
     }
@@ -174,9 +160,7 @@ public class OpenAiDeProperties {
      * Fail-closed OAuth and provider baseline for the OpenAI-DE boundary.
      *
      * <p>Every normally activated provider instance must satisfy all secure-mode
-     * invariants before the application starts. Optional transport-client
-     * hardening such as the mTLS edge is validated fail-closed when enabled,
-     * but is not part of this baseline. Isolated component tests must load
+     * invariants before the application starts. Isolated component tests must load
      * their components without activating the normal provider configuration;
      * setting this property to {@code false} is not a runtime escape hatch.</p>
      */
@@ -190,37 +174,6 @@ public class OpenAiDeProperties {
 
         public void setSecureMode(boolean secureMode) {
             this.secureMode = secureMode;
-        }
-    }
-
-    /**
-     * Optional trusted reverse-proxy boundary for OpenAI mTLS.
-     *
-     * <p>When enabled, the MCP resource is available only through a proxy peer
-     * from the exact trusted-proxy list and only with verified OpenAI client
-     * certificate headers. When disabled, normal server-authenticated TLS and
-     * the mandatory OAuth resource-server checks remain active.</p>
-     */
-    public static class MtlsEdge {
-
-        private boolean enabled;
-        private List<String> trustedProxies = new ArrayList<>(List.of("127.0.0.1", "::1"));
-
-        public boolean isEnabled() {
-            return enabled;
-        }
-
-        public void setEnabled(boolean enabled) {
-            this.enabled = enabled;
-        }
-
-        public List<String> getTrustedProxies() {
-            return trustedProxies;
-        }
-
-        public void setTrustedProxies(List<String> trustedProxies) {
-            this.trustedProxies =
-                    trustedProxies == null ? new ArrayList<>() : new ArrayList<>(trustedProxies);
         }
     }
 
@@ -318,7 +271,7 @@ public class OpenAiDeProperties {
         private int clientAssertionReplayCacheSize = 10_000;
         private List<String> legacyClientIds = new ArrayList<>();
         private String protectedResourceMetadata =
-                "https://skillpilot.com/api/openai/de/oauth/protected-resource";
+                OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT;
         private Duration accessTokenTtl = Duration.ofHours(1);
         private Duration refreshTokenTtl = Duration.ofDays(30);
 

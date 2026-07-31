@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.de.oauth;
 
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +22,7 @@ import org.springframework.web.util.HtmlUtils;
 public class OpenAiDeOAuthMetadataController {
 
     public static final String PROTECTED_RESOURCE_METADATA_PATH =
-            "/api/openai/de/oauth/protected-resource";
-    public static final String V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH =
-            "/.well-known/oauth-protected-resource";
+            OpenAiDeV1ContractMetadata.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH;
     public static final String AUTHORIZATION_SERVER_WELL_KNOWN_PATH =
             "/.well-known/oauth-authorization-server/api/openai/de";
     public static final String AUTHORIZATION_SERVER_COMPATIBILITY_PATH =
@@ -40,12 +39,7 @@ public class OpenAiDeOAuthMetadataController {
         this.properties = properties;
     }
 
-    @GetMapping(
-            value = {
-                    PROTECTED_RESOURCE_METADATA_PATH,
-                    V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH
-            },
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = PROTECTED_RESOURCE_METADATA_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> protectedResourceMetadata() {
         return protectedResourceMetadata(issuer, properties);

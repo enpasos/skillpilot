@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockFilterChain;
@@ -48,7 +49,7 @@ class OpenAiDeBindingAuthenticationFilterTest {
                 new OpenAiDeBindingAuthenticationFilter(contextRepository);
 
         filter.doFilter(
-                new MockHttpServletRequest("GET", "/internal/openai/de/v1/mcp"),
+                new MockHttpServletRequest("GET", OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH),
                 new MockHttpServletResponse(),
                 new MockFilterChain());
 

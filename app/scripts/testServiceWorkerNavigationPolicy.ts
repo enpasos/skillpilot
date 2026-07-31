@@ -10,11 +10,13 @@ const isDenied = (urlPath: string) =>
   serviceWorkerNavigationFallbackDenylist.some(pattern => pattern.test(urlPath))
 
 const machineEndpointNavigations = [
-  '/.well-known/oauth-protected-resource/api/openai/de/mcp',
+  '/.well-known/oauth-protected-resource',
   '/.well-known/oauth-authorization-server/api/openai/de',
   '/api/openai/de/oauth2/authorize',
   '/api/openai/de/oauth2/token',
   '/api/openai/de/mcp',
+  '/api/openai/de/v1/mcp',
+  '/internal/openai/de/v1/mcp',
   '/api/ui/learners/example',
 ]
 

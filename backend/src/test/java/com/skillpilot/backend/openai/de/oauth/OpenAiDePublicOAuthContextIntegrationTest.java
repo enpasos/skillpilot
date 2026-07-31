@@ -32,13 +32,12 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.oauth.client-id=chatgpt-confidential-test-client",
         "skillpilot.openai.de.oauth.client-secret=confidential-test-secret-that-is-longer-than-thirty-two-characters",
         "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/confidential-test-callback",
-        "skillpilot.openai.de.mtls-edge.enabled=false",
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.openai.de.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDePublicOAuthContextIntegrationTest {
 

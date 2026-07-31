@@ -10,7 +10,6 @@ import com.sun.net.httpserver.HttpsServer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
-import java.net.http.HttpRequest;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
 import java.security.KeyStore;
@@ -100,7 +99,6 @@ public final class OpenAiDeSecureOAuthTestServer {
         registry.add(
                 "skillpilot.openai.de.oauth.client-secret",
                 OpenAiDeSecureOAuthTestServer::confidentialClientSecret);
-        registry.add("skillpilot.openai.de.mtls-edge.enabled", () -> "false");
     }
 
     /**
@@ -124,10 +122,6 @@ public final class OpenAiDeSecureOAuthTestServer {
         registry.add(
                 "skillpilot.openai.de.oauth.client-assertion-replay-cache-size",
                 () -> "10000");
-        registry.add("skillpilot.openai.de.mtls-edge.enabled", () -> "true");
-        registry.add(
-                "skillpilot.openai.de.mtls-edge.trusted-proxies",
-                () -> "127.0.0.1,::1");
     }
 
     public static List<Map.Entry<String, String>> withClientAssertion(
@@ -139,12 +133,6 @@ public final class OpenAiDeSecureOAuthTestServer {
                 "client_assertion",
                 signedClientAssertion(PUBLIC_ORIGIN + endpointPath)));
         return List.copyOf(authenticated);
-    }
-
-    public static HttpRequest.Builder withVerifiedMtlsEdge(HttpRequest.Builder builder) {
-        return builder
-                .header("X-SkillPilot-OpenAI-mTLS-Verified", "SUCCESS")
-                .header("X-SkillPilot-OpenAI-mTLS-SAN", "mtls.prod.connectors.openai.com");
     }
 
     private static String signedClientAssertion(String endpointAudience) {

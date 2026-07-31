@@ -286,7 +286,6 @@ function buildCandidate(output) {
   const uiManifest = {
     schemaVersion: line.ui.stateSchemaVersion,
     enabled: line.ui.enabled,
-    origin: line.publicUiOrigin,
     resources: line.ui.resources.map((resource) => {
       const artifact = resolve(output, resource.path);
       assert.equal(
@@ -395,9 +394,14 @@ function validateCandidate(output) {
     "The V1 goal-visualization MCP UI must be enabled.",
   );
   assert.equal(
-    releaseContract.uiManifest.origin,
-    candidateLine.publicUiOrigin,
-    "UI manifest origin disagrees with the release line.",
+    Object.hasOwn(releaseContract.uiManifest, "origin"),
+    false,
+    "The V1 draft must leave MCP UI resources on the OpenAI sandbox origin.",
+  );
+  assert.equal(
+    Object.hasOwn(candidateLine, "publicUiOrigin"),
+    false,
+    "The V1 release line must not declare a custom MCP UI origin.",
   );
   assert.deepEqual(
     releaseContract.resources.map((resource) => ({

@@ -6,16 +6,16 @@ Für einen realen ChatGPT-Test benötigt jede App einen öffentlich erreichbaren
 HTTPS-Endpunkt. Für maximale Robustheit sind zwei getrennte App-Registrierungen
 vorgesehen:
 
-| App | lokaler Prototyp | aktueller produktiver MCP-Endpunkt |
+| App | lokaler Prototyp | vorgesehener MCP-Endpunkt |
 | --- | --- | --- |
-| SkillPilot Coach DE v1 | `/mcp/de` | `https://mcp-v1.skillpilot.com/mcp` |
+| SkillPilot Coach DE v1 | `/mcp/de` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | SkillPilot Coach English | `/mcp/en` | noch nicht freigegeben |
 
 Der Node-Endpunkt `/mcp/de` ist ausschließlich Prototyp. Der ausgelieferte
-deutsche Vertrag und das versionierte Plugin-Paket verwenden den isolierten
-V1-Origin. Die zugehörige OAuth-Resource ist
-`https://mcp-v1.skillpilot.com`; sie ist absichtlich nicht die vollständige
-Endpoint-URL. Es gibt keinen öffentlichen Kompatibilitätsalias.
+deutsche Vertrag und das versionierte Plugin-Paket verwenden den dedizierten
+V1-Origin. Die zugehörige OAuth-Resource/Audience ist exakt der vollständige
+Endpoint-URL `https://mcp-coach-de-v1.skillpilot.com/mcp`. Es gibt keinen
+öffentlichen Kompatibilitätsalias.
 
 Für den ersten Developer-Mode-Test kann ein kurzlebiger HTTPS-Tunnel auf den
 lokalen Server zeigen. Dabei gelten zwingend:
@@ -215,10 +215,18 @@ Der Server stellt optional den offiziellen Challenge-Pfad bereit:
 Der Rückgabewert wird ausschließlich aus `OPENAI_APPS_CHALLENGE` gelesen und als
 reiner Text ausgegeben. Ohne Konfiguration antwortet der Pfad mit 404.
 
-Für die deutsche V1 liegt die Challenge auf `mcp-v1.skillpilot.com`; der
-MCP-Produktpfad ist `https://mcp-v1.skillpilot.com/mcp`. Der separate
-`ui-v1.skillpilot.com`-Origin gehört zur read-only Zielbild-UI des weiterhin
-unveröffentlichten `1.0.0`-Drafts. Ihre Resource-URI
+Für die deutsche V1 liegen Challenge, Protected-Resource-Metadaten und der
+MCP-Produktpfad auf `mcp-coach-de-v1.skillpilot.com`; der MCP-URL ist
+`https://mcp-coach-de-v1.skillpilot.com/mcp`. Der OAuth-Issuer und seine
+Browser-Endpunkte bleiben unter `https://skillpilot.com/api/openai/de`. Die
+path-spezifischen Protected-Resource-Metadaten liegen unter
+`https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
+die Domain-Challenge unter
+`https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge`.
+DE V2/V3 und EN V1/V2/V3 sind nur als Hosts reserviert und liefern bis zur
+jeweiligen Vertragsfreigabe `404`. Die read-only Zielbild-UI des
+weiterhin unveröffentlichten `1.0.0`-Drafts lässt die benutzerdefinierte
+Widget-Domain zunächst weg und läuft dadurch in der Provider-Sandbox. Ihre Resource-URI
 `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html`, Integrität, CSP,
 Alttext und Degradationsverhalten sind eigene Release-Gates. Erst eine
 tatsächliche Portal-Veröffentlichung versiegelt diesen Stand; bis dahin bleibt
@@ -239,7 +247,8 @@ Der Server liefert ihn sowohl als
 Release, Rollback, Unpublish und Retention folgen dem
 [V1-Release-Runbook](../../docs/deploy/openai-plugin-v1-release.md). Ein
 Breaking Change wird nicht in `skillpilot-coach-de-v1` überschrieben, sondern
-als neue Plugin-Linie mit eigenem Origin und eigener OAuth-Resource aufgebaut.
+als neue Plugin-Linie mit eigenem MCP-Origin und eigener
+OAuth-Resource aufgebaut.
 
 ## 6. Review- und Produktgrenzen
 

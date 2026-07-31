@@ -8,6 +8,7 @@
 export const serviceWorkerNavigationFallbackDenylist = [
   /^\/\.well-known(?:\/|$)/,
   /^\/api(?:\/|$)/,
+  /^\/internal(?:\/|$)/,
   /^\/.*\.pdf$/,
   /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
   /^\/claude\/mcp-regression(?:\/|$)/,

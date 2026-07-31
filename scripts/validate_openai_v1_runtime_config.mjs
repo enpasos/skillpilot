@@ -14,12 +14,17 @@ const sourceApplicationPath = resolve(
 );
 
 export const OPENAI_V1_PUBLIC_DEFAULTS = Object.freeze({
-  SKILLPILOT_OPENAI_DE_MCP_URL: "https://mcp-v1.skillpilot.com/mcp",
-  SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE: "https://mcp-v1.skillpilot.com",
-  SKILLPILOT_OPENAI_DE_UI_ORIGIN: "https://ui-v1.skillpilot.com",
+  SKILLPILOT_OPENAI_DE_MCP_URL:
+    "https://mcp-coach-de-v1.skillpilot.com/mcp",
+  SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:
+    "https://mcp-coach-de-v1.skillpilot.com/mcp",
   SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:
-    "https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource",
+    "https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 });
+
+export const REMOVED_OPENAI_V1_PUBLIC_OVERRIDES = Object.freeze([
+  "SKILLPILOT_OPENAI_DE_UI_ORIGIN",
+]);
 
 const escapeRegExp = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -54,9 +59,23 @@ export function validateCanonicalPublicDefaults(applicationYaml) {
       `${name} must default to the exact SkillPilot Coach DE V1 public contract.`,
     );
   }
+  for (const name of REMOVED_OPENAI_V1_PUBLIC_OVERRIDES) {
+    assert.equal(
+      applicationYaml.includes(`\${${name}`),
+      false,
+      `${name} must not configure a custom MCP UI domain for the V1 draft.`,
+    );
+  }
 }
 
 export function validateExplicitPublicOverrides(env) {
+  for (const name of REMOVED_OPENAI_V1_PUBLIC_OVERRIDES) {
+    assert.equal(
+      !Object.hasOwn(env, name) || env[name] === undefined,
+      true,
+      `${name} must not be set; the V1 draft uses the OpenAI sandbox origin.`,
+    );
+  }
   for (const [name, expectedValue] of Object.entries(
     OPENAI_V1_PUBLIC_DEFAULTS,
   )) {
@@ -72,7 +91,10 @@ export function validateExplicitPublicOverrides(env) {
 }
 
 export function parseServiceEnvironmentFile(environmentFile) {
-  const publicNames = new Set(Object.keys(OPENAI_V1_PUBLIC_DEFAULTS));
+  const publicNames = new Set([
+    ...Object.keys(OPENAI_V1_PUBLIC_DEFAULTS),
+    ...REMOVED_OPENAI_V1_PUBLIC_OVERRIDES,
+  ]);
   const publicOverrides = {};
 
   for (const [index, rawLine] of environmentFile.split(/\r?\n/).entries()) {

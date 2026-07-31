@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class OpenAiDeV1PublicContractValidationTest {
 
     @Test
-    void acceptsOnlyTheCanonicalV1Origins() {
+    void acceptsOnlyTheCanonicalV1Boundaries() {
         OpenAiDeProperties properties = canonicalProperties();
 
         assertThat(OpenAiDeV1PublicContractValidation.inspect(properties).valid())
@@ -26,9 +26,6 @@ class OpenAiDeV1PublicContractValidationTest {
         assertMismatch(
                 properties -> properties.setOauthResource("https://skillpilot.com"),
                 "OAuth resource");
-        assertMismatch(
-                properties -> properties.setUiOrigin("https://ui-v2.skillpilot.com"),
-                "UI origin");
         assertMismatch(
                 properties -> properties.getOauth().setProtectedResourceMetadata(
                         "https://skillpilot.com/.well-known/oauth-protected-resource"),
@@ -52,7 +49,6 @@ class OpenAiDeV1PublicContractValidationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setMcpUrl(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
-        properties.setUiOrigin(OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
         properties.getOauth().setProtectedResourceMetadata(
                 OpenAiDeV1PublicContractValidation.PROTECTED_RESOURCE_METADATA);
         return properties;

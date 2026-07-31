@@ -61,12 +61,12 @@ The deployment process currently does all of the following:
     OpenAI server build and MCP server version.
 13. Verify that the processed backend resources contain that commit.
 14. For the `openai-mcp` variant, run the focused backend security and contract
-    tests and any enabled pre-restart mTLS gate.
+    tests.
 15. Restart the `skillpilot` system service.
 16. Wait until the public readiness endpoint returns HTTP 200.
 17. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
-18. Run enabled OpenAI edge checks and the source-rationale deployment smoke
-    test against the public host.
+18. For the `openai-mcp` variant, require the public path-based OpenAI V1 smoke;
+    then run the source-rationale deployment smoke against the public host.
 
 ## The Deployment Engine (`scripts/deploy.sh`)
 
@@ -192,7 +192,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     If the pull changes `HEAD`, it restarts the newly checked-out deployment
     engine before continuing.
 4.  **OpenAI V1 preflight**: the checked-in release contract is validated
-    before asset copying, build and restart. The four canonical V1 public URL
+    before asset copying, build and restart. The three canonical V1 public URL
     variables may be absent, in which case the versioned application defaults
     are used. An explicitly supplied value, including an empty value, must
     equal the canonical V1 value exactly; a stale alias, typo, whitespace or
@@ -210,8 +210,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     `SKILLPILOT_SERVER_BUILD` is not a runtime setting and cannot replace this
     artifact identity.
 9.  **Focused OpenAI security and contract tests** run before restart for the
-    `openai-mcp` artifact. If optional mTLS hardening is enabled, its
-    pre-restart boundary check also has to pass.
+    `openai-mcp` artifact.
 10. **`systemctl restart`** activates the freshly built frontend/backend bundle.
 11. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
@@ -220,16 +219,16 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     exact referenced CSS/module assets with cache bypass headers. It requires
     successful, nonempty same-origin responses with the expected content types,
     so missing hashed assets or an HTML error page served as CSS stop deployment.
-13. **Optional OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant
-    only when mTLS hardening is explicitly enabled. It verifies the separately
-    installed local verifier service and loopback listeners, expects public MCP
-    access without an OpenAI client certificate to fail with `403`, and expects
-    both OAuth discovery endpoints to remain public with `200`. In the normal
-    TLS/OAuth compatibility mode this gate is skipped; MCP access without an
-    OAuth token must still fail. The normal deploy does not install or remove
-    the privileged nginx boundary; see
-    [openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md).
-14. **Deployment smoke tests** check that the public host serves the intended
+13. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
+    every `openai-mcp` deployment. It verifies the dedicated
+    `mcp-coach-de-v1.skillpilot.com` TLS certificate, direct responses without
+    redirects, HTTP `200` plus the exact resource in path-specific
+    protected-resource metadata, and HTTP `401` plus the exact
+    `WWW-Authenticate` metadata reference at
+    `https://mcp-coach-de-v1.skillpilot.com/mcp`. The discarded main-origin
+    routes and the internal transport route must return HTTP `404`; all five
+    reserved sibling hosts must remain fail-closed with HTTP `404`.
+14. **Further deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML and contains the reviewed
     DE/EN audio, coach, and legal transparency copy. The source-rationale smoke
     then detects the active curriculum mode: repository deployments must serve
@@ -261,25 +260,34 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - Visible Session rollback:
     `./deploy_skillpilot.sh --coach-variant visible-session`
   - The `openai-mcp` build keeps English on its established Visible Session GPT.
-  - Returning to `visible-session` does not automatically uninstall the
-    OpenAI-mTLS verifier, CA files, or nginx snippet. Removal is a separate,
-    privileged security decision.
 - The canonical OpenAI V1 public values are safe, versioned application
   defaults:
-  - `https://mcp-v1.skillpilot.com/mcp`
-  - `https://mcp-v1.skillpilot.com`
-  - `https://ui-v1.skillpilot.com`
-  - `https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource`
+  - MCP endpoint: `https://mcp-coach-de-v1.skillpilot.com/mcp`
+  - OAuth resource: `https://mcp-coach-de-v1.skillpilot.com/mcp`
+  - protected-resource metadata:
+    `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
+  The draft does not configure a custom MCP-UI origin and uses the provider
+  sandbox instead.
   The corresponding `SKILLPILOT_OPENAI_DE_*` URL variables should normally be
   omitted from `/etc/skillpilot/skillpilot.env`. If an environment deliberately
   sets one, it must match the canonical value exactly or deployment and
   application startup fail closed.
+  Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin,
+  mTLS-edge, and mTLS-smoke variables before the first subdomain deployment;
+  they are not part of the `1.0.0` runtime contract.
+- The additive Nginx templates are
+  `deploy/nginx/skillpilot-mcp-coaches.conf` for inclusion inside `http {}` and
+  `deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf` for inclusion
+  only inside the existing `skillpilot.com` HTTPS `server {}` block before its
+  general `location /`. The first file activates only DE V1 and keeps DE V2/V3
+  plus EN V1/V2/V3 at `404`; the second prevents a main-origin or internal-path
+  alias. Neither template enables client-TLS or replaces existing vHosts.
 - Production uses exactly one systemd `EnvironmentFile`, normally
   `/etc/skillpilot/skillpilot.env`. Before copying assets or building,
   `./deploy_skillpilot.sh` verifies that this is the file configured for the
-  service and validates only the four public OpenAI V1 URL variables in it.
+  service and validates only the three public OpenAI V1 URL variables in it.
   Other values, including OAuth and database secrets, are not interpreted,
-  logged, or printed. The four public URL variables must not additionally be
+  logged, or printed. The three public URL variables must not additionally be
   supplied by unit-level `Environment=` or `PassEnvironment=` settings. A
   stale global systemd manager environment is rejected as well. A nonstandard
   file path must be selected explicitly with

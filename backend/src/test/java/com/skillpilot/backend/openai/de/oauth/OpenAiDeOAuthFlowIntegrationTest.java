@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.net.CookieManager;
@@ -68,11 +69,11 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.openai.de.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
+        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
         "skillpilot.openai.de.oauth.client-id=chatgpt-test-client",
         "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeOAuthFlowIntegrationTest {
 
@@ -123,16 +124,15 @@ class OpenAiDeOAuthFlowIntegrationTest {
     void publishesProviderMetadataAndCompletesPkceRefreshAndRevocation() throws Exception {
         JsonNode protectedResource = json(get(OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH));
         assertThat(protectedResource.path("resource").asText())
-                .isEqualTo("https://mcp-v1.skillpilot.com");
+                .isEqualTo(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         assertThat(protectedResource.path("authorization_servers").get(0).asText())
                 .isEqualTo("https://skillpilot.test/api/openai/de");
         assertThat(protectedResource.path("scopes_supported"))
                 .anySatisfy(scope -> assertThat(scope.asText()).isEqualTo(OpenAiDeOAuthConfiguration.READ_SCOPE))
                 .anySatisfy(scope -> assertThat(scope.asText()).isEqualTo(OpenAiDeOAuthConfiguration.WRITE_SCOPE));
-
-        JsonNode protectedResourceAlias = json(get(
-                OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH));
-        assertThat(protectedResourceAlias).isEqualTo(protectedResource);
+        assertThat(get(OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_PATH).statusCode())
+                .isEqualTo(404);
+        assertThat(get("/api/openai/de/oauth/protected-resource").statusCode()).isEqualTo(404);
 
         JsonNode authorizationMetadata = json(get(
                 OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH));
@@ -156,11 +156,13 @@ class OpenAiDeOAuthFlowIntegrationTest {
         assertThat(registeredClient.getClientSettings().isRequireProofKey()).isTrue();
         assertThat(registeredClient.getClientSettings().isRequireAuthorizationConsent()).isTrue();
 
-        HttpResponse<String> unauthorizedMcp = postJson("/internal/openai/de/v1/mcp", "{}", Map.of());
+        HttpResponse<String> unauthorizedMcp = postJson(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH, "{}", Map.of());
         assertThat(unauthorizedMcp.statusCode()).isEqualTo(401);
         assertThat(unauthorizedMcp.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
                 .hasValueSatisfying(value -> assertThat(value)
-                        .contains("resource_metadata=\"https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource\"")
+                        .contains("resource_metadata=\""
+                                + OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT
+                                + "\"")
                         .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                         .contains(OpenAiDeOAuthConfiguration.WRITE_SCOPE));
 
@@ -176,22 +178,22 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 Map.entry("state", externalState),
                 Map.entry("code_challenge", challenge(VERIFIER)),
                 Map.entry("code_challenge_method", "S256"),
-                Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
 
         HttpResponse<String> noResource = get(withoutQueryParameter(authorizePath, "resource"));
         assertThat(noResource.statusCode()).isEqualTo(400);
         assertThat(objectMapper.readTree(noResource.body()).path("error").asText()).isEqualTo("invalid_target");
 
         HttpResponse<String> trailingSlashResource = get(authorizePath.replace(
-                encode("https://mcp-v1.skillpilot.com"),
-                encode("https://mcp-v1.skillpilot.com/")));
+                encode(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE),
+                encode(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE + "/")));
         assertThat(trailingSlashResource.statusCode()).isEqualTo(400);
         assertThat(objectMapper.readTree(trailingSlashResource.body()).path("error").asText())
                 .isEqualTo("invalid_target");
 
         HttpResponse<String> whitespaceResource = get(authorizePath.replace(
-                encode("https://mcp-v1.skillpilot.com"),
-                encode(" https://mcp-v1.skillpilot.com")));
+                encode(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE),
+                encode(" " + OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
         assertThat(whitespaceResource.statusCode()).isEqualTo(400);
         assertThat(objectMapper.readTree(whitespaceResource.body()).path("error").asText())
                 .isEqualTo("invalid_target");
@@ -231,7 +233,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 Map.entry("redirect_uri", CALLBACK),
                 Map.entry("code", callbackQuery.get("code")),
                 Map.entry("code_verifier", VERIFIER),
-                Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
         assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
         assertThat(token.body()).doesNotContain(SKILLPILOT_ID);
         JsonNode tokenBody = objectMapper.readTree(token.body());
@@ -248,7 +250,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
                         OpenAiDeOAuthConfiguration.WRITE_SCOPE,
                         OpenAiDeOAuthConfiguration.OFFLINE_SCOPE);
         assertThat(applicationPrincipal.<List<String>>getAttribute("aud"))
-                .containsExactly("https://mcp-v1.skillpilot.com");
+                .containsExactly(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
         assertThat(applicationPrincipal.getName())
                 .doesNotContain(SKILLPILOT_ID)
                 .doesNotStartWith("spod_");
@@ -263,7 +265,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 Map.entry("grant_type", "refresh_token"),
                 Map.entry("refresh_token", refreshToken),
                 Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
-                Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
         assertThat(refresh.statusCode()).withFailMessage(refresh.body()).isEqualTo(200);
         JsonNode refreshBody = objectMapper.readTree(refresh.body());
         String downscopedAccessToken = refreshBody.path("access_token").asText();
@@ -278,7 +280,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
         assertThat(downscopedPrincipal.<Set<String>>getAttribute("scope"))
                 .containsExactly(OpenAiDeOAuthConfiguration.READ_SCOPE);
         assertThat(downscopedPrincipal.<List<String>>getAttribute("aud"))
-                .containsExactly("https://mcp-v1.skillpilot.com");
+                .containsExactly(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
 
         HttpResponse<String> revocation = postConfidentialClientForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -298,7 +300,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 List.of(
                         Map.entry("grant_type", "refresh_token"),
                         Map.entry("refresh_token", rotatedRefreshToken),
-                        Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                        Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
         assertThat(refreshAfterRevocation.statusCode()).isEqualTo(400);
         assertThat(objectMapper.readTree(refreshAfterRevocation.body()).path("error").asText())
                 .isEqualTo("invalid_grant");
@@ -315,7 +317,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 Map.entry("state", "accept-header-test"),
                 Map.entry("code_challenge", challenge(VERIFIER)),
                 Map.entry("code_challenge_method", "S256"),
-                Map.entry("resource", "https://mcp-v1.skillpilot.com")));
+                Map.entry("resource", OpenAiDeV1ContractMetadata.OAUTH_RESOURCE)));
 
         for (String accept : List.of("application/json", "text/html", "*/*")) {
             HttpResponse<String> response = get(authorizePath, Map.of(HttpHeaders.ACCEPT, accept));
@@ -349,9 +351,6 @@ class OpenAiDeOAuthFlowIntegrationTest {
         HttpRequest.Builder request = HttpRequest.newBuilder(localUri(path))
                 .header(HttpHeaders.CONTENT_TYPE, "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(body));
-        if (path.startsWith("/internal/openai/de/v1/mcp")) {
-            OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(request);
-        }
         headers.forEach(request::header);
         return client.send(request.build(), HttpResponse.BodyHandlers.ofString());
     }

@@ -236,8 +236,8 @@ def _parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--expected-resource",
         help=(
-            "Exact protected-resource identifier. Defaults to the V1 "
-            "<base-url> origin."
+            "Exact protected-resource identifier. Defaults to the "
+            "<base-url> origin when omitted."
         ),
     )
     parser.add_argument(

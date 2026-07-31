@@ -527,8 +527,7 @@ public class OpenAiDeOAuthConfiguration {
                     "OpenAI-DE current confidential client ID must not also be listed as a legacy client ID.");
         }
         requireHttpsUri(properties.getMcpUrl(), "OpenAI-DE public MCP endpoint");
-        requireHttpsOrigin(properties.getOauthResource(), "OpenAI-DE OAuth resource");
-        requireHttpsOrigin(properties.getUiOrigin(), "OpenAI-DE UI origin");
+        requireHttpsUri(properties.getOauthResource(), "OpenAI-DE OAuth resource");
         requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
                 "OpenAI-DE protected-resource metadata URL");

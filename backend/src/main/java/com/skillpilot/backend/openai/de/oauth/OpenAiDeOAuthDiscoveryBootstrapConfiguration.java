@@ -57,12 +57,6 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                                         issuer,
                                         properties)))
                 .GET(
-                        OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH,
-                        request -> metadataResponse(
-                                OpenAiDeOAuthMetadataController.protectedResourceMetadata(
-                                        issuer,
-                                        properties)))
-                .GET(
                         OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH,
                         request -> metadataResponse(
                                 OpenAiDeOAuthMetadataController.authorizationServerMetadata(
@@ -149,7 +143,7 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getMcpUrl(),
                 "OpenAI-DE public MCP endpoint");
-        OpenAiDeOAuthConfiguration.requireHttpsOrigin(
+        OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getOauthResource(),
                 "OpenAI-DE OAuth resource");
         OpenAiDeOAuthConfiguration.requireHttpsUri(

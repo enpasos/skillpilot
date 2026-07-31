@@ -43,18 +43,21 @@ Plugin-Linie V1
     technischer Name: skillpilot-coach-de-v1
     Anzeigename:       SkillPilot Coach DE v1
     Plugin-Releases:   1.x.y
-    MCP-Origin:        https://mcp-v1.skillpilot.com
-    UI-Origin:         https://ui-v1.skillpilot.com
+    MCP-Endpoint:      https://mcp-coach-de-v1.skillpilot.com/mcp
 
 Plugin-Linie V2
     technischer Name: skillpilot-coach-de-v2
     Anzeigename:       SkillPilot Coach DE v2
     Plugin-Releases:   2.x.y
-    MCP-Origin:        https://mcp-v2.skillpilot.com
-    UI-Origin:         https://ui-v2.skillpilot.com
+    MCP-Endpoint:      https://mcp-coach-de-v2.skillpilot.com/mcp
 ```
 
-Beide Plugin-Linien dürfen denselben SkillPilot-Core, dieselbe Datenbank, denselben Authorization Server und dieselben Benutzerkonten verwenden. Getrennt werden die öffentlichen Vertragsadapter, die Plugin-Pakete, die öffentlichen Origins sowie der jeweilige Veröffentlichungs- und Stilllegungslebenszyklus.
+Beide Plugin-Linien dürfen denselben SkillPilot-Core, dieselbe Datenbank,
+denselben Authorization Server und dieselben Benutzerkonten verwenden. Jede
+unabhängig veröffentlichbare Kombination aus Sprache und Contract-Major erhält
+jedoch einen eigenen öffentlichen MCP-Origin. Getrennt werden außerdem die
+Vertragsadapter, Plugin-Pakete sowie der jeweilige Veröffentlichungs- und
+Stilllegungslebenszyklus.
 
 ## 2. Status dieser Entscheidung
 
@@ -89,7 +92,10 @@ Die Planung beruht auf den folgenden derzeit dokumentierten Eigenschaften der Pl
 4. Der dokumentierte Weg innerhalb einer Plugin-Identität ist additiv: neue Tools, Felder oder UI-Ressourcen hinzufügen, neuen Metadaten-Snapshot prüfen lassen und die alten Verträge weiterhin bereitstellen. [OAI-2]
 5. Serverseitige Korrekturen dürfen ohne neue Plugin-Einreichung deployt werden, sofern der veröffentlichte Vertrag erhalten bleibt. Bei einem Vertragsbruch ist die Serveränderung zurückzurollen. [OAI-2]
 6. Pro MCP-Integration kann jeweils nur eine Version veröffentlicht und nur eine Version gleichzeitig geprüft werden. Eine freigegebene Aktualisierung ersetzt die vorher veröffentlichte Version derselben Plugin-Identität. Eine Organisation darf mehrere eigenständige Plugins veröffentlichen. [OAI-2]
-7. Scheme, Hostname und Port des MCP-Origins dürfen zwischen Versionen derselben Plugin-Identität nicht geändert werden. Ein anderer Origin erfordert ein neues Plugin. Nur der Endpoint-Pfad darf über den normalen Versionsprozess geändert werden. [OAI-2]
+7. Der bei OpenAI registrierte MCP-Endpoint ist Teil des Pluginvertrags. Ein
+   Wechsel von Scheme, Host oder Pfad wird deshalb nur als bewusstes
+   Plugin-Update vorgenommen; die Major-Version liegt bei SkillPilot im
+   dedizierten Endpoint-Host. [OAI-2]
 8. Ein Plugin kann aus der öffentlichen Sichtbarkeit entfernt oder vollständig aus Organisation, ChatGPT und Codex gelöscht werden. [OAI-2]
 9. Das Manifest verlangt eine semantische Version. Der technische Paketname ist auf 64 Zeichen begrenzt; der öffentliche Anzeigename auf 30 Zeichen. [OAI-3]
 10. Bei UI-Plugins muss `_meta.ui.domain` einen dedizierten, pro Plugin eindeutigen Origin angeben. Eine UI-Ressourcen-URI ist als Cache-Key zu behandeln; bei inkompatiblen HTML-, JavaScript- oder CSS-Änderungen ist eine neue URI zu veröffentlichen. [OAI-4] [OAI-5]
@@ -120,8 +126,7 @@ Verbindliche Konsistenzregel für jede öffentliche Plugin-Linie:
 Major(pluginPackageVersion)
     == Contract-Major
     == Major im technischen Plugin-Namen
-    == Major im öffentlichen MCP-Origin
-    == Major im öffentlichen UI-Origin
+    == Major im öffentlichen MCP-Hostname
 ```
 
 Beispiel:
@@ -130,13 +135,13 @@ Beispiel:
 plugin name:        skillpilot-coach-de-v2
 plugin version:     2.3.1
 contract major:     2
-MCP origin:         https://mcp-v2.skillpilot.com
-UI origin:          https://ui-v2.skillpilot.com
+MCP endpoint:       https://mcp-coach-de-v2.skillpilot.com/mcp
+OAuth resource:     https://mcp-coach-de-v2.skillpilot.com/mcp
 ```
 
 Die Server-Buildnummer, Zustands-Schemaversion, Workflow-Version und Curriculum-Revision dürfen unabhängig davon fortschreiten.
 
-## 6. Verbindliche Namen und Origins
+## 6. Verbindliche Namen und Endpoints
 
 ### 6.1 V1 vor der ersten Veröffentlichung
 
@@ -147,18 +152,22 @@ Technischer Plugin-/Paketname: skillpilot-coach-de-v1
 Öffentlicher Anzeigename:       SkillPilot Coach DE v1
 Erste Manifest-Version:         1.0.0
 Contract-Major:                 1
-Öffentlicher MCP-Endpoint:      https://mcp-v1.skillpilot.com/mcp
-OAuth Resource/Audience:        https://mcp-v1.skillpilot.com
-Öffentlicher UI-Origin:         https://ui-v1.skillpilot.com
+Öffentlicher MCP-Endpoint:      https://mcp-coach-de-v1.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-de-v1.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge
+OAuth-Issuer:                   https://skillpilot.com/api/openai/de
+Benutzerdefinierter UI-Origin:  im unveröffentlichten Draft nicht gesetzt
 ```
 
 Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen. Die längere Bezeichnung „SkillPilot Coach (Deutsch, Version 1)“ wird nicht verwendet.
 
 Für die V1-Linie gibt es keinen öffentlichen Kompatibilitätsalias. Der
-V1-Host routet per Reverse Proxy oder Ingress ohne HTTP-Weiterleitung auf den
-loopback-gebundenen Spring-Handler `/internal/openai/de/v1/mcp`. Dieser
-Handler ist ausschließlich ein internes Transportziel und keine öffentliche
-API. Öffentlich gilt genau der oben angegebene V1-Endpoint.
+dedizierte Nginx-vHost bildet ausschließlich den öffentlichen Pfad `/mcp` auf
+den loopback-gebundenen Spring-Transport `/internal/openai/de/v1/mcp` ab. Der
+OAuth-Issuer und seine Browser-Endpunkte bleiben auf `skillpilot.com`; der
+MCP-Origin verwendet normales serverauthentisiertes TLS und OAuth, aber kein
+Clientzertifikat.
 
 ### 6.2 Spätere V2
 
@@ -169,22 +178,40 @@ Technischer Plugin-/Paketname: skillpilot-coach-de-v2
 Öffentlicher Anzeigename:       SkillPilot Coach DE v2
 Erste Manifest-Version:         2.0.0
 Contract-Major:                 2
-Öffentlicher MCP-Endpoint:      https://mcp-v2.skillpilot.com/mcp
-OAuth Resource/Audience:        https://mcp-v2.skillpilot.com
-Öffentlicher UI-Origin:         https://ui-v2.skillpilot.com
+Öffentlicher MCP-Endpoint:      https://mcp-coach-de-v2.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-de-v2.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-de-v2.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-de-v2.skillpilot.com/.well-known/openai-apps-challenge
 ```
 
 V1 und V2 dürfen zeitweise parallel veröffentlicht sein. Sie teilen sich den Core, sind aber an den öffentlichen Grenzen getrennt.
 
 ### 6.3 Domainverifikation
 
-Für jeden öffentlichen MCP-Host MUSS die von OpenAI verlangte Challenge unter dem passenden HTTPS-Origin beziehungsweise einem zulässigen Parent-Origin bereitgestellt werden:
+Für jeden unabhängig veröffentlichbaren MCP-Origin MUSS die von OpenAI
+verlangte Challenge auf genau diesem Host bereitgestellt werden:
 
 ```text
 /.well-known/openai-apps-challenge
 ```
 
-Getrennte Hosts pro Major vermeiden Konflikte, wenn mehrere Plugin-Identitäten gleichzeitig verifiziert und veröffentlicht werden.
+Zwei Plugins auf demselben Host würden denselben Challenge-Pfad teilen. Deshalb
+trennt SkillPilot Sprache und Contract-Major bereits vor der Veröffentlichung
+durch eigene Hosts. Aktuell ist nur `mcp-coach-de-v1.skillpilot.com` aktiv; die
+folgenden fünf Namen sind durch DNS, Zertifikat und einen `404`-vHost
+reserviert, aber noch keine veröffentlichten oder aufrufbaren MCP-Verträge:
+
+```text
+mcp-coach-de-v2.skillpilot.com
+mcp-coach-de-v3.skillpilot.com
+mcp-coach-en-v1.skillpilot.com
+mcp-coach-en-v2.skillpilot.com
+mcp-coach-en-v3.skillpilot.com
+```
+
+Die Reservierung erzeugt weder eine Plugin-Veröffentlichung noch eine
+OAuth-Resource. Erst die jeweilige Contract-Implementierung und Freigabe
+aktiviert `/mcp`, Protected-Resource-Metadaten und den eigenen Challenge-Wert.
 
 ## 7. SemVer-Regeln für SkillPilot
 
@@ -287,13 +314,13 @@ Eine rein additive Übergangslösung innerhalb V1 ist zulässig, wenn der alte V
 OpenAI / ChatGPT / Codex
           |
           v
-mcp-v1.skillpilot.com  --->  McpContractV1Adapter  ---+
+mcp-coach-de-v1.skillpilot.com/mcp  --->  McpContractV1Adapter  ---+
                                                        |
                                                        v
                                                 SkillPilot Core
                                                        ^
                                                        |
-mcp-v2.skillpilot.com  --->  McpContractV2Adapter  ---+
+mcp-coach-de-v2.skillpilot.com/mcp  --->  McpContractV2Adapter  ---+
 ```
 
 Der Core enthält die fachlichen Use Cases. Der jeweilige Adapter übernimmt:
@@ -317,7 +344,10 @@ submit_learning_answer
 get_learning_session_status
 ```
 
-V1 benötigt deshalb im Normalfall keinen Suffix `_v1`; die Plugin-Identität und der MCP-Origin bilden bereits den Namespace. V2 darf dieselben fachlichen Namen mit einem inkompatiblen V2-Schema verwenden, weil sie eine andere Plugin-Identität besitzt.
+V1 benötigt deshalb im Normalfall keinen Suffix `_v1`; die Plugin-Identität
+und der dedizierte MCP-Origin bilden bereits den Namespace. V2 darf dieselben
+fachlichen Namen mit einem inkompatiblen V2-Schema verwenden, weil sie eine
+andere Plugin-Identität und einen anderen MCP-Origin besitzt.
 
 Ein Suffix wie `_v2` ist nur für eine additive Übergangsfunktion innerhalb derselben Plugin-Identität zulässig, wenn alter und neuer Vertrag gleichzeitig in derselben Toolliste sichtbar sein müssen.
 
@@ -401,16 +431,20 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 ## 9. MCP-UI-Versionierung
 
-### 9.1 Eindeutiger UI-Origin pro Plugin-Major
+### 9.1 UI-Origin erst zur tatsächlichen Veröffentlichung
 
-Jede Plugin-Identität mit UI MUSS einen eigenen UI-Origin besitzen:
+Der unveröffentlichte `1.0.0-SNAPSHOT`-Draft setzt weder `_meta.ui.domain`
+noch den Kompatibilitätsschlüssel `_meta["openai/widgetDomain"]`. Der Host
+verwendet dadurch seine isolierte Standard-Sandbox; SkillPilot-Domains für
+Bilder und Cockpit-Links werden separat und minimal in der CSP
+freigegeben.
 
-```text
-V1: https://ui-v1.skillpilot.com
-V2: https://ui-v2.skillpilot.com
-```
-
-Dieser Origin wird in `_meta.ui.domain` angegeben und darf nicht zwischen den Releases derselben Plugin-Identität wechseln.
+Vor der ersten tatsächlichen Veröffentlichung einer Plugin-Identität mit UI
+MUSS ein dedizierter, für diese Plugin-Identität eindeutiger UI-Origin gemäß
+der dann aktuellen OpenAI-Vorgabe festgelegt und geprüft werden. Diese spätere
+Entscheidung ändert den MCP-Endpunkt nicht und wird nicht durch einen
+unbenutzten Draft-Hostname vorweggenommen. Nach der Veröffentlichung darf der
+UI-Origin innerhalb derselben Plugin-Identität nicht stillschweigend wechseln.
 
 ### 9.2 Unveränderliche Ressourcen-URIs
 
@@ -511,8 +545,8 @@ Für jedes Release müssen mindestens getestet werden:
 V1 und V2 verwenden denselben Spring Authorization Server und dieselben SkillPilot-Konten, aber getrennte OAuth-Resources beziehungsweise Audiences:
 
 ```text
-V1 resource: https://mcp-v1.skillpilot.com
-V2 resource: https://mcp-v2.skillpilot.com
+V1 resource: https://mcp-coach-de-v1.skillpilot.com/mcp
+V2 resource: https://mcp-coach-de-v2.skillpilot.com/mcp
 ```
 
 Access Tokens müssen auf die passende Resource/Audience geprüft werden. Ein V1-Token darf nicht automatisch als V2-Token gelten, sofern dies nicht ausdrücklich und sicher im Authorization Server konfiguriert wurde.
@@ -723,7 +757,8 @@ Die konkreten Fristen werden pro Release entschieden und nicht im Programmcode f
 ### 14.2 Ablauf V1 -> V2
 
 1. V1 bleibt unverändert funktionsfähig.
-2. V2 wird mit eigener Plugin-Identität, eigenem MCP-Origin und eigenem UI-Origin aufgebaut.
+2. V2 wird mit eigener Plugin-Identität, eigenem MCP-Origin und
+   einem vor Veröffentlichung festgelegten eindeutigen UI-Origin aufgebaut.
 3. V2 wird unabhängig getestet, eingereicht und veröffentlicht.
 4. V1 und V2 laufen parallel.
 5. Neue Sessions werden bevorzugt in V2 angelegt.
@@ -823,7 +858,7 @@ Automatische Prüfung:
 
 ```text
 manifest major == contract major == major im Paketnamen
-                == major im MCP-Origin == major im UI-Origin
+                == major im MCP-Endpoint-Pfad
 ```
 
 Zusätzlich werden OpenAI-Grenzen wie Paketname, Anzeigename und SemVer-Format geprüft.
@@ -880,14 +915,16 @@ Für jede Zustandsmigration werden getestet:
 
 ## 17. Observability und Betriebsdaten
 
-Da kein zuverlässiges, dokumentiertes Runtime-Signal für die konkrete veröffentlichte Plugin-Paketversion vorausgesetzt wird, wird die Contract-Major-Linie primär durch den aufgerufenen Host beziehungsweise Ingress bestimmt.
+Da kein zuverlässiges, dokumentiertes Runtime-Signal für die konkrete
+veröffentlichte Plugin-Paketversion vorausgesetzt wird, wird die
+Contract-Major-Linie primär durch den aufgerufenen MCP-Origin und die dazu
+exakt gleiche OAuth-Resource bestimmt.
 
 Jeder Toolaufruf soll mindestens mit folgenden Feldern beobachtbar sein:
 
 ```text
 contractMajor
 pluginLine
-mcpHost
 serverBuild
 mcpProtocolVersion
 toolName
@@ -925,13 +962,12 @@ Build-Versionen sind Logfelder, keine Metrik-Tags. Die Metrik-Tags bleiben auf
 die begrenzten Mengen Contract-Major, Plugin-Linie, Tool, Status und stabiler
 Result-Code beschränkt.
 
-Der derzeitige MCP-SDK-`McpTransportContext` stellt weder den tatsächlich
-aufgerufenen Host noch die ausgehandelte MCP-Protokollversion über
-dokumentierte, transportübergreifend stabile Schlüssel bereit. Deshalb
-erfindet die Anwendung keine Werte für `mcpHost` oder `mcpProtocolVersion`.
-Der Host wird bis zu einem belastbaren SDK-Signal am versionierten Ingress
-beobachtet; eine Protokollversion wird erst ergänzt, wenn der Transport sie
-zuverlässig und dokumentiert bereitstellt.
+Der tatsächlich aufgerufene Endpoint-Pfad wird am HTTP-Ingress protokolliert.
+Der derzeitige MCP-SDK-`McpTransportContext` stellt ihn und die ausgehandelte
+MCP-Protokollversion nicht über dokumentierte, transportübergreifend stabile
+Schlüssel für den Tooladapter bereit. Deshalb dupliziert oder erfindet der
+Adapter diese Werte nicht; eine Protokollversion wird erst ergänzt, wenn der
+Transport sie zuverlässig und dokumentiert bereitstellt.
 
 ## 18. Konkreter Codex-Implementierungsauftrag
 
@@ -943,7 +979,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - `pluginIdentity = skillpilot-coach-de-v1`
    - `pluginVersion = 1.0.0`
    - `contractMajor = 1`
-   - öffentliche MCP- und UI-Origins konfigurierbar machen;
+   - den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;
    - Server-Build separat ausgeben.
 
 2. **V1-Contract-Modul abtrennen**
@@ -951,15 +987,18 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - interne Domainklassen nicht direkt als öffentliche DTOs verwenden;
    - Adapter zum bestehenden SkillPilot-Core einführen.
 
-3. **Öffentlichen V1-Origin vorbereiten**
-   - Routing für `https://mcp-v1.skillpilot.com/mcp` vorsehen;
+3. **Öffentlichen V1-Pfad vorbereiten**
+   - Spring-Transport unter `/internal/openai/de/v1/mcp` vorsehen und über den
+     dedizierten V1-vHost ausschließlich als
+     `https://mcp-coach-de-v1.skillpilot.com/mcp` veröffentlichen;
    - keinen öffentlichen Kompatibilitätsalias bereitstellen;
-   - ausschließlich auf den loopback-internen V1-Handler routen;
+   - keine zweite öffentliche HTTP-Route bereitstellen;
    - keine Abhängigkeit von Redirects;
    - OpenAI-Challenge-Route berücksichtigen.
 
 4. **V1-UI versionieren**
-   - `https://ui-v1.skillpilot.com` als eigenen UI-Origin vorsehen;
+   - im unveröffentlichten Draft die Provider-Sandbox ohne eigenen UI-Origin verwenden;
+   - einen eindeutigen UI-Origin erst vor einer tatsächlichen Veröffentlichung festlegen;
    - content-addressed oder release-addressed UI-Ressourcen-URIs erzeugen;
    - einmal veröffentlichte URIs unveränderlich behandeln;
    - UI-State mit `schemaVersion` versehen.
@@ -1012,7 +1051,8 @@ Nach der strukturellen Vorbereitung:
 Noch keine fachliche V2 implementieren. Lediglich sicherstellen, dass folgende spätere Schritte ohne Core-Neubau möglich sind:
 
 - zweites Contract- und Adaptermodul;
-- eigener MCP- und UI-Origin;
+- eigener MCP-Endpoint-Pfad und bei UI-Veröffentlichung ein eigener
+  plugin-eindeutiger UI-Origin;
 - neues Plugin-Paket;
 - paralleler Betrieb;
 - idempotente Sessionmigration;
@@ -1025,8 +1065,10 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 
 - V1 im technischen Namen und Anzeigenamen erkennbar ist;
 - Manifest-Version und Contract-Major konsistent sind;
-- der öffentliche V1-MCP-Origin unabhängig von späteren V2-Origins ist;
-- der V1-UI-Origin pro Plugin eindeutig ist;
+- der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;
+- der unveröffentlichte Draft keine fiktive UI-Domain beansprucht und vor
+  einer tatsächlichen UI-Veröffentlichung ein eindeutiger Origin festgelegt
+  werden muss;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben

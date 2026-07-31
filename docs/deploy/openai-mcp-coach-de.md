@@ -7,8 +7,9 @@ Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
 nicht öffentlich veröffentlichte Paketversion `1.0.0`.
 Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
-freigegeben. OpenAI-mTLS ist eine optionale spätere Härtung und keine
-Voraussetzung für den produktiven Kompatibilitätsmodus.
+freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
+dedizierten `mcp-coach-de-v1.skillpilot.com`-Origin. Client-TLS ist nicht
+aktiviert.
 
 Dieses Runbook aktiviert den deutschen, chat-first MCP-Lerncoach mit einer eng
 begrenzten read-only MCP-UI für Lernzielvisualisierungen. MCP-Server,
@@ -39,22 +40,23 @@ MCP-Werkzeug.
 | Zweck | URL |
 | --- | --- |
 | Plugin-Identität | `skillpilot-coach-de-v1` |
-| MCP Server URL | `https://mcp-v1.skillpilot.com/mcp` |
-| OAuth Resource / Audience | `https://mcp-v1.skillpilot.com` |
-| UI-Origin | `https://ui-v1.skillpilot.com` |
+| MCP Server URL | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| OAuth Resource / Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| Benutzerdefinierter UI-Origin | im unveröffentlichten Draft nicht gesetzt; Provider-Sandbox |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html` |
-| Protected Resource Metadata | `https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource` |
+| Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/de` |
 | Authorization-Server-Metadata | `https://skillpilot.com/.well-known/oauth-authorization-server/api/openai/de` |
 | Authorization Endpoint | `https://skillpilot.com/api/openai/de/oauth2/authorize` |
 | Token Endpoint | `https://skillpilot.com/api/openai/de/oauth2/token` |
 | Revocation Endpoint | `https://skillpilot.com/api/openai/de/oauth2/revoke` |
 
-Der Reverse Proxy leitet den öffentlichen Pfad `/mcp` auf den internen
-Spring-Handler `/internal/openai/de/v1/mcp` weiter. Dieser Handler ist nur über
-Loopback erreichbar und kein öffentlicher API-Pfad. Es gibt keinen öffentlichen
-Kompatibilitätsalias. Der produktive App-Eintrag verwendet ausschließlich die
-V1-**Server URL**, nicht den Entwicklungstunnel.
+Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
+den loopback-gebundenen Spring-Transport `/internal/openai/de/v1/mcp` weiter.
+Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
+verwendet ausschließlich diese V1-**Server URL**, nicht den Entwicklungstunnel
+und nicht einen Pfad auf `skillpilot.com`.
 
 ## 2. Discovery-Bootstrap und OAuth-Werte
 
@@ -71,8 +73,7 @@ Das Secret ist ausschließlich geschützte Konfiguration in ChatGPT und
 SkillPilot. Es gehört weder in Repository, Browser, Startnachricht,
 Toolargumente noch Logs. PKCE bindet zusätzlich den Authorization Code an den
 von ChatGPT erzeugten Verifier. Normales serverauthentisiertes HTTPS bleibt
-Pflicht. Optionales OpenAI-mTLS kann den MCP-Rand später zusätzlich härten,
-ist aber weder App-Identität noch Voraussetzung dieses Vertrags.
+Pflicht. Eine Clientzertifikat-Infrastruktur ist nicht Teil des V1-Vertrags.
 
 Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
 Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
@@ -117,14 +118,116 @@ nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.
 
 Für den sicheren Cutover können Code und additive Liquibase-Migration zunächst
 in einem getrennten read-only Canary geprüft werden. Der produktive
-Kompatibilitätsmodus benötigt dagegen aktivierte Schreiboperationen und
-verwendet normales
-serverauthentisiertes HTTPS am Reverse Proxy und verpflichtendes OAuth/PKCE mit
-exakter Resource-/Audience- und Scope-Prüfung. Die optionale, privilegierte
-mTLS-Edge-Installation ist getrennt in
-[openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md) beschrieben. Das normale
-`./deploy_skillpilot.sh` prüft die mTLS-Laufzeitgrenze nur, wenn diese Härtung
-ausdrücklich aktiviert ist.
+Vollbetrieb benötigt dagegen aktivierte Schreiboperationen und
+verwendet normales serverauthentisiertes HTTPS am dedizierten V1-vHost und
+verpflichtendes OAuth/PKCE mit exakter Resource-/Audience- und Scope-Prüfung.
+Der separate Host isoliert Domainverifikation und Plugin-Lifecycle; er aktiviert
+kein mTLS. Der bestehende `skillpilot.com`-vHost wird nicht grundsätzlich
+umgebaut; er erhält nur die unten beschriebene enge `404`-Sperre gegen
+MCP-/Internpfad-Aliasse.
+
+Die reproduzierbare additive vHost-Konfiguration liegt unter
+`deploy/nginx/skillpilot-mcp-coaches.conf`. Sie MUSS innerhalb des vorhandenen
+Nginx-`http {}`-Blocks eingebunden werden. Eine Einbindung auf globaler Ebene
+vor `http {}` führt zu `server directive is not allowed here` und ist
+unzulässig. Die zugehörige Certbot-Lineage
+`skillpilot-mcp-coaches` umfasst exakt:
+
+```text
+mcp-coach-de-v1.skillpilot.com
+mcp-coach-de-v2.skillpilot.com
+mcp-coach-de-v3.skillpilot.com
+mcp-coach-en-v1.skillpilot.com
+mcp-coach-en-v2.skillpilot.com
+mcp-coach-en-v3.skillpilot.com
+```
+
+Nur DE V1 wird an Spring weitergeleitet. Die übrigen fünf HTTPS-vHosts sind
+reserviert und liefern für jeden Pfad `404`; ihre DNS- und TLS-Bereitschaft ist
+keine Veröffentlichung. Änderungen werden immer zuerst mit `nginx -t` geprüft
+und erst danach per Reload aktiviert. Bestehende vHosts werden weder ersetzt
+noch grundsätzlich umgebaut.
+
+Zusätzlich wird
+`deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf` ausschließlich
+**innerhalb** des bestehenden HTTPS-`server {}`-Blocks für `skillpilot.com`
+und dort vor dessen allgemeinem `location /` eingebunden. Dieses enge
+Location-Snippet sperrt den verworfenen öffentlichen Pfad, den internen
+Spring-Transport und das interne Protected-Resource-Metadata-Ziel am
+Haupt-Origin mit `404`. Es darf weder auf globaler Ebene
+noch im `http {}`-Block eingebunden werden. So bleibt der bestehende Haupt-vHost
+ansonsten unverändert, und nur der dedizierte DE-V1-vHost veröffentlicht den
+MCP-Vertrag.
+
+Vor einer Installation werden die bestehende Nginx-Hauptdatei und bereits
+vorhandene Ziel-Snippets unter eindeutigen Namen gesichert. Eine vorhandene,
+funktionierende MCP-vHost-Datei wird zuerst gegen die Repository-Vorlage
+verglichen und nicht blind überschrieben:
+
+```bash
+sudo cp -a -n /etc/nginx/nginx.conf \
+  /etc/nginx/nginx.conf.before-mcp-subdomain-includes
+
+if sudo test -e /etc/nginx/skillpilot-mcp-coaches.conf; then
+  sudo cp -a -n /etc/nginx/skillpilot-mcp-coaches.conf \
+    /etc/nginx/skillpilot-mcp-coaches.conf.before-repository-sync
+  sudo diff -u /etc/nginx/skillpilot-mcp-coaches.conf \
+    deploy/nginx/skillpilot-mcp-coaches.conf || true
+fi
+
+if sudo test -e /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf; then
+  sudo cp -a -n \
+    /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf \
+    /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf.before-repository-sync
+  sudo diff -u \
+    /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf \
+    deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf || true
+fi
+```
+
+Erst nach Prüfung des Diffs werden aus dem Repository-Root die beiden Dateien
+getrennt installiert:
+
+```bash
+sudo install -o root -g root -m 0644 \
+  deploy/nginx/skillpilot-mcp-coaches.conf \
+  /etc/nginx/skillpilot-mcp-coaches.conf
+sudo install -o root -g root -m 0644 \
+  deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf \
+  /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf
+```
+
+Die zwei Includes haben absichtlich verschiedene Kontexte:
+
+```nginx
+http {
+    # bestehende globale Einstellungen bleiben unverändert
+    include /etc/nginx/skillpilot-mcp-coaches.conf;
+
+    server {
+        server_name skillpilot.com skillpilot.org skillpilot.mobi;
+
+        # vor dem bestehenden allgemeinen `location /`
+        include /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf;
+
+        location / {
+            # bestehende SkillPilot-Proxykonfiguration
+        }
+    }
+}
+```
+
+Der Ausschnitt ist eine Platzierungshilfe und kein Ersatz für den bestehenden
+Haupt-vHost. Das zweite Include wird gezielt in genau diesen vorhandenen
+`server {}`-Block aufgenommen; weitere Einträge bleiben unverändert. Danach
+wird immer zuerst die vollständige Konfiguration geprüft. Nur ein erfolgreicher
+Test erlaubt den Reload:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+sudo systemctl is-active nginx
+```
 
 ```text
 SERVER_ADDRESS=127.0.0.1
@@ -138,11 +241,6 @@ SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
 SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=true
 SKILLPILOT_OPENAI_DE_MCP_ENABLED=true
 SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true
-SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=false
-
-# Erst nach separater, optionaler mTLS-Edge-Installation:
-# SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
-# SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
@@ -169,17 +267,18 @@ SKILLPILOT_OPENAI_DE_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_DE_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
 
-Die vier öffentlichen V1-URLs werden nicht pro Server konfiguriert, sondern
+Die drei öffentlichen V1-URLs werden nicht pro Server konfiguriert, sondern
 haben im Backend diese sicheren, versionierten Defaults:
 
 | optionale Override-Variable | kanonischer V1-Wert |
 | --- | --- |
-| `SKILLPILOT_OPENAI_DE_MCP_URL` | `https://mcp-v1.skillpilot.com/mcp` |
-| `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` | `https://mcp-v1.skillpilot.com` |
-| `SKILLPILOT_OPENAI_DE_UI_ORIGIN` | `https://ui-v1.skillpilot.com` |
-| `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` | `https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource` |
+| `SKILLPILOT_OPENAI_DE_MCP_URL` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
+| `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 
-Im normalen Produktivbetrieb bleiben diese Variablen in
+Ein eigener `SKILLPILOT_OPENAI_DE_UI_ORIGIN` ist im Draft unzulässig; die
+MCP-UI verwendet die Provider-Sandbox. Im normalen Produktivbetrieb bleiben
+diese Variablen in
 `/etc/skillpilot/skillpilot.env` ungesetzt. Ein fehlender Wert verwendet den
 kanonischen Default. Wird eine Variable ausdrücklich gesetzt, muss ihr Wert
 einschließlich Pfad, Slash und ohne zusätzliche Leerzeichen exakt der Tabelle
@@ -188,14 +287,22 @@ fail-closed zum Abbruch des Deployment-Preflights beziehungsweise des
 Anwendungsstarts. Damit kann eine alte oder falsch geschriebene Route den
 versionierten V1-Vertrag nicht unbemerkt ersetzen.
 
+Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
+`SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
+`SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED`,
+`SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES` und mTLS-Smoke-Zertifikate aus
+der EnvironmentFile entfernt. Sie gehören nicht zum `1.0.0`-Vertrag. Die drei
+URL-Overrides aus der Tabelle werden ebenfalls am besten entfernt; falls sie
+absichtlich stehen bleiben, müssen sie exakt die neuen Werte tragen.
+
 `./deploy_skillpilot.sh` prüft vor Asset-Kopien, Build und Service-Restart die
 tatsächlich von der systemd-Unit referenzierte EnvironmentFile. Der
 Produktionsvertrag erlaubt genau eine solche Datei, standardmäßig
 `/etc/skillpilot/skillpilot.env`; für einen abweichenden Pfad muss
 `SKILLPILOT_SERVICE_ENV_FILE` ausdrücklich gesetzt werden. Aus der Datei werden
-ausschließlich die vier öffentlichen URL-Variablen gelesen. OAuth-, Datenbank-
+ausschließlich die drei öffentlichen URL-Variablen gelesen. OAuth-, Datenbank-
 und andere Secrets werden weder ausgewertet, protokolliert noch ausgegeben.
-Dieselben vier Variablen dürfen nicht zusätzlich über `Environment=` oder
+Dieselben drei Variablen dürfen nicht zusätzlich über `Environment=` oder
 `PassEnvironment=` der Unit gesetzt werden. Enthält die globale
 systemd-Umgebung einen dieser Namen, bricht der Preflight ebenfalls ab.
 Ist die eine EnvironmentFile in systemd optional (`ignore_errors=yes`) und
@@ -239,9 +346,7 @@ sichere Clientmodus verlangt `client_secret_basic` und prüft die exakte
 Client-ID, das Secret in konstantzeitgeeigneter Form, Redirect-Allowlist,
 Resource, Scopes und PKCE `S256`. Fehlendes Secret, `none`,
 `private_key_jwt`, DCR, CIMD und jeder stille Profil-Fallback brechen den Start
-beziehungsweise den Tokenaustausch fail-closed ab. Nur bei ausdrücklich
-aktivierter mTLS-Härtung werden zusätzlich numerisch konfigurierte Trusted
-Proxies und die fail-closed Edge-Bestätigung verlangt.
+beziehungsweise den Tokenaustausch fail-closed ab.
 
 Auch `SKILLPILOT_SIGNING_SECRET` ist für den aktivierten OpenAI-DE-Provider
 verpflichtend. Der Prozess bricht den Start ab, wenn der Wert fehlt, dem
@@ -357,7 +462,7 @@ geprüft werden.
 Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
 `serverBuild`, `serverBuildConfigured`, `mcpEnabled`, `oauthEnabled`,
 `writesEnabled`, `secureMode`,
-`mtlsEdgeEnabled`, `clientAuthenticationMethod`, `publicClientConfigured`,
+`clientAuthenticationMethod`, `publicClientConfigured`,
 `privateKeyJwtConfigured`, `clientIdConfigured`, `redirectUrisConfigured`,
 `contractToolCount`, `contractHash`, `rateLimitEnabled` und
 `rateLimitConfigured`. Der
@@ -415,7 +520,7 @@ Anwendungslogs erscheinen.
    ```
 
 3. Verbindung: `Server URL`.
-4. MCP-URL: `https://mcp-v1.skillpilot.com/mcp`.
+4. MCP-URL: `https://mcp-coach-de-v1.skillpilot.com/mcp`.
 5. OAuth mit der festen Client-ID, dem dazugehörigen Client-Secret und der
    exakten Callback-URL konfigurieren. Als Authentisierungsmethode am
    Token-Endpunkt `client_secret_basic` wählen. DCR, CIMD, `none` und
@@ -479,11 +584,12 @@ SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
 Dann:
 
 ```bash
-MCP_BASE=https://mcp-v1.skillpilot.com
+MCP_URL=https://mcp-coach-de-v1.skillpilot.com/mcp
+RESOURCE_METADATA=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 AUTH_BASE=https://skillpilot.com
 
-curl -fsS "$MCP_BASE/.well-known/oauth-protected-resource" \
-  | jq -e --arg resource "$MCP_BASE" \
+curl -fsS "$RESOURCE_METADATA" \
+  | jq -e --arg resource "$MCP_URL" \
       --arg issuer "$AUTH_BASE/api/openai/de" \
       '.resource == $resource
        and (.authorization_servers | index($issuer))'
@@ -495,7 +601,7 @@ curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/de" \
        and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'
 
 curl -sS -o /dev/null -D - \
-  -X POST "$MCP_BASE/mcp" \
+  -X POST "$MCP_URL" \
   -H 'Content-Type: application/json' \
   --data '{}' \
   | sed -n '/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'
@@ -514,7 +620,8 @@ Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
 ### 5.2 Vollbetrieb, zunächst read-only
 
 ```bash
-MCP_BASE=https://mcp-v1.skillpilot.com
+MCP_URL=https://mcp-coach-de-v1.skillpilot.com/mcp
+RESOURCE_METADATA=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 AUTH_BASE=https://skillpilot.com
 MANAGEMENT_BASE=http://127.0.0.1:8080
 AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
@@ -525,8 +632,8 @@ curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
 curl -fsS "$MANAGEMENT_BASE/actuator/health/openAiDeCoach" \
   | jq -e '.status == "UP"'
 
-curl -fsS "$MCP_BASE/.well-known/oauth-protected-resource" \
-  | jq -e --arg resource "$MCP_BASE" \
+curl -fsS "$RESOURCE_METADATA" \
+  | jq -e --arg resource "$MCP_URL" \
       --arg issuer "$AUTH_BASE/api/openai/de" \
       '.resource == $resource
        and (.authorization_servers | index($issuer))
@@ -541,7 +648,7 @@ curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/de" \
        and (.registration_endpoint | not)'
 
 curl -sS -o /dev/null -D - \
-  -X POST "$MCP_BASE/mcp" \
+  -X POST "$MCP_URL" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl-smoke","version":"1"}}}' \
@@ -549,17 +656,13 @@ curl -sS -o /dev/null -D - \
 test "$AUTH_METHOD" = client_secret_basic
 ```
 
-Erwartung beim letzten Aufruf im TLS/OAuth-Kompatibilitätsmodus: `401` mit
+Erwartung beim letzten Aufruf: `401` mit
 einem `WWW-Authenticate`-Header, der auf die
 OpenAI-DE-Resource-Metadata-URL verweist. Ein gültiges Token ohne
 Schreibscope muss stattdessen `error="insufficient_scope"` erhalten.
 
-Nur bei aktivierter optionaler mTLS-Härtung ist für den öffentlichen Aufruf
-ohne OpenAI-Clientzertifikat bereits am Edge `403` zu erwarten. Der
-mTLS-verifizierte Aufruf aus ChatGPT ohne oder mit ungültigem Token muss
-dahinter weiterhin `401` liefern. Token, Cookies, Authorization Codes,
-SkillPilot-IDs und vollständige Schülerantworten dürfen nicht in geteilte Logs
-oder Tickets kopiert werden.
+Token, Cookies, Authorization Codes, SkillPilot-IDs und vollständige
+Schülerantworten dürfen nicht in geteilte Logs oder Tickets kopiert werden.
 
 `MANAGEMENT_BASE` bezeichnet den internen beziehungsweise geschützten
 Managementzugang; Actuator darf dafür nicht ungefiltert über den öffentlichen
@@ -776,8 +879,6 @@ noch benötigt:
   der tatsächlichen Callback-URL; am Token-Endpunkt muss
   `client_secret_basic` ausgewählt sein;
 - Nachweis, dass der Backendport nicht direkt aus dem Internet erreichbar ist;
-  eine einmalige privilegierte mTLS-Edge-Installation ist eine getrennt
-  geplante optionale Härtung;
 - Datenbank-Backup, Deployment des Spring-Boot-Artefakts samt Migration und
   atomarer Environment-Umstellung;
 - Aktualisierung der deutschen App-Version mit der kanonischen Server-URL und

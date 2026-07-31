@@ -13,7 +13,6 @@ SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 SERVICE_ENV_FILE="${SKILLPILOT_SERVICE_ENV_FILE:-/etc/skillpilot/skillpilot.env}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 SYSTEMCTL_BIN=""
-OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED="${SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED:-false}"
 
 require_explicit_coach_variant() {
   local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
@@ -37,38 +36,6 @@ require_explicit_coach_variant() {
 
   export VITE_SKILLPILOT_COACH_VARIANT="${configured_variant}"
   echo "Coach-Variante für diesen Build: ${VITE_SKILLPILOT_COACH_VARIANT}"
-}
-
-require_openai_mtls_deploy_policy() {
-  if [ "${VITE_SKILLPILOT_COACH_VARIANT}" != "openai-mcp" ]; then
-    return
-  fi
-
-  case "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" in
-    true)
-      echo "OpenAI-MCP-Transport: TLS + OAuth + mTLS-Härtung"
-      ;;
-    false)
-      echo "OpenAI-MCP-Transport: TLS + OAuth (mTLS-Härtung deaktiviert)"
-      ;;
-    *)
-      echo "Abbruch: SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED muss true oder false sein." >&2
-      exit 1
-      ;;
-  esac
-
-  case "${OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED}" in
-    true)
-      echo "OpenAI-MCP-V1-Public-Edge-Smoke: aktiviert"
-      ;;
-    false)
-      echo "OpenAI-MCP-V1-Public-Edge-Smoke: deaktiviert (bis zum DNS/TLS-Cutover sicherer Standard)"
-      ;;
-    *)
-      echo "Abbruch: SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED muss true oder false sein." >&2
-      exit 1
-      ;;
-  esac
 }
 
 require_production_java() {
@@ -244,7 +211,6 @@ wait_for_public_readiness() {
 }
 
 require_explicit_coach_variant
-require_openai_mtls_deploy_policy
 require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
@@ -338,21 +304,12 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest \
-    --tests com.skillpilot.backend.openai.de.security.OpenAiDeMtlsEdgeFilterTest \
     --tests com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest \
     --tests com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest \
     --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinatorTest \
     --tests com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidationTest
 fi
 cd ..
-
-if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
-  && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
-  echo "Prüfe OpenAI-mTLS-Sicherheitsgrenze vor dem Service-Restart..."
-  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
-    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
-    ./scripts/verify_openai_mtls_edge.sh --pre-restart
-fi
 
 echo "Starte Service neu..."
 if [ "$(id -u)" -eq 0 ]; then
@@ -367,19 +324,9 @@ echo "Prüfe ausgelieferte Frontend-Shell-Assets..."
 node scripts/verify_frontend_shell_assets.mjs \
   "${SMOKE_BASE_URL}"
 
-if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
-  && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
-  echo "Prüfe produktive OpenAI-mTLS-Sicherheitsgrenze..."
-  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
-    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
-    ./scripts/verify_openai_mtls_edge.sh --runtime
-fi
-
-if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
-  && [ "${OPENAI_V1_PUBLIC_EDGE_SMOKE_ENABLED}" = "true" ]; then
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe den öffentlichen OpenAI-Plugin-V1-Edge..."
-  SKILLPILOT_OPENAI_DE_V1_ORIGIN="${SKILLPILOT_OPENAI_DE_V1_ORIGIN:-https://mcp-v1.skillpilot.com}" \
-    SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
     ./scripts/verify_openai_v1_public_edge.sh
 fi
 

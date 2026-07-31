@@ -51,6 +51,8 @@ class OpenAiDeOAuthConfigurationTest {
         assertThat(properties.getOauth().getClientId()).isEmpty();
         assertThat(properties.getOauth().getClientSecret()).isEmpty();
         assertThat(properties.getOauth().getRedirectUris()).isEmpty();
+        assertThat(properties.getOauth().getProtectedResourceMetadata())
+                .isEqualTo(OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT);
     }
 
     @Test
@@ -111,9 +113,7 @@ class OpenAiDeOAuthConfigurationTest {
             "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
             "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
             "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0",
-            "skillpilot.openai.de.mtls-edge.enabled=true",
-            "skillpilot.openai.de.mtls-edge.trusted-proxies[0]=127.0.0.1"
+            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0"
         };
         String[] combined = java.util.Arrays.copyOf(baseline, baseline.length + 1);
         combined[baseline.length] = override;
@@ -454,7 +454,7 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsNonHttpsResourceAndCallbackConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl("http://skillpilot.test/internal/openai/de/v1/mcp");
+        properties.setMcpUrl("http://mcp-coach-de-v1.skillpilot.test/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
@@ -466,7 +466,7 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsWhitespaceAroundExactResourceConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl(" https://skillpilot.test/internal/openai/de/v1/mcp");
+        properties.setMcpUrl(" https://mcp-coach-de-v1.skillpilot.test/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
@@ -475,22 +475,15 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void keepsPublicEndpointSeparateFromOAuthAndUiOrigins() {
+    void requiresThePathSpecificCanonicalOAuthResource() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setOauthResource("https://skillpilot.test/internal/openai/de/v1/mcp");
+        properties.setOauthResource("https://skillpilot.com");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
                 .withMessageContaining("OAuth resource")
-                .withMessageContaining("path");
-
-        properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
-        properties.setUiOrigin("https://ui.skillpilot.test/version/1");
-        assertThatExceptionOfType(IllegalStateException.class)
-                .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
-                .withMessageContaining("UI origin")
-                .withMessageContaining("path");
+                .withMessageContaining(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
     }
 
     @Test
@@ -571,7 +564,6 @@ class OpenAiDeOAuthConfigurationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setMcpUrl(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         properties.setOauthResource(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
-        properties.setUiOrigin(OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
         properties.setServerBuild("test-build");
         properties.getOauth().setClientAuthenticationMethod("none");
         properties.getOauth().setClientId("chatgpt-app-client-id");

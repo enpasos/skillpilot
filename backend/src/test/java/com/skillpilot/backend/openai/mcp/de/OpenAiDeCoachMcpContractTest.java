@@ -194,12 +194,19 @@ class OpenAiDeCoachMcpContractTest {
                             .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
                     assertThat(resource.meta().get("ui"))
                             .isInstanceOfSatisfying(Map.class, ui -> {
-                                assertThat(ui)
-                                        .containsEntry(
-                                                "domain",
-                                                OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
-                                assertThat(ui.toString()).contains("https://skillpilot.com");
+                                assertThat(ui).doesNotContainKey("domain");
+                                assertThat(ui.toString())
+                                        .contains(
+                                                "https://skillpilot.com",
+                                                "resourceDomains")
+                                        .doesNotContain(
+                                                "connectDomains",
+                                                "redirectDomains");
                             });
+                    assertThat(resource.meta()).doesNotContainKey("openai/widgetDomain");
+                    assertThat(resource.meta().get("openai/widgetCSP").toString())
+                            .contains("resource_domains", "redirect_domains")
+                            .doesNotContain("connect_domains");
 
                     McpSchema.ReadResourceResult result = specification.readHandler().apply(
                             null,

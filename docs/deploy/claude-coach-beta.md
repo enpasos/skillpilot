@@ -47,7 +47,7 @@ nur in einer isolierten, kontrollierten Testumgebung mit synthetischen Daten sta
 
 | Variante | Kontextbindung | Aktueller Status |
 | --- | --- | --- |
-| ChatGPT MCP-App | normales TLS plus OAuth/PKCE, exakte Resource/Audience/Scopes und absolute 24h-Lernsession; optional mTLS ausschließlich als spätere Härtung am MCP-Rand | aktueller deutscher ChatGPT-Pfad; allgemeine Freigabe nach sicherem OAuth-Cutover und Acceptance |
+| ChatGPT MCP-App | normales TLS plus OAuth/PKCE, exakte Resource/Audience/Scopes und absolute 24h-Lernsession | aktueller deutscher ChatGPT-Pfad; allgemeine Freigabe nach sicherem OAuth-Cutover und Acceptance |
 | ChatGPT Visible Session | sichtbares, höchstens 24 Stunden gültiges `sps_...`-Token im Startprompt und Footer | isolierter Rollback, nicht aktuelle Referenzarchitektur |
 | Claude OAuth/MCP | Backend löst ein authentifiziertes OAuth-Subject auf; generischer Prompt ohne sichtbares Sitzungstoken | Codepfade ergänzt und sicher projiziert; pausiert bis zur echten vollständigen Acceptance |
 | Legacy Custom GPT | einmaliger Startcode und anschließendes verborgenes Sitzungstoken | unveränderte koordinierte Rollback-Quelle |

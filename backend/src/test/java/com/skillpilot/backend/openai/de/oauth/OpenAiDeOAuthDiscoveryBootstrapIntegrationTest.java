@@ -13,6 +13,7 @@ import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemet
 import com.skillpilot.backend.openai.de.ratelimit.OpenAiDeRateLimitFilter;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -48,9 +49,9 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.de.oauth.enabled=false",
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://mcp-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-v1.skillpilot.com",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource",
+        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
         "skillpilot.openai.de.rate-limit.mcp-requests=5"
 })
 class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
@@ -69,7 +70,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         assertThat(properties.isBootstrapEnabled()).isFalse();
 
-        properties.setMcpUrl("http://skillpilot.test/internal/openai/de/v1/mcp");
+        properties.setMcpUrl("http://mcp-coach-de-v1.skillpilot.test/mcp");
         OpenAiDeOAuthDiscoveryBootstrapConfiguration configuration =
                 new OpenAiDeOAuthDiscoveryBootstrapConfiguration();
 
@@ -97,14 +98,14 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
     @Test
     void publishesOnlyDiscoveryAndAlwaysChallengesMcpRequests() throws Exception {
         JsonNode protectedResource = json(get(
-                OpenAiDeOAuthMetadataController.V1_PROTECTED_RESOURCE_WELL_KNOWN_PATH));
+                OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH));
         assertThat(protectedResource.path("resource").asText())
-                .isEqualTo("https://mcp-v1.skillpilot.com");
+                .isEqualTo(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
         assertThat(protectedResource.path("authorization_servers").get(0).asText())
                 .isEqualTo("https://skillpilot.test/api/openai/de");
-
-        assertThat(json(get(OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH)))
-                .isEqualTo(protectedResource);
+        assertThat(get(OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_PATH).statusCode())
+                .isEqualTo(404);
+        assertThat(get("/api/openai/de/oauth/protected-resource").statusCode()).isEqualTo(404);
 
         JsonNode authorizationServer = json(get(
                 OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH));
@@ -121,11 +122,13 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                 .isEqualTo(authorizationServer);
 
         for (String method : new String[] {"GET", "POST", "DELETE", "OPTIONS"}) {
-            HttpResponse<String> response = request(method, "/internal/openai/de/v1/mcp");
+            HttpResponse<String> response = request(method, OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
             assertThat(response.statusCode()).as(method).isEqualTo(401);
             assertThat(response.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
                     .hasValueSatisfying(value -> assertThat(value)
-                            .contains("resource_metadata=\"https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource\"")
+                            .contains("resource_metadata=\""
+                                    + OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT
+                                    + "\"")
                             .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                             .contains(OpenAiDeOAuthConfiguration.WRITE_SCOPE)
                             .doesNotContain("error="));
@@ -139,7 +142,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
         HttpResponse<String> arbitraryBearer = request(
                 "POST",
-                "/internal/openai/de/v1/mcp",
+                OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH,
                 Map.of(HttpHeaders.AUTHORIZATION, "Bearer arbitrary-untrusted-value"));
         assertThat(arbitraryBearer.statusCode()).isEqualTo(401);
         assertThat(arbitraryBearer.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
@@ -148,6 +151,9 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
         assertThat(get(OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT).statusCode()).isEqualTo(404);
         assertThat(request("POST", "/api/openai/de/mcp").statusCode()).isEqualTo(404);
+        assertThat(request("POST", "/api/openai/de/v1/mcp").statusCode()).isEqualTo(404);
+        assertThat(request("POST", OpenAiDeV1ContractMetadata.PUBLIC_MCP_PATH).statusCode())
+                .isEqualTo(404);
         for (String path : new String[] {
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -164,7 +170,8 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(context.getBeansOfType(OpenAiDeHttpOutcomeTelemetryFilter.class)).hasSize(1);
         assertThat(context.getBeansOfType(OpenAiDeOperationalTelemetry.class)).hasSize(1);
 
-        HttpResponse<String> rateLimited = request("POST", "/internal/openai/de/v1/mcp");
+        HttpResponse<String> rateLimited =
+                request("POST", OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
         assertThat(rateLimited.statusCode()).isEqualTo(429);
         assertThat(rateLimited.headers().firstValue(HttpHeaders.RETRY_AFTER)).isPresent();
         assertThat(rateLimited.body()).contains("\"error\":\"rate_limited\"");

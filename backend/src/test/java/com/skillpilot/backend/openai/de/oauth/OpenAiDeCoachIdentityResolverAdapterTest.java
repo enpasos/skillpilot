@@ -90,12 +90,12 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
                 properties);
 
         assertThat(resolver.authenticationChallenge())
-                .isEqualTo("Bearer resource_metadata=\"https://skillpilot.test/api/openai/de/oauth/protected-resource\", "
+                .isEqualTo("Bearer resource_metadata=\"https://mcp-coach-de-v1.skillpilot.test/.well-known/oauth-protected-resource/mcp\", "
                         + "scope=\"skillpilot.openai.de.read skillpilot.openai.de.write\", "
                         + "error=\"invalid_token\", "
                         + "error_description=\"The access token is missing, expired, revoked, or invalid.\"");
         assertThat(resolver.insufficientScopeChallenge())
-                .isEqualTo("Bearer resource_metadata=\"https://skillpilot.test/api/openai/de/oauth/protected-resource\", "
+                .isEqualTo("Bearer resource_metadata=\"https://mcp-coach-de-v1.skillpilot.test/.well-known/oauth-protected-resource/mcp\", "
                         + "scope=\"skillpilot.openai.de.read skillpilot.openai.de.write\", "
                         + "error=\"insufficient_scope\", "
                         + "error_description=\"The access token does not grant the required SkillPilot write scope.\"");
@@ -104,7 +104,7 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
     private OpenAiDeProperties properties() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.getOauth().setProtectedResourceMetadata(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource");
+                "https://mcp-coach-de-v1.skillpilot.test/.well-known/oauth-protected-resource/mcp");
         return properties;
     }
 

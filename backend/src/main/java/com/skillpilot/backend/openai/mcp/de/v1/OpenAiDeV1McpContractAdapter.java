@@ -506,11 +506,9 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private Map<String, Object> goalVisualizationResourceMeta() {
         Map<String, Object> csp = Map.of(
-                "connectDomains", List.of(),
                 "resourceDomains", List.of("https://skillpilot.com"));
         Map<String, Object> ui = Map.of(
                 "prefersBorder", true,
-                "domain", OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN,
                 "csp", csp);
         return Map.of(
                 "ui", ui,
@@ -518,9 +516,8 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Freigegebene didaktische Visualisierung zum aktiven SkillPilot-Lernziel.",
                 "openai/widgetPrefersBorder", true,
                 "openai/widgetCSP", Map.of(
-                        "connect_domains", List.of(),
-                        "resource_domains", List.of("https://skillpilot.com")),
-                "openai/widgetDomain", OpenAiDeV1ContractMetadata.PUBLIC_UI_ORIGIN);
+                        "resource_domains", List.of("https://skillpilot.com"),
+                        "redirect_domains", List.of("https://skillpilot.com")));
     }
 
     private static String loadGoalVisualizationWidget() {
