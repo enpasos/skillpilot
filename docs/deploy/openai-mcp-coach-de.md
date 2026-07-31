@@ -188,6 +188,26 @@ fail-closed zum Abbruch des Deployment-Preflights beziehungsweise des
 Anwendungsstarts. Damit kann eine alte oder falsch geschriebene Route den
 versionierten V1-Vertrag nicht unbemerkt ersetzen.
 
+`./deploy_skillpilot.sh` prüft vor Asset-Kopien, Build und Service-Restart die
+tatsächlich von der systemd-Unit referenzierte EnvironmentFile. Der
+Produktionsvertrag erlaubt genau eine solche Datei, standardmäßig
+`/etc/skillpilot/skillpilot.env`; für einen abweichenden Pfad muss
+`SKILLPILOT_SERVICE_ENV_FILE` ausdrücklich gesetzt werden. Aus der Datei werden
+ausschließlich die vier öffentlichen URL-Variablen gelesen. OAuth-, Datenbank-
+und andere Secrets werden weder ausgewertet, protokolliert noch ausgegeben.
+Dieselben vier Variablen dürfen nicht zusätzlich über `Environment=` oder
+`PassEnvironment=` der Unit gesetzt werden. Enthält die globale
+systemd-Umgebung einen dieser Namen, bricht der Preflight ebenfalls ab.
+Ist die EnvironmentFile für den Deploy-Benutzer nicht lesbar,
+bricht der Preflight ohne Ausgabe ihres Inhalts ab; eine allgemeine
+`sudo cat`-Freigabe ist dafür ausdrücklich nicht zulässig.
+
+Bei der Umstellung von der früheren unversionierten Route müssen alte
+`SKILLPILOT_OPENAI_DE_MCP_URL`- und
+`SKILLPILOT_OPENAI_DE_RESOURCE_METADATA`-Zeilen vollständig entfernt werden.
+Keine Variable leer setzen: ein leerer Wert ist weiterhin ein expliziter,
+ungültiger Override.
+
 Auch `SKILLPILOT_SERVER_BUILD` wird nicht in
 `/etc/skillpilot/skillpilot.env` gepflegt. Gradle bettet den vollständigen
 lowercase Commit von `HEAD` beim Verarbeiten der Backend-Ressourcen in
