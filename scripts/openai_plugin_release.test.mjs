@@ -374,6 +374,10 @@ test("plugin archive is reproducible across source modes and umasks", () => {
     }
 
     assert.equal(fileSha256(firstArchive), fileSha256(secondArchive));
+    assert.equal(
+      fileSha256(firstArchive),
+      "19bdd9a6c4f9ce9444236e3dfc352a33aad1da336537cd4f147e225afe83f629",
+    );
     const listing = run("tar", ["-tvf", secondArchive], root).stdout;
     assert.match(
       listing,
@@ -396,15 +400,22 @@ test("plugin archive ignores inherited TAR_OPTIONS", () => {
       sourceRoot: pluginRoot,
       archivePath: baselineArchive,
     });
-    createReproducibleTrackedArchive({
-      repositoryRoot: root,
-      sourceRoot: pluginRoot,
-      archivePath: hostileEnvironmentArchive,
-      environment: {
-        ...process.env,
-        TAR_OPTIONS: "--mtime=@123456 --owner=123 --group=456",
-      },
-    });
+    const originalTarOptions = process.env.TAR_OPTIONS;
+    try {
+      process.env.TAR_OPTIONS =
+        "--mtime=@123456 --owner=123 --group=456 --blocking-factor=1";
+      createReproducibleTrackedArchive({
+        repositoryRoot: root,
+        sourceRoot: pluginRoot,
+        archivePath: hostileEnvironmentArchive,
+      });
+    } finally {
+      if (originalTarOptions === undefined) {
+        delete process.env.TAR_OPTIONS;
+      } else {
+        process.env.TAR_OPTIONS = originalTarOptions;
+      }
+    }
 
     assert.equal(
       fileSha256(hostileEnvironmentArchive),
@@ -439,6 +450,51 @@ test("plugin archive rejects untracked and ignored paths below its root", () => 
           archivePath: resolve(root, "ignored.tar"),
         }),
       /Ignored path below the plugin root/,
+    );
+  });
+});
+
+test("plugin archive rejects literal POSIX backslashes", (context) => {
+  if (process.platform === "win32") {
+    context.skip("Windows does not permit a literal backslash in a filename.");
+    return;
+  }
+  withTemporaryGitRepository(({ root, pluginRoot }) => {
+    writeFileSync(resolve(pluginRoot, "nested\\file.txt"), "backslash path\n");
+    git(root, "add", ".");
+
+    assert.throws(
+      () =>
+        createReproducibleTrackedArchive({
+          repositoryRoot: root,
+          sourceRoot: pluginRoot,
+          archivePath: resolve(root, "backslash.tar"),
+        }),
+      /Backslashes are not allowed in plugin archive paths/,
+    );
+  });
+});
+
+test("plugin archive rejects a POSIX source root with backslashes", (context) => {
+  if (process.platform === "win32") {
+    context.skip("Windows does not permit a literal backslash in a filename.");
+    return;
+  }
+  withTemporaryDirectory((root) => {
+    const pluginRoot = resolve(root, "plugin\\root");
+    mkdirSync(pluginRoot);
+    writeFileSync(resolve(pluginRoot, "plugin.json"), '{"version":"1.0.0"}\n');
+    git(root, "init", "--quiet");
+    git(root, "add", ".");
+
+    assert.throws(
+      () =>
+        createReproducibleTrackedArchive({
+          repositoryRoot: root,
+          sourceRoot: pluginRoot,
+          archivePath: resolve(root, "backslash-root.tar"),
+        }),
+      /Backslashes are not allowed in plugin archive paths/,
     );
   });
 });

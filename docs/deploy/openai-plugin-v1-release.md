@@ -118,6 +118,11 @@ Paketänderung benötigt eine neue SemVer.
    `contracts/drafts/openai/skillpilot-coach-de-v1/<version>-SNAPSHOT/`. Es
    ändert weder die öffentliche SemVer noch den Published-Index. Ist die
    Version bereits veröffentlicht, schlägt der Befehl fail-closed fehl.
+   Das Plugin-Tar wird ohne ein systemspezifisches `tar`-Programm direkt als
+   deterministisches USTAR erzeugt. Eingabe sind ausschließlich reguläre,
+   bereits von Git erfasste Plugin-Dateien mit kanonischen Dateirechten.
+   Unversionierte, ignorierte oder symbolisch verlinkte Dateien unter dem
+   Plugin-Root stoppen die Vorbereitung mit ihrem konkreten Pfad.
 6. Den internen Draft reproduzierbar gegen Quellen und Build prüfen:
 
    ```bash

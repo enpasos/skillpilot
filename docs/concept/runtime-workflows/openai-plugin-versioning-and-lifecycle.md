@@ -659,6 +659,11 @@ Published-Snapshot darf niemals durch `prepare`, CI oder eine spätere
 Reviewkorrektur erzeugt oder überschrieben werden. Dafür ist ein eigener,
 explizit bestätigter `record-published`-Schritt erforderlich.
 
+Das eingecheckte Plugin-Tar wird direkt als deterministisches USTAR aus dem
+Git-Inventar erzeugt. Es darf weder von der installierten `tar`-Version noch
+von `umask`, Checkout-Dateirechten, `TAR_OPTIONS`, unversionierten Dateien oder
+symbolischen Links abhängen.
+
 ### 13.3 Server zuerst als Superset deployen
 
 Da OpenAI den produktiven MCP-Endpoint scannt und Toolaufrufe anschließend weiterhin gegen den Live-Server ausführt, wird eine kompatible neue Version in folgender Reihenfolge bereitgestellt:
