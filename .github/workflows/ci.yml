@@ -85,13 +85,9 @@ jobs:
         run: node --test scripts/openai_plugin_release.test.mjs
       - name: Validate SkillPilot Coach source and current submission contract
         run: node scripts/check_openai_plugin_versioning.mjs
+      - name: Test OpenAI V1 runtime configuration guard
+        run: node --test scripts/validate_openai_v1_runtime_config.test.mjs
       - name: Validate exact V1 production boundary configuration
-        env:
-          SKILLPILOT_OPENAI_DE_MCP_URL: https://mcp-v1.skillpilot.com/mcp
-          SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE: https://mcp-v1.skillpilot.com
-          SKILLPILOT_OPENAI_DE_UI_ORIGIN: https://ui-v1.skillpilot.com
-          SKILLPILOT_OPENAI_DE_RESOURCE_METADATA: https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
-          SKILLPILOT_SERVER_BUILD: ${{ github.sha }}
         run: node scripts/validate_openai_v1_runtime_config.mjs
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
@@ -109,6 +105,7 @@ jobs:
             scripts/verify_openai_mtls_edge.sh \
             scripts/verify_openai_v1_public_edge.sh
           node --check scripts/validate_openai_v1_runtime_config.mjs
+          node --test scripts/validate_openai_v1_runtime_config.test.mjs
       - name: Test CA chain, client-auth EKU, exact SAN, and nginx scope
         run: ./scripts/verify_openai_mtls_edge.sh
 

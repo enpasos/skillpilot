@@ -9,6 +9,19 @@ plugins {
 group = "com.skillpilot"
 version = "0.1.0-SNAPSHOT"
 
+val openAiDeServerBuildToken = "@skillpilotOpenAiDeServerBuild@"
+val openAiDeGitCommit = providers.exec {
+    workingDir(layout.projectDirectory)
+    commandLine("git", "rev-parse", "--verify", "HEAD^{commit}")
+    isIgnoreExitValue = true
+}
+val openAiDeServerBuild = openAiDeGitCommit.standardOutput.asText
+    .zip(openAiDeGitCommit.result) { output, result ->
+        output.trim()
+            .takeIf { result.exitValue == 0 && it.matches(Regex("[0-9a-f]{40}")) }
+            ?: "dev"
+    }
+
 providers.environmentVariable("SKILLPILOT_BACKEND_BUILD_DIR")
     .orNull
     ?.takeIf { it.isNotBlank() }
@@ -56,6 +69,15 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     maxHeapSize = "1536m"
+}
+
+tasks.processResources {
+    inputs.property("skillpilotOpenAiDeServerBuild", openAiDeServerBuild)
+    filesMatching("application.yml") {
+        filter { line ->
+            line.replace(openAiDeServerBuildToken, openAiDeServerBuild.get())
+        }
+    }
 }
 
 tasks.register<JavaExec>("exportOpenAiDeV1Contract") {

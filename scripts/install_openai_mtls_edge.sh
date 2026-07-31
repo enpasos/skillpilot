@@ -105,14 +105,12 @@ echo "  include ${V1_NGINX_SNIPPET};"
 echo
 echo "Also set in /etc/skillpilot/skillpilot.env:"
 echo "  SERVER_ADDRESS=127.0.0.1"
-echo "  SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp"
-echo "  SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com"
-echo "  SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com"
-echo "  SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource"
-echo "  SKILLPILOT_SERVER_BUILD=<deployed Git commit SHA>"
 echo "  SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true"
 echo "  SKILLPILOT_OPENAI_APPS_CHALLENGE=<value from OpenAI app management>"
 echo "  SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED=true"
+echo
+echo "The canonical V1 public URLs are built-in defaults; do not duplicate them"
+echo "in skillpilot.env. The Git commit is embedded in the backend artifact."
 echo
 echo "Then run: nginx -t && systemctl reload nginx && systemctl restart skillpilot"
 echo "Finally run: scripts/verify_openai_mtls_edge.sh --installed"

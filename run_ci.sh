@@ -163,13 +163,9 @@ run_action_regression_ci() {
   npm --prefix "${PROJECT_ROOT}/ai/openai app" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai app" test
   node --test "${PROJECT_ROOT}/scripts/openai_plugin_release.test.mjs"
+  node --test "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.test.mjs"
   node "${PROJECT_ROOT}/scripts/check_openai_plugin_versioning.mjs"
-  SKILLPILOT_OPENAI_DE_MCP_URL="https://mcp-v1.skillpilot.com/mcp" \
-    SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE="https://mcp-v1.skillpilot.com" \
-    SKILLPILOT_OPENAI_DE_UI_ORIGIN="https://ui-v1.skillpilot.com" \
-    SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource" \
-    SKILLPILOT_SERVER_BUILD="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)" \
-    node "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.mjs"
+  node "${PROJECT_ROOT}/scripts/validate_openai_v1_runtime_config.mjs"
 }
 
 run_application_frontend_ci() {

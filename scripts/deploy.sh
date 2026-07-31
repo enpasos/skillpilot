@@ -319,6 +319,9 @@ cd ../backend
 chmod +x gradlew
 ./gradlew clean build -x test
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+  echo "Prüfe eingebettete OpenAI-Plugin-V1-Build-ID..."
+  node ../scripts/validate_openai_v1_runtime_config.mjs \
+    --built-application build/resources/main/application.yml
   echo "Prüfe fokussierte OpenAI-Security-Verträge vor dem Service-Restart..."
   ./gradlew test \
     --tests com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest \

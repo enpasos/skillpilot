@@ -84,7 +84,7 @@ skillpilot:
       mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://mcp-v1.skillpilot.com/mcp}
       oauth-resource: ${SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:https://mcp-v1.skillpilot.com}
       ui-origin: ${SKILLPILOT_OPENAI_DE_UI_ORIGIN:https://ui-v1.skillpilot.com}
-      server-build: ${SKILLPILOT_SERVER_BUILD:dev}
+      server-build: "@skillpilotOpenAiDeServerBuild@"
       # Optional assertion only. The effective revision is derived from the
       # loaded repository JSON or active package generation at startup.
       curriculum-revision: ${SKILLPILOT_CURRICULUM_REVISION:}
@@ -114,7 +114,7 @@ skillpilot:
       mcp:
         enabled: ${SKILLPILOT_OPENAI_DE_MCP_ENABLED:${SKILLPILOT_OPENAI_DE_ENABLED:false}}
         server-name: skillpilot-coach-de-v1
-        server-version: ${SKILLPILOT_SERVER_BUILD:dev}
+        server-version: "@skillpilotOpenAiDeServerBuild@"
         request-timeout: PT30S
       oauth:
         enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}

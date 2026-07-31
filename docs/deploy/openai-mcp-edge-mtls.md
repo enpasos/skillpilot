@@ -108,14 +108,21 @@ Set:
 
 ```dotenv
 SERVER_ADDRESS=127.0.0.1
-SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
-SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
-SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
-SKILLPILOT_SERVER_BUILD=<vollständiger Git-SHA des Deployments>
 SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
 SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 ```
+
+The V1 MCP URL, OAuth resource, UI origin, and protected-resource metadata URL
+already have canonical versioned defaults in the backend artifact. Do not
+duplicate them in `/etc/skillpilot/skillpilot.env` for the normal production
+setup. If an environment explicitly overrides any of them, the value must
+exactly match the canonical V1 URL documented above; an empty, stale, or
+different value fails closed during deployment and application startup.
+
+Do not set `SKILLPILOT_SERVER_BUILD` in the service environment. The backend
+build embeds the full lowercase Git `HEAD` into both the OpenAI server build
+and MCP server version, and the deployment verifies the processed artifact
+before restarting the service.
 
 In compatibility mode, keep the edge disabled and do not install the nginx
 include:

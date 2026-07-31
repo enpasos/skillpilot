@@ -143,11 +143,6 @@ SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=false
 # SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
 # SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 
-SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp
-SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-v1.skillpilot.com
-SKILLPILOT_OPENAI_DE_UI_ORIGIN=https://ui-v1.skillpilot.com
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource
-SKILLPILOT_SERVER_BUILD=<vollständiger Git-SHA des Deployments>
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
 SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
@@ -172,6 +167,34 @@ SKILLPILOT_OPENAI_DE_RATE_LIMIT_UI_REQUESTS=60
 SKILLPILOT_OPENAI_DE_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_DE_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
+
+Die vier öffentlichen V1-URLs werden nicht pro Server konfiguriert, sondern
+haben im Backend diese sicheren, versionierten Defaults:
+
+| optionale Override-Variable | kanonischer V1-Wert |
+| --- | --- |
+| `SKILLPILOT_OPENAI_DE_MCP_URL` | `https://mcp-v1.skillpilot.com/mcp` |
+| `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` | `https://mcp-v1.skillpilot.com` |
+| `SKILLPILOT_OPENAI_DE_UI_ORIGIN` | `https://ui-v1.skillpilot.com` |
+| `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` | `https://mcp-v1.skillpilot.com/.well-known/oauth-protected-resource` |
+
+Im normalen Produktivbetrieb bleiben diese Variablen in
+`/etc/skillpilot/skillpilot.env` ungesetzt. Ein fehlender Wert verwendet den
+kanonischen Default. Wird eine Variable ausdrücklich gesetzt, muss ihr Wert
+einschließlich Pfad, Slash und ohne zusätzliche Leerzeichen exakt der Tabelle
+entsprechen. Auch ein ausdrücklich leerer Wert gilt als Override und führt
+fail-closed zum Abbruch des Deployment-Preflights beziehungsweise des
+Anwendungsstarts. Damit kann eine alte oder falsch geschriebene Route den
+versionierten V1-Vertrag nicht unbemerkt ersetzen.
+
+Auch `SKILLPILOT_SERVER_BUILD` wird nicht in
+`/etc/skillpilot/skillpilot.env` gepflegt. Gradle bettet den vollständigen
+lowercase Commit von `HEAD` beim Verarbeiten der Backend-Ressourcen in
+`skillpilot.openai.de.server-build` und
+`skillpilot.openai.de.mcp.server-version` ein. `scripts/deploy.sh` prüft beide
+Werte gegen den tatsächlich ausgecheckten Commit, bevor der Dienst neu
+gestartet wird. Die Telemetrie und Health-Ausgabe beschreiben dadurch das
+ausgelieferte Artefakt und keinen manuell nachgetragenen Umgebungswert.
 
 `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true` ist für den funktionsfähigen
 Produktivcoach verpflichtend. Personalisierung, Navigation, Aufgabenfortschritt
@@ -303,11 +326,13 @@ die Betriebsumgebung beziehungsweise einen separaten Deployment-Preflight
 geprüft werden.
 
 Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
-`mcpEnabled`, `oauthEnabled`, `writesEnabled`, `secureMode`,
+`serverBuild`, `serverBuildConfigured`, `mcpEnabled`, `oauthEnabled`,
+`writesEnabled`, `secureMode`,
 `mtlsEdgeEnabled`, `clientAuthenticationMethod`, `publicClientConfigured`,
 `privateKeyJwtConfigured`, `clientIdConfigured`, `redirectUrisConfigured`,
 `contractToolCount`, `contractHash`, `rateLimitEnabled` und
 `rateLimitConfigured`. Der
+`serverBuild` ist der im Backend-Artefakt eingebettete Git-Commit;
 `contractHash` ist ein deterministischer SHA-256-Hash über Serverinstruktionen
 und öffentliche Tooldeskriptoren. Client-ID, Callback-URLs, MCP-URL, Tokens,
 SkillPilot-IDs und Lerninhalte werden nicht ausgegeben. Health-Details dürfen
