@@ -72,8 +72,23 @@ test("goal visualization widget is self-contained and uses the standards-first M
   assert.match(html, /toolOutput/, "ChatGPT's initial compatibility payload remains supported");
   assert.match(
     html,
+    /widgetState/,
+    "ChatGPT's persisted widget snapshot must rehydrate a remounted result"
+  );
+  assert.match(
+    html,
+    /setWidgetState/,
+    "the last valid visualization must be persisted after rendering"
+  );
+  assert.match(
+    html,
     /openai:set_globals/,
     "ChatGPT global updates must rehydrate the widget after a host remount"
+  );
+  assert.match(
+    html,
+    /\.contains\(/,
+    "a stale image error from one host delivery must not erase a newer render"
   );
   assert.match(html, /\.hidden/, "missing or broken images must collapse the widget");
   assert.match(html, /SkillPilot(?: |\\x20)Lernziel/);
