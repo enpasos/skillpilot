@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,6 +15,11 @@ const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const goalVisualizationArtifactSha256 = createHash("sha256")
+  .update(readFileSync(goalVisualizationWidget))
+  .digest("hex");
+const goalVisualizationResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-de-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -230,7 +236,7 @@ assert.deepEqual(releaseLine.ui, {
     {
       mimeType: "text/html;profile=mcp-app",
       path: "ui/goal-visualization.html",
-      uri: "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html",
+      uri: goalVisualizationResourceUri,
     },
   ],
 });
@@ -491,6 +497,11 @@ assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.resources[0].uri,
+);
+assert.equal(
+  javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),
+  goalVisualizationArtifactSha256,
+  "The Java V1 UI hash must match the exact embedded widget artifact.",
 );
 assert.equal(
   javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),

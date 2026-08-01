@@ -23,8 +23,12 @@ public final class OpenAiDeV1ContractMetadata {
             "/.well-known/oauth-protected-resource/mcp";
     public static final String PROTECTED_RESOURCE_METADATA_ENDPOINT =
             PUBLIC_MCP_ORIGIN + PROTECTED_RESOURCE_METADATA_PATH;
+    public static final String GOAL_VISUALIZATION_ARTIFACT_SHA256 =
+            "12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc";
     public static final String GOAL_VISUALIZATION_RESOURCE_URI =
-            "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
+            "ui://skillpilot/coach/v1/sha256-"
+                    + GOAL_VISUALIZATION_ARTIFACT_SHA256
+                    + "/goal-visualization.html";
     public static final String MCP_APP_RESOURCE_MIME_TYPE = "text/html;profile=mcp-app";
     public static final String GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/skillpilot-goal-visualization-v1.html";
