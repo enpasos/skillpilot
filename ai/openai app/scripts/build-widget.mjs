@@ -32,7 +32,10 @@ for (const contract of Object.values(contracts)) {
   const html = template
     .replace("__LANG__", contract.locale)
     .replace("__TITLE__", contract.appName)
-    .replace("__BUNDLE__", bundle.text.replaceAll("</script", "<\\/script"));
+    // Use a replacer function so `$&`, `$\`` and `$'` sequences in minified
+    // dependency code remain literal JavaScript instead of being interpreted
+    // as String.replace substitution tokens.
+    .replace("__BUNDLE__", () => bundle.text.replaceAll("</script", "<\\/script"));
   const output = join(root, "dist", contract.locale, "widget.html");
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output, html);
@@ -58,7 +61,9 @@ if (!goalVisualizationBundle) {
 const goalVisualizationHtml = template
   .replace("__LANG__", "de")
   .replace("__TITLE__", "SkillPilot Lernziel")
-  .replace("__BUNDLE__", goalVisualizationBundle.text.replaceAll("</script", "<\\/script"));
+  .replace("__BUNDLE__", () =>
+    goalVisualizationBundle.text.replaceAll("</script", "<\\/script")
+  );
 const goalVisualizationOutput = join(root, "dist", "goal-visualization", "widget.html");
 await mkdir(dirname(goalVisualizationOutput), { recursive: true });
 await writeFile(goalVisualizationOutput, goalVisualizationHtml);

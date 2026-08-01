@@ -53,7 +53,7 @@ The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
-ui://skillpilot/coach/v1/1.0.0/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html
 ```
 
 Both `get_skillpilot_context_de` and a successful

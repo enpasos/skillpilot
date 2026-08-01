@@ -175,7 +175,7 @@ fachliche Modellaufruf trägt die unveränderte, absolut auf 24 Stunden begrenzt
 Lernsession.
 
 Der Spring-Pfad registriert die Zielbild-Komponente unter
-`ui://skillpilot/coach/v1/1.0.0/goal-visualization.html` für
+`ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html` für
 `get_skillpilot_context_de` und `set_skillpilot_active_goal_de`. Das Backend
 liefert `goalVisualization` ausschließlich für ein aktives atomares Ziel mit
 passendem kanonischem Bildlink. Die Karte ist Orientierung, keine Evidenz,

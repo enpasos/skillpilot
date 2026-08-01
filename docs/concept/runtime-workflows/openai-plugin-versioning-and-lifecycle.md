@@ -470,12 +470,14 @@ Diese Regel ist strenger als das OpenAI-Minimum, das kompatible Updates unter de
 Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
 
 ```text
-ui://skillpilot/coach/v1/1.0.0/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html
 ```
 
-Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft samt dieser
-URI reproduzierbar neu erzeugt werden. Der erste veröffentlichte Inhalt dieser
-URI wird anschließend unveränderlich. Die Ressource ist ausschließlich die
+Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft
+reproduzierbar neu erzeugt werden. Ändern sich dabei die Widget-Bytes, erhält
+das Artefakt durch seinen SHA-256-Wert eine neue URI, ohne die weiterhin
+unveröffentlichte Plugin-Paketversion hochzuzählen. Der erste veröffentlichte
+Inhalt jeder URI ist unveränderlich. Die Ressource ist ausschließlich die
 read-only Darstellung eines bereits vom Backend bestätigten aktiven atomaren
 Ziels mit passendem kanonischem `goal-visualization`-Link. Context-Read und
 erfolgreiches Setzen des aktiven Ziels dürfen sie auslösen; ohne gültiges Bild
