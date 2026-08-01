@@ -20,15 +20,16 @@ veröffentlichte Linie `skillpilot-coach-de-v1`.
 | OAuth Resource/Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| Benutzerdefinierter UI-Origin | im unveröffentlichten Draft nicht gesetzt; Provider-Sandbox |
+| Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-de-v1/` |
 
 Der noch unveröffentlichte V1-Draft enthält eine eng begrenzte, read-only
 MCP-UI für die Visualisierung des aktiven atomaren Lernziels. Der
-unveröffentlichte Draft verwendet dafür die Provider-Sandbox und die
-unveränderlich vorgesehene
+unveröffentlichte Draft deklariert dafür bereits den pro Plugin eindeutigen
+Widget-Origin über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`. Er
+verwendet die unveränderlich vorgesehene
 Resource-URI
 `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html`. Die übrigen Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie

@@ -11,7 +11,9 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
   `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
 - eigener, von künftigen DE-/EN-Vertragslinien unabhängig verifizierbarer
   MCP-Origin; OAuth-Autorisierung weiterhin über `https://skillpilot.com`
-- MCP-UI im OpenAI-Sandbox-Origin; kein eigener Widget-Origin im Draft
+- fester, pro Plugin eindeutiger Widget-Origin
+  `https://mcp-coach-de-v1.skillpilot.com`, sowohl über `_meta.ui.domain` als
+  auch den ChatGPT-Kompatibilitätsalias `_meta["openai/widgetDomain"]`
 - read-only MCP-UI-Karte für das Bild eines aktiven atomaren Lernziels mit
   passendem kanonischem `goal-visualization`-Link
 - automatische Anzeige nach Context-Read und erfolgreicher Zielaktivierung;

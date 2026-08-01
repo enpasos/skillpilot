@@ -194,7 +194,8 @@ class OpenAiDeCoachMcpContractTest {
                             .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
                     assertThat(resource.meta().get("ui"))
                             .isInstanceOfSatisfying(Map.class, ui -> {
-                                assertThat(ui).doesNotContainKey("domain");
+                                assertThat(ui.get("domain"))
+                                        .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                 assertThat(ui.toString())
                                         .contains(
                                                 "https://skillpilot.com",
@@ -203,7 +204,8 @@ class OpenAiDeCoachMcpContractTest {
                                                 "connectDomains",
                                                 "redirectDomains");
                             });
-                    assertThat(resource.meta()).doesNotContainKey("openai/widgetDomain");
+                    assertThat(resource.meta().get("openai/widgetDomain"))
+                            .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                     assertThat(resource.meta().get("openai/widgetCSP").toString())
                             .contains("resource_domains", "redirect_domains")
                             .doesNotContain("connect_domains");
@@ -227,6 +229,15 @@ class OpenAiDeCoachMcpContractTest {
                                                         "goalVisualization",
                                                         "ui/open-link")
                                                 .doesNotContain("<script src=");
+                                        assertThat(contents.meta().get("ui"))
+                                                .isInstanceOfSatisfying(
+                                                        Map.class,
+                                                        ui -> assertThat(ui.get("domain"))
+                                                                .isEqualTo(
+                                                                        OpenAiDeV1ContractMetadata
+                                                                                .WIDGET_DOMAIN));
+                                        assertThat(contents.meta().get("openai/widgetDomain"))
+                                                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                     });
                 });
     }

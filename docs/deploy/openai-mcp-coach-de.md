@@ -42,7 +42,7 @@ MCP-Werkzeug.
 | Plugin-Identität | `skillpilot-coach-de-v1` |
 | MCP Server URL | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| Benutzerdefinierter UI-Origin | im unveröffentlichten Draft nicht gesetzt; Provider-Sandbox |
+| Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/1.0.0/goal-visualization.html` |
 | Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
@@ -276,9 +276,10 @@ haben im Backend diese sicheren, versionierten Defaults:
 | `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 
-Ein eigener `SKILLPILOT_OPENAI_DE_UI_ORIGIN` ist im Draft unzulässig; die
-MCP-UI verwendet die Provider-Sandbox. Im normalen Produktivbetrieb bleiben
-diese Variablen in
+Ein `SKILLPILOT_OPENAI_DE_UI_ORIGIN` bleibt unzulässig: Der Widget-Origin ist
+als `https://mcp-coach-de-v1.skillpilot.com` fest im V1-Vertrag verankert und
+wird identisch über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`
+ausgeliefert. Im normalen Produktivbetrieb bleiben die tabellierten Variablen in
 `/etc/skillpilot/skillpilot.env` ungesetzt. Ein fehlender Wert verwendet den
 kanonischen Default. Wird eine Variable ausdrücklich gesetzt, muss ihr Wert
 einschließlich Pfad, Slash und ohne zusätzliche Leerzeichen exakt der Tabelle
