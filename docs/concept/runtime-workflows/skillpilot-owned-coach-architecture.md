@@ -359,16 +359,25 @@ Skill noch bildet sie eine weitere Zustands- oder Sicherheitsgrenze. Sie zeigt
 nur die bereits sicher projizierte Visualisierung des aktiven atomaren Ziels.
 Interaktive Widgets sind davon getrennte spätere Ausbaustufen.
 
-Konkret referenzieren nur `get_skillpilot_context_de` und
-`set_skillpilot_active_goal_de` die versionierte Ressource
-`ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html`. Die optionale
+Konkret referenziert nur das dedizierte read-only Werkzeug
+`render_skillpilot_goal_visualization_de` die versionierte Ressource
+`ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html`. Die optionale
 `structuredContent.goalVisualization` enthält Ziel-ID, Titel, optionale
 Beschreibung, öffentliche Bild-URL, Alttext und Cockpit-Link. Das Backend gibt
 sie nur für ein aktives atomares Ziel mit passendem kanonischem
-`goal-visualization`-Link aus. Fehlende, ungültige oder nicht ladbare Bilder
-blenden die Komponente aus und lassen den normalen Chat unverändert. Das Bild
-ist Orientierung, niemals Evidenz, Aufgabe, Lösung, Bewertung oder
-Mastery-Nachweis.
+`goal-visualization`-Link aus. Diese Felder bilden die intern begrenzte
+Projektion; sichtbar rendert das Widget ausschließlich das Bild und hinterlegt
+den Alttext am `img`-Element. Titel, Beschreibung, Ziel-ID und Cockpit-Link
+werden nicht angezeigt. Fehlende, ungültige oder nicht ladbare Bilder blenden
+die Komponente aus und lassen den normalen Chat unverändert. Das Bild ist
+Orientierung, niemals Evidenz, Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+Nach erfolgreicher UI-Initialisierung rendert das Widget bei
+`hostContext.platform = "mobile"` keinen SkillPilot-Inhalt und fordert seinen
+Teardown an; die normale Chat-Antwort bleibt vollständig nutzbar. Der Teardown
+ist eine Anfrage an den Host. Initialisiert eine mobile Oberfläche die MCP-UI
+gar nicht, können Backend und Widget einen vom Host bereits angelegten
+Platzhalter nicht garantiert entfernen. Die Architektur verspricht deshalb
+keine geräteübergreifende Rehydration der UI.
 
 ### 6.3 Verbindlicher Ort jeder Regel
 
@@ -917,7 +926,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | ChatGPT Web; mobile Apps; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | unterstützte ChatGPT-Web-Oberflächen; Mobile als textueller Fallback ohne UI-Zusage; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |

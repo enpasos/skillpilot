@@ -206,6 +206,7 @@ class OpenAiDeCoachMcpContractTest {
                             .isInstanceOfSatisfying(Map.class, ui -> {
                                 assertThat(ui.get("domain"))
                                         .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                                assertThat(ui.get("prefersBorder")).isEqualTo(false);
                                 assertThat(ui.toString())
                                         .contains(
                                                 "https://skillpilot.com",
@@ -216,6 +217,8 @@ class OpenAiDeCoachMcpContractTest {
                             });
                     assertThat(resource.meta().get("openai/widgetDomain"))
                             .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                    assertThat(resource.meta().get("openai/widgetPrefersBorder"))
+                            .isEqualTo(false);
                     assertThat(resource.meta().get("openai/widgetCSP").toString())
                             .contains("resource_domains", "redirect_domains")
                             .doesNotContain("connect_domains");
@@ -242,12 +245,18 @@ class OpenAiDeCoachMcpContractTest {
                                         assertThat(contents.meta().get("ui"))
                                                 .isInstanceOfSatisfying(
                                                         Map.class,
-                                                        ui -> assertThat(ui.get("domain"))
-                                                                .isEqualTo(
-                                                                        OpenAiDeV1ContractMetadata
-                                                                                .WIDGET_DOMAIN));
+                                                        ui -> {
+                                                            assertThat(ui.get("domain"))
+                                                                    .isEqualTo(
+                                                                            OpenAiDeV1ContractMetadata
+                                                                                    .WIDGET_DOMAIN);
+                                                            assertThat(ui.get("prefersBorder"))
+                                                                    .isEqualTo(false);
+                                                        });
                                         assertThat(contents.meta().get("openai/widgetDomain"))
                                                 .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                                        assertThat(contents.meta().get("openai/widgetPrefersBorder"))
+                                                .isEqualTo(false);
                                     });
                 });
     }

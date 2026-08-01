@@ -434,10 +434,11 @@ Rule:
   disabled chat visualizations, the active goal is not atomic, the canonical
   link does not match its goal ID, or the image data is absent or invalid, omit
   the renderer; the ordinary chat response must remain fully usable.
-* The inline component may show only goal ID, title, optional description,
-  public image URL, alt text, and cockpit URL from the safe projection. It does
-  not create state, authorize an action, select a goal, or expose a permanent
-  learner identity.
+* The inline component renders only the public image. Its accessible alt text
+  remains attached to the image, but goal ID, title, description, and cockpit
+  URL from the bounded projection are not shown as additional UI. The
+  component does not create state, authorize an action, select a goal, or
+  expose a permanent learner identity.
 * Image filenames should be the same SkillPilot ID plus image extension, using `<skillpilotId>.<ext>`, so copied assets remain self-identifying without creating Windows path-length problems.
 * Keep source image and prompt metadata under `curricula/DE/Gymnasium/visualizations/<subject>/<skillpilotId>/`.
 * For Gemini API generated images, keep `image-reconstruction-prompt.de.md` beside the canonical source image. It is a standalone alternative prompt derived from the generated image and may be offered or generated on demand in `/goal-visualization-qa` as a correction base; it does not override human review or fachliche correctness.
