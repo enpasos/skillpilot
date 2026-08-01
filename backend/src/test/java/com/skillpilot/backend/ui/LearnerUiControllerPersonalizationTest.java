@@ -4,12 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.PersonalizationRewindRequest;
+import com.skillpilot.backend.api.PreferencesRequest;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.util.List;
@@ -46,6 +48,21 @@ class LearnerUiControllerPersonalizationTest {
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(LEARNER_ID);
         ordered.verify(learnerService).getPersonalizationPlan(LEARNER_ID);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void preferencesForwardTheOptionalChatVisualizationSetting() {
+        controller.updatePreferences(
+                LEARNER_ID,
+                new PreferencesRequest(null, null, null, false));
+
+        verify(learnerService).setPreferences(
+                LEARNER_ID,
+                null,
+                null,
+                null,
+                false);
         verifyNoMoreInteractions(learnerService);
     }
 

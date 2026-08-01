@@ -31,7 +31,7 @@ unveröffentlichte Draft deklariert dafür bereits den pro Plugin eindeutigen
 Widget-Origin über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`. Er
 verwendet die unveränderlich vorgesehene
 Resource-URI
-`ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html`. Die übrigen Coach-,
+`ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html`. Die übrigen Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
 besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
 verwenden ausschließlich den dedizierten DE-V1-Origin. Die fünf für DE V2/V3
@@ -75,30 +75,20 @@ Paketänderung benötigt eine neue SemVer.
    Das gilt auch für die jetzt ergänzte Lernzielvisualisierung: Da `1.0.0` noch
    nie veröffentlicht wurde, wird derselbe Draft aktualisiert und keine
    `1.0.1` erzeugt.
-3. Die kanonischen V1-Grenzen haben sichere, versionierte Defaults im
-   Backend-Artefakt. Im normalen Produktivbetrieb werden die zugehörigen
-   URL-Variablen daher nicht in `/etc/skillpilot/skillpilot.env` wiederholt.
-   Falls ein Zielsystem einen Wert ausdrücklich setzt, muss er exakt dem
-   jeweiligen kanonischen V1-Wert entsprechen:
-
-   ```dotenv
-   # Nur als optionale, exakt übereinstimmende Overrides:
-   SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-coach-de-v1.skillpilot.com/mcp
-   SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE=https://mcp-coach-de-v1.skillpilot.com/mcp
-   SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
-   ```
-
-   Fehlende URL-Variablen aktivieren die geprüften Defaults. Ein eigener
-   `SKILLPILOT_OPENAI_DE_UI_ORIGIN` ist im Draft unzulässig. Ein ausdrücklich
-   gesetzter abweichender oder leerer Wert, ein alter Alias, zusätzliche
-   Leerzeichen oder ein zusätzlicher Slash führen dagegen fail-closed zum
-   Abbruch vor Build und Restart sowie beim Anwendungsstart.
+3. Die kanonischen V1-URLs sind feste Vertragswerte im Backend-Artefakt und
+   keine Laufzeitkonfiguration. Alte `SKILLPILOT_OPENAI_DE_*`-URLvariablen und
+   neu erfundene `SKILLPILOT_OPENAI_COACH_DE_V1_*`-URLvariablen werden aus
+   `/etc/skillpilot/skillpilot.env` entfernt und fail-closed abgelehnt.
+   DE-V1-spezifische Schalter und OAuth-Clientwerte tragen
+   `SKILLPILOT_OPENAI_COACH_DE_V1_*`; gemeinsame Richtlinien des einzigen
+   Spring-Prozesses tragen `SKILLPILOT_OPENAI_*`.
 
    `SKILLPILOT_SERVER_BUILD` gehört nicht in das `EnvironmentFile`. Gradle
-   bettet beim Backend-Build den vollständigen lowercase Git-Commit des
+   erzeugt beim Backend-Build genau ein `skillpilot-server`-Artefakt und bettet
+   den vollständigen lowercase Git-Commit des
    ausgecheckten `HEAD` in
-   `skillpilot.openai.de.server-build` und
-   `skillpilot.openai.de.mcp.server-version` ein. Das Deployment prüft beide
+   `skillpilot.openai.coach.de.v1.server-build` und
+   `skillpilot.openai.coach.de.v1.mcp.server-version` ein. Das Deployment prüft beide
    Werte im verarbeiteten `application.yml` vor dem Service-Restart. Eine
    manuell gepflegte Laufzeitvariable könnte die Artefaktidentität daher weder
    verbessern noch überschreiben.

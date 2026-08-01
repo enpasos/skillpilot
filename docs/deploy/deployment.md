@@ -205,7 +205,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     present and nonempty.
 8.  **Backend build and build-identity verification** produce the updated
     server artifact. Gradle embeds the full lowercase `HEAD` commit into both
-    `skillpilot.openai.de.server-build` and the MCP `server-version`; the
+    `skillpilot.openai.coach.de.v1.server-build` and the MCP `server-version`; the
     deployment engine verifies the processed resource before restart.
     `SKILLPILOT_SERVER_BUILD` is not a runtime setting and cannot replace this
     artifact identity.
@@ -266,15 +266,18 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - OAuth resource: `https://mcp-coach-de-v1.skillpilot.com/mcp`
   - protected-resource metadata:
     `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  The draft does not configure a custom MCP-UI origin and uses the provider
-  sandbox instead.
-  The corresponding `SKILLPILOT_OPENAI_DE_*` URL variables should normally be
-  omitted from `/etc/skillpilot/skillpilot.env`. If an environment deliberately
-  sets one, it must match the canonical value exactly or deployment and
-  application startup fail closed.
+  The MCP-UI uses the same dedicated, immutable DE-V1 origin
+  `https://mcp-coach-de-v1.skillpilot.com` as its widget domain. The provider
+  still executes the component inside its sandbox.
+  These URLs are immutable contract values rather than environment settings.
+  Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented
+  `SKILLPILOT_OPENAI_COACH_DE_V1_*` URL overrides fail closed.
   Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin,
   mTLS-edge, and mTLS-smoke variables before the first subdomain deployment;
   they are not part of the `1.0.0` runtime contract.
+- One `skillpilot-server` Spring Boot artifact hosts every coach line. Values
+  belonging to DE V1 use `SKILLPILOT_OPENAI_COACH_DE_V1_*`; genuine shared
+  process policies use `SKILLPILOT_OPENAI_*` without locale/version segments.
 - The additive Nginx templates are
   `deploy/nginx/skillpilot-mcp-coaches.conf` for inclusion inside `http {}` and
   `deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf` for inclusion
@@ -285,12 +288,12 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 - Production uses exactly one systemd `EnvironmentFile`, normally
   `/etc/skillpilot/skillpilot.env`. Before copying assets or building,
   `./deploy_skillpilot.sh` verifies that this is the file configured for the
-  service and validates only the three public OpenAI V1 URL variables in it.
-  Other values, including OAuth and database secrets, are not interpreted,
-  logged, or printed. The three public URL variables must not additionally be
-  supplied by unit-level `Environment=` or `PassEnvironment=` settings. A
-  stale global systemd manager environment is rejected as well. A nonstandard
-  file path must be selected explicitly with
+  service and rejects removed OpenAI names as well as attempted public-URL
+  overrides. It inspects variable names only; OAuth, database, and other secret
+  values are not logged or printed. The same forbidden names must not be
+  supplied by unit-level `Environment=` or `PassEnvironment=` settings. A stale
+  global systemd manager environment is rejected as well. A nonstandard file
+  path must be selected explicitly with
   `SKILLPILOT_SERVICE_ENV_FILE`.
 - If systemd marks that one file as optional (`ignore_errors=yes`) and it is
   absent, the preflight accepts the canonical application defaults after the

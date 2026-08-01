@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 /** Privacy-safe counters for the bounded OpenAI-DE operational event set. */
 @Component
 @ConditionalOnExpression(
-        "${skillpilot.openai.de.enabled:false} || "
-                + "${skillpilot.openai.de.bootstrap-enabled:false}")
+        "${skillpilot.openai.coach.de.v1.enabled:false} || "
+                + "${skillpilot.openai.coach.de.v1.bootstrap-enabled:false}")
 public final class OpenAiDeOperationalTelemetry {
 
-    public static final String EVENT_METRIC = "skillpilot.openai.de.operational.event";
+    public static final String EVENT_METRIC = "skillpilot.openai.coach.de.v1.operational.event";
 
     public enum Event {
         OAUTH_FAILURE("oauth_failure"),

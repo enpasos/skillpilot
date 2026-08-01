@@ -44,15 +44,15 @@ import org.springframework.test.context.TestPropertySource;
         classes = OpenAiDeOAuthDiscoveryBootstrapIntegrationTest.TestApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {
-        "skillpilot.openai.de.enabled=false",
-        "skillpilot.openai.de.bootstrap-enabled=true",
-        "skillpilot.openai.de.oauth.enabled=false",
-        "skillpilot.openai.de.mcp.enabled=false",
+        "skillpilot.openai.coach.de.v1.enabled=false",
+        "skillpilot.openai.coach.de.v1.bootstrap-enabled=true",
+        "skillpilot.openai.coach.de.v1.oauth.enabled=false",
+        "skillpilot.openai.coach.de.v1.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
-        "skillpilot.openai.de.rate-limit.mcp-requests=5"
+        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+        "skillpilot.openai.coach.de.v1.rate-limit.mcp-requests=5"
 })
 class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
@@ -80,6 +80,15 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         properties))
                 .withMessageContaining("public MCP endpoint")
                 .withMessageContaining("HTTPS");
+
+        OpenAiDeProperties wrongContractProperties = new OpenAiDeProperties();
+        wrongContractProperties.setMcpUrl("https://wrong.example/mcp");
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> configuration.openAiDeOAuthDiscoveryBootstrapRouterFunction(
+                        "https://skillpilot.test",
+                        wrongContractProperties))
+                .withMessageContaining("public MCP endpoint must exactly match")
+                .withMessageContaining(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
 
         OpenAiDeProperties safeProperties = new OpenAiDeProperties();
         for (String unsafeBaseUrl : new String[] {
@@ -184,15 +193,15 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         OpenAiDeConfiguration.class,
                         OpenAiDeOAuthDiscoveryBootstrapConfiguration.class)
                 .withPropertyValues(
-                        "skillpilot.openai.de.bootstrap-enabled=true",
-                        "skillpilot.openai.de.enabled=true",
+                        "skillpilot.openai.coach.de.v1.bootstrap-enabled=true",
+                        "skillpilot.openai.coach.de.v1.enabled=true",
                         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg")
                 .run(result -> {
                     assertThat(result).hasFailed();
                     assertThat(result.getStartupFailure())
                             .hasRootCauseMessage(
-                                    "skillpilot.openai.de.bootstrap-enabled and "
-                                            + "skillpilot.openai.de.enabled must not both be true.");
+                                    "skillpilot.openai.coach.de.v1.bootstrap-enabled and "
+                                            + "skillpilot.openai.coach.de.v1.enabled must not both be true.");
                 });
     }
 

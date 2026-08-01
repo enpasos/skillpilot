@@ -470,7 +470,7 @@ Diese Regel ist strenger als das OpenAI-Minimum, das kompatible Updates unter de
 Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
 
 ```text
-ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html
 ```
 
 Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft
@@ -685,7 +685,7 @@ contracts/published/openai/skillpilot-coach-de-v1/1.4.0/
   ui-manifest.json
   skills-bundle.json
   skills-bundle.sha256
-  skillpilot-coach-de-v1-1.4.0.tar
+  skillpilot-openai-plugin-coach-de-v1-1.4.0.tar
   snapshot-manifest.json
   release-notes.md
 ```
@@ -696,10 +696,13 @@ Published-Snapshot darf niemals durch `prepare`, CI oder eine spätere
 Reviewkorrektur erzeugt oder überschrieben werden. Dafür ist ein eigener,
 explizit bestätigter `record-published`-Schritt erforderlich.
 
-Das eingecheckte Plugin-Tar wird direkt als deterministisches USTAR aus dem
+Das eingecheckte Tar trägt im Manifest die Rolle `plugin-install-bundle` und
+wird direkt als deterministisches USTAR aus dem
 Git-Inventar erzeugt. Es darf weder von der installierten `tar`-Version noch
 von `umask`, Checkout-Dateirechten, `TAR_OPTIONS`, unversionierten Dateien oder
-symbolischen Links abhängen.
+symbolischen Links abhängen. Es enthält nie den Server. Alle Sprach- und
+Vertragslinien werden von genau einem separaten Spring-Boot-Artefakt
+`skillpilot-server` bedient.
 
 ### 13.3 Server zuerst als Superset deployen
 

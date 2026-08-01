@@ -246,7 +246,7 @@ public class LearnerUiController {
     public void updatePreferences(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PreferencesRequest request) {
         learnerService.setPreferences(skillpilotId, request.learningStrategy(), request.autoPilot(),
-                request.strictMode());
+                request.strictMode(), request.showGoalVisualizationsInChat());
     }
 
     @PutMapping("/{skillpilotId}/personal-curriculum")

@@ -13,6 +13,19 @@ const SUPPORTED_GIT_MODES = new Map([
   ["100755", 0o755],
 ]);
 
+export function pluginInstallBundleArchiveName(pluginIdentity, version) {
+  if (
+    !/^skillpilot-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pluginIdentity) ||
+    pluginIdentity === "skillpilot-server"
+  ) {
+    throw new Error(`Invalid SkillPilot plugin identity: ${pluginIdentity}`);
+  }
+  if (!/^\d+\.\d+\.\d+$/.test(version)) {
+    throw new Error(`Invalid SkillPilot plugin version: ${version}`);
+  }
+  return `skillpilot-openai-plugin-${pluginIdentity.slice("skillpilot-".length)}-${version}.tar`;
+}
+
 export function createReproducibleTrackedArchive({
   repositoryRoot,
   sourceRoot,

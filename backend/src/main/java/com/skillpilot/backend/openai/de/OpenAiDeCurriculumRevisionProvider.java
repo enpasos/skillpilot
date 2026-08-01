@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * ledgers are deliberately excluded.
  */
 @Component
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public final class OpenAiDeCurriculumRevisionProvider {
 
     private static final byte[] DOMAIN =

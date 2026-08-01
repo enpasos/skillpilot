@@ -57,6 +57,44 @@ class OAuthMetadataContractTest(unittest.TestCase):
 
 
 class PublicEdgeDeploymentContractTest(unittest.TestCase):
+    def test_nginx_routes_public_de_v1_endpoints_to_line_scoped_internal_paths(self) -> None:
+        coaches = (ROOT / "deploy" / "nginx" / "skillpilot-mcp-coaches.conf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/mcp;",
+            coaches,
+        )
+        self.assertIn(
+            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/"
+            "protected-resource-metadata;",
+            coaches,
+        )
+        self.assertIn(
+            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/"
+            "openai-apps-challenge;",
+            coaches,
+        )
+        self.assertNotIn(
+            "proxy_pass http://127.0.0.1:8787/.well-known/", coaches
+        )
+
+    def test_main_origin_denies_every_de_v1_internal_target(self) -> None:
+        deny = (
+            ROOT
+            / "deploy"
+            / "nginx"
+            / "skillpilot-main-vhost-openai-deny-locations.conf"
+        ).read_text(encoding="utf-8")
+        for path in (
+            "/internal/openai/de/v1/mcp",
+            "/internal/openai/de/v1/protected-resource-metadata",
+            "/internal/openai/de/v1/openai-apps-challenge",
+            "/.well-known/oauth-protected-resource",
+            "/.well-known/openai-apps-challenge",
+        ):
+            self.assertIn(f"location = {path} {{", deny)
+
     def test_public_edge_script_is_valid_shell(self) -> None:
         completed = subprocess.run(
             ["bash", "-n", str(ROOT / "scripts" / "verify_openai_v1_public_edge.sh")],
@@ -97,10 +135,18 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("assert_removed_get_route", script)
         self.assertIn("internal_protected_resource_metadata_route", script)
         self.assertIn(
-            'INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/'
-            'oauth-protected-resource"',
+            'INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/'
+            'de/v1/protected-resource-metadata"',
             script,
         )
+        self.assertIn(
+            'INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/'
+            'de/v1/openai-apps-challenge"',
+            script,
+        )
+        self.assertIn("internal_openai_apps_challenge_route", script)
+        self.assertIn("removed_common_protected_resource_metadata_route", script)
+        self.assertIn("removed_common_openai_apps_challenge_route", script)
         self.assertIn("expected direct GET HTTP 404", script)
         for reserved_host in (
             "mcp-coach-de-v2.skillpilot.com",

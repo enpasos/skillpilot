@@ -28,6 +28,7 @@ import {
 } from "./lib/openai_plugin_contract_compatibility.mjs";
 import {
   createReproducibleTrackedArchive,
+  pluginInstallBundleArchiveName,
 } from "./lib/reproducible_plugin_archive.mjs";
 
 const fixturePath = fileURLToPath(
@@ -37,6 +38,17 @@ const fixturePath = fileURLToPath(
   ),
 );
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
+
+test("plugin archive name cannot be confused with the shared Spring server", () => {
+  assert.equal(
+    pluginInstallBundleArchiveName("skillpilot-coach-de-v1", "1.0.0"),
+    "skillpilot-openai-plugin-coach-de-v1-1.0.0.tar",
+  );
+  assert.throws(
+    () => pluginInstallBundleArchiveName("skillpilot-server", "1.0.0"),
+    /Invalid SkillPilot plugin identity/,
+  );
+});
 
 for (const fixtureCase of fixture.cases) {
   test(`contract compatibility: ${fixtureCase.name}`, () => {

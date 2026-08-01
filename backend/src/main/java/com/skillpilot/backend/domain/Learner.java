@@ -53,6 +53,9 @@ public class Learner {
     @Column(name = "strict_mode")
     private Boolean strictMode = false;
 
+    @Column(name = "show_goal_visualizations_in_chat", nullable = false)
+    private Boolean showGoalVisualizationsInChat = true;
+
     /**
      * Monotone revision of the learner state shared by the cockpit and all
      * coach transports. This is deliberately learner-scoped rather than
@@ -154,6 +157,14 @@ public class Learner {
         this.strictMode = strictMode;
     }
 
+    public Boolean getShowGoalVisualizationsInChat() {
+        return showGoalVisualizationsInChat;
+    }
+
+    public void setShowGoalVisualizationsInChat(Boolean showGoalVisualizationsInChat) {
+        this.showGoalVisualizationsInChat = showGoalVisualizationsInChat;
+    }
+
     public long getCoachStateRevision() {
         return coachStateRevision;
     }
@@ -183,6 +194,9 @@ public class Learner {
         }
         if (this.strictMode == null) {
             this.strictMode = false;
+        }
+        if (this.showGoalVisualizationsInChat == null) {
+            this.showGoalVisualizationsInChat = true;
         }
     }
 }

@@ -9,14 +9,14 @@ plugins {
 group = "com.skillpilot"
 version = "0.1.0-SNAPSHOT"
 
-val openAiDeServerBuildToken = "@skillpilotOpenAiDeServerBuild@"
-val openAiDeGitCommit = providers.exec {
+val serverBuildToken = "@skillpilotServerBuild@"
+val serverGitCommit = providers.exec {
     workingDir(layout.projectDirectory)
     commandLine("git", "rev-parse", "--verify", "HEAD^{commit}")
     isIgnoreExitValue = true
 }
-val openAiDeServerBuild = openAiDeGitCommit.standardOutput.asText
-    .zip(openAiDeGitCommit.result) { output, result ->
+val serverBuild = serverGitCommit.standardOutput.asText
+    .zip(serverGitCommit.result) { output, result ->
         output.trim()
             .takeIf { result.exitValue == 0 && it.matches(Regex("[0-9a-f]{40}")) }
             ?: "dev"
@@ -72,10 +72,10 @@ tasks.test {
 }
 
 tasks.processResources {
-    inputs.property("skillpilotOpenAiDeServerBuild", openAiDeServerBuild)
+    inputs.property("skillpilotServerBuild", serverBuild)
     filesMatching("application.yml") {
         filter { line ->
-            line.replace(openAiDeServerBuildToken, openAiDeServerBuild.get())
+            line.replace(serverBuildToken, serverBuild.get())
         }
     }
 }

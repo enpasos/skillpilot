@@ -48,11 +48,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "skillpilot.claude.mcp.enabled=true",
         "skillpilot.claude.mcp.coach-enabled=false",
         "skillpilot.claude.mcp.regression-enabled=true",
-        "skillpilot.openai.de.enabled=true",
+        "skillpilot.openai.coach.de.v1.enabled=true",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
-        "skillpilot.openai.de.server-build=test-build",
-        "skillpilot.openai.de.oauth.enabled=true",
-        "skillpilot.openai.de.mcp.enabled=true"
+        "skillpilot.openai.coach.de.v1.server-build=test-build",
+        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.de.v1.mcp.enabled=true"
 })
 class McpProviderIsolationTransportTest {
 

@@ -61,7 +61,7 @@ class OpenAiDeOAuthConfigurationTest {
                 .withUserConfiguration(OpenAiDeConfiguration.class, OpenAiDeOAuthConfiguration.class)
                 .withPropertyValues(
                         secureProviderPropertiesWith(
-                                "skillpilot.openai.de.enabled=false"))
+                                "skillpilot.openai.coach.de.v1.enabled=false"))
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean("openAiDeClientRegistrationInitializer");
@@ -75,7 +75,7 @@ class OpenAiDeOAuthConfigurationTest {
                 .withUserConfiguration(OpenAiDeConfiguration.class)
                 .withPropertyValues(
                         secureProviderPropertiesWith(
-                                "skillpilot.openai.de.learning-session-ttl=PT24H"))
+                                "skillpilot.openai.coach.de.v1.learning-session-ttl=PT24H"))
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context.getBean(OpenAiDeProperties.class).getLearningSessionTtl())
@@ -89,9 +89,9 @@ class OpenAiDeOAuthConfigurationTest {
             new ApplicationContextRunner()
                     .withUserConfiguration(OpenAiDeConfiguration.class)
                     .withPropertyValues(
-                            "skillpilot.openai.de.enabled=true",
+                            "skillpilot.openai.coach.de.v1.enabled=true",
                             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-                            "skillpilot.openai.de.learning-session-ttl=" + invalidTtl)
+                            "skillpilot.openai.coach.de.v1.learning-session-ttl=" + invalidTtl)
                     .run(context -> {
                         assertThat(context).hasFailed();
                         assertThat(context.getStartupFailure())
@@ -104,16 +104,16 @@ class OpenAiDeOAuthConfigurationTest {
 
     private static String[] secureProviderPropertiesWith(String override) {
         String[] baseline = new String[] {
-            "skillpilot.openai.de.enabled=true",
+            "skillpilot.openai.coach.de.v1.enabled=true",
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-            "skillpilot.openai.de.server-build=test-build",
-            "skillpilot.openai.de.security.secure-mode=true",
-            "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
-            "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
-            "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
-            "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0"
+            "skillpilot.openai.coach.de.v1.server-build=test-build",
+            "skillpilot.openai.coach.de.v1.security.secure-mode=true",
+            "skillpilot.openai.coach.de.v1.oauth.enabled=true",
+            "skillpilot.openai.coach.de.v1.oauth.client-authentication-method=client_secret_basic",
+            "skillpilot.openai.coach.de.v1.oauth.client-id=skillpilot-chatgpt-de-prod",
+            "skillpilot.openai.coach.de.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
+            "skillpilot.openai.coach.de.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
+            "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size=0"
         };
         String[] combined = java.util.Arrays.copyOf(baseline, baseline.length + 1);
         combined[baseline.length] = override;

@@ -53,12 +53,15 @@ The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
-ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html
 ```
 
-Both `get_skillpilot_context_de` and a successful
-`set_skillpilot_active_goal_de` reference this resource. Their
-`structuredContent` contains the following optional projection:
+Only the dedicated read-only `render_skillpilot_goal_visualization_de` tool
+references this resource. It is offered only when the learner preference is
+enabled and the current context contains a safe visualization projection;
+ordinary context reads and state mutations carry no UI resource metadata and
+therefore create no empty component. The renderer's `structuredContent`
+contains the following projection:
 
 ```json
 {
@@ -75,6 +78,8 @@ Both `get_skillpilot_context_de` and a successful
 
 The projection and component obey these constraints:
 
+- the learner's default-on `showGoalVisualizationsInChat` preference must not
+  be disabled;
 - the active goal must be atomic;
 - its canonical visualization link must match the same goal ID and resolve to a
   safe public SkillPilot image URL;
@@ -90,6 +95,12 @@ Because `1.0.0` has not been published in the OpenAI portal, this component is
 part of the same mutable release draft and does not cause a version increment.
 After publication, its resource URI and bundled content become immutable under
 the V1 release rules.
+
+Learners can change the preference in the cockpit under **Mein Lehrplan →
+Lerneinstellungen → Lernzielbilder im Chat anzeigen**. The persisted setting is
+learner-scoped, defaults to `true`, applies across devices and chat sessions,
+and is updated through the existing partial preferences endpoint. Requests
+that omit the field preserve its current value.
 
 ## Asset Layout
 

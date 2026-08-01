@@ -13,18 +13,57 @@ const sourceApplicationPath = resolve(
   "backend/src/main/resources/application.yml",
 );
 
-export const OPENAI_V1_PUBLIC_DEFAULTS = Object.freeze({
-  SKILLPILOT_OPENAI_DE_MCP_URL:
-    "https://mcp-coach-de-v1.skillpilot.com/mcp",
-  SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE:
-    "https://mcp-coach-de-v1.skillpilot.com/mcp",
-  SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:
+export const OPENAI_V1_PUBLIC_CONTRACT = Object.freeze({
+  "mcp-url": "https://mcp-coach-de-v1.skillpilot.com/mcp",
+  "oauth-resource": "https://mcp-coach-de-v1.skillpilot.com/mcp",
+  "protected-resource-metadata":
     "https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 });
 
-export const REMOVED_OPENAI_V1_PUBLIC_OVERRIDES = Object.freeze([
-  "SKILLPILOT_OPENAI_DE_UI_ORIGIN",
+// These names look plausible, but making a public contract URL configurable
+// would let one Spring process silently serve the DE V1 implementation under a
+// different public identity. The public URLs therefore remain literal release
+// contract values; Nginx owns the external-to-internal route mapping.
+export const FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES = Object.freeze([
+  "SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_RESOURCE",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_RESOURCE_METADATA",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_RESOURCE_METADATA_URL",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_PROTECTED_RESOURCE_METADATA",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_PROTECTED_RESOURCE_METADATA_URL",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_UI_ORIGIN",
+  "SKILLPILOT_OPENAI_MCP_URL",
+  "SKILLPILOT_OPENAI_OAUTH_RESOURCE",
+  "SKILLPILOT_OPENAI_RESOURCE_METADATA",
+  "SKILLPILOT_OPENAI_RESOURCE_METADATA_URL",
+  "SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA",
+  "SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA_URL",
+  "SKILLPILOT_OPENAI_UI_ORIGIN",
 ]);
+
+const LEGACY_OPENAI_ENVIRONMENT_PREFIX = "SKILLPILOT_OPENAI_DE_";
+const LEGACY_OPENAI_APPS_CHALLENGE = "SKILLPILOT_OPENAI_APPS_CHALLENGE";
+const COACH_LINE_ENVIRONMENT_NAME =
+  /^SKILLPILOT_OPENAI_COACH_(?:DE|EN)_V[1-9][0-9]*_[A-Z0-9_]+$/;
+export const IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAMES = Object.freeze([
+  "SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_WORKFLOW_VERSION",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ID",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_REDIRECT_URIS",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_JWK_SET_URI",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM",
+  "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_LEGACY_CLIENT_IDS",
+]);
+const IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAME_SET = new Set(
+  IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAMES,
+);
 
 const escapeRegExp = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -39,114 +78,132 @@ const applicationPropertyValues = (applicationYaml, propertyName) => {
   );
 };
 
-export function validateCanonicalPublicDefaults(applicationYaml) {
-  for (const [name, expectedDefault] of Object.entries(
-    OPENAI_V1_PUBLIC_DEFAULTS,
-  )) {
-    const placeholderPattern = new RegExp(
-      `\\$\\{${escapeRegExp(name)}:([^}]*)\\}`,
-      "g",
+const yamlIndentation = (line) => /^ */.exec(line)?.[0].length ?? 0;
+
+const yamlMappingBlock = (applicationYaml, path) => {
+  const lines = applicationYaml.split(/\r?\n/);
+  let searchStart = 0;
+  let searchEnd = lines.length;
+  let parentIndent = -2;
+  let mappingLineIndex = -1;
+
+  for (const segment of path) {
+    const indentation = parentIndent + 2;
+    const mappingPattern = new RegExp(
+      `^ {${indentation}}${escapeRegExp(segment)}:\\s*(?:#.*)?$`,
     );
-    const placeholders = [...applicationYaml.matchAll(placeholderPattern)];
-    assert.equal(
-      placeholders.length,
-      1,
-      `${name} must occur exactly once with a versioned application default.`,
+    mappingLineIndex = -1;
+    for (let index = searchStart; index < searchEnd; index += 1) {
+      if (mappingPattern.test(lines[index])) {
+        mappingLineIndex = index;
+        break;
+      }
+    }
+    assert.notEqual(
+      mappingLineIndex,
+      -1,
+      `application.yml must contain the nested ${path.join(".")} mapping.`,
     );
-    assert.equal(
-      placeholders[0][1],
-      expectedDefault,
-      `${name} must default to the exact SkillPilot Coach DE V1 public contract.`,
-    );
+
+    let mappingEnd = searchEnd;
+    for (let index = mappingLineIndex + 1; index < searchEnd; index += 1) {
+      const line = lines[index];
+      if (line.trim() === "" || line.trimStart().startsWith("#")) {
+        continue;
+      }
+      if (yamlIndentation(line) <= indentation) {
+        mappingEnd = index;
+        break;
+      }
+    }
+
+    searchStart = mappingLineIndex + 1;
+    searchEnd = mappingEnd;
+    parentIndent = indentation;
   }
-  for (const name of REMOVED_OPENAI_V1_PUBLIC_OVERRIDES) {
-    assert.equal(
-      applicationYaml.includes(`\${${name}`),
-      false,
-      `${name} must not override the fixed MCP UI widget domain for the V1 contract.`,
+
+  return lines.slice(mappingLineIndex + 1, searchEnd).join("\n");
+};
+
+export function isForbiddenOpenAiV1EnvironmentName(name) {
+  return (
+    name.startsWith(LEGACY_OPENAI_ENVIRONMENT_PREFIX) ||
+    name === LEGACY_OPENAI_APPS_CHALLENGE ||
+    FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES.includes(name) ||
+    (COACH_LINE_ENVIRONMENT_NAME.test(name) &&
+      !IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAME_SET.has(name))
+  );
+}
+
+export function validateCanonicalPublicDefaults(applicationYaml) {
+  const openAiV1Block = yamlMappingBlock(applicationYaml, [
+    "skillpilot",
+    "openai",
+    "coach",
+    "de",
+    "v1",
+  ]);
+  for (const [propertyName, expectedValue] of Object.entries(
+    OPENAI_V1_PUBLIC_CONTRACT,
+  )) {
+    assert.deepEqual(
+      applicationPropertyValues(openAiV1Block, propertyName),
+      [expectedValue],
+      `${propertyName} must be the exact fixed SkillPilot Coach DE V1 public contract value.`,
     );
   }
 }
 
 export function validateExplicitPublicOverrides(env) {
-  for (const name of REMOVED_OPENAI_V1_PUBLIC_OVERRIDES) {
-    assert.equal(
-      !Object.hasOwn(env, name) || env[name] === undefined,
-      true,
-      `${name} must not be set; the V1 widget domain is fixed by the release contract.`,
-    );
-  }
-  for (const [name, expectedValue] of Object.entries(
-    OPENAI_V1_PUBLIC_DEFAULTS,
-  )) {
-    if (!Object.hasOwn(env, name) || env[name] === undefined) {
+  for (const name of Object.keys(env)) {
+    if (!isForbiddenOpenAiV1EnvironmentName(name)) {
       continue;
     }
-    assert.equal(
-      env[name],
-      expectedValue,
-      `${name}, when explicitly set, must exactly identify the SkillPilot Coach DE V1 public contract.`,
+    if (FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES.includes(name)) {
+      assert.fail(
+        `${name} must not be set; the DE V1 public URL is fixed by the release contract.`,
+      );
+    }
+    if (COACH_LINE_ENVIRONMENT_NAME.test(name)) {
+      assert.fail(
+        `${name} must not be set; this coach-line setting is not implemented by the current shared Spring server.`,
+      );
+    }
+    assert.fail(
+      `${name} is obsolete and must not be set; use a line-specific SKILLPILOT_OPENAI_COACH_DE_V1_* or shared SKILLPILOT_OPENAI_* setting.`,
     );
   }
 }
 
 export function parseServiceEnvironmentFile(environmentFile) {
-  const publicNames = new Set([
-    ...Object.keys(OPENAI_V1_PUBLIC_DEFAULTS),
-    ...REMOVED_OPENAI_V1_PUBLIC_OVERRIDES,
-  ]);
-  const publicOverrides = {};
+  const forbiddenEnvironmentNames = {};
 
-  for (const [index, rawLine] of environmentFile.split(/\r?\n/).entries()) {
+  for (const rawLine of environmentFile.split(/\r?\n/)) {
     const line = rawLine.trim();
     if (line === "" || line.startsWith("#") || line.startsWith(";")) {
       continue;
     }
 
     const assignment = /^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/.exec(line);
-    if (assignment === null || !publicNames.has(assignment[1])) {
+    if (
+      assignment === null ||
+      !isForbiddenOpenAiV1EnvironmentName(assignment[1])
+    ) {
       continue;
     }
 
-    const [, name, rawValue] = assignment;
-    if (Object.hasOwn(publicOverrides, name)) {
+    const name = assignment[1];
+    if (Object.hasOwn(forbiddenEnvironmentNames, name)) {
       throw new Error(
         `${name} is assigned more than once in the service environment file.`,
       );
     }
-    publicOverrides[name] = parseServiceEnvironmentValue(
-      name,
-      rawValue,
-      index + 1,
-    );
+    // Deliberately do not retain or parse the value. A legacy variable may be
+    // a client secret, and diagnostics need only its name to fail closed.
+    forbiddenEnvironmentNames[name] = true;
   }
 
-  return publicOverrides;
-}
-
-function parseServiceEnvironmentValue(name, rawValue, lineNumber) {
-  const value = rawValue.trim();
-  if (value.startsWith("\"") || value.startsWith("'")) {
-    const quote = value[0];
-    if (value.length < 2 || value.at(-1) !== quote) {
-      throw new Error(
-        `${name} has an unsupported quoted value on environment-file line ${lineNumber}.`,
-      );
-    }
-    const unquoted = value.slice(1, -1);
-    if (unquoted.includes("\\") || unquoted.includes(quote)) {
-      throw new Error(
-        `${name} has unsupported escaping on environment-file line ${lineNumber}.`,
-      );
-    }
-    return unquoted;
-  }
-  if (/\s|["'\\]/.test(value)) {
-    throw new Error(
-      `${name} has an unsupported value on environment-file line ${lineNumber}.`,
-    );
-  }
-  return value;
+  return forbiddenEnvironmentNames;
 }
 
 export function validateBuiltApplication(applicationYaml, deployedCommit) {
@@ -156,7 +213,7 @@ export function validateBuiltApplication(applicationYaml, deployedCommit) {
     "The deployed Git commit must be a lowercase 40-character SHA.",
   );
   assert.ok(
-    !applicationYaml.includes("@skillpilotOpenAiDeServerBuild@"),
+    !applicationYaml.includes("@skillpilotServerBuild@"),
     "Built application.yml must not contain the server-build source token.",
   );
   assert.ok(
@@ -164,8 +221,15 @@ export function validateBuiltApplication(applicationYaml, deployedCommit) {
     "Built application.yml must not depend on a runtime SKILLPILOT_SERVER_BUILD override.",
   );
 
+  const openAiV1Block = yamlMappingBlock(applicationYaml, [
+    "skillpilot",
+    "openai",
+    "coach",
+    "de",
+    "v1",
+  ]);
   const serverBuildValues = applicationPropertyValues(
-    applicationYaml,
+    openAiV1Block,
     "server-build",
   );
   assert.deepEqual(
@@ -276,11 +340,11 @@ export function main(arguments_ = process.argv.slice(2)) {
     );
   } else if (serviceEnvironmentPath) {
     console.log(
-      "OpenAI V1 systemd runtime configuration uses verified application defaults or exact explicit overrides.",
+      "OpenAI V1 systemd runtime configuration uses the line-specific/shared environment namespace and fixed public contract URLs.",
     );
   } else {
     console.log(
-      "OpenAI V1 public runtime configuration uses verified application defaults or exact explicit overrides.",
+      "OpenAI V1 runtime configuration uses the line-specific/shared environment namespace and fixed public contract URLs.",
     );
   }
 }

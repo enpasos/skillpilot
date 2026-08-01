@@ -27,6 +27,7 @@ import {
 } from "./lib/openai_plugin_contract_compatibility.mjs";
 import {
   createReproducibleTrackedArchive,
+  pluginInstallBundleArchiveName,
 } from "./lib/reproducible_plugin_archive.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -309,7 +310,7 @@ function buildCandidate(output) {
 
   const archive = resolve(
     output,
-    `${line.pluginIdentity}-${manifest.version}.tar`,
+    pluginInstallBundleArchiveName(line.pluginIdentity, manifest.version),
   );
   createReproducibleTrackedArchive({
     repositoryRoot,
@@ -326,6 +327,7 @@ function buildCandidate(output) {
     }));
   writeJson(resolve(output, "snapshot-manifest.json"), {
     schemaVersion: 1,
+    archiveRole: "plugin-install-bundle",
     pluginIdentity: line.pluginIdentity,
     pluginVersion: manifest.version,
     contractMajor: line.contractMajor,
@@ -388,6 +390,25 @@ function validateCandidate(output) {
     snapshot.contractMajor,
     releaseIndex.contractMajor,
     "Snapshot major disagrees with published index.",
+  );
+  assert.equal(
+    snapshot.archiveRole,
+    "plugin-install-bundle",
+    "Snapshot archive role must distinguish the plugin bundle from the shared Spring server.",
+  );
+  const expectedArchive = pluginInstallBundleArchiveName(
+    releaseIndex.pluginIdentity,
+    manifest.version,
+  );
+  assert.equal(
+    snapshot.files.filter((file) => file.path.endsWith(".tar")).length,
+    1,
+    "Snapshot must contain exactly one plugin archive.",
+  );
+  assert.equal(
+    snapshot.files.some((file) => file.path === expectedArchive),
+    true,
+    "Snapshot must use the explicit OpenAI plugin-bundle archive name.",
   );
   assert.equal(
     releaseContract.uiManifest.enabled,

@@ -61,7 +61,7 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @Component
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
+        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
         havingValue = "true")
 public final class OpenAiDeV1McpContractAdapter {
 
@@ -71,6 +71,8 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String WRITE_SCOPE = "skillpilot.openai.de.write";
 
     public static final String GET_CONTEXT = "get_skillpilot_context_de";
+    public static final String RENDER_GOAL_VISUALIZATION =
+            "render_skillpilot_goal_visualization_de";
     public static final String GET_NAVIGATION = "get_skillpilot_navigation_de";
     public static final String SET_CURRICULUM = "set_skillpilot_curriculum_de";
     public static final String SET_PERSONALIZATION = "set_skillpilot_personalization_de";
@@ -89,7 +91,7 @@ public final class OpenAiDeV1McpContractAdapter {
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
     private static final Set<String> GOAL_VISUALIZATION_UI_TOOLS =
-            Set.of(GET_CONTEXT, SET_ACTIVE_GOAL);
+            Set.of(RENDER_GOAL_VISUALIZATION);
     private static final String GOAL_VISUALIZATION_WIDGET_HTML =
             loadGoalVisualizationWidget();
 
@@ -102,7 +104,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             Führe dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.
 
-            Wenn goalVisualization vorhanden ist, zeigt die zugehörige MCP-UI das freigegebene Bild des aktiven atomischen Lernziels direkt im Chat. Nutze es nur als didaktische Orientierung, nicht als Quelle, Beleg, Aufgabe oder Leistungsnachweis. Erfinde keine Bilddetails und wiederhole weder Bild-URL noch technische Bildmetadaten in der sichtbaren Antwort. Ohne goalVisualization bleibt der normale Chatablauf unverändert.
+            Wenn der jüngste Kontext goalVisualization enthält und nextAllowedTools render_skillpilot_goal_visualization_de erlaubt, rufe dieses Anzeige-Tool genau einmal mit der dort unverändert enthaltenen goalId auf. Nur dieses Tool erzeugt die MCP-UI mit dem freigegebenen Bild des aktiven atomischen Lernziels. Rufe es niemals auf, wenn goalVisualization fehlt oder das Tool nicht erlaubt ist. Nutze das Bild nur als didaktische Orientierung, nicht als Quelle, Beleg, Aufgabe oder Leistungsnachweis. Erfinde keine Bilddetails und wiederhole weder Bild-URL noch technische Bildmetadaten in der sichtbaren Antwort. Ohne goalVisualization bleibt der normale Chatablauf unverändert.
 
             Im Prüfungsmodus gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Wenn activeGoal.exam.hasImage=true, gib vor der Aufgabe exakt activeGoal.cockpitUrl aus und sage, dass dort die Abbildung liegt; erfinde oder beschreibe das Bild nicht. Gib keine Hinweise, Teilantworten, Lösungen oder Scaffolds und stelle keine Nachfragen. Warte auf eine vollständige sichtbare Abgabe und rufe get_skillpilot_exam_evaluation_de erst danach auf. Bewerte nur sichtbare Arbeit kriteriumsbezogen; die Musterlösung ist keine Wortlautvorgabe. Gleichwertige Wege zählen voll. Benenne Unleserliches ohne einen Fachfehler zu erfinden. Speichere Mastery nur nach finalem Bestehen mit mindestens passingPoints.
 
@@ -176,6 +178,11 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options,
             String instruction) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record GoalVisualizationRenderResult(
+            OpenAiDeCoachContext.GoalVisualization goalVisualization) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -274,6 +281,22 @@ public final class OpenAiDeV1McpContractAdapter {
                         true,
                         false,
                         this::getContext),
+                tool(
+                        RENDER_GOAL_VISUALIZATION,
+                        "Lernzielbild anzeigen",
+                        "Zeigt ausschließlich das bereits freigegebene Bild des aktuell aktiven atomischen "
+                                + "Lernziels an. Rufe dieses Tool genau einmal nur dann auf, wenn der jüngste "
+                                + "SkillPilot-Kontext goalVisualization enthält, dessen goalId übereinstimmt und "
+                                + "nextAllowedTools dieses Tool nennt. Ohne goalVisualization oder bei einer "
+                                + "anderen goalId niemals aufrufen. Ändert keinen Zustand.",
+                        objectSchema(
+                                Map.of("goalId", modelFacingOpaqueReferenceSchema()),
+                                List.of("goalId")),
+                        goalVisualizationRenderSchema(),
+                        true,
+                        true,
+                        false,
+                        this::renderGoalVisualization),
                 tool(
                         GET_NAVIGATION,
                         "Navigationsoptionen laden",
@@ -679,6 +702,26 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(contextSummary(context), context);
     }
 
+    private McpSchema.CallToolResult renderGoalVisualization(
+            String skillpilotId,
+            Map<String, Object> arguments) {
+        String goalId = requiredString(arguments, "goalId");
+        OpenAiDeCoachContext context = projectContext(
+                skillpilotId,
+                coachTools.getLearnerState(skillpilotId));
+        OpenAiDeCoachContext.GoalVisualization visualization =
+                context == null ? null : context.goalVisualization();
+        if (visualization == null || !goalId.equals(visualization.goalId())) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    "Für das aktuelle Lernziel ist kein freigegebenes Lernzielbild verfügbar.",
+                    null);
+        }
+        return successResult(
+                "Freigegebenes Lernzielbild bereitgestellt.",
+                new GoalVisualizationRenderResult(visualization));
+    }
+
     private McpSchema.CallToolResult getNavigation(String skillpilotId, Map<String, Object> arguments) {
         String target = requiredString(arguments, "target").toLowerCase(Locale.ROOT);
         UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
@@ -958,7 +1001,10 @@ public final class OpenAiDeV1McpContractAdapter {
                                 && "setPersonalization".equals(state.stateMachine().requiredAction())
                         ? coachTools.getPersonalizationPlan(skillpilotId)
                         : PersonalizationPlan.complete(List.of());
-        return contextProjector.project(state, plan);
+        return contextProjector.project(
+                state,
+                plan,
+                coachTools.showGoalVisualizationsInChat(skillpilotId));
     }
 
     private RecallPromptResult recallPrompt(VerifiedRecallPromptResponse response) {
@@ -1633,6 +1679,12 @@ public final class OpenAiDeV1McpContractAdapter {
                         "imageUrl",
                         "altText",
                         "cockpitUrl"));
+    }
+
+    private static Map<String, Object> goalVisualizationRenderSchema() {
+        return objectSchema(
+                Map.of("goalVisualization", goalVisualizationSchema()),
+                List.of("goalVisualization"));
     }
 
     private static Map<String, Object> decisionSchema() {

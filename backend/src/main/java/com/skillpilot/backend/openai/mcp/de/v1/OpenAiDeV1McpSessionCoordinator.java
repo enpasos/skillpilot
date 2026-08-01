@@ -38,7 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Component
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
+        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeV1McpSessionCoordinator {
 

@@ -412,9 +412,10 @@ Interpretation:
 ### 7.3 Atomic goal visualizations
 
 Atomic learning goals may optionally carry one or more didactic image references
-for cockpit and provider UI use. The German OpenAI V1 MCP App automatically
-renders the current goal's visualization inline when the active goal is atomic
-and has a matching canonical `goal-visualization` link.
+for cockpit and provider UI use. The German OpenAI V1 MCP App renders the
+current goal's visualization inline when the active goal is atomic, has a
+matching canonical `goal-visualization` link, and the learner's default-on
+`showGoalVisualizationsInChat` preference is not disabled.
 
 Rule:
 
@@ -426,11 +427,13 @@ Rule:
   `goalVisualization` projection used by the MCP UI. Other resources and
   provider adapters continue to use a normal cockpit deep link such as
   `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
-* `get_skillpilot_context_de` and a successful
-  `set_skillpilot_active_goal_de` may trigger the same read-only MCP UI resource.
-  If the active goal is not atomic, the canonical link does not match its goal
-  ID, or the image data is absent or invalid, omit `goalVisualization`; the
-  ordinary chat response must remain fully usable.
+* Only `render_skillpilot_goal_visualization_de` carries the read-only MCP UI
+  resource metadata. Offer that renderer only when the learner preference is
+  enabled and a safe `goalVisualization` projection exists. Ordinary context
+  reads and state mutations must not create an empty UI box. If the learner
+  disabled chat visualizations, the active goal is not atomic, the canonical
+  link does not match its goal ID, or the image data is absent or invalid, omit
+  the renderer; the ordinary chat response must remain fully usable.
 * The inline component may show only goal ID, title, optional description,
   public image URL, alt text, and cockpit URL from the safe projection. It does
   not create state, authorize an action, select a goal, or expose a permanent
@@ -1006,10 +1009,12 @@ provider policy and product review explicitly permit it.
   `structuredContent`, but must not be repeated in the transcript; the model
   passes it unchanged to the narrow mutation tool. Widget-only click references
   remain in result `_meta` and app-only tools apply them directly. The
-  `goalVisualization` projection is present only for an active atomic goal with
-  a matching canonical image link and is rendered by the read-only MCP UI
-  attached to context reads and active-goal writes. Its absence must degrade to
-  the ordinary chat response. Every
+  `goalVisualization` projection is present only when the learner's default-on
+  chat-visualization preference is enabled and an active atomic goal has a
+  matching canonical image link. Only the dedicated read-only
+  `render_skillpilot_goal_visualization_de` tool carries MCP UI metadata;
+  ordinary context reads and state mutations never create a UI box. Its absence
+  must degrade to the ordinary chat response. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.

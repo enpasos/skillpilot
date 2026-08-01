@@ -117,6 +117,7 @@ type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
   strictMode: boolean
+  showGoalVisualizationsInChat: boolean
 }
 type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
 
@@ -2341,6 +2342,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       (learnerData?.learningStrategy ?? 'RANDOM') !== preferences.strategy
       || (learnerData?.autoPilot ?? false) !== preferences.autoPilot
       || (learnerData?.strictMode ?? false) !== preferences.strictMode
+      || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
 
     if (!configChanged && !preferencesChanged) {
       return
@@ -2356,6 +2358,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
           strictMode: preferences.strictMode,
+          showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
       }
       return
@@ -2389,6 +2392,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             learningStrategy: preferences.strategy,
             autoPilot: preferences.autoPilot,
             strictMode: preferences.strictMode,
+            showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
           })
         })
         if (!preferencesRes.ok) {
@@ -2409,6 +2413,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           learningStrategy: preferences.strategy,
           autoPilot: preferences.autoPilot,
           strictMode: preferences.strictMode,
+          showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
         } : prev)
       }
 
@@ -3381,6 +3386,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialStrategy={learnerData?.learningStrategy}
         initialAutoPilot={learnerData?.autoPilot}
         initialStrictMode={learnerData?.strictMode}
+        initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
         personalizationEditor={usesGuidedPersonalCurriculumEditor
           ? {
             ...personalCurriculumEditor,

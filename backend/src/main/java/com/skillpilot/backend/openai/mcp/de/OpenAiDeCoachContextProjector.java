@@ -35,12 +35,19 @@ public final class OpenAiDeCoachContextProjector {
     }
 
     public OpenAiDeCoachContext project(UnifiedLearnerStateResponse rawState) {
-        return project(rawState, PersonalizationPlan.complete(List.of()));
+        return project(rawState, PersonalizationPlan.complete(List.of()), true);
     }
 
     public OpenAiDeCoachContext project(
             UnifiedLearnerStateResponse rawState,
             PersonalizationPlan personalizationPlan) {
+        return project(rawState, personalizationPlan, true);
+    }
+
+    public OpenAiDeCoachContext project(
+            UnifiedLearnerStateResponse rawState,
+            PersonalizationPlan personalizationPlan,
+            boolean includeGoalVisualization) {
         UnifiedLearnerStateResponse state = stateProjection.project(rawState);
         if (state == null) {
             return null;
@@ -61,6 +68,9 @@ public final class OpenAiDeCoachContextProjector {
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
         boolean examHasImage = hasExamImage(activeGoal);
+        OpenAiDeCoachContext.GoalVisualization goalVisualization = includeGoalVisualization
+                ? goalVisualization(state.curriculum(), activeGoal)
+                : null;
         return new OpenAiDeCoachContext(
                 valueOrEmpty(state.learningState()),
                 valueOrEmpty(requiredAction),
@@ -72,8 +82,8 @@ public final class OpenAiDeCoachContextProjector {
                 decision,
                 goals(state.frontier()),
                 resources(state.curriculum(), activeGoal),
-                goalVisualization(state.curriculum(), activeGoal),
-                nextAllowedTools(requiredAction, activeGoal),
+                goalVisualization,
+                nextAllowedTools(requiredAction, activeGoal, goalVisualization != null),
                 progress(state.goals()),
                 completion,
                 policies(interactionMode, examHasImage, orientation),
@@ -464,7 +474,10 @@ public final class OpenAiDeCoachContextProjector {
         return new OpenAiDeCoachContext.Completion(scopeComplete, curriculumComplete);
     }
 
-    private List<String> nextAllowedTools(String requiredAction, FrontierGoal activeGoal) {
+    private List<String> nextAllowedTools(
+            String requiredAction,
+            FrontierGoal activeGoal,
+            boolean goalVisualizationAvailable) {
         List<String> tools = new ArrayList<>();
         tools.add(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
         tools.add(OpenAiDeV1McpContractAdapter.GET_NAVIGATION);
@@ -490,6 +503,9 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isExamGoal(activeGoal)) {
             tools.add(OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION);
+        }
+        if (goalVisualizationAvailable) {
+            tools.add(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
         }
         return List.copyOf(tools.stream().distinct().toList());
     }

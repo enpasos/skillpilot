@@ -116,6 +116,11 @@ public class CoachToolFacade {
         return learnerService.getCoachLearnerState(skillpilotId);
     }
 
+    public boolean showGoalVisualizationsInChat(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.showGoalVisualizationsInChat(skillpilotId);
+    }
+
     /** Read-only curriculum catalog for authenticated, ID-based coach adapters. */
     public List<LandscapeSummary> getCurriculumOptions(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);

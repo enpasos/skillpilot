@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 017-add-goal-visualizations-in-chat-preference
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - not:
+            - columnExists:
+                tableName: learner
+                columnName: show_goal_visualizations_in_chat
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: show_goal_visualizations_in_chat
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false

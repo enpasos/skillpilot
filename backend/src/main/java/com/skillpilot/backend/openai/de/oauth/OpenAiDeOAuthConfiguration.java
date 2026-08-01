@@ -63,7 +63,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
+        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeOAuthConfiguration {
 
@@ -275,7 +275,7 @@ public class OpenAiDeOAuthConfiguration {
     @Bean
     SecurityContextRepository openAiDeSecurityContextRepository() {
         HttpSessionSecurityContextRepository repository = new HttpSessionSecurityContextRepository();
-        repository.setSpringSecurityContextKey("SKILLPILOT_OPENAI_DE_SECURITY_CONTEXT");
+        repository.setSpringSecurityContextKey("SKILLPILOT_OPENAI_COACH_DE_V1_SECURITY_CONTEXT");
         return repository;
     }
 
@@ -313,7 +313,7 @@ public class OpenAiDeOAuthConfiguration {
 
     @Bean
     @ConditionalOnProperty(
-            name = "skillpilot.openai.de.oauth.client-authentication-method",
+            name = "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
             havingValue = CLIENT_AUTH_PRIVATE_KEY_JWT)
     OpenAiDeJwtClientAssertionValidator openAiDeJwtClientAssertionValidator(
             OpenAiDeProperties properties) {
@@ -477,7 +477,7 @@ public class OpenAiDeOAuthConfiguration {
     private static void validateSettings(OpenAiDeProperties properties) {
         if (!hasText(properties.getOauth().getClientId())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.oauth.client-id must be set to the client ID entered in ChatGPT app management.");
+                    "skillpilot.openai.coach.de.v1.oauth.client-id must be set to the client ID entered in ChatGPT app management.");
         }
         Set<String> redirectUris = new LinkedHashSet<>();
         for (String value : properties.getOauth().getRedirectUris()) {
@@ -487,7 +487,7 @@ public class OpenAiDeOAuthConfiguration {
         }
         if (redirectUris.isEmpty()) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.oauth.redirect-uris must contain the callback shown in ChatGPT app management.");
+                    "skillpilot.openai.coach.de.v1.oauth.redirect-uris must contain the callback shown in ChatGPT app management.");
         }
         redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI-DE OAuth redirect URI"));
         String authenticationMethod = normalizedClientAuthenticationMethod(properties);
@@ -503,7 +503,7 @@ public class OpenAiDeOAuthConfiguration {
                 && !OpenAiDeSecureModeValidation.isValidClientSecret(
                         properties.getOauth().getClientSecret())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.oauth.client-secret must contain at least "
+                    "skillpilot.openai.coach.de.v1.oauth.client-secret must contain at least "
                             + OpenAiDeSecureModeValidation.MINIMUM_CLIENT_SECRET_LENGTH
                             + " non-whitespace characters for client_secret_basic.");
         }
@@ -537,7 +537,7 @@ public class OpenAiDeOAuthConfiguration {
                 || OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD.equals(
                         properties.getServerBuild().trim())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.server-build must identify the deployed build and must not be dev.");
+                    "skillpilot.openai.coach.de.v1.server-build must identify the deployed build and must not be dev.");
         }
         if (properties.getOauth().getAccessTokenTtl() == null
                 || properties.getOauth().getAccessTokenTtl().isZero()

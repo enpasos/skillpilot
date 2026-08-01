@@ -24,7 +24,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PROTECTED_RESOURCE_METADATA_ENDPOINT =
             PUBLIC_MCP_ORIGIN + PROTECTED_RESOURCE_METADATA_PATH;
     public static final String GOAL_VISUALIZATION_ARTIFACT_SHA256 =
-            "12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc";
+            "5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881";
     public static final String GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + GOAL_VISUALIZATION_ARTIFACT_SHA256
@@ -36,7 +36,10 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String INTERNAL_MCP_PATH = "/internal/openai/de/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */
     public static final String INTERNAL_PROTECTED_RESOURCE_METADATA_PATH =
-            "/.well-known/oauth-protected-resource";
+            "/internal/openai/de/v1/protected-resource-metadata";
+    /** Loopback-only OpenAI Apps challenge target behind the DE V1 reverse proxy. */
+    public static final String INTERNAL_OPENAI_APPS_CHALLENGE_PATH =
+            "/internal/openai/de/v1/openai-apps-challenge";
     public static final int STATE_SCHEMA_VERSION = 1;
     public static final String WORKFLOW_VERSION = "coach-de@1.0";
     public static final String DEFAULT_SERVER_BUILD = "dev";

@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 
 /** Readiness contribution for the German OpenAI MCP provider boundary. */
 @Component("openAiDeCoach")
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
-    public static final int EXPECTED_TOOL_COUNT = 11;
+    public static final int EXPECTED_TOOL_COUNT = 12;
 
     private final OpenAiDeProperties properties;
     private final boolean contractAvailable;
@@ -33,7 +33,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
             OpenAiDeProperties properties,
             Optional<OpenAiDeV1McpContractAdapter> contract,
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
-            @Value("${skillpilot.openai.de.mcp.enabled:false}") boolean mcpEnabled) {
+            @Value("${skillpilot.openai.coach.de.v1.mcp.enabled:false}") boolean mcpEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);

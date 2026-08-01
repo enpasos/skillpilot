@@ -53,6 +53,7 @@ interface PersonalCurriculumPreferences {
     strategy: 'RANDOM' | 'SEQUENTIAL'
     autoPilot: boolean
     strictMode: boolean
+    showGoalVisualizationsInChat: boolean
 }
 
 const isCompatibilityOnlyLandscape = (landscape: LandscapeSummary) =>
@@ -89,6 +90,7 @@ interface PersonalCurriculumSetupProps {
     initialStrategy?: 'RANDOM' | 'SEQUENTIAL'
     initialAutoPilot?: boolean
     initialStrictMode?: boolean
+    initialShowGoalVisualizationsInChat?: boolean
     migration?: SetupMigrationConfig
     personalizationEditor?: PersonalCurriculumEditorProps
 }
@@ -106,6 +108,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialStrategy = 'SEQUENTIAL',
     initialAutoPilot = true,
     initialStrictMode = false,
+    initialShowGoalVisualizationsInChat = true,
     migration,
     personalizationEditor,
 }) => {
@@ -185,6 +188,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [strategy, setStrategy] = useState<'RANDOM' | 'SEQUENTIAL'>(initialStrategy)
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
+    const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
+        initialShowGoalVisualizationsInChat,
+    )
     const [expanded, setExpanded] = useState<Set<string>>(new Set(initialExpanded))
     const [isApplying, setIsApplying] = useState(false)
     const stageScopeOptions = React.useMemo(
@@ -208,6 +214,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const handleStrictModeChange = (newStrictMode: boolean) => {
         setStrictMode(newStrictMode)
+    }
+
+    const handleShowGoalVisualizationsInChatChange = (show: boolean) => {
+        setShowGoalVisualizationsInChat(show)
     }
 
     const toggleSelection = (landscapeId: string, isRoot: boolean) => {
@@ -431,7 +441,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
             setIsApplying(true)
             try {
-                await onPreferencesApply({ strategy, autoPilot, strictMode })
+                await onPreferencesApply({ strategy, autoPilot, strictMode, showGoalVisualizationsInChat })
                 onClose()
             } finally {
                 setIsApplying(false)
@@ -446,7 +456,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
         setIsApplying(true)
         try {
-            await onApply(normalizeDurationScopes(config), { strategy, autoPilot, strictMode })
+            await onApply(normalizeDurationScopes(config), {
+                strategy,
+                autoPilot,
+                strictMode,
+                showGoalVisualizationsInChat,
+            })
             onClose()
         } finally {
             setIsApplying(false)
@@ -812,6 +827,23 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     <div>
                                         <span className="text-sm font-medium text-text-primary">{setupCopy.strictModeTitle}</span>
                                         <p className="text-xs text-text-secondary">{setupCopy.strictModeDescription}</p>
+                                    </div>
+                                </label>
+
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={showGoalVisualizationsInChat}
+                                        onChange={(e) => handleShowGoalVisualizationsInChatChange(e.target.checked)}
+                                        className="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                        <span className="text-sm font-medium text-text-primary">
+                                            {setupCopy.showGoalVisualizationsInChatTitle}
+                                        </span>
+                                        <p className="text-xs text-text-secondary">
+                                            {setupCopy.showGoalVisualizationsInChatDescription}
+                                        </p>
                                     </div>
                                 </label>
                             </div>

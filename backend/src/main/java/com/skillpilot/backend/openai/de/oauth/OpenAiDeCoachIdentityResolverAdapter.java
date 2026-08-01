@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @Component
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
+        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
         havingValue = "true")
 public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoachIdentityResolver {
 

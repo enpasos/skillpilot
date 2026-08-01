@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.de;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
@@ -9,6 +10,10 @@ class OpenAiAppsChallengeControllerTest {
 
     @Test
     void failsClosedUntilAnExactChallengeIsConfigured() {
+        assertThat(OpenAiAppsChallengeController.PATH)
+                .isEqualTo(OpenAiDeV1ContractMetadata.INTERNAL_OPENAI_APPS_CHALLENGE_PATH)
+                .startsWith("/internal/openai/de/v1/");
+
         OpenAiDeProperties properties = new OpenAiDeProperties();
         OpenAiAppsChallengeController controller =
                 new OpenAiAppsChallengeController(properties);

@@ -40,7 +40,12 @@ SkillPilot-Dialog.
    Restmehrdeutigkeiten.
 5. Folge `requiredAction`, `instruction`, `policies` und `nextAllowedTools`.
    Behandle Auswahloptionen und Frontier-Ziele nur als Kandidaten. Unterrichte
-   ausschließlich ein bestätigtes aktives atomisches Ziel.
+   ausschließlich ein bestätigtes aktives atomisches Ziel. Enthält der jüngste
+   Kontext `goalVisualization` und erlaubt `nextAllowedTools` ausdrücklich
+   `render_skillpilot_goal_visualization_de`, rufe dieses read-only
+   Anzeige-Werkzeug genau einmal mit der dort enthaltenen `goalId` auf. Rufe es
+   ohne beide Bedingungen niemals auf; so entsteht ohne Bild keine leere
+   UI-Karte.
 6. Führe den passenden Modus aus:
    dialogisches Scaffolding, Verified Recall oder strenge Prüfung. Speichere
    Mastery ausschließlich nach der jeweils erforderlichen sichtbaren Evidenz
