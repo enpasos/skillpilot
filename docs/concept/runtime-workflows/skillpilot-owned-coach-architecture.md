@@ -361,7 +361,7 @@ Interaktive Widgets sind davon getrennte spätere Ausbaustufen.
 
 Konkret referenzieren nur `get_skillpilot_context_de` und
 `set_skillpilot_active_goal_de` die versionierte Ressource
-`ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html`. Die optionale
+`ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html`. Die optionale
 `structuredContent.goalVisualization` enthält Ziel-ID, Titel, optionale
 Beschreibung, öffentliche Bild-URL, Alttext und Cockpit-Link. Das Backend gibt
 sie nur für ein aktives atomares Ziel mit passendem kanonischem

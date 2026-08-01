@@ -18,8 +18,9 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
   passendem kanonischem `goal-visualization`-Link
 - eigene read-only Anzeige-Aktion, die der Coach nur bei vorhandenem,
   freigegebenem Bild aufruft; ohne Bild entsteht keine leere UI-Karte
-- erneute Initialisierung aus dem aktuellen Tool-Ergebnis, damit das Bild beim
-  Öffnen derselben Unterhaltung auf einem weiteren Gerät erhalten bleibt
+- idempotente Initialisierung aus MCP-Tool-Ergebnis, ChatGPT-Kompatibilitätswert
+  und gespeichertem Widget-Zustand; doppelte oder partielle Host-Updates sowie
+  verspätete Fehler abgelöster Bildknoten löschen das sichtbare Bild nicht
 - Cockpit-Einstellung für Lernzielbilder im Chat, standardmäßig aktiviert
 - Visualisierung ausschließlich zur Orientierung, nicht als Evidenz, Aufgabe,
   Lösung, Bewertung oder Mastery-Nachweis

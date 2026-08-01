@@ -43,7 +43,7 @@ MCP-Werkzeug.
 | MCP Server URL | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
-| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html` |
+| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html` |
 | Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/de` |

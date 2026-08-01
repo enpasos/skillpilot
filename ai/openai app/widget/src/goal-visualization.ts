@@ -33,6 +33,55 @@ export function goalVisualizationFromStructuredContent(
   };
 }
 
+/**
+ * Merge a host update into the currently rendered visualization.
+ *
+ * ChatGPT can deliver the same tool result through both the standards-first
+ * MCP Apps notification and the window.openai compatibility bridge. Later
+ * compatibility updates may be partial and therefore contain no tool output.
+ * A dedicated visualization tool never intentionally clears its own result,
+ * so an absent or malformed update must not erase an already rendered image.
+ */
+export function retainGoalVisualization(
+  current: GoalVisualization | undefined,
+  structuredContent: unknown
+): GoalVisualization | undefined {
+  const next = goalVisualizationFromStructuredContent(structuredContent);
+  if (!next) return current;
+  return sameGoalVisualization(current, next) ? current : next;
+}
+
+/**
+ * Select the first valid host candidate in precedence order. Returning the
+ * current object for an identical first candidate is intentional: an older
+ * fallback must not restore stale content after the current event value.
+ */
+export function firstGoalVisualization(
+  current: GoalVisualization | undefined,
+  structuredContents: readonly unknown[]
+): GoalVisualization | undefined {
+  for (const structuredContent of structuredContents) {
+    const next = goalVisualizationFromStructuredContent(structuredContent);
+    if (!next) continue;
+    return sameGoalVisualization(current, next) ? current : next;
+  }
+  return current;
+}
+
+function sameGoalVisualization(
+  left: GoalVisualization | undefined,
+  right: GoalVisualization
+): boolean {
+  return (
+    left?.goalId === right.goalId &&
+    left.title === right.title &&
+    left.description === right.description &&
+    left.imageUrl === right.imageUrl &&
+    left.altText === right.altText &&
+    left.cockpitUrl === right.cockpitUrl
+  );
+}
+
 function record(value: unknown): Record<string, unknown> | undefined {
   return value !== null && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)

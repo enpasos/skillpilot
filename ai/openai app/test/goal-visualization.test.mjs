@@ -96,3 +96,89 @@ test("goal visualization parser rejects non-HTTPS and credential-bearing URLs", 
     );
   }
 });
+
+test("partial or empty host updates retain an already rendered visualization", async () => {
+  const { retainGoalVisualization } = await loadGoalVisualizationParser();
+  const current = {
+    goalId: "ATOM_1",
+    title: "Atomare Kompetenz",
+    imageUrl: "https://skillpilot.com/assets/goal-visualizations/ATOM_1.png",
+    altText: "Didaktische Darstellung der Kompetenz.",
+    cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+  };
+
+  for (const update of [undefined, null, {}, { unrelated: true }]) {
+    assert.equal(
+      retainGoalVisualization(current, update),
+      current,
+      "a partial openai:set_globals update must not clear the current image"
+    );
+  }
+});
+
+test("duplicate delivery is idempotent while a newer valid visualization replaces it", async () => {
+  const { retainGoalVisualization } = await loadGoalVisualizationParser();
+  const current = {
+    goalId: "ATOM_1",
+    title: "Atomare Kompetenz",
+    imageUrl: "https://skillpilot.com/assets/goal-visualizations/ATOM_1.png",
+    altText: "Didaktische Darstellung der Kompetenz.",
+    cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+  };
+
+  assert.equal(
+    retainGoalVisualization(current, { goalVisualization: { ...current } }),
+    current,
+    "MCP Apps and window.openai may deliver the same result without reloading the image"
+  );
+
+  const replacement = retainGoalVisualization(current, {
+    goalVisualization: {
+      ...current,
+      goalId: "ATOM_2",
+      imageUrl: "https://skillpilot.com/assets/goal-visualizations/ATOM_2.png"
+    }
+  });
+  assert.notEqual(replacement, current);
+  assert.equal(replacement.goalId, "ATOM_2");
+});
+
+test("a stale window snapshot cannot mask the newer event visualization", async () => {
+  const { firstGoalVisualization } = await loadGoalVisualizationParser();
+  const current = {
+    goalId: "ATOM_1",
+    title: "Bisherige Kompetenz",
+    imageUrl: "https://skillpilot.com/assets/goal-visualizations/ATOM_1.png",
+    altText: "Bisherige didaktische Darstellung.",
+    cockpitUrl: "https://skillpilot.com/?goal=ATOM_1"
+  };
+  const staleWindowSnapshot = { goalVisualization: { ...current } };
+  const newerEventValue = {
+    goalVisualization: {
+      ...current,
+      goalId: "ATOM_2",
+      title: "Neue Kompetenz",
+      imageUrl: "https://skillpilot.com/assets/goal-visualizations/ATOM_2.png",
+      cockpitUrl: "https://skillpilot.com/?goal=ATOM_2"
+    }
+  };
+
+  const selected = firstGoalVisualization(current, [
+    newerEventValue,
+    staleWindowSnapshot
+  ]);
+
+  assert.equal(selected.goalId, "ATOM_2");
+  assert.equal(selected.title, "Neue Kompetenz");
+
+  const currentEventVisualization = selected;
+  const retained = firstGoalVisualization(currentEventVisualization, [
+    newerEventValue,
+    staleWindowSnapshot
+  ]);
+  assert.equal(
+    retained,
+    currentEventVisualization,
+    "the current event value must stop an older window fallback from restoring ATOM_1"
+  );
+});

@@ -470,7 +470,7 @@ Diese Regel ist strenger als das OpenAI-Minimum, das kompatible Updates unter de
 Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
 
 ```text
-ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html
 ```
 
 Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft

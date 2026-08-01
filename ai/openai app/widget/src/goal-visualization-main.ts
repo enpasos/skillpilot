@@ -4,19 +4,23 @@ import {
   type GoalVisualizationToolResult
 } from "./goal-visualization-bridge";
 import {
-  goalVisualizationFromStructuredContent,
+  firstGoalVisualization,
+  retainGoalVisualization,
   type GoalVisualization
 } from "./goal-visualization";
 
 type OpenAiCompatibilityWindow = Window & {
   openai?: {
     toolOutput?: unknown;
+    widgetState?: unknown;
+    setWidgetState?: (state: unknown) => void;
   };
 };
 
 type OpenAiSetGlobalsEvent = CustomEvent<{
   globals?: {
     toolOutput?: unknown;
+    widgetState?: unknown;
   };
 }>;
 
@@ -28,29 +32,63 @@ document.documentElement.lang = "de";
 const rootElement = document.querySelector<HTMLElement>("#root");
 if (!rootElement) throw new Error("Missing goal visualization root");
 const root: HTMLElement = rootElement;
+root.hidden = true;
 
 const bridge = new GoalVisualizationBridge(applyToolResult);
 const compatibilityWindow = window as OpenAiCompatibilityWindow;
+let currentVisualization: GoalVisualization | undefined;
+let currentImage: HTMLImageElement | undefined;
 
 window.addEventListener(
   "openai:set_globals",
   (event) => {
-    const toolOutput = (event as OpenAiSetGlobalsEvent).detail?.globals?.toolOutput;
-    if (toolOutput !== undefined) renderStructuredContent(toolOutput);
+    const globals = (event as OpenAiSetGlobalsEvent).detail?.globals;
+    if (!globals || (globals.toolOutput === undefined && globals.widgetState === undefined)) {
+      return;
+    }
+
+    // The event values are the current change. Retain the window.openai
+    // snapshots only as fallbacks for hosts that omit one of those values.
+    renderFirstStructuredContent(
+      globals.toolOutput,
+      globals.widgetState,
+      compatibilityWindow.openai?.toolOutput,
+      compatibilityWindow.openai?.widgetState
+    );
   },
   { passive: true }
 );
-renderStructuredContent(compatibilityWindow.openai?.toolOutput);
+renderFirstStructuredContent(
+  compatibilityWindow.openai?.toolOutput,
+  compatibilityWindow.openai?.widgetState
+);
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
   renderStructuredContent(result.structuredContent);
 }
 
+function renderFirstStructuredContent(...candidates: unknown[]): void {
+  renderVisualization(firstGoalVisualization(currentVisualization, candidates));
+}
+
 function renderStructuredContent(structuredContent: unknown): void {
-  const visualization = goalVisualizationFromStructuredContent(structuredContent);
+  renderVisualization(retainGoalVisualization(currentVisualization, structuredContent));
+}
+
+function renderVisualization(visualization: GoalVisualization | undefined): void {
+  if (!visualization || visualization === currentVisualization) return;
+
+  currentVisualization = visualization;
+  const card = cardFor(visualization);
   root.replaceChildren();
-  root.hidden = !visualization;
-  if (visualization) root.appendChild(cardFor(visualization));
+  root.hidden = false;
+  root.appendChild(card);
+  try {
+    compatibilityWindow.openai?.setWidgetState?.({ goalVisualization: visualization });
+  } catch {
+    // Persistence is an optional ChatGPT compatibility enhancement. The
+    // standards-first MCP Apps result remains authoritative and visible.
+  }
 }
 
 function cardFor(visualization: GoalVisualization): HTMLElement {
@@ -64,7 +102,8 @@ function cardFor(visualization: GoalVisualization): HTMLElement {
   image.alt = visualization.altText;
   image.loading = "eager";
   image.decoding = "async";
-  image.addEventListener("error", hideVisualization);
+  image.addEventListener("error", () => hideVisualization(image));
+  currentImage = image;
 
   const content = element("div", "goal-content");
   content.appendChild(textElement("p", "eyebrow", "SkillPilot Lernziel"));
@@ -93,9 +132,15 @@ function cardFor(visualization: GoalVisualization): HTMLElement {
   return article;
 }
 
-function hideVisualization(): void {
+function hideVisualization(image: HTMLImageElement): void {
+  // Replacing a card can terminate the detached image request. Its late error
+  // event must not clear the newer card delivered through the other host
+  // channel.
+  if (image !== currentImage || !root.contains(image)) return;
   root.replaceChildren();
   root.hidden = true;
+  currentVisualization = undefined;
+  currentImage = undefined;
 }
 
 function element(tag: string, className: string): HTMLElement {
