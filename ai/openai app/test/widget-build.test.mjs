@@ -67,7 +67,6 @@ test("goal visualization widget is self-contained and uses the standards-first M
   );
   assert.match(html, /^<!doctype html>/i);
   assert.match(html, /ui\/notifications\/tool-result/);
-  assert.match(html, /ui\/open-link/);
   assert.match(html, /goalVisualization/);
   assert.match(html, /toolOutput/, "ChatGPT's initial compatibility payload remains supported");
   assert.match(
@@ -87,13 +86,40 @@ test("goal visualization widget is self-contained and uses the standards-first M
   );
   assert.match(
     html,
+    /getHostContext/,
+    "the widget must inspect the initialized MCP Apps host context"
+  );
+  assert.match(html, /platform/, "the widget must distinguish mobile hosts");
+  assert.match(
+    html,
+    /addEventListener\(["']hostcontextchanged["']/,
+    "a late mobile platform update must suppress an already initialized widget"
+  );
+  assert.match(
+    html,
+    /requestTeardown/,
+    "mobile hosts must receive the standard teardown request"
+  );
+  assert.match(
+    html,
+    /requestClose/,
+    "ChatGPT's optional compatibility close hook must remain feature-detected"
+  );
+  assert.match(
+    html,
+    /["']load["']/,
+    "the widget must wait for a successful image load before becoming visible"
+  );
+  assert.match(
+    html,
     /\.contains\(/,
     "a stale image error from one host delivery must not erase a newer render"
   );
   assert.match(html, /\.hidden/, "missing or broken images must collapse the widget");
-  assert.match(html, /SkillPilot(?: |\\x20)Lernziel/);
-  assert.match(html, /SkillPilot-Cockpit/);
-  assert.match(html, /aria-labelledby/);
+  assert.doesNotMatch(html, /SkillPilot(?: |\\x20)Lernziel/);
+  assert.doesNotMatch(html, /SkillPilot-Cockpit/);
+  assert.doesNotMatch(html, /aria-labelledby/);
+  assert.doesNotMatch(html, /goal-card|goal-content|cockpit-link/);
   assertInlineScriptParses(html, "goal-visualization/widget.html");
   assert.doesNotMatch(html, /<script[^>]+src=/i);
   assert.doesNotMatch(html, /<link[^>]+rel=["']stylesheet/i);

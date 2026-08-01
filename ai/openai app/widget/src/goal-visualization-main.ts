@@ -1,10 +1,12 @@
 import css from "./goal-visualization.css";
 import {
   GoalVisualizationBridge,
+  type GoalVisualizationHostContext,
   type GoalVisualizationToolResult
 } from "./goal-visualization-bridge";
 import {
   firstGoalVisualization,
+  isMobileGoalVisualizationHost,
   retainGoalVisualization,
   type GoalVisualization
 } from "./goal-visualization";
@@ -13,7 +15,9 @@ type OpenAiCompatibilityWindow = Window & {
   openai?: {
     toolOutput?: unknown;
     widgetState?: unknown;
+    userAgent?: string;
     setWidgetState?: (state: unknown) => void;
+    requestClose?: () => void | Promise<void>;
   };
 };
 
@@ -21,6 +25,7 @@ type OpenAiSetGlobalsEvent = CustomEvent<{
   globals?: {
     toolOutput?: unknown;
     widgetState?: unknown;
+    userAgent?: string;
   };
 }>;
 
@@ -34,18 +39,36 @@ if (!rootElement) throw new Error("Missing goal visualization root");
 const root: HTMLElement = rootElement;
 root.hidden = true;
 
-const bridge = new GoalVisualizationBridge(applyToolResult);
+const bridge = new GoalVisualizationBridge(applyToolResult, handleHostContextChanged);
 const compatibilityWindow = window as OpenAiCompatibilityWindow;
+let bridgeInitialized = false;
+let hostInitialized = false;
+let suppressUi = false;
 let currentVisualization: GoalVisualization | undefined;
+let pendingVisualization: GoalVisualization | undefined;
 let currentImage: HTMLImageElement | undefined;
 
 window.addEventListener(
   "openai:set_globals",
   (event) => {
     const globals = (event as OpenAiSetGlobalsEvent).detail?.globals;
-    if (!globals || (globals.toolOutput === undefined && globals.widgetState === undefined)) {
+    if (!globals) {
       return;
     }
+
+    if (
+      isMobileGoalVisualizationHost(
+        bridgeInitialized ? bridge.hostContext()?.platform : undefined,
+        globals.userAgent,
+        compatibilityWindow.openai?.userAgent,
+        navigator.userAgent
+      )
+    ) {
+      suppressMobileUi();
+      return;
+    }
+
+    if (globals.toolOutput === undefined && globals.widgetState === undefined) return;
 
     // The event values are the current change. Retain the window.openai
     // snapshots only as fallbacks for hosts that omit one of those values.
@@ -62,27 +85,140 @@ renderFirstStructuredContent(
   compatibilityWindow.openai?.toolOutput,
   compatibilityWindow.openai?.widgetState
 );
+void bridge.ready.then(handleHostInitialization, handleHostInitializationFailure);
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
   renderStructuredContent(result.structuredContent);
 }
 
 function renderFirstStructuredContent(...candidates: unknown[]): void {
-  renderVisualization(firstGoalVisualization(currentVisualization, candidates));
+  acceptVisualization(firstGoalVisualization(activeVisualization(), candidates));
 }
 
 function renderStructuredContent(structuredContent: unknown): void {
-  renderVisualization(retainGoalVisualization(currentVisualization, structuredContent));
+  acceptVisualization(retainGoalVisualization(activeVisualization(), structuredContent));
+}
+
+function activeVisualization(): GoalVisualization | undefined {
+  return pendingVisualization ?? currentVisualization;
+}
+
+function acceptVisualization(visualization: GoalVisualization | undefined): void {
+  if (!visualization || suppressUi) return;
+  if (!hostInitialized) {
+    pendingVisualization = visualization;
+    return;
+  }
+  renderVisualization(visualization);
+}
+
+function handleHostInitialization(): void {
+  bridgeInitialized = true;
+  const hostContext = bridge.hostContext();
+  if (
+    isMobileGoalVisualizationHost(
+      hostContext?.platform,
+      hostContext?.userAgent,
+      compatibilityWindow.openai?.userAgent,
+      navigator.userAgent
+    )
+  ) {
+    suppressMobileUi();
+    return;
+  }
+
+  enableRendering();
+}
+
+function handleHostContextChanged(hostContext: GoalVisualizationHostContext): void {
+  if (
+    isMobileGoalVisualizationHost(
+      hostContext.platform,
+      hostContext.userAgent,
+      compatibilityWindow.openai?.userAgent,
+      navigator.userAgent
+    )
+  ) {
+    suppressMobileUi();
+    return;
+  }
+
+  if (!bridgeInitialized || suppressUi) return;
+  enableRendering();
+}
+
+function handleHostInitializationFailure(): void {
+  if (
+    isMobileGoalVisualizationHost(
+      undefined,
+      compatibilityWindow.openai?.userAgent,
+      navigator.userAgent
+    )
+  ) {
+    suppressMobileUi();
+    return;
+  }
+
+  // Keep the existing ChatGPT compatibility bridge usable for web hosts that
+  // do not complete the standards-first handshake.
+  enableRendering();
+}
+
+function suppressMobileUi(): void {
+  if (suppressUi) return;
+  suppressUi = true;
+  pendingVisualization = undefined;
+  hideVisualization();
+
+  const openai = compatibilityWindow.openai;
+  const requestClose = openai?.requestClose;
+  const compatibilityClose =
+    typeof requestClose === "function"
+      ? Promise.resolve().then(() => requestClose.call(openai))
+      : Promise.resolve();
+
+  // The standard teardown request is the primary signal. requestClose is a
+  // feature-detected ChatGPT compatibility enhancement. Either host may
+  // decline or ignore its signal, so the DOM stays collapsed independently.
+  void Promise.allSettled([bridge.requestTeardown(), compatibilityClose]);
+}
+
+function enableRendering(): void {
+  hostInitialized = true;
+  const visualization = pendingVisualization;
+  pendingVisualization = undefined;
+  renderVisualization(visualization);
 }
 
 function renderVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization || visualization === currentVisualization) return;
 
   currentVisualization = visualization;
-  const card = cardFor(visualization);
-  root.replaceChildren();
+  const image = document.createElement("img");
+  image.className = "goal-image";
+  image.alt = visualization.altText;
+  image.loading = "eager";
+  image.decoding = "async";
+  image.addEventListener("load", () => showVisualization(image, visualization));
+  image.addEventListener("error", () => hideVisualization(image));
+  currentImage = image;
+  root.replaceChildren(image);
+  image.src = visualization.imageUrl;
+}
+
+function showVisualization(
+  image: HTMLImageElement,
+  visualization: GoalVisualization
+): void {
+  if (
+    suppressUi ||
+    image !== currentImage ||
+    !root.contains(image) ||
+    visualization !== currentVisualization
+  ) {
+    return;
+  }
   root.hidden = false;
-  root.appendChild(card);
   try {
     compatibilityWindow.openai?.setWidgetState?.({ goalVisualization: visualization });
   } catch {
@@ -91,66 +227,13 @@ function renderVisualization(visualization: GoalVisualization | undefined): void
   }
 }
 
-function cardFor(visualization: GoalVisualization): HTMLElement {
-  const article = element("article", "goal-card");
-  article.dataset.goalId = visualization.goalId;
-  article.setAttribute("aria-labelledby", "skillpilot-goal-title");
-
-  const image = document.createElement("img");
-  image.className = "goal-image";
-  image.src = visualization.imageUrl;
-  image.alt = visualization.altText;
-  image.loading = "eager";
-  image.decoding = "async";
-  image.addEventListener("error", () => hideVisualization(image));
-  currentImage = image;
-
-  const content = element("div", "goal-content");
-  content.appendChild(textElement("p", "eyebrow", "SkillPilot Lernziel"));
-
-  const title = textElement("h2", "goal-title", visualization.title);
-  title.id = "skillpilot-goal-title";
-  content.appendChild(title);
-
-  if (visualization.description) {
-    content.appendChild(textElement("p", "goal-description", visualization.description));
-  }
-
-  const link = textElement("a", "cockpit-link", "Im SkillPilot-Cockpit öffnen");
-  link.setAttribute("href", visualization.cockpitUrl);
-  link.setAttribute("target", "_blank");
-  link.setAttribute("rel", "noopener noreferrer");
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    void bridge.openLink(visualization.cockpitUrl).catch(() => {
-      window.open(visualization.cockpitUrl, "_blank", "noopener,noreferrer");
-    });
-  });
-  content.appendChild(link);
-
-  article.append(image, content);
-  return article;
-}
-
-function hideVisualization(image: HTMLImageElement): void {
-  // Replacing a card can terminate the detached image request. Its late error
-  // event must not clear the newer card delivered through the other host
+function hideVisualization(image?: HTMLImageElement): void {
+  // Replacing an image can terminate the detached request. Its late error
+  // event must not clear the newer image delivered through the other host
   // channel.
-  if (image !== currentImage || !root.contains(image)) return;
+  if (image && (image !== currentImage || !root.contains(image))) return;
   root.replaceChildren();
   root.hidden = true;
   currentVisualization = undefined;
   currentImage = undefined;
-}
-
-function element(tag: string, className: string): HTMLElement {
-  const node = document.createElement(tag);
-  node.className = className;
-  return node;
-}
-
-function textElement(tag: string, className: string, text: string): HTMLElement {
-  const node = element(tag, className);
-  node.textContent = text;
-  return node;
 }

@@ -45,6 +45,17 @@ test("goal visualization parser accepts and normalizes the public structuredCont
   );
 });
 
+test("mobile hosts suppress the visualization while known web and desktop hosts keep it", async () => {
+  const { isMobileGoalVisualizationHost } = await loadGoalVisualizationParser();
+
+  assert.equal(isMobileGoalVisualizationHost("mobile"), true);
+  assert.equal(isMobileGoalVisualizationHost("web", "ChatGPT Android Mobile"), false);
+  assert.equal(isMobileGoalVisualizationHost("desktop", "ChatGPT iPhone"), false);
+  assert.equal(isMobileGoalVisualizationHost(undefined, "ChatGPT/1.0 Android"), true);
+  assert.equal(isMobileGoalVisualizationHost(undefined, "Mozilla/5.0 (iPhone) Mobile"), true);
+  assert.equal(isMobileGoalVisualizationHost(undefined, "Mozilla/5.0 (X11; Linux x86_64)"), false);
+});
+
 test("description is optional while all image and accessibility fields are required", async () => {
   const { goalVisualizationFromStructuredContent } = await loadGoalVisualizationParser();
   const required = {

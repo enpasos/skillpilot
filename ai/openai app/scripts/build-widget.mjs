@@ -60,7 +60,7 @@ if (!goalVisualizationBundle) {
 }
 const goalVisualizationHtml = template
   .replace("__LANG__", "de")
-  .replace("__TITLE__", "SkillPilot Lernziel")
+  .replace("__TITLE__", "Lernzielbild")
   .replace("__BUNDLE__", () =>
     goalVisualizationBundle.text.replaceAll("</script", "<\\/script")
   );

@@ -16,6 +16,11 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
   auch den ChatGPT-Kompatibilitätsalias `_meta["openai/widgetDomain"]`
 - read-only MCP-UI-Karte für das Bild eines aktiven atomaren Lernziels mit
   passendem kanonischem `goal-visualization`-Link
+- bildreine Darstellung ohne zusätzlichen Lernzieltext oder Cockpit-Link;
+  sichtbar wird sie erst nach erfolgreich geladenem Bild
+- defensive Mobile-Degradation: ein als `mobile` initialisierter MCP-UI-Host
+  erhält keinen SkillPilot-Inhalt und wird um Teardown gebeten; die normale
+  Chat-Antwort bleibt vollständig nutzbar
 - eigene read-only Anzeige-Aktion, die der Coach nur bei vorhandenem,
   freigegebenem Bild aufruft; ohne Bild entsteht keine leere UI-Karte
 - idempotente Initialisierung aus MCP-Tool-Ergebnis, ChatGPT-Kompatibilitätswert

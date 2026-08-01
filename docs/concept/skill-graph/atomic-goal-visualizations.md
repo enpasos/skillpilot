@@ -53,7 +53,7 @@ The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
-ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html
 ```
 
 Only the dedicated read-only `render_skillpilot_goal_visualization_de` tool
@@ -83,10 +83,20 @@ The projection and component obey these constraints:
 - the active goal must be atomic;
 - its canonical visualization link must match the same goal ID and resolve to a
   safe public SkillPilot image URL;
-- the UI displays title, optional description, image, alt text, and the normal
-  cockpit link; it performs no learning-state mutation;
+- the safe projection may retain goal metadata for validation and future
+  compatibility, but the UI renders only the image. Its `altText` stays on the
+  `img` element; title, description, goal ID, and cockpit link are not visibly
+  rendered. The component performs no learning-state mutation;
 - a missing, malformed, mismatched, or unloadable image hides the component and
   leaves the ordinary ChatGPT response unchanged;
+- the UI is progressive enhancement for supported MCP Apps web hosts. After
+  initialization, a host reporting `hostContext.platform = "mobile"` receives
+  no rendered SkillPilot content and the widget requests teardown. The ordinary
+  chat response remains the complete fallback;
+- teardown is a host-mediated request, not a promise that the host removes its
+  container. If a mobile surface never initializes the MCP view, neither the
+  backend nor the widget can suppress a placeholder already created by that
+  host;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.
@@ -98,9 +108,10 @@ the V1 release rules.
 
 Learners can change the preference in the cockpit under **Mein Lehrplan →
 Lerneinstellungen → Lernzielbilder im Chat anzeigen**. The persisted setting is
-learner-scoped, defaults to `true`, applies across devices and chat sessions,
-and is updated through the existing partial preferences endpoint. Requests
-that omit the field preserve its current value.
+learner-scoped, defaults to `true`, and is updated through the existing partial
+preferences endpoint. The backend preference applies across devices and chat
+sessions; it does not promise UI availability or cross-device UI rehydration on
+every ChatGPT surface. Requests that omit the field preserve its current value.
 
 ## Asset Layout
 
@@ -135,8 +146,8 @@ Reference pools of example tasks or image inspirations may be kept locally under
 5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
 6. Add the optional `resourceLinks` entry to the canonical goal JSON.
 7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
-8. Validate graph JSON, cockpit rendering, the OpenAI MCP inline component, and
-   the cockpit-link fallback.
+8. Validate graph JSON, cockpit rendering, the image-only OpenAI MCP inline
+   component, and normal cockpit deep-link behavior outside that component.
 
 ## Automated Nano Banana Pro Workflow
 
@@ -304,8 +315,8 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
 - The image works in the cockpit goal card and, where the German OpenAI MCP UI
-  is enabled, in the inline ChatGPT card; the cockpit deep link remains
-  available.
+  is enabled, as the sole visible content of the inline ChatGPT card. The
+  cockpit deep link remains available outside the MCP UI component.
 - The visual does not replace the need for explanation, practice, or assessment.
 - `altText` is specific enough for non-visual use.
 - `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.
