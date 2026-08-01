@@ -63,7 +63,7 @@ export function validateCanonicalPublicDefaults(applicationYaml) {
     assert.equal(
       applicationYaml.includes(`\${${name}`),
       false,
-      `${name} must not configure a custom MCP UI domain for the V1 draft.`,
+      `${name} must not override the fixed MCP UI widget domain for the V1 contract.`,
     );
   }
 }
@@ -73,7 +73,7 @@ export function validateExplicitPublicOverrides(env) {
     assert.equal(
       !Object.hasOwn(env, name) || env[name] === undefined,
       true,
-      `${name} must not be set; the V1 draft uses the OpenAI sandbox origin.`,
+      `${name} must not be set; the V1 widget domain is fixed by the release contract.`,
     );
   }
   for (const [name, expectedValue] of Object.entries(

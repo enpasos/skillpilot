@@ -14,6 +14,8 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PLUGIN_VERSION = "1.0.0";
     public static final int CONTRACT_MAJOR = 1;
     public static final String PUBLIC_MCP_ORIGIN = "https://mcp-coach-de-v1.skillpilot.com";
+    /** Dedicated, plugin-unique origin required for the submitted MCP App UI. */
+    public static final String WIDGET_DOMAIN = PUBLIC_MCP_ORIGIN;
     public static final String PUBLIC_MCP_PATH = "/mcp";
     public static final String PUBLIC_MCP_ENDPOINT = PUBLIC_MCP_ORIGIN + PUBLIC_MCP_PATH;
     public static final String OAUTH_RESOURCE = PUBLIC_MCP_ENDPOINT;

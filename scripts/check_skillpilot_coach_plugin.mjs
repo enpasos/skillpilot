@@ -215,7 +215,7 @@ assert.equal(oauthResource.href, endpoint.href);
 assert.equal(
   Object.hasOwn(releaseLine, "publicUiOrigin"),
   false,
-  "The V1 draft must use the OpenAI sandbox origin for MCP UI resources",
+  "The V1 release line must use ui.domain rather than the retired publicUiOrigin field",
 );
 assert.equal(
   Object.hasOwn(releaseLine, "internalCompatibilityEndpoint"),
@@ -223,6 +223,7 @@ assert.equal(
   "V1 must not publish or declare a compatibility endpoint",
 );
 assert.deepEqual(releaseLine.ui, {
+  domain: "https://mcp-coach-de-v1.skillpilot.com",
   enabled: true,
   stateSchemaVersion: 1,
   resources: [
@@ -481,15 +482,12 @@ assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
 assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
+assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);
 assert.equal(
   javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
   "https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 );
-assert.doesNotMatch(
-  contractMetadata,
-  /PUBLIC_UI_ORIGIN/,
-  "The V1 draft must not declare a custom MCP UI origin",
-);
+assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.resources[0].uri,
@@ -502,10 +500,15 @@ assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/de/v1/mcp");
 assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
 assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
 assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
-assert.doesNotMatch(
+assert.match(
   mcpContract,
-  /openai\/widgetDomain|"domain"\s*,/,
-  "MCP UI resources must use the OpenAI sandbox origin in the V1 draft",
+  /"domain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
+  "MCP UI resources must publish the standard plugin-unique widget domain",
+);
+assert.match(
+  mcpContract,
+  /"openai\/widgetDomain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
+  "MCP UI resources must publish the ChatGPT widget-domain alias",
 );
 assert.match(
   mcpContract,

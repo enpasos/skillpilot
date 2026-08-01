@@ -508,12 +508,14 @@ public final class OpenAiDeV1McpContractAdapter {
         Map<String, Object> csp = Map.of(
                 "resourceDomains", List.of("https://skillpilot.com"));
         Map<String, Object> ui = Map.of(
+                "domain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
                 "prefersBorder", true,
                 "csp", csp);
         return Map.of(
                 "ui", ui,
                 "openai/widgetDescription",
                         "Freigegebene didaktische Visualisierung zum aktiven SkillPilot-Lernziel.",
+                "openai/widgetDomain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
                 "openai/widgetPrefersBorder", true,
                 "openai/widgetCSP", Map.of(
                         "resource_domains", List.of("https://skillpilot.com"),

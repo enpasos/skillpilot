@@ -95,14 +95,14 @@ test("the retired custom UI-origin override fails closed", () => {
       validateExplicitPublicOverrides({
         SKILLPILOT_OPENAI_DE_UI_ORIGIN: "https://ui-v1.skillpilot.com",
       }),
-    /must not be set; the V1 draft uses the OpenAI sandbox origin/,
+    /must not be set; the V1 widget domain is fixed by the release contract/,
   );
   assert.throws(
     () =>
       validateCanonicalPublicDefaults(
         `${canonicalSourceApplication}\nui-origin: \${SKILLPILOT_OPENAI_DE_UI_ORIGIN:https://ui-v1.skillpilot.com}`,
       ),
-    /must not configure a custom MCP UI domain/,
+    /must not override the fixed MCP UI widget domain/,
   );
 });
 

@@ -157,7 +157,7 @@ OAuth Resource/Audience:        https://mcp-coach-de-v1.skillpilot.com/mcp
 Protected-Resource-Metadaten:   https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 Domain-Challenge:               https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge
 OAuth-Issuer:                   https://skillpilot.com/api/openai/de
-Benutzerdefinierter UI-Origin:  im unveröffentlichten Draft nicht gesetzt
+Widget-Origin:                   https://mcp-coach-de-v1.skillpilot.com
 ```
 
 Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen. Die längere Bezeichnung „SkillPilot Coach (Deutsch, Version 1)“ wird nicht verwendet.
@@ -431,20 +431,21 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 ## 9. MCP-UI-Versionierung
 
-### 9.1 UI-Origin erst zur tatsächlichen Veröffentlichung
+### 9.1 Eindeutiger Widget-Origin bereits im Einreichungs-Draft
 
-Der unveröffentlichte `1.0.0-SNAPSHOT`-Draft setzt weder `_meta.ui.domain`
-noch den Kompatibilitätsschlüssel `_meta["openai/widgetDomain"]`. Der Host
-verwendet dadurch seine isolierte Standard-Sandbox; SkillPilot-Domains für
-Bilder und Cockpit-Links werden separat und minimal in der CSP
-freigegeben.
+Ein zur Einreichung vorgesehener Plugin-Draft mit UI MUSS bereits einen für
+diese Plugin-Identität eindeutigen Widget-Origin angeben. SkillPilot setzt
+deshalb sowohl `_meta.ui.domain` als auch den ChatGPT-Kompatibilitätsalias
+`_meta["openai/widgetDomain"]` auf
+`https://mcp-coach-de-v1.skillpilot.com`. Der ohnehin pro Plugin-Linie
+dedizierte MCP-Origin kann zugleich Widget-Origin sein; dafür ist kein zweiter
+Host und kein zusätzlicher öffentlicher Pfad erforderlich.
 
-Vor der ersten tatsächlichen Veröffentlichung einer Plugin-Identität mit UI
-MUSS ein dedizierter, für diese Plugin-Identität eindeutiger UI-Origin gemäß
-der dann aktuellen OpenAI-Vorgabe festgelegt und geprüft werden. Diese spätere
-Entscheidung ändert den MCP-Endpunkt nicht und wird nicht durch einen
-unbenutzten Draft-Hostname vorweggenommen. Nach der Veröffentlichung darf der
-UI-Origin innerhalb derselben Plugin-Identität nicht stillschweigend wechseln.
+Der Widget-Origin ist ein fester Vertragswert und kein Runtime-Override.
+SkillPilot-Domains für Bilder und Cockpit-Links werden unabhängig davon
+separat und minimal in der CSP freigegeben. Nach der Veröffentlichung darf der
+Widget-Origin innerhalb derselben Plugin-Identität nicht stillschweigend
+wechseln.
 
 ### 9.2 Unveränderliche Ressourcen-URIs
 
@@ -997,8 +998,10 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - OpenAI-Challenge-Route berücksichtigen.
 
 4. **V1-UI versionieren**
-   - im unveröffentlichten Draft die Provider-Sandbox ohne eigenen UI-Origin verwenden;
-   - einen eindeutigen UI-Origin erst vor einer tatsächlichen Veröffentlichung festlegen;
+   - bereits im Einreichungs-Draft den plugin-eindeutigen Widget-Origin
+     `https://mcp-coach-de-v1.skillpilot.com` festlegen;
+   - Standardmetadatum `_meta.ui.domain` und ChatGPT-Kompatibilitätsalias
+     `_meta["openai/widgetDomain"]` identisch ausliefern;
    - content-addressed oder release-addressed UI-Ressourcen-URIs erzeugen;
    - einmal veröffentlichte URIs unveränderlich behandeln;
    - UI-State mit `schemaVersion` versehen.
