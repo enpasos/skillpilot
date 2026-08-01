@@ -74,17 +74,17 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.public-base-url=https://skillpilot.test",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
         "skillpilot.claude.enabled=false",
-        "skillpilot.openai.de.enabled=true",
-        "skillpilot.openai.de.server-build=test-build",
-        "skillpilot.openai.de.writes-enabled=true",
-        "skillpilot.openai.de.oauth.enabled=true",
-        "skillpilot.openai.de.mcp.enabled=true",
-        "skillpilot.openai.de.secure-cookie=false",
-        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth.client-id=chatgpt-e2e-client",
-        "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.de.v1.enabled=true",
+        "skillpilot.openai.coach.de.v1.server-build=test-build",
+        "skillpilot.openai.coach.de.v1.writes-enabled=true",
+        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.de.v1.mcp.enabled=true",
+        "skillpilot.openai.coach.de.v1.secure-cookie=false",
+        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth.client-id=chatgpt-e2e-client",
+        "skillpilot.openai.coach.de.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
+        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeCoachEndToEndIntegrationTest {
 
@@ -273,12 +273,19 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         HttpResponse<String> webWrite = putJson(
                 "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/preferences",
-                "{\"strictMode\":true}");
+                "{\"strictMode\":true,\"showGoalVisualizationsInChat\":false}");
         assertThat(webWrite.statusCode()).withFailMessage(webWrite.body()).isEqualTo(200);
         Learner afterWebWrite =
                 learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
         assertThat(afterWebWrite.getStrictMode()).isTrue();
+        assertThat(afterWebWrite.getShowGoalVisualizationsInChat()).isFalse();
         assertThat(afterWebWrite.getCoachStateRevision()).isEqualTo(2L);
+        HttpResponse<String> webRead = get(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID));
+        assertThat(webRead.statusCode()).withFailMessage(webRead.body()).isEqualTo(200);
+        assertThat(objectMapper.readTree(webRead.body())
+                .path("showGoalVisualizationsInChat")
+                .asBoolean()).isFalse();
 
         assertThatThrownBy(() -> sessionCoordinator.write(
                         firstSessionId,

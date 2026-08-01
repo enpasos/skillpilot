@@ -12,7 +12,10 @@ CHALLENGE_URL="${MCP_ORIGIN}/.well-known/openai-apps-challenge"
 LEGACY_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/mcp"
 ABANDONED_VERSIONED_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/v1/mcp"
 INTERNAL_MCP_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/mcp"
-INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-protected-resource"
+INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/protected-resource-metadata"
+INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/openai-apps-challenge"
+REMOVED_COMMON_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-protected-resource"
+REMOVED_COMMON_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/.well-known/openai-apps-challenge"
 RESERVED_MCP_ORIGINS=(
   "https://mcp-coach-de-v2.skillpilot.com"
   "https://mcp-coach-de-v3.skillpilot.com"
@@ -20,7 +23,7 @@ RESERVED_MCP_ORIGINS=(
   "https://mcp-coach-en-v2.skillpilot.com"
   "https://mcp-coach-en-v3.skillpilot.com"
 )
-EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_APPS_CHALLENGE:-}"
+EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE:-}"
 
 validate_https_url() {
   local label="$1"
@@ -234,6 +237,12 @@ assert_removed_get_route() {
 
 assert_removed_get_route internal_protected_resource_metadata_route \
   "${INTERNAL_METADATA_URL}"
+assert_removed_get_route internal_openai_apps_challenge_route \
+  "${INTERNAL_CHALLENGE_URL}"
+assert_removed_get_route removed_common_protected_resource_metadata_route \
+  "${REMOVED_COMMON_METADATA_URL}"
+assert_removed_get_route removed_common_openai_apps_challenge_route \
+  "${REMOVED_COMMON_CHALLENGE_URL}"
 
 assert_reserved_origin() {
   local origin="$1"

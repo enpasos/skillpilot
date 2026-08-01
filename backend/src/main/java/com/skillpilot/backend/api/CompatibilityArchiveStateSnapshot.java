@@ -15,6 +15,7 @@ public record CompatibilityArchiveStateSnapshot(
         String learningStrategy,
         Boolean autoPilot,
         Boolean strictMode,
+        Boolean showGoalVisualizationsInChat,
         Instant createdAt,
         List<String> plannedGoals,
         Map<String, MasteryEntryDTO> mastery,

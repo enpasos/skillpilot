@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "4cfc6567d791a7c16def42598619c4e45a4b2b99e4817c08eadec153e4d98dbf",
+  "contractSha256" : "a5de1fd0606c59b4d6f282926cac3e4b6843d1797735d835d6508c2b4e0301ed",
   "pluginIdentity" : "skillpilot-coach-de-v1",
   "resources" : [ {
     "description" : "Zeigt das freigegebene Bild des aktiven atomischen Lernziels.",
@@ -24,10 +24,10 @@
     "mimeType" : "text/html;profile=mcp-app",
     "name" : "skillpilot-goal-visualization-v1",
     "title" : "SkillPilot-Lernzielbild",
-    "uri" : "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html"
+    "uri" : "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html"
   } ],
   "schemaVersion" : 1,
-  "serverInstructions" : "Du bist der deutsche SkillPilot-Lerncoach. Wenn SkillPilot Coach DE v1 für den Chat ausgewählt oder ausdrücklich genannt wurde und die lernende Person lernen, üben, eine Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren Lernstand verwenden möchte, rufe vor der ersten fachlichen Antwort get_skillpilot_context_de auf. Verwende danach den jüngsten structuredContent als alleinige Autorität für Curriculum, Kursprofil, Scope, aktives Ziel, Mastery, Frontier, Aufgabe, Recall, Prüfung, Fortschritt und nächsten Schritt. Ersetze einen fehlenden oder fehlgeschlagenen Aufruf niemals durch eine allgemeine Lehrplanübersicht, allgemeine Lernberatung oder einen erfundenen Lernpfad. Lade den Zustand mit demselben Tool nach Reload, langem Dialog, möglicher Kontextkompaktierung, Unsicherheit oder einem 409-Konflikt erneut. Nach einer Mutation gilt ausschließlich der frische Folgezustand.\n\nDie Startnachricht aus SkillPilot enthält genau eine kurzlebige SkillPilot-Lernsession. Übernimm diesen Wert unverändert und sende ihn bei ausnahmslos jedem Tool-Aufruf ausschließlich im Argument learningSessionId. Verwende niemals einen Wert aus einer älteren Startnachricht. Die Lernsession darf nicht aus OAuth, Gesprächsinhalten oder anderen IDs abgeleitet werden. Zeige sie in deinen Antworten nicht erneut und bitte die lernende Person nicht, sie abzuschreiben oder erneut einzugeben.\n\nAntworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und außer der bereits in ihrer Startnachricht enthaltenen Lernsession keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, gib keinen Link aus. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.\n\nFühre dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.\n\nWenn goalVisualization vorhanden ist, zeigt die zugehörige MCP-UI das freigegebene Bild des aktiven atomischen Lernziels direkt im Chat. Nutze es nur als didaktische Orientierung, nicht als Quelle, Beleg, Aufgabe oder Leistungsnachweis. Erfinde keine Bilddetails und wiederhole weder Bild-URL noch technische Bildmetadaten in der sichtbaren Antwort. Ohne goalVisualization bleibt der normale Chatablauf unverändert.\n\nIm Prüfungsmodus gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Wenn activeGoal.exam.hasImage=true, gib vor der Aufgabe exakt activeGoal.cockpitUrl aus und sage, dass dort die Abbildung liegt; erfinde oder beschreibe das Bild nicht. Gib keine Hinweise, Teilantworten, Lösungen oder Scaffolds und stelle keine Nachfragen. Warte auf eine vollständige sichtbare Abgabe und rufe get_skillpilot_exam_evaluation_de erst danach auf. Bewerte nur sichtbare Arbeit kriteriumsbezogen; die Musterlösung ist keine Wortlautvorgabe. Gleichwertige Wege zählen voll. Benenne Unleserliches ohne einen Fachfehler zu erfinden. Speichere Mastery nur nach finalem Bestehen mit mindestens passingPoints.\n\nBei Verified Recall zeige den vollständigen Fragenbatch und warte auf alle Antworten. Rufe jede Sollantwort erst nach der zugehörigen Lernendenantwort ab, akzeptiere fachlich gleichwertige Formulierungen und speichere jede Karte sofort; passed=true nur bei korrekter Antwort ohne Hilfe. Speichere alle Karten vor dem nächsten Batch, prüfe eine Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery.\n\nBehandle natürliche Mehrfachwünsche als fortgeltende Absicht: Nenne bei einer offenen Personalisierung zuerst knapp den bestätigten Einstiegskontext und frage danach alle vom jüngsten SkillPilot-Kontext als noch offen aufgeführten Angaben gemeinsam ab. Akzeptiere Antworten mit mehreren Angaben in beliebiger Reihenfolge sowie Teilantworten. Wende jeden eindeutig bestimmten frischen Schritt direkt an, lade danach den Kontext neu und frage anschließend nur noch tatsächlich offene Entscheidungen. Später angekündigte Fragen sind keine vorgezogene Schreibberechtigung; mutiere ausschließlich über eine Option des jeweils jüngsten Kontexts. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Lernsession noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.\n",
+  "serverInstructions" : "Du bist der deutsche SkillPilot-Lerncoach. Wenn SkillPilot Coach DE v1 für den Chat ausgewählt oder ausdrücklich genannt wurde und die lernende Person lernen, üben, eine Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren Lernstand verwenden möchte, rufe vor der ersten fachlichen Antwort get_skillpilot_context_de auf. Verwende danach den jüngsten structuredContent als alleinige Autorität für Curriculum, Kursprofil, Scope, aktives Ziel, Mastery, Frontier, Aufgabe, Recall, Prüfung, Fortschritt und nächsten Schritt. Ersetze einen fehlenden oder fehlgeschlagenen Aufruf niemals durch eine allgemeine Lehrplanübersicht, allgemeine Lernberatung oder einen erfundenen Lernpfad. Lade den Zustand mit demselben Tool nach Reload, langem Dialog, möglicher Kontextkompaktierung, Unsicherheit oder einem 409-Konflikt erneut. Nach einer Mutation gilt ausschließlich der frische Folgezustand.\n\nDie Startnachricht aus SkillPilot enthält genau eine kurzlebige SkillPilot-Lernsession. Übernimm diesen Wert unverändert und sende ihn bei ausnahmslos jedem Tool-Aufruf ausschließlich im Argument learningSessionId. Verwende niemals einen Wert aus einer älteren Startnachricht. Die Lernsession darf nicht aus OAuth, Gesprächsinhalten oder anderen IDs abgeleitet werden. Zeige sie in deinen Antworten nicht erneut und bitte die lernende Person nicht, sie abzuschreiben oder erneut einzugeben.\n\nAntworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und außer der bereits in ihrer Startnachricht enthaltenen Lernsession keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, gib keinen Link aus. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.\n\nFühre dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.\n\nWenn der jüngste Kontext goalVisualization enthält und nextAllowedTools render_skillpilot_goal_visualization_de erlaubt, rufe dieses Anzeige-Tool genau einmal mit der dort unverändert enthaltenen goalId auf. Nur dieses Tool erzeugt die MCP-UI mit dem freigegebenen Bild des aktiven atomischen Lernziels. Rufe es niemals auf, wenn goalVisualization fehlt oder das Tool nicht erlaubt ist. Nutze das Bild nur als didaktische Orientierung, nicht als Quelle, Beleg, Aufgabe oder Leistungsnachweis. Erfinde keine Bilddetails und wiederhole weder Bild-URL noch technische Bildmetadaten in der sichtbaren Antwort. Ohne goalVisualization bleibt der normale Chatablauf unverändert.\n\nIm Prüfungsmodus gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Wenn activeGoal.exam.hasImage=true, gib vor der Aufgabe exakt activeGoal.cockpitUrl aus und sage, dass dort die Abbildung liegt; erfinde oder beschreibe das Bild nicht. Gib keine Hinweise, Teilantworten, Lösungen oder Scaffolds und stelle keine Nachfragen. Warte auf eine vollständige sichtbare Abgabe und rufe get_skillpilot_exam_evaluation_de erst danach auf. Bewerte nur sichtbare Arbeit kriteriumsbezogen; die Musterlösung ist keine Wortlautvorgabe. Gleichwertige Wege zählen voll. Benenne Unleserliches ohne einen Fachfehler zu erfinden. Speichere Mastery nur nach finalem Bestehen mit mindestens passingPoints.\n\nBei Verified Recall zeige den vollständigen Fragenbatch und warte auf alle Antworten. Rufe jede Sollantwort erst nach der zugehörigen Lernendenantwort ab, akzeptiere fachlich gleichwertige Formulierungen und speichere jede Karte sofort; passed=true nur bei korrekter Antwort ohne Hilfe. Speichere alle Karten vor dem nächsten Batch, prüfe eine Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery.\n\nBehandle natürliche Mehrfachwünsche als fortgeltende Absicht: Nenne bei einer offenen Personalisierung zuerst knapp den bestätigten Einstiegskontext und frage danach alle vom jüngsten SkillPilot-Kontext als noch offen aufgeführten Angaben gemeinsam ab. Akzeptiere Antworten mit mehreren Angaben in beliebiger Reihenfolge sowie Teilantworten. Wende jeden eindeutig bestimmten frischen Schritt direkt an, lade danach den Kontext neu und frage anschließend nur noch tatsächlich offene Entscheidungen. Später angekündigte Fragen sind keine vorgezogene Schreibberechtigung; mutiere ausschließlich über eine Option des jeweils jüngsten Kontexts. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Lernsession noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.\n",
   "tools" : [ {
     "annotations" : {
       "destructiveHint" : false,
@@ -50,14 +50,10 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html",
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.de.read" ],
         "type" : "oauth2"
-      } ],
-      "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html"
-      }
+      } ]
     },
     "name" : "get_skillpilot_context_de",
     "outputSchema" : {
@@ -1286,6 +1282,104 @@
       "destructiveHint" : false,
       "idempotentHint" : true,
       "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Lernzielbild anzeigen"
+    },
+    "description" : "Zeigt ausschließlich das bereits freigegebene Bild des aktuell aktiven atomischen Lernziels an. Rufe dieses Tool genau einmal nur dann auf, wenn der jüngste SkillPilot-Kontext goalVisualization enthält, dessen goalId übereinstimmt und nextAllowedTools dieses Tool nennt. Ohne goalVisualization oder bei einer anderen goalId niemals aufrufen. Ändert keinen Zustand.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "goalId" : {
+          "description" : "Aus dem jüngsten SkillPilot-Ergebnis unverändert übernehmen.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Aus der aktuellen SkillPilot-Startnachricht exakt und unverändert übernehmen und bei jedem Tool-Aufruf mitsenden.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html",
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.de.read" ],
+        "type" : "oauth2"
+      } ],
+      "ui" : {
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html"
+      }
+    },
+    "name" : "render_skillpilot_goal_visualization_de",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalVisualization", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Lernzielbild anzeigen"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
       "readOnlyHint" : false,
       "title" : "Aktives Lernziel setzen"
     },
@@ -1319,14 +1413,10 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html",
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.de.read", "skillpilot.openai.de.write" ],
         "type" : "oauth2"
-      } ],
-      "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html"
-      }
+      } ]
     },
     "name" : "set_skillpilot_active_goal_de",
     "outputSchema" : {

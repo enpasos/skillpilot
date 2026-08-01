@@ -17,7 +17,7 @@ import org.springframework.web.util.HtmlUtils;
 
 @Controller
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
+        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeOAuthMetadataController {
 

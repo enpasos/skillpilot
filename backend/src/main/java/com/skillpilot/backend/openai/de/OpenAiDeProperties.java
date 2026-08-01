@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /** Provider- and locale-specific settings for the German ChatGPT MCP app. */
-@ConfigurationProperties(prefix = "skillpilot.openai.de")
+@ConfigurationProperties(prefix = "skillpilot.openai.coach.de.v1")
 public class OpenAiDeProperties {
 
     private boolean enabled;

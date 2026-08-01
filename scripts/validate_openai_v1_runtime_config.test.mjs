@@ -13,8 +13,9 @@ import { resolve } from "node:path";
 import test from "node:test";
 
 import {
-  OPENAI_V1_PUBLIC_DEFAULTS,
-  REMOVED_OPENAI_V1_PUBLIC_OVERRIDES,
+  FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES,
+  IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAMES,
+  OPENAI_V1_PUBLIC_CONTRACT,
   parseServiceEnvironmentFile,
   validateBuiltApplication,
   validateCanonicalPublicDefaults,
@@ -23,24 +24,32 @@ import {
 } from "./validate_openai_v1_runtime_config.mjs";
 
 const COMMIT = "0123456789abcdef0123456789abcdef01234567";
-const canonicalSourceApplication = Object.entries(OPENAI_V1_PUBLIC_DEFAULTS)
-  .map(([name, value]) => `property-${name}: \${${name}:${value}}`)
-  .join("\n");
-const builtApplication = `${canonicalSourceApplication}
+const applicationConfig = (serverBuild, serverVersion) => `
 skillpilot:
   claude:
     mcp:
       server-name: skillpilot-claude
       server-version: \${SKILLPILOT_CLAUDE_MCP_SERVER_VERSION:0.1.0}
   openai:
-    de:
-      server-build: "${COMMIT}"
-      mcp:
-        server-name: skillpilot-coach-de-v1
-        server-version: "${COMMIT}"
+    coach:
+      de:
+        v1:
+          mcp-url: ${OPENAI_V1_PUBLIC_CONTRACT["mcp-url"]}
+          oauth-resource: ${OPENAI_V1_PUBLIC_CONTRACT["oauth-resource"]}
+          server-build: "${serverBuild}"
+          mcp:
+            server-name: skillpilot-coach-de-v1
+            server-version: "${serverVersion}"
+          oauth:
+            protected-resource-metadata: ${OPENAI_V1_PUBLIC_CONTRACT["protected-resource-metadata"]}
 `;
+const canonicalSourceApplication = applicationConfig(
+  "@skillpilotServerBuild@",
+  "@skillpilotServerBuild@",
+);
+const builtApplication = applicationConfig(COMMIT, COMMIT);
 
-test("missing public overrides safely use the verified application defaults", () => {
+test("the fixed public contract needs no runtime URL overrides", () => {
   assert.doesNotThrow(() =>
     validateOpenAiV1RuntimeConfig({
       env: {},
@@ -49,67 +58,84 @@ test("missing public overrides safely use the verified application defaults", ()
   );
 });
 
-test("exact explicit public overrides remain valid", () => {
+test("line-specific and process-shared environment names remain valid", () => {
+  const lineEnvironment = Object.fromEntries(
+    IMPLEMENTED_OPENAI_COACH_DE_V1_ENVIRONMENT_NAMES.map((name) => [
+      name,
+      "test-value",
+    ]),
+  );
   assert.doesNotThrow(() =>
-    validateExplicitPublicOverrides({ ...OPENAI_V1_PUBLIC_DEFAULTS }),
+    validateExplicitPublicOverrides({
+      ...lineEnvironment,
+      SKILLPILOT_OPENAI_SECURE_COOKIE: "true",
+      SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED: "true",
+    }),
   );
 });
 
-test("an explicit empty or different public override fails closed", () => {
-  for (const name of Object.keys(OPENAI_V1_PUBLIC_DEFAULTS)) {
+test("unimplemented coach lines and misspelled DE V1 settings fail closed", () => {
+  for (const name of [
+    "SKILLPILOT_OPENAI_COACH_DE_V1_TYPO",
+    "SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED",
+    "SKILLPILOT_OPENAI_COACH_DE_V3_OAUTH_CLIENT_ID",
+    "SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED",
+    "SKILLPILOT_OPENAI_COACH_EN_V2_ENABLED",
+    "SKILLPILOT_OPENAI_COACH_EN_V3_ENABLED",
+  ]) {
     assert.throws(
-      () => validateExplicitPublicOverrides({ [name]: "" }),
-      new RegExp(`${name}, when explicitly set`),
-    );
-    assert.throws(
-      () => validateExplicitPublicOverrides({ [name]: "https://wrong.example" }),
-      new RegExp(`${name}, when explicitly set`),
+      () => validateExplicitPublicOverrides({ [name]: "do-not-print" }),
+      new RegExp(`${name} must not be set; this coach-line setting is not implemented`),
     );
   }
 });
 
-test("systemd environment files expose only canonical public URL overrides", () => {
+test("all legacy provider names fail closed, including unknown suffixes", () => {
+  for (const name of [
+    "SKILLPILOT_OPENAI_DE_ENABLED",
+    "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET",
+    "SKILLPILOT_OPENAI_DE_FUTURE_SETTING",
+    "SKILLPILOT_OPENAI_APPS_CHALLENGE",
+  ]) {
+    assert.throws(
+      () => validateExplicitPublicOverrides({ [name]: "do-not-print" }),
+      new RegExp(`${name} is obsolete and must not be set`),
+    );
+  }
+});
+
+test("tempting line-specific public URL override names fail closed", () => {
+  for (const name of FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES) {
+    assert.throws(
+      () => validateExplicitPublicOverrides({ [name]: "https://wrong.example" }),
+      new RegExp(`${name} must not be set`),
+    );
+  }
+});
+
+test("systemd environment parsing retains forbidden names but never values", () => {
+  const secretSentinel = "do-not-read-this";
   const parsed = parseServiceEnvironmentFile(`
-# Secrets and unrelated settings must never enter validator diagnostics.
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=do-not-read-this
-SKILLPILOT_OPENAI_DE_MCP_URL='https://mcp-coach-de-v1.skillpilot.com/mcp'
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA="https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+# Valid secrets and unrelated settings must never enter validator diagnostics.
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET=${secretSentinel}
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=${secretSentinel}
+SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL='https://wrong.example'
 `);
 
   assert.deepEqual(parsed, {
-    SKILLPILOT_OPENAI_DE_MCP_URL:
-      OPENAI_V1_PUBLIC_DEFAULTS.SKILLPILOT_OPENAI_DE_MCP_URL,
-    SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:
-      OPENAI_V1_PUBLIC_DEFAULTS.SKILLPILOT_OPENAI_DE_RESOURCE_METADATA,
+    SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET: true,
+    SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL: true,
   });
-  assert.doesNotThrow(() => validateExplicitPublicOverrides(parsed));
-  assert.ok(!Object.hasOwn(parsed, "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET"));
+  assert.throws(
+    () => validateExplicitPublicOverrides(parsed),
+    /SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET is obsolete/,
+  );
+  assert.ok(!JSON.stringify(parsed).includes(secretSentinel));
 });
 
-test("the retired custom UI-origin override fails closed", () => {
-  assert.deepEqual(REMOVED_OPENAI_V1_PUBLIC_OVERRIDES, [
-    "SKILLPILOT_OPENAI_DE_UI_ORIGIN",
-  ]);
-  assert.throws(
-    () =>
-      validateExplicitPublicOverrides({
-        SKILLPILOT_OPENAI_DE_UI_ORIGIN: "https://ui-v1.skillpilot.com",
-      }),
-    /must not be set; the V1 widget domain is fixed by the release contract/,
-  );
-  assert.throws(
-    () =>
-      validateCanonicalPublicDefaults(
-        `${canonicalSourceApplication}\nui-origin: \${SKILLPILOT_OPENAI_DE_UI_ORIGIN:https://ui-v1.skillpilot.com}`,
-      ),
-    /must not override the fixed MCP UI widget domain/,
-  );
-});
-
-test("a stale systemd environment-file URL fails before service restart", () => {
+test("a stale systemd environment name fails before service restart", () => {
   const serviceEnvironment = parseServiceEnvironmentFile(`
 SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp
-SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oauth/protected-resource
 `);
 
   assert.throws(
@@ -119,22 +145,11 @@ SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oaut
         serviceEnvironment,
         sourceApplicationYaml: canonicalSourceApplication,
       }),
-    /SKILLPILOT_OPENAI_DE_MCP_URL, when explicitly set/,
+    /SKILLPILOT_OPENAI_DE_MCP_URL is obsolete/,
   );
 });
 
-test("malformed targeted values fail without parsing unrelated secrets", () => {
-  assert.throws(
-    () =>
-      parseServiceEnvironmentFile(`
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET='unterminated
-SKILLPILOT_OPENAI_DE_MCP_URL='unterminated
-`),
-    /SKILLPILOT_OPENAI_DE_MCP_URL has an unsupported quoted value on environment-file line 3/,
-  );
-});
-
-test("duplicate public URL assignments fail closed", () => {
+test("duplicate forbidden assignments fail closed without reading values", () => {
   assert.throws(
     () =>
       parseServiceEnvironmentFile(`
@@ -155,7 +170,7 @@ test("CLI failure never exposes unrelated service secrets", () => {
     writeFileSync(
       environmentPath,
       `SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=${secretSentinel}\n` +
-        "SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp\n",
+        `SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET=${secretSentinel}\n`,
     );
     const completed = spawnSync(
       process.execPath,
@@ -172,7 +187,7 @@ test("CLI failure never exposes unrelated service secrets", () => {
     assert.notEqual(completed.status, 0);
     assert.ok(!completed.stdout.includes(secretSentinel));
     assert.ok(!completed.stderr.includes(secretSentinel));
-    assert.match(completed.stderr, /SKILLPILOT_OPENAI_DE_MCP_URL/);
+    assert.match(completed.stderr, /SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET/);
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
@@ -188,7 +203,7 @@ test("systemd service environment gate executes all supported override channels"
   try {
     writeFileSync(
       environmentPath,
-      `SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=${secretSentinel}\n`,
+      `SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET=${secretSentinel}\n`,
     );
     writeFileSync(
       fakeSystemctlPath,
@@ -304,7 +319,7 @@ esac
       {
         overrides: {
           FAKE_DIRECT_ENVIRONMENT:
-            "SKILLPILOT_OPENAI_DE_MCP_URL=https://mcp-v1.skillpilot.com/mcp",
+            "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=direct-secret",
         },
         message: /darf nicht direkt in der systemd-Unit gesetzt sein/,
       },
@@ -317,7 +332,7 @@ esac
       {
         overrides: {
           FAKE_MANAGER_ENVIRONMENT:
-            "SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp",
+            "SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL=https://wrong.example",
         },
         message: /darf nicht aus der globalen systemd-Umgebung stammen/,
       },
@@ -334,14 +349,28 @@ esac
   }
 });
 
-test("application defaults themselves must remain exactly versioned", () => {
-  const [name, expected] = Object.entries(OPENAI_V1_PUBLIC_DEFAULTS)[0];
+test("application public contract values are fixed literals in the nested line", () => {
+  for (const [propertyName, expected] of Object.entries(
+    OPENAI_V1_PUBLIC_CONTRACT,
+  )) {
+    assert.throws(
+      () =>
+        validateCanonicalPublicDefaults(
+          canonicalSourceApplication.replace(
+            `${propertyName}: ${expected}`,
+            `${propertyName}: \${SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL:https://wrong.example}`,
+          ),
+        ),
+      new RegExp(`${propertyName} must be the exact fixed`),
+    );
+  }
+
+  const legacyShape = canonicalSourceApplication
+    .replace("    coach:\n      de:\n        v1:\n", "    de:\n")
+    .replace(/^ {10}/gm, "      ");
   assert.throws(
-    () =>
-      validateCanonicalPublicDefaults(
-        canonicalSourceApplication.replace(expected, "https://wrong.example"),
-      ),
-    new RegExp(`${name} must default`),
+    () => validateCanonicalPublicDefaults(legacyShape),
+    /nested skillpilot.openai.coach.de.v1 mapping/,
   );
 });
 
@@ -379,7 +408,7 @@ test("built application rejects stale SHAs and unresolved build placeholders", (
       validateBuiltApplication(
         builtApplication.replace(
           `"${COMMIT}"`,
-          '"@skillpilotOpenAiDeServerBuild@"',
+          '"@skillpilotServerBuild@"',
         ),
         COMMIT,
       ),

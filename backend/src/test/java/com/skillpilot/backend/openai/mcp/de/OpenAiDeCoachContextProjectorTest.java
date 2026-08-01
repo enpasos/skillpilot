@@ -14,6 +14,7 @@ import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import java.time.Instant;
 import java.util.List;
 import java.util.Set;
@@ -52,6 +53,8 @@ class OpenAiDeCoachContextProjectorTest {
                                 + "goal-with-image/goal-with-image.jpg",
                         "Skizze zur Energieerhaltung.",
                         "https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image"));
+        assertThat(context.nextAllowedTools())
+                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
         assertThat(context.resources())
                 .singleElement()
                 .satisfies(resource -> {
@@ -59,6 +62,36 @@ class OpenAiDeCoachContextProjectorTest {
                             .isEqualTo("https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image");
                     assertThat(resource.requiresCockpit()).isTrue();
                 });
+    }
+
+    @Test
+    void omitsVisualizationAndRenderToolWhenTheLearnerPreferenceIsDisabled() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        GoalSourceLink image = new GoalSourceLink(
+                "goal-visualization",
+                "Visualisierung: Energie",
+                "/assets/goal-visualizations/physik/goal-with-image/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                "Didaktische Orientierung",
+                "de",
+                "AI-generated, SkillPilot-curated",
+                "goal-with-image",
+                "primary",
+                "Skizze zur Energieerhaltung.",
+                "approved");
+
+        OpenAiDeCoachContext context = projector.project(
+                goalVisualizationState("atomic", image),
+                PersonalizationPlan.complete(List.of()),
+                false);
+
+        assertThat(context.goalVisualization()).isNull();
+        assertThat(context.nextAllowedTools())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
     }
 
     @Test

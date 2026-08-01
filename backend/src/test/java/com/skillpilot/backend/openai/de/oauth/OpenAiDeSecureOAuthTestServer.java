@@ -88,16 +88,16 @@ public final class OpenAiDeSecureOAuthTestServer {
     public static void registerConfidentialSecureProperties(
             DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
-        registry.add("skillpilot.openai.de.server-build", () -> "test-build");
-        registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
+        registry.add("skillpilot.openai.coach.de.v1.server-build", () -> "test-build");
+        registry.add("skillpilot.openai.coach.de.v1.security.secure-mode", () -> "true");
         registry.add(
-                "skillpilot.openai.de.oauth.client-authentication-method",
+                "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
                 () -> OpenAiDeOAuthConfiguration.CLIENT_AUTH_CLIENT_SECRET_BASIC);
         registry.add(
-                "skillpilot.openai.de.oauth.client-id",
+                "skillpilot.openai.coach.de.v1.oauth.client-id",
                 OpenAiDeSecureOAuthTestServer::confidentialClientId);
         registry.add(
-                "skillpilot.openai.de.oauth.client-secret",
+                "skillpilot.openai.coach.de.v1.oauth.client-secret",
                 OpenAiDeSecureOAuthTestServer::confidentialClientSecret);
     }
 
@@ -107,20 +107,20 @@ public final class OpenAiDeSecureOAuthTestServer {
      */
     public static void registerSecureProperties(DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
-        registry.add("skillpilot.openai.de.server-build", () -> "test-build");
-        registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
+        registry.add("skillpilot.openai.coach.de.v1.server-build", () -> "test-build");
+        registry.add("skillpilot.openai.coach.de.v1.security.secure-mode", () -> "true");
         registry.add(
-                "skillpilot.openai.de.oauth.client-authentication-method",
+                "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
                 () -> OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT);
-        registry.add("skillpilot.openai.de.oauth.client-id", OpenAiDeSecureOAuthTestServer::clientId);
+        registry.add("skillpilot.openai.coach.de.v1.oauth.client-id", OpenAiDeSecureOAuthTestServer::clientId);
         registry.add(
-                "skillpilot.openai.de.oauth.client-jwk-set-uri",
+                "skillpilot.openai.coach.de.v1.oauth.client-jwk-set-uri",
                 OpenAiDeSecureOAuthTestServer::jwkSetUri);
         registry.add(
-                "skillpilot.openai.de.oauth.client-assertion-signing-algorithm",
+                "skillpilot.openai.coach.de.v1.oauth.client-assertion-signing-algorithm",
                 () -> "RS256");
         registry.add(
-                "skillpilot.openai.de.oauth.client-assertion-replay-cache-size",
+                "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size",
                 () -> "10000");
     }
 

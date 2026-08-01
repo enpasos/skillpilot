@@ -41,7 +41,7 @@ import org.springframework.web.server.ResponseStatusException;
  * learning-session ID that selects the learner on every MCP tool call.</p>
  */
 @Service
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public class OpenAiDeCoachConnectionService {
 
     private record IssuedLearningSession(String id, Instant expiresAt) {
@@ -127,7 +127,7 @@ public class OpenAiDeCoachConnectionService {
         return learningSession.getLearner().getSkillpilotId();
     }
 
-    @Scheduled(fixedDelayString = "${skillpilot.openai.de.cleanup-interval-ms:3600000}")
+    @Scheduled(fixedDelayString = "${skillpilot.openai.coach.de.v1.cleanup-interval-ms:3600000}")
     @Transactional
     public void cleanupExpiredLearningSessions() {
         learningSessionRepository.deleteByExpiresAtLessThanEqual(Instant.now());

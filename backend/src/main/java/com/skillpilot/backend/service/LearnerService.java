@@ -2149,6 +2149,12 @@ public class LearnerService {
 
     @Transactional
     public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode) {
+        setPreferences(skillpilotId, learningStrategy, autoPilot, strictMode, null);
+    }
+
+    @Transactional
+    public void setPreferences(String skillpilotId, String learningStrategy, Boolean autoPilot, Boolean strictMode,
+            Boolean showGoalVisualizationsInChat) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         boolean changed = false;
@@ -2164,9 +2170,18 @@ public class LearnerService {
             changed |= !Objects.equals(learner.getStrictMode(), strictMode);
             learner.setStrictMode(strictMode);
         }
+        if (showGoalVisualizationsInChat != null) {
+            changed |= !Objects.equals(learner.getShowGoalVisualizationsInChat(), showGoalVisualizationsInChat);
+            learner.setShowGoalVisualizationsInChat(showGoalVisualizationsInChat);
+        }
         if (changed) {
             advanceCoachStateRevision(learner);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public boolean showGoalVisualizationsInChat(String skillpilotId) {
+        return !Boolean.FALSE.equals(getLearner(skillpilotId).getShowGoalVisualizationsInChat());
     }
 
     @Transactional(readOnly = true)
@@ -8769,6 +8784,7 @@ public class LearnerService {
                 learner.getLearningStrategy(),
                 learner.getAutoPilot(),
                 learner.getStrictMode(),
+                learner.getShowGoalVisualizationsInChat(),
                 learner.getCreatedAt(),
                 plannedGoals,
                 mastery,
@@ -8914,6 +8930,8 @@ public class LearnerService {
         if (data.learner() != null) {
             existing.setSelectedCurriculum(data.learner().getSelectedCurriculum());
             existing.setPersonalCurriculum(data.learner().getPersonalCurriculum());
+            existing.setShowGoalVisualizationsInChat(
+                    !Boolean.FALSE.equals(data.learner().getShowGoalVisualizationsInChat()));
             if (data.learner().getClientState() != null) {
                 existing.setClientState(data.learner().getClientState());
                 existing.setClientStateUpdatedAt(data.learner().getClientStateUpdatedAt());

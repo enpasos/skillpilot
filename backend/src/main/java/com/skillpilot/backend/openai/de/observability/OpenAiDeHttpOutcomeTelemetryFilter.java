@@ -21,8 +21,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 30)
 @ConditionalOnExpression(
-        "${skillpilot.openai.de.enabled:false} || "
-                + "${skillpilot.openai.de.bootstrap-enabled:false}")
+        "${skillpilot.openai.coach.de.v1.enabled:false} || "
+                + "${skillpilot.openai.coach.de.v1.bootstrap-enabled:false}")
 public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilter {
 
     private static final String OPENAI_API_PREFIX = "/api/openai/de/";

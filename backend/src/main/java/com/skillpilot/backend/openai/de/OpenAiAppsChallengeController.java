@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
@@ -10,10 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /** Serves the OpenAI domain-verification challenge on the public V1 MCP origin. */
 @Controller
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public final class OpenAiAppsChallengeController {
 
-    public static final String PATH = "/.well-known/openai-apps-challenge";
+    public static final String PATH =
+            OpenAiDeV1ContractMetadata.INTERNAL_OPENAI_APPS_CHALLENGE_PATH;
 
     private final OpenAiDeProperties properties;
 

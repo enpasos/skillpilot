@@ -70,6 +70,11 @@ test("goal visualization widget is self-contained and uses the standards-first M
   assert.match(html, /ui\/open-link/);
   assert.match(html, /goalVisualization/);
   assert.match(html, /toolOutput/, "ChatGPT's initial compatibility payload remains supported");
+  assert.match(
+    html,
+    /openai:set_globals/,
+    "ChatGPT global updates must rehydrate the widget after a host remount"
+  );
   assert.match(html, /\.hidden/, "missing or broken images must collapse the widget");
   assert.match(html, /SkillPilot(?: |\\x20)Lernziel/);
   assert.match(html, /SkillPilot-Cockpit/);

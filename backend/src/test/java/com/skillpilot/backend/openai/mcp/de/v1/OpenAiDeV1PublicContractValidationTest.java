@@ -10,6 +10,16 @@ import org.junit.jupiter.api.Test;
 class OpenAiDeV1PublicContractValidationTest {
 
     @Test
+    void keepsEveryDeV1ReverseProxyTargetInsideTheSameInternalNamespace() {
+        assertThat(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
+                .isEqualTo("/internal/openai/de/v1/mcp");
+        assertThat(OpenAiDeV1ContractMetadata.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH)
+                .isEqualTo("/internal/openai/de/v1/protected-resource-metadata");
+        assertThat(OpenAiDeV1ContractMetadata.INTERNAL_OPENAI_APPS_CHALLENGE_PATH)
+                .isEqualTo("/internal/openai/de/v1/openai-apps-challenge");
+    }
+
+    @Test
     void acceptsOnlyTheCanonicalV1Boundaries() {
         OpenAiDeProperties properties = canonicalProperties();
 

@@ -29,12 +29,12 @@ import org.springframework.stereotype.Component;
 
 /** Privacy-safe, bounded-cardinality telemetry for the German OpenAI MCP tools. */
 @Component
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public final class OpenAiDeMcpTelemetry {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
 
-    public static final String TOOL_DURATION_METRIC = "skillpilot.openai.de.mcp.tool.duration";
+    public static final String TOOL_DURATION_METRIC = "skillpilot.openai.coach.de.v1.mcp.tool.duration";
 
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String SUCCESS_RESULT_CODE = "OK";
@@ -46,6 +46,7 @@ public final class OpenAiDeMcpTelemetry {
     private static final int SESSION_FINGERPRINT_LENGTH = 22;
     private static final Set<String> KNOWN_TOOLS = Set.of(
             OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+            OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
             OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
             OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
             OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,

@@ -13,7 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 
 class OpenAiDeEmbeddedServerBuildTest {
 
-    private static final String SERVER_BUILD_TOKEN = "@skillpilotOpenAiDeServerBuild@";
+    private static final String SERVER_BUILD_TOKEN = "@skillpilotServerBuild@";
     private static final Pattern SERVER_BUILD_PROPERTY = Pattern.compile(
             "(?m)^\\s+server-build:\\s+\"?([0-9a-f]{40}|dev)\"?\\s*$");
     private static final Pattern SERVER_VERSION_PROPERTY = Pattern.compile(

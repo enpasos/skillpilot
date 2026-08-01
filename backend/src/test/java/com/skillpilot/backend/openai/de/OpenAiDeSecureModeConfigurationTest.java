@@ -39,7 +39,7 @@ class OpenAiDeSecureModeConfigurationTest {
         }) {
             runner.withPropertyValues(
                             securePropertiesWith(
-                                    "skillpilot.openai.de.oauth.client-authentication-method="
+                                    "skillpilot.openai.coach.de.v1.oauth.client-authentication-method="
                                             + authenticationMethod))
                     .run(context -> assertSecureStartupFailure(
                             context.getStartupFailure(),
@@ -51,7 +51,7 @@ class OpenAiDeSecureModeConfigurationTest {
     void secureModeRejectsMissingConfidentialClientId() {
         runner.withPropertyValues(
                         securePropertiesWith(
-                                "skillpilot.openai.de.oauth.client-id="))
+                                "skillpilot.openai.coach.de.v1.oauth.client-id="))
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
                         "oauth.client-id"));
@@ -61,7 +61,7 @@ class OpenAiDeSecureModeConfigurationTest {
     void secureModeRejectsDisabledOauth() {
         runner.withPropertyValues(
                         securePropertiesWith(
-                                "skillpilot.openai.de.oauth.enabled=false"))
+                                "skillpilot.openai.coach.de.v1.oauth.enabled=false"))
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
                         "oauth.enabled"));
@@ -77,7 +77,7 @@ class OpenAiDeSecureModeConfigurationTest {
         }) {
             runner.withPropertyValues(
                             securePropertiesWith(
-                                    "skillpilot.openai.de.oauth.redirect-uris[0]="
+                                    "skillpilot.openai.coach.de.v1.oauth.redirect-uris[0]="
                                             + invalidRedirect))
                     .run(context -> assertSecureStartupFailure(
                             context.getStartupFailure(),
@@ -94,7 +94,7 @@ class OpenAiDeSecureModeConfigurationTest {
         }) {
             runner.withPropertyValues(
                             securePropertiesWith(
-                                    "skillpilot.openai.de.oauth.client-secret="
+                                    "skillpilot.openai.coach.de.v1.oauth.client-secret="
                                             + invalidSecret))
                     .run(context -> assertSecureStartupFailure(
                             context.getStartupFailure(),
@@ -147,10 +147,10 @@ class OpenAiDeSecureModeConfigurationTest {
     @Test
     void normalProviderRejectsExplicitSecureModeDowngrade() {
         runner.withPropertyValues(
-                        "skillpilot.openai.de.enabled=true",
+                        "skillpilot.openai.coach.de.v1.enabled=true",
                         "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-                        "skillpilot.openai.de.security.secure-mode=false",
-                        "skillpilot.openai.de.oauth.client-authentication-method=none")
+                        "skillpilot.openai.coach.de.v1.security.secure-mode=false",
+                        "skillpilot.openai.coach.de.v1.oauth.client-authentication-method=none")
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
                         "security.secure-mode"));
@@ -171,15 +171,15 @@ class OpenAiDeSecureModeConfigurationTest {
 
     private static String[] validSecureProperties() {
         return new String[] {
-            "skillpilot.openai.de.enabled=true",
+            "skillpilot.openai.coach.de.v1.enabled=true",
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-            "skillpilot.openai.de.server-build=test-build",
-            "skillpilot.openai.de.security.secure-mode=true",
-            "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
-            "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
-            "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0"
+            "skillpilot.openai.coach.de.v1.server-build=test-build",
+            "skillpilot.openai.coach.de.v1.security.secure-mode=true",
+            "skillpilot.openai.coach.de.v1.oauth.enabled=true",
+            "skillpilot.openai.coach.de.v1.oauth.client-id=skillpilot-chatgpt-de-prod",
+            "skillpilot.openai.coach.de.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
+            "skillpilot.openai.coach.de.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
+            "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size=0"
         };
     }
 

@@ -1,8 +1,60 @@
 #!/usr/bin/env bash
 
-# Validate the non-secret OpenAI V1 part of a systemd service environment.
-# This file is sourced by deploy.sh and deliberately does not change shell
-# options or execute anything on its own.
+# Validate the OpenAI V1 systemd environment namespace. Diagnostics report
+# forbidden variable names only and never echo their values. This file is
+# sourced by deploy.sh and deliberately does not change shell options or
+# execute anything on its own.
+_skillpilot_openai_v1_forbidden_environment_name() {
+  case "$1" in
+    SKILLPILOT_OPENAI_DE_*|\
+    SKILLPILOT_OPENAI_APPS_CHALLENGE|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_RESOURCE|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_RESOURCE_METADATA|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_RESOURCE_METADATA_URL|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_PROTECTED_RESOURCE_METADATA|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_PROTECTED_RESOURCE_METADATA_URL|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_UI_ORIGIN|\
+    SKILLPILOT_OPENAI_MCP_URL|\
+    SKILLPILOT_OPENAI_OAUTH_RESOURCE|\
+    SKILLPILOT_OPENAI_RESOURCE_METADATA|\
+    SKILLPILOT_OPENAI_RESOURCE_METADATA_URL|\
+    SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA|\
+    SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA_URL|\
+    SKILLPILOT_OPENAI_UI_ORIGIN)
+      return 0
+      ;;
+    *)
+      ;;
+  esac
+
+  case "$1" in
+    SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_WORKFLOW_VERSION|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ID|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_REDIRECT_URIS|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_JWK_SET_URI|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM|\
+    SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_LEGACY_CLIENT_IDS)
+      return 1
+      ;;
+    SKILLPILOT_OPENAI_COACH_DE_V[1-9]*_*|\
+    SKILLPILOT_OPENAI_COACH_EN_V[1-9]*_*)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 validate_openai_v1_service_environment() {
   local systemctl_bin="$1"
   local service_name="$2"
@@ -79,37 +131,32 @@ validate_openai_v1_service_environment() {
   local -a manager_environment_lines=()
   mapfile -t manager_environment_lines <<< "${manager_environment}"
 
-  local public_url_variable
-  for public_url_variable in \
-    SKILLPILOT_OPENAI_DE_MCP_URL \
-    SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE \
-    SKILLPILOT_OPENAI_DE_UI_ORIGIN \
-    SKILLPILOT_OPENAI_DE_RESOURCE_METADATA; do
-    local direct_assignment
-    for direct_assignment in "${direct_environment_tokens[@]}"; do
-      direct_assignment="${direct_assignment#\"}"
-      if [[ "${direct_assignment}" == "${public_url_variable}="* ]]; then
-        echo "Abbruch: ${public_url_variable} darf nicht direkt in der systemd-Unit gesetzt sein." >&2
-        return 1
-      fi
-    done
+  local direct_assignment
+  for direct_assignment in "${direct_environment_tokens[@]}"; do
+    direct_assignment="${direct_assignment#\"}"
+    local direct_name="${direct_assignment%%=*}"
+    if _skillpilot_openai_v1_forbidden_environment_name "${direct_name}"; then
+      echo "Abbruch: ${direct_name} darf nicht direkt in der systemd-Unit gesetzt sein." >&2
+      return 1
+    fi
+  done
 
-    local passed_variable
-    for passed_variable in "${passed_environment_tokens[@]}"; do
-      if [ "${passed_variable}" = "${public_url_variable}" ]; then
-        echo "Abbruch: ${public_url_variable} darf nicht über systemd PassEnvironment übernommen werden." >&2
-        return 1
-      fi
-    done
+  local passed_variable
+  for passed_variable in "${passed_environment_tokens[@]}"; do
+    if _skillpilot_openai_v1_forbidden_environment_name "${passed_variable}"; then
+      echo "Abbruch: ${passed_variable} darf nicht über systemd PassEnvironment übernommen werden." >&2
+      return 1
+    fi
+  done
 
-    local manager_assignment
-    for manager_assignment in "${manager_environment_lines[@]}"; do
-      manager_assignment="${manager_assignment#\"}"
-      if [[ "${manager_assignment}" == "${public_url_variable}="* ]]; then
-        echo "Abbruch: ${public_url_variable} darf nicht aus der globalen systemd-Umgebung stammen." >&2
-        return 1
-      fi
-    done
+  local manager_assignment
+  for manager_assignment in "${manager_environment_lines[@]}"; do
+    manager_assignment="${manager_assignment#\"}"
+    local manager_name="${manager_assignment%%=*}"
+    if _skillpilot_openai_v1_forbidden_environment_name "${manager_name}"; then
+      echo "Abbruch: ${manager_name} darf nicht aus der globalen systemd-Umgebung stammen." >&2
+      return 1
+    fi
   done
 
   local parent_directory

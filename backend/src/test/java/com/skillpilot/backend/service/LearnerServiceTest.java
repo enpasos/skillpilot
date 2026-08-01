@@ -137,8 +137,10 @@ public class LearnerServiceTest {
 
     @Test
     void cockpitWritesAdvanceTheCanonicalCoachStateRevision() {
-        assertThat(learnerRepository.findById(learnerId).orElseThrow()
-                .getCoachStateRevision()).isZero();
+        Learner initialLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(initialLearner.getCoachStateRevision()).isZero();
+        assertThat(initialLearner.getShowGoalVisualizationsInChat()).isTrue();
+        assertThat(learnerService.showGoalVisualizationsInChat(learnerId)).isTrue();
 
         learnerService.setCurriculum(learnerId, CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(learnerRepository.findById(learnerId).orElseThrow()
@@ -155,13 +157,16 @@ public class LearnerServiceTest {
         assertThat(learnerRepository.findById(learnerId).orElseThrow()
                 .getCoachStateRevision()).isEqualTo(3L);
 
-        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true);
-        assertThat(learnerRepository.findById(learnerId).orElseThrow()
-                .getCoachStateRevision()).isEqualTo(4L);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, false);
+        Learner updatedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(updatedLearner.getCoachStateRevision()).isEqualTo(4L);
+        assertThat(updatedLearner.getShowGoalVisualizationsInChat()).isFalse();
+        assertThat(learnerService.showGoalVisualizationsInChat(learnerId)).isFalse();
 
-        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true);
-        assertThat(learnerRepository.findById(learnerId).orElseThrow()
-                .getCoachStateRevision()).isEqualTo(4L);
+        learnerService.setPreferences(learnerId, "SEQUENTIAL", true, true, null);
+        Learner unchangedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(unchangedLearner.getCoachStateRevision()).isEqualTo(4L);
+        assertThat(unchangedLearner.getShowGoalVisualizationsInChat()).isFalse();
     }
 
     @Test
@@ -203,6 +208,7 @@ public class LearnerServiceTest {
         sourceLearner.setSkillpilotId(sourceLearnerId);
         sourceLearner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         sourceLearner.setPersonalCurriculum("{}");
+        sourceLearner.setShowGoalVisualizationsInChat(false);
         learnerRepository.saveAndFlush(sourceLearner);
         plannedGoalRepository.saveAndFlush(new PlannedGoal(sourceLearner, staleFocusId));
         masteryRepository.saveAndFlush(new Mastery(sourceLearner, masteryGoalId, 0.625));
@@ -218,6 +224,7 @@ public class LearnerServiceTest {
         assertThat(importedLearner.getSelectedCurriculum())
                 .isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(importedLearner.getPersonalCurriculum()).isEqualTo("{}");
+        assertThat(importedLearner.getShowGoalVisualizationsInChat()).isFalse();
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .isEmpty();
         assertThat(masteryRepository.findById(new MasteryId(learnerId, masteryGoalId)))

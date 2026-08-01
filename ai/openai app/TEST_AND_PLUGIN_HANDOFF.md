@@ -228,7 +228,7 @@ jeweiligen Vertragsfreigabe `404`. Die read-only Zielbild-UI des
 weiterhin unveröffentlichten `1.0.0`-Drafts verwendet den eindeutigen
 Widget-Origin `https://mcp-coach-de-v1.skillpilot.com`. Ihre inhaltsadressierte
 Resource-URI
-`ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html`, Integrität, CSP,
+`ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html`, Integrität, CSP,
 Alttext und Degradationsverhalten sind eigene Release-Gates. Erst eine
 tatsächliche Portal-Veröffentlichung versiegelt diesen Stand; bis dahin bleibt
 die Paketversion `1.0.0`.

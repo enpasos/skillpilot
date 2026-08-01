@@ -34,6 +34,8 @@ export interface PersonalCurriculumSetupCopy extends SharedCurriculumSetupCopy {
   autoPilotDescription: string
   strictModeTitle: string
   strictModeDescription: string
+  showGoalVisualizationsInChatTitle: string
+  showGoalVisualizationsInChatDescription: string
   closeAction: string
   savePending: string
   doneAction: string
@@ -86,13 +88,15 @@ export const getPersonalCurriculumSetupCopy = (
     ? {
         title: 'Mein Lehrplan',
         subtitle: 'Wähle Bundesland, Sekundarstufen und Fächer. Die Gymnasialdauer wird fachbezogen aus den Lehrplan-Daten angeboten.',
-        preferencesTitle: 'Auswahlpriorisierung',
+        preferencesTitle: 'Lerneinstellungen',
         randomStrategy: 'Zufällig (Abwechslung)',
         sequentialStrategy: 'Schritt für Schritt',
         autoPilotTitle: 'Autopilot aktivieren',
         autoPilotDescription: 'Startet automatisch das nächste Ziel nach Abschluss.',
         strictModeTitle: 'Strict Mode aktivieren',
         strictModeDescription: 'Prüft alle Voraussetzungen global, auch außerhalb deines aktuellen Fokus.',
+        showGoalVisualizationsInChatTitle: 'Lernzielbilder im Chat anzeigen',
+        showGoalVisualizationsInChatDescription: 'Zeigt verfügbare Bilder zu atomaren Lernzielen direkt im Chat.',
         closeAction: 'Schließen',
         savePending: 'Speichert...',
         doneAction: 'Fertig',
@@ -115,13 +119,15 @@ export const getPersonalCurriculumSetupCopy = (
     : {
         title: 'My Curriculum',
         subtitle: 'Choose jurisdiction, secondary stages, and subjects. Gymnasium duration is offered per subject from curriculum data.',
-        preferencesTitle: 'Selection priorities',
+        preferencesTitle: 'Learning settings',
         randomStrategy: 'Random (variety)',
         sequentialStrategy: 'Step by step',
         autoPilotTitle: 'Enable autopilot',
         autoPilotDescription: 'Automatically starts the next goal after completion.',
         strictModeTitle: 'Enable strict mode',
         strictModeDescription: 'Checks all prerequisites globally, even outside your current focus.',
+        showGoalVisualizationsInChatTitle: 'Show learning-goal images in chat',
+        showGoalVisualizationsInChatDescription: 'Displays available images for atomic learning goals directly in chat.',
         closeAction: 'Close',
         savePending: 'Saving...',
         doneAction: 'Done',

@@ -14,6 +14,12 @@ type OpenAiCompatibilityWindow = Window & {
   };
 };
 
+type OpenAiSetGlobalsEvent = CustomEvent<{
+  globals?: {
+    toolOutput?: unknown;
+  };
+}>;
+
 const style = document.createElement("style");
 style.textContent = css;
 document.head.appendChild(style);
@@ -26,6 +32,14 @@ const root: HTMLElement = rootElement;
 const bridge = new GoalVisualizationBridge(applyToolResult);
 const compatibilityWindow = window as OpenAiCompatibilityWindow;
 
+window.addEventListener(
+  "openai:set_globals",
+  (event) => {
+    const toolOutput = (event as OpenAiSetGlobalsEvent).detail?.globals?.toolOutput;
+    if (toolOutput !== undefined) renderStructuredContent(toolOutput);
+  },
+  { passive: true }
+);
 renderStructuredContent(compatibilityWindow.openai?.toolOutput);
 
 function applyToolResult(result: GoalVisualizationToolResult): void {

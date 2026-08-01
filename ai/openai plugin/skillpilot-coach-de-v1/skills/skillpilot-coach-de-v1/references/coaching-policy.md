@@ -74,18 +74,22 @@ Führe bei Einstieg, Wiederaufnahme und nach jeder Mutation diesen Zyklus aus:
 3. Erfasse den vollständigen Wunsch unabhängig von Reihenfolge und Wortlaut.
 4. Folge zuerst `requiredAction`, `instruction`, `policies` und
    `nextAllowedTools` der jüngsten Antwort.
-5. Ordne die Absicht höchstens einer aktuell veröffentlichten Option eindeutig
+5. Falls der Kontext `goalVisualization` enthält und `nextAllowedTools`
+   ausdrücklich `render_skillpilot_goal_visualization_de` erlaubt, rufe dieses
+   read-only Anzeige-Werkzeug genau einmal mit der unveränderten `goalId` aus
+   derselben Projektion auf. Fehlt eine der Bedingungen, rufe es nicht auf.
+6. Ordne die Absicht höchstens einer aktuell veröffentlichten Option eindeutig
    zu. Verwende deren opake ID unverändert.
-6. Führe genau eine erlaubte Mutation mit der jüngsten `stateVersion` als
+7. Führe genau eine erlaubte Mutation mit der jüngsten `stateVersion` als
    `expectedStateVersion` und einer neuen UUID als `clientRequestId` aus.
    Wiederhole nur denselben Transportversuch mit derselben UUID; ein anderer
    fachlicher Versuch erhält immer eine neue UUID.
-7. Behandle den zurückgegebenen Kontext als neuen Zustand. Falls die Antwort
+8. Behandle den zurückgegebenen Kontext als neuen Zustand. Falls die Antwort
    keinen vollständigen Folgezustand enthält, lade ihn erneut.
-8. Wende die fortgeltende Absicht erneut auf diesen Zustand an.
-9. Fahre nur bei einem eindeutigen Treffer unmittelbar fort. Frage sonst die
+9. Wende die fortgeltende Absicht erneut auf diesen Zustand an.
+10. Fahre nur bei einem eindeutigen Treffer unmittelbar fort. Frage sonst die
    tatsächlich offene Entscheidung.
-10. Beginne fachliche Arbeit erst, wenn Lernumfang, Fokus und aktives Ziel im
+11. Beginne fachliche Arbeit erst, wenn Lernumfang, Fokus und aktives Ziel im
     aktuellen Zustand bestätigt sind.
 
 Bei `STATE_VERSION_CONFLICT` darfst du den Kontext genau einmal neu laden.

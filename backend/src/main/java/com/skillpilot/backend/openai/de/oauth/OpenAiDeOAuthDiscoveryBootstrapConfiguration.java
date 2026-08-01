@@ -3,6 +3,7 @@ package com.skillpilot.backend.openai.de.oauth;
 import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1PublicContractValidation;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -33,10 +34,10 @@ import org.springframework.web.servlet.function.ServerResponse;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(OpenAiDeProperties.class)
 @ConditionalOnProperty(
-        name = "skillpilot.openai.de.bootstrap-enabled",
+        name = "skillpilot.openai.coach.de.v1.bootstrap-enabled",
         havingValue = "true")
 @ConditionalOnProperty(
-        name = "skillpilot.openai.de.enabled",
+        name = "skillpilot.openai.coach.de.v1.enabled",
         havingValue = "false",
         matchIfMissing = true)
 public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
@@ -149,5 +150,6 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
                 "OpenAI-DE protected-resource metadata URL");
+        OpenAiDeV1PublicContractValidation.requireExact(properties);
     }
 }

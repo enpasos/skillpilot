@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(OpenAiDeProperties.class)
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
 public class OpenAiDeConfiguration {
 
     @Bean
@@ -30,12 +30,12 @@ public class OpenAiDeConfiguration {
             }
             if (properties.isBootstrapEnabled()) {
                 throw new IllegalStateException(
-                        "skillpilot.openai.de.bootstrap-enabled and "
-                                + "skillpilot.openai.de.enabled must not both be true.");
+                        "skillpilot.openai.coach.de.v1.bootstrap-enabled and "
+                                + "skillpilot.openai.coach.de.v1.enabled must not both be true.");
             }
             if (!Duration.ofHours(24).equals(properties.getLearningSessionTtl())) {
                 throw new IllegalStateException(
-                        "skillpilot.openai.de.learning-session-ttl must be exactly PT24H.");
+                        "skillpilot.openai.coach.de.v1.learning-session-ttl must be exactly PT24H.");
             }
             OpenAiDeSecureModeValidation.Result secureMode =
                     OpenAiDeSecureModeValidation.inspect(properties);

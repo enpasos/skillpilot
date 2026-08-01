@@ -43,7 +43,7 @@ MCP-Werkzeug.
 | MCP Server URL | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
-| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html` |
+| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html` |
 | Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/de` |
@@ -81,7 +81,7 @@ Authorization-Server die app-spezifische Callback-URL. Dafür existiert ein
 expliziter, datenloser Bootstrapmodus:
 
 1. Vollbetrieb deaktiviert lassen und ausschließlich
-   `SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=true` setzen.
+   `SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED=true` setzen.
 2. Nach dem Restart die vier Discovery-URLs und den konstanten MCP-`401`
    verifizieren. Der Bootstrap registriert weder Tools noch OAuth-Client,
    Token-Endpunkte, Lernerdienste oder einen Coach-Health-Contributor.
@@ -236,76 +236,69 @@ SKILLPILOT_PUBLIC_BASE_URL=https://skillpilot.com
 # Unabhängig vom OAuth-Client-Secret erzeugen, z. B.: openssl rand -hex 32
 SKILLPILOT_SIGNING_SECRET=<mindestens-32-hochentropische-zeichen>
 
-SKILLPILOT_OPENAI_DE_ENABLED=true
-SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
-SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=true
-SKILLPILOT_OPENAI_DE_MCP_ENABLED=true
-SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true
+SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED=true
+SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED=false
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED=true
+SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED=true
+SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=true
 
-SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
+SKILLPILOT_OPENAI_CHATGPT_URL=https://chatgpt.com/
 
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-feste-client-id-dieser-app>
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=<langes-zufälliges-client-secret>
-SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ID=<exakte-feste-client-id-dieser-app>
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET=<langes-zufälliges-client-secret>
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
 
 # Nur bei einem tatsächlichen Client-ID-Wechsel, einmalig und danach entfernen:
-# SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
+# SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
 
-SKILLPILOT_OPENAI_DE_SECURE_COOKIE=true
-SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL=PT24H
-SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS=3600000
-SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL=PT1H
-SKILLPILOT_OPENAI_DE_REFRESH_TOKEN_TTL=P30D
+SKILLPILOT_OPENAI_SECURE_COOKIE=true
+SKILLPILOT_OPENAI_LEARNING_SESSION_TTL=PT24H
+SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS=3600000
+SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL=PT1H
+SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL=P30D
 
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_ENABLED=true
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_WINDOW=PT1M
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_MCP_REQUESTS=120
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_OAUTH_REQUESTS=60
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_UI_REQUESTS=60
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_METADATA_REQUESTS=120
-SKILLPILOT_OPENAI_DE_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
+SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED=true
+SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW=PT1M
+SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS=120
+SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS=60
+SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS=60
+SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS=120
+SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
 
-Die drei öffentlichen V1-URLs werden nicht pro Server konfiguriert, sondern
-haben im Backend diese sicheren, versionierten Defaults:
+Die drei öffentlichen V1-URLs werden nicht als Umgebungsvariablen
+konfiguriert. Sie sind unveränderliche Bestandteile des DE-V1-Vertrags:
 
-| optionale Override-Variable | kanonischer V1-Wert |
-| --- | --- |
-| `SKILLPILOT_OPENAI_DE_MCP_URL` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+- MCP und OAuth-Resource: `https://mcp-coach-de-v1.skillpilot.com/mcp`
+- Protected-Resource-Metadaten:
+  `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
 
-Ein `SKILLPILOT_OPENAI_DE_UI_ORIGIN` bleibt unzulässig: Der Widget-Origin ist
+Auch ein `SKILLPILOT_OPENAI_COACH_DE_V1_UI_ORIGIN` ist unzulässig: Der Widget-Origin ist
 als `https://mcp-coach-de-v1.skillpilot.com` fest im V1-Vertrag verankert und
 wird identisch über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`
-ausgeliefert. Im normalen Produktivbetrieb bleiben die tabellierten Variablen in
-`/etc/skillpilot/skillpilot.env` ungesetzt. Ein fehlender Wert verwendet den
-kanonischen Default. Wird eine Variable ausdrücklich gesetzt, muss ihr Wert
-einschließlich Pfad, Slash und ohne zusätzliche Leerzeichen exakt der Tabelle
-entsprechen. Auch ein ausdrücklich leerer Wert gilt als Override und führt
-fail-closed zum Abbruch des Deployment-Preflights beziehungsweise des
-Anwendungsstarts. Damit kann eine alte oder falsch geschriebene Route den
+ausgeliefert. Alte URL-Variablen und gleichnamige neue Override-Versuche führen
+fail-closed zum Abbruch. Damit kann eine alte oder falsch geschriebene Route den
 versionierten V1-Vertrag nicht unbemerkt ersetzen.
 
 Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
 `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
 `SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED`,
 `SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES` und mTLS-Smoke-Zertifikate aus
-der EnvironmentFile entfernt. Sie gehören nicht zum `1.0.0`-Vertrag. Die drei
-URL-Overrides aus der Tabelle werden ebenfalls am besten entfernt; falls sie
-absichtlich stehen bleiben, müssen sie exakt die neuen Werte tragen.
+der EnvironmentFile entfernt. Sie gehören nicht zum `1.0.0`-Vertrag. Ebenso
+müssen `SKILLPILOT_OPENAI_DE_MCP_URL`,
+`SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` und
+`SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` vollständig entfernt werden.
 
 `./deploy_skillpilot.sh` prüft vor Asset-Kopien, Build und Service-Restart die
 tatsächlich von der systemd-Unit referenzierte EnvironmentFile. Der
 Produktionsvertrag erlaubt genau eine solche Datei, standardmäßig
 `/etc/skillpilot/skillpilot.env`; für einen abweichenden Pfad muss
 `SKILLPILOT_SERVICE_ENV_FILE` ausdrücklich gesetzt werden. Aus der Datei werden
-ausschließlich die drei öffentlichen URL-Variablen gelesen. OAuth-, Datenbank-
-und andere Secrets werden weder ausgewertet, protokolliert noch ausgegeben.
-Dieselben drei Variablen dürfen nicht zusätzlich über `Environment=` oder
-`PassEnvironment=` der Unit gesetzt werden. Enthält die globale
-systemd-Umgebung einen dieser Namen, bricht der Preflight ebenfalls ab.
+ausschließlich Namen entfernter OpenAI-V1-Variablen erkannt; ihre Werte und
+alle OAuth-, Datenbank- oder anderen Secrets werden weder protokolliert noch
+ausgegeben. Dieselben alten Namen dürfen auch nicht über `Environment=`,
+`PassEnvironment=` oder die globale systemd-Umgebung eingeschleust werden.
 Ist die eine EnvironmentFile in systemd optional (`ignore_errors=yes`) und
 fehlt, akzeptiert der Preflight nach Prüfung der übrigen Umgebungskanäle die
 kanonischen V1-Defaults. Eine fehlende verpflichtende Datei
@@ -318,22 +311,47 @@ sichtbar als `SKIP`; die exakte Spring-Startprüfung bleibt die finale
 fail-closed-Grenze. Eine allgemeine `sudo cat`-Freigabe oder weltlesbare
 Secret-Datei ist ausdrücklich nicht zulässig.
 
-Bei der Umstellung von der früheren unversionierten Route müssen alte
-`SKILLPILOT_OPENAI_DE_MCP_URL`- und
-`SKILLPILOT_OPENAI_DE_RESOURCE_METADATA`-Zeilen vollständig entfernt werden.
-Keine Variable leer setzen: ein leerer Wert ist weiterhin ein expliziter,
-ungültiger Override.
+Die Migration ist absichtlich fail-closed: alte `SKILLPILOT_OPENAI_DE_*`-
+Namen werden nicht als stille DE-V1-Aliasse übernommen. Alle DE-V1-spezifischen
+Werte tragen `SKILLPILOT_OPENAI_COACH_DE_V1_*`; gemeinsame Richtlinien des
+einzigen Spring-Prozesses tragen `SKILLPILOT_OPENAI_*` ohne Sprach- oder
+Versionssegment. Alte Namen werden entfernt, nicht leer gesetzt.
+
+Die sechs Nginx-Origins sind keine sechs Spring-Prozesse und werden nicht über
+eine gemeinsame URL-Umgebungsvariable umgeschaltet. Jeder öffentliche Host
+wird in Nginx fest auf den internen Pfad seiner Vertragslinie abgebildet. Nur
+DE V1 ist derzeit implementiert; die übrigen reservierten Hosts antworten
+absichtlich mit `404`. Für spätere Linien gilt bereits jetzt diese eindeutige
+Namenskonvention:
+
+| öffentlicher Host | Spring-Konfigurationsgruppe | linienbezogene Environment-Namen | aktueller Status |
+| --- | --- | --- | --- |
+| `mcp-coach-de-v1.skillpilot.com` | `skillpilot.openai.coach.de.v1` | `SKILLPILOT_OPENAI_COACH_DE_V1_*` | aktiv, intern `/internal/openai/de/v1/*` |
+| `mcp-coach-de-v2.skillpilot.com` | `skillpilot.openai.coach.de.v2` | `SKILLPILOT_OPENAI_COACH_DE_V2_*` | reserviert, `404` |
+| `mcp-coach-de-v3.skillpilot.com` | `skillpilot.openai.coach.de.v3` | `SKILLPILOT_OPENAI_COACH_DE_V3_*` | reserviert, `404` |
+| `mcp-coach-en-v1.skillpilot.com` | `skillpilot.openai.coach.en.v1` | `SKILLPILOT_OPENAI_COACH_EN_V1_*` | reserviert, `404` |
+| `mcp-coach-en-v2.skillpilot.com` | `skillpilot.openai.coach.en.v2` | `SKILLPILOT_OPENAI_COACH_EN_V2_*` | reserviert, `404` |
+| `mcp-coach-en-v3.skillpilot.com` | `skillpilot.openai.coach.en.v3` | `SKILLPILOT_OPENAI_COACH_EN_V3_*` | reserviert, `404` |
+
+Die reservierten Namen sind eine Konvention, noch keine akzeptierte
+Laufzeitkonfiguration. Der aktuelle Server bricht beim Setzen einer noch nicht
+implementierten Linie oder eines unbekannten linienbezogenen Namens ab, statt
+den Eintrag still zu ignorieren. Eine Linie wird erst mit eigenem Vertrag,
+interner Route, Spring-Konfigurationsgruppe und Tests aktiviert. Gemeinsame
+Prozesswerte wie Cookie-Härtung, Session-TTLs und Rate Limits bleiben einmalig
+unter `SKILLPILOT_OPENAI_*`.
 
 Auch `SKILLPILOT_SERVER_BUILD` wird nicht in
-`/etc/skillpilot/skillpilot.env` gepflegt. Gradle bettet den vollständigen
+`/etc/skillpilot/skillpilot.env` gepflegt. Gradle baut genau ein Artefakt
+`skillpilot-server` und bettet den vollständigen
 lowercase Commit von `HEAD` beim Verarbeiten der Backend-Ressourcen in
-`skillpilot.openai.de.server-build` und
-`skillpilot.openai.de.mcp.server-version` ein. `scripts/deploy.sh` prüft beide
+`skillpilot.openai.coach.de.v1.server-build` und
+`skillpilot.openai.coach.de.v1.mcp.server-version` ein. `scripts/deploy.sh` prüft beide
 Werte gegen den tatsächlich ausgecheckten Commit, bevor der Dienst neu
 gestartet wird. Die Telemetrie und Health-Ausgabe beschreiben dadurch das
 ausgelieferte Artefakt und keinen manuell nachgetragenen Umgebungswert.
 
-`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true` ist für den funktionsfähigen
+`SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=true` ist für den funktionsfähigen
 Produktivcoach verpflichtend. Personalisierung, Navigation, Aufgabenfortschritt
 und Mastery sind fachlich schreibende Vorgänge. Bei `false` funktionieren
 Discovery, OAuth und lesende Werkzeuge weiterhin, aber der Coach bricht beim
@@ -393,7 +411,7 @@ Klick auf **Lernen starten** wendet SkillPilot den eng typisierten Intent unter
 Learner-Lock auf den autoritativen Zustand an und erzeugt unmittelbar danach
 eine neue kryptografisch zufällige `learningSessionId`. Auch zwei Starts
 desselben Lernenden erzeugen verschiedene IDs. Die absolute Frist wird durch
-`SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL` gesteuert und beträgt produktiv
+`SKILLPILOT_OPENAI_LEARNING_SESSION_TTL` gesteuert und beträgt produktiv
 `PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder parallele
 Chats verlängern sie nicht.
 
@@ -419,7 +437,7 @@ OAuth-Lebenszyklus abgewiesen und bereinigt. Authorization Codes, Access- und
 Refresh-Tokens sowie Consents folgen ausschließlich ihrem eigenen OAuth-
 Lebenszyklus. Insbesondere erzeugt Tokenausgabe oder Token-Refresh keine
 Lernsession und verlängert keine bestehende. Das Intervall der technischen
-Bereinigung steuert `SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS`; der
+Bereinigung steuert `SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS`; der
 Standardwert ist eine Stunde.
 
 Jeder `/launch`-Aufruf muss `providerEligibilityConfirmed=true` ausdrücklich
@@ -446,15 +464,15 @@ Rotation.
 
 ### 3.1 Health, Readiness und Metriknamen
 
-Bei `SKILLPILOT_OPENAI_DE_ENABLED=true` registriert Spring den Health-Contributor
+Bei `SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED=true` registriert Spring den Health-Contributor
 `openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der erwartete Vertrag mit genau elf Werkzeugen geladen ist.
+HTTPS verwenden und der erwartete Vertrag mit genau zwölf Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
-`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false` ist ein erlaubter read-only
+`SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=false` ist ein erlaubter read-only
 Canary-Zustand und setzt die gemeinsame Readiness nicht auf `DOWN`. Ob der
 vollständige Coach produktiv funktionsfähig ist, muss deshalb zusätzlich über
 die Betriebsumgebung beziehungsweise einen separaten Deployment-Preflight
@@ -476,12 +494,12 @@ nur über den internen, geschützten Managementzugang freigegeben werden.
 Die exakten Micrometer-Namen heißen:
 
 ```text
-skillpilot.openai.de.mcp.tool.duration
-skillpilot.openai.de.operational.event
+skillpilot.openai.coach.de.v1.mcp.tool.duration
+skillpilot.openai.coach.de.v1.operational.event
 ```
 
 Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags `tool`
-(elf bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
+(zwölf bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
 `exception`). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
 Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
 noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
@@ -529,7 +547,7 @@ Anwendungslogs erscheinen.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
-   ausführen. Prüfen, dass genau die elf deutschen Produktivwerkzeuge
+   ausführen. Prüfen, dass genau die zwölf deutschen Produktivwerkzeuge
    erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
    dürfen sichtbar sein. Zusätzlich muss genau die versionierte
    Lernzielbild-Ressource über `resources/list` und `resources/read` verfügbar
@@ -552,15 +570,17 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
 Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau eine
-read-only
-Widget-Ressource für das Bild des aktiven atomaren Lernziels.
-`get_skillpilot_context_de` und `set_skillpilot_active_goal_de` referenzieren
-sie über `ui.resourceUri` sowie den ChatGPT-Kompatibilitätsalias
+read-only Widget-Ressource für das Bild des aktiven atomaren Lernziels. Nur
+`render_skillpilot_goal_visualization_de` referenziert sie über
+`ui.resourceUri` sowie den ChatGPT-Kompatibilitätsalias
 `openai/outputTemplate`. Die übrigen Werkzeuge besitzen keine UI-Bindung;
-Auswahl und Coaching bleiben im normalen Chat. `goalVisualization` wird nur bei
-einem aktiven atomaren Ziel mit passendem kanonischem Bildlink projiziert.
-Fehlt ein gültiges Bild oder kann es nicht geladen werden, bleibt die Karte
-verborgen und der normale Chatablauf funktioniert unverändert.
+Auswahl und Coaching bleiben im normalen Chat. Der Kontext projiziert
+`goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei einem aktiven
+atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
+Cockpit-Einstellung. Fehlt ein gültiges Bild, entsteht keine UI-Karte und der
+normale Chatablauf funktioniert unverändert. Das Widget übernimmt nach einer
+erneuten Host-Initialisierung das aktuelle Tool-Ergebnis, damit die Darstellung
+beim Öffnen derselben Unterhaltung auf einem weiteren Gerät erhalten bleibt.
 
 Die `learningSessionId` erscheint ausschließlich in der automatisch
 vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
@@ -575,11 +595,11 @@ Mastery-Aktion.
 Für diesen einmaligen Zustand gilt:
 
 ```text
-SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=true
-SKILLPILOT_OPENAI_DE_ENABLED=false
-SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=false
-SKILLPILOT_OPENAI_DE_MCP_ENABLED=false
-SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
+SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED=true
+SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED=false
+SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED=false
+SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED=false
+SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=false
 ```
 
 Dann:
@@ -624,8 +644,8 @@ Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
 MCP_URL=https://mcp-coach-de-v1.skillpilot.com/mcp
 RESOURCE_METADATA=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 AUTH_BASE=https://skillpilot.com
-MANAGEMENT_BASE=http://127.0.0.1:8080
-AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
+MANAGEMENT_BASE=http://127.0.0.1:8787
+AUTH_METHOD="${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
 
 curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
   | jq -e '.status == "UP"'
@@ -739,7 +759,7 @@ darin nicht erscheinen. Für den Live-Test kann die Zeile mit
 
 ### Stufe B – funktionsfähiger Schreibpilot
 
-Nach Stufe A `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true` setzen und neu starten.
+Nach Stufe A `SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=true` setzen und neu starten.
 Erst dieser Zustand ist als vollständiger Produktivcoach freizugeben.
 Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
@@ -854,11 +874,11 @@ Client-Secret enthalten; die einmalige
 1. Frontend ausdrücklich mit
    `./deploy_skillpilot.sh --coach-variant visible-session` bauen und
    ausliefern. Die Artefaktprüfung muss `visible-session` bestätigen.
-2. Zuerst `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false`, bei vollständiger
-   Abschaltung zusätzlich `SKILLPILOT_OPENAI_DE_MCP_ENABLED=false`,
-   `SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=false` und
-   `SKILLPILOT_OPENAI_DE_ENABLED=false` sowie
-   `SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false` setzen.
+2. Zuerst `SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED=false`, bei vollständiger
+   Abschaltung zusätzlich `SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED=false`,
+   `SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED=false` und
+   `SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED=false` sowie
+   `SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED=false` setzen.
 3. App in ChatGPT deaktivieren beziehungsweise die betroffene Version nach dem
    [V1-Release-Runbook](openai-plugin-v1-release.md) zurückziehen.
 4. Bestehende OpenAI-DE-Verbindungen serverseitig widerrufen, falls ein

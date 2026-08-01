@@ -1,1 +1,1 @@
-rootProject.name = "skillpilot-spring"
+rootProject.name = "skillpilot-server"

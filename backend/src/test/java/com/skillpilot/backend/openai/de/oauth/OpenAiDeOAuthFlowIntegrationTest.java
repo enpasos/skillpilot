@@ -63,17 +63,17 @@ import org.springframework.test.context.TestPropertySource;
         "spring.datasource.password=",
         "spring.liquibase.enabled=true",
         "spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.yaml",
-        "skillpilot.openai.de.enabled=true",
-        "skillpilot.openai.de.server-build=test-build",
-        "skillpilot.openai.de.oauth.enabled=true",
-        "skillpilot.openai.de.mcp.enabled=false",
-        "skillpilot.openai.de.secure-cookie=false",
+        "skillpilot.openai.coach.de.v1.enabled=true",
+        "skillpilot.openai.coach.de.v1.server-build=test-build",
+        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.de.v1.mcp.enabled=false",
+        "skillpilot.openai.coach.de.v1.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.de.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.de.oauth.client-id=chatgpt-test-client",
-        "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
-        "skillpilot.openai.de.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.de.v1.oauth.client-id=chatgpt-test-client",
+        "skillpilot.openai.coach.de.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
+        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeOAuthFlowIntegrationTest {
 

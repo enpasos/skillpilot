@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
@@ -81,6 +82,7 @@ class OpenAiDeCoachMcpContractTest {
         identityResolver = mock(OpenAiDeCoachIdentityResolver.class);
         when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenReturn(LEARNER_ID);
+        when(coachTools.showGoalVisualizationsInChat(LEARNER_ID)).thenReturn(true);
         when(identityResolver.authenticationChallenge()).thenReturn(CHALLENGE);
         when(identityResolver.insufficientScopeChallenge()).thenReturn(INSUFFICIENT_SCOPE_CHALLENGE);
         meterRegistry = new SimpleMeterRegistry();
@@ -107,12 +109,13 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesExactlyElevenNativeToolsWithSchemasSecurityAnnotationsAndFocusedUiLinks() {
+    void publishesExactlyTwelveNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLink() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contract.toolSpecifications();
 
-        assertThat(tools).hasSize(11);
+        assertThat(tools).hasSize(12);
         assertThat(tools.stream().map(spec -> spec.tool().name())).containsExactly(
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                 OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
                 OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
@@ -140,10 +143,7 @@ class OpenAiDeCoachMcpContractTest {
                     assertThat(scheme).containsKey("scopes");
                 });
             });
-            if (Set.of(
-                            OpenAiDeV1McpContractAdapter.GET_CONTEXT,
-                            OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL)
-                    .contains(tool.name())) {
+            if (OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(tool.name())) {
                 assertThat(tool.meta().get("ui"))
                         .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
                                 .containsEntry(
@@ -159,6 +159,16 @@ class OpenAiDeCoachMcpContractTest {
             assertThat(tool.meta()).doesNotContainKey("openai/widgetAccessible");
         }
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().annotations().readOnlyHint()).isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                        .tool()
+                        .annotations()
+                        .readOnlyHint())
+                .isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                        .tool()
+                        .annotations()
+                        .idempotentHint())
+                .isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().annotations().readOnlyHint()).isFalse();
         assertThat(spec(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT).tool().annotations().idempotentHint())
                 .isTrue();
@@ -336,6 +346,72 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization() {
+        UnifiedLearnerStateResponse state = visualizationState();
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+
+        McpSchema.CallToolResult contextResult =
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        OpenAiDeCoachContext context = structured(contextResult, OpenAiDeCoachContext.class);
+
+        assertThat(context.goalVisualization()).isNotNull();
+        assertThat(context.nextAllowedTools())
+                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().meta())
+                .doesNotContainKeys("ui", "openai/outputTemplate");
+        assertThat(spec(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL).tool().meta())
+                .doesNotContainKeys("ui", "openai/outputTemplate");
+
+        McpSchema.CallToolResult renderResult = call(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                Map.of("goalId", "goal-with-image"));
+        OpenAiDeV1McpContractAdapter.GoalVisualizationRenderResult render = structured(
+                renderResult,
+                OpenAiDeV1McpContractAdapter.GoalVisualizationRenderResult.class);
+
+        assertThat(renderResult.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION, renderResult);
+        assertThat(render.goalVisualization()).isEqualTo(context.goalVisualization());
+        assertThat(render.goalVisualization().imageUrl())
+                .isEqualTo("https://skillpilot.test/assets/goal-visualizations/physik/"
+                        + "goal-with-image/goal-with-image.jpg");
+    }
+
+    @Test
+    void missingOrDisabledVisualizationNeverOffersOrRendersTheUiTool() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+
+        OpenAiDeCoachContext missing = structured(
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of()),
+                OpenAiDeCoachContext.class);
+
+        assertThat(missing.goalVisualization()).isNull();
+        assertThat(missing.nextAllowedTools())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        assertThat(call(
+                                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                                Map.of("goalId", "goal-public-id"))
+                        .isError())
+                .isTrue();
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
+        when(coachTools.showGoalVisualizationsInChat(LEARNER_ID)).thenReturn(false);
+
+        OpenAiDeCoachContext disabled = structured(
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of()),
+                OpenAiDeCoachContext.class);
+
+        assertThat(disabled.goalVisualization()).isNull();
+        assertThat(disabled.nextAllowedTools())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        McpSchema.CallToolResult disabledRender = call(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                Map.of("goalId", "goal-with-image"));
+        assertThat(disabledRender.isError()).isTrue();
+        assertThat(disabledRender.content().toString()).contains("kein freigegebenes Lernzielbild");
+    }
+
+    @Test
     void nativeMcpSerializationPublishesOutputSchemaAnnotationsAndOpenAiSecurityMirror() throws Exception {
         String json = new JacksonMcpJsonMapperSupplier().get().writeValueAsString(
                 spec(OpenAiDeV1McpContractAdapter.SET_SCOPE).tool());
@@ -416,6 +492,8 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Sollantwort erst nach")
                 .contains("permanente SkillPilot-IDs")
                 .contains("zwei unabhängigen Checks")
+                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                .contains("genau einmal")
                 .contains("URLs ausschließlich wortgetreu")
                 .contains("Fehlt ein freigegebener Link, gib keinen Link aus")
                 .doesNotContain("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com")
@@ -1255,6 +1333,37 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null);
         return state("chooseMemoryMode", active);
+    }
+
+    private UnifiedLearnerStateResponse visualizationState() {
+        GoalSourceLink image = new GoalSourceLink(
+                "goal-visualization",
+                "Visualisierung: Projektion",
+                "/assets/goal-visualizations/physik/goal-with-image/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                "Didaktische Orientierung",
+                "de",
+                "AI-generated, SkillPilot-curated",
+                "goal-with-image",
+                "primary",
+                "Skizze einer orthogonalen Projektion.",
+                "approved");
+        FrontierGoal active = new FrontierGoal(
+                "goal-with-image",
+                "Orthogonale Projektion verstehen",
+                "Deute eine orthogonale Projektion anschaulich.",
+                "atomic",
+                "tutor",
+                "frontier",
+                List.of(),
+                List.of(image),
+                null,
+                null,
+                null,
+                null);
+        return state("teachActiveGoal", active);
     }
 
     private UnifiedLearnerStateResponse personalizationState() {
