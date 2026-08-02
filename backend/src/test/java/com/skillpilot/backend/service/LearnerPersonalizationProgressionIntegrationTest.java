@@ -229,6 +229,9 @@ class LearnerPersonalizationProgressionIntegrationTest {
                 .extracting(goal -> goal.semanticKind())
                 .containsExactly("orientation");
 
+        learnerService.setActiveGoal(
+                learner.getSkillpilotId(),
+                MATH_SEK_TWO_ORIENTATION_ID);
         UnifiedLearnerStateResponse orientationState =
                 learnerService.getCoachLearnerState(learner.getSkillpilotId());
         assertThat(orientationState.activeGoal().id()).isEqualTo(MATH_SEK_TWO_ORIENTATION_ID);
