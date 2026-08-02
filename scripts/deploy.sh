@@ -299,6 +299,7 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
     --built-application build/resources/main/application.yml
   echo "Prüfe fokussierte OpenAI-Security-Verträge vor dem Service-Restart..."
   ./gradlew test \
+    --tests com.skillpilot.backend.config.CorsConfigTest \
     --tests com.skillpilot.backend.openai.OpenAiRuntimeEnvironmentValidationConfigurationTest \
     --tests com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest \
     --tests com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProviderTest \

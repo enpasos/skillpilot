@@ -24,6 +24,7 @@ RESERVED_MCP_ORIGINS=(
   "https://mcp-coach-en-v3.skillpilot.com"
 )
 EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE:-}"
+GOAL_VISUALIZATION_ASSET_ROOT="${ROOT_DIR}/app/public/assets/goal-visualizations"
 
 validate_https_url() {
   local label="$1"
@@ -122,6 +123,57 @@ if ! PYTHONDONTWRITEBYTECODE=1 python3 -B \
   exit 1
 fi
 echo "CHECK public_edge_metadata PASS ${METADATA_URL}"
+
+goal_visualization_asset="$({
+  find "${GOAL_VISUALIZATION_ASSET_ROOT}" -type f \
+    \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.webp' \) \
+    -print -quit
+} 2>/dev/null || true)"
+if [[ -z "${goal_visualization_asset}" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL no published visualization asset found" >&2
+  exit 1
+fi
+goal_visualization_relative="${goal_visualization_asset#"${ROOT_DIR}/app/public"}"
+goal_visualization_url="${AUTHORIZATION_ORIGIN}${goal_visualization_relative}"
+goal_visualization_result="$(
+  "${curl_common[@]}" \
+    --header "Origin: ${MCP_ORIGIN}" \
+    --dump-header "${temporary_dir}/goal-visualization.headers" \
+    --output /dev/null \
+    --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+    "${goal_visualization_url}"
+)"
+IFS='|' read -r goal_visualization_status goal_visualization_effective_url \
+  goal_visualization_tls_verify_result <<<"${goal_visualization_result}"
+if [[ "${goal_visualization_status}" != "200" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL expected HTTP 200, got ${goal_visualization_status}" >&2
+  exit 1
+fi
+if [[ "${goal_visualization_effective_url}" != "${goal_visualization_url}" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL unexpected redirect to ${goal_visualization_effective_url}" >&2
+  exit 1
+fi
+if [[ "${goal_visualization_tls_verify_result}" != "0" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL certificate verification result ${goal_visualization_tls_verify_result}" >&2
+  exit 1
+fi
+goal_visualization_allow_origin="$(
+  tr -d '\r' <"${temporary_dir}/goal-visualization.headers" \
+    | awk 'tolower($0) ~ /^access-control-allow-origin:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
+)"
+goal_visualization_allow_credentials="$(
+  tr -d '\r' <"${temporary_dir}/goal-visualization.headers" \
+    | awk 'tolower($0) ~ /^access-control-allow-credentials:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
+)"
+if [[ "${goal_visualization_allow_origin}" != "${MCP_ORIGIN}" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL expected exact Access-Control-Allow-Origin ${MCP_ORIGIN}" >&2
+  exit 1
+fi
+if [[ -n "${goal_visualization_allow_credentials}" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL public image response must not allow credentials" >&2
+  exit 1
+fi
+echo "CHECK public_goal_visualization_cors PASS read-only image accessible from ${MCP_ORIGIN}"
 
 if [[ -n "${EXPECTED_CHALLENGE}" ]]; then
   challenge_result="$(
