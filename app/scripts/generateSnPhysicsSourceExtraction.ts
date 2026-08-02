@@ -971,7 +971,9 @@ const addMissingMappedGoalsToView = (view: Record<string, unknown>, suffix: stri
   root.children.push({
     kind: 'structure',
     id: 'physics-sn-source-extraction-supplements',
-    label: 'Sachsen-spezifische Source-Extraction-Ergänzungen',
+    label: suffix.startsWith('sekii-')
+      ? 'Experimentieren, Felder und Quantenphysik'
+      : 'Experimentieren, Optik, Energie und moderne Physik',
     children: missingTargets.map((goalId) => ({
       kind: 'goalEntry',
       goalId,

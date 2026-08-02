@@ -1,5 +1,9 @@
 # Work Notes: Atomicitäts-Prozess (Authoring, nicht CI)
 
+> Historical work-notes record, 17 February 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+> Current reference: [atomic review process](../../qa-ci/atomic-review-process.md)
+
 Stable reference documentation now lives in `docs/qa-ci/atomic-review-process.md`.
 This work-notes file keeps run-specific context, examples, and dated review history.
 

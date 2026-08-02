@@ -11,6 +11,7 @@ import {
   normalizeCanonicalLandscape,
   type CanonicalAuthoringLandscape,
 } from '../src/utils/authoring/canonicalAuthoring'
+import { collectLearnerFacingCompositionLabelFindings } from './lib/learnerFacingCompositionLabels'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -47,6 +48,15 @@ interface MathScopeMatch {
 const CANONICAL_DE_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_MATH_MODULE_ID = 'c01b1ce9-a667-4a46-b251-ec33ae602b15'
 const CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
+const CANONICAL_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
+const CANONICAL_MATH_SEK2_TERMINAL_CLUSTER_IDS = [
+  '28b45b93-11e1-5a96-97a1-4cfee171802b',
+  'c25158fc-4860-59b2-8ef0-dca355f3a8b1',
+  '14b19ee4-364e-50bd-b6a3-499471356ef3',
+  'f24096c6-6ca0-5c15-a2f5-7bdaec789a8d',
+  '57f07e66-800c-5f7e-99ab-11dd6e520eb1',
+  'd2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1',
+]
 const CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
 const CANONICAL_MATH_FALLBACK_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/canonical-math-composition-fallback-policy.json'
 const CANONICAL_DE_MATH_VIEW_ID_PATTERN = /^de-de-gym-(?:seki|sekii-math-(?:gk|lk)|math-(?:gk|lk))$/u
@@ -503,6 +513,11 @@ const isCanonicalMathSek1LearnerScope = (view: ReturnType<typeof normalizeCompos
   && (view.scope.stage === 'SekI' || view.scope.stage === 'CrossStage')
 )
 
+const isCanonicalMathSek2LearnerScope = (view: ReturnType<typeof normalizeCompositionView>): boolean => (
+  view.landscapeId === CANONICAL_DE_MATH_ID
+  && (view.scope.stage === 'SekII' || view.scope.stage === 'CrossStage')
+)
+
 const expectedCanonicalMathSek1ExamYears = (view: ReturnType<typeof normalizeCompositionView>): readonly string[] => (
   view.scope.durationModel === 'G8'
     ? CANONICAL_MATH_SEK1_G8_EXAM_YEARS
@@ -720,10 +735,45 @@ const collectCanonicalMathSek1ExamVisibilityFindings = (
   return findings
 }
 
+const collectCanonicalMathSek2RouteEndpointVisibilityFindings = (
+  view: ReturnType<typeof normalizeCompositionView>,
+  landscape: CanonicalAuthoringLandscape | null,
+  rootNodes: CompiledCompositionPreviewNode[],
+): CompositionViewFinding[] => {
+  if (!isCanonicalMathSek2LearnerScope(view) || !landscape) return []
+
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const visibleGoalIds = collectSourceGoalIds(rootNodes)
+  const findings: CompositionViewFinding[] = []
+
+  if (!visibleGoalIds.has(CANONICAL_MATH_SEK2_MOTIVATION_GOAL_ID)) {
+    findings.push({
+      code: 'CPV-214',
+      severity: 'error',
+      goalId: CANONICAL_MATH_SEK2_MOTIVATION_GOAL_ID,
+      message: 'Sek-II-Route ist learner-facing nicht vollständig: stufenspezifischer Motivationsanker fehlt in der Composition View.',
+    })
+  }
+
+  const configuredTerminalIds = CANONICAL_MATH_SEK2_TERMINAL_CLUSTER_IDS.flatMap((clusterId) =>
+    goalById.get(clusterId)?.contains ?? [])
+  const visibleTerminalIds = configuredTerminalIds.filter((goalId) => visibleGoalIds.has(goalId))
+  if (visibleTerminalIds.length === 0) {
+    findings.push({
+      code: 'CPV-215',
+      severity: 'error',
+      message: 'Sek-II-Route ist learner-facing nicht vollständig: kein atomarer terminaler Autonomie-/Prüfungsendpunkt ist in der Composition View sichtbar.',
+    })
+  }
+
+  return findings
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
+const semanticKindLedgerRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/release-model')
 const canonicalMathFallbackPolicy = JSON.parse(
   readFileSync(resolve(repoRoot, CANONICAL_MATH_FALLBACK_POLICY_PATH), 'utf8'),
 ) as {
@@ -755,6 +805,50 @@ const collectFiles = (directory: string, predicate: (fileName: string) => boolea
 
 const canonicalFiles = collectFiles(canonicalRoot, (fileName) => extname(fileName).toLowerCase() === '.json')
 const compositionViewFiles = collectFiles(compositionViewRoot, (fileName) => /\.view\.json$/i.test(fileName))
+const semanticKindLedgerFiles = collectFiles(
+  semanticKindLedgerRoot,
+  (fileName) => /\.semantic-kinds\.json$/i.test(fileName),
+)
+
+const semanticKindsByLandscapeId = new Map<string, Map<string, string>>()
+
+for (const ledgerPath of semanticKindLedgerFiles) {
+  try {
+    const ledger = JSON.parse(readFileSync(ledgerPath, 'utf8')) as {
+      sourceLandscapeId?: string
+      decisions?: Array<{
+        goalId?: string
+        semanticKind?: string
+        decisionStatus?: string
+      }>
+    }
+    const landscapeId = ledger.sourceLandscapeId?.trim() ?? ''
+    if (!landscapeId) {
+      throw new Error('sourceLandscapeId fehlt')
+    }
+    if (semanticKindsByLandscapeId.has(landscapeId)) {
+      throw new Error(`Mehr als ein Semantic-Kind-Ledger für Landscape ${landscapeId}`)
+    }
+
+    const semanticKindByGoalId = new Map<string, string>()
+    for (const decision of ledger.decisions ?? []) {
+      const goalId = decision.goalId?.trim() ?? ''
+      const semanticKind = decision.semanticKind?.trim() ?? ''
+      if (!goalId || !semanticKind || decision.decisionStatus !== 'authoritative') {
+        throw new Error('Semantic-Kind-Entscheidungen müssen vollständig und authoritative sein')
+      }
+      if (semanticKindByGoalId.has(goalId)) {
+        throw new Error(`Doppelte Semantic-Kind-Entscheidung für ${goalId}`)
+      }
+      semanticKindByGoalId.set(goalId, semanticKind)
+    }
+    semanticKindsByLandscapeId.set(landscapeId, semanticKindByGoalId)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unbekannter Fehler'
+    console.error(`❌ [semantic-kind-ledger-load] ${ledgerPath} konnte nicht geladen werden: ${message}`)
+    process.exit(1)
+  }
+}
 
 const canonicalByLandscapeId = new Map<string, { path: string, landscape: CanonicalAuthoringLandscape }>()
 
@@ -762,9 +856,32 @@ for (const canonicalPath of canonicalFiles) {
   try {
     const normalized = normalizeCanonicalLandscape(JSON.parse(readFileSync(canonicalPath, 'utf8')))
     if (!normalized.landscapeId) continue
+    const semanticKindByGoalId = semanticKindsByLandscapeId.get(normalized.landscapeId)
+    if (semanticKindByGoalId) {
+      const canonicalGoalIds = new Set(normalized.goals.map((goal) => goal.id))
+      const missingDecisionIds = normalized.goals
+        .filter((goal) => !semanticKindByGoalId.has(goal.id))
+        .map((goal) => goal.id)
+      const unknownDecisionIds = Array.from(semanticKindByGoalId.keys())
+        .filter((goalId) => !canonicalGoalIds.has(goalId))
+      if (missingDecisionIds.length > 0 || unknownDecisionIds.length > 0) {
+        throw new Error(
+          `Semantic-Kind-Ledger ist nicht deckungsgleich (fehlend: ${missingDecisionIds.slice(0, 5).join(', ') || '-'}; unbekannt: ${unknownDecisionIds.slice(0, 5).join(', ') || '-'})`,
+        )
+      }
+    }
+    const landscape = semanticKindByGoalId
+      ? {
+          ...normalized,
+          goals: normalized.goals.map((goal) => ({
+            ...goal,
+            semanticKind: semanticKindByGoalId.get(goal.id) ?? goal.semanticKind,
+          })),
+        }
+      : normalized
     canonicalByLandscapeId.set(normalized.landscapeId, {
       path: canonicalPath,
-      landscape: normalized,
+      landscape,
     })
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unbekannter Fehler'
@@ -805,11 +922,17 @@ for (const viewPath of compositionViewFiles) {
     )
     const additionalFindings = [
       ...collectGenericTreeFindings(result.compiledRootNodes),
+      ...collectLearnerFacingCompositionLabelFindings(result.compiledRootNodes),
       ...(normalizedView.landscapeId === CANONICAL_DE_MATH_ID
         && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
         ? collectCanonicalMathTreeFindings(result.compiledRootNodes)
         : []),
       ...collectCanonicalMathSek1ExamVisibilityFindings(
+        normalizedView,
+        canonicalMatch?.landscape ?? null,
+        result.compiledRootNodes,
+      ),
+      ...collectCanonicalMathSek2RouteEndpointVisibilityFindings(
         normalizedView,
         canonicalMatch?.landscape ?? null,
         result.compiledRootNodes,

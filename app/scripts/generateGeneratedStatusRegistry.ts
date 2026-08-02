@@ -9,14 +9,27 @@ import {
 
 const outputPath = resolve(repoRoot, generatedStatusRegistryReadmeNoticeConfig.path)
 const statusDir = resolve(repoRoot, 'docs/qa-ci/status')
+const docsRoot = resolve(repoRoot, 'docs')
 const checkMode = process.argv.includes('--check')
+
+// Artifacts outside `docs/` are not part of the published MkDocs site, so a
+// relative link to them 404s there. Link those through GitHub instead.
+const repoBlobPrefix = 'https://github.com/enpasos/skillpilot/blob/main/'
 
 function toPosixPath(path: string): string {
   return path.split(sep).join('/')
 }
 
+function isInsideDocs(absolutePath: string): boolean {
+  const relativePath = relative(docsRoot, absolutePath)
+  return relativePath.length > 0 && !relativePath.startsWith('..')
+}
+
 function markdownLink(targetPath: string): string {
-  const target = toPosixPath(relative(dirname(outputPath), resolve(repoRoot, targetPath)))
+  const absolute = resolve(repoRoot, targetPath)
+  const target = isInsideDocs(absolute)
+    ? toPosixPath(relative(dirname(outputPath), absolute))
+    : `${repoBlobPrefix}${encodeURI(toPosixPath(relative(repoRoot, absolute)))}`
   return `[${basename(targetPath)}](${target})`
 }
 

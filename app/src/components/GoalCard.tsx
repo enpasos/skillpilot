@@ -462,6 +462,10 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   // Detect if Atomic Goal (no children)
   const isAtomic = !goal.contains || goal.contains.length === 0
+  const semanticKind = goal.semanticKind?.trim().toLowerCase()
+  const isOrientationGoal = semanticKind
+    ? semanticKind === 'orientation'
+    : goal.tags?.some(tag => ['orientation', 'motivation'].includes(tag.trim().toLowerCase())) === true
   const mastered = isMastered(masteryValue)
   const complete = isCompleteMastery(masteryValue)
   const hasProgress = masteryValue > 0
@@ -992,7 +996,28 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
           {!isAtomic && <MasteryBar value={masteryValue} />}
 
-          {!readOnly && onMasteryChange && (
+          {!readOnly && onMasteryChange && isOrientationGoal && (
+            complete ? (
+              <div
+                role="status"
+                className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-300"
+              >
+                <Check size={16} aria-hidden="true" />
+                <span>{copy.orientationCompletedLabel}</span>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleChange(goal.id, 1)}
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-sky-400/50 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-700 transition-colors hover:bg-sky-400/20 dark:text-sky-300"
+              >
+                <Check size={16} aria-hidden="true" />
+                <span>{copy.completeOrientationLabel}</span>
+              </button>
+            )
+          )}
+
+          {!readOnly && onMasteryChange && !isOrientationGoal && (
             <div className="flex items-center gap-3">
               <input
                 type="range"

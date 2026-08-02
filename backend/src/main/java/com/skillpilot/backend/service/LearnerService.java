@@ -2026,6 +2026,10 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Cannot set mastery on cluster goals. Select an atomic goal first.");
         }
+        if (isOrientationGoal(def) && Double.compare(masteryValue, 1.0) != 0) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Orientation goals use completion marker 1.0 only; they do not carry graded mastery.");
+        }
 
         MasteryId id = new MasteryId(skillpilotId, effectiveGoalId);
         double resolvedMasteryValue = masteryValue;
@@ -4801,6 +4805,37 @@ public class LearnerService {
         Map<String, Double> effectivePrereqMastery =
                 computeEffectivePrereqMastery(prerequisiteLookupGoals, masteryMap);
 
+        List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
+                getStoredPlannedGoals(skillpilotId),
+                projection);
+        List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
+        if (!plannedIds.isEmpty()) {
+            boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
+            Map<String, List<String>> scopeRequires = strictMode
+                    ? computeEffectiveRequires(projection.structuralGoals())
+                    : computeEffectiveRequires(allGoals);
+            Set<String> scope = computeScope(
+                    plannedIds,
+                    projection.structuralGoals(),
+                    scopeRequires);
+            List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
+                    learner,
+                    projection,
+                    allGoals,
+                    projection.structuralGoals(),
+                    effectiveMastery,
+                    masteryMap,
+                    projectedFocusIds,
+                    plannedIds,
+                    scope);
+            if (!requiredOrientationGoals.isEmpty()) {
+                return requiredOrientationGoals.stream()
+                        .map(FrontierGoal::id)
+                        .distinct()
+                        .toList();
+            }
+        }
+
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
             if (!projection.targetGoalIds().contains(goal.getId())) {
@@ -4826,10 +4861,15 @@ public class LearnerService {
                     if (projection.compositionViewApplied()
                             && !projection.targetGoalIds().contains(resolvedReqId)
                             && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
+                            prerequisitesMet = false;
+                            break;
+                        }
                         // A matched composition view distinguishes selectable targets from
                         // intentional prerequisite-only support goals. Do not reintroduce
-                        // unrelated, globally inherited prerequisites through the structural
-                        // compatibility graph.
+                        // unrelated requirements inherited from legacy clusters through the
+                        // structural compatibility graph. Direct canonical requirements fail
+                        // closed when the authored view omits them.
                         continue;
                     }
                     Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
@@ -4914,6 +4954,24 @@ public class LearnerService {
             return getInitialScopeOptions(learner.getSelectedCurriculum(), projection);
         }
 
+        // Orientation is a semantic entry gate, not merely one more eligible
+        // frontier item. While an unmastered orientation target exists in the
+        // learner's current scope, publishing ordinary goals alongside it would
+        // allow clients to skip the authored start of the learning route.
+        List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
+                learner,
+                projection,
+                allFilteredGoals,
+                allStructuralGoals,
+                effectiveMastery,
+                masteryMap,
+                projectedFocusIds,
+                plannedIds,
+                scope);
+        if (!requiredOrientationGoals.isEmpty()) {
+            return requiredOrientationGoals;
+        }
+
         List<FrontierGoal> frontier = new ArrayList<>();
 
         // Iterate FILTERED goals (what the user should see)
@@ -4952,9 +5010,14 @@ public class LearnerService {
                     if (projection.compositionViewApplied()
                             && !projection.targetGoalIds().contains(resolvedReqId)
                             && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
+                        if (isDirectRequirement(goal, resolvedReqId, prerequisiteLookupGoals)) {
+                            prerequisitesMet = false;
+                            break;
+                        }
                         // Only explicitly reached prerequisite-only goals participate in a
                         // composition projection. Broad inherited requirements from legacy
-                        // cluster structure must not become hidden blockers.
+                        // cluster structure must not become hidden blockers. Direct canonical
+                        // requirements fail closed when the authored view omits them.
                         continue;
                     }
 
@@ -5018,6 +5081,198 @@ public class LearnerService {
         }
 
         return frontier;
+    }
+
+    static boolean isOrientationGoal(LearningGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        String semanticKind = goal.getSemanticKind();
+        if (semanticKind != null && !semanticKind.isBlank()) {
+            return "orientation".equalsIgnoreCase(semanticKind.trim());
+        }
+        if (goal.getTags() == null) {
+            return false;
+        }
+        return goal.getTags().stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .anyMatch(tag -> "Orientation".equalsIgnoreCase(tag)
+                        || "Motivation".equalsIgnoreCase(tag));
+    }
+
+    static boolean isOrientationGoal(FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        String semanticKind = goal.semanticKind();
+        if (semanticKind != null && !semanticKind.isBlank()) {
+            return "orientation".equalsIgnoreCase(semanticKind.trim());
+        }
+        if (goal.tags() == null) {
+            return false;
+        }
+        return goal.tags().stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .anyMatch(tag -> "Orientation".equalsIgnoreCase(tag)
+                        || "Motivation".equalsIgnoreCase(tag));
+    }
+
+    private boolean isDirectRequirement(
+            LearningGoal goal,
+            String resolvedRequirementId,
+            Map<String, LearningGoal> requirementLookupGoals) {
+        if (goal == null || goal.getRequires() == null || resolvedRequirementId == null) {
+            return false;
+        }
+        return goal.getRequires().stream()
+                .map(requirement -> resolveGoalRef(requirement, requirementLookupGoals))
+                .anyMatch(resolvedRequirementId::equals);
+    }
+
+    private List<FrontierGoal> getRequiredOrientationGoals(
+            Learner learner,
+            GoalProjection projection,
+            Map<String, LearningGoal> visibleGoals,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, Double> effectiveMastery,
+            Map<String, Double> mastery,
+            List<String> projectedFocusIds,
+            List<String> plannedIds,
+            Set<String> scope) {
+        if (scope == null || scope.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<FrontierGoal> unmasteredOrientationGoals = visibleGoals.values().stream()
+                .filter(goal -> projection.targetGoalIds().contains(goal.getId()))
+                .filter(goal -> plannedIds.isEmpty() || scope.contains(goal.getId()))
+                .filter(LearnerService::isOrientationGoal)
+                .filter(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) < 0.9)
+                .map(goal -> toFrontierGoal(goal, "Orientation required", null))
+                .toList();
+        if (unmasteredOrientationGoals.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        String projectionStateFilterId = resolveProjectionStateFilterId(learner);
+        return unmasteredOrientationGoals.stream()
+                .filter(orientationGoal -> {
+                    Set<String> relevantScope = resolveRelevantPlannedScope(
+                            orientationGoal.id(),
+                            projectedFocusIds,
+                            structuralGoals,
+                            scope);
+                    return !hasExistingCurricularProgressInScope(
+                                    relevantScope,
+                                    visibleGoals,
+                                    projection.targetGoalIds(),
+                                    effectiveMastery,
+                                    mastery,
+                                    projectionStateFilterId)
+                            && !resolvesToCurricularTargetInScope(
+                                    learner.getActiveGoalId(),
+                                    relevantScope,
+                                    visibleGoals,
+                                    projection.targetGoalIds(),
+                                    projectionStateFilterId);
+                })
+                .toList();
+    }
+
+    private Set<String> resolveRelevantPlannedScope(
+            String orientationGoalId,
+            List<String> plannedIds,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> fallbackScope) {
+        LinkedHashSet<String> relevantScope = new LinkedHashSet<>();
+        for (String plannedId : plannedIds) {
+            Set<String> localScope = computeScope(
+                    List.of(plannedId),
+                    structuralGoals,
+                    Collections.emptyMap());
+            if (localScope.contains(orientationGoalId)) {
+                relevantScope.addAll(localScope);
+            }
+        }
+        if (relevantScope.isEmpty()) {
+            relevantScope.addAll(fallbackScope);
+        }
+        return relevantScope;
+    }
+
+    private boolean hasExistingCurricularProgressInScope(
+            Set<String> scope,
+            Map<String, LearningGoal> goals,
+            Set<String> targetGoalIds,
+            Map<String, Double> effectiveMastery,
+            Map<String, Double> mastery,
+            String stateFilterId) {
+        boolean currentProgress = goals.values().stream()
+                .filter(goal -> isCurricularTargetInScope(goal, scope, targetGoalIds))
+                .anyMatch(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) > 0.0);
+        if (currentProgress) {
+            return true;
+        }
+
+        // Partial legacy mappings do not project mastery values, but a positive
+        // value still proves that this learner has already started the mapped
+        // curricular area. Use that evidence only for continuity of the entry
+        // gate; it does not change canonical mastery.
+        return mastery.entrySet().stream()
+                .filter(entry -> entry.getValue() != null && entry.getValue() > 0.0)
+                .anyMatch(entry -> resolvesToCurricularTargetInScope(
+                        entry.getKey(),
+                        scope,
+                        goals,
+                        targetGoalIds,
+                        stateFilterId));
+    }
+
+    private boolean resolvesToCurricularTargetInScope(
+            String goalId,
+            Set<String> scope,
+            Map<String, LearningGoal> goals,
+            Set<String> targetGoalIds,
+            String stateFilterId) {
+        if (goalId == null || goalId.isBlank()) {
+            return false;
+        }
+
+        LearningGoal directGoal = goals.get(goalId);
+        if (isCurricularTargetInScope(directGoal, scope, targetGoalIds)) {
+            return true;
+        }
+
+        for (ResolvedGoalMapping mapping : goalMappingService.findAllByLegacyGoalId(goalId)) {
+            if (!("exact".equals(mapping.matchType()) || "partial".equals(mapping.matchType()))) {
+                continue;
+            }
+            if (!mappingMatchesProjectionStateFilter(mapping, stateFilterId)) {
+                continue;
+            }
+            for (String canonicalGoalId : resolveCanonicalProjectionTargetIds(mapping.canonicalGoalId(), goals)) {
+                if (isCurricularTargetInScope(goals.get(canonicalGoalId), scope, targetGoalIds)) {
+                    return true;
+                }
+            }
+        }
+
+        String provenanceMappedGoalId = findCanonicalGoalIdByLegacySourceId(goalId, goals);
+        return provenanceMappedGoalId != null
+                && isCurricularTargetInScope(goals.get(provenanceMappedGoalId), scope, targetGoalIds);
+    }
+
+    private boolean isCurricularTargetInScope(
+            LearningGoal goal,
+            Set<String> scope,
+            Set<String> targetGoalIds) {
+        return goal != null
+                && scope.contains(goal.getId())
+                && targetGoalIds.contains(goal.getId())
+                && isAtomicGoal(goal)
+                && !isOrientationGoal(goal);
     }
 
     private Map<String, Double> computeEffectiveMastery(Map<String, LearningGoal> allGoals,
@@ -6036,6 +6291,9 @@ public class LearnerService {
         } else if (activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)) {
             requiredAction = "chooseMemoryMode";
             goalOptions = List.of(activeGoal);
+        } else if (activeGoal != null && !activeGoalMastered && isOrientationGoal(activeGoal)) {
+            requiredAction = "orientActiveGoal";
+            goalOptions = List.of(activeGoal);
         } else if (activeGoal != null && !activeGoalMastered) {
             requiredAction = "teachActiveGoal";
             goalOptions = List.of(activeGoal);
@@ -6159,6 +6417,7 @@ public class LearnerService {
                         g.description(),
                         g.type(),
                         g.nodeKind(),
+                        g.semanticKind(),
                         "Scope expansion",
                         g.tags(),
                         g.resourceLinks(),
@@ -6486,6 +6745,7 @@ public class LearnerService {
                 goal.getDescription(),
                 resolveNodeType(goal),
                 resolveNodeKind(goal),
+                goal.getSemanticKind(),
                 reason,
                 goal.getTags(),
                 resourceLinks,

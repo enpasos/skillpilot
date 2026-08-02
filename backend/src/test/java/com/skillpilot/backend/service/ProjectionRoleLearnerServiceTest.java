@@ -96,6 +96,33 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
+    void omittedDirectPrerequisiteFailsClosedButOmittedInheritedCompatibilityPrerequisiteDoesNotBlock() {
+        Fixture directRequirement = fixture(view(goalEntry(TARGET_ID)));
+        when(directRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(directRequirement.learner(), TARGET_ID)));
+
+        assertThat(directRequirement.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(directRequirement.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .doesNotContain(TARGET_ID);
+
+        Fixture inheritedRequirement = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
+        inheritedRequirement.landscape().getGoals().stream()
+                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow()
+                .setRequires(List.of(PREREQUISITE_ID));
+        when(inheritedRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(inheritedRequirement.learner(), OUTSIDE_TARGET_ID)));
+
+        assertThat(inheritedRequirement.service().getFrontier(LEARNER_ID))
+                .containsExactly(OUTSIDE_TARGET_ID);
+        assertThat(inheritedRequirement.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .containsExactly(OUTSIDE_TARGET_ID);
+    }
+
+    @Test
     void targetDominatesPrerequisiteOnlyWhenSameStableGoalIsReferencedInBothRoles() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
@@ -366,6 +393,7 @@ class ProjectionRoleLearnerServiceTest {
         return new Fixture(
                 service,
                 learner,
+                landscape,
                 masteryRepository,
                 compositionViewService,
                 plannedGoalRepository,
@@ -470,6 +498,7 @@ class ProjectionRoleLearnerServiceTest {
     private record Fixture(
             LearnerService service,
             Learner learner,
+            SkillLandscape landscape,
             MasteryRepository masteryRepository,
             CompositionViewService compositionViewService,
             PlannedGoalRepository plannedGoalRepository,

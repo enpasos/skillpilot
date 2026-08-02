@@ -9121,8 +9121,8 @@ Validation:
 
 What changed:
 
-- a new wrapper [run_canonical_physics_evidence_watch.sh](/home/enpasos/projects/skillpilot/scripts/run_canonical_physics_evidence_watch.sh) now executes the `F6` watch flow in one stable command path
-- the existing frontend package scripts now expose the same flow as `npm run check:canonical-physics-evidence-watch` in [package.json](/home/enpasos/projects/skillpilot/app/package.json)
+- a new wrapper [run_canonical_physics_evidence_watch.sh](https://github.com/enpasos/skillpilot/blob/main/scripts/run_canonical_physics_evidence_watch.sh) now executes the `F6` watch flow in one stable command path
+- the existing frontend package scripts now expose the same flow as `npm run check:canonical-physics-evidence-watch` in [package.json](https://github.com/enpasos/skillpilot/blob/main/app/package.json)
 - the manifest now exposes this wrapper as `runCommand`, and the active `F6` tracker text/workboard now point to the fixed run path
 
 Interpretation:
@@ -9140,7 +9140,7 @@ Validation:
 
 What changed:
 
-- a new workflow [canonical_physics_evidence_watch.yml](/home/enpasos/projects/skillpilot/.github/workflows/canonical_physics_evidence_watch.yml) now runs the `F6` watch wrapper on schedule, on manual dispatch, and on relevant push/pull-request changes
+- a new workflow [canonical_physics_evidence_watch.yml](https://github.com/enpasos/skillpilot/blob/main/.github/workflows/canonical_physics_evidence_watch.yml) now runs the `F6` watch wrapper on schedule, on manual dispatch, and on relevant push/pull-request changes
 - the workflow uploads the rendered watch status and delta markdown as artifacts, so file-level watch events stay inspectable even when the job fails
 - the manifest now exposes the workflow path, and the active `F6` tracker/workboard now include the workflow as part of the operational watch surface
 
@@ -9159,7 +9159,7 @@ Validation:
 
 What changed:
 
-- a new script [check_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/check_canonical_physics_evidence_watch_delta.py) now compares the current watched files against the frozen baseline and exits non-zero when the watch surface drifts
+- a new script [check_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/check_canonical_physics_evidence_watch_delta.py) now compares the current watched files against the frozen baseline and exits non-zero when the watch surface drifts
 - the manifest now exposes this as `checkCommand`, so `F6` has a single machine-readable command for automated watch execution
 - the active `F6` tracker text and the topic workboard now include the exit-code check as part of the operational watch surface
 
@@ -9178,8 +9178,8 @@ Validation:
 
 What changed:
 
-- a new capture script [capture_canonical_physics_evidence_watch_baseline.py](/home/enpasos/projects/skillpilot/scripts/capture_canonical_physics_evidence_watch_baseline.py) now freezes the current `F6` watch surface into [physics-evidence-watch-baseline.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json)
-- a new delta renderer [render_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_delta.py) now compares the current watched files against that baseline and writes [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md)
+- a new capture script [capture_canonical_physics_evidence_watch_baseline.py](https://github.com/enpasos/skillpilot/blob/main/scripts/capture_canonical_physics_evidence_watch_baseline.py) now freezes the current `F6` watch surface into [physics-evidence-watch-baseline.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json)
+- a new delta renderer [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py) now compares the current watched files against that baseline and writes [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md)
 - the active `F6` tracker text and the topic workboard now treat the baseline-driven delta view as part of the operational watch surface
 
 Interpretation:
@@ -9198,7 +9198,7 @@ Validation:
 
 What changed:
 
-- a new script [render_canonical_physics_evidence_watch_status.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_status.py) now renders the machine-readable watch manifest into a human-readable status sheet
+- a new script [render_canonical_physics_evidence_watch_status.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py) now renders the machine-readable watch manifest into a human-readable status sheet
 - the generated status sheet [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) now shows the current watch target register plus existence, content hash, and last-modified timestamp per watched file
 - the active `F6` tracker text and the topic workboard now point to this rendered status view in addition to the raw manifest
 
@@ -9217,7 +9217,7 @@ Validation:
 
 What changed:
 
-- a new provenance artifact [physics-evidence-watch-manifest.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json) now captures the active `F6` watch surface in machine-readable form
+- a new provenance artifact [physics-evidence-watch-manifest.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json) now captures the active `F6` watch surface in machine-readable form
 - the manifest groups the watch surface into
   - Hessen lower-secondary seed watch
   - lower-secondary candidate floors for `Kosmos` and `Elektronik`

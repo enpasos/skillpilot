@@ -362,6 +362,7 @@ const policyIds = [
   "COACH-FOCUS-001",
   "COACH-MUTATION-001",
   "COACH-QUESTION-001",
+  "COACH-ORIENTATION-001",
   "COACH-GOAL-001",
   "COACH-MASTERY-001",
   "COACH-RECALL-001",
@@ -376,6 +377,35 @@ for (const policyId of policyIds) {
     `Missing behavioral policy trace: ${policyId}`,
   );
 }
+
+const orientationSection = policy.match(
+  /## 5\. Motivations- und Orientierungsmodus\n([\s\S]*?)\n## 6\./u,
+);
+assert.ok(
+  orientationSection,
+  "The coaching policy must contain a dedicated motivation and orientation mode.",
+);
+assert.match(orientationSection[1], /Möglichkeiten zeigen/u);
+assert.match(orientationSection[1], /Positive Perspektiven eröffnen/u);
+assert.match(
+  orientationSection[1],
+  /sichtbare Reaktion, geäußertes Interesse oder Weiterbereitschaft/u,
+);
+assert.match(
+  orientationSection[1],
+  /weder Vorwissen noch Begriffe, Rechenverfahren,\s*Detailkenntnisse/u,
+  "Orientation must never become a subject-detail or prior-knowledge check.",
+);
+assert.match(
+  orientationSection[1],
+  /nicht als „fachlich gemeistert“/u,
+  "Orientation completion must not be presented as subject mastery.",
+);
+assert.match(
+  skill,
+  /motivierende Orientierung, dialogisches Scaffolding, Verified Recall oder\s+strenge Prüfung/u,
+  "The skill workflow must route motivation through its dedicated mode.",
+);
 
 const forbiddenLegacyFragments = [
   "startCode",

@@ -14,7 +14,7 @@ Journeys und Acceptance-Gates stehen in
 
 Die ChatGPT-MCP-App allein besitzt keine Knowledge-Uploadfläche wie ein Custom
 GPT. Das versionierte deutsche V1-Quellpaket unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](<../../../ai/openai plugin/skillpilot-coach-de-v1/>)
+[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
 ergänzt sie deshalb um einen Coach-Skill. Die bewährten deutschen Inhalte unter
 `ai/openai custom gpt` bleiben fachlich-didaktische Ausgangsspezifikation,
 werden aber nicht als alte Knowledge-Dateien zur Laufzeit gesucht oder

@@ -107,6 +107,10 @@ public final class ClaudeCoachMcpTools {
                 state,
                 "When language is present, answer in that language; otherwise continue in the user's language. "
                         + "Follow state.stateMachine.requiredAction. "
+                        + "When requiredAction=orientActiveGoal and activeGoal.semanticKind=orientation, build interest "
+                        + "by showing accessible possibilities and positive perspectives; do not test prior or detailed "
+                        + "subject knowledge or grade answers as right or wrong. Save 1.0 only after the learner engages "
+                        + "with a perspective or explicitly chooses to continue. "
                         + "Reload this context instead of relying on an old tool result.");
     }
 
@@ -151,7 +155,10 @@ public final class ClaudeCoachMcpTools {
 
     @Tool(
             name = "setMastery",
-            description = "Save one mastery value after the learner has provided sufficient evidence. "
+            description = "For semanticKind=orientation, do not test subject knowledge: first show accessible "
+                    + "possibilities and positive perspectives, then save 1.0 only after the learner engages or "
+                    + "chooses to continue. For other goals, save one mastery value only after the learner has "
+                    + "provided sufficient evidence. "
                     + "The value must be between 0.0 and 1.0. Never batch several goals in this tool.")
     public MasteryToolResult setMastery(
             @ToolParam(description = "Exact active goal ID") String goalId,

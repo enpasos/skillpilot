@@ -108,6 +108,33 @@ class ClaudeCoachMcpToolsTest {
     }
 
     @Test
+    void orientationContractBuildsInterestWithoutAssessingSubjectKnowledge() throws Exception {
+        authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
+        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.empty());
+        when(coachTools.getLearnerState(SKILLPILOT_ID)).thenReturn(stateWithSkillpilotId());
+
+        ClaudeCoachMcpTools.CoachContext context = tools.getCoachContext();
+        org.springframework.ai.tool.annotation.Tool masteryTool = ClaudeCoachMcpTools.class
+                .getMethod("setMastery", String.class, Double.class)
+                .getAnnotation(org.springframework.ai.tool.annotation.Tool.class);
+
+        assertThat(context.instruction())
+                .contains("requiredAction=orientActiveGoal")
+                .contains("accessible possibilities and positive perspectives")
+                .contains("do not test prior or detailed subject knowledge")
+                .contains("explicitly chooses to continue");
+        assertThat(masteryTool).isNotNull();
+        assertThat(masteryTool.description())
+                .contains("semanticKind=orientation")
+                .contains("do not test subject knowledge")
+                .contains("positive perspectives")
+                .contains("save 1.0")
+                .contains("For other goals")
+                .contains("sufficient evidence");
+    }
+
+    @Test
     void rejectsWriteWithoutWriteScopeAndAllowsItWithScope() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
 

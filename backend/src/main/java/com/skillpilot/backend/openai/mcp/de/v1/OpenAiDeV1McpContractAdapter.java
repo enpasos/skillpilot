@@ -102,7 +102,9 @@ public final class OpenAiDeV1McpContractAdapter {
 
             Antworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und außer der bereits in ihrer Startnachricht enthaltenen Lernsession keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, gib keinen Link aus. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.
 
-            Führe dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.
+            Wenn interactionMode=orientation gilt, führe keine Fachprüfung durch. Zeige zwei bis vier verständliche Möglichkeiten und ehrliche positive Perspektiven des folgenden Stoffes und frage nur niedrigschwellig, was neugierig macht oder ob die lernende Person weitergehen möchte. Prüfe weder Vorwissen noch Begriffe, Rechenverfahren, Detailwissen, Richtigkeit, Transfer oder Feynman-Teach-back. Der Orientierungsabschluss darf erst nach einer sichtbaren Reaktion, Interessenäußerung oder ausdrücklichen Weiterbereitschaft gespeichert werden; er ist nur ein Abschlussmarker und bescheinigt keine Fachkompetenz. Nenne ihn niemals fachlich gemeistert.
+
+            Führe bei normalen Inhaltszielen dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery für ein Inhaltsziel nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.
 
             Wenn der jüngste Kontext goalVisualization enthält und nextAllowedTools render_skillpilot_goal_visualization_de erlaubt, rufe dieses Anzeige-Tool genau einmal mit der dort unverändert enthaltenen goalId auf. Nur dieses Tool erzeugt die MCP-UI mit dem freigegebenen Bild des aktiven atomischen Lernziels. Rufe es niemals auf, wenn goalVisualization fehlt oder das Tool nicht erlaubt ist. Nutze das Bild nur als didaktische Orientierung, nicht als Quelle, Beleg, Aufgabe oder Leistungsnachweis. Erfinde keine Bilddetails und wiederhole weder Bild-URL noch technische Bildmetadaten in der sichtbaren Antwort. Ohne goalVisualization bleibt der normale Chatablauf unverändert.
 
@@ -370,9 +372,13 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_MASTERY,
                         "Mastery speichern",
-                        "Schließt genau das bestätigte aktive atomische Ziel mit Mastery 1.0 ab. Erst nach zwei "
-                                + "unabhängigen sichtbaren Checks oder echtem mehrschrittigem Transfer in verändertem "
-                                + "Kontext aufrufen; alle Aspekte des Ziels müssen geprüft sein. Nie für Cluster, "
+                        "Schließt genau das bestätigte aktive atomische Ziel mit dem technischen Wert 1.0 ab. Bei "
+                                + "interactionMode=orientation erst nach gezeigten Möglichkeiten und positiver "
+                                + "Perspektive sowie einer sichtbaren Reaktion, Interessenäußerung oder ausdrücklichen "
+                                + "Weiterbereitschaft aufrufen; dabei kein Detailwissen prüfen und keine "
+                                + "Fachkompetenz behaupten. Bei normalen Inhaltszielen erst nach zwei unabhängigen "
+                                + "sichtbaren Checks oder echtem mehrschrittigem Transfer in verändertem Kontext "
+                                + "aufrufen; alle Aspekte des Ziels müssen geprüft sein. Nie für Cluster, "
                                 + "Memorierungs-/SRS-Ziele, Selbsteinschätzung, Nachsprechen oder denselben "
                                 + "vorgerechneten Fall verwenden.",
                         objectSchema(
@@ -1815,6 +1821,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("description", stringSchema());
         properties.put("type", stringSchema());
         properties.put("nodeKind", stringSchema());
+        properties.put("semanticKind", stringSchema());
         properties.put("cockpitUrl", stringSchema());
         properties.put("exam", examTaskSchema());
         return objectSchema(properties, List.of("goalId"));
@@ -1849,6 +1856,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         "description", stringSchema(),
                         "type", stringSchema(),
                         "nodeKind", stringSchema(),
+                        "semanticKind", stringSchema(),
                         "reason", stringSchema()),
                 List.of("goalId"));
     }

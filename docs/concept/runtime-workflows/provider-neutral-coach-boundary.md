@@ -135,6 +135,24 @@ is serialized. The projection:
 Adapters may reduce this allowlisted state further. They must not serialize a raw
 `UnifiedLearnerStateResponse` as provider context.
 
+## Motivation and Orientation Completion
+
+An active goal with authoritative `semanticKind=orientation` uses the shared
+`orientActiveGoal` state. Explicit `Motivation` or `Orientation` tags are a
+legacy fallback only when no semantic kind exists. Every provider must use this
+state to build interest: it shows accessible possibilities, applications, and
+honest positive perspectives of the material that follows, then invites a
+low-pressure reaction or decision to continue.
+
+Orientation never diagnoses or grades prior knowledge, terminology,
+calculations, subject details, correctness, transfer, recall, or exam
+performance. Its observable completion criterion is that the learner has seen
+the orientation and responds to a perspective or explicitly chooses to
+continue. The existing numeric `1.0` is retained only as a binary compatibility
+marker; no provider or UI may call it proven subject mastery. Normal
+evidence-based mastery rules continue to apply unchanged to ordinary content
+goals.
+
 ## Protected Exam Evaluation
 
 Exam solutions and scoring are loaded through the separate
@@ -268,7 +286,7 @@ shared boundary.
 
 ## Prototype And Current German Production Boundary
 
-The executable mechanism prototype under [`ai/openai app`](<../../../ai/openai app/README.md>)
+The executable mechanism prototype under [`ai/openai app`](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20app/README.md)
 already demonstrates two locale-fixed MCP endpoints, separate widget resources,
 app-only choice and submission calls, hidden result `_meta`, argumentless state
 reads and persistent demo state. It deliberately uses one **no-auth development

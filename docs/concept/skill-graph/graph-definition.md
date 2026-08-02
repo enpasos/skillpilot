@@ -382,7 +382,7 @@ This keeps frontier logic precise and avoids over-blocking learners with coarse 
 
 ### 8.5 Didactic route coverage: motivation to autonomy
 
-SkillPilot landscapes SHOULD expose one or more didactic routes through the atomic prerequisite graph.
+SkillPilot landscapes SHOULD expose one or more didactic routes through the atomic prerequisite graph. A reviewed validator profile MAY promote this to a release-blocking MUST for an explicitly named scope.
 
 Let:
 
@@ -420,7 +420,43 @@ It should form teachable routes whose overall direction is:
 - memorization where needed,
 - independent application / exam-level performance.
 
-In the current validator rollout, rules `GVR-004` and `GVR-005` implement only the first half of this idea: they ensure connectivity from atomic goals back to a motivation anchor in the effective-prerequisite graph. A future stricter profile can extend this to full route coverage toward terminal autonomy goals, preferably on the atomic prerequisite layer.
+In the current validator rollout, `GVR-012` promotes this definition to a hard release invariant for canonical DE Gymnasium mathematics, independently for Sek I and Sek II:
+
+- `M` consists of the stage-specific goals authoritatively classified as `orientation`;
+- ordinary route goals are the stage-specific goals classified as `curricularAtomic`;
+- `T` consists of the configured atomic goals classified as `practiceAssessment`;
+- reachability is proved only through direct atomic-to-atomic `requires` edges;
+- every profile supplies an explicit stage-local proof-node predicate, so a route for one stage cannot be proved through nodes of another stage;
+- only `orientation`, `curricularAtomic`, optional `memory`, and `practiceAssessment` nodes may contribute to that proof;
+- every node that participates in the proof may not carry direct prerequisites outside those route kinds; inherited cluster prerequisites do not count;
+- route order is semantic: assessment cannot be a prerequisite before curricular learning, every terminal route passes through at least one ordinary curricular atom, and a memory node can participate only after curricular learning has begun;
+- semantic kind and graph shape must agree; in particular a `curricularAtomic` decision cannot silently stop being checked merely because the node acquired children;
+- the authoritative semantic-kind ledger must classify the complete canonical graph, so a newly added or stale unclassified goal cannot silently escape the rule;
+- every `curricularAtomic` goal must be assigned to at least one of the independently checked stage profiles;
+- the rule remains an error even when legacy graph rules are temporarily run in warning mode.
+
+An `orientation` node is a didactic entry marker, not an assessable subject
+competency. Its purpose is to make the following material attractive and
+meaningful by showing concrete possibilities and honest positive perspectives.
+The learner may respond with an interest, preference, own connection, or a wish
+to continue; no response must demonstrate correct terminology, calculation,
+detail knowledge, transfer, recall, or exam performance. Runtime may store the
+existing numeric value `1` as a binary completion marker after such visible
+engagement, but must never present that marker as proven fachliche Mastery.
+
+Memory goals are optional support, not mandatory checkpoints. They are selected through the separate memory-review contract and may support a route where justified, but the hard route profile must not make every terminal performance depend on an SRS deck. In this rule, `curricularAtomic` denotes the ordinary reviewed subject goals: understanding, explaining, reasoning, applying, problem solving, and construction as appropriate. It does not claim that each route needs an additional node with a separately inferred "understanding" type. Such a type would require its own authored and reviewed semantic role rather than title-based inference. The runtime corollary is separate but consistent: at a genuine zero-progress entry into a projected scope, unresolved `orientation` goals are the only selectable frontier goals; existing learners with established subject progress are not reset to that entry gate.
+
+The canonical inventory rule and a learner-facing projection rule are both
+necessary. `GVR-012` proves that the authored canonical graph has complete
+routes; it cannot prove that a narrower composition view retained every direct
+prerequisite. A reviewed view therefore has to include each direct prerequisite
+of every visible target either as another `target` or explicitly as
+`prerequisiteOnly`. Projection roles remain authored decisions and are never
+inferred from stage or graph position. At runtime, a missing direct canonical
+prerequisite fails closed and blocks the target; only omitted prerequisites
+inherited from transitional legacy clusters retain the compatibility behavior.
+The Hessen Sek-II mathematics LK regression additionally proves complete direct
+prerequisite closure for that reviewed view.
 
 ### 8.5.1 Reference example: Physics E-phase subtree
 
@@ -679,6 +715,15 @@ Such a default tree MUST ensure:
 This single-occurrence tree property is a scoped-view projection validity condition, not a base validity condition of the authored full graph.
 
 One reviewed way to satisfy this stronger claim is to compile the default tree from a separate scope-specific composition view whose structure nodes reference canonical subtree roots of the authored skill graph.
+
+Where an authoritative semantic-kind review is available, a composition view
+MUST NOT reference a `curricularArea` cluster through a direct `goalEntry`.
+That representation would discard its `contains` structure and turn a
+navigation area into an opaque atomic-looking runtime target. Use a
+`canonicalSubtree` to retain the reviewed canonical descendants, or author an
+explicit learner-facing structure that references the intended atomic goals.
+This is a representation constraint; it does not infer a projection role from
+the cluster, its stage, or its position.
 
 Such composition-view artifacts remain outside the formal graph object defined in this specification.
 

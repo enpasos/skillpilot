@@ -1,5 +1,8 @@
 # Work Notes: TUM Curriculum Automation
 
+> Historical work-notes record, 29 January 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+
 ## Project Goal
 We are expanding the Skillpilot platform to include all major curricula from the **Technical University of Munich (TUM)**.
 Following the successful manual/semi-automated import of **Mathematics** and **Physics** (B.Sc.), the goal is to **automate** this process for future subjects and programs.

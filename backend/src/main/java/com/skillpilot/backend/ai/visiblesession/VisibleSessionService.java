@@ -360,15 +360,20 @@ public class VisibleSessionService {
                 chatSessionToken,
                 new MasteryUpdateRequest(Map.of(request.goalId(), 1.0), request.goalId()));
         UnifiedLearnerStateResponse updated = currentState(chatSessionToken);
+        boolean orientationGoal = isOrientationGoal(activeGoal);
         return switch (result.status()) {
             case UPDATED -> outcome(
                     HttpStatus.OK,
                     chatSessionToken,
                     language,
                     updated,
-                    localized(language,
-                            "Mastery wurde für die angegebene Lernziel-ID gespeichert.",
-                            "Mastery was saved for the cited learning-goal ID."));
+                    orientationGoal
+                            ? localized(language,
+                                    "Die Orientierung wurde als abgeschlossen gespeichert.",
+                                    "Orientation was saved as completed.")
+                            : localized(language,
+                                    "Mastery wurde für die angegebene Lernziel-ID gespeichert.",
+                                    "Mastery was saved for the cited learning-goal ID."));
             case BAD_REQUEST -> outcome(
                     HttpStatus.BAD_REQUEST,
                     chatSessionToken,
@@ -568,11 +573,14 @@ public class VisibleSessionService {
             actions.add("applyVisibleChoice");
         }
         if ("setActiveGoal".equals(requiredAction)
+                || "orientActiveGoal".equals(requiredAction)
                 || "teachActiveGoal".equals(requiredAction)
                 || "setMastery".equals(requiredAction)) {
             actions.add("setVisibleActiveGoal");
         }
-        if ("teachActiveGoal".equals(requiredAction) || "setMastery".equals(requiredAction)) {
+        if ("orientActiveGoal".equals(requiredAction)
+                || "teachActiveGoal".equals(requiredAction)
+                || "setMastery".equals(requiredAction)) {
             actions.add("setVisibleMastery");
         }
         if ("chooseMemoryMode".equals(requiredAction)
@@ -1038,6 +1046,20 @@ public class VisibleSessionService {
         return state.activeGoal();
     }
 
+    private boolean isOrientationGoal(FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        if (goal.semanticKind() != null && !goal.semanticKind().isBlank()) {
+            return "orientation".equalsIgnoreCase(goal.semanticKind().trim());
+        }
+        return goal.tags() != null && goal.tags().stream()
+                .filter(java.util.Objects::nonNull)
+                .map(String::trim)
+                .anyMatch(tag -> "orientation".equalsIgnoreCase(tag)
+                        || "motivation".equalsIgnoreCase(tag));
+    }
+
     private String requiredAction(UnifiedLearnerStateResponse state) {
         return state == null || state.stateMachine() == null
                 ? null
@@ -1081,6 +1103,9 @@ public class VisibleSessionService {
             case "setCurriculum", "setScope", "setActiveGoal", "setPersonalization", "chooseMemoryMode" -> localized(language,
                     "Behandle einen natürlichen Mehrfachwunsch im aktuellen Assistententurn als fortgeltende Absicht. Wende einen inhaltlich eindeutigen Treffer sofort an und prüfe den frischen Folgezustand erneut; eine reine Nummernantwort gilt nur einmal. Zeige erst eine wirklich offene nummerierte Auswahl. Verwende nur Auswahlreferenz und Nummern.",
                     "Treat a natural multi-part request as standing intent in this assistant turn. Apply one semantically unambiguous match immediately and inspect the fresh next state again; a numbers-only reply is consumed once. Show only a genuinely unresolved numbered choice. Use only the selection reference and numbers.");
+            case "orientActiveGoal" -> localized(language,
+                    "Wecke Interesse am folgenden Stoff: Zeige verständliche Möglichkeiten, Anwendungen und positive Perspektiven. Prüfe weder Vorwissen noch inhaltliches Detailwissen, verlange keine richtige Fachantwort und bewerte Antworten nicht als richtig oder falsch. Speichere den Abschluss mit setVisibleMastery erst, nachdem die lernende Person auf eine Perspektive eingegangen ist oder ausdrücklich weiterlernen möchte; bei Ablehnung oder Unklarheit biete eine andere Perspektive an.",
+                    "Build interest in the material that follows: show accessible possibilities, applications, and positive perspectives. Do not test prior or detailed subject knowledge, require a correct subject answer, or grade answers as right or wrong. Save completion with setVisibleMastery only after the learner engages with a perspective or explicitly chooses to continue; if they decline or remain unsure, offer a different perspective.");
             case "teachActiveGoal", "setMastery" -> localized(language,
                     "Arbeite dialogisch am aktiven Lernziel. Speichere Mastery erst nach ausreichender Evidenz.",
                     "Coach the active learning goal dialogically. Save mastery only after sufficient evidence.");

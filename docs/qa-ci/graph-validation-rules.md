@@ -30,7 +30,8 @@ This is the single source of truth for algorithmic graph validation in CI.
   - `GVR-*` rules are also `error` (strict by default)
 - `legacy-warn` (temporary migration mode):
   - enable with `VALIDATE_GRAPH_STRICT_RULES=0`
-  - `GVR-*` are downgraded to `warn`
+  - migration rules are downgraded to `warn`
+  - `GVR-012` remains an unconditional `error`; the reviewed Sek-I/Sek-II route gate cannot be bypassed
 
 ## Rules currently emitted with stable IDs
 
@@ -47,8 +48,9 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
 | `GVR-010` | If `shortKey` is present, it must be unique within the logical `landscapeId` (duplicates across locale serializations are allowed only when they refer to the same goal id). | Logical landscape (`landscapeId`, including multi-file localizations) | `error` |
 | `GVR-011` | Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to at least one configured motivation anchor via effective `requires`. | Profile-defined rollout scopes | `error` |
-| `GVR-012` | Configured scoped full-route-coverage profile: every node selected by the profile must have a transitive path to one configured motivation anchor and to one configured terminal autonomy goal via effective `requires`. | Profile-defined rollout scopes | `error` |
+| `GVR-012` | Hard scoped full-route coverage: every selected `curricularAtomic` goal must lie on a direct atomic `requires` path from its stage-specific `orientation` anchor to a stage-specific atomic `practiceAssessment` terminal. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
+| `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -153,12 +155,17 @@ Current stable finding families:
 | `CPV-005` | The compiled default tree contains the same canonical goal more than once. | `error` |
 | `CPV-006` | The compiled default tree gives one canonical goal more than one visible parent. | `error` |
 | `CPV-007` | A structure node is left empty although it is still present in the view tree. | `error` |
+| `CPV-008` | A composition reference uses an unknown `projectionRole`. | `error` |
+| `CPV-009` | A direct `goalEntry` exposes a reviewed `semanticKind: curricularArea` cluster as an opaque runtime goal instead of expanding it with `canonicalSubtree` or representing its atomic goals explicitly. | `error` |
 | `CPV-101` | A structure node label is still too generic to be review-safe. | `warning` |
 | `CPV-102` | A referenced canonical subtree root still looks phase- or state-specific by title. | `warning` |
 | `CPV-210` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the reviewed motivation anchor. | `error` |
 | `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders or their individual task nodes. | `error` |
 | `CPV-212` | The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or stale aggregate terminal endpoint. | `error` |
 | `CPV-213` | A canonical Gymnasium mathematics Sek-I learner-facing view still exposes the legacy `Übungen Sekundarstufe I` aggregate branch. | `error` |
+| `CPV-214` | A canonical Gymnasium mathematics Sek-II or cross-stage learner-facing view does not expose the reviewed Sek-II motivation anchor. | `error` |
+| `CPV-215` | A canonical Gymnasium mathematics Sek-II or cross-stage learner-facing view exposes no atomic terminal autonomy/assessment endpoint from the reviewed Sek-II terminal clusters. | `error` |
+| `CPV-216` | A learner-facing composition label exposes an internal authoring process term such as `Source-Extraction` instead of naming the represented subject matter. | `error` |
 
 ## Current compatibility model vs. target model
 
@@ -198,21 +205,20 @@ Rule semantics:
   - one scoped goal selector
 - `GVR-011` fails if any selected node except the anchor nodes themselves has no transitive path to at least one configured anchor in the effective-requires graph.
 
-Current active profile:
+Current active profiles:
 
 - landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
-- scope: all non-memory atomic goals
-- anchors:
-  - `Warum Mathematik? – Entdecken, Muster & Alltag`
-  - `Warum Mathematik? – Denken, Muster & Zukunft`
+- scopes and anchors are checked independently:
+  - Sek I `curricularAtomic` goals → `Warum Mathematik? – Entdecken, Muster & Alltag`
+  - Sek II `curricularAtomic` goals → `Warum Mathematik? – Denken, Muster & Zukunft`
 - selected nodes:
-  - every atomic goal in the canonical mathematics landscape except memory/SRS goals
+  - atomic goals with an authoritative `semanticKind=curricularAtomic` decision in the stage profile
 
 Interpretation:
 
 - This keeps the rule formulation general while still allowing rollout-specific route guarantees where the graph has already reached review-safe maturity.
 - It is stronger than composition-view ordering alone: the learner-facing tree may start with the motivation node, but `GVR-011` additionally requires the authored graph semantics to reflect that anchor.
-- The current mathematics profile intentionally does not rely on `phase`, `topicCode`, or placement metadata, because many canonical atomic goals are intentionally shared across projected views and do not carry one stable year/phase label.
+- Stage selection uses authored stage metadata; the anchor assignment is never pooled across Sek I and Sek II.
 
 ## Scoped full route coverage (`GVR-012`)
 
@@ -225,31 +231,63 @@ Rule semantics:
   - one scoped goal selector
   - one or more motivation anchor goals
   - one or more terminal autonomy goals
-- `GVR-012` fails if any selected node has:
-  - no transitive path to any configured motivation anchor in the effective-requires graph, or
-  - no transitive path from itself to any configured terminal autonomy goal in that same effective-requires graph
+- the semantic-kind ledger must provide authoritative goal classifications
+- the semantic-kind ledger must classify every canonical goal exactly once; missing, duplicate, unsupported, or stale decisions fail rather than shrinking the checked set
+- every `curricularAtomic` goal must belong to at least one explicit Sek-I/Sek-II route profile; missing stage membership cannot silently remove it from coverage
+- the configured anchor must be atomic, prerequisite-free, and classified as `orientation`
+- every configured terminal leaf must be atomic and classified as `practiceAssessment`
+- every profile declares its complete stage-local proof-node scope; a Sek-I proof cannot pass through Sek-II goals and vice versa
+- `GVR-012` fails if any selected `curricularAtomic` node has:
+  - no transitive path to its stage-specific anchor using only direct atomic-to-atomic `requires`, or
+  - no transitive path from itself to a configured stage-specific terminal using only those same direct atomic edges
+- every configured terminal must itself have a direct atomic path back to the stage-specific anchor
+- every proof-participating node may not carry direct prerequisites outside the allowed route node kinds; cluster-level and inherited/effective prerequisites neither count as proof nor survive as additional hidden shortcuts
+- only `orientation`, `curricularAtomic`, optional `memory`, and `practiceAssessment` nodes may prove a hard route; program structure, curricular-area clusters, and runtime-support nodes cannot be used as didactic shortcuts
+- a `practiceAssessment` node cannot be used as a prerequisite before curricular learning; every terminal route must pass through at least one ordinary `curricularAtomic` goal
+- a `memory` node counts as a route intermediate only after at least one ordinary `curricularAtomic` goal; it cannot replace the curricular learning segment
+- semantic kinds and graph shape must agree: `orientation`, `curricularAtomic`, and `memory` are atomic; `curricularArea`, `programStructure`, and `runtimeSupport` are clusters; `practiceAssessment` may classify either a terminal folder or one of its atomic tasks
 
-Current active profile:
+Current active profiles:
 
 - landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
-- scope: Sekundarstufe I
-- motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
-- terminal autonomy goals: the individual exam-task nodes under `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`
+- Sek I:
+  - motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
+  - terminal autonomy goals: the individual exam-task nodes under `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`
+- Sek II:
+  - motivation anchor: `Warum Mathematik? – Denken, Muster & Zukunft`
+  - terminal autonomy goals: the atomic goals below `Übungen E-Phase`, `Übungen Q1` through `Übungen Q4`, and `Übungen Prozesskompetenzen`
 - learner-facing year autonomy: each Sek-I year scope must expose a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, with individual exam-task nodes below it. A separate global `Sek-I-Abschlussaufgaben Mathematik` capstone is not part of the learner-facing route.
 - rollout boundary: this year-autonomy rule is currently normative for canonical Gymnasium mathematics. Other Sek-I subjects or school forms should opt in only after their composition views and assessment semantics have been reviewed.
-- selected nodes:
-  - all goals tagged `phase:SekI`
-  - plus goals whose normalized phase is `J*`
-  - plus goals whose topic code contains `SEK1`
+- selected nodes: stage-matching atomic goals with authoritative `semanticKind=curricularAtomic`
 
 Interpretation:
 
-- `GVR-012` is the migration-compatible full-route check for reviewed scopes where both ends of the route are now authored explicitly.
-- It does **not** yet prove that the route is authored canonically on the atomic direct-prerequisite layer; it validates full route coverage on the current effective-requires projection.
+- `GVR-012` is a hard release invariant for these reviewed scopes. `VALIDATE_GRAPH_STRICT_RULES=0` does not downgrade it.
+- It proves route coverage on the direct atomic prerequisite layer. Effective cluster inheritance is deliberately insufficient.
+- The proof graph is stage-local. Cross-stage prerequisites may remain explicit support requirements, but they cannot be used to manufacture the stage's motivation-to-terminal proof.
+- Memory nodes are optional support nodes, not mandatory route checkpoints. They remain governed by the separate memory-card review. Making every exam depend on a memory deck would incorrectly make memorization compulsory.
+- A reviewed memory node may occur inside a direct route and then counts as part of that route. Memory nodes that are not route prerequisites remain optional side support and are traced by `CQR-302`, rather than being forced into every assessment chain.
+- Canonical route coverage alone does not certify a narrower learner-facing composition view. Every direct prerequisite of a visible target must also be present in that projection as `target` or explicitly authored `prerequisiteOnly`; the runtime blocks a target when a direct canonical prerequisite is absent. The reviewed Hessen Sek-II mathematics LK view has a complete-closure regression for this contract.
 - For canonical Gymnasium mathematics Sek I, the terminal autonomy endpoints are the individual year-level exam tasks. Do not reintroduce a separate `Sek-I-Abschlussaufgaben Mathematik` capstone or expose an aggregate `Übungen Sekundarstufe I` learner-facing branch as the ordinary route endpoint.
 - Sek-I mathematics exam tasks should use coherent, age-appropriate contexts that carry the mathematics. Avoid copied umbrella scenarios and keep each task's `requires` / `examData.coveredGoalIds` aligned with the goals actually assessed.
 - Prefer a low-floor/high-ceiling task shape: accessible data or representations first, then an explanation, checking, model-limit, or short reasoning prompt appropriate to the year.
 - This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.
+
+## Motivation/orientation structure (`GVR-014`)
+
+`GVR-014` protects motivation nodes globally as pure entry anchors rather than
+content assessments. An authoritative `semanticKind` takes precedence; only
+when it is absent do the explicit legacy tags `Motivation` or `Orientation`
+identify such a node. Every identified node must be atomic and
+prerequisite-free. It must not carry `examData`, `examples`, an `exam` or
+`memory` node kind, SRS/memorization tags, or assessment/practice tags. The
+rule is always an error, including when older graph rules temporarily run in
+warning mode.
+
+This structural gate prevents a motivation node from encoding a hard content
+check. Its didactic purpose is to show possibilities, relevance, and positive
+perspectives that invite the learner into the following subject matter; it is
+not evidence that detailed subject knowledge is already present.
 
 ## Scoped atomic direct requires (`GVR-013`)
 
@@ -308,24 +346,24 @@ Interpretation of current coverage strength:
 - they do **not** yet ensure that the node also lies on a path toward one or more terminal autonomy goals
 - they do **not** yet prove that the didactic route is modeled canonically on the atomic `requires` layer
 
-## Planned direction for stricter atomic route-quality validation (not yet implemented in CI)
+## Hard atomic route-quality validation
 
-The following stricter direction is planned but currently has no additional stable validator rule IDs in this file beyond the effective-graph rollout checks above.
+The stricter direction is implemented as `GVR-012` for canonical DE Gymnasium mathematics Sek I and Sek II.
 
 Target semantics for mature landscapes:
 
 - route coverage should be defined primarily on the atomic direct-prerequisite graph (`R_d` on atomic goals), not on inherited `R_eff`
 - a landscape or route-group may have one or more motivation anchors; a single global anchor is not required if the content structure suggests otherwise
 - a landscape will often have multiple terminal autonomy goals, typically authentic independent performances such as exam tasks or other capstones
-- every route-relevant atomic goal should ideally lie on at least one didactic path from a motivation anchor to a terminal autonomy goal
+- every selected `curricularAtomic` goal must lie on at least one didactic path from its stage-specific motivation anchor to a terminal autonomy goal
 - explicitly excluded support-only atomic goals (concept-spec set `E_route`, e.g. memorization-only helper nodes) require a machine-readable profile convention before they can be validated generically in CI
 
-Recommended rollout strategy:
+Rollout strategy:
 
 - keep `GVR-004` / `GVR-005` as migration-compatible checks on `R_eff`
-- use `GVR-012` for profile-based full route coverage on reviewed scopes while landscapes are still partly cluster-authored
-- later add stricter route-quality rules on the atomic graph
-- treat full atomic route coverage as `SHOULD` at concept level first, then promote it to `MUST` only for mature rollout subsets or strict validator profiles
+- use `GVR-012` only after a scope has reviewed semantic kinds, anchors, and terminal sets
+- keep other landscapes on migration-compatible checks until they receive an explicit hard profile
+- never pool stage anchors merely to make a disconnected route pass
 
 ## Immediate implications from the updated concept spec
 

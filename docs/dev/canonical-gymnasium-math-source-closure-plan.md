@@ -6,7 +6,7 @@ This document complements the existing rollout artifacts:
 
 - [canonical-gymnasium-math-de-expansion-plan.md](canonical-gymnasium-math-de-expansion-plan.md)
 - [canonical-gymnasium-math-bundeslaender-status.md](canonical-gymnasium-math-bundeslaender-status.md)
-- [math-bundesland-rollout-tracker.json](../../curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json)
+- [math-bundesland-rollout-tracker.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json)
 
 Its narrower purpose is different:
 
@@ -149,13 +149,13 @@ Open:
 
 The current repo note already records:
 
-- BW Sek I is still partial in [math-structure-note.md](../../curricula/DE/Gymnasium/input/BW/math-structure-note.md#L23)
-- BW Sek II already reaches all inhaltsbezogene Kursstufen-Leitideen `3.4.1` to `3.5.5` in [math-structure-note.md](../../curricula/DE/Gymnasium/input/BW/math-structure-note.md#L28)
+- BW Sek I is still partial in [math-structure-note.md](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BW/math-structure-note.md#L23)
+- BW Sek II already reaches all inhaltsbezogene Kursstufen-Leitideen `3.4.1` to `3.5.5` in [math-structure-note.md](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BW/math-structure-note.md#L28)
 
 That matches the active snapshots:
 
-- lower-secondary pilot snapshot in [DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot](../../curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot#L9)
-- upper-secondary pilot snapshot in [DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot](../../curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot#L9)
+- lower-secondary pilot snapshot in [DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot#L9)
+- upper-secondary pilot snapshot in [DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot#L9)
 
 ### Exact BW gaps
 

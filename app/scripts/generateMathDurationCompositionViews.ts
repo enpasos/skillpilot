@@ -229,6 +229,19 @@ const replaceStructureById = (
   return { nodes: nextNodes, replaced }
 }
 
+const relabelStructureById = (
+  nodes: CompositionNode[],
+  structureId: string,
+  label: string,
+): CompositionNode[] => nodes.map((node) => {
+  if (node.kind !== 'structure') return node
+  return {
+    ...node,
+    ...(node.id === structureId ? { label } : {}),
+    children: relabelStructureById(node.children, structureId, label),
+  }
+})
+
 const canonicalMath = readJson<{ goals?: LearningGoal[] }>(canonicalMathPath)
 const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
 const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
@@ -437,7 +450,11 @@ const createCrossStageView = (
     throw new Error(`Could not replace Sek-I structure in ${baseView.viewId}`)
   }
 
-  const withoutLowerSupplements = removeStructureById(replaced.nodes, 'he-source-extraction-supplements-seki')
+  const withoutLowerSupplements = relabelStructureById(
+    removeStructureById(replaced.nodes, 'he-source-extraction-supplements-seki'),
+    'he-source-extraction-supplements',
+    'Analytische Geometrie und Anwendungen',
+  )
   const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
     removeStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`),
   )

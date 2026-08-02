@@ -89,7 +89,7 @@ nachgewiesen:
   reproduziert.
 
 Details stehen in
-[RESULTS-2026-07-22.md](<../../../ai/openai app/mcp-regression/RESULTS-2026-07-22.md>).
+[RESULTS-2026-07-22.md](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20app/mcp-regression/RESULTS-2026-07-22.md).
 
 Das bleibt die Grundlage für den chat-first Vertrag: Fachliche IDs dürfen in
 `structuredContent` bleiben und müssen dem Lernenden nicht als Schlüssel gezeigt
@@ -568,7 +568,7 @@ Beleg dafür, dass sie Mehrfachauswahl und `COMPLETE_GROUP` bereits unterstütze
 
 Eine MCP-App allein besitzt nicht dieselbe Knowledge-Upload-Fläche wie ein
 Custom GPT. Das versionierte Quellpaket unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](<../../../ai/openai plugin/skillpilot-coach-de-v1/>)
+[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
 ergänzt sie deshalb um einen Coach-Skill. Die bisherigen Dokumente werden nach
 Funktion migriert:
 

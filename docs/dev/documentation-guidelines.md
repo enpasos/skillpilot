@@ -158,6 +158,16 @@ npm run check:docs-links
 npm run check:docs-indexes
 ```
 
+### Linking Outside The Docs Tree
+
+The published site is rooted at `docs/`, so a relative link that escapes that tree resolves on GitHub but 404s for site readers. Link repository files outside `docs/` through GitHub instead:
+
+```md
+[buildFullStandaloneCurriculumPackage.ts](https://github.com/enpasos/skillpilot/blob/main/app/scripts/buildFullStandaloneCurriculumPackage.ts)
+```
+
+Use `/blob/main/` for files and `/tree/main/` for directories, and percent-encode spaces. `check:docs-links` resolves both forms back to the filesystem, so these links stay verified, and it fails on any relative link from `docs/` that leaves the tree. Paths that are only named, not followed, stay as inline code.
+
 `check:docs-indexes` currently requires every covered Markdown file to be linked from the corresponding `index.md`. It covers `docs/concept/` recursively and the direct Markdown children of `docs/deploy/`, `docs/dev/`, `docs/production-pipelines/`, `docs/qa-ci/`, `docs/quickstart/`, `docs/security/`, and `docs/whitepaper/`.
 
 These same checks run in CI. The main `ci.yml` workflow skips docs-only changes, so `.github/workflows/docs_checks.yml` runs them for pushes and pull requests that touch only `docs/`, `README.md`, `AGENTS.md`, or `mkdocs.yml`, and also builds the MkDocs site.

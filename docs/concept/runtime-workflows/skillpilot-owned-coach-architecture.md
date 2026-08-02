@@ -18,7 +18,7 @@ ist je Sprache ein Plugin,
 das einen fokussierten Coach-Skill mit dem direkt zur Prüfung eingereichten
 sprachspezifischen MCP-Server verbindet. Die zur Veröffentlichung vorgesehene
 deutsche Linie heißt **SkillPilot Coach DE v1**. Das versionierte Quellpaket liegt unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](<../../../ai/openai plugin/skillpilot-coach-de-v1/>)
+[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
 und bindet den produktiven Endpunkt direkt über `.mcp.json` ein. Eine
 echte, vom Host erzeugte `.app.json`-Abbildung der registrierten deutschen
 Pilot-App ist zusätzlich enthalten. Sie dient ausschließlich dem lokalen
@@ -432,7 +432,7 @@ Der Merksatz lautet deshalb:
 
 Der neue Skill wird inhaltlich nicht neu erfunden. Die fachlich und didaktisch
 bewährte deutsche Ausgangsbasis liegt unter
-[`ai/openai custom gpt`](<../../../ai/openai custom gpt/>). Insbesondere
+[`ai/openai custom gpt`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20custom%20gpt). Insbesondere
 `system_instructions.de.md` sowie die deutschen Dokumente zu Lerncoach,
 Mastery, Prüfung, Zustandsmaschine, Fehlerbehandlung und Deep Links werden als
 reviewbarer Migrationskorpus verwendet.
@@ -736,7 +736,7 @@ sichtbare SkillPilot-ID macht die Daten nicht anonym.
 ## 13. Implementierter lokaler Prototyp
 
 Der Prototyp liegt vollständig getrennt von den Custom-GPT-Paketen unter
-[`ai/openai app/`](<../../../ai/openai app/>). Er verwendet den offiziellen
+[`ai/openai app/`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20app). Er verwendet den offiziellen
 MCP-Server- und MCP-Apps-Ansatz und ruft keine Modell-API auf.
 
 ### 13.1 Start
@@ -1116,7 +1116,7 @@ Kernanforderung nicht.
 
 ## 21. Referenzen
 
-- [Lokaler OpenAI-MCP-App-Prototyp](<../../../ai/openai app/>)
+- [Lokaler OpenAI-MCP-App-Prototyp](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20app)
 - [Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md)
 - [Rollback: ChatGPT Visible Session](chatgpt-visible-session-flow.md)
 - [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md)

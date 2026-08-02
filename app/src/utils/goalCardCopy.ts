@@ -26,6 +26,8 @@ export interface GoalCardCopy {
   progressInSectionLabel: string
   progressInStructureSectionLabel: string
   progressForGoalLabel: string
+  completeOrientationLabel: string
+  orientationCompletedLabel: string
   sourceRationaleTooltip: string
   sourceRationaleTitle: string
   sourceRationalePathLabel: string
@@ -76,6 +78,8 @@ export const getGoalCardCopy = (language: LabelLanguage): GoalCardCopy => (
         progressInSectionLabel: 'Progress in this section',
         progressInStructureSectionLabel: 'Progress in this structure section',
         progressForGoalLabel: 'Mastery for this learning goal',
+        completeOrientationLabel: 'Complete orientation and continue',
+        orientationCompletedLabel: 'Orientation completed',
         sourceRationaleTooltip: 'Show source rationale',
         sourceRationaleTitle: 'Source rationale',
         sourceRationalePathLabel: 'SkillPilot path',
@@ -128,6 +132,8 @@ export const getGoalCardCopy = (language: LabelLanguage): GoalCardCopy => (
         progressInSectionLabel: 'Fortschritt in diesem Abschnitt',
         progressInStructureSectionLabel: 'Fortschritt in diesem Strukturabschnitt',
         progressForGoalLabel: 'Kompetenzstand für dieses Lernziel',
+        completeOrientationLabel: 'Orientierung abschließen und weiter',
+        orientationCompletedLabel: 'Orientierung abgeschlossen',
         sourceRationaleTooltip: 'Quellenbegründung anzeigen',
         sourceRationaleTitle: 'Quellenbegründung',
         sourceRationalePathLabel: 'SkillPilot-Pfad',

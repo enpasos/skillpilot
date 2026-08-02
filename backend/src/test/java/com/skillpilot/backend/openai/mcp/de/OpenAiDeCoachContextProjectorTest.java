@@ -242,6 +242,51 @@ class OpenAiDeCoachContextProjectorTest {
     }
 
     @Test
+    void motivationGoalUsesNonAssessingOrientationModeAndCompletionEvidence() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+
+        OpenAiDeCoachContext context = projector.project(motivationState(
+                "orientation",
+                List.of("Motivation", "Orientation"),
+                "orientActiveGoal"));
+
+        assertThat(context.interactionMode()).isEqualTo("orientation");
+        assertThat(context.activeGoal().semanticKind()).isEqualTo("orientation");
+        assertThat(context.nextAllowedTools())
+                .contains(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(context.instruction())
+                .contains("Möglichkeiten", "positive", "neugierig", "keine Fachkompetenz")
+                .doesNotContain("zwei unabhängigen Checks", "Transfer", "Feynman");
+        assertThat(context.policies())
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("Prüfe weder Vorwissen", "Detailwissen")
+                        .contains("keine Wissens-, Übungs-, Transfer-, Recall- oder Prüfungsaufgabe"))
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("sichtbaren Reaktion", "Interessenäußerung", "Weiterbereitschaft")
+                        .contains("niemals fachliche Kompetenz"));
+        assertThat(String.join("\n", context.policies()))
+                .doesNotContain("Speichere Mastery nur nach zwei unabhängigen Checks");
+    }
+
+    @Test
+    void authoritativeNonOrientationSemanticKindOverridesLegacyMotivationTags() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+
+        OpenAiDeCoachContext context = projector.project(motivationState(
+                "curricularAtomic",
+                List.of("Motivation", "Orientation"),
+                "teachActiveGoal"));
+
+        assertThat(context.interactionMode()).isEqualTo("chat");
+        assertThat(context.activeGoal().semanticKind()).isEqualTo("curricularAtomic");
+        assertThat(context.instruction()).contains("zwei unabhängigen Checks");
+    }
+
+    @Test
     void imageExamRemovesPrivatePathAndRequiresExactCockpitLinkBeforeTask() throws Exception {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"),
@@ -324,6 +369,54 @@ class OpenAiDeCoachContextProjectorTest {
                 "learning",
                 active,
                 new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(), List.of(), active));
+    }
+
+    private static UnifiedLearnerStateResponse motivationState(
+            String semanticKind,
+            List<String> tags,
+            String requiredAction) {
+        FrontierGoal active = new FrontierGoal(
+                "motivation-public-id",
+                "Warum Mathematik? – Denken, Muster & Zukunft",
+                "Ein Überblick über Möglichkeiten von Analysis bis Stochastik.",
+                "atomic",
+                null,
+                semanticKind,
+                "Orientation required",
+                tags,
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik",
+                "",
+                "DE",
+                "",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        LearnerGoals goals = new LearnerGoals(
+                List.of(active),
+                0,
+                1,
+                new GoalStats(0, 1),
+                new GoalStats(0, 1),
+                false);
+        return new UnifiedLearnerStateResponse(
+                "SECRET-LEARNER-ID",
+                curriculum,
+                List.of(active),
+                goals,
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "learning",
+                active,
+                new StateMachineInfo("TEACHING", requiredAction, List.of(active), List.of(), active));
     }
 
     private static UnifiedLearnerStateResponse goalVisualizationState(

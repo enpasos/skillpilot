@@ -56,6 +56,7 @@ public record OpenAiDeCoachContext(
             String description,
             String type,
             String nodeKind,
+            String semanticKind,
             String cockpitUrl,
             ExamTask exam) {
     }
@@ -101,6 +102,7 @@ public record OpenAiDeCoachContext(
             String description,
             String type,
             String nodeKind,
+            String semanticKind,
             String reason) {
     }
 

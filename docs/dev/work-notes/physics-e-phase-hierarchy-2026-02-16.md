@@ -1,5 +1,9 @@
 # Work Notes Physik (E-Phase Hierarchie)
 
+> Historical work-notes record, 16 February 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+> Current reference: [graph definition](../../concept/skill-graph/graph-definition.md)
+
 Datum: 2026-02-16  
 Datei: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
 
