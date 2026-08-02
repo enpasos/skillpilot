@@ -424,10 +424,12 @@ In the current validator rollout, rules `GVR-004` and `GVR-005` implement only t
 
 ### 8.5.1 Reference example: Physics E-phase subtree
 
-A concrete reference implementation for this target state exists in the Physics landscape:
+A concrete reference implementation for this target state exists in the retained Hessen Physics source snapshot:
 
-- file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+- file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot`
 - subtree root: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
+
+The snapshot is retained authoring evidence, not a runtime landscape. The live subject landscape is `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`.
 
 In its curated state, this subtree is intended as a model example for mature prerequisite authoring:
 
@@ -440,10 +442,12 @@ This example is useful because it shows that the target semantics in §5.2 and �
 
 ### 8.5.2 Reference example: Mathematics upper-secondary landscape
 
-A second concrete reference implementation exists in the Mathematics landscape:
+A second concrete reference implementation exists in the retained Hessen Mathematics source snapshot:
 
-- file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+- file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
 - scope: the ordinary curriculum phases `E`, `Q1`, `Q2`, `Q3`, `Q4` plus the global process-competency exercise branch
+
+The snapshot is retained authoring evidence, not a runtime landscape. The live subject landscape is `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`.
 
 In its curated state, this landscape is intended as a whole-landscape reference for mature route coverage:
 

@@ -26,6 +26,29 @@ If a document starts mixing roles, split it before adding more content.
 - Put implementation plans, migration notes, and developer-only audits under `docs/dev/`.
 - Keep temporary experiments out of `docs/`; use `tmp/`.
 
+## Language
+
+English is the default for documentation. Write a document in German only when its audience is German-specific — German curriculum law, Bundesland rollout content, KI-Verordnung compliance, or coach behaviour that is authored in German because the learner-facing text is German.
+
+- Do not mix languages inside one document.
+- Learner-facing material that ships in both languages keeps the `.de.md` / `.en.md` suffix pair and stays aligned when either side changes.
+- A German document keeps a German title. Index and navigation entries use the document's own language, so a reader can tell before clicking.
+
+## Site Navigation
+
+`mkdocs.yml` lists the section index pages plus the durable entry documents per section. It is deliberately not a mirror of the docs tree.
+
+Not listed in the navigation:
+
+- generated status artifacts under `docs/qa-ci/status/`
+- dated audits, workboards, and rollout dossiers under `docs/dev/`
+- compatibility pointer pages that exist only to keep old links working
+- asset-production sources such as comic prompts
+
+These stay reachable through their section `index.md`, which `check:docs-indexes` keeps complete. When you add a durable entry document, add it to both the section index and `mkdocs.yml`. When you add a dated dossier or a generated report, the section index alone is enough.
+
+`site_url` must point at the host that actually serves the built site (`https://enpasos.github.io/skillpilot/`). It drives the canonical link tag and `sitemap.xml`; pointing it at the app domain makes every published page advertise a URL that does not serve documentation.
+
 ## Generated Files
 
 Generated Markdown files should start with a clear notice:
@@ -136,6 +159,8 @@ npm run check:docs-indexes
 ```
 
 `check:docs-indexes` currently requires every covered Markdown file to be linked from the corresponding `index.md`. It covers `docs/concept/` recursively and the direct Markdown children of `docs/deploy/`, `docs/dev/`, `docs/production-pipelines/`, `docs/qa-ci/`, `docs/quickstart/`, `docs/security/`, and `docs/whitepaper/`.
+
+These same checks run in CI. The main `ci.yml` workflow skips docs-only changes, so `.github/workflows/docs_checks.yml` runs them for pushes and pull requests that touch only `docs/`, `README.md`, `AGENTS.md`, or `mkdocs.yml`, and also builds the MkDocs site.
 
 For docs that reference generated JSON, also parse the JSON source files:
 

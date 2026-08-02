@@ -1,14 +1,18 @@
 # Landscape JSON Field Reference
 
 This document describes the landscape JSON schema used by the app. It uses the
-Hessian math landscape as a concrete reference.
+retained Hessen math source snapshot as a concrete reference, because its field
+usage is stable and every example value below can be looked up in that one file.
+The landscapes the app actually loads are the canonical subject files under
+`curricula/DE/Gymnasium/canonical/`; they follow the same schema.
 
 The runtime schema in `docs/landscape-runtime.schema.json` validates the required
 runtime contract but intentionally allows additional metadata fields at the
 top level and per goal for future layers and exports.
 
 ## Scope
-- Reference file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+- Reference file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- Live runtime example: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Goal count: file-specific; check the JSON for the current number.
 - Types: `app/src/landscapeTypes.ts`
 - Loader: `app/src/hooks/useLandscapes.ts`

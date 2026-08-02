@@ -52,4 +52,21 @@ assert(
   'SkillPilot ID input uses a white light-mode background',
 )
 
+const learnerCockpitLink = sessionSetupSource.match(
+  /<a\b([^>]*)>\s*<Compass size=\{16\} \/>\s*\{t\.startPage\.login\.cockpitButton\}\s*<\/a>/u,
+)?.[1] ?? ''
+
+assert(learnerCockpitLink, 'learner cockpit control is a link')
+assert(
+  learnerCockpitLink.includes('href={personalCurriculumReady ? learnerCockpitHref : undefined}')
+    && learnerCockpitLink.includes('target="_blank"')
+    && learnerCockpitLink.includes('rel="noopener noreferrer"'),
+  'learner cockpit opens safely in a new browser tab',
+)
+assert(
+  learnerCockpitLink.includes('onClick={handleOpenLearnerCockpit}')
+    && sessionSetupSource.includes('persistLearnerStart(sanitizedLearnerId)'),
+  'learner cockpit persists the confirmed learner setup before opening',
+)
+
 console.log('fresh SkillPilot ID entry tests passed')

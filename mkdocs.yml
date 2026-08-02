@@ -1,5 +1,5 @@
 site_name: SkillPilot
-site_url: https://skillpilot.com/
+site_url: https://enpasos.github.io/skillpilot/
 repo_url: https://github.com/enpasos/skillpilot
 repo_name: enpasos/skillpilot
 
@@ -8,7 +8,7 @@ theme:
   features:
     - navigation.indexes
     - navigation.sections
-    - navigation.expand
+    - navigation.top
     - content.code.copy
   palette:
     - scheme: default
@@ -34,66 +34,116 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+# Navigation policy: this tree lists the section index pages plus the durable
+# entry documents per section. Generated status artifacts and dated audit or
+# rollout dossiers are intentionally not listed here; they stay reachable
+# through the section index pages, which `npm run check:docs-indexes` keeps
+# complete. See docs/dev/documentation-guidelines.md, "Site Navigation".
 nav:
   - Home: index.md
   - Quickstart:
+      - quickstart/index.md
       - English (EN): quickstart/story.en.md
       - Deutsch (DE): quickstart/story.de.md
   - Whitepaper:
+      - whitepaper/index.md
       - English (EN): whitepaper/whitepaper.en.md
       - Deutsch (DE): whitepaper/whitepaper.de.md
   - Concept:
+      - concept/index.md
       - Glossary: concept/glossary.md
-      - Skill Graph:
-          - General Goal System And Migration: concept/skill-graph/general-goal-system-and-migration.md
-          - Graph Definition: concept/skill-graph/graph-definition.md
-          - View Projection And Goal Placement: concept/skill-graph/view-projection-and-goal-placement.md
-          - Canonical Gymnasium Rollout Plan: concept/skill-graph/canonical-gymnasium-rollout.md
-          - MEM/FWU Roundtrip Plan: concept/skill-graph/mem-fwu-roundtrip-plan.md
-          - Node Types: concept/skill-graph/node-types.md
-          - Source And Resource Links: concept/skill-graph/source-and-resource-links.md
       - Levels of Personalization: concept/levels-of-personalization.md
+      - Skill Graph:
+          - Graph Definition: concept/skill-graph/graph-definition.md
+          - General Goal System And Migration: concept/skill-graph/general-goal-system-and-migration.md
+          - Node Types: concept/skill-graph/node-types.md
+          - View Projection And Goal Placement: concept/skill-graph/view-projection-and-goal-placement.md
+          - Source And Resource Links: concept/skill-graph/source-and-resource-links.md
+          - Atomic Goal Visualizations: concept/skill-graph/atomic-goal-visualizations.md
+          - Human-Readable Source Rationales: concept/skill-graph/human-readable-source-rationales.md
+          - Canonical Gymnasium Rollout Plan: concept/skill-graph/canonical-gymnasium-rollout.md
+          - Dual Curriculum Package Releases: concept/skill-graph/dual-curriculum-package-releases.md
+          - MEM/FWU Roundtrip Plan: concept/skill-graph/mem-fwu-roundtrip-plan.md
       - Runtime Workflows:
           - Learning Workflow: concept/runtime-workflows/learning-workflow.md
           - Import/Export Workflow: concept/runtime-workflows/import-export-workflow.md
+          - Client-State Sync: concept/runtime-workflows/client-state-sync.md
+          - Provider-Neutral Coach Boundary: concept/runtime-workflows/provider-neutral-coach-boundary.md
+          - Coach-Architektur (Plugin, Skill, MCP-App): concept/runtime-workflows/skillpilot-owned-coach-architecture.md
+          - "OpenAI-Plugin: Versionierung und Lebenszyklus": concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md
+          - Migration zur OpenAI-MCP-App: concept/runtime-workflows/openai-mcp-coach-migration-plan.md
+          - OAuth-Appbindung und 24h-Lernsession: concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md
+          - Verhaltensintegration des MCP-Lerncoaches: concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md
+          - Wissens- und Verhaltensparität: concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md
+          - ChatGPT Visible Session Flow (Rollback): concept/runtime-workflows/chatgpt-visible-session-flow.md
+          - ChatGPT Startcode Session Flow (Legacy): concept/runtime-workflows/chatgpt-startcode-session-flow.md
       - Didactic:
           - Feynman Rules: concept/didactic/feynman-rules.md
           - Learning Velocity: concept/didactic/learning-velocity.md
           - Autopilot & Frontier Goal Selection Strategies: concept/didactic/frontier-goal-selection-strategies-autopilot.md
   - Production Pipelines:
+      - production-pipelines/index.md
       - Skill Graph: production-pipelines/skill-graph.md
+      - Curriculum Package Provisioning: production-pipelines/curriculum-package-provisioning.md
       - Subject Export Package: production-pipelines/skillpilot-subject-export-package.md
+      - MEM/FWU Roundtrip Pipeline: production-pipelines/mem-fwu-roundtrip.md
       - Exam Example: production-pipelines/exam-example.md
+      - Sek-I Mathematics Exam: production-pipelines/seki-math-exam.md
   - QA & CI:
-      - Overview: qa-ci/index.md
+      - qa-ci/index.md
       - CI: qa-ci/ci.md
       - Curriculum Quality:
           - Reifegrade, QA-Scopes und CQR-Regeln: qa-ci/curriculum-quality-maturity-and-routes.md
           - Dashboard Status Layer: qa-ci/curriculum-quality-dashboard.md
+          - Curriculum Mapping Workbench: qa-ci/curriculum-mapping-workbench.md
+          - Curriculum Package Readiness: qa-ci/curriculum-package-readiness.md
+          - Curriculum Release Model Conformance: qa-ci/curriculum-release-model-conformance.md
+          - Dual Curriculum Release Contracts: qa-ci/dual-curriculum-release-contracts.md
           - Current Status Snapshot: qa-ci/status/curriculum-quality-status.md
-      - Relation Checks: qa-ci/relation-checks.md
-      - Graph Validation Rules: qa-ci/graph-validation-rules.md
-      - Atomic Review Process: qa-ci/atomic-review-process.md
-      - Requires Review Process: qa-ci/requires-review-process.md
-      - Semantic Atomicity Review: qa-ci/semantic-atomicity-review.md
-      - Champion Guide: qa-ci/champion-guide.md
-      - Four-level Champion Model: qa-ci/four-level-champion-model.md
+      - Review Lanes:
+          - Graph Validation Rules: qa-ci/graph-validation-rules.md
+          - Relation Checks: qa-ci/relation-checks.md
+          - Atomic Review Process: qa-ci/atomic-review-process.md
+          - Requires Review Process: qa-ci/requires-review-process.md
+          - Semantic Atomicity Review: qa-ci/semantic-atomicity-review.md
+          - Curriculum Package Human Review Gates: qa-ci/curriculum-package-human-review-gates.md
+          - MEM SPARQL Consistency Audit: qa-ci/mem-sparql-consistency.md
+          - MEM SPARQL Consistency Runbook: qa-ci/mem-sparql-consistency-runbook.md
+          - Goal Source Rationales Runbook: qa-ci/goal-source-rationales-runbook.md
+      - Champions:
+          - Champion Guide: qa-ci/champion-guide.md
+          - Four-level Champion Model: qa-ci/four-level-champion-model.md
       - Abi 2026 Mathe Deeplink MVP: qa-ci/abi26-mathe-deeplink-mvp.md
+      - Generated Status Artifacts: qa-ci/status/README.md
   - Deploy:
+      - deploy/index.md
       - Deployment: deploy/deployment.md
+      - ChatGPT-App „SkillPilot Coach DE v1“: deploy/openai-mcp-coach-de.md
+      - "Coach DE v1: Release, Rollback, Stilllegung": deploy/openai-plugin-v1-release.md
+      - Claude Coach (Paused Beta): deploy/claude-coach-beta.md
+  - Security:
+      - security/index.md
+      - Data & Privacy: security/data-privacy.md
+      - OpenAI MCP Client Binding: security/openai-mcp-client-binding.md
   - Legal:
-      - Overview: legal/index.md
+      - legal/index.md
       - KI-Verordnung Compliance Stand: legal/ki-verordnung-compliance-stand-2026-07-29.md
   - Dev:
-      - Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot: dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md
-      - Canonical Gymnasium Implementation Plan: dev/canonical-gymnasium-implementation-plan.md
-      - Canonical Gymnasium Math Bundeslaender Status: dev/canonical-gymnasium-math-bundeslaender-status.md
+      - dev/index.md
+      - Documentation Guidelines: dev/documentation-guidelines.md
       - Landscape JSON Field Reference: dev/landscape-json-field-reference.md
-      - Flashcard Editor: dev/flashcard-editor.md
-      - Curriculum Authoring Editors: dev/curriculum-authoring-editors.md
-      - Graph Editor: dev/graph-editor.md
-      - Meine Lernziele Node Ordering (Design): dev/my-goals-node-ordering.md
-      - Database (Liquibase): dev/liquibase.md
-      - Auto-Update: dev/auto-update.md
-  - Security:
-      - Data & Privacy: security/data-privacy.md
+      - Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot: dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md
+      - Editors:
+          - Curriculum Authoring Editors: dev/curriculum-authoring-editors.md
+          - Graph Editor: dev/graph-editor.md
+          - Flashcard Editor: dev/flashcard-editor.md
+          - Meine Lernziele Node Ordering (Design): dev/my-goals-node-ordering.md
+      - Platform:
+          - Database (Liquibase): dev/liquibase.md
+          - Auto-Update: dev/auto-update.md
+      - Canonical Gymnasium:
+          - Implementation Plan: dev/canonical-gymnasium-implementation-plan.md
+          - Math Bundeslaender Status: dev/canonical-gymnasium-math-bundeslaender-status.md
+          - Physics Bundeslaender Status: dev/canonical-gymnasium-physics-bundeslaender-status.md
+          - Chemistry Bundeslaender Status: dev/canonical-gymnasium-chemistry-bundeslaender-status.md
+          - Dual Curriculum Package Implementation Status: dev/dual-curriculum-package-implementation-status.md

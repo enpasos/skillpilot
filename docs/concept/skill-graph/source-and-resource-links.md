@@ -148,7 +148,7 @@ Examples:
   - goals with local `physikbuch.schule` deep links should also carry `sourceRef`
   - atomic goals should usually have one strong `concept` deep link when a good book section exists
   - broader overview links belong on root or cluster nodes
-  - see `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/physik_source_linking_profile.de.md`
+  - the separate profile document was retired together with the Hessen upper-secondary source tree; the three rules above are the profile
 
 Rule:
 

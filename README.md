@@ -4,9 +4,11 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 > **Hinweis für Leser:innen des Aifyer-Konzepts [„KI-Lernbegleitung“](https://aifyer.com/ki-lernbegleitung/):**
-> SkillPilot ist die technische Referenzimplementierung zu diesem Konzept: eine offene Implementierung curriculumsgestützter KI-Lernbegleitung entlang schulischer Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M5 qualitätsgesichert.
+> SkillPilot ist die technische Referenzimplementierung zu diesem Konzept: eine offene Implementierung curriculumsgestützter KI-Lernbegleitung entlang schulischer Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Latein, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M6 qualitätsgesichert.
 >
-> **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Skill-Landschaften sind bereits mit dem SkillPilot Lerncoach nutzbar; weitere Fächer werden schrittweise ergänzt.
+> **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. **M6** ergänzt den geprüften Memory-Layer: Für jedes atomare Lernziel ist die Karten-Entscheidung fachlich zurückverfolgbar. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Skill-Landschaften sind bereits mit dem SkillPilot Lerncoach nutzbar; weitere Fächer werden schrittweise ergänzt.
+>
+> Den jeweils aktuellen Stand je Fach zeigt der [generierte Qualitätsstatus](https://enpasos.github.io/skillpilot/qa-ci/status/curriculum-quality-status/).
 
 SkillGraph Processing structures curricula and competence models into dependency-aware skill landscapes that can be validated, explored, and used by humans or AI agents.
 
