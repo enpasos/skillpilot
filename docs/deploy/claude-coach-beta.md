@@ -5,7 +5,7 @@ lernendenseitig sichtbar und nicht produktionsreif.
 
 Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
 [deutschen OpenAI-MCP-Coach](openai-mcp-coach-de.md). Der
-[Custom-GPT-Visible-Session-Coach](../../ai/openai-custom-gpt-visible-session/README.md)
+[Custom-GPT-Visible-Session-Coach](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/README.md)
 bleibt davon getrennt als Rollback-Quelle erhalten.
 Beide Adapter greifen auf dieselbe SkillPilot-Fachlogik, sichere State-Projektion
 und Exam-Autorisierung zu. Sie haben aber unterschiedliche Authentifizierungs-,

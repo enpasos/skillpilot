@@ -1,0 +1,48 @@
+name: Bug report
+description: Something in the software is broken — the cockpit, the learning coach, an editor, or a pipeline.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For problems with curriculum *content* rather than software, please use the curriculum feedback form instead.
+
+        Never report a security vulnerability here — see [SECURITY.md](https://github.com/enpasos/skillpilot/blob/main/SECURITY.md).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where did it happen?
+      options:
+        - Cockpit / web app
+        - Learning coach in ChatGPT (MCP app)
+        - Backend / API
+        - Curriculum or graph tooling
+        - Documentation site
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you see, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Choose ...
+        3. See error
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser and version, device, or the SkillPilot build ID if you can see it. Please do not paste your SkillPilot ID.
+    validations:
+      required: false

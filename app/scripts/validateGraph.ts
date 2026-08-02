@@ -2,6 +2,12 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
+import {
+  validateHardDirectAtomicRoutes,
+  validateOrientationMotivationStructure,
+  type HardRouteSemanticKind,
+  type HardRouteProfile,
+} from './lib/hardLearningRouteValidation'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -71,6 +77,27 @@ const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
   'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
 ]
 const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
+const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
+  '28b45b93-11e1-5a96-97a1-4cfee171802b',
+  'c25158fc-4860-59b2-8ef0-dca355f3a8b1',
+  '14b19ee4-364e-50bd-b6a3-499471356ef3',
+  'f24096c6-6ca0-5c15-a2f5-7bdaec789a8d',
+  '57f07e66-800c-5f7e-99ab-11dd6e520eb1',
+  'd2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1',
+]
+const CANONICAL_GYM_MATH_SEMANTIC_KIND_LEDGER_PATH = join(
+  process.cwd(),
+  '../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json',
+)
+const HARD_ROUTE_SEMANTIC_KINDS = new Set<HardRouteSemanticKind>([
+  'orientation',
+  'curricularAtomic',
+  'curricularArea',
+  'practiceAssessment',
+  'memory',
+  'programStructure',
+  'runtimeSupport',
+])
 
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
@@ -85,6 +112,7 @@ const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
 const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
 const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
 const RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY = 'GVR-013'
+const RULE_ORIENTATION_MOTIVATION_STRUCTURE = 'GVR-014'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -127,13 +155,17 @@ interface ScopedMotivationConnectivityProfile {
   scopeLabel: string
 }
 
-interface ScopedFullRouteCoverageProfile {
+interface ScopedFullRouteCoverageProfile extends HardRouteProfile<UiGoal> {
   landscapeId: string
-  motivationAnchorGoalIds: string[]
-  terminalGoalIds?: string[]
-  terminalGoalClusterIds?: string[]
-  goalSelector: (goal: UiGoal) => boolean
-  scopeLabel: string
+}
+
+interface SemanticKindLedger {
+  sourceLandscapeId?: string
+  decisions?: Array<{
+    goalId?: string
+    semanticKind?: HardRouteSemanticKind
+    decisionStatus?: string
+  }>
 }
 
 interface ScopedAtomicDirectRequiresOnlyProfile {
@@ -170,6 +202,48 @@ const parsedLandscapes: ParsedLandscape[] = []
 const landscapeById = new Map<string, ParsedLandscape>()
 const titlesByLandscapeId = new Map<string, Set<string>>()
 const compatibilityArchiveLandscapeIds = new Set<string>()
+const canonicalMathSemanticKindByGoalId = new Map<string, HardRouteSemanticKind>()
+
+try {
+  const ledger = JSON.parse(
+    readFileSync(CANONICAL_GYM_MATH_SEMANTIC_KIND_LEDGER_PATH, 'utf8'),
+  ) as SemanticKindLedger
+  if (ledger.sourceLandscapeId !== CANONICAL_GYM_MATH_LANDSCAPE_ID) {
+    issues.push({
+      level: 'error',
+      message: `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Canonical mathematics semantic-kind ledger targets ${ledger.sourceLandscapeId ?? '(missing)'}, expected ${CANONICAL_GYM_MATH_LANDSCAPE_ID}.`,
+    })
+  }
+  for (const decision of ledger.decisions ?? []) {
+    if (!decision.goalId || !decision.semanticKind || !HARD_ROUTE_SEMANTIC_KINDS.has(decision.semanticKind)) {
+      issues.push({
+        level: 'error',
+        message: `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Semantic-kind ledger contains a malformed or unsupported decision.`,
+      })
+      continue
+    }
+    if (decision.decisionStatus !== 'authoritative') {
+      issues.push({
+        level: 'error',
+        message: `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Semantic-kind decision for ${decision.goalId} is not authoritative.`,
+      })
+      continue
+    }
+    if (canonicalMathSemanticKindByGoalId.has(decision.goalId)) {
+      issues.push({
+        level: 'error',
+        message: `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Duplicate semantic-kind decision for ${decision.goalId}.`,
+      })
+      continue
+    }
+    canonicalMathSemanticKindByGoalId.set(decision.goalId, decision.semanticKind)
+  }
+} catch (error) {
+  issues.push({
+    level: 'error',
+    message: `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Failed to load canonical mathematics semantic-kind ledger: ${String(error)}`,
+  })
+}
 
 for (const file of landscapeFiles) {
   try {
@@ -408,8 +482,25 @@ function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
   return topicCode.includes('SEK1')
 }
 
-function isCanonicalGymMathSek1AtomicGoal(goal: UiGoal): boolean {
-  return isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal) && !isMemoryGoal(goal)
+function isCanonicalGymMathSek1CurricularGoal(goal: UiGoal): boolean {
+  return isCanonicalGymMathSek1Goal(goal)
+    && canonicalMathSemanticKindByGoalId.get(goal.id) === 'curricularAtomic'
+}
+
+function isCanonicalGymMathSek2Goal(goal: UiGoal): boolean {
+  if (goal.id === CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID) return true
+  if (goal.tags?.includes('phase:SekII')) return true
+
+  const phase = goal.phase ?? ''
+  if (['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(phase)) return true
+
+  const topicCode = goal.themenfeld ?? ''
+  return topicCode.includes('SEK2')
+}
+
+function isCanonicalGymMathSek2CurricularGoal(goal: UiGoal): boolean {
+  return isCanonicalGymMathSek2Goal(goal)
+    && canonicalMathSemanticKindByGoalId.get(goal.id) === 'curricularAtomic'
 }
 
 function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
@@ -419,12 +510,15 @@ function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
 const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalIds: [
-      CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
-      CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID,
-    ],
-    goalSelector: isCanonicalGymMathAtomicGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / all non-memory atomic goals',
+    anchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
+    goalSelector: isCanonicalGymMathSek1CurricularGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
+  },
+  {
+    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
+    anchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
+    goalSelector: isCanonicalGymMathSek2CurricularGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
   },
 ]
 
@@ -433,8 +527,17 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
-    goalSelector: isCanonicalGymMathSek1AtomicGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
+    routeGoalSelector: isCanonicalGymMathSek1Goal,
+    goalSelector: isCanonicalGymMathSek1CurricularGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
+  },
+  {
+    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
+    motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
+    terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    routeGoalSelector: isCanonicalGymMathSek2Goal,
+    goalSelector: isCanonicalGymMathSek2CurricularGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
   },
 ]
 
@@ -469,47 +572,6 @@ function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string,
   return false
 }
 
-function collectAtomicDescendantIds(goalId: string, goalMap: Map<string, UiGoal>, visiting = new Set<string>()): string[] {
-  if (visiting.has(goalId)) return []
-  const goal = goalMap.get(goalId)
-  if (!goal) return []
-  if ((goal.contains?.length ?? 0) === 0) return [goalId]
-
-  const nextVisiting = new Set(visiting)
-  nextVisiting.add(goalId)
-  return Array.from(new Set((goal.contains ?? []).flatMap((childId) =>
-    collectAtomicDescendantIds(childId, goalMap, nextVisiting))))
-}
-
-function terminalGoalIdsForProfile(
-  profile: ScopedFullRouteCoverageProfile,
-  goalMap: Map<string, UiGoal>,
-): string[] {
-  return Array.from(new Set([
-    ...(profile.terminalGoalIds ?? []),
-    ...(profile.terminalGoalClusterIds ?? []).flatMap((clusterId) =>
-      collectAtomicDescendantIds(clusterId, goalMap)),
-  ]))
-}
-
-function buildReverseEdges(edgeMap: Map<string, string[]>): Map<string, string[]> {
-  const reverseEdges = new Map<string, string[]>()
-
-  edgeMap.forEach((targets, sourceId) => {
-    if (!reverseEdges.has(sourceId)) {
-      reverseEdges.set(sourceId, [])
-    }
-
-    targets.forEach((targetId) => {
-      const existing = reverseEdges.get(targetId) ?? []
-      existing.push(sourceId)
-      reverseEdges.set(targetId, existing)
-    })
-  })
-
-  return reverseEdges
-}
-
 function validateLandscape(landscape: ParsedLandscape) {
   const localMap = new Map<string, UiGoal>()
   landscape.goals.forEach((goal) => {
@@ -520,7 +582,67 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
   })
 
+  if (landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID) {
+    landscape.goals.forEach((goal) => {
+      if (canonicalMathSemanticKindByGoalId.has(goal.id)) return
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Goal ${goal.id} (${goal.title}) has no authoritative semantic-kind decision; hard route selection must never silently omit an unclassified goal.`,
+      )
+    })
+    canonicalMathSemanticKindByGoalId.forEach((_semanticKind, goalId) => {
+      if (localMap.has(goalId)) return
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Semantic-kind ledger contains stale or foreign goal ${goalId}.`,
+      )
+    })
+    landscape.goals.forEach((goal) => {
+      const semanticKind = canonicalMathSemanticKindByGoalId.get(goal.id)
+      const atomicOnlyKind = semanticKind === 'orientation'
+        || semanticKind === 'curricularAtomic'
+        || semanticKind === 'memory'
+      const clusterOnlyKind = semanticKind === 'curricularArea'
+        || semanticKind === 'programStructure'
+        || semanticKind === 'runtimeSupport'
+      if (atomicOnlyKind && !isAtomicGoal(goal)) {
+        addIssue(
+          'error',
+          landscape.landscapeId,
+          `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Goal ${goal.id} (${goal.title}) is semanticKind=${semanticKind} but is not atomic.`,
+        )
+      }
+      if (clusterOnlyKind && isAtomicGoal(goal)) {
+        addIssue(
+          'error',
+          landscape.landscapeId,
+          `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Goal ${goal.id} (${goal.title}) is semanticKind=${semanticKind} but has no canonical children.`,
+        )
+      }
+      if (semanticKind !== 'curricularAtomic') return
+      if (isCanonicalGymMathSek1Goal(goal) || isCanonicalGymMathSek2Goal(goal)) return
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Curricular atomic goal ${goal.id} (${goal.title}) belongs to neither the Sek-I nor the Sek-II hard route profile.`,
+      )
+    })
+  }
+
   const validateGoal = (goal: UiGoal) => {
+    const authoritativeSemanticKind = landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID
+      ? canonicalMathSemanticKindByGoalId.get(goal.id)
+      : goal.semanticKind
+    validateOrientationMotivationStructure(goal, authoritativeSemanticKind).forEach((finding) => {
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `[${RULE_ORIENTATION_MOTIVATION_STRUCTURE}] Goal ${goal.id} (${goal.title}): ${finding.message}`,
+      )
+    })
+
     const legacyLinkFields = getLegacyGoalLinkFields(goal)
     if (legacyLinkFields.length > 0) {
       addIssue(
@@ -784,7 +906,6 @@ function validateLandscape(landscape: ParsedLandscape) {
       .map((ref) => ref.goalId)
     effectiveEdges.set(goal.id, edges)
   }
-  const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
 
   // GVR-002:
@@ -898,63 +1019,17 @@ function validateLandscape(landscape: ParsedLandscape) {
 
   for (const profile of scopedFullRouteCoverageProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
-
-    const scopedGoals = landscape.goals.filter(profile.goalSelector)
-    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
-    const terminalGoalIds = terminalGoalIdsForProfile(profile, localMap)
-    const missingTerminalIds = terminalGoalIds.filter((goalId) => !localMap.has(goalId))
-
-    if (missingAnchorIds.length > 0) {
+    validateHardDirectAtomicRoutes(
+      landscape.goals,
+      canonicalMathSemanticKindByGoalId,
+      profile,
+    ).forEach((finding) => {
+      const goal = finding.goalId ? localMap.get(finding.goalId) : undefined
+      const goalLabel = goal ? ` ${goal.id} (${goal.title})` : finding.goalId ? ` ${finding.goalId}` : ''
       addIssue(
-        graphRuleIssueLevel,
+        'error',
         landscape.landscapeId,
-        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Missing configured motivation anchor(s) ${missingAnchorIds.join(', ')} for scope ${profile.scopeLabel}.`,
-      )
-      continue
-    }
-
-    if (missingTerminalIds.length > 0) {
-      addIssue(
-        graphRuleIssueLevel,
-        landscape.landscapeId,
-        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Missing configured terminal autonomy goal(s) ${missingTerminalIds.join(', ')} for scope ${profile.scopeLabel}.`,
-      )
-      continue
-    }
-
-    const motivationAnchorLabels = profile.motivationAnchorGoalIds
-      .map((goalId) => {
-        const goal = localMap.get(goalId)
-        return goal ? `${goal.id} (${goal.title})` : goalId
-      })
-      .join(', ')
-    const terminalGoalLabels = terminalGoalIds
-      .map((goalId) => {
-        const goal = localMap.get(goalId)
-        return goal ? `${goal.id} (${goal.title})` : goalId
-      })
-      .join(', ')
-
-    scopedGoals.forEach((goal) => {
-      const hasMotivationPath = profile.motivationAnchorGoalIds.some((anchorGoalId) =>
-        hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))
-      const hasTerminalPath = terminalGoalIds.some((terminalGoalId) =>
-        hasPathToTarget(goal.id, terminalGoalId, reverseEffectiveEdges))
-
-      if (hasMotivationPath && hasTerminalPath) return
-
-      const missingSegments: string[] = []
-      if (!hasMotivationPath) {
-        missingSegments.push(`motivation anchor path (${motivationAnchorLabels})`)
-      }
-      if (!hasTerminalPath) {
-        missingSegments.push(`terminal autonomy path (${terminalGoalLabels})`)
-      }
-
-      addIssue(
-        graphRuleIssueLevel,
-        landscape.landscapeId,
-        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Scoped node ${goal.id} (${goal.title}) is missing ${missingSegments.join(' and ')} for scope ${profile.scopeLabel}.`,
+        `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}]${goalLabel} ${finding.message}`,
       )
     })
   }

@@ -95,8 +95,22 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
 - [Working with Liquibase in SkillPilot](liquibase.md)
 
+## Historical Work Notes
+
+Dated authoring records under [`work-notes/`](work-notes/). They document how a piece of work was done at the time and are neither current process nor a source of truth. Some of them describe curriculum trees that have since been retired.
+
+- [Exam / Prüfungsaufgaben Flow (2026-07-28)](work-notes/exam-flow-2026-07-28.md)
+- [Flashcard Editor GUI (2026-03-06)](work-notes/flashcard-editor-2026-03-06.md)
+- [E-Phase Mechanics Exercises (2026-03-06)](work-notes/e-phase-mechanics-exercises-2026-03-06.md)
+- [Atomicity Process (2026-02-17)](work-notes/atomic-process-2026-02-17.md)
+- [Requires Process (2026-02-16)](work-notes/requires-process-2026-02-16.md)
+- [Physics E-Phase Hierarchy (2026-02-16)](work-notes/physics-e-phase-hierarchy-2026-02-16.md)
+- [Memory Deck Plan (2026-02-02)](work-notes/memory-deck-plan-2026-02-02.md)
+- [TUM Curriculum Automation (2026-01-29)](work-notes/tum-curriculum-automation-2026-01-29.md)
+
 ## Maintenance
 
 - Add new developer-facing implementation notes to the closest section above.
 - Move durable concepts to `docs/concept/` and durable QA process docs to `docs/qa-ci/` instead of growing this directory indefinitely.
+- Dated authoring records belong in `work-notes/` with the date in the filename, not in the repository root.
 - `cd app && npm run check:docs-indexes` fails if a direct Markdown child of `docs/dev/` is missing from this index.

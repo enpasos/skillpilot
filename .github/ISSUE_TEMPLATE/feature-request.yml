@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a change to the software, the graph model, or the pipelines.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation you ran into, not the solution you already have in mind.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What do you propose?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area does it touch?
+      options:
+        - Cockpit / web app
+        - Learning coach in ChatGPT (MCP app)
+        - Backend / API
+        - Skill graph model or semantics
+        - Curriculum pipelines and QA
+        - Documentation
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+    validations:
+      required: false

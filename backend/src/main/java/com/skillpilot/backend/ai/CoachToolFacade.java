@@ -409,7 +409,9 @@ public class CoachToolFacade {
     }
 
     private boolean allowsMasteryWrite(String requiredAction) {
-        return "setMastery".equals(requiredAction) || "teachActiveGoal".equals(requiredAction);
+        return "setMastery".equals(requiredAction)
+                || "teachActiveGoal".equals(requiredAction)
+                || "orientActiveGoal".equals(requiredAction);
     }
 
     private boolean allowsActiveGoalRedirect(String requiredAction) {

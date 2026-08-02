@@ -352,6 +352,10 @@ class OpenAiDeCoachMcpContractTest {
                 .isEqualTo("string");
         assertThat(contextSchema.at("/properties/goalVisualization/properties/altText/type").asText())
                 .isEqualTo("string");
+        assertThat(contextSchema.at("/properties/activeGoal/properties/semanticKind/type").asText())
+                .isEqualTo("string");
+        assertThat(contextSchema.at("/properties/frontier/items/properties/semanticKind/type").asText())
+                .isEqualTo("string");
     }
 
     @Test
@@ -501,6 +505,10 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Sollantwort erst nach")
                 .contains("permanente SkillPilot-IDs")
                 .contains("zwei unabhängigen Checks")
+                .contains("interactionMode=orientation")
+                .contains("zwei bis vier verständliche Möglichkeiten")
+                .contains("weder Vorwissen noch Begriffe, Rechenverfahren, Detailwissen")
+                .contains("nur ein Abschlussmarker und bescheinigt keine Fachkompetenz")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                 .contains("genau einmal")
                 .contains("URLs ausschließlich wortgetreu")
@@ -511,6 +519,13 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("exakt activeGoal.cockpitUrl")
                 .contains("erfinde oder beschreibe das Bild nicht")
                 .contains("Kontext genau einmal neu");
+
+        assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
+                .contains("interactionMode=orientation")
+                .contains("sichtbaren Reaktion")
+                .contains("kein Detailwissen prüfen")
+                .contains("keine Fachkompetenz behaupten")
+                .contains("Bei normalen Inhaltszielen erst nach zwei unabhängigen");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10,

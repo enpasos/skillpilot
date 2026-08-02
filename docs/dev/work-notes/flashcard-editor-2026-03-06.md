@@ -1,5 +1,9 @@
 # Work Notes: Flashcard Editor GUI (lokal, DE/EN)
 
+> Historical work-notes record, 6 March 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+> Current reference: [flashcard editor](../../dev/flashcard-editor.md)
+
 Stable reference documentation now lives in `docs/dev/flashcard-editor.md`.
 This work-notes file keeps implementation notes and local planning context.
 

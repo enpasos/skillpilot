@@ -329,6 +329,16 @@ export const compileCompositionView = (
         return
       }
 
+      if (referencedGoal.semanticKind === 'curricularArea') {
+        findings.push({
+          code: 'CPV-009',
+          severity: 'error',
+          nodePath: pathKey,
+          goalId: node.goalId,
+          message: 'goalEntry darf keinen als curricularArea klassifizierten kanonischen Cluster als opakes Ziel einblenden; verwende canonicalSubtree oder eine explizite fachliche Struktur aus atomaren Zielen.',
+        })
+      }
+
       if (STATE_LOOKING_TITLE_PATTERN.test(referencedGoal.title)) {
         findings.push({
           code: 'CPV-102',

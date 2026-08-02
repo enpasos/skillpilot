@@ -131,24 +131,24 @@ Current watch targets:
 
 Current watch files:
 
-1. [DE_HES_S_GYM_1_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_PHYSIK.de.json.snapshot)
-2. [DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot)
-3. [DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot)
-4. [DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot)
-5. [DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot)
-6. [DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot) and [DE_BER_S_GYM_2_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed BE/BB field lane
-7. [DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed SH field lane
-8. [DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed RP LF follow-on family
+1. [DE_HES_S_GYM_1_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_PHYSIK.de.json.snapshot)
+2. [DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SN/lower-secondary/source-json/DE_SAC_S_GYM_1_PHYSIK.de.json.snapshot)
+3. [DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/HH/lower-secondary/source-json/DE_HAM_S_GYM_1_PHYSIK.de.json.snapshot)
+4. [DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SL/lower-secondary/source-json/DE_SAR_S_GYM_1_PHYSIK.de.json.snapshot)
+5. [DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/ST/lower-secondary/source-json/DE_SAN_S_GYM_1_PHYSIK.de.json.snapshot)
+6. [DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BB/upper-secondary/source-json/DE_BRA_S_GYM_2_PHYSIK.de.json.snapshot) and [DE_BER_S_GYM_2_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/BE/upper-secondary/source-json/DE_BER_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed BE/BB field lane
+7. [DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/SH/upper-secondary/source-json/DE_SHL_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed SH field lane
+8. [DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/input/RP/upper-secondary/source-json/DE_RLP_S_GYM_2_PHYSIK.de.json.snapshot) for future scope changes on the reviewed RP LF follow-on family
 
 Machine-readable watch manifest:
 
-1. [physics-evidence-watch-manifest.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json)
-2. [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) rendered by [render_canonical_physics_evidence_watch_status.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_status.py)
-3. [physics-evidence-watch-baseline.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json) captured by [capture_canonical_physics_evidence_watch_baseline.py](/home/enpasos/projects/skillpilot/scripts/capture_canonical_physics_evidence_watch_baseline.py)
-4. [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md) rendered by [render_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/render_canonical_physics_evidence_watch_delta.py)
-5. exit-code maintenance check via [check_canonical_physics_evidence_watch_delta.py](/home/enpasos/projects/skillpilot/scripts/check_canonical_physics_evidence_watch_delta.py)
-6. fixed run path via [run_canonical_physics_evidence_watch.sh](/home/enpasos/projects/skillpilot/scripts/run_canonical_physics_evidence_watch.sh) or `cd app && npm run check:canonical-physics-evidence-watch`
-7. scheduled GitHub Actions hook via [canonical_physics_evidence_watch.yml](/home/enpasos/projects/skillpilot/.github/workflows/canonical_physics_evidence_watch.yml)
+1. [physics-evidence-watch-manifest.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json)
+2. [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) rendered by [render_canonical_physics_evidence_watch_status.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py)
+3. [physics-evidence-watch-baseline.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json) captured by [capture_canonical_physics_evidence_watch_baseline.py](https://github.com/enpasos/skillpilot/blob/main/scripts/capture_canonical_physics_evidence_watch_baseline.py)
+4. [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md) rendered by [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py)
+5. exit-code maintenance check via [check_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/check_canonical_physics_evidence_watch_delta.py)
+6. fixed run path via [run_canonical_physics_evidence_watch.sh](https://github.com/enpasos/skillpilot/blob/main/scripts/run_canonical_physics_evidence_watch.sh) or `cd app && npm run check:canonical-physics-evidence-watch`
+7. scheduled GitHub Actions hook via [canonical_physics_evidence_watch.yml](https://github.com/enpasos/skillpilot/blob/main/.github/workflows/canonical_physics_evidence_watch.yml)
 
 Definition of done for one Physics topic row:
 

@@ -94,6 +94,11 @@ const canonicalLandscape: CanonicalAuthoringLandscape = {
     contains: [...goal.contains],
     tags: [...(goal.tags ?? [])],
     type: goal.type,
+    semanticKind: goal.id === 'SUPPORT_CLUSTER'
+      ? 'curricularArea'
+      : goal.contains.length > 0
+        ? 'programStructure'
+        : 'curricularAtomic',
   })),
 }
 
@@ -356,6 +361,32 @@ assert.equal(
   'Unknown projection roles must be rejected by the composition-view validator.',
 )
 
+const opaqueCurricularAreaView: CompositionView = {
+  viewId: 'opaque-curricular-area-test',
+  landscapeId: 'TEST',
+  scope: {
+    schoolForm: 'Gymnasium',
+    stage: 'Sekundarstufe II',
+  },
+  rootNodes: [
+    {
+      kind: 'goalEntry',
+      goalId: 'SUPPORT_CLUSTER',
+    },
+  ],
+}
+const opaqueCurricularAreaResult = compileCompositionView(
+  opaqueCurricularAreaView,
+  canonicalLandscape,
+)
+assert.equal(
+  opaqueCurricularAreaResult.findings.some(
+    (finding) => finding.code === 'CPV-009' && finding.severity === 'error',
+  ),
+  true,
+  'A reviewed curricularArea cluster must not be exposed as an opaque goalEntry.',
+)
+
 const canonicalMath = JSON.parse(
   readFileSync(
     new URL(
@@ -403,6 +434,31 @@ const representativeSekundarstufeTwoTargetGoalIds = [
   '1878f680-095c-511d-aaed-e98393f7fde9',
   '7337049a-c85c-5b94-adaa-81dc93528bf8',
 ]
+const hesseLkProjectionRegressionIds = {
+  orientation: '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2',
+  projectionPrerequisite: '3016ec37-1c2e-47db-83f5-e767923bc97e',
+  orthogonalProjection: 'ed5d869b-af4e-4b80-b34d-a2338e16ce34',
+  reflectionArea: 'dd042c27-d513-5352-9de9-2a5923a98e69',
+} as const
+const hesseLkDirectPrerequisiteClosure = [
+  ['09f47964-2cd0-410e-93ee-9632b582fc91', '2bb4bb91-7929-483a-b735-44275f6b5cdc'],
+  ['2d75fd3f-c68b-4a11-89ae-19a30fefc47a', 'af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186'],
+  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', 'e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e'],
+  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '7bff61c1-1a69-4991-97de-0cff764f507e'],
+  ['29ce4053-b5c5-4a82-9ff0-3acc492284d8', '39fa30f2-e1ae-5c36-be56-793b77906abb'],
+  ['075f1ef2-6860-4b20-9df2-878157eb395e', 'f242a3e8-55a3-492e-8354-b81b24cdbb78'],
+  ['075f1ef2-6860-4b20-9df2-878157eb395e', '19f170e4-b88f-4c06-b72a-ce6923748bb4'],
+  ['944dd479-9f30-5acb-ab32-3ea0b6dc8e06', '0a846521-edcc-5c3c-a844-eac061e053ce'],
+  ['36e0de23-1e3b-5c69-888f-e5e19e79cbbe', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
+  ['508292f2-671b-4fd3-acbf-53d705e44693', 'efc3506a-5f35-4d77-9498-d70a091a470b'],
+  ['508292f2-671b-4fd3-acbf-53d705e44693', '4ac925cf-3862-4810-be2a-d92efff7d735'],
+  ['2e40a879-b62e-5dbf-aa45-020c0625a902', '2fb12329-9160-5c44-af5b-8731ecb05ba4'],
+  ['4a53a441-3c2a-53aa-8a1a-e08a6898e826', '9278bc5e-a77f-5f72-8636-0d0d3e3d32ae'],
+  ['8cb5c712-9c58-5910-8c63-8c3736369b80', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
+  ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
+  ['c2c49659-5917-5be5-a3bd-e46f1b17126f', '3256476b-ec65-4038-9f5a-a8808fbcf207'],
+  ['c2c49659-5917-5be5-a3bd-e46f1b17126f', '509ae03b-96b1-4bb1-b015-b83d14569dae'],
+] as const
 
 prerequisiteOnlyGoalIds.forEach((goalId) => {
   assert.ok(
@@ -429,6 +485,33 @@ representativeSekundarstufeTwoTargetGoalIds.forEach((goalId) => {
     ),
     true,
     `The Hessen Sekundarstufe II LK view must keep genuine target goal ${goalId} selectable.`,
+  )
+})
+
+assert.equal(
+  compositionViewExposesGoal(
+    [canonicalMathEntry],
+    hesseSekundarstufeTwoLkView,
+    hesseLkProjectionRegressionIds.projectionPrerequisite,
+  ),
+  true,
+  'The direct prerequisite of the orthogonal-projection goal must be an explicit Hessen LK target.',
+)
+;[
+  hesseLkProjectionRegressionIds.orthogonalProjection,
+  hesseLkProjectionRegressionIds.reflectionArea,
+  'fcd1d180-ddce-5408-8c5d-70e417b179e7',
+  'a97c7cce-1343-5d04-926f-4a4f323b3c21',
+  '985d5529-a586-50eb-bd7f-2db2be8906d1',
+].forEach((goalId) => {
+  assert.equal(
+    compositionViewExposesGoal(
+      [canonicalMathEntry],
+      hesseSekundarstufeTwoLkView,
+      goalId,
+    ),
+    true,
+    `The Hessen LK view must expose the canonical target subtree goal ${goalId}.`,
   )
 })
 
@@ -489,6 +572,90 @@ assert.ok(learnerFacingHesseSekundarstufeTwoLk)
 
 const learnerFacingGoalById = new Map(
   learnerFacingHesseSekundarstufeTwoLk.goals.map((goal) => [goal.id, goal] as const),
+)
+assert.equal(
+  learnerFacingGoalById
+    .get(hesseLkProjectionRegressionIds.orthogonalProjection)
+    ?.requires.includes(hesseLkProjectionRegressionIds.projectionPrerequisite),
+  true,
+  'The learner-facing Hessen LK projection must retain the direct prerequisite of the orthogonal-projection goal.',
+)
+assert.ok(
+  learnerFacingGoalById.has(hesseLkProjectionRegressionIds.projectionPrerequisite),
+  'The direct orthogonal-projection prerequisite must be present in the projected structural lookup.',
+)
+hesseLkDirectPrerequisiteClosure.forEach(([targetGoalId, prerequisiteGoalId]) => {
+  assert.equal(
+    compositionViewExposesGoal(
+      [canonicalMathEntry],
+      hesseSekundarstufeTwoLkView,
+      targetGoalId,
+    ),
+    true,
+    `The reviewed Hessen LK target ${targetGoalId} must stay learner-facing.`,
+  )
+  assert.equal(
+    canonicalGoalById.get(targetGoalId)?.requires.includes(prerequisiteGoalId),
+    true,
+    `The reviewed canonical edge ${targetGoalId} -> ${prerequisiteGoalId} must stay explicit.`,
+  )
+  assert.ok(
+    learnerFacingGoalById.has(prerequisiteGoalId),
+    `The direct prerequisite ${prerequisiteGoalId} of Hessen LK target ${targetGoalId} must remain in the projected structural lookup.`,
+  )
+})
+canonicalMathEntry.goals
+  .filter((goal) => goal.contains.length === 0)
+  .filter((goal) => compositionViewExposesGoal(
+    [canonicalMathEntry],
+    hesseSekundarstufeTwoLkView,
+    goal.id,
+  ))
+  .forEach((goal) => {
+    goal.requires.forEach((prerequisiteGoalId) => {
+      assert.ok(
+        learnerFacingGoalById.has(prerequisiteGoalId),
+        `Every direct prerequisite of reviewed Hessen LK target ${goal.id} must be explicitly present in the projected structural lookup; missing ${prerequisiteGoalId}.`,
+      )
+    })
+  })
+assert.deepEqual(
+  learnerFacingGoalById.get(hesseLkProjectionRegressionIds.reflectionArea)?.contains,
+  [
+    'fcd1d180-ddce-5408-8c5d-70e417b179e7',
+    'a97c7cce-1343-5d04-926f-4a4f323b3c21',
+    '985d5529-a586-50eb-bd7f-2db2be8906d1',
+  ],
+  'The reflection curricular area must remain a real subtree and must not become an opaque atomic frontier goal.',
+)
+
+const masteryAfterOrientation = new Map<string, number>([
+  [hesseLkProjectionRegressionIds.orientation, 1],
+])
+const frontierAfterOrientation = learnerFacingHesseSekundarstufeTwoLk.goals
+  .filter((goal) => compositionViewExposesGoal(
+    [canonicalMathEntry],
+    hesseSekundarstufeTwoLkView,
+    goal.id,
+  ))
+  .filter((goal) => goal.contains.length === 0)
+  .filter((goal) => (masteryAfterOrientation.get(goal.id) ?? 0) < 0.9)
+  .filter((goal) => goal.requires.every((requirementId) => {
+    const projectedRequirement = learnerFacingGoalById.get(requirementId)
+    if (!projectedRequirement) return true
+    return (masteryAfterOrientation.get(requirementId) ?? 0) >= 0.9
+  }))
+  .map((goal) => goal.id)
+
+assert.equal(
+  frontierAfterOrientation.includes(hesseLkProjectionRegressionIds.orthogonalProjection),
+  false,
+  'After completing only the Sek-II orientation, orthogonal projections must remain blocked by their projected prerequisite.',
+)
+assert.equal(
+  frontierAfterOrientation.includes(hesseLkProjectionRegressionIds.reflectionArea),
+  false,
+  'After completing only the Sek-II orientation, a curricular-area cluster must never be offered as an atomic frontier goal.',
 )
 const learnerFacingMathRoot = learnerFacingHesseSekundarstufeTwoLk.goals.find(
   (goal) => (goal.tags ?? []).includes('root'),

@@ -73,18 +73,18 @@ Relevant channels include:
 
 Primary files to inspect:
 
-- [TrainerView.tsx](/home/enpasos/projects/skillpilot/app/src/views/TrainerView.tsx)
-- [useAppCore.ts](/home/enpasos/projects/skillpilot/app/src/hooks/useAppCore.ts)
-- [App.tsx](/home/enpasos/projects/skillpilot/app/src/App.tsx)
-- [ClassSetup.tsx](/home/enpasos/projects/skillpilot/app/src/components/ClassSetup.tsx)
-- [trainerLandscapeContext.ts](/home/enpasos/projects/skillpilot/app/src/utils/trainerLandscapeContext.ts)
-- [CompetenceTree.tsx](/home/enpasos/projects/skillpilot/app/src/components/CompetenceTree.tsx)
-- [useLandscapes.ts](/home/enpasos/projects/skillpilot/app/src/hooks/useLandscapes.ts)
+- [TrainerView.tsx](https://github.com/enpasos/skillpilot/blob/main/app/src/views/TrainerView.tsx)
+- [useAppCore.ts](https://github.com/enpasos/skillpilot/blob/main/app/src/hooks/useAppCore.ts)
+- [App.tsx](https://github.com/enpasos/skillpilot/blob/main/app/src/App.tsx)
+- [ClassSetup.tsx](https://github.com/enpasos/skillpilot/blob/main/app/src/components/ClassSetup.tsx)
+- [trainerLandscapeContext.ts](https://github.com/enpasos/skillpilot/blob/main/app/src/utils/trainerLandscapeContext.ts)
+- [CompetenceTree.tsx](https://github.com/enpasos/skillpilot/blob/main/app/src/components/CompetenceTree.tsx)
+- [useLandscapes.ts](https://github.com/enpasos/skillpilot/blob/main/app/src/hooks/useLandscapes.ts)
 
 Secondary context:
 
 - [general-goal-system-and-migration.md](/home/enpasos/projects/skillpilot/docs/concept/skill-graph/general-goal-system-and-migration.md)
-- [landscapeTypes.ts](/home/enpasos/projects/skillpilot/app/src/landscapeTypes.ts)
+- [landscapeTypes.ts](https://github.com/enpasos/skillpilot/blob/main/app/src/landscapeTypes.ts)
 
 ## Recent Changes That May Be Relevant
 

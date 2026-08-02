@@ -198,6 +198,10 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Test hard Sek-I/Sek-II learning routes
+        run: npm run test:hard-learning-routes
+      - name: Test learner-facing composition labels
+        run: npm run test:learner-facing-composition-labels
       - name: Validate Competency Wording
         run: python -B ../scripts/validate_competency_wording.py
       - name: Validate View Filters

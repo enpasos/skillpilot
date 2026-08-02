@@ -1,5 +1,9 @@
 # Plan: E-Phase Mechanik Uebungen (Abi-Niveau)
 
+> Historical work-notes record, 6 March 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+> Current reference: [graph definition](../../concept/skill-graph/graph-definition.md)
+
 ## 1) Ziel
 
 Unter dem Knoten `Einführungsphase Mechanik` in  

@@ -17,7 +17,7 @@ MCP erreichbar zu machen. Sie lautet:
 
 Der frühere Custom-GPT-Coach ist dafür die beobachtete Verhaltensbaseline. Die
 bewährten deutschen Inhalte unter
-[`ai/openai custom gpt`](<../../../ai/openai custom gpt/>) sind der
+[`ai/openai custom gpt`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20custom%20gpt) sind der
 Migrationskorpus für den künftigen Coach-Skill. Seine technische Architektur,
 alte Action-Methoden und insbesondere das sichtbare Relay-Protokoll werden
 nicht zurückgebaut. Wiederhergestellt werden sollen die Qualitäten, die aus

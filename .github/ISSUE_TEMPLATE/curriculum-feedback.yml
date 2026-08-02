@@ -1,0 +1,64 @@
+name: Curriculum feedback
+description: Report a problem in a curriculum — a wrong goal, a missing prerequisite, a bad order, or a mismatch with the official source.
+title: "[Curriculum] "
+labels: ["curriculum"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for working through a curriculum as a learner — that is where these problems become visible.
+
+        You do not need to know the internals. Fill in what you know and leave the rest empty.
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+      description: For example Mathematik, Physik, Chemie.
+      placeholder: Mathematik
+    validations:
+      required: true
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Bundesland / curriculum variant
+      description: Which state view were you learning in? Use the code if you know it, otherwise the name.
+      placeholder: DE-HE (Hessen)
+    validations:
+      required: false
+  - type: input
+    id: goal
+    attributes:
+      label: Learning goal
+      description: Title of the goal, and its ID if the cockpit shows one.
+      placeholder: Understand function concept and representations
+    validations:
+      required: false
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem is it?
+      options:
+        - The goal is wrong or misleading
+        - The goal bundles several things and should be split
+        - A prerequisite is missing
+        - A prerequisite is wrong or unnecessary
+        - The order does not work didactically
+        - It does not match the official curriculum
+        - A memory card or exercise is wrong
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What did you observe?
+      description: What happened while you were learning, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official source, if you have it
+      description: Link or citation from the official curriculum that supports your point. This is what lets the finding be resolved rather than debated.
+    validations:
+      required: false

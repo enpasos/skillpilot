@@ -247,9 +247,9 @@ ein vollständiges eigenes Paket mit:
 
 Maßgebliche Quellen und Builder-Anleitungen:
 
-- [Visible-Session-Paket](../../../ai/openai-custom-gpt-visible-session/README.md)
-- [deutsches Builder-Setup](../../../ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md)
-- [englisches Builder-Setup](../../../ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md)
+- [Visible-Session-Paket](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/README.md)
+- [deutsches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md)
+- [englisches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md)
 
 Die Sprachschemata dürfen nicht zusammengeführt oder gegeneinander ausgetauscht
 werden. Unter `ai/` gibt es absichtlich kein gemeinsames

@@ -6,11 +6,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.Mastery;
+import com.skillpilot.backend.domain.MasteryId;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.MasteryRepository;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +33,9 @@ class LearnerPersonalizationProgressionIntegrationTest {
     private static final String ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
+    private static final String MATH_SEK_TWO_ORIENTATION_ID = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+    private static final String MATH_SEK_TWO_LK_SCOPE_ID =
+            "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
 
     @Autowired
     private LearnerService learnerService;
@@ -38,7 +47,33 @@ class LearnerPersonalizationProgressionIntegrationTest {
     private LearnerRepository learnerRepository;
 
     @Autowired
+    private MasteryRepository masteryRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
+
+    @Test
+    void orientationClassificationPrefersSemanticKindAndUsesOnlyExplicitLegacyTagsAsFallback() {
+        LearningGoal semanticOrientation = new LearningGoal();
+        semanticOrientation.setSemanticKind("orientation");
+        semanticOrientation.setTags(List.of("curricular"));
+
+        LearningGoal legacyOrientation = new LearningGoal();
+        legacyOrientation.setTags(List.of("Motivation"));
+
+        LearningGoal authoritativeNonOrientation = new LearningGoal();
+        authoritativeNonOrientation.setSemanticKind("curricularAtomic");
+        authoritativeNonOrientation.setTags(List.of("Orientation", "Motivation"));
+
+        LearningGoal titleOnly = new LearningGoal();
+        titleOnly.setTitle("Warum Mathematik?");
+        titleOnly.setTags(List.of("curricular"));
+
+        assertThat(LearnerService.isOrientationGoal(semanticOrientation)).isTrue();
+        assertThat(LearnerService.isOrientationGoal(legacyOrientation)).isTrue();
+        assertThat(LearnerService.isOrientationGoal(authoritativeNonOrientation)).isFalse();
+        assertThat(LearnerService.isOrientationGoal(titleOnly)).isFalse();
+    }
 
     @Test
     void hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder() throws Exception {
@@ -174,8 +209,91 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK", "G9");
         assertThat(afterCourseProfile.stateMachine().requiredAction())
                 .isNotEqualTo("setPersonalization");
-        assertThat(afterCourseProfile.frontier()).isNotEmpty();
-        assertThat(afterCourseProfile.stateMachine().goalOptions()).isNotEmpty();
+        assertThat(afterCourseProfile.frontier())
+                .extracting(goal -> goal.id())
+                .containsExactly(MATH_SEK_TWO_LK_SCOPE_ID);
+
+        learnerService.setPlannedGoals(
+                learner.getSkillpilotId(),
+                Set.of(MATH_SEK_TWO_LK_SCOPE_ID));
+        assertThat(learnerService.getFrontier(learner.getSkillpilotId()))
+                .containsExactly(MATH_SEK_TWO_ORIENTATION_ID);
+        var orientationOnlyFrontier = learnerService.getRichFrontier(learner.getSkillpilotId());
+        assertThat(orientationOnlyFrontier)
+                .extracting(goal -> goal.id())
+                .containsExactly(MATH_SEK_TWO_ORIENTATION_ID);
+        assertThat(orientationOnlyFrontier)
+                .extracting(goal -> goal.reason())
+                .containsExactly("Orientation required");
+        assertThat(orientationOnlyFrontier)
+                .extracting(goal -> goal.semanticKind())
+                .containsExactly("orientation");
+
+        UnifiedLearnerStateResponse orientationState =
+                learnerService.getCoachLearnerState(learner.getSkillpilotId());
+        assertThat(orientationState.activeGoal().id()).isEqualTo(MATH_SEK_TWO_ORIENTATION_ID);
+        assertThat(orientationState.activeGoal().semanticKind()).isEqualTo("orientation");
+        assertThat(orientationState.stateMachine().requiredAction()).isEqualTo("orientActiveGoal");
+
+        assertThatThrownBy(() -> learnerService.setMastery(
+                        learner.getSkillpilotId(),
+                        new MasteryUpdateRequest(
+                                Map.of(MATH_SEK_TWO_ORIENTATION_ID, 0.5),
+                                MATH_SEK_TWO_ORIENTATION_ID)))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
+
+        learnerService.setMastery(
+                learner.getSkillpilotId(),
+                new MasteryUpdateRequest(
+                        Map.of(MATH_SEK_TWO_ORIENTATION_ID, 1.0),
+                        MATH_SEK_TWO_ORIENTATION_ID));
+
+        var frontierAfterOrientation = learnerService.getRichFrontier(learner.getSkillpilotId());
+        assertThat(frontierAfterOrientation)
+                .isNotEmpty()
+                .extracting(goal -> goal.id())
+                .doesNotContain(MATH_SEK_TWO_ORIENTATION_ID);
+        assertThat(frontierAfterOrientation)
+                .allSatisfy(goal -> assertThat(goal.tags())
+                        .doesNotContain("Orientation", "Motivation"));
+        assertThat(learnerService.getFrontier(learner.getSkillpilotId()))
+                .isNotEmpty()
+                .doesNotContain(MATH_SEK_TWO_ORIENTATION_ID);
+
+        String existingProgressGoalId = frontierAfterOrientation.stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .findFirst()
+                .orElseThrow()
+                .id();
+        masteryRepository.save(new Mastery(
+                learnerRepository.findById(learner.getSkillpilotId()).orElseThrow(),
+                existingProgressGoalId,
+                0.5));
+        Mastery orientationMastery = masteryRepository.findById(new MasteryId(
+                        learner.getSkillpilotId(),
+                        MATH_SEK_TWO_ORIENTATION_ID))
+                .orElseThrow();
+        orientationMastery.setValue(0.0);
+        masteryRepository.saveAndFlush(orientationMastery);
+
+        assertThat(learnerService.getRichFrontier(learner.getSkillpilotId()))
+                .isNotEmpty()
+                .allSatisfy(goal -> assertThat(goal.reason()).isNotEqualTo("Orientation required"));
+
+        Mastery existingProgressMastery = masteryRepository.findById(new MasteryId(
+                        learner.getSkillpilotId(),
+                        existingProgressGoalId))
+                .orElseThrow();
+        existingProgressMastery.setValue(0.0);
+        masteryRepository.saveAndFlush(existingProgressMastery);
+        Learner learnerWithExistingActiveGoal = learnerRepository.findById(learner.getSkillpilotId()).orElseThrow();
+        learnerWithExistingActiveGoal.setActiveGoalId(existingProgressGoalId);
+        learnerRepository.saveAndFlush(learnerWithExistingActiveGoal);
+
+        assertThat(learnerService.getRichFrontier(learner.getSkillpilotId()))
+                .isNotEmpty()
+                .allSatisfy(goal -> assertThat(goal.reason()).isNotEqualTo("Orientation required"));
 
         Map<String, Object> matchedView = compositionViewService.findMatchingView(
                 MATH_ID,

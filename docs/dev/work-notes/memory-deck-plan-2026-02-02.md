@@ -1,5 +1,9 @@
 # Memory Plan: Single Math Deck with Prerequisite Gating
 
+> Historical work-notes record, 2 February 2026. It documents how this work was done at that time.
+> It is not current process and not a source of truth.
+> Current reference: [node types](../../concept/skill-graph/node-types.md)
+
 ## Zielbild
 - Genau **ein** Memorisierungs-Deck für Mathematik.
 - **Ein** Memorisierungs-Knoten im Graphen.

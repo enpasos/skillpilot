@@ -326,6 +326,7 @@ public final class OpenAiDeCoachContextProjector {
                 goal.description(),
                 goal.type(),
                 visibleNodeKind(goal),
+                goal.semanticKind(),
                 cockpitUrl(curriculum == null ? null : curriculum.getCurriculumId(), goal.id()),
                 examTask(goal.examData()));
     }
@@ -355,6 +356,7 @@ public final class OpenAiDeCoachContextProjector {
                         goal.description(),
                         goal.type(),
                         visibleNodeKind(goal),
+                        goal.semanticKind(),
                         goal.reason()))
                 .toList();
     }
@@ -487,7 +489,7 @@ public final class OpenAiDeCoachContextProjector {
                 case "setPersonalization" -> tools.add(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
                 case "setScope" -> tools.add(OpenAiDeV1McpContractAdapter.SET_SCOPE);
                 case "setActiveGoal" -> tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
-                case "teachActiveGoal", "setMastery" -> {
+                case "orientActiveGoal", "teachActiveGoal", "setMastery" -> {
                     tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
                     tools.add(OpenAiDeV1McpContractAdapter.SET_MASTERY);
                 }
@@ -527,6 +529,9 @@ public final class OpenAiDeCoachContextProjector {
         if (isMemoryGoal(goal)) {
             return "verifiedRecall";
         }
+        if (isOrientationGoal(goal)) {
+            return "orientation";
+        }
         if ("setPersonalization".equals(requiredAction)) {
             return "selection";
         }
@@ -545,6 +550,10 @@ public final class OpenAiDeCoachContextProjector {
                 "Nenne Fortschritt ausschließlich aus dem frisch gelieferten progress und zuerst für den aktuellen Lernumfang. Nenne breitere Werte nur auf Nachfrage und schätze niemals.",
                 "Behaupte eine Zustandsänderung nur nach bestätigtem Backend-Erfolg. Bei einem Konflikt lade den Kontext genau einmal neu; bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe die strukturierte Arbeit transparent."));
         switch (interactionMode) {
+            case "orientation" -> policies.addAll(List.of(
+                    "Orientierungsmodus: Zeige zwei bis vier konkrete, altersgerechte Möglichkeiten und ehrliche positive Perspektiven, die der nachfolgende Stoff für Alltag, Interessen, gesellschaftliche Teilhabe, Studium oder Beruf eröffnet. Bleibe beim Überblick und knüpfe nur an tatsächlich bekannten Kontext an.",
+                    "Prüfe weder Vorwissen noch Begriffe, Rechenverfahren oder anderes inhaltliches Detailwissen. Stelle keine Wissens-, Übungs-, Transfer-, Recall- oder Prüfungsaufgabe, fordere keinen Feynman-Teach-back und bewerte keine Antwort fachlich als richtig oder falsch.",
+                    "Lade nach der kurzen Orientierung zu einer niedrigschwelligen Reaktion ein, etwa welche Möglichkeit neugierig macht oder ob die lernende Person weitergehen möchte. Speichere den Orientierungsabschluss erst nach einer sichtbaren Reaktion, Interessenäußerung oder ausdrücklichen Weiterbereitschaft. Dieser Abschluss belegt nur die erlebte Orientierung, niemals fachliche Kompetenz; nenne ihn nicht fachlich gemeistert."));
             case "chat" -> policies.addAll(List.of(
                     "Arbeite dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, gib kleine Hinweise, lasse selbst arbeiten und unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der unmittelbar folgenden Aufgabe vor.",
                     "Bewerte die fachliche Bedeutung statt den Wortlaut. Rekonstruiere ungewöhnliche Wege fair und korrigiere nur tatsächlich falsche oder unbegründete Schritte; ausdrücklich verlangte Formate und Inhalte bleiben bindend.",
@@ -618,6 +627,15 @@ public final class OpenAiDeCoachContextProjector {
                     + "Fragenbatch und warte auf alle Antworten. Lade Sollantworten erst danach, speichere jedes "
                     + "Kartenergebnis und beginne erst nach vollständiger Speicherung den nächsten Batch.";
         }
+        if (isOrientationGoal(goal)) {
+            return "Motivierende Orientierung: Zeige anhand des aktiven Ziels zwei bis vier verständliche "
+                    + "Möglichkeiten und positive, realistische Perspektiven des folgenden Stoffes. Frage danach "
+                    + "nur niedrigschwellig, was neugierig macht oder ob die lernende Person weiterlernen möchte. "
+                    + "Prüfe kein Vorwissen oder Detailwissen und bewerte keine Antwort als richtig oder falsch. "
+                    + "Speichere den Orientierungsabschluss erst nach einer sichtbaren Reaktion, "
+                    + "Interessenäußerung oder ausdrücklichen Weiterbereitschaft; er bescheinigt keine "
+                    + "Fachkompetenz.";
+        }
         if (blank(requiredAction)) {
             return "Es ist keine weitere Backend-Aktion erforderlich. Lade bei Zweifel den aktuellen Kontext neu.";
         }
@@ -629,6 +647,10 @@ public final class OpenAiDeCoachContextProjector {
                             : "Behandle einen natürlichen Mehrfachwunsch in diesem Assistententurn als fortgeltende Absicht. "
                                     + "Wende einen fachlich eindeutigen Treffer direkt an, lade den Folgezustand und frage "
                                     + "nur eine tatsächlich offene Auswahl nach.";
+            case "orientActiveGoal" ->
+                    "Führe die motivierende Orientierung ohne fachliche Prüfung durch und speichere den "
+                            + "Orientierungsabschluss erst nach einer sichtbaren Reaktion oder ausdrücklichen "
+                            + "Weiterbereitschaft; behaupte dabei keine fachliche Mastery.";
             case "teachActiveGoal", "setMastery" ->
                     "Arbeite dialogisch am aktiven Lernziel. Anerkenne fachlich gleichwertige korrekte Lösungswege, "
                             + "Darstellungen und Begründungen; ausdrücklich verlangte Formate bleiben verbindlich. "
@@ -747,6 +769,20 @@ public final class OpenAiDeCoachContextProjector {
         }
         return goal.tags() != null && goal.tags().stream()
                 .anyMatch(tag -> "memorization".equals(tag) || (tag != null && tag.startsWith("srs-deck:")));
+    }
+
+    private boolean isOrientationGoal(FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        if (!blank(goal.semanticKind())) {
+            return "orientation".equalsIgnoreCase(goal.semanticKind().trim());
+        }
+        return goal.tags() != null && goal.tags().stream()
+                .filter(tag -> tag != null)
+                .map(String::trim)
+                .anyMatch(tag -> "Orientation".equalsIgnoreCase(tag)
+                        || "Motivation".equalsIgnoreCase(tag));
     }
 
     private String cockpitUrl(String curriculumId, String goalId) {

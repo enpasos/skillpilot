@@ -72,6 +72,40 @@ class VisibleSessionServiceTest {
     }
 
     @Test
+    void orientationStateBuildsInterestWithoutTestingSubjectKnowledge() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        FrontierGoal orientation = orientationGoal(
+                "orientation-goal",
+                "Warum Mathematik? – Denken, Muster & Zukunft");
+        UnifiedLearnerStateResponse state = state(
+                "orientActiveGoal",
+                orientation,
+                List.of(orientation));
+        when(facade.getSessionState(TOKEN)).thenReturn(state);
+        VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        VisibleCoachStateResponse german = service.getState(TOKEN, "de");
+        VisibleCoachStateResponse english = service.getState(TOKEN, "en");
+
+        assertThat(german.allowedActions()).containsExactly(
+                "getVisibleState",
+                "requestVisibleNavigation",
+                "setVisibleActiveGoal",
+                "setVisibleMastery");
+        assertThat(german.instruction())
+                .contains("Möglichkeiten", "positive Perspektiven")
+                .contains("weder Vorwissen noch inhaltliches Detailwissen")
+                .contains("keine richtige Fachantwort")
+                .contains("ausdrücklich weiterlernen möchte")
+                .doesNotContain("ausreichender Evidenz");
+        assertThat(english.instruction())
+                .contains("accessible possibilities", "positive perspectives")
+                .contains("Do not test prior or detailed subject knowledge")
+                .contains("explicitly chooses to continue")
+                .doesNotContain("sufficient evidence");
+    }
+
+    @Test
     void selectionInstructionsKeepNaturalIntentWithinTheCurrentTurnInBothLocales() {
         CoachToolFacade facade = mock(CoachToolFacade.class);
         UnifiedLearnerStateResponse choices = state(
@@ -480,6 +514,38 @@ class VisibleSessionServiceTest {
         verify(facade).setSessionMastery(eq(TOKEN), requestCaptor.capture());
         assertThat(requestCaptor.getValue().mastery()).containsEntry(active.id(), 1.0);
         assertThat(requestCaptor.getValue().goalId()).isEqualTo(active.id());
+    }
+
+    @Test
+    void completingOrientationStoresOneWithoutCallingItSubjectMastery() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        FrontierGoal orientation = orientationGoal("orientation-goal", "Warum Mathematik?");
+        UnifiedLearnerStateResponse before = state(
+                "orientActiveGoal",
+                orientation,
+                List.of(orientation));
+        UnifiedLearnerStateResponse after = state("setActiveGoal", null, List.of());
+        when(facade.getSessionState(TOKEN)).thenReturn(before, after);
+        when(facade.setSessionMastery(eq(TOKEN), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        null,
+                        null,
+                        null));
+        VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        VisibleSessionService.ActionOutcome outcome = service.setMastery(
+                TOKEN,
+                "de",
+                new VisibleMasteryRequest(orientation.id()));
+
+        assertThat(outcome.status()).isEqualTo(HttpStatus.OK);
+        assertThat(outcome.response().instruction())
+                .contains("Orientierung wurde als abgeschlossen")
+                .doesNotContain("Mastery");
+        ArgumentCaptor<MasteryUpdateRequest> requestCaptor = ArgumentCaptor.forClass(MasteryUpdateRequest.class);
+        verify(facade).setSessionMastery(eq(TOKEN), requestCaptor.capture());
+        assertThat(requestCaptor.getValue().mastery()).containsEntry(orientation.id(), 1.0);
     }
 
     @Test
@@ -944,6 +1010,23 @@ class VisibleSessionServiceTest {
                 "Beschreibung für " + title,
                 type,
                 "tutor",
+                "test",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+    }
+
+    private static FrontierGoal orientationGoal(String id, String title) {
+        return new FrontierGoal(
+                id,
+                title,
+                "Zeigt Möglichkeiten und positive Perspektiven auf.",
+                "atomic",
+                "tutor",
+                "orientation",
                 "test",
                 List.of(),
                 List.of(),

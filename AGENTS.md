@@ -178,9 +178,20 @@ The UI maintains a **mastery value per goal**:
   - `0.5` = partly mastered / unsicher,
   - `1`   = sicher beherrscht.
 
+For goals authoritatively classified as `semanticKind: "orientation"`, this
+numeric field is only a compatibility completion marker: `1` means that the
+learner received the motivation/orientation and reacted to it or chose to
+continue. It does **not** certify subject-matter mastery. Orientation must show
+concrete possibilities and honest positive perspectives of the following
+material; it must not test prior knowledge, terminology, calculations,
+details, correctness, transfer, recall, or exam performance. Do not expose a
+graded 0/50/100 mastery control for these nodes.
+
 This is currently:
 
 - set **manually via UI controls** (slider + quick buttons) **for non‑SRS goals**,
+- stored as the binary completion marker `1` for orientation goals after the
+  learner has visibly engaged or expressed willingness to continue,
 - **auto‑derived for SRS/memorization goals** (`srs-deck:*` / `memorization`):  
   a memorization goal is treated as mastered **only if no cards are due today**,
 - aggregated per **filtered goal set** into:
@@ -765,10 +776,10 @@ Practical rollout rules:
 
 - Do **not** duplicate canonical goals per Bundesland.
 - Keep existing state-specific landscapes alive during transition as **legacy views**.
-- Start the convergence from the most mature legacy source, currently `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe`.
+- The convergence started from the Hessen upper-secondary source tree. That tree is retired and must stay absent from the active repo; its retained evidence lives under `curricula/DE/Gymnasium/input/HE/`, and the canonical layer under `curricula/DE/Gymnasium/canonical/`.
 - For Sekundarstufe I, use **G9 year levels 5-10 as the first canonical reference grid**. If source materials come from tracks with different total duration such as G8 vs G9, normalize them initially onto the matching year-level buckets instead of creating separate canonical G8 and G9 goal sets.
 - When legacy source material must survive the migration outside the canonical graph, keep it **bundeslandspezifisch** in DE-level retained-asset lanes. This applies not only to `abi/`, but also to source snapshots, curriculum-owned input bundles, exam blueprints, release notes, and similar state-owned materials.
-- Treat existing state-owned source JSON under paths such as `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/` as legacy source material; do not rewrite those files just to host canonical convergence.
+- Treat retained state-owned source JSON under paths such as `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/` as frozen source evidence; do not rewrite those snapshots just to host canonical convergence.
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
 - When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
 - Place canonical Gymnasium subject landscapes on a Germany-level path, not under a single Bundesland subtree; source ownership and canonical ownership should stay visibly separate in the repository layout.
@@ -791,8 +802,8 @@ Operational consequence for Sek I:
 
 Operational consequence for retained assets:
 
-- If a file or directory is kept because it remains relevant after canonical cutover, archive it under a DE-level state lane such as `curricula/DE/Gymnasium/input/DE-HE/...` or `curricula/DE/Gymnasium/input/DE-BY/...`.
-- Treat `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` as the model example for this rule, not as a special one-off exception.
+- If a file or directory is kept because it remains relevant after canonical cutover, archive it under a DE-level state lane such as `curricula/DE/Gymnasium/input/HE/...` or `curricula/DE/Gymnasium/input/BY/...`.
+- Treat the retained Hessen `abi/` assets under `curricula/DE/Gymnasium/input/HE/abi` as the model example for this rule, not as a special one-off exception.
 - For official curriculum sources, commit the structured reference and extraction state, not necessarily the original PDF/HTML working copy. `sourceDocument`/`sourceDocuments` entries with official HTTP(S) URLs, titles, and roles are the durable source-of-truth in Git; local PDFs/HTML files are cache/work artifacts for extraction and may remain ignored by `.gitignore`.
 - A green source-readiness state means the source situation is explicitly decided for every claimed scope dimension (Bundesland, subject, Sek I/Sek II, and G8/G9 where relevant), the official reference is usable, and any local working copy needed by the current pipeline can be reproduced or is present locally. It must not mean "the PDF is committed to Git."
 
