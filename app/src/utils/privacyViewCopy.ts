@@ -51,7 +51,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
           {
             title: '3. Use with AI Assistants',
             paragraphs: [
-              'SkillPilot currently supports two separate ChatGPT connection variants. In the Visible Session variant, a temporary session token is shown in the prepared start message and in the chat; it expires after no more than 24 hours. In the German OpenAI OAuth/MCP App variant, ChatGPT connects to SkillPilot through an OAuth authorization. The permanent SkillPilot ID remains inside SkillPilot and is not included in the chat, OAuth principal, or MCP tool contract.',
+              'SkillPilot currently supports two separate ChatGPT connection variants. In the Visible Session variant, a temporary session token is shown in the prepared start message and in the chat; it expires after no more than 24 hours. In the multilingual OpenAI OAuth/MCP App variant, ChatGPT connects to SkillPilot through an OAuth authorization. The permanent SkillPilot ID remains inside SkillPilot and is not included in the chat, OAuth principal, or MCP tool contract.',
               'The AI provider receives the learning context and tool results required for coaching, as well as everything you enter or upload in its chat. SkillPilot receives the explicit tool requests and arguments needed to read or update your learning state, but not the complete chat transcript. OAuth credentials, temporary connection data, and provider-side conversation data are processed and retained according to the respective technical purpose and the provider’s own terms.',
             ],
           },
@@ -103,7 +103,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
           {
             title: '3. Nutzung mit KI-Assistenten',
             paragraphs: [
-              'SkillPilot unterstützt derzeit zwei getrennte ChatGPT-Verbindungsvarianten. In der Variante „Visible Session“ wird ein temporäres Sitzungstoken in der vorbereiteten Startnachricht und im Chat angezeigt; es ist höchstens 24 Stunden gültig. In der deutschen OpenAI-OAuth/MCP-App-Variante verbindet sich ChatGPT über eine OAuth-Autorisierung mit SkillPilot. Die dauerhafte SkillPilot-ID bleibt innerhalb von SkillPilot und wird weder in den Chat noch in den OAuth-Principal oder den MCP-Toolvertrag aufgenommen.',
+              'SkillPilot unterstützt derzeit zwei getrennte ChatGPT-Verbindungsvarianten. In der Variante „Visible Session“ wird ein temporäres Sitzungstoken in der vorbereiteten Startnachricht und im Chat angezeigt; es ist höchstens 24 Stunden gültig. In der mehrsprachigen OpenAI-OAuth/MCP-App-Variante verbindet sich ChatGPT über eine OAuth-Autorisierung mit SkillPilot. Die dauerhafte SkillPilot-ID bleibt innerhalb von SkillPilot und wird weder in den Chat noch in den OAuth-Principal oder den MCP-Toolvertrag aufgenommen.',
               'Der KI-Anbieter erhält den für das Coaching benötigten Lernkontext und die Toolergebnisse sowie alles, was Sie in dessen Chat eingeben oder hochladen. SkillPilot erhält die ausdrücklichen Toolanfragen und Argumente, die zum Lesen oder Aktualisieren Ihres Lernstands erforderlich sind, jedoch nicht das vollständige Chatprotokoll. OAuth-Zugangsdaten, temporäre Verbindungsdaten und anbieterseitige Konversationsdaten werden entsprechend ihrem jeweiligen technischen Zweck und den Bedingungen des Anbieters verarbeitet und gespeichert.',
             ],
           },

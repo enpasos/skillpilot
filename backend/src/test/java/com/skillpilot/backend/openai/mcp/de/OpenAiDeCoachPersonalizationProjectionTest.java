@@ -31,7 +31,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                         option("po-dial-amber", ROOT_ID, "Panel Quartz", "dial-amber", "Choice Amber"),
                         option("po-dial-violet", ROOT_ID, "Panel Quartz", "dial-violet", "Choice Violet")));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options()).hasSize(2);
         OpenAiDeCoachContext.Option first = context.options().get(0);
@@ -63,7 +63,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                                 "band-shared",
                                 "Choice Shared")));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options()).hasSize(2);
         OpenAiDeCoachContext.Option first = context.options().get(0);
@@ -95,7 +95,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                                 "GK",
                                 "Grundkurs")));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options())
                 .extracting(
@@ -134,7 +134,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                         null,
                         null)));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options()).singleElement().satisfies(option -> {
             assertThat(option.id()).isEqualTo("po-saffron-selection");
@@ -158,7 +158,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                 PersonalizationPlan.OptionKind.COMPLETE_GROUP);
         PersonalizationPlan plan = selectionPlan(List.of(finish));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options()).singleElement().satisfies(option -> {
             assertThat(option.id()).isEqualTo("po-finish-neutral");
@@ -175,7 +175,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                 scopeValueOption("po-duration-g8", "durationModel", "G8", "G8"),
                 scopeValueOption("po-duration-g9", "durationModel", "G9", "G9")));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.options())
                 .extracting(
@@ -213,7 +213,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                         "CrossStage",
                         "Sekundarstufe I und II")));
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.requiredAction()).isEqualTo("setPersonalization");
         assertThat(context.options())
@@ -261,7 +261,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                         option("po-dial-violet", ROOT_ID, "Panel Quartz", "dial-violet", "Choice Violet")),
                 List.of());
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.decision()).isEqualTo(new OpenAiDeCoachContext.Decision(
                 "Orientation lane",
@@ -311,7 +311,7 @@ class OpenAiDeCoachPersonalizationProjectionTest {
                         null)),
                 List.of());
 
-        OpenAiDeCoachContext context = projector.project(personalizationState(), plan);
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
 
         assertThat(context.instruction())
                 .contains("Choose one route", "Genau eine Auswahl ist erforderlich", "bisher ausgewählt: 0")

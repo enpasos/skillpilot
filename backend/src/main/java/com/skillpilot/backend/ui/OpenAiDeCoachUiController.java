@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/ui/learners/{skillpilotId}/openai/de")
+@RequestMapping("/api/ui/learners/{skillpilotId}/openai/v1")
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
+        name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeCoachUiController {
 

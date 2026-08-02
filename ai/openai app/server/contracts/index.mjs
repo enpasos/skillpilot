@@ -1,15 +1,17 @@
-import { germanContract } from "./de.mjs";
-import { englishContract } from "./en.mjs";
+import { germanCatalog } from "./de.mjs";
+import { englishCatalog } from "./en.mjs";
 
-export const contracts = Object.freeze({
-  de: germanContract,
-  en: englishContract
+export { coachContract } from "./v1.mjs";
+
+export const localizedCatalogs = Object.freeze({
+  de: germanCatalog,
+  en: englishCatalog
 });
 
-export function contractFor(locale) {
-  const contract = contracts[locale];
-  if (!contract) {
-    throw new Error(`Unsupported locale: ${locale}`);
+export function catalogFor(locale) {
+  const catalog = localizedCatalogs[locale];
+  if (!catalog) {
+    throw new Error(`Unsupported demo locale: ${locale}`);
   }
-  return contract;
+  return catalog;
 }

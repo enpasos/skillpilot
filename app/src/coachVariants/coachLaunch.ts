@@ -36,7 +36,7 @@ export type CoachChatStart =
     })
   | {
       variant: 'openai-mcp'
-      language: 'de'
+      language: 'de' | 'en'
       prompt: string
       webUrl: string
       learningSessionId: string
@@ -76,7 +76,7 @@ export const requestCoachChatStart = async (input: CoachChatStartInput): Promise
     return {
       ...response,
       variant: 'openai-mcp',
-      language: 'de',
+      language: variant.language,
     }
   }
 

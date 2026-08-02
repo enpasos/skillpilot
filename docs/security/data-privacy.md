@@ -1,12 +1,12 @@
 # Data Privacy and Storage Concept
 
-Status: updated for the current German OpenAI OAuth/MCP App architecture and
+Status: updated for the current multilingual OpenAI OAuth/MCP App architecture and
 the rollback-only ChatGPT Visible Session on 2026-07-26.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
 
-The normative identity and session contract for the German App is
+The normative identity and session contract for the V1 App is
 [OpenAI MCP OAuth App binding and 24-hour learning sessions](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
 
 ## 1. Core Philosophy: Privacy by Design
@@ -29,18 +29,20 @@ content**.
   receive every explicit API or MCP tool request sent to it, including the
   arguments needed to read or change learning state.
 
-Two ChatGPT integrations coexist during migration:
+Two ChatGPT integration paths coexist during rollback support:
 
-1. **Visible Session:** retained Custom-GPT rollback contract and current English
-   fallback. It is not the German OpenAI-MCP contract. A temporary `sps_...`
+1. **Visible Session:** retained Custom-GPT rollback contract only. It is not the
+   current OpenAI-MCP contract. A temporary `sps_...`
    bearer token is deliberately visible in the prepared message and subsequent
    state footer.
-2. **German OpenAI OAuth/MCP App:** the current German integration. ChatGPT acts
-   as OAuth client, then invokes the data-only MCP server embedded in the
-   SkillPilot Spring Boot process.
+2. **Multilingual OpenAI V1 OAuth/MCP App:** the current integration for every
+   backend-supported communication locale. ChatGPT acts as OAuth client, then
+   invokes the data-only MCP server embedded in the SkillPilot Spring Boot
+   process.
 
-The frontend selects the German variant at build time. An OpenAI-MCP build still
-routes English to Visible Session. The Claude OAuth/MCP implementation remains
+The frontend selects the OpenAI-MCP variant at build time. German, English, and
+later supported locales share the same V1 App; the backend pins the
+`communicationLocale` in the learning session. The Claude OAuth/MCP implementation remains
 paused and hidden; it is not a production fallback.
 
 ## 2. Data Partitioning
@@ -62,7 +64,7 @@ The browser may hold:
   with a temporary learning-session reference, but no permanent SkillPilot ID,
   OAuth token, or client secret.
 
-Every German coach start calls a learner-specific SkillPilot UI endpoint with
+Every V1 coach start calls a learner-specific SkillPilot UI endpoint with
 the locally active permanent SkillPilot ID. The backend creates a new
 learning-session reference at that exact moment and the response opens ChatGPT
 with the prepared message. The permanent ID is not placed in the launch message
@@ -110,16 +112,17 @@ ChatGPT sees:
 The token is a credential, not an anonymization of the whole conversation. It
 expires absolutely after at most 24 hours; use does not extend it.
 
-### D. German OpenAI OAuth/MCP App Data
+### D. Multilingual OpenAI V1 OAuth/MCP App Data
 
 The backend keeps this provider lane separate from the Visible Session tables
 and Claude connection records.
 
 The protected public V1 endpoint
-`https://mcp-coach-de-v1.skillpilot.com/mcp` uses normal server-authenticated
+`https://mcp-coach-v1.skillpilot.com/mcp` uses normal server-authenticated
 HTTPS and requires a valid OAuth access token. Its dedicated nginx virtual
 host maps only the public `/mcp` endpoint to the loopback-only Spring handler
-`/internal/openai/de/v1/mcp`; the five reserved sibling hosts return `404`. The
+`/internal/openai/v1/mcp`; the eight reserved V2-to-V9 sibling hosts return
+`404`. The
 authorization server accepts exactly one configured confidential OAuth client,
 authenticated with `client_secret_basic`, together with PKCE S256 and exact
 client ID, redirect URI, resource, audience, and scopes. The client secret is
@@ -208,7 +211,7 @@ complete.
    progress, exams, and Recall.
 5. The backend resolves the token to the learner internally.
 
-### Scenario: German OpenAI App Connection
+### Scenario: OpenAI V1 App Connection
 
 1. Before calling the provider, the browser asks the person to confirm that the
    OpenAI minimum-age rules applicable in the person's country are met and that
@@ -216,25 +219,25 @@ complete.
    derive age from a grade level and does not collect a date of birth.
 2. ChatGPT starts an OAuth Authorization Code flow with PKCE S256. The SkillPilot
    authorization server accepts only the fixed confidential client for
-   **SkillPilot Coach DE v1**, authenticates it at the token endpoint with
+   **SkillPilot Coach v1**, authenticates it at the token endpoint with
    `client_secret_basic`, and validates the exact callback URI, resource, and
    scopes.
 3. After consent, the backend issues a short-lived authorization code and then
    resource- and scope-bound access credentials. Open DCR/CIMD registrations and
    unauthenticated token exchange are not accepted in the production profile.
-4. OAuth establishes only that the approved App may call the German MCP
+4. OAuth establishes only that the approved App may call the V1 MCP
    resource. It neither identifies a SkillPilot learner nor creates or selects
    a learning session.
 
-### Scenario: Start a German Learning Session
+### Scenario: Start a Learning Session With a Backend-Pinned Locale
 
 1. The learner has an active permanent SkillPilot ID in the first-party browser
    UI and explicitly selects **Lernen starten**.
 2. At that exact moment the backend creates a fresh, high-entropy learning
    session, even if the same learner has started another session before. It
    stores only the HMAC/hash of the reference, its learner association,
-   `started_at`, absolute expiry exactly 24 hours after creation, and optional revocation
-   metadata.
+   backend-selected `communicationLocale`, `started_at`, absolute expiry exactly
+   24 hours after creation, and optional revocation metadata.
 3. The backend returns a prepared ChatGPT launch message containing the temporary
    learning-session reference but not the permanent SkillPilot ID, OAuth token,
    or OAuth client secret. The UI places the message into the ChatGPT launch
@@ -268,15 +271,15 @@ because it is the learner's durable SkillPilot access key.
 
 ## 4. Retention and Deletion
 
-Default technical lifetimes for the German OpenAI integration are configurable
+Default technical lifetimes for the multilingual OpenAI V1 integration are configurable
 and currently set to:
 
 - OAuth access token: 1 hour;
 - rotating refresh token: 30 days;
-- OpenAI-DE learning session: exactly 24 hours from the
+- OpenAI V1 learning session: exactly 24 hours from the
   corresponding **Lernen starten** action.
 
-The OpenAI-DE learning-session deadline is not extended by MCP requests,
+The OpenAI V1 learning-session deadline is not extended by MCP requests,
 access-token refresh, browser reload, a new ChatGPT chat, or context
 compaction. Every new first-party **Lernen starten** action creates a separate
 session with its own deadline. The OAuth connection may remain refreshable after
@@ -336,7 +339,7 @@ remain responsible for preserving access keys and identity mappings.
 - Canonical learning-goal and card IDs are public technical references, not
   credentials. Learning-session references and OAuth credentials are
   security-sensitive.
-- The temporary OpenAI-DE learning-session reference is automatically carried
+- The temporary OpenAI V1 learning-session reference is automatically carried
   in the prepared start message and MCP tool arguments. It behaves like a
   short-lived bearer reference to one pseudonymous learner and must not be
   shared manually. The permanent SkillPilot ID remains backend-internal to this

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MCP_ORIGIN="https://mcp-coach-de-v1.skillpilot.com"
+MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"
 AUTHORIZATION_ORIGIN="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
 AUTHORIZATION_ORIGIN="${AUTHORIZATION_ORIGIN%/}"
 MCP_URL="${MCP_ORIGIN}/mcp"
@@ -11,19 +11,22 @@ METADATA_URL="${MCP_ORIGIN}/.well-known/oauth-protected-resource/mcp"
 CHALLENGE_URL="${MCP_ORIGIN}/.well-known/openai-apps-challenge"
 LEGACY_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/mcp"
 ABANDONED_VERSIONED_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/v1/mcp"
-INTERNAL_MCP_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/mcp"
-INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/protected-resource-metadata"
-INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/de/v1/openai-apps-challenge"
+INTERNAL_MCP_URL="${AUTHORIZATION_ORIGIN}/internal/openai/v1/mcp"
+INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/v1/protected-resource-metadata"
+INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/v1/openai-apps-challenge"
 REMOVED_COMMON_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-protected-resource"
 REMOVED_COMMON_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/.well-known/openai-apps-challenge"
 RESERVED_MCP_ORIGINS=(
-  "https://mcp-coach-de-v2.skillpilot.com"
-  "https://mcp-coach-de-v3.skillpilot.com"
-  "https://mcp-coach-en-v1.skillpilot.com"
-  "https://mcp-coach-en-v2.skillpilot.com"
-  "https://mcp-coach-en-v3.skillpilot.com"
+  "https://mcp-coach-v2.skillpilot.com"
+  "https://mcp-coach-v3.skillpilot.com"
+  "https://mcp-coach-v4.skillpilot.com"
+  "https://mcp-coach-v5.skillpilot.com"
+  "https://mcp-coach-v6.skillpilot.com"
+  "https://mcp-coach-v7.skillpilot.com"
+  "https://mcp-coach-v8.skillpilot.com"
+  "https://mcp-coach-v9.skillpilot.com"
 )
-EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE:-}"
+EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE:-}"
 GOAL_VISUALIZATION_ASSET_ROOT="${ROOT_DIR}/app/public/assets/goal-visualizations"
 
 validate_https_url() {
@@ -61,8 +64,8 @@ for reserved_origin in "${RESERVED_MCP_ORIGINS[@]}"; do
   validate_https_url "reserved MCP origin" "${reserved_origin}" false
 done
 
-if [[ "${MCP_ORIGIN}" != "https://mcp-coach-de-v1.skillpilot.com" ]]; then
-  echo "CHECK public_edge_configuration FAIL MCP origin must equal https://mcp-coach-de-v1.skillpilot.com" >&2
+if [[ "${MCP_ORIGIN}" != "https://mcp-coach-v1.skillpilot.com" ]]; then
+  echo "CHECK public_edge_configuration FAIL MCP origin must equal https://mcp-coach-v1.skillpilot.com" >&2
   exit 2
 fi
 if [[ "${AUTHORIZATION_ORIGIN}" != "https://skillpilot.com" ]]; then

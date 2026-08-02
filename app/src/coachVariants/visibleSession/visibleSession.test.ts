@@ -89,22 +89,22 @@ assertEqual(
     VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
   }).version,
   'openai-mcp',
-  'allows the isolated German MCP canary variant',
+  'allows the language-neutral MCP coach variant',
 )
 assertEqual(
   resolveCoachVariant('en', {
     VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
   }).version,
-  'visible-session',
-  'keeps English learners on the established visible-session coach during the German MCP cutover',
+  'openai-mcp',
+  'uses the language-neutral MCP coach for English learners',
 )
-const englishFallbackVariant = resolveCoachVariant('en', {
+const englishMcpVariant = resolveCoachVariant('en', {
   VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
 })
 assert(
-  englishFallbackVariant.version === 'visible-session'
-    && englishFallbackVariant.gptBaseUrl === VISIBLE_SESSION_GPT_URL_EN,
-  'the OpenAI MCP deployment flag preserves the English GPT URL',
+  englishMcpVariant.version === 'openai-mcp'
+    && englishMcpVariant.language === 'en',
+  'the OpenAI MCP deployment flag preserves the English session language',
 )
 assertEqual(
   resolveCoachVariant('de', { VITE_SKILLPILOT_COACH_VARIANT: 'typo' }).version,

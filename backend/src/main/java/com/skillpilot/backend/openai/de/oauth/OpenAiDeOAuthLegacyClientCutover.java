@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.transaction.support.TransactionOperations;
 
 /**
- * Optional one-way, allowlist-scoped migration from former public OpenAI-DE
+ * Optional one-way, allowlist-scoped migration from former public OpenAI Coach V1
  * OAuth clients when an installation explicitly switches to the fixed
  * confidential {@code client_secret_basic} production client.
  *
@@ -64,13 +64,13 @@ final class OpenAiDeOAuthLegacyClientCutover {
         }
         if (clients.size() != 1) {
             throw new IllegalStateException(
-                    "OpenAI-DE legacy client ID must identify exactly one registered client: "
+                    "OpenAI Coach V1 legacy client ID must identify exactly one registered client: "
                             + legacyClientId);
         }
         PersistedClient client = clients.getFirst();
         if (!Set.of(LEGACY_AUTHENTICATION_METHOD).equals(client.authenticationMethods())) {
             throw new IllegalStateException(
-                    "Refusing to remove allowlisted OpenAI-DE legacy client because it does not use only "
+                    "Refusing to remove allowlisted OpenAI Coach V1 legacy client because it does not use only "
                             + "client authentication method none: "
                             + legacyClientId);
         }
@@ -119,7 +119,7 @@ final class OpenAiDeOAuthLegacyClientCutover {
                     legacyClientId);
             if (remaining == null || remaining != 0) {
                 throw new IllegalStateException(
-                        "OpenAI-DE secure startup refused because an allowlisted legacy client remains: "
+                        "OpenAI Coach V1 secure startup refused because an allowlisted legacy client remains: "
                                 + legacyClientId);
             }
         }

@@ -28,7 +28,7 @@ public final class OpenAiDeCoachContractFingerprint {
             byte[] bytes = CANONICAL_JSON.writeValueAsBytes(canonicalContract(contract));
             return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));
         } catch (JsonProcessingException | NoSuchAlgorithmException exception) {
-            throw new IllegalStateException("Could not fingerprint the OpenAI-DE MCP contract.", exception);
+            throw new IllegalStateException("Could not fingerprint the OpenAI Coach V1 MCP contract.", exception);
         }
     }
 

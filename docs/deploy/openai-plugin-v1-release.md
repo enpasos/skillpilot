@@ -1,29 +1,29 @@
-# SkillPilot Coach DE v1: Release, Rollback und Stilllegung
+# SkillPilot Coach v1: Release, Rollback und Stilllegung
 
 **Stand:** 31. Juli 2026  
-**Status:** verbindliches Betriebsverfahren für die deutsche Plugin-Linie V1
+**Status:** verbindliches Betriebsverfahren für die mehrsprachige Plugin-Linie V1
 
 Dieses Runbook setzt den
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 operativ um. Es gilt für die zur Veröffentlichung vorgesehene und später
-veröffentlichte Linie `skillpilot-coach-de-v1`.
+veröffentlichte Linie `skillpilot-coach-v1`.
 
 ## 1. Feste Identität der Linie
 
 | Bestandteil | Verbindlicher Wert |
 | --- | --- |
-| Plugin-Identität | `skillpilot-coach-de-v1` |
-| Anzeigename | `SkillPilot Coach DE v1` |
+| Plugin-Identität | `skillpilot-coach-v1` |
+| Anzeigename | `SkillPilot Coach v1` |
 | aktueller Paketstand | `1.0.0` |
 | Contract Major | `1` |
-| öffentlicher MCP-Endpunkt | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| OAuth Resource/Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
-| Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
+| öffentlicher MCP-Endpunkt | `https://mcp-coach-v1.skillpilot.com/mcp` |
+| OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
+| Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
+| Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
+| Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
-| Quellpaket | `ai/openai plugin/skillpilot-coach-de-v1/` |
+| Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
 Der noch unveröffentlichte V1-Draft enthält eine eng begrenzte, read-only
 MCP-UI für die Visualisierung des aktiven atomaren Lernziels. Der
@@ -34,9 +34,8 @@ Resource-URI
 `ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`. Die übrigen Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
 besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
-verwenden ausschließlich den dedizierten DE-V1-Origin. Die fünf für DE V2/V3
-und EN V1/V2/V3 reservierten Hosts antworten bis zu ihrer jeweiligen Freigabe
-mit `404`.
+verwenden ausschließlich den dedizierten V1-Origin. Die acht neutralen
+Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit `404`.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
@@ -45,12 +44,12 @@ Die maschinenlesbaren Quellen der Wahrheit sind:
   Zustands-/Workflowversionen;
 - `release/lifecycle.json` für `CURRENT`, `SUPPORTED`, `DEPRECATED`,
   `UNPUBLISHED` oder `RETIRED`;
-- `contracts/openai/skillpilot-coach-de-v1/release-index.json` ausschließlich
+- `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich
   für tatsächlich im OpenAI-Portal veröffentlichte Versionen;
-- `contracts/drafts/openai/skillpilot-coach-de-v1/<version>-SNAPSHOT/` für den
+- `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
   fortschreibbaren internen Arbeitsstand einer noch nicht veröffentlichten
   Paketversion;
-- `contracts/published/openai/skillpilot-coach-de-v1/<version>/` für den
+- `contracts/published/openai/skillpilot-coach-v1/<version>/` für den
   unveränderlichen veröffentlichten Snapshot.
 
 Solange eine Paketversion nicht tatsächlich im OpenAI-Portal veröffentlicht
@@ -77,18 +76,18 @@ Paketänderung benötigt eine neue SemVer.
    `1.0.1` erzeugt.
 3. Die kanonischen V1-URLs sind feste Vertragswerte im Backend-Artefakt und
    keine Laufzeitkonfiguration. Alte `SKILLPILOT_OPENAI_DE_*`-URLvariablen und
-   neu erfundene `SKILLPILOT_OPENAI_COACH_DE_V1_*`-URLvariablen werden aus
+   neu erfundene `SKILLPILOT_OPENAI_COACH_V1_*`-URLvariablen werden aus
    `/etc/skillpilot/skillpilot.env` entfernt und fail-closed abgelehnt.
-   DE-V1-spezifische Schalter und OAuth-Clientwerte tragen
-   `SKILLPILOT_OPENAI_COACH_DE_V1_*`; gemeinsame Richtlinien des einzigen
+   V1-spezifische Schalter und OAuth-Clientwerte tragen
+   `SKILLPILOT_OPENAI_COACH_V1_*`; gemeinsame Richtlinien des einzigen
    Spring-Prozesses tragen `SKILLPILOT_OPENAI_*`.
 
    `SKILLPILOT_SERVER_BUILD` gehört nicht in das `EnvironmentFile`. Gradle
    erzeugt beim Backend-Build genau ein `skillpilot-server`-Artefakt und bettet
    den vollständigen lowercase Git-Commit des
    ausgecheckten `HEAD` in
-   `skillpilot.openai.coach.de.v1.server-build` und
-   `skillpilot.openai.coach.de.v1.mcp.server-version` ein. Das Deployment prüft beide
+   `skillpilot.openai.coach.v1.server-build` und
+   `skillpilot.openai.coach.v1.mcp.server-version` ein. Das Deployment prüft beide
    Werte im verarbeiteten `application.yml` vor dem Service-Restart. Eine
    manuell gepflegte Laufzeitvariable könnte die Artefaktidentität daher weder
    verbessern noch überschreiben.
@@ -111,7 +110,7 @@ Paketänderung benötigt eine neue SemVer.
    ```
 
    `prepare` ersetzt ausschließlich
-   `contracts/drafts/openai/skillpilot-coach-de-v1/<version>-SNAPSHOT/`. Es
+   `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/`. Es
    ändert weder die öffentliche SemVer noch den Published-Index. Ist die
    Version bereits veröffentlicht, schlägt der Befehl fail-closed fehl.
    Das Plugin-Tar wird ohne ein systemspezifisches `tar`-Programm direkt als
@@ -159,7 +158,7 @@ dedizierten MCP-Origin oder die OAuth-Resource.
    Kill-Switch deaktivieren.
 2. Den letzten grünen Backend-/Edge-Build wiederherstellen.
 3. Nur einen bereits veröffentlichten, unveränderten Snapshot aus
-   `contracts/published/openai/skillpilot-coach-de-v1/` verwenden.
+   `contracts/published/openai/skillpilot-coach-v1/` verwenden.
 4. Falls nur Skill- oder Pluginmetadaten fehlerhaft sind, einen neuen
    kompatiblen Patch veröffentlichen; eine bereits publizierte Versionsnummer
    wird nicht neu befüllt.

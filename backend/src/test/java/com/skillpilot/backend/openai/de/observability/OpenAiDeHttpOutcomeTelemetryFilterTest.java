@@ -16,7 +16,7 @@ class OpenAiDeHttpOutcomeTelemetryFilterTest {
         OpenAiDeOperationalTelemetry telemetry = new OpenAiDeOperationalTelemetry(registry);
         OpenAiDeHttpOutcomeTelemetryFilter filter = new OpenAiDeHttpOutcomeTelemetryFilter(telemetry);
         MockHttpServletRequest request = new MockHttpServletRequest(
-                "POST", "/api/openai/de/oauth2/token");
+                "POST", "/api/openai/v1/oauth2/token");
         request.addParameter("grant_type", "refresh_token");
         request.addParameter("refresh_token", "SECRET-REFRESH-MARKER");
         MockHttpServletResponse response = new MockHttpServletResponse();
@@ -29,6 +29,16 @@ class OpenAiDeHttpOutcomeTelemetryFilterTest {
         assertThat(count(registry, "oauth_failure")).isEqualTo(1.0);
         assertThat(count(registry, "http_401")).isEqualTo(1.0);
         assertThat(registry.getMeters().toString()).doesNotContain("SECRET-REFRESH-MARKER");
+    }
+
+    @Test
+    void observesLanguageNeutralV1LaunchPath() {
+        OpenAiDeHttpOutcomeTelemetryFilter filter = new OpenAiDeHttpOutcomeTelemetryFilter(
+                new OpenAiDeOperationalTelemetry(new SimpleMeterRegistry()));
+
+        assertThat(filter.shouldNotFilter(new MockHttpServletRequest(
+                "POST",
+                "/api/ui/learners/learner-42/openai/v1/launch"))).isFalse();
     }
 
     private static double count(SimpleMeterRegistry registry, String event) {

@@ -1,15 +1,14 @@
 # Provider-Neutral Learning-Coach Boundary
 
 Status: durable application and security boundary for all SkillPilot
-learning-coach adapters. The current German ChatGPT channel is the separate,
-provider-hosted OpenAI MCP App. A corresponding English App remains a separate
-target; Visible Session is only an independently rollbackable Custom-GPT path
-and possible English transition. Claude OAuth/MCP remains disabled until its own
-acceptance gate is complete.
+learning-coach adapters. The OpenAI channel is one multilingual MCP App per
+contract major. Visible Session remains only an independently rollbackable
+Custom-GPT path. Claude OAuth/MCP remains disabled until its own acceptance
+gate is complete.
 
 The product decision and migration sequence are specified in the
 [SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
-For the German OpenAI App, the normative identity and session contract is
+For the OpenAI App, the normative identity and session contract is
 [OpenAI MCP OAuth App binding and explicit 24-hour learning sessions](openai-mcp-oauth-learner-session-architecture.md).
 
 ## Purpose
@@ -29,10 +28,10 @@ acceptance cases.
 The shared runtime boundary is:
 
 ```text
-OpenAI App DE | OpenAI App EN | Claude MCP | Visible Session fallback
-      |               |              |                    |
-      +------- provider-specific OAuth, tools and UI ------+
-                              |
+OpenAI App V1 | Claude MCP | Visible Session fallback
+      |              |                    |
+      +------ provider-specific OAuth, tools and UI ------+
+                             |
               CoachStateProjection + CoachToolFacade
                               |
               LearnerService, state machine and database
@@ -44,29 +43,45 @@ only justified by a future need for independent scaling, deployment or tenant
 isolation.
 
 OpenAI distributes Apps through Plugins in its current product model. That
-distribution package combines one language-specific coach skill with the
-registered MCP connection. The skill owns repeatable dialogue and
+distribution package combines one language-neutral English control-plane skill
+with the registered MCP connection. The skill owns repeatable dialogue and
 tool-orchestration guidance; it does not change the runtime boundary: ChatGPT
 hosts and bills the model interaction, while the MCP server and persistent
 learning state remain SkillPilot services. Authorization, current state and
 allowed transitions are never moved into the skill.
 
-## Two OpenAI Apps, One Shared Application Layer
+## One OpenAI App Per Contract Major
 
-German and English use two separate OpenAI Apps, not a single multilingual App:
+German, English and later supported interaction languages use the same
+**SkillPilot Coach v1** App and the same public contract. Language is not an App
+identity, OAuth-client identity, endpoint or release-line dimension.
 
-- **SkillPilot Coach DE v1** exposes a German-only tool catalog, descriptions,
-  widget resource, OAuth client and acceptance suite;
-- **SkillPilot Coach English** exposes the corresponding English-only contract
-  with its own registration, rollout and rollback.
+The static control plane is deliberately English and language neutral: plugin
+metadata, skill instructions, tool names, descriptions, schemas and stable
+machine values do not change with the learner's language. The backend pins the
+interaction language when it creates the `learningSessionId` and returns all
+learner-facing payloads in that language. The plugin must treat that session
+language as authoritative, communicate exclusively in it, and never infer the
+answer language from its English control plane, tool names or the ChatGPT host
+locale.
 
-There is no public `language` parameter and no model-driven language routing at
-the MCP boundary. This duplicates a small amount of provider configuration but
-removes a failure mode from every learning turn and allows one language to be
-reviewed, released or rolled back without affecting the other. Internal domain
-services, safe projections and fachliche use cases remain shared; external
-contracts do not have to be byte-for-byte or method-for-method identical as long
-as both cover all required workflows.
+This separates three concerns that must not be conflated:
+
+- **control-plane language:** stable English plugin and MCP contract text;
+- **interaction language:** backend-owned language of the learning session and
+  all user communication;
+- **curriculum or target language:** subject/content semantics, which may differ
+  from the interaction language, for example an English curriculum coached in
+  German.
+
+The single public V1 endpoint is
+`https://mcp-coach-v1.skillpilot.com/mcp`. The already reserved future major
+hosts `mcp-coach-v2.skillpilot.com` through
+`mcp-coach-v9.skillpilot.com` fail closed with `404` until their own breaking
+contracts are implemented. They do not create sibling endpoints per language.
+The old `mcp-coach-de-v*` and
+`mcp-coach-en-v*` names belonged only to unpublished local infrastructure and
+must not be exposed as compatibility routes.
 
 ## Shared And Provider-Specific Responsibilities
 
@@ -83,14 +98,15 @@ Each provider adapter owns:
 
 - transport authentication and learner resolution;
 - its exact tool catalog and schemas;
-- localization and compact response rendering;
+- compact response rendering; learner-facing localization is authoritative
+  backend output selected by the learning session;
 - provider-specific session, footer, widget or OAuth behavior;
 - instructions for recovering from lost model context.
 
 For the OpenAI Apps, this specifically means:
 
 - the authorization server accepts exactly one fixed, pre-registered
-  confidential OAuth client for the German App. ChatGPT and SkillPilot hold the
+  confidential OAuth client for the V1 App. ChatGPT and SkillPilot hold the
   same long random client secret, and the token endpoint requires
   `client_secret_basic`; exact redirect URI, Authorization Code with PKCE S256,
   resource/audience and scopes are mandatory, while DCR, CIMD,
@@ -115,9 +131,10 @@ mTLS is not part of the `1.0.0` contract. Any later transport hardening needs
 its own design and does not become the identity of the particular SkillPilot
 App.
 
-Provider neutrality therefore does not mean one universal external tool schema.
-The common part is the fachliche behavior and security boundary; external tools
-remain deliberately tailored to the host.
+Provider neutrality therefore does not require one universal schema across
+different providers or contract majors. Within one OpenAI contract major,
+however, the external tool schema is language neutral and shared by every
+supported interaction language.
 
 ## Safe Normal-State Projection
 
@@ -209,7 +226,7 @@ Provider bindings remain separate:
 - the rollback-only ChatGPT Visible Session resolves a short-lived,
   HMAC-stored bearer token to a learner;
 - Claude resolves an authenticated opaque OAuth connection subject to a learner;
-- each production OpenAI App authenticates through its own fixed confidential
+- each production OpenAI major-line App authenticates through its own fixed confidential
   OAuth client and additionally requires a fresh, first-party created,
   absolutely limited 24-hour learning session to address the learner.
 
@@ -284,21 +301,22 @@ clock and the adapter supplies a stable request identity.
 No event-sourcing system or new database migration is required for the current
 shared boundary.
 
-## Prototype And Current German Production Boundary
+## Prototype And Current V1 Production Boundary
 
 The executable mechanism prototype under [`ai/openai app`](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20app/README.md)
-already demonstrates two locale-fixed MCP endpoints, separate widget resources,
-app-only choice and submission calls, hidden result `_meta`, argumentless state
-reads and persistent demo state. It deliberately uses one **no-auth development
-identity per language**. This is sufficient to test protocol mechanics with
-synthetic data, but it is neither account linking nor tenant isolation and must
-not be exposed as a production service.
+exposes one language-neutral V1 `/mcp` endpoint with English control metadata,
+separate localized demo payload/UI catalogs, app-only choice and submission
+calls, hidden result `_meta`, argumentless state reads and persistent demo state.
+It deliberately uses one **no-auth development identity**. That prototype
+remains useful for protocol mechanics and synthetic data, but it is neither
+account linking nor tenant isolation and must not be exposed as a production
+service.
 
-The German Spring Boot path now implements the data-only contract against the
-existing database-backed domain use cases. Its secure production boundary
+The Spring Boot V1 path implements the data-only contract against the existing
+database-backed domain use cases. Its secure production boundary
 requires all of the following:
 
-1. server-authenticated TLS at the German MCP edge;
+1. server-authenticated TLS at the major-version MCP edge;
 2. one fixed confidential OAuth client, authenticated at the token endpoint
    through `client_secret_basic`, with exact callback allowlist, Authorization
    Code plus PKCE S256, exact resource/audience and scopes; DCR, CIMD,
@@ -313,17 +331,17 @@ mTLS is outside the `1.0.0` release gates and would not replace the fixed
 confidential OAuth client as the App identity.
 
 The production gate also includes full workflow parity for curriculum and scope
-selection, active goals, frontier, mastery, Verified Recall and exams; separate
-DE and EN host acceptance; and validation on the intended free and fixed-price
-provider plans. A passing local MCP simulation proves none of those gates by
-itself.
+selection, active goals, frontier, mastery, Verified Recall and exams; acceptance
+of every supported session language through the same V1 host; and validation on
+the intended free and fixed-price provider plans. A passing local MCP simulation
+proves none of those gates by itself.
 
 ## Compatibility Rule
 
 Shared hardening must preserve the configured Visible-Session rollback routes, operation
 IDs, request bodies, response fields, status codes and DE/EN GPT packages, as
-well as the older Startcode sources required for rollback. The two OpenAI Apps
-live in their own package and do not overwrite either fallback.
+well as the older Startcode sources required for rollback. The multilingual
+OpenAI App lives in its own package and does not overwrite either fallback.
 
 New provider capabilities remain disabled until their release gates pass. An App
 is not released merely because its unit tests or local host simulation pass; it

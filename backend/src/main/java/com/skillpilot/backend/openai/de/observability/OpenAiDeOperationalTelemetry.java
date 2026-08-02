@@ -7,14 +7,14 @@ import java.util.Map;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
 
-/** Privacy-safe counters for the bounded OpenAI-DE operational event set. */
+/** Privacy-safe counters for the bounded OpenAI Coach V1 operational event set. */
 @Component
 @ConditionalOnExpression(
-        "${skillpilot.openai.coach.de.v1.enabled:false} || "
-                + "${skillpilot.openai.coach.de.v1.bootstrap-enabled:false}")
+        "${skillpilot.openai.coach.v1.enabled:false} || "
+                + "${skillpilot.openai.coach.v1.bootstrap-enabled:false}")
 public final class OpenAiDeOperationalTelemetry {
 
-    public static final String EVENT_METRIC = "skillpilot.openai.coach.de.v1.operational.event";
+    public static final String EVENT_METRIC = "skillpilot.openai.coach.v1.operational.event";
 
     public enum Event {
         OAUTH_FAILURE("oauth_failure"),
@@ -46,7 +46,7 @@ public final class OpenAiDeOperationalTelemetry {
         Map<Event, Counter> registered = new EnumMap<>(Event.class);
         for (Event event : Event.values()) {
             registered.put(event, Counter.builder(EVENT_METRIC)
-                    .description("Bounded operational events for the German OpenAI coach")
+                    .description("Bounded operational events for the OpenAI Coach V1")
                     .tag("event", event.tag())
                     .register(meterRegistry));
         }

@@ -1,10 +1,10 @@
 # Legacy: SkillPilot Lerncoach mit Startcode und Session-Token
 
-Status: historische Architektur vom 19. Mai 2026; kein aktueller deutscher
+Status: historische Architektur vom 19. Mai 2026; für keine Sprache aktueller
 Laufzeitvertrag.
 
 > Dieses Dokument bleibt als technische Rollback-Referenz erhalten. Der aktuelle
-> deutsche Flow ist die
+> mehrsprachige V1-Architektur ist die
 > [OpenAI-MCP-App mit OAuth- und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
 > Dabei transportiert ChatGPT den OAuth-Zugriff automatisch. Jeder ausdrückliche
 > Start in SkillPilot erzeugt eine davon getrennte, absolut höchstens 24 Stunden
@@ -12,8 +12,9 @@ Laufzeitvertrag.
 > Startnachricht ein und verlangt sie danach als Argument jedes fachlichen
 > Tools. Die dauerhafte SkillPilot-ID erscheint nicht im Chat. Die
 > [Visible-Session-Architektur](chatgpt-visible-session-flow.md) bleibt ein
-> separater Custom-GPT-Rollbackpfad und kann bis zu einer eigenen englischen App
-> noch als englischer Übergangspfad dienen.
+> separater Custom-GPT-Rollbackpfad. Deutsch, Englisch und jede später
+> unterstützte Interaktionssprache verwenden im Normalbetrieb dieselbe
+> Major-versionierte App.
 
 Dieses Dokument beschreibt ausschließlich den früheren Browser-first-Flow für den
 Start des SkillPilot Lerncoachs in ChatGPT. Ziel war, dass Lernende auf

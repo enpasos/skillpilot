@@ -9,6 +9,7 @@ import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
+import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -32,8 +33,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * Owns the independently issued learner-session lifecycle for the German
- * ChatGPT app.
+ * Owns the independently issued learner-session lifecycle for the
+ * language-neutral ChatGPT app.
  *
  * <p>OAuth is deliberately handled outside this service and proves only the
  * predefined confidential ChatGPT app client. The permanent SkillPilot ID is
@@ -41,13 +42,14 @@ import org.springframework.web.server.ResponseStatusException;
  * learning-session ID that selects the learner on every MCP tool call.</p>
  */
 @Service
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public class OpenAiDeCoachConnectionService {
 
     private record IssuedLearningSession(String id, Instant expiresAt) {
     }
 
     private record NormalizedLaunch(
+            String communicationLocale,
             String client,
             String selectedCurriculum,
             LaunchIntentType type,
@@ -60,7 +62,7 @@ public class OpenAiDeCoachConnectionService {
     private static final Pattern LEARNING_SESSION_ID_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final String WRITES_DISABLED_MESSAGE =
-            "OpenAI-DE state changes are temporarily disabled.";
+            "OpenAI Coach state changes are temporarily disabled.";
     private static final String ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
     private static final String ABI26_LK_GOAL_ID = "68a262fc-43f4-5d23-af30-853870bfd45b";
 
@@ -101,7 +103,10 @@ public class OpenAiDeCoachConnectionService {
         Learner learner = requireLearnerForUpdate(skillpilotId);
         Instant now = Instant.now();
         learner = prepareLaunchState(skillpilotId, learner, launchRequest);
-        IssuedLearningSession learningSession = issueLearningSession(learner, now);
+        IssuedLearningSession learningSession = issueLearningSession(
+                learner,
+                launchRequest.communicationLocale(),
+                now);
 
         return new OpenAiDeLaunchResponse(
                 launchPrompt(launchRequest, learningSession.id()),
@@ -127,7 +132,7 @@ public class OpenAiDeCoachConnectionService {
         return learningSession.getLearner().getSkillpilotId();
     }
 
-    @Scheduled(fixedDelayString = "${skillpilot.openai.coach.de.v1.cleanup-interval-ms:3600000}")
+    @Scheduled(fixedDelayString = "${skillpilot.openai.coach.v1.cleanup-interval-ms:3600000}")
     @Transactional
     public void cleanupExpiredLearningSessions() {
         learningSessionRepository.deleteByExpiresAtLessThanEqual(Instant.now());
@@ -193,7 +198,10 @@ public class OpenAiDeCoachConnectionService {
         }
     }
 
-    private IssuedLearningSession issueLearningSession(Learner learner, Instant startedAt) {
+    private IssuedLearningSession issueLearningSession(
+            Learner learner,
+            String communicationLocale,
+            Instant startedAt) {
         String learningSessionId = generateSecret("sps_");
         OpenAiDeLearningSession learningSession = new OpenAiDeLearningSession();
         learningSession.setTokenHash(hashSecretValue(learningSessionId));
@@ -210,6 +218,7 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setStateSchemaVersion(OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
         learningSession.setWorkflowVersion(properties.getWorkflowVersion());
         learningSession.setCurriculumRevision(curriculumRevisionProvider.currentRevision());
+        learningSession.setCommunicationLocale(communicationLocale);
         learningSessionRepository.save(learningSession);
         return new IssuedLearningSession(learningSessionId, expiresAt);
     }
@@ -339,9 +348,12 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private NormalizedLaunch normalizeLaunch(OpenAiDeCoachStartRequest request) {
-        String language = trimToNull(request == null ? null : request.language());
-        if (language != null && !language.toLowerCase(java.util.Locale.ROOT).startsWith("de")) {
-            throw badLaunchRequest("language must select the German OpenAI coach.");
+        String communicationLocale;
+        try {
+            communicationLocale = OpenAiCoachLocale.normalize(
+                    request == null ? null : request.communicationLocale());
+        } catch (IllegalArgumentException exception) {
+            throw badLaunchRequest(exception.getMessage());
         }
         String client = trimAndValidateLength(
                 request == null ? null : request.client(),
@@ -355,6 +367,7 @@ public class OpenAiDeCoachConnectionService {
                 request == null ? null : request.launchIntent();
         if (requestedIntent == null) {
             return new NormalizedLaunch(
+                    communicationLocale,
                     client,
                     selectedCurriculum,
                     LaunchIntentType.CURRENT_UNIT,
@@ -372,7 +385,14 @@ public class OpenAiDeCoachConnectionService {
         return switch (type) {
             case CURRENT_UNIT -> {
                 requireAbsent(goalId, batchSize, courseLevel, type);
-                yield new NormalizedLaunch(client, selectedCurriculum, type, null, null, null);
+                yield new NormalizedLaunch(
+                        communicationLocale,
+                        client,
+                        selectedCurriculum,
+                        type,
+                        null,
+                        null,
+                        null);
             }
             case VERIFIED_RECALL -> {
                 if (goalId == null) {
@@ -384,7 +404,14 @@ public class OpenAiDeCoachConnectionService {
                 if (courseLevel != null) {
                     throw badLaunchRequest("launchIntent.courseLevel is not allowed for VERIFIED_RECALL.");
                 }
-                yield new NormalizedLaunch(client, selectedCurriculum, type, goalId, batchSize, null);
+                yield new NormalizedLaunch(
+                        communicationLocale,
+                        client,
+                        selectedCurriculum,
+                        type,
+                        goalId,
+                        batchSize,
+                        null);
             }
             case ABI26_EXAM -> {
                 if (goalId == null) {
@@ -400,6 +427,7 @@ public class OpenAiDeCoachConnectionService {
                     throw badLaunchRequest("launchIntent.courseLevel must be GK or LK for ABI26_EXAM.");
                 }
                 yield new NormalizedLaunch(
+                        communicationLocale,
                         client,
                         selectedCurriculum,
                         type,
@@ -429,23 +457,36 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private String launchPrompt(NormalizedLaunch launch, String learningSessionId) {
+        boolean english = OpenAiCoachLocale.isEnglish(launch.communicationLocale());
         String instruction = switch (launch.type()) {
             case CURRENT_UNIT ->
-                    "Verwende die App SkillPilot Coach DE v1 und fahre mit dem in SkillPilot vorbereiteten "
-                            + "nächsten Schritt fort.";
+                    english
+                            ? "Use the SkillPilot Coach v1 app and continue with the next step prepared in SkillPilot."
+                            : "Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten "
+                                    + "nächsten Schritt fort.";
             case VERIFIED_RECALL ->
-                    "Verwende die App SkillPilot Coach DE v1 und starte für mein aktuell ausgewähltes Lernziel "
-                            + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";
+                    english
+                            ? "Use the SkillPilot Coach v1 app and start a strict recall check with "
+                                    + launch.batchSize() + " cards for my currently selected learning goal."
+                            : "Verwende die App SkillPilot Coach v1 und starte für mein aktuell ausgewähltes Lernziel "
+                                    + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";
             case ABI26_EXAM ->
-                    "Verwende die App SkillPilot Coach DE v1 und starte im Prüfungsmodus mit meiner im Cockpit "
-                            + "ausgewählten Mathematik-Abituraufgabe für den "
-                            + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
+                    english
+                            ? "Use the SkillPilot Coach v1 app and start exam mode with the mathematics Abitur task "
+                                    + "selected in my cockpit for the "
+                                    + ("LK".equals(launch.courseLevel()) ? "advanced course." : "basic course.")
+                            : "Verwende die App SkillPilot Coach v1 und starte im Prüfungsmodus mit meiner im Cockpit "
+                                    + "ausgewählten Mathematik-Abituraufgabe für den "
+                                    + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
         };
         return instruction
-                + "\n\nSkillPilot-Lernsession: "
+                + (english ? "\n\nSkillPilot learning session: " : "\n\nSkillPilot-Lernsession: ")
                 + learningSessionId
-                + "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "
-                + "learningSessionId.";
+                + (english
+                        ? "\nUse this learning session unchanged in the learningSessionId parameter for every "
+                                + "SkillPilot app call."
+                        : "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "
+                                + "learningSessionId.");
     }
 
     private String trimAndValidateLength(String value, String field, int maxLength) {
@@ -473,7 +514,7 @@ public class OpenAiDeCoachConnectionService {
             byte[] digest = mac.doFinal(value.getBytes(StandardCharsets.UTF_8));
             return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
         } catch (Exception exception) {
-            throw new IllegalStateException("Could not hash OpenAI-DE credential.", exception);
+            throw new IllegalStateException("Could not hash OpenAI Coach credential.", exception);
         }
     }
 

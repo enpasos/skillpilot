@@ -63,12 +63,12 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
+        name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeOAuthConfiguration {
 
-    public static final String READ_SCOPE = "skillpilot.openai.de.read";
-    public static final String WRITE_SCOPE = "skillpilot.openai.de.write";
+    public static final String READ_SCOPE = "skillpilot.openai.v1.read";
+    public static final String WRITE_SCOPE = "skillpilot.openai.v1.write";
     public static final String OFFLINE_SCOPE = "offline_access";
     public static final String CLIENT_AUTH_NONE = "none";
     public static final String CLIENT_AUTH_CLIENT_SECRET_BASIC = "client_secret_basic";
@@ -76,13 +76,13 @@ public class OpenAiDeOAuthConfiguration {
     private static final PasswordEncoder CLIENT_SECRET_PASSWORD_ENCODER =
             PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-    public static final String AUTHORIZATION_ENDPOINT = "/api/openai/de/oauth2/authorize";
-    public static final String TOKEN_ENDPOINT = "/api/openai/de/oauth2/token";
-    public static final String REVOCATION_ENDPOINT = "/api/openai/de/oauth2/revoke";
-    public static final String INTROSPECTION_ENDPOINT = "/api/openai/de/oauth2/introspect";
-    public static final String CONSENT_ENDPOINT = "/api/openai/de/oauth/consent";
-    public static final String CONNECT_REQUIRED_ENDPOINT = "/api/openai/de/oauth/connect-required";
-    public static final String ISSUER_PATH = "/api/openai/de";
+    public static final String AUTHORIZATION_ENDPOINT = "/api/openai/v1/oauth2/authorize";
+    public static final String TOKEN_ENDPOINT = "/api/openai/v1/oauth2/token";
+    public static final String REVOCATION_ENDPOINT = "/api/openai/v1/oauth2/revoke";
+    public static final String INTROSPECTION_ENDPOINT = "/api/openai/v1/oauth2/introspect";
+    public static final String CONSENT_ENDPOINT = "/api/openai/v1/oauth/consent";
+    public static final String CONNECT_REQUIRED_ENDPOINT = "/api/openai/v1/oauth/connect-required";
+    public static final String ISSUER_PATH = "/api/openai/v1";
 
     @Bean
     RegisteredClientRepository openAiDeRegisteredClientRepository(
@@ -114,7 +114,7 @@ public class OpenAiDeOAuthConfiguration {
     @Bean
     AuthorizationServerSettings openAiDeAuthorizationServerSettings(
             @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl) {
-        requireHttpsOrigin(publicBaseUrl, "OpenAI-DE public base URL");
+        requireHttpsOrigin(publicBaseUrl, "OpenAI Coach V1 public base URL");
         return AuthorizationServerSettings.builder()
                 .issuer(stripTrailingSlash(publicBaseUrl) + ISSUER_PATH)
                 .authorizationEndpoint(AUTHORIZATION_ENDPOINT)
@@ -193,7 +193,7 @@ public class OpenAiDeOAuthConfiguration {
                 .clientSecret(clientSecretBasic
                         ? encodedClientSecret(existing, properties.getOauth().getClientSecret())
                         : null)
-                .clientName("ChatGPT / SkillPilot Coach DE v1")
+                .clientName("ChatGPT / SkillPilot Coach v1")
                 .clientAuthenticationMethods(methods -> {
                     methods.clear();
                     methods.add(clientAuthenticationMethod);
@@ -268,14 +268,14 @@ public class OpenAiDeOAuthConfiguration {
                         persisted.getTokenSettings().getRefreshTokenTimeToLive())
                 || persisted.getTokenSettings().isReuseRefreshTokens()) {
             throw new IllegalStateException(
-                    "OpenAI-DE secure startup refused because the configured OAuth client registration does not exactly match the required authentication method, callbacks, PKCE, consent, grants, scopes, key binding, and token policy.");
+                    "OpenAI Coach V1 secure startup refused because the configured OAuth client registration does not exactly match the required authentication method, callbacks, PKCE, consent, grants, scopes, key binding, and token policy.");
         }
     }
 
     @Bean
     SecurityContextRepository openAiDeSecurityContextRepository() {
         HttpSessionSecurityContextRepository repository = new HttpSessionSecurityContextRepository();
-        repository.setSpringSecurityContextKey("SKILLPILOT_OPENAI_COACH_DE_V1_SECURITY_CONTEXT");
+        repository.setSpringSecurityContextKey("SKILLPILOT_OPENAI_COACH_V1_SECURITY_CONTEXT");
         return repository;
     }
 
@@ -313,7 +313,7 @@ public class OpenAiDeOAuthConfiguration {
 
     @Bean
     @ConditionalOnProperty(
-            name = "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
+            name = "skillpilot.openai.coach.v1.oauth.client-authentication-method",
             havingValue = CLIENT_AUTH_PRIVATE_KEY_JWT)
     OpenAiDeJwtClientAssertionValidator openAiDeJwtClientAssertionValidator(
             OpenAiDeProperties properties) {
@@ -343,8 +343,6 @@ public class OpenAiDeOAuthConfiguration {
 
         http.securityMatcher(request -> endpointsMatcher.matches(request)
                         && !OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH
-                                .equals(request.getRequestURI())
-                        && !OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH
                                 .equals(request.getRequestURI()))
                 .with(server, configurer -> configurer
                         .registeredClientRepository(registeredClients)
@@ -358,7 +356,7 @@ public class OpenAiDeOAuthConfiguration {
                                         clientAssertionValidatorProvider.getIfAvailable();
                                 if (clientAssertionValidator == null) {
                                     throw new IllegalStateException(
-                                            "OpenAI-DE private_key_jwt requires the client assertion validator.");
+                                            "OpenAI Coach V1 private_key_jwt requires the client assertion validator.");
                                 }
                                 JwtClientAssertionDecoderFactory decoderFactory =
                                         new JwtClientAssertionDecoderFactory();
@@ -477,7 +475,7 @@ public class OpenAiDeOAuthConfiguration {
     private static void validateSettings(OpenAiDeProperties properties) {
         if (!hasText(properties.getOauth().getClientId())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.coach.de.v1.oauth.client-id must be set to the client ID entered in ChatGPT app management.");
+                    "skillpilot.openai.coach.v1.oauth.client-id must be set to the client ID entered in ChatGPT app management.");
         }
         Set<String> redirectUris = new LinkedHashSet<>();
         for (String value : properties.getOauth().getRedirectUris()) {
@@ -487,9 +485,9 @@ public class OpenAiDeOAuthConfiguration {
         }
         if (redirectUris.isEmpty()) {
             throw new IllegalStateException(
-                    "skillpilot.openai.coach.de.v1.oauth.redirect-uris must contain the callback shown in ChatGPT app management.");
+                    "skillpilot.openai.coach.v1.oauth.redirect-uris must contain the callback shown in ChatGPT app management.");
         }
-        redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI-DE OAuth redirect URI"));
+        redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI Coach V1 OAuth redirect URI"));
         String authenticationMethod = normalizedClientAuthenticationMethod(properties);
         if (!Set.of(
                         CLIENT_AUTH_NONE,
@@ -497,57 +495,57 @@ public class OpenAiDeOAuthConfiguration {
                         CLIENT_AUTH_PRIVATE_KEY_JWT)
                 .contains(authenticationMethod)) {
             throw new IllegalStateException(
-                    "OpenAI-DE client authentication method must be none, client_secret_basic, or private_key_jwt.");
+                    "OpenAI Coach V1 client authentication method must be none, client_secret_basic, or private_key_jwt.");
         }
         if (CLIENT_AUTH_CLIENT_SECRET_BASIC.equals(authenticationMethod)
                 && !OpenAiDeSecureModeValidation.isValidClientSecret(
                         properties.getOauth().getClientSecret())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.coach.de.v1.oauth.client-secret must contain at least "
+                    "skillpilot.openai.coach.v1.oauth.client-secret must contain at least "
                             + OpenAiDeSecureModeValidation.MINIMUM_CLIENT_SECRET_LENGTH
                             + " non-whitespace characters for client_secret_basic.");
         }
         if (CLIENT_AUTH_PRIVATE_KEY_JWT.equals(authenticationMethod)) {
             if (properties.getOauth().getClientAssertionReplayCacheSize() <= 0) {
                 throw new IllegalStateException(
-                        "OpenAI-DE client-assertion replay cache size must be positive.");
+                        "OpenAI Coach V1 client-assertion replay cache size must be positive.");
             }
             requireCimdClientId(properties.getOauth().getClientId());
-            requireHttpsUri(properties.getOauth().getClientJwkSetUri(), "OpenAI-DE client JWK Set URL");
+            requireHttpsUri(properties.getOauth().getClientJwkSetUri(), "OpenAI Coach V1 client JWK Set URL");
             requireSameOrigin(
                     properties.getOauth().getClientId(),
                     properties.getOauth().getClientJwkSetUri(),
-                    "OpenAI-DE CIMD client ID and client JWK Set URL");
+                    "OpenAI Coach V1 CIMD client ID and client JWK Set URL");
             clientAssertionSigningAlgorithm(properties);
         }
         if (isConfidentialClient(properties)
                 && normalizedLegacyClientIds(properties)
                         .contains(properties.getOauth().getClientId().trim())) {
             throw new IllegalStateException(
-                    "OpenAI-DE current confidential client ID must not also be listed as a legacy client ID.");
+                    "OpenAI Coach V1 current confidential client ID must not also be listed as a legacy client ID.");
         }
-        requireHttpsUri(properties.getMcpUrl(), "OpenAI-DE public MCP endpoint");
-        requireHttpsUri(properties.getOauthResource(), "OpenAI-DE OAuth resource");
+        requireHttpsUri(properties.getMcpUrl(), "OpenAI Coach V1 public MCP endpoint");
+        requireHttpsUri(properties.getOauthResource(), "OpenAI Coach V1 OAuth resource");
         requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
-                "OpenAI-DE protected-resource metadata URL");
+                "OpenAI Coach V1 protected-resource metadata URL");
         OpenAiDeV1PublicContractValidation.requireExact(properties);
         if (properties.getServerBuild() == null
                 || properties.getServerBuild().isBlank()
                 || OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD.equals(
                         properties.getServerBuild().trim())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.coach.de.v1.server-build must identify the deployed build and must not be dev.");
+                    "skillpilot.openai.coach.v1.server-build must identify the deployed build and must not be dev.");
         }
         if (properties.getOauth().getAccessTokenTtl() == null
                 || properties.getOauth().getAccessTokenTtl().isZero()
                 || properties.getOauth().getAccessTokenTtl().isNegative()) {
-            throw new IllegalStateException("OpenAI-DE access-token TTL must be positive.");
+            throw new IllegalStateException("OpenAI Coach V1 access-token TTL must be positive.");
         }
         if (properties.getOauth().getRefreshTokenTtl() == null
                 || properties.getOauth().getRefreshTokenTtl().isZero()
                 || properties.getOauth().getRefreshTokenTtl().isNegative()) {
-            throw new IllegalStateException("OpenAI-DE refresh-token TTL must be positive.");
+            throw new IllegalStateException("OpenAI Coach V1 refresh-token TTL must be positive.");
         }
     }
 
@@ -575,7 +573,7 @@ public class OpenAiDeOAuthConfiguration {
             case CLIENT_AUTH_PRIVATE_KEY_JWT -> ClientAuthenticationMethod.PRIVATE_KEY_JWT;
             case CLIENT_AUTH_NONE -> ClientAuthenticationMethod.NONE;
             default -> throw new IllegalStateException(
-                    "Unsupported OpenAI-DE OAuth client authentication method.");
+                    "Unsupported OpenAI Coach V1 OAuth client authentication method.");
         };
     }
 
@@ -618,7 +616,7 @@ public class OpenAiDeOAuthConfiguration {
         for (String clientId : configured) {
             if (clientId == null || clientId.isBlank()) {
                 throw new IllegalStateException(
-                        "OpenAI-DE legacy client IDs must not contain blank entries.");
+                        "OpenAI Coach V1 legacy client IDs must not contain blank entries.");
             }
             normalized.add(clientId.trim());
         }
@@ -631,17 +629,17 @@ public class OpenAiDeOAuthConfiguration {
                 configured == null ? null : SignatureAlgorithm.from(configured.trim().toUpperCase(Locale.ROOT));
         if (algorithm == null) {
             throw new IllegalStateException(
-                    "OpenAI-DE client-assertion signing algorithm must be a supported asymmetric JWS algorithm.");
+                    "OpenAI Coach V1 client-assertion signing algorithm must be a supported asymmetric JWS algorithm.");
         }
         return algorithm;
     }
 
     private static void requireCimdClientId(String value) {
-        requireHttpsUri(value, "OpenAI-DE CIMD client ID");
+        requireHttpsUri(value, "OpenAI Coach V1 CIMD client ID");
         String path = URI.create(value).getRawPath();
         if (path == null || path.isBlank() || "/".equals(path)) {
             throw new IllegalStateException(
-                    "OpenAI-DE CIMD client ID must identify an HTTPS metadata document, not only an origin.");
+                    "OpenAI Coach V1 CIMD client ID must identify an HTTPS metadata document, not only an origin.");
         }
     }
 

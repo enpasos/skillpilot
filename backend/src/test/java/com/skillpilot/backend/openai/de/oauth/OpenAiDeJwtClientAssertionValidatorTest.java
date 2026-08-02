@@ -70,7 +70,7 @@ class OpenAiDeJwtClientAssertionValidatorTest {
                 .header("kid", kid)
                 .issuer("client")
                 .subject("client")
-                .audience(java.util.List.of("https://skillpilot.test/api/openai/de"))
+                .audience(java.util.List.of("https://skillpilot.test/api/openai/v1"))
                 .jti(jti)
                 .issuedAt(expiresAt.minusSeconds(60))
                 .expiresAt(expiresAt)

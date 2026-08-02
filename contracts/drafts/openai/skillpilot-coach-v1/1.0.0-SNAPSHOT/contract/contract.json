@@ -1,0 +1,3666 @@
+{
+  "contractMajor" : 1,
+  "contractSha256" : "019524aaa5c59838abd71675b92c30e3c8c1f8c43c95f6cb8186f7ace81ebc3c",
+  "pluginIdentity" : "skillpilot-coach-v1",
+  "resources" : [ {
+    "description" : "Displays the approved image for the active atomic learning goal.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ "https://skillpilot.com" ]
+      },
+      "openai/widgetDescription" : "Approved didactic visualisation for the active SkillPilot learning goal.",
+      "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+      "openai/widgetPrefersBorder" : false,
+      "ui" : {
+        "csp" : {
+          "resourceDomains" : [ "https://skillpilot.com" ]
+        },
+        "domain" : "https://mcp-coach-v1.skillpilot.com",
+        "prefersBorder" : false
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-goal-visualization-v1",
+    "title" : "SkillPilot learning-goal image",
+    "uri" : "ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html"
+  } ],
+  "schemaVersion" : 1,
+  "serverInstructions" : "You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative.\n\nThe newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.\n\nThe SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.\n\nDo not mention tool, API, JSON, or field names to the learner, and do not expose technical IDs. Never reveal or request OAuth tokens, connection subjects, permanent SkillPilot IDs, or other secrets. Use backend URLs verbatim only; never construct links from IDs or append tokens. If no approved link is available, do not output a link. Write mathematics only with \\(...\\) inline or \\[...\\] displayed, never with dollar delimiters.\n\nWhen interactionMode=orientation, do not conduct a subject-matter assessment. Show two to four understandable possibilities and honest positive perspectives of the material ahead, then ask only a low-threshold question about what sparks curiosity or whether the learner wants to continue. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after a visible response, expression of interest, or explicit willingness to continue. It is only a completion marker and never certifies subject mastery.\n\nFor ordinary content goals, coach dialogically on exactly one confirmed atomic goal. Briefly check prior knowledge, provide small hints, let the learner work, and do not reveal the solution to the immediate next task. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.\n\nIf the newest context contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once with the unchanged goalId. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without goalVisualization, with another goalId, or when it is not allowed. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.\n\nIn exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.\n\nFor Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.\n\nTreat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED means OAuth remains connected: ask the learner, in communicationLocale, to open SkillPilot and choose the local equivalent of “Start learning” again; never request the learning session or SkillPilot ID and never demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.\n",
+  "tools" : [ {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Start or continue the SkillPilot learning coach"
+    },
+    "description" : "Always use this tool first when the learner selected SkillPilot Coach v1 or mentioned SkillPilot and wants to learn, practise, start, continue, or resume a learning session, or use stored learning state. It loads the authoritative personal SkillPilot state and communication locale for the learningSessionId in the start message. Also use it after a new chat, reload, long conversation, possible context compaction, context loss, or conflict. Never replace this call with generic advice, a self-created curriculum, or invented goals. Do not use it for general subject questions unrelated to SkillPilot.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "get_skillpilot_context",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "activeGoal" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "cockpitUrl" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "exam" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "hasImage" : {
+                  "type" : "boolean"
+                },
+                "maxPoints" : {
+                  "maximum" : 1.7976931348623157E308,
+                  "minimum" : 0.0,
+                  "type" : "number"
+                },
+                "taskContent" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "hasImage" ],
+              "type" : "object"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "nodeKind" : {
+              "type" : "string"
+            },
+            "semanticKind" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "type" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId" ],
+          "type" : "object"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "completion" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumComplete" : {
+              "type" : "boolean"
+            },
+            "scopeComplete" : {
+              "type" : "boolean"
+            }
+          },
+          "required" : [ "scopeComplete", "curriculumComplete" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "frontier" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              },
+              "goalId" : {
+                "type" : "string"
+              },
+              "nodeKind" : {
+                "type" : "string"
+              },
+              "reason" : {
+                "type" : "string"
+              },
+              "semanticKind" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "goalId" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "interactionMode" : {
+          "type" : "string"
+        },
+        "learningState" : {
+          "type" : "string"
+        },
+        "nextAllowedTools" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "orientation" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "establishedContext" : {
+              "type" : "string"
+            },
+            "openQuestions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "question" : {
+                    "type" : "string"
+                  },
+                  "topic" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "topic", "question" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "policies" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "progress" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "masteredAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "personalized" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scope" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scopeCompleted" : {
+              "type" : "boolean"
+            },
+            "totalAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+          "type" : "object"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "resources" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "altText" : {
+                "type" : "string"
+              },
+              "provider" : {
+                "type" : "string"
+              },
+              "requiresCockpit" : {
+                "type" : "boolean"
+              },
+              "resourceType" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "type", "title", "url", "requiresCockpit" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Start or continue the SkillPilot learning coach"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Load exam evaluation"
+    },
+    "description" : "Loads the solution and scoring rubric only for the active approved exam goal and only after a complete visible submission. Never ask follow-up questions in exam mode.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "get_skillpilot_exam_evaluation",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "goalId" : {
+          "type" : "string"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "scoring" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "maxPoints" : {
+              "maximum" : 1.7976931348623157E308,
+              "minimum" : 0.0,
+              "type" : "number"
+            },
+            "passingPoints" : {
+              "maximum" : 1.7976931348623157E308,
+              "minimum" : 0.0,
+              "type" : "number"
+            },
+            "steps" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "points" : {
+                    "maximum" : 1.7976931348623157E308,
+                    "minimum" : 0.0,
+                    "type" : "number"
+                  }
+                },
+                "required" : [ "points" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "maxPoints", "passingPoints", "steps" ],
+          "type" : "object"
+        },
+        "solutionContent" : {
+          "type" : "string"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "solutionContent", "scoring", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Load exam evaluation"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Load navigation options"
+    },
+    "description" : "Loads the options currently allowed for an explicit change. target is exactly one of curriculum, personalization, scope, or goal. It does not change state.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        },
+        "target" : {
+          "enum" : [ "curriculum", "personalization", "scope", "goal" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ "target", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "get_skillpilot_navigation",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "target" : {
+          "type" : "string"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "target", "requiredAction", "options", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Load navigation options"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Load a card's expected answer"
+    },
+    "description" : "Loads the expected answer for exactly one card only after the learner has answered it.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "cardId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "cardId", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "get_skillpilot_verified_recall_answer",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "cardId" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "expectedAnswer" : {
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "goalId" : {
+          "type" : "string"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "prompt" : {
+          "type" : "string"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "instruction", "goalId", "cardId", "prompt", "expectedAnswer", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Load a card's expected answer"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Save card result"
+    },
+    "description" : "Saves passed=true for exactly one card only for a correct answer without help; otherwise false.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "cardId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "feedback" : {
+          "type" : "string"
+        },
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        },
+        "passed" : {
+          "type" : "boolean"
+        }
+      },
+      "required" : [ "goalId", "cardId", "passed", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "record_skillpilot_verified_recall_result",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "context" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "activeGoal" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cockpitUrl" : {
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "exam" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "hasImage" : {
+                      "type" : "boolean"
+                    },
+                    "maxPoints" : {
+                      "maximum" : 1.7976931348623157E308,
+                      "minimum" : 0.0,
+                      "type" : "number"
+                    },
+                    "taskContent" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "hasImage" ],
+                  "type" : "object"
+                },
+                "goalId" : {
+                  "type" : "string"
+                },
+                "nodeKind" : {
+                  "type" : "string"
+                },
+                "semanticKind" : {
+                  "type" : "string"
+                },
+                "title" : {
+                  "type" : "string"
+                },
+                "type" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "goalId" ],
+              "type" : "object"
+            },
+            "completion" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "curriculumComplete" : {
+                  "type" : "boolean"
+                },
+                "scopeComplete" : {
+                  "type" : "boolean"
+                }
+              },
+              "required" : [ "scopeComplete", "curriculumComplete" ],
+              "type" : "object"
+            },
+            "curriculum" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "curriculumId" : {
+                  "type" : "string"
+                },
+                "subject" : {
+                  "type" : "string"
+                },
+                "title" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "curriculumId" ],
+              "type" : "object"
+            },
+            "decision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "maxSelections" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "minSelections" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "selectedCount" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "stageLabel" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+              "type" : "object"
+            },
+            "frontier" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "goalId" : {
+                    "type" : "string"
+                  },
+                  "nodeKind" : {
+                    "type" : "string"
+                  },
+                  "reason" : {
+                    "type" : "string"
+                  },
+                  "semanticKind" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "goalId" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "goalVisualization" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "altText" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "cockpitUrl" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "goalId" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "imageUrl" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "title" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+              "type" : "object"
+            },
+            "instruction" : {
+              "type" : "string"
+            },
+            "interactionMode" : {
+              "type" : "string"
+            },
+            "learningState" : {
+              "type" : "string"
+            },
+            "nextAllowedTools" : {
+              "items" : {
+                "minLength" : 1,
+                "type" : "string"
+              },
+              "minItems" : 0,
+              "type" : "array",
+              "uniqueItems" : true
+            },
+            "options" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "action" : {
+                    "type" : "string"
+                  },
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "filterIds" : {
+                    "items" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "goalIds" : {
+                    "items" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "kind" : {
+                    "type" : "string"
+                  },
+                  "label" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "kind", "id", "label" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "orientation" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "establishedContext" : {
+                  "type" : "string"
+                },
+                "openQuestions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "question" : {
+                        "type" : "string"
+                      },
+                      "topic" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "topic", "question" ],
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                }
+              },
+              "required" : [ "openQuestions" ],
+              "type" : "object"
+            },
+            "policies" : {
+              "items" : {
+                "minLength" : 1,
+                "type" : "string"
+              },
+              "minItems" : 0,
+              "type" : "array",
+              "uniqueItems" : true
+            },
+            "progress" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "personalized" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "masteredAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    },
+                    "totalAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    }
+                  },
+                  "required" : [ "masteredAtomic", "totalAtomic" ],
+                  "type" : "object"
+                },
+                "scope" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "masteredAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    },
+                    "totalAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    }
+                  },
+                  "required" : [ "masteredAtomic", "totalAtomic" ],
+                  "type" : "object"
+                },
+                "scopeCompleted" : {
+                  "type" : "boolean"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+              "type" : "object"
+            },
+            "requiredAction" : {
+              "type" : "string"
+            },
+            "resources" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "altText" : {
+                    "type" : "string"
+                  },
+                  "provider" : {
+                    "type" : "string"
+                  },
+                  "requiresCockpit" : {
+                    "type" : "boolean"
+                  },
+                  "resourceType" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "url" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "type", "title", "url", "requiresCockpit" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "masteryGoalId" : {
+          "type" : "string"
+        },
+        "masterySaved" : {
+          "type" : "boolean"
+        },
+        "next" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "batchSize" : {
+              "maximum" : 20,
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "blockedCards" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "cards" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "cardId" : {
+                    "type" : "string"
+                  },
+                  "category" : {
+                    "type" : "string"
+                  },
+                  "prompt" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "cardId", "prompt" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "eligibleCards" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "goalTitle" : {
+              "type" : "string"
+            },
+            "instruction" : {
+              "type" : "string"
+            },
+            "nextEligibleAt" : {
+              "type" : "string"
+            },
+            "pendingCards" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "totalCards" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "verifiedCards" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "status", "instruction", "goalId", "totalCards", "verifiedCards", "pendingCards", "eligibleCards", "blockedCards", "batchSize", "cards" ],
+          "type" : "object"
+        },
+        "passed" : {
+          "type" : "boolean"
+        },
+        "pendingCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "savedCardId" : {
+          "type" : "string"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "verifiedCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "savedCardId", "passed", "verifiedCards", "pendingCards", "masterySaved", "context", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Save card result"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Display the learning-goal image"
+    },
+    "description" : "Displays only the approved image for the currently active atomic learning goal. Call it exactly once only when the newest SkillPilot context contains goalVisualization with the same goalId and nextAllowedTools names this tool. Never call it without goalVisualization or for another goalId. It does not change state.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ],
+      "ui" : {
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html"
+      }
+    },
+    "name" : "render_skillpilot_goal_visualization",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalVisualization", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Display the learning-goal image"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Set active learning goal"
+    },
+    "description" : "Activates exactly one currently allowed frontier goal. Use redirect=true only for an explicitly requested change away from an already active goal.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        },
+        "redirect" : {
+          "type" : "boolean"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "set_skillpilot_active_goal",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "activeGoal" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "cockpitUrl" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "exam" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "hasImage" : {
+                  "type" : "boolean"
+                },
+                "maxPoints" : {
+                  "maximum" : 1.7976931348623157E308,
+                  "minimum" : 0.0,
+                  "type" : "number"
+                },
+                "taskContent" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "hasImage" ],
+              "type" : "object"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "nodeKind" : {
+              "type" : "string"
+            },
+            "semanticKind" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "type" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId" ],
+          "type" : "object"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "completion" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumComplete" : {
+              "type" : "boolean"
+            },
+            "scopeComplete" : {
+              "type" : "boolean"
+            }
+          },
+          "required" : [ "scopeComplete", "curriculumComplete" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "frontier" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              },
+              "goalId" : {
+                "type" : "string"
+              },
+              "nodeKind" : {
+                "type" : "string"
+              },
+              "reason" : {
+                "type" : "string"
+              },
+              "semanticKind" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "goalId" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "interactionMode" : {
+          "type" : "string"
+        },
+        "learningState" : {
+          "type" : "string"
+        },
+        "nextAllowedTools" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "orientation" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "establishedContext" : {
+              "type" : "string"
+            },
+            "openQuestions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "question" : {
+                    "type" : "string"
+                  },
+                  "topic" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "topic", "question" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "policies" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "progress" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "masteredAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "personalized" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scope" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scopeCompleted" : {
+              "type" : "boolean"
+            },
+            "totalAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+          "type" : "object"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "resources" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "altText" : {
+                "type" : "string"
+              },
+              "provider" : {
+                "type" : "string"
+              },
+              "requiresCockpit" : {
+                "type" : "boolean"
+              },
+              "resourceType" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "type", "title", "url", "requiresCockpit" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Set active learning goal"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Select curriculum"
+    },
+    "description" : "Sets exactly one curriculumId from the newest context or navigation result and returns the fresh successor state.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "curriculumId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "curriculumId", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "set_skillpilot_curriculum",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "activeGoal" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "cockpitUrl" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "exam" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "hasImage" : {
+                  "type" : "boolean"
+                },
+                "maxPoints" : {
+                  "maximum" : 1.7976931348623157E308,
+                  "minimum" : 0.0,
+                  "type" : "number"
+                },
+                "taskContent" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "hasImage" ],
+              "type" : "object"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "nodeKind" : {
+              "type" : "string"
+            },
+            "semanticKind" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "type" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId" ],
+          "type" : "object"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "completion" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumComplete" : {
+              "type" : "boolean"
+            },
+            "scopeComplete" : {
+              "type" : "boolean"
+            }
+          },
+          "required" : [ "scopeComplete", "curriculumComplete" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "frontier" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              },
+              "goalId" : {
+                "type" : "string"
+              },
+              "nodeKind" : {
+                "type" : "string"
+              },
+              "reason" : {
+                "type" : "string"
+              },
+              "semanticKind" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "goalId" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "interactionMode" : {
+          "type" : "string"
+        },
+        "learningState" : {
+          "type" : "string"
+        },
+        "nextAllowedTools" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "orientation" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "establishedContext" : {
+              "type" : "string"
+            },
+            "openQuestions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "question" : {
+                    "type" : "string"
+                  },
+                  "topic" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "topic", "question" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "policies" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "progress" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "masteredAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "personalized" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scope" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scopeCompleted" : {
+              "type" : "boolean"
+            },
+            "totalAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+          "type" : "object"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "resources" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "altText" : {
+                "type" : "string"
+              },
+              "provider" : {
+                "type" : "string"
+              },
+              "requiresCockpit" : {
+                "type" : "boolean"
+              },
+              "resourceType" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "type", "title", "url", "requiresCockpit" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Select curriculum"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Save mastery"
+    },
+    "description" : "Completes exactly the confirmed active atomic goal with the technical value 1.0. For interactionMode=orientation, call only after presenting possibilities and a positive perspective followed by a visible response, expression of interest, or explicit willingness to continue; do not test details or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "set_skillpilot_mastery",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "context" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "activeGoal" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cockpitUrl" : {
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "exam" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "hasImage" : {
+                      "type" : "boolean"
+                    },
+                    "maxPoints" : {
+                      "maximum" : 1.7976931348623157E308,
+                      "minimum" : 0.0,
+                      "type" : "number"
+                    },
+                    "taskContent" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "hasImage" ],
+                  "type" : "object"
+                },
+                "goalId" : {
+                  "type" : "string"
+                },
+                "nodeKind" : {
+                  "type" : "string"
+                },
+                "semanticKind" : {
+                  "type" : "string"
+                },
+                "title" : {
+                  "type" : "string"
+                },
+                "type" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "goalId" ],
+              "type" : "object"
+            },
+            "completion" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "curriculumComplete" : {
+                  "type" : "boolean"
+                },
+                "scopeComplete" : {
+                  "type" : "boolean"
+                }
+              },
+              "required" : [ "scopeComplete", "curriculumComplete" ],
+              "type" : "object"
+            },
+            "curriculum" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "curriculumId" : {
+                  "type" : "string"
+                },
+                "subject" : {
+                  "type" : "string"
+                },
+                "title" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "curriculumId" ],
+              "type" : "object"
+            },
+            "decision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "maxSelections" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "minSelections" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "selectedCount" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "stageLabel" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+              "type" : "object"
+            },
+            "frontier" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "goalId" : {
+                    "type" : "string"
+                  },
+                  "nodeKind" : {
+                    "type" : "string"
+                  },
+                  "reason" : {
+                    "type" : "string"
+                  },
+                  "semanticKind" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "goalId" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "goalVisualization" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "altText" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "cockpitUrl" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "goalId" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "imageUrl" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "title" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+              "type" : "object"
+            },
+            "instruction" : {
+              "type" : "string"
+            },
+            "interactionMode" : {
+              "type" : "string"
+            },
+            "learningState" : {
+              "type" : "string"
+            },
+            "nextAllowedTools" : {
+              "items" : {
+                "minLength" : 1,
+                "type" : "string"
+              },
+              "minItems" : 0,
+              "type" : "array",
+              "uniqueItems" : true
+            },
+            "options" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "action" : {
+                    "type" : "string"
+                  },
+                  "description" : {
+                    "type" : "string"
+                  },
+                  "filterIds" : {
+                    "items" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "goalIds" : {
+                    "items" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "kind" : {
+                    "type" : "string"
+                  },
+                  "label" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "kind", "id", "label" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "orientation" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "establishedContext" : {
+                  "type" : "string"
+                },
+                "openQuestions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "question" : {
+                        "type" : "string"
+                      },
+                      "topic" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "topic", "question" ],
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                }
+              },
+              "required" : [ "openQuestions" ],
+              "type" : "object"
+            },
+            "policies" : {
+              "items" : {
+                "minLength" : 1,
+                "type" : "string"
+              },
+              "minItems" : 0,
+              "type" : "array",
+              "uniqueItems" : true
+            },
+            "progress" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "personalized" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "masteredAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    },
+                    "totalAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    }
+                  },
+                  "required" : [ "masteredAtomic", "totalAtomic" ],
+                  "type" : "object"
+                },
+                "scope" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "masteredAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    },
+                    "totalAtomic" : {
+                      "minimum" : 0,
+                      "type" : "integer"
+                    }
+                  },
+                  "required" : [ "masteredAtomic", "totalAtomic" ],
+                  "type" : "object"
+                },
+                "scopeCompleted" : {
+                  "type" : "boolean"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+              "type" : "object"
+            },
+            "requiredAction" : {
+              "type" : "string"
+            },
+            "resources" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "altText" : {
+                    "type" : "string"
+                  },
+                  "provider" : {
+                    "type" : "string"
+                  },
+                  "requiresCockpit" : {
+                    "type" : "boolean"
+                  },
+                  "resourceType" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "type" : {
+                    "type" : "string"
+                  },
+                  "url" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "type", "title", "url", "requiresCockpit" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "error" : {
+          "type" : "string"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "savedGoalId" : {
+          "type" : "string"
+        },
+        "savedMastery" : {
+          "maximum" : 1.0,
+          "minimum" : 0.0,
+          "type" : "number"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "status", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Save mastery"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Continue personalisation"
+    },
+    "description" : "Executes exactly one currently allowed personalisation action. This may be a subject choice or explicit completion of the current selection group. Pass only the opaque optionId from structuredContent unchanged. Never derive it from labels.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        },
+        "optionId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "optionId", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "set_skillpilot_personalization",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "activeGoal" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "cockpitUrl" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "exam" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "hasImage" : {
+                  "type" : "boolean"
+                },
+                "maxPoints" : {
+                  "maximum" : 1.7976931348623157E308,
+                  "minimum" : 0.0,
+                  "type" : "number"
+                },
+                "taskContent" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "hasImage" ],
+              "type" : "object"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "nodeKind" : {
+              "type" : "string"
+            },
+            "semanticKind" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "type" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId" ],
+          "type" : "object"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "completion" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumComplete" : {
+              "type" : "boolean"
+            },
+            "scopeComplete" : {
+              "type" : "boolean"
+            }
+          },
+          "required" : [ "scopeComplete", "curriculumComplete" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "frontier" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              },
+              "goalId" : {
+                "type" : "string"
+              },
+              "nodeKind" : {
+                "type" : "string"
+              },
+              "reason" : {
+                "type" : "string"
+              },
+              "semanticKind" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "goalId" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "interactionMode" : {
+          "type" : "string"
+        },
+        "learningState" : {
+          "type" : "string"
+        },
+        "nextAllowedTools" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "orientation" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "establishedContext" : {
+              "type" : "string"
+            },
+            "openQuestions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "question" : {
+                    "type" : "string"
+                  },
+                  "topic" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "topic", "question" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "policies" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "progress" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "masteredAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "personalized" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scope" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scopeCompleted" : {
+              "type" : "boolean"
+            },
+            "totalAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+          "type" : "object"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "resources" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "altText" : {
+                "type" : "string"
+              },
+              "provider" : {
+                "type" : "string"
+              },
+              "requiresCockpit" : {
+                "type" : "boolean"
+              },
+              "resourceType" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "type", "title", "url", "requiresCockpit" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Continue personalisation"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : false,
+      "title" : "Select learning scope"
+    },
+    "description" : "Replaces the learning scope with one or more currently allowed subject goalIds and returns the fresh successor state.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "clientRequestId" : {
+          "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
+          "type" : "string"
+        },
+        "expectedStateVersion" : {
+          "description" : "Copy stateVersion unchanged from the newest successful SkillPilot result.",
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "goalIds" : {
+          "items" : {
+            "description" : "Copy unchanged from the newest SkillPilot result.",
+            "type" : "string"
+          },
+          "minItems" : 1,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalIds", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "set_skillpilot_scope",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "activeGoal" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "cockpitUrl" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "exam" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "hasImage" : {
+                  "type" : "boolean"
+                },
+                "maxPoints" : {
+                  "maximum" : 1.7976931348623157E308,
+                  "minimum" : 0.0,
+                  "type" : "number"
+                },
+                "taskContent" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "hasImage" ],
+              "type" : "object"
+            },
+            "goalId" : {
+              "type" : "string"
+            },
+            "nodeKind" : {
+              "type" : "string"
+            },
+            "semanticKind" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "type" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId" ],
+          "type" : "object"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "completion" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumComplete" : {
+              "type" : "boolean"
+            },
+            "scopeComplete" : {
+              "type" : "boolean"
+            }
+          },
+          "required" : [ "scopeComplete", "curriculumComplete" ],
+          "type" : "object"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "decision" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "groupLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "maxSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "minSelections" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "selectedCount" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "stageLabel" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "stageLabel", "groupLabel", "minSelections", "maxSelections", "selectedCount" ],
+          "type" : "object"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "frontier" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "description" : {
+                "type" : "string"
+              },
+              "goalId" : {
+                "type" : "string"
+              },
+              "nodeKind" : {
+                "type" : "string"
+              },
+              "reason" : {
+                "type" : "string"
+              },
+              "semanticKind" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "goalId" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "goalVisualization" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "altText" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "cockpitUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "goalId" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "imageUrl" : {
+              "minLength" : 1,
+              "type" : "string"
+            },
+            "title" : {
+              "minLength" : 1,
+              "type" : "string"
+            }
+          },
+          "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
+          "type" : "object"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "interactionMode" : {
+          "type" : "string"
+        },
+        "learningState" : {
+          "type" : "string"
+        },
+        "nextAllowedTools" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "options" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "action" : {
+                "type" : "string"
+              },
+              "description" : {
+                "type" : "string"
+              },
+              "filterIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "goalIds" : {
+                "items" : {
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "minItems" : 0,
+                "type" : "array",
+                "uniqueItems" : true
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "kind" : {
+                "type" : "string"
+              },
+              "label" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "kind", "id", "label" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "orientation" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "establishedContext" : {
+              "type" : "string"
+            },
+            "openQuestions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "question" : {
+                    "type" : "string"
+                  },
+                  "topic" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "topic", "question" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "policies" : {
+          "items" : {
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "minItems" : 0,
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "progress" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "masteredAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            },
+            "personalized" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scope" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "masteredAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "totalAtomic" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "masteredAtomic", "totalAtomic" ],
+              "type" : "object"
+            },
+            "scopeCompleted" : {
+              "type" : "boolean"
+            },
+            "totalAtomic" : {
+              "minimum" : 0,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
+          "type" : "object"
+        },
+        "requiredAction" : {
+          "type" : "string"
+        },
+        "resources" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "altText" : {
+                "type" : "string"
+              },
+              "provider" : {
+                "type" : "string"
+              },
+              "requiresCockpit" : {
+                "type" : "boolean"
+              },
+              "resourceType" : {
+                "type" : "string"
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              },
+              "url" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "type", "title", "url", "requiresCockpit" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Select learning scope"
+  }, {
+    "annotations" : {
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true,
+      "title" : "Start verified recall"
+    },
+    "description" : "Starts or continues the strict card recall check for the active memorisation goal. batchSize is between 1 and 20.",
+    "icons" : [ ],
+    "inputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "batchSize" : {
+          "maximum" : 20,
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "goalId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "type" : "string"
+        },
+        "learningSessionId" : {
+          "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        }
+      },
+      "required" : [ "goalId", "learningSessionId" ],
+      "type" : "object"
+    },
+    "meta" : {
+      "securitySchemes" : [ {
+        "scopes" : [ "skillpilot.openai.v1.read" ],
+        "type" : "oauth2"
+      } ]
+    },
+    "name" : "start_skillpilot_verified_recall",
+    "outputSchema" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "batchSize" : {
+          "maximum" : 20,
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "blockedCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "cards" : {
+          "items" : {
+            "additionalProperties" : false,
+            "properties" : {
+              "cardId" : {
+                "type" : "string"
+              },
+              "category" : {
+                "type" : "string"
+              },
+              "prompt" : {
+                "type" : "string"
+              }
+            },
+            "required" : [ "cardId", "prompt" ],
+            "type" : "object"
+          },
+          "type" : "array"
+        },
+        "communicationLocale" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "contractMajor" : {
+          "const" : 1,
+          "type" : "integer"
+        },
+        "curriculumRevision" : {
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "eligibleCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "extensions" : {
+          "additionalProperties" : true,
+          "type" : "object"
+        },
+        "goalId" : {
+          "type" : "string"
+        },
+        "goalTitle" : {
+          "type" : "string"
+        },
+        "instruction" : {
+          "type" : "string"
+        },
+        "nextEligibleAt" : {
+          "type" : "string"
+        },
+        "pendingCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "stateSchemaVersion" : {
+          "minimum" : 1,
+          "type" : "integer"
+        },
+        "stateVersion" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "totalCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "verifiedCards" : {
+          "minimum" : 0,
+          "type" : "integer"
+        },
+        "workflowVersion" : {
+          "minLength" : 1,
+          "type" : "string"
+        }
+      },
+      "required" : [ "status", "instruction", "goalId", "totalCards", "verifiedCards", "pendingCards", "eligibleCards", "blockedCards", "batchSize", "cards", "contractMajor", "stateVersion", "stateSchemaVersion", "workflowVersion", "curriculumRevision", "communicationLocale", "extensions" ],
+      "type" : "object"
+    },
+    "title" : "Start verified recall"
+  } ]
+}

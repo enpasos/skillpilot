@@ -12,6 +12,7 @@ import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -34,20 +35,11 @@ public final class OpenAiDeCoachContextProjector {
                 : publicBaseUrl.replaceAll("/+$", "");
     }
 
-    public OpenAiDeCoachContext project(UnifiedLearnerStateResponse rawState) {
-        return project(rawState, PersonalizationPlan.complete(List.of()), true);
-    }
-
-    public OpenAiDeCoachContext project(
-            UnifiedLearnerStateResponse rawState,
-            PersonalizationPlan personalizationPlan) {
-        return project(rawState, personalizationPlan, true);
-    }
-
     public OpenAiDeCoachContext project(
             UnifiedLearnerStateResponse rawState,
             PersonalizationPlan personalizationPlan,
-            boolean includeGoalVisualization) {
+            boolean includeGoalVisualization,
+            String communicationLocale) {
         UnifiedLearnerStateResponse state = stateProjection.project(rawState);
         if (state == null) {
             return null;
@@ -58,18 +50,19 @@ public final class OpenAiDeCoachContextProjector {
                 state,
                 requiredAction,
                 activeGoal,
-                personalizationPlan);
+                personalizationPlan,
+                communicationLocale);
         OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
                 ? personalizationDecision(personalizationPlan)
                 : null;
         OpenAiDeCoachContext.Orientation orientation = "setPersonalization".equals(requiredAction)
-                ? personalizationOrientation(state.curriculum(), personalizationPlan)
+                ? personalizationOrientation(state.curriculum(), personalizationPlan, communicationLocale)
                 : null;
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
         boolean examHasImage = hasExamImage(activeGoal);
         OpenAiDeCoachContext.GoalVisualization goalVisualization = includeGoalVisualization
-                ? goalVisualization(state.curriculum(), activeGoal)
+                ? goalVisualization(state.curriculum(), activeGoal, communicationLocale)
                 : null;
         return new OpenAiDeCoachContext(
                 valueOrEmpty(state.learningState()),
@@ -86,7 +79,7 @@ public final class OpenAiDeCoachContextProjector {
                 nextAllowedTools(requiredAction, activeGoal, goalVisualization != null),
                 progress(state.goals()),
                 completion,
-                policies(interactionMode, examHasImage, orientation),
+                policies(interactionMode, examHasImage, orientation, communicationLocale),
                 instruction(
                         requiredAction,
                         activeGoal,
@@ -94,7 +87,8 @@ public final class OpenAiDeCoachContextProjector {
                         decision,
                         orientation,
                         completion,
-                        examHasImage));
+                        examHasImage,
+                        communicationLocale));
     }
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
@@ -132,20 +126,22 @@ public final class OpenAiDeCoachContextProjector {
 
     public List<OpenAiDeCoachContext.Option> personalizationOptions(
             PersonalizationPlan plan,
-            String rootLandscapeId) {
+            String rootLandscapeId,
+            String communicationLocale) {
         if (plan == null || !plan.required() || plan.options().isEmpty()) {
             return List.of();
         }
-        return personalizationOptions(plan.options(), rootLandscapeId);
+        return personalizationOptions(plan.options(), rootLandscapeId, communicationLocale);
     }
 
     public List<OpenAiDeCoachContext.Option> personalizationNavigationOptions(
             PersonalizationPlan plan,
-            String rootLandscapeId) {
+            String rootLandscapeId,
+            String communicationLocale) {
         if (plan == null || plan.navigationOptions().isEmpty()) {
             return List.of();
         }
-        return personalizationOptions(plan.navigationOptions(), rootLandscapeId);
+        return personalizationOptions(plan.navigationOptions(), rootLandscapeId, communicationLocale);
     }
 
     public OpenAiDeCoachContext.Decision personalizationDecision(PersonalizationPlan plan) {
@@ -170,7 +166,8 @@ public final class OpenAiDeCoachContextProjector {
 
     public OpenAiDeCoachContext.Orientation personalizationOrientation(
             LandscapeSummary curriculum,
-            PersonalizationPlan plan) {
+            PersonalizationPlan plan,
+            String communicationLocale) {
         if (plan == null || !plan.valid() || !plan.required()) {
             return null;
         }
@@ -179,7 +176,10 @@ public final class OpenAiDeCoachContextProjector {
                 : fallback(curriculum.getTitle(), curriculum.getSubject());
         String establishedContext = blank(curriculumLabel)
                 ? null
-                : "Du bist im Curriculum „" + compact(curriculumLabel) + "“.";
+                : text(
+                        communicationLocale,
+                        "Du bist im Curriculum „" + compact(curriculumLabel) + "“.",
+                        "You are using the “" + compact(curriculumLabel) + "” curriculum.");
         List<OpenAiDeCoachContext.OpenQuestion> openQuestions = plan.pendingDecisions().stream()
                 .filter(prompt -> prompt != null && !blank(prompt.groupLabel()))
                 .map(prompt -> new OpenAiDeCoachContext.OpenQuestion(
@@ -194,7 +194,8 @@ public final class OpenAiDeCoachContextProjector {
 
     private List<OpenAiDeCoachContext.Option> personalizationOptions(
             List<PersonalizationPlan.Option> source,
-            String rootLandscapeId) {
+            String rootLandscapeId,
+            String communicationLocale) {
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
         for (PersonalizationPlan.Option option : source) {
             if (option == null) {
@@ -204,8 +205,11 @@ public final class OpenAiDeCoachContextProjector {
                 add(options, new OpenAiDeCoachContext.Option(
                         "personalization",
                         option.optionId(),
-                        "Auswahl abschließen",
-                        "Schließt nur die aktuelle Auswahlgruppe ab und übernimmt keine weitere fachliche Option.",
+                        text(communicationLocale, "Auswahl abschließen", "Complete selection"),
+                        text(
+                                communicationLocale,
+                                "Schließt nur die aktuelle Auswahlgruppe ab und übernimmt keine weitere fachliche Option.",
+                                "Completes only the current selection group without choosing another subject option."),
                         List.of(),
                         List.of(),
                         null));
@@ -252,7 +256,8 @@ public final class OpenAiDeCoachContextProjector {
             UnifiedLearnerStateResponse state,
             String requiredAction,
             FrontierGoal activeGoal,
-            PersonalizationPlan personalizationPlan) {
+            PersonalizationPlan personalizationPlan,
+            String communicationLocale) {
         StateMachineInfo machine = state.stateMachine();
         if (machine == null || blank(requiredAction)) {
             return List.of();
@@ -270,7 +275,10 @@ public final class OpenAiDeCoachContextProjector {
                 String rootLandscapeId = state.curriculum() == null
                         ? null
                         : state.curriculum().getCurriculumId();
-                options.addAll(personalizationOptions(personalizationPlan, rootLandscapeId));
+                options.addAll(personalizationOptions(
+                        personalizationPlan,
+                        rootLandscapeId,
+                        communicationLocale));
             }
             case "setScope", "setActiveGoal" -> {
                 String kind = "setScope".equals(requiredAction) ? "scope" : "goal";
@@ -393,7 +401,8 @@ public final class OpenAiDeCoachContextProjector {
 
     private OpenAiDeCoachContext.GoalVisualization goalVisualization(
             LandscapeSummary curriculum,
-            FrontierGoal goal) {
+            FrontierGoal goal,
+            String communicationLocale) {
         if (goal == null
                 || !"atomic".equalsIgnoreCase(goal.type())
                 || blank(goal.id())
@@ -427,7 +436,10 @@ public final class OpenAiDeCoachContextProjector {
                 compact(
                         fallback(
                                 visualization.altText(),
-                                "Didaktische Visualisierung zum Lernziel „" + title + "“."),
+                                text(
+                                        communicationLocale,
+                                        "Didaktische Visualisierung zum Lernziel „" + title + "“.",
+                                        "Didactic visualisation for the learning goal “" + title + "”.")),
                         1_000),
                 cockpitUrl);
     }
@@ -541,7 +553,11 @@ public final class OpenAiDeCoachContextProjector {
     private List<String> policies(
             String interactionMode,
             boolean examHasImage,
-            OpenAiDeCoachContext.Orientation orientation) {
+            OpenAiDeCoachContext.Orientation orientation,
+            String communicationLocale) {
+        if (OpenAiCoachLocale.isEnglish(communicationLocale)) {
+            return englishPolicies(interactionMode, examHasImage, orientation);
+        }
         List<String> policies = new ArrayList<>(List.of(
                 "Der jüngste SkillPilot-Kontext ist die einzige Autorität. Erfinde keine Ziele, Optionen, Zustände, Fortschrittswerte oder Abläufe.",
                 "Nenne in sichtbaren Antworten keine Tool-, API-, JSON- oder Feldnamen und keine technischen IDs. Fordere niemals OAuth-Tokens oder die dauerhafte SkillPilot-ID an und gib sie nie aus.",
@@ -599,7 +615,18 @@ public final class OpenAiDeCoachContextProjector {
             OpenAiDeCoachContext.Decision decision,
             OpenAiDeCoachContext.Orientation orientation,
             OpenAiDeCoachContext.Completion completion,
-            boolean examHasImage) {
+            boolean examHasImage,
+            String communicationLocale) {
+        if (OpenAiCoachLocale.isEnglish(communicationLocale)) {
+            return englishInstruction(
+                    requiredAction,
+                    goal,
+                    options,
+                    decision,
+                    orientation,
+                    completion,
+                    examHasImage);
+        }
         if (goal == null && completion.curriculumComplete()) {
             return "Der personalisierte Lehrplan ist vollständig abgeschlossen. Gratuliere kurz, nenne nur frisch "
                     + "gelieferte Fortschrittswerte und erfinde kein weiteres Lernziel.";
@@ -640,7 +667,11 @@ public final class OpenAiDeCoachContextProjector {
             return "Es ist keine weitere Backend-Aktion erforderlich. Lade bei Zweifel den aktuellen Kontext neu.";
         }
         return switch (requiredAction) {
-            case "setPersonalization" -> personalizationInstruction(decision, options, orientation);
+            case "setPersonalization" -> personalizationInstruction(
+                    decision,
+                    options,
+                    orientation,
+                    communicationLocale);
             case "setCurriculum", "setScope", "setActiveGoal", "chooseMemoryMode" ->
                     options.isEmpty()
                             ? "Für den erforderlichen Schritt sind keine sicheren Optionen vorhanden. Lade den Kontext neu."
@@ -660,16 +691,102 @@ public final class OpenAiDeCoachContextProjector {
         };
     }
 
-    public String personalizationInstruction(
+    private List<String> englishPolicies(
+            String interactionMode,
+            boolean examHasImage,
+            OpenAiDeCoachContext.Orientation orientation) {
+        List<String> policies = new ArrayList<>(List.of(
+                "The newest SkillPilot context is the sole authority. Never invent goals, options, states, progress values, or workflows.",
+                "Do not mention tool, API, JSON, or field names or technical IDs in visible answers. Never request or expose OAuth tokens or the permanent SkillPilot ID.",
+                "Use only backend-provided URLs and reproduce them verbatim. Never construct links from IDs or append tokens or SkillPilot IDs. If no approved link is available, do not output a link.",
+                "Write mathematics only with \\(...\\) inline and \\[...\\] displayed; never use dollar delimiters.",
+                "Report progress only from the freshly returned progress data and begin with the current learning scope. Mention broader values only when asked and never estimate them.",
+                "Claim a state change only after confirmed backend success. After a conflict, reload exactly once; after authentication, schema, persistence, or repeated conflict failures, stop structured work transparently."));
+        switch (interactionMode) {
+            case "orientation" -> policies.addAll(List.of(
+                    "Orientation mode: show two to four concrete, age-appropriate possibilities and honest positive perspectives that the material ahead opens for everyday life, interests, participation, study, or work. Stay at overview level and use only known context.",
+                    "Do not test prior knowledge, terminology, procedures, or other content details. Do not set knowledge, practice, transfer, recall, or exam tasks, require Feynman teach-back, or assess an answer as technically right or wrong.",
+                    "After the short orientation, invite a low-threshold response about what sparks curiosity or whether the learner wants to continue. Save completion only after a visible response, expression of interest, or explicit willingness to continue. This marks experienced orientation, never subject mastery."));
+            case "chat" -> policies.addAll(List.of(
+                    "Coach dialogically on exactly one confirmed atomic goal: briefly check prior knowledge, give small hints, let the learner work, distinguish conceptual from careless errors, and never reveal the immediate next solution.",
+                    "Assess technical meaning rather than wording. Reconstruct unusual approaches fairly and correct only genuinely false or unsupported steps; explicitly required formats and content remain binding.",
+                    "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. Never manually master clusters or memorisation goals."));
+            case "exam" -> policies.addAll(List.of(
+                    "Exam mode: reproduce the task verbatim except for replacing dollar TeX delimiters. Give no hints, partial answers, solutions, scaffolds, or follow-up questions during the exam.",
+                    "Load the solution and rubric only after a complete visible submission. Assess only visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches, representations, rounding, and justifications receive full credit unless the task requires something specific.",
+                    "Assign every point deduction concretely. Do not infer a subject error from unreadable work. Save mastery only after a final pass with at least the published passing score."));
+            case "verifiedRecall" -> policies.addAll(List.of(
+                    "Verified Recall: show the complete question batch in order and wait for all answers. Load each expected answer only after the corresponding learner answer.",
+                    "Compare technical meaning and accept equivalent wording. Save every card immediately; passed=true only for a correct answer without help. Save the full batch before the next one, check a card at most once per day, and save no additional manual mastery."));
+            case "selection" -> {
+                policies.add("Treat a natural multi-part request as continuing intent. Apply each unambiguous fresh step directly and ask only for the selection that remains open. Candidates are not yet active goals.");
+                if (orientation != null) {
+                    policies.add("First state the confirmed entry context briefly. Then ask together for all information listed as open. Accept multiple answers in any order or a partial answer. Retain unambiguous values as continuing intent, but save only the current published option and reload before every further step.");
+                }
+            }
+            case "complete" -> policies.add("Report only fresh progress values and begin with the current learning scope. Briefly acknowledge completion and offer only provided follow-up options; invent no new goals.");
+            default -> {
+                // Common safety and recovery policies apply in every mode.
+            }
+        }
+        if ("exam".equals(interactionMode) && examHasImage) {
+            policies.add("This exam task needs an image that is not transmitted in the MCP context. Before the task, provide activeGoal.cockpitUrl verbatim, briefly state that the image must be viewed there, and do not invent or describe an image.");
+        }
+        return List.copyOf(policies);
+    }
+
+    private String englishInstruction(
+            String requiredAction,
+            FrontierGoal goal,
+            List<OpenAiDeCoachContext.Option> options,
             OpenAiDeCoachContext.Decision decision,
-            List<OpenAiDeCoachContext.Option> options) {
-        return personalizationInstruction(decision, options, null);
+            OpenAiDeCoachContext.Orientation orientation,
+            OpenAiDeCoachContext.Completion completion,
+            boolean examHasImage) {
+        if (goal == null && completion.curriculumComplete()) {
+            return "The personalised curriculum is complete. Congratulate briefly, report only freshly returned progress, and invent no further learning goal.";
+        }
+        if ("chooseMemoryMode".equals(requiredAction) && !options.isEmpty()) {
+            return "Ask about learning mode only when the request is not already unambiguous. For openCockpitPractice, provide only the backend cockpitUrl verbatim and pause structured card recall. For startVerifiedRecall, start strict recall, show the full question batch, and wait for all answers.";
+        }
+        if (isExamGoal(goal)) {
+            String imageInstruction = examHasImage
+                    ? "The required task image is available only in the cockpit. First provide activeGoal.cockpitUrl verbatim and ask the learner to view it there. "
+                    : "";
+            return "Exam mode: " + imageInstruction
+                    + "Reproduce taskContent verbatim except for replacing dollar TeX delimiters. Give no solution-leading hints or follow-up questions. Wait for a complete visible submission, then load the approved evaluation with "
+                    + OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION
+                    + " and complete the assessment.";
+        }
+        if (isMemoryGoal(goal)) {
+            return "Verified Recall: start recall for the confirmed active memorisation goal, show the full question batch, and wait for all answers. Load expected answers only afterwards, save every card result, and start the next batch only after complete persistence.";
+        }
+        if (isOrientationGoal(goal)) {
+            return "Motivating orientation: use the active goal to show two to four understandable possibilities and positive, realistic perspectives of the material ahead. Ask only what sparks curiosity or whether the learner wants to continue. Do not test prior knowledge or details or assess answers as right or wrong. Save completion only after a visible response, expression of interest, or explicit willingness to continue; it certifies no subject mastery.";
+        }
+        if (blank(requiredAction)) {
+            return "No further backend action is required. Reload the current context if uncertain.";
+        }
+        return switch (requiredAction) {
+            case "setPersonalization" -> personalizationInstruction(decision, options, orientation, "en");
+            case "setCurriculum", "setScope", "setActiveGoal", "chooseMemoryMode" ->
+                    options.isEmpty()
+                            ? "No safe options are available for the required step. Reload the context."
+                            : "Treat a natural multi-part request as continuing intent. Apply an unambiguous subject match directly, load the successor state, and ask only for a selection that remains genuinely open.";
+            case "orientActiveGoal" -> "Give motivating orientation without subject assessment and save completion only after a visible response or explicit willingness to continue; do not claim subject mastery.";
+            case "teachActiveGoal", "setMastery" -> "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect.";
+            default -> "Follow only the published required action, then reload the context.";
+        };
     }
 
     public String personalizationInstruction(
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options,
-            OpenAiDeCoachContext.Orientation orientation) {
+            OpenAiDeCoachContext.Orientation orientation,
+            String communicationLocale) {
+        if (OpenAiCoachLocale.isEnglish(communicationLocale)) {
+            return englishPersonalizationInstruction(decision, options, orientation);
+        }
         if (decision == null || options == null || options.isEmpty()) {
             return "Für die erforderliche Personalisierungsentscheidung fehlen sichere, vollständig beschriebene "
                     + "Optionen. Lade den Kontext neu und erfinde weder die offene Frage noch mögliche Antworten.";
@@ -723,6 +840,63 @@ public final class OpenAiDeCoachContextProjector {
                 + "eindeutigen Teil der fortgeltenden Absicht an. Später aufgeführte Fragen dienen nur der "
                 + "Orientierung und autorisieren keine vorgezogene Mutation. Frage nach der Verarbeitung eindeutiger "
                 + "Angaben nur noch tatsächlich ungeklärte Punkte nach.";
+    }
+
+    private String englishPersonalizationInstruction(
+            OpenAiDeCoachContext.Decision decision,
+            List<OpenAiDeCoachContext.Option> options,
+            OpenAiDeCoachContext.Orientation orientation) {
+        if (decision == null || options == null || options.isEmpty()) {
+            return "No safe, fully described options are available for the required personalisation decision. "
+                    + "Reload the context and invent neither the open question nor possible answers.";
+        }
+
+        int minimum = decision.minSelections();
+        int maximum = decision.maxSelections();
+        int selected = decision.selectedCount();
+        String cardinality;
+        if (minimum == 0 && maximum == 0) {
+            cardinality = "No further selection is expected";
+        } else if (minimum == 0) {
+            cardinality = maximum == 1
+                    ? "At most one selection is allowed"
+                    : "At most " + maximum + " selections are allowed";
+        } else if (minimum == maximum) {
+            cardinality = minimum == 1
+                    ? "Exactly one selection is required"
+                    : "Exactly " + minimum + " selections are required";
+        } else {
+            cardinality = "At least " + minimum + " and at most " + maximum
+                    + " selections are expected";
+        }
+
+        String progress;
+        if (selected < minimum) {
+            int remaining = minimum - selected;
+            progress = remaining == 1
+                    ? "At least one selection is still missing."
+                    : "At least " + remaining + " selections are still missing.";
+        } else if (selected < maximum) {
+            progress = "The minimum is satisfied. Further published options may be selected, or use a published "
+                    + "completion option to finish the selection.";
+        } else {
+            progress = "The maximum has been reached; select no further option. If a completion option is "
+                    + "available, use only that option now.";
+        }
+
+        String orientationInstruction = orientation == null
+                ? ""
+                : "Begin the visible answer with the confirmed entry context from the orientation. Then ask "
+                        + "naturally and together for all information listed there as open, instead of asking in a "
+                        + "fixed sequence. Accept multiple values in any order or a partial answer and retain every "
+                        + "unambiguous value as continuing intent. ";
+        return orientationInstruction
+                + "The currently executable selection question in decision step \"" + decision.stageLabel()
+                + "\" is \"" + decision.groupLabel() + "\". " + cardinality + "; selected so far: " + selected
+                + ". " + progress + " Submit only a currently published option ID unchanged. After every successful "
+                + "selection, reload the context before applying another unambiguous part of the continuing intent. "
+                + "Questions listed for later steps provide orientation only and do not authorize an early mutation. "
+                + "After processing unambiguous values, ask only about points that genuinely remain unresolved.";
     }
 
     private boolean hasExamImage(FrontierGoal goal) {
@@ -822,6 +996,10 @@ public final class OpenAiDeCoachContextProjector {
 
     private String fallback(String value, String fallback) {
         return blank(value) ? fallback : value;
+    }
+
+    private String text(String communicationLocale, String german, String english) {
+        return OpenAiCoachLocale.localized(communicationLocale, german, english);
     }
 
     private String valueOrEmpty(String value) {

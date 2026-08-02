@@ -30,15 +30,17 @@ This project is an invitation to the community to jointly build and bring to lif
 
 ### AI learning coach (ChatGPT / MCP)
 
-Diese Dokumente sind auf Deutsch, weil der deutsche Lerncoach die erste ausgelieferte Variante ist.
+Diese Architekturtexte sind derzeit auf Deutsch verfasst. Der beschriebene
+OpenAI-V1-Vertrag ist dennoch sprachneutral und bedient alle vom Backend
+freigegebenen Interaktionssprachen.
 
 -   [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [OpenAI-Plugin: Versionierung und Lebenszyklus](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
--   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
+-   [Migration des Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
--   [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
+-   [Wissens- und Verhaltensparität des MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
--   [Release, Rollback und Stilllegung von SkillPilot Coach DE v1](deploy/openai-plugin-v1-release.md)
+-   [Release, Rollback und Stilllegung von SkillPilot Coach v1](deploy/openai-plugin-v1-release.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 
 ### Programme status

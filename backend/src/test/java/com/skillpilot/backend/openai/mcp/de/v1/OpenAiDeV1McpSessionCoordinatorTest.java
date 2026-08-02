@@ -28,7 +28,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
 
     private static final String SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-    private static final String TOOL = "set_skillpilot_scope_de";
+    private static final String TOOL = "set_skillpilot_scope";
     private static final String CURRICULUM_REVISION =
             "curricula-sha256@" + "a".repeat(64);
 
@@ -62,6 +62,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         session.setStateSchemaVersion(OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
         session.setWorkflowVersion(properties.getWorkflowVersion());
         session.setCurriculumRevision(CURRICULUM_REVISION);
+        session.setCommunicationLocale("en-GB");
 
         resolvedSession = new AtomicReference<>(session);
         when(sessions.findByTokenHashForUpdate(any()))
@@ -169,7 +170,8 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         learner.setCoachStateRevision(4L);
 
         McpSchema.CallToolResult read = coordinator.read(SESSION_ID, this::success);
-        assertThat(read.structuredContent().toString()).contains("stateVersion=4");
+        assertThat(read.structuredContent().toString())
+                .contains("stateVersion=4", "communicationLocale=en-GB");
 
         assertThatThrownBy(() -> coordinator.write(
                         SESSION_ID,
@@ -227,7 +229,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
 
     @Test
     void unavailablePinnedRevisionFailsClosed() {
-        session.setWorkflowVersion("coach-de@0.9");
+        session.setWorkflowVersion("coach@0.9");
 
         assertThatThrownBy(() -> coordinator.read(SESSION_ID, this::success))
                 .isInstanceOfSatisfying(
@@ -247,6 +249,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         another.setStateSchemaVersion(session.getStateSchemaVersion());
         another.setWorkflowVersion(session.getWorkflowVersion());
         another.setCurriculumRevision(session.getCurriculumRevision());
+        another.setCommunicationLocale(session.getCommunicationLocale());
         return another;
     }
 
@@ -260,6 +263,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                         "stateSchemaVersion", metadata.stateSchemaVersion(),
                         "workflowVersion", metadata.workflowVersion(),
                         "curriculumRevision", metadata.curriculumRevision(),
+                        "communicationLocale", metadata.communicationLocale(),
                         "extensions", metadata.extensions()))
                 .build();
     }

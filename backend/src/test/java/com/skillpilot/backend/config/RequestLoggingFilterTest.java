@@ -30,10 +30,9 @@ class RequestLoggingFilterTest {
     void providerCredentialAndLaunchRoutesBypassTheGeneralBodyLogger() throws Exception {
         for (String path : new String[] {
                 "/api/claude/oauth2/token",
-                "/api/openai/de/oauth2/token",
-                "/api/openai/de/oauth2/revoke",
-                "/api/ui/learners/learner-42/openai/de/connect-start",
-                "/api/ui/learners/learner-42/openai/de/launch"
+                "/api/openai/v1/oauth2/token",
+                "/api/openai/v1/oauth2/revoke",
+                "/api/ui/learners/learner-42/openai/v1/launch"
         }) {
             MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
             request.setContentType("application/x-www-form-urlencoded");

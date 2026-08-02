@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 018-bind-openai-session-locale
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: openai_de_learning_session
+        - not:
+            - columnExists:
+                tableName: openai_de_learning_session
+                columnName: communication_locale
+      changes:
+        # Existing rows are short-lived sessions from the locale-specific
+        # draft. Backfill them explicitly, then require every newly issued V1
+        # session to persist its own authoritative locale.
+        - addColumn:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: communication_locale
+                  type: VARCHAR(35)
+                  defaultValue: de
+                  constraints:
+                    nullable: false
+        - dropDefaultValue:
+            tableName: openai_de_learning_session
+            columnName: communication_locale
+            columnDataType: VARCHAR(35)

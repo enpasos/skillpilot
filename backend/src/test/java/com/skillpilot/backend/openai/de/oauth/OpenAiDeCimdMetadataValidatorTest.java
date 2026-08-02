@@ -96,7 +96,7 @@ class OpenAiDeCimdMetadataValidatorTest {
             String expectedMessage) {
         assertThatThrownBy(() -> validator(response).validate(validProperties()))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("OpenAI-DE secure startup refused")
+                .hasMessageContaining("OpenAI Coach V1 secure startup refused")
                 .hasMessageContaining(expectedMessage);
     }
 

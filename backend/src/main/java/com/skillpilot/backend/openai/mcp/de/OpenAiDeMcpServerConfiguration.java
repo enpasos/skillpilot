@@ -12,13 +12,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 
-/** Registers only the German OpenAI coach contract at its dedicated MCP endpoint. */
+/** Registers only the OpenAI Coach V1 contract at its dedicated MCP endpoint. */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnProperty(
         name = {
-                "skillpilot.openai.coach.de.v1.enabled",
-                "skillpilot.openai.coach.de.v1.oauth.enabled",
-                "skillpilot.openai.coach.de.v1.mcp.enabled"
+                "skillpilot.openai.coach.v1.enabled",
+                "skillpilot.openai.coach.v1.oauth.enabled",
+                "skillpilot.openai.coach.v1.mcp.enabled"
         },
         havingValue = "true")
 public class OpenAiDeMcpServerConfiguration {
@@ -35,11 +35,11 @@ public class OpenAiDeMcpServerConfiguration {
             Environment environment) {
         return serverFactory.create(
                 DEFAULT_ENDPOINT,
-                environment.getProperty("skillpilot.openai.coach.de.v1.mcp.server-name", DEFAULT_SERVER_NAME),
-                environment.getProperty("skillpilot.openai.coach.de.v1.mcp.server-version", DEFAULT_SERVER_VERSION),
+                environment.getProperty("skillpilot.openai.coach.v1.mcp.server-name", DEFAULT_SERVER_NAME),
+                environment.getProperty("skillpilot.openai.coach.v1.mcp.server-version", DEFAULT_SERVER_VERSION),
                 contract.serverInstructions(),
                 environment.getProperty(
-                        "skillpilot.openai.coach.de.v1.mcp.request-timeout",
+                        "skillpilot.openai.coach.v1.mcp.request-timeout",
                         Duration.class,
                         DEFAULT_REQUEST_TIMEOUT),
                 contract.toolSpecifications(),

@@ -85,7 +85,7 @@ export const de = {
             startPromptCopied: "Startcode kopiert.",
             startPromptCopyFailed: "Der Lerncoach konnte gerade nicht vorbereitet werden. Bitte versuche es erneut.",
             openAiMcpTitle: "SkillPilot-App in ChatGPT",
-            openAiMcpHint: "SkillPilot öffnet einen neuen ChatGPT-Chat mit einer zum vorbereiteten nächsten Schritt passenden Startnachricht. Aktiviere dort bei Bedarf die App „SkillPilot Coach DE v1“ und sende die bereits eingetragene Nachricht ab.",
+            openAiMcpHint: "SkillPilot öffnet einen neuen ChatGPT-Chat mit einer zum vorbereiteten nächsten Schritt passenden Startnachricht. Aktiviere dort bei Bedarf die App „SkillPilot Coach v1“ und sende die bereits eingetragene Nachricht ab.",
             openAiMcpStart: "SkillPilot-App öffnen",
             openAiMcpConnectedHint: "Die Verbindung ist aktiv. ChatGPT wurde mit der passenden Startnachricht geöffnet.",
             openAiMcpConnectHint: "Beim ersten App-Aufruf öffnet ChatGPT die einmalige App-Autorisierung. Bei jedem Start fügt SkillPilot automatisch eine neue, 24 Stunden gültige Lernsession in die Startnachricht ein.",

@@ -58,7 +58,7 @@ Der Regressionsserver und seine ChatGPT-App muessen vom deutschen und englischen
 Coach getrennt bleiben. Die Primaertopologie ist ein eigener Prozess auf
 `127.0.0.1:8791` mit genau einem Streamable-HTTP-Endpunkt `/mcp`, einem eigenen
 Tunnel und einer eigenen Developer-Mode-App. Der vorhandene Coach-Prozess auf
-Port 8790, sein `/mcp/de`-Endpunkt und sein Tunnelprofil duerfen nicht fuer diese
+Port 8790, sein `/mcp`-Endpunkt und sein Tunnelprofil duerfen nicht fuer diese
 Messung wiederverwendet oder gleichzeitig auf das Regressionstool umgebogen
 werden.
 

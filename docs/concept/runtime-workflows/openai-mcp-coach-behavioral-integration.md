@@ -1,4 +1,4 @@
-# Verhaltensintegration des deutschen MCP-Lerncoaches
+# Verhaltensintegration des MCP-Lerncoaches
 
 **Stand:** 30. Juli 2026
 
@@ -44,7 +44,7 @@ führen, nicht zu curricularen Sonderregeln.
 ## 2. Geltungsbereich und Verhältnis zu anderen Dokumenten
 
 Dieses Dokument ist die führende Quelle für das **zusammenhängende sichtbare
-Verhalten** des deutschen MCP-Lerncoaches und für dessen End-to-End-Abnahme.
+Verhalten** des mehrsprachigen MCP-Lerncoaches und für dessen End-to-End-Abnahme.
 
 Die folgenden Dokumente bleiben für ihre engeren Themen maßgeblich:
 
@@ -61,7 +61,7 @@ Die folgenden Dokumente bleiben für ihre engeren Themen maßgeblich:
   langfristiges Produkt- und Verantwortungsmodell;
 - [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md):
   Sicherheitsmodell;
-- [Deployment-Runbook](../../deploy/openai-mcp-coach-de.md):
+- [Deployment-Runbook](../../deploy/openai-mcp-coach-v1.md):
   produktiver Betrieb und technische Smoke-Tests.
 
 Dabei gilt:
@@ -254,7 +254,7 @@ jedoch keine Backendguards.
 Im aktuellen Übergangszustand liegen die Regeln technisch verteilt in:
 
 - dem noch nicht produktiv aktivierten Quellskill unter
-  `ai/openai plugin/skillpilot-coach-de-v1/skills/skillpilot-coach-de-v1`;
+  `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1`;
 - `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS`;
 - den Toolverträgen in `OpenAiDeCoachMcpContract`;
 - den dynamischen Policies und Instruktionen in
@@ -569,13 +569,14 @@ ungeordneten Logbuch.
   Backendneustart und Provideränderungen testen;
 - alte Conversation-Information nie über den frischen Backendzustand stellen.
 
-### Phase F – Produktreife und Englisch
+### Phase F – Produktreife und weitere Interaktionssprachen
 
 - unnötige technische Reibung und sichtbare Zwischenzustände entfernen;
 - optionale UI nur dort ergänzen, wo sie Bedienung oder Integrität messbar
   verbessert;
-- die englische App erst nach stabiler deutscher Verhaltensbaseline separat
-  ableiten.
+- Englisch und jede weitere freigegebene Interaktionssprache nach stabiler
+  deutscher Verhaltensbaseline im selben V1-Vertrag mit eigenen Acceptance-
+  Fällen freigeben.
 
 ## 13. Aktueller ehrlicher Stand
 
@@ -634,7 +635,7 @@ Der folgende Text kann als Übergabe in einen neuen Codex-Chat kopiert werden:
 
 ```text
 Arbeite im Repository /home/enpasos/projects/skillpilot an der großen Aufgabe
-„Verhaltensintegration des deutschen MCP-Lerncoaches“.
+„Verhaltensintegration des MCP-Lerncoaches“.
 
 Lies zuerst vollständig:
 1. AGENTS.md

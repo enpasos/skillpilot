@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the security-relevant semantics of OpenAI-DE OAuth discovery."""
+"""Validate the security-relevant semantics of SkillPilot Coach V1 OAuth discovery."""
 
 from __future__ import annotations
 
@@ -9,8 +9,8 @@ import sys
 from typing import Any
 from urllib.parse import urlsplit
 
-READ_SCOPE = "skillpilot.openai.de.read"
-WRITE_SCOPE = "skillpilot.openai.de.write"
+READ_SCOPE = "skillpilot.openai.v1.read"
+WRITE_SCOPE = "skillpilot.openai.v1.write"
 OFFLINE_SCOPE = "offline_access"
 ASYMMETRIC_ASSERTION_ALGORITHMS = {
     "RS256",
@@ -125,7 +125,7 @@ def validate_protected_resource(
     _require_exact_value(
         metadata,
         "authorization_servers",
-        [f"{authorization_base}/api/openai/de"],
+        [f"{authorization_base}/api/openai/v1"],
     )
     _require_exact_unique_values(
         metadata, "scopes_supported", {READ_SCOPE, WRITE_SCOPE}
@@ -140,7 +140,7 @@ def validate_authorization_server(
 ) -> None:
     metadata = _require_object(document)
     base = _normalized_https_base_url(base_url)
-    issuer = f"{base}/api/openai/de"
+    issuer = f"{base}/api/openai/v1"
 
     _require_exact_value(metadata, "issuer", issuer)
     _require_exact_value(

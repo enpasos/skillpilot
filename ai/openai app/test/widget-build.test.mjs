@@ -36,16 +36,16 @@ for (const locale of ["de", "en"]) {
   });
 }
 
-test("German and English widgets are compiled as separate artifacts", async () => {
+test("German and English payload widgets share the one neutral tool catalog", async () => {
   const de = await readFile(new URL("../dist/de/widget.html", import.meta.url), "utf8");
   const en = await readFile(new URL("../dist/en/widget.html", import.meta.url), "utf8");
   assert.notEqual(de, en);
-  assert.match(de, /choose_skillpilot_path_de/);
+  assert.match(de, /choose_skillpilot_path/);
   assert.match(de, /L(?:ösung|\\xF6sung) jetzt bewerten lassen/);
-  assert.match(en, /choose_skillpilot_path_en/);
+  assert.match(en, /choose_skillpilot_path/);
   assert.match(en, /Evaluate answer now/);
-  assert.doesNotMatch(de, /choose_skillpilot_path_en/);
-  assert.doesNotMatch(en, /choose_skillpilot_path_de/);
+  assert.doesNotMatch(de, /choose_skillpilot_path_(?:de|en)/);
+  assert.doesNotMatch(en, /choose_skillpilot_path_(?:de|en)/);
 });
 
 test("goal visualization widget is self-contained and uses the standards-first MCP Apps bridge", async () => {

@@ -42,7 +42,8 @@ class OpenAiDeCoachHealthIndicatorTest {
         assertThat(first.getStatus()).isEqualTo(Status.UP);
         assertThat(first.getDetails())
                 .containsEntry("provider", "openai")
-                .containsEntry("locale", "de")
+                .containsEntry("localeBinding", "learning-session")
+                .containsEntry("communicationLanguages", List.of("de", "en"))
                 .containsEntry("mcpEnabled", true)
                 .containsEntry("oauthEnabled", true)
                 .containsEntry("clientIdConfigured", true)
@@ -113,9 +114,9 @@ class OpenAiDeCoachHealthIndicatorTest {
         }
 
         OpenAiDeProperties properties = secureProperties();
-        properties.setMcpUrl("https://mcp-coach-de-v1.skillpilot.test/mcp?tenant=one");
+        properties.setMcpUrl("https://mcp-coach-v1.skillpilot.test/mcp?tenant=one");
         properties.getOauth().setProtectedResourceMetadata(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource#fragment");
+                "https://skillpilot.test/api/openai/v1/oauth/protected-resource#fragment");
 
         var health = new OpenAiDeCoachHealthIndicator(
                 properties,
@@ -203,16 +204,16 @@ class OpenAiDeCoachHealthIndicatorTest {
 
         runner.run(context -> assertThat(context).doesNotHaveBean(OpenAiDeCoachHealthIndicator.class));
         runner.withPropertyValues(
-                        "skillpilot.openai.coach.de.v1.enabled=true",
+                        "skillpilot.openai.coach.v1.enabled=true",
                         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
-                        "skillpilot.openai.coach.de.v1.server-build=test-build",
-                        "skillpilot.openai.coach.de.v1.security.secure-mode=true",
-                        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-                        "skillpilot.openai.coach.de.v1.oauth.client-authentication-method=client_secret_basic",
-                        "skillpilot.openai.coach.de.v1.oauth.client-id=skillpilot-chatgpt-de-prod",
-                        "skillpilot.openai.coach.de.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
-                        "skillpilot.openai.coach.de.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-                        "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size=0")
+                        "skillpilot.openai.coach.v1.server-build=test-build",
+                        "skillpilot.openai.coach.v1.security.secure-mode=true",
+                        "skillpilot.openai.coach.v1.oauth.enabled=true",
+                        "skillpilot.openai.coach.v1.oauth.client-authentication-method=client_secret_basic",
+                        "skillpilot.openai.coach.v1.oauth.client-id=skillpilot-chatgpt-v1-prod",
+                        "skillpilot.openai.coach.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
+                        "skillpilot.openai.coach.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
+                        "skillpilot.openai.coach.v1.oauth.client-assertion-replay-cache-size=0")
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).hasSingleBean(OpenAiDeCoachHealthIndicator.class);
@@ -240,7 +241,7 @@ class OpenAiDeCoachHealthIndicatorTest {
         OpenAiDeProperties properties = readyProperties();
         properties.getSecurity().setSecureMode(true);
         properties.getOauth().setClientAuthenticationMethod("client_secret_basic");
-        properties.getOauth().setClientId("skillpilot-chatgpt-de-prod");
+        properties.getOauth().setClientId("skillpilot-chatgpt-v1-prod");
         properties.getOauth().setClientSecret(TEST_CLIENT_SECRET);
         properties.getOauth().setClientAssertionReplayCacheSize(0);
         return properties;

@@ -85,7 +85,7 @@ export const en = {
             startPromptCopied: "Start code copied.",
             startPromptCopyFailed: "The start code could not be created. Please try again.",
             openAiMcpTitle: "SkillPilot app in ChatGPT",
-            openAiMcpHint: "The German SkillPilot MCP coach is not released for the English interface yet.",
+            openAiMcpHint: "SkillPilot opens a new ChatGPT chat with a start message prepared for the next step. If needed, activate the “SkillPilot Coach v1” app there and send the prefilled message.",
             openAiMcpStart: "Open SkillPilot app",
             openAiMcpConnectedHint: "The connection is active. ChatGPT was opened with the matching start message.",
             openAiMcpConnectHint: "ChatGPT opens the one-time app authorization on first use. Each start automatically includes a new 24-hour learning session in the start message.",

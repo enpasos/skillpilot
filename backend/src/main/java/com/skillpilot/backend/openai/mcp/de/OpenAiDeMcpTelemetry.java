@@ -27,14 +27,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
-/** Privacy-safe, bounded-cardinality telemetry for the German OpenAI MCP tools. */
+/** Privacy-safe, bounded-cardinality telemetry for the OpenAI Coach V1 MCP tools. */
 @Component
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public final class OpenAiDeMcpTelemetry {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
 
-    public static final String TOOL_DURATION_METRIC = "skillpilot.openai.coach.de.v1.mcp.tool.duration";
+    public static final String TOOL_DURATION_METRIC = "skillpilot.openai.coach.v1.mcp.tool.duration";
 
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String SUCCESS_RESULT_CODE = "OK";
@@ -126,7 +126,7 @@ public final class OpenAiDeMcpTelemetry {
         } finally {
             String boundedToolName = KNOWN_TOOLS.contains(toolName) ? toolName : UNKNOWN_TOOL;
             long durationNanos = sample.stop(Timer.builder(TOOL_DURATION_METRIC)
-                    .description("Duration and outcome of German OpenAI MCP tool invocations")
+                    .description("Duration and outcome of OpenAI Coach V1 MCP tool invocations")
                     .tag("tool", boundedToolName)
                     .tag("status", status)
                     .tag("result.code", resultCode)
@@ -135,7 +135,7 @@ public final class OpenAiDeMcpTelemetry {
                     .register(meterRegistry));
             Map<?, ?> structuredContent = structuredContent(result);
             LOGGER.info(
-                    "OpenAI-DE MCP V1 tool invocation: contractMajor={} pluginLine={} serverBuild={} "
+                    "OpenAI Coach V1 MCP V1 tool invocation: contractMajor={} pluginLine={} serverBuild={} "
                             + "tool={} status={} resultCode={} latencyMs={} clientRequestId={} "
                             + "learningSessionHash={} stateVersion={} stateSchemaVersion={} "
                             + "workflowVersion={} curriculumRevision={}",

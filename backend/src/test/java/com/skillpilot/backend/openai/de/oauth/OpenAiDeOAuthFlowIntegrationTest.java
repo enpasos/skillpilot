@@ -63,17 +63,17 @@ import org.springframework.test.context.TestPropertySource;
         "spring.datasource.password=",
         "spring.liquibase.enabled=true",
         "spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.yaml",
-        "skillpilot.openai.coach.de.v1.enabled=true",
-        "skillpilot.openai.coach.de.v1.server-build=test-build",
-        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-        "skillpilot.openai.coach.de.v1.mcp.enabled=false",
-        "skillpilot.openai.coach.de.v1.secure-cookie=false",
+        "skillpilot.openai.coach.v1.enabled=true",
+        "skillpilot.openai.coach.v1.server-build=test-build",
+        "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.mcp.enabled=false",
+        "skillpilot.openai.coach.v1.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth.client-id=chatgpt-test-client",
-        "skillpilot.openai.coach.de.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
-        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-test-client",
+        "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/test-callback",
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeOAuthFlowIntegrationTest {
 
@@ -126,22 +126,22 @@ class OpenAiDeOAuthFlowIntegrationTest {
         assertThat(protectedResource.path("resource").asText())
                 .isEqualTo(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT);
         assertThat(protectedResource.path("authorization_servers").get(0).asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de");
+                .isEqualTo("https://skillpilot.test/api/openai/v1");
         assertThat(protectedResource.path("scopes_supported"))
                 .anySatisfy(scope -> assertThat(scope.asText()).isEqualTo(OpenAiDeOAuthConfiguration.READ_SCOPE))
                 .anySatisfy(scope -> assertThat(scope.asText()).isEqualTo(OpenAiDeOAuthConfiguration.WRITE_SCOPE));
         assertThat(get(OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_PATH).statusCode())
                 .isEqualTo(404);
-        assertThat(get("/api/openai/de/oauth/protected-resource").statusCode()).isEqualTo(404);
+        assertThat(get("/api/openai/v1/oauth/protected-resource").statusCode()).isEqualTo(404);
 
         JsonNode authorizationMetadata = json(get(
                 OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH));
         assertThat(authorizationMetadata.path("issuer").asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de");
+                .isEqualTo("https://skillpilot.test/api/openai/v1");
         assertThat(authorizationMetadata.path("authorization_endpoint").asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de/oauth2/authorize");
+                .isEqualTo("https://skillpilot.test/api/openai/v1/oauth2/authorize");
         assertThat(authorizationMetadata.path("token_endpoint").asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de/oauth2/token");
+                .isEqualTo("https://skillpilot.test/api/openai/v1/oauth2/token");
         assertThat(authorizationMetadata.path("client_id_metadata_document_supported").isMissingNode())
                 .isTrue();
         assertThat(authorizationMetadata.path("registration_endpoint").isMissingNode()).isTrue();
@@ -208,8 +208,8 @@ class OpenAiDeOAuthFlowIntegrationTest {
         HttpResponse<String> consent = get(consentUri.toString());
         assertThat(consent.statusCode()).isEqualTo(200);
         assertThat(consent.body())
-                .contains("ChatGPT-App f&uuml;r SkillPilot autorisieren")
-                .contains("OAuth autorisiert nur die App")
+                .contains("Authorize SkillPilot Coach v1")
+                .contains("OAuth authorizes only the app")
                 .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                 .doesNotContain(SKILLPILOT_ID)
                 .doesNotContain("SkillPilot-ID auswählen");

@@ -43,7 +43,7 @@ const promptWithSession = (message: string, learningSessionId = LEARNING_SESSION
 
 assertEqual(
   buildOpenAiMcpEndpoint(' learner / 42 ', 'launch', 'https://api.example.test/'),
-  'https://api.example.test/api/ui/learners/learner%2F42/openai/de/launch',
+  'https://api.example.test/api/ui/learners/learner%2F42/openai/v1/launch',
   'builds the single launch endpoint',
 )
 assertEqual(getSafeChatGptUrl('https://chatgpt.com/'), 'https://chatgpt.com/', 'accepts ChatGPT')
@@ -105,7 +105,7 @@ assertEqual(launchCalls[0]?.init?.credentials, 'include', 'preserves browser lea
 assertEqual(
   launchCalls[0]?.init?.body,
   JSON.stringify({
-    language: 'de',
+    communicationLocale: 'de',
     client: 'test',
     selectedCurriculum: 'math',
     launchIntent: {
@@ -134,13 +134,26 @@ assertEqual(new URL(navigatedTo).searchParams.get('prompt'), launch.prompt, 'han
 assertEqual(delivered.copied, false, 'does not use clipboard handoff')
 assertEqual(delivered.promptFallback, null, 'does not require copy-and-paste fallback')
 
-await assertRejects(
-  () => requestOpenAiMcpStart({
-    skillpilotId: 'learner-42',
-    language: 'en',
-    providerEligibilityConfirmed: true,
-  }),
-  'The OpenAI MCP coach is currently available only for German.',
+const englishLaunchCalls: Array<{ url: string; init: RequestInit | undefined }> = []
+await requestOpenAiMcpStart({
+  skillpilotId: 'learner-42',
+  language: 'en-GB',
+  providerEligibilityConfirmed: true,
+}, {
+  fetchImpl: async (input, init) => {
+    englishLaunchCalls.push({ url: String(input), init })
+    return new Response(JSON.stringify({
+      prompt: promptWithSession('Continue my current learning unit.'),
+      webUrl: 'https://chatgpt.com/',
+      learningSessionId: LEARNING_SESSION_A,
+      expiresAt: '2026-07-22T20:00:00Z',
+    }), { status: 200, headers: { 'Content-Type': 'application/json' } })
+  },
+})
+assertEqual(
+  JSON.parse(String(englishLaunchCalls[0]?.init?.body)).communicationLocale,
+  'en',
+  'transmits the normalized English conversation language',
 )
 await assertRejects(
   () => requestOpenAiMcpStart({

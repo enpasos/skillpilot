@@ -11,12 +11,10 @@ const isDenied = (urlPath: string) =>
 
 const machineEndpointNavigations = [
   '/.well-known/oauth-protected-resource',
-  '/.well-known/oauth-authorization-server/api/openai/de',
-  '/api/openai/de/oauth2/authorize',
-  '/api/openai/de/oauth2/token',
-  '/api/openai/de/mcp',
-  '/api/openai/de/v1/mcp',
-  '/internal/openai/de/v1/mcp',
+  '/.well-known/oauth-authorization-server/api/openai/v1',
+  '/api/openai/v1/oauth2/authorize',
+  '/api/openai/v1/oauth2/token',
+  '/internal/openai/v1/mcp',
   '/api/ui/learners/example',
 ]
 

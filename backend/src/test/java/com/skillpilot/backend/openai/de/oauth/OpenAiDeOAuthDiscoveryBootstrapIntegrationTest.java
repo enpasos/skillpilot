@@ -44,15 +44,15 @@ import org.springframework.test.context.TestPropertySource;
         classes = OpenAiDeOAuthDiscoveryBootstrapIntegrationTest.TestApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {
-        "skillpilot.openai.coach.de.v1.enabled=false",
-        "skillpilot.openai.coach.de.v1.bootstrap-enabled=true",
-        "skillpilot.openai.coach.de.v1.oauth.enabled=false",
-        "skillpilot.openai.coach.de.v1.mcp.enabled=false",
+        "skillpilot.openai.coach.v1.enabled=false",
+        "skillpilot.openai.coach.v1.bootstrap-enabled=true",
+        "skillpilot.openai.coach.v1.oauth.enabled=false",
+        "skillpilot.openai.coach.v1.mcp.enabled=false",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
-        "skillpilot.openai.coach.de.v1.rate-limit.mcp-requests=5"
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+        "skillpilot.openai.coach.v1.rate-limit.mcp-requests=5"
 })
 class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
@@ -70,7 +70,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         assertThat(properties.isBootstrapEnabled()).isFalse();
 
-        properties.setMcpUrl("http://mcp-coach-de-v1.skillpilot.test/mcp");
+        properties.setMcpUrl("http://mcp-coach-v1.skillpilot.test/mcp");
         OpenAiDeOAuthDiscoveryBootstrapConfiguration configuration =
                 new OpenAiDeOAuthDiscoveryBootstrapConfiguration();
 
@@ -111,15 +111,15 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(protectedResource.path("resource").asText())
                 .isEqualTo(OpenAiDeV1ContractMetadata.OAUTH_RESOURCE);
         assertThat(protectedResource.path("authorization_servers").get(0).asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de");
+                .isEqualTo("https://skillpilot.test/api/openai/v1");
         assertThat(get(OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_PATH).statusCode())
                 .isEqualTo(404);
-        assertThat(get("/api/openai/de/oauth/protected-resource").statusCode()).isEqualTo(404);
+        assertThat(get("/api/openai/v1/oauth/protected-resource").statusCode()).isEqualTo(404);
 
         JsonNode authorizationServer = json(get(
                 OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH));
         assertThat(authorizationServer.path("issuer").asText())
-                .isEqualTo("https://skillpilot.test/api/openai/de");
+                .isEqualTo("https://skillpilot.test/api/openai/v1");
         assertThat(authorizationServer.path("token_endpoint_auth_methods_supported"))
                 .anySatisfy(method -> assertThat(method.asText()).isEqualTo("client_secret_basic"));
         assertThat(authorizationServer.path("code_challenge_methods_supported"))
@@ -127,8 +127,8 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(authorizationServer.path("registration_endpoint").isMissingNode()).isTrue();
         assertThat(authorizationServer.path("client_id_metadata_document_supported").isMissingNode()).isTrue();
 
-        assertThat(json(get(OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH)))
-                .isEqualTo(authorizationServer);
+        assertThat(get("/api/openai/v1/.well-known/oauth-authorization-server").statusCode())
+                .isEqualTo(404);
 
         for (String method : new String[] {"GET", "POST", "DELETE", "OPTIONS"}) {
             HttpResponse<String> response = request(method, OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH);
@@ -145,7 +145,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                     .contains("no-store");
             assertThat(response.body())
                     .isEqualTo("{\"error\":\"authentication_required\"}")
-                    .doesNotContain("get_skillpilot_context_de")
+                    .doesNotContain("get_skillpilot_context")
                     .doesNotContain("skillpilotId");
         }
 
@@ -159,8 +159,8 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         .contains("error=\"invalid_token\""));
 
         assertThat(get(OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT).statusCode()).isEqualTo(404);
-        assertThat(request("POST", "/api/openai/de/mcp").statusCode()).isEqualTo(404);
-        assertThat(request("POST", "/api/openai/de/v1/mcp").statusCode()).isEqualTo(404);
+        assertThat(request("POST", "/api/openai/v1/mcp").statusCode()).isEqualTo(404);
+        assertThat(request("POST", "/api/openai/v1/v1/mcp").statusCode()).isEqualTo(404);
         assertThat(request("POST", OpenAiDeV1ContractMetadata.PUBLIC_MCP_PATH).statusCode())
                 .isEqualTo(404);
         for (String path : new String[] {
@@ -193,15 +193,15 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         OpenAiDeConfiguration.class,
                         OpenAiDeOAuthDiscoveryBootstrapConfiguration.class)
                 .withPropertyValues(
-                        "skillpilot.openai.coach.de.v1.bootstrap-enabled=true",
-                        "skillpilot.openai.coach.de.v1.enabled=true",
+                        "skillpilot.openai.coach.v1.bootstrap-enabled=true",
+                        "skillpilot.openai.coach.v1.enabled=true",
                         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg")
                 .run(result -> {
                     assertThat(result).hasFailed();
                     assertThat(result.getStartupFailure())
                             .hasRootCauseMessage(
-                                    "skillpilot.openai.coach.de.v1.bootstrap-enabled and "
-                                            + "skillpilot.openai.coach.de.v1.enabled must not both be true.");
+                                    "skillpilot.openai.coach.v1.bootstrap-enabled and "
+                                            + "skillpilot.openai.coach.v1.enabled must not both be true.");
                 });
     }
 

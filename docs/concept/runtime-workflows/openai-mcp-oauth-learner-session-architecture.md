@@ -1,10 +1,10 @@
 # OpenAI-MCP-App: OAuth- und Lernsession-Bindung
 
 **Stand:** 31. Juli 2026
-**Status:** verbindliche Zielarchitektur für den deutschen OpenAI-MCP-Coach
+**Status:** verbindliche Zielarchitektur für den mehrsprachigen OpenAI-V1-MCP-Coach
 
 Dieses Dokument ist die Quelle der Wahrheit für die Identitäts- und
-Sitzungsbindung der App **SkillPilot Coach DE v1**. Für Pluginidentität,
+Sitzungsbindung der App **SkillPilot Coach v1**. Für Pluginidentität,
 Contract Major und Lebenszyklus ist ergänzend der
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
 verbindlich.
@@ -19,10 +19,11 @@ SkillPilot verwendet zwei bewusst voneinander getrennte Berechtigungen:
    `client_secret` werden einmalig vom App-Autor in ChatGPT und im
    SkillPilot-Authorization-Server konfiguriert. Am Token-Endpunkt weist die
    App den Besitz des Secrets mit `client_secret_basic` nach.
-2. **Eine temporäre Lernsession wählt den Lernenden.**
+2. **Eine temporäre Lernsession wählt den Lernenden und die Kommunikationssprache.**
    Erst ein ausdrücklicher Klick auf **Lernen starten** in SkillPilot erzeugt
    eine neue, exakt 24 Stunden gültige `learningSessionId`. Sie verweist
-   ausschließlich im SkillPilot-Backend auf die gewählte SkillPilot-ID.
+   ausschließlich im SkillPilot-Backend auf die gewählte SkillPilot-ID und die
+   beim Start festgelegte `communicationLocale`.
 
 Beide Nachweise sind für einen fachlichen MCP-Aufruf erforderlich:
 
@@ -49,15 +50,15 @@ wird weder in den Chat noch in MCP-Toolargumente übernommen.
 
 Jeder Klick auf **Lernen starten** ist eine eigene atomare Startoperation:
 
-1. Die SkillPilot-Webanwendung kennt die aktuell ausgewählte SkillPilot-ID und
-   den vom Benutzer vorbereiteten Lernkontext.
+1. Die SkillPilot-Webanwendung kennt die aktuell ausgewählte SkillPilot-ID, die
+   gewählte `communicationLocale` und den vom Benutzer vorbereiteten Lernkontext.
 2. Sie sendet genau einen Startrequest an das SkillPilot-Backend.
 3. Das Backend wendet den typisierten Startkontext auf den autoritativen
    Lernendenzustand an.
 4. Das Backend erzeugt genau in diesem Augenblick eine neue kryptografisch
    zufällige `learningSessionId`.
 5. Das Backend speichert nur den HMAC-Hash der ID sowie die Zuordnung zur
-   SkillPilot-ID, Startzeit und absoluten Ablaufzeit.
+   SkillPilot-ID, die `communicationLocale`, Startzeit und absolute Ablaufzeit.
 6. Das Backend liefert eine fertige Startnachricht und die zugehörige
    ChatGPT-URL zurück.
 7. Die Webanwendung öffnet ChatGPT mit dieser bereits eingetragenen
@@ -66,7 +67,7 @@ Jeder Klick auf **Lernen starten** ist eine eigene atomare Startoperation:
 Beispiel:
 
 ```text
-Verwende die App SkillPilot Coach DE v1 und fahre mit dem in
+Verwende die App SkillPilot Coach v1 und fahre mit dem in
 SkillPilot vorbereiteten nächsten Schritt fort.
 
 SkillPilot-Lernsession: sps_<zufälliger opaker Wert>
@@ -154,6 +155,7 @@ Persistenzgrenze für diese kurzlebige Zuordnung:
 | --- | --- |
 | `token_hash` | HMAC-Hash der ausgegebenen `learningSessionId`; der Klartext wird nicht gespeichert |
 | `learner_id` | serverinterne Fremdschlüsselzuordnung zum Lernenden |
+| `communication_locale` | autoritative Sprache für Backendnutzdaten und jede sichtbare Coachkommunikation |
 | `started_at` | Zeitpunkt des Klicks auf **Lernen starten** |
 | `expires_at` | absolute Ablaufzeit `started_at + 24h` |
 
@@ -175,7 +177,7 @@ OAuth Authorization Code mit PKCE bleibt von der Lernsession getrennt:
   und in der SkillPilot-Serverkonfiguration. Es gehört weder ins Repository
   noch in Browsercode, Prompts, Toolargumente, Antworten oder Logs.
 - PKCE `S256`, die exakte Callback-Allowlist, die exakte
-  Resource/Audience `https://mcp-coach-de-v1.skillpilot.com/mcp`, Scopes,
+  Resource/Audience `https://mcp-coach-v1.skillpilot.com/mcp`, Scopes,
   Ablauf und Widerruf werden weiterhin geprüft.
 - Offene Dynamic Client Registration und CIMD sind in diesem produktiven
   Profil weder erforderlich noch erlaubt.
@@ -220,6 +222,9 @@ Wiederherstellungsweg ist immer **Lernen starten** in SkillPilot.
     Token-Endpunkt akzeptiert für ihn ausschließlich `client_secret_basic`.
 12. Das OAuth-Client-Secret erscheint niemals in Repository, UI, Prompt,
     Toolargumenten, Antworten oder Logs.
+13. `communicationLocale` wird ausschließlich beim First-Party-Start gesetzt,
+    bei jedem Kontextabruf aus derselben Lernsession geliefert und weder aus
+    Hostlocale noch aus neutral englischen Pluginmetadaten neu abgeleitet.
 
 ## 10. Abnahmekriterien
 
@@ -242,8 +247,10 @@ Folgendes beweisen:
 10. Wiederholte Nutzung verschiebt `expires_at` nicht.
 11. Fachliche Read-/Write-Scope-Prüfungen bleiben erhalten.
 12. Bestehende Lernziel-, Frontier- und Mastery-Tests bleiben unverändert grün.
-13. Token Requests mit fehlendem oder falschem Client-Secret, fremder
+13. Deutsch und Englisch verwenden denselben V1-Toolvertrag; jede Antwort folgt
+    der in der jeweiligen Lernsession gespeicherten `communicationLocale`.
+14. Token Requests mit fehlendem oder falschem Client-Secret, fremder
     Client-ID, falscher Callback-URL oder anderer Resource werden abgelehnt.
-14. Die Authorization-Server-Metadaten veröffentlichen
+15. Die Authorization-Server-Metadaten veröffentlichen
     `client_secret_basic`; `none`, DCR und CIMD sind nicht Teil des aktiven
     Produktionsprofils.

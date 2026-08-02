@@ -8,7 +8,7 @@ import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revisi
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
   repositoryRoot,
-  "ai/openai plugin/skillpilot-coach-de-v1",
+  "ai/openai plugin/skillpilot-coach-v1",
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
 const goalVisualizationWidget = resolve(
@@ -20,7 +20,7 @@ const goalVisualizationArtifactSha256 = createHash("sha256")
   .digest("hex");
 const goalVisualizationResourceUri =
   `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
-const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-de-v1");
+const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
 const readJson = (path) => JSON.parse(read(path));
@@ -53,6 +53,7 @@ const contractMetadata = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1ContractMetadata.java",
 ));
+const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
 const completeBehavioralSurface =
   `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
@@ -86,10 +87,21 @@ assert.match(
 const [manifestMajor] = manifest.version.split(".").map(Number);
 assert.equal(manifestMajor, releaseLine.contractMajor);
 assert.equal(releaseLine.schemaVersion, 1);
-assert.equal(releaseLine.pluginIdentity, "skillpilot-coach-de-v1");
+assert.equal(releaseLine.pluginIdentity, "skillpilot-coach-v1");
 assert.equal(releaseLine.contractMajor, 1);
 assert.equal(releaseLine.stateSchemaVersion, 1);
-assert.equal(releaseLine.workflowVersion, "coach-de@1.0");
+assert.equal(releaseLine.workflowVersion, "coach@1.0");
+assert.match(releaseScript, /"exportOpenAiCoachV1Contract"/u);
+assert.equal(
+  releaseScript.includes("exportOpenAiDeV1Contract"),
+  false,
+  "The release exporter must not retain a language-specific compatibility task.",
+);
+assert.equal(
+  /(?:^|[-_])(?:de|en)(?:[-_]|$)/u.test(releaseLine.pluginIdentity),
+  false,
+  "The shared V1 plugin identity must not encode a communication language.",
+);
 assert.equal(Object.hasOwn(releaseLine, "curriculumRevision"), false);
 requireString(manifest.description, "description", 1024);
 requireString(manifest.author?.name, "author.name", 120);
@@ -108,7 +120,9 @@ assert.deepEqual(appConfig, {
 
 const pluginInterface = manifest.interface;
 requireString(pluginInterface?.displayName, "interface.displayName", 30);
-assert.equal(pluginInterface.displayName, "SkillPilot Coach DE v1");
+assert.equal(pluginInterface.displayName, "SkillPilot Coach v1");
+assert.equal(pluginInterface.shortDescription, "Your SkillPilot learning coach");
+assert.match(pluginInterface.longDescription, /communication locale/u);
 requireString(pluginInterface?.shortDescription, "interface.shortDescription", 30);
 requireString(pluginInterface?.longDescription, "interface.longDescription", 4000);
 requireString(pluginInterface?.developerName, "interface.developerName", 80);
@@ -179,7 +193,7 @@ for (const prompt of pluginInterface.defaultPrompt) {
     "Plugin starter prompts must not contain App @mentions.",
   );
   assert.equal(
-    /learningSessionId|SkillPilot-Lernsession|vorbereitet/i.test(prompt),
+    /learningSessionId|prepared (?:learning )?session/i.test(prompt),
     false,
     "Directory starters must not imply that a personal learning session is already available.",
   );
@@ -187,7 +201,7 @@ for (const prompt of pluginInterface.defaultPrompt) {
     .normalize("NFKC")
     .trim()
     .replace(/\s+/gu, " ")
-    .toLocaleLowerCase("de");
+    .toLocaleLowerCase("en");
   assert.equal(
     normalizedPrompts.has(normalizedPrompt),
     false,
@@ -198,9 +212,9 @@ for (const prompt of pluginInterface.defaultPrompt) {
 
 assert.deepEqual(mcpConfig, {
   mcpServers: {
-    "skillpilot-coach-de-v1": {
+    "skillpilot-coach-v1": {
       type: "http",
-      url: "https://mcp-coach-de-v1.skillpilot.com/mcp",
+      url: "https://mcp-coach-v1.skillpilot.com/mcp",
     },
   },
 });
@@ -212,7 +226,7 @@ assert.equal(
 const endpoint = new URL(releaseLine.publicMcpEndpoint);
 const oauthResource = new URL(releaseLine.oauthResource);
 assert.equal(endpoint.protocol, "https:");
-assert.equal(endpoint.hostname, "mcp-coach-de-v1.skillpilot.com");
+assert.equal(endpoint.hostname, "mcp-coach-v1.skillpilot.com");
 assert.equal(endpoint.pathname, "/mcp");
 assert.equal(endpoint.search, "");
 assert.equal(endpoint.hash, "");
@@ -229,7 +243,7 @@ assert.equal(
   "V1 must not publish or declare a compatibility endpoint",
 );
 assert.deepEqual(releaseLine.ui, {
-  domain: "https://mcp-coach-de-v1.skillpilot.com",
+  domain: "https://mcp-coach-v1.skillpilot.com",
   enabled: true,
   stateSchemaVersion: 1,
   resources: [
@@ -321,26 +335,26 @@ requireString(
 assert.match(skill, /references\/coaching-policy\.md/);
 assert.match(
   skill,
-  /Fehlt sie, rufe kein SkillPilot-Werkzeug\s+auf\./,
+  /If it does not, do not call any SkillPilot\s+tool\./,
   "The skill must fail closed before any tool call when no prepared session exists.",
 );
-assert.match(skill, /Zeige, wiederhole, erfrage oder rekonstruiere sie nicht\./);
+assert.match(skill, /Never show, repeat, request, or reconstruct\s+it\./);
 assert.deepEqual(skillAgent, {
   interface: {
-    display_name: "SkillPilot Coach DE v1",
-    short_description: "Persönlicher deutscher SkillPilot-Lerncoach",
+    display_name: "SkillPilot Coach v1",
+    short_description: "Personal SkillPilot learning coach",
     default_prompt:
-      "Verwende $skillpilot-coach-de-v1 und fahre mit meinem vorbereiteten SkillPilot-Lernschritt fort.",
+      "Use $skillpilot-coach-v1 and continue my prepared SkillPilot learning step.",
   },
   dependencies: {
     tools: [
       {
         type: "mcp",
-        value: "skillpilot-coach-de-v1",
+        value: "skillpilot-coach-v1",
         description:
-          "SkillPilot-Lernzustand, Navigation, Mastery, Verified Recall und Prüfungen",
+          "SkillPilot learning state, navigation, mastery, verified recall, and assessments",
         transport: "streamable_http",
-        url: "https://mcp-coach-de-v1.skillpilot.com/mcp",
+        url: "https://mcp-coach-v1.skillpilot.com/mcp",
       },
     ],
   },
@@ -351,6 +365,13 @@ assert.deepEqual(skillAgent, {
 assert.equal(
   skillAgent.dependencies.tools[0].url,
   releaseLine.publicMcpEndpoint,
+);
+assert.equal(
+  /(?:skillpilot|mcp)-coach-(?:de|en)-v1/u.test(
+    `${manifestSource}\n${openAiYaml}\n${JSON.stringify(mcpConfig)}\n${JSON.stringify(releaseLine)}`,
+  ),
+  false,
+  "The shared plugin package must not retain a language-specific identity or endpoint.",
 );
 
 const policyIds = [
@@ -379,32 +400,43 @@ for (const policyId of policyIds) {
 }
 
 const orientationSection = policy.match(
-  /## 5\. Motivations- und Orientierungsmodus\n([\s\S]*?)\n## 6\./u,
+  /## 5\. Motivation and orientation mode\n([\s\S]*?)\n## 6\./u,
 );
 assert.ok(
   orientationSection,
   "The coaching policy must contain a dedicated motivation and orientation mode.",
 );
-assert.match(orientationSection[1], /Möglichkeiten zeigen/u);
-assert.match(orientationSection[1], /Positive Perspektiven eröffnen/u);
+assert.match(orientationSection[1], /Show possibilities/u);
+assert.match(orientationSection[1], /Offer positive perspectives/u);
 assert.match(
   orientationSection[1],
-  /sichtbare Reaktion, geäußertes Interesse oder Weiterbereitschaft/u,
+  /visible\s+engagement, expressed interest, or readiness to continue/u,
 );
 assert.match(
   orientationSection[1],
-  /weder Vorwissen noch Begriffe, Rechenverfahren,\s*Detailkenntnisse/u,
+  /test neither prior knowledge nor terminology, calculations,\s*details/u,
   "Orientation must never become a subject-detail or prior-knowledge check.",
 );
 assert.match(
   orientationSection[1],
-  /nicht als „fachlich gemeistert“/u,
+  /never describe the result as subject-matter\s+mastery/u,
   "Orientation completion must not be presented as subject mastery.",
 );
 assert.match(
   skill,
-  /motivierende Orientierung, dialogisches Scaffolding, Verified Recall oder\s+strenge Prüfung/u,
+  /motivational orientation, dialogic scaffolding,\s*verified recall, or strict assessment/u,
   "The skill workflow must route motivation through its dedicated mode.",
+);
+
+assert.match(
+  combinedSkill,
+  /communicationLocale[\s\S]+authoritative/u,
+  "The language-neutral skill must make the session communication locale authoritative.",
+);
+assert.match(
+  combinedSkill,
+  /Never infer or override[\s\S]+English (?:skill|policy)[\s\S]+tool names/u,
+  "English control-plane language must never override the session communication locale.",
 );
 
 const forbiddenLegacyFragments = [
@@ -430,36 +462,41 @@ assert.equal(
   "The skill must never contain a model-selected or model-built SkillPilot URL.",
 );
 assert.equal(
-  mcpContract.includes("Fehlt ein freigegebener Link, gib keinen Link aus."),
+  mcpContract.includes("If no approved link is available, do not output a link."),
   true,
   "Server and skill link policy must both fail closed.",
 );
 assert.equal(
-  mcpContract.includes("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com."),
+  mcpContract.includes("If no approved link is available, use only https://skillpilot.com."),
   false,
   "Server instructions must not reintroduce a static fallback link.",
 );
 assert.equal(
-  contextProjector.includes("Fehlt ein freigegebener Link, gib keinen Link aus."),
+  contextProjector.includes("Fehlt ein freigegebener Link, gib keinen Link aus.") &&
+    contextProjector.includes("If no approved link is available, do not output a link."),
   true,
-  "Projected runtime policies must fail closed when no URL is supplied.",
+  "Localized projected runtime policies must fail closed when no URL is supplied.",
 );
 assert.equal(
-  contextProjector.includes("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com."),
+  contextProjector.includes("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com.") ||
+    contextProjector.includes("If no approved link is available, use only https://skillpilot.com."),
   false,
   "Projected runtime policies must not reintroduce a static fallback link.",
 );
 assert.match(
   launchService,
-  /SkillPilot-Lernsession:[\s\S]+learningSessionId/,
+  /learningSessionId/,
   "The SkillPilot UI launch must still carry the independent learning session.",
 );
 assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
 assert.match(combinedSkill, /expectedStateVersion/);
 assert.match(combinedSkill, /clientRequestId/);
 assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
-assert.match(combinedSkill, /MCP-App.*Zielvisualisierung/s);
-assert.match(combinedSkill, /nicht als\s+Quelle, Beleg, Aufgabe, Lösung oder\s+Leistungsnachweis/s);
+assert.match(combinedSkill, /MCP App[\s\S]+goal visualization/s);
+assert.match(
+  combinedSkill,
+  /never as a source,\s+evidence, task, solution, or performance record/s,
+);
 
 const javaConstant = (name) => {
   const declaration = contractMetadata.match(
@@ -521,7 +558,7 @@ assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
 assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);
 assert.equal(
   javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
-  "https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
+  "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 );
 assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
@@ -537,7 +574,7 @@ assert.equal(
   javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
   releaseLine.ui.resources[0].mimeType,
 );
-assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/de/v1/mcp");
+assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/v1/mcp");
 assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
 assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
 assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
@@ -561,15 +598,26 @@ assert.match(mcpContract, /EXPECTED_STATE_VERSION = "expectedStateVersion"/);
 assert.match(mcpContract, /CLIENT_REQUEST_ID = "clientRequestId"/);
 assert.match(mcpContract, /withVersionMetadataSchema/);
 assert.match(mcpContract, /OpenAiDeV1McpSessionCoordinator/);
+for (const staleGermanProtocolDescription of [
+  "Aus der aktuellen SkillPilot-Startnachricht",
+  "Für jeden neuen fachlichen Schreibversuch",
+  "stateVersion aus dem jüngsten erfolgreichen SkillPilot-Ergebnis",
+]) {
+  assert.equal(
+    mcpContract.includes(staleGermanProtocolDescription),
+    false,
+    `Static V1 schema metadata must be English: ${staleGermanProtocolDescription}`,
+  );
+}
 
 const publishedToolNames = new Set(
   [...mcpContract.matchAll(
-    /public static final String [A-Z_]+ = "((?:get|set|start|record)_skillpilot_[a-z_]+_de)";/g,
+    /public static final String [A-Z_]+\s*=\s*"((?:get|set|start|record|render)_skillpilot_[a-z_]+)";/g,
   )].map((match) => match[1]),
 );
 for (const toolName of new Set(
   [...combinedSkill.matchAll(
-    /\b((?:get|set|start|record)_skillpilot_[a-z_]+_de)\b/g,
+    /\b((?:get|set|start|record|render)_skillpilot_[a-z_]+)\b/g,
   )].map((match) => match[1]),
 )) {
   assert.equal(
@@ -578,6 +626,6 @@ for (const toolName of new Set(
     `Skill references an unknown V1 tool: ${toolName}`,
   );
 }
-assert.equal(/\b(?:skillpilot-coach-de-v2|mcp-v2|ui-v2)\b/.test(combinedSkill), false);
+assert.equal(/\b(?:skillpilot-coach-v2|mcp-v2|ui-v2)\b/.test(combinedSkill), false);
 
-console.log("SkillPilot Coach DE v1 plugin and version contract check passed.");
+console.log("SkillPilot Coach v1 plugin and version contract check passed.");

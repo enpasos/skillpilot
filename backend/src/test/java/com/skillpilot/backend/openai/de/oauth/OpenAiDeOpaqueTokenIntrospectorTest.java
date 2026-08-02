@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.server.resource.introspection.BadOpaq
 class OpenAiDeOpaqueTokenIntrospectorTest {
 
     private static final String CLIENT_ID = "chatgpt-client";
-    private static final String MCP_URL = "https://mcp-coach-de-v1.skillpilot.test/mcp";
+    private static final String MCP_URL = "https://mcp-coach-v1.skillpilot.test/mcp";
     private static final String TOKEN = "opaque-access-token";
     private static final String SUBJECT = "spod_subject";
 
@@ -88,7 +88,7 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
                 .scope(OpenAiDeOAuthConfiguration.READ_SCOPE)
                 .build();
         OAuth2AuthorizationRequest.Builder request = OAuth2AuthorizationRequest.authorizationCode()
-                .authorizationUri("https://skillpilot.test/api/openai/de/oauth2/authorize")
+                .authorizationUri("https://skillpilot.test/api/openai/v1/oauth2/authorize")
                 .clientId(CLIENT_ID)
                 .redirectUri("https://chatgpt.com/connector/oauth/callback")
                 .scopes(Set.of(OpenAiDeOAuthConfiguration.READ_SCOPE));

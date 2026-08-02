@@ -8,7 +8,7 @@ export type ToolResult = {
 };
 
 export type CoachView = {
-  locale: "de" | "en";
+  communicationLocale: "de" | "en";
   revision: number;
   phase: "not-started" | "scope-choice" | "practice" | "awaiting-evaluation" | "feedback";
   title: string;
@@ -44,7 +44,7 @@ export class McpAppBridge {
 
   constructor(target: Window = window.parent) {
     this.app = new App(
-      { name: `skillpilot-coach-${__SKILLPILOT_LOCALE__}`, version: "0.1.0" },
+      { name: "skillpilot-coach-v1", version: "0.1.0" },
       {},
       { autoResize: true, strict: true }
     );

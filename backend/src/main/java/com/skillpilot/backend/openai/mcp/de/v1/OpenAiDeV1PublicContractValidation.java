@@ -46,7 +46,7 @@ public final class OpenAiDeV1PublicContractValidation {
             String expected,
             String actual) {
         return new IllegalStateException(
-                "OpenAI-DE V1 " + field + " must exactly match " + expected
+                "OpenAI Coach V1 V1 " + field + " must exactly match " + expected
                         + "; configured value was " + actual + ".");
     }
 

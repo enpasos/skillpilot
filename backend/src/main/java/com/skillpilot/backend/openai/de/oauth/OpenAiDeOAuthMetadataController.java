@@ -17,16 +17,14 @@ import org.springframework.web.util.HtmlUtils;
 
 @Controller
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
+        name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeOAuthMetadataController {
 
     public static final String PROTECTED_RESOURCE_METADATA_PATH =
             OpenAiDeV1ContractMetadata.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH;
     public static final String AUTHORIZATION_SERVER_WELL_KNOWN_PATH =
-            "/.well-known/oauth-authorization-server/api/openai/de";
-    public static final String AUTHORIZATION_SERVER_COMPATIBILITY_PATH =
-            "/api/openai/de/.well-known/oauth-authorization-server";
+            "/.well-known/oauth-authorization-server/api/openai/v1";
 
     private final String issuer;
     private final OpenAiDeProperties properties;
@@ -58,9 +56,7 @@ public class OpenAiDeOAuthMetadataController {
         return metadata;
     }
 
-    @GetMapping(
-            value = {AUTHORIZATION_SERVER_WELL_KNOWN_PATH, AUTHORIZATION_SERVER_COMPATIBILITY_PATH},
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = AUTHORIZATION_SERVER_WELL_KNOWN_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> authorizationServerMetadata() {
         return authorizationServerMetadata(issuer, properties);
@@ -102,14 +98,14 @@ public class OpenAiDeOAuthMetadataController {
     @ResponseBody
     public ResponseEntity<String> connectRequired(@RequestParam(required = false) String reason) {
         String detail = "expired".equals(reason)
-                ? "Die OAuth-Autorisierung der App ist abgelaufen oder nicht mehr gültig."
-                : "Die App SkillPilot Coach DE v1 ist noch nicht für den Zugriff auf das SkillPilot-MCP-Backend autorisiert.";
+                ? "The app authorization has expired or is no longer valid."
+                : "SkillPilot Coach v1 is not yet authorized to access the SkillPilot MCP backend.";
         return htmlPage(
-                "SkillPilot-App autorisieren",
+                "Authorize SkillPilot Coach v1",
                 "<p>" + HtmlUtils.htmlEscape(detail) + "</p>"
-                        + "<p>Diese Autorisierung wählt keinen Lernenden und erzeugt keine Lernsession. "
-                        + "Eine Lernsession entsteht ausschließlich über „Lernen starten“ in SkillPilot.</p>"
-                        + "<p><a class=\"button\" href=\"/\">SkillPilot öffnen</a></p>");
+                        + "<p>This authorization neither selects a learner nor creates a learning session. "
+                        + "A learning session is created only by choosing “Start learning” in SkillPilot.</p>"
+                        + "<p><a class=\"button\" href=\"/\">Open SkillPilot</a></p>");
     }
 
     @GetMapping(value = OpenAiDeOAuthConfiguration.CONSENT_ENDPOINT, produces = MediaType.TEXT_HTML_VALUE)
@@ -138,12 +134,12 @@ public class OpenAiDeOAuthMetadataController {
         visibleScopes.append("</ul>");
 
         StringBuilder form = new StringBuilder();
-        form.append("<p>Du autorisierst die App SkillPilot Coach DE v1, das SkillPilot-MCP-Backend mit den folgenden Berechtigungen aufzurufen.</p>")
+        form.append("<p>You authorize SkillPilot Coach v1 to access the SkillPilot MCP backend with the following permissions.</p>")
                 .append(visibleScopes)
-                .append("<p>OAuth autorisiert nur die App. Es wählt keinen Lernenden und erzeugt keine Lernsession. "
-                        + "Welche Lerndaten adressiert werden, bestimmt ausschließlich eine separat über „Lernen starten“ "
-                        + "in SkillPilot erzeugte, kurzlebige Lernsession.</p>")
-                .append("<p>Die dauerhafte SkillPilot-ID und OAuth-Zugangsdaten werden weder im Chat noch als Werkzeugparameter angezeigt.</p>")
+                .append("<p>OAuth authorizes only the app. It neither selects a learner nor creates a learning session. "
+                        + "Only a short-lived learning session created separately through “Start learning” in "
+                        + "SkillPilot determines which learning data is addressed.</p>")
+                .append("<p>The permanent SkillPilot ID and OAuth credentials are shown neither in chat nor as tool parameters.</p>")
                 .append("<form method=\"post\" action=\"")
                 .append(OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT)
                 .append("\">")
@@ -156,9 +152,9 @@ public class OpenAiDeOAuthMetadataController {
                     .append("\">");
         }
         form.append(hiddenScopes)
-                .append("<button class=\"button\" type=\"submit\">App autorisieren</button>")
+                .append("<button class=\"button\" type=\"submit\">Authorize app</button>")
                 .append("</form>");
-        return htmlPage("ChatGPT-App für SkillPilot autorisieren", form.toString());
+        return htmlPage("Authorize SkillPilot Coach v1", form.toString());
     }
 
     private List<String> splitScopes(String scope) {
@@ -174,17 +170,17 @@ public class OpenAiDeOAuthMetadataController {
     private String scopeDescription(String scope) {
         return switch (scope) {
             case OpenAiDeOAuthConfiguration.READ_SCOPE ->
-                "Daten einer separat gestarteten SkillPilot-Lernsession lesen";
+                "Read data from a separately started SkillPilot learning session";
             case OpenAiDeOAuthConfiguration.WRITE_SCOPE ->
-                "Lernfortschritt einer separat gestarteten Lernsession nach Bestätigung aktualisieren";
+                "Update progress in a separately started learning session after confirmation";
             case OpenAiDeOAuthConfiguration.OFFLINE_SCOPE ->
-                "App-Autorisierung ohne erneute Anmeldung aufrechterhalten";
+                "Keep the app authorization active without signing in again";
             default -> HtmlUtils.htmlEscape(scope);
         };
     }
 
     private ResponseEntity<String> htmlPage(String title, String body) {
-        String html = "<!doctype html><html lang=\"de\"><head><meta charset=\"utf-8\">"
+        String html = "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">"
                 + "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
                 + "<title>" + HtmlUtils.htmlEscape(title) + "</title>"
                 + "<style>body{font-family:system-ui,sans-serif;max-width:42rem;margin:4rem auto;padding:0 1.25rem;"

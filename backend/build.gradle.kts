@@ -80,9 +80,9 @@ tasks.processResources {
     }
 }
 
-tasks.register<JavaExec>("exportOpenAiDeV1Contract") {
+tasks.register<JavaExec>("exportOpenAiCoachV1Contract") {
     group = "verification"
-    description = "Exports the canonical public German OpenAI V1 MCP contract."
+    description = "Exports the canonical public OpenAI Coach V1 MCP contract."
     dependsOn(tasks.testClasses)
     classpath = sourceSets.test.get().runtimeClasspath
     mainClass.set(

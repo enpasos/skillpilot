@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /** Serves the OpenAI domain-verification challenge on the public V1 MCP origin. */
 @Controller
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public final class OpenAiAppsChallengeController {
 
     public static final String PATH =

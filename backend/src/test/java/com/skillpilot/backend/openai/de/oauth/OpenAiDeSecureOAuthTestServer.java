@@ -38,7 +38,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 
 /**
  * Test-only predefined confidential-client credentials plus a legacy HTTPS
- * CIMD/JWKS endpoint used by the OpenAI-DE integration tests.
+ * CIMD/JWKS endpoint used by the OpenAI Coach V1 integration tests.
  *
  * <p>The static client exercises the production {@code client_secret_basic}
  * path. The private-key helpers remain only for explicit compatibility tests.
@@ -88,16 +88,16 @@ public final class OpenAiDeSecureOAuthTestServer {
     public static void registerConfidentialSecureProperties(
             DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
-        registry.add("skillpilot.openai.coach.de.v1.server-build", () -> "test-build");
-        registry.add("skillpilot.openai.coach.de.v1.security.secure-mode", () -> "true");
+        registry.add("skillpilot.openai.coach.v1.server-build", () -> "test-build");
+        registry.add("skillpilot.openai.coach.v1.security.secure-mode", () -> "true");
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
+                "skillpilot.openai.coach.v1.oauth.client-authentication-method",
                 () -> OpenAiDeOAuthConfiguration.CLIENT_AUTH_CLIENT_SECRET_BASIC);
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-id",
+                "skillpilot.openai.coach.v1.oauth.client-id",
                 OpenAiDeSecureOAuthTestServer::confidentialClientId);
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-secret",
+                "skillpilot.openai.coach.v1.oauth.client-secret",
                 OpenAiDeSecureOAuthTestServer::confidentialClientSecret);
     }
 
@@ -107,20 +107,20 @@ public final class OpenAiDeSecureOAuthTestServer {
      */
     public static void registerSecureProperties(DynamicPropertyRegistry registry) {
         registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
-        registry.add("skillpilot.openai.coach.de.v1.server-build", () -> "test-build");
-        registry.add("skillpilot.openai.coach.de.v1.security.secure-mode", () -> "true");
+        registry.add("skillpilot.openai.coach.v1.server-build", () -> "test-build");
+        registry.add("skillpilot.openai.coach.v1.security.secure-mode", () -> "true");
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-authentication-method",
+                "skillpilot.openai.coach.v1.oauth.client-authentication-method",
                 () -> OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT);
-        registry.add("skillpilot.openai.coach.de.v1.oauth.client-id", OpenAiDeSecureOAuthTestServer::clientId);
+        registry.add("skillpilot.openai.coach.v1.oauth.client-id", OpenAiDeSecureOAuthTestServer::clientId);
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-jwk-set-uri",
+                "skillpilot.openai.coach.v1.oauth.client-jwk-set-uri",
                 OpenAiDeSecureOAuthTestServer::jwkSetUri);
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-assertion-signing-algorithm",
+                "skillpilot.openai.coach.v1.oauth.client-assertion-signing-algorithm",
                 () -> "RS256");
         registry.add(
-                "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size",
+                "skillpilot.openai.coach.v1.oauth.client-assertion-replay-cache-size",
                 () -> "10000");
     }
 
@@ -184,7 +184,7 @@ public final class OpenAiDeSecureOAuthTestServer {
             String cimd = """
                     {
                       "client_id":"%s",
-                      "client_name":"SkillPilot OpenAI-DE integration-test client",
+                      "client_name":"SkillPilot OpenAI Coach V1 integration-test client",
                       "redirect_uris":%s,
                       "token_endpoint_auth_methods_supported":["private_key_jwt"],
                       "token_endpoint_auth_signing_alg_values_supported":["RS256"],

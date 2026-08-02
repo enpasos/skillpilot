@@ -57,7 +57,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 /**
- * Vertical release gate for the German OpenAI coach.
+ * Vertical release gate for the OpenAI Coach V1.
  *
  * <p>The test starts the real application with H2 and drives the independent public learning-session,
  * app-only OAuth and MCP HTTP boundaries. Identity mapping, learner workflow services and repositories
@@ -74,17 +74,17 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.public-base-url=https://skillpilot.test",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
         "skillpilot.claude.enabled=false",
-        "skillpilot.openai.coach.de.v1.enabled=true",
-        "skillpilot.openai.coach.de.v1.server-build=test-build",
-        "skillpilot.openai.coach.de.v1.writes-enabled=true",
-        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-        "skillpilot.openai.coach.de.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.de.v1.secure-cookie=false",
-        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth.client-id=chatgpt-e2e-client",
-        "skillpilot.openai.coach.de.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
-        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.enabled=true",
+        "skillpilot.openai.coach.v1.server-build=test-build",
+        "skillpilot.openai.coach.v1.writes-enabled=true",
+        "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.mcp.enabled=true",
+        "skillpilot.openai.coach.v1.secure-cookie=false",
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-e2e-client",
+        "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/e2e-callback",
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class OpenAiDeCoachEndToEndIntegrationTest {
 
@@ -189,17 +189,17 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Test
     void canonicalRevisionCoversTwoSessionsWebWritesIdempotencyAndRollback() throws Exception {
         String launchPath = "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID)
-                + "/openai/de/launch";
+                + "/openai/v1/launch";
         String firstSessionId = objectMapper.readTree(postJson(
                         launchPath,
-                        "{\"language\":\"de\",\"client\":\"revision-a\","
+                        "{\"communicationLocale\":\"de\",\"client\":\"revision-a\","
                                 + "\"providerEligibilityConfirmed\":true}",
                         Map.of()).body())
                 .path("learningSessionId")
                 .asText();
         String secondSessionId = objectMapper.readTree(postJson(
                         launchPath,
-                        "{\"language\":\"de\",\"client\":\"revision-b\","
+                        "{\"communicationLocale\":\"de\",\"client\":\"revision-b\","
                                 + "\"providerEligibilityConfirmed\":true}",
                         Map.of()).body())
                 .path("learningSessionId")
@@ -336,12 +336,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Test
     void providerEligibilityIsRequiredAtLaunchBeforePersistence() throws Exception {
         String path = "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID)
-                + "/openai/de/launch";
+                + "/openai/v1/launch";
 
-        HttpResponse<String> missing = postJson(path, "{\"language\":\"de\"}", Map.of());
+        HttpResponse<String> missing = postJson(path, "{\"communicationLocale\":\"de\"}", Map.of());
         HttpResponse<String> rejected = postJson(
                 path,
-                "{\"language\":\"de\",\"providerEligibilityConfirmed\":false}",
+                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":false}",
                 Map.of());
         HttpResponse<String> nullRequest = postJson(path, "", Map.of());
 
@@ -355,7 +355,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         HttpResponse<String> accepted = postJson(
                 path,
-                "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
+                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":true}",
                 Map.of());
 
         assertThat(accepted.statusCode()).withFailMessage(accepted.body()).isEqualTo(200);
@@ -368,15 +368,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Test
     void everyLaunchCreatesAFreshIndependentTwentyFourHourLearningSession() throws Exception {
         String path = "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID)
-                + "/openai/de/launch";
+                + "/openai/v1/launch";
 
         HttpResponse<String> first = postJson(
                 path,
-                "{\"language\":\"de\",\"client\":\"first\",\"providerEligibilityConfirmed\":true}",
+                "{\"communicationLocale\":\"de\",\"client\":\"first\",\"providerEligibilityConfirmed\":true}",
                 Map.of());
         HttpResponse<String> second = postJson(
                 path,
-                "{\"language\":\"de\",\"client\":\"second\",\"providerEligibilityConfirmed\":true}",
+                "{\"communicationLocale\":\"de\",\"client\":\"second\",\"providerEligibilityConfirmed\":true}",
                 Map.of());
 
         assertThat(first.statusCode()).withFailMessage(first.body()).isEqualTo(200);
@@ -405,27 +405,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     @Test
-    void removedLegacyUiEndpointsReturnNotFound() throws Exception {
-        HttpResponse<String> connectStart = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/connect-start",
-                "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
-                Map.of());
-        HttpResponse<String> status = get(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");
-
-        assertThat(connectStart.statusCode()).isEqualTo(404);
-        assertThat(status.statusCode()).isEqualTo(404);
-        assertThat(learningSessionRepository.count()).isZero();
-        assertThat(bindingGrantRepository.count()).isZero();
-        assertThat(connectionRepository.count()).isZero();
-        assertThat(pendingLaunchRepository.count()).isZero();
-    }
-
-    @Test
     void removedMcpRoutesReturnNotFoundInTheFullProviderRuntime() throws Exception {
         for (String path : List.of(
-                "/api/openai/de/mcp",
-                "/api/openai/de/v1/mcp",
+                "/api/openai/v1/mcp",
+                "/api/openai/v1/v1/mcp",
                 OpenAiDeV1ContractMetadata.PUBLIC_MCP_PATH)) {
             HttpResponse<String> response = get(path);
             assertThat(response.statusCode()).as(path).isEqualTo(404);
@@ -436,9 +419,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId()
             throws Exception {
         HttpResponse<String> launch = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/launch",
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
                 """
-                {"language":"de","client":"openai-de-e2e","providerEligibilityConfirmed":true}
+                {"communicationLocale":"de","client":"openai-v1-e2e","providerEligibilityConfirmed":true}
                 """,
                 Map.of());
         assertThat(launch.statusCode()).withFailMessage(launch.body()).isEqualTo(200);
@@ -480,8 +463,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         HttpResponse<String> consent = get(consentUri.toString());
         assertThat(consent.statusCode()).isEqualTo(200);
         assertThat(consent.body())
-                .contains("ChatGPT-App f&uuml;r SkillPilot autorisieren")
-                .contains("OAuth autorisiert nur die App")
+                .contains("Authorize SkillPilot Coach v1")
+                .contains("OAuth authorizes only the app")
                 .doesNotContain(PERMANENT_SKILLPILOT_ID);
 
         HttpResponse<String> approval = postForm(
@@ -544,12 +527,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains(OpenAiDeV1McpContractAdapter.GET_CONTEXT, OpenAiDeV1McpContractAdapter.SET_CURRICULUM);
         JsonNode bootstrapTool = toolDescriptor(tools, OpenAiDeV1McpContractAdapter.GET_CONTEXT);
         assertThat(bootstrapTool.path("title").asText())
-                .isEqualTo("SkillPilot-Lerncoach starten oder fortsetzen");
+                .isEqualTo("Start or continue the SkillPilot learning coach");
         assertThat(bootstrapTool.path("description").asText())
-                .contains("immer zuerst")
-                .contains("SkillPilot Coach DE v1")
-                .contains("allgemeine Lernberatung")
-                .contains("nicht für allgemeine Fachfragen ohne SkillPilot-Bezug");
+                .contains("Always use this tool first")
+                .contains("SkillPilot Coach v1")
+                .contains("generic advice")
+                .contains("general subject questions unrelated to SkillPilot");
         JsonNode bootstrapInputSchema = bootstrapTool.path("inputSchema");
         assertThat(bootstrapInputSchema
                         .path("properties")
@@ -576,7 +559,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialContext.path("contractMajor").asInt()).isEqualTo(1);
         assertThat(initialContext.path("stateVersion").asLong()).isZero();
         assertThat(initialContext.path("stateSchemaVersion").asInt()).isEqualTo(1);
-        assertThat(initialContext.path("workflowVersion").asText()).isEqualTo("coach-de@1.0");
+        assertThat(initialContext.path("workflowVersion").asText()).isEqualTo("coach@1.0");
         assertThat(initialContext.path("curriculumRevision").asText()).isNotBlank();
         assertThat(initialContext.path("extensions").isObject()).isTrue();
 
@@ -584,7 +567,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialSession.getContractMajor()).isEqualTo(1);
         assertThat(initialSession.getStateVersion()).isZero();
         assertThat(initialSession.getStateSchemaVersion()).isEqualTo(1);
-        assertThat(initialSession.getWorkflowVersion()).isEqualTo("coach-de@1.0");
+        assertThat(initialSession.getWorkflowVersion()).isEqualTo("coach@1.0");
         assertThat(initialSession.getCurriculumRevision()).isNotBlank();
         String initialLearningSessionHash = initialSession.getTokenHash();
         learningSessionRepository.deleteById(initialLearningSessionHash);
@@ -603,9 +586,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertLegacyStateIsEmpty();
 
         HttpResponse<String> restarted = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/launch",
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
                 """
-                {"language":"de","client":"openai-de-e2e-restart","providerEligibilityConfirmed":true}
+                {"communicationLocale":"de","client":"openai-v1-e2e-restart","providerEligibilityConfirmed":true}
                 """,
                 Map.of());
 
@@ -628,7 +611,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                     assertThat(session.getContractMajor()).isEqualTo(1);
                     assertThat(session.getStateVersion()).isZero();
                     assertThat(session.getStateSchemaVersion()).isEqualTo(1);
-                    assertThat(session.getWorkflowVersion()).isEqualTo("coach-de@1.0");
+                    assertThat(session.getWorkflowVersion()).isEqualTo("coach@1.0");
                     assertThat(session.getCurriculumRevision()).isNotBlank();
                 });
         HttpResponse<String> resumed = callTool(

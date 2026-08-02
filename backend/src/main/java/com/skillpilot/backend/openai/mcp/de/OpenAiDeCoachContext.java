@@ -3,7 +3,7 @@ package com.skillpilot.backend.openai.mcp.de;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
-/** Compact, allowlist-only state returned to the German OpenAI coach. */
+/** Compact, allowlist-only state returned to the OpenAI Coach V1. */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record OpenAiDeCoachContext(
         String learningState,

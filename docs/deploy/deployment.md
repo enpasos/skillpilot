@@ -205,7 +205,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     present and nonempty.
 8.  **Backend build and build-identity verification** produce the updated
     server artifact. Gradle embeds the full lowercase `HEAD` commit into both
-    `skillpilot.openai.coach.de.v1.server-build` and the MCP `server-version`; the
+    `skillpilot.openai.coach.v1.server-build` and the MCP `server-version`; the
     deployment engine verifies the processed resource before restart.
     `SKILLPILOT_SERVER_BUILD` is not a runtime setting and cannot replace this
     artifact identity.
@@ -221,11 +221,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     so missing hashed assets or an HTML error page served as CSS stop deployment.
 13. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated
-    `mcp-coach-de-v1.skillpilot.com` TLS certificate, direct responses without
+    `mcp-coach-v1.skillpilot.com` TLS certificate, direct responses without
     redirects, HTTP `200` plus the exact resource in path-specific
     protected-resource metadata, and HTTP `401` plus the exact
     `WWW-Authenticate` metadata reference at
-    `https://mcp-coach-de-v1.skillpilot.com/mcp`. The discarded main-origin
+    `https://mcp-coach-v1.skillpilot.com/mcp`. The discarded main-origin
     routes and the internal transport route must return HTTP `404`; all five
     reserved sibling hosts must remain fail-closed with HTTP `404`.
 14. **Further deployment smoke tests** check that the public host serves the intended
@@ -256,34 +256,35 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 - `VITE_SKILLPILOT_COACH_VARIANT` remains mandatory for a direct
   `scripts/deploy.sh` engine call and must be exactly `visible-session`,
   `openai-mcp`, or `legacy`.
-  - German MCP deployment: `./deploy_skillpilot.sh`
+  - Multilingual MCP deployment: `./deploy_skillpilot.sh`
   - Visible Session rollback:
     `./deploy_skillpilot.sh --coach-variant visible-session`
-  - The `openai-mcp` build keeps English on its established Visible Session GPT.
+  - The `openai-mcp` build uses the same V1 App for every backend-supported
+    communication locale.
 - The canonical OpenAI V1 public values are safe, versioned application
   defaults:
-  - MCP endpoint: `https://mcp-coach-de-v1.skillpilot.com/mcp`
-  - OAuth resource: `https://mcp-coach-de-v1.skillpilot.com/mcp`
+  - MCP endpoint: `https://mcp-coach-v1.skillpilot.com/mcp`
+  - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
   - protected-resource metadata:
-    `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  The MCP-UI uses the same dedicated, immutable DE-V1 origin
-  `https://mcp-coach-de-v1.skillpilot.com` as its widget domain. The provider
+    `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
+  The MCP-UI uses the same dedicated, immutable V1 origin
+  `https://mcp-coach-v1.skillpilot.com` as its widget domain. The provider
   still executes the component inside its sandbox.
   These URLs are immutable contract values rather than environment settings.
   Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented
-  `SKILLPILOT_OPENAI_COACH_DE_V1_*` URL overrides fail closed.
+  `SKILLPILOT_OPENAI_COACH_V1_*` URL overrides fail closed.
   Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin,
   mTLS-edge, and mTLS-smoke variables before the first subdomain deployment;
   they are not part of the `1.0.0` runtime contract.
 - One `skillpilot-server` Spring Boot artifact hosts every coach line. Values
-  belonging to DE V1 use `SKILLPILOT_OPENAI_COACH_DE_V1_*`; genuine shared
+  belonging to V1 use `SKILLPILOT_OPENAI_COACH_V1_*`; genuine shared
   process policies use `SKILLPILOT_OPENAI_*` without locale/version segments.
 - The additive Nginx templates are
   `deploy/nginx/skillpilot-mcp-coaches.conf` for inclusion inside `http {}` and
   `deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf` for inclusion
   only inside the existing `skillpilot.com` HTTPS `server {}` block before its
-  general `location /`. The first file activates only DE V1 and keeps DE V2/V3
-  plus EN V1/V2/V3 at `404`; the second prevents a main-origin or internal-path
+  general `location /`. The first file activates only neutral V1 and keeps
+  neutral V2 through V9 at `404`; the second prevents a main-origin or internal-path
   alias. Neither template enables client-TLS or replaces existing vHosts.
 - Production uses exactly one systemd `EnvironmentFile`, normally
   `/etc/skillpilot/skillpilot.env`. Before copying assets or building,

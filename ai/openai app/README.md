@@ -1,201 +1,111 @@
-# SkillPilot OpenAI MCP Apps
+# SkillPilot OpenAI MCP App prototype
 
-Dieser Ordner enthält zwei getrennte, ausführbare MCP-App-Prototypen:
+This directory contains the local Node prototype for the **single** SkillPilot
+Coach V1 MCP App contract. It is an integration and UI test bed; the production
+MCP endpoint is served by the shared Spring Boot process.
 
-- **SkillPilot Coach Deutsch** unter `/mcp/de`
-- **SkillPilot Coach English** unter `/mcp/en`
+## Contract boundary
 
-Sie sind von den Custom-GPT-Varianten unter `ai/openai custom gpt/` und
-`ai/openai-custom-gpt-visible-session/` vollständig getrennt.
+V1 has exactly one external identity:
 
-> **Abgrenzung:** Dieser Node-Server ist ein lokales Widget- und
-> Protokoll-Testbett. Der zur Veröffentlichung vorgesehene deutsche
-> Produktvertrag ist die chat-first Linie **SkillPilot Coach DE v1** unter
-> `https://mcp-coach-de-v1.skillpilot.com/mcp`; derselbe vollständige URL ist
-> die exakte OAuth-Resource/Audience. Der Node-MCP-Server wird nicht produktiv
-> geschaltet; die hier gebaute, selbstenthaltene read-only
-> Lernzielvisualisierung wird dagegen als versionierte Ressource vom
-> Spring-Boot-MCP-Server ausgeliefert. Der `1.0.0`-Draft ist noch nicht
-> veröffentlicht.
+- plugin identity: `skillpilot-coach-v1`
+- server name: `skillpilot-coach-v1`
+- MCP path: `/mcp`
+- public origin: `https://mcp-coach-v1.skillpilot.com`
+- public endpoint: `https://mcp-coach-v1.skillpilot.com/mcp`
 
-## Was der Prototyp beweist
+Tool names, schemas, titles, descriptions, and server instructions are one
+English protocol catalog. They are not the learner-facing language contract.
+The authoritative learner-facing language comes from the SkillPilot session
+state (`communicationLocale` in the production V1 contract). Backend payloads
+and widget copy are already emitted in that language.
 
-Der vertikale Ablauf ist protokollseitig vollständig:
+The prototype therefore keeps German and English only as localized demo data
+and UI catalogs. They do not create separate MCP endpoints, plugin identities,
+OAuth clients, tool names, or release lines.
 
-1. Das Modell öffnet den Coach mit einer natürlichen Lernabsicht.
-2. Das Widget zeigt nur die fachlich offene Entscheidung Grundkurs oder
-   Leistungskurs.
-3. Der Benutzer klickt ein sichtbares Label; die opake Auswahlreferenz bleibt in
-   Widget-Metadaten.
-4. Das Widget ruft das app-only Auswahltool direkt auf.
-5. Eine Aufgabe erscheint, die Antwort wird persistent eingereicht und aus dem
-   sichtbaren beziehungsweise modelllesbaren Status entfernt.
-6. Das Widget zeigt nach dem Speichern den Button **Lösung jetzt bewerten
-   lassen**; dessen expliziter Klick sendet die natürliche Bewertungsbitte.
-7. Das Provider-Modell lädt die ausstehende Antwort über ein argumentloses
-   Lesetool und speichert die Bewertung.
-8. Ein späterer Turn kann den aktuellen Zustand ohne sichtbares Token und ohne
-   alte Action-Antwort frisch laden.
-
-Die lokale Vorschau simuliert Schritt 7 deterministisch. Sie ist kein Ersatz für
-den anschließenden Test mit einem realen ChatGPT-Modell.
-
-## Lokal starten
-
-Voraussetzung ist Node.js 20 oder neuer.
+## Run locally
 
 ```bash
 cd "ai/openai app"
-npm install
+npm ci
+npm test
 npm start
 ```
 
-Danach stehen bereit:
+Local surfaces:
 
-- deutsche Host-Simulation: <http://localhost:8790/preview/de>
-- englische Host-Simulation: <http://localhost:8790/preview/en>
-- Health-Check: <http://localhost:8790/health>
-- deutsche MCP-App: `http://localhost:8790/mcp/de`
-- englische MCP-App: `http://localhost:8790/mcp/en`
+- MCP contract: `http://127.0.0.1:8790/mcp`
+- German demo preview: `http://127.0.0.1:8790/preview/de`
+- English demo preview: `http://127.0.0.1:8790/preview/en`
+- health: `http://127.0.0.1:8790/health`
 
-Der Button **Prototyp zurücksetzen** löscht nur den lokalen Zustand der jeweiligen
-Sprache. Die Ablage liegt standardmäßig unter
-`tmp/openai-mcp-app-prototype/coach-state.json` und wird nicht versioniert.
+The preview host adds `x-skillpilot-demo-locale` only to select one local
+fixture catalog. This header is a prototype seam, not part of the product MCP
+contract and not a replacement for backend-owned session locale.
 
-Mit einem anderen Ablageort:
+`/mcp/de` and `/mcp/en` intentionally return 404.
 
-```bash
-SKILLPILOT_MCP_APP_DATA_DIR=/tmp/skillpilot-mcp-app npm start
-```
-
-## Tests
-
-```bash
-npm test
-npm audit --audit-level=moderate
-```
-
-Die Tests prüfen insbesondere:
-
-- getrennte DE-/EN-Toolkataloge ohne Sprachparameter;
-- MCP-Initialisierung, `tools/list`, `resources/list` und `resources/read`;
-- MIME-Type `text/html;profile=mcp-app`;
-- app-only Sichtbarkeit der direkten Auswahl- und Einreichungstools;
-- korrekte Read-/Write-/Open-World-/Destructive-Annotationen;
-- opake Referenzen ausschließlich im Result-`_meta`;
-- keine Referenzlecks in `content` oder `structuredContent`;
-- vollständigen Auswahl-, Einreichungs-, Bewertungs- und Rehydrationsablauf;
-- idempotente Wiederholung von Kurswahl und Einreichung ohne Doppelmutation;
-- Persistenz nach Neuinstanziierung des Stores;
-- selbstenthaltene Widgets ohne externe Skripte, Styles oder Service Worker.
-- die separate Lernzielbild-Komponente mit
-  `ui/notifications/tool-result`, optionalem `window.openai.toolOutput`,
-  zugänglichem Alttext, `ui/open-link` und sicherer leerer Darstellung ohne
-  gültiges Bild.
-
-## Paketstruktur
+## Layout
 
 ```text
-ai/openai app/
-  server/
-    contracts/de.mjs       separater deutscher Außenvertrag
-    contracts/en.mjs       separater englischer Außenvertrag
-    coach-store.mjs        persistenter Demo-Zustand
-    create-mcp-server.mjs  MCP-Tools und UI-Ressource
-    app-server.mjs         Streamable-HTTP-Endpunkte
-  widget/
-    src/                    Standard-MCP-Apps-Bridge, Coach- und Zielbild-UI
-    template.html
-  scripts/build-widget.mjs
-  test/
-  dist/                     generiert, nicht versioniert
+server/
+  contracts/v1.mjs       the one English V1 MCP contract and tool catalog
+  contracts/de.mjs       German demo payload and widget copy only
+  contracts/en.mjs       English demo payload and widget copy only
+  contracts/index.mjs    exports the contract and localized catalogs
+  create-mcp-server.mjs  registers the shared tools and app resource
+  app-server.mjs         exposes one /mcp endpoint and local previews
+  coach-store.mjs        local persistent demo state
+  presentation.mjs       localized demo projections
+widget/
+  src/                    standards-first MCP Apps bridge and UI
+scripts/
+  build-widget.mjs       builds localized UI artifacts against shared tools
+test/
+  protocol.test.mjs      proves endpoint and tool-catalog singularity
 ```
 
-Die interaktiven Coach-Widgets werden aus derselben geprüften Implementierung
-separat pro Sprache kompiliert. Zusätzlich entsteht
-`dist/goal-visualization/widget.html`. Diese kompakte Komponente erwartet
-`structuredContent.goalVisualization` mit Ziel-ID, Titel, optionaler
-Beschreibung, öffentlicher HTTPS-Bild-URL, Alttext und Cockpit-Link. Ohne
-vollständige gültige Daten bleibt sie verborgen. Bei gültigen Daten versucht
-sie das Bild unabhängig von Plattform- oder User-Agent-Werten zu laden und
-zeigt es erst nach erfolgreichem `load`. Ein Ladefehler oder der begrenzte
-15-Sekunden-Timeout blendet sie aus und fordert ihren Teardown an.
+## Shared prototype tools
 
-## Sicherheits- und Zustandsgrenze
+The local prototype publishes one unsuffixed catalog:
 
-Die aktuelle Trennung ist absichtlich:
+- `open_skillpilot_coach`
+- `choose_skillpilot_path`
+- `submit_skillpilot_answer`
+- `get_pending_skillpilot_answer`
+- `record_skillpilot_evaluation`
+- `get_skillpilot_context`
 
-| Kanal | Inhalt | Sichtbarkeit |
-| --- | --- | --- |
-| `content` | kurze semantische Zusammenfassung | Benutzer und Modell |
-| `structuredContent` | Labels, Aufgabe und freigegebener Lernstatus | Modell und Widget |
-| Result-`_meta` | opake Session- und Auswahlreferenzen | nur Widget |
-| SkillPilot-Store | Antwort, Receipt, Lernzustand | SkillPilot-Server |
+No tool accepts a language or locale argument. The production Spring contract
+likewise derives language from the session, never from model-controlled tool
+input.
 
-Das Widget sendet über `ui/update-model-context` nur eine semantische
-Zusammenfassung. Nach dem sicheren Speichern fordert ein eigener sichtbarer
-Button die fachliche Bewertung an. Dieser explizite Benutzer-Klick verwendet
-mit dem offiziellen MCP-Apps-Client ausschließlich den Standardaufruf
-`ui/message`. Das Widget prüft dabei sowohl die vom Host angekündigte
-Textnachrichten-Fähigkeit als auch `isError` in der Antwort und zeigt Annahme oder
-Ablehnung sichtbar an. Die Nachricht enthält keine Toolnamen, IDs oder Tokens.
-Die Trennung zwischen „speichern“ und „bewerten lassen“ verhindert, dass ein
-hostseitig ignorierter automatischer Follow-up den Ablauf unbemerkt anhält.
-Änderungen am kompilierten Widget erhalten eine neue `ui://`-Resource-URI, damit
-ChatGPT kein veraltetes Bundle aus dem Cache lädt.
+## Widget domain
 
-Für laufende Developer-Mode-Chats bleiben die bisherigen Template-URIs als
-nicht aufgelistete Lese-Aliase erreichbar. Dadurch kann ein
-bereits gecachter Toolvertrag nach einem Roll-forward trotzdem das aktuelle
-Widget laden. `resources/list` und alle aktuellen Tool-Metadaten veröffentlichen
-weiterhin ausschließlich die neueste URI.
+The one prototype widget origin defaults to
+`https://mcp-coach-v1.skillpilot.com`. A local test deployment may override it
+with one environment variable:
 
-Der momentane No-Auth-Modus besitzt pro Sprache genau einen lokalen
-Entwicklungszustand. Das ist bewusst **nicht mandantenfähig**. Ein öffentlich
-erreichbarer Tunnel darf deshalb nur kurzzeitig, nur mit Testdaten und nur für
-den Developer-Mode-Abnahmetest laufen.
-
-## Produktionsgrenze neben dem Prototyp
-
-Der produktive deutsche Spring-Boot-Pfad verwendet bereits die
-providerneutrale `CoachToolFacade`. OAuth autorisiert die feste registrierte
-App-Verbindung; unabhängig davon adressiert die bei **Lernen starten** erzeugte
-und automatisch transportierte `learningSessionId` genau einen Lernenden:
-
-```text
-OAuth-Appautorisierung + learningSessionId
-                  |
-       serverseitige Sessionabbildung
-                  |
-        interne SkillPilot-ID
-                  |
-       CoachToolFacade + Datenbank
+```bash
+SKILLPILOT_WIDGET_DOMAIN=https://example.test npm start
 ```
 
-Die permanente SkillPilot-ID erscheint weder in Toolargumenten noch in
-Toolergebnissen oder im Widget. OAuth allein wählt keinen Lernenden; jeder
-fachliche Modellaufruf trägt die unveränderte, absolut auf 24 Stunden begrenzte
-Lernsession.
+It must be an HTTPS origin without path, query, credentials, or fragment.
+There are no language-specific widget-domain variables.
 
-Der Spring-Pfad registriert die Zielbild-Komponente unter
-`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
-ausschließlich für das read-only Werkzeug
-`render_skillpilot_goal_visualization_de`. Der Kontext erlaubt dieses
-Anzeige-Werkzeug nur für ein aktives atomares Ziel mit passendem kanonischem
-Bildlink und aktivierter Lernzielbild-Einstellung. Ohne Bild entsteht deshalb
-keine UI-Karte. Die Karte ist Orientierung, keine Evidenz, Aufgabe, Lösung,
-Bewertung oder Zustandsmutation. Da `1.0.0` noch nicht veröffentlicht wurde,
-gehört sie zum selben veränderlichen Draft und löst keinen Versionssprung aus.
+## Goal visualization
 
-## ChatGPT- und Plugin-Test
+The goal-visualization widget remains a separate read-only UI resource built
+from `widget/src/goal-visualization-main.ts`. It is copied into the Spring
+resources by `npm run build` so the production server embeds the exact tested
+artifact. Its availability and displayed payload are controlled by the
+production session state; it does not introduce a language-specific MCP App.
 
-Die genaue Abfolge steht in [TEST_AND_PLUGIN_HANDOFF.md](TEST_AND_PLUGIN_HANDOFF.md).
-Das versionierte deutsche Quellpaket liegt unter
-[`../openai plugin/skillpilot-coach-de-v1`](<../openai plugin/skillpilot-coach-de-v1/>).
-Es enthält Manifest, direkte MCP-Bindung, Coach-Skill und die echte
-hostgenerierte `.app.json`-Abbildung der bereits registrierten deutschen
-Pilot-App. Diese zusätzliche Abbildung ist nur für den lokalen
-End-to-End-Test bestimmt; für die öffentliche Einreichung bleibt der direkt
-eingereichte MCP-Server maßgeblich.
-Paket-, Contract- und Lifecycle-Regeln stehen im
-[Versionierungs- und Lebenszyklusplan](../../docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md).
+## Product plugin source
+
+The installable V1 plugin source is maintained at
+[`../openai plugin/skillpilot-coach-v1`](<../openai plugin/skillpilot-coach-v1/>).
+Release snapshots are generated by `scripts/openai_plugin_release.mjs` from
+that source and the Spring contract. The Node prototype is not packaged as a
+second server or deployed as a separate language app.

@@ -7,6 +7,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeIdempotencyKey;
 import com.skillpilot.backend.domain.OpenAiDeIdempotencyRecord;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
+import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -38,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Component
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
+        name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
 public class OpenAiDeV1McpSessionCoordinator {
 
@@ -186,6 +187,7 @@ public class OpenAiDeV1McpSessionCoordinator {
                 session.getStateSchemaVersion(),
                 session.getWorkflowVersion(),
                 session.getCurriculumRevision(),
+                OpenAiCoachLocale.normalize(session.getCommunicationLocale()),
                 Map.of());
     }
 
@@ -208,6 +210,7 @@ public class OpenAiDeV1McpSessionCoordinator {
         structured.put("stateSchemaVersion", metadata.stateSchemaVersion());
         structured.put("workflowVersion", metadata.workflowVersion());
         structured.put("curriculumRevision", metadata.curriculumRevision());
+        structured.put("communicationLocale", metadata.communicationLocale());
         structured.put("extensions", metadata.extensions());
         return McpSchema.CallToolResult.builder()
                 .content(result.content())
@@ -233,7 +236,7 @@ public class OpenAiDeV1McpSessionCoordinator {
             byte[] payload = CANONICAL_JSON.writeValueAsBytes(canonical);
             return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(payload));
         } catch (Exception exception) {
-            throw new IllegalStateException("Could not hash the OpenAI-DE V1 request.", exception);
+            throw new IllegalStateException("Could not hash the OpenAI Coach V1 request.", exception);
         }
     }
 
@@ -245,7 +248,7 @@ public class OpenAiDeV1McpSessionCoordinator {
                     .withoutPadding()
                     .encodeToString(mac.doFinal(value.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception exception) {
-            throw new IllegalStateException("Could not hash the OpenAI-DE learning session.", exception);
+            throw new IllegalStateException("Could not hash the OpenAI Coach learning session.", exception);
         }
     }
 
@@ -253,7 +256,7 @@ public class OpenAiDeV1McpSessionCoordinator {
         try {
             return UUID.fromString(value);
         } catch (RuntimeException exception) {
-            throw new IllegalArgumentException("clientRequestId muss eine UUID sein.", exception);
+            throw new IllegalArgumentException("clientRequestId must be a UUID.", exception);
         }
     }
 
@@ -275,13 +278,13 @@ public class OpenAiDeV1McpSessionCoordinator {
 
     private String firstText(McpSchema.CallToolResult result) {
         if (result.content() == null || result.content().isEmpty()) {
-            return "SkillPilot-Zustand unverändert wiederverwendet.";
+            return "SkillPilot state reused unchanged.";
         }
         Object first = result.content().getFirst();
         if (first instanceof McpSchema.TextContent text && text.text() != null) {
             return text.text();
         }
-        return "SkillPilot-Zustand unverändert wiederverwendet.";
+        return "SkillPilot state reused unchanged.";
     }
 
     private record LockedSession(
