@@ -60,6 +60,10 @@ test("goal visualization widget is self-contained and uses the standards-first M
     ),
     "utf8"
   );
+  const visualizationSource = await readFile(
+    new URL("../widget/src/goal-visualization-main.ts", import.meta.url),
+    "utf8"
+  );
   assert.equal(
     backendHtml,
     html,
@@ -86,19 +90,8 @@ test("goal visualization widget is self-contained and uses the standards-first M
   );
   assert.match(
     html,
-    /getHostContext/,
-    "the widget must inspect the initialized MCP Apps host context"
-  );
-  assert.match(html, /platform/, "the widget must distinguish mobile hosts");
-  assert.match(
-    html,
-    /addEventListener\(["']hostcontextchanged["']/,
-    "a late mobile platform update must suppress an already initialized widget"
-  );
-  assert.match(
-    html,
     /requestTeardown/,
-    "mobile hosts must receive the standard teardown request"
+    "hosts that cannot load the image must receive the standard teardown request"
   );
   assert.match(
     html,
@@ -109,6 +102,21 @@ test("goal visualization widget is self-contained and uses the standards-first M
     html,
     /["']load["']/,
     "the widget must wait for a successful image load before becoming visible"
+  );
+  assert.match(
+    html,
+    /["']error["']/,
+    "an actual image-load failure must collapse and dismiss the widget"
+  );
+  assert.match(
+    html,
+    /setTimeout/,
+    "a host that never completes image loading must not leave an empty widget forever"
+  );
+  assert.doesNotMatch(
+    visualizationSource,
+    /isMobileGoalVisualizationHost|navigator\.userAgent|getHostContext|hostcontextchanged/,
+    "device class and user-agent strings must not decide whether an image-capable host can render"
   );
   assert.match(
     html,
