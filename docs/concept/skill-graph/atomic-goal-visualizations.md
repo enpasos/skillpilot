@@ -7,7 +7,7 @@ This document defines the production and integration convention for visualizing 
 Atomic goal visualizations are compact didactic images that help learners
 recognize the core idea of one atomic learning goal. They are not tasks,
 solutions, or curriculum evidence. A visualization supports orientation in the
-cockpit and, for the German OpenAI V1 MCP App, in a bounded inline component in
+cockpit and, for the multilingual OpenAI V1 MCP App, in a bounded inline component in
 ChatGPT. The graph goal remains the source of truth.
 
 ## Canonical JSON Format
@@ -39,7 +39,7 @@ Rules:
 - Use `type: "goal-visualization"` and `resourceType: "image"`; do not introduce another top-level goal field for images.
 - The public `url` must be root-relative under `/assets/goal-visualizations/...` so the cockpit can render it locally.
 - The image filename must be the SkillPilot ID plus extension: `<skillpilotId>.<ext>`. Keep language in the link metadata (`lang`), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.
-- The German OpenAI V1 adapter may expose a visualization only for the active
+- The multilingual OpenAI V1 adapter may expose a visualization only for the active
   atomic goal and only when the canonical link has `type:
   "goal-visualization"`, `resourceType: "image"`, and a `skillpilotId` matching
   that goal. Other AI integrations continue to use a normal cockpit deep link
@@ -49,14 +49,14 @@ Rules:
 
 ## OpenAI MCP UI Delivery
 
-The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
+The still-unpublished `SkillPilot Coach v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
 ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
 ```
 
-Only the dedicated read-only `render_skillpilot_goal_visualization_de` tool
+Only the dedicated read-only `render_skillpilot_goal_visualization` tool
 references this resource. It is offered only when the learner preference is
 enabled and the current context contains a safe visualization projection;
 ordinary context reads and state mutations carry no UI resource metadata and
@@ -316,7 +316,7 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The image has no copied third-party worksheet, logo, character, or protected layout.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
-- The image works in the cockpit goal card and, where the German OpenAI MCP UI
+- The image works in the cockpit goal card and, where the multilingual OpenAI MCP UI
   is enabled, as the sole visible content of the inline ChatGPT card. The
   cockpit deep link remains available outside the MCP UI component.
 - The visual does not replace the need for explanation, practice, or assessment.

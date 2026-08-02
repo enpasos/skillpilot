@@ -129,7 +129,7 @@ class OpenAiDeMcpTelemetryTest {
                                     "contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
                                     "stateVersion", 42L,
                                     "stateSchemaVersion", 3,
-                                    "workflowVersion", "coach-de@1.3",
+                                    "workflowVersion", "coach@1.3",
                                     "curriculumRevision", "curriculum-package@sha256"))
                             .build());
         } finally {
@@ -143,7 +143,7 @@ class OpenAiDeMcpTelemetryTest {
                 .asString()
                 .contains(
                         "contractMajor=1",
-                        "pluginLine=skillpilot-coach-de-v1",
+                        "pluginLine=skillpilot-coach-v1",
                         "serverBuild=build-17",
                         "tool=" + OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                         "status=success",
@@ -153,7 +153,7 @@ class OpenAiDeMcpTelemetryTest {
                         "learningSessionHash=h1:",
                         "stateVersion=42",
                         "stateSchemaVersion=3",
-                        "workflowVersion=coach-de@1.3",
+                        "workflowVersion=coach@1.3",
                         "curriculumRevision=curriculum-package@sha256")
                 .doesNotContain(
                         rawLearningSession,

@@ -58,13 +58,13 @@ class OpenAiDeRateLimitFilterTest {
 
     @Test
     void isolatesServletRemoteAddressAndEndpointGroupsWithoutParsingForwardedHeaders() throws Exception {
-        MockHttpServletRequest firstRequest = request("/api/openai/de/oauth2/token", "192.0.2.11");
+        MockHttpServletRequest firstRequest = request("/api/openai/v1/oauth2/token", "192.0.2.11");
         firstRequest.addHeader("X-Forwarded-For", "198.51.100.1");
         MockHttpServletResponse first = invoke(firstRequest);
-        MockHttpServletRequest rejectedRequest = request("/api/openai/de/oauth2/token", "192.0.2.11");
+        MockHttpServletRequest rejectedRequest = request("/api/openai/v1/oauth2/token", "192.0.2.11");
         rejectedRequest.addHeader("X-Forwarded-For", "203.0.113.9");
         MockHttpServletResponse rejected = invoke(rejectedRequest);
-        MockHttpServletResponse otherClient = invoke("/api/openai/de/oauth2/token", "192.0.2.12");
+        MockHttpServletResponse otherClient = invoke("/api/openai/v1/oauth2/token", "192.0.2.12");
         MockHttpServletResponse sameClientOtherGroup =
                 invoke(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH, "192.0.2.11");
 
@@ -72,6 +72,14 @@ class OpenAiDeRateLimitFilterTest {
         assertThat(rejected.getStatus()).isEqualTo(429);
         assertThat(otherClient.getStatus()).isEqualTo(200);
         assertThat(sameClientOtherGroup.getStatus()).isEqualTo(200);
+    }
+
+    @Test
+    void rateLimitsLanguageNeutralV1LaunchPathAsUiTraffic() throws Exception {
+        String path = "/api/ui/learners/learner-42/openai/v1/launch";
+
+        assertThat(invoke(path, "192.0.2.13").getStatus()).isEqualTo(200);
+        assertThat(invoke(path, "192.0.2.13").getStatus()).isEqualTo(429);
     }
 
     private MockHttpServletResponse invoke(String path, String remoteAddress) throws Exception {

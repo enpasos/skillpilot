@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
   registerAppResource,
   registerAppTool,
@@ -21,7 +21,7 @@ const moduleDir = dirname(fileURLToPath(import.meta.url));
 function coachOutputSchema(contract) {
   const description = contract.schemaDescriptions.coachOutput;
   return {
-    locale: z.enum(["de", "en"]).describe(description.locale),
+    communicationLocale: z.enum(["de", "en"]).describe(description.communicationLocale),
     revision: z.number().int().nonnegative().describe(description.revision),
     phase: z
       .enum(["not-started", "scope-choice", "practice", "awaiting-evaluation", "feedback"])
@@ -63,31 +63,27 @@ function toolMeta(tool, ui = undefined) {
   };
 }
 
-function coachReply(state, contract, { includePrivateMeta = true } = {}) {
+function coachReply(state, catalog, { includePrivateMeta = true } = {}) {
   return {
-    content: [{ type: "text", text: visibleSummary(state, contract) }],
-    structuredContent: publicCoachState(state, contract),
-    ...(includePrivateMeta ? { _meta: privateWidgetMeta(state, contract) } : {})
+    content: [{ type: "text", text: visibleSummary(state, catalog) }],
+    structuredContent: publicCoachState(state, catalog),
+    ...(includePrivateMeta ? { _meta: privateWidgetMeta(state, catalog) } : {})
   };
 }
 
-function errorReply(error, contract) {
+function errorReply(error, catalog) {
   const expected = error instanceof CoachConflictError || error instanceof CoachInputError;
-  const text = expected
-    ? error.message
-    : contract.locale === "de"
-      ? "Der SkillPilot-Lerncoach konnte die Aktion nicht ausführen."
-      : "The SkillPilot learning coach could not complete the action.";
+  const text = expected ? error.message : catalog.genericError;
   if (!expected) console.error("Unexpected coach tool error", error);
   return { isError: true, content: [{ type: "text", text }] };
 }
 
-async function widgetHtml(contract) {
-  return readFile(join(moduleDir, "../dist", contract.locale, "widget.html"), "utf8");
+async function widgetHtml(catalog) {
+  return readFile(join(moduleDir, "../dist", catalog.locale, "widget.html"), "utf8");
 }
 
 function widgetResourceMeta(contract) {
-  const variableName = `SKILLPILOT_WIDGET_DOMAIN_${contract.locale.toUpperCase()}`;
+  const variableName = "SKILLPILOT_WIDGET_DOMAIN";
   const configuredDomain = process.env[variableName]?.trim() || contract.widgetDomain;
   const parsedDomain = new URL(configuredDomain);
   if (
@@ -109,59 +105,19 @@ function widgetResourceMeta(contract) {
   return {
     ui,
     "openai/widgetDescription":
-      contract.locale === "de"
-        ? "Interaktive SkillPilot-Lernkarte für Kurswahl, Aufgabe, Einreichung und Feedback."
-        : "Interactive SkillPilot learning card for course selection, practice, submission, and feedback.",
+      "Interactive SkillPilot learning card for course selection, practice, submission, and feedback.",
     "openai/widgetPrefersBorder": true,
     "openai/widgetCSP": { connect_domains: [], resource_domains: [] },
     "openai/widgetDomain": domain
   };
 }
 
-function widgetResourceDescription(contract) {
-  return contract.locale === "de"
-    ? "Interaktive Oberfläche des deutschen SkillPilot-Lerncoachs."
-    : "Interactive interface for the English SkillPilot learning coach.";
+function widgetResourceDescription() {
+  return "Interactive interface for the SkillPilot learning coach.";
 }
 
-function registerLegacyWidgetResources(server, contract, html) {
-  const legacyUris = new Set(contract.legacyResourceUris ?? []);
-  if (legacyUris.size === 0) return;
-
-  const current = new URL(contract.resourceUri);
-  const template = new ResourceTemplate(
-    `${current.protocol}//${current.host}/{file}`,
-    { list: undefined }
-  );
-  server.registerResource(
-    `${contract.resourceName}-legacy-aliases`,
-    template,
-    {
-      title: `${contract.appName} legacy widget aliases`,
-      description: widgetResourceDescription(contract),
-      mimeType: RESOURCE_MIME_TYPE,
-      _meta: widgetResourceMeta(contract)
-    },
-    async (uri) => {
-      if (!legacyUris.has(uri.href)) {
-        throw new Error(`Unknown SkillPilot widget resource: ${uri.href}`);
-      }
-      return {
-        contents: [
-          {
-            uri: uri.href,
-            mimeType: RESOURCE_MIME_TYPE,
-            text: html,
-            _meta: widgetResourceMeta(contract)
-          }
-        ]
-      };
-    }
-  );
-}
-
-export async function createCoachMcpServer(contract, store) {
-  const html = await widgetHtml(contract);
+export async function createCoachMcpServer(contract, catalog, store) {
+  const html = await widgetHtml(catalog);
   const outputSchema = coachOutputSchema(contract);
   const inputDescription = contract.schemaDescriptions.input;
   const pendingDescription = contract.schemaDescriptions.pendingOutput;
@@ -190,8 +146,6 @@ export async function createCoachMcpServer(contract, store) {
       ]
     })
   );
-  registerLegacyWidgetResources(server, contract, html);
-
   registerAppTool(
     server,
     contract.tools.open.name,
@@ -217,9 +171,9 @@ export async function createCoachMcpServer(contract, store) {
     },
     async ({ learning_request }) => {
       try {
-        return coachReply(await store.open(contract, learning_request), contract);
+        return coachReply(await store.open(catalog, learning_request), catalog);
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );
@@ -241,9 +195,9 @@ export async function createCoachMcpServer(contract, store) {
     },
     async ({ sessionRef, choiceRef }) => {
       try {
-        return coachReply(await store.choose(contract, sessionRef, choiceRef), contract);
+        return coachReply(await store.choose(catalog, sessionRef, choiceRef), catalog);
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );
@@ -267,11 +221,11 @@ export async function createCoachMcpServer(contract, store) {
     async ({ sessionRef, answer, idempotencyKey }) => {
       try {
         return coachReply(
-          await store.submit(contract, sessionRef, answer, idempotencyKey),
-          contract
+          await store.submit(catalog, sessionRef, answer, idempotencyKey),
+          catalog
         );
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );
@@ -284,7 +238,9 @@ export async function createCoachMcpServer(contract, store) {
       description: contract.tools.pending.description,
       inputSchema: {},
       outputSchema: {
-        locale: z.enum(["de", "en"]).describe(pendingDescription.locale),
+        communicationLocale: z
+          .enum(["de", "en"])
+          .describe(pendingDescription.communicationLocale),
         task: z.string().describe(pendingDescription.task),
         learnerAnswer: z.string().describe(pendingDescription.learnerAnswer),
         courseLabel: z.string().nullable().describe(pendingDescription.courseLabel),
@@ -296,14 +252,14 @@ export async function createCoachMcpServer(contract, store) {
     },
     async () => {
       try {
-        const state = await store.pending(contract);
-        const payload = pendingSubmissionForModel(state, contract);
+        const state = await store.pending(catalog);
+        const payload = pendingSubmissionForModel(state, catalog);
         return {
           content: [{ type: "text", text: JSON.stringify(payload) }],
           structuredContent: payload
         };
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );
@@ -329,16 +285,16 @@ export async function createCoachMcpServer(contract, store) {
     async ({ score, feedback }) => {
       try {
         return coachReply(
-          await store.evaluate(contract, {
+          await store.evaluate(catalog, {
             score,
             maxScore: 2,
             passed: score >= 1.5,
             feedback
           }),
-          contract
+          catalog
         );
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );
@@ -357,9 +313,9 @@ export async function createCoachMcpServer(contract, store) {
     },
     async () => {
       try {
-        return coachReply(await store.current(contract), contract, { includePrivateMeta: false });
+        return coachReply(await store.current(catalog), catalog, { includePrivateMeta: false });
       } catch (error) {
-        return errorReply(error, contract);
+        return errorReply(error, catalog);
       }
     }
   );

@@ -4,7 +4,12 @@
 
 SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
-> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT plugin line **SkillPilot Coach DE v1** at `https://mcp-coach-de-v1.skillpilot.com/mcp`, with OAuth/MCP and a separate learning-session ID valid for exactly 24 hours. SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. The reserved English MCP hosts still return `404`; Visible Session is retained for English and as a rollback path and is not the current German architecture.
+> **Architecture status:** German, English, and every later supported interaction
+> language use the same ChatGPT plugin line **SkillPilot Coach v1** at
+> `https://mcp-coach-v1.skillpilot.com/mcp`. SkillPilot creates a fresh learning
+> session for every explicit UI start and pins the interaction language in that
+> session. Plugin instructions and tool metadata are neutral English; all
+> learner-facing backend payloads and coach replies use the session language.
 
 All you need is a browser and a ChatGPT account for which the required GPT or app is available. Availability and usage limits are controlled by ChatGPT.
 
@@ -18,7 +23,9 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 2. Click **Login**.
 3. Accept the notice and choose your login path: create a new SkillPilot ID, load a protected ID file, or enter an existing SkillPilot ID.
 4. Choose your curriculum and click **Start SkillPilot Learning Coach** or **Open Cockpit**.
-5. In the ChatGPT window, send the prepared session message unchanged. It contains a visible session token valid for no more than 24 hours, but not your permanent SkillPilot ID.
+5. In the ChatGPT window, send the prepared session message unchanged. The first
+   time, connect **SkillPilot Coach v1** once. The message contains a learning
+   session valid for exactly 24 hours, but not your permanent SkillPilot ID.
 
 ---
 
@@ -30,11 +37,18 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 
 ---
 
-## Four Important Terms
+## Five Important Terms
 
 **SkillPilot ID:** Your permanent key to your learning progress. You can enter it directly or save it as a password-protected ID file.
 
-**Chat session token (English fallback only):** A temporary key with the prefix `sps_` that SkillPilot creates for the English Visible Session flow. It is visible in the start message and the final footer line of coach responses, and expires after no more than 24 hours. Do not share a live token publicly.
+**OAuth connection:** The one-time, revocable connection between the SkillPilot
+V1 App and the backend. It authorizes the approved App but does not select a
+learner state.
+
+**Learning session:** A random reference valid for exactly 24 hours for the
+learner state and interaction language selected when you click **Start
+learning**. SkillPilot places it in the prepared message automatically; you do
+not copy or manage it.
 
 **Learning goal ID:** A stable, globally unique identifier for a learning goal. It may be visible and makes a goal unambiguous; it is not an access credential.
 
@@ -56,7 +70,12 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 | --- |
 | *To learn, log in from the homepage. It costs nothing and you do not need to register with a name or email address.* |
 
-SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. In the current English fallback, starting the English learning coach creates a temporary visible chat session. The permanent SkillPilot ID stays in the browser and backend; ChatGPT sees only the session token, which expires after no more than 24 hours. The current German OAuth/MCP app uses its own separate learning-session ID valid for exactly 24 hours: SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. The learner does not copy or manage it.
+SkillPilot stores your learning progress under a pseudonymous SkillPilot ID.
+Starting the learning coach creates a separate learning-session ID valid for
+exactly 24 hours. The permanent SkillPilot ID stays in the browser and backend;
+SkillPilot puts the temporary learning session into the prepared start message,
+and the coach carries it into every functional tool call. You do not copy or
+manage it.
 
 ---
 
@@ -80,21 +99,23 @@ You have three options:
 
 After login, choose your curriculum. Then you can start the SkillPilot Learning Coach directly or open your cockpit first.
 
-When you start the English fallback coach, SkillPilot creates a chat session valid for no more than 24 hours and opens ChatGPT with a prepared message. The temporary session token is visible in it. The permanent SkillPilot ID stays with SkillPilot and is not copied into the chat.
+When you start the coach, SkillPilot creates a learning session valid for
+exactly 24 hours, pins the selected interaction language, and opens ChatGPT with
+a prepared message. The permanent SkillPilot ID stays with SkillPilot and is
+not copied into the chat.
 
 ---
 
 ## 4) Start the Learning Coach in ChatGPT
 
-Send the prepared session message unchanged. The SkillPilot Learning Coach uses it to load your current learning state from the backend. There is no additional start code or redemption step.
+Send the prepared session message unchanged. The SkillPilot Learning Coach uses
+it to load your current learning state and session language from the backend.
+There is no additional start code or redemption step.
 
-After that, continue working normally in chat: ask questions, work on tasks, upload photos, or enter text by dictation. Every normal coach response ends with a compact line such as:
-
-```text
-— SkillPilot · Session: sps_...
-```
-
-While a goal is active, that line also contains its full learning goal ID. This technical footer is intentional: it carries the current session and goal reliably into the next dialog step. Do not edit it. When the coach needs a choice, it displays numbered options; simply reply with the relevant number.
+After that, continue working normally in chat: ask questions, work on tasks,
+upload photos, or enter text by dictation. When the coach needs a choice, it
+displays the available options; technical selection references remain managed
+by the backend.
 
 ---
 
@@ -154,11 +175,11 @@ SkillPilot checks not only definitions but also application and transfer. You ca
 
 ### Does ChatGPT See My SkillPilot ID?
 
-No. Your permanent SkillPilot ID stays in the browser and with SkillPilot. In the English Visible Session fallback, ChatGPT sees only the temporary session token and the learning information needed for the current coaching dialog. The current German OAuth/MCP integration likewise uses only a separate temporary learning-session ID, inserted automatically into the prepared start message and carried into every functional tool call.
-
-### Why Does Every Coach Response End With a Technical SkillPilot Footer?
-
-This footer belongs to the English Visible Session fallback. It carries the temporary session token and, while a goal is active, the unambiguous learning goal ID visibly across turns. While the token is still valid, do not publicly share the chat or screenshots containing that line. The current German OAuth/MCP app does not use this response footer; its own short-lived learning-session ID is transported automatically in the prepared start message and as an explicit argument of every functional tool call.
+No. Your permanent SkillPilot ID stays in the browser and with SkillPilot.
+ChatGPT receives only the temporary learning-session ID and the learning
+information needed for the current coaching dialog. The session ID is inserted
+automatically into the prepared start message and carried into every functional
+tool call.
 
 ### Do I Need ChatGPT Plus?
 

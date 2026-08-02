@@ -48,11 +48,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "skillpilot.claude.mcp.enabled=true",
         "skillpilot.claude.mcp.coach-enabled=false",
         "skillpilot.claude.mcp.regression-enabled=true",
-        "skillpilot.openai.coach.de.v1.enabled=true",
+        "skillpilot.openai.coach.v1.enabled=true",
         "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
-        "skillpilot.openai.coach.de.v1.server-build=test-build",
-        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-        "skillpilot.openai.coach.de.v1.mcp.enabled=true"
+        "skillpilot.openai.coach.v1.server-build=test-build",
+        "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.mcp.enabled=true"
 })
 class McpProviderIsolationTransportTest {
 
@@ -131,7 +131,7 @@ class McpProviderIsolationTransportTest {
 
     private static McpStatelessServerFeatures.SyncToolSpecification openAiTool() {
         McpSchema.Tool tool = McpSchema.Tool.builder("openai_de_native")
-                .description("German OpenAI test tool")
+                .description("OpenAI Coach V1 test tool")
                 .inputSchema(Map.of(
                         "type", "object",
                         "properties", Map.of(),
@@ -143,13 +143,13 @@ class McpProviderIsolationTransportTest {
                         "additionalProperties", false))
                 .meta(Map.of("securitySchemes", List.of(Map.of(
                         "type", "oauth2",
-                        "scopes", List.of("skillpilot.openai.de.read")))))
+                        "scopes", List.of("skillpilot.openai.v1.read")))))
                 .build();
         return McpStatelessServerFeatures.SyncToolSpecification.builder()
                 .tool(tool)
                 .callHandler((context, request) -> McpSchema.CallToolResult.builder()
                         .isError(false)
-                        .addTextContent("German OpenAI result")
+                        .addTextContent("OpenAI Coach V1 result")
                         .structuredContent(Map.of("locale", "de"))
                         .build())
                 .build();
@@ -193,7 +193,7 @@ class McpProviderIsolationTransportTest {
         @Bean
         OpenAiDeV1McpContractAdapter openAiDeCoachMcpContract() {
             OpenAiDeV1McpContractAdapter contract = mock(OpenAiDeV1McpContractAdapter.class);
-            when(contract.serverInstructions()).thenReturn("German OpenAI test instructions");
+            when(contract.serverInstructions()).thenReturn("OpenAI Coach V1 test instructions");
             when(contract.toolSpecifications()).thenReturn(List.of(openAiTool()));
             when(contract.resourceSpecifications()).thenReturn(List.of());
             return contract;

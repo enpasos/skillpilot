@@ -14,9 +14,9 @@ import org.springframework.boot.health.contributor.Health;
 import org.springframework.boot.health.contributor.HealthIndicator;
 import org.springframework.stereotype.Component;
 
-/** Readiness contribution for the German OpenAI MCP provider boundary. */
+/** Readiness contribution for the OpenAI Coach V1 MCP provider boundary. */
 @Component("openAiDeCoach")
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
@@ -33,7 +33,7 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
             OpenAiDeProperties properties,
             Optional<OpenAiDeV1McpContractAdapter> contract,
             Optional<OpenAiDeCurriculumRevisionProvider> curriculumRevisionProvider,
-            @Value("${skillpilot.openai.coach.de.v1.mcp.enabled:false}") boolean mcpEnabled) {
+            @Value("${skillpilot.openai.coach.v1.mcp.enabled:false}") boolean mcpEnabled) {
         this.properties = properties;
         this.contractAvailable = contract.isPresent();
         this.contractToolCount = contract.map(value -> value.toolSpecifications().size()).orElse(0);
@@ -95,7 +95,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
         Health.Builder health = ready ? Health.up() : Health.down();
         health.withDetail("provider", "openai")
-                .withDetail("locale", "de")
+                .withDetail("localeBinding", "learning-session")
+                .withDetail("communicationLanguages", List.of("de", "en"))
                 .withDetail("pluginLine", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)
                 .withDetail("pluginVersion", OpenAiDeV1ContractMetadata.PLUGIN_VERSION)
                 .withDetail("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)

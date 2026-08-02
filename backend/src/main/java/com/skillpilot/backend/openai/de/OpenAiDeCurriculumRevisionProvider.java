@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * ledgers are deliberately excluded.
  */
 @Component
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public final class OpenAiDeCurriculumRevisionProvider {
 
     private static final byte[] DOMAIN =
@@ -42,7 +42,7 @@ public final class OpenAiDeCurriculumRevisionProvider {
         String expected = trimToNull(openAiProperties.getCurriculumRevision());
         if (expected != null && !expected.equals(derived)) {
             throw new IllegalStateException(
-                    "Configured OpenAI-DE curriculum revision does not match the loaded runtime: expected "
+                    "Configured OpenAI Coach V1 curriculum revision does not match the loaded runtime: expected "
                             + expected + " but derived " + derived + ".");
         }
         this.currentRevision = derived;
@@ -56,7 +56,7 @@ public final class OpenAiDeCurriculumRevisionProvider {
         Path normalizedRoot = root.toAbsolutePath().normalize();
         if (!Files.isDirectory(normalizedRoot)) {
             throw new IllegalStateException(
-                    "Cannot derive OpenAI-DE curriculum revision: directory is missing: "
+                    "Cannot derive OpenAI Coach V1 curriculum revision: directory is missing: "
                             + normalizedRoot);
         }
         try {
@@ -70,7 +70,7 @@ public final class OpenAiDeCurriculumRevisionProvider {
             }
             if (inputs.isEmpty()) {
                 throw new IllegalStateException(
-                        "Cannot derive OpenAI-DE curriculum revision: no runtime JSON inputs in "
+                        "Cannot derive OpenAI Coach V1 curriculum revision: no runtime JSON inputs in "
                                 + normalizedRoot);
             }
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -93,10 +93,10 @@ public final class OpenAiDeCurriculumRevisionProvider {
             return "curricula-sha256@" + HexFormat.of().formatHex(digest.digest());
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "Could not read curriculum inputs for the OpenAI-DE revision.", exception);
+                    "Could not read curriculum inputs for the OpenAI Coach V1 revision.", exception);
         } catch (Exception exception) {
             throw new IllegalStateException(
-                    "Could not derive the OpenAI-DE curriculum revision.", exception);
+                    "Could not derive the OpenAI Coach V1 curriculum revision.", exception);
         }
     }
 

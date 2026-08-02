@@ -216,7 +216,7 @@ public class ClaudeOAuthConfiguration {
         org.springframework.security.web.util.matcher.RequestMatcher endpointsMatcher =
                 authorizationServer.getEndpointsMatcher();
         http.securityMatcher(request -> endpointsMatcher.matches(request)
-                        && !"/.well-known/oauth-authorization-server/api/openai/de"
+                        && !"/.well-known/oauth-authorization-server/api/openai/v1"
                                 .equals(request.getRequestURI()))
                 .with(authorizationServer, server -> server
                         .registeredClientRepository(registeredClientRepository)

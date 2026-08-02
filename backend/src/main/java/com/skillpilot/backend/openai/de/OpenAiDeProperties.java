@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/** Provider- and locale-specific settings for the German ChatGPT MCP app. */
-@ConfigurationProperties(prefix = "skillpilot.openai.coach.de.v1")
+/** Provider-specific settings for the language-neutral OpenAI Coach V1 MCP app. */
+@ConfigurationProperties(prefix = "skillpilot.openai.coach.v1")
 public class OpenAiDeProperties {
 
     private boolean enabled;
@@ -157,7 +157,7 @@ public class OpenAiDeProperties {
     }
 
     /**
-     * Fail-closed OAuth and provider baseline for the OpenAI-DE boundary.
+     * Fail-closed OAuth and provider baseline for the OpenAI Coach V1 boundary.
      *
      * <p>Every normally activated provider instance must satisfy all secure-mode
      * invariants before the application starts. Isolated component tests must load
@@ -340,7 +340,7 @@ public class OpenAiDeProperties {
         }
 
         /**
-         * Exact former OpenAI-DE public-client IDs that may be removed during
+         * Exact former OpenAI Coach V1 public-client IDs that may be removed during
          * an explicit switch to a different configured client.
          *
          * <p>The list is deliberately empty by default. A configured entry is

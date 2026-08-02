@@ -1,15 +1,15 @@
-function choiceFor(state, contract) {
-  return contract.copy.choices.find((choice) => choice.code === state.courseCode) || null;
+function choiceFor(state, catalog) {
+  return catalog.copy.choices.find((choice) => choice.code === state.courseCode) || null;
 }
 
-export function publicCoachState(state, contract) {
+export function publicCoachState(state, catalog) {
   if (!state) {
     return {
-      locale: contract.locale,
+      communicationLocale: catalog.locale,
       revision: 0,
       phase: "not-started",
-      title: contract.copy.scopeTitle,
-      summary: contract.copy.emptyContext,
+      title: catalog.copy.scopeTitle,
+      summary: catalog.copy.emptyContext,
       prompt: null,
       choices: [],
       answerLabel: null,
@@ -23,9 +23,9 @@ export function publicCoachState(state, contract) {
     };
   }
 
-  const course = choiceFor(state, contract);
+  const course = choiceFor(state, catalog);
   const common = {
-    locale: contract.locale,
+    communicationLocale: catalog.locale,
     revision: state.revision,
     phase: state.phase,
     choices: [],
@@ -42,38 +42,38 @@ export function publicCoachState(state, contract) {
   if (state.phase === "scope-choice") {
     return {
       ...common,
-      title: contract.copy.scopeTitle,
-      summary: contract.copy.scopeSummary,
-      prompt: contract.copy.scopePrompt,
-      choices: contract.copy.choices.map(({ label, detail }) => ({ label, detail }))
+      title: catalog.copy.scopeTitle,
+      summary: catalog.copy.scopeSummary,
+      prompt: catalog.copy.scopePrompt,
+      choices: catalog.copy.choices.map(({ label, detail }) => ({ label, detail }))
     };
   }
 
   if (state.phase === "practice") {
     return {
       ...common,
-      title: contract.copy.practiceTitle,
-      summary: contract.copy.practiceSummary,
-      prompt: contract.copy.practicePrompt,
-      answerLabel: contract.copy.answerLabel,
-      answerPlaceholder: contract.copy.answerPlaceholder,
-      submitLabel: contract.copy.submitLabel
+      title: catalog.copy.practiceTitle,
+      summary: catalog.copy.practiceSummary,
+      prompt: catalog.copy.practicePrompt,
+      answerLabel: catalog.copy.answerLabel,
+      answerPlaceholder: catalog.copy.answerPlaceholder,
+      submitLabel: catalog.copy.submitLabel
     };
   }
 
   if (state.phase === "awaiting-evaluation") {
     return {
       ...common,
-      title: contract.copy.awaitingTitle,
-      summary: contract.copy.awaitingSummary,
+      title: catalog.copy.awaitingTitle,
+      summary: catalog.copy.awaitingSummary,
       prompt: null
     };
   }
 
   return {
     ...common,
-    title: contract.copy.feedbackTitle,
-    summary: contract.copy.practiceSummary,
+    title: catalog.copy.feedbackTitle,
+    summary: catalog.copy.practiceSummary,
     prompt: null,
     feedback: state.evaluation?.feedback || null,
     score: state.evaluation?.score ?? null,
@@ -82,11 +82,11 @@ export function publicCoachState(state, contract) {
   };
 }
 
-export function privateWidgetMeta(state, contract) {
+export function privateWidgetMeta(state, catalog) {
   if (!state) return {};
   const choiceRefs =
     state.phase === "scope-choice"
-      ? contract.copy.choices.map((choice) => state.optionRefs[choice.code])
+      ? catalog.copy.choices.map((choice) => state.optionRefs[choice.code])
       : [];
   return {
     skillpilotApp: {
@@ -96,31 +96,26 @@ export function privateWidgetMeta(state, contract) {
   };
 }
 
-export function pendingSubmissionForModel(state, contract) {
-  const course = choiceFor(state, contract);
+export function pendingSubmissionForModel(state, catalog) {
+  const course = choiceFor(state, catalog);
   return {
-    locale: contract.locale,
-    task: contract.copy.practicePrompt,
+    communicationLocale: catalog.locale,
+    task: catalog.copy.practicePrompt,
     learnerAnswer: state.submission.answer,
     courseLabel: course?.label || null,
-    gradingInstruction:
-      contract.locale === "de"
-        ? "Bewerte fachlich korrekt und akzeptiere jeden mathematisch äquivalenten Lösungsweg. Maximal 2 Punkte."
-        : "Grade for subject-matter correctness and accept every mathematically equivalent solution path. Maximum 2 points."
+    gradingInstruction: catalog.copy.gradingInstruction
   };
 }
 
-export function visibleSummary(state, contract) {
-  const view = publicCoachState(state, contract);
+export function visibleSummary(state, catalog) {
+  const view = publicCoachState(state, catalog);
   if (view.phase === "not-started") return view.summary;
   if (view.phase === "scope-choice") return view.summary;
   if (view.phase === "practice") {
-    return contract.locale === "de"
-      ? `${view.courseLabel} ist gewählt. Die nächste Aufgabe ist bereit.`
-      : `${view.courseLabel} is selected. The next task is ready.`;
+    return catalog.copy.practiceReady.replace("{course}", view.courseLabel ?? "");
   }
   if (view.phase === "awaiting-evaluation") return view.summary;
-  return contract.locale === "de"
-    ? `Bewertung gespeichert: ${view.score} von ${view.maxScore} Punkten.`
-    : `Evaluation stored: ${view.score} of ${view.maxScore} points.`;
+  return catalog.copy.evaluationStored
+    .replace("{score}", String(view.score))
+    .replace("{maxScore}", String(view.maxScore));
 }

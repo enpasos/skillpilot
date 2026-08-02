@@ -81,12 +81,12 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")
-                || requestUri.startsWith("/api/openai/de/oauth")
+                || requestUri.startsWith("/api/openai/v1/oauth")
                 // The provider-start body carries a typed learner goal/curriculum
                 // intent. It is not a credential, but it is still learner data and
                 // therefore stays out of the generic request-body log.
                 || (requestUri.startsWith("/api/ui/learners/")
-                        && requestUri.contains("/openai/de/"))) {
+                        && requestUri.contains("/openai/v1/"))) {
             filterChain.doFilter(request, response);
             return;
         }

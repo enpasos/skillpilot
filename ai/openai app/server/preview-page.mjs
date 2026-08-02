@@ -2,32 +2,20 @@ function escapeJson(value) {
   return JSON.stringify(value).replaceAll("<", "\\u003c");
 }
 
-export function previewPage(contract) {
+export function previewPage(contract, catalog) {
   const config = {
-    locale: contract.locale,
+    locale: catalog.locale,
     appName: contract.appName,
     mcpPath: contract.mcpPath,
     openTool: contract.tools.open.name,
     pendingTool: contract.tools.pending.name,
     evaluateTool: contract.tools.evaluate.name,
-    resetPath: `/preview/${contract.locale}/reset`,
-    initialRequest:
-      contract.locale === "de"
-        ? "Ich möchte Mathematik in der Oberstufe in Hessen lernen."
-        : "I want to learn upper-secondary mathematics in Hesse.",
-    resetLabel: contract.locale === "de" ? "Prototyp zurücksetzen" : "Reset prototype",
-    correctFeedback:
-      contract.locale === "de"
-        ? "Richtig. Aus 3(x − 2) = 15 folgt x − 2 = 5 und damit x = 7. Dein Lösungsweg darf selbstverständlich anders formuliert sein."
-        : "Correct. From 3(x − 2) = 15 we get x − 2 = 5 and therefore x = 7. Your method may of course be worded differently.",
-    partialFeedback:
-      contract.locale === "de"
-        ? "Dein Ansatz wurde berücksichtigt, aber x = 7 ist noch nicht eindeutig hergeleitet. Prüfe besonders das Teilen durch 3 und das anschließende Addieren von 2."
-        : "Your approach was considered, but x = 7 was not yet derived clearly. Check the division by 3 and the subsequent addition of 2."
+    resetPath: `/preview/${catalog.locale}/reset`,
+    ...catalog.preview
   };
 
   return `<!doctype html>
-<html lang="${contract.locale}">
+<html lang="${catalog.locale}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -39,8 +27,8 @@ export function previewPage(contract) {
 <body>
   <main class="shell">
     <header class="head"><div><div class="tag">MCP Apps host simulation</div><h1>${contract.appName}</h1></div><div class="actions"><span class="badge">local · no model API</span><button class="reset" id="reset" type="button"></button></div></header>
-    <iframe id="app" title="${contract.appName}" src="/preview/${contract.locale}/widget"></iframe>
-    <section class="trace"><strong>${contract.locale === "de" ? "Simulierter Provider-Ablauf" : "Simulated provider flow"}</strong><ol id="events"></ol></section>
+    <iframe id="app" title="${contract.appName}" src="/preview/${catalog.locale}/widget"></iframe>
+    <section class="trace"><strong>${catalog.locale === "de" ? "Simulierter Provider-Ablauf" : "Simulated provider flow"}</strong><ol id="events"></ol></section>
   </main>
   <script>
     const config=${escapeJson(config)};
@@ -52,7 +40,7 @@ export function previewPage(contract) {
     const send=(message)=>frame.contentWindow.postMessage(message,'*');
     const respond=(id,result,error)=>send({jsonrpc:'2.0',id,...(error?{error}:{result})});
     async function callMcp(method,params={}){
-      const response=await fetch(config.mcpPath,{method:'POST',headers:{'content-type':'application/json','accept':'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:++rpcId,method,params})});
+      const response=await fetch(config.mcpPath,{method:'POST',headers:{'content-type':'application/json','accept':'application/json, text/event-stream','x-skillpilot-demo-locale':config.locale},body:JSON.stringify({jsonrpc:'2.0',id:++rpcId,method,params})});
       const payload=await response.json();
       if(payload.error)throw new Error(payload.error.message||'MCP request failed');
       return payload.result;

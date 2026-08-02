@@ -1,7 +1,7 @@
 package com.skillpilot.backend.api;
 
 /**
- * Provider-specific launch request for the German OpenAI MCP coach.
+ * Provider-specific launch request for the language-neutral OpenAI MCP coach.
  *
  * <p>The request deliberately has no free-form prompt field. Special launch
  * flows cross the browser/backend boundary only as a small, validated intent
@@ -13,7 +13,7 @@ package com.skillpilot.backend.api;
  * persisted as learner data.</p>
  */
 public record OpenAiDeCoachStartRequest(
-        String language,
+        String communicationLocale,
         String client,
         String selectedCurriculum,
         Boolean providerEligibilityConfirmed,

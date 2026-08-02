@@ -33,7 +33,7 @@ import {
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
   repositoryRoot,
-  "ai/openai plugin/skillpilot-coach-de-v1",
+  "ai/openai plugin/skillpilot-coach-v1",
 );
 const manifest = readJson(resolve(pluginRoot, ".codex-plugin/plugin.json"));
 const line = readJson(resolve(pluginRoot, "release/line.json"));
@@ -227,7 +227,7 @@ function buildCandidate(output) {
     [
       "-p",
       resolve(repositoryRoot, "backend"),
-      "exportOpenAiDeV1Contract",
+      "exportOpenAiCoachV1Contract",
       `-PoutputDir=${contractOutput}`,
     ],
     repositoryRoot,

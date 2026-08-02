@@ -2,37 +2,38 @@
 
 **Stand:** 31. Juli 2026
 
-**Status:** Die deutsche MCP-App mit chat-first Coach-Vertrag und einer
-read-only Lernzielvisualisierungs-UI ist der aktuelle deutsche Architekturpfad
-und im Spring-Boot-Fachkern integriert. Die App authentisiert sich mit genau
+**Status:** Die mehrsprachige MCP-App mit chat-first Coach-Vertrag und einer
+read-only Lernzielvisualisierungs-UI ist der aktuelle Architekturpfad und im
+Spring-Boot-Fachkern integriert. Die App authentisiert sich mit genau
 einem fest konfigurierten vertraulichen OAuth-Client über
 `client_secret_basic`; Authorization Code, PKCE S256, exakte Callback-URI,
 Resource/Audience und Scopes begrenzen den Vertrag. Jede erste
 SkillPilot-Handlung **Lernen starten** erzeugt davon unabhängig eine neue,
 exakt 24 Stunden gültige Lernsession. Ihre Referenz wird automatisch in die
 vorbereitete Startnachricht und anschließend in jeden fachlichen MCP-Aufruf
-übernommen. Visible Session ist nur Rollback beziehungsweise möglicher
-englischer Übergang. Interaktive Auswahl-/Abgabewidgets und die englische App
-folgen erst nach stabiler deutscher Freigabe. Das geschärfte Distributionsziel
-ist je Sprache ein Plugin,
-das einen fokussierten Coach-Skill mit dem direkt zur Prüfung eingereichten
-sprachspezifischen MCP-Server verbindet. Die zur Veröffentlichung vorgesehene
-deutsche Linie heißt **SkillPilot Coach DE v1**. Das versionierte Quellpaket liegt unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
+übernommen. Visible Session ist nur Rollback. Interaktive Auswahl- und
+Abgabewidgets folgen erst nach stabiler Freigabe. Das geschärfte
+Distributionsziel ist genau ein Plugin je Contract-Major. Es verbindet einen
+neutral englisch formulierten Coach-Skill mit dem direkt zur Prüfung
+eingereichten MCP-Server. Die Interaktionssprache wird vom Backend autoritativ
+an die Lernsession gebunden und ist keine Plugin-Identität. Die zur
+Veröffentlichung vorgesehene Linie heißt **SkillPilot Coach v1**. Das
+versionierte Quellpaket liegt unter
+[`ai/openai plugin/skillpilot-coach-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-v1)
 und bindet den produktiven Endpunkt direkt über `.mcp.json` ein. Eine
-echte, vom Host erzeugte `.app.json`-Abbildung der registrierten deutschen
+echte, vom Host erzeugte `.app.json`-Abbildung der registrierten
 Pilot-App ist zusätzlich enthalten. Sie dient ausschließlich dem lokalen
 End-to-End-Test; die direkte MCP-Bindung bleibt der öffentliche Zielvertrag.
 Der Skill ist noch nicht produktiv ausgerollt; bis zu seiner
 nachgewiesenen Verhaltensparität bleiben die heutigen ausführlichen
 MCP-Server-Instruktionen die Kompatibilitätsschicht.
 
-Der konkrete DE-first-Umsetzungs-, Cutover- und Rollbackplan steht in
+Der konkrete Umsetzungs-, Cutover- und Rollbackplan steht in
 [openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
 erste vollständige Migration bleibt bewusst **chat-first**; der
 unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand enthält bereits eine eng
-begrenzte visuelle MCP-UI, während interaktive Widgets und die englische App
-erst nach stabiler deutscher Workflow-Parität folgen.
+begrenzte visuelle MCP-UI, während interaktive Widgets erst nach stabiler
+Workflow-Parität folgen.
 Für Identität, automatischen OAuth-Token-Transport, Browser-Binding und die
 davon getrennte 24h-Lernsession ist
 [openai-mcp-oauth-learner-session-architecture.md](openai-mcp-oauth-learner-session-architecture.md)
@@ -48,7 +49,7 @@ und überprüfbare Freigabekriterien.
 
 ## 1. Management Summary
 
-SkillPilot soll den deutschen Lerncoach öffentlich als **OpenAI-Plugin aus
+SkillPilot soll den Lerncoach öffentlich als **OpenAI-Plugin aus
 Coach-Skill und direkt eingereichtem MCP-Server** anbieten. Das Plugin ist der
 installierbare Distributionscontainer. Der Skill beschreibt den wiederholbaren
 Coaching-Workflow; der MCP-Server stellt Live-Daten, Authentisierung und
@@ -57,21 +58,16 @@ App-Oberfläche laufen in ChatGPT beziehungsweise später Claude; Curriculum,
 Scope, aktives Lernziel, Frontier, Mastery, Recall und Prüfungszustand bleiben
 autoritativ im SkillPilot-Backend.
 
-Langfristig werden für ChatGPT **zwei eigenständig veröffentlichte
-Plugin-Einreichungen** gebaut:
-
-- **SkillPilot Coach DE v1** mit deutschem Coach-Skill, direkt eingereichtem
-  deutschem MCP-Server, eigenem MCP-Endpunkt, deutschem Toolvertrag, einer
-  read-only Lernzielbild-Ressource und eigener Acceptance Suite;
-- **SkillPilot Coach English** mit eigenem englischen Coach-Skill, eigener
-  englischer MCP-Server-Einreichung, eigenem MCP-Endpunkt, später eigenem Widget
-  und eigener Acceptance Suite.
-
-Beide Apps dürfen dieselben internen SkillPilot-Domain-Services und zunächst auch
-denselben Deployment-Prozess verwenden. Ihre externe Oberfläche wird jedoch nicht
-zu einem sprachumschaltenden Universalvertrag zusammengelegt. Robustheit,
-getrennte Freigabe und unabhängiger Rollback sind wichtiger als die Eleganz einer
-einzigen App.
+Für ChatGPT wird **genau eine Plugin-Einreichung je Contract-Major** gebaut.
+`SkillPilot Coach v1` enthält einen neutral englischen Coach-Skill, einen direkt
+eingereichten MCP-Server, einen öffentlichen MCP-Origin, eine read-only
+Lernzielbild-Ressource und sprachübergreifende Acceptance Suites. Sämtliche
+Nutzdaten kommen bereits in der Zielsprache aus dem Backend. Der Skill weist das
+Hostmodell verbindlich an, die in der Lernsession gelieferte
+`communicationLocale` für alle sichtbaren Antworten beizubehalten. Eine neue
+Sprache ist daher eine kompatible Backend- und Acceptance-Erweiterung und keine
+neue Plugin-Identität. Unabhängiger Rollout und Rollback werden dort über eine
+neue Plugin-Linie erreicht, wo sich der öffentliche Contract-Major ändert.
 
 Terminologisch bezeichnet **MCP-App** hier das bei OpenAI registrierte
 Produkt beziehungsweise dessen Verbindung. Die technische Fähigkeitsschicht
@@ -103,7 +99,7 @@ fest bepreisten Tarif sind deshalb verbindliche Produkt-Acceptance-Gates.
 | SkillPilot bleibt fachliche Autorität. | Der Provider erhält sichere Projektionen; jede relevante Mutation wird im Backend autorisiert, validiert und persistiert. |
 | Kein Vertrauen in Chat-Kontextretention. | Zustand wird bei Bedarf frisch aus dem Backend geladen. Verdeckte Action-Ergebnisse aus früheren Turns sind keine Voraussetzung. |
 | Keine dauerhafte SkillPilot-ID beim Provider. | OAuth autorisiert die App. Eine getrennte, automatisch transportierte 24h-Lernsession adressiert den Lernenden; die permanente interne SkillPilot-ID wird weder Toolargument noch Toolergebnis. |
-| Deutsch und Englisch funktionieren solide. | Zwei getrennte Plugin-/App-Pakete mit eigenen Skills, Verträgen, Ressourcen, Tests, Veröffentlichung und Telemetrie. |
+| Deutsch, Englisch und weitere Sprachen funktionieren solide. | Ein Plugin je Contract-Major; neutrale englische Kontrollschicht, backendgebundene Interaktionssprache und sprachspezifische Acceptance-Fälle. |
 | Bestehende Arbeit bleibt reversibel. | Visible-Session- und Legacy-Custom-GPT-Quellen bleiben getrennte, unveränderte Rückfallpfade. |
 | Vollständige Lernabläufe statt Methodenparität. | Freigabe erfolgt gegen Nutzerreisen und fachliche Invarianten, nicht gegen eine 1:1-Kopie alter Endpunkte. |
 
@@ -112,31 +108,28 @@ für diese Zielarchitektur ausdrücklich **keine Primäroption**: Sie würde die
 zentrale Kosten- und Zahlungsanforderung verletzen. Ein nicht-generatives
 SkillPilot-Cockpit bleibt als robuste Degradation sinnvoll.
 
-## 3. Warum zwei Plugin-/App-Pakete statt eines Pakets mit Sprachumschaltung?
+## 3. Warum ein Plugin je Major statt eines Plugins je Sprache?
 
-Die Entscheidung betrifft die **externe Produkt- und Vertragsgrenze**, nicht die
-interne Codewiederverwendung.
+Die öffentliche Produkt- und Vertragsgrenze folgt dem Contract-Major. Sprache
+ist dagegen bereits zuverlässig Teil der backendseitig erzeugten Lernsession
+und aller fachlichen Nutzdaten.
 
-### 3.1 Gründe für zwei getrennte Pakete
+### 3.1 Gründe für die gemeinsame mehrsprachige Major-Linie
 
-1. **Eindeutigere Toolauswahl:** Namen, Beschreibungen, Beispiele und
-   Instruktionen sind vollständig in einer Sprache. Das reduziert konkurrierende
-   Werkzeuge und Fehlrouting durch das Hostmodell.
-2. **Passgenaue Benutzerführung:** Texte, didaktische Konventionen,
-   Bewertungsanweisungen und Fehlermeldungen sind keine nachträglich übersetzten
-   Varianten eines kleinsten gemeinsamen Nenners.
-3. **Getrennte Qualitätsfreigabe:** Ein deutscher Vertrag kann nicht versehentlich
-   durch eine englische Schema- oder Widgetänderung freigegeben werden.
-4. **Unabhängiger Rollout und Rollback:** Eine fehlerhafte Sprachvariante lässt
-   sich stoppen, ohne die andere aus dem Verzeichnis oder aus bestehenden
-   Verbindungen zu entfernen.
-5. **Klare Messbarkeit:** Invocation-Erfolg, Abbruch, fachliche Qualität und
-   Hostabweichungen werden pro Sprache sichtbar.
-6. **Stabile veröffentlichte Verträge:** Toolmetadaten und UI-Ressourcen sind Teil
-   des geprüften Appvertrags. Sprachspezifische Änderungen können getrennt
-   versioniert und eingereicht werden.
+1. **Keine doppelten Werkzeuge:** Das Hostmodell sieht genau einen Satz neutral
+   englisch beschriebener Tools statt konkurrierender Sprachvarianten.
+2. **Autoritative Sprachwahl:** Das Modell errät die Sprache nicht, sondern
+   übernimmt die `communicationLocale` aus dem frischen Backendkontext.
+3. **Einheitliche Fachsemantik:** Toolnamen, Schemas, Receipts und
+   Zustandsinvarianten unterscheiden sich nicht nach Sprache.
+4. **Weniger Betriebsflächen:** Ein Origin, ein OAuth-Client, ein Pluginpaket und
+   ein Spring-Boot-Prozess je Major vermeiden Konfigurationsduplikate.
+5. **Gezielte Qualitätssicherung:** Acceptance und Telemetrie bleiben nach
+   Session-Sprache auswertbar, ohne die Produktidentität zu teilen.
+6. **Passende Versionierung:** Nur inkompatible Vertragsänderungen benötigen eine
+   neue Plugin-Identität; neue oder verbesserte Sprachen nicht.
 
-### 3.2 Was trotzdem gemeinsam bleibt
+### 3.2 Was gemeinsam bleibt
 
 - Curriculum-Katalog und Composition-View-Auflösung;
 - OAuth-Appautorisierung und davon getrennte Auflösung der expliziten
@@ -144,28 +137,26 @@ interne Codewiederverwendung.
 - reine Coach-State-Projektion;
 - Scope-, Ziel-, Mastery-, Recall- und Exam-Use-Cases;
 - Idempotenz-, Receipt-, Concurrency- und Auditmechanismen;
-- fachliche Testfälle, aus denen sprachspezifische Acceptance Suites abgeleitet
-  werden;
-- Infrastruktur, sofern getrennte Endpunkte und unabhängige Rollbacks erhalten
-  bleiben.
+- fachliche Testfälle mit sprachspezifischen Acceptance-Varianten;
+- Infrastruktur und der eine Spring-Boot-Prozess.
 
 ### 3.3 Konkrete Deploymentsicht
 
-Zwei Apps verlangen nicht zwingend zwei Serverprozesse. Ein Prozess darf beide
-MCP-Endpunkte bereitstellen, solange folgende Grenzen hart bleiben:
+Ein Plugin je Major verwendet einen öffentlichen MCP-Origin und einen
+Spring-Boot-Prozess. Die Grenze lautet:
 
 ```text
-App-Registrierung DE  -> MCP-Endpunkt DE -> Vertrag DE -> Widget DE
-App-Registrierung EN  -> MCP-Endpunkt EN -> Vertrag EN -> Widget EN
-                                          \
-                                           -> gemeinsame sichere Domain-Services
+App-Registrierung V1 -> MCP-Endpunkt V1 -> Vertrag V1 -> optionale UI V1
+                              |
+                              -> Lernsession mit communicationLocale
+                              -> gemeinsame sichere Domain-Services
 ```
 
-Für ChatGPT ist das Ziel daher zwei unabhängig review- und veröffentlichbare
-Plugins. Jedes bündelt genau einen sprachspezifischen Coach-Skill mit genau
-einer registrierten sprachspezifischen MCP-App. Ob die MCP-Endpunkte auf
-demselben Origin betrieben werden, ist eine Betriebsentscheidung; Skill,
-Appregistrierung, Endpunktpfad und veröffentlichter Vertrag bleiben getrennt.
+Für ChatGPT ist das Ziel daher eine unabhängig review- und veröffentlichbare
+V1-Linie. Sie bündelt genau einen neutralen Coach-Skill mit genau einer
+registrierten MCP-App. Eine spätere inkompatible V2 erhält ihren eigenen
+Origin, OAuth-Vertrag und Lifecycle; eine weitere Sprache innerhalb von V1
+nicht.
 
 ## 4. Produkt- und Zahlungsmodell
 
@@ -175,7 +166,7 @@ Lernende Person
   |-- installiert/verbindet die SkillPilot-App beim Provider
   v
 Provider-Host (ChatGPT, später Claude)
-  |-- installiert das sprachspezifische Plugin
+  |-- installiert das Major-versionierte Plugin
   |-- lädt dessen Coach-Skill und registrierte MCP-App
   |-- stellt Modell, Chat und optionale MCP-UI bereit
   |-- ruft SkillPilot-MCP-Tools im Namen der Person auf
@@ -290,14 +281,14 @@ Claude App/MCP DE + EN -> eigener Provideradapter -> derselbe SafeCoachRuntime
 | Schicht | Verantwortung | Darf nicht |
 | --- | --- | --- |
 | Provider-Host | Modell, Chat, Skillaktivierung, Toolauswahl und Darstellung der App | fachlichen Zustand autoritativ festlegen oder Skillbefolgung garantieren |
-| Sprachspezifisches Plugin | Skill und direkt eingereichten MCP-Server als öffentliches Produkt verbinden; lokal die registrierte Verbindung referenzieren | eigenen Lernzustand oder eine zweite Fachruntime einführen |
+| Major-versioniertes Plugin | neutralen Skill und direkt eingereichten MCP-Server als öffentliches Produkt verbinden; lokal die registrierte Verbindung referenzieren | eigenen Lernzustand, eine zweite Fachruntime oder Sprachidentität einführen |
 | Coach-Skill | Coachingrolle, Dialogablauf, Toolreihenfolge, Ausgabeform und begrenzte Fehlerbehandlung | Fakten, Berechtigungen, Zustandsübergänge oder Persistenz garantieren |
-| Sprachspezifische MCP-App | lokalisierte Tools, optionale UI, Toolmetadaten, Authentisierung und Hostinteraktion | einen Universalvertrag durch Laufzeit-Sprachflags simulieren oder den Skill als Sicherheitsgrenze behandeln |
+| Mehrsprachige MCP-App | neutrale Tools, optionale UI, Toolmetadaten, Authentisierung und Hostinteraktion; sichtbare Kommunikation folgt `communicationLocale` | Sprache frei aus Hostlocale ableiten oder den Skill als Sicherheitsgrenze behandeln |
 | Provider Boundary | OAuth, Scopes, Rate Limits, sichere Projektion, Tool-zu-Use-Case-Abbildung | rohe interne DTOs oder Identitäten weiterreichen |
 | SafeCoachRuntime | freigegebene Queries und Commands, frische Revalidierung und fachliche Transaktionsgrenzen | Modellargumente als Berechtigung behandeln |
 | SkillPilot-Domain | Curriculum, Lernpfad, Mastery, Recall, Exam und Persistenz | vom Chatverlauf als Datenbank abhängen |
 
-Die deutsche Spring-Implementierung schützt die OpenAI-Pfade zusätzlich mit
+Die OpenAI-V1-Spring-Implementierung schützt die OpenAI-Pfade zusätzlich mit
 einem standardmäßig aktiven, konfigurierbaren Fixed-Window-Limit pro vom Servlet-
 Container normalisierter Clientadresse und getrennten Budgets für MCP, OAuth,
 Cockpit-Starts und Metadata. Der Produktionsproxy muss eingehende Forwarding-
@@ -311,10 +302,10 @@ Limit bleibt als zweite Barriere aktiv.
 
 ### 6.2 Versioniertes Quellpaket, lokales Wiring und öffentlicher Zielzuschnitt
 
-Das implementierte deutsche Quellpaket hat folgende Struktur:
+Das implementierte sprachneutrale V1-Quellpaket hat folgende Struktur:
 
 ```text
-ai/openai plugin/skillpilot-coach-de-v1/
+ai/openai plugin/skillpilot-coach-v1/
 ├── .codex-plugin/
 │   └── plugin.json
 ├── .app.json
@@ -323,7 +314,7 @@ ai/openai plugin/skillpilot-coach-de-v1/
 │   ├── line.json
 │   └── lifecycle.json
 └── skills/
-    └── skillpilot-coach-de-v1/
+    └── skillpilot-coach-v1/
         ├── SKILL.md
         ├── agents/
         │   └── openai.yaml
@@ -334,12 +325,12 @@ ai/openai plugin/skillpilot-coach-de-v1/
 `plugin.json` identifiziert die V1-Paketlinie und verweist auf `./skills/`,
 `./.mcp.json` sowie `./.app.json`. Die MCP-Konfiguration bindet ausschließlich
 den öffentlichen V1-Endpunkt
-`https://mcp-coach-de-v1.skillpilot.com/mcp` ein.
+`https://mcp-coach-v1.skillpilot.com/mcp` ein.
 `release/line.json` hält Contract Major, exakte OAuth-Resource und
 Zustands-/Workflowversionen maschinenlesbar zusammen;
 `release/lifecycle.json` führt den Betriebsstatus. Die zusätzliche App-Abbildung
 referenziert für den lokalen beziehungsweise Workspace-internen Pilot exakt die
-bereits registrierte deutsche ChatGPT-Verbindung. App-Alias und `asdk_app...`
+    bereits registrierte ChatGPT-Verbindung. App-Alias und `asdk_app...`
 wurden unverändert aus den hostgenerierten Registrierungsmetadaten übernommen;
 die dort separat gespeicherte `plugin_asdk_app...`-Kennung ist nicht der Wert
 für `.app.json`. `agents/openai.yaml` deklariert dieselbe MCP-Abhängigkeit und
@@ -349,7 +340,7 @@ Aktivierungspolicy werden in CI gemeinsam geprüft.
 
 Für die öffentliche Einreichung ist `.app.json` dagegen kein
 Veröffentlichungsvehikel. Im OpenAI-Portal wird **With MCP** gewählt; der
-sprachspezifische Skill und der zugehörige MCP-Server werden direkt zur Prüfung
+neutrale Skill und der zugehörige MCP-Server werden direkt zur Prüfung
 eingereicht. Das öffentliche Ziel bleibt damit funktional
 **Coach-Skill plus MCP-Server**, auch wenn das lokale Pilotpaket die registrierte
 Verbindung zusätzlich über `.app.json` referenziert.
@@ -360,7 +351,7 @@ nur die bereits sicher projizierte Visualisierung des aktiven atomaren Ziels.
 Interaktive Widgets sind davon getrennte spätere Ausbaustufen.
 
 Konkret referenziert nur das dedizierte read-only Werkzeug
-`render_skillpilot_goal_visualization_de` die versionierte Ressource
+`render_skillpilot_goal_visualization` die versionierte Ressource
 `ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`. Die optionale
 `structuredContent.goalVisualization` enthält Ziel-ID, Titel, optionale
 Beschreibung, öffentliche Bild-URL, Alttext und Cockpit-Link. Das Backend gibt
@@ -385,7 +376,7 @@ entfernen.
 
 | Regelart | Zielort | Beispiel |
 | --- | --- | --- |
-| wiederholbares Coach-Verhalten | `SKILL.md` und bei Bedarf `references/coaching-policy.md` | erst selbst lösen lassen, deutsche Dialogführung, Toolsequenz, Stoppen bei Fehlern |
+| wiederholbares Coach-Verhalten | `SKILL.md` und bei Bedarf `references/coaching-policy.md` | erst selbst lösen lassen, Dialog in `communicationLocale`, Toolsequenz, Stoppen bei Fehlern |
 | werkzeugübergreifende MCP-Invariante | kurze Server-`instructions` | `learningSessionId` unverändert weitergeben; Backendzustand nicht erfinden |
 | Bedingung genau eines Werkzeugs | Toolname, Beschreibung und Schema | Bewertung erst nach Antwort; Context vor neuem Lernschritt |
 | aktuell zustandsabhängige Anweisung | frisches Toolergebnis | offene Scope-Auswahl, Prüfungsmodus, Recall-Batch |
@@ -417,7 +408,7 @@ Bei einem Widerspruch gilt:
    der Skill kontrolliert ab und erfindet keinen Offline-Lernpfad.
 
 Bekannte Aufrufbedingungen werden nicht allein deshalb zu Garantien, weil sie
-im Skill stehen. Der deutsche MCP-Vertrag lädt deshalb vor jeder Curriculumwahl
+im Skill stehen. Der V1-MCP-Vertrag lädt deshalb vor jeder Curriculumwahl
 die aktuell veröffentlichte Optionsmenge neu und bindet alle
 Verified-Recall-Operationen an das aktuelle sichtbare aktive atomische
 Memory-/SRS-Ziel. Ob vor Mastery, Sollantwort oder Exam-Evaluation tatsächlich
@@ -537,7 +528,7 @@ Chat-Retention bleibt unnötig.
 ## 8. Produktionsauthentifizierung
 
 Der lokale Mechanik-Prototyp verwendet absichtlich `noauth`; das ist **kein**
-Produktionsmodell und nicht der deutsche Produktivvertrag.
+Produktionsmodell und nicht der mehrsprachige V1-Produktivvertrag.
 
 Produktiv wird die App per OAuth 2.1 gemäß MCP-Autorisierung angebunden:
 
@@ -617,7 +608,7 @@ kurzlebigen, kataloggebundenen Auswahlreferenzen weiter härten.
 
 ### 9.3 Commands, Concurrency und spätere Receipts
 
-Die aktuelle deutsche App revalidiert jede Mutation unter den
+Die aktuelle V1-App revalidiert jede Mutation unter den
 bestehenden fachlichen Transaktions- und Lockgrenzen. Viele Übergänge sind
 inhaltlich idempotent; ein allgemeines persistentes Command-Receipt mit
 kanonischem Request-Hash gehört jedoch ausdrücklich zur späteren Härtungsstufe.
@@ -647,8 +638,10 @@ unnötige personenbezogene Daten.
 
 ## 10. App- und Toolmuster
 
-Toolnamen, Beschreibungen, Ein-/Ausgabeschemata und Widgetressourcen sind je App
-sprachspezifisch. Intern bilden beide Verträge auf dieselben Use-Cases ab.
+Toolnamen, Beschreibungen, Ein-/Ausgabeschemata und Widgetressourcen bilden einen
+neutral englischen V1-Kontrollvertrag. Nutzertexte und fachliche Nutzdaten
+werden anhand der backendgebundenen `communicationLocale` lokalisiert. Alle
+Sprachen bilden auf dieselben Use-Cases ab.
 
 Empfohlen ist die Trennung in:
 
@@ -751,11 +744,11 @@ Standardport ist `8790`; er kann mit `PORT` geändert werden.
 
 ### 13.2 Lokale Endpunkte
 
-| Zweck | Deutsch | Englisch |
-| --- | --- | --- |
-| MCP | `http://localhost:8790/mcp/de` | `http://localhost:8790/mcp/en` |
-| lokale Hostsimulation | `http://localhost:8790/preview/de` | `http://localhost:8790/preview/en` |
-| Widgetressource | `ui://skillpilot-coach-de/coach.html` | `ui://skillpilot-coach-en/coach.html` |
+| Zweck | Neutraler V1-Vertrag |
+| --- | --- |
+| MCP | `http://localhost:8790/mcp` |
+| lokale Hostsimulation | `http://localhost:8790/preview` |
+| Widgetressource | `ui://skillpilot/coach/v1/coach.html` |
 
 Zusätzlich liefert `http://localhost:8790/health` die konfigurierten Varianten.
 Die Preview simuliert nur den Host-/Widget-Dialog; sie ist weder ChatGPT noch eine
@@ -763,8 +756,8 @@ Modellbewertung.
 
 ### 13.3 Bereits bewiesener vertikaler Slice
 
-- zwei getrennte MCP-Pfade und sprachspezifische Toolnamen;
-- zwei getrennt gebaute, selbstenthaltene Widgetartefakte;
+- ein neutraler MCP-Pfad und ein stabiler Satz neutral englischer Toolnamen;
+- ein selbstenthaltenes Widgetartefakt;
 - Kursauswahl über sichtbare Labels bei widget-internen opaken Referenzen;
 - Einreichung einer Antwort aus dem Widget;
 - modellseitiges Laden der ausstehenden Antwort und Speichern einer Bewertung;
@@ -773,9 +766,9 @@ Modellbewertung.
   `content` und `structuredContent`;
 - persistenter Demozustand unter
   `tmp/openai-mcp-app-prototype/coach-state.json`;
-- Protokoll-, Store- und Widget-Build-Tests für DE und EN.
+- Protokoll-, Store- und Widget-Build-Tests mit lokalisierten Payload-Katalogen.
 
-Die sechs aktuellen Tools jeder Variante bilden ausschließlich diesen
+Die sechs aktuellen Demo-Tools bilden ausschließlich diesen
 vertikalen Beweis ab. Ihre geringe Zahl ist **keine Behauptung vollständiger
 Workflow-Parität**.
 
@@ -784,7 +777,7 @@ Workflow-Parität**.
 Der Prototyp:
 
 - verwendet `noauth`;
-- hält nur einen Demozustand je Sprache;
+- hält nur einen Demozustand und lokalisierte Demo-Payloads;
 - ist noch nicht mit dem produktiven SkillPilot-Backend verbunden;
 - verwendet eine fest definierte Kurswahl und Übungsaufgabe;
 - implementiert noch keine mehrbenutzerfähige Concurrency- oder
@@ -800,17 +793,17 @@ Diese Lücken dürfen nicht durch Testdaten oder Promptanweisungen kaschiert wer
 
 ## 14. Implementierter produktionsnaher Spring-Pfad
 
-Der deutsche chat-first Vertrag samt read-only Zielbild-Ressource ist direkt im
-bestehenden Backend implementiert.
-Öffentlich ist er über den dedizierten DE-V1-Origin erreichbar:
+Der mehrsprachige chat-first V1-Vertrag samt read-only Zielbild-Ressource ist
+direkt im bestehenden Backend implementiert. Öffentlich ist er über den
+dedizierten V1-Origin erreichbar:
 
 ```text
-https://mcp-coach-de-v1.skillpilot.com/mcp
+https://mcp-coach-v1.skillpilot.com/mcp
   -> dedizierter TLS-vHost ohne Client-TLS
-  -> /internal/openai/de/v1/mcp auf dem loopback-gebundenen Backend
+  -> /internal/openai/v1/mcp auf dem loopback-gebundenen Backend
   -> eigener WebMvcStatelessServerTransport
   -> eigener McpStatelessSyncServer
-  -> genau zwölf OpenAI-DE-Werkzeuge
+  -> genau zwölf neutrale OpenAI-V1-Werkzeuge
   -> vertrauliche OAuth-Clientprüfung, 24h-Lernsitzungsprüfung und Write-Kill-Switch
   -> CoachToolFacade / CoachStateProjection
   -> bestehende SkillPilot-Domain und PostgreSQL
@@ -819,12 +812,12 @@ https://mcp-coach-de-v1.skillpilot.com/mcp
 Die allgemeine Spring-AI-MCP-Autokonfiguration bleibt deaktiviert. Eine eigene
 Fabrik erzeugt stattdessen je Provider einen Transport, Server, Router,
 Instructions und eine ausdrückliche Tool-Allowlist. Damit können die internen
-Handler `/internal/openai/de/v1/mcp` und `/api/claude/mcp` im selben Prozess laufen,
+Handler `/internal/openai/v1/mcp` und `/api/claude/mcp` im selben Prozess laufen,
 ohne Tools
 oder Verträge zu vermischen. Der OpenAI-Server verwendet native MCP-Ergebnisse
 mit `structuredContent`, `outputSchema`, Annotationen und Security-Metadaten.
 
-Der deutsche Vertrag umfasst:
+Der V1-Vertrag umfasst:
 
 - Kontext-Rehydration und gezielte Navigation mit unveränderter
   `learningSessionId`;
@@ -835,7 +828,7 @@ Der deutsche Vertrag umfasst:
 
 Normale Kontexte werden allowlist-basiert über die gemeinsame sichere Projektion
 erzeugt. Sie enthalten keine permanente Lernenden-ID, OAuth-Tokens oder
-vorzeitige Prüfungslösung. Ein eigener OpenAI-DE-OAuth-Issuer unterstützt einen
+vorzeitige Prüfungslösung. Ein eigener OpenAI-V1-OAuth-Issuer unterstützt einen
 exakt vorregistrierten vertraulichen Client mit `client_secret_basic`,
 Authorization Code mit PKCE `S256`, exakter Redirect- und Resource-Bindung,
 opaken rotierenden Tokens und Widerruf. Die davon getrennte Lernsession wird bei
@@ -844,10 +837,11 @@ und wird als Argument von jedem fachlichen Tool geprüft. Alle
 Schreibwerkzeuge besitzen zusätzlich einen unabhängigen, standardmäßig
 deaktivierten Runtime-Kill-Switch.
 
-Das Cockpit verwendet für Deutsch die getrennte `openai-mcp`-Variante.
-Visible Session bleibt nur der koordinierte Custom-GPT-Rollback und mögliche
-englische Übergang. Englisch wird im neuen Pfad kontrolliert abgewiesen, bis ein
-eigener Vertrag fertig und abgenommen ist.
+Das Cockpit verwendet für jede unterstützte Interaktionssprache dieselbe
+`openai-mcp`-Variante. Visible Session bleibt nur der koordinierte
+Custom-GPT-Rollback. Nicht unterstützte Sprachwerte werden bei der
+Sessionerzeugung kontrolliert abgewiesen; eine unterstützte Sprache benötigt
+keinen eigenen Appvertrag.
 
 Die App läuft im ChatGPT-Entwicklermodus. Vor einer öffentlichen Freigabe bleiben
 die sichere Clientkonfiguration, ein Reconnect auf den vertraulichen
@@ -855,21 +849,21 @@ OAuth-Clientvertrag, positive und negative Clientbindungsprüfungen,
 Langdialog- und Kompaktierungstests sowie der Tarif-/Regionsnachweis
 Release-Gates. Das
 Betriebsverfahren steht in
-[openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
+[openai-mcp-coach-v1.md](../../deploy/openai-mcp-coach-v1.md).
 
 ## 15. Veröffentlichung als OpenAI-Plugin
 
 OpenAI veröffentlicht Apps inzwischen innerhalb von Plugins. Für SkillPilot ist
 der robuste Zielzuschnitt:
 
-- die unabhängig einreichbare deutsche Linie `skillpilot-coach-de-v1` aus
-  gleichnamigem Skill und direkt eingereichtem deutschem MCP-Server
-  `https://mcp-coach-de-v1.skillpilot.com/mcp`;
-- später ein unabhängig einreichbares englisches Plugin aus eigenem
-  englischem Skill und direkt eingereichtem englischem MCP-Server;
-- jeweils ein öffentlicher HTTPS-MCP-Endpunkt, passgenaue Metadaten,
+- die unabhängig einreichbare mehrsprachige Linie `skillpilot-coach-v1` aus
+  gleichnamigem neutralem Skill und direkt eingereichtem MCP-Server
+  `https://mcp-coach-v1.skillpilot.com/mcp`;
+- für spätere inkompatible Contract-Majors eigenständige Linien statt
+  sprachspezifischer Parallelplugins;
+- ein öffentlicher HTTPS-MCP-Endpunkt pro Major, passgenaue Metadaten,
   Datenschutz-/Supportangaben, Testfälle und optional Screenshots;
-- getrennte Veröffentlichung, Telemetrie, Canary und Rollback.
+- sprachmarkierte Acceptance und Telemetrie innerhalb derselben Major-Linie.
 
 Das versionierte Quellpaket verwendet `.codex-plugin/plugin.json`, `skills/`
 und `.mcp.json`; die fachliche Skill-zu-MCP-Abhängigkeit wird zusätzlich in
@@ -882,7 +876,7 @@ abgeleitet.
 
 Bei der öffentlichen Einreichung wird diese lokale `.app.json`-Referenz nicht
 als MCP-Paket veröffentlicht. Im Portal wird **With MCP** gewählt und der
-sprachspezifische Skill zusammen mit dem zugehörigen MCP-Server direkt zur
+neutrale Skill zusammen mit dem zugehörigen MCP-Server direkt zur
 Prüfung eingereicht.
 
 Der erste Pilot verwendet eine explizite Skillauswahl und deaktiviert die
@@ -906,7 +900,7 @@ alten Vertrag später ablösen soll, erhält eine neue Plugin-Identität mit
 eigenem MCP-Origin, eigener OAuth-Resource, eigenem Skillbaum und
 eigenem Lebenszyklus. Es wird nicht als normaler Serverfix auf V1 überschrieben.
 Veröffentlichte Snapshots unter
-`contracts/published/openai/skillpilot-coach-de-v1/<version>/` bleiben
+`contracts/published/openai/skillpilot-coach-v1/<version>/` bleiben
 unveränderlich. Noch nicht veröffentlichte Arbeitsstände liegen getrennt unter
 `contracts/drafts/` und dürfen innerhalb derselben vorgesehenen Paketversion
 fortgeschrieben werden. Die vollständigen Regeln stehen im
@@ -932,7 +926,7 @@ folgender Matrix praktisch geprüft:
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
-| Sprache | DE-Plugin nur DE-Vertrag; EN-Plugin nur EN-Vertrag |
+| Sprache | neutrale englische Kontrollschicht; jede sichtbare Antwort folgt der backendgebundenen `communicationLocale` |
 
 Scheitert der kostenlose Zugang oder ein erforderlicher fester Tarif, ist die
 harte Geschäftsanforderung für diesen Providerpfad nicht erfüllt – auch wenn die
@@ -942,13 +936,13 @@ Technik im Entwicklermodus funktioniert.
 
 ### Phase 0 – Prototyp und Fallbacks
 
-- lokaler DE-/EN-MCP-App-Prototyp;
+- lokaler neutraler MCP-App-Prototyp mit lokalisierten Payload-Katalogen;
 - Visible-Session- und Legacy-Quellen getrennt und rollbackfähig halten;
 - keine Vermischung der neuen Appverträge mit Custom-GPT-OpenAPI-Schemas.
 
 **Stand:** abgeschlossen; Fallbackquellen bleiben getrennt erhalten.
 
-### Phase 1 – Deutscher produktionsnaher Backendpfad
+### Phase 1 – Mehrsprachiger produktionsnaher Backendpfad
 
 - isolierter MCP-Transport im Spring-Boot-Prozess;
 - vollständiger chat-first Toolvertrag gegen bestehende Domain-Use-Cases;
@@ -958,14 +952,14 @@ Technik im Entwicklermodus funktioniert.
   Tooltransport, ohne manuelle Eingabe oder gleitende Verlängerung;
 - standardmäßig deaktivierter Schreib-Kill-Switch und Cockpit-Canary.
 
-**Stand:** implementiert, automatisiert getestet und im deutschen Entwicklermodus
+**Stand:** implementiert, automatisiert getestet und im Entwicklermodus
 integriert. Externer Exit ist der sichere vertrauliche
 OAuth-Clientprofil-Cutover mit erneut verbundener App und vollständigem
-deutschen End-to-End-Lauf.
+sprachmarkierten End-to-End-Lauf.
 
-### Phase 2 – Deutsche reale Nutzerreisen
+### Phase 2 – Reale Nutzerreisen in jeder freigegebenen Sprache
 
-- das versionierte deutsche Plugin-/Skill-Quellpaket und seinen CI-Vertrag
+- das versionierte neutrale Plugin-/Skill-Quellpaket und seinen CI-Vertrag
   pflegen;
 - die vorhandene echte lokale App-Abbildung über den persönlichen Marketplace
   installieren und im neuen Chat gegen die App-only-Baseline testen;
@@ -978,9 +972,10 @@ deutschen End-to-End-Lauf.
 - positive und negative Skillaktivierungsfälle sowie Tool-Trace-Parität;
 - read-only Canary vor Freigabe der Schreibwerkzeuge.
 
-**Exit:** komplette deutsche E2E-Suite im realen Providerhost mit explizit
-gewähltem Skill; danach dürfen die MCP-Server-Instruktionen schrittweise auf
-werkzeugübergreifende Invarianten reduziert werden.
+**Exit:** komplette E2E-Suite im realen Providerhost mindestens für Deutsch und
+Englisch mit explizit gewähltem Skill; danach dürfen die
+MCP-Server-Instruktionen schrittweise auf werkzeugübergreifende Invarianten
+reduziert werden.
 
 ### Phase 3 – MCP-UI und zusätzliche Härtung
 
@@ -997,11 +992,11 @@ umgesetzt; interaktive Aktionen bleiben offen.
 **Exit:** UI-Funktionen verbessern die Bedienung, ohne den stabilen chat-first
 Vertrag oder die Backendautorität zu schwächen.
 
-### Phase 4 – OpenAI-Veröffentlichung, Englisch und Tarifnachweis
+### Phase 4 – OpenAI-Veröffentlichung und Tarifnachweis
 
-- deutsche Veröffentlichung als kombiniertes Skill-/MCP-Plugin und reale
+- Veröffentlichung als kombiniertes mehrsprachiges Skill-/MCP-Plugin und reale
   Tarifmatrix;
-- danach eigener englischer Vertrag, App-Eintrag und vollständige Acceptance;
+- vollständige Acceptance für jede freigegebene Interaktionssprache;
 - reale Tarif-, Regions-, Web- und Mobilmatrix;
 - gestufter Rollout mit getrennten Kill-Switches.
 
@@ -1053,7 +1048,7 @@ ausgeliefert werden.
 | Review abgelehnt oder verzögert | keine öffentliche Distribution | Developer-Mode-Pilot, Review-Checkliste, keine falsche Launchzusage |
 | veröffentlichter Vertrag wird inkompatibel geändert | bestehende Installationen brechen | additive Versionierung und getrennte App-Releases |
 | Session oder Widget-Metadaten werden allein als Auth verwendet | Cross-User-/Replay-Risiko | vertraulicher OAuth-Client plus separate first-party Lernsession; beide bei jedem fachlichen Tool revalidieren |
-| gemeinsamer Code koppelt DE und EN unbemerkt | gleichzeitige Regression | getrennte Artefakte, Vertragstests, Canary und Kill-Switches |
+| eine Sprachänderung beeinflusst andere Sprachen unbemerkt | sprachübergreifende Regression | ein neutraler Vertrag, sprachmarkierte Acceptance-Fälle, Telemetrie, Canary und Kill-Switch |
 | Modell bewertet nur nach Musterwortlaut | korrekte Lösungen werden abgewiesen | allgemeine Äquivalenzregel, kuratierte Alternativlösungen, Human-Rater-Gate |
 | App wird mit vollwertiger Backendintegration verwechselt | verfrühte Freigabe | Prototyplimits sichtbar halten; Security- und Workflow-Gates erzwingen |
 
@@ -1065,11 +1060,13 @@ Technisch böte dies maximale Turnkontrolle, verletzt aber die harte Anforderung
 dass die Person den Provider direkt im kostenlosen oder festen Consumerplan
 nutzt. Es bleibt höchstens eine spätere, separat finanzierte Produktoption.
 
-### Ein universeller DE-/EN-MCP-Vertrag
+### Sprachspezifische Parallelplugins innerhalb desselben Contract-Majors
 
-Weniger Dateien und nur eine Registrierung sind kein ausreichender Vorteil, wenn
-Toolauswahl, Lokalisierung, Testfreigabe und Rollback dadurch gekoppelt werden.
-Gemeinsam bleibt der Fachkern, nicht die externe Appoberfläche.
+Sie duplizieren Toolverträge, OAuth-Clients, Origins und Releasepflege, obwohl
+die Sprache bereits autoritativ in der Lernsession liegt. Sprache wird deshalb
+innerhalb derselben Major-Linie über lokalisierte Backendnutzdaten und
+sprachmarkierte Acceptance abgesichert. Nur ein inkompatibler Contract-Major
+erzeugt eine neue Plugin-Identität.
 
 ### Weitere Härtung sichtbarer Custom-GPT-Relaywerte
 
@@ -1085,7 +1082,7 @@ Kernanforderung nicht.
 
 ## 20. Unmittelbar nächste Schritte
 
-1. Das mit der echten hostgenerierten `.app.json`-Abbildung versehene deutsche
+1. Das mit der echten hostgenerierten `.app.json`-Abbildung versehene neutrale
    V1-Quellpaket über den persönlichen Marketplace installieren, den
    Providerhost neu laden und in einem neuen Chat explizit aktivieren; die
    direkte öffentliche MCP-Bindung bleibt unverändert.
@@ -1105,14 +1102,15 @@ Kernanforderung nicht.
 6. Prüfen, dass jeder UI-Start genau eine neue Lernsession erzeugt, automatisch
    in den Prompt einsetzt und jeder fachliche MCP-Aufruf beide Nachweise
    verlangt.
-7. Read-only Canary, danach den vollständigen deutschen Schreibpilot nach dem
+7. Read-only Canary, danach den vollständigen mehrsprachigen Schreibpilot nach dem
    Deployment-Runbook durchführen.
 8. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
    Oberflächen-Acceptance öffentlich freigeben.
 9. Die Zielbildkarte im Desktop- und Mobile-Browser sowie in den nativen Apps
    mit Bild, ohne Bild, bei Ladefehler und bei Lade-Timeout abnehmen; danach
-   interaktive Widgetverbesserungen entwickeln und erst anschließend den
-   separaten englischen Appvertrag ableiten.
+   interaktive Widgetverbesserungen entwickeln. Englisch und weitere
+   unterstützte Sprachen werden durch denselben V1-Vertrag mit eigenen
+   Acceptance-Fällen freigegeben.
 
 ## 21. Referenzen
 
@@ -1121,7 +1119,7 @@ Kernanforderung nicht.
 - [Rollback: ChatGPT Visible Session](chatgpt-visible-session-flow.md)
 - [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md)
 - [OpenAI-Plugin: Versionierung und Lebenszyklus](openai-plugin-versioning-and-lifecycle.md)
-- [SkillPilot Coach DE v1: Release, Rollback und Stilllegung](../../deploy/openai-plugin-v1-release.md)
+- [SkillPilot Coach v1: Release, Rollback und Stilllegung](../../deploy/openai-plugin-v1-release.md)
 - [Legacy ChatGPT Startcode / Session Flow](chatgpt-startcode-session-flow.md)
 - [OpenAI Apps SDK: MCP-Server](https://developers.openai.com/apps-sdk/build/mcp-server)
 - [OpenAI Apps SDK: UI und MCP-Apps-Bridge](https://developers.openai.com/apps-sdk/build/chatgpt-ui)

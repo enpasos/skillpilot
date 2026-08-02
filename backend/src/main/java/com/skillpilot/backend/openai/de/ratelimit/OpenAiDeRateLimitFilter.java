@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- * Bounded per-instance protection for the public OpenAI-DE provider boundary.
+ * Bounded per-instance protection for the public OpenAI Coach V1 provider boundary.
  *
  * <p>The filter uses only the servlet container's normalized remote address
  * and never parses forwarding headers itself. Production must expose the
@@ -40,8 +40,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 20)
 @ConditionalOnExpression(
-        "${skillpilot.openai.coach.de.v1.enabled:false} || "
-                + "${skillpilot.openai.coach.de.v1.bootstrap-enabled:false}")
+        "${skillpilot.openai.coach.v1.enabled:false} || "
+                + "${skillpilot.openai.coach.v1.bootstrap-enabled:false}")
 public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
 
     private static final String OVERFLOW_BUCKET = "overflow";
@@ -134,14 +134,13 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         }
         if (OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH.equals(path)
-                || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH.equals(path)
                 || OpenAiAppsChallengeController.PATH.equals(path)) {
             return new Limit("metadata", properties.getMetadataRequests());
         }
-        if (path.startsWith("/api/openai/de/oauth")) {
+        if (path.startsWith("/api/openai/v1/oauth")) {
             return new Limit("oauth", properties.getOauthRequests());
         }
-        if (path.startsWith("/api/ui/learners/") && path.contains("/openai/de/")) {
+        if (path.startsWith("/api/ui/learners/") && path.contains("/openai/v1/")) {
             return new Limit("ui", properties.getUiRequests());
         }
         return null;

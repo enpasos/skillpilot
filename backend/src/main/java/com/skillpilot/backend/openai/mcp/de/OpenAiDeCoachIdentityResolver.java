@@ -16,10 +16,10 @@ public interface OpenAiDeCoachIdentityResolver {
             McpTransportContext transportContext,
             String learningSessionId);
 
-    /** Rejects a mutation unless the current connection has the German write scope. */
+    /** Rejects a mutation unless the current connection has the V1 write scope. */
     void requireWriteAccess(McpTransportContext transportContext);
 
-    /** Exact Bearer challenge published by the OpenAI-DE protected resource. */
+    /** Exact Bearer challenge published by the OpenAI Coach V1 protected resource. */
     String authenticationChallenge();
 
     /** Bearer challenge used when a valid token lacks the required write scope. */

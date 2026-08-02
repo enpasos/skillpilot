@@ -1,0 +1,45 @@
+{
+  "name": "skillpilot-coach-v1",
+  "version": "1.0.0",
+  "description": "Session-bound SkillPilot learning coach with curriculum-grounded coaching through the production MCP server.",
+  "author": {
+    "name": "enpasos GmbH",
+    "url": "https://skillpilot.com"
+  },
+  "homepage": "https://skillpilot.com",
+  "repository": "https://github.com/enpasos/skillpilot",
+  "license": "Apache-2.0",
+  "keywords": [
+    "learning",
+    "education",
+    "coach",
+    "curriculum",
+    "skillpilot"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "SkillPilot Coach v1",
+    "shortDescription": "Your SkillPilot learning coach",
+    "longDescription": "Continues a learning session prepared in SkillPilot with curriculum-grounded coaching, matching learning-goal visualizations, mastery, verified recall, and assessment mode. The session's communication locale controls all learner-facing communication.",
+    "developerName": "enpasos GmbH",
+    "category": "Education & Research",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#f59e0b",
+    "composerIcon": "./assets/favicon-96x96.png",
+    "logo": "./assets/web-app-manifest-512x512.png",
+    "websiteURL": "https://skillpilot.com",
+    "privacyPolicyURL": "https://skillpilot.com/privacy",
+    "termsOfServiceURL": "https://skillpilot.com/legal",
+    "defaultPrompt": [
+      "How do I start a learning session with SkillPilot?",
+      "How do I safely continue a SkillPilot learning session?",
+      "How do I start a SkillPilot recall check?"
+    ]
+  }
+}

@@ -88,16 +88,16 @@ import tools.jackson.databind.json.JsonMapper;
         "skillpilot.claude.secure-cookie=false",
         "skillpilot.claude.mcp-url=https://skillpilot.test/api/claude/mcp",
         "skillpilot.claude.oauth.protected-resource-metadata=https://skillpilot.test/api/claude/oauth/protected-resource",
-        "skillpilot.openai.coach.de.v1.enabled=true",
-        "skillpilot.openai.coach.de.v1.server-build=test-build",
-        "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-        "skillpilot.openai.coach.de.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.de.v1.secure-cookie=false",
-        "skillpilot.openai.coach.de.v1.mcp-url=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth-resource=https://mcp-coach-de-v1.skillpilot.com/mcp",
-        "skillpilot.openai.coach.de.v1.oauth.client-id=chatgpt-combined-test-client",
-        "skillpilot.openai.coach.de.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/combined-test-callback",
-        "skillpilot.openai.coach.de.v1.oauth.protected-resource-metadata=https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
+        "skillpilot.openai.coach.v1.enabled=true",
+        "skillpilot.openai.coach.v1.server-build=test-build",
+        "skillpilot.openai.coach.v1.oauth.enabled=true",
+        "skillpilot.openai.coach.v1.mcp.enabled=true",
+        "skillpilot.openai.coach.v1.secure-cookie=false",
+        "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
+        "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-combined-test-client",
+        "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/combined-test-callback",
+        "skillpilot.openai.coach.v1.oauth.protected-resource-metadata=https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp"
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
 
@@ -158,7 +158,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                 openAiAuthorizations,
                 openAiClient,
                 OPENAI_SUBJECT,
-                "https://mcp-coach-de-v1.skillpilot.com/mcp",
+                "https://mcp-coach-v1.skillpilot.com/mcp",
                 Set.of(
                         OpenAiDeOAuthConfiguration.READ_SCOPE,
                         OpenAiDeOAuthConfiguration.WRITE_SCOPE,
@@ -173,13 +173,13 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                         ClaudeOAuthConfiguration.WRITE_SCOPE,
                         ClaudeOAuthConfiguration.OFFLINE_SCOPE));
 
-        assertThat(authorizedToolNames("/internal/openai/de/v1/mcp", openAiTokens.accessToken()))
+        assertThat(authorizedToolNames("/internal/openai/v1/mcp", openAiTokens.accessToken()))
                 .containsExactly("openai_security_context_probe");
         assertThat(authorizedToolNames("/api/claude/mcp", claudeTokens.accessToken()))
                 .containsExactly("claude_security_context_probe");
 
         JsonNode openAiProbe = authorizedMcpCall(
-                "/internal/openai/de/v1/mcp",
+                "/internal/openai/v1/mcp",
                 openAiTokens.accessToken(),
                 "openai_security_context_probe");
         assertThat(openAiProbe.path("result").path("structuredContent").path("provider").asText())
@@ -194,7 +194,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                 .contains("claude", CLAUDE_SUBJECT);
 
         assertThat(postMcp(
-                        "/internal/openai/de/v1/mcp",
+                        "/internal/openai/v1/mcp",
                         claudeTokens.accessToken(),
                         "openai_security_context_probe").statusCode())
                 .isEqualTo(401);
@@ -210,7 +210,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                         Map.entry("grant_type", "refresh_token"),
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("refresh_token", claudeTokens.refreshToken()),
-                        Map.entry("resource", "https://mcp-coach-de-v1.skillpilot.com/mcp")));
+                        Map.entry("resource", "https://mcp-coach-v1.skillpilot.com/mcp")));
         assertInvalidGrant(openAiForeignRefresh);
 
         HttpResponse<String> claudeForeignRefresh = postForm(

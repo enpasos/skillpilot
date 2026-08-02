@@ -11,7 +11,7 @@ import java.time.Instant;
 
 /**
  * Absolute, server-side learning session created by one explicit SkillPilot
- * "Lernen starten" action.
+ * "Start learning" action.
  *
  * <p>Only an HMAC of the opaque value carried by the ChatGPT start prompt is
  * persisted. OAuth authenticates the predefined ChatGPT app independently;
@@ -52,6 +52,10 @@ public class OpenAiDeLearningSession {
 
     @Column(name = "curriculum_revision", nullable = false, length = 160)
     private String curriculumRevision;
+
+    /** Authoritative BCP-47 communication locale for this short-lived session. */
+    @Column(name = "communication_locale", nullable = false, length = 35)
+    private String communicationLocale;
 
     /**
      * Hash of the successor session after an explicit cross-major migration.
@@ -134,6 +138,14 @@ public class OpenAiDeLearningSession {
 
     public void setCurriculumRevision(String curriculumRevision) {
         this.curriculumRevision = curriculumRevision;
+    }
+
+    public String getCommunicationLocale() {
+        return communicationLocale;
+    }
+
+    public void setCommunicationLocale(String communicationLocale) {
+        this.communicationLocale = communicationLocale;
     }
 
     public String getMigratedToTokenHash() {

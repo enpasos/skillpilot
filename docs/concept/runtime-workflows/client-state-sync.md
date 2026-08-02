@@ -9,8 +9,8 @@ GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
-The browser uses the UI-facing endpoints above. The current German OpenAI MCP
-App authenticates through the fixed confidential OAuth client and requires a
+The browser uses the UI-facing endpoints above. The current multilingual OpenAI
+V1 MCP App authenticates through the fixed confidential OAuth client and requires a
 separate active, absolutely expiring 24-hour learning session. Every explicit
 **Lernen starten** action creates a new session, SkillPilot inserts its opaque
 ID automatically into the prepared start message, and every fachlicher MCP
@@ -18,8 +18,8 @@ tool receives that ID as a required argument. The permanent SkillPilot ID is
 never a tool argument or result.
 
 The separate Visible Session endpoints below remain available only for the
-Custom-GPT rollback path and, until a separate English App is accepted, as a
-possible English fallback:
+Custom-GPT rollback path. English and every other supported interaction
+language use the same V1 MCP App in normal operation:
 
 ```
 POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/start
@@ -38,7 +38,7 @@ the ordinary mastery Action.
 ## Purpose
 - Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after learning-coach/GPT hard-recall decisions.
 - Keep the backend **PII-free**. Browser/UI routes use the pseudonymous
-  `skillpilotId`; the German MCP lane resolves the learner only through the
+  `skillpilotId`; the multilingual V1 MCP lane resolves the learner only through the
   explicit active 24-hour learning-session argument. OAuth authorizes the app
   but never selects the learner. Visible-session fallback routes use only a
   temporary `chatSessionToken`, which the backend resolves internally.

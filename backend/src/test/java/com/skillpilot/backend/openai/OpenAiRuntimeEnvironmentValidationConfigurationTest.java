@@ -13,9 +13,9 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
     @Test
     void acceptsLineSpecificAndProcessSharedNames() {
         OpenAiRuntimeEnvironmentValidationConfiguration.requireNoForbiddenNames(List.of(
-                "SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED",
-                "SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET",
-                "SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE",
+                "SKILLPILOT_OPENAI_COACH_V1_ENABLED",
+                "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET",
+                "SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE",
                 "SKILLPILOT_OPENAI_SECURE_COOKIE",
                 "SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED"));
     }
@@ -26,14 +26,16 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                 .isThrownBy(() -> OpenAiRuntimeEnvironmentValidationConfiguration
                         .requireNoForbiddenNames(List.of(
                                 "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET",
-                                "SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL",
-                                "SKILLPILOT_OPENAI_COACH_DE_V1_TYPO",
+                                "SKILLPILOT_OPENAI_EN_OAUTH_CLIENT_SECRET",
+                                "SKILLPILOT_OPENAI_COACH_V1_MCP_URL",
+                                "SKILLPILOT_OPENAI_COACH_V1_TYPO",
                                 "SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED",
                                 "SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED",
                                 "SKILLPILOT_OPENAI_APPS_CHALLENGE")))
                 .withMessageContaining("SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET")
-                .withMessageContaining("SKILLPILOT_OPENAI_COACH_DE_V1_MCP_URL")
-                .withMessageContaining("SKILLPILOT_OPENAI_COACH_DE_V1_TYPO")
+                .withMessageContaining("SKILLPILOT_OPENAI_EN_OAUTH_CLIENT_SECRET")
+                .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_MCP_URL")
+                .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_TYPO")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_APPS_CHALLENGE")
@@ -41,10 +43,10 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
     }
 
     @Test
-    void validatesAtStartupEvenWhenTheDeV1LineIsDisabled() {
+    void validatesAtStartupEvenWhenTheV1LineIsDisabled() {
         new ApplicationContextRunner()
                 .withUserConfiguration(OpenAiRuntimeEnvironmentValidationConfiguration.class)
-                .withPropertyValues("skillpilot.openai.coach.de.v1.enabled=false")
+                .withPropertyValues("skillpilot.openai.coach.v1.enabled=false")
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).hasSingleBean(InitializingBean.class);

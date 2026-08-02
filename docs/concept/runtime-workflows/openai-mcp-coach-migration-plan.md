@@ -2,18 +2,20 @@
 
 **Stand:** 31. Juli 2026
 
-**Status:** Die deutsche MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
+**Status:** Die mehrsprachige V1-MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
 Coach-Vertrag bleibt chat-first und ergänzt im noch unveröffentlichten
 `1.0.0-SNAPSHOT`-Arbeitsstand eine read-only MCP-UI für das Bild des aktiven
 atomaren Lernziels. Serverauthentisiertes TLS und das fail-closed geprüfte
 OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS ist nicht Teil von
 `1.0.0`; eine mögliche spätere Transporthärtung wird separat entworfen.
 
-**Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
+**Ziel:** den ursprünglichen GPT-Lerncoach funktional als
 providergehostetes Plugin aus Coach-Skill und direkt zur Prüfung eingereichtem
-deutschen MCP-Server wiederherstellen. Das versionierte Quellpaket bindet den
+MCP-Server wiederherstellen. Skill- und Tool-Kontrollschicht sind neutral
+Englisch; sichtbare Kommunikation und Nutzdaten folgen der vom Backend an die
+Lernsession gebundenen Interaktionssprache. Das versionierte Quellpaket bindet den
 Server direkt über `.mcp.json` und referenziert für den lokalen Pilot zusätzlich
-die reale bereits registrierte deutsche Verbindung über die hostgenerierte
+die reale bereits registrierte Verbindung über die hostgenerierte
 `.app.json`-Abbildung. Es gibt keine manuell zu übertragenden technischen
 Schlüssel und keine Abhängigkeit von Custom-GPT-Action-Retention; die pro Start
 automatisch transportierte, kurzlebige `learningSessionId` ist davon
@@ -32,28 +34,28 @@ Die technische Migration und die Zuordnung der früheren Regeln sind nicht mit
 sichtbarer Endnutzerparität gleichzusetzen. Das allgemeine Coach-
 Verhaltensmodell, die Golden Journeys, der ehrliche Integrationsstand und die
 modellgestützte End-to-End-Abnahme werden normativ in
-[Verhaltensintegration des deutschen MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md)
+[Verhaltensintegration des MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md)
 geführt.
 
 ## 1. Entscheidung
 
 SkillPilot migriert **nicht** den sichtbaren Session-Workaround und baut den
 bestehenden Custom GPT auch nicht weiter aus. Stattdessen entsteht eine
-deutsche, chat-first OpenAI-MCP-App mit einer eng begrenzten visuellen
+mehrsprachige, chat-first OpenAI-MCP-App mit einer eng begrenzten visuellen
 MCP-UI-Ressource:
 
 ```text
-ChatGPT App „SkillPilot Coach DE v1“
+ChatGPT App „SkillPilot Coach v1“
         |
         | TLS + OAuth Bearer
         v
-https://mcp-coach-de-v1.skillpilot.com/mcp
+https://mcp-coach-v1.skillpilot.com/mcp
         |
-        | dedizierter TLS-vHost; /mcp -> /internal/openai/de/v1/mcp
+        | dedizierter TLS-vHost; /mcp -> /internal/openai/v1/mcp
         v
 Spring Boot am loopback-gebundenen internen V1-Pfad
         |
-        +-- isolierter OpenAI-DE-MCP-Transport und Toolvertrag
+        +-- isolierter OpenAI-V1-MCP-Transport und neutraler Toolvertrag
         +-- OAuth Authorization Server
         |     +-- fester vertraulicher Client: client_id + client_secret_basic
         |     +-- Authorization Code + PKCE S256
@@ -70,10 +72,11 @@ kostenlosen oder fest bepreisten Consumer-Tarif kontingentiert beziehungsweise
 abgerechnet. SkillPilot ruft in diesem Coach-Pfad keine kostenpflichtige
 OpenAI-Modell-API auf.
 
-Die deutsche App wird vollständig stabilisiert, bevor eine englische App
-abgeleitet wird. Die automatische Lernzielkarte ist Teil des unveröffentlichten
-V1-Drafts; interaktive Widgets für Auswahl, Antwortabgabe oder Prüfungs-Receipts
-bleiben spätere Verbesserungen.
+Die V1-App wird für jede freigegebene Interaktionssprache durch eigene
+Acceptance-Fälle stabilisiert; eine weitere Sprache erzeugt keine zweite App.
+Die automatische Lernzielkarte ist Teil des unveröffentlichten V1-Drafts;
+interaktive Widgets für Auswahl, Antwortabgabe oder Prüfungs-Receipts bleiben
+spätere Verbesserungen.
 
 ## 2. Was der Retentionstest ändert – und was nicht
 
@@ -117,8 +120,9 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    Recall und Prüfungszustand liegen dauerhaft nur bei SkillPilot.
 3. **Provider bezahlt das Modell:** kein stiller Fallback auf eine von
    SkillPilot bezahlte OpenAI-API.
-4. **Deutsch zuerst:** ein deutscher Vertrag ohne `language`-Parameter; Englisch
-   folgt erst nach bestandener deutscher Acceptance Suite.
+4. **Sprache backendautoritativ:** ein neutraler Vertrag ohne frei wählbaren
+   `language`-Parameter. Die beim Start festgelegte `communicationLocale` wird
+   aus der Lernsession geladen und steuert sämtliche sichtbare Kommunikation.
 5. **UI eng begrenzen:** Der erste produktionsnahe Vertrag besitzt genau eine
    read-only Lernzielbild-Ressource. Sie wird nur an Context-Read und
    Zielaktivierung gebunden und darf weder Auswahl noch Lernzustand mutieren.
@@ -150,11 +154,11 @@ Java-MCP-SDK explizit mehrere Server verdrahtet:
 
 ```text
 Spring Boot
-  +-- /internal/openai/de/v1/mcp
+  +-- /internal/openai/v1/mcp
   |     +-- eigener WebMvcStatelessServerTransport
   |     +-- eigener McpStatelessSyncServer
-  |     +-- OpenAI-DE-Instructions
-  |     +-- ausschließlich OpenAI-DE-Tools
+  |     +-- neutral englische OpenAI-V1-Instructions
+  |     +-- ausschließlich OpenAI-V1-Tools
   |
   +-- /api/claude/mcp
         +-- eigener WebMvcStatelessServerTransport
@@ -169,7 +173,7 @@ erhalten bleibt. Tool-Spezifikationen werden pro Server ausdrücklich registrier
 und niemals global aus allen `ToolCallbackProvider`-Beans zusammengesammelt.
 
 Das Java-MCP-SDK unterstützt `outputSchema`, Tool-Annotationen, Tool-/Result-
-`meta` und echtes `structuredContent`. Der OpenAI-DE-Vertrag verwendet deshalb
+`meta` und echtes `structuredContent`. Der OpenAI-V1-Vertrag verwendet deshalb
 einen kleinen eigenen Spec-/Result-Adapter statt ausschließlich des allgemeinen
 Spring-`@Tool`-Konverters.
 
@@ -190,7 +194,7 @@ CI-Gates. Der dedizierte Host isoliert Domainverifikation und Plugin-Lifecycle;
 er verlangt kein Clientzertifikat. Eine spätere Transporthärtung wird als
 eigenständige Änderung mit neuer Bedrohungsanalyse geplant.
 
-Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
+Der eigene OpenAI-V1-Adapter liegt unmittelbar an `CoachToolFacade` und
 `CoachStateProjection`. Er:
 
 - validiert bei **jedem** Aufruf Token, Issuer, Audience, Ablauf und Scope;
@@ -206,7 +210,7 @@ Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
 
 Der MCP-Endpunkt ist ausschließlich über den dafür vorgesehenen stabilen
 HTTPS-Origin und den OAuth-geschützten dedizierten Reverse Proxy erreichbar.
-Nginx bildet dessen `/mcp` exakt auf `/internal/openai/de/v1/mcp` ab. Der
+Nginx bildet dessen `/mcp` exakt auf `/internal/openai/v1/mcp` ab. Der
 Spring-Port ist auf Loopback gebunden und darf nicht öffentlich exponiert
 werden. Andere
 Backendendpunkte und interne Identitäten werden dadurch nicht freigegeben.
@@ -219,7 +223,7 @@ Authorization Server über genau einen festen vertraulichen OAuth-Client mit
 langem zufälligem Secret, `client_secret_basic`, exakter Callback-Allowlist,
 PKCE `S256`, Resource-/Audience-Bindung und engen Scopes. Offene DCR, CIMD,
 `none`, `private_key_jwt` und ein stiller Profil-Fallback sind nicht Teil des
-aktiven deutschen Produktivprofils. Die verbindliche Detailarchitektur steht in
+aktiven V1-Produktivprofils. Die verbindliche Detailarchitektur steht in
 [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md).
 
 ### 4.3 Stabile öffentliche URLs
@@ -228,43 +232,46 @@ Für die erste Produktions-App wird eine dauerhaft isolierte Major-Linie
 verwendet:
 
 ```text
-Plugin: skillpilot-coach-de-v1
-MCP Endpoint: https://mcp-coach-de-v1.skillpilot.com/mcp
-OAuth Resource/Audience: https://mcp-coach-de-v1.skillpilot.com/mcp
-Protected Resource Metadata: https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
-Domain Challenge: https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge
-OAuth Issuer: https://skillpilot.com/api/openai/de
+Plugin: skillpilot-coach-v1
+MCP Endpoint: https://mcp-coach-v1.skillpilot.com/mcp
+OAuth Resource/Audience: https://mcp-coach-v1.skillpilot.com/mcp
+Protected Resource Metadata: https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain Challenge: https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge
+OAuth Issuer: https://skillpilot.com/api/openai/v1
 ```
 
 Der Tunnel bleibt ausschließlich Entwicklungsinfrastruktur. Ein interner
 Serverwechsel darf die veröffentlichte MCP-URL nicht verändern. Ein späterer
-Major oder ein eigenständig veröffentlichtes englisches Plugin erhält einen
-neuen Pluginnamen sowie einen eigenen MCP-Origin und eine eigene exakte
-OAuth-Resource. Die V1-Linie besitzt keinen öffentlichen
-Kompatibilitätsalias. Ausschließlich der DE-V1-Origin ist derzeit aktiver
-Directory-Vertrag; die reservierten DE-V2/V3- und EN-V1/V2/V3-Hosts antworten
-bis zur jeweiligen Vertragsfreigabe mit `404`.
+inkompatibler Major erhält einen neuen Pluginnamen sowie einen eigenen MCP-Origin
+und eine eigene exakte OAuth-Resource. Eine weitere Sprache innerhalb von V1
+nicht. Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias.
+Ausschließlich der V1-Origin ist derzeit aktiver Directory-Vertrag; die
+reservierten neutralen V2- bis V9-Hosts antworten bis zur jeweiligen
+Vertragsfreigabe mit `404`. Frühere, nie veröffentlichte `mcp-coach-de-v*`- und
+`mcp-coach-en-v*`-Hosts werden nicht als Kompatibilitätsrouten weitergeführt.
 
-## 5. Deutscher MCP-Vertrag der ersten Version
+## 5. Sprachneutraler MCP-Vertrag der ersten Version
 
-Die Werkzeuge sind deutsch beschrieben, fachlich eng geschnitten und besitzen
-keinen Sprachparameter. `learningSessionId` ist ausnahmslos Pflichtargument
-jedes Werkzeugs; die übrigen Argumente sind werkzeugspezifisch. Die Namen
-bleiben technisch eindeutig:
+Die Werkzeuge sind in neutralem Englisch beschrieben, fachlich eng geschnitten
+und besitzen keinen frei wählbaren Sprachparameter. `learningSessionId` ist
+ausnahmslos Pflichtargument jedes Werkzeugs; die übrigen Argumente sind
+werkzeugspezifisch. Das Backend liefert `communicationLocale` und alle
+lernerseitigen Nutzdaten in der Zielsprache. Die Namen bleiben technisch
+eindeutig:
 
 | Tool | Aufgabe |
 | --- | --- |
-| `get_skillpilot_context_de(learningSessionId)` | SkillPilot-Lerncoach bei einer natürlichen SkillPilot-Lernabsicht starten oder fortsetzen sowie den kompakten Lernzustand für die explizit adressierte Lernsession rehydrieren |
-| `get_skillpilot_navigation_de(learningSessionId, target)` | Optionen für einen ausdrücklichen Wechsel von Curriculum, Personalisierung, Scope oder Ziel laden |
-| `set_skillpilot_curriculum_de(learningSessionId, curriculumId)` | Ein Curriculum aus den aktuell erlaubten Optionen setzen |
-| `set_skillpilot_personalization_de(learningSessionId, optionId)` | Genau eine aktuell angebotene, opak referenzierte Personalisierungsoption setzen |
-| `set_skillpilot_scope_de(learningSessionId, goalIds)` | Lernumfang setzen |
-| `set_skillpilot_active_goal_de(learningSessionId, goalId, redirect)` | Erlaubtes Frontier-Ziel aktivieren |
-| `set_skillpilot_mastery_de(learningSessionId, goalId)` | Das aktive atomische Nicht-SRS-Ziel nach harter Evidenz mit Mastery `1.0` abschließen |
-| `start_skillpilot_verified_recall_de(learningSessionId, goalId, batchSize)` | Kartenprüfung starten oder fortsetzen |
-| `get_skillpilot_verified_recall_answer_de(learningSessionId, goalId, cardId)` | Sollantwort erst nach der Lernendenantwort laden |
-| `record_skillpilot_verified_recall_result_de(learningSessionId, goalId, cardId, passed, feedback)` | Recall-Ergebnis speichern |
-| `get_skillpilot_exam_evaluation_de(learningSessionId, goalId)` | Freigegebene Lösung und Bewertungsraster erst nach vollständiger Abgabe laden |
+| `get_skillpilot_context(learningSessionId)` | SkillPilot-Lerncoach bei einer natürlichen SkillPilot-Lernabsicht starten oder fortsetzen sowie den kompakten Lernzustand für die explizit adressierte Lernsession rehydrieren |
+| `get_skillpilot_navigation(learningSessionId, target)` | Optionen für einen ausdrücklichen Wechsel von Curriculum, Personalisierung, Scope oder Ziel laden |
+| `set_skillpilot_curriculum(learningSessionId, curriculumId)` | Ein Curriculum aus den aktuell erlaubten Optionen setzen |
+| `set_skillpilot_personalization(learningSessionId, optionId)` | Genau eine aktuell angebotene, opak referenzierte Personalisierungsoption setzen |
+| `set_skillpilot_scope(learningSessionId, goalIds)` | Lernumfang setzen |
+| `set_skillpilot_active_goal(learningSessionId, goalId, redirect)` | Erlaubtes Frontier-Ziel aktivieren |
+| `set_skillpilot_mastery(learningSessionId, goalId)` | Das aktive atomische Nicht-SRS-Ziel nach harter Evidenz mit Mastery `1.0` abschließen |
+| `start_skillpilot_verified_recall(learningSessionId, goalId, batchSize)` | Kartenprüfung starten oder fortsetzen |
+| `get_skillpilot_verified_recall_answer(learningSessionId, goalId, cardId)` | Sollantwort erst nach der Lernendenantwort laden |
+| `record_skillpilot_verified_recall_result(learningSessionId, goalId, cardId, passed, feedback)` | Recall-Ergebnis speichern |
+| `get_skillpilot_exam_evaluation(learningSessionId, goalId)` | Freigegebene Lösung und Bewertungsraster erst nach vollständiger Abgabe laden |
 
 ### 5.1 LLM-gerechter Eingabevertrag
 
@@ -516,7 +523,7 @@ Fälle ohne Sonderlogik funktionieren:
 
 ### 5.2 Context-Ergebnis
 
-`get_skillpilot_context_de(learningSessionId)` ist trotz seines stabilen
+`get_skillpilot_context(learningSessionId)` ist trotz seines stabilen
 technischen Namens das eindeutige Bootstrap-Werkzeug. Wenn die App ausgewählt
 oder SkillPilot genannt
 wurde und die lernende Person lernen, üben, starten, fortsetzen oder den
@@ -548,8 +555,8 @@ Optionen bleiben in `structuredContent` und werden nicht unnötig in der
 Chatantwort wiederholt. Für ein aktives atomares Ziel mit passendem kanonischem
 `goal-visualization`-Link enthält `structuredContent.goalVisualization`
 ausschließlich Ziel-ID, Titel, optionale Beschreibung, öffentliche Bild-URL,
-Alttext und Cockpit-Link. Die an `get_skillpilot_context_de` und
-`set_skillpilot_active_goal_de` gebundene MCP-UI zeigt diese Daten direkt im
+Alttext und Cockpit-Link. Die an `get_skillpilot_context` und
+`set_skillpilot_active_goal` gebundene MCP-UI zeigt diese Daten direkt im
 Chat. Bei fehlender, ungültiger oder nicht ladbarer Visualisierung bleibt sie
 verborgen; der normale Chatablauf bleibt vollständig erhalten. Das Bild dient
 nur der Orientierung, nie als Evidenz, Aufgabe, Lösung, Bewertung oder
@@ -558,8 +565,8 @@ bestätigten Kontextangaben und führt anschließend die gemeinsam beantwortbare
 authored offenen Angaben auf. Sie darf spätere sichtbare Fragen zur Orientierung
 enthalten, macht daraus aber keine vorzeitig gültigen Schreiboptionen.
 
-Der opake `optionId`-Vertrag ist zunächst für den produktiven deutschen
-OpenAI-MCP-Adapter umgesetzt. Die pausierte Claude-Integration und die
+Der opake `optionId`-Vertrag ist für den produktiven mehrsprachigen
+OpenAI-V1-MCP-Adapter umgesetzt. Die pausierte Claude-Integration und die
 isolierte Visible-Session-Rollback-Variante besitzen weiterhin ihre eigenen
 Legacy-Verträge; ihre Existenz ist weder ein Fallback für diesen Flow noch ein
 Beleg dafür, dass sie Mehrfachauswahl und `COMPLETE_GROUP` bereits unterstützen.
@@ -568,15 +575,15 @@ Beleg dafür, dass sie Mehrfachauswahl und `COMPLETE_GROUP` bereits unterstütze
 
 Eine MCP-App allein besitzt nicht dieselbe Knowledge-Upload-Fläche wie ein
 Custom GPT. Das versionierte Quellpaket unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
+[`ai/openai plugin/skillpilot-coach-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-v1)
 ergänzt sie deshalb um einen Coach-Skill. Die bisherigen Dokumente werden nach
 Funktion migriert:
 
 | Bisheriger Inhalt | Zielort |
 | --- | --- |
-| Rolle, Sprache, Stil, Dialogzyklus und allgemeine Coachingregeln | `ai/openai plugin/skillpilot-coach-de-v1/skills/skillpilot-coach-de-v1/SKILL.md` |
-| ausführliche Didaktik, Mastery-Evidenz, ungewöhnliche Lösungswege und Prüfungsverhalten | `ai/openai plugin/skillpilot-coach-de-v1/skills/skillpilot-coach-de-v1/references/coaching-policy.md` |
-| wenige werkzeugübergreifende Zustands-, Session- und Fail-closed-Regeln | kurze deutsche MCP-Server-`instructions` |
+| Rolle, Sprache, Stil, Dialogzyklus und allgemeine Coachingregeln | `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md` |
+| ausführliche Didaktik, Mastery-Evidenz, ungewöhnliche Lösungswege und Prüfungsverhalten | `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/references/coaching-policy.md` |
+| wenige werkzeugübergreifende Zustands-, Session-, Sprach- und Fail-closed-Regeln | kurze neutral englische MCP-Server-`instructions` |
 | Regeln und Vorbedingungen für genau ein Werkzeug | Toolbeschreibung und Ein-/Ausgabeschema |
 | zustandsabhängige Aufgabe, Rubrik, Recall- oder Exam-Regel | dynamisches `structuredContent` des jeweiligen Tools |
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
@@ -621,7 +628,7 @@ Bei Widersprüchen ist dieses abgegrenzte Architekturdokument für Identitäts- 
 Sitzungsfragen maßgeblich.
 
 Die bestehende Claude-OAuth-Implementierung dient als technische Vorlage, wird
-aber nicht als OpenAI-Alias verwendet. OpenAI-DE erhält eigene Konfiguration,
+aber nicht als OpenAI-Alias verwendet. OpenAI V1 erhält eigene Konfiguration,
 Scopes, Lernsessionen, Tests und Widerrufslogik.
 
 ### 7.1 Verbindungsablauf
@@ -673,8 +680,8 @@ OAuth erfolgreich verbinden, erhält bei fachlichen Tools jedoch
 | Access Token | 30–60 Minuten |
 | Refresh Token | höchstens 30 Tage, rotierend |
 | Lernsession | bei jedem **Lernen starten** frisch; Ablauf exakt 24 Stunden nach Erzeugung; weder Toolaufruf noch Token-Refresh verlängert sie |
-| Audience/Resource | exakt `https://mcp-coach-de-v1.skillpilot.com/mcp` |
-| Scopes | getrenntes OpenAI-DE-Read und -Write |
+| Audience/Resource | exakt `https://mcp-coach-v1.skillpilot.com/mcp` |
+| Scopes | `skillpilot.openai.v1.read` und `skillpilot.openai.v1.write` |
 | PKCE | ausschließlich `S256` |
 | OAuth-Client | genau eine feste vertrauliche Client-ID; kein offenes DCR und kein stiller Profilwechsel |
 | Token-Endpunkt-Clientauthentisierung | ausschließlich `client_secret_basic` |
@@ -687,7 +694,7 @@ Trimmen oder Slash-Normalisierung verglichen. Spring speichert ihn im
 Authorization Request; die Introspektion jedes Access Tokens prüft diesen
 persistierten Wert erneut und veröffentlicht nur danach dieselbe URL als
 `aud`. Damit ist ein technisch gültiges Token für eine andere MCP-Ressource
-nicht im deutschen Coach verwendbar; die Bindung bleibt auch nach einem
+nicht im V1-Coach verwendbar; die Bindung bleibt auch nach einem
 Refresh erhalten.
 
 `_meta["openai/session"]`, ein OAuth-Subject und „zuletzt verwendete Nutzer“
@@ -703,8 +710,8 @@ zurück. Ein Aufruf ohne Bearer Token erreicht diese Prüfung und erhält `401`.
 
 ## 8. Vollständige Workflow-Parität
 
-Der deutsche Coach gilt erst als migriert, wenn folgende Nutzerreisen auf realen
-SkillPilot-Daten funktionieren:
+Der V1-Coach gilt erst als migriert, wenn folgende Nutzerreisen in jeder
+freigegebenen Interaktionssprache auf realen SkillPilot-Daten funktionieren:
 
 | Nutzerreise | Abnahmekriterium |
 | --- | --- |
@@ -736,7 +743,7 @@ hochwirksamen Prüfungs- oder Zertifizierungsfällen erneut bewertet werden.
 
 - Legacy-, Visible-Session-, MCP-Prototyp- und Regressionstest-Quellen getrennt
   markieren;
-- die vollständige deutsche Nutzerreise und bisherigen Knowledge-Regeln als
+- die vollständigen sprachmarkierten Nutzerreisen und bisherigen Knowledge-Regeln als
   Acceptance-Manifest erfassen;
 - die positiven MCP-Testbelege archivieren;
 - keine bestehenden Startpfade ändern.
@@ -751,12 +758,12 @@ Node-Prototyp- und MCP-Regressionsquellen bleiben getrennt.
 ### Etappe 1 – Produktionsfähiges Skelett
 
 - globale MCP-Autokonfiguration durch explizit isolierte Spring-MCP-Server für
-  Claude und OpenAI-DE ersetzen;
-- separaten deutschen Spring-Paket-/Vertragsbereich anlegen;
+  Claude und OpenAI V1 ersetzen;
+- separaten neutralen OpenAI-V1-Paket-/Vertragsbereich anlegen;
 - `CoachStore`, UI-Ressourcen und Node-Demodaten vollständig außerhalb dieses
   Laufzeitpfads halten;
-- kompaktes OpenAI-DE-Context-DTO anlegen;
-- `get_skillpilot_context_de(learningSessionId)` zunächst mit synthetischem
+- kompaktes OpenAI-V1-Context-DTO anlegen;
+- `get_skillpilot_context(learningSessionId)` zunächst mit synthetischem
   OAuth-Client und sicherer Testlernsession Ende-zu-Ende verbinden;
 - Protected-Resource-Metadaten, Health und Readiness ergänzen.
 
@@ -765,14 +772,14 @@ manuell zu übertragenden technischen Schlüssel; die Testlernsession wird
 automatisch als Toolargument mitgeführt.
 
 **Implementierungsstand:** Spring-Transport, echte Projektion und isolierte
-Tool-Allowlist sind implementiert und im aktuellen deutschen MCP-Pfad
+Tool-Allowlist sind implementiert und im aktuellen mehrsprachigen V1-MCP-Pfad
 ausgerollt. Die fachliche Acceptance wird weiter vervollständigt.
 
-### Etappe 2 – OpenAI-DE-OAuth
+### Etappe 2 – OpenAI-V1-OAuth
 
 - providerfähigen gemeinsamen Authorization-Server-Kern aus der Claude-Vorlage
   herauslösen, ohne Claude und OpenAI datenbankseitig zu vermischen;
-- festen vertraulichen OpenAI-DE-Client, Scopes, Token und Widerruf
+- festen vertraulichen OpenAI-V1-Client, Scopes, Token und Widerruf
   implementieren;
 - explizite, gehashte Lernsessionen mit absolutem 24h-Ablauf und ohne
   OAuth-Subject-Fallback implementieren;
@@ -804,11 +811,12 @@ vor dem Vollbetrieb deaktiviert.
 - Ressourcen, Fortschritt, Erklärung, Aufgabe und Mastery abnehmen;
 - natürlicher Einstieg mit möglichst nur einer echten Rückfrage testen.
 
-**Exit:** Der vollständige normale deutsche Lernzyklus funktioniert besser als
+**Exit:** Der vollständige normale Lernzyklus funktioniert in jeder
+freigegebenen Interaktionssprache besser als
 der sichtbare Key-/Value-Workaround und ohne Funktionsverlust zum ursprünglichen
 Coach.
 
-**Implementierungsstand:** elf deutsche Werkzeuge, Context-Projektion,
+**Implementierungsstand:** elf neutrale Werkzeuge, Context-Projektion,
 Knowledge-Verteilung und Cockpit-Start sind ausgerollt. Die fachliche
 End-to-End-Acceptance in ChatGPT läuft weiter; bekannte Workflowabweichungen
 werden allgemein in Zustandsprojektion und Toolkoordination korrigiert, nicht
@@ -848,7 +856,7 @@ Kontextverlust führt mit der noch gültigen automatisch transportierten
 Lernsession höchstens zu einem frischen Context-Read, nicht zu verlorenem
 Lernzustand.
 
-### Etappe 6 – Gestufter Cutover Deutsch
+### Etappe 6 – Gestufter mehrsprachiger Cutover
 
 - neuen Frontendvariantentyp `openai-mcp` additiv neben `legacy` und
   `visible-session` einführen;
@@ -859,10 +867,10 @@ Lernzustand.
 - erst nach bewiesener App-Verfügbarkeit im kostenlosen beziehungsweise
   festpreisbasierten Zieltarif den MCP-Pfad zum Standard machen.
 
-**Exit:** Die deutsche MCP-App ist der Standardpfad; Visible Session bleibt
+**Exit:** Die mehrsprachige V1-MCP-App ist der Standardpfad; Visible Session bleibt
 sofort aktivierbarer Rückfallpfad.
 
-**Implementierungsstand:** `openai-mcp` ist der aktuelle deutsche
+**Implementierungsstand:** `openai-mcp` ist der aktuelle mehrsprachige
 Frontendpfad. `visible-session` bleibt als isolierter Rollback erhalten und ist
 keine produktive Referenzarchitektur mehr. Die allgemeine Freigabe des
 MCP-Pfads setzt zusätzlich die vollständig abgenommene Kombination aus festem
@@ -886,15 +894,16 @@ Interaktive Auswahl- und Abgabefunktionen bleiben offen.
 **Exit:** UI verbessert nachweislich Bedienung oder Integrität, ohne den
 chat-first Coach zu schwächen.
 
-### Etappe 8 – Englisch
+### Etappe 8 – Weitere Interaktionssprachen
 
-- eigenen englischen Vertragsordner, Endpunkt, OAuth-Client, Instructions,
-  Knowledge-Verteilung und Acceptance Suite erstellen;
-- Fachkern wiederverwenden, aber keine Laufzeit-Sprachvariable und keinen
-  Universalvertrag einführen;
-- separat veröffentlichen, beobachten und zurückrollen können.
+- Backend-Payloadkatalog und Session-Sprachallowlist erweitern;
+- für jede Sprache Golden Journeys, negative Sprachwechseltests und
+  Lokalisierungs-Acceptance ergänzen;
+- denselben V1-Endpunkt, OAuth-Client, neutralen Skill und Toolvertrag verwenden;
+- Rollout über Backendfreigabe und Telemetrie je Session-Sprache beobachten.
 
-**Exit:** eigenständig grüne englische Nutzerreisen.
+**Exit:** eigenständig grüne Nutzerreisen je freigegebener Sprache, ohne neue
+Plugin-Identität.
 
 ## 10. Deployment, Observability und Rollback
 
@@ -936,8 +945,8 @@ stützen.
 
 Mindestens drei unabhängige Schalter sind vorgesehen:
 
-1. `OPENAI_DE_ENABLED`
-2. `OPENAI_DE_WRITES_ENABLED`
+1. `SKILLPILOT_OPENAI_COACH_V1_ENABLED`
+2. `SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED`
 3. öffentlicher Reverse-Proxy-Upstream beziehungsweise Frontendvariante
 
 Bei einem Fach- oder Sicherheitsproblem werden zuerst Writes deaktiviert, dann
@@ -948,11 +957,11 @@ OAuth-Verbindungen werden nur bei einem Sicherheitsvorfall pauschal widerrufen.
 
 ## 11. Go-/No-Go-Gates
 
-Der deutsche Cutover ist nur erlaubt, wenn alle folgenden Punkte erfüllt sind:
+Der mehrsprachige V1-Cutover ist nur erlaubt, wenn alle folgenden Punkte erfüllt sind:
 
 - kein SkillPilot-eigener OpenAI-Modell-API-Aufruf im Coach-Laufzeitpfad;
 - echte Nutzbarkeit in den vorgesehenen kostenlosen und festen Consumer-Tarifen;
-- vollständige deutsche Workflow-Parität;
+- vollständige Workflow-Parität in jeder freigegebenen Interaktionssprache;
 - OAuth-, Mandantentrennungs-, Datenschutz- und Minderjährigenprüfung;
 - keine manuell zu übertragenden technischen Schlüssel; die automatisch
   eingesetzte `learningSessionId` wird nicht vom Nutzer verwaltet;
@@ -968,7 +977,7 @@ darf den vollständigen chat-first Coach-Dialog nicht blockieren.
 
 ## 12. Nächster ausführbarer Schnitt
 
-Der deutsche MCP-Pfad wird zunächst auf der TLS/OAuth-Betriebsbasis funktional
+Der mehrsprachige V1-MCP-Pfad wird zunächst auf der TLS/OAuth-Betriebsbasis funktional
 stabilisiert. Der nächste kontrollierte Schnitt ändert keine Lernziel-,
 Mastery-, Curriculum- oder Coach-Semantik:
 
@@ -987,7 +996,7 @@ Mastery-, Curriculum- oder Coach-Semantik:
 6. eine verwendete Altclient-Allowlist nach erfolgreichem Cutover aus dem
    Environment entfernen und die vollständige Workflow-Paritätsmatrix
    weiterführen;
-7. das versionierte deutsche Plugin-/Skill-Quellpaket mit seiner realen lokalen
+7. das versionierte neutrale Plugin-/Skill-Quellpaket mit seiner realen lokalen
    `.app.json`-Abbildung über den persönlichen Marketplace installieren und
    nach jedem Paketupdate in einem neuen Chat laden;
 8. den bereits aus dem bewährten Custom-GPT-Korpus und den aktuellen
@@ -1002,7 +1011,7 @@ Mastery-, Curriculum- oder Coach-Semantik:
    schrittweise auf werkzeugübergreifende Invarianten reduzieren.
 
 Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
-[openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
+[openai-mcp-coach-v1.md](../../deploy/openai-mcp-coach-v1.md).
 
 ## 13. Offizielle OpenAI-Grundlagen
 

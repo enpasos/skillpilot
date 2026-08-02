@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-/** Enforces exact RFC 8707 resource binding for the OpenAI-DE MCP endpoint. */
+/** Enforces exact RFC 8707 resource binding for the OpenAI Coach V1 MCP endpoint. */
 public final class OpenAiDeOAuthResourceValidationFilter extends OncePerRequestFilter {
 
     private final String mcpUrl;
@@ -40,7 +40,7 @@ public final class OpenAiDeOAuthResourceValidationFilter extends OncePerRequestF
             response.setHeader(HttpHeaders.PRAGMA, "no-cache");
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.getWriter().write(
-                    "{\"error\":\"invalid_target\",\"error_description\":\"The OpenAI-DE MCP resource is required.\"}");
+                    "{\"error\":\"invalid_target\",\"error_description\":\"The OpenAI Coach V1 MCP resource is required.\"}");
             return;
         }
         filterChain.doFilter(request, response);

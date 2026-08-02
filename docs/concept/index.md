@@ -43,21 +43,21 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
 - [Import/Export Workflow](runtime-workflows/import-export-workflow.md)
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
-- [Verhaltensintegration des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
+- [Verhaltensintegration des MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
   Normativer Nordstern, allgemeines Coach-Verhaltensmodell, Golden Journeys, objektive Acceptance und Übergabe für neue Chats auf dem Weg von technischer MCP-Migration zu echter Endnutzerparität.
 - [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
 - [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
-  Target architecture for separate German and English public plugin submissions that combine a coaching skill with a directly submitted MCP server; local pilots map an existing registered connection separately while preserving the authoritative SkillPilot domain core, direct provider billing, and staged production gates.
+  Target architecture for one multilingual public plugin per contract major, combining a neutral-English coaching skill with a directly submitted MCP server while preserving backend-authoritative interaction language, the SkillPilot domain core, direct provider billing, and staged production gates.
 - [OpenAI-Plugin: Versionierung und Lebenszyklus](runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
-  Binding version-line, compatibility, snapshot, lifecycle, release, and retirement rules for the German `SkillPilot Coach DE v1` plugin.
-- [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
-  DE-first implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
+  Binding version-line, compatibility, snapshot, lifecycle, release, and retirement rules for the multilingual `SkillPilot Coach v1` plugin.
+- [Migration des Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
+  Multilingual implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
 - [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
   Normative separation of the fixed confidential OAuth client that authenticates the App and the fresh, automatically transported, absolute 24-hour learning session that addresses the learner.
 - [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
   Security source of truth for `client_secret_basic`, exact callback/resource/scope binding, secret lifecycle, and the independent learner-session boundary.
-- [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
+- [Wissens- und Verhaltensparität des MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
   Technical mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards; end-user behavioral parity is tracked separately.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
   Retained Custom-GPT rollback runtime with visible cross-turn relay; not the current production reference architecture.

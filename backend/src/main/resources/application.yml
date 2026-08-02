@@ -20,7 +20,7 @@ spring:
     mcp:
       server:
         # SkillPilot registers one stateless transport and one explicit tool allowlist per
-        # provider/language. Keep Spring AI's singular, context-wide MCP auto-server disabled.
+        # provider contract line. Keep Spring AI's singular, context-wide MCP auto-server disabled.
         enabled: false
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:skillpilot}
@@ -74,63 +74,61 @@ skillpilot:
       refresh-token-ttl: ${SKILLPILOT_CLAUDE_REFRESH_TOKEN_TTL:P30D}
   openai:
     coach:
-      de:
-        v1:
-          enabled: ${SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED:false}
-          bootstrap-enabled: ${SKILLPILOT_OPENAI_COACH_DE_V1_BOOTSTRAP_ENABLED:false}
-          writes-enabled: ${SKILLPILOT_OPENAI_COACH_DE_V1_WRITES_ENABLED:false}
-          # These policies are deliberately shared by all OpenAI coach lines
-          # hosted in this one Spring Boot process.
-          secure-cookie: ${SKILLPILOT_OPENAI_SECURE_COOKIE:true}
-          binding-ttl: ${SKILLPILOT_OPENAI_BINDING_TTL:PT5M}
-          launch-ttl: ${SKILLPILOT_OPENAI_LAUNCH_TTL:PT5M}
-          learning-session-ttl: ${SKILLPILOT_OPENAI_LEARNING_SESSION_TTL:PT24H}
-          cleanup-interval-ms: ${SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS:3600000}
-          # Public endpoints are immutable parts of the DE V1 contract. Nginx
-          # maps this origin to the line-specific internal route in this JVM.
-          mcp-url: https://mcp-coach-de-v1.skillpilot.com/mcp
-          oauth-resource: https://mcp-coach-de-v1.skillpilot.com/mcp
-          server-build: "@skillpilotServerBuild@"
-          # Optional assertion only. The effective revision is derived from the
-          # loaded repository JSON or active package generation at startup.
-          curriculum-revision: ${SKILLPILOT_CURRICULUM_REVISION:}
-          workflow-version: ${SKILLPILOT_OPENAI_COACH_DE_V1_WORKFLOW_VERSION:coach-de@1.0}
-          open-ai-apps-challenge: ${SKILLPILOT_OPENAI_COACH_DE_V1_OPENAI_APPS_CHALLENGE:}
-          chatgpt-url: ${SKILLPILOT_OPENAI_CHATGPT_URL:https://chatgpt.com/}
-          security:
-            # Mandatory OAuth/provider safety baseline. It mirrors provider
-            # activation; an explicit false override is rejected at startup.
-            secure-mode: ${SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED:false}
-          rate-limit:
-            enabled: ${SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED:true}
-            window: ${SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW:PT1M}
-            mcp-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS:120}
-            oauth-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS:60}
-            ui-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS:60}
-            metadata-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS:120}
-            max-client-buckets: ${SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
-          mcp:
-            enabled: ${SKILLPILOT_OPENAI_COACH_DE_V1_MCP_ENABLED:${SKILLPILOT_OPENAI_COACH_DE_V1_ENABLED:false}}
-            server-name: skillpilot-coach-de-v1
-            server-version: "@skillpilotServerBuild@"
-            request-timeout: PT30S
-          oauth:
-            enabled: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_ENABLED:false}
-            # Every active coach line owns one pre-registered static
-            # confidential client while all lines share this authorization
-            # server process.
-            client-id: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ID:}
-            client-secret: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_SECRET:}
-            redirect-uris: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_REDIRECT_URIS:}
-            client-authentication-method: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD:client_secret_basic}
-            client-jwk-set-uri: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_JWK_SET_URI:}
-            client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
-            client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}
-            # Comma-separated, exact former OpenAI-DE-V1 public-client IDs.
-            legacy-client-ids: ${SKILLPILOT_OPENAI_COACH_DE_V1_OAUTH_LEGACY_CLIENT_IDS:}
-            protected-resource-metadata: https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
-            access-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL:PT1H}
-            refresh-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL:P30D}
+      v1:
+        enabled: ${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}
+        bootstrap-enabled: ${SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED:false}
+        writes-enabled: ${SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED:false}
+        # These policies are shared by every OpenAI coach contract hosted in
+        # this one Spring Boot process.
+        secure-cookie: ${SKILLPILOT_OPENAI_SECURE_COOKIE:true}
+        binding-ttl: ${SKILLPILOT_OPENAI_BINDING_TTL:PT5M}
+        launch-ttl: ${SKILLPILOT_OPENAI_LAUNCH_TTL:PT5M}
+        learning-session-ttl: ${SKILLPILOT_OPENAI_LEARNING_SESSION_TTL:PT24H}
+        cleanup-interval-ms: ${SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS:3600000}
+        # Public endpoints are immutable parts of the language-neutral V1
+        # contract. Nginx maps this origin to its internal route in this JVM.
+        mcp-url: https://mcp-coach-v1.skillpilot.com/mcp
+        oauth-resource: https://mcp-coach-v1.skillpilot.com/mcp
+        server-build: "@skillpilotServerBuild@"
+        # Optional assertion only. The effective revision is derived from the
+        # loaded repository JSON or active package generation at startup.
+        curriculum-revision: ${SKILLPILOT_CURRICULUM_REVISION:}
+        workflow-version: ${SKILLPILOT_OPENAI_COACH_V1_WORKFLOW_VERSION:coach@1.0}
+        open-ai-apps-challenge: ${SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE:}
+        chatgpt-url: ${SKILLPILOT_OPENAI_CHATGPT_URL:https://chatgpt.com/}
+        security:
+          # Mandatory OAuth/provider safety baseline. It mirrors provider
+          # activation; an explicit false override is rejected at startup.
+          secure-mode: ${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}
+        rate-limit:
+          enabled: ${SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED:true}
+          window: ${SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW:PT1M}
+          mcp-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS:120}
+          oauth-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS:60}
+          ui-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS:60}
+          metadata-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS:120}
+          max-client-buckets: ${SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
+        mcp:
+          enabled: ${SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED:${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}}
+          server-name: skillpilot-coach-v1
+          server-version: "@skillpilotServerBuild@"
+          request-timeout: PT30S
+        oauth:
+          enabled: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED:false}
+          # The V1 coach owns one pre-registered static confidential client in
+          # the authorization server hosted by this process.
+          client-id: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ID:}
+          client-secret: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET:}
+          redirect-uris: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_REDIRECT_URIS:}
+          client-authentication-method: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_AUTHENTICATION_METHOD:client_secret_basic}
+          client-jwk-set-uri: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_JWK_SET_URI:}
+          client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
+          client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}
+          # Exact former draft client IDs accepted only by the one-way cutover.
+          legacy-client-ids: ${SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS:}
+          protected-resource-metadata: https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+          access-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL:PT1H}
+          refresh-token-ttl: ${SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL:P30D}
   curriculum:
     source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}
     consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}

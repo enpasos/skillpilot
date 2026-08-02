@@ -1,84 +1,73 @@
-# SkillPilot als zwei ChatGPT MCP Apps
+# SkillPilot Coach: one MCP App per major version
 
-Status: implementierter Mechanik-Prototyp; noch kein produktiver Lerncoach.
+## Decision
 
-Die strategische Entscheidung und ihre Grenzen stehen in der
-[Lerncoach-Zielarchitektur](../../docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md).
-Die ausführbare Beschreibung steht in [README.md](README.md).
+SkillPilot publishes one MCP App/plugin identity per contract major, not one
+per learner language.
 
-## Entscheidung
-
-SkillPilot verwendet für Deutsch und Englisch **zwei getrennte Apps**:
-
-- SkillPilot Coach Deutsch: `/mcp/de`
-- SkillPilot Coach English: `/mcp/en`
-
-Beide Apps besitzen eigene Toolnamen, Beschreibungen, UI-Ressourcen und Tests.
-Nur die interne, providerunabhängige Zustands- und Fachlogik wird geteilt. Es gibt
-keinen `language`-Parameter an der öffentlichen Schnittstelle.
-
-Das ist bewusst mehr Konfiguration als eine automatisch lokalisierte App. Die
-Trennung verhindert jedoch Spracherkennung als zusätzliche Fehlerquelle und
-macht reale DE-/EN-Abnahmetests unabhängig voneinander möglich.
-
-## Architekturidee
+For V1 the external boundary is:
 
 ```text
-ChatGPT-Nutzerkonto und gewählter OpenAI-Tarif
-                       |
-          ChatGPT-Modell und Chatoberfläche
-                       |
-        +--------------+--------------+
-        |                             |
- SkillPilot App DE              SkillPilot App EN
- /mcp/de                         /mcp/en
-        |                             |
-        +--------------+--------------+
-                       |
-       SkillPilot-Fassade und persistenter Lernzustand
-                       |
-        Curriculum, Scope, Frontier, Mastery,
-             Recall und Prüfungs-Receipts
+SkillPilot Coach v1
+  plugin: skillpilot-coach-v1
+  origin: https://mcp-coach-v1.skillpilot.com
+  endpoint: /mcp
+  protocol metadata: English
+  learner language: backend session communicationLocale
 ```
 
-Das Modell läuft beim Provider. Damit bezahlt die lernende Person die
-Modellnutzung direkt über den dort verfügbaren kostenlosen Zugang oder ihr
-festes Verbraucherabo. SkillPilot ruft für diesen Kanal keine nutzungsabhängig
-abgerechnete Modell-API auf.
+The English protocol text is guidance for the model and host. It does not ask
+the learner to communicate in English and does not override target-language
+payloads. The model must use the session's `communicationLocale` for its
+learner-facing response.
 
-SkillPilot bleibt alleinige fachliche Zustandsquelle. Das Modell interpretiert
-Sprache und bewertet Antworten, darf aber weder technische Auswahlwerte erfinden
-noch den gespeicherten Lernzustand aus dem Chat rekonstruieren.
+## Why this boundary is sufficient
 
-## Ersatz für die verlorene Action-Retention
+- SkillPilot already fixes the communication language when it creates the
+  learning session.
+- All learner-visible backend payloads arrive in that target language.
+- Tool names and JSON schemas are internal model-facing protocol metadata.
+- Modern language models can follow English protocol instructions while
+  conversing with the learner in another explicit language.
+- One identity avoids duplicate OAuth clients, app registrations, review
+  processes, release snapshots, subdomains, and version drift.
 
-Der Render-Tool-Response trennt drei Ebenen:
+A language split remains possible only if a future host or model shows a
+measured reliability problem that cannot be solved by explicit locale metadata
+and tests. It is not the default architecture.
 
-- `content`: kurze, sichtbare Zusammenfassung;
-- `structuredContent`: modelllesbare, semantische Labels und Lerninhalte;
-- Result-`_meta`: nur für das Widget bestimmte, opake Session- und
-  Auswahlreferenzen.
+## Runtime flow
 
-Das Widget ruft Auswahl und Einreichung direkt über app-only MCP-Tools auf. Bei
-einem späteren Chat-Turn lädt das Modell den aktuellen Zustand über ein
-argumentloses Lesetool frisch aus SkillPilot. Damit muss kein verstecktes
-Action-Ergebnis über den Gesprächskontext hinweg erhalten bleiben.
+```text
+ChatGPT / MCP host
+        |
+        | one English V1 tool catalog
+        v
+https://mcp-coach-v1.skillpilot.com/mcp
+        |
+        | one shared Spring Boot process
+        v
+SkillPilot session state
+  - communicationLocale (authoritative)
+  - curriculum and learner scope
+  - active goal and mastery
+  - localized payloads and UI data
+```
 
-## Abgrenzung des Prototyps
+The language is not supplied as a tool argument. A model cannot switch a
+session from German to English by changing a request field.
 
-Der Prototyp implementiert das MCP-Protokoll, die MCP-App-Ressource, die
-Standard-Bridge, zwei getrennte Sprachverträge, persistente Demo-Zustände und den
-vollständigen UI-Ablauf. Die lokale Host-Simulation verwendet bewusst keine
-Modell-API.
+## Local prototype
 
-Noch nicht produktiv implementiert sind:
+The Node prototype mirrors the singular contract on `/mcp`. Its `de` and `en`
+modules are localized fixtures only. The local preview header
+`x-skillpilot-demo-locale` selects fixture data for tests; it is not a product
+API or production state mechanism.
 
-- OAuth-Account-Linking von der jeweiligen OpenAI-App zum SkillPilot-Konto;
-- die Anbindung der Demo-Zustandsablage an `CoachToolFacade` und die Datenbank;
-- die vollständige Workflow-Parität für Curriculumwahl, Frontier, Mastery,
-  Verified Recall und Prüfungen;
-- öffentliche HTTPS-Hosts, reale ChatGPT-Abnahme und Plugin-Review.
+## Versioning
 
-No-Auth und der einzelne lokale Demo-Zustand sind ausschließlich für den
-Mechaniktest zulässig. Sie dürfen nicht als öffentlicher Produktivdienst mit
-echten Lerndaten betrieben werden.
+The major version owns the externally observable MCP contract, plugin bundle,
+OAuth audience, UI resource identity, and public origin. Compatible internal
+work remains in the `1.0.0-SNAPSHOT` draft until an actual publication is
+recorded. A new language does not increment the contract version and does not
+create a new plugin line.

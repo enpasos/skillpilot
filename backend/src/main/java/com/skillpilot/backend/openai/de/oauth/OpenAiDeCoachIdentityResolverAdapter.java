@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @Component
 @ConditionalOnProperty(
-        name = {"skillpilot.openai.coach.de.v1.enabled", "skillpilot.openai.coach.de.v1.oauth.enabled"},
+        name = {"skillpilot.openai.coach.v1.enabled", "skillpilot.openai.coach.v1.oauth.enabled"},
         havingValue = "true")
 public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoachIdentityResolver {
 
@@ -68,7 +68,7 @@ public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoach
     private Authentication requireAuthentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            throw new AuthenticationCredentialsNotFoundException("OpenAI-DE authentication is required.");
+            throw new AuthenticationCredentialsNotFoundException("OpenAI Coach V1 authentication is required.");
         }
         return authentication;
     }
@@ -77,7 +77,7 @@ public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoach
         boolean granted = authentication.getAuthorities().stream()
                 .anyMatch(authority -> requiredAuthority.equals(authority.getAuthority()));
         if (!granted) {
-            throw new AccessDeniedException("Required OpenAI-DE scope is missing.");
+            throw new AccessDeniedException("Required OpenAI Coach V1 scope is missing.");
         }
     }
 }

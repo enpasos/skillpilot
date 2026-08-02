@@ -10,18 +10,18 @@ function nowIso() {
   return new Date().toISOString();
 }
 
-function createState(contract, learningRequest) {
+function createState(catalog, learningRequest) {
   const createdAt = nowIso();
   return {
     revision: 1,
-    locale: contract.locale,
+    locale: catalog.locale,
     sessionRef: `spapp_${randomUUID()}`,
     phase: "scope-choice",
     learningRequest: learningRequest?.trim() || null,
     courseCode: null,
     appliedChoiceRef: null,
     optionRefs: Object.fromEntries(
-      contract.copy.choices.map((choice) => [choice.code, `choice_${randomUUID()}`])
+      catalog.copy.choices.map((choice) => [choice.code, `choice_${randomUUID()}`])
     ),
     submission: null,
     evaluation: null,
@@ -71,12 +71,12 @@ export class CoachStore {
     return this.#writeQueue;
   }
 
-  async open(contract, learningRequest) {
+  async open(catalog, learningRequest) {
     await this.#ready;
-    let state = this.#states.get(contract.locale);
+    let state = this.#states.get(catalog.locale);
     if (!state) {
-      state = createState(contract, learningRequest);
-      this.#states.set(contract.locale, state);
+      state = createState(catalog, learningRequest);
+      this.#states.set(catalog.locale, state);
       await this.#persist();
     } else if (learningRequest?.trim() && !state.learningRequest) {
       state.learningRequest = learningRequest.trim();
@@ -87,22 +87,22 @@ export class CoachStore {
     return clone(state);
   }
 
-  async current(contract) {
+  async current(catalog) {
     await this.#ready;
-    const state = this.#states.get(contract.locale);
+    const state = this.#states.get(catalog.locale);
     return state ? clone(state) : null;
   }
 
-  async choose(contract, sessionRef, choiceRef) {
+  async choose(catalog, sessionRef, choiceRef) {
     await this.#ready;
-    const state = this.#requireSession(contract, sessionRef);
+    const state = this.#requireSession(catalog, sessionRef);
     if (state.phase !== "scope-choice" && state.appliedChoiceRef === choiceRef) {
       return clone(state);
     }
     if (state.phase !== "scope-choice") {
       throw new CoachConflictError("The learning path has already been selected.");
     }
-    const choice = contract.copy.choices.find(
+    const choice = catalog.copy.choices.find(
       (candidate) => state.optionRefs[candidate.code] === choiceRef
     );
     if (!choice) {
@@ -118,9 +118,9 @@ export class CoachStore {
     return clone(state);
   }
 
-  async submit(contract, sessionRef, answer, idempotencyKey) {
+  async submit(catalog, sessionRef, answer, idempotencyKey) {
     await this.#ready;
-    const state = this.#requireSession(contract, sessionRef);
+    const state = this.#requireSession(catalog, sessionRef);
     const normalized = answer?.trim();
     if (!normalized) throw new CoachInputError("The answer must not be empty.");
     if (normalized.length > 4_000) {
@@ -155,18 +155,18 @@ export class CoachStore {
     return clone(state);
   }
 
-  async pending(contract) {
+  async pending(catalog) {
     await this.#ready;
-    const state = this.#states.get(contract.locale);
+    const state = this.#states.get(catalog.locale);
     if (!state?.submission || state.phase !== "awaiting-evaluation") {
       throw new CoachConflictError("There is no submitted answer waiting for evaluation.");
     }
     return clone(state);
   }
 
-  async evaluate(contract, { score, maxScore, passed, feedback }) {
+  async evaluate(catalog, { score, maxScore, passed, feedback }) {
     await this.#ready;
-    const state = this.#states.get(contract.locale);
+    const state = this.#states.get(catalog.locale);
     const normalizedFeedback = feedback?.trim();
     if (
       state?.phase === "feedback" &&
@@ -204,14 +204,14 @@ export class CoachStore {
     return clone(state);
   }
 
-  async reset(contract) {
+  async reset(catalog) {
     await this.#ready;
-    this.#states.delete(contract.locale);
+    this.#states.delete(catalog.locale);
     await this.#persist();
   }
 
-  #requireSession(contract, sessionRef) {
-    const state = this.#states.get(contract.locale);
+  #requireSession(catalog, sessionRef) {
+    const state = this.#states.get(catalog.locale);
     if (!state || !sessionRef || state.sessionRef !== sessionRef) {
       throw new CoachConflictError("The widget session is stale or invalid.");
     }

@@ -61,7 +61,7 @@ class OpenAiDeOAuthConfigurationTest {
                 .withUserConfiguration(OpenAiDeConfiguration.class, OpenAiDeOAuthConfiguration.class)
                 .withPropertyValues(
                         secureProviderPropertiesWith(
-                                "skillpilot.openai.coach.de.v1.enabled=false"))
+                                "skillpilot.openai.coach.v1.enabled=false"))
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean("openAiDeClientRegistrationInitializer");
@@ -75,7 +75,7 @@ class OpenAiDeOAuthConfigurationTest {
                 .withUserConfiguration(OpenAiDeConfiguration.class)
                 .withPropertyValues(
                         secureProviderPropertiesWith(
-                                "skillpilot.openai.coach.de.v1.learning-session-ttl=PT24H"))
+                                "skillpilot.openai.coach.v1.learning-session-ttl=PT24H"))
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context.getBean(OpenAiDeProperties.class).getLearningSessionTtl())
@@ -89,9 +89,9 @@ class OpenAiDeOAuthConfigurationTest {
             new ApplicationContextRunner()
                     .withUserConfiguration(OpenAiDeConfiguration.class)
                     .withPropertyValues(
-                            "skillpilot.openai.coach.de.v1.enabled=true",
+                            "skillpilot.openai.coach.v1.enabled=true",
                             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-                            "skillpilot.openai.coach.de.v1.learning-session-ttl=" + invalidTtl)
+                            "skillpilot.openai.coach.v1.learning-session-ttl=" + invalidTtl)
                     .run(context -> {
                         assertThat(context).hasFailed();
                         assertThat(context.getStartupFailure())
@@ -104,16 +104,16 @@ class OpenAiDeOAuthConfigurationTest {
 
     private static String[] secureProviderPropertiesWith(String override) {
         String[] baseline = new String[] {
-            "skillpilot.openai.coach.de.v1.enabled=true",
+            "skillpilot.openai.coach.v1.enabled=true",
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
-            "skillpilot.openai.coach.de.v1.server-build=test-build",
-            "skillpilot.openai.coach.de.v1.security.secure-mode=true",
-            "skillpilot.openai.coach.de.v1.oauth.enabled=true",
-            "skillpilot.openai.coach.de.v1.oauth.client-authentication-method=client_secret_basic",
-            "skillpilot.openai.coach.de.v1.oauth.client-id=skillpilot-chatgpt-de-prod",
-            "skillpilot.openai.coach.de.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
-            "skillpilot.openai.coach.de.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.coach.de.v1.oauth.client-assertion-replay-cache-size=0"
+            "skillpilot.openai.coach.v1.server-build=test-build",
+            "skillpilot.openai.coach.v1.security.secure-mode=true",
+            "skillpilot.openai.coach.v1.oauth.enabled=true",
+            "skillpilot.openai.coach.v1.oauth.client-authentication-method=client_secret_basic",
+            "skillpilot.openai.coach.v1.oauth.client-id=skillpilot-chatgpt-v1-prod",
+            "skillpilot.openai.coach.v1.oauth.client-secret=" + TEST_CLIENT_SECRET,
+            "skillpilot.openai.coach.v1.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
+            "skillpilot.openai.coach.v1.oauth.client-assertion-replay-cache-size=0"
         };
         String[] combined = java.util.Arrays.copyOf(baseline, baseline.length + 1);
         combined[baseline.length] = override;
@@ -225,7 +225,7 @@ class OpenAiDeOAuthConfigurationTest {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredConfidentialProperties();
         AtomicReference<RegisteredClient> persisted = new AtomicReference<>();
-        when(clients.findByClientId("skillpilot-chatgpt-de-prod"))
+        when(clients.findByClientId("skillpilot-chatgpt-v1-prod"))
                 .thenAnswer(invocation -> persisted.get());
         doAnswer(invocation -> {
                     persisted.set(invocation.getArgument(0));
@@ -238,7 +238,7 @@ class OpenAiDeOAuthConfigurationTest {
 
         RegisteredClient client = persisted.get();
         assertThat(client).isNotNull();
-        assertThat(client.getClientId()).isEqualTo("skillpilot-chatgpt-de-prod");
+        assertThat(client.getClientId()).isEqualTo("skillpilot-chatgpt-v1-prod");
         assertThat(client.getClientAuthenticationMethods())
                 .containsExactly(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);
         assertThat(client.getClientSecret())
@@ -400,7 +400,7 @@ class OpenAiDeOAuthConfigurationTest {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
 
         OpenAiDeProperties staticClient = configuredPrivateKeyJwtProperties();
-        staticClient.getOauth().setClientId("skillpilot-chatgpt-de-prod");
+        staticClient.getOauth().setClientId("skillpilot-chatgpt-v1-prod");
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, staticClient)::afterPropertiesSet)
                 .withMessageContaining("CIMD client ID")
@@ -434,14 +434,14 @@ class OpenAiDeOAuthConfigurationTest {
     void discoveryAdvertisesOnlyConfiguredClientAuthenticationMode() {
         OpenAiDeProperties legacy = configuredProperties();
         assertThat(OpenAiDeOAuthMetadataController.authorizationServerMetadata(
-                        "https://skillpilot.test/api/openai/de",
+                        "https://skillpilot.test/api/openai/v1",
                         legacy))
                 .containsEntry("token_endpoint_auth_methods_supported", List.of("none"))
                 .doesNotContainKey("client_id_metadata_document_supported");
 
         OpenAiDeProperties secure = configuredConfidentialProperties();
         assertThat(OpenAiDeOAuthMetadataController.authorizationServerMetadata(
-                        "https://skillpilot.test/api/openai/de",
+                        "https://skillpilot.test/api/openai/v1",
                         secure))
                 .containsEntry("token_endpoint_auth_methods_supported", List.of("client_secret_basic"))
                 .containsEntry("revocation_endpoint_auth_methods_supported", List.of("client_secret_basic"))
@@ -454,7 +454,7 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsNonHttpsResourceAndCallbackConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl("http://mcp-coach-de-v1.skillpilot.test/mcp");
+        properties.setMcpUrl("http://mcp-coach-v1.skillpilot.test/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
@@ -466,7 +466,7 @@ class OpenAiDeOAuthConfigurationTest {
     void rejectsWhitespaceAroundExactResourceConfiguration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        properties.setMcpUrl(" https://mcp-coach-de-v1.skillpilot.test/mcp");
+        properties.setMcpUrl(" https://mcp-coach-v1.skillpilot.test/mcp");
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
@@ -501,8 +501,8 @@ class OpenAiDeOAuthConfigurationTest {
     @Test
     void rejectsQueryOrFragmentInProtocolEndpointConfiguration() {
         for (String unsafeMetadataUrl : List.of(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource?tenant=one",
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource#fragment")) {
+                "https://skillpilot.test/api/openai/v1/oauth/protected-resource?tenant=one",
+                "https://skillpilot.test/api/openai/v1/oauth/protected-resource#fragment")) {
             RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
             OpenAiDeProperties properties = configuredProperties();
             properties.getOauth().setProtectedResourceMetadata(unsafeMetadataUrl);
@@ -586,7 +586,7 @@ class OpenAiDeOAuthConfigurationTest {
     private OpenAiDeProperties configuredConfidentialProperties() {
         OpenAiDeProperties properties = configuredProperties();
         properties.getOauth().setClientAuthenticationMethod("client_secret_basic");
-        properties.getOauth().setClientId("skillpilot-chatgpt-de-prod");
+        properties.getOauth().setClientId("skillpilot-chatgpt-v1-prod");
         properties.getOauth().setClientSecret(TEST_CLIENT_SECRET);
         properties.getOauth().setClientAssertionReplayCacheSize(0);
         return properties;

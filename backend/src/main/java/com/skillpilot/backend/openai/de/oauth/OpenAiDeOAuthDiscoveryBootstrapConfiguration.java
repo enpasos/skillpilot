@@ -34,10 +34,10 @@ import org.springframework.web.servlet.function.ServerResponse;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(OpenAiDeProperties.class)
 @ConditionalOnProperty(
-        name = "skillpilot.openai.coach.de.v1.bootstrap-enabled",
+        name = "skillpilot.openai.coach.v1.bootstrap-enabled",
         havingValue = "true")
 @ConditionalOnProperty(
-        name = "skillpilot.openai.coach.de.v1.enabled",
+        name = "skillpilot.openai.coach.v1.enabled",
         havingValue = "false",
         matchIfMissing = true)
 public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
@@ -59,12 +59,6 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                                         properties)))
                 .GET(
                         OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH,
-                        request -> metadataResponse(
-                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(
-                                        issuer,
-                                        properties)))
-                .GET(
-                        OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH,
                         request -> metadataResponse(
                                 OpenAiDeOAuthMetadataController.authorizationServerMetadata(
                                         issuer,
@@ -137,19 +131,19 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
             OpenAiDeProperties properties) {
         OpenAiDeOAuthConfiguration.requireHttpsOrigin(
                 publicBaseUrl,
-                "OpenAI-DE public base URL");
+                "OpenAI Coach V1 public base URL");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 issuer,
-                "OpenAI-DE OAuth issuer");
+                "OpenAI Coach V1 OAuth issuer");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getMcpUrl(),
-                "OpenAI-DE public MCP endpoint");
+                "OpenAI Coach V1 public MCP endpoint");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getOauthResource(),
-                "OpenAI-DE OAuth resource");
+                "OpenAI Coach V1 OAuth resource");
         OpenAiDeOAuthConfiguration.requireHttpsUri(
                 properties.getOauth().getProtectedResourceMetadata(),
-                "OpenAI-DE protected-resource metadata URL");
+                "OpenAI Coach V1 protected-resource metadata URL");
         OpenAiDeV1PublicContractValidation.requireExact(properties);
     }
 }

@@ -66,7 +66,7 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
         }
         Set<String> accessTokenScopes = authorization.getAccessToken().getToken().getScopes();
         if (!accessTokenScopes.contains(OpenAiDeOAuthConfiguration.READ_SCOPE)) {
-            throw new BadOpaqueTokenException("Required OpenAI-DE read scope is missing.");
+            throw new BadOpaqueTokenException("Required OpenAI Coach V1 read scope is missing.");
         }
 
         String subject = authorization.getPrincipalName();

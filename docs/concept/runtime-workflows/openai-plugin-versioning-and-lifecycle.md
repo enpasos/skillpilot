@@ -40,24 +40,25 @@ Für SkillPilot bedeutet dies konkret:
 
 ```text
 Plugin-Linie V1
-    technischer Name: skillpilot-coach-de-v1
-    Anzeigename:       SkillPilot Coach DE v1
+    technischer Name: skillpilot-coach-v1
+    Anzeigename:       SkillPilot Coach v1
     Plugin-Releases:   1.x.y
-    MCP-Endpoint:      https://mcp-coach-de-v1.skillpilot.com/mcp
+    MCP-Endpoint:      https://mcp-coach-v1.skillpilot.com/mcp
 
 Plugin-Linie V2
-    technischer Name: skillpilot-coach-de-v2
-    Anzeigename:       SkillPilot Coach DE v2
+    technischer Name: skillpilot-coach-v2
+    Anzeigename:       SkillPilot Coach v2
     Plugin-Releases:   2.x.y
-    MCP-Endpoint:      https://mcp-coach-de-v2.skillpilot.com/mcp
+    MCP-Endpoint:      https://mcp-coach-v2.skillpilot.com/mcp
 ```
 
 Beide Plugin-Linien dürfen denselben SkillPilot-Core, dieselbe Datenbank,
-denselben Authorization Server und dieselben Benutzerkonten verwenden. Jede
-unabhängig veröffentlichbare Kombination aus Sprache und Contract-Major erhält
-jedoch einen eigenen öffentlichen MCP-Origin. Getrennt werden außerdem die
-Vertragsadapter, Plugin-Pakete sowie der jeweilige Veröffentlichungs- und
-Stilllegungslebenszyklus.
+denselben Authorization Server und dieselben Benutzerkonten verwenden. Die
+öffentliche Plugin-Identität und der MCP-Origin werden ausschließlich nach
+Contract-Major getrennt, nicht nach Sprache. Die Interaktionssprache ist eine
+vom Backend autoritativ an die Lernsession gebundene Eigenschaft. Getrennt
+werden die Major-Vertragsadapter, Plugin-Pakete sowie der jeweilige
+Veröffentlichungs- und Stilllegungslebenszyklus.
 
 ## 2. Status dieser Entscheidung
 
@@ -109,7 +110,7 @@ SkillPilot verwendet mehrere unabhängige Versionen. Keine einzelne Versionsnumm
 
 | Versionsebene | Beispiel | Bedeutung | Quelle der Wahrheit |
 |---|---|---|---|
-| Plugin-Identität / Contract-Major | `skillpilot-coach-de-v1` / `1` | Separat veröffentlichbare und später separat stilllegbare öffentliche Vertragslinie | Plugin-Paket und Deployment-Konfiguration |
+| Plugin-Identität / Contract-Major | `skillpilot-coach-v1` / `1` | Separat veröffentlichbare und später separat stilllegbare öffentliche Vertragslinie | Plugin-Paket und Deployment-Konfiguration |
 | Plugin-Paketversion | `1.4.2` | SemVer des eingereichten Pakets aus Manifest, Skills und geprüften MCP-/UI-Metadaten | Plugin-Manifest |
 | MCP-Tool-Contract-Major | `1` | Semantik und JSON-Schemas der öffentlich sichtbaren SkillPilot-Tools | Contract-Modul und veröffentlichter Snapshot |
 | MCP-Protokollversion | z. B. datumsbasiert | Transport- und Protokollstand zwischen Host und MCP-Server | MCP-Handshake; nicht der SkillPilot-Fachvertrag |
@@ -117,7 +118,7 @@ SkillPilot verwendet mehrere unabhängige Versionen. Keine einzelne Versionsnumm
 | UI-Artefaktversion | Hash oder `1.4.2` | Unveränderliche HTML-/JS-/CSS-Auslieferung | UI-Buildmanifest |
 | Zustands-Schemaversion | `3` | Internes persistentes Datenformat einer Lernsession | Datenmigrationen |
 | Zustandsversion | `42` | Monoton steigende Revision des kanonischen Coach-Zustands eines Lernenden; alle Sessions und das Web-UI sehen dieselbe Revision | Lernenden-Datensatz; Session hält nur einen Diagnose-Snapshot |
-| Workflow-Version | `coach-de@2.3` | Pädagogische Ablauf- und Entscheidungslogik | Workflow-Konfiguration |
+| Workflow-Version | `coach@2.3` | Pädagogische Ablauf- und Entscheidungslogik | Workflow-Konfiguration |
 | Curriculum-Revision | `he-mathe-lk-g9@2026.1` | Verwendete Lernziel- und Lehrplanrevision | Curriculum-Repository |
 
 Verbindliche Konsistenzregel für jede öffentliche Plugin-Linie:
@@ -132,11 +133,11 @@ Major(pluginPackageVersion)
 Beispiel:
 
 ```text
-plugin name:        skillpilot-coach-de-v2
+plugin name:        skillpilot-coach-v2
 plugin version:     2.3.1
 contract major:     2
-MCP endpoint:       https://mcp-coach-de-v2.skillpilot.com/mcp
-OAuth resource:     https://mcp-coach-de-v2.skillpilot.com/mcp
+MCP endpoint:       https://mcp-coach-v2.skillpilot.com/mcp
+OAuth resource:     https://mcp-coach-v2.skillpilot.com/mcp
 ```
 
 Die Server-Buildnummer, Zustands-Schemaversion, Workflow-Version und Curriculum-Revision dürfen unabhängig davon fortschreiten.
@@ -148,23 +149,26 @@ Die Server-Buildnummer, Zustands-Schemaversion, Workflow-Version und Curriculum-
 Die erste öffentliche Plugin-Linie MUSS wie folgt vorbereitet werden:
 
 ```text
-Technischer Plugin-/Paketname: skillpilot-coach-de-v1
-Öffentlicher Anzeigename:       SkillPilot Coach DE v1
+Technischer Plugin-/Paketname: skillpilot-coach-v1
+Öffentlicher Anzeigename:       SkillPilot Coach v1
 Erste Manifest-Version:         1.0.0
 Contract-Major:                 1
-Öffentlicher MCP-Endpoint:      https://mcp-coach-de-v1.skillpilot.com/mcp
-OAuth Resource/Audience:        https://mcp-coach-de-v1.skillpilot.com/mcp
-Protected-Resource-Metadaten:   https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
-Domain-Challenge:               https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge
-OAuth-Issuer:                   https://skillpilot.com/api/openai/de
-Widget-Origin:                   https://mcp-coach-de-v1.skillpilot.com
+Öffentlicher MCP-Endpoint:      https://mcp-coach-v1.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-v1.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge
+OAuth-Issuer:                   https://skillpilot.com/api/openai/v1
+Widget-Origin:                   https://mcp-coach-v1.skillpilot.com
 ```
 
-Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen. Die längere Bezeichnung „SkillPilot Coach (Deutsch, Version 1)“ wird nicht verwendet.
+Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen.
+Plugin-Metadaten, Skill-Anweisungen und Toolbeschreibungen verwenden neutrales
+Englisch. Nutzerkommunikation und Nutzdaten folgen dagegen ausschließlich der
+in der Lernsession gespeicherten Interaktionssprache.
 
 Für die V1-Linie gibt es keinen öffentlichen Kompatibilitätsalias. Der
 dedizierte Nginx-vHost bildet ausschließlich den öffentlichen Pfad `/mcp` auf
-den loopback-gebundenen Spring-Transport `/internal/openai/de/v1/mcp` ab. Der
+den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` ab. Der
 OAuth-Issuer und seine Browser-Endpunkte bleiben auf `skillpilot.com`; der
 MCP-Origin verwendet normales serverauthentisiertes TLS und OAuth, aber kein
 Clientzertifikat.
@@ -174,14 +178,14 @@ Clientzertifikat.
 Eine spätere inkompatible Vertragsgeneration wird separat angelegt:
 
 ```text
-Technischer Plugin-/Paketname: skillpilot-coach-de-v2
-Öffentlicher Anzeigename:       SkillPilot Coach DE v2
+Technischer Plugin-/Paketname: skillpilot-coach-v2
+Öffentlicher Anzeigename:       SkillPilot Coach v2
 Erste Manifest-Version:         2.0.0
 Contract-Major:                 2
-Öffentlicher MCP-Endpoint:      https://mcp-coach-de-v2.skillpilot.com/mcp
-OAuth Resource/Audience:        https://mcp-coach-de-v2.skillpilot.com/mcp
-Protected-Resource-Metadaten:   https://mcp-coach-de-v2.skillpilot.com/.well-known/oauth-protected-resource/mcp
-Domain-Challenge:               https://mcp-coach-de-v2.skillpilot.com/.well-known/openai-apps-challenge
+Öffentlicher MCP-Endpoint:      https://mcp-coach-v2.skillpilot.com/mcp
+OAuth Resource/Audience:        https://mcp-coach-v2.skillpilot.com/mcp
+Protected-Resource-Metadaten:   https://mcp-coach-v2.skillpilot.com/.well-known/oauth-protected-resource/mcp
+Domain-Challenge:               https://mcp-coach-v2.skillpilot.com/.well-known/openai-apps-challenge
 ```
 
 V1 und V2 dürfen zeitweise parallel veröffentlicht sein. Sie teilen sich den Core, sind aber an den öffentlichen Grenzen getrennt.
@@ -195,23 +199,30 @@ verlangte Challenge auf genau diesem Host bereitgestellt werden:
 /.well-known/openai-apps-challenge
 ```
 
-Zwei Plugins auf demselben Host würden denselben Challenge-Pfad teilen. Deshalb
-trennt SkillPilot Sprache und Contract-Major bereits vor der Veröffentlichung
-durch eigene Hosts. Aktuell ist nur `mcp-coach-de-v1.skillpilot.com` aktiv; die
-folgenden fünf Namen sind durch DNS, Zertifikat und einen `404`-vHost
-reserviert, aber noch keine veröffentlichten oder aufrufbaren MCP-Verträge:
+Zwei Major-Plugins auf demselben Host würden denselben Challenge-Pfad teilen.
+Deshalb trennt SkillPilot Contract-Majors bereits vor der Veröffentlichung
+durch eigene Hosts. Sprache erzeugt ausdrücklich keinen weiteren Host. Aktuell
+ist nur `mcp-coach-v1.skillpilot.com` aktiv; die folgenden acht Namen sind durch
+DNS, Zertifikat und einen `404`-vHost reserviert, aber noch keine
+veröffentlichten oder aufrufbaren MCP-Verträge:
 
 ```text
-mcp-coach-de-v2.skillpilot.com
-mcp-coach-de-v3.skillpilot.com
-mcp-coach-en-v1.skillpilot.com
-mcp-coach-en-v2.skillpilot.com
-mcp-coach-en-v3.skillpilot.com
+mcp-coach-v2.skillpilot.com
+mcp-coach-v3.skillpilot.com
+mcp-coach-v4.skillpilot.com
+mcp-coach-v5.skillpilot.com
+mcp-coach-v6.skillpilot.com
+mcp-coach-v7.skillpilot.com
+mcp-coach-v8.skillpilot.com
+mcp-coach-v9.skillpilot.com
 ```
 
 Die Reservierung erzeugt weder eine Plugin-Veröffentlichung noch eine
 OAuth-Resource. Erst die jeweilige Contract-Implementierung und Freigabe
 aktiviert `/mcp`, Protected-Resource-Metadaten und den eigenen Challenge-Wert.
+Die früher lokal vorbereiteten, nie veröffentlichten Sprachhosts
+`mcp-coach-de-v*` und `mcp-coach-en-v*` sind keine Kompatibilitätsrouten und
+werden nicht weiterbetrieben.
 
 ## 7. SemVer-Regeln für SkillPilot
 
@@ -237,7 +248,7 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 - sobald eine Version veröffentlicht ist, erfordert jede weitere Änderung am
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
-Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach DE v1` wurde
+Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
 noch nicht veröffentlicht. Die Lernzielvisualisierungs-UI wird deshalb in den
 bestehenden `1.0.0`-Draft aufgenommen; es entsteht weder `1.0.1` noch ein
 Published-Snapshot. Alle zugehörigen Contract-, Ressourcen-, UI- und
@@ -314,13 +325,13 @@ Eine rein additive Übergangslösung innerhalb V1 ist zulässig, wenn der alte V
 OpenAI / ChatGPT / Codex
           |
           v
-mcp-coach-de-v1.skillpilot.com/mcp  --->  McpContractV1Adapter  ---+
+mcp-coach-v1.skillpilot.com/mcp  --->  McpContractV1Adapter  ---+
                                                        |
                                                        v
                                                 SkillPilot Core
                                                        ^
                                                        |
-mcp-coach-de-v2.skillpilot.com/mcp  --->  McpContractV2Adapter  ---+
+mcp-coach-v2.skillpilot.com/mcp  --->  McpContractV2Adapter  ---+
 ```
 
 Der Core enthält die fachlichen Use Cases. Der jeweilige Adapter übernimmt:
@@ -361,7 +372,7 @@ Zustandsbezogene Toolantworten MÜSSEN die relevanten Versionen explizit ausweis
   "learningSessionId": "sps_...",
   "stateVersion": 42,
   "stateSchemaVersion": 3,
-  "workflowVersion": "coach-de@2.3",
+  "workflowVersion": "coach@2.3",
   "curriculumRevision": "he-mathe-lk-g9@2026.1",
   "currentStep": {
     "goalId": "..."
@@ -437,7 +448,7 @@ Ein zur Einreichung vorgesehener Plugin-Draft mit UI MUSS bereits einen für
 diese Plugin-Identität eindeutigen Widget-Origin angeben. SkillPilot setzt
 deshalb sowohl `_meta.ui.domain` als auch den ChatGPT-Kompatibilitätsalias
 `_meta["openai/widgetDomain"]` auf
-`https://mcp-coach-de-v1.skillpilot.com`. Der ohnehin pro Plugin-Linie
+`https://mcp-coach-v1.skillpilot.com`. Der ohnehin pro Plugin-Linie
 dedizierte MCP-Origin kann zugleich Widget-Origin sein; dafür ist kein zweiter
 Host und kein zusätzlicher öffentlicher Pfad erforderlich.
 
@@ -514,8 +525,8 @@ Skills besitzen in diesem Plan keine unabhängige, zur Laufzeit ausgehandelte Ma
 V1 und V2 erhalten getrennte finale Skill-Bäume:
 
 ```text
-plugins/openai/skillpilot-coach-de-v1/skills/...
-plugins/openai/skillpilot-coach-de-v2/skills/...
+plugins/openai/skillpilot-coach-v1/skills/...
+plugins/openai/skillpilot-coach-v2/skills/...
 ```
 
 Ein V1-Skill MUSS ausschließlich V1-Tools und V1-Vertragssemantik verwenden. Ein V2-Skill MUSS ausschließlich V2-Tools und V2-Vertragssemantik verwenden.
@@ -548,8 +559,8 @@ Für jedes Release müssen mindestens getestet werden:
 V1 und V2 verwenden denselben Spring Authorization Server und dieselben SkillPilot-Konten, aber getrennte OAuth-Resources beziehungsweise Audiences:
 
 ```text
-V1 resource: https://mcp-coach-de-v1.skillpilot.com/mcp
-V2 resource: https://mcp-coach-de-v2.skillpilot.com/mcp
+V1 resource: https://mcp-coach-v1.skillpilot.com/mcp
+V2 resource: https://mcp-coach-v2.skillpilot.com/mcp
 ```
 
 Access Tokens müssen auf die passende Resource/Audience geprüft werden. Ein V1-Token darf nicht automatisch als V2-Token gelten, sofern dies nicht ausdrücklich und sicher im Authorization Server konfiguriert wurde.
@@ -659,7 +670,7 @@ Bei Unsicherheit wird die Änderung als potenziell inkompatibel behandelt, bis C
 Während der internen Arbeit wird ein reproduzierbarer Draft abgelegt:
 
 ```text
-contracts/drafts/openai/skillpilot-coach-de-v1/1.4.0-SNAPSHOT/
+contracts/drafts/openai/skillpilot-coach-v1/1.4.0-SNAPSHOT/
 ```
 
 Dieser Draft darf bei weiteren internen Schritten derselben noch nicht
@@ -670,7 +681,7 @@ Erst nach der tatsächlichen Veröffentlichung im OpenAI-Portal wird derselbe
 geprüfte Stand unter dem unveränderlichen Published-Pfad versiegelt:
 
 ```text
-contracts/published/openai/skillpilot-coach-de-v1/1.4.0/
+contracts/published/openai/skillpilot-coach-v1/1.4.0/
   plugin.json
   app.json
   mcp.json
@@ -685,7 +696,7 @@ contracts/published/openai/skillpilot-coach-de-v1/1.4.0/
   ui-manifest.json
   skills-bundle.json
   skills-bundle.sha256
-  skillpilot-openai-plugin-coach-de-v1-1.4.0.tar
+  skillpilot-openai-plugin-coach-v1-1.4.0.tar
   snapshot-manifest.json
   release-notes.md
 ```
@@ -747,10 +758,10 @@ Die Zustands- und Datumswerte werden konfigurierbar geführt, zum Beispiel:
 
 ```json
 {
-  "pluginIdentity": "skillpilot-coach-de-v1",
+  "pluginIdentity": "skillpilot-coach-v1",
   "contractMajor": 1,
   "lifecycle": "DEPRECATED",
-  "successorIdentity": "skillpilot-coach-de-v2",
+  "successorIdentity": "skillpilot-coach-v2",
   "deprecatedAt": "2028-02-01",
   "endOfSupportAt": "2028-08-01",
   "unpublishAt": "2028-09-01",
@@ -820,12 +831,12 @@ skillpilot/
 
   plugins/
     openai/
-      skillpilot-coach-de-v1/
+      skillpilot-coach-v1/
         .codex-plugin/plugin.json
         .app.json
         skills/
         release-notes/
-      skillpilot-coach-de-v2/
+      skillpilot-coach-v2/
         .codex-plugin/plugin.json
         .app.json
         skills/
@@ -841,13 +852,13 @@ skillpilot/
 
   contracts/published/
     openai/
-      skillpilot-coach-de-v1/
-      skillpilot-coach-de-v2/
+      skillpilot-coach-v1/
+      skillpilot-coach-v2/
 
   contracts/drafts/
     openai/
-      skillpilot-coach-de-v1/
-      skillpilot-coach-de-v2/
+      skillpilot-coach-v1/
+      skillpilot-coach-v2/
 ```
 
 Die technische Struktur darf in einem Monorepo, mehreren Modulen oder mehreren Repositories umgesetzt werden. Entscheidend sind getrennte Build-, Test- und Releasegrenzen für die öffentlichen Major-Verträge.
@@ -982,7 +993,7 @@ Transport sie zuverlässig und dokumentiert bereitstellt.
 Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bereits eine dauerhaft isolierbare V1-Linie bildet. Die Phase soll das derzeitige Verhalten möglichst nicht fachlich verändern.
 
 1. **V1-Konstanten und Konfiguration einführen**
-   - `pluginIdentity = skillpilot-coach-de-v1`
+   - `pluginIdentity = skillpilot-coach-v1`
    - `pluginVersion = 1.0.0`
    - `contractMajor = 1`
    - den öffentlichen MCP-Pfad und die exakte OAuth-Resource festlegen;
@@ -994,9 +1005,9 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - Adapter zum bestehenden SkillPilot-Core einführen.
 
 3. **Öffentlichen V1-Pfad vorbereiten**
-   - Spring-Transport unter `/internal/openai/de/v1/mcp` vorsehen und über den
+   - Spring-Transport unter `/internal/openai/v1/mcp` vorsehen und über den
      dedizierten V1-vHost ausschließlich als
-     `https://mcp-coach-de-v1.skillpilot.com/mcp` veröffentlichen;
+     `https://mcp-coach-v1.skillpilot.com/mcp` veröffentlichen;
    - keinen öffentlichen Kompatibilitätsalias bereitstellen;
    - keine zweite öffentliche HTTP-Route bereitstellen;
    - keine Abhängigkeit von Redirects;
@@ -1004,7 +1015,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
 
 4. **V1-UI versionieren**
    - bereits im Einreichungs-Draft den plugin-eindeutigen Widget-Origin
-     `https://mcp-coach-de-v1.skillpilot.com` festlegen;
+     `https://mcp-coach-v1.skillpilot.com` festlegen;
    - Standardmetadatum `_meta.ui.domain` und ChatGPT-Kompatibilitätsalias
      `_meta["openai/widgetDomain"]` identisch ausliefern;
    - content-addressed oder release-addressed UI-Ressourcen-URIs erzeugen;
@@ -1012,7 +1023,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - UI-State mit `schemaVersion` versehen.
 
 5. **V1-Skill-Bundle trennen**
-   - eigener finaler Skill-Baum für `skillpilot-coach-de-v1`;
+   - eigener finaler Skill-Baum für `skillpilot-coach-v1`;
    - Toolreferenzen gegen V1 prüfen;
    - Bundle-Hash und Release-Artefakt erzeugen.
 

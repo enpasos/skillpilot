@@ -11,7 +11,7 @@ export interface CoachVariantEnvironment {
 export type ResolvedCoachVariant =
   | { version: 'legacy' }
   | { version: 'visible-session'; gptBaseUrl: string }
-  | { version: 'openai-mcp'; language: 'de' }
+  | { version: 'openai-mcp'; language: 'de' | 'en' }
   | { version: 'configuration-error'; requestedVariant: string; message: string }
 
 export const getRequestedCoachVariant = (
@@ -41,13 +41,10 @@ export const resolveCoachVariant = (
     return { version: 'legacy' }
   }
   if (requestedVariant === 'openai-mcp') {
-    if ((language ?? 'de').trim().toLowerCase().startsWith('en')) {
-      return {
-        version: 'visible-session',
-        gptBaseUrl: getVisibleSessionGptBaseUrl(language),
-      }
+    return {
+      version: 'openai-mcp',
+      language: (language ?? 'de').trim().toLowerCase().startsWith('en') ? 'en' : 'de',
     }
-    return { version: 'openai-mcp', language: 'de' }
   }
 
   return {

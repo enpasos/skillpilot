@@ -1,12 +1,12 @@
 # OpenAI-MCP: Bindung an den zugelassenen Client
 
 **Stand:** 31. Juli 2026
-**Status:** verbindliche Sicherheitsarchitektur für den deutschen
-OpenAI-MCP-Coach
+**Status:** verbindliche Sicherheitsarchitektur für den mehrsprachigen
+OpenAI-V1-MCP-Coach
 
 Diese Sicherheitsbindung gilt für den öffentlichen MCP-Endpunkt und die damit
 identische OAuth-Resource/Audience
-`https://mcp-coach-de-v1.skillpilot.com/mcp`. Die Identität und der Lifecycle der
+`https://mcp-coach-v1.skillpilot.com/mcp`. Die Identität und der Lifecycle der
 Linie werden im
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 festgelegt.
@@ -16,7 +16,7 @@ festgelegt.
 Die SkillPilot-ID bleibt das vom Lernenden verwahrte Geheimnis, an dem sein
 Lernstand hängt. Dieses Dokument behandelt ein davon unabhängiges Schutzziel:
 
-> Ein fremder Client darf die lernendenbezogenen OpenAI-DE-MCP-APIs nicht
+> Ein fremder Client darf die lernendenbezogenen OpenAI-V1-MCP-APIs nicht
 > nutzen, auch wenn er den öffentlichen Serververtrag und eine
 > `learningSessionId` kennt.
 
@@ -45,14 +45,14 @@ Lernenden. Keiner der beiden Nachweise ersetzt den anderen.
 ## 3. Verbindliches OAuth-Clientprofil
 
 Produktiv existiert genau ein vorkonfigurierter vertraulicher OAuth-Client für
-die Linie **SkillPilot Coach DE v1**:
+die Linie **SkillPilot Coach v1**:
 
 - feste, vom App-Autor gewählte `client_id`;
 - langes kryptografisch zufälliges `client_secret`;
 - genau die in der ChatGPT-Appverwaltung angezeigte Callback-URL;
 - Token-Endpunkt-Authentisierung ausschließlich mit `client_secret_basic`;
 - Authorization Code mit PKCE ausschließlich `S256`;
-- exakte Resource/Audience `https://mcp-coach-de-v1.skillpilot.com/mcp`;
+- exakte Resource/Audience `https://mcp-coach-v1.skillpilot.com/mcp`;
 - getrennte Read- und Write-Scopes;
 - kurze Access-Token-Laufzeit, Refresh-Token-Rotation und Widerruf.
 
@@ -75,7 +75,7 @@ Der Authorization Server akzeptiert einen Code-Flow nur, wenn:
 1. die `client_id` exakt dem vorkonfigurierten Client entspricht;
 2. die `redirect_uri` bytegenau in der Allowlist steht;
 3. PKCE `S256` verwendet wird;
-4. `resource` exakt die deutsche MCP-Resource adressiert;
+4. `resource` exakt die V1-MCP-Resource adressiert;
 5. nur erlaubte Scopes angefordert werden.
 
 Beim Token Request muss der Client zusätzlich den Besitz des Secrets über
@@ -122,7 +122,7 @@ OAuth-Clientbindung nicht ersetzen oder auf andere Pfade ausgeweitet werden.
 
 ## 7. Fail-closed Secure Mode
 
-Bei aktiviertem OpenAI-DE-Provider muss der Start fehlschlagen, wenn einer
+Bei aktiviertem OpenAI-V1-Provider muss der Start fehlschlagen, wenn einer
 dieser Punkte fehlt oder widersprüchlich ist:
 
 - eigenständiges hochentropisches HMAC-Signing-Secret mit mindestens 32

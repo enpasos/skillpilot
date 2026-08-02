@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(OpenAiDeProperties.class)
-@ConditionalOnProperty(name = "skillpilot.openai.coach.de.v1.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "skillpilot.openai.coach.v1.enabled", havingValue = "true")
 public class OpenAiDeConfiguration {
 
     @Bean
@@ -25,23 +25,23 @@ public class OpenAiDeConfiguration {
                         "skillpilot.security.signing-secret must be a high-entropy secret "
                                 + "with at least "
                                 + OpenAiDeSecureModeValidation.MINIMUM_SIGNING_SECRET_LENGTH
-                                + " non-whitespace characters when the OpenAI-DE provider "
+                                + " non-whitespace characters when the OpenAI Coach V1 provider "
                                 + "is enabled.");
             }
             if (properties.isBootstrapEnabled()) {
                 throw new IllegalStateException(
-                        "skillpilot.openai.coach.de.v1.bootstrap-enabled and "
-                                + "skillpilot.openai.coach.de.v1.enabled must not both be true.");
+                        "skillpilot.openai.coach.v1.bootstrap-enabled and "
+                                + "skillpilot.openai.coach.v1.enabled must not both be true.");
             }
             if (!Duration.ofHours(24).equals(properties.getLearningSessionTtl())) {
                 throw new IllegalStateException(
-                        "skillpilot.openai.coach.de.v1.learning-session-ttl must be exactly PT24H.");
+                        "skillpilot.openai.coach.v1.learning-session-ttl must be exactly PT24H.");
             }
             OpenAiDeSecureModeValidation.Result secureMode =
                     OpenAiDeSecureModeValidation.inspect(properties);
             if (!secureMode.valid()) {
                 throw new IllegalStateException(
-                        "OpenAI-DE secure mode is incomplete; invalid settings: "
+                        "OpenAI Coach V1 secure mode is incomplete; invalid settings: "
                                 + String.join(", ", secureMode.violations()));
             }
         };

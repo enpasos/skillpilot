@@ -47,7 +47,7 @@ const getApiBase = (configured?: string) => {
 const getLearnerPath = (skillpilotId: string, action: 'launch') => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)
   if (!sanitizedId) throw new Error('Missing SkillPilot ID')
-  return `/api/ui/learners/${encodeURIComponent(sanitizedId)}/openai/de/${action}`
+  return `/api/ui/learners/${encodeURIComponent(sanitizedId)}/openai/v1/${action}`
 }
 
 export const buildOpenAiMcpEndpoint = (
@@ -127,8 +127,11 @@ const requestJson = async <T>(
   return await response.json() as T
 }
 
+const normalizeConversationLanguage = (language: string): 'de' | 'en' =>
+  language.trim().toLowerCase().startsWith('en') ? 'en' : 'de'
+
 const requestBody = (input: OpenAiMcpStartInput) => JSON.stringify({
-  language: 'de',
+  communicationLocale: normalizeConversationLanguage(input.language),
   client: input.client || 'web',
   selectedCurriculum: input.selectedCurriculum || undefined,
   launchIntent: input.launchIntent,
@@ -166,9 +169,6 @@ export const requestOpenAiMcpStart = async (
   input: OpenAiMcpStartInput,
   options: OpenAiMcpRequestOptions = {},
 ): Promise<OpenAiMcpStartResponse> => {
-  if (input.language.trim().toLowerCase().startsWith('en')) {
-    throw new Error('The OpenAI MCP coach is currently available only for German.')
-  }
   if (input.providerEligibilityConfirmed !== true) {
     throw new Error('OpenAI provider eligibility has not been confirmed.')
   }

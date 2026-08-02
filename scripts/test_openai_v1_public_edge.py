@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic contract tests for the dedicated OpenAI DE V1 public edge."""
+"""Hermetic contract tests for the language-neutral OpenAI V1 public edge."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ MetadataValidationError = METADATA_MODULE.MetadataValidationError
 
 
 class OAuthMetadataContractTest(unittest.TestCase):
-    MCP_ORIGIN = "https://mcp-coach-de-v1.skillpilot.com"
+    MCP_ORIGIN = "https://mcp-coach-v1.skillpilot.com"
     AUTHORIZATION_ORIGIN = "https://skillpilot.com"
     V1_RESOURCE = f"{MCP_ORIGIN}/mcp"
 
@@ -29,7 +29,7 @@ class OAuthMetadataContractTest(unittest.TestCase):
         return {
             "resource": resource,
             "authorization_servers": [
-                f"{self.AUTHORIZATION_ORIGIN}/api/openai/de"
+                f"{self.AUTHORIZATION_ORIGIN}/api/openai/v1"
             ],
             "scopes_supported": [
                 METADATA_MODULE.READ_SCOPE,
@@ -49,7 +49,7 @@ class OAuthMetadataContractTest(unittest.TestCase):
     def test_rejects_metadata_bound_to_another_resource(self) -> None:
         with self.assertRaisesRegex(MetadataValidationError, "resource"):
             METADATA_MODULE.validate_protected_resource(
-                self.metadata(f"{self.AUTHORIZATION_ORIGIN}/api/openai/de/v1/mcp"),
+                self.metadata(f"{self.AUTHORIZATION_ORIGIN}/api/openai/v1/mcp"),
                 self.MCP_ORIGIN,
                 self.V1_RESOURCE,
                 self.AUTHORIZATION_ORIGIN,
@@ -57,29 +57,39 @@ class OAuthMetadataContractTest(unittest.TestCase):
 
 
 class PublicEdgeDeploymentContractTest(unittest.TestCase):
-    def test_nginx_routes_public_de_v1_endpoints_to_line_scoped_internal_paths(self) -> None:
+    RESERVED_HOSTS = tuple(
+        f"mcp-coach-v{major}.skillpilot.com" for major in range(2, 10)
+    )
+
+    def test_nginx_routes_public_v1_endpoints_to_line_scoped_internal_paths(self) -> None:
         coaches = (ROOT / "deploy" / "nginx" / "skillpilot-mcp-coaches.conf").read_text(
             encoding="utf-8"
         )
         self.assertIn(
-            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/mcp;",
+            "proxy_pass http://127.0.0.1:8787/internal/openai/v1/mcp;",
             coaches,
         )
         self.assertIn(
-            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/"
+            "proxy_pass http://127.0.0.1:8787/internal/openai/v1/"
             "protected-resource-metadata;",
             coaches,
         )
         self.assertIn(
-            "proxy_pass http://127.0.0.1:8787/internal/openai/de/v1/"
+            "proxy_pass http://127.0.0.1:8787/internal/openai/v1/"
             "openai-apps-challenge;",
             coaches,
         )
         self.assertNotIn(
             "proxy_pass http://127.0.0.1:8787/.well-known/", coaches
         )
+        self.assertIn("server_name mcp-coach-v1.skillpilot.com;", coaches)
+        self.assertEqual(coaches.count("mcp-coach-v1.skillpilot.com"), 2)
+        for reserved_host in self.RESERVED_HOSTS:
+            self.assertEqual(coaches.count(reserved_host), 2)
+        self.assertNotIn("mcp-coach-de-v", coaches)
+        self.assertNotIn("mcp-coach-en-v", coaches)
 
-    def test_main_origin_denies_every_de_v1_internal_target(self) -> None:
+    def test_main_origin_denies_every_v1_internal_target(self) -> None:
         deny = (
             ROOT
             / "deploy"
@@ -87,9 +97,9 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             / "skillpilot-main-vhost-openai-deny-locations.conf"
         ).read_text(encoding="utf-8")
         for path in (
-            "/internal/openai/de/v1/mcp",
-            "/internal/openai/de/v1/protected-resource-metadata",
-            "/internal/openai/de/v1/openai-apps-challenge",
+            "/internal/openai/v1/mcp",
+            "/internal/openai/v1/protected-resource-metadata",
+            "/internal/openai/v1/openai-apps-challenge",
             "/.well-known/oauth-protected-resource",
             "/.well-known/openai-apps-challenge",
         ):
@@ -109,7 +119,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn(
-            'MCP_ORIGIN="https://mcp-coach-de-v1.skillpilot.com"', script
+            'MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"', script
         )
         self.assertIn(
             'MCP_URL="${MCP_ORIGIN}/mcp"', script
@@ -136,25 +146,19 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("internal_protected_resource_metadata_route", script)
         self.assertIn(
             'INTERNAL_METADATA_URL="${AUTHORIZATION_ORIGIN}/internal/openai/'
-            'de/v1/protected-resource-metadata"',
+            'v1/protected-resource-metadata"',
             script,
         )
         self.assertIn(
             'INTERNAL_CHALLENGE_URL="${AUTHORIZATION_ORIGIN}/internal/openai/'
-            'de/v1/openai-apps-challenge"',
+            'v1/openai-apps-challenge"',
             script,
         )
         self.assertIn("internal_openai_apps_challenge_route", script)
         self.assertIn("removed_common_protected_resource_metadata_route", script)
         self.assertIn("removed_common_openai_apps_challenge_route", script)
         self.assertIn("expected direct GET HTTP 404", script)
-        for reserved_host in (
-            "mcp-coach-de-v2.skillpilot.com",
-            "mcp-coach-de-v3.skillpilot.com",
-            "mcp-coach-en-v1.skillpilot.com",
-            "mcp-coach-en-v2.skillpilot.com",
-            "mcp-coach-en-v3.skillpilot.com",
-        ):
+        for reserved_host in self.RESERVED_HOSTS:
             self.assertIn(f'"https://{reserved_host}"', script)
         self.assertIn("assert_reserved_origin", script)
         self.assertIn("reserved_origin_tls", script)

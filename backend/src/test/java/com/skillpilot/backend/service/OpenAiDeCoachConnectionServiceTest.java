@@ -106,6 +106,7 @@ class OpenAiDeCoachConnectionServiceTest {
                     assertThat(session.getStateVersion()).isEqualTo(learner.getCoachStateRevision());
                     assertThat(session.getCurriculumRevision())
                             .isEqualTo("curricula-sha256@" + "a".repeat(64));
+                    assertThat(session.getCommunicationLocale()).isEqualTo("de");
                 });
         assertThat(sessions.get(0).getTokenHash()).isNotEqualTo(first.learningSessionId());
         assertThat(sessions.get(1).getTokenHash()).isNotEqualTo(second.learningSessionId());
@@ -158,6 +159,42 @@ class OpenAiDeCoachConnectionServiceTest {
         assertThatExceptionOfType(ResponseStatusException.class)
                 .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, request))
                 .satisfies(exception -> assertThat(exception.getStatusCode().value()).isEqualTo(403));
+    }
+
+    @Test
+    void launchNormalizesAndPinsEnglishCommunicationLocale() {
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+        OpenAiDeCoachStartRequest request = new OpenAiDeCoachStartRequest(
+                "en-gb",
+                "web",
+                "math",
+                true,
+                new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+
+        var response = service.createLaunch(SKILLPILOT_ID, request);
+
+        verify(learningSessions).save(persisted.capture());
+        assertThat(persisted.getValue().getCommunicationLocale()).isEqualTo("en-GB");
+        assertThat(response.prompt())
+                .contains("Use the SkillPilot Coach v1 app", "SkillPilot learning session")
+                .doesNotContain("Verwende die App", SKILLPILOT_ID);
+    }
+
+    @Test
+    void launchRejectsMalformedOrUnsupportedCommunicationLocale() {
+        for (String locale : List.of("en_US", "fr")) {
+            OpenAiDeCoachStartRequest request = new OpenAiDeCoachStartRequest(
+                    locale,
+                    "web",
+                    "math",
+                    true,
+                    new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+
+            assertThatExceptionOfType(ResponseStatusException.class)
+                    .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, request))
+                    .satisfies(exception -> assertThat(exception.getStatusCode().value()).isEqualTo(400));
+        }
     }
 
     private OpenAiDeCoachStartRequest currentUnitRequest() {

@@ -42,7 +42,9 @@ class OpenAiDeCoachContextProjectorTest {
                 "Skizze zur Energieerhaltung.",
                 "approved");
 
-        OpenAiDeCoachContext context = projector.project(goalVisualizationState("atomic", image));
+        OpenAiDeCoachContext context = projectGerman(
+                projector,
+                goalVisualizationState("atomic", image));
 
         assertThat(context.goalVisualization()).isEqualTo(
                 new OpenAiDeCoachContext.GoalVisualization(
@@ -87,7 +89,8 @@ class OpenAiDeCoachContextProjectorTest {
         OpenAiDeCoachContext context = projector.project(
                 goalVisualizationState("atomic", image),
                 PersonalizationPlan.complete(List.of()),
-                false);
+                false,
+                "de");
 
         assertThat(context.goalVisualization()).isNull();
         assertThat(context.nextAllowedTools())
@@ -170,17 +173,17 @@ class OpenAiDeCoachContextProjectorTest {
                 "Kodierte Pfadnavigation",
                 "approved");
 
-        assertThat(projector.project(goalVisualizationState("cluster", mismatched)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("cluster", mismatched)).goalVisualization())
                 .isNull();
-        assertThat(projector.project(goalVisualizationState("atomic", mismatched)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("atomic", mismatched)).goalVisualization())
                 .isNull();
-        assertThat(projector.project(goalVisualizationState("atomic", external)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("atomic", external)).goalVisualization())
                 .isNull();
-        assertThat(projector.project(goalVisualizationState("atomic", unrelatedRootPath)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("atomic", unrelatedRootPath)).goalVisualization())
                 .isNull();
-        assertThat(projector.project(goalVisualizationState("atomic", traversal)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("atomic", traversal)).goalVisualization())
                 .isNull();
-        assertThat(projector.project(goalVisualizationState("atomic", encodedTraversal)).goalVisualization())
+        assertThat(projectGerman(projector, goalVisualizationState("atomic", encodedTraversal)).goalVisualization())
                 .isNull();
     }
 
@@ -223,7 +226,7 @@ class OpenAiDeCoachContextProjectorTest {
                                 "Welches Zielformat passt?")));
 
         OpenAiDeCoachContext.Orientation orientation =
-                projector.personalizationOrientation(curriculum, plan);
+                projector.personalizationOrientation(curriculum, plan, "de");
 
         assertThat(orientation.establishedContext())
                 .isEqualTo("Du bist im Curriculum „Werkstatt Orbit“.");
@@ -247,7 +250,7 @@ class OpenAiDeCoachContextProjectorTest {
                 new CoachStateProjection("https://skillpilot.test"),
                 "https://skillpilot.test");
 
-        OpenAiDeCoachContext context = projector.project(motivationState(
+        OpenAiDeCoachContext context = projectGerman(projector, motivationState(
                 "orientation",
                 List.of("Motivation", "Orientation"),
                 "orientActiveGoal"));
@@ -276,7 +279,7 @@ class OpenAiDeCoachContextProjectorTest {
                 new CoachStateProjection("https://skillpilot.test"),
                 "https://skillpilot.test");
 
-        OpenAiDeCoachContext context = projector.project(motivationState(
+        OpenAiDeCoachContext context = projectGerman(projector, motivationState(
                 "curricularAtomic",
                 List.of("Motivation", "Orientation"),
                 "teachActiveGoal"));
@@ -292,7 +295,7 @@ class OpenAiDeCoachContextProjectorTest {
                 new CoachStateProjection("https://skillpilot.test"),
                 "https://skillpilot.test");
 
-        OpenAiDeCoachContext context = projector.project(imageExamState());
+        OpenAiDeCoachContext context = projectGerman(projector, imageExamState());
 
         assertThat(context.activeGoal().exam().hasImage()).isTrue();
         assertThat(context.activeGoal().exam().taskContent()).isEqualTo("Sichtbare Aufgabe mit Abbildung");
@@ -312,6 +315,16 @@ class OpenAiDeCoachContextProjectorTest {
                         .contains("erfinde"));
         assertThat(new ObjectMapper().writeValueAsString(context))
                 .doesNotContain("/private/exam-image.png", "IMAGE_PATH");
+    }
+
+    private static OpenAiDeCoachContext projectGerman(
+            OpenAiDeCoachContextProjector projector,
+            UnifiedLearnerStateResponse state) {
+        return projector.project(
+                state,
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "de");
     }
 
     private static UnifiedLearnerStateResponse imageExamState() {

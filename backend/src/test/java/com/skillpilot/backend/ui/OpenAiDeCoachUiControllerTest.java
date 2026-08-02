@@ -24,7 +24,7 @@ class OpenAiDeCoachUiControllerTest {
     private static final String LEARNING_SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String PROMPT =
-            "Verwende die App SkillPilot Coach DE v1 und fahre mit dem in SkillPilot vorbereiteten "
+            "Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten "
                     + "nächsten Schritt fort.\n\nSkillPilot-Lernsession: "
                     + LEARNING_SESSION_ID
                     + "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "
@@ -72,7 +72,7 @@ class OpenAiDeCoachUiControllerTest {
                 .isThrownBy(() -> new ObjectMapper().readValue(
                         """
                         {
-                          "language": "de",
+                          "communicationLocale": "de",
                           "client": "web",
                           "selectedCurriculum": "math",
                           "promptContext": "never accepted by the OpenAI MCP boundary"
@@ -86,12 +86,12 @@ class OpenAiDeCoachUiControllerTest {
         ObjectMapper mapper = new ObjectMapper();
 
         OpenAiDeCoachStartRequest missing =
-                mapper.readValue("{\"language\":\"de\"}", OpenAiDeCoachStartRequest.class);
+                mapper.readValue("{\"communicationLocale\":\"de\"}", OpenAiDeCoachStartRequest.class);
         OpenAiDeCoachStartRequest rejected = mapper.readValue(
-                "{\"language\":\"de\",\"providerEligibilityConfirmed\":false}",
+                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":false}",
                 OpenAiDeCoachStartRequest.class);
         OpenAiDeCoachStartRequest accepted = mapper.readValue(
-                "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
+                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":true}",
                 OpenAiDeCoachStartRequest.class);
 
         assertThat(missing.providerEligibilityConfirmed()).isNull();

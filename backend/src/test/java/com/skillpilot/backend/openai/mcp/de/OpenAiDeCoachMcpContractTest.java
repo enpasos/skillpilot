@@ -75,6 +75,7 @@ class OpenAiDeCoachMcpContractTest {
     private OpenAiDeV1McpContractAdapter contract;
     private SimpleMeterRegistry meterRegistry;
     private OpenAiDeV1McpSessionCoordinator sessionCoordinator;
+    private String sessionCommunicationLocale;
 
     @BeforeEach
     void setUp() {
@@ -86,6 +87,7 @@ class OpenAiDeCoachMcpContractTest {
         when(identityResolver.authenticationChallenge()).thenReturn(CHALLENGE);
         when(identityResolver.insufficientScopeChallenge()).thenReturn(INSUFFICIENT_SCOPE_CHALLENGE);
         meterRegistry = new SimpleMeterRegistry();
+        sessionCommunicationLocale = "de";
         sessionCoordinator = mock(OpenAiDeV1McpSessionCoordinator.class);
         when(sessionCoordinator.read(any(), any())).thenAnswer(invocation ->
                 sessionOperation(invocation.getArgument(1), 0L));
@@ -265,17 +267,16 @@ class OpenAiDeCoachMcpContractTest {
     void contextToolIsTheSingleExplicitBootstrapForSkillpilotLearningIntents() {
         McpSchema.Tool bootstrap = spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool();
 
-        assertThat(bootstrap.title()).isEqualTo("SkillPilot-Lerncoach starten oder fortsetzen");
+        assertThat(bootstrap.title()).isEqualTo("Start or continue the SkillPilot learning coach");
         assertThat(bootstrap.description())
-                .contains("immer zuerst")
-                .contains("SkillPilot Coach DE v1")
-                .contains("lernen, üben")
-                .contains("Lerneinheit starten, fortsetzen oder wiederaufnehmen")
-                .contains("gespeicherten Lernstand")
-                .contains("autoritativen persönlichen SkillPilot-Zustand")
-                .contains("allgemeine Lernberatung")
-                .contains("selbst erstellten Lehrplan")
-                .contains("nicht für allgemeine Fachfragen ohne SkillPilot-Bezug");
+                .contains("Always use this tool first")
+                .contains("SkillPilot Coach v1")
+                .contains("learn, practise, start, continue, or resume")
+                .contains("stored learning state")
+                .contains("authoritative personal SkillPilot state")
+                .contains("generic advice")
+                .contains("self-created curriculum")
+                .contains("unrelated to SkillPilot");
         assertThat(bootstrap.inputSchema())
                 .containsEntry("type", "object")
                 .containsEntry("additionalProperties", false);
@@ -289,7 +290,7 @@ class OpenAiDeCoachMcpContractTest {
                 .doesNotContain(OpenAiDeV1McpContractAdapter.WRITE_SCOPE);
         assertThat(contract.toolSpecifications().stream()
                         .filter(specification -> specification.tool().description() != null
-                                && specification.tool().description().contains("immer zuerst")))
+                                && specification.tool().description().contains("Always use this tool first")))
                 .singleElement()
                 .extracting(specification -> specification.tool().name())
                 .isEqualTo(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
@@ -313,8 +314,8 @@ class OpenAiDeCoachMcpContractTest {
                                 .containsEntry("type", "string")
                                 .containsEntry(
                                         "description",
-                                        "Aus der aktuellen SkillPilot-Startnachricht exakt und unverändert "
-                                                + "übernehmen und bei jedem Tool-Aufruf mitsenden.")
+                                        "Copy exactly and unchanged from the current SkillPilot start message and "
+                                                + "send it with every tool call.")
                                 .containsOnlyKeys("type", "description")));
     }
 
@@ -493,39 +494,53 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void userFacingContextUsesTheLocalePinnedToTheLearningSession() {
+        sessionCommunicationLocale = "en-GB";
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+
+        assertThat(result.isError()).isFalse();
+        assertThat(result.content().toString())
+                .contains("SkillPilot context loaded")
+                .doesNotContain("SkillPilot-Kontext geladen");
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("communicationLocale", "en-GB"));
+    }
+
+    @Test
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
-                .contains("vor der ersten fachlichen Antwort " + OpenAiDeV1McpContractAdapter.GET_CONTEXT)
-                .contains("allgemeine Lehrplanübersicht")
-                .contains("erfundenen Lernpfad")
-                .contains("Bewerte fachlich, nicht nach Wortlaut")
-                .contains("alternative Lösungswege")
-                .contains("ausdrücklich verlangte Formate")
-                .contains("stelle keine Nachfragen")
-                .contains("Sollantwort erst nach")
-                .contains("permanente SkillPilot-IDs")
-                .contains("zwei unabhängigen Checks")
+                .contains("call " + OpenAiDeV1McpContractAdapter.GET_CONTEXT + " before the first subject-matter response")
+                .contains("generic curriculum overview")
+                .contains("invented learning path")
+                .contains("Assess meaning rather than wording")
+                .contains("alternative methods")
+                .contains("explicit format")
+                .contains("follow-up questions")
+                .contains("expected answer only after")
+                .contains("permanent SkillPilot IDs")
+                .contains("two independent checks")
                 .contains("interactionMode=orientation")
-                .contains("zwei bis vier verständliche Möglichkeiten")
-                .contains("weder Vorwissen noch Begriffe, Rechenverfahren, Detailwissen")
-                .contains("nur ein Abschlussmarker und bescheinigt keine Fachkompetenz")
+                .contains("two to four understandable possibilities")
+                .contains("Do not test prior knowledge")
+                .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
-                .contains("genau einmal")
-                .contains("URLs ausschließlich wortgetreu")
-                .contains("Fehlt ein freigegebener Link, gib keinen Link aus")
-                .doesNotContain("Fehlt ein freigegebener Link, verwende nur https://skillpilot.com")
-                .contains("nie mit Dollar-Delimiter")
+                .contains("exactly once")
+                .contains("Use backend URLs verbatim only")
+                .contains("If no approved link is available, do not output a link")
+                .contains("never with dollar delimiters")
                 .contains("activeGoal.exam.hasImage=true")
-                .contains("exakt activeGoal.cockpitUrl")
-                .contains("erfinde oder beschreibe das Bild nicht")
-                .contains("Kontext genau einmal neu");
+                .contains("activeGoal.cockpitUrl verbatim")
+                .contains("do not invent or describe it")
+                .contains("reload exactly once");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
                 .contains("interactionMode=orientation")
-                .contains("sichtbaren Reaktion")
-                .contains("kein Detailwissen prüfen")
-                .contains("keine Fachkompetenz behaupten")
-                .contains("Bei normalen Inhaltszielen erst nach zwei unabhängigen");
+                .contains("visible response")
+                .contains("do not test details")
+                .contains("claim subject mastery")
+                .contains("For ordinary content goals, call only after two independent");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10,
@@ -995,7 +1010,7 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("oauthConnectionValid", true)
                 .containsEntry("startUrl", "https://skillpilot.test"));
         assertThat(result.content().toString())
-                .contains("Lernen starten")
+                .contains("Start learning")
                 .doesNotContain(LEARNER_ID, CONNECTION_SECRET, CHALLENGE);
         verify(coachTools, never()).getLearnerState(any());
         assertThat(operationalEvents("session_required")).isEqualTo(1);
@@ -1008,8 +1023,9 @@ class OpenAiDeCoachMcpContractTest {
                 1,
                 27L,
                 1,
-                "coach-de@1.0",
+                "coach@1.0",
                 "curricula-tree@published",
+                "de",
                 Map.of());
         org.mockito.Mockito.doThrow(new OpenAiDeV1SessionStateException(
                         OpenAiDeV1SessionStateException.Code.SESSION_VERSION_UNAVAILABLE,
@@ -1030,7 +1046,7 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("contractMajor", 1)
                 .containsEntry("stateVersion", 27L)
                 .containsEntry("stateSchemaVersion", 1)
-                .containsEntry("workflowVersion", "coach-de@1.0")
+                .containsEntry("workflowVersion", "coach@1.0")
                 .containsEntry("curriculumRevision", "curricula-tree@published")
                 .containsEntry("startUrl", "https://skillpilot.test"));
         assertThat(result.content().toString())
@@ -1049,6 +1065,10 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
                 .containsEntry("code", "SESSION_REQUIRED")
                 .containsEntry("oauthConnectionValid", true));
+        assertThat(result.content().toString())
+                .contains("Your SkillPilot learning session is missing or expired")
+                .contains("Start learning")
+                .doesNotContain("Lernsession", "Lernen starten");
         verify(identityResolver, never()).resolveSkillpilotId(any(), any());
         verify(coachTools, never()).getLearnerState(any());
     }
@@ -1113,7 +1133,7 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("stateChanged", false)
                 .containsEntry("recovery", "retry_later"));
         assertThat(result.content().toString())
-                .contains("vorübergehend nicht verfügbar")
+                .contains("temporarily unavailable")
                 .doesNotContain("private kill-switch implementation detail", LEARNER_ID);
         verify(coachTools, never()).setScope(any(), any());
     }
@@ -1156,7 +1176,7 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("category", "conflict")
                 .containsEntry("retryable", true)
                 .containsEntry("stateVersion", 0L)
-                .containsEntry("workflowVersion", "coach-de@1.0")
+                .containsEntry("workflowVersion", "coach@1.0")
                 .containsEntry("curriculumRevision", "curricula-tree@test"));
         assertThat(operationalEvents("http_409")).isEqualTo(1);
         assertThat(operationalEvents("tool_exception")).isZero();
@@ -1241,8 +1261,9 @@ class OpenAiDeCoachMcpContractTest {
                 1,
                 stateVersion,
                 1,
-                "coach-de@1.0",
+                "coach@1.0",
                 "curricula-tree@test",
+                sessionCommunicationLocale,
                 Map.of()));
     }
 
@@ -1256,6 +1277,7 @@ class OpenAiDeCoachMcpContractTest {
                 "stateSchemaVersion",
                 "workflowVersion",
                 "curriculumRevision",
+                "communicationLocale",
                 "extensions")) {
             source.remove(field);
         }

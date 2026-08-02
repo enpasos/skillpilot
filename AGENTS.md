@@ -423,7 +423,7 @@ Interpretation:
 ### 7.3 Atomic goal visualizations
 
 Atomic learning goals may optionally carry one or more didactic image references
-for cockpit and provider UI use. The German OpenAI V1 MCP App renders the
+for cockpit and provider UI use. The multilingual OpenAI V1 MCP App renders the
 current goal's visualization inline when the active goal is atomic, has a
 matching canonical `goal-visualization` link, and the learner's default-on
 `showGoalVisualizationsInChat` preference is not disabled.
@@ -433,12 +433,12 @@ Rule:
 * Store visualization references directly on the goal in canonical `resourceLinks`, not in a separate learner-facing branch or custom top-level image field.
 * Use `type: "goal-visualization"`, `resourceType: "image"`, and `skillpilotId` equal to the containing goal's `id`.
 * Public URLs should be root-relative under `/assets/goal-visualizations/...`.
-  The OpenAI-DE adapter resolves the matching active atomic goal's asset to an
+  The OpenAI V1 adapter resolves the matching active atomic goal's asset to an
   absolute public URL and exposes it only through the bounded
   `goalVisualization` projection used by the MCP UI. Other resources and
   provider adapters continue to use a normal cockpit deep link such as
   `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
-* Only `render_skillpilot_goal_visualization_de` carries the read-only MCP UI
+* Only `render_skillpilot_goal_visualization` carries the read-only MCP UI
   resource metadata. Offer that renderer only when the learner preference is
   enabled and a safe `goalVisualization` projection exists. Ordinary context
   reads and state mutations must not create an empty UI box. If the learner
@@ -657,9 +657,10 @@ Key principles for Layer C:
   provider-specific because authentication, context recovery, tool schemas,
   widgets, and retry semantics differ. Do not force them into one universal
   `submit_turn` or one-size-fits-all schema.
-- The strategic public OpenAI coach channels are provider-hosted plugins that
-  combine one language-specific coaching skill with the corresponding
-  language-specific MCP server submitted directly for review. A local or
+- The strategic public OpenAI coach channel is a provider-hosted plugin per
+  contract major. It combines one language-neutral English control-plane skill
+  with the corresponding language-neutral MCP server submitted directly for
+  review. A local or
   workspace pilot may map an already registered MCP connection through
   `.app.json`; that compatibility wiring is not the public MCP submission.
   Learners can use the model under the provider's free access or fixed-price
@@ -668,9 +669,10 @@ Key principles for Layer C:
   dialogue and tool orchestration; the MCP server exposes live data,
   authentication and controlled actions; SkillPilot owns all fachliche state,
   authorizes every domain mutation, and exposes only passgenaue
-  provider/language adapters. A first-party SkillPilot model orchestrator is not
+  provider adapters. The backend-selected learning session language controls
+  every learner-facing payload and response. A first-party SkillPilot model orchestrator is not
   the target while this direct-provider-billing requirement remains hard.
-- The German OpenAI MCP App separates two server-owned bindings:
+- The multilingual OpenAI MCP App separates two server-owned bindings:
   - OAuth 2.1 authenticates the registered confidential App connection.
   - An independent, absolute 24-hour learning session addresses one learner for
     fachliche tool use. It is created anew only by `Lernen starten` in
@@ -862,7 +864,7 @@ Guiding principle:
 - May ask for a *nickname* to address the learner in the conversation, but must
   never ask for, display, or receive the permanent `skillpilotId` through an
   external AI adapter.
-- The current German OpenAI MCP App never receives the permanent
+- The current OpenAI MCP App never receives the permanent
   `skillpilotId`. `Lernen starten` inserts a newly created
   `learningSessionId` automatically into the prepared start message, and
   ChatGPT passes it unchanged as a required argument to every fachlicher tool
@@ -873,13 +875,13 @@ Guiding principle:
 - The paused Claude/MCP adapter resolves an authenticated opaque OAuth subject
   internally and has neither `skillpilotId` nor OAuth credentials as model tool
   parameters.
-- The English OpenAI integration will be a separately registered MCP App after
-  the German channel is stable. Widget-only selection references may be returned
+- German, English and later supported interaction languages use the same App
+  registration for a given contract major. Widget-only selection references may be returned
   in tool-result `_meta`, but must never appear in user-visible content or
   model-visible `structuredContent`.
 - Provider-neutral backend services may use the SkillPilot ID internally after
   the provider-specific trusted temporary context has been resolved. For the
-  current German OpenAI MCP App, this resolution happens only through the
+  current OpenAI MCP App, this resolution happens only through the
   explicit learning-session mapping under a valid OAuth-authorized App request,
   not through the OAuth subject. That internal implementation detail must not
   leak into the external model context.
@@ -889,7 +891,7 @@ Guiding principle:
 - The learner is responsible for:
   - keeping their `skillpilotId` somewhere safe (e.g. in the browser, a notes file),
   - deciding which nickname they share with the learning coach or teacher.
-- The current German MCP-App transcript may contain the automatically inserted
+- The current MCP-App transcript may contain the automatically inserted
   `learningSessionId` in the prepared start message. It must not contain the
   permanent `skillpilotId` or any additional access or technical selection
   credential, and the coach must not repeat the learning-session value.
@@ -926,7 +928,7 @@ Provider-facing contracts must use derived temporary context instead:
   goal ID, or Recall card prompt.
 - Paused Claude/MCP: the transport authenticates an OAuth connection subject and
   resolves it inside the backend. The model never supplies a learner ID.
-- Current German OpenAI MCP App line `SkillPilot Coach DE v1`: OAuth authorizes the fixed registered App
+- Current multilingual OpenAI MCP App line `SkillPilot Coach v1`: OAuth authorizes the fixed registered App
   connection but does not select or identify the learner. `Lernen starten`
   atomically creates or replaces an independent learning session with an
   absolute lifetime of at most 24 hours and inserts its
@@ -939,20 +941,28 @@ Provider-facing contracts must use derived temporary context instead:
   `SESSION_REQUIRED` with a normal SkillPilot start link; it is not an OAuth
   failure and must not trigger a reconnect loop.
 - The V1 public MCP endpoint and its exact OAuth Resource/Audience are both
-  `https://mcp-coach-de-v1.skillpilot.com/mcp`. Protected-resource metadata
+  `https://mcp-coach-v1.skillpilot.com/mcp`. Protected-resource metadata
   is published at the RFC 9728 path-insertion URL
-  `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
+  `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
   and the OpenAI domain challenge is scoped to the same dedicated host. No
-  public compatibility alias exists. The five sibling hosts for DE V2/V3 and
-  EN V1/V2/V3 are DNS/TLS-reserved and fail closed with `404`; only DE V1 is
-  active. The still-unpublished `1.0.0` draft includes one read-only MCP UI
-  resource for active atomic-goal visualizations. Until a dedicated,
-  plugin-unique UI
-  origin is provisioned for an actual publication, the draft omits custom
-  widget-domain metadata and uses the provider sandbox; coaching, selection,
-  answers, and state transitions remain normal MCP/chat flows.
-- German and English OpenAI MCP Apps use separate public tool catalogs, resource
-  URIs, endpoints, registrations, and acceptance tests. Direct widget choices
+  public compatibility alias exists. The future major hosts
+  `mcp-coach-v2.skillpilot.com` through `mcp-coach-v9.skillpilot.com` are
+  reserved and fail closed with `404`; only V1 is active. Earlier
+  `mcp-coach-de-v*` and
+  `mcp-coach-en-v*` names were unpublished local infrastructure and are not
+  compatibility routes. The still-unpublished `1.0.0` draft includes one
+  read-only MCP UI resource for active atomic-goal visualizations. Its
+  plugin-unique widget origin is the existing V1 origin
+  `https://mcp-coach-v1.skillpilot.com`; the resource metadata declares that
+  domain and the bounded CSP explicitly. Coaching, selection, answers, and
+  state transitions remain normal MCP/chat flows.
+- OpenAI MCP uses one App, public tool catalog, resource URI, endpoint and
+  registration per contract major, not per language. Plugin metadata, skill
+  instructions, tool names, descriptions, schemas and stable machine values use
+  neutral English. The backend pins the interaction language in the learning
+  session and returns learner-facing payloads in that language; the model must
+  communicate exclusively in that session language and must not infer it from
+  the English control plane or host locale. Direct widget choices
   and answer submissions use app-only tools; later model turns reload current
   state through fachliche tools that also require the unchanged
   `learningSessionId`. Learner identity comes from the backend-owned
@@ -976,10 +986,10 @@ LLM/learning-coach prompts should reinforce that:
 ## 12. AI Agent Integration (OpenAI MCP Apps, ChatGPT fallback, Claude & Gemini)
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
-uses separate, provider- and language-specific adapters. The current German
-OpenAI channel is the provider-hosted MCP App with a chat-first tool contract
+uses separate provider-specific adapters. The current multilingual OpenAI
+channel is the provider-hosted MCP App with a chat-first tool contract
 and one bounded read-only goal-visualization component; its target packaging
-combines that registered connection with a language-specific coaching skill as
+combines that registered connection with a language-neutral English control-plane skill as
 documented in
 `docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
 Visible Session Custom GPT remains a rollback package and must stay isolated
@@ -1000,13 +1010,13 @@ provider policy and product review explicitly permit it.
 - **Backend authority:** curriculum, personalization, scope, frontier, active goal,
   allowed transitions, Mastery, Verified Recall, and exam evaluation remain
   backend decisions.
-- **Target OpenAI plugins:** maintain two separate public submissions, German
-  and English. Each combines its own coach skill with its own directly submitted
-  MCP server, tool names, descriptions, widget resources, endpoint, App
-  registration and tests. Local pilot packages may reference the corresponding
-  registered connection through `.app.json`. Sharing internal domain services
-  and widget implementation is allowed; a public `language` switch or
-  one-size-fits-all skill/tool contract is not.
+- **Target OpenAI plugins:** maintain one public submission per contract major,
+  not per language. V1 combines one neutral English coach-control skill with one
+  directly submitted MCP server, stable tool names and descriptions, widget
+  resources, endpoint, App registration and test suite. The backend-owned
+  learning session pins the interaction language; all learner-facing payloads
+  arrive in that language and the model must use it exclusively. Local pilot
+  packages may reference the registered connection through `.app.json`.
 - **Coach-skill boundary:** coaching role, dialogue, didactic scaffolding, tool
   sequence, response format and bounded error behavior belong in the skill.
   MCP server instructions contain only short cross-tool invariants; per-tool
@@ -1015,8 +1025,8 @@ provider policy and product review explicitly permit it.
   guarantees stay in backend guards. Chat-only evidence is not a hard guarantee
   until a server-side evidence or submission receipt exists. The skill is never
   a source of learner state or authorization.
-- **Coach-content source:** synthesize the German skill from the behavior that
-  worked well under `ai/openai custom gpt/`, especially its German system
+- **Coach-content source:** synthesize the neutral English skill from the behavior that
+  worked well under `ai/openai custom gpt/`, especially its established system
   instructions and learning-coach, Mastery, exam, state-machine, error and
   resource guidance. Do not copy obsolete `startCode`, `chatSessionToken`,
   Action-operation, visible-relay, or model-built deep-link mechanics. Later
@@ -1030,7 +1040,7 @@ provider policy and product review explicitly permit it.
   `goalVisualization` projection is present only when the learner's default-on
   chat-visualization preference is enabled and an active atomic goal has a
   matching canonical image link. Only the dedicated read-only
-  `render_skillpilot_goal_visualization_de` tool carries MCP UI metadata;
+  `render_skillpilot_goal_visualization` tool carries MCP UI metadata;
   ordinary context reads and state mutations never create a UI box. Its absence
   must degrade to the ordinary chat response. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
@@ -1042,12 +1052,13 @@ provider policy and product review explicitly permit it.
   a first-party `Lernen starten` action creates or replaces it; neither
   bearer-token refresh nor MCP activity slides its expiry. `SESSION_REQUIRED`
   means “start again in SkillPilot”, not “reconnect OAuth”.
-- **Prototype boundary:** `ai/openai app/` contains an executable two-language
-  Streamable-HTTP MCP Apps mechanism prototype and local host simulation. Its
-  no-auth, single-demo-state store is never production auth. The production
-  German Spring Boot adapter requires OAuth App authorization plus an explicit
-  database-backed learning-session mapping and uses `CoachToolFacade`; do not
-  route real learner data through the demo store.
+- **Prototype boundary:** `ai/openai app/` contains an executable neutral
+  Streamable-HTTP MCP Apps mechanism prototype and local host simulation with
+  localized demo payload catalogs. It exposes one control-plane contract rather
+  than one contract per language. Its no-auth, single-demo-state store is never
+  production auth. The production Spring Boot adapter requires OAuth App
+  authorization plus an explicit database-backed learning-session mapping and
+  uses `CoachToolFacade`; do not route real learner data through the demo store.
 - **Rollback ChatGPT projection:** nine locale-specific Visible Session Actions
   consolidate setup and navigation into numbered choices, reload state on normal
   user turns, and protect Recall answers and exam solutions behind later Actions.
@@ -1079,10 +1090,11 @@ provider policy and product review explicitly permit it.
   `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
   update the two existing GPTs in place; they do not create new GPTs.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md` and
-  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned German source plugin
-  lives under `ai/openai plugin/skillpilot-coach-de-v1`, directly declares the
-  production MCP server plus its language-specific coach skill, and contains
-  the real host-generated mapping for the registered German pilot App. Preserve
+  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned multilingual source
+  plugin lives under `ai/openai plugin/skillpilot-coach-v1`, directly declares
+  the production MCP server plus its language-neutral English control-plane
+  skill, and contains the real host-generated mapping for the registered V1
+  pilot App. Preserve
   the App alias and `asdk_app...` value in `.app.json` exactly; the separate
   `plugin_asdk_app...` value identifies the remote plugin registration and must
   not be substituted into that file. The mapping is local pilot wiring, not the

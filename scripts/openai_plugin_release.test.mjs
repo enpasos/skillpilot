@@ -41,8 +41,8 @@ const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
 
 test("plugin archive name cannot be confused with the shared Spring server", () => {
   assert.equal(
-    pluginInstallBundleArchiveName("skillpilot-coach-de-v1", "1.0.0"),
-    "skillpilot-openai-plugin-coach-de-v1-1.0.0.tar",
+    pluginInstallBundleArchiveName("skillpilot-coach-v1", "1.0.0"),
+    "skillpilot-openai-plugin-coach-v1-1.0.0.tar",
   );
   assert.throws(
     () => pluginInstallBundleArchiveName("skillpilot-server", "1.0.0"),
@@ -145,7 +145,7 @@ test("exact-tree verification keeps published artifacts immutable", () => {
 
 test("an empty published index keeps version 1.0.0 as an internal draft", () => {
   const index = unpublishedIndex();
-  validatePublishedIndex(index, "skillpilot-coach-de-v1", 1);
+  validatePublishedIndex(index, "skillpilot-coach-v1", 1);
   assert.equal(
     determineReleaseVerificationMode("1.0.0", index),
     "initial-draft",
@@ -155,7 +155,7 @@ test("an empty published index keeps version 1.0.0 as an internal draft", () => 
 
 test("published index selects exact verification for latestPublishedVersion", () => {
   const index = publishedIndex();
-  validatePublishedIndex(index, "skillpilot-coach-de-v1", 1);
+  validatePublishedIndex(index, "skillpilot-coach-v1", 1);
   assert.equal(
     determineReleaseVerificationMode("1.0.0", index),
     "exact-published",
@@ -178,13 +178,13 @@ test("recording the initial publication preserves the 1.0.0 package version", ()
   const next = advancePublishedIndex(
     unpublishedIndex(),
     "1.0.0",
-    "contracts/published/openai/skillpilot-coach-de-v1/1.0.0",
+    "contracts/published/openai/skillpilot-coach-v1/1.0.0",
   );
   assert.equal(next.latestPublishedVersion, "1.0.0");
   assert.deepEqual(next.publishedVersions, ["1.0.0"]);
   assert.equal(
     next.baselinePath,
-    "contracts/published/openai/skillpilot-coach-de-v1/1.0.0",
+    "contracts/published/openai/skillpilot-coach-v1/1.0.0",
   );
 });
 
@@ -192,13 +192,13 @@ test("recording a successor advances latestPublishedVersion while preserving bas
   const next = advancePublishedIndex(
     publishedIndex(),
     "1.1.0",
-    "contracts/published/openai/skillpilot-coach-de-v1/1.1.0",
+    "contracts/published/openai/skillpilot-coach-v1/1.1.0",
   );
   assert.equal(next.latestPublishedVersion, "1.1.0");
   assert.deepEqual(next.publishedVersions, ["1.0.0", "1.1.0"]);
   assert.equal(
     next.baselinePath,
-    "contracts/published/openai/skillpilot-coach-de-v1/1.1.0",
+    "contracts/published/openai/skillpilot-coach-v1/1.1.0",
   );
 });
 
@@ -208,7 +208,7 @@ test("published index rejects downgrades and contract-major changes", () => {
     latestPublishedVersion: "1.2.0",
     publishedVersions: ["1.0.0", "1.2.0"],
     baselinePath:
-      "contracts/published/openai/skillpilot-coach-de-v1/1.2.0",
+      "contracts/published/openai/skillpilot-coach-v1/1.2.0",
   };
   assert.throws(
     () => determineReleaseVerificationMode("1.1.9", index),
@@ -388,16 +388,16 @@ test("plugin archive is reproducible across source modes and umasks", () => {
     assert.equal(fileSha256(firstArchive), fileSha256(secondArchive));
     assert.equal(
       fileSha256(firstArchive),
-      "19bdd9a6c4f9ce9444236e3dfc352a33aad1da336537cd4f147e225afe83f629",
+      "58e4b7475614ba5ca4c605f6776f0cb37b405240698a5b3ba5238e0fd3f28457",
     );
     const listing = run("tar", ["-tvf", secondArchive], root).stdout;
     assert.match(
       listing,
-      /^-rw-r--r-- .* skillpilot-coach-de-v1\/plugin\.json$/m,
+      /^-rw-r--r-- .* skillpilot-coach-v1\/plugin\.json$/m,
     );
     assert.match(
       listing,
-      /^-rwxr-xr-x .* skillpilot-coach-de-v1\/bin\/coach$/m,
+      /^-rwxr-xr-x .* skillpilot-coach-v1\/bin\/coach$/m,
     );
   });
 });
@@ -451,7 +451,7 @@ test("plugin archive rejects untracked and ignored paths below its root", () => 
     );
     rmSync(resolve(pluginRoot, "untracked.txt"));
 
-    writeFileSync(resolve(root, ".gitignore"), "skillpilot-coach-de-v1/ignored.txt\n");
+    writeFileSync(resolve(root, ".gitignore"), "skillpilot-coach-v1/ignored.txt\n");
     git(root, "add", ".gitignore");
     writeFileSync(resolve(pluginRoot, "ignored.txt"), "not release input\n");
     assert.throws(
@@ -563,19 +563,19 @@ function applyOperation(root, operation) {
 function publishedIndex() {
   return {
     schemaVersion: 2,
-    pluginIdentity: "skillpilot-coach-de-v1",
+    pluginIdentity: "skillpilot-coach-v1",
     contractMajor: 1,
     latestPublishedVersion: "1.0.0",
     publishedVersions: ["1.0.0"],
     baselinePath:
-      "contracts/published/openai/skillpilot-coach-de-v1/1.0.0",
+      "contracts/published/openai/skillpilot-coach-v1/1.0.0",
   };
 }
 
 function unpublishedIndex() {
   return {
     schemaVersion: 2,
-    pluginIdentity: "skillpilot-coach-de-v1",
+    pluginIdentity: "skillpilot-coach-v1",
     contractMajor: 1,
     latestPublishedVersion: null,
     publishedVersions: [],
@@ -619,7 +619,7 @@ function withTemporaryDirectory(callback) {
 
 function withTemporaryGitRepository(callback) {
   withTemporaryDirectory((root) => {
-    const pluginRoot = resolve(root, "skillpilot-coach-de-v1");
+    const pluginRoot = resolve(root, "skillpilot-coach-v1");
     mkdirSync(resolve(pluginRoot, "bin"), { recursive: true });
     writeFileSync(resolve(pluginRoot, "plugin.json"), '{"version":"1.0.0"}\n');
     writeFileSync(resolve(pluginRoot, "bin/coach"), "#!/bin/sh\nexit 0\n");

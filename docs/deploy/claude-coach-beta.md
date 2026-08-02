@@ -4,7 +4,7 @@ Status: erhaltene, deaktivierte Implementierung in Entwicklung; derzeit nicht
 lernendenseitig sichtbar und nicht produktionsreif.
 
 Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
-[deutschen OpenAI-MCP-Coach](openai-mcp-coach-de.md). Der
+[mehrsprachigen OpenAI-MCP-Coach](openai-mcp-coach-v1.md). Der
 [Custom-GPT-Visible-Session-Coach](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/README.md)
 bleibt davon getrennt als Rollback-Quelle erhalten.
 Beide Adapter greifen auf dieselbe SkillPilot-Fachlogik, sichere State-Projektion
@@ -47,7 +47,7 @@ nur in einer isolierten, kontrollierten Testumgebung mit synthetischen Daten sta
 
 | Variante | Kontextbindung | Aktueller Status |
 | --- | --- | --- |
-| ChatGPT MCP-App | normales TLS plus OAuth/PKCE, exakte Resource/Audience/Scopes und absolute 24h-Lernsession | aktueller deutscher ChatGPT-Pfad; allgemeine Freigabe nach sicherem OAuth-Cutover und Acceptance |
+| ChatGPT MCP-App | normales TLS plus OAuth/PKCE, exakte Resource/Audience/Scopes und absolute 24h-Lernsession | aktueller mehrsprachiger ChatGPT-Pfad; allgemeine Freigabe nach sicherem OAuth-Cutover und Acceptance |
 | ChatGPT Visible Session | sichtbares, höchstens 24 Stunden gültiges `sps_...`-Token im Startprompt und Footer | isolierter Rollback, nicht aktuelle Referenzarchitektur |
 | Claude OAuth/MCP | Backend löst ein authentifiziertes OAuth-Subject auf; generischer Prompt ohne sichtbares Sitzungstoken | Codepfade ergänzt und sicher projiziert; pausiert bis zur echten vollständigen Acceptance |
 | Legacy Custom GPT | einmaliger Startcode und anschließendes verborgenes Sitzungstoken | unveränderte koordinierte Rollback-Quelle |
@@ -276,7 +276,7 @@ können zusätzlich Freigaben durch Owner erforderlich sein.
 6. End-to-End-Evidenz für Web und den vorgesehenen Gerätewechsel festhalten.
 7. Erst danach den Source-Level-Gate in `app/src/utils/claudeCoach.ts` an eine
    überprüfte Aktivierungsregel anbinden, neu bauen und über eine Beta-Freigabe
-   entscheiden. ChatGPT parallel über den aktuellen deutschen MCP-App-Pfad
+   entscheiden. ChatGPT parallel über den aktuellen mehrsprachigen V1-MCP-App-Pfad
    prüfen; Visible Session nur als getrennten Rollback-Smoke-Test verwenden.
 
 ## Smoke-Test für kontrollierte Staging-/Testumgebungen

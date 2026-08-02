@@ -191,11 +191,11 @@ final class OpenAiDeCimdMetadataValidator {
     }
 
     private static IllegalStateException failure(String message) {
-        return new IllegalStateException("OpenAI-DE secure startup refused: " + message);
+        return new IllegalStateException("OpenAI Coach V1 secure startup refused: " + message);
     }
 
     private static IllegalStateException failure(String message, Throwable cause) {
-        return new IllegalStateException("OpenAI-DE secure startup refused: " + message, cause);
+        return new IllegalStateException("OpenAI Coach V1 secure startup refused: " + message, cause);
     }
 
     @FunctionalInterface

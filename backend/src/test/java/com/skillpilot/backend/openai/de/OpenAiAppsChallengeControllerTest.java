@@ -12,7 +12,7 @@ class OpenAiAppsChallengeControllerTest {
     void failsClosedUntilAnExactChallengeIsConfigured() {
         assertThat(OpenAiAppsChallengeController.PATH)
                 .isEqualTo(OpenAiDeV1ContractMetadata.INTERNAL_OPENAI_APPS_CHALLENGE_PATH)
-                .startsWith("/internal/openai/de/v1/");
+                .startsWith("/internal/openai/v1/");
 
         OpenAiDeProperties properties = new OpenAiDeProperties();
         OpenAiAppsChallengeController controller =

@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-/** Shared fail-closed validation for the OpenAI-DE production security profile. */
+/** Shared fail-closed validation for the OpenAI Coach V1 production security profile. */
 public final class OpenAiDeSecureModeValidation {
 
     public static final int MINIMUM_CLIENT_SECRET_LENGTH = 32;

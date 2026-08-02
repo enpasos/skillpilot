@@ -1,8 +1,8 @@
 # Rollback/Kompatibilität: ChatGPT Visible Session
 
 Status: getrennt erhaltener Custom-GPT-Rollback- und Kompatibilitätspfad. Er ist
-nicht der aktuelle deutsche Laufzeitvertrag. Englisch kann bis zur Abnahme einer
-eigenen englischen App noch über diesen Übergangspfad laufen.
+für keine Sprache der aktuelle Laufzeitvertrag. Der mehrsprachige V1-MCP-Vertrag
+ersetzt ihn im Normalbetrieb.
 
 Dieses Dokument beschreibt den erhaltenen Start- und Dialogfluss der
 bestehenden SkillPilot Custom GPTs für Deutsch und Englisch. Die
@@ -14,7 +14,7 @@ ein Custom GPT Werte aus einem früheren unsichtbaren Action-Response nach dem
 nächsten User-Turn nicht mehr zuverlässig wiederverwenden kann. Das Backend bleibt
 die Autorität für Lernstand, State Machine, erlaubte Übergänge und Mastery.
 
-Der aktuelle deutsche Vertrag ist die
+Der aktuelle mehrsprachige V1-Vertrag ist die
 [OpenAI-MCP-App mit OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
 Sie authentisiert die App über einen festen vertraulichen OAuth-Client und
 verlangt zusätzlich die bei jedem **Lernen starten** neu erzeugte, absolut
@@ -257,10 +257,10 @@ werden. Unter `ai/` gibt es absichtlich kein gemeinsames
 
 ## Laufzeitwahl und koordinierter Rückfall
 
-Der deutsche Web-Start verwendet die `openai-mcp`-Variante. `visible-session`
-darf nur für einen koordinierten Custom-GPT-Rollback oder als vorübergehender
-englischer Fallback aktiviert werden. Die festen URLs der bestehenden deutschen
-und englischen GPTs liegen im sprachspezifischen Frontend-Paket. Die gewöhnlichen
+Der Web-Start verwendet für jede unterstützte Interaktionssprache die
+`openai-mcp`-Variante. `visible-session` darf nur für einen koordinierten
+Custom-GPT-Rollback aktiviert werden. Die festen URLs der bestehenden deutschen
+und englischen Legacy-GPTs liegen im sprachspezifischen Frontend-Paket. Die gewöhnlichen
 Produktionsgeheimnisse des Backends, insbesondere Action-API-Key und Signing
 Secret, bleiben davon unberührt und müssen weiterhin korrekt konfiguriert sein.
 
@@ -318,6 +318,6 @@ Die Claude-OAuth/MCP-Implementierung ist eine getrennte, derzeit deaktivierte un
 nicht lernendenseitig sichtbare Variante. Sie verwendet keinen sichtbaren
 ChatGPT-Sitzungsfooter. Gemeinsame Projektion, Personalisierung und
 Exam-Autorisierung sind im Code ergänzt; ohne vollständige reale
-Provider-Acceptance ist Claude dennoch kein Fallback des deutschen MCP-Coachs. Der
+Provider-Acceptance ist Claude dennoch kein Fallback des mehrsprachigen V1-MCP-Coachs. Der
 Status und die verbleibenden Release-Gates stehen im
 [Claude-Coach-Runbook](../../deploy/claude-coach-beta.md).

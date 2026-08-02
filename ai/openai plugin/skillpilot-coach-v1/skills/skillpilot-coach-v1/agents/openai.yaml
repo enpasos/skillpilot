@@ -1,0 +1,21 @@
+{
+  "interface": {
+    "display_name": "SkillPilot Coach v1",
+    "short_description": "Personal SkillPilot learning coach",
+    "default_prompt": "Use $skillpilot-coach-v1 and continue my prepared SkillPilot learning step."
+  },
+  "dependencies": {
+    "tools": [
+      {
+        "type": "mcp",
+        "value": "skillpilot-coach-v1",
+        "description": "SkillPilot learning state, navigation, mastery, verified recall, and assessments",
+        "transport": "streamable_http",
+        "url": "https://mcp-coach-v1.skillpilot.com/mcp"
+      }
+    ]
+  },
+  "policy": {
+    "allow_implicit_invocation": false
+  }
+}

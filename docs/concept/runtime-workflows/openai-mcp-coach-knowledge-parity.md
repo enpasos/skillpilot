@@ -1,8 +1,8 @@
-# Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches
+# Wissens- und Verhaltensparität des MCP-Lerncoaches
 
 **Stand:** 30. Juli 2026
 
-**Status:** normative Current-to-Target-Paritätsmatrix für deutschen Coach-Skill
+**Status:** normative Current-to-Target-Paritätsmatrix für den mehrsprachigen Coach-Skill
 und chat-first MCP-App mit read-only Lernzielvisualisierung
 
 Diese Matrix weist nach, **wo** die früheren Regeln technisch wirksam werden
@@ -10,11 +10,11 @@ sollen. Sie ist kein Nachweis, dass das Zusammenspiel von Modell, Tools,
 Zustandsprojektion und Backend bereits dieselbe Endnutzerqualität wie der
 frühere Custom-GPT-Coach erreicht. Die übergreifende Verhaltensaufgabe, Golden
 Journeys und Acceptance-Gates stehen in
-[Verhaltensintegration des deutschen MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md).
+[Verhaltensintegration des MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md).
 
 Die ChatGPT-MCP-App allein besitzt keine Knowledge-Uploadfläche wie ein Custom
-GPT. Das versionierte deutsche V1-Quellpaket unter
-[`ai/openai plugin/skillpilot-coach-de-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-de-v1)
+GPT. Das versionierte sprachneutrale V1-Quellpaket unter
+[`ai/openai plugin/skillpilot-coach-v1`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20plugin/skillpilot-coach-v1)
 ergänzt sie deshalb um einen Coach-Skill. Die bewährten deutschen Inhalte unter
 `ai/openai custom gpt` bleiben fachlich-didaktische Ausgangsspezifikation,
 werden aber nicht als alte Knowledge-Dateien zur Laufzeit gesucht oder

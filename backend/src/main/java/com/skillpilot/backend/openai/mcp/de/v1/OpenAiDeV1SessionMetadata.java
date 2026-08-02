@@ -9,6 +9,7 @@ public record OpenAiDeV1SessionMetadata(
         int stateSchemaVersion,
         String workflowVersion,
         String curriculumRevision,
+        String communicationLocale,
         Map<String, Object> extensions) {
 
     public OpenAiDeV1SessionMetadata {

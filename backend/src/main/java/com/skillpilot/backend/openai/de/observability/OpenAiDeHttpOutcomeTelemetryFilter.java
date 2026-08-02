@@ -21,11 +21,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 30)
 @ConditionalOnExpression(
-        "${skillpilot.openai.coach.de.v1.enabled:false} || "
-                + "${skillpilot.openai.coach.de.v1.bootstrap-enabled:false}")
+        "${skillpilot.openai.coach.v1.enabled:false} || "
+                + "${skillpilot.openai.coach.v1.bootstrap-enabled:false}")
 public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilter {
 
-    private static final String OPENAI_API_PREFIX = "/api/openai/de/";
+    private static final String OPENAI_API_PREFIX = "/api/openai/v1/";
 
     private final OpenAiDeOperationalTelemetry telemetry;
 
@@ -84,13 +84,13 @@ public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilt
     }
 
     private static boolean isOAuthProtocolPath(String path) {
-        return path != null && (path.startsWith("/api/openai/de/oauth2/")
-                || path.equals("/api/openai/de/oauth/consent"));
+        return path != null && (path.startsWith("/api/openai/v1/oauth2/")
+                || path.equals("/api/openai/v1/oauth/consent"));
     }
 
     private static boolean isOpenAiUiPath(String path) {
         return path != null
                 && path.startsWith("/api/ui/learners/")
-                && path.contains("/openai/de/");
+                && path.contains("/openai/v1/");
     }
 }
