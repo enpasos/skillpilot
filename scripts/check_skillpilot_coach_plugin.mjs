@@ -112,8 +112,8 @@ assert.equal(manifest.apps, "./.app.json");
 assert.equal(existsSync(resolve(pluginRoot, ".app.json")), true);
 assert.deepEqual(appConfig, {
   apps: {
-    "dev-6a66d0224a888191a193f2a97b86954e": {
-      id: "asdk_app_6a66d0224a888191a193f2a97b86954e",
+    "dev-6a6fac62910881919c90d06bffbe26c9": {
+      id: "asdk_app_6a6fac62910881919c90d06bffbe26c9",
     },
   },
 });
