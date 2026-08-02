@@ -7,27 +7,6 @@ export type GoalVisualization = {
   cockpitUrl: string;
 };
 
-/**
- * Decide whether the visualization UI must stay suppressed for this host.
- *
- * The MCP Apps host context is authoritative when it publishes a known
- * platform. The user-agent fallback is presentation-only and covers hosts
- * that do not expose the standard context yet; it is not a security boundary.
- */
-export function isMobileGoalVisualizationHost(
-  platform: unknown,
-  ...userAgents: unknown[]
-): boolean {
-  if (platform === "mobile") return true;
-  if (platform === "web" || platform === "desktop") return false;
-
-  return userAgents.some(
-    (value) =>
-      typeof value === "string" &&
-      /(?:Android|iP(?:hone|ad|od)|Windows Phone|Mobile)/i.test(value)
-  );
-}
-
 export function goalVisualizationFromStructuredContent(
   value: unknown
 ): GoalVisualization | undefined {

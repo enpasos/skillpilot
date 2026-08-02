@@ -1,10 +1,4 @@
-import {
-  App,
-  PostMessageTransport,
-  type McpUiHostContext
-} from "@modelcontextprotocol/ext-apps";
-
-export type GoalVisualizationHostContext = McpUiHostContext;
+import { App, PostMessageTransport } from "@modelcontextprotocol/ext-apps";
 
 export type GoalVisualizationToolResult = {
   structuredContent?: unknown;
@@ -16,7 +10,6 @@ export class GoalVisualizationBridge {
 
   constructor(
     onToolResult: (result: GoalVisualizationToolResult) => void,
-    onHostContextChanged: (context: GoalVisualizationHostContext) => void,
     target: Window = window.parent
   ) {
     this.app = new App(
@@ -27,14 +20,7 @@ export class GoalVisualizationBridge {
     this.app.ontoolresult = (result) => {
       onToolResult(result as GoalVisualizationToolResult);
     };
-    this.app.addEventListener("hostcontextchanged", (context) => {
-      onHostContextChanged(this.app.getHostContext() ?? context);
-    });
     this.ready = this.app.connect(new PostMessageTransport(target, target));
-  }
-
-  hostContext(): McpUiHostContext | undefined {
-    return this.app.getHostContext();
   }
 
   async requestTeardown(): Promise<void> {

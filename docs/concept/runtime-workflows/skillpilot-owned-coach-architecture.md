@@ -361,23 +361,25 @@ Interaktive Widgets sind davon getrennte spätere Ausbaustufen.
 
 Konkret referenziert nur das dedizierte read-only Werkzeug
 `render_skillpilot_goal_visualization_de` die versionierte Ressource
-`ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html`. Die optionale
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`. Die optionale
 `structuredContent.goalVisualization` enthält Ziel-ID, Titel, optionale
 Beschreibung, öffentliche Bild-URL, Alttext und Cockpit-Link. Das Backend gibt
 sie nur für ein aktives atomares Ziel mit passendem kanonischem
 `goal-visualization`-Link aus. Diese Felder bilden die intern begrenzte
 Projektion; sichtbar rendert das Widget ausschließlich das Bild und hinterlegt
 den Alttext am `img`-Element. Titel, Beschreibung, Ziel-ID und Cockpit-Link
-werden nicht angezeigt. Fehlende, ungültige oder nicht ladbare Bilder blenden
-die Komponente aus und lassen den normalen Chat unverändert. Das Bild ist
-Orientierung, niemals Evidenz, Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
-Nach erfolgreicher UI-Initialisierung rendert das Widget bei
-`hostContext.platform = "mobile"` keinen SkillPilot-Inhalt und fordert seinen
-Teardown an; die normale Chat-Antwort bleibt vollständig nutzbar. Der Teardown
-ist eine Anfrage an den Host. Initialisiert eine mobile Oberfläche die MCP-UI
-gar nicht, können Backend und Widget einen vom Host bereits angelegten
-Platzhalter nicht garantiert entfernen. Die Architektur verspricht deshalb
-keine geräteübergreifende Rehydration der UI.
+werden nicht angezeigt. Fehlende oder ungültige Bilder blenden die Komponente
+aus und lassen den normalen Chat unverändert. Ein gültiges Bild bleibt bis zu
+seinem erfolgreichen `load`-Ereignis unsichtbar. Nur ein konkreter Ladefehler
+oder der begrenzte Lade-Timeout blendet es wieder aus und fordert den Teardown
+an. Plattform- und User-Agent-Werte werden nicht zur Oberflächenklassifizierung
+verwendet: Mobile Browser, native Apps und Desktop-Hosts erhalten denselben
+oberflächenneutralen Ladeversuch; ausschließlich der tatsächliche Ladeerfolg
+entscheidet über die Anzeige. Das Bild ist Orientierung, niemals Evidenz,
+Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Der Teardown ist eine Anfrage
+an den Host. Initialisiert eine Oberfläche die MCP-UI gar nicht, können Backend
+und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert
+entfernen.
 
 ### 6.3 Verbindlicher Ort jeder Regel
 
@@ -926,7 +928,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | unterstützte ChatGPT-Web-Oberflächen; Mobile als textueller Fallback ohne UI-Zusage; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | ChatGPT-Web auf Desktop und Mobile sowie native Desktop- und Mobile-Apps; Bild-UI jeweils nur bei erfolgreichem Laden, sonst vollständiger textueller Fallback; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1107,9 +1109,10 @@ Kernanforderung nicht.
    Deployment-Runbook durchführen.
 8. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
    Oberflächen-Acceptance öffentlich freigeben.
-9. Die Zielbildkarte im realen Host mit Bild, ohne Bild und bei Ladefehler
-   abnehmen; danach interaktive Widgetverbesserungen entwickeln und erst
-   anschließend den separaten englischen Appvertrag ableiten.
+9. Die Zielbildkarte im Desktop- und Mobile-Browser sowie in den nativen Apps
+   mit Bild, ohne Bild, bei Ladefehler und bei Lade-Timeout abnehmen; danach
+   interaktive Widgetverbesserungen entwickeln und erst anschließend den
+   separaten englischen Appvertrag ableiten.
 
 ## 21. Referenzen
 

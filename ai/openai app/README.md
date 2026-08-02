@@ -116,7 +116,10 @@ separat pro Sprache kompiliert. Zusätzlich entsteht
 `dist/goal-visualization/widget.html`. Diese kompakte Komponente erwartet
 `structuredContent.goalVisualization` mit Ziel-ID, Titel, optionaler
 Beschreibung, öffentlicher HTTPS-Bild-URL, Alttext und Cockpit-Link. Ohne
-vollständige gültige Daten sowie bei einem Bildladefehler bleibt sie verborgen.
+vollständige gültige Daten bleibt sie verborgen. Bei gültigen Daten versucht
+sie das Bild unabhängig von Plattform- oder User-Agent-Werten zu laden und
+zeigt es erst nach erfolgreichem `load`. Ein Ladefehler oder der begrenzte
+15-Sekunden-Timeout blendet sie aus und fordert ihren Teardown an.
 
 ## Sicherheits- und Zustandsgrenze
 
@@ -175,7 +178,7 @@ fachliche Modellaufruf trägt die unveränderte, absolut auf 24 Stunden begrenzt
 Lernsession.
 
 Der Spring-Pfad registriert die Zielbild-Komponente unter
-`ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html`
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
 ausschließlich für das read-only Werkzeug
 `render_skillpilot_goal_visualization_de`. Der Kontext erlaubt dieses
 Anzeige-Werkzeug nur für ein aktives atomares Ziel mit passendem kanonischem

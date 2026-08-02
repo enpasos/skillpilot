@@ -99,6 +99,12 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
 11. Ein erlaubtes atomares Ziel mit passendem Bild aktivieren. Erwartung:
     `set_skillpilot_active_goal_de` aktualisiert die Karte automatisch. Das Bild
     wird nicht als Evidenz, Aufgabe, Lösung oder Mastery-Nachweis behandelt.
+12. Denselben Chat im mobilen Browser und in der nativen Mobile-App öffnen.
+    Erwartung: Auf jeder Oberfläche mit erfolgreichem Bild-`load` wird das Bild
+    angezeigt. Ein konkreter Ladefehler oder der begrenzte Lade-Timeout blendet
+    die Komponente aus und fordert Teardown an; die normale Chat-Antwort bleibt
+    vollständig nutzbar. Plattform- oder User-Agent-Werte allein dürfen die
+    Darstellung nicht unterdrücken.
 
 ### 3.2 Widget-Prototyp als getrennte Baseline
 
@@ -228,7 +234,7 @@ jeweiligen Vertragsfreigabe `404`. Die read-only Zielbild-UI des
 weiterhin unveröffentlichten `1.0.0`-Drafts verwendet den eindeutigen
 Widget-Origin `https://mcp-coach-de-v1.skillpilot.com`. Ihre inhaltsadressierte
 Resource-URI
-`ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html`, Integrität, CSP,
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`, Integrität, CSP,
 Alttext und Degradationsverhalten sind eigene Release-Gates. Erst eine
 tatsächliche Portal-Veröffentlichung versiegelt diesen Stand; bis dahin bleibt
 die Paketversion `1.0.0`.

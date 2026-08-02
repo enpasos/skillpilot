@@ -18,9 +18,10 @@ deutschen SkillPilot-Coachs. Dieser Stand ist noch nicht veröffentlicht.
   passendem kanonischem `goal-visualization`-Link
 - bildreine Darstellung ohne zusätzlichen Lernzieltext oder Cockpit-Link;
   sichtbar wird sie erst nach erfolgreich geladenem Bild
-- defensive Mobile-Degradation: ein als `mobile` initialisierter MCP-UI-Host
-  erhält keinen SkillPilot-Inhalt und wird um Teardown gebeten; die normale
-  Chat-Antwort bleibt vollständig nutzbar
+- oberflächenneutraler Bildladeversuch ohne Plattform- oder
+  User-Agent-Sperre: Mobile-Browser, native Apps und Desktop-Hosts versuchen das
+  Bild gleichermaßen; erst ein konkreter Ladefehler oder Lade-Timeout blendet
+  die UI aus und fordert Teardown an
 - eigene read-only Anzeige-Aktion, die der Coach nur bei vorhandenem,
   freigegebenem Bild aufruft; ohne Bild entsteht keine leere UI-Karte
 - idempotente Initialisierung aus MCP-Tool-Ergebnis, ChatGPT-Kompatibilitätswert

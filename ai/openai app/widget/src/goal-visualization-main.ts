@@ -1,12 +1,10 @@
 import css from "./goal-visualization.css";
 import {
   GoalVisualizationBridge,
-  type GoalVisualizationHostContext,
   type GoalVisualizationToolResult
 } from "./goal-visualization-bridge";
 import {
   firstGoalVisualization,
-  isMobileGoalVisualizationHost,
   retainGoalVisualization,
   type GoalVisualization
 } from "./goal-visualization";
@@ -15,7 +13,6 @@ type OpenAiCompatibilityWindow = Window & {
   openai?: {
     toolOutput?: unknown;
     widgetState?: unknown;
-    userAgent?: string;
     setWidgetState?: (state: unknown) => void;
     requestClose?: () => void | Promise<void>;
   };
@@ -25,9 +22,10 @@ type OpenAiSetGlobalsEvent = CustomEvent<{
   globals?: {
     toolOutput?: unknown;
     widgetState?: unknown;
-    userAgent?: string;
   };
 }>;
+
+const IMAGE_LOAD_TIMEOUT_MS = 15_000;
 
 const style = document.createElement("style");
 style.textContent = css;
@@ -39,32 +37,18 @@ if (!rootElement) throw new Error("Missing goal visualization root");
 const root: HTMLElement = rootElement;
 root.hidden = true;
 
-const bridge = new GoalVisualizationBridge(applyToolResult, handleHostContextChanged);
+const bridge = new GoalVisualizationBridge(applyToolResult);
 const compatibilityWindow = window as OpenAiCompatibilityWindow;
-let bridgeInitialized = false;
-let hostInitialized = false;
-let suppressUi = false;
+let teardownRequested = false;
 let currentVisualization: GoalVisualization | undefined;
-let pendingVisualization: GoalVisualization | undefined;
 let currentImage: HTMLImageElement | undefined;
+let imageLoadTimeout: number | undefined;
 
 window.addEventListener(
   "openai:set_globals",
   (event) => {
     const globals = (event as OpenAiSetGlobalsEvent).detail?.globals;
     if (!globals) {
-      return;
-    }
-
-    if (
-      isMobileGoalVisualizationHost(
-        bridgeInitialized ? bridge.hostContext()?.platform : undefined,
-        globals.userAgent,
-        compatibilityWindow.openai?.userAgent,
-        navigator.userAgent
-      )
-    ) {
-      suppressMobileUi();
       return;
     }
 
@@ -85,90 +69,36 @@ renderFirstStructuredContent(
   compatibilityWindow.openai?.toolOutput,
   compatibilityWindow.openai?.widgetState
 );
-void bridge.ready.then(handleHostInitialization, handleHostInitializationFailure);
+// Keep the standards-first connection active, but do not make the ChatGPT
+// compatibility snapshot wait for a handshake that some hosts complete late.
+void bridge.ready.catch(() => undefined);
 
 function applyToolResult(result: GoalVisualizationToolResult): void {
   renderStructuredContent(result.structuredContent);
 }
 
 function renderFirstStructuredContent(...candidates: unknown[]): void {
-  acceptVisualization(firstGoalVisualization(activeVisualization(), candidates));
+  acceptVisualization(firstGoalVisualization(currentVisualization, candidates));
 }
 
 function renderStructuredContent(structuredContent: unknown): void {
-  acceptVisualization(retainGoalVisualization(activeVisualization(), structuredContent));
-}
-
-function activeVisualization(): GoalVisualization | undefined {
-  return pendingVisualization ?? currentVisualization;
+  acceptVisualization(retainGoalVisualization(currentVisualization, structuredContent));
 }
 
 function acceptVisualization(visualization: GoalVisualization | undefined): void {
-  if (!visualization || suppressUi) return;
-  if (!hostInitialized) {
-    pendingVisualization = visualization;
-    return;
-  }
+  if (!visualization) return;
   renderVisualization(visualization);
 }
 
-function handleHostInitialization(): void {
-  bridgeInitialized = true;
-  const hostContext = bridge.hostContext();
-  if (
-    isMobileGoalVisualizationHost(
-      hostContext?.platform,
-      hostContext?.userAgent,
-      compatibilityWindow.openai?.userAgent,
-      navigator.userAgent
-    )
-  ) {
-    suppressMobileUi();
-    return;
-  }
-
-  enableRendering();
+function dismissUnavailableUi(image: HTMLImageElement): void {
+  if (image !== currentImage || !root.contains(image)) return;
+  hideVisualization(image);
+  requestUiTeardown();
 }
 
-function handleHostContextChanged(hostContext: GoalVisualizationHostContext): void {
-  if (
-    isMobileGoalVisualizationHost(
-      hostContext.platform,
-      hostContext.userAgent,
-      compatibilityWindow.openai?.userAgent,
-      navigator.userAgent
-    )
-  ) {
-    suppressMobileUi();
-    return;
-  }
-
-  if (!bridgeInitialized || suppressUi) return;
-  enableRendering();
-}
-
-function handleHostInitializationFailure(): void {
-  if (
-    isMobileGoalVisualizationHost(
-      undefined,
-      compatibilityWindow.openai?.userAgent,
-      navigator.userAgent
-    )
-  ) {
-    suppressMobileUi();
-    return;
-  }
-
-  // Keep the existing ChatGPT compatibility bridge usable for web hosts that
-  // do not complete the standards-first handshake.
-  enableRendering();
-}
-
-function suppressMobileUi(): void {
-  if (suppressUi) return;
-  suppressUi = true;
-  pendingVisualization = undefined;
-  hideVisualization();
+function requestUiTeardown(): void {
+  if (teardownRequested) return;
+  teardownRequested = true;
 
   const openai = compatibilityWindow.openai;
   const requestClose = openai?.requestClose;
@@ -177,22 +107,17 @@ function suppressMobileUi(): void {
       ? Promise.resolve().then(() => requestClose.call(openai))
       : Promise.resolve();
 
-  // The standard teardown request is the primary signal. requestClose is a
-  // feature-detected ChatGPT compatibility enhancement. Either host may
+  // The standard teardown request is the primary signal. requestClose remains
+  // a feature-detected ChatGPT compatibility enhancement. Either host may
   // decline or ignore its signal, so the DOM stays collapsed independently.
   void Promise.allSettled([bridge.requestTeardown(), compatibilityClose]);
-}
-
-function enableRendering(): void {
-  hostInitialized = true;
-  const visualization = pendingVisualization;
-  pendingVisualization = undefined;
-  renderVisualization(visualization);
 }
 
 function renderVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization || visualization === currentVisualization) return;
 
+  clearImageLoadTimeout();
+  root.hidden = true;
   currentVisualization = visualization;
   const image = document.createElement("img");
   image.className = "goal-image";
@@ -200,9 +125,13 @@ function renderVisualization(visualization: GoalVisualization | undefined): void
   image.loading = "eager";
   image.decoding = "async";
   image.addEventListener("load", () => showVisualization(image, visualization));
-  image.addEventListener("error", () => hideVisualization(image));
+  image.addEventListener("error", () => dismissUnavailableUi(image));
   currentImage = image;
   root.replaceChildren(image);
+  imageLoadTimeout = window.setTimeout(
+    () => dismissUnavailableUi(image),
+    IMAGE_LOAD_TIMEOUT_MS
+  );
   image.src = visualization.imageUrl;
 }
 
@@ -211,13 +140,13 @@ function showVisualization(
   visualization: GoalVisualization
 ): void {
   if (
-    suppressUi ||
     image !== currentImage ||
     !root.contains(image) ||
     visualization !== currentVisualization
   ) {
     return;
   }
+  clearImageLoadTimeout();
   root.hidden = false;
   try {
     compatibilityWindow.openai?.setWidgetState?.({ goalVisualization: visualization });
@@ -232,8 +161,15 @@ function hideVisualization(image?: HTMLImageElement): void {
   // event must not clear the newer image delivered through the other host
   // channel.
   if (image && (image !== currentImage || !root.contains(image))) return;
+  clearImageLoadTimeout();
   root.replaceChildren();
   root.hidden = true;
   currentVisualization = undefined;
   currentImage = undefined;
+}
+
+function clearImageLoadTimeout(): void {
+  if (imageLoadTimeout === undefined) return;
+  window.clearTimeout(imageLoadTimeout);
+  imageLoadTimeout = undefined;
 }

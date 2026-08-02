@@ -31,7 +31,7 @@ unveröffentlichte Draft deklariert dafür bereits den pro Plugin eindeutigen
 Widget-Origin über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`. Er
 verwendet die unveränderlich vorgesehene
 Resource-URI
-`ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html`. Die übrigen Coach-,
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`. Die übrigen Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
 besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
 verwenden ausschließlich den dedizierten DE-V1-Origin. Die fünf für DE V2/V3

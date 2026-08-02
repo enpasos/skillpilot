@@ -43,7 +43,7 @@ MCP-Werkzeug.
 | MCP Server URL | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-de-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-de-v1.skillpilot.com` |
-| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html` |
+| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html` |
 | Protected Resource Metadata | `https://mcp-coach-de-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-de-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/de` |
@@ -581,16 +581,15 @@ Cockpit-Einstellung. Die sichere Projektion darf interne Zielmetadaten tragen;
 sichtbar rendert das Widget jedoch ausschließlich das Bild mit dem am
 `img`-Element hinterlegten Alttext. Titel, Lernzielbeschreibung und Cockpit-Link
 erscheinen nicht in der UI. Fehlt ein gültiges Bild, entsteht keine UI-Karte und
-der normale Chatablauf funktioniert unverändert. Auf einem unterstützten Web-Host
-übernimmt das Widget nach der Host-Initialisierung das aktuelle Tool-Ergebnis.
-Meldet der initialisierte Host dagegen `hostContext.platform = "mobile"`,
-rendert das Widget keinen SkillPilot-Inhalt und fordert seinen Teardown an; die
-normale Chat-Antwort bleibt der vollständige Fallback. Der Host entscheidet über
-den Teardown. Initialisiert eine mobile Oberfläche die MCP-UI gar nicht, können
-Backend und Widget einen vom Host erzeugten leeren Platzhalter nicht
-serverseitig unterdrücken. Daraus folgt ausdrücklich keine Zusage, dass eine
-Web-UI beim Öffnen derselben Unterhaltung auf einem mobilen Gerät rehydriert
-wird.
+der normale Chatablauf funktioniert unverändert. Ein gültiges Bild wird auf
+jeder Oberfläche sofort unsichtbar geladen und erst nach erfolgreichem `load`
+gezeigt. Das Widget verwendet Plattform- und User-Agent-Werte nicht, um Mobile-
+Browser, native Apps oder andere Hosts von der Anzeige auszuschließen. Bei
+einem konkreten Bildfehler oder nach dem begrenzten Lade-Timeout bleibt die UI
+verborgen und fordert ihren Teardown an; die normale Chat-Antwort bleibt der
+vollständige Fallback. Der Host entscheidet über den Teardown. Initialisiert
+eine Oberfläche die MCP-UI gar nicht, können Backend und Widget einen vom Host
+erzeugten leeren Platzhalter nicht serverseitig unterdrücken.
 
 Die `learningSessionId` erscheint ausschließlich in der automatisch
 vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
@@ -728,12 +727,13 @@ Produktivcoach.
   Lernzielbeschreibung und Cockpit-Link nicht gerendert werden. Ein Clusterziel
   sowie ein atomisches Ziel ohne gültigen oder passenden Bildlink dürfen keine
   leere oder defekte Karte erzeugen; der Chat bleibt normal lesbar.
-- Beim Öffnen desselben Chats auf Mobile bleibt die normale Chat-Antwort
-  vollständig nutzbar. Initialisiert der Host die MCP-UI und meldet
-  `hostContext.platform = "mobile"`, rendert das Widget keinen
-  SkillPilot-Inhalt und fordert seinen Teardown an. Ein bereits vom Host
-  angelegter Platzhalter ist bei ausbleibender UI-Initialisierung eine externe
-  Host-Darstellung und kann nicht serverseitig garantiert entfernt werden.
+- Beim Öffnen desselben Chats im mobilen Browser und in der nativen Mobile-App
+  muss die normale Chat-Antwort vollständig nutzbar bleiben. Auf beiden
+  Oberflächen wird das Bild versucht und nur nach erfolgreichem `load` sichtbar.
+  Ein Bildfehler oder Lade-Timeout muss die UI ausblenden und den Teardown
+  anfordern. Ein bereits vom Host angelegter Platzhalter ist bei ausbleibender
+  UI-Initialisierung eine externe Host-Darstellung und kann nicht serverseitig
+  garantiert entfernt werden.
 - Dasselbe Access Token ohne Session-ID, mit falscher, abgelaufener oder zu
   einem anderen Lernenden gehörender Session-ID muss scheitern.
 - Eine gültige Session-ID ohne gültiges OAuth Access Token muss ebenfalls
@@ -819,11 +819,11 @@ dauerhafte SkillPilot-ID, OAuth-Token, Client-Secret noch interne Lernziel-ID.
 Der Benutzer muss die Session-ID weder kopieren noch verändern.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
-und feste Consumer-Abo-Nutzung, Deutschland/EU und die unterstützten
-Web-Oberflächen praktisch bestätigt sind. Solange OpenAI diesen MCP-Apps-Pfad
-auf Mobile nicht unterstützt, ist dort die normale textuelle Chat-Antwort der
-verbindliche Fallback; eine funktionsfähige oder rehydrierte Mobile-UI gehört
-nicht zur Freigabezusage.
+und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-
+und App-Oberflächen praktisch bestätigt sind. Auf jeder Oberfläche bleibt die
+normale textuelle Chat-Antwort der verbindliche Fallback; eine Bild-UI gehört
+nur dann zur Freigabezusage, wenn ihr tatsächlicher Lade- und
+Rehydrationsnachweis dort bestanden ist.
 
 ## 7. Cockpit-Canary und Cutover
 

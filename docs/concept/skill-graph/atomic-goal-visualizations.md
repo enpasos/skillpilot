@@ -53,7 +53,7 @@ The still-unpublished `SkillPilot Coach DE v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
-ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
 ```
 
 Only the dedicated read-only `render_skillpilot_goal_visualization_de` tool
@@ -87,16 +87,18 @@ The projection and component obey these constraints:
   compatibility, but the UI renders only the image. Its `altText` stays on the
   `img` element; title, description, goal ID, and cockpit link are not visibly
   rendered. The component performs no learning-state mutation;
-- a missing, malformed, mismatched, or unloadable image hides the component and
-  leaves the ordinary ChatGPT response unchanged;
-- the UI is progressive enhancement for supported MCP Apps web hosts. After
-  initialization, a host reporting `hostContext.platform = "mobile"` receives
-  no rendered SkillPilot content and the widget requests teardown. The ordinary
-  chat response remains the complete fallback;
+- a missing, malformed, or mismatched image omits the renderer. A valid image
+  stays hidden while it loads and becomes visible only after a successful
+  `load` event. A concrete load error or the bounded load timeout hides the
+  component, requests teardown, and leaves the ordinary ChatGPT response
+  unchanged;
+- host platform and user-agent values do not decide whether the component is
+  shown. Mobile browsers, native apps, desktop clients, and unknown MCP Apps
+  hosts all get the same surface-neutral image-load attempt; only the actual
+  load outcome decides whether it becomes visible;
 - teardown is a host-mediated request, not a promise that the host removes its
-  container. If a mobile surface never initializes the MCP view, neither the
-  backend nor the widget can suppress a placeholder already created by that
-  host;
+  container. If a surface never initializes the MCP view, neither the backend
+  nor the widget can suppress a placeholder already created by that host;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.
