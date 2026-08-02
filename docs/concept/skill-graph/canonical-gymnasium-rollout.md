@@ -26,17 +26,19 @@ The policy is intentionally conservative:
 
 The rollout starts from a conservative Hessen-first and DE-level-canonical stance.
 
-Source priority assumptions:
+Source priority assumptions the rollout started from:
 
-- `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe` is the most mature Gymnasium curriculum area and defines the rollout starting point.
-- `curricula/DE/HE/Kultusministerium/Gymnasium_9_Mittelstufe` already covers Hessen Sekundarstufe I in the same general direction.
-- `curricula/DE/BY/Gymnasium` already provides broad Bavaria subject coverage, but in a less normalized structure than the Hessen upper-secondary JSON landscapes.
+- the Hessen upper-secondary curriculum area was the most mature Gymnasium area and defined the rollout starting point.
+- the Hessen Sekundarstufe-I area already covered lower secondary in the same general direction.
+- the Bavaria Gymnasium area already provided broad subject coverage, but in a less normalized structure than the Hessen upper-secondary JSON landscapes.
+
+Those state-owned Hessen trees have since been retired from the active repository. What survives is retained, state-scoped evidence at DE level under `curricula/DE/Gymnasium/input/HE/`, plus the canonical subject landscapes under `curricula/DE/Gymnasium/canonical/`. The retirement boundary itself is enforced by the validators described in [Graph Validation Rules](../../qa-ci/graph-validation-rules.md).
 
 Repository layout policy:
 
 - existing source curricula under state-owned paths such as `curricula/DE/HE/.../json/` remain legacy source material and should not be rewritten just to host canonical convergence
 - canonical Gymnasium subject landscapes should live on a Germany-level path, not inside a single Bundesland subtree
-- retained non-canonical state-owned assets should also move to Germany-level archive paths, but remain state-scoped there, for example under `curricula/DE/Gymnasium/input/DE-HE/...`
+- retained non-canonical state-owned assets should also move to Germany-level archive paths, but remain state-scoped there, for example under `curricula/DE/Gymnasium/input/HE/...`
 
 The strategic objective is not to preserve state-specific duplication forever, but to converge towards one canonical competence layer per subject across the full Gymnasium path.
 
@@ -199,7 +201,7 @@ Retained source assets are not.
 
 This means:
 
-- if a legacy path such as `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` remains relevant after convergence, it should be archived into a DE-level but still state-scoped lane
+- if a state-owned legacy path remains relevant after convergence, it should be archived into a DE-level but still state-scoped lane; the Hessen `abi/` assets were the first case and now live under `curricula/DE/Gymnasium/input/HE/abi/`
 - the same rule applies to other state-owned materials such as source bundles, blueprint packages, release notes, and similar regeneration/audit assets
 - `abi/` is the clearest current example of the rule, but not the only case it covers
 

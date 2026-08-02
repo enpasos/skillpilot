@@ -30,16 +30,25 @@ This project is an invitation to the community to jointly build and bring to lif
 ### High-level overview
 -   [Whitepaper (EN)](whitepaper/whitepaper.en.md)
 -   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
--   [Dual curriculum package implementation status](dev/dual-curriculum-package-implementation-status.md)
--   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
+-   [Levels of personalization](concept/levels-of-personalization.md)
+
+### AI learning coach (ChatGPT / MCP)
+
+Diese Dokumente sind auf Deutsch, weil der deutsche Lerncoach die erste ausgelieferte Variante ist.
+
 -   [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [OpenAI-Plugin: Versionierung und Lebenszyklus](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 -   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+-   [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
 -   [Release, Rollback und Stilllegung von SkillPilot Coach DE v1](deploy/openai-plugin-v1-release.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
--   [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
+
+### Programme status
+-   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
+-   [Dual curriculum package implementation status](dev/dual-curriculum-package-implementation-status.md)
+-   [Current curriculum quality status](qa-ci/status/curriculum-quality-status.md)
 
 ## Inside this documentation
 

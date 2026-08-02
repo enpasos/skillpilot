@@ -2,7 +2,7 @@
 
 Snapshot: `2026-03-16`
 
-This note turns the new Sek-I normalization rule into an operational inventory for the Bavaria source snapshot under `curricula/DE/Gymnasium/input/DE-BY/gymnasium/`.
+This note turns the new Sek-I normalization rule into an operational inventory for the Bavaria source snapshot under `curricula/DE/Gymnasium/input/BY/gymnasium/`.
 
 It complements:
 

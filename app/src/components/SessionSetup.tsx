@@ -170,6 +170,24 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.error
     && !personalCurriculumEditor.loading
     && !personalCurriculumEditor.busy
+  const learnerCockpitHref = React.useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    const pathToken = getLearnerPathToken(location.pathname)
+    const routeGoalId = pathToken && pathToken !== sanitizedLearnerId ? pathToken : ''
+    const deepLinkGoal = params.get('goal') || params.get('g') || routeGoalId
+    const path = deepLinkGoal ? `/learner/${encodeURIComponent(deepLinkGoal)}` : '/learner'
+    const cockpitParams = new URLSearchParams()
+    if (normalizedSelectedLearnerLandscapeId) {
+      cockpitParams.set('l', normalizedSelectedLearnerLandscapeId)
+    }
+    const search = cockpitParams.toString()
+    return `${path}${search ? `?${search}` : ''}`
+  }, [
+    location.pathname,
+    location.search,
+    normalizedSelectedLearnerLandscapeId,
+    sanitizedLearnerId,
+  ])
   const learnerSetupStepVisibility = getLearnerSetupStepVisibility({
     hasSkillpilotId: !!sanitizedLearnerId,
     idStepComplete,
@@ -459,6 +477,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
     localStorage.setItem('skillpilot_learner_landscape', normalizedLandscapeId)
     return normalizedLandscapeId
+  }
+
+  const handleOpenLearnerCockpit = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!personalCurriculumReady || !persistLearnerStart(sanitizedLearnerId)) {
+      event.preventDefault()
+    }
   }
 
   const handleLearnerCurriculumSelect = async (landscapeId: string) => {
@@ -1459,14 +1483,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         </div>
                       )}
                       <div>
-                        <button
-                          type="submit"
-                          disabled={!personalCurriculumReady}
-                          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary transition-colors hover:border-sky-400 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-800"
+                        <a
+                          href={personalCurriculumReady ? learnerCockpitHref : undefined}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-disabled={!personalCurriculumReady}
+                          tabIndex={personalCurriculumReady ? undefined : -1}
+                          onClick={handleOpenLearnerCockpit}
+                          className={`inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary transition-colors dark:bg-slate-800 ${personalCurriculumReady ? 'hover:border-sky-400' : 'cursor-not-allowed opacity-50'}`}
                         >
                           <Compass size={16} />
                           {t.startPage.login.cockpitButton}
-                        </button>
+                        </a>
                       </div>
                       {chatLaunchIssue !== 'none' && (
                         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">

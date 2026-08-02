@@ -1,0 +1,77 @@
+name: Docs Checks
+
+# The main CI workflow deliberately skips docs-only changes, so its documentation
+# gates never run for exactly the changes they are meant to protect. This workflow
+# runs the same five documentation checks for docs-only pushes and pull requests.
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs_checks.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs_checks.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docs-checks:
+    name: Documentation Checks
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Check Generated Documentation Notices
+        run: npm run check:generated-doc-notices
+      - name: Check Generated Status Registry
+        run: npm run check:generated-status-registry
+      - name: Check Documentation Links
+        run: npm run check:docs-links
+      - name: Check Documentation Index Coverage
+        run: npm run check:docs-indexes
+      - name: Check Terminology
+        run: npm run check:terminology
+
+  docs-build:
+    name: MkDocs Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install docs dependencies
+        run: pip install -r requirements-docs.txt
+      # Not --strict: many docs link to repo files outside docs/ (contracts/,
+      # app/, scripts/, curricula/). Those links resolve on GitHub but not in the
+      # built site, and strict mode would reject them. `npm run check:docs-links`
+      # is what validates link targets against the filesystem.
+      - name: Build site
+        run: mkdocs build

@@ -161,17 +161,17 @@ References:
 
 ### Reference implementations
 
-Two committed landscapes provide concrete authoring benchmarks for this target state:
+Two retained Hessen source snapshots provide concrete authoring benchmarks for this target state. They are retained authoring evidence under `curricula/DE/Gymnasium/input/HE/`, not runtime landscapes; the live landscapes are the canonical subject files under `curricula/DE/Gymnasium/canonical/`.
 
 - **Physics upper secondary**
-  - file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_PHYSIK.de.json`
+  - file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot`
   - benchmark pattern:
     - mature atomic `requires` authoring
     - local autonomy branches `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`
     - ordinary klausur-style terminal goals kept separate from the global Abi branch
 
 - **Mathematics upper secondary**
-  - file: `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/json/DE_HES_S_GYM_2_MATHEMATIK.de.json`
+  - file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
   - benchmark pattern:
     - mature atomic `requires` authoring across the ordinary curriculum phases
     - local autonomy branches `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`

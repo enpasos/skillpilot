@@ -379,11 +379,11 @@ Purpose:
 Implementation and data source:
 
 - validator: `scripts/validate_hessen_upper_secondary_archive_paths.py`
-- allowlist and archive root: `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
+- allowlist and archive root: `curricula/DE/Gymnasium/input/HE/retained-asset-registry.json`
 
 Current CI semantics:
 
-- scans `curricula/DE/Gymnasium/input/DE-HE/abi`
+- scans `curricula/DE/Gymnasium/input/HE/abi`
 - fails if a legacy `Gymnasiale_Oberstufe` path string appears outside the allowlisted raw-provenance files
 - keeps machine-readable ABI metadata and repo-authored archive docs on the normalized DE-level archive path
 
@@ -404,8 +404,9 @@ Implementation and data source:
 
 Current CI semantics:
 
-- scans active repo surfaces (`backend/src`, `app`, `scripts`, DE-level provenance/input lanes, selected root helpers)
-- ignores the already-separated raw ABI archive scope under `curricula/DE/Gymnasium/input/DE-HE/abi/**`
+- scans active repo surfaces (`backend/src`, `app`, `scripts`, DE-level provenance/input lanes, `docs`, selected root helpers)
+- `docs` is in scope so documentation cannot quietly reintroduce the retired tree as a live reference; the allowlist covers only the dated migration records and the pages that describe this gate
+- ignores the already-separated raw ABI archive scope under `curricula/DE/Gymnasium/input/HE/abi/**`
 - fails if a `Gymnasiale_Oberstufe` tree reference appears outside the explicit handoff allowlist
 
 Expected rule family for that validator:
@@ -428,7 +429,7 @@ This layer is intentionally documented here already so CI semantics stay aligned
 
 Reference implementations already curated:
 
-- Physics landscape file: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot`
+- Physics landscape file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_PHYSIK.de.json.snapshot`
   - subtree: `Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen`
   - benchmark value:
     - no cluster-level `requires` inside the subtree
@@ -436,7 +437,7 @@ Reference implementations already curated:
     - every non-memory atomic goal in the subtree also lies on at least one atomic path toward terminal autonomy goals under `Übungen E-Phase`
     - the single memorization node in that subtree is explicitly typed as `nodeKind: "memory"` and is therefore a documented exception rather than an ambiguous leaf
 
-- Mathematics landscape file: `curricula/DE/Gymnasium/input/DE-HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
+- Mathematics landscape file: `curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot`
   - scope: ordinary phases `E`, `Q1`, `Q2`, `Q3`, `Q4` plus `Übungen Prozesskompetenzen`
   - benchmark value:
     - all local phase-autonomy branches (`Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4`) and the global process-competency branch contain only atomic terminal goals
