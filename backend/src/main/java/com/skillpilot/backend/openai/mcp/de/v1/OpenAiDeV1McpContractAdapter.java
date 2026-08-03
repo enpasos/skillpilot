@@ -35,7 +35,10 @@ import io.modelcontextprotocol.spec.McpSchema;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -93,8 +96,18 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
     private static final Set<String> GOAL_VISUALIZATION_UI_TOOLS =
             Set.of(RENDER_GOAL_VISUALIZATION);
-    private static final String GOAL_VISUALIZATION_WIDGET_HTML =
-            loadGoalVisualizationWidget();
+    private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
+            List.of(
+                    loadGoalVisualizationWidget(
+                            "skillpilot-goal-visualization-v1-current",
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
+                    loadGoalVisualizationWidget(
+                            "skillpilot-goal-visualization-v1-retained-157aab83",
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
 
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative.
@@ -502,33 +515,36 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private List<McpStatelessServerFeatures.SyncResourceSpecification> buildResourceSpecifications() {
         Map<String, Object> meta = goalVisualizationResourceMeta();
+        return GOAL_VISUALIZATION_UI_RESOURCES.stream()
+                .map(uiResource -> goalVisualizationResourceSpecification(uiResource, meta))
+                .toList();
+    }
+
+    private McpStatelessServerFeatures.SyncResourceSpecification goalVisualizationResourceSpecification(
+            GoalVisualizationUiResource uiResource,
+            Map<String, Object> meta) {
         McpSchema.Resource resource = McpSchema.Resource.builder(
-                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        "skillpilot-goal-visualization-v1")
+                        uiResource.uri(),
+                        uiResource.name())
                 .title("SkillPilot learning-goal image")
                 .description("Displays the approved image for the active atomic learning goal.")
                 .mimeType(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE)
                 .meta(meta)
                 .build();
-        McpStatelessServerFeatures.SyncResourceSpecification specification =
-                new McpStatelessServerFeatures.SyncResourceSpecification(
-                        resource,
-                        (transportContext, request) -> {
-                            if (request == null
-                                    || !OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI
-                                            .equals(request.uri())) {
-                                throw new IllegalArgumentException(
-                                        "Unknown SkillPilot MCP UI resource.");
-                            }
-                            McpSchema.TextResourceContents contents =
-                                    new McpSchema.TextResourceContents(
-                                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                                            OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
-                                            GOAL_VISUALIZATION_WIDGET_HTML,
-                                            meta);
-                            return new McpSchema.ReadResourceResult(List.of(contents));
-                        });
-        return List.of(specification);
+        return new McpStatelessServerFeatures.SyncResourceSpecification(
+                resource,
+                (transportContext, request) -> {
+                    if (request == null || !uiResource.uri().equals(request.uri())) {
+                        throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
+                    }
+                    McpSchema.TextResourceContents contents =
+                            new McpSchema.TextResourceContents(
+                                    uiResource.uri(),
+                                    OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                                    uiResource.html(),
+                                    meta);
+                    return new McpSchema.ReadResourceResult(List.of(contents));
+                });
     }
 
     private Map<String, Object> goalVisualizationResourceMeta() {
@@ -549,20 +565,42 @@ public final class OpenAiDeV1McpContractAdapter {
                         "redirect_domains", List.of("https://skillpilot.com")));
     }
 
-    private static String loadGoalVisualizationWidget() {
-        try (InputStream input = OpenAiDeV1McpContractAdapter.class.getResourceAsStream(
-                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH)) {
+    private static GoalVisualizationUiResource loadGoalVisualizationWidget(
+            String name,
+            String uri,
+            String classpath,
+            String expectedSha256) {
+        try (InputStream input = OpenAiDeV1McpContractAdapter.class.getResourceAsStream(classpath)) {
             if (input == null) {
-                throw new IllegalStateException(
-                        "Missing SkillPilot goal-visualization MCP UI bundle.");
+                throw new IllegalStateException("Missing SkillPilot goal-visualization MCP UI bundle " + classpath + ".");
             }
-            return new String(input.readAllBytes(), StandardCharsets.UTF_8);
+            byte[] bytes = input.readAllBytes();
+            String actualSha256 = HexFormat.of().formatHex(
+                    MessageDigest.getInstance("SHA-256").digest(bytes));
+            if (!expectedSha256.equals(actualSha256)) {
+                throw new IllegalStateException(
+                        "SkillPilot goal-visualization MCP UI hash mismatch for "
+                                + classpath
+                                + ": expected "
+                                + expectedSha256
+                                + ", got "
+                                + actualSha256
+                                + ".");
+            }
+            return new GoalVisualizationUiResource(
+                    name,
+                    uri,
+                    new String(bytes, StandardCharsets.UTF_8));
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "Could not read SkillPilot goal-visualization MCP UI bundle.",
+                    "Could not read SkillPilot goal-visualization MCP UI bundle " + classpath + ".",
                     exception);
+        } catch (NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
         }
     }
+
+    private record GoalVisualizationUiResource(String name, String uri, String html) {}
 
     private McpSchema.CallToolResult executeWithTelemetry(
             String toolName,

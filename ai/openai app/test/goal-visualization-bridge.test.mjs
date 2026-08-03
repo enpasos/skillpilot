@@ -51,7 +51,21 @@ async function buildBridgeSource() {
   return result.outputFiles[0].text;
 }
 
+async function buildRealBridgeSource() {
+  const result = await build({
+    entryPoints: [join(root, "widget/src/goal-visualization-bridge.ts")],
+    bundle: true,
+    format: "iife",
+    globalName: "GoalVisualizationBridgeBundle",
+    platform: "browser",
+    target: "es2022",
+    write: false
+  });
+  return result.outputFiles[0].text;
+}
+
 const bridgeSource = await buildBridgeSource();
+const realBridgeSource = await buildRealBridgeSource();
 
 test("teardown does not wait for a host handshake that never settles", async () => {
   const context = {
@@ -70,4 +84,48 @@ test("teardown does not wait for a host handshake that never settles", async () 
   await bridge.requestTeardown();
 
   assert.equal(context.__teardownCount, 1);
+});
+
+test("the real MCP Apps transport sends teardown before initialize settles", async () => {
+  const messages = [];
+  const listeners = new Map();
+  const parent = {
+    postMessage(message) {
+      messages.push(message);
+    }
+  };
+  const context = {
+    AbortController,
+    Promise,
+    URL,
+    console,
+    parent,
+    setTimeout() {
+      return 1;
+    },
+    clearTimeout() {},
+    addEventListener(type, listener) {
+      listeners.set(type, listener);
+    },
+    removeEventListener(type) {
+      listeners.delete(type);
+    }
+  };
+  context.window = context;
+  context.globalThis = context;
+  vm.runInNewContext(realBridgeSource, context, {
+    filename: "goal-visualization-real-bridge.test-bundle.js"
+  });
+
+  const { GoalVisualizationBridge } = context.GoalVisualizationBridgeBundle;
+  const bridge = new GoalVisualizationBridge(() => undefined, parent);
+  await Promise.resolve();
+  await bridge.requestTeardown();
+
+  assert.ok(messages.some((message) => message.method === "ui/initialize"));
+  assert.ok(
+    messages.some(
+      (message) => message.method === "ui/notifications/request-teardown"
+    )
+  );
 });

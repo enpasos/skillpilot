@@ -372,6 +372,12 @@ an den Host. Initialisiert eine Oberfläche die MCP-UI gar nicht, können Backen
 und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert
 entfernen.
 
+Bereits ausgelieferte, inhaltsadressierte UI-Ressourcen bleiben Teil desselben
+V1-Vertrags: `sha256-157aab83...` wird mit seinen ursprünglichen Bytes weiter
+über `resources/read` bedient, damit historische Browser- und native
+App-Nachrichten funktionieren. Es wird nicht als aktives Template neu
+referenziert; dafür bleibt ausschließlich `sha256-c890...` zuständig.
+
 ### 6.3 Verbindlicher Ort jeder Regel
 
 | Regelart | Zielort | Beispiel |

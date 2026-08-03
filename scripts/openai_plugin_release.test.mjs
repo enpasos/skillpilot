@@ -16,6 +16,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
+  assertActiveUiResource,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -47,6 +48,54 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
   assert.throws(
     () => pluginInstallBundleArchiveName("skillpilot-server", "1.0.0"),
     /Invalid SkillPilot plugin identity/,
+  );
+});
+
+test("multi-resource UI keeps one active template and retained resources passive", () => {
+  const activeResourceUri = "ui://skillpilot/coach/v1/sha256-active/widget.html";
+  const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
+  const resources = [
+    { uri: retainedResourceUri, sha256: "retained" },
+    { uri: activeResourceUri, sha256: "active" },
+  ];
+  const tools = [
+    {
+      name: "render_skillpilot_goal_visualization",
+      meta: {
+        ui: { resourceUri: activeResourceUri },
+        "openai/outputTemplate": activeResourceUri,
+      },
+    },
+  ];
+
+  assert.doesNotThrow(() =>
+    assertActiveUiResource(activeResourceUri, resources, tools),
+  );
+  assert.throws(
+    () => assertActiveUiResource("ui://missing", resources, tools),
+    /exactly one inventoried resource/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiResource(
+        activeResourceUri,
+        [...resources, { uri: activeResourceUri, sha256: "duplicate" }],
+        tools,
+      ),
+    /exactly one inventoried resource/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiResource(activeResourceUri, resources, [
+        {
+          ...tools[0],
+          meta: {
+            ui: { resourceUri: activeResourceUri },
+            "openai/outputTemplate": retainedResourceUri,
+          },
+        },
+      ]),
+    /openai\/outputTemplate only to activeResourceUri/,
   );
 });
 

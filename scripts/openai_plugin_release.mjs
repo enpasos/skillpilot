@@ -15,6 +15,7 @@ import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
+  assertActiveUiResource,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -82,6 +83,19 @@ const goalVisualizationWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const retainedGoalVisualizationWidgetSource = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
+    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
+    "goal-visualization.html",
+);
+const uiArtifactSources = new Map([
+  ["ui/goal-visualization.html", goalVisualizationWidgetSource],
+  [
+    "ui/retained/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
+    retainedGoalVisualizationWidgetSource,
+  ],
+]);
 
 const command = process.argv[2];
 if (!new Set(["candidate", "prepare", "verify", "record-published"]).has(command)) {
@@ -267,14 +281,23 @@ function buildCandidate(output) {
     resolve(output, "assets"),
     { recursive: true },
   );
-  assert.equal(
-    existsSync(goalVisualizationWidgetSource),
-    true,
-    "Missing built goal-visualization MCP UI resource. Run npm --prefix \"ai/openai app\" run build.",
-  );
-  const uiArtifactPath = resolve(output, "ui/goal-visualization.html");
-  mkdirSync(dirname(uiArtifactPath), { recursive: true });
-  cpSync(goalVisualizationWidgetSource, uiArtifactPath);
+  for (const resource of line.ui.resources) {
+    const source = uiArtifactSources.get(resource.path);
+    assert.notEqual(
+      source,
+      undefined,
+      `No source artifact configured for retained UI resource ${resource.path}.`,
+    );
+    assert.equal(
+      existsSync(source),
+      true,
+      `Missing MCP UI resource ${resource.path}. ` +
+        "Run npm --prefix \"ai/openai app\" run build for the active resource.",
+    );
+    const uiArtifactPath = resolve(output, resource.path);
+    mkdirSync(dirname(uiArtifactPath), { recursive: true });
+    cpSync(source, uiArtifactPath);
+  }
 
   const skillRoot = resolve(pluginRoot, "skills");
   const skillBundle = bundleManifest(skillRoot);
@@ -286,6 +309,7 @@ function buildCandidate(output) {
 
   const uiManifest = {
     schemaVersion: line.ui.stateSchemaVersion,
+    activeResourceUri: line.ui.activeResourceUri,
     domain: line.ui.domain,
     enabled: line.ui.enabled,
     resources: line.ui.resources.map((resource) => {
@@ -421,6 +445,11 @@ function validateCandidate(output) {
     "The exported MCP UI widget domain must match the V1 release line.",
   );
   assert.equal(
+    releaseContract.uiManifest.activeResourceUri,
+    candidateLine.ui.activeResourceUri,
+    "The UI manifest active resource must match the V1 release line.",
+  );
+  assert.equal(
     Object.hasOwn(candidateLine, "publicUiOrigin"),
     false,
     "The V1 release line must use ui.domain rather than the retired publicUiOrigin field.",
@@ -442,6 +471,11 @@ function validateCandidate(output) {
     })),
     candidateLine.ui.resources,
     "UI manifest resources disagree with the release line.",
+  );
+  assertActiveUiResource(
+    candidateLine.ui.activeResourceUri,
+    releaseContract.uiManifest.resources,
+    contract.tools,
   );
   for (const resource of releaseContract.uiManifest.resources) {
     assert.equal(

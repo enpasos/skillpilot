@@ -484,11 +484,23 @@ Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
 ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
 ```
 
+Als bereits an Test-Clients ausgelieferte Vorgängerressource bleibt außerdem
+
+```text
+ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
+```
+
+mit ihren exakten historischen Bytes lesbar. Die aktive Tool-Metadatei zeigt
+ausschließlich auf `c890cf271...`; die ältere Ressource ist nur für bestehende
+Chats und zwischengespeicherte Metadaten-Snapshots registriert.
+
 Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft
 reproduzierbar neu erzeugt werden. Ändern sich dabei die Widget-Bytes, erhält
 das Artefakt durch seinen SHA-256-Wert eine neue URI, ohne die weiterhin
-unveröffentlichte Plugin-Paketversion hochzuzählen. Der erste veröffentlichte
-Inhalt jeder URI ist unveränderlich. Die Ressource ist ausschließlich die
+unveröffentlichte Plugin-Paketversion hochzuzählen. Sobald eine solche URI
+jedoch einem realen Test-Client angeboten wurde, wird sie wie eine
+veröffentlichte URI unveränderlich und additiv aufbewahrt. Der erste
+ausgelieferte Inhalt jeder URI ist unveränderlich. Die Ressource ist ausschließlich die
 read-only Darstellung eines bereits vom Backend bestätigten aktiven atomaren
 Ziels mit passendem kanonischem `goal-visualization`-Link. Context-Read und
 erfolgreiches Setzen des aktiven Ziels dürfen sie auslösen; ohne gültiges Bild
@@ -512,7 +524,12 @@ Jede UI-Version muss ältere noch unterstützte Zustandsformen lesen und determi
 
 ### 9.4 Aufbewahrung alter UI-Artefakte
 
-Alte veröffentlichte UI-Ressourcen DÜRFEN während der Laufzeit der zugehörigen Plugin-Major-Version nicht entfernt werden. Nach dem Löschen der alten Plugin-Identität sollen statische Ressourcen für eine konfigurierbare Nachlaufzeit erhalten bleiben, weil das Verhalten historischer Chatnachrichten nach Unpublish oder Delete derzeit nicht vollständig dokumentiert ist.
+Alte veröffentlichte oder an reale Draft-Test-Clients ausgelieferte
+UI-Ressourcen DÜRFEN während der Laufzeit der zugehörigen Plugin-Major-Version
+nicht entfernt werden. Nach dem Löschen der alten Plugin-Identität sollen
+statische Ressourcen für eine konfigurierbare Nachlaufzeit erhalten bleiben,
+weil das Verhalten historischer Chatnachrichten nach Unpublish oder Delete
+derzeit nicht vollständig dokumentiert ist.
 
 Die Nachlaufzeit wird als Release- und Betriebsparameter geführt, nicht im Code fest verdrahtet.
 

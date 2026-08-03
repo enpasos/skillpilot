@@ -10,7 +10,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.skillpilot.backend.ai.CoachStateProjection;
@@ -41,11 +40,16 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionStateException;
 import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.json.jackson3.JacksonMcpJsonMapperSupplier;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -195,72 +199,89 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesOneSelfContainedGoalVisualizationMcpAppResource() {
+    void publishesActiveAndRetainedSelfContainedGoalVisualizationMcpAppResources() {
         assertThat(contract.resourceSpecifications())
-                .singleElement()
-                .satisfies(specification -> {
-                    McpSchema.Resource resource = specification.resource();
-                    assertThat(resource.uri())
-                            .isEqualTo(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
-                    assertThat(resource.mimeType())
-                            .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
-                    assertThat(resource.meta().get("ui"))
-                            .isInstanceOfSatisfying(Map.class, ui -> {
-                                assertThat(ui.get("domain"))
-                                        .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                                assertThat(ui.get("prefersBorder")).isEqualTo(false);
-                                assertThat(ui.toString())
-                                        .contains(
-                                                "https://skillpilot.com",
-                                                "resourceDomains")
-                                        .doesNotContain(
-                                                "connectDomains",
-                                                "redirectDomains");
-                            });
-                    assertThat(resource.meta().get("openai/widgetDomain"))
-                            .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                    assertThat(resource.meta().get("openai/widgetPrefersBorder"))
-                            .isEqualTo(false);
-                    assertThat(resource.meta().get("openai/widgetCSP").toString())
-                            .contains("resource_domains", "redirect_domains")
-                            .doesNotContain("connect_domains");
+                .extracting(specification -> specification.resource().uri())
+                .containsExactlyInAnyOrder(
+                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
 
-                    McpSchema.ReadResourceResult result = specification.readHandler().apply(
-                            null,
-                            new McpSchema.ReadResourceRequest(resource.uri()));
-                    assertThat(result.contents())
-                            .singleElement()
-                            .isInstanceOfSatisfying(
-                                    McpSchema.TextResourceContents.class,
-                                    contents -> {
-                                        assertThat(contents.mimeType())
-                                                .isEqualTo(
-                                                        OpenAiDeV1ContractMetadata
-                                                                .MCP_APP_RESOURCE_MIME_TYPE);
-                                        assertThat(contents.text())
-                                                .startsWith("<!doctype html>")
-                                                .contains(
-                                                        "ui/notifications/tool-result",
-                                                        "goalVisualization",
-                                                        "ui/open-link")
-                                                .doesNotContain("<script src=");
-                                        assertThat(contents.meta().get("ui"))
-                                                .isInstanceOfSatisfying(
-                                                        Map.class,
-                                                        ui -> {
-                                                            assertThat(ui.get("domain"))
-                                                                    .isEqualTo(
-                                                                            OpenAiDeV1ContractMetadata
-                                                                                    .WIDGET_DOMAIN);
-                                                            assertThat(ui.get("prefersBorder"))
-                                                                    .isEqualTo(false);
-                                                        });
-                                        assertThat(contents.meta().get("openai/widgetDomain"))
-                                                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                                        assertThat(contents.meta().get("openai/widgetPrefersBorder"))
-                                                .isEqualTo(false);
-                                    });
-                });
+        for (McpStatelessServerFeatures.SyncResourceSpecification specification
+                : contract.resourceSpecifications()) {
+            McpSchema.Resource resource = specification.resource();
+            assertThat(resource.mimeType())
+                    .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
+            assertThat(resource.meta().get("ui"))
+                    .isInstanceOfSatisfying(Map.class, ui -> {
+                        assertThat(ui.get("domain"))
+                                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                        assertThat(ui.get("prefersBorder")).isEqualTo(false);
+                        assertThat(ui.toString())
+                                .contains("https://skillpilot.com", "resourceDomains")
+                                .doesNotContain("connectDomains", "redirectDomains");
+                    });
+            assertThat(resource.meta().get("openai/widgetDomain"))
+                    .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+            assertThat(resource.meta().get("openai/widgetPrefersBorder"))
+                    .isEqualTo(false);
+            assertThat(resource.meta().get("openai/widgetCSP").toString())
+                    .contains("resource_domains", "redirect_domains")
+                    .doesNotContain("connect_domains");
+
+            McpSchema.ReadResourceResult result = specification.readHandler().apply(
+                    null, new McpSchema.ReadResourceRequest(resource.uri()));
+            assertThat(result.contents())
+                    .singleElement()
+                    .isInstanceOfSatisfying(
+                            McpSchema.TextResourceContents.class,
+                            contents -> {
+                                assertThat(contents.uri()).isEqualTo(resource.uri());
+                                assertThat(contents.mimeType())
+                                        .isEqualTo(
+                                                OpenAiDeV1ContractMetadata
+                                                        .MCP_APP_RESOURCE_MIME_TYPE);
+                                assertThat(contents.text())
+                                        .startsWith("<!doctype html>")
+                                        .contains(
+                                                "ui/notifications/tool-result",
+                                                "goalVisualization",
+                                                "ui/open-link")
+                                        .doesNotContain("<script src=");
+                                assertThat(contents.meta().get("ui"))
+                                        .isInstanceOfSatisfying(
+                                                Map.class,
+                                                ui -> {
+                                                    assertThat(ui.get("domain"))
+                                                            .isEqualTo(
+                                                                    OpenAiDeV1ContractMetadata
+                                                                            .WIDGET_DOMAIN);
+                                                    assertThat(ui.get("prefersBorder"))
+                                                            .isEqualTo(false);
+                                                });
+                                assertThat(contents.meta().get("openai/widgetDomain"))
+                                        .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                                assertThat(contents.meta().get("openai/widgetPrefersBorder"))
+                                        .isEqualTo(false);
+                                String expectedSha256 = resource.uri().equals(
+                                                OpenAiDeV1ContractMetadata
+                                                        .GOAL_VISUALIZATION_RESOURCE_URI)
+                                        ? OpenAiDeV1ContractMetadata
+                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        : OpenAiDeV1ContractMetadata
+                                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
+                                assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
+                            });
+        }
+    }
+
+    private static String sha256(String source) {
+        try {
+            return HexFormat.of().formatHex(
+                    MessageDigest.getInstance("SHA-256")
+                            .digest(source.getBytes(StandardCharsets.UTF_8)));
+        } catch (NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
+        }
     }
 
     @Test

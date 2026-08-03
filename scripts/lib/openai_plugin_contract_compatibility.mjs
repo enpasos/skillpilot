@@ -125,6 +125,56 @@ export function loadReleaseContract(releaseRoot) {
 }
 
 /**
+ * Verifies that a multi-resource MCP UI snapshot has one unambiguous active
+ * template and that every UI-linked tool points only to that template.
+ */
+export function assertActiveUiResource(activeResourceUri, resources, tools) {
+  assert.equal(
+    typeof activeResourceUri,
+    "string",
+    "UI activeResourceUri must be a non-empty string.",
+  );
+  assert.notEqual(
+    activeResourceUri.length,
+    0,
+    "UI activeResourceUri must be a non-empty string.",
+  );
+  const matchingResources = (resources ?? []).filter(
+    (resource) => resourceUri(resource) === activeResourceUri,
+  );
+  assert.equal(
+    matchingResources.length,
+    1,
+    "UI activeResourceUri must identify exactly one inventoried resource.",
+  );
+
+  const linkedTools = [];
+  for (const tool of tools ?? []) {
+    const standardUri = tool?.meta?.ui?.resourceUri;
+    const compatibilityUri = tool?.meta?.["openai/outputTemplate"];
+    if (standardUri === undefined && compatibilityUri === undefined) {
+      continue;
+    }
+    linkedTools.push(tool.name);
+    assert.equal(
+      standardUri,
+      activeResourceUri,
+      `Tool ${tool.name} must link ui.resourceUri only to activeResourceUri.`,
+    );
+    assert.equal(
+      compatibilityUri,
+      activeResourceUri,
+      `Tool ${tool.name} must link openai/outputTemplate only to activeResourceUri.`,
+    );
+  }
+  assert.deepEqual(
+    linkedTools,
+    ["render_skillpilot_goal_visualization"],
+    "Exactly the dedicated goal-visualization renderer must link the active UI resource.",
+  );
+}
+
+/**
  * Returns all reasons why candidate cannot be released as a backwards
  * compatible minor/patch update of baseline within the same contract major.
  */

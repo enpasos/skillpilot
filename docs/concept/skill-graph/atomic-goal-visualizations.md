@@ -56,7 +56,15 @@ read-only MCP UI resource:
 ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
 ```
 
-Only the dedicated read-only `render_skillpilot_goal_visualization` tool
+This is the active URI for new messages. The previously advertised draft URI
+
+```text
+ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
+```
+
+remains readable with its exact historical bytes for existing browser and
+native-app chats. Only the dedicated read-only
+`render_skillpilot_goal_visualization` tool
 references this resource. It is offered only when the learner preference is
 enabled and the current context contains a safe visualization projection;
 ordinary context reads and state mutations carry no UI resource metadata and
@@ -95,16 +103,16 @@ The projection and component obey these constraints:
   without waiting for the MCP Apps handshake, and leaves the ordinary ChatGPT
   response unchanged;
 - optional host platform and user-agent values do not decide whether the
-  component is shown. Supported browser and desktop MCP Apps hosts get the same
-  surface-neutral image-load attempt. The current native ChatGPT mobile app is
-  not a supported plugin UI surface, while a browser on the same mobile device
-  remains a supported web surface;
+  component is shown. Browser, desktop, and native mobile hosts get the same
+  surface-neutral image-load attempt; actual load success, not a guessed host
+  class, decides whether the image becomes visible;
 - teardown is a host-mediated request, not a promise that the host removes its
-  container. If an unsupported native app never executes or initializes the
-  MCP view, neither the backend nor the widget can suppress a placeholder
-  already created by that host. There is currently no stable server-side
-  surface capability with which SkillPilot could omit the UI only for that
-  viewer;
+  container. If a host never executes or initializes the MCP view, neither the
+  backend nor the widget can suppress a placeholder already created by that
+  host;
+- every content-addressed URI advertised to a client is retained with its exact
+  bytes, even during draft testing. Tool metadata references only the active
+  URI, while historical chats can continue to read older immutable resources;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.

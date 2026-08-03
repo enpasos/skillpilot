@@ -32,6 +32,20 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MCP_APP_RESOURCE_MIME_TYPE = "text/html;profile=mcp-app";
     public static final String GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/skillpilot-goal-visualization-v1.html";
+    /**
+     * Previously advertised content-addressed UI resource retained for cached
+     * connector metadata and historical chat messages.
+     */
+    public static final String RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
+            "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c";
+    public static final String RETAINED_GOAL_VISUALIZATION_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/sha256-"
+                    + RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                    + "/goal-visualization.html";
+    public static final String RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
+            "/openai/retained/skillpilot/coach/v1/sha256-"
+                    + RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                    + "/goal-visualization.html";
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */
