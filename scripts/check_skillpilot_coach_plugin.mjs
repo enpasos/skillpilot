@@ -250,9 +250,11 @@ assert.equal(
   "The unpublished V1 release line must not retain experimental MCP UI metadata.",
 );
 assert.deepEqual(
-  readdirSync(openAiResourceRoot, { recursive: true })
-    .map((entry) => String(entry))
-    .filter((entry) => entry.endsWith(".html")),
+  existsSync(openAiResourceRoot)
+    ? readdirSync(openAiResourceRoot, { recursive: true })
+        .map((entry) => String(entry))
+        .filter((entry) => entry.endsWith(".html"))
+    : [],
   [],
   "current V1 must not retain or publish MCP widget HTML",
 );
