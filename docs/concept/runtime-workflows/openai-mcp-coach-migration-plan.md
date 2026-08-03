@@ -4,9 +4,10 @@
 
 **Status:** Die mehrsprachige V1-MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
 Coach-Vertrag bleibt chat-first und kann im noch unveröffentlichten
-`1.0.0-SNAPSHOT`-Arbeitsstand das Bild des aktiven atomaren Lernziels als
-standardmäßiges MCP-`ImageContent` zurückgeben. V1 veröffentlicht keine MCP-UI,
-keine UI-Ressource und keine Widget-Domain. Serverauthentisiertes TLS und das
+`1.0.0-SNAPSHOT`-Arbeitsstand das Bild des aktiven atomaren Lernziels über genau
+eine hashgebundene `text/html;profile=mcp-app`-Ressource bild-only darstellen.
+Nur der dedizierte Renderer ist an diese Ressource gebunden; gewöhnliche Tools
+bleiben UI-los. Serverauthentisiertes TLS und das
 fail-closed geprüfte OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS
 ist nicht Teil von `1.0.0`; eine mögliche spätere Transporthärtung wird separat
 entworfen.
@@ -44,7 +45,7 @@ geführt.
 SkillPilot migriert **nicht** den sichtbaren Session-Workaround und baut den
 bestehenden Custom GPT auch nicht weiter aus. Stattdessen entsteht eine
 mehrsprachige, chat-first OpenAI-MCP-App mit einer eng begrenzten
-standardmäßigen Bildausgabe ohne MCP-UI-Ressource:
+bild-only MCP-Apps-UI für das aktive atomare Lernziel:
 
 ```text
 ChatGPT App „SkillPilot Coach v1“
@@ -76,10 +77,11 @@ OpenAI-Modell-API auf.
 
 Die V1-App wird für jede freigegebene Interaktionssprache durch eigene
 Acceptance-Fälle stabilisiert; eine weitere Sprache erzeugt keine zweite App.
-Die optionale Lernzielbildausgabe als standardmäßiges MCP-`ImageContent` ist
-Teil des unveröffentlichten V1-Drafts. Interaktive Widgets für Auswahl,
-Antwortabgabe oder Prüfungs-Receipts bleiben mögliche spätere Verbesserungen
-und sind kein Bestandteil des V1-Vertrags.
+Die optionale Lernzielbildausgabe über genau eine hashgebundene MCP-Apps-
+Ressource ist Teil des unveröffentlichten V1-Drafts. Sie zeigt ausschließlich
+das Bild; interaktive Widgets für Auswahl, Antwortabgabe oder Prüfungs-Receipts
+bleiben mögliche spätere Verbesserungen und sind kein Bestandteil des
+V1-Vertrags.
 
 ## 2. Was der Retentionstest ändert – und was nicht
 
@@ -127,9 +129,11 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    `language`-Parameter. Die beim Start festgelegte `communicationLocale` wird
    aus der Lernsession geladen und steuert sämtliche sichtbare Kommunikation.
 5. **Bildausgabe eng begrenzen:** Der erste produktionsnahe Vertrag besitzt
-   genau ein read-only Rendering-Werkzeug. Es gibt ausschließlich ein geprüftes
-   JPEG oder PNG als standardmäßiges MCP-`ImageContent` zurück, veröffentlicht
-   aber keine MCP-UI-Ressource und darf weder Auswahl noch Lernzustand mutieren.
+   genau ein read-only Rendering-Werkzeug und genau eine hashgebundene
+   `text/html;profile=mcp-app`-Ressource. Nur der Renderer trägt
+   `ui.resourceUri` und `openai/outputTemplate`; gewöhnliche Werkzeuge bleiben
+   ungebunden. Die UI rendert ausschließlich die strukturierte
+   `goalVisualization` und darf weder Auswahl noch Lernzustand mutieren.
    Interaktive Auswahl-, Abgabe- und Prüfungswidgets bleiben mögliche spätere
    Härtungsstufen außerhalb des V1-Vertrags.
 6. **Alte Quellen bleiben stehen:** `ai/openai custom gpt/` und
@@ -560,10 +564,11 @@ Chatantwort wiederholt. Für ein aktives atomares Ziel mit passendem kanonischem
 `goal-visualization`-Link enthält `structuredContent.goalVisualization`
 ausschließlich Ziel-ID, Titel, optionale Beschreibung, öffentliche Bild-URL,
 Alttext und Cockpit-Link. Das dedizierte read-only Werkzeug
-`render_skillpilot_goal_visualization` löst daraus serverseitig ausschließlich
-ein freigegebenes JPEG oder PNG auf und gibt genau einen standardmäßigen
-MCP-`ImageContent`-Block zurück. Sein Descriptor enthält weder
-`ui.resourceUri` noch `openai/outputTemplate` oder Widget-Metadaten. Wenn das
+`render_skillpilot_goal_visualization` validiert daraus serverseitig
+ausschließlich ein freigegebenes JPEG oder PNG und gibt die strukturierte
+`goalVisualization` an die bild-only MCP-Apps-UI weiter. Genau sein Descriptor
+enthält `ui.resourceUri` und `openai/outputTemplate`; alle gewöhnlichen
+Werkzeuge bleiben von der UI-Ressource ungebunden. Wenn das
 neueste vollständige Kontext- oder Mutationsergebnis eine zulässige
 Visualisierung enthält und den Renderer erlaubt, läuft er unmittelbar danach
 im selben Assistant-Turn genau einmal mit unveränderter Ziel-ID und
@@ -571,7 +576,10 @@ im selben Assistant-Turn genau einmal mit unveränderter Ziel-ID und
 Backendzustand erneut. Bei fehlender, veralteter, ungültiger oder zu großer
 Visualisierung wird kein Bild ausgeliefert; der normale Chatablauf bleibt
 vollständig erhalten. Das Bild dient nur der Orientierung, nie als Evidenz,
-Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Weder User-Agent- noch
+Surface-Metadaten schalten den Renderer frei oder ab. Ein erfolgreiches
+Toolresultat bestätigt nur die Bereitstellung; SkillPilot behauptet nicht, dass
+der jeweilige Host das Bild tatsächlich dargestellt hat.
 Die Zusammenfassung beginnt beim Einstieg mit den
 bestätigten Kontextangaben und führt anschließend die gemeinsam beantwortbaren,
 authored offenen Angaben auf. Sie darf spätere sichtbare Fragen zur Orientierung
@@ -600,7 +608,7 @@ Funktion migriert:
 | zustandsabhängige Aufgabe, Rubrik, Recall- oder Exam-Regel | dynamisches `structuredContent` des jeweiligen Tools |
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
-| Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus ein geprüftes JPEG oder PNG als standardmäßiges MCP-`ImageContent`; keine MCP-UI-Ressource, niemals fachliche Quelle oder Modellgarantie |
+| Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
 | spätere interaktive Widgetdarstellung | app-only Metadaten und Tools; niemals fachliche Modellanweisung |
 
 Die bewährte fachlich-didaktische Ausgangsbasis liegt unter
@@ -889,26 +897,33 @@ MCP-Pfads setzt zusätzlich die vollständig abgenommene Kombination aus festem
 vertraulichem OAuth-Client und expliziter 24h-Lernsession voraus. mTLS ist kein
 Gate der Version `1.0.0`.
 
-### Etappe 7 – Standardmäßige Bildausgabe ohne MCP-UI
+### Etappe 7 – Bild-only MCP-Apps-UI
 
-- read-only Lernzielbild für aktive atomare Ziele als standardmäßiges
-  MCP-`ImageContent` im unveröffentlichten `1.0.0`-Draft ausliefern;
+- read-only Lernzielbild für aktive atomare Ziele über genau eine hashgebundene
+  `text/html;profile=mcp-app`-Ressource im unveröffentlichten `1.0.0`-Draft
+  ausliefern;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
   Chatdarstellung degradieren;
-- keine UI-Ressource, kein Output-Template, keine Widget-Domain und keinen
-  Widgetzustand in V1 veröffentlichen;
-- die früheren experimentellen HTML-Ressourcen ohne Rückwärtskompatibilität
-  entfernen: V1 ist unveröffentlicht, alte Test-Chats werden nicht unterstützt
-  und nach dem Deployment sind aktualisierte Plugin-Metadaten sowie ein frischer
-  Chat erforderlich;
+- nur `render_skillpilot_goal_visualization` mit `ui.resourceUri` und
+  `openai/outputTemplate` an die eine aktuelle Ressource binden; gewöhnliche
+  Werkzeuge bleiben ungebunden;
+- die strukturierte `goalVisualization` bild-only rendern, ohne
+  User-Agent-/Surface-Gate und ohne zu behaupten, dass der Host sie angezeigt
+  hat;
+- frühere experimentelle HTML-Ressourcen ohne Rückwärtskompatibilität oder
+  Retention entfernen: V1 ist unveröffentlicht, alte Test-Chats werden nicht
+  unterstützt und nach dem Deployment sind aktualisierte Plugin-Metadaten
+  sowie ein frischer Chat erforderlich;
 - interaktive Widgets nur in einer späteren, ausdrücklich neu entworfenen
   Ausbaustufe ergänzen.
 
-**Zwischenstand:** Die read-only Lernzielvisualisierung als standardmäßiges
-MCP-`ImageContent` ist implementiert. Eine MCP-UI ist nicht Teil von V1.
+**Zwischenstand:** Die read-only Lernzielvisualisierung über eine einzelne
+hashgebundene, bild-only MCP-Apps-UI-Ressource ist im unveröffentlichten V1-
+Draft implementiert. Eine interaktive MCP-UI ist nicht Teil von V1.
 
 **Exit:** Die optionale Bildausgabe schwächt den chat-first Coach nicht und
-erzeugt auf nicht unterstützten Oberflächen keine UI-Komponente.
+der normale Textpfad bleibt unabhängig davon erhalten, ob der Host die
+bereitgestellte UI-Komponente tatsächlich darstellt.
 
 ### Etappe 8 – Weitere Interaktionssprachen
 

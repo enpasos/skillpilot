@@ -75,7 +75,13 @@ public final class OpenAiDeV1ContractExporter {
                 OpenAiDeV1ErrorCode.publicCatalog());
         writeJson(
                 output.resolve("resources-list.json"),
-                resources);
+                resources.stream()
+                        .map(resource -> {
+                            Map<String, Object> item = new LinkedHashMap<>(resource);
+                            item.put("path", releaseResourcePath(resource));
+                            return item;
+                        })
+                        .toList());
         Files.writeString(
                 output.resolve("server-instructions.txt"),
                 contract.serverInstructions().stripTrailing() + "\n",
@@ -90,6 +96,13 @@ public final class OpenAiDeV1ContractExporter {
         }
         Object schemes = values.get("securitySchemes");
         return schemes == null ? List.of() : schemes;
+    }
+
+    private static String releaseResourcePath(Map<String, Object> resource) {
+        if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.get("uri"))) {
+            return "ui/goal-visualization.html";
+        }
+        throw new IllegalStateException("No release artifact path for MCP resource " + resource.get("uri"));
     }
 
     private static void writeJson(Path path, Object value) throws IOException {

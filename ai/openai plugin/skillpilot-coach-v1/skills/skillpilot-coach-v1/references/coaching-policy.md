@@ -4,10 +4,10 @@ This reference governs learner-facing coaching behavior and internal tool
 orchestration. The latest successful SkillPilot tool result takes precedence
 over this general guidance because only that result describes the current
 state, currently valid options, authoritative `communicationLocale`, and next
-step. A successful `render_skillpilot_goal_visualization` result is a narrow
-image receipt only: it confirms the unchanged goal and state version and
-supplies the approved image, but it does not replace the latest full SkillPilot
-context for coaching or state decisions.
+step. A successful `render_skillpilot_goal_visualization` result is a narrow UI
+receipt only: it confirms the unchanged goal and state version and supplies the
+approved structured projection to the image-only component, but it does not
+replace the latest full SkillPilot context for coaching or state decisions.
 
 ## Contents
 
@@ -72,7 +72,7 @@ context for coaching or state decisions.
 - Treat only the latest successful full context or mutation result as
   authoritative. Do not rely on conversation memory for locale, curriculum,
   personalization, learning scope, focus, active goal, frontier, mastery,
-  recall, assessment, or progress. The renderer's successful image receipt
+  recall, assessment, or progress. The renderer's successful UI receipt
   confirms only its unchanged goal and state version and does not replace that
   full context.
 - Do not claim that state was loaded, saved, or changed before a successful
@@ -91,10 +91,12 @@ when either condition is absent, after a newer successful SkillPilot result, or
 more than once for the same result. A completed render attempt consumes the
 authorization; never retry automatically or claim that the host displayed the
 image. The renderer revalidates current backend state and returns the approved
-goal visualization only as standard MCP image content, without an MCP UI
-template. Its image receipt does not replace the preceding full context, and
-the ordinary text remains the complete fallback. Image authorization is
-surface-neutral and independent of client metadata. The absence of
+structured `goalVisualization` projection to the single hash-addressed,
+image-only MCP Apps component. Only this renderer carries `ui.resourceUri` and
+`openai/outputTemplate`; ordinary tools remain UI-free. Its UI receipt does not
+replace the preceding full context, and the ordinary text remains the complete
+fallback. Image authorization is surface-neutral and must not depend on
+`openai/userAgent` or another client-surface hint. The absence of
 `goalVisualization` or renderer permission in the newest full result is
 authoritative even when an earlier result offered an image; never reuse the
 older authorization.
@@ -321,13 +323,13 @@ supplied criterion and the subsequent tool result confirms the save.
 
 - Use only resources and URLs from the latest successful full context or
   mutation result. The renderer's narrow receipt supplies only its approved
-  standard MCP image content and authorizes no other URL use.
+  UI projection and authorizes no other URL use.
 - Reproduce a supplied URL exactly. Add no IDs, parameters, or tokens and never
   construct a URL yourself.
 - Follow current `instruction` and `policies` when they distinguish chat
   explanation, cockpit interaction, visualization, or recall mode.
-- A goal visualization shown from the renderer's standard image content belongs only to the
-  confirmed active atomic goal. Use it as orientation, never as a source,
+- A goal visualization shown by the renderer's image-only component belongs
+  only to the confirmed active atomic goal. Use it as orientation, never as a source,
   evidence, task, solution, or performance record. Do not repeat its image URL
   or technical image metadata. If it is not shown, continue the normal chat
   workflow without an error message.
@@ -380,7 +382,7 @@ Check internally:
 1. Did the unchanged `learningSessionId` come from the current SkillPilot start
    message?
 2. Is the latest successful full context or mutation result the only state in
-   use, with any renderer result treated only as its narrow image receipt?
+   use, with any renderer result treated only as its narrow UI receipt?
 3. Am I using its exact `communicationLocale` rather than inferring a language?
 4. Am I following its required action, instruction, policies, and allowed
    tools?

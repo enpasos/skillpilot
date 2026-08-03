@@ -15,7 +15,7 @@ import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
-  assertNoUiResources,
+  assertActiveUiResource,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -79,6 +79,14 @@ const verificationMode = determineReleaseVerificationMode(
   releaseIndex,
 );
 const tmpRoot = resolve(repositoryRoot, "tmp");
+const goalVisualizationWidgetSource = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
+);
+const uiArtifactSources = new Map([
+  ["ui/goal-visualization.html", goalVisualizationWidgetSource],
+]);
+
 const command = process.argv[2];
 if (!new Set(["candidate", "prepare", "verify", "record-published"]).has(command)) {
   throw new Error(
@@ -263,6 +271,24 @@ function buildCandidate(output) {
     resolve(output, "assets"),
     { recursive: true },
   );
+  for (const resource of line.ui.resources) {
+    const source = uiArtifactSources.get(resource.path);
+    assert.notEqual(
+      source,
+      undefined,
+      `No source artifact configured for UI resource ${resource.path}.`,
+    );
+    assert.equal(
+      existsSync(source),
+      true,
+      `Missing MCP UI resource ${resource.path}. ` +
+        "Run npm --prefix \"ai/openai app\" run build for the active resource.",
+    );
+    const uiArtifactPath = resolve(output, resource.path);
+    mkdirSync(dirname(uiArtifactPath), { recursive: true });
+    cpSync(source, uiArtifactPath);
+  }
+
   const skillRoot = resolve(pluginRoot, "skills");
   const skillBundle = bundleManifest(skillRoot);
   writeJson(resolve(output, "skills-bundle.json"), skillBundle);
@@ -270,6 +296,31 @@ function buildCandidate(output) {
     resolve(output, "skills-bundle.sha256"),
     `${sha256(Buffer.from(canonicalJson(skillBundle)))}\n`,
   );
+
+  const uiManifest = {
+    schemaVersion: line.ui.stateSchemaVersion,
+    activeResourceUri: line.ui.activeResourceUri,
+    domain: line.ui.domain,
+    enabled: line.ui.enabled,
+    resources: line.ui.resources.map((resource) => {
+      const artifact = resolve(output, resource.path);
+      assert.equal(
+        artifact.startsWith(`${output}/`),
+        true,
+        `UI resource path escapes release snapshot: ${resource.path}`,
+      );
+      assert.equal(
+        existsSync(artifact),
+        true,
+        `UI resource artifact is missing: ${resource.path}`,
+      );
+      return {
+        ...resource,
+        sha256: sha256(readFileSync(artifact)),
+      };
+    }),
+  };
+  writeJson(resolve(output, "ui-manifest.json"), uiManifest);
 
   const archive = resolve(
     output,
@@ -374,19 +425,55 @@ function validateCandidate(output) {
     "Snapshot must use the explicit OpenAI plugin-bundle archive name.",
   );
   assert.equal(
-    Object.hasOwn(candidateLine, "ui"),
-    false,
-    "The V1 plugin line must not publish MCP UI configuration.",
+    releaseContract.uiManifest.enabled,
+    true,
+    "The V1 goal-visualization MCP UI must be enabled.",
+  );
+  assert.equal(
+    releaseContract.uiManifest.domain,
+    candidateLine.ui.domain,
+    "The exported MCP UI widget domain must match the V1 release line.",
+  );
+  assert.equal(
+    releaseContract.uiManifest.activeResourceUri,
+    candidateLine.ui.activeResourceUri,
+    "The UI manifest active resource must match the V1 release line.",
   );
   assert.equal(
     Object.hasOwn(candidateLine, "publicUiOrigin"),
     false,
-    "The V1 release line must not retain the retired publicUiOrigin field.",
+    "The V1 release line must use ui.domain rather than the retired publicUiOrigin field.",
   );
-  assertNoUiResources(
-    releaseContract.resources,
+  assert.deepEqual(
+    releaseContract.resources.map((resource) => ({
+      mimeType: resource.mimeType,
+      path: resource.path,
+      uri: resource.uri,
+    })),
+    candidateLine.ui.resources,
+    "Exported MCP resources disagree with the release line.",
+  );
+  assert.deepEqual(
+    releaseContract.uiManifest.resources.map((resource) => ({
+      mimeType: resource.mimeType,
+      path: resource.path,
+      uri: resource.uri,
+    })),
+    candidateLine.ui.resources,
+    "UI manifest resources disagree with the release line.",
+  );
+  assertActiveUiResource(
+    candidateLine.ui.activeResourceUri,
+    releaseContract.uiManifest.resources,
     contract.tools,
   );
+  for (const resource of releaseContract.uiManifest.resources) {
+    assert.equal(
+      resource.sha256,
+      resource.__artifactSha256,
+      `UI manifest hash disagrees with ${resource.path}.`,
+    );
+  }
   for (const assetPath of [
     candidatePlugin.interface?.composerIcon,
     candidatePlugin.interface?.logo,

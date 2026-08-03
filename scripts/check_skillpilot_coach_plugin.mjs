@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
@@ -10,10 +11,16 @@ const pluginRoot = resolve(
   "ai/openai plugin/skillpilot-coach-v1",
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
-const openAiResourceRoot = resolve(
+const goalVisualizationWidget = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai",
+  "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+assert.equal(existsSync(goalVisualizationWidget), true);
+const goalVisualizationArtifactSha256 = createHash("sha256")
+  .update(readFileSync(goalVisualizationWidget))
+  .digest("hex");
+const goalVisualizationResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -34,10 +41,6 @@ const skillAgent = JSON.parse(openAiYaml);
 const mcpContract = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
-));
-const goalVisualizationImageResolver = read(resolve(
-  repositoryRoot,
-  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeGoalVisualizationImageResolver.java",
 ));
 const contextProjector = read(resolve(
   repositoryRoot,
@@ -233,27 +236,30 @@ assert.equal(oauthResource.href, endpoint.href);
 assert.equal(
   Object.hasOwn(releaseLine, "publicUiOrigin"),
   false,
-  "The V1 release line must not retain the retired publicUiOrigin field",
+  "The V1 release line must use ui.domain rather than the retired publicUiOrigin field",
 );
 assert.equal(
   Object.hasOwn(releaseLine, "internalCompatibilityEndpoint"),
   false,
   "V1 must not publish or declare a compatibility endpoint",
 );
-assert.equal(
-  Object.hasOwn(releaseLine, "ui"),
-  false,
-  "The unpublished V1 release line must not retain experimental MCP UI metadata.",
-);
-assert.deepEqual(
-  existsSync(openAiResourceRoot)
-    ? readdirSync(openAiResourceRoot, { recursive: true })
-        .map((entry) => String(entry))
-        .filter((entry) => entry.endsWith(".html"))
-    : [],
-  [],
-  "current V1 must not retain or publish MCP widget HTML",
-);
+assert.deepEqual(releaseLine.ui, {
+  activeResourceUri: goalVisualizationResourceUri,
+  domain: "https://mcp-coach-v1.skillpilot.com",
+  enabled: true,
+  stateSchemaVersion: 1,
+  resources: [
+    {
+      mimeType: "text/html;profile=mcp-app",
+      path: "ui/goal-visualization.html",
+      uri: goalVisualizationResourceUri,
+    },
+  ],
+});
+const goalVisualizationHtml = read(goalVisualizationWidget);
+assert.match(goalVisualizationHtml, /^<!doctype html>/i);
+assert.match(goalVisualizationHtml, /ui\/notifications\/tool-result/);
+assert.match(goalVisualizationHtml, /goalVisualization/);
 
 assert.equal(lifecycle.schemaVersion, 1);
 assert.equal(lifecycle.pluginIdentity, releaseLine.pluginIdentity);
@@ -487,8 +493,7 @@ assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
 assert.match(combinedSkill, /expectedStateVersion/);
 assert.match(combinedSkill, /clientRequestId/);
 assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
-assert.match(combinedSkill, /standard MCP image(?:-| )content/s);
-assert.match(combinedSkill, /goal visualization/s);
+assert.match(combinedSkill, /MCP App[\s\S]+goal visualization/s);
 assert.match(
   combinedSkill,
   /never as a source,\s+evidence, task, solution, or performance record/s,
@@ -505,7 +510,7 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /image receipt[\s\S]+does not replace the latest full SkillPilot context/s,
+  /UI receipt[\s\S]+does not replace the latest full SkillPilot context/s,
   "The renderer receipt must not replace the authoritative full coaching context.",
 );
 assert.match(
@@ -515,28 +520,8 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /image receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
+  /UI receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
   "The MCP server must keep the last full context authoritative after rendering.",
-);
-assert.match(
-  combinedSkill,
-  /standard MCP image(?:-| )content/s,
-  "The bundled skill must define the renderer as standard MCP image content.",
-);
-assert.match(
-  combinedSkill,
-  /surface-neutral[\s\S]+does not depend on client metadata/s,
-  "The bundled skill must keep image authorization independent of optional client metadata.",
-);
-assert.match(
-  combinedSkill,
-  /no MCP UI template|does not (?:create|bind)[^\n]*MCP UI component/s,
-  "The bundled skill must not reintroduce an MCP UI component.",
-);
-assert.doesNotMatch(
-  mcpContract,
-  /request\.meta\(\)|openai\/userAgent|OpenAiDeClientSurface|supportsGoalVisualization/,
-  "Optional client metadata must not gate the surface-neutral MCP image contract.",
 );
 assert.match(
   mcpContract,
@@ -601,21 +586,61 @@ assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
 assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
+assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);
 assert.equal(
   javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
   "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 );
 assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
+assert.equal(
+  javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
+  releaseLine.ui.activeResourceUri,
+);
+assert.equal(
+  javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),
+  goalVisualizationArtifactSha256,
+  "The Java V1 UI hash must match the exact embedded widget artifact.",
+);
+assert.equal(
+  javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
+  releaseLine.ui.resources.find(
+    (resource) => resource.uri === releaseLine.ui.activeResourceUri,
+  )?.mimeType,
+);
 assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/v1/mcp");
 assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
 assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
 assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
-assert.doesNotMatch(mcpContract, /openai\/outputTemplate|resourceUri|widgetDomain/);
-assert.match(mcpContract, /this\.resourceSpecifications = List\.of\(\)/);
-assert.match(mcpContract, /McpSchema\.ImageContent\.builder/);
-assert.match(mcpContract, /Base64\.getEncoder\(\)\.encodeToString/);
-assert.match(goalVisualizationImageResolver, /MAX_MCP_IMAGE_BYTES/);
-assert.match(goalVisualizationImageResolver, /PUBLIC_IMAGE_PREFIX/);
+assert.match(
+  mcpContract,
+  /"domain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
+  "MCP UI resources must publish the standard plugin-unique widget domain",
+);
+assert.match(
+  mcpContract,
+  /"openai\/widgetDomain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
+  "MCP UI resources must publish the ChatGPT widget-domain alias",
+);
+assert.match(
+  mcpContract,
+  /"resourceDomains",\s*List\.of\("https:\/\/skillpilot\.com"\)/,
+  "MCP UI CSP must keep the SkillPilot asset origin allowlisted",
+);
+assert.match(
+  mcpContract,
+  /"openai\/outputTemplate",\s*OpenAiDeV1ContractMetadata\.GOAL_VISUALIZATION_RESOURCE_URI/,
+  "The renderer must carry the ChatGPT UI-template binding",
+);
+assert.match(
+  mcpContract,
+  /Set\.of\(RENDER_GOAL_VISUALIZATION\)/,
+  "Only the dedicated renderer may carry the MCP App UI binding",
+);
+assert.doesNotMatch(
+  mcpContract,
+  /McpSchema\.ImageContent\.builder|Base64\.getEncoder/,
+  "Goal images must use the registered MCP App UI resource, never bare ImageContent as presentation",
+);
 
 assert.match(mcpContract, /EXPECTED_STATE_VERSION = "expectedStateVersion"/);
 assert.match(mcpContract, /CLIENT_REQUEST_ID = "clientRequestId"/);

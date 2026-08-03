@@ -17,6 +17,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
@@ -203,6 +204,100 @@ class OpenAiDeMcpTelemetryTest {
                         "must-not-leak");
     }
 
+    @Test
+    void separatesTheActiveResourceFromUnknownReadsWithoutLoggingResourceContent() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeProperties properties = new OpenAiDeProperties();
+        properties.setServerBuild("build-17");
+        OpenAiDeMcpTelemetry telemetry =
+                new OpenAiDeMcpTelemetry(registry, null, properties, "unit-test-privacy-hash-key");
+        String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
+        String untrustedUri = "ui://attacker/private-session-and-token";
+        McpSchema.ReadResourceResult activeResult = readResult(activeUri);
+        AtomicInteger successfulSupplierCalls = new AtomicInteger();
+        IllegalStateException failure = new IllegalStateException("private exception payload");
+        Logger logger = (Logger) LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
+        ListAppender<ILoggingEvent> appender = new ListAppender<>();
+        appender.start();
+        logger.addAppender(appender);
+        try {
+            assertThat(telemetry.recordResourceRead(activeUri, () -> {
+                        successfulSupplierCalls.incrementAndGet();
+                        return activeResult;
+                    }))
+                    .isSameAs(activeResult);
+            assertThatThrownBy(() -> telemetry.recordResourceRead(untrustedUri, () -> {
+                        throw failure;
+                    }))
+                    .isSameAs(failure);
+        } finally {
+            logger.detachAppender(appender);
+            appender.stop();
+        }
+
+        assertThat(successfulSupplierCalls).hasValue(1);
+
+        String activeArtifact =
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256.substring(0, 12);
+        assertThat(resourceTimer(registry, activeArtifact, "active", "success").count())
+                .isEqualTo(1);
+        assertThat(resourceTimer(registry, "unknown", "unknown", "exception").count())
+                .isEqualTo(1);
+        assertThat(registry.getMeters()).allSatisfy(meter -> assertThat(tagKeys(meter))
+                .containsExactlyInAnyOrder(
+                        "artifact", "contract.major", "plugin.line", "role", "status"));
+        assertThat(registry.getMeters())
+                .allSatisfy(meter -> assertThat(meter.getId().getTag("server.build")).isNull());
+
+        assertThat(appender.list).hasSize(2);
+        assertThat(appender.list)
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .allSatisfy(message -> assertThat(message)
+                        .contains(
+                                "contractMajor=1",
+                                "pluginLine=skillpilot-coach-v1",
+                                "serverBuild=build-17",
+                                "latencyMs=")
+                        .doesNotContain(
+                                "private resource contents",
+                                untrustedUri,
+                                "private exception payload",
+                                activeUri,
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256));
+        assertThat(appender.list)
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .anySatisfy(message -> assertThat(message)
+                        .contains(
+                                "uiArtifact=" + activeArtifact,
+                                "artifactRole=active",
+                                "status=success"))
+                .anySatisfy(message -> assertThat(message)
+                        .contains(
+                                "uiArtifact=unknown",
+                                "artifactRole=unknown",
+                                "status=exception"));
+    }
+
+    @Test
+    void doesNotClassifyNullResourceResultAsSuccess() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+
+        assertThat(telemetry.recordResourceRead(
+                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                        () -> null))
+                .isNull();
+
+        assertThat(resourceTimer(
+                                registry,
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        .substring(0, 12),
+                                "active",
+                                "error")
+                        .count())
+                .isEqualTo(1);
+    }
+
     private static McpSchema.CallToolResult result(boolean error) {
         return result(error, null);
     }
@@ -221,6 +316,14 @@ class OpenAiDeMcpTelemetryTest {
                 .build();
     }
 
+    private static McpSchema.ReadResourceResult readResult(String uri) {
+        return new McpSchema.ReadResourceResult(List.of(new McpSchema.TextResourceContents(
+                uri,
+                OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                "<!doctype html><p>private resource contents</p>",
+                Map.of())));
+    }
+
     private static Timer timer(
             SimpleMeterRegistry registry,
             String tool,
@@ -231,6 +334,19 @@ class OpenAiDeMcpTelemetryTest {
                         "tool", tool,
                         "status", status,
                         "result.code", resultCode)
+                .timer();
+    }
+
+    private static Timer resourceTimer(
+            SimpleMeterRegistry registry,
+            String artifact,
+            String role,
+            String status) {
+        return registry.get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                .tags(
+                        "artifact", artifact,
+                        "role", role,
+                        "status", status)
                 .timer();
     }
 

@@ -221,19 +221,8 @@ public final class PackageCurriculumResourceState {
     }
 
     public Optional<ResolvedArtifact> resolvePublicAsset(String publicUrl) {
-        return resolvePublicAsset(publicUrl, MAX_IMAGE_BYTES);
-    }
-
-    /**
-     * Resolves a public embedded image without reading more than the caller's
-     * stricter byte limit.
-     */
-    public Optional<ResolvedArtifact> resolvePublicAsset(String publicUrl, long maxBytes) {
-        if (maxBytes < 0 || maxBytes > MAX_IMAGE_BYTES) {
-            throw new IllegalArgumentException("maxBytes must be between 0 and the package image limit");
-        }
         ResourceBinding binding = resourcesByPublicUrl.get(publicUrl);
-        return binding == null ? Optional.empty() : Optional.of(readResource(binding, maxBytes));
+        return binding == null ? Optional.empty() : Optional.of(readResource(binding));
     }
 
     private ResolvedArtifact readDeck(DeckBinding binding) {
@@ -248,13 +237,9 @@ public final class PackageCurriculumResourceState {
     }
 
     private ResolvedArtifact readResource(ResourceBinding binding) {
-        return readResource(binding, MAX_IMAGE_BYTES);
-    }
-
-    private ResolvedArtifact readResource(ResourceBinding binding, long maxBytes) {
         CurriculumRuntimeSnapshot.ResourceDescriptor descriptor = binding.descriptor();
         CurriculumRuntimeSnapshot.Artifact artifact = requireEmbeddedResourceArtifact(descriptor);
-        byte[] bytes = artifactReader.readVerified(artifact, maxBytes);
+        byte[] bytes = artifactReader.readVerified(artifact, MAX_IMAGE_BYTES);
         return new ResolvedArtifact(
                 bytes,
                 descriptor.mediaType(),
