@@ -124,6 +124,7 @@ class OpenAiDeMcpTelemetryTest {
                             requestId,
                             "unrelatedPrivateArgument",
                             "must not be logged"),
+                    "desktop_web",
                     () -> McpSchema.CallToolResult.builder()
                             .isError(false)
                             .addTextContent("private learner answer and secret token")
@@ -151,6 +152,7 @@ class OpenAiDeMcpTelemetryTest {
                         "status=success",
                         "resultCode=OK",
                         "latencyMs=",
+                        "clientSurface=desktop_web",
                         "clientRequestId=" + requestId,
                         "learningSessionHash=h1:",
                         "stateVersion=42",
@@ -181,6 +183,7 @@ class OpenAiDeMcpTelemetryTest {
                             "raw-session\nmust-not-leak",
                             OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
                             "not-a-uuid\nmust-not-leak"),
+                    "native-user-agent-must-not-leak",
                     () -> result(true, Map.of("code", "unknown\nmust-not-leak")));
         } finally {
             logger.detachAppender(appender);
@@ -195,6 +198,7 @@ class OpenAiDeMcpTelemetryTest {
                         "tool=unknown",
                         "status=error",
                         "resultCode=ERROR",
+                        "clientSurface=unknown",
                         "clientRequestId=invalid",
                         "learningSessionHash=h1:")
                 .doesNotContain(

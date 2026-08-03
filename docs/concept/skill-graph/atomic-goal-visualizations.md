@@ -114,11 +114,25 @@ The projection and component obey these constraints:
   load error, or bounded load timeout hides the component, requests teardown
   without waiting for the MCP Apps handshake, and leaves the ordinary ChatGPT
   response unchanged;
-- optional host platform and user-agent values do not decide whether the
-  component is shown. Browser, desktop, and native mobile hosts get the same
-  surface-neutral image-load attempt; actual load success, not a guessed host
-  class, decides whether the image becomes visible. Do not delay ordinary
-  coaching or automatically retry a completed attempt;
+- native mobile currently invokes the renderer but does not fetch its
+  `resources/read` payload, so widget-side load/error teardown never runs and
+  the host shell remains pending. The adapter therefore uses the optional,
+  best-effort `openai/userAgent` call hint solely as a presentation gate: only
+  an explicitly recognized desktop web browser receives `goalVisualization`
+  and the renderer permission. Mobile/native and unknown hints fail closed for
+  this optional UI and continue with the complete text response. The raw hint
+  is never logged or persisted and must never affect authentication,
+  authorization, identity, learning state, or writes;
+- presentation filtering happens after session coordination and idempotent
+  replay. The stored tool result stays surface-neutral; the adapter removes
+  `goalVisualization` and the renderer permission from every fresh or replayed
+  result for the current unsupported caller. This prevents a desktop result
+  from leaking UI authorization to mobile and prevents a mobile-first retry
+  from disabling a later desktop-web presentation;
+- the desktop-web component still relies on actual image-load success. Do not
+  delay ordinary coaching or automatically retry a completed attempt. Widen
+  the presentation allowlist only after the additional host surface has passed
+  an end-to-end renderer, resource-read, and visible-completion test;
 - teardown is a host-mediated request, not a promise that the host removes its
   container. If a host never executes or initializes the MCP view, neither the
   backend nor the widget can suppress a placeholder already created by that

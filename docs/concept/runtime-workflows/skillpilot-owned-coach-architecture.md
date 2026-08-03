@@ -373,11 +373,19 @@ wird nicht automatisch erneut aufgerufen.
 
 Ein gültiges Bild bleibt bis zu seinem erfolgreichen `load`-Ereignis
 unsichtbar. Nur ein konkreter Ladefehler oder der begrenzte Lade-Timeout blendet
-es wieder aus und fordert den Teardown an. Plattform- und User-Agent-Werte
-werden nicht zur Oberflächenklassifizierung verwendet: Sobald der Renderer
-aufgerufen wird, erhalten Mobile Browser, native Apps und Desktop-Hosts
-denselben oberflächenneutralen Ladeversuch; ausschließlich der tatsächliche
-Ladeerfolg entscheidet über die Anzeige. Das Bild ist Orientierung, niemals Evidenz,
+es wieder aus und fordert den Teardown an. Da die native Mobile-App den
+Renderer derzeit ohne anschließendes `resources/read` startet, kann das Widget
+dort keinen Teardown ausführen. Der Adapter bietet die optionale Bildprojektion
+deshalb nur bei einem über den Best-effort-Hinweis `openai/userAgent`
+ausdrücklich erkannten Desktop-Webbrowser an. Mobile/native und unbekannte
+Oberflächen bleiben im vollständigen Textpfad. Die Klassifikation steuert nur
+Darstellung, wird nicht persistiert und darf niemals Authentifizierung,
+Autorisierung, Identität oder Lernzustand beeinflussen. Persistierte
+Idempotenz-Ergebnisse bleiben oberflächenneutral; erst nach einem frischen oder
+wiedergegebenen Coordinator-Ergebnis entfernt der Adapter die Bildprojektion
+für den aktuellen nicht unterstützten Aufrufer. So kann weder ein
+Desktop-Replay eine mobile Bildfreigabe einschleusen noch ein mobiler Erstaufruf
+die spätere Desktop-Web-Darstellung dauerhaft abschalten. Das Bild ist Orientierung, niemals Evidenz,
 Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Der Teardown ist eine Anfrage
 an den Host. Initialisiert eine Oberfläche die MCP-UI gar nicht, können Backend
 und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert
@@ -939,7 +947,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | ChatGPT-Web auf Desktop und Mobile sowie native Desktop- und Mobile-Apps; Bild-UI jeweils nur bei erfolgreichem Laden, sonst vollständiger textueller Fallback; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | ChatGPT-Web auf Desktop mit Bild-UI nur bei erfolgreichem Laden; Mobile-Web sowie native Desktop- und Mobile-Apps mit vollständigem textuellem Fallback ohne Renderer, bis deren UI-Lebenszyklus separat erfolgreich abgenommen ist; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1123,9 +1131,11 @@ Kernanforderung nicht.
    Deployment-Runbook durchführen.
 8. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
    Oberflächen-Acceptance öffentlich freigeben.
-9. Die Zielbildkarte im Desktop- und Mobile-Browser sowie in den nativen Apps
-   mit Bild, ohne Bild, bei Ladefehler und bei Lade-Timeout abnehmen; danach
-   interaktive Widgetverbesserungen entwickeln. Englisch und weitere
+9. Die Zielbildkarte im Desktop-Browser mit Bild, ohne Bild, bei Ladefehler und
+   bei Lade-Timeout abnehmen. In Mobile-Web und nativen Apps prüfen, dass der
+   Kontext keine Bildfreigabe ausgibt, der Renderer nicht startet und der
+   Textpfad vollständig bleibt; danach zusätzliche Oberflächen erst nach einem
+   erfolgreichen Lifecycle-Test freigeben. Englisch und weitere
    unterstützte Sprachen werden durch denselben V1-Vertrag mit eigenen
    Acceptance-Fällen freigegeben.
 
