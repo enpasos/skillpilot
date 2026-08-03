@@ -45,6 +45,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -533,18 +534,27 @@ public final class OpenAiDeV1McpContractAdapter {
                 .build();
         return new McpStatelessServerFeatures.SyncResourceSpecification(
                 resource,
-                (transportContext, request) -> {
-                    if (request == null || !uiResource.uri().equals(request.uri())) {
-                        throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
-                    }
-                    McpSchema.TextResourceContents contents =
-                            new McpSchema.TextResourceContents(
-                                    uiResource.uri(),
-                                    OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
-                                    uiResource.html(),
-                                    meta);
-                    return new McpSchema.ReadResourceResult(List.of(contents));
-                });
+                (transportContext, request) -> readGoalVisualizationResource(uiResource, meta, request));
+    }
+
+    private McpSchema.ReadResourceResult readGoalVisualizationResource(
+            GoalVisualizationUiResource uiResource,
+            Map<String, Object> meta,
+            McpSchema.ReadResourceRequest request) {
+        String requestedUri = request == null ? null : request.uri();
+        Supplier<McpSchema.ReadResourceResult> read = () -> {
+            if (!uiResource.uri().equals(requestedUri)) {
+                throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
+            }
+            McpSchema.TextResourceContents contents =
+                    new McpSchema.TextResourceContents(
+                            uiResource.uri(),
+                            OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                            uiResource.html(),
+                            meta);
+            return new McpSchema.ReadResourceResult(List.of(contents));
+        };
+        return telemetry == null ? read.get() : telemetry.recordResourceRead(requestedUri, read);
     }
 
     private Map<String, Object> goalVisualizationResourceMeta() {
