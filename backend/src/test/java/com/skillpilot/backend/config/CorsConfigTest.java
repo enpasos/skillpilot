@@ -2,7 +2,6 @@ package com.skillpilot.backend.config;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,7 @@ class CorsConfigTest {
             "/assets/goal-visualizations/mathematik/goal/goal.jpg";
 
     @Test
-    void allowsOnlyReadOnlyVisualizationRequestsFromTheDedicatedWidgetOrigin() {
+    void allowsOnlyReadOnlyVisualizationRequestsFromEverySandboxOrigin() {
         Map<String, CorsConfiguration> mappings = mappings();
 
         assertThat(mappings.keySet())
@@ -29,15 +28,18 @@ class CorsConfigTest {
 
         CorsConfiguration visualization = mappings.get("/assets/goal-visualizations/**");
         assertThat(visualization).isNotNull();
-        assertThat(visualization.checkOrigin(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN))
-                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-        assertThat(visualization.checkOrigin("https://chatgpt.com")).isNull();
+        assertThat(visualization.checkOrigin("https://mcp-coach-v1.skillpilot.com"))
+                .isEqualTo("*");
+        assertThat(visualization.checkOrigin("https://example.web-sandbox.oaiusercontent.com"))
+                .isEqualTo("*");
+        assertThat(visualization.checkOrigin("null")).isEqualTo("*");
         assertThat(visualization.getAllowedMethods()).containsExactly("GET", "HEAD", "OPTIONS");
         assertThat(visualization.getAllowCredentials()).isFalse();
 
         CorsConfiguration application = mappings.get("/**");
         assertThat(application).isNotNull();
-        assertThat(application.checkOrigin(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN)).isNull();
+        assertThat(application.checkOrigin("https://example.web-sandbox.oaiusercontent.com"))
+                .isNull();
     }
 
     @Test
@@ -46,7 +48,9 @@ class CorsConfigTest {
         source.setCorsConfigurations(mappings());
 
         MockHttpServletRequest imageRequest = new MockHttpServletRequest("GET", VISUALIZATION_PATH);
-        imageRequest.addHeader(HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        imageRequest.addHeader(
+                HttpHeaders.ORIGIN,
+                "https://example.web-sandbox.oaiusercontent.com");
         CorsConfiguration configuration = source.getCorsConfiguration(imageRequest);
         MockHttpServletResponse imageResponse = new MockHttpServletResponse();
 
@@ -57,7 +61,7 @@ class CorsConfigTest {
                 .isTrue();
         assertThat(imageResponse.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
         assertThat(imageResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
-                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                .isEqualTo("*");
         assertThat(imageResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS)).isNull();
 
         MockHttpServletRequest preflightRequest = preflight("GET");
@@ -66,7 +70,18 @@ class CorsConfigTest {
                 .isTrue();
         assertThat(preflightResponse.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
         assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
-                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                .isEqualTo("*");
+
+        MockHttpServletRequest opaqueOriginRequest =
+                new MockHttpServletRequest("GET", VISUALIZATION_PATH);
+        opaqueOriginRequest.addHeader(HttpHeaders.ORIGIN, "null");
+        MockHttpServletResponse opaqueOriginResponse = new MockHttpServletResponse();
+        assertThat(processor.processRequest(
+                        configuration, opaqueOriginRequest, opaqueOriginResponse))
+                .isTrue();
+        assertThat(opaqueOriginResponse.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
+        assertThat(opaqueOriginResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+                .isEqualTo("*");
     }
 
     @Test
@@ -83,7 +98,9 @@ class CorsConfigTest {
         assertThat(writeResponse.getStatus()).isEqualTo(HttpServletResponse.SC_FORBIDDEN);
 
         MockHttpServletRequest apiRequest = new MockHttpServletRequest("GET", "/api/ui/goals");
-        apiRequest.addHeader(HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        apiRequest.addHeader(
+                HttpHeaders.ORIGIN,
+                "https://example.web-sandbox.oaiusercontent.com");
         MockHttpServletResponse apiResponse = new MockHttpServletResponse();
         CorsConfiguration application = source.getCorsConfiguration(apiRequest);
         assertThat(application).isNotNull();
@@ -101,7 +118,9 @@ class CorsConfigTest {
 
     private static MockHttpServletRequest preflight(String requestedMethod) {
         MockHttpServletRequest request = new MockHttpServletRequest("OPTIONS", VISUALIZATION_PATH);
-        request.addHeader(HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        request.addHeader(
+                HttpHeaders.ORIGIN,
+                "https://example.web-sandbox.oaiusercontent.com");
         request.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, requestedMethod);
         return request;
     }

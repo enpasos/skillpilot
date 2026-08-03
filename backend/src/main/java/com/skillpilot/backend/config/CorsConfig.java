@@ -1,6 +1,5 @@
 package com.skillpilot.backend.config;
 
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,13 +22,14 @@ public class CorsConfig {
                     origins[i] = origins[i].trim();
                 }
 
-                // Goal visualizations are public, immutable learning assets. The
-                // submitted MCP App renders them from its dedicated widget origin.
+                // Goal visualizations are public, immutable learning assets. ChatGPT
+                // hosts the same MCP App resource from product-owned sandbox origins,
+                // and native WebViews may use an opaque `null` origin. Allow every
+                // origin to read only these public image bytes without credentials.
                 // Keep this mapping before the general credentialed application
-                // mapping so native ChatGPT WebViews can load the image without
-                // granting the widget cross-origin access to any API endpoint.
+                // mapping; no API endpoint inherits this public CORS policy.
                 registry.addMapping("/assets/goal-visualizations/**")
-                        .allowedOrigins(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN)
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "HEAD", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(false)
