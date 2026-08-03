@@ -83,19 +83,25 @@ const goalVisualizationWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
-const retainedGoalVisualizationWidgetSource = resolve(
+const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
-    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
-    "goal-visualization.html",
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
 );
-const uiArtifactSources = new Map([
-  ["ui/goal-visualization.html", goalVisualizationWidgetSource],
-  [
-    "ui/retained/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
-    retainedGoalVisualizationWidgetSource,
-  ],
-]);
+// Release paths mirror the backend classpath layout, so the content address
+// carried in the path is enough to locate the exact retained bytes. This stays
+// correct as further predecessors are appended.
+const uiArtifactSource = (releasePath) => {
+  if (releasePath === "ui/goal-visualization.html") {
+    return goalVisualizationWidgetSource;
+  }
+  const retained =
+    /^ui\/retained\/(sha256-[0-9a-f]{64})\/goal-visualization\.html$/u.exec(
+      releasePath,
+    );
+  return retained
+    ? resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html")
+    : undefined;
+};
 
 const command = process.argv[2];
 if (!new Set(["candidate", "prepare", "verify", "record-published"]).has(command)) {
@@ -282,7 +288,7 @@ function buildCandidate(output) {
     { recursive: true },
   );
   for (const resource of line.ui.resources) {
-    const source = uiArtifactSources.get(resource.path);
+    const source = uiArtifactSource(resource.path);
     assert.notEqual(
       source,
       undefined,

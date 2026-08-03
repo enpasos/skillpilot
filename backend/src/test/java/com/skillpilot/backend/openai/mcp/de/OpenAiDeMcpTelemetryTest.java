@@ -202,6 +202,80 @@ class OpenAiDeMcpTelemetryTest {
                         "must-not-leak");
     }
 
+    @Test
+    void separatesActiveFromRetainedUiResourceReadsWithoutLoggingArtifactContent() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+        String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
+        String retainedSha256 =
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S.get(0);
+        String retainedUri =
+                OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(retainedSha256);
+        Logger logger = (Logger) LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
+        ListAppender<ILoggingEvent> appender = new ListAppender<>();
+        appender.start();
+        logger.addAppender(appender);
+        try {
+            telemetry.recordResourceRead(activeUri, () -> readResult(activeUri));
+            telemetry.recordResourceRead(retainedUri, () -> readResult(retainedUri));
+            assertThatThrownBy(() -> telemetry.recordResourceRead(
+                            "ui://attacker\ncontrolled/value",
+                            () -> {
+                                throw new IllegalArgumentException("secret must not be logged");
+                            }))
+                    .isInstanceOf(IllegalArgumentException.class);
+        } finally {
+            logger.detachAppender(appender);
+            appender.stop();
+        }
+
+        assertThat(resourceTimer(
+                                registry,
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        .substring(0, 12),
+                                "active",
+                                "success")
+                        .count())
+                .isEqualTo(1);
+        assertThat(resourceTimer(
+                                registry,
+                                retainedSha256.substring(0, 12),
+                                "retained",
+                                "success")
+                        .count())
+                .isEqualTo(1);
+        assertThat(resourceTimer(registry, "unknown", "unknown", "exception").count())
+                .isEqualTo(1);
+        assertThat(appender.list)
+                .hasSize(3)
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .asString()
+                .contains("artifactRole=active", "artifactRole=retained", "latencyMs=")
+                .doesNotContain(
+                        "<!doctype html>",
+                        "controlled/value",
+                        "secret must not be logged");
+    }
+
+    private static McpSchema.ReadResourceResult readResult(String uri) {
+        return new McpSchema.ReadResourceResult(
+                java.util.List.of(
+                        new McpSchema.TextResourceContents(
+                                uri,
+                                OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                                "<!doctype html><title>must not become a metric tag</title>")));
+    }
+
+    private static Timer resourceTimer(
+            SimpleMeterRegistry registry,
+            String artifact,
+            String role,
+            String status) {
+        return registry.get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                .tags("artifact", artifact, "role", role, "status", status)
+                .timer();
+    }
+
     private static McpSchema.CallToolResult result(boolean error) {
         return result(error, null);
     }
