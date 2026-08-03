@@ -484,22 +484,15 @@ Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
 ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
 ```
 
-Als bereits an Clients ausgelieferte Vorgängerressourcen bleiben außerdem
+Als bereits an Test-Clients ausgelieferte Vorgängerressource bleibt außerdem
 
 ```text
-ui://skillpilot/coach/v1/sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc/goal-visualization.html
-ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html
-ui://skillpilot/coach/v1/sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c/goal-visualization.html
-ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html
 ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
 ```
 
 mit ihren exakten historischen Bytes lesbar. Die aktive Tool-Metadatei zeigt
-ausschließlich auf `c890cf271...`; die älteren Ressourcen sind nur für
-bestehende Chats und zwischengespeicherte Metadaten-Snapshots registriert.
-Jeder Widget-Build erzeugt eine neue SHA-URI, die anschließend dauerhaft
-vorgehalten wird; deshalb sollten Widget-Änderungen gebündelt statt einzeln
-ausgeliefert werden.
+ausschließlich auf `c890cf271...`; die ältere Ressource ist nur für bestehende
+Chats und zwischengespeicherte Metadaten-Snapshots registriert.
 
 Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft
 reproduzierbar neu erzeugt werden. Ändern sich dabei die Widget-Bytes, erhält

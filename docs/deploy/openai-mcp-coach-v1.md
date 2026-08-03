@@ -54,18 +54,12 @@ MCP-Werkzeug.
 
 Die Tabelle nennt die Ressource, die der aktuelle Tool-Descriptor aktiv
 referenziert. Bereits in Browser- oder nativen App-Chats gespeicherte
-Nachrichten dürfen jedoch weiterhin jede frühere, ebenfalls inhaltsadressierte
-Ressource anfordern: `sha256-12f95e37...`, `sha256-5564f42d...`,
-`sha256-bed59e4c...`, `sha256-45e1f58d...` und `sha256-157aab83...`. Der
-V1-Server hält alle diese URIs über `resources/list` und `resources/read`
-bytegenau verfügbar; nur die Ressource mit `sha256-c890...` ist das aktive
-Template für neue Tool-Ergebnisse.
-
-Ein `resources/read` wird als eigenes Telemetrieereignis protokolliert
-(`uiArtifact`, `artifactRole=active|retained`, Status, Latenz). Damit ist
-serverseitig unterscheidbar, ob ein Client die Komponente überhaupt abgeholt
-hat und ob er dabei den aktiven oder einen historischen `template_pointer`
-verwendet.
+Nachrichten dürfen jedoch weiterhin die frühere, ebenfalls
+inhaltsadressierte Ressource
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
+anfordern. Der V1-Server hält deshalb beide URIs über `resources/list` und
+`resources/read` bytegenau verfügbar; nur die Ressource mit `sha256-c890...`
+ist das aktive Template für neue Tool-Ergebnisse.
 
 Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.

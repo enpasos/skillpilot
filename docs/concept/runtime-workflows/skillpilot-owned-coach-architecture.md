@@ -373,18 +373,10 @@ und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert
 entfernen.
 
 Bereits ausgelieferte, inhaltsadressierte UI-Ressourcen bleiben Teil desselben
-V1-Vertrags: `sha256-12f95e37...`, `sha256-5564f42d...`, `sha256-bed59e4c...`,
-`sha256-45e1f58d...` und `sha256-157aab83...` werden mit ihren ursprünglichen
-Bytes weiter über `resources/read` bedient, damit historische Browser- und
-native App-Nachrichten funktionieren. Keine davon wird als aktives Template neu
+V1-Vertrags: `sha256-157aab83...` wird mit seinen ursprünglichen Bytes weiter
+über `resources/read` bedient, damit historische Browser- und native
+App-Nachrichten funktionieren. Es wird nicht als aktives Template neu
 referenziert; dafür bleibt ausschließlich `sha256-c890...` zuständig.
-
-Jedes `resources/read` erzeugt ein eigenes, datenschutzarmes Telemetrieereignis
-mit öffentlicher Inhaltsadresse, `artifactRole=active|retained`, Status und
-Latenz. Ohne dieses Ereignis endet die serverseitige Beweiskette beim
-erfolgreichen Render-Tool, und ein Host, der nach dem Mounten hängen bleibt,
-ist nicht von einem Client zu unterscheiden, der die Komponente nie angefordert
-hat.
 
 ### 6.3 Verbindlicher Ort jeder Regel
 

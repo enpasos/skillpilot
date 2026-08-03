@@ -45,7 +45,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,7 +97,17 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final Set<String> GOAL_VISUALIZATION_UI_TOOLS =
             Set.of(RENDER_GOAL_VISUALIZATION);
     private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
-            loadGoalVisualizationUiResources();
+            List.of(
+                    loadGoalVisualizationWidget(
+                            "skillpilot-goal-visualization-v1-current",
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
+                    loadGoalVisualizationWidget(
+                            "skillpilot-goal-visualization-v1-retained-157aab83",
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
 
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative.
@@ -524,37 +533,18 @@ public final class OpenAiDeV1McpContractAdapter {
                 .build();
         return new McpStatelessServerFeatures.SyncResourceSpecification(
                 resource,
-                (transportContext, request) -> readGoalVisualizationResource(uiResource, meta, request));
-    }
-
-    /**
-     * Serves one content-addressed MCP UI artifact and records the read.
-     *
-     * <p>The observation is what makes a stalled host distinguishable from a
-     * client that never fetched the component at all: without it the
-     * server-side evidence chain ends at the successful render tool.</p>
-     */
-    private McpSchema.ReadResourceResult readGoalVisualizationResource(
-            GoalVisualizationUiResource uiResource,
-            Map<String, Object> meta,
-            McpSchema.ReadResourceRequest request) {
-        String requestedUri = request == null ? null : request.uri();
-        Supplier<McpSchema.ReadResourceResult> read = () -> {
-            if (!uiResource.uri().equals(requestedUri)) {
-                throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
-            }
-            McpSchema.TextResourceContents contents =
-                    new McpSchema.TextResourceContents(
-                            uiResource.uri(),
-                            OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
-                            uiResource.html(),
-                            meta);
-            return new McpSchema.ReadResourceResult(List.of(contents));
-        };
-        return telemetry == null
-                ? read.get()
-                : telemetry.recordResourceRead(
-                        requestedUri == null ? uiResource.uri() : requestedUri, read);
+                (transportContext, request) -> {
+                    if (request == null || !uiResource.uri().equals(request.uri())) {
+                        throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
+                    }
+                    McpSchema.TextResourceContents contents =
+                            new McpSchema.TextResourceContents(
+                                    uiResource.uri(),
+                                    OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                                    uiResource.html(),
+                                    meta);
+                    return new McpSchema.ReadResourceResult(List.of(contents));
+                });
     }
 
     private Map<String, Object> goalVisualizationResourceMeta() {
@@ -573,35 +563,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 "openai/widgetCSP", Map.of(
                         "resource_domains", List.of("https://skillpilot.com"),
                         "redirect_domains", List.of("https://skillpilot.com")));
-    }
-
-    /**
-     * Loads the active MCP UI artifact together with every retained predecessor.
-     * Each artifact is verified against the hash carried in its own URI, so a
-     * content-addressed URI can never resolve to different bytes, and an older
-     * chat that still holds a historical {@code template_pointer} keeps working.
-     */
-    private static List<GoalVisualizationUiResource> loadGoalVisualizationUiResources() {
-        List<GoalVisualizationUiResource> resources = new ArrayList<>();
-        resources.add(loadGoalVisualizationWidget(
-                "skillpilot-goal-visualization-v1-current",
-                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
-                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256));
-        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
-            resources.add(loadGoalVisualizationWidget(
-                    "skillpilot-goal-visualization-v1-retained-" + sha256.substring(0, 8),
-                    OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(sha256),
-                    OpenAiDeV1ContractMetadata.retainedGoalVisualizationResourceClasspath(sha256),
-                    sha256));
-        }
-        long distinctUris = resources.stream().map(GoalVisualizationUiResource::uri).distinct().count();
-        if (distinctUris != resources.size()) {
-            throw new IllegalStateException(
-                    "Duplicate SkillPilot MCP UI resource URI: the active artifact hash "
-                            + "must not also appear in the retained list.");
-        }
-        return List.copyOf(resources);
     }
 
     private static GoalVisualizationUiResource loadGoalVisualizationWidget(

@@ -37,22 +37,13 @@ besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
 verwenden ausschließlich den dedizierten V1-Origin. Die acht neutralen
 Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit `404`.
 
-Jeder UI-Hash, der im V1-Verlauf jemals als aktive Vertragsressource
-ausgeliefert wurde, bleibt als unveränderliches Artefakt inventarisiert und
-lesbar:
-
-```text
-sha256-12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc
-sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881
-sha256-bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c
-sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed
-sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c
-```
-
-Das sind keine zweiten aktiven Widgets und keine Endpoint-Aliase: Neue
-Tool-Descriptoren referenzieren ausschließlich `sha256-c890...`, während
-bestehende Browser- und native App-Chats ihren bereits gespeicherten
-Resource-URI weiter auflösen können. Die Liste wird nur ergänzt, nie gekürzt.
+Die zuvor bereits an Test-Clients ausgelieferte Ressource
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
+bleibt als unveränderliches Artefakt inventarisiert und lesbar. Das ist kein
+zweites aktives Widget und kein Endpoint-Alias: Neue Tool-Descriptoren
+referenzieren ausschließlich `sha256-c890...`, während bestehende Browser-
+und native App-Chats ihren bereits gespeicherten Resource-URI weiter auflösen
+können.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 

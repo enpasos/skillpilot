@@ -32,13 +32,8 @@ line. This version has not been published yet.
   MCP Apps handshake
 - immutable UI-resource retention for real draft clients: the active
   `c890cf271...` resource remains the only output template for new messages,
-  while every previously advertised resource — `12f95e37...`, `5564f42d...`,
-  `bed59e4c...`, `45e1f58d...`, and `157aab83...` — stays byte-for-byte
+  while the previously advertised `157aab83...` resource stays byte-for-byte
   readable so existing browser and native-app chats do not fail with HTTP 404
-- privacy-safe `resources/read` telemetry recording the public content address,
-  whether the client requested the active or a retained artifact, the outcome,
-  and the latency, so a host that stalls after mounting is distinguishable from
-  a client that never fetched the component
 - dedicated read-only rendering action that the coach invokes only when an
   approved image is present; no image means no empty UI card
 - idempotent initialization from MCP tool result, ChatGPT compatibility state,
