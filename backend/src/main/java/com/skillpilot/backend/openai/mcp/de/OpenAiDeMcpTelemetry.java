@@ -35,12 +35,19 @@ public final class OpenAiDeMcpTelemetry {
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
 
     public static final String TOOL_DURATION_METRIC = "skillpilot.openai.coach.v1.mcp.tool.duration";
+    public static final String RESOURCE_READ_DURATION_METRIC =
+            "skillpilot.openai.coach.v1.mcp.resource.duration";
 
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String SUCCESS_RESULT_CODE = "OK";
     private static final String GENERIC_ERROR_RESULT_CODE = "ERROR";
     private static final String EXCEPTION_RESULT_CODE = "EXCEPTION";
     private static final String UNKNOWN_TOOL = "unknown";
+    private static final String UNKNOWN_ARTIFACT = "unknown";
+    private static final String ACTIVE_ARTIFACT_ROLE = "active";
+    private static final String RETAINED_ARTIFACT_ROLE = "retained";
+    private static final String CONTENT_ADDRESS_MARKER = "/sha256-";
+    private static final int ARTIFACT_FINGERPRINT_LENGTH = 12;
     private static final String UNAVAILABLE = "-";
     private static final int MAX_LOG_VALUE_LENGTH = 160;
     private static final int SESSION_FINGERPRINT_LENGTH = 22;
@@ -153,6 +160,88 @@ public final class OpenAiDeMcpTelemetry {
                     textMetadata(structuredContent, "workflowVersion"),
                     textMetadata(structuredContent, "curriculumRevision"));
         }
+    }
+
+    /**
+     * Records a bounded, privacy-safe {@code resources/read} observation.
+     *
+     * <p>Tool telemetry alone cannot show whether a client ever fetched the MCP
+     * UI artifact after a successful render call, so a stalled host and a client
+     * that never requested the resource are indistinguishable from the server.
+     * This event closes that gap. It records only the public content address,
+     * whether the client asked for the active artifact or a retained
+     * predecessor, and the coarse outcome — never HTML, learning session, or
+     * OAuth material.</p>
+     */
+    public McpSchema.ReadResourceResult recordResourceRead(
+            String resourceUri,
+            Supplier<McpSchema.ReadResourceResult> read) {
+        Timer.Sample sample = Timer.start(meterRegistry);
+        String status = "exception";
+        try {
+            McpSchema.ReadResourceResult result = read.get();
+            status = "success";
+            return result;
+        } finally {
+            String artifact = uiArtifactFingerprint(resourceUri);
+            String role = uiArtifactRole(resourceUri);
+            long durationNanos = sample.stop(Timer.builder(RESOURCE_READ_DURATION_METRIC)
+                    .description("Duration and outcome of OpenAI Coach V1 MCP UI resource reads")
+                    .tag("artifact", artifact)
+                    .tag("role", role)
+                    .tag("status", status)
+                    .tag("contract.major", String.valueOf(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR))
+                    .tag("plugin.line", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)
+                    .register(meterRegistry));
+            LOGGER.info(
+                    "OpenAI Coach V1 MCP V1 resource read: contractMajor={} pluginLine={} "
+                            + "serverBuild={} uiArtifact={} artifactRole={} status={} latencyMs={}",
+                    OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
+                    OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY,
+                    safeLogValue(serverBuild),
+                    artifact,
+                    role,
+                    status,
+                    TimeUnit.NANOSECONDS.toMillis(durationNanos));
+        }
+    }
+
+    /** Short public content address; bounded because the artifact set is fixed. */
+    private static String uiArtifactFingerprint(String resourceUri) {
+        String sha256 = artifactSha256(resourceUri);
+        return sha256 == null
+                ? UNKNOWN_ARTIFACT
+                : sha256.substring(0, ARTIFACT_FINGERPRINT_LENGTH);
+    }
+
+    private static String uiArtifactRole(String resourceUri) {
+        String sha256 = artifactSha256(resourceUri);
+        if (sha256 == null) {
+            return UNKNOWN_ARTIFACT;
+        }
+        if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256.equals(sha256)) {
+            return ACTIVE_ARTIFACT_ROLE;
+        }
+        return OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
+                        .contains(sha256)
+                ? RETAINED_ARTIFACT_ROLE
+                : UNKNOWN_ARTIFACT;
+    }
+
+    private static String artifactSha256(String resourceUri) {
+        if (resourceUri == null) {
+            return null;
+        }
+        int start = resourceUri.indexOf(CONTENT_ADDRESS_MARKER);
+        if (start < 0) {
+            return null;
+        }
+        start += CONTENT_ADDRESS_MARKER.length();
+        int end = resourceUri.indexOf('/', start);
+        if (end < 0 || end - start < ARTIFACT_FINGERPRINT_LENGTH) {
+            return null;
+        }
+        return resourceUri.substring(start, end);
     }
 
     public void recordOperational(Event event) {
