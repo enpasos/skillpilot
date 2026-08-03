@@ -24,7 +24,10 @@ export class GoalVisualizationBridge {
   }
 
   async requestTeardown(): Promise<void> {
-    await this.ready;
+    // requestTeardown is a notification, not a handshake-dependent request.
+    // In particular, do not wait for ui/initialize here: a host that mounted
+    // the resource but never completes that handshake is exactly the host we
+    // need to ask to discard the hidden component.
     await this.app.requestTeardown();
   }
 }

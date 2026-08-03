@@ -75,7 +75,7 @@ async function buildLifecycleSource() {
               contents: `
                 export type GoalVisualizationToolResult = { structuredContent?: unknown };
                 export class GoalVisualizationBridge {
-                  ready = Promise.resolve();
+                  ready = globalThis.__bridgeReady;
                   constructor(onToolResult: (result: GoalVisualizationToolResult) => void) {
                     globalThis.__deliverToolResult = onToolResult;
                   }
@@ -99,7 +99,7 @@ async function buildLifecycleSource() {
 
 const lifecycleSource = await buildLifecycleSource();
 
-function createHarness(initialToolOutput) {
+function createHarness(initialToolOutput, options = {}) {
   const rootElement = new FakeElement("main");
   const images = [];
   const windowListeners = new Map();
@@ -111,6 +111,9 @@ function createHarness(initialToolOutput) {
     URL,
     console,
     Promise,
+    __bridgeReady: options.bridgeReady === false
+      ? new Promise(() => undefined)
+      : Promise.resolve(),
     __teardownCount: 0,
     __closeCount: 0,
     document: {
@@ -146,11 +149,13 @@ function createHarness(initialToolOutput) {
     toolOutput: initialToolOutput,
     setWidgetState(state) {
       widgetStates.push(state);
-    },
-    requestClose() {
-      context.__closeCount += 1;
     }
   };
+  if (options.requestClose !== false) {
+    context.openai.requestClose = () => {
+      context.__closeCount += 1;
+    };
+  }
 
   vm.runInNewContext(lifecycleSource, context, {
     filename: "goal-visualization-main.test-bundle.js"
@@ -249,4 +254,55 @@ test("the bounded timeout collapses a host that never finishes image loading", a
   assert.deepEqual(harness.rootElement.children, []);
   assert.equal(harness.context.__closeCount, 1);
   assert.equal(harness.context.__teardownCount, 1);
+});
+
+test("a host that never supplies payload is closed after the bootstrap deadline", async () => {
+  const harness = createHarness(undefined, {
+    bridgeReady: false,
+    requestClose: false
+  });
+  const timeout = [...harness.timers.values()][0];
+  assert.equal(typeof timeout, "function");
+
+  timeout();
+  await flushPromises();
+
+  assert.equal(harness.rootElement.hidden, true);
+  assert.deepEqual(harness.rootElement.children, []);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 1);
+});
+
+test("a late payload replaces the bootstrap deadline with the image deadline", () => {
+  const harness = createHarness(undefined);
+  const bootstrapTimeoutId = [...harness.timers.keys()][0];
+
+  harness.emitGlobals({ toolOutput: visualization("LATE") });
+  const image = harness.images[0];
+
+  assert.ok(image);
+  assert.equal(harness.timers.has(bootstrapTimeoutId), false);
+  assert.equal(harness.timers.size, 1);
+
+  image.dispatch("load");
+  assert.equal(harness.rootElement.hidden, false);
+  assert.equal(harness.timers.size, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+});
+
+test("a recovered component requests teardown again after a later failure", async () => {
+  const harness = createHarness(visualization("FIRST"));
+  harness.images[0].dispatch("error");
+  await flushPromises();
+
+  harness.emitGlobals({ toolOutput: visualization("RECOVERED") });
+  harness.images[1].dispatch("load");
+  harness.emitGlobals({ toolOutput: visualization("SECOND_FAILURE") });
+  harness.images[2].dispatch("error");
+  await flushPromises();
+
+  assert.equal(harness.context.__closeCount, 2);
+  assert.equal(harness.context.__teardownCount, 2);
+  assert.equal(harness.rootElement.hidden, true);
+  assert.deepEqual(harness.rootElement.children, []);
 });

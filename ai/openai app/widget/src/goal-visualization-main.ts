@@ -25,6 +25,7 @@ type OpenAiSetGlobalsEvent = CustomEvent<{
   };
 }>;
 
+const BOOTSTRAP_TIMEOUT_MS = 10_000;
 const IMAGE_LOAD_TIMEOUT_MS = 15_000;
 
 const style = document.createElement("style");
@@ -42,6 +43,10 @@ const compatibilityWindow = window as OpenAiCompatibilityWindow;
 let teardownRequested = false;
 let currentVisualization: GoalVisualization | undefined;
 let currentImage: HTMLImageElement | undefined;
+let bootstrapTimeout: number | undefined = window.setTimeout(
+  dismissUnavailableUi,
+  BOOTSTRAP_TIMEOUT_MS
+);
 let imageLoadTimeout: number | undefined;
 
 window.addEventListener(
@@ -87,11 +92,12 @@ function renderStructuredContent(structuredContent: unknown): void {
 
 function acceptVisualization(visualization: GoalVisualization | undefined): void {
   if (!visualization) return;
+  clearBootstrapTimeout();
   renderVisualization(visualization);
 }
 
-function dismissUnavailableUi(image: HTMLImageElement): void {
-  if (image !== currentImage || !root.contains(image)) return;
+function dismissUnavailableUi(image?: HTMLImageElement): void {
+  if (image && (image !== currentImage || !root.contains(image))) return;
   hideVisualization(image);
   requestUiTeardown();
 }
@@ -117,6 +123,7 @@ function renderVisualization(visualization: GoalVisualization | undefined): void
   if (!visualization || visualization === currentVisualization) return;
 
   clearImageLoadTimeout();
+  teardownRequested = false;
   root.hidden = true;
   currentVisualization = visualization;
   const image = document.createElement("img");
@@ -172,4 +179,10 @@ function clearImageLoadTimeout(): void {
   if (imageLoadTimeout === undefined) return;
   window.clearTimeout(imageLoadTimeout);
   imageLoadTimeout = undefined;
+}
+
+function clearBootstrapTimeout(): void {
+  if (bootstrapTimeout === undefined) return;
+  window.clearTimeout(bootstrapTimeout);
+  bootstrapTimeout = undefined;
 }
