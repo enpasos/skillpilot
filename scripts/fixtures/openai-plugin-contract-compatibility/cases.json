@@ -182,18 +182,6 @@
           "sha256": "skill-v1"
         }
       ]
-    },
-    "uiManifest": {
-      "schemaVersion": 1,
-      "enabled": true,
-      "origin": "https://ui-v1.skillpilot.test",
-      "resources": [
-        {
-          "uri": "ui://skillpilot/v1/cockpit",
-          "mimeType": "text/html",
-          "contentSha256": "cockpit-v1"
-        }
-      ]
     }
   },
   "cases": [
@@ -565,38 +553,6 @@
             "readOnlyHint"
           ],
           "value": false
-        }
-      ]
-    },
-    {
-      "name": "UI resource removed",
-      "compatible": false,
-      "expected": "published resource was removed",
-      "operations": [
-        {
-          "op": "set",
-          "path": [
-            "uiManifest",
-            "resources"
-          ],
-          "value": []
-        }
-      ]
-    },
-    {
-      "name": "UI content changed under immutable URI",
-      "compatible": false,
-      "expected": "content changed under immutable URI",
-      "operations": [
-        {
-          "op": "set",
-          "path": [
-            "uiManifest",
-            "resources",
-            0,
-            "contentSha256"
-          ],
-          "value": "cockpit-v1-modified"
         }
       ]
     },

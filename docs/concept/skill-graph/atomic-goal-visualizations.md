@@ -7,8 +7,8 @@ This document defines the production and integration convention for visualizing 
 Atomic goal visualizations are compact didactic images that help learners
 recognize the core idea of one atomic learning goal. They are not tasks,
 solutions, or curriculum evidence. A visualization supports orientation in the
-cockpit and, for the multilingual OpenAI V1 MCP App, in a bounded inline component in
-ChatGPT. The graph goal remains the source of truth.
+cockpit and, for the multilingual OpenAI V1 MCP App, as optional standard MCP
+image content. The graph goal remains the source of truth.
 
 ## Canonical JSON Format
 
@@ -47,35 +47,25 @@ Rules:
 - A goal may have multiple visualization links, but at most one `role: "primary"` per language should be visible in ordinary learner views.
 - `reviewStatus: "pilot"` is allowed for integration pilots. Broad rollout should use reviewed assets only.
 
-## OpenAI MCP UI Delivery
+## OpenAI MCP Image Delivery
 
-The still-unpublished `SkillPilot Coach v1` draft `1.0.0` contains one
-read-only MCP UI resource:
+The still-unpublished `SkillPilot Coach v1` draft `1.0.0` publishes no MCP UI
+resource, iframe, output template, or widget domain. The dedicated read-only
+`render_skillpilot_goal_visualization` tool returns the approved JPEG or PNG as
+one standard MCP `ImageContent` block. Its descriptor contains neither
+`ui.resourceUri` nor `openai/outputTemplate`.
 
-```text
-ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
-```
-
-This is the active URI for new messages. The previously advertised draft URI
-
-```text
-ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
-```
-
-remains readable with its exact historical bytes for existing browser and
-native-app chats. Only the dedicated read-only
-`render_skillpilot_goal_visualization` tool
-references this resource. It is offered only when the learner preference is
-enabled and the current context contains a safe visualization projection;
-ordinary context reads and state mutations carry no UI resource metadata and
-therefore create no empty component. When the newest successful full result
-contains a safe image projection and permits the renderer, that renderer runs
+The renderer is offered only when the learner preference is enabled and the
+current context contains a safe visualization projection. Ordinary context
+reads and state mutations do not carry image bytes. When the newest successful
+full result contains a safe projection and permits the renderer, it runs
 immediately and exactly once as the next tool call in the same assistant turn,
 with the unchanged `goalId` and `expectedStateVersion` from that result. It
 reprojects current backend state and rejects stale versions or a mismatched
-active goal. Its successful result is a narrow UI receipt and does not replace
-the preceding full SkillPilot context used for coaching and state decisions.
-The renderer's `structuredContent` contains the following projection:
+active goal. Its successful image receipt does not replace the preceding full
+SkillPilot context used for coaching and state decisions. The renderer retains
+the following bounded `structuredContent` for validation while the sole MCP
+content block is the image itself:
 
 ```json
 {
@@ -90,64 +80,48 @@ The renderer's `structuredContent` contains the following projection:
 }
 ```
 
-The projection and component obey these constraints:
+The projection and image result obey these constraints:
 
 - the learner's default-on `showGoalVisualizationsInChat` preference must not
   be disabled;
 - the active goal must be atomic;
 - its canonical visualization link must match the same goal ID and resolve to a
   safe public SkillPilot image URL;
-- published image bytes under `/assets/goal-visualizations/**` are anonymous,
-  immutable public assets and therefore use credential-free wildcard CORS for
-  read-only `GET`, `HEAD`, and `OPTIONS` requests. This narrowly scoped rule is
-  required because product-hosted sandboxes and native WebViews may use an
-  OpenAI-owned or opaque `null` origin; it must never be inherited by SkillPilot
-  API endpoints;
-- the safe projection may retain goal metadata for validation and future
-  compatibility, but the UI renders only the image. Its `altText` stays on the
-  `img` element; title, description, goal ID, and cockpit link are not visibly
-  rendered. The component performs no learning-state mutation;
-- a missing, malformed, or mismatched image omits the renderer. A valid image
-  stays hidden while it loads and becomes visible only after a successful
-  `load` event. A bounded bootstrap deadline also covers hosts that mount the
-  resource but never deliver a structured result. A missing payload, concrete
-  load error, or bounded load timeout hides the component, requests teardown
-  without waiting for the MCP Apps handshake, and leaves the ordinary ChatGPT
-  response unchanged;
-- native mobile currently invokes the renderer but does not fetch its
-  `resources/read` payload, so widget-side load/error teardown never runs and
-  the host shell remains pending. The adapter therefore uses the optional,
-  best-effort `openai/userAgent` call hint solely as a presentation gate: only
-  an explicitly recognized desktop web browser receives `goalVisualization`
-  and the renderer permission. Mobile/native and unknown hints fail closed for
-  this optional UI and continue with the complete text response. The raw hint
-  is never logged or persisted and must never affect authentication,
-  authorization, identity, learning state, or writes;
+- the backend resolves the projected HTTPS URL back to an approved local asset
+  below `/assets/goal-visualizations/`, reads hash-verified package bytes where
+  available, accepts only JPEG or PNG, and enforces a six-MiB raw byte limit;
+- the safe projection may retain goal metadata for validation, but the tool's
+  visible MCP content is only the image. `altText` is attached as metadata;
+  title, description, goal ID, and cockpit link are not additional content;
+- a missing, malformed, mismatched, unsupported, empty, or oversized image
+  fails closed with an instruction to continue without it and not retry;
+- because the former widget left a permanent loading shell in native mobile
+  chats, V1 creates no component at all. The adapter still uses the optional,
+  best-effort `openai/userAgent` hint solely as a presentation gate: only an
+  explicitly recognized desktop browser receives `goalVisualization` and the
+  renderer permission. Mobile/native and unknown hints continue with the
+  complete text response. The raw hint is never logged or persisted and never
+  affects authentication, authorization, identity, learning state, or writes;
 - presentation filtering happens after session coordination and idempotent
   replay. The stored tool result stays surface-neutral; the adapter removes
   `goalVisualization` and the renderer permission from every fresh or replayed
   result for the current unsupported caller. This prevents a desktop result
-  from leaking UI authorization to mobile and prevents a mobile-first retry
+  from leaking image authorization to mobile and prevents a mobile-first retry
   from disabling a later desktop-web presentation;
-- the desktop-web component still relies on actual image-load success. Do not
-  delay ordinary coaching or automatically retry a completed attempt. Widen
-  the presentation allowlist only after the additional host surface has passed
-  an end-to-end renderer, resource-read, and visible-completion test;
-- teardown is a host-mediated request, not a promise that the host removes its
-  container. If a host never executes or initializes the MCP view, neither the
-  backend nor the widget can suppress a placeholder already created by that
-  host;
-- every content-addressed URI advertised to a client is retained with its exact
-  bytes, even during draft testing. Tool metadata references only the active
-  URI, while historical chats can continue to read older immutable resources;
+- do not delay ordinary coaching or automatically retry a completed attempt.
+  Widen the presentation allowlist only after the additional host surface has
+  passed an end-to-end renderer and visible-completion test;
+- because V1 is unpublished and backward compatibility was explicitly rejected
+  for its experimental UI, the old content-addressed HTML resources and
+  resource-read contract are removed. Existing test chats may still reference
+  obsolete templates and are unsupported; refresh the plugin and use a fresh
+  chat after deployment;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.
 
-Because `1.0.0` has not been published in the OpenAI portal, this component is
+Because `1.0.0` has not been published in the OpenAI portal, this correction is
 part of the same mutable release draft and does not cause a version increment.
-After publication, its resource URI and bundled content become immutable under
-the V1 release rules.
 
 Learners can change the preference in the cockpit under **Mein Lehrplan →
 Lerneinstellungen → Lernzielbilder im Chat anzeigen**. The persisted setting is
@@ -189,8 +163,8 @@ Reference pools of example tasks or image inspirations may be kept locally under
 5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
 6. Add the optional `resourceLinks` entry to the canonical goal JSON.
 7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
-8. Validate graph JSON, cockpit rendering, the image-only OpenAI MCP inline
-   component, and normal cockpit deep-link behavior outside that component.
+8. Validate graph JSON, cockpit rendering, the standard MCP image-content
+   renderer, and normal cockpit deep-link behavior outside that renderer.
 
 ## Automated Nano Banana Pro Workflow
 
@@ -357,9 +331,9 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The image has no copied third-party worksheet, logo, character, or protected layout.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
-- The image works in the cockpit goal card and, where the multilingual OpenAI MCP UI
-  is enabled, as the sole visible content of the inline ChatGPT card. The
-  cockpit deep link remains available outside the MCP UI component.
+- The image works in the cockpit goal card and is returned by the multilingual
+  OpenAI renderer as the sole standard MCP image-content block. No empty or
+  loading MCP UI component is created.
 - The visual does not replace the need for explanation, practice, or assessment.
 - `altText` is specific enough for non-visual use.
 - `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.

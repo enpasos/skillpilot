@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
@@ -11,32 +10,10 @@ const pluginRoot = resolve(
   "ai/openai plugin/skillpilot-coach-v1",
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
-const goalVisualizationWidget = resolve(
+const openAiResourceRoot = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
+  "backend/src/main/resources/openai",
 );
-const retainedGoalVisualizationWidget = resolve(
-  repositoryRoot,
-  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
-    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
-    "goal-visualization.html",
-);
-const goalVisualizationArtifactSha256 = createHash("sha256")
-  .update(readFileSync(goalVisualizationWidget))
-  .digest("hex");
-const goalVisualizationResourceUri =
-  `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
-assert.equal(existsSync(retainedGoalVisualizationWidget), true);
-const retainedGoalVisualizationArtifactSha256 = createHash("sha256")
-  .update(readFileSync(retainedGoalVisualizationWidget))
-  .digest("hex");
-assert.equal(
-  retainedGoalVisualizationArtifactSha256,
-  "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
-  "The retained goal-visualization artifact must remain byte-for-byte immutable.",
-);
-const retainedGoalVisualizationResourceUri =
-  `ui://skillpilot/coach/v1/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`;
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -61,6 +38,10 @@ const mcpContract = read(resolve(
 const clientSurface = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeClientSurface.java",
+));
+const goalVisualizationImageResolver = read(resolve(
+  repositoryRoot,
+  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeGoalVisualizationImageResolver.java",
 ));
 const contextProjector = read(resolve(
   repositoryRoot,
@@ -256,37 +237,25 @@ assert.equal(oauthResource.href, endpoint.href);
 assert.equal(
   Object.hasOwn(releaseLine, "publicUiOrigin"),
   false,
-  "The V1 release line must use ui.domain rather than the retired publicUiOrigin field",
+  "The V1 release line must not retain the retired publicUiOrigin field",
 );
 assert.equal(
   Object.hasOwn(releaseLine, "internalCompatibilityEndpoint"),
   false,
   "V1 must not publish or declare a compatibility endpoint",
 );
-assert.deepEqual(releaseLine.ui, {
-  activeResourceUri: goalVisualizationResourceUri,
-  domain: "https://mcp-coach-v1.skillpilot.com",
-  enabled: true,
-  stateSchemaVersion: 1,
-  resources: [
-    {
-      mimeType: "text/html;profile=mcp-app",
-      path:
-        `ui/retained/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`,
-      uri: retainedGoalVisualizationResourceUri,
-    },
-    {
-      mimeType: "text/html;profile=mcp-app",
-      path: "ui/goal-visualization.html",
-      uri: goalVisualizationResourceUri,
-    },
-  ],
-});
-assert.equal(existsSync(goalVisualizationWidget), true);
-const goalVisualizationHtml = read(goalVisualizationWidget);
-assert.match(goalVisualizationHtml, /^<!doctype html>/i);
-assert.match(goalVisualizationHtml, /ui\/notifications\/tool-result/);
-assert.match(goalVisualizationHtml, /goalVisualization/);
+assert.equal(
+  Object.hasOwn(releaseLine, "ui"),
+  false,
+  "The unpublished V1 release line must not retain experimental MCP UI metadata.",
+);
+assert.deepEqual(
+  readdirSync(openAiResourceRoot, { recursive: true })
+    .map((entry) => String(entry))
+    .filter((entry) => entry.endsWith(".html")),
+  [],
+  "current V1 must not retain or publish MCP widget HTML",
+);
 
 assert.equal(lifecycle.schemaVersion, 1);
 assert.equal(lifecycle.pluginIdentity, releaseLine.pluginIdentity);
@@ -520,7 +489,8 @@ assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
 assert.match(combinedSkill, /expectedStateVersion/);
 assert.match(combinedSkill, /clientRequestId/);
 assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
-assert.match(combinedSkill, /MCP App[\s\S]+goal visualization/s);
+assert.match(combinedSkill, /standard MCP image(?:-| )content/s);
+assert.match(combinedSkill, /goal visualization/s);
 assert.match(
   combinedSkill,
   /never as a source,\s+evidence, task, solution, or performance record/s,
@@ -537,7 +507,7 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /UI receipt[\s\S]+does not replace the latest full SkillPilot context/s,
+  /image receipt[\s\S]+does not replace the latest full SkillPilot context/s,
   "The renderer receipt must not replace the authoritative full coaching context.",
 );
 assert.match(
@@ -547,13 +517,13 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /UI receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
+  /image receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
   "The MCP server must keep the last full context authoritative after rendering.",
 );
 assert.match(
   mcpContract,
   /request\.meta\(\)[\s\S]+OpenAiDeClientSurface[\s\S]+supportsGoalVisualization\(\)/s,
-  "The optional UI must be gated from per-call client metadata before projection.",
+  "Optional image presentation must be gated from per-call client metadata before projection.",
 );
 assert.match(
   clientSurface,
@@ -563,7 +533,7 @@ assert.match(
 assert.match(
   combinedSkill,
   /client surfaces[\s\S]+absence as authoritative[\s\S]+never infer support/s,
-  "The bundled skill must not invoke the UI from stale or inferred host support.",
+  "The bundled skill must not invoke image delivery from stale or inferred host support.",
 );
 assert.match(
   mcpContract,
@@ -628,50 +598,21 @@ assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
 assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
-assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);
 assert.equal(
   javaConstant("PROTECTED_RESOURCE_METADATA_ENDPOINT"),
   "https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp",
 );
 assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
-assert.equal(
-  javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
-  releaseLine.ui.activeResourceUri,
-);
-assert.equal(
-  javaConstant("RETAINED_GOAL_VISUALIZATION_RESOURCE_URI"),
-  retainedGoalVisualizationResourceUri,
-);
-assert.equal(
-  javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),
-  goalVisualizationArtifactSha256,
-  "The Java V1 UI hash must match the exact embedded widget artifact.",
-);
-assert.equal(
-  javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
-  releaseLine.ui.resources.find(
-    (resource) => resource.uri === releaseLine.ui.activeResourceUri,
-  )?.mimeType,
-);
 assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/v1/mcp");
 assert.equal(javaConstant("STATE_SCHEMA_VERSION"), releaseLine.stateSchemaVersion);
 assert.equal(javaConstant("WORKFLOW_VERSION"), releaseLine.workflowVersion);
 assert.doesNotMatch(contractMetadata, /curricula-(?:tree|sha256)@/);
-assert.match(
-  mcpContract,
-  /"domain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
-  "MCP UI resources must publish the standard plugin-unique widget domain",
-);
-assert.match(
-  mcpContract,
-  /"openai\/widgetDomain",\s*OpenAiDeV1ContractMetadata\.WIDGET_DOMAIN/,
-  "MCP UI resources must publish the ChatGPT widget-domain alias",
-);
-assert.match(
-  mcpContract,
-  /"resourceDomains",\s*List\.of\("https:\/\/skillpilot\.com"\)/,
-  "MCP UI CSP must keep the SkillPilot asset origin allowlisted",
-);
+assert.doesNotMatch(mcpContract, /openai\/outputTemplate|resourceUri|widgetDomain/);
+assert.match(mcpContract, /this\.resourceSpecifications = List\.of\(\)/);
+assert.match(mcpContract, /McpSchema\.ImageContent\.builder/);
+assert.match(mcpContract, /Base64\.getEncoder\(\)\.encodeToString/);
+assert.match(goalVisualizationImageResolver, /MAX_MCP_IMAGE_BYTES/);
+assert.match(goalVisualizationImageResolver, /PUBLIC_IMAGE_PREFIX/);
 
 assert.match(mcpContract, /EXPECTED_STATE_VERSION = "expectedStateVersion"/);
 assert.match(mcpContract, /CLIENT_REQUEST_ID = "clientRequestId"/);

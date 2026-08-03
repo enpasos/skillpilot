@@ -96,11 +96,10 @@ There are no language-specific widget-domain variables.
 
 ## Goal visualization
 
-The goal-visualization widget remains a separate read-only UI resource built
-from `widget/src/goal-visualization-main.ts`. It is copied into the Spring
-resources by `npm run build` so the production server embeds the exact tested
-artifact. Its availability and displayed payload are controlled by the
-production session state; it does not introduce a language-specific MCP App.
+The production V1 server publishes no MCP UI resource. Its dedicated read-only
+renderer resolves an approved learning-goal image in Spring Boot and returns it
+as standard MCP `ImageContent`. The Node prototype therefore does not build or
+copy a goal-visualization widget.
 
 ## Product plugin source
 

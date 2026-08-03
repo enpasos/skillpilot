@@ -1,6 +1,6 @@
 ---
 title: "SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin"
-subtitle: "MCP-API, MCP-UI und Skills"
+subtitle: "MCP-API, standardmäßige Medienausgabe, Skills und mögliche spätere MCP-UI"
 document_version: "1.0"
 status: "Verbindliche Architekturgrundlage"
 date: "2026-07-31"
@@ -9,7 +9,8 @@ audience: "Codex- und SkillPilot-Entwicklung"
 
 # SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
 
-**Geltungsbereich:** OpenAI-Plugin mit MCP-API, MCP-UI und gebündelten Skills  
+**Geltungsbereich:** OpenAI-Plugin mit MCP-API, standardmäßiger Medienausgabe,
+gebündelten Skills und optionaler zukünftiger MCP-UI
 **Dokumentversion:** 1.0  
 **Stand:** 31. Juli 2026  
 **Status:** Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.  
@@ -88,9 +89,9 @@ In diesem Dokument gelten folgende Begriffe:
 Die Planung beruht auf den folgenden derzeit dokumentierten Eigenschaften der Plattform:
 
 1. Ein Plugin kann Skills, einen MCP-Server oder beides enthalten. Die Veröffentlichung umfasst Listing-Daten, MCP-Details, gebündelte Skills, Testfälle und Release Notes. [OAI-1]
-2. OpenAI speichert beim Scan einen geprüften Snapshot der MCP-Metadaten. Das veröffentlichte Plugin verwendet diesen Snapshot, während Tool-Aufrufe und UI-Ressourcen weiterhin den Live-MCP-Server verwenden. [OAI-2]
-3. Inkompatible Änderungen am MCP-Vertrag innerhalb eines bereits veröffentlichten Plugins werden derzeit nicht unterstützt. Entfernte oder umbenannte Tools, inkompatible Schemas und inkompatible oder entfernte Inhalte unter veröffentlichten UI-Ressourcen-URIs können die veröffentlichte Version sofort brechen. [OAI-2]
-4. Der dokumentierte Weg innerhalb einer Plugin-Identität ist additiv: neue Tools, Felder oder UI-Ressourcen hinzufügen, neuen Metadaten-Snapshot prüfen lassen und die alten Verträge weiterhin bereitstellen. [OAI-2]
+2. OpenAI speichert beim Scan einen geprüften Snapshot der MCP-Metadaten. Das veröffentlichte Plugin verwendet diesen Snapshot, während Tool-Aufrufe und – nur bei einem Plugin, das tatsächlich eine UI veröffentlicht – UI-Ressourcen weiterhin den Live-MCP-Server verwenden. [OAI-2]
+3. Inkompatible Änderungen am MCP-Vertrag innerhalb eines bereits veröffentlichten Plugins werden derzeit nicht unterstützt. Entfernte oder umbenannte Tools und inkompatible Schemas können die veröffentlichte Version sofort brechen; bei einer tatsächlich veröffentlichten UI gilt das ebenso für entfernte oder inkompatibel geänderte UI-Ressourcen. [OAI-2]
+4. Der dokumentierte Weg innerhalb einer Plugin-Identität ist additiv: neue Tools und Felder hinzufügen, neuen Metadaten-Snapshot prüfen lassen und die alten Verträge weiterhin bereitstellen. Bei einer tatsächlich veröffentlichten UI gilt dies zusätzlich für neue UI-Ressourcen. [OAI-2]
 5. Serverseitige Korrekturen dürfen ohne neue Plugin-Einreichung deployt werden, sofern der veröffentlichte Vertrag erhalten bleibt. Bei einem Vertragsbruch ist die Serveränderung zurückzurollen. [OAI-2]
 6. Pro MCP-Integration kann jeweils nur eine Version veröffentlicht und nur eine Version gleichzeitig geprüft werden. Eine freigegebene Aktualisierung ersetzt die vorher veröffentlichte Version derselben Plugin-Identität. Eine Organisation darf mehrere eigenständige Plugins veröffentlichen. [OAI-2]
 7. Der bei OpenAI registrierte MCP-Endpoint ist Teil des Pluginvertrags. Ein
@@ -158,7 +159,7 @@ OAuth Resource/Audience:        https://mcp-coach-v1.skillpilot.com/mcp
 Protected-Resource-Metadaten:   https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 Domain-Challenge:               https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge
 OAuth-Issuer:                   https://skillpilot.com/api/openai/v1
-Widget-Origin:                   https://mcp-coach-v1.skillpilot.com
+Bildausgabe:                     standardmäßiges MCP-ImageContent; keine MCP-UI
 ```
 
 Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen.
@@ -249,11 +250,12 @@ Die Grenze ist der reale Veröffentlichungsstatus:
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
-noch nicht veröffentlicht. Die Lernzielvisualisierungs-UI wird deshalb in den
-bestehenden `1.0.0`-Draft aufgenommen; es entsteht weder `1.0.1` noch ein
-Published-Snapshot. Alle zugehörigen Contract-, Ressourcen-, UI- und
-Skill-Artefakte werden beim nächsten `prepare` gemeinsam im selben Draft
-aktualisiert.
+noch nicht veröffentlicht. Die Lernzielvisualisierung wird deshalb als
+standardmäßiges MCP-`ImageContent` in den bestehenden `1.0.0`-Draft aufgenommen;
+es entsteht weder `1.0.1` noch ein Published-Snapshot. Der V1-Draft
+veröffentlicht keine MCP-UI-Ressource, keine Widget-Domain und kein
+Output-Template. Alle zugehörigen Contract-, Bildausgabe- und Skill-Artefakte
+werden beim nächsten `prepare` gemeinsam im selben Draft aktualisiert.
 
 ### 7.1 Server-Build ohne Plugin-Release
 
@@ -288,7 +290,8 @@ Ein MINOR-Release, zum Beispiel `1.4.0 -> 1.5.0`, wird für rückwärtskompatibl
 - neues optionales Eingabefeld;
 - neue optionale Fähigkeit in einem bestehenden Workflow;
 - neuer Skill;
-- neue UI-Komponente oder neue UI-Ressourcen-URI;
+- bei einer Linie, die ausdrücklich eine UI veröffentlicht: neue UI-Komponente
+  oder neue UI-Ressourcen-URI;
 - neue additive OAuth-Berechtigung, sofern die bisherige Bedeutung bestehender Scopes unverändert bleibt;
 - neues optionales Ergebnis innerhalb eines dafür vorgesehenen Erweiterungsbereichs.
 
@@ -440,98 +443,65 @@ Der Kern des Schemas SOLL streng sein, beispielsweise mit `additionalProperties:
 
 Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarstellung liefern, damit unterschiedliche Hosts und Clients robust arbeiten können.
 
-## 9. MCP-UI-Versionierung
+## 9. Bildausgabe in V1 und mögliche spätere MCP-UI
 
-### 9.1 Eindeutiger Widget-Origin bereits im Einreichungs-Draft
+### 9.1 V1 veröffentlicht keine MCP-UI
 
-Ein zur Einreichung vorgesehener Plugin-Draft mit UI MUSS bereits einen für
-diese Plugin-Identität eindeutigen Widget-Origin angeben. SkillPilot setzt
-deshalb sowohl `_meta.ui.domain` als auch den ChatGPT-Kompatibilitätsalias
-`_meta["openai/widgetDomain"]` auf
-`https://mcp-coach-v1.skillpilot.com`. Der ohnehin pro Plugin-Linie
-dedizierte MCP-Origin kann zugleich Widget-Origin sein; dafür ist kein zweiter
-Host und kein zusätzlicher öffentlicher Pfad erforderlich.
+Der noch unveröffentlichte V1-Draft liefert ein geprüftes JPEG oder PNG über
+das read-only Werkzeug `render_skillpilot_goal_visualization` als
+standardmäßiges MCP-`ImageContent`. Sein Tool-Descriptor enthält weder
+`ui.resourceUri` noch `openai/outputTemplate` oder Widget-Metadaten. Der
+Ressourcenkatalog ist leer; es gibt keine HTML-Ressource, Widget-Domain, CSP
+oder persistierten Widgetzustand.
 
-Der Widget-Origin ist ein fester Vertragswert und kein Runtime-Override.
-SkillPilot-Domains für Bilder und Cockpit-Links werden unabhängig davon
-separat und minimal in der CSP freigegeben. Nach der Veröffentlichung darf der
-Widget-Origin innerhalb derselben Plugin-Identität nicht stillschweigend
-wechseln.
+Die zuvor experimentell an Test-Clients ausgelieferten V1-Widgetressourcen sind
+kein veröffentlichter Vertrag. Für sie besteht ausdrücklich keine
+Rückwärtskompatibilitäts- oder Aufbewahrungspflicht. Sie werden aus Runtime,
+Draft-Snapshot, Ressourceninventar und Telemetrie entfernt. Alte Test-Chats
+sind nicht unterstützt; nach dem Deployment werden die Plugin-Metadaten
+aktualisiert und die Abnahme erfolgt in einem frischen Chat.
 
-### 9.2 Unveränderliche Ressourcen-URIs
+### 9.2 Regeln nur für eine künftig tatsächlich veröffentlichte UI-Linie
 
-Die Ressourcen-URI wird als unveränderlicher Artefaktschlüssel behandelt. Empfohlenes Format:
+Falls eine spätere Plugin-Version ausdrücklich eine MCP-UI einführt, MUSS ihr
+zur Einreichung vorgesehener Draft einen für diese Plugin-Identität eindeutigen
+Widget-Origin angeben. Erst dann werden `_meta.ui.domain`, gegebenenfalls der
+vom Zielhost benötigte Kompatibilitätsalias und eine minimale CSP Bestandteil
+des geprüften Vertrags. Der Widget-Origin ist anschließend ein fester
+Vertragswert und kein Runtime-Override.
 
-```text
-ui://skillpilot/coach/v1/sha256-<artifact-hash>/index.html
-```
-
-oder, sofern Build und Content exakt gekoppelt sind:
-
-```text
-ui://skillpilot/coach/v1/1.4.2/index.html
-```
-
-Verbindliche interne Regel:
-
-> Nach Veröffentlichung wird der Inhalt einer UI-Ressourcen-URI nicht überschrieben. Jeder produktive UI-Build erhält eine neue URI.
-
-Diese Regel ist strenger als das OpenAI-Minimum, das kompatible Updates unter derselben URI zulässt. Sie verbessert Reproduzierbarkeit, Rollback und die Darstellung alter Konversationen.
-
-Der aktuelle unveröffentlichte `1.0.0`-Draft verwendet:
+Eine in einer **tatsächlich veröffentlichten** Plugin-Version verwendete
+UI-Ressourcen-URI wird als unveränderlicher Artefaktschlüssel behandelt. Ein
+mögliches Format ist:
 
 ```text
-ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
+ui://skillpilot/coach/<major>/sha256-<artifact-hash>/index.html
 ```
 
-Als bereits an Test-Clients ausgelieferte Vorgängerressource bleibt außerdem
+Nach der Veröffentlichung wird der Inhalt einer solchen URI nicht
+überschrieben; jeder neue produktive UI-Build erhält eine neue URI. Vor der
+ersten tatsächlichen Portal-Veröffentlichung darf ein UI-Draft dagegen
+reproduzierbar ersetzt und bereinigt werden. Testauslieferungen eines
+unveröffentlichten Drafts erzeugen allein keine dauerhafte
+Rückwärtskompatibilitätspflicht.
 
-```text
-ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
-```
+### 9.3 UI-Zustand nur bei einer späteren UI
 
-mit ihren exakten historischen Bytes lesbar. Die aktive Tool-Metadatei zeigt
-ausschließlich auf `c890cf271...`; die ältere Ressource ist nur für bestehende
-Chats und zwischengespeicherte Metadaten-Snapshots registriert.
+Falls eine spätere veröffentlichte UI persistierten Widgetzustand verwendet,
+MUSS dieser ein eigenes `schemaVersion`-Feld ausweisen. Jede dann noch
+unterstützte Zustandsform muss deterministisch migriert werden können;
+unbekannter oder beschädigter Zustand darf nicht zum Absturz führen und fällt
+auf einen sicheren leeren Zustand zurück. Diese Regel findet auf V1 keine
+Anwendung, weil V1 keinen Widgetzustand veröffentlicht.
 
-Bis zur ersten tatsächlichen Portal-Veröffentlichung darf der Draft
-reproduzierbar neu erzeugt werden. Ändern sich dabei die Widget-Bytes, erhält
-das Artefakt durch seinen SHA-256-Wert eine neue URI, ohne die weiterhin
-unveröffentlichte Plugin-Paketversion hochzuzählen. Sobald eine solche URI
-jedoch einem realen Test-Client angeboten wurde, wird sie wie eine
-veröffentlichte URI unveränderlich und additiv aufbewahrt. Der erste
-ausgelieferte Inhalt jeder URI ist unveränderlich. Die Ressource ist ausschließlich die
-read-only Darstellung eines bereits vom Backend bestätigten aktiven atomaren
-Ziels mit passendem kanonischem `goal-visualization`-Link. Context-Read und
-erfolgreiches Setzen des aktiven Ziels dürfen sie auslösen; ohne gültiges Bild
-bleibt der normale Chatpfad erhalten.
+### 9.4 Aufbewahrung beginnt mit tatsächlicher Veröffentlichung
 
-### 9.3 UI-Zustand
-
-Persistierter Widget-Zustand MUSS ein eigenes Schema ausweisen:
-
-```json
-{
-  "schemaVersion": 2,
-  "payload": {
-    "selectedGoalId": "...",
-    "draftAnswer": "..."
-  }
-}
-```
-
-Jede UI-Version muss ältere noch unterstützte Zustandsformen lesen und deterministisch migrieren können. Unbekannte oder beschädigte Zustände dürfen nicht zum Absturz führen; die UI fällt auf einen sicheren leeren Zustand zurück.
-
-### 9.4 Aufbewahrung alter UI-Artefakte
-
-Alte veröffentlichte oder an reale Draft-Test-Clients ausgelieferte
-UI-Ressourcen DÜRFEN während der Laufzeit der zugehörigen Plugin-Major-Version
-nicht entfernt werden. Nach dem Löschen der alten Plugin-Identität sollen
-statische Ressourcen für eine konfigurierbare Nachlaufzeit erhalten bleiben,
-weil das Verhalten historischer Chatnachrichten nach Unpublish oder Delete
-derzeit nicht vollständig dokumentiert ist.
-
-Die Nachlaufzeit wird als Release- und Betriebsparameter geführt, nicht im Code fest verdrahtet.
+Nur UI-Ressourcen, die Bestandteil einer tatsächlich veröffentlichten
+Plugin-Version waren, werden während der unterstützten Laufzeit der
+zugehörigen Plugin-Major-Version unveränderlich bereitgestellt. Eine
+Nachlaufzeit nach Unpublish oder Delete wird erst für eine solche spätere
+UI-Linie als Release- und Betriebsparameter festgelegt. Experimentelle
+Ressourcen des unveröffentlichten V1-Drafts werden nicht aufbewahrt.
 
 ## 10. Skills-Versionierung
 
@@ -710,7 +680,6 @@ contracts/published/openai/skillpilot-coach-v1/1.4.0/
   contract/error-catalog.json
   contract/server-instructions.txt
   contract/security-schemes.json
-  ui-manifest.json
   skills-bundle.json
   skills-bundle.sha256
   skillpilot-openai-plugin-coach-v1-1.4.0.tar
@@ -739,11 +708,13 @@ Da OpenAI den produktiven MCP-Endpoint scannt und Toolaufrufe anschließend weit
 1. neuer Server-Build unterstützt alten und neuen Vertrag;
 2. alle alten Contract-Tests laufen gegen den neuen Build;
 3. neue Contract- und Skill-Tests laufen gegen den neuen Build;
-4. UI-Artefakte werden unter neuen unveränderlichen URIs veröffentlicht;
+4. falls die betroffene veröffentlichte Linie tatsächlich eine UI besitzt,
+   werden neue UI-Artefakte unter neuen unveränderlichen URIs veröffentlicht;
 5. MCP-Endpoint wird im Portal erneut gescannt;
 6. neue Plugin-Version wird mit Release Notes eingereicht;
 7. nach Freigabe wird die neue Version veröffentlicht;
-8. alter Vertrag und alte UI-Ressourcen bleiben verfügbar.
+8. alter Vertrag und alle zu ihm tatsächlich veröffentlichten UI-Ressourcen
+   bleiben verfügbar.
 
 Eine inkompatible Live-Änderung darf nicht in der Erwartung deployt werden, dass das Review sie später heilt. Wenn ein Deployment den veröffentlichten Vertrag bricht, wird es zurückgerollt.
 
@@ -908,8 +879,9 @@ Jeder Build vergleicht die aktuelle Tool- und Ressourcenbeschreibung mit dem zul
 - geänderte Bedeutung bestehender Status- oder Enum-Werte;
 - geänderte Security Schemes oder Scope-Bedeutungen;
 - geänderte Annotationen mit größerer Wirkung;
-- entfernte UI-Ressourcen;
-- geänderten Inhalt unter einer als unveränderlich registrierten UI-URI.
+- bei einer UI-Linie entfernte veröffentlichte UI-Ressourcen;
+- bei einer UI-Linie geänderten Inhalt unter einer als unveränderlich
+  registrierten UI-URI.
 
 ### 16.3 Skill-Contract-Lint
 
@@ -931,7 +903,7 @@ Server Build N
   -> V2 contract tests
   -> state migration tests
   -> auth audience/scope tests
-  -> UI resource integrity tests
+  -> bei UI-Linien: UI resource integrity tests
 ```
 
 Solange V1 nicht `RETIRED` ist, darf ein Server-Build mit fehlschlagenden V1-Tests nicht produktiv gehen.
@@ -1030,14 +1002,15 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - keine Abhängigkeit von Redirects;
    - OpenAI-Challenge-Route berücksichtigen.
 
-4. **V1-UI versionieren**
-   - bereits im Einreichungs-Draft den plugin-eindeutigen Widget-Origin
-     `https://mcp-coach-v1.skillpilot.com` festlegen;
-   - Standardmetadatum `_meta.ui.domain` und ChatGPT-Kompatibilitätsalias
-     `_meta["openai/widgetDomain"]` identisch ausliefern;
-   - content-addressed oder release-addressed UI-Ressourcen-URIs erzeugen;
-   - einmal veröffentlichte URIs unveränderlich behandeln;
-   - UI-State mit `schemaVersion` versehen.
+4. **V1-Bildausgabe ohne UI absichern**
+   - `render_skillpilot_goal_visualization` als read-only Werkzeug mit genau
+     einem standardmäßigen MCP-`ImageContent`-Block ausliefern;
+   - ausschließlich freigegebene JPEG-/PNG-Bytes innerhalb der festgelegten
+     Größen- und Pfadgrenzen auflösen;
+   - weder `ui.resourceUri`, `openai/outputTemplate`, Widget-Metadaten noch
+     MCP-UI-Ressourcen veröffentlichen;
+   - frühere experimentelle Widgetartefakte ohne Kompatibilitätsbestand aus dem
+     unveröffentlichten Draft entfernen.
 
 5. **V1-Skill-Bundle trennen**
    - eigener finaler Skill-Baum für `skillpilot-coach-v1`;
@@ -1102,16 +1075,16 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - V1 im technischen Namen und Anzeigenamen erkennbar ist;
 - Manifest-Version und Contract-Major konsistent sind;
 - der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;
-- der unveröffentlichte Draft keine fiktive UI-Domain beansprucht und vor
-  einer tatsächlichen UI-Veröffentlichung ein eindeutiger Origin festgelegt
-  werden muss;
+- der unveröffentlichte V1-Draft keine UI-Domain, UI-Ressource oder
+  Output-Template beansprucht;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben
   werden kann;
 - öffentliche DTOs vom Core getrennt sind;
 - alle Schreiboperationen idempotent und gegen konkurrierende Zustandsänderungen geschützt sind oder eine dokumentierte Ausnahme besitzen;
-- UI-Ressourcen unveränderlich versioniert werden;
+- die optionale Lernzielvisualisierung ausschließlich als geprüftes
+  standardmäßiges MCP-`ImageContent` ausgeliefert wird;
 - Skills als V1-Bundle reproduzierbar gebaut und geprüft werden;
 - jeder Server-Build gegen den V1-Snapshot getestet wird;
 - Lifecycle- und Migrationsfelder im Datenmodell vorgesehen sind;
@@ -1126,14 +1099,17 @@ Folgende Punkte sind weiterhin offen und werden über den Community-Thread bezie
 2. Gibt es künftig einen offiziellen Nachfolger-Link zwischen V1 und V2?
 3. Können OAuth-Verknüpfungen oder Installationen auf einen Nachfolger migriert werden?
 4. Was geschieht exakt mit bestehenden Installationen und alten Chats nach Unpublish oder Delete?
-5. Wie lange sollten alte UI-Ressourcen nach Delete erreichbar bleiben?
+5. Wie lange sollten Ressourcen einer künftig tatsächlich veröffentlichten
+   UI-Linie nach Delete erreichbar bleiben?
 6. Wird ein verlässliches Runtime-Signal für Plugin-Identität und Plugin-Paketversion bereitgestellt?
 7. Gibt es einen gesonderten Updatepfad für reine Skill-Änderungen?
 
 Fallback, falls parallele Major-Plugins nicht akzeptiert werden:
 
 - interne V1-/V2-Adaptertrennung beibehalten;
-- V2-Funktionalität nur additiv mit neuen Toolnamen und neuen UI-Ressourcen innerhalb der bestehenden Plugin-Identität veröffentlichen;
+- V2-Funktionalität nur additiv mit neuen Toolnamen innerhalb der bestehenden
+  Plugin-Identität veröffentlichen; neue UI-Ressourcen kommen nur hinzu, falls
+  diese spätere Linie ausdrücklich eine UI veröffentlicht;
 - V1-Vertrag weiterhin bedienen;
 - keine Entfernung von V1-Funktionalität, bis OpenAI einen unterstützten Lifecycle bereitstellt.
 

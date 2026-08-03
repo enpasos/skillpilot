@@ -267,9 +267,8 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
   - protected-resource metadata:
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  The MCP-UI uses the same dedicated, immutable V1 origin
-  `https://mcp-coach-v1.skillpilot.com` as its widget domain. The provider
-  still executes the component inside its sandbox.
+  V1 publishes no MCP-UI or widget domain. The optional learning-goal image is
+  returned directly as standard MCP `ImageContent` by the existing V1 server.
   These URLs are immutable contract values rather than environment settings.
   Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented
   `SKILLPILOT_OPENAI_COACH_V1_*` URL overrides fail closed.
