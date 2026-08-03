@@ -145,16 +145,18 @@ function createHarness(initialToolOutput, options = {}) {
   context.window = context;
   context.globalThis = context;
   context.parent = context;
-  context.openai = {
-    toolOutput: initialToolOutput,
-    setWidgetState(state) {
-      widgetStates.push(state);
-    }
-  };
-  if (options.requestClose !== false) {
-    context.openai.requestClose = () => {
-      context.__closeCount += 1;
+  if (options.compatibilityGlobals !== false) {
+    context.openai = {
+      toolOutput: initialToolOutput,
+      setWidgetState(state) {
+        widgetStates.push(state);
+      }
     };
+    if (options.requestClose !== false) {
+      context.openai.requestClose = () => {
+        context.__closeCount += 1;
+      };
+    }
   }
 
   vm.runInNewContext(lifecycleSource, context, {
@@ -194,6 +196,27 @@ test("a compatibility image stays hidden until load and load cancels its timeout
   assert.equal(harness.rootElement.hidden, false);
   assert.equal(harness.timers.size, 0);
   assert.equal(harness.widgetStates.length, 1);
+  assert.equal(harness.context.__closeCount, 0);
+  assert.equal(harness.context.__teardownCount, 0);
+});
+
+test("an MCP Apps tool result renders without ChatGPT compatibility globals", () => {
+  const harness = createHarness(undefined, { compatibilityGlobals: false });
+
+  harness.context.__deliverToolResult({
+    structuredContent: visualization("NATIVE_HOST")
+  });
+  const image = harness.images[0];
+
+  assert.ok(image);
+  assert.equal(harness.rootElement.hidden, true);
+  assert.deepEqual(harness.rootElement.children, [image]);
+
+  image.dispatch("load");
+
+  assert.equal(harness.rootElement.hidden, false);
+  assert.equal(harness.timers.size, 0);
+  assert.equal(harness.widgetStates.length, 0);
   assert.equal(harness.context.__closeCount, 0);
   assert.equal(harness.context.__teardownCount, 0);
 });

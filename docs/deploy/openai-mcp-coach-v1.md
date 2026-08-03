@@ -52,6 +52,15 @@ MCP-Werkzeug.
 | Token Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/token` |
 | Revocation Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/revoke` |
 
+Die Tabelle nennt die Ressource, die der aktuelle Tool-Descriptor aktiv
+referenziert. Bereits in Browser- oder nativen App-Chats gespeicherte
+Nachrichten dürfen jedoch weiterhin die frühere, ebenfalls
+inhaltsadressierte Ressource
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
+anfordern. Der V1-Server hält deshalb beide URIs über `resources/list` und
+`resources/read` bytegenau verfügbar; nur die Ressource mit `sha256-c890...`
+ist das aktive Template für neue Tool-Ergebnisse.
+
 Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
 Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
@@ -648,9 +657,9 @@ Anwendungslogs erscheinen.
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
    ausführen. Prüfen, dass genau die zwölf sprachneutralen Produktivwerkzeuge
    erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
-   dürfen sichtbar sein. Zusätzlich muss genau die versionierte
-   Lernzielbild-Ressource über `resources/list` und `resources/read` verfügbar
-   sein.
+   dürfen sichtbar sein. Zusätzlich müssen die aktive versionierte
+   Lernzielbild-Ressource und alle bereits ausgelieferten, unveränderlichen
+   Vorgänger über `resources/list` und `resources/read` verfügbar sein.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine

@@ -37,6 +37,14 @@ besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
 verwenden ausschließlich den dedizierten V1-Origin. Die acht neutralen
 Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit `404`.
 
+Die zuvor bereits an Test-Clients ausgelieferte Ressource
+`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
+bleibt als unveränderliches Artefakt inventarisiert und lesbar. Das ist kein
+zweites aktives Widget und kein Endpoint-Alias: Neue Tool-Descriptoren
+referenzieren ausschließlich `sha256-c890...`, während bestehende Browser-
+und native App-Chats ihren bereits gespeicherten Resource-URI weiter auflösen
+können.
+
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
 - `.codex-plugin/plugin.json` für Paket-SemVer und sichtbare Metadaten;

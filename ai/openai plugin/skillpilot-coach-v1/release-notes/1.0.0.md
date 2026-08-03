@@ -25,15 +25,15 @@ line. This version has not been published yet.
   matching canonical `goal-visualization` link
 - image-only presentation without additional goal text or cockpit link; it is
   shown only after the image has loaded successfully
-- host-neutral image loading for supported browser and desktop hosts, without
-  relying on optional platform or user-agent hints; a bounded bootstrap
+- host-neutral image loading for browser, desktop, and native mobile hosts,
+  without relying on optional platform or user-agent hints; a bounded bootstrap
   deadline also closes a hidden view that never receives its structured result,
   while image errors and load timeouts request teardown independently of the
   MCP Apps handshake
-- explicit native-mobile boundary: OpenAI currently does not support plugin UI
-  in the native ChatGPT mobile app, so SkillPilot keeps the ordinary chat result
-  complete and makes no false per-viewer suppression guarantee for a host shell
-  created by that unsupported surface
+- immutable UI-resource retention for real draft clients: the active
+  `c890cf271...` resource remains the only output template for new messages,
+  while the previously advertised `157aab83...` resource stays byte-for-byte
+  readable so existing browser and native-app chats do not fail with HTTP 404
 - dedicated read-only rendering action that the coach invokes only when an
   approved image is present; no image means no empty UI card
 - idempotent initialization from MCP tool result, ChatGPT compatibility state,

@@ -446,14 +446,20 @@ Rule:
   link does not match its goal ID, or the image data is absent or invalid, omit
   the renderer; the ordinary chat response must remain fully usable.
 * Do not classify image support from optional host platform or user-agent
-  values. Supported browser and desktop MCP Apps hosts try to load a valid
-  image while the component stays hidden. The current native ChatGPT mobile app
-  is not a supported plugin UI surface; SkillPilot cannot reliably identify it
-  before the host creates a component shell. Keep the component hidden until a
+  values. Browser, desktop, and native mobile hosts all receive the same
+  standards-first image-load attempt because actual host rollouts may be ahead
+  of documented platform availability. Keep the component hidden until a
   successful image `load`. If no structured payload arrives during the bounded
   bootstrap deadline, or the image raises an error or exceeds its own bounded
   timeout, keep it hidden and request teardown without waiting for the MCP Apps
   handshake. The ordinary chat response remains the complete fallback.
+* Treat every content-addressed UI URI that has been advertised to a real
+  client, including during draft testing, as immutable and retained. A newer
+  widget URI is additive: tool metadata points only to the active resource,
+  while `resources/read` continues to return the exact historical bytes for
+  older chats and connector metadata snapshots. Never alias newer bytes below
+  an older SHA-256 URI and never remove the old URI while the plugin major is
+  usable.
 * The inline component renders only the public image. Its accessible alt text
   remains attached to the image, but goal ID, title, description, and cockpit
   URL from the bounded projection are not shown as additional UI. The
