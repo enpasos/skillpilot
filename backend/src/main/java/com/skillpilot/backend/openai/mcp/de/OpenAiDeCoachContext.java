@@ -118,7 +118,7 @@ public record OpenAiDeCoachContext(
     }
 
     /**
-     * Public, learner-facing image data for optional standard MCP image content.
+     * Public, learner-facing image data for the MCP Apps inline component.
      *
      * <p>The field is present only for an active atomic goal with a matching,
      * canonical {@code goal-visualization} resource link.</p>

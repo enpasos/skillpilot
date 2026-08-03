@@ -16,7 +16,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
-  assertNoUiResources,
+  assertActiveUiResource,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -51,56 +51,47 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
   );
 });
 
-test("non-UI image delivery rejects every UI and widget metadata form", () => {
-  assert.doesNotThrow(() => assertNoUiResources([], [
+test("V1 UI has exactly one active template bound only to its renderer", () => {
+  const activeResourceUri = "ui://skillpilot/coach/v1/sha256-active/widget.html";
+  const resources = [{ uri: activeResourceUri, sha256: "active" }];
+  const tools = [
     {
       name: "render_skillpilot_goal_visualization",
-      meta: { securitySchemes: [{ type: "oauth2" }] },
-    },
-  ]));
-  assert.throws(
-    () => assertNoUiResources([
-      { uri: "ui://skillpilot/coach/v1/widget.html" },
-    ], []),
-    /must not inventory MCP UI resources/,
-  );
-  assert.throws(
-    () => assertNoUiResources([], [{
-      name: "render_skillpilot_goal_visualization",
-      meta: { ui: { resourceUri: "ui://skillpilot/coach/v1/widget.html" } },
-    }]),
-    /must not publish MCP UI or widget metadata: ui/,
-  );
-  assert.throws(
-    () => assertNoUiResources([], [{
-      name: "render_skillpilot_goal_visualization",
-      meta: { ui: {} },
-    }]),
-    /must not publish MCP UI or widget metadata: ui/,
-  );
-  assert.throws(
-    () => assertNoUiResources([], [{
-      name: "render_skillpilot_goal_visualization",
-      meta: { resourceUri: "ui://skillpilot/coach/v1/widget.html" },
-    }]),
-    /must not publish MCP UI or widget metadata: resourceUri/,
-  );
-  assert.throws(
-    () => assertNoUiResources([], [{
-      name: "render_skillpilot_goal_visualization",
-      meta: { "openai/outputTemplate": "ui://skillpilot/coach/v1/widget.html" },
-    }]),
-    /must not publish MCP UI or widget metadata: openai\/outputTemplate/,
-  );
-  assert.throws(
-    () => assertNoUiResources([], [{
-      name: "render_skillpilot_goal_visualization",
       meta: {
-        "openai/widgetCSP": { resource_domains: ["https://skillpilot.com"] },
-        "openai/widgetDescription": "Learning-goal image",
+        ui: { resourceUri: activeResourceUri },
+        "openai/outputTemplate": activeResourceUri,
       },
-    }]),
-    /openai\/widgetCSP, openai\/widgetDescription/,
+    },
+  ];
+
+  assert.doesNotThrow(() =>
+    assertActiveUiResource(activeResourceUri, resources, tools),
+  );
+  assert.throws(
+    () => assertActiveUiResource("ui://missing", resources, tools),
+    /exactly one inventoried resource/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiResource(
+        activeResourceUri,
+        [...resources, { uri: "ui://retained", sha256: "retained" }],
+        tools,
+      ),
+    /exactly one active MCP App UI resource/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiResource(activeResourceUri, resources, [
+        {
+          ...tools[0],
+          meta: {
+            ui: { resourceUri: activeResourceUri },
+            "openai/outputTemplate": "ui://retained",
+          },
+        },
+      ]),
+    /openai\/outputTemplate only to activeResourceUri/,
   );
 });
 
@@ -595,6 +586,7 @@ function writeRelease(root, release) {
     release.errorCatalog,
   );
   writeJson(resolve(root, "contract/resources-list.json"), release.resources);
+  writeJson(resolve(root, "ui-manifest.json"), release.uiManifest);
   writeJson(resolve(root, "skills-bundle.json"), release.skillsBundle);
 }
 

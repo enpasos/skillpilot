@@ -17,22 +17,31 @@ line. This version has not been published yet.
 - a dedicated MCP origin that can be verified independently from future
   contract majors; OAuth authorization continues through
   `https://skillpilot.com`
-- standard MCP image-content delivery for the image of an active atomic
-  learning goal with a matching canonical `goal-visualization` link
-- no MCP UI resource, iframe, widget domain, `ui.resourceUri`, or
-  `openai/outputTemplate`; a host may render the standard image block natively
-- no backward compatibility for experimental widget resources from earlier
-  unpublished draft tests; refresh the plugin metadata and use a fresh chat
+- one widget origin unique to this plugin,
+  `https://mcp-coach-v1.skillpilot.com`, published through `_meta.ui.domain`
+  and the ChatGPT compatibility alias `_meta["openai/widgetDomain"]`
+- exactly one content-addressed, read-only MCP Apps UI resource for the image
+  of an active atomic learning goal with a matching canonical
+  `goal-visualization` link
+- renderer-only `ui.resourceUri` and `openai/outputTemplate`; all ordinary
+  context, selection, mutation, recall, and assessment tools remain UI-free
+- structured `goalVisualization` delivery to an image-only component; bare
+  MCP `ImageContent` is not used as a visibility contract
+- no backward compatibility or retention inventory for experimental widget
+  resources from earlier unpublished draft tests; refresh the plugin metadata
+  and use a fresh chat
 - immediate data-then-render goal-image flow: after a full result exposes and
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
   or attempted images are not retried and the full result remains authoritative
-- surface-neutral image delivery: eligible contexts offer the renderer without
-  inspecting `openai/userAgent` or applying Desktop/Mobile presentation gates;
-  the renderer returns standard MCP `ImageContent`, which the host may display
-  or ignore while the ordinary coaching response remains complete
+- surface-neutral renderer authorization without inspecting
+  `openai/userAgent` or applying Desktop/Mobile presentation gates; the
+  ordinary coaching response remains complete if a host does not display the
+  optional component
 - dedicated read-only rendering action that the coach invokes only when an
-  approved image is present; no image means no image tool call
+  approved image is present; no image means no renderer call or empty UI card
+- image-only presentation without additional goal text or cockpit link; the
+  component remains hidden until the approved image has loaded successfully
 - cockpit preference for learning-goal images in chat, enabled by default
 - visualizations are orientation only, never evidence, tasks, solutions,
   assessments, or mastery proof
@@ -40,6 +49,6 @@ line. This version has not been published yet.
   `app/public/favicon/`
 - one install bundle for the single shared Spring Boot runtime; language does
   not create a second server artifact or release line
-- mutable, unpublished `1.0.0-SNAPSHOT` draft; the contract and skill
-  bundle are sealed only after actual portal publication
+- mutable, unpublished `1.0.0-SNAPSHOT` draft; the contract, single active UI
+  resource, and skill bundle are sealed only after actual portal publication
 - no public compatibility alias on `skillpilot.com`

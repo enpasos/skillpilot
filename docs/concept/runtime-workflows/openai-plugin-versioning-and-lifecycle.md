@@ -1,6 +1,6 @@
 ---
 title: "SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin"
-subtitle: "MCP-API, standardmäßige Medienausgabe, Skills und mögliche spätere MCP-UI"
+subtitle: "MCP-API, hashgebundene bild-only MCP-Apps-UI, Skills und Lifecycle"
 document_version: "1.0"
 status: "Verbindliche Architekturgrundlage"
 date: "2026-07-31"
@@ -9,8 +9,9 @@ audience: "Codex- und SkillPilot-Entwicklung"
 
 # SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
 
-**Geltungsbereich:** OpenAI-Plugin mit MCP-API, standardmäßiger Medienausgabe,
-gebündelten Skills und optionaler zukünftiger MCP-UI
+**Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills, genau einer
+hashgebundenen bild-only MCP-Apps-UI-Ressource im unveröffentlichten V1-Draft
+und möglicher späterer interaktiver MCP-UI
 **Dokumentversion:** 1.0  
 **Stand:** 31. Juli 2026  
 **Status:** Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.  
@@ -159,7 +160,7 @@ OAuth Resource/Audience:        https://mcp-coach-v1.skillpilot.com/mcp
 Protected-Resource-Metadaten:   https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp
 Domain-Challenge:               https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge
 OAuth-Issuer:                   https://skillpilot.com/api/openai/v1
-Bildausgabe:                     standardmäßiges MCP-ImageContent; keine MCP-UI
+Bildausgabe:                     eine hashgebundene text/html;profile=mcp-app-Ressource
 ```
 
 Der vorgeschlagene Anzeigename bleibt unter dem OpenAI-Limit von 30 Zeichen.
@@ -251,11 +252,13 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
 noch nicht veröffentlicht. Die Lernzielvisualisierung wird deshalb als
-standardmäßiges MCP-`ImageContent` in den bestehenden `1.0.0`-Draft aufgenommen;
-es entsteht weder `1.0.1` noch ein Published-Snapshot. Der V1-Draft
-veröffentlicht keine MCP-UI-Ressource, keine Widget-Domain und kein
-Output-Template. Alle zugehörigen Contract-, Bildausgabe- und Skill-Artefakte
-werden beim nächsten `prepare` gemeinsam im selben Draft aktualisiert.
+genau eine hashgebundene `text/html;profile=mcp-app`-Ressource in den
+bestehenden `1.0.0`-Draft aufgenommen; es entsteht weder `1.0.1` noch ein
+Published-Snapshot. Nur der Renderer verweist mit `ui.resourceUri` und
+`openai/outputTemplate` auf sie; gewöhnliche Werkzeuge bleiben ungebunden. Alle
+zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
+gemeinsam im selben Draft aktualisiert. Frühere Draft-Ressourcen werden nicht
+retained.
 
 ### 7.1 Server-Build ohne Plugin-Release
 
@@ -443,32 +446,42 @@ Der Kern des Schemas SOLL streng sein, beispielsweise mit `additionalProperties:
 
 Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarstellung liefern, damit unterschiedliche Hosts und Clients robust arbeiten können.
 
-## 9. Bildausgabe in V1 und mögliche spätere MCP-UI
+## 9. Bild-only MCP-Apps-UI in V1 und mögliche spätere Interaktion
 
-### 9.1 V1 veröffentlicht keine MCP-UI
+### 9.1 V1 enthält genau eine aktuelle UI-Ressource
 
-Der noch unveröffentlichte V1-Draft liefert ein geprüftes JPEG oder PNG über
-das read-only Werkzeug `render_skillpilot_goal_visualization` als
-standardmäßiges MCP-`ImageContent`. Sein Tool-Descriptor enthält weder
-`ui.resourceUri` noch `openai/outputTemplate` oder Widget-Metadaten. Der
-Ressourcenkatalog ist leer; es gibt keine HTML-Ressource, Widget-Domain, CSP
-oder persistierten Widgetzustand.
+Der noch unveröffentlichte V1-Draft enthält genau eine hashgebundene Ressource
+mit dem MIME-Typ `text/html;profile=mcp-app`. Das read-only Werkzeug
+`render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
+`goalVisualization` an diese Ressource; die UI rendert ausschließlich das JPEG
+oder PNG. Nur der Renderer-Descriptor enthält `ui.resourceUri` und
+`openai/outputTemplate`. Alle gewöhnlichen Werkzeuge bleiben ungebunden, sodass
+ohne freigegebene Visualisierung keine leere UI-Komponente entsteht.
+
+Die Freigabe und der Renderer werden weder durch `openai/userAgent` noch durch
+eine Desktop-/Mobile- oder andere Surface-Klassifikation gesteuert. Diese
+optionalen Hostmetadaten sind kein Vertrags-, Authentisierungs- oder
+Sicherheitsmerkmal. Ein erfolgreiches Renderer-Ergebnis bestätigt nur die
+Bereitstellung der strukturierten Visualisierung; SkillPilot behauptet nicht,
+dass der Host die Ressource geladen oder das Bild dargestellt hat. Der
+vollständige Textpfad bleibt unabhängig davon erhalten.
 
 Die zuvor experimentell an Test-Clients ausgelieferten V1-Widgetressourcen sind
 kein veröffentlichter Vertrag. Für sie besteht ausdrücklich keine
-Rückwärtskompatibilitäts- oder Aufbewahrungspflicht. Sie werden aus Runtime,
-Draft-Snapshot, Ressourceninventar und Telemetrie entfernt. Alte Test-Chats
-sind nicht unterstützt; nach dem Deployment werden die Plugin-Metadaten
-aktualisiert und die Abnahme erfolgt in einem frischen Chat.
+Rückwärtskompatibilitäts- oder Aufbewahrungspflicht. Runtime, Draft-Snapshot und
+Ressourceninventar enthalten ausschließlich die eine aktuelle Ressource; alte
+Testartefakte werden nicht retained. Alte Test-Chats sind nicht unterstützt;
+nach dem Deployment werden die Plugin-Metadaten aktualisiert und die Abnahme
+erfolgt in einem frischen Chat.
 
-### 9.2 Regeln nur für eine künftig tatsächlich veröffentlichte UI-Linie
+### 9.2 Regeln für spätere interaktive UI-Erweiterungen
 
-Falls eine spätere Plugin-Version ausdrücklich eine MCP-UI einführt, MUSS ihr
-zur Einreichung vorgesehener Draft einen für diese Plugin-Identität eindeutigen
-Widget-Origin angeben. Erst dann werden `_meta.ui.domain`, gegebenenfalls der
-vom Zielhost benötigte Kompatibilitätsalias und eine minimale CSP Bestandteil
-des geprüften Vertrags. Der Widget-Origin ist anschließend ein fester
-Vertragswert und kein Runtime-Override.
+Falls eine spätere Plugin-Version interaktive MCP-UI-Funktionen einführt, MUSS
+ihr zur Einreichung vorgesehener Draft einen für diese Plugin-Identität
+eindeutigen Widget-Origin angeben. `_meta.ui.domain`, gegebenenfalls der vom
+Zielhost benötigte Kompatibilitätsalias und eine minimale CSP bleiben Teil des
+geprüften Vertrags. Der Widget-Origin ist ein fester Vertragswert und kein
+Runtime-Override.
 
 Eine in einer **tatsächlich veröffentlichten** Plugin-Version verwendete
 UI-Ressourcen-URI wird als unveränderlicher Artefaktschlüssel behandelt. Ein
@@ -485,14 +498,14 @@ reproduzierbar ersetzt und bereinigt werden. Testauslieferungen eines
 unveröffentlichten Drafts erzeugen allein keine dauerhafte
 Rückwärtskompatibilitätspflicht.
 
-### 9.3 UI-Zustand nur bei einer späteren UI
+### 9.3 Persistierter UI-Zustand nur bei einer späteren interaktiven UI
 
 Falls eine spätere veröffentlichte UI persistierten Widgetzustand verwendet,
 MUSS dieser ein eigenes `schemaVersion`-Feld ausweisen. Jede dann noch
 unterstützte Zustandsform muss deterministisch migriert werden können;
 unbekannter oder beschädigter Zustand darf nicht zum Absturz führen und fällt
-auf einen sicheren leeren Zustand zurück. Diese Regel findet auf V1 keine
-Anwendung, weil V1 keinen Widgetzustand veröffentlicht.
+auf einen sicheren leeren Zustand zurück. Die bild-only V1-Ressource erzeugt
+keinen autoritativen Lernzustand; dieser bleibt vollständig im Backend.
 
 ### 9.4 Aufbewahrung beginnt mit tatsächlicher Veröffentlichung
 
@@ -501,7 +514,9 @@ Plugin-Version waren, werden während der unterstützten Laufzeit der
 zugehörigen Plugin-Major-Version unveränderlich bereitgestellt. Eine
 Nachlaufzeit nach Unpublish oder Delete wird erst für eine solche spätere
 UI-Linie als Release- und Betriebsparameter festgelegt. Experimentelle
-Ressourcen des unveröffentlichten V1-Drafts werden nicht aufbewahrt.
+Ressourcen des unveröffentlichten V1-Drafts werden nicht aufbewahrt; vor der
+ersten Veröffentlichung wird immer nur die aktuelle hashgebundene Ressource
+inventarisiert.
 
 ## 10. Skills-Versionierung
 
@@ -1002,15 +1017,17 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - keine Abhängigkeit von Redirects;
    - OpenAI-Challenge-Route berücksichtigen.
 
-4. **V1-Bildausgabe ohne UI absichern**
-   - `render_skillpilot_goal_visualization` als read-only Werkzeug mit genau
-     einem standardmäßigen MCP-`ImageContent`-Block ausliefern;
-   - ausschließlich freigegebene JPEG-/PNG-Bytes innerhalb der festgelegten
-     Größen- und Pfadgrenzen auflösen;
-   - weder `ui.resourceUri`, `openai/outputTemplate`, Widget-Metadaten noch
-     MCP-UI-Ressourcen veröffentlichen;
-   - frühere experimentelle Widgetartefakte ohne Kompatibilitätsbestand aus dem
-     unveröffentlichten Draft entfernen.
+4. **V1-Bild-only UI absichern**
+   - genau eine hashgebundene `text/html;profile=mcp-app`-Ressource für
+     `render_skillpilot_goal_visualization` ausliefern;
+   - ausschließlich den Renderer mit `ui.resourceUri` und
+     `openai/outputTemplate` binden; gewöhnliche Tools bleiben ungebunden;
+   - die validierte strukturierte `goalVisualization` bild-only rendern und
+     den vollständigen Textpfad bei jedem Hostverhalten erhalten;
+   - weder User-Agent- noch Surface-Metadaten als Gate verwenden und keine
+     tatsächliche Hostdarstellung behaupten;
+   - frühere experimentelle Widgetartefakte ohne Kompatibilitätsbestand oder
+     Retention aus dem unveröffentlichten Draft entfernen.
 
 5. **V1-Skill-Bundle trennen**
    - eigener finaler Skill-Baum für `skillpilot-coach-v1`;
@@ -1075,16 +1092,18 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - V1 im technischen Namen und Anzeigenamen erkennbar ist;
 - Manifest-Version und Contract-Major konsistent sind;
 - der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;
-- der unveröffentlichte V1-Draft keine UI-Domain, UI-Ressource oder
-  Output-Template beansprucht;
+- der unveröffentlichte V1-Draft genau eine aktuelle hashgebundene
+  `text/html;profile=mcp-app`-Ressource inventarisiert, nur den Renderer daran
+  bindet und keine früheren Draft-Ressourcen retained;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben
   werden kann;
 - öffentliche DTOs vom Core getrennt sind;
 - alle Schreiboperationen idempotent und gegen konkurrierende Zustandsänderungen geschützt sind oder eine dokumentierte Ausnahme besitzen;
-- die optionale Lernzielvisualisierung ausschließlich als geprüftes
-  standardmäßiges MCP-`ImageContent` ausgeliefert wird;
+- die optionale Lernzielvisualisierung ausschließlich aus der erneut
+  validierten `goalVisualization` bild-only gerendert wird, ohne
+  User-Agent-/Surface-Gate oder Behauptung einer tatsächlichen Hostdarstellung;
 - Skills als V1-Bundle reproduzierbar gebaut und geprüft werden;
 - jeder Server-Build gegen den V1-Snapshot getestet wird;
 - Lifecycle- und Migrationsfelder im Datenmodell vorgesehen sind;

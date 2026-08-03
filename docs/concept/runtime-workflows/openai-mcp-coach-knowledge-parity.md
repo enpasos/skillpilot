@@ -4,7 +4,7 @@
 
 **Status:** normative Current-to-Target-Paritätsmatrix für den mehrsprachigen
 Coach-Skill und die chat-first MCP-App mit optionaler read-only
-Lernzielvisualisierung als standardmäßiges MCP-`ImageContent`
+Lernzielvisualisierung über genau eine hashgebundene MCP-Apps-UI-Ressource
 
 Diese Matrix weist nach, **wo** die früheren Regeln technisch wirksam werden
 sollen. Sie ist kein Nachweis, dass das Zusammenspiel von Modell, Tools,
@@ -82,7 +82,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Verified Recall: ganzer Batch, Sollantwort erst nach Antwort, jedes Ergebnis speichern, erst dann nächster Batch | Recall-Policy und die drei Recall-Toolbeschreibungen/-Ergebnisse | Skill-Ablauf sowie die drei Recall-Toolbeschreibungen und -Ergebnisse | alle drei Operationen verlangen das aktuelle sichtbare aktive atomische Memory-/SRS-Ziel; Karte und SRS-Typ werden zusätzlich backendseitig geprüft; ein vollständiger Evidence-Receipt bleibt eine spätere Härtung |
 | Prüfung: Aufgabe wortgetreu, keine Hinweise oder Rückfragen, Lösung erst nach vollständiger Abgabe | Exam-Policy, Context-Instruktion und Evaluationstool | Skill, Skill-Referenz, aktuelle Exam-Instruktion und Evaluationstool | Lösung/Raster fehlen im normalen Context und werden nur für das aktive freigegebene Exam ausgeliefert |
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
-| nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und optional als standardmäßiges MCP-`ImageContent` | globale Context-Policy, allowlist-projizierte Ressourcen und optionale `goalVisualization`; keine MCP-UI-Ressource oder Widget-Metadaten | kurze Server-Invariante, Skill-Ausgaberegel und sichere Projektion | nach einem freigebenden Vollresultat läuft der dedizierte read-only Renderer mit dessen Ziel-ID und `expectedStateVersion` unmittelbar und genau einmal; er validiert Backendzustand und Ziel erneut und liefert genau ein geprüftes JPEG oder PNG als MCP-`ImageContent`; private oder nicht passende Bildpfade und interne Identität werden entfernt; ohne gültiges Bild bleibt der normale Chat |
+| nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und optional bild-only in ChatGPT | globale Context-Policy, allowlist-projizierte Ressourcen, optionale `goalVisualization` und genau eine hashgebundene `text/html;profile=mcp-app`-Ressource im unveröffentlichten V1-Draft | kurze Server-Invariante, Skill-Ausgaberegel und sichere Projektion | nach einem freigebenden Vollresultat läuft der dedizierte read-only Renderer mit dessen Ziel-ID und `expectedStateVersion` unmittelbar und genau einmal; er validiert Backendzustand und Ziel erneut und gibt die strukturierte `goalVisualization` an die bild-only UI; nur sein Descriptor trägt `ui.resourceUri` und `openai/outputTemplate`, gewöhnliche Werkzeuge bleiben ungebunden; private oder nicht passende Bildpfade und interne Identität werden entfernt; ohne gültiges Bild bleibt der normale Chat; die Ausführung ist nicht durch User-Agent- oder Surface-Metadaten beschränkt und SkillPilot behauptet nie, dass der Host das Bild tatsächlich dargestellt hat |
 | `requiresCockpit` betrifft nur die Ressource; Cockpit-Üben pausiert die Kartenprüfung | Ressourcen- und Memory-Mode-Instruktion | Skill-Referenz und aktuelle Modus-Instruktion | Cockpit-URL wird serverseitig erzeugt; keine Modellkonstruktion |
 | Fortschritt nur frisch, aktueller Scope zuerst, keine Schätzung, Abschluss ohne erfundene Ziele | globale Progress-Policy und Completion-Instruktion | Skill-Referenz sowie Progress- und Completion-Instruktion | Zahlen und Abschlussstatus stammen ausschließlich aus dem Backend |
 | Mathematik nur mit `\(...\)` und `\[...\]` | Server-Instruktionen und globale Context-Policy | Skill-Ausgaberegel | ausgelieferte freigegebene Inhalte werden zusätzlich normalisiert |
@@ -123,5 +123,8 @@ Eine spätere Härtungsstufe kann serverseitige Attempt-/Evidence-Receipts mit
 `learnerAnswer` beziehungsweise `submissionText` einführen. Das ist eine
 zusätzliche Sicherheitsverbesserung, keine Voraussetzung für den ersten
 chat-first Cutover. Die bereits enthaltene read-only Bildausgabe als
-standardisierter MCP-Inhalt ändert diese Evidenzgrenze nicht: Ein Bild ist weder
-Lernendenantwort noch Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+strukturierte, bild-only gerenderte MCP-Apps-UI ändert diese Evidenzgrenze
+nicht: Ein Bild ist weder Lernendenantwort noch Aufgabe, Lösung, Bewertung oder
+Mastery-Nachweis. Der unveröffentlichte Draft hält dabei ausschließlich die
+aktuelle hashgebundene Ressource vor; frühere Testartefakte begründen keine
+Retention.

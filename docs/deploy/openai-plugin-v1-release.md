@@ -20,25 +20,30 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| MCP-UI | nicht veröffentlicht; Ressourceninventar leer |
+| MCP-UI | genau eine aktive, hashgebundene Bildressource im unveröffentlichten Draft |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft enthält keine MCP-UI-Ressource. Das
-dedizierte read-only Werkzeug `render_skillpilot_goal_visualization` liefert
-ein freigegebenes JPEG- oder PNG-Bild als standardisierten MCP-`ImageContent`;
-kein Tool referenziert `ui.resourceUri` oder `openai/outputTemplate`. Coach-,
-Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
-besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
-verwenden ausschließlich den dedizierten V1-Origin. Die acht neutralen
-Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit `404`.
+Der noch unveröffentlichte V1-Draft enthält genau eine content-addressierte
+MCP-Apps-Ressource für das Bild des aktiven atomaren Lernziels. Ausschließlich
+das dedizierte read-only Werkzeug `render_skillpilot_goal_visualization`
+referenziert sie über `ui.resourceUri` und `openai/outputTemplate`. Der Renderer
+liefert der bild-only Komponente eine begrenzte strukturierte
+`goalVisualization`-Projektion; nacktes MCP-`ImageContent` ist kein
+Sichtbarkeitsvertrag. Coach-, Auswahl-, Antwort- und Zustandsabläufe bleiben
+Chat-/Tool-basiert und ihre Werkzeuge UI-frei. Der Adapter wertet für die
+Freigabe weder `openai/userAgent` noch eine andere Client-Oberflächenklasse aus.
+Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und
+Directory verwenden ausschließlich den dedizierten V1-Origin. Die acht
+neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
+`404`.
 
 Da V1 noch nie veröffentlicht wurde, besteht für frühere experimentelle
-Widget-Ressourcen keine Rückwärtskompatibilität. Sie werden weder inventarisiert
-noch ausgeliefert. Alte Test-Chats sind ausdrücklich nicht Teil der Abnahme;
-nach einem Draft-Update werden die Plugin-Metadaten aktualisiert und ein neuer
-Chat verwendet.
+Widget-Ressourcen keine Rückwärtskompatibilität. Das Draft-Inventar enthält nur
+die eine aktuelle Ressource und keine Retention-Vorgänger. Alte Test-Chats sind
+ausdrücklich nicht Teil der Abnahme; nach einem Draft-Update werden die
+Plugin-Metadaten aktualisiert und ein neuer Chat verwendet.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
@@ -132,11 +137,13 @@ Paketänderung benötigt eine neue SemVer.
 7. Erst nach grüner CI den Backend-Build und die V1-Edge-Konfiguration
    ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
    Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
-   prüfen. `resources/list` muss leer bleiben. Bei einem aktiven atomaren Ziel
-   mit passendem kanonischem Bild muss der Renderer oberflächenneutral angeboten
-   werden und genau einen standardisierten MCP-Bildinhalt liefern. Der jeweilige
-   Host darf diesen darstellen oder ignorieren. Ohne gültiges Bild muss derselbe
-   Ablauf als normale Chatdarstellung weiter funktionieren.
+   prüfen. `resources/list` muss genau die aktive hashgebundene Bild-UI
+   enthalten. Nur `render_skillpilot_goal_visualization` darf sie über
+   `ui.resourceUri` und `openai/outputTemplate` referenzieren. Bei einem aktiven
+   atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
+   strukturierte Projektion genau einmal an die bild-only Komponente liefern.
+   Ohne gültiges Bild darf keine leere UI entstehen; derselbe Ablauf muss als
+   normale Chatdarstellung weiter funktionieren.
 8. Die neue Plugin-Version im OpenAI-Portal aktualisieren. Die
    hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
    das Veröffentlichungsvehikel.

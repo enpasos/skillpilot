@@ -69,6 +69,7 @@ export function loadReleaseContract(releaseRoot) {
   const errorCatalog = readJson(
     resolve(releaseRoot, "contract/error-catalog.json"),
   );
+  const uiManifest = readJson(resolve(releaseRoot, "ui-manifest.json"));
   const skillsBundlePath = resolve(releaseRoot, "skills-bundle.json");
 
   assert.equal(
@@ -116,43 +117,66 @@ export function loadReleaseContract(releaseRoot) {
     skillsBundle: existsSync(skillsBundlePath)
       ? readJson(skillsBundlePath)
       : { files: [] },
+    uiManifest: {
+      ...uiManifest,
+      resources: normalizeResources(uiManifest.resources ?? [], releaseRoot),
+    },
   };
 }
 
-/** Verifies that the current plugin line publishes no MCP UI contract. */
-export function assertNoUiResources(resources, tools) {
-  assert.deepEqual(
-    resources ?? [],
-    [],
-    "The non-UI plugin line must not inventory MCP UI resources.",
+/**
+ * Verifies that the unpublished V1 draft has exactly one hash-bound MCP App UI
+ * resource and that only its dedicated renderer points to that resource.
+ */
+export function assertActiveUiResource(activeResourceUri, resources, tools) {
+  assert.equal(
+    typeof activeResourceUri,
+    "string",
+    "UI activeResourceUri must be a non-empty string.",
   );
+  assert.notEqual(
+    activeResourceUri.length,
+    0,
+    "UI activeResourceUri must be a non-empty string.",
+  );
+  assert.equal(
+    (resources ?? []).length,
+    1,
+    "The unpublished V1 draft must inventory exactly one active MCP App UI resource.",
+  );
+  const matchingResources = (resources ?? []).filter(
+    (resource) => resourceUri(resource) === activeResourceUri,
+  );
+  assert.equal(
+    matchingResources.length,
+    1,
+    "UI activeResourceUri must identify exactly one inventoried resource.",
+  );
+
+  const linkedTools = [];
   for (const tool of tools ?? []) {
-    const meta = tool?.meta;
-    if (meta === null || typeof meta !== "object") {
+    const standardUri = tool?.meta?.ui?.resourceUri;
+    const compatibilityUri = tool?.meta?.["openai/outputTemplate"];
+    if (standardUri === undefined && compatibilityUri === undefined) {
       continue;
     }
-    const forbiddenKeys = [];
-    if (Object.hasOwn(meta, "ui")) {
-      forbiddenKeys.push("ui");
-    }
-    if (Object.hasOwn(meta, "resourceUri")) {
-      forbiddenKeys.push("resourceUri");
-    }
-    if (Object.hasOwn(meta, "openai/outputTemplate")) {
-      forbiddenKeys.push("openai/outputTemplate");
-    }
-    forbiddenKeys.push(
-      ...Object.keys(meta).filter((key) => key.startsWith("openai/widget")),
+    linkedTools.push(tool.name);
+    assert.equal(
+      standardUri,
+      activeResourceUri,
+      `Tool ${tool.name} must link ui.resourceUri only to activeResourceUri.`,
     );
-    if (forbiddenKeys.length === 0) {
-      continue;
-    }
-    assert.fail(
-      `Tool ${tool.name} must not publish MCP UI or widget metadata: ${[
-        ...new Set(forbiddenKeys),
-      ].join(", ")}.`,
+    assert.equal(
+      compatibilityUri,
+      activeResourceUri,
+      `Tool ${tool.name} must link openai/outputTemplate only to activeResourceUri.`,
     );
   }
+  assert.deepEqual(
+    linkedTools,
+    ["render_skillpilot_goal_visualization"],
+    "Exactly the dedicated goal-visualization renderer must link the active UI resource.",
+  );
 }
 
 /**
@@ -224,6 +248,7 @@ export function collectCompatibilityProblems(baseline, candidate) {
     "contract.resources",
     problems,
   );
+  compareUiManifest(baseline.uiManifest, candidate.uiManifest, problems);
   compareErrorCatalog(baseline.errorCatalog, candidate.errorCatalog, problems);
   const candidateSkillPaths = new Set(
     (candidate.skillsBundle?.files ?? []).map((file) => file.path),
@@ -307,6 +332,18 @@ export function collectPublicSurfaceChanges(baseline, candidate) {
     "new MCP resource",
     minorRequired,
   );
+  collectAddedResources(
+    baseline.uiManifest.resources ?? [],
+    candidate.uiManifest.resources ?? [],
+    "new UI resource",
+    minorRequired,
+  );
+  if (
+    baseline.uiManifest.enabled !== true &&
+    candidate.uiManifest.enabled === true
+  ) {
+    minorRequired.push("UI support enabled");
+  }
 
   const baselineSkills = new Map(
     (baseline.skillsBundle?.files ?? []).map((file) => [file.path, file]),
@@ -908,6 +945,24 @@ function compareUniqueItems(baseline, candidate, direction, path, problems) {
   if (!compatible) {
     problems.push(`${path}.uniqueItems: incompatible ${direction} constraint`);
   }
+}
+
+function compareUiManifest(baseline, candidate, problems) {
+  if (baseline.origin !== candidate.origin) {
+    problems.push("ui.origin: immutable V1 UI origin changed");
+  }
+  if (baseline.schemaVersion !== candidate.schemaVersion) {
+    problems.push("ui.schemaVersion: UI state schema changed within V1");
+  }
+  if (baseline.enabled === true && candidate.enabled !== true) {
+    problems.push("ui.enabled: published UI support was disabled");
+  }
+  compareImmutableResourceSet(
+    baseline.resources ?? [],
+    candidate.resources ?? [],
+    "ui.resources",
+    problems,
+  );
 }
 
 function compareErrorCatalog(baseline, candidate, problems) {
