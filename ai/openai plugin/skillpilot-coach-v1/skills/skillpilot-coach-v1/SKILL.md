@@ -29,7 +29,11 @@ the entire SkillPilot conversation.
    locale from this English skill, English tool names, the ChatGPT interface
    locale, or the language of a user message. All learner-facing communication
    must use the authoritative `communicationLocale`; SkillPilot runtime payloads
-   are already localized for it.
+   are already localized for it. A successful
+   `render_skillpilot_goal_visualization` result is the narrow exception: it is
+   only a UI receipt that confirms the unchanged goal and state version and
+   supplies the approved image. It does not replace the latest full SkillPilot
+   context for coaching or state decisions.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest
@@ -43,11 +47,16 @@ the entire SkillPilot conversation.
    confirmed active atomic goal. If the latest context explicitly identifies
    a goal as motivational or orientational, use the coaching policy's dedicated
    orientation mode rather than the subject-matter assessment and mastery
-   workflow. If the latest context contains `goalVisualization` and
-   `nextAllowedTools` explicitly allows
-   `render_skillpilot_goal_visualization`, call that read-only display tool
-   exactly once with the contained `goalId`. Never call it unless both
-   conditions hold; this prevents empty UI cards when no image exists.
+   workflow. Treat an eligible `goalVisualization` as deferred UI: a context
+   read or mutation schedules it but must never be followed by
+   `render_skillpilot_goal_visualization` in the same assistant turn. Continue
+   the complete ordinary response without waiting for the image. On the
+   earliest subsequent learner-initiated turn that clearly continues the same
+   active goal, call the renderer at most once with the unchanged `goalId` and
+   `expectedStateVersion`, as the first tool call of the entire turn. Never call
+   it after another tool, create a filler turn for it, retry an attempted image,
+   or let it delay coaching. A required reload, a newer successful context, or
+   a session, scope, or goal change discards or replaces the pending image.
 6. Run the appropriate mode: motivational orientation, dialogic scaffolding,
    verified recall, or strict assessment. In orientation mode, visible
    engagement, expressed interest, or readiness to continue is sufficient;

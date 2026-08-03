@@ -111,7 +111,7 @@ public final class OpenAiDeV1McpContractAdapter {
                             OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
 
     private static final String SERVER_INSTRUCTIONS = """
-            You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative.
+            You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
@@ -123,7 +123,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. Briefly check prior knowledge, provide small hints, let the learner work, and do not reveal the solution to the immediate next task. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            If the newest context contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once with the unchanged goalId. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without goalVisualization, with another goalId, or when it is not allowed. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
+            Treat an eligible goalVisualization as deferred UI. A successful context read or state-changing tool may schedule it, but never call render_skillpilot_goal_visualization in the same assistant turn that loaded, reloaded, or changed SkillPilot state, and never call it after any other tool call in that turn. Continue the complete ordinary coaching response without waiting for the image. On the earliest subsequent learner-initiated turn that clearly continues the same active goal, call the renderer at most once with the unchanged goalId and expectedStateVersion from the prior successful context, as the first tool call of the entire turn. Do not create a filler turn solely to unlock the image. If a context reload is required, the learner changes or abandons the session, scope, or goal, another tool must run first, or a newer successful SkillPilot result supersedes the pending goal, discard or replace the pending visualization instead of rendering it. One completed render attempt consumes the pending visualization for that continuous active-goal episode: never retry automatically or claim that the image was shown when the host does not display it. Only that tool creates the MCP UI containing the approved image. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
 
@@ -301,13 +301,19 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         RENDER_GOAL_VISUALIZATION,
                         "Display the learning-goal image",
-                        "Displays only the approved image for the currently active atomic learning goal. Call it "
-                                + "exactly once only when the newest SkillPilot context contains goalVisualization "
-                                + "with the same goalId and nextAllowedTools names this tool. Never call it without "
-                                + "goalVisualization or for another goalId. It does not change state.",
+                        "Displays only the approved image for the currently active atomic learning goal. Treat the "
+                                + "image as deferred after a successful context read or state change. Never call this "
+                                + "tool in the same assistant turn that loaded, reloaded, or changed SkillPilot state, "
+                                + "or after any other tool call. On a subsequent learner-initiated turn that clearly "
+                                + "continues the same active goal, call it at most once as the first tool call of the "
+                                + "entire turn, using the unchanged goalId and expectedStateVersion from the prior "
+                                + "successful context. If another tool must run first, skip the renderer. Do not retry "
+                                + "automatically after a completed attempt. It does not change state.",
                         objectSchema(
-                                Map.of("goalId", modelFacingOpaqueReferenceSchema()),
-                                List.of("goalId")),
+                                Map.of(
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        EXPECTED_STATE_VERSION, integerSchema(0, null)),
+                                List.of("goalId", EXPECTED_STATE_VERSION)),
                         goalVisualizationRenderSchema(),
                         true,
                         true,
@@ -767,6 +773,31 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
+        long expectedStateVersion = requiredLong(arguments, EXPECTED_STATE_VERSION);
+        if (metadata == null) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INTERNAL_ERROR,
+                    "The deferred learning-goal image could not be verified against the current session state. "
+                            + "Continue without the image and do not retry it automatically.",
+                    null,
+                    Map.of(
+                            "instruction",
+                            "Continue without the image and do not retry it automatically."));
+        }
+        if (expectedStateVersion != metadata.stateVersion()) {
+            String instruction = localized(metadata,
+                    "Der Lernstand hat sich seit der Bildfreigabe geändert. Lade den aktuellen SkillPilot-Kontext "
+                            + "genau einmal neu und versuche dieses Bild nicht automatisch erneut.",
+                    "The learning state changed after the image was scheduled. Reload the current SkillPilot context "
+                            + "exactly once and do not retry this image automatically.");
+            return errorResult(
+                    OpenAiDeV1ErrorCode.STATE_VERSION_CONFLICT,
+                    instruction,
+                    metadata,
+                    Map.of(
+                            "reloadContextAtMostOnce", true,
+                            "instruction", instruction));
+        }
         OpenAiDeCoachContext context = projectContext(
                 skillpilotId,
                 coachTools.getLearnerState(skillpilotId),

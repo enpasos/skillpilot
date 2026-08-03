@@ -360,13 +360,27 @@ sie nur für ein aktives atomares Ziel mit passendem kanonischem
 Projektion; sichtbar rendert das Widget ausschließlich das Bild und hinterlegt
 den Alttext am `img`-Element. Titel, Beschreibung, Ziel-ID und Cockpit-Link
 werden nicht angezeigt. Fehlende oder ungültige Bilder blenden die Komponente
-aus und lassen den normalen Chat unverändert. Ein gültiges Bild bleibt bis zu
-seinem erfolgreichen `load`-Ereignis unsichtbar. Nur ein konkreter Ladefehler
-oder der begrenzte Lade-Timeout blendet es wieder aus und fordert den Teardown
-an. Plattform- und User-Agent-Werte werden nicht zur Oberflächenklassifizierung
-verwendet: Mobile Browser, native Apps und Desktop-Hosts erhalten denselben
-oberflächenneutralen Ladeversuch; ausschließlich der tatsächliche Ladeerfolg
-entscheidet über die Anzeige. Das Bild ist Orientierung, niemals Evidenz,
+aus und lassen den normalen Chat unverändert. Kontextabrufe, Reloads und
+Mutationen planen ein passendes Bild nur vor. Der Renderer darf ihnen oder
+einem anderen Tool nicht im selben Assistant-Turn folgen. Erst im frühesten
+späteren, vom Lernenden ausgelösten Turn, der dasselbe aktive Ziel fortsetzt,
+darf er mit unveränderter Ziel-ID und `expectedStateVersion` höchstens einmal
+als erster Tool-Aufruf laufen. Ein neuer Kontext, ein Ziel-/Scope-/Sessionwechsel
+oder ein bereits versuchtes Bild verwirft beziehungsweise ersetzt diese
+Vormerkung. Der Renderer projiziert den Backendzustand erneut und weist eine
+veraltete Version oder Ziel-ID zurück. Sein erfolgreiches Ergebnis ist nur eine
+enge UI-Bestätigung und ersetzt nicht den letzten vollständigen SkillPilot-
+Kontext für Coaching- oder Zustandsentscheidungen. Diese Reihenfolge gilt
+hostneutral und verhindert insbesondere dauerhafte Host-Platzhalter bei
+verketteten Data-Tool-/UI-Tool-Aufrufen.
+
+Ein gültiges Bild bleibt bis zu seinem erfolgreichen `load`-Ereignis
+unsichtbar. Nur ein konkreter Ladefehler oder der begrenzte Lade-Timeout blendet
+es wieder aus und fordert den Teardown an. Plattform- und User-Agent-Werte
+werden nicht zur Oberflächenklassifizierung verwendet: Sobald der verschobene
+Renderer aufgerufen wird, erhalten Mobile Browser, native Apps und Desktop-Hosts
+denselben oberflächenneutralen Ladeversuch; ausschließlich der tatsächliche
+Ladeerfolg entscheidet über die Anzeige. Das Bild ist Orientierung, niemals Evidenz,
 Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Der Teardown ist eine Anfrage
 an den Host. Initialisiert eine Oberfläche die MCP-UI gar nicht, können Backend
 und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert

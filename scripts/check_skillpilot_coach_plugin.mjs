@@ -521,6 +521,36 @@ assert.match(
   combinedSkill,
   /never as a source,\s+evidence, task, solution, or performance record/s,
 );
+assert.match(
+  combinedSkill,
+  /deferred UI[\s\S]+subsequent learner-initiated turn[\s\S]+first tool call of the entire turn/s,
+  "The coach skill must defer an eligible image until a later learner turn and render it first.",
+);
+assert.match(
+  combinedSkill,
+  /never[\s\S]+after any other tool call[\s\S]+never retry automatically/s,
+  "The coach skill must prevent the mobile-host same-turn render loop.",
+);
+assert.match(
+  combinedSkill,
+  /UI receipt[\s\S]+does not replace the latest full SkillPilot context/s,
+  "The renderer receipt must not replace the authoritative full coaching context.",
+);
+assert.match(
+  mcpContract,
+  /deferred UI[\s\S]+never call render_skillpilot_goal_visualization in the same assistant turn[\s\S]+expectedStateVersion[\s\S]+first tool call of the entire turn/s,
+  "The MCP server instructions must publish the deferred first-tool rendering boundary.",
+);
+assert.match(
+  mcpContract,
+  /UI receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
+  "The MCP server must keep the last full context authoritative after rendering.",
+);
+assert.match(
+  mcpContract,
+  /RENDER_GOAL_VISUALIZATION[\s\S]+EXPECTED_STATE_VERSION, integerSchema\(0, null\)[\s\S]+List\.of\("goalId", EXPECTED_STATE_VERSION\)/s,
+  "The renderer must require the state version from the context that scheduled it.",
+);
 
 const javaConstant = (name) => {
   const declaration = contractMetadata.match(

@@ -4,7 +4,10 @@ This reference governs learner-facing coaching behavior and internal tool
 orchestration. The latest successful SkillPilot tool result takes precedence
 over this general guidance because only that result describes the current
 state, currently valid options, authoritative `communicationLocale`, and next
-step.
+step. A successful `render_skillpilot_goal_visualization` result is a narrow UI
+receipt only: it confirms the unchanged goal and state version and supplies the
+approved image, but it does not replace the latest full SkillPilot context for
+coaching or state decisions.
 
 ## Contents
 
@@ -66,13 +69,33 @@ step.
   response.
 - Reload context after a new chat, reload, long conversation, possible
   compaction, uncertainty, or conflict.
-- Treat only the latest successful tool result as authoritative. Do not rely on
-  conversation memory for locale, curriculum, personalization, learning scope,
-  focus, active goal, frontier, mastery, recall, assessment, or progress.
+- Treat only the latest successful full context or mutation result as
+  authoritative. Do not rely on conversation memory for locale, curriculum,
+  personalization, learning scope, focus, active goal, frontier, mastery,
+  recall, assessment, or progress. The renderer's successful UI receipt
+  confirms only its unchanged goal and state version and does not replace that
+  full context.
 - Do not claim that state was loaded, saved, or changed before a successful
   tool result confirms it.
 
 ## 3. General decision cycle
+
+### Deferred goal-visualization boundary
+
+An eligible `goalVisualization` is pending UI, not an immediate follow-up tool
+call. A context read, reload, or mutation may schedule it, but the renderer must
+never run later in that same assistant turn or after any other tool call. Keep
+the ordinary response complete without it. On the earliest subsequent
+learner-initiated turn that clearly continues the same active goal, call
+`render_skillpilot_goal_visualization` at most once, with the unchanged
+`goalId` and `expectedStateVersion`, as the first tool call of the entire turn.
+Do not create a filler turn solely for the image. If a reload is required, the
+learner changes or abandons the session, scope, or goal, another tool must run
+first, or a newer successful result supersedes the pending goal, discard or
+replace the pending visualization. A completed render attempt consumes it for
+that continuous active-goal episode; never retry automatically or claim that
+the host displayed the image. The renderer revalidates the current backend
+state and the ordinary text remains the complete fallback.
 
 At entry, resumption, and after every mutation, follow this cycle:
 
@@ -82,9 +105,10 @@ At entry, resumption, and after every mutation, follow this cycle:
 4. First follow `requiredAction`, `instruction`, `policies`, and
    `nextAllowedTools` from the latest result.
 5. If context contains `goalVisualization` and `nextAllowedTools` explicitly
-   permits `render_skillpilot_goal_visualization`, call that read-only display
-   tool exactly once with the unchanged `goalId` from the same projection. If
-   either condition is absent, do not call it.
+   permits `render_skillpilot_goal_visualization`, retain its unchanged
+   `goalId` and `stateVersion` only as a deferred candidate governed by the
+   boundary above. Do not call the renderer in this assistant turn. If either
+   condition is absent, no visualization is pending.
 6. Map intent to at most one currently published option, and use its opaque ID
    unchanged.
 7. Perform exactly one permitted mutation using the latest `stateVersion` as
@@ -293,7 +317,9 @@ supplied criterion and the subsequent tool result confirms the save.
 
 ## 10. Resources and cockpit links
 
-- Use only resources and URLs from the latest successful tool result.
+- Use only resources and URLs from the latest successful full context or
+  mutation result. The renderer's narrow receipt supplies only its approved UI
+  image and authorizes no other URL use.
 - Reproduce a supplied URL exactly. Add no IDs, parameters, or tokens and never
   construct a URL yourself.
 - Follow current `instruction` and `policies` when they distinguish chat
@@ -351,7 +377,8 @@ Check internally:
 
 1. Did the unchanged `learningSessionId` come from the current SkillPilot start
    message?
-2. Is the latest successful tool result the only state in use?
+2. Is the latest successful full context or mutation result the only state in
+   use, with any renderer result treated only as its narrow UI receipt?
 3. Am I using its exact `communicationLocale` rather than inferring a language?
 4. Am I following its required action, instruction, policies, and allowed
    tools?
