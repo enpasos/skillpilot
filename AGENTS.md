@@ -445,12 +445,15 @@ Rule:
   disabled chat visualizations, the active goal is not atomic, the canonical
   link does not match its goal ID, or the image data is absent or invalid, omit
   the renderer; the ordinary chat response must remain fully usable.
-* Do not classify image support from host platform or user-agent values. Mobile
-  browsers, native apps, desktop clients, and unknown MCP Apps hosts all try to
-  load a valid image while the component stays hidden. Show it only after a
-  successful image `load`; on a concrete load error or the bounded timeout,
-  keep it hidden and request teardown so the ordinary chat response remains the
-  complete fallback.
+* Do not classify image support from optional host platform or user-agent
+  values. Supported browser and desktop MCP Apps hosts try to load a valid
+  image while the component stays hidden. The current native ChatGPT mobile app
+  is not a supported plugin UI surface; SkillPilot cannot reliably identify it
+  before the host creates a component shell. Keep the component hidden until a
+  successful image `load`. If no structured payload arrives during the bounded
+  bootstrap deadline, or the image raises an error or exceeds its own bounded
+  timeout, keep it hidden and request teardown without waiting for the MCP Apps
+  handshake. The ordinary chat response remains the complete fallback.
 * The inline component renders only the public image. Its accessible alt text
   remains attached to the image, but goal ID, title, description, and cockpit
   URL from the bounded projection are not shown as additional UI. The

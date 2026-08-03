@@ -24,7 +24,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PROTECTED_RESOURCE_METADATA_ENDPOINT =
             PUBLIC_MCP_ORIGIN + PROTECTED_RESOURCE_METADATA_PATH;
     public static final String GOAL_VISUALIZATION_ARTIFACT_SHA256 =
-            "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c";
+            "c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26";
     public static final String GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + GOAL_VISUALIZATION_ARTIFACT_SHA256

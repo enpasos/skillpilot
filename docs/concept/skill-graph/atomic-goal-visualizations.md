@@ -53,7 +53,7 @@ The still-unpublished `SkillPilot Coach v1` draft `1.0.0` contains one
 read-only MCP UI resource:
 
 ```text
-ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html
+ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html
 ```
 
 Only the dedicated read-only `render_skillpilot_goal_visualization` tool
@@ -89,16 +89,22 @@ The projection and component obey these constraints:
   rendered. The component performs no learning-state mutation;
 - a missing, malformed, or mismatched image omits the renderer. A valid image
   stays hidden while it loads and becomes visible only after a successful
-  `load` event. A concrete load error or the bounded load timeout hides the
-  component, requests teardown, and leaves the ordinary ChatGPT response
-  unchanged;
-- host platform and user-agent values do not decide whether the component is
-  shown. Mobile browsers, native apps, desktop clients, and unknown MCP Apps
-  hosts all get the same surface-neutral image-load attempt; only the actual
-  load outcome decides whether it becomes visible;
+  `load` event. A bounded bootstrap deadline also covers hosts that mount the
+  resource but never deliver a structured result. A missing payload, concrete
+  load error, or bounded load timeout hides the component, requests teardown
+  without waiting for the MCP Apps handshake, and leaves the ordinary ChatGPT
+  response unchanged;
+- optional host platform and user-agent values do not decide whether the
+  component is shown. Supported browser and desktop MCP Apps hosts get the same
+  surface-neutral image-load attempt. The current native ChatGPT mobile app is
+  not a supported plugin UI surface, while a browser on the same mobile device
+  remains a supported web surface;
 - teardown is a host-mediated request, not a promise that the host removes its
-  container. If a surface never initializes the MCP view, neither the backend
-  nor the widget can suppress a placeholder already created by that host;
+  container. If an unsupported native app never executes or initializes the
+  MCP view, neither the backend nor the widget can suppress a placeholder
+  already created by that host. There is currently no stable server-side
+  surface capability with which SkillPilot could omit the UI only for that
+  viewer;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.
