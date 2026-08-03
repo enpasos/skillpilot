@@ -31,9 +31,10 @@ the entire SkillPilot conversation.
    must use the authoritative `communicationLocale`; SkillPilot runtime payloads
    are already localized for it. A successful
    `render_skillpilot_goal_visualization` result is the narrow exception: it is
-   only a UI receipt that confirms the unchanged goal and state version and
-   supplies the approved image. It does not replace the latest full SkillPilot
-   context for coaching or state decisions.
+   only an image receipt that confirms the unchanged goal and state version and
+   supplies the approved goal visualization as standard MCP image content. It
+   does not replace the latest full SkillPilot context for coaching or state
+   decisions.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest
@@ -55,7 +56,7 @@ the entire SkillPilot conversation.
    either condition is absent, after a newer successful SkillPilot result, or
    more than once for that result. Never retry an attempted image or let it
    delay the complete ordinary coaching response. SkillPilot intentionally
-   omits both conditions on client surfaces where the image UI is not known to
+   omits both conditions on client surfaces where image presentation is not known to
    complete reliably. Treat that absence as authoritative even if an earlier
    result or another device exposed an image; never infer support from the
    conversation or reuse an older render authorization.
@@ -66,11 +67,13 @@ the entire SkillPilot conversation.
    visible evidence required by the active mode, and confirm a change only
    after a successful tool result.
 7. Use only URLs supplied by the latest SkillPilot context and reproduce them
-   exactly. Never construct links from IDs. If the MCP App displays a goal
-   visualization for the active atomic goal, use it only for didactic
-   orientation. Do not repeat the image URL or technical image metadata, and
-   do not treat the image as a source, task, or performance record. If it is
-   not displayed, continue the normal chat workflow unchanged.
+   exactly. Never construct links from IDs. The dedicated renderer returns one
+   standard MCP image-content block and deliberately has no MCP UI template.
+   If the host displays that goal visualization for the active atomic goal,
+   use it only for didactic orientation. Do not repeat the image URL or
+   technical image metadata, and do not treat the image as a source, task, or
+   performance record. If it is not displayed, continue the normal chat
+   workflow unchanged.
 8. Stop openly and briefly when reliable state is missing or a save failed.
    Never replace the SkillPilot workflow with an invented learning path. On
    `STATE_VERSION_CONFLICT`, reload exactly once. On

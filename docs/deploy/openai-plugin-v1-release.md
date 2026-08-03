@@ -20,30 +20,25 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
+| MCP-UI | nicht veröffentlicht; Ressourceninventar leer |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft enthält eine eng begrenzte, read-only
-MCP-UI für die Visualisierung des aktiven atomaren Lernziels. Der
-unveröffentlichte Draft deklariert dafür bereits den pro Plugin eindeutigen
-Widget-Origin über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`. Er
-verwendet die unveränderlich vorgesehene
-Resource-URI
-`ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html`. Die übrigen Coach-,
+Der noch unveröffentlichte V1-Draft enthält keine MCP-UI-Ressource. Das
+dedizierte read-only Werkzeug `render_skillpilot_goal_visualization` liefert
+ein freigegebenes JPEG- oder PNG-Bild als standardisierten MCP-`ImageContent`;
+kein Tool referenziert `ui.resourceUri` oder `openai/outputTemplate`. Coach-,
 Auswahl-, Antwort- und Zustandsabläufe bleiben Chat-/Tool-basiert. Die V1-Linie
 besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und Directory
 verwenden ausschließlich den dedizierten V1-Origin. Die acht neutralen
 Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit `404`.
 
-Die zuvor bereits an Test-Clients ausgelieferte Ressource
-`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
-bleibt als unveränderliches Artefakt inventarisiert und lesbar. Das ist kein
-zweites aktives Widget und kein Endpoint-Alias: Neue Tool-Descriptoren
-referenzieren ausschließlich `sha256-c890...`, während bestehende Browser-
-und native App-Chats ihren bereits gespeicherten Resource-URI weiter auflösen
-können.
+Da V1 noch nie veröffentlicht wurde, besteht für frühere experimentelle
+Widget-Ressourcen keine Rückwärtskompatibilität. Sie werden weder inventarisiert
+noch ausgeliefert. Alte Test-Chats sind ausdrücklich nicht Teil der Abnahme;
+nach einem Draft-Update werden die Plugin-Metadaten aktualisiert und ein neuer
+Chat verwendet.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
@@ -135,12 +130,14 @@ Paketänderung benötigt eine neue SemVer.
    git diff --check
    ```
 7. Erst nach grüner CI den Backend-Build und die V1-Edge-Konfiguration
-   ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, `resources/list`
-   und `resources/read`, negative Authentisierungsfälle, Lernsessionbindung und
-   mindestens eine Golden Journey prüfen. Bei einem aktiven atomaren Ziel mit
-   passendem kanonischem Bild müssen Context-Read und Zielaktivierung die
-   Inline-Karte anzeigen. Ohne gültiges Bild muss derselbe Ablauf als normale
-   Chatdarstellung weiter funktionieren.
+   ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
+   Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
+   prüfen. `resources/list` muss leer bleiben. Bei einem aktiven atomaren Ziel
+   mit passendem kanonischem Bild muss ein ausdrücklich erkannter
+   Desktop-Webbrowser den Renderer erhalten und dieser genau einen
+   standardisierten MCP-Bildinhalt liefern. Mobile/native und unbekannte
+   Oberflächen dürfen den Renderer nicht angeboten bekommen. Ohne gültiges Bild
+   muss derselbe Ablauf als normale Chatdarstellung weiter funktionieren.
 8. Die neue Plugin-Version im OpenAI-Portal aktualisieren. Die
    hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
    das Veröffentlichungsvehikel.

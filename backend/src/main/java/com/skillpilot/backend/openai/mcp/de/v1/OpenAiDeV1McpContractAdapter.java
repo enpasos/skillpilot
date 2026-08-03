@@ -32,20 +32,13 @@ import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HexFormat;
+import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,8 +54,9 @@ import org.springframework.web.server.ResponseStatusException;
  * Complete language-neutral OpenAI MCP contract for the SkillPilot coach.
  *
  * <p>The class deliberately owns neither HTTP transport nor OAuth lifecycle.
- * It publishes native stateless MCP tool and UI-resource specifications and
- * resolves identity only through {@link OpenAiDeCoachIdentityResolver}.</p>
+ * It publishes native stateless MCP tool specifications without an MCP UI
+ * template and resolves identity only through
+ * {@link OpenAiDeCoachIdentityResolver}.</p>
  */
 @Component
 @ConditionalOnProperty(
@@ -95,23 +89,8 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
-    private static final Set<String> GOAL_VISUALIZATION_UI_TOOLS =
-            Set.of(RENDER_GOAL_VISUALIZATION);
-    private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
-            List.of(
-                    loadGoalVisualizationWidget(
-                            "skillpilot-goal-visualization-v1-current",
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
-                    loadGoalVisualizationWidget(
-                            "skillpilot-goal-visualization-v1-retained-157aab83",
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
-
     private static final String SERVER_INSTRUCTIONS = """
-            You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
+            You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is an image receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image as standard MCP image content, but it does not replace the latest full SkillPilot context for coaching or state decisions.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
@@ -123,7 +102,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. Briefly check prior knowledge, provide small hints, let the learner work, and do not reveal the solution to the immediate next task. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. SkillPilot deliberately omits both conditions on client surfaces where the UI is not known to complete reliably; their absence is authoritative, even when an earlier result or another device exposed an image. Never infer image support from the conversation or call the renderer from an older authorization. Never call it without both current conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
+            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that image tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool returns the approved image for the active atomic goal as standard MCP image content; it does not bind or create an MCP UI component. SkillPilot deliberately omits both conditions on client surfaces where image presentation is not known to complete reliably; their absence is authoritative, even when an earlier result or another device exposed an image. Never infer image support from the conversation or call the renderer from an older authorization. Never call it without both current conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only an image receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
 
@@ -137,6 +116,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private final OpenAiDeCoachIdentityResolver identityResolver;
     private final OpenAiDeMcpTelemetry telemetry;
     private final OpenAiDeV1McpSessionCoordinator sessionCoordinator;
+    private final OpenAiDeGoalVisualizationImageResolver goalVisualizationImageResolver;
     private final OpenAiDeCoachContextProjector contextProjector;
     private final String sessionStartUrl;
     private final List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications;
@@ -149,16 +129,35 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeCoachIdentityResolver identityResolver,
             OpenAiDeMcpTelemetry telemetry,
             OpenAiDeV1McpSessionCoordinator sessionCoordinator,
+            OpenAiDeGoalVisualizationImageResolver goalVisualizationImageResolver,
             @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl) {
         this.coachTools = coachTools;
         this.stateProjection = stateProjection;
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.sessionCoordinator = sessionCoordinator;
+        this.goalVisualizationImageResolver = goalVisualizationImageResolver;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
         this.toolSpecifications = buildToolSpecifications();
-        this.resourceSpecifications = buildResourceSpecifications();
+        this.resourceSpecifications = List.of();
+    }
+
+    public OpenAiDeV1McpContractAdapter(
+            CoachToolFacade coachTools,
+            CoachStateProjection stateProjection,
+            OpenAiDeCoachIdentityResolver identityResolver,
+            OpenAiDeMcpTelemetry telemetry,
+            OpenAiDeV1McpSessionCoordinator sessionCoordinator,
+            String publicBaseUrl) {
+        this(
+                coachTools,
+                stateProjection,
+                identityResolver,
+                telemetry,
+                sessionCoordinator,
+                null,
+                publicBaseUrl);
     }
 
     public OpenAiDeV1McpContractAdapter(
@@ -172,10 +171,11 @@ public final class OpenAiDeV1McpContractAdapter {
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.sessionCoordinator = null;
+        this.goalVisualizationImageResolver = null;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
         this.toolSpecifications = buildToolSpecifications();
-        this.resourceSpecifications = buildResourceSpecifications();
+        this.resourceSpecifications = List.of();
     }
 
     public String serverInstructions() {
@@ -300,8 +300,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         this::getContext),
                 tool(
                         RENDER_GOAL_VISUALIZATION,
-                        "Display the learning-goal image",
-                        "Displays only the approved image for the currently active atomic learning goal. Call it "
+                        "Return the learning-goal image",
+                        "Returns only the approved image for the currently active atomic learning goal as standard "
+                                + "MCP image content, without creating an MCP UI component. Call it "
                                 + "exactly once as the immediate next tool call after the newest successful full "
                                 + "SkillPilot context or state-changing result contains goalVisualization with the "
                                 + "same goalId and nextAllowedTools names this tool. Copy expectedStateVersion from "
@@ -481,16 +482,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 : List.of(oauthScheme(READ_SCOPE));
         Map<String, Object> meta = new LinkedHashMap<>();
         meta.put("securitySchemes", securitySchemes);
-        if (GOAL_VISUALIZATION_UI_TOOLS.contains(name)) {
-            meta.put(
-                    "ui",
-                    Map.of(
-                            "resourceUri",
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI));
-            meta.put(
-                    "openai/outputTemplate",
-                    OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
-        }
         McpSchema.Tool descriptor = McpSchema.Tool.builder()
                 .name(name)
                 .title(title)
@@ -504,8 +495,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         .idempotentHint(idempotent)
                         .openWorldHint(false)
                         .build())
-                // MCP Apps uses ui.resourceUri. ChatGPT also accepts the
-                // openai/outputTemplate compatibility alias.
                 .meta(Map.copyOf(meta))
                 .build();
         return McpStatelessServerFeatures.SyncToolSpecification.builder()
@@ -525,104 +514,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 })
                 .build();
     }
-
-    private List<McpStatelessServerFeatures.SyncResourceSpecification> buildResourceSpecifications() {
-        Map<String, Object> meta = goalVisualizationResourceMeta();
-        return GOAL_VISUALIZATION_UI_RESOURCES.stream()
-                .map(uiResource -> goalVisualizationResourceSpecification(uiResource, meta))
-                .toList();
-    }
-
-    private McpStatelessServerFeatures.SyncResourceSpecification goalVisualizationResourceSpecification(
-            GoalVisualizationUiResource uiResource,
-            Map<String, Object> meta) {
-        McpSchema.Resource resource = McpSchema.Resource.builder(
-                        uiResource.uri(),
-                        uiResource.name())
-                .title("SkillPilot learning-goal image")
-                .description("Displays the approved image for the active atomic learning goal.")
-                .mimeType(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE)
-                .meta(meta)
-                .build();
-        return new McpStatelessServerFeatures.SyncResourceSpecification(
-                resource,
-                (transportContext, request) -> readGoalVisualizationResource(uiResource, meta, request));
-    }
-
-    private McpSchema.ReadResourceResult readGoalVisualizationResource(
-            GoalVisualizationUiResource uiResource,
-            Map<String, Object> meta,
-            McpSchema.ReadResourceRequest request) {
-        String requestedUri = request == null ? null : request.uri();
-        Supplier<McpSchema.ReadResourceResult> read = () -> {
-            if (!uiResource.uri().equals(requestedUri)) {
-                throw new IllegalArgumentException("Unknown SkillPilot MCP UI resource.");
-            }
-            McpSchema.TextResourceContents contents =
-                    new McpSchema.TextResourceContents(
-                            uiResource.uri(),
-                            OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
-                            uiResource.html(),
-                            meta);
-            return new McpSchema.ReadResourceResult(List.of(contents));
-        };
-        return telemetry == null ? read.get() : telemetry.recordResourceRead(requestedUri, read);
-    }
-
-    private Map<String, Object> goalVisualizationResourceMeta() {
-        Map<String, Object> csp = Map.of(
-                "resourceDomains", List.of("https://skillpilot.com"));
-        Map<String, Object> ui = Map.of(
-                "domain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
-                "prefersBorder", false,
-                "csp", csp);
-        return Map.of(
-                "ui", ui,
-                "openai/widgetDescription",
-                        "Approved didactic visualisation for the active SkillPilot learning goal.",
-                "openai/widgetDomain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
-                "openai/widgetPrefersBorder", false,
-                "openai/widgetCSP", Map.of(
-                        "resource_domains", List.of("https://skillpilot.com"),
-                        "redirect_domains", List.of("https://skillpilot.com")));
-    }
-
-    private static GoalVisualizationUiResource loadGoalVisualizationWidget(
-            String name,
-            String uri,
-            String classpath,
-            String expectedSha256) {
-        try (InputStream input = OpenAiDeV1McpContractAdapter.class.getResourceAsStream(classpath)) {
-            if (input == null) {
-                throw new IllegalStateException("Missing SkillPilot goal-visualization MCP UI bundle " + classpath + ".");
-            }
-            byte[] bytes = input.readAllBytes();
-            String actualSha256 = HexFormat.of().formatHex(
-                    MessageDigest.getInstance("SHA-256").digest(bytes));
-            if (!expectedSha256.equals(actualSha256)) {
-                throw new IllegalStateException(
-                        "SkillPilot goal-visualization MCP UI hash mismatch for "
-                                + classpath
-                                + ": expected "
-                                + expectedSha256
-                                + ", got "
-                                + actualSha256
-                                + ".");
-            }
-            return new GoalVisualizationUiResource(
-                    name,
-                    uri,
-                    new String(bytes, StandardCharsets.UTF_8));
-        } catch (IOException exception) {
-            throw new IllegalStateException(
-                    "Could not read SkillPilot goal-visualization MCP UI bundle " + classpath + ".",
-                    exception);
-        } catch (NoSuchAlgorithmException exception) {
-            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
-        }
-    }
-
-    private record GoalVisualizationUiResource(String name, String uri, String html) {}
 
     private McpSchema.CallToolResult executeWithTelemetry(
             String toolName,
@@ -795,9 +686,9 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeClientSurface clientSurface) {
         if (!clientSurface.supportsGoalVisualization()) {
             String instruction = localized(metadata,
-                    "Diese Oberfläche unterstützt die Lernzielbild-Komponente nicht zuverlässig. "
+                    "Diese Oberfläche unterstützt die Lernzielbild-Darstellung nicht zuverlässig. "
                             + "Setze ohne Bild fort und versuche es nicht automatisch erneut.",
-                    "This surface does not reliably support the learning-goal image component. "
+                    "This surface does not reliably support learning-goal image presentation. "
                             + "Continue without the image and do not retry it automatically.");
             return errorResult(
                     OpenAiDeV1ErrorCode.INVALID_INPUT,
@@ -845,11 +736,44 @@ public final class OpenAiDeV1McpContractAdapter {
                             "No approved learning-goal image is available for the current goal."),
                     metadata);
         }
-        return successResult(
-                localized(metadata,
-                        "Freigegebenes Lernzielbild bereitgestellt.",
-                        "Approved learning-goal image provided."),
-                new GoalVisualizationRenderResult(visualization));
+        if (goalVisualizationImageResolver == null) {
+            return unavailableGoalVisualizationResult(metadata);
+        }
+        OpenAiDeGoalVisualizationImageResolver.ResolvedImage image =
+                goalVisualizationImageResolver.resolve(visualization.imageUrl()).orElse(null);
+        if (image == null) {
+            return unavailableGoalVisualizationResult(metadata);
+        }
+        McpSchema.ImageContent.Builder imageContentBuilder = McpSchema.ImageContent.builder(
+                        Base64.getEncoder().encodeToString(image.bytes()),
+                        image.mediaType())
+                .annotations(McpSchema.Annotations.builder()
+                        .audience(List.of(McpSchema.Role.USER))
+                        .priority(1.0)
+                        .build());
+        if (visualization.altText() != null && !visualization.altText().isBlank()) {
+            imageContentBuilder.meta(Map.of("altText", visualization.altText()));
+        }
+        McpSchema.ImageContent imageContent = imageContentBuilder.build();
+        return McpSchema.CallToolResult.builder()
+                .isError(false)
+                .addContent(imageContent)
+                .structuredContent(new GoalVisualizationRenderResult(visualization))
+                .build();
+    }
+
+    private McpSchema.CallToolResult unavailableGoalVisualizationResult(
+            OpenAiDeV1SessionMetadata metadata) {
+        String instruction = localized(metadata,
+                "Das freigegebene Lernzielbild konnte nicht sicher geladen werden. "
+                        + "Setze ohne Bild fort und versuche es nicht automatisch erneut.",
+                "The approved learning-goal image could not be loaded safely. "
+                        + "Continue without the image and do not retry it automatically.");
+        return errorResult(
+                OpenAiDeV1ErrorCode.INVALID_INPUT,
+                instruction,
+                metadata,
+                Map.of("instruction", instruction));
     }
 
     private McpSchema.CallToolResult getNavigation(
@@ -1250,8 +1174,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 state,
                 plan,
                 // Keep the coordinator/idempotency result independent of the
-                // current host. Optional UI is removed only after a fresh or
-                // replayed result has left the coordinator.
+                // current host. Optional image authorization is removed only
+                // after a fresh or replayed result has left the coordinator.
                 coachTools.showGoalVisualizationsInChat(skillpilotId),
                 communicationLocale(metadata));
     }

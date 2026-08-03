@@ -36,9 +36,9 @@ The suite verifies:
 4. No tool accepts `language` or `locale` input.
 5. Localized payloads remain in the selected demo language.
 6. Opaque session and choice references stay in private widget metadata.
-7. The widget artifacts use the same neutral tool names.
-8. The goal-visualization artifact copied into Spring is byte-identical to the
-   tested build output.
+7. The remaining prototype widget artifacts use the same neutral tool names.
+8. The production V1 contract publishes no MCP UI resource; learning-goal
+   images are returned by Spring as standard MCP `ImageContent`.
 
 The local fixture selector `x-skillpilot-demo-locale` exists only in the
 standalone preview simulator. Production resolves locale from authenticated
@@ -54,8 +54,9 @@ Create or update one Developer Mode app with:
 - icon: the packaged SkillPilot icon
 
 Complete the browser OAuth flow if the desktop app delegates installation to
-the browser. A successful connection must list the neutral tools and the one
-V1 widget resource. The app registration must not expose a language suffix.
+the browser. A successful connection must list the neutral tools and no
+widget/UI resource; the MCP resource catalog is empty. The app registration
+must not expose a language suffix.
 
 ## Acceptance matrix
 

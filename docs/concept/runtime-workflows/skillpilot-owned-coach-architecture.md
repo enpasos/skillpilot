@@ -2,8 +2,8 @@
 
 **Stand:** 31. Juli 2026
 
-**Status:** Die mehrsprachige MCP-App mit chat-first Coach-Vertrag und einer
-read-only Lernzielvisualisierungs-UI ist der aktuelle Architekturpfad und im
+**Status:** Die mehrsprachige MCP-App mit chat-first Coach-Vertrag und optionalem
+standardisiertem Lernzielbild-Inhalt ist der aktuelle Architekturpfad und im
 Spring-Boot-Fachkern integriert. Die App authentisiert sich mit genau
 einem fest konfigurierten vertraulichen OAuth-Client über
 `client_secret_basic`; Authorization Code, PKCE S256, exakte Callback-URI,
@@ -32,7 +32,7 @@ Der konkrete Umsetzungs-, Cutover- und Rollbackplan steht in
 [openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
 erste vollständige Migration bleibt bewusst **chat-first**; der
 unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand enthält bereits eine eng
-begrenzte visuelle MCP-UI, während interaktive Widgets erst nach stabiler
+begrenzte standardisierte Bildausgabe, während interaktive Widgets erst nach stabiler
 Workflow-Parität folgen.
 Für Identität, automatischen OAuth-Token-Transport, Browser-Binding und die
 davon getrennte 24h-Lernsession ist
@@ -60,8 +60,8 @@ autoritativ im SkillPilot-Backend.
 
 Für ChatGPT wird **genau eine Plugin-Einreichung je Contract-Major** gebaut.
 `SkillPilot Coach v1` enthält einen neutral englischen Coach-Skill, einen direkt
-eingereichten MCP-Server, einen öffentlichen MCP-Origin, eine read-only
-Lernzielbild-Ressource und sprachübergreifende Acceptance Suites. Sämtliche
+eingereichten MCP-Server, einen öffentlichen MCP-Origin, eine optionale
+standardisierte Bildausgabe und sprachübergreifende Acceptance Suites. Sämtliche
 Nutzdaten kommen bereits in der Zielsprache aus dem Backend. Der Skill weist das
 Hostmodell verbindlich an, die in der Lernsession gelieferte
 `communicationLocale` für alle sichtbaren Antworten beizubehalten. Eine neue
@@ -168,7 +168,7 @@ Lernende Person
 Provider-Host (ChatGPT, später Claude)
   |-- installiert das Major-versionierte Plugin
   |-- lädt dessen Coach-Skill und registrierte MCP-App
-  |-- stellt Modell, Chat und optionale MCP-UI bereit
+  |-- stellt Modell, Chat und standardisierte MCP-Inhalte bereit
   |-- ruft SkillPilot-MCP-Tools im Namen der Person auf
   v
 SkillPilot-MCP-Grenze
@@ -248,7 +248,7 @@ Zuverlässigkeit bleibt Teil der Acceptance Suite.
              |                                         |
              | Plugin DE             Plugin EN (später)|
              | Skill DE + App DE     Skill EN + App EN |
-             | Chat + Zielbild-UI    Widget später     |
+             | Chat + Bildinhalt     Widget später     |
              '---------|-------------------|-----------'
                        | HTTPS/MCP         | HTTPS/MCP
                        v                   v
@@ -345,57 +345,51 @@ eingereicht. Das öffentliche Ziel bleibt damit funktional
 **Coach-Skill plus MCP-Server**, auch wenn das lokale Pilotpaket die registrierte
 Verbindung zusätzlich über `.app.json` referenziert.
 
-Die Lernzielbild-UI bleibt eine Ressource der MCP-App. Sie gehört weder in den
-Skill noch bildet sie eine weitere Zustands- oder Sicherheitsgrenze. Sie zeigt
-nur die bereits sicher projizierte Visualisierung des aktiven atomaren Ziels.
-Interaktive Widgets sind davon getrennte spätere Ausbaustufen.
+Das Lernzielbild ist im aktuellen V1-Draft keine MCP-UI-Ressource. Es gehört
+weder in den Skill noch bildet es eine weitere Zustands- oder
+Sicherheitsgrenze. Das dedizierte read-only Werkzeug
+`render_skillpilot_goal_visualization` liefert das geprüfte JPEG- oder PNG-Bild
+als standardisierten MCP-`ImageContent`. Kein Werkzeug trägt
+`ui.resourceUri`, `openai/outputTemplate` oder Widget-Metadaten; das
+Ressourceninventar ist leer. Interaktive Widgets sind davon getrennte spätere
+Ausbaustufen.
 
-Konkret referenziert nur das dedizierte read-only Werkzeug
-`render_skillpilot_goal_visualization` die versionierte Ressource
-`ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html`. Die optionale
-`structuredContent.goalVisualization` enthält Ziel-ID, Titel, optionale
-Beschreibung, öffentliche Bild-URL, Alttext und Cockpit-Link. Das Backend gibt
-sie nur für ein aktives atomares Ziel mit passendem kanonischem
-`goal-visualization`-Link aus. Diese Felder bilden die intern begrenzte
-Projektion; sichtbar rendert das Widget ausschließlich das Bild und hinterlegt
-den Alttext am `img`-Element. Titel, Beschreibung, Ziel-ID und Cockpit-Link
-werden nicht angezeigt. Fehlende oder ungültige Bilder blenden die Komponente
-aus und lassen den normalen Chat unverändert. Wenn das neueste vollständige
-Kontext- oder Mutationsergebnis ein passendes Bild enthält und den Renderer
-erlaubt, folgt dieser unmittelbar danach im selben Assistant-Turn genau einmal
-mit der unveränderten Ziel-ID und `expectedStateVersion` aus diesem Ergebnis.
-Ein neueres erfolgreiches SkillPilot-Ergebnis entzieht die vorherige
-Freigabe. Der Renderer projiziert den Backendzustand erneut und weist eine
-veraltete Version oder Ziel-ID zurück. Sein erfolgreiches Ergebnis ist nur eine
-enge UI-Bestätigung und ersetzt nicht den vorherigen vollständigen SkillPilot-
-Kontext für Coaching- oder Zustandsentscheidungen. Ein bereits versuchtes Bild
-wird nicht automatisch erneut aufgerufen.
+Die optionale interne Projektion `structuredContent.goalVisualization` enthält
+Ziel-ID, Titel, optionale Beschreibung, öffentliche Bild-URL, Alttext und
+Cockpit-Link. Das Backend gibt sie nur für ein aktives atomares Ziel mit
+passendem kanonischem `goal-visualization`-Link aus. Der Renderer validiert
+Backendzustand, Ziel-ID und `expectedStateVersion` erneut, löst ausschließlich
+freigegebene lokale Bildpfade auf und begrenzt Dateityp sowie Bytegröße. Im
+Toolinhalt erscheint nur das Bild; der Alttext bleibt als Metadatum erhalten.
+Titel, Beschreibung, Ziel-ID, Bild-URL und Cockpit-Link werden nicht als
+zusätzliche Bildkarte dargestellt.
 
-Ein gültiges Bild bleibt bis zu seinem erfolgreichen `load`-Ereignis
-unsichtbar. Nur ein konkreter Ladefehler oder der begrenzte Lade-Timeout blendet
-es wieder aus und fordert den Teardown an. Da die native Mobile-App den
-Renderer derzeit ohne anschließendes `resources/read` startet, kann das Widget
-dort keinen Teardown ausführen. Der Adapter bietet die optionale Bildprojektion
-deshalb nur bei einem über den Best-effort-Hinweis `openai/userAgent`
-ausdrücklich erkannten Desktop-Webbrowser an. Mobile/native und unbekannte
-Oberflächen bleiben im vollständigen Textpfad. Die Klassifikation steuert nur
-Darstellung, wird nicht persistiert und darf niemals Authentifizierung,
-Autorisierung, Identität oder Lernzustand beeinflussen. Persistierte
-Idempotenz-Ergebnisse bleiben oberflächenneutral; erst nach einem frischen oder
-wiedergegebenen Coordinator-Ergebnis entfernt der Adapter die Bildprojektion
-für den aktuellen nicht unterstützten Aufrufer. So kann weder ein
-Desktop-Replay eine mobile Bildfreigabe einschleusen noch ein mobiler Erstaufruf
-die spätere Desktop-Web-Darstellung dauerhaft abschalten. Das Bild ist Orientierung, niemals Evidenz,
-Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Der Teardown ist eine Anfrage
-an den Host. Initialisiert eine Oberfläche die MCP-UI gar nicht, können Backend
-und Widget einen vom Host bereits angelegten Platzhalter nicht garantiert
-entfernen.
+Wenn das neueste vollständige Kontext- oder Mutationsergebnis ein passendes
+Bild enthält und den Renderer erlaubt, folgt dieser unmittelbar danach im
+selben Assistant-Turn genau einmal mit unveränderter Ziel-ID und
+`expectedStateVersion`. Ein neueres erfolgreiches SkillPilot-Ergebnis entzieht
+die vorherige Freigabe. Das erfolgreiche Ergebnis ist nur eine enge
+Bildbestätigung und ersetzt nicht den vorherigen vollständigen SkillPilot-
+Kontext für Coaching- oder Zustandsentscheidungen. Ein fehlendes oder
+ungültiges Bild erzeugt keine UI-Komponente und wird nicht automatisch erneut
+aufgerufen.
 
-Bereits ausgelieferte, inhaltsadressierte UI-Ressourcen bleiben Teil desselben
-V1-Vertrags: `sha256-157aab83...` wird mit seinen ursprünglichen Bytes weiter
-über `resources/read` bedient, damit historische Browser- und native
-App-Nachrichten funktionieren. Es wird nicht als aktives Template neu
-referenziert; dafür bleibt ausschließlich `sha256-c890...` zuständig.
+Der Adapter bietet die optionale Bildprojektion nur bei einem über den
+Best-effort-Hinweis `openai/userAgent` ausdrücklich erkannten
+Desktop-Webbrowser an. Mobile/native und unbekannte Oberflächen bleiben im
+vollständigen Textpfad und starten den Renderer nicht. Die Klassifikation
+steuert nur Darstellung, wird nicht persistiert und darf niemals
+Authentifizierung, Autorisierung, Identität oder Lernzustand beeinflussen.
+Persistierte Idempotenz-Ergebnisse bleiben oberflächenneutral; die
+Darstellungsschranke wird nach jedem frischen oder wiedergegebenen Ergebnis auf
+den aktuellen Aufrufer angewandt. Das Bild ist Orientierung, niemals Evidenz,
+Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+
+V1 ist noch nicht veröffentlicht. Die experimentellen Widget-Ressourcen aus
+früheren Draft-Tests werden deshalb ohne Kompatibilitätsroute entfernt. Alte
+Test-Chats und deren zwischengespeicherte Template-Verweise werden nicht
+unterstützt; nach dem Update ist ein frischer Chat mit aktualisierter
+Plugin-Metadatenaufnahme erforderlich.
 
 ### 6.3 Verbindlicher Ort jeder Regel
 
@@ -818,8 +812,8 @@ Diese Lücken dürfen nicht durch Testdaten oder Promptanweisungen kaschiert wer
 
 ## 14. Implementierter produktionsnaher Spring-Pfad
 
-Der mehrsprachige chat-first V1-Vertrag samt read-only Zielbild-Ressource ist
-direkt im bestehenden Backend implementiert. Öffentlich ist er über den
+Der mehrsprachige chat-first V1-Vertrag samt optionalem standardisiertem
+MCP-Bildinhalt ist direkt im bestehenden Backend implementiert. Öffentlich ist er über den
 dedizierten V1-Origin erreichbar:
 
 ```text
@@ -947,7 +941,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | ChatGPT-Web auf Desktop mit Bild-UI nur bei erfolgreichem Laden; Mobile-Web sowie native Desktop- und Mobile-Apps mit vollständigem textuellem Fallback ohne Renderer, bis deren UI-Lebenszyklus separat erfolgreich abgenommen ist; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | ChatGPT-Web auf Desktop mit optionalem standardisiertem MCP-Bildinhalt; Mobile-Web sowie native Desktop- und Mobile-Apps mit vollständigem textuellem Fallback ohne Renderer, bis deren Bilddarstellung separat erfolgreich abgenommen ist; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1002,17 +996,17 @@ Englisch mit explizit gewähltem Skill; danach dürfen die
 MCP-Server-Instruktionen schrittweise auf werkzeugübergreifende Invarianten
 reduziert werden.
 
-### Phase 3 – MCP-UI und zusätzliche Härtung
+### Phase 3 – Bildausgabe, spätere MCP-UI und zusätzliche Härtung
 
-- read-only Zielbildkarte für aktive atomare Ziele; ohne gültiges kanonisches
-  Bild fällt die Darstellung auf den normalen Chat zurück;
+- read-only Standard-`ImageContent` für aktive atomare Ziele; ohne gültiges
+  kanonisches Bild fällt die Darstellung auf den normalen Chat zurück;
 - optionale direkte Auswahl- und Einreichungsaktionen im Widget;
 - serverseitige Submission-/Receipt-Härtung für garantiert auszuführende
   Schritte;
 - sichere Dateien/Bilder, Export, Löschung, Quoten und Degradation.
 
-**Zwischenstand:** Die Zielbildkarte ist im unveröffentlichten `1.0.0`-Draft
-umgesetzt; interaktive Aktionen bleiben offen.
+**Zwischenstand:** Die standardisierte Bildausgabe ohne MCP-UI ist im
+unveröffentlichten `1.0.0`-Draft umgesetzt; interaktive Aktionen bleiben offen.
 
 **Exit:** UI-Funktionen verbessern die Bedienung, ohne den stabilen chat-first
 Vertrag oder die Backendautorität zu schwächen.
@@ -1041,7 +1035,7 @@ passgenau.
 ## 17. Abnahme- und Go-/No-Go-Gates
 
 Für den Phase-2-Pilot gelten die chat-first Gates plus die eng begrenzten
-Release-Gates der Zielbild-UI. Weitere widget-spezifische Teilanforderungen
+Release-Gates der standardisierten Bildausgabe. Weitere widget-spezifische Teilanforderungen
 werden erst dann zu Release-Gates, wenn interaktive Oberflächen nach Phase 3
 ausgeliefert werden.
 

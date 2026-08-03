@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Best-effort presentation surface derived from client-provided MCP metadata.
  *
- * <p>This classification is deliberately fail-closed for optional MCP UI. It
+ * <p>This classification is deliberately fail-closed for optional image presentation. It
  * must never be used for authentication, authorization, learner identity, or
  * state transitions.</p>
  */

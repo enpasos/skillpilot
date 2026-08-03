@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.mcp.de;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeGoalVisualizationImageResolver;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -37,7 +38,6 @@ import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator;
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionStateException;
 import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
@@ -47,12 +47,11 @@ import io.modelcontextprotocol.json.jackson3.JacksonMcpJsonMapperSupplier;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
-import java.util.HexFormat;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
@@ -86,6 +85,7 @@ class OpenAiDeCoachMcpContractTest {
     private OpenAiDeV1McpContractAdapter contract;
     private SimpleMeterRegistry meterRegistry;
     private OpenAiDeV1McpSessionCoordinator sessionCoordinator;
+    private OpenAiDeGoalVisualizationImageResolver goalVisualizationImageResolver;
     private String sessionCommunicationLocale;
 
     @BeforeEach
@@ -100,6 +100,11 @@ class OpenAiDeCoachMcpContractTest {
         meterRegistry = new SimpleMeterRegistry();
         sessionCommunicationLocale = "de";
         sessionCoordinator = mock(OpenAiDeV1McpSessionCoordinator.class);
+        goalVisualizationImageResolver = mock(OpenAiDeGoalVisualizationImageResolver.class);
+        when(goalVisualizationImageResolver.resolve(any())).thenReturn(Optional.of(
+                new OpenAiDeGoalVisualizationImageResolver.ResolvedImage(
+                        "approved-image".getBytes(StandardCharsets.UTF_8),
+                        "image/jpeg")));
         when(sessionCoordinator.read(any(), any())).thenAnswer(invocation ->
                 sessionOperation(invocation.getArgument(1), 0L));
         when(sessionCoordinator.write(
@@ -118,11 +123,12 @@ class OpenAiDeCoachMcpContractTest {
                         meterRegistry,
                         new OpenAiDeOperationalTelemetry(meterRegistry)),
                 sessionCoordinator,
+                goalVisualizationImageResolver,
                 "https://skillpilot.test");
     }
 
     @Test
-    void publishesExactlyTwelveNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLink() {
+    void publishesExactlyTwelveNativeToolsWithoutAnActiveUiBinding() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contract.toolSpecifications();
 
         assertThat(tools).hasSize(12);
@@ -156,19 +162,7 @@ class OpenAiDeCoachMcpContractTest {
                     assertThat(scheme).containsKey("scopes");
                 });
             });
-            if (OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(tool.name())) {
-                assertThat(tool.meta().get("ui"))
-                        .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
-                                .containsEntry(
-                                        "resourceUri",
-                                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI));
-                assertThat(tool.meta())
-                        .containsEntry(
-                                "openai/outputTemplate",
-                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
-            } else {
-                assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
-            }
+            assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
             assertThat(tool.meta()).doesNotContainKey("openai/widgetAccessible");
         }
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().annotations().readOnlyHint()).isTrue();
@@ -224,117 +218,8 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesActiveAndRetainedSelfContainedGoalVisualizationMcpAppResources() {
-        assertThat(contract.resourceSpecifications())
-                .extracting(specification -> specification.resource().uri())
-                .containsExactlyInAnyOrder(
-                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
-
-        for (McpStatelessServerFeatures.SyncResourceSpecification specification
-                : contract.resourceSpecifications()) {
-            McpSchema.Resource resource = specification.resource();
-            assertThat(resource.mimeType())
-                    .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
-            assertThat(resource.meta().get("ui"))
-                    .isInstanceOfSatisfying(Map.class, ui -> {
-                        assertThat(ui.get("domain"))
-                                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                        assertThat(ui.get("prefersBorder")).isEqualTo(false);
-                        assertThat(ui.toString())
-                                .contains("https://skillpilot.com", "resourceDomains")
-                                .doesNotContain("connectDomains", "redirectDomains");
-                    });
-            assertThat(resource.meta().get("openai/widgetDomain"))
-                    .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-            assertThat(resource.meta().get("openai/widgetPrefersBorder"))
-                    .isEqualTo(false);
-            assertThat(resource.meta().get("openai/widgetCSP").toString())
-                    .contains("resource_domains", "redirect_domains")
-                    .doesNotContain("connect_domains");
-
-            McpSchema.ReadResourceResult result = specification.readHandler().apply(
-                    null, new McpSchema.ReadResourceRequest(resource.uri()));
-            assertThat(result.contents())
-                    .singleElement()
-                    .isInstanceOfSatisfying(
-                            McpSchema.TextResourceContents.class,
-                            contents -> {
-                                assertThat(contents.uri()).isEqualTo(resource.uri());
-                                assertThat(contents.mimeType())
-                                        .isEqualTo(
-                                                OpenAiDeV1ContractMetadata
-                                                        .MCP_APP_RESOURCE_MIME_TYPE);
-                                assertThat(contents.text())
-                                        .startsWith("<!doctype html>")
-                                        .contains(
-                                                "ui/notifications/tool-result",
-                                                "goalVisualization",
-                                                "ui/open-link")
-                                        .doesNotContain("<script src=");
-                                assertThat(contents.meta().get("ui"))
-                                        .isInstanceOfSatisfying(
-                                                Map.class,
-                                                ui -> {
-                                                    assertThat(ui.get("domain"))
-                                                            .isEqualTo(
-                                                                    OpenAiDeV1ContractMetadata
-                                                                            .WIDGET_DOMAIN);
-                                                    assertThat(ui.get("prefersBorder"))
-                                                            .isEqualTo(false);
-                                                });
-                                assertThat(contents.meta().get("openai/widgetDomain"))
-                                        .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                                assertThat(contents.meta().get("openai/widgetPrefersBorder"))
-                                        .isEqualTo(false);
-                                String expectedSha256 = resource.uri().equals(
-                                                OpenAiDeV1ContractMetadata
-                                                        .GOAL_VISUALIZATION_RESOURCE_URI)
-                                        ? OpenAiDeV1ContractMetadata
-                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        : OpenAiDeV1ContractMetadata
-                                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
-                                assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
-                            });
-        }
-
-        assertThat(meterRegistry
-                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tags(
-                                "artifact",
-                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        .substring(0, 12),
-                                "role",
-                                "active",
-                                "status",
-                                "success")
-                        .timer()
-                        .count())
-                .isEqualTo(1);
-        assertThat(meterRegistry
-                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tags(
-                                "artifact",
-                                OpenAiDeV1ContractMetadata
-                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        .substring(0, 12),
-                                "role",
-                                "retained",
-                                "status",
-                                "success")
-                        .timer()
-                        .count())
-                .isEqualTo(1);
-    }
-
-    private static String sha256(String source) {
-        try {
-            return HexFormat.of().formatHex(
-                    MessageDigest.getInstance("SHA-256")
-                            .digest(source.getBytes(StandardCharsets.UTF_8)));
-        } catch (NoSuchAlgorithmException exception) {
-            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
-        }
+    void publishesNoMcpUiResources() {
+        assertThat(contract.resourceSpecifications()).isEmpty();
     }
 
     @Test
@@ -458,15 +343,30 @@ class OpenAiDeCoachMcpContractTest {
                 OpenAiDeV1McpContractAdapter.GoalVisualizationRenderResult.class);
 
         assertThat(renderResult.isError()).isFalse();
+        assertThat(renderResult.content())
+                .singleElement()
+                .isInstanceOfSatisfying(McpSchema.ImageContent.class, image -> {
+                    assertThat(image.mimeType()).isEqualTo("image/jpeg");
+                    assertThat(Base64.getDecoder().decode(image.data()))
+                            .isEqualTo("approved-image".getBytes(StandardCharsets.UTF_8));
+                    assertThat(image.annotations().audience()).containsExactly(McpSchema.Role.USER);
+                    assertThat(image.annotations().priority()).isEqualTo(1.0);
+                    assertThat(image.meta()).containsEntry(
+                            "altText",
+                            context.goalVisualization().altText());
+                });
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION, renderResult);
         assertThat(render.goalVisualization()).isEqualTo(context.goalVisualization());
         assertThat(render.goalVisualization().imageUrl())
                 .isEqualTo("https://skillpilot.test/assets/goal-visualizations/physik/"
                         + "goal-with-image/goal-with-image.jpg");
+        verify(goalVisualizationImageResolver).resolve(
+                "https://skillpilot.test/assets/goal-visualizations/physik/"
+                        + "goal-with-image/goal-with-image.jpg");
     }
 
     @Test
-    void nativeMobileAndUnknownSurfacesNeverReceiveOrRenderTheUiAuthorization() {
+    void nativeMobileAndUnknownSurfacesNeverReceiveOrRenderTheImageAuthorization() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
 
         OpenAiDeCoachContext desktopBefore = structured(
@@ -516,6 +416,25 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(nativeRender.content().toString())
                 .contains("ohne Bild")
                 .contains("nicht automatisch erneut");
+    }
+
+    @Test
+    void rendererFailsClosedWhenTheApprovedImageBytesCannotBeResolved() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
+        when(goalVisualizationImageResolver.resolve(any())).thenReturn(Optional.empty());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                Map.of("goalId", "goal-with-image"));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.content().toString())
+                .contains("ohne Bild")
+                .contains("nicht automatisch erneut");
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "INVALID_INPUT")
+                .containsEntry("stateVersion", 0L)
+                .containsEntry("stateChanged", false));
     }
 
     @Test
@@ -660,7 +579,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void missingOrDisabledVisualizationNeverOffersOrRendersTheUiTool() {
+    void missingOrDisabledVisualizationNeverOffersOrRendersTheImageTool() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
 
         OpenAiDeCoachContext missing = structured(
@@ -794,11 +713,13 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Do not test prior knowledge")
                 .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
-                .contains("UI receipt only")
+                .contains("image receipt only")
+                .contains("standard MCP image content")
+                .contains("does not bind or create an MCP UI component")
                 .contains("preceding full SkillPilot result as the authority")
                 .contains("immediate next tool call in the same assistant turn")
                 .contains("unchanged goalId and expectedStateVersion")
-                .contains("client surfaces where the UI is not known to complete reliably")
+                .contains("client surfaces where image presentation is not known to complete reliably")
                 .contains("absence is authoritative")
                 .contains("Never infer image support")
                 .contains("Never retry it automatically")

@@ -423,10 +423,10 @@ Interpretation:
 ### 7.3 Atomic goal visualizations
 
 Atomic learning goals may optionally carry one or more didactic image references
-for cockpit and provider UI use. The multilingual OpenAI V1 MCP App renders the
-current goal's visualization inline when the active goal is atomic, has a
-matching canonical `goal-visualization` link, and the learner's default-on
-`showGoalVisualizationsInChat` preference is not disabled.
+for cockpit and provider use. The multilingual OpenAI V1 MCP coach may return the
+current goal's visualization as standard MCP `ImageContent` when the active goal
+is atomic, has a matching canonical `goal-visualization` link, and the learner's
+default-on `showGoalVisualizationsInChat` preference is not disabled.
 
 Rule:
 
@@ -435,59 +435,41 @@ Rule:
 * Public URLs should be root-relative under `/assets/goal-visualizations/...`.
   The OpenAI V1 adapter resolves the matching active atomic goal's asset to an
   absolute public URL and exposes it only through the bounded
-  `goalVisualization` projection used by the MCP UI. Other resources and
-  provider adapters continue to use a normal cockpit deep link such as
+  `goalVisualization` projection used by the image renderer. Other resources
+  and provider adapters continue to use a normal cockpit deep link such as
   `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
-* Only `render_skillpilot_goal_visualization` carries the read-only MCP UI
-  resource metadata. Offer that renderer only when the learner preference is
-  enabled and a safe `goalVisualization` projection exists. Ordinary context
-  reads and state mutations must not create an empty UI box. If the learner
-  disabled chat visualizations, the active goal is not atomic, the canonical
-  link does not match its goal ID, or the image data is absent or invalid, omit
-  the renderer; the ordinary chat response must remain fully usable.
-* The native mobile host currently starts the UI shell but does not fetch the
-  advertised resource, so widget-side load/error teardown never runs. As a
-  narrowly scoped presentation fallback, the OpenAI V1 adapter may use the
-  optional best-effort `openai/userAgent` call metadata to offer images only to
-  an explicitly recognized desktop web browser. Missing, mobile/native, or
-  unrecognized hints fail closed for the optional image only. This signal must
-  never affect authentication, authorization, identity, learning state, or
-  persistence, and the raw value must not be logged. Apply the presentation
-  filter after the coordinator: results stored for idempotent replay
-  remain surface-neutral, and every fresh or replayed result is filtered for
-  the current caller before it leaves the adapter. A mobile call must never
-  persistently remove a later desktop-web image authorization, and a desktop
-  replay must never leak that authorization to mobile. Use the documented
-  decoupled data-then-render flow: when the newest
-  successful full context or state-changing result contains an eligible
-  `goalVisualization` and permits the renderer, call it exactly once as the
-  immediate next tool call in the same assistant turn, with that result's
-  unchanged `goalId` and `expectedStateVersion`. A newer successful result
-  invalidates the prior authorization. The renderer reprojects current backend
-  state and rejects stale versions or mismatched goal IDs. Its success is a
-  narrow UI receipt and does not replace the preceding full SkillPilot context
-  for coaching or state decisions. Do not retry an attempted image or claim
-  that the host displayed it.
-* Only a currently authorized desktop-web render call receives the existing
-  standards-first image-load attempt. Keep the component hidden until a
-  successful image `load`. If no structured payload arrives during the bounded
-  bootstrap deadline, or the image raises an error or exceeds its own bounded
-  timeout, keep it hidden and request teardown without waiting for the MCP Apps
-  handshake. Mobile/native and unknown clients receive the complete ordinary
-  chat response without starting the renderer. A later host rollout can widen
-  the presentation allowlist after an end-to-end completion test.
-* Treat every content-addressed UI URI that has been advertised to a real
-  client, including during draft testing, as immutable and retained. A newer
-  widget URI is additive: tool metadata points only to the active resource,
-  while `resources/read` continues to return the exact historical bytes for
-  older chats and connector metadata snapshots. Never alias newer bytes below
-  an older SHA-256 URI and never remove the old URI while the plugin major is
-  usable.
-* The inline component renders only the public image. Its accessible alt text
-  remains attached to the image, but goal ID, title, description, and cockpit
-  URL from the bounded projection are not shown as additional UI. The
-  component does not create state, authorize an action, select a goal, or
-  expose a permanent learner identity.
+* `render_skillpilot_goal_visualization` is a read-only image renderer. It
+  returns exactly one approved JPEG or PNG as standard MCP `ImageContent`, with
+  a bounded byte limit and accessible alt metadata. Its descriptor must not
+  carry `ui.resourceUri`, `openai/outputTemplate`, widget metadata, or any MCP
+  UI resource binding. Offer it only when the preference is enabled and a safe
+  `goalVisualization` projection exists. If the image is absent, invalid, or
+  too large, omit or reject the renderer without affecting the ordinary chat.
+* The native mobile host failed to complete the former widget resource flow and
+  left a permanent loading shell in synchronized chats. V1 therefore publishes
+  no MCP UI resource. It may still use optional best-effort `openai/userAgent`
+  metadata to offer images only to an explicitly recognized desktop browser.
+  Missing, mobile/native, or unrecognized hints fail closed for the optional
+  image only. This hint is not a stable host detector or security boundary; it
+  must never affect authentication, authorization, identity, learning state,
+  or persistence, and the raw value must not be logged.
+* Apply the presentation filter after the coordinator so replayable results
+  remain surface-neutral. When the newest successful full context or mutation
+  contains `goalVisualization` and permits the renderer, call it exactly once
+  as the immediate next tool call with the unchanged `goalId` and
+  `expectedStateVersion`. A newer successful result invalidates the prior
+  authorization. The renderer reprojects current backend state and rejects
+  stale versions or mismatched goal IDs. Its image receipt does not replace the
+  preceding full SkillPilot context. Never retry or claim the host displayed it.
+* V1 is still unpublished, and there is explicitly no backward compatibility
+  requirement for its experimental widget resources. Remove the former HTML
+  bundles, resource inventory, template metadata, and resource-read telemetry
+  instead of retaining them. Old test chats are unsupported; refresh the plugin
+  metadata and use a fresh chat after deployment.
+* The renderer returns only image bytes. Alt text remains metadata, while goal
+  ID, title, description, and cockpit URL are not shown as additional
+  presentation. The image result creates no state, authorization, goal
+  selection, or permanent learner identity.
 * Image filenames should be the same SkillPilot ID plus image extension, using `<skillpilotId>.<ext>`, so copied assets remain self-identifying without creating Windows path-length problems.
 * Keep source image and prompt metadata under `curricula/DE/Gymnasium/visualizations/<subject>/<skillpilotId>/`.
 * For Gemini API generated images, keep `image-reconstruction-prompt.de.md` beside the canonical source image. It is a standalone alternative prompt derived from the generated image and may be offered or generated on demand in `/goal-visualization-qa` as a correction base; it does not override human review or fachliche correctness.
@@ -982,13 +964,11 @@ Provider-facing contracts must use derived temporary context instead:
   reserved and fail closed with `404`; only V1 is active. Earlier
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
-  compatibility routes. The still-unpublished `1.0.0` draft includes one
-  read-only MCP UI resource for active atomic-goal visualizations. Its
-  plugin-unique widget origin is the existing V1 origin
-  `https://mcp-coach-v1.skillpilot.com`; the resource metadata declares that
-  domain and the bounded CSP explicitly. Coaching, selection, answers, and
-  state transitions remain normal MCP/chat flows.
-- OpenAI MCP uses one App, public tool catalog, resource URI, endpoint and
+  compatibility routes. The still-unpublished `1.0.0` draft returns optional
+  goal visualizations as standard MCP image content and publishes no MCP UI
+  resource or widget origin. Coaching, selection, answers, and state
+  transitions remain normal MCP/chat flows.
+- OpenAI MCP uses one App, public tool catalog, endpoint and
   registration per contract major, not per language. Plugin metadata, skill
   instructions, tool names, descriptions, schemas and stable machine values use
   neutral English. The backend pins the interaction language in the learning
@@ -1020,7 +1000,7 @@ LLM/learning-coach prompts should reinforce that:
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
 uses separate provider-specific adapters. The current multilingual OpenAI
 channel is the provider-hosted MCP App with a chat-first tool contract
-and one bounded read-only goal-visualization component; its target packaging
+and one bounded read-only standard-image result; its target packaging
 combines that registered connection with a language-neutral English control-plane skill as
 documented in
 `docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
@@ -1044,8 +1024,8 @@ provider policy and product review explicitly permit it.
   backend decisions.
 - **Target OpenAI plugins:** maintain one public submission per contract major,
   not per language. V1 combines one neutral English coach-control skill with one
-  directly submitted MCP server, stable tool names and descriptions, widget
-  resources, endpoint, App registration and test suite. The backend-owned
+  directly submitted MCP server, stable tool names and descriptions, endpoint,
+  App registration and test suite. The backend-owned
   learning session pins the interaction language; all learner-facing payloads
   arrive in that language and the model must use it exclusively. Local pilot
   packages may reference the registered connection through `.app.json`.
@@ -1071,9 +1051,10 @@ provider policy and product review explicitly permit it.
   remain in result `_meta` and app-only tools apply them directly. The
   `goalVisualization` projection is present only when the learner's default-on
   chat-visualization preference is enabled and an active atomic goal has a
-  matching canonical image link. Only the dedicated read-only
-  `render_skillpilot_goal_visualization` tool carries MCP UI metadata;
-  ordinary context reads and state mutations never create a UI box. When their
+  matching canonical image link. The dedicated read-only
+  `render_skillpilot_goal_visualization` tool returns standard MCP
+  `ImageContent` and carries no UI-template metadata; ordinary context reads
+  and state mutations never create a UI box. When their
   newest full result contains an eligible image and permits the renderer, that
   renderer follows immediately and exactly once with the unchanged `goalId`
   and `expectedStateVersion`; an attempted image must not be retried

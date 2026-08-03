@@ -35,19 +35,12 @@ public final class OpenAiDeMcpTelemetry {
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
 
     public static final String TOOL_DURATION_METRIC = "skillpilot.openai.coach.v1.mcp.tool.duration";
-    public static final String RESOURCE_READ_DURATION_METRIC =
-            "skillpilot.openai.coach.v1.mcp.resource.duration";
-
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String SUCCESS_RESULT_CODE = "OK";
     private static final String GENERIC_ERROR_RESULT_CODE = "ERROR";
     private static final String EXCEPTION_RESULT_CODE = "EXCEPTION";
     private static final String UNKNOWN_TOOL = "unknown";
-    private static final String UNKNOWN_ARTIFACT = "unknown";
-    private static final String ACTIVE_ARTIFACT_ROLE = "active";
-    private static final String RETAINED_ARTIFACT_ROLE = "retained";
     private static final String UNKNOWN_CLIENT_SURFACE = "unknown";
-    private static final int ARTIFACT_FINGERPRINT_LENGTH = 12;
     private static final String UNAVAILABLE = "-";
     private static final int MAX_LOG_VALUE_LENGTH = 160;
     private static final int SESSION_FINGERPRINT_LENGTH = 22;
@@ -175,39 +168,6 @@ public final class OpenAiDeMcpTelemetry {
         }
     }
 
-    /** Records a bounded, privacy-safe observation for one MCP UI resource read. */
-    public McpSchema.ReadResourceResult recordResourceRead(
-            String resourceUri,
-            Supplier<McpSchema.ReadResourceResult> read) {
-        Timer.Sample sample = Timer.start(meterRegistry);
-        String status = "exception";
-        try {
-            McpSchema.ReadResourceResult result = read.get();
-            status = result == null ? "error" : "success";
-            return result;
-        } finally {
-            ResourceArtifact artifact = ResourceArtifact.classify(resourceUri);
-            long durationNanos = sample.stop(Timer.builder(RESOURCE_READ_DURATION_METRIC)
-                    .description("Duration and outcome of OpenAI Coach V1 MCP UI resource reads")
-                    .tag("artifact", artifact.fingerprint())
-                    .tag("role", artifact.role())
-                    .tag("status", status)
-                    .tag("contract.major", String.valueOf(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR))
-                    .tag("plugin.line", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)
-                    .register(meterRegistry));
-            LOGGER.info(
-                    "OpenAI Coach V1 MCP V1 resource read: contractMajor={} pluginLine={} "
-                            + "serverBuild={} uiArtifact={} artifactRole={} status={} latencyMs={}",
-                    OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
-                    OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY,
-                    safeLogValue(serverBuild),
-                    artifact.fingerprint(),
-                    artifact.role(),
-                    status,
-                    TimeUnit.NANOSECONDS.toMillis(durationNanos));
-        }
-    }
-
     public void recordOperational(Event event) {
         if (operationalTelemetry != null) {
             operationalTelemetry.record(event);
@@ -311,29 +271,4 @@ public final class OpenAiDeMcpTelemetry {
                 : normalized.substring(0, MAX_LOG_VALUE_LENGTH);
     }
 
-    private record ResourceArtifact(String fingerprint, String role) {
-
-        private static final ResourceArtifact ACTIVE = new ResourceArtifact(
-                fingerprint(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
-                ACTIVE_ARTIFACT_ROLE);
-        private static final ResourceArtifact RETAINED = new ResourceArtifact(
-                fingerprint(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256),
-                RETAINED_ARTIFACT_ROLE);
-        private static final ResourceArtifact UNKNOWN =
-                new ResourceArtifact(UNKNOWN_ARTIFACT, UNKNOWN_ARTIFACT);
-
-        private static ResourceArtifact classify(String resourceUri) {
-            if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
-                return ACTIVE;
-            }
-            if (OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
-                return RETAINED;
-            }
-            return UNKNOWN;
-        }
-
-        private static String fingerprint(String sha256) {
-            return sha256.substring(0, ARTIFACT_FINGERPRINT_LENGTH);
-        }
-    }
 }

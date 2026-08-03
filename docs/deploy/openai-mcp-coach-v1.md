@@ -11,13 +11,12 @@ freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
 dedizierten `mcp-coach-v1.skillpilot.com`-Origin. Client-TLS ist nicht
 aktiviert.
 
-Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit einer eng
-begrenzten read-only MCP-UI für Lernzielvisualisierungen. MCP-Server,
-OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
-laufen im **bestehenden Spring-Boot-Prozess**. Der Node-MCP-Server unter
-`ai/openai app/` bleibt ein lokales Regressionstestbett; dort liegt zugleich die
-geprüfte Quellimplementierung der Lernzielkarte, deren selbstenthaltenes
-Build-Artefakt in den Spring-Boot-Ressourcenpfad übernommen wird.
+Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit einer
+eng begrenzten optionalen Bildausgabe. MCP-Server, OAuth-Authorization-Server,
+Bildauflösung und SkillPilot-Fachlogik laufen im **bestehenden
+Spring-Boot-Prozess**. Der Node-MCP-Server unter `ai/openai app/` bleibt ein
+lokales Regressionstestbett; der produktive V1-Vertrag veröffentlicht jedoch
+keine MCP-UI-Ressource oder Widget-Vorlage.
 
 Die Architektur- und Migrationsentscheidungen stehen in
 [openai-mcp-coach-migration-plan.md](../concept/runtime-workflows/openai-mcp-coach-migration-plan.md).
@@ -42,8 +41,7 @@ MCP-Werkzeug.
 | Plugin-Identität | `skillpilot-coach-v1` |
 | MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
-| Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
+| Lernzielbild-Ausgabe | standardisierter MCP-`ImageContent`; keine MCP-UI-Ressource |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
@@ -52,14 +50,12 @@ MCP-Werkzeug.
 | Token Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/token` |
 | Revocation Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/revoke` |
 
-Die Tabelle nennt die Ressource, die der aktuelle Tool-Descriptor aktiv
-referenziert. Bereits in Browser- oder nativen App-Chats gespeicherte
-Nachrichten dürfen jedoch weiterhin die frühere, ebenfalls
-inhaltsadressierte Ressource
-`ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html`
-anfordern. Der V1-Server hält deshalb beide URIs über `resources/list` und
-`resources/read` bytegenau verfügbar; nur die Ressource mit `sha256-c890...`
-ist das aktive Template für neue Tool-Ergebnisse.
+Der aktuelle Tool-Descriptor referenziert keine `ui://`-Ressource und kein
+`openai/outputTemplate`; `resources/list` ist leer. Da V1 noch nicht
+veröffentlicht wurde, werden experimentelle Widget-Ressourcen früherer
+Draft-Tests nicht kompatibel weitergeführt. Alte Test-Chats sind nicht Teil des
+Vertrags; nach dem Update werden die Plugin-Metadaten aktualisiert und neue
+Chats verwendet.
 
 Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
@@ -370,12 +366,11 @@ konfiguriert. Sie sind unveränderliche Bestandteile des V1-Vertrags:
 - Protected-Resource-Metadaten:
   `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
 
-Auch ein `SKILLPILOT_OPENAI_COACH_V1_UI_ORIGIN` ist unzulässig: Der Widget-Origin ist
-als `https://mcp-coach-v1.skillpilot.com` fest im V1-Vertrag verankert und
-wird identisch über `_meta.ui.domain` und `_meta["openai/widgetDomain"]`
-ausgeliefert. Alte URL-Variablen und gleichnamige neue Override-Versuche führen
-fail-closed zum Abbruch. Damit kann eine alte oder falsch geschriebene Route den
-versionierten V1-Vertrag nicht unbemerkt ersetzen.
+Auch ein `SKILLPILOT_OPENAI_COACH_V1_UI_ORIGIN` ist unzulässig: V1
+veröffentlicht keinen Widget-Origin und keine MCP-UI. Alte URL-Variablen und
+gleichnamige neue Override-Versuche führen fail-closed zum Abbruch. Damit kann
+eine alte oder falsch geschriebene Route den versionierten V1-Vertrag nicht
+unbemerkt ersetzen.
 
 Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
 `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
@@ -657,9 +652,8 @@ Anwendungslogs erscheinen.
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
    ausführen. Prüfen, dass genau die zwölf sprachneutralen Produktivwerkzeuge
    erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
-   dürfen sichtbar sein. Zusätzlich müssen die aktive versionierte
-   Lernzielbild-Ressource und alle bereits ausgelieferten, unveränderlichen
-   Vorgänger über `resources/list` und `resources/read` verfügbar sein.
+   dürfen sichtbar sein. `resources/list` muss leer sein und kein Werkzeug darf
+   `ui.resourceUri` oder `openai/outputTemplate` tragen.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
@@ -677,46 +671,42 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau eine
-read-only Widget-Ressource für das Bild des aktiven atomaren Lernziels. Nur
-`render_skillpilot_goal_visualization` referenziert sie über
-`ui.resourceUri` sowie den ChatGPT-Kompatibilitätsalias
-`openai/outputTemplate`. Die übrigen Werkzeuge besitzen keine UI-Bindung;
-Auswahl und Coaching bleiben im normalen Chat. Der Kontext projiziert
-`goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei einem aktiven
-atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
-Cockpit-Einstellung. Die sichere Projektion darf interne Zielmetadaten tragen;
-sichtbar rendert das Widget jedoch ausschließlich das Bild mit dem am
-`img`-Element hinterlegten Alttext. Titel, Lernzielbeschreibung und Cockpit-Link
-erscheinen nicht in der UI. Fehlt ein gültiges Bild, entsteht keine UI-Karte und
-der normale Chatablauf funktioniert unverändert. Wenn das neueste vollständige
-Kontext- oder Mutationsergebnis ein zulässiges Bild enthält und den Renderer
-erlaubt, folgt dieser unmittelbar danach im selben Assistant-Turn genau einmal
-mit der unveränderten Ziel-ID und `expectedStateVersion` aus genau diesem
-Ergebnis. Ein neueres erfolgreiches SkillPilot-Ergebnis entzieht die vorherige
-Freigabe. Der Renderer projiziert den Backendzustand erneut und weist veraltete
-Versionen oder Ziel-IDs zurück. Sein Ergebnis bestätigt nur die UI-Projektion
-und ersetzt nicht den vorherigen vollständigen Kontext für Coaching- oder
-Zustandsentscheidungen. Ein bereits versuchtes Bild wird nicht automatisch
-erneut aufgerufen. Ein gültiges Bild wird auf einem ausdrücklich erkannten
-Desktop-Webbrowser unsichtbar geladen und erst nach erfolgreichem `load`
-gezeigt. Die native Mobile-App ruft den Renderer zwar auf, lädt die Ressource
-aber in dem beobachteten fehlerhaften Pfad nicht; Widget-seitiger Teardown
-konnte dort deshalb nicht laufen.
-Der Adapter verwendet den optionalen Best-effort-Hinweis
-`openai/userAgent` ausschließlich als Darstellungsschranke: Nur Desktop-Web
-erhält `goalVisualization` und die Renderer-Freigabe. Mobile/native und
-unbekannte Hinweise erhalten den vollständigen Textpfad ohne Bildkomponente.
-Der Rohwert wird weder protokolliert noch persistiert und beeinflusst niemals
-OAuth, Autorisierung, Identität, Lernzustand oder Schreibvorgänge. Bei einem
-konkreten Bildfehler oder nach dem begrenzten Lade-Timeout bleibt die
-Desktop-Web-UI verborgen und fordert ihren Teardown an; die normale
-Chat-Antwort bleibt der vollständige Fallback.
-Idempotent gespeicherte Toolergebnisse bleiben dabei oberflächenneutral. Die
-Darstellungsschranke wird erst nach jedem frischen oder wiedergegebenen
-Coordinator-Ergebnis angewendet, damit Gerätewechsel weder eine Desktop-
-Freigabe an Mobile durchreichen noch Bilder im Desktop-Web dauerhaft
+Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert keine
+MCP-UI-Ressource. `render_skillpilot_goal_visualization` liefert das geprüfte
+JPEG- oder PNG-Bild als standardisierten MCP-`ImageContent`; Auswahl und
+Coaching bleiben im normalen Chat. Der Kontext projiziert `goalVisualization`
+und erlaubt das Bildwerkzeug nur bei einem aktiven atomaren Ziel mit passendem
+kanonischem Bildlink und aktivierter Cockpit-Einstellung. Der Renderer prüft
+Backendzustand, Ziel-ID und `expectedStateVersion` erneut und löst nur
+freigegebene lokale Bildpfade innerhalb der Größen- und Medientypgrenzen auf.
+Im Toolinhalt erscheint genau das Bild; der Alttext bleibt Metadatum. Titel,
+Lernzielbeschreibung, Bild-URL und Cockpit-Link werden nicht als zusätzliche
+Bildkarte ausgegeben.
+
+Wenn das neueste vollständige Kontext- oder Mutationsergebnis ein zulässiges
+Bild enthält und den Renderer erlaubt, folgt dieser unmittelbar danach im
+selben Assistant-Turn genau einmal mit der unveränderten Ziel-ID und
+`expectedStateVersion` aus genau diesem Ergebnis. Ein neueres erfolgreiches
+SkillPilot-Ergebnis entzieht die vorherige Freigabe. Das Renderer-Ergebnis ist
+nur eine Bildbestätigung und ersetzt nicht den vorherigen vollständigen Kontext
+für Coaching- oder Zustandsentscheidungen. Ein bereits versuchtes oder nicht
+sicher ladbares Bild wird nicht automatisch erneut aufgerufen.
+
+Der Adapter verwendet den optionalen Best-effort-Hinweis `openai/userAgent`
+ausschließlich als Darstellungsschranke: Nur ein ausdrücklich erkannter
+Desktop-Webbrowser erhält `goalVisualization` und die Renderer-Freigabe.
+Mobile/native und unbekannte Hinweise erhalten den vollständigen Textpfad ohne
+Renderer. Der Rohwert wird weder protokolliert noch persistiert und beeinflusst
+niemals OAuth, Autorisierung, Identität, Lernzustand oder Schreibvorgänge.
+Idempotent gespeicherte Toolergebnisse bleiben oberflächenneutral. Die
+Darstellungsschranke wird nach jedem frischen oder wiedergegebenen
+Coordinator-Ergebnis angewendet, damit Gerätewechsel weder eine
+Desktop-Freigabe an Mobile durchreichen noch Bilder im Desktop-Web dauerhaft
 unterdrücken.
+
+Da V1 unveröffentlicht ist, gibt es keine Kompatibilitätszusage für alte
+Widget-Testnachrichten. Die früheren Template-URIs werden entfernt. Abnahme und
+Fehlersuche erfolgen nach Plugin-Refresh ausschließlich in einem frischen Chat.
 
 Die `learningSessionId` erscheint ausschließlich in der automatisch
 vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
@@ -889,7 +879,7 @@ Antwort notieren:
 | --- | --- |
 | `Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
 | Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | `get_skillpilot_context` läuft; unmittelbar danach folgt `render_skillpilot_goal_visualization` genau einmal mit `goalId` und `expectedStateVersion` aus demselben Ergebnis. Danach bleibt die fachliche Antwort vollständig. |
-| Das neueste Ergebnis enthält kein Bild oder erlaubt den Renderer nicht | Es gibt keinen Renderer-Aufruf und keine leere UI-Karte; die normale Coaching-Antwort bleibt vollständig. |
+| Das neueste Ergebnis enthält kein Bild oder erlaubt den Renderer nicht | Es gibt keinen Renderer-Aufruf und keinen Bildinhalt; die normale Coaching-Antwort bleibt vollständig. |
 | Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor | Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht. |
 | `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context` läuft; eindeutige Teile werden als bestätigter Kontext genannt und nicht erneut erfragt. Alle aktuell bestimmbaren offenen Angaben werden in einer gemeinsamen Frage angeboten. |
 | Mehrere offene Angaben in einer Nachricht und in umgekehrter Reihenfolge beantworten | Der Coach übernimmt die Mehrfachabsicht unabhängig von der Antwortreihenfolge. Er wendet intern jeweils nur die aktuelle Option an, lädt danach den Plan frisch und löst erst dann die nächste Angabe auf. |
@@ -955,9 +945,9 @@ Der Benutzer muss die Session-ID weder kopieren noch verändern.
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-
 und App-Oberflächen praktisch bestätigt sind. Auf jeder Oberfläche bleibt die
-normale textuelle Chat-Antwort der verbindliche Fallback; eine Bild-UI gehört
-nur dann zur Freigabezusage, wenn ihr tatsächlicher Lade- und
-Rehydrationsnachweis dort bestanden ist.
+normale textuelle Chat-Antwort der verbindliche Fallback; die optionale
+standardisierte Bildausgabe gehört nur dort zur Freigabezusage, wo sie praktisch
+bestätigt wurde.
 
 ## 7. Cockpit-Canary und Cutover
 

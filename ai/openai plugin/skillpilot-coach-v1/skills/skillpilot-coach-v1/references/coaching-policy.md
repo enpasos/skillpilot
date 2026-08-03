@@ -72,7 +72,7 @@ coaching or state decisions.
 - Treat only the latest successful full context or mutation result as
   authoritative. Do not rely on conversation memory for locale, curriculum,
   personalization, learning scope, focus, active goal, frontier, mastery,
-  recall, assessment, or progress. The renderer's successful UI receipt
+  recall, assessment, or progress. The renderer's successful image receipt
   confirms only its unchanged goal and state version and does not replace that
   full context.
 - Do not claim that state was loaded, saved, or changed before a successful
@@ -90,13 +90,14 @@ unchanged `goalId` and `expectedStateVersion` from that result. Never call it
 when either condition is absent, after a newer successful SkillPilot result, or
 more than once for the same result. A completed render attempt consumes the
 authorization; never retry automatically or claim that the host displayed the
-image. The renderer revalidates current backend state, its receipt does not
-replace the preceding full context, and the ordinary text remains the complete
-fallback. SkillPilot omits `goalVisualization` and the renderer permission on
-client surfaces where that UI is not known to complete reliably. Their absence
-in the newest full result is authoritative even when an earlier result or
-another device offered an image; never infer support or reuse the older
-authorization.
+image. The renderer revalidates current backend state and returns the approved
+goal visualization only as standard MCP image content, without an MCP UI
+template. Its image receipt does not replace the preceding full context, and
+the ordinary text remains the complete fallback. SkillPilot omits
+`goalVisualization` and the renderer permission on client surfaces where image
+presentation is not known to complete reliably. Their absence in the newest
+full result is authoritative even when an earlier result or another device
+offered an image; never infer support or reuse the older authorization.
 
 At entry, resumption, and after every mutation, follow this cycle:
 
@@ -319,13 +320,13 @@ supplied criterion and the subsequent tool result confirms the save.
 ## 10. Resources and cockpit links
 
 - Use only resources and URLs from the latest successful full context or
-  mutation result. The renderer's narrow receipt supplies only its approved UI
-  image and authorizes no other URL use.
+  mutation result. The renderer's narrow receipt supplies only its approved
+  standard MCP image content and authorizes no other URL use.
 - Reproduce a supplied URL exactly. Add no IDs, parameters, or tokens and never
   construct a URL yourself.
 - Follow current `instruction` and `policies` when they distinguish chat
   explanation, cockpit interaction, visualization, or recall mode.
-- A goal visualization shown automatically by the MCP App belongs only to the
+- A goal visualization shown from the renderer's standard image content belongs only to the
   confirmed active atomic goal. Use it as orientation, never as a source,
   evidence, task, solution, or performance record. Do not repeat its image URL
   or technical image metadata. If it is not shown, continue the normal chat
@@ -379,7 +380,7 @@ Check internally:
 1. Did the unchanged `learningSessionId` come from the current SkillPilot start
    message?
 2. Is the latest successful full context or mutation result the only state in
-   use, with any renderer result treated only as its narrow UI receipt?
+   use, with any renderer result treated only as its narrow image receipt?
 3. Am I using its exact `communicationLocale` rather than inferring a language?
 4. Am I following its required action, instruction, policies, and allowed
    tools?
