@@ -25,13 +25,12 @@ line. This version has not been published yet.
   matching canonical `goal-visualization` link
 - image-only presentation without additional goal text or cockpit link; it is
   shown only after the image has loaded successfully
-- deferred goal-image rendering after context reads, reloads, and mutations:
-  the image renderer never follows another tool in the same assistant turn and
-  may run at most once as the first tool of a later learner-initiated turn that
-  continues the same active goal, using its unchanged `goalId` and
-  `expectedStateVersion`; stale or attempted images are not retried
+- immediate data-then-render goal-image flow: after a full result exposes and
+  permits an image, the renderer follows exactly once in the same assistant
+  turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
+  or attempted images are not retried and the full result remains authoritative
 - host-neutral image loading for browser, desktop, and native mobile hosts once
-  that deferred renderer runs, without relying on optional platform or
+  the renderer runs, without relying on optional platform or
   user-agent hints; a bounded bootstrap deadline also closes a hidden view that
   never receives its structured result, while image errors and load timeouts
   request teardown independently of the MCP Apps handshake

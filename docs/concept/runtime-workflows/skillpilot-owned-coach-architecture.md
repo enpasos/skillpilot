@@ -360,25 +360,22 @@ sie nur für ein aktives atomares Ziel mit passendem kanonischem
 Projektion; sichtbar rendert das Widget ausschließlich das Bild und hinterlegt
 den Alttext am `img`-Element. Titel, Beschreibung, Ziel-ID und Cockpit-Link
 werden nicht angezeigt. Fehlende oder ungültige Bilder blenden die Komponente
-aus und lassen den normalen Chat unverändert. Kontextabrufe, Reloads und
-Mutationen planen ein passendes Bild nur vor. Der Renderer darf ihnen oder
-einem anderen Tool nicht im selben Assistant-Turn folgen. Erst im frühesten
-späteren, vom Lernenden ausgelösten Turn, der dasselbe aktive Ziel fortsetzt,
-darf er mit unveränderter Ziel-ID und `expectedStateVersion` höchstens einmal
-als erster Tool-Aufruf laufen. Ein neuer Kontext, ein Ziel-/Scope-/Sessionwechsel
-oder ein bereits versuchtes Bild verwirft beziehungsweise ersetzt diese
-Vormerkung. Der Renderer projiziert den Backendzustand erneut und weist eine
+aus und lassen den normalen Chat unverändert. Wenn das neueste vollständige
+Kontext- oder Mutationsergebnis ein passendes Bild enthält und den Renderer
+erlaubt, folgt dieser unmittelbar danach im selben Assistant-Turn genau einmal
+mit der unveränderten Ziel-ID und `expectedStateVersion` aus diesem Ergebnis.
+Ein neueres erfolgreiches SkillPilot-Ergebnis entzieht die vorherige
+Freigabe. Der Renderer projiziert den Backendzustand erneut und weist eine
 veraltete Version oder Ziel-ID zurück. Sein erfolgreiches Ergebnis ist nur eine
-enge UI-Bestätigung und ersetzt nicht den letzten vollständigen SkillPilot-
-Kontext für Coaching- oder Zustandsentscheidungen. Diese Reihenfolge gilt
-hostneutral und verhindert insbesondere dauerhafte Host-Platzhalter bei
-verketteten Data-Tool-/UI-Tool-Aufrufen.
+enge UI-Bestätigung und ersetzt nicht den vorherigen vollständigen SkillPilot-
+Kontext für Coaching- oder Zustandsentscheidungen. Ein bereits versuchtes Bild
+wird nicht automatisch erneut aufgerufen.
 
 Ein gültiges Bild bleibt bis zu seinem erfolgreichen `load`-Ereignis
 unsichtbar. Nur ein konkreter Ladefehler oder der begrenzte Lade-Timeout blendet
 es wieder aus und fordert den Teardown an. Plattform- und User-Agent-Werte
-werden nicht zur Oberflächenklassifizierung verwendet: Sobald der verschobene
-Renderer aufgerufen wird, erhalten Mobile Browser, native Apps und Desktop-Hosts
+werden nicht zur Oberflächenklassifizierung verwendet: Sobald der Renderer
+aufgerufen wird, erhalten Mobile Browser, native Apps und Desktop-Hosts
 denselben oberflächenneutralen Ladeversuch; ausschließlich der tatsächliche
 Ladeerfolg entscheidet über die Anzeige. Das Bild ist Orientierung, niemals Evidenz,
 Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Der Teardown ist eine Anfrage

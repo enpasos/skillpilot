@@ -80,22 +80,19 @@ coaching or state decisions.
 
 ## 3. General decision cycle
 
-### Deferred goal-visualization boundary
+### Goal-visualization boundary
 
-An eligible `goalVisualization` is pending UI, not an immediate follow-up tool
-call. A context read, reload, or mutation may schedule it, but the renderer must
-never run later in that same assistant turn or after any other tool call. Keep
-the ordinary response complete without it. On the earliest subsequent
-learner-initiated turn that clearly continues the same active goal, call
-`render_skillpilot_goal_visualization` at most once, with the unchanged
-`goalId` and `expectedStateVersion`, as the first tool call of the entire turn.
-Do not create a filler turn solely for the image. If a reload is required, the
-learner changes or abandons the session, scope, or goal, another tool must run
-first, or a newer successful result supersedes the pending goal, discard or
-replace the pending visualization. A completed render attempt consumes it for
-that continuous active-goal episode; never retry automatically or claim that
-the host displayed the image. The renderer revalidates the current backend
-state and the ordinary text remains the complete fallback.
+An eligible `goalVisualization` is an immediate presentation follow-up to the
+successful full result that authorized it. If that result also lists
+`render_skillpilot_goal_visualization` in `nextAllowedTools`, call the renderer
+exactly once as the next tool call in the same assistant turn, with the
+unchanged `goalId` and `expectedStateVersion` from that result. Never call it
+when either condition is absent, after a newer successful SkillPilot result, or
+more than once for the same result. A completed render attempt consumes the
+authorization; never retry automatically or claim that the host displayed the
+image. The renderer revalidates current backend state, its receipt does not
+replace the preceding full context, and the ordinary text remains the complete
+fallback.
 
 At entry, resumption, and after every mutation, follow this cycle:
 
@@ -104,11 +101,11 @@ At entry, resumption, and after every mutation, follow this cycle:
 3. Capture the complete request regardless of order or wording.
 4. First follow `requiredAction`, `instruction`, `policies`, and
    `nextAllowedTools` from the latest result.
-5. If context contains `goalVisualization` and `nextAllowedTools` explicitly
-   permits `render_skillpilot_goal_visualization`, retain its unchanged
-   `goalId` and `stateVersion` only as a deferred candidate governed by the
-   boundary above. Do not call the renderer in this assistant turn. If either
-   condition is absent, no visualization is pending.
+5. If the newest full result contains `goalVisualization` and
+   `nextAllowedTools` explicitly permits
+   `render_skillpilot_goal_visualization`, call it immediately and exactly once
+   with the unchanged `goalId` and `stateVersion` from that same result. If
+   either condition is absent, do not call it.
 6. Map intent to at most one currently published option, and use its opaque ID
    unchanged.
 7. Perform exactly one permitted mutation using the latest `stateVersion` as

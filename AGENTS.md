@@ -446,28 +446,23 @@ Rule:
   link does not match its goal ID, or the image data is absent or invalid, omit
   the renderer; the ordinary chat response must remain fully usable.
 * Do not classify image support from optional host platform or user-agent
-  values. Context reads, reloads, and mutations only schedule an eligible
-  visualization. Because some hosts leave a permanent loading shell when a
-  UI-linked tool follows another tool in the same assistant turn, never call
-  the renderer in that turn or after any other tool call. On the earliest
-  subsequent learner-initiated turn that clearly continues the unchanged
-  active goal, call it at most once with that context's `goalId` and
-  `expectedStateVersion`, as the first tool call of the entire turn. Do not
-  create a filler turn, delay ordinary coaching, or retry an attempted image.
-  A required reload, newer context, or session, scope, or goal change discards
-  or replaces the pending visualization. The renderer reprojects current
-  backend state and rejects stale versions or mismatched goal IDs. Its success
-  is a narrow UI receipt and does not replace the latest full SkillPilot
-  context for coaching or state decisions. This is a host-compatibility
-  ordering rule, not a new learner-state boundary.
-* Once the deferred renderer is eligible, browser, desktop, and native mobile
-  hosts receive the same standards-first image-load attempt because actual host
-  rollouts may be ahead of documented platform availability. Keep the component
-  hidden until a successful image `load`. If no structured payload arrives
-  during the bounded bootstrap deadline, or the image raises an error or
-  exceeds its own bounded timeout, keep it hidden and request teardown without
-  waiting for the MCP Apps handshake. The ordinary chat response remains the
-  complete fallback.
+  values. Use the documented decoupled data-then-render flow: when the newest
+  successful full context or state-changing result contains an eligible
+  `goalVisualization` and permits the renderer, call it exactly once as the
+  immediate next tool call in the same assistant turn, with that result's
+  unchanged `goalId` and `expectedStateVersion`. A newer successful result
+  invalidates the prior authorization. The renderer reprojects current backend
+  state and rejects stale versions or mismatched goal IDs. Its success is a
+  narrow UI receipt and does not replace the preceding full SkillPilot context
+  for coaching or state decisions. Do not retry an attempted image or claim
+  that the host displayed it.
+* Browser, desktop, and native mobile hosts receive the same standards-first
+  image-load attempt because actual host rollouts may be ahead of documented
+  platform availability. Keep the component hidden until a successful image
+  `load`. If no structured payload arrives during the bounded bootstrap
+  deadline, or the image raises an error or exceeds its own bounded timeout,
+  keep it hidden and request teardown without waiting for the MCP Apps
+  handshake. The ordinary chat response remains the complete fallback.
 * Treat every content-addressed UI URI that has been advertised to a real
   client, including during draft testing, as immutable and retained. A newer
   widget URI is additive: tool metadata points only to the active resource,
@@ -1065,12 +1060,11 @@ provider policy and product review explicitly permit it.
   chat-visualization preference is enabled and an active atomic goal has a
   matching canonical image link. Only the dedicated read-only
   `render_skillpilot_goal_visualization` tool carries MCP UI metadata;
-  ordinary context reads and state mutations never create a UI box. They only
-  schedule an eligible image for the earliest later learner turn in which the
-  renderer can run first with the unchanged `goalId` and
-  `expectedStateVersion`; the renderer must never follow another tool in the
-  same assistant turn and an attempted image must not be retried automatically.
-  Its absence must degrade to the ordinary chat response. Every
+  ordinary context reads and state mutations never create a UI box. When their
+  newest full result contains an eligible image and permits the renderer, that
+  renderer follows immediately and exactly once with the unchanged `goalId`
+  and `expectedStateVersion`; an attempted image must not be retried
+  automatically. Its absence must degrade to the ordinary chat response. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.
