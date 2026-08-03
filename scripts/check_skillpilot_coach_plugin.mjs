@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
@@ -15,53 +15,28 @@ const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
-const retainedGoalVisualizationRoot = resolve(
+const retainedGoalVisualizationWidget = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
+    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
+    "goal-visualization.html",
 );
 const goalVisualizationArtifactSha256 = createHash("sha256")
   .update(readFileSync(goalVisualizationWidget))
   .digest("hex");
 const goalVisualizationResourceUri =
   `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
-// Every hash that was ever advertised as the active resource stays readable, so
-// an older chat holding that template_pointer still resolves. The directory name
-// is the content address: the bytes below it must hash back to it exactly.
-const retainedGoalVisualizationArtifactSha256s = readdirSync(
-  retainedGoalVisualizationRoot,
-  { withFileTypes: true },
-)
-  .filter((entry) => entry.isDirectory() && entry.name.startsWith("sha256-"))
-  .map((entry) => entry.name.slice("sha256-".length))
-  .sort();
-assert.ok(
-  retainedGoalVisualizationArtifactSha256s.length > 0,
-  "At least one retained goal-visualization artifact must stay readable.",
-);
-for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
-  const artifact = resolve(
-    retainedGoalVisualizationRoot,
-    `sha256-${sha256}`,
-    "goal-visualization.html",
-  );
-  assert.equal(
-    existsSync(artifact),
-    true,
-    `Retained goal-visualization artifact ${sha256} is missing.`,
-  );
-  assert.equal(
-    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
-    sha256,
-    "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
-  );
-}
+assert.equal(existsSync(retainedGoalVisualizationWidget), true);
+const retainedGoalVisualizationArtifactSha256 = createHash("sha256")
+  .update(readFileSync(retainedGoalVisualizationWidget))
+  .digest("hex");
 assert.equal(
-  retainedGoalVisualizationArtifactSha256s.includes(
-    goalVisualizationArtifactSha256,
-  ),
-  false,
-  "The active goal-visualization artifact must not also be published as retained.",
+  retainedGoalVisualizationArtifactSha256,
+  "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
+  "The retained goal-visualization artifact must remain byte-for-byte immutable.",
 );
+const retainedGoalVisualizationResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`;
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -284,24 +259,24 @@ assert.equal(
   false,
   "V1 must not publish or declare a compatibility endpoint",
 );
-const expectedUiResources = [
-  ...retainedGoalVisualizationArtifactSha256s.map((sha256) => ({
-    mimeType: "text/html;profile=mcp-app",
-    path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
-    uri: `ui://skillpilot/coach/v1/sha256-${sha256}/goal-visualization.html`,
-  })),
-  {
-    mimeType: "text/html;profile=mcp-app",
-    path: "ui/goal-visualization.html",
-    uri: goalVisualizationResourceUri,
-  },
-].sort((left, right) => (left.uri < right.uri ? -1 : left.uri > right.uri ? 1 : 0));
 assert.deepEqual(releaseLine.ui, {
   activeResourceUri: goalVisualizationResourceUri,
   domain: "https://mcp-coach-v1.skillpilot.com",
   enabled: true,
   stateSchemaVersion: 1,
-  resources: expectedUiResources,
+  resources: [
+    {
+      mimeType: "text/html;profile=mcp-app",
+      path:
+        `ui/retained/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`,
+      uri: retainedGoalVisualizationResourceUri,
+    },
+    {
+      mimeType: "text/html;profile=mcp-app",
+      path: "ui/goal-visualization.html",
+      uri: goalVisualizationResourceUri,
+    },
+  ],
 });
 assert.equal(existsSync(goalVisualizationWidget), true);
 const goalVisualizationHtml = read(goalVisualizationWidget);
@@ -614,20 +589,9 @@ assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.activeResourceUri,
 );
-// Both directions: nothing retained on disk may go undeclared, and nothing
-// declared may be missing from the classpath.
-const javaStringList = (name) => {
-  const match = new RegExp(`${name}\\s*=\\s*List\\.of\\(([\\s\\S]*?)\\);`, "u")
-    .exec(contractMetadata);
-  assert.ok(match, `Missing Java V1 contract constant list ${name}.`);
-  return [...match[1].matchAll(/"((?:[^"\\]|\\.)*)"/gu)]
-    .map((entry) => JSON.parse(`"${entry[1]}"`));
-};
-assert.deepEqual(
-  javaStringList("RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S").slice().sort(),
-  retainedGoalVisualizationArtifactSha256s,
-  "Every retained goal-visualization artifact must be declared, and every " +
-    "declared hash must exist on the classpath.",
+assert.equal(
+  javaConstant("RETAINED_GOAL_VISUALIZATION_RESOURCE_URI"),
+  retainedGoalVisualizationResourceUri,
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),

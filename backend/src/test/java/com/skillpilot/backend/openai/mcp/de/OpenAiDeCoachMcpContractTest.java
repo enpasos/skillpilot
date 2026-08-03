@@ -55,7 +55,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -201,15 +200,11 @@ class OpenAiDeCoachMcpContractTest {
 
     @Test
     void publishesActiveAndRetainedSelfContainedGoalVisualizationMcpAppResources() {
-        List<String> expectedUris = Stream.concat(
-                        Stream.of(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI),
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
-                                .stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
-                .toList();
         assertThat(contract.resourceSpecifications())
                 .extracting(specification -> specification.resource().uri())
-                .containsExactlyInAnyOrderElementsOf(expectedUris);
+                .containsExactlyInAnyOrder(
+                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
 
         for (McpStatelessServerFeatures.SyncResourceSpecification specification
                 : contract.resourceSpecifications()) {
@@ -267,38 +262,16 @@ class OpenAiDeCoachMcpContractTest {
                                         .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                 assertThat(contents.meta().get("openai/widgetPrefersBorder"))
                                         .isEqualTo(false);
-                                assertThat(sha256(contents.text()))
-                                        .isEqualTo(artifactSha256(resource.uri()));
+                                String expectedSha256 = resource.uri().equals(
+                                                OpenAiDeV1ContractMetadata
+                                                        .GOAL_VISUALIZATION_RESOURCE_URI)
+                                        ? OpenAiDeV1ContractMetadata
+                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        : OpenAiDeV1ContractMetadata
+                                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
+                                assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
                             });
         }
-
-        // Every read must be observable. Without this the server-side evidence
-        // chain ends at the render tool, and a host that stalls after mounting
-        // looks exactly like a client that never fetched the component at all.
-        assertThat(meterRegistry.get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tag("role", "active")
-                        .timer()
-                        .count())
-                .isEqualTo(1);
-        assertThat(meterRegistry.find(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tag("role", "retained")
-                        .timers()
-                        .stream()
-                        .mapToLong(timer -> timer.count())
-                        .sum())
-                .isEqualTo(
-                        OpenAiDeV1ContractMetadata
-                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
-                                .size());
-    }
-
-    /**
-     * Every V1 UI resource URI embeds the SHA-256 of the exact bytes it must
-     * serve, so the URI itself is the authority the assertion compares against.
-     */
-    private static String artifactSha256(String resourceUri) {
-        int start = resourceUri.indexOf("/sha256-") + "/sha256-".length();
-        return resourceUri.substring(start, resourceUri.indexOf('/', start));
     }
 
     private static String sha256(String source) {

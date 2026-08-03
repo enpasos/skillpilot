@@ -1,7 +1,5 @@
 package com.skillpilot.backend.openai.mcp.de.v1;
 
-import java.util.List;
-
 /**
  * Stable public identity and independently moving state versions for the
  * OpenAI Coach V1 contract.
@@ -35,21 +33,19 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/skillpilot-goal-visualization-v1.html";
     /**
-     * Every content-addressed UI artifact that was ever advertised as the active
-     * V1 contract resource, ordered oldest first and retained byte-for-byte for
-     * cached connector metadata and historical chat messages.
-     *
-     * <p>A client that stored a {@code template_pointer} while one of these was
-     * active still resolves it through {@code resources/read}. Entries are only
-     * ever appended: never remove one while the V1 major is usable, and never
-     * re-point an existing hash at newer bytes.</p>
+     * Previously advertised content-addressed UI resource retained for cached
+     * connector metadata and historical chat messages.
      */
-    public static final List<String> RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S = List.of(
-            "12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc",
-            "5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881",
-            "bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c",
-            "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
-            "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c");
+    public static final String RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
+            "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c";
+    public static final String RETAINED_GOAL_VISUALIZATION_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/sha256-"
+                    + RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                    + "/goal-visualization.html";
+    public static final String RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
+            "/openai/retained/skillpilot/coach/v1/sha256-"
+                    + RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                    + "/goal-visualization.html";
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */
@@ -61,18 +57,6 @@ public final class OpenAiDeV1ContractMetadata {
     public static final int STATE_SCHEMA_VERSION = 1;
     public static final String WORKFLOW_VERSION = "coach@1.0";
     public static final String DEFAULT_SERVER_BUILD = "dev";
-
-    /** Content-addressed MCP UI resource URI for a goal-visualization artifact hash. */
-    public static String goalVisualizationResourceUri(String artifactSha256) {
-        return "ui://skillpilot/coach/v1/sha256-" + artifactSha256 + "/goal-visualization.html";
-    }
-
-    /** Classpath location of a retained goal-visualization artifact. */
-    public static String retainedGoalVisualizationResourceClasspath(String artifactSha256) {
-        return "/openai/retained/skillpilot/coach/v1/sha256-"
-                + artifactSha256
-                + "/goal-visualization.html";
-    }
 
     private OpenAiDeV1ContractMetadata() {
     }
