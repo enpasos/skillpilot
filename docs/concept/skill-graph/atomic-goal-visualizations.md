@@ -68,8 +68,15 @@ native-app chats. Only the dedicated read-only
 references this resource. It is offered only when the learner preference is
 enabled and the current context contains a safe visualization projection;
 ordinary context reads and state mutations carry no UI resource metadata and
-therefore create no empty component. The renderer's `structuredContent`
-contains the following projection:
+therefore create no empty component. They only schedule the image. The renderer
+must not follow them, or any other tool, in the same assistant turn. On the
+earliest subsequent learner-initiated turn that clearly continues the same
+active goal, it may run at most once with the unchanged `goalId` and
+`expectedStateVersion`, as the first tool call of the entire turn. It reprojects
+current backend state and rejects stale versions or a mismatched active goal.
+Its successful result is a narrow UI receipt and does not replace the latest
+full SkillPilot context used for coaching and state decisions.
+The renderer's `structuredContent` contains the following projection:
 
 ```json
 {
@@ -109,7 +116,11 @@ The projection and component obey these constraints:
   without waiting for the MCP Apps handshake, and leaves the ordinary ChatGPT
   response unchanged;
 - optional host platform and user-agent values do not decide whether the
-  component is shown. Browser, desktop, and native mobile hosts get the same
+  component is shown. The turn split is applied to every host: a context read,
+  reload, or mutation only schedules the image, and the renderer is deferred
+  until a later learner turn in which it can run first. Do not create a filler
+  turn, delay ordinary coaching, or automatically retry a completed attempt.
+  Once invoked, browser, desktop, and native mobile hosts get the same
   surface-neutral image-load attempt; actual load success, not a guessed host
   class, decides whether the image becomes visible;
 - teardown is a host-mediated request, not a promise that the host removes its

@@ -555,12 +555,16 @@ Optionen bleiben in `structuredContent` und werden nicht unnötig in der
 Chatantwort wiederholt. Für ein aktives atomares Ziel mit passendem kanonischem
 `goal-visualization`-Link enthält `structuredContent.goalVisualization`
 ausschließlich Ziel-ID, Titel, optionale Beschreibung, öffentliche Bild-URL,
-Alttext und Cockpit-Link. Die an `get_skillpilot_context` und
-`set_skillpilot_active_goal` gebundene MCP-UI zeigt diese Daten direkt im
-Chat. Bei fehlender, ungültiger oder nicht ladbarer Visualisierung bleibt sie
-verborgen; der normale Chatablauf bleibt vollständig erhalten. Das Bild dient
-nur der Orientierung, nie als Evidenz, Aufgabe, Lösung, Bewertung oder
-Mastery-Nachweis. Die Zusammenfassung beginnt beim Einstieg mit den
+Alttext und Cockpit-Link. Nur das dedizierte read-only Werkzeug
+`render_skillpilot_goal_visualization` ist an die MCP-UI gebunden. Ein
+Kontextabruf oder eine Mutation merkt eine zulässige Visualisierung nur vor;
+der Renderer darf erst in einem späteren, vom Lernenden ausgelösten Turn als
+erster Tool-Aufruf mit unveränderter Ziel-ID und `expectedStateVersion` laufen.
+Er validiert den aktuellen Backendzustand erneut. Bei fehlender, veralteter,
+ungültiger oder nicht ladbarer Visualisierung bleibt die UI verborgen; der
+normale Chatablauf bleibt vollständig erhalten. Das Bild dient nur der
+Orientierung, nie als Evidenz, Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+Die Zusammenfassung beginnt beim Einstieg mit den
 bestätigten Kontextangaben und führt anschließend die gemeinsam beantwortbaren,
 authored offenen Angaben auf. Sie darf spätere sichtbare Fragen zur Orientierung
 enthalten, macht daraus aber keine vorzeitig gültigen Schreiboptionen.

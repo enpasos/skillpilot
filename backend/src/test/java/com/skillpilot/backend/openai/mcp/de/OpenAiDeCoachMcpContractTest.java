@@ -180,6 +180,24 @@ class OpenAiDeCoachMcpContractTest {
                 .isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_SCOPE).tool().meta().toString())
                 .contains(OpenAiDeV1McpContractAdapter.READ_SCOPE, OpenAiDeV1McpContractAdapter.WRITE_SCOPE);
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                        .tool()
+                        .inputSchema()
+                        .get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(
+                                "goalId",
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION));
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
+                        .tool()
+                        .inputSchema()
+                        .get("required"))
+                .asString()
+                .contains(
+                        "goalId",
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION);
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().inputSchema().get("properties"))
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
                         .containsOnlyKeys(
@@ -441,6 +459,84 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void deferredVisualizationRejectsAStaleStateVersionWithoutRetryingTheImage() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                Map.of(
+                        "goalId", "goal-with-image",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 1L));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "STATE_VERSION_CONFLICT")
+                .containsEntry("stateVersion", 0L)
+                .containsEntry("stateChanged", false));
+        assertThat(result.content().toString())
+                .contains("versuche dieses Bild nicht automatisch erneut");
+        verify(coachTools, never()).getLearnerState(LEARNER_ID);
+    }
+
+    @Test
+    void deferredVisualizationRejectsAChangedGoalAtTheSameStateVersion() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                Map.of(
+                        "goalId", "previous-goal-with-image",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "INVALID_INPUT")
+                .containsEntry("stateVersion", 0L)
+                .containsEntry("stateChanged", false));
+        assertThat(result.content().toString()).contains("kein freigegebenes Lernzielbild");
+        verify(coachTools).getLearnerState(LEARNER_ID);
+    }
+
+    @Test
+    void deferredVisualizationFailsClosedWithoutCurrentSessionMetadata() {
+        OpenAiDeV1McpContractAdapter contractWithoutSessionCoordinator = new OpenAiDeV1McpContractAdapter(
+                coachTools,
+                new CoachStateProjection("https://skillpilot.test"),
+                identityResolver,
+                new OpenAiDeMcpTelemetry(
+                        meterRegistry,
+                        new OpenAiDeOperationalTelemetry(meterRegistry)),
+                null,
+                "https://skillpilot.test");
+        McpStatelessServerFeatures.SyncToolSpecification renderer = contractWithoutSessionCoordinator
+                .toolSpecifications()
+                .stream()
+                .filter(candidate -> OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(
+                        candidate.tool().name()))
+                .findFirst()
+                .orElseThrow();
+
+        McpSchema.CallToolResult result = renderer.callHandler().apply(
+                McpTransportContext.EMPTY,
+                new McpSchema.CallToolRequest(
+                        OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                        Map.of(
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, LEARNING_SESSION_ID,
+                                "goalId", "goal-with-image",
+                                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L)));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "INTERNAL_ERROR")
+                .containsEntry("retryable", false)
+                .containsEntry("stateChanged", false));
+        assertThat(result.content().toString())
+                .contains("Continue without the image")
+                .contains("do not retry it automatically");
+        verify(coachTools, never()).getLearnerState(LEARNER_ID);
+    }
+
+    @Test
     void missingOrDisabledVisualizationNeverOffersOrRendersTheUiTool() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
 
@@ -575,7 +671,13 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Do not test prior knowledge")
                 .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
-                .contains("exactly once")
+                .contains("deferred UI")
+                .contains("UI receipt only")
+                .contains("does not replace the latest full SkillPilot context")
+                .contains("never call it after any other tool call")
+                .contains("subsequent learner-initiated turn")
+                .contains("first tool call of the entire turn")
+                .contains("never retry automatically")
                 .contains("Use backend URLs verbatim only")
                 .contains("If no approved link is available, do not output a link")
                 .contains("never with dollar delimiters")
@@ -590,6 +692,13 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("do not test details")
                 .contains("claim subject mastery")
                 .contains("For ordinary content goals, call only after two independent");
+
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION).tool().description())
+                .contains("deferred after a successful context read or state change")
+                .contains("Never call this tool in the same assistant turn")
+                .contains("first tool call of the entire turn")
+                .contains(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)
+                .contains("Do not retry automatically");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10,
@@ -1298,6 +1407,11 @@ class OpenAiDeCoachMcpContractTest {
             requestArguments.putIfAbsent(
                     OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
                     UUID.randomUUID().toString());
+        }
+        if (OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(name)) {
+            requestArguments.putIfAbsent(
+                    OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                    0L);
         }
         return callWithoutLearningSession(name, requestArguments);
     }
