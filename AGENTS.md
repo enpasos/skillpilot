@@ -447,16 +447,15 @@ Rule:
   too large, omit or reject the renderer without affecting the ordinary chat.
 * The native mobile host failed to complete the former widget resource flow and
   left a permanent loading shell in synchronized chats. V1 therefore publishes
-  no MCP UI resource. It may still use optional best-effort `openai/userAgent`
-  metadata to offer images only to an explicitly recognized desktop browser.
-  Missing, mobile/native, or unrecognized hints fail closed for the optional
-  image only. This hint is not a stable host detector or security boundary; it
-  must never affect authentication, authorization, identity, learning state,
-  or persistence, and the raw value must not be logged.
-* Apply the presentation filter after the coordinator so replayable results
-  remain surface-neutral. When the newest successful full context or mutation
-  contains `goalVisualization` and permits the renderer, call it exactly once
-  as the immediate next tool call with the unchanged `goalId` and
+  no MCP UI resource. The standard MCP image renderer is instead offered
+  surface-neutrally whenever the current context contains a safe visualization
+  projection; it does not inspect `openai/userAgent` or apply Desktop/Mobile
+  presentation gates. A host may render or ignore the returned `ImageContent`,
+  and the ordinary coaching response must remain complete in either case.
+* Replayable coordinator results and image authorization remain surface-neutral.
+  When the newest successful full context or mutation contains
+  `goalVisualization` and permits the renderer, call it exactly once as the
+  immediate next tool call with the unchanged `goalId` and
   `expectedStateVersion`. A newer successful result invalidates the prior
   authorization. The renderer reprojects current backend state and rejects
   stale versions or mismatched goal IDs. Its image receipt does not replace the

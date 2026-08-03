@@ -35,10 +35,6 @@ const mcpContract = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
 ));
-const clientSurface = read(resolve(
-  repositoryRoot,
-  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeClientSurface.java",
-));
 const goalVisualizationImageResolver = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeGoalVisualizationImageResolver.java",
@@ -58,7 +54,7 @@ const contractMetadata = read(resolve(
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
 const completeBehavioralSurface =
-  `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${clientSurface}\n${contextProjector}\n${launchService}`;
+  `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
 const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
 assert.match(runtimeCurriculumRevision, /^curricula-sha256@[0-9a-f]{64}$/);
 
@@ -523,19 +519,24 @@ assert.match(
   "The MCP server must keep the last full context authoritative after rendering.",
 );
 assert.match(
-  mcpContract,
-  /request\.meta\(\)[\s\S]+OpenAiDeClientSurface[\s\S]+supportsGoalVisualization\(\)/s,
-  "Optional image presentation must be gated from per-call client metadata before projection.",
-);
-assert.match(
-  clientSurface,
-  /DESKTOP_WEB[\s\S]+UNKNOWN[\s\S]+openai\/userAgent[\s\S]+supportsGoalVisualization/s,
-  "The presentation-only surface classifier must fail closed outside explicit desktop web.",
+  combinedSkill,
+  /standard MCP image(?:-| )content/s,
+  "The bundled skill must define the renderer as standard MCP image content.",
 );
 assert.match(
   combinedSkill,
-  /client surfaces[\s\S]+absence as authoritative[\s\S]+never infer support/s,
-  "The bundled skill must not invoke image delivery from stale or inferred host support.",
+  /surface-neutral[\s\S]+does not depend on client metadata/s,
+  "The bundled skill must keep image authorization independent of optional client metadata.",
+);
+assert.match(
+  combinedSkill,
+  /no MCP UI template|does not (?:create|bind)[^\n]*MCP UI component/s,
+  "The bundled skill must not reintroduce an MCP UI component.",
+);
+assert.doesNotMatch(
+  mcpContract,
+  /request\.meta\(\)|openai\/userAgent|OpenAiDeClientSurface|supportsGoalVisualization/,
+  "Optional client metadata must not gate the surface-neutral MCP image contract.",
 );
 assert.match(
   mcpContract,

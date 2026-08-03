@@ -133,11 +133,10 @@ Paketänderung benötigt eine neue SemVer.
    ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
    Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
    prüfen. `resources/list` muss leer bleiben. Bei einem aktiven atomaren Ziel
-   mit passendem kanonischem Bild muss ein ausdrücklich erkannter
-   Desktop-Webbrowser den Renderer erhalten und dieser genau einen
-   standardisierten MCP-Bildinhalt liefern. Mobile/native und unbekannte
-   Oberflächen dürfen den Renderer nicht angeboten bekommen. Ohne gültiges Bild
-   muss derselbe Ablauf als normale Chatdarstellung weiter funktionieren.
+   mit passendem kanonischem Bild muss der Renderer oberflächenneutral angeboten
+   werden und genau einen standardisierten MCP-Bildinhalt liefern. Der jeweilige
+   Host darf diesen darstellen oder ignorieren. Ohne gültiges Bild muss derselbe
+   Ablauf als normale Chatdarstellung weiter funktionieren.
 8. Die neue Plugin-Version im OpenAI-Portal aktualisieren. Die
    hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
    das Veröffentlichungsvehikel.

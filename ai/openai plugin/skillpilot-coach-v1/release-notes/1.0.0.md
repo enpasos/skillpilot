@@ -27,12 +27,10 @@ line. This version has not been published yet.
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
   or attempted images are not retried and the full result remains authoritative
-- desktop-web image delivery with a fail-closed presentation gate: the adapter
-  uses the optional best-effort `openai/userAgent` hint only to offer the image to
-  an explicitly recognized desktop browser; mobile/native and unknown clients
-  stay on the complete text path without starting the renderer. The raw hint is
-  neither logged nor persisted and never affects identity, authorization, or
-  learning state
+- surface-neutral image delivery: eligible contexts offer the renderer without
+  inspecting `openai/userAgent` or applying Desktop/Mobile presentation gates;
+  the renderer returns standard MCP `ImageContent`, which the host may display
+  or ignore while the ordinary coaching response remains complete
 - dedicated read-only rendering action that the coach invokes only when an
   approved image is present; no image means no image tool call
 - cockpit preference for learning-goal images in chat, enabled by default

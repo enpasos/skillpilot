@@ -374,16 +374,14 @@ Kontext für Coaching- oder Zustandsentscheidungen. Ein fehlendes oder
 ungültiges Bild erzeugt keine UI-Komponente und wird nicht automatisch erneut
 aufgerufen.
 
-Der Adapter bietet die optionale Bildprojektion nur bei einem über den
-Best-effort-Hinweis `openai/userAgent` ausdrücklich erkannten
-Desktop-Webbrowser an. Mobile/native und unbekannte Oberflächen bleiben im
-vollständigen Textpfad und starten den Renderer nicht. Die Klassifikation
-steuert nur Darstellung, wird nicht persistiert und darf niemals
-Authentifizierung, Autorisierung, Identität oder Lernzustand beeinflussen.
-Persistierte Idempotenz-Ergebnisse bleiben oberflächenneutral; die
-Darstellungsschranke wird nach jedem frischen oder wiedergegebenen Ergebnis auf
-den aktuellen Aufrufer angewandt. Das Bild ist Orientierung, niemals Evidenz,
-Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.
+Der Adapter bietet die optionale Bildprojektion oberflächenneutral an. Er
+wertet dafür weder `openai/userAgent` noch eine andere Desktop/Mobile-
+Klassifikation aus. Persistierte Idempotenz-Ergebnisse, frische Ergebnisse und
+wiedergegebene Ergebnisse enthalten dieselbe Bildfreigabe. Der Renderer liefert
+standardisierten MCP-`ImageContent`; der jeweilige Host darf ihn darstellen
+oder ignorieren, während der vollständige Textpfad erhalten bleibt. Das Bild
+ist Orientierung, niemals Evidenz, Aufgabe, Lösung, Bewertung oder
+Mastery-Nachweis.
 
 V1 ist noch nicht veröffentlicht. Die experimentellen Widget-Ressourcen aus
 früheren Draft-Tests werden deshalb ohne Kompatibilitätsroute entfernt. Alte
@@ -941,7 +939,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | ChatGPT-Web auf Desktop mit optionalem standardisiertem MCP-Bildinhalt; Mobile-Web sowie native Desktop- und Mobile-Apps mit vollständigem textuellem Fallback ohne Renderer, bis deren Bilddarstellung separat erfolgreich abgenommen ist; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | derselbe oberflächenneutrale MCP-Vertrag in ChatGPT-Web, Mobile-Web sowie nativen Desktop- und Mobile-Apps; bei gültiger Freigabe liefert der Renderer standardisierten MCP-Bildinhalt, den der jeweilige Host darstellen oder ignorieren darf; der vollständige Textpfad bleibt immer erhalten; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1125,13 +1123,12 @@ Kernanforderung nicht.
    Deployment-Runbook durchführen.
 8. Erst nach dokumentierter Workflow-, Tarif-, Regions-, Sicherheits- und
    Oberflächen-Acceptance öffentlich freigeben.
-9. Die Zielbildkarte im Desktop-Browser mit Bild, ohne Bild, bei Ladefehler und
-   bei Lade-Timeout abnehmen. In Mobile-Web und nativen Apps prüfen, dass der
-   Kontext keine Bildfreigabe ausgibt, der Renderer nicht startet und der
-   Textpfad vollständig bleibt; danach zusätzliche Oberflächen erst nach einem
-   erfolgreichen Lifecycle-Test freigeben. Englisch und weitere
-   unterstützte Sprachen werden durch denselben V1-Vertrag mit eigenen
-   Acceptance-Fällen freigegeben.
+9. Die oberflächenneutrale Zielbildfreigabe mit Bild, ohne Bild und bei
+   fehlerhaften Bilddaten abnehmen. In Web-, Mobile-Web- und nativen Hosts
+   prüfen, dass derselbe Renderer standardisierten MCP-Bildinhalt liefert, der
+   Host ihn darstellen oder ignorieren kann und der Textpfad vollständig
+   bleibt. Englisch und weitere unterstützte Sprachen werden durch denselben
+   V1-Vertrag mit eigenen Acceptance-Fällen freigegeben.
 
 ## 21. Referenzen
 
