@@ -102,7 +102,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. Briefly check prior knowledge, provide small hints, let the learner work, and do not reveal the solution to the immediate next task. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that image tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool returns the approved image for the active atomic goal as standard MCP image content; it does not bind or create an MCP UI component. SkillPilot deliberately omits both conditions on client surfaces where image presentation is not known to complete reliably; their absence is authoritative, even when an earlier result or another device exposed an image. Never infer image support from the conversation or call the renderer from an older authorization. Never call it without both current conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only an image receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
+            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that image tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool returns the approved image for the active atomic goal as standard MCP image content; it does not bind or create an MCP UI component. The image authorization is surface-neutral because client-provided host metadata is optional and must not control the contract. Never infer that the host displayed the returned image, call the renderer from an older authorization, call it without both current conditions, use another goalId or stateVersion, call it after a newer successful SkillPilot result, or call it more than once for the same result. Never retry it automatically. A successful renderer result is only an image receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
 
@@ -502,13 +502,10 @@ public final class OpenAiDeV1McpContractAdapter {
                 .callHandler((transportContext, request) -> {
                     Map<String, Object> arguments =
                             request == null || request.arguments() == null ? Map.of() : request.arguments();
-                    OpenAiDeClientSurface clientSurface = OpenAiDeClientSurface.from(
-                            request == null ? null : request.meta());
                     return executeWithTelemetry(
                             name,
                             transportContext,
                             arguments,
-                            clientSurface,
                             writeScope,
                             operation);
                 })
@@ -519,23 +516,18 @@ public final class OpenAiDeV1McpContractAdapter {
             String toolName,
             McpTransportContext transportContext,
             Map<String, Object> arguments,
-            OpenAiDeClientSurface clientSurface,
             boolean writeScope,
             ToolOperation operation) {
         try {
             return telemetry.record(
                     toolName,
                     arguments,
-                    clientSurface.telemetryValue(),
-                    () -> applyClientPresentation(
-                            execute(
-                                    toolName,
-                                    transportContext,
-                                    arguments,
-                                    clientSurface,
-                                    writeScope,
-                                    operation),
-                            clientSurface));
+                    () -> execute(
+                            toolName,
+                            transportContext,
+                            arguments,
+                            writeScope,
+                            operation));
         } catch (RuntimeException exception) {
             return unexpectedErrorResult(toolName, exception);
         }
@@ -545,9 +537,8 @@ public final class OpenAiDeV1McpContractAdapter {
             String toolName,
             McpTransportContext transportContext,
             Map<String, Object> arguments,
-            OpenAiDeClientSurface clientSurface,
             boolean writeScope,
-        ToolOperation operation) {
+            ToolOperation operation) {
         try {
             String learningSessionId = requiredLearningSessionId(arguments);
             String skillpilotId =
@@ -565,7 +556,7 @@ public final class OpenAiDeV1McpContractAdapter {
             }
             if (writeScope) {
                 if (sessionCoordinator == null) {
-                    return operation.apply(skillpilotId, arguments, null, clientSurface);
+                    return operation.apply(skillpilotId, arguments, null);
                 }
                 long expectedStateVersion = requiredLong(arguments, EXPECTED_STATE_VERSION);
                 String clientRequestId = requiredString(arguments, CLIENT_REQUEST_ID);
@@ -580,11 +571,10 @@ public final class OpenAiDeV1McpContractAdapter {
                                 skillpilotId,
                                 arguments,
                                 metadata,
-                                clientSurface,
                                 true));
             }
             if (sessionCoordinator == null) {
-                return operation.apply(skillpilotId, arguments, null, clientSurface);
+                return operation.apply(skillpilotId, arguments, null);
             }
             return sessionCoordinator.read(
                     learningSessionId,
@@ -593,7 +583,6 @@ public final class OpenAiDeV1McpContractAdapter {
                             skillpilotId,
                             arguments,
                             metadata,
-                            clientSurface,
                             false));
         } catch (VersionedPublicResultException exception) {
             return exception.result();
@@ -670,8 +659,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult getContext(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         OpenAiDeCoachContext context = projectContext(
                 skillpilotId,
                 coachTools.getLearnerState(skillpilotId),
@@ -682,20 +670,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult renderGoalVisualization(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
-        if (!clientSurface.supportsGoalVisualization()) {
-            String instruction = localized(metadata,
-                    "Diese Oberfläche unterstützt die Lernzielbild-Darstellung nicht zuverlässig. "
-                            + "Setze ohne Bild fort und versuche es nicht automatisch erneut.",
-                    "This surface does not reliably support learning-goal image presentation. "
-                            + "Continue without the image and do not retry it automatically.");
-            return errorResult(
-                    OpenAiDeV1ErrorCode.INVALID_INPUT,
-                    instruction,
-                    metadata,
-                    Map.of("instruction", instruction));
-        }
+            OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
         long expectedStateVersion = requiredLong(arguments, EXPECTED_STATE_VERSION);
         if (metadata == null) {
@@ -779,8 +754,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult getNavigation(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         String target = requiredString(arguments, "target").toLowerCase(Locale.ROOT);
         UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
@@ -868,8 +842,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult setCurriculum(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         UpdateCurriculumRequest request = new UpdateCurriculumRequest();
         request.setCurriculumId(requiredString(arguments, "curriculumId"));
         return contextMutationResult(
@@ -884,8 +857,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult setPersonalization(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         String optionId = requiredString(arguments, "optionId");
         PersonalizationRequest request = resolvePersonalizationRequest(
                 skillpilotId,
@@ -951,8 +923,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult setScope(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         List<String> goalIds = stringList(arguments, "goalIds", true);
         return contextMutationResult(
                 skillpilotId,
@@ -966,8 +937,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult setActiveGoal(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
         Boolean redirect = optionalBoolean(arguments, "redirect");
         return contextMutationResult(
@@ -982,8 +952,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult setMastery(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
         UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
         FrontierGoal active = activeGoal(before);
@@ -1028,8 +997,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult startRecall(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
         Integer batchSize = optionalInteger(arguments, "batchSize");
         if (batchSize != null && (batchSize < 1 || batchSize > 20)) {
@@ -1049,8 +1017,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult getRecallAnswer(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         VerifiedRecallAnswerResponse response = coachTools.getVerifiedRecallAnswer(
                 skillpilotId,
                 communicationLanguage(metadata),
@@ -1074,8 +1041,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult recordRecallResult(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         VerifiedRecallResultResponse response = coachTools.recordVerifiedRecallResult(
                 skillpilotId,
                 communicationLanguage(metadata),
@@ -1107,8 +1073,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult getExamEvaluation(
             String skillpilotId,
             Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface) {
+            OpenAiDeV1SessionMetadata metadata) {
         CoachToolFacade.ExamEvaluationResult response = coachTools.getExamEvaluation(
                 skillpilotId,
                 new CoachToolFacade.ExamEvaluationRequest(requiredString(arguments, "goalId")));
@@ -1178,59 +1143,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 // after a fresh or replayed result has left the coordinator.
                 coachTools.showGoalVisualizationsInChat(skillpilotId),
                 communicationLocale(metadata));
-    }
-
-    private McpSchema.CallToolResult applyClientPresentation(
-            McpSchema.CallToolResult result,
-            OpenAiDeClientSurface clientSurface) {
-        if (result == null
-                || clientSurface.supportsGoalVisualization()
-                || result.structuredContent() == null) {
-            return result;
-        }
-
-        Map<String, Object> structured = PUBLIC_OUTPUT_MAPPER.convertValue(
-                result.structuredContent(),
-                new TypeReference<Map<String, Object>>() {
-                });
-        @SuppressWarnings("unchecked")
-        Map<String, Object> filtered =
-                (Map<String, Object>) suppressGoalVisualization(structured);
-        if (structured.equals(filtered)) {
-            return result;
-        }
-        return McpSchema.CallToolResult.builder()
-                .content(result.content())
-                .isError(result.isError())
-                .structuredContent(filtered)
-                .meta(result.meta())
-                .build();
-    }
-
-    private Object suppressGoalVisualization(Object value) {
-        if (value instanceof Map<?, ?> map) {
-            Map<String, Object> filtered = new LinkedHashMap<>();
-            map.forEach((key, nestedValue) -> {
-                if (!(key instanceof String name) || "goalVisualization".equals(name)) {
-                    return;
-                }
-                if ("nextAllowedTools".equals(name) && nestedValue instanceof List<?> tools) {
-                    filtered.put(
-                            name,
-                            tools.stream()
-                                    .filter(tool -> !RENDER_GOAL_VISUALIZATION.equals(tool))
-                                    .map(this::suppressGoalVisualization)
-                                    .toList());
-                    return;
-                }
-                filtered.put(name, suppressGoalVisualization(nestedValue));
-            });
-            return filtered;
-        }
-        if (value instanceof List<?> list) {
-            return list.stream().map(this::suppressGoalVisualization).toList();
-        }
-        return value;
     }
 
     private RecallPromptResult recallPrompt(VerifiedRecallPromptResponse response) {
@@ -1303,12 +1215,11 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata,
-            OpenAiDeClientSurface clientSurface,
             boolean failTransactionOnPublicError) {
         try {
             McpSchema.CallToolResult result =
                     versionResult(
-                            operation.apply(skillpilotId, arguments, metadata, clientSurface),
+                            operation.apply(skillpilotId, arguments, metadata),
                             metadata);
             if (failTransactionOnPublicError
                     && result != null
@@ -2320,8 +2231,7 @@ public final class OpenAiDeV1McpContractAdapter {
         McpSchema.CallToolResult apply(
                 String skillpilotId,
                 Map<String, Object> arguments,
-                OpenAiDeV1SessionMetadata metadata,
-                OpenAiDeClientSurface clientSurface);
+                OpenAiDeV1SessionMetadata metadata);
     }
 
 }

@@ -4,10 +4,10 @@ This reference governs learner-facing coaching behavior and internal tool
 orchestration. The latest successful SkillPilot tool result takes precedence
 over this general guidance because only that result describes the current
 state, currently valid options, authoritative `communicationLocale`, and next
-step. A successful `render_skillpilot_goal_visualization` result is a narrow UI
-receipt only: it confirms the unchanged goal and state version and supplies the
-approved image, but it does not replace the latest full SkillPilot context for
-coaching or state decisions.
+step. A successful `render_skillpilot_goal_visualization` result is a narrow
+image receipt only: it confirms the unchanged goal and state version and
+supplies the approved image, but it does not replace the latest full SkillPilot
+context for coaching or state decisions.
 
 ## Contents
 
@@ -93,11 +93,11 @@ authorization; never retry automatically or claim that the host displayed the
 image. The renderer revalidates current backend state and returns the approved
 goal visualization only as standard MCP image content, without an MCP UI
 template. Its image receipt does not replace the preceding full context, and
-the ordinary text remains the complete fallback. SkillPilot omits
-`goalVisualization` and the renderer permission on client surfaces where image
-presentation is not known to complete reliably. Their absence in the newest
-full result is authoritative even when an earlier result or another device
-offered an image; never infer support or reuse the older authorization.
+the ordinary text remains the complete fallback. Image authorization is
+surface-neutral and independent of client metadata. The absence of
+`goalVisualization` or renderer permission in the newest full result is
+authoritative even when an earlier result offered an image; never reuse the
+older authorization.
 
 At entry, resumption, and after every mutation, follow this cycle:
 

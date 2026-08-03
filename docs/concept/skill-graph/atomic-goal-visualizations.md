@@ -96,21 +96,17 @@ The projection and image result obey these constraints:
 - a missing, malformed, mismatched, unsupported, empty, or oversized image
   fails closed with an instruction to continue without it and not retry;
 - because the former widget left a permanent loading shell in native mobile
-  chats, V1 creates no component at all. The adapter still uses the optional,
-  best-effort `openai/userAgent` hint solely as a presentation gate: only an
-  explicitly recognized desktop browser receives `goalVisualization` and the
-  renderer permission. Mobile/native and unknown hints continue with the
-  complete text response. The raw hint is never logged or persisted and never
-  affects authentication, authorization, identity, learning state, or writes;
-- presentation filtering happens after session coordination and idempotent
-  replay. The stored tool result stays surface-neutral; the adapter removes
-  `goalVisualization` and the renderer permission from every fresh or replayed
-  result for the current unsupported caller. This prevents a desktop result
-  from leaking image authorization to mobile and prevents a mobile-first retry
-  from disabling a later desktop-web presentation;
+  chats, V1 creates no component at all. Eligible contexts offer
+  `goalVisualization` and the renderer permission surface-neutrally, without
+  inspecting `openai/userAgent` or applying Desktop/Mobile presentation gates.
+  The renderer returns standard MCP `ImageContent`; each host may display or
+  ignore it, while the complete ordinary text response remains available;
+- session coordination and idempotent replay preserve the same surface-neutral
+  image authorization. No caller-specific presentation filter mutates a fresh
+  or replayed result;
 - do not delay ordinary coaching or automatically retry a completed attempt.
-  Widen the presentation allowlist only after the additional host surface has
-  passed an end-to-end renderer and visible-completion test;
+  Test renderer invocation and visible host behaviour independently, without
+  changing the protocol result by client surface;
 - because V1 is unpublished and backward compatibility was explicitly rejected
   for its experimental UI, the old content-addressed HTML resources and
   resource-read contract are removed. Existing test chats may still reference

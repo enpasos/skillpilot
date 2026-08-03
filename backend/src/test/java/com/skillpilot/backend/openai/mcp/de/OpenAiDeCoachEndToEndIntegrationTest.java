@@ -98,8 +98,6 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
-    private static final String DESKTOP_WEB_USER_AGENT =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0 Safari/537.36";
     private static final Set<String> MUTATING_TOOLS = Set.of(
             OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
             OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
@@ -1080,13 +1078,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                     UUID.randomUUID().toString());
         }
         HttpResponse<String> response = postMcp(accessToken, """
-                {"jsonrpc":"2.0","id":%d,"method":"tools/call","params":{"name":"%s","arguments":%s,
-                "_meta":{"openai/userAgent":%s}}}
+                {"jsonrpc":"2.0","id":%d,"method":"tools/call","params":{"name":"%s","arguments":%s}}
                 """.formatted(
                         id,
                         toolName,
-                        objectMapper.writeValueAsString(objectArguments),
-                        objectMapper.writeValueAsString(DESKTOP_WEB_USER_AGENT)));
+                        objectMapper.writeValueAsString(objectArguments)));
         JsonNode structuredContent = objectMapper.readTree(response.body())
                 .path("result")
                 .path("structuredContent");

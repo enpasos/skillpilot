@@ -72,13 +72,6 @@ class OpenAiDeCoachMcpContractTest {
     private static final String CHALLENGE = "Bearer resource_metadata=\"https://skillpilot.test/meta\"";
     private static final String INSUFFICIENT_SCOPE_CHALLENGE =
             "Bearer resource_metadata=\"https://skillpilot.test/meta\", error=\"insufficient_scope\"";
-    private static final Map<String, Object> DESKTOP_WEB_META = Map.of(
-            "openai/userAgent",
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0 Safari/537.36");
-    private static final Map<String, Object> NATIVE_MOBILE_META = Map.of(
-            "openai/userAgent",
-            "ChatGPT/1.2026.203 (iOS 18.6; iPhone17,1; CFNetwork)");
-
     private final ObjectMapper objectMapper = new ObjectMapper();
     private CoachToolFacade coachTools;
     private OpenAiDeCoachIdentityResolver identityResolver;
@@ -319,7 +312,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization() {
+    void dedicatedReadOnlyToolRendersTheCurrentTrustedVisualizationWithoutClientMetadata() {
         UnifiedLearnerStateResponse state = visualizationState();
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
 
@@ -366,59 +359,6 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void nativeMobileAndUnknownSurfacesNeverReceiveOrRenderTheImageAuthorization() {
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
-
-        OpenAiDeCoachContext desktopBefore = structured(
-                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of(), DESKTOP_WEB_META),
-                OpenAiDeCoachContext.class);
-        assertThat(desktopBefore.goalVisualization()).isNotNull();
-        assertThat(desktopBefore.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-
-        for (Map<String, Object> requestMeta : List.<Map<String, Object>>of(
-                NATIVE_MOBILE_META,
-                Map.of(),
-                Map.of("openai/userAgent", "unrecognized-client"),
-                Map.of(
-                        "openai/userAgent",
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                                + "AppleWebKit/537.36 Chrome/140.0 Electron/40.0"),
-                Map.of(
-                        "openai/userAgent",
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) WebView/140.0"))) {
-            OpenAiDeCoachContext context = structured(
-                    call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of(), requestMeta),
-                    OpenAiDeCoachContext.class);
-
-            assertThat(context.goalVisualization()).isNull();
-            assertThat(context.nextAllowedTools())
-                    .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-        }
-
-        OpenAiDeCoachContext desktopAfter = structured(
-                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of(), DESKTOP_WEB_META),
-                OpenAiDeCoachContext.class);
-        assertThat(desktopAfter.goalVisualization()).isNotNull();
-        assertThat(desktopAfter.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-
-        McpSchema.CallToolResult nativeRender = call(
-                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
-                Map.of("goalId", "goal-with-image"),
-                NATIVE_MOBILE_META);
-
-        assertThat(nativeRender.isError()).isTrue();
-        assertThat(nativeRender.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
-                .containsEntry("code", "INVALID_INPUT")
-                .containsEntry("stateVersion", 0L)
-                .containsEntry("stateChanged", false));
-        assertThat(nativeRender.content().toString())
-                .contains("ohne Bild")
-                .contains("nicht automatisch erneut");
-    }
-
-    @Test
     void rendererFailsClosedWhenTheApprovedImageBytesCannotBeResolved() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
         when(goalVisualizationImageResolver.resolve(any())).thenReturn(Optional.empty());
@@ -435,68 +375,6 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("code", "INVALID_INPUT")
                 .containsEntry("stateVersion", 0L)
                 .containsEntry("stateChanged", false));
-    }
-
-    @Test
-    void presentationFilteringHappensAfterTheReplayableNeutralMutationResult() {
-        when(coachTools.setActiveGoal(eq(LEARNER_ID), any(ActiveGoalRequest.class)))
-                .thenReturn(visualizationState());
-        java.util.concurrent.atomic.AtomicReference<McpSchema.CallToolResult> persistedResult =
-                new java.util.concurrent.atomic.AtomicReference<>();
-        org.mockito.Mockito.doAnswer(invocation -> {
-                    McpSchema.CallToolResult result =
-                            sessionOperation(invocation.getArgument(5), 1L);
-                    persistedResult.set(result);
-                    return result;
-                })
-                .when(sessionCoordinator)
-                .write(any(), any(), anyLong(), any(), any(), any());
-        Map<String, Object> arguments = Map.of(
-                "goalId", "goal-with-image",
-                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L,
-                OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
-                        "11111111-1111-4111-8111-111111111111");
-
-        OpenAiDeCoachContext nativeFresh = structured(
-                call(
-                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-                        arguments,
-                        NATIVE_MOBILE_META),
-                OpenAiDeCoachContext.class);
-
-        assertThat(nativeFresh.goalVisualization()).isNull();
-        assertThat(nativeFresh.nextAllowedTools())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-
-        OpenAiDeCoachContext neutralPersisted =
-                structured(persistedResult.get(), OpenAiDeCoachContext.class);
-        assertThat(neutralPersisted.goalVisualization()).isNotNull();
-        assertThat(neutralPersisted.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-
-        org.mockito.Mockito.doReturn(persistedResult.get())
-                .when(sessionCoordinator)
-                .write(any(), any(), anyLong(), any(), any(), any());
-
-        OpenAiDeCoachContext desktopReplay = structured(
-                call(
-                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-                        arguments,
-                        DESKTOP_WEB_META),
-                OpenAiDeCoachContext.class);
-        assertThat(desktopReplay.goalVisualization()).isNotNull();
-        assertThat(desktopReplay.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
-
-        OpenAiDeCoachContext nativeReplay = structured(
-                call(
-                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-                        arguments,
-                        NATIVE_MOBILE_META),
-                OpenAiDeCoachContext.class);
-        assertThat(nativeReplay.goalVisualization()).isNull();
-        assertThat(nativeReplay.nextAllowedTools())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
     }
 
     @Test
@@ -565,7 +443,7 @@ class OpenAiDeCoachMcpContractTest {
                                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, LEARNING_SESSION_ID,
                                 "goalId", "goal-with-image",
                                 OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L),
-                        DESKTOP_WEB_META));
+                        Map.of()));
 
         assertThat(result.isError()).isTrue();
         assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
@@ -719,9 +597,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("preceding full SkillPilot result as the authority")
                 .contains("immediate next tool call in the same assistant turn")
                 .contains("unchanged goalId and expectedStateVersion")
-                .contains("client surfaces where image presentation is not known to complete reliably")
-                .contains("absence is authoritative")
-                .contains("Never infer image support")
+                .contains("image authorization is surface-neutral")
+                .contains("client-provided host metadata is optional")
+                .contains("Never infer that the host displayed the returned image")
                 .contains("Never retry it automatically")
                 .contains("Use backend URLs verbatim only")
                 .contains("If no approved link is available, do not output a link")
@@ -1441,13 +1319,6 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {
-        return call(name, arguments, DESKTOP_WEB_META);
-    }
-
-    private McpSchema.CallToolResult call(
-            String name,
-            Map<String, Object> arguments,
-            Map<String, Object> requestMeta) {
         Map<String, Object> requestArguments = new java.util.LinkedHashMap<>(arguments);
         requestArguments.put(
                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
@@ -1465,7 +1336,7 @@ class OpenAiDeCoachMcpContractTest {
                     OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
                     0L);
         }
-        return callWithoutLearningSession(name, requestArguments, requestMeta);
+        return callWithoutLearningSession(name, requestArguments);
     }
 
     @SuppressWarnings("unchecked")
@@ -1502,16 +1373,9 @@ class OpenAiDeCoachMcpContractTest {
     private McpSchema.CallToolResult callWithoutLearningSession(
             String name,
             Map<String, Object> arguments) {
-        return callWithoutLearningSession(name, arguments, DESKTOP_WEB_META);
-    }
-
-    private McpSchema.CallToolResult callWithoutLearningSession(
-            String name,
-            Map<String, Object> arguments,
-            Map<String, Object> requestMeta) {
         return spec(name).callHandler().apply(
                 McpTransportContext.EMPTY,
-                new McpSchema.CallToolRequest(name, arguments, requestMeta));
+                new McpSchema.CallToolRequest(name, arguments, Map.of()));
     }
 
     private McpStatelessServerFeatures.SyncToolSpecification spec(String name) {

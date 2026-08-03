@@ -692,17 +692,12 @@ nur eine Bildbestätigung und ersetzt nicht den vorherigen vollständigen Kontex
 für Coaching- oder Zustandsentscheidungen. Ein bereits versuchtes oder nicht
 sicher ladbares Bild wird nicht automatisch erneut aufgerufen.
 
-Der Adapter verwendet den optionalen Best-effort-Hinweis `openai/userAgent`
-ausschließlich als Darstellungsschranke: Nur ein ausdrücklich erkannter
-Desktop-Webbrowser erhält `goalVisualization` und die Renderer-Freigabe.
-Mobile/native und unbekannte Hinweise erhalten den vollständigen Textpfad ohne
-Renderer. Der Rohwert wird weder protokolliert noch persistiert und beeinflusst
-niemals OAuth, Autorisierung, Identität, Lernzustand oder Schreibvorgänge.
-Idempotent gespeicherte Toolergebnisse bleiben oberflächenneutral. Die
-Darstellungsschranke wird nach jedem frischen oder wiedergegebenen
-Coordinator-Ergebnis angewendet, damit Gerätewechsel weder eine
-Desktop-Freigabe an Mobile durchreichen noch Bilder im Desktop-Web dauerhaft
-unterdrücken.
+Der Adapter bietet `goalVisualization` und die Renderer-Freigabe
+oberflächenneutral an. Er wertet weder `openai/userAgent` noch eine andere
+Desktop/Mobile-Klassifikation aus. Frische und idempotent wiedergegebene
+Coordinator-Ergebnisse enthalten dieselbe Freigabe. Der Renderer liefert
+standardisierten MCP-`ImageContent`; der jeweilige Host darf ihn darstellen
+oder ignorieren, während der vollständige Textpfad unverändert erhalten bleibt.
 
 Da V1 unveröffentlicht ist, gibt es keine Kompatibilitätszusage für alte
 Widget-Testnachrichten. Die früheren Template-URIs werden entfernt. Abnahme und
