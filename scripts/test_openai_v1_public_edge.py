@@ -158,6 +158,10 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         self.assertIn("removed_common_protected_resource_metadata_route", script)
         self.assertIn("removed_common_openai_apps_challenge_route", script)
         self.assertIn("expected direct GET HTTP 404", script)
+        self.assertIn("web-sandbox.oaiusercontent.com", script)
+        self.assertIn("--header 'Origin: null'", script)
+        self.assertIn("expected Access-Control-Allow-Origin *", script)
+        self.assertIn("public image response must not allow credentials", script)
         for reserved_host in self.RESERVED_HOSTS:
             self.assertIn(f'"https://{reserved_host}"', script)
         self.assertIn("assert_reserved_origin", script)

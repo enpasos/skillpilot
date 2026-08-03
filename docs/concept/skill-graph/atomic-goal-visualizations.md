@@ -91,6 +91,12 @@ The projection and component obey these constraints:
 - the active goal must be atomic;
 - its canonical visualization link must match the same goal ID and resolve to a
   safe public SkillPilot image URL;
+- published image bytes under `/assets/goal-visualizations/**` are anonymous,
+  immutable public assets and therefore use credential-free wildcard CORS for
+  read-only `GET`, `HEAD`, and `OPTIONS` requests. This narrowly scoped rule is
+  required because product-hosted sandboxes and native WebViews may use an
+  OpenAI-owned or opaque `null` origin; it must never be inherited by SkillPilot
+  API endpoints;
 - the safe projection may retain goal metadata for validation and future
   compatibility, but the UI renders only the image. Its `altText` stays on the
   `img` element; title, description, goal ID, and cockpit link are not visibly

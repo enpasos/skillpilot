@@ -138,9 +138,10 @@ if [[ -z "${goal_visualization_asset}" ]]; then
 fi
 goal_visualization_relative="${goal_visualization_asset#"${ROOT_DIR}/app/public"}"
 goal_visualization_url="${AUTHORIZATION_ORIGIN}${goal_visualization_relative}"
+goal_visualization_sandbox_origin="https://skillpilot-smoke.web-sandbox.oaiusercontent.com"
 goal_visualization_result="$(
   "${curl_common[@]}" \
-    --header "Origin: ${MCP_ORIGIN}" \
+    --header "Origin: ${goal_visualization_sandbox_origin}" \
     --dump-header "${temporary_dir}/goal-visualization.headers" \
     --output /dev/null \
     --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
@@ -168,15 +169,45 @@ goal_visualization_allow_credentials="$(
   tr -d '\r' <"${temporary_dir}/goal-visualization.headers" \
     | awk 'tolower($0) ~ /^access-control-allow-credentials:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
 )"
-if [[ "${goal_visualization_allow_origin}" != "${MCP_ORIGIN}" ]]; then
-  echo "CHECK public_goal_visualization_cors FAIL expected exact Access-Control-Allow-Origin ${MCP_ORIGIN}" >&2
+if [[ "${goal_visualization_allow_origin}" != "*" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL expected Access-Control-Allow-Origin *" >&2
   exit 1
 fi
 if [[ -n "${goal_visualization_allow_credentials}" ]]; then
   echo "CHECK public_goal_visualization_cors FAIL public image response must not allow credentials" >&2
   exit 1
 fi
-echo "CHECK public_goal_visualization_cors PASS read-only image accessible from ${MCP_ORIGIN}"
+opaque_goal_visualization_result="$(
+  "${curl_common[@]}" \
+    --header 'Origin: null' \
+    --dump-header "${temporary_dir}/goal-visualization-opaque.headers" \
+    --output /dev/null \
+    --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+    "${goal_visualization_url}"
+)"
+IFS='|' read -r opaque_goal_visualization_status opaque_goal_visualization_effective_url \
+  opaque_goal_visualization_tls_verify_result <<<"${opaque_goal_visualization_result}"
+if [[ "${opaque_goal_visualization_status}" != "200" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL opaque native origin got HTTP ${opaque_goal_visualization_status}" >&2
+  exit 1
+fi
+if [[ "${opaque_goal_visualization_effective_url}" != "${goal_visualization_url}" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL opaque native origin redirected to ${opaque_goal_visualization_effective_url}" >&2
+  exit 1
+fi
+if [[ "${opaque_goal_visualization_tls_verify_result}" != "0" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL opaque native origin certificate verification result ${opaque_goal_visualization_tls_verify_result}" >&2
+  exit 1
+fi
+opaque_goal_visualization_allow_origin="$(
+  tr -d '\r' <"${temporary_dir}/goal-visualization-opaque.headers" \
+    | awk 'tolower($0) ~ /^access-control-allow-origin:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
+)"
+if [[ "${opaque_goal_visualization_allow_origin}" != "*" ]]; then
+  echo "CHECK public_goal_visualization_cors FAIL opaque native origin expected Access-Control-Allow-Origin *" >&2
+  exit 1
+fi
+echo "CHECK public_goal_visualization_cors PASS read-only image accessible from sandbox and opaque native origins"
 
 if [[ -n "${EXPECTED_CHALLENGE}" ]]; then
   challenge_result="$(
