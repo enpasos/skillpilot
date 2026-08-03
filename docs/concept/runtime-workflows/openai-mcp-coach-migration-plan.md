@@ -556,11 +556,12 @@ Chatantwort wiederholt. Für ein aktives atomares Ziel mit passendem kanonischem
 `goal-visualization`-Link enthält `structuredContent.goalVisualization`
 ausschließlich Ziel-ID, Titel, optionale Beschreibung, öffentliche Bild-URL,
 Alttext und Cockpit-Link. Nur das dedizierte read-only Werkzeug
-`render_skillpilot_goal_visualization` ist an die MCP-UI gebunden. Ein
-Kontextabruf oder eine Mutation merkt eine zulässige Visualisierung nur vor;
-der Renderer darf erst in einem späteren, vom Lernenden ausgelösten Turn als
-erster Tool-Aufruf mit unveränderter Ziel-ID und `expectedStateVersion` laufen.
-Er validiert den aktuellen Backendzustand erneut. Bei fehlender, veralteter,
+`render_skillpilot_goal_visualization` ist an die MCP-UI gebunden. Wenn das
+neueste vollständige Kontext- oder Mutationsergebnis eine zulässige
+Visualisierung enthält und den Renderer erlaubt, läuft er unmittelbar danach
+im selben Assistant-Turn genau einmal mit unveränderter Ziel-ID und
+`expectedStateVersion` aus genau diesem Ergebnis. Er validiert den aktuellen
+Backendzustand erneut. Bei fehlender, veralteter,
 ungültiger oder nicht ladbarer Visualisierung bleibt die UI verborgen; der
 normale Chatablauf bleibt vollständig erhalten. Das Bild dient nur der
 Orientierung, nie als Evidenz, Aufgabe, Lösung, Bewertung oder Mastery-Nachweis.

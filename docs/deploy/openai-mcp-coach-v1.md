@@ -689,17 +689,16 @@ Cockpit-Einstellung. Die sichere Projektion darf interne Zielmetadaten tragen;
 sichtbar rendert das Widget jedoch ausschließlich das Bild mit dem am
 `img`-Element hinterlegten Alttext. Titel, Lernzielbeschreibung und Cockpit-Link
 erscheinen nicht in der UI. Fehlt ein gültiges Bild, entsteht keine UI-Karte und
-der normale Chatablauf funktioniert unverändert. Kontextabrufe, Reloads und
-Mutationen merken ein zulässiges Bild nur vor. Der Renderer darf ihnen oder
-einem anderen Tool nicht im selben Assistant-Turn folgen. Er darf frühestens im
-nächsten vom Lernenden ausgelösten Turn, der dasselbe aktive Ziel fortsetzt,
-mit unveränderter Ziel-ID und `expectedStateVersion` höchstens einmal als erster
-Tool-Aufruf laufen. Erneuter Kontextbedarf, ein Ziel-/Scope-/Sessionwechsel oder
-ein bereits versuchtes Bild verwirft beziehungsweise ersetzt die Vormerkung.
-Der Renderer projiziert den Backendzustand erneut und weist veraltete Versionen
-oder Ziel-IDs zurück. Sein Ergebnis bestätigt nur die UI-Projektion und ersetzt
-nicht den letzten vollständigen Kontext für Coaching- oder
-Zustandsentscheidungen. Ein gültiges Bild wird danach auf jeder Oberfläche
+der normale Chatablauf funktioniert unverändert. Wenn das neueste vollständige
+Kontext- oder Mutationsergebnis ein zulässiges Bild enthält und den Renderer
+erlaubt, folgt dieser unmittelbar danach im selben Assistant-Turn genau einmal
+mit der unveränderten Ziel-ID und `expectedStateVersion` aus genau diesem
+Ergebnis. Ein neueres erfolgreiches SkillPilot-Ergebnis entzieht die vorherige
+Freigabe. Der Renderer projiziert den Backendzustand erneut und weist veraltete
+Versionen oder Ziel-IDs zurück. Sein Ergebnis bestätigt nur die UI-Projektion
+und ersetzt nicht den vorherigen vollständigen Kontext für Coaching- oder
+Zustandsentscheidungen. Ein bereits versuchtes Bild wird nicht automatisch
+erneut aufgerufen. Ein gültiges Bild wird danach auf jeder Oberfläche
 unsichtbar geladen und erst nach erfolgreichem `load` gezeigt. Das Widget
 verwendet Plattform- und User-Agent-Werte nicht, um Mobile-Browser, native Apps
 oder andere Hosts von der Anzeige auszuschließen. Bei
@@ -840,13 +839,11 @@ Produktivcoach.
 - `get_skillpilot_context` und alle Navigationsabfragen mit gültigem OAuth
   und der jeweils richtigen Session-ID prüfen.
 - Bei einem aktiven atomaren Ziel mit passendem kanonischem
-  `goal-visualization`-Link darf das dedizierte Anzeige-Werkzeug nicht im selben
-  Assistant-Turn auf den Kontextabruf oder ein anderes Werkzeug folgen. Die
-  erste fachliche Antwort bleibt ohne Bild vollständig. Erst im frühesten
-  folgenden, vom Lernenden ausgelösten Turn zum unveränderten Ziel muss das
-  Anzeige-Werkzeug mit `goalId` und `expectedStateVersion` als erster
-  Werkzeugaufruf des gesamten Turns laufen. Auf einem unterstützten Web-Host
-  zeigt es dann ausschließlich das Bild; der Alttext bleibt am `img`-Element,
+  `goal-visualization`-Link muss das dedizierte Anzeige-Werkzeug unmittelbar
+  nach dem freigebenden vollständigen Ergebnis im selben Assistant-Turn genau
+  einmal mit dessen `goalId` und `expectedStateVersion` laufen. Auf einem
+  unterstützten Web-Host zeigt es dann ausschließlich das Bild; der Alttext
+  bleibt am `img`-Element,
   während Titel, Lernzielbeschreibung und Cockpit-Link nicht gerendert werden.
   Ein Clusterziel sowie ein atomisches Ziel ohne gültigen oder passenden
   Bildlink dürfen keine leere oder defekte Karte erzeugen; der Chat bleibt
@@ -881,9 +878,9 @@ Antwort notieren:
 | Prompt | Erwartung |
 | --- | --- |
 | `Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
-| Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | `get_skillpilot_context` läuft, die fachliche Antwort ist vollständig, aber `render_skillpilot_goal_visualization` wird in diesem Assistant-Turn nicht aufgerufen. Es wird kein Füller-Turn erzeugt. |
-| Im unmittelbar folgenden Lernenden-Turn zum unveränderten aktiven Ziel fachlich fortfahren | `render_skillpilot_goal_visualization` ist mit dem zuvor gelieferten `goalId` und `stateVersion` der erste Werkzeugaufruf des gesamten Turns und läuft höchstens einmal. Danach bleibt die normale Coaching-Antwort vollständig. |
-| Vor dem aufgeschobenen Bild ist ein Kontext-Reload oder anderes Werkzeug erforderlich, oder Ziel/Sitzung/Scope haben sich geändert | Der alte Bildauftrag wird verworfen beziehungsweise durch den neuesten Kontext ersetzt. Der Renderer folgt keinem anderen Werkzeug und wird für den verbrauchten Auftrag nicht automatisch erneut versucht. |
+| Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | `get_skillpilot_context` läuft; unmittelbar danach folgt `render_skillpilot_goal_visualization` genau einmal mit `goalId` und `expectedStateVersion` aus demselben Ergebnis. Danach bleibt die fachliche Antwort vollständig. |
+| Das neueste Ergebnis enthält kein Bild oder erlaubt den Renderer nicht | Es gibt keinen Renderer-Aufruf und keine leere UI-Karte; die normale Coaching-Antwort bleibt vollständig. |
+| Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor | Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht. |
 | `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context` läuft; eindeutige Teile werden als bestätigter Kontext genannt und nicht erneut erfragt. Alle aktuell bestimmbaren offenen Angaben werden in einer gemeinsamen Frage angeboten. |
 | Mehrere offene Angaben in einer Nachricht und in umgekehrter Reihenfolge beantworten | Der Coach übernimmt die Mehrfachabsicht unabhängig von der Antwortreihenfolge. Er wendet intern jeweils nur die aktuelle Option an, lädt danach den Plan frisch und löst erst dann die nächste Angabe auf. |
 | Eine Antwort auf eine spätere, nur orientierend angezeigte Frage geben | Keine vorweggenommene oder gespeicherte Option-ID wird geschrieben. Der Coach arbeitet zuerst die aktuelle authored Entscheidung ab und prüft die Angabe anschließend gegen die frisch projizierten Optionen; nur verbleibende Mehrdeutigkeit führt zu einer Rückfrage. |

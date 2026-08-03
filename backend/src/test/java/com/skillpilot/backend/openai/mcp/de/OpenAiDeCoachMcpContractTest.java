@@ -459,7 +459,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void deferredVisualizationRejectsAStaleStateVersionWithoutRetryingTheImage() {
+    void visualizationRejectsAStaleStateVersionWithoutRetryingTheImage() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
 
         McpSchema.CallToolResult result = call(
@@ -479,7 +479,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void deferredVisualizationRejectsAChangedGoalAtTheSameStateVersion() {
+    void visualizationRejectsAChangedGoalAtTheSameStateVersion() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
 
         McpSchema.CallToolResult result = call(
@@ -498,7 +498,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void deferredVisualizationFailsClosedWithoutCurrentSessionMetadata() {
+    void visualizationFailsClosedWithoutCurrentSessionMetadata() {
         OpenAiDeV1McpContractAdapter contractWithoutSessionCoordinator = new OpenAiDeV1McpContractAdapter(
                 coachTools,
                 new CoachStateProjection("https://skillpilot.test"),
@@ -671,13 +671,11 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Do not test prior knowledge")
                 .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
-                .contains("deferred UI")
                 .contains("UI receipt only")
-                .contains("does not replace the latest full SkillPilot context")
-                .contains("never call it after any other tool call")
-                .contains("subsequent learner-initiated turn")
-                .contains("first tool call of the entire turn")
-                .contains("never retry automatically")
+                .contains("preceding full SkillPilot result as the authority")
+                .contains("immediate next tool call in the same assistant turn")
+                .contains("unchanged goalId and expectedStateVersion")
+                .contains("Never retry it automatically")
                 .contains("Use backend URLs verbatim only")
                 .contains("If no approved link is available, do not output a link")
                 .contains("never with dollar delimiters")
@@ -694,10 +692,10 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("For ordinary content goals, call only after two independent");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION).tool().description())
-                .contains("deferred after a successful context read or state change")
-                .contains("Never call this tool in the same assistant turn")
-                .contains("first tool call of the entire turn")
+                .contains("immediate next tool call")
+                .contains("same goalId")
                 .contains(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)
+                .contains("newer successful SkillPilot result")
                 .contains("Do not retry automatically");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(

@@ -47,16 +47,14 @@ the entire SkillPilot conversation.
    confirmed active atomic goal. If the latest context explicitly identifies
    a goal as motivational or orientational, use the coaching policy's dedicated
    orientation mode rather than the subject-matter assessment and mastery
-   workflow. Treat an eligible `goalVisualization` as deferred UI: a context
-   read or mutation schedules it but must never be followed by
-   `render_skillpilot_goal_visualization` in the same assistant turn. Continue
-   the complete ordinary response without waiting for the image. On the
-   earliest subsequent learner-initiated turn that clearly continues the same
-   active goal, call the renderer at most once with the unchanged `goalId` and
-   `expectedStateVersion`, as the first tool call of the entire turn. Never call
-   it after another tool, create a filler turn for it, retry an attempted image,
-   or let it delay coaching. A required reload, a newer successful context, or
-   a session, scope, or goal change discards or replaces the pending image.
+   workflow. If the newest successful full context or mutation result contains
+   `goalVisualization` and `nextAllowedTools` permits
+   `render_skillpilot_goal_visualization`, call the renderer exactly once as
+   the immediate next tool call in the same assistant turn. Copy the unchanged
+   `goalId` and `expectedStateVersion` from that same result. Never call it when
+   either condition is absent, after a newer successful SkillPilot result, or
+   more than once for that result. Never retry an attempted image or let it
+   delay the complete ordinary coaching response.
 6. Run the appropriate mode: motivational orientation, dialogic scaffolding,
    verified recall, or strict assessment. In orientation mode, visible
    engagement, expressed interest, or readiness to continue is sufficient;

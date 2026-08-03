@@ -123,7 +123,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. Briefly check prior knowledge, provide small hints, let the learner work, and do not reveal the solution to the immediate next task. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            Treat an eligible goalVisualization as deferred UI. A successful context read or state-changing tool may schedule it, but never call render_skillpilot_goal_visualization in the same assistant turn that loaded, reloaded, or changed SkillPilot state, and never call it after any other tool call in that turn. Continue the complete ordinary coaching response without waiting for the image. On the earliest subsequent learner-initiated turn that clearly continues the same active goal, call the renderer at most once with the unchanged goalId and expectedStateVersion from the prior successful context, as the first tool call of the entire turn. Do not create a filler turn solely to unlock the image. If a context reload is required, the learner changes or abandons the session, scope, or goal, another tool must run first, or a newer successful SkillPilot result supersedes the pending goal, discard or replace the pending visualization instead of rendering it. One completed render attempt consumes the pending visualization for that continuous active-goal episode: never retry automatically or claim that the image was shown when the host does not display it. Only that tool creates the MCP UI containing the approved image. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
+            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
 
@@ -301,13 +301,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         RENDER_GOAL_VISUALIZATION,
                         "Display the learning-goal image",
-                        "Displays only the approved image for the currently active atomic learning goal. Treat the "
-                                + "image as deferred after a successful context read or state change. Never call this "
-                                + "tool in the same assistant turn that loaded, reloaded, or changed SkillPilot state, "
-                                + "or after any other tool call. On a subsequent learner-initiated turn that clearly "
-                                + "continues the same active goal, call it at most once as the first tool call of the "
-                                + "entire turn, using the unchanged goalId and expectedStateVersion from the prior "
-                                + "successful context. If another tool must run first, skip the renderer. Do not retry "
+                        "Displays only the approved image for the currently active atomic learning goal. Call it "
+                                + "exactly once as the immediate next tool call after the newest successful full "
+                                + "SkillPilot context or state-changing result contains goalVisualization with the "
+                                + "same goalId and nextAllowedTools names this tool. Copy expectedStateVersion from "
+                                + "that same result. Never call it without both conditions, after a newer successful "
+                                + "SkillPilot result, or for another goalId or stateVersion. Do not retry "
                                 + "automatically after a completed attempt. It does not change state.",
                         objectSchema(
                                 Map.of(
@@ -777,7 +776,7 @@ public final class OpenAiDeV1McpContractAdapter {
         if (metadata == null) {
             return errorResult(
                     OpenAiDeV1ErrorCode.INTERNAL_ERROR,
-                    "The deferred learning-goal image could not be verified against the current session state. "
+                    "The learning-goal image could not be verified against the current session state. "
                             + "Continue without the image and do not retry it automatically.",
                     null,
                     Map.of(
@@ -788,7 +787,7 @@ public final class OpenAiDeV1McpContractAdapter {
             String instruction = localized(metadata,
                     "Der Lernstand hat sich seit der Bildfreigabe geändert. Lade den aktuellen SkillPilot-Kontext "
                             + "genau einmal neu und versuche dieses Bild nicht automatisch erneut.",
-                    "The learning state changed after the image was scheduled. Reload the current SkillPilot context "
+                    "The learning state changed after the image was authorized. Reload the current SkillPilot context "
                             + "exactly once and do not retry this image automatically.");
             return errorResult(
                     OpenAiDeV1ErrorCode.STATE_VERSION_CONFLICT,

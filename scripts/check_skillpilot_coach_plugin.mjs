@@ -523,13 +523,13 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /deferred UI[\s\S]+subsequent learner-initiated turn[\s\S]+first tool call of the entire turn/s,
-  "The coach skill must defer an eligible image until a later learner turn and render it first.",
+  /goalVisualization[\s\S]+immediate next tool call in the same assistant turn[\s\S]+expectedStateVersion/s,
+  "The coach skill must use the documented data-then-render call flow.",
 );
 assert.match(
   combinedSkill,
-  /never[\s\S]+after any other tool call[\s\S]+never retry automatically/s,
-  "The coach skill must prevent the mobile-host same-turn render loop.",
+  /Never call it[\s\S]+after a newer successful SkillPilot result[\s\S]+Never retry/s,
+  "The coach skill must bind one render attempt to the authorizing full result.",
 );
 assert.match(
   combinedSkill,
@@ -538,8 +538,8 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /deferred UI[\s\S]+never call render_skillpilot_goal_visualization in the same assistant turn[\s\S]+expectedStateVersion[\s\S]+first tool call of the entire turn/s,
-  "The MCP server instructions must publish the deferred first-tool rendering boundary.",
+  /goalVisualization[\s\S]+render_skillpilot_goal_visualization[\s\S]+immediate next tool call in the same assistant turn[\s\S]+expectedStateVersion/s,
+  "The MCP server instructions must publish the immediate data-then-render boundary.",
 );
 assert.match(
   mcpContract,
@@ -549,7 +549,7 @@ assert.match(
 assert.match(
   mcpContract,
   /RENDER_GOAL_VISUALIZATION[\s\S]+EXPECTED_STATE_VERSION, integerSchema\(0, null\)[\s\S]+List\.of\("goalId", EXPECTED_STATE_VERSION\)/s,
-  "The renderer must require the state version from the context that scheduled it.",
+  "The renderer must require the state version from the result that authorized it.",
 );
 
 const javaConstant = (name) => {
