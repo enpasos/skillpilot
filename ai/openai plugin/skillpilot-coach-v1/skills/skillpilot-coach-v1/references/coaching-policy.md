@@ -92,7 +92,11 @@ more than once for the same result. A completed render attempt consumes the
 authorization; never retry automatically or claim that the host displayed the
 image. The renderer revalidates current backend state, its receipt does not
 replace the preceding full context, and the ordinary text remains the complete
-fallback.
+fallback. SkillPilot omits `goalVisualization` and the renderer permission on
+client surfaces where that UI is not known to complete reliably. Their absence
+in the newest full result is authoritative even when an earlier result or
+another device offered an image; never infer support or reuse the older
+authorization.
 
 At entry, resumption, and after every mutation, follow this cycle:
 

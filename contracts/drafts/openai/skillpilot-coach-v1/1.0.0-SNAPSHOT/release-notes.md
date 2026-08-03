@@ -29,11 +29,14 @@ line. This version has not been published yet.
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
   or attempted images are not retried and the full result remains authoritative
-- host-neutral image loading for browser, desktop, and native mobile hosts once
-  the renderer runs, without relying on optional platform or
-  user-agent hints; a bounded bootstrap deadline also closes a hidden view that
-  never receives its structured result, while image errors and load timeouts
-  request teardown independently of the MCP Apps handshake
+- desktop-web image delivery with a fail-closed presentation gate: the adapter
+  uses the optional best-effort `openai/userAgent` hint only to offer the UI to
+  an explicitly recognized desktop browser; mobile/native and unknown clients
+  stay on the complete text path without starting the renderer. The raw hint is
+  neither logged nor persisted and never affects identity, authorization, or
+  learning state
+- bounded desktop-widget bootstrap and image-load timeouts that request
+  teardown independently of the MCP Apps handshake
 - immutable UI-resource retention for real draft clients: the active
   `c890cf271...` resource remains the only output template for new messages,
   while the previously advertised `157aab83...` resource stays byte-for-byte

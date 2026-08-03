@@ -58,6 +58,10 @@ const mcpContract = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java",
 ));
+const clientSurface = read(resolve(
+  repositoryRoot,
+  "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeClientSurface.java",
+));
 const contextProjector = read(resolve(
   repositoryRoot,
   "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachContextProjector.java",
@@ -73,7 +77,7 @@ const contractMetadata = read(resolve(
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
 const completeBehavioralSurface =
-  `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
+  `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${clientSurface}\n${contextProjector}\n${launchService}`;
 const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
 assert.match(runtimeCurriculumRevision, /^curricula-sha256@[0-9a-f]{64}$/);
 
@@ -545,6 +549,21 @@ assert.match(
   mcpContract,
   /UI receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
   "The MCP server must keep the last full context authoritative after rendering.",
+);
+assert.match(
+  mcpContract,
+  /request\.meta\(\)[\s\S]+OpenAiDeClientSurface[\s\S]+supportsGoalVisualization\(\)/s,
+  "The optional UI must be gated from per-call client metadata before projection.",
+);
+assert.match(
+  clientSurface,
+  /DESKTOP_WEB[\s\S]+UNKNOWN[\s\S]+openai\/userAgent[\s\S]+supportsGoalVisualization/s,
+  "The presentation-only surface classifier must fail closed outside explicit desktop web.",
+);
+assert.match(
+  combinedSkill,
+  /client surfaces[\s\S]+absence as authoritative[\s\S]+never infer support/s,
+  "The bundled skill must not invoke the UI from stale or inferred host support.",
 );
 assert.match(
   mcpContract,

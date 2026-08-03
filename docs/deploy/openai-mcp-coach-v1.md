@@ -698,15 +698,25 @@ Freigabe. Der Renderer projiziert den Backendzustand erneut und weist veraltete
 Versionen oder Ziel-IDs zurück. Sein Ergebnis bestätigt nur die UI-Projektion
 und ersetzt nicht den vorherigen vollständigen Kontext für Coaching- oder
 Zustandsentscheidungen. Ein bereits versuchtes Bild wird nicht automatisch
-erneut aufgerufen. Ein gültiges Bild wird danach auf jeder Oberfläche
-unsichtbar geladen und erst nach erfolgreichem `load` gezeigt. Das Widget
-verwendet Plattform- und User-Agent-Werte nicht, um Mobile-Browser, native Apps
-oder andere Hosts von der Anzeige auszuschließen. Bei
-einem konkreten Bildfehler oder nach dem begrenzten Lade-Timeout bleibt die UI
-verborgen und fordert ihren Teardown an; die normale Chat-Antwort bleibt der
-vollständige Fallback. Der Host entscheidet über den Teardown. Initialisiert
-eine Oberfläche die MCP-UI gar nicht, können Backend und Widget einen vom Host
-erzeugten leeren Platzhalter nicht serverseitig unterdrücken.
+erneut aufgerufen. Ein gültiges Bild wird auf einem ausdrücklich erkannten
+Desktop-Webbrowser unsichtbar geladen und erst nach erfolgreichem `load`
+gezeigt. Die native Mobile-App ruft den Renderer zwar auf, lädt die Ressource
+aber in dem beobachteten fehlerhaften Pfad nicht; Widget-seitiger Teardown
+konnte dort deshalb nicht laufen.
+Der Adapter verwendet den optionalen Best-effort-Hinweis
+`openai/userAgent` ausschließlich als Darstellungsschranke: Nur Desktop-Web
+erhält `goalVisualization` und die Renderer-Freigabe. Mobile/native und
+unbekannte Hinweise erhalten den vollständigen Textpfad ohne Bildkomponente.
+Der Rohwert wird weder protokolliert noch persistiert und beeinflusst niemals
+OAuth, Autorisierung, Identität, Lernzustand oder Schreibvorgänge. Bei einem
+konkreten Bildfehler oder nach dem begrenzten Lade-Timeout bleibt die
+Desktop-Web-UI verborgen und fordert ihren Teardown an; die normale
+Chat-Antwort bleibt der vollständige Fallback.
+Idempotent gespeicherte Toolergebnisse bleiben dabei oberflächenneutral. Die
+Darstellungsschranke wird erst nach jedem frischen oder wiedergegebenen
+Coordinator-Ergebnis angewendet, damit Gerätewechsel weder eine Desktop-
+Freigabe an Mobile durchreichen noch Bilder im Desktop-Web dauerhaft
+unterdrücken.
 
 Die `learningSessionId` erscheint ausschließlich in der automatisch
 vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;
@@ -848,13 +858,13 @@ Produktivcoach.
   Ein Clusterziel sowie ein atomisches Ziel ohne gültigen oder passenden
   Bildlink dürfen keine leere oder defekte Karte erzeugen; der Chat bleibt
   normal lesbar.
-- Beim Öffnen desselben Chats im mobilen Browser und in der nativen Mobile-App
-  muss die normale Chat-Antwort vollständig nutzbar bleiben. Auf beiden
-  Oberflächen wird das Bild versucht und nur nach erfolgreichem `load` sichtbar.
-  Ein Bildfehler oder Lade-Timeout muss die UI ausblenden und den Teardown
-  anfordern. Ein bereits vom Host angelegter Platzhalter ist bei ausbleibender
-  UI-Initialisierung eine externe Host-Darstellung und kann nicht serverseitig
-  garantiert entfernt werden.
+- Beim Öffnen desselben Chats in der nativen Mobile-App muss die normale
+  Chat-Antwort vollständig nutzbar bleiben, ohne einen neuen Bildrenderer zu
+  starten. Das neueste Kontext- oder Mutationsergebnis darf dort weder
+  `goalVisualization` noch die Renderer-Freigabe enthalten. Ein direkter
+  Renderer-Aufruf muss ohne Bildpayload enden. Ein bereits in einer älteren
+  Nachricht gespeicherter Host-Platzhalter bleibt externe historische
+  Darstellung und kann nicht rückwirkend serverseitig entfernt werden.
 - Dasselbe Access Token ohne Session-ID, mit falscher, abgelaufener oder zu
   einem anderen Lernenden gehörender Session-ID muss scheitern.
 - Eine gültige Session-ID ohne gültiges OAuth Access Token muss ebenfalls

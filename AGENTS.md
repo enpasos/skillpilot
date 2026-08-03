@@ -445,8 +445,20 @@ Rule:
   disabled chat visualizations, the active goal is not atomic, the canonical
   link does not match its goal ID, or the image data is absent or invalid, omit
   the renderer; the ordinary chat response must remain fully usable.
-* Do not classify image support from optional host platform or user-agent
-  values. Use the documented decoupled data-then-render flow: when the newest
+* The native mobile host currently starts the UI shell but does not fetch the
+  advertised resource, so widget-side load/error teardown never runs. As a
+  narrowly scoped presentation fallback, the OpenAI V1 adapter may use the
+  optional best-effort `openai/userAgent` call metadata to offer images only to
+  an explicitly recognized desktop web browser. Missing, mobile/native, or
+  unrecognized hints fail closed for the optional image only. This signal must
+  never affect authentication, authorization, identity, learning state, or
+  persistence, and the raw value must not be logged. Apply the presentation
+  filter after the coordinator: results stored for idempotent replay
+  remain surface-neutral, and every fresh or replayed result is filtered for
+  the current caller before it leaves the adapter. A mobile call must never
+  persistently remove a later desktop-web image authorization, and a desktop
+  replay must never leak that authorization to mobile. Use the documented
+  decoupled data-then-render flow: when the newest
   successful full context or state-changing result contains an eligible
   `goalVisualization` and permits the renderer, call it exactly once as the
   immediate next tool call in the same assistant turn, with that result's
@@ -456,13 +468,14 @@ Rule:
   narrow UI receipt and does not replace the preceding full SkillPilot context
   for coaching or state decisions. Do not retry an attempted image or claim
   that the host displayed it.
-* Browser, desktop, and native mobile hosts receive the same standards-first
-  image-load attempt because actual host rollouts may be ahead of documented
-  platform availability. Keep the component hidden until a successful image
-  `load`. If no structured payload arrives during the bounded bootstrap
-  deadline, or the image raises an error or exceeds its own bounded timeout,
-  keep it hidden and request teardown without waiting for the MCP Apps
-  handshake. The ordinary chat response remains the complete fallback.
+* Only a currently authorized desktop-web render call receives the existing
+  standards-first image-load attempt. Keep the component hidden until a
+  successful image `load`. If no structured payload arrives during the bounded
+  bootstrap deadline, or the image raises an error or exceeds its own bounded
+  timeout, keep it hidden and request teardown without waiting for the MCP Apps
+  handshake. Mobile/native and unknown clients receive the complete ordinary
+  chat response without starting the renderer. A later host rollout can widen
+  the presentation allowlist after an end-to-end completion test.
 * Treat every content-addressed UI URI that has been advertised to a real
   client, including during draft testing, as immutable and retained. A newer
   widget URI is additive: tool metadata points only to the active resource,

@@ -46,6 +46,7 @@ public final class OpenAiDeMcpTelemetry {
     private static final String UNKNOWN_ARTIFACT = "unknown";
     private static final String ACTIVE_ARTIFACT_ROLE = "active";
     private static final String RETAINED_ARTIFACT_ROLE = "retained";
+    private static final String UNKNOWN_CLIENT_SURFACE = "unknown";
     private static final int ARTIFACT_FINGERPRINT_LENGTH = 12;
     private static final String UNAVAILABLE = "-";
     private static final int MAX_LOG_VALUE_LENGTH = 160;
@@ -67,6 +68,8 @@ public final class OpenAiDeMcpTelemetry {
             java.util.Arrays.stream(OpenAiDeV1ErrorCode.values())
                     .map(OpenAiDeV1ErrorCode::code)
                     .collect(java.util.stream.Collectors.toUnmodifiableSet());
+    private static final Set<String> KNOWN_CLIENT_SURFACES =
+            Set.of("desktop_web", "unsupported", UNKNOWN_CLIENT_SURFACE);
 
     private final MeterRegistry meterRegistry;
     private final OpenAiDeOperationalTelemetry operationalTelemetry;
@@ -120,6 +123,14 @@ public final class OpenAiDeMcpTelemetry {
             String toolName,
             Map<String, Object> arguments,
             Supplier<McpSchema.CallToolResult> invocation) {
+        return record(toolName, arguments, UNKNOWN_CLIENT_SURFACE, invocation);
+    }
+
+    public McpSchema.CallToolResult record(
+            String toolName,
+            Map<String, Object> arguments,
+            String clientSurface,
+            Supplier<McpSchema.CallToolResult> invocation) {
         Timer.Sample sample = Timer.start(meterRegistry);
         String status = "exception";
         String resultCode = EXCEPTION_RESULT_CODE;
@@ -142,7 +153,7 @@ public final class OpenAiDeMcpTelemetry {
             Map<?, ?> structuredContent = structuredContent(result);
             LOGGER.info(
                     "OpenAI Coach V1 MCP V1 tool invocation: contractMajor={} pluginLine={} serverBuild={} "
-                            + "tool={} status={} resultCode={} latencyMs={} clientRequestId={} "
+                            + "tool={} status={} resultCode={} latencyMs={} clientSurface={} clientRequestId={} "
                             + "learningSessionHash={} stateVersion={} stateSchemaVersion={} "
                             + "workflowVersion={} curriculumRevision={}",
                     OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
@@ -152,6 +163,9 @@ public final class OpenAiDeMcpTelemetry {
                     status,
                     resultCode,
                     TimeUnit.NANOSECONDS.toMillis(durationNanos),
+                    KNOWN_CLIENT_SURFACES.contains(clientSurface)
+                            ? clientSurface
+                            : UNKNOWN_CLIENT_SURFACE,
                     canonicalClientRequestId(arguments),
                     learningSessionFingerprint(arguments),
                     numericMetadata(structuredContent, "stateVersion"),
