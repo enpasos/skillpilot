@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
@@ -238,6 +239,56 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(orientationState.activeGoal().semanticKind()).isEqualTo("orientation");
         assertThat(orientationState.stateMachine().requiredAction()).isEqualTo("orientActiveGoal");
 
+        OrientationOutlook orientationOutlook = learnerService.getCoachOrientationOutlook(
+                learner.getSkillpilotId(),
+                "de-DE");
+        assertThat(orientationOutlook).isNotNull();
+        assertThat(orientationOutlook.orientationGoalId()).isEqualTo(MATH_SEK_TWO_ORIENTATION_ID);
+        assertThat(orientationOutlook.paths())
+                .extracting(OrientationOutlook.Path::pathId)
+                .containsExactly(
+                        "change-and-models",
+                        "space-and-linear-algebra",
+                        "data-and-decisions");
+        assertThat(orientationOutlook.paths())
+                .allSatisfy(path -> {
+                    assertThat(path.learningOutlook()).isNotBlank();
+                    assertThat(path.practicalContexts()).hasSizeBetween(1, 3);
+                    assertThat(path.representativeGoals()).hasSizeBetween(1, 4);
+                    assertThat(path.relatedGoalIds()).isNotEmpty();
+                });
+        Map<String, List<String>> relatedGoalIdsByPath = orientationOutlook.paths().stream()
+                .collect(java.util.stream.Collectors.toMap(
+                        OrientationOutlook.Path::pathId,
+                        OrientationOutlook.Path::relatedGoalIds));
+        assertThat(relatedGoalIdsByPath).containsExactlyInAnyOrderEntriesOf(Map.of(
+                "change-and-models",
+                List.of(
+                        "8dd9f210-2683-5902-acab-e3be22725232",
+                        "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                        "50b9426f-ebec-526d-8b9d-e61d9707a46e"),
+                "space-and-linear-algebra",
+                List.of("be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"),
+                "data-and-decisions",
+                List.of("508292f2-671b-4fd3-acbf-53d705e44693")));
+        assertThat(orientationOutlook.paths())
+                .flatExtracting(OrientationOutlook.Path::representativeGoals)
+                .extracting(OrientationOutlook.GoalReference::title)
+                .contains(
+                        "Integral als Bestand und Flächeninhalt verstehen",
+                        "Skalarprodukt als Orthogonalitätskriterium nutzen",
+                        "Argumentationsmuster von Hypothesentests erläutern")
+                .noneMatch(title -> title.contains("Source-Extraction"));
+        OrientationOutlook englishOrientationOutlook = learnerService.getCoachOrientationOutlook(
+                learner.getSkillpilotId(),
+                "en-GB");
+        assertThat(englishOrientationOutlook.paths())
+                .extracting(OrientationOutlook.Path::title)
+                .containsExactly(
+                        "Change, growth and models",
+                        "Space, vectors and linear transformations",
+                        "Data, chance and evidence-based decisions");
+
         assertThatThrownBy(() -> learnerService.setMastery(
                         learner.getSkillpilotId(),
                         new MasteryUpdateRequest(
@@ -252,6 +303,9 @@ class LearnerPersonalizationProgressionIntegrationTest {
                         Map.of(MATH_SEK_TWO_ORIENTATION_ID, 1.0),
                         MATH_SEK_TWO_ORIENTATION_ID));
 
+        assertThat(learnerService.getCoachOrientationOutlook(learner.getSkillpilotId(), "de-DE"))
+                .isNull();
+
         var frontierAfterOrientation = learnerService.getRichFrontier(learner.getSkillpilotId());
         assertThat(frontierAfterOrientation)
                 .isNotEmpty()
@@ -260,6 +314,8 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(frontierAfterOrientation)
                 .allSatisfy(goal -> assertThat(goal.tags())
                         .doesNotContain("Orientation", "Motivation"));
+        assertThat(frontierAfterOrientation)
+                .noneMatch(goal -> "exam".equals(goal.nodeKind()));
         assertThat(learnerService.getFrontier(learner.getSkillpilotId()))
                 .isNotEmpty()
                 .doesNotContain(MATH_SEK_TWO_ORIENTATION_ID);

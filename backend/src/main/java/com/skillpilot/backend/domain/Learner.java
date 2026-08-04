@@ -17,6 +17,9 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 public class Learner {
 
+    private static final String DEFAULT_LEARNING_STRATEGY = "SEQUENTIAL";
+    private static final boolean DEFAULT_AUTO_PILOT = true;
+
     @Id
     @Column(name = "skillpilot_id", nullable = false, updatable = false, length = 80)
     private String skillpilotId;
@@ -44,11 +47,11 @@ public class Learner {
     @Column(name = "learning_state")
     private LearningState learningState = LearningState.FRONTIER;
 
-    @Column(name = "learning_strategy")
-    private String learningStrategy = "RANDOM";
+    @Column(name = "learning_strategy", nullable = false)
+    private String learningStrategy = DEFAULT_LEARNING_STRATEGY;
 
-    @Column(name = "auto_pilot")
-    private Boolean autoPilot = false;
+    @Column(name = "auto_pilot", nullable = false)
+    private Boolean autoPilot = DEFAULT_AUTO_PILOT;
 
     @Column(name = "strict_mode")
     private Boolean strictMode = false;
@@ -134,7 +137,7 @@ public class Learner {
     }
 
     public String getLearningStrategy() {
-        return learningStrategy;
+        return learningStrategy != null ? learningStrategy : DEFAULT_LEARNING_STRATEGY;
     }
 
     public void setLearningStrategy(String learningStrategy) {
@@ -142,7 +145,7 @@ public class Learner {
     }
 
     public Boolean getAutoPilot() {
-        return autoPilot;
+        return autoPilot != null ? autoPilot : DEFAULT_AUTO_PILOT;
     }
 
     public void setAutoPilot(Boolean autoPilot) {
@@ -187,10 +190,10 @@ public class Learner {
             this.learningState = LearningState.FRONTIER;
         }
         if (this.learningStrategy == null) {
-            this.learningStrategy = "RANDOM";
+            this.learningStrategy = DEFAULT_LEARNING_STRATEGY;
         }
         if (this.autoPilot == null) {
-            this.autoPilot = false;
+            this.autoPilot = DEFAULT_AUTO_PILOT;
         }
         if (this.strictMode == null) {
             this.strictMode = false;

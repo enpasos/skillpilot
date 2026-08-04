@@ -472,7 +472,8 @@ const didacticParityRules = [
       /merely names or selects[\s\S]+starts the\s+orientation dialogue/u,
       /not completion evidence/u,
       /Take up the interest actively/u,
-      /learner responds to that tailored follow-up[\s\S]+explicitly asks to continue/u,
+      /learner\s+responds to that tailored follow-up[\s\S]+explicitly asks to continue/u,
+      /content-free acknowledgement alone is insufficient/u,
       /generic acknowledgement[\s\S]+next-goal\s+options[\s\S]+forbidden/u,
     ],
   },
@@ -744,8 +745,13 @@ assert.match(orientationSection[1], /Show possibilities/u);
 assert.match(orientationSection[1], /Offer positive perspectives/u);
 assert.match(
   orientationSection[1],
-  /learner responds to that tailored follow-up or explicitly asks to continue/u,
+  /learner\s+responds to that tailored follow-up[\s\S]+or explicitly asks to continue/u,
   "Orientation completion must wait for active follow-up engagement or an explicit direct-continuation request.",
+);
+assert.match(
+  orientationSection[1],
+  /content-free acknowledgement alone is insufficient/u,
+  "Orientation completion must not treat a content-free acknowledgement as active engagement.",
 );
 assert.match(
   orientationSection[1],

@@ -12,14 +12,17 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -202,9 +205,20 @@ class OpenAiDeCoachMcpContractTest {
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
                         .containsOnlyKeys(
                                 "goalId",
+                                OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
                                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                                 OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
                                 OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
+        JsonNode masteryInputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().inputSchema());
+        assertThat(masteryInputSchema
+                        .at("/properties/orientationPathId/minLength")
+                        .asInt())
+                .isEqualTo(1);
+        assertThat(masteryInputSchema
+                        .at("/properties/orientationPathId/maxLength")
+                        .asInt())
+                .isEqualTo(320);
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema().get("required"))
                 .asString()
                 .contains(
@@ -366,7 +380,15 @@ class OpenAiDeCoachMcpContractTest {
     @Test
     void modelFacingInputSchemasOmitTechnicalStringValidationDetails() throws Exception {
         for (McpStatelessServerFeatures.SyncToolSpecification specification : contract.toolSpecifications()) {
-            String inputSchemaJson = objectMapper.writeValueAsString(specification.tool().inputSchema());
+            JsonNode inputSchema = objectMapper.valueToTree(specification.tool().inputSchema());
+            if (OpenAiDeV1McpContractAdapter.SET_MASTERY.equals(specification.tool().name())
+                    && inputSchema.path("properties") instanceof ObjectNode properties) {
+                // orientationPathId is an authored public selector whose explicit bounds
+                // are part of the V1 contract. All remaining model-facing strings stay
+                // free of technical validators.
+                properties.remove(OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID);
+            }
+            String inputSchemaJson = objectMapper.writeValueAsString(inputSchema);
 
             assertThat(inputSchemaJson)
                     .as("model-facing input schema of %s", specification.tool().name())
@@ -399,6 +421,20 @@ class OpenAiDeCoachMcpContractTest {
                 .isEqualTo("array");
         assertThat(contextSchema.at("/properties/orientation/properties/openQuestions/items/type").asText())
                 .isEqualTo("object");
+        assertThat(contextSchema.at("/properties/orientationOutlook/type").asText())
+                .isEqualTo("object");
+        assertThat(contextSchema.at("/properties/orientationOutlook/properties/paths/minItems").asInt())
+                .isEqualTo(2);
+        assertThat(contextSchema.at("/properties/orientationOutlook/properties/paths/maxItems").asInt())
+                .isEqualTo(4);
+        assertThat(contextSchema
+                        .at("/properties/orientationOutlook/properties/paths/items/properties/practicalContexts/maxItems")
+                        .asInt())
+                .isEqualTo(3);
+        assertThat(contextSchema
+                        .at("/properties/orientationOutlook/properties/paths/items/properties/representativeGoalTitles/maxItems")
+                        .asInt())
+                .isEqualTo(4);
         assertThat(contextSchema
                         .at("/properties/orientation/properties/openQuestions/items/properties/topic/type")
                         .asText())
@@ -678,12 +714,18 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("stay on the same active goal")
                 .contains("correction and fresh evidence")
                 .contains("interactionMode=orientation")
-                .contains("two to four understandable possibilities")
-                .contains("merely names one offered possibility starts the motivational dialogue")
+                .contains("orientationOutlook as the sole authoritative map")
+                .contains("present every supplied path")
+                .contains("what the learner will actually learn")
+                .contains("representative later milestones")
+                .contains("practically useful")
+                .contains("Do not invent, add, merge, or substitute paths")
+                .contains("merely names one path starts the motivational dialogue")
                 .contains("not completion evidence")
                 .contains("one active personal follow-up")
-                .contains("only after the learner answers that tailored follow-up")
-                .contains("followed immediately by next-goal options is forbidden")
+                .contains("only after the learner meaningfully engages with that tailored follow-up")
+                .contains("pass its exact pathId unchanged as orientationPathId")
+                .contains("unrelated next-goal options is forbidden")
                 .contains("Do not test prior knowledge")
                 .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
@@ -702,13 +744,15 @@ class OpenAiDeCoachMcpContractTest {
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
                 .contains("interactionMode=orientation")
-                .contains("merely names an offered possibility")
+                .contains("orientationOutlook as the complete authoritative learning map")
+                .contains("merely names one supplied path")
                 .contains("must not call this tool")
                 .contains("tailored motivational follow-up")
-                .contains("wait for its answer")
+                .contains("wait for meaningful engagement")
                 .contains("explicit request to continue directly")
-                .contains("frontier options")
-                .contains("do not test details")
+                .contains("exact pathId unchanged as orientationPathId")
+                .contains("unrelated frontier options")
+                .contains("test details")
                 .contains("claim subject mastery")
                 .contains("For ordinary content goals, call only after two independent");
 
@@ -785,6 +829,238 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(payload.context().activeGoal().goalId()).isEqualTo("goal-public-id");
         assertThat(objectMapper.writeValueAsString(payload)).doesNotContain(LEARNER_ID, CONNECTION_SECRET);
         verify(identityResolver).requireWriteAccess(McpTransportContext.EMPTY);
+    }
+
+    @Test
+    void orientationCompletionActivatesTheFirstAvailableGoalFromTheSelectedAuthoritativePath() {
+        FrontierGoal orientation = orientationGoal();
+        FrontierGoal selectedEntry = contentGoal("selected-entry", "Funktionen und Modelle verstehen");
+        FrontierGoal unrelatedEntry = contentGoal("unrelated-entry", "Daten auswerten");
+        UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
+        UnifiedLearnerStateResponse successor = goalSelectionState(selectedEntry, unrelatedEntry);
+        UnifiedLearnerStateResponse activated = state("teachActiveGoal", selectedEntry);
+        OrientationOutlook outlook = new OrientationOutlook(
+                orientation.id(),
+                List.of(
+                        new OrientationOutlook.Path(
+                                "change-and-models",
+                                "Veränderung, Wachstum und Modelle",
+                                "Funktionen und Veränderungen modellieren.",
+                                List.of("Klima und Wachstum"),
+                                List.of(new OrientationOutlook.GoalReference(
+                                        selectedEntry.id(),
+                                        selectedEntry.title())),
+                                List.of(selectedEntry.id())),
+                        new OrientationOutlook.Path(
+                                "data-and-decisions",
+                                "Daten, Zufall und Entscheidungen",
+                                "Daten und Unsicherheit beurteilen.",
+                                List.of("Medizinische Studien"),
+                                List.of(new OrientationOutlook.GoalReference(
+                                        unrelatedEntry.id(),
+                                        unrelatedEntry.title())),
+                                List.of(unrelatedEntry.id()))));
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                orientation.id(),
+                1.0,
+                successor.frontier(),
+                successor.nextAllowedActions(),
+                successor.learningState(),
+                successor.activeGoal(),
+                successor.stateMachine(),
+                successor.goals());
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.getOrientationOutlook(LEARNER_ID, "de")).thenReturn(outlook);
+        when(coachTools.getUncompactedFrontier(LEARNER_ID))
+                .thenReturn(List.of(unrelatedEntry, selectedEntry));
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+        when(coachTools.setActiveGoal(
+                        LEARNER_ID,
+                        new ActiveGoalRequest(selectedEntry.id(), false)))
+                .thenReturn(activated);
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", orientation.id(),
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+
+        assertThat(result.isError()).isFalse();
+        OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
+                structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertThat(payload.context().activeGoal().goalId()).isEqualTo(selectedEntry.id());
+        verify(coachTools).setActiveGoal(
+                LEARNER_ID,
+                new ActiveGoalRequest(selectedEntry.id(), false));
+    }
+
+    @Test
+    void orientationCompletionWithoutASelectedPathLeavesGoalChoiceToTheFreshState() {
+        FrontierGoal orientation = orientationGoal();
+        FrontierGoal firstEntry = contentGoal("first-entry", "Funktionen und Modelle verstehen");
+        UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
+        UnifiedLearnerStateResponse successor = goalSelectionState(firstEntry);
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                orientation.id(),
+                1.0,
+                successor.frontier(),
+                successor.nextAllowedActions(),
+                successor.learningState(),
+                successor.activeGoal(),
+                successor.stateMachine(),
+                successor.goals());
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of("goalId", orientation.id()));
+
+        assertThat(result.isError()).isFalse();
+        OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
+                structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertThat(payload.context().requiredAction()).isEqualTo("setActiveGoal");
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void orientationCompletionKeepsTheFreshStateWhenTheSelectedPathHasNoAvailableGoal() {
+        FrontierGoal orientation = orientationGoal();
+        FrontierGoal unavailableEntry = contentGoal("unavailable-entry", "Funktionen verstehen");
+        FrontierGoal unrelatedEntry = contentGoal("unrelated-entry", "Daten auswerten");
+        UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
+        UnifiedLearnerStateResponse successor = goalSelectionState(unrelatedEntry);
+        OrientationOutlook outlook = new OrientationOutlook(
+                orientation.id(),
+                List.of(new OrientationOutlook.Path(
+                        "change-and-models",
+                        "Veränderung und Modelle",
+                        "Funktionen und Veränderungen modellieren.",
+                        List.of("Klima und Wachstum"),
+                        List.of(new OrientationOutlook.GoalReference(
+                                unavailableEntry.id(),
+                                unavailableEntry.title())),
+                        List.of(unavailableEntry.id()))));
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                orientation.id(),
+                1.0,
+                successor.frontier(),
+                successor.nextAllowedActions(),
+                successor.learningState(),
+                successor.activeGoal(),
+                successor.stateMachine(),
+                successor.goals());
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.getOrientationOutlook(LEARNER_ID, "de")).thenReturn(outlook);
+        when(coachTools.getUncompactedFrontier(LEARNER_ID)).thenReturn(List.of(unrelatedEntry));
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", orientation.id(),
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+
+        assertThat(result.isError()).isFalse();
+        OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
+                structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertThat(payload.status()).isEqualTo("updated");
+        assertThat(payload.context().requiredAction()).isEqualTo("setActiveGoal");
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void orientationCompletionFailsClosedWhenTheAuthoritativePathContainsNoGoalIds() {
+        FrontierGoal orientation = orientationGoal();
+        FrontierGoal unrelatedEntry = contentGoal("unrelated-entry", "Daten auswerten");
+        UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
+        UnifiedLearnerStateResponse successor = goalSelectionState(unrelatedEntry);
+        OrientationOutlook outlook = new OrientationOutlook(
+                orientation.id(),
+                List.of(new OrientationOutlook.Path(
+                        "change-and-models",
+                        "Veränderung und Modelle",
+                        "Funktionen und Veränderungen modellieren.",
+                        List.of("Klima und Wachstum"),
+                        List.of(new OrientationOutlook.GoalReference(
+                                unrelatedEntry.id(),
+                                unrelatedEntry.title())),
+                        List.of())));
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                orientation.id(),
+                1.0,
+                successor.frontier(),
+                successor.nextAllowedActions(),
+                successor.learningState(),
+                successor.activeGoal(),
+                successor.stateMachine(),
+                successor.goals());
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.getOrientationOutlook(LEARNER_ID, "de")).thenReturn(outlook);
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", orientation.id(),
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+
+        assertThat(result.isError()).isTrue();
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void orientationCompletionRejectsAPathOutsideTheCurrentAuthoritativeMap() {
+        FrontierGoal orientation = orientationGoal();
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state("orientActiveGoal", orientation));
+        when(coachTools.getOrientationOutlook(LEARNER_ID, "de")).thenReturn(new OrientationOutlook(
+                orientation.id(),
+                List.of(new OrientationOutlook.Path(
+                        "known-path",
+                        "Bekannter Pfad",
+                        "Geprüfter Ausblick.",
+                        List.of("Geprüfter Kontext"),
+                        List.of(new OrientationOutlook.GoalReference("entry", "Einstieg")),
+                        List.of("entry")))));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", orientation.id(),
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "invented-path"));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.content().toString()).contains("gehört nicht zur aktuellen Lernlandkarte");
+        verify(coachTools, never()).setMastery(any(), any());
+        verify(coachTools, never()).setActiveGoal(any(), any());
     }
 
     @Test
@@ -1530,10 +1806,17 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     private UnifiedLearnerStateResponse normalState(String requiredAction) {
-        FrontierGoal active = new FrontierGoal(
+        FrontierGoal active = contentGoal(
                 "goal-public-id",
-                "Lineare Gleichungen sicher lösen",
-                "Löse lineare Gleichungen und begründe deinen Weg.",
+                "Lineare Gleichungen sicher lösen");
+        return state(requiredAction, active);
+    }
+
+    private FrontierGoal contentGoal(String goalId, String title) {
+        return new FrontierGoal(
+                goalId,
+                title,
+                "Bearbeite das Lernziel dialogisch.",
                 "atomic",
                 "tutor",
                 "frontier",
@@ -1543,7 +1826,54 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null,
                 null);
-        return state(requiredAction, active);
+    }
+
+    private FrontierGoal orientationGoal() {
+        return new FrontierGoal(
+                "orientation-public-id",
+                "Warum Mathematik? – Denken, Muster & Zukunft",
+                "Entdecke Möglichkeiten der Mathematik.",
+                "atomic",
+                "tutor",
+                "orientation",
+                "frontier",
+                List.of("orientation", "motivation"),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+    }
+
+    private UnifiedLearnerStateResponse goalSelectionState(FrontierGoal... options) {
+        List<FrontierGoal> goals = List.of(options);
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik Oberstufe Hessen",
+                "",
+                "DE",
+                "HE",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        return new UnifiedLearnerStateResponse(
+                LEARNER_ID,
+                curriculum,
+                goals,
+                new LearnerGoals(
+                        goals,
+                        3,
+                        10,
+                        new GoalStats(3, 10),
+                        new GoalStats(2, 5),
+                        false),
+                List.of("setActiveGoal"),
+                List.of(),
+                Set.of(),
+                "frontier",
+                null,
+                new StateMachineInfo("FRONTIER", "setActiveGoal", goals, List.of(), null));
     }
 
     private UnifiedLearnerStateResponse memoryState(String goalId) {

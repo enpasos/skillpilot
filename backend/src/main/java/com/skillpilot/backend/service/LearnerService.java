@@ -70,6 +70,7 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.MasteryEntryDTO;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -302,6 +303,11 @@ public class LearnerService {
             int eligibleCards,
             int blockedCards,
             Instant nextEligibleAt) {
+    }
+
+    private record GlobalAssessmentFocus(
+            Set<String> allGoalIds,
+            Set<String> explicitlyFocusedGoalIds) {
     }
 
     private static Long parseNextReview(Object value) {
@@ -2134,15 +2140,34 @@ public class LearnerService {
         if (storedActiveGoalId != null && !storedActiveGoalId.isBlank()) {
             String curriculumId = learner.getSelectedCurriculum();
             if (curriculumId != null) {
-                Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-                Map<String, LearningGoal> structuralGoals = getStructuralGoals(curriculumId);
-                List<String> newPlannedIds = new ArrayList<>(normalizedTargetIds);
+                GoalProjection projection = getGoalProjection(
+                        curriculumId,
+                        learner.getPersonalCurriculum());
+                Map<String, LearningGoal> allGoals = projection.visibleGoals();
+                Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
+                List<String> newProjectedFocusIds = resolveProjectedTargetFocusIds(
+                        new ArrayList<>(normalizedTargetIds),
+                        projection);
+                List<String> newPlannedIds = resolveProjectedTargetScopeIds(
+                        newProjectedFocusIds,
+                        projection);
+                GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
+                        structuralGoals,
+                        newProjectedFocusIds);
                 String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
                 boolean activeGoalOutOfScope = activeGoalId != null
                         && isGoalOutOfPlannedScope(activeGoalId, newPlannedIds, structuralGoals, null);
+                boolean globalAssessmentFocusRemoved = isGlobalAssessmentGoalWithoutExplicitFocus(
+                        activeGoalId,
+                        globalAssessmentFocus);
 
-                if (activeGoalOutOfScope) {
-                    clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE");
+                if (activeGoalOutOfScope || globalAssessmentFocusRemoved) {
+                    clearPersistedActiveGoal(
+                            learner,
+                            skillpilotId,
+                            globalAssessmentFocusRemoved
+                                    ? "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS"
+                                    : "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE");
                 }
             }
         }
@@ -3550,6 +3575,14 @@ public class LearnerService {
         GoalProjection projection = getGoalProjection(
                 learner.getSelectedCurriculum(),
                 projectedConfigJson);
+        List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
+                plannedGoals == null
+                        ? Collections.emptyList()
+                        : plannedGoals.stream().map(PlannedGoal::getGoalId).toList(),
+                projection);
+        GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
+                projection.structuralGoals(),
+                projectedFocusIds);
         String activeGoalId = learner.getActiveGoalId();
         if (activeGoalId != null && !activeGoalId.isBlank()) {
             String projectedActiveGoalId = resolveGoalIdInVisibleGoals(
@@ -3557,7 +3590,10 @@ public class LearnerService {
                     projection.visibleGoals(),
                     false);
             if (projectedActiveGoalId == null
-                    || !projection.targetGoalIds().contains(projectedActiveGoalId)) {
+                    || !projection.targetGoalIds().contains(projectedActiveGoalId)
+                    || isGlobalAssessmentGoalWithoutExplicitFocus(
+                            projectedActiveGoalId,
+                            globalAssessmentFocus)) {
                 learner.setActiveGoalId(null);
             }
         }
@@ -4809,12 +4845,13 @@ public class LearnerService {
                 getStoredPlannedGoals(skillpilotId),
                 projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
+        Set<String> scope = Collections.emptySet();
         if (!plannedIds.isEmpty()) {
             boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
             Map<String, List<String>> scopeRequires = strictMode
                     ? computeEffectiveRequires(projection.structuralGoals())
                     : computeEffectiveRequires(allGoals);
-            Set<String> scope = computeScope(
+            scope = computeScope(
                     plannedIds,
                     projection.structuralGoals(),
                     scopeRequires);
@@ -4835,10 +4872,21 @@ public class LearnerService {
                         .toList();
             }
         }
+        GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
+                projection.structuralGoals(),
+                projectedFocusIds);
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
             if (!projection.targetGoalIds().contains(goal.getId())) {
+                continue;
+            }
+            if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
+                continue;
+            }
+            boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
+            if (globalAssessmentGoal
+                    && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
                 continue;
             }
             Double currentMastery = effectiveMastery.getOrDefault(goal.getId(), 0.0);
@@ -4880,7 +4928,9 @@ public class LearnerService {
                 }
             }
 
-            if (prerequisitesMet) {
+            if (prerequisitesMet
+                    && !isExamGoalUnavailableForHardCheck(goal)
+                    && !isNonGlobalExamWithoutDirectPrerequisite(goal, globalAssessmentGoal)) {
                 frontier.add(goal.getId());
             }
         }
@@ -4893,6 +4943,19 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public List<FrontierGoal> getRichFrontier(String skillpilotId) {
         return getRichFrontier(skillpilotId, true);
+    }
+
+    /**
+     * Complete personalized frontier for server-side transition decisions.
+     *
+     * <p>The ordinary learner projection may compact equivalent choices for
+     * display. Callers that must activate one explicitly authored goal need
+     * the unabridged frontier so a valid transition is never rejected merely
+     * because its goal was omitted from the compact UI options.</p>
+     */
+    @Transactional(readOnly = true)
+    public List<FrontierGoal> getUncompactedRichFrontier(String skillpilotId) {
+        return getRichFrontier(skillpilotId, false);
     }
 
     private List<FrontierGoal> getRichFrontier(String skillpilotId, boolean compactFrontier) {
@@ -4930,6 +4993,9 @@ public class LearnerService {
         List<String> plannedIds = resolveProjectedTargetScopeIds(
                 projectedFocusIds,
                 projection);
+        GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
+                allStructuralGoals,
+                projectedFocusIds);
 
         // CRITICAL FIX: Use Structural (Unfiltered) Goals for Scope!
         // This ensures that if the User plans a Parent that is currently "Hidden" by a
@@ -4977,6 +5043,11 @@ public class LearnerService {
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
             if (!projection.targetGoalIds().contains(goal.getId())) {
+                continue;
+            }
+            boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
+            if (globalAssessmentGoal
+                    && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
                 continue;
             }
             // Filter by Scope (calculated from Structural)
@@ -5044,6 +5115,9 @@ public class LearnerService {
             }
 
             if (isExamGoalUnavailableForHardCheck(goal)) {
+                continue;
+            }
+            if (isNonGlobalExamWithoutDirectPrerequisite(goal, globalAssessmentGoal)) {
                 continue;
             }
 
@@ -5693,6 +5767,213 @@ public class LearnerService {
     }
 
     /**
+     * Returns the reviewed skill-landscape map for the current orientation
+     * goal, filtered through the learner's current target projection.
+     *
+     * <p>Graph structure determines which authored paths are actually present;
+     * practical contexts always come from reviewed curriculum metadata. If
+     * either side is missing or inconsistent, the method fails closed.</p>
+     */
+    @Transactional(readOnly = true)
+    public OrientationOutlook getCoachOrientationOutlook(String skillpilotId, String communicationLocale) {
+        Learner learner = learnerRepository.findById(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return null;
+        }
+
+        GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+        Map<String, LearningGoal> visibleGoals = projection.visibleGoals();
+        String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
+        LearningGoal orientationGoal = activeGoalId == null ? null : visibleGoals.get(activeGoalId);
+        if (orientationGoal == null
+                || !projection.targetGoalIds().contains(activeGoalId)
+                || !isOrientationGoal(orientationGoal)) {
+            return null;
+        }
+
+        Map<String, Object> extendedData = orientationGoal.getExtendedData();
+        Object rawOutlook = extendedData == null ? null : extendedData.get("orientationOutlook");
+        if (!(rawOutlook instanceof Map<?, ?> outlookMap)) {
+            return null;
+        }
+        Object rawPaths = outlookMap.get("paths");
+        if (!(rawPaths instanceof List<?> authoredPaths) || authoredPaths.isEmpty()) {
+            return null;
+        }
+
+        Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
+        Set<String> permittedGoalIds = new LinkedHashSet<>(projection.targetGoalIds());
+        List<String> focusIds = resolveProjectedTargetFocusIds(
+                getStoredPlannedGoals(skillpilotId),
+                projection);
+        List<String> plannedScopeIds = resolveProjectedTargetScopeIds(focusIds, projection);
+        if (!plannedScopeIds.isEmpty()) {
+            Set<String> plannedScope = computeScope(
+                    plannedScopeIds,
+                    structuralGoals,
+                    Collections.emptyMap());
+            permittedGoalIds.retainAll(plannedScope);
+        }
+
+        boolean english = communicationLocale != null
+                && communicationLocale.toLowerCase(Locale.ROOT).startsWith("en");
+        List<OrientationOutlook.Path> paths = new ArrayList<>();
+        Set<String> seenPathIds = new LinkedHashSet<>();
+        for (Object rawPath : authoredPaths) {
+            if (paths.size() >= 4 || !(rawPath instanceof Map<?, ?> pathMap)) {
+                continue;
+            }
+            String pathId = authoredString(pathMap, "id");
+            String title = localizedAuthoredString(pathMap, "title", english);
+            String learningOutlook = localizedAuthoredString(pathMap, "learningOutlook", english);
+            List<String> practicalContexts = localizedAuthoredStrings(
+                    pathMap,
+                    "practicalContexts",
+                    english,
+                    3);
+            if (pathId == null || title == null || learningOutlook == null
+                    || practicalContexts.isEmpty() || !seenPathIds.add(pathId)) {
+                continue;
+            }
+
+            Set<String> pathDescendantIds = new LinkedHashSet<>();
+            for (String rootRef : authoredStrings(pathMap, "subtreeRootIds", 12)) {
+                String rootId = resolveGoalRef(rootRef, structuralGoals);
+                if (rootId == null) {
+                    continue;
+                }
+                pathDescendantIds.add(rootId);
+                collectResolvedDescendants(rootId, structuralGoals, pathDescendantIds, new HashSet<>());
+            }
+            pathDescendantIds.retainAll(permittedGoalIds);
+
+            List<String> relatedGoalIds = new ArrayList<>();
+            for (String entryRef : authoredStrings(pathMap, "entryGoalIds", 6)) {
+                String entryId = resolveGoalRef(entryRef, structuralGoals);
+                LearningGoal entryGoal = entryId == null ? null : structuralGoals.get(entryId);
+                if (entryGoal == null
+                        || !pathDescendantIds.contains(entryId)
+                        || projection.prerequisiteOnlyGoalIds().contains(entryId)
+                        || !isAtomicGoal(entryGoal)
+                        || !directlyRequiresGoal(entryGoal, activeGoalId, structuralGoals)) {
+                    continue;
+                }
+                relatedGoalIds.add(entryId);
+            }
+            if (relatedGoalIds.isEmpty()) {
+                continue;
+            }
+
+            List<OrientationOutlook.GoalReference> representativeGoals = new ArrayList<>();
+            for (String milestoneRef : authoredStrings(pathMap, "milestoneGoalIds", 6)) {
+                String milestoneId = resolveGoalRef(milestoneRef, structuralGoals);
+                if (milestoneId == null || !pathDescendantIds.contains(milestoneId)) {
+                    continue;
+                }
+                LearningGoal milestone = structuralGoals.get(milestoneId);
+                if (!isAtomicGoal(milestone)
+                        || projection.prerequisiteOnlyGoalIds().contains(milestoneId)) {
+                    continue;
+                }
+                String milestoneTitle = english && milestone.getTitleEn() != null
+                        && !milestone.getTitleEn().isBlank()
+                                ? milestone.getTitleEn().trim()
+                                : milestone.getTitle();
+                if (milestoneTitle != null && !milestoneTitle.isBlank()) {
+                    representativeGoals.add(new OrientationOutlook.GoalReference(
+                            milestoneId,
+                            milestoneTitle.trim()));
+                }
+                if (representativeGoals.size() >= 4) {
+                    break;
+                }
+            }
+            if (representativeGoals.isEmpty()) {
+                continue;
+            }
+            paths.add(new OrientationOutlook.Path(
+                    pathId,
+                    title,
+                    learningOutlook,
+                    List.copyOf(practicalContexts),
+                    List.copyOf(representativeGoals),
+                    List.copyOf(relatedGoalIds)));
+        }
+        return paths.size() < 2 ? null : new OrientationOutlook(activeGoalId, List.copyOf(paths));
+    }
+
+    private boolean directlyRequiresGoal(
+            LearningGoal goal,
+            String requiredGoalId,
+            Map<String, LearningGoal> structuralGoals) {
+        if (goal == null || goal.getRequires() == null) {
+            return false;
+        }
+        return goal.getRequires().stream()
+                .map(requirementRef -> resolveGoalRef(requirementRef, structuralGoals))
+                .anyMatch(requiredGoalId::equals);
+    }
+
+    private void collectResolvedDescendants(
+            String goalId,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> result,
+            Set<String> visiting) {
+        if (!visiting.add(goalId)) {
+            return;
+        }
+        LearningGoal goal = structuralGoals.get(goalId);
+        if (goal != null && goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                String childId = resolveGoalRef(childRef, structuralGoals);
+                if (childId != null && result.add(childId)) {
+                    collectResolvedDescendants(childId, structuralGoals, result, visiting);
+                }
+            }
+        }
+        visiting.remove(goalId);
+    }
+
+    private String localizedAuthoredString(Map<?, ?> source, String key, boolean english) {
+        String localized = authoredString(source, english ? key + "En" : key);
+        return localized != null ? localized : authoredString(source, key);
+    }
+
+    private List<String> localizedAuthoredStrings(
+            Map<?, ?> source,
+            String key,
+            boolean english,
+            int limit) {
+        List<String> localized = authoredStrings(source, english ? key + "En" : key, limit);
+        return localized.isEmpty() ? authoredStrings(source, key, limit) : localized;
+    }
+
+    private String authoredString(Map<?, ?> source, String key) {
+        Object value = source.get(key);
+        if (!(value instanceof String text) || text.isBlank()) {
+            return null;
+        }
+        return text.trim();
+    }
+
+    private List<String> authoredStrings(Map<?, ?> source, String key, int limit) {
+        Object value = source.get(key);
+        if (!(value instanceof List<?> values)) {
+            return List.of();
+        }
+        return values.stream()
+                .filter(String.class::isInstance)
+                .map(String.class::cast)
+                .map(String::trim)
+                .filter(text -> !text.isBlank())
+                .distinct()
+                .limit(limit)
+                .toList();
+    }
+
+    /**
      * Return the same personalized top-level modules used when a learner has no
      * scope yet. This read model lets coach adapters offer an explicit focus
      * switch even while another scope or active goal is present.
@@ -5827,13 +6108,24 @@ public class LearnerService {
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
                 && activeGoalId != null
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
-        if (activeGoalMastered || activeGoalInvalidInView || activeGoalOutOfScope) {
+        GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
+                structuralGoals,
+                plannedIds);
+        boolean globalAssessmentFocusRemoved = isGlobalAssessmentGoalWithoutExplicitFocus(
+                activeGoalId,
+                globalAssessmentFocus);
+        if (activeGoalMastered
+                || activeGoalInvalidInView
+                || activeGoalOutOfScope
+                || globalAssessmentFocusRemoved) {
             if (allowSideEffects) {
                 clearPersistedActiveGoal(
                         learner,
                         skillpilotId,
                         activeGoalInvalidInView
                                 ? "ACTIVE_GOAL_CLEARED_INVALID_VIEW"
+                                : globalAssessmentFocusRemoved
+                                        ? "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS"
                                 : activeGoalOutOfScope
                                         ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE"
                                         : "ACTIVE_GOAL_CLEARED_STALE");
@@ -6595,7 +6887,12 @@ public class LearnerService {
                     "goalId must reference a released, concrete exam goal.");
         }
 
-        List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
+        // Selection remains valid for every genuine frontier goal, even when the
+        // learner-facing read model compacted an equivalent option for display.
+        // Server-authored transitions (for example an orientation-path entry)
+        // must not be rejected merely because that goal was omitted by UI
+        // compaction.
+        List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId, false));
         boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
         if (!allowed) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
@@ -6618,6 +6915,86 @@ public class LearnerService {
             return false;
         }
         return !isExamDataReadyForHardCheck(goal.getExamData());
+    }
+
+    private boolean isNonGlobalExamWithoutDirectPrerequisite(
+            LearningGoal goal,
+            boolean globalAssessmentGoal) {
+        return !globalAssessmentGoal
+                && isExamGoal(goal)
+                && (goal.getRequires() == null || goal.getRequires().isEmpty());
+    }
+
+    private boolean isGlobalAssessmentGoalWithoutExplicitFocus(
+            String goalId,
+            GlobalAssessmentFocus globalAssessmentFocus) {
+        return goalId != null
+                && globalAssessmentFocus != null
+                && globalAssessmentFocus.allGoalIds().contains(goalId)
+                && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goalId);
+    }
+
+    /**
+     * Separates the globally offered final-assessment layer from the ordinary
+     * curriculum frontier. The only semantic marker is an authored
+     * {@code release.kind=offer} root; titles, phases, curriculum IDs, and exam
+     * labels are deliberately ignored.
+     *
+     * <p>A broad synthetic composition focus does not opt into this layer. A
+     * canonical focus on an offer root or one of its descendants does, and only
+     * that offer branch is enabled. This keeps ordinary learning routes free of
+     * global final exams while preserving explicit exam campaigns whose concrete
+     * released tasks intentionally have no direct didactic prerequisites.</p>
+     */
+    private GlobalAssessmentFocus resolveGlobalAssessmentFocus(
+            Map<String, LearningGoal> structuralGoals,
+            List<String> projectedFocusIds) {
+        if (structuralGoals == null || structuralGoals.isEmpty()) {
+            return new GlobalAssessmentFocus(Collections.emptySet(), Collections.emptySet());
+        }
+
+        List<Set<String>> offerBranches = new ArrayList<>();
+        Set<String> allGlobalAssessmentGoalIds = new LinkedHashSet<>();
+        for (LearningGoal goal : structuralGoals.values()) {
+            if (goal == null
+                    || goal.getId() == null
+                    || goal.getRelease() == null
+                    || !"offer".equalsIgnoreCase(goal.getRelease().getKind())) {
+                continue;
+            }
+            Set<String> branchGoalIds = new LinkedHashSet<>();
+            branchGoalIds.add(goal.getId());
+            collectDescendants(goal.getId(), structuralGoals, branchGoalIds);
+            offerBranches.add(branchGoalIds);
+            allGlobalAssessmentGoalIds.addAll(branchGoalIds);
+        }
+
+        if (offerBranches.isEmpty()) {
+            return new GlobalAssessmentFocus(Collections.emptySet(), Collections.emptySet());
+        }
+
+        Set<String> explicitlyFocusedGoalIds = new LinkedHashSet<>();
+        if (projectedFocusIds != null) {
+            for (String focusId : projectedFocusIds) {
+                if (focusId == null
+                        || focusId.isBlank()
+                        || isCompositionStructureGoalId(focusId)) {
+                    continue;
+                }
+                String resolvedFocusId = resolveGoalRef(focusId, structuralGoals);
+                if (resolvedFocusId == null) {
+                    continue;
+                }
+                for (Set<String> offerBranch : offerBranches) {
+                    if (offerBranch.contains(resolvedFocusId)) {
+                        explicitlyFocusedGoalIds.addAll(offerBranch);
+                    }
+                }
+            }
+        }
+        return new GlobalAssessmentFocus(
+                Set.copyOf(allGlobalAssessmentGoalIds),
+                Set.copyOf(explicitlyFocusedGoalIds));
     }
 
     private boolean isExamGoal(LearningGoal goal) {

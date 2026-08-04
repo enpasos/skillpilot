@@ -98,6 +98,7 @@ public class LearnerFrontierInvariantTest {
         learner.setSkillpilotId(LEARNER_ID);
         learner.setSelectedCurriculum(CURRICULUM_ID);
         learner.setLearningState(LearningState.FRONTIER);
+        learner.setAutoPilot(false);
         learner.setPersonalCurriculum(buildPersonalConfigJson());
 
         when(learnerRepository.findById(LEARNER_ID)).thenReturn(Optional.of(learner));

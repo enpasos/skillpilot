@@ -2339,8 +2339,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ) => {
     const configChanged = !personalCurriculumConfigsEqual(newConfig, personalConfig)
     const preferencesChanged =
-      (learnerData?.learningStrategy ?? 'RANDOM') !== preferences.strategy
-      || (learnerData?.autoPilot ?? false) !== preferences.autoPilot
+      (learnerData?.learningStrategy ?? 'SEQUENTIAL') !== preferences.strategy
+      || (learnerData?.autoPilot ?? true) !== preferences.autoPilot
       || (learnerData?.strictMode ?? false) !== preferences.strictMode
       || (learnerData?.showGoalVisualizationsInChat ?? true) !== preferences.showGoalVisualizationsInChat
 

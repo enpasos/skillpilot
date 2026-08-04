@@ -8,6 +8,7 @@ import {
   type HardRouteSemanticKind,
   type HardRouteProfile,
 } from './lib/hardLearningRouteValidation'
+import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -113,6 +114,7 @@ const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
 const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
 const RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY = 'GVR-013'
 const RULE_ORIENTATION_MOTIVATION_STRUCTURE = 'GVR-014'
+const RULE_ORIENTATION_OUTLOOK_INTEGRITY = 'GVR-015'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -476,7 +478,7 @@ function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
   if (goal.tags?.includes('phase:SekI')) return true
 
   const phase = goal.phase ?? ''
-  if (/^J\d{1,2}$/.test(phase)) return true
+  if (/^J(?:[5-9]|10)$/.test(phase)) return true
 
   const topicCode = goal.themenfeld ?? ''
   return topicCode.includes('SEK1')
@@ -1176,6 +1178,33 @@ function validateLandscape(landscape: ParsedLandscape) {
         'error',
         landscape.landscapeId,
         `Goal ${PHYSICS_ENERGY_FROM_NEWTON_LK_GOAL_ID} must require ${MATH_DIFFERENTIATION_GOAL_ID} (or ${requiredMathDiff})`,
+      )
+    }
+  }
+
+  if (landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID) {
+    const outlookFindings = validateOrientationOutlooks(
+      landscape.goals,
+      canonicalMathSemanticKindByGoalId,
+      [
+        {
+          orientationGoalId: CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
+          scopeLabel: 'canonical DE Gymnasium mathematics / Sek I orientation outlook',
+          stageGoalSelector: isCanonicalGymMathSek1Goal,
+        },
+        {
+          orientationGoalId: CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID,
+          scopeLabel: 'canonical DE Gymnasium mathematics / Sek II orientation outlook',
+          stageGoalSelector: isCanonicalGymMathSek2Goal,
+        },
+      ],
+    )
+    for (const finding of outlookFindings) {
+      const pathPart = finding.pathId ? ` path=${finding.pathId}` : ''
+      addIssue(
+        'error',
+        landscape.landscapeId,
+        `[${RULE_ORIENTATION_OUTLOOK_INTEGRITY}] Orientation ${finding.orientationGoalId}${pathPart}: ${finding.message}`,
       )
     }
   }

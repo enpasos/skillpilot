@@ -11,6 +11,7 @@ public record OpenAiDeCoachContext(
         String interactionMode,
         Curriculum curriculum,
         Orientation orientation,
+        OrientationOutlook orientationOutlook,
         ActiveGoal activeGoal,
         List<Option> options,
         Decision decision,
@@ -47,6 +48,24 @@ public record OpenAiDeCoachContext(
     public record OpenQuestion(
             String topic,
             String question) {
+    }
+
+    /**
+     * Reviewed map of the actual material downstream from the active
+     * orientation goal. It is already filtered to the learner's target scope.
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record OrientationOutlook(
+            List<OrientationPath> paths) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record OrientationPath(
+            String pathId,
+            String title,
+            String learningOutlook,
+            List<String> practicalContexts,
+            List<String> representativeGoalTitles) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

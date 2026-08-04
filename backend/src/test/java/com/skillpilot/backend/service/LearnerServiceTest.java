@@ -105,6 +105,8 @@ public class LearnerServiceTest {
     void setUp() {
         Learner learner = new Learner();
         learner.setSkillpilotId("test-learner");
+        learner.setLearningStrategy("RANDOM");
+        learner.setAutoPilot(false);
         learnerRepository.save(learner);
         learnerId = learner.getSkillpilotId();
     }
@@ -115,6 +117,25 @@ public class LearnerServiceTest {
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
+    }
+
+    @Test
+    void newLearnersUseSequentialLearningWithAutopilotByDefault() {
+        Learner created = learnerService.createLearner();
+
+        Learner persisted = learnerRepository.findById(created.getSkillpilotId()).orElseThrow();
+        assertThat(persisted.getLearningStrategy()).isEqualTo("SEQUENTIAL");
+        assertThat(persisted.getAutoPilot()).isTrue();
+    }
+
+    @Test
+    void explicitManualPreferencesRemainUnchanged() {
+        Learner created = learnerService.createLearner();
+        learnerService.setPreferences(created.getSkillpilotId(), "RANDOM", false, null, null);
+
+        Learner persisted = learnerRepository.findById(created.getSkillpilotId()).orElseThrow();
+        assertThat(persisted.getLearningStrategy()).isEqualTo("RANDOM");
+        assertThat(persisted.getAutoPilot()).isFalse();
     }
 
     @Test

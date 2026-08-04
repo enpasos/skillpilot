@@ -258,6 +258,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         learner = new Learner();
         learner.setSkillpilotId(LEARNER_ID);
+        learner.setAutoPilot(false);
         learner.setSelectedCurriculum(CANONICAL_PHYSICS_ID);
         learner.setLearningState(LearningState.FRONTIER);
         learner.setPersonalCurriculum("{}");

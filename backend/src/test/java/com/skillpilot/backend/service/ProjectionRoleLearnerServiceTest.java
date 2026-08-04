@@ -15,9 +15,11 @@ import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
+import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.ReleaseMetadata;
 import com.skillpilot.backend.landscape.ResolvedGoalMapping;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
@@ -46,6 +48,8 @@ class ProjectionRoleLearnerServiceTest {
     private static final String ROOT_CLUSTER_ID = "projection-root";
     private static final String NESTED_CLUSTER_ID = "projection-nested";
     private static final String OUTSIDE_TARGET_ID = "outside-target";
+    private static final String GLOBAL_ASSESSMENT_ROOT_ID = "global-assessment-root";
+    private static final String GLOBAL_ASSESSMENT_EXAM_ID = "global-assessment-exam";
     private static final String SYNTHETIC_STRUCTURE_ID =
             "composition:projection-role-test:structure:sek2";
     private static final String PERSONAL_CURRICULUM = """
@@ -120,6 +124,177 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(inheritedRequirement.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .containsExactly(OUTSIDE_TARGET_ID);
+    }
+
+    @Test
+    void releasedExamWithoutDirectDidacticPrerequisiteNeverEntersFrontier() {
+        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
+        LearningGoal exam = fixture.landscape().getGoals().stream()
+                .filter(goal -> OUTSIDE_TARGET_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        exam.setExamData(releasedExamData());
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .doesNotContain(OUTSIDE_TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .doesNotContain(OUTSIDE_TARGET_ID);
+    }
+
+    @Test
+    void releasedExamWithMasteredDirectDidacticPrerequisiteCanEnterFrontier() {
+        Fixture fixture = fixture(view(
+                goalEntry(OUTSIDE_TARGET_ID),
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+        LearningGoal exam = fixture.landscape().getGoals().stream()
+                .filter(goal -> OUTSIDE_TARGET_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        exam.setRequires(List.of(PREREQUISITE_ID));
+        exam.setExamData(releasedExamData());
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .containsExactly(OUTSIDE_TARGET_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .containsExactly(OUTSIDE_TARGET_ID);
+    }
+
+    @Test
+    void simpleFrontierRespectsThePlannedTargetScope() {
+        Fixture fixture = fixture(view(canonicalSubtree(ROOT_CLUSTER_ID)));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .containsExactly(OUTSIDE_TARGET_ID);
+    }
+
+    @Test
+    void activeGoalSelectionUsesFullFrontierWhileStillRejectingOutOfProjectionGoals() {
+        Fixture fixture = fixture(view(canonicalSubtree(ROOT_CLUSTER_ID)));
+        LearningGoal root = fixture.landscape().getGoals().stream()
+                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        List<String> compactableGoalIds = java.util.stream.IntStream.range(0, 24)
+                .mapToObj(index -> "compactable-goal-" + index)
+                .toList();
+        List<LearningGoal> expandedGoals = new java.util.ArrayList<>(fixture.landscape().getGoals());
+        compactableGoalIds.forEach(goalId -> expandedGoals.add(atomicGoal(goalId, List.of())));
+        fixture.landscape().setGoals(expandedGoals);
+        root.setContains(new java.util.ArrayList<>(compactableGoalIds));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), ROOT_CLUSTER_ID)));
+
+        Set<String> compactFrontierIds = fixture.service().getRichFrontier(LEARNER_ID).stream()
+                .map(FrontierGoal::id)
+                .collect(java.util.stream.Collectors.toSet());
+        Set<String> fullFrontierIds = fixture.service().getUncompactedRichFrontier(LEARNER_ID).stream()
+                .map(FrontierGoal::id)
+                .collect(java.util.stream.Collectors.toSet());
+        String compactedAwayGoalId = compactableGoalIds.stream()
+                .filter(fullFrontierIds::contains)
+                .filter(goalId -> !compactFrontierIds.contains(goalId))
+                .findFirst()
+                .orElseThrow();
+
+        fixture.service().setActiveGoal(LEARNER_ID, compactedAwayGoalId);
+
+        assertThat(fixture.learner().getActiveGoalId()).isEqualTo(compactedAwayGoalId);
+        assertThatThrownBy(() -> fixture.service().setActiveGoal(
+                        LEARNER_ID,
+                        TRANSITIVE_PREREQUISITE_ID))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception -> {
+                    assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+                    assertThat(exception.getReason()).contains("current frontier");
+                });
+        assertThat(fixture.learner().getActiveGoalId()).isEqualTo(compactedAwayGoalId);
+    }
+
+    @Test
+    void broadSyntheticCurriculumFocusDoesNotEnableGlobalAssessmentOfferBranch() {
+        Fixture fixture = fixture(view(
+                canonicalSubtree(ROOT_CLUSTER_ID),
+                canonicalSubtree(GLOBAL_ASSESSMENT_ROOT_ID)));
+        addGlobalAssessmentBranch(fixture, List.of(PREREQUISITE_ID));
+        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
+                .thenReturn(new CompositionViewService.CompositionStructureResolution(
+                        SYNTHETIC_STRUCTURE_ID,
+                        "projection-role-test",
+                        "sek2",
+                        "Sekundarstufe II",
+                        List.of(ROOT_CLUSTER_ID, GLOBAL_ASSESSMENT_ROOT_ID)));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), SYNTHETIC_STRUCTURE_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .contains(OUTSIDE_TARGET_ID)
+                .doesNotContain(GLOBAL_ASSESSMENT_ROOT_ID, GLOBAL_ASSESSMENT_EXAM_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .contains(OUTSIDE_TARGET_ID)
+                .doesNotContain(GLOBAL_ASSESSMENT_ROOT_ID, GLOBAL_ASSESSMENT_EXAM_ID);
+    }
+
+    @Test
+    void explicitCanonicalAssessmentFocusEnablesReleasedOfferExamWithoutDirectPrerequisite() {
+        Fixture fixture = fixture(view(canonicalSubtree(GLOBAL_ASSESSMENT_ROOT_ID)));
+        addGlobalAssessmentBranch(fixture, List.of());
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), GLOBAL_ASSESSMENT_ROOT_ID)));
+
+        assertThat(fixture.service().getFrontier(LEARNER_ID))
+                .contains(GLOBAL_ASSESSMENT_EXAM_ID);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .contains(GLOBAL_ASSESSMENT_EXAM_ID);
+    }
+
+    @Test
+    void switchingFromExplicitAssessmentFocusToBroadSyntheticScopeClearsActiveExam() {
+        Fixture fixture = fixture(view(
+                canonicalSubtree(ROOT_CLUSTER_ID),
+                canonicalSubtree(GLOBAL_ASSESSMENT_ROOT_ID)));
+        addGlobalAssessmentBranch(fixture, List.of());
+        LearningGoal broadRoot = fixture.landscape().getGoals().stream()
+                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow();
+        broadRoot.setContains(List.of(
+                NESTED_CLUSTER_ID,
+                OUTSIDE_TARGET_ID,
+                GLOBAL_ASSESSMENT_ROOT_ID));
+        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
+                .thenReturn(new CompositionViewService.CompositionStructureResolution(
+                        SYNTHETIC_STRUCTURE_ID,
+                        "projection-role-test",
+                        "sek2",
+                        "Sekundarstufe II",
+                        List.of(ROOT_CLUSTER_ID)));
+        fixture.learner().setActiveGoalId(GLOBAL_ASSESSMENT_EXAM_ID);
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(
+                        fixture.learner(),
+                        GLOBAL_ASSESSMENT_ROOT_ID)));
+
+        fixture.service().setPlannedGoals(
+                LEARNER_ID,
+                Set.of(GLOBAL_ASSESSMENT_ROOT_ID));
+        assertThat(fixture.learner().getActiveGoalId()).isEqualTo(GLOBAL_ASSESSMENT_EXAM_ID);
+
+        fixture.service().setPlannedGoals(LEARNER_ID, Set.of(SYNTHETIC_STRUCTURE_ID));
+
+        assertThat(fixture.learner().getActiveGoalId()).isNull();
     }
 
     @Test
@@ -447,6 +622,41 @@ class ProjectionRoleLearnerServiceTest {
         goal.setRequires(requires);
         goal.setContains(List.of());
         return goal;
+    }
+
+    private ExamData releasedExamData() {
+        ExamData exam = new ExamData();
+        exam.setReviewStatus("released");
+        exam.setTaskContent("Solve the reviewed assessment task.");
+        exam.setSolutionContent("Reviewed solution.");
+        ExamData.Scoring scoring = new ExamData.Scoring();
+        scoring.setMaxPoints(1.0);
+        scoring.setPassingPoints(1.0);
+        ExamData.Step step = new ExamData.Step();
+        step.setId("s1");
+        step.setPoints(1.0);
+        step.setDescription("Reviewed scoring step");
+        scoring.setSteps(List.of(step));
+        exam.setScoring(scoring);
+        return exam;
+    }
+
+    private void addGlobalAssessmentBranch(Fixture fixture, List<String> examRequires) {
+        LearningGoal root = clusterGoal(
+                GLOBAL_ASSESSMENT_ROOT_ID,
+                List.of(GLOBAL_ASSESSMENT_EXAM_ID));
+        ReleaseMetadata release = new ReleaseMetadata();
+        release.setKind("offer");
+        release.setStatus("released");
+        root.setRelease(release);
+
+        LearningGoal exam = atomicGoal(GLOBAL_ASSESSMENT_EXAM_ID, examRequires);
+        exam.setExamData(releasedExamData());
+
+        List<LearningGoal> goals = new java.util.ArrayList<>(fixture.landscape().getGoals());
+        goals.add(root);
+        goals.add(exam);
+        fixture.landscape().setGoals(goals);
     }
 
     private Map<String, Object> view(Map<String, Object>... entries) {

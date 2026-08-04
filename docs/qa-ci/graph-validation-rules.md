@@ -51,6 +51,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-012` | Hard scoped full-route coverage: every selected `curricularAtomic` goal must lie on a direct atomic `requires` path from its stage-specific `orientation` anchor to a stage-specific atomic `practiceAssessment` terminal. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
 | `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
+| `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -288,6 +289,44 @@ This structural gate prevents a motivation node from encoding a hard content
 check. Its didactic purpose is to show possibilities, relevance, and positive
 perspectives that invite the learner into the following subject matter; it is
 not evidence that detailed subject knowledge is already present.
+
+## Reviewed orientation outlook integrity (`GVR-015`)
+
+`GVR-015` protects the authored learner-facing map attached to both canonical
+Gymnasium mathematics orientation anchors. Each outlook must contain two to
+four bounded bilingual paths. The anchor must be authoritatively classified as
+`orientation`. Every referenced subtree root, entry goal, and milestone must exist in the
+same canonical landscape and in the anchor's explicit stage scope. Subtree
+roots must be non-atomic `curricularArea` nodes; entries and milestones must be
+atomic `curricularAtomic` goals. Each bounded `entryGoalIds` allowlist must be
+contained in the respective path and each entry must directly require the
+orientation anchor. Runtime path activation uses only this build-validated
+allowlist; `milestoneGoalIds` remain learner-facing outlook content and never
+become transition authorization.
+
+The two graph proofs are deliberately separate. Authored `contains` edges prove
+only that an entry or milestone belongs to one of the path's reviewed fachliche subtrees.
+Downstream sequencing is proved independently through direct `requires` edges
+whose endpoints are the stage anchor or in-stage atomic `curricularAtomic`
+goals. Cluster-level `requires`, inherited prerequisites, program structure,
+memory, assessment, and runtime-support nodes cannot serve as shortcuts in this
+proof.
+
+The rule also rejects internal authoring-process terms such as
+`Source-Extraction` in learner-facing path or subtree titles. This keeps the
+reviewed orientation map deterministic and prevents stale IDs, detached
+milestones, or technical maintenance labels from silently reaching the coach.
+
+`GVR-015` validates the canonical authored map and intentionally does not claim
+that every referenced goal is a `target` in every jurisdiction/course-profile
+composition view. At runtime the coach outlook is intersected fail-closed with
+the learner's resolved `targetGoalIds`; goals visible only as
+`prerequisiteOnly` are excluded, and a path without a valid target entry or a
+valid target milestone is omitted. Transition selection uses the complete
+personalized frontier rather than the compact display options. It activates a
+reviewed path entry only when that entry is currently available. If none is
+available, orientation completion still succeeds, no active goal is set, and
+the ordinary available foundations are returned.
 
 ## Scoped atomic direct requires (`GVR-013`)
 

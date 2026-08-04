@@ -72,6 +72,7 @@ class LearnerPersonalizationMutationContractTest {
     void setUp() {
         learner = new Learner();
         learner.setSkillpilotId(LEARNER_ID);
+        learner.setAutoPilot(false);
         learner.setSelectedCurriculum(ROOT_LANDSCAPE_ID);
         learner.setPersonalCurriculum("""
                 {
