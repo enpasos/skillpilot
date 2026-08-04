@@ -234,6 +234,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         learner = new Learner();
         learner.setSkillpilotId(LEARNER_ID);
+        learner.setAutoPilot(false);
         learner.setSelectedCurriculum(CANONICAL_MATH_ID);
         learner.setLearningState(LearningState.FRONTIER);
         learner.setPersonalCurriculum("{}");

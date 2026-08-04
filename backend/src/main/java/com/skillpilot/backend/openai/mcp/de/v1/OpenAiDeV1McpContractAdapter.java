@@ -8,6 +8,7 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.ScopeRequest;
@@ -40,9 +41,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
@@ -52,6 +55,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
@@ -91,6 +95,7 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String LEARNING_SESSION_ID = "learningSessionId";
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
+    public static final String ORIENTATION_PATH_ID = "orientationPathId";
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
@@ -121,7 +126,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             Do not mention tool, API, JSON, or field names to the learner, and do not expose technical IDs. Never reveal or request OAuth tokens, connection subjects, permanent SkillPilot IDs, or other secrets. Do not comment didactically on setup, workflow ordering, or persistence; once teaching is permitted, keep the learner-facing focus exclusively on learning. Use backend URLs verbatim only; never construct links from IDs or append tokens. If no approved link is available, do not output a link. Write mathematics only with \\(...\\) inline or \\[...\\] displayed, never with dollar delimiters.
 
-            When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, show two to four understandable possibilities and honest positive perspectives of the material ahead, then ask a low-threshold question about what sparks curiosity or whether the learner wants to continue. A reply that merely names one offered possibility starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Take up that exact interest, show one or two concrete links to what the learner can understand, explore, shape, or do, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner answers that tailored follow-up or explicitly asks to continue directly. A generic acknowledgement followed immediately by next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
+            When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner meaningfully engages with that tailored follow-up or explicitly asks to continue directly; a content-free acknowledgement alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
@@ -393,18 +398,29 @@ public final class OpenAiDeV1McpContractAdapter {
                         SET_MASTERY,
                         "Save mastery",
                         "Completes exactly the confirmed active atomic goal with the technical value 1.0. For "
-                                + "interactionMode=orientation, a reply that merely names an offered possibility "
-                                + "starts the tailored motivational follow-up and must not call this tool. First "
-                                + "connect that interest to concrete things the learner can understand and do, ask "
-                                + "one active non-assessing follow-up, and wait for its answer. Call only after that "
-                                + "answer or an explicit request to continue directly; do not test details, jump "
-                                + "straight to frontier options, or claim subject mastery. "
+                                + "interactionMode=orientation, use orientationOutlook as the complete authoritative "
+                                + "learning map. A reply that merely names one supplied path starts the tailored "
+                                + "motivational follow-up and must not call this tool. Resolve a free-form interest "
+                                + "to a path only when the match is unique; otherwise ask which path was meant. "
+                                + "First connect two to four "
+                                + "supplied milestones from that path to its supplied practical contexts, ask one "
+                                + "active non-assessing follow-up, and wait for meaningful engagement. Call only "
+                                + "after that engagement or an explicit request to continue directly; a content-free "
+                                + "acknowledgement alone is insufficient. When a path was selected, pass "
+                                + "its exact pathId unchanged as orientationPathId. SkillPilot activates its first "
+                                + "reviewed entry only when currently available; otherwise completion succeeds and "
+                                + "the normal available foundations return without an active goal. Omit it only for "
+                                + "an explicit direct continuation. "
+                                + "Do not invent content, test "
+                                + "details, jump straight to unrelated frontier options, or claim subject mastery. "
                                 + "For ordinary content goals, call only after two independent visible checks or "
                                 + "genuine multi-step transfer in a changed context covering all aspects. Never use "
                                 + "for clusters, memorisation/SRS goals, self-assessment, repetition, or the same "
                                 + "worked case.",
                         objectSchema(
-                                Map.of("goalId", modelFacingOpaqueReferenceSchema()),
+                                Map.of(
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        ORIENTATION_PATH_ID, boundedNonEmptyStringSchema(320)),
                                 List.of("goalId")),
                         masterySchema(),
                         false,
@@ -1026,6 +1042,10 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
+        String orientationPathId = optionalString(arguments, ORIENTATION_PATH_ID);
+        if (orientationPathId != null && orientationPathId.isBlank()) {
+            throw new IllegalArgumentException(ORIENTATION_PATH_ID + " darf nicht leer sein.");
+        }
         UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
         FrontierGoal active = activeGoal(before);
         if (active == null || !goalId.equals(active.id())) {
@@ -1039,6 +1059,35 @@ public final class OpenAiDeV1McpContractAdapter {
                             "This goal cannot be completed through ordinary coach mastery."),
                     metadata);
         }
+        OrientationOutlook.Path selectedOrientationPath = null;
+        if (orientationPathId != null) {
+            if (!isOrientationGoal(active)) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "orientationPathId ist nur beim Abschluss eines Orientierungsziels zulässig.",
+                                "orientationPathId is allowed only when completing an orientation goal."),
+                        metadata);
+            }
+            OrientationOutlook orientationOutlook = coachTools.getOrientationOutlook(
+                    skillpilotId,
+                    communicationLocale(metadata));
+            selectedOrientationPath = orientationOutlook == null || orientationOutlook.paths() == null
+                    ? null
+                    : orientationOutlook.paths().stream()
+                            .filter(Objects::nonNull)
+                            .filter(path -> orientationPathId.equals(path.pathId()))
+                            .findFirst()
+                            .orElse(null);
+            if (selectedOrientationPath == null) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "Der gewählte Motivationspfad gehört nicht zur aktuellen Lernlandkarte.",
+                                "The selected orientation path is not part of the current learning map."),
+                        metadata);
+            }
+        }
         CoachToolFacade.MasteryResult result = coachTools.setMastery(
                 skillpilotId,
                 new MasteryUpdateRequest(null, goalId));
@@ -1046,9 +1095,13 @@ public final class OpenAiDeV1McpContractAdapter {
             telemetry.recordOperational(Event.CONFLICT);
             return conflictResult(metadata);
         }
-        UnifiedLearnerStateResponse state = result.status() == CoachToolFacade.MasteryStatus.CONFLICT
-                ? result.state()
-                : coachTools.getLearnerState(skillpilotId);
+        UnifiedLearnerStateResponse state = coachTools.getLearnerState(skillpilotId);
+        if (result.status() == CoachToolFacade.MasteryStatus.UPDATED && selectedOrientationPath != null) {
+            state = activateFirstAvailableOrientationPathGoal(
+                    skillpilotId,
+                    state,
+                    selectedOrientationPath);
+        }
         MasteryToolResult response = new MasteryToolResult(
                 result.status().name().toLowerCase(Locale.ROOT),
                 result.update() == null ? null : result.update().savedGoalId(),
@@ -1057,13 +1110,42 @@ public final class OpenAiDeV1McpContractAdapter {
                 result.error());
         return successResult(
                 result.status() == CoachToolFacade.MasteryStatus.UPDATED
-                        ? localized(metadata,
-                                "Mastery gespeichert; Folgezustand geladen.",
-                                "Mastery saved; successor state loaded.")
+                        ? isOrientationGoal(active)
+                                ? localized(metadata,
+                                        "Orientierung abgeschlossen; Folgezustand geladen.",
+                                        "Orientation complete; successor state loaded.")
+                                : localized(metadata,
+                                        "Mastery gespeichert; Folgezustand geladen.",
+                                        "Mastery saved; successor state loaded.")
                         : localized(metadata,
                                 "Mastery nicht gespeichert; aktuellen Folgezustand beachten.",
                                 "Mastery was not saved; use the current successor state."),
                 response);
+    }
+
+    private UnifiedLearnerStateResponse activateFirstAvailableOrientationPathGoal(
+            String skillpilotId,
+            UnifiedLearnerStateResponse state,
+            OrientationOutlook.Path selectedPath) {
+        if (state == null || selectedPath.relatedGoalIds() == null || selectedPath.relatedGoalIds().isEmpty()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Selected orientation path has no reviewed learning-goal entry.");
+        }
+        Set<String> relatedGoalIds = new LinkedHashSet<>(selectedPath.relatedGoalIds());
+        List<FrontierGoal> candidates = coachTools.getUncompactedFrontier(skillpilotId);
+        FrontierGoal selectedGoal = candidates.stream()
+                .filter(Objects::nonNull)
+                .filter(goal -> "atomic".equals(goal.type()))
+                .filter(goal -> relatedGoalIds.contains(goal.id()))
+                .findFirst()
+                .orElse(null);
+        if (selectedGoal == null) {
+            return state;
+        }
+        return coachTools.setActiveGoal(
+                skillpilotId,
+                new ActiveGoalRequest(selectedGoal.id(), false));
     }
 
     private McpSchema.CallToolResult startRecall(
@@ -1202,11 +1284,16 @@ public final class OpenAiDeV1McpContractAdapter {
                                 && "setPersonalization".equals(state.stateMachine().requiredAction())
                         ? coachTools.getPersonalizationPlan(skillpilotId)
                         : PersonalizationPlan.complete(List.of());
+        FrontierGoal active = activeGoal(state);
+        OrientationOutlook orientationOutlook = isOrientationGoal(active)
+                ? coachTools.getOrientationOutlook(skillpilotId, communicationLocale(metadata))
+                : null;
         return contextProjector.project(
                 state,
                 plan,
                 coachTools.showGoalVisualizationsInChat(skillpilotId),
-                communicationLocale(metadata));
+                communicationLocale(metadata),
+                orientationOutlook);
     }
 
     private RecallPromptResult recallPrompt(VerifiedRecallPromptResponse response) {
@@ -1606,6 +1693,20 @@ public final class OpenAiDeV1McpContractAdapter {
                 .anyMatch(tag -> "memorization".equals(tag) || (tag != null && tag.startsWith("srs-deck:")));
     }
 
+    private boolean isOrientationGoal(FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        if (goal.semanticKind() != null && !goal.semanticKind().isBlank()) {
+            return "orientation".equalsIgnoreCase(goal.semanticKind().trim());
+        }
+        return goal.tags() != null && goal.tags().stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .anyMatch(tag -> "orientation".equalsIgnoreCase(tag)
+                        || "motivation".equalsIgnoreCase(tag));
+    }
+
     private String contextSummary(
             OpenAiDeCoachContext context,
             OpenAiDeV1SessionMetadata metadata) {
@@ -1880,6 +1981,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("interactionMode", stringSchema());
         properties.put("curriculum", curriculumSchema());
         properties.put("orientation", orientationSchema());
+        properties.put("orientationOutlook", orientationOutlookSchema());
         properties.put("activeGoal", activeGoalSchema());
         properties.put("options", objectArraySchema(optionSchema()));
         properties.put("decision", decisionSchema());
@@ -1972,6 +2074,28 @@ public final class OpenAiDeV1McpContractAdapter {
                         "topic", stringSchema(),
                         "question", stringSchema()),
                 List.of("topic", "question"));
+    }
+
+    private static Map<String, Object> orientationOutlookSchema() {
+        return objectSchema(
+                Map.of("paths", boundedObjectArraySchema(orientationPathSchema(), 2, 4)),
+                List.of("paths"));
+    }
+
+    private static Map<String, Object> orientationPathSchema() {
+        return objectSchema(
+                Map.of(
+                        "pathId", boundedNonEmptyStringSchema(320),
+                        "title", boundedNonEmptyStringSchema(320),
+                        "learningOutlook", boundedNonEmptyStringSchema(320),
+                        "practicalContexts", boundedStringArraySchema(1, 3),
+                        "representativeGoalTitles", boundedStringArraySchema(1, 4)),
+                List.of(
+                        "pathId",
+                        "title",
+                        "learningOutlook",
+                        "practicalContexts",
+                        "representativeGoalTitles"));
     }
 
     private static Map<String, Object> masterySchema() {
@@ -2181,12 +2305,30 @@ public final class OpenAiDeV1McpContractAdapter {
         return Map.of("type", "array", "items", itemSchema);
     }
 
+    private static Map<String, Object> boundedObjectArraySchema(
+            Map<String, Object> itemSchema,
+            int minItems,
+            int maxItems) {
+        return Map.of(
+                "type", "array",
+                "items", itemSchema,
+                "minItems", minItems,
+                "maxItems", maxItems);
+    }
+
     private static Map<String, Object> stringSchema() {
         return Map.of("type", "string");
     }
 
     private static Map<String, Object> nonEmptyStringSchema() {
         return Map.of("type", "string", "minLength", 1);
+    }
+
+    private static Map<String, Object> boundedNonEmptyStringSchema(int maxLength) {
+        return Map.of(
+                "type", "string",
+                "minLength", 1,
+                "maxLength", maxLength);
     }
 
     private static Map<String, Object> modelFacingOpaqueReferenceSchema() {
@@ -2242,6 +2384,13 @@ public final class OpenAiDeV1McpContractAdapter {
         schema.put("items", nonEmptyStringSchema());
         schema.put("uniqueItems", true);
         schema.put("minItems", minItems);
+        return Map.copyOf(schema);
+    }
+
+    private static Map<String, Object> boundedStringArraySchema(int minItems, int maxItems) {
+        Map<String, Object> schema = new LinkedHashMap<>(stringArraySchema(minItems));
+        schema.put("items", boundedNonEmptyStringSchema(320));
+        schema.put("maxItems", maxItems);
         return Map.copyOf(schema);
     }
 

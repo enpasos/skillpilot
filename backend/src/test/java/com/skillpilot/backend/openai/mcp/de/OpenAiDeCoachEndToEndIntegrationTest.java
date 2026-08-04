@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
@@ -164,6 +165,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         connectionRepository.deleteAllInBatch();
         jdbcOperations.update(
                 "DELETE FROM planned_goal WHERE skillpilot_id = ?",
+                PERMANENT_SKILLPILOT_ID);
+        jdbcOperations.update(
+                "DELETE FROM mastery WHERE skillpilot_id = ?",
                 PERMANENT_SKILLPILOT_ID);
         Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseGet(() -> {
             Learner created = new Learner();
@@ -987,12 +991,73 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "{}",
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(persistedRead, applicationSubject);
-        assertThat(result(persistedRead)
-                        .path("structuredContent")
+        JsonNode persistedContext = result(persistedRead).path("structuredContent");
+        assertThat(persistedContext
                         .path("curriculum")
                         .path("curriculumId")
                         .asText())
                 .isEqualTo(CURRICULUM_ID);
+
+        String orientationGoalId = optionIdByLabel(
+                persistedContext,
+                "Warum Mathematik? – Denken, Muster & Zukunft");
+        HttpResponse<String> activateOrientation = callTool(
+                accessToken,
+                14,
+                OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", orientationGoalId,
+                        "redirect", false)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(activateOrientation, applicationSubject);
+        JsonNode orientationContext = result(activateOrientation).path("structuredContent");
+        assertThat(orientationContext.path("interactionMode").asText()).isEqualTo("orientation");
+        assertThat(orientationContext.path("orientationOutlook").path("paths")).hasSize(3);
+        long orientationStateVersion = orientationContext.path("stateVersion").asLong();
+
+        OrientationOutlook authoritativeOutlook = learnerService.getCoachOrientationOutlook(
+                PERMANENT_SKILLPILOT_ID,
+                "de");
+        assertThat(authoritativeOutlook).isNotNull();
+        OrientationOutlook.Path selectedOrientationPath = authoritativeOutlook.paths().stream()
+                .filter(path -> "space-and-linear-algebra".equals(path.pathId()))
+                .findFirst()
+                .orElseThrow();
+        Set<String> selectedPathGoalIds = Set.copyOf(selectedOrientationPath.relatedGoalIds());
+        assertThat(selectedPathGoalIds).isNotEmpty();
+
+        // The path is a valid, reviewed orientation choice even though none of its
+        // entry goals is available after the anchor alone. Completion must still
+        // succeed, leave active-goal choice open, and expose the ordinary frontier.
+        HttpResponse<String> completeOrientation = callTool(
+                accessToken,
+                15,
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", orientationGoalId,
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
+                        selectedOrientationPath.pathId())),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completeOrientation, applicationSubject);
+        JsonNode completionResult = result(completeOrientation).path("structuredContent");
+        assertThat(completionResult.path("status").asText()).isEqualTo("updated");
+        assertThat(completionResult.path("stateVersion").asLong())
+                .isEqualTo(orientationStateVersion + 1L);
+        JsonNode successorContext = completionResult.path("context");
+        assertThat(successorContext.path("activeGoal").isMissingNode()
+                        || successorContext.path("activeGoal").isNull())
+                .isTrue();
+        Set<String> successorFrontierIds = successorContext.path("frontier").valueStream()
+                .map(goal -> goal.path("goalId").asText())
+                .filter(goalId -> !goalId.isBlank())
+                .collect(Collectors.toSet());
+        assertThat(successorFrontierIds)
+                .isNotEmpty()
+                .doesNotContainAnyElementsOf(selectedPathGoalIds);
+        assertThat(successorContext.path("orientationOutlook").isMissingNode()).isTrue();
+        Learner afterOrientation = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        assertThat(afterOrientation.getActiveGoalId()).isNull();
+        assertThat(afterOrientation.getCoachStateRevision()).isEqualTo(orientationStateVersion + 1L);
 
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);

@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "7500e66d2a25662810eb98e5bf34785588eaff4045391fe1c083252ec1a9de2b",
+  "contractSha256" : "11467d08f5edcb9a3cc01ace1667a855cf270db7593ac1e6a82a3c71c24d53b0",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -50,7 +50,7 @@
     "uri" : "ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html"
   } ],
   "schemaVersion" : 1,
-  "serverInstructions" : "You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.\n\nThe newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.\n\nWhen work begins on a newly confirmed active atomic goal, the first learner-facing content sentence must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence, and give no explanation before it.\n\nThe SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.\n\nDo not mention tool, API, JSON, or field names to the learner, and do not expose technical IDs. Never reveal or request OAuth tokens, connection subjects, permanent SkillPilot IDs, or other secrets. Do not comment didactically on setup, workflow ordering, or persistence; once teaching is permitted, keep the learner-facing focus exclusively on learning. Use backend URLs verbatim only; never construct links from IDs or append tokens. If no approved link is available, do not output a link. Write mathematics only with \\(...\\) inline or \\[...\\] displayed, never with dollar delimiters.\n\nWhen interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, show two to four understandable possibilities and honest positive perspectives of the material ahead, then ask a low-threshold question about what sparks curiosity or whether the learner wants to continue. A reply that merely names one offered possibility starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Take up that exact interest, show one or two concrete links to what the learner can understand, explore, shape, or do, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner answers that tailored follow-up or explicitly asks to continue directly. A generic acknowledgement followed immediately by next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.\n\nFor ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.\n\nIf the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.\n\nIn exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.\n\nFor Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.\n\nTreat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED means OAuth remains connected: ask the learner, in communicationLocale, to open SkillPilot and choose the local equivalent of “Start learning” again; never request the learning session or SkillPilot ID and never demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.\n",
+  "serverInstructions" : "You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.\n\nThe newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.\n\nWhen work begins on a newly confirmed active atomic goal, the first learner-facing content sentence must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence, and give no explanation before it.\n\nThe SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.\n\nDo not mention tool, API, JSON, or field names to the learner, and do not expose technical IDs. Never reveal or request OAuth tokens, connection subjects, permanent SkillPilot IDs, or other secrets. Do not comment didactically on setup, workflow ordering, or persistence; once teaching is permitted, keep the learner-facing focus exclusively on learning. Use backend URLs verbatim only; never construct links from IDs or append tokens. If no approved link is available, do not output a link. Write mathematics only with \\(...\\) inline or \\[...\\] displayed, never with dollar delimiters.\n\nWhen interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner meaningfully engages with that tailored follow-up or explicitly asks to continue directly; a content-free acknowledgement alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.\n\nFor ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.\n\nIf the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.\n\nIn exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.\n\nFor Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.\n\nTreat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED means OAuth remains connected: ask the learner, in communicationLocale, to open SkillPilot and choose the local equivalent of “Start learning” again; never request the learning session or SkillPilot ID and never demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.\n",
   "tools" : [ {
     "annotations" : {
       "destructiveHint" : false,
@@ -346,6 +346,62 @@
             }
           },
           "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "orientationOutlook" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "paths" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "learningOutlook" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "pathId" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "practicalContexts" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 3,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "representativeGoalTitles" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 4,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "title" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                "type" : "object"
+              },
+              "maxItems" : 4,
+              "minItems" : 2,
+              "type" : "array"
+            }
+          },
+          "required" : [ "paths" ],
           "type" : "object"
         },
         "policies" : {
@@ -1119,6 +1175,62 @@
               "required" : [ "openQuestions" ],
               "type" : "object"
             },
+            "orientationOutlook" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "paths" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "learningOutlook" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "pathId" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "practicalContexts" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 3,
+                        "minItems" : 1,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "representativeGoalTitles" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 4,
+                        "minItems" : 1,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "title" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 4,
+                  "minItems" : 2,
+                  "type" : "array"
+                }
+              },
+              "required" : [ "paths" ],
+              "type" : "object"
+            },
             "policies" : {
               "items" : {
                 "minLength" : 1,
@@ -1751,6 +1863,62 @@
           "required" : [ "openQuestions" ],
           "type" : "object"
         },
+        "orientationOutlook" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "paths" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "learningOutlook" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "pathId" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "practicalContexts" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 3,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "representativeGoalTitles" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 4,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "title" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                "type" : "object"
+              },
+              "maxItems" : 4,
+              "minItems" : 2,
+              "type" : "array"
+            }
+          },
+          "required" : [ "paths" ],
+          "type" : "object"
+        },
         "policies" : {
           "items" : {
             "minLength" : 1,
@@ -2169,6 +2337,62 @@
           "required" : [ "openQuestions" ],
           "type" : "object"
         },
+        "orientationOutlook" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "paths" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "learningOutlook" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "pathId" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "practicalContexts" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 3,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "representativeGoalTitles" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 4,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "title" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                "type" : "object"
+              },
+              "maxItems" : 4,
+              "minItems" : 2,
+              "type" : "array"
+            }
+          },
+          "required" : [ "paths" ],
+          "type" : "object"
+        },
         "policies" : {
           "items" : {
             "minLength" : 1,
@@ -2285,7 +2509,7 @@
       "readOnlyHint" : false,
       "title" : "Save mastery"
     },
-    "description" : "Completes exactly the confirmed active atomic goal with the technical value 1.0. For interactionMode=orientation, a reply that merely names an offered possibility starts the tailored motivational follow-up and must not call this tool. First connect that interest to concrete things the learner can understand and do, ask one active non-assessing follow-up, and wait for its answer. Call only after that answer or an explicit request to continue directly; do not test details, jump straight to frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case.",
+    "description" : "Completes exactly the confirmed active atomic goal with the technical value 1.0. For interactionMode=orientation, use orientationOutlook as the complete authoritative learning map. A reply that merely names one supplied path starts the tailored motivational follow-up and must not call this tool. Resolve a free-form interest to a path only when the match is unique; otherwise ask which path was meant. First connect two to four supplied milestones from that path to its supplied practical contexts, ask one active non-assessing follow-up, and wait for meaningful engagement. Call only after that engagement or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its exact pathId unchanged as orientationPathId. SkillPilot activates its first reviewed entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for an explicit direct continuation. Do not invent content, test details, jump straight to unrelated frontier options, or claim subject mastery. For ordinary content goals, call only after two independent visible checks or genuine multi-step transfer in a changed context covering all aspects. Never use for clusters, memorisation/SRS goals, self-assessment, repetition, or the same worked case.",
     "icons" : [ ],
     "inputSchema" : {
       "additionalProperties" : false,
@@ -2305,6 +2529,11 @@
         },
         "learningSessionId" : {
           "description" : "Copy exactly and unchanged from the current SkillPilot start message and send it with every tool call.",
+          "type" : "string"
+        },
+        "orientationPathId" : {
+          "maxLength" : 320,
+          "minLength" : 1,
           "type" : "string"
         }
       },
@@ -2576,6 +2805,62 @@
                 }
               },
               "required" : [ "openQuestions" ],
+              "type" : "object"
+            },
+            "orientationOutlook" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "paths" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "learningOutlook" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "pathId" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "practicalContexts" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 3,
+                        "minItems" : 1,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "representativeGoalTitles" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 4,
+                        "minItems" : 1,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "title" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 4,
+                  "minItems" : 2,
+                  "type" : "array"
+                }
+              },
+              "required" : [ "paths" ],
               "type" : "object"
             },
             "policies" : {
@@ -3026,6 +3311,62 @@
           "required" : [ "openQuestions" ],
           "type" : "object"
         },
+        "orientationOutlook" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "paths" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "learningOutlook" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "pathId" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "practicalContexts" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 3,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "representativeGoalTitles" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 4,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "title" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                "type" : "object"
+              },
+              "maxItems" : 4,
+              "minItems" : 2,
+              "type" : "array"
+            }
+          },
+          "required" : [ "paths" ],
+          "type" : "object"
+        },
         "policies" : {
           "items" : {
             "minLength" : 1,
@@ -3447,6 +3788,62 @@
             }
           },
           "required" : [ "openQuestions" ],
+          "type" : "object"
+        },
+        "orientationOutlook" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "paths" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "learningOutlook" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "pathId" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "practicalContexts" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 3,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "representativeGoalTitles" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 4,
+                    "minItems" : 1,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "title" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "pathId", "title", "learningOutlook", "practicalContexts", "representativeGoalTitles" ],
+                "type" : "object"
+              },
+              "maxItems" : 4,
+              "minItems" : 2,
+              "type" : "array"
+            }
+          },
+          "required" : [ "paths" ],
           "type" : "object"
         },
         "policies" : {

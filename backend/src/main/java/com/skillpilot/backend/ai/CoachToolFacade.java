@@ -3,6 +3,7 @@ package com.skillpilot.backend.ai;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -119,6 +120,18 @@ public class CoachToolFacade {
     public boolean showGoalVisualizationsInChat(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.showGoalVisualizationsInChat(skillpilotId);
+    }
+
+    /** Reviewed, personalized map used only while an orientation goal is active. */
+    public OrientationOutlook getOrientationOutlook(String skillpilotId, String communicationLocale) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getCoachOrientationOutlook(skillpilotId, communicationLocale);
+    }
+
+    /** Complete frontier used for authored transitions, never for compact UI rendering. */
+    public List<FrontierGoal> getUncompactedFrontier(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getUncompactedRichFrontier(skillpilotId);
     }
 
     /** Read-only curriculum catalog for authenticated, ID-based coach adapters. */

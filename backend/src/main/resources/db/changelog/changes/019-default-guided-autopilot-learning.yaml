@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: 019-default-guided-autopilot-learning
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - columnExists:
+            tableName: learner
+            columnName: learning_strategy
+        - columnExists:
+            tableName: learner
+            columnName: auto_pilot
+        - columnExists:
+            tableName: learner
+            columnName: coach_state_revision
+      changes:
+        # Preserve every explicit existing preference. Only genuinely unset
+        # legacy values adopt the new guided-learning defaults.
+        - update:
+            tableName: learner
+            columns:
+              - column:
+                  name: coach_state_revision
+                  valueComputed: coach_state_revision + 1
+            where: learning_strategy IS NULL OR auto_pilot IS NULL
+        - update:
+            tableName: learner
+            columns:
+              - column:
+                  name: learning_strategy
+                  value: SEQUENTIAL
+            where: learning_strategy IS NULL
+        - update:
+            tableName: learner
+            columns:
+              - column:
+                  name: auto_pilot
+                  valueBoolean: true
+            where: auto_pilot IS NULL
+        - addDefaultValue:
+            tableName: learner
+            columnName: learning_strategy
+            columnDataType: VARCHAR(255)
+            defaultValue: SEQUENTIAL
+        - addDefaultValue:
+            tableName: learner
+            columnName: auto_pilot
+            columnDataType: BOOLEAN
+            defaultValueBoolean: true
+        - addNotNullConstraint:
+            tableName: learner
+            columnName: learning_strategy
+            columnDataType: VARCHAR(255)
+        - addNotNullConstraint:
+            tableName: learner
+            columnName: auto_pilot
+            columnDataType: BOOLEAN

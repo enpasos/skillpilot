@@ -5,6 +5,10 @@ import {
   type HardRouteGoal,
   type HardRouteSemanticKind,
 } from './lib/hardLearningRouteValidation'
+import {
+  validateOrientationOutlooks,
+  type OrientationOutlookGoal,
+} from './lib/orientationOutlookValidation'
 
 assert.deepEqual(
   validateOrientationMotivationStructure({
@@ -59,6 +63,210 @@ assert.deepEqual(
   }),
   [],
   'an authoritative non-orientation semantic kind suppresses legacy tag fallback',
+)
+
+type OrientationOutlookFixtureGoal = OrientationOutlookGoal & {
+  stage: 'seki' | 'sekii'
+}
+
+const validOrientationOutlookGoals: OrientationOutlookFixtureGoal[] = [
+  {
+    id: 'orientation-outlook',
+    title: 'Why this subject?',
+    type: 'atomic',
+    stage: 'seki',
+    contains: [],
+    requires: [],
+    extendedData: {
+      orientationOutlook: {
+        paths: [
+          {
+            id: 'first-path',
+            title: 'Erster Lernweg',
+            titleEn: 'First learning path',
+            learningOutlook: 'Du lernst den ersten Themenbereich kennen.',
+            learningOutlookEn: 'You explore the first subject area.',
+            practicalContexts: ['Erster Kontext'],
+            practicalContextsEn: ['First context'],
+            subtreeRootIds: ['cluster-a'],
+            entryGoalIds: ['goal-a'],
+            milestoneGoalIds: ['goal-a'],
+          },
+          {
+            id: 'second-path',
+            title: 'Zweiter Lernweg',
+            titleEn: 'Second learning path',
+            learningOutlook: 'Du lernst den zweiten Themenbereich kennen.',
+            learningOutlookEn: 'You explore the second subject area.',
+            practicalContexts: ['Zweiter Kontext'],
+            practicalContextsEn: ['Second context'],
+            subtreeRootIds: ['cluster-b'],
+            entryGoalIds: ['goal-b'],
+            milestoneGoalIds: ['goal-b'],
+          },
+        ],
+      },
+    },
+  },
+  { id: 'cluster-a', title: 'Fachlicher Bereich A', type: 'cluster', stage: 'seki', contains: ['goal-a'], requires: [] },
+  { id: 'goal-a', title: 'Fachliches Ziel A', type: 'atomic', stage: 'seki', contains: [], requires: ['orientation-outlook'] },
+  { id: 'cluster-b', title: 'Fachlicher Bereich B', type: 'cluster', stage: 'seki', contains: ['goal-b'], requires: [] },
+  { id: 'goal-b', title: 'Fachliches Ziel B', type: 'atomic', stage: 'seki', contains: [], requires: ['orientation-outlook'] },
+  { id: 'goal-detached', title: 'Detached goal', type: 'atomic', stage: 'seki', contains: [], requires: [] },
+]
+
+const validOrientationOutlookKinds = new Map<string, HardRouteSemanticKind>([
+  ['orientation-outlook', 'orientation'],
+  ['cluster-a', 'curricularArea'],
+  ['goal-a', 'curricularAtomic'],
+  ['cluster-b', 'curricularArea'],
+  ['goal-b', 'curricularAtomic'],
+  ['goal-detached', 'curricularAtomic'],
+])
+
+const sekiOrientationOutlookProfiles = [{
+  orientationGoalId: 'orientation-outlook',
+  scopeLabel: 'fixture / Sek I orientation outlook',
+  stageGoalSelector: (goal: OrientationOutlookFixtureGoal) => goal.stage === 'seki',
+}]
+
+assert.deepEqual(
+  validateOrientationOutlooks(
+    validOrientationOutlookGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ),
+  [],
+  'a bounded outlook with contained and directly reachable milestones is valid',
+)
+
+const invalidOrientationOutlookGoals = structuredClone(validOrientationOutlookGoals)
+const invalidOutlook = invalidOrientationOutlookGoals[0]?.extendedData
+  ?.orientationOutlook as { paths: Array<Record<string, unknown>> }
+invalidOutlook.paths[0]!.title = 'Source-Extraction-Nachträge'
+invalidOutlook.paths[0]!.subtreeRootIds = ['missing-cluster']
+invalidOutlook.paths[0]!.entryGoalIds = ['goal-detached']
+invalidOutlook.paths[0]!.milestoneGoalIds = ['goal-detached']
+
+const invalidOrientationOutlookFindings = validateOrientationOutlooks(
+  invalidOrientationOutlookGoals,
+  validOrientationOutlookKinds,
+  sekiOrientationOutlookProfiles,
+)
+assert.ok(
+  invalidOrientationOutlookFindings.some((finding) => finding.message.includes('Source-Extraction')),
+  'internal Source-Extraction labels must never become learner-facing outlook strands',
+)
+assert.ok(
+  invalidOrientationOutlookFindings.some((finding) => finding.message.includes('Unknown subtree root')),
+  'unknown subtree roots must fail hard',
+)
+assert.ok(
+  invalidOrientationOutlookFindings.some((finding) => finding.message.includes('not contained')),
+  'entries and milestones outside the authored path subtree must fail hard',
+)
+assert.ok(
+  invalidOrientationOutlookFindings.some((finding) => finding.message.includes('not reachable')),
+  'milestones without a direct requires route from the orientation anchor must fail hard',
+)
+
+const wrongAnchorKinds = new Map(validOrientationOutlookKinds)
+wrongAnchorKinds.set('orientation-outlook', 'curricularAtomic')
+assert.ok(
+  validateOrientationOutlooks(
+    validOrientationOutlookGoals,
+    wrongAnchorKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('semanticKind=orientation')),
+  'the outlook anchor must be authoritatively classified as orientation',
+)
+
+const wrongRootKinds = new Map(validOrientationOutlookKinds)
+wrongRootKinds.set('cluster-a', 'programStructure')
+assert.ok(
+  validateOrientationOutlooks(
+    validOrientationOutlookGoals,
+    wrongRootKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('semanticKind=curricularArea')),
+  'an outlook subtree root must be a curricularArea rather than a structural cluster',
+)
+
+for (const wrongMilestoneKind of [
+  'orientation',
+  'memory',
+  'practiceAssessment',
+  'runtimeSupport',
+] as const) {
+  const wrongMilestoneKinds = new Map(validOrientationOutlookKinds)
+  wrongMilestoneKinds.set('goal-a', wrongMilestoneKind)
+  assert.ok(
+    validateOrientationOutlooks(
+      validOrientationOutlookGoals,
+      wrongMilestoneKinds,
+      sekiOrientationOutlookProfiles,
+    ).some((finding) => finding.message.includes('semanticKind=curricularAtomic')),
+    `an outlook milestone must reject semanticKind=${wrongMilestoneKind}`,
+  )
+}
+
+for (const wrongEntryKind of [
+  'orientation',
+  'memory',
+  'practiceAssessment',
+  'runtimeSupport',
+] as const) {
+  const wrongEntryKinds = new Map(validOrientationOutlookKinds)
+  wrongEntryKinds.set('goal-a', wrongEntryKind)
+  assert.ok(
+    validateOrientationOutlooks(
+      validOrientationOutlookGoals,
+      wrongEntryKinds,
+      sekiOrientationOutlookProfiles,
+    ).some((finding) => finding.message.includes(
+      'Entry goal goal-a must have authoritative semanticKind=curricularAtomic',
+    )),
+    `an orientation path entry must reject semanticKind=${wrongEntryKind}`,
+  )
+}
+
+const clusterShortcutGoals = structuredClone(validOrientationOutlookGoals)
+clusterShortcutGoals.find((goal) => goal.id === 'cluster-a')!.requires = ['orientation-outlook']
+clusterShortcutGoals.find((goal) => goal.id === 'goal-a')!.requires = ['cluster-a']
+assert.ok(
+  validateOrientationOutlooks(
+    clusterShortcutGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('Milestone goal-a is not reachable')),
+  'cluster requires and contains membership must not prove an atomic didactic route',
+)
+
+const containsOnlyGoals = structuredClone(validOrientationOutlookGoals)
+containsOnlyGoals.find((goal) => goal.id === 'goal-a')!.requires = []
+assert.ok(
+  validateOrientationOutlooks(
+    containsOnlyGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('Milestone goal-a is not reachable')),
+  'contains membership alone must never prove downstream sequencing',
+)
+
+const crossStageGoals = structuredClone(validOrientationOutlookGoals)
+crossStageGoals.find((goal) => goal.id === 'goal-a')!.stage = 'sekii'
+const crossStageFindings = validateOrientationOutlooks(
+  crossStageGoals,
+  validOrientationOutlookKinds,
+  sekiOrientationOutlookProfiles,
+)
+assert.ok(
+  crossStageFindings.some((finding) => finding.message.includes('Milestone goal-a is outside the explicit stage scope')),
+  'a milestone from another stage must fail the explicit stage boundary',
+)
+assert.ok(
+  crossStageFindings.some((finding) => finding.message.includes('Milestone goal-a is not reachable')),
+  'a direct requires edge must not bridge an orientation outlook into another stage',
 )
 
 const goals: HardRouteGoal[] = [

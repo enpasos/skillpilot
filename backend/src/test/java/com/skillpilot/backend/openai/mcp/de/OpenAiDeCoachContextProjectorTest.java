@@ -9,6 +9,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -250,10 +251,15 @@ class OpenAiDeCoachContextProjectorTest {
                 new CoachStateProjection("https://skillpilot.test"),
                 "https://skillpilot.test");
 
-        OpenAiDeCoachContext context = projectGerman(projector, motivationState(
-                "orientation",
-                List.of("Motivation", "Orientation"),
-                "orientActiveGoal"));
+        OpenAiDeCoachContext context = projector.project(
+                motivationState(
+                        "orientation",
+                        List.of("Motivation", "Orientation"),
+                        "orientActiveGoal"),
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "de",
+                motivationOutlook(false));
 
         assertThat(context.interactionMode()).isEqualTo("orientation");
         assertThat(context.activeGoal().semanticKind()).isEqualTo("orientation");
@@ -263,17 +269,25 @@ class OpenAiDeCoachContextProjectorTest {
                 .isEqualTo("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.");
         assertThat(context.nextAllowedTools())
                 .contains(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(context.orientationOutlook()).isNotNull();
+        assertThat(context.orientationOutlook().paths())
+                .extracting(OpenAiDeCoachContext.OrientationPath::title)
+                .containsExactly(
+                        "Veränderung, Wachstum und Modelle",
+                        "Daten, Zufall und begründete Entscheidungen");
+        assertThat(context.orientationOutlook().paths().getFirst().representativeGoalTitles())
+                .containsExactly("Änderungsraten deuten", "Integrale als Bestände verstehen");
         assertThat(context.instruction())
                 .contains(
                         "Dein aktuelles Lernziel ist: Warum Mathematik? – Denken, Muster & Zukunft.",
                         "Verwende den Titel, nicht die Beschreibung",
-                        "Möglichkeiten",
-                        "positive",
+                        "Landkarte",
+                        "praktisch nützlich",
                         "neugierig",
                         "beginnt erst das motivierende Gespräch",
                         "persönliche Anschlussfrage",
-                        "erst nach der Antwort auf diese Vertiefung",
-                        "nicht zur nächsten Zielliste",
+                        "erst nach einer inhaltlichen Reaktion auf diese Vertiefung",
+                        "nicht zu einer unverbundenen Zielliste",
                         "keine Fachkompetenz")
                 .doesNotContain("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.")
                 .doesNotContain("zwei unabhängigen Checks", "Transfer", "Feynman");
@@ -284,8 +298,8 @@ class OpenAiDeCoachContextProjectorTest {
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("nur eine angebotene Möglichkeit", "noch kein Abschluss", "kein Auftrag zum Zielwechsel"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("aktive persönliche Anschlussfrage", "erst nach der Antwort auf diese Vertiefung")
-                        .contains("sofortiger nächster Zielliste ist verboten", "niemals fachliche Kompetenz"));
+                        .contains("aktive persönliche Anschlussfrage", "erst nach einer inhaltlichen Reaktion")
+                        .contains("sofortiger unverbundener Zielliste ist verboten", "niemals fachliche Kompetenz"));
         assertThat(String.join("\n", context.policies()))
                 .doesNotContain("Speichere Mastery nur nach zwei unabhängigen Checks");
     }
@@ -305,28 +319,34 @@ class OpenAiDeCoachContextProjectorTest {
                         "orientActiveGoal"),
                 PersonalizationPlan.complete(List.of()),
                 true,
-                "en-GB");
+                "en-GB",
+                motivationOutlook(true));
 
         assertThat(context.interactionMode()).isEqualTo("orientation");
         assertThat(context.activeGoal().title())
                 .isEqualTo("Why mathematics? – Thinking, patterns & the future");
         assertThat(context.activeGoal().description())
                 .isEqualTo("An overview of possibilities from calculus to probability.");
+        assertThat(context.orientationOutlook().paths())
+                .extracting(OpenAiDeCoachContext.OrientationPath::title)
+                .containsExactly(
+                        "Change, growth and models",
+                        "Data, chance and evidence-based decisions");
         assertThat(context.instruction())
                 .contains(
                         "Your current learning goal is: Why mathematics? – Thinking, patterns & the future.",
                         "Use the title, not the description",
-                        "only selects an offered possibility starts the motivational dialogue",
+                        "only selects a path starts the motivational dialogue",
                         "active personal follow-up",
-                        "only after the answer to that follow-up",
-                        "do not jump from a bare interest choice to the next goal list")
+                        "only after meaningful engagement with that follow-up",
+                        "never claim subject mastery")
                 .doesNotContain("An overview of possibilities from calculus to probability.");
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("merely selects an offered possibility", "not completion", "not a request to switch goals"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("active personal follow-up", "only after the response to that follow-up")
-                        .contains("immediately by next-goal options is forbidden"));
+                        .contains("active personal follow-up", "only after meaningful engagement with that follow-up")
+                        .contains("followed immediately by an unrelated goal list is forbidden"));
     }
 
     @Test
@@ -457,6 +477,42 @@ class OpenAiDeCoachContextProjectorTest {
                 semanticKind,
                 tags,
                 requiredAction);
+    }
+
+    private static OrientationOutlook motivationOutlook(boolean english) {
+        return new OrientationOutlook(
+                "motivation-public-id",
+                List.of(
+                        new OrientationOutlook.Path(
+                                "change-and-models",
+                                english ? "Change, growth and models" : "Veränderung, Wachstum und Modelle",
+                                english
+                                        ? "Understand and model change."
+                                        : "Veränderungen verstehen und modellieren.",
+                                List.of(english ? "Climate and growth" : "Klima und Wachstum"),
+                                List.of(
+                                        new OrientationOutlook.GoalReference(
+                                                "rate-goal",
+                                                english ? "Interpret rates of change" : "Änderungsraten deuten"),
+                                        new OrientationOutlook.GoalReference(
+                                                "integral-goal",
+                                                english
+                                                        ? "Understand integrals as accumulations"
+                                                        : "Integrale als Bestände verstehen")),
+                                List.of("rate-goal", "integral-goal")),
+                        new OrientationOutlook.Path(
+                                "data-and-decisions",
+                                english
+                                        ? "Data, chance and evidence-based decisions"
+                                        : "Daten, Zufall und begründete Entscheidungen",
+                                english
+                                        ? "Assess evidence and uncertainty."
+                                        : "Evidenz und Unsicherheit beurteilen.",
+                                List.of(english ? "Medical studies" : "Medizinische Studien"),
+                                List.of(new OrientationOutlook.GoalReference(
+                                        "test-goal",
+                                        english ? "Assess hypothesis tests" : "Hypothesentests beurteilen")),
+                                List.of("test-goal"))));
     }
 
     private static UnifiedLearnerStateResponse motivationState(

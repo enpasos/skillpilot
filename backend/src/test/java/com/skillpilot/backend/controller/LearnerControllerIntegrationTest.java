@@ -435,6 +435,7 @@ public class LearnerControllerIntegrationTest {
 
         Learner learner = new Learner();
         learner.setSkillpilotId("idempotent-learner");
+        learner.setAutoPilot(false);
         learnerRepository.save(learner);
         learnerId = learner.getSkillpilotId();
     }

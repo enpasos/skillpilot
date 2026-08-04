@@ -7,6 +7,7 @@ import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearningModeOption;
+import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -17,6 +18,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /** Provider-specific compaction layered on the shared AI-safety projection. */
 public final class OpenAiDeCoachContextProjector {
@@ -40,6 +42,20 @@ public final class OpenAiDeCoachContextProjector {
             PersonalizationPlan personalizationPlan,
             boolean includeGoalVisualization,
             String communicationLocale) {
+        return project(
+                rawState,
+                personalizationPlan,
+                includeGoalVisualization,
+                communicationLocale,
+                null);
+    }
+
+    public OpenAiDeCoachContext project(
+            UnifiedLearnerStateResponse rawState,
+            PersonalizationPlan personalizationPlan,
+            boolean includeGoalVisualization,
+            String communicationLocale,
+            OrientationOutlook authoritativeOrientationOutlook) {
         UnifiedLearnerStateResponse state = stateProjection.project(rawState);
         if (state == null) {
             return null;
@@ -58,6 +74,9 @@ public final class OpenAiDeCoachContextProjector {
         OpenAiDeCoachContext.Orientation orientation = "setPersonalization".equals(requiredAction)
                 ? personalizationOrientation(state.curriculum(), personalizationPlan, communicationLocale)
                 : null;
+        OpenAiDeCoachContext.OrientationOutlook orientationOutlook = orientationOutlook(
+                activeGoal,
+                authoritativeOrientationOutlook);
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
         boolean examHasImage = hasExamImage(activeGoal);
@@ -70,6 +89,7 @@ public final class OpenAiDeCoachContextProjector {
                 interactionMode,
                 curriculum(state.curriculum()),
                 orientation,
+                orientationOutlook,
                 activeGoal(state.curriculum(), activeGoal),
                 options,
                 decision,
@@ -190,6 +210,52 @@ public final class OpenAiDeCoachContextProjector {
             return null;
         }
         return new OpenAiDeCoachContext.Orientation(establishedContext, openQuestions);
+    }
+
+    private OpenAiDeCoachContext.OrientationOutlook orientationOutlook(
+            FrontierGoal activeGoal,
+            OrientationOutlook authoritativeOutlook) {
+        if (!isOrientationGoal(activeGoal)
+                || authoritativeOutlook == null
+                || authoritativeOutlook.orientationGoalId() == null
+                || !authoritativeOutlook.orientationGoalId().equals(activeGoal.id())
+                || authoritativeOutlook.paths() == null) {
+            return null;
+        }
+        List<OpenAiDeCoachContext.OrientationPath> paths = authoritativeOutlook.paths().stream()
+                .filter(Objects::nonNull)
+                .limit(4)
+                .map(path -> new OpenAiDeCoachContext.OrientationPath(
+                        compact(path.pathId()),
+                        compact(path.title()),
+                        compact(path.learningOutlook()),
+                        path.practicalContexts() == null
+                                ? List.of()
+                                : path.practicalContexts().stream()
+                                        .filter(Objects::nonNull)
+                                        .map(this::compact)
+                                        .filter(value -> !blank(value))
+                                        .distinct()
+                                        .limit(3)
+                                        .toList(),
+                        path.representativeGoals() == null
+                                ? List.of()
+                                : path.representativeGoals().stream()
+                                        .filter(Objects::nonNull)
+                                        .map(OrientationOutlook.GoalReference::title)
+                                        .filter(Objects::nonNull)
+                                        .map(this::compact)
+                                        .filter(value -> !blank(value))
+                                        .distinct()
+                                        .limit(4)
+                                        .toList()))
+                .filter(path -> !blank(path.pathId())
+                        && !blank(path.title())
+                        && !blank(path.learningOutlook())
+                        && !path.practicalContexts().isEmpty()
+                        && !path.representativeGoalTitles().isEmpty())
+                .toList();
+        return paths.size() < 2 ? null : new OpenAiDeCoachContext.OrientationOutlook(paths);
     }
 
     private List<OpenAiDeCoachContext.Option> personalizationOptions(
@@ -568,10 +634,10 @@ public final class OpenAiDeCoachContextProjector {
                 "Behaupte eine Zustandsänderung nur nach bestätigtem Backend-Erfolg. Bei einem Konflikt lade den Kontext genau einmal neu; bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe die strukturierte Arbeit transparent."));
         switch (interactionMode) {
             case "orientation" -> policies.addAll(List.of(
-                    "Orientierungsmodus: Nenne zuerst den exakten Titel des aktiven Lernziels, nicht dessen Beschreibung. Zeige dann zwei bis vier konkrete, altersgerechte Möglichkeiten und ehrliche positive Perspektiven, die der nachfolgende Stoff für Alltag, Interessen, gesellschaftliche Teilhabe, Studium oder Beruf eröffnet. Bleibe beim Überblick und knüpfe nur an tatsächlich bekannten Kontext an.",
+                    "Orientierungsmodus: Nenne zuerst den exakten Titel des aktiven Lernziels, nicht dessen Beschreibung. Nutze danach ausschließlich orientationOutlook als autoritative Lernlandkarte: Zeige knapp alle gelieferten Pfade, was dort tatsächlich gelernt wird, repräsentative spätere Meilensteine und wofür das praktisch relevant ist. Erfinde, ergänze oder vermische keine Pfade, Anwendungen oder Folgethemen. Fehlt orientationOutlook, bleibe allgemein beim aktiven Ziel und biete nur an, direkt weiterzugehen.",
                     "Prüfe weder Vorwissen noch Begriffe, Rechenverfahren oder anderes inhaltliches Detailwissen. Stelle keine Wissens-, Übungs-, Transfer-, Recall- oder Prüfungsaufgabe, fordere keinen Feynman-Teach-back und bewerte keine Antwort fachlich als richtig oder falsch.",
-                    "Lade nach der kurzen Orientierung zu einer niedrigschwelligen Reaktion ein, etwa welche Möglichkeit neugierig macht oder ob die lernende Person weitergehen möchte. Eine Antwort, die nur eine angebotene Möglichkeit wie „Smartphone und KI“ auswählt, beginnt das motivierende Gespräch; sie ist noch kein Abschluss und kein Auftrag zum Zielwechsel.",
-                    "Greife die gewählte Möglichkeit konkret auf, verbinde sie mit ein bis zwei Dingen, welche die lernende Person damit verstehen, erkunden, gestalten oder tun kann, und stelle eine aktive persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Speichere den Orientierungsabschluss erst nach der Antwort auf diese Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen. Ein pauschales „Spannend“ mit sofortiger nächster Zielliste ist verboten. Dieser Abschluss belegt niemals fachliche Kompetenz."));
+                    "Lade nach der kurzen Orientierung zu einer niedrigschwelligen Reaktion ein, etwa welche Möglichkeit neugierig macht oder ob die lernende Person weitergehen möchte. Eine Antwort, die nur eine angebotene Möglichkeit wie „Smartphone und KI“ auswählt, beginnt das motivierende Gespräch; sie ist noch kein Abschluss und kein Auftrag zum Zielwechsel. Ordne eine freie Interessenangabe nur dann einem Pfad zu, wenn genau ein gelieferter Pfad eindeutig passt; frage sonst nach und rate niemals eine pathId.",
+                    "Greife den gewählten orientationOutlook-Pfad konkret auf: Zeige zwei bis vier seiner gelieferten Lernmeilensteine zusammen mit den praktischen Kontexten und stelle eine aktive persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Speichere den Orientierungsabschluss erst nach einer inhaltlichen Reaktion auf diese Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen; eine bloße inhaltsfreie Bestätigung genügt nicht. Wurde ein Pfad gewählt, übergib beim Abschluss dessen pathId unverändert als orientationPathId; SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist. Ist keines verfügbar, bleibt der Abschluss erfolgreich und SkillPilot liefert ohne aktives Ziel die normalen aktuell verfügbaren Grundlagen. Lasse orientationPathId nur weg, wenn ausdrücklich ohne Pfadwahl direkt weitergegangen werden soll. Ein pauschales „Spannend“ mit sofortiger unverbundener Zielliste ist verboten. Dieser Abschluss belegt niemals fachliche Kompetenz."));
             case "chat" -> policies.addAll(List.of(
                     "Arbeite dialogisch an genau einem bestätigten atomischen Ziel: Nenne zuerst seinen exakten Titel, nicht die Beschreibung. Prüfe kurz Vorwissen, knüpfe ausdrücklich an die Antwort an, gib kleine Hinweise, lasse mit ein bis drei Aufgaben selbst arbeiten und unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der unmittelbar folgenden Aufgabe vor; nach einem Mini-Beispiel muss die Folgeübung einen anderen Fall oder Wortlaut verwenden.",
                     "Bewerte die fachliche Bedeutung statt den Wortlaut. Rekonstruiere ungewöhnliche Wege fair und korrigiere nur tatsächlich falsche oder unbegründete Schritte; ausdrücklich verlangte Formate und Inhalte bleiben bindend.",
@@ -662,16 +728,25 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement
-                    + "Motivierende Orientierung: Zeige anhand des aktiven Ziels zwei bis vier verständliche "
-                    + "Möglichkeiten und positive, realistische Perspektiven des folgenden Stoffes. Frage danach "
+                    + "Motivierende Orientierung: Gib zuerst eine knappe Landkarte aller in orientationOutlook "
+                    + "gelieferten Pfade: was dort tatsächlich gelernt wird, welche repräsentativen Meilensteine "
+                    + "folgen und wofür das praktisch nützlich ist. Verwende ausschließlich diese Daten und erfinde "
+                    + "keine Pfade oder Anwendungen. Fehlt die Landkarte, bleibe allgemein und biete nur direktes "
+                    + "Weitergehen an. Frage danach "
                     + "niedrigschwellig, was neugierig macht oder ob die lernende Person direkt weiterlernen möchte. "
                     + "Eine Antwort, die nur eine angebotene Möglichkeit auswählt, beginnt erst das motivierende "
-                    + "Gespräch. Greife dieses Interesse konkret auf, zeige ein bis zwei Verbindungen zu dem, was "
-                    + "die lernende Person verstehen, erkunden, gestalten oder tun kann, und stelle eine aktive "
+                    + "Gespräch. Greife den gewählten Pfad konkret auf, zeige zwei bis vier seiner gelieferten "
+                    + "Meilensteine und praktischen Kontexte, und stelle eine aktive "
                     + "persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Prüfe kein Vorwissen "
-                    + "oder Detailwissen. Speichere den Orientierungsabschluss erst nach der Antwort auf diese "
-                    + "Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen; springe nach einer bloßen "
-                    + "Interessenwahl nicht zur nächsten Zielliste und behaupte keine Fachkompetenz.";
+                    + "oder Detailwissen. Speichere den Orientierungsabschluss erst nach einer inhaltlichen Reaktion "
+                    + "auf diese Vertiefung oder nach ausdrücklicher Bitte, direkt weiterzugehen; eine inhaltsfreie "
+                    + "Bestätigung genügt nicht. Springe nach einer bloßen "
+                    + "Interessenwahl nicht zu einer unverbundenen Zielliste und behaupte keine Fachkompetenz. "
+                    + "Übergib beim Abschluss eines gewählten Pfads dessen pathId unverändert als orientationPathId. "
+                    + "SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist; sonst "
+                    + "bleibt der Abschluss erfolgreich und die normalen verfügbaren Grundlagen werden ohne aktives "
+                    + "Ziel geliefert. Lasse den Wert nur bei ausdrücklich gewünschtem direkten Weitergehen ohne "
+                    + "Pfadwahl weg.";
         }
         if (blank(requiredAction)) {
             return goalAnnouncement
@@ -693,7 +768,8 @@ public final class OpenAiDeCoachContextProjector {
                     goalAnnouncement
                             + "Führe die motivierende Orientierung ohne fachliche Prüfung durch. Eine bloße Auswahl "
                             + "einer angebotenen Möglichkeit startet erst die aktive Vertiefung. Speichere den "
-                            + "Orientierungsabschluss erst nach der Antwort darauf oder nach ausdrücklicher Bitte, "
+                            + "Orientierungsabschluss erst nach einer inhaltlichen Reaktion darauf oder nach "
+                            + "ausdrücklicher Bitte, "
                             + "direkt weiterzugehen; behaupte dabei keine fachliche Mastery.";
             case "teachActiveGoal", "setMastery" ->
                     goalAnnouncement
@@ -719,10 +795,10 @@ public final class OpenAiDeCoachContextProjector {
                 "Claim a state change only after confirmed backend success. After a conflict, reload exactly once; after authentication, schema, persistence, or repeated conflict failures, stop structured work transparently."));
         switch (interactionMode) {
             case "orientation" -> policies.addAll(List.of(
-                    "Orientation mode: first state the exact active learning-goal title, not its description. Then show two to four concrete, age-appropriate possibilities and honest positive perspectives that the material ahead opens for everyday life, interests, participation, study, or work. Stay at overview level and use only known context.",
+                    "Orientation mode: first state the exact active learning-goal title, not its description. Then use orientationOutlook as the sole authoritative learning map: briefly show every supplied path, what is actually learned there, representative later milestones, and its practical relevance. Never invent, add, or combine paths, applications, or follow-on topics. If orientationOutlook is absent, stay general and only offer to continue directly.",
                     "Do not test prior knowledge, terminology, procedures, or other content details. Do not set knowledge, practice, transfer, recall, or exam tasks, require Feynman teach-back, or assess an answer as technically right or wrong.",
-                    "After the short orientation, invite a low-threshold response about what sparks curiosity or whether the learner wants to continue. A reply that merely selects an offered possibility such as 'smartphones and AI' starts the motivational dialogue; it is not completion and not a request to switch goals.",
-                    "Take up the selected possibility specifically, connect it to one or two things the learner can understand, explore, shape, or do, and ask an active personal follow-up with no technically right or wrong answer. Save completion only after the response to that follow-up or an explicit request to continue directly. A generic 'Interesting' followed immediately by next-goal options is forbidden. Completion never marks subject mastery."));
+                    "After the short orientation, invite a low-threshold response about what sparks curiosity or whether the learner wants to continue. A reply that merely selects an offered possibility such as 'smartphones and AI' starts the motivational dialogue; it is not completion and not a request to switch goals. Map a free-form interest only when exactly one supplied path clearly matches; otherwise ask which path was meant and never guess a pathId.",
+                    "Take up the selected orientationOutlook path specifically: show two to four of its supplied learning milestones together with the practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Save completion only after meaningful engagement with that follow-up or an explicit request to continue directly; a content-free acknowledgement alone is insufficient. When a path was selected, pass its pathId unchanged as orientationPathId on completion; SkillPilot activates its first entry goal only when it is currently available. If none is available, completion remains successful and SkillPilot returns the normally available foundations without an active goal. Omit orientationPathId only when the learner explicitly wants to continue without selecting a path. A generic 'Interesting' followed immediately by an unrelated goal list is forbidden. Completion never marks subject mastery."));
             case "chat" -> policies.addAll(List.of(
                     "Coach dialogically on exactly one confirmed atomic goal: first state its exact title, not the description. Briefly check prior knowledge, connect the next step explicitly to the learner's answer, give small hints, use one to three tasks, let the learner work, distinguish conceptual from careless errors, and never reveal the immediate next solution. After a mini-example, the next exercise must use a different case or wording.",
                     "Assess technical meaning rather than wording. Reconstruct unusual approaches fairly and correct only genuinely false or unsupported steps; explicitly required formats and content remain binding.",
@@ -783,7 +859,7 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement
-                    + "Motivating orientation: use the active goal to show two to four understandable possibilities and positive, realistic perspectives of the material ahead. Ask what sparks curiosity or whether the learner wants to continue directly. A reply that only selects an offered possibility starts the motivational dialogue. Take up that exact interest, show one or two links to what the learner can understand, explore, shape, or do, and ask an active personal follow-up with no technically right or wrong answer. Do not test prior knowledge or details. Save completion only after the answer to that follow-up or an explicit request to continue directly; do not jump from a bare interest choice to the next goal list or claim subject mastery.";
+                    + "Motivating orientation: first give a compact map of every path supplied in orientationOutlook: what is actually learned, its representative milestones, and its practical value. Use only those data and never invent paths or applications. If the map is absent, stay general and only offer to continue directly. Ask what sparks curiosity or whether the learner wants to continue directly. A reply that only selects a path starts the motivational dialogue. Take up that path, show two to four of its supplied milestones and practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Do not test prior knowledge or details. Save completion only after meaningful engagement with that follow-up or an explicit request to continue directly; a content-free acknowledgement is insufficient. For a selected path, pass its pathId unchanged as orientationPathId. SkillPilot activates its first entry only when currently available; otherwise completion succeeds and the normal available foundations return without an active goal. Omit it only for explicit direct continuation without a path, and never claim subject mastery.";
         }
         if (blank(requiredAction)) {
             return goalAnnouncement
@@ -796,7 +872,7 @@ public final class OpenAiDeCoachContextProjector {
                             ? "No safe options are available for the required step. Reload the context."
                             : "Treat a natural multi-part request as continuing intent. Apply an unambiguous subject match directly, load the successor state, and ask only for a selection that remains genuinely open.";
             case "orientActiveGoal" -> goalAnnouncement
-                    + "Give motivating orientation without subject assessment. A bare selection among offered possibilities starts the active follow-up. Save completion only after its answer or an explicit request to continue directly; do not claim subject mastery.";
+                    + "Give motivating orientation without subject assessment. A bare selection among offered possibilities starts the active follow-up. Save completion only after meaningful engagement with it or an explicit request to continue directly; a content-free acknowledgement is insufficient. Do not claim subject mastery.";
             case "teachActiveGoal", "setMastery" -> goalAnnouncement
                     + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect.";
             default -> "Follow only the published required action, then reload the context.";
