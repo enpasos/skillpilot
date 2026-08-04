@@ -10,7 +10,7 @@ audience: "Codex- und SkillPilot-Entwicklung"
 # SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
 
 **Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills, genau einer
-hashgebundenen bild-only MCP-Apps-UI-Ressource im unveröffentlichten V1-Draft
+aktiv gebundenen hashgebundenen bild-only MCP-Apps-UI-Ressource im unveröffentlichten V1-Draft
 und möglicher späterer interaktiver MCP-UI
 **Dokumentversion:** 1.0  
 **Stand:** 31. Juli 2026  
@@ -252,13 +252,13 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
 noch nicht veröffentlicht. Die Lernzielvisualisierung wird deshalb als
-genau eine hashgebundene `text/html;profile=mcp-app`-Ressource in den
+genau eine aktive hashgebundene `text/html;profile=mcp-app`-Ressource in den
 bestehenden `1.0.0`-Draft aufgenommen; es entsteht weder `1.0.1` noch ein
 Published-Snapshot. Nur der Renderer verweist mit `ui.resourceUri` und
 `openai/outputTemplate` auf sie; gewöhnliche Werkzeuge bleiben ungebunden. Alle
 zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
-gemeinsam im selben Draft aktualisiert. Frühere Draft-Ressourcen werden nicht
-retained.
+gemeinsam im selben Draft aktualisiert. Bereits an reale Test-Clients
+ausgelieferte Hash-URIs bleiben byte-identisch und passiv lesbar.
 
 ### 7.1 Server-Build ohne Plugin-Release
 
@@ -448,9 +448,9 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 ## 9. Bild-only MCP-Apps-UI in V1 und mögliche spätere Interaktion
 
-### 9.1 V1 enthält genau eine aktuelle UI-Ressource
+### 9.1 V1 bindet genau eine aktuelle UI-Ressource
 
-Der noch unveröffentlichte V1-Draft enthält genau eine hashgebundene Ressource
+Der noch unveröffentlichte V1-Draft bindet genau eine aktive hashgebundene Ressource
 mit dem MIME-Typ `text/html;profile=mcp-app`. Das read-only Werkzeug
 `render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
 `goalVisualization` an diese Ressource; die UI rendert ausschließlich das JPEG
@@ -466,13 +466,13 @@ Bereitstellung der strukturierten Visualisierung; SkillPilot behauptet nicht,
 dass der Host die Ressource geladen oder das Bild dargestellt hat. Der
 vollständige Textpfad bleibt unabhängig davon erhalten.
 
-Die zuvor experimentell an Test-Clients ausgelieferten V1-Widgetressourcen sind
-kein veröffentlichter Vertrag. Für sie besteht ausdrücklich keine
-Rückwärtskompatibilitäts- oder Aufbewahrungspflicht. Runtime, Draft-Snapshot und
-Ressourceninventar enthalten ausschließlich die eine aktuelle Ressource; alte
-Testartefakte werden nicht retained. Alte Test-Chats sind nicht unterstützt;
-nach dem Deployment werden die Plugin-Metadaten aktualisiert und die Abnahme
-erfolgt in einem frischen Chat.
+Sobald eine content-addressierte URI an einen realen Test-Client ausgeliefert
+wurde, kann ein Provider-Metadaten- oder Chat-Snapshot sie später erneut
+anfordern. Runtime, Draft-Snapshot und Ressourceninventar halten sie deshalb
+mit den exakten ursprünglichen Bytes passiv lesbar. Das ist keine zweite aktive
+UI-Version: Nur die aktuelle URI darf in einem Tool-Descriptor gebunden sein.
+Nach dem Deployment werden die Plugin-Metadaten aktualisiert und die aktuelle
+URI zusätzlich in einem frischen Chat geprüft.
 
 ### 9.2 Regeln für spätere interaktive UI-Erweiterungen
 
@@ -507,16 +507,14 @@ unbekannter oder beschädigter Zustand darf nicht zum Absturz führen und fällt
 auf einen sicheren leeren Zustand zurück. Die bild-only V1-Ressource erzeugt
 keinen autoritativen Lernzustand; dieser bleibt vollständig im Backend.
 
-### 9.4 Aufbewahrung beginnt mit tatsächlicher Veröffentlichung
+### 9.4 Aufbewahrung beginnt mit der ersten realen Auslieferung
 
-Nur UI-Ressourcen, die Bestandteil einer tatsächlich veröffentlichten
-Plugin-Version waren, werden während der unterstützten Laufzeit der
-zugehörigen Plugin-Major-Version unveränderlich bereitgestellt. Eine
-Nachlaufzeit nach Unpublish oder Delete wird erst für eine solche spätere
-UI-Linie als Release- und Betriebsparameter festgelegt. Experimentelle
-Ressourcen des unveröffentlichten V1-Drafts werden nicht aufbewahrt; vor der
-ersten Veröffentlichung wird immer nur die aktuelle hashgebundene Ressource
-inventarisiert.
+Jede UI-Ressource, die einem realen Client angeboten wurde, wird während der
+unterstützten Laufzeit der zugehörigen Plugin-Major-Version unveränderlich
+bereitgestellt. Dies gilt auch für Draft-Tests, weil Provider-Caches keinen
+Release-Status kennen. Eine Nachlaufzeit nach Unpublish oder Delete wird als
+Release- und Betriebsparameter festgelegt; bis dahin bleiben die exakten
+historischen Bytes lesbar und ausschließlich die aktuelle URI aktiv gebunden.
 
 ## 10. Skills-Versionierung
 
@@ -1018,7 +1016,7 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - OpenAI-Challenge-Route berücksichtigen.
 
 4. **V1-Bild-only UI absichern**
-   - genau eine hashgebundene `text/html;profile=mcp-app`-Ressource für
+   - genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource für
      `render_skillpilot_goal_visualization` ausliefern;
    - ausschließlich den Renderer mit `ui.resourceUri` und
      `openai/outputTemplate` binden; gewöhnliche Tools bleiben ungebunden;
@@ -1026,8 +1024,8 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
      den vollständigen Textpfad bei jedem Hostverhalten erhalten;
    - weder User-Agent- noch Surface-Metadaten als Gate verwenden und keine
      tatsächliche Hostdarstellung behaupten;
-   - frühere experimentelle Widgetartefakte ohne Kompatibilitätsbestand oder
-     Retention aus dem unveröffentlichten Draft entfernen.
+   - jede bereits real ausgelieferte frühere Hash-URI byte-identisch als
+     passive Ressource behalten; ausschließlich die aktuelle URI aktiv binden.
 
 5. **V1-Skill-Bundle trennen**
    - eigener finaler Skill-Baum für `skillpilot-coach-v1`;
@@ -1093,8 +1091,9 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - Manifest-Version und Contract-Major konsistent sind;
 - der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;
 - der unveröffentlichte V1-Draft genau eine aktuelle hashgebundene
-  `text/html;profile=mcp-app`-Ressource inventarisiert, nur den Renderer daran
-  bindet und keine früheren Draft-Ressourcen retained;
+  `text/html;profile=mcp-app`-Ressource aktiv bindet, nur den Renderer daran
+  bindet und jede bereits ausgelieferte frühere URI byte-identisch passiv
+  lesbar hält;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben

@@ -49,12 +49,11 @@ Rules:
 
 ## OpenAI MCP Apps Image Delivery
 
-The still-unpublished `SkillPilot Coach v1` draft `1.0.0` publishes exactly one
+The still-unpublished `SkillPilot Coach v1` draft `1.0.0` binds exactly one
 active, hash-bound MCP Apps HTML resource for goal images. Its resource URI
 contains the SHA-256 of the self-contained HTML bytes. `resources/list` and
-`resources/read` expose exactly this resource with the reviewed widget domain
-and CSP. Because V1 is still an unpublished mutable draft, it retains no older
-UI artifact and offers no backward compatibility for old test chats.
+`resources/read` expose the active resource plus every previously advertised
+hash URI with its exact historical bytes, reviewed widget domain, and CSP.
 
 The dedicated read-only `render_skillpilot_goal_visualization` tool is the only
 V1 tool whose descriptor carries `ui.resourceUri` and the
@@ -126,11 +125,11 @@ The projection and image result obey these constraints:
 - do not delay ordinary coaching or automatically retry a completed attempt.
   Test renderer invocation and visible host behaviour independently, without
   changing the protocol result by client surface;
-- because V1 is unpublished and backward compatibility was explicitly rejected,
-  the draft contains exactly one current active UI resource and no retained
-  historical resource. A widget change creates a new hash-bound URI and removes
-  the old draft artifact. Existing test chats may reference obsolete templates
-  and are unsupported; refresh the plugin and use a fresh chat after deployment;
+- a widget change creates a new active hash-bound URI. Every URI previously
+  advertised to a real test client remains immutable and readable as a passive
+  retained resource because provider metadata and chats may fetch it later.
+  Only the current URI is tool-bound; refresh the plugin and verify a fresh chat
+  after deployment as an additional current-contract check;
 - the image is orientation only. It is not evidence, a task, a solution, an
   assessment, or a mastery signal, and the model must not invent unreadable
   image details.

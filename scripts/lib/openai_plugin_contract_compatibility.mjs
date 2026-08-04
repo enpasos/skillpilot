@@ -125,8 +125,10 @@ export function loadReleaseContract(releaseRoot) {
 }
 
 /**
- * Verifies that the unpublished V1 draft has exactly one hash-bound MCP App UI
- * resource and that only its dedicated renderer points to that resource.
+ * Verifies that the V1 line has exactly one active hash-bound MCP App UI
+ * resource, while immutable historical resources may remain readable for
+ * provider metadata caches. Only the dedicated renderer may point to the
+ * active resource.
  */
 export function assertActiveUiResource(activeResourceUri, resources, tools) {
   assert.equal(
@@ -139,10 +141,14 @@ export function assertActiveUiResource(activeResourceUri, resources, tools) {
     0,
     "UI activeResourceUri must be a non-empty string.",
   );
+  assert.ok(
+    Array.isArray(resources) && resources.length > 0,
+    "The V1 draft must inventory its active MCP App UI resource.",
+  );
   assert.equal(
-    (resources ?? []).length,
-    1,
-    "The unpublished V1 draft must inventory exactly one active MCP App UI resource.",
+    new Set(resources.map(resourceUri)).size,
+    resources.length,
+    "MCP App UI resource URIs must be unique.",
   );
   const matchingResources = (resources ?? []).filter(
     (resource) => resourceUri(resource) === activeResourceUri,

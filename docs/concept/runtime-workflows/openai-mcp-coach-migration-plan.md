@@ -77,7 +77,7 @@ OpenAI-Modell-API auf.
 
 Die V1-App wird für jede freigegebene Interaktionssprache durch eigene
 Acceptance-Fälle stabilisiert; eine weitere Sprache erzeugt keine zweite App.
-Die optionale Lernzielbildausgabe über genau eine hashgebundene MCP-Apps-
+Die optionale Lernzielbildausgabe über genau eine aktiv gebundene hashgebundene MCP-Apps-
 Ressource ist Teil des unveröffentlichten V1-Drafts. Sie zeigt ausschließlich
 das Bild; interaktive Widgets für Auswahl, Antwortabgabe oder Prüfungs-Receipts
 bleiben mögliche spätere Verbesserungen und sind kein Bestandteil des
@@ -129,7 +129,7 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    `language`-Parameter. Die beim Start festgelegte `communicationLocale` wird
    aus der Lernsession geladen und steuert sämtliche sichtbare Kommunikation.
 5. **Bildausgabe eng begrenzen:** Der erste produktionsnahe Vertrag besitzt
-   genau ein read-only Rendering-Werkzeug und genau eine hashgebundene
+   genau ein read-only Rendering-Werkzeug und genau eine aktiv gebundene hashgebundene
    `text/html;profile=mcp-app`-Ressource. Nur der Renderer trägt
    `ui.resourceUri` und `openai/outputTemplate`; gewöhnliche Werkzeuge bleiben
    ungebunden. Die UI rendert ausschließlich die strukturierte
@@ -608,7 +608,7 @@ Funktion migriert:
 | zustandsabhängige Aufgabe, Rubrik, Recall- oder Exam-Regel | dynamisches `structuredContent` des jeweiligen Tools |
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
-| Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
+| Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; frühere ausgelieferte Hash-URIs bleiben passiv lesbar; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
 | spätere interaktive Widgetdarstellung | app-only Metadaten und Tools; niemals fachliche Modellanweisung |
 
 Die bewährte fachlich-didaktische Ausgangsbasis liegt unter
@@ -899,7 +899,7 @@ Gate der Version `1.0.0`.
 
 ### Etappe 7 – Bild-only MCP-Apps-UI
 
-- read-only Lernzielbild für aktive atomare Ziele über genau eine hashgebundene
+- read-only Lernzielbild für aktive atomare Ziele über genau eine aktiv gebundene hashgebundene
   `text/html;profile=mcp-app`-Ressource im unveröffentlichten `1.0.0`-Draft
   ausliefern;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
@@ -910,10 +910,10 @@ Gate der Version `1.0.0`.
 - die strukturierte `goalVisualization` bild-only rendern, ohne
   User-Agent-/Surface-Gate und ohne zu behaupten, dass der Host sie angezeigt
   hat;
-- frühere experimentelle HTML-Ressourcen ohne Rückwärtskompatibilität oder
-  Retention entfernen: V1 ist unveröffentlicht, alte Test-Chats werden nicht
-  unterstützt und nach dem Deployment sind aktualisierte Plugin-Metadaten
-  sowie ein frischer Chat erforderlich;
+- jede bereits an reale Test-Clients ausgelieferte HTML-Hash-URI mit ihren
+  exakten Bytes passiv lesbar halten; nur die aktuelle URI wird gebunden und
+  nach dem Deployment mit aktualisierten Plugin-Metadaten in einem frischen
+  Chat geprüft;
 - interaktive Widgets nur in einer späteren, ausdrücklich neu entworfenen
   Ausbaustufe ergänzen.
 

@@ -99,18 +99,17 @@ There are no language-specific widget-domain variables.
 The goal-visualization widget is a separate, read-only MCP Apps UI resource
 built from `widget/src/goal-visualization-main.ts`. `npm run build` copies the
 exact tested, self-contained artifact into the Spring resources. The
-unpublished V1 draft publishes exactly one content-addressed UI resource and
-binds it only to `render_skillpilot_goal_visualization` through
+unpublished V1 draft binds exactly one active content-addressed UI resource
+only to `render_skillpilot_goal_visualization` through
 `ui.resourceUri` plus the ChatGPT compatibility alias
-`openai/outputTemplate`. All ordinary coach tools remain UI-free.
+`openai/outputTemplate`. Previously advertised hash URIs remain byte-identical,
+passive resources for provider caches. All ordinary coach tools remain UI-free.
 
 The renderer returns a bounded structured `goalVisualization` projection to
 the widget. The widget displays only the approved image after it has loaded;
 it does not show the goal text or cockpit link. Bare MCP `ImageContent` is not
 used as a visibility contract. Eligibility is derived from SkillPilot session
 state and is not gated by `openai/userAgent` or another client-surface hint.
-Because V1 is still unpublished, the draft retains no superseded experimental
-widget resources.
 
 ## Product plugin source
 

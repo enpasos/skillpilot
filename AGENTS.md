@@ -455,9 +455,11 @@ Rule:
   inline presentation.
 * V1 publishes exactly one active, hash-bound MCP Apps HTML resource for this
   renderer. Its URI contains the SHA-256 of the self-contained HTML bytes, and
-  `resources/list` and `resources/read` expose exactly that resource with its
-  reviewed widget domain and CSP. Ordinary context, mutation, recall, and exam
-  tools carry no UI binding and therefore do not create empty UI boxes.
+  the renderer binds exactly that active resource. `resources/list` and
+  `resources/read` also keep every previously advertised content-addressed
+  resource byte-identically readable for provider metadata caches. Ordinary
+  context, mutation, recall, and exam tools carry no UI binding and therefore
+  do not create empty UI boxes.
   This is the documented OpenAI component contract: a selected tool links a
   registered `text/html;profile=mcp-app` resource through
   `_meta.ui.resourceUri`, with `_meta["openai/outputTemplate"]` only as the
@@ -484,12 +486,12 @@ Rule:
   authorization. The renderer reprojects current backend state and rejects
   stale versions or mismatched goal IDs. Its image receipt does not replace the
   preceding full SkillPilot context. Never retry or claim the host displayed it.
-* V1 is still unpublished and has no backward-compatibility or retention
-  requirement. The mutable `1.0.0` draft contains exactly the one current active
-  UI artifact and no retained historical UI resources. Replacing its HTML
-  produces a new hash-bound URI and removes the old draft artifact; old test
-  chats are unsupported, so refresh the plugin metadata and use a fresh chat
-  after deployment.
+* A content-addressed UI URI becomes immutable as soon as it has been advertised
+  to a real client, including during draft testing. Replacing widget HTML
+  produces a new active hash-bound URI; older URIs remain registered with their
+  exact bytes as passive retained resources because provider metadata and chat
+  snapshots may request them later. Retention is transport continuity, not a
+  second active UI contract: only the current URI may be bound by a tool.
 * The renderer result and widget create no state, authorization, goal selection,
   or permanent learner identity. Alt text remains accessibility metadata; the
   visible widget contains exactly the image and no caption, description, goal
@@ -988,11 +990,12 @@ Provider-facing contracts must use derived temporary context instead:
   reserved and fail closed with `404`; only V1 is active. Earlier
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
-  compatibility routes. The still-unpublished `1.0.0` draft publishes exactly
-  one active, hash-bound image-only MCP Apps UI resource and no retained UI
-  resources. Only `render_skillpilot_goal_visualization` binds that resource;
-  coaching, selection, answers, and state transitions remain normal MCP/chat
-  flows without UI bindings.
+  compatibility routes. The still-unpublished `1.0.0` draft binds exactly one
+  active, hash-bound image-only MCP Apps UI resource and keeps previously
+  advertised hash URIs byte-identically readable as passive resources. Only
+  `render_skillpilot_goal_visualization` binds the active resource; coaching,
+  selection, answers, and state transitions remain normal MCP/chat flows
+  without UI bindings.
 - OpenAI MCP uses one App, public tool catalog, endpoint and
   registration per contract major, not per language. Plugin metadata, skill
   instructions, tool names, descriptions, schemas and stable machine values use

@@ -34,6 +34,7 @@ import java.security.MessageDigest;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -546,6 +547,37 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID);
         assertThat(bootstrapTool.path("annotations").path("readOnlyHint").asBoolean()).isTrue();
 
+        JsonNode visualizationTool =
+                toolDescriptor(tools, OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        assertThat(visualizationTool.path("_meta").path("ui").path("resourceUri").asText())
+                .isEqualTo(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
+        assertThat(visualizationTool.path("_meta").path("openai/outputTemplate").asText())
+                .isEqualTo(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
+
+        HttpResponse<String> resources = postMcp(accessToken, """
+                {"jsonrpc":"2.0","id":"resources-1","method":"resources/list","params":{}}
+                """);
+        assertMcpPayloadDoesNotExposeIdentity(resources, applicationSubject);
+        assertThat(result(resources).path("resources").valueStream()
+                        .map(resource -> resource.path("uri").asText())
+                        .toList())
+                .containsExactlyInAnyOrder(
+                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
+
+        assertResourceReadableOverAuthenticatedMcp(
+                accessToken,
+                applicationSubject,
+                "resource-active",
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverAuthenticatedMcp(
+                accessToken,
+                applicationSubject,
+                "resource-retained",
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256);
+
         HttpResponse<String> initialRead = callTool(
                 accessToken,
                 2,
@@ -1057,6 +1089,31 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 HttpResponse.BodyHandlers.ofString());
     }
 
+    private void assertResourceReadableOverAuthenticatedMcp(
+            String accessToken,
+            String applicationSubject,
+            String requestId,
+            String resourceUri,
+            String expectedSha256)
+            throws Exception {
+        String body = objectMapper.writeValueAsString(Map.of(
+                "jsonrpc", "2.0",
+                "id", requestId,
+                "method", "resources/read",
+                "params", Map.of("uri", resourceUri)));
+        HttpResponse<String> response = postMcp(accessToken, body);
+        assertMcpPayloadDoesNotExposeIdentity(response, applicationSubject);
+        JsonNode contents = result(response).path("contents");
+        assertThat(contents).singleElement().satisfies(resource -> {
+            assertThat(resource.path("uri").asText()).isEqualTo(resourceUri);
+            assertThat(resource.path("mimeType").asText())
+                    .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
+            assertThat(resource.path("_meta").path("ui").path("domain").asText())
+                    .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+            assertThat(sha256Hex(resource.path("text").asText())).isEqualTo(expectedSha256);
+        });
+    }
+
     private HttpResponse<String> callTool(
             String accessToken,
             int id,
@@ -1213,6 +1270,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         byte[] digest = MessageDigest.getInstance("SHA-256")
                 .digest(verifier.getBytes(StandardCharsets.US_ASCII));
         return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
+    }
+
+    private String sha256Hex(String value) {
+        try {
+            return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256")
+                    .digest(value.getBytes(StandardCharsets.UTF_8)));
+        } catch (java.security.NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("SHA-256 must be available.", exception);
+        }
     }
 
     private String encode(String value) {

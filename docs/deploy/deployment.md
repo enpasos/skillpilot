@@ -267,8 +267,9 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
   - protected-resource metadata:
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  V1 publishes exactly one content-addressed MCP Apps UI resource on the fixed
-  widget domain `https://mcp-coach-v1.skillpilot.com`. Only
+  V1 binds exactly one active content-addressed MCP Apps UI resource on the
+  fixed widget domain `https://mcp-coach-v1.skillpilot.com`; previously
+  advertised hashes remain passive and byte-identically readable. Only
   `render_skillpilot_goal_visualization` references it through
   `ui.resourceUri` and `openai/outputTemplate`; ordinary tools remain UI-free.
   The renderer supplies a bounded structured projection to the image-only

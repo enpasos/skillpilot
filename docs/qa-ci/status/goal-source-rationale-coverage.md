@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-07-28T12:16:48.308Z
+Generated: 2026-08-03T22:34:22.442Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -31,7 +31,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/218 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 218 |
 | contains-Relationen mit Begruendungstext | 0/1192 |
-| requires-Relationen mit Begruendungstext | 0/2445 |
+| requires-Relationen mit Begruendungstext | 0/2371 |
 
 ## Interpretation
 

@@ -25,10 +25,12 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft enthält genau eine content-addressierte
-MCP-Apps-Ressource für das Bild des aktiven atomaren Lernziels. Ausschließlich
-das dedizierte read-only Werkzeug `render_skillpilot_goal_visualization`
-referenziert sie über `ui.resourceUri` und `openai/outputTemplate`. Der Renderer
+Der noch unveröffentlichte V1-Draft bindet genau eine aktive
+content-addressierte MCP-Apps-Ressource für das Bild des aktiven atomaren
+Lernziels. Ausschließlich das dedizierte read-only Werkzeug
+`render_skillpilot_goal_visualization` referenziert sie über `ui.resourceUri`
+und `openai/outputTemplate`. Bereits an reale Test-Clients ausgelieferte
+Hash-URIs bleiben mit ihren exakten Bytes als passive Ressourcen lesbar. Der Renderer
 liefert der bild-only Komponente eine begrenzte strukturierte
 `goalVisualization`-Projektion; nacktes MCP-`ImageContent` ist kein
 Sichtbarkeitsvertrag. Coach-, Auswahl-, Antwort- und Zustandsabläufe bleiben
@@ -39,11 +41,11 @@ Directory verwenden ausschließlich den dedizierten V1-Origin. Die acht
 neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
 `404`.
 
-Da V1 noch nie veröffentlicht wurde, besteht für frühere experimentelle
-Widget-Ressourcen keine Rückwärtskompatibilität. Das Draft-Inventar enthält nur
-die eine aktuelle Ressource und keine Retention-Vorgänger. Alte Test-Chats sind
-ausdrücklich nicht Teil der Abnahme; nach einem Draft-Update werden die
-Plugin-Metadaten aktualisiert und ein neuer Chat verwendet.
+Diese passive Retention ist keine zweite aktive UI-Version: Kein Werkzeug darf
+auf eine Vorgängerressource zeigen. Sie schützt ausschließlich den späteren
+Template-Abruf aus Provider-Metadaten- und Chat-Snapshots. Nach einem
+Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und die
+aktuelle URI in einem neuen Chat geprüft.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 

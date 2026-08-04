@@ -83,8 +83,18 @@ const goalVisualizationWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const retainedGoalVisualizationWidgetSource = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
+    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
+    "goal-visualization.html",
+);
 const uiArtifactSources = new Map([
   ["ui/goal-visualization.html", goalVisualizationWidgetSource],
+  [
+    "ui/retained/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
+    retainedGoalVisualizationWidgetSource,
+  ],
 ]);
 
 const command = process.argv[2];
