@@ -525,6 +525,101 @@
         },
         "applicabilityMappingInheritance": {
           "const": "boundary"
+        },
+        "orientationOutlook": {
+          "$ref": "#/$defs/orientationOutlook"
+        }
+      }
+    },
+    "orientationOutlook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths"
+      ],
+      "properties": {
+        "paths": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/orientationOutlookPath"
+          }
+        }
+      }
+    },
+    "orientationOutlookPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "titleEn",
+        "learningOutlook",
+        "learningOutlookEn",
+        "practicalContexts",
+        "practicalContextsEn",
+        "subtreeRootIds",
+        "entryGoalIds",
+        "milestoneGoalIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "titleEn": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "learningOutlook": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "learningOutlookEn": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "practicalContexts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/nonBlankText"
+          }
+        },
+        "practicalContextsEn": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/nonBlankText"
+          }
+        },
+        "subtreeRootIds": {
+          "$ref": "#/$defs/idList",
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true
+        },
+        "entryGoalIds": {
+          "$ref": "#/$defs/idList",
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true
+        },
+        "milestoneGoalIds": {
+          "$ref": "#/$defs/idList",
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
         }
       }
     },
