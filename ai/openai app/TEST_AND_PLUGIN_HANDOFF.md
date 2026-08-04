@@ -39,9 +39,11 @@ The suite verifies:
 7. The widget artifacts use the same neutral tool names.
 8. The goal-visualization artifact copied into Spring is byte-identical to the
    tested build output.
-9. The production V1 contract publishes exactly one content-addressed MCP Apps
-   UI resource. Only `render_skillpilot_goal_visualization` references it via
-   `ui.resourceUri` and `openai/outputTemplate`; ordinary tools remain UI-free.
+9. The production V1 contract has exactly one active content-addressed MCP Apps
+   UI resource. Previously advertised resources remain byte-identically
+   readable but passive. Only `render_skillpilot_goal_visualization` references
+   the active URI via `ui.resourceUri` and `openai/outputTemplate`; ordinary
+   tools remain UI-free.
 10. The renderer supplies the widget with structured `goalVisualization` data;
     bare MCP `ImageContent` and client-surface or `openai/userAgent` gates are
     not part of the presentation contract.
@@ -60,10 +62,10 @@ Create or update one Developer Mode app with:
 - icon: the packaged SkillPilot icon
 
 Complete the browser OAuth flow if the desktop app delegates installation to
-the browser. A successful connection must list the neutral tools and exactly
-one hash-bound goal-visualization UI resource. Exactly the dedicated renderer
-must reference that resource; the app registration must not expose a language
-suffix.
+the browser. A successful connection must list the neutral tools, the active
+hash-bound goal-visualization UI resource, and any immutable passive resources.
+Exactly the dedicated renderer must reference the active resource; the app
+registration must not expose a language suffix.
 
 ## Acceptance matrix
 

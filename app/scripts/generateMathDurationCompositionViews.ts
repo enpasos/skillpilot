@@ -15,11 +15,13 @@ type CompositionNode =
       kind: 'canonicalSubtree'
       goalId: string
       displayLabel?: string
+      projectionRole?: 'target' | 'prerequisiteOnly'
     }
   | {
       kind: 'goalEntry'
       goalId: string
       displayLabel?: string
+      projectionRole?: 'target' | 'prerequisiteOnly'
     }
   | {
       kind: 'landscapeEntry'
@@ -39,7 +41,13 @@ interface LearningGoal {
   id?: string
   title?: string
   contains?: string[]
+  requires?: string[]
   tags?: string[]
+  phase?: string
+  dimensionTags?: {
+    phase?: string
+    topicCode?: string
+  }
 }
 
 interface SourceGoal {
@@ -290,6 +298,134 @@ const collectAtomicDescendantIds = (goalId: string, visiting: Set<string> = new 
   return atomicIds
 }
 
+const canonicalSek1Year = (goalId: string): string | null => {
+  const goal = goalById.get(goalId)
+  const phase = goal?.dimensionTags?.phase ?? goal?.phase ?? ''
+  const match = phase.match(/^J(5|6|7|8|9|10)$/)
+  return match?.[1] ?? null
+}
+
+const isCanonicalSek1AtomicGoal = (goalId: string): boolean => {
+  const goal = goalById.get(goalId)
+  if (!goal || (goal.contains?.length ?? 0) > 0) return false
+  if (canonicalSek1Year(goalId) !== null) return true
+  const phase = goal.dimensionTags?.phase ?? goal.phase ?? ''
+  const topicCode = goal.dimensionTags?.topicCode ?? ''
+  return (phase === 'GLOBAL' || phase === 'SekI') && topicCode.includes('.SEK1.')
+}
+
+interface CompleteHeSek1RouteBucketsOptions<TBucket extends string> {
+  durationModel: DurationModel
+  buckets: Record<TBucket, string[]>
+  supplementGoalIds?: string[]
+  excludedGoalIds?: Set<string>
+  examYears: string[]
+  bucketForCanonicalYear: (year: string) => TBucket | null
+}
+
+/**
+ * Keeps every generated Hessen Sek-I target route executable under the
+ * composition runtime's fail-closed direct-requirement semantics. Hessen's
+ * reviewed source mappings do not necessarily enumerate every direct
+ * prerequisite of the mapped canonical targets. Such prerequisites remain
+ * ordinary visible targets and are placed in their canonical year bucket;
+ * prerequisiteOnly would make them impossible to learn from a fresh learner
+ * state.
+ */
+const completeHeSek1RouteBuckets = <TBucket extends string>({
+  durationModel,
+  buckets,
+  supplementGoalIds = [],
+  excludedGoalIds = new Set<string>(),
+  examYears,
+  bucketForCanonicalYear,
+}: CompleteHeSek1RouteBucketsOptions<TBucket>): Record<TBucket, string[]> => {
+  const completedBuckets = Object.fromEntries(
+    Object.entries(buckets).map(([bucket, goalIds]) => [bucket, new Set(goalIds as string[])]),
+  ) as Record<TBucket, Set<string>>
+  const examTargetIds = examYears.flatMap((year) => {
+    const folderId = SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
+    return folderId ? [folderId, ...collectAtomicDescendantIds(folderId)] : []
+  })
+  const presentGoalIds = new Set<string>([
+    SEK1_MOTIVATION_GOAL_ID,
+    SEK1_MEMORY_GOAL_ID,
+    ...Object.values(completedBuckets).flatMap((goalIds) => Array.from(goalIds)),
+    ...supplementGoalIds,
+    ...examTargetIds,
+    ...excludedGoalIds,
+  ])
+  const queued = new Set<string>()
+  const queue: Array<{ goalId: string; bucketHint: TBucket | null }> = []
+  const bucketByGoalId = new Map<string, TBucket>()
+  Object.entries(completedBuckets).forEach(([bucket, goalIds]) => {
+    ;(goalIds as Set<string>).forEach((goalId) => bucketByGoalId.set(goalId, bucket as TBucket))
+  })
+  const enqueueSek1Atomic = (goalId: string, bucketHint: TBucket | null = null) => {
+    if (!isCanonicalSek1AtomicGoal(goalId)) return
+    if (queued.has(goalId) || excludedGoalIds.has(goalId)) return
+    queued.add(goalId)
+    queue.push({ goalId, bucketHint: bucketByGoalId.get(goalId) ?? bucketHint })
+  }
+
+  Object.entries(completedBuckets).forEach(([bucket, goalIds]) => {
+    ;(goalIds as Set<string>).forEach((goalId) => enqueueSek1Atomic(goalId, bucket as TBucket))
+  })
+  supplementGoalIds.forEach((goalId) => {
+    const year = canonicalSek1Year(goalId)
+    enqueueSek1Atomic(goalId, year ? bucketForCanonicalYear(year) : null)
+  })
+  examTargetIds.forEach((goalId) => {
+    const year = canonicalSek1Year(goalId)
+    enqueueSek1Atomic(goalId, year ? bucketForCanonicalYear(year) : null)
+  })
+
+  while (queue.length > 0) {
+    const next = queue.shift()
+    if (!next) continue
+    const { goalId, bucketHint } = next
+    const goal = goalById.get(goalId)
+    for (const requiredId of goal?.requires ?? []) {
+      if (presentGoalIds.has(requiredId)) {
+        enqueueSek1Atomic(requiredId, bucketByGoalId.get(requiredId) ?? bucketHint)
+        continue
+      }
+
+      const requiredGoal = goalById.get(requiredId)
+      if (!requiredGoal) {
+        throw new Error(`Missing canonical prerequisite ${requiredId} required by ${goalId}`)
+      }
+      if ((requiredGoal.contains?.length ?? 0) > 0) {
+        throw new Error(`Sek-I route goal ${goalId} directly requires non-atomic goal ${requiredId}`)
+      }
+      if (!isCanonicalSek1AtomicGoal(requiredId)) {
+        throw new Error(
+          `Sek-I route goal ${goalId} requires out-of-stage goal ${requiredId} while generating ${durationModel}`,
+        )
+      }
+      const requiredYear = canonicalSek1Year(requiredId)
+      const bucket = requiredYear === null ? bucketHint : bucketForCanonicalYear(requiredYear)
+      if (bucket === null || completedBuckets[bucket] === undefined) {
+        throw new Error(
+          `No ${durationModel} bucket for Sek-I prerequisite ${requiredId} required by ${goalId}`,
+        )
+      }
+
+      completedBuckets[bucket].add(requiredId)
+      bucketByGoalId.set(requiredId, bucket)
+      presentGoalIds.add(requiredId)
+      enqueueSek1Atomic(requiredId, bucket)
+    }
+  }
+
+  return Object.fromEntries(
+    Object.entries(completedBuckets).map(([bucket, goalIds]) => [
+      bucket,
+      sortGoalIdsByTitle(goalIds as Set<string>, goalById),
+    ]),
+  ) as Record<TBucket, string[]>
+}
+
 const sek1ExamGoalIds = new Set(Object.values(SEK1_EXAM_FOLDER_IDS_BY_YEAR).flatMap((folderId) => [
   folderId,
   ...collectAtomicDescendantIds(folderId),
@@ -368,6 +504,11 @@ const createSek1CommonTail = (): CompositionNode[] => [
   createCanonicalSubtree(SEK1_MEMORY_GOAL_ID),
 ]
 
+const heBucketForCanonicalYear = (durationModel: DurationModel, year: string): string | null => {
+  if (durationModel === 'G8' && year === '10') return '9'
+  return yearLabelsByDuration[durationModel].includes(year) ? year : null
+}
+
 const createYearNode = (durationModel: DurationModel, year: string, goalIds: string[]): CompositionNode | null => {
   if (goalIds.length === 0) return null
   return {
@@ -387,13 +528,21 @@ const createYearNode = (durationModel: DurationModel, year: string, goalIds: str
 }
 
 const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<string> = new Set()): CompositionNode => {
-  const buckets = assignPrimaryGradeBuckets(durationModel, excludedGoalIds)
-  const assignedGoalIds = new Set(Object.values(buckets).flat())
+  const initialBuckets = assignPrimaryGradeBuckets(durationModel, excludedGoalIds)
+  const assignedGoalIds = new Set(Object.values(initialBuckets).flat())
   const extraGoalIds = baseSek1SupplementIds.filter((goalId) => {
     if (excludedGoalIds.has(goalId)) return false
     if (assignedGoalIds.has(goalId)) return false
     const evidenceDurations = evidenceDurationsByAtomicId.get(goalId)
     return !evidenceDurations || evidenceDurations.has(durationModel)
+  })
+  const buckets = completeHeSek1RouteBuckets({
+    durationModel,
+    buckets: initialBuckets,
+    supplementGoalIds: extraGoalIds,
+    excludedGoalIds,
+    examYears: yearLabelsByDuration[durationModel],
+    bucketForCanonicalYear: (year) => heBucketForCanonicalYear(durationModel, year),
   })
 
   const children: CompositionNode[] = [
@@ -781,6 +930,65 @@ const createShCrossStageView = (
   return view
 }
 
+const findStructureById = (nodes: CompositionNode[], structureId: string): CompositionNode | null => {
+  for (const node of nodes) {
+    if (node.kind !== 'structure') continue
+    if (node.id === structureId) return node
+    const childMatch = findStructureById(node.children, structureId)
+    if (childMatch) return childMatch
+  }
+  return null
+}
+
+const collectProjectedTargetGoalIds = (nodes: CompositionNode[]): Set<string> => {
+  const goalIds = new Set<string>()
+  const visit = (node: CompositionNode) => {
+    if (node.kind === 'goalEntry') {
+      if (node.projectionRole === 'prerequisiteOnly') return
+      goalIds.add(node.goalId)
+      return
+    }
+    if (node.kind === 'canonicalSubtree') {
+      if (node.projectionRole === 'prerequisiteOnly') return
+      goalIds.add(node.goalId)
+      collectAtomicDescendantIds(node.goalId).forEach((goalId) => goalIds.add(goalId))
+      return
+    }
+    if (node.kind === 'structure') node.children.forEach(visit)
+  }
+  nodes.forEach(visit)
+  return goalIds
+}
+
+const assertCompleteHeSek1DirectRequirements = (view: CompositionView) => {
+  const durationModel = view.scope.durationModel as DurationModel
+  const jurisdiction = view.scope.jurisdiction
+  // Hessen is the currently reviewed source-evidence lane for this closure.
+  // Other jurisdictions need their own provenance review before prerequisites
+  // can be added as learner-facing targets.
+  if (jurisdiction !== 'DE-HE') return
+  const structureId = `sek1-${durationModel.toLowerCase()}`
+  const sek1Node = findStructureById(view.rootNodes, structureId)
+  if (!sek1Node || sek1Node.kind !== 'structure') {
+    throw new Error(`Missing generated Sek-I structure ${structureId} in ${view.viewId}`)
+  }
+
+  const allTargetGoalIds = collectProjectedTargetGoalIds(view.rootNodes)
+  const sek1TargetGoalIds = collectProjectedTargetGoalIds([sek1Node])
+  const missingEdges: string[] = []
+  sek1TargetGoalIds.forEach((goalId) => {
+    if (!isCanonicalSek1AtomicGoal(goalId)) return
+    for (const requiredId of goalById.get(goalId)?.requires ?? []) {
+      if (!allTargetGoalIds.has(requiredId)) missingEdges.push(`${goalId}->${requiredId}`)
+    }
+  })
+  if (missingEdges.length > 0) {
+    throw new Error(
+      `${view.viewId} omits direct target prerequisite(s): ${missingEdges.join(', ')}`,
+    )
+  }
+}
+
 const generatedViews = new Map<string, CompositionView>([
   ['de-he-seki-g8.view.json', createSek1View('G8')],
   ['de-he-seki-g9.view.json', createSek1View('G9')],
@@ -810,6 +1018,7 @@ for (const fileName of GENERATED_VIEW_PATHS) {
   if (!generatedView) {
     throw new Error(`Missing generator output for ${fileName}`)
   }
+  assertCompleteHeSek1DirectRequirements(generatedView)
 
   const targetPath = resolve(compositionViewDir, fileName)
   const generated = serialize(generatedView)
@@ -823,15 +1032,6 @@ for (const fileName of GENERATED_VIEW_PATHS) {
     }
   }
 
-  const findStructure = (nodes: CompositionNode[], structureId: string): CompositionNode | null => {
-    for (const node of nodes) {
-      if (node.kind !== 'structure') continue
-      if (node.id === structureId) return node
-      const childMatch = findStructure(node.children, structureId)
-      if (childMatch) return childMatch
-    }
-    return null
-  }
   const countPrimaryEntries = (node: CompositionNode | null) =>
     node?.kind === 'structure' && node.children[0]?.kind === 'structure'
       ? node.children[0].children.length
@@ -841,20 +1041,20 @@ for (const fileName of GENERATED_VIEW_PATHS) {
     ? Object.fromEntries(
         rpStages.map((rpStage) => [
           rpStage,
-          countPrimaryEntries(findStructure(generatedView.rootNodes, `rp-${rpStage}-${durationModel.toLowerCase()}`)),
+          countPrimaryEntries(findStructureById(generatedView.rootNodes, `rp-${rpStage}-${durationModel.toLowerCase()}`)),
         ]),
       )
     : generatedView.viewId.startsWith('de-sh-')
       ? Object.fromEntries(
           shBands.map((band) => [
             band,
-            countPrimaryEntries(findStructure(generatedView.rootNodes, `sh-${band}-${durationModel.toLowerCase()}`)),
+            countPrimaryEntries(findStructureById(generatedView.rootNodes, `sh-${band}-${durationModel.toLowerCase()}`)),
           ]),
         )
     : Object.fromEntries(
         yearLabelsByDuration[durationModel].map((year) => [
           year,
-          countPrimaryEntries(findStructure(generatedView.rootNodes, `j${year}-${durationModel.toLowerCase()}`)),
+          countPrimaryEntries(findStructureById(generatedView.rootNodes, `j${year}-${durationModel.toLowerCase()}`)),
         ]),
       )
   console.log(`${changed ? 'changed' : 'ok'} ${fileName} ${JSON.stringify(assignedCounts)}`)

@@ -217,10 +217,12 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesExactlyOneHashBoundSelfContainedGoalVisualizationMcpAppResource() {
+    void publishesActiveAndRetainedSelfContainedGoalVisualizationMcpAppResources() {
         assertThat(contract.resourceSpecifications())
                 .extracting(specification -> specification.resource().uri())
-                .containsExactly(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
+                .containsExactlyInAnyOrder(
+                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
 
         for (McpStatelessServerFeatures.SyncResourceSpecification specification
                 : contract.resourceSpecifications()) {
@@ -278,9 +280,14 @@ class OpenAiDeCoachMcpContractTest {
                                         .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                 assertThat(contents.meta().get("openai/widgetPrefersBorder"))
                                         .isEqualTo(false);
-                                assertThat(sha256(contents.text()))
-                                        .isEqualTo(OpenAiDeV1ContractMetadata
-                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256);
+                                String expectedSha256 = resource.uri().equals(
+                                                OpenAiDeV1ContractMetadata
+                                                        .GOAL_VISUALIZATION_RESOURCE_URI)
+                                        ? OpenAiDeV1ContractMetadata
+                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        : OpenAiDeV1ContractMetadata
+                                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
+                                assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
                             });
         }
 
@@ -297,7 +304,20 @@ class OpenAiDeCoachMcpContractTest {
                         .timer()
                         .count())
                 .isEqualTo(1);
-        assertThat(contract.resourceSpecifications()).hasSize(1);
+        assertThat(meterRegistry
+                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                        .tags(
+                                "artifact",
+                                OpenAiDeV1ContractMetadata
+                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                        .substring(0, 12),
+                                "role",
+                                "retained",
+                                "status",
+                                "success")
+                        .timer()
+                        .count())
+                .isEqualTo(1);
     }
 
     private static String sha256(String source) {

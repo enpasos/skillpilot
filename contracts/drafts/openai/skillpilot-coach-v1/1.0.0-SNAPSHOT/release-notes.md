@@ -20,16 +20,17 @@ line. This version has not been published yet.
 - one widget origin unique to this plugin,
   `https://mcp-coach-v1.skillpilot.com`, published through `_meta.ui.domain`
   and the ChatGPT compatibility alias `_meta["openai/widgetDomain"]`
-- exactly one content-addressed, read-only MCP Apps UI resource for the image
-  of an active atomic learning goal with a matching canonical
-  `goal-visualization` link
+- exactly one active content-addressed, read-only MCP Apps UI resource for the
+  image of an active atomic learning goal with a matching canonical
+  `goal-visualization` link, plus immutable passive resources for previously
+  advertised hash URIs
 - renderer-only `ui.resourceUri` and `openai/outputTemplate`; all ordinary
   context, selection, mutation, recall, and assessment tools remain UI-free
 - structured `goalVisualization` delivery to an image-only component; bare
   MCP `ImageContent` is not used as a visibility contract
-- no backward compatibility or retention inventory for experimental widget
-  resources from earlier unpublished draft tests; refresh the plugin metadata
-  and use a fresh chat
+- immutable passive retention of every content-addressed widget URI already
+  advertised to a real test client, while only the current resource remains
+  bound to the renderer
 - immediate data-then-render goal-image flow: after a full result exposes and
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale

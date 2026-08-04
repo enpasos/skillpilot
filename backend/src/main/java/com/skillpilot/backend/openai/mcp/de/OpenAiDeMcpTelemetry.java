@@ -45,6 +45,7 @@ public final class OpenAiDeMcpTelemetry {
     private static final String UNKNOWN_TOOL = "unknown";
     private static final String UNKNOWN_ARTIFACT = "unknown";
     private static final String ACTIVE_ARTIFACT_ROLE = "active";
+    private static final String RETAINED_ARTIFACT_ROLE = "retained";
     private static final int ARTIFACT_FINGERPRINT_LENGTH = 12;
     private static final String UNAVAILABLE = "-";
     private static final int MAX_LOG_VALUE_LENGTH = 160;
@@ -301,12 +302,18 @@ public final class OpenAiDeMcpTelemetry {
         private static final ResourceArtifact ACTIVE = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
                 ACTIVE_ARTIFACT_ROLE);
+        private static final ResourceArtifact RETAINED = new ResourceArtifact(
+                fingerprint(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256),
+                RETAINED_ARTIFACT_ROLE);
         private static final ResourceArtifact UNKNOWN =
                 new ResourceArtifact(UNKNOWN_ARTIFACT, UNKNOWN_ARTIFACT);
 
         private static ResourceArtifact classify(String resourceUri) {
             if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
                 return ACTIVE;
+            }
+            if (OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
+                return RETAINED;
             }
             return UNKNOWN;
         }

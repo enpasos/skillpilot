@@ -51,9 +51,13 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
   );
 });
 
-test("V1 UI has exactly one active template bound only to its renderer", () => {
+test("V1 UI has one active template and keeps historical templates passive", () => {
   const activeResourceUri = "ui://skillpilot/coach/v1/sha256-active/widget.html";
-  const resources = [{ uri: activeResourceUri, sha256: "active" }];
+  const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
+  const resources = [
+    { uri: retainedResourceUri, sha256: "retained" },
+    { uri: activeResourceUri, sha256: "active" },
+  ];
   const tools = [
     {
       name: "render_skillpilot_goal_visualization",
@@ -69,16 +73,16 @@ test("V1 UI has exactly one active template bound only to its renderer", () => {
   );
   assert.throws(
     () => assertActiveUiResource("ui://missing", resources, tools),
-    /exactly one inventoried resource/,
+    /identify exactly one inventoried resource/,
   );
   assert.throws(
     () =>
       assertActiveUiResource(
         activeResourceUri,
-        [...resources, { uri: "ui://retained", sha256: "retained" }],
+        [...resources, { uri: activeResourceUri, sha256: "duplicate" }],
         tools,
       ),
-    /exactly one active MCP App UI resource/,
+    /resource URIs must be unique/,
   );
   assert.throws(
     () =>
@@ -87,7 +91,7 @@ test("V1 UI has exactly one active template bound only to its renderer", () => {
           ...tools[0],
           meta: {
             ui: { resourceUri: activeResourceUri },
-            "openai/outputTemplate": "ui://retained",
+            "openai/outputTemplate": retainedResourceUri,
           },
         },
       ]),

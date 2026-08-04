@@ -53,12 +53,12 @@ MCP-Werkzeug.
 | Revocation Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/revoke` |
 
 Das Draft-Inventar enthält genau diese eine aktive, content-addressierte
-Ressource. Ausschließlich `render_skillpilot_goal_visualization` referenziert
-sie über `ui.resourceUri` und `openai/outputTemplate`; alle gewöhnlichen
-Werkzeuge bleiben UI-frei. Da V1 noch nicht veröffentlicht wurde, werden
-frühere experimentelle Widget-Ressourcen nicht als Retention-Vorgänger
-mitgeführt. Alte Test-Chats sind nicht Teil des Vertrags; nach dem Update
-werden die Plugin-Metadaten aktualisiert und neue Chats verwendet.
+Ressource und bereits ausgelieferte Hash-URIs als byte-identische passive
+Ressourcen. Ausschließlich `render_skillpilot_goal_visualization` referenziert
+die aktive URI über `ui.resourceUri` und `openai/outputTemplate`; alle
+gewöhnlichen Werkzeuge und alle Retention-Vorgänger bleiben UI-frei. Nach dem
+Update werden die Plugin-Metadaten aktualisiert und neue Chats zusätzlich
+gegen die aktuelle URI geprüft.
 
 Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
@@ -679,8 +679,9 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
 Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau eine
-read-only MCP Apps UI-Ressource für das Bild des aktiven atomaren Lernziels.
-Nur `render_skillpilot_goal_visualization` referenziert sie über
+aktive read-only MCP Apps UI-Ressource für das Bild des aktiven atomaren
+Lernziels und hält zuvor ausgelieferte Hash-URIs passiv lesbar. Nur
+`render_skillpilot_goal_visualization` referenziert die aktive Ressource über
 `ui.resourceUri` und den ChatGPT-Kompatibilitätsalias
 `openai/outputTemplate`; Auswahl und Coaching bleiben im normalen Chat. Der
 Kontext projiziert `goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei

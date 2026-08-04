@@ -3,7 +3,7 @@
 **Stand:** 31. Juli 2026
 
 **Status:** Die mehrsprachige MCP-App mit chat-first Coach-Vertrag und optionaler
-bild-only Lernzielvisualisierung über genau eine hashgebundene
+bild-only Lernzielvisualisierung über genau eine aktiv gebundene hashgebundene
 `text/html;profile=mcp-app`-Ressource ist der aktuelle Architekturpfad und im
 Spring-Boot-Fachkern integriert. Die App authentisiert sich mit genau
 einem fest konfigurierten vertraulichen OAuth-Client über
@@ -347,8 +347,8 @@ eingereicht. Das öffentliche Ziel bleibt damit funktional
 **Coach-Skill plus MCP-Server**, auch wenn das lokale Pilotpaket die registrierte
 Verbindung zusätzlich über `.app.json` referenziert.
 
-Das Lernzielbild wird im aktuellen V1-Draft über genau eine hashgebundene
-Ressource mit dem MIME-Typ `text/html;profile=mcp-app` dargestellt. Es gehört
+Das Lernzielbild wird im aktuellen V1-Draft über genau eine aktiv gebundene
+hashgebundene Ressource mit dem MIME-Typ `text/html;profile=mcp-app` dargestellt. Es gehört
 weder in den Skill noch bildet es eine weitere Zustands- oder
 Sicherheitsgrenze. Nur das dedizierte read-only Werkzeug
 `render_skillpilot_goal_visualization` trägt `ui.resourceUri` und
@@ -386,12 +386,12 @@ Ressource geladen oder das Bild dargestellt hat. Der vollständige Textpfad
 bleibt erhalten. Das Bild ist Orientierung, niemals Evidenz, Aufgabe, Lösung,
 Bewertung oder Mastery-Nachweis.
 
-V1 ist noch nicht veröffentlicht. Das Ressourceninventar enthält deshalb genau
-die eine aktuelle hashgebundene Ressource; experimentelle Ressourcen aus
-früheren Draft-Tests werden ohne Kompatibilitätsroute oder Retention entfernt.
-Alte Test-Chats und deren zwischengespeicherte Template-Verweise werden nicht
-unterstützt; nach dem Update ist ein frischer Chat mit aktualisierter
-Plugin-Metadatenaufnahme erforderlich.
+V1 ist noch nicht veröffentlicht. Das Ressourceninventar bindet genau die eine
+aktuelle hashgebundene Ressource und hält jede bereits an reale Test-Clients
+ausgelieferte URI mit ihren exakten Bytes passiv lesbar. So bleiben
+zwischengespeicherte Template-Verweise funktionsfähig, ohne einen zweiten
+aktiven Vertrag zu erzeugen. Nach dem Update wird die aktuelle URI zusätzlich
+in einem frischen Chat mit aktualisierten Plugin-Metadaten geprüft.
 
 ### 6.3 Verbindlicher Ort jeder Regel
 
@@ -943,7 +943,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | derselbe MCP-Vertrag in ChatGPT-Web, Mobile-Web sowie nativen Desktop- und Mobile-Apps; bei gültiger Freigabe gibt der Renderer die strukturierte `goalVisualization` an genau eine hashgebundene bild-only UI-Ressource; es gibt keine User-Agent-/Surface-Gates und keine Behauptung, dass der Host sie tatsächlich darstellt; der vollständige Textpfad bleibt immer erhalten; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | derselbe MCP-Vertrag in ChatGPT-Web, Mobile-Web sowie nativen Desktop- und Mobile-Apps; bei gültiger Freigabe gibt der Renderer die strukturierte `goalVisualization` an genau eine aktiv gebundene hashgebundene bild-only UI-Ressource; frühere ausgelieferte Hash-URIs bleiben passiv lesbar; es gibt keine User-Agent-/Surface-Gates und keine Behauptung, dass der Host sie tatsächlich darstellt; der vollständige Textpfad bleibt immer erhalten; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1000,7 +1000,7 @@ reduziert werden.
 
 ### Phase 3 – Bild-only MCP-Apps-UI, spätere Interaktion und zusätzliche Härtung
 
-- genau eine hashgebundene `text/html;profile=mcp-app`-Ressource, an die nur der
+- genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource, an die nur der
   read-only Renderer gebunden ist; ohne gültiges kanonisches Bild fällt die
   Darstellung auf den normalen Chat zurück;
 - optionale direkte Auswahl- und Einreichungsaktionen im Widget;
@@ -1011,8 +1011,8 @@ reduziert werden.
 **Zwischenstand:** Die strukturierte `goalVisualization` wird im
 unveröffentlichten `1.0.0`-Draft über genau eine aktuelle hashgebundene
 MCP-Apps-Ressource bild-only gerendert; gewöhnliche Tools bleiben ungebunden,
-frühere Draft-Ressourcen werden nicht retained und interaktive Aktionen bleiben
-offen.
+frühere ausgelieferte Hash-URIs bleiben ausschließlich passiv lesbar und
+interaktive Aktionen bleiben offen.
 
 **Exit:** UI-Funktionen verbessern die Bedienung, ohne den stabilen chat-first
 Vertrag oder die Backendautorität zu schwächen.

@@ -15,12 +15,29 @@ const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const retainedGoalVisualizationWidget = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
+    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
+    "goal-visualization.html",
+);
 assert.equal(existsSync(goalVisualizationWidget), true);
 const goalVisualizationArtifactSha256 = createHash("sha256")
   .update(readFileSync(goalVisualizationWidget))
   .digest("hex");
 const goalVisualizationResourceUri =
   `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
+assert.equal(existsSync(retainedGoalVisualizationWidget), true);
+const retainedGoalVisualizationArtifactSha256 = createHash("sha256")
+  .update(readFileSync(retainedGoalVisualizationWidget))
+  .digest("hex");
+assert.equal(
+  retainedGoalVisualizationArtifactSha256,
+  "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
+  "The retained goal-visualization artifact must remain byte-for-byte immutable.",
+);
+const retainedGoalVisualizationResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`;
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -249,6 +266,12 @@ assert.deepEqual(releaseLine.ui, {
   enabled: true,
   stateSchemaVersion: 1,
   resources: [
+    {
+      mimeType: "text/html;profile=mcp-app",
+      path:
+        `ui/retained/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`,
+      uri: retainedGoalVisualizationResourceUri,
+    },
     {
       mimeType: "text/html;profile=mcp-app",
       path: "ui/goal-visualization.html",
@@ -595,6 +618,10 @@ assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.activeResourceUri,
+);
+assert.equal(
+  javaConstant("RETAINED_GOAL_VISUALIZATION_RESOURCE_URI"),
+  retainedGoalVisualizationResourceUri,
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),
