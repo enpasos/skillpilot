@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { activateWaitingServiceWorkerAndReload } from '../utils/serviceWorkerUpdate'
 
 type AppVersionPayload = {
   buildId?: string
@@ -13,7 +14,9 @@ export type AppVersionStatus = {
   currentBuildId: string
   latestVersion: AppVersionPayload | null
   checkNow: () => Promise<void>
-  reloadNow: () => void
+  reloadNow: () => Promise<void>
+  reloadPending: boolean
+  reloadError: boolean
   dismiss: () => void
 }
 
@@ -53,7 +56,37 @@ export const useAppVersionCheck = (): AppVersionStatus => {
   const [latestVersion, setLatestVersion] = useState<AppVersionPayload | null>(null)
   const [updateAvailable, setUpdateAvailable] = useState(false)
   const [dismissedBuildId, setDismissedBuildId] = useState<string | null>(null)
+  const [reloadPending, setReloadPending] = useState(false)
+  const [reloadError, setReloadError] = useState(false)
+  const reloadInFlightRef = useRef<Promise<void> | null>(null)
   const [currentBuildId] = useState(readLoadedBuildId)
+
+  const reloadNow = useCallback(async () => {
+    if (reloadInFlightRef.current) {
+      await reloadInFlightRef.current
+      return
+    }
+
+    setReloadPending(true)
+    setReloadError(false)
+
+    const reloadPromise = activateWaitingServiceWorkerAndReload({
+      serviceWorker: 'serviceWorker' in navigator ? navigator.serviceWorker : null,
+      reload: () => window.location.reload(),
+    })
+      .catch((error: unknown) => {
+        console.warn('[version-check] Failed to activate the new SkillPilot version', error)
+        setReloadError(true)
+        setUpdateAvailable(true)
+      })
+      .finally(() => {
+        reloadInFlightRef.current = null
+        setReloadPending(false)
+      })
+
+    reloadInFlightRef.current = reloadPromise
+    await reloadPromise
+  }, [])
 
   const checkNow = useCallback(async () => {
     try {
@@ -67,7 +100,7 @@ export const useAppVersionCheck = (): AppVersionStatus => {
 
       if (isNewVersion) {
         if (canAutoReloadForUpdate()) {
-          window.location.reload()
+          await reloadNow()
           return
         }
         setUpdateAvailable(true)
@@ -75,7 +108,7 @@ export const useAppVersionCheck = (): AppVersionStatus => {
     } catch (error) {
       console.warn('[version-check] Failed to check SkillPilot version', error)
     }
-  }, [currentBuildId, dismissedBuildId])
+  }, [currentBuildId, dismissedBuildId, reloadNow])
 
   useEffect(() => {
     const initialCheckId = window.setTimeout(() => {
@@ -105,15 +138,12 @@ export const useAppVersionCheck = (): AppVersionStatus => {
     }
   }, [checkNow])
 
-  const reloadNow = useCallback(() => {
-    window.location.reload()
-  }, [])
-
   const dismiss = useCallback(() => {
     const buildId = latestVersion?.buildId
     if (buildId) {
       setDismissedBuildId(buildId)
     }
+    setReloadError(false)
     setUpdateAvailable(false)
   }, [latestVersion?.buildId])
 
@@ -123,6 +153,8 @@ export const useAppVersionCheck = (): AppVersionStatus => {
     latestVersion,
     checkNow,
     reloadNow,
+    reloadPending,
+    reloadError,
     dismiss,
   }
 }
