@@ -257,20 +257,76 @@ class OpenAiDeCoachContextProjectorTest {
 
         assertThat(context.interactionMode()).isEqualTo("orientation");
         assertThat(context.activeGoal().semanticKind()).isEqualTo("orientation");
+        assertThat(context.activeGoal().title())
+                .isEqualTo("Warum Mathematik? – Denken, Muster & Zukunft");
+        assertThat(context.activeGoal().description())
+                .isEqualTo("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.");
         assertThat(context.nextAllowedTools())
                 .contains(OpenAiDeV1McpContractAdapter.SET_MASTERY);
         assertThat(context.instruction())
-                .contains("Möglichkeiten", "positive", "neugierig", "keine Fachkompetenz")
+                .contains(
+                        "Dein aktuelles Lernziel ist: Warum Mathematik? – Denken, Muster & Zukunft.",
+                        "Verwende den Titel, nicht die Beschreibung",
+                        "Möglichkeiten",
+                        "positive",
+                        "neugierig",
+                        "beginnt erst das motivierende Gespräch",
+                        "persönliche Anschlussfrage",
+                        "erst nach der Antwort auf diese Vertiefung",
+                        "nicht zur nächsten Zielliste",
+                        "keine Fachkompetenz")
+                .doesNotContain("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.")
                 .doesNotContain("zwei unabhängigen Checks", "Transfer", "Feynman");
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("Prüfe weder Vorwissen", "Detailwissen")
                         .contains("keine Wissens-, Übungs-, Transfer-, Recall- oder Prüfungsaufgabe"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("sichtbaren Reaktion", "Interessenäußerung", "Weiterbereitschaft")
-                        .contains("niemals fachliche Kompetenz"));
+                        .contains("nur eine angebotene Möglichkeit", "noch kein Abschluss", "kein Auftrag zum Zielwechsel"))
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("aktive persönliche Anschlussfrage", "erst nach der Antwort auf diese Vertiefung")
+                        .contains("sofortiger nächster Zielliste ist verboten", "niemals fachliche Kompetenz"));
         assertThat(String.join("\n", context.policies()))
                 .doesNotContain("Speichere Mastery nur nach zwei unabhängigen Checks");
+    }
+
+    @Test
+    void englishMotivationGoalAnnouncesExactTitleAndKeepsBareInterestInsideOrientation() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+
+        OpenAiDeCoachContext context = projector.project(
+                motivationState(
+                        "Why mathematics? – Thinking, patterns & the future",
+                        "An overview of possibilities from calculus to probability.",
+                        "orientation",
+                        List.of("Motivation", "Orientation"),
+                        "orientActiveGoal"),
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "en-GB");
+
+        assertThat(context.interactionMode()).isEqualTo("orientation");
+        assertThat(context.activeGoal().title())
+                .isEqualTo("Why mathematics? – Thinking, patterns & the future");
+        assertThat(context.activeGoal().description())
+                .isEqualTo("An overview of possibilities from calculus to probability.");
+        assertThat(context.instruction())
+                .contains(
+                        "Your current learning goal is: Why mathematics? – Thinking, patterns & the future.",
+                        "Use the title, not the description",
+                        "only selects an offered possibility starts the motivational dialogue",
+                        "active personal follow-up",
+                        "only after the answer to that follow-up",
+                        "do not jump from a bare interest choice to the next goal list")
+                .doesNotContain("An overview of possibilities from calculus to probability.");
+        assertThat(context.policies())
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("merely selects an offered possibility", "not completion", "not a request to switch goals"))
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("active personal follow-up", "only after the response to that follow-up")
+                        .contains("immediately by next-goal options is forbidden"));
     }
 
     @Test
@@ -287,6 +343,13 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.interactionMode()).isEqualTo("chat");
         assertThat(context.activeGoal().semanticKind()).isEqualTo("curricularAtomic");
         assertThat(context.instruction()).contains("zwei unabhängigen Checks");
+        assertThat(context.policies())
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("Setup, Ablaufreihenfolge und Speicherung nicht didaktisch")
+                        .contains("ausschließlich auf das Lernen"))
+                .anySatisfy(policy -> assertThat(policy)
+                        .contains("Kompetenz noch nicht gezeigt", "bleibe beim aktiven Ziel")
+                        .contains("Zusatzfrage", "gezielten Hinweis oder Teilschritt", "neue Evidenz"));
     }
 
     @Test
@@ -388,10 +451,24 @@ class OpenAiDeCoachContextProjectorTest {
             String semanticKind,
             List<String> tags,
             String requiredAction) {
-        FrontierGoal active = new FrontierGoal(
-                "motivation-public-id",
+        return motivationState(
                 "Warum Mathematik? – Denken, Muster & Zukunft",
                 "Ein Überblick über Möglichkeiten von Analysis bis Stochastik.",
+                semanticKind,
+                tags,
+                requiredAction);
+    }
+
+    private static UnifiedLearnerStateResponse motivationState(
+            String title,
+            String description,
+            String semanticKind,
+            List<String> tags,
+            String requiredAction) {
+        FrontierGoal active = new FrontierGoal(
+                "motivation-public-id",
+                title,
+                description,
                 "atomic",
                 null,
                 semanticKind,

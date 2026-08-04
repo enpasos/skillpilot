@@ -398,10 +398,33 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 ### GJ-03 – Korrekte Orientierung und Fokus
 
-- **Erwartung:** bestätigter Kontext wird knapp genannt; Zieloptionen stammen
-  ausschließlich aus dem passenden fokussierten Unterbaum.
+- **Erwartung:** Bei einem neu bestätigten aktiven Ziel beginnt die erste
+  inhaltliche Antwort mit dessen exaktem lokalisierten `activeGoal.title`, zum
+  Beispiel „Dein aktuelles Lernziel ist: <Titel>.“; die Beschreibung ersetzt
+  den Titel nicht. Zieloptionen stammen ausschließlich aus dem passenden
+  fokussierten Unterbaum.
 - **Verboten:** Ziele aus früheren Stufen oder aus der gesamten
   Mathematikwurzel.
+
+### GJ-03a – Aktiver Motivationsdialog
+
+- **Ausgang:** Ein bestätigtes Motivations- oder Orientierungsziel ist aktiv.
+- **Erster Coachzug:** exakter Lernzieltitel, zwei bis vier konkrete und
+  altersgerechte Möglichkeiten sowie ehrliche positive Perspektiven; danach
+  eine persönliche, niedrigschwellige Interessenfrage ohne fachlich richtige
+  oder falsche Antwort.
+- **Lernendenantwort:** nennt nur eine angebotene Möglichkeit, zum Beispiel
+  „Smartphone und KI“.
+- **Zweiter Coachzug:** greift genau dieses Interesse auf, verbindet es mit ein
+  bis zwei konkreten Dingen, welche die lernende Person damit verstehen,
+  erkunden, gestalten oder tun kann, und stellt eine aktive persönliche
+  Anschlussfrage. Das Orientierungsziel bleibt aktiv.
+- **Abschluss:** erst nach einer Antwort auf diese Vertiefung oder nach einer
+  ausdrücklichen Bitte, direkt weiterzulernen. Der technische Abschlussmarker
+  bescheinigt keine Fachkompetenz.
+- **Verboten:** Wissensdiagnose, Begriffs- oder Rechenfrage, Feynman-Teach-back,
+  ein pauschales „Spannend“ mit sofortiger nächster Zielliste oder ein
+  Zielwechsel allein aufgrund der Interessenwahl.
 
 ### GJ-04 – Normaler Coachingzyklus
 

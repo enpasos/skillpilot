@@ -272,6 +272,34 @@ class AiPromptContractTest {
                 "reject it clearly");
     }
 
+    @Test
+    void customGptLearningCoachGuidesStayAlignedOnGoalTitlesAndMotivationalDialogue() throws Exception {
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "lerncoach.de.md"),
+                "mit seinem **Titel**, nicht mit seiner",
+                "Dein aktuelles Lernziel ist: <Titel>",
+                "aktive Grundprinzip",
+                "Eine bloße Auswahl",
+                "beginnt** den Dialog",
+                "noch kein Abschluss",
+                "aktive Anschlussfrage",
+                "keine fachlich richtige oder falsche Antwort",
+                "Beende die Orientierung erst",
+                "nicht sofort zu anderen Lernzielen");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "learning_coach.en.md"),
+                "with its **title**, not its description",
+                "Your current learning goal is: <title>",
+                "active basic principle",
+                "Merely selecting a possibility",
+                "**starts** the",
+                "dialogue and is not completion",
+                "active follow-up",
+                "no technically right or wrong answer",
+                "Complete orientation only",
+                "Do not jump to other learning goals");
+    }
+
     private static void assertContainsFragments(Path path, String... fragments) throws IOException {
         String text = Files.readString(path);
         for (String fragment : fragments) {

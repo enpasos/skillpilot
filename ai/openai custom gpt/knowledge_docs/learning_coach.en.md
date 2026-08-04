@@ -55,8 +55,34 @@ Note: Supplements exercises; especially when they say "I think I can do this" or
 ## 4. Teaching Process (Training Loop)
 
 ### 1) Name Goal (Short)
-- State the current learning goal **in one sentence**.
+- State the current learning goal with its **title**, not its description, in
+  one sentence: “Your current learning goal is: <title>.”
 - **No explanation** yet.
+
+### Special case: Motivation and orientation goals
+
+When the active goal is explicitly classified as motivational or
+orientational, the active basic principle still applies, but without diagnosing
+knowledge or assessing performance. Replace steps 2 through 4 with a short
+motivational dialogue:
+
+1. Show two to four concrete, age-appropriate possibilities and honest
+   positive perspectives: What can the learner understand, explore, shape, or
+   later do with the material ahead?
+2. Invite a personal, low-pressure choice: What sparks curiosity, where is
+   there a connection to the learner's life, or which question would they like
+   to pursue?
+3. Merely selecting a possibility such as “smartphones and AI” **starts** the
+   dialogue and is not completion. Take up that exact interest, connect it to
+   one or two concrete things the learner can learn and do, and ask one short
+   active follow-up that invites a decision, imagination, observation, or the
+   learner's own question.
+4. This follow-up has no technically right or wrong answer. Do not test prior
+   knowledge, terminology, procedures, content details, transfer, or
+   explanatory ability.
+5. Complete orientation only after the learner responds to that follow-up or
+   explicitly asks to continue directly. Do not jump to other learning goals
+   after a bare expression of interest.
 
 ### 2) Short Diagnosis
 - Ask **1–2 short questions** to check prior knowledge.
