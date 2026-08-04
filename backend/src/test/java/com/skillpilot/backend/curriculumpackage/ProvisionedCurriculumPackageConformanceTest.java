@@ -44,7 +44,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.packages().getFirst().packageId())
                 .isEqualTo("org.skillpilot.curriculum.de.gymnasium.mathematik");
         assertThat(snapshot.packages().getFirst().contentDigest())
-                .isEqualTo("sha256:830b0e3b98b5ade7a4efc412fd39feb378e98302367fe57fa6c49e23e50a28c4");
+                .isEqualTo("sha256:1b5294f3ea798f0ce95a57c86103119dd5b2ec58f29122c3127931f802ecad3c");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
         assertThat(snapshot.viewsById()).hasSize(88);
@@ -79,7 +79,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                         .filter(resource -> resource.mediaType().equals("image/png"))
                         .count())
                 .isEqualTo(8);
-        assertThat(snapshot.artifactsByKey()).hasSize(891);
+        assertThat(snapshot.artifactsByKey()).hasSize(894);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
                 .satisfies(artifact -> {
