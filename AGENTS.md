@@ -180,9 +180,14 @@ The UI maintains a **mastery value per goal**:
 
 For goals authoritatively classified as `semanticKind: "orientation"`, this
 numeric field is only a compatibility completion marker: `1` means that the
-learner received the motivation/orientation and reacted to it or chose to
-continue. It does **not** certify subject-matter mastery. Orientation must show
-concrete possibilities and honest positive perspectives of the following
+learner received the motivation/orientation and either explicitly chose to
+continue or actively engaged in a tailored motivational follow-up. Merely
+repeating or selecting one of the possibilities offered by the coach starts
+that follow-up; it does not complete the orientation. The coach must connect
+the selected interest to concrete things the learner can understand, explore,
+shape, or do, and invite one low-pressure personal reaction, choice, or
+question. This does **not** certify subject-matter mastery. Orientation must
+show concrete possibilities and honest positive perspectives of the following
 material; it must not test prior knowledge, terminology, calculations,
 details, correctness, transfer, recall, or exam performance. Do not expose a
 graded 0/50/100 mastery control for these nodes.
@@ -190,8 +195,10 @@ graded 0/50/100 mastery control for these nodes.
 This is currently:
 
 - set **manually via UI controls** (slider + quick buttons) **for non‑SRS goals**,
-- stored as the binary completion marker `1` for orientation goals after the
-  learner has visibly engaged or expressed willingness to continue,
+- stored as the binary completion marker `1` for orientation goals only after
+  the learner has answered the tailored motivational follow-up or explicitly
+  expressed willingness to leave the orientation and continue; a bare label
+  chosen from the coach's possibilities is not sufficient,
 - **auto‑derived for SRS/memorization goals** (`srs-deck:*` / `memorization`):  
   a memorization goal is treated as mastered **only if no cards are due today**,
 - aggregated per **filtered goal set** into:

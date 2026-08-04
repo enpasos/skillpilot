@@ -48,10 +48,20 @@ Quellenpriorität für die Skill-Migration:
    Didaktik;
 4. alte Action-, Startcode- und Relayregeln werden nicht migriert.
 
+Die beiden Lerncoach-Guides
+`ai/openai custom gpt/knowledge_docs/lerncoach.de.md` und
+`ai/openai custom gpt/knowledge_docs/learning_coach.en.md` sind dabei
+vollständige semantische Regressionsquellen, nicht bloß Beispiele für Tonalität.
+Eine Änderung am Coach-Skill oder an seinen Runtime-Instruktionen darf keines
+der dort beschriebenen didaktischen Verhaltensmerkmale stillschweigend
+abschwächen. Der Plugin-Checker prüft deshalb ihre Kernregeln gegen die
+ausgelieferte Skill-Referenz.
+
 Bewährter ursprünglicher Coach-Korpus:
 
 - `ai/openai custom gpt/system_instructions.de.md`
 - `ai/openai custom gpt/knowledge_docs/lerncoach.de.md`
+- `ai/openai custom gpt/knowledge_docs/learning_coach.en.md`
 - `ai/openai custom gpt/knowledge_docs/mastery_rules.de.md`
 - `ai/openai custom gpt/knowledge_docs/exam_proctor.de.md`
 - `ai/openai custom gpt/knowledge_docs/state_machine.de.md`
@@ -76,6 +86,9 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Backendzustand ist autoritativ; Kandidaten sind nicht aktiv; nichts erfinden | Server-Instruktionen und `policies` jedes frischen Context-Ergebnisses | kurze Server-Invariante, Skill-Entscheidungszyklus und frischer Kontext | Mutationen werden gegen den aktuellen Learner-State revalidiert |
 | natürlicher Mehrfachwunsch, eindeutige Schritte sofort, nur offene Wahl nachfragen | Server-Instruktionen sowie Selection-Policy und Navigationstool | Skill; erlaubte Optionen bleiben dynamisch | ausschließlich aktuell gelieferte Optionen und IDs |
 | Unterricht an genau einem bestätigten atomischen Ziel | Chat-Policy und zustandsabhängige `instruction` | Skill und aktuelle `instruction` | aktives Ziel kommt nur aus dem Backend |
+| neu bestätigtes aktives Lernziel zuerst mit seinem exakten lokalisierten Titel benennen; Beschreibung niemals als Titelersatz | Server-Instruktionen und konkrete DE-/EN-`instruction` | Skill-Referenz `COACH-TITLE-001` | `activeGoal.title` und `activeGoal.description` werden getrennt projiziert; Vertragstests prüfen den konkreten Titelauftrag |
+| aktives Scaffolding: Vorwissen aufnehmen, ausdrücklich daran anknüpfen, mit Fragen/Hinweisen/Teilschritten führen; Mini-Beispiel und Folgeübung unterscheiden | Chat-Policy und zustandsabhängige Policies | Skill-Referenz `COACH-GOAL-001` | Plugin-Checker prüft die Parität zu beiden Lerncoach-Ausgangsdokumenten |
+| Motivationsziel dialogisch vertiefen: bloße Interessenwahl startet erst den aktiven Anschluss; konkrete Lern-/Handlungsmöglichkeiten und persönliche Folgefrage vor Abschluss | Orientation-Policy, aktuelle `instruction`, Server-Instruktionen und Mastery-Toolbeschreibung | Skill-Referenz `COACH-ORIENTATION-001` | Mastery-Toolvertrag verbietet Abschluss und Frontier-Sprung nach einem bloßen Optionslabel; statische DE-/EN-Vertragstests sichern die Regel |
 | ungewöhnliche, aber gleichwertige Lösungswege voll anerkennen; explizite Anforderungen einhalten | Server-Instruktionen, Chat-Policy und Exam-Evaluation-Instruktion | Skill-Referenz `coaching-policy.md` und aktuelle Exam-Instruktion | Prüfungsgrundlage wird erst für das aktive freigegebene Exam geliefert |
 | Mastery nur nach zwei unabhängigen Checks oder echtem mehrschrittigem Transfer; alle Zielaspekte prüfen | Server-Instruktionen, Chat-Policy und Mastery-Toolbeschreibung | Skill, Skill-Referenz und Mastery-Toolbeschreibung | Coach-Mastery hat keinen frei wählbaren Wert und speichert ausschließlich `1.0` für das aktive atomische Nicht-SRS-Ziel |
 | Cluster und Memorierungs-/SRS-Ziele niemals manuell meistern | Chat-Policy und Mastery-Toolbeschreibung | Skill-Referenz und Mastery-Toolbeschreibung | Mastery-Handler weist Cluster und Memory/SRS ab; Recall speichert Abschluss selbst |
@@ -84,6 +97,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
 | nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und optional bild-only in ChatGPT | globale Context-Policy, allowlist-projizierte Ressourcen, optionale `goalVisualization` und genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource im unveröffentlichten V1-Draft; frühere ausgelieferte Hash-URIs bleiben passiv lesbar | kurze Server-Invariante, Skill-Ausgaberegel und sichere Projektion | nach einem freigebenden Vollresultat läuft der dedizierte read-only Renderer mit dessen Ziel-ID und `expectedStateVersion` unmittelbar und genau einmal; er validiert Backendzustand und Ziel erneut und gibt die strukturierte `goalVisualization` an die bild-only UI; nur sein Descriptor trägt `ui.resourceUri` und `openai/outputTemplate`, gewöhnliche Werkzeuge bleiben ungebunden; private oder nicht passende Bildpfade und interne Identität werden entfernt; ohne gültiges Bild bleibt der normale Chat; die Ausführung ist nicht durch User-Agent- oder Surface-Metadaten beschränkt und SkillPilot behauptet nie, dass der Host das Bild tatsächlich dargestellt hat |
 | `requiresCockpit` betrifft nur die Ressource; Cockpit-Üben pausiert die Kartenprüfung | Ressourcen- und Memory-Mode-Instruktion | Skill-Referenz und aktuelle Modus-Instruktion | Cockpit-URL wird serverseitig erzeugt; keine Modellkonstruktion |
+| bei ausdrücklich visuell/grafisch/GeoGebra markiertem Ziel sichtbare Interaktion statt reinem Text; bei spezialisiertem App-Training kein paralleler Chatunterricht | Chat- und Ressourcen-Policy | Skill-Referenz `COACH-GOAL-001` und `COACH-RESOURCE-001` | ausschließlich frisch gelieferte Ressourcen; eine normale Lernzielvisualisierung allein löst kein App-Training aus |
 | Fortschritt nur frisch, aktueller Scope zuerst, keine Schätzung, Abschluss ohne erfundene Ziele | globale Progress-Policy und Completion-Instruktion | Skill-Referenz sowie Progress- und Completion-Instruktion | Zahlen und Abschlussstatus stammen ausschließlich aus dem Backend |
 | Mathematik nur mit `\(...\)` und `\[...\]` | Server-Instruktionen und globale Context-Policy | Skill-Ausgaberegel | ausgelieferte freigegebene Inhalte werden zusätzlich normalisiert |
 | ohne bestätigten Erfolg keine Speicherung behaupten; Konflikt höchstens einmal neu laden; bei Blockade stoppen | Server-Instruktionen, globale Policy und MCP-Fehlerresultate | Skill-Stopregel, kurze Server-Invariante und konkrete Fehlerresultate | Mutationen liefern frischen Zustand; Konflikt- und Authfehler werden explizit signalisiert |

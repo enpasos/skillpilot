@@ -60,9 +60,12 @@ export const buildRenderedScopeMarkerGoalIds = (
   allGoals: Map<string, UiGoal>,
   renderedChildrenByParent: Map<string, string[]>,
   scopedGoalIds: Set<string>,
+  plannedGoalIds: Iterable<string> = [],
 ) => {
+  const exactPlannedGoalIds = new Set(plannedGoalIds)
   const statsByGoalId = new Map<string, { scopedConcrete: number; unscopedConcrete: number }>()
   const parentIdsByChild = new Map<string, Set<string>>()
+  const renderedPlannedDescendantCache = new Map<string, boolean>()
   const visiting = new Set<string>()
 
   renderedChildrenByParent.forEach((childIds, parentId) => {
@@ -115,10 +118,36 @@ export const buildRenderedScopeMarkerGoalIds = (
     )
   }
 
+  const hasExactPlannedGoalInRenderedSubtree = (
+    goalId: string,
+    visited: Set<string> = new Set(),
+  ): boolean => {
+    const cached = renderedPlannedDescendantCache.get(goalId)
+    if (cached !== undefined) return cached
+    if (visited.has(goalId)) return false
+
+    const nextVisited = new Set(visited)
+    nextVisited.add(goalId)
+    const containsExactPlannedGoal = exactPlannedGoalIds.has(goalId)
+      || (renderedChildrenByParent.get(goalId) ?? []).some((childId) =>
+        hasExactPlannedGoalInRenderedSubtree(childId, nextVisited),
+      )
+    renderedPlannedDescendantCache.set(goalId, containsExactPlannedGoal)
+    return containsExactPlannedGoal
+  }
+
   const markerGoalIds = new Set<string>()
   allGoals.forEach((_, goalId) => {
     if (scopedGoalIds.has(goalId)) return
     if (!isFullyCoveredScopeRepresentative(goalId)) return
+
+    // An exact visible selection must remain the only selected row. A fully
+    // covered ancestor is merely an equivalent scope when it has only that
+    // selected subtree; showing the same removal icon there makes both rows
+    // look selected and also hides the ancestor's own selection control.
+    // Keep representative markers only for planned canonical goals that are
+    // not reachable in the rendered composition tree.
+    if (hasExactPlannedGoalInRenderedSubtree(goalId)) return
 
     if (!hasFullyCoveredAncestor(goalId)) {
       markerGoalIds.add(goalId)

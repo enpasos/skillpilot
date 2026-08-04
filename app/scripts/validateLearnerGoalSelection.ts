@@ -347,6 +347,9 @@ const genericMathSekIView = JSON.parse(
 const bavariaMathGkView = JSON.parse(
   readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json', 'utf8'),
 )
+const hesseMathLkView = JSON.parse(
+  readFileSync('../curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json', 'utf8'),
+)
 const canonicalMathPrismGoalId = '59d5a330-61be-4590-ab46-cf7cefecd144'
 const canonicalMathJ8GoalId = 'd64516eb-9dd2-4808-91d0-0040ccdc281f'
 const canonicalMathJ8AxisInterceptGoalId = '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43'
@@ -414,6 +417,7 @@ const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   mathGoalById,
   mathChildrenByParent,
   genericJ8ScopeGoalIds,
+  [canonicalMathJ8GoalId],
 )
 
 assert.deepStrictEqual(
@@ -445,6 +449,7 @@ const bavariaScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   bavariaMathGoalById,
   bavariaMathChildrenByParent,
   bavariaPlannedJ8ScopeGoalIds,
+  [canonicalMathJ8GoalId],
 )
 
 assert.ok(
@@ -467,6 +472,43 @@ assert.deepStrictEqual(
 assert.ok(
   !bavariaScopeMarkerGoalIds.has(canonicalMathJ8AxisInterceptGoalId),
   'A hidden canonical J8 planned scope must not mark every scoped descendant as a separate planned goal.',
+)
+
+const hesseProjectedMathEntries = normalizeLearnerProjectedEntries(
+  applyCompositionViewProjection(
+    prepareLandscapeEntries([canonicalMathLandscape]),
+    hesseMathLkView,
+  ),
+)
+const hesseMathGoalById = new Map(hesseProjectedMathEntries[0].goals.map((goal) => [goal.id, goal] as const))
+const hesseMathChildrenByParent = buildDirectChildrenMap(hesseMathGoalById)
+const canonicalMathRootGoalId = 'c01b1ce9-a667-4a46-b251-ec33ae602b15'
+const hesseVisibleSekIiStructureId = 'composition:de-he-gym-sekii-math-lk:structure:sek2-lk'
+const hesseSekIiScopeGoalIds = buildGoalContainsClosure(
+  [hesseVisibleSekIiStructureId],
+  hesseMathGoalById,
+)
+const hesseSekIiScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
+  hesseMathGoalById,
+  hesseMathChildrenByParent,
+  hesseSekIiScopeGoalIds,
+  [hesseVisibleSekIiStructureId],
+)
+const hesseRenderedMathGoalIds = buildGoalContainsClosure(
+  [canonicalMathRootGoalId],
+  hesseMathGoalById,
+)
+const hesseVisibleScopeMarkerGoalIds = Array.from(hesseSekIiScopeMarkerGoalIds)
+  .filter((goalId) => hesseRenderedMathGoalIds.has(goalId))
+
+assert.ok(
+  hesseMathChildrenByParent.get(canonicalMathRootGoalId)?.includes(hesseVisibleSekIiStructureId),
+  'The Hessen LK projection must render Sekundarstufe II as a separately selectable child of Mathematics.',
+)
+assert.deepStrictEqual(
+  hesseVisibleScopeMarkerGoalIds,
+  [],
+  'A visible exact Sekundarstufe-II selection must not also mark its fully covered Mathematics parent as selected.',
 )
 
 console.log('✅ Learner goal selection regression checks passed.')

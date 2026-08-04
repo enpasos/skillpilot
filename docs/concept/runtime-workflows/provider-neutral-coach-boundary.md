@@ -161,14 +161,23 @@ state to build interest: it shows accessible possibilities, applications, and
 honest positive perspectives of the material that follows, then invites a
 low-pressure reaction or decision to continue.
 
+Every newly active goal is introduced with its exact learner-facing title,
+never by substituting its description. For orientation, a response that merely
+selects one of the offered possibilities starts the motivational dialogue. The
+provider must take up that interest, connect it to concrete things the learner
+can understand, explore, shape, or do, and invite one active personal reaction
+that has no technically right or wrong answer. It must not replace that
+follow-up with generic praise and an immediate list of next goals.
+
 Orientation never diagnoses or grades prior knowledge, terminology,
 calculations, subject details, correctness, transfer, recall, or exam
-performance. Its observable completion criterion is that the learner has seen
-the orientation and responds to a perspective or explicitly chooses to
-continue. The existing numeric `1.0` is retained only as a binary compatibility
-marker; no provider or UI may call it proven subject mastery. Normal
-evidence-based mastery rules continue to apply unchanged to ordinary content
-goals.
+performance. Its observable completion criterion is that the learner has
+answered the tailored motivational follow-up or explicitly chooses to leave
+the orientation and continue directly. A bare label copied from the offered
+possibilities is not sufficient. The existing numeric `1.0` is retained only
+as a binary compatibility marker; no provider or UI may call it proven subject
+mastery. Normal evidence-based mastery rules continue to apply unchanged to
+ordinary content goals.
 
 ## Protected Exam Evaluation
 

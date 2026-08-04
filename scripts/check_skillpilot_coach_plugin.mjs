@@ -51,6 +51,14 @@ const releaseLine = readJson(resolve(pluginRoot, "release/line.json"));
 const lifecycle = readJson(resolve(pluginRoot, "release/lifecycle.json"));
 const skill = read(resolve(skillRoot, "SKILL.md"));
 const policy = read(resolve(skillRoot, "references/coaching-policy.md"));
+const learningCoachDe = read(resolve(
+  repositoryRoot,
+  "ai/openai custom gpt/knowledge_docs/lerncoach.de.md",
+));
+const learningCoachEn = read(resolve(
+  repositoryRoot,
+  "ai/openai custom gpt/knowledge_docs/learning_coach.en.md",
+));
 const openAiYaml = read(resolve(skillRoot, "agents/openai.yaml"));
 // JSON is a strict YAML 1.2 subset. Keeping this small metadata file in that
 // subset lets CI parse and validate it without a second package-manager tree.
@@ -407,6 +415,7 @@ const policyIds = [
   "COACH-FOCUS-001",
   "COACH-MUTATION-001",
   "COACH-QUESTION-001",
+  "COACH-TITLE-001",
   "COACH-ORIENTATION-001",
   "COACH-GOAL-001",
   "COACH-MASTERY-001",
@@ -423,6 +432,307 @@ for (const policyId of policyIds) {
   );
 }
 
+const assertBehaviorFragments = (source, patterns, label) => {
+  for (const pattern of patterns) {
+    assert.match(source, pattern, `Missing ${label} behavior: ${pattern}`);
+  }
+};
+
+const didacticParityRules = [
+  {
+    id: "COACH-TITLE-001",
+    de: [
+      /aktuelle Lernziel mit seinem \*\*Titel\*\*, nicht mit seiner\s+Beschreibung/u,
+      /Dein aktuelles Lernziel ist: <Titel>/u,
+    ],
+    en: [
+      /current learning goal with its \*\*title\*\*, not its description/u,
+      /Your current learning goal is: <title>/u,
+    ],
+    target: [
+      /exact localized\s+`activeGoal\.title`/u,
+      /description[\s\S]+must never replace/u,
+      /Dein aktuelles\s+Lernziel ist: <Titel>/u,
+      /Your current learning goal is: <title>/u,
+    ],
+  },
+  {
+    id: "active orientation follow-up and completion gate",
+    de: [
+      /Eine bloße Auswahl[\s\S]+beginnt[\s\S]+noch kein Abschluss/u,
+      /Greife genau dieses Interesse auf[\s\S]+aktive Anschlussfrage/u,
+      /Beende die Orientierung erst[\s\S]+auf diese\s+Vertiefung reagiert/u,
+    ],
+    en: [
+      /Merely selecting a possibility[\s\S]+starts[\s\S]+not completion/u,
+      /Take up that exact interest[\s\S]+active follow-up/u,
+      /Complete orientation only after[\s\S]+responds to that follow-up/u,
+    ],
+    target: [
+      /merely names or selects[\s\S]+starts the\s+orientation dialogue/u,
+      /not completion evidence/u,
+      /Take up the interest actively/u,
+      /learner responds to that tailored follow-up[\s\S]+explicitly asks to continue/u,
+      /generic acknowledgement[\s\S]+next-goal\s+options[\s\S]+forbidden/u,
+    ],
+  },
+  {
+    id: "explicit prior-knowledge connection",
+    de: [/Knüpfe explizit an vorhandenes Vorwissen an/u],
+    en: [/Explicitly link to existing prior knowledge/u],
+    target: [/connect the\s+next hint, explanation, or substep explicitly to that prior understanding/u],
+  },
+  {
+    id: "dialogic scaffolding instead of complete solutions",
+    de: [
+      /Keine fertigen Lösungen/u,
+      /Hinweis geben, nicht die Antwort/u,
+    ],
+    en: [
+      /No complete solutions/u,
+      /Give a hint, not the answer/u,
+    ],
+    target: [
+      /Do not reveal the\s+answer to the immediately following task/u,
+      /Offer a hint or smaller substep when needed, not the\s+full answer/u,
+    ],
+  },
+  {
+    id: "different follow-up exercise after a mini-example",
+    de: [/anschliessende Uebung[\s\S]+nicht[\s\S]+derselbe Fall/u],
+    en: [/following exercise must \*\*not\*\* be the same case/u],
+    target: [/next exercise must use a genuinely different case or wording/u],
+  },
+  {
+    id: "unusual but valid solution paths",
+    de: [
+      /Ungewöhnliche Lösungswege/u,
+      /Korrigiere nur den tatsächlich falschen Schritt/u,
+      /Würdige gültige kreative Vereinfachungen ausdrücklich/u,
+    ],
+    en: [
+      /Unusual solution paths/u,
+      /Correct only the actually wrong step/u,
+      /Explicitly acknowledge valid creative simplifications/u,
+    ],
+    target: [
+      /Reconstruct unusual approaches charitably and precisely/u,
+      /Credit valid\s+creative approaches/u,
+      /Correct only steps that are actually wrong, ambiguous,\s+or unsupported/u,
+    ],
+  },
+  {
+    id: "all explicitly named goal aspects",
+    de: [/alle klar benannten Aspekte[\s\S]+geprueft/u],
+    en: [/all clearly named aspects[\s\S]+checked/u],
+    target: [/tasks and feedback must cover\s+all aspects/u],
+  },
+  {
+    id: "strict mastery evidence",
+    de: [
+      /zwei unabhängigen Checks/u,
+      /einem mehrstufigen Transfer-Task/u,
+    ],
+    en: [
+      /Two independent checks/u,
+      /A multi-step transfer task/u,
+    ],
+    target: [
+      /two independent checks/u,
+      /genuine multi-step transfer in a changed context/u,
+    ],
+  },
+  {
+    id: "visible and GeoGebra-supported learning",
+    de: [
+      /modality:visual/u,
+      /GeoGebra Graphing Calculator/u,
+      /beobachten, eintragen, verändern und ablesen/u,
+    ],
+    en: [
+      /modality:visual/u,
+      /GeoGebra Graphing Calculator/u,
+      /observe, enter, change, and read/u,
+    ],
+    target: [
+      /marked for visual, graph, or GeoGebra work/u,
+      /observe, enter, change, and read/u,
+      /Do not replace required\s+interaction with textual guessing/u,
+    ],
+  },
+  {
+    id: "bounded and direct goal selection",
+    de: [
+      /kurze Auswahl[\s\S]+max\. 3/u,
+      /genau ein[\s\S]+atomareres Ziel verfügbar[\s\S]+direkt/u,
+    ],
+    en: [
+      /short selection[\s\S]+max\. 3/u,
+      /exactly one[\s\S]+atomic goal is available[\s\S]+directly/u,
+    ],
+    target: [
+      /exactly one atomic goal is currently selectable[\s\S]+activate it directly/u,
+      /present at most three currently supplied atomic options/u,
+    ],
+  },
+  {
+    id: "specialized app training boundary",
+    de: [/Kein Unterricht, wenn ein spezialisiertes App-Training vorgesehen ist/u],
+    en: [/No teaching if specialized app training is provided/u],
+    target: [
+      /requires specialized app or cockpit training/u,
+      /do not teach the same activity in chat/u,
+      /Wait for the learner to return or for fresh state/u,
+    ],
+  },
+  {
+    id: "learner role and compact dialogic steps",
+    de: [
+      /strukturierter, geduldiger Lerncoach/u,
+      /kleine Schritte mit häufigem Feedback/u,
+      /Kurz & dialogisch – keine Monologe/u,
+    ],
+    en: [
+      /structured, patient learning coach/u,
+      /small steps with frequent feedback/u,
+      /Short & dialogic – no monologues/u,
+    ],
+    target: [
+      /Always treat the person as a learner/u,
+      /Work patiently, concisely, clearly, and dialogically/u,
+      /Use small steps and frequent feedback instead of long explanatory blocks/u,
+    ],
+  },
+  {
+    id: "Feynman teach-back loop",
+    de: [
+      /Feynman-Loop/u,
+      /in eigenen Worten/u,
+      /Vage Stellen = Lücken markieren/u,
+      /Transfer: neues Beispiel\/Anwendung/u,
+    ],
+    en: [
+      /Feynman Loop/u,
+      /in their own words/u,
+      /Vague areas = mark gaps/u,
+      /Transfer: new example\/application/u,
+    ],
+    target: [
+      /Use the Feynman loop especially for answers that appear memorized/u,
+      /principle without jargon in the learner's own words/u,
+      /Identify one vague point/u,
+      /Clarify only that gap/u,
+      /application in a changed case/u,
+    ],
+  },
+  {
+    id: "understanding gap versus carelessness",
+    de: [
+      /Verstaendnislücke[\s\S]+Schludrigkeit/u,
+      /Verstaendnislücke → kurz klaeren[\s\S]+Schludrigkeit → deutlich ansprechen/u,
+    ],
+    en: [
+      /Knowledge gap[\s\S]+carelessness/u,
+      /Knowledge gap → clarify briefly[\s\S]+Carelessness → address clearly/u,
+    ],
+    target: [
+      /Distinguish gaps in understanding\s+from slips/u,
+      /Give feedback:[\s\S]+examine the cause/u,
+    ],
+  },
+  {
+    id: "continue after insufficient mastery",
+    de: [
+      /Wenn Kompetenz \*\*nicht\*\* erreicht ist/u,
+      /Fachlich weiterarbeiten/u,
+      /Kurze Zusatzfrage oder gezielte Übung stellen/u,
+    ],
+    en: [
+      /If competence is \*\*not\*\* achieved/u,
+      /Continue working subject-specifically/u,
+      /Ask a short additional question or set a targeted exercise/u,
+    ],
+    target: [
+      /If competence (?:is not achieved|has not yet been demonstrated)[\s\S]+continue (?:working|subject-matter work)/u,
+      /short additional question[\s\S]+(?:targeted|suitable)[\s\S]+exercise/u,
+    ],
+  },
+  {
+    id: "post-mastery progression and completion exceptions",
+    de: [
+      /Didaktisch \*\*sofort sinnvoll weitergehen\*\*/u,
+      /gesamte personalisierte Curriculum[\s\S]+nur gratulieren\/feiern[\s\S]+keine neuen Vorschläge/u,
+      /aktuelle Fokus[\s\S]+Fokuswechsel vorschlagen/u,
+    ],
+    en: [
+      /Didactically \*\*move on sensibly immediately\*\*/u,
+      /entire personalized curriculum[\s\S]+only congratulate\/celebrate[\s\S]+no new suggestions/u,
+      /current focus[\s\S]+suggest focus change/u,
+    ],
+    target: [
+      /After successfully saved mastery, proceed promptly to the supplied next step/u,
+      /completed focus[\s\S]+supplied switching\s+options/u,
+      /entire personal curriculum[\s\S]+without\s+inventing new goals or extensions/u,
+    ],
+  },
+  {
+    id: "learner steering and missing foundations",
+    de: [
+      /Wenn die lernende Person ein Ziel nennt/u,
+      /Prüfe fachlich, ob das sinnvoll anschließt/u,
+      /welches Fundament fehlt – ohne Systemargumente/u,
+    ],
+    en: [
+      /If the learner names a goal/u,
+      /Check subject-specifically if this is a sensible logical follow-up/u,
+      /which foundation is missing – without system arguments/u,
+    ],
+    target: [
+      /If the learner wants another topic, choose only from current options/u,
+      /Explain\s+missing foundations briefly in subject terms, not as a system limitation/u,
+    ],
+  },
+  {
+    id: "optional video backup",
+    de: [
+      /Optionales Video-Backup/u,
+      /ein\*\* YouTube‑Video[\s\S]+als Ergänzung/u,
+      /kein Link\*\* \(nur Titel \+ Kanal\)/u,
+    ],
+    en: [
+      /Optional video backup/u,
+      /one\*\* YouTube video[\s\S]+as a supplement/u,
+      /no link\*\* \(only title \+ channel\)/u,
+    ],
+    target: [
+      /Offer an external video at most as an optional supplement/u,
+      /learner is\s+clearly stuck/u,
+      /Mention only title and channel,\s+never a self-sourced link/u,
+    ],
+  },
+  {
+    id: "no technical didactic commentary",
+    de: [
+      /Reihenfolge, Setup-Schritte und Speicherung werden \*\*nicht didaktisch kommentiert\*\*/u,
+      /Fokus \*\*ausschließlich auf Lernen\*\*/u,
+    ],
+    en: [
+      /Sequence, setup steps, and saving are \*\*not commented on didactically\*\*/u,
+      /focus is \*\*exclusively on learning\*\*/u,
+    ],
+    target: [
+      /Do not comment didactically on setup, workflow ordering, or persistence/u,
+      /teaching is permitted[\s\S]+focus exclusively on learning/u,
+    ],
+  },
+];
+
+for (const rule of didacticParityRules) {
+  assertBehaviorFragments(learningCoachDe, rule.de, `${rule.id} in lerncoach.de.md`);
+  assertBehaviorFragments(learningCoachEn, rule.en, `${rule.id} in learning_coach.en.md`);
+  assertBehaviorFragments(policy, rule.target, `${rule.id} in coaching-policy.md`);
+}
+
 const orientationSection = policy.match(
   /## 5\. Motivation and orientation mode\n([\s\S]*?)\n## 6\./u,
 );
@@ -434,7 +744,8 @@ assert.match(orientationSection[1], /Show possibilities/u);
 assert.match(orientationSection[1], /Offer positive perspectives/u);
 assert.match(
   orientationSection[1],
-  /visible\s+engagement, expressed interest, or readiness to continue/u,
+  /learner responds to that tailored follow-up or explicitly asks to continue/u,
+  "Orientation completion must wait for active follow-up engagement or an explicit direct-continuation request.",
 );
 assert.match(
   orientationSection[1],

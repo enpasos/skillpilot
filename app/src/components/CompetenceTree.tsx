@@ -550,8 +550,13 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
     [props.allGoals, plannedScopeGoalIds, sortedChildrenByParent],
   )
   const plannedScopeMarkerGoalIds = React.useMemo(
-    () => buildRenderedScopeMarkerGoalIds(props.allGoals, sortedChildrenByParent, plannedScopeGoalIds),
-    [props.allGoals, plannedScopeGoalIds, sortedChildrenByParent],
+    () => buildRenderedScopeMarkerGoalIds(
+      props.allGoals,
+      sortedChildrenByParent,
+      plannedScopeGoalIds,
+      props.plannedGoals,
+    ),
+    [props.allGoals, props.plannedGoals, plannedScopeGoalIds, sortedChildrenByParent],
   )
 
   return (

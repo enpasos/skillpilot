@@ -46,6 +46,11 @@ line. This version has not been published yet.
 - cockpit preference for learning-goal images in chat, enabled by default
 - visualizations are orientation only, never evidence, tasks, solutions,
   assessments, or mastery proof
+- exact localized active-goal title announcement and full dialogic learning
+  behavior carried forward from the proven German and English coach guides
+- active motivation dialogue: choosing a possibility starts a tailored
+  follow-up about what the learner can understand and do; it no longer causes
+  a generic acknowledgement followed immediately by the next-goal menu
 - SkillPilot paper-plane composer icon and plugin logo, copied unchanged from
   `app/public/favicon/`
 - one install bundle for the single shared Spring Boot runtime; language does
