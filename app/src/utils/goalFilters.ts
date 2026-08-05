@@ -130,6 +130,9 @@ export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): bool
   if (dimension === 'courseProfile') {
     const explicitCourseValues = getExplicitCourseValues(goal)
     if (explicitCourseValues.size === 0) return true
+    if (normalizedFilterId === 'GK+LK') {
+      return explicitCourseValues.has('GK') || explicitCourseValues.has('LK')
+    }
     return explicitCourseValues.has(normalizedFilterId)
   }
 

@@ -124,15 +124,18 @@ export const getDisplayCourseProfileFilters = <T extends { id: string; label?: s
   language: LabelLanguage,
 ): Array<T & { label: string }> => {
   const effectiveFilters = getDisplayFiltersForSelection(filters ?? [], language)
-  const hasGk = effectiveFilters.some((filter) => filter.id === 'GK')
-  const hasLk = effectiveFilters.some((filter) => filter.id === 'LK')
-  const hasAll = effectiveFilters.some((filter) => filter.id === 'ALL')
+  const normalizedIds = new Set(
+    effectiveFilters.map((filter) => filter.id.trim().toUpperCase()),
+  )
+  const hasGk = normalizedIds.has('GK')
+  const hasLk = normalizedIds.has('LK')
+  const hasCombinedProfile = normalizedIds.has('GK+LK') || normalizedIds.has('ALL')
 
-  if (hasGk && hasLk && !hasAll) {
+  if (hasGk && hasLk && !hasCombinedProfile) {
     return [
       ...effectiveFilters,
       {
-        id: 'ALL',
+        id: 'GK+LK',
         label: language === 'de' ? 'Grund- und Leistungskurs' : 'Basic and advanced course',
       } as T & { label: string },
     ]

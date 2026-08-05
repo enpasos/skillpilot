@@ -130,7 +130,8 @@ public class LearnerService {
             "C1",
             "C2");
 
-    private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
+    private static final String COMBINED_COURSE_FILTER_ID = "GK+LK";
+    private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK", COMBINED_COURSE_FILTER_ID);
     private static final Set<String> DURATION_MODEL_FILTER_IDS = Set.of("G8", "G9");
     private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
     private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
@@ -4654,9 +4655,10 @@ public class LearnerService {
         Map<String, Object> entry = config.get(landscapeId);
         if (entry != null) {
             Object filterId = entry.get("filterId");
-            String normalizedFilterId = normalizeFilterId(filterId instanceof String ? (String) filterId : null);
-            if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
-                return normalizedFilterId;
+            String normalizedCourseProfile = normalizeCourseProfileScope(
+                    filterId instanceof String ? (String) filterId : null);
+            if (normalizedCourseProfile != null) {
+                return normalizedCourseProfile;
             }
         }
         return currentLandscapeSelected ? DEFAULT_COURSE_FILTER_ID : DEFAULT_COURSE_FILTER_ID;
@@ -8444,8 +8446,8 @@ public class LearnerService {
         if (normalized == null) {
             return null;
         }
-        if ("ALL".equals(normalized) || "GK+LK".equals(normalized)) {
-            return "GK+LK";
+        if ("ALL".equals(normalized) || COMBINED_COURSE_FILTER_ID.equals(normalized)) {
+            return COMBINED_COURSE_FILTER_ID;
         }
         return COURSE_FILTER_IDS.contains(normalized) ? normalized : null;
     }
@@ -8874,6 +8876,9 @@ public class LearnerService {
     }
 
     private boolean matchesCourseFilter(LearningGoal goal, String filterId) {
+        if (COMBINED_COURSE_FILTER_ID.equals(filterId)) {
+            return matchesCourseFilter(goal, "GK") || matchesCourseFilter(goal, "LK");
+        }
         List<String> tags = goal.getTags();
         if (tags == null || tags.isEmpty()) {
             return true;

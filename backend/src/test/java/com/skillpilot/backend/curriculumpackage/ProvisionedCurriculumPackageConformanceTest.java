@@ -44,11 +44,11 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.packages().getFirst().packageId())
                 .isEqualTo("org.skillpilot.curriculum.de.gymnasium.mathematik");
         assertThat(snapshot.packages().getFirst().contentDigest())
-                .isEqualTo("sha256:3d0481b0d4b718548379b27798ce18653b60da04e0de6e3e310ae0e9ee81d29c");
+                .isEqualTo("sha256:0a1baabe708ea50d79c17ddeb445c4f21caea19c98cd5640b9dcc2d0ca6fd499");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
         assertThat(snapshot.viewsById()).hasSize(88);
-        assertThat(snapshot.offeringsById()).hasSize(88);
+        assertThat(snapshot.offeringsById()).hasSize(128);
         assertThat(snapshot.decksByKey()).hasSize(12);
         assertThat(snapshot.resourcesById()).hasSize(803);
         assertThat(snapshot.resourcesByPublicUrl()).hasSize(734);
@@ -94,7 +94,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         PackageCompositionViewState compositionViews = PackageCompositionViewState.load(snapshot, mapper);
         assertThat(compositionViews.generationSha256()).isEqualTo(snapshot.generationSha256());
         assertThat(compositionViews.viewsById()).hasSize(88);
-        assertThat(compositionViews.offeringsById()).hasSize(88);
+        assertThat(compositionViews.offeringsById()).hasSize(128);
         assertThat(compositionViews.defaultOfferingsByLandscapeId())
                 .containsOnlyKeys("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
         snapshot.offeringsById().values().forEach(offering -> {
@@ -107,8 +107,13 @@ class ProvisionedCurriculumPackageConformanceTest {
         });
         assertThat(compositionViews.resolve(
                         "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
-                        java.util.Map.of("schoolForm", "Gymnasium", "courseProfile", "GK+LK")))
-                .isNull();
+                        java.util.Map.of(
+                                "schoolForm", "Gymnasium",
+                                "stage", "SekII",
+                                "courseProfile", "GK+LK")))
+                .isNotNull()
+                .satisfies(combined -> assertThat(combined.sourceViewIds())
+                        .containsExactly("de-de-gym-sekii-math-gk", "de-de-gym-sekii-math-lk"));
         assertThat(compositionViews.findViewById("merged:de-de-gym-math-gk+de-de-gym-math-lk"))
                 .isNull();
 

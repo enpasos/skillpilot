@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -481,7 +482,15 @@ public final class PackageCompositionViewState {
         merged.put("viewId", runtimeViewId);
         merged.put("landscapeId", offering.landscapeId());
         merged.put("scope", offering.scope());
-        merged.put("rootNodes", mergeNodes(roots));
+        try {
+            merged.put(
+                    "rootNodes",
+                    "courseProfile".equals(offering.mergeDimension())
+                            ? CourseProfileCompositionViewMerger.merge(roots)
+                            : mergeNodes(roots));
+        } catch (IllegalStateException exception) {
+            throw failure(exception.getMessage(), exception);
+        }
         merged.put("mergedFromViewIds", offering.viewIds());
         validateNodes(
                 (List<?>) merged.get("rootNodes"),

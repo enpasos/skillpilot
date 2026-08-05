@@ -38,6 +38,11 @@ public final class CurriculumPersonalizationPlanner {
     static final String ROOT_LANDSCAPE_ID_KEY = "rootLandscapeId";
     static final String COMPLETED_OPTION_IDS_KEY = "completedOptionIds";
     static final String MIGRATION_COMPLETED_KEY = "migrationCompleted";
+    private static final String COURSE_PROFILE_GK = "GK";
+    private static final String COURSE_PROFILE_LK = "LK";
+    private static final String COURSE_PROFILE_COMBINED = "GK+LK";
+    private static final String COURSE_PROFILE_LEGACY_ALL = "ALL";
+    private static final String COURSE_PROFILE_COMBINED_LABEL = "Grund- und Leistungskurs";
 
     private CurriculumPersonalizationPlanner() {
     }
@@ -300,7 +305,7 @@ public final class CurriculumPersonalizationPlanner {
             return null;
         }
         String submitted = candidate.trim();
-        return landscape.getFilters().stream()
+        String authored = landscape.getFilters().stream()
                 .filter(Objects::nonNull)
                 .map(LandscapeFilter::getId)
                 .filter(Objects::nonNull)
@@ -308,6 +313,27 @@ public final class CurriculumPersonalizationPlanner {
                 .filter(authoredId -> authoredId.equalsIgnoreCase(submitted))
                 .findFirst()
                 .orElse(null);
+        if (authored != null) {
+            return authored;
+        }
+
+        boolean combinedCandidate = COURSE_PROFILE_COMBINED.equalsIgnoreCase(submitted)
+                || COURSE_PROFILE_LEGACY_ALL.equalsIgnoreCase(submitted);
+        if (!combinedCandidate) {
+            return null;
+        }
+        Set<String> authoredIds = landscape.getFilters().stream()
+                .filter(Objects::nonNull)
+                .map(LandscapeFilter::getId)
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(id -> !id.isBlank())
+                .map(id -> id.toUpperCase(java.util.Locale.ROOT))
+                .collect(java.util.stream.Collectors.toSet());
+        return authoredIds.contains(COURSE_PROFILE_GK)
+                        && authoredIds.contains(COURSE_PROFILE_LK)
+                ? COURSE_PROFILE_COMBINED
+                : null;
     }
 
     /**
@@ -1594,12 +1620,14 @@ public final class CurriculumPersonalizationPlanner {
                 landscape.getLandscapeId());
         String filterLabel = null;
         if (filterId != null) {
-            filterLabel = landscape.getFilters().stream()
-                    .filter(Objects::nonNull)
-                    .filter(filter -> filterId.equals(filter.getId()))
-                    .map(filter -> firstNonBlank(filter.getLabel(), filter.getId()))
-                    .findFirst()
-                    .orElse(filterId);
+            filterLabel = COURSE_PROFILE_COMBINED.equals(filterId)
+                    ? COURSE_PROFILE_COMBINED_LABEL
+                    : landscape.getFilters().stream()
+                            .filter(Objects::nonNull)
+                            .filter(filter -> filterId.equals(filter.getId()))
+                            .map(filter -> firstNonBlank(filter.getLabel(), filter.getId()))
+                            .findFirst()
+                            .orElse(filterId);
         }
         return new PersonalizationPlan.Option(
                 stableOptionId(
@@ -1759,7 +1787,7 @@ public final class CurriculumPersonalizationPlanner {
                         }
                         List<PersonalizationPlan.Option> matches = instance.options().stream()
                                 .filter(option -> option.filterId() != null
-                                        && option.filterId().equalsIgnoreCase(configuredFilter))
+                                        && courseProfileAliasesEqual(option.filterId(), configuredFilter))
                                 .toList();
                         if (matches.size() != 1) {
                             return SelectionState.invalid("personalization-config-filter-invalid");
@@ -1797,6 +1825,14 @@ public final class CurriculumPersonalizationPlanner {
             return value.trim();
         }
         return null;
+    }
+
+    private static boolean courseProfileAliasesEqual(String offeredFilter, String configuredFilter) {
+        if (offeredFilter.equalsIgnoreCase(configuredFilter)) {
+            return true;
+        }
+        return COURSE_PROFILE_COMBINED.equalsIgnoreCase(offeredFilter)
+                && COURSE_PROFILE_LEGACY_ALL.equalsIgnoreCase(configuredFilter);
     }
 
     private static String configuredScopeValue(
