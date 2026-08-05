@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T12:32:42.720Z",
+  "generatedAt": "2026-08-05T06:57:54.319Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -27,7 +27,7 @@
       "approved": 18,
       "pilot": 712
     },
-    "reviewLedgerFiles": 218,
+    "reviewLedgerFiles": 219,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
@@ -43,7 +43,7 @@
       "accepted_pilot_after_second_regeneration": 15,
       "accepted_pilot_after_third_attempt": 5,
       "accepted_pilot_after_third_regeneration": 6,
-      "accepted_pilot_after_user_review_correction": 46,
+      "accepted_pilot_after_user_review_correction": 47,
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
@@ -67,8 +67,8 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-user-review-correction-2026-07-23.md",
-    "latestLedgerStatus": "completed",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-arrow-source-correction-2026-08-05.md",
+    "latestLedgerStatus": "completed_pilot",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
@@ -589,6 +589,13 @@
         "title": "Dreieckskonstruktionen nach Kongruenzsätzen planen, ausführen und ihre Lösbarkeit begründen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The incorrect `WWS` label was replaced by `SsW`; the user inspected and approved the corrected image in chat."
+      },
+      {
+        "batch": "mathematik-arrow-source-correction-2026-08-05",
+        "goalId": "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "title": "Informationen aus Darstellungen entnehmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The result boxes were ordered by the height of their matching evidence so the connectors do not cross. The upper arrow starts directly at `(2|5)` and ends at the matching point statement, the middle arrow starts at the slope calculation and ends at `Steigung: 2`, and the lower arrow starts directly at `(0|1)` and ends at `y-Achsenabschnitt: 1`. Every source is flat or rounded; arrowheads occur only at the three destination boxes."
       }
     ]
   },
