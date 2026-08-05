@@ -330,8 +330,13 @@ If intent remains open, briefly ask the learner to choose between:
 - **Mit Lerncoach prüfen** / **Check with the learning coach** — strict recall
   without hints.
 
-For normal card practice, the model calls `start_skillpilot_memory_practice`
-exactly once with the confirmed active goal and unchanged state version. The
+For normal card practice, the published option action is the exact tool name
+`start_skillpilot_memory_practice`. The localized option label or any
+unambiguous equivalent request confirms that choice. When the newest context
+permits the tool, the model calls it exactly once as the immediate next action
+with the confirmed active goal and unchanged state version, before any visible
+reply. It must never infer that the component is unavailable or replace the
+required call pre-emptively with a Cockpit link. The
 dedicated memory-card component may reveal the answer, move backward and
 forward through its bounded card batch without writing state, and collect the
 learner's own **Not yet** or **Got it** decision. Only that component may call
@@ -349,10 +354,11 @@ a bounded practice receipt, not a replacement for the latest full SkillPilot
 context. When the learner returns to normal dialogue after practice, load fresh
 context before claiming progress or choosing the next step.
 
-If the component is unavailable, failed, or the learner explicitly prefers the
-Cockpit, offer the exact supplied Cockpit URL as the fallback for the same
-normal practice mode. Do not turn that fallback into a third learning mode and
-do not claim that an unavailable component means learning failed.
+Offer the exact supplied Cockpit URL as the fallback for the same normal
+practice mode only when the start tool actually returns an error, the newest
+context does not permit it, or the learner explicitly prefers the Cockpit. Do
+not turn that fallback into a third learning mode and do not infer component
+availability from the host surface.
 
 For strict recall:
 

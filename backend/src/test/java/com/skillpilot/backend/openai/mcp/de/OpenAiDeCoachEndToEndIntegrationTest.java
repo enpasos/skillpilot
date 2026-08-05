@@ -558,6 +558,17 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(visualizationTool.path("_meta").path("openai/outputTemplate").asText())
                 .isEqualTo(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
 
+        JsonNode memoryPracticeTool =
+                toolDescriptor(tools, OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE);
+        assertThat(memoryPracticeTool.path("_meta").path("ui").path("resourceUri").asText())
+                .isEqualTo(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
+        assertThat(memoryPracticeTool.path("_meta").path("openai/outputTemplate").asText())
+                .isEqualTo(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
+        assertThat(memoryPracticeTool.path("description").asText())
+                .contains("immediate next action")
+                .contains("Do not infer that the component is unavailable")
+                .contains("do not substitute a Cockpit link before attempting this call");
+
         HttpResponse<String> resources = postMcp(accessToken, """
                 {"jsonrpc":"2.0","id":"resources-1","method":"resources/list","params":{}}
                 """);

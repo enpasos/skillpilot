@@ -428,7 +428,7 @@ class OpenAiDeCoachContextProjectorTest {
                         org.assertj.core.groups.Tuple.tuple(
                                 "Karteikarten lernen",
                                 "Lerne fällige Karteikarten direkt hier im Chat, Karte für Karte.",
-                                "startMemoryPractice"),
+                                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE),
                         org.assertj.core.groups.Tuple.tuple(
                                 "Mit Lerncoach prüfen",
                                 "Harte Abfrage ohne Hilfestellung.",
@@ -442,7 +442,7 @@ class OpenAiDeCoachContextProjectorTest {
                         org.assertj.core.groups.Tuple.tuple(
                                 "Learn with flashcards",
                                 "Learn due flashcards directly here in the chat, one card at a time.",
-                                "startMemoryPractice"),
+                                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE),
                         org.assertj.core.groups.Tuple.tuple(
                                 "Check with the learning coach",
                                 "Strict recall without hints.",
@@ -460,8 +460,11 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(german.instruction())
                 .contains(
                         "Dein aktuelles Lernziel ist: Lernkarten – Funktionen und Gleichungen.",
-                        "Karteikartenlernen im Chat",
+                        "bestätigt das Karteikartenlernen",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        "unmittelbar als nächste Aktion",
+                        "Vermute niemals",
+                        "tatsächlich fehlgeschlagenen Aufruf",
                         "Behaupte weder Zielabschluss noch Beherrschung",
                         "activeGoal.cockpitUrl",
                         "harte Abrufprüfung")
@@ -469,8 +472,11 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(english.instruction())
                 .contains(
                         "Your current learning goal is: Lernkarten – Funktionen und Gleichungen.",
-                        "in-chat flashcard learning",
+                        "confirms normal flashcard learning",
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        "immediate next action",
+                        "Never infer",
+                        "actually returns an error",
                         "Never claim goal completion or mastery",
                         "activeGoal.cockpitUrl",
                         "start strict recall")
