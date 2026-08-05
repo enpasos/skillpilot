@@ -3,6 +3,7 @@ package com.skillpilot.backend.openai.de.ratelimit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthMetadataController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
@@ -80,6 +81,14 @@ class OpenAiDeRateLimitFilterTest {
 
         assertThat(invoke(path, "192.0.2.13").getStatus()).isEqualTo(200);
         assertThat(invoke(path, "192.0.2.13").getStatus()).isEqualTo(429);
+    }
+
+    @Test
+    void rateLimitsIssuerRelativeDiscoveryAsMetadataTraffic() throws Exception {
+        String path = OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH;
+
+        assertThat(invoke(path, "192.0.2.14").getStatus()).isEqualTo(200);
+        assertThat(invoke(path, "192.0.2.14").getStatus()).isEqualTo(429);
     }
 
     private MockHttpServletResponse invoke(String path, String remoteAddress) throws Exception {

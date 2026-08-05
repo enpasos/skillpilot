@@ -133,6 +133,7 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
             return new Limit("mcp", properties.getMcpRequests());
         }
         if (OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
+                || OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH.equals(path)
                 || OpenAiAppsChallengeController.PATH.equals(path)) {
             return new Limit("metadata", properties.getMetadataRequests());

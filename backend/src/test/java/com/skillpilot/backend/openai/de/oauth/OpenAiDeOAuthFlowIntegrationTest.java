@@ -42,6 +42,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
@@ -147,6 +148,9 @@ class OpenAiDeOAuthFlowIntegrationTest {
         assertThat(authorizationMetadata.path("registration_endpoint").isMissingNode()).isTrue();
         assertThat(authorizationMetadata.path("token_endpoint_auth_methods_supported"))
                 .containsExactly(objectMapper.getNodeFactory().textNode("client_secret_basic"));
+        JsonNode issuerRelativeDiscovery = json(get(
+                OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH));
+        assertThat(issuerRelativeDiscovery).isEqualTo(authorizationMetadata);
         var registeredClient = registeredClients.findByClientId(CLIENT_ID);
         assertThat(registeredClient).isNotNull();
         assertThat(registeredClient.getClientAuthenticationMethods())
@@ -334,6 +338,12 @@ class OpenAiDeOAuthFlowIntegrationTest {
 
     private JsonNode json(HttpResponse<String> response) throws Exception {
         assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(200);
+        assertThat(response.headers().firstValue(HttpHeaders.CONTENT_TYPE))
+                .hasValueSatisfying(value -> assertThat(value)
+                        .startsWith(MediaType.APPLICATION_JSON_VALUE));
+        assertThat(response.headers().firstValue(HttpHeaders.CACHE_CONTROL))
+                .hasValueSatisfying(value -> assertThat(value).contains("no-store"));
+        assertThat(response.headers().firstValue("X-Content-Type-Options")).contains("nosniff");
         return objectMapper.readTree(response.body());
     }
 

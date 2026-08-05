@@ -8,6 +8,8 @@ AUTHORIZATION_ORIGIN="${AUTHORIZATION_ORIGIN%/}"
 MCP_URL="${MCP_ORIGIN}/mcp"
 EXPECTED_RESOURCE="${MCP_URL}"
 METADATA_URL="${MCP_ORIGIN}/.well-known/oauth-protected-resource/mcp"
+AUTHORIZATION_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-authorization-server/api/openai/v1"
+ISSUER_DISCOVERY_URL="${AUTHORIZATION_ORIGIN}/api/openai/v1/.well-known/openid-configuration"
 CHALLENGE_URL="${MCP_ORIGIN}/.well-known/openai-apps-challenge"
 LEGACY_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/mcp"
 ABANDONED_VERSIONED_MCP_URL="${AUTHORIZATION_ORIGIN}/api/openai/de/v1/mcp"
@@ -91,6 +93,42 @@ curl_common=(
   --show-error
 )
 
+fetch_authorization_metadata() {
+  local check_name="$1"
+  local url="$2"
+  local output_file="$3"
+  local result status effective_url verify_result
+
+  result="$(
+    "${curl_common[@]}" \
+      --output "${output_file}" \
+      --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+      "${url}"
+  )"
+  IFS='|' read -r status effective_url verify_result <<<"${result}"
+  if [[ "${status}" != "200" ]]; then
+    echo "CHECK ${check_name} FAIL expected HTTP 200, got ${status}" >&2
+    exit 1
+  fi
+  if [[ "${effective_url}" != "${url}" ]]; then
+    echo "CHECK ${check_name} FAIL unexpected redirect to ${effective_url}" >&2
+    exit 1
+  fi
+  if [[ "${verify_result}" != "0" ]]; then
+    echo "CHECK ${check_name} FAIL certificate verification result ${verify_result}" >&2
+    exit 1
+  fi
+  if ! PYTHONDONTWRITEBYTECODE=1 python3 -B \
+    "${ROOT_DIR}/scripts/validate_openai_oauth_metadata.py" \
+    --kind authorization-server \
+    --base-url "${AUTHORIZATION_ORIGIN}" \
+    <"${output_file}"; then
+    echo "CHECK ${check_name} FAIL invalid discovery document" >&2
+    exit 1
+  fi
+  echo "CHECK ${check_name} PASS ${url}"
+}
+
 request_result="$(
   "${curl_common[@]}" \
     --dump-header "${temporary_dir}/metadata.headers" \
@@ -126,6 +164,22 @@ if ! PYTHONDONTWRITEBYTECODE=1 python3 -B \
   exit 1
 fi
 echo "CHECK public_edge_metadata PASS ${METADATA_URL}"
+
+fetch_authorization_metadata \
+  canonical_oauth_discovery \
+  "${AUTHORIZATION_METADATA_URL}" \
+  "${temporary_dir}/authorization-metadata.json"
+fetch_authorization_metadata \
+  issuer_relative_oauth_discovery \
+  "${ISSUER_DISCOVERY_URL}" \
+  "${temporary_dir}/issuer-discovery.json"
+if ! cmp -s \
+  "${temporary_dir}/authorization-metadata.json" \
+  "${temporary_dir}/issuer-discovery.json"; then
+  echo "CHECK oauth_discovery_alias_parity FAIL discovery documents differ" >&2
+  exit 1
+fi
+echo "CHECK oauth_discovery_alias_parity PASS byte-identical metadata"
 
 goal_visualization_asset="$({
   find "${GOAL_VISUALIZATION_ASSET_ROOT}" -type f \

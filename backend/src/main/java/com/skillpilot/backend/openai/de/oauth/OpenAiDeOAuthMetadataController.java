@@ -25,6 +25,10 @@ public class OpenAiDeOAuthMetadataController {
             OpenAiDeV1ContractMetadata.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH;
     public static final String AUTHORIZATION_SERVER_WELL_KNOWN_PATH =
             "/.well-known/oauth-authorization-server/api/openai/v1";
+    // ChatGPT also probes this issuer-relative OAuth compatibility URL during MCP reconnects.
+    // It intentionally exposes the same metadata without advertising OIDC scopes or ID tokens.
+    public static final String OPENID_CONFIGURATION_PATH =
+            OpenAiDeOAuthConfiguration.ISSUER_PATH + "/.well-known/openid-configuration";
 
     private final String issuer;
     private final OpenAiDeProperties properties;
@@ -56,7 +60,9 @@ public class OpenAiDeOAuthMetadataController {
         return metadata;
     }
 
-    @GetMapping(value = AUTHORIZATION_SERVER_WELL_KNOWN_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(
+            value = {AUTHORIZATION_SERVER_WELL_KNOWN_PATH, OPENID_CONFIGURATION_PATH},
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> authorizationServerMetadata() {
         return authorizationServerMetadata(issuer, properties);

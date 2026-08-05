@@ -64,6 +64,12 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                                         issuer,
                                         properties)))
                 .GET(
+                        OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH,
+                        request -> metadataResponse(
+                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(
+                                        issuer,
+                                        properties)))
+                .GET(
                         OpenAiAppsChallengeController.PATH,
                         request -> challengeResponse(properties))
                 .build();

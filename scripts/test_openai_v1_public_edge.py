@@ -133,6 +133,20 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             'CHALLENGE_URL="${MCP_ORIGIN}/.well-known/openai-apps-challenge"',
             script,
         )
+        self.assertIn(
+            'AUTHORIZATION_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/'
+            'oauth-authorization-server/api/openai/v1"',
+            script,
+        )
+        self.assertIn(
+            'ISSUER_DISCOVERY_URL="${AUTHORIZATION_ORIGIN}/api/openai/v1/'
+            '.well-known/openid-configuration"',
+            script,
+        )
+        self.assertIn("canonical_oauth_discovery", script)
+        self.assertIn("issuer_relative_oauth_discovery", script)
+        self.assertIn("oauth_discovery_alias_parity", script)
+        self.assertIn("cmp -s", script)
         self.assertIn("--proto '=https'", script)
         self.assertIn("--max-redirs 0", script)
         self.assertIn("--connect-timeout 5", script)

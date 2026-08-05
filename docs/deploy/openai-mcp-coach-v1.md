@@ -48,9 +48,15 @@ MCP-Werkzeug.
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
 | Authorization-Server-Metadata | `https://skillpilot.com/.well-known/oauth-authorization-server/api/openai/v1` |
+| Issuer-relative OAuth-Kompatibilitätsroute | `https://skillpilot.com/api/openai/v1/.well-known/openid-configuration` |
 | Authorization Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/authorize` |
 | Token Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/token` |
 | Revocation Endpoint | `https://skillpilot.com/api/openai/v1/oauth2/revoke` |
+
+Beide Discovery-URLs liefern dasselbe OAuth-Metadatendokument. Die kanonische
+RFC-8414-Route bleibt maßgeblich. Der issuer-relative Kompatibilitätsalias ist
+zusätzlich erforderlich, weil ChatGPT ihn bei einer erneuten MCP-Initialisierung
+abruft; er aktiviert weder OpenID-Scopes noch ID-Tokens.
 
 Das Draft-Inventar enthält genau diese eine aktive, content-addressierte
 Ressource und bereits ausgelieferte Hash-URIs als byte-identische passive
@@ -755,6 +761,12 @@ curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/v1" \
        and (.code_challenge_methods_supported | index("S256"))
        and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'
 
+curl -fsS "$AUTH_BASE/api/openai/v1/.well-known/openid-configuration" \
+  | jq -e --arg issuer "$AUTH_BASE/api/openai/v1" \
+      '.issuer == $issuer
+       and (.code_challenge_methods_supported | index("S256"))
+       and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'
+
 curl -sS -o /dev/null -D - \
   -X POST "$MCP_URL" \
   -H 'Content-Type: application/json' \
@@ -767,7 +779,7 @@ for path in oauth2/authorize oauth2/token oauth2/revoke oauth2/introspect; do
 done
 ```
 
-Erwartung: beide Metadatenabrufe sind gültig, MCP antwortet `401` mit
+Erwartung: alle drei Metadatenabrufe sind gültig, MCP antwortet `401` mit
 `WWW-Authenticate`, und sämtliche OAuth-Protokollendpunkte bleiben `404`.
 Der intern aus Kompatibilitätsgründen noch `openAiDeCoach` benannte
 Health-Contributor existiert in diesem Zustand absichtlich nicht; die allgemeine
@@ -797,6 +809,13 @@ curl -fsS "$RESOURCE_METADATA" \
        and (.scopes_supported | index("skillpilot.openai.v1.write"))'
 
 curl -fsS "$AUTH_BASE/.well-known/oauth-authorization-server/api/openai/v1" \
+  | jq -e --arg issuer "$AUTH_BASE/api/openai/v1" --arg auth "$AUTH_METHOD" \
+      '.issuer == $issuer
+       and (.code_challenge_methods_supported | index("S256"))
+       and (.token_endpoint_auth_methods_supported == [$auth])
+       and (.registration_endpoint | not)'
+
+curl -fsS "$AUTH_BASE/api/openai/v1/.well-known/openid-configuration" \
   | jq -e --arg issuer "$AUTH_BASE/api/openai/v1" --arg auth "$AUTH_METHOD" \
       '.issuer == $issuer
        and (.code_challenge_methods_supported | index("S256"))
