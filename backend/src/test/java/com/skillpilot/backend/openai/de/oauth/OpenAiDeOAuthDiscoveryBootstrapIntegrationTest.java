@@ -36,6 +36,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.context.TestPropertySource;
@@ -127,6 +128,10 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(authorizationServer.path("registration_endpoint").isMissingNode()).isTrue();
         assertThat(authorizationServer.path("client_id_metadata_document_supported").isMissingNode()).isTrue();
 
+        JsonNode issuerRelativeDiscovery = json(get(
+                OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH));
+        assertThat(issuerRelativeDiscovery).isEqualTo(authorizationServer);
+
         assertThat(get("/api/openai/v1/.well-known/oauth-authorization-server").statusCode())
                 .isEqualTo(404);
 
@@ -207,7 +212,12 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
     private JsonNode json(HttpResponse<String> response) throws Exception {
         assertThat(response.statusCode()).withFailMessage(response.body()).isEqualTo(200);
-        assertThat(response.headers().firstValue(HttpHeaders.CACHE_CONTROL)).contains("no-store");
+        assertThat(response.headers().firstValue(HttpHeaders.CONTENT_TYPE))
+                .hasValueSatisfying(value -> assertThat(value)
+                        .startsWith(MediaType.APPLICATION_JSON_VALUE));
+        assertThat(response.headers().firstValue(HttpHeaders.CACHE_CONTROL))
+                .hasValueSatisfying(value -> assertThat(value).contains("no-store"));
+        assertThat(response.headers().firstValue("X-Content-Type-Options")).contains("nosniff");
         return objectMapper.readTree(response.body());
     }
 

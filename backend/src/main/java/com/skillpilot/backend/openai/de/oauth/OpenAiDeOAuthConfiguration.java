@@ -343,6 +343,8 @@ public class OpenAiDeOAuthConfiguration {
 
         http.securityMatcher(request -> endpointsMatcher.matches(request)
                         && !OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH
+                                .equals(request.getRequestURI())
+                        && !OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH
                                 .equals(request.getRequestURI()))
                 .with(server, configurer -> configurer
                         .registeredClientRepository(registeredClients)
