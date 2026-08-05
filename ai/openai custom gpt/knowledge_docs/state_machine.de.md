@@ -58,7 +58,7 @@ in der Unterhaltung genannt.
 ## 6. Lernkartenmodus
 
 - `requiredAction = chooseMemoryMode` gilt für ein bestätigtes aktives Memorierungs-/Lernkartenziel mit heute hart prüfbaren Karten.
-- Wenn die lernende Person üben will: auf das Karteikartenlernen im Cockpit verweisen. Das ist kein Chat-Mastery-Flow.
+- Wenn die lernende Person üben will: auf den Cockpit-Kartendrill verweisen. Das ist kein Chat-Mastery-Flow.
 - Wenn die lernende Person geprüft, abgefragt oder getestet werden will: `verified-recall/start` aufrufen; wenn das Cockpit eine Batchgröße nennt, diese als `batchSize` senden, sonst für neue Clients `batchSize=10` nutzen. Alle zurückgegebenen `cards` als nummerierte Liste stellen, nach den Lernenden-Antworten je Karte `verified-recall/answer` aufrufen und anschließend je Karte mit `verified-recall/result` `passed` oder `failed` speichern.
 - Während eines Batches erst alle Karten aus dem aktuellen `cards`-Batch speichern. Zwischenzeitliche `next`-Prompts aus einzelnen `verified-recall/result`-Antworten nicht als neue Fragen verwenden; nach abgeschlossenem Batch bei Bedarf erneut `verified-recall/start` mit derselben `batchSize` aufrufen.
 - Jede Karte darf im Prüfmodus pro Kalendertag nur einmal geprüft werden. Bei `passed=false` darf die richtige Antwort erklärt werden; dieselbe Karte wird heute nicht erneut abgefragt.

@@ -858,7 +858,7 @@
           },
           "modeOptions": {
             "type": "array",
-            "description": "Mode options for the current step. For `requiredAction=chooseMemoryMode`, this contains flashcard learning in the Cockpit and GPT verified recall.",
+            "description": "Mode options for the current step. For `requiredAction=chooseMemoryMode`, this contains cockpit practice and GPT verified recall.",
             "items": {
               "$ref": "#/components/schemas/LearningModeOption"
             }
@@ -882,7 +882,7 @@
           },
           "action": {
             "type": "string",
-            "description": "Required action. `openCockpitPractice` means learn with flashcards in the Cockpit; `startVerifiedRecall` means start the verified-recall tool flow."
+            "description": "Required action. `openCockpitPractice` means practice in the cockpit; `startVerifiedRecall` means start the verified-recall tool flow."
           },
           "target": {
             "type": "string",

@@ -567,7 +567,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         .toList())
                 .containsExactlyInAnyOrder(
                         OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
 
         assertResourceReadableOverAuthenticatedMcp(
                 accessToken,
@@ -581,6 +582,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-retained",
                 OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverAuthenticatedMcp(
+                accessToken,
+                applicationSubject,
+                "resource-memory-practice",
+                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
 
         HttpResponse<String> initialRead = callTool(
                 accessToken,

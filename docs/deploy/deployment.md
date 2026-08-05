@@ -125,11 +125,11 @@ cd app
 echo "Installiere Abhaengigkeiten..."
 npm install
 
-echo "Pruefe KI-Transparenznachweis..."
-npm run check:ai-transparency-inventory
-
 echo "Baue Anwendung..."
 npm run build
+
+echo "Pruefe KI-Transparenznachweis..."
+npm run check:ai-transparency-inventory
 
 echo "Pruefe Coach-Variante im Frontend-Artefakt..."
 node ../scripts/verify_frontend_coach_variant.mjs \
@@ -197,29 +197,30 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     are used. An explicitly supplied value, including an empty value, must
     equal the canonical V1 value exactly; a stale alias, typo, whitespace or
     other origin fails closed.
-5.  **Deck/story/whitepaper deployment** must happen before the inventory check and frontend build so the check sees the exact public asset set.
-6.  **AI-transparency inventory check** binds current visualization providers and C2PA container markers, illustration collections, canonical goal/card counts, and podcast hashes to the reviewed inventory under `docs/legal/`. Asset drift therefore stops deployment before a build or restart.
-7.  **Frontend build and artifact verification** must finish before backend build
+5.  **Deck/story/whitepaper deployment** must happen before the frontend build so it receives the exact public asset set.
+6.  **Frontend build before inventory verification** synchronizes the generated runtime assets into both frontend and the non-versioned backend build tree. This prevents the inventory check from comparing a current frontend asset with a stale backend copy.
+7.  **AI-transparency inventory check** binds current visualization providers and C2PA container markers, illustration collections, canonical goal/card counts, and podcast hashes to the reviewed inventory under `docs/legal/`. Asset drift therefore stops deployment before backend build or restart.
+8.  **Frontend artifact verification** must finish before backend build
     or restart. The shell verifier reads `index.html`, rejects cross-origin
     stylesheet/module references, and checks that every referenced local file is
     present and nonempty.
-8.  **Backend build and build-identity verification** produce the updated
+9.  **Backend build and build-identity verification** produce the updated
     server artifact. Gradle embeds the full lowercase `HEAD` commit into both
     `skillpilot.openai.coach.v1.server-build` and the MCP `server-version`; the
     deployment engine verifies the processed resource before restart.
     `SKILLPILOT_SERVER_BUILD` is not a runtime setting and cannot replace this
     artifact identity.
-9.  **Focused OpenAI security and contract tests** run before restart for the
+10. **Focused OpenAI security and contract tests** run before restart for the
     `openai-mcp` artifact.
-10. **`systemctl restart`** activates the freshly built frontend/backend bundle.
-11. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
+11. **`systemctl restart`** activates the freshly built frontend/backend bundle.
+12. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment.
-12. **Public shell verification after readiness** fetches `index.html` and the
+13. **Public shell verification after readiness** fetches `index.html` and the
     exact referenced CSS/module assets with cache bypass headers. It requires
     successful, nonempty same-origin responses with the expected content types,
     so missing hashed assets or an HTML error page served as CSS stop deployment.
-13. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
+14. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated
     `mcp-coach-v1.skillpilot.com` TLS certificate, direct responses without
     redirects, HTTP `200` plus the exact resource in path-specific
@@ -228,7 +229,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     `https://mcp-coach-v1.skillpilot.com/mcp`. The discarded main-origin
     routes and the internal transport route must return HTTP `404`; all five
     reserved sibling hosts must remain fail-closed with HTTP `404`.
-14. **Further deployment smoke tests** check that the public host serves the intended
+15. **Further deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML and contains the reviewed
     DE/EN audio, coach, and legal transparency copy. The source-rationale smoke
     then detects the active curriculum mode: repository deployments must serve

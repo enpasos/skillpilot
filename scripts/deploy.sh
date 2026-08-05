@@ -270,11 +270,13 @@ cd app
 echo "Installiere Abhängigkeiten..."
 npm install
 
-echo "Prüfe KI-Transparenznachweis..."
-npm run check:ai-transparency-inventory
-
 echo "Baue Anwendung..."
 npm run build
+
+# Der Build synchronisiert auch die nicht eingecheckten Backend-Kopien der
+# Runtime-Assets. Das Inventar darf erst den vollständig gebauten Stand prüfen.
+echo "Prüfe KI-Transparenznachweis..."
+npm run check:ai-transparency-inventory
 
 echo "Prüfe Coach-Variante im Frontend-Artefakt..."
 node ../scripts/verify_frontend_coach_variant.mjs \
