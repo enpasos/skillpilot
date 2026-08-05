@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-28T12:32:42.720Z
+Generated: 2026-08-05T06:57:54.319Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 218 |
+| Review-Ledger-Dateien | 219 |
 | Offene Provider-Deferred-Ziele | 23 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -58,7 +58,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_second_regeneration` | 15 |
 | `accepted_pilot_after_third_attempt` | 5 |
 | `accepted_pilot_after_third_regeneration` | 6 |
-| `accepted_pilot_after_user_review_correction` | 46 |
+| `accepted_pilot_after_user_review_correction` | 47 |
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
@@ -77,8 +77,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-user-review-correction-2026-07-23.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-arrow-source-correction-2026-08-05.md` |
+| Latest ledger status | `completed_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -156,7 +156,7 @@ Keine Eintraege.
 | 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
 | 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
 
-Weitere 26 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 

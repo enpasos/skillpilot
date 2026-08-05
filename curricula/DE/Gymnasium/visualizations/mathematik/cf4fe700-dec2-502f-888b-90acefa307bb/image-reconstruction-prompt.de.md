@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI integrierte Bildgenerierung (image_gen)
 - Quellbild: `cf4fe700-dec2-502f-888b-90acefa307bb.jpg`
 
 ## Zweck
@@ -31,12 +31,12 @@ Die Koordinaten der relevanten Punkte sind ebenfalls beschriftet: "(0|1)" am Sta
 Rechts oberhalb des Steigungsdreiecks ist die Steigungsberechnung in schwarzem Text dargestellt: "m = Δy / Δx = 4 / 2 = 2".
 
 Auf der rechten Seite des Bildes sind drei vertikal gestapelte, abgerundete weiße Rechtecke mit dicken schwarzen Umrissen.
-Das oberste Rechteck enthält den fetten schwarzen Text "y-Achsenabschnitt: 1".
+Das oberste Rechteck enthält den fetten schwarzen Text "Punkt bei x = 2: (2|5)".
 Das mittlere Rechteck enthält den fetten schwarzen Text "Steigung: 2".
-Das unterste Rechteck enthält den fetten schwarzen Text "Punkt bei x = 2: (2|5)".
+Das unterste Rechteck enthält den fetten schwarzen Text "y-Achsenabschnitt: 1".
 
-Drei geschwungene, hellblaue Pfeile mit schwarzen Umrissen verbinden die linke Diagrammhälfte mit den rechten Informationsboxen.
-Der oberste Pfeil zeigt von der blauen Linie am y-Achsenabschnitt (Punkt (0|1)) zur Box "y-Achsenabschnitt: 1".
-Der mittlere Pfeil zeigt von der Steigungsberechnung "m = Δy / Δx = 4 / 2 = 2" zur Box "Steigung: 2".
-Der unterste Pfeil zeigt vom Punkt (2|5) auf der blauen Linie zur Box "Punkt bei x = 2: (2|5)".
+Drei blaue Pfeile verbinden die passenden Belege der linken Diagrammhälfte eindeutig mit den rechten Informationsboxen. Jeder Pfeil besitzt am Beleg ein flaches oder weich gerundetes Schaftende und genau eine Pfeilspitze an seiner Ergebnisbox. Die Pfeile kreuzen sich nicht.
+Der oberste, leicht nach oben geschwungene Pfeil beginnt direkt am blau markierten Punkt (2|5) und zeigt zur Box "Punkt bei x = 2: (2|5)".
+Der mittlere, waagerechte Pfeil beginnt direkt rechts neben der Steigungsberechnung "m = Δy / Δx = 4 / 2 = 2" und zeigt zur Box "Steigung: 2".
+Der unterste, leicht nach unten geschwungene Pfeil beginnt direkt am blau markierten Punkt (0|1) und zeigt zur Box "y-Achsenabschnitt: 1".
 ```
