@@ -8,6 +8,8 @@ import {
   compileCompositionView,
   getCompositionProjectionRole,
   type CompositionView,
+  type CompositionStructureNode,
+  type CompositionViewNode,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../src/utils/authoring/canonicalAuthoring'
@@ -405,6 +407,65 @@ const hesseSekundarstufeTwoLkView = JSON.parse(
     'utf8',
   ),
 ) as CompositionView
+
+const collectCompositionStructures = (
+  nodes: CompositionViewNode[],
+): CompositionStructureNode[] => nodes.flatMap((node) => (
+  node.kind === 'structure'
+    ? [node, ...collectCompositionStructures(node.children)]
+    : []
+))
+
+const hesseMathematicsViewsWithQ2Supplements = [
+  'de-he-gk-g8.view.json',
+  'de-he-gk-g9.view.json',
+  'de-he-gk.view.json',
+  'de-he-lk-g8.view.json',
+  'de-he-lk-g9.view.json',
+  'de-he-lk.view.json',
+  'de-he-sekii-gk.view.json',
+  'de-he-sekii-lk.view.json',
+]
+
+hesseMathematicsViewsWithQ2Supplements.forEach((viewFileName) => {
+  const compositionView = JSON.parse(
+    readFileSync(
+      new URL(
+        `../../curricula/DE/Gymnasium/composition-views/mathematik/${viewFileName}`,
+        import.meta.url,
+      ),
+      'utf8',
+    ),
+  ) as CompositionView
+  const structures = collectCompositionStructures(compositionView.rootNodes)
+  const q2Structures = structures.filter((node) => node.id === 'q2')
+  const q2SupplementStructures = structures.filter((node) => (
+    node.id === 'q2-source-extraction-supplements'
+    || node.id === 'he-source-extraction-supplements-sekii'
+  ))
+
+  assert.equal(
+    q2Structures.length,
+    1,
+    `${viewFileName} must define exactly one Q2 structure.`,
+  )
+  assert.equal(
+    q2SupplementStructures.length,
+    1,
+    `${viewFileName} must retain exactly one reviewed Q2 supplement structure.`,
+  )
+  assert.equal(
+    q2Structures[0].children.includes(q2SupplementStructures[0]),
+    true,
+    `${viewFileName} must place the reviewed supplemental content below its one Q2 structure.`,
+  )
+  assert.equal(
+    q2SupplementStructures[0].label,
+    'Skalarprodukt und Analytische Geometrie',
+    `${viewFileName} must not present the supplemental content as a second Q2 phase.`,
+  )
+})
+
 const canonicalMathEntry = normalizeLandscape(canonicalMath)
 assert.ok(canonicalMathEntry, 'The canonical mathematics landscape must be loadable.')
 
@@ -671,6 +732,41 @@ assert.equal(
   'Sekundarstufe II (LK)',
   'Hessen mathematics LK upper secondary must expose the reviewed Sek-II root.',
 )
+const learnerFacingSekundarstufeTwoLk = learnerFacingGoalById.get(
+  learnerFacingMathRoot.contains[0],
+)
+assert.ok(
+  learnerFacingSekundarstufeTwoLk,
+  'The reviewed Hessen mathematics LK upper-secondary root must remain addressable.',
+)
+const learnerFacingQ2Goals = learnerFacingSekundarstufeTwoLk.contains
+  .map((goalId) => learnerFacingGoalById.get(goalId))
+  .filter((goal): goal is UiGoal => goal?.title.startsWith('Q2:') === true)
+assert.equal(
+  learnerFacingQ2Goals.length,
+  1,
+  'The learner-facing Hessen mathematics LK upper-secondary tree must expose exactly one direct Q2 phase.',
+)
+
+const learnerFacingQ2DescendantIds = new Set<string>()
+const pendingQ2GoalIds = [...learnerFacingQ2Goals[0].contains]
+while (pendingQ2GoalIds.length > 0) {
+  const goalId = pendingQ2GoalIds.pop()
+  if (!goalId || learnerFacingQ2DescendantIds.has(goalId)) continue
+  learnerFacingQ2DescendantIds.add(goalId)
+  pendingQ2GoalIds.push(...(learnerFacingGoalById.get(goalId)?.contains ?? []))
+}
+[
+  '2ac2e902-a6ad-53c9-b139-d1c63d823023',
+  '3016ec37-1c2e-47db-83f5-e767923bc97e',
+  'dd042c27-d513-5352-9de9-2a5923a98e69',
+].forEach((goalId) => {
+  assert.equal(
+    learnerFacingQ2DescendantIds.has(goalId),
+    true,
+    `Reviewed Hessen LK Q2 goal ${goalId} must remain below the single learner-facing Q2 phase.`,
+  )
+})
 
 const canonicalFallbackSiblingIds = [
   '6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb',

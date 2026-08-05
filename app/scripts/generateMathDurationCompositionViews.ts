@@ -204,10 +204,12 @@ const removeStructureById = (nodes: CompositionNode[], structureId: string): Com
   nodes.flatMap((node) => {
     if (node.kind !== 'structure') return [node]
     if (node.id === structureId) return []
+    const children = removeStructureById(node.children, structureId)
+    if (children.length === 0) return []
     return [
       {
         ...node,
-        children: removeStructureById(node.children, structureId),
+        children,
       },
     ]
   })
