@@ -267,14 +267,15 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
   - protected-resource metadata:
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  V1 binds exactly one active content-addressed MCP Apps UI resource on the
+  V1 binds two distinct active content-addressed MCP Apps UI resources on the
   fixed widget domain `https://mcp-coach-v1.skillpilot.com`; previously
-  advertised hashes remain passive and byte-identically readable. Only
-  `render_skillpilot_goal_visualization` references it through
-  `ui.resourceUri` and `openai/outputTemplate`; ordinary tools remain UI-free.
-  The renderer supplies a bounded structured projection to the image-only
-  component. Bare MCP `ImageContent` is not the visibility contract, and the
-  runtime applies no `openai/userAgent` or client-surface gate.
+  advertised hashes remain passive and byte-identically readable.
+  `render_skillpilot_goal_visualization` binds the image-only resource and
+  `start_skillpilot_memory_practice` binds the interactive card-learning
+  resource through `ui.resourceUri` and `openai/outputTemplate`. The app-only
+  card-review tool and ordinary tools remain UI-free. Bare MCP `ImageContent`
+  is not the visibility contract, and the runtime applies no
+  `openai/userAgent` or client-surface gate.
   These URLs are immutable contract values rather than environment settings.
   Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented
   `SKILLPILOT_OPENAI_COACH_V1_*` URL overrides fail closed.

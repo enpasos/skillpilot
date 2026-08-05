@@ -8,6 +8,11 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MemoryPracticeCard;
+import com.skillpilot.backend.api.MemoryPracticeProgress;
+import com.skillpilot.backend.api.MemoryPracticeResponse;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -39,6 +44,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -50,6 +56,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -82,6 +90,9 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String GET_CONTEXT = "get_skillpilot_context";
     public static final String RENDER_GOAL_VISUALIZATION =
             "render_skillpilot_goal_visualization";
+    public static final String START_MEMORY_PRACTICE = "start_skillpilot_memory_practice";
+    public static final String REVIEW_MEMORY_PRACTICE_CARD =
+            "review_skillpilot_memory_practice_card";
     public static final String GET_NAVIGATION = "get_skillpilot_navigation";
     public static final String SET_CURRICULUM = "set_skillpilot_curriculum";
     public static final String SET_PERSONALIZATION = "set_skillpilot_personalization";
@@ -96,12 +107,18 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
     public static final String ORIENTATION_PATH_ID = "orientationPathId";
+    private static final String MEMORY_PRACTICE_REVIEW_CAPABILITY = "reviewCapability";
+    private static final String HMAC_ALGORITHM = "HmacSHA256";
+    private static final String MEMORY_PRACTICE_CAPABILITY_CONTEXT = "skillpilot-memory-practice-card-v1";
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
-    private static final Set<String> GOAL_VISUALIZATION_UI_TOOLS =
-            Set.of(RENDER_GOAL_VISUALIZATION);
+    private static final Map<String, String> UI_TOOL_RESOURCE_BINDINGS = Map.of(
+            RENDER_GOAL_VISUALIZATION,
+            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+            START_MEMORY_PRACTICE,
+            OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
     private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
             List.of(
                     loadGoalVisualizationWidget(
@@ -114,6 +131,12 @@ public final class OpenAiDeV1McpContractAdapter {
                             OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
                             OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
                             OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
+    private static final MemoryPracticeUiResource MEMORY_PRACTICE_UI_RESOURCE =
+            loadMemoryPracticeWidget(
+                    "skillpilot-memory-card-practice-v1-current",
+                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
+                    OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
 
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
@@ -132,6 +155,8 @@ public final class OpenAiDeV1McpContractAdapter {
 
             If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
+            For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. When the learner chooses the published startMemoryPractice option, call start_skillpilot_memory_practice exactly once with the confirmed active goalId and expectedStateVersion. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. If the component cannot be used, offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
+
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
 
             For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
@@ -146,6 +171,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private final OpenAiDeV1McpSessionCoordinator sessionCoordinator;
     private final OpenAiDeCoachContextProjector contextProjector;
     private final String sessionStartUrl;
+    private final byte[] memoryPracticeCapabilitySecret;
     private final List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications;
     private final List<McpStatelessServerFeatures.SyncResourceSpecification> resourceSpecifications;
 
@@ -156,7 +182,9 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeCoachIdentityResolver identityResolver,
             OpenAiDeMcpTelemetry telemetry,
             OpenAiDeV1McpSessionCoordinator sessionCoordinator,
-            @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl) {
+            @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl,
+            @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}")
+                    String signingSecret) {
         this.coachTools = coachTools;
         this.stateProjection = stateProjection;
         this.identityResolver = identityResolver;
@@ -164,6 +192,7 @@ public final class OpenAiDeV1McpContractAdapter {
         this.sessionCoordinator = sessionCoordinator;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
+        this.memoryPracticeCapabilitySecret = signingSecret.getBytes(StandardCharsets.UTF_8);
         this.toolSpecifications = buildToolSpecifications();
         this.resourceSpecifications = buildResourceSpecifications();
     }
@@ -181,6 +210,8 @@ public final class OpenAiDeV1McpContractAdapter {
         this.sessionCoordinator = null;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
+        this.memoryPracticeCapabilitySecret =
+                "skillpilot-memory-practice-test-secret".getBytes(StandardCharsets.UTF_8);
         this.toolSpecifications = buildToolSpecifications();
         this.resourceSpecifications = buildResourceSpecifications();
     }
@@ -209,6 +240,15 @@ public final class OpenAiDeV1McpContractAdapter {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record GoalVisualizationRenderResult(
             OpenAiDeCoachContext.GoalVisualization goalVisualization) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record MemoryPracticeReceipt(
+            String status,
+            String goalId,
+            String goalTitle,
+            MemoryPracticeProgress progress,
+            boolean completed) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -325,6 +365,51 @@ public final class OpenAiDeV1McpContractAdapter {
                         true,
                         false,
                         this::renderGoalVisualization),
+                tool(
+                        START_MEMORY_PRACTICE,
+                        "Learn with flashcards in the chat",
+                        "Starts the dedicated flashcard-learning component for the confirmed active memory goal. "
+                                + "Call exactly once when the learner chooses the published startMemoryPractice "
+                                + "option. Copy goalId and expectedStateVersion from the newest full SkillPilot "
+                                + "context. The component may call it again only after its private bounded batch is "
+                                + "exhausted, using the newest stateVersion. This is normal spaced-repetition "
+                                + "practice, not a mastery check. Never "
+                                + "read, reveal, rate, or answer the card in ordinary coach dialogue.",
+                        objectSchema(
+                                Map.of(
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        EXPECTED_STATE_VERSION, integerSchema(0, null)),
+                                List.of("goalId", EXPECTED_STATE_VERSION)),
+                        memoryPracticeReceiptSchema(),
+                        true,
+                        true,
+                        false,
+                        this::startMemoryPractice),
+                tool(
+                        REVIEW_MEMORY_PRACTICE_CARD,
+                        "Save one flashcard repetition rating",
+                        "App-only write used by the dedicated flashcard component after the learner revealed and "
+                                + "rated exactly the currently displayed card. Ordinary coach dialogue must never "
+                                + "call this tool or infer a rating. Rating is exactly not_known or known. Local "
+                                + "previous/next navigation never calls this tool and never changes state. This "
+                                + "updates only the rated card's repetition "
+                                + "schedule and never marks the memory goal as mastered.",
+                        objectSchema(
+                                Map.of(
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        "cardId", modelFacingOpaqueReferenceSchema(),
+                                        "rating", enumStringSchema("not_known", "known"),
+                                        MEMORY_PRACTICE_REVIEW_CAPABILITY, modelFacingOpaqueReferenceSchema()),
+                                List.of(
+                                        "goalId",
+                                        "cardId",
+                                        "rating",
+                                        MEMORY_PRACTICE_REVIEW_CAPABILITY)),
+                        memoryPracticeReceiptSchema(),
+                        false,
+                        true,
+                        true,
+                        this::reviewMemoryPracticeCard),
                 tool(
                         GET_NAVIGATION,
                         "Load navigation options",
@@ -502,15 +587,16 @@ public final class OpenAiDeV1McpContractAdapter {
                 : List.of(oauthScheme(READ_SCOPE));
         Map<String, Object> meta = new LinkedHashMap<>();
         meta.put("securitySchemes", securitySchemes);
-        if (GOAL_VISUALIZATION_UI_TOOLS.contains(name)) {
+        String uiResourceUri = UI_TOOL_RESOURCE_BINDINGS.get(name);
+        if (uiResourceUri != null) {
             meta.put(
                     "ui",
-                    Map.of(
-                            "resourceUri",
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI));
-            meta.put(
-                    "openai/outputTemplate",
-                    OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
+                    Map.of("resourceUri", uiResourceUri));
+            meta.put("openai/outputTemplate", uiResourceUri);
+        } else if (REVIEW_MEMORY_PRACTICE_CARD.equals(name)) {
+            // The rating write is available only to the dedicated card
+            // component and must never be selected by the model.
+            meta.put("ui", Map.of("visibility", List.of("app")));
         }
         McpSchema.Tool descriptor = McpSchema.Tool.builder()
                 .name(name)
@@ -542,9 +628,14 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private List<McpStatelessServerFeatures.SyncResourceSpecification> buildResourceSpecifications() {
         Map<String, Object> meta = goalVisualizationResourceMeta();
-        return GOAL_VISUALIZATION_UI_RESOURCES.stream()
+        List<McpStatelessServerFeatures.SyncResourceSpecification> resources = new ArrayList<>();
+        GOAL_VISUALIZATION_UI_RESOURCES.stream()
                 .map(uiResource -> goalVisualizationResourceSpecification(uiResource, meta))
-                .toList();
+                .forEach(resources::add);
+        resources.add(memoryPracticeResourceSpecification(
+                MEMORY_PRACTICE_UI_RESOURCE,
+                memoryPracticeResourceMeta()));
+        return List.copyOf(resources);
     }
 
     private McpStatelessServerFeatures.SyncResourceSpecification goalVisualizationResourceSpecification(
@@ -583,6 +674,41 @@ public final class OpenAiDeV1McpContractAdapter {
         return telemetry == null ? read.get() : telemetry.recordResourceRead(requestedUri, read);
     }
 
+    private McpStatelessServerFeatures.SyncResourceSpecification memoryPracticeResourceSpecification(
+            MemoryPracticeUiResource uiResource,
+            Map<String, Object> meta) {
+        McpSchema.Resource resource = McpSchema.Resource.builder(
+                        uiResource.uri(),
+                        uiResource.name())
+                .title("SkillPilot flashcard learning")
+                .description("Interactive, private flashcard practice for the active memory goal.")
+                .mimeType(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE)
+                .meta(meta)
+                .build();
+        return new McpStatelessServerFeatures.SyncResourceSpecification(
+                resource,
+                (transportContext, request) -> readMemoryPracticeResource(uiResource, meta, request));
+    }
+
+    private McpSchema.ReadResourceResult readMemoryPracticeResource(
+            MemoryPracticeUiResource uiResource,
+            Map<String, Object> meta,
+            McpSchema.ReadResourceRequest request) {
+        String requestedUri = request == null ? null : request.uri();
+        Supplier<McpSchema.ReadResourceResult> read = () -> {
+            if (!uiResource.uri().equals(requestedUri)) {
+                throw new IllegalArgumentException("Unknown SkillPilot memory-practice MCP UI resource.");
+            }
+            McpSchema.TextResourceContents contents = new McpSchema.TextResourceContents(
+                    uiResource.uri(),
+                    OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
+                    uiResource.html(),
+                    meta);
+            return new McpSchema.ReadResourceResult(List.of(contents));
+        };
+        return telemetry == null ? read.get() : telemetry.recordResourceRead(requestedUri, read);
+    }
+
     private Map<String, Object> goalVisualizationResourceMeta() {
         Map<String, Object> csp = Map.of(
                 "resourceDomains", List.of("https://skillpilot.com"));
@@ -598,6 +724,24 @@ public final class OpenAiDeV1McpContractAdapter {
                 "openai/widgetPrefersBorder", false,
                 "openai/widgetCSP", Map.of(
                         "resource_domains", List.of("https://skillpilot.com"),
+                        "redirect_domains", List.of("https://skillpilot.com")));
+    }
+
+    private Map<String, Object> memoryPracticeResourceMeta() {
+        Map<String, Object> csp = Map.of(
+                "redirectDomains", List.of("https://skillpilot.com"));
+        Map<String, Object> ui = Map.of(
+                "domain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
+                "prefersBorder", true,
+                "csp", csp);
+        return Map.of(
+                "ui", ui,
+                "openai/widgetDescription",
+                        "Interactive SkillPilot flashcard learning for the active memory goal.",
+                "openai/widgetDomain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
+                "openai/widgetPrefersBorder", true,
+                "openai/widgetCSP", Map.of(
+                        "resource_domains", List.of(),
                         "redirect_domains", List.of("https://skillpilot.com")));
     }
 
@@ -637,6 +781,44 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private record GoalVisualizationUiResource(String name, String uri, String html) {}
+
+    private static MemoryPracticeUiResource loadMemoryPracticeWidget(
+            String name,
+            String uri,
+            String classpath,
+            String expectedSha256) {
+        try (InputStream input = OpenAiDeV1McpContractAdapter.class.getResourceAsStream(classpath)) {
+            if (input == null) {
+                throw new IllegalStateException(
+                        "Missing SkillPilot memory-practice MCP UI bundle " + classpath + ".");
+            }
+            byte[] bytes = input.readAllBytes();
+            String actualSha256 = HexFormat.of().formatHex(
+                    MessageDigest.getInstance("SHA-256").digest(bytes));
+            if (!expectedSha256.equals(actualSha256)) {
+                throw new IllegalStateException(
+                        "SkillPilot memory-practice MCP UI hash mismatch for "
+                                + classpath
+                                + ": expected "
+                                + expectedSha256
+                                + ", got "
+                                + actualSha256
+                                + ".");
+            }
+            return new MemoryPracticeUiResource(
+                    name,
+                    uri,
+                    new String(bytes, StandardCharsets.UTF_8));
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Could not read SkillPilot memory-practice MCP UI bundle " + classpath + ".",
+                    exception);
+        } catch (NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
+        }
+    }
+
+    private record MemoryPracticeUiResource(String name, String uri, String html) {}
 
     private McpSchema.CallToolResult executeWithTelemetry(
             String toolName,
@@ -837,6 +1019,240 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Freigegebenes Lernzielbild bereitgestellt.",
                         "Approved learning-goal image provided."),
                 new GoalVisualizationRenderResult(visualization));
+    }
+
+    private McpSchema.CallToolResult startMemoryPractice(
+            String skillpilotId,
+            Map<String, Object> arguments,
+            OpenAiDeV1SessionMetadata metadata) {
+        String goalId = requiredString(arguments, "goalId");
+        long expectedStateVersion = requiredLong(arguments, EXPECTED_STATE_VERSION);
+        McpSchema.CallToolResult stateError = validateUiReadStateVersion(
+                expectedStateVersion,
+                metadata,
+                localized(metadata,
+                        "Der Lernstand hat sich seit der Auswahl des Karteikartenlernens geändert. Lade den aktuellen "
+                                + "SkillPilot-Kontext genau einmal neu.",
+                        "The learning state changed after flashcard learning was selected. Reload the current "
+                                + "SkillPilot context exactly once."));
+        if (stateError != null) {
+            return stateError;
+        }
+        UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
+        FrontierGoal rawActiveGoal = activeGoal(rawState);
+        OpenAiDeCoachContext context = projectContext(skillpilotId, rawState, metadata);
+        OpenAiDeCoachContext.ActiveGoal activeGoal = context == null ? null : context.activeGoal();
+        if (activeGoal == null
+                || !goalId.equals(activeGoal.goalId())
+                || rawActiveGoal == null
+                || !goalId.equals(rawActiveGoal.id())
+                || !isMemoryGoal(rawActiveGoal)) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    localized(metadata,
+                            "Karteikartenlernen ist nur für das bestätigte aktive Lernkartenziel verfügbar.",
+                            "Flashcard learning is available only for the confirmed active memory goal."),
+                    metadata);
+        }
+        MemoryPracticeResponse response = coachTools.startMemoryPractice(
+                skillpilotId,
+                communicationLanguage(metadata),
+                new MemoryPracticeStartRequest(goalId));
+        return memoryPracticeResult(
+                response,
+                activeGoal.cockpitUrl(),
+                metadata,
+                true,
+                requiredLearningSessionId(arguments));
+    }
+
+    private McpSchema.CallToolResult reviewMemoryPracticeCard(
+            String skillpilotId,
+            Map<String, Object> arguments,
+            OpenAiDeV1SessionMetadata metadata) {
+        String goalId = requiredString(arguments, "goalId");
+        UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
+        FrontierGoal rawActiveGoal = activeGoal(rawState);
+        OpenAiDeCoachContext context = projectContext(skillpilotId, rawState, metadata);
+        OpenAiDeCoachContext.ActiveGoal activeGoal = context == null ? null : context.activeGoal();
+        if (activeGoal == null
+                || !goalId.equals(activeGoal.goalId())
+                || rawActiveGoal == null
+                || !goalId.equals(rawActiveGoal.id())
+                || !isMemoryGoal(rawActiveGoal)) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    localized(metadata,
+                            "Die Karte gehört nicht zum bestätigten aktiven Lernkartenziel.",
+                            "The card does not belong to the confirmed active memory goal."),
+                    metadata);
+        }
+        String cardId = requiredString(arguments, "cardId");
+        String learningSessionId = requiredLearningSessionId(arguments);
+        String reviewCapability = requiredString(arguments, MEMORY_PRACTICE_REVIEW_CAPABILITY);
+        if (!verifyMemoryPracticeReviewCapability(
+                reviewCapability,
+                learningSessionId,
+                goalId,
+                cardId)) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    localized(metadata,
+                            "Diese Kartenbewertung gehört nicht zum ausgegebenen Karteikartenstapel.",
+                            "This card rating is not authorized by the issued flashcard batch."),
+                    metadata);
+        }
+        MemoryPracticeResponse response = coachTools.reviewMemoryPracticeCard(
+                skillpilotId,
+                communicationLanguage(metadata),
+                new MemoryPracticeReviewRequest(
+                        goalId,
+                        cardId,
+                        requiredString(arguments, "rating")));
+        return memoryPracticeResult(
+                response,
+                activeGoal.cockpitUrl(),
+                metadata,
+                false,
+                learningSessionId);
+    }
+
+    private McpSchema.CallToolResult validateUiReadStateVersion(
+            long expectedStateVersion,
+            OpenAiDeV1SessionMetadata metadata,
+            String conflictInstruction) {
+        if (metadata == null) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INTERNAL_ERROR,
+                    "The UI action could not be verified against the current learning-session state.",
+                    null);
+        }
+        if (expectedStateVersion == metadata.stateVersion()) {
+            return null;
+        }
+        return errorResult(
+                OpenAiDeV1ErrorCode.STATE_VERSION_CONFLICT,
+                conflictInstruction,
+                metadata,
+                Map.of(
+                        "reloadContextAtMostOnce", true,
+                        "instruction", conflictInstruction));
+    }
+
+    private McpSchema.CallToolResult memoryPracticeResult(
+            MemoryPracticeResponse response,
+            String cockpitUrl,
+            OpenAiDeV1SessionMetadata metadata,
+            boolean includePrivateBatch,
+            String learningSessionId) {
+        if (response == null || response.progress() == null) {
+            throw new IllegalStateException("Memory practice returned no progress.");
+        }
+        boolean completed = "complete".equals(response.status()) || response.cards().isEmpty();
+        MemoryPracticeReceipt receipt = new MemoryPracticeReceipt(
+                response.status(),
+                response.goalId(),
+                response.goalTitle(),
+                response.progress(),
+                completed);
+        Map<String, Object> componentData = new LinkedHashMap<>();
+        componentData.put("communicationLocale", communicationLocale(metadata));
+        componentData.put(LEARNING_SESSION_ID, learningSessionId);
+        componentData.put("goalId", response.goalId());
+        componentData.put("goalTitle", response.goalTitle());
+        componentData.put("progress", Map.of(
+                "total", response.progress().totalCards(),
+                "due", response.progress().dueCards(),
+                "scheduled", response.progress().scheduledCards()));
+        componentData.put("completed", completed);
+        if (cockpitUrl != null && !cockpitUrl.isBlank()) {
+            componentData.put("cockpitUrl", cockpitUrl);
+        }
+        if (includePrivateBatch) {
+            List<Map<String, Object>> cards = new ArrayList<>();
+            for (MemoryPracticeCard card : response.cards()) {
+                Map<String, Object> cardData = new LinkedHashMap<>();
+                cardData.put("id", card.cardId());
+                cardData.put(
+                        MEMORY_PRACTICE_REVIEW_CAPABILITY,
+                        memoryPracticeReviewCapability(
+                                learningSessionId,
+                                response.goalId(),
+                                card.cardId()));
+                cardData.put("front", card.front());
+                cardData.put("back", card.back());
+                if (card.category() != null && !card.category().isBlank()) {
+                    cardData.put("category", card.category());
+                }
+                cards.add(Map.copyOf(cardData));
+            }
+            componentData.put("cardBatch", Map.of(
+                    "cards", List.copyOf(cards),
+                    "initialIndex", 0,
+                    "totalDueCards", response.progress().dueCards(),
+                    "hasMore", response.progress().dueCards() > cards.size()));
+        }
+        return successResult(
+                completed
+                        ? localized(metadata,
+                                "Für heute sind keine Karteikarten mehr fällig. Das Lernkartenziel wurde dadurch "
+                                        + "nicht als beherrscht markiert.",
+                                "No more flashcards are due today. This did not mark the memory goal as mastered.")
+                        : localized(metadata,
+                                "Karteikartenlernen in der eigenen Komponente bereitgestellt.",
+                                "Flashcard learning provided in its dedicated component."),
+                receipt,
+                Map.of("skillpilotMemoryCard", Map.copyOf(componentData)));
+    }
+
+    private String memoryPracticeReviewCapability(
+            String learningSessionId,
+            String goalId,
+            String cardId) {
+        return Base64.getUrlEncoder()
+                .withoutPadding()
+                .encodeToString(memoryPracticeCapabilityBytes(learningSessionId, goalId, cardId));
+    }
+
+    private boolean verifyMemoryPracticeReviewCapability(
+            String capability,
+            String learningSessionId,
+            String goalId,
+            String cardId) {
+        try {
+            byte[] supplied = Base64.getUrlDecoder().decode(capability);
+            return MessageDigest.isEqual(
+                    supplied,
+                    memoryPracticeCapabilityBytes(learningSessionId, goalId, cardId));
+        } catch (IllegalArgumentException exception) {
+            return false;
+        }
+    }
+
+    private byte[] memoryPracticeCapabilityBytes(
+            String learningSessionId,
+            String goalId,
+            String cardId) {
+        try {
+            Mac mac = Mac.getInstance(HMAC_ALGORITHM);
+            mac.init(new SecretKeySpec(memoryPracticeCapabilitySecret, HMAC_ALGORITHM));
+            updateCapabilityFrame(mac, MEMORY_PRACTICE_CAPABILITY_CONTEXT);
+            updateCapabilityFrame(mac, learningSessionId);
+            updateCapabilityFrame(mac, goalId);
+            updateCapabilityFrame(mac, cardId);
+            return mac.doFinal();
+        } catch (Exception exception) {
+            throw new IllegalStateException("Could not protect a memory-practice card capability.", exception);
+        }
+    }
+
+    private static void updateCapabilityFrame(Mac mac, String value) {
+        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        mac.update((byte) (bytes.length >>> 24));
+        mac.update((byte) (bytes.length >>> 16));
+        mac.update((byte) (bytes.length >>> 8));
+        mac.update((byte) bytes.length);
+        mac.update(bytes);
     }
 
     private McpSchema.CallToolResult getNavigation(
@@ -1323,10 +1739,18 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private McpSchema.CallToolResult successResult(String summary, Object structuredContent) {
+        return successResult(summary, structuredContent, null);
+    }
+
+    private McpSchema.CallToolResult successResult(
+            String summary,
+            Object structuredContent,
+            Map<String, Object> meta) {
         return McpSchema.CallToolResult.builder()
                 .isError(false)
                 .addTextContent(summary)
                 .structuredContent(structuredContent)
+                .meta(meta)
                 .build();
     }
 
@@ -2107,6 +2531,22 @@ public final class OpenAiDeV1McpContractAdapter {
                         "context", contextSchema(),
                         "error", stringSchema()),
                 List.of("status"));
+    }
+
+    private static Map<String, Object> memoryPracticeReceiptSchema() {
+        return objectSchema(
+                Map.of(
+                        "status", enumStringSchema("ready", "complete"),
+                        "goalId", stringSchema(),
+                        "goalTitle", stringSchema(),
+                        "progress", objectSchema(
+                                Map.of(
+                                        "totalCards", integerSchema(0, null),
+                                        "dueCards", integerSchema(0, null),
+                                        "scheduledCards", integerSchema(0, null)),
+                                List.of("totalCards", "dueCards", "scheduledCards")),
+                        "completed", booleanSchema()),
+                List.of("status", "goalId", "goalTitle", "progress", "completed"));
     }
 
     private static Map<String, Object> recallPromptSchema() {

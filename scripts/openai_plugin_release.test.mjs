@@ -16,7 +16,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
-  assertActiveUiResource,
+  assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -51,51 +51,88 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
   );
 });
 
-test("V1 UI has one active template and keeps historical templates passive", () => {
-  const activeResourceUri = "ui://skillpilot/coach/v1/sha256-active/widget.html";
+test("V1 UI binds one distinct active template per tool and keeps historical templates passive", () => {
+  const goalResourceUri = "ui://skillpilot/coach/v1/sha256-goal/goal.html";
+  const memoryResourceUri = "ui://skillpilot/coach/v1/sha256-memory/memory.html";
   const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
   const resources = [
     { uri: retainedResourceUri, sha256: "retained" },
-    { uri: activeResourceUri, sha256: "active" },
+    { uri: goalResourceUri, sha256: "goal" },
+    { uri: memoryResourceUri, sha256: "memory" },
   ];
+  const activeBindings = {
+    render_skillpilot_goal_visualization: goalResourceUri,
+    start_skillpilot_memory_practice: memoryResourceUri,
+  };
   const tools = [
     {
       name: "render_skillpilot_goal_visualization",
       meta: {
-        ui: { resourceUri: activeResourceUri },
-        "openai/outputTemplate": activeResourceUri,
+        ui: { resourceUri: goalResourceUri },
+        "openai/outputTemplate": goalResourceUri,
+      },
+    },
+    {
+      name: "start_skillpilot_memory_practice",
+      meta: {
+        ui: { resourceUri: memoryResourceUri },
+        "openai/outputTemplate": memoryResourceUri,
+      },
+    },
+    {
+      name: "review_skillpilot_memory_practice_card",
+      meta: {
+        ui: { visibility: ["app"] },
       },
     },
   ];
 
   assert.doesNotThrow(() =>
-    assertActiveUiResource(activeResourceUri, resources, tools),
+    assertActiveUiBindings(activeBindings, resources, tools),
   );
   assert.throws(
-    () => assertActiveUiResource("ui://missing", resources, tools),
+    () =>
+      assertActiveUiBindings(
+        { ...activeBindings, start_skillpilot_memory_practice: "ui://missing" },
+        resources,
+        tools,
+      ),
     /identify exactly one inventoried resource/,
   );
   assert.throws(
     () =>
-      assertActiveUiResource(
-        activeResourceUri,
-        [...resources, { uri: activeResourceUri, sha256: "duplicate" }],
+      assertActiveUiBindings(
+        activeBindings,
+        [...resources, { uri: goalResourceUri, sha256: "duplicate" }],
         tools,
       ),
     /resource URIs must be unique/,
   );
   assert.throws(
     () =>
-      assertActiveUiResource(activeResourceUri, resources, [
+      assertActiveUiBindings(activeBindings, resources, [
         {
           ...tools[0],
           meta: {
-            ui: { resourceUri: activeResourceUri },
+            ui: { resourceUri: goalResourceUri },
             "openai/outputTemplate": retainedResourceUri,
           },
         },
+        tools[1],
       ]),
-    /openai\/outputTemplate only to activeResourceUri/,
+    /openai\/outputTemplate to its active binding/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiBindings(
+        {
+          ...activeBindings,
+          start_skillpilot_memory_practice: goalResourceUri,
+        },
+        resources,
+        tools,
+      ),
+    /must own a distinct UI resource/,
   );
 });
 

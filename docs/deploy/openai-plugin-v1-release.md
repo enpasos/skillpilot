@@ -20,21 +20,27 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| MCP-UI | genau eine aktive, hashgebundene Bildressource im unveröffentlichten Draft |
+| MCP-UI | zwei aktive, getrennt hashgebundene Ressourcen für Lernzielbild und Karteikartenlernen |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft bindet genau eine aktive
-content-addressierte MCP-Apps-Ressource für das Bild des aktiven atomaren
-Lernziels. Ausschließlich das dedizierte read-only Werkzeug
-`render_skillpilot_goal_visualization` referenziert sie über `ui.resourceUri`
-und `openai/outputTemplate`. Bereits an reale Test-Clients ausgelieferte
+Der noch unveröffentlichte V1-Draft bindet zwei aktive, getrennte
+content-addressierte MCP-Apps-Ressourcen: eine für das Bild des aktiven atomaren
+Lernziels und eine für interaktives Karteikartenlernen im Chat. Die read-only
+Werkzeuge `render_skillpilot_goal_visualization` und
+`start_skillpilot_memory_practice` referenzieren jeweils ausschließlich ihre
+eigene Ressource über `ui.resourceUri` und `openai/outputTemplate`. Das nur von
+der App aufrufbare Bewertungswerkzeug bleibt ungebunden. Bereits an reale Test-Clients ausgelieferte
 Hash-URIs bleiben mit ihren exakten Bytes als passive Ressourcen lesbar. Der Renderer
 liefert der bild-only Komponente eine begrenzte strukturierte
 `goalVisualization`-Projektion; nacktes MCP-`ImageContent` ist kein
-Sichtbarkeitsvertrag. Coach-, Auswahl-, Antwort- und Zustandsabläufe bleiben
-Chat-/Tool-basiert und ihre Werkzeuge UI-frei. Der Adapter wertet für die
+Sichtbarkeitsvertrag. Die Kartenressource erhält einen begrenzten fälligen
+Kartenstapel nur in privatem Resultat-`_meta`. Umdrehen und Vor-/Zurückblättern
+bleiben lokal; nur `Noch nicht gewusst` oder `Gewusst` schreibt die angezeigte
+Karte atomar über das app-only Werkzeug.
+Coach-, Auswahl- und sonstige Zustandsabläufe bleiben Chat-/Tool-basiert und
+ihre Werkzeuge UI-frei. Der Adapter wertet für die
 Freigabe weder `openai/userAgent` noch eine andere Client-Oberflächenklasse aus.
 Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und
 Directory verwenden ausschließlich den dedizierten V1-Origin. Die acht
@@ -44,8 +50,8 @@ neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
 Diese passive Retention ist keine zweite aktive UI-Version: Kein Werkzeug darf
 auf eine Vorgängerressource zeigen. Sie schützt ausschließlich den späteren
 Template-Abruf aus Provider-Metadaten- und Chat-Snapshots. Nach einem
-Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und die
-aktuelle URI in einem neuen Chat geprüft.
+Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und beide
+aktiven URIs in einem neuen Chat geprüft.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
 
@@ -139,13 +145,18 @@ Paketänderung benötigt eine neue SemVer.
 7. Erst nach grüner CI den Backend-Build und die V1-Edge-Konfiguration
    ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
    Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
-   prüfen. `resources/list` muss genau die aktive hashgebundene Bild-UI
-   enthalten. Nur `render_skillpilot_goal_visualization` darf sie über
-   `ui.resourceUri` und `openai/outputTemplate` referenzieren. Bei einem aktiven
+   prüfen. `resources/list` muss beide aktiven hashgebundenen UI-Ressourcen und
+   alle passiv aufbewahrten Ressourcen enthalten. Bild-Renderer und
+   Karteikarten-Start dürfen jeweils nur ihre eigene aktive Ressource über
+   `ui.resourceUri` und `openai/outputTemplate` referenzieren; das
+   Karten-Bewertungswerkzeug bleibt app-only und ungebunden. Bei einem aktiven
    atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
    strukturierte Projektion genau einmal an die bild-only Komponente liefern.
-   Ohne gültiges Bild darf keine leere UI entstehen; derselbe Ablauf muss als
-   normale Chatdarstellung weiter funktionieren.
+   Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
+   ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf
+   keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur
+   `not_known` oder `known`. Ohne gültiges Bild oder nutzbare Komponente muss der
+   normale Chat- beziehungsweise Cockpit-Fallback erhalten bleiben.
 8. Die neue Plugin-Version im OpenAI-Portal aktualisieren. Die
    hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
    das Veröffentlichungsvehikel.

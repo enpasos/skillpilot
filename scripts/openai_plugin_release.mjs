@@ -15,7 +15,7 @@ import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   advancePublishedIndex,
-  assertActiveUiResource,
+  assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
   assertReleaseCompatible,
@@ -83,6 +83,10 @@ const goalVisualizationWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const memoryCardPracticeWidgetSource = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
+);
 const retainedGoalVisualizationWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
@@ -91,6 +95,7 @@ const retainedGoalVisualizationWidgetSource = resolve(
 );
 const uiArtifactSources = new Map([
   ["ui/goal-visualization.html", goalVisualizationWidgetSource],
+  ["ui/memory-card-practice.html", memoryCardPracticeWidgetSource],
   [
     "ui/retained/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
     retainedGoalVisualizationWidgetSource,
@@ -309,7 +314,7 @@ function buildCandidate(output) {
 
   const uiManifest = {
     schemaVersion: line.ui.stateSchemaVersion,
-    activeResourceUri: line.ui.activeResourceUri,
+    activeBindings: line.ui.activeBindings,
     domain: line.ui.domain,
     enabled: line.ui.enabled,
     resources: line.ui.resources.map((resource) => {
@@ -437,17 +442,17 @@ function validateCandidate(output) {
   assert.equal(
     releaseContract.uiManifest.enabled,
     true,
-    "The V1 goal-visualization MCP UI must be enabled.",
+    "The V1 MCP App UI resources must be enabled.",
   );
   assert.equal(
     releaseContract.uiManifest.domain,
     candidateLine.ui.domain,
     "The exported MCP UI widget domain must match the V1 release line.",
   );
-  assert.equal(
-    releaseContract.uiManifest.activeResourceUri,
-    candidateLine.ui.activeResourceUri,
-    "The UI manifest active resource must match the V1 release line.",
+  assert.deepEqual(
+    releaseContract.uiManifest.activeBindings,
+    candidateLine.ui.activeBindings,
+    "The UI manifest active bindings must match the V1 release line.",
   );
   assert.equal(
     Object.hasOwn(candidateLine, "publicUiOrigin"),
@@ -472,8 +477,8 @@ function validateCandidate(output) {
     candidateLine.ui.resources,
     "UI manifest resources disagree with the release line.",
   );
-  assertActiveUiResource(
-    candidateLine.ui.activeResourceUri,
+  assertActiveUiBindings(
+    candidateLine.ui.activeBindings,
     releaseContract.uiManifest.resources,
     contract.tools,
   );

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
-    public static final int EXPECTED_TOOL_COUNT = 12;
+    public static final int EXPECTED_TOOL_COUNT = 14;
 
     private final OpenAiDeProperties properties;
     private final boolean contractAvailable;

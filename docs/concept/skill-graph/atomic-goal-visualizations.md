@@ -351,8 +351,9 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
 - The image works in the cockpit goal card and in the multilingual OpenAI
-  renderer's one active, hash-bound image-only MCP Apps UI resource. Only the
-  renderer is template-bound; no ordinary tool creates an empty UI component.
+  renderer's dedicated active, hash-bound image-only MCP Apps UI resource. Only
+  the renderer binds this image resource; no ordinary tool creates an empty UI
+  component. Other dedicated UI tools use their own resources.
 - The visual does not replace the need for explanation, practice, or assessment.
 - `altText` is specific enough for non-visual use.
 - `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.

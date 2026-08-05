@@ -44,6 +44,7 @@ MCP-Werkzeug.
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
+| Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
@@ -58,13 +59,14 @@ RFC-8414-Route bleibt maßgeblich. Der issuer-relative Kompatibilitätsalias ist
 zusätzlich erforderlich, weil ChatGPT ihn bei einer erneuten MCP-Initialisierung
 abruft; er aktiviert weder OpenID-Scopes noch ID-Tokens.
 
-Das Draft-Inventar enthält genau diese eine aktive, content-addressierte
-Ressource und bereits ausgelieferte Hash-URIs als byte-identische passive
-Ressourcen. Ausschließlich `render_skillpilot_goal_visualization` referenziert
-die aktive URI über `ui.resourceUri` und `openai/outputTemplate`; alle
-gewöhnlichen Werkzeuge und alle Retention-Vorgänger bleiben UI-frei. Nach dem
-Update werden die Plugin-Metadaten aktualisiert und neue Chats zusätzlich
-gegen die aktuelle URI geprüft.
+Das Draft-Inventar enthält je eine aktive, content-addressierte Ressource für
+Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte Hash-URIs als
+byte-identische passive Ressourcen. `render_skillpilot_goal_visualization` und
+`start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
+URI über `ui.resourceUri` und `openai/outputTemplate`. Das app-only
+Bewertungswerkzeug, gewöhnliche Werkzeuge und alle Retention-Vorgänger bleiben
+ungebunden. Nach dem Update werden die Plugin-Metadaten aktualisiert und neue
+Chats zusätzlich gegen beide aktiven URIs geprüft.
 
 Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
@@ -582,7 +584,7 @@ Bei `SKILLPILOT_OPENAI_COACH_V1_ENABLED=true` registriert Spring den Health-Cont
 `openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der erwartete Vertrag mit genau zwölf Werkzeugen geladen ist.
+HTTPS verwenden und der erwartete Vertrag mit genau vierzehn Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
@@ -613,7 +615,7 @@ skillpilot.openai.coach.v1.operational.event
 ```
 
 Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags `tool`
-(zwölf bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
+(vierzehn bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
 `exception`). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
 Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
 noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
@@ -661,12 +663,14 @@ Anwendungslogs erscheinen.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
-   ausführen. Prüfen, dass genau die zwölf sprachneutralen Produktivwerkzeuge
+   ausführen. Prüfen, dass genau die vierzehn sprachneutralen Produktivwerkzeuge
    erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
-   dürfen sichtbar sein. `resources/list` muss genau die aktive hashgebundene
-   Lernzielbild-Ressource enthalten. Nur
-   `render_skillpilot_goal_visualization` darf sie über `ui.resourceUri` und
-   `openai/outputTemplate` referenzieren.
+   dürfen sichtbar sein. `resources/list` muss die zwei aktiven hashgebundenen
+   Ressourcen und die passiv aufbewahrte Lernzielbild-Ressource enthalten.
+   `render_skillpilot_goal_visualization` und
+   `start_skillpilot_memory_practice` müssen jeweils ausschließlich ihre eigene
+   aktive Ressource referenzieren. `review_skillpilot_memory_practice_card` ist
+   app-only und ungebunden.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
@@ -684,12 +688,14 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau eine
-aktive read-only MCP Apps UI-Ressource für das Bild des aktiven atomaren
-Lernziels und hält zuvor ausgelieferte Hash-URIs passiv lesbar. Nur
-`render_skillpilot_goal_visualization` referenziert die aktive Ressource über
-`ui.resourceUri` und den ChatGPT-Kompatibilitätsalias
-`openai/outputTemplate`; Auswahl und Coaching bleiben im normalen Chat. Der
+Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert zwei getrennte
+aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
+atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
+Zuvor ausgelieferte Hash-URIs bleiben passiv lesbar.
+`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
+referenzieren jeweils nur ihre eigene aktive Ressource über `ui.resourceUri`
+und den ChatGPT-Kompatibilitätsalias `openai/outputTemplate`; das app-only
+Bewertungswerkzeug ist ungebunden. Auswahl und Coaching bleiben im normalen Chat. Der
 Kontext projiziert `goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei
 einem aktiven atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
 Cockpit-Einstellung. Der Renderer prüft Backendzustand, Ziel-ID und
@@ -717,10 +723,36 @@ die strukturierte Projektion an die eine MCP Apps UI; der vollständige Textpfad
 bleibt unverändert erhalten, wenn ein Host die optionale Komponente nicht
 darstellt.
 
-Da V1 unveröffentlicht ist, gibt es keine Kompatibilitätszusage für alte
-Widget-Testnachrichten. Das Inventar enthält genau die aktuelle Ressource und
-keine früheren Template-URIs. Abnahme und Fehlersuche erfolgen nach
-Plugin-Refresh ausschließlich in einem frischen Chat.
+Für ein aktives Lernkartenziel veröffentlicht der Kontext zwei klar getrennte
+Modi: **Karteikarten lernen** und **Mit Lerncoach prüfen**. Der erste Modus ruft
+`start_skillpilot_memory_practice` auf. Nur dessen Komponente erhält die
+Vorder- und Rückseiten eines begrenzten fälligen Kartenstapels in Resultat-`_meta`.
+Das Umdrehen sowie Vor- und Zurückblättern bleiben rein lokal und schreiben
+keinen Zustand. Erst die einfache Entscheidung `Noch nicht gewusst` oder
+`Gewusst` speichert `not_known` beziehungsweise `known` atomar über das app-only
+Werkzeug `review_skillpilot_memory_practice_card`. Modell-sichtbar bleiben nur
+Status und Fortschritt. Eine Bewertung verändert ausschließlich die
+Wiederholungsplanung; intern werden die beiden Entscheidungen auf die
+SM-2-Qualitäten `1` und `4` abgebildet. Sie setzt weder Mastery noch beendet sie
+das aktive Ziel. Das Modell startet die Komponente nur einmal. Nach dem Ende
+eines begrenzten Stapels darf ausschließlich die Komponente mit der neuesten
+State-Version den nächsten fälligen Stapel laden.
+Mathematik und das kleine erlaubte Markdown-Subset werden lokal und ohne
+unsichere HTML-Injektion gerendert. Kann der Host die Komponente nicht nutzen,
+bleibt der vom Backend gelieferte Cockpit-Link die Ausweichmöglichkeit.
+
+**Mit Lerncoach prüfen** bleibt der bestehende harte Verified-Recall-Ablauf
+ohne Hilfestellung. Nur diese Prüfung kann den für Lernkartenziele vorgesehenen
+Beherrschungsnachweis liefern. Die für Lernende sichtbare deutsche Bezeichnung
+lautet „Karteikartenlernen“ beziehungsweise „Karteikarten lernen“, nicht
+„SRS-Kartendrill“.
+
+Da V1 unveröffentlicht ist, gibt es keine Produkt-Kompatibilitätszusage für alte
+Widget-Testnachrichten. Bereits real an Test-Clients ausgelieferte
+content-addressierte Ressourcen bleiben dennoch byte-identisch passiv lesbar,
+damit Provider-Caches und vorhandene Test-Chats nicht mit „Failed to fetch
+template“ brechen. Abnahme und Fehlersuche erfolgen nach Plugin-Refresh
+zusätzlich in einem frischen Chat.
 
 Die `learningSessionId` erscheint ausschließlich in der automatisch
 vorbereiteten Startnachricht und wird danach als Toolparameter weitergereicht;

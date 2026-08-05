@@ -35,13 +35,13 @@ Wenn der aktuelle Zustand `stateMachine.requiredAction = chooseMemoryMode` liefe
 ist ein `srs-deck:`-Ziel **kein automatischer Deep-Link-Fall**.
 
 Pflichtverhalten:
-- Wenn die lernende Person üben will: Cockpit-Link ausgeben.
+- Wenn die lernende Person Karteikarten lernen will: den Cockpit-Link ausgeben.
 - Wenn die lernende Person geprüft, abgefragt oder getestet werden will:
   `verified-recall/start` aufrufen und die Prüfung im GPT durchführen.
-- Wenn keine Richtung genannt wurde: kurz zwischen „im Cockpit üben“ und „hier prüfen lassen“ wählen lassen.
+- Wenn keine Richtung genannt wurde: kurz zwischen „im Cockpit Karteikarten lernen“ und „hier prüfen lassen“ wählen lassen.
 
 Mastery für Lernkarten entsteht **erst nach bestandener Verified-Recall-Prüfung**,
-nicht durch das bloße Öffnen des Cockpit-Drills.
+nicht durch das bloße Öffnen des Karteikartenlernens im Cockpit.
 
 Verboten:
 - kein generisches `[Start Exercise]`
@@ -90,9 +90,9 @@ Beispiel für spezialisiertes App-Training:
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
-Beispiel für Lernkarten-Cockpit-Üben:
+Beispiel für Karteikartenlernen im Cockpit:
 ```md
-[Im Cockpit üben](https://skillpilot.com/?l=...&goal=...)
+[Im Cockpit Karteikarten lernen](https://skillpilot.com/?l=...&goal=...)
 ```
 
 Regeln:
@@ -138,7 +138,7 @@ Das üben wir am effektivsten mit dem interaktiven Lerncoach:
 Beispiel Lernkarten ohne Moduswunsch:
 ```md
 Lernziel: Lernkarten - Sek I Kernformeln
-Möchtest du im Cockpit üben oder dich hier im GPT prüfen lassen?
+Möchtest du im Cockpit Karteikarten lernen oder dich hier im GPT prüfen lassen?
 ```
 
 ---

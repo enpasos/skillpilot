@@ -141,7 +141,7 @@ class AiPromptContractTest {
                 "chooseMemoryMode",
                 "Verified-Recall",
                 "kein generisches `[Start Exercise]`",
-                "[Im Cockpit üben]");
+                "[Im Cockpit Karteikarten lernen]");
         assertDoesNotContainFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.de.md"),
                 "Hat dieses Ziel `srs-deck:` oder `extendedData`?");
@@ -150,7 +150,7 @@ class AiPromptContractTest {
                 "chooseMemoryMode",
                 "Verified Recall",
                 "no generic `[Start Exercise]`",
-                "[Practice in the Cockpit]");
+                "[Learn with flashcards in the Cockpit]");
         assertDoesNotContainFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.en.md"),
                 "Does this goal have `srs-deck:` or `extendedData`?");

@@ -402,7 +402,13 @@ class VisibleSessionServiceTest {
                 curriculum(List.of()),
                 null,
                 List.of(
-                        new LearningModeOption("practice", "Üben", "Im Cockpit üben", "openCockpitPractice", "cockpit", goal.id()),
+                        new LearningModeOption(
+                                "practice",
+                                "Karteikarten lernen",
+                                "Öffne das Karteikartenlernen im Cockpit für fällige Karten und Wiederholung.",
+                                "openCockpitPractice",
+                                "cockpit",
+                                goal.id()),
                         new LearningModeOption("verify", "Prüfen", "Im Chat prüfen", "startVerifiedRecall", "gpt", goal.id())));
         when(facade.getSessionState(TOKEN)).thenReturn(state);
         VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
@@ -412,7 +418,7 @@ class VisibleSessionServiceTest {
         assertThat(presented.interactionMode()).isEqualTo("selection");
         assertThat(presented.activeGoal().nodeKind()).isEqualTo("memory");
         assertThat(presented.selection().options()).extracting(VisibleCoachStateResponse.SelectionOption::label)
-                .containsExactly("Im Cockpit üben", "Mit Lerncoach prüfen");
+                .containsExactly("Im Cockpit Karteikarten lernen", "Mit Lerncoach prüfen");
         assertThat(presented.allowedActions()).containsExactly(
                 "getVisibleState",
                 "requestVisibleNavigation",
@@ -422,7 +428,16 @@ class VisibleSessionServiceTest {
         VisibleCoachStateResponse english = service.getState(TOKEN, "en");
         assertThat(english.selection().options())
                 .extracting(VisibleCoachStateResponse.SelectionOption::label)
-                .containsExactly("Practice in the Cockpit", "Check with the learning coach");
+                .containsExactly("Learn with flashcards in the Cockpit", "Check with the learning coach");
+
+        VisibleSessionService.ActionOutcome practiceOutcome = service.choose(
+                TOKEN,
+                "de",
+                new VisibleChoiceRequest(presented.selection().selectionReference(), 1));
+
+        assertThat(practiceOutcome.status()).isEqualTo(HttpStatus.OK);
+        assertThat(practiceOutcome.response().instruction()).contains("Cockpit-Link");
+        assertThat(practiceOutcome.response().interactionMode()).isEqualTo("cockpit");
 
         VisibleSessionService.ActionOutcome outcome = service.choose(
                 TOKEN,

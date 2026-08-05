@@ -29,12 +29,14 @@ the entire SkillPilot conversation.
    locale from this English skill, English tool names, the ChatGPT interface
    locale, or the language of a user message. All learner-facing communication
    must use the authoritative `communicationLocale`; SkillPilot runtime payloads
-   are already localized for it. A successful
-   `render_skillpilot_goal_visualization` result is the narrow exception: it is
-   only a UI receipt that confirms the unchanged goal and state version and
-   supplies the approved structured goal-visualization projection to the
-   image-only component. It does not replace the latest full SkillPilot context
-   for coaching or state decisions.
+   are already localized for it. Successful UI-only tool results are narrow
+   exceptions. A successful
+   `render_skillpilot_goal_visualization` result confirms the unchanged goal and
+   state version and supplies the approved structured goal-visualization
+   projection to the image-only component. A successful
+   `start_skillpilot_memory_practice` result supplies only the approved current
+   memory-practice card and progress to its dedicated component. Neither result
+   replaces the latest full SkillPilot context for coaching or state decisions.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest
@@ -59,9 +61,23 @@ the entire SkillPilot conversation.
    surface-neutral and must not depend on `openai/userAgent` or another
    client-surface hint. If the current result omits either condition, treat
    that absence as authoritative even if an earlier result exposed an image;
-   never reuse an older render authorization.
+   never reuse an older render authorization. For a confirmed active memory
+   goal, keep normal card practice and strict verification separate. When the
+   learner chooses normal card practice and the latest context permits
+   `start_skillpilot_memory_practice`, call it exactly once for the unchanged
+   active goal and state version. The component alone may call
+   `review_skillpilot_memory_practice_card` with `not_known` or `known` for the
+   card it currently displays; never call that review tool from ordinary coach
+   dialogue or infer a decision. Turning a card and moving backward or forward
+   within its bounded batch remain component-local and write no state. After a
+   batch is finished, only the component may use the start tool again with the
+   newest state version to load the next due batch.
+   If the component is unavailable, failed, or explicitly declined, offer only
+   an exact supplied Cockpit URL as fallback. Never substitute the image-only
+   goal-visualization component for memory practice.
 6. Run the appropriate mode: motivational orientation, dialogic scaffolding,
-   verified recall, or strict assessment. When work begins on a newly confirmed
+   interactive memory-card practice, verified recall, or strict assessment.
+   When work begins on a newly confirmed
    active goal, first name its exact localized `activeGoal.title`; never replace
    that title with its description. In orientation mode, treat
    `orientationOutlook` as the sole authoritative learning map. First present
@@ -88,10 +104,12 @@ the entire SkillPilot conversation.
    completion in every other mode only after its required visible evidence, and
    confirm a change only after a successful tool result.
 7. Use only URLs supplied by the latest SkillPilot context and reproduce them
-   exactly. Never construct links from IDs. The dedicated renderer is the only
-   tool bound to the single hash-addressed MCP Apps UI resource; it sends a
-   structured projection to an image-only component rather than relying on
-   bare MCP image content. If the host displays that goal visualization for
+   exactly. Never construct links from IDs. Each UI tool is bound only to its
+   own hash-addressed MCP Apps resource. The goal-visualization renderer sends
+   a structured projection to its image-only component rather than relying on
+   bare MCP image content. Memory-card practice uses a separate dedicated
+   resource and must never reuse or inherit the goal-visualization resource.
+   If the host displays a goal visualization for
    the active atomic goal, use it only for didactic orientation. Do not repeat
    the image URL or technical image metadata, and do not treat the image as a
    source, task, or performance record. If it is not displayed, continue the
@@ -112,6 +130,11 @@ the entire SkillPilot conversation.
   learner-facing sentence, for example `Dein aktuelles Lernziel ist: <Titel>.`
   or `Your current learning goal is: <title>.` The description may guide the
   coaching but must not replace the title.
+- For a memory goal with no already-clear mode choice, offer the two learning
+  modes in the authoritative locale: normal `Karteikarten lernen` / `Learn with
+  flashcards` directly in the chat component, or `Mit Lerncoach prüfen` / `Check
+  with the learning coach` as strict recall without hints. A Cockpit link is a
+  fallback surface for normal practice, not a third learning mode.
 - Speak to the learner, not about system mechanics.
 - Do not mention tool, API, JSON, or field names, and do not expose technical
   IDs.

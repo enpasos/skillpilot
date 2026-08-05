@@ -6,6 +6,10 @@ import { coachContract, localizedCatalogs } from "../server/contracts/index.mjs"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const template = await readFile(join(root, "widget/template.html"), "utf8");
+const memoryCardPracticeTools = Object.freeze({
+  start: "start_skillpilot_memory_practice",
+  review: "review_skillpilot_memory_practice_card"
+});
 
 for (const catalog of Object.values(localizedCatalogs)) {
   const result = await build({
@@ -76,3 +80,47 @@ const backendGoalVisualizationOutput = join(
 await mkdir(dirname(backendGoalVisualizationOutput), { recursive: true });
 await writeFile(backendGoalVisualizationOutput, goalVisualizationHtml);
 console.log(`Built ${backendGoalVisualizationOutput}`);
+
+const memoryCardPracticeResult = await build({
+  entryPoints: [join(root, "widget/src/memory-card-practice-main.ts")],
+  bundle: true,
+  format: "iife",
+  platform: "browser",
+  target: "es2022",
+  write: false,
+  minify: true,
+  loader: { ".css": "text" },
+  define: {
+    __TOOL_MEMORY_CARD_START__: JSON.stringify(memoryCardPracticeTools.start),
+    __TOOL_MEMORY_CARD_REVIEW__: JSON.stringify(memoryCardPracticeTools.review)
+  }
+});
+const memoryCardPracticeBundle =
+  memoryCardPracticeResult.outputFiles.find((file) => file.path.endsWith(".js")) ||
+  memoryCardPracticeResult.outputFiles[0];
+if (!memoryCardPracticeBundle) {
+  throw new Error("No JavaScript bundle generated for the memory-card practice widget");
+}
+const memoryCardPracticeHtml = template
+  .replace("__LANG__", "en")
+  .replace("__TITLE__", "SkillPilot flashcard practice")
+  .replace("__BUNDLE__", () =>
+    memoryCardPracticeBundle.text.replaceAll("</script", "<\\/script")
+  );
+const memoryCardPracticeOutput = join(
+  root,
+  "dist",
+  "memory-card-practice",
+  "widget.html"
+);
+await mkdir(dirname(memoryCardPracticeOutput), { recursive: true });
+await writeFile(memoryCardPracticeOutput, memoryCardPracticeHtml);
+console.log(`Built ${memoryCardPracticeOutput}`);
+
+const backendMemoryCardPracticeOutput = join(
+  root,
+  "../../backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html"
+);
+await mkdir(dirname(backendMemoryCardPracticeOutput), { recursive: true });
+await writeFile(backendMemoryCardPracticeOutput, memoryCardPracticeHtml);
+console.log(`Built ${backendMemoryCardPracticeOutput}`);

@@ -9,6 +9,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -400,6 +401,82 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain("/private/exam-image.png", "IMAGE_PATH");
     }
 
+    @Test
+    void memoryModeOffersLocalizedInChatPracticeAndSeparateStrictRecallWithoutExposingReviewTool() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        UnifiedLearnerStateResponse state = memoryModeState();
+
+        OpenAiDeCoachContext german = projector.project(
+                state,
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "de");
+        OpenAiDeCoachContext english = projector.project(
+                state,
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "en-GB");
+
+        assertThat(german.options())
+                .extracting(
+                        OpenAiDeCoachContext.Option::label,
+                        OpenAiDeCoachContext.Option::description,
+                        OpenAiDeCoachContext.Option::action)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple(
+                                "Karteikarten lernen",
+                                "Lerne fällige Karteikarten direkt hier im Chat, Karte für Karte.",
+                                "startMemoryPractice"),
+                        org.assertj.core.groups.Tuple.tuple(
+                                "Mit Lerncoach prüfen",
+                                "Harte Abfrage ohne Hilfestellung.",
+                                "startVerifiedRecall"));
+        assertThat(english.options())
+                .extracting(
+                        OpenAiDeCoachContext.Option::label,
+                        OpenAiDeCoachContext.Option::description,
+                        OpenAiDeCoachContext.Option::action)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple(
+                                "Learn with flashcards",
+                                "Learn due flashcards directly here in the chat, one card at a time.",
+                                "startMemoryPractice"),
+                        org.assertj.core.groups.Tuple.tuple(
+                                "Check with the learning coach",
+                                "Strict recall without hints.",
+                                "startVerifiedRecall"));
+        assertThat(german.nextAllowedTools())
+                .contains(
+                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        OpenAiDeV1McpContractAdapter.START_RECALL)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
+        assertThat(english.nextAllowedTools())
+                .contains(
+                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        OpenAiDeV1McpContractAdapter.START_RECALL)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
+        assertThat(german.instruction())
+                .contains(
+                        "Dein aktuelles Lernziel ist: Lernkarten – Funktionen und Gleichungen.",
+                        "Karteikartenlernen im Chat",
+                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        "Behaupte weder Zielabschluss noch Beherrschung",
+                        "activeGoal.cockpitUrl",
+                        "harte Abrufprüfung")
+                .doesNotContain("SRS-Kartendrill");
+        assertThat(english.instruction())
+                .contains(
+                        "Your current learning goal is: Lernkarten – Funktionen und Gleichungen.",
+                        "in-chat flashcard learning",
+                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        "Never claim goal completion or mastery",
+                        "activeGoal.cockpitUrl",
+                        "start strict recall")
+                .doesNotContain("SRS card drill");
+    }
+
     private static OpenAiDeCoachContext projectGerman(
             OpenAiDeCoachContextProjector projector,
             UnifiedLearnerStateResponse state) {
@@ -408,6 +485,71 @@ class OpenAiDeCoachContextProjectorTest {
                 PersonalizationPlan.complete(List.of()),
                 true,
                 "de");
+    }
+
+    private static UnifiedLearnerStateResponse memoryModeState() {
+        FrontierGoal active = new FrontierGoal(
+                "memory-public-id",
+                "Lernkarten – Funktionen und Gleichungen",
+                "Rufe wichtige Formeln sicher ab.",
+                "atomic",
+                "memory",
+                "frontier",
+                List.of("memorization", "srs-deck:deck-1"),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik",
+                "",
+                "DE",
+                "",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        LearnerGoals goals = new LearnerGoals(
+                List.of(active),
+                0,
+                1,
+                new GoalStats(0, 1),
+                new GoalStats(0, 1),
+                false);
+        List<LearningModeOption> modes = List.of(
+                new LearningModeOption(
+                        "practice",
+                        "Im Cockpit üben",
+                        "Mit dem SRS-Kartendrill.",
+                        "openCockpitPractice",
+                        "cockpit",
+                        active.id()),
+                new LearningModeOption(
+                        "verify",
+                        "Mit Lerncoach prüfen",
+                        "Harte Abfrage ohne Hilfestellung.",
+                        "startVerifiedRecall",
+                        "gpt",
+                        active.id()));
+        return new UnifiedLearnerStateResponse(
+                "SECRET-LEARNER-ID",
+                curriculum,
+                List.of(active),
+                goals,
+                List.of("chooseMemoryMode"),
+                List.of(),
+                Set.of(),
+                "learning",
+                active,
+                new StateMachineInfo(
+                        "MEMORY_MODE",
+                        "chooseMemoryMode",
+                        List.of(),
+                        List.of(),
+                        active,
+                        modes));
     }
 
     private static UnifiedLearnerStateResponse imageExamState() {

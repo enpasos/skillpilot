@@ -20,8 +20,7 @@ export function FlashcardFlipCard({
   return (
     <div className="relative w-full aspect-[4/3]" style={{ perspective: '1000px' }}>
       <div
-        className="w-full h-full relative cursor-pointer"
-        onClick={onFlip}
+        className="w-full h-full relative"
         style={{
           transformStyle: 'preserve-3d',
           transition: 'transform 0.6s',
@@ -29,6 +28,7 @@ export function FlashcardFlipCard({
         }}
       >
         <div
+          aria-hidden={isFlipped}
           className="absolute inset-0 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border-2 border-gray-100 dark:border-slate-700 flex flex-col items-center justify-center p-6 text-center"
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
         >
@@ -41,6 +41,7 @@ export function FlashcardFlipCard({
         </div>
 
         <div
+          aria-hidden={!isFlipped}
           className="absolute inset-0 bg-sky-50 dark:bg-slate-900 rounded-2xl shadow-xl border-2 border-sky-200 dark:border-sky-900 flex flex-col items-center justify-center p-6 text-center"
           style={{
             transform: 'rotateY(180deg)',
@@ -54,6 +55,14 @@ export function FlashcardFlipCard({
           />
         </div>
       </div>
+
+      <button
+        type="button"
+        className="absolute inset-0 z-10 cursor-pointer rounded-2xl border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
+        aria-label={tapToFlipText}
+        aria-pressed={isFlipped}
+        onClick={onFlip}
+      />
     </div>
   )
 }

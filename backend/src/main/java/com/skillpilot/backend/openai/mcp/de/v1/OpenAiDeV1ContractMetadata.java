@@ -32,6 +32,14 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MCP_APP_RESOURCE_MIME_TYPE = "text/html;profile=mcp-app";
     public static final String GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/skillpilot-goal-visualization-v1.html";
+    public static final String MEMORY_CARD_PRACTICE_ARTIFACT_SHA256 =
+            "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852";
+    public static final String MEMORY_CARD_PRACTICE_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/sha256-"
+                    + MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
+                    + "/memory-card-practice.html";
+    public static final String MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH =
+            "/openai/skillpilot-memory-card-practice-v1.html";
     /**
      * Previously advertised content-addressed UI resource retained for cached
      * connector metadata and historical chat messages.

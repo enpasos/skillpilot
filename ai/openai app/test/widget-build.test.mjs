@@ -141,3 +141,74 @@ test("goal visualization widget is self-contained and uses the standards-first M
     "widget including the official MCP Apps protocol client should remain bounded"
   );
 });
+
+test("memory-card practice widget is private-data-safe, interactive, and embedded byte-exactly", async () => {
+  const html = await readFile(
+    new URL("../dist/memory-card-practice/widget.html", import.meta.url),
+    "utf8"
+  );
+  const backendHtml = await readFile(
+    new URL(
+      "../../../backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
+      import.meta.url
+    ),
+    "utf8"
+  );
+  const source = await readFile(
+    new URL("../widget/src/memory-card-practice-main.ts", import.meta.url),
+    "utf8"
+  );
+  const parserSource = await readFile(
+    new URL("../widget/src/memory-card-practice.ts", import.meta.url),
+    "utf8"
+  );
+
+  assert.equal(backendHtml, html, "the Java server must embed the tested widget bytes");
+  assert.match(html, /^<!doctype html>/i);
+  assert.match(html, /start_skillpilot_memory_practice/);
+  assert.match(html, /review_skillpilot_memory_practice_card/);
+  assert.match(html, /tools\/call/);
+  assert.match(html, /toolResponseMetadata/);
+  assert.match(html, /skillpilotMemoryCard/);
+  assert.match(html, /Karteikarten lernen/);
+  assert.match(html, /Learn with flashcards/);
+  assert.match(html, /Antwort zeigen/);
+  assert.match(html, /Show answer/);
+  assert.match(html, /Noch nicht gewusst/);
+  assert.match(html, /Not yet/);
+  assert.match(html, /Gewusst/);
+  assert.match(html, /Got it/);
+  assert.match(html, /Stapel/);
+  assert.match(html, /Open next batch/);
+  assert.match(html, /ArrowLeft/);
+  assert.match(html, /ArrowRight/);
+  assert.match(html, /Space/);
+  assert.doesNotMatch(html, /(?:Nochmal|Again|Schwer|Hard|Einfach|Easy)/);
+  assert.match(html, /setTimeout/, "loading and writes must have finite timeouts");
+  assert.match(html, /Im Cockpit (?:öffnen|\\xF6ffnen)/);
+  assert.match(html, /Open cockpit/);
+  assert.match(html, /clientRequestId/);
+  assert.match(html, /expectedStateVersion/);
+  assert.match(
+    parserSource,
+    /Never traverse structuredContent/,
+    "the parser documents its private-metadata boundary; behavior is covered separately"
+  );
+  assert.doesNotMatch(
+    source,
+    /navigator\.userAgent|isMobile|deviceType/,
+    "the widget contract must not branch on a guessed client surface"
+  );
+  assertInlineScriptParses(html, "memory-card-practice/widget.html");
+  assert.doesNotMatch(html, /<script[^>]+src=/i);
+  assert.doesNotMatch(html, /<link[^>]+rel=["']stylesheet/i);
+  assert.doesNotMatch(
+    html,
+    /<(?:script|link|img|iframe|source)[^>]+(?:src|href)=["']https?:\/\//i,
+    "widget must not hard-code external runtime assets"
+  );
+  assert.ok(
+    Buffer.byteLength(html) < 800_000,
+    "widget bundle including the self-contained KaTeX/MathML renderer must remain bounded"
+  );
+});

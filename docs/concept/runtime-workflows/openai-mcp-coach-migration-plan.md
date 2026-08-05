@@ -344,10 +344,11 @@ Vollersatzsemantik.
 Eine spätere Widget-Version darf opake, kurzlebige Choice-Referenzen und
 app-exklusive Tools ergänzen.
 
-`chooseMemoryMode` braucht kein eigenes Tool: „Im Cockpit üben“ führt zum
-Cockpit-Link, „Mit Lerncoach prüfen“ startet Verified Recall. Ein `retest`-Feld
-wird erst veröffentlicht, wenn es vom Backend tatsächlich fachlich ausgewertet
-wird.
+Der umgesetzte OpenAI-V1-Vertrag konkretisiert `chooseMemoryMode` inzwischen
+provider-spezifisch: „Karteikarten lernen“ startet die dedizierte MCP-Apps-
+Komponente, „Mit Lerncoach prüfen“ startet Verified Recall. Provider ohne diese
+Komponente behalten den Cockpit-Link als Übungsweg. Ein `retest`-Feld wird erst
+veröffentlicht, wenn es vom Backend tatsächlich fachlich ausgewertet wird.
 
 ### 5.1 Expliziter PersonalizationFlow, zentraler Plan und spärliche Persistenz
 

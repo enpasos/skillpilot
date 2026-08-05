@@ -125,63 +125,107 @@ export function loadReleaseContract(releaseRoot) {
 }
 
 /**
- * Verifies that the V1 line has exactly one active hash-bound MCP App UI
- * resource, while immutable historical resources may remain readable for
- * provider metadata caches. Only the dedicated renderer may point to the
- * active resource.
+ * Verifies the active, per-tool MCP App UI bindings. Immutable historical
+ * resources may remain readable for provider metadata caches, but no tool may
+ * bind one of those passive resources. Each active tool owns one distinct,
+ * hash-bound resource.
  */
-export function assertActiveUiResource(activeResourceUri, resources, tools) {
+export function assertActiveUiBindings(activeBindings, resources, tools) {
   assert.equal(
-    typeof activeResourceUri,
-    "string",
-    "UI activeResourceUri must be a non-empty string.",
+    activeBindings !== null &&
+      typeof activeBindings === "object" &&
+      !Array.isArray(activeBindings),
+    true,
+    "UI activeBindings must be a non-empty object keyed by tool name.",
   );
-  assert.notEqual(
-    activeResourceUri.length,
-    0,
-    "UI activeResourceUri must be a non-empty string.",
+  const expectedBindings = Object.entries(activeBindings ?? {});
+  assert.ok(
+    expectedBindings.length > 0,
+    "UI activeBindings must be a non-empty object keyed by tool name.",
+  );
+  for (const [toolName, activeResourceUri] of expectedBindings) {
+    assert.equal(
+      typeof toolName,
+      "string",
+      "UI activeBindings tool names must be non-empty strings.",
+    );
+    assert.notEqual(
+      toolName.length,
+      0,
+      "UI activeBindings tool names must be non-empty strings.",
+    );
+    assert.equal(
+      typeof activeResourceUri,
+      "string",
+      `UI activeBindings.${toolName} must be a non-empty string.`,
+    );
+    assert.notEqual(
+      activeResourceUri.length,
+      0,
+      `UI activeBindings.${toolName} must be a non-empty string.`,
+    );
+  }
+  assert.equal(
+    new Set(expectedBindings.map(([, uri]) => uri)).size,
+    expectedBindings.length,
+    "Every active MCP App tool must own a distinct UI resource.",
   );
   assert.ok(
     Array.isArray(resources) && resources.length > 0,
-    "The V1 draft must inventory its active MCP App UI resource.",
+    "The V1 draft must inventory its active MCP App UI resources.",
   );
   assert.equal(
     new Set(resources.map(resourceUri)).size,
     resources.length,
     "MCP App UI resource URIs must be unique.",
   );
-  const matchingResources = (resources ?? []).filter(
-    (resource) => resourceUri(resource) === activeResourceUri,
-  );
-  assert.equal(
-    matchingResources.length,
-    1,
-    "UI activeResourceUri must identify exactly one inventoried resource.",
-  );
+  for (const [toolName, activeResourceUri] of expectedBindings) {
+    const matchingResources = (resources ?? []).filter(
+      (resource) => resourceUri(resource) === activeResourceUri,
+    );
+    assert.equal(
+      matchingResources.length,
+      1,
+      `UI activeBindings.${toolName} must identify exactly one inventoried resource.`,
+    );
+  }
 
-  const linkedTools = [];
+  const actualBindings = new Map();
   for (const tool of tools ?? []) {
     const standardUri = tool?.meta?.ui?.resourceUri;
     const compatibilityUri = tool?.meta?.["openai/outputTemplate"];
     if (standardUri === undefined && compatibilityUri === undefined) {
       continue;
     }
-    linkedTools.push(tool.name);
+    assert.equal(
+      Object.hasOwn(activeBindings, tool.name),
+      true,
+      `Tool ${tool.name} links an MCP App UI resource without an active binding.`,
+    );
+    assert.equal(
+      actualBindings.has(tool.name),
+      false,
+      `Tool ${tool.name} has more than one active UI binding descriptor.`,
+    );
+    const activeResourceUri = activeBindings[tool.name];
     assert.equal(
       standardUri,
       activeResourceUri,
-      `Tool ${tool.name} must link ui.resourceUri only to activeResourceUri.`,
+      `Tool ${tool.name} must link ui.resourceUri to its active binding.`,
     );
     assert.equal(
       compatibilityUri,
       activeResourceUri,
-      `Tool ${tool.name} must link openai/outputTemplate only to activeResourceUri.`,
+      `Tool ${tool.name} must link openai/outputTemplate to its active binding.`,
     );
+    actualBindings.set(tool.name, standardUri);
   }
   assert.deepEqual(
-    linkedTools,
-    ["render_skillpilot_goal_visualization"],
-    "Exactly the dedicated goal-visualization renderer must link the active UI resource.",
+    Object.fromEntries(
+      [...actualBindings].sort(([left], [right]) => left.localeCompare(right)),
+    ),
+    Object.fromEntries(expectedBindings.sort(([left], [right]) => left.localeCompare(right))),
+    "Every declared active UI binding must be linked by exactly its dedicated tool.",
   );
 }
 

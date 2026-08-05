@@ -47,14 +47,30 @@ export interface FlashcardDrillCopy {
     readyForReview: string
     tapToFlip: string
     showAnswer: string
-    again: string
-    hard: string
-    good: string
-    easy: string
-    againTooltip: string
-    hardTooltip: string
-    goodTooltip: string
-    easyTooltip: string
+    previousCard: string
+    nextCard: string
+    cardPosition: (current: number, total: number) => string
+    notKnown: string
+    known: string
+    notKnownTooltip: string
+    knownTooltip: string
+    ratingSaved: string
+}
+
+export type FlashcardPracticeRating = 'not_known' | 'known'
+
+export const FLASHCARD_PRACTICE_QUALITY: Readonly<Record<FlashcardPracticeRating, 1 | 4>> = {
+    not_known: 1,
+    known: 4,
+}
+
+export const getAdjacentFlashcardIndex = (
+    currentIndex: number,
+    cardCount: number,
+    direction: -1 | 1,
+): number => {
+    if (cardCount <= 0) return 0
+    return Math.min(cardCount - 1, Math.max(0, currentIndex + direction))
 }
 
 export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCopy => (
@@ -106,14 +122,14 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             readyForReview: 'Cards for today: {0}. Doing 20 of them is great!',
             tapToFlip: 'Tap to flip',
             showAnswer: 'Show Answer',
-            again: 'Again',
-            hard: 'Hard',
-            good: 'Good',
-            easy: 'Easy',
-            againTooltip: 'Did not know it. Review < 1 min.',
-            hardTooltip: 'Correct but slow/unsure.',
-            goodTooltip: 'Correct with some effort.',
-            easyTooltip: 'Instant recall. Perfect.',
+            previousCard: 'Previous card',
+            nextCard: 'Next card',
+            cardPosition: (current, total) => `Card ${current} of ${total}`,
+            notKnown: 'Not yet',
+            known: 'Got it',
+            notKnownTooltip: 'Not recalled yet. Schedule this card sooner.',
+            knownTooltip: 'Recalled. Schedule this card later.',
+            ratingSaved: 'Answer saved',
         }
         : {
             configError: 'Konfigurationsfehler: Fehlende Vokabelquelle.',
@@ -131,7 +147,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             reviewed: 'Du hast {0} Karten wiederholt.',
             continue: 'Weiterlernen',
             readOnlyTitle: 'Legacy-Ansicht',
-            readOnlyBody: 'Der Karteikarten-Drill ist in dieser Legacy-Ansicht deaktiviert. Bitte auf Gymnasium (DE) umstellen, um hier weiterzulernen.',
+            readOnlyBody: 'Das Karteikartenlernen ist in dieser Legacy-Ansicht deaktiviert. Bitte auf Gymnasium (DE) umstellen, um hier weiterzulernen.',
             progress: 'Dein Fortschritt',
             localData: 'Lokale Daten',
             localDataTooltip: 'In diesem Browser gespeichert.',
@@ -162,13 +178,13 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             readyForReview: 'Bereit für heute: {0}.',
             tapToFlip: 'Zum Umdrehen tippen',
             showAnswer: 'Antwort zeigen',
-            again: 'Nochmal',
-            hard: 'Schwer',
-            good: 'Gut',
-            easy: 'Einfach',
-            againTooltip: 'Nicht gewusst. Wdh < 1 Min.',
-            hardTooltip: 'Richtig, aber langsam/unsicher.',
-            goodTooltip: 'Richtig mit etwas Muehe.',
-            easyTooltip: 'Sofort gewusst. Perfekt.',
+            previousCard: 'Vorherige Karte',
+            nextCard: 'Nächste Karte',
+            cardPosition: (current, total) => `Karte ${current} von ${total}`,
+            notKnown: 'Noch nicht gewusst',
+            known: 'Gewusst',
+            notKnownTooltip: 'Noch nicht erinnert. Diese Karte wird früher wiederholt.',
+            knownTooltip: 'Erinnert. Diese Karte wird später wiederholt.',
+            ratingSaved: 'Antwort gespeichert',
         }
 )

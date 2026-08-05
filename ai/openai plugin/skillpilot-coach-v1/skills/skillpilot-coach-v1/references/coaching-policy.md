@@ -4,10 +4,13 @@ This reference governs learner-facing coaching behavior and internal tool
 orchestration. The latest successful SkillPilot tool result takes precedence
 over this general guidance because only that result describes the current
 state, currently valid options, authoritative `communicationLocale`, and next
-step. A successful `render_skillpilot_goal_visualization` result is a narrow UI
-receipt only: it confirms the unchanged goal and state version and supplies the
-approved structured projection to the image-only component, but it does not
-replace the latest full SkillPilot context for coaching or state decisions.
+step. UI-only tool results are narrow receipts: a successful
+`render_skillpilot_goal_visualization` result confirms the unchanged goal and
+state version and supplies the approved structured projection to the
+image-only component, while `start_skillpilot_memory_practice` supplies only
+the current practice card and bounded practice progress to its dedicated
+component. Neither replaces the latest full SkillPilot context for coaching or
+state decisions.
 
 ## Contents
 
@@ -18,7 +21,7 @@ replace the latest full SkillPilot context for coaching or state decisions.
 5. [Motivation and orientation mode](#5-motivation-and-orientation-mode)
 6. [Dialogic learning mode](#6-dialogic-learning-mode)
 7. [Mastery evidence](#7-mastery-evidence)
-8. [Verified recall](#8-verified-recall)
+8. [Memory-card practice and verified recall](#8-memory-card-practice-and-verified-recall)
 9. [Assessment mode](#9-assessment-mode)
 10. [Resources and cockpit links](#10-resources-and-cockpit-links)
 11. [Errors and resumption](#11-errors-and-resumption)
@@ -104,10 +107,11 @@ more than once for the same result. A completed render attempt consumes the
 authorization; never retry automatically or claim that the host displayed the
 image. The renderer revalidates current backend state and returns the approved
 structured `goalVisualization` projection to the single hash-addressed,
-image-only MCP Apps component. Only this renderer carries `ui.resourceUri` and
-`openai/outputTemplate`; ordinary tools remain UI-free. Its UI receipt does not
-replace the preceding full context, and the ordinary text remains the complete
-fallback. Image authorization is surface-neutral and must not depend on
+image-only MCP Apps component. Only this renderer carries the binding to that
+image resource; memory-card practice has a separate tool and resource, and
+ordinary context, navigation, recall, and mastery tools remain UI-free. Its UI
+receipt does not replace the preceding full context, and the ordinary text
+remains the complete fallback. Image authorization is surface-neutral and must not depend on
 `openai/userAgent` or another client-surface hint. The absence of
 `goalVisualization` or renderer permission in the newest full result is
 authoritative even when an earlier result offered an image; never reuse the
@@ -313,14 +317,42 @@ Never set manual mastery for cluster or memorization goals. Confirm mastery only
 when the latest tool result confirms the save, then use only the supplied next
 state.
 
-## 8. Verified recall
+## 8. Memory-card practice and verified recall
 
-Use this mode only for a confirmed active memorization goal and only when the
-latest state offers it.
+Use these modes only for a confirmed active memorization goal and only when the
+latest state offers them. Normal card practice and strict verified recall are
+different learning modes and must never be blended.
 
-If intent remains open, briefly ask the learner to choose between a cockpit
-exercise offered in context and a strict recall check in chat. For a cockpit
-exercise, output only the supplied URL exactly.
+If intent remains open, briefly ask the learner to choose between:
+
+- **Karteikarten lernen** / **Learn with flashcards** — normal practice in the
+  dedicated chat component; and
+- **Mit Lerncoach prüfen** / **Check with the learning coach** — strict recall
+  without hints.
+
+For normal card practice, the model calls `start_skillpilot_memory_practice`
+exactly once with the confirmed active goal and unchanged state version. The
+dedicated memory-card component may reveal the answer, move backward and
+forward through its bounded card batch without writing state, and collect the
+learner's own **Not yet** or **Got it** decision. Only that component may call
+`review_skillpilot_memory_practice_card`, and only for its currently displayed
+card using `not_known` or `known`. Do not infer or submit a decision in coach
+dialogue. After finishing one bounded batch, only the component may call the
+start tool again with the newest state version to load the next due batch.
+Practice updates the repetition schedule; it is not verified-recall evidence
+and must not be described as passing the goal or as a hard check.
+
+The memory-practice component has its own explicitly bound MCP Apps resource.
+Never attach it to an ordinary context, recall, mutation, or goal-visualization
+tool, and never reuse the image-only goal-visualization resource. Its result is
+a bounded practice receipt, not a replacement for the latest full SkillPilot
+context. When the learner returns to normal dialogue after practice, load fresh
+context before claiming progress or choosing the next step.
+
+If the component is unavailable, failed, or the learner explicitly prefers the
+Cockpit, offer the exact supplied Cockpit URL as the fallback for the same
+normal practice mode. Do not turn that fallback into a third learning mode and
+do not claim that an unavailable component means learning failed.
 
 For strict recall:
 
@@ -337,7 +369,7 @@ For strict recall:
    `false`.
 7. Store every card in the current batch before starting another batch.
 
-Never ask the same card twice on one calendar day. After an error, briefly
+Never ask the same card twice on one calendar day in strict recall. After an error, briefly
 explain the correct idea but do not repeat the card. End the mode when the
 latest result reports waiting or completion. Do not set additional manual
 mastery. Claim completion only when the tool result confirms it.
@@ -483,7 +515,7 @@ These sections implement stable product rules:
 | `COACH-ORIENTATION-001` | Motivation and orientation mode |
 | `COACH-GOAL-001` | Dialogic learning mode |
 | `COACH-MASTERY-001` | Mastery evidence |
-| `COACH-RECALL-001` | Verified recall |
+| `COACH-RECALL-001` | Memory-card practice and verified recall |
 | `COACH-EXAM-001` | Assessment mode |
 | `COACH-RESOURCE-001` | Resources and cockpit links |
 | `COACH-ERROR-001` | Errors and resumption |
