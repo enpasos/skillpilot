@@ -11,7 +11,10 @@ import {
   normalizeCanonicalLandscape,
   type CanonicalAuthoringLandscape,
 } from '../src/utils/authoring/canonicalAuthoring'
-import { collectLearnerFacingCompositionLabelFindings } from './lib/learnerFacingCompositionLabels'
+import {
+  collectDuplicateDirectPhaseStructureFindings,
+  collectLearnerFacingCompositionLabelFindings,
+} from './lib/learnerFacingCompositionLabels'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -922,6 +925,7 @@ for (const viewPath of compositionViewFiles) {
     )
     const additionalFindings = [
       ...collectGenericTreeFindings(result.compiledRootNodes),
+      ...collectDuplicateDirectPhaseStructureFindings(result.compiledRootNodes),
       ...collectLearnerFacingCompositionLabelFindings(result.compiledRootNodes),
       ...(normalizedView.landscapeId === CANONICAL_DE_MATH_ID
         && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
