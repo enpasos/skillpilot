@@ -814,8 +814,9 @@ Diese Lücken dürfen nicht durch Testdaten oder Promptanweisungen kaschiert wer
 
 ## 14. Implementierter produktionsnaher Spring-Pfad
 
-Der mehrsprachige chat-first V1-Vertrag samt optionaler hashgebundener
-bild-only MCP-Apps-UI ist direkt im bestehenden Backend implementiert.
+Der mehrsprachige chat-first V1-Vertrag samt dedizierten hashgebundenen
+MCP-Apps-UIs für Lernzielbilder und Karteikartenlernen ist direkt im bestehenden
+Backend implementiert.
 Öffentlich ist er über den dedizierten V1-Origin erreichbar:
 
 ```text
@@ -824,7 +825,7 @@ https://mcp-coach-v1.skillpilot.com/mcp
   -> /internal/openai/v1/mcp auf dem loopback-gebundenen Backend
   -> eigener WebMvcStatelessServerTransport
   -> eigener McpStatelessSyncServer
-  -> genau zwölf neutrale OpenAI-V1-Werkzeuge
+  -> genau vierzehn neutrale OpenAI-V1-Werkzeuge
   -> vertrauliche OAuth-Clientprüfung, 24h-Lernsitzungsprüfung und Write-Kill-Switch
   -> CoachToolFacade / CoachStateProjection
   -> bestehende SkillPilot-Domain und PostgreSQL

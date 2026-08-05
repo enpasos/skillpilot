@@ -20,12 +20,18 @@ line. This version has not been published yet.
 - one widget origin unique to this plugin,
   `https://mcp-coach-v1.skillpilot.com`, published through `_meta.ui.domain`
   and the ChatGPT compatibility alias `_meta["openai/widgetDomain"]`
-- exactly one active content-addressed, read-only MCP Apps UI resource for the
+- two distinct active content-addressed MCP Apps UI resources: the read-only
   image of an active atomic learning goal with a matching canonical
-  `goal-visualization` link, plus immutable passive resources for previously
-  advertised hash URIs
-- renderer-only `ui.resourceUri` and `openai/outputTemplate`; all ordinary
-  context, selection, mutation, recall, and assessment tools remain UI-free
+  `goal-visualization` link, and interactive memory-card practice in chat; plus
+  immutable passive resources for previously advertised hash URIs
+- per-tool `ui.resourceUri` and `openai/outputTemplate` bindings for the goal
+  renderer and memory-practice launcher; the app-only card-review tool and all
+  ordinary context, selection, mutation, recall, and assessment tools remain
+  UI-free
+- private, bounded due-card batches for the memory-practice component with
+  state-free card flipping and backward/forward navigation; the learner records
+  only the clear `Not yet` or `Got it` choice, mapped internally to the
+  repetition schedule without changing mastery
 - structured `goalVisualization` delivery to an image-only component; bare
   MCP `ImageContent` is not used as a visibility contract
 - immutable passive retention of every content-addressed widget URI already
@@ -55,6 +61,6 @@ line. This version has not been published yet.
   `app/public/favicon/`
 - one install bundle for the single shared Spring Boot runtime; language does
   not create a second server artifact or release line
-- mutable, unpublished `1.0.0-SNAPSHOT` draft; the contract, single active UI
-  resource, and skill bundle are sealed only after actual portal publication
+- mutable, unpublished `1.0.0-SNAPSHOT` draft; the contract, active per-tool UI
+  bindings, and skill bundle are sealed only after actual portal publication
 - no public compatibility alias on `skillpilot.com`

@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
@@ -755,6 +757,15 @@ public class LearnerServiceTest {
                 .extracting(option -> option.id())
                 .containsExactly("practice", "verify");
         assertThat(state.stateMachine().modeOptions())
+                .filteredOn(option -> "practice".equals(option.id()))
+                .singleElement()
+                .satisfies(option -> {
+                    assertThat(option.action()).isEqualTo("openCockpitPractice");
+                    assertThat(option.target()).isEqualTo("cockpit");
+                    assertThat(option.description()).contains("Karteikartenlernen im Cockpit");
+                    assertThat(option.goalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+                });
+        assertThat(state.stateMachine().modeOptions())
                 .filteredOn(option -> "verify".equals(option.id()))
                 .singleElement()
                 .satisfies(option -> {
@@ -764,6 +775,273 @@ public class LearnerServiceTest {
                 });
         assertThat(state.nextAllowedActions()).contains("chooseMemoryMode", "startVerifiedRecall");
         assertThat(state.nextAllowedActions()).doesNotContain("setMastery");
+    }
+
+    @Test
+    @Transactional
+    void memoryPracticeReviewsDueCardsWithoutCompletingTheMemoryGoal() {
+        activateSekOneCoreFormulaFlashcards();
+        long stateVersionBeforePractice = learnerRepository.findById(learnerId)
+                .orElseThrow()
+                .getCoachStateRevision();
+
+        var practice = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+
+        assertThat(practice.status()).isEqualTo("ready");
+        assertThat(practice.goalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(practice.goalTitle()).isEqualTo("Lernkarten - Sek I Kernformeln");
+        assertThat(practice.cards()).isNotEmpty().hasSizeLessThanOrEqualTo(20);
+        assertThat(practice.cards()).allSatisfy(card -> {
+            assertThat(card.front()).isNotBlank();
+            assertThat(card.back()).isNotBlank();
+        });
+        assertThat(practice.cards()).hasSize(Math.min(20, practice.progress().dueCards()));
+        assertThat(practice.progress().dueCards()).isEqualTo(practice.progress().totalCards());
+        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(stateVersionBeforePractice);
+
+        var unchangedPractice = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+        assertThat(unchangedPractice.cards())
+                .extracting(card -> card.cardId())
+                .containsExactlyElementsOf(practice.cards().stream()
+                        .map(card -> card.cardId())
+                        .toList());
+        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(stateVersionBeforePractice);
+
+        int reviewedCards = 0;
+        while ("ready".equals(practice.status())) {
+            practice = learnerService.reviewMemoryPracticeCard(
+                    learnerId,
+                    "de",
+                    new MemoryPracticeReviewRequest(
+                            SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                            practice.cards().getFirst().cardId(),
+                            "known"));
+            reviewedCards++;
+            assertThat(reviewedCards).isLessThanOrEqualTo(practice.progress().totalCards());
+        }
+
+        assertThat(practice.status()).isEqualTo("complete");
+        assertThat(practice.cards()).isEmpty();
+        assertThat(practice.progress().dueCards()).isZero();
+        assertThat(practice.progress().scheduledCards()).isEqualTo(practice.progress().totalCards());
+        assertThat(reviewedCards).isEqualTo(practice.progress().totalCards());
+        assertThat(learnerService.getMastery(learnerId)
+                        .getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
+                .isZero();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(learner.getActiveGoalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(learner.getLearningState()).isEqualTo(LearningState.TEACHING);
+    }
+
+    @Test
+    void memoryPracticeReviewAdvancesStateWhileRepeatedBatchReadsDoNot() {
+        activateSekOneCoreFormulaFlashcards();
+        long initialVersion = learnerRepository.findById(learnerId)
+                .orElseThrow()
+                .getCoachStateRevision();
+
+        var firstBatch = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+        var repeatedBatch = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+
+        assertThat(repeatedBatch.cards())
+                .extracting(card -> card.cardId())
+                .containsExactlyElementsOf(firstBatch.cards().stream()
+                        .map(card -> card.cardId())
+                        .toList());
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(initialVersion);
+
+        learnerService.reviewMemoryPracticeCard(
+                learnerId,
+                "de",
+                new MemoryPracticeReviewRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        firstBatch.cards().getFirst().cardId(),
+                        "known"));
+
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(initialVersion + 1);
+    }
+
+    @Test
+    @Transactional
+    void memoryPracticeMapsKnownAndNotKnownToSm2AndPreservesVerifiedRecallAndOtherCards() {
+        activateSekOneCoreFormulaFlashcards();
+        var initial = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+        String firstCardId = initial.cards().getFirst().cardId();
+        Map<String, Object> verifiedRecall = Map.of(
+                "status", "passed",
+                "attempts", 1,
+                "failures", 0,
+                "lastTestedAt", "2026-08-01T10:00:00Z",
+                "passedAt", "2026-08-01T10:00:00Z");
+        Map<String, Object> untouched = Map.of(
+                "id", "unrelated-card",
+                "interval", 9,
+                "repetition", 3,
+                "ef", 2.2,
+                "nextReview", 0);
+        learnerService.upsertClientState(
+                learnerId,
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                new ClientStateRequest(
+                        Instant.now(),
+                        Map.of(
+                                firstCardId,
+                                Map.of(
+                                        "id", firstCardId,
+                                        "interval", 0,
+                                        "repetition", 0,
+                                        "ef", 2.5,
+                                        "nextReview", 0,
+                                        "verifiedRecall", verifiedRecall),
+                                "unrelated-card", untouched)));
+
+        List<String> ratings = List.of("not_known", "known");
+        List<Integer> expectedRepetitions = List.of(0, 1);
+        List<Double> expectedEaseFactors = List.of(2.5, 2.5);
+        var practice = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+        List<String> reviewedCardIds = new ArrayList<>();
+        for (int index = 0; index < ratings.size(); index++) {
+            String reviewedCardId = practice.cards().getFirst().cardId();
+            reviewedCardIds.add(reviewedCardId);
+            practice = learnerService.reviewMemoryPracticeCard(
+                    learnerId,
+                    "de",
+                    new MemoryPracticeReviewRequest(
+                            SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                            reviewedCardId,
+                            ratings.get(index)));
+
+            Map<String, Object> state = learnerService
+                    .getClientState(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID)
+                    .srsState();
+            assertThat(state.get("unrelated-card")).isEqualTo(untouched);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> reviewed = (Map<String, Object>) state.get(reviewedCardId);
+            assertThat(((Number) reviewed.get("interval")).intValue()).isEqualTo(1);
+            assertThat(((Number) reviewed.get("repetition")).intValue())
+                    .isEqualTo(expectedRepetitions.get(index));
+            assertThat(((Number) reviewed.get("ef")).doubleValue())
+                    .isCloseTo(expectedEaseFactors.get(index), org.assertj.core.data.Offset.offset(0.000001));
+            assertThat(((Number) reviewed.get("nextReview")).longValue()).isGreaterThan(Instant.now().toEpochMilli());
+        }
+
+        Map<String, Object> state = learnerService
+                .getClientState(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID)
+                .srsState();
+        @SuppressWarnings("unchecked")
+        Map<String, Object> firstCardState = (Map<String, Object>) state.get(firstCardId);
+        assertThat(firstCardState.get("verifiedRecall")).isEqualTo(verifiedRecall);
+        assertThat(reviewedCardIds).doesNotHaveDuplicates();
+
+        assertThatThrownBy(() -> learnerService.reviewMemoryPracticeCard(
+                        learnerId,
+                        "de",
+                        new MemoryPracticeReviewRequest(
+                                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                firstCardId,
+                                "known")))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("not due");
+    }
+
+    @Test
+    @Transactional
+    void memoryPracticeRejectsAnotherGoalAndInvalidRatingWithoutWritingState() {
+        activateSekOneCoreFormulaFlashcards();
+
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(
+                        learnerId,
+                        "de",
+                        new MemoryPracticeStartRequest(FUNCTIONS_FLASHCARDS_ID)))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("current active learner-facing atomic memorization/SRS goal");
+
+        var practice = learnerService.startMemoryPractice(
+                learnerId,
+                "de",
+                new MemoryPracticeStartRequest(null));
+        for (String rejectedRating : List.of("again", "hard", "good", "easy", "almost")) {
+            assertThatThrownBy(() -> learnerService.reviewMemoryPracticeCard(
+                            learnerId,
+                            "de",
+                            new MemoryPracticeReviewRequest(
+                                    SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                    practice.cards().getFirst().cardId(),
+                                    rejectedRating)))
+                    .isInstanceOf(ResponseStatusException.class)
+                    .hasMessageContaining("not_known or known");
+        }
+
+        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(masteryRepository.findAll()).isEmpty();
+    }
+
+    @Test
+    void concurrentMemoryPracticeReviewsPreserveBothCardUpdates() throws Exception {
+        activateSekOneCoreFormulaFlashcards();
+        var cards = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false, 2)).cards();
+        assertThat(cards).hasSize(2);
+
+        CountDownLatch ready = new CountDownLatch(2);
+        CountDownLatch start = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            var results = cards.stream()
+                    .map(card -> executor.submit(() -> {
+                        ready.countDown();
+                        assertThat(start.await(10, TimeUnit.SECONDS)).isTrue();
+                        return learnerService.reviewMemoryPracticeCard(
+                                learnerId,
+                                "de",
+                                new MemoryPracticeReviewRequest(
+                                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                        card.cardId(),
+                                        "known"));
+                    }))
+                    .toList();
+            assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
+            start.countDown();
+            for (Future<?> result : results) {
+                assertThat(result.get(20, TimeUnit.SECONDS)).isNotNull();
+            }
+        } finally {
+            executor.shutdownNow();
+        }
+
+        Map<String, Object> state = learnerService
+                .getClientState(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID)
+                .srsState();
+        assertThat(state).containsKeys(cards.get(0).cardId(), cards.get(1).cardId());
+        assertThat(state.values())
+                .allSatisfy(value -> assertThat(value).asInstanceOf(org.assertj.core.api.InstanceOfAssertFactories.MAP)
+                        .containsEntry("interval", 1));
     }
 
     @Test
@@ -1286,6 +1564,22 @@ public class LearnerServiceTest {
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
         }
         throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
+    }
+
+    private void activateSekOneCoreFormulaFlashcards() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """));
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
     }
 
     private void selectCompletedCanonicalMathCurriculum() {

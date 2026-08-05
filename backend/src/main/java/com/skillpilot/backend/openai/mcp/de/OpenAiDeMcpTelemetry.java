@@ -53,6 +53,8 @@ public final class OpenAiDeMcpTelemetry {
     private static final Set<String> KNOWN_TOOLS = Set.of(
             OpenAiDeV1McpContractAdapter.GET_CONTEXT,
             OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+            OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+            OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
             OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
             OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
             OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
@@ -299,8 +301,11 @@ public final class OpenAiDeMcpTelemetry {
 
     private record ResourceArtifact(String fingerprint, String role) {
 
-        private static final ResourceArtifact ACTIVE = new ResourceArtifact(
+        private static final ResourceArtifact ACTIVE_GOAL_VISUALIZATION = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
+                ACTIVE_ARTIFACT_ROLE);
+        private static final ResourceArtifact ACTIVE_MEMORY_PRACTICE = new ResourceArtifact(
+                fingerprint(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256),
                 ACTIVE_ARTIFACT_ROLE);
         private static final ResourceArtifact RETAINED = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256),
@@ -310,7 +315,10 @@ public final class OpenAiDeMcpTelemetry {
 
         private static ResourceArtifact classify(String resourceUri) {
             if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
-                return ACTIVE;
+                return ACTIVE_GOAL_VISUALIZATION;
+            }
+            if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resourceUri)) {
+                return ACTIVE_MEMORY_PRACTICE;
             }
             if (OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
                 return RETAINED;

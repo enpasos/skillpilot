@@ -361,14 +361,36 @@ public final class OpenAiDeCoachContextProjector {
                             continue;
                         }
                         String goalId = blank(mode.goalId()) && activeGoal != null ? activeGoal.id() : mode.goalId();
+                        boolean english = OpenAiCoachLocale.isEnglish(communicationLocale);
+                        String title = switch (mode.action()) {
+                            case "openCockpitPractice", "startMemoryPractice" -> english
+                                    ? "Learn with flashcards"
+                                    : "Karteikarten lernen";
+                            case "startVerifiedRecall" -> english
+                                    ? "Check with the learning coach"
+                                    : "Mit Lerncoach prüfen";
+                            default -> fallback(mode.title(), mode.action());
+                        };
+                        String description = switch (mode.action()) {
+                            case "openCockpitPractice", "startMemoryPractice" -> english
+                                    ? "Learn due flashcards directly here in the chat, one card at a time."
+                                    : "Lerne fällige Karteikarten direkt hier im Chat, Karte für Karte.";
+                            case "startVerifiedRecall" -> english
+                                    ? "Strict recall without hints."
+                                    : "Harte Abfrage ohne Hilfestellung.";
+                            default -> compact(mode.description());
+                        };
+                        String action = "openCockpitPractice".equals(mode.action())
+                                ? "startMemoryPractice"
+                                : mode.action();
                         options.add(new OpenAiDeCoachContext.Option(
                                 "memoryMode",
                                 fallback(mode.id(), mode.action()),
-                                fallback(mode.title(), mode.action()),
-                                compact(mode.description()),
+                                title,
+                                description,
                                 blank(goalId) ? List.of() : List.of(goalId),
                                 List.of(),
-                                mode.action()));
+                                action));
                     }
                 }
             }
@@ -573,6 +595,7 @@ public final class OpenAiDeCoachContextProjector {
                 }
                 case "chooseMemoryMode" -> {
                     if (isMemoryGoal(activeGoal)) {
+                        tools.add(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE);
                         tools.add(OpenAiDeV1McpContractAdapter.START_RECALL);
                     }
                 }
@@ -704,9 +727,13 @@ public final class OpenAiDeCoachContextProjector {
         if ("chooseMemoryMode".equals(requiredAction) && !options.isEmpty()) {
             return goalAnnouncement
                     + "Frage nur dann nach dem Lernmodus, wenn der Wunsch nicht bereits eindeutig ist. Bei "
-                    + "openCockpitPractice gib ausschließlich die vom Backend gelieferte cockpitUrl wortgetreu aus "
-                    + "und pausiere die strukturierte Kartenprüfung. Bei startVerifiedRecall starte die harte "
-                    + "Abrufprüfung, zeige den ganzen Fragenbatch und warte auf alle Antworten.";
+                    + "startMemoryPractice starte das Karteikartenlernen im Chat mit "
+                    + OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE
+                    + "; die Komponente zeigt Vorder- und Rückseite und speichert ausschließlich die gewählte "
+                    + "Wiederholungsbewertung. Behaupte weder Zielabschluss noch Beherrschung. Falls die Komponente "
+                    + "nicht verfügbar ist, biete activeGoal.cockpitUrl wortgetreu als Ausweichmöglichkeit für das "
+                    + "Karteikartenlernen an. Bei startVerifiedRecall starte die harte Abrufprüfung, zeige den "
+                    + "ganzen Fragenbatch und warte auf alle Antworten.";
         }
         if (isExamGoal(goal)) {
             String imageInstruction = examHasImage
@@ -722,9 +749,11 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isMemoryGoal(goal)) {
             return goalAnnouncement
-                    + "Verified Recall: Starte die Abrufprüfung für das bestätigte aktive Merkziel, zeige den ganzen "
-                    + "Fragenbatch und warte auf alle Antworten. Lade Sollantworten erst danach, speichere jedes "
-                    + "Kartenergebnis und beginne erst nach vollständiger Speicherung den nächsten Batch.";
+                    + "Lernkartenziel: Verwende für normales Karteikartenlernen ausschließlich die eigene "
+                    + "Kartenkomponente; ihre Wiederholungsbewertungen sind kein Beherrschungsnachweis. Für die "
+                    + "harte Lerncoach-Prüfung starte Verified Recall, zeige den ganzen Fragenbatch und warte auf "
+                    + "alle Antworten. Lade Sollantworten erst danach, speichere jedes Kartenergebnis und beginne "
+                    + "erst nach vollständiger Speicherung den nächsten Batch.";
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement
@@ -842,7 +871,14 @@ public final class OpenAiDeCoachContextProjector {
         String goalAnnouncement = goalAnnouncement(goal, true);
         if ("chooseMemoryMode".equals(requiredAction) && !options.isEmpty()) {
             return goalAnnouncement
-                    + "Ask about learning mode only when the request is not already unambiguous. For openCockpitPractice, provide only the backend cockpitUrl verbatim and pause structured card recall. For startVerifiedRecall, start strict recall, show the full question batch, and wait for all answers.";
+                    + "Ask about learning mode only when the request is not already unambiguous. For "
+                    + "startMemoryPractice, start in-chat flashcard learning with "
+                    + OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE
+                    + "; the component alone reveals card backs and records repetition ratings. Never claim goal "
+                    + "completion or mastery from practice. If the component is unavailable, offer "
+                    + "activeGoal.cockpitUrl verbatim as the flashcard-learning fallback. For "
+                    + "startVerifiedRecall, start strict recall, show the full question batch, and wait for all "
+                    + "answers.";
         }
         if (isExamGoal(goal)) {
             String imageInstruction = examHasImage
@@ -855,7 +891,11 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isMemoryGoal(goal)) {
             return goalAnnouncement
-                    + "Verified Recall: start recall for the confirmed active memorisation goal, show the full question batch, and wait for all answers. Load expected answers only afterwards, save every card result, and start the next batch only after complete persistence.";
+                    + "Memory-card goal: use only the dedicated card component for ordinary flashcard learning; its "
+                    + "repetition ratings are not mastery evidence. For the strict learning-coach check, start "
+                    + "Verified Recall, show the full question batch, and wait for all answers. Load expected "
+                    + "answers only afterwards, save every card result, and start the next batch only after complete "
+                    + "persistence.";
         }
         if (isOrientationGoal(goal)) {
             return goalAnnouncement

@@ -251,11 +251,13 @@ Die Grenze ist der reale Veröffentlichungsstatus:
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
-noch nicht veröffentlicht. Die Lernzielvisualisierung wird deshalb als
-genau eine aktive hashgebundene `text/html;profile=mcp-app`-Ressource in den
-bestehenden `1.0.0`-Draft aufgenommen; es entsteht weder `1.0.1` noch ein
-Published-Snapshot. Nur der Renderer verweist mit `ui.resourceUri` und
-`openai/outputTemplate` auf sie; gewöhnliche Werkzeuge bleiben ungebunden. Alle
+noch nicht veröffentlicht. Die Lernzielvisualisierung und das interaktive
+Karteikartenlernen werden deshalb als zwei getrennte, aktive hashgebundene
+`text/html;profile=mcp-app`-Ressourcen in den bestehenden `1.0.0`-Draft
+aufgenommen; es entsteht weder `1.0.1` noch ein Published-Snapshot. Der
+Bild-Renderer und der Start des Karteikartenlernens verweisen jeweils mit
+`ui.resourceUri` und `openai/outputTemplate` auf ihre eigene Ressource. Das
+app-interne Bewertungswerkzeug sowie gewöhnliche Werkzeuge bleiben ungebunden. Alle
 zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
 gemeinsam im selben Draft aktualisiert. Bereits an reale Test-Clients
 ausgelieferte Hash-URIs bleiben byte-identisch und passiv lesbar.
@@ -446,17 +448,20 @@ Der Kern des Schemas SOLL streng sein, beispielsweise mit `additionalProperties:
 
 Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarstellung liefern, damit unterschiedliche Hosts und Clients robust arbeiten können.
 
-## 9. Bild-only MCP-Apps-UI in V1 und mögliche spätere Interaktion
+## 9. Dedizierte MCP-Apps-UIs in V1
 
-### 9.1 V1 bindet genau eine aktuelle UI-Ressource
+### 9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource
 
-Der noch unveröffentlichte V1-Draft bindet genau eine aktive hashgebundene Ressource
+Der noch unveröffentlichte V1-Draft bindet zwei aktive hashgebundene Ressourcen
 mit dem MIME-Typ `text/html;profile=mcp-app`. Das read-only Werkzeug
 `render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
-`goalVisualization` an diese Ressource; die UI rendert ausschließlich das JPEG
-oder PNG. Nur der Renderer-Descriptor enthält `ui.resourceUri` und
-`openai/outputTemplate`. Alle gewöhnlichen Werkzeuge bleiben ungebunden, sodass
-ohne freigegebene Visualisierung keine leere UI-Komponente entsteht.
+`goalVisualization` an seine bild-only Ressource. Das read-only Werkzeug
+`start_skillpilot_memory_practice` startet das Karteikartenlernen in einer
+eigenen interaktiven Ressource. Jeder dieser beiden Descriptoren enthält
+`ui.resourceUri` und `openai/outputTemplate` mit genau seiner Ressource. Das nur
+von der App aufrufbare Bewertungswerkzeug `review_skillpilot_memory_practice_card`
+und alle gewöhnlichen Werkzeuge bleiben ungebunden; dadurch erzeugen sie weder
+verschachtelte noch leere UI-Komponenten.
 
 Die Freigabe und der Renderer werden weder durch `openai/userAgent` noch durch
 eine Desktop-/Mobile- oder andere Surface-Klassifikation gesteuert. Diese
@@ -474,14 +479,15 @@ UI-Version: Nur die aktuelle URI darf in einem Tool-Descriptor gebunden sein.
 Nach dem Deployment werden die Plugin-Metadaten aktualisiert und die aktuelle
 URI zusätzlich in einem frischen Chat geprüft.
 
-### 9.2 Regeln für spätere interaktive UI-Erweiterungen
+### 9.2 Regeln für interaktive UI-Ressourcen
 
-Falls eine spätere Plugin-Version interaktive MCP-UI-Funktionen einführt, MUSS
-ihr zur Einreichung vorgesehener Draft einen für diese Plugin-Identität
+Der zur Einreichung vorgesehene Draft MUSS für jede interaktive
+MCP-UI-Funktion eine eigene aktive Ressource und für die Plugin-Identität einen
 eindeutigen Widget-Origin angeben. `_meta.ui.domain`, gegebenenfalls der vom
 Zielhost benötigte Kompatibilitätsalias und eine minimale CSP bleiben Teil des
 geprüften Vertrags. Der Widget-Origin ist ein fester Vertragswert und kein
-Runtime-Override.
+Runtime-Override. Ein app-internes Folgetool darf den Zustand ändern, bindet
+aber nicht erneut die UI-Ressource.
 
 Eine in einer **tatsächlich veröffentlichten** Plugin-Version verwendete
 UI-Ressourcen-URI wird als unveränderlicher Artefaktschlüssel behandelt. Ein
@@ -498,14 +504,14 @@ reproduzierbar ersetzt und bereinigt werden. Testauslieferungen eines
 unveröffentlichten Drafts erzeugen allein keine dauerhafte
 Rückwärtskompatibilitätspflicht.
 
-### 9.3 Persistierter UI-Zustand nur bei einer späteren interaktiven UI
+### 9.3 Autoritativer Zustand bleibt im Backend
 
-Falls eine spätere veröffentlichte UI persistierten Widgetzustand verwendet,
-MUSS dieser ein eigenes `schemaVersion`-Feld ausweisen. Jede dann noch
-unterstützte Zustandsform muss deterministisch migriert werden können;
-unbekannter oder beschädigter Zustand darf nicht zum Absturz führen und fällt
-auf einen sicheren leeren Zustand zurück. Die bild-only V1-Ressource erzeugt
-keinen autoritativen Lernzustand; dieser bleibt vollständig im Backend.
+Die beiden V1-Ressourcen erzeugen keinen eigenen autoritativen Lernzustand.
+Bildfreigabe, Kartenauswahl, Terminierung und Fortschritt werden aus dem
+Backendzustand projiziert. Die interaktive Karteikarten-UI ruft für eine
+Bewertung das app-only Werkzeug auf; bei unbekanntem oder beschädigtem
+Hostzustand fällt sie auf einen sicheren, sichtbaren Fehlerzustand zurück,
+anstatt lokal weiterzulernen oder endlos zu laden.
 
 ### 9.4 Aufbewahrung beginnt mit der ersten realen Auslieferung
 

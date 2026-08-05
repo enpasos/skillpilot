@@ -102,6 +102,9 @@ public final class OpenAiDeV1ContractExporter {
         if (OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.get("uri"))) {
             return "ui/goal-visualization.html";
         }
+        if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resource.get("uri"))) {
+            return "ui/memory-card-practice.html";
+        }
         if (OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.get("uri"))) {
             return "ui/retained/sha256-"
                     + OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256

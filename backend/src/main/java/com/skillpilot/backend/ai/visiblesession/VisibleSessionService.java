@@ -253,8 +253,8 @@ public class VisibleSessionService {
                                     language,
                                     current,
                                     localized(language,
-                                            "Der Übungsmodus ist gewählt. Öffne das aktive Lernziel über den bereitgestellten Cockpit-Link.",
-                                            "Practice mode is selected. Open the active learning goal through the provided cockpit link."),
+                                            "Karteikartenlernen ist gewählt. Öffne das aktive Lernziel über den bereitgestellten Cockpit-Link.",
+                                            "Flashcard practice is selected. Open the active learning goal through the provided Cockpit link."),
                                     null,
                                     true,
                                     "cockpit",
@@ -1322,7 +1322,14 @@ public class VisibleSessionService {
 
     private String memoryModeTitle(String language, LearningModeOption option) {
         return switch (option.action()) {
-            case "openCockpitPractice" -> localized(language, "Im Cockpit üben", "Practice in the Cockpit");
+            case "openCockpitPractice" -> localized(
+                    language,
+                    "Im Cockpit Karteikarten lernen",
+                    "Learn with flashcards in the Cockpit");
+            case "startMemoryPractice" -> localized(
+                    language,
+                    "Im Cockpit Karteikarten lernen",
+                    "Learn with flashcards in the Cockpit");
             case "startVerifiedRecall" -> localized(language, "Mit Lerncoach prüfen", "Check with the learning coach");
             default -> option.title();
         };
@@ -1332,8 +1339,12 @@ public class VisibleSessionService {
         return switch (option.action()) {
             case "openCockpitPractice" -> localized(
                     language,
-                    "Öffne den SRS-Kartendrill im SkillPilot-Cockpit.",
-                    "Open the SRS card drill in the SkillPilot Cockpit.");
+                    "Öffne das Karteikartenlernen im SkillPilot-Cockpit.",
+                    "Open flashcard practice in the SkillPilot Cockpit.");
+            case "startMemoryPractice" -> localized(
+                    language,
+                    "Lerne die heute fälligen Karteikarten im SkillPilot-Cockpit.",
+                    "Review today's due flashcards in the SkillPilot Cockpit.");
             case "startVerifiedRecall" -> localized(
                     language,
                     "Prüfe die fälligen Karten im Chat ohne Hilfen.",

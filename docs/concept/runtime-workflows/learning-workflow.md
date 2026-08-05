@@ -112,7 +112,14 @@ Progress is stored as **mastery** on atomic goals and aggregated upward for clus
   - Verified recall records whether each required card has been answered correctly in a learning-coach/GPT-led hard test.
   - A memorization goal counts as mastered only after all required cards are verified and no required card is currently due.
   - The learner may start the hard recall test at any time while the memorization node is the active goal.
-  - In the Cockpit, a memorization node offers practice in the SRS drill and a handoff to learning-coach/GPT verification; the Cockpit itself does not grade the hard recall.
+  - A memorization node offers ordinary flashcard learning in the Cockpit and,
+    where the provider supports the dedicated reviewed component, directly in
+    the chat UI. Both surfaces use the same simple learner-facing decisions
+    (`Noch nicht gewusst` / `Gewusst`) and explicit previous/next navigation;
+    only the repetition schedule changes.
+  - Verified Recall remains a separate learning-coach handoff. Neither the
+    Cockpit nor the ordinary chat card component grades that strict recall or
+    treats a practice rating as mastery evidence.
 
 When mastery changes:
 

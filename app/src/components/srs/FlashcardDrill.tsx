@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { CheckCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, CheckCircle, X } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import {
     calculateReview,
@@ -11,7 +11,12 @@ import {
 } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
-import { getFlashcardDrillCopy } from '../../utils/flashcardDrillCopy'
+import {
+    FLASHCARD_PRACTICE_QUALITY,
+    getAdjacentFlashcardIndex,
+    getFlashcardDrillCopy,
+    type FlashcardPracticeRating,
+} from '../../utils/flashcardDrillCopy'
 
 interface FlashcardDrillProps {
     dataSourceUrl?: string
@@ -154,14 +159,15 @@ export function FlashcardDrill({
     const [queue, setQueue] = useState<VocabData['cards']>([])
     const [currentCardIndex, setCurrentCardIndex] = useState(0)
     const [isFlipped, setIsFlipped] = useState(false)
+    const [ratingsByCardId, setRatingsByCardId] = useState<Record<string, FlashcardPracticeRating>>({})
     const reviewedCountRef = useRef(0)
     const [reloadTrigger, setReloadTrigger] = useState(0)
-    const [syncInFlight, setSyncInFlight] = useState(false)
+    const syncInFlightRef = useRef(false)
+    const onSyncRef = useRef(onSync)
     const latestStateRef = useRef<Record<string, ReviewItem>>({})
     const pendingSyncRef = useRef(false)
-    const finishedAutoSaveRef = useRef(false)
+    const syncGenerationRef = useRef(0)
     const syncedAllCaughtUpRef = useRef(false)
-    const autoReloadRef = useRef(false)
     const lastMasteryRef = useRef<number | null>(null)
     const sessionInitialDueRef = useRef<number | null>(null)
 
@@ -184,18 +190,34 @@ export function FlashcardDrill({
         latestStateRef.current = srsState
     }, [srsState])
 
+    useEffect(() => {
+        onSyncRef.current = onSync
+    }, [onSync])
+
     const triggerSync = useCallback(async () => {
-        if (!onSync || syncInFlight) return
-        setSyncInFlight(true)
+        if (!onSyncRef.current || syncInFlightRef.current) return
+        syncInFlightRef.current = true
         try {
-            const ok = await onSync(goalId)
-            if (ok) pendingSyncRef.current = false
-        } catch (e) {
-            console.warn('SRS sync error', e)
+            while (pendingSyncRef.current) {
+                const sync = onSyncRef.current
+                if (!sync) break
+
+                const syncingGeneration = syncGenerationRef.current
+                try {
+                    const ok = await sync(goalId)
+                    if (!ok) break
+                    if (syncGenerationRef.current === syncingGeneration) {
+                        pendingSyncRef.current = false
+                    }
+                } catch (e) {
+                    console.warn('SRS sync error', e)
+                    break
+                }
+            }
         } finally {
-            setSyncInFlight(false)
+            syncInFlightRef.current = false
         }
-    }, [goalId, onSync, syncInFlight])
+    }, [goalId])
 
     const sendBackgroundSync = useCallback(() => {
         if (!pendingSyncRef.current) return
@@ -235,9 +257,10 @@ export function FlashcardDrill({
         setQueue([])
         setCurrentCardIndex(0)
         setIsFlipped(false)
+        setRatingsByCardId({})
         reviewedCountRef.current = 0
         setSrsState({}) // Clear state
-        setSyncInFlight(false)
+        syncInFlightRef.current = false
         syncedAllCaughtUpRef.current = false
         sessionInitialDueRef.current = null
         lastMasteryRef.current = null
@@ -327,16 +350,18 @@ export function FlashcardDrill({
 
                 const shuffled = shuffle(dueCards)
                 setQueue(shuffled.slice(0, 20))
+                setRatingsByCardId({})
 
                 if (
                     nextStats.due === 0
                     && nextStats.verifiedPending === 0
                     && nextStats.total > 0
-                    && onSync
+                    && onSyncRef.current
                     && !syncedAllCaughtUpRef.current
                 ) {
                     syncedAllCaughtUpRef.current = true
                     pendingSyncRef.current = true
+                    syncGenerationRef.current += 1
                     void triggerSync()
                 }
 
@@ -348,27 +373,11 @@ export function FlashcardDrill({
 
         loadData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, onSync, triggerSync])
+    }, [dataSourceUrl, filterTags?.join(','), reloadTrigger, goalId, skillPilotId, reloadSignal, triggerSync])
     // Initialize: Fetch Data -> Then Queue
 
 
     const currentCard = queue[currentCardIndex]
-    const isFinished = currentCardIndex >= queue.length
-
-    useEffect(() => {
-        if (!isFinished || queue.length === 0 || stats.due === 0) {
-            autoReloadRef.current = false
-            return
-        }
-        if (autoReloadRef.current) return
-        autoReloadRef.current = true
-        // Auto-advance to the next batch (no extra click).
-        setQueue([])
-        setCurrentCardIndex(0)
-        reviewedCountRef.current = 0
-        setIsFlipped(false)
-        setReloadTrigger(prev => prev + 1)
-    }, [isFinished, queue.length, stats.due])
 
     useEffect(() => {
         if (!onStateChange) return
@@ -383,18 +392,6 @@ export function FlashcardDrill({
             total: stats.total,
         })
     }, [goalId, stats.due, stats.total, stats.verifiedPending, onStateChange])
-
-    useEffect(() => {
-        if (!isFinished) {
-            finishedAutoSaveRef.current = false
-            return
-        }
-        if (finishedAutoSaveRef.current) return
-        if (!pendingSyncRef.current) return
-        if (!onSync) return
-        finishedAutoSaveRef.current = true
-        void triggerSync()
-    }, [isFinished, onSync, triggerSync])
 
     const reviewStateForCard = (cardId: string, quality: number): ReviewItem => {
         const rawState = srsState[cardId]
@@ -439,17 +436,23 @@ export function FlashcardDrill({
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
         pendingSyncRef.current = true
+        syncGenerationRef.current += 1
     }
 
-    const handleRate = (quality: number) => {
+    const handleRate = (rating: FlashcardPracticeRating) => {
         if (!currentCard) return
+        if (ratingsByCardId[currentCard.id]) return
+
+        const quality = FLASHCARD_PRACTICE_QUALITY[rating]
 
         const newState = reviewStateForCard(currentCard.id, quality)
 
         const updatedSrsState = { ...srsState, [currentCard.id]: newState }
         persistSrsState(updatedSrsState)
-        const willFinish = currentCardIndex + 1 >= queue.length
-        if (willFinish) {
+        const updatedRatings = { ...ratingsByCardId, [currentCard.id]: rating }
+        setRatingsByCardId(updatedRatings)
+        const batchComplete = queue.length > 0 && queue.every(card => updatedRatings[card.id])
+        if (batchComplete) {
             void triggerSync()
         }
 
@@ -458,11 +461,64 @@ export function FlashcardDrill({
         if (onSync && nextReviewed % 20 === 0) {
             void triggerSync()
         }
-
-        // Move to next
-        setIsFlipped(false)
-        setTimeout(() => setCurrentCardIndex(prev => prev + 1), 200)
     }
+
+    const showCardAt = useCallback((index: number) => {
+        if (index < 0 || index >= queue.length) return
+        setCurrentCardIndex(index)
+        setIsFlipped(false)
+    }, [queue.length])
+
+    const showPreviousCard = useCallback(() => {
+        showCardAt(getAdjacentFlashcardIndex(currentCardIndex, queue.length, -1))
+    }, [currentCardIndex, queue.length, showCardAt])
+
+    const showNextCard = useCallback(() => {
+        if (currentCardIndex < queue.length - 1) {
+            showCardAt(getAdjacentFlashcardIndex(currentCardIndex, queue.length, 1))
+            return
+        }
+
+        const batchComplete = queue.length > 0 && queue.every(card => ratingsByCardId[card.id])
+        if (!batchComplete) return
+
+        setQueue([])
+        setCurrentCardIndex(0)
+        setIsFlipped(false)
+        setRatingsByCardId({})
+        reviewedCountRef.current = 0
+        setReloadTrigger(previous => previous + 1)
+    }, [currentCardIndex, queue, ratingsByCardId, showCardAt])
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (!currentCard) return
+            if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return
+            const target = event.target
+            if (
+                target instanceof Element
+                && target.closest('button, a, input, textarea, select, [contenteditable="true"], [role="button"], [role="link"]')
+            ) return
+
+            if (event.code === 'Space') {
+                event.preventDefault()
+                setIsFlipped(previous => !previous)
+                return
+            }
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault()
+                showPreviousCard()
+                return
+            }
+            if (event.key === 'ArrowRight') {
+                event.preventDefault()
+                showNextCard()
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [currentCard, showNextCard, showPreviousCard])
 
     if (!dataSourceUrl) return <div className="p-8 text-center text-red-500">{t.configError}</div>
 
@@ -470,7 +526,7 @@ export function FlashcardDrill({
 
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
-    const allCaughtUp = stats.total > 0 && stats.due === 0
+    const allCaughtUp = stats.total > 0 && stats.due === 0 && queue.length === 0
 
     if (allCaughtUp) {
         return (
@@ -534,6 +590,9 @@ export function FlashcardDrill({
     const progressTotal = sessionInitialDueRef.current || 1
     const progressDone = Math.max(0, progressTotal - stats.due)
     const progressPercent = Math.min(100, Math.max(0, (progressDone / progressTotal) * 100))
+    const currentRating = ratingsByCardId[currentCard.id]
+    const batchComplete = queue.length > 0 && queue.every(card => ratingsByCardId[card.id])
+    const canShowNext = currentCardIndex < queue.length - 1 || batchComplete
 
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
@@ -637,6 +696,10 @@ export function FlashcardDrill({
             </div>
 
 
+            <p className="mb-2 w-full px-1 text-sm font-medium text-gray-500 dark:text-gray-400" aria-live="polite">
+                {t.cardPosition(currentCardIndex + 1, queue.length)}
+            </p>
+
             {/* Progress Bar */}
             <div className="group relative w-full mb-6 cursor-help">
                 <div className="w-full h-2 bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
@@ -663,41 +726,68 @@ export function FlashcardDrill({
 
             {/* Controls */}
             <div className="mt-8 grid grid-cols-4 gap-3 w-full">
+                <button
+                    type="button"
+                    onClick={showPreviousCard}
+                    disabled={currentCardIndex === 0}
+                    aria-label={t.previousCard}
+                    title={t.previousCard}
+                    className="flex items-center justify-center rounded-xl border border-gray-200 bg-white py-3 text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-35 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-slate-800"
+                >
+                    <ArrowLeft aria-hidden="true" className="h-5 w-5" />
+                </button>
                 {!isFlipped ? (
                     <button
+                        type="button"
                         onClick={() => setIsFlipped(true)}
-                        className="col-span-4 bg-gray-800 text-white py-4 rounded-xl font-semibold shadow-lg hover:bg-gray-700 transition-colors"
+                        className="col-span-2 bg-gray-800 text-white py-3 rounded-xl font-semibold shadow-lg hover:bg-gray-700 transition-colors"
                     >
                         {t.showAnswer}
                     </button>
                 ) : (
                     <>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(1)} className="w-full bg-red-100 text-red-700 border border-red-200 py-3 rounded-xl font-bold hover:bg-red-200">{t.again}</button>
+                            <button
+                                type="button"
+                                onClick={() => handleRate('not_known')}
+                                disabled={Boolean(currentRating)}
+                                aria-pressed={currentRating === 'not_known'}
+                                className={`flex w-full items-center justify-center gap-1 rounded-xl border py-3 text-xs font-bold transition-colors disabled:cursor-not-allowed ${currentRating === 'not_known' ? 'border-red-500 bg-red-200 text-red-800' : 'border-red-200 bg-red-100 text-red-700 hover:bg-red-200 disabled:opacity-45'}`}
+                            >
+                                <X aria-hidden="true" className="h-4 w-4 shrink-0" />
+                                <span>{t.notKnown}</span>
+                            </button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                {t.againTooltip}
+                                {currentRating ? t.ratingSaved : t.notKnownTooltip}
                             </div>
                         </div>
                         <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(3)} className="w-full bg-orange-100 text-orange-700 border border-orange-200 py-3 rounded-xl font-bold hover:bg-orange-200">{t.hard}</button>
+                            <button
+                                type="button"
+                                onClick={() => handleRate('known')}
+                                disabled={Boolean(currentRating)}
+                                aria-pressed={currentRating === 'known'}
+                                className={`flex w-full items-center justify-center gap-1 rounded-xl border py-3 text-xs font-bold transition-colors disabled:cursor-not-allowed ${currentRating === 'known' ? 'border-green-500 bg-green-200 text-green-800' : 'border-green-200 bg-green-100 text-green-700 hover:bg-green-200 disabled:opacity-45'}`}
+                            >
+                                <Check aria-hidden="true" className="h-4 w-4 shrink-0" />
+                                <span>{t.known}</span>
+                            </button>
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                {t.hardTooltip}
-                            </div>
-                        </div>
-                        <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(4)} className="w-full bg-blue-100 text-blue-700 border border-blue-200 py-3 rounded-xl font-bold hover:bg-blue-200">{t.good}</button>
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                {t.goodTooltip}
-                            </div>
-                        </div>
-                        <div className="group relative col-span-1">
-                            <button onClick={() => handleRate(5)} className="w-full bg-green-100 text-green-700 border border-green-200 py-3 rounded-xl font-bold hover:bg-green-200">{t.easy}</button>
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-32 bg-gray-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10 text-center">
-                                {t.easyTooltip}
+                                {currentRating ? t.ratingSaved : t.knownTooltip}
                             </div>
                         </div>
                     </>
                 )}
+                <button
+                    type="button"
+                    onClick={showNextCard}
+                    disabled={!canShowNext}
+                    aria-label={t.nextCard}
+                    title={t.nextCard}
+                    className="flex items-center justify-center rounded-xl border border-sky-300 bg-white py-3 text-sky-700 transition-colors hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-35 dark:border-sky-800 dark:bg-slate-900 dark:text-sky-300 dark:hover:bg-slate-800"
+                >
+                    <ArrowRight aria-hidden="true" className="h-5 w-5" />
+                </button>
             </div>
         </div>
     )

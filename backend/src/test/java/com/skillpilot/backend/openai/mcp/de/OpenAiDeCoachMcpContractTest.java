@@ -22,6 +22,9 @@ import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.MemoryPracticeCard;
+import com.skillpilot.backend.api.MemoryPracticeProgress;
+import com.skillpilot.backend.api.MemoryPracticeResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -114,17 +117,20 @@ class OpenAiDeCoachMcpContractTest {
                         meterRegistry,
                         new OpenAiDeOperationalTelemetry(meterRegistry)),
                 sessionCoordinator,
-                "https://skillpilot.test");
+                "https://skillpilot.test",
+                "skillpilot-memory-practice-contract-test-secret");
     }
 
     @Test
-    void publishesExactlyTwelveNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLink() {
+    void publishesExactlyFourteenNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLinks() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contract.toolSpecifications();
 
-        assertThat(tools).hasSize(12);
+        assertThat(tools).hasSize(14);
         assertThat(tools.stream().map(spec -> spec.tool().name())).containsExactly(
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                 OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                 OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
                 OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
@@ -162,6 +168,22 @@ class OpenAiDeCoachMcpContractTest {
                         .containsEntry(
                                 "openai/outputTemplate",
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI);
+            } else if (OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE.equals(tool.name())) {
+                assertThat(tool.meta().get("ui"))
+                        .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
+                                .containsEntry(
+                                        "resourceUri",
+                                        OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI));
+                assertThat(tool.meta())
+                        .containsEntry(
+                                "openai/outputTemplate",
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
+            } else if (OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD.equals(tool.name())) {
+                assertThat(tool.meta().get("ui"))
+                        .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
+                                .containsEntry("visibility", List.of("app"))
+                                .doesNotContainKey("resourceUri"));
+                assertThat(tool.meta()).doesNotContainKey("openai/outputTemplate");
             } else {
                 assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
             }
@@ -173,6 +195,31 @@ class OpenAiDeCoachMcpContractTest {
                         .annotations()
                         .readOnlyHint())
                 .isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
+                        .tool()
+                        .annotations()
+                        .readOnlyHint())
+                .isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
+                        .tool()
+                        .annotations()
+                        .idempotentHint())
+                .isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .annotations()
+                        .readOnlyHint())
+                .isFalse();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .annotations()
+                        .idempotentHint())
+                .isTrue();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .meta()
+                        .toString())
+                .contains(OpenAiDeV1McpContractAdapter.READ_SCOPE, OpenAiDeV1McpContractAdapter.WRITE_SCOPE);
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                         .tool()
                         .annotations()
@@ -201,6 +248,34 @@ class OpenAiDeCoachMcpContractTest {
                         "goalId",
                         OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                         OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION);
+        assertThat(spec(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
+                        .tool()
+                        .inputSchema()
+                        .get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(
+                                "goalId",
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION));
+        assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .inputSchema()
+                        .get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(
+                                "goalId",
+                                "cardId",
+                                "rating",
+                                "reviewCapability",
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                                OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
+        JsonNode memoryReviewInputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .inputSchema());
+        assertThat(memoryReviewInputSchema.at("/properties/rating/enum"))
+                .containsExactly(objectMapper.valueToTree("not_known"), objectMapper.valueToTree("known"));
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().inputSchema().get("properties"))
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
                         .containsOnlyKeys(
@@ -231,31 +306,40 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesActiveAndRetainedSelfContainedGoalVisualizationMcpAppResources() {
+    void publishesActiveRetainedGoalVisualizationAndDedicatedMemoryPracticeResources() {
         assertThat(contract.resourceSpecifications())
                 .extracting(specification -> specification.resource().uri())
                 .containsExactlyInAnyOrder(
                         OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI);
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
+                        OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
 
         for (McpStatelessServerFeatures.SyncResourceSpecification specification
                 : contract.resourceSpecifications()) {
             McpSchema.Resource resource = specification.resource();
+            boolean memoryPractice = OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI
+                    .equals(resource.uri());
             assertThat(resource.mimeType())
                     .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
             assertThat(resource.meta().get("ui"))
                     .isInstanceOfSatisfying(Map.class, ui -> {
                         assertThat(ui.get("domain"))
                                 .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-                        assertThat(ui.get("prefersBorder")).isEqualTo(false);
-                        assertThat(ui.toString())
-                                .contains("https://skillpilot.com", "resourceDomains")
-                                .doesNotContain("connectDomains", "redirectDomains");
+                        assertThat(ui.get("prefersBorder")).isEqualTo(memoryPractice);
+                        if (memoryPractice) {
+                            assertThat(ui.toString())
+                                    .contains("https://skillpilot.com", "redirectDomains")
+                                    .doesNotContain("connectDomains", "resourceDomains");
+                        } else {
+                            assertThat(ui.toString())
+                                    .contains("https://skillpilot.com", "resourceDomains")
+                                    .doesNotContain("connectDomains", "redirectDomains");
+                        }
                     });
             assertThat(resource.meta().get("openai/widgetDomain"))
                     .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
             assertThat(resource.meta().get("openai/widgetPrefersBorder"))
-                    .isEqualTo(false);
+                    .isEqualTo(memoryPractice);
             assertThat(resource.meta().get("openai/widgetCSP").toString())
                     .contains("resource_domains", "redirect_domains")
                     .doesNotContain("connect_domains");
@@ -274,11 +358,20 @@ class OpenAiDeCoachMcpContractTest {
                                                         .MCP_APP_RESOURCE_MIME_TYPE);
                                 assertThat(contents.text())
                                         .startsWith("<!doctype html>")
-                                        .contains(
-                                                "ui/notifications/tool-result",
-                                                "goalVisualization",
-                                                "ui/open-link")
+                                        .contains("ui/notifications/tool-result", "ui/open-link")
                                         .doesNotContain("<script src=");
+                                if (memoryPractice) {
+                                    assertThat(contents.text())
+                                            .contains(
+                                                    "skillpilotMemoryCard",
+                                                    OpenAiDeV1McpContractAdapter
+                                                            .REVIEW_MEMORY_PRACTICE_CARD)
+                                            .doesNotContain("goalVisualization");
+                                } else {
+                                    assertThat(contents.text())
+                                            .contains("goalVisualization")
+                                            .doesNotContain("skillpilotMemoryCard");
+                                }
                                 assertThat(contents.meta().get("ui"))
                                         .isInstanceOfSatisfying(
                                                 Map.class,
@@ -288,19 +381,21 @@ class OpenAiDeCoachMcpContractTest {
                                                                     OpenAiDeV1ContractMetadata
                                                                             .WIDGET_DOMAIN);
                                                     assertThat(ui.get("prefersBorder"))
-                                                            .isEqualTo(false);
+                                                            .isEqualTo(memoryPractice);
                                                 });
                                 assertThat(contents.meta().get("openai/widgetDomain"))
                                         .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                 assertThat(contents.meta().get("openai/widgetPrefersBorder"))
-                                        .isEqualTo(false);
-                                String expectedSha256 = resource.uri().equals(
-                                                OpenAiDeV1ContractMetadata
-                                                        .GOAL_VISUALIZATION_RESOURCE_URI)
-                                        ? OpenAiDeV1ContractMetadata
-                                                .GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        : OpenAiDeV1ContractMetadata
-                                                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
+                                        .isEqualTo(memoryPractice);
+                                String expectedSha256 = memoryPractice
+                                        ? OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
+                                        : resource.uri().equals(
+                                                        OpenAiDeV1ContractMetadata
+                                                                .GOAL_VISUALIZATION_RESOURCE_URI)
+                                                ? OpenAiDeV1ContractMetadata
+                                                        .GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                                : OpenAiDeV1ContractMetadata
+                                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
                                 assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
                             });
         }
@@ -327,6 +422,19 @@ class OpenAiDeCoachMcpContractTest {
                                         .substring(0, 12),
                                 "role",
                                 "retained",
+                                "status",
+                                "success")
+                        .timer()
+                        .count())
+                .isEqualTo(1);
+        assertThat(meterRegistry
+                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                        .tags(
+                                "artifact",
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
+                                        .substring(0, 12),
+                                "role",
+                                "active",
                                 "status",
                                 "success")
                         .timer()
@@ -545,7 +653,8 @@ class OpenAiDeCoachMcpContractTest {
                         meterRegistry,
                         new OpenAiDeOperationalTelemetry(meterRegistry)),
                 null,
-                "https://skillpilot.test");
+                "https://skillpilot.test",
+                "skillpilot-memory-practice-contract-test-secret");
         McpStatelessServerFeatures.SyncToolSpecification renderer = contractWithoutSessionCoordinator
                 .toolSpecifications()
                 .stream()
@@ -1105,6 +1214,243 @@ class OpenAiDeCoachMcpContractTest {
         verify(coachTools, never()).setMastery(
                 eq(LEARNER_ID),
                 org.mockito.ArgumentMatchers.argThat(candidate -> "memory-public-id".equals(candidate.goalId())));
+    }
+
+    @Test
+    void memoryPracticeStartHidesCardContentsFromTheModelAndExposesThemOnlyToTheComponent() throws Exception {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.startMemoryPractice(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new MemoryPracticeResponse(
+                        "ready",
+                        "Karte ansehen und anschließend selbst bewerten.",
+                        "memory-public-id",
+                        "Lernkarten – Funktionen und Gleichungen",
+                        new MemoryPracticeProgress(4, 3, 1),
+                        List.of(
+                                new MemoryPracticeCard(
+                                        "card-public-id",
+                                        "SECRET CARD FRONT: \\(a+b)^2\\)",
+                                        "SECRET CARD BACK: \\(a^2+2ab+b^2\\)",
+                                        "Binomische Formeln"),
+                                new MemoryPracticeCard(
+                                        "card-second",
+                                        "SECOND SECRET FRONT",
+                                        "SECOND SECRET BACK",
+                                        null))));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L));
+
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, result);
+        String structuredJson = objectMapper.writeValueAsString(result.structuredContent());
+        String modelVisibleText = result.content().toString();
+        assertThat(structuredJson)
+                .contains("ready", "memory-public-id", "totalCards", "dueCards", "scheduledCards")
+                .doesNotContain(
+                        LEARNING_SESSION_ID,
+                        "reviewCapability",
+                        "SECRET CARD FRONT",
+                        "SECRET CARD BACK",
+                        "SECOND SECRET FRONT",
+                        "SECOND SECRET BACK",
+                        "front",
+                        "back",
+                        "card-public-id",
+                        "card-second");
+        assertThat(modelVisibleText)
+                .doesNotContain(
+                        LEARNING_SESSION_ID,
+                        "reviewCapability",
+                        "SECRET CARD FRONT",
+                        "SECRET CARD BACK",
+                        "SECOND SECRET FRONT",
+                        "SECOND SECRET BACK",
+                        "card-public-id",
+                        "card-second")
+                .contains("Karteikartenlernen")
+                .doesNotContain("beherrscht", "Mastery gespeichert");
+        Map<String, Object> component = memoryPracticeComponent(result);
+        assertThat(component)
+                .containsEntry(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, LEARNING_SESSION_ID)
+                .containsEntry("goalId", "memory-public-id")
+                .containsEntry("completed", false)
+                .doesNotContainKey("card");
+        Map<String, Object> batch = memoryPracticeCardBatch(result);
+        assertThat(batch)
+                .containsEntry("initialIndex", 0)
+                .containsEntry("totalDueCards", 3)
+                .containsEntry("hasMore", true);
+        List<Map<String, Object>> cards = memoryPracticeCards(result);
+        assertThat(cards).hasSize(2);
+        assertThat(cards.get(0))
+                .containsEntry("id", "card-public-id")
+                .containsEntry("front", "SECRET CARD FRONT: \\(a+b)^2\\)")
+                .containsEntry("back", "SECRET CARD BACK: \\(a^2+2ab+b^2\\)");
+        assertThat(cards.get(1))
+                .containsEntry("id", "card-second")
+                .containsEntry("front", "SECOND SECRET FRONT")
+                .containsEntry("back", "SECOND SECRET BACK");
+        String firstCapability = reviewCapability(result, 0);
+        String secondCapability = reviewCapability(result, 1);
+        assertThat(firstCapability)
+                .isNotBlank()
+                .matches("[A-Za-z0-9_-]+")
+                .isNotEqualTo(secondCapability);
+        assertThat(structuredJson).doesNotContain(firstCapability, secondCapability);
+        assertThat(modelVisibleText).doesNotContain(firstCapability, secondCapability);
+        verify(coachTools).startMemoryPractice(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools, never()).setMastery(any(), any());
+    }
+
+    @Test
+    void validMemoryPracticeReviewCapabilityAuthorizesExactlyItsIssuedCard() throws Exception {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.startMemoryPractice(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(memoryPracticeBatch("card-public-id"));
+        McpSchema.CallToolResult start = call(
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L));
+        String capability = reviewCapability(start, 0);
+
+        when(coachTools.reviewMemoryPracticeCard(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new MemoryPracticeResponse(
+                        "ready",
+                        "Nächste Karte.",
+                        "memory-public-id",
+                        "Lernkarten – Funktionen und Gleichungen",
+                        new MemoryPracticeProgress(3, 1, 2),
+                        List.of(new MemoryPracticeCard(
+                                "card-next",
+                                "PRIVATE NEXT FRONT",
+                                "PRIVATE NEXT BACK",
+                                "Funktionen"))));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        "cardId", "card-public-id",
+                        "rating", "known",
+                        "reviewCapability", capability));
+
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD, result);
+        String structuredJson = objectMapper.writeValueAsString(result.structuredContent());
+        assertThat(structuredJson)
+                .contains("ready", "memory-public-id", "dueCards")
+                .doesNotContain(
+                        LEARNING_SESSION_ID,
+                        "reviewCapability",
+                        capability,
+                        "PRIVATE NEXT FRONT",
+                        "PRIVATE NEXT BACK",
+                        "card-next",
+                        "front",
+                        "back",
+                        "mastery",
+                        "mastered");
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
+                        .containsEntry("stateVersion", 1L));
+        assertThat(result.content().toString())
+                .doesNotContain(
+                        LEARNING_SESSION_ID,
+                        "reviewCapability",
+                        capability,
+                        "PRIVATE NEXT FRONT",
+                        "PRIVATE NEXT BACK",
+                        "card-next",
+                        "beherrscht");
+        Map<String, Object> component = memoryPracticeComponent(result);
+        assertThat(component)
+                .containsEntry(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, LEARNING_SESSION_ID)
+                .containsEntry("goalId", "memory-public-id")
+                .containsEntry("completed", false)
+                .doesNotContainKeys("card", "cardBatch");
+        assertThat(component.get("progress"))
+                .isInstanceOfSatisfying(Map.class, progress -> assertThat(progress)
+                        .containsEntry("total", 3)
+                        .containsEntry("due", 1)
+                        .containsEntry("scheduled", 2));
+        assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
+                        .tool()
+                        .description())
+                .contains("updates only the rated card's repetition schedule")
+                .contains("Rating is exactly not_known or known")
+                .contains("Local previous/next navigation never calls this tool")
+                .contains("never marks the memory goal as mastered");
+        verify(coachTools).reviewMemoryPracticeCard(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools, never()).setMastery(any(), any());
+    }
+
+    @Test
+    void manipulatedMemoryPracticeReviewCapabilityIsRejectedBeforeTheBackendWrite() {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.startMemoryPractice(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(memoryPracticeBatch("card-public-id"));
+        McpSchema.CallToolResult start = call(
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L));
+        String capability = reviewCapability(start, 0);
+        String manipulatedCapability = capability.substring(0, capability.length() - 1)
+                + (capability.endsWith("A") ? "B" : "A");
+
+        McpSchema.CallToolResult rejected = call(
+                OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        "cardId", "card-public-id",
+                        "rating", "known",
+                        "reviewCapability", manipulatedCapability));
+
+        assertThat(rejected.isError()).isTrue();
+        assertThat(rejected.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("code", "INVALID_INPUT")
+                        .doesNotContainKeys(
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                "reviewCapability"));
+        assertThat(rejected.content().toString())
+                .contains("gehört nicht zum ausgegebenen Karteikartenstapel")
+                .doesNotContain(LEARNING_SESSION_ID, capability, manipulatedCapability);
+        verify(coachTools, never()).reviewMemoryPracticeCard(any(), any(), any());
+    }
+
+    @Test
+    void memoryPracticeStartRejectsStaleStateAndNonMemoryActiveGoalBeforeLoadingCards() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+
+        McpSchema.CallToolResult stale = call(
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of(
+                        "goalId", "memory-public-id",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 9L));
+        McpSchema.CallToolResult nonMemory = call(
+                OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of(
+                        "goalId", "goal-public-id",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 0L));
+
+        assertThat(stale.isError()).isTrue();
+        assertThat(stale.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("status", "conflict")
+                        .containsEntry("reloadContextAtMostOnce", true));
+        assertThat(nonMemory.isError()).isTrue();
+        assertThat(nonMemory.content().toString())
+                .contains("bestätigte aktive Lernkartenziel");
+        verify(coachTools, never()).startMemoryPractice(any(), any(), any());
     }
 
     @Test
@@ -1891,6 +2237,48 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null);
         return state("chooseMemoryMode", active);
+    }
+
+    private MemoryPracticeResponse memoryPracticeBatch(String cardId) {
+        return new MemoryPracticeResponse(
+                "ready",
+                "Karte ansehen und anschließend selbst bewerten.",
+                "memory-public-id",
+                "Lernkarten – Funktionen und Gleichungen",
+                new MemoryPracticeProgress(1, 1, 0),
+                List.of(new MemoryPracticeCard(
+                        cardId,
+                        "PRIVATE CARD FRONT",
+                        "PRIVATE CARD BACK",
+                        "Funktionen")));
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Object> memoryPracticeComponent(McpSchema.CallToolResult result) {
+        assertThat(result.meta()).isInstanceOf(Map.class);
+        Object component = ((Map<String, Object>) result.meta()).get("skillpilotMemoryCard");
+        assertThat(component).isInstanceOf(Map.class);
+        return (Map<String, Object>) component;
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Object> memoryPracticeCardBatch(McpSchema.CallToolResult result) {
+        Object batch = memoryPracticeComponent(result).get("cardBatch");
+        assertThat(batch).isInstanceOf(Map.class);
+        return (Map<String, Object>) batch;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Map<String, Object>> memoryPracticeCards(McpSchema.CallToolResult result) {
+        Object cards = memoryPracticeCardBatch(result).get("cards");
+        assertThat(cards).isInstanceOf(List.class);
+        return (List<Map<String, Object>>) cards;
+    }
+
+    private String reviewCapability(McpSchema.CallToolResult result, int cardIndex) {
+        Object capability = memoryPracticeCards(result).get(cardIndex).get("reviewCapability");
+        assertThat(capability).isInstanceOf(String.class);
+        return (String) capability;
     }
 
     private UnifiedLearnerStateResponse visualizationState() {

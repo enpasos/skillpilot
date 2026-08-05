@@ -69,6 +69,11 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.LearningModeOption;
+import com.skillpilot.backend.api.MemoryPracticeCard;
+import com.skillpilot.backend.api.MemoryPracticeProgress;
+import com.skillpilot.backend.api.MemoryPracticeResponse;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -94,6 +99,8 @@ import org.springframework.core.io.Resource;
 
 @Service
 public class LearnerService {
+
+    private static final int MEMORY_PRACTICE_BATCH_LIMIT = 20;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
@@ -900,6 +907,87 @@ public class LearnerService {
     }
 
     @Transactional
+    public MemoryPracticeResponse startMemoryPractice(
+            String skillpilotId,
+            String language,
+            MemoryPracticeStartRequest request) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context = resolveVerifiedRecallContext(
+                skillpilotId,
+                request != null ? request.goalId() : null,
+                language,
+                learner);
+        return buildMemoryPracticeResponse(language, context, Instant.now());
+    }
+
+    @Transactional
+    public MemoryPracticeResponse reviewMemoryPracticeCard(
+            String skillpilotId,
+            String language,
+            MemoryPracticeReviewRequest request) {
+        if (request == null || request.cardId() == null || request.cardId().isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "memory practice review requires cardId.");
+        }
+        int quality = memoryPracticeQuality(request.rating());
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context = resolveVerifiedRecallContext(
+                skillpilotId,
+                request.goalId(),
+                language,
+                learner);
+        SrsCard card = findSrsCard(context.cards(), request.cardId());
+        if (card == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Card is not part of this memorization goal.");
+        }
+
+        Instant reviewedAt = Instant.now();
+        Object previousCardState = context.srsState().get(card.id);
+        if (!isMemoryPracticeCardDue(previousCardState, reviewedAt)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "Card is not due for memory practice.");
+        }
+
+        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
+        Map<String, Object> cardState = toMutableStringObjectMap(previousCardState);
+        int previousInterval = nonNegativeFiniteInt(cardState.get("interval"), 0);
+        int previousRepetition = nonNegativeFiniteInt(
+                firstPresent(cardState, "repetition", "repetitions"),
+                0);
+        double previousEf = numberValue(firstPresent(cardState, "ef", "easeFactor"), 2.5).doubleValue();
+        if (!Double.isFinite(previousEf)) {
+            previousEf = 2.5;
+        }
+        previousEf = Math.max(1.3, previousEf);
+
+        SrsReviewResult review = calculateSrsReview(
+                quality,
+                previousInterval,
+                previousEf,
+                previousRepetition);
+        cardState.put("id", card.id);
+        cardState.put("interval", review.interval());
+        cardState.put("repetition", review.repetition());
+        cardState.put("ef", review.ef());
+        cardState.put(
+                "nextReview",
+                reviewedAt.toEpochMilli() + review.interval() * 24L * 60L * 60L * 1000L);
+        nextState.put(card.id, cardState);
+
+        persistMemoryPracticeState(learner, context.goal().getId(), nextState, reviewedAt);
+        return buildMemoryPracticeResponse(
+                language,
+                new VerifiedRecallContext(context.goal(), context.cards(), nextState),
+                reviewedAt);
+    }
+
+    @Transactional
     public VerifiedRecallPromptResponse startVerifiedRecall(
             String skillpilotId,
             String language,
@@ -1134,6 +1222,123 @@ public class LearnerService {
                 .collect(Collectors.toList());
     }
 
+    private MemoryPracticeResponse buildMemoryPracticeResponse(
+            String language,
+            VerifiedRecallContext context,
+            Instant now) {
+        List<SrsCard> dueCards = context.cards().stream()
+                .filter(card -> isMemoryPracticeCardDue(context.srsState().get(card.id), now))
+                .toList();
+        int totalCards = context.cards().size();
+        MemoryPracticeProgress progress = new MemoryPracticeProgress(
+                totalCards,
+                dueCards.size(),
+                Math.max(0, totalCards - dueCards.size()));
+        if (dueCards.isEmpty()) {
+            return new MemoryPracticeResponse(
+                    "complete",
+                    memoryPracticeCompleteInstruction(language),
+                    context.goal().getId(),
+                    context.goal().getTitle(),
+                    progress,
+                    List.of());
+        }
+        List<MemoryPracticeCard> batch = dueCards.stream()
+                .limit(MEMORY_PRACTICE_BATCH_LIMIT)
+                .map(card -> new MemoryPracticeCard(
+                        card.id,
+                        card.front,
+                        card.back,
+                        card.category))
+                .toList();
+        return new MemoryPracticeResponse(
+                "ready",
+                memoryPracticeReadyInstruction(language),
+                context.goal().getId(),
+                context.goal().getTitle(),
+                progress,
+                batch);
+    }
+
+    private boolean isMemoryPracticeCardDue(Object rawState, Instant now) {
+        if (!(rawState instanceof Map<?, ?> stateMap)) {
+            return true;
+        }
+        double interval = numberValue(stateMap.get("interval"), Double.NaN).doubleValue();
+        Object rawNextReview = stateMap.get("nextReview");
+        if (!Double.isFinite(interval)
+                || (rawNextReview instanceof Number number && !Double.isFinite(number.doubleValue()))) {
+            return true;
+        }
+        Long nextReview = parseNextReview(rawNextReview);
+        return nextReview == null || nextReview <= now.toEpochMilli();
+    }
+
+    private int memoryPracticeQuality(String rating) {
+        if (rating == null || rating.isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "memory practice review requires rating not_known or known.");
+        }
+        return switch (rating.trim().toLowerCase(Locale.ROOT)) {
+            case "not_known" -> 1;
+            case "known" -> 4;
+            default -> throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "memory practice review requires rating not_known or known.");
+        };
+    }
+
+    private int nonNegativeFiniteInt(Object value, int fallback) {
+        double parsed = numberValue(value, fallback).doubleValue();
+        if (!Double.isFinite(parsed)) {
+            return fallback;
+        }
+        return Math.max(0, (int) parsed);
+    }
+
+    private void persistMemoryPracticeState(
+            Learner learner,
+            String goalId,
+            Map<String, Object> srsState,
+            Instant reviewedAt) {
+        String json;
+        try {
+            json = objectMapper.writeValueAsString(srsState);
+        } catch (Exception exception) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Memory practice state could not be stored.");
+        }
+        LearnerClientStateId id = new LearnerClientStateId(learner.getSkillpilotId(), goalId);
+        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
+        if (stored == null) {
+            stored = new LearnerClientState(learner, goalId, json, reviewedAt);
+        } else {
+            stored.setClientState(json);
+            stored.setClientStateUpdatedAt(reviewedAt);
+        }
+        learnerClientStateRepository.save(stored);
+        advanceCoachStateRevision(learner);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this,
+                learner.getSkillpilotId(),
+                "CLIENT_STATE_UPDATED",
+                goalId));
+    }
+
+    private String memoryPracticeReadyInstruction(String language) {
+        return isEnglish(language)
+                ? "Show the front first. Reveal the back only after the learner turns the card, then ask whether it was known or not known."
+                : "Zeige zuerst die Vorderseite. Decke die Rückseite erst nach dem Umdrehen auf und frage danach nur, ob die Antwort gewusst oder nicht gewusst wurde.";
+    }
+
+    private String memoryPracticeCompleteInstruction(String language) {
+        return isEnglish(language)
+                ? "No flashcards are due today. Practice does not complete the memorization goal; verified recall remains separate."
+                : "Für heute sind keine Karteikarten fällig. Das Lernen schließt das Lernkartenziel nicht ab; die harte Prüfung bleibt davon getrennt.";
+    }
+
     private VerifiedRecallPromptResponse buildVerifiedRecallPromptResponse(
             String skillpilotId,
             String language,
@@ -1359,7 +1564,7 @@ public class LearnerService {
                 ef = 1.3;
             }
         } else {
-            interval = 0;
+            interval = 1;
             repetition = 0;
             ef = lastEf;
         }
@@ -6615,15 +6820,15 @@ public class LearnerService {
         return List.of(
                 new LearningModeOption(
                         "practice",
-                        "Im Cockpit üben",
-                        "Öffne den SRS-Kartendrill im Cockpit für fällige Karten und Wiederholung.",
+                        "Karteikarten lernen",
+                        "Öffne das Karteikartenlernen im Cockpit für fällige Karten und Wiederholung.",
                         "openCockpitPractice",
                         "cockpit",
                         activeGoal.id()),
                 new LearningModeOption(
                         "verify",
                         "Mit Lerncoach prüfen",
-                        "Schalte in den harten Kartenprüfmodus: Nutze verified-recall/start, frage ohne Hilfe ab, hole danach die erwartete Antwort und speichere passed oder failed.",
+                        "Harte Abfrage ohne Hilfestellung.",
                         "startVerifiedRecall",
                         "gpt",
                         activeGoal.id()));

@@ -3,6 +3,9 @@ package com.skillpilot.backend.ai;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MemoryPracticeResponse;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -221,6 +224,22 @@ public class CoachToolFacade {
         }
     }
 
+    public MemoryPracticeResponse startMemoryPractice(
+            String skillpilotId,
+            String language,
+            MemoryPracticeStartRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startMemoryPractice(skillpilotId, language, request);
+    }
+
+    public MemoryPracticeResponse reviewMemoryPracticeCard(
+            String skillpilotId,
+            String language,
+            MemoryPracticeReviewRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.reviewMemoryPracticeCard(skillpilotId, language, request);
+    }
+
     public VerifiedRecallPromptResponse startVerifiedRecall(
             String skillpilotId,
             String language,
@@ -336,6 +355,20 @@ public class CoachToolFacade {
             return result;
         }
         return MasteryResult.conflict(withoutSkillpilotId(result.state()));
+    }
+
+    public MemoryPracticeResponse startSessionMemoryPractice(
+            String sessionToken,
+            String language,
+            MemoryPracticeStartRequest request) {
+        return startMemoryPractice(resolveSessionLearnerId(sessionToken), language, request);
+    }
+
+    public MemoryPracticeResponse reviewSessionMemoryPracticeCard(
+            String sessionToken,
+            String language,
+            MemoryPracticeReviewRequest request) {
+        return reviewMemoryPracticeCard(resolveSessionLearnerId(sessionToken), language, request);
     }
 
     public VerifiedRecallPromptResponse startSessionVerifiedRecall(

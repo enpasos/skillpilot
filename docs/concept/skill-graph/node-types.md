@@ -122,13 +122,15 @@ Rules applied on each review:
 
 This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
 
-### learning-coach/GPT-led hard recall
+### Flashcard practice and learning-coach/GPT-led hard recall
 
-The normal flashcard drill remains a Cockpit practice surface. The hard recall check is conducted by the learning-coach/GPT because it needs a controlled dialog: prompt first, learner answer without card help, then answer lookup and persisted pass/fail decision.
+Normal flashcard practice and the hard recall check are separate learning modes. The multilingual OpenAI V1 MCP coach can provide normal practice in its dedicated, interactive chat component; providers without that component use the Cockpit as the practice surface. The hard recall check is conducted by the learning-coach/GPT because it needs a controlled dialog: prompt first, learner answer without card help, then answer lookup and persisted pass/fail decision.
 
 When a memorization goal is active, the runtime should expose two learner actions:
-- **Practice:** open the Cockpit SRS drill for normal spaced repetition.
+- **Practice:** learn the due flashcards in the dedicated chat component when the provider supports it, otherwise open the Cockpit flashcard practice.
 - **Verify:** hand over to the learning-coach/GPT for hard recall of the current active memory goal.
+
+The interactive chat component receives only a bounded due-card batch in private tool-result metadata. Turning a card or moving backward and forward never writes state. The learner records exactly **not known yet** or **known** for a displayed card; that binary choice is translated to the internal spaced-repetition quality and updates only that card's schedule. Reviewing a batch is normal practice and never counts as the hard mastery check.
 
 Runtime behavior:
 - Prefer cards that are not yet verified.

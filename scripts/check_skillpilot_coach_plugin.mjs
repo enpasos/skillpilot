@@ -15,6 +15,10 @@ const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
 );
+const memoryCardPracticeWidget = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
+);
 const retainedGoalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
@@ -27,6 +31,12 @@ const goalVisualizationArtifactSha256 = createHash("sha256")
   .digest("hex");
 const goalVisualizationResourceUri =
   `ui://skillpilot/coach/v1/sha256-${goalVisualizationArtifactSha256}/goal-visualization.html`;
+assert.equal(existsSync(memoryCardPracticeWidget), true);
+const memoryCardPracticeArtifactSha256 = createHash("sha256")
+  .update(readFileSync(memoryCardPracticeWidget))
+  .digest("hex");
+const memoryCardPracticeResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${memoryCardPracticeArtifactSha256}/memory-card-practice.html`;
 assert.equal(existsSync(retainedGoalVisualizationWidget), true);
 const retainedGoalVisualizationArtifactSha256 = createHash("sha256")
   .update(readFileSync(retainedGoalVisualizationWidget))
@@ -269,7 +279,10 @@ assert.equal(
   "V1 must not publish or declare a compatibility endpoint",
 );
 assert.deepEqual(releaseLine.ui, {
-  activeResourceUri: goalVisualizationResourceUri,
+  activeBindings: {
+    render_skillpilot_goal_visualization: goalVisualizationResourceUri,
+    start_skillpilot_memory_practice: memoryCardPracticeResourceUri,
+  },
   domain: "https://mcp-coach-v1.skillpilot.com",
   enabled: true,
   stateSchemaVersion: 1,
@@ -282,6 +295,11 @@ assert.deepEqual(releaseLine.ui, {
     },
     {
       mimeType: "text/html;profile=mcp-app",
+      path: "ui/memory-card-practice.html",
+      uri: memoryCardPracticeResourceUri,
+    },
+    {
+      mimeType: "text/html;profile=mcp-app",
       path: "ui/goal-visualization.html",
       uri: goalVisualizationResourceUri,
     },
@@ -291,6 +309,10 @@ const goalVisualizationHtml = read(goalVisualizationWidget);
 assert.match(goalVisualizationHtml, /^<!doctype html>/i);
 assert.match(goalVisualizationHtml, /ui\/notifications\/tool-result/);
 assert.match(goalVisualizationHtml, /goalVisualization/);
+const memoryCardPracticeHtml = read(memoryCardPracticeWidget);
+assert.match(memoryCardPracticeHtml, /^<!doctype html>/i);
+assert.match(memoryCardPracticeHtml, /ui\/notifications\/tool-result/);
+assert.match(memoryCardPracticeHtml, /skillpilotMemoryCard/);
 
 assert.equal(lifecycle.schemaVersion, 1);
 assert.equal(lifecycle.pluginIdentity, releaseLine.pluginIdentity);
@@ -437,6 +459,19 @@ const assertBehaviorFragments = (source, patterns, label) => {
     assert.match(source, pattern, `Missing ${label} behavior: ${pattern}`);
   }
 };
+
+assertBehaviorFragments(
+  combinedSkill,
+  [
+    /Normal card practice and strict verified recall are[\s\S]+different learning modes/u,
+    /start_skillpilot_memory_practice/u,
+    /review_skillpilot_memory_practice_card/u,
+    /dedicated[\s\S]+memory-card component/u,
+    /must never reuse[\s\S]+goal-visualization resource/u,
+    /Cockpit URL as (?:the )?fallback/u,
+  ],
+  "memory-card practice UI boundary",
+);
 
 const didacticParityRules = [
   {
@@ -765,7 +800,7 @@ assert.match(
 );
 assert.match(
   skill,
-  /motivational orientation, dialogic scaffolding,\s*verified recall, or strict assessment/u,
+  /motivational orientation, dialogic scaffolding,\s*interactive memory-card practice, verified recall, or strict assessment/u,
   "The skill workflow must route motivation through its dedicated mode.",
 );
 
@@ -850,8 +885,8 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /UI receipt[\s\S]+does not replace the latest full SkillPilot context/s,
-  "The renderer receipt must not replace the authoritative full coaching context.",
+  /UI-only tool results[\s\S]+Neither (?:result )?replaces the latest full SkillPilot context/s,
+  "UI-only receipts must not replace the authoritative full coaching context.",
 );
 assert.match(
   mcpContract,
@@ -934,7 +969,11 @@ assert.equal(
 assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
-  releaseLine.ui.activeResourceUri,
+  releaseLine.ui.activeBindings.render_skillpilot_goal_visualization,
+);
+assert.equal(
+  javaConstant("MEMORY_CARD_PRACTICE_RESOURCE_URI"),
+  releaseLine.ui.activeBindings.start_skillpilot_memory_practice,
 );
 assert.equal(
   javaConstant("RETAINED_GOAL_VISUALIZATION_RESOURCE_URI"),
@@ -946,9 +985,16 @@ assert.equal(
   "The Java V1 UI hash must match the exact embedded widget artifact.",
 );
 assert.equal(
+  javaConstant("MEMORY_CARD_PRACTICE_ARTIFACT_SHA256"),
+  memoryCardPracticeArtifactSha256,
+  "The Java V1 memory-card UI hash must match the exact embedded widget artifact.",
+);
+assert.equal(
   javaConstant("MCP_APP_RESOURCE_MIME_TYPE"),
   releaseLine.ui.resources.find(
-    (resource) => resource.uri === releaseLine.ui.activeResourceUri,
+    (resource) =>
+      resource.uri ===
+      releaseLine.ui.activeBindings.render_skillpilot_goal_visualization,
   )?.mimeType,
 );
 assert.equal(javaConstant("INTERNAL_MCP_PATH"), "/internal/openai/v1/mcp");
@@ -972,13 +1018,13 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /"openai\/outputTemplate",\s*OpenAiDeV1ContractMetadata\.GOAL_VISUALIZATION_RESOURCE_URI/,
-  "The renderer must carry the ChatGPT UI-template binding",
+  /UI_TOOL_RESOURCE_BINDINGS\s*=\s*Map\.of\([\s\S]*RENDER_GOAL_VISUALIZATION,[\s\S]*GOAL_VISUALIZATION_RESOURCE_URI,[\s\S]*START_MEMORY_PRACTICE,[\s\S]*MEMORY_CARD_PRACTICE_RESOURCE_URI\)/,
+  "Each UI tool must map to its own active MCP App resource",
 );
 assert.match(
   mcpContract,
-  /Set\.of\(RENDER_GOAL_VISUALIZATION\)/,
-  "Only the dedicated renderer may carry the MCP App UI binding",
+  /REVIEW_MEMORY_PRACTICE_CARD\.equals\(name\)[\s\S]*"visibility",\s*List\.of\("app"\)/,
+  "The memory-practice review tool must be app-only and unbound",
 );
 assert.doesNotMatch(
   mcpContract,
