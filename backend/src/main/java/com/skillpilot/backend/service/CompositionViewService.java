@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.io.IOException;
@@ -763,7 +764,7 @@ public class CompositionViewService {
         List<Map<String, Object>> normalizedViews = views.stream()
                 .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
                 .toList();
-        List<Map<String, Object>> mergedRootNodes = mergeNodeMaps(normalizedViews.stream()
+        List<Map<String, Object>> mergedRootNodes = CourseProfileCompositionViewMerger.merge(normalizedViews.stream()
                 .flatMap(view -> asNodeList(view.get("rootNodes")).stream())
                 .toList());
         List<String> sourceViewIds = normalizedViews.stream()
@@ -801,29 +802,6 @@ public class CompositionViewService {
         return nodes;
     }
 
-    private static List<Map<String, Object>> mergeNodeMaps(List<Map<String, Object>> nodes) {
-        Map<String, List<Map<String, Object>>> grouped = new LinkedHashMap<>();
-        for (Map<String, Object> node : nodes) {
-            grouped.computeIfAbsent(nodeSignature(node), key -> new ArrayList<>()).add(node);
-        }
-
-        List<Map<String, Object>> merged = new ArrayList<>();
-        for (List<Map<String, Object>> group : grouped.values()) {
-            Map<String, Object> first = new LinkedHashMap<>(group.get(0));
-            if ("structure".equals(asString(first.get("kind")))) {
-                List<Map<String, Object>> children = group.stream()
-                        .flatMap(node -> asNodeList(node.get("children")).stream())
-                        .toList();
-                first.put("children", mergeNodeMaps(children));
-            } else {
-                first.remove("children");
-                applyTargetDominantProjectionRole(first, group);
-            }
-            merged.add(Collections.unmodifiableMap(first));
-        }
-        return Collections.unmodifiableList(merged);
-    }
-
     private static void validateProjectionRoles(Object rawNodes, Path path, String nodePath) {
         List<Map<String, Object>> nodes = asNodeList(rawNodes);
         for (int index = 0; index < nodes.size(); index += 1) {
@@ -840,25 +818,6 @@ public class CompositionViewService {
             if ("structure".equals(kind)) {
                 validateProjectionRoles(node.get("children"), path, currentPath + ".children");
             }
-        }
-    }
-
-    private static void applyTargetDominantProjectionRole(
-            Map<String, Object> merged,
-            List<Map<String, Object>> sources) {
-        String kind = asString(merged.get("kind"));
-        if (!supportsProjectionRole(kind)) {
-            return;
-        }
-        boolean hasTarget = false;
-        boolean hasPrerequisiteOnly = false;
-        for (Map<String, Object> source : sources) {
-            ProjectionRole role = projectionRole(source, null, nodeSignature(source));
-            hasTarget |= role == ProjectionRole.TARGET;
-            hasPrerequisiteOnly |= role == ProjectionRole.PREREQUISITE_ONLY;
-        }
-        if (hasTarget && hasPrerequisiteOnly) {
-            merged.put("projectionRole", "target");
         }
     }
 
@@ -883,19 +842,4 @@ public class CompositionViewService {
                 || "goalEntry".equals(kind);
     }
 
-    private static String nodeSignature(Map<String, Object> node) {
-        String kind = asString(node.get("kind"));
-        if ("structure".equals(kind)) {
-            String id = asString(node.get("id"));
-            String label = asString(node.get("label"));
-            return "structure:" + (StringUtils.hasText(id) ? id : label);
-        }
-        if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
-            return kind + ":" + asString(node.get("goalId"));
-        }
-        if ("landscapeEntry".equals(kind)) {
-            return kind + ":" + asString(node.get("landscapeId"));
-        }
-        return kind + ":" + node.hashCode();
-    }
 }

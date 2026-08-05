@@ -151,7 +151,11 @@ For canonical Gymnasium, the initial reviewed scope vocabulary should be:
 - `schoolForm`: `Gymnasium`
 - `stage`: `SekI`, `SekII`
 - `durationModel`: `G8`, `G9`
-- `courseProfile`: `GK`, `LK`
+- `courseProfile`: `GK`, `LK`, `GK+LK`
+
+`GK+LK` is the explicit combined learner scope for learning or testing the
+reviewed union of both course profiles. It reuses the canonical GK and LK goals
+and must not duplicate goal IDs or mastery state.
 
 `ALL` is a query sentinel only. It MUST NOT be serialized as a placement or applicability value.
 

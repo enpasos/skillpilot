@@ -522,6 +522,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             offeredDurationModels,
         )
         const effectiveFilters = getDisplayCourseProfileFilters(landscape.filters, localizedLanguage)
+        const displaysCanonicalCombinedProfile = effectiveFilters.some(filter => filter.id === 'GK+LK')
+        const displayedCurrentFilter = displaysCanonicalCombinedProfile && currentFilter.trim().toUpperCase() === 'ALL'
+            ? 'GK+LK'
+            : currentFilter
         const displayFilters = isRoot
             ? getDisplayFiltersForSelection(effectiveFilters, localizedLanguage)
             : effectiveFilters
@@ -579,13 +583,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         {showFilterControls && displayFilters.map(f => (
                             <label
                                 key={f.id}
-                                className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${currentFilter === f.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
+                                className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${displayedCurrentFilter === f.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
                                     }`}
                             >
                                 <input
                                     type="radio"
                                     name={`filter-${landscape.landscapeId}`}
-                                    checked={currentFilter === f.id}
+                                    checked={displayedCurrentFilter === f.id}
                                     onChange={() => setFilter(landscape.landscapeId, f.id)}
                                     // Removed disabled={!isSelected} so selecting a filter auto-selects the subject
                                     className="w-3.5 h-3.5 border-border-color bg-input-bg text-sky-500 focus:ring-sky-500 focus:ring-offset-sidebar-bg"

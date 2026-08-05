@@ -1519,9 +1519,9 @@ class CurriculumPersonalizationPlannerTest {
         subjects.setScopeBindings(List.of(
                 fixedBinding("schoolForm", "Gymnasium"),
                 selectedBinding("stage", "group-stage"),
-                valuesBinding("courseProfile", false, "GK", "LK")));
+                valuesBinding("courseProfile", false, "GK", "LK", "GK+LK")));
         PersonalizationOptionSource profiles =
-                offeredFiltersForSelectedLandscapes("group-subject", "courseProfile", "GK", "LK");
+                offeredFiltersForSelectedLandscapes("group-subject", "courseProfile", "GK", "LK", "GK+LK");
         profiles.setScopeBindings(List.of(
                 fixedBinding("schoolForm", "Gymnasium"),
                 selectedBinding("stage", "group-stage")));
@@ -1569,7 +1569,9 @@ class CurriculumPersonalizationPlannerTest {
                 return profile == null ? requestedScope : null;
             }
             if ("SekII".equals(stage)) {
-                return profile == null || "LK".equals(profile) ? requestedScope : null;
+                return profile == null || "LK".equals(profile) || "GK+LK".equals(profile)
+                        ? requestedScope
+                        : null;
             }
             return null;
         };
@@ -1606,12 +1608,26 @@ class CurriculumPersonalizationPlannerTest {
                         PersonalizationPlan.Option::filterId,
                         PersonalizationPlan.Option::scopeKey,
                         PersonalizationPlan.Option::scopeValue)
-                .containsExactly(tuple(
-                        PersonalizationPlan.OptionKind.VALUE,
-                        COBALT_ID,
-                        "LK",
-                        null,
-                        null));
+                .containsExactly(
+                        tuple(
+                                PersonalizationPlan.OptionKind.VALUE,
+                                COBALT_ID,
+                                "LK",
+                                null,
+                                null),
+                        tuple(
+                                PersonalizationPlan.OptionKind.VALUE,
+                                COBALT_ID,
+                                "GK+LK",
+                                null,
+                                null));
+        assertThat(profilePlan.options())
+                .extracting(
+                        PersonalizationPlan.Option::filterId,
+                        PersonalizationPlan.Option::filterLabel)
+                .containsExactly(
+                        tuple("LK", "Leistungskurs"),
+                        tuple("GK+LK", "Grund- und Leistungskurs"));
 
         PersonalizationPlan lowerSecondaryPlan = CurriculumPersonalizationPlanner.plan(
                 ROOT_ID,

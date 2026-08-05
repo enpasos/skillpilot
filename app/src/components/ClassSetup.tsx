@@ -63,7 +63,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     synchronizePersonalCurriculumStageScope({}, { rootLandscapeId }).config
   )
   const [selectedDurationModel, setSelectedDurationModel] = useState('')
-  const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('ALL')
+  const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('GK+LK')
   const [studentNames, setStudentNames] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)

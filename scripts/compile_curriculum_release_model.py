@@ -86,9 +86,106 @@ SCHEMA_IDS = {
 
 ZERO_DIGEST = "sha256:" + "0" * 64
 
+COURSE_PROFILE_DIMENSION = "courseProfile"
+COURSE_PROFILE_GK = "GK"
+COURSE_PROFILE_LK = "LK"
+COURSE_PROFILE_COMBINED = "GK+LK"
+
 
 class CompilationError(RuntimeError):
     pass
+
+
+def build_runtime_scope_contract(
+    compiled_views: Sequence[tuple[str, Mapping[str, Any]]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Build exact single offerings plus every available GK/LK union.
+
+    The combined profile is one persisted scope value.  It deliberately keeps
+    the authored GK and LK views as the two ordered members of a package-level
+    merge instead of inventing a third composition-view document.
+    """
+
+    values_by_dimension: dict[str, set[str]] = defaultdict(set)
+    offered_scopes: list[dict[str, Any]] = []
+    course_views_by_base_scope: dict[
+        tuple[str, tuple[tuple[str, str], ...]], dict[str, Mapping[str, Any]]
+    ] = defaultdict(dict)
+
+    for _, view in compiled_views:
+        scope = view["scope"]
+        for key, value in scope.items():
+            values_by_dimension[key].add(value)
+        offered_scopes.append(
+            {
+                "offeringId": f"offering.{view['viewId']}",
+                "landscapeId": view["landscapeId"],
+                "scope": scope,
+                "viewResolution": {"mode": "single", "viewIds": [view["viewId"]]},
+            }
+        )
+
+        course_profile = scope.get(COURSE_PROFILE_DIMENSION)
+        if course_profile in {COURSE_PROFILE_GK, COURSE_PROFILE_LK, COURSE_PROFILE_COMBINED}:
+            base_scope = tuple(
+                sorted(
+                    (key, value)
+                    for key, value in scope.items()
+                    if key != COURSE_PROFILE_DIMENSION
+                )
+            )
+            course_views_by_base_scope[(view["landscapeId"], base_scope)][course_profile] = view
+
+    for (landscape_id, base_scope), course_views in sorted(course_views_by_base_scope.items()):
+        if COURSE_PROFILE_COMBINED in course_views:
+            continue
+        gk_view = course_views.get(COURSE_PROFILE_GK)
+        lk_view = course_views.get(COURSE_PROFILE_LK)
+        if gk_view is None or lk_view is None:
+            continue
+
+        combined_scope = dict(base_scope)
+        combined_scope[COURSE_PROFILE_DIMENSION] = COURSE_PROFILE_COMBINED
+        values_by_dimension[COURSE_PROFILE_DIMENSION].add(COURSE_PROFILE_COMBINED)
+        offering_identity = sha256_bytes(
+            canonical_json_bytes(
+                {
+                    "landscapeId": landscape_id,
+                    "scope": combined_scope,
+                    "viewIds": [gk_view["viewId"], lk_view["viewId"]],
+                }
+            )
+        ).removeprefix("sha256:")[:24]
+        offered_scopes.append(
+            {
+                "offeringId": f"offering.course-profile-union.{offering_identity}",
+                "landscapeId": landscape_id,
+                "scope": combined_scope,
+                "viewResolution": {
+                    "mode": "merge",
+                    "mergeDimension": COURSE_PROFILE_DIMENSION,
+                    "viewIds": [gk_view["viewId"], lk_view["viewId"]],
+                },
+            }
+        )
+
+    scope_dimensions: list[dict[str, Any]] = []
+    for dimension in sorted(values_by_dimension):
+        descriptor: dict[str, Any] = {
+            "id": dimension,
+            "values": sorted(values_by_dimension[dimension]),
+        }
+        if dimension == COURSE_PROFILE_DIMENSION and COURSE_PROFILE_COMBINED in values_by_dimension[dimension]:
+            descriptor["composites"] = [
+                {
+                    "value": COURSE_PROFILE_COMBINED,
+                    "members": [COURSE_PROFILE_GK, COURSE_PROFILE_LK],
+                }
+            ]
+        scope_dimensions.append(descriptor)
+
+    offered_scopes.sort(key=lambda offering: offering["offeringId"])
+    return scope_dimensions, offered_scopes
 
 
 def validate_json_scalars(value: Any, source: str) -> None:
@@ -3613,13 +3710,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     write_json(output_root, migration_path, migration)
 
     runtime_catalog_path = "data/runtime/catalog.json"
-    scope_dimensions: list[dict[str, Any]] = []
-    values_by_dimension: dict[str, set[str]] = defaultdict(set)
-    for _, view in compiled_views:
-        for key, value in view["scope"].items():
-            values_by_dimension[key].add(value)
-    for dimension in sorted(values_by_dimension):
-        scope_dimensions.append({"id": dimension, "values": sorted(values_by_dimension[dimension])})
+    scope_dimensions, offered_scopes = build_runtime_scope_contract(compiled_views)
     default_view_id = profile["compositionViews"]["defaultViewId"]
     default_offering_id = f"offering.{default_view_id}"
     runtime_catalog = {
@@ -3652,15 +3743,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             }
             for output_path, view in compiled_views
         ],
-        "offeredScopes": [
-            {
-                "offeringId": f"offering.{view['viewId']}",
-                "landscapeId": view["landscapeId"],
-                "scope": view["scope"],
-                "viewResolution": {"mode": "single", "viewIds": [view["viewId"]]},
-            }
-            for _, view in compiled_views
-        ],
+        "offeredScopes": offered_scopes,
         "decks": [
             {
                 "deckId": deck["deckId"],

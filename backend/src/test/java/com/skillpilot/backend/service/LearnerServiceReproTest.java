@@ -206,6 +206,26 @@ public class LearnerServiceReproTest {
     }
 
     @Test
+    void combinedCourseProfileIncludesGkLkAndUnrestrictedGoals() throws Exception {
+        Method method = LearnerService.class.getDeclaredMethod(
+                "matchesCourseFilter",
+                LearningGoal.class,
+                String.class);
+        method.setAccessible(true);
+
+        LearningGoal gkGoal = goal("gk-goal", null, null);
+        gkGoal.setTags(List.of("GK"));
+        LearningGoal lkGoal = goal("lk-goal", null, null);
+        lkGoal.setTags(List.of("LK"));
+        LearningGoal unrestrictedGoal = goal("common-goal", null, null);
+        unrestrictedGoal.setTags(List.of());
+
+        assertThat((boolean) method.invoke(learnerService, gkGoal, "GK+LK")).isTrue();
+        assertThat((boolean) method.invoke(learnerService, lkGoal, "GK+LK")).isTrue();
+        assertThat((boolean) method.invoke(learnerService, unrestrictedGoal, "GK+LK")).isTrue();
+    }
+
+    @Test
     void testFilteredPrereqDoesNotBlockAtomicFrontier() throws Exception {
         try {
             // Setup:

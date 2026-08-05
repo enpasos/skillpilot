@@ -90,7 +90,7 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
-    void rejectsDuplicateVisibleGoalAcrossDifferentMergeBranches() throws Exception {
+    void deduplicatesVisibleGoalAcrossProfileEquivalentMergeBranches() throws Exception {
         CurriculumPackageTestFixture.PackageSpec base =
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
         CurriculumPackageTestFixture.PackageSpec merge = new CurriculumPackageTestFixture.PackageSpec(
@@ -109,7 +109,9 @@ class PackageCompositionViewStateTest {
         CurriculumRuntimeSnapshot snapshot = load(merge);
         Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
         for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {
-            String structureId = descriptor.viewId().endsWith("secondary") ? "branch-lk" : "branch-gk";
+            boolean isLk = descriptor.viewId().endsWith("secondary");
+            String structureId = isLk ? "branch-lk" : "branch-gk";
+            String goalKind = isLk ? "canonicalSubtree" : "goalEntry";
             String document = mapper.writeValueAsString(Map.of(
                     "viewId", descriptor.viewId(),
                     "landscapeId", descriptor.landscapeId(),
@@ -117,7 +119,7 @@ class PackageCompositionViewStateTest {
                     "rootNodes", List.of(Map.of(
                             "kind", "structure",
                             "id", structureId,
-                            "children", List.of(Map.of("kind", "goalEntry", "goalId", "goal-alpha"))))));
+                            "children", List.of(Map.of("kind", goalKind, "goalId", "goal-alpha"))))));
             views.put(descriptor.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
                     descriptor.packageId(),
                     descriptor.viewId(),
@@ -128,10 +130,22 @@ class PackageCompositionViewStateTest {
                     document));
         }
 
-        assertThatThrownBy(() -> PackageCompositionViewState.load(
-                        copy(snapshot, views, snapshot.offeringsById()), mapper))
-                .isInstanceOf(CurriculumPackageException.class)
-                .hasMessageContaining("more than once");
+        PackageCompositionViewState state = PackageCompositionViewState.load(
+                copy(snapshot, views, snapshot.offeringsById()), mapper);
+        PackageCompositionViewState.ResolvedView resolved = state.resolveOffering("offering-alpha");
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> rootNodes =
+                (List<Map<String, Object>>) resolved.document().get("rootNodes");
+        assertThat(rootNodes).singleElement().satisfies(root -> {
+            assertThat(root).containsEntry("id", "branch-gk-lk");
+            assertThat((List<?>) root.get("children"))
+                    .singleElement()
+                    .satisfies(child -> {
+                        assertThat(((Map<?, ?>) child).get("kind")).isEqualTo("canonicalSubtree");
+                        assertThat(((Map<?, ?>) child).get("goalId")).isEqualTo("goal-alpha");
+                    });
+        });
     }
 
     @Test

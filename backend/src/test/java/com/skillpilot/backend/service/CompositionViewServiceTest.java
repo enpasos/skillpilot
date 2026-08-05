@@ -8,8 +8,11 @@ import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -49,6 +52,19 @@ class CompositionViewServiceTest {
         assertThat(match).isNotNull();
         assertThat(match.get("viewId")).isEqualTo("merged:de-de-gym-math-lk+de-de-gym-math-gk");
         assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-math-lk", "de-de-gym-math-gk"));
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
+        assertThat(roots).singleElement().satisfies(root -> {
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> children = (List<Map<String, Object>>) root.get("children");
+            assertThat(children)
+                    .filteredOn(child -> "structure".equals(child.get("kind")))
+                    .extracting(child -> child.get("id"))
+                    .containsExactly("sek1", "sek2-gk-lk");
+        });
+        List<String> goalReferences = new ArrayList<>();
+        collectGoalReferences(roots, goalReferences);
+        assertThat(goalReferences).doesNotHaveDuplicates();
     }
 
     @Test
@@ -252,6 +268,108 @@ class CompositionViewServiceTest {
 
         assertThat(match).isNotNull();
         assertThat(match.get("viewId")).isEqualTo("de-he-gym-sekii-math-lk");
+    }
+
+    @Test
+    void findMatchingView_mergesHessianSekTwoGkAndLkWithoutDuplicateQuarterStructures() {
+        CompositionViewService service = createService();
+
+        Map<String, Object> match = service.findMatchingView(
+                CANONICAL_MATH_ID,
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "jurisdiction", "DE-HE",
+                        "stage", "SekII",
+                        "courseProfile", "GK+LK"));
+
+        assertThat(match).isNotNull();
+        assertThat(match.get("viewId"))
+                .isEqualTo("merged:de-he-gym-sekii-math-lk+de-he-gym-sekii-math-gk");
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
+        assertThat(roots).singleElement().satisfies(root -> {
+            assertThat(root)
+                    .containsEntry("id", "sek2-gk-lk")
+                    .containsEntry("label", "Sekundarstufe II (GK + LK)");
+            List<String> structureIds = new ArrayList<>();
+            collectStructureIds(List.of(root), structureIds);
+            for (String quarter : List.of("q1", "q2", "q3", "q4")) {
+                assertThat(structureIds).filteredOn(quarter::equals).singleElement();
+            }
+        });
+        List<String> goalReferences = new ArrayList<>();
+        collectGoalReferences(roots, goalReferences);
+        assertThat(goalReferences).doesNotHaveDuplicates();
+    }
+
+    @Test
+    void findMatchingView_mergesEveryAuthoredExactMathematicsGkLkPair() throws IOException {
+        Path viewDirectory = resolveCurriculaDir()
+                .resolve("DE/Gymnasium/composition-views/mathematik");
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, List<AuthoredProfileView>> viewsByExactScope = new LinkedHashMap<>();
+        List<Path> viewPaths;
+        try (var paths = Files.list(viewDirectory)) {
+            viewPaths = paths
+                    .filter(path -> path.getFileName().toString().endsWith(".view.json"))
+                    .sorted()
+                    .toList();
+        }
+        for (Path path : viewPaths) {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> document = mapper.readValue(path.toFile(), Map.class);
+            @SuppressWarnings("unchecked")
+            Map<String, String> scope = (Map<String, String>) document.get("scope");
+            String courseProfile = scope.get("courseProfile");
+            if (!"GK".equals(courseProfile) && !"LK".equals(courseProfile)) {
+                continue;
+            }
+            Map<String, String> exactScope = new TreeMap<>(scope);
+            exactScope.remove("courseProfile");
+            String landscapeId = String.valueOf(document.get("landscapeId"));
+            String key = landscapeId + "|" + exactScope;
+            viewsByExactScope.computeIfAbsent(key, ignored -> new ArrayList<>())
+                    .add(new AuthoredProfileView(
+                            landscapeId,
+                            Map.copyOf(exactScope),
+                            courseProfile,
+                            String.valueOf(document.get("viewId"))));
+        }
+
+        assertThat(viewsByExactScope).isNotEmpty();
+        CompositionViewService service = createService();
+        viewsByExactScope.forEach((scopeKey, authoredViews) -> {
+            assertThat(authoredViews)
+                    .as(scopeKey + " exact GK/LK pair")
+                    .extracting(AuthoredProfileView::courseProfile)
+                    .containsExactlyInAnyOrder("GK", "LK");
+            Map<String, String> requestedScope = new LinkedHashMap<>(authoredViews.getFirst().scope());
+            requestedScope.put("courseProfile", "GK+LK");
+
+            Map<String, Object> match = service.findMatchingView(
+                    authoredViews.getFirst().landscapeId(),
+                    requestedScope);
+
+            assertThat(match).as(scopeKey + " combined match").isNotNull();
+            assertThat(match.get("mergedFromViewIds"))
+                    .as(scopeKey + " merged sources")
+                    .isInstanceOf(List.class);
+            List<String> sourceViewIds = ((List<?>) match.get("mergedFromViewIds")).stream()
+                    .map(String::valueOf)
+                    .toList();
+            assertThat(sourceViewIds)
+                    .as(scopeKey + " merged sources")
+                    .containsExactlyInAnyOrderElementsOf(authoredViews.stream()
+                            .map(AuthoredProfileView::viewId)
+                            .toList());
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
+            List<String> goalReferences = new ArrayList<>();
+            collectGoalReferences(roots, goalReferences);
+            assertThat(goalReferences)
+                    .as(scopeKey + " explicit goal references")
+                    .doesNotHaveDuplicates();
+        });
     }
 
     @Test
@@ -951,6 +1069,110 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findMatchingView_mergesProfileEquivalentStructuresWithoutChangingSingleViews(@TempDir Path tempDir)
+            throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("gk.view.json"), """
+                {
+                  "viewId": "gk-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "GK"
+                  },
+                  "rootNodes": [{
+                    "kind": "structure",
+                    "id": "sek2-gk",
+                    "label": "Sekundarstufe II (GK)",
+                    "children": [
+                      {
+                        "kind": "goalEntry",
+                        "goalId": "shared-goal",
+                        "projectionRole": "prerequisiteOnly"
+                      },
+                      {"kind": "goalEntry", "goalId": "gk-goal"}
+                    ]
+                  }]
+                }
+                """);
+        Files.writeString(viewDir.resolve("lk.view.json"), """
+                {
+                  "viewId": "lk-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII",
+                    "courseProfile": "LK"
+                  },
+                  "rootNodes": [{
+                    "kind": "structure",
+                    "id": "sek2-lk",
+                    "label": "Sekundarstufe II (LK)",
+                    "children": [
+                      {"kind": "canonicalSubtree", "goalId": "shared-goal"},
+                      {"kind": "goalEntry", "goalId": "lk-goal"}
+                    ]
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        Map<String, Object> combined = service.findMatchingView(
+                "test-landscape",
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "GK+LK"));
+        Map<String, Object> gk = service.findMatchingView(
+                "test-landscape",
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "GK"));
+        Map<String, Object> lk = service.findMatchingView(
+                "test-landscape",
+                Map.of(
+                        "schoolForm", "Gymnasium",
+                        "stage", "SekII",
+                        "courseProfile", "LK"));
+
+        assertThat(combined).isNotNull();
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> combinedRoots = (List<Map<String, Object>>) combined.get("rootNodes");
+        assertThat(combinedRoots).singleElement().satisfies(root -> {
+            assertThat(root)
+                    .containsEntry("id", "sek2-gk-lk")
+                    .containsEntry("label", "Sekundarstufe II (GK + LK)");
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> children = (List<Map<String, Object>>) root.get("children");
+            assertThat(children)
+                    .extracting(child -> child.get("goalId"))
+                    .containsExactlyInAnyOrder("shared-goal", "gk-goal", "lk-goal");
+            assertThat(children)
+                    .filteredOn(child -> "shared-goal".equals(child.get("goalId")))
+                    .singleElement()
+                    .satisfies(child -> assertThat(child)
+                            .containsEntry("kind", "canonicalSubtree")
+                            .containsEntry("projectionRole", "target"));
+        });
+
+        assertThat(gk).isNotNull();
+        assertThat((List<?>) gk.get("rootNodes")).singleElement().satisfies(root -> {
+            assertThat(((Map<?, ?>) root).get("id")).isEqualTo("sek2-gk");
+            assertThat(((Map<?, ?>) root).get("label")).isEqualTo("Sekundarstufe II (GK)");
+        });
+        assertThat(lk).isNotNull();
+        assertThat((List<?>) lk.get("rootNodes")).singleElement().satisfies(root -> {
+            assertThat(((Map<?, ?>) root).get("id")).isEqualTo("sek2-lk");
+            assertThat(((Map<?, ?>) root).get("label")).isEqualTo("Sekundarstufe II (LK)");
+        });
+    }
+
+    @Test
     void findMatchingView_rejectsUnsupportedProjectionRole(@TempDir Path tempDir)
             throws IOException {
         Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
@@ -1148,6 +1370,40 @@ class CompositionViewServiceTest {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());
         return new CompositionViewService(properties, new ObjectMapper());
+    }
+
+    private record AuthoredProfileView(
+            String landscapeId,
+            Map<String, String> scope,
+            String courseProfile,
+            String viewId) {
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void collectGoalReferences(List<Map<String, Object>> nodes, List<String> goalIds) {
+        for (Map<String, Object> node : nodes) {
+            Object goalId = node.get("goalId");
+            if (goalId instanceof String text) {
+                goalIds.add(text);
+            }
+            Object children = node.get("children");
+            if (children instanceof List<?> list) {
+                collectGoalReferences((List<Map<String, Object>>) list, goalIds);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void collectStructureIds(List<Map<String, Object>> nodes, List<String> structureIds) {
+        for (Map<String, Object> node : nodes) {
+            if ("structure".equals(node.get("kind")) && node.get("id") instanceof String id) {
+                structureIds.add(id);
+            }
+            Object children = node.get("children");
+            if (children instanceof List<?> list) {
+                collectStructureIds((List<Map<String, Object>>) list, structureIds);
+            }
+        }
     }
 
     private static Path resolveCurriculaDir() {
