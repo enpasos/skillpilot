@@ -32,6 +32,10 @@ line. This version has not been published yet.
   state-free card flipping and backward/forward navigation; the learner records
   only the clear `Not yet` or `Got it` choice, mapped internally to the
   repetition schedule without changing mastery
+- deterministic memory-practice launch: choosing the localized flashcard label
+  invokes the dedicated UI tool immediately; a Cockpit link is permitted only
+  after a real start-tool error, missing current authorization, or an explicit
+  Cockpit request
 - structured `goalVisualization` delivery to an image-only component; bare
   MCP `ImageContent` is not used as a visibility contract
 - immutable passive retention of every content-addressed widget URI already
