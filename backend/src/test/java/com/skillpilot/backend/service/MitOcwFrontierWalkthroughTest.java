@@ -49,6 +49,14 @@ class MitOcwFrontierWalkthroughTest {
     private static final String MODULE_6_0002_ID = "502f3476-c8e1-5f70-9b6c-c1757cb6eb8b";
     private static final String MODULE_6_006_ID = "e005ee72-bf4e-5d18-8cbc-569a0ae753d8";
 
+    private static final String ENTRY_18_01SC_ID = "2474b833-a0e0-5b5d-8839-e444510f6222";
+    private static final String ENTRY_18_02SC_ID = "da8f126a-e675-5270-9f97-ca9cd1aec86d";
+    private static final String ENTRY_18_05_ID = "aea67ca0-ed08-5dd2-a350-a19b3f468320";
+    private static final String ENTRY_18_06_ID = "13994b93-bac9-4be7-b728-db2efa5f35fd";
+    private static final String ENTRY_6_100L_ID = "3ec331f0-86de-550f-866f-7fa34d6e6dd6";
+    private static final String ENTRY_6_0002_ID = "d44953c6-bc2b-580d-b67a-82ff71a4424f";
+    private static final String ENTRY_6_006_ID = "6acd4dfe-d488-57d3-8c1d-e96cdce84a7a";
+
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
     private static GoalMappingService goalMappingService;
@@ -104,18 +112,19 @@ class MitOcwFrontierWalkthroughTest {
     }
 
     @Test
-    void frontierStartsWithDirectModules() {
+    void frontierStartsWithCourseEntryGoals() {
         setMasteredGoals(Set.of());
         Set<String> frontierBeforeFoundation = frontierIds();
 
-        assertThat(frontierBeforeFoundation).contains(
-                MODULE_18_01SC_ID,
-                MODULE_18_02SC_ID,
-                MODULE_18_05_ID,
-                MODULE_18_06_ID,
-                MODULE_6_100L_ID,
-                MODULE_6_0002_ID,
-                MODULE_6_006_ID);
+        assertThat(frontierBeforeFoundation)
+                .containsExactlyInAnyOrder(
+                        ENTRY_18_01SC_ID,
+                        ENTRY_18_02SC_ID,
+                        ENTRY_18_05_ID,
+                        ENTRY_18_06_ID,
+                        ENTRY_6_100L_ID,
+                        ENTRY_6_0002_ID,
+                        ENTRY_6_006_ID);
     }
 
     @Test
@@ -136,7 +145,7 @@ class MitOcwFrontierWalkthroughTest {
         setMasteredGoals(Set.of());
         Set<String> frontierAfterFoundation = frontierIds();
 
-        assertThat(frontierAfterFoundation).contains(MODULE_6_0002_ID, MODULE_6_006_ID);
+        assertThat(frontierAfterFoundation).contains(ENTRY_6_0002_ID, ENTRY_6_006_ID);
 
         Set<String> masteryAfter6100l = new HashSet<>();
         masteryAfter6100l.add(MODULE_6_100L_ID);

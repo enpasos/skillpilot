@@ -25,8 +25,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 class WebConfigTest {
 
     private static final String VISUALIZATION =
-            "/assets/goal-visualizations/mathematik/89ca5089-7122-5a82-b21f-17d0bd46a3bd/"
-                    + "89ca5089-7122-5a82-b21f-17d0bd46a3bd.jpg";
+            "/assets/goal-visualizations/test-goal/test-goal.txt";
 
     @Autowired
     private WebApplicationContext context;
