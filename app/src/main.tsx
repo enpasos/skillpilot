@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import 'katex/dist/katex.min.css'
 import './index.css'
 import App from './App.tsx'
+import { AppUpdateNotice } from './components/AppUpdateNotice.tsx'
 import { installModuleLoadRecovery } from './utils/moduleLoadRecovery'
 
 
@@ -37,13 +38,17 @@ if (params.get('auth_success')) {
 }
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter basename={routerBase}>
-      <LanguageProvider>
-        <ThemeProvider>
+  <BrowserRouter basename={routerBase}>
+    <LanguageProvider>
+      <ThemeProvider>
+        {/* Keep the registration coordinator outside StrictMode. The PWA hook
+            registers eagerly, so StrictMode's development remount would create
+            two competing Workbox coordinators. */}
+        <AppUpdateNotice />
+        <StrictMode>
           <App />
-        </ThemeProvider>
-      </LanguageProvider>
-    </BrowserRouter>
-  </StrictMode>,
+        </StrictMode>
+      </ThemeProvider>
+    </LanguageProvider>
+  </BrowserRouter>,
 )

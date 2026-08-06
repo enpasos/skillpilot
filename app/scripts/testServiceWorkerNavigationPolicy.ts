@@ -1,11 +1,15 @@
 import assert from 'node:assert/strict'
 
 import {
+  serviceWorkerActivationTimeoutMs,
+  serviceWorkerInjectRegister,
   serviceWorkerLifecyclePolicy,
   serviceWorkerRegisterType,
+  serviceWorkerUpdateCheckIntervalMs,
+  serviceWorkerUpdatePreparationTimeoutMs,
 } from '../serviceWorkerLifecyclePolicy'
 import { serviceWorkerNavigationFallbackDenylist } from '../serviceWorkerNavigationPolicy'
-import { activateWaitingServiceWorkerAndReload } from '../src/utils/serviceWorkerUpdate'
+import { prepareLatestWaitingServiceWorker } from '../src/utils/serviceWorkerUpdatePreparation'
 
 const isDenied = (urlPath: string) =>
   serviceWorkerNavigationFallbackDenylist.some(pattern => pattern.test(urlPath))
@@ -47,6 +51,26 @@ assert.equal(
   'a new service worker must wait for a coherent client-version transition',
 )
 assert.equal(
+  serviceWorkerInjectRegister,
+  false,
+  'the React update coordinator must own the only service-worker registration',
+)
+assert.equal(
+  serviceWorkerUpdateCheckIntervalMs,
+  5 * 60 * 1000,
+  'visible clients should periodically ask the registered worker for updates',
+)
+assert.equal(
+  serviceWorkerUpdatePreparationTimeoutMs,
+  90 * 1000,
+  'slow installations get time to finish without leaving the button pending forever',
+)
+assert.equal(
+  serviceWorkerActivationTimeoutMs,
+  20 * 1000,
+  'a failed activation must become retryable instead of spinning forever',
+)
+assert.equal(
   serviceWorkerLifecyclePolicy.skipWaiting,
   false,
   'a new service worker must not activate while an old frontend is loading',
@@ -64,23 +88,11 @@ assert.equal(
 
 class FakeWorker extends EventTarget {
   state: ServiceWorkerState = 'installed'
-  postedMessages: unknown[] = []
-  activateOnPostMessage = true
-
-  postMessage(message: unknown) {
-    this.postedMessages.push(message)
-    if (this.activateOnPostMessage) {
-      this.state = 'activated'
-      this.dispatchEvent(new Event('statechange'))
-    }
-  }
 }
 
-const nextMicrotask = async () => await Promise.resolve()
-
-class FakeRegistration extends EventTarget {
-  waiting: FakeWorker | null = null
+class FakeRegistration {
   installing: FakeWorker | null = null
+  waiting: FakeWorker | null = null
   updateCalls = 0
   updateAction: (() => void) | null = null
 
@@ -91,153 +103,66 @@ class FakeRegistration extends EventTarget {
   }
 }
 
-class FakeServiceWorkerContainer extends EventTarget {
-  controller: FakeWorker | null = new FakeWorker()
-  registration: FakeRegistration | null = null
-
-  async getRegistration() {
-    return this.registration as unknown as ServiceWorkerRegistration | undefined
-  }
-}
-
-const asServiceWorkerContainer = (container: FakeServiceWorkerContainer) =>
-  container as unknown as ServiceWorkerContainer
+const asRegistration = (registration: FakeRegistration) =>
+  registration as unknown as ServiceWorkerRegistration
 
 {
-  const worker = new FakeWorker()
+  const waitingWorker = new FakeWorker()
   const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  registration.waiting = worker
-  serviceWorker.registration = registration
-  let reloads = 0
+  registration.waiting = waitingWorker
 
-  await activateWaitingServiceWorkerAndReload({
-    serviceWorker: asServiceWorkerContainer(serviceWorker),
-    reload: () => { reloads += 1 },
-    timeoutMs: 100,
-  })
+  const preparedWorker = await prepareLatestWaitingServiceWorker(asRegistration(registration), 100)
 
-  assert.deepEqual(worker.postedMessages, [{ type: 'SKIP_WAITING' }])
-  assert.equal(registration.updateCalls, 0, 'an already waiting worker is activated directly')
-  assert.equal(reloads, 1, 'activation reloads exactly once')
+  assert.equal(registration.updateCalls, 1, 'the click rechecks the server even when a worker is waiting')
+  assert.equal(preparedWorker, waitingWorker)
 }
 
 {
-  const worker = new FakeWorker()
-  worker.state = 'installing'
+  const oldWaitingWorker = new FakeWorker()
+  const latestWorker = new FakeWorker()
+  latestWorker.state = 'installing'
   const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  serviceWorker.registration = registration
+  registration.waiting = oldWaitingWorker
   registration.updateAction = () => {
-    registration.installing = worker
-    registration.dispatchEvent(new Event('updatefound'))
-    worker.state = 'installed'
-    worker.dispatchEvent(new Event('statechange'))
+    registration.installing = latestWorker
+    globalThis.setTimeout(() => {
+      registration.waiting = latestWorker
+      registration.installing = null
+      latestWorker.state = 'installed'
+      latestWorker.dispatchEvent(new Event('statechange'))
+    }, 0)
   }
-  let reloads = 0
 
-  await activateWaitingServiceWorkerAndReload({
-    serviceWorker: asServiceWorkerContainer(serviceWorker),
-    reload: () => { reloads += 1 },
-    timeoutMs: 100,
-  })
+  const preparedWorker = await prepareLatestWaitingServiceWorker(asRegistration(registration), 100)
 
-  assert.equal(registration.updateCalls, 1, 'the registration is checked for an update')
-  assert.deepEqual(worker.postedMessages, [{ type: 'SKIP_WAITING' }])
-  assert.equal(reloads, 1, 'a newly installed worker is activated before reloading')
-}
-
-{
-  const serviceWorker = new FakeServiceWorkerContainer()
-  let reloads = 0
-
-  await activateWaitingServiceWorkerAndReload({
-    serviceWorker: asServiceWorkerContainer(serviceWorker),
-    reload: () => { reloads += 1 },
-    timeoutMs: 100,
-  })
-
-  assert.equal(reloads, 1, 'a non-PWA page still falls back to a normal reload')
+  assert.equal(preparedWorker, latestWorker, 'a newer worker replaces an older waiting version before activation')
 }
 
 {
   const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  serviceWorker.registration = registration
-  let reloads = 0
-
-  await activateWaitingServiceWorkerAndReload({
-    serviceWorker: asServiceWorkerContainer(serviceWorker),
-    reload: () => { reloads += 1 },
-    timeoutMs: 100,
-  })
-
-  assert.equal(registration.updateCalls, 1)
-  assert.equal(reloads, 1, 'a completed update check with a current active worker reloads normally')
-}
-
-{
-  const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  serviceWorker.registration = registration
-  registration.updateAction = () => {
-    throw new Error('network update failed')
-  }
-  let reloads = 0
 
   await assert.rejects(
-    activateWaitingServiceWorkerAndReload({
-      serviceWorker: asServiceWorkerContainer(serviceWorker),
-      reload: () => { reloads += 1 },
-      timeoutMs: 100,
-    }),
-    /network update failed/,
+    prepareLatestWaitingServiceWorker(asRegistration(registration), 100),
+    /No fully installed application update/,
   )
-
-  assert.equal(reloads, 0, 'a failed update check remains retryable instead of reloading stale HTML')
 }
 
 {
-  const worker = new FakeWorker()
-  worker.activateOnPostMessage = false
+  const redundantWorker = new FakeWorker()
+  redundantWorker.state = 'installing'
   const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  registration.waiting = worker
-  serviceWorker.registration = registration
-  let reloads = 0
-
-  const activation = activateWaitingServiceWorkerAndReload({
-    serviceWorker: asServiceWorkerContainer(serviceWorker),
-    reload: () => { reloads += 1 },
-    timeoutMs: 100,
-  })
-
-  await nextMicrotask()
-  assert.equal(reloads, 0, 'posting SKIP_WAITING must not reload before activation')
-  serviceWorker.dispatchEvent(new Event('controllerchange'))
-  await activation
-  assert.equal(reloads, 1, 'controllerchange completes the coherent reload')
-}
-
-{
-  const worker = new FakeWorker()
-  worker.activateOnPostMessage = false
-  const registration = new FakeRegistration()
-  const serviceWorker = new FakeServiceWorkerContainer()
-  registration.waiting = worker
-  serviceWorker.registration = registration
-  let reloads = 0
+  registration.updateAction = () => {
+    registration.installing = redundantWorker
+    globalThis.setTimeout(() => {
+      redundantWorker.state = 'redundant'
+      redundantWorker.dispatchEvent(new Event('statechange'))
+    }, 0)
+  }
 
   await assert.rejects(
-    activateWaitingServiceWorkerAndReload({
-      serviceWorker: asServiceWorkerContainer(serviceWorker),
-      reload: () => { reloads += 1 },
-      timeoutMs: 5,
-    }),
-    /Timed out while activating/,
+    prepareLatestWaitingServiceWorker(asRegistration(registration), 100),
+    /became redundant/,
   )
-
-  assert.equal(reloads, 0, 'activation timeout remains retryable without serving the old shell')
 }
 
 console.log('Service-worker navigation and lifecycle policy passed.')

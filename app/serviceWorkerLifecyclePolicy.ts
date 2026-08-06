@@ -9,6 +9,15 @@
  */
 export const serviceWorkerRegisterType = 'prompt' as const
 
+// Registration and the update prompt are owned by the React root through
+// `virtual:pwa-register/react`. Injecting an additional registration script
+// would create a second, uncoordinated service-worker lifecycle.
+export const serviceWorkerInjectRegister = false as const
+
+export const serviceWorkerUpdateCheckIntervalMs = 5 * 60 * 1000
+export const serviceWorkerUpdatePreparationTimeoutMs = 90 * 1000
+export const serviceWorkerActivationTimeoutMs = 20 * 1000
+
 export const serviceWorkerLifecyclePolicy = Object.freeze({
   cleanupOutdatedCaches: true,
   clientsClaim: false,
