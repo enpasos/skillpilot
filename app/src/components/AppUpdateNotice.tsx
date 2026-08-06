@@ -1,13 +1,13 @@
 import React from 'react'
 import { RefreshCw, X } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useAppVersionCheck } from '../hooks/useAppVersionCheck'
+import { useAppUpdate } from '../hooks/useAppUpdate'
 
 export const AppUpdateNotice: React.FC = () => {
   const { language } = useLanguage()
-  const versionStatus = useAppVersionCheck()
+  const updateStatus = useAppUpdate()
 
-  if (!versionStatus.updateAvailable) {
+  if (!updateStatus.updateAvailable) {
     return null
   }
 
@@ -37,14 +37,14 @@ export const AppUpdateNotice: React.FC = () => {
           <div className="mt-0.5 text-xs text-text-secondary">{copy.description}</div>
           <button
             type="button"
-            onClick={() => { void versionStatus.reloadNow() }}
-            disabled={versionStatus.reloadPending}
+            onClick={() => { void updateStatus.activateUpdate() }}
+            disabled={updateStatus.activationPending}
             className="mt-3 inline-flex items-center gap-2 rounded-md bg-sky-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:cursor-wait disabled:opacity-70"
           >
-            <RefreshCw size={14} className={versionStatus.reloadPending ? 'animate-spin' : undefined} />
-            {versionStatus.reloadPending ? copy.reloading : copy.reload}
+            <RefreshCw size={14} className={updateStatus.activationPending ? 'animate-spin' : undefined} />
+            {updateStatus.activationPending ? copy.reloading : copy.reload}
           </button>
-          {versionStatus.reloadError && (
+          {updateStatus.activationError && (
             <div role="alert" className="mt-2 text-xs text-red-600 dark:text-red-400">
               {copy.reloadError}
             </div>
@@ -52,8 +52,8 @@ export const AppUpdateNotice: React.FC = () => {
         </div>
         <button
           type="button"
-          onClick={versionStatus.dismiss}
-          disabled={versionStatus.reloadPending}
+          onClick={updateStatus.dismiss}
+          disabled={updateStatus.activationPending}
           title={copy.dismiss}
           aria-label={copy.dismiss}
           className="rounded-full p-1 text-text-secondary transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:cursor-wait disabled:opacity-50"

@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'rea
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 
 import { SessionSetup } from './components/SessionSetup'
-import { AppUpdateNotice } from './components/AppUpdateNotice'
 import { ToastHost } from './components/ToastHost'
 import { useAppCore } from './hooks/useAppCore'
 import { useLandscapes } from './hooks/useLandscapes'
@@ -631,7 +630,6 @@ const App: React.FC = () => {
     return (
       <Suspense fallback={<RouteLoadingFallback />}>
         <>
-          <AppUpdateNotice />
           <Routes>
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
             <Route path="/legal" element={<LegalView />} />
@@ -793,7 +791,6 @@ const App: React.FC = () => {
     <Suspense fallback={<RouteLoadingFallback />}>
       <>
         <ToastHost toast={toast} />
-        <AppUpdateNotice />
         <Routes>
         <Route
           path="/learner/:goalId?"

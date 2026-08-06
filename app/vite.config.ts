@@ -11,6 +11,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
 import { serviceWorkerNavigationFallbackDenylist } from './serviceWorkerNavigationPolicy'
 import {
+  serviceWorkerInjectRegister,
   serviceWorkerLifecyclePolicy,
   serviceWorkerRegisterType,
 } from './serviceWorkerLifecyclePolicy'
@@ -3102,7 +3103,7 @@ export default defineConfig(({ mode }) => {
       deckEditorDevPlugin,
       VitePWA({
         registerType: serviceWorkerRegisterType,
-        injectRegister: 'inline',
+        injectRegister: serviceWorkerInjectRegister,
         includeAssets: ['favicon/favicon.ico', 'favicon/apple-touch-icon.png', 'favicon/favicon.svg'],
         workbox: {
           ...serviceWorkerLifecyclePolicy,

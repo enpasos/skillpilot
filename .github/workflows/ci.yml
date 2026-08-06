@@ -172,6 +172,8 @@ jobs:
         run: npm run lint
       - name: Build application without regenerating curriculum assets
         run: npm run build:application
+      - name: Test service-worker update lifecycle
+        run: npm run test:service-worker-update-lifecycle
       - name: Check AI transparency inventory
         run: npm run check:ai-transparency-inventory
       - name: Check frontend shell assets in the built application
