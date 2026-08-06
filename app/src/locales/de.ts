@@ -196,6 +196,8 @@ export const de = {
         progress: "Fortschritt",
         removeFromList: "Von Lernliste entfernen",
         addToList: "Als Lernziel setzen",
+        currentLearningFocus: "Aktueller Lernfokus",
+        setLearningFocus: "Als Lernfokus setzen",
         legacyReadOnly: "In der Legacy-Ansicht schreibgeschützt",
         projectedStructureBadge: "Struktur",
         projectedStructureReadOnly: "Projizierter Strukturknoten; nicht direkt als Lernziel planbar",

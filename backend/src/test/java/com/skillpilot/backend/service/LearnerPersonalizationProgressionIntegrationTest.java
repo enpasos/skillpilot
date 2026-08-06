@@ -209,10 +209,10 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(afterCourseConfig.has(BIOLOGY_ID)).isFalse();
         assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK", "G9");
         assertThat(afterCourseProfile.stateMachine().requiredAction())
-                .isNotEqualTo("setPersonalization");
+                .isEqualTo("orientActiveGoal");
         assertThat(afterCourseProfile.frontier())
                 .extracting(goal -> goal.id())
-                .containsExactly(MATH_SEK_TWO_LK_SCOPE_ID);
+                .containsExactly(MATH_SEK_TWO_ORIENTATION_ID);
 
         learnerService.setPlannedGoals(
                 learner.getSkillpilotId(),

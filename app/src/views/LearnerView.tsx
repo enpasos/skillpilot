@@ -58,6 +58,7 @@ import {
   getNextVisibleLearnerGoalSelection,
   shouldAutoRevealActiveGoal,
 } from '../utils/learnerGoalSelection'
+import { getNextSingleLearnerFocus } from '../utils/learnerFocus'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
@@ -1917,17 +1918,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setIsModalOpen(true)
       return
     }
-    // Single Goal Mode:
-    // If clicking the ALREADY selected goal -> Deselect it (Set empty)
-    // If clicking a NEW goal -> Select only that one (Set with 1 item)
-    let next: Set<string>;
+    // Single-focus mode: a completed personal curriculum always keeps one
+    // focus. Re-selecting the current focus is therefore idempotent; selecting
+    // another row replaces it.
     const previousPlannedGoals = new Set(plannedGoals)
-
-    if (plannedGoals.has(id)) {
-      next = new Set();
-    } else {
-      next = new Set([id]);
-    }
+    const next = getNextSingleLearnerFocus(plannedGoals, id)
+    if (next.size === plannedGoals.size
+      && Array.from(next).every((goalId) => plannedGoals.has(goalId))) return
 
     setPlannedGoals(next)
 

@@ -55,6 +55,14 @@ import org.springframework.test.context.ActiveProfiles;
 public class LearnerServiceTest {
 
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String CANONICAL_MATH_ROOT_SCOPE_ID =
+            "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String CANONICAL_PHYSICS_ROOT_SCOPE_ID =
+            "bf980fff-b62b-4ea4-a20d-31681a7ad785";
+    private static final String CANONICAL_MATH_ORIENTATION_ID =
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+    private static final String CANONICAL_MATH_SEK_ONE_ORIENTATION_ID =
+            "65365dce-f33f-49d8-9516-42f75883aa86";
     private static final String COMPOSITION_J8_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j8-g9";
     private static final String COMPOSITION_J9_SCOPE_ID =
@@ -347,7 +355,7 @@ public class LearnerServiceTest {
 
         var state = learnerService.getLearnerState(learnerId);
         assertThat(state.nextAllowedActions()).containsExactlyInAnyOrder(
-                "setScope", "getFrontier");
+                "setScope", "getFrontier", "setActiveGoal");
     }
 
     @Test
@@ -569,14 +577,18 @@ public class LearnerServiceTest {
 
         var initialState = learnerService.getLearnerState(learnerId);
 
-        assertThat(initialState.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(initialState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(initialState.goals().planned())
+                .extracting(goal -> goal.id())
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
         assertThat(initialState.frontier())
-                .singleElement()
-                .satisfies(option -> {
-                    assertThat(option.id()).isEqualTo(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
-                    assertThat(option.title()).isEqualTo("Mathematik");
-                    assertThat(option.type()).isEqualTo("cluster");
-                });
+                .extracting(FrontierGoal::id)
+                .containsExactly(
+                        CANONICAL_MATH_SEK_ONE_ORIENTATION_ID,
+                        CANONICAL_MATH_ORIENTATION_ID);
+        assertThat(initialState.frontier())
+                .extracting(FrontierGoal::semanticKind)
+                .containsOnly("orientation");
         assertThat(learnerService.getScopeNavigationOptions(learnerId))
                 .extracting(FrontierGoal::id)
                 .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
@@ -592,7 +604,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void initialScopePublishesOneWritableRootPerSelectedCompositionLandscape() {
+    void completedMultiSubjectPlanDefaultsToFirstVisibleCanonicalRootAndKeepsFocusNonEmpty() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -616,17 +628,47 @@ public class LearnerServiceTest {
 
         var initialState = learnerService.getLearnerState(learnerId);
 
-        assertThat(initialState.frontier())
+        assertThat(initialState.goals().planned())
+                .extracting(FrontierGoal::id)
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+        assertThat(learnerService.getScopeNavigationOptions(learnerId))
                 .extracting(FrontierGoal::id)
                 .containsExactly(
                         COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
                         COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
-        assertThatCode(() -> learnerService.setScope(
+
+        learnerService.setScope(
+                learnerId,
+                List.of(
+                        COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
+                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID));
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactlyInAnyOrder(
+                        COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
+                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+        assertThat(learnerService.getLearnerState(learnerId).goals().planned())
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrder(
+                        COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
+                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+
+        assertThat(learnerService.setPlannedGoals(
                         learnerId,
-                        List.of(
-                                COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
-                                COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID)))
-                .doesNotThrowAnyException();
+                        Set.of(CANONICAL_PHYSICS_ROOT_SCOPE_ID)))
+                .containsExactly(CANONICAL_PHYSICS_ROOT_SCOPE_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_PHYSICS_ROOT_SCOPE_ID);
+
+        assertThat(learnerService.setPlannedGoals(learnerId, Set.of()))
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
     }
 
     @Test
@@ -650,6 +692,7 @@ public class LearnerServiceTest {
                 Set.class,
                 Map.class,
                 Set.class,
+                List.class,
                 boolean.class);
         constructor.setAccessible(true);
         Object projection = constructor.newInstance(
@@ -658,6 +701,7 @@ public class LearnerServiceTest {
                 Set.of(),
                 visibleGoals,
                 Set.of(),
+                List.of(),
                 true);
 
         List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(

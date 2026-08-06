@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Target, Send, Check, Square, SquareX } from 'lucide-react'
+import { Target, Send, Check, Circle, CircleDot, Square, SquareX } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
@@ -239,6 +239,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const complete = isCompleteMastery(mastery)
   const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
+  const isLearnerFocusControl = audience === 'learner'
   const isInPlannedScope = plannedScopeGoalIds.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
@@ -413,11 +414,30 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 e.stopPropagation()
                 onTogglePlan(goal.id)
               }}
-              className={`p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors ${isPlanned ? 'text-amber-400' : 'text-slate-300 dark:text-slate-600 hover:text-amber-400 dark:hover:text-amber-200'
+              aria-pressed={isPlanned}
+              className={`p-1 rounded transition-colors ${isLearnerFocusControl
+                ? isPlanned
+                  ? 'text-sky-600 dark:text-sky-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'text-slate-300 dark:text-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-sky-600 dark:hover:text-sky-400'
+                : isPlanned
+                  ? 'text-red-500 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'text-slate-300 dark:text-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-red-500'
                 }`}
-              title={isPlanned ? t.tooltips.removeFromList : t.tooltips.addToList}
+              title={isLearnerFocusControl
+                ? isPlanned
+                  ? t.tooltips.currentLearningFocus
+                  : t.tooltips.setLearningFocus
+                : isPlanned
+                  ? t.tooltips.removeFromList
+                  : t.tooltips.addToList}
             >
-              {isPlanned ? <SquareX size={16} className="text-red-500" /> : <Square size={16} className="text-slate-300" />}
+              {isLearnerFocusControl
+                ? isPlanned
+                  ? <CircleDot size={16} />
+                  : <Circle size={16} />
+                : isPlanned
+                  ? <SquareX size={16} />
+                  : <Square size={16} />}
             </button>
           )
         )}
