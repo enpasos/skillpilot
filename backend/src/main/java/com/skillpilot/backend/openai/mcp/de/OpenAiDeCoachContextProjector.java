@@ -18,7 +18,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /** Provider-specific compaction layered on the shared AI-safety projection. */
 public final class OpenAiDeCoachContextProjector {
@@ -26,15 +28,25 @@ public final class OpenAiDeCoachContextProjector {
     private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
+    private static final Pattern SERVER_BUILD_PATTERN = Pattern.compile("^[0-9a-f]{40}$");
 
     private final CoachStateProjection stateProjection;
     private final String publicBaseUrl;
+    private final String goalVisualizationCacheRevision;
 
     public OpenAiDeCoachContextProjector(CoachStateProjection stateProjection, String publicBaseUrl) {
+        this(stateProjection, publicBaseUrl, null);
+    }
+
+    public OpenAiDeCoachContextProjector(
+            CoachStateProjection stateProjection,
+            String publicBaseUrl,
+            String serverBuild) {
         this.stateProjection = stateProjection;
         this.publicBaseUrl = publicBaseUrl == null || publicBaseUrl.isBlank()
                 ? "https://skillpilot.com"
                 : publicBaseUrl.replaceAll("/+$", "");
+        this.goalVisualizationCacheRevision = normalizedServerBuild(serverBuild);
     }
 
     public OpenAiDeCoachContext project(
@@ -547,7 +559,18 @@ public final class OpenAiDeCoachContextProjector {
                 || normalized.contains("#")) {
             return null;
         }
-        return publicBaseUrl + normalized;
+        String absoluteUrl = publicBaseUrl + normalized;
+        return goalVisualizationCacheRevision == null
+                ? absoluteUrl
+                : absoluteUrl + "?v=" + goalVisualizationCacheRevision;
+    }
+
+    private static String normalizedServerBuild(String value) {
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+        String normalized = value.trim().toLowerCase(Locale.ROOT);
+        return SERVER_BUILD_PATTERN.matcher(normalized).matches() ? normalized : null;
     }
 
     private OpenAiDeCoachContext.Progress progress(LearnerGoals goals) {

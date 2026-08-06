@@ -24,11 +24,14 @@ import org.junit.jupiter.api.Test;
 
 class OpenAiDeCoachContextProjectorTest {
 
+    private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
+
     @Test
     void exposesTrustedVisualizationForMatchingActiveAtomicGoal() {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"),
-                "https://skillpilot.test");
+                "https://skillpilot.test",
+                SERVER_BUILD);
         GoalSourceLink image = new GoalSourceLink(
                 "goal-visualization",
                 "Visualisierung: Energie",
@@ -54,7 +57,7 @@ class OpenAiDeCoachContextProjectorTest {
                         "Energie erhalten",
                         "Die lernende Person kann Energieerhaltung erklären.",
                         "https://skillpilot.test/assets/goal-visualizations/physik/"
-                                + "goal-with-image/goal-with-image.jpg",
+                                + "goal-with-image/goal-with-image.jpg?v=" + SERVER_BUILD,
                         "Skizze zur Energieerhaltung.",
                         "https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image"));
         assertThat(context.nextAllowedTools())
@@ -66,6 +69,43 @@ class OpenAiDeCoachContextProjectorTest {
                             .isEqualTo("https://skillpilot.test/?l=curriculum-public-id&goal=goal-with-image");
                     assertThat(resource.requiresCockpit()).isTrue();
                 });
+    }
+
+    @Test
+    void changesTheVisualizationCacheKeyWithTheDeployedServerBuild() {
+        GoalSourceLink image = new GoalSourceLink(
+                "goal-visualization",
+                "Visualisierung: Energie",
+                "/assets/goal-visualizations/physik/goal-with-image/goal-with-image.jpg",
+                "image",
+                "SkillPilot",
+                List.of(),
+                "Didaktische Orientierung",
+                "de",
+                "AI-generated, SkillPilot-curated",
+                "goal-with-image",
+                "primary",
+                "Skizze zur Energieerhaltung.",
+                "approved");
+        OpenAiDeCoachContext first = projectGerman(
+                new OpenAiDeCoachContextProjector(
+                        new CoachStateProjection("https://skillpilot.test"),
+                        "https://skillpilot.test",
+                        "a".repeat(40)),
+                goalVisualizationState("atomic", image));
+        OpenAiDeCoachContext second = projectGerman(
+                new OpenAiDeCoachContextProjector(
+                        new CoachStateProjection("https://skillpilot.test"),
+                        "https://skillpilot.test",
+                        "b".repeat(40)),
+                goalVisualizationState("atomic", image));
+
+        assertThat(first.goalVisualization().imageUrl())
+                .endsWith("?v=" + "a".repeat(40));
+        assertThat(second.goalVisualization().imageUrl())
+                .endsWith("?v=" + "b".repeat(40));
+        assertThat(second.goalVisualization().imageUrl())
+                .isNotEqualTo(first.goalVisualization().imageUrl());
     }
 
     @Test

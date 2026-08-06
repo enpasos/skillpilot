@@ -183,6 +183,7 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeMcpTelemetry telemetry,
             OpenAiDeV1McpSessionCoordinator sessionCoordinator,
             @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl,
+            @Value("${skillpilot.openai.coach.v1.server-build:dev}") String serverBuild,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}")
                     String signingSecret) {
         this.coachTools = coachTools;
@@ -190,11 +191,33 @@ public final class OpenAiDeV1McpContractAdapter {
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.sessionCoordinator = sessionCoordinator;
-        this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
+        this.contextProjector = new OpenAiDeCoachContextProjector(
+                stateProjection,
+                publicBaseUrl,
+                serverBuild);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
         this.memoryPracticeCapabilitySecret = signingSecret.getBytes(StandardCharsets.UTF_8);
         this.toolSpecifications = buildToolSpecifications();
         this.resourceSpecifications = buildResourceSpecifications();
+    }
+
+    public OpenAiDeV1McpContractAdapter(
+            CoachToolFacade coachTools,
+            CoachStateProjection stateProjection,
+            OpenAiDeCoachIdentityResolver identityResolver,
+            OpenAiDeMcpTelemetry telemetry,
+            OpenAiDeV1McpSessionCoordinator sessionCoordinator,
+            String publicBaseUrl,
+            String signingSecret) {
+        this(
+                coachTools,
+                stateProjection,
+                identityResolver,
+                telemetry,
+                sessionCoordinator,
+                publicBaseUrl,
+                null,
+                signingSecret);
     }
 
     public OpenAiDeV1McpContractAdapter(
