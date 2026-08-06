@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-05T06:57:54.319Z
+Generated: 2026-08-06T02:00:35.345Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -48,11 +48,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 603 |
+| `accepted_pilot` | 602 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
 | `accepted_pilot_after_provider_retry` | 2 |
-| `accepted_pilot_after_regeneration` | 159 |
+| `accepted_pilot_after_regeneration` | 160 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
