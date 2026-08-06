@@ -28,7 +28,11 @@ const waitUntilInstalled = async (
   worker: ServiceWorker,
   timeoutMs: number,
 ): Promise<void> => await new Promise<void>((resolve, reject) => {
-  if (worker.state === 'installed') {
+  if (
+    worker.state === 'installed'
+    || worker.state === 'activating'
+    || worker.state === 'activated'
+  ) {
     resolve()
     return
   }
@@ -36,11 +40,6 @@ const waitUntilInstalled = async (
     reject(new Error('The newly found service worker became redundant before installation completed.'))
     return
   }
-  if (worker.state === 'activating' || worker.state === 'activated') {
-    reject(new Error('The newly found service worker is no longer waiting for activation.'))
-    return
-  }
-
   const timeoutId = globalThis.setTimeout(() => {
     worker.removeEventListener('statechange', handleStateChange)
     reject(new Error('Timed out while preparing the latest application version.'))
@@ -52,7 +51,11 @@ const waitUntilInstalled = async (
     callback()
   }
   const handleStateChange = () => {
-    if (worker.state === 'installed') {
+    if (
+      worker.state === 'installed'
+      || worker.state === 'activating'
+      || worker.state === 'activated'
+    ) {
       finish(resolve)
     } else if (worker.state === 'redundant') {
       finish(() => {
@@ -77,7 +80,7 @@ const waitUntilInstalled = async (
 export const prepareLatestWaitingServiceWorker = async (
   registration: UpdateableServiceWorkerRegistration,
   timeoutMs: number,
-): Promise<ServiceWorker> => {
+): Promise<ServiceWorker | null> => {
   const deadline = Date.now() + timeoutMs
   const updatedRegistration = await withTimeout(
     registration.update(),
@@ -94,10 +97,87 @@ export const prepareLatestWaitingServiceWorker = async (
     await Promise.resolve()
   }
 
-  const waitingWorker = updatedRegistration.waiting ?? registration.waiting
-  if (!waitingWorker || waitingWorker.state !== 'installed') {
-    throw new Error('No fully installed application update is waiting for activation.')
+  const preparedWorker = updatedRegistration.waiting
+    ?? registration.waiting
+    ?? (
+      installingWorker
+      && (installingWorker.state === 'activating' || installingWorker.state === 'activated')
+        ? installingWorker
+        : null
+    )
+  if (
+    !preparedWorker
+    || !['installed', 'activating', 'activated'].includes(preparedWorker.state)
+  ) {
+    return null
   }
 
-  return waitingWorker
+  return preparedWorker
 }
+
+type ServiceWorkerActivationContainer = Pick<
+  ServiceWorkerContainer,
+  'addEventListener' | 'controller' | 'removeEventListener'
+>
+
+/**
+ * Activate the exact worker selected during preparation.
+ *
+ * vite-plugin-pwa's `updateServiceWorker(true)` resolves after sending its
+ * message; the boolean parameter no longer makes that promise wait for a
+ * reload. Its separate reload listener also ignores an initially uncontrolled
+ * tab. Observe the browser lifecycle directly instead, then let the caller
+ * reload the page after this promise has proved activation.
+ */
+export const activatePreparedServiceWorker = async (
+  serviceWorker: ServiceWorkerActivationContainer,
+  worker: ServiceWorker,
+  timeoutMs: number,
+): Promise<void> => await new Promise<void>((resolve, reject) => {
+  let settled = false
+
+  const cleanup = () => {
+    globalThis.clearTimeout(timeoutId)
+    serviceWorker.removeEventListener('controllerchange', handleControllerChange)
+    worker.removeEventListener('statechange', handleStateChange)
+  }
+  const finish = (callback: () => void) => {
+    if (settled) return
+    settled = true
+    cleanup()
+    callback()
+  }
+  const handleControllerChange = () => {
+    if (serviceWorker.controller === worker || worker.state === 'activated') {
+      finish(resolve)
+    }
+  }
+  const handleStateChange = () => {
+    if (worker.state === 'activated') {
+      finish(resolve)
+    } else if (worker.state === 'redundant') {
+      finish(() => {
+        reject(new Error('The prepared service worker became redundant before activation.'))
+      })
+    }
+  }
+  const timeoutId = globalThis.setTimeout(() => {
+    finish(() => {
+      reject(new Error('Timed out while activating the latest application version.'))
+    })
+  }, timeoutMs)
+
+  serviceWorker.addEventListener('controllerchange', handleControllerChange)
+  worker.addEventListener('statechange', handleStateChange)
+  handleStateChange()
+
+  if (!settled && worker.state === 'installed') {
+    try {
+      worker.postMessage({ type: 'SKIP_WAITING' })
+    } catch (error) {
+      finish(() => {
+        reject(error)
+      })
+    }
+  }
+})

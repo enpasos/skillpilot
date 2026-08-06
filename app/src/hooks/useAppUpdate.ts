@@ -5,7 +5,10 @@ import {
   serviceWorkerUpdateCheckIntervalMs,
   serviceWorkerUpdatePreparationTimeoutMs,
 } from '../../serviceWorkerLifecyclePolicy'
-import { prepareLatestWaitingServiceWorker } from '../utils/serviceWorkerUpdatePreparation'
+import {
+  activatePreparedServiceWorker,
+  prepareLatestWaitingServiceWorker,
+} from '../utils/serviceWorkerUpdatePreparation'
 
 export type AppUpdateStatus = {
   updateAvailable: boolean
@@ -29,7 +32,6 @@ export const useAppUpdate = (): AppUpdateStatus => {
   const registrationRef = useRef<ServiceWorkerRegistration | undefined>(undefined)
   const updateCheckRef = useRef<Promise<void> | null>(null)
   const activationInProgressRef = useRef(false)
-  const activationTimeoutRef = useRef<ReturnType<typeof globalThis.setTimeout> | null>(null)
   const [dismissed, setDismissed] = useState(false)
   const [activationPending, setActivationPending] = useState(false)
   const [activationError, setActivationError] = useState(false)
@@ -51,10 +53,7 @@ export const useAppUpdate = (): AppUpdateStatus => {
     await updateCheck
   }, [])
 
-  const {
-    needRefresh: [needRefresh, setNeedRefresh],
-    updateServiceWorker,
-  } = useRegisterSW({
+  const { needRefresh: [needRefresh, setNeedRefresh] } = useRegisterSW({
     immediate: true,
     onNeedRefresh: () => {
       setDismissed(false)
@@ -94,12 +93,6 @@ export const useAppUpdate = (): AppUpdateStatus => {
     }
   }, [checkForUpdate])
 
-  useEffect(() => () => {
-    if (activationTimeoutRef.current !== null) {
-      globalThis.clearTimeout(activationTimeoutRef.current)
-    }
-  }, [])
-
   const activateUpdate = useCallback(async () => {
     if (activationInProgressRef.current) return
 
@@ -121,29 +114,51 @@ export const useAppUpdate = (): AppUpdateStatus => {
       // A newer deployment may have arrived after the prompt was shown. Check
       // once more and wait for that exact worker to finish installation before
       // asking Workbox to activate the waiting version.
-      await prepareLatestWaitingServiceWorker(
+      const preparedWorker = await prepareLatestWaitingServiceWorker(
         registration,
         serviceWorkerUpdatePreparationTimeoutMs,
       )
 
-      // vite-plugin-pwa attaches the controlling listener before exposing
-      // needRefresh. The call below asks that exact waiting worker to skip
-      // waiting; Workbox reloads once the new worker controls this page.
-      await updateServiceWorker(true)
+      if (!preparedWorker) {
+        // A worker can finish activation between the prompt and the click. An
+        // initially uncontrolled tab can then expose that worker as `active`
+        // while it is still `activating`, but it still has no controller. Wait
+        // for that exact worker before reloading into its application shell. A
+        // stale prompt on an already controlled current page is simply cleared.
+        const activeWorker = registration.active
+        if (
+          activeWorker
+          && activeWorker !== navigator.serviceWorker.controller
+          && (activeWorker.state === 'activating' || activeWorker.state === 'activated')
+        ) {
+          await activatePreparedServiceWorker(
+            navigator.serviceWorker,
+            activeWorker,
+            serviceWorkerActivationTimeoutMs,
+          )
+          window.location.reload()
+          return
+        }
 
-      activationTimeoutRef.current = globalThis.setTimeout(() => {
-        activationTimeoutRef.current = null
         activationInProgressRef.current = false
         setActivationPending(false)
-        setActivationError(true)
-      }, serviceWorkerActivationTimeoutMs)
+        setNeedRefresh(false)
+        return
+      }
+
+      await activatePreparedServiceWorker(
+        navigator.serviceWorker,
+        preparedWorker,
+        serviceWorkerActivationTimeoutMs,
+      )
+      window.location.reload()
     } catch (error) {
       console.warn('[app-update] Failed to activate the waiting service worker', error)
       activationInProgressRef.current = false
       setActivationPending(false)
       setActivationError(true)
     }
-  }, [updateServiceWorker])
+  }, [setNeedRefresh])
 
   const dismiss = useCallback(() => {
     setDismissed(true)
