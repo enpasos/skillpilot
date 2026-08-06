@@ -9,7 +9,10 @@ import {
   serviceWorkerUpdatePreparationTimeoutMs,
 } from '../serviceWorkerLifecyclePolicy'
 import { serviceWorkerNavigationFallbackDenylist } from '../serviceWorkerNavigationPolicy'
-import { prepareLatestWaitingServiceWorker } from '../src/utils/serviceWorkerUpdatePreparation'
+import {
+  activatePreparedServiceWorker,
+  prepareLatestWaitingServiceWorker,
+} from '../src/utils/serviceWorkerUpdatePreparation'
 
 const isDenied = (urlPath: string) =>
   serviceWorkerNavigationFallbackDenylist.some(pattern => pattern.test(urlPath))
@@ -141,9 +144,10 @@ const asRegistration = (registration: FakeRegistration) =>
 {
   const registration = new FakeRegistration()
 
-  await assert.rejects(
-    prepareLatestWaitingServiceWorker(asRegistration(registration), 100),
-    /No fully installed application update/,
+  assert.equal(
+    await prepareLatestWaitingServiceWorker(asRegistration(registration), 100),
+    null,
+    'a stale prompt without a waiting worker must not trigger a blind activation',
   )
 }
 
@@ -163,6 +167,34 @@ const asRegistration = (registration: FakeRegistration) =>
     prepareLatestWaitingServiceWorker(asRegistration(registration), 100),
     /became redundant/,
   )
+}
+
+class FakeServiceWorkerContainer extends EventTarget {
+  controller: ServiceWorker | null = null
+}
+
+{
+  const worker = new FakeWorker()
+  let postedMessage: unknown
+  Object.assign(worker, {
+    postMessage: (message: unknown) => {
+      postedMessage = message
+      globalThis.setTimeout(() => {
+        worker.state = 'activated'
+        worker.dispatchEvent(new Event('statechange'))
+      }, 0)
+    },
+  })
+  const serviceWorker = new FakeServiceWorkerContainer()
+
+  await activatePreparedServiceWorker(
+    serviceWorker as unknown as ServiceWorkerContainer,
+    worker as unknown as ServiceWorker,
+    100,
+  )
+
+  assert.deepEqual(postedMessage, { type: 'SKIP_WAITING' })
+  assert.equal(worker.state, 'activated')
 }
 
 console.log('Service-worker navigation and lifecycle policy passed.')

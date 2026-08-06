@@ -142,6 +142,7 @@ const browser = await chromium.launch({
 
 const runUpdateScenario = async (
   latestVersionBeforeClick: FixtureVersion,
+  controlledAtUpdate = true,
 ): Promise<void> => {
   currentVersion = versions.a
   const context = await browser.newContext({ locale: 'de-DE', serviceWorkers: 'allow' })
@@ -153,8 +154,24 @@ const runUpdateScenario = async (
 
     await page.goto(origin, { waitUntil: 'domcontentloaded' })
     await page.evaluate(async () => { await navigator.serviceWorker.ready })
-    await page.reload({ waitUntil: 'domcontentloaded' })
-    await page.waitForFunction(() => navigator.serviceWorker.controller !== null)
+    if (controlledAtUpdate) {
+      await page.reload({ waitUntil: 'domcontentloaded' })
+      await page.waitForFunction(() => navigator.serviceWorker.controller !== null)
+    } else {
+      assert.equal(
+        await page.evaluate(() => navigator.serviceWorker.controller),
+        null,
+        'the regression fixture must remain uncontrolled before the update',
+      )
+
+      // Keep one sibling tab controlled by A so B remains waiting long enough
+      // for the initially uncontrolled tab to receive the update prompt. This
+      // is the real multi-tab lifecycle in which Workbox's registration-time
+      // `isUpdate` flag previously suppressed the reload in the first tab.
+      const controlledPeer = await context.newPage()
+      await controlledPeer.goto(origin, { waitUntil: 'domcontentloaded' })
+      await controlledPeer.waitForFunction(() => navigator.serviceWorker.controller !== null)
+    }
 
     assert.equal(
       await page.locator('meta[name="skillpilot-build-id"]').getAttribute('content'),
@@ -199,6 +216,12 @@ try {
   // B is waiting when C is published. This reproduces the race that previously
   // reloaded the intermediate version and showed the notice a second time.
   await runUpdateScenario(versions.c)
+
+  // A first-load tab has an active registration but no controller until its
+  // next navigation. vite-plugin-pwa does not reload that tab after activation
+  // because Workbox classified the initial registration as a non-update. The
+  // application must perform the proven reload itself.
+  await runUpdateScenario(versions.b, false)
 } finally {
   await browser.close()
   await new Promise<void>((resolve, reject) => {
@@ -206,4 +229,4 @@ try {
   })
 }
 
-console.log('Service-worker A -> B and A -> waiting B -> latest C browser lifecycles passed.')
+console.log('Controlled and initially uncontrolled service-worker update lifecycles passed.')
