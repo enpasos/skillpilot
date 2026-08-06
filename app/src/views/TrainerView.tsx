@@ -462,12 +462,11 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   const handleTogglePlan = async (goalId: string) => {
     if (!currentLearnerId || currentLearnerId === '__ALL__') return
     const previousPlannedGoals = plannedGoals
-    const previousPlannedGoalsByStudent = plannedGoalsByStudent
     const next = new Set(plannedGoals)
     if (next.has(goalId)) next.delete(goalId)
     else next.add(goalId)
     setPlannedGoals(next)
-    setPlannedGoalsByStudent(new Map(plannedGoalsByStudent).set(currentLearnerId, next))
+    setPlannedGoalsByStudent((current) => new Map(current).set(currentLearnerId, next))
     try {
       const res = await fetch(toApi(`/api/ui/learners/${encodeURIComponent(currentLearnerId)}/planned`), {
         method: 'PUT',
@@ -477,10 +476,16 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
       if (!res.ok) {
         throw new Error(`Unexpected status ${res.status}`)
       }
+      const data = await res.json()
+      const persistedGoals = data && Array.isArray(data.goals)
+        ? new Set<string>(data.goals as string[])
+        : next
+      setPlannedGoalsByStudent((current) =>
+        new Map(current).set(currentLearnerId, persistedGoals))
     } catch (err) {
       console.warn('Could not save learning plan', err)
-      setPlannedGoals(previousPlannedGoals)
-      setPlannedGoalsByStudent(previousPlannedGoalsByStudent)
+      setPlannedGoalsByStudent((current) =>
+        new Map(current).set(currentLearnerId, previousPlannedGoals))
       onNotify?.('error', notifications.trainerPlannedGoalSaveFailed)
     }
   }

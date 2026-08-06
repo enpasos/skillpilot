@@ -310,6 +310,8 @@ class ProjectionRoleLearnerServiceTest {
         ProjectionSets projection = projectionSets(fixture.service());
         assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
         assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(TARGET_ID);
+        assertThat(projection.presentationRootGoalIds())
+                .containsExactly(ROOT_CLUSTER_ID);
     }
 
     @Test
@@ -464,14 +466,15 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void setPlannedGoalsStillAllowsEmptySetToClearFocus() {
+    void setPlannedGoalsNormalizesEmptySetToFirstVisibleRootAfterPersonalization() {
         Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
         PlannedGoal existingGoal = new PlannedGoal(fixture.learner(), TARGET_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(existingGoal))
                 .thenReturn(List.of());
 
-        assertThat(fixture.service().setPlannedGoals(LEARNER_ID, Set.of())).isEmpty();
+        assertThat(fixture.service().setPlannedGoals(LEARNER_ID, Set.of()))
+                .containsExactly(ROOT_CLUSTER_ID);
 
         @SuppressWarnings("unchecked")
         ArgumentCaptor<Iterable<PlannedGoal>> deleted =
@@ -480,6 +483,40 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(deleted.getValue())
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(TARGET_ID);
+        assertThat(fixture.savedGoals())
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(ROOT_CLUSTER_ID);
+        verify(fixture.eventPublisher()).publishEvent(
+                org.mockito.ArgumentMatchers.argThat(event ->
+                        event instanceof com.skillpilot.backend.events.LearnerStateChangedEvent change
+                                && "PLANNED_GOALS_UPDATE".equals(change.getChangeType())));
+    }
+
+    @Test
+    void selectingCurriculumWithoutLevelTwoQuestionsPersistsItsDefaultFocusImmediately() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
+        fixture.learner().setSelectedCurriculum(null);
+        fixture.learner().setPersonalCurriculum(null);
+
+        fixture.service().setCurriculum(LEARNER_ID, LANDSCAPE_ID);
+
+        verify(fixture.plannedGoalRepository()).deleteByLearner_SkillpilotId(LEARNER_ID);
+        verify(fixture.plannedGoalRepository()).save(
+                org.mockito.ArgumentMatchers.argThat(goal ->
+                        ROOT_CLUSTER_ID.equals(goal.getGoalId())));
+    }
+
+    @Test
+    void prerequisiteOnlyStructureAncestorCannotBecomeFocusThroughTargetDescendant() {
+        Fixture fixture = fixture(view(
+                canonicalSubtree(ROOT_CLUSTER_ID, "prerequisiteOnly"),
+                goalEntry(TARGET_ID)));
+
+        assertInvalidProjectedFocus(
+                () -> fixture.service().setPlannedGoals(
+                        LEARNER_ID,
+                        Set.of(ROOT_CLUSTER_ID)),
+                ROOT_CLUSTER_ID);
     }
 
     @Test
@@ -492,23 +529,33 @@ class ProjectionRoleLearnerServiceTest {
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(stalePrerequisiteOnlyFocus));
 
-        assertThat(fixture.service().getPlannedGoals(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getPlannedGoals(LEARNER_ID))
+                .containsExactly(ROOT_CLUSTER_ID);
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
-                .containsExactlyInAnyOrder(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
+                .containsExactlyInAnyOrder(
+                        ROOT_CLUSTER_ID,
+                        NESTED_CLUSTER_ID,
+                        OUTSIDE_TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
         var learnerState = fixture.service().getLearnerState(LEARNER_ID);
-        assertThat(learnerState.goals().planned()).isEmpty();
+        assertThat(learnerState.goals().planned())
+                .extracting(FrontierGoal::id)
+                .containsExactly(ROOT_CLUSTER_ID);
         assertThat(learnerState.frontier())
                 .extracting(FrontierGoal::id)
-                .containsExactlyInAnyOrder(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
+                .containsExactlyInAnyOrder(
+                        ROOT_CLUSTER_ID,
+                        NESTED_CLUSTER_ID,
+                        OUTSIDE_TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
-        verify(fixture.plannedGoalRepository(), never())
+        verify(fixture.plannedGoalRepository())
                 .deleteAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
-        verify(fixture.plannedGoalRepository(), never())
-                .saveAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
+        verify(fixture.plannedGoalRepository()).save(
+                org.mockito.ArgumentMatchers.argThat(goal ->
+                        ROOT_CLUSTER_ID.equals(goal.getGoalId())));
     }
 
     private Fixture fixture(Map<String, Object> matchedView) {
@@ -519,6 +566,7 @@ class ProjectionRoleLearnerServiceTest {
         MasteryRepository masteryRepository = mock(MasteryRepository.class);
         PlannedGoalRepository plannedGoalRepository = mock(PlannedGoalRepository.class);
         GoalMappingService goalMappingService = mock(GoalMappingService.class);
+        ApplicationEventPublisher eventPublisher = mock(ApplicationEventPublisher.class);
 
         when(landscapeService.getById(LANDSCAPE_ID)).thenReturn(landscape);
         when(landscapeService.getClosure(LANDSCAPE_ID)).thenReturn(List.of(landscape));
@@ -528,6 +576,8 @@ class ProjectionRoleLearnerServiceTest {
                 .thenReturn(true);
         if (matchedView != null) {
             when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap()))
+                    .thenReturn(matchedView);
+            when(compositionViewService.findDefaultView(LANDSCAPE_ID))
                     .thenReturn(matchedView);
         }
 
@@ -563,7 +613,7 @@ class ProjectionRoleLearnerServiceTest {
                 mock(DeckResourceService.class),
                 compositionViewService,
                 new ObjectMapper(),
-                mock(ApplicationEventPublisher.class),
+                eventPublisher,
                 mock(PlatformTransactionManager.class));
         return new Fixture(
                 service,
@@ -573,6 +623,7 @@ class ProjectionRoleLearnerServiceTest {
                 compositionViewService,
                 plannedGoalRepository,
                 goalMappingService,
+                eventPublisher,
                 savedGoals);
     }
 
@@ -592,10 +643,12 @@ class ProjectionRoleLearnerServiceTest {
         SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(LANDSCAPE_ID);
         landscape.setFrameworkId("canonical-gymnasium-projection-role-test");
+        LearningGoal rootGoal = clusterGoal(
+                ROOT_CLUSTER_ID,
+                List.of(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID));
+        rootGoal.setTags(List.of("root"));
         landscape.setGoals(List.of(
-                clusterGoal(
-                        ROOT_CLUSTER_ID,
-                        List.of(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)),
+                rootGoal,
                 clusterGoal(
                         NESTED_CLUSTER_ID,
                         List.of(TARGET_ID, PREREQUISITE_ID)),
@@ -662,6 +715,7 @@ class ProjectionRoleLearnerServiceTest {
     private Map<String, Object> view(Map<String, Object>... entries) {
         return Map.of(
                 "viewId", "projection-role-test",
+                "landscapeId", LANDSCAPE_ID,
                 "rootNodes", List.of(entries));
     }
 
@@ -702,7 +756,12 @@ class ProjectionRoleLearnerServiceTest {
                 ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
         Set<String> prerequisiteOnlyGoalIds =
                 ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
-        return new ProjectionSets(targetGoalIds, prerequisiteOnlyGoalIds);
+        List<String> presentationRootGoalIds =
+                ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds");
+        return new ProjectionSets(
+                targetGoalIds,
+                prerequisiteOnlyGoalIds,
+                presentationRootGoalIds);
     }
 
     private record Fixture(
@@ -713,11 +772,13 @@ class ProjectionRoleLearnerServiceTest {
             CompositionViewService compositionViewService,
             PlannedGoalRepository plannedGoalRepository,
             GoalMappingService goalMappingService,
+            ApplicationEventPublisher eventPublisher,
             List<PlannedGoal> savedGoals) {
     }
 
     private record ProjectionSets(
             Set<String> targetGoalIds,
-            Set<String> prerequisiteOnlyGoalIds) {
+            Set<String> prerequisiteOnlyGoalIds,
+            List<String> presentationRootGoalIds) {
     }
 }

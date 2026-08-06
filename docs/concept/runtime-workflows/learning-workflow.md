@@ -67,7 +67,13 @@ The learner can define focus at two different levels.
 
 - **Level 3a — planned goals / focus roots:** one or more goals can be marked as planned.
   - Their descendants define the learner's current focus scope.
-  - If no planned goals are set, the whole personal curriculum remains in scope.
+  - Once Level 2 is complete, the focus is never empty. If no still-valid
+    focus has been chosen, the system selects the highest first visible root
+    in the learner-facing tree as a deterministic default.
+  - Interactive learner selection is single-choice; backend and coach
+    contracts may still set more than one focus root for a deliberate combined
+    corridor.
+  - While Level 2 is incomplete or unresolved, an empty focus remains valid.
 - **Level 3b — active atomic goal:** exactly one atomic goal can be active as
   the immediate working target in the UI/learning-coach loop.
   - The active goal should normally come from the frontier, but the system can still diagnose blockers for non-frontier selections.

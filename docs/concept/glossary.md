@@ -394,8 +394,13 @@ Two decisions the coach must keep apart:
 - **Learning scope** is the committed Personal Curriculum relevant for this learner.
 - **Focus (Level 3a)** is the currently selected subtree or learning corridor
   that frontier and goal options are drawn from. It is expressed through
-  planned goals (scope roots); if none are set, the whole personal curriculum
-  stays in focus. A year or phase may define focus without becoming a goal.
+  one or more planned goals (scope roots). After the Personal Curriculum is
+  complete, focus is never empty: without a still-valid explicit selection,
+  the highest first visible root in the learner-facing tree is selected as the
+  deterministic default. The learner Cockpit presents a single-choice focus;
+  backend and coach contracts may deliberately combine multiple roots. An
+  unresolved Personal Curriculum may remain focusless. A year or phase may
+  define focus without becoming a goal.
 
 Frontier and recommendations are only offered once scope and focus are resolved.
 

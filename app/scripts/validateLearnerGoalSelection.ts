@@ -5,6 +5,7 @@ import {
   getNextVisibleLearnerGoalSelection,
   shouldAutoRevealActiveGoal,
 } from '../src/utils/learnerGoalSelection'
+import { getNextSingleLearnerFocus } from '../src/utils/learnerFocus'
 import { getLearnerViewCopy } from '../src/utils/learnerViewCopy'
 import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import {
@@ -258,6 +259,23 @@ assert.equal(
 )
 
 const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
+
+assert.deepEqual(
+  Array.from(getNextSingleLearnerFocus(['math'], 'math')),
+  ['math'],
+  'Selecting the current learner focus again must keep it selected.',
+)
+assert.deepEqual(
+  Array.from(getNextSingleLearnerFocus(['math'], 'physics')),
+  ['physics'],
+  'Selecting another learner focus must replace the current focus.',
+)
+assert.deepEqual(
+  Array.from(getNextSingleLearnerFocus(['math', 'physics'], 'math')),
+  ['math'],
+  'Selecting one entry from legacy multi-focus state must normalize it to one focus.',
+)
+
 assert.equal(
   getLearnerViewCopy('de').revealActiveGoalTitle,
   'Gehe zum aktiven Ziel',

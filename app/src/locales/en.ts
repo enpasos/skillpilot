@@ -196,6 +196,8 @@ export const en = {
         progress: "Progress",
         removeFromList: "Remove from learning list",
         addToList: "Add to learning list",
+        currentLearningFocus: "Current learning focus",
+        setLearningFocus: "Set as learning focus",
         legacyReadOnly: "Read-only in the legacy view",
         projectedStructureBadge: "Structure",
         projectedStructureReadOnly: "Projected structure node; not directly plannable as a learning goal",
