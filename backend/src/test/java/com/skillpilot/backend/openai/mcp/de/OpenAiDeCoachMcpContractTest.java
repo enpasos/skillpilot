@@ -71,6 +71,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 class OpenAiDeCoachMcpContractTest {
 
+    private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
+
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String LEARNING_SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -118,6 +120,7 @@ class OpenAiDeCoachMcpContractTest {
                         new OpenAiDeOperationalTelemetry(meterRegistry)),
                 sessionCoordinator,
                 "https://skillpilot.test",
+                SERVER_BUILD,
                 "skillpilot-memory-practice-contract-test-secret");
     }
 
@@ -601,7 +604,7 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(render.goalVisualization()).isEqualTo(context.goalVisualization());
         assertThat(render.goalVisualization().imageUrl())
                 .isEqualTo("https://skillpilot.test/assets/goal-visualizations/physik/"
-                        + "goal-with-image/goal-with-image.jpg");
+                        + "goal-with-image/goal-with-image.jpg?v=" + SERVER_BUILD);
     }
 
     @Test

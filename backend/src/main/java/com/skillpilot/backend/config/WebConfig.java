@@ -17,7 +17,14 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.noStore());
 
-        // Assets with hashes can be cached forever
+        // Goal IDs are stable while their reviewed visualization bytes may be
+        // replaced. Revalidate the canonical URL; provider widgets receive an
+        // additional deployed-build revision in their image URL.
+        registry.addResourceHandler("/assets/goal-visualizations/**")
+                .addResourceLocations("classpath:/static/assets/goal-visualizations/")
+                .setCacheControl(CacheControl.noCache().cachePublic());
+
+        // Generated frontend assets carry content hashes and can be cached for a year.
         registry.addResourceHandler("/assets/**")
                 .addResourceLocations("classpath:/static/assets/")
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic());
