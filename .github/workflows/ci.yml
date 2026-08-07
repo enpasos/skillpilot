@@ -200,6 +200,8 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Test exam Markdown conventions
+        run: npm run test:exam-markdown
       - name: Test hard Sek-I/Sek-II learning routes
         run: npm run test:hard-learning-routes
       - name: Test learner-facing composition labels

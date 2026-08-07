@@ -224,6 +224,9 @@ run_curriculum_frontend_ci() {
   echo "--> Running Graph Validation"
   npm run validate:graph
 
+  echo "--> Testing Exam Markdown Conventions"
+  npm run test:exam-markdown
+
   echo "--> Running View-Filter Validation"
   npm run validate:view-filters
 

@@ -4,7 +4,7 @@ Status: superseded
 
 This legacy single-file terminal assessment has been superseded by the year-level exam package under `curricula/DE/Gymnasium/assessments/mathematik/seki/j7/`.
 
-Current promoted draft: `curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v1.md`
+Current promotion record: `curricula/DE/Gymnasium/assessments/mathematik/seki/j7/README.md`
 
 Reason:
 
