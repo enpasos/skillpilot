@@ -6767,7 +6767,7 @@ public class LearnerService {
                     scopeForExpansion, plannedScopeIds, plannedIds, effectiveMastery);
         }
 
-        StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
+        StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
                 activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
         /*
@@ -7061,8 +7061,8 @@ public class LearnerService {
                 .toList();
     }
 
-    private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
-            List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, boolean activeGoalMastered,
+    private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontierAtomic,
+            FrontierGoal activeGoal, boolean activeGoalMastered,
             LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions) {
         String state = curriculumId == null
                 ? "SETUP"
@@ -7088,9 +7088,6 @@ public class LearnerService {
         } else if (!frontierAtomic.isEmpty()) {
             requiredAction = "setActiveGoal";
             goalOptions = frontierAtomic;
-        } else if (!frontier.isEmpty()) {
-            requiredAction = "setScope";
-            goalOptions = frontier;
         } else if (scopeExpansionOptions != null && !scopeExpansionOptions.isEmpty()) {
             requiredAction = "setScope";
             goalOptions = scopeExpansionOptions;

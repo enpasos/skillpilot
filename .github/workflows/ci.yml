@@ -206,6 +206,8 @@ jobs:
         run: npm run test:exam-markdown
       - name: Test hard Sek-I/Sek-II learning routes
         run: npm run test:hard-learning-routes
+      - name: Test reviewed canonical Mathematics Sek-I exam routes
+        run: npm run test:canonical-math-sek1-reviewed-exam-routes
       - name: Test learner-facing composition labels
         run: npm run test:learner-facing-composition-labels
       - name: Validate Competency Wording

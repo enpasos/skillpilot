@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "6bc73af12ce62e65662015bdf63bb64e009cd0868019c929ac79b58b88fedb9f",
+  "contractSha256" : "c11d24076d139c2dca4cc06e8b4c467f818f9b9d3bc2b7babd6e73aa03ab4a49",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -658,7 +658,7 @@
       "readOnlyHint" : true,
       "title" : "Load navigation options"
     },
-    "description" : "Loads the options currently allowed for an explicit change. target is exactly one of curriculum, personalization, scope, or goal. It does not change state.",
+    "description" : "Loads options only after the learner explicitly requests a change. Never call it for a normal start, continuation, or resumption. target is exactly one of curriculum, personalization, scope, or goal. scope returns focus clusters, never next learning goals. It does not change state.",
     "icons" : [ ],
     "inputSchema" : {
       "additionalProperties" : false,
