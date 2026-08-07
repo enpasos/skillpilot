@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { registerSW } from 'virtual:pwa-register'
 import 'katex/dist/katex.min.css'
 import './index.css'
 import App from './App.tsx'
-import { AppUpdateNotice } from './components/AppUpdateNotice.tsx'
 import { installModuleLoadRecovery } from './utils/moduleLoadRecovery'
 
 
@@ -15,6 +15,17 @@ import { LanguageProvider } from './contexts/LanguageContext'
 const routerBase = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
 
 installModuleLoadRecovery()
+
+// Register exactly one service worker without exposing an update prompt. New
+// workers remain waiting until every tab using the current application version
+// has been closed. This keeps each open tab coherent and lets the browser apply
+// the update naturally on the next clean start.
+registerSW({
+  immediate: true,
+  onRegisterError: (error) => {
+    console.warn('[service-worker] Registration failed', error)
+  },
+})
 
 // Handle OAuth redirect before React initializes
 // When returning from OAuth, the service worker might serve a cached version of the app
@@ -41,10 +52,6 @@ createRoot(document.getElementById('root')!).render(
   <BrowserRouter basename={routerBase}>
     <LanguageProvider>
       <ThemeProvider>
-        {/* Keep the registration coordinator outside StrictMode. The PWA hook
-            registers eagerly, so StrictMode's development remount would create
-            two competing Workbox coordinators. */}
-        <AppUpdateNotice />
         <StrictMode>
           <App />
         </StrictMode>
