@@ -157,8 +157,7 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse setScope(String skillpilotId, ScopeRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setScope(skillpilotId, request.goalIds());
-        return learnerService.getCoachLearnerState(skillpilotId);
+        return learnerService.setScope(skillpilotId, request.goalIds());
     }
 
     public UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request) {

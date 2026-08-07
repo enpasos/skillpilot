@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
@@ -63,6 +64,8 @@ public class LearnerServiceTest {
             "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
     private static final String CANONICAL_MATH_SEK_ONE_ORIENTATION_ID =
             "65365dce-f33f-49d8-9516-42f75883aa86";
+    private static final String COMPOSITION_J7_SCOPE_ID =
+            "composition:de-he-gym-math-gk-g9:structure:j7-g9";
     private static final String COMPOSITION_J8_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j8-g9";
     private static final String COMPOSITION_J9_SCOPE_ID =
@@ -87,6 +90,7 @@ public class LearnerServiceTest {
     private static final String FUNCTIONS_FLASHCARDS_ID = "77259806-add7-5fcb-b89c-376e1b0c88d6";
     private static final String LEGACY_HIDDEN_CURRICULUM_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
     private static final String COMPATIBILITY_CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
+    private static final String J8_EXAM_TASK_3_ID = "9accf4e2-f92d-5ff1-8d47-dfec33a8a707";
 
     @Autowired
     private LearnerService learnerService;
@@ -553,6 +557,70 @@ public class LearnerServiceTest {
                 .extracting(goal -> goal.title())
                 .doesNotContain("Mathematik", "Physik");
         assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+    }
+
+    @Test
+    @Transactional
+    void focusMutationClearsOutOfScopeActiveGoalAndReturnsNewAutopilotState() {
+        selectCompletedCanonicalMathCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setLearningStrategy("SEQUENTIAL");
+        learner.setAutoPilot(false);
+        learnerRepository.saveAndFlush(learner);
+
+        var j7Preview = learnerService
+                .setPlannedGoalsAndGetState(learnerId, Set.of(COMPOSITION_J7_SCOPE_ID))
+                .state();
+        Set<String> j7FrontierIds = j7Preview.frontier().stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .map(FrontierGoal::id)
+                .collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
+        assertThat(j7FrontierIds).isNotEmpty();
+
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(J8_EXAM_TASK_3_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learner.setAutoPilot(true);
+        learnerRepository.saveAndFlush(learner);
+
+        var mutation = learnerService.setPlannedGoalsAndGetState(
+                learnerId,
+                Set.of(COMPOSITION_J7_SCOPE_ID));
+
+        assertThat(mutation.goals()).containsExactly(COMPOSITION_J7_SCOPE_ID);
+        assertThat(mutation.state().goals().planned())
+                .extracting(FrontierGoal::id)
+                .containsExactly(COMPOSITION_J7_SCOPE_ID);
+        assertThat(mutation.state().activeGoal()).isNotNull();
+        assertThat(mutation.state().activeGoal().id())
+                .isNotEqualTo(J8_EXAM_TASK_3_ID)
+                .isIn(j7FrontierIds);
+        assertThat(mutation.state().learningState()).isEqualTo("TEACHING");
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                .isEqualTo(mutation.state().activeGoal().id());
+    }
+
+    @Test
+    @Transactional
+    void focusMutationWithoutAutopilotClearsOutOfScopeActiveGoal() {
+        selectCompletedCanonicalMathCurriculum();
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setLearningStrategy("SEQUENTIAL");
+        learner.setAutoPilot(false);
+        learner.setActiveGoalId(J8_EXAM_TASK_3_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+
+        var mutation = learnerService.setPlannedGoalsAndGetState(
+                learnerId,
+                Set.of(COMPOSITION_J7_SCOPE_ID));
+
+        assertThat(mutation.goals()).containsExactly(COMPOSITION_J7_SCOPE_ID);
+        assertThat(mutation.state().activeGoal()).isNull();
+        assertThat(mutation.state().learningState()).isEqualTo("FRONTIER");
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
     }
 
     @Test
@@ -1563,6 +1631,45 @@ public class LearnerServiceTest {
 
         assertThat(selected).isNotNull();
         assertThat(selected.id()).isEqualTo("J5_TASK_2");
+    }
+
+    @Test
+    void sequentialAutopilotReturnsEarlierOpenExamSiblingBeforeLaterProgramUnit() {
+        Map<String, LearningGoal> goals = new HashMap<>();
+        goals.put("ROOT", goal("ROOT", List.of(), List.of("J7_EXAMS", "J8")));
+        goals.put("J7_EXAMS", goal("J7_EXAMS", List.of(), List.of("J7_TASK_4", "J7_TASK_6", "J7_TASK_7")));
+        goals.put("J7_TASK_4", goal("J7_TASK_4", List.of(), List.of()));
+        goals.put("J7_TASK_6", goal("J7_TASK_6", List.of(), List.of()));
+        goals.put("J7_TASK_7", goal("J7_TASK_7", List.of(), List.of()));
+        goals.put("J8", goal("J8", List.of(), List.of("J8_TASK")));
+        goals.put("J8_TASK", goal("J8_TASK", List.of(), List.of()));
+
+        FrontierGoal selected = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "findSequentialLocalFrontierGoal",
+                "J7_TASK_7",
+                List.of(
+                        frontierGoal("J8_TASK"),
+                        frontierGoal("J7_TASK_4"),
+                        frontierGoal("J7_TASK_6")),
+                goals);
+
+        assertThat(selected).isNotNull();
+        assertThat(selected.id()).isEqualTo("J7_TASK_4");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void frontierOrderFollowsAuthoredTargetOrderInsteadOfCanonicalMapOrder() {
+        List<FrontierGoal> ordered = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "orderFrontierByTargetOrder",
+                List.of(frontierGoal("J8_TASK"), frontierGoal("J7_TASK")),
+                new LinkedHashSet<>(List.of("J7_TASK", "J8_TASK")));
+
+        assertThat(ordered)
+                .extracting(FrontierGoal::id)
+                .containsExactly("J7_TASK", "J8_TASK");
     }
 
     @Test

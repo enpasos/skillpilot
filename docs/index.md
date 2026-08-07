@@ -41,6 +41,7 @@ freigegebenen Interaktionssprachen.
 -   [Wissens- und Verhaltensparität des MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
 -   [Release, Rollback und Stilllegung von SkillPilot Coach v1](deploy/openai-plugin-v1-release.md)
+-   [OpenAI-Submission-Dossier für SkillPilot Coach v1](deploy/openai-plugin-v1-submission.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 
 ### Programme status

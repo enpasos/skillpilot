@@ -11,11 +11,16 @@ import static org.mockito.Mockito.when;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.PersonalizationRewindRequest;
+import com.skillpilot.backend.api.PlannedGoalsMutationResponse;
+import com.skillpilot.backend.api.PlannedGoalsRequest;
 import com.skillpilot.backend.api.PreferencesRequest;
+import com.skillpilot.backend.api.ScopeRequest;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -63,6 +68,42 @@ class LearnerUiControllerPersonalizationTest {
                 null,
                 null,
                 false);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void plannedFocusMutationReturnsTheAuthoritativeLearnerState() {
+        PlannedGoalsRequest request = new PlannedGoalsRequest(Set.of("focus-root"));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        PlannedGoalsMutationResponse mutation = new PlannedGoalsMutationResponse(
+                List.of("focus-root"),
+                state);
+        when(learnerService.setPlannedGoalsAndGetState(LEARNER_ID, request.goals()))
+                .thenReturn(mutation);
+
+        PlannedGoalsMutationResponse response = controller.setPlanned(LEARNER_ID, request);
+
+        assertThat(response).isSameAs(mutation);
+        assertThat(response.goals()).containsExactly("focus-root");
+        assertThat(response.state()).isSameAs(state);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService).setPlannedGoalsAndGetState(LEARNER_ID, request.goals());
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void scopeMutationReturnsTheAuthoritativeLearnerState() {
+        ScopeRequest request = new ScopeRequest(List.of("focus-root"));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.setScope(LEARNER_ID, request.goalIds())).thenReturn(state);
+
+        UnifiedLearnerStateResponse response = controller.setScope(LEARNER_ID, request);
+
+        assertThat(response).isSameAs(state);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService).setScope(LEARNER_ID, request.goalIds());
         verifyNoMoreInteractions(learnerService);
     }
 

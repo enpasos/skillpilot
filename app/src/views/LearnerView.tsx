@@ -54,6 +54,7 @@ import {
 } from '../utils/latestRequestSequence'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import {
+  getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
   shouldAutoRevealActiveGoal,
@@ -121,6 +122,38 @@ type PersonalCurriculumPreferences = {
   showGoalVisualizationsInChat: boolean
 }
 type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
+
+type LearnerStateRefreshResult = {
+  activeGoalId: string | null
+  plannedGoalIds: string[]
+}
+
+type LearnerStatePayload = {
+  activeGoal?: { id?: string } | null
+  frontier?: FrontierGoal[]
+  stateMachine?: {
+    activeGoal?: { id?: string } | null
+    goalOptions?: FrontierGoal[]
+    requiredAction?: string | null
+  } | null
+  goals?: {
+    planned?: Array<{ id?: string }>
+    mastered_count?: number
+    total_count?: number
+    personalized?: {
+      mastered_atomic?: number
+      total_atomic?: number
+    }
+  } | null
+}
+
+const isLearnerStatePayload = (value: unknown): value is LearnerStatePayload => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false
+  const candidate = value as Record<string, unknown>
+  const goals = candidate.goals
+  return Object.hasOwn(candidate, 'stateMachine')
+    || (!!goals && typeof goals === 'object' && !Array.isArray(goals))
+}
 
 const readPersonalCurriculumConfig = (value: unknown): PersonalCurriculumConfig => {
   const parsed = typeof value === 'string'
@@ -1432,14 +1465,59 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ])
 
 
+  const applyLearnerStatePayload = useCallback((
+    data: LearnerStatePayload,
+    requestScopeKey: string,
+  ): LearnerStateRefreshResult => {
+    setCompatibilityRouteRetired(false)
+    const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
+    if (data.frontier && Array.isArray(data.frontier)) {
+      setFrontierOptions(data.frontier)
+    } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+      setFrontierOptions(data.stateMachine.goalOptions)
+    } else {
+      setFrontierOptions([])
+    }
+    const backendPlannedGoalIds = data.goals?.planned && Array.isArray(data.goals.planned)
+      ? data.goals.planned
+        .map((goal) => goal.id)
+        .filter((id: string | undefined): id is string => Boolean(id))
+      : []
+    if (data.goals?.planned && Array.isArray(data.goals.planned)) {
+      setPlannedGoals(new Set(backendPlannedGoalIds))
+    }
+    setStateActiveGoalId(backendActiveGoalId)
+    setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
+    setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+    // Store backend-computed stats for consistency with GPT
+    if (data.goals) {
+      setBackendStats({
+        masteredAtomic: data.goals.mastered_count ?? 0,
+        totalAtomic: data.goals.total_count ?? 0,
+        personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
+        personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+        plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
+      })
+    }
+    setLearnerStateLoadState({
+      scopeKey: requestScopeKey,
+      status: 'ready',
+    })
+    clearReportedLoadError('learner-initial-load')
+    return {
+      activeGoalId: backendActiveGoalId,
+      plannedGoalIds: backendPlannedGoalIds,
+    }
+  }, [clearReportedLoadError])
+
   const refreshState = useCallback(
-    async (cacheBust = false) => {
+    async (cacheBust = false): Promise<LearnerStateRefreshResult | null> => {
       if (!skillpilotId) {
         setLearnerStateLoadState({
           scopeKey: learnerStateScopeKey,
           status: 'ready',
         })
-        return
+        return null
       }
       const requestSequence = beginLatestRequest(learnerStateRequestSequenceRef)
       const requestScopeKey = learnerStateScopeKey
@@ -1463,46 +1541,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const res = await fetch(url)
         if (res.ok) {
           const data = await res.json()
-          if (!isCurrentRequest()) return
-          setCompatibilityRouteRetired(false)
-          const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
-          if (data.frontier && Array.isArray(data.frontier)) {
-            setFrontierOptions(data.frontier)
-          } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
-            setFrontierOptions(data.stateMachine.goalOptions)
-          } else {
-            setFrontierOptions([])
-          }
-          const backendPlannedGoalIds = data.goals?.planned && Array.isArray(data.goals.planned)
-            ? (data.goals.planned as Array<{ id?: string }>)
-              .map((goal) => goal.id)
-              .filter((id: string | undefined): id is string => Boolean(id))
-            : []
-          if (data.goals?.planned && Array.isArray(data.goals.planned)) {
-            setPlannedGoals(new Set(backendPlannedGoalIds))
-          }
-          setStateActiveGoalId(backendActiveGoalId)
-          setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
-          setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
-          // Store backend-computed stats for consistency with GPT
-          if (data.goals) {
-            setBackendStats({
-              masteredAtomic: data.goals.mastered_count ?? 0,
-              totalAtomic: data.goals.total_count ?? 0,
-              personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
-              personalizedTotalAtomic: data.goals.personalized?.total_atomic,
-              plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
-            })
-          }
-          setLearnerStateLoadState({
-            scopeKey: requestScopeKey,
-            status: 'ready',
-          })
-          clearReportedLoadError('learner-initial-load')
-          return
+          if (!isCurrentRequest()) return null
+          if (!isLearnerStatePayload(data)) return null
+          return applyLearnerStatePayload(data, requestScopeKey)
         }
         if (res.status === 409) {
-          if (!isCurrentRequest()) return
+          if (!isCurrentRequest()) return null
           setCompatibilityRouteRetired(true)
           setFrontierOptions([])
           setStateActiveGoalId(null)
@@ -1514,25 +1558,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             status: 'ready',
           })
           clearReportedLoadError('learner-initial-load')
-          return
+          return null
         }
-        if (!isCurrentRequest()) return
+        if (!isCurrentRequest()) return null
         setLearnerStateLoadState({
           scopeKey: requestScopeKey,
           status: 'error',
         })
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        return null
       } catch (e) {
-        if (!isCurrentRequest()) return
+        if (!isCurrentRequest()) return null
         console.warn('Failed to load learner state', e)
         setLearnerStateLoadState({
           scopeKey: requestScopeKey,
           status: 'error',
         })
         notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        return null
       }
     },
     [
+      applyLearnerStatePayload,
       clearReportedLoadError,
       learnerStateScopeKey,
       notifyLoadErrorOnce,
@@ -1940,16 +1987,50 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       if (!res.ok) {
         throw new Error(`planned-goal-save-failed:${res.status}`)
       }
-      await refreshState(true)
+      let mutationPayload: unknown = null
+      try {
+        mutationPayload = await res.json()
+      } catch {
+        // Older compatible backends may return no JSON body. In that case the
+        // authoritative state is loaded through the established GET fallback.
+      }
+      const embeddedState = mutationPayload && typeof mutationPayload === 'object'
+        ? (mutationPayload as { state?: unknown }).state
+        : null
+      let refreshedState: LearnerStateRefreshResult | null
+      if (isLearnerStatePayload(embeddedState)) {
+        invalidateLatestRequest(learnerStateRequestSequenceRef)
+        refreshedState = applyLearnerStatePayload(embeddedState, learnerStateScopeKey)
+      } else {
+        refreshedState = await refreshState(true)
+      }
+      if (!refreshedState) return
+
+      const targetId = getFocusMutationRevealTarget({
+        activeGoalId: refreshedState.activeGoalId,
+        authoritativeFocusGoalIds: refreshedState.plannedGoalIds,
+        requestedFocusGoalIds: next,
+      })
+      if (targetId) {
+        setExpandedGoalIds(buildCollapsedFocusPath(targetId))
+        if (targetId !== currentRouteGoalId) {
+          onSelectGoal(targetId)
+        }
+      }
     } catch (e) {
       console.warn('Failed to save planned goals', e)
       setPlannedGoals(previousPlannedGoals)
       onNotify?.('error', t.notifications.plannedGoalSaveFailed)
     }
   }, [
+    applyLearnerStatePayload,
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
     isCompatibilityAuditOnly,
     legacyReadOnlyCopy,
+    learnerStateScopeKey,
     onNotify,
+    onSelectGoal,
     plannedGoals,
     refreshState,
     skillpilotId,

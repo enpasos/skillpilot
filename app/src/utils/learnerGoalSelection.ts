@@ -26,7 +26,33 @@ interface InitialLearnerGoalRevealInput {
   hasPlannedGoals: boolean
 }
 
+interface FocusMutationRevealTargetInput {
+  activeGoalId?: string | null
+  authoritativeFocusGoalIds?: Iterable<string>
+  requestedFocusGoalIds?: Iterable<string>
+}
+
 export type InitialLearnerGoalReveal = 'active' | 'scope'
+
+const firstNonBlankGoalId = (goalIds: Iterable<string>): string | null => {
+  for (const goalId of goalIds) {
+    const normalizedGoalId = goalId.trim()
+    if (normalizedGoalId) return normalizedGoalId
+  }
+  return null
+}
+
+export function getFocusMutationRevealTarget({
+  activeGoalId,
+  authoritativeFocusGoalIds = [],
+  requestedFocusGoalIds = [],
+}: FocusMutationRevealTargetInput): string | null {
+  const normalizedActiveGoalId = activeGoalId?.trim()
+  if (normalizedActiveGoalId) return normalizedActiveGoalId
+
+  return firstNonBlankGoalId(requestedFocusGoalIds)
+    ?? firstNonBlankGoalId(authoritativeFocusGoalIds)
+}
 
 export function getInitialLearnerGoalReveal({
   learnerStateReady,
