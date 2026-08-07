@@ -17,6 +17,7 @@ import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.PersonalizationRewindRequest;
 import com.skillpilot.backend.api.PlannedGoalsRequest;
+import com.skillpilot.backend.api.PlannedGoalsMutationResponse;
 import com.skillpilot.backend.api.PlannedGoalsResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.CreateLearnerRequest;
@@ -179,9 +180,11 @@ public class LearnerUiController {
 
     @PostMapping("/{skillpilotId}/scope")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public void setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
+    public UnifiedLearnerStateResponse setScope(
+            @PathVariable String skillpilotId,
+            @RequestBody ScopeRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setScope(skillpilotId, request.goalIds());
+        return learnerService.setScope(skillpilotId, request.goalIds());
     }
 
     @PostMapping("/{skillpilotId}/active-goal")
@@ -213,11 +216,11 @@ public class LearnerUiController {
 
     @PutMapping("/{skillpilotId}/planned")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
-    public PlannedGoalsResponse setPlanned(
+    public PlannedGoalsMutationResponse setPlanned(
             @PathVariable String skillpilotId,
             @Valid @RequestBody PlannedGoalsRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
-        return new PlannedGoalsResponse(learnerService.setPlannedGoals(skillpilotId, request.goals()));
+        return learnerService.setPlannedGoalsAndGetState(skillpilotId, request.goals());
     }
 
     @GetMapping("/{skillpilotId}")

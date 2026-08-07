@@ -78,6 +78,7 @@ import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.api.PlannedGoalsMutationResponse;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
@@ -2545,40 +2546,20 @@ public class LearnerService {
                 .toList();
         plannedGoalRepository.saveAll(toAdd);
 
-        // Validation: Verify Active Goal is still in Scope
-        String storedActiveGoalId = learner.getActiveGoalId();
-        if (storedActiveGoalId != null && !storedActiveGoalId.isBlank()) {
-            String curriculumId = learner.getSelectedCurriculum();
-            if (curriculumId != null) {
-                GoalProjection projection = getGoalProjection(
-                        curriculumId,
-                        learner.getPersonalCurriculum());
-                Map<String, LearningGoal> allGoals = projection.visibleGoals();
-                Map<String, LearningGoal> structuralGoals = projection.structuralGoals();
-                List<String> newProjectedFocusIds = resolveProjectedTargetFocusIds(
-                        new ArrayList<>(normalizedTargetIds),
-                        projection);
-                List<String> newPlannedIds = resolveProjectedTargetScopeIds(
-                        newProjectedFocusIds,
-                        projection);
-                GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
-                        structuralGoals,
-                        newProjectedFocusIds);
-                String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
-                boolean activeGoalOutOfScope = activeGoalId != null
-                        && isGoalOutOfPlannedScope(activeGoalId, newPlannedIds, structuralGoals, null);
-                boolean globalAssessmentFocusRemoved = isGlobalAssessmentGoalWithoutExplicitFocus(
-                        activeGoalId,
-                        globalAssessmentFocus);
-
-                if (activeGoalOutOfScope || globalAssessmentFocusRemoved) {
-                    clearPersistedActiveGoal(
-                            learner,
-                            skillpilotId,
-                            globalAssessmentFocusRemoved
-                                    ? "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS"
-                                    : "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE");
-                }
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId != null && !curriculumId.isBlank()) {
+            GoalProjection projection = getGoalProjection(
+                    curriculumId,
+                    learner.getPersonalCurriculum());
+            List<String> newProjectedFocusIds = resolveProjectedTargetFocusIds(
+                    new ArrayList<>(normalizedTargetIds),
+                    projection);
+            String invalidationReason = resolveActiveGoalInvalidationReason(
+                    learner,
+                    projection,
+                    newProjectedFocusIds);
+            if (invalidationReason != null) {
+                clearPersistedActiveGoal(learner, skillpilotId, invalidationReason);
             }
         }
 
@@ -2588,6 +2569,19 @@ public class LearnerService {
                 skillpilotId,
                 "PLANNED_GOALS_UPDATE"));
         return getPlannedGoals(skillpilotId);
+    }
+
+    /**
+     * Applies a learner focus change and returns the authoritative state after
+     * active-goal reconciliation and, when enabled, Autopilot selection.
+     */
+    @Transactional
+    public PlannedGoalsMutationResponse setPlannedGoalsAndGetState(
+            String skillpilotId,
+            Set<String> goalIds) {
+        List<String> plannedGoalIds = setPlannedGoals(skillpilotId, goalIds);
+        UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
+        return new PlannedGoalsMutationResponse(plannedGoalIds, state);
     }
 
     @Transactional
@@ -4025,23 +4019,63 @@ public class LearnerService {
             }
         }
 
+        String invalidationReason = resolveActiveGoalInvalidationReason(
+                learner,
+                projection,
+                projectedFocusIds);
+        if (invalidationReason != null) {
+            learner.setActiveGoalId(null);
+            learner.setLearningState(LearningState.FRONTIER);
+        }
+    }
+
+    /**
+     * Resolves the one reason an active goal cannot survive a projected focus
+     * change. This rule is shared by direct focus writes and by Level-2
+     * personalization revalidation so every mutation observes the same target
+     * projection and planned scope.
+     */
+    private String resolveActiveGoalInvalidationReason(
+            Learner learner,
+            GoalProjection projection,
+            List<String> projectedFocusIds) {
+        if (learner == null || projection == null) {
+            return null;
+        }
+        String storedActiveGoalId = learner.getActiveGoalId();
+        if (storedActiveGoalId == null || storedActiveGoalId.isBlank()) {
+            return null;
+        }
+
+        String projectedActiveGoalId = resolveGoalIdInVisibleGoals(
+                storedActiveGoalId,
+                projection.visibleGoals(),
+                false);
+        if (projectedActiveGoalId == null
+                || !projection.targetGoalIds().contains(projectedActiveGoalId)) {
+            return "ACTIVE_GOAL_CLEARED_INVALID_VIEW";
+        }
+
+        List<String> projectedScopeIds = resolveProjectedTargetScopeIds(
+                projectedFocusIds == null ? Collections.emptyList() : projectedFocusIds,
+                projection);
+        if (isGoalOutOfPlannedScope(
+                projectedActiveGoalId,
+                projectedScopeIds,
+                projection.structuralGoals(),
+                null)) {
+            return "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE";
+        }
+
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 projection.structuralGoals(),
-                projectedFocusIds);
-        String activeGoalId = learner.getActiveGoalId();
-        if (activeGoalId != null && !activeGoalId.isBlank()) {
-            String projectedActiveGoalId = resolveGoalIdInVisibleGoals(
-                    activeGoalId,
-                    projection.visibleGoals(),
-                    false);
-            if (projectedActiveGoalId == null
-                    || !projection.targetGoalIds().contains(projectedActiveGoalId)
-                    || isGlobalAssessmentGoalWithoutExplicitFocus(
-                            projectedActiveGoalId,
-                            globalAssessmentFocus)) {
-                learner.setActiveGoalId(null);
-            }
+                projectedFocusIds == null ? Collections.emptyList() : projectedFocusIds);
+        if (isGlobalAssessmentGoalWithoutExplicitFocus(
+                projectedActiveGoalId,
+                globalAssessmentFocus)) {
+            return "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS";
         }
+        return null;
     }
 
     private boolean isProjectedTargetFocus(
@@ -5440,7 +5474,7 @@ public class LearnerService {
                 plannedIds,
                 scope);
         if (!requiredOrientationGoals.isEmpty()) {
-            return requiredOrientationGoals;
+            return orderFrontierByProjection(requiredOrientationGoals, projection);
         }
 
         List<FrontierGoal> frontier = new ArrayList<>();
@@ -5531,6 +5565,7 @@ public class LearnerService {
             }
         }
         frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier));
+        frontier = new ArrayList<>(orderFrontierByProjection(frontier, projection));
 
         // Compaction Logic: If frontier is too large, prefer atomic goals for
         // actionable next steps.
@@ -5560,6 +5595,37 @@ public class LearnerService {
         }
 
         return frontier;
+    }
+
+    private List<FrontierGoal> orderFrontierByProjection(
+            List<FrontierGoal> frontier,
+            GoalProjection projection) {
+        if (frontier == null || frontier.size() < 2 || projection == null) {
+            return frontier == null ? Collections.emptyList() : frontier;
+        }
+
+        return orderFrontierByTargetOrder(frontier, projection.targetGoalIds());
+    }
+
+    private List<FrontierGoal> orderFrontierByTargetOrder(
+            List<FrontierGoal> frontier,
+            Collection<String> targetGoalIds) {
+        if (frontier == null || frontier.size() < 2 || targetGoalIds == null) {
+            return frontier == null ? Collections.emptyList() : frontier;
+        }
+
+        Map<String, Integer> presentationRank = new LinkedHashMap<>();
+        int rank = 0;
+        for (String goalId : targetGoalIds) {
+            if (goalId != null && !goalId.isBlank()) {
+                presentationRank.putIfAbsent(goalId, rank++);
+            }
+        }
+        List<FrontierGoal> ordered = new ArrayList<>(frontier);
+        ordered.sort(Comparator.comparingInt(goal -> presentationRank.getOrDefault(
+                goal == null ? null : goal.id(),
+                Integer.MAX_VALUE)));
+        return ordered;
     }
 
     static boolean isOrientationGoal(LearningGoal goal) {
@@ -6831,6 +6897,22 @@ public class LearnerService {
         }
 
         List<String> parentIds = orderedLocalParentIds(anchorGoalId, parentMap, structuralGoals);
+        // "Schritt für Schritt" must not skip an earlier open sibling in the
+        // anchor's immediate authored program segment. Keep this lookup local:
+        // broader ancestor fallback is deliberately handled by the existing
+        // terminal-boundary rules below.
+        if (!parentIds.isEmpty()) {
+            String immediateParentId = parentIds.get(0);
+            FrontierGoal firstOpenInParent = findFirstFrontierInSubtree(
+                    immediateParentId,
+                    frontierById,
+                    structuralGoals,
+                    new HashSet<>());
+            if (firstOpenInParent != null) {
+                return firstOpenInParent;
+            }
+        }
+
         boolean hasLocalFollowingSibling = false;
         for (String parentId : parentIds) {
             LocalParentFrontierSearch nextInParent = findNextFrontierAfterChildInParent(
@@ -7253,7 +7335,7 @@ public class LearnerService {
     }
 
     @Transactional
-    public void setScope(String skillpilotId, List<String> goalIds) {
+    public UnifiedLearnerStateResponse setScope(String skillpilotId, List<String> goalIds) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         String curriculumId = learner.getSelectedCurriculum();
@@ -7270,11 +7352,12 @@ public class LearnerService {
         }
 
         // Scope selection is exclusive: replace planned goals with the new scope.
-        Set<String> newPlanned = new java.util.HashSet<>(goalIds);
-        setPlannedGoals(skillpilotId, newPlanned);
+        Set<String> newPlanned = new LinkedHashSet<>(goalIds);
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
+        UnifiedLearnerStateResponse state = setPlannedGoalsAndGetState(skillpilotId, newPlanned).state();
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "SCOPE_UPDATE"));
+        return state;
     }
 
     @Transactional

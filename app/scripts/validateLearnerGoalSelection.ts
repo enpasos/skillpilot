@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
+  getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
   shouldAutoRevealActiveGoal,
@@ -258,6 +259,36 @@ assert.equal(
   'An explicit route inside the current planned scope must remain stable.',
 )
 
+assert.equal(
+  getFocusMutationRevealTarget({
+    activeGoalId: 'new-active-goal',
+    authoritativeFocusGoalIds: ['new-focus-root'],
+    requestedFocusGoalIds: ['requested-focus-root'],
+  }),
+  'new-active-goal',
+  'An explicit focus mutation must reveal the active goal returned by the authoritative state refresh.',
+)
+
+assert.equal(
+  getFocusMutationRevealTarget({
+    activeGoalId: null,
+    authoritativeFocusGoalIds: ['authoritative-focus-root'],
+    requestedFocusGoalIds: ['new-focus-root'],
+  }),
+  'new-focus-root',
+  'Without an active goal, an explicit focus mutation must reveal the newly requested visible focus root.',
+)
+
+assert.equal(
+  getFocusMutationRevealTarget({
+    activeGoalId: null,
+    authoritativeFocusGoalIds: ['authoritative-focus-root'],
+    requestedFocusGoalIds: [],
+  }),
+  'authoritative-focus-root',
+  'The authoritative focus root is the fallback when no requested scope representative is available.',
+)
+
 const learnerViewSource = readFileSync('src/views/LearnerView.tsx', 'utf8')
 
 assert.deepEqual(
@@ -294,6 +325,16 @@ assert.match(
 assert.ok(
   !learnerViewSource.includes('Gehe zum aktiven Ziel / Go to active goal'),
   'LearnerView must not expose a bilingual active-goal tooltip.',
+)
+assert.match(
+  learnerViewSource,
+  /if \(isLearnerStatePayload\(embeddedState\)\) \{[\s\S]*?refreshedState = applyLearnerStatePayload\(embeddedState, learnerStateScopeKey\)[\s\S]*?\} else \{[\s\S]*?refreshedState = await refreshState\(true\)/,
+  'The explicit learner-focus mutation must consume its returned state and use GET only as a compatibility fallback.',
+)
+assert.match(
+  learnerViewSource,
+  /getFocusMutationRevealTarget\(\{[\s\S]*?activeGoalId: refreshedState\.activeGoalId[\s\S]*?authoritativeFocusGoalIds: refreshedState\.plannedGoalIds/,
+  'The explicit learner-focus mutation must navigate from the returned authoritative active goal or focus root.',
 )
 
 const abi26CockpitUrl = buildAbi26CockpitUrl({
