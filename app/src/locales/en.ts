@@ -145,6 +145,7 @@ export const en = {
             text: "**Free.** You only need a ChatGPT account. Please use the normal ChatGPT text chat."
         },
         links: {
+            faq: "FAQ",
             statistics: "Statistics",
             workbench: "Workbench",
             whitepaper: "Whitepaper"

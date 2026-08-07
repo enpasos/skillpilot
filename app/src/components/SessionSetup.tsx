@@ -950,6 +950,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
               {/* Direct Access Links for Trainer/Explorer */}
               <div className="flex justify-center gap-6 pt-4 text-xs text-text-secondary items-center flex-wrap">
+                <Link to="/faq" className="hover:text-sky-500 hover:underline transition-colors">
+                  {t.startPage.links.faq}
+                </Link>
                 <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.statistics}
                 </Link>
@@ -1526,7 +1529,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         onSubmit={handleSkillpilotIdFilePasswordSubmit}
       />
 
-      <div className="mt-10 py-6 text-xs text-slate-500 flex gap-4">
+      <div className="mt-10 flex flex-wrap justify-center gap-4 py-6 text-xs text-slate-500">
         <Link to="/privacy" className="hover:text-slate-300 transition-colors">{t.startPage.footer.privacy}</Link>
         <span className="text-slate-700">|</span>
         <Link to="/imprint" className="hover:text-slate-300 transition-colors">{t.startPage.footer.imprint}</Link>

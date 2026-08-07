@@ -38,6 +38,7 @@ const REPOSITORY_AUTHORING_PATHS = [
 ]
 const PUBLIC_PATHS = new Set([
   '/curricula',
+  '/faq',
   '/privacy',
   '/imprint',
   '/legal',
@@ -56,6 +57,7 @@ const ExplorerView = lazy(() => import('./views/ExplorerView').then((module) => 
 const LearnerView = lazy(() => import('./views/LearnerView').then((module) => ({ default: module.LearnerView })))
 const TrainerView = lazy(() => import('./views/TrainerView').then((module) => ({ default: module.TrainerView })))
 const LegalView = lazy(() => import('./views/LegalView').then((module) => ({ default: module.LegalView })))
+const FaqView = lazy(() => import('./views/FaqView').then((module) => ({ default: module.FaqView })))
 const PrivacyView = lazy(() => import('./views/PrivacyView').then((module) => ({ default: module.PrivacyView })))
 const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({ default: module.ImprintView })))
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
@@ -456,6 +458,10 @@ const App: React.FC = () => {
       language === 'en'
         ? 'Legal notice, licensing, and usage disclaimer for SkillPilot.'
         : 'Rechtliche Hinweise, Lizenz und Haftung für SkillPilot.'
+    const faqDescription =
+      language === 'en'
+        ? 'Recommended devices, supported ChatGPT modes, and troubleshooting for SkillPilot Coach.'
+        : 'Empfohlene Geräte, unterstützte ChatGPT-Modi und Problemlösungen für SkillPilot Coach.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -532,6 +538,9 @@ const App: React.FC = () => {
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
+      } else if (path === '/faq') {
+        title = `${t.startPage.links.faq} | ${baseTitle}`
+        description = faqDescription
       } else if (path === '/imprint') {
         title = `${t.startPage.footer.imprint} | ${baseTitle}`
         description = imprintDescription
@@ -632,6 +641,7 @@ const App: React.FC = () => {
         <>
           <Routes>
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
+            <Route path="/faq" element={<FaqView />} />
             <Route path="/legal" element={<LegalView />} />
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/legal" element={<LegalView />} />
@@ -855,6 +865,7 @@ const App: React.FC = () => {
           }
         />
         <Route path="/legal" element={<LegalView />} />
+        <Route path="/faq" element={<FaqView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />

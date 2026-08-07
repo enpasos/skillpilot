@@ -13,6 +13,7 @@
     "test:ai-transparency-ui": "tsx scripts/testAiTransparencyUi.tsx",
     "test:ai-transparency-artifact": "node ../scripts/verify_ai_transparency_artifact.test.mjs",
     "test:frontend-shell-assets": "node ../scripts/verify_frontend_shell_assets.test.mjs",
+    "test:faq": "tsx src/utils/faqViewCopy.test.ts",
     "test:skillpilot-id-file": "tsx src/utils/skillpilotIdFile.test.ts",
     "test:session-setup-id-entry": "tsx scripts/testSessionSetupIdEntry.ts",
     "test:session-setup": "npm run test:session-setup-id-entry && tsx src/utils/sessionSetupStepVisibility.test.ts && tsx src/utils/curriculumQualityTrafficLight.test.ts && tsx scripts/testCurriculumQualityTrafficLightDrift.ts",

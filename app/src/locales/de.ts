@@ -145,6 +145,7 @@ export const de = {
             text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account. Bitte nutze den normalen ChatGPT-Textchat."
         },
         links: {
+            faq: "FAQ",
             statistics: "Statistiken",
             workbench: "Workbench",
             whitepaper: "Konzept"

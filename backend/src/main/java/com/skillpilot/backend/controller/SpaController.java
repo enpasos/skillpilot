@@ -30,6 +30,8 @@ public class SpaController {
             "/start/**",
             "/mobi",
             "/mobi/**",
+            "/faq",
+            "/faq/**",
             "/legal",
             "/legal/**",
             "/privacy",
