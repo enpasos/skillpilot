@@ -162,6 +162,8 @@ jobs:
         run: npm run test:skillpilot-id-file
       - name: Test session setup
         run: npm run test:session-setup
+      - name: Test public FAQ copy
+        run: npm run test:faq
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Test curriculum quality traffic-light interactions
