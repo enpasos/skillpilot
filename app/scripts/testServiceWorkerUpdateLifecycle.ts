@@ -63,9 +63,8 @@ const createFixtureVersion = (buildId: string): FixtureVersion => {
 }
 
 const versions = {
-  a: createFixtureVersion('service-worker-e2e-a'),
-  b: createFixtureVersion('service-worker-e2e-b'),
-  c: createFixtureVersion('service-worker-e2e-c'),
+  a: createFixtureVersion('service-worker-silent-a'),
+  b: createFixtureVersion('service-worker-silent-b'),
 }
 let currentVersion = versions.a
 
@@ -140,88 +139,73 @@ const browser = await chromium.launch({
   args: ['--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'],
 })
 
-const runUpdateScenario = async (
-  latestVersionBeforeClick: FixtureVersion,
-  controlledAtUpdate = true,
-): Promise<void> => {
-  currentVersion = versions.a
+const readBuildId = (page: import('playwright').Page) =>
+  page.locator('meta[name="skillpilot-build-id"]').getAttribute('content')
+
+try {
   const context = await browser.newContext({ locale: 'de-DE', serviceWorkers: 'allow' })
   try {
-    const page = await context.newPage()
-    await page.addInitScript(() => {
-      localStorage.setItem('skillpilot_lang', 'de')
-    })
+    const firstPage = await context.newPage()
+    await firstPage.goto(origin, { waitUntil: 'domcontentloaded' })
+    await firstPage.evaluate(async () => { await navigator.serviceWorker.ready })
+    await firstPage.reload({ waitUntil: 'domcontentloaded' })
+    await firstPage.waitForFunction(() => navigator.serviceWorker.controller !== null)
 
-    await page.goto(origin, { waitUntil: 'domcontentloaded' })
-    await page.evaluate(async () => { await navigator.serviceWorker.ready })
-    if (controlledAtUpdate) {
-      await page.reload({ waitUntil: 'domcontentloaded' })
-      await page.waitForFunction(() => navigator.serviceWorker.controller !== null)
-    } else {
-      assert.equal(
-        await page.evaluate(() => navigator.serviceWorker.controller),
-        null,
-        'the regression fixture must remain uncontrolled before the update',
-      )
+    const secondPage = await context.newPage()
+    await secondPage.goto(origin, { waitUntil: 'domcontentloaded' })
+    await secondPage.waitForFunction(() => navigator.serviceWorker.controller !== null)
 
-      // Keep one sibling tab controlled by A so B remains waiting long enough
-      // for the initially uncontrolled tab to receive the update prompt. This
-      // is the real multi-tab lifecycle in which Workbox's registration-time
-      // `isUpdate` flag previously suppressed the reload in the first tab.
-      const controlledPeer = await context.newPage()
-      await controlledPeer.goto(origin, { waitUntil: 'domcontentloaded' })
-      await controlledPeer.waitForFunction(() => navigator.serviceWorker.controller !== null)
-    }
-
-    assert.equal(
-      await page.locator('meta[name="skillpilot-build-id"]').getAttribute('content'),
-      versions.a.buildId,
-      'the controlled fixture must start on version A',
-    )
+    assert.equal(await readBuildId(firstPage), versions.a.buildId)
+    assert.equal(await readBuildId(secondPage), versions.a.buildId)
 
     currentVersion = versions.b
-    await page.evaluate(async () => {
+    await firstPage.evaluate(async () => {
       const registration = await navigator.serviceWorker.getRegistration()
-      if (!registration) {
-        throw new Error('No service-worker registration in browser fixture')
-      }
+      if (!registration) throw new Error('No service-worker registration in browser fixture')
       await registration.update()
     })
-    await page.getByText('Neue Version verfügbar', { exact: true }).waitFor()
-    assert.equal(
-      await page.locator('meta[name="skillpilot-build-id"]').getAttribute('content'),
-      versions.a.buildId,
-      'detecting a waiting worker must not reload before the user confirms the update',
+    await firstPage.waitForFunction(
+      async () => Boolean((await navigator.serviceWorker.getRegistration())?.waiting),
+      undefined,
+      { timeout: 10_000 },
     )
 
-    currentVersion = latestVersionBeforeClick
-    await Promise.all([
-      page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
-      page.getByRole('button', { name: 'Neu laden', exact: true }).click(),
-    ])
-
     assert.equal(
-      await page.locator('meta[name="skillpilot-build-id"]').getAttribute('content'),
-      latestVersionBeforeClick.buildId,
-      'one explicit update must activate the latest published application version',
+      await firstPage.getByText('Neue Version verfügbar', { exact: true }).count(),
+      0,
+      'the application must not render the removed update notice',
+    )
+    assert.equal(
+      await firstPage.getByRole('button', { name: 'Neu laden', exact: true }).count(),
+      0,
+      'the application must not render the removed update action',
+    )
+    assert.equal(await readBuildId(firstPage), versions.a.buildId)
+
+    await firstPage.close()
+    assert.equal(
+      await readBuildId(secondPage),
+      versions.a.buildId,
+      'closing a sibling tab must not reload or replace the version already shown',
+    )
+
+    await secondPage.close()
+    await new Promise(resolve => globalThis.setTimeout(resolve, 1_000))
+
+    const nextStart = await context.newPage()
+    await nextStart.goto(origin, { waitUntil: 'domcontentloaded' })
+    assert.equal(
+      await readBuildId(nextStart),
+      versions.b.buildId,
+      'the waiting worker must activate naturally after all old clients close',
+    )
+    assert.equal(
+      await nextStart.getByText('Neue Version verfügbar', { exact: true }).count(),
+      0,
     )
   } finally {
     await context.close()
   }
-}
-
-try {
-  await runUpdateScenario(versions.b)
-
-  // B is waiting when C is published. This reproduces the race that previously
-  // reloaded the intermediate version and showed the notice a second time.
-  await runUpdateScenario(versions.c)
-
-  // A first-load tab has an active registration but no controller until its
-  // next navigation. vite-plugin-pwa does not reload that tab after activation
-  // because Workbox classified the initial registration as a non-update. The
-  // application must perform the proven reload itself.
-  await runUpdateScenario(versions.b, false)
 } finally {
   await browser.close()
   await new Promise<void>((resolve, reject) => {
@@ -229,4 +213,4 @@ try {
   })
 }
 
-console.log('Controlled and initially uncontrolled service-worker update lifecycles passed.')
+console.log('Silent service-worker update lifecycle passed.')
