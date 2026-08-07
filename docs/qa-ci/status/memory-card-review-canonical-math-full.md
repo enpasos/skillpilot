@@ -39,7 +39,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 246 | 1 | 6 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 248 | 1 | 6 | 0 |
 | Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 243 | 1 | 9 | 0 |
 
 ## Memory-Required Goals
