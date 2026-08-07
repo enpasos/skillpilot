@@ -9,6 +9,7 @@ import {
   type HardRouteProfile,
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
+import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -115,6 +116,7 @@ const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
 const RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY = 'GVR-013'
 const RULE_ORIENTATION_MOTIVATION_STRUCTURE = 'GVR-014'
 const RULE_ORIENTATION_OUTLOOK_INTEGRITY = 'GVR-015'
+const RULE_EXAM_MARKDOWN_TABLES = 'GVR-016'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -644,6 +646,25 @@ function validateLandscape(landscape: ParsedLandscape) {
         `[${RULE_ORIENTATION_MOTIVATION_STRUCTURE}] Goal ${goal.id} (${goal.title}): ${finding.message}`,
       )
     })
+
+    if (goal.examData) {
+      const markdownFields = [
+        ['taskContent', goal.examData.taskContent],
+        ['taskContentEn', goal.examData.taskContentEn],
+        ['solutionContent', goal.examData.solutionContent],
+        ['solutionContentEn', goal.examData.solutionContentEn],
+      ] as const
+      for (const [fieldName, markdown] of markdownFields) {
+        if (typeof markdown !== 'string') continue
+        for (const finding of findExamMarkdownTableIssues(markdown)) {
+          addIssue(
+            'error',
+            landscape.landscapeId,
+            `[${RULE_EXAM_MARKDOWN_TABLES}] Goal ${goal.id} (${goal.title}) examData.${fieldName}, lines ${finding.startLine}-${finding.endLine}: ${finding.message}.`,
+          )
+        }
+      }
+    }
 
     const legacyLinkFields = getLegacyGoalLinkFields(goal)
     if (legacyLinkFields.length > 0) {

@@ -52,6 +52,7 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
 | `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
 | `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
+| `GVR-016` | Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count. | All `examData.taskContent*` and `examData.solutionContent*` fields | unconditional `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -91,6 +92,19 @@ These checks are already implemented and treated as `error`:
 - The current CI enforcement scope for `validate:view-filters` covers the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
 - Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
+
+## Exam Markdown table integrity (`GVR-016`)
+
+`GVR-016` protects the shared learner-facing exam content consumed by cockpit
+and coaching providers. Two or more consecutive lines that begin and end with
+pipe characters are treated as an intended GFM table. The second row must be a
+valid delimiter row, and every row must have the same number of columns.
+
+The rule deliberately scans only `taskContent`, `taskContentEn`,
+`solutionContent`, and `solutionContentEn` inside `examData`. A single pipe row
+and ordinary inline notation such as `|x|` are not classified as tables. This
+keeps archived extraction prose and non-runtime Markdown out of the gate while
+ensuring that released exam data render identically in every GFM-capable host.
 
 ## Filter-projection validator (`validate:view-filters`)
 
