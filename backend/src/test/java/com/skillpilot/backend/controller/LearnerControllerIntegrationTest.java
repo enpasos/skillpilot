@@ -5691,22 +5691,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "213", "213" },
-                { "DE-BE", "213", "213" },
+                { "DE-BB", "215", "215" },
+                { "DE-BE", "215", "215" },
                 { "DE-BW", "229", "229" },
-                { "DE-BY", "213", "213" },
-                { "DE-HB", "181", "181" },
+                { "DE-BY", "215", "215" },
+                { "DE-HB", "183", "183" },
                 { "DE-HE", "293", "349" },
-                { "DE-HH", "213", "213" },
-                { "DE-MV", "213", "213" },
-                { "DE-NI", "213", "213" },
-                { "DE-NW", "213", "213" },
+                { "DE-HH", "215", "215" },
+                { "DE-MV", "215", "215" },
+                { "DE-NI", "215", "215" },
+                { "DE-NW", "215", "215" },
                 { "DE-RP", "146", "152" },
                 { "DE-SH", "193", "199" },
-                { "DE-SL", "213", "213" },
-                { "DE-SN", "213", "213" },
-                { "DE-ST", "213", "213" },
-                { "DE-TH", "213", "213" }
+                { "DE-SL", "215", "215" },
+                { "DE-SN", "215", "215" },
+                { "DE-ST", "215", "215" },
+                { "DE-TH", "215", "215" }
         };
 
         for (String[] scope : scopes) {
