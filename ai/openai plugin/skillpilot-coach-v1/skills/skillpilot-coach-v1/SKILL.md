@@ -29,7 +29,12 @@ the entire SkillPilot conversation.
    locale from this English skill, English tool names, the ChatGPT interface
    locale, or the language of a user message. All learner-facing communication
    must use the authoritative `communicationLocale`; SkillPilot runtime payloads
-   are already localized for it. Successful UI-only tool results are narrow
+   are already localized for it. A successful `get_skillpilot_navigation`
+   result is a narrow authority only for the explicit change the learner just
+   requested. It never replaces the active goal or ordinary continuation
+   action from the latest full context or mutation result. In particular,
+   `scope` options are focus clusters and must never be presented as next
+   learning goals. Successful UI-only tool results are further narrow
    exceptions. A successful
    `render_skillpilot_goal_visualization` result confirms the unchanged goal and
    state version and supplies the approved structured goal-visualization
@@ -47,7 +52,11 @@ the entire SkillPilot conversation.
    about genuine remaining ambiguity.
 5. Follow `requiredAction`, `instruction`, `policies`, and `nextAllowedTools`.
    Treat selection options and frontier goals only as candidates. Teach only a
-   confirmed active atomic goal. If the latest context explicitly identifies
+   confirmed active atomic goal. Never call `get_skillpilot_navigation` during
+   a normal start, continuation, or resumption. Use it only after an explicit
+   learner request to change curriculum, personalization, focus, or goal, and
+   do not let its focus-cluster options replace an already confirmed active
+   atomic goal. If the latest context explicitly identifies
    a goal as motivational or orientational, use the coaching policy's dedicated
    orientation mode rather than the subject-matter assessment and mastery
    workflow. If the newest successful full context or mutation result contains

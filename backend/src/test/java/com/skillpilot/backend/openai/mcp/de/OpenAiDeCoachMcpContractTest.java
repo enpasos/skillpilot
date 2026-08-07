@@ -1627,6 +1627,46 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void scopeNavigationIsExplicitlyFocusOnlyAndNeverPublishesClustersAsNextLearningGoals() {
+        FrontierGoal yearSeven = clusterGoal("year-7", "Jahrgangsstufe 7");
+        FrontierGoal yearSevenExams = clusterGoal("year-7-exams", "Prüfungen Jahrgangsstufe 7");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+        when(coachTools.getScopeOptions(LEARNER_ID)).thenReturn(List.of(yearSeven, yearSevenExams));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "scope"));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
+
+        assertThat(navigation.requiredAction()).isEqualTo("setScope");
+        assertThat(navigation.options())
+                .extracting(OpenAiDeCoachContext.Option::kind, OpenAiDeCoachContext.Option::label)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple("scope", "Jahrgangsstufe 7"),
+                        org.assertj.core.groups.Tuple.tuple("scope", "Prüfungen Jahrgangsstufe 7"));
+        assertThat(navigation.instruction())
+                .contains(
+                        "ausschließlich den Lernfokus",
+                        "keine nächsten Lernziele",
+                        "ausdrücklichen Wunsch zum Fokuswechsel",
+                        "Bei Start, Fortsetzen oder Wiederaufnehmen darfst du sie nicht präsentieren")
+                .doesNotContain("Womit möchtest du weitermachen");
+
+        McpSchema.Tool navigationTool = contract.toolSpecifications().stream()
+                .map(McpStatelessServerFeatures.SyncToolSpecification::tool)
+                .filter(tool -> OpenAiDeV1McpContractAdapter.GET_NAVIGATION.equals(tool.name()))
+                .findFirst()
+                .orElseThrow();
+        assertThat(navigationTool.description())
+                .contains(
+                        "only after the learner explicitly requests a change",
+                        "Never call it for a normal start, continuation, or resumption",
+                        "focus clusters, never next learning goals");
+    }
+
+    @Test
     void curriculumMutationForwardsExactIdToTheSharedPublicCatalogGuard() {
         UnifiedLearnerStateResponse state = normalState("setPersonalization");
         when(coachTools.setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class)))
@@ -2173,6 +2213,23 @@ class OpenAiDeCoachMcpContractTest {
                 "atomic",
                 "tutor",
                 "frontier",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+    }
+
+    private FrontierGoal clusterGoal(String goalId, String title) {
+        return new FrontierGoal(
+                goalId,
+                title,
+                "Navigation und Fortschrittsübersicht.",
+                "cluster",
+                null,
+                null,
+                "available",
                 List.of(),
                 List.of(),
                 null,

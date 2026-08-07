@@ -15,6 +15,7 @@ import {
   collectDuplicateDirectPhaseStructureFindings,
   collectLearnerFacingCompositionLabelFindings,
 } from './lib/learnerFacingCompositionLabels'
+import { collectCanonicalMathSek1ReviewedExamRouteFindings } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -906,6 +907,14 @@ if (canonicalMathMatch) {
     findings.push({
       ...finding,
       viewId: '(canonical-math-sek1-exam-structure)',
+      viewPath: canonicalMathMatch.path,
+      landscapeId: CANONICAL_DE_MATH_ID,
+    })
+  })
+  collectCanonicalMathSek1ReviewedExamRouteFindings(canonicalMathMatch.landscape).forEach((finding) => {
+    findings.push({
+      ...finding,
+      viewId: '(canonical-math-sek1-reviewed-exam-routes)',
       viewPath: canonicalMathMatch.path,
       landscapeId: CANONICAL_DE_MATH_ID,
     })

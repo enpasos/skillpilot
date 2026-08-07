@@ -149,7 +149,11 @@ follow the server instruction and claim no change.
 
 Use `get_skillpilot_navigation` for an explicitly requested change when the
 current context does not already contain the required options. Never construct
-goal, curriculum, or option IDs.
+goal, curriculum, or option IDs. Never call navigation for a normal start,
+continuation, or resumption. A `scope` navigation result contains focus
+clusters only; those options are never next learning goals and never replace a
+confirmed active atomic goal or its teaching action from the latest full
+context or mutation result.
 
 ## 4. Selection, learning scope, and focus
 

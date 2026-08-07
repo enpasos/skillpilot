@@ -440,8 +440,10 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         GET_NAVIGATION,
                         "Load navigation options",
-                        "Loads the options currently allowed for an explicit change. target is exactly one of "
-                                + "curriculum, personalization, scope, or goal. It does not change state.",
+                        "Loads options only after the learner explicitly requests a change. Never call it for a "
+                                + "normal start, continuation, or resumption. target is exactly one of curriculum, "
+                                + "personalization, scope, or goal. scope returns focus clusters, never next "
+                                + "learning goals. It does not change state.",
                         objectSchema(
                                 Map.of("target", enumStringSchema(
                                         "curriculum", "personalization", "scope", "goal")),
@@ -1343,26 +1345,43 @@ public final class OpenAiDeV1McpContractAdapter {
             default -> throw new IllegalArgumentException(
                     "target must be curriculum, personalization, scope, or goal.");
         }
+        String instruction;
+        if ("personalization".equals(target)) {
+            instruction = contextProjector.personalizationInstruction(
+                    decision,
+                    options,
+                    null,
+                    communicationLocale(metadata));
+        } else if (options.isEmpty()) {
+            instruction = localized(metadata,
+                    "Aktuell sind keine sicheren Optionen verfügbar. Lade den Kontext erneut.",
+                    "No safe options are currently available. Reload the context.");
+        } else if ("scope".equals(target)) {
+            instruction = localized(metadata,
+                    "Diese Optionen ändern ausschließlich den Lernfokus; sie sind keine nächsten Lernziele. "
+                            + "Verwende sie nur nach einem ausdrücklichen Wunsch zum Fokuswechsel. Bei Start, "
+                            + "Fortsetzen oder Wiederaufnehmen darfst du sie nicht präsentieren; lade stattdessen "
+                            + "den vollständigen Kontext und folge dessen aktivem Lernziel und requiredAction. "
+                            + "Übernimm beim Fokuswechsel ausschließlich eine veröffentlichte Options-ID "
+                            + "unverändert.",
+                    "These options change only the learning focus; they are not next learning goals. Use them "
+                            + "only after an explicit request to change focus. Never present them during a normal "
+                            + "start, continuation, or resumption; load the full context instead and follow its "
+                            + "active goal and requiredAction. For a focus change, copy exactly one published "
+                            + "option ID unchanged.");
+        } else {
+            instruction = localized(metadata,
+                    "Übernimm ausschließlich die veröffentlichten Options-IDs unverändert. "
+                            + "Frage nur nach, wenn der Wunsch inhaltlich nicht eindeutig ist.",
+                    "Use only the published option IDs unchanged. Ask only when the request is not "
+                            + "semantically unambiguous.");
+        }
         NavigationResult result = new NavigationResult(
                 target,
                 requiredAction,
                 decision,
                 List.copyOf(options),
-                "personalization".equals(target)
-                        ? contextProjector.personalizationInstruction(
-                                decision,
-                                options,
-                                null,
-                                communicationLocale(metadata))
-                        : options.isEmpty()
-                        ? localized(metadata,
-                                "Aktuell sind keine sicheren Optionen verfügbar. Lade den Kontext erneut.",
-                                "No safe options are currently available. Reload the context.")
-                        : localized(metadata,
-                                "Übernimm ausschließlich die veröffentlichten Options-IDs unverändert. "
-                                        + "Frage nur nach, wenn der Wunsch inhaltlich nicht eindeutig ist.",
-                                "Use only the published option IDs unchanged. Ask only when the request is not "
-                                        + "semantically unambiguous."));
+                instruction);
         return successResult(
                 localized(metadata,
                         "Navigationsoptionen für " + target + " geladen.",
