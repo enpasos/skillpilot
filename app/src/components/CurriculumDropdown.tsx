@@ -39,9 +39,12 @@ export interface LandscapeSummary {
 interface CurriculumDropdownProps {
     currentLandscapeId?: string
     onSelect: (landscapeId: string) => void
+    onSelectedTitleChange?: (title: string) => void
     qualityFilter?: CurriculumQualityFilter
     onQualityFilterChange?: (filter: CurriculumQualityFilter) => void
     disabled?: boolean
+    selectId?: string
+    selectRef?: React.Ref<HTMLSelectElement>
     className?: string
     filterOptions?: (options: LandscapeSummary[]) => LandscapeSummary[]
     landscapes?: LandscapeSummary[]
@@ -65,9 +68,12 @@ const qualityFilterActiveClass: Record<CurriculumQualityFilter, string> = {
 export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
     currentLandscapeId,
     onSelect,
+    onSelectedTitleChange,
     qualityFilter: controlledQualityFilter,
     onQualityFilterChange,
     disabled = false,
+    selectId,
+    selectRef,
     className = '',
     filterOptions,
     landscapes: providedLandscapes,
@@ -93,6 +99,8 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
             return
         }
 
+        const controller = new AbortController()
+        let active = true
         const fetchLandscapes = async () => {
             setLoading(true)
             try {
@@ -104,8 +112,9 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
                 // Pass current language to backend
                 const query = `?lang=${language}&includeCompatibility=${includeCompatibility ? 'true' : 'false'}`
-                const res = await fetch(url + query)
+                const res = await fetch(url + query, { signal: controller.signal })
                 const data = await res.json()
+                if (!active) return
                 const summaries = (data.summaries || []) as LandscapeSummary[]
 
                 // Deduplicate by curriculumId
@@ -115,12 +124,17 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
                 setLandscapes(uniqueSummaries)
             } catch (err) {
+                if (!active || controller.signal.aborted) return
                 console.error('Failed to load landscapes', err)
             } finally {
-                setLoading(false)
+                if (active) setLoading(false)
             }
         }
-        fetchLandscapes()
+        void fetchLandscapes()
+        return () => {
+            active = false
+            controller.abort()
+        }
     }, [providedLandscapes, language, showCompatibilityViews, currentLandscapeId]) // Re-fetch when language changes
 
     const getCategory = (l: LandscapeSummary): Category => {
@@ -153,6 +167,16 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
         compatibilityOnly: l.compatibilityOnly,
         legacyHiddenByDefault: l.legacyHiddenByDefault,
     })
+    const selectedLandscape = landscapes.find(
+        (landscape) => landscape.curriculumId === currentLandscapeId,
+    )
+    const selectedDisplayTitle = selectedLandscape
+        ? getDisplayTitle(selectedLandscape)
+        : ''
+
+    useEffect(() => {
+        onSelectedTitleChange?.(selectedDisplayTitle)
+    }, [onSelectedTitleChange, selectedDisplayTitle])
 
     const getSortPriority = (l: LandscapeSummary) => {
         if (l.curriculumId === CANONICAL_GYMNASIUM_ROOT_ID) return 0
@@ -295,6 +319,8 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
             )}
 
             <select
+                ref={selectRef}
+                id={selectId}
                 value={currentLandscapeId || ''}
                 disabled={disabled}
                 onChange={(e) => onSelect(e.target.value)}
