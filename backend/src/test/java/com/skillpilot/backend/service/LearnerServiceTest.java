@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
@@ -27,6 +28,7 @@ import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
+import com.skillpilot.backend.service.CompositionViewService.CompositionStructureResolution;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +58,7 @@ import org.springframework.test.context.ActiveProfiles;
 public class LearnerServiceTest {
 
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String CANONICAL_MATH_LANDSCAPE_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_SCOPE_ID =
             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     private static final String CANONICAL_PHYSICS_ROOT_SCOPE_ID =
@@ -72,6 +75,10 @@ public class LearnerServiceTest {
             "composition:de-he-gym-math-gk-g9:structure:j9-g9";
     private static final String COMPOSITION_J10_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j10-g9";
+    private static final String COMPOSITION_MERGED_DE_J8_SCOPE_ID =
+            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+    private static final String COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID =
+            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8-additional-competencies";
     private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
             "composition:de-de-gym-math-lk:structure:math-root";
     private static final String COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID =
@@ -91,6 +98,12 @@ public class LearnerServiceTest {
     private static final String LEGACY_HIDDEN_CURRICULUM_ID = "f050ee48-6891-4f83-995f-0f8be5e31b7f";
     private static final String COMPATIBILITY_CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
     private static final String J8_EXAM_TASK_3_ID = "9accf4e2-f92d-5ff1-8d47-dfec33a8a707";
+    private static final String J8_EXAM_TASK_1_ID = "4553367f-6265-511b-8632-46d99109e69b";
+    private static final String J8_EXAM_TASK_2_ID = "df9ecf0f-f4c9-5859-b99e-11cb62f6bb35";
+    private static final String J8_EXAM_TASK_4_ID = "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5";
+    private static final String J8_EXAM_TASK_5_ID = "3045f00d-a5b9-547c-b568-593aeac9ffa3";
+    private static final String J8_EXAM_TASK_6_ID = "fbf10244-9e55-597a-98d4-006d972a5c41";
+    private static final String J8_EXAM_TASK_7_ID = "10a77422-6ceb-57ce-a90f-0ebc1179aaae";
 
     @Autowired
     private LearnerService learnerService;
@@ -112,6 +125,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private LandscapeService landscapeService;
+
+    @Autowired
+    private CompositionViewService compositionViewService;
 
     private String learnerId;
 
@@ -349,6 +365,7 @@ public class LearnerServiceTest {
     void getLearnerState_returnsStandardActions_whenCurriculumSelected() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setStrictMode(true);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
@@ -557,6 +574,106 @@ public class LearnerServiceTest {
                 .extracting(goal -> goal.title())
                 .doesNotContain("Mathematik", "Physik");
         assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+    }
+
+    @Test
+    @Transactional
+    void coachStateKeepsFiveRemainingReleasedJ8ExamTasksSelectable() {
+        selectCompletedCanonicalMathCrossStageCurriculum();
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID));
+        Set<String> remainingExamTaskIds = Set.of(
+                J8_EXAM_TASK_1_ID,
+                J8_EXAM_TASK_2_ID,
+                J8_EXAM_TASK_4_ID,
+                J8_EXAM_TASK_5_ID,
+                J8_EXAM_TASK_6_ID);
+        Set<String> completedExamTaskIds = Set.of(J8_EXAM_TASK_3_ID, J8_EXAM_TASK_7_ID);
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream()
+                .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> directExamRequirementIds = new LinkedHashSet<>();
+        java.util.stream.Stream.concat(remainingExamTaskIds.stream(), completedExamTaskIds.stream())
+                .map(canonicalGoals::get)
+                .flatMap(goal -> goal.getRequires().stream())
+                .forEach(directExamRequirementIds::add);
+        for (String viewId : List.of(
+                "de-de-gym-math-gk",
+                "de-de-gym-math-lk",
+                "de-he-gym-math-gk",
+                "de-he-gym-math-lk")) {
+            CompositionStructureResolution sourceJ8Scope = compositionViewService
+                    .resolveStructureReference("composition:" + viewId + ":structure:j8");
+            Set<String> sourceJ8AtomicGoalIds = new LinkedHashSet<>();
+            sourceJ8Scope.referencedGoalIds()
+                    .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
+            assertThat(sourceJ8AtomicGoalIds)
+                    .as(viewId)
+                    .hasSize(49)
+                    .containsAll(directExamRequirementIds);
+        }
+        CompositionStructureResolution j8Scope = compositionViewService
+                .resolveStructureReference(COMPOSITION_MERGED_DE_J8_SCOPE_ID);
+        CompositionStructureResolution additionalCompetencies = compositionViewService
+                .resolveStructureReference(COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID);
+        Set<String> j8AtomicGoalIds = new LinkedHashSet<>();
+        j8Scope.referencedGoalIds()
+                .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, j8AtomicGoalIds));
+        assertThat(j8AtomicGoalIds).hasSize(49);
+        assertThat(additionalCompetencies.referencedGoalIds()).hasSize(25);
+        assertThat(j8AtomicGoalIds)
+                .containsAll(remainingExamTaskIds)
+                .containsAll(completedExamTaskIds)
+                .containsAll(additionalCompetencies.referencedGoalIds());
+
+        // This mirrors the former compact J8 tree: all 19 non-exam targets and
+        // the orientation were complete while five exam targets remained.
+        Set<String> formerlyVisibleGoalIds = new LinkedHashSet<>(j8AtomicGoalIds);
+        formerlyVisibleGoalIds.removeAll(additionalCompetencies.referencedGoalIds());
+        assertThat(formerlyVisibleGoalIds).hasSize(24);
+        Set<String> formerlyCompletedGoalIds = new LinkedHashSet<>(formerlyVisibleGoalIds);
+        formerlyCompletedGoalIds.removeAll(remainingExamTaskIds);
+        formerlyCompletedGoalIds.add(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(formerlyCompletedGoalIds.stream()
+                .map(goalId -> new Mastery(learner, goalId, 1.0))
+                .toList());
+
+        var resumedCoachState = learnerService.getCoachLearnerState(learnerId);
+
+        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(49);
+        assertThat(resumedCoachState.goals().scope().mastered_atomic()).isEqualTo(19);
+        assertThat(resumedCoachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(resumedCoachState.stateMachine().goalOptions()).isNotEmpty();
+        assertThat(resumedCoachState.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .allMatch(additionalCompetencies.referencedGoalIds()::contains);
+
+        masteryRepository.saveAllAndFlush(additionalCompetencies.referencedGoalIds().stream()
+                .map(goalId -> new Mastery(learner, goalId, 1.0))
+                .toList());
+
+        var coachState = learnerService.getCoachLearnerState(learnerId);
+
+        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(49);
+        assertThat(coachState.goals().scope().mastered_atomic()).isEqualTo(44);
+        assertThat(coachState.goals().scope().total_atomic()
+                        - coachState.goals().scope().mastered_atomic())
+                .isEqualTo(5);
+        assertThat(coachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(coachState.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrderElementsOf(remainingExamTaskIds);
+        assertThat(coachState.stateMachine().goalOptions())
+                .allSatisfy(goal -> {
+                    assertThat(goal.nodeKind()).isEqualTo("exam");
+                    assertThat(goal.examData()).isNull();
+                    assertThat(goal.examReadyForSelection()).isTrue();
+                });
+
+        var projected = new CoachStateProjection("https://skillpilot.test").project(coachState);
+        assertThat(projected.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrderElementsOf(remainingExamTaskIds);
     }
 
     @Test
@@ -1751,6 +1868,41 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+    }
+
+    private void selectCompletedCanonicalMathCrossStageCurriculum() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "ALL",
+                    "stage": "CrossStage",
+                    "durationModel": "G9"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "ALL"
+                  }
+                }
+                """));
+        learnerRepository.save(learner);
+    }
+
+    private void collectAtomicGoalIds(
+            String goalId,
+            Map<String, LearningGoal> canonicalGoals,
+            Set<String> atomicGoalIds) {
+        LearningGoal goal = canonicalGoals.get(goalId);
+        if (goal == null) {
+            return;
+        }
+        if (goal.getContains() == null || goal.getContains().isEmpty()) {
+            atomicGoalIds.add(goalId);
+            return;
+        }
+        goal.getContains().forEach(childId -> collectAtomicGoalIds(childId, canonicalGoals, atomicGoalIds));
     }
 
     @SuppressWarnings("unchecked")
