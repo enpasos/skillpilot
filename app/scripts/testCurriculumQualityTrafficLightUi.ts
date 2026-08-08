@@ -1,10 +1,10 @@
 import { fileURLToPath } from 'node:url'
-import { chromium } from 'playwright'
-import { createServer } from 'vite'
+import { chromium, type Browser } from 'playwright'
 import {
   CANONICAL_GYMNASIUM_MATH_ID,
   CANONICAL_GYMNASIUM_PHYSICS_ID,
 } from '../src/utils/curriculumQualityTrafficLight'
+import { startViteTestServer } from './viteTestServer'
 
 const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 const experimentalCurriculumId = 'experimental-school-curriculum'
@@ -14,34 +14,24 @@ function assert(condition: unknown, message: string): asserts condition {
 }
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
-const server = await createServer({
-  root: appRoot,
-  configFile: false,
-  logLevel: 'error',
-  server: {
-    host: '127.0.0.1',
-    port: 0,
-    strictPort: false,
-  },
-})
+const server = await startViteTestServer(
+  appRoot,
+  'scripts/fixtures/curriculumQualityTrafficLightUi.html',
+)
 
-await server.listen()
-
-const address = server.httpServer?.address()
-assert(address && typeof address !== 'string', 'Vite test server did not expose a TCP port')
-
-const browser = await chromium.launch({
-  headless: true,
-  args: [
-    '--disable-background-networking',
-    '--disable-dev-shm-usage',
-    '--disable-gpu',
-    '--no-first-run',
-    '--no-sandbox',
-  ],
-})
+let browser: Browser | null = null
 
 try {
+  browser = await chromium.launch({
+    headless: true,
+    args: [
+      '--disable-background-networking',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--no-first-run',
+      '--no-sandbox',
+    ],
+  })
   const page = await browser.newPage({ locale: 'de-DE' })
   const browserErrors: string[] = []
   page.on('pageerror', (error) => {
@@ -56,7 +46,7 @@ try {
     localStorage.setItem('skillpilot_lang', 'de')
   })
   await page.goto(
-    `http://127.0.0.1:${address.port}/scripts/fixtures/curriculumQualityTrafficLightUi.html`,
+    `${server.baseUrl}/scripts/fixtures/curriculumQualityTrafficLightUi.html`,
   )
 
   const qualityFixture = page.getByTestId('quality-filter-fixture')
@@ -121,6 +111,11 @@ try {
     defaultIds.includes(experimentalCurriculumId)
       && await select.inputValue() === experimentalCurriculumId,
     'the currently selected experimental curriculum remains visible under the green filter',
+  )
+  assert(
+    await qualityFixture.getByTestId('quality-filter-selection-title').textContent()
+      === 'Experimentelles Fach',
+    'the dropdown publishes the localized selected title for compact setup summaries',
   )
 
   await qualityButtons.orange.click()
@@ -208,8 +203,11 @@ try {
     'the only available curriculum is selected automatically',
   )
 } finally {
-  await browser.close()
-  await server.close()
+  try {
+    await browser?.close()
+  } finally {
+    await server.close()
+  }
 }
 
 console.log('curriculum quality traffic light UI tests passed')

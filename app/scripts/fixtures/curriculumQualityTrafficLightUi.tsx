@@ -72,6 +72,7 @@ const Fixture = () => {
   )
   const [qualityFilter, setQualityFilter] =
     useState<CurriculumQualityFilter>('green')
+  const [currentCurriculumTitle, setCurrentCurriculumTitle] = useState('')
   const [singleCurriculumId, setSingleCurriculumId] = useState('')
 
   return (
@@ -81,6 +82,7 @@ const Fixture = () => {
           currentLandscapeId={currentCurriculumId}
           landscapes={landscapes}
           onSelect={setCurrentCurriculumId}
+          onSelectedTitleChange={setCurrentCurriculumTitle}
           qualityFilter={qualityFilter}
           onQualityFilterChange={setQualityFilter}
           showCompatibilityViews={false}
@@ -88,6 +90,9 @@ const Fixture = () => {
         />
         <output data-testid="quality-filter-selection">
           {currentCurriculumId}
+        </output>
+        <output data-testid="quality-filter-selection-title">
+          {currentCurriculumTitle}
         </output>
       </div>
       <div data-testid="single-curriculum-fixture">

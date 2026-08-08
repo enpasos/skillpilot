@@ -166,6 +166,8 @@ jobs:
         run: npm run test:faq
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+      - name: Test compact completed session setup
+        run: npm run test:session-setup-ui
       - name: Test curriculum quality traffic-light interactions
         run: npm run test:curriculum-quality-ui
       - name: Test personal curriculum editor

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
+import { LearnerSetupStepCard } from './LearnerSetupStepCard'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { ThemeToggle } from './ThemeToggle'
@@ -12,7 +13,6 @@ import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Com
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
-type SkillpilotIdSource = 'existing' | 'generated' | 'file' | null
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
 interface ClaudeLaunchFallback {
@@ -73,6 +73,12 @@ import {
   normalizeLearnerLandscapeId,
 } from '../utils/learnerProfile'
 import { getLearnerSetupStepVisibility } from '../utils/sessionSetupStepVisibility'
+import {
+  formatPersonalCurriculumSummary,
+  getPersonalCurriculumSummaryItems,
+  shouldCompactLoadedLearnerSetup,
+  type SkillpilotIdSource,
+} from '../utils/sessionSetupCompletionPresentation'
 import type { CurriculumQualityFilter } from '../utils/curriculumQualityTrafficLight'
 
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
@@ -95,8 +101,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const idAcquisitionRequestRef = React.useRef(0)
   const idAcquisitionInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const skillpilotIdFileInputRef = React.useRef<HTMLInputElement>(null)
-  const curriculumStepRef = React.useRef<HTMLDivElement>(null)
+  const curriculumStepRef = React.useRef<HTMLElement>(null)
+  const curriculumSelectRef = React.useRef<HTMLSelectElement>(null)
+  const restoreCurriculumSelectFocusRef = React.useRef(false)
   const advanceToCurriculumRef = React.useRef(false)
+  const evaluatedCompletedSetupScopeRef = React.useRef('')
   // Use location (ensure import is added)
   const location = useLocation()
 
@@ -122,6 +131,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [hasCheckedId, setHasCheckedId] = useState(false)
   const [idStepComplete, setIdStepComplete] = useState(false)
   const [availableCurricula, setAvailableCurricula] = useState<LandscapeSummary[]>([])
+  const [selectedCurriculumTitle, setSelectedCurriculumTitle] = useState('')
+  const [setupChangedInVisit, setSetupChangedInVisit] = useState(false)
+  const [compactCompletedSetupScope, setCompactCompletedSetupScope] = useState('')
 
   // Collapsible logic for Login form
   const [showLogin, setShowLogin] = useState(false);
@@ -170,6 +182,26 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     && !personalCurriculumEditor.error
     && !personalCurriculumEditor.loading
     && !personalCurriculumEditor.busy
+  const completedSetupScope = `${sanitizedLearnerId}\u0000${persistedLearnerLandscapeId}`
+  const personalCurriculumSummaryItems = React.useMemo(
+    () => getPersonalCurriculumSummaryItems(
+      personalCurriculumEditor.plan,
+      language === 'en' ? 'en' : 'de',
+    ),
+    [language, personalCurriculumEditor.plan],
+  )
+  const personalCurriculumSummary = personalCurriculumSummaryItems.length > 0
+    ? formatPersonalCurriculumSummary(
+        personalCurriculumSummaryItems,
+        (remaining) => remaining === 1
+          ? t.startPage.login.completedSetup.moreOne
+          : t.startPage.login.completedSetup.moreMany,
+      )
+    : t.startPage.login.completedSetup.noAdditionalChoices
+  const compactCompletedSetup =
+    personalCurriculumReady
+    && compactCompletedSetupScope === completedSetupScope
+    && !!selectedCurriculumTitle
   const learnerCockpitHref = React.useMemo(() => {
     const params = new URLSearchParams(location.search)
     const pathToken = getLearnerPathToken(location.pathname)
@@ -205,6 +237,48 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         ? t.startPage.login.idSourceFile
         : t.startPage.login.idSourceExisting
     : ''
+
+  React.useEffect(() => {
+    if (
+      !personalCurriculumEditorEnabled
+      || personalCurriculumEditor.loading
+      || personalCurriculumEditor.busy
+      || !!personalCurriculumEditor.error
+      || !personalCurriculumEditor.plan
+      || evaluatedCompletedSetupScopeRef.current === completedSetupScope
+    ) {
+      return
+    }
+    evaluatedCompletedSetupScopeRef.current = completedSetupScope
+    setCompactCompletedSetupScope(
+      shouldCompactLoadedLearnerSetup({
+        idSource: skillpilotIdSource,
+        setupChangedInVisit,
+        curriculumConfirmed: personalCurriculumEditorEnabled,
+        plan: personalCurriculumEditor.plan,
+        loading: personalCurriculumEditor.loading,
+        busy: personalCurriculumEditor.busy,
+        hasError: !!personalCurriculumEditor.error,
+      })
+        ? completedSetupScope
+        : '',
+    )
+  }, [
+    completedSetupScope,
+    personalCurriculumEditor.busy,
+    personalCurriculumEditor.error,
+    personalCurriculumEditor.loading,
+    personalCurriculumEditor.plan,
+    personalCurriculumEditorEnabled,
+    setupChangedInVisit,
+    skillpilotIdSource,
+  ])
+
+  React.useEffect(() => {
+    if (curriculumSaving || !restoreCurriculumSelectFocusRef.current) return
+    restoreCurriculumSelectFocusRef.current = false
+    curriculumSelectRef.current?.focus({ preventScroll: true })
+  }, [curriculumSaving])
 
   const curriculumPanelCopy = React.useMemo(() => {
     if (role === 'trainer') {
@@ -242,6 +316,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setPersistedLearnerLandscapeId('')
     setCurriculumSaving(false)
     setAvailableCurricula([])
+    setSelectedCurriculumTitle('')
+    setSetupChangedInVisit(false)
+    setCompactCompletedSetupScope('')
+    evaluatedCompletedSetupScopeRef.current = ''
     setHasCheckedId(false)
     setIdStepComplete(false)
     setChatLaunchIssue('none')
@@ -494,6 +572,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setError(null)
     if (normalizedLandscapeId === persistedLearnerLandscapeId) return
 
+    setSetupChangedInVisit(true)
+    setCompactCompletedSetupScope('')
+    restoreCurriculumSelectFocusRef.current =
+      document.activeElement === curriculumSelectRef.current
+
     const requestId = curriculumSelectionRequestRef.current + 1
     curriculumSelectionRequestRef.current = requestId
     setCurriculumSaving(true)
@@ -528,6 +611,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const handleAcceptLegalWaiver = () => {
     localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
     setLegalAccepted(true)
+  }
+
+  const handlePersonalCurriculumPlanChanged = () => {
+    setSetupChangedInVisit(true)
+    setCompactCompletedSetupScope('')
   }
 
   const moveToCurriculumStep = React.useCallback(() => {
@@ -1214,28 +1302,30 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 )}
 
                 {role && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
-                  <div
+                  <LearnerSetupStepCard
                     ref={curriculumStepRef}
-                    tabIndex={-1}
-                    className="scroll-mt-4 rounded-xl border border-border-color bg-white/70 p-4 shadow-sm outline-none animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50"
+                    stepNumber={curriculumPanelCopy.showStepNumber ? 2 : undefined}
+                    stepLabel={t.startPage.login.completedSetup.step}
+                    title={curriculumPanelCopy.title}
+                    description={curriculumPanelCopy.text}
+                    compact={role === 'learner' && compactCompletedSetup}
+                    summaryLabel={t.startPage.login.completedSetup.selected}
+                    summary={selectedCurriculumTitle}
+                    changeLabel={t.startPage.login.completedSetup.change}
+                    closeLabel={t.startPage.login.completedSetup.close}
                   >
-                    <div className="mb-4 flex items-start gap-3">
-                      {curriculumPanelCopy.showStepNumber && (
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
-                          2
-                        </div>
-                      )}
-                      <div>
-                        <h2 className="text-base font-bold text-text-primary">{curriculumPanelCopy.title}</h2>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">{curriculumPanelCopy.text}</p>
-                      </div>
-                    </div>
-                    <label className="text-[11px] text-text-secondary block mb-1">
+                    <label
+                      htmlFor="sessionCurriculumSelect"
+                      className="text-[11px] text-text-secondary block mb-1"
+                    >
                       {role === 'learner' && selectedLandscapeId ? t.startPage.login.curriculumLabel.yours : t.startPage.login.curriculumLabel.select}
                     </label>
                     <CurriculumDropdown
+                      selectId="sessionCurriculumSelect"
+                      selectRef={curriculumSelectRef}
                       currentLandscapeId={selectedLandscapeId}
                       onSelect={role === 'learner' ? handleLearnerCurriculumSelect : setSelectedLandscapeId}
+                      onSelectedTitleChange={setSelectedCurriculumTitle}
                       qualityFilter={curriculumQualityFilter}
                       onQualityFilterChange={setCurriculumQualityFilter}
                       disabled={role === 'learner' && curriculumSaving}
@@ -1260,30 +1350,27 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         </button>
                       </div>
                     )}
-                  </div>
+                  </LearnerSetupStepCard>
                 )}
 
                 {role === 'learner' && learnerSetupStepVisibility.personalCurriculum && (
-                  <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
-                    <div className="mb-4 flex items-start gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
-                        3
-                      </div>
-                      <div>
-                        <h2 className="text-base font-bold text-text-primary">
-                          {t.startPage.login.personalCurriculumStepTitle}
-                        </h2>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-                          {t.startPage.login.personalCurriculumStepText}
-                        </p>
-                      </div>
-                    </div>
-
+                  <LearnerSetupStepCard
+                    stepNumber={3}
+                    stepLabel={t.startPage.login.completedSetup.step}
+                    title={t.startPage.login.personalCurriculumStepTitle}
+                    description={t.startPage.login.personalCurriculumStepText}
+                    compact={compactCompletedSetup}
+                    summaryLabel={t.startPage.login.completedSetup.configured}
+                    summary={personalCurriculumSummary}
+                    changeLabel={t.startPage.login.completedSetup.change}
+                    closeLabel={t.startPage.login.completedSetup.close}
+                  >
                     <PersonalCurriculumEditor
                       {...personalCurriculumEditor}
                       qualityFilter={curriculumQualityFilter}
+                      onPlanChanged={handlePersonalCurriculumPlanChanged}
                     />
-                  </div>
+                  </LearnerSetupStepCard>
                 )}
 
                 {role === 'learner' && learnerSetupStepVisibility.start && (
