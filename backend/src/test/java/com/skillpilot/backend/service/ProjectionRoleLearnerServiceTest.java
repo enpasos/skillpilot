@@ -10,6 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.domain.Learner;
@@ -145,7 +146,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void releasedExamWithMasteredDirectDidacticPrerequisiteCanEnterFrontier() {
+    void releasedExamWithMasteredDirectDidacticPrerequisiteCanEnterFrontier() throws Exception {
         Fixture fixture = fixture(view(
                 goalEntry(OUTSIDE_TARGET_ID),
                 goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
@@ -163,8 +164,30 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(fixture.service().getFrontier(LEARNER_ID))
                 .containsExactly(OUTSIDE_TARGET_ID);
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                .singleElement()
+                .satisfies(candidate -> {
+                    assertThat(candidate.id()).isEqualTo(OUTSIDE_TARGET_ID);
+                    assertThat(candidate.examData()).isNull();
+                    assertThat(candidate.examReadyForSelection()).isTrue();
+                });
+
+        var projected = new CoachStateProjection("https://skillpilot.test")
+                .project(fixture.service().getCoachLearnerState(LEARNER_ID));
+        assertThat(projected.frontier())
                 .extracting(FrontierGoal::id)
                 .containsExactly(OUTSIDE_TARGET_ID);
+        assertThat(projected.stateMachine().goalOptions())
+                .singleElement()
+                .satisfies(candidate -> {
+                    assertThat(candidate.id()).isEqualTo(OUTSIDE_TARGET_ID);
+                    assertThat(candidate.examData()).isNull();
+                });
+        assertThat(new ObjectMapper().writeValueAsString(projected))
+                .doesNotContain(
+                        "examReadyForSelection",
+                        "taskContent",
+                        "solutionContent",
+                        "passingPoints");
     }
 
     @Test
