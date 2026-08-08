@@ -61,6 +61,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -72,6 +73,13 @@ import org.springframework.web.server.ResponseStatusException;
 class OpenAiDeCoachMcpContractTest {
 
     private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
+
+    private static final List<String> HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S = List.of(
+            "12f95e377a40d9112068016e5b532f0bf45f43ae6deb9083f04a7e93f7cb6cdc",
+            "5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881",
+            "bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c",
+            "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
+            "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String LEARNING_SESSION_ID =
@@ -309,13 +317,20 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesActiveRetainedGoalVisualizationAndDedicatedMemoryPracticeResources() {
+    void publishesActiveAllRetainedGoalVisualizationAndDedicatedMemoryPracticeResources() {
+        assertThat(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S)
+                .containsExactlyElementsOf(HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S);
+        List<String> expectedResourceUris = Stream.concat(
+                        Stream.of(
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI),
+                        HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream()
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                .toList();
+
         assertThat(contract.resourceSpecifications())
                 .extracting(specification -> specification.resource().uri())
-                .containsExactlyInAnyOrder(
-                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
+                .containsExactlyInAnyOrderElementsOf(expectedResourceUris);
 
         for (McpStatelessServerFeatures.SyncResourceSpecification specification
                 : contract.resourceSpecifications()) {
@@ -390,16 +405,8 @@ class OpenAiDeCoachMcpContractTest {
                                         .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
                                 assertThat(contents.meta().get("openai/widgetPrefersBorder"))
                                         .isEqualTo(memoryPractice);
-                                String expectedSha256 = memoryPractice
-                                        ? OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
-                                        : resource.uri().equals(
-                                                        OpenAiDeV1ContractMetadata
-                                                                .GOAL_VISUALIZATION_RESOURCE_URI)
-                                                ? OpenAiDeV1ContractMetadata
-                                                        .GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                                : OpenAiDeV1ContractMetadata
-                                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256;
-                                assertThat(sha256(contents.text())).isEqualTo(expectedSha256);
+                                assertThat(sha256(contents.text()))
+                                        .isEqualTo(artifactSha256(resource.uri()));
                             });
         }
 
@@ -416,20 +423,20 @@ class OpenAiDeCoachMcpContractTest {
                         .timer()
                         .count())
                 .isEqualTo(1);
-        assertThat(meterRegistry
-                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tags(
-                                "artifact",
-                                OpenAiDeV1ContractMetadata
-                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        .substring(0, 12),
-                                "role",
-                                "retained",
-                                "status",
-                                "success")
-                        .timer()
-                        .count())
-                .isEqualTo(1);
+        for (String retainedSha256 : HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
+            assertThat(meterRegistry
+                            .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                            .tags(
+                                    "artifact",
+                                    retainedSha256.substring(0, 12),
+                                    "role",
+                                    "retained",
+                                    "status",
+                                    "success")
+                            .timer()
+                            .count())
+                    .isEqualTo(1);
+        }
         assertThat(meterRegistry
                         .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
                         .tags(
@@ -443,6 +450,11 @@ class OpenAiDeCoachMcpContractTest {
                         .timer()
                         .count())
                 .isEqualTo(1);
+    }
+
+    private static String artifactSha256(String resourceUri) {
+        int start = resourceUri.indexOf("/sha256-") + "/sha256-".length();
+        return resourceUri.substring(start, resourceUri.indexOf('/', start));
     }
 
     private static String sha256(String source) {

@@ -205,17 +205,20 @@ class OpenAiDeMcpTelemetryTest {
     }
 
     @Test
-    void separatesActiveFromRetainedResourceReadsWithoutLoggingResourceContent() {
+    void separatesActiveFromAllRetainedResourceReadsWithoutLoggingResourceContent() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setServerBuild("build-17");
         OpenAiDeMcpTelemetry telemetry =
                 new OpenAiDeMcpTelemetry(registry, null, properties, "unit-test-privacy-hash-key");
         String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
-        String retainedUri = OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI;
+        List<String> retainedSha256s =
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S;
+        List<String> retainedUris = retainedSha256s.stream()
+                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri)
+                .toList();
         String untrustedUri = "ui://attacker/private-session-and-token";
         McpSchema.ReadResourceResult activeResult = readResult(activeUri);
-        McpSchema.ReadResourceResult retainedResult = readResult(retainedUri);
         AtomicInteger successfulSupplierCalls = new AtomicInteger();
         IllegalStateException failure = new IllegalStateException("private exception payload");
         Logger logger = (Logger) LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
@@ -228,11 +231,14 @@ class OpenAiDeMcpTelemetryTest {
                         return activeResult;
                     }))
                     .isSameAs(activeResult);
-            assertThat(telemetry.recordResourceRead(retainedUri, () -> {
-                        successfulSupplierCalls.incrementAndGet();
-                        return retainedResult;
-                    }))
-                    .isSameAs(retainedResult);
+            for (String retainedUri : retainedUris) {
+                McpSchema.ReadResourceResult retainedResult = readResult(retainedUri);
+                assertThat(telemetry.recordResourceRead(retainedUri, () -> {
+                            successfulSupplierCalls.incrementAndGet();
+                            return retainedResult;
+                        }))
+                        .isSameAs(retainedResult);
+            }
             assertThatThrownBy(() -> telemetry.recordResourceRead(untrustedUri, () -> {
                         throw failure;
                     }))
@@ -242,17 +248,21 @@ class OpenAiDeMcpTelemetryTest {
             appender.stop();
         }
 
-        assertThat(successfulSupplierCalls).hasValue(2);
+        assertThat(successfulSupplierCalls).hasValue(1 + retainedSha256s.size());
 
         String activeArtifact =
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256.substring(0, 12);
-        String retainedArtifact = OpenAiDeV1ContractMetadata
-                .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256
-                .substring(0, 12);
         assertThat(resourceTimer(registry, activeArtifact, "active", "success").count())
                 .isEqualTo(1);
-        assertThat(resourceTimer(registry, retainedArtifact, "retained", "success").count())
-                .isEqualTo(1);
+        for (String retainedSha256 : retainedSha256s) {
+            assertThat(resourceTimer(
+                                    registry,
+                                    retainedSha256.substring(0, 12),
+                                    "retained",
+                                    "success")
+                            .count())
+                    .isEqualTo(1);
+        }
         assertThat(resourceTimer(registry, "unknown", "unknown", "exception").count())
                 .isEqualTo(1);
         assertThat(registry.getMeters()).allSatisfy(meter -> assertThat(tagKeys(meter))
@@ -261,7 +271,7 @@ class OpenAiDeMcpTelemetryTest {
         assertThat(registry.getMeters())
                 .allSatisfy(meter -> assertThat(meter.getId().getTag("server.build")).isNull());
 
-        assertThat(appender.list).hasSize(3);
+        assertThat(appender.list).hasSize(2 + retainedSha256s.size());
         assertThat(appender.list)
                 .extracting(ILoggingEvent::getFormattedMessage)
                 .allSatisfy(message -> assertThat(message)
@@ -275,10 +285,15 @@ class OpenAiDeMcpTelemetryTest {
                                 untrustedUri,
                                 "private exception payload",
                                 activeUri,
-                                retainedUri,
-                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256,
-                                OpenAiDeV1ContractMetadata
-                                        .RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256));
+        for (String retainedSha256 : retainedSha256s) {
+            String retainedUri = OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(
+                    retainedSha256);
+            assertThat(appender.list)
+                    .extracting(ILoggingEvent::getFormattedMessage)
+                    .allSatisfy(message -> assertThat(message)
+                            .doesNotContain(retainedUri, retainedSha256));
+        }
         assertThat(appender.list)
                 .extracting(ILoggingEvent::getFormattedMessage)
                 .anySatisfy(message -> assertThat(message)
@@ -288,14 +303,18 @@ class OpenAiDeMcpTelemetryTest {
                                 "status=success"))
                 .anySatisfy(message -> assertThat(message)
                         .contains(
-                                "uiArtifact=" + retainedArtifact,
-                                "artifactRole=retained",
-                                "status=success"))
-                .anySatisfy(message -> assertThat(message)
-                        .contains(
                                 "uiArtifact=unknown",
                                 "artifactRole=unknown",
                                 "status=exception"));
+        for (String retainedSha256 : retainedSha256s) {
+            assertThat(appender.list)
+                    .extracting(ILoggingEvent::getFormattedMessage)
+                    .anySatisfy(message -> assertThat(message)
+                            .contains(
+                                    "uiArtifact=" + retainedSha256.substring(0, 12),
+                                    "artifactRole=retained",
+                                    "status=success"));
+        }
     }
 
     @Test

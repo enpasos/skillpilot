@@ -120,17 +120,7 @@ public final class OpenAiDeV1McpContractAdapter {
             START_MEMORY_PRACTICE,
             OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
     private static final List<GoalVisualizationUiResource> GOAL_VISUALIZATION_UI_RESOURCES =
-            List.of(
-                    loadGoalVisualizationWidget(
-                            "skillpilot-goal-visualization-v1-current",
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
-                            OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256),
-                    loadGoalVisualizationWidget(
-                            "skillpilot-goal-visualization-v1-retained-157aab83",
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
-                            OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256));
+            loadGoalVisualizationUiResources();
     private static final MemoryPracticeUiResource MEMORY_PRACTICE_UI_RESOURCE =
             loadMemoryPracticeWidget(
                     "skillpilot-memory-card-practice-v1-current",
@@ -776,6 +766,32 @@ public final class OpenAiDeV1McpContractAdapter {
                 "openai/widgetCSP", Map.of(
                         "resource_domains", List.of(),
                         "redirect_domains", List.of("https://skillpilot.com")));
+    }
+
+    /**
+     * Loads the active widget plus every immutable predecessor. Historical
+     * resources remain passive: only the active URI is bound to the tool.
+     */
+    private static List<GoalVisualizationUiResource> loadGoalVisualizationUiResources() {
+        List<GoalVisualizationUiResource> resources = new ArrayList<>();
+        resources.add(loadGoalVisualizationWidget(
+                "skillpilot-goal-visualization-v1-current",
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256));
+        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
+            resources.add(loadGoalVisualizationWidget(
+                    "skillpilot-goal-visualization-v1-retained-" + sha256.substring(0, 8),
+                    OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(sha256),
+                    OpenAiDeV1ContractMetadata.retainedGoalVisualizationResourceClasspath(sha256),
+                    sha256));
+        }
+        long distinctUris = resources.stream().map(GoalVisualizationUiResource::uri).distinct().count();
+        if (distinctUris != resources.size()) {
+            throw new IllegalStateException(
+                    "Duplicate SkillPilot MCP UI resource URI: the active artifact must not be retained.");
+        }
+        return List.copyOf(resources);
     }
 
     private static GoalVisualizationUiResource loadGoalVisualizationWidget(
