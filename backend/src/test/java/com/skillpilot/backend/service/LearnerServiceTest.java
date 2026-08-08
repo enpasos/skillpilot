@@ -1831,6 +1831,10 @@ public class LearnerServiceTest {
                     learnerId,
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
         }
+        var finalState = learnerService.getLearnerState(learnerId);
+        if (Boolean.TRUE.equals(finalState.goals().scope_completed())) {
+            return;
+        }
         throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
     }
 
