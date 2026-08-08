@@ -1094,6 +1094,97 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(afterOrientation.getActiveGoalId()).isNull();
         assertThat(afterOrientation.getCoachStateRevision()).isEqualTo(orientationStateVersion + 1L);
 
+        // A normal mastery write with sequential autopilot must return the successor
+        // already selected by SkillPilot Core. The compact coach context must not
+        // expose the remaining frontier as a competing learner choice.
+        HttpResponse<String> autopilotPreferences = putJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/preferences",
+                "{\"learningStrategy\":\"SEQUENTIAL\",\"autoPilot\":true}");
+        assertThat(autopilotPreferences.statusCode())
+                .withFailMessage(autopilotPreferences.body())
+                .isEqualTo(200);
+
+        HttpResponse<String> refreshedSelection = callTool(
+                accessToken,
+                16,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(refreshedSelection, applicationSubject);
+        JsonNode selectionContext = result(refreshedSelection).path("structuredContent");
+        assertThat(selectionContext.path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        JsonNode ordinaryGoal = selectionContext.path("frontier").valueStream()
+                .filter(goal -> "atomic".equals(goal.path("type").asText()))
+                .filter(goal -> !"orientation".equals(goal.path("semanticKind").asText()))
+                .filter(goal -> !"memory".equals(goal.path("nodeKind").asText()))
+                .filter(goal -> !"exam".equals(goal.path("nodeKind").asText()))
+                .findFirst()
+                .orElseThrow();
+        String completedOrdinaryGoalId = ordinaryGoal.path("goalId").asText();
+        assertThat(selectionContext.path("options").valueStream()
+                        .map(option -> option.path("id").asText())
+                        .toList())
+                .contains(completedOrdinaryGoalId);
+
+        HttpResponse<String> activateOrdinaryGoal = callTool(
+                accessToken,
+                17,
+                OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", completedOrdinaryGoalId,
+                        "redirect", false)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(activateOrdinaryGoal, applicationSubject);
+        JsonNode activeOrdinaryContext = result(activateOrdinaryGoal).path("structuredContent");
+        assertThat(activeOrdinaryContext.path("requiredAction").asText()).isEqualTo("teachActiveGoal");
+        assertThat(activeOrdinaryContext.path("interactionMode").asText()).isEqualTo("chat");
+        assertThat(activeOrdinaryContext.path("activeGoal").path("goalId").asText())
+                .isEqualTo(completedOrdinaryGoalId);
+
+        HttpResponse<String> completeOrdinaryGoal = callTool(
+                accessToken,
+                18,
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.writeValueAsString(Map.of("goalId", completedOrdinaryGoalId)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completeOrdinaryGoal, applicationSubject);
+        JsonNode masteryResult = result(completeOrdinaryGoal).path("structuredContent");
+        assertThat(masteryResult.path("status").asText()).isEqualTo("updated");
+        JsonNode autopilotSuccessorContext = masteryResult.path("context");
+        String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
+        assertThat(successorGoalId).isNotBlank().isNotEqualTo(completedOrdinaryGoalId);
+        assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
+                .isEqualTo(successorGoalId);
+        assertThat(autopilotSuccessorContext.path("requiredAction").asText())
+                .isEqualTo("teachActiveGoal");
+        assertThat(autopilotSuccessorContext.path("interactionMode").asText()).isEqualTo("chat");
+        assertThat(autopilotSuccessorContext.path("options")).isEmpty();
+        assertThat(autopilotSuccessorContext.path("frontier")).isEmpty();
+        assertThat(autopilotSuccessorContext.path("nextAllowedTools").valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
+        HttpResponse<String> persistedSuccessorRead = callTool(
+                accessToken,
+                19,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(persistedSuccessorRead, applicationSubject);
+        JsonNode persistedSuccessorContext = result(persistedSuccessorRead).path("structuredContent");
+        assertThat(persistedSuccessorContext.path("activeGoal").path("goalId").asText())
+                .isEqualTo(successorGoalId);
+        assertThat(persistedSuccessorContext.path("requiredAction").asText())
+                .isEqualTo("teachActiveGoal");
+        assertThat(persistedSuccessorContext.path("interactionMode").asText()).isEqualTo("chat");
+        assertThat(persistedSuccessorContext.path("options")).isEmpty();
+        assertThat(persistedSuccessorContext.path("frontier")).isEmpty();
+        assertThat(persistedSuccessorContext.path("nextAllowedTools").valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);
 

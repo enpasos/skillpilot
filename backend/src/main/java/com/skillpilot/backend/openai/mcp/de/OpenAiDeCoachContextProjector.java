@@ -105,7 +105,7 @@ public final class OpenAiDeCoachContextProjector {
                 activeGoal(state.curriculum(), activeGoal),
                 options,
                 decision,
-                goals(state.frontier()),
+                actionableFrontier(state, requiredAction, activeGoal),
                 resources(state.curriculum(), activeGoal),
                 goalVisualization,
                 nextAllowedTools(requiredAction, activeGoal, goalVisualization != null),
@@ -126,6 +126,16 @@ public final class OpenAiDeCoachContextProjector {
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
         List<FrontierGoal> projected = stateProjection.projectNavigationGoals(goals);
         return projected == null ? List.of() : projected;
+    }
+
+    private List<OpenAiDeCoachContext.Goal> actionableFrontier(
+            UnifiedLearnerStateResponse state,
+            String requiredAction,
+            FrontierGoal activeGoal) {
+        if (activeGoal != null || !"setActiveGoal".equals(requiredAction)) {
+            return List.of();
+        }
+        return goals(state.frontier());
     }
 
     public OpenAiDeCoachContext.Option curriculumOption(LandscapeSummary curriculum) {
@@ -614,10 +624,8 @@ public final class OpenAiDeCoachContextProjector {
                 case "setPersonalization" -> tools.add(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
                 case "setScope" -> tools.add(OpenAiDeV1McpContractAdapter.SET_SCOPE);
                 case "setActiveGoal" -> tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
-                case "orientActiveGoal", "teachActiveGoal", "setMastery" -> {
-                    tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                case "orientActiveGoal", "teachActiveGoal", "setMastery" ->
                     tools.add(OpenAiDeV1McpContractAdapter.SET_MASTERY);
-                }
                 case "chooseMemoryMode" -> {
                     if (isMemoryGoal(activeGoal)) {
                         tools.add(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE);
@@ -831,6 +839,8 @@ public final class OpenAiDeCoachContextProjector {
                             + "direkt weiterzugehen; behaupte dabei keine fachliche Mastery.";
             case "teachActiveGoal", "setMastery" ->
                     goalAnnouncement
+                            + "Dieses Lernziel ist bereits von SkillPilot ausgewählt. Beginne jetzt unmittelbar "
+                            + "damit, biete keine anderen Lernziele an und fordere keine weitere Bestätigung an. "
                             + "Arbeite dialogisch am aktiven Lernziel. Anerkenne fachlich gleichwertige korrekte Lösungswege, "
                             + "Darstellungen und Begründungen; ausdrücklich verlangte Formate bleiben verbindlich. "
                             + "Speichere Mastery erst nach zwei unabhängigen Checks oder echtem Transfer in einem "
@@ -946,6 +956,8 @@ public final class OpenAiDeCoachContextProjector {
             case "orientActiveGoal" -> goalAnnouncement
                     + "Give motivating orientation without subject assessment. A bare selection among offered possibilities starts the active follow-up. Save completion only after meaningful engagement with it or an explicit request to continue directly; a content-free acknowledgement is insufficient. Do not claim subject mastery.";
             case "teachActiveGoal", "setMastery" -> goalAnnouncement
+                    + "This goal has already been selected by SkillPilot. Begin it immediately, do not offer other "
+                    + "learning goals, and do not ask for further confirmation. "
                     + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect.";
             default -> "Follow only the published required action, then reload the context.";
         };
