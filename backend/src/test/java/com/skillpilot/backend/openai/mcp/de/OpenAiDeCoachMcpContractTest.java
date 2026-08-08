@@ -1651,6 +1651,50 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void goalNavigationNeverPublishesAClusterAsAnActiveGoalFallback() {
+        FrontierGoal examFolder = clusterGoal("year-8-exams", "Prüfungen Jahrgangsstufe 8");
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik Hessen",
+                "",
+                "DE",
+                "HE",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        UnifiedLearnerStateResponse clusterOnlyState = new UnifiedLearnerStateResponse(
+                LEARNER_ID,
+                curriculum,
+                List.of(examFolder),
+                new LearnerGoals(
+                        List.of(examFolder),
+                        7,
+                        7,
+                        new GoalStats(20, 25),
+                        new GoalStats(7, 7),
+                        true),
+                List.of("getFrontier"),
+                List.of(),
+                Set.of(),
+                "frontier",
+                null,
+                new StateMachineInfo("FRONTIER", "getFrontier", List.of(), List.of(), null));
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(clusterOnlyState);
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "goal"));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
+
+        assertThat(navigation.requiredAction()).isEqualTo("getFrontier");
+        assertThat(navigation.options()).isEmpty();
+        assertThat(navigation.instruction()).contains("keine sicheren Optionen");
+    }
+
+    @Test
     void scopeNavigationIsExplicitlyFocusOnlyAndNeverPublishesClustersAsNextLearningGoals() {
         FrontierGoal yearSeven = clusterGoal("year-7", "Jahrgangsstufe 7");
         FrontierGoal yearSevenExams = clusterGoal("year-7-exams", "Prüfungen Jahrgangsstufe 7");

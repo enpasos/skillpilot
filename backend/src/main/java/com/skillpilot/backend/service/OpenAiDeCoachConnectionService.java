@@ -168,7 +168,15 @@ public class OpenAiDeCoachConnectionService {
             learner = learnerService.getLearner(skillpilotId);
         }
         learner = learnerService.reopenPersonalizationForExplicitLaunch(learner);
-        if (launch.type() == LaunchIntentType.VERIFIED_RECALL) {
+        if (launch.type() == LaunchIntentType.CURRENT_UNIT && properties.isWritesEnabled()) {
+            // A normal launch promises to continue the next step prepared in
+            // SkillPilot. Coach context reads are deliberately side-effect-free,
+            // so apply focus reconciliation and configured Autopilot selection
+            // here, while the learner has explicitly started a new session.
+            learnerService.assertWritableLearningSession(skillpilotId);
+            learnerService.getLearnerState(skillpilotId);
+            learner = learnerService.getLearner(skillpilotId);
+        } else if (launch.type() == LaunchIntentType.VERIFIED_RECALL) {
             if (!launch.goalId().equals(learner.getActiveGoalId())) {
                 learnerService.assertWritableLearningSession(skillpilotId);
                 learnerService.setActiveGoal(skillpilotId, launch.goalId());

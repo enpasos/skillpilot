@@ -115,6 +115,29 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     @Test
+    void currentUnitLaunchPreparesAutopilotGoalBeforePinningSessionRevision() {
+        learner.setAutoPilot(true);
+        learner.setActiveGoalId(null);
+        learner.setCoachStateRevision(12L);
+        when(learnerService.getLearnerState(SKILLPILOT_ID)).thenAnswer(invocation -> {
+            learner.setActiveGoalId("prepared-next-goal");
+            learner.setCoachStateRevision(13L);
+            return null;
+        });
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        service.createLaunch(SKILLPILOT_ID, currentUnitRequest());
+
+        org.mockito.InOrder ordered = org.mockito.Mockito.inOrder(learnerService, learningSessions);
+        ordered.verify(learnerService).getLearnerState(SKILLPILOT_ID);
+        ordered.verify(learningSessions).save(persisted.capture());
+        assertThat(persisted.getValue().getStateVersion()).isEqualTo(13L);
+        assertThat(persisted.getValue().getLearner().getActiveGoalId())
+                .isEqualTo("prepared-next-goal");
+    }
+
+    @Test
     void validExplicitSessionResolvesLearnerWithoutUsingOAuthAsLearnerIdentity() throws Exception {
         OpenAiDeLearningSession persisted = persistedSession(Instant.now().plusSeconds(60));
         when(learningSessions.findById(hmac(LEARNING_SESSION_ID))).thenReturn(Optional.of(persisted));
