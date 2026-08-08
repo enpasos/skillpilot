@@ -153,7 +153,14 @@ goal, curriculum, or option IDs. Never call navigation for a normal start,
 continuation, or resumption. A `scope` navigation result contains focus
 clusters only; those options are never next learning goals and never replace a
 confirmed active atomic goal or its teaching action from the latest full
-context or mutation result.
+context or mutation result. `nextAllowedTools` lists only immediate
+state-machine actions, so this conditional navigation capability is
+intentionally absent from it. When a goal is already active, request goal
+navigation with `redirect=true` only after the learner explicitly asks for a
+different goal. With the flag omitted or false, the active goal remains
+authoritative and no goal choices are published. Every successful mutation
+successor invalidates all goal options from earlier results and conversation
+turns.
 
 ## 4. Selection, learning scope, and focus
 

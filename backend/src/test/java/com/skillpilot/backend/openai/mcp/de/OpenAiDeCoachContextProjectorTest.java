@@ -554,7 +554,9 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.options()).isEmpty();
         assertThat(context.frontier()).isEmpty();
         assertThat(context.nextAllowedTools())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(context.instruction())
                 .contains(
                         "Dein aktuelles Lernziel ist: Zwischen Tabelle, Graph und Term wechseln.",
@@ -564,7 +566,9 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain(alternativeOne.title(), alternativeTwo.title());
         assertThat(english.frontier()).isEmpty();
         assertThat(english.nextAllowedTools())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(english.instruction())
                 .contains(
                         "Your current learning goal is: Zwischen Tabelle, Graph und Term wechseln.",
@@ -599,7 +603,8 @@ class OpenAiDeCoachContextProjectorTest {
                 .extracting(OpenAiDeCoachContext.Goal::goalId)
                 .containsExactly(first.id(), second.id());
         assertThat(context.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.GET_NAVIGATION);
     }
 
     private static OpenAiDeCoachContext projectGerman(

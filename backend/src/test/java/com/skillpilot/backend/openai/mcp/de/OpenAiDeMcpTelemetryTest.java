@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
@@ -214,8 +215,10 @@ class OpenAiDeMcpTelemetryTest {
         String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
         List<String> retainedSha256s =
                 OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S;
-        List<String> retainedUris = retainedSha256s.stream()
-                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri)
+        List<String> retainedUris = Stream.concat(
+                        Stream.of(OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
+                        retainedSha256s.stream()
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
                 .toList();
         String untrustedUri = "ui://attacker/private-session-and-token";
         McpSchema.ReadResourceResult activeResult = readResult(activeUri);
@@ -248,7 +251,7 @@ class OpenAiDeMcpTelemetryTest {
             appender.stop();
         }
 
-        assertThat(successfulSupplierCalls).hasValue(1 + retainedSha256s.size());
+        assertThat(successfulSupplierCalls).hasValue(2 + retainedSha256s.size());
 
         String activeArtifact =
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256.substring(0, 12);
@@ -263,6 +266,10 @@ class OpenAiDeMcpTelemetryTest {
                             .count())
                     .isEqualTo(1);
         }
+        String legacyArtifact =
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256.substring(0, 12);
+        assertThat(resourceTimer(registry, legacyArtifact, "retained", "success").count())
+                .isEqualTo(1);
         assertThat(resourceTimer(registry, "unknown", "unknown", "exception").count())
                 .isEqualTo(1);
         assertThat(registry.getMeters()).allSatisfy(meter -> assertThat(tagKeys(meter))
@@ -271,7 +278,7 @@ class OpenAiDeMcpTelemetryTest {
         assertThat(registry.getMeters())
                 .allSatisfy(meter -> assertThat(meter.getId().getTag("server.build")).isNull());
 
-        assertThat(appender.list).hasSize(2 + retainedSha256s.size());
+        assertThat(appender.list).hasSize(3 + retainedSha256s.size());
         assertThat(appender.list)
                 .extracting(ILoggingEvent::getFormattedMessage)
                 .allSatisfy(message -> assertThat(message)
@@ -296,6 +303,12 @@ class OpenAiDeMcpTelemetryTest {
         }
         assertThat(appender.list)
                 .extracting(ILoggingEvent::getFormattedMessage)
+                .allSatisfy(message -> assertThat(message)
+                        .doesNotContain(
+                                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI,
+                                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256));
+        assertThat(appender.list)
+                .extracting(ILoggingEvent::getFormattedMessage)
                 .anySatisfy(message -> assertThat(message)
                         .contains(
                                 "uiArtifact=" + activeArtifact,
@@ -315,6 +328,13 @@ class OpenAiDeMcpTelemetryTest {
                                     "artifactRole=retained",
                                     "status=success"));
         }
+        assertThat(appender.list)
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .anySatisfy(message -> assertThat(message)
+                        .contains(
+                                "uiArtifact=" + legacyArtifact,
+                                "artifactRole=retained",
+                                "status=success"));
     }
 
     @Test

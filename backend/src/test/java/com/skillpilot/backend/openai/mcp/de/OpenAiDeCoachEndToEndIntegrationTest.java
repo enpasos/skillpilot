@@ -579,7 +579,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         List<String> expectedResourceUris = Stream.concat(
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI),
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
                                 .stream()
                                 .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
@@ -595,6 +596,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-active",
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverAuthenticatedMcp(
+                accessToken,
+                applicationSubject,
+                "resource-legacy-versioned",
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256);
         int retainedResourceIndex = 0;
         for (String retainedSha256 :
                 OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
@@ -1163,7 +1170,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(autopilotSuccessorContext.path("nextAllowedTools").valueStream()
                         .map(JsonNode::asText)
                         .toList())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
 
         HttpResponse<String> persistedSuccessorRead = callTool(
                 accessToken,
@@ -1183,7 +1192,58 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(persistedSuccessorContext.path("nextAllowedTools").valueStream()
                         .map(JsonNode::asText)
                         .toList())
-                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
+        HttpResponse<String> accidentalGoalNavigation = callTool(
+                accessToken,
+                20,
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                objectMapper.writeValueAsString(Map.of("target", "goal")),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(accidentalGoalNavigation, applicationSubject);
+        JsonNode guardedGoalNavigation = result(accidentalGoalNavigation).path("structuredContent");
+        assertThat(guardedGoalNavigation.path("requiredAction").asText()).isEqualTo("teachActiveGoal");
+        assertThat(guardedGoalNavigation.path("options")).isEmpty();
+        assertThat(guardedGoalNavigation.path("instruction").asText())
+                .contains("keine Lernzielauswahl", "früheren Zieloptionen");
+
+        HttpResponse<String> explicitGoalNavigation = callTool(
+                accessToken,
+                21,
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                objectMapper.writeValueAsString(Map.of("target", "goal", "redirect", true)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(explicitGoalNavigation, applicationSubject);
+        JsonNode redirectOptions = result(explicitGoalNavigation)
+                .path("structuredContent")
+                .path("options");
+        assertThat(redirectOptions).isNotEmpty();
+        assertThat(redirectOptions.valueStream()
+                        .map(option -> option.path("id").asText())
+                        .toList())
+                .doesNotContain(successorGoalId);
+        String redirectedGoalId = redirectOptions.get(0).path("id").asText();
+        assertThat(redirectedGoalId).isNotBlank().isNotEqualTo(successorGoalId);
+
+        HttpResponse<String> redirectGoal = callTool(
+                accessToken,
+                22,
+                OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", redirectedGoalId,
+                        "redirect", true)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(redirectGoal, applicationSubject);
+        assertThat(result(redirectGoal)
+                        .path("structuredContent")
+                        .path("activeGoal")
+                        .path("goalId")
+                        .asText())
+                .isEqualTo(redirectedGoalId);
+        assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
+                .isEqualTo(redirectedGoalId);
 
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);

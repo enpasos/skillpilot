@@ -53,7 +53,8 @@ The still-unpublished `SkillPilot Coach v1` draft `1.0.0` binds exactly one
 active, hash-bound MCP Apps HTML resource for goal images. Its resource URI
 contains the SHA-256 of the self-contained HTML bytes. `resources/list` and
 `resources/read` expose the active resource plus every previously advertised
-hash URI with its exact historical bytes, reviewed widget domain, and CSP.
+URI with its exact historical bytes, including the original version-addressed
+`1.0.0` URI and all later hash URIs, reviewed widget domain, and CSP.
 
 The dedicated read-only `render_skillpilot_goal_visualization` tool is the only
 V1 tool whose descriptor carries `ui.resourceUri` and the

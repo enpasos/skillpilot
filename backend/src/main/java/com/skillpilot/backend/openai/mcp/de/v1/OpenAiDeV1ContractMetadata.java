@@ -34,6 +34,16 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MCP_APP_RESOURCE_MIME_TYPE = "text/html;profile=mcp-app";
     public static final String GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/skillpilot-goal-visualization-v1.html";
+    /**
+     * Original non-content-addressed V1 visualization resource retained for
+     * historical ChatGPT conversations and connector metadata caches.
+     */
+    public static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
+    public static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
+            "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
+    public static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
+            "/openai/retained/skillpilot/coach/v1/legacy-1.0.0/goal-visualization.html";
     public static final String MEMORY_CARD_PRACTICE_ARTIFACT_SHA256 =
             "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852";
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_URI =
