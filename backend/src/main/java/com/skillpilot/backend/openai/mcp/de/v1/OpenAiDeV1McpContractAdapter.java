@@ -1336,9 +1336,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 String currentRequiredAction = rawState.stateMachine() == null
                         ? null
                         : rawState.stateMachine().requiredAction();
-                requiredAction = activeGoal(rawState) != null && currentRequiredAction != null
-                        ? currentRequiredAction
-                        : "setActiveGoal";
                 List<FrontierGoal> source = rawState.frontier();
                 if ((source == null || source.isEmpty()) && rawState.stateMachine() != null) {
                     source = rawState.stateMachine().goalOptions();
@@ -1347,7 +1344,14 @@ public final class OpenAiDeV1McpContractAdapter {
                 List<FrontierGoal> atomic = candidates.stream()
                         .filter(goal -> "atomic".equals(goal.type()))
                         .toList();
-                for (FrontierGoal goal : atomic.isEmpty() ? candidates : atomic) {
+                if (activeGoal(rawState) != null && currentRequiredAction != null) {
+                    requiredAction = currentRequiredAction;
+                } else if (!atomic.isEmpty()) {
+                    requiredAction = "setActiveGoal";
+                } else {
+                    requiredAction = currentRequiredAction == null ? "getFrontier" : currentRequiredAction;
+                }
+                for (FrontierGoal goal : atomic) {
                     add(options, contextProjector.goalOption(goal, "goal"));
                 }
             }

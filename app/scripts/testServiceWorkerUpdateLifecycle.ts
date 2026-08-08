@@ -6,9 +6,10 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
 
-const buildRoot = fileURLToPath(
-  new URL('../../backend/src/main/resources/static/', import.meta.url),
-)
+const configuredBuildRoot = process.env.SKILLPILOT_SERVICE_WORKER_BUILD_ROOT?.trim()
+const buildRoot = configuredBuildRoot
+  ? path.resolve(configuredBuildRoot)
+  : fileURLToPath(new URL('../../backend/src/main/resources/static/', import.meta.url))
 const baseIndex = await readFile(path.join(buildRoot, 'index.html'), 'utf8')
 const baseServiceWorker = await readFile(path.join(buildRoot, 'sw.js'), 'utf8')
 const baseVersion = JSON.parse(
@@ -73,7 +74,7 @@ const server = createServer(async (request, response) => {
     const requestUrl = new URL(request.url ?? '/', 'http://127.0.0.1')
     const pathname = decodeURIComponent(requestUrl.pathname)
 
-    if (pathname === '/' || pathname === '/index.html') {
+    if (pathname === '/' || pathname === '/index.html' || pathname.startsWith('/learner/')) {
       response.writeHead(200, {
         'cache-control': 'no-store',
         'content-type': 'text/html; charset=utf-8',
@@ -181,6 +182,24 @@ try {
       'the application must not render the removed update action',
     )
     assert.equal(await readBuildId(firstPage), versions.a.buildId)
+
+    const cockpitPage = await context.newPage()
+    await cockpitPage.goto(
+      `${origin}/learner/example-goal?l=example-focus`,
+      { waitUntil: 'domcontentloaded' },
+    )
+    assert.equal(
+      await readBuildId(cockpitPage),
+      versions.b.buildId,
+      'a newly opened learner cockpit must load the current network shell even while an older worker waits',
+    )
+    await cockpitPage.reload({ waitUntil: 'domcontentloaded' })
+    assert.equal(
+      await readBuildId(cockpitPage),
+      versions.b.buildId,
+      'reloading the learner cockpit must not be required to leave a stale shell',
+    )
+    await cockpitPage.close()
 
     await firstPage.close()
     assert.equal(

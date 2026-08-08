@@ -10,26 +10,28 @@ import { serviceWorkerNavigationFallbackDenylist } from '../serviceWorkerNavigat
 const isDenied = (urlPath: string) =>
   serviceWorkerNavigationFallbackDenylist.some(pattern => pattern.test(urlPath))
 
-const machineEndpointNavigations = [
+const networkOnlyNavigations = [
   '/.well-known/oauth-protected-resource',
   '/.well-known/oauth-authorization-server/api/openai/v1',
   '/api/openai/v1/oauth2/authorize',
   '/api/openai/v1/oauth2/token',
   '/internal/openai/v1/mcp',
   '/api/ui/learners/example',
+  '/learner?l=example-focus',
+  '/learner/example-goal',
+  '/learner/example-goal?l=example-focus',
 ]
 
-for (const urlPath of machineEndpointNavigations) {
+for (const urlPath of networkOnlyNavigations) {
   assert.equal(
     isDenied(urlPath),
     true,
-    `${urlPath} must never fall back to the cached SPA shell`,
+    `${urlPath} must always load through the network instead of a cached SPA shell`,
   )
 }
 
 const applicationNavigations = [
   '/',
-  '/learner/example-goal',
   '/explorer',
 ]
 
