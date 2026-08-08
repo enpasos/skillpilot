@@ -7,7 +7,7 @@ import { sanitizeSkillpilotId } from './skillpilotId'
 
 export const SKILLPILOT_ID_FILE_NAME = 'skillpilot-id.skillpilot'
 export const MAX_SKILLPILOT_ID_FILE_SIZE = 4096
-export const MIN_SKILLPILOT_ID_FILE_PASSWORD_LENGTH = 12
+export const MIN_SKILLPILOT_ID_FILE_PASSWORD_LENGTH = 4
 export const MAX_SKILLPILOT_ID_FILE_PASSWORD_BYTES = 1024
 
 const FILE_FORMAT = 'skillpilot-password-encrypted'

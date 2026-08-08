@@ -92,6 +92,10 @@ class OpenAiDeCoachMcpContractTest {
     private static final String CHALLENGE = "Bearer resource_metadata=\"https://skillpilot.test/meta\"";
     private static final String INSUFFICIENT_SCOPE_CHALLENGE =
             "Bearer resource_metadata=\"https://skillpilot.test/meta\", error=\"insufficient_scope\"";
+    private static final String TEST_WORK_FEEDBACK =
+            "Dein sichtbarer Lösungsweg ist fachlich schlüssig und vollständig begründet.";
+    private static final String TEST_OUTCOME_FEEDBACK =
+            "Das Ergebnis ist vollständig richtig.";
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private CoachToolFacade coachTools;
@@ -296,6 +300,10 @@ class OpenAiDeCoachMcpContractTest {
                         .containsOnlyKeys(
                                 "goalId",
                                 OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
+                                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK,
+                                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK,
+                                OpenAiDeV1McpContractAdapter.EXAM_EVALUATION_CAPABILITY,
+                                OpenAiDeV1McpContractAdapter.EXAM_EARNED_POINTS,
                                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                                 OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
                                 OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
@@ -309,6 +317,14 @@ class OpenAiDeCoachMcpContractTest {
                         .at("/properties/orientationPathId/maxLength")
                         .asInt())
                 .isEqualTo(320);
+        assertThat(masteryInputSchema.at("/required"))
+                .containsExactly(
+                        objectMapper.valueToTree("goalId"),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.WORK_FEEDBACK),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema().get("required"))
                 .asString()
                 .contains(
@@ -957,8 +973,10 @@ class OpenAiDeCoachMcpContractTest {
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
                 .contains("call " + OpenAiDeV1McpContractAdapter.GET_CONTEXT + " before the first subject-matter response")
-                .contains("after successful mastery activates a successor")
-                .contains("never call get_skillpilot_navigation or set_skillpilot_active_goal")
+                .contains("A successful mastery result is the one ordering exception")
+                .contains("first give both learner-facing texts from completionHandoff")
+                .contains("only then begin the already activated successor")
+                .contains("Never call get_skillpilot_navigation or set_skillpilot_active_goal")
                 .contains("generic curriculum overview")
                 .contains("invented learning path")
                 .contains("Assess meaning rather than wording")
@@ -1052,6 +1070,7 @@ class OpenAiDeCoachMcpContractTest {
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION, result);
 
         assertThat(evaluation.solutionContent()).isEqualTo("Lösung: \\(x=7\\)");
+        assertThat(evaluation.evaluationCapability()).isNotBlank();
         assertThat(evaluation.instruction())
                 .contains("nur Referenz")
                 .contains("alternative Lösungswege")
@@ -1060,8 +1079,97 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("Teilpunkte sauber")
                 .contains("jeden Abzug konkret")
                 .contains("ohne Nachfrage")
-                .contains("erfinde daraus keinen konkreten fachlichen Fehler");
+                .contains("erfinde daraus keinen konkreten fachlichen Fehler")
+                .contains("evaluationCapability", "earnedPoints", "workFeedback", "outcomeFeedback");
         verify(identityResolver, never()).requireWriteAccess(any());
+    }
+
+    @Test
+    void examMasteryRequiresEvaluationCapabilityAndAtLeastThePassingScore() {
+        UnifiedLearnerStateResponse examState = releasedExamState();
+        FrontierGoal successor = contentGoal("successor-goal", "Zwischen Tabelle, Graph und Term wechseln");
+        UnifiedLearnerStateResponse successorState = state("teachActiveGoal", successor);
+        CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
+                10,
+                5,
+                List.of(new CoachToolFacade.ExamScoringStep("step-1", 10, "Kriterium")));
+        when(coachTools.getExamEvaluation(
+                eq(LEARNER_ID),
+                any(CoachToolFacade.ExamEvaluationRequest.class)))
+                .thenReturn(new CoachToolFacade.ExamEvaluationResult(
+                        "exam-public-id",
+                        "Lösung: $x=7$",
+                        "Solution: $x=7$",
+                        scoring));
+        when(coachTools.getLearnerState(LEARNER_ID))
+                .thenReturn(examState, examState, examState, successorState);
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(
+                        any(),
+                        any(),
+                        anyLong(),
+                        any(),
+                        any(),
+                        any());
+
+        McpSchema.CallToolResult missingEvaluation = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                masteryArguments("exam-public-id"));
+
+        assertThat(missingEvaluation.isError()).isTrue();
+        assertThat(missingEvaluation.content().toString())
+                .contains("evaluationCapability", "earnedPoints");
+        verify(coachTools, never()).setMastery(any(), any());
+
+        OpenAiDeV1McpContractAdapter.ExamEvaluationResult evaluation = structured(
+                call(
+                        OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION,
+                        Map.of("goalId", "exam-public-id")),
+                OpenAiDeV1McpContractAdapter.ExamEvaluationResult.class);
+
+        McpSchema.CallToolResult belowPassingScore = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                examMasteryArguments("exam-public-id", evaluation.evaluationCapability(), 4.5));
+
+        assertThat(belowPassingScore.isError()).isTrue();
+        assertThat(belowPassingScore.content().toString()).contains("noch nicht bestanden");
+        verify(coachTools, never()).setMastery(any(), any());
+
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                "exam-public-id",
+                1.0,
+                successorState.frontier(),
+                successorState.nextAllowedActions(),
+                successorState.learningState(),
+                successorState.activeGoal(),
+                successorState.stateMachine(),
+                successorState.goals());
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+
+        McpSchema.CallToolResult passingScore = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                examMasteryArguments("exam-public-id", evaluation.evaluationCapability(), 5.0));
+
+        assertThat(passingScore.isError()).isFalse();
+        OpenAiDeV1McpContractAdapter.MasteryToolResult payload = structured(
+                passingScore,
+                OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, passingScore);
+        assertThat(payload.completionHandoff().earnedPoints()).isEqualTo(5.0);
+        assertThat(payload.completionHandoff().maxPoints()).isEqualTo(10.0);
+        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
+        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
+        assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
+        assertThat(passingScore.content().toString())
+                .contains("Bestätigte Punktzahl: 5 von 10", successor.title());
+        verify(coachTools).setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class));
     }
 
     @Test
@@ -1087,16 +1195,51 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of("goalId", "goal-public-id"));
+                masteryArguments("goal-public-id"));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
                 structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, result);
         assertThat(payload.status()).isEqualTo("updated");
+        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
+        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
         assertThat(payload.context().activeGoal().goalId()).isEqualTo("goal-public-id");
         assertThat(objectMapper.writeValueAsString(payload)).doesNotContain(LEARNER_ID, CONNECTION_SECRET);
         verify(identityResolver).requireWriteAccess(McpTransportContext.EMPTY);
+    }
+
+    @Test
+    void masteryRequiresConcreteBoundedFeedbackBeforeMutation() {
+        McpSchema.CallToolResult missingFeedback = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of("goalId", "goal-public-id"));
+        McpSchema.CallToolResult blankFeedback = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", "goal-public-id",
+                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, "   ",
+                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK));
+        McpSchema.CallToolResult oversizedWorkFeedback = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", "goal-public-id",
+                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, "x".repeat(1_601),
+                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK));
+        McpSchema.CallToolResult oversizedOutcomeFeedback = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of(
+                        "goalId", "goal-public-id",
+                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
+                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, "x".repeat(801)));
+
+        assertThat(List.of(
+                        missingFeedback,
+                        blankFeedback,
+                        oversizedWorkFeedback,
+                        oversizedOutcomeFeedback))
+                .allSatisfy(result -> assertThat(result.isError()).isTrue());
+        verify(coachTools, never()).setMastery(any(), any());
     }
 
     @Test
@@ -1153,7 +1296,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of("goalId", completed.id()));
+                masteryArguments(completed.id()));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
@@ -1167,17 +1310,27 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(
                         "Fresh authoritative successor state",
                         "invalidates every goal option",
-                        "continue it immediately without offering a goal choice");
+                        "continue it without offering a goal choice",
+                        "only after presenting completionHandoff");
+        assertThat(payload.completionHandoff().completedGoalId()).isEqualTo(completed.id());
+        assertThat(payload.completionHandoff().completedGoalTitle()).isEqualTo(completed.title());
+        assertThat(payload.completionHandoff().workFeedback()).isEqualTo(TEST_WORK_FEEDBACK);
+        assertThat(payload.completionHandoff().outcomeFeedback()).isEqualTo(TEST_OUTCOME_FEEDBACK);
+        assertThat(payload.completionHandoff().successorGoalTitle()).isEqualTo(successor.title());
+        assertThat(payload.completionHandoff().instruction())
+                .contains("zuerst workFeedback", "danach outcomeFeedback", "Beginne erst anschließend");
+        assertThat(payload.completionHandoff().successorEvidenceReset()).isTrue();
+        assertThat(payload.completionHandoff().earnedPoints()).isNull();
+        assertThat(payload.completionHandoff().maxPoints()).isNull();
         assertThat(payload.context().activeGoal().goalId()).isEqualTo(successor.id());
         assertThat(payload.context().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(payload.context().interactionMode()).isEqualTo("chat");
         assertThat(payload.context().options()).isEmpty();
         assertThat(payload.context().frontier()).isEmpty();
         assertThat(payload.context().nextAllowedTools())
-                .contains(
-                        OpenAiDeV1McpContractAdapter.GET_CONTEXT,
-                        OpenAiDeV1McpContractAdapter.SET_MASTERY)
+                .contains(OpenAiDeV1McpContractAdapter.GET_CONTEXT)
                 .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.SET_MASTERY,
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(payload.context().instruction())
@@ -1187,9 +1340,16 @@ class OpenAiDeCoachMcpContractTest {
                         "Beginne jetzt unmittelbar",
                         "keine anderen Lernziele",
                         "keine weitere Bestätigung");
-        assertThat(result.content().toString())
+        String completionSummary = ((McpSchema.TextContent) result.content().getFirst()).text();
+        assertThat(completionSummary)
+                .contains(TEST_WORK_FEEDBACK, TEST_OUTCOME_FEEDBACK)
                 .contains(successor.title(), "bereits aktiviert", "keine Lernzielauswahl")
                 .doesNotContain(unrelated.title());
+        int workFeedbackIndex = completionSummary.indexOf(TEST_WORK_FEEDBACK);
+        int outcomeFeedbackIndex = completionSummary.indexOf(TEST_OUTCOME_FEEDBACK);
+        int successorIndex = completionSummary.indexOf(successor.title());
+        assertThat(outcomeFeedbackIndex).isGreaterThan(workFeedbackIndex);
+        assertThat(successorIndex).isGreaterThan(outcomeFeedbackIndex);
         McpSchema.CallToolResult accidentalNavigation = call(
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                 Map.of("target", "goal"));
@@ -1264,9 +1424,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", orientation.id(),
-                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+                masteryArguments(orientation.id(), "change-and-models"));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
@@ -1304,7 +1462,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of("goalId", orientation.id()));
+                masteryArguments(orientation.id()));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
@@ -1354,9 +1512,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", orientation.id(),
-                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+                masteryArguments(orientation.id(), "change-and-models"));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
@@ -1405,9 +1561,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", orientation.id(),
-                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "change-and-models"));
+                masteryArguments(orientation.id(), "change-and-models"));
 
         assertThat(result.isError()).isTrue();
         verify(coachTools, never()).setActiveGoal(any(), any());
@@ -1429,9 +1583,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of(
-                        "goalId", orientation.id(),
-                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, "invented-path"));
+                masteryArguments(orientation.id(), "invented-path"));
 
         assertThat(result.isError()).isTrue();
         assertThat(result.content().toString()).contains("gehört nicht zur aktuellen Lernlandkarte");
@@ -1450,7 +1602,7 @@ class OpenAiDeCoachMcpContractTest {
                         null,
                         "stop after capture"));
 
-        call(OpenAiDeV1McpContractAdapter.SET_MASTERY, Map.of("goalId", "goal-public-id"));
+        call(OpenAiDeV1McpContractAdapter.SET_MASTERY, masteryArguments("goal-public-id"));
 
         ArgumentCaptor<MasteryUpdateRequest> request = ArgumentCaptor.forClass(MasteryUpdateRequest.class);
         verify(coachTools).setMastery(eq(LEARNER_ID), request.capture());
@@ -1474,7 +1626,7 @@ class OpenAiDeCoachMcpContractTest {
 
         McpSchema.CallToolResult rejected = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                Map.of("goalId", "memory-public-id"));
+                masteryArguments("memory-public-id"));
 
         assertThat(rejected.isError()).isTrue();
         assertThat(rejected.content().toString()).contains("nicht über die normale Coach-Mastery");
@@ -2487,6 +2639,33 @@ class OpenAiDeCoachMcpContractTest {
                 .tag("event", event)
                 .counter()
                 .count();
+    }
+
+    private static Map<String, Object> masteryArguments(String goalId) {
+        return Map.of(
+                "goalId", goalId,
+                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
+                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK);
+    }
+
+    private static Map<String, Object> masteryArguments(
+            String goalId,
+            String orientationPathId) {
+        return Map.of(
+                "goalId", goalId,
+                OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, orientationPathId,
+                OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, TEST_WORK_FEEDBACK,
+                OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, TEST_OUTCOME_FEEDBACK);
+    }
+
+    private static Map<String, Object> examMasteryArguments(
+            String goalId,
+            String evaluationCapability,
+            double earnedPoints) {
+        Map<String, Object> arguments = new java.util.LinkedHashMap<>(masteryArguments(goalId));
+        arguments.put(OpenAiDeV1McpContractAdapter.EXAM_EVALUATION_CAPABILITY, evaluationCapability);
+        arguments.put(OpenAiDeV1McpContractAdapter.EXAM_EARNED_POINTS, earnedPoints);
+        return arguments;
     }
 
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {

@@ -3,12 +3,13 @@ import {
   encryptSkillpilotIdFileContent,
   isValidSkillpilotIdFilePassword,
   MAX_SKILLPILOT_ID_FILE_SIZE,
+  MIN_SKILLPILOT_ID_FILE_PASSWORD_LENGTH,
   parseSkillpilotIdFileEnvelope,
   SKILLPILOT_ID_FILE_NAME,
 } from './skillpilotIdFile'
 
 const SAMPLE_ID = '1e506aa5-027d-4f96-b882-84c745bef8b2'
-const PASSWORD = 'richtig langes Passwort 🔐'
+const PASSWORD = '4827'
 
 const assertEqual = (actual: unknown, expected: unknown, message?: string) => {
   if (actual !== expected) {
@@ -43,9 +44,11 @@ const assertInvalidEnvelope = (content: string, message: string) => {
 }
 
 assertEqual(SKILLPILOT_ID_FILE_NAME, 'skillpilot-id.skillpilot')
-assertEqual(isValidSkillpilotIdFilePassword('short'), false)
-assertEqual(isValidSkillpilotIdFilePassword('            '), false)
-assertEqual(isValidSkillpilotIdFilePassword('twelve chars!'), true)
+assertEqual(MIN_SKILLPILOT_ID_FILE_PASSWORD_LENGTH, 4)
+assertEqual(isValidSkillpilotIdFilePassword('123'), false)
+assertEqual(isValidSkillpilotIdFilePassword('    '), false)
+assertEqual(isValidSkillpilotIdFilePassword('1234'), true)
+assertEqual(isValidSkillpilotIdFilePassword('🔐🔐🔐🔐'), true)
 
 const firstExport = await encryptSkillpilotIdFileContent(SAMPLE_ID, PASSWORD)
 const secondExport = await encryptSkillpilotIdFileContent(SAMPLE_ID, PASSWORD)
@@ -56,7 +59,7 @@ assert(!firstExport.includes(PASSWORD), 'the encrypted file must not expose the 
 assertEqual(await decryptSkillpilotIdFileContent(firstExport, PASSWORD), SAMPLE_ID)
 
 await assertRejects(
-  () => decryptSkillpilotIdFileContent(firstExport, 'falsches Passwort mit Länge'),
+  () => decryptSkillpilotIdFileContent(firstExport, '1739'),
   'a wrong password must fail',
 )
 await assertRejects(

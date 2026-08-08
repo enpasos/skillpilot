@@ -39,7 +39,11 @@ const assertThrows = (operation: () => unknown, expectedMessage: string) => {
 const LEARNING_SESSION_A = `sps_${'A'.repeat(43)}`
 const LEARNING_SESSION_B = `sps_${'B'.repeat(43)}`
 const promptWithSession = (message: string, learningSessionId = LEARNING_SESSION_A) =>
-  `${message}\n\nSkillPilot-Lernsession: ${learningSessionId}`
+  `${message}\nlearningSessionId: ${learningSessionId}`
+
+const compactCurrentUnitPrompt = promptWithSession(
+  'Verwende SkillPilot Coach v1 und fahre fort.',
+)
 
 assertEqual(
   buildOpenAiMcpEndpoint(' learner / 42 ', 'launch', 'https://api.example.test/'),
@@ -51,13 +55,17 @@ assertEqual(getSafeChatGptUrl('https://chatgpt.example.test/'), null, 'rejects l
 
 const parameterizedStartUrl = new URL(buildOpenAiMcpStartUrl(
   'https://chatgpt.com/c/example?token=must-not-leak&prompt=stale#learner-id',
-  '  Bitte starte Karten 1 & 2.  ',
+  `  ${compactCurrentUnitPrompt}  `,
 ))
 assertEqual(parameterizedStartUrl.origin, 'https://chatgpt.com', 'keeps provider origin')
 assertEqual(parameterizedStartUrl.pathname, '/', 'opens a new normal chat')
 assertEqual(parameterizedStartUrl.searchParams.has('token'), false, 'drops configured query parameters')
 assertEqual(parameterizedStartUrl.searchParams.getAll('prompt').length, 1, 'sets one prompt')
-assertEqual(parameterizedStartUrl.searchParams.get('prompt'), 'Bitte starte Karten 1 & 2.', 'sets prompt')
+assertEqual(
+  parameterizedStartUrl.searchParams.get('prompt'),
+  compactCurrentUnitPrompt,
+  'round-trips the compact two-line prompt',
+)
 assertEqual(parameterizedStartUrl.hash, '', 'drops fragment')
 assertThrows(
   () => buildOpenAiMcpStartUrl('https://chatgpt.example.test/', 'Start'),
@@ -85,7 +93,9 @@ const launch = await requestOpenAiMcpStart({
   fetchImpl: async (input, init) => {
     launchCalls.push({ url: String(input), init })
     return new Response(JSON.stringify({
-      prompt: promptWithSession('Starte meine aktuelle Lerneinheit.'),
+      prompt: promptWithSession(
+        'Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten.',
+      ),
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_A,
       expiresAt: '2026-07-22T20:00:00Z',
@@ -98,6 +108,13 @@ const launch = await requestOpenAiMcpStart({
 
 assertEqual(launch.connected, true, 'launch is independent from learner-bound OAuth status')
 assertEqual(launch.learningSessionId, LEARNING_SESSION_A, 'returns newly issued learning session')
+assertEqual(
+  launch.prompt,
+  promptWithSession(
+    'Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten.',
+  ),
+  'accepts the compact launch prompt',
+)
 assertEqual(launchCalls.length, 1, 'performs exactly one HTTP request')
 assert(launchCalls[0]?.url.endsWith('/launch'), 'calls only the launch endpoint')
 assertEqual(launchCalls[0]?.init?.method, 'POST', 'launch uses POST')
@@ -143,7 +160,7 @@ await requestOpenAiMcpStart({
   fetchImpl: async (input, init) => {
     englishLaunchCalls.push({ url: String(input), init })
     return new Response(JSON.stringify({
-      prompt: promptWithSession('Continue my current learning unit.'),
+      prompt: promptWithSession('Use SkillPilot Coach v1 and continue.'),
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_A,
       expiresAt: '2026-07-22T20:00:00Z',
@@ -188,6 +205,21 @@ await assertRejects(
       prompt: promptWithSession('Start.', LEARNING_SESSION_A),
       webUrl: 'https://chatgpt.com/',
       learningSessionId: LEARNING_SESSION_B,
+      expiresAt: '2026-07-22T20:00:00Z',
+    }), { status: 200 }),
+  }),
+  'Invalid OpenAI MCP response: prompt learning session mismatch',
+)
+await assertRejects(
+  () => requestOpenAiMcpStart({
+    skillpilotId: 'learner-42',
+    language: 'de',
+    providerEligibilityConfirmed: true,
+  }, {
+    fetchImpl: async () => new Response(JSON.stringify({
+      prompt: `${promptWithSession('Verwende SkillPilot Coach v1 und fahre fort.', LEARNING_SESSION_A)}\n${LEARNING_SESSION_A}`,
+      webUrl: 'https://chatgpt.com/',
+      learningSessionId: LEARNING_SESSION_A,
       expiresAt: '2026-07-22T20:00:00Z',
     }), { status: 200 }),
   }),
