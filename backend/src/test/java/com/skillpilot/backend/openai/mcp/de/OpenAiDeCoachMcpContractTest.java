@@ -1057,6 +1057,89 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void masteryContinuesTheAutoActivatedSuccessorWithoutPublishingAnotherGoalChoice() throws Exception {
+        FrontierGoal completed = contentGoal(
+                "completed-goal",
+                "Lineare Gleichungen und Ungleichungen lösen");
+        FrontierGoal successor = contentGoal(
+                "successor-goal",
+                "Zwischen Tabelle, Graph und Term wechseln");
+        FrontierGoal unrelated = contentGoal(
+                "unrelated-goal",
+                "Geometrische Beziehungen an Kreisen untersuchen");
+        UnifiedLearnerStateResponse before = state("teachActiveGoal", completed);
+        UnifiedLearnerStateResponse successorState = new UnifiedLearnerStateResponse(
+                before.skillpilotId(),
+                before.curriculum(),
+                List.of(successor, unrelated),
+                new LearnerGoals(
+                        List.of(successor, unrelated),
+                        4,
+                        10,
+                        new GoalStats(4, 10),
+                        new GoalStats(3, 5),
+                        false),
+                List.of("teachActiveGoal"),
+                before.activeFilters(),
+                before.copySources(),
+                "learning",
+                successor,
+                new StateMachineInfo(
+                        "TEACHING",
+                        "teachActiveGoal",
+                        List.of(successor),
+                        List.of(),
+                        successor));
+        MasteryUpdateResponse update = new MasteryUpdateResponse(
+                true,
+                completed.id(),
+                1.0,
+                successorState.frontier(),
+                successorState.nextAllowedActions(),
+                successorState.learningState(),
+                successorState.activeGoal(),
+                successorState.stateMachine(),
+                successorState.goals());
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successorState);
+        when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        update,
+                        null,
+                        null));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                Map.of("goalId", completed.id()));
+
+        assertThat(result.isError()).isFalse();
+        OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
+                structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, result);
+        assertThat(payload.context().activeGoal().goalId()).isEqualTo(successor.id());
+        assertThat(payload.context().requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(payload.context().interactionMode()).isEqualTo("chat");
+        assertThat(payload.context().options()).isEmpty();
+        assertThat(payload.context().frontier()).isEmpty();
+        assertThat(payload.context().nextAllowedTools())
+                .contains(
+                        OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                        OpenAiDeV1McpContractAdapter.SET_MASTERY)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+        assertThat(payload.context().instruction())
+                .contains(
+                        successor.title(),
+                        "bereits von SkillPilot ausgewählt",
+                        "Beginne jetzt unmittelbar",
+                        "keine anderen Lernziele",
+                        "keine weitere Bestätigung");
+        assertThat(result.content().toString())
+                .contains(successor.title(), "bereits aktiviert", "keine Lernzielauswahl")
+                .doesNotContain(unrelated.title());
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
     void orientationCompletionActivatesTheFirstAvailableGoalFromTheSelectedAuthoritativePath() {
         FrontierGoal orientation = orientationGoal();
         FrontierGoal selectedEntry = contentGoal("selected-entry", "Funktionen und Modelle verstehen");

@@ -523,6 +523,85 @@ class OpenAiDeCoachContextProjectorTest {
                 .doesNotContain("SRS card drill");
     }
 
+    @Test
+    void activeAutopilotSuccessorSuppressesCompetingGoalSelectionSignals() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        FrontierGoal successor = contentGoal(
+                "successor-goal",
+                "Zwischen Tabelle, Graph und Term wechseln");
+        FrontierGoal alternativeOne = contentGoal(
+                "alternative-one",
+                "Geometrische Beziehungen begründet anwenden");
+        FrontierGoal alternativeTwo = contentGoal(
+                "alternative-two",
+                "Zinssatz tabellarisch bestimmen");
+
+        UnifiedLearnerStateResponse state = goalState(
+                "teachActiveGoal",
+                successor,
+                List.of(successor, alternativeOne, alternativeTwo),
+                List.of(successor));
+        OpenAiDeCoachContext context = projectGerman(projector, state);
+        OpenAiDeCoachContext english = projector.project(
+                state,
+                PersonalizationPlan.complete(List.of()),
+                true,
+                "en");
+
+        assertThat(context.activeGoal().goalId()).isEqualTo(successor.id());
+        assertThat(context.options()).isEmpty();
+        assertThat(context.frontier()).isEmpty();
+        assertThat(context.nextAllowedTools())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+        assertThat(context.instruction())
+                .contains(
+                        "Dein aktuelles Lernziel ist: Zwischen Tabelle, Graph und Term wechseln.",
+                        "unmittelbar",
+                        "biete keine anderen Lernziele an",
+                        "keine weitere Bestätigung")
+                .doesNotContain(alternativeOne.title(), alternativeTwo.title());
+        assertThat(english.frontier()).isEmpty();
+        assertThat(english.nextAllowedTools())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+        assertThat(english.instruction())
+                .contains(
+                        "Your current learning goal is: Zwischen Tabelle, Graph und Term wechseln.",
+                        "already been selected by SkillPilot",
+                        "Begin it immediately",
+                        "do not offer other learning goals",
+                        "do not ask for further confirmation")
+                .doesNotContain(alternativeOne.title(), alternativeTwo.title());
+    }
+
+    @Test
+    void openGoalSelectionKeepsItsPublishedCandidatesVisible() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        FrontierGoal first = contentGoal("first-goal", "Lineare Funktionen untersuchen");
+        FrontierGoal second = contentGoal("second-goal", "Bruchgleichungen lösen");
+
+        OpenAiDeCoachContext context = projectGerman(
+                projector,
+                goalState(
+                        "setActiveGoal",
+                        null,
+                        List.of(first, second),
+                        List.of(first, second)));
+
+        assertThat(context.activeGoal()).isNull();
+        assertThat(context.options())
+                .extracting(OpenAiDeCoachContext.Option::id)
+                .containsExactly(first.id(), second.id());
+        assertThat(context.frontier())
+                .extracting(OpenAiDeCoachContext.Goal::goalId)
+                .containsExactly(first.id(), second.id());
+        assertThat(context.nextAllowedTools())
+                .contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+    }
+
     private static OpenAiDeCoachContext projectGerman(
             OpenAiDeCoachContextProjector projector,
             UnifiedLearnerStateResponse state) {
@@ -531,6 +610,63 @@ class OpenAiDeCoachContextProjectorTest {
                 PersonalizationPlan.complete(List.of()),
                 true,
                 "de");
+    }
+
+    private static FrontierGoal contentGoal(String goalId, String title) {
+        return new FrontierGoal(
+                goalId,
+                title,
+                "Bearbeite dieses Lernziel dialogisch.",
+                "atomic",
+                "tutor",
+                "curricularAtomic",
+                "frontier",
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+    }
+
+    private static UnifiedLearnerStateResponse goalState(
+            String requiredAction,
+            FrontierGoal activeGoal,
+            List<FrontierGoal> frontier,
+            List<FrontierGoal> goalOptions) {
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik",
+                "",
+                "DE",
+                "",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        LearnerGoals goals = new LearnerGoals(
+                frontier,
+                3,
+                10,
+                new GoalStats(3, 10),
+                new GoalStats(2, 5),
+                false);
+        return new UnifiedLearnerStateResponse(
+                "SECRET-LEARNER-ID",
+                curriculum,
+                frontier,
+                goals,
+                List.of(requiredAction),
+                List.of(),
+                Set.of(),
+                activeGoal == null ? "frontier" : "learning",
+                activeGoal,
+                new StateMachineInfo(
+                        activeGoal == null ? "FRONTIER" : "TEACHING",
+                        requiredAction,
+                        goalOptions,
+                        List.of(),
+                        activeGoal));
     }
 
     private static UnifiedLearnerStateResponse memoryModeState() {

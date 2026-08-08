@@ -1603,24 +1603,50 @@ public final class OpenAiDeV1McpContractAdapter {
                     state,
                     selectedOrientationPath);
         }
+        OpenAiDeCoachContext successorContext = projectContext(skillpilotId, state, metadata);
         MasteryToolResult response = new MasteryToolResult(
                 result.status().name().toLowerCase(Locale.ROOT),
                 result.update() == null ? null : result.update().savedGoalId(),
                 result.update() == null ? null : result.update().savedMastery(),
-                projectContext(skillpilotId, state, metadata),
+                successorContext,
                 result.error());
+        String successSummary;
+        String successorTitle = successorContext == null || successorContext.activeGoal() == null
+                ? null
+                : successorContext.activeGoal().title();
+        if (result.status() == CoachToolFacade.MasteryStatus.UPDATED
+                && successorTitle != null
+                && !successorTitle.isBlank()) {
+            successSummary = isOrientationGoal(active)
+                    ? localized(metadata,
+                            "Orientierung abgeschlossen. SkillPilot hat das nächste Lernziel bereits aktiviert: "
+                                    + successorTitle
+                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an.",
+                            "Orientation complete. SkillPilot has already activated the next learning goal: "
+                                    + successorTitle
+                                    + ". Begin this goal immediately and do not offer a learning-goal choice.")
+                    : localized(metadata,
+                            "Mastery gespeichert. SkillPilot hat das nächste Lernziel bereits aktiviert: "
+                                    + successorTitle
+                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an.",
+                            "Mastery saved. SkillPilot has already activated the next learning goal: "
+                                    + successorTitle
+                                    + ". Begin this goal immediately and do not offer a learning-goal choice.");
+        } else if (result.status() == CoachToolFacade.MasteryStatus.UPDATED) {
+            successSummary = isOrientationGoal(active)
+                    ? localized(metadata,
+                            "Orientierung abgeschlossen; Folgezustand geladen.",
+                            "Orientation complete; successor state loaded.")
+                    : localized(metadata,
+                            "Mastery gespeichert; Folgezustand geladen.",
+                            "Mastery saved; successor state loaded.");
+        } else {
+            successSummary = localized(metadata,
+                    "Mastery nicht gespeichert; aktuellen Folgezustand beachten.",
+                    "Mastery was not saved; use the current successor state.");
+        }
         return successResult(
-                result.status() == CoachToolFacade.MasteryStatus.UPDATED
-                        ? isOrientationGoal(active)
-                                ? localized(metadata,
-                                        "Orientierung abgeschlossen; Folgezustand geladen.",
-                                        "Orientation complete; successor state loaded.")
-                                : localized(metadata,
-                                        "Mastery gespeichert; Folgezustand geladen.",
-                                        "Mastery saved; successor state loaded.")
-                        : localized(metadata,
-                                "Mastery nicht gespeichert; aktuellen Folgezustand beachten.",
-                                "Mastery was not saved; use the current successor state."),
+                successSummary,
                 response);
     }
 
@@ -2615,7 +2641,7 @@ public final class OpenAiDeV1McpContractAdapter {
                         "savedMastery", numberSchema(0.0, 1.0),
                         "context", contextSchema(),
                         "error", stringSchema()),
-                List.of("status"));
+                List.of("status", "context"));
     }
 
     private static Map<String, Object> memoryPracticeReceiptSchema() {
