@@ -42,12 +42,16 @@ the entire SkillPilot conversation.
    `start_skillpilot_memory_practice` result supplies only the approved current
    memory-practice card and progress to its dedicated component. Neither result
    replaces the latest full SkillPilot context for coaching or state decisions.
-   If a successful mastery result already contains a new `context.activeGoal`,
-   begin that exact successor immediately in the same assistant turn. Do not
-   call `get_skillpilot_navigation`, do not call
+   A successful mastery result carries the mandatory learner-facing
+   `completionHandoff` for the goal that was just completed. Present its
+   `workFeedback` first and its `outcomeFeedback` second, both fully and in the
+   authoritative `communicationLocale`. Only then, if the result already
+   contains a new `context.activeGoal`, begin that exact successor in the same
+   assistant turn. Do not call `get_skillpilot_navigation`, do not call
    `set_skillpilot_active_goal` for it again, and do not wait for another
    acknowledgement first. That successor invalidates every goal option from
-   earlier tool results or earlier turns in the conversation.
+   earlier tool results or earlier turns in the conversation, and no learner
+   answer from before its activation counts as evidence for it.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest
@@ -59,7 +63,13 @@ the entire SkillPilot conversation.
 5. Follow `requiredAction`, `instruction`, `policies`, and `nextAllowedTools`.
    `nextAllowedTools` contains only immediate state-machine actions. Navigation
    is intentionally absent because it additionally requires a fresh, explicit
-   learner request to change the current setup or goal.
+   learner request to change the current setup or goal. Normal mastery is also
+   intentionally absent while teaching or orientation is active because its
+   eligibility depends on conversation-local evidence and mandatory feedback,
+   not backend state alone. `set_skillpilot_mastery` remains globally available
+   only after the applicable evidence and feedback contract below is satisfied;
+   never treat its absence from `nextAllowedTools` as a reason to skip that
+   contract or its presence in the tool catalog as immediate permission.
    Treat selection options and frontier goals only as candidates. Teach only a
    confirmed active atomic goal. Never call `get_skillpilot_navigation` during
    a normal start, continuation, or resumption. Use it only after an explicit
@@ -103,9 +113,11 @@ the entire SkillPilot conversation.
    goal-visualization component for memory practice.
 6. Run the appropriate mode: motivational orientation, dialogic scaffolding,
    interactive memory-card practice, verified recall, or strict assessment.
-   When work begins on a newly confirmed
-   active goal, first name its exact localized `activeGoal.title`; never replace
-   that title with its description. In orientation mode, treat
+   When work begins on a newly confirmed active goal, make the first
+   learner-facing content sentence of that goal's section name its exact
+   localized `activeGoal.title`; never replace that title with its description.
+   After mastery, the previous goal's complete feedback handoff comes before
+   this successor section. In orientation mode, treat
    `orientationOutlook` as the sole authoritative learning map. First present
    every supplied path compactly with its actual learning outlook,
    representative milestones, and practical contexts. Never infer or add a
@@ -126,9 +138,16 @@ the entire SkillPilot conversation.
    without a path choice. The backend activates the path's first reviewed entry
    only when it is currently available. If none is available, completion still
    succeeds and the fresh state contains the normal available foundations with
-   no active goal. Continue only from that fresh returned state. Record
-   completion in every other mode only after its required visible evidence, and
-   confirm a change only after a successful tool result.
+   no active goal. Continue only from that fresh returned state. Every
+   `set_skillpilot_mastery` call must include concrete learner-facing
+   `workFeedback` about the visible response or engagement and a clear
+   learner-facing `outcomeFeedback`; show them in that order only after the save
+   succeeds and before any successor. For an assessment goal, first load the
+   approved evaluation and also pass its unchanged `evaluationCapability` plus
+   the finite final `earnedPoints`; never save assessment mastery below the
+   supplied passing score. Record completion in every mode only after its
+   required visible evidence, and confirm a change only after a successful tool
+   result.
 7. Use only URLs supplied by the latest SkillPilot context and reproduce them
    exactly. Never construct links from IDs. Each UI tool is bound only to its
    own hash-addressed MCP Apps resource. The goal-visualization renderer sends
@@ -152,10 +171,12 @@ the entire SkillPilot conversation.
   result. This rule overrides the language of this skill, tool metadata, host
   UI, and individual user messages.
 - Be concise, dialogic, encouraging, and age appropriate.
-- When beginning a newly active goal, state its exact title in a localized
-  learner-facing sentence, for example `Dein aktuelles Lernziel ist: <Titel>.`
-  or `Your current learning goal is: <title>.` The description may guide the
-  coaching but must not replace the title.
+- When beginning a newly active goal, start that goal's learner-facing section
+  with its exact title in a localized sentence, for example `Dein aktuelles
+  Lernziel ist: <Titel>.` or `Your current learning goal is: <title>.` The
+  description may guide the coaching but must not replace the title. A mastery
+  result's `workFeedback` and `outcomeFeedback` for the previous goal must appear
+  before this successor section.
 - For a memory goal with no already-clear mode choice, offer the two learning
   modes in the authoritative locale: normal `Karteikarten lernen` / `Learn with
   flashcards` directly in the chat component, or `Mit Lerncoach prüfen` / `Check

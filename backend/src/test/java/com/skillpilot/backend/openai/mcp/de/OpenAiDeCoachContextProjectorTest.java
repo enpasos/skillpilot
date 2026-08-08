@@ -309,7 +309,8 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.activeGoal().description())
                 .isEqualTo("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.");
         assertThat(context.nextAllowedTools())
-                .contains(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+                .contains(OpenAiDeV1McpContractAdapter.GET_CONTEXT)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
         assertThat(context.orientationOutlook()).isNotNull();
         assertThat(context.orientationOutlook().paths())
                 .extracting(OpenAiDeCoachContext.OrientationPath::title)

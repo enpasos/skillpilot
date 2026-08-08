@@ -627,8 +627,11 @@ public final class OpenAiDeCoachContextProjector {
                 case "setPersonalization" -> tools.add(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
                 case "setScope" -> tools.add(OpenAiDeV1McpContractAdapter.SET_SCOPE);
                 case "setActiveGoal" -> tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
-                case "orientActiveGoal", "teachActiveGoal", "setMastery" ->
-                    tools.add(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+                case "orientActiveGoal", "teachActiveGoal", "setMastery" -> {
+                    // Mastery depends on conversation-local evidence plus the two
+                    // mandatory feedback texts. It remains globally available but
+                    // is deliberately not advertised as an immediate state action.
+                }
                 case "chooseMemoryMode" -> {
                     if (isMemoryGoal(activeGoal)) {
                         tools.add(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE);
@@ -701,11 +704,11 @@ public final class OpenAiDeCoachContextProjector {
                     "Arbeite dialogisch an genau einem bestätigten atomischen Ziel: Nenne zuerst seinen exakten Titel, nicht die Beschreibung. Prüfe kurz Vorwissen, knüpfe ausdrücklich an die Antwort an, gib kleine Hinweise, lasse mit ein bis drei Aufgaben selbst arbeiten und unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der unmittelbar folgenden Aufgabe vor; nach einem Mini-Beispiel muss die Folgeübung einen anderen Fall oder Wortlaut verwenden.",
                     "Bewerte die fachliche Bedeutung statt den Wortlaut. Rekonstruiere ungewöhnliche Wege fair und korrigiere nur tatsächlich falsche oder unbegründete Schritte; ausdrücklich verlangte Formate und Inhalte bleiben bindend.",
                     "Nutze bei ausdrücklich visuell, grafisch oder für GeoGebra markierten Zielen eine gelieferte sichtbare Ressource und lasse dort beobachten, eingeben, verändern oder ablesen; ersetze die geforderte Interaktion nicht durch reinen Text.",
-                    "Speichere Mastery nur nach zwei unabhängigen Checks, etwa Erklärung plus neue Anwendung, oder nach echtem mehrschrittigem Transfer in verändertem Kontext. Prüfe alle Aspekte eines mehrteiligen Ziels; Selbsteinschätzung, Wiederholung und derselbe vorgerechnete Fall genügen nicht. Ist die Kompetenz noch nicht gezeigt, bleibe beim aktiven Ziel und arbeite mit einer kurzen Zusatzfrage, einem gezielten Hinweis oder Teilschritt oder einer passenden neuen Aufgabe weiter; fordere nach einem Fehler Korrektur und neue Evidenz. Cluster- und Memorierungsziele werden nie manuell gemeistert."));
+                    "Speichere Mastery nur nach zwei unabhängigen Checks, etwa Erklärung plus neue Anwendung, oder nach echtem mehrschrittigem Transfer in verändertem Kontext. Prüfe alle Aspekte eines mehrteiligen Ziels; Selbsteinschätzung, Wiederholung und derselbe vorgerechnete Fall genügen nicht. Übergib beim Abschluss immer eine konkrete inhaltliche Rückmeldung zum sichtbaren Lösungsweg sowie eine klare Ergebnisrückmeldung. Nach bestätigtem Speichern müssen beide vor dem nächsten Lernziel sichtbar erscheinen. Ist die Kompetenz noch nicht gezeigt, bleibe beim aktiven Ziel und arbeite mit einer kurzen Zusatzfrage, einem gezielten Hinweis oder Teilschritt oder einer passenden neuen Aufgabe weiter; fordere nach einem Fehler Korrektur und neue Evidenz. Cluster- und Memorierungsziele werden nie manuell gemeistert."));
             case "exam" -> policies.addAll(List.of(
                     "Prüfungsmodus: Gib die Aufgabe wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Gib keine Hinweise, Teilantworten, Lösungen oder Scaffolds und stelle während der Prüfung keine Rückfragen.",
                     "Lade Lösung und Raster erst nach einer vollständigen sichtbaren Abgabe. Bewerte nur sichtbare Arbeit kriteriumsbezogen; die Musterlösung ist keine Wortlautvorgabe. Gleichwertige Wege, Darstellungen, Rundungen und Begründungen zählen voll, sofern die Aufgabe nichts Bestimmtes verlangt.",
-                    "Ordne jeden Punktabzug konkret zu. Unterstelle bei Unleserlichkeit keinen Fachfehler. Speichere Mastery ausschließlich nach finalem Bestehen mit mindestens der ausgewiesenen Bestehenspunktzahl."));
+                    "Ordne jeden Punktabzug konkret zu. Unterstelle bei Unleserlichkeit keinen Fachfehler. Speichere Mastery ausschließlich nach finalem Bestehen mit mindestens der ausgewiesenen Bestehenspunktzahl, mit der unveränderten evaluationCapability, earnedPoints und vollständiger inhaltlicher sowie Ergebnisrückmeldung. Beide Rückmeldungen und die bestätigte Punktzahl müssen vor dem nächsten Lernziel sichtbar erscheinen."));
             case "verifiedRecall" -> policies.addAll(List.of(
                     "Verified Recall: Zeige den vollständigen Fragenbatch in Reihenfolge und warte auf alle Antworten. Lade jede Sollantwort erst nach der zugehörigen Lernendenantwort.",
                     "Vergleiche fachlich und akzeptiere gleichwertige Formulierungen. Speichere jede Karte sofort; passed=true nur bei richtiger Antwort ohne Hilfe. Speichere den ganzen Batch vor dem nächsten Batch. Prüfe dieselbe Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery."));
@@ -849,7 +852,9 @@ public final class OpenAiDeCoachContextProjector {
                             + "Arbeite dialogisch am aktiven Lernziel. Anerkenne fachlich gleichwertige korrekte Lösungswege, "
                             + "Darstellungen und Begründungen; ausdrücklich verlangte Formate bleiben verbindlich. "
                             + "Speichere Mastery erst nach zwei unabhängigen Checks oder echtem Transfer in einem "
-                            + "veränderten Kontext und nachdem alle Aspekte des Ziels geprüft sind.";
+                            + "veränderten Kontext und nachdem alle Aspekte des Ziels geprüft sind. Formuliere dafür "
+                            + "immer konkrete workFeedback- und outcomeFeedback-Texte; nach bestätigtem Speichern "
+                            + "müssen beide vor dem nächsten Lernziel sichtbar ausgegeben werden.";
             default -> "Folge ausschließlich der angezeigten erforderlichen Aktion und lade danach den Kontext neu.";
         };
     }
@@ -876,11 +881,11 @@ public final class OpenAiDeCoachContextProjector {
                     "Coach dialogically on exactly one confirmed atomic goal: first state its exact title, not the description. Briefly check prior knowledge, connect the next step explicitly to the learner's answer, give small hints, use one to three tasks, let the learner work, distinguish conceptual from careless errors, and never reveal the immediate next solution. After a mini-example, the next exercise must use a different case or wording.",
                     "Assess technical meaning rather than wording. Reconstruct unusual approaches fairly and correct only genuinely false or unsupported steps; explicitly required formats and content remain binding.",
                     "For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and let the learner observe, enter, change, or read there; do not replace required interaction with pure text.",
-                    "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. If competence has not yet been demonstrated, stay on the active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Never manually master clusters or memorisation goals."));
+                    "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. On completion, always pass concrete feedback on the visible reasoning plus a clear outcome statement. After confirmed persistence, both must be shown before the next learning goal. If competence has not yet been demonstrated, stay on the active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Never manually master clusters or memorisation goals."));
             case "exam" -> policies.addAll(List.of(
                     "Exam mode: reproduce the task verbatim except for replacing dollar TeX delimiters. Give no hints, partial answers, solutions, scaffolds, or follow-up questions during the exam.",
                     "Load the solution and rubric only after a complete visible submission. Assess only visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches, representations, rounding, and justifications receive full credit unless the task requires something specific.",
-                    "Assign every point deduction concretely. Do not infer a subject error from unreadable work. Save mastery only after a final pass with at least the published passing score."));
+                    "Assign every point deduction concretely. Do not infer a subject error from unreadable work. Save mastery only after a final pass with at least the published passing score, copying evaluationCapability unchanged and passing earnedPoints plus complete work and outcome feedback. Show both feedback texts and the confirmed score before the next learning goal."));
             case "verifiedRecall" -> policies.addAll(List.of(
                     "Verified Recall: show the complete question batch in order and wait for all answers. Load each expected answer only after the corresponding learner answer.",
                     "Compare technical meaning and accept equivalent wording. Save every card immediately; passed=true only for a correct answer without help. Save the full batch before the next one, check a card at most once per day, and save no additional manual mastery."));
@@ -965,7 +970,7 @@ public final class OpenAiDeCoachContextProjector {
                     + "learning goals, and do not ask for further confirmation. "
                     + "All goal options mentioned earlier in the conversation are invalidated by this current "
                     + "successor state. "
-                    + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect.";
+                    + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect. Always formulate concrete workFeedback and outcomeFeedback; after confirmed persistence, show both before the next learning goal.";
             default -> "Follow only the published required action, then reload the context.";
         };
     }
@@ -1127,13 +1132,15 @@ public final class OpenAiDeCoachContextProjector {
         }
         String title = compact(goal.title(), 240);
         if (english) {
-            return "When beginning work on this newly confirmed goal, start the first learner-facing content "
-                    + "sentence exactly with: “Your current learning goal is: " + title + ".” Use the title, not "
-                    + "the description, and give no explanation before it. ";
+            return "When beginning work on this newly confirmed goal, start the first sentence of the new-goal "
+                    + "section exactly with: “Your current learning goal is: " + title + ".” Use the title, not "
+                    + "the description, and give no explanation before it within that section. A mandatory "
+                    + "completion handoff for the previous goal must still appear before this section. ";
         }
-        return "Beginne die erste sichtbare inhaltliche Antwort zu diesem neu bestätigten Ziel genau mit: "
+        return "Beginne den Abschnitt zu diesem neu bestätigten Ziel genau mit dem Satz: "
                 + "„Dein aktuelles Lernziel ist: " + title + ".“ Verwende den Titel, nicht die Beschreibung, und "
-                + "gib davor keine Erklärung. ";
+                + "gib innerhalb dieses Abschnitts davor keine Erklärung. Eine verpflichtende Abschlussrückmeldung "
+                + "zum vorherigen Ziel muss dennoch vor diesem Abschnitt erscheinen. ";
     }
 
     private boolean isExamGoal(FrontierGoal goal) {

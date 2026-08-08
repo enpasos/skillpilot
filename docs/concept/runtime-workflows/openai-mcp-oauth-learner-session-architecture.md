@@ -67,10 +67,8 @@ Jeder Klick auf **Lernen starten** ist eine eigene atomare Startoperation:
 Beispiel:
 
 ```text
-Verwende die App SkillPilot Coach v1 und fahre mit dem in
-SkillPilot vorbereiteten nächsten Schritt fort.
-
-SkillPilot-Lernsession: sps_<zufälliger opaker Wert>
+Verwende SkillPilot Coach v1 und fahre fort.
+learningSessionId: sps_<zufälliger opaker Wert>
 ```
 
 Die Lernsession-ID ist damit für ChatGPT sichtbar, aber nicht die dauerhafte

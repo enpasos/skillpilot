@@ -1077,6 +1077,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
                 objectMapper.writeValueAsString(Map.of(
                         "goalId", orientationGoalId,
+                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK,
+                        "Du hast den gewählten Interessenpfad auf deine Lernziele bezogen.",
+                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK,
+                        "Die Orientierung ist damit abgeschlossen.",
                         OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID,
                         selectedOrientationPath.pathId())),
                 resumedLearningSessionId);
@@ -1148,15 +1152,30 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(activeOrdinaryContext.path("activeGoal").path("goalId").asText())
                 .isEqualTo(completedOrdinaryGoalId);
 
+        String workFeedback = "Dein Lösungsweg ist fachlich schlüssig und die Begründung trägt das Ergebnis.";
+        String outcomeFeedback = "Das Lernziel ist vollständig erreicht.";
+
         HttpResponse<String> completeOrdinaryGoal = callTool(
                 accessToken,
                 18,
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                objectMapper.writeValueAsString(Map.of("goalId", completedOrdinaryGoalId)),
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", completedOrdinaryGoalId,
+                        OpenAiDeV1McpContractAdapter.WORK_FEEDBACK, workFeedback,
+                        OpenAiDeV1McpContractAdapter.OUTCOME_FEEDBACK, outcomeFeedback)),
                 resumedLearningSessionId);
         assertMcpPayloadDoesNotExposeIdentity(completeOrdinaryGoal, applicationSubject);
         JsonNode masteryResult = result(completeOrdinaryGoal).path("structuredContent");
         assertThat(masteryResult.path("status").asText()).isEqualTo("updated");
+        JsonNode completionHandoff = masteryResult.path("completionHandoff");
+        assertThat(completionHandoff.path("completedGoalId").asText())
+                .isEqualTo(completedOrdinaryGoalId);
+        assertThat(completionHandoff.path("workFeedback").asText()).isEqualTo(workFeedback);
+        assertThat(completionHandoff.path("outcomeFeedback").asText()).isEqualTo(outcomeFeedback);
+        assertThat(completionHandoff.path("successorEvidenceReset").asBoolean()).isTrue();
+        String completionText = result(completeOrdinaryGoal).path("content").toString();
+        assertThat(completionText.indexOf(workFeedback)).isGreaterThanOrEqualTo(0);
+        assertThat(completionText.indexOf(outcomeFeedback)).isGreaterThan(completionText.indexOf(workFeedback));
         JsonNode autopilotSuccessorContext = masteryResult.path("context");
         String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
         assertThat(successorGoalId).isNotBlank().isNotEqualTo(completedOrdinaryGoalId);
@@ -1172,7 +1191,13 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         .toList())
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
-                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                        OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(completionText.indexOf(autopilotSuccessorContext
+                        .path("activeGoal")
+                        .path("title")
+                        .asText()))
+                .isGreaterThan(completionText.indexOf(outcomeFeedback));
 
         HttpResponse<String> persistedSuccessorRead = callTool(
                 accessToken,

@@ -59,6 +59,13 @@ line. This version has not been published yet.
   assessments, or mastery proof
 - exact localized active-goal title announcement and full dialogic learning
   behavior carried forward from the proven German and English coach guides
+- mandatory completion handoff for every mastery write: concrete feedback on
+  the learner's work, followed by a clear outcome, is returned and shown before
+  the already activated successor; evidence from the completed goal is reset
+  at that transition
+- fail-closed exam completion: the released evaluation supplies a
+  session-, goal-, state-, and curriculum-bound capability, and mastery is
+  accepted only with that capability and a finite passing score
 - authoritative autopilot continuation without a stale goal menu: immediate
   next actions no longer advertise navigation, accidental goal navigation
   publishes no choices while a goal is active, and only an explicit

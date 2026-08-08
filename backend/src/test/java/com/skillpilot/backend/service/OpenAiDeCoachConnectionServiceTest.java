@@ -10,9 +10,13 @@ import static org.mockito.Mockito.when;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntent;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
+import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
+import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
@@ -24,10 +28,15 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -36,6 +45,8 @@ class OpenAiDeCoachConnectionServiceTest {
     private static final String SKILLPILOT_ID = "learner-secret-id";
     private static final String SIGNING_SECRET = "unit-test-signing-secret";
     private static final String LEARNING_SESSION_ID = "sps_" + "A".repeat(43);
+    private static final String ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
+    private static final String ABI26_LK_GOAL_ID = "68a262fc-43f4-5d23-af30-853870bfd45b";
 
     private OpenAiDeLearningSessionRepository learningSessions;
     private LearnerRepository learners;
@@ -137,6 +148,46 @@ class OpenAiDeCoachConnectionServiceTest {
                 .isEqualTo("prepared-next-goal");
     }
 
+    @ParameterizedTest
+    @MethodSource("launchPromptCases")
+    void launchPromptIsMinimalAndKeepsExactlyOneSessionForEveryIntentAndLocale(
+            String communicationLocale,
+            LaunchIntent launchIntent,
+            String expectedInstruction) {
+        if (launchIntent.type() == LaunchIntentType.VERIFIED_RECALL) {
+            prepareAtomicLaunchGoal(
+                    launchIntent.goalId(),
+                    "memory",
+                    List.of("memorization", "srs-deck:test"),
+                    null);
+        } else if (launchIntent.type() == LaunchIntentType.ABI26_EXAM) {
+            prepareAtomicLaunchGoal(
+                    launchIntent.goalId(),
+                    "exam",
+                    List.of(launchIntent.courseLevel()),
+                    new ExamData());
+        }
+
+        OpenAiDeCoachStartRequest request = new OpenAiDeCoachStartRequest(
+                communicationLocale,
+                "web",
+                "math",
+                true,
+                launchIntent);
+
+        var response = service.createLaunch(SKILLPILOT_ID, request);
+
+        assertThat(response.prompt())
+                .isEqualTo(expectedInstruction
+                        + "\nlearningSessionId: "
+                        + response.learningSessionId())
+                .containsOnlyOnce(response.learningSessionId())
+                .doesNotContain(SKILLPILOT_ID);
+        if (launchIntent.goalId() != null) {
+            assertThat(response.prompt()).doesNotContain(launchIntent.goalId());
+        }
+    }
+
     @Test
     void validExplicitSessionResolvesLearnerWithoutUsingOAuthAsLearnerIdentity() throws Exception {
         OpenAiDeLearningSession persisted = persistedSession(Instant.now().plusSeconds(60));
@@ -200,7 +251,7 @@ class OpenAiDeCoachConnectionServiceTest {
         verify(learningSessions).save(persisted.capture());
         assertThat(persisted.getValue().getCommunicationLocale()).isEqualTo("en-GB");
         assertThat(response.prompt())
-                .contains("Use the SkillPilot Coach v1 app", "SkillPilot learning session")
+                .contains("Use SkillPilot Coach v1 and continue.", "learningSessionId: ")
                 .doesNotContain("Verwende die App", SKILLPILOT_ID);
     }
 
@@ -227,6 +278,89 @@ class OpenAiDeCoachConnectionServiceTest {
                 "math",
                 true,
                 new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+    }
+
+    private static Stream<Arguments> launchPromptCases() {
+        return Stream.of(
+                Arguments.of(
+                        "de",
+                        new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null),
+                        "Verwende SkillPilot Coach v1 und fahre fort."),
+                Arguments.of(
+                        "en",
+                        new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null),
+                        "Use SkillPilot Coach v1 and continue."),
+                Arguments.of(
+                        "de",
+                        new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
+                        "Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten."),
+                Arguments.of(
+                        "en",
+                        new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
+                        "Use SkillPilot Coach v1 and start a strict recall check with 7 cards."),
+                Arguments.of(
+                        "de",
+                        new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_GK_GOAL_ID, null, "GK"),
+                        "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung (Grundkurs)."),
+                Arguments.of(
+                        "de",
+                        new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_LK_GOAL_ID, null, "LK"),
+                        "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung (Leistungskurs)."),
+                Arguments.of(
+                        "en",
+                        new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_GK_GOAL_ID, null, "GK"),
+                        "Use SkillPilot Coach v1 and start the mathematics Abitur exam (basic course)."),
+                Arguments.of(
+                        "en",
+                        new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_LK_GOAL_ID, null, "LK"),
+                        "Use SkillPilot Coach v1 and start the mathematics Abitur exam (advanced course)."));
+    }
+
+    private void prepareAtomicLaunchGoal(
+            String goalId,
+            String nodeKind,
+            List<String> tags,
+            ExamData examData) {
+        LearningGoal goal = new LearningGoal();
+        goal.setId(goalId);
+        goal.setType("atomic");
+        goal.setNodeKind(nodeKind);
+        goal.setTags(tags);
+        goal.setContains(List.of());
+        goal.setExamData(examData);
+
+        SkillLandscape landscape = new SkillLandscape();
+        landscape.setLandscapeId("math");
+        landscape.setGoals(List.of(goal));
+        when(landscapeService.getById("math")).thenReturn(landscape);
+        when(landscapeService.getClosure("math")).thenReturn(List.of(landscape));
+
+        learner.setActiveGoalId(goalId);
+        FrontierGoal activeGoal = new FrontierGoal(
+                goalId,
+                "Test goal",
+                "Test description",
+                "atomic",
+                nodeKind,
+                "Prerequisites met",
+                tags,
+                List.of(),
+                null,
+                null,
+                null,
+                examData);
+        UnifiedLearnerStateResponse learnerState = new UnifiedLearnerStateResponse(
+                SKILLPILOT_ID,
+                null,
+                List.of(activeGoal),
+                null,
+                List.of(),
+                List.of(),
+                Set.of(),
+                "frontier",
+                activeGoal,
+                null);
+        when(learnerService.getLearnerState(SKILLPILOT_ID)).thenReturn(learnerState);
     }
 
     private OpenAiDeLearningSession persistedSession(Instant expiresAt) throws Exception {

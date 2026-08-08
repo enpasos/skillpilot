@@ -469,32 +469,24 @@ public class OpenAiDeCoachConnectionService {
         String instruction = switch (launch.type()) {
             case CURRENT_UNIT ->
                     english
-                            ? "Use the SkillPilot Coach v1 app and continue with the next step prepared in SkillPilot."
-                            : "Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten "
-                                    + "nächsten Schritt fort.";
+                            ? "Use SkillPilot Coach v1 and continue."
+                            : "Verwende SkillPilot Coach v1 und fahre fort.";
             case VERIFIED_RECALL ->
                     english
-                            ? "Use the SkillPilot Coach v1 app and start a strict recall check with "
-                                    + launch.batchSize() + " cards for my currently selected learning goal."
-                            : "Verwende die App SkillPilot Coach v1 und starte für mein aktuell ausgewähltes Lernziel "
-                                    + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";
+                            ? "Use SkillPilot Coach v1 and start a strict recall check with "
+                                    + launch.batchSize() + " cards."
+                            : "Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit "
+                                    + launch.batchSize() + " Karten.";
             case ABI26_EXAM ->
                     english
-                            ? "Use the SkillPilot Coach v1 app and start exam mode with the mathematics Abitur task "
-                                    + "selected in my cockpit for the "
-                                    + ("LK".equals(launch.courseLevel()) ? "advanced course." : "basic course.")
-                            : "Verwende die App SkillPilot Coach v1 und starte im Prüfungsmodus mit meiner im Cockpit "
-                                    + "ausgewählten Mathematik-Abituraufgabe für den "
-                                    + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
+                            ? "Use SkillPilot Coach v1 and start the mathematics Abitur exam ("
+                                    + ("LK".equals(launch.courseLevel()) ? "advanced course)." : "basic course).")
+                            : "Verwende SkillPilot Coach v1 und starte die Mathematik-Abiturprüfung ("
+                                    + ("LK".equals(launch.courseLevel()) ? "Leistungskurs)." : "Grundkurs).");
         };
         return instruction
-                + (english ? "\n\nSkillPilot learning session: " : "\n\nSkillPilot-Lernsession: ")
-                + learningSessionId
-                + (english
-                        ? "\nUse this learning session unchanged in the learningSessionId parameter for every "
-                                + "SkillPilot app call."
-                        : "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "
-                                + "learningSessionId.");
+                + "\nlearningSessionId: "
+                + learningSessionId;
     }
 
     private String trimAndValidateLength(String value, String field, int maxLength) {

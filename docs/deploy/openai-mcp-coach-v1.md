@@ -938,7 +938,7 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende die App SkillPilot Coach v1 und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
+| `Verwende SkillPilot Coach v1 und fahre fort.`<br>`learningSessionId: sps_…` | `get_skillpilot_context` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
 | Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | `get_skillpilot_context` läuft; unmittelbar danach folgt `render_skillpilot_goal_visualization` genau einmal mit `goalId` und `expectedStateVersion` aus demselben Ergebnis. Danach bleibt die fachliche Antwort vollständig. |
 | Das neueste Ergebnis enthält kein Bild oder erlaubt den Renderer nicht | Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig. |
 | Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor | Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht. |

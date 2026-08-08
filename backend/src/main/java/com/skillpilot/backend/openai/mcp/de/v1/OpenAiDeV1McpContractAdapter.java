@@ -40,6 +40,7 @@ import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -107,9 +108,16 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
     public static final String ORIENTATION_PATH_ID = "orientationPathId";
+    public static final String WORK_FEEDBACK = "workFeedback";
+    public static final String OUTCOME_FEEDBACK = "outcomeFeedback";
+    public static final String EXAM_EVALUATION_CAPABILITY = "evaluationCapability";
+    public static final String EXAM_EARNED_POINTS = "earnedPoints";
     private static final String MEMORY_PRACTICE_REVIEW_CAPABILITY = "reviewCapability";
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String MEMORY_PRACTICE_CAPABILITY_CONTEXT = "skillpilot-memory-practice-card-v1";
+    private static final String EXAM_EVALUATION_CAPABILITY_CONTEXT = "skillpilot-exam-evaluation-v1";
+    private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
+    private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
@@ -131,11 +139,11 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
 
-            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. In particular, after successful mastery activates a successor, never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
+            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give both learner-facing texts from completionHandoff as concrete feedback on the completed goal, and only then begin the already activated successor in the same response. Never omit, merge, postpone, or replace either feedback text with the successor introduction. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
-            When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence, and give no explanation before it.
+            When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
             The SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.
 
@@ -143,13 +151,13 @@ public final class OpenAiDeV1McpContractAdapter {
 
             When interactionMode=orientation, do not conduct a subject-matter assessment. After the exact goal-title sentence, use orientationOutlook as the sole authoritative map of the material ahead: briefly present every supplied path, what the learner will actually learn along it, its representative later milestones, and where that knowledge is practically useful. Do not invent, add, merge, or substitute paths, applications, or follow-on topics. If orientationOutlook is absent, stay general about the active orientation goal and only offer to continue directly. Then ask a low-threshold question about which supplied path sparks curiosity or whether the learner wants to continue. A reply that merely names one path starts the motivational dialogue; it is not completion evidence and not a request to leave the active goal. Map a free-form interest to a path only when exactly one supplied path clearly matches it; otherwise ask which supplied path the learner means and never guess a pathId. Take up that exact path, connect two to four of its supplied milestones to its supplied practical contexts, and ask one active personal follow-up with no technically right or wrong answer. Do not test prior knowledge, terms, procedures, details, correctness, transfer, recall, or Feynman teach-back. Save orientation completion only after the learner meaningfully engages with that tailored follow-up or explicitly asks to continue directly; a content-free acknowledgement alone is not sufficient. When completing a selected path, pass its exact pathId unchanged as orientationPathId. SkillPilot activates the path's first reviewed entry only when it is currently available; otherwise completion still succeeds and the normal available foundations return without an active goal. Omit orientationPathId only when the learner explicitly chose to continue without selecting a path. A generic acknowledgement followed immediately by unrelated next-goal options is forbidden. Orientation is only a completion marker and never certifies subject mastery.
 
-            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
+            For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. On that call, workFeedback must assess the learner's visible reasoning or approach and outcomeFeedback must state the accepted result or conclusion; generic praise is insufficient. After success, present both returned texts before introducing the successor. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
             If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
-            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints.
+            In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints plus concrete workFeedback and outcomeFeedback. Present the returned feedback and score before introducing the successor.
 
             For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
 
@@ -163,7 +171,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private final OpenAiDeV1McpSessionCoordinator sessionCoordinator;
     private final OpenAiDeCoachContextProjector contextProjector;
     private final String sessionStartUrl;
-    private final byte[] memoryPracticeCapabilitySecret;
+    private final byte[] capabilitySecret;
     private final List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications;
     private final List<McpStatelessServerFeatures.SyncResourceSpecification> resourceSpecifications;
 
@@ -188,7 +196,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 publicBaseUrl,
                 serverBuild);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
-        this.memoryPracticeCapabilitySecret = signingSecret.getBytes(StandardCharsets.UTF_8);
+        this.capabilitySecret = signingSecret.getBytes(StandardCharsets.UTF_8);
         this.toolSpecifications = buildToolSpecifications();
         this.resourceSpecifications = buildResourceSpecifications();
     }
@@ -225,7 +233,7 @@ public final class OpenAiDeV1McpContractAdapter {
         this.sessionCoordinator = null;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
-        this.memoryPracticeCapabilitySecret =
+        this.capabilitySecret =
                 "skillpilot-memory-practice-test-secret".getBytes(StandardCharsets.UTF_8);
         this.toolSpecifications = buildToolSpecifications();
         this.resourceSpecifications = buildResourceSpecifications();
@@ -267,10 +275,24 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record CompletionHandoff(
+            String completedGoalId,
+            String completedGoalTitle,
+            String workFeedback,
+            String outcomeFeedback,
+            Double earnedPoints,
+            Double maxPoints,
+            String successorGoalTitle,
+            String instruction,
+            boolean successorEvidenceReset) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public record MasteryToolResult(
             String status,
             String savedGoalId,
             Double savedMastery,
+            CompletionHandoff completionHandoff,
             OpenAiDeCoachContext context,
             String error) {
     }
@@ -326,6 +348,7 @@ public final class OpenAiDeV1McpContractAdapter {
             String goalId,
             String solutionContent,
             ExamScoring scoring,
+            String evaluationCapability,
             String instruction) {
     }
 
@@ -506,10 +529,14 @@ public final class OpenAiDeV1McpContractAdapter {
                         this::setActiveGoal),
                 tool(
                         SET_MASTERY,
-                        "Save mastery",
-                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. After "
-                                + "success, if the returned context contains activeGoal, continue that exact "
-                                + "successor immediately; never load navigation or set that goal again. "
+                        "Finalize evaluated learning goal",
+                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. Every "
+                                + "call must carry two concrete learner-facing feedback texts about the work just "
+                                + "completed: workFeedback assesses the reasoning or approach, and outcomeFeedback "
+                                + "states the accepted result or conclusion. If either cannot be written from visible "
+                                + "evidence, do not call this tool. After success, first present both texts from "
+                                + "completionHandoff, then begin the exact successor from context.activeGoal in the "
+                                + "same response; never load navigation or set that goal again. "
                                 + "For interactionMode=orientation, use orientationOutlook as the complete authoritative "
                                 + "learning map. A reply that merely names one supplied path starts the tailored "
                                 + "motivational follow-up and must not call this tool. Resolve a free-form interest "
@@ -528,12 +555,28 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "For ordinary content goals, call only after two independent visible checks or "
                                 + "genuine multi-step transfer in a changed context covering all aspects. Never use "
                                 + "for clusters, memorisation/SRS goals, self-assessment, repetition, or the same "
-                                + "worked case.",
+                                + "worked case. For exam goals, first call get_skillpilot_exam_evaluation. Copy its "
+                                + "evaluationCapability unchanged, pass earnedPoints from the completed rubric, and "
+                                + "call only when earnedPoints reaches passingPoints.",
                         objectSchema(
                                 Map.of(
                                         "goalId", modelFacingOpaqueReferenceSchema(),
-                                        ORIENTATION_PATH_ID, boundedNonEmptyStringSchema(320)),
-                                List.of("goalId")),
+                                        ORIENTATION_PATH_ID, boundedNonEmptyStringSchema(320),
+                                        WORK_FEEDBACK, describedSchema(
+                                                stringSchema(),
+                                                "Concrete learner-facing feedback on the visible reasoning, approach, "
+                                                        + "or meaningful orientation contribution, written in the "
+                                                        + "authoritative communicationLocale. This exact text is returned "
+                                                        + "before any successor goal."),
+                                        OUTCOME_FEEDBACK, describedSchema(
+                                                stringSchema(),
+                                                "Clear learner-facing statement of the accepted result, conclusion, or "
+                                                        + "orientation completion, written in the authoritative "
+                                                        + "communicationLocale. This exact text is returned before any "
+                                                        + "successor goal."),
+                                        EXAM_EVALUATION_CAPABILITY, modelFacingOpaqueReferenceSchema(),
+                                        EXAM_EARNED_POINTS, numberSchema(0.0, Double.MAX_VALUE)),
+                                List.of("goalId", WORK_FEEDBACK, OUTCOME_FEEDBACK)),
                         masterySchema(),
                         false,
                         true,
@@ -588,7 +631,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         GET_EXAM_EVALUATION,
                         "Load exam evaluation",
                         "Loads the solution and scoring rubric only for the active approved exam goal and only after "
-                                + "a complete visible submission. Never ask follow-up questions in exam mode.",
+                                + "a complete visible submission. It returns the evaluationCapability required by "
+                                + "set_skillpilot_mastery after a passing final assessment. Never ask follow-up "
+                                + "questions in exam mode.",
                         objectSchema(
                                 Map.of("goalId", modelFacingOpaqueReferenceSchema()),
                                 List.of("goalId")),
@@ -1291,16 +1336,63 @@ public final class OpenAiDeV1McpContractAdapter {
             String learningSessionId,
             String goalId,
             String cardId) {
+        return capabilityBytes(
+                MEMORY_PRACTICE_CAPABILITY_CONTEXT,
+                learningSessionId,
+                goalId,
+                cardId);
+    }
+
+    private String examEvaluationCapability(
+            String learningSessionId,
+            String goalId,
+            OpenAiDeV1SessionMetadata metadata) {
+        return Base64.getUrlEncoder()
+                .withoutPadding()
+                .encodeToString(examEvaluationCapabilityBytes(learningSessionId, goalId, metadata));
+    }
+
+    private boolean verifyExamEvaluationCapability(
+            String capability,
+            String learningSessionId,
+            String goalId,
+            OpenAiDeV1SessionMetadata metadata) {
+        try {
+            byte[] supplied = Base64.getUrlDecoder().decode(capability);
+            return MessageDigest.isEqual(
+                    supplied,
+                    examEvaluationCapabilityBytes(learningSessionId, goalId, metadata));
+        } catch (IllegalArgumentException exception) {
+            return false;
+        }
+    }
+
+    private byte[] examEvaluationCapabilityBytes(
+            String learningSessionId,
+            String goalId,
+            OpenAiDeV1SessionMetadata metadata) {
+        if (metadata == null) {
+            throw new IllegalStateException("Exam evaluation capability requires session metadata.");
+        }
+        return capabilityBytes(
+                EXAM_EVALUATION_CAPABILITY_CONTEXT,
+                learningSessionId,
+                goalId,
+                Long.toString(metadata.stateVersion()),
+                metadata.curriculumRevision());
+    }
+
+    private byte[] capabilityBytes(String context, String... frames) {
         try {
             Mac mac = Mac.getInstance(HMAC_ALGORITHM);
-            mac.init(new SecretKeySpec(memoryPracticeCapabilitySecret, HMAC_ALGORITHM));
-            updateCapabilityFrame(mac, MEMORY_PRACTICE_CAPABILITY_CONTEXT);
-            updateCapabilityFrame(mac, learningSessionId);
-            updateCapabilityFrame(mac, goalId);
-            updateCapabilityFrame(mac, cardId);
+            mac.init(new SecretKeySpec(capabilitySecret, HMAC_ALGORITHM));
+            updateCapabilityFrame(mac, context);
+            for (String frame : frames) {
+                updateCapabilityFrame(mac, frame == null ? "" : frame);
+            }
             return mac.doFinal();
         } catch (Exception exception) {
-            throw new IllegalStateException("Could not protect a memory-practice card capability.", exception);
+            throw new IllegalStateException("Could not protect an MCP capability.", exception);
         }
     }
 
@@ -1604,7 +1696,17 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         String goalId = requiredString(arguments, "goalId");
+        String workFeedback = requiredBoundedString(
+                arguments,
+                WORK_FEEDBACK,
+                MAX_WORK_FEEDBACK_LENGTH);
+        String outcomeFeedback = requiredBoundedString(
+                arguments,
+                OUTCOME_FEEDBACK,
+                MAX_OUTCOME_FEEDBACK_LENGTH);
         String orientationPathId = optionalString(arguments, ORIENTATION_PATH_ID);
+        String evaluationCapability = optionalString(arguments, EXAM_EVALUATION_CAPABILITY);
+        Double earnedPoints = optionalFiniteDouble(arguments, EXAM_EARNED_POINTS);
         if (orientationPathId != null && orientationPathId.isBlank()) {
             throw new IllegalArgumentException(ORIENTATION_PATH_ID + " darf nicht leer sein.");
         }
@@ -1619,6 +1721,61 @@ public final class OpenAiDeV1McpContractAdapter {
                     localized(metadata,
                             "Dieses Ziel darf nicht über die normale Coach-Mastery abgeschlossen werden.",
                             "This goal cannot be completed through ordinary coach mastery."),
+                    metadata);
+        }
+        Double examMaxPoints = null;
+        if (isExamGoal(active)) {
+            if (evaluationCapability == null || evaluationCapability.isBlank() || earnedPoints == null) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "Eine Prüfungs-Mastery benötigt zuerst die freigegebene Bewertung sowie deren "
+                                        + "evaluationCapability und earnedPoints.",
+                                "Exam mastery first requires the approved evaluation together with its "
+                                        + "evaluationCapability and earnedPoints."),
+                        metadata);
+            }
+            String learningSessionId = requiredLearningSessionId(arguments);
+            if (!verifyExamEvaluationCapability(
+                    evaluationCapability,
+                    learningSessionId,
+                    goalId,
+                    metadata)) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "Diese Prüfungsbewertung gehört nicht zur aktuellen Aufgabe und Lernsession.",
+                                "This exam evaluation does not belong to the current task and learning session."),
+                        metadata);
+            }
+            CoachToolFacade.ExamEvaluationResult evaluation = coachTools.getExamEvaluation(
+                    skillpilotId,
+                    new CoachToolFacade.ExamEvaluationRequest(goalId));
+            examMaxPoints = evaluation.scoring().maxPoints();
+            if (earnedPoints < 0.0 || earnedPoints > examMaxPoints) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "Die angegebene Punktzahl liegt außerhalb des freigegebenen Bewertungsrasters.",
+                                "The supplied score is outside the approved scoring rubric."),
+                        metadata);
+            }
+            if (earnedPoints < evaluation.scoring().passingPoints()) {
+                return errorResult(
+                        OpenAiDeV1ErrorCode.INVALID_INPUT,
+                        localized(metadata,
+                                "Die Prüfung ist noch nicht bestanden. Gib die vollständige Rückmeldung und bleibe "
+                                        + "bei derselben aktiven Prüfungsaufgabe; speichere keine Mastery.",
+                                "The exam has not passed yet. Give the complete feedback and remain on the same "
+                                        + "active exam task; do not save mastery."),
+                        metadata);
+            }
+        } else if (evaluationCapability != null || earnedPoints != null) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    localized(metadata,
+                            "Prüfungsbewertung und Punktzahl sind nur für ein aktives Prüfungsziel zulässig.",
+                            "Exam evaluation capability and score are allowed only for an active exam goal."),
                     metadata);
         }
         OrientationOutlook.Path selectedOrientationPath = null;
@@ -1657,6 +1814,14 @@ public final class OpenAiDeV1McpContractAdapter {
             telemetry.recordOperational(Event.CONFLICT);
             return conflictResult(metadata);
         }
+        if (result.status() == CoachToolFacade.MasteryStatus.BAD_REQUEST) {
+            return errorResult(
+                    OpenAiDeV1ErrorCode.INVALID_INPUT,
+                    localized(metadata,
+                            "Die Mastery konnte mit diesen Abschlussdaten nicht gespeichert werden.",
+                            "Mastery could not be saved with these completion details."),
+                    metadata);
+        }
         UnifiedLearnerStateResponse state = coachTools.getLearnerState(skillpilotId);
         if (result.status() == CoachToolFacade.MasteryStatus.UPDATED && selectedOrientationPath != null) {
             state = activateFirstAvailableOrientationPathGoal(
@@ -1665,20 +1830,36 @@ public final class OpenAiDeV1McpContractAdapter {
                     selectedOrientationPath);
         }
         OpenAiDeCoachContext successorContext = projectContext(skillpilotId, state, metadata);
+        String successorTitle = successorContext == null || successorContext.activeGoal() == null
+                ? null
+                : successorContext.activeGoal().title();
         MasteryToolResult response = new MasteryToolResult(
                 result.status().name().toLowerCase(Locale.ROOT),
                 result.update() == null ? null : result.update().savedGoalId(),
                 result.update() == null ? null : result.update().savedMastery(),
+                new CompletionHandoff(
+                        result.update() == null ? goalId : result.update().savedGoalId(),
+                        active.title(),
+                        workFeedback,
+                        outcomeFeedback,
+                        earnedPoints,
+                        examMaxPoints,
+                        successorTitle,
+                        localized(metadata,
+                                "Gib zuerst workFeedback und danach outcomeFeedback vollständig sichtbar aus. "
+                                        + "Beginne erst anschließend den Nachfolgerabschnitt. Keine Antwort aus der "
+                                        + "Zeit vor seiner Aktivierung zählt als Evidenz für das neue Lernziel.",
+                                "Present workFeedback first and outcomeFeedback second in full. Only then begin "
+                                        + "the successor section. No answer from before its activation counts as "
+                                        + "evidence for the new learning goal."),
+                        true),
                 successorContext,
                 result.error());
-        String successSummary;
-        String successorTitle = successorContext == null || successorContext.activeGoal() == null
-                ? null
-                : successorContext.activeGoal().title();
+        String transitionSummary;
         if (result.status() == CoachToolFacade.MasteryStatus.UPDATED
                 && successorTitle != null
                 && !successorTitle.isBlank()) {
-            successSummary = isOrientationGoal(active)
+            transitionSummary = isOrientationGoal(active)
                     ? localized(metadata,
                             "Orientierung abgeschlossen. SkillPilot hat das nächste Lernziel bereits aktiviert: "
                                     + successorTitle
@@ -1698,7 +1879,7 @@ public final class OpenAiDeV1McpContractAdapter {
                                     + ". Begin this goal immediately and do not offer a learning-goal choice. All "
                                     + "previously mentioned goal options are invalid.");
         } else if (result.status() == CoachToolFacade.MasteryStatus.UPDATED) {
-            successSummary = isOrientationGoal(active)
+            transitionSummary = isOrientationGoal(active)
                     ? localized(metadata,
                             "Orientierung abgeschlossen; Folgezustand geladen.",
                             "Orientation complete; successor state loaded.")
@@ -1706,13 +1887,55 @@ public final class OpenAiDeV1McpContractAdapter {
                             "Mastery gespeichert; Folgezustand geladen.",
                             "Mastery saved; successor state loaded.");
         } else {
-            successSummary = localized(metadata,
+            transitionSummary = localized(metadata,
                     "Mastery nicht gespeichert; aktuellen Folgezustand beachten.",
                     "Mastery was not saved; use the current successor state.");
         }
+        String successSummary = completionFeedbackSummary(
+                active.title(),
+                workFeedback,
+                outcomeFeedback,
+                earnedPoints,
+                examMaxPoints,
+                transitionSummary,
+                metadata);
         return successResult(
                 successSummary,
                 response);
+    }
+
+    private String completionFeedbackSummary(
+            String completedGoalTitle,
+            String workFeedback,
+            String outcomeFeedback,
+            Double earnedPoints,
+            Double maxPoints,
+            String transitionSummary,
+            OpenAiDeV1SessionMetadata metadata) {
+        String title = completedGoalTitle == null || completedGoalTitle.isBlank()
+                ? localized(metadata, "Abgeschlossenes Lernziel", "Completed learning goal")
+                : completedGoalTitle;
+        StringBuilder summary = new StringBuilder(localized(metadata,
+                "Verpflichtende Abschlussrückmeldung zu „" + title + "“ — gib diesen Block zuerst vollständig sichtbar aus:\n"
+                        + "Inhaltliche Rückmeldung: " + workFeedback + "\n"
+                        + "Ergebnis: " + outcomeFeedback,
+                "Mandatory completion feedback for “" + title + "” — present this full block visibly first:\n"
+                        + "Feedback on the work: " + workFeedback + "\n"
+                        + "Outcome: " + outcomeFeedback));
+        if (earnedPoints != null && maxPoints != null) {
+            summary.append(localized(metadata,
+                    "\nBestätigte Punktzahl: " + formatScore(earnedPoints) + " von " + formatScore(maxPoints) + ".",
+                    "\nConfirmed score: " + formatScore(earnedPoints) + " of " + formatScore(maxPoints) + "."));
+        }
+        summary.append("\n\n").append(localized(metadata,
+                "Erst nach dieser Rückmeldung folgt der neue Lernzielabschnitt. ",
+                "Only after this feedback may the new learning-goal section begin. "));
+        summary.append(transitionSummary);
+        return summary.toString();
+    }
+
+    private static String formatScore(double value) {
+        return BigDecimal.valueOf(value).stripTrailingZeros().toPlainString();
     }
 
     private UnifiedLearnerStateResponse activateFirstAvailableOrientationPathGoal(
@@ -1817,9 +2040,11 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
+        String goalId = requiredString(arguments, "goalId");
+        String learningSessionId = requiredLearningSessionId(arguments);
         CoachToolFacade.ExamEvaluationResult response = coachTools.getExamEvaluation(
                 skillpilotId,
-                new CoachToolFacade.ExamEvaluationRequest(requiredString(arguments, "goalId")));
+                new CoachToolFacade.ExamEvaluationRequest(goalId));
         ExamEvaluationResult result = new ExamEvaluationResult(
                 response.goalId(),
                 stateProjection.projectReleasedEvaluationContent(response.solutionContent()),
@@ -1832,6 +2057,10 @@ public final class OpenAiDeV1McpContractAdapter {
                                         step.points(),
                                         step.description()))
                                 .toList()),
+                examEvaluationCapability(
+                        learningSessionId,
+                        response.goalId(),
+                        metadata),
                 localized(metadata,
                         "Bewerte die bereits vollständig vorliegende Abgabe Schritt für Schritt nach jedem Rasterkriterium "
                                 + "und ausschließlich anhand sichtbar vorliegender Leistung. Die Musterlösung ist nur Referenz: "
@@ -1841,7 +2070,9 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "Deutung oder Begründung, erhält genau dieser Teil keine Punkte; trenne Teilpunkte sauber und "
                                 + "begründe jeden Abzug konkret. Bewerte abschließend ohne Nachfrage. Benenne Unleserliches als "
                                 + "solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach "
-                                + "einem finalen Ergebnis mit mindestens passingPoints.",
+                                + "einem finalen Ergebnis mit mindestens passingPoints. Übergib dabei diese "
+                                + "evaluationCapability unverändert, earnedPoints sowie konkrete workFeedback- und "
+                                + "outcomeFeedback-Texte.",
                         "Assess the complete visible submission step by step against every rubric criterion and only "
                                 + "from visible work. The sample solution is a reference, not a wording requirement. Give "
                                 + "full credit for technically equivalent results, representations, rounding, reasoning, and "
@@ -1850,7 +2081,8 @@ public final class OpenAiDeV1McpContractAdapter {
                                 + "withhold only those points, separate partial credit cleanly, and justify every deduction. "
                                 + "Complete the assessment without another question. Identify unreadable content as unreadable "
                                 + "and do not invent a specific subject error. Save mastery only after a final result with at "
-                                + "least passingPoints."));
+                                + "least passingPoints. Copy this evaluationCapability unchanged and pass earnedPoints "
+                                + "together with concrete workFeedback and outcomeFeedback texts."));
         return successResult(
                 localized(metadata,
                         "Freigegebene Bewertungsgrundlage geladen; jetzt abschließend bewerten.",
@@ -2293,6 +2525,11 @@ public final class OpenAiDeV1McpContractAdapter {
                 .anyMatch(tag -> "memorization".equals(tag) || (tag != null && tag.startsWith("srs-deck:")));
     }
 
+    private boolean isExamGoal(FrontierGoal goal) {
+        return goal != null
+                && ("exam".equals(goal.nodeKind()) || goal.examData() != null);
+    }
+
     private boolean isOrientationGoal(FrontierGoal goal) {
         if (goal == null) {
             return false;
@@ -2361,6 +2598,17 @@ public final class OpenAiDeV1McpContractAdapter {
         return value;
     }
 
+    private String requiredBoundedString(
+            Map<String, Object> arguments,
+            String name,
+            int maxLength) {
+        String value = requiredString(arguments, name);
+        if (value.length() > maxLength) {
+            throw new IllegalArgumentException(name + " darf höchstens " + maxLength + " Zeichen enthalten.");
+        }
+        return value;
+    }
+
     private String requiredLearningSessionId(Map<String, Object> arguments) {
         Object value = arguments.get(LEARNING_SESSION_ID);
         if (!(value instanceof String text)) {
@@ -2419,6 +2667,21 @@ public final class OpenAiDeV1McpContractAdapter {
             throw new IllegalArgumentException(name + " muss true oder false sein.");
         }
         return bool;
+    }
+
+    private Double optionalFiniteDouble(Map<String, Object> arguments, String name) {
+        Object value = arguments.get(name);
+        if (value == null) {
+            return null;
+        }
+        if (!(value instanceof Number number)) {
+            throw new IllegalArgumentException(name + " muss eine Zahl sein.");
+        }
+        double normalized = number.doubleValue();
+        if (!Double.isFinite(normalized)) {
+            throw new IllegalArgumentException(name + " muss eine endliche Zahl sein.");
+        }
+        return normalized;
     }
 
     private boolean requiredBoolean(Map<String, Object> arguments, String name) {
@@ -2704,13 +2967,39 @@ public final class OpenAiDeV1McpContractAdapter {
                         "status", stringSchema(),
                         "savedGoalId", stringSchema(),
                         "savedMastery", numberSchema(0.0, 1.0),
+                        "completionHandoff", describedSchema(
+                                completionHandoffSchema(),
+                                "Mandatory learner-facing handoff for the completed goal. Present workFeedback "
+                                        + "and outcomeFeedback in that order before naming or teaching the successor."),
                         "context", describedSchema(
                                 contextSchema(),
                                 "Fresh authoritative successor state. It invalidates every goal option from "
                                         + "earlier results and conversation turns. If activeGoal is present, "
-                                        + "continue it immediately without offering a goal choice."),
+                                        + "continue it without offering a goal choice, but only after presenting "
+                                        + "completionHandoff."),
                         "error", stringSchema()),
-                List.of("status", "context"));
+                List.of("status", "completionHandoff", "context"));
+    }
+
+    private static Map<String, Object> completionHandoffSchema() {
+        return objectSchema(
+                Map.of(
+                        "completedGoalId", stringSchema(),
+                        "completedGoalTitle", stringSchema(),
+                        "workFeedback", stringSchema(),
+                        "outcomeFeedback", stringSchema(),
+                        "earnedPoints", numberSchema(0.0, Double.MAX_VALUE),
+                        "maxPoints", numberSchema(0.0, Double.MAX_VALUE),
+                        "successorGoalTitle", stringSchema(),
+                        "instruction", stringSchema(),
+                        "successorEvidenceReset", booleanSchema()),
+                List.of(
+                        "completedGoalId",
+                        "completedGoalTitle",
+                        "workFeedback",
+                        "outcomeFeedback",
+                        "instruction",
+                        "successorEvidenceReset"));
     }
 
     private static Map<String, Object> memoryPracticeReceiptSchema() {
@@ -2781,8 +3070,14 @@ public final class OpenAiDeV1McpContractAdapter {
                         "goalId", stringSchema(),
                         "solutionContent", stringSchema(),
                         "scoring", scoringSchema(),
+                        "evaluationCapability", modelFacingOpaqueReferenceSchema(),
                         "instruction", stringSchema()),
-                List.of("goalId", "solutionContent", "scoring", "instruction"));
+                List.of(
+                        "goalId",
+                        "solutionContent",
+                        "scoring",
+                        "evaluationCapability",
+                        "instruction"));
     }
 
     private static Map<String, Object> objectSchema(
