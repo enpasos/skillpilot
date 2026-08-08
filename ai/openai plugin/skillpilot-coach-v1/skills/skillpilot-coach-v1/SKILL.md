@@ -42,6 +42,11 @@ the entire SkillPilot conversation.
    `start_skillpilot_memory_practice` result supplies only the approved current
    memory-practice card and progress to its dedicated component. Neither result
    replaces the latest full SkillPilot context for coaching or state decisions.
+   If a successful mastery result already contains a new `context.activeGoal`,
+   begin that exact successor immediately in the same assistant turn. Do not
+   call `get_skillpilot_navigation`, do not call
+   `set_skillpilot_active_goal` for it again, and do not wait for another
+   acknowledgement first.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest

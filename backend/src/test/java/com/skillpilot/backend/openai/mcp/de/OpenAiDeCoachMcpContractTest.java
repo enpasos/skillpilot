@@ -807,6 +807,8 @@ class OpenAiDeCoachMcpContractTest {
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
                 .contains("call " + OpenAiDeV1McpContractAdapter.GET_CONTEXT + " before the first subject-matter response")
+                .contains("after successful mastery activates a successor")
+                .contains("never call get_skillpilot_navigation or set_skillpilot_active_goal")
                 .contains("generic curriculum overview")
                 .contains("invented learning path")
                 .contains("Assess meaning rather than wording")
@@ -1624,6 +1626,28 @@ class OpenAiDeCoachMcpContractTest {
             assertThat(option.label()).isEqualTo("Mathematik Hessen");
         });
         verify(coachTools).getCurriculumOptions(LEARNER_ID);
+    }
+
+    @Test
+    void goalNavigationPreservesTheActiveSuccessorActionDuringContinuation() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "goal"));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
+
+        assertThat(navigation.requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(navigation.options())
+                .extracting(OpenAiDeCoachContext.Option::id)
+                .containsExactly("goal-public-id");
+        assertThat(navigation.instruction()).contains(
+                "bereits ein aktives Lernziel",
+                "normalen Fortsetzen",
+                "kein Lernziel erneut",
+                "redirect=true");
     }
 
     @Test

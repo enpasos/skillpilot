@@ -477,7 +477,9 @@ instruction instead when it supplies a specific resumption route.
 - Briefly congratulate completion of the entire personal curriculum without
   inventing new goals or extensions.
 - After successfully saved mastery, proceed promptly to the supplied next step;
-  do not routinely ask whether to continue when next state is unambiguous.
+  do not routinely ask whether to continue when next state is unambiguous. If
+  the returned successor context already contains an `activeGoal`, begin that
+  exact goal immediately without loading navigation or setting it again.
 
 ## 13. Pre-response checklist
 
