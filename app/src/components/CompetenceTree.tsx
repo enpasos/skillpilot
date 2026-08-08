@@ -395,8 +395,16 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             )}
           </div>
         ) : showDescendantPlanMarker ? (
-          <div className="flex items-center justify-center w-6 h-6 shrink-0 text-red-500">
-            <SquareX size={16} />
+          <div
+            className={`flex items-center justify-center w-6 h-6 shrink-0 ${isLearnerFocusControl
+              ? 'text-sky-600 dark:text-sky-400'
+              : 'text-red-500'
+              }`}
+            role={isLearnerFocusControl ? 'img' : undefined}
+            aria-label={isLearnerFocusControl ? t.tooltips.currentLearningFocus : undefined}
+            title={isLearnerFocusControl ? t.tooltips.currentLearningFocus : undefined}
+          >
+            {isLearnerFocusControl ? <CircleDot size={16} /> : <SquareX size={16} />}
           </div>
         ) : hidePlanControlForCluster ? (
           <div className="w-6 h-6 shrink-0" aria-hidden="true" />

@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { CompetenceTree } from '../src/components/CompetenceTree'
+import { LanguageProvider } from '../src/contexts/LanguageContext'
 import {
   getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
@@ -487,6 +491,61 @@ assert.deepStrictEqual(
 assert.ok(
   !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
   'A hidden canonical J8 planned scope must not collapse to the Bruchterme child cluster in the generic Sek-I view.',
+)
+
+const storedLanguageValues = new Map<string, string>([
+  ['skillpilot_lang', 'de'],
+])
+const localStorageStub: Storage = {
+  get length() {
+    return storedLanguageValues.size
+  },
+  clear: () => storedLanguageValues.clear(),
+  getItem: (key) => storedLanguageValues.get(key) ?? null,
+  key: (index) => [...storedLanguageValues.keys()][index] ?? null,
+  removeItem: (key) => {
+    storedLanguageValues.delete(key)
+  },
+  setItem: (key, value) => {
+    storedLanguageValues.set(key, String(value))
+  },
+}
+
+Object.defineProperty(globalThis, 'localStorage', {
+  configurable: true,
+  value: localStorageStub,
+})
+
+const genericJ8LearnerTreeMarkup = renderToStaticMarkup(
+  createElement(
+    LanguageProvider,
+    null,
+    createElement(CompetenceTree, {
+      rootGoals: [mathRootGoal!],
+      allGoals: mathGoalById,
+      getMastery: () => 0,
+      plannedGoals: new Set([canonicalMathJ8GoalId]),
+      plannedScopeGoalIds: genericJ8ScopeGoalIds,
+      onTogglePlan: () => undefined,
+      onSelect: () => undefined,
+      selectedId: genericVisibleJ8StructureId,
+      audience: 'learner',
+      structureMode: 'content',
+      visibleChildrenByParentOverride: mathChildrenByParent,
+      useRawGoalTitles: true,
+    }),
+  ),
+)
+
+assert.ok(
+  genericJ8LearnerTreeMarkup.includes('lucide-circle-dot')
+    && genericJ8LearnerTreeMarkup.includes('text-sky-600')
+    && genericJ8LearnerTreeMarkup.includes('aria-label="Aktueller Lernfokus"'),
+  'A visible learner-side representative of a hidden canonical focus must use the blue circle-dot focus marker.',
+)
+assert.ok(
+  !genericJ8LearnerTreeMarkup.includes('lucide-square-x'),
+  'A learner-side focus representative must not fall back to the former red square-x list marker.',
 )
 
 const bavariaProjectedMathEntries = normalizeLearnerProjectedEntries(
