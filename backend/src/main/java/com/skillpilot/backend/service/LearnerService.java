@@ -7209,7 +7209,8 @@ public class LearnerService {
                         g.sourceRef(),
                         g.sourceLicense(),
                         g.sourceLicenseUrl(),
-                        g.examData()))
+                        g.examData(),
+                        g.examReadyForSelection()))
                 .toList();
     }
 
@@ -7623,7 +7624,8 @@ public class LearnerService {
                 provenance.sourceRef(),
                 provenance.sourceLicense(),
                 provenance.sourceLicenseUrl(),
-                examData);
+                examData,
+                isExamGoal(goal) && isExamDataReadyForHardCheck(goal.getExamData()));
     }
 
     private record ProvenanceInfo(String sourceRef, String sourceLicense, String sourceLicenseUrl) {

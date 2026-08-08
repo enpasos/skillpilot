@@ -789,6 +789,101 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void releasedExamSummariesRemainSelectableWithoutExposingProtectedExamContent() throws Exception {
+        FrontierGoal examFolder = clusterGoal(
+                "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
+                "Prüfungen Jahrgangsstufe 8");
+        FrontierGoal taskOne = readyExamSummary(
+                "4553367f-6265-511b-8632-46d99109e69b",
+                "Aufgabe 1 (Jahrgangsstufe 8, 8 BE)");
+        FrontierGoal taskTwo = readyExamSummary(
+                "df9ecf0f-f4c9-5859-b99e-11cb62f6bb35",
+                "Aufgabe 2 (Jahrgangsstufe 8, 6 BE)");
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Mathematik Hessen",
+                "",
+                "DE",
+                "HE",
+                "school",
+                "Mathematik",
+                "de",
+                List.of());
+        UnifiedLearnerStateResponse state = new UnifiedLearnerStateResponse(
+                LEARNER_ID,
+                curriculum,
+                List.of(examFolder, taskOne, taskTwo),
+                new LearnerGoals(
+                        List.of(examFolder),
+                        20,
+                        25,
+                        new GoalStats(20, 25),
+                        new GoalStats(2, 7),
+                        false),
+                List.of("setActiveGoal"),
+                List.of(),
+                Set.of(),
+                "frontier",
+                null,
+                new StateMachineInfo(
+                        "FRONTIER",
+                        "setActiveGoal",
+                        List.of(taskOne, taskTwo),
+                        List.of(),
+                        null));
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+
+        McpSchema.CallToolResult contextResult = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        OpenAiDeCoachContext context = structured(contextResult, OpenAiDeCoachContext.class);
+
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, contextResult);
+        assertThat(context.requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(context.activeGoal()).isNull();
+        assertThat(context.nextAllowedTools()).contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+        assertThat(context.options())
+                .extracting(OpenAiDeCoachContext.Option::kind, OpenAiDeCoachContext.Option::id)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple("goal", taskOne.id()),
+                        org.assertj.core.groups.Tuple.tuple("goal", taskTwo.id()));
+        assertThat(context.frontier())
+                .extracting(OpenAiDeCoachContext.Goal::goalId)
+                .containsExactly(taskOne.id(), taskTwo.id());
+        assertThat(context.instruction()).doesNotContain("keine sicheren Optionen");
+
+        McpSchema.CallToolResult navigationResult = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "goal"));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(navigationResult, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, navigationResult);
+        assertThat(navigation.requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(navigation.options())
+                .extracting(OpenAiDeCoachContext.Option::kind, OpenAiDeCoachContext.Option::id)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple("goal", taskOne.id()),
+                        org.assertj.core.groups.Tuple.tuple("goal", taskTwo.id()));
+        assertThat(navigation.instruction()).doesNotContain("keine sicheren Optionen");
+
+        assertThat(objectMapper.writeValueAsString(contextResult.structuredContent()))
+                .doesNotContain(
+                        examFolder.id(),
+                        "examReadyForSelection",
+                        "examData",
+                        "taskContent",
+                        "solutionContent",
+                        "passingPoints");
+        assertThat(objectMapper.writeValueAsString(navigationResult.structuredContent()))
+                .doesNotContain(
+                        examFolder.id(),
+                        "examReadyForSelection",
+                        "examData",
+                        "taskContent",
+                        "solutionContent",
+                        "passingPoints");
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
     void userFacingContextUsesTheLocalePinnedToTheLearningSession() {
         sessionCommunicationLocale = "en-GB";
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
@@ -2304,6 +2399,24 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null,
                 null);
+    }
+
+    private FrontierGoal readyExamSummary(String goalId, String title) {
+        return new FrontierGoal(
+                goalId,
+                title,
+                "Bearbeite die freigegebene Prüfungsaufgabe.",
+                "atomic",
+                "exam",
+                null,
+                "frontier",
+                List.of("ExamTask"),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                true);
     }
 
     private FrontierGoal orientationGoal() {

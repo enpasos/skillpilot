@@ -102,6 +102,46 @@ class CoachStateProjectionTest {
     }
 
     @Test
+    void projectKeepsOnlyInternallyValidatedExamSummariesWithoutExposingTheProof() throws Exception {
+        FrontierGoal validated = examSummary("exam-ready", true);
+        FrontierGoal unvalidated = examSummary("exam-unvalidated", false);
+        FrontierGoal staleProof = exam("exam-stale-proof", "needs_review", true);
+        UnifiedLearnerStateResponse source = new UnifiedLearnerStateResponse(
+                null,
+                null,
+                List.of(validated, unvalidated, staleProof),
+                new LearnerGoals(List.of(), 0, 3, null, null, false),
+                List.of("setActiveGoal"),
+                List.of(),
+                Set.of(),
+                "frontier",
+                null,
+                new StateMachineInfo(
+                        "FRONTIER",
+                        "setActiveGoal",
+                        List.of(validated, unvalidated, staleProof),
+                        List.of(),
+                        null,
+                        List.of()));
+
+        UnifiedLearnerStateResponse projected = projection.project(source);
+
+        assertThat(projected.frontier())
+                .extracting(FrontierGoal::id)
+                .containsExactly("exam-ready");
+        assertThat(projected.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactly("exam-ready");
+        assertThat(projected.frontier().getFirst().examData()).isNull();
+        assertThat(new ObjectMapper().writeValueAsString(projected))
+                .doesNotContain(
+                        "examReadyForSelection",
+                        "taskContent",
+                        "solutionContent",
+                        "passingPoints");
+    }
+
+    @Test
     void projectReleasedEvaluationContentOnlyNormalizesAuthorizedContent() {
         String projected = projection.projectReleasedEvaluationContent(
                 "Siehe [Material](/assets/exam.pdf). Lösung: $x=2$. $$y=3$$");
@@ -136,7 +176,29 @@ class CoachStateProjectionTest {
         return exam(id, "needs_review");
     }
 
+    private static FrontierGoal examSummary(String id, boolean readyForSelection) {
+        return new FrontierGoal(
+                id,
+                "Prüfungsaufgabe",
+                "Bearbeite die freigegebene Prüfungsaufgabe.",
+                "atomic",
+                "exam",
+                null,
+                "frontier",
+                List.of("ExamTask"),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                readyForSelection);
+    }
+
     private static FrontierGoal exam(String id, String reviewStatus) {
+        return exam(id, reviewStatus, false);
+    }
+
+    private static FrontierGoal exam(String id, String reviewStatus, boolean readyForSelection) {
         ExamData exam = new ExamData();
         exam.setReviewStatus(reviewStatus);
         exam.setSourceArtifactPath("private/exam-source.json");
@@ -159,6 +221,7 @@ class CoachStateProjectionTest {
                 "Description $x$",
                 "atomic",
                 "exam",
+                null,
                 "test",
                 List.of(),
                 List.of(
@@ -171,6 +234,7 @@ class CoachStateProjectionTest {
                 null,
                 null,
                 null,
-                exam);
+                exam,
+                readyForSelection);
     }
 }
