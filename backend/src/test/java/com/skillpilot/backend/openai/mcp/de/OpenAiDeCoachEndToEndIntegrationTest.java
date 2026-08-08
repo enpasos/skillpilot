@@ -42,6 +42,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -575,13 +576,18 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 {"jsonrpc":"2.0","id":"resources-1","method":"resources/list","params":{}}
                 """);
         assertMcpPayloadDoesNotExposeIdentity(resources, applicationSubject);
+        List<String> expectedResourceUris = Stream.concat(
+                        Stream.of(
+                                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI),
+                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
+                                .stream()
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                .toList();
         assertThat(result(resources).path("resources").valueStream()
                         .map(resource -> resource.path("uri").asText())
                         .toList())
-                .containsExactlyInAnyOrder(
-                        OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
-                        OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI);
+                .containsExactlyInAnyOrderElementsOf(expectedResourceUris);
 
         assertResourceReadableOverAuthenticatedMcp(
                 accessToken,
@@ -589,12 +595,16 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-active",
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
-        assertResourceReadableOverAuthenticatedMcp(
-                accessToken,
-                applicationSubject,
-                "resource-retained",
-                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_RESOURCE_URI,
-                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        int retainedResourceIndex = 0;
+        for (String retainedSha256 :
+                OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
+            assertResourceReadableOverAuthenticatedMcp(
+                    accessToken,
+                    applicationSubject,
+                    "resource-retained-" + retainedResourceIndex++,
+                    OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(retainedSha256),
+                    retainedSha256);
+        }
         assertResourceReadableOverAuthenticatedMcp(
                 accessToken,
                 applicationSubject,

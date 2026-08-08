@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
@@ -19,11 +19,9 @@ const memoryCardPracticeWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
-const retainedGoalVisualizationWidget = resolve(
+const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
-    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
-    "goal-visualization.html",
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
 );
 assert.equal(existsSync(goalVisualizationWidget), true);
 const goalVisualizationArtifactSha256 = createHash("sha256")
@@ -37,17 +35,35 @@ const memoryCardPracticeArtifactSha256 = createHash("sha256")
   .digest("hex");
 const memoryCardPracticeResourceUri =
   `ui://skillpilot/coach/v1/sha256-${memoryCardPracticeArtifactSha256}/memory-card-practice.html`;
-assert.equal(existsSync(retainedGoalVisualizationWidget), true);
-const retainedGoalVisualizationArtifactSha256 = createHash("sha256")
-  .update(readFileSync(retainedGoalVisualizationWidget))
-  .digest("hex");
-assert.equal(
-  retainedGoalVisualizationArtifactSha256,
-  "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c",
-  "The retained goal-visualization artifact must remain byte-for-byte immutable.",
+const retainedGoalVisualizationArtifactSha256s = readdirSync(
+  retainedGoalVisualizationRoot,
+  { withFileTypes: true },
+)
+  .filter((entry) => entry.isDirectory() && entry.name.startsWith("sha256-"))
+  .map((entry) => entry.name.slice("sha256-".length))
+  .sort();
+assert.ok(
+  retainedGoalVisualizationArtifactSha256s.length > 0,
+  "At least one retained goal-visualization artifact must stay readable.",
 );
-const retainedGoalVisualizationResourceUri =
-  `ui://skillpilot/coach/v1/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`;
+for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "goal-visualization.html",
+  );
+  assert.equal(existsSync(artifact), true);
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
+  );
+}
+assert.equal(
+  retainedGoalVisualizationArtifactSha256s.includes(goalVisualizationArtifactSha256),
+  false,
+  "The active goal-visualization artifact must not also be retained.",
+);
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
 const read = (path) => readFileSync(path, "utf8");
@@ -278,6 +294,23 @@ assert.equal(
   false,
   "V1 must not publish or declare a compatibility endpoint",
 );
+const expectedUiResources = [
+  ...retainedGoalVisualizationArtifactSha256s.map((sha256) => ({
+    mimeType: "text/html;profile=mcp-app",
+    path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
+    uri: `ui://skillpilot/coach/v1/sha256-${sha256}/goal-visualization.html`,
+  })),
+  {
+    mimeType: "text/html;profile=mcp-app",
+    path: "ui/memory-card-practice.html",
+    uri: memoryCardPracticeResourceUri,
+  },
+  {
+    mimeType: "text/html;profile=mcp-app",
+    path: "ui/goal-visualization.html",
+    uri: goalVisualizationResourceUri,
+  },
+].sort((left, right) => left.uri.localeCompare(right.uri));
 assert.deepEqual(releaseLine.ui, {
   activeBindings: {
     render_skillpilot_goal_visualization: goalVisualizationResourceUri,
@@ -286,24 +319,7 @@ assert.deepEqual(releaseLine.ui, {
   domain: "https://mcp-coach-v1.skillpilot.com",
   enabled: true,
   stateSchemaVersion: 1,
-  resources: [
-    {
-      mimeType: "text/html;profile=mcp-app",
-      path:
-        `ui/retained/sha256-${retainedGoalVisualizationArtifactSha256}/goal-visualization.html`,
-      uri: retainedGoalVisualizationResourceUri,
-    },
-    {
-      mimeType: "text/html;profile=mcp-app",
-      path: "ui/memory-card-practice.html",
-      uri: memoryCardPracticeResourceUri,
-    },
-    {
-      mimeType: "text/html;profile=mcp-app",
-      path: "ui/goal-visualization.html",
-      uri: goalVisualizationResourceUri,
-    },
-  ],
+  resources: expectedUiResources,
 });
 const goalVisualizationHtml = read(goalVisualizationWidget);
 assert.match(goalVisualizationHtml, /^<!doctype html>/i);
@@ -975,9 +991,17 @@ assert.equal(
   javaConstant("MEMORY_CARD_PRACTICE_RESOURCE_URI"),
   releaseLine.ui.activeBindings.start_skillpilot_memory_practice,
 );
-assert.equal(
-  javaConstant("RETAINED_GOAL_VISUALIZATION_RESOURCE_URI"),
-  retainedGoalVisualizationResourceUri,
+const javaStringList = (name) => {
+  const pattern = new RegExp(`\\b${name}\\s*=\\s*List\\.of\\(([\\s\\S]*?)\\);`, "u");
+  const match = pattern.exec(contractMetadata);
+  assert.notEqual(match, null, `Missing Java list ${name}`);
+  return [...match[1].matchAll(/"((?:[^"\\]|\\.)*)"/gu)]
+    .map((entry) => JSON.parse(`"${entry[1]}"`));
+};
+assert.deepEqual(
+  javaStringList("RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S").slice().sort(),
+  retainedGoalVisualizationArtifactSha256s,
+  "Every retained artifact must be declared, and every declared hash must exist.",
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),

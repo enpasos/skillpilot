@@ -7,6 +7,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  readdirSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -87,20 +88,49 @@ const memoryCardPracticeWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
-const retainedGoalVisualizationWidgetSource = resolve(
+const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
-  "backend/src/main/resources/openai/retained/skillpilot/coach/v1/" +
-    "sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/" +
-    "goal-visualization.html",
+  "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
 );
-const uiArtifactSources = new Map([
-  ["ui/goal-visualization.html", goalVisualizationWidgetSource],
-  ["ui/memory-card-practice.html", memoryCardPracticeWidgetSource],
-  [
-    "ui/retained/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html",
-    retainedGoalVisualizationWidgetSource,
-  ],
-]);
+const retainedGoalVisualizationArtifactSha256s = readdirSync(
+  retainedGoalVisualizationRoot,
+  { withFileTypes: true },
+)
+  .filter((entry) => entry.isDirectory() && entry.name.startsWith("sha256-"))
+  .map((entry) => entry.name.slice("sha256-".length))
+  .sort();
+assert.ok(
+  retainedGoalVisualizationArtifactSha256s.length > 0,
+  "At least one retained goal-visualization artifact must stay readable.",
+);
+for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "goal-visualization.html",
+  );
+  assert.equal(existsSync(artifact), true);
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
+  );
+}
+const uiArtifactSource = (releasePath) => {
+  if (releasePath === "ui/goal-visualization.html") {
+    return goalVisualizationWidgetSource;
+  }
+  if (releasePath === "ui/memory-card-practice.html") {
+    return memoryCardPracticeWidgetSource;
+  }
+  const retained =
+    /^ui\/retained\/(sha256-[0-9a-f]{64})\/goal-visualization\.html$/u.exec(
+      releasePath,
+    );
+  return retained
+    ? resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html")
+    : undefined;
+};
 
 const command = process.argv[2];
 if (!new Set(["candidate", "prepare", "verify", "record-published"]).has(command)) {
@@ -287,7 +317,7 @@ function buildCandidate(output) {
     { recursive: true },
   );
   for (const resource of line.ui.resources) {
-    const source = uiArtifactSources.get(resource.path);
+    const source = uiArtifactSource(resource.path);
     assert.notEqual(
       source,
       undefined,
