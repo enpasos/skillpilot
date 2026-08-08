@@ -165,8 +165,16 @@ public class CoachToolFacade {
         UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
+        FrontierGoal currentActiveGoal = activeGoal(state);
+        boolean confirmsCurrentActiveGoal = currentActiveGoal != null
+                && request.goalId() != null
+                && request.goalId().equals(currentActiveGoal.id());
         if (!"setActiveGoal".equals(requiredAction)) {
-            if (allowsActiveGoalRedirect(requiredAction) && redirect) {
+            if (confirmsCurrentActiveGoal) {
+                // Autopilot may already have activated the successor returned by
+                // a mastery mutation. Reconfirming that exact goal is an
+                // idempotent continuation, not a redirect or a state conflict.
+            } else if (allowsActiveGoalRedirect(requiredAction) && redirect) {
                 // Explicit learner redirect while an active goal is locked.
             } else if (requiredAction != null) {
                 throw new ResponseStatusException(

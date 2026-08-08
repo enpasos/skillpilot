@@ -102,6 +102,27 @@ class CoachToolFacadeTest {
     }
 
     @Test
+    void redundantSelectionOfAutoActivatedSuccessorIsIdempotentWithoutRedirect() {
+        String skillpilotId = "learner-1";
+        FrontierGoal successor = examGoal("exam-next", "released");
+        UnifiedLearnerStateResponse currentState =
+                learnerState(skillpilotId, "teachActiveGoal", successor);
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(currentState);
+
+        UnifiedLearnerStateResponse result = facade.setActiveGoal(
+                skillpilotId,
+                new ActiveGoalRequest(successor.id(), false));
+
+        assertThat(result).isSameAs(currentState);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
+        ordered.verify(learnerService).setActiveGoal(skillpilotId, successor.id());
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
     void sessionNavigationCatalogReadsResolveTheSessionWithoutMutatingLearnerState() {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";

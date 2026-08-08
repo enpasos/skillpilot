@@ -141,6 +141,8 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
 
+            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. In particular, after successful mastery activates a successor, never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it.
+
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
             When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence, and give no explanation before it.
@@ -511,8 +513,10 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_MASTERY,
                         "Save mastery",
-                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. For "
-                                + "interactionMode=orientation, use orientationOutlook as the complete authoritative "
+                        "Completes exactly the confirmed active atomic goal with the technical value 1.0. After "
+                                + "success, if the returned context contains activeGoal, continue that exact "
+                                + "successor immediately; never load navigation or set that goal again. "
+                                + "For interactionMode=orientation, use orientationOutlook as the complete authoritative "
                                 + "learning map. A reply that merely names one supplied path starts the tailored "
                                 + "motivational follow-up and must not call this tool. Resolve a free-form interest "
                                 + "to a path only when the match is unique; otherwise ask which path was meant. "
@@ -1329,7 +1333,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 }
             }
             case "goal" -> {
-                requiredAction = "setActiveGoal";
+                String currentRequiredAction = rawState.stateMachine() == null
+                        ? null
+                        : rawState.stateMachine().requiredAction();
+                requiredAction = activeGoal(rawState) != null && currentRequiredAction != null
+                        ? currentRequiredAction
+                        : "setActiveGoal";
                 List<FrontierGoal> source = rawState.frontier();
                 if ((source == null || source.isEmpty()) && rawState.stateMachine() != null) {
                     source = rawState.stateMachine().goalOptions();
@@ -1369,6 +1378,16 @@ public final class OpenAiDeV1McpContractAdapter {
                             + "start, continuation, or resumption; load the full context instead and follow its "
                             + "active goal and requiredAction. For a focus change, copy exactly one published "
                             + "option ID unchanged.");
+        } else if ("goal".equals(target) && activeGoal(rawState) != null) {
+            instruction = localized(metadata,
+                    "Es besteht bereits ein aktives Lernziel. Beim normalen Fortsetzen arbeite unmittelbar an "
+                            + "diesem Ziel weiter und setze kein Lernziel erneut. Verwende diese Optionen nur nach "
+                            + "einem ausdrücklichen Wunsch zum Wechsel auf ein anderes Ziel; rufe dann "
+                            + "set_skillpilot_active_goal mit redirect=true auf.",
+                    "There is already an active learning goal. During normal continuation, continue that goal "
+                            + "immediately and do not set any goal again. Use these options only after an explicit "
+                            + "request to switch to another goal; then call set_skillpilot_active_goal with "
+                            + "redirect=true.");
         } else {
             instruction = localized(metadata,
                     "Übernimm ausschließlich die veröffentlichten Options-IDs unverändert. "
