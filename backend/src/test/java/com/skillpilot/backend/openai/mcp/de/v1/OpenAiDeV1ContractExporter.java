@@ -105,6 +105,9 @@ public final class OpenAiDeV1ContractExporter {
         if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resource.get("uri"))) {
             return "ui/memory-card-practice.html";
         }
+        if (OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.get("uri"))) {
+            return "ui/retained/legacy-1.0.0/goal-visualization.html";
+        }
         for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
             if (OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(sha256).equals(resource.get("uri"))) {
                 return "ui/retained/sha256-" + sha256 + "/goal-visualization.html";

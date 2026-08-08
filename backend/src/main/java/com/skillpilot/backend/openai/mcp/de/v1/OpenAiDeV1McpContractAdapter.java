@@ -131,7 +131,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
 
-            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. In particular, after successful mastery activates a successor, never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it.
+            On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. In particular, after successful mastery activates a successor, never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
             The newest communicationLocale returned by SkillPilot is authoritative for all user-facing communication. Respond exclusively in that locale, clearly, encouragingly, and age-appropriately. Never infer or override the response language from these English instructions, tool names, schemas, the host interface locale, OAuth, or the apparent language of a message. Static control metadata is English and is not user-facing content.
 
@@ -435,10 +435,14 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Loads options only after the learner explicitly requests a change. Never call it for a "
                                 + "normal start, continuation, or resumption. target is exactly one of curriculum, "
                                 + "personalization, scope, or goal. scope returns focus clusters, never next "
-                                + "learning goals. It does not change state.",
+                                + "learning goals. When an active goal exists, target=goal returns no choices unless "
+                                + "redirect=true, which is allowed only when the learner explicitly requests a "
+                                + "different goal. It does not change state.",
                         objectSchema(
-                                Map.of("target", enumStringSchema(
-                                        "curriculum", "personalization", "scope", "goal")),
+                                Map.of(
+                                        "target", enumStringSchema(
+                                                "curriculum", "personalization", "scope", "goal"),
+                                        "redirect", booleanSchema()),
                                 List.of("target")),
                         navigationSchema(),
                         true,
@@ -779,6 +783,11 @@ public final class OpenAiDeV1McpContractAdapter {
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256));
+        resources.add(loadGoalVisualizationWidget(
+                "skillpilot-goal-visualization-v1-legacy-1.0.0",
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_CLASSPATH,
+                OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256));
         for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
             resources.add(loadGoalVisualizationWidget(
                     "skillpilot-goal-visualization-v1-retained-" + sha256.substring(0, 8),
@@ -789,7 +798,7 @@ public final class OpenAiDeV1McpContractAdapter {
         long distinctUris = resources.stream().map(GoalVisualizationUiResource::uri).distinct().count();
         if (distinctUris != resources.size()) {
             throw new IllegalStateException(
-                    "Duplicate SkillPilot MCP UI resource URI: the active artifact must not be retained.");
+                    "Duplicate SkillPilot MCP UI resource URI: active and historical resources must remain distinct.");
         }
         return List.copyOf(resources);
     }
@@ -1309,7 +1318,13 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         String target = requiredString(arguments, "target").toLowerCase(Locale.ROOT);
+        Boolean redirect = optionalBoolean(arguments, "redirect");
+        if (redirect != null && !"goal".equals(target)) {
+            throw new IllegalArgumentException("redirect ist nur für target=goal zulässig.");
+        }
+        boolean explicitGoalRedirect = "goal".equals(target) && Boolean.TRUE.equals(redirect);
         UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
+        FrontierGoal currentActiveGoal = activeGoal(rawState);
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
         OpenAiDeCoachContext.Decision decision = null;
         String requiredAction;
@@ -1352,23 +1367,35 @@ public final class OpenAiDeV1McpContractAdapter {
                 String currentRequiredAction = rawState.stateMachine() == null
                         ? null
                         : rawState.stateMachine().requiredAction();
-                List<FrontierGoal> source = rawState.frontier();
-                if ((source == null || source.isEmpty()) && rawState.stateMachine() != null) {
-                    source = rawState.stateMachine().goalOptions();
-                }
-                List<FrontierGoal> candidates = contextProjector.projectNavigationGoals(source);
-                List<FrontierGoal> atomic = candidates.stream()
-                        .filter(goal -> "atomic".equals(goal.type()))
-                        .toList();
-                if (activeGoal(rawState) != null && currentRequiredAction != null) {
-                    requiredAction = currentRequiredAction;
-                } else if (!atomic.isEmpty()) {
-                    requiredAction = "setActiveGoal";
+                if (currentActiveGoal != null && !explicitGoalRedirect) {
+                    requiredAction = currentRequiredAction == null
+                            ? "teachActiveGoal"
+                            : currentRequiredAction;
                 } else {
-                    requiredAction = currentRequiredAction == null ? "getFrontier" : currentRequiredAction;
-                }
-                for (FrontierGoal goal : atomic) {
-                    add(options, contextProjector.goalOption(goal, "goal"));
+                    List<FrontierGoal> source = rawState.frontier();
+                    if ((source == null || source.isEmpty()) && rawState.stateMachine() != null) {
+                        source = rawState.stateMachine().goalOptions();
+                    }
+                    List<FrontierGoal> candidates = contextProjector.projectNavigationGoals(source);
+                    List<FrontierGoal> atomic = candidates.stream()
+                            .filter(goal -> "atomic".equals(goal.type()))
+                            .filter(goal -> currentActiveGoal == null
+                                    || !Objects.equals(goal.id(), currentActiveGoal.id()))
+                            .toList();
+                    if (!atomic.isEmpty()) {
+                        requiredAction = "setActiveGoal";
+                    } else if (currentActiveGoal != null) {
+                        requiredAction = currentRequiredAction == null
+                                ? "teachActiveGoal"
+                                : currentRequiredAction;
+                    } else {
+                        requiredAction = currentRequiredAction == null
+                                ? "getFrontier"
+                                : currentRequiredAction;
+                    }
+                    for (FrontierGoal goal : atomic) {
+                        add(options, contextProjector.goalOption(goal, "goal"));
+                    }
                 }
             }
             default -> throw new IllegalArgumentException(
@@ -1381,10 +1408,35 @@ public final class OpenAiDeV1McpContractAdapter {
                     options,
                     null,
                     communicationLocale(metadata));
-        } else if (options.isEmpty()) {
+        } else if ("goal".equals(target) && currentActiveGoal != null && !explicitGoalRedirect) {
+            String activeTitle = currentActiveGoal.title() == null || currentActiveGoal.title().isBlank()
+                    ? localized(metadata, "das aktive Lernziel", "the active learning goal")
+                    : currentActiveGoal.title();
             instruction = localized(metadata,
-                    "Aktuell sind keine sicheren Optionen verfügbar. Lade den Kontext erneut.",
-                    "No safe options are currently available. Reload the context.");
+                    "Es besteht bereits ein aktives Lernziel: " + activeTitle + ". Beim normalen Fortsetzen bleibt "
+                            + "der neueste vollständige SkillPilot-Kontext autoritativ. Folge unverändert dessen "
+                            + "requiredAction=" + requiredAction + " und den dort veröffentlichten modusspezifischen "
+                            + "Regeln. Es ist keine Lernzielauswahl offen. Verwirf alle früheren Zieloptionen aus "
+                            + "dem Gespräch und lade oder setze kein Lernziel erneut. Falls der vollständige Kontext "
+                            + "nicht mehr verfügbar ist, lade ihn genau einmal neu.",
+                    "There is already an active learning goal: " + activeTitle + ". During normal continuation, "
+                            + "the newest full SkillPilot context remains authoritative. Continue to follow its "
+                            + "requiredAction=" + requiredAction + " and the mode-specific rules published there. "
+                            + "No learning-goal choice is open. Discard all goal options from earlier conversation "
+                            + "turns and do not load or set a goal again. If the full context is no longer available, "
+                            + "reload it exactly once.");
+        } else if (options.isEmpty()) {
+            if ("goal".equals(target) && currentActiveGoal != null) {
+                instruction = localized(metadata,
+                        "Für den ausdrücklich gewünschten Zielwechsel sind aktuell keine anderen sicheren Ziele "
+                                + "verfügbar. Arbeite am bereits aktiven Lernziel weiter.",
+                        "No other safe goals are currently available for the explicitly requested switch. "
+                                + "Continue the already active learning goal.");
+            } else {
+                instruction = localized(metadata,
+                        "Aktuell sind keine sicheren Optionen verfügbar. Lade den Kontext erneut.",
+                        "No safe options are currently available. Reload the context.");
+            }
         } else if ("scope".equals(target)) {
             instruction = localized(metadata,
                     "Diese Optionen ändern ausschließlich den Lernfokus; sie sind keine nächsten Lernziele. "
@@ -1398,16 +1450,13 @@ public final class OpenAiDeV1McpContractAdapter {
                             + "start, continuation, or resumption; load the full context instead and follow its "
                             + "active goal and requiredAction. For a focus change, copy exactly one published "
                             + "option ID unchanged.");
-        } else if ("goal".equals(target) && activeGoal(rawState) != null) {
+        } else if ("goal".equals(target) && currentActiveGoal != null) {
             instruction = localized(metadata,
-                    "Es besteht bereits ein aktives Lernziel. Beim normalen Fortsetzen arbeite unmittelbar an "
-                            + "diesem Ziel weiter und setze kein Lernziel erneut. Verwende diese Optionen nur nach "
-                            + "einem ausdrücklichen Wunsch zum Wechsel auf ein anderes Ziel; rufe dann "
+                    "Die lernende Person hat ausdrücklich einen Wechsel auf ein anderes Ziel angefordert. "
+                            + "Verwende ausschließlich eine dieser aktuellen Optionen und rufe danach "
                             + "set_skillpilot_active_goal mit redirect=true auf.",
-                    "There is already an active learning goal. During normal continuation, continue that goal "
-                            + "immediately and do not set any goal again. Use these options only after an explicit "
-                            + "request to switch to another goal; then call set_skillpilot_active_goal with "
-                            + "redirect=true.");
+                    "The learner explicitly requested a switch to a different goal. Use only one of these current "
+                            + "options, then call set_skillpilot_active_goal with redirect=true.");
         } else {
             instruction = localized(metadata,
                     "Übernimm ausschließlich die veröffentlichten Options-IDs unverändert. "
@@ -1421,10 +1470,22 @@ public final class OpenAiDeV1McpContractAdapter {
                 decision,
                 List.copyOf(options),
                 instruction);
+        String resultSummary;
+        if ("goal".equals(target) && currentActiveGoal != null && !explicitGoalRedirect) {
+            resultSummary = localized(metadata,
+                    "Aktives Lernziel bestätigt; keine Lernzielauswahl geöffnet. Frühere Zieloptionen sind ungültig.",
+                    "Active learning goal confirmed; no learning-goal choice opened. Earlier goal options are invalid.");
+        } else if ("goal".equals(target) && currentActiveGoal != null && options.isEmpty()) {
+            resultSummary = localized(metadata,
+                    "Keine anderen sicheren Lernziele für den ausdrücklich gewünschten Wechsel verfügbar.",
+                    "No other safe learning goals are available for the explicitly requested switch.");
+        } else {
+            resultSummary = localized(metadata,
+                    "Navigationsoptionen für " + target + " geladen.",
+                    "Navigation options for " + target + " loaded.");
+        }
         return successResult(
-                localized(metadata,
-                        "Navigationsoptionen für " + target + " geladen.",
-                        "Navigation options for " + target + " loaded."),
+                resultSummary,
                 result);
     }
 
@@ -1621,17 +1682,21 @@ public final class OpenAiDeV1McpContractAdapter {
                     ? localized(metadata,
                             "Orientierung abgeschlossen. SkillPilot hat das nächste Lernziel bereits aktiviert: "
                                     + successorTitle
-                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an.",
+                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an. Alle "
+                                    + "zuvor genannten Zieloptionen sind ungültig.",
                             "Orientation complete. SkillPilot has already activated the next learning goal: "
                                     + successorTitle
-                                    + ". Begin this goal immediately and do not offer a learning-goal choice.")
+                                    + ". Begin this goal immediately and do not offer a learning-goal choice. All "
+                                    + "previously mentioned goal options are invalid.")
                     : localized(metadata,
                             "Mastery gespeichert. SkillPilot hat das nächste Lernziel bereits aktiviert: "
                                     + successorTitle
-                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an.",
+                                    + ". Beginne dieses Ziel unmittelbar und biete keine Lernzielauswahl an. Alle "
+                                    + "zuvor genannten Zieloptionen sind ungültig.",
                             "Mastery saved. SkillPilot has already activated the next learning goal: "
                                     + successorTitle
-                                    + ". Begin this goal immediately and do not offer a learning-goal choice.");
+                                    + ". Begin this goal immediately and do not offer a learning-goal choice. All "
+                                    + "previously mentioned goal options are invalid.");
         } else if (result.status() == CoachToolFacade.MasteryStatus.UPDATED) {
             successSummary = isOrientationGoal(active)
                     ? localized(metadata,
@@ -2639,7 +2704,11 @@ public final class OpenAiDeV1McpContractAdapter {
                         "status", stringSchema(),
                         "savedGoalId", stringSchema(),
                         "savedMastery", numberSchema(0.0, 1.0),
-                        "context", contextSchema(),
+                        "context", describedSchema(
+                                contextSchema(),
+                                "Fresh authoritative successor state. It invalidates every goal option from "
+                                        + "earlier results and conversation turns. If activeGoal is present, "
+                                        + "continue it immediately without offering a goal choice."),
                         "error", stringSchema()),
                 List.of("status", "context"));
     }
@@ -2865,6 +2934,14 @@ public final class OpenAiDeV1McpContractAdapter {
                 "items", itemSchema,
                 "minItems", minItems,
                 "maxItems", maxItems);
+    }
+
+    private static Map<String, Object> describedSchema(
+            Map<String, Object> schema,
+            String description) {
+        Map<String, Object> described = new LinkedHashMap<>(schema);
+        described.put("description", description);
+        return Map.copyOf(described);
     }
 
     private static Map<String, Object> stringSchema() {

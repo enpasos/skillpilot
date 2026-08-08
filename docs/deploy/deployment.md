@@ -270,7 +270,8 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
   V1 binds two distinct active content-addressed MCP Apps UI resources on the
   fixed widget domain `https://mcp-coach-v1.skillpilot.com`; previously
-  advertised hashes remain passive and byte-identically readable.
+  advertised version-addressed and hash URIs remain passive and byte-identically
+  readable.
   `render_skillpilot_goal_visualization` binds the image-only resource and
   `start_skillpilot_memory_practice` binds the interactive card-learning
   resource through `ui.resourceUri` and `openai/outputTemplate`. The app-only
@@ -283,6 +284,17 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin,
   mTLS-edge, and mTLS-smoke variables before the first subdomain deployment;
   they are not part of the `1.0.0` runtime contract.
+- Treat MCP tool descriptions, input/output schemas, annotations, server
+  instructions, and skills as versioned model-facing metadata. A server deploy
+  updates compatible live result behavior, but it does not rewrite an existing
+  ChatGPT conversation or its earlier tool results. For a developer-mode
+  connection, select **Refresh** on the connection after deployment, verify the
+  discovered metadata, and test in a new conversation. For a published plugin,
+  scan, review, and publish a new metadata snapshot. A browser-page reload is
+  not a substitute. See OpenAI's
+  [metadata refresh procedure](https://developers.openai.com/plugins/deploy/connect-chatgpt#refresh-metadata)
+  and
+  [published MCP metadata versioning](https://developers.openai.com/plugins/deploy/app-review#how-published-mcp-metadata-versions-work).
 - One `skillpilot-server` Spring Boot artifact hosts every coach line. Values
   belonging to V1 use `SKILLPILOT_OPENAI_COACH_V1_*`; genuine shared
   process policies use `SKILLPILOT_OPENAI_*` without locale/version segments.

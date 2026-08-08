@@ -617,7 +617,10 @@ public final class OpenAiDeCoachContextProjector {
             boolean goalVisualizationAvailable) {
         List<String> tools = new ArrayList<>();
         tools.add(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
-        tools.add(OpenAiDeV1McpContractAdapter.GET_NAVIGATION);
+        // Navigation is conditional on an explicit learner request to change
+        // the current setup or goal. It is globally available, but it is not
+        // an automatic next state-machine action and must therefore never be
+        // advertised as one.
         if (requiredAction != null) {
             switch (requiredAction) {
                 case "setCurriculum" -> tools.add(OpenAiDeV1McpContractAdapter.SET_CURRICULUM);
@@ -841,6 +844,8 @@ public final class OpenAiDeCoachContextProjector {
                     goalAnnouncement
                             + "Dieses Lernziel ist bereits von SkillPilot ausgewählt. Beginne jetzt unmittelbar "
                             + "damit, biete keine anderen Lernziele an und fordere keine weitere Bestätigung an. "
+                            + "Alle früher im Gespräch genannten Zieloptionen sind durch diesen aktuellen "
+                            + "Folgezustand ungültig. "
                             + "Arbeite dialogisch am aktiven Lernziel. Anerkenne fachlich gleichwertige korrekte Lösungswege, "
                             + "Darstellungen und Begründungen; ausdrücklich verlangte Formate bleiben verbindlich. "
                             + "Speichere Mastery erst nach zwei unabhängigen Checks oder echtem Transfer in einem "
@@ -958,6 +963,8 @@ public final class OpenAiDeCoachContextProjector {
             case "teachActiveGoal", "setMastery" -> goalAnnouncement
                     + "This goal has already been selected by SkillPilot. Begin it immediately, do not offer other "
                     + "learning goals, and do not ask for further confirmation. "
+                    + "All goal options mentioned earlier in the conversation are invalidated by this current "
+                    + "successor state. "
                     + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context and after checking every aspect.";
             default -> "Follow only the published required action, then reload the context.";
         };

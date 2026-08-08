@@ -80,6 +80,10 @@ class OpenAiDeCoachMcpContractTest {
             "bed59e4cd9b2cd00c31523c6bcc110db7c396f676704730e3a2a9055f0a0555c",
             "45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed",
             "157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c");
+    private static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
+    private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
+            "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String LEARNING_SESSION_ID =
@@ -323,7 +327,8 @@ class OpenAiDeCoachMcpContractTest {
         List<String> expectedResourceUris = Stream.concat(
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
-                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI),
+                                OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                                LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream()
                                 .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
                 .toList();
@@ -406,7 +411,9 @@ class OpenAiDeCoachMcpContractTest {
                                 assertThat(contents.meta().get("openai/widgetPrefersBorder"))
                                         .isEqualTo(memoryPractice);
                                 assertThat(sha256(contents.text()))
-                                        .isEqualTo(artifactSha256(resource.uri()));
+                                        .isEqualTo(LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.uri())
+                                                ? LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256
+                                                : artifactSha256(resource.uri()));
                             });
         }
 
@@ -450,6 +457,42 @@ class OpenAiDeCoachMcpContractTest {
                         .timer()
                         .count())
                 .isEqualTo(1);
+    }
+
+    @Test
+    void keepsOriginalVersionedGoalVisualizationResourceByteExactAndPassive() {
+        McpStatelessServerFeatures.SyncResourceSpecification legacyResource =
+                contract.resourceSpecifications().stream()
+                        .filter(specification -> LEGACY_GOAL_VISUALIZATION_RESOURCE_URI
+                                .equals(specification.resource().uri()))
+                        .findFirst()
+                        .orElseThrow(() -> new AssertionError(
+                                "The originally advertised V1 goal-visualization resource must remain readable."));
+
+        McpSchema.ReadResourceResult result = legacyResource.readHandler().apply(
+                null, new McpSchema.ReadResourceRequest(LEGACY_GOAL_VISUALIZATION_RESOURCE_URI));
+        assertThat(result.contents())
+                .singleElement()
+                .isInstanceOfSatisfying(
+                        McpSchema.TextResourceContents.class,
+                        contents -> {
+                            assertThat(contents.uri()).isEqualTo(LEGACY_GOAL_VISUALIZATION_RESOURCE_URI);
+                            assertThat(contents.mimeType())
+                                    .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
+                            assertThat(sha256(contents.text()))
+                                    .isEqualTo(LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256);
+                        });
+
+        assertThat(contract.toolSpecifications())
+                .allSatisfy(specification -> {
+                    Object ui = specification.tool().meta().get("ui");
+                    if (ui instanceof Map<?, ?> uiMeta) {
+                        assertThat(uiMeta.get("resourceUri"))
+                                .isNotEqualTo(LEGACY_GOAL_VISUALIZATION_RESOURCE_URI);
+                    }
+                    assertThat(specification.tool().meta().get("openai/outputTemplate"))
+                            .isNotEqualTo(LEGACY_GOAL_VISUALIZATION_RESOURCE_URI);
+                });
     }
 
     private static String artifactSha256(String resourceUri) {
@@ -1116,6 +1159,15 @@ class OpenAiDeCoachMcpContractTest {
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
                 structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_MASTERY, result);
+        assertThat(objectMapper.valueToTree(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY)
+                                .tool()
+                                .outputSchema())
+                        .at("/properties/context/description")
+                        .asText())
+                .contains(
+                        "Fresh authoritative successor state",
+                        "invalidates every goal option",
+                        "continue it immediately without offering a goal choice");
         assertThat(payload.context().activeGoal().goalId()).isEqualTo(successor.id());
         assertThat(payload.context().requiredAction()).isEqualTo("teachActiveGoal");
         assertThat(payload.context().interactionMode()).isEqualTo("chat");
@@ -1125,7 +1177,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(
                         OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                         OpenAiDeV1McpContractAdapter.SET_MASTERY)
-                .doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+                .doesNotContain(
+                        OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                        OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
         assertThat(payload.context().instruction())
                 .contains(
                         successor.title(),
@@ -1136,6 +1190,20 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.content().toString())
                 .contains(successor.title(), "bereits aktiviert", "keine Lernzielauswahl")
                 .doesNotContain(unrelated.title());
+        McpSchema.CallToolResult accidentalNavigation = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "goal"));
+        OpenAiDeV1McpContractAdapter.NavigationResult guardedNavigation =
+                structured(accidentalNavigation, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, accidentalNavigation);
+        assertThat(guardedNavigation.requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(guardedNavigation.options()).isEmpty();
+        assertThat(guardedNavigation.instruction())
+                .contains(successor.title(), "keine Lernzielauswahl", "früheren Zieloptionen")
+                .doesNotContain(unrelated.title());
+        assertThat(accidentalNavigation.content().toString())
+                .contains("keine Lernzielauswahl geöffnet", "Frühere Zieloptionen sind ungültig")
+                .doesNotContain("Navigationsoptionen für goal geladen", unrelated.title());
         verify(coachTools, never()).setActiveGoal(any(), any());
     }
 
@@ -1819,7 +1887,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void goalNavigationPreservesTheActiveSuccessorActionDuringContinuation() {
+    void goalNavigationWithoutExplicitRedirectKeepsTheActiveSuccessorAndPublishesNoChoices() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
 
         McpSchema.CallToolResult result = call(
@@ -1830,14 +1898,94 @@ class OpenAiDeCoachMcpContractTest {
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
 
         assertThat(navigation.requiredAction()).isEqualTo("teachActiveGoal");
-        assertThat(navigation.options())
-                .extracting(OpenAiDeCoachContext.Option::id)
-                .containsExactly("goal-public-id");
+        assertThat(navigation.options()).isEmpty();
         assertThat(navigation.instruction()).contains(
                 "bereits ein aktives Lernziel",
                 "normalen Fortsetzen",
-                "kein Lernziel erneut",
+                "Lineare Gleichungen sicher lösen",
+                "keine Lernzielauswahl",
+                "früheren Zieloptionen");
+        assertThat(result.content().toString())
+                .contains("keine Lernzielauswahl geöffnet", "Frühere Zieloptionen sind ungültig")
+                .doesNotContain("Navigationsoptionen für goal geladen");
+    }
+
+    @Test
+    void goalNavigationGuardPreservesEveryActiveModeWhenRedirectIsFalse() {
+        for (String requiredAction : List.of(
+                "orientActiveGoal",
+                "teachActiveGoal",
+                "chooseMemoryMode",
+                "setMastery")) {
+            when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState(requiredAction));
+
+            McpSchema.CallToolResult result = call(
+                    OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                    Map.of("target", "goal", "redirect", false));
+            OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                    structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+
+            assertThat(navigation.requiredAction()).isEqualTo(requiredAction);
+            assertThat(navigation.options()).isEmpty();
+            assertThat(navigation.instruction())
+                    .contains(
+                            "requiredAction=" + requiredAction,
+                            "modusspezifischen Regeln",
+                            "keine Lernzielauswahl offen");
+        }
+    }
+
+    @Test
+    void navigationRejectsRedirectForTargetsOtherThanGoal() {
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "scope", "redirect", true));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "INVALID_INPUT")
+                .containsEntry("category", "input")
+                .containsEntry("retryable", false)
+                .containsEntry("stateChanged", false));
+        verify(coachTools, never()).getLearnerState(any());
+    }
+
+    @Test
+    void explicitGoalRedirectPublishesOnlyAlternativeAtomicGoals() {
+        FrontierGoal active = contentGoal("active-goal", "Lineare Funktionen untersuchen");
+        FrontierGoal firstAlternative = contentGoal("alternative-one", "Bruchgleichungen lösen");
+        FrontierGoal secondAlternative = contentGoal("alternative-two", "Zinssatz bestimmen");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(activeGoalState(
+                active,
+                active,
+                firstAlternative,
+                secondAlternative));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "goal", "redirect", true));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
+
+        assertThat(navigation.requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(navigation.options())
+                .extracting(OpenAiDeCoachContext.Option::id)
+                .containsExactly(firstAlternative.id(), secondAlternative.id())
+                .doesNotContain(active.id());
+        assertThat(navigation.instruction()).contains(
+                "ausdrücklich einen Wechsel",
+                "anderes Ziel",
                 "redirect=true");
+
+        McpSchema.Tool navigationTool = spec(OpenAiDeV1McpContractAdapter.GET_NAVIGATION).tool();
+        assertThat(navigationTool.description()).contains(
+                "redirect=true",
+                "explicitly requests a different goal");
+        assertThat(objectMapper.valueToTree(navigationTool.inputSchema())
+                        .at("/properties/redirect/type")
+                        .asText())
+                .isEqualTo("boolean");
     }
 
     @Test
@@ -2745,5 +2893,29 @@ class OpenAiDeCoachMcpContractTest {
                 "learning",
                 active,
                 new StateMachineInfo("TEACHING", requiredAction, List.of(), List.of(), active));
+    }
+
+    private UnifiedLearnerStateResponse activeGoalState(
+            FrontierGoal active,
+            FrontierGoal... frontierGoals) {
+        UnifiedLearnerStateResponse base = state("teachActiveGoal", active);
+        List<FrontierGoal> frontier = List.of(frontierGoals);
+        return new UnifiedLearnerStateResponse(
+                base.skillpilotId(),
+                base.curriculum(),
+                frontier,
+                new LearnerGoals(
+                        frontier,
+                        base.goals().mastered_count(),
+                        base.goals().total_count(),
+                        base.goals().personalized(),
+                        base.goals().scope(),
+                        base.goals().scope_completed()),
+                base.nextAllowedActions(),
+                base.activeFilters(),
+                base.copySources(),
+                base.learningState(),
+                active,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(active), List.of(), active));
     }
 }

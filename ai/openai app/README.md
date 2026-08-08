@@ -102,8 +102,9 @@ exact tested, self-contained artifact into the Spring resources. The
 unpublished V1 draft binds exactly one active content-addressed UI resource
 only to `render_skillpilot_goal_visualization` through
 `ui.resourceUri` plus the ChatGPT compatibility alias
-`openai/outputTemplate`. Previously advertised hash URIs remain byte-identical,
-passive resources for provider caches. All ordinary coach tools remain UI-free.
+`openai/outputTemplate`. The original version-addressed URI and all previously
+advertised hash URIs remain byte-identical, passive resources for provider
+caches. All ordinary coach tools remain UI-free.
 
 The renderer returns a bounded structured `goalVisualization` projection to
 the widget. The widget displays only the approved image after it has loaded;

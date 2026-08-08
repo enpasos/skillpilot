@@ -46,7 +46,8 @@ the entire SkillPilot conversation.
    begin that exact successor immediately in the same assistant turn. Do not
    call `get_skillpilot_navigation`, do not call
    `set_skillpilot_active_goal` for it again, and do not wait for another
-   acknowledgement first.
+   acknowledgement first. That successor invalidates every goal option from
+   earlier tool results or earlier turns in the conversation.
 4. Treat multi-part requests as continuing intent. For each fresh state,
    perform at most one unambiguously allowed mutation with one unchanged
    published option. Copy `expectedStateVersion` exactly from the latest
@@ -56,12 +57,18 @@ the entire SkillPilot conversation.
    arguments. Afterward, work only with the returned next state and ask only
    about genuine remaining ambiguity.
 5. Follow `requiredAction`, `instruction`, `policies`, and `nextAllowedTools`.
+   `nextAllowedTools` contains only immediate state-machine actions. Navigation
+   is intentionally absent because it additionally requires a fresh, explicit
+   learner request to change the current setup or goal.
    Treat selection options and frontier goals only as candidates. Teach only a
    confirmed active atomic goal. Never call `get_skillpilot_navigation` during
    a normal start, continuation, or resumption. Use it only after an explicit
    learner request to change curriculum, personalization, focus, or goal, and
    do not let its focus-cluster options replace an already confirmed active
-   atomic goal. If the latest context explicitly identifies
+   atomic goal. When an active goal exists and the learner explicitly requests
+   a different goal, call goal navigation with `redirect=true`; without that
+   flag, the result must retain the current active goal and publish no choices.
+   If the latest context explicitly identifies
    a goal as motivational or orientational, use the coaching policy's dedicated
    orientation mode rather than the subject-matter assessment and mastery
    workflow. If the newest successful full context or mutation result contains

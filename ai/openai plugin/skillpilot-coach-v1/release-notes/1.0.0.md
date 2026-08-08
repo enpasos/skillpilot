@@ -23,7 +23,8 @@ line. This version has not been published yet.
 - two distinct active content-addressed MCP Apps UI resources: the read-only
   image of an active atomic learning goal with a matching canonical
   `goal-visualization` link, and interactive memory-card practice in chat; plus
-  immutable passive resources for previously advertised hash URIs
+  immutable passive resources for every previously advertised hash or
+  version-addressed goal-image URI
 - per-tool `ui.resourceUri` and `openai/outputTemplate` bindings for the goal
   renderer and memory-practice launcher; the app-only card-review tool and all
   ordinary context, selection, mutation, recall, and assessment tools remain
@@ -38,9 +39,9 @@ line. This version has not been published yet.
   Cockpit request
 - structured `goalVisualization` delivery to an image-only component; bare
   MCP `ImageContent` is not used as a visibility contract
-- immutable passive retention of every content-addressed widget URI already
-  advertised to a real test client, while only the current resource remains
-  bound to the renderer
+- immutable passive retention of every widget URI already advertised to a real
+  test client, including the original `1.0.0` URI, while only the current
+  content-addressed resource remains bound to the renderer
 - immediate data-then-render goal-image flow: after a full result exposes and
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
@@ -58,6 +59,10 @@ line. This version has not been published yet.
   assessments, or mastery proof
 - exact localized active-goal title announcement and full dialogic learning
   behavior carried forward from the proven German and English coach guides
+- authoritative autopilot continuation without a stale goal menu: immediate
+  next actions no longer advertise navigation, accidental goal navigation
+  publishes no choices while a goal is active, and only an explicit
+  `redirect=true` change request can expose alternative goals
 - active motivation dialogue: choosing a possibility starts a tailored
   follow-up about what the learner can understand and do; it no longer causes
   a generic acknowledgement followed immediately by the next-goal menu

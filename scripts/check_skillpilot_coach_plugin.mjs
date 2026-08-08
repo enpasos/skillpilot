@@ -23,6 +23,22 @@ const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
 );
+const legacyGoalVisualizationArtifact = resolve(
+  retainedGoalVisualizationRoot,
+  "legacy-1.0.0/goal-visualization.html",
+);
+const legacyGoalVisualizationArtifactSha256 =
+  "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
+const legacyGoalVisualizationResourceUri =
+  "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
+assert.equal(existsSync(legacyGoalVisualizationArtifact), true);
+assert.equal(
+  createHash("sha256")
+    .update(readFileSync(legacyGoalVisualizationArtifact))
+    .digest("hex"),
+  legacyGoalVisualizationArtifactSha256,
+  "The version-addressed legacy goal-visualization artifact must remain byte-for-byte immutable.",
+);
 assert.equal(existsSync(goalVisualizationWidget), true);
 const goalVisualizationArtifactSha256 = createHash("sha256")
   .update(readFileSync(goalVisualizationWidget))
@@ -295,6 +311,11 @@ assert.equal(
   "V1 must not publish or declare a compatibility endpoint",
 );
 const expectedUiResources = [
+  {
+    mimeType: "text/html;profile=mcp-app",
+    path: "ui/retained/legacy-1.0.0/goal-visualization.html",
+    uri: legacyGoalVisualizationResourceUri,
+  },
   ...retainedGoalVisualizationArtifactSha256s.map((sha256) => ({
     mimeType: "text/html;profile=mcp-app",
     path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
@@ -325,6 +346,9 @@ const goalVisualizationHtml = read(goalVisualizationWidget);
 assert.match(goalVisualizationHtml, /^<!doctype html>/i);
 assert.match(goalVisualizationHtml, /ui\/notifications\/tool-result/);
 assert.match(goalVisualizationHtml, /goalVisualization/);
+const legacyGoalVisualizationHtml = read(legacyGoalVisualizationArtifact);
+assert.match(legacyGoalVisualizationHtml, /^<!doctype html>/i);
+assert.match(legacyGoalVisualizationHtml, /goalVisualization/);
 const memoryCardPracticeHtml = read(memoryCardPracticeWidget);
 assert.match(memoryCardPracticeHtml, /^<!doctype html>/i);
 assert.match(memoryCardPracticeHtml, /ui\/notifications\/tool-result/);
@@ -487,6 +511,18 @@ assertBehaviorFragments(
     /Cockpit URL as (?:the )?fallback/u,
   ],
   "memory-card practice UI boundary",
+);
+
+assertBehaviorFragments(
+  combinedSkill,
+  [
+    /nextAllowedTools[\s\S]+only immediate state-machine actions/u,
+    /Navigation[\s\S]+intentionally absent[\s\S]+explicit[\s\S]+request/u,
+    /active goal[\s\S]+redirect=true[\s\S]+explicitly asks for a[\s\S]+different goal/u,
+    /flag omitted or false[\s\S]+no goal choices are published/u,
+    /invalidates all goal options from earlier results and conversation[\s\S]+turns/u,
+  ],
+  "fail-closed autopilot continuation and explicit goal redirect",
 );
 
 const didacticParityRules = [
@@ -986,6 +1022,14 @@ assert.doesNotMatch(contractMetadata, /PUBLIC_UI_ORIGIN/);
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_RESOURCE_URI"),
   releaseLine.ui.activeBindings.render_skillpilot_goal_visualization,
+);
+assert.equal(
+  javaConstant("LEGACY_GOAL_VISUALIZATION_RESOURCE_URI"),
+  legacyGoalVisualizationResourceUri,
+);
+assert.equal(
+  javaConstant("LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256"),
+  legacyGoalVisualizationArtifactSha256,
 );
 assert.equal(
   javaConstant("MEMORY_CARD_PRACTICE_RESOURCE_URI"),

@@ -307,6 +307,9 @@ public final class OpenAiDeMcpTelemetry {
         private static final ResourceArtifact ACTIVE_MEMORY_PRACTICE = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256),
                 ACTIVE_ARTIFACT_ROLE);
+        private static final ResourceArtifact LEGACY_GOAL_VISUALIZATION = new ResourceArtifact(
+                fingerprint(OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256),
+                RETAINED_ARTIFACT_ROLE);
         private static final ResourceArtifact UNKNOWN =
                 new ResourceArtifact(UNKNOWN_ARTIFACT, UNKNOWN_ARTIFACT);
 
@@ -316,6 +319,9 @@ public final class OpenAiDeMcpTelemetry {
             }
             if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resourceUri)) {
                 return ACTIVE_MEMORY_PRACTICE;
+            }
+            if (OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
+                return LEGACY_GOAL_VISUALIZATION;
             }
             for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
                 if (OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(sha256).equals(resourceUri)) {

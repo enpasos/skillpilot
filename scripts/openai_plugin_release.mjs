@@ -92,6 +92,20 @@ const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
 );
+const legacyGoalVisualizationSource = resolve(
+  retainedGoalVisualizationRoot,
+  "legacy-1.0.0/goal-visualization.html",
+);
+const legacyGoalVisualizationArtifactSha256 =
+  "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
+assert.equal(existsSync(legacyGoalVisualizationSource), true);
+assert.equal(
+  createHash("sha256")
+    .update(readFileSync(legacyGoalVisualizationSource))
+    .digest("hex"),
+  legacyGoalVisualizationArtifactSha256,
+  "The version-addressed legacy goal-visualization artifact must remain byte-for-byte immutable.",
+);
 const retainedGoalVisualizationArtifactSha256s = readdirSync(
   retainedGoalVisualizationRoot,
   { withFileTypes: true },
@@ -122,6 +136,9 @@ const uiArtifactSource = (releasePath) => {
   }
   if (releasePath === "ui/memory-card-practice.html") {
     return memoryCardPracticeWidgetSource;
+  }
+  if (releasePath === "ui/retained/legacy-1.0.0/goal-visualization.html") {
+    return legacyGoalVisualizationSource;
   }
   const retained =
     /^ui\/retained\/(sha256-[0-9a-f]{64})\/goal-visualization\.html$/u.exec(
