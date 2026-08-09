@@ -157,6 +157,9 @@ const installApi = async (page: Page) => {
       return
     }
     if (path === '/api/ui/learners' && request.method() === 'POST') {
+      // Keep ID creation observably asynchronous so the browser contract must
+      // wait for the backend-created value instead of relying on local timing.
+      await new Promise(resolve => setTimeout(resolve, 75))
       await respond({
         skillpilotId: generatedLearnerId,
         availableCurricula: [landscape],
@@ -398,9 +401,16 @@ try {
 
   const generated = await openFreshSetupPage(context, baseUrl)
   await generated.page.getByRole('button', { name: 'Neue SkillPilot-ID erstellen' }).click()
-  await generated.page.getByLabel('Deine SkillPilot-ID').waitFor()
+  const generatedIdInput = generated.page.getByLabel('Deine SkillPilot-ID')
+  await generated.page.waitForFunction(
+    (learnerId) => {
+      const input = document.getElementById('skillpilotIdInput') as HTMLInputElement | null
+      return input?.value === learnerId
+    },
+    generatedLearnerId,
+  )
   assert(
-    await generated.page.getByLabel('Deine SkillPilot-ID').inputValue() === generatedLearnerId,
+    await generatedIdInput.inputValue() === generatedLearnerId,
     'the generated-ID path uses the backend-created learner',
   )
   await continueToCompletedSetup(generated.page)
