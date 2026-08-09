@@ -330,9 +330,10 @@ requires all of the following:
    through `client_secret_basic`, with exact callback allowlist, Authorization
    Code plus PKCE S256, exact resource/audience and scopes; DCR, CIMD,
    `private_key_jwt` and `none` remain disabled;
-3. a fresh, high-entropy application learning session for every first-party
-   **Lernen starten**, stored only as HMAC/hash and mapped internally to the
-   permanent SkillPilot ID;
+3. a fresh, high-entropy application learning session for every explicit
+   authorized start: first-party **Lernen starten** or the capability-protected
+   private MCP App direct start; stored only as HMAC/hash and mapped internally
+   to the permanent SkillPilot ID;
 4. automatic start-message transport of that reference and independent
    validation of OAuth plus session on every fachlicher tool.
 

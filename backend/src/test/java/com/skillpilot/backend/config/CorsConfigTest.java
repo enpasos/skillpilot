@@ -2,6 +2,7 @@ package com.skillpilot.backend.config;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,10 @@ class CorsConfigTest {
         Map<String, CorsConfiguration> mappings = mappings();
 
         assertThat(mappings.keySet())
-                .containsExactly("/assets/goal-visualizations/**", "/**");
+                .containsExactly(
+                        "/assets/goal-visualizations/**",
+                        OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                        "/**");
 
         CorsConfiguration visualization = mappings.get("/assets/goal-visualizations/**");
         assertThat(visualization).isNotNull();
@@ -40,6 +44,49 @@ class CorsConfigTest {
         assertThat(application).isNotNull();
         assertThat(application.checkOrigin("https://example.web-sandbox.oaiusercontent.com"))
                 .isNull();
+    }
+
+    @Test
+    void allowsOnlyCredentialFreeBootstrapPostsFromThePinnedWidgetOrigin() throws Exception {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.setCorsConfigurations(mappings());
+        DefaultCorsProcessor processor = new DefaultCorsProcessor();
+
+        MockHttpServletRequest preflightRequest =
+                new MockHttpServletRequest(
+                        "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
+        preflightRequest.addHeader(
+                HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        preflightRequest.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
+        preflightRequest.addHeader(
+                HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS, "authorization,content-type");
+        CorsConfiguration bootstrap = source.getCorsConfiguration(preflightRequest);
+        MockHttpServletResponse preflightResponse = new MockHttpServletResponse();
+
+        assertThat(bootstrap).isNotNull();
+        assertThat(bootstrap.getAllowedOrigins())
+                .containsExactly(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        assertThat(bootstrap.getAllowedMethods()).containsExactly("POST", "OPTIONS");
+        assertThat(bootstrap.getAllowedHeaders())
+                .containsExactly("Authorization", "Content-Type");
+        assertThat(bootstrap.getExposedHeaders()).containsExactly("Retry-After");
+        assertThat(bootstrap.getAllowCredentials()).isFalse();
+        assertThat(processor.processRequest(bootstrap, preflightRequest, preflightResponse))
+                .isTrue();
+        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS))
+                .isNull();
+
+        MockHttpServletRequest foreignOrigin =
+                new MockHttpServletRequest(
+                        "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
+        foreignOrigin.addHeader(
+                HttpHeaders.ORIGIN, "https://example.web-sandbox.oaiusercontent.com");
+        foreignOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
+        MockHttpServletResponse foreignResponse = new MockHttpServletResponse();
+        assertThat(processor.processRequest(bootstrap, foreignOrigin, foreignResponse)).isFalse();
+        assertThat(foreignResponse.getStatus()).isEqualTo(HttpServletResponse.SC_FORBIDDEN);
     }
 
     @Test

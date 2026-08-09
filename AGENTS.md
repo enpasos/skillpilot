@@ -743,11 +743,13 @@ Key principles for Layer C:
 - The multilingual OpenAI MCP App separates two server-owned bindings:
   - OAuth 2.1 authenticates the registered confidential App connection.
   - An independent, absolute 24-hour learning session addresses one learner for
-    fachliche tool use. It is created anew only by `Lernen starten` in
-    SkillPilot, is never extended by OAuth refreshes or MCP calls, is inserted
-    automatically into the prepared start message, and is passed unchanged as
-    `learningSessionId` to every fachlicher MCP call. The learner never has to
-    copy or re-enter it.
+    fachliche tool use. It is created anew only by an explicit authorized start:
+    either `Lernen starten` in the first-party SkillPilot UI or the
+    capability-protected private MCP App direct start. It is never extended by
+    OAuth refreshes or MCP calls, enters the provider flow only in the short
+    prepared start message, and is passed unchanged as `learningSessionId` to
+    every fachlicher MCP call. OAuth alone never chooses the learner, and the
+    direct-start SkillPilot ID never becomes an MCP tool argument.
   OpenAI attaches the OAuth bearer token to MCP requests automatically. The
   backend requires both proofs and resolves the learner only through the
   learning-session mapping. Because ChatGPT exposes no stable conversation

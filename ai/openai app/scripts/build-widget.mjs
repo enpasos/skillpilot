@@ -81,6 +81,47 @@ await mkdir(dirname(backendGoalVisualizationOutput), { recursive: true });
 await writeFile(backendGoalVisualizationOutput, goalVisualizationHtml);
 console.log(`Built ${backendGoalVisualizationOutput}`);
 
+const skillPilotStartResult = await build({
+  entryPoints: [join(root, "widget/src/skillpilot-start-main.ts")],
+  bundle: true,
+  format: "iife",
+  platform: "browser",
+  target: "es2022",
+  write: false,
+  minify: true,
+  loader: { ".css": "text" }
+});
+const skillPilotStartBundle =
+  skillPilotStartResult.outputFiles.find((file) => file.path.endsWith(".js")) ||
+  skillPilotStartResult.outputFiles[0];
+if (!skillPilotStartBundle) {
+  throw new Error("No JavaScript bundle generated for the SkillPilot start widget");
+}
+const skillPilotStartBundleText = skillPilotStartBundle.text.replace(/^[ \t]+$/gm, "");
+const skillPilotStartHtml = template
+  .replace("__LANG__", "en")
+  .replace("__TITLE__", "Start SkillPilot")
+  .replace("__BUNDLE__", () =>
+    skillPilotStartBundleText.replaceAll("</script", "<\\/script")
+  );
+const skillPilotStartOutput = join(
+  root,
+  "dist",
+  "skillpilot-start",
+  "widget.html"
+);
+await mkdir(dirname(skillPilotStartOutput), { recursive: true });
+await writeFile(skillPilotStartOutput, skillPilotStartHtml);
+console.log(`Built ${skillPilotStartOutput}`);
+
+const backendSkillPilotStartOutput = join(
+  root,
+  "../../backend/src/main/resources/openai/skillpilot-start-v1.html"
+);
+await mkdir(dirname(backendSkillPilotStartOutput), { recursive: true });
+await writeFile(backendSkillPilotStartOutput, skillPilotStartHtml);
+console.log(`Built ${backendSkillPilotStartOutput}`);
+
 const memoryCardPracticeResult = await build({
   entryPoints: [join(root, "widget/src/memory-card-practice-main.ts")],
   bundle: true,

@@ -19,6 +19,7 @@ import {
   assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
+  assertLifecyclePolicyRevisionMonotone,
   assertReleaseCompatible,
   assertSuccessorVersionClassification,
   determineReleaseVerificationMode,
@@ -88,6 +89,10 @@ const memoryCardPracticeWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
+const skillpilotStartWidgetSource = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-start-v1.html",
+);
 const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
@@ -137,6 +142,9 @@ const uiArtifactSource = (releasePath) => {
   if (releasePath === "ui/memory-card-practice.html") {
     return memoryCardPracticeWidgetSource;
   }
+  if (releasePath === "ui/skillpilot-start.html") {
+    return skillpilotStartWidgetSource;
+  }
   if (releasePath === "ui/retained/legacy-1.0.0/goal-visualization.html") {
     return legacyGoalVisualizationSource;
   }
@@ -171,6 +179,16 @@ const candidate = resolve(workRoot, manifest.version);
 try {
   buildCandidate(candidate);
   validateCandidate(candidate);
+  for (const previous of [draftVersion, currentBaseline]) {
+    if (previous !== null && existsSync(previous)) {
+      assertLifecyclePolicyRevisionMonotone(
+        readJson(resolve(previous, "lifecycle.json")),
+        readJson(resolve(candidate, "lifecycle.json")),
+        providerNoticeVersion(previous),
+        providerNoticeVersion(candidate),
+      );
+    }
+  }
   if (verificationMode === "compatible-successor") {
     assert.equal(
       currentBaseline !== null && existsSync(currentBaseline),
@@ -551,6 +569,18 @@ function validateCandidate(output) {
       `Snapshot is missing referenced plugin asset ${assetPath}.`,
     );
   }
+}
+
+function providerNoticeVersion(releaseRoot) {
+  const contractPath = resolve(releaseRoot, "contract/contract.json");
+  if (!existsSync(contractPath)) {
+    return null;
+  }
+  const contract = readJson(contractPath);
+  const issuer = contract.tools?.find(
+    (tool) => tool.name === "issue_skillpilot_start_capability",
+  );
+  return issuer?.inputSchema?.properties?.providerNoticeVersion?.const ?? null;
 }
 
 function printSurfaceChangeReport(changes) {

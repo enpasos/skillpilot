@@ -15,6 +15,10 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PLUGIN_IDENTITY = "skillpilot-coach-v1";
     public static final String PLUGIN_VERSION = "1.0.0";
     public static final int CONTRACT_MAJOR = 1;
+    public static final long POLICY_REVISION = 1L;
+    public static final String SUPPORT_LIFECYCLE = "CURRENT";
+    public static final String PUBLICATION_STATUS = "DRAFT";
+    public static final String NEW_SESSION_POLICY = "ALLOW";
     public static final String PUBLIC_MCP_ORIGIN = "https://mcp-coach-v1.skillpilot.com";
     /** Dedicated, plugin-unique origin required for the submitted MCP App UI. */
     public static final String WIDGET_DOMAIN = PUBLIC_MCP_ORIGIN;
@@ -52,6 +56,18 @@ public final class OpenAiDeV1ContractMetadata {
                     + "/memory-card-practice.html";
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH =
             "/openai/skillpilot-memory-card-practice-v1.html";
+    public static final String SKILLPILOT_START_ARTIFACT_SHA256 =
+            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c";
+    public static final String SKILLPILOT_START_RESOURCE_URI =
+            "ui://skillpilot/coach/v1/sha256-"
+                    + SKILLPILOT_START_ARTIFACT_SHA256
+                    + "/skillpilot-start.html";
+    public static final String SKILLPILOT_START_RESOURCE_CLASSPATH =
+            "/openai/skillpilot-start-v1.html";
+    public static final String BOOTSTRAP_LAUNCH_PATH = "/bootstrap/v1/launch";
+    public static final String BOOTSTRAP_LAUNCH_ENDPOINT =
+            PUBLIC_MCP_ORIGIN + BOOTSTRAP_LAUNCH_PATH;
+    public static final String PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v1";
     /**
      * Every content-addressed visualization resource previously advertised by
      * Coach V1, ordered oldest first and retained byte-for-byte for connector

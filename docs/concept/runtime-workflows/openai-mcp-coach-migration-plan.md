@@ -1,13 +1,17 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 31. Juli 2026
+**Stand:** 9. August 2026
 
 **Status:** Die mehrsprachige V1-MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
-Coach-Vertrag bleibt chat-first und kann im noch unveröffentlichten
-`1.0.0-SNAPSHOT`-Arbeitsstand das Bild des aktiven atomaren Lernziels über genau
-eine hashgebundene `text/html;profile=mcp-app`-Ressource bild-only darstellen.
-Nur der dedizierte Renderer ist an diese Ressource gebunden; gewöhnliche Tools
-bleiben UI-los. Serverauthentisiertes TLS und das
+Coach-Vertrag bleibt mit 16 neutralen Werkzeugen chat-first. Der noch
+unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand bindet drei getrennte aktive
+hashgebundene `text/html;profile=mcp-app`-Ressourcen für privaten Direktstart,
+bild-only Lernzielvisualisierung und Karteikartenlernen. Jedes der drei
+read-only UI-Werkzeuge bindet ausschließlich seine eigene Ressource; app-only
+Folgetools und gewöhnliche Coach-Werkzeuge bleiben UI-los. Der Direktstart ist
+nur für den internen Canary freigegeben; seine öffentliche Einreichung bleibt
+bis zur Erfüllung des harten Public-Release-Gates gesperrt.
+Serverauthentisiertes TLS und das
 fail-closed geprüfte OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS
 ist nicht Teil von `1.0.0`; eine mögliche spätere Transporthärtung wird separat
 entworfen.
@@ -19,10 +23,13 @@ Englisch; sichtbare Kommunikation und Nutzdaten folgen der vom Backend an die
 Lernsession gebundenen Interaktionssprache. Das versionierte Quellpaket bindet den
 Server direkt über `.mcp.json` und referenziert für den lokalen Pilot zusätzlich
 die reale bereits registrierte Verbindung über die hostgenerierte
-`.app.json`-Abbildung. Es gibt keine manuell zu übertragenden technischen
-Schlüssel und keine Abhängigkeit von Custom-GPT-Action-Retention; die pro Start
-automatisch transportierte, kurzlebige `learningSessionId` ist davon
-ausdrücklich ausgenommen.
+`.app.json`-Abbildung. Es gibt keine manuell in den Chat zu übertragenden
+technischen Schlüssel und keine Abhängigkeit von Custom-GPT-Action-Retention.
+Im internen Direktstart-Canary wird eine vorhandene SkillPilot-ID ausschließlich
+im privaten Widget eingegeben und direkt an den festen SkillPilot-HTTPS-Endpunkt
+gesendet; sie ist weder MCP-Toolargument noch Chatinhalt. Die pro Start
+automatisch transportierte, kurzlebige `learningSessionId` bleibt davon
+ausdrücklich getrennt.
 
 Die übergeordnete Architekturentscheidung ist in
 [skillpilot-owned-coach-architecture.md](skillpilot-owned-coach-architecture.md)
@@ -32,6 +39,9 @@ Die feste V1-Identität, kompatible Versionsänderungen, Contract-Snapshots und
 der Lebenszyklus werden normativ im
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
 geführt.
+Capability, direkte ID-Übertragung, Delivery und das Public-Release-Gate des
+privaten App-first-Einstiegs folgen dem
+[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md).
 
 Die technische Migration und die Zuordnung der früheren Regeln sind nicht mit
 sichtbarer Endnutzerparität gleichzusetzen. Das allgemeine Coach-
@@ -43,9 +53,9 @@ geführt.
 ## 1. Entscheidung
 
 SkillPilot migriert **nicht** den sichtbaren Session-Workaround und baut den
-bestehenden Custom GPT auch nicht weiter aus. Stattdessen entsteht eine
-mehrsprachige, chat-first OpenAI-MCP-App mit einer eng begrenzten
-bild-only MCP-Apps-UI für das aktive atomare Lernziel:
+bestehenden Custom GPT auch nicht weiter aus. Der aktuelle produktionsnahe Pfad
+ist eine mehrsprachige, chat-first OpenAI-MCP-App mit 16 neutralen Werkzeugen
+und drei dedizierten MCP-Apps-UIs:
 
 ```text
 ChatGPT App „SkillPilot Coach v1“
@@ -59,6 +69,8 @@ https://mcp-coach-v1.skillpilot.com/mcp
 Spring Boot am loopback-gebundenen internen V1-Pfad
         |
         +-- isolierter OpenAI-V1-MCP-Transport und neutraler Toolvertrag
+        |     +-- 16 neutrale Werkzeuge
+        |     +-- 3 getrennte aktive UI-Ressourcen
         +-- OAuth Authorization Server
         |     +-- fester vertraulicher Client: client_id + client_secret_basic
         |     +-- Authorization Code + PKCE S256
@@ -77,11 +89,12 @@ OpenAI-Modell-API auf.
 
 Die V1-App wird für jede freigegebene Interaktionssprache durch eigene
 Acceptance-Fälle stabilisiert; eine weitere Sprache erzeugt keine zweite App.
-Die optionale Lernzielbildausgabe über genau eine aktiv gebundene hashgebundene MCP-Apps-
-Ressource ist Teil des unveröffentlichten V1-Drafts. Sie zeigt ausschließlich
-das Bild; interaktive Widgets für Auswahl, Antwortabgabe oder Prüfungs-Receipts
-bleiben mögliche spätere Verbesserungen und sind kein Bestandteil des
-V1-Vertrags.
+Der private Direktstart-Öffner, der Lernzielbild-Renderer und der
+Karteikartenlauncher binden im unveröffentlichten V1-Draft jeweils genau ihre
+eigene aktive hashgebundene MCP-Apps-Ressource. Renderer-spezifisch bleibt genau
+eine bild-only Ressource gebunden. Interaktive fachliche Widgets für Auswahl,
+Antwortabgabe oder Prüfungs-Receipts bleiben mögliche spätere Verbesserungen
+und sind kein Bestandteil des V1-Vertrags.
 
 ## 2. Was der Retentionstest ändert – und was nicht
 
@@ -128,14 +141,17 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
 4. **Sprache backendautoritativ:** ein neutraler Vertrag ohne frei wählbaren
    `language`-Parameter. Die beim Start festgelegte `communicationLocale` wird
    aus der Lernsession geladen und steuert sämtliche sichtbare Kommunikation.
-5. **Bildausgabe eng begrenzen:** Der erste produktionsnahe Vertrag besitzt
-   genau ein read-only Rendering-Werkzeug und genau eine aktiv gebundene hashgebundene
-   `text/html;profile=mcp-app`-Ressource. Nur der Renderer trägt
-   `ui.resourceUri` und `openai/outputTemplate`; gewöhnliche Werkzeuge bleiben
-   ungebunden. Die UI rendert ausschließlich die strukturierte
-   `goalVisualization` und darf weder Auswahl noch Lernzustand mutieren.
-   Interaktive Auswahl-, Abgabe- und Prüfungswidgets bleiben mögliche spätere
-   Härtungsstufen außerhalb des V1-Vertrags.
+5. **UI-Funktionen strikt trennen:** Der erste produktionsnahe Vertrag besitzt
+   drei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen. Der
+   Direktstart-Öffner, der Bild-Renderer und der Karteikartenlauncher tragen
+   jeweils `ui.resourceUri` und `openai/outputTemplate` ausschließlich für ihre
+   eigene Ressource. Capability-Issuer, Kartenreview und gewöhnliche Werkzeuge
+   bleiben ungebunden. Renderer-spezifisch existiert genau ein read-only
+   Rendering-Werkzeug mit genau einer aktuellen bild-only Ressource; sie
+   rendert ausschließlich die strukturierte `goalVisualization` und darf weder
+   Auswahl noch Lernzustand mutieren. Interaktive fachliche Auswahl-, Abgabe-
+   und Prüfungswidgets bleiben mögliche spätere Härtungsstufen außerhalb des
+   V1-Vertrags.
 6. **Alte Quellen bleiben stehen:** `ai/openai custom gpt/` und
    `ai/openai-custom-gpt-visible-session/` werden weder überschrieben noch in den
    neuen App-Ordner gemischt.
@@ -150,6 +166,11 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    fachliche Toolaufruf benötigt beides. OAuth allein erzeugt oder wählt keine
    Lernsession; die Lernsession allein autorisiert keinen MCP-Aufruf. mTLS ist
    nicht Teil des `1.0.0`-Vertrags.
+10. **Direktstart bleibt intern:** Die vorhandene SkillPilot-ID darf im
+    Phase-1-Canary ausschließlich im privaten Widget und im direkten HTTPS-Body
+    an SkillPilot vorkommen. Eine öffentliche Einreichung bleibt gesperrt, bis
+    OpenAI diese konkrete Verarbeitung schriftlich akzeptiert oder eine
+    freigegebene ID-freie öffentliche Architektur vorliegt.
 
 ## 4. Zieltopologie
 
@@ -610,7 +631,9 @@ Funktion migriert:
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
 | Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; frühere ausgelieferte Hash-URIs bleiben passiv lesbar; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
-| spätere interaktive Widgetdarstellung | app-only Metadaten und Tools; niemals fachliche Modellanweisung |
+| privater Direktstart | eigene aktive Startressource am read-only Öffner; ID-freier app-only Capability-Issuer und direkter capability-geschützter HTTPS-Request; SkillPilot-ID niemals in Chat oder MCP-Toolargumenten; ausschließlich interner Canary mit hartem Public-Release-Gate |
+| normales Karteikartenlernen | eigene aktive Kartenressource am read-only Launcher; begrenzter Kartenstapel nur in Resultat-`_meta`; app-only Review ungebunden und ohne Mastery-Mutation |
+| spätere fachliche Widgetdarstellung | jeweils eigene UI-Ressource sowie eng begrenzte app-only Metadaten und Tools; niemals fachliche Modellanweisung |
 
 Die bewährte fachlich-didaktische Ausgangsbasis liegt unter
 `ai/openai custom gpt`, insbesondere in `system_instructions.de.md` sowie den
@@ -898,33 +921,45 @@ MCP-Pfads setzt zusätzlich die vollständig abgenommene Kombination aus festem
 vertraulichem OAuth-Client und expliziter 24h-Lernsession voraus. mTLS ist kein
 Gate der Version `1.0.0`.
 
-### Etappe 7 – Bild-only MCP-Apps-UI
+### Etappe 7 – Drei getrennte MCP-Apps-UIs
 
-- read-only Lernzielbild für aktive atomare Ziele über genau eine aktiv gebundene hashgebundene
-  `text/html;profile=mcp-app`-Ressource im unveröffentlichten `1.0.0`-Draft
-  ausliefern;
+- drei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen im
+  unveröffentlichten `1.0.0`-Draft ausliefern: privaten Direktstart,
+  read-only Lernzielbild und Karteikartenlernen;
+- `open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+  `start_skillpilot_memory_practice` jeweils ausschließlich an ihre eigene
+  aktuelle Ressource binden; Capability-Issuer, Kartenreview und gewöhnliche
+  Coach-Werkzeuge bleiben ungebunden;
+- den privaten Direktstart nur im internen Canary verwenden; die SkillPilot-ID
+  bleibt im flüchtigen Widgetfeld und direkten HTTPS-Body, und das harte
+  Public-Release-Gate bleibt bestehen;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
   Chatdarstellung degradieren;
-- nur `render_skillpilot_goal_visualization` mit `ui.resourceUri` und
-  `openai/outputTemplate` an die eine aktuelle Ressource binden; gewöhnliche
-  Werkzeuge bleiben ungebunden;
+- renderer-spezifisch nur `render_skillpilot_goal_visualization` an genau eine
+  aktuelle bild-only Ressource binden;
 - die strukturierte `goalVisualization` bild-only rendern, ohne
   User-Agent-/Surface-Gate und ohne zu behaupten, dass der Host sie angezeigt
   hat;
+- den begrenzten Karteikartenstapel ausschließlich über Resultat-`_meta` an die
+  Komponente liefern; Umdrehen und Navigation bleiben lokal, nur die explizite
+  Bewertung schreibt die angezeigte Karte;
 - jede bereits an reale Test-Clients ausgelieferte HTML-Hash-URI mit ihren
   exakten Bytes passiv lesbar halten; nur die aktuelle URI wird gebunden und
   nach dem Deployment mit aktualisierten Plugin-Metadaten in einem frischen
   Chat geprüft;
-- interaktive Widgets nur in einer späteren, ausdrücklich neu entworfenen
-  Ausbaustufe ergänzen.
+- interaktive fachliche Auswahl-, Abgabe- und Prüfungswidgets nur in einer
+  späteren, ausdrücklich neu entworfenen Ausbaustufe ergänzen.
 
-**Zwischenstand:** Die read-only Lernzielvisualisierung über eine einzelne
-hashgebundene, bild-only MCP-Apps-UI-Ressource ist im unveröffentlichten V1-
-Draft implementiert. Eine interaktive MCP-UI ist nicht Teil von V1.
+**Zwischenstand:** Alle drei aktiven UI-Ressourcen sind im unveröffentlichten
+V1-Draft implementiert und separat gebunden. Der Direktstart ist nur für den
+internen Canary freigegeben; ein echter OpenAI-Host-Canary und das harte
+Public-Release-Gate stehen noch aus. Für die Lernzielvisualisierung bleibt
+genau eine aktuelle hashgebundene bild-only Ressource an den Renderer gebunden;
+frühere ausgelieferte Bild-URIs sind ausschließlich passiv lesbar.
 
-**Exit:** Die optionale Bildausgabe schwächt den chat-first Coach nicht und
-der normale Textpfad bleibt unabhängig davon erhalten, ob der Host die
-bereitgestellte UI-Komponente tatsächlich darstellt.
+**Exit:** Die drei UI-Funktionen schwächen den chat-first Coach nicht; der
+normale Text- beziehungsweise Cockpit-Fallback bleibt unabhängig davon
+erhalten, ob der Host die bereitgestellten Komponenten tatsächlich darstellt.
 
 ### Etappe 8 – Weitere Interaktionssprachen
 

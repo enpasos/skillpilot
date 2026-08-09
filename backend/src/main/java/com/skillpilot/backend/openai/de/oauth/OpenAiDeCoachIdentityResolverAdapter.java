@@ -10,6 +10,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -40,6 +41,21 @@ public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoach
         Authentication authentication = requireAuthentication();
         requireAuthority(authentication, "SCOPE_" + OpenAiDeOAuthConfiguration.READ_SCOPE);
         return connectionService.resolveActiveLearningSessionSkillpilotId(learningSessionId);
+    }
+
+    @Override
+    public String requireAuthorizationReference(McpTransportContext transportContext) {
+        Authentication authentication = requireAuthentication();
+        requireAuthority(authentication, "SCOPE_" + OpenAiDeOAuthConfiguration.READ_SCOPE);
+        Object principal = authentication.getPrincipal();
+        String reference = principal instanceof OAuth2AuthenticatedPrincipal oauthPrincipal
+                ? oauthPrincipal.getAttribute("authorization_id")
+                : null;
+        if (reference == null || reference.isBlank()) {
+            throw new AuthenticationCredentialsNotFoundException(
+                    "OpenAI Coach V1 authorization reference is missing.");
+        }
+        return reference;
     }
 
     @Override

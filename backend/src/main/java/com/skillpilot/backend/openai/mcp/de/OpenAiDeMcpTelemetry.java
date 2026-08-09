@@ -51,6 +51,8 @@ public final class OpenAiDeMcpTelemetry {
     private static final int MAX_LOG_VALUE_LENGTH = 160;
     private static final int SESSION_FINGERPRINT_LENGTH = 22;
     private static final Set<String> KNOWN_TOOLS = Set.of(
+            OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+            OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
             OpenAiDeV1McpContractAdapter.GET_CONTEXT,
             OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
             OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
@@ -307,6 +309,9 @@ public final class OpenAiDeMcpTelemetry {
         private static final ResourceArtifact ACTIVE_MEMORY_PRACTICE = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256),
                 ACTIVE_ARTIFACT_ROLE);
+        private static final ResourceArtifact ACTIVE_SKILLPILOT_START = new ResourceArtifact(
+                fingerprint(OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256),
+                ACTIVE_ARTIFACT_ROLE);
         private static final ResourceArtifact LEGACY_GOAL_VISUALIZATION = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256),
                 RETAINED_ARTIFACT_ROLE);
@@ -319,6 +324,9 @@ public final class OpenAiDeMcpTelemetry {
             }
             if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resourceUri)) {
                 return ACTIVE_MEMORY_PRACTICE;
+            }
+            if (OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI.equals(resourceUri)) {
+                return ACTIVE_SKILLPILOT_START;
             }
             if (OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
                 return LEGACY_GOAL_VISUALIZATION;

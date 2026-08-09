@@ -23,6 +23,7 @@ public final class OpenAiDeOperationalTelemetry {
         FORBIDDEN("http_403"),
         CONFLICT("http_409"),
         RATE_LIMITED("http_429"),
+        ISSUER_RATE_LIMITED("issuer_rate_limited"),
         TIMEOUT("timeout"),
         REPLAY_REJECTED("replay_rejected"),
         CROSS_PROVIDER_REJECTED("cross_provider_rejected"),

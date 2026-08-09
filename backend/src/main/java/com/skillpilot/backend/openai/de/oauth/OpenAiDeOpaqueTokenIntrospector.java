@@ -75,6 +75,10 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
                 authorities.add(new SimpleGrantedAuthority("SCOPE_" + scope)));
         Map<String, Object> attributes = new LinkedHashMap<>();
         attributes.put("sub", subject);
+        // Stable across access-token refresh/rotation and used only to bind a
+        // short-lived bootstrap capability to this exact OAuth authorization.
+        // It never selects a learner or learning session.
+        attributes.put("authorization_id", authorization.getId());
         attributes.put("client_id", clientId);
         attributes.put("scope", accessTokenScopes);
         attributes.put("aud", List.of(mcpUrl));

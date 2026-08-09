@@ -106,6 +106,11 @@ skillpilot:
           mcp-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS:120}
           oauth-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS:60}
           ui-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS:60}
+          bootstrap-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS:30}
+          bootstrap-capability-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS:30}
+          bootstrap-process-global-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS:600}
+          bootstrap-issuer-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS:10}
+          bootstrap-issuer-process-global-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS:300}
           metadata-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS:120}
           max-client-buckets: ${SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
         mcp:

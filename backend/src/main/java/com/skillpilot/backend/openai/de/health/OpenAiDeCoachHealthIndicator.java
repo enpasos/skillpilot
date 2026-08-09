@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
 
     public static final String CONTRIBUTOR_NAME = "openAiDeCoach";
-    public static final int EXPECTED_TOOL_COUNT = 14;
+    public static final int EXPECTED_TOOL_COUNT = 16;
 
     private final OpenAiDeProperties properties;
     private final boolean contractAvailable;
@@ -155,6 +155,11 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 && rateLimit.getMcpRequests() > 0
                 && rateLimit.getOauthRequests() > 0
                 && rateLimit.getUiRequests() > 0
+                && rateLimit.getBootstrapRequests() > 0
+                && rateLimit.getBootstrapCapabilityRequests() > 0
+                && rateLimit.getBootstrapProcessGlobalRequests() > 0
+                && rateLimit.getBootstrapIssuerRequests() > 0
+                && rateLimit.getBootstrapIssuerProcessGlobalRequests() > 0
                 && rateLimit.getMetadataRequests() > 0
                 && rateLimit.getMaxClientBuckets() > 0;
     }

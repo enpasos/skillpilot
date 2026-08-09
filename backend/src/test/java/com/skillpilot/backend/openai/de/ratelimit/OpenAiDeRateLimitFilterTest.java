@@ -27,6 +27,9 @@ class OpenAiDeRateLimitFilterTest {
         properties.getRateLimit().setMcpRequests(2);
         properties.getRateLimit().setOauthRequests(1);
         properties.getRateLimit().setUiRequests(1);
+        properties.getRateLimit().setBootstrapRequests(2);
+        properties.getRateLimit().setBootstrapCapabilityRequests(1);
+        properties.getRateLimit().setBootstrapProcessGlobalRequests(3);
         properties.getRateLimit().setMetadataRequests(1);
         registry = new SimpleMeterRegistry();
         filter = new OpenAiDeRateLimitFilter(
@@ -89,6 +92,140 @@ class OpenAiDeRateLimitFilterTest {
 
         assertThat(invoke(path, "192.0.2.14").getStatus()).isEqualTo(200);
         assertThat(invoke(path, "192.0.2.14").getStatus()).isEqualTo(429);
+    }
+
+    @Test
+    void rateLimitsBootstrapByOpaqueCapabilityWithoutLeakingItAndUsesClosedErrorEnvelope()
+            throws Exception {
+        String capability = "spc_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        MockHttpServletRequest first = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                "192.0.2.20");
+        first.addHeader("Authorization", "SkillPilotSetup " + capability);
+        first.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        MockHttpServletRequest repeated = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                "192.0.2.21");
+        repeated.addHeader("Authorization", "SkillPilotSetup " + capability);
+        repeated.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+
+        assertThat(invoke(first).getStatus()).isEqualTo(200);
+        MockHttpServletResponse rejected = invoke(repeated);
+
+        assertThat(rejected.getStatus()).isEqualTo(429);
+        assertThat(rejected.getHeader("Retry-After")).isEqualTo("60");
+        assertThat(rejected.getHeader("Access-Control-Allow-Origin"))
+                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        assertThat(rejected.getHeader("Vary")).isEqualTo("Origin");
+        assertThat(rejected.getHeader("Referrer-Policy")).isEqualTo("no-referrer");
+        assertThat(rejected.getHeader("X-Content-Type-Options")).isEqualTo("nosniff");
+        assertThat(rejected.getContentType()).startsWith("application/json");
+        assertThat(rejected.getContentAsString())
+                .isEqualTo("{\"schemaVersion\":1,\"status\":\"TEMPORARILY_UNAVAILABLE\","
+                        + "\"fallbackUrl\":\"https://skillpilot.com/\"}")
+                .doesNotContain(capability);
+    }
+
+    @Test
+    void bootstrapPreflightDoesNotConsumeTheCapabilityOrAggregateBudget() throws Exception {
+        MockHttpServletRequest preflight = new MockHttpServletRequest(
+                "OPTIONS",
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
+        preflight.setRemoteAddr("192.0.2.22");
+        preflight.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+
+        assertThat(invoke(preflight).getStatus()).isEqualTo(200);
+        assertThat(invokeBootstrap(
+                                "spc_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                                "192.0.2.22")
+                        .getStatus())
+                .isEqualTo(200);
+    }
+
+    @Test
+    void bootstrapRejectionDoesNotAuthorizeAnUntrustedOrigin() throws Exception {
+        String capability = "spc_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        assertThat(invokeBootstrap(capability, "192.0.2.23").getStatus()).isEqualTo(200);
+        MockHttpServletRequest repeated = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                "192.0.2.24");
+        repeated.addHeader("Authorization", "SkillPilotSetup " + capability);
+        repeated.addHeader("Origin", "https://example.invalid");
+
+        MockHttpServletResponse rejected = invoke(repeated);
+
+        assertThat(rejected.getStatus()).isEqualTo(429);
+        assertThat(rejected.getHeader("Access-Control-Allow-Origin")).isNull();
+        assertThat(rejected.getHeader("Vary")).isNull();
+    }
+
+    @Test
+    void invalidCapabilityHeadersShareOneBoundedBucket() throws Exception {
+        MockHttpServletRequest first = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                "192.0.2.25");
+        first.addHeader("Authorization", "SkillPilotSetup invalid-a");
+        MockHttpServletRequest second = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                "192.0.2.26");
+        second.addHeader("Authorization", "SkillPilotSetup invalid-b");
+
+        assertThat(invoke(first).getStatus()).isEqualTo(200);
+        assertThat(invoke(second).getStatus()).isEqualTo(429);
+    }
+
+    @Test
+    void differentCapabilitiesCannotBypassTheClientAddressBudget() throws Exception {
+        String remoteAddress = "192.0.2.27";
+        assertThat(invokeBootstrap(
+                                "spc_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                                remoteAddress)
+                        .getStatus())
+                .isEqualTo(200);
+        assertThat(invokeBootstrap(
+                                "spc_BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                                remoteAddress)
+                        .getStatus())
+                .isEqualTo(200);
+        assertThat(invokeBootstrap(
+                                "spc_CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+                                remoteAddress)
+                        .getStatus())
+                .isEqualTo(429);
+    }
+
+    @Test
+    void appliesAnAggregateBootstrapBudgetAcrossCapabilitiesAndClients() throws Exception {
+        assertThat(invokeBootstrap(
+                                "spc_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                                "192.0.2.30")
+                        .getStatus())
+                .isEqualTo(200);
+        assertThat(invokeBootstrap(
+                                "spc_BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+                                "192.0.2.31")
+                        .getStatus())
+                .isEqualTo(200);
+        assertThat(invokeBootstrap(
+                                "spc_CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+                                "192.0.2.32")
+                        .getStatus())
+                .isEqualTo(200);
+
+        assertThat(invokeBootstrap(
+                                "spc_DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                                "192.0.2.33")
+                        .getStatus())
+                .isEqualTo(429);
+    }
+
+    private MockHttpServletResponse invokeBootstrap(String capability, String remoteAddress)
+            throws Exception {
+        MockHttpServletRequest request = request(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                remoteAddress);
+        request.addHeader("Authorization", "SkillPilotSetup " + capability);
+        return invoke(request);
     }
 
     private MockHttpServletResponse invoke(String path, String remoteAddress) throws Exception {

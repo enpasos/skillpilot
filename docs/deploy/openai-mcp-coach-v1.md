@@ -1,6 +1,6 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 2. August 2026
+**Stand:** 9. August 2026
 
 **Status:** Der mehrsprachige MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
 Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
@@ -9,15 +9,20 @@ Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
 freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
 dedizierten `mcp-coach-v1.skillpilot.com`-Origin. Client-TLS ist nicht
-aktiviert.
+aktiviert. Der private Direct-Start ist als interner Phase-1-Canary
+implementiert. Eine öffentliche Einreichung dieser ID-verarbeitenden
+Komponente bleibt jedoch gesperrt, bis OpenAI diese konkrete Datenverarbeitung
+schriftlich akzeptiert oder eine alternative Architektur ohne Eingabe der
+dauerhaften SkillPilot-ID umgesetzt ist.
 
-Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit einer
-eng begrenzten read-only MCP Apps UI für Lernzielbilder. MCP-Server,
+Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit drei
+getrennt gebundenen MCP Apps UIs: dem privaten Direct-Start, der read-only
+Lernzielbildanzeige und dem interaktiven Karteikartenlernen. MCP-Server,
 OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
 laufen im **bestehenden Spring-Boot-Prozess**. Der Node-MCP-Server unter
 `ai/openai app/` bleibt ein lokales Regressionstestbett; dort liegt zugleich
-die geprüfte Quellimplementierung der bild-only Komponente, deren
-selbstenthaltenes Build-Artefakt in die Spring-Boot-Ressourcen übernommen wird.
+die geprüfte Quellimplementierung der drei Komponenten, deren selbstenthaltene
+Build-Artefakte in die Spring-Boot-Ressourcen übernommen werden.
 
 Die Architektur- und Migrationsentscheidungen stehen in
 [openai-mcp-coach-migration-plan.md](../concept/runtime-workflows/openai-mcp-coach-migration-plan.md).
@@ -29,11 +34,14 @@ Release, Rollback und Stilllegung folgen dem
 [V1-Release-Runbook](openai-plugin-v1-release.md).
 Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
 Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
-SkillPilot-ID im Chat ein. Jeder ausdrückliche Start in SkillPilot erzeugt
-jedoch eine davon unabhängige, absolut 24 Stunden gültige
-`learningSessionId`. SkillPilot trägt diese Referenz automatisch in die
+SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start – über die
+First-Party-Weboberfläche oder den capability-geschützten privaten Direct-Start
+– erzeugt jedoch eine davon unabhängige, absolut 24 Stunden gültige
+`learningSessionId`. SkillPilot trägt diese Referenz automatisch in die kurze
 Startnachricht ein; ChatGPT übergibt sie unverändert an jedes fachliche
-MCP-Werkzeug.
+MCP-Werkzeug. Beim Direct-Start wird die SkillPilot-ID ausschließlich aus der
+Komponente per HTTPS an den festen SkillPilot-Endpunkt gesendet; sie ist weder
+MCP-Toolargument noch Modell- oder Chatinhalt.
 
 ## 1. Öffentlicher Vertrag
 
@@ -43,8 +51,10 @@ MCP-Werkzeug.
 | MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
+| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
+| Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
@@ -60,16 +70,22 @@ zusätzlich erforderlich, weil ChatGPT ihn bei einer erneuten MCP-Initialisierun
 abruft; er aktiviert weder OpenID-Scopes noch ID-Tokens.
 
 Das Draft-Inventar enthält je eine aktive, content-addressierte Ressource für
-Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte Hash-URIs als
-byte-identische passive Ressourcen. `render_skillpilot_goal_visualization` und
-`start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
-URI über `ui.resourceUri` und `openai/outputTemplate`. Das app-only
-Bewertungswerkzeug, gewöhnliche Werkzeuge und alle Retention-Vorgänger bleiben
-ungebunden. Nach dem Update werden die Plugin-Metadaten aktualisiert und neue
-Chats zusätzlich gegen beide aktiven URIs geprüft.
+Direct-Start, Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte
+Hash-URIs als byte-identische passive Ressourcen. `open_skillpilot_start`,
+`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
+referenzieren jeweils nur ihre eigene aktive URI über `ui.resourceUri` und
+`openai/outputTemplate`. Die app-only Werkzeuge
+`issue_skillpilot_start_capability` und
+`review_skillpilot_memory_practice_card`, gewöhnliche Werkzeuge und alle
+Retention-Vorgänger bleiben ungebunden. Nach dem Update werden die
+Plugin-Metadaten aktualisiert und neue Chats gegen alle drei aktiven URIs
+geprüft.
 
-Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an
-den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
+Der additive V1-vHost reicht den öffentlichen Pfad `/mcp` an den
+loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter und
+exponiert zusätzlich ausschließlich den festen Direct-Start-Pfad
+`/bootstrap/v1/launch` mit seinem gesonderten CORS-, Logging- und
+Rate-Limit-Vertrag.
 Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
 verwendet ausschließlich diese V1-**Server URL**, nicht den Entwicklungstunnel
 und nicht einen Pfad auf `skillpilot.com`.
@@ -366,9 +382,19 @@ SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW=PT1M
 SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS=120
 SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS=60
 SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS=60
+SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS=30
+SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS=30
+SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS=600
+SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS=10
+SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS=300
 SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
+
+Die beiden `PROCESS_GLOBAL`-Budgets gelten jeweils nur innerhalb einer
+Backendinstanz. Vor einem Multi-Instance-Betrieb muss das vertrauenswürdige
+Gateway dieselben Gesamtgrenzen instanzübergreifend erzwingen; die lokalen
+Budgets bleiben als zweite Barriere aktiv.
 
 Die drei öffentlichen V1-URLs werden nicht als Umgebungsvariablen
 konfiguriert. Sie sind unveränderliche Bestandteile des V1-Vertrags:
@@ -584,7 +610,7 @@ Bei `SKILLPILOT_OPENAI_COACH_V1_ENABLED=true` registriert Spring den Health-Cont
 `openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der erwartete Vertrag mit genau vierzehn Werkzeugen geladen ist.
+HTTPS verwenden und der erwartete Vertrag mit genau sechzehn Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
@@ -615,7 +641,7 @@ skillpilot.openai.coach.v1.operational.event
 ```
 
 Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags `tool`
-(vierzehn bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
+(sechzehn bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
 `exception`). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
 Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
 noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
@@ -624,23 +650,34 @@ enthalten.
 
 Der zweite Name ist ein Counter mit genau einem begrenzten Tag `event`. Er
 erfasst ausschließlich `oauth_failure`, `refresh_failure`, `session_required`,
-`http_401`, `http_403`, `http_409`, `http_429`, `timeout`, `replay_rejected`,
-`cross_provider_rejected` und `tool_exception`. Es gibt keine dynamischen
+`http_401`, `http_403`, `http_409`, `http_429`, `issuer_rate_limited`, `timeout`,
+`replay_rejected`, `cross_provider_rejected` und `tool_exception`. Es gibt keine dynamischen
 Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags. Cross-Learner-/IDOR-
 Abwehr wird zusätzlich in negativen Integrationstests geprüft; der MCP-Vertrag
 nimmt absichtlich keine Lernendenkennung als Toolargument entgegen.
 
-Der lokale Limiter trennt MCP, OAuth, Cockpit-Start und Metadaten und verwendet
-nur die vom Servlet-Container normalisierte Netzwerkadresse. Er parst keine
-Forwarding-Header. Deshalb muss der produktive Reverse Proxy eingehende
+Der lokale Limiter trennt MCP, OAuth, Cockpit-Start, Direct Bootstrap und
+Metadaten. Der Capability-Issuer besitzt zusätzlich begrenzte Budgets pro
+pseudonymisierter OAuth-Autorisierungsreferenz und Major sowie ein
+instanzweites Gesamtbudget. Der direkte Bootstrap-POST wird unabhängig nach
+normalisierter Netzwerkadresse, Capability-Fingerprint und instanzweitem
+Gesamtbudget begrenzt; `OPTIONS` verbraucht dabei kein Bootstrap-Budget. Die
+frühe `429`-Antwort folgt auch für den Browserpfad dem geschlossenen
+Bootstrap-Fehlervertrag und setzt CORS ausschließlich für den fest erlaubten
+Widget-Origin.
+
+Die netzbezogenen Budgets verwenden nur die vom Servlet-Container
+normalisierte Netzwerkadresse. Der Limiter parst keine Forwarding-Header.
+Deshalb muss der produktive Reverse Proxy eingehende
 `Forwarded`-/`X-Forwarded-*`-Header verwerfen beziehungsweise selbst ersetzen,
 und der Backendport darf nicht direkt aus dem Internet erreichbar sein. Bei
 mehreren Backendinstanzen ist zusätzlich ein gemeinsames Gateway-Limit
 verbindlich; der In-Process-Limiter ist bewusst nur eine letzte lokale
 Schutzschicht. Eine Ablehnung antwortet mit `429`, `Retry-After` und `no-store`.
 
-Der allgemeine Request-Body-Logger überspringt MCP-, Provider-OAuth- und
-OpenAI-Cockpit-Startpfade vollständig. Insbesondere Authorization Codes,
+Der allgemeine Request-Body-Logger überspringt MCP-, Provider-OAuth-,
+OpenAI-Cockpit-Start- und Direct-Bootstrap-Pfade vollständig. Insbesondere
+Authorization Codes,
 PKCE-Verifier, Access-/Refresh-Tokens und typisierte Lernziel-Startintents dürfen
 auch bei aktiviertem Debug-Logging nicht als Request-Body in den
 Anwendungslogs erscheinen.
@@ -663,14 +700,15 @@ Anwendungslogs erscheinen.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
-   ausführen. Prüfen, dass genau die vierzehn sprachneutralen Produktivwerkzeuge
+   ausführen. Prüfen, dass genau die sechzehn sprachneutralen Produktivwerkzeuge
    erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
-   dürfen sichtbar sein. `resources/list` muss die zwei aktiven hashgebundenen
+   dürfen sichtbar sein. `resources/list` muss die drei aktiven hashgebundenen
    Ressourcen und die passiv aufbewahrte Lernzielbild-Ressource enthalten.
+   `open_skillpilot_start`,
    `render_skillpilot_goal_visualization` und
    `start_skillpilot_memory_practice` müssen jeweils ausschließlich ihre eigene
-   aktive Ressource referenzieren. `review_skillpilot_memory_practice_card` ist
-   app-only und ungebunden.
+   aktive Ressource referenzieren. `issue_skillpilot_start_capability` und
+   `review_skillpilot_memory_practice_card` sind app-only und ungebunden.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
@@ -680,7 +718,7 @@ Werkzeugbeschreibung, werkzeugübergreifende Abläufe in die
 MCP-Serverinstruktionen und verbindliche Autorisierung sowie Zustandsübergänge
 ins Backend.
 
-Der stabile technische Name des Bootstrap-Werkzeugs bleibt
+Der stabile technische Name des fachlichen Kontextwerkzeugs bleibt
 `get_skillpilot_context`. Sein englischer Titel muss
 `Start or continue the SkillPilot learning coach` lauten. Seine Beschreibung nennt
 positive Routingfälle (SkillPilot auswählen oder nennen; lernen, üben, starten,
@@ -688,14 +726,20 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert zwei getrennte
-aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
-atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
+Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert drei getrennte
+aktive MCP Apps UI-Ressourcen: den privaten Direct-Start, eine read-only
+Bildressource für das aktive atomare Lernziel und eine interaktive Ressource für
+Karteikartenlernen im Chat.
 Zuvor ausgelieferte Hash-URIs bleiben passiv lesbar.
-`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
-referenzieren jeweils nur ihre eigene aktive Ressource über `ui.resourceUri`
-und den ChatGPT-Kompatibilitätsalias `openai/outputTemplate`; das app-only
-Bewertungswerkzeug ist ungebunden. Auswahl und Coaching bleiben im normalen Chat. Der
+`open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+`start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
+Ressource über `ui.resourceUri` und den ChatGPT-Kompatibilitätsalias
+`openai/outputTemplate`. `issue_skillpilot_start_capability` und das app-only
+Bewertungswerkzeug sind ungebunden. Der öffentliche Open-Aufruf zeigt nur die
+Startkomponente und stellt keine Capability aus; erst die Komponente darf nach
+Hostfähigkeitsprüfung und ausdrücklicher Benutzerbestätigung den ID-freien
+Capability-Issuer aufrufen. Die SkillPilot-ID wird anschließend ausschließlich
+im festen Direct-HTTPS-Request verarbeitet. Auswahl und Coaching bleiben im normalen Chat. Der
 Kontext projiziert `goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei
 einem aktiven atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
 Cockpit-Einstellung. Der Renderer prüft Backendzustand, Ziel-ID und
@@ -947,7 +991,7 @@ Antwort notieren:
 | Eine Antwort auf eine spätere, nur orientierend angezeigte Frage geben | Keine vorweggenommene oder gespeicherte Option-ID wird geschrieben. Der Coach arbeitet zuerst die aktuelle authored Entscheidung ab und prüft die Angabe anschließend gegen die frisch projizierten Optionen; nur verbleibende Mehrdeutigkeit führt zu einer Rückfrage. |
 | `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
 | `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
-| `Use SkillPilot Coach v1 and resume my current lesson.` | Das Bootstrap-Tool lädt die Session; die Antwort verwendet ausschließlich die darin festgelegte Interaktionssprache. |
+| `Use SkillPilot Coach v1 and resume my current lesson.` | Das Kontextwerkzeug lädt die Session; die Antwort verwendet ausschließlich die darin festgelegte Interaktionssprache. |
 
 Die Anwendung schreibt pro Toolaufruf ausschließlich eine begrenzte
 Diagnosezeile mit Toolname, Status und Dauer, beispielsweise:
@@ -963,7 +1007,9 @@ darin nicht erscheinen. Für den Live-Test kann die Zeile mit
 ### Stufe B – funktionsfähiger Schreibpilot
 
 Nach Stufe A `SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true` setzen und neu starten.
-Erst dieser Zustand ist als vollständiger Produktivcoach freizugeben.
+Erst dieser Zustand ist als vollständiger fachlicher Schreibpilot freizugeben;
+die separate Sperre für eine öffentliche Einreichung des ID-verarbeitenden
+Direct-Start-Widgets bleibt davon unberührt.
 Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
 1. Curriculum und Personalisierung;
@@ -1002,6 +1048,48 @@ In allen drei Fällen enthält die sichtbare Startnachricht genau die neu
 erzeugte `learningSessionId` sowie den fachlichen Startzweck. Sie enthält weder
 dauerhafte SkillPilot-ID, OAuth-Token, Client-Secret noch interne Lernziel-ID.
 Der Benutzer muss die Session-ID weder kopieren noch verändern.
+
+### Stufe C – privater Direct-Start-Canary
+
+Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
+öffentliche Plugin-Einreichung.
+
+- In einem frischen Chat ruft das Modell genau einmal
+  `open_skillpilot_start` auf. Dessen modellseitiges Ergebnis enthält weder
+  Capability noch SkillPilot-ID; die Startressource ist die einzige daran
+  gebundene UI.
+- Vor jeder Authority-Ausstellung prüft die Komponente `serverTools` und
+  `message.text`. Fehlt eine Hostfähigkeit, darf sie keine Capability und keine
+  Lernsession erzeugen, sondern bietet nur den festen First-Party-Fallback an.
+- Erst nach ausdrücklicher Benutzerbestätigung ruft ausschließlich die
+  Komponente `issue_skillpilot_start_capability` auf. Das app-only Werkzeug ist
+  ungebunden, erhält keine SkillPilot-ID und liefert die kurzlebige Capability
+  nur in Resultat-`_meta`.
+- Die manuell eingegebene vorhandene SkillPilot-ID erscheint genau einmal im
+  direkten HTTPS-Body an `/bootstrap/v1/launch`; sie darf nicht in Chat,
+  Modellkontext, MCP-Argumente, Widget-State, Storage, Telemetrie oder Logs
+  gelangen. Dateiimport und PIN/Passwort gehören nicht zu diesem Phase-1-Pfad.
+- Ein erfolgreicher Bootstrap erzeugt eine zufällige 256-Bit-Lernsession. Ein
+  identischer Retry liefert die gespeicherte, kurzlebig AEAD-verschlüsselte
+  Antwort ohne zweite Session; ein abweichender Retry bleibt terminal
+  abgewiesen.
+- Die anschließende `ui/message`-Bestätigung beweist ausschließlich, dass der
+  Host die kurze Startnachricht angenommen hat. Erst der danach beobachtete
+  Aufruf von `get_skillpilot_context` beweist die fachliche Wiederaufnahme.
+  Ablehnung oder unklarer Ausgang darf nur dieselbe Nachricht innerhalb der
+  ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
+- Abgelaufene, widerrufene oder policy-seitig blockierte Capabilities sowie
+  terminale Profilfehler müssen stabil identifierfrei scheitern. Transiente
+  Fehler behalten nur den gebundenen exakten Retry offen.
+- Die lokalen Issuer-, Capability-, Netzwerk- und Instanzbudgets sowie der
+  geschlossene CORS-/`429`-Vertrag werden negativ getestet. Für mehrere
+  Backendinstanzen bleibt ein gemeinsames Gateway-Limit ein Pflichtgate.
+
+Vor einer öffentlichen Einreichung muss zusätzlich entweder eine schriftliche
+OpenAI-Akzeptanz für die konkrete Verarbeitung der bearer-artigen SkillPilot-ID
+in der Komponente vorliegen oder der Direct-Start auf eine Architektur ohne
+ID-Eingabe umgestellt sein. Ein erfolgreicher interner Canary hebt dieses Gate
+nicht auf.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-

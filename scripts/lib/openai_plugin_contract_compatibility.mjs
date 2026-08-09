@@ -125,6 +125,63 @@ export function loadReleaseContract(releaseRoot) {
 }
 
 /**
+ * Prevents a policy rollback from making an older direct-start capability
+ * valid again. Revision zero represents the pre-contract-line draft only.
+ */
+export function assertLifecyclePolicyRevisionMonotone(
+  previousLifecycle,
+  candidateLifecycle,
+  previousProviderNoticeVersion = null,
+  candidateProviderNoticeVersion = null,
+) {
+  const previousLine = previousLifecycle.contractLine ?? (() => {
+    assert.equal(
+      previousLifecycle.schemaVersion,
+      1,
+      "Only lifecycle schemaVersion 1 may use the legacy revision-zero baseline.",
+    );
+    return {
+      policyRevision: 0,
+      newSessionPolicy: null,
+      successor: null,
+    };
+  })();
+  const candidateLine = candidateLifecycle.contractLine;
+  assert.equal(
+    isObject(candidateLine),
+    true,
+    "Candidate lifecycle must contain the canonical contractLine object.",
+  );
+  assert.equal(Number.isSafeInteger(candidateLine.policyRevision), true);
+  assert.ok(
+    candidateLine.policyRevision > 0,
+    "Candidate lifecycle policyRevision must be a positive safe integer.",
+  );
+  assert.ok(
+    candidateLine.policyRevision >= previousLine.policyRevision,
+    `Lifecycle policyRevision must not decrease from ${previousLine.policyRevision} ` +
+      `to ${candidateLine.policyRevision}.`,
+  );
+
+  const previousDecision = canonicalJson({
+    newSessionPolicy: previousLine.newSessionPolicy ?? null,
+    successor: previousLine.successor ?? null,
+    providerNoticeVersion: previousProviderNoticeVersion,
+  });
+  const candidateDecision = canonicalJson({
+    newSessionPolicy: candidateLine.newSessionPolicy,
+    successor: candidateLine.successor,
+    providerNoticeVersion: candidateProviderNoticeVersion,
+  });
+  if (previousLine.policyRevision > 0 && previousDecision !== candidateDecision) {
+    assert.ok(
+      candidateLine.policyRevision > previousLine.policyRevision,
+      "Changing new-session policy, successor, or provider notice requires a strictly higher policyRevision.",
+    );
+  }
+}
+
+/**
  * Verifies the active, per-tool MCP App UI bindings. Immutable historical
  * resources may remain readable for provider metadata caches, but no tool may
  * bind one of those passive resources. Each active tool owns one distinct,

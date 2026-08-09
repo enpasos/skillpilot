@@ -1,10 +1,14 @@
 # Wissens- und Verhaltensparität des MCP-Lerncoaches
 
-**Stand:** 30. Juli 2026
+**Stand:** 9. August 2026
 
 **Status:** normative Current-to-Target-Paritätsmatrix für den mehrsprachigen
-Coach-Skill und die chat-first MCP-App mit optionaler read-only
-Lernzielvisualisierung über genau eine aktiv gebundene hashgebundene MCP-Apps-UI-Ressource
+Coach-Skill und die chat-first MCP-App mit 16 neutralen V1-Werkzeugen und drei
+getrennt aktiv gebundenen hashgebundenen MCP-Apps-UI-Ressourcen für privaten
+Direktstart, read-only Lernzielvisualisierung und Karteikartenlernen.
+Renderer-spezifisch bleibt genau eine aktuelle bild-only Ressource gebunden.
+Der Direktstart ist ausschließlich für den internen Canary freigegeben; seine
+öffentliche Einreichung bleibt durch das harte Public-Release-Gate gesperrt.
 
 Diese Matrix weist nach, **wo** die früheren Regeln technisch wirksam werden
 sollen. Sie ist kein Nachweis, dass das Zusammenspiel von Modell, Tools,
@@ -24,6 +28,9 @@ Server-Instruktionen, zustandsabhängige Policies, Toolbeschreibungen und
 Backendguards überführt.
 Paket-SemVer, Contract Major, öffentliche Origins und Lifecycle folgen dem
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md).
+Capability, direkte ID-Übertragung, Delivery und das Public-Release-Gate des
+privaten App-first-Einstiegs folgen dem
+[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md).
 
 Bis der Skill im realen Providerhost Verhaltensparität erreicht, bleiben die
 heutigen ausführlichen Server-Instruktionen als Kompatibilitätsschicht aktiv.
@@ -95,6 +102,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Verified Recall: ganzer Batch, Sollantwort erst nach Antwort, jedes Ergebnis speichern, erst dann nächster Batch | Recall-Policy und die drei Recall-Toolbeschreibungen/-Ergebnisse | Skill-Ablauf sowie die drei Recall-Toolbeschreibungen und -Ergebnisse | alle drei Operationen verlangen das aktuelle sichtbare aktive atomische Memory-/SRS-Ziel; Karte und SRS-Typ werden zusätzlich backendseitig geprüft; ein vollständiger Evidence-Receipt bleibt eine spätere Härtung |
 | Prüfung: Aufgabe wortgetreu, keine Hinweise oder Rückfragen, Lösung erst nach vollständiger Abgabe | Exam-Policy, Context-Instruktion und Evaluationstool | Skill, Skill-Referenz, aktuelle Exam-Instruktion und Evaluationstool | Lösung/Raster fehlen im normalen Context und werden nur für das aktive freigegebene Exam ausgeliefert |
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
+| direkter App-first-Einstieg ohne OAuth-zu-Lernenden-Kopplung | read-only `open_skillpilot_start`, eigene Startressource, ID-freier app-only Capability-Issuer und capability-geschützter HTTPS-Bootstrap | Direktstart-Konzept und kurze Startregel im Skill | OAuth autorisiert nur die feste App; die vorhandene SkillPilot-ID erscheint ausschließlich im flüchtigen Widgetfeld und direkten HTTPS-Body, nie in Chat oder MCP-Toolargumenten; jeder bestätigte Start erzeugt eine neue zufällige 24h-Lernsession; ausschließlich interner Canary und hartes Public-Release-Gate |
 | nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und optional bild-only in ChatGPT | globale Context-Policy, allowlist-projizierte Ressourcen, optionale `goalVisualization` und eine dedizierte aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource für den Renderer im unveröffentlichten V1-Draft; andere UI-Werkzeuge binden eigene Ressourcen, frühere ausgelieferte Hash-URIs bleiben passiv lesbar | kurze Server-Invariante, Skill-Ausgaberegel und sichere Projektion | nach einem freigebenden Vollresultat läuft der dedizierte read-only Renderer mit dessen Ziel-ID und `expectedStateVersion` unmittelbar und genau einmal; er validiert Backendzustand und Ziel erneut und gibt die strukturierte `goalVisualization` an die bild-only UI; nur sein Descriptor trägt die Bindung an diese Bildressource, gewöhnliche Werkzeuge bleiben ungebunden; private oder nicht passende Bildpfade und interne Identität werden entfernt; ohne gültiges Bild bleibt der normale Chat; die Ausführung ist nicht durch User-Agent- oder Surface-Metadaten beschränkt und SkillPilot behauptet nie, dass der Host das Bild tatsächlich dargestellt hat |
 | normales Karteikartenlernen im Chat und harte Verified-Recall-Prüfung bleiben getrennte Modi | Memory-Mode-Instruktion, dedizierte Kartenlern-Ressource sowie Start-/Review-Werkzeuge | Skill-Referenz und aktuelle Modus-Instruktion | nur die UI erhält den begrenzten Kartenstapel in Resultat-`_meta`; Umdrehen und Vor-/Zurückblättern schreiben keinen Zustand; `not_known`/`known` aktualisieren atomar nur die Wiederholungsplanung und erzeugen keine Mastery; Review ist app-only und ungebunden; Cockpit-URL ist der serverseitig erzeugte Fallback |
 | bei ausdrücklich visuell/grafisch/GeoGebra markiertem Ziel sichtbare Interaktion statt reinem Text; bei spezialisiertem App-Training kein paralleler Chatunterricht | Chat- und Ressourcen-Policy | Skill-Referenz `COACH-GOAL-001` und `COACH-RESOURCE-001` | ausschließlich frisch gelieferte Ressourcen; eine normale Lernzielvisualisierung allein löst kein App-Training aus |
@@ -117,12 +125,13 @@ Custom-GPT-Action-Regression und gehören nicht zur MCP-Zielarchitektur:
 
 Das sichtbare Relay-Protokoll wird nicht wieder eingeführt. Davon zu
 unterscheiden ist die aktuelle `learningSessionId`: SkillPilot erzeugt sie bei
-jedem **Lernen starten** neu, trägt sie automatisch genau einmal in die
-Startnachricht ein und ChatGPT muss sie unverändert an jedes fachliche
-MCP-Werkzeug übergeben. Sie ersetzt weder OAuth noch den autoritativen
-Backendzustand. Nach Mutationen sowie bei Reload, Unsicherheit, langem Dialog
-oder möglicher Kontextkompaktierung wird mit derselben noch gültigen Session-ID
-frisch rehydriert.
+jedem ausdrücklich bestätigten **Lernen starten** über die First-Party-
+Oberfläche oder den privaten Direktstart neu, trägt sie automatisch genau
+einmal in die Startnachricht ein und ChatGPT muss sie unverändert an jedes
+fachliche MCP-Werkzeug übergeben. Sie ersetzt weder OAuth noch den
+autoritativen Backendzustand. Nach Mutationen sowie bei Reload, Unsicherheit,
+langem Dialog oder möglicher Kontextkompaktierung wird mit derselben noch
+gültigen Session-ID frisch rehydriert.
 
 ## Verbleibende modellseitige Grenzen
 
@@ -139,6 +148,7 @@ zusätzliche Sicherheitsverbesserung, keine Voraussetzung für den ersten
 chat-first Cutover. Die bereits enthaltene read-only Bildausgabe als
 strukturierte, bild-only gerenderte MCP-Apps-UI ändert diese Evidenzgrenze
 nicht: Ein Bild ist weder Lernendenantwort noch Aufgabe, Lösung, Bewertung oder
-Mastery-Nachweis. Der unveröffentlichte Draft hält dabei ausschließlich die
-aktuelle hashgebundene Ressource vor; frühere Testartefakte begründen keine
-Retention.
+Mastery-Nachweis. Renderer-spezifisch bindet der unveröffentlichte Draft
+ausschließlich die aktuelle hashgebundene Bildressource. Jede bereits an reale
+Test-Clients ausgelieferte Vorgänger-URI bleibt mit ihren exakten Bytes passiv
+lesbar, ohne einen zweiten aktiven Renderer-Vertrag zu erzeugen.

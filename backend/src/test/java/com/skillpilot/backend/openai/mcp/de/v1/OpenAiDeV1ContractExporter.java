@@ -105,6 +105,9 @@ public final class OpenAiDeV1ContractExporter {
         if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resource.get("uri"))) {
             return "ui/memory-card-practice.html";
         }
+        if (OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI.equals(resource.get("uri"))) {
+            return "ui/skillpilot-start.html";
+        }
         if (OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resource.get("uri"))) {
             return "ui/retained/legacy-1.0.0/goal-visualization.html";
         }
