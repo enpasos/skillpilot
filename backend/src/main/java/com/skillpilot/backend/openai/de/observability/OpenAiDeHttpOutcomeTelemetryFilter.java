@@ -42,6 +42,7 @@ public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilt
                 || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
                 || OpenAiAppsChallengeController.PATH.equals(path)
+                || OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH.equals(path)
                 || isOpenAiUiPath(path));
     }
 

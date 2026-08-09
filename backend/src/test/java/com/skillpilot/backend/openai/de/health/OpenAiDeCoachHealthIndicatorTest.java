@@ -28,6 +28,7 @@ class OpenAiDeCoachHealthIndicatorTest {
 
     @Test
     void reportsUpWithStableContractHashAndOnlyNonSecretConfigurationDetails() {
+        assertThat(OpenAiDeCoachHealthIndicator.EXPECTED_TOOL_COUNT).isEqualTo(16);
         OpenAiDeProperties properties = secureProperties();
         OpenAiDeV1McpContractAdapter contract = contract();
         OpenAiDeCoachHealthIndicator indicator = new OpenAiDeCoachHealthIndicator(

@@ -1,19 +1,22 @@
 ---
 title: "SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin"
-subtitle: "MCP-API, hashgebundene bild-only MCP-Apps-UI, Skills und Lifecycle"
-document_version: "1.0"
+subtitle: "MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle"
+document_version: "1.1"
 status: "Verbindliche Architekturgrundlage"
-date: "2026-07-31"
+date: "2026-08-09"
 audience: "Codex- und SkillPilot-Entwicklung"
 ---
 
 # SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
 
-**Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills, genau einer
-aktiv gebundenen hashgebundenen bild-only MCP-Apps-UI-Ressource im unveröffentlichten V1-Draft
-und möglicher späterer interaktiver MCP-UI
-**Dokumentversion:** 1.0  
-**Stand:** 31. Juli 2026  
+**Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills und drei
+jeweils dediziert an genau ein UI-Werkzeug gebundenen, hashgebundenen
+MCP-Apps-Ressourcen im unveröffentlichten V1-Draft
+
+**Dokumentversion:** 1.1
+
+**Stand:** 9. August 2026
+
 **Status:** Verbindliche interne Architekturgrundlage; einzelne Plattformfragen sind noch nicht offiziell von OpenAI geklärt.  
 **Adressaten:** Codex, Backend-, MCP-, UI-, Auth- und Release-Entwicklung
 
@@ -251,13 +254,14 @@ Die Grenze ist der reale Veröffentlichungsstatus:
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
-noch nicht veröffentlicht. Die Lernzielvisualisierung und das interaktive
-Karteikartenlernen werden deshalb als zwei getrennte, aktive hashgebundene
+noch nicht veröffentlicht. Der private Direktstart, die Lernzielvisualisierung
+und das interaktive Karteikartenlernen werden deshalb als drei getrennte, aktive hashgebundene
 `text/html;profile=mcp-app`-Ressourcen in den bestehenden `1.0.0`-Draft
 aufgenommen; es entsteht weder `1.0.1` noch ein Published-Snapshot. Der
-Bild-Renderer und der Start des Karteikartenlernens verweisen jeweils mit
+Direktstart-Öffner, der Bild-Renderer und der Start des Karteikartenlernens verweisen jeweils mit
 `ui.resourceUri` und `openai/outputTemplate` auf ihre eigene Ressource. Das
-app-interne Bewertungswerkzeug sowie gewöhnliche Werkzeuge bleiben ungebunden. Alle
+app-interne Capability-Issuer- und Kartenbewertungswerkzeug sowie gewöhnliche
+Werkzeuge bleiben ungebunden. Alle
 zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
 gemeinsam im selben Draft aktualisiert. Bereits an reale Test-Clients
 ausgelieferte Hash-URIs bleiben byte-identisch und passiv lesbar.
@@ -394,7 +398,13 @@ Zustandsbezogene Toolantworten MÜSSEN die relevanten Versionen explizit ausweis
 
 Regeln:
 
-- `contractMajor` bezeichnet den öffentlichen Toolvertrag.
+- `contractMajor` bezeichnet eine seltene, inkompatible Hard-Fork-Generation
+  der gesamten Plugin-Contract-Line. Ein neuer Major ist nur erforderlich,
+  wenn die bisherige Plugin-Identität, ihr MCP-/OAuth-Namespace oder ein
+  bereits veröffentlichter öffentlicher Toolvertrag nicht kompatibel
+  fortgeführt werden kann. Additive Tools, neue optionale Felder, neue
+  Workflow-, Curriculum-, State-Schema- oder UI-Ressourcenversionen sowie
+  gewöhnliche Produktfeatures erhöhen `contractMajor` ausdrücklich nicht.
 - `stateVersion` ist die monotone Revision des kanonischen Coach-Zustands des
   Lernenden. Mehrere Lernsessionen und das Web-UI konkurrieren deshalb gegen
   dieselbe Revision; ein erfolgreicher Schreibzugriff auf einem Transport macht
@@ -452,15 +462,18 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 ### 9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource
 
-Der noch unveröffentlichte V1-Draft bindet zwei aktive hashgebundene Ressourcen
-mit dem MIME-Typ `text/html;profile=mcp-app`. Das read-only Werkzeug
+Der noch unveröffentlichte V1-Draft bindet drei aktive hashgebundene Ressourcen
+mit dem MIME-Typ `text/html;profile=mcp-app`. Das sessionlose read-only Werkzeug
+`open_skillpilot_start` öffnet seine private Direktstart-Ressource, ohne eine
+Capability oder Lernsession auszustellen. Das read-only Werkzeug
 `render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
 `goalVisualization` an seine bild-only Ressource. Das read-only Werkzeug
 `start_skillpilot_memory_practice` startet das Karteikartenlernen in einer
-eigenen interaktiven Ressource. Jeder dieser beiden Descriptoren enthält
+eigenen interaktiven Ressource. Jeder dieser drei Descriptoren enthält
 `ui.resourceUri` und `openai/outputTemplate` mit genau seiner Ressource. Das nur
-von der App aufrufbare Bewertungswerkzeug `review_skillpilot_memory_practice_card`
-und alle gewöhnlichen Werkzeuge bleiben ungebunden; dadurch erzeugen sie weder
+von der App aufrufbare, ID-freie `issue_skillpilot_start_capability`, das
+Bewertungswerkzeug `review_skillpilot_memory_practice_card` und alle gewöhnlichen
+Werkzeuge bleiben ungebunden; dadurch erzeugen sie weder
 verschachtelte noch leere UI-Komponenten.
 
 Die Freigabe und der Renderer werden weder durch `openai/userAgent` noch durch
@@ -506,7 +519,8 @@ Rückwärtskompatibilitätspflicht.
 
 ### 9.3 Autoritativer Zustand bleibt im Backend
 
-Die beiden V1-Ressourcen erzeugen keinen eigenen autoritativen Lernzustand.
+Die drei aktiven V1-Ressourcen erzeugen keinen eigenen autoritativen
+Lernzustand.
 Bildfreigabe, Kartenauswahl, Terminierung und Fortschritt werden aus dem
 Backendzustand projiziert. Die interaktive Karteikarten-UI ruft für eine
 Bewertung das app-only Werkzeug auf; bei unbekanntem oder beschädigtem
@@ -562,7 +576,10 @@ Für jedes Release müssen mindestens getestet werden:
 
 ### 11.1 Getrennte OAuth-Resources pro Major
 
-V1 und V2 verwenden denselben Spring Authorization Server und dieselben SkillPilot-Konten, aber getrennte OAuth-Resources beziehungsweise Audiences:
+V1 und V2 verwenden denselben Spring Authorization Server, aber getrennte
+vorregistrierte Confidential Clients und getrennte OAuth-Resources
+beziehungsweise Audiences. OAuth bleibt dabei die technische App-Core-Kopplung
+und wählt weder SkillPilot-ID noch Lernenden noch Lernsession:
 
 ```text
 V1 resource: https://mcp-coach-v1.skillpilot.com/mcp
@@ -570,6 +587,13 @@ V2 resource: https://mcp-coach-v2.skillpilot.com/mcp
 ```
 
 Access Tokens müssen auf die passende Resource/Audience geprüft werden. Ein V1-Token darf nicht automatisch als V2-Token gelten, sofern dies nicht ausdrücklich und sicher im Authorization Server konfiguriert wurde.
+
+Jede Major-Linie verwendet außerdem genau einen für diese Linie
+vorregistrierten statischen Confidential Client mit `client_secret_basic`,
+Authorization Code plus PKCE und Refresh Token. Der normale V2-Einstieg setzt
+eine eigene V2-Autorisierung voraus; V1-Client, V1-Refresh-Token und V1-Access-
+Token werden nicht übernommen. Daraus entsteht weiterhin keine
+OAuth-Subject-zu-Lernenden- oder OAuth-Subject-zu-Session-Bindung.
 
 ### 11.2 Scopes
 
@@ -586,22 +610,30 @@ Die Architektur DARF NICHT davon ausgehen, dass OpenAI eine bestehende V1-Verkn�
 
 ## 12. Lernsession-, Zustands- und Workflow-Versionierung
 
-### 12.1 `learningSessionId` als stabiler externer Handle
+### 12.1 `learningSessionId` als opaker, major-gepinnter Handle
 
-`learningSessionId` bleibt ein opaker, nicht personenbezogener und grundsätzlich Major-neutraler Handle. Er enthält keine interne Benutzer-ID und keine direkt interpretierbare Vertragsversion.
+`learningSessionId` bleibt ein opaker, nicht personenbezogener Handle. Er
+enthält keine interne Benutzer-ID und keine direkt interpretierbare
+Vertragsversion. **Opak bedeutet jedoch nicht major-neutral:** Der
+Sessiondatensatz ist an genau eine `contractMajor`, `workflowVersion` und
+`stateSchemaVersion` gebunden, und nur der passende Major-Adapter darf ihn
+auflösen.
 
-Standardfall bei einer verlustfreien Migration:
-
-```text
-dieselbe learningSessionId
-V1-Sicht -> migrierter kanonischer Zustand -> V2-Sicht
-```
-
-Wenn eine Migration nicht verlustfrei oder semantisch nicht eindeutig möglich ist, darf V2 eine neue Session-ID erzeugen. In diesem Fall muss ein serverseitiges Mapping erhalten bleiben:
+Für einen normalen App-first-Wechsel gilt deshalb:
 
 ```text
-V1 session sps_old  -> migrated_to -> V2 session sps_new
+gültige V1-Session bleibt V1
++ ausdrückliche Wahl von SkillPilot Coach v2
++ eigene V2-OAuth-Autorisierung
++ erneute ausdrückliche Lernstandsauswahl
+-> neue V2-gepinnte learningSessionId
 ```
+
+Der persistente kanonische Lernstand, das persönliche Curriculum und globale
+Mastery bleiben im gemeinsamen Core erhalten. Capability, OAuth-Token,
+Chat-Handoff und `learningSessionId` werden dagegen nicht zwischen Majors
+übernommen. Ein V1-Token am V2-Origin und ein V2-Token am V1-Origin werden
+fail-closed vor Projektion oder Mutation abgewiesen.
 
 ### 12.2 Trennung von Contract und Persistenz
 
@@ -631,9 +663,14 @@ Workflow- oder Curriculum-Revision muss daher entweder die bisherige Revision
 für die maximale Sessionlaufzeit weiter bedienen, eine geprüfte kompatible
 Migration ausführen oder nach dem Release-Runbook zurückgerollt werden.
 
-### 12.4 Major-Migration
+### 12.4 Optionale, gesondert freizugebende Major-Migration
 
-Die Migration von V1 nach V2 wird serverseitig, idempotent und auditierbar implementiert. Sie darf nicht dem Sprachmodell überlassen werden.
+Der normale Major-Wechsel benötigt keine Sessionmigration und darf nicht von
+ihr abhängen. Falls später zusätzlich eine laufende Session migriert werden
+soll, ist dies ein eigener, ausdrücklich bestätigter, serverseitiger,
+idempotenter und auditierbarer Vertrag. Er darf weder durch Veröffentlichung
+eines Nachfolgers noch durch OAuth, Widget-Metadaten oder das Sprachmodell
+ausgelöst werden und verwendet immer eine neue Ziel-Major-Session-ID.
 
 Ein internes oder kontrolliertes Migrationsergebnis soll mindestens enthalten:
 
@@ -654,7 +691,8 @@ Anforderungen:
 - wiederholter Aufruf erzeugt keine zweite Migration;
 - Ausgangssnapshot bleibt nachvollziehbar;
 - Verluste oder manuelle Entscheidungen werden explizit protokolliert;
-- Migration ist an den authentifizierten Benutzer gebunden;
+- Quell- und Zielsession sowie die Ziel-Major-Autorisierung werden explizit
+  geprüft; OAuth allein wählt dabei keinen Lernenden;
 - Rollback beziehungsweise Wiederherstellung ist für den definierten Betriebszeitraum möglich;
 - Migrationscode wird erst entfernt, wenn die V1-Linie vollständig beendet und die Aufbewahrungsfrist abgelaufen ist.
 
@@ -749,26 +787,201 @@ Für jede veröffentlichte Plugin-Version müssen verfügbar bleiben:
 
 ## 14. Lebenszyklus einer neuen Major-Version
 
-### 14.1 Zustände
+### 14.1 Kanonischer Contract-Line-Vertrag
 
-Jede Plugin-Major-Linie besitzt einen expliziten Lebenszyklus:
+Dieses Dokument ist die einzige normative Quelle für Support-Lifecycle,
+Publikationsstatus, Nachfolger und Startpolicy jeder Plugin-Major-Linie. Diese
+drei Zustandsachsen sind unabhängig und dürfen weder in einem gemeinsamen Enum
+zusammengeführt noch automatisch auseinander abgeleitet werden.
 
-| Zustand | Bedeutung | Zulässige Entwicklung |
+`supportLifecycle` beschreibt ausschließlich den technischen und fachlichen
+Supportzustand:
+
+| Wert | Bedeutung | Zulässige Entwicklung |
 |---|---|---|
-| `CURRENT` | empfohlene aktuelle Linie | neue Features, Fixes, neue Sessions |
-| `SUPPORTED` | weiterhin voll unterstützt, aber nicht mehr primär | Fixes; ausgewählte kompatible Verbesserungen |
-| `DEPRECATED` | Migration auf Nachfolger empfohlen | Sicherheits- und kritische Fixes; keine neuen Features |
-| `UNPUBLISHED` | nicht mehr öffentlich auffindbar | technischer Grace-Betrieb und Migration bestehender Nutzer |
-| `RETIRED` | Plugin gelöscht und Vertragslinie beendet | keine fachliche V1-Ausführung; nur definierte Restaufbewahrung |
+| `CURRENT` | empfohlene aktuelle Linie | neue Features, Fixes und neue Sessions gemäß Startpolicy |
+| `SUPPORTED` | weiterhin voll unterstützt, aber nicht mehr primär | Fixes und ausgewählte kompatible Verbesserungen |
+| `DEPRECATED` | Wechsel auf einen Nachfolger empfohlen | Sicherheits- und kritische Fixes; keine neuen Features |
+| `RETIRED` | Vertragslinie beendet | keine fachliche Ausführung; nur definierte Restaufbewahrung |
+
+`publicationStatus` beschreibt ausschließlich die Sichtbarkeit im
+OpenAI-Veröffentlichungsprozess:
+
+| Wert | Bedeutung |
+|---|---|
+| `DRAFT` | intern beziehungsweise im Portal vorbereitet, aber nicht veröffentlicht |
+| `PUBLISHED` | als diese Plugin-Identität veröffentlicht |
+| `UNPUBLISHED` | aus der öffentlichen Sichtbarkeit entfernt oder im Portal gelöscht |
+
+`newSessionPolicy` ist die eigenständige serverautoritative Startentscheidung:
+
+| Wert | Bedeutung |
+|---|---|
+| `ALLOW` | neue Sessions dieser Major-Linie sind erlaubt |
+| `WARN` | Start in dieser Linie erst nach ausdrücklicher Wahl; ein geprüfter Nachfolger muss verfügbar sein |
+| `BLOCK` | keine neue Session und keine startfähige Capability dieser Linie |
+
+Die kanonische, geschlossene Projektion besitzt das folgende JSON-Schema. Der
+`$id` ist die stabile Schemaidentität. Release- und CI-Prüfungen validieren die
+Lifecycle-Quelle und ihre private Runtime-Projektion gegen dieses Schema. Der
+öffentliche Output von `open_skillpilot_start` bleibt bewusst minimal; die
+vollständige Contract Line wird ausschließlich im Resultat-`_meta` an die
+Komponente projiziert und benötigt zur Laufzeit keine externe Schemaauflösung.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/openai/contract-line/v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contractMajor",
+    "policyRevision",
+    "displayName",
+    "supportLifecycle",
+    "publicationStatus",
+    "newSessionPolicy",
+    "successor"
+  ],
+  "properties": {
+    "contractMajor": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "policyRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30
+    },
+    "supportLifecycle": {
+      "type": "string",
+      "enum": ["CURRENT", "SUPPORTED", "DEPRECATED", "RETIRED"]
+    },
+    "publicationStatus": {
+      "type": "string",
+      "enum": ["DRAFT", "PUBLISHED", "UNPUBLISHED"]
+    },
+    "newSessionPolicy": {
+      "type": "string",
+      "enum": ["ALLOW", "WARN", "BLOCK"]
+    },
+    "successor": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["contractMajor", "displayName", "handoffUrl"],
+          "properties": {
+            "contractMajor": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "displayName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30
+            },
+            "handoffUrl": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 2048,
+              "pattern": "^https://skillpilot\\.com/"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "newSessionPolicy": { "const": "WARN" }
+        },
+        "required": ["newSessionPolicy"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "successor": { "type": "object" }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": {
+          "supportLifecycle": { "const": "RETIRED" }
+        },
+        "required": ["supportLifecycle"]
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "publicationStatus": { "const": "UNPUBLISHED" },
+          "newSessionPolicy": { "const": "BLOCK" }
+        }
+      }
+    }
+  ]
+}
+```
+
+Zusätzlich zum Schema gelten folgende nicht relativ ausdrückbaren
+Kombinationsregeln:
+
+- `policyRevision` ist innerhalb einer Major-Linie monoton steigend. Jede
+  Änderung an `newSessionPolicy`, Nachfolgerfreigabe, Notfallsperre oder dem
+  für neue Starts verbindlichen Providerhinweis erhöht sie. Bereits
+  ausgestellte Start-Capabilities bleiben an ihre ursprüngliche Revision
+  gebunden und werden bei Abweichung terminal ungültig; eine spätere Rückkehr
+  zu einer älteren fachlichen Entscheidung lässt sie niemals wieder aufleben.
+- `successor.contractMajor` ist stets größer als `contractMajor`; Anzeigename
+  und Major stimmen mit der Ziel-Plugin-Identität überein.
+- Ein nicht-null `successor` wird nur nach erfolgreicher Veröffentlichung,
+  Erreichbarkeitsprüfung und Canary der Ziel-Linie ausgegeben. Seine
+  `handoffUrl` steht zusätzlich auf einer release-seitigen exakten
+  First-Party-Allowlist; `format` und `pattern` allein autorisieren kein Ziel.
+- `WARN` verlangt einen solchen nicht-null Nachfolger und eine ausdrückliche
+  Entscheidung, in der Quell-Linie zu bleiben oder den Nachfolger zu öffnen.
+- `BLOCK` stellt niemals eine Start-Capability aus und erzeugt keine Session.
+  `successor` darf dabei ausdrücklich `null` sein, insbesondere für
+  Sicherheits-, Rechts- oder Betriebsnotfälle.
+- `BLOCK` mit geprüftem Nachfolger ergibt für Verbraucher
+  `MAJOR_UPGRADE_REQUIRED`; `BLOCK` mit `successor: null` ergibt
+  `TEMPORARILY_UNAVAILABLE` und nur den neutralen First-Party-Fallback.
+- `RETIRED` verlangt `publicationStatus: UNPUBLISHED` und
+  `newSessionPolicy: BLOCK`.
+- Ein `DRAFT`- oder `UNPUBLISHED`-Nachfolger darf niemals angeboten werden.
+- Unbekannte Werte oder unzulässige Kombinationen werden fail-closed wie
+  `BLOCK` ohne Nachfolger behandelt.
 
 Die Zustands- und Datumswerte werden konfigurierbar geführt, zum Beispiel:
 
 ```json
 {
   "pluginIdentity": "skillpilot-coach-v1",
-  "contractMajor": 1,
-  "lifecycle": "DEPRECATED",
-  "successorIdentity": "skillpilot-coach-v2",
+  "contractLine": {
+    "contractMajor": 1,
+    "policyRevision": 1,
+    "displayName": "SkillPilot Coach v1",
+    "supportLifecycle": "DEPRECATED",
+    "publicationStatus": "PUBLISHED",
+    "newSessionPolicy": "WARN",
+    "successor": {
+      "contractMajor": 2,
+      "displayName": "SkillPilot Coach v2",
+      "handoffUrl": "https://skillpilot.com/openai/coach-v2"
+    }
+  },
   "deprecatedAt": "2028-02-01",
   "endOfSupportAt": "2028-08-01",
   "unpublishAt": "2028-09-01",
@@ -776,32 +989,76 @@ Die Zustands- und Datumswerte werden konfigurierbar geführt, zum Beispiel:
 }
 ```
 
-Die konkreten Fristen werden pro Release entschieden und nicht im Programmcode festgelegt.
+Die konkreten Fristen werden pro Release entschieden und nicht im Programmcode
+festgelegt. Eine Frist darf die drei expliziten Zustandsachsen nicht
+stillschweigend umschalten.
 
-### 14.2 Ablauf V1 -> V2
+### 14.2 Normativer App-first-Majorwechsel und Fehlerfallback
+
+Der Major-Handoff ist identifierfrei und ausschließlich benutzerinitiiert:
+
+```text
+ALLOW
+  -> normaler Start in der Quell-Major-Linie
+
+WARN + veröffentlichter, geprüfter Nachfolger
+  -> ausdrückliche Wahl:
+       in der Quell-Major-Linie starten
+       oder den Nachfolger öffnen
+
+BLOCK + veröffentlichter, geprüfter Nachfolger
+  -> keine Capability und keine Session in der Quell-Major-Linie
+  -> nur identifierfreier Nachfolger-Handoff
+
+BLOCK + successor null
+  -> keine Capability, keine Session und kein Nachfolger-Handoff
+  -> neutraler First-Party-Fallback
+```
+
+Der Handoff übergibt weder SkillPilot-ID noch OAuth-Token, Capability,
+`learningSessionId` oder andere Quell-Major-Laufzeitwerte. Die Ziel-Major-Linie
+führt ihre eigene OAuth-Autorisierung, erneute ausdrückliche
+Lernstandsauswahl und neue major-gepinnte Session durch. Token, Capability und
+Session einer Major-Linie werden von jeder anderen Linie fail-closed
+abgewiesen.
+
+Scheitert der Ziel-Major vor seinem Sessioncommit, darf ein neuer Quell-Major-
+Start nur angeboten werden, wenn dessen dann aktuelle `newSessionPolicy`
+`ALLOW` oder `WARN` ist. Bei `BLOCK` bleibt ausschließlich der neutrale
+First-Party-Fallback. Nach Ziel-Major-Commit sind nur idempotente Retries in
+derselben Ziel-Linie zulässig; ein automatisches Downgrade ist verboten.
+
+### 14.3 Ablauf V1 -> V2
 
 1. V1 bleibt unverändert funktionsfähig.
 2. V2 wird mit eigener Plugin-Identität, eigenem MCP-Origin und
    einem vor Veröffentlichung festgelegten eindeutigen UI-Origin aufgebaut.
 3. V2 wird unabhängig getestet, eingereicht und veröffentlicht.
 4. V1 und V2 laufen parallel.
-5. Neue Sessions werden bevorzugt in V2 angelegt.
-6. Bestehende V1-Sessions werden serverseitig migriert oder in V1 abgeschlossen.
+5. Neue App-first-Sessions werden nur nach ausdrücklicher Wahl von V2 über den
+   V2-Einstieg angelegt; eine bestehende V1-App routet keinen Start automatisch
+   nach V2.
+6. Bestehende V1-Sessions bleiben V1 und werden dort abgeschlossen oder laufen
+   aus. Eine optionale explizite Migration folgt ausschließlich Abschnitt 12.4.
 7. V1 erhält gegebenenfalls ein letztes kompatibles Release mit sachlichem Nachfolger- und Migrationshinweis.
-8. V1 wechselt von `SUPPORTED` nach `DEPRECATED`.
-9. Nach Erreichen der Migrations- und Betriebs-Gates wird V1 aus der öffentlichen Sichtbarkeit genommen (`UNPUBLISHED`).
+8. Der V1-`supportLifecycle` wechselt von `SUPPORTED` nach `DEPRECATED`.
+9. Nach Erreichen der Migrations- und Betriebs-Gates wechselt der
+   V1-`publicationStatus` auf `UNPUBLISHED`.
 10. Der V1-Server bleibt für die definierte Grace-Phase verfügbar.
-11. Danach wird die V1-Plugin-Identität im Portal gelöscht (`RETIRED`).
+11. Danach wird die V1-Plugin-Identität im Portal gelöscht und ihr
+    `supportLifecycle` auf `RETIRED` gesetzt; `publicationStatus` bleibt
+    `UNPUBLISHED` und `newSessionPolicy` bleibt `BLOCK`.
 12. Erst nach zusätzlicher technischer Prüfung werden V1-Adapter, V1-Skills, V1-spezifische Tests und V1-Infrastruktur entfernt.
 13. Statische alte UI-Artefakte und notwendige Migrationsdaten bleiben bis zum Ende ihrer Aufbewahrungsfrist erhalten.
 
-### 14.3 Gates vor Unpublish und Delete
+### 14.4 Gates vor Unpublish und Delete
 
 V1 darf nur stillgelegt werden, wenn mindestens folgende Punkte dokumentiert erfüllt sind:
 
 - V2 ist produktiv stabil und vollständig veröffentlicht;
 - V2-Auth funktioniert auch ohne automatische Übernahme der V1-Verknüpfung;
-- aktive V1-Sessions sind migriert, abgeschlossen oder ausdrücklich als Ausnahme erfasst;
+- aktive V1-Sessions sind abgelaufen, abgeschlossen, ausdrücklich nach
+  Abschnitt 12.4 migriert oder als Ausnahme erfasst;
 - Migrationsfehler und nicht migrierbare Fälle sind bearbeitet;
 - Support-, Datenschutz- und Aufbewahrungsanforderungen sind geklärt;
 - Telemetrie zeigt keine unerwartete V1-Nutzung mehr;
@@ -925,7 +1182,8 @@ Server Build N
   -> bei UI-Linien: UI resource integrity tests
 ```
 
-Solange V1 nicht `RETIRED` ist, darf ein Server-Build mit fehlschlagenden V1-Tests nicht produktiv gehen.
+Solange der V1-`supportLifecycle` nicht `RETIRED` ist, darf ein Server-Build mit
+fehlschlagenden V1-Tests nicht produktiv gehen.
 
 ### 16.5 Migrations- und Rollbacktests
 
@@ -1021,11 +1279,13 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - keine Abhängigkeit von Redirects;
    - OpenAI-Challenge-Route berücksichtigen.
 
-4. **V1-Bild-only UI absichern**
-   - genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource für
-     `render_skillpilot_goal_visualization` ausliefern;
-   - ausschließlich den Renderer mit `ui.resourceUri` und
-     `openai/outputTemplate` binden; gewöhnliche Tools bleiben ungebunden;
+4. **Dedizierte V1-MCP-Apps-UIs absichern**
+   - genau drei aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressourcen
+     für `open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+     `start_skillpilot_memory_practice` ausliefern;
+   - jedes dieser drei Werkzeuge ausschließlich an seine eigene Ressource mit
+     `ui.resourceUri` und `openai/outputTemplate` binden; app-only Issuer und
+     Kartenreview sowie gewöhnliche Tools bleiben ungebunden;
    - die validierte strukturierte `goalVisualization` bild-only rendern und
      den vollständigen Textpfad bei jedem Hostverhalten erhalten;
    - weder User-Agent- noch Surface-Metadaten als Gate verwenden und keine
@@ -1058,9 +1318,15 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - V1-E2E- und Regressionstests.
 
 9. **Lifecycle-Konfiguration anlegen**
-   - Zustände `CURRENT`, `SUPPORTED`, `DEPRECATED`, `UNPUBLISHED`, `RETIRED` modellieren;
-   - Nachfolger und Lifecycle-Daten konfigurierbar halten;
-   - zunächst V1 auf `CURRENT` setzen.
+   - `supportLifecycle` mit `CURRENT`, `SUPPORTED`, `DEPRECATED`, `RETIRED`
+     modellieren;
+   - `publicationStatus` mit `DRAFT`, `PUBLISHED`, `UNPUBLISHED` getrennt
+     modellieren;
+   - `newSessionPolicy` mit `ALLOW`, `WARN`, `BLOCK` sowie den nullable
+     Nachfolger nach dem kanonischen Contract-Line-Schema konfigurieren;
+   - `policyRevision` monoton und revisionsfest führen;
+   - zunächst V1 auf `policyRevision: 1`, `CURRENT`, `DRAFT`, `ALLOW` und
+     `successor: null` setzen.
 
 10. **Runbook und ADR ablegen**
     - dieses Dokument oder eine verdichtete ADR-Version im Repository aufnehmen;
@@ -1085,7 +1351,8 @@ Noch keine fachliche V2 implementieren. Lediglich sicherstellen, dass folgende s
   plugin-eindeutiger UI-Origin;
 - neues Plugin-Paket;
 - paralleler Betrieb;
-- idempotente Sessionmigration;
+- standardmäßig ein expliziter neuer V2-Start mit neuer V2-Session;
+- nur optional ein gesondert freigegebener, idempotenter Sessionmigrationspfad;
 - V1-Lifecycle und Telemetrie;
 - sauberer Rückbau nach Delete.
 
@@ -1096,10 +1363,14 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - V1 im technischen Namen und Anzeigenamen erkennbar ist;
 - Manifest-Version und Contract-Major konsistent sind;
 - der öffentliche V1-MCP-Pfad unabhängig von späteren V2-Pfaden ist;
-- der unveröffentlichte V1-Draft genau eine aktuelle hashgebundene
-  `text/html;profile=mcp-app`-Ressource aktiv bindet, nur den Renderer daran
-  bindet und jede bereits ausgelieferte frühere URI byte-identisch passiv
-  lesbar hält;
+- V1 bereits dormant das geschlossene Lifecycle-/Nachfolgerschema sowie die
+  UI-Zustände für `ALLOW`, `WARN` und `BLOCK` enthält, ohne einen noch nicht
+  veröffentlichten Nachfolger zu bewerben;
+- der unveröffentlichte V1-Draft genau drei aktuelle hashgebundene
+  `text/html;profile=mcp-app`-Ressourcen aktiv bindet, Direktstart-Öffner,
+  Bild-Renderer und Kartenlauncher jeweils nur an ihre eigene Ressource bindet,
+  app-only Werkzeuge ungebunden lässt und jede bereits ausgelieferte frühere
+  URI byte-identisch passiv lesbar hält;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben

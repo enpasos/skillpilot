@@ -110,7 +110,8 @@ public class OpenAiDeOAuthMetadataController {
                 "Authorize SkillPilot Coach v1",
                 "<p>" + HtmlUtils.htmlEscape(detail) + "</p>"
                         + "<p>This authorization neither selects a learner nor creates a learning session. "
-                        + "A learning session is created only by choosing “Start learning” in SkillPilot.</p>"
+                        + "A learning session is created only by an explicit start in SkillPilot or "
+                        + "the private, capability-protected direct-start component.</p>"
                         + "<p><a class=\"button\" href=\"/\">Open SkillPilot</a></p>");
     }
 

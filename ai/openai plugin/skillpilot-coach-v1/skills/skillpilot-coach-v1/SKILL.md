@@ -1,6 +1,6 @@
 ---
 name: skillpilot-coach-v1
-description: Session-bound, language-neutral SkillPilot learning coach for personal learning paths, curriculum selection, motivational orientation, dialogic learning, evidence-based mastery, verified recall, and assessments. Use when the learner explicitly invokes this skill and wants to start, continue, resume, practise, or review a learning session prepared in SkillPilot.
+description: Session-bound, language-neutral SkillPilot learning coach with a private direct-start component for personal learning paths, curriculum selection, motivational orientation, dialogic learning, evidence-based mastery, verified recall, and assessments. Use when the learner explicitly invokes this skill and wants to start directly, continue, resume, practise, or review a SkillPilot learning session.
 ---
 
 # SkillPilot Coach v1
@@ -14,12 +14,23 @@ the entire SkillPilot conversation.
 ## Workflow
 
 1. First check whether the current start message prepared by SkillPilot
-   contains a `learningSessionId`. If it does not, do not call any SkillPilot
-   tool. Briefly ask the learner to open SkillPilot and choose **Start
-   learning**, then stop the structured workflow. Take an existing
-   `learningSessionId` exclusively from that start message. Send it unchanged
-   with every SkillPilot MCP call. Never show, repeat, request, or reconstruct
-   it.
+   contains a `learningSessionId`. If it does not, call
+   `open_skillpilot_start` exactly once. This is the only SkillPilot call
+   permitted before a learning session exists. It opens the private
+   direct-start component. Inside that component—not in chat—the learner may
+   enter the existing opaque SkillPilot ID, choose the communication locale,
+   and confirm the applicable provider notice. Never call the app-only
+   `issue_skillpilot_start_capability` tool yourself, never fabricate or expose
+   its private setup capability, and never request a SkillPilot ID, PIN,
+   password, or OAuth value in the conversation. The start result is only a
+   narrow bootstrap receipt, not learning state. Wait for the
+   component-authored start message;
+   do not begin coaching, navigate, or call another SkillPilot tool before it
+   arrives. If the component or secure handoff is unavailable, follow only the
+   exact fallback supplied by the start result and stop the structured
+   workflow. Take an existing `learningSessionId` exclusively from the current
+   start message. Send it unchanged with every subsequent subject-matter
+   SkillPilot MCP call. Never show, repeat, request, or reconstruct it.
 2. Call `get_skillpilot_context` before the first subject-matter response. Load
    the context again after a new chat, reload, long conversation, possible
    context loss, uncertainty, or conflict.

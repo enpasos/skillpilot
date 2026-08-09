@@ -192,6 +192,11 @@ public class OpenAiDeProperties {
         private int mcpRequests = 120;
         private int oauthRequests = 60;
         private int uiRequests = 60;
+        private int bootstrapRequests = 30;
+        private int bootstrapCapabilityRequests = 30;
+        private int bootstrapProcessGlobalRequests = 600;
+        private int bootstrapIssuerRequests = 10;
+        private int bootstrapIssuerProcessGlobalRequests = 300;
         private int metadataRequests = 120;
         private int maxClientBuckets = 10_000;
 
@@ -237,6 +242,47 @@ public class OpenAiDeProperties {
 
         public int getMetadataRequests() {
             return metadataRequests;
+        }
+
+        public int getBootstrapRequests() {
+            return bootstrapRequests;
+        }
+
+        public void setBootstrapRequests(int bootstrapRequests) {
+            this.bootstrapRequests = bootstrapRequests;
+        }
+
+        public int getBootstrapCapabilityRequests() {
+            return bootstrapCapabilityRequests;
+        }
+
+        public void setBootstrapCapabilityRequests(int bootstrapCapabilityRequests) {
+            this.bootstrapCapabilityRequests = bootstrapCapabilityRequests;
+        }
+
+        public int getBootstrapProcessGlobalRequests() {
+            return bootstrapProcessGlobalRequests;
+        }
+
+        public void setBootstrapProcessGlobalRequests(int bootstrapProcessGlobalRequests) {
+            this.bootstrapProcessGlobalRequests = bootstrapProcessGlobalRequests;
+        }
+
+        public int getBootstrapIssuerRequests() {
+            return bootstrapIssuerRequests;
+        }
+
+        public void setBootstrapIssuerRequests(int bootstrapIssuerRequests) {
+            this.bootstrapIssuerRequests = bootstrapIssuerRequests;
+        }
+
+        public int getBootstrapIssuerProcessGlobalRequests() {
+            return bootstrapIssuerProcessGlobalRequests;
+        }
+
+        public void setBootstrapIssuerProcessGlobalRequests(
+                int bootstrapIssuerProcessGlobalRequests) {
+            this.bootstrapIssuerProcessGlobalRequests = bootstrapIssuerProcessGlobalRequests;
         }
 
         public void setMetadataRequests(int metadataRequests) {

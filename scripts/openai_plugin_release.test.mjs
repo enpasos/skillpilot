@@ -19,6 +19,7 @@ import {
   assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
+  assertLifecyclePolicyRevisionMonotone,
   assertReleaseCompatible,
   assertSuccessorVersionClassification,
   collectCompatibilityProblems,
@@ -52,19 +53,29 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
 });
 
 test("V1 UI binds one distinct active template per tool and keeps historical templates passive", () => {
+  const startResourceUri = "ui://skillpilot/coach/v1/sha256-start/start.html";
   const goalResourceUri = "ui://skillpilot/coach/v1/sha256-goal/goal.html";
   const memoryResourceUri = "ui://skillpilot/coach/v1/sha256-memory/memory.html";
   const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
   const resources = [
     { uri: retainedResourceUri, sha256: "retained" },
+    { uri: startResourceUri, sha256: "start" },
     { uri: goalResourceUri, sha256: "goal" },
     { uri: memoryResourceUri, sha256: "memory" },
   ];
   const activeBindings = {
+    open_skillpilot_start: startResourceUri,
     render_skillpilot_goal_visualization: goalResourceUri,
     start_skillpilot_memory_practice: memoryResourceUri,
   };
   const tools = [
+    {
+      name: "open_skillpilot_start",
+      meta: {
+        ui: { resourceUri: startResourceUri },
+        "openai/outputTemplate": startResourceUri,
+      },
+    },
     {
       name: "render_skillpilot_goal_visualization",
       meta: {
@@ -80,6 +91,12 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
       },
     },
     {
+      name: "issue_skillpilot_start_capability",
+      meta: {
+        ui: { visibility: ["app"] },
+      },
+    },
+    {
       name: "review_skillpilot_memory_practice_card",
       meta: {
         ui: { visibility: ["app"] },
@@ -90,6 +107,15 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
   assert.doesNotThrow(() =>
     assertActiveUiBindings(activeBindings, resources, tools),
   );
+  for (const appOnlyToolName of [
+    "issue_skillpilot_start_capability",
+    "review_skillpilot_memory_practice_card",
+  ]) {
+    const appOnlyTool = tools.find((tool) => tool.name === appOnlyToolName);
+    assert.deepEqual(appOnlyTool?.meta?.ui, { visibility: ["app"] });
+    assert.equal(Object.hasOwn(appOnlyTool.meta.ui, "resourceUri"), false);
+    assert.equal(Object.hasOwn(appOnlyTool.meta, "openai/outputTemplate"), false);
+  }
   assert.throws(
     () =>
       assertActiveUiBindings(
@@ -111,14 +137,15 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
   assert.throws(
     () =>
       assertActiveUiBindings(activeBindings, resources, [
+        tools[0],
         {
-          ...tools[0],
+          ...tools[1],
           meta: {
             ui: { resourceUri: goalResourceUri },
             "openai/outputTemplate": retainedResourceUri,
           },
         },
-        tools[1],
+        ...tools.slice(2),
       ]),
     /openai\/outputTemplate to its active binding/,
   );
@@ -134,6 +161,86 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
       ),
     /must own a distinct UI resource/,
   );
+});
+
+test("lifecycle policy revision never decreases or reuses a changed decision", () => {
+  const lifecycle = (policyRevision, newSessionPolicy = "ALLOW") => ({
+    schemaVersion: 2,
+    pluginIdentity: "skillpilot-coach-v1",
+    contractLine: {
+      contractMajor: 1,
+      policyRevision,
+      displayName: "SkillPilot Coach v1",
+      supportLifecycle: "CURRENT",
+      publicationStatus: "DRAFT",
+      newSessionPolicy,
+      successor: null,
+    },
+  });
+
+  assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
+    lifecycle(1),
+    lifecycle(1),
+    "notice-v1",
+    "notice-v1",
+  ));
+  assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
+    lifecycle(1),
+    lifecycle(2, "BLOCK"),
+    "notice-v1",
+    "notice-v2",
+  ));
+  assert.throws(
+    () => assertLifecyclePolicyRevisionMonotone(
+      lifecycle(2),
+      lifecycle(1),
+      "notice-v2",
+      "notice-v2",
+    ),
+    /must not decrease/,
+  );
+  assert.throws(
+    () => assertLifecyclePolicyRevisionMonotone(
+      lifecycle(1),
+      lifecycle(1, "BLOCK"),
+      "notice-v1",
+      "notice-v1",
+    ),
+    /strictly higher policyRevision/,
+  );
+  assert.throws(
+    () => assertLifecyclePolicyRevisionMonotone(
+      lifecycle(1),
+      lifecycle(1),
+      "notice-v1",
+      "notice-v2",
+    ),
+    /strictly higher policyRevision/,
+  );
+  assert.throws(
+    () => assertLifecyclePolicyRevisionMonotone(
+      lifecycle(1),
+      lifecycle(0),
+      "notice-v1",
+      "notice-v1",
+    ),
+    /positive safe integer/,
+  );
+  assert.throws(
+    () => assertLifecyclePolicyRevisionMonotone(
+      { schemaVersion: 2 },
+      lifecycle(1),
+      "notice-v1",
+      "notice-v1",
+    ),
+    /Only lifecycle schemaVersion 1/,
+  );
+  assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
+    { schemaVersion: 1 },
+    lifecycle(1),
+    null,
+    "notice-v1",
+  ));
 });
 
 for (const fixtureCase of fixture.cases) {

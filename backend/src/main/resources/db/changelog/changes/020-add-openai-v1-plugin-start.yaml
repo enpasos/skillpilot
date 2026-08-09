@@ -1,0 +1,252 @@
+databaseChangeLog:
+  - changeSet:
+      id: 020-add-openai-v1-bootstrap-core
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - tableExists:
+            tableName: openai_de_learning_session
+        - not:
+            - tableExists:
+                tableName: openai_de_bootstrap_capability
+        - not:
+            - tableExists:
+                tableName: openai_de_bootstrap_launch_attempt
+      changes:
+        - createTable:
+            tableName: openai_de_bootstrap_capability
+            columns:
+              - column:
+                  name: capability_fingerprint
+                  type: VARCHAR(64)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: fingerprint_key_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: schema_version
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: contract_major
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purpose
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: oauth_authorization_ref
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: oauth_client_id
+                  type: VARCHAR(512)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: resource
+                  type: VARCHAR(512)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: scopes
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: provider_notice_version
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: source_major_decision
+                  type: VARCHAR(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: policy_revision
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: issuance_revision
+                  type: VARCHAR(160)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: issued_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: record_expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: terminal_code
+                  type: VARCHAR(48)
+              - column:
+                  name: invalidated_at
+                  type: TIMESTAMP WITH TIME ZONE
+        - createIndex:
+            tableName: openai_de_bootstrap_capability
+            indexName: idx_openai_de_bootstrap_capability_auth
+            columns:
+              - column:
+                  name: contract_major
+              - column:
+                  name: oauth_authorization_ref
+              - column:
+                  name: expires_at
+        - createIndex:
+            tableName: openai_de_bootstrap_capability
+            indexName: idx_openai_de_bootstrap_capability_record_expiry
+            columns:
+              - column:
+                  name: record_expires_at
+
+        - createTable:
+            tableName: openai_de_bootstrap_launch_attempt
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: version
+                  type: BIGINT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: contract_major
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: capability_fingerprint
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uq_openai_de_bootstrap_attempt_capability
+              - column:
+                  name: capability_fingerprint_key_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: oauth_authorization_ref
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: capability_expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_request_id
+                  type: VARCHAR(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hmac_key_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hmac
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: terminal_code
+                  type: VARCHAR(48)
+              - column:
+                  name: response_schema_version
+                  type: INTEGER
+              - column:
+                  name: response_key_id
+                  type: VARCHAR(80)
+              - column:
+                  name: response_nonce
+                  type: VARCHAR(64)
+              - column:
+                  name: response_ciphertext
+                  type: TEXT
+              - column:
+                  name: response_expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: attempt_retry_until
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bound_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: record_expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_bootstrap_launch_attempt
+            baseColumnNames: capability_fingerprint
+            constraintName: fk_openai_de_bootstrap_attempt_capability
+            referencedTableName: openai_de_bootstrap_capability
+            referencedColumnNames: capability_fingerprint
+            onDelete: RESTRICT
+        - addUniqueConstraint:
+            tableName: openai_de_bootstrap_launch_attempt
+            columnNames: contract_major, oauth_authorization_ref, client_request_id
+            constraintName: uq_openai_de_bootstrap_attempt_request
+        - createIndex:
+            tableName: openai_de_bootstrap_launch_attempt
+            indexName: idx_openai_de_bootstrap_attempt_response_expiry
+            columns:
+              - column:
+                  name: status
+              - column:
+                  name: response_expires_at
+        - createIndex:
+            tableName: openai_de_bootstrap_launch_attempt
+            indexName: idx_openai_de_bootstrap_attempt_record_expiry
+            columns:
+              - column:
+                  name: record_expires_at

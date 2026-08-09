@@ -3,6 +3,11 @@
 Draft of the first permanently isolatable public SkillPilot Coach contract
 line. This version has not been published yet.
 
+The private direct-start surface is currently approved only for internal
+canary use. Public submission remains blocked until OpenAI explicitly accepts
+the widget's handling of the bearer-like SkillPilot ID or the public
+architecture no longer processes that ID.
+
 - language-neutral technical plugin identity `skillpilot-coach-v1`
 - MCP contract major `1`
 - one shared coach plugin for all communication locales supported by the
@@ -20,15 +25,27 @@ line. This version has not been published yet.
 - one widget origin unique to this plugin,
   `https://mcp-coach-v1.skillpilot.com`, published through `_meta.ui.domain`
   and the ChatGPT compatibility alias `_meta["openai/widgetDomain"]`
-- two distinct active content-addressed MCP Apps UI resources: the read-only
-  image of an active atomic learning goal with a matching canonical
-  `goal-visualization` link, and interactive memory-card practice in chat; plus
+- three distinct active content-addressed MCP Apps UI resources: a private
+  direct-start surface, the read-only image of an active atomic learning goal
+  with a matching canonical `goal-visualization` link, and interactive
+  memory-card practice in chat; plus
   immutable passive resources for every previously advertised hash or
   version-addressed goal-image URI
-- per-tool `ui.resourceUri` and `openai/outputTemplate` bindings for the goal
-  renderer and memory-practice launcher; the app-only card-review tool and all
-  ordinary context, selection, mutation, recall, and assessment tools remain
-  UI-free
+- per-tool `ui.resourceUri` and `openai/outputTemplate` bindings for the
+  direct-start opener, goal renderer, and memory-practice launcher; the
+  app-only capability issuer, app-only card-review tool, and all ordinary
+  context, selection, mutation, recall, and assessment tools remain UI-free
+- private app-first start without OAuth-to-learner coupling: OAuth continues to
+  authorize only the fixed App-to-Core connection; the component obtains an
+  ID-free, short-lived app-only setup capability and sends an explicitly entered
+  existing SkillPilot ID only to the fixed SkillPilot HTTPS bootstrap endpoint
+- irreversible request binding, a random 256-bit learning-session handle, and
+  an AEAD-encrypted short-lived delivery record provide crash-safe exact retries
+  without persisting the SkillPilot ID, raw capability, session token, request
+  body, or start message in the bootstrap tables
+- separate lifecycle axes for support, publication, and new-session policy,
+  with a monotone policy revision that terminally invalidates stale or blocked
+  direct-start capabilities
 - private, bounded due-card batches for the memory-practice component with
   state-free card flipping and backward/forward navigation; the learner records
   only the clear `Not yet` or `Got it` choice, mapped internally to the

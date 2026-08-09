@@ -202,7 +202,10 @@ adressiert wird, ergibt sich nur aus der expliziten `learningSessionId`.
 Fehlerantworten und Logs dürfen weder Lernsession-ID, OAuth-Token noch
 dauerhafte SkillPilot-ID ausgeben. ChatGPT soll den Benutzer nicht auffordern,
 eine SkillPilot-ID oder einen Token manuell einzutippen. Der normale
-Wiederherstellungsweg ist immer **Lernen starten** in SkillPilot.
+Wiederherstellungsweg ist immer ein neuer ausdrücklicher Start: entweder
+**Lernen starten** in der First-Party-SkillPilot-Oberfläche oder der
+capability-geschützte private Direktstart der MCP-App. OAuth allein ist keiner
+dieser Startwege.
 
 ## 9. Sicherheitsinvarianten
 
@@ -220,9 +223,10 @@ Wiederherstellungsweg ist immer **Lernen starten** in SkillPilot.
     Token-Endpunkt akzeptiert für ihn ausschließlich `client_secret_basic`.
 12. Das OAuth-Client-Secret erscheint niemals in Repository, UI, Prompt,
     Toolargumenten, Antworten oder Logs.
-13. `communicationLocale` wird ausschließlich beim First-Party-Start gesetzt,
-    bei jedem Kontextabruf aus derselben Lernsession geliefert und weder aus
-    Hostlocale noch aus neutral englischen Pluginmetadaten neu abgeleitet.
+13. `communicationLocale` wird ausschließlich bei einem ausdrücklichen
+    First-Party- oder capability-geschützten Direktstart gesetzt, bei jedem
+    Kontextabruf aus derselben Lernsession geliefert und weder aus Hostlocale
+    noch aus neutral englischen Pluginmetadaten neu abgeleitet.
 
 ## 10. Abnahmekriterien
 

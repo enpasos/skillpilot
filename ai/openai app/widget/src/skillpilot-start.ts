@@ -1,0 +1,702 @@
+export type SkillPilotStartLocale = "de" | "en";
+
+export type SkillPilotStartStatus =
+  | "ID_REQUIRED"
+  | "MAJOR_UPGRADE_REQUIRED"
+  | "TEMPORARILY_UNAVAILABLE";
+
+export type SkillPilotSupportLifecycle =
+  | "CURRENT"
+  | "SUPPORTED"
+  | "DEPRECATED"
+  | "RETIRED";
+
+export type SkillPilotPublicationStatus =
+  | "DRAFT"
+  | "PUBLISHED"
+  | "UNPUBLISHED";
+
+export type SkillPilotNewSessionPolicy = "ALLOW" | "WARN" | "BLOCK";
+
+export type SkillPilotSuccessor = {
+  contractMajor: number;
+  displayName: string;
+  handoffUrl: string;
+};
+
+export type SkillPilotContractLine = {
+  contractMajor: 1;
+  policyRevision: number;
+  displayName: "SkillPilot Coach v1";
+  supportLifecycle: SkillPilotSupportLifecycle;
+  publicationStatus: SkillPilotPublicationStatus;
+  newSessionPolicy: SkillPilotNewSessionPolicy;
+  successor: SkillPilotSuccessor | null;
+};
+
+export type SkillPilotStartOpenResult = {
+  status: SkillPilotStartStatus;
+  supportedLocales: ["de", "en"];
+  fallbackUrl: typeof SKILLPILOT_FALLBACK_URL;
+  contractLine: SkillPilotContractLine;
+  defaultLocale: SkillPilotStartLocale;
+};
+
+export type SkillPilotCapabilityArguments = {
+  providerNoticeVersion: typeof PROVIDER_NOTICE_VERSION;
+  providerEligibilityConfirmed: true;
+  sourceMajorDecision?: "START_CURRENT_MAJOR";
+};
+
+export type SkillPilotStartCapability = {
+  setupCapability: string;
+  expiresAt: string;
+  contractMajor: 1;
+  policyRevision: number;
+  providerNoticeVersion: typeof PROVIDER_NOTICE_VERSION;
+  sourceMajorDecision: "ALLOW_CURRENT_MAJOR" | "START_CURRENT_MAJOR";
+};
+
+export type SkillPilotBootstrapBody = {
+  schemaVersion: 1;
+  skillpilotId: string;
+  communicationLocale: SkillPilotStartLocale;
+  launchIntent: { type: "CURRENT_UNIT" };
+  providerNoticeVersion: typeof PROVIDER_NOTICE_VERSION;
+  clientRequestId: string;
+};
+
+export type SkillPilotBootstrapRequest = {
+  endpoint: typeof SKILLPILOT_BOOTSTRAP_URL;
+  setupCapability: string;
+  capabilityExpiresAtMs: number;
+  body: SkillPilotBootstrapBody;
+};
+
+export type SkillPilotLaunchResult = {
+  schemaVersion: 1;
+  status: "SESSION_CREATED";
+  communicationLocale: SkillPilotStartLocale;
+  expiresAt: string;
+  /** Opaque host handoff. Never render, log, copy, or reconstruct this value. */
+  startMessage: string;
+};
+
+export type SkillPilotBootstrapErrorStatus =
+  | "START_NOT_AUTHORIZED"
+  | "START_UNAVAILABLE"
+  | "IDEMPOTENCY_KEY_REUSED"
+  | "PROFILE_UNAVAILABLE"
+  | "RETRY_EXPIRED"
+  | "DELIVERY_EXPIRED"
+  | "TEMPORARILY_UNAVAILABLE"
+  | "INVALID_REQUEST";
+
+export class SkillPilotBootstrapHttpError extends Error {
+  constructor(
+    public readonly status: SkillPilotBootstrapErrorStatus,
+    public readonly retryable: boolean
+  ) {
+    super("skillpilot-bootstrap-http-error");
+    this.name = "SkillPilotBootstrapHttpError";
+  }
+}
+
+export const PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v1" as const;
+export const SKILLPILOT_FALLBACK_URL = "https://skillpilot.com/" as const;
+export const SKILLPILOT_BOOTSTRAP_URL =
+  "https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch" as const;
+export const HANDOFF_RETENTION_MS = 15 * 60 * 1_000;
+
+const CAPABILITY_PATTERN = /^spc_[A-Za-z0-9_-]{43}$/;
+const SESSION_PATTERN = /^sps_[A-Za-z0-9_-]{43}$/;
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const UUID_V4_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const ISO_INSTANT_PATTERN =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$/;
+const MAX_CAPABILITY_LIFETIME_MS = 10 * 60 * 1_000;
+const MAX_SESSION_LIFETIME_MS = 24 * 60 * 60 * 1_000;
+const CLOCK_SKEW_MS = 30_000;
+const MAX_RESPONSE_BYTES = 8 * 1_024;
+const SUCCESSOR_HANDOFF_URLS = new Set([
+  "https://skillpilot.com/openai/coach-v2"
+]);
+const START_MESSAGES: Record<SkillPilotStartLocale, string> = {
+  de: "Verwende SkillPilot Coach v1 und fahre fort.",
+  en: "Use SkillPilot Coach v1 and continue."
+};
+
+export function skillPilotStartOpenFromToolResult(
+  value: unknown,
+  metadataSource?: unknown
+): SkillPilotStartOpenResult | undefined {
+  const structured = structuredContent(value);
+  if (
+    !structured
+    || !hasExactKeys(structured, [
+      "status",
+      "supportedLocales",
+      "fallbackUrl"
+    ])
+  ) {
+    return undefined;
+  }
+
+  const metadata = firstStartMetadata(value, metadataSource);
+  if (
+    !metadata
+    || !hasExactKeys(metadata, ["schemaVersion", "contractLine"])
+    || metadata.schemaVersion !== 1
+  ) {
+    return undefined;
+  }
+  const status = startStatus(structured.status);
+  const supportedLocales = locales(structured.supportedLocales);
+  const fallbackUrl = exactFallbackUrl(structured.fallbackUrl);
+  const contractLine = contractLineFromUnknown(metadata.contractLine);
+  if (!status || !supportedLocales || !fallbackUrl || !contractLine) return undefined;
+  if (!validStatusPolicyCombination(status, contractLine)) return undefined;
+
+  return {
+    status,
+    supportedLocales,
+    fallbackUrl,
+    contractLine,
+    defaultLocale: supportedLocales[0]
+  };
+}
+
+export function createSkillPilotCapabilityArguments(
+  start: SkillPilotStartOpenResult,
+  providerEligibilityConfirmed: boolean
+): SkillPilotCapabilityArguments | undefined {
+  if (
+    start.status !== "ID_REQUIRED"
+    || !providerEligibilityConfirmed
+    || start.contractLine.newSessionPolicy === "BLOCK"
+  ) {
+    return undefined;
+  }
+  return {
+    providerNoticeVersion: PROVIDER_NOTICE_VERSION,
+    providerEligibilityConfirmed: true,
+    ...(start.contractLine.newSessionPolicy === "WARN"
+      ? { sourceMajorDecision: "START_CURRENT_MAJOR" as const }
+      : {})
+  };
+}
+
+export function skillPilotCapabilityFromToolResult(
+  value: unknown,
+  metadataSource?: unknown,
+  nowMs = Date.now()
+): SkillPilotStartCapability | undefined {
+  const structured = structuredContent(value);
+  if (
+    !structured
+    || !hasExactKeys(structured, [
+      "status",
+      "contractMajor",
+      "providerNoticeVersion"
+    ])
+    || structured.status !== "CAPABILITY_ISSUED"
+    || structured.contractMajor !== 1
+    || structured.providerNoticeVersion !== PROVIDER_NOTICE_VERSION
+  ) {
+    return undefined;
+  }
+
+  const metadata = firstStartMetadata(value, metadataSource);
+  if (
+    !metadata
+    || !hasExactKeys(metadata, [
+      "schemaVersion",
+      "setupCapability",
+      "expiresAt",
+      "contractMajor",
+      "policyRevision",
+      "sourceMajorDecision",
+      "providerNoticeVersion"
+    ])
+    || metadata.schemaVersion !== 1
+    || metadata.contractMajor !== 1
+    || metadata.providerNoticeVersion !== PROVIDER_NOTICE_VERSION
+  ) {
+    return undefined;
+  }
+
+  const setupCapability = exactCapability(metadata.setupCapability);
+  const policyRevision = positiveSafeInteger(metadata.policyRevision);
+  const sourceMajorDecision = sourceMajorDecisionFromUnknown(
+    metadata.sourceMajorDecision
+  );
+  const expiresAt = futureTimestamp(
+    metadata.expiresAt,
+    nowMs,
+    MAX_CAPABILITY_LIFETIME_MS + CLOCK_SKEW_MS
+  );
+  if (!setupCapability || !expiresAt || !policyRevision || !sourceMajorDecision) {
+    return undefined;
+  }
+
+  return {
+    setupCapability,
+    expiresAt,
+    contractMajor: 1,
+    policyRevision,
+    sourceMajorDecision,
+    providerNoticeVersion: PROVIDER_NOTICE_VERSION
+  };
+}
+
+export function canonicalSkillPilotId(value: unknown): string | undefined {
+  if (typeof value !== "string" || value.length > 100) return undefined;
+  const normalized = value.replace(/[\s\u200B-\u200D\u2060\uFEFF]+/gu, "").trim();
+  return UUID_PATTERN.test(normalized) ? normalized : undefined;
+}
+
+export function createSkillPilotBootstrapRequest(
+  capability: SkillPilotStartCapability,
+  skillpilotId: unknown,
+  communicationLocale: SkillPilotStartLocale,
+  clientRequestId: unknown,
+  nowMs = Date.now()
+): SkillPilotBootstrapRequest | undefined {
+  const normalizedId = canonicalSkillPilotId(skillpilotId);
+  const requestId = exactUuidV4(clientRequestId);
+  const setupCapability = exactCapability(capability.setupCapability);
+  const capabilityExpiresAt = futureTimestamp(
+    capability.expiresAt,
+    nowMs,
+    MAX_CAPABILITY_LIFETIME_MS + CLOCK_SKEW_MS
+  );
+  if (
+    !normalizedId
+    || !requestId
+    || !setupCapability
+    || !locale(communicationLocale)
+    || !capabilityExpiresAt
+  ) {
+    return undefined;
+  }
+
+  return {
+    endpoint: SKILLPILOT_BOOTSTRAP_URL,
+    setupCapability,
+    capabilityExpiresAtMs: Date.parse(capabilityExpiresAt),
+    body: {
+      schemaVersion: 1,
+      skillpilotId: normalizedId,
+      communicationLocale,
+      launchIntent: { type: "CURRENT_UNIT" },
+      providerNoticeVersion: PROVIDER_NOTICE_VERSION,
+      clientRequestId: requestId
+    }
+  };
+}
+
+export function skillPilotBootstrapFetchInit(
+  request: SkillPilotBootstrapRequest,
+  signal?: AbortSignal
+): RequestInit {
+  return {
+    method: "POST",
+    headers: {
+      Authorization: `SkillPilotSetup ${request.setupCapability}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(request.body),
+    credentials: "omit",
+    redirect: "error",
+    cache: "no-store",
+    referrerPolicy: "no-referrer",
+    mode: "cors",
+    ...(signal ? { signal } : {})
+  };
+}
+
+export async function sendSkillPilotBootstrap(
+  request: SkillPilotBootstrapRequest,
+  signal?: AbortSignal,
+  fetchImplementation: typeof fetch = fetch
+): Promise<SkillPilotLaunchResult> {
+  if (request.endpoint !== SKILLPILOT_BOOTSTRAP_URL) {
+    throw new Error("invalid-bootstrap-endpoint");
+  }
+  const response = await fetchImplementation(
+    SKILLPILOT_BOOTSTRAP_URL,
+    skillPilotBootstrapFetchInit(request, signal)
+  );
+  if (response.redirected) throw new Error("bootstrap-rejected");
+  if (response.url && response.url !== SKILLPILOT_BOOTSTRAP_URL) {
+    throw new Error("unexpected-bootstrap-response-url");
+  }
+  const contentType = response.headers.get("content-type")?.toLowerCase() ?? "";
+  if (!contentType.startsWith("application/json")) {
+    throw new Error("invalid-bootstrap-content-type");
+  }
+  const text = await response.text();
+  if (!text || new TextEncoder().encode(text).byteLength > MAX_RESPONSE_BYTES) {
+    throw new Error("invalid-bootstrap-response-size");
+  }
+  let value: unknown;
+  try {
+    value = JSON.parse(text);
+  } catch {
+    throw new Error("invalid-bootstrap-json");
+  }
+  if (!response.ok) {
+    const failure = skillPilotBootstrapErrorFromHttpResponse(value);
+    if (!failure) throw new Error("invalid-bootstrap-error-result");
+    throw new SkillPilotBootstrapHttpError(
+      failure,
+      failure === "TEMPORARILY_UNAVAILABLE"
+    );
+  }
+  const result = skillPilotLaunchFromHttpResponse(value);
+  if (!result) throw new Error("invalid-bootstrap-result");
+  return result;
+}
+
+export function skillPilotBootstrapErrorFromHttpResponse(
+  value: unknown
+): SkillPilotBootstrapErrorStatus | undefined {
+  const response = record(value);
+  if (
+    !response
+    || !hasExactKeys(response, ["schemaVersion", "status", "fallbackUrl"])
+    || response.schemaVersion !== 1
+    || response.fallbackUrl !== SKILLPILOT_FALLBACK_URL
+  ) {
+    return undefined;
+  }
+  return bootstrapErrorStatus(response.status);
+}
+
+export function skillPilotLaunchFromHttpResponse(
+  value: unknown,
+  nowMs = Date.now()
+): SkillPilotLaunchResult | undefined {
+  const response = record(value);
+  if (
+    !response
+    || !hasExactKeys(response, [
+      "schemaVersion",
+      "status",
+      "communicationLocale",
+      "expiresAt",
+      "startMessage"
+    ])
+    || response.schemaVersion !== 1
+    || response.status !== "SESSION_CREATED"
+  ) {
+    return undefined;
+  }
+  const communicationLocale = locale(response.communicationLocale);
+  const expiresAt = futureTimestamp(
+    response.expiresAt,
+    nowMs,
+    MAX_SESSION_LIFETIME_MS + CLOCK_SKEW_MS
+  );
+  const startMessage = boundedExactText(response.startMessage, 500);
+  if (!communicationLocale || !expiresAt || !startMessage) return undefined;
+  if (!isCanonicalStartMessage(startMessage, communicationLocale)) return undefined;
+  return {
+    schemaVersion: 1,
+    status: "SESSION_CREATED",
+    communicationLocale,
+    expiresAt,
+    startMessage
+  };
+}
+
+export function isExactSkillPilotFallbackUrl(value: unknown): value is string {
+  return value === SKILLPILOT_FALLBACK_URL;
+}
+
+function validStatusPolicyCombination(
+  status: SkillPilotStartStatus,
+  contractLine: SkillPilotContractLine
+): boolean {
+  const hasSuccessor = contractLine.successor !== null;
+  if (status === "ID_REQUIRED") {
+    return contractLine.newSessionPolicy === "ALLOW"
+      || (contractLine.newSessionPolicy === "WARN" && hasSuccessor);
+  }
+  if (status === "MAJOR_UPGRADE_REQUIRED") {
+    return contractLine.newSessionPolicy === "BLOCK" && hasSuccessor;
+  }
+  return contractLine.newSessionPolicy === "BLOCK" && !hasSuccessor;
+}
+
+function bootstrapErrorStatus(value: unknown): SkillPilotBootstrapErrorStatus | undefined {
+  return value === "START_NOT_AUTHORIZED"
+    || value === "START_UNAVAILABLE"
+    || value === "IDEMPOTENCY_KEY_REUSED"
+    || value === "PROFILE_UNAVAILABLE"
+    || value === "RETRY_EXPIRED"
+    || value === "DELIVERY_EXPIRED"
+    || value === "TEMPORARILY_UNAVAILABLE"
+    || value === "INVALID_REQUEST"
+    ? value
+    : undefined;
+}
+
+function contractLineFromUnknown(value: unknown): SkillPilotContractLine | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasExactKeys(source, [
+      "contractMajor",
+      "policyRevision",
+      "displayName",
+      "supportLifecycle",
+      "publicationStatus",
+      "newSessionPolicy",
+      "successor"
+    ])
+    || source.contractMajor !== 1
+    || source.displayName !== "SkillPilot Coach v1"
+  ) {
+    return undefined;
+  }
+  const supportLifecycle = supportLifecycleFromUnknown(source.supportLifecycle);
+  const publicationStatus = publicationStatusFromUnknown(source.publicationStatus);
+  const newSessionPolicy = newSessionPolicyFromUnknown(source.newSessionPolicy);
+  const policyRevision = positiveSafeInteger(source.policyRevision);
+  const successor = source.successor === null
+    ? null
+    : successorFromUnknown(source.successor);
+  if (
+    !policyRevision
+    || !supportLifecycle
+    || !publicationStatus
+    || !newSessionPolicy
+    || successor === undefined
+  ) {
+    return undefined;
+  }
+  if (
+    supportLifecycle === "RETIRED"
+    && (publicationStatus !== "UNPUBLISHED" || newSessionPolicy !== "BLOCK")
+  ) {
+    return undefined;
+  }
+  return {
+    contractMajor: 1,
+    policyRevision,
+    displayName: "SkillPilot Coach v1",
+    supportLifecycle,
+    publicationStatus,
+    newSessionPolicy,
+    successor
+  };
+}
+
+function successorFromUnknown(value: unknown): SkillPilotSuccessor | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasExactKeys(source, ["contractMajor", "displayName", "handoffUrl"])
+    || source.contractMajor !== 2
+  ) {
+    return undefined;
+  }
+  const displayName = boundedExactText(source.displayName, 30);
+  const handoffUrl = boundedExactText(source.handoffUrl, 200);
+  if (
+    displayName !== "SkillPilot Coach v2"
+    || !handoffUrl
+    || !SUCCESSOR_HANDOFF_URLS.has(handoffUrl)
+  ) {
+    return undefined;
+  }
+  return {
+    contractMajor: 2,
+    displayName,
+    handoffUrl
+  };
+}
+
+function isCanonicalStartMessage(
+  value: string,
+  communicationLocale: SkillPilotStartLocale
+): boolean {
+  const lines = value.split("\n");
+  if (lines.length !== 2 || lines[0] !== START_MESSAGES[communicationLocale]) {
+    return false;
+  }
+  const prefix = "learningSessionId: ";
+  return lines[1].startsWith(prefix)
+    && SESSION_PATTERN.test(lines[1].slice(prefix.length));
+}
+
+function structuredContent(value: unknown): Record<string, unknown> | undefined {
+  const source = record(value);
+  return record(source?.structuredContent) ?? source;
+}
+
+function firstStartMetadata(
+  value: unknown,
+  metadataSource?: unknown
+): Record<string, unknown> | undefined {
+  for (const candidate of metadataCandidates(value, metadataSource)) {
+    const start = record(candidate.skillpilotStart);
+    if (start) return start;
+  }
+  return undefined;
+}
+
+function metadataCandidates(...values: unknown[]): Record<string, unknown>[] {
+  const candidates: Record<string, unknown>[] = [];
+  const queue = values.map((value) => ({ value, depth: 0 }));
+  const seen = new Set<object>();
+  while (queue.length > 0) {
+    const item = queue.shift();
+    if (!item) break;
+    const candidate = record(item.value);
+    if (!candidate || seen.has(candidate)) continue;
+    seen.add(candidate);
+
+    const metadata = record(candidate._meta);
+    if (metadata) candidates.push(metadata);
+    if (candidate.skillpilotStart !== undefined) candidates.push(candidate);
+
+    if (item.depth >= 3) continue;
+    for (const key of [
+      "toolResponseMetadata",
+      "mcp_tool_result",
+      "call_tool_result",
+      "toolResult",
+      "result"
+    ]) {
+      if (candidate[key] !== undefined) {
+        queue.push({ value: candidate[key], depth: item.depth + 1 });
+      }
+    }
+  }
+  return candidates;
+}
+
+function exactFallbackUrl(value: unknown): typeof SKILLPILOT_FALLBACK_URL | undefined {
+  return value === SKILLPILOT_FALLBACK_URL ? SKILLPILOT_FALLBACK_URL : undefined;
+}
+
+function exactCapability(value: unknown): string | undefined {
+  return typeof value === "string" && CAPABILITY_PATTERN.test(value)
+    ? value
+    : undefined;
+}
+
+function exactUuidV4(value: unknown): string | undefined {
+  return typeof value === "string" && UUID_V4_PATTERN.test(value)
+    ? value
+    : undefined;
+}
+
+function futureTimestamp(
+  value: unknown,
+  nowMs: number,
+  maximumFutureMs?: number
+): string | undefined {
+  const text = boundedExactText(value, 100);
+  if (!text || !ISO_INSTANT_PATTERN.test(text)) return undefined;
+  const parsed = Date.parse(text);
+  if (!Number.isFinite(parsed) || parsed <= nowMs) return undefined;
+  if (maximumFutureMs !== undefined && parsed > nowMs + maximumFutureMs) {
+    return undefined;
+  }
+  return text;
+}
+
+function startStatus(value: unknown): SkillPilotStartStatus | undefined {
+  return value === "ID_REQUIRED"
+    || value === "MAJOR_UPGRADE_REQUIRED"
+    || value === "TEMPORARILY_UNAVAILABLE"
+    ? value
+    : undefined;
+}
+
+function locales(value: unknown): ["de", "en"] | undefined {
+  return Array.isArray(value)
+    && value.length === 2
+    && value[0] === "de"
+    && value[1] === "en"
+    ? ["de", "en"]
+    : undefined;
+}
+
+function locale(value: unknown): SkillPilotStartLocale | undefined {
+  return value === "de" || value === "en" ? value : undefined;
+}
+
+function supportLifecycleFromUnknown(
+  value: unknown
+): SkillPilotSupportLifecycle | undefined {
+  return value === "CURRENT"
+    || value === "SUPPORTED"
+    || value === "DEPRECATED"
+    || value === "RETIRED"
+    ? value
+    : undefined;
+}
+
+function publicationStatusFromUnknown(
+  value: unknown
+): SkillPilotPublicationStatus | undefined {
+  return value === "DRAFT" || value === "PUBLISHED" || value === "UNPUBLISHED"
+    ? value
+    : undefined;
+}
+
+function newSessionPolicyFromUnknown(
+  value: unknown
+): SkillPilotNewSessionPolicy | undefined {
+  return value === "ALLOW" || value === "WARN" || value === "BLOCK"
+    ? value
+    : undefined;
+}
+
+function sourceMajorDecisionFromUnknown(
+  value: unknown
+): "ALLOW_CURRENT_MAJOR" | "START_CURRENT_MAJOR" | undefined {
+  return value === "ALLOW_CURRENT_MAJOR" || value === "START_CURRENT_MAJOR"
+    ? value
+    : undefined;
+}
+
+function positiveSafeInteger(value: unknown): number | undefined {
+  return typeof value === "number" && Number.isSafeInteger(value) && value > 0
+    ? value
+    : undefined;
+}
+
+function boundedExactText(value: unknown, maximumLength: number): string | undefined {
+  if (
+    typeof value !== "string"
+    || !value
+    || value.length > maximumLength
+    || value !== value.trim()
+  ) {
+    return undefined;
+  }
+  return value;
+}
+
+function hasExactKeys(
+  value: Record<string, unknown>,
+  expectedKeys: readonly string[]
+): boolean {
+  const actual = Object.keys(value).sort();
+  const expected = [...expectedKeys].sort();
+  return actual.length === expected.length
+    && actual.every((key, index) => key === expected[index]);
+}
+
+function record(value: unknown): Record<string, unknown> | undefined {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : undefined;
+}

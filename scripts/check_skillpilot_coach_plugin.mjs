@@ -19,6 +19,10 @@ const memoryCardPracticeWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
+const skillpilotStartWidget = resolve(
+  repositoryRoot,
+  "backend/src/main/resources/openai/skillpilot-start-v1.html",
+);
 const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
@@ -51,6 +55,12 @@ const memoryCardPracticeArtifactSha256 = createHash("sha256")
   .digest("hex");
 const memoryCardPracticeResourceUri =
   `ui://skillpilot/coach/v1/sha256-${memoryCardPracticeArtifactSha256}/memory-card-practice.html`;
+assert.equal(existsSync(skillpilotStartWidget), true);
+const skillpilotStartArtifactSha256 = createHash("sha256")
+  .update(readFileSync(skillpilotStartWidget))
+  .digest("hex");
+const skillpilotStartResourceUri =
+  `ui://skillpilot/coach/v1/sha256-${skillpilotStartArtifactSha256}/skillpilot-start.html`;
 const retainedGoalVisualizationArtifactSha256s = readdirSync(
   retainedGoalVisualizationRoot,
   { withFileTypes: true },
@@ -331,9 +341,15 @@ const expectedUiResources = [
     path: "ui/goal-visualization.html",
     uri: goalVisualizationResourceUri,
   },
+  {
+    mimeType: "text/html;profile=mcp-app",
+    path: "ui/skillpilot-start.html",
+    uri: skillpilotStartResourceUri,
+  },
 ].sort((left, right) => left.uri.localeCompare(right.uri));
 assert.deepEqual(releaseLine.ui, {
   activeBindings: {
+    open_skillpilot_start: skillpilotStartResourceUri,
     render_skillpilot_goal_visualization: goalVisualizationResourceUri,
     start_skillpilot_memory_practice: memoryCardPracticeResourceUri,
   },
@@ -353,13 +369,49 @@ const memoryCardPracticeHtml = read(memoryCardPracticeWidget);
 assert.match(memoryCardPracticeHtml, /^<!doctype html>/i);
 assert.match(memoryCardPracticeHtml, /ui\/notifications\/tool-result/);
 assert.match(memoryCardPracticeHtml, /skillpilotMemoryCard/);
+const skillpilotStartHtml = read(skillpilotStartWidget);
+assert.match(skillpilotStartHtml, /^<!doctype html>/i);
+assert.match(skillpilotStartHtml, /issue_skillpilot_start_capability/);
+assert.match(skillpilotStartHtml, /ui\/message/);
 
-assert.equal(lifecycle.schemaVersion, 1);
+assert.equal(lifecycle.schemaVersion, 2);
+assert.deepEqual(Object.keys(lifecycle).sort(), [
+  "contractLine",
+  "deleteAfter",
+  "deprecatedAt",
+  "endOfSupportAt",
+  "pluginIdentity",
+  "schemaVersion",
+  "unpublishAt",
+]);
 assert.equal(lifecycle.pluginIdentity, releaseLine.pluginIdentity);
-assert.equal(lifecycle.contractMajor, releaseLine.contractMajor);
+const contractLine = lifecycle.contractLine;
+assert.equal(typeof contractLine, "object");
+assert.notEqual(contractLine, null);
+assert.deepEqual(Object.keys(contractLine).sort(), [
+  "contractMajor",
+  "displayName",
+  "newSessionPolicy",
+  "policyRevision",
+  "publicationStatus",
+  "successor",
+  "supportLifecycle",
+]);
+assert.equal(contractLine.contractMajor, releaseLine.contractMajor);
+assert.equal(Number.isSafeInteger(contractLine.policyRevision), true);
+assert.ok(contractLine.policyRevision > 0);
+requireString(contractLine.displayName, "contractLine.displayName", 30);
+assert.equal(contractLine.displayName, manifest.interface.displayName);
 assert.ok(
-  new Set(["CURRENT", "SUPPORTED", "DEPRECATED", "UNPUBLISHED", "RETIRED"])
-    .has(lifecycle.lifecycle),
+  new Set(["CURRENT", "SUPPORTED", "DEPRECATED", "RETIRED"])
+    .has(contractLine.supportLifecycle),
+);
+assert.ok(
+  new Set(["DRAFT", "PUBLISHED", "UNPUBLISHED"])
+    .has(contractLine.publicationStatus),
+);
+assert.ok(
+  new Set(["ALLOW", "WARN", "BLOCK"]).has(contractLine.newSessionPolicy),
 );
 const lifecycleDates = [
   "deprecatedAt",
@@ -374,20 +426,30 @@ for (const field of lifecycleDates) {
     `${field} must be null or an ISO calendar date.`,
   );
 }
-if (lifecycle.lifecycle === "CURRENT") {
-  assert.equal(lifecycle.successorIdentity, null);
+if (contractLine.supportLifecycle === "CURRENT") {
+  assert.equal(contractLine.successor, null);
   for (const field of lifecycleDates) {
     assert.equal(lifecycle[field], null);
   }
-} else {
-  requireString(lifecycle.successorIdentity, "successorIdentity", 64);
-  assert.notEqual(lifecycle.successorIdentity, releaseLine.pluginIdentity);
 }
-if (
-  new Set(["DEPRECATED", "UNPUBLISHED", "RETIRED"]).has(
-    lifecycle.lifecycle,
-  )
-) {
+if (contractLine.successor !== null) {
+  assert.deepEqual(Object.keys(contractLine.successor).sort(), [
+    "contractMajor",
+    "displayName",
+    "handoffUrl",
+  ]);
+  assert.ok(contractLine.successor.contractMajor > contractLine.contractMajor);
+  requireString(contractLine.successor.displayName, "successor.displayName", 30);
+  assert.match(contractLine.successor.handoffUrl, /^https:\/\/skillpilot\.com\//);
+}
+if (contractLine.newSessionPolicy === "WARN") {
+  assert.notEqual(contractLine.successor, null, "WARN requires a published successor.");
+}
+if (contractLine.supportLifecycle === "RETIRED") {
+  assert.equal(contractLine.publicationStatus, "UNPUBLISHED");
+  assert.equal(contractLine.newSessionPolicy, "BLOCK");
+}
+if (new Set(["DEPRECATED", "RETIRED"]).has(contractLine.supportLifecycle)) {
   for (const field of lifecycleDates) {
     assert.notEqual(lifecycle[field], null, `${field} is required.`);
   }
@@ -429,16 +491,22 @@ requireString(
 assert.match(skill, /references\/coaching-policy\.md/);
 assert.match(
   skill,
-  /If it does not, do not call any SkillPilot\s+tool\./,
-  "The skill must fail closed before any tool call when no prepared session exists.",
+  /If it does not, call\s+`open_skillpilot_start` exactly once\./,
+  "The skill must use only the dedicated direct-start opener when no session exists.",
 );
+assert.match(
+  skill,
+  /do not begin coaching, navigate, or call another SkillPilot tool before it\s+arrives\./,
+  "The skill must fail closed for subject-matter work until the component-authored start message arrives.",
+);
+assert.match(skill, /Never call the app-only\s+`issue_skillpilot_start_capability` tool yourself/);
 assert.match(skill, /Never show, repeat, request, or reconstruct\s+it\./);
 assert.deepEqual(skillAgent, {
   interface: {
     display_name: "SkillPilot Coach v1",
     short_description: "Personal SkillPilot learning coach",
     default_prompt:
-      "Use $skillpilot-coach-v1 and continue my prepared SkillPilot learning step.",
+      "Use $skillpilot-coach-v1 to start or continue my SkillPilot learning session.",
   },
   dependencies: {
     tools: [
@@ -446,7 +514,7 @@ assert.deepEqual(skillAgent, {
         type: "mcp",
         value: "skillpilot-coach-v1",
         description:
-          "SkillPilot learning state, navigation, mastery, verified recall, and assessments",
+          "Private SkillPilot direct start, learning state, navigation, mastery, verified recall, and assessments",
         transport: "streamable_http",
         url: "https://mcp-coach-v1.skillpilot.com/mcp",
       },
@@ -958,7 +1026,7 @@ assert.match(
 
 const javaConstant = (name) => {
   const declaration = contractMetadata.match(
-    new RegExp(`public static final (?:String|int) ${name} =\\s*`),
+    new RegExp(`public static final (?:String|int|long) ${name} =\\s*`),
   );
   assert.ok(declaration, `Missing Java V1 contract constant ${name}.`);
   const expressionStart = declaration.index + declaration[0].length;
@@ -990,8 +1058,8 @@ const javaConstant = (name) => {
   const expression = contractMetadata
     .slice(expressionStart, expressionEnd)
     .trim();
-  if (/^\d+$/.test(expression)) {
-    return Number(expression);
+  if (/^\d+L?$/.test(expression)) {
+    return Number(expression.replace(/L$/u, ""));
   }
   return expression
     .split(/\s*\+\s*/u)
@@ -1011,6 +1079,16 @@ const javaConstant = (name) => {
 assert.equal(javaConstant("PLUGIN_IDENTITY"), releaseLine.pluginIdentity);
 assert.equal(javaConstant("PLUGIN_VERSION"), manifest.version);
 assert.equal(javaConstant("CONTRACT_MAJOR"), releaseLine.contractMajor);
+assert.equal(javaConstant("POLICY_REVISION"), contractLine.policyRevision);
+assert.equal(javaConstant("SUPPORT_LIFECYCLE"), contractLine.supportLifecycle);
+assert.equal(javaConstant("PUBLICATION_STATUS"), contractLine.publicationStatus);
+assert.equal(javaConstant("NEW_SESSION_POLICY"), contractLine.newSessionPolicy);
+assert.match(
+  mcpContract,
+  /contractLine\.put\("successor", null\)/u,
+  "The current runtime projection must match the lifecycle source's null successor.",
+);
+assert.equal(contractLine.successor, null);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
 assert.equal(javaConstant("WIDGET_DOMAIN"), releaseLine.ui.domain);

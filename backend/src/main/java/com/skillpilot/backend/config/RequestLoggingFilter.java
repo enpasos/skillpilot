@@ -78,6 +78,10 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || requestUri.equals("/api/claude/mcp")
                 || requestUri.startsWith("/api/claude/mcp/")
                 || openAiMcp
+                // Direct-start bodies contain the opaque permanent learner
+                // key and setup capability. Neither request nor response may
+                // enter the general body logger or AI trace.
+                || OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH.equals(requestUri)
                 // OAuth token, authorization and revocation requests use form bodies.
                 // Do not pass those credentials through the general JSON body logger.
                 || requestUri.startsWith("/api/claude/oauth")

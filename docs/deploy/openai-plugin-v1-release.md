@@ -1,6 +1,6 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 31. Juli 2026  
+**Stand:** 9. August 2026
 **Status:** verbindliches Betriebsverfahren für die mehrsprachige Plugin-Linie V1
 
 Dieses Runbook setzt den
@@ -20,18 +20,19 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| MCP-UI | zwei aktive, getrennt hashgebundene Ressourcen für Lernzielbild und Karteikartenlernen |
+| MCP-UI | drei aktive, getrennt hashgebundene Ressourcen für privaten Direktstart, Lernzielbild und Karteikartenlernen |
 | Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft bindet zwei aktive, getrennte
-content-addressierte MCP-Apps-Ressourcen: eine für das Bild des aktiven atomaren
-Lernziels und eine für interaktives Karteikartenlernen im Chat. Die read-only
-Werkzeuge `render_skillpilot_goal_visualization` und
-`start_skillpilot_memory_practice` referenzieren jeweils ausschließlich ihre
-eigene Ressource über `ui.resourceUri` und `openai/outputTemplate`. Das nur von
-der App aufrufbare Bewertungswerkzeug bleibt ungebunden. Bereits an reale Test-Clients ausgelieferte
+Der noch unveröffentlichte V1-Draft bindet drei aktive, getrennte
+content-addressierte MCP-Apps-Ressourcen: eine für den privaten Direktstart,
+eine für das Bild des aktiven atomaren Lernziels und eine für interaktives
+Karteikartenlernen im Chat. Die read-only Werkzeuge `open_skillpilot_start`,
+`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
+referenzieren jeweils ausschließlich ihre eigene Ressource über
+`ui.resourceUri` und `openai/outputTemplate`. Der app-only Capability-Issuer
+und das app-only Kartenbewertungswerkzeug bleiben ungebunden. Bereits an reale Test-Clients ausgelieferte
 Hash-URIs bleiben mit ihren exakten Bytes als passive Ressourcen lesbar. Der Renderer
 liefert der bild-only Komponente eine begrenzte strukturierte
 `goalVisualization`-Projektion; nacktes MCP-`ImageContent` ist kein
@@ -50,7 +51,7 @@ neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
 Diese passive Retention ist keine zweite aktive UI-Version: Kein Werkzeug darf
 auf eine Vorgängerressource zeigen. Sie schützt ausschließlich den späteren
 Template-Abruf aus Provider-Metadaten- und Chat-Snapshots. Nach einem
-Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und beide
+Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und alle drei
 aktiven URIs in einem neuen Chat geprüft.
 
 Die maschinenlesbaren Quellen der Wahrheit sind:
@@ -58,8 +59,10 @@ Die maschinenlesbaren Quellen der Wahrheit sind:
 - `.codex-plugin/plugin.json` für Paket-SemVer und sichtbare Metadaten;
 - `release/line.json` für Contract Major, öffentlichen MCP-Endpunkt und
   Zustands-/Workflowversionen;
-- `release/lifecycle.json` für `CURRENT`, `SUPPORTED`, `DEPRECATED`,
-  `UNPUBLISHED` oder `RETIRED`;
+- `release/lifecycle.json` getrennt für den Supportzustand `CURRENT`,
+  `SUPPORTED`, `DEPRECATED` oder `RETIRED`, den Publikationsstatus `DRAFT`,
+  `PUBLISHED` oder `UNPUBLISHED`, die Startpolicy `ALLOW`, `WARN` oder `BLOCK`
+  sowie die monotone `policyRevision` und einen optionalen Nachfolger;
 - `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich
   für tatsächlich im OpenAI-Portal veröffentlichte Versionen;
 - `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
@@ -87,9 +90,9 @@ Paketänderung benötigt eine neue SemVer.
 2. Release Notes, Lifecycle und alle Contract-/Workflowangaben gezielt
    aktualisieren. Die Paketversion wird innerhalb desselben unveröffentlichten
    Drafts nicht hochgezählt.
-   Das gilt auch für die jetzt ergänzte Lernzielvisualisierung: Da `1.0.0` noch
-   nie veröffentlicht wurde, wird derselbe Draft aktualisiert und keine
-   `1.0.1` erzeugt.
+   Das gilt auch für den jetzt ergänzten privaten Direktstart und die
+   MCP-Apps-Ressourcen: Da `1.0.0` noch nie veröffentlicht wurde, wird derselbe
+   Draft aktualisiert und keine `1.0.1` erzeugt.
 3. Die kanonischen V1-URLs sind feste Vertragswerte im Backend-Artefakt und
    keine Laufzeitkonfiguration. Alte `SKILLPILOT_OPENAI_DE_*`-URLvariablen und
    neu erfundene `SKILLPILOT_OPENAI_COACH_V1_*`-URLvariablen werden aus
@@ -145,11 +148,14 @@ Paketänderung benötigt eine neue SemVer.
 7. Erst nach grüner CI den Backend-Build und die V1-Edge-Konfiguration
    ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
    Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
-   prüfen. `resources/list` muss beide aktiven hashgebundenen UI-Ressourcen und
+   prüfen. `resources/list` muss alle drei aktiven hashgebundenen UI-Ressourcen und
    alle passiv aufbewahrten Ressourcen enthalten. Bild-Renderer und
-   Karteikarten-Start dürfen jeweils nur ihre eigene aktive Ressource über
-   `ui.resourceUri` und `openai/outputTemplate` referenzieren; das
-   Karten-Bewertungswerkzeug bleibt app-only und ungebunden. Bei einem aktiven
+   Karteikarten-Start sowie der Direktstart-Öffner dürfen jeweils nur ihre
+   eigene aktive Ressource über `ui.resourceUri` und `openai/outputTemplate`
+   referenzieren; Capability-Issuer und Karten-Bewertungswerkzeug bleiben
+   app-only und ungebunden. Der Direktstart darf die SkillPilot-ID niemals als
+   Toolargument übernehmen; nur das Widget sendet sie nach expliziter
+   Bestätigung an den capability-geschützten HTTPS-Endpunkt. Bei einem aktiven
    atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
    strukturierte Projektion genau einmal an die bild-only Komponente liefern.
    Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
@@ -157,10 +163,18 @@ Paketänderung benötigt eine neue SemVer.
    keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur
    `not_known` oder `known`. Ohne gültiges Bild oder nutzbare Komponente muss der
    normale Chat- beziehungsweise Cockpit-Fallback erhalten bleiben.
-8. Die neue Plugin-Version im OpenAI-Portal aktualisieren. Die
+8. **Public-Release-Gate prüfen.** Der interne Direktstart-Canary darf die
+   manuelle SkillPilot-ID in der privaten Komponente testen. Eine öffentliche
+   Portal-Einreichung bleibt jedoch gesperrt, solange OpenAI die konkrete
+   Verarbeitung der bearer-/credential-artigen SkillPilot-ID im Widget nicht
+   schriftlich akzeptiert hat oder die öffentliche Architektur die ID nicht
+   mehr verarbeitet. Ohne diesen Nachweis endet der Ablauf nach internem
+   Deployment und Canary; es gibt weder Portal-Update noch Publish.
+9. Erst nach bestandenem Public-Release-Gate die neue Plugin-Version im
+   OpenAI-Portal aktualisieren. Die
    hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
    das Veröffentlichungsvehikel.
-9. Erst nachdem im OpenAI-Portal tatsächlich **Publish** erfolgreich
+10. Erst nachdem im OpenAI-Portal tatsächlich **Publish** erfolgreich
    abgeschlossen wurde, den geprüften Draft unveränderlich als veröffentlicht
    registrieren:
 

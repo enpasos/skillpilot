@@ -580,6 +580,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
+                                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
                                 .stream()
@@ -596,6 +597,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-active",
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverAuthenticatedMcp(
+                accessToken,
+                applicationSubject,
+                "resource-skillpilot-start",
+                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256);
         assertResourceReadableOverAuthenticatedMcp(
                 accessToken,
                 applicationSubject,
