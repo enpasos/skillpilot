@@ -26,7 +26,7 @@ Test-Wiring und wird nicht als bestehende Integration eingereicht.
 | Developer Identity | `enpasos GmbH` |
 | Category | `Education & Research` |
 | Short description | `Your SkillPilot learning coach` |
-| Long description | `Continues a learning session prepared in SkillPilot with curriculum-grounded coaching, matching learning-goal visualizations, mastery, verified recall, and assessment mode. The session's communication locale controls all learner-facing communication.` |
+| Long description | `Starts through the private SkillPilot direct-start component or continues a learning session prepared in SkillPilot, with curriculum-grounded coaching, matching learning-goal visualizations, mastery, verified recall, and assessment mode. OAuth authorizes the app; the separate learning session selects the learner. The session's communication locale controls all learner-facing communication.` |
 | Website | `https://skillpilot.com` |
 | Support | `https://skillpilot.com/imprint` |
 | Privacy policy | `https://skillpilot.com/privacy` |
@@ -45,7 +45,7 @@ Draft unter `contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT/`.
 | Authentication | OAuth 2.0 Authorization Code with PKCE S256 |
 
 Nach dem Eintragen wird **Scan Tools** ausgeführt. Der Scan muss den aktuellen
-Toolkatalog, beide aktiven UI-Ressourcen, deren CSP und den neutralen
+Toolkatalog, alle drei aktiven UI-Ressourcen, deren CSP und den neutralen
 `skillpilot-coach-v1`-Skill erkennen. Der final geprüfte Skill-Bundle kann
 alternativ aus dem Draft hochgeladen werden.
 
@@ -242,4 +242,3 @@ Uses OAuth and the dedicated V1 MCP endpoint.
   **Submit for Review** wählen.
 - Erst nach OpenAI-Genehmigung bewusst **Publish** wählen und danach den lokalen
   Snapshot mit `record-published --confirm-openai-published` versiegeln.
-

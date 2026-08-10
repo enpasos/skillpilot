@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapConstants;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -91,7 +92,7 @@ import org.springframework.test.context.TestPropertySource;
 })
 class OpenAiDeCoachEndToEndIntegrationTest {
 
-    private static final String PERMANENT_SKILLPILOT_ID = "SP-E2E-PERMANENT-ID-MUST-NOT-LEAK";
+    private static final String PERMANENT_SKILLPILOT_ID = "9aa02f4b-06fd-4d6b-a548-3ac71fa263d9";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATHEMATICS_ROOT_FOCUS_ID =
@@ -426,25 +427,6 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Test
     void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId()
             throws Exception {
-        HttpResponse<String> launch = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
-                """
-                {"communicationLocale":"de","client":"openai-v1-e2e","providerEligibilityConfirmed":true}
-                """,
-                Map.of());
-        assertThat(launch.statusCode()).withFailMessage(launch.body()).isEqualTo(200);
-        assertThat(launch.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
-        JsonNode launchBody = objectMapper.readTree(launch.body());
-        String initialLearningSessionId = launchBody.path("learningSessionId").asText();
-        assertThat(initialLearningSessionId).startsWith("sps_").hasSize(47);
-        assertThat(launchBody.path("prompt").asText()).contains(initialLearningSessionId);
-        assertThat(learningSessionRepository.findAll())
-                .singleElement()
-                .satisfies(session -> {
-                    assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
-                    assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
-                            .isEqualTo(Duration.ofHours(24));
-                });
         assertLegacyStateIsEmpty();
 
         String externalState = "chatgpt-e2e-state";
@@ -638,6 +620,65 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-memory-practice",
                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
+
+        Learner learnerBeforeDirectStart = learnerRepository
+                .findById(PERMANENT_SKILLPILOT_ID)
+                .orElseThrow();
+        assertThat(learnerBeforeDirectStart.getSelectedCurriculum()).isNull();
+        assertThat(learnerBeforeDirectStart.getPersonalCurriculum()).isNull();
+
+        HttpResponse<String> issuedCapability = postMcp(
+                accessToken,
+                objectMapper.writeValueAsString(Map.of(
+                        "jsonrpc", "2.0",
+                        "id", "direct-start-capability",
+                        "method", "tools/call",
+                        "params", Map.of(
+                                "name", OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
+                                "arguments", Map.of(
+                                        "providerNoticeVersion",
+                                        OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
+                                        "providerEligibilityConfirmed",
+                                        true)))));
+        assertMcpPayloadDoesNotExposeIdentity(issuedCapability, applicationSubject);
+        JsonNode issuedCapabilityResult = result(issuedCapability);
+        assertThat(issuedCapabilityResult.path("structuredContent").path("status").asText())
+                .isEqualTo("CAPABILITY_ISSUED");
+        String setupCapability = issuedCapabilityResult
+                .path("_meta")
+                .path("skillpilotStart")
+                .path("setupCapability")
+                .asText();
+        assertThat(setupCapability).startsWith("spc_").hasSize(47);
+
+        HttpResponse<String> directStart = postJson(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                objectMapper.writeValueAsString(Map.of(
+                        "schemaVersion", OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                        "skillpilotId", PERMANENT_SKILLPILOT_ID,
+                        "communicationLocale", "de",
+                        "launchIntent", Map.of("type", OpenAiDeBootstrapConstants.LAUNCH_INTENT),
+                        "providerNoticeVersion", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
+                        "clientRequestId", UUID.randomUUID().toString())),
+                Map.of(HttpHeaders.AUTHORIZATION, "SkillPilotSetup " + setupCapability));
+        assertThat(directStart.statusCode()).withFailMessage(directStart.body()).isEqualTo(200);
+        assertThat(directStart.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, applicationSubject);
+        JsonNode directStartBody = objectMapper.readTree(directStart.body());
+        assertThat(directStartBody.path("status").asText())
+                .isEqualTo(OpenAiDeBootstrapConstants.RESPONSE_STATUS);
+        String startMessage = directStartBody.path("startMessage").asText();
+        String startMessagePrefix = "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ";
+        assertThat(startMessage).startsWith(startMessagePrefix);
+        String initialLearningSessionId = startMessage.substring(startMessagePrefix.length());
+        assertThat(initialLearningSessionId).startsWith("sps_").hasSize(47);
+        assertThat(learningSessionRepository.findAll())
+                .singleElement()
+                .satisfies(session -> {
+                    assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
+                    assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
+                            .isEqualTo(Duration.ofHours(24));
+                });
+        assertLegacyStateIsEmpty();
 
         HttpResponse<String> initialRead = callTool(
                 accessToken,

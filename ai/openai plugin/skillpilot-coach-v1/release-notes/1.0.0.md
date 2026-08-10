@@ -39,6 +39,10 @@ architecture no longer processes that ID.
   authorize only the fixed App-to-Core connection; the component obtains an
   ID-free, short-lived app-only setup capability and sends an explicitly entered
   existing SkillPilot ID only to the fixed SkillPilot HTTPS bootstrap endpoint
+- an existing SkillPilot ID can start even before curriculum selection or
+  personalization is complete; the ordinary context state machine then
+  continues with `setCurriculum` or `setPersonalization`, as applicable, while
+  an unknown ID remains terminally unavailable for that attempt
 - direct start supports both the shared MCP Apps action pair and the documented
   ChatGPT Web compatibility pair `window.openai.callTool` plus
   `window.openai.sendFollowUpMessage`; one start attempt fixes exactly one

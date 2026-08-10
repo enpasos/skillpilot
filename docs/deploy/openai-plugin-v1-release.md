@@ -158,6 +158,12 @@ Paketänderung benötigt eine neue SemVer.
    Bestätigung an den capability-geschützten HTTPS-Endpunkt. Bei einem aktiven
    atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
    strukturierte Projektion genau einmal an die bild-only Komponente liefern.
+   Die Direct-Start-Golden-Journey umfasst drei getrennte Fälle: Eine
+   vorhandene ID ohne Curriculum startet und liefert anschließend
+   `requiredAction=setCurriculum`; eine vorhandene ID mit Curriculum, aber
+   offener Personalisierung startet und liefert `setPersonalization`; eine
+   unbekannte syntaktisch gültige ID bleibt ohne Session terminal und
+   identifierfrei `PROFILE_UNAVAILABLE`.
    Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
    ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf
    keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur

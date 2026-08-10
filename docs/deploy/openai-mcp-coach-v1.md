@@ -1090,6 +1090,18 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   direkten HTTPS-Body an `/bootstrap/v1/launch`; sie darf nicht in Chat,
   Modellkontext, MCP-Argumente, Widget-State, Storage, Telemetrie oder Logs
   gelangen. Dateiimport und PIN/Passwort gehören nicht zu diesem Phase-1-Pfad.
+- Eine frisch erzeugte, vorhandene SkillPilot-ID ohne ausgewähltes Curriculum
+  oder abgeschlossenes Personal Curriculum muss erfolgreich starten. Der
+  unmittelbar folgende `get_skillpilot_context`-Aufruf veröffentlicht dann
+  `requiredAction=setCurriculum`; die Auswahl wird ausschließlich über
+  `set_skillpilot_curriculum` gespeichert.
+- Eine vorhandene ID mit ausgewähltem Curriculum, aber offener
+  Personalisierung muss ebenfalls starten. Der Vollkontext veröffentlicht
+  `requiredAction=setPersonalization`, und ausschließlich
+  `set_skillpilot_personalization` führt den bestehenden Setup-Dialog fort;
+  das Widget dupliziert diese Einrichtung nicht.
+- Eine unbekannte SkillPilot-ID liefert dagegen stabil und identifierfrei
+  `PROFILE_UNAVAILABLE` und erzeugt keine Lernsession.
 - Ein erfolgreicher Bootstrap erzeugt eine zufällige 256-Bit-Lernsession. Ein
   identischer Retry liefert die gespeicherte, kurzlebig AEAD-verschlüsselte
   Antwort ohne zweite Session; ein abweichender Retry bleibt terminal
@@ -1101,8 +1113,8 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   unklarer Ausgang darf nur dieselbe Nachricht auf demselben Kanal innerhalb
   der ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
 - Abgelaufene, widerrufene oder policy-seitig blockierte Capabilities sowie
-  terminale Profilfehler müssen stabil identifierfrei scheitern. Transiente
-  Fehler behalten nur den gebundenen exakten Retry offen.
+  eine unbekannte SkillPilot-ID müssen stabil identifierfrei scheitern.
+  Transiente Fehler behalten nur den gebundenen exakten Retry offen.
 - Die lokalen Issuer-, Capability-, Netzwerk- und Instanzbudgets sowie der
   geschlossene CORS-/`429`-Vertrag werden negativ getestet. Für mehrere
   Backendinstanzen bleibt ein gemeinsames Gateway-Limit ein Pflichtgate.

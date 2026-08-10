@@ -539,6 +539,16 @@ assert.match(
   /do not begin coaching, navigate, or call another SkillPilot tool before it\s+arrives\./,
   "The skill must fail closed for subject-matter work until the component-authored start message arrives.",
 );
+assert.match(
+  skill,
+  /not yet configured learner may legitimately return\s+`requiredAction=setCurriculum` or `setPersonalization`/,
+  "The skill must preserve the canonical setup path after Direct Start.",
+);
+assert.match(
+  policy,
+  /Treat `requiredAction=setCurriculum` or\s+`setPersonalization`, as applicable, as the authoritative normal Direct-Start\s+path/,
+  "The coaching policy must preserve the canonical setup path after Direct Start.",
+);
 assert.match(skill, /Never call the app-only\s+`issue_skillpilot_start_capability` tool yourself/);
 assert.match(skill, /Never show, repeat, request, or reconstruct\s+it\./);
 assert.deepEqual(skillAgent, {

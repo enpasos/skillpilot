@@ -186,10 +186,13 @@ ausdrücklich freigegebene Architekturentscheidung:
 
 ### 4.1 Ziele von Phase 1
 
-- direkter Start aus SkillPilot Coach v1 für einen vorhandenen Lernstand;
+- direkter Start aus SkillPilot Coach v1 für eine vorhandene SkillPilot-ID;
 - ausschließlich manuelle Eingabe einer vorhandenen SkillPilot-ID;
-- ausschließlich bereits vollständig eingerichtete Lernende; unbekannte oder
-  unvollständige Profile werden neutral an den First-Party-Start verwiesen;
+- vorhandene Lernende dürfen auch mit noch nicht gewähltem Curriculum oder
+  noch nicht abgeschlossenem Personal Curriculum starten; der bestehende
+  Coach-Zustandsautomat veröffentlicht danach `setCurriculum` beziehungsweise
+  `setPersonalization`;
+- unbekannte SkillPilot-IDs werden neutral an den First-Party-Start verwiesen;
 - Bestätigung von Sprache und unveränderlich versioniertem Providerhinweis;
 - Starttyp ausschließlich CURRENT_UNIT;
 - Wiederverwendung der bestehenden autoritativen Startlogik;
@@ -1008,11 +1011,14 @@ Alarme dürfen Häufungen von PROFILE_UNAVAILABLE, Manipulation und
 Idempotenzkonflikten zählen, aber niemals ID, Capability, Session oder
 Requestbody erfassen.
 
-Unbekannte ID und unvollständiges Profil liefern denselben HTTP-Status,
-dasselbe geschlossene Fehlerschema, denselben identifierfreien Fallback und
-keine unterscheidbaren Detailtexte. Die Implementierung begrenzt zudem grobe
-Timingunterschiede, ohne über künstliche Wartezeiten einen neuen
-Denial-of-Service-Hebel zu schaffen.
+Eine unbekannte ID liefert das geschlossene `PROFILE_UNAVAILABLE`-Fehlerschema
+mit identifierfreiem Fallback und ohne unterscheidbare Detailtexte. Ein
+vorhandenes, aber fachlich noch nicht eingerichtetes Profil ist dagegen kein
+Fehler: Der Direct Start erzeugt die Lernsession, und der kanonische
+Coach-Zustandsautomat führt anschließend über `setCurriculum` und
+`setPersonalization`. Die Implementierung begrenzt grobe Timingunterschiede,
+ohne über künstliche Wartezeiten einen neuen Denial-of-Service-Hebel zu
+schaffen.
 
 ## 9. Atomare Sessionerzeugung, Recovery und Idempotenz
 
@@ -1118,8 +1124,11 @@ umkehren oder einen Learner sperren, bevor Capability und Attempt gesperrt sind.
 6. Bei BOUND ausschließlich `attempt_retry_until` prüfen. Nach Ablauf wird der
    Attempt terminal `RETRY_EXPIRED`; vorher wird der Lernende `FOR UPDATE`
    gesperrt und die gemeinsame fachliche Start-Preparation ausgeführt.
-7. Unbekanntes oder unvollständiges Profil als normales persistiertes
-   FAILED_TERMINAL mit PROFILE_UNAVAILABLE committen.
+7. Eine unbekannte SkillPilot-ID als normales persistiertes FAILED_TERMINAL
+   mit PROFILE_UNAVAILABLE committen. Ein vorhandener Lernender ohne
+   Curriculum oder ohne abgeschlossenes Personal Curriculum passiert diese
+   Grenze; die weitere Einrichtung bleibt Eigentum des kanonischen
+   Coach-Zustandsautomaten.
 8. Bei Erfolg innerhalb derselben Transaktion:
    - zufällige learningSessionId mit mindestens 256 Bit Entropie erzeugen;
    - CURRENT_UNIT-Stateänderungen anwenden;
@@ -1264,7 +1273,8 @@ chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
 | Hinweisversion veraltet | NOTICE_REFRESH_REQUIRED |
 | Capability fehlt, ist manipuliert, major-fremd oder beim Erstgebrauch abgelaufen | keine Session |
 | Requestschema oder ID-Syntax ungültig | keine Bindung und keine Session |
-| unbekannte ID oder unvollständiges Setup | persistiertes neutrales PROFILE_UNAVAILABLE |
+| unbekannte ID | persistiertes neutrales PROFILE_UNAVAILABLE |
+| vorhandene ID ohne Curriculum oder vollständige Personalisierung | Session erzeugen; nachfolgender Kontext veröffentlicht `setCurriculum` oder `setPersonalization` |
 | anderer Request nach Bindung | IDEMPOTENCY_KEY_REUSED |
 | transienter Corefehler | BOUND bleibt nur für exakten Retry |
 | Responseverlust nach Commit | gespeichertes AEAD-Resultat innerhalb Delivery-Frist |
@@ -1348,7 +1358,8 @@ abgeschlossen behauptet.
 ### Phase 1: Interner Slice umgesetzt, echter Host-Canary ausstehend
 
 - ausschließlich manuelle Eingabe einer vorhandenen ID;
-- ausschließlich bereits vollständig eingerichtete Lernende;
+- vorhandene Lernende einschließlich noch nicht abgeschlossener Curriculum-
+  oder Personalisierungseinrichtung;
 - nur CURRENT_UNIT;
 - Open-Tool, app-only Capability-Issuer und direkter Endpoint;
 - Zwei-Transaktions-Attempt, zufällige Session und AEAD-Delivery;
@@ -1460,7 +1471,9 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
    Deadlock.
 6. Zwei parallele identische Requests erzeugen höchstens eine Session.
 7. Zwei abweichende Requests können dieselbe Capability nie neu binden.
-8. PROFILE_UNAVAILABLE bleibt persistiert terminal.
+8. PROFILE_UNAVAILABLE für eine unbekannte ID bleibt persistiert terminal;
+   vorhandene, noch nicht eingerichtete Lernende starten erfolgreich und
+   erhalten anschließend `setCurriculum` oder `setPersonalization`.
 9. Transienter Fehler bleibt BOUND und übernimmt keine Teildaten.
 10. OAuth-Widerruf vor Retry invalidiert auch eine bereits CONSUMED Capability
     terminal, setzt einen SUCCEEDED Attempt auf FAILED_TERMINAL, löscht das

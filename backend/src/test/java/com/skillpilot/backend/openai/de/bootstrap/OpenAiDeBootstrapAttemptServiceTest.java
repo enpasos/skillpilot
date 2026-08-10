@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
@@ -142,6 +143,25 @@ class OpenAiDeBootstrapAttemptServiceTest {
         assertThat(attempt.getResponseExpiresAt()).isEqualTo(START.plusSeconds(900));
         assertThat(attempt.getRecordExpiresAt()).isEqualTo(START.plusSeconds(86_400));
         assertThat(capability.getStatus()).isEqualTo(OpenAiDeBootstrapCapabilityStatus.CONSUMED);
+    }
+
+    @Test
+    void knownLearnerWithoutCurriculumOrPersonalizationCanStart() {
+        Learner learner = new Learner();
+        learner.setSkillpilotId(SKILLPILOT_ID);
+        learner.setSelectedCurriculum(null);
+        learner.setPersonalCurriculum(null);
+        when(learners.findBySkillpilotIdForUpdate(SKILLPILOT_ID))
+                .thenReturn(Optional.of(learner));
+
+        OpenAiDeBootstrapLaunchResponse response =
+                service.launch(rawCapability, request(SKILLPILOT_ID));
+
+        assertThat(response.status()).isEqualTo(OpenAiDeBootstrapConstants.RESPONSE_STATUS);
+        assertThat(persistedAttempt.get().getStatus())
+                .isEqualTo(OpenAiDeBootstrapAttemptStatus.SUCCEEDED);
+        assertThat(capability.getStatus()).isEqualTo(OpenAiDeBootstrapCapabilityStatus.CONSUMED);
+        verify(connectionService, times(1)).createLaunch(eq(SKILLPILOT_ID), any());
     }
 
     @Test

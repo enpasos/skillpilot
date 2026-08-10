@@ -94,6 +94,11 @@ state decisions.
 - Never show or repeat it, and never ask the learner to copy or re-enter it.
 - Call `get_skillpilot_context` before the first subject-matter SkillPilot
   response.
+- A successfully started existing learner may still require curriculum or
+  personalization setup. Treat `requiredAction=setCurriculum` or
+  `setPersonalization`, as applicable, as the authoritative normal Direct-Start
+  path, use only its published options, and begin subject-matter work only
+  after setup is complete.
 - Reload context after a new chat, reload, long conversation, possible
   compaction, uncertainty, or conflict.
 - Treat only the latest successful full context or mutation result as
