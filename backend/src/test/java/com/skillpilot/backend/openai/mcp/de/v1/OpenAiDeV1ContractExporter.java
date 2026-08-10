@@ -116,6 +116,11 @@ public final class OpenAiDeV1ContractExporter {
                 return "ui/retained/sha256-" + sha256 + "/goal-visualization.html";
             }
         }
+        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
+            if (OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(sha256).equals(resource.get("uri"))) {
+                return "ui/retained/sha256-" + sha256 + "/skillpilot-start.html";
+            }
+        }
         throw new IllegalStateException("No release artifact path for MCP resource " + resource.get("uri"));
     }
 

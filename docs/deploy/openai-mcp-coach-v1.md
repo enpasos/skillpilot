@@ -51,7 +51,7 @@ MCP-Toolargument noch Modell- oder Chatinhalt.
 | MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
-| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html` |
+| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
 | Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
@@ -1058,9 +1058,14 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   `open_skillpilot_start` auf. Dessen modellseitiges Ergebnis enthält weder
   Capability noch SkillPilot-ID; die Startressource ist die einzige daran
   gebundene UI.
-- Vor jeder Authority-Ausstellung prüft die Komponente `serverTools` und
-  `message.text`. Fehlt eine Hostfähigkeit, darf sie keine Capability und keine
-  Lernsession erzeugen, sondern bietet nur den festen First-Party-Fallback an.
+- Vor jeder Authority-Ausstellung prüft die Komponente einen vollständigen
+  Aktionskanal: entweder `serverTools`/`tools/call` plus
+  `message.text`/`ui.message` oder gemeinsam die dokumentierten
+  ChatGPT-Web-Aliasse `window.openai.callTool` und
+  `window.openai.sendFollowUpMessage`. Der Kanal wird vor dem ersten Aufruf
+  fixiert und danach niemals gemischt. Fehlt ein vollständiger Kanal, darf die
+  Komponente keine Capability und keine Lernsession erzeugen, sondern bietet
+  nur den festen First-Party-Fallback an.
 - Erst nach ausdrücklicher Benutzerbestätigung ruft ausschließlich die
   Komponente `issue_skillpilot_start_capability` auf. Das app-only Werkzeug ist
   ungebunden, erhält keine SkillPilot-ID und liefert die kurzlebige Capability
@@ -1073,11 +1078,12 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   identischer Retry liefert die gespeicherte, kurzlebig AEAD-verschlüsselte
   Antwort ohne zweite Session; ein abweichender Retry bleibt terminal
   abgewiesen.
-- Die anschließende `ui/message`-Bestätigung beweist ausschließlich, dass der
-  Host die kurze Startnachricht angenommen hat. Erst der danach beobachtete
-  Aufruf von `get_skillpilot_context` beweist die fachliche Wiederaufnahme.
-  Ablehnung oder unklarer Ausgang darf nur dieselbe Nachricht innerhalb der
-  ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
+- Die anschließende Bestätigung über `ui/message` oder das erfolgreiche
+  Auflösen von `sendFollowUpMessage` beweist ausschließlich, dass der Host die
+  kurze Startnachricht angenommen hat. Erst der danach beobachtete Aufruf von
+  `get_skillpilot_context` beweist die fachliche Wiederaufnahme. Ablehnung oder
+  unklarer Ausgang darf nur dieselbe Nachricht auf demselben Kanal innerhalb
+  der ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
 - Abgelaufene, widerrufene oder policy-seitig blockierte Capabilities sowie
   terminale Profilfehler müssen stabil identifierfrei scheitern. Transiente
   Fehler behalten nur den gebundenen exakten Retry offen.

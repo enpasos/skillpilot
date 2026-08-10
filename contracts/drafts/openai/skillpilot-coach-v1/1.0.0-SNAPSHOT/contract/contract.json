@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "cd2808ff5ab57ecf91658ac23f1cc4aa3b44261024c5bb5ac3fb613ac49f50ed",
+  "contractSha256" : "8ae8f66327573894d45271a5c8bfadf311fd8fb19647841aeb1044db37162ce9",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -118,6 +118,31 @@
     "title" : "SkillPilot learning-goal image",
     "uri" : "ui://skillpilot/coach/v1/sha256-5564f42d0885bb8c12b1067a8d5db4e09986279ed513277021181a198dd20881/goal-visualization.html"
   }, {
+    "description" : "Private direct-start component for an existing SkillPilot learner ID.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "connect_domains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ ]
+      },
+      "openai/widgetDescription" : "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+      "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+      "openai/widgetPrefersBorder" : true,
+      "ui" : {
+        "csp" : {
+          "connectDomains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+          "resourceDomains" : [ ]
+        },
+        "domain" : "https://mcp-coach-v1.skillpilot.com",
+        "prefersBorder" : true
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-start-v1-current",
+    "title" : "Start SkillPilot Coach",
+    "uri" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html"
+  }, {
     "description" : "Interactive, private flashcard practice for the active memory goal.",
     "icons" : [ ],
     "meta" : {
@@ -162,7 +187,7 @@
       }
     },
     "mimeType" : "text/html;profile=mcp-app",
-    "name" : "skillpilot-start-v1-current",
+    "name" : "skillpilot-start-v1-retained-a3fa6397",
     "title" : "Start SkillPilot Coach",
     "uri" : "ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html"
   }, {
@@ -1125,14 +1150,14 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html",
       "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html",
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html",
         "visibility" : [ "model", "app" ]
       }
     },

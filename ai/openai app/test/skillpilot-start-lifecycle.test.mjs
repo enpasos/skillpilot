@@ -100,6 +100,7 @@ async function buildLifecycleSource() {
                   hostSupport(): Promise<SkillPilotStartHostSupport> {
                     return Promise.resolve(globalThis.__hostSupport);
                   }
+                  beginAttempt() {}
                   issueCapability(args: SkillPilotCapabilityArguments) {
                     globalThis.__toolCalls.push({
                       name: "issue_skillpilot_start_capability",
@@ -131,6 +132,69 @@ async function buildLifecycleSource() {
 }
 
 const lifecycleSource = await buildLifecycleSource();
+
+async function buildChatGptCompatibilityLifecycleSource() {
+  const result = await build({
+    entryPoints: [join(root, "widget/src/skillpilot-start-main.ts")],
+    bundle: true,
+    format: "iife",
+    platform: "browser",
+    target: "es2022",
+    write: false,
+    loader: { ".css": "text" },
+    plugins: [
+      {
+        name: "skillpilot-start-compatibility-sdk",
+        setup(esbuild) {
+          esbuild.onResolve(
+            { filter: /^@modelcontextprotocol\/ext-apps$/ },
+            () => ({ path: "ext-apps", namespace: "test" })
+          );
+          esbuild.onLoad(
+            { filter: /.*/, namespace: "test" },
+            () => ({
+              loader: "js",
+              contents: `
+                export class App {
+                  connect() {
+                    globalThis.__standardConnects += 1;
+                    return Promise.resolve();
+                  }
+                  getHostCapabilities() {
+                    return {};
+                  }
+                  callServerTool(params) {
+                    globalThis.__standardToolCalls.push(params);
+                    return Promise.reject(new Error("unexpected-standard-tool-call"));
+                  }
+                  sendMessage(params) {
+                    globalThis.__standardMessages.push(params);
+                    return Promise.reject(new Error("unexpected-standard-message"));
+                  }
+                  openLink(params) {
+                    globalThis.__standardOpenedLinks.push(params);
+                    return Promise.reject(new Error("unexpected-standard-link"));
+                  }
+                }
+                export class PostMessageTransport {
+                  constructor() {}
+                }
+              `
+            })
+          );
+        }
+      }
+    ]
+  });
+  const script = result.outputFiles.find((file) =>
+    file.text.includes("Missing SkillPilot start root")
+  );
+  assert.ok(script);
+  return script.text;
+}
+
+const chatGptCompatibilityLifecycleSource =
+  await buildChatGptCompatibilityLifecycleSource();
 
 function openResult({
   status = "ID_REQUIRED",
@@ -210,7 +274,8 @@ function jsonResponse(
 
 function createHarness({
   initial = openResult(),
-  hostSupport = { serverTools: true, textMessages: true, openLinks: true }
+  hostSupport = { serverTools: true, textMessages: true, openLinks: true },
+  chatGptCompatibility = false
 } = {}) {
   const rootElement = new FakeElement("main");
   const windowListeners = new Map();
@@ -243,6 +308,10 @@ function createHarness({
     __openedLinks: [],
     __browserOpenCalls: [],
     __openLinkResult: true,
+    __standardConnects: 0,
+    __standardToolCalls: [],
+    __standardMessages: [],
+    __standardOpenedLinks: [],
     __issueHandler(args) {
       return issueHandler(args);
     },
@@ -298,10 +367,32 @@ function createHarness({
     toolOutput: initial?.structuredContent,
     toolResponseMetadata: initial?._meta
   };
+  if (chatGptCompatibility) {
+    context.openai.callTool = (name, arguments_) => {
+      context.__toolCalls.push({ name, arguments: arguments_ });
+      return issueHandler(arguments_);
+    };
+    context.openai.sendFollowUpMessage = ({ prompt }) => {
+      context.__messages.push(prompt);
+      return messageHandler(prompt).then((result) =>
+        result?.supported === true && result?.hostAccepted === false
+          ? { isError: true }
+          : undefined
+      );
+    };
+    context.openai.openExternal = ({ href }) => {
+      context.__openedLinks.push(href);
+      return Promise.resolve();
+    };
+  }
 
-  vm.runInNewContext(lifecycleSource, context, {
+  vm.runInNewContext(
+    chatGptCompatibility ? chatGptCompatibilityLifecycleSource : lifecycleSource,
+    context,
+    {
     filename: "skillpilot-start-main.test-bundle.js"
-  });
+    }
+  );
 
   return {
     context,
@@ -474,6 +565,42 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   assert.equal(harness.context.__fetchCalls.length, 2, "a new explicit attempt may start one new session");
   assert.equal(harness.context.__messages.length, 3);
   assert.equal(JSON.parse(harness.context.__fetchCalls[1].init.body).clientRequestId, secondRequestId);
+});
+
+test("ChatGPT Web aliases show the ID form and complete one direct-start handoff", async () => {
+  const harness = createHarness({ chatGptCompatibility: true });
+  await flushPromises();
+
+  assert.equal(
+    findByText(harness.rootElement, "Direkter Start nicht verfügbar"),
+    undefined
+  );
+  assert.ok(findInput(harness.rootElement, "text"));
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+
+  assert.equal(harness.context.__standardConnects, 1);
+  assert.deepEqual(harness.context.__standardToolCalls, []);
+  assert.deepEqual(harness.context.__standardMessages, []);
+  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(
+    harness.context.__toolCalls[0].name,
+    "issue_skillpilot_start_capability"
+  );
+  assert.doesNotMatch(
+    JSON.stringify(harness.context.__toolCalls[0].arguments),
+    new RegExp(skillpilotId)
+  );
+  assert.equal(harness.context.__fetchCalls.length, 1);
+  assert.equal(JSON.parse(harness.context.__fetchCalls[0].init.body).skillpilotId, skillpilotId);
+  assert.equal(harness.context.__messages.length, 1);
+  assert.doesNotMatch(harness.context.__messages[0], new RegExp(skillpilotId));
+  assert.equal(
+    harness.context.__messages[0],
+    `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`
+  );
+  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
 });
 
 test("an unclear ui/message outcome is retryable but may duplicate only the same chat message", async () => {

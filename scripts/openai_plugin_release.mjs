@@ -111,13 +111,21 @@ assert.equal(
   legacyGoalVisualizationArtifactSha256,
   "The version-addressed legacy goal-visualization artifact must remain byte-for-byte immutable.",
 );
-const retainedGoalVisualizationArtifactSha256s = readdirSync(
+const retainedArtifactDirectoryNames = readdirSync(
   retainedGoalVisualizationRoot,
   { withFileTypes: true },
 )
   .filter((entry) => entry.isDirectory() && entry.name.startsWith("sha256-"))
-  .map((entry) => entry.name.slice("sha256-".length))
+  .map((entry) => entry.name)
   .sort();
+const retainedGoalVisualizationArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) =>
+    existsSync(resolve(
+      retainedGoalVisualizationRoot,
+      directoryName,
+      "goal-visualization.html",
+    )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
 assert.ok(
   retainedGoalVisualizationArtifactSha256s.length > 0,
   "At least one retained goal-visualization artifact must stay readable.",
@@ -133,6 +141,30 @@ for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
     createHash("sha256").update(readFileSync(artifact)).digest("hex"),
     sha256,
     "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
+  );
+}
+const retainedSkillpilotStartArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) =>
+    existsSync(resolve(
+      retainedGoalVisualizationRoot,
+      directoryName,
+      "skillpilot-start.html",
+    )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
+assert.ok(
+  retainedSkillpilotStartArtifactSha256s.length > 0,
+  "At least one previously advertised direct-start artifact must stay readable.",
+);
+for (const sha256 of retainedSkillpilotStartArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "skillpilot-start.html",
+  );
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained direct-start artifacts must remain byte-for-byte immutable.",
   );
 }
 const uiArtifactSource = (releasePath) => {
@@ -152,8 +184,15 @@ const uiArtifactSource = (releasePath) => {
     /^ui\/retained\/(sha256-[0-9a-f]{64})\/goal-visualization\.html$/u.exec(
       releasePath,
     );
-  return retained
-    ? resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html")
+  if (retained) {
+    return resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html");
+  }
+  const retainedStart =
+    /^ui\/retained\/(sha256-[0-9a-f]{64})\/skillpilot-start\.html$/u.exec(
+      releasePath,
+    );
+  return retainedStart
+    ? resolve(retainedGoalVisualizationRoot, retainedStart[1], "skillpilot-start.html")
     : undefined;
 };
 

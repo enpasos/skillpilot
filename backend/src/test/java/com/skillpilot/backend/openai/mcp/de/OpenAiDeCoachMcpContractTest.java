@@ -89,6 +89,8 @@ class OpenAiDeCoachMcpContractTest {
             "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
             "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
+    private static final List<String> HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S = List.of(
+            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -659,14 +661,19 @@ class OpenAiDeCoachMcpContractTest {
     void publishesActiveStartGoalVisualizationAllRetainedAndDedicatedMemoryPracticeResources() {
         assertThat(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S)
                 .containsExactlyElementsOf(HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S);
-        List<String> expectedResourceUris = Stream.concat(
+        assertThat(OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S)
+                .containsExactlyElementsOf(HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S);
+        List<String> expectedResourceUris = Stream.of(
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                                 LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S.stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
+                        HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S.stream()
+                                .map(OpenAiDeV1ContractMetadata::skillpilotStartResourceUri))
+                .flatMap(stream -> stream)
                 .toList();
 
         assertThat(contract.resourceSpecifications())
@@ -678,8 +685,7 @@ class OpenAiDeCoachMcpContractTest {
             McpSchema.Resource resource = specification.resource();
             boolean memoryPractice = OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI
                     .equals(resource.uri());
-            boolean skillpilotStart = OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI
-                    .equals(resource.uri());
+            boolean skillpilotStart = resource.uri().endsWith("/skillpilot-start.html");
             boolean prefersBorder = memoryPractice || skillpilotStart;
             assertThat(resource.mimeType())
                     .isEqualTo(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE);
@@ -806,6 +812,20 @@ class OpenAiDeCoachMcpContractTest {
                         .count())
                 .isEqualTo(1);
         for (String retainedSha256 : HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S) {
+            assertThat(meterRegistry
+                            .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
+                            .tags(
+                                    "artifact",
+                                    retainedSha256.substring(0, 12),
+                                    "role",
+                                    "retained",
+                                    "status",
+                                    "success")
+                            .timer()
+                            .count())
+                    .isEqualTo(1);
+        }
+        for (String retainedSha256 : HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S) {
             assertThat(meterRegistry
                             .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
                             .tags(

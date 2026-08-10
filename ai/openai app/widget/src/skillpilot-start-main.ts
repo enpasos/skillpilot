@@ -193,6 +193,7 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
 
 const INITIAL_RESULT_TIMEOUT_MS = 10_000;
 const ACTION_TIMEOUT_MS = 15_000;
+const HOST_CAPABILITY_TIMEOUT_MS = 5_000;
 
 const style = document.createElement("style");
 style.textContent = css;
@@ -217,6 +218,7 @@ let flowState: FlowState = "INITIALIZING";
 let failureKind: FailureKind | undefined;
 let busy = false;
 let flowRevision = 0;
+let hostSupportCheckRevision = 0;
 let activeAbortController: AbortController | undefined;
 let sensitiveRetentionTimer: number | undefined;
 let compatibilityToolOutput: unknown = compatibilityWindow.openai?.toolOutput;
@@ -236,23 +238,19 @@ window.addEventListener(
       compatibilityMetadata = globals.toolResponseMetadata;
     }
     acceptOpenResult(compatibilityToolOutput, compatibilityMetadata);
+    void refreshHostSupport();
   },
   { passive: true }
 );
 window.addEventListener("pagehide", handlePageHide, { passive: true });
-window.addEventListener("pageshow", () => renderCurrent(), { passive: true });
+window.addEventListener("pageshow", () => {
+  renderCurrent();
+  void refreshHostSupport();
+}, { passive: true });
 
 renderLoading(COPY.en);
 acceptOpenResult(compatibilityToolOutput, compatibilityMetadata);
-void bridge.ready
-  .then(async () => {
-    hostSupport = await bridge.hostSupport();
-    renderCurrent();
-  })
-  .catch(() => {
-    hostSupport = { serverTools: false, textMessages: false, openLinks: false };
-    renderCurrent();
-  });
+void refreshHostSupport();
 
 function applyToolResult(result: SkillPilotStartToolResult): void {
   // App-only issuer results are consumed by the matching call promise. A
@@ -275,6 +273,22 @@ function acceptOpenResult(value: unknown, metadataSource?: unknown): void {
   selectedLocale = next.defaultLocale;
   flowState = next.status === "ID_REQUIRED" ? "READY_FOR_ID" : "FAILED";
   failureKind = undefined;
+  renderCurrent();
+}
+
+async function refreshHostSupport(): Promise<void> {
+  const checkRevision = ++hostSupportCheckRevision;
+  try {
+    const support = await withTimeout(
+      bridge.hostSupport(),
+      HOST_CAPABILITY_TIMEOUT_MS
+    );
+    if (checkRevision !== hostSupportCheckRevision) return;
+    hostSupport = support;
+  } catch {
+    if (checkRevision !== hostSupportCheckRevision) return;
+    hostSupport = { serverTools: false, textMessages: false, openLinks: false };
+  }
   renderCurrent();
 }
 
@@ -533,6 +547,7 @@ async function beginFreshStart(): Promise<void> {
   if (!current || !submittedId || !capabilityArguments || busy) return;
 
   const revision = flowRevision;
+  bridge.beginAttempt();
   manualSkillPilotId = "";
   providerEligibilityConfirmed = false;
   failureKind = undefined;

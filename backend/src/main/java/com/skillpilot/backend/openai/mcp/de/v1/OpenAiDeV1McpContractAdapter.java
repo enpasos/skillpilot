@@ -145,12 +145,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
-    private static final StartUiResource SKILLPILOT_START_UI_RESOURCE =
-            loadStartWidget(
-                    "skillpilot-start-v1-current",
-                    OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
-                    OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_CLASSPATH,
-                    OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256);
+    private static final List<StartUiResource> SKILLPILOT_START_UI_RESOURCES =
+            loadStartUiResources();
 
     private static final String SERVER_INSTRUCTIONS = """
             You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
@@ -824,9 +820,9 @@ public final class OpenAiDeV1McpContractAdapter {
         resources.add(memoryPracticeResourceSpecification(
                 MEMORY_PRACTICE_UI_RESOURCE,
                 memoryPracticeResourceMeta()));
-        resources.add(startResourceSpecification(
-                SKILLPILOT_START_UI_RESOURCE,
-                startResourceMeta()));
+        SKILLPILOT_START_UI_RESOURCES.stream()
+                .map(uiResource -> startResourceSpecification(uiResource, startResourceMeta()))
+                .forEach(resources::add);
         return List.copyOf(resources);
     }
 
@@ -1097,6 +1093,33 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private record MemoryPracticeUiResource(String name, String uri, String html) {}
+
+    /**
+     * Loads the active direct-start widget plus every immutable predecessor.
+     * Historical resources remain passive: only the active URI is bound to
+     * {@code open_skillpilot_start}.
+     */
+    private static List<StartUiResource> loadStartUiResources() {
+        List<StartUiResource> resources = new ArrayList<>();
+        resources.add(loadStartWidget(
+                "skillpilot-start-v1-current",
+                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_CLASSPATH,
+                OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256));
+        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
+            resources.add(loadStartWidget(
+                    "skillpilot-start-v1-retained-" + sha256.substring(0, 8),
+                    OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(sha256),
+                    OpenAiDeV1ContractMetadata.retainedSkillpilotStartResourceClasspath(sha256),
+                    sha256));
+        }
+        long distinctUris = resources.stream().map(StartUiResource::uri).distinct().count();
+        if (distinctUris != resources.size()) {
+            throw new IllegalStateException(
+                    "Duplicate SkillPilot start MCP UI resource URI: active and retained resources must remain distinct.");
+        }
+        return List.copyOf(resources);
+    }
 
     private static StartUiResource loadStartWidget(
             String name,
