@@ -40,9 +40,10 @@ ausdrücklich nicht:
    nimmt sie dort als vorhandene ID entgegen. Sie gelangt niemals in Chat,
    Modellkontext, MCP-Toolargumente, MCP-Toolresultate oder Resultat-`_meta`.
 3. **Eine neue learningSessionId wählt genau eine kurzlebige Lernsession.**
-   Sie wird erst nach ausdrücklicher Startbestätigung erzeugt, ist absolut
-   höchstens 24 Stunden gültig und wird anschließend in einer kurzen
-   Startnachricht an den Host zur Aufnahme in den Chat übergeben.
+   Sie wird erst nach der ausdrücklichen Bootstrap-Bestätigung erzeugt, ist
+   absolut höchstens 24 Stunden gültig und bleibt während der Einrichtung nur
+   in der Komponente. Erst die spätere ausdrückliche Aktion `Lernen starten`
+   gibt ihre kurze Startnachricht an den Host zur Aufnahme in den Chat frei.
 4. **Eine neue Contract-Major-Version ist eine neue App-Linie.** Ein späterer
    SkillPilot Coach v2 erhält eine eigene Plugin-Identität, einen eigenen
    Origin, einen eigenen OAuth-Client und einen eigenen Bootstrap. V1-Token,
@@ -226,7 +227,8 @@ ausdrücklich freigegebene Architekturentscheidung:
 - Starttyp ausschließlich CURRENT_UNIT;
 - Wiederverwendung der bestehenden autoritativen Startlogik;
 - Host-Anfrage über den ausgewählten Nachrichtenkanal mit der fertigen
-  Startnachricht **erst nach abgeschlossener Einrichtung**;
+  Startnachricht **erst nach abgeschlossener Einrichtung und ausdrücklichem
+  finalem `Lernen starten`**;
 - ausdrückliche Recovery-Bestätigung nach Neuanlage, bevor die Einrichtung
   fortgesetzt wird;
 - sicherer Rückfall auf den bestehenden Webstart.
@@ -723,10 +725,16 @@ neuen Setup-Toolnamen ein. Nach dem direkten Launch verwendet die Komponente
    `curriculumId` über `set_skillpilot_curriculum`;
 3. bei `requiredAction=setPersonalization` genau ein veröffentlichtes opakes
    `optionId` über `set_skillpilot_personalization`;
-4. anschließend den jeweils frisch zurückgegebenen Vollkontext, bis weder
+4. für eine ausdrücklich angeforderte Änderung des Curriculums
+   `get_skillpilot_navigation` mit `target=curriculum` und ausschließlich die
+   dort frisch veröffentlichten Optionen;
+5. für die ausdrückliche Änderung einer früheren Personalisierungsentscheidung
+   genau deren im neuesten Vollkontext veröffentlichtes opakes `rewindId`
+   über dasselbe `set_skillpilot_personalization`;
+6. anschließend den jeweils frisch zurückgegebenen Vollkontext, bis weder
    `setCurriculum` noch `setPersonalization` offen ist.
 
-Diese drei bestehenden Werkzeuge bleiben modell- **und** appsichtbar und tragen
+Diese vier bestehenden Werkzeuge bleiben modell- **und** appsichtbar und tragen
 keine UI-Ressourcenbindung. Ihre Component-Aufruf-Freigabe und der aktuelle
 ChatGPT-Kompatibilitätsweg werden explizit über
 `_meta["openai/widgetAccessible"]: true` veröffentlicht. Sie erhalten kein
@@ -759,6 +767,36 @@ fachlichen Wert; eine beim DOM-Aufbau vom Browser automatisch gesetzte erste
 Option gilt niemals als Auswahl und darf das erforderliche `change`-Ereignis
 nicht verschlucken.
 
+Sobald ein Curriculum ausgewählt ist, bleibt dessen serverautoritatives
+`curriculum` mit lokalisiertem Titel als abgeschlossener Schritt sichtbar.
+`Ändern` lädt über `get_skillpilot_navigation(target=curriculum)` einen neuen,
+an die aktuelle `stateVersion` gebundenen Katalog. Die Komponente verwendet
+für eine Änderung niemals lokal zwischengespeicherte frühere Optionen. Ein
+bestätigter Curriculumwechsel verwirft alle davon abhängigen sichtbaren
+Personalisierungs- und Reviewzustände und rendert ausschließlich den frischen
+Folgekontext.
+
+Während und nach der Personalisierung enthält der Vollkontext zusätzlich eine
+geschlossene `personalizationHistory`-Projektion mit `schemaVersion=1`:
+
+- `completedDecisions` nennt bereits abgeschlossene Entscheidungen mit
+  lokalisierten `stageLabel`, `groupLabel`, begrenzten `selectedLabels` und
+  genau einem opaken, aktuellen `rewindId`;
+- `currentDecision` nennt eine bereits teilweise gewählte aktuelle
+  Entscheidung nur zusammen mit ihrem aktuellen `rewindId`;
+- `preservedDecisions` nennt unabhängige, weiterhin gültige Auswahlen ohne
+  Änderungsreferenz.
+
+Die Komponente zeigt diese Werte wie die WebGUI kumulativ als
+Schrittzusammenfassungen. `Ändern` übergibt ausschließlich das unveränderte
+`rewindId` zusammen mit neuester `expectedStateVersion` und neuer
+`clientRequestId`. Der Server validiert die Referenz unter Lock gegen den
+aktuellen Personalisierungsplan, entfernt die gewählte Entscheidung und alle
+fachlich abhängigen späteren Entscheidungen, erhält unabhängige Auswahlen und
+liefert den frischen Folgekontext. Frühere Rewind-Referenzen werden nach jedem
+erfolgreichen Write ungültig. Labels oder frühere Options-IDs werden niemals
+zu einer Mutation zurückübersetzt.
+
 Für jede neue Auswahl kopiert die Komponente `expectedStateVersion` exakt aus
 dem neuesten erfolgreichen Vollresultat und erzeugt eine neue UUID-v4 als
 `clientRequestId`. Nur ein transportseitig unklarer **unveränderter** Versuch
@@ -771,8 +809,12 @@ neuen `stateVersion` und dessen Optionen weiter.
 Die Komponente hält die vom Bootstrap gelieferte Startnachricht währenddessen
 unverändert in einer flüchtigen Laufzeitreferenz. Weder die Sessionerzeugung
 noch ein einzelner erfolgreicher Setup-Schritt löst bereits `ui/message` aus.
-Erst der erste Vollkontext ohne `setCurriculum` und ohne `setPersonalization`
-gibt den Host-Handoff frei. Ein danach eventuell veröffentlichtes
+Der erste Vollkontext ohne `setCurriculum` und ohne `setPersonalization` zeigt
+zunächst einen finalen Review mit dem ausgewählten Curriculum, den
+Personalisierungszusammenfassungen und der ausdrücklichen Aktion
+`Lernen starten`. Bis zu dieser Aktion bleiben die serverautoritativen
+Änderungsmöglichkeiten verfügbar. Erst `Lernen starten` gibt den Host-Handoff
+frei. Ein danach eventuell veröffentlichtes
 `setActiveGoal`, `teachActiveGoal` oder anderes fachliches `requiredAction`
 gehört wieder dem normalen Coach und wird nicht vom Start-Widget vorweggenommen.
 
@@ -888,6 +930,7 @@ INITIALIZING
   -> LOADING_SETUP_CONTEXT
   -> SELECTING_CURRICULUM                    (falls erforderlich)
   -> SELECTING_PERSONALIZATION               (wiederholt, falls erforderlich)
+  -> REVIEWING_COMPLETED_SETUP
   -> SETUP_COMPLETE_PENDING_HOST_ACCEPTANCE
   -> HOST_MESSAGE_ACCEPTED
 ~~~
@@ -903,6 +946,9 @@ Fehlerzustände:
 - PROFILE_UNAVAILABLE: neutraler terminaler Fehler, keine Session;
 - SETUP_CONFLICT: Kontext exakt einmal frisch laden und ausschließlich anhand
   des neuen `stateVersion` fortsetzen;
+- SETUP_REWIND_REJECTED: alte oder fremde `rewindId` nicht erneut verwenden;
+  Kontext exakt einmal frisch laden und nur dessen Zusammenfassungen und
+  Änderungsreferenzen anzeigen;
 - SETUP_TRANSPORT_UNKNOWN: denselben unveränderten Schreibversuch mit derselben
   `clientRequestId` wiederholen; nie blind eine zweite fachliche Mutation
   erzeugen;
@@ -1474,7 +1520,8 @@ Launch; OAuth-Widerruf und aktuelle Major-Policy werden weiterhin geprüft.
 Nach erfolgreicher Sessionerzeugung hält das Widget die Startnachricht zunächst
 zurück. Erst nachdem bei CREATE die Recovery-Bestätigung vorliegt und der
 neueste componentseitig geladene Vollkontext weder `setCurriculum` noch
-`setPersonalization` verlangt, bittet es den Host über den für den Versuch
+`setPersonalization` verlangt, zeigt es den finalen Review. Erst die dortige
+ausdrückliche Aktion `Lernen starten` bittet den Host über den für den Versuch
 fixierten Standard- oder ChatGPT-Kompatibilitätskanal, exakt die vom Backend
 gelieferte startMessage als User-Nachricht aufzunehmen.
 
@@ -1506,6 +1553,12 @@ Die Bestätigung von `ui/message` beziehungsweise das erfolgreiche Auflösen von
 Nachrichtenanfrage angenommen hat. Sie beweist weder, dass das Modell
 geantwortet, der Skill geladen oder get_skillpilot_context stattgefunden hat.
 Der Widget-Endzustand heißt deshalb HOST_MESSAGE_ACCEPTED, nicht DELIVERED.
+Nach diesem bestätigten Handoff entfernt die Komponente ihre sichtbare Karte
+lokal und fordert den Host genau einmal best effort zum Teardown beziehungsweise
+Schließen auf. Ein fehlgeschlagener Close-Request ändert den bereits
+bestätigten Handoff nicht und darf weder eine Retry-UI noch einen neuen
+Startversuch erzeugen. Die Aktion `Neuen Startversuch beginnen` gehört nur in
+terminale Fehler- oder Ablaufzustände, niemals in den Erfolgszustand.
 
 Nur die startMessage macht die kurzlebige learningSessionId modell- und
 chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
@@ -1716,7 +1769,8 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 10. Standard-UI-Metadaten und ChatGPT-Aliasse werden getrennt geprüft.
 11. Modell-Evals erzwingen: Open höchstens einmal, niemals Issuer, niemals
     SkillPilot-ID oder PIN im Chat; ohne UI ausschließlich Webfallback.
-12. `get_skillpilot_context`, `set_skillpilot_curriculum` und
+12. `get_skillpilot_context`, `get_skillpilot_navigation`,
+    `set_skillpilot_curriculum` und
     `set_skillpilot_personalization` bleiben modell- und appsichtbar,
     UI-ungebunden und explizit component-aufrufbar; keines erhält oder liefert
     eine permanente SkillPilot-ID.
@@ -1790,21 +1844,30 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
    `SCHOOL`+`green` als Default, exakte UND-Filterung, WebGUI-Reihenfolge,
    lokalisierte Sortierung, leere Treffer und fail-closed Schemaabweichungen
    ab. Lokale Filterwechsel erzeugen keinen Toolaufruf.
-8. Die Hostnachricht wird erst ohne offenes `setCurriculum` oder
-   `setPersonalization` gesendet; im normalen Flow gibt es keinen
+8. Ausgewähltes Curriculum sowie aktuelle, abgeschlossene und erhaltene
+   Personalisierungsentscheidungen bleiben kumulativ sichtbar. Curriculum-
+   Änderung verwendet ausschließlich eine frische Navigation; Rewind verwendet
+   ausschließlich die neueste opake `rewindId`. Alte Optionen und Rewind-
+   Referenzen scheitern fail closed.
+9. Der erste Kontext ohne offenes `setCurriculum` oder `setPersonalization`
+   zeigt den finalen Review. Die Hostnachricht wird erst nach der dortigen
+   ausdrücklichen Aktion `Lernen starten` gesendet; im normalen Flow gibt es keinen
    **SkillPilot öffnen**-Schritt.
-9. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
+10. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
    Nachricht auf demselben Kanal.
-10. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
-11. Deutsch und Englisch sind semantisch gleichwertig.
-12. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
-13. Webfallback enthält keine technischen Werte.
+11. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet,
+    zeigt keine Neustartaktion und löst genau einen best-effort Teardown aus.
+12. Deutsch und Englisch sind semantisch gleichwertig.
+13. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
+14. Webfallback enthält keine technischen Werte.
 
 ### 14.6 Integrations- und Hosttests
 
 1. Open-Tool → Widget → CREATE oder EXISTING → app-only Issuer → direkter Start
    → Recovery-Bestätigung bei CREATE → componentseitiger Context-/Curriculum-/
-   Personalisierungsablauf → ausgewählter Nachrichtenkanal → beobachteter
+   Personalisierungsablauf → kumulative Zusammenfassungen → Curriculumänderung
+   und Personalisierungs-Rewind → finaler Review → ausgewählter
+   Nachrichtenkanal → beobachteter
    modellseitiger get_skillpilot_context.
 2. Die Startnachricht enthält exakt eine learningSessionId und keine ID.
 3. Lernsession lebt absolut höchstens 24 Stunden.
@@ -1897,6 +1960,15 @@ werden.
 - die serverautoritativ an die aktuelle Optionsmenge gebundene
   `curriculumCatalog`-Projektion ist die einzige Quelle für Kategorie,
   Qualitätsstatus und Sortierrang; das Widget klassifiziert nichts selbst;
+- bestätigtes Curriculum sowie aktuelle, abgeschlossene und unabhängig
+  erhaltene Personalisierungsentscheidungen bleiben als serverautoritative
+  Zusammenfassungen sichtbar; Änderungen verwenden nur eine frische
+  Curriculum-Navigation beziehungsweise die neueste opake Rewind-Referenz;
+- ein vollständiges Setup sendet noch keine Hostnachricht; erst der finale
+  Review und die ausdrückliche Aktion `Lernen starten` geben den Handoff frei;
+- nach bestätigter Hostannahme entfernt die Komponente ihre Karte, fordert
+  genau einmal best effort Teardown beziehungsweise Schließen an und bietet
+  keinen neuen Startversuch an;
 - policyRevision 2 bindet diese erweiterte Capability-/Bootstrap-Semantik;
 - providerNoticeVersion als bindender Vertragswert;
 - Zwei-Transaktions-Attempt mit einheitlicher Lockreihenfolge Capability,

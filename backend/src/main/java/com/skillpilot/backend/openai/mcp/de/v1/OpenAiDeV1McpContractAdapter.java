@@ -126,6 +126,7 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String EXAM_EVALUATION_CAPABILITY_CONTEXT = "skillpilot-exam-evaluation-v1";
     private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
     private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
+    private static final int MAX_PERSONALIZATION_REFERENCE_LENGTH = 500;
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
@@ -274,6 +275,8 @@ public final class OpenAiDeV1McpContractAdapter {
     public record NavigationResult(
             String target,
             String requiredAction,
+            OpenAiDeCoachContext.Curriculum curriculum,
+            OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog,
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options,
             String instruction) {
@@ -542,12 +545,11 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_PERSONALIZATION,
                         "Continue personalisation",
-                        "Executes exactly one currently allowed personalisation action. This may be a subject choice "
-                                + "or explicit completion of the current selection group. Pass only the opaque "
-                                + "optionId from structuredContent unchanged. Never derive it from labels.",
-                        objectSchema(
-                                Map.of("optionId", modelFacingOpaqueReferenceSchema()),
-                                List.of("optionId")),
+                        "Executes exactly one currently allowed personalisation action or reopens exactly one "
+                                + "completed decision. Pass either optionId or rewindId, never both, and copy the "
+                                + "opaque reference from the newest structuredContent unchanged. Never derive it "
+                                + "from labels.",
+                        setPersonalizationInputSchema(),
                         contextSchema(),
                         false,
                         true,
@@ -784,6 +786,7 @@ public final class OpenAiDeV1McpContractAdapter {
             meta.put("ui", Map.of("visibility", List.of("app")));
         }
         if (GET_CONTEXT.equals(name)
+                || GET_NAVIGATION.equals(name)
                 || SET_CURRICULUM.equals(name)
                 || SET_PERSONALIZATION.equals(name)) {
             // The direct-start component completes the server-authoritative
@@ -1798,6 +1801,8 @@ public final class OpenAiDeV1McpContractAdapter {
         UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
         FrontierGoal currentActiveGoal = activeGoal(rawState);
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
+        OpenAiDeCoachContext.Curriculum currentCurriculum = null;
+        OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog = null;
         OpenAiDeCoachContext.Decision decision = null;
         String requiredAction;
         switch (target) {
@@ -1809,6 +1814,9 @@ public final class OpenAiDeV1McpContractAdapter {
                         add(options, contextProjector.curriculumOption(curriculum));
                     }
                 }
+                currentCurriculum = contextProjector.curriculumSummary(
+                        rawState == null ? null : rawState.curriculum());
+                curriculumCatalog = contextProjector.curriculumCatalog(curricula, options);
             }
             case "personalization" -> {
                 requiredAction = "setPersonalization";
@@ -1939,6 +1947,8 @@ public final class OpenAiDeV1McpContractAdapter {
         NavigationResult result = new NavigationResult(
                 target,
                 requiredAction,
+                currentCurriculum,
+                curriculumCatalog,
                 decision,
                 List.copyOf(options),
                 instruction);
@@ -1980,7 +1990,28 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
-        String optionId = requiredString(arguments, "optionId");
+        String optionId = optionalBoundedNonEmptyString(
+                arguments,
+                "optionId",
+                MAX_PERSONALIZATION_REFERENCE_LENGTH);
+        String rewindId = optionalBoundedNonEmptyString(
+                arguments,
+                "rewindId",
+                MAX_PERSONALIZATION_REFERENCE_LENGTH);
+        boolean hasOptionId = optionId != null;
+        boolean hasRewindId = rewindId != null;
+        if (hasOptionId == hasRewindId) {
+            throw new IllegalArgumentException("Exactly one of optionId or rewindId is required.");
+        }
+        if (hasRewindId) {
+            return contextMutationResult(
+                    skillpilotId,
+                    localized(metadata,
+                            "Personalisierungsentscheidung wieder geöffnet; Folgezustand geladen.",
+                            "Personalisation decision reopened; successor state loaded."),
+                    coachTools.rewindPersonalization(skillpilotId, rewindId),
+                    metadata);
+        }
         PersonalizationRequest request = resolvePersonalizationRequest(
                 skillpilotId,
                 coachTools.getLearnerState(skillpilotId),
@@ -2484,10 +2515,12 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeV1SessionMetadata metadata) {
         PersonalizationPlan plan =
                 state != null
-                                && state.stateMachine() != null
-                                && "setPersonalization".equals(state.stateMachine().requiredAction())
+                                && state.curriculum() != null
                         ? coachTools.getPersonalizationPlan(skillpilotId)
                         : PersonalizationPlan.complete(List.of());
+        if (plan == null) {
+            plan = PersonalizationPlan.complete(List.of());
+        }
         FrontierGoal active = activeGoal(state);
         OrientationOutlook orientationOutlook = isOrientationGoal(active)
                 ? coachTools.getOrientationOutlook(skillpilotId, communicationLocale(metadata))
@@ -3012,6 +3045,21 @@ public final class OpenAiDeV1McpContractAdapter {
         return text.trim();
     }
 
+    private String optionalBoundedNonEmptyString(
+            Map<String, Object> arguments,
+            String name,
+            int maxLength) {
+        String value = optionalString(arguments, name);
+        if (value == null) {
+            return null;
+        }
+        if (value.isBlank() || value.length() > maxLength) {
+            throw new IllegalArgumentException(
+                    name + " muss zwischen 1 und " + maxLength + " Zeichen enthalten.");
+        }
+        return value;
+    }
+
     private List<String> stringList(Map<String, Object> arguments, String name, boolean required) {
         Object value = arguments.get(name);
         if (value == null) {
@@ -3115,6 +3163,20 @@ public final class OpenAiDeV1McpContractAdapter {
         return objectSchema(Map.of(), List.of());
     }
 
+    private static Map<String, Object> setPersonalizationInputSchema() {
+        Map<String, Object> schema = new LinkedHashMap<>(objectSchema(
+                Map.of(
+                        "optionId", boundedOpaqueReferenceSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH),
+                        "rewindId", boundedOpaqueReferenceSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH)),
+                List.of()));
+        schema.put(
+                "oneOf",
+                List.of(
+                        Map.of("required", List.of("optionId")),
+                        Map.of("required", List.of("rewindId"))));
+        return Map.copyOf(schema);
+    }
+
     private static Map<String, Object> openSkillpilotStartOutputSchema() {
         Map<String, Object> locales = new LinkedHashMap<>();
         locales.put("type", "array");
@@ -3214,7 +3276,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 required.add(CLIENT_REQUEST_ID);
             }
         }
-        return objectSchema(properties, List.copyOf(required));
+        Map<String, Object> schema = new LinkedHashMap<>(objectSchema(properties, List.copyOf(required)));
+        Object oneOf = inputSchema.get("oneOf");
+        if (oneOf != null) {
+            schema.put("oneOf", oneOf);
+        }
+        return Map.copyOf(schema);
     }
 
     @SuppressWarnings("unchecked")
@@ -3271,6 +3338,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("activeGoal", activeGoalSchema());
         properties.put("options", objectArraySchema(optionSchema()));
         properties.put("curriculumCatalog", curriculumCatalogSchema());
+        properties.put("personalizationHistory", personalizationHistorySchema());
         properties.put("decision", decisionSchema());
         properties.put("frontier", objectArraySchema(goalSchema()));
         properties.put("resources", objectArraySchema(resourceSchema()));
@@ -3318,10 +3386,46 @@ public final class OpenAiDeV1McpContractAdapter {
                         "sortRank"));
     }
 
+    private static Map<String, Object> personalizationHistorySchema() {
+        Map<String, Object> properties = new LinkedHashMap<>();
+        properties.put("schemaVersion", integerSchema(1, 1));
+        properties.put("currentDecision", editablePersonalizationHistoryDecisionSchema());
+        properties.put(
+                "completedDecisions",
+                boundedObjectArraySchema(editablePersonalizationHistoryDecisionSchema(), 0, 64));
+        properties.put(
+                "preservedDecisions",
+                boundedObjectArraySchema(preservedPersonalizationHistoryDecisionSchema(), 0, 64));
+        return objectSchema(
+                properties,
+                List.of("schemaVersion", "completedDecisions", "preservedDecisions"));
+    }
+
+    private static Map<String, Object> editablePersonalizationHistoryDecisionSchema() {
+        return objectSchema(
+                Map.of(
+                        "rewindId", boundedNonEmptyStringSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH),
+                        "stageLabel", boundedNonEmptyStringSchema(320),
+                        "groupLabel", boundedNonEmptyStringSchema(320),
+                        "selectedLabels", boundedStringArraySchema(0, 32)),
+                List.of("rewindId", "stageLabel", "groupLabel", "selectedLabels"));
+    }
+
+    private static Map<String, Object> preservedPersonalizationHistoryDecisionSchema() {
+        return objectSchema(
+                Map.of(
+                        "stageLabel", boundedNonEmptyStringSchema(320),
+                        "groupLabel", boundedNonEmptyStringSchema(320),
+                        "selectedLabels", boundedStringArraySchema(0, 32)),
+                List.of("stageLabel", "groupLabel", "selectedLabels"));
+    }
+
     private static Map<String, Object> navigationSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("target", stringSchema());
         properties.put("requiredAction", stringSchema());
+        properties.put("curriculum", curriculumSchema());
+        properties.put("curriculumCatalog", curriculumCatalogSchema());
         properties.put("decision", decisionSchema());
         properties.put("options", objectArraySchema(optionSchema()));
         properties.put("instruction", stringSchema());
@@ -3703,6 +3807,14 @@ public final class OpenAiDeV1McpContractAdapter {
     private static Map<String, Object> modelFacingOpaqueReferenceSchema() {
         return Map.of(
                 "type", "string",
+                "description", "Copy unchanged from the newest SkillPilot result.");
+    }
+
+    private static Map<String, Object> boundedOpaqueReferenceSchema(int maxLength) {
+        return Map.of(
+                "type", "string",
+                "minLength", 1,
+                "maxLength", maxLength,
                 "description", "Copy unchanged from the newest SkillPilot result.");
     }
 

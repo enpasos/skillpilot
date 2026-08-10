@@ -279,6 +279,39 @@ class CoachToolFacadeTest {
     }
 
     @Test
+    void personalizationRewindUsesTheServerAuthoritativeReferenceAndReturnsFreshState() {
+        String skillpilotId = "learner-1";
+        String rewindId = "rewind-opaque-current";
+        UnifiedLearnerStateResponse updatedState = learnerState(skillpilotId, "setPersonalization");
+        when(learnerService.getCoachLearnerState(skillpilotId)).thenReturn(updatedState);
+
+        UnifiedLearnerStateResponse result = facade.rewindPersonalization(skillpilotId, rewindId);
+
+        assertThat(result).isSameAs(updatedState);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).rewindPersonalization(skillpilotId, rewindId);
+        ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void personalizationRewindRejectsBlankAndOversizedReferencesBeforeTheServiceMutation() {
+        assertThatThrownBy(() -> facade.rewindPersonalization("learner-1", "   "))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+        assertThatThrownBy(() -> facade.rewindPersonalization("learner-1", "r".repeat(501)))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        verify(learnerService, org.mockito.Mockito.times(2))
+                .assertWritableLearningSession("learner-1");
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
     void invalidMasteryRequestIsRejectedBeforeStateEvaluation() {
         CoachToolFacade.MasteryResult result = facade.setMastery("learner-1", null);
 

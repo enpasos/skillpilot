@@ -52,6 +52,15 @@ architecture no longer processes that ID.
 - the native curriculum selector remains on its explicit disabled placeholder
   until the learner chooses an option, so browser auto-selection cannot swallow
   the only `change` event for a single visible curriculum
+- completed setup steps remain visible like their SkillPilot Web UI
+  counterparts: the selected curriculum, current choices, completed
+  personalisation decisions, and independent preserved decisions come only
+  from the newest server-authoritative snapshot; curriculum changes reload the
+  current navigation catalog and personalisation changes submit only the
+  newest opaque rewind reference
+- setup completion opens a final review with an explicit `Start learning`
+  action; no host message is sent merely because the last setup mutation
+  succeeded
 - the permanent SkillPilot ID is confined to the direct HTTPS request/response
   and ephemeral component memory or recovery DOM; it never enters chat, model
   context, MCP arguments or results (including `_meta`), `window.openai`,
@@ -67,11 +76,15 @@ architecture no longer processes that ID.
   ChatGPT Web compatibility pair `window.openai.callTool` plus
   `window.openai.sendFollowUpMessage`; one start attempt fixes exactly one
   complete channel before dispatch and never double-calls across channels
-- `get_skillpilot_context`, `set_skillpilot_curriculum`, and
+- `get_skillpilot_context`, `get_skillpilot_navigation`,
+  `set_skillpilot_curriculum`, and
   `set_skillpilot_personalization` remain model- and app-visible, UI-unbound,
   and explicitly component-callable; every write uses the newest exact
   `stateVersion` and a retry-safe `clientRequestId`, and none carries the
   permanent SkillPilot ID
+- after the host accepts the final short message, the component clears itself
+  and requests teardown exactly once; it never offers a misleading new-start
+  action while the Learning Coach is beginning its response
 - irreversible request binding, a random 256-bit learning-session handle, and
   an AEAD-encrypted short-lived delivery record provide crash-safe exact retries
   without persisting the SkillPilot ID, raw capability, session token, request

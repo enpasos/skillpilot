@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "1f294936ce8b875d815ec6dc292392d90cf51af94441d58cf64eb11aa3dd77a6",
+  "contractSha256" : "e354d059acc93a5855c232320450887070909a7f34576b69a91e0fdccd062536",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -71,6 +71,31 @@
     "name" : "skillpilot-goal-visualization-v1-retained-157aab83",
     "title" : "SkillPilot learning-goal image",
     "uri" : "ui://skillpilot/coach/v1/sha256-157aab83e83d6fcf208c4a1ae138c020aa4f117e9b990ba78d029b570fb9644c/goal-visualization.html"
+  }, {
+    "description" : "Private direct-start component for an existing SkillPilot learner ID.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "connect_domains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ ]
+      },
+      "openai/widgetDescription" : "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+      "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+      "openai/widgetPrefersBorder" : true,
+      "ui" : {
+        "csp" : {
+          "connectDomains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+          "resourceDomains" : [ ]
+        },
+        "domain" : "https://mcp-coach-v1.skillpilot.com",
+        "prefersBorder" : true
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-start-v1-current",
+    "title" : "Start SkillPilot Coach",
+    "uri" : "ui://skillpilot/coach/v1/sha256-28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1/skillpilot-start.html"
   }, {
     "description" : "Displays the approved image for the active atomic learning goal.",
     "icons" : [ ],
@@ -308,7 +333,7 @@
       }
     },
     "mimeType" : "text/html;profile=mcp-app",
-    "name" : "skillpilot-start-v1-current",
+    "name" : "skillpilot-start-v1-retained-f87d979e",
     "title" : "Start SkillPilot Coach",
     "uri" : "ui://skillpilot/coach/v1/sha256-f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c/skillpilot-start.html"
   } ],
@@ -707,6 +732,122 @@
           "required" : [ "paths" ],
           "type" : "object"
         },
+        "personalizationHistory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "completedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "rewindId" : {
+                    "maxLength" : 500,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "currentDecision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "rewindId" : {
+                  "maxLength" : 500,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "selectedLabels" : {
+                  "items" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "maxItems" : 32,
+                  "minItems" : 0,
+                  "type" : "array",
+                  "uniqueItems" : true
+                },
+                "stageLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+              "type" : "object"
+            },
+            "preservedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
+          "type" : "object"
+        },
         "policies" : {
           "items" : {
             "minLength" : 1,
@@ -963,6 +1104,7 @@
       "type" : "object"
     },
     "meta" : {
+      "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
@@ -979,6 +1121,61 @@
         "contractMajor" : {
           "const" : 1,
           "type" : "integer"
+        },
+        "curriculum" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "curriculumId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
+          "type" : "object"
         },
         "curriculumRevision" : {
           "minLength" : 1,
@@ -1265,14 +1462,14 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c/skillpilot-start.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1/skillpilot-start.html",
       "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c/skillpilot-start.html",
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1/skillpilot-start.html",
         "visibility" : [ "model", "app" ]
       }
     },
@@ -1707,6 +1904,122 @@
                 }
               },
               "required" : [ "paths" ],
+              "type" : "object"
+            },
+            "personalizationHistory" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "completedDecisions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "groupLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "rewindId" : {
+                        "maxLength" : 500,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "selectedLabels" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 32,
+                        "minItems" : 0,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "stageLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 64,
+                  "minItems" : 0,
+                  "type" : "array"
+                },
+                "currentDecision" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "groupLabel" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "rewindId" : {
+                      "maxLength" : 500,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "selectedLabels" : {
+                      "items" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "maxItems" : 32,
+                      "minItems" : 0,
+                      "type" : "array",
+                      "uniqueItems" : true
+                    },
+                    "stageLabel" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                  "type" : "object"
+                },
+                "preservedDecisions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "groupLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "selectedLabels" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 32,
+                        "minItems" : 0,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "stageLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 64,
+                  "minItems" : 0,
+                  "type" : "array"
+                },
+                "schemaVersion" : {
+                  "maximum" : 1,
+                  "minimum" : 1,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
               "type" : "object"
             },
             "policies" : {
@@ -2560,6 +2873,122 @@
           "required" : [ "paths" ],
           "type" : "object"
         },
+        "personalizationHistory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "completedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "rewindId" : {
+                    "maxLength" : 500,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "currentDecision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "rewindId" : {
+                  "maxLength" : 500,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "selectedLabels" : {
+                  "items" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "maxItems" : 32,
+                  "minItems" : 0,
+                  "type" : "array",
+                  "uniqueItems" : true
+                },
+                "stageLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+              "type" : "object"
+            },
+            "preservedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
+          "type" : "object"
+        },
         "policies" : {
           "items" : {
             "minLength" : 1,
@@ -3072,6 +3501,122 @@
             }
           },
           "required" : [ "paths" ],
+          "type" : "object"
+        },
+        "personalizationHistory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "completedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "rewindId" : {
+                    "maxLength" : 500,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "currentDecision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "rewindId" : {
+                  "maxLength" : 500,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "selectedLabels" : {
+                  "items" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "maxItems" : 32,
+                  "minItems" : 0,
+                  "type" : "array",
+                  "uniqueItems" : true
+                },
+                "stageLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+              "type" : "object"
+            },
+            "preservedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
           "type" : "object"
         },
         "policies" : {
@@ -3640,6 +4185,122 @@
               "required" : [ "paths" ],
               "type" : "object"
             },
+            "personalizationHistory" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "completedDecisions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "groupLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "rewindId" : {
+                        "maxLength" : 500,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "selectedLabels" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 32,
+                        "minItems" : 0,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "stageLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 64,
+                  "minItems" : 0,
+                  "type" : "array"
+                },
+                "currentDecision" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "groupLabel" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "rewindId" : {
+                      "maxLength" : 500,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "selectedLabels" : {
+                      "items" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "maxItems" : 32,
+                      "minItems" : 0,
+                      "type" : "array",
+                      "uniqueItems" : true
+                    },
+                    "stageLabel" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                  "type" : "object"
+                },
+                "preservedDecisions" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "groupLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "selectedLabels" : {
+                        "items" : {
+                          "maxLength" : 320,
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "maxItems" : 32,
+                        "minItems" : 0,
+                        "type" : "array",
+                        "uniqueItems" : true
+                      },
+                      "stageLabel" : {
+                        "maxLength" : 320,
+                        "minLength" : 1,
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                    "type" : "object"
+                  },
+                  "maxItems" : 64,
+                  "minItems" : 0,
+                  "type" : "array"
+                },
+                "schemaVersion" : {
+                  "maximum" : 1,
+                  "minimum" : 1,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
+              "type" : "object"
+            },
             "policies" : {
               "items" : {
                 "minLength" : 1,
@@ -3786,10 +4447,15 @@
       "readOnlyHint" : false,
       "title" : "Continue personalisation"
     },
-    "description" : "Executes exactly one currently allowed personalisation action. This may be a subject choice or explicit completion of the current selection group. Pass only the opaque optionId from structuredContent unchanged. Never derive it from labels.",
+    "description" : "Executes exactly one currently allowed personalisation action or reopens exactly one completed decision. Pass either optionId or rewindId, never both, and copy the opaque reference from the newest structuredContent unchanged. Never derive it from labels.",
     "icons" : [ ],
     "inputSchema" : {
       "additionalProperties" : false,
+      "oneOf" : [ {
+        "required" : [ "optionId" ]
+      }, {
+        "required" : [ "rewindId" ]
+      } ],
       "properties" : {
         "clientRequestId" : {
           "description" : "Create a new UUID for every new subject-matter write attempt; reuse the same UUID for an unchanged retry.",
@@ -3806,10 +4472,18 @@
         },
         "optionId" : {
           "description" : "Copy unchanged from the newest SkillPilot result.",
+          "maxLength" : 500,
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "rewindId" : {
+          "description" : "Copy unchanged from the newest SkillPilot result.",
+          "maxLength" : 500,
+          "minLength" : 1,
           "type" : "string"
         }
       },
-      "required" : [ "optionId", "learningSessionId", "expectedStateVersion", "clientRequestId" ],
+      "required" : [ "learningSessionId", "expectedStateVersion", "clientRequestId" ],
       "type" : "object"
     },
     "meta" : {
@@ -4182,6 +4856,122 @@
             }
           },
           "required" : [ "paths" ],
+          "type" : "object"
+        },
+        "personalizationHistory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "completedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "rewindId" : {
+                    "maxLength" : 500,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "currentDecision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "rewindId" : {
+                  "maxLength" : 500,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "selectedLabels" : {
+                  "items" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "maxItems" : 32,
+                  "minItems" : 0,
+                  "type" : "array",
+                  "uniqueItems" : true
+                },
+                "stageLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+              "type" : "object"
+            },
+            "preservedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
           "type" : "object"
         },
         "policies" : {
@@ -4700,6 +5490,122 @@
             }
           },
           "required" : [ "paths" ],
+          "type" : "object"
+        },
+        "personalizationHistory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "completedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "rewindId" : {
+                    "maxLength" : 500,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "currentDecision" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "groupLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "rewindId" : {
+                  "maxLength" : 500,
+                  "minLength" : 1,
+                  "type" : "string"
+                },
+                "selectedLabels" : {
+                  "items" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "maxItems" : 32,
+                  "minItems" : 0,
+                  "type" : "array",
+                  "uniqueItems" : true
+                },
+                "stageLabel" : {
+                  "maxLength" : 320,
+                  "minLength" : 1,
+                  "type" : "string"
+                }
+              },
+              "required" : [ "rewindId", "stageLabel", "groupLabel", "selectedLabels" ],
+              "type" : "object"
+            },
+            "preservedDecisions" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "groupLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "selectedLabels" : {
+                    "items" : {
+                      "maxLength" : 320,
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "maxItems" : 32,
+                    "minItems" : 0,
+                    "type" : "array",
+                    "uniqueItems" : true
+                  },
+                  "stageLabel" : {
+                    "maxLength" : 320,
+                    "minLength" : 1,
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "stageLabel", "groupLabel", "selectedLabels" ],
+                "type" : "object"
+              },
+              "maxItems" : 64,
+              "minItems" : 0,
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "completedDecisions", "preservedDecisions" ],
           "type" : "object"
         },
         "policies" : {

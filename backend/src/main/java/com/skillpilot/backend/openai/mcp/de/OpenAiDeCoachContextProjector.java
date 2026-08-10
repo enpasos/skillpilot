@@ -17,6 +17,7 @@ import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -29,6 +30,10 @@ public final class OpenAiDeCoachContextProjector {
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
     private static final Pattern SERVER_BUILD_PATTERN = Pattern.compile("^[0-9a-f]{40}$");
+    private static final int MAX_PERSONALIZATION_DECISIONS = 64;
+    private static final int MAX_PERSONALIZATION_SELECTIONS = 32;
+    private static final int MAX_PERSONALIZATION_LABEL_LENGTH = 320;
+    private static final int MAX_PERSONALIZATION_REWIND_ID_LENGTH = 500;
 
     private final CoachStateProjection stateProjection;
     private final String publicBaseUrl;
@@ -84,6 +89,13 @@ public final class OpenAiDeCoachContextProjector {
                 state,
                 requiredAction,
                 options);
+        String rootLandscapeId = state.curriculum() == null
+                ? null
+                : state.curriculum().getCurriculumId();
+        OpenAiDeCoachContext.PersonalizationHistory personalizationHistory = personalizationHistory(
+                personalizationPlan,
+                rootLandscapeId,
+                communicationLocale);
         OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
                 ? personalizationDecision(personalizationPlan)
                 : null;
@@ -103,12 +115,13 @@ public final class OpenAiDeCoachContextProjector {
                 valueOrEmpty(state.learningState()),
                 valueOrEmpty(requiredAction),
                 interactionMode,
-                curriculum(state.curriculum()),
+                curriculumSummary(state.curriculum()),
                 orientation,
                 orientationOutlook,
                 activeGoal(state.curriculum(), activeGoal),
                 options,
                 curriculumCatalog,
+                personalizationHistory,
                 decision,
                 actionableFrontier(state, requiredAction, activeGoal),
                 resources(state.curriculum(), activeGoal),
@@ -139,15 +152,23 @@ public final class OpenAiDeCoachContextProjector {
         List<LandscapeSummary> curricula = machine == null || machine.curriculumOptions() == null
                 ? List.of()
                 : machine.curriculumOptions();
+        return curriculumCatalog(curricula, options);
+    }
+
+    public OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(
+            List<LandscapeSummary> curricula,
+            List<OpenAiDeCoachContext.Option> options) {
+        List<LandscapeSummary> safeCurricula = curricula == null ? List.of() : curricula;
+        List<OpenAiDeCoachContext.Option> safeOptions = options == null ? List.of() : options;
         List<OpenAiDeCoachContext.CurriculumCatalogEntry> entries = new ArrayList<>();
         int optionIndex = 0;
-        for (LandscapeSummary curriculum : curricula) {
+        for (LandscapeSummary curriculum : safeCurricula) {
             OpenAiDeCoachContext.Option option = curriculumOption(curriculum);
             if (option == null) {
                 continue;
             }
-            if (optionIndex >= options.size()
-                    || !Objects.equals(options.get(optionIndex).id(), option.id())) {
+            if (optionIndex >= safeOptions.size()
+                    || !Objects.equals(safeOptions.get(optionIndex).id(), option.id())) {
                 throw new IllegalStateException(
                         "Curriculum catalog must stay bound one-to-one to published options.");
             }
@@ -158,11 +179,165 @@ public final class OpenAiDeCoachContextProjector {
                     OpenAiDeCurriculumOptionFacets.sortRank(curriculum)));
             optionIndex++;
         }
-        if (optionIndex != options.size()) {
+        if (optionIndex != safeOptions.size()) {
             throw new IllegalStateException(
                     "Curriculum catalog must stay bound one-to-one to published options.");
         }
         return new OpenAiDeCoachContext.CurriculumCatalog(1, entries);
+    }
+
+    public OpenAiDeCoachContext.PersonalizationHistory personalizationHistory(
+            PersonalizationPlan plan,
+            String rootLandscapeId,
+            String communicationLocale) {
+        if (plan == null || !plan.valid()) {
+            return null;
+        }
+        requireBounded("completed personalization decisions", plan.completedDecisions().size());
+        requireBounded("preserved personalization decisions", plan.preservedDecisions().size());
+        if (!plan.currentSelectedOptions().isEmpty() && blank(plan.currentRewindId())) {
+            throw new IllegalStateException(
+                    "Current personalization history requires an opaque rewind reference.");
+        }
+        LinkedHashSet<String> editableRewindIds = new LinkedHashSet<>();
+        if (!plan.currentSelectedOptions().isEmpty()) {
+            editableRewindIds.add(plan.currentRewindId());
+        }
+        for (PersonalizationPlan.CompletedDecision completed : plan.completedDecisions()) {
+            if (completed == null) {
+                continue;
+            }
+            if (blank(completed.rewindId())) {
+                throw new IllegalStateException(
+                        "Completed personalization history requires an opaque rewind reference.");
+            }
+            if (!editableRewindIds.add(completed.rewindId())) {
+                throw new IllegalStateException(
+                        "Editable personalization history contains a duplicate rewind reference.");
+            }
+        }
+        OpenAiDeCoachContext.PersonalizationDecision current =
+                plan.currentSelectedOptions().isEmpty()
+                        ? null
+                        : personalizationHistoryDecision(
+                                plan.currentRewindId(),
+                                plan.stageLabel(),
+                                plan.stageLabelEn(),
+                                plan.groupLabel(),
+                                plan.groupLabelEn(),
+                                plan.currentSelectedOptions(),
+                                rootLandscapeId,
+                                communicationLocale,
+                                true);
+        List<OpenAiDeCoachContext.PersonalizationDecision> completed = plan.completedDecisions().stream()
+                .filter(Objects::nonNull)
+                .map(entry -> personalizationHistoryDecision(
+                        entry.rewindId(),
+                        entry.stageLabel(),
+                        entry.stageLabelEn(),
+                        entry.groupLabel(),
+                        entry.groupLabelEn(),
+                        entry.selectedOptions(),
+                        rootLandscapeId,
+                        communicationLocale,
+                        true))
+                .toList();
+        List<OpenAiDeCoachContext.PersonalizationDecision> preserved = plan.preservedDecisions().stream()
+                .filter(Objects::nonNull)
+                .map(entry -> personalizationHistoryDecision(
+                        null,
+                        entry.stageLabel(),
+                        entry.stageLabelEn(),
+                        entry.groupLabel(),
+                        entry.groupLabelEn(),
+                        entry.selectedOptions(),
+                        rootLandscapeId,
+                        communicationLocale,
+                        false))
+                .toList();
+        if (current == null && completed.isEmpty() && preserved.isEmpty()) {
+            return null;
+        }
+        return new OpenAiDeCoachContext.PersonalizationHistory(1, current, completed, preserved);
+    }
+
+    private OpenAiDeCoachContext.PersonalizationDecision personalizationHistoryDecision(
+            String rewindId,
+            String stageLabel,
+            String stageLabelEn,
+            String groupLabel,
+            String groupLabelEn,
+            List<PersonalizationPlan.Option> selectedOptions,
+            String rootLandscapeId,
+            String communicationLocale,
+            boolean rewindRequired) {
+        if (rewindRequired && blank(rewindId)) {
+            throw new IllegalStateException(
+                    "Editable personalization history requires an opaque rewind reference.");
+        }
+        if (rewindRequired
+                && (!rewindId.equals(rewindId.trim())
+                        || rewindId.length() > MAX_PERSONALIZATION_REWIND_ID_LENGTH)) {
+            throw new IllegalStateException(
+                    "Editable personalization history contains an invalid rewind reference.");
+        }
+        if (!rewindRequired && !blank(rewindId)) {
+            throw new IllegalStateException(
+                    "Preserved personalization history must not expose a rewind reference.");
+        }
+        List<PersonalizationPlan.Option> selections = selectedOptions == null
+                ? List.of()
+                : selectedOptions;
+        if (selections.size() > MAX_PERSONALIZATION_SELECTIONS) {
+            throw new IllegalStateException("Personalization selection exceeds the bounded public contract.");
+        }
+        List<String> selectedLabels = personalizationOptions(
+                        selections,
+                        rootLandscapeId,
+                        communicationLocale).stream()
+                .map(OpenAiDeCoachContext.Option::label)
+                .filter(label -> !blank(label))
+                .map(this::boundedPersonalizationLabel)
+                .distinct()
+                .toList();
+        return new OpenAiDeCoachContext.PersonalizationDecision(
+                rewindRequired ? rewindId : null,
+                boundedPersonalizationLabel(localizedAuthoredLabel(
+                        stageLabel,
+                        stageLabelEn,
+                        communicationLocale)),
+                boundedPersonalizationLabel(localizedAuthoredLabel(
+                        groupLabel,
+                        groupLabelEn,
+                        communicationLocale)),
+                selectedLabels);
+    }
+
+    private String localizedAuthoredLabel(
+            String german,
+            String english,
+            String communicationLocale) {
+        return OpenAiCoachLocale.isEnglish(communicationLocale)
+                ? fallback(english, german)
+                : german;
+    }
+
+    private String boundedPersonalizationLabel(String label) {
+        String normalized = compact(label, Integer.MAX_VALUE);
+        if (blank(normalized)) {
+            throw new IllegalStateException("Personalization history labels must not be empty.");
+        }
+        if (normalized.length() > MAX_PERSONALIZATION_LABEL_LENGTH) {
+            throw new IllegalStateException(
+                    "Personalization history label exceeds the bounded public contract.");
+        }
+        return normalized;
+    }
+
+    private static void requireBounded(String description, int size) {
+        if (size > MAX_PERSONALIZATION_DECISIONS) {
+            throw new IllegalStateException(description + " exceed the bounded public contract.");
+        }
     }
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
@@ -346,10 +521,14 @@ public final class OpenAiDeCoachContextProjector {
                 continue;
             }
             if (option.kind() == PersonalizationPlan.OptionKind.SCOPE_VALUE) {
+                String scopeLabel = localizedAuthoredLabel(
+                        fallback(option.scopeLabel(), option.scopeValue()),
+                        option.scopeLabelEn(),
+                        communicationLocale);
                 add(options, new OpenAiDeCoachContext.Option(
                         "personalization",
                         option.optionId(),
-                        fallback(option.scopeLabel(), option.scopeValue()),
+                        scopeLabel,
                         null,
                         List.of(),
                         List.of(),
@@ -362,10 +541,16 @@ public final class OpenAiDeCoachContextProjector {
             }
             boolean selectionOnly = blank(option.filterId());
             boolean rootOption = landscapeId.equals(rootLandscapeId);
-            String landscapeLabel = fallback(option.landscapeLabel(), landscapeId);
+            String landscapeLabel = localizedAuthoredLabel(
+                    fallback(option.landscapeLabel(), landscapeId),
+                    option.landscapeLabelEn(),
+                    communicationLocale);
             String filterLabel = selectionOnly
                     ? null
-                    : fallback(option.filterLabel(), option.filterId());
+                    : localizedAuthoredLabel(
+                            fallback(option.filterLabel(), option.filterId()),
+                            option.filterLabelEn(),
+                            communicationLocale);
             add(options, new OpenAiDeCoachContext.Option(
                     "personalization",
                     option.optionId(),
@@ -467,7 +652,7 @@ public final class OpenAiDeCoachContextProjector {
         return List.copyOf(options);
     }
 
-    private OpenAiDeCoachContext.Curriculum curriculum(LandscapeSummary curriculum) {
+    public OpenAiDeCoachContext.Curriculum curriculumSummary(LandscapeSummary curriculum) {
         return curriculum == null
                 ? null
                 : new OpenAiDeCoachContext.Curriculum(

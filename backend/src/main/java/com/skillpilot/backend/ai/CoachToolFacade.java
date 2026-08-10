@@ -324,6 +324,18 @@ public class CoachToolFacade {
                 request.optionId());
     }
 
+    /** Reopens exactly one server-authoritative authored personalization decision. */
+    public UnifiedLearnerStateResponse rewindPersonalization(String skillpilotId, String rewindId) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        if (rewindId == null || rewindId.isBlank() || rewindId.trim().length() > 500) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "rewindId must contain between 1 and 500 characters.");
+        }
+        learnerService.rewindPersonalization(skillpilotId, rewindId);
+        return learnerService.getCoachLearnerState(skillpilotId);
+    }
+
     public RedeemedCoachSession redeemStartCode(String startCode, String language) {
         ChatSessionService.RedeemedSession session = chatSessionService.redeemStartCode(startCode, language);
         return new RedeemedCoachSession(

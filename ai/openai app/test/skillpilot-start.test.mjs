@@ -506,9 +506,12 @@ test("only the one exact first-party fallback is accepted", async () => {
 
 test("setup parser and call builders expose only the bounded session-scoped setup contract", async () => {
   const {
+    createSkillPilotCurriculumNavigationCall,
     createSkillPilotGetContextCall,
+    createSkillPilotPersonalizationRewindCall,
     createSkillPilotSetupMutationCall,
     learningSessionIdFromStartMessage,
+    skillPilotCurriculumNavigationStateFromToolResult,
     skillPilotSetupStateFromToolResult
   } = await loadStartContract();
   assert.equal(
@@ -521,6 +524,10 @@ test("setup parser and call builders expose only the bounded session-scoped setu
   assert.deepEqual(createSkillPilotGetContextCall(learningSessionId), {
     name: "get_skillpilot_context",
     arguments: { learningSessionId }
+  });
+  assert.deepEqual(createSkillPilotCurriculumNavigationCall(learningSessionId), {
+    name: "get_skillpilot_navigation",
+    arguments: { learningSessionId, target: "curriculum" }
   });
 
   const curriculumState = {
@@ -573,6 +580,20 @@ test("setup parser and call builders expose only the bounded session-scoped setu
       learningSessionId,
       curriculumId: "DE_GYMNASIUM",
       expectedStateVersion: 3,
+      clientRequestId: requestId
+    }
+  });
+  assert.deepEqual(createSkillPilotPersonalizationRewindCall(
+    learningSessionId,
+    12,
+    "rewind-subjects",
+    requestId
+  ), {
+    name: "set_skillpilot_personalization",
+    arguments: {
+      learningSessionId,
+      rewindId: "rewind-subjects",
+      expectedStateVersion: 12,
       clientRequestId: requestId
     }
   });
@@ -660,13 +681,187 @@ test("setup parser and call builders expose only the bounded session-scoped setu
       ...curriculumState,
       stateVersion: 5,
       requiredAction: "setScope",
-      options: [{ kind: "scope", id: "never-forwarded", label: "Scope" }]
+      options: [{ kind: "scope", id: "never-forwarded", label: "Scope" }],
+      curriculumCatalog: undefined,
+      curriculum: {
+        curriculumId: "DE_GYMNASIUM",
+        title: "Gymnasium (DE)",
+        subject: "Mathematik"
+      },
+      personalizationHistory: {
+        schemaVersion: 1,
+        currentDecision: {
+          rewindId: "rewind-course",
+          stageLabel: "Kursprofil",
+          groupLabel: "Kursniveau",
+          selectedLabels: ["Grundkurs"]
+        },
+        completedDecisions: [{
+          rewindId: "rewind-stage",
+          stageLabel: "Schulstufe",
+          groupLabel: "Aktuelle Schulstufe",
+          selectedLabels: ["Sekundarstufe II"]
+        }],
+        preservedDecisions: [{
+          stageLabel: "Bundesland",
+          groupLabel: "Land",
+          selectedLabels: ["Hessen"]
+        }]
+      }
     },
     isError: false
   }, "de"), {
     stateVersion: 5,
     communicationLocale: "de",
     requiredAction: null,
-    options: []
+    options: [],
+    curriculum: {
+      curriculumId: "DE_GYMNASIUM",
+      title: "Gymnasium (DE)",
+      subject: "Mathematik"
+    },
+    personalizationHistory: {
+      schemaVersion: 1,
+      currentDecision: {
+        rewindId: "rewind-course",
+        stageLabel: "Kursprofil",
+        groupLabel: "Kursniveau",
+        selectedLabels: ["Grundkurs"]
+      },
+      completedDecisions: [{
+        rewindId: "rewind-stage",
+        stageLabel: "Schulstufe",
+        groupLabel: "Aktuelle Schulstufe",
+        selectedLabels: ["Sekundarstufe II"]
+      }],
+      preservedDecisions: [{
+        stageLabel: "Bundesland",
+        groupLabel: "Land",
+        selectedLabels: ["Hessen"]
+      }]
+    }
   });
+
+  const navigationContent = {
+    contractMajor: 1,
+    stateVersion: 5,
+    stateSchemaVersion: 1,
+    workflowVersion: "flow-v1",
+    curriculumRevision: "revision-v1",
+    communicationLocale: "de",
+    extensions: {},
+    target: "curriculum",
+    requiredAction: "setCurriculum",
+    curriculum: {
+      curriculumId: "DE_GYMNASIUM",
+      title: "Gymnasium (DE)"
+    },
+    curriculumCatalog: curriculumState.curriculumCatalog,
+    options: curriculumState.options,
+    instruction: "Wähle ein Curriculum."
+  };
+  assert.deepEqual(skillPilotCurriculumNavigationStateFromToolResult({
+    structuredContent: navigationContent,
+    isError: false
+  }, "de"), {
+    stateVersion: 5,
+    communicationLocale: "de",
+    requiredAction: "setCurriculum",
+    options: [{
+      id: "DE_GYMNASIUM",
+      label: "Gymnasium (DE)",
+      description: "Schulische Lernumgebung",
+      category: "SCHOOL",
+      qualityStatus: "green",
+      sortRank: 0
+    }],
+    curriculum: {
+      curriculumId: "DE_GYMNASIUM",
+      title: "Gymnasium (DE)"
+    }
+  });
+  const selectedLabelBoundaryState = {
+    stateVersion: 7,
+    communicationLocale: "de",
+    requiredAction: "setScope",
+    options: [],
+    curriculum: {
+      curriculumId: "DE_GYMNASIUM",
+      title: "Gymnasium (DE)"
+    },
+    personalizationHistory: {
+      schemaVersion: 1,
+      completedDecisions: [{
+        rewindId: "rewind-boundary",
+        stageLabel: "Fächer",
+        groupLabel: "Fach auswählen",
+        selectedLabels: ["A".repeat(320)]
+      }],
+      preservedDecisions: []
+    }
+  };
+  assert.equal(
+    skillPilotSetupStateFromToolResult({
+      structuredContent: selectedLabelBoundaryState,
+      isError: false
+    }, "de")?.personalizationHistory?.completedDecisions[0]?.selectedLabels[0],
+    "A".repeat(320)
+  );
+  assert.equal(skillPilotSetupStateFromToolResult({
+    structuredContent: {
+      ...selectedLabelBoundaryState,
+      personalizationHistory: {
+        ...selectedLabelBoundaryState.personalizationHistory,
+        completedDecisions: [{
+          ...selectedLabelBoundaryState.personalizationHistory.completedDecisions[0],
+          selectedLabels: ["A".repeat(321)]
+        }]
+      }
+    },
+    isError: false
+  }, "de"), undefined);
+  for (const invalidNavigation of [
+    { ...navigationContent, target: "personalization" },
+    { ...navigationContent, requiredAction: "setPersonalization" },
+    Object.fromEntries(Object.entries(navigationContent).filter(([key]) =>
+      key !== "curriculum"
+    )),
+    { ...navigationContent, extra: true },
+    { ...navigationContent, decision: {} },
+    { ...navigationContent, communicationLocale: "en" }
+  ]) {
+    assert.equal(skillPilotCurriculumNavigationStateFromToolResult({
+      structuredContent: invalidNavigation,
+      isError: false
+    }, "de"), undefined);
+  }
+  assert.equal(skillPilotSetupStateFromToolResult({
+    structuredContent: {
+      ...curriculumState,
+      requiredAction: "setScope",
+      curriculumCatalog: undefined
+    },
+    isError: false
+  }, "de"), undefined, "complete setup requires an authoritative curriculum summary");
+  assert.equal(skillPilotSetupStateFromToolResult({
+    structuredContent: {
+      ...curriculumState,
+      stateVersion: 6,
+      requiredAction: "setPersonalization",
+      curriculumCatalog: undefined,
+      options: [{
+        kind: "personalization",
+        id: "stage-sek-i",
+        label: "Sekundarstufe I"
+      }],
+      decision: {
+        stageLabel: "Schulstufe",
+        groupLabel: "Aktuelle Schulstufe",
+        minSelections: 1,
+        maxSelections: 1,
+        selectedCount: 0
+      }
+    },
+    isError: false
+  }, "de"), undefined, "personalisation requires an authoritative curriculum summary");
 });

@@ -151,7 +151,9 @@ public final class CurriculumPersonalizationPlanner {
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
                                     instance.id(),
-                                    state.selected()));
+                                    state.selected(),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId())));
                         }
                         continue;
                     }
@@ -169,8 +171,10 @@ public final class CurriculumPersonalizationPlanner {
                         return PersonalizationPlan.selection(
                                 stage.getId(),
                                 firstNonBlank(stage.getLabel(), stage.getId()),
+                                firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                 group.getId(),
                                 firstNonBlank(group.getLabel(), group.getId()),
+                                firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                 instance.id(),
                                 min,
                                 max,
@@ -193,8 +197,10 @@ public final class CurriculumPersonalizationPlanner {
                     return PersonalizationPlan.selection(
                             stage.getId(),
                             firstNonBlank(stage.getLabel(), stage.getId()),
+                            firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                             group.getId(),
                             firstNonBlank(group.getLabel(), group.getId()),
+                            firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                             instance.id(),
                             min,
                             max,
@@ -1290,14 +1296,17 @@ public final class CurriculumPersonalizationPlanner {
                             selections.add(new StoredSelection(
                                     stage.getId(),
                                     firstNonBlank(stage.getLabel(), stage.getId()),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                     instanceId,
                                     landscapeId,
                                     PersonalizationPlan.OptionKind.VALUE,
                                     canonicalFilter == null
                                             ? trimmedFilter
                                             : canonicalFilter,
+                                    null,
                                     null,
                                     null,
                                     null,
@@ -1311,11 +1320,14 @@ public final class CurriculumPersonalizationPlanner {
                             selections.add(new StoredSelection(
                                     stage.getId(),
                                     firstNonBlank(stage.getLabel(), stage.getId()),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                     group.getId(),
                                     landscapeId,
                                     PersonalizationPlan.OptionKind.VALUE,
+                                    null,
                                     null,
                                     null,
                                     null,
@@ -1344,14 +1356,17 @@ public final class CurriculumPersonalizationPlanner {
                             selections.add(new StoredSelection(
                                     stage.getId(),
                                     firstNonBlank(stage.getLabel(), stage.getId()),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                     instanceId,
                                     landscapeId,
                                     PersonalizationPlan.OptionKind.VALUE,
                                     canonicalFilter == null
                                             ? trimmedFilter
                                             : canonicalFilter,
+                                    null,
                                     null,
                                     null,
                                     null,
@@ -1381,14 +1396,17 @@ public final class CurriculumPersonalizationPlanner {
                             selections.add(new StoredSelection(
                                     stage.getId(),
                                     firstNonBlank(stage.getLabel(), stage.getId()),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                     instanceId,
                                     landscapeId,
                                     PersonalizationPlan.OptionKind.VALUE,
                                     canonicalFilter == null
                                             ? trimmedFilter
                                             : canonicalFilter,
+                                    null,
                                     null,
                                     null,
                                     null,
@@ -1430,8 +1448,10 @@ public final class CurriculumPersonalizationPlanner {
                             selections.add(new StoredSelection(
                                     stage.getId(),
                                     firstNonBlank(stage.getLabel(), stage.getId()),
+                                    firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
                                     group.getId(),
                                     firstNonBlank(group.getLabel(), group.getId()),
+                                    firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId()),
                                     instanceId,
                                     landscapeId,
                                     PersonalizationPlan.OptionKind.SCOPE_VALUE,
@@ -1439,6 +1459,12 @@ public final class CurriculumPersonalizationPlanner {
                                     source.getScopeKey(),
                                     storedScopeValue,
                                     scopeLabel,
+                                    authoredScope == null
+                                            ? scopeLabel
+                                            : firstNonBlank(
+                                                    authoredScope.getLabelEn(),
+                                                    authoredScope.getLabel(),
+                                                    authoredScope.getValue()),
                                     Boolean.TRUE.equals(settings.get("selected"))
                                             && authoredScope != null));
                         }
@@ -1618,7 +1644,11 @@ public final class CurriculumPersonalizationPlanner {
                 landscape.getSubject(),
                 landscape.getTitle(),
                 landscape.getLandscapeId());
+        String landscapeLabelEn = firstNonBlank(
+                landscape.getTitleEn(),
+                landscapeLabel);
         String filterLabel = null;
+        String filterLabelEn = null;
         if (filterId != null) {
             filterLabel = COURSE_PROFILE_COMBINED.equals(filterId)
                     ? COURSE_PROFILE_COMBINED_LABEL
@@ -1628,6 +1658,17 @@ public final class CurriculumPersonalizationPlanner {
                             .map(filter -> firstNonBlank(filter.getLabel(), filter.getId()))
                             .findFirst()
                             .orElse(filterId);
+            filterLabelEn = COURSE_PROFILE_COMBINED.equals(filterId)
+                    ? filterLabel
+                    : landscape.getFilters().stream()
+                            .filter(Objects::nonNull)
+                            .filter(filter -> filterId.equals(filter.getId()))
+                            .map(filter -> firstNonBlank(
+                                    filter.getLabelEn(),
+                                    filter.getLabel(),
+                                    filter.getId()))
+                            .findFirst()
+                            .orElse(filterLabel);
         }
         return new PersonalizationPlan.Option(
                 stableOptionId(
@@ -1644,7 +1685,13 @@ public final class CurriculumPersonalizationPlanner {
                 landscapeLabel,
                 filterId,
                 filterLabel,
-                PersonalizationPlan.OptionKind.VALUE);
+                null,
+                null,
+                null,
+                PersonalizationPlan.OptionKind.VALUE,
+                landscapeLabelEn,
+                filterLabelEn,
+                null);
     }
 
     private static PersonalizationPlan.Option scopeOption(
@@ -1659,6 +1706,9 @@ public final class CurriculumPersonalizationPlanner {
                 landscape.getSubject(),
                 landscape.getTitle(),
                 landscape.getLandscapeId());
+        String landscapeLabelEn = firstNonBlank(
+                landscape.getTitleEn(),
+                landscapeLabel);
         return new PersonalizationPlan.Option(
                 stableOptionId(
                         rootLandscapeId,
@@ -1679,7 +1729,13 @@ public final class CurriculumPersonalizationPlanner {
                 scopeKey,
                 scopeValue.getValue(),
                 scopeValue.getLabel(),
-                PersonalizationPlan.OptionKind.SCOPE_VALUE);
+                PersonalizationPlan.OptionKind.SCOPE_VALUE,
+                landscapeLabelEn,
+                null,
+                firstNonBlank(
+                        scopeValue.getLabelEn(),
+                        scopeValue.getLabel(),
+                        scopeValue.getValue()));
     }
 
     private static PersonalizationPlan.Option completionOption(
@@ -1952,7 +2008,9 @@ public final class CurriculumPersonalizationPlanner {
                 if (currentReached) {
                     prompts.add(new PersonalizationPlan.DecisionPrompt(
                             firstNonBlank(stage.getLabel(), stage.getId()),
-                            firstNonBlank(group.getLabel(), group.getId())));
+                            firstNonBlank(group.getLabel(), group.getId()),
+                            firstNonBlank(stage.getLabelEn(), stage.getLabel(), stage.getId()),
+                            firstNonBlank(group.getLabelEn(), group.getLabel(), group.getId())));
                 }
             }
         }
@@ -2110,8 +2168,10 @@ public final class CurriculumPersonalizationPlanner {
     record StoredSelection(
             String stageId,
             String stageLabel,
+            String stageLabelEn,
             String groupId,
             String groupLabel,
+            String groupLabelEn,
             String groupInstanceId,
             String landscapeId,
             PersonalizationPlan.OptionKind kind,
@@ -2119,6 +2179,7 @@ public final class CurriculumPersonalizationPlanner {
             String scopeKey,
             String scopeValue,
             String scopeLabel,
+            String scopeLabelEn,
             boolean activeAndAuthored) {
     }
 

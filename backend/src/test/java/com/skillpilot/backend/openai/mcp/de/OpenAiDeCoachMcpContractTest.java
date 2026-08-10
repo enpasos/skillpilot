@@ -93,7 +93,8 @@ class OpenAiDeCoachMcpContractTest {
             "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c",
             "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701",
             "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5",
-            "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc");
+            "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc",
+            "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -246,6 +247,7 @@ class OpenAiDeCoachMcpContractTest {
                 assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
             }
             if (OpenAiDeV1McpContractAdapter.GET_CONTEXT.equals(tool.name())
+                    || OpenAiDeV1McpContractAdapter.GET_NAVIGATION.equals(tool.name())
                     || OpenAiDeV1McpContractAdapter.SET_CURRICULUM.equals(tool.name())
                     || OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION.equals(tool.name())) {
                 assertThat(tool.meta()).containsEntry("openai/widgetAccessible", true);
@@ -956,6 +958,13 @@ class OpenAiDeCoachMcpContractTest {
                 // free of technical validators.
                 properties.remove(OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID);
             }
+            if (OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION.equals(specification.tool().name())
+                    && inputSchema.path("properties") instanceof ObjectNode properties) {
+                // The two private direct-start references have an explicit runtime-
+                // aligned size boundary. Other model-facing strings remain unbounded.
+                properties.remove("optionId");
+                properties.remove("rewindId");
+            }
             String inputSchemaJson = objectMapper.writeValueAsString(inputSchema);
 
             assertThat(inputSchemaJson)
@@ -1028,6 +1037,72 @@ class OpenAiDeCoachMcpContractTest {
                 .isEqualTo("string");
         assertThat(contextSchema.at("/properties/frontier/items/properties/semanticKind/type").asText())
                 .isEqualTo("string");
+        assertThat(contextSchema.at("/properties/personalizationHistory/type").asText())
+                .isEqualTo("object");
+        assertThat(contextSchema.at("/properties/personalizationHistory/properties/schemaVersion/minimum").asInt())
+                .isEqualTo(1);
+        assertThat(contextSchema.at("/properties/personalizationHistory/properties/schemaVersion/maximum").asInt())
+                .isEqualTo(1);
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/completedDecisions/maxItems")
+                        .asInt())
+                .isEqualTo(64);
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/completedDecisions/items/additionalProperties")
+                        .asBoolean())
+                .isFalse();
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/completedDecisions/items/properties/selectedLabels/maxItems")
+                        .asInt())
+                .isEqualTo(32);
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/completedDecisions/items/properties/selectedLabels/items/maxLength")
+                        .asInt())
+                .isEqualTo(320);
+        assertThat(java.util.stream.StreamSupport.stream(contextSchema
+                                .at("/properties/personalizationHistory/properties/currentDecision/required")
+                                .spliterator(), false)
+                        .map(JsonNode::asText)
+                        .toList())
+                .contains("rewindId");
+        assertThat(java.util.stream.StreamSupport.stream(contextSchema
+                                .at("/properties/personalizationHistory/properties/completedDecisions/items/required")
+                                .spliterator(), false)
+                        .map(JsonNode::asText)
+                        .toList())
+                .contains("rewindId");
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/preservedDecisions/items/properties")
+                        .has("rewindId"))
+                .isFalse();
+        assertThat(contextSchema
+                        .at("/properties/personalizationHistory/properties/preservedDecisions/items/additionalProperties")
+                        .asBoolean())
+                .isFalse();
+    }
+
+    @Test
+    void personalizationInputSchemaRetainsExclusiveOptionOrRewindBranchesAfterSessionWrapping() {
+        JsonNode schema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION).tool().inputSchema());
+
+        assertThat(schema.path("additionalProperties").asBoolean()).isFalse();
+        assertThat(schema.at("/properties/optionId/type").asText()).isEqualTo("string");
+        assertThat(schema.at("/properties/rewindId/type").asText()).isEqualTo("string");
+        assertThat(schema.at("/properties/optionId/minLength").asInt()).isEqualTo(1);
+        assertThat(schema.at("/properties/optionId/maxLength").asInt()).isEqualTo(500);
+        assertThat(schema.at("/properties/rewindId/minLength").asInt()).isEqualTo(1);
+        assertThat(schema.at("/properties/rewindId/maxLength").asInt()).isEqualTo(500);
+        assertThat(java.util.stream.StreamSupport.stream(schema.path("required").spliterator(), false)
+                        .map(JsonNode::asText)
+                        .toList())
+                .containsExactly(
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID);
+        assertThat(schema.path("oneOf")).hasSize(2);
+        assertThat(schema.at("/oneOf/0/required/0").asText()).isEqualTo("optionId");
+        assertThat(schema.at("/oneOf/1/required/0").asText()).isEqualTo("rewindId");
     }
 
     @Test
@@ -2504,10 +2579,23 @@ class OpenAiDeCoachMcpContractTest {
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
 
         assertThat(navigation.requiredAction()).isEqualTo("setCurriculum");
+        assertThat(navigation.curriculum()).isEqualTo(new OpenAiDeCoachContext.Curriculum(
+                "curriculum-public-id",
+                "Mathematik Oberstufe Hessen",
+                "Mathematik"));
         assertThat(navigation.options()).singleElement().satisfies(option -> {
             assertThat(option.id()).isEqualTo("curriculum-2");
             assertThat(option.label()).isEqualTo("Mathematik Hessen");
         });
+        assertThat(navigation.curriculumCatalog()).isNotNull();
+        assertThat(navigation.curriculumCatalog().entries())
+                .singleElement()
+                .satisfies(entry -> assertThat(entry.optionId()).isEqualTo("curriculum-2"));
+        assertThat(navigation.curriculumCatalog().entries())
+                .extracting(OpenAiDeCoachContext.CurriculumCatalogEntry::optionId)
+                .containsExactlyElementsOf(navigation.options().stream()
+                        .map(OpenAiDeCoachContext.Option::id)
+                        .toList());
         verify(coachTools).getCurriculumOptions(LEARNER_ID);
     }
 
@@ -2833,6 +2921,158 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(request.getValue().filters()).isEmpty();
         assertThat(request.getValue().config()).isEmpty();
         assertThat(request.getValue().optionId()).isEqualTo("po-hessen");
+    }
+
+    @Test
+    void contextLoadsPersonalizationHistoryAfterSetupHasAdvancedBeyondPersonalization() {
+        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
+        PersonalizationPlan.Option selected = new PersonalizationPlan.Option(
+                "po-private",
+                "stage-private",
+                "group-private",
+                "instance-private",
+                state.curriculum().getCurriculumId(),
+                state.curriculum().getTitle(),
+                "profile-private",
+                "Leistungskurs");
+        PersonalizationPlan plan = PersonalizationPlan.complete(
+                List.of(selected),
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "rewind-opaque",
+                        "stage-private",
+                        "Schulprofil",
+                        "group-private",
+                        "Kursprofil",
+                        "instance-private",
+                        List.of(selected))));
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
+
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        OpenAiDeCoachContext context = structured(result, OpenAiDeCoachContext.class);
+
+        assertThat(context.requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(context.personalizationHistory()).isNotNull();
+        assertThat(context.personalizationHistory().completedDecisions())
+                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-opaque",
+                        "Schulprofil",
+                        "Kursprofil",
+                        List.of("Leistungskurs")));
+        verify(coachTools).getPersonalizationPlan(LEARNER_ID);
+    }
+
+    @Test
+    void contextUsesOnlyAuthoritativeEnglishPersonalizationHistoryLabelsForEnglishSessions() {
+        sessionCommunicationLocale = "en";
+        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
+        PersonalizationPlan.Option selected = new PersonalizationPlan.Option(
+                "po-private",
+                "stage-private",
+                "group-private",
+                "instance-private",
+                state.curriculum().getCurriculumId(),
+                "Deutsches Fach",
+                "profile-private",
+                "Leistungskurs",
+                null,
+                null,
+                null,
+                PersonalizationPlan.OptionKind.VALUE,
+                "English subject",
+                "Advanced course",
+                null);
+        PersonalizationPlan plan = PersonalizationPlan.complete(
+                List.of(selected),
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "rewind-opaque",
+                        "stage-private",
+                        "Fachwahl",
+                        "group-private",
+                        "Welches Profil?",
+                        "instance-private",
+                        List.of(selected),
+                        "Choose subject",
+                        "Which profile?")));
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
+
+        OpenAiDeCoachContext context = structured(
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of()),
+                OpenAiDeCoachContext.class);
+
+        assertThat(context.personalizationHistory().completedDecisions())
+                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-opaque",
+                        "Choose subject",
+                        "Which profile?",
+                        List.of("Advanced course")));
+    }
+
+    @Test
+    void personalizationRewindForwardsTheExactOpaqueReferenceAfterSetup() {
+        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
+        when(coachTools.rewindPersonalization(LEARNER_ID, "rewind-opaque"))
+                .thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of("rewindId", "rewind-opaque"));
+
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION, result);
+        verify(coachTools).rewindPersonalization(LEARNER_ID, "rewind-opaque");
+        verify(coachTools, never()).setPersonalization(any(), any());
+    }
+
+    @Test
+    void personalizationReferenceRuntimeAccepts500CharactersAndRejectsBlankOr501() {
+        String atLimit = "r".repeat(500);
+        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
+        when(coachTools.rewindPersonalization(LEARNER_ID, atLimit)).thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+
+        McpSchema.CallToolResult accepted = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of("rewindId", atLimit));
+        McpSchema.CallToolResult blank = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of("rewindId", "   "));
+        McpSchema.CallToolResult aboveLimit = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of("rewindId", "r".repeat(501)));
+
+        assertThat(accepted.isError()).isFalse();
+        assertThat(List.of(blank, aboveLimit)).allSatisfy(result -> {
+            assertThat(result.isError()).isTrue();
+            assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                    .containsEntry("code", "INVALID_INPUT")
+                    .containsEntry("stateChanged", false));
+        });
+        verify(coachTools).rewindPersonalization(LEARNER_ID, atLimit);
+        verify(coachTools, never()).rewindPersonalization(LEARNER_ID, "r".repeat(501));
+    }
+
+    @Test
+    void personalizationRejectsMissingOrAmbiguousExclusiveReferenceWithoutMutation() {
+        McpSchema.CallToolResult missing = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of());
+        McpSchema.CallToolResult ambiguous = call(
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                Map.of("optionId", "po-opaque", "rewindId", "rewind-opaque"));
+
+        assertThat(List.of(missing, ambiguous)).allSatisfy(result -> {
+            assertThat(result.isError()).isTrue();
+            assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                    .containsEntry("code", "INVALID_INPUT")
+                    .containsEntry("stateChanged", false));
+        });
+        verify(coachTools, never()).setPersonalization(any(), any());
+        verify(coachTools, never()).rewindPersonalization(any(), any());
     }
 
     @Test

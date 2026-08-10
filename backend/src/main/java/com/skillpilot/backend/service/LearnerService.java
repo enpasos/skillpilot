@@ -8070,7 +8070,9 @@ public class LearnerService {
                                     stored.groupId(),
                                     stored.groupLabel(),
                                     stored.groupInstanceId(),
-                                    optionsByDecision.get(entry.getKey()));
+                                    optionsByDecision.get(entry.getKey()),
+                                    stored.stageLabelEn(),
+                                    stored.groupLabelEn());
                         })
                         .toList();
         return plan.withPreservedDecisions(preservedDecisions);
@@ -8102,7 +8104,12 @@ public class LearnerService {
                 stored.scopeKey(),
                 stored.scopeValue(),
                 stored.scopeLabel(),
-                stored.kind());
+                stored.kind(),
+                personalizationLandscapeLabelEn(stored.landscapeId()),
+                personalizationFilterLabelEn(
+                        stored.landscapeId(),
+                        stored.filterId()),
+                stored.scopeLabelEn());
     }
 
     private String personalizationLandscapeLabel(String landscapeId) {
@@ -8120,6 +8127,19 @@ public class LearnerService {
             return landscape.getTitle();
         }
         return landscapeId;
+    }
+
+    private String personalizationLandscapeLabelEn(String landscapeId) {
+        if (landscapeId == null || landscapeId.isBlank()) {
+            return null;
+        }
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape != null
+                && landscape.getTitleEn() != null
+                && !landscape.getTitleEn().isBlank()) {
+            return landscape.getTitleEn();
+        }
+        return personalizationLandscapeLabel(landscapeId);
     }
 
     private String personalizationFilterLabel(
@@ -8142,6 +8162,30 @@ public class LearnerService {
                         : filter.getLabel())
                 .findFirst()
                 .orElse(filterId);
+    }
+
+    private String personalizationFilterLabelEn(
+            String landscapeId,
+            String filterId) {
+        if (filterId == null || filterId.isBlank()) {
+            return null;
+        }
+        SkillLandscape landscape = landscapeService.getById(landscapeId);
+        if (landscape == null || landscape.getFilters() == null) {
+            return filterId;
+        }
+        return landscape.getFilters().stream()
+                .filter(Objects::nonNull)
+                .filter(filter -> filter.getId() != null
+                        && filter.getId().equalsIgnoreCase(filterId))
+                .map(filter -> filter.getLabelEn() == null
+                                || filter.getLabelEn().isBlank()
+                        ? (filter.getLabel() == null || filter.getLabel().isBlank()
+                                ? filter.getId()
+                                : filter.getLabel())
+                        : filter.getLabelEn())
+                .findFirst()
+                .orElseGet(() -> personalizationFilterLabel(landscapeId, filterId));
     }
 
     private void assertPersonalizationCompleteForLearning(Learner learner) {
