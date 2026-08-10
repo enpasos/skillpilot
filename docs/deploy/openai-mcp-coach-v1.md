@@ -59,7 +59,7 @@ App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
 | Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
 | Zulässige ChatGPT-Sandbox-Familie für Direct-Start-CORS | `https://*.web-sandbox.oaiusercontent.com` |
-| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html` |
+| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
 | Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
@@ -1113,8 +1113,9 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   `requiredAction=setCurriculum` rendert sie nur die veröffentlichten Optionen
   und deren vollständig 1:1 gebundene `curriculumCatalog`-Projektion. Kategorie,
   Qualitätsampel, Defaultfilter und Sortierung müssen der SkillPilot-WebGUI
-  entsprechen; Filterwechsel bleiben lokal. Erst eine ausdrückliche Auswahl
-  speichert genau eine veröffentlichte `curriculumId` über
+  entsprechen; Filterwechsel bleiben lokal. Vor der Auswahl muss der Select
+  `Curriculum wählen` statt der ersten fachlichen Option anzeigen. Erst eine
+  ausdrückliche Auswahl speichert genau eine veröffentlichte `curriculumId` über
   `set_skillpilot_curriculum`. Fehlende, doppelte oder fremde Katalogeinträge
   werden fail closed abgewiesen.
 - Bei `requiredAction=setPersonalization` rendert sie nur die neueste
