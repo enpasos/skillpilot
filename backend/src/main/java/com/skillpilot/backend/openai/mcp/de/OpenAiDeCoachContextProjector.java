@@ -80,6 +80,10 @@ public final class OpenAiDeCoachContextProjector {
                 activeGoal,
                 personalizationPlan,
                 communicationLocale);
+        OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog = curriculumCatalog(
+                state,
+                requiredAction,
+                options);
         OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
                 ? personalizationDecision(personalizationPlan)
                 : null;
@@ -104,6 +108,7 @@ public final class OpenAiDeCoachContextProjector {
                 orientationOutlook,
                 activeGoal(state.curriculum(), activeGoal),
                 options,
+                curriculumCatalog,
                 decision,
                 actionableFrontier(state, requiredAction, activeGoal),
                 resources(state.curriculum(), activeGoal),
@@ -121,6 +126,43 @@ public final class OpenAiDeCoachContextProjector {
                         completion,
                         examHasImage,
                         communicationLocale));
+    }
+
+    private OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(
+            UnifiedLearnerStateResponse state,
+            String requiredAction,
+            List<OpenAiDeCoachContext.Option> options) {
+        if (!"setCurriculum".equals(requiredAction)) {
+            return null;
+        }
+        StateMachineInfo machine = state.stateMachine();
+        List<LandscapeSummary> curricula = machine == null || machine.curriculumOptions() == null
+                ? List.of()
+                : machine.curriculumOptions();
+        List<OpenAiDeCoachContext.CurriculumCatalogEntry> entries = new ArrayList<>();
+        int optionIndex = 0;
+        for (LandscapeSummary curriculum : curricula) {
+            OpenAiDeCoachContext.Option option = curriculumOption(curriculum);
+            if (option == null) {
+                continue;
+            }
+            if (optionIndex >= options.size()
+                    || !Objects.equals(options.get(optionIndex).id(), option.id())) {
+                throw new IllegalStateException(
+                        "Curriculum catalog must stay bound one-to-one to published options.");
+            }
+            entries.add(new OpenAiDeCoachContext.CurriculumCatalogEntry(
+                    option.id(),
+                    OpenAiDeCurriculumOptionFacets.category(curriculum),
+                    OpenAiDeCurriculumOptionFacets.qualityStatus(curriculum),
+                    OpenAiDeCurriculumOptionFacets.sortRank(curriculum)));
+            optionIndex++;
+        }
+        if (optionIndex != options.size()) {
+            throw new IllegalStateException(
+                    "Curriculum catalog must stay bound one-to-one to published options.");
+        }
+        return new OpenAiDeCoachContext.CurriculumCatalog(1, entries);
     }
 
     public List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {

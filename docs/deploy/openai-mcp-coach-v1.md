@@ -59,7 +59,7 @@ App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
 | Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
 | Zulässige ChatGPT-Sandbox-Familie für Direct-Start-CORS | `https://*.web-sandbox.oaiusercontent.com` |
-| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html` |
+| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
 | Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
@@ -1111,7 +1111,12 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   extrahiert daraus ausschließlich für den Setupablauf die learningSessionId
   und ruft `get_skillpilot_context` auf. Bei
   `requiredAction=setCurriculum` rendert sie nur die veröffentlichten Optionen
-  und speichert genau eine Auswahl über `set_skillpilot_curriculum`.
+  und deren vollständig 1:1 gebundene `curriculumCatalog`-Projektion. Kategorie,
+  Qualitätsampel, Defaultfilter und Sortierung müssen der SkillPilot-WebGUI
+  entsprechen; Filterwechsel bleiben lokal. Erst eine ausdrückliche Auswahl
+  speichert genau eine veröffentlichte `curriculumId` über
+  `set_skillpilot_curriculum`. Fehlende, doppelte oder fremde Katalogeinträge
+  werden fail closed abgewiesen.
 - Bei `requiredAction=setPersonalization` rendert sie nur die neueste
   serverautoritative Entscheidung und führt jeweils genau einen Schritt über
   `set_skillpilot_personalization` aus. Beide Schreibwerkzeuge erhalten

@@ -14,6 +14,7 @@ public record OpenAiDeCoachContext(
         OrientationOutlook orientationOutlook,
         ActiveGoal activeGoal,
         List<Option> options,
+        CurriculumCatalog curriculumCatalog,
         Decision decision,
         List<Goal> frontier,
         List<Resource> resources,
@@ -97,6 +98,20 @@ public record OpenAiDeCoachContext(
             List<String> goalIds,
             List<String> filterIds,
             String action) {
+    }
+
+    /** Presentation-only facets bound one-to-one to the published curriculum options. */
+    public record CurriculumCatalog(int schemaVersion, List<CurriculumCatalogEntry> entries) {
+        public CurriculumCatalog {
+            entries = List.copyOf(entries);
+        }
+    }
+
+    public record CurriculumCatalogEntry(
+            String optionId,
+            String category,
+            String qualityStatus,
+            int sortRank) {
     }
 
     /**

@@ -91,7 +91,8 @@ class OpenAiDeCoachMcpContractTest {
             "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
     private static final List<String> HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S = List.of(
             "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c",
-            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701");
+            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701",
+            "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -1212,6 +1213,7 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("\"structuredContent\"")
                 .doesNotContain(":null", LEARNER_ID, "SECRET SOLUTION");
         OpenAiDeCoachContext context = structured(result, OpenAiDeCoachContext.class);
+        assertThat(context.curriculumCatalog()).isNull();
         assertThat(context.curriculum().curriculumId()).isEqualTo("curriculum-public-id");
         assertThat(context.activeGoal().goalId()).isEqualTo("exam-public-id");
         assertThat(context.activeGoal().exam().taskContent()).isEqualTo("Sichtbare Prüfungsaufgabe");
@@ -1241,6 +1243,92 @@ class OpenAiDeCoachMcpContractTest {
                         "solutionContent",
                         "passingPoints");
         verify(identityResolver, never()).requireWriteAccess(any());
+    }
+
+    @Test
+    void setupContextAddsClosedCurriculumCatalogWithoutChangingPublishedOptions() {
+        LandscapeSummary canonicalSchool = curriculumSummary(
+                OpenAiDeCurriculumOptionFacets.CANONICAL_GYMNASIUM_ROOT_ID,
+                "Gymnasium (DE)",
+                "Other",
+                false,
+                false);
+        LandscapeSummary university = curriculumSummary(
+                "university-red",
+                "Bachelor Mathematik (TUM)",
+                "Other",
+                false,
+                false);
+        LandscapeSummary language = curriculumSummary(
+                "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+                "Sprache (CEFR)",
+                "CEFR",
+                false,
+                false);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(curriculumSetupState(
+                List.of(canonicalSchool, university, language)));
+
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
+        JsonNode context = objectMapper.valueToTree(result.structuredContent());
+        assertThat(context.path("requiredAction").asText()).isEqualTo("setCurriculum");
+        assertThat(context.at("/curriculumCatalog/schemaVersion").asInt()).isEqualTo(1);
+        assertThat(context.path("options"))
+                .extracting(option -> option.path("id").asText())
+                .containsExactly(
+                        canonicalSchool.getCurriculumId(),
+                        university.getCurriculumId(),
+                        language.getCurriculumId());
+        assertThat(context.at("/curriculumCatalog/entries"))
+                .extracting(entry -> entry.path("optionId").asText())
+                .containsExactly(
+                        canonicalSchool.getCurriculumId(),
+                        university.getCurriculumId(),
+                        language.getCurriculumId());
+        assertThat(context.at("/curriculumCatalog/entries/0/category").asText()).isEqualTo("SCHOOL");
+        assertThat(context.at("/curriculumCatalog/entries/0/qualityStatus").asText()).isEqualTo("green");
+        assertThat(context.at("/curriculumCatalog/entries/0/sortRank").asInt()).isZero();
+        assertThat(context.at("/curriculumCatalog/entries/1/category").asText()).isEqualTo("UNI");
+        assertThat(context.at("/curriculumCatalog/entries/1/qualityStatus").asText()).isEqualTo("red");
+        assertThat(context.at("/curriculumCatalog/entries/1/sortRank").asInt()).isEqualTo(1);
+        assertThat(context.at("/curriculumCatalog/entries/2/category").asText()).isEqualTo("OTHER");
+        assertThat(context.at("/curriculumCatalog/entries/2/qualityStatus").asText()).isEqualTo("orange");
+        assertThat(context.at("/curriculumCatalog/entries/2/sortRank").asInt()).isEqualTo(1);
+        assertThat(context.path("options")).allSatisfy(option -> {
+            assertThat(option.has("curriculumCatalog")).isFalse();
+            assertThat(option.has("category")).isFalse();
+            assertThat(option.has("qualityStatus")).isFalse();
+            assertThat(option.has("sortRank")).isFalse();
+        });
+
+        JsonNode schema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
+        assertThat(schema.at("/properties/curriculumCatalog/additionalProperties").asBoolean())
+                .isFalse();
+        assertThat(schema.at("/properties/curriculumCatalog/required"))
+                .containsExactly(
+                        objectMapper.valueToTree("schemaVersion"),
+                        objectMapper.valueToTree("entries"));
+        assertThat(schema.at("/properties/curriculumCatalog/properties/schemaVersion/minimum").asInt())
+                .isEqualTo(1);
+        assertThat(schema.at("/properties/curriculumCatalog/properties/schemaVersion/maximum").asInt())
+                .isEqualTo(1);
+        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/category/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree("SCHOOL"),
+                        objectMapper.valueToTree("UNI"),
+                        objectMapper.valueToTree("OTHER"));
+        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/qualityStatus/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree("green"),
+                        objectMapper.valueToTree("orange"),
+                        objectMapper.valueToTree("red"));
+        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/sortRank/minimum").asInt())
+                .isZero();
+        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/sortRank/maximum").asInt())
+                .isEqualTo(2);
     }
 
     @Test
@@ -3246,6 +3334,52 @@ class OpenAiDeCoachMcpContractTest {
         } else if ("number".equals(type)) {
             assertThat(node.isNumber()).as("%s must be a number", path).isTrue();
         }
+    }
+
+    private LandscapeSummary curriculumSummary(
+            String curriculumId,
+            String title,
+            String type,
+            boolean compatibilityOnly,
+            boolean legacyHiddenByDefault) {
+        return new LandscapeSummary(
+                curriculumId,
+                title,
+                "Beschreibung " + title,
+                "DE",
+                "",
+                type,
+                title,
+                "de",
+                List.of(),
+                compatibilityOnly,
+                legacyHiddenByDefault);
+    }
+
+    private UnifiedLearnerStateResponse curriculumSetupState(
+            List<LandscapeSummary> curriculumOptions) {
+        return new UnifiedLearnerStateResponse(
+                LEARNER_ID,
+                null,
+                List.of(),
+                new LearnerGoals(
+                        List.of(),
+                        0,
+                        0,
+                        new GoalStats(0, 0),
+                        new GoalStats(0, 0),
+                        false),
+                List.of("setCurriculum"),
+                List.of(),
+                Set.of(),
+                "setup",
+                null,
+                new StateMachineInfo(
+                        "SETUP",
+                        "setCurriculum",
+                        List.of(),
+                        curriculumOptions,
+                        null));
     }
 
     private UnifiedLearnerStateResponse normalState(String requiredAction) {

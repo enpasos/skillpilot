@@ -244,6 +244,10 @@ ausdrücklich freigegebene Architekturentscheidung:
 - keine zweite Curriculum- oder Personalisierungslogik im Widget; die
   Komponente rendert ausschließlich die serverautoritativen Optionen und ruft
   die bestehenden sessiongebundenen Werkzeuge auf;
+- keine zweite Katalog-, Kategorie- oder Qualitätsklassifikation im Widget;
+  Curriculumkategorien, Qualitätsampel und Sortierpriorität werden vom Backend
+  vollständig und versionsgebunden für genau die aktuell erlaubten Optionen
+  projiziert;
 - kein Verified-Recall- oder Abitur-Start;
 - kein Ersatz des bestehenden Webstarts;
 - keine Änderung an Lernziel-, Frontier-, Mastery- oder Autopilot-Semantik;
@@ -728,6 +732,28 @@ ChatGPT-Kompatibilitätsweg werden explizit über
 `_meta["openai/widgetAccessible"]: true` veröffentlicht. Sie erhalten kein
 SkillPilot-ID-Argument und geben keine permanente ID in `content`,
 `structuredContent` oder Resultat-`_meta` zurück.
+
+Die Curriculum-Auswahl verwendet denselben Auswahlvertrag wie die SkillPilot-
+WebGUI. Bei `requiredAction=setCurriculum` enthält der Vollkontext zusätzlich
+eine geschlossene `curriculumCatalog`-Projektion mit `schemaVersion=1`. Für
+jede veröffentlichte Curriculum-Option existiert darin genau ein Eintrag mit
+derselben `optionId`, der serverautoritativ `category` (`SCHOOL`, `UNI` oder
+`OTHER`), `qualityStatus` (`green`, `orange` oder `red`) und `sortRank`
+festlegt. Fehlende, doppelte oder fremde Zuordnungen werden fail closed
+abgewiesen. Die normalen Optionsobjekte bleiben unverändert, damit bereits
+ausgelieferte content-addressierte Widgets den erweiterten Top-Level-Vertrag
+weiterhin sicher ignorieren können.
+
+Die Komponente rendert die Kategorien in der WebGUI-Reihenfolge Schule,
+Universität & Hochschule sowie Sprachen & Weiterbildung. Die Qualitätsampel
+verwendet Menschliche QS, Maschinelle QS, Experimentell und Alle. Default sind
+`SCHOOL` und `green`; beide Filter werden exakt verknüpft. Innerhalb der
+sichtbaren Menge gilt zuerst `sortRank`, danach die lokalisierte alphabetische
+Sortierung des veröffentlichten Labels. Kategorie- und Ampelwechsel sind rein
+lokal und erzeugen keinen Toolaufruf. Erst die ausdrückliche Auswahl eines
+sichtbaren, weiterhin im neuesten Vollkontext veröffentlichten `optionId`
+ruft `set_skillpilot_curriculum` auf. Das Widget leitet weder Kategorie noch
+Qualität oder Rang aus Curriculum-ID, Titel oder Beschreibung ab.
 
 Für jede neue Auswahl kopiert die Komponente `expectedStateVersion` exakt aus
 dem neuesten erfolgreichen Vollresultat und erzeugt eine neue UUID-v4 als
@@ -1597,6 +1623,8 @@ abgeschlossen behauptet.
   Recovery-Darstellung und ausdrückliche Sicherungsbestätigung;
 - vorhandene und neue Lernende einschließlich vollständiger Curriculum- und
   Personalisierungseinrichtung in derselben Komponente;
+- Curriculum-Auswahl mit derselben Kategorie-, Qualitätsampel-, Defaultfilter-
+  und Sortiersemantik wie in der SkillPilot-WebGUI;
 - nur CURRENT_UNIT;
 - Open-Tool, app-only Capability-Issuer und direkter Endpoint;
 - bestehende modell- und appsichtbare Sessiontools für Kontext, Curriculum und
@@ -1753,15 +1781,20 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
    Vollresultats, kopiert `expectedStateVersion` exakt und verwendet eine neue
    `clientRequestId` je neuer Auswahl sowie dieselbe nur beim unveränderten
    Transport-Retry.
-7. Die Hostnachricht wird erst ohne offenes `setCurriculum` oder
+7. Für `setCurriculum` ist `curriculumCatalog` vollständig 1:1 an diese
+   Optionen gebunden. Tests decken alle Kategorien und Qualitätsstufen,
+   `SCHOOL`+`green` als Default, exakte UND-Filterung, WebGUI-Reihenfolge,
+   lokalisierte Sortierung, leere Treffer und fail-closed Schemaabweichungen
+   ab. Lokale Filterwechsel erzeugen keinen Toolaufruf.
+8. Die Hostnachricht wird erst ohne offenes `setCurriculum` oder
    `setPersonalization` gesendet; im normalen Flow gibt es keinen
    **SkillPilot öffnen**-Schritt.
-8. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
+9. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
    Nachricht auf demselben Kanal.
-9. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
-10. Deutsch und Englisch sind semantisch gleichwertig.
-11. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
-12. Webfallback enthält keine technischen Werte.
+10. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
+11. Deutsch und Englisch sind semantisch gleichwertig.
+12. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
+13. Webfallback enthält keine technischen Werte.
 
 ### 14.6 Integrations- und Hosttests
 
@@ -1857,6 +1890,9 @@ werden.
 - Capability ausschließlich im Authorization-Header;
 - V1 unterstützt CREATE und EXISTING sowie Curriculum und Personalisierung in
   derselben Komponente; der normale App-first-Ablauf öffnet SkillPilot nicht;
+- die serverautoritativ an die aktuelle Optionsmenge gebundene
+  `curriculumCatalog`-Projektion ist die einzige Quelle für Kategorie,
+  Qualitätsstatus und Sortierrang; das Widget klassifiziert nichts selbst;
 - policyRevision 2 bindet diese erweiterte Capability-/Bootstrap-Semantik;
 - providerNoticeVersion als bindender Vertragswert;
 - Zwei-Transaktions-Attempt mit einheitlicher Lockreihenfolge Capability,

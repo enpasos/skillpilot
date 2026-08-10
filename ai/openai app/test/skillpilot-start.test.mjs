@@ -533,6 +533,15 @@ test("setup parser and call builders expose only the bounded session-scoped setu
       label: "Gymnasium (DE)",
       description: "Schulische Lernumgebung"
     }],
+    curriculumCatalog: {
+      schemaVersion: 1,
+      entries: [{
+        optionId: "DE_GYMNASIUM",
+        category: "SCHOOL",
+        qualityStatus: "green",
+        sortRank: 0
+      }]
+    },
     decision: null,
     learningState: "setup"
   };
@@ -546,7 +555,10 @@ test("setup parser and call builders expose only the bounded session-scoped setu
     options: [{
       id: "DE_GYMNASIUM",
       label: "Gymnasium (DE)",
-      description: "Schulische Lernumgebung"
+      description: "Schulische Lernumgebung",
+      category: "SCHOOL",
+      qualityStatus: "green",
+      sortRank: 0
     }]
   });
   assert.deepEqual(createSkillPilotSetupMutationCall(
@@ -583,6 +595,57 @@ test("setup parser and call builders expose only the bounded session-scoped setu
     { ...curriculumState, communicationLocale: "en" },
     { ...curriculumState, stateVersion: -1 },
     { ...curriculumState, options: [] },
+    { ...curriculumState, curriculumCatalog: undefined },
+    { ...curriculumState, curriculumCatalog: { ...curriculumState.curriculumCatalog, schemaVersion: 2 } },
+    { ...curriculumState, curriculumCatalog: { schemaVersion: 1, entries: [] } },
+    {
+      ...curriculumState,
+      curriculumCatalog: {
+        schemaVersion: 1,
+        entries: [{
+          optionId: "unknown",
+          category: "SCHOOL",
+          qualityStatus: "green",
+          sortRank: 0
+        }]
+      }
+    },
+    {
+      ...curriculumState,
+      curriculumCatalog: {
+        schemaVersion: 1,
+        entries: [{
+          optionId: "DE_GYMNASIUM",
+          category: "SCHOOLISH",
+          qualityStatus: "green",
+          sortRank: 0
+        }]
+      }
+    },
+    {
+      ...curriculumState,
+      curriculumCatalog: {
+        schemaVersion: 1,
+        entries: [{
+          optionId: "DE_GYMNASIUM",
+          category: "SCHOOL",
+          qualityStatus: "all",
+          sortRank: 0
+        }]
+      }
+    },
+    {
+      ...curriculumState,
+      curriculumCatalog: {
+        schemaVersion: 1,
+        entries: [{
+          optionId: "DE_GYMNASIUM",
+          category: "SCHOOL",
+          qualityStatus: "green",
+          sortRank: 3
+        }]
+      }
+    },
     { ...curriculumState, options: [{ ...curriculumState.options[0], extra: true }] },
     { ...curriculumState, options: [{ ...curriculumState.options[0], kind: "personalization" }] },
     { ...curriculumState, requiredAction: "unknownAction" }
