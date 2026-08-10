@@ -19,6 +19,8 @@ import {
   skillPilotSetupStateFromToolResult,
   skillPilotStartOpenFromToolResult,
   type SkillPilotBootstrapRequest,
+  type SkillPilotCurriculumCatalogCategory,
+  type SkillPilotCurriculumQualityStatus,
   type SkillPilotIdentityMode,
   type SkillPilotStartLocale,
   type SkillPilotStartOpenResult,
@@ -74,6 +76,8 @@ type PendingStartMessage = {
 type PendingSetupMutation = {
   call: SkillPilotSetupToolCall;
 };
+
+type SkillPilotCurriculumQualityFilter = SkillPilotCurriculumQualityStatus | "all";
 
 type Copy = {
   eyebrow: string;
@@ -131,6 +135,17 @@ type Copy = {
   continueSetup: string;
   curriculumTitle: string;
   curriculumBody: string;
+  curriculumSelect: string;
+  curriculumEmpty: string;
+  curriculumCategoryLabel: string;
+  curriculumCategorySchool: string;
+  curriculumCategoryUniversity: string;
+  curriculumCategoryOther: string;
+  curriculumQualityLabel: string;
+  curriculumQualityGreen: string;
+  curriculumQualityOrange: string;
+  curriculumQualityRed: string;
+  curriculumQualityAll: string;
   personalizationTitle: string;
   personalizationBody: string;
   selectedCount: string;
@@ -198,8 +213,19 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     copiedId: "ID kopiert",
     savedIdConfirmation: "Ich habe meine SkillPilot-ID sicher gespeichert.",
     continueSetup: "Einrichtung fortsetzen",
-    curriculumTitle: "Lernumgebung auswählen",
-    curriculumBody: "Wähle eine der aktuell von SkillPilot angebotenen Lernumgebungen.",
+    curriculumTitle: "Curriculum wählen",
+    curriculumBody: "Wähle ein Curriculum.",
+    curriculumSelect: "Curriculum wählen",
+    curriculumEmpty: "Für diese Kategorie und Qualitätsstufe ist derzeit keine Lernumgebung verfügbar.",
+    curriculumCategoryLabel: "Curriculum wählen",
+    curriculumCategorySchool: "Schule",
+    curriculumCategoryUniversity: "Universität & Hochschule",
+    curriculumCategoryOther: "Sprachen & Weiterbildung",
+    curriculumQualityLabel: "Qualitätsampel",
+    curriculumQualityGreen: "Menschliche QS",
+    curriculumQualityOrange: "Maschinelle QS",
+    curriculumQualityRed: "Experimentell",
+    curriculumQualityAll: "Alle",
     personalizationTitle: "Lernumgebung personalisieren",
     personalizationBody: "Beantworte den aktuellen Einrichtungsschritt. SkillPilot führt dich danach automatisch weiter.",
     selectedCount: "Ausgewählt",
@@ -265,8 +291,19 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     copiedId: "ID copied",
     savedIdConfirmation: "I have saved my SkillPilot ID securely.",
     continueSetup: "Continue setup",
-    curriculumTitle: "Choose a learning environment",
-    curriculumBody: "Choose one of the learning environments currently offered by SkillPilot.",
+    curriculumTitle: "Choose curriculum",
+    curriculumBody: "Choose a curriculum.",
+    curriculumSelect: "Choose curriculum",
+    curriculumEmpty: "No learning environment is currently available for this category and quality status.",
+    curriculumCategoryLabel: "Choose curriculum",
+    curriculumCategorySchool: "School",
+    curriculumCategoryUniversity: "University & Higher Ed",
+    curriculumCategoryOther: "Languages & Other",
+    curriculumQualityLabel: "Quality status",
+    curriculumQualityGreen: "Human QA",
+    curriculumQualityOrange: "Automated QA",
+    curriculumQualityRed: "Experimental",
+    curriculumQualityAll: "All",
     personalizationTitle: "Personalise the learning environment",
     personalizationBody: "Answer the current setup step. SkillPilot then guides you forward automatically.",
     selectedCount: "Selected",
@@ -308,6 +345,12 @@ let createdIdSaveAcknowledged = false;
 let createdIdCopied = false;
 let setupState: SkillPilotSetupState | undefined;
 let pendingSetupMutation: PendingSetupMutation | undefined;
+let curriculumCatalogCategory: SkillPilotCurriculumCatalogCategory = "SCHOOL";
+let curriculumQualityFilter: SkillPilotCurriculumQualityFilter = "green";
+let pendingCurriculumFilterFocus:
+  | { kind: "category"; value: SkillPilotCurriculumCatalogCategory }
+  | { kind: "quality"; value: SkillPilotCurriculumQualityFilter }
+  | undefined;
 let flowState: FlowState = "INITIALIZING";
 let failureKind: FailureKind | undefined;
 let busy = false;
@@ -374,6 +417,11 @@ function acceptOpenResult(value: unknown, metadataSource?: unknown): void {
   const next = skillPilotStartOpenFromToolResult(value, metadataSource);
   if (!next) return;
   clearInitialResultTimer();
+  // ChatGPT may deliver the same initial open result through both the shared
+  // MCP Apps notification and its compatibility globals. Reprocessing that
+  // duplicate would erase an in-progress identity, locale, ID or consent
+  // selection every time the host refreshes its globals.
+  if (start && sameOpenResult(start, next)) return;
   clearSensitiveRuntime(false);
   start = next;
   selectedLocale = next.defaultLocale;
@@ -381,6 +429,37 @@ function acceptOpenResult(value: unknown, metadataSource?: unknown): void {
   flowState = next.status === "ID_REQUIRED" ? "READY_FOR_ID" : "FAILED";
   failureKind = undefined;
   renderCurrent();
+}
+
+function sameOpenResult(
+  left: SkillPilotStartOpenResult,
+  right: SkillPilotStartOpenResult
+): boolean {
+  const leftLine = left.contractLine;
+  const rightLine = right.contractLine;
+  const leftSuccessor = leftLine.successor;
+  const rightSuccessor = rightLine.successor;
+  return left.status === right.status
+    && left.fallbackUrl === right.fallbackUrl
+    && left.defaultLocale === right.defaultLocale
+    && left.supportedLocales.length === right.supportedLocales.length
+    && left.supportedLocales.every(
+      (supportedLocale, index) => supportedLocale === right.supportedLocales[index]
+    )
+    && leftLine.contractMajor === rightLine.contractMajor
+    && leftLine.policyRevision === rightLine.policyRevision
+    && leftLine.displayName === rightLine.displayName
+    && leftLine.supportLifecycle === rightLine.supportLifecycle
+    && leftLine.publicationStatus === rightLine.publicationStatus
+    && leftLine.newSessionPolicy === rightLine.newSessionPolicy
+    && (
+      leftSuccessor === null && rightSuccessor === null
+      || leftSuccessor !== null
+        && rightSuccessor !== null
+        && leftSuccessor.contractMajor === rightSuccessor.contractMajor
+        && leftSuccessor.displayName === rightSuccessor.displayName
+        && leftSuccessor.handoffUrl === rightSuccessor.handoffUrl
+    );
 }
 
 async function refreshHostSupport(): Promise<void> {
@@ -659,6 +738,13 @@ function renderSetupSelection(copy: Copy, state: SkillPilotSetupState): void {
     decision.append(stage, group, count);
     article.append(decision);
   }
+  if (curriculum) {
+    const focusTarget = renderCurriculumCatalog(article, copy, state);
+    root.replaceChildren(article);
+    pendingCurriculumFilterFocus = undefined;
+    focusTarget?.focus();
+    return;
+  }
   const options = element("div", "setup-options");
   for (const option of state.options) {
     const optionButton = button(option.label, "setup-option");
@@ -672,6 +758,136 @@ function renderSetupSelection(copy: Copy, state: SkillPilotSetupState): void {
   }
   article.append(options);
   root.replaceChildren(article);
+}
+
+function renderCurriculumCatalog(
+  article: HTMLElement,
+  copy: Copy,
+  state: SkillPilotSetupState
+): HTMLButtonElement | undefined {
+  let focusTarget: HTMLButtonElement | undefined;
+  const categoryLabels: Record<SkillPilotCurriculumCatalogCategory, string> = {
+    SCHOOL: copy.curriculumCategorySchool,
+    UNI: copy.curriculumCategoryUniversity,
+    OTHER: copy.curriculumCategoryOther
+  };
+  const categories: SkillPilotCurriculumCatalogCategory[] = ["SCHOOL", "UNI", "OTHER"];
+  const categoryFieldset = document.createElement("fieldset");
+  categoryFieldset.className = "curriculum-filter-fieldset";
+  const categoryLegend = document.createElement("legend");
+  categoryLegend.className = "visually-hidden";
+  categoryLegend.textContent = copy.curriculumCategoryLabel;
+  const categoryTabs = element("div", "curriculum-category-tabs");
+  for (const category of categories) {
+    const categoryButton = button(
+      categoryLabels[category],
+      `curriculum-filter-button${curriculumCatalogCategory === category ? " is-active-category" : ""}`
+    );
+    categoryButton.setAttribute(
+      "aria-pressed",
+      curriculumCatalogCategory === category ? "true" : "false"
+    );
+    if (
+      pendingCurriculumFilterFocus?.kind === "category"
+      && pendingCurriculumFilterFocus.value === category
+    ) {
+      focusTarget = categoryButton;
+    }
+    categoryButton.addEventListener("click", () => {
+      curriculumCatalogCategory = category;
+      pendingCurriculumFilterFocus = { kind: "category", value: category };
+      renderCurrent();
+    });
+    categoryTabs.append(categoryButton);
+  }
+  categoryFieldset.append(categoryLegend, categoryTabs);
+  article.append(categoryFieldset);
+
+  const quality = document.createElement("fieldset");
+  quality.className = "curriculum-filter-fieldset curriculum-quality-filter";
+  const qualityLabel = document.createElement("legend");
+  qualityLabel.className = "curriculum-filter-label curriculum-quality-label";
+  qualityLabel.textContent = copy.curriculumQualityLabel;
+  const qualityButtons = element("div", "curriculum-quality-buttons");
+  const qualityFilters: Array<{
+    value: SkillPilotCurriculumQualityFilter;
+    label: string;
+  }> = [
+    { value: "green", label: copy.curriculumQualityGreen },
+    { value: "orange", label: copy.curriculumQualityOrange },
+    { value: "red", label: copy.curriculumQualityRed },
+    { value: "all", label: copy.curriculumQualityAll }
+  ];
+  for (const filter of qualityFilters) {
+    const qualityButton = button(
+      filter.label,
+      `curriculum-filter-button quality-${filter.value}${curriculumQualityFilter === filter.value ? " is-active-quality" : ""}`
+    );
+    qualityButton.setAttribute(
+      "aria-pressed",
+      curriculumQualityFilter === filter.value ? "true" : "false"
+    );
+    if (
+      pendingCurriculumFilterFocus?.kind === "quality"
+      && pendingCurriculumFilterFocus.value === filter.value
+    ) {
+      focusTarget = qualityButton;
+    }
+    qualityButton.addEventListener("click", () => {
+      curriculumQualityFilter = filter.value;
+      pendingCurriculumFilterFocus = { kind: "quality", value: filter.value };
+      renderCurrent();
+    });
+    qualityButtons.append(qualityButton);
+  }
+  quality.append(qualityLabel, qualityButtons);
+  article.append(quality);
+
+  const filteredOptions = state.options
+    .filter((option) => option.category === curriculumCatalogCategory)
+    .filter((option) => curriculumQualityFilter === "all"
+      || option.qualityStatus === curriculumQualityFilter)
+    .sort((left, right) => {
+      const priority = (left.sortRank ?? 1) - (right.sortRank ?? 1);
+      return priority !== 0
+        ? priority
+        : left.label.localeCompare(right.label, selectedLocale);
+    });
+  const select = document.createElement("select");
+  select.id = "skillpilot-curriculum-select";
+  select.className = "curriculum-select";
+  select.value = "";
+  select.disabled = filteredOptions.length === 0;
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = copy.curriculumSelect;
+  placeholder.disabled = true;
+  select.append(placeholder);
+  for (const option of filteredOptions) {
+    const selectOption = document.createElement("option");
+    selectOption.value = option.id;
+    selectOption.textContent = option.label;
+    select.append(selectOption);
+  }
+  select.addEventListener("change", () => {
+    const optionId = select.value;
+    if (filteredOptions.some((option) => option.id === optionId)) {
+      void applySetupOption(optionId);
+    }
+  });
+  const selectLabel = document.createElement("label");
+  selectLabel.className = "visually-hidden";
+  selectLabel.setAttribute("for", select.id);
+  selectLabel.textContent = copy.curriculumSelect;
+  article.append(selectLabel, select);
+  if (filteredOptions.length === 0) {
+    const empty = element("p", "curriculum-empty");
+    empty.textContent = copy.curriculumEmpty;
+    empty.setAttribute("role", "status");
+    empty.setAttribute("aria-live", "polite");
+    article.append(empty);
+  }
+  return focusTarget;
 }
 
 function renderBusy(copy: Copy): void {
@@ -1335,6 +1551,9 @@ function clearSensitiveRuntime(renderAfterClear: boolean): void {
   createdIdCopied = false;
   setupState = undefined;
   pendingSetupMutation = undefined;
+  curriculumCatalogCategory = "SCHOOL";
+  curriculumQualityFilter = "green";
+  pendingCurriculumFilterFocus = undefined;
   manualSkillPilotId = "";
   providerEligibilityConfirmed = false;
   clearSensitiveRetentionTimer();

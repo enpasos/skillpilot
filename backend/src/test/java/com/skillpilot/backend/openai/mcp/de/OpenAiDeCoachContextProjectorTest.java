@@ -606,6 +606,80 @@ class OpenAiDeCoachContextProjectorTest {
         assertThat(context.nextAllowedTools())
                 .contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL)
                 .doesNotContain(OpenAiDeV1McpContractAdapter.GET_NAVIGATION);
+        assertThat(context.curriculumCatalog()).isNull();
+    }
+
+    @Test
+    void curriculumCatalogBindsWebGuiFacetsOneToOneWithoutChangingOptions() {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        LandscapeSummary canonicalSchool = curriculum(
+                OpenAiDeCurriculumOptionFacets.CANONICAL_GYMNASIUM_ROOT_ID,
+                "Gymnasium (DE)",
+                "Other",
+                false,
+                false);
+        LandscapeSummary university = curriculum(
+                "university-red",
+                "Bachelor Mathematik (TUM)",
+                "Other",
+                false,
+                false);
+        LandscapeSummary language = curriculum(
+                "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+                "Sprache (CEFR)",
+                "CEFR",
+                false,
+                false);
+        LandscapeSummary compatibilitySchool = curriculum(
+                "compatibility-red",
+                "Realschule (Legacy)",
+                "Realschule",
+                true,
+                false);
+
+        OpenAiDeCoachContext context = projectGerman(
+                projector,
+                curriculumSelectionState(List.of(
+                        canonicalSchool,
+                        university,
+                        language,
+                        compatibilitySchool)));
+
+        assertThat(context.requiredAction()).isEqualTo("setCurriculum");
+        assertThat(context.options())
+                .extracting(OpenAiDeCoachContext.Option::id)
+                .containsExactly(
+                        canonicalSchool.getCurriculumId(),
+                        university.getCurriculumId(),
+                        language.getCurriculumId(),
+                        compatibilitySchool.getCurriculumId());
+        assertThat(context.curriculumCatalog().schemaVersion()).isEqualTo(1);
+        assertThat(context.curriculumCatalog().entries())
+                .extracting(
+                        OpenAiDeCoachContext.CurriculumCatalogEntry::optionId,
+                        OpenAiDeCoachContext.CurriculumCatalogEntry::category,
+                        OpenAiDeCoachContext.CurriculumCatalogEntry::qualityStatus,
+                        OpenAiDeCoachContext.CurriculumCatalogEntry::sortRank)
+                .containsExactly(
+                        org.assertj.core.groups.Tuple.tuple(
+                                canonicalSchool.getCurriculumId(), "SCHOOL", "green", 0),
+                        org.assertj.core.groups.Tuple.tuple(
+                                university.getCurriculumId(), "UNI", "red", 1),
+                        org.assertj.core.groups.Tuple.tuple(
+                                language.getCurriculumId(), "OTHER", "orange", 1),
+                        org.assertj.core.groups.Tuple.tuple(
+                                compatibilitySchool.getCurriculumId(), "SCHOOL", "red", 2));
+        assertThat(context.curriculumCatalog().entries())
+                .extracting(OpenAiDeCoachContext.CurriculumCatalogEntry::optionId)
+                .containsExactlyElementsOf(context.options().stream()
+                        .map(OpenAiDeCoachContext.Option::id)
+                        .toList());
+
+        var optionsJson = new ObjectMapper().valueToTree(context.options());
+        assertThat(optionsJson.toString())
+                .doesNotContain("curriculumCatalog", "category", "qualityStatus", "sortRank");
     }
 
     private static OpenAiDeCoachContext projectGerman(
@@ -633,6 +707,53 @@ class OpenAiDeCoachContextProjectorTest {
                 null,
                 null,
                 null);
+    }
+
+    private static LandscapeSummary curriculum(
+            String curriculumId,
+            String title,
+            String type,
+            boolean compatibilityOnly,
+            boolean legacyHiddenByDefault) {
+        return new LandscapeSummary(
+                curriculumId,
+                title,
+                "Beschreibung " + title,
+                "DE",
+                "",
+                type,
+                title,
+                "de",
+                List.of(),
+                compatibilityOnly,
+                legacyHiddenByDefault);
+    }
+
+    private static UnifiedLearnerStateResponse curriculumSelectionState(
+            List<LandscapeSummary> curriculumOptions) {
+        LearnerGoals goals = new LearnerGoals(
+                List.of(),
+                0,
+                0,
+                new GoalStats(0, 0),
+                new GoalStats(0, 0),
+                false);
+        return new UnifiedLearnerStateResponse(
+                "SECRET-LEARNER-ID",
+                null,
+                List.of(),
+                goals,
+                List.of("setCurriculum"),
+                List.of(),
+                Set.of(),
+                "setup",
+                null,
+                new StateMachineInfo(
+                        "SETUP",
+                        "setCurriculum",
+                        List.of(),
+                        curriculumOptions,
+                        null));
     }
 
     private static UnifiedLearnerStateResponse goalState(

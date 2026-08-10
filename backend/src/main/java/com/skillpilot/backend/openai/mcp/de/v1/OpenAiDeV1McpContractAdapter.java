@@ -3270,6 +3270,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("orientationOutlook", orientationOutlookSchema());
         properties.put("activeGoal", activeGoalSchema());
         properties.put("options", objectArraySchema(optionSchema()));
+        properties.put("curriculumCatalog", curriculumCatalogSchema());
         properties.put("decision", decisionSchema());
         properties.put("frontier", objectArraySchema(goalSchema()));
         properties.put("resources", objectArraySchema(resourceSchema()));
@@ -3293,6 +3294,28 @@ public final class OpenAiDeV1McpContractAdapter {
                         "completion",
                         "policies",
                         "instruction"));
+    }
+
+    private static Map<String, Object> curriculumCatalogSchema() {
+        return objectSchema(
+                Map.of(
+                        "schemaVersion", integerSchema(1, 1),
+                        "entries", objectArraySchema(curriculumCatalogEntrySchema())),
+                List.of("schemaVersion", "entries"));
+    }
+
+    private static Map<String, Object> curriculumCatalogEntrySchema() {
+        return objectSchema(
+                Map.of(
+                        "optionId", nonEmptyStringSchema(),
+                        "category", enumStringSchema("SCHOOL", "UNI", "OTHER"),
+                        "qualityStatus", enumStringSchema("green", "orange", "red"),
+                        "sortRank", integerSchema(0, 2)),
+                List.of(
+                        "optionId",
+                        "category",
+                        "qualityStatus",
+                        "sortRank"));
     }
 
     private static Map<String, Object> navigationSchema() {

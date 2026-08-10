@@ -28,6 +28,7 @@ class FakeElement {
     this.value = "";
     this.checked = false;
     this.disabled = false;
+    this.focused = false;
   }
 
   addEventListener(type, listener) {
@@ -58,6 +59,10 @@ class FakeElement {
 
   setAttribute(name, value) {
     this.attributes.set(name, value);
+  }
+
+  focus() {
+    this.focused = true;
   }
 }
 
@@ -275,11 +280,24 @@ function launchResult(
   };
 }
 
+function curriculumCatalog(entries) {
+  return {
+    schemaVersion: 1,
+    entries: entries.map(([optionId, category, qualityStatus, sortRank]) => ({
+      optionId,
+      category,
+      qualityStatus,
+      sortRank
+    }))
+  };
+}
+
 function setupResult({
   stateVersion = 1,
   locale = "de",
   requiredAction = "",
   options = [],
+  curriculumCatalog,
   decision
 } = {}) {
   return {
@@ -289,6 +307,7 @@ function setupResult({
       communicationLocale: locale,
       requiredAction,
       options,
+      ...(curriculumCatalog ? { curriculumCatalog } : {}),
       ...(decision ? { decision } : {}),
       learningState: "setup"
     }
@@ -531,9 +550,156 @@ function enterIdAndConfirm(rootElement, locale = "de") {
   eligibility.dispatch("change");
 }
 
+function selectCurriculum(rootElement, curriculumId) {
+  const select = allElements(rootElement).find((element) => element.tagName === "select");
+  assert.ok(select);
+  select.value = curriculumId;
+  select.dispatch("change");
+}
+
 async function flushPromises() {
   for (let index = 0; index < 80; index += 1) await Promise.resolve();
 }
+
+test("duplicate initial result preserves existing-ID and English selections", async () => {
+  const harness = createHarness();
+  await flushPromises();
+
+  const existing = findInput(harness.rootElement, "radio", "EXISTING");
+  existing.checked = true;
+  existing.dispatch("change");
+  const idInput = findInput(harness.rootElement, "text");
+  assert.ok(idInput);
+  idInput.value = skillpilotId;
+  idInput.dispatch("input");
+
+  const english = findInput(harness.rootElement, "radio", "en");
+  english.checked = true;
+  english.dispatch("change");
+  const eligibility = findInput(harness.rootElement, "checkbox");
+  eligibility.checked = true;
+  eligibility.dispatch("change");
+
+  harness.context.__deliverToolResult(openResult());
+  await flushPromises();
+
+  assert.equal(findInput(harness.rootElement, "radio", "EXISTING").checked, true);
+  assert.equal(findInput(harness.rootElement, "radio", "CREATE").checked, false);
+  assert.equal(findInput(harness.rootElement, "radio", "en").checked, true);
+  assert.equal(findInput(harness.rootElement, "radio", "de").checked, false);
+  assert.equal(findInput(harness.rootElement, "text").value, skillpilotId);
+  assert.equal(findInput(harness.rootElement, "checkbox").checked, true);
+});
+
+test("curriculum selection matches the WebGUI category and quality filters", async () => {
+  const options = [
+    { kind: "curriculum", id: "school-root", label: "Gymnasium (DE)" },
+    { kind: "curriculum", id: "school-math", label: "Mathematik" },
+    { kind: "curriculum", id: "school-chemistry", label: "Chemie" },
+    { kind: "curriculum", id: "uni-green", label: "Bachelor Informatik" },
+    { kind: "curriculum", id: "uni-orange", label: "Bachelor Mathematik" },
+    { kind: "curriculum", id: "language-red", label: "English (CEFR A1-C2)" }
+  ];
+  const harness = createHarness();
+  harness.setSetupHandler((call) => Promise.resolve(
+    call.name === "get_skillpilot_context"
+      ? setupResult({
+        stateVersion: 7,
+        requiredAction: "setCurriculum",
+        options,
+        curriculumCatalog: curriculumCatalog([
+          ["school-root", "SCHOOL", "green", 0],
+          ["school-math", "SCHOOL", "green", 1],
+          ["school-chemistry", "SCHOOL", "orange", 1],
+          ["uni-green", "UNI", "green", 1],
+          ["uni-orange", "UNI", "orange", 1],
+          ["language-red", "OTHER", "red", 1]
+        ])
+      })
+      : setupResult({ stateVersion: 8, requiredAction: "setScope" })
+  ));
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+
+  const visibleCurriculumIds = () => {
+    const select = allElements(harness.rootElement)
+      .find((element) => element.tagName === "select");
+    assert.ok(select);
+    return select.children
+      .filter((option) => option.value)
+      .map((option) => option.value);
+  };
+  const callsBeforeFilters = harness.context.__toolCalls.length;
+  assert.deepEqual(visibleCurriculumIds(), ["school-root", "school-math"]);
+  assert.ok(findByText(harness.rootElement, "Curriculum wählen"));
+  assert.ok(findByText(harness.rootElement, "Schule").className.includes("is-active-category"));
+  assert.ok(findByText(harness.rootElement, "Menschliche QS").className.includes("is-active-quality"));
+
+  findByText(harness.rootElement, "Universität & Hochschule").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), ["uni-green"]);
+  assert.equal(findByText(harness.rootElement, "Universität & Hochschule").focused, true);
+  findByText(harness.rootElement, "Maschinelle QS").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), ["uni-orange"]);
+  assert.equal(findByText(harness.rootElement, "Maschinelle QS").focused, true);
+  findByText(harness.rootElement, "Alle").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), ["uni-green", "uni-orange"]);
+  findByText(harness.rootElement, "Sprachen & Weiterbildung").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), ["language-red"]);
+  findByText(harness.rootElement, "Menschliche QS").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), []);
+  assert.ok(findByText(
+    harness.rootElement,
+    "Für diese Kategorie und Qualitätsstufe ist derzeit keine Lernumgebung verfügbar."
+  ));
+  findByText(harness.rootElement, "Experimentell").dispatch("click");
+  assert.deepEqual(visibleCurriculumIds(), ["language-red"]);
+  assert.equal(harness.context.__toolCalls.length, callsBeforeFilters);
+
+  selectCurriculum(harness.rootElement, "language-red");
+  await flushPromises();
+  assert.deepEqual(JSON.parse(JSON.stringify(harness.context.__toolCalls.at(-1))), {
+    name: "set_skillpilot_curriculum",
+    arguments: {
+      learningSessionId,
+      curriculumId: "language-red",
+      expectedStateVersion: 7,
+      clientRequestId: secondRequestId
+    }
+  });
+});
+
+test("curriculum category and quality copy matches the English WebGUI", async () => {
+  const harness = createHarness();
+  harness.setFetchHandler((url) => Promise.resolve(jsonResponse(launchResult("en"), url)));
+  harness.setSetupHandler(() => Promise.resolve(setupResult({
+    stateVersion: 4,
+    locale: "en",
+    requiredAction: "setCurriculum",
+    options: [{ kind: "curriculum", id: "school-root", label: "Gymnasium (DE)" }],
+    curriculumCatalog: curriculumCatalog([
+      ["school-root", "SCHOOL", "green", 0]
+    ])
+  })));
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement, "en");
+  findByText(harness.rootElement, "Start learning").dispatch("click");
+  await flushPromises();
+
+  for (const label of [
+    "Choose curriculum",
+    "School",
+    "University & Higher Ed",
+    "Languages & Other",
+    "Human QA",
+    "Automated QA",
+    "Experimental",
+    "All"
+  ]) {
+    assert.ok(findByText(harness.rootElement, label), `missing English filter label: ${label}`);
+  }
+});
 
 test("CREATE keeps the permanent ID local and completes curriculum and personalisation before handoff", async () => {
   const harness = createHarness();
@@ -552,7 +718,10 @@ test("CREATE keeps the permanent ID local and completes curriculum and personali
           id: "DE_GYMNASIUM",
           label: "Gymnasium (DE)",
           description: "Schulische Lernumgebung"
-        }]
+        }],
+        curriculumCatalog: curriculumCatalog([
+          ["DE_GYMNASIUM", "SCHOOL", "green", 0]
+        ])
       }));
     }
     if (setupCall === 2) {
@@ -639,7 +808,7 @@ test("CREATE keeps the permanent ID local and completes curriculum and personali
   assert.deepEqual(harness.context.__messages, []);
   assert.ok(findByText(harness.rootElement, "Gymnasium (DE)"));
 
-  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  selectCurriculum(harness.rootElement, "DE_GYMNASIUM");
   await flushPromises();
   assert.ok(findByText(harness.rootElement, "Sekundarstufe I"));
   assert.deepEqual(
@@ -736,7 +905,10 @@ test("an uncertain setup write retries byte-identical arguments and UUID", async
           kind: "curriculum",
           id: "DE_GYMNASIUM",
           label: "Gymnasium (DE)"
-        }]
+        }],
+        curriculumCatalog: curriculumCatalog([
+          ["DE_GYMNASIUM", "SCHOOL", "green", 0]
+        ])
       }));
     }
     if (setupCall === 2) return new Promise(() => {});
@@ -749,7 +921,7 @@ test("an uncertain setup write retries byte-identical arguments and UUID", async
   enterIdAndConfirm(harness.rootElement);
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
-  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  selectCurriculum(harness.rootElement, "DE_GYMNASIUM");
   await flushPromises();
   harness.runTimerWithDelay(15_000);
   await flushPromises();
@@ -780,7 +952,10 @@ test("a setup write cannot hand off without a strictly newer state version", asy
           kind: "curriculum",
           id: "DE_GYMNASIUM",
           label: "Gymnasium (DE)"
-        }]
+        }],
+        curriculumCatalog: curriculumCatalog([
+          ["DE_GYMNASIUM", "SCHOOL", "green", 0]
+        ])
       })
       : setupResult({
         stateVersion: 7,
@@ -791,7 +966,7 @@ test("a setup write cannot hand off without a strictly newer state version", asy
   enterIdAndConfirm(harness.rootElement);
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
-  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  selectCurriculum(harness.rootElement, "DE_GYMNASIUM");
   await flushPromises();
 
   assert.deepEqual(harness.context.__messages, []);

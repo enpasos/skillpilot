@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "2e3e34927d030768b7501ecea340450a606fe86b2dc3132f7704696b11b54e13",
+  "contractSha256" : "71ec312d6724775d9461e9b8c4013ac19ac5199dfcd4fbc5996e66fd9796e3a7",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -94,6 +94,31 @@
     "name" : "skillpilot-goal-visualization-v1-retained-45e1f58d",
     "title" : "SkillPilot learning-goal image",
     "uri" : "ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html"
+  }, {
+    "description" : "Private direct-start component for an existing SkillPilot learner ID.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "connect_domains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ ]
+      },
+      "openai/widgetDescription" : "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+      "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+      "openai/widgetPrefersBorder" : true,
+      "ui" : {
+        "csp" : {
+          "connectDomains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+          "resourceDomains" : [ ]
+        },
+        "domain" : "https://mcp-coach-v1.skillpilot.com",
+        "prefersBorder" : true
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-start-v1-current",
+    "title" : "Start SkillPilot Coach",
+    "uri" : "ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html"
   }, {
     "description" : "Displays the approved image for the active atomic learning goal.",
     "icons" : [ ],
@@ -212,7 +237,7 @@
       }
     },
     "mimeType" : "text/html;profile=mcp-app",
-    "name" : "skillpilot-start-v1-current",
+    "name" : "skillpilot-start-v1-retained-a496abeb",
     "title" : "Start SkillPilot Coach",
     "uri" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html"
   }, {
@@ -377,6 +402,45 @@
             }
           },
           "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
           "type" : "object"
         },
         "curriculumRevision" : {
@@ -1176,14 +1240,14 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html",
       "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html",
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html",
         "visibility" : [ "model", "app" ]
       }
     },
@@ -1348,6 +1412,45 @@
                 }
               },
               "required" : [ "curriculumId" ],
+              "type" : "object"
+            },
+            "curriculumCatalog" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "entries" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "category" : {
+                        "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                        "type" : "string"
+                      },
+                      "optionId" : {
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "qualityStatus" : {
+                        "enum" : [ "green", "orange", "red" ],
+                        "type" : "string"
+                      },
+                      "sortRank" : {
+                        "maximum" : 2,
+                        "minimum" : 0,
+                        "type" : "integer"
+                      }
+                    },
+                    "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                },
+                "schemaVersion" : {
+                  "maximum" : 1,
+                  "minimum" : 1,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "schemaVersion", "entries" ],
               "type" : "object"
             },
             "decision" : {
@@ -2154,6 +2257,45 @@
           "required" : [ "curriculumId" ],
           "type" : "object"
         },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
+          "type" : "object"
+        },
         "curriculumRevision" : {
           "minLength" : 1,
           "type" : "string"
@@ -2627,6 +2769,45 @@
             }
           },
           "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
           "type" : "object"
         },
         "curriculumRevision" : {
@@ -3164,6 +3345,45 @@
               "required" : [ "curriculumId" ],
               "type" : "object"
             },
+            "curriculumCatalog" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "entries" : {
+                  "items" : {
+                    "additionalProperties" : false,
+                    "properties" : {
+                      "category" : {
+                        "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                        "type" : "string"
+                      },
+                      "optionId" : {
+                        "minLength" : 1,
+                        "type" : "string"
+                      },
+                      "qualityStatus" : {
+                        "enum" : [ "green", "orange", "red" ],
+                        "type" : "string"
+                      },
+                      "sortRank" : {
+                        "maximum" : 2,
+                        "minimum" : 0,
+                        "type" : "integer"
+                      }
+                    },
+                    "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                    "type" : "object"
+                  },
+                  "type" : "array"
+                },
+                "schemaVersion" : {
+                  "maximum" : 1,
+                  "minimum" : 1,
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "schemaVersion", "entries" ],
+              "type" : "object"
+            },
             "decision" : {
               "additionalProperties" : false,
               "properties" : {
@@ -3661,6 +3881,45 @@
           "required" : [ "curriculumId" ],
           "type" : "object"
         },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
+          "type" : "object"
+        },
         "curriculumRevision" : {
           "minLength" : 1,
           "type" : "string"
@@ -4138,6 +4397,45 @@
             }
           },
           "required" : [ "curriculumId" ],
+          "type" : "object"
+        },
+        "curriculumCatalog" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "entries" : {
+              "items" : {
+                "additionalProperties" : false,
+                "properties" : {
+                  "category" : {
+                    "enum" : [ "SCHOOL", "UNI", "OTHER" ],
+                    "type" : "string"
+                  },
+                  "optionId" : {
+                    "minLength" : 1,
+                    "type" : "string"
+                  },
+                  "qualityStatus" : {
+                    "enum" : [ "green", "orange", "red" ],
+                    "type" : "string"
+                  },
+                  "sortRank" : {
+                    "maximum" : 2,
+                    "minimum" : 0,
+                    "type" : "integer"
+                  }
+                },
+                "required" : [ "optionId", "category", "qualityStatus", "sortRank" ],
+                "type" : "object"
+              },
+              "type" : "array"
+            },
+            "schemaVersion" : {
+              "maximum" : 1,
+              "minimum" : 1,
+              "type" : "integer"
+            }
+          },
+          "required" : [ "schemaVersion", "entries" ],
           "type" : "object"
         },
         "curriculumRevision" : {

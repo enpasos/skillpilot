@@ -96,10 +96,17 @@ export type SkillPilotSetupToolName =
   | "set_skillpilot_curriculum"
   | "set_skillpilot_personalization";
 
+export type SkillPilotCurriculumCatalogCategory = "SCHOOL" | "UNI" | "OTHER";
+
+export type SkillPilotCurriculumQualityStatus = "green" | "orange" | "red";
+
 export type SkillPilotSetupOption = {
   id: string;
   label: string;
   description?: string;
+  category?: SkillPilotCurriculumCatalogCategory;
+  qualityStatus?: SkillPilotCurriculumQualityStatus;
+  sortRank?: number;
 };
 
 export type SkillPilotSetupDecision = {
@@ -584,6 +591,19 @@ export function skillPilotSetupStateFromToolResult(
   }
   const options = setupOptions(source.options, requiredAction);
   if (!options || options.length === 0) return undefined;
+  if (requiredAction === "setCurriculum") {
+    const catalog = setupCurriculumCatalog(source.curriculumCatalog, options);
+    if (!catalog) return undefined;
+    for (const option of options) {
+      const metadata = catalog.get(option.id);
+      if (!metadata) return undefined;
+      option.category = metadata.category;
+      option.qualityStatus = metadata.qualityStatus;
+      option.sortRank = metadata.sortRank;
+    }
+  } else if (source.curriculumCatalog !== undefined && source.curriculumCatalog !== null) {
+    return undefined;
+  }
   const decision = source.decision === undefined || source.decision === null
     ? undefined
     : setupDecision(source.decision);
@@ -933,6 +953,71 @@ function setupOptions(
     result.push({ id, label, ...(description ? { description } : {}) });
   }
   return result;
+}
+
+function setupCurriculumCatalog(
+  value: unknown,
+  options: readonly SkillPilotSetupOption[]
+): Map<string, {
+  category: SkillPilotCurriculumCatalogCategory;
+  qualityStatus: SkillPilotCurriculumQualityStatus;
+  sortRank: number;
+}> | undefined {
+  const catalog = record(value);
+  if (
+    !catalog
+    || Object.keys(catalog).some((key) => !["schemaVersion", "entries"].includes(key))
+    || catalog.schemaVersion !== 1
+    || !Array.isArray(catalog.entries)
+    || catalog.entries.length !== options.length
+  ) {
+    return undefined;
+  }
+  const optionIds = new Set(options.map((option) => option.id));
+  const result = new Map<string, {
+    category: SkillPilotCurriculumCatalogCategory;
+    qualityStatus: SkillPilotCurriculumQualityStatus;
+    sortRank: number;
+  }>();
+  for (const raw of catalog.entries) {
+    const entry = record(raw);
+    if (
+      !entry
+      || Object.keys(entry).some((key) => ![
+        "optionId",
+        "category",
+        "qualityStatus",
+        "sortRank"
+      ].includes(key))
+    ) {
+      return undefined;
+    }
+    const optionId = boundedExactText(entry.optionId, 500);
+    const category = entry.category === "SCHOOL"
+      || entry.category === "UNI"
+      || entry.category === "OTHER"
+      ? entry.category
+      : undefined;
+    const qualityStatus = entry.qualityStatus === "green"
+      || entry.qualityStatus === "orange"
+      || entry.qualityStatus === "red"
+      ? entry.qualityStatus
+      : undefined;
+    const sortRank = nonNegativeSafeInteger(entry.sortRank);
+    if (
+      !optionId
+      || !optionIds.has(optionId)
+      || result.has(optionId)
+      || !category
+      || !qualityStatus
+      || sortRank === undefined
+      || sortRank > 2
+    ) {
+      return undefined;
+    }
+    result.set(optionId, { category, qualityStatus, sortRank });
+  }
+  return result.size === optionIds.size ? result : undefined;
 }
 
 function setupDecision(value: unknown): SkillPilotSetupDecision | undefined {

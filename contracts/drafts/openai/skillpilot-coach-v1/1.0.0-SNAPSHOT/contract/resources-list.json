@@ -95,6 +95,32 @@
   "title" : "SkillPilot learning-goal image",
   "uri" : "ui://skillpilot/coach/v1/sha256-45e1f58df32ef6cc194a7cdc6353bbd5bfc93ead407dd213cb5a64ff65b9faed/goal-visualization.html"
 }, {
+  "description" : "Private direct-start component for an existing SkillPilot learner ID.",
+  "icons" : [ ],
+  "meta" : {
+    "openai/widgetCSP" : {
+      "connect_domains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+      "redirect_domains" : [ "https://skillpilot.com" ],
+      "resource_domains" : [ ]
+    },
+    "openai/widgetDescription" : "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+    "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+    "openai/widgetPrefersBorder" : true,
+    "ui" : {
+      "csp" : {
+        "connectDomains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+        "resourceDomains" : [ ]
+      },
+      "domain" : "https://mcp-coach-v1.skillpilot.com",
+      "prefersBorder" : true
+    }
+  },
+  "mimeType" : "text/html;profile=mcp-app",
+  "name" : "skillpilot-start-v1-current",
+  "path" : "ui/skillpilot-start.html",
+  "title" : "Start SkillPilot Coach",
+  "uri" : "ui://skillpilot/coach/v1/sha256-5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc/skillpilot-start.html"
+}, {
   "description" : "Displays the approved image for the active atomic learning goal.",
   "icons" : [ ],
   "meta" : {
@@ -216,8 +242,8 @@
     }
   },
   "mimeType" : "text/html;profile=mcp-app",
-  "name" : "skillpilot-start-v1-current",
-  "path" : "ui/skillpilot-start.html",
+  "name" : "skillpilot-start-v1-retained-a496abeb",
+  "path" : "ui/retained/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html",
   "title" : "Start SkillPilot Coach",
   "uri" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html"
 }, {

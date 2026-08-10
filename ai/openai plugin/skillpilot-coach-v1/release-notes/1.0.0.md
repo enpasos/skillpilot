@@ -44,6 +44,11 @@ architecture no longer processes that ID.
   curriculum selection, and personalisation through the existing ID-free
   session tools before it submits the short start message to the host; the
   normal App-first path never opens the SkillPilot web application
+- curriculum selection uses the same three categories, four quality-light
+  filters, default selection and ordering as the SkillPilot Web UI; a closed
+  server-authoritative catalog projection binds those facets one-to-one to the
+  currently allowed curriculum options, so the component never infers them
+  from an ID, title, or description
 - the permanent SkillPilot ID is confined to the direct HTTPS request/response
   and ephemeral component memory or recovery DOM; it never enters chat, model
   context, MCP arguments or results (including `_meta`), `window.openai`,

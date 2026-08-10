@@ -71,7 +71,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH =
             "/openai/skillpilot-memory-card-practice-v1.html";
     public static final String SKILLPILOT_START_ARTIFACT_SHA256 =
-            "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5";
+            "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc";
     public static final String SKILLPILOT_START_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + SKILLPILOT_START_ARTIFACT_SHA256
@@ -88,7 +88,8 @@ public final class OpenAiDeV1ContractMetadata {
      */
     public static final List<String> RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S = List.of(
             "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c",
-            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701");
+            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701",
+            "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5");
     /**
      * Every content-addressed visualization resource previously advertised by
      * Coach V1, ordered oldest first and retained byte-for-byte for connector
