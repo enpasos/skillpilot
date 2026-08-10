@@ -1,6 +1,6 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 9. August 2026
+**Stand:** 10. August 2026
 
 **Status:** Der mehrsprachige MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
 Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
@@ -9,11 +9,12 @@ Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
 freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
 dedizierten `mcp-coach-v1.skillpilot.com`-Origin. Client-TLS ist nicht
-aktiviert. Der private Direct-Start ist als interner Phase-1-Canary
+aktiviert. Der private Direct-Start ist als vollständiger interner
+In-Component-Canary für CREATE, EXISTING, Curriculum und Personalisierung
 implementiert. Eine öffentliche Einreichung dieser ID-verarbeitenden
 Komponente bleibt jedoch gesperrt, bis OpenAI diese konkrete Datenverarbeitung
-schriftlich akzeptiert oder eine alternative Architektur ohne Eingabe der
-dauerhaften SkillPilot-ID umgesetzt ist.
+schriftlich akzeptiert oder eine alternative Architektur ohne Verarbeitung
+der dauerhaften SkillPilot-ID umgesetzt ist.
 
 Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit drei
 getrennt gebundenen MCP Apps UIs: dem privaten Direct-Start, der read-only
@@ -39,9 +40,14 @@ First-Party-Weboberfläche oder den capability-geschützten privaten Direct-Star
 – erzeugt jedoch eine davon unabhängige, absolut 24 Stunden gültige
 `learningSessionId`. SkillPilot trägt diese Referenz automatisch in die kurze
 Startnachricht ein; ChatGPT übergibt sie unverändert an jedes fachliche
-MCP-Werkzeug. Beim Direct-Start wird die SkillPilot-ID ausschließlich aus der
-Komponente per HTTPS an den festen SkillPilot-Endpunkt gesendet; sie ist weder
-MCP-Toolargument noch Modell- oder Chatinhalt.
+MCP-Werkzeug. Beim Direct-Start wird eine vorhandene SkillPilot-ID
+ausschließlich aus der Komponente per HTTPS an den festen SkillPilot-Endpunkt
+gesendet; eine neu vergebene ID kommt ausschließlich in dessen direkter
+HTTPS-Antwort und flüchtig im Recovery-DOM vor. Sie ist weder MCP-Toolargument
+oder -resultat noch Modell-, Chat-, Widget-State-, Storage-, URL-, Log- oder
+Telemetrieinhalt. Curriculum und Personalisierung werden über die bestehenden
+ID-freien Sessiontools in derselben Komponente abgeschlossen; der normale
+App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
 
 ## 1. Öffentlicher Vertrag
 
@@ -1085,21 +1091,39 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
 - Erst nach ausdrücklicher Benutzerbestätigung ruft ausschließlich die
   Komponente `issue_skillpilot_start_capability` auf. Das app-only Werkzeug ist
   ungebunden, erhält keine SkillPilot-ID und liefert die kurzlebige Capability
-  nur in Resultat-`_meta`.
-- Die manuell eingegebene vorhandene SkillPilot-ID erscheint genau einmal im
-  direkten HTTPS-Body an `/bootstrap/v1/launch`; sie darf nicht in Chat,
-  Modellkontext, MCP-Argumente, Widget-State, Storage, Telemetrie oder Logs
-  gelangen. Dateiimport und PIN/Passwort gehören nicht zu diesem Phase-1-Pfad.
-- Eine frisch erzeugte, vorhandene SkillPilot-ID ohne ausgewähltes Curriculum
-  oder abgeschlossenes Personal Curriculum muss erfolgreich starten. Der
-  unmittelbar folgende `get_skillpilot_context`-Aufruf veröffentlicht dann
-  `requiredAction=setCurriculum`; die Auswahl wird ausschließlich über
-  `set_skillpilot_curriculum` gespeichert.
-- Eine vorhandene ID mit ausgewähltem Curriculum, aber offener
-  Personalisierung muss ebenfalls starten. Der Vollkontext veröffentlicht
-  `requiredAction=setPersonalization`, und ausschließlich
-  `set_skillpilot_personalization` führt den bestehenden Setup-Dialog fort;
-  das Widget dupliziert diese Einrichtung nicht.
+  nur in Resultat-`_meta`. Für diesen Vertrag muss die Laufzeitprojektion
+  `policyRevision=2` und `providerNoticeVersion=openai-provider-eligibility-v2`
+  melden; ältere Capabilities und Hinweise werden terminal abgewiesen.
+- Der Bootstrap akzeptiert exakt `identityMode=EXISTING` mit verpflichtender
+  `skillpilotId` oder `identityMode=CREATE` ohne dieses Feld. Bei EXISTING
+  erscheint die ID ausschließlich im direkten HTTPS-Body. Bei CREATE steht
+  `createdSkillpilotId` ausschließlich in der direkten HTTPS-Antwort und
+  flüchtig im Recovery-DOM; vor jeder Setup-Mutation muss die Person
+  ausdrücklich bestätigen, sie gesichert zu haben. Ein nutzerinitiierter
+  `navigator.clipboard.writeText`-Aufruf ist zulässig, aber keine Host-
+  Geheimhaltungsgrenze.
+- In beiden Modi darf die permanente ID niemals in Chat, Modellkontext,
+  MCP-Argumente oder -Resultate einschließlich `_meta`, `window.openai`,
+  Widget-State, Local/Session Storage, IndexedDB, URL, Console, Analytics,
+  Telemetrie oder Logs gelangen. Dateiimport und PIN/Passwort gehören nicht zu
+  diesem V1-Pfad.
+- Nach dem Launch hält die Komponente die kanonische Startnachricht zurück,
+  extrahiert daraus ausschließlich für den Setupablauf die learningSessionId
+  und ruft `get_skillpilot_context` auf. Bei
+  `requiredAction=setCurriculum` rendert sie nur die veröffentlichten Optionen
+  und speichert genau eine Auswahl über `set_skillpilot_curriculum`.
+- Bei `requiredAction=setPersonalization` rendert sie nur die neueste
+  serverautoritative Entscheidung und führt jeweils genau einen Schritt über
+  `set_skillpilot_personalization` aus. Beide Schreibwerkzeuge erhalten
+  `expectedStateVersion` exakt aus dem neuesten Erfolg und eine neue
+  `clientRequestId`; nur ein unveränderter Transport-Retry verwendet dieselbe
+  ID. Bei 409 wird der Kontext genau einmal frisch geladen und jede alte Option
+  verworfen.
+- Erst wenn der neueste Vollkontext weder `setCurriculum` noch
+  `setPersonalization` verlangt, sendet die Komponente die unveränderte
+  Startnachricht an den Host. Im normalen App-first-Canary gibt es keinen
+  **SkillPilot öffnen**-Schritt und der Coach fragt die bereits abgeschlossenen
+  Setupdimensionen nicht erneut ab.
 - Eine unbekannte SkillPilot-ID liefert dagegen stabil und identifierfrei
   `PROFILE_UNAVAILABLE` und erzeugt keine Lernsession.
 - Ein erfolgreicher Bootstrap erzeugt eine zufällige 256-Bit-Lernsession. Ein
@@ -1120,10 +1144,10 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   Backendinstanzen bleibt ein gemeinsames Gateway-Limit ein Pflichtgate.
 
 Vor einer öffentlichen Einreichung muss zusätzlich entweder eine schriftliche
-OpenAI-Akzeptanz für die konkrete Verarbeitung der bearer-artigen SkillPilot-ID
-in der Komponente vorliegen oder der Direct-Start auf eine Architektur ohne
-ID-Eingabe umgestellt sein. Ein erfolgreicher interner Canary hebt dieses Gate
-nicht auf.
+OpenAI-Akzeptanz für die konkrete Verarbeitung einer neu vergebenen oder
+vorhandenen bearer-artigen SkillPilot-ID in der Komponente vorliegen oder der
+Direct-Start auf eine Architektur ohne ID-Verarbeitung umgestellt sein. Ein
+erfolgreicher interner Canary hebt dieses Gate nicht auf.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-

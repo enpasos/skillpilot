@@ -27,6 +27,7 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapCapabilityRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapLaunchAttemptRepository;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerService;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.time.Clock;
@@ -48,6 +49,7 @@ class OpenAiDeBootstrapAttemptServiceTest {
 
     private static final String SKILLPILOT_ID = "2c089f6b-615d-4c14-8225-82a973f842cf";
     private static final String OTHER_SKILLPILOT_ID = "cf411b27-5fa7-4a5d-a155-669864856073";
+    private static final String CREATED_SKILLPILOT_ID = "33b3df5b-48d1-4c0e-95fd-d1da51a9c702";
     private static final String CLIENT_REQUEST_ID = "0f967c3b-114e-4b83-891d-cde9863d8fb3";
     private static final String AUTHORIZATION_REFERENCE = "stable-sas-authorization-id";
     private static final String SESSION_ID = "sps_" + "A".repeat(43);
@@ -56,6 +58,7 @@ class OpenAiDeBootstrapAttemptServiceTest {
     private OpenAiDeBootstrapCapabilityRepository capabilities;
     private OpenAiDeBootstrapLaunchAttemptRepository attempts;
     private LearnerRepository learners;
+    private LearnerService learnerService;
     private OpenAiDeCoachConnectionService connectionService;
     private OpenAiDeBootstrapAuthorizationVerifier verifier;
     private OpenAiDeBootstrapCrypto crypto;
@@ -71,6 +74,7 @@ class OpenAiDeBootstrapAttemptServiceTest {
         capabilities = mock(OpenAiDeBootstrapCapabilityRepository.class);
         attempts = mock(OpenAiDeBootstrapLaunchAttemptRepository.class);
         learners = mock(LearnerRepository.class);
+        learnerService = mock(LearnerService.class);
         connectionService = mock(OpenAiDeCoachConnectionService.class);
         verifier = mock(OpenAiDeBootstrapAuthorizationVerifier.class);
         crypto = new OpenAiDeBootstrapCrypto(
@@ -114,6 +118,7 @@ class OpenAiDeBootstrapAttemptServiceTest {
                 capabilities,
                 attempts,
                 learners,
+                learnerService,
                 connectionService,
                 crypto,
                 verifier,
@@ -131,6 +136,7 @@ class OpenAiDeBootstrapAttemptServiceTest {
         assertThat(retry).isEqualTo(first);
         assertThat(first.startMessage()).isEqualTo(
                 "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: " + SESSION_ID);
+        assertThat(first.createdSkillpilotId()).isNull();
         verify(connectionService, times(1)).createLaunch(anyString(), any());
         verify(learners, times(1)).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
 
@@ -143,6 +149,74 @@ class OpenAiDeBootstrapAttemptServiceTest {
         assertThat(attempt.getResponseExpiresAt()).isEqualTo(START.plusSeconds(900));
         assertThat(attempt.getRecordExpiresAt()).isEqualTo(START.plusSeconds(86_400));
         assertThat(capability.getStatus()).isEqualTo(OpenAiDeBootstrapCapabilityStatus.CONSUMED);
+    }
+
+    @Test
+    void createModeCreatesExactlyOneLearnerBeforeLaunchAndExactRetryReturnsSamePrivateId() {
+        Learner created = new Learner();
+        created.setSkillpilotId(CREATED_SKILLPILOT_ID);
+        when(learnerService.createLearner()).thenReturn(created);
+
+        OpenAiDeBootstrapLaunchResponse first = service.launch(rawCapability, createRequest());
+        OpenAiDeBootstrapLaunchResponse retry = service.launch(rawCapability, createRequest());
+
+        assertThat(retry).isEqualTo(first);
+        assertThat(first.createdSkillpilotId()).isEqualTo(CREATED_SKILLPILOT_ID);
+        assertThat(first.startMessage()).doesNotContain(CREATED_SKILLPILOT_ID);
+        verify(learnerService, times(1)).createLearner();
+        verify(learners, never()).findBySkillpilotIdForUpdate(anyString());
+        InOrder creation = inOrder(learnerService, connectionService);
+        creation.verify(learnerService).createLearner();
+        creation.verify(connectionService).createLaunch(eq(CREATED_SKILLPILOT_ID), any());
+        assertThat(persistedAttempt.get().getResponseCiphertext())
+                .doesNotContain(CREATED_SKILLPILOT_ID, SESSION_ID, "createdSkillpilotId");
+    }
+
+    @Test
+    void identityModeAndConditionalIdShapeArePartOfTheExactRequestBinding() {
+        service.launch(rawCapability, request(SKILLPILOT_ID));
+
+        assertThatExceptionOfType(OpenAiDeBootstrapException.class)
+                .isThrownBy(() -> service.launch(rawCapability, createRequest()))
+                .extracting(OpenAiDeBootstrapException::code)
+                .isEqualTo(OpenAiDeBootstrapErrorCode.IDEMPOTENCY_KEY_REUSED);
+
+        verify(learnerService, never()).createLearner();
+        verify(connectionService, times(1)).createLaunch(anyString(), any());
+    }
+
+    @Test
+    void rejectsMissingOrContradictoryIdentityInputsBeforeBinding() {
+        for (OpenAiDeBootstrapLaunchRequest invalid : new OpenAiDeBootstrapLaunchRequest[] {
+                request(null),
+                new OpenAiDeBootstrapLaunchRequest(
+                        OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                        null,
+                        SKILLPILOT_ID,
+                        "de",
+                        new OpenAiDeBootstrapLaunchRequest.LaunchIntent(
+                                OpenAiDeBootstrapConstants.LAUNCH_INTENT),
+                        OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
+                        CLIENT_REQUEST_ID),
+                new OpenAiDeBootstrapLaunchRequest(
+                        OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                        OpenAiDeBootstrapLaunchRequest.IdentityMode.CREATE,
+                        SKILLPILOT_ID,
+                        "de",
+                        new OpenAiDeBootstrapLaunchRequest.LaunchIntent(
+                                OpenAiDeBootstrapConstants.LAUNCH_INTENT),
+                        OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
+                        CLIENT_REQUEST_ID)
+        }) {
+            assertThatExceptionOfType(OpenAiDeBootstrapException.class)
+                    .isThrownBy(() -> service.launch(rawCapability, invalid))
+                    .extracting(OpenAiDeBootstrapException::code)
+                    .isEqualTo(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
+        }
+
+        assertThat(persistedAttempt.get()).isNull();
+        verify(learnerService, never()).createLearner();
+        verify(connectionService, never()).createLaunch(anyString(), any());
     }
 
     @Test
@@ -447,7 +521,20 @@ class OpenAiDeBootstrapAttemptServiceTest {
     private static OpenAiDeBootstrapLaunchRequest request(String skillpilotId) {
         return new OpenAiDeBootstrapLaunchRequest(
                 OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                OpenAiDeBootstrapLaunchRequest.IdentityMode.EXISTING,
                 skillpilotId,
+                "de",
+                new OpenAiDeBootstrapLaunchRequest.LaunchIntent(
+                        OpenAiDeBootstrapConstants.LAUNCH_INTENT),
+                OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
+                CLIENT_REQUEST_ID);
+    }
+
+    private static OpenAiDeBootstrapLaunchRequest createRequest() {
+        return new OpenAiDeBootstrapLaunchRequest(
+                OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                OpenAiDeBootstrapLaunchRequest.IdentityMode.CREATE,
+                null,
                 "de",
                 new OpenAiDeBootstrapLaunchRequest.LaunchIntent(
                         OpenAiDeBootstrapConstants.LAUNCH_INTENT),

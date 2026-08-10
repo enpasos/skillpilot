@@ -1,8 +1,8 @@
 # Direkter SkillPilot-Start aus der OpenAI-MCP-App
 
-**Stand:** 9. August 2026
+**Stand:** 10. August 2026
 
-**Status:** Verbindliche Zielarchitektur; interne Phase-1-Implementierung und
+**Status:** Verbindliche Zielarchitektur; vollständiger interner V1-Slice und
 Canary freigegeben. Die öffentliche Einreichung bleibt durch Abschnitt 12.2
 gesperrt.
 
@@ -19,10 +19,12 @@ keine zulässige Detailentscheidung.
 
 ## 1. Kurzfassung
 
-SkillPilot soll neben dem bestehenden Start auf https://skillpilot.com einen
-zweiten Einstieg anbieten: Eine Person öffnet **SkillPilot Coach v1** direkt im
-OpenAI-Host, gibt dort ihre vorhandene SkillPilot-ID ein und startet eine neue
-Lernsession, ohne zuvor die SkillPilot-Webanwendung öffnen zu müssen.
+SkillPilot bietet neben dem bestehenden Start auf https://skillpilot.com einen
+zweiten Einstieg an: Eine Person öffnet **SkillPilot Coach v1** direkt im
+OpenAI-Host, erzeugt dort eine neue SkillPilot-ID oder verwendet eine vorhandene,
+richtet Curriculum und persönliches Curriculum vollständig in derselben
+Komponente ein und startet anschließend unmittelbar mit dem Lerncoach. Der
+normale App-first-Ablauf öffnet die SkillPilot-Webanwendung zu keinem Zeitpunkt.
 
 Dieser zusätzliche Einstieg ändert die bestehende Identitätsarchitektur
 ausdrücklich nicht:
@@ -34,8 +36,9 @@ ausdrücklich nicht:
    Token. client_credentials wird weder registriert noch beworben noch
    akzeptiert.
 2. **Die SkillPilot-ID wählt unabhängig davon den dauerhaften Lernstand.**
-   Im internen Phase-1-Canary wird sie ausschließlich manuell im Start-Widget
-   eingegeben. Sie gelangt nicht in Chat, Modellkontext oder MCP-Toolargumente.
+   Die Komponente erzeugt sie über eine direkte HTTPS-Verbindung zum Core oder
+   nimmt sie dort als vorhandene ID entgegen. Sie gelangt niemals in Chat,
+   Modellkontext, MCP-Toolargumente, MCP-Toolresultate oder Resultat-`_meta`.
 3. **Eine neue learningSessionId wählt genau eine kurzlebige Lernsession.**
    Sie wird erst nach ausdrücklicher Startbestätigung erzeugt, ist absolut
    höchstens 24 Stunden gültig und wird anschließend in einer kurzen
@@ -47,8 +50,9 @@ ausdrücklich nicht:
 
 Der zusätzliche Einstieg ist damit weder ein OAuth-Login für Lernende noch ein
 OAuth-Subject-zu-Lernenden-Mapping. Er ist ein App-autorisierter Bootstrap, der
-nach der ausdrücklichen SkillPilot-ID-Auswahl dieselbe autoritative fachliche
-Startgrenze verwendet wie der bestehende Webstart.
+nach der ausdrücklichen Wahl **Neu erstellen** oder **Vorhandene ID verwenden**
+dieselbe autoritative fachliche Startgrenze und denselben kanonischen
+Einrichtungsautomaten verwendet wie der bestehende Webstart.
 
 ## 2. Ausgangslage
 
@@ -78,8 +82,11 @@ Es fehlt deshalb ein klar abgegrenzter Pre-Session-Bootstrap. Er muss:
 - ohne learningSessionId aufrufbar sein;
 - weiterhin gültiges, major-spezifisches App-OAuth verlangen;
 - noch keinen fachlichen Lernzustand lesen oder verändern;
-- eine sichere UI für die unabhängige SkillPilot-ID-Auswahl öffnen;
+- eine sichere UI für Erzeugung oder unabhängige Auswahl der SkillPilot-ID
+  öffnen;
 - erst nach ausdrücklicher Bestätigung eine neue Lernsession erzeugen;
+- Curriculum und Personal Curriculum vor dem Chat-Handoff innerhalb derselben
+  Komponente vollständig einrichten;
 - anschließend in den unveränderten fachlichen MCP-Ablauf überleiten.
 
 ## 3. Nicht verhandelbare Identitätsgrenzen
@@ -107,8 +114,8 @@ alle späteren Ausbaustufen:
    Zuletzt-verwendet-Fallback auf SkillPilot-ID, Lernenden oder Lernstand
    aufgelöst werden.
 5. **MUSS – SkillPilot-ID unabhängig halten.** Ausschließlich die von der
-   Person ausdrücklich gewählte SkillPilot-ID bestimmt den dauerhaften
-   Lernstand.
+   Person ausdrücklich neu erzeugte oder gewählte SkillPilot-ID bestimmt den
+   dauerhaften Lernstand.
 6. **MUSS – Lernsession unabhängig und kurzlebig halten.** Erst der bestätigte
    Start erzeugt eine neue learningSessionId. OAuth-Callback, Tokenaustausch
    und Token-Refresh dürfen keine Lernsession erzeugen, auswählen, verlängern
@@ -132,6 +139,28 @@ alle späteren Ausbaustufen:
     Mastery, persönliches Curriculum und sonstiger Lernstand bleiben im Core.
     Ein Major-Wechsel wählt diesen Lernstand erneut über die SkillPilot-ID,
     übernimmt aber keine alte Session.
+13. **MUSS – die permanente ID aus allen Host-/MCP-Datenflächen fernhalten.**
+    Der Klarwert darf nur in einem direkten HTTPS-Request beziehungsweise bei
+    Neuanlage in der direkten HTTPS-Antwort zwischen Komponente und festem
+    SkillPilot-Core-Endpunkt sowie kurzlebig im Arbeitsspeicher oder sichtbaren
+    DOM der Komponente vorkommen. Verboten sind insbesondere Chat,
+    Modellkontext, MCP-Toolargumente, `content`, `structuredContent`, Resultat-
+    `_meta`, `tools/call`, `ui/message`, sämtliche `window.openai`-Felder und
+    -Methoden, provider-synchronisierter `widgetState`, Local/Session Storage,
+    IndexedDB, URL, Query, Fragment, Referrer, Logs, Console, Analytics und
+    Telemetrie.
+14. **MUSS – den normalen App-first-Ablauf in einer Komponente abschließen.**
+    ID-Vergabe beziehungsweise ID-Auswahl, Sprache, Providerhinweis,
+    Curriculum und persönliches Curriculum finden in derselben Startkomponente
+    statt. Erst danach erhält der Host genau die kurze ID-freie Startnachricht.
+    **SkillPilot öffnen** ist kein regulärer Schritt, sondern ausschließlich
+    ein expliziter technischer Not-/Supportfallback.
+15. **DARF NICHT – absolute Geheimhaltung gegenüber dem Hostbetreiber
+    behaupten.** Die Komponente läuft in einem vom OpenAI-Host bereitgestellten
+    Iframe und damit im ChatGPT-Clientprozess. Die Architektur verhindert eine
+    absichtliche Übergabe der permanenten ID an Chat, Modell- und MCP-
+    Datenflächen; sie kann technisch keine absolute Nichtbeobachtbarkeit
+    gegenüber dem Betreiber der ausführenden Clientumgebung garantieren.
 
 Das technische OAuth-Subject bedeutet in SkillPilot ausschließlich:
 „Dieser MCP-Zugriff gehört zum erwarteten registrierten Client und besitzt die
@@ -184,23 +213,25 @@ ausdrücklich freigegebene Architekturentscheidung:
 
 ## 4. Ziele und Nicht-Ziele
 
-### 4.1 Ziele von Phase 1
+### 4.1 Ziele des internen V1-Slices
 
-- direkter Start aus SkillPilot Coach v1 für eine vorhandene SkillPilot-ID;
-- ausschließlich manuelle Eingabe einer vorhandenen SkillPilot-ID;
-- vorhandene Lernende dürfen auch mit noch nicht gewähltem Curriculum oder
-  noch nicht abgeschlossenem Personal Curriculum starten; der bestehende
-  Coach-Zustandsautomat veröffentlicht danach `setCurriculum` beziehungsweise
-  `setPersonalization`;
+- direkter Start aus SkillPilot Coach v1 mit **neuer** oder **vorhandener**
+  SkillPilot-ID;
+- Vergabe beziehungsweise Eingabe der ID ausschließlich in der Komponente;
+- vorhandene oder neu erzeugte Lernende werden vor dem Chat-Handoff über den
+  bestehenden Coach-Zustandsautomaten vollständig durch `setCurriculum` und
+  `setPersonalization` geführt;
 - unbekannte SkillPilot-IDs werden neutral an den First-Party-Start verwiesen;
 - Bestätigung von Sprache und unveränderlich versioniertem Providerhinweis;
 - Starttyp ausschließlich CURRENT_UNIT;
 - Wiederverwendung der bestehenden autoritativen Startlogik;
 - Host-Anfrage über den ausgewählten Nachrichtenkanal mit der fertigen
-  Startnachricht;
+  Startnachricht **erst nach abgeschlossener Einrichtung**;
+- ausdrückliche Recovery-Bestätigung nach Neuanlage, bevor die Einrichtung
+  fortgesetzt wird;
 - sicherer Rückfall auf den bestehenden Webstart.
 
-### 4.2 Nicht-Ziele von Phase 1
+### 4.2 Nicht-Ziele des internen V1-Slices
 
 - keine Änderung von client_id, Redirect-URIs, client_secret_basic, Consent,
   PKCE, Access-Token- oder Refresh-Token-Semantik;
@@ -208,9 +239,11 @@ ausdrücklich freigegebene Architekturentscheidung:
 - keine OAuth-Subject-zu-Lernenden-Verknüpfung;
 - kein SkillPilot-Konto- oder Profil-Login über OAuth;
 - kein MCP-Tool, das die SkillPilot-ID erhält oder die Lernsession startet;
-- keine ID-Erzeugung, kein Dateiimport, kein Datei-PIN, kein Export und keine
-  Recovery im Widget;
-- keine Curriculum- oder Personalisierungsänderung im Start-Widget;
+- kein Dateiimport, kein Datei-PIN und kein unverschlüsselter automatischer
+  Export aus dem Widget;
+- keine zweite Curriculum- oder Personalisierungslogik im Widget; die
+  Komponente rendert ausschließlich die serverautoritativen Optionen und ruft
+  die bestehenden sessiongebundenen Werkzeuge auf;
 - kein Verified-Recall- oder Abitur-Start;
 - kein Ersatz des bestehenden Webstarts;
 - keine Änderung an Lernziel-, Frontier-, Mastery- oder Autopilot-Semantik;
@@ -238,8 +271,9 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
         ohne Host-, Plattform- oder User-Agent-Sniffing
                          |
                          v
-       Person gibt SkillPilot-ID manuell ein und
-       bestätigt Sprache, Providerhinweis und Start
+       Person wählt CREATE oder EXISTING, bestätigt
+       Sprache, Providerhinweis und Start; bei EXISTING
+       bleibt die ID nur im flüchtigen Komponentenprozess
                          |
                          v
       issue_skillpilot_start_capability, app-only
@@ -247,7 +281,8 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
                          |
                          v
    direkter HTTPS-POST an festen V1-Bootstrap-Endpunkt
-   Capability im Header + SkillPilot-ID nur im JSON-Body
+   Capability im Header; identityMode im JSON-Body;
+   SkillPilot-ID nur bei EXISTING im direkten Body
                          |
                          v
     Core bindet den Attempt in Transaktion A und führt
@@ -255,15 +290,28 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
                          |
                          v
     zufällige learningSessionId, maximal 24h
-    + kurzlebig AEAD-verschlüsseltes Delivery-Resultat
+    + kurzlebig AEAD-verschlüsseltes Delivery-Resultat;
+    bei CREATE neue ID nur in direkter HTTPS-Antwort
                          |
                          v
-     Widget bittet den Host über den vor dem Issuer-Aufruf
-     ausgewählten Kanal, die unveränderte Startnachricht aufzunehmen
+    bei CREATE: neue ID im DOM zeigen und ausdrückliche
+    Bestätigung verlangen, dass sie extern gesichert wurde
+                         |
+                         v
+    Widget hält die Startnachricht privat zurück und ruft
+    über tools/call die bestehenden ID-freien Sessiontools:
+    get_skillpilot_context -> set_skillpilot_curriculum /
+    set_skillpilot_personalization -> jeweils frischer Kontext
+                         |
+                         v
+    sobald keine Einrichtungsaktion mehr offen ist:
+    Host über den fixierten Nachrichtenkanal bitten,
+    exakt die unveränderte Startnachricht aufzunehmen
                          |
                          v
        erwarteter nächster Modellschritt:
-       get_skillpilot_context mit derselben learningSessionId
+       get_skillpilot_context mit derselben learningSessionId;
+       keine erneute Curriculum-/Personalisierungsfrage
 ~~~
 
 ## 6. MCP-Apps-Vertrag vor der Lernsession
@@ -407,7 +455,7 @@ kanonischen Schema und verweigert bei jeder Abweichung den Release-Snapshot.
     "schemaVersion": 1,
     "contractLine": {
       "contractMajor": 1,
-      "policyRevision": 1,
+      "policyRevision": 2,
       "displayName": "SkillPilot Coach v1",
       "supportLifecycle": "CURRENT",
       "publicationStatus": "DRAFT",
@@ -428,8 +476,8 @@ Das modellseitige content weist ausdrücklich an:
 
 > Die sichere SkillPilot-Startoberfläche wurde geöffnet. Die SkillPilot-ID
 > darf niemals im Chat eingegeben oder abgefragt werden. Wird die Oberfläche
-> nicht angezeigt, ist ausschließlich der bereitgestellte
-> SkillPilot-Webstart zu verwenden.
+> nicht angezeigt, darf die SkillPilot-ID nicht im Chat abgefragt werden. Der
+> bereitgestellte SkillPilot-Webstart ist nur der technische Fallback.
 
 Das Toolresult enthält keine Setup-Capability und keine vertraulichen
 Darstellungsdaten.
@@ -441,7 +489,10 @@ darf eine neue ausdrückliche Benutzeraktion einen neuen Versuch beginnen. Der
 Skill darf
 weder eine SkillPilot-ID im Chat erfragen noch das app-only Issuer-Tool selbst
 aufrufen. Nach Öffnen der Komponente wartet er auf eine vom Widget verfasste
-Startnachricht oder verweist bei fehlender UI auf den Webfallback.
+Startnachricht. Im normalen App-first-Ablauf stellt das Modell weder Curriculum-
+noch Personalisierungsfragen; diese Einrichtung wird vor dem Handoff in der
+Komponente abgeschlossen. Bei fehlender UI ist ausschließlich der technische
+Webfallback zulässig.
 
 ### 6.2 App-only Tool issue_skillpilot_start_capability
 
@@ -508,7 +559,7 @@ Das Inputschema enthält ausschließlich die ausdrückliche Bestätigung:
   "properties": {
     "providerNoticeVersion": {
       "type": "string",
-      "const": "openai-provider-eligibility-v1"
+      "const": "openai-provider-eligibility-v2"
     },
     "providerEligibilityConfirmed": {
       "type": "boolean",
@@ -526,7 +577,8 @@ Bei ALLOW muss sourceMajorDecision fehlen. Bei WARN muss es nach ausdrücklicher
 Wahl, in V1 zu bleiben, exakt START_CURRENT_MAJOR sein. Bei BLOCK, veraltetem
 Providerhinweis oder fehlender Bestätigung wird keine Capability ausgestellt.
 
-Die implementierte Phase-1-Linie steht derzeit auf ALLOW. WARN bleibt bis zu
+Die implementierte V1-Linie steht mit der erweiterten CREATE-/In-Component-
+Semantik auf `policyRevision=2` und derzeit auf ALLOW. WARN bleibt bis zu
 einem zentralen, serverautoritativen Policy-Service ein dormant getesteter
 Vertragszustand: Ein nicht-null `sourceMajorDecision` wird aktuell fail-closed
 abgewiesen. BLOCK und jede unbekannte oder veraltete Kombination stellen
@@ -559,7 +611,7 @@ Teil von `structuredContent`.
           "const": 1
         },
         "providerNoticeVersion": {
-          "const": "openai-provider-eligibility-v1"
+          "const": "openai-provider-eligibility-v2"
         }
       }
     },
@@ -595,7 +647,7 @@ Beispiel eines gültigen Erfolgs:
 {
   "status": "CAPABILITY_ISSUED",
   "contractMajor": 1,
-  "providerNoticeVersion": "openai-provider-eligibility-v1"
+  "providerNoticeVersion": "openai-provider-eligibility-v2"
 }
 ~~~
 
@@ -611,8 +663,8 @@ geschlossen validierte Objekt:
     "setupCapability": "spc_<43 base64url characters>",
     "expiresAt": "2026-08-09T12:10:00Z",
     "contractMajor": 1,
-    "policyRevision": 1,
-    "providerNoticeVersion": "openai-provider-eligibility-v1",
+    "policyRevision": 2,
+    "providerNoticeVersion": "openai-provider-eligibility-v2",
     "sourceMajorDecision": "ALLOW_CURRENT_MAJOR"
   }
 }
@@ -644,9 +696,62 @@ direkt per HTTPS an den SkillPilot Core. App-only würde die Argumente zwar vor
 dem Modell verbergen, aber nicht aus dem vom Provider vermittelten Tooltransport
 entfernen und erfüllt deshalb diese strengere Produktgrenze nicht.
 
+Dasselbe gilt für eine neu vergebene ID: Der Core liefert sie ausschließlich
+in der direkten HTTPS-Antwort an die Komponente. Sie wird nie Bestandteil eines
+MCP-Ergebnisses einschließlich Resultat-`_meta`. Für die nachfolgende
+Einrichtung verwenden alle MCP-Werkzeuge ausschließlich die kurzlebige
+`learningSessionId`; die permanente ID wird serverseitig darüber aufgelöst.
+
 Der direkte HTTPS-Weg reduziert die Datenfläche, beweist aber nicht, dass Werte
 außerhalb des OpenAI-Clientprozesses existieren. Die Komponente läuft im
 Providerkontext. Diese Grenze muss der Datenschutzhinweis ehrlich benennen.
+
+### 6.4 Bestehende Sessiontools für die Einrichtung in der Komponente
+
+Der pragmatische V1-Ausbau führt keine zweite fachliche Setup-API und keine
+neuen Setup-Toolnamen ein. Nach dem direkten Launch verwendet die Komponente
+über denselben für den Versuch fixierten `tools/call`- beziehungsweise
+`window.openai.callTool`-Kanal ausschließlich:
+
+1. `get_skillpilot_context` mit der aus der kanonisch validierten
+   `startMessage` extrahierten neuen `learningSessionId`;
+2. bei `requiredAction=setCurriculum` genau ein veröffentlichtes
+   `curriculumId` über `set_skillpilot_curriculum`;
+3. bei `requiredAction=setPersonalization` genau ein veröffentlichtes opakes
+   `optionId` über `set_skillpilot_personalization`;
+4. anschließend den jeweils frisch zurückgegebenen Vollkontext, bis weder
+   `setCurriculum` noch `setPersonalization` offen ist.
+
+Diese drei bestehenden Werkzeuge bleiben modell- **und** appsichtbar und tragen
+keine UI-Ressourcenbindung. Ihre Component-Aufruf-Freigabe und der aktuelle
+ChatGPT-Kompatibilitätsweg werden explizit über
+`_meta["openai/widgetAccessible"]: true` veröffentlicht. Sie erhalten kein
+SkillPilot-ID-Argument und geben keine permanente ID in `content`,
+`structuredContent` oder Resultat-`_meta` zurück.
+
+Für jede neue Auswahl kopiert die Komponente `expectedStateVersion` exakt aus
+dem neuesten erfolgreichen Vollresultat und erzeugt eine neue UUID-v4 als
+`clientRequestId`. Nur ein transportseitig unklarer **unveränderter** Versuch
+darf mit derselben UUID und denselben Argumenten wiederholt werden. Für eine
+andere Auswahl oder nach einem bestätigten Erfolg wird diese UUID niemals
+wiederverwendet. Ein Konflikt lädt den Kontext genau einmal frisch; die
+Komponente verwirft alle zuvor angebotenen Optionen und arbeitet nur mit dem
+neuen `stateVersion` und dessen Optionen weiter.
+
+Die Komponente hält die vom Bootstrap gelieferte Startnachricht währenddessen
+unverändert in einer flüchtigen Laufzeitreferenz. Weder die Sessionerzeugung
+noch ein einzelner erfolgreicher Setup-Schritt löst bereits `ui/message` aus.
+Erst der erste Vollkontext ohne `setCurriculum` und ohne `setPersonalization`
+gibt den Host-Handoff frei. Ein danach eventuell veröffentlichtes
+`setActiveGoal`, `teachActiveGoal` oder anderes fachliches `requiredAction`
+gehört wieder dem normalen Coach und wird nicht vom Start-Widget vorweggenommen.
+
+Das ist bewusst ein pragmatischer Zwischenschritt: Die Lernsession existiert
+bereits während der Einrichtung. Ein späterer Pre-Session-Setup-Refactor darf
+Curriculum und Personal Curriculum über eine eigene kurzlebige serverseitige
+Draftreferenz vorbereiten und die Lernsession erst nach vollständiger
+Bestätigung erzeugen. Er muss dieselbe ID- und OAuth-Verfassung wahren und darf
+keine zweite fachliche Setup-Logik einführen.
 
 ## 7. Start-Widget
 
@@ -661,10 +766,19 @@ Das Widget:
 - bittet den Host über `ui/message` oder den dokumentierten
   Kompatibilitätsalias `window.openai.sendFollowUpMessage` um Aufnahme der
   Startnachricht;
+- darf für den mehrstufigen Einrichtungsassistenten eine vom Host angebotene
+  Fullscreen-Darstellung verwenden, muss aber auch inline vollständig
+  funktionieren;
 - verwendet `ui/open-link` oder `window.openai.openExternal` für erlaubte
   Fallbacks, soweit unterstützt;
 - erkennt optionale Hostfähigkeiten per Capability-API, nicht anhand von
   User-Agent, Hostname, Plattform oder Oberfläche.
+
+Die OpenAI-Dokumentation beschreibt `tools/call` als standardisierten
+UI-Toolaufruf und `window.openai.callTool` als ChatGPT-Kompatibilitätsalias.
+Fullscreen ist ausdrücklich für mehrstufige Workflows vorgesehen. Siehe
+[Add UI to your MCP server](https://developers.openai.com/plugins/build/chatgpt-ui)
+und [UI guidelines](https://developers.openai.com/plugins/concepts/ui-guidelines#fullscreen).
 
 Vor jeder Capability-Ausstellung muss genau ein vollständiger Aktionskanal
 verfügbar sein: entweder die initialisierte MCP-Apps-Verbindung mit
@@ -694,20 +808,25 @@ Das Widget bleibt auch ohne UI nützlich: Das modellseitige Toolresultat nennt
 nur den sicheren Webfallback und weist an, keine SkillPilot-ID oder PIN im Chat
 abzufragen.
 
-### 7.3 Vertrauliche Laufzeitdaten im Phase-1-Canary
+### 7.3 Vertrauliche Laufzeitdaten im internen V1-Canary
 
-Phase 1 verarbeitet ausschließlich eine manuell eingegebene, vorhandene
-SkillPilot-ID. Es gibt kein Datei- und kein PIN-Feld.
+Der interne V1-Flow unterstützt eine manuell eingegebene vorhandene ID und eine
+vom Core neu erzeugte ID. Es gibt kein Datei-, PIN- oder Passwortfeld.
 
 Die ID:
 
 - bleibt bis zum direkten Request in einer kurzlebigen lokalen
   Laufzeitreferenz;
-- wird nicht in DOM-Text, provider-synchronisierten Widget-State, Local oder
-  Session Storage, IndexedDB, URL, Clipboard-Helfer, Console, Analytics oder
-  Telemetrie geschrieben;
+- darf bei CREATE ausschließlich nach der direkten HTTPS-Antwort kurzlebig in
+  einem klar gekennzeichneten DOM-Feld dargestellt werden, damit die Person sie
+  außerhalb von ChatGPT sichern kann;
+- wird abgesehen von diesem bewusst sichtbaren CREATE-Feld nicht in DOM-Text,
+  provider-synchronisierten Widget-State, Local oder Session Storage,
+  IndexedDB, URL, Console, Analytics oder Telemetrie
+  geschrieben;
 - wird niemals in structuredContent, Result-_meta, `tools/call`, `callTool`,
-  `ui/message` oder `sendFollowUpMessage` übernommen;
+  `ui/message`, `sendFollowUpMessage` oder ein anderes `window.openai`-Feld
+  beziehungsweise eine andere Hostmethode übernommen;
 - wird nach Antwort oder Abbruch bestmöglich aus allen erreichbaren
   Laufzeitreferenzen entfernt.
 
@@ -717,17 +836,29 @@ Arbeitsspeicher liegen. JavaScript erlaubt keine garantierte String-
 Zeroization; das Konzept verspricht deshalb nur kurze Lebensdauer und keine
 Persistenz.
 
-ID-Eingaben verwenden autocomplete off und spellcheck false. Das sind
-UX-Härtungen, keine Sicherheitsgrenzen.
+ID-Eingaben verwenden autocomplete off und spellcheck false. Die CREATE-
+Darstellung darf ausschließlich nach einer ausdrücklichen Benutzeraktion den
+lokalen Browserhelfer `navigator.clipboard.writeText` verwenden; fehlt diese
+Fähigkeit, bleibt die ID manuell im DOM auswählbar. Es gibt keine Copy-, Share-
+oder Download-Aktion über `window.openai` oder eine andere Host-API. Die Person
+bestätigt ausdrücklich, dass sie die ID außerhalb der Komponente sicher
+gesichert hat; erst danach beginnt die Curriculum-Einrichtung. Auch der lokale
+Clipboard-Zugriff ist keine absolute Geheimhaltungsgrenze gegenüber dem
+Betreiber des ChatGPT-Clientprozesses.
 
 ### 7.4 Widget-Zustandsmaschine
 
 ~~~text
 INITIALIZING
-  -> READY_FOR_ID
+  -> READY_FOR_IDENTITY_MODE
+  -> READY_FOR_EXISTING_ID | READY_TO_CREATE_ID
   -> ISSUING_CAPABILITY
   -> VALIDATING_AND_LAUNCHING
-  -> SESSION_CREATED_PENDING_HOST_ACCEPTANCE
+  -> CREATED_ID_RECOVERY_ACK_REQUIRED        (nur CREATE)
+  -> LOADING_SETUP_CONTEXT
+  -> SELECTING_CURRICULUM                    (falls erforderlich)
+  -> SELECTING_PERSONALIZATION               (wiederholt, falls erforderlich)
+  -> SETUP_COMPLETE_PENDING_HOST_ACCEPTANCE
   -> HOST_MESSAGE_ACCEPTED
 ~~~
 
@@ -735,43 +866,67 @@ Fehlerzustände:
 
 - UNSUPPORTED_HOST: keine Capability, keine Session, Webfallback;
 - INVALID_ID: lokaler Syntaxfehler, kein direkter Request;
+- CREATED_ID_NOT_ACKNOWLEDGED: neue ID bleibt ausschließlich sichtbar; keine
+  Curriculum-/Personalisierungsmutation und kein Chat-Handoff;
 - CAPABILITY_REJECTED: keine Session; erneute Ausstellung nur nach neuer
   ausdrücklicher Aktion und weiterhin erlaubter Policy;
 - PROFILE_UNAVAILABLE: neutraler terminaler Fehler, keine Session;
+- SETUP_CONFLICT: Kontext exakt einmal frisch laden und ausschließlich anhand
+  des neuen `stateVersion` fortsetzen;
+- SETUP_TRANSPORT_UNKNOWN: denselben unveränderten Schreibversuch mit derselben
+  `clientRequestId` wiederholen; nie blind eine zweite fachliche Mutation
+  erzeugen;
 - HOST_MESSAGE_REJECTED_OR_UNKNOWN: nur dieselbe gespeicherte Startnachricht
   erneut senden, niemals einen zweiten Launch ausführen;
 - DELIVERY_EXPIRED: keine Rekonstruktion und keine zweite Session mit
   derselben Capability; neuer vollständiger Start erforderlich.
 
 Ein vollständiger Remount rekonstruiert weder SkillPilot-ID, Capability noch
-Session aus Widget-State oder Browserstorage. Eine bereits erzeugte, aber nicht
-an den Host übergebene Session kann deshalb auslaufen. Dies ist ein
-verbleibendes, ehrlich dokumentiertes Restrisiko.
+Session aus Widget-State oder Browserstorage. Bei EXISTING kann die Person einen
+neuen Versuch starten und ihre ID erneut eingeben. Bei CREATE muss die ID vor
+jeder weiteren Einrichtung ausdrücklich extern gesichert werden; wurde die
+Komponente vorher geschlossen, kann der neu erzeugte Lernstand unzugänglich
+werden. Eine bereits erzeugte, aber nicht an den Host übergebene Session kann
+auslaufen. Diese Restrisiken begründen mittelfristig den Pre-Session-
+Setup-Refactor aus Abschnitt 13, werden aber nicht durch Host-Storage oder eine
+ID-Übergabe an ChatGPT kaschiert.
 
 ### 7.5 Verbindlicher Datenschutzhinweis
 
 Vor Capability-Ausstellung wird die unveränderliche Fassung
-openai-provider-eligibility-v1 semantisch gleichwertig auf Deutsch und Englisch
+openai-provider-eligibility-v2 semantisch gleichwertig auf Deutsch und Englisch
 angezeigt und bestätigt:
 
-> **DE:** Diese Komponente läuft innerhalb von ChatGPT. Deine SkillPilot-ID
-> wird nicht in den Chat, Modellkontext oder MCP-Toolargumente geschrieben.
+> **DE:** Diese Komponente läuft innerhalb von ChatGPT. Du kannst hier eine
+> neue SkillPilot-ID erzeugen oder eine vorhandene verwenden sowie Curriculum
+> und Personalisierung abschließen, ohne SkillPilot zu öffnen. Deine
+> SkillPilot-ID wird nicht in den Chat, Modellkontext, MCP-Toolargumente,
+> MCP-Toolresultate, UI-Metadaten oder ChatGPT-Widget-Speicher geschrieben.
 > Der ChatGPT-Host stellt die Komponente bereit und vermittelt den app-internen
 > Capability-Aufruf einschließlich der nur für die UI bestimmten Metadaten.
-> Nach deiner Bestätigung sendet die Komponente die ID direkt per HTTPS an
-> SkillPilot, um eine kurzlebige Lernsession zu erstellen. Nur die kurze
-> Startnachricht mit der Lernsession-ID wird anschließend bewusst zur Aufnahme
-> in Chat und Modellkontext an den Host übergeben. Zusätzlich gelten die
-> Datenschutzbedingungen des Plattformanbieters.
+> Nach deiner Bestätigung kommuniziert die Komponente direkt per HTTPS mit
+> SkillPilot. Eine neu erzeugte ID wird nur hier angezeigt; sichere sie, bevor
+> du fortfährst. Erst nach abgeschlossener Einrichtung wird die kurze
+> Startnachricht mit der Lernsession-ID bewusst zur Aufnahme in Chat und
+> Modellkontext an den Host übergeben. Da die Komponente im ChatGPT-
+> Clientprozess läuft, kann SkillPilot keine absolute technische
+> Nichtbeobachtbarkeit gegenüber dem Plattformbetreiber versprechen. Zusätzlich
+> gelten dessen Datenschutzbedingungen.
 
-> **EN:** This component runs inside ChatGPT. Your SkillPilot ID is not written
-> to the chat, model context, or MCP tool arguments. The ChatGPT host presents
+> **EN:** This component runs inside ChatGPT. You can create a new SkillPilot ID
+> or use an existing one and complete curriculum selection and personalisation
+> here without opening SkillPilot. Your SkillPilot ID is not written to the
+> chat, model context, MCP tool arguments, MCP tool results, UI metadata, or
+> ChatGPT widget storage. The ChatGPT host presents
 > the component and mediates the app-internal capability call, including
-> UI-only result metadata. After your confirmation, the component sends the ID
-> directly to SkillPilot over HTTPS to create a short-lived learning session.
-> Only the short start message containing the learning-session ID is then
-> intentionally submitted to the host for inclusion in the chat and model
-> context. The platform provider's privacy terms also apply.
+> UI-only result metadata. After your confirmation, the component communicates
+> directly with SkillPilot over HTTPS. A newly created ID is displayed only
+> here; save it before continuing. Only after setup is complete is the short
+> start message containing the learning-session ID intentionally submitted to
+> the host for inclusion in the chat and model context. Because the component
+> runs in the ChatGPT client process, SkillPilot cannot promise absolute
+> technical non-observability to the platform operator. The platform
+> provider's privacy terms also apply.
 
 ## 8. Direkter Bootstrap-Endpunkt
 
@@ -807,12 +962,28 @@ Geschlossener Request:
 ~~~json
 {
   "schemaVersion": 1,
+  "identityMode": "EXISTING",
   "skillpilotId": "<dauerhafte SkillPilot-ID>",
   "communicationLocale": "de",
   "launchIntent": {
     "type": "CURRENT_UNIT"
   },
-  "providerNoticeVersion": "openai-provider-eligibility-v1",
+  "providerNoticeVersion": "openai-provider-eligibility-v2",
+  "clientRequestId": "<UUID-v4>"
+}
+~~~
+
+Für eine Neuanlage lautet derselbe geschlossene Request:
+
+~~~json
+{
+  "schemaVersion": 1,
+  "identityMode": "CREATE",
+  "communicationLocale": "de",
+  "launchIntent": {
+    "type": "CURRENT_UNIT"
+  },
+  "providerNoticeVersion": "openai-provider-eligibility-v2",
   "clientRequestId": "<UUID-v4>"
 }
 ~~~
@@ -823,6 +994,8 @@ Verbindlich:
 - ausschließlich application/json mit einem harten Bodylimit von höchstens
   8 KiB;
 - unbekannte und doppelte JSON-Schlüssel werden abgewiesen;
+- `identityMode` ist exakt `EXISTING` oder `CREATE`; bei `EXISTING` ist
+  `skillpilotId` verpflichtend, bei `CREATE` muss das Feld vollständig fehlen;
 - Locale nur de oder en, Intent exakt CURRENT_UNIT, UUID exakt Version 4;
 - SkillPilot-ID nur nach der bereits bestehenden kanonischen ID-Grammatik und
   deren Längenbegrenzung; keine abweichende Bootstrap-Normalisierung;
@@ -847,6 +1020,25 @@ Geschlossene Erfolgsantwort:
 }
 ~~~
 
+Nur bei `identityMode=CREATE` ergänzt die direkte HTTPS-Antwort genau das Feld
+`createdSkillpilotId`:
+
+~~~json
+{
+  "schemaVersion": 1,
+  "status": "SESSION_CREATED",
+  "communicationLocale": "de",
+  "expiresAt": "2026-08-10T12:00:00Z",
+  "startMessage": "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_...",
+  "createdSkillpilotId": "<neu vergebene dauerhafte SkillPilot-ID>"
+}
+~~~
+
+`createdSkillpilotId` ist bei `EXISTING` verboten. Die Komponente übernimmt
+den Wert ausschließlich in ihre flüchtige Laufzeitreferenz und das sichtbare
+Recovery-DOM-Feld; er darf insbesondere nicht in ein MCP-Resultat oder dessen
+`_meta` kopiert werden.
+
 Für Englisch beginnt startMessage exakt mit:
 
 ~~~text
@@ -854,8 +1046,12 @@ Use SkillPilot Coach v1 and continue.
 learningSessionId: sps_...
 ~~~
 
-Die learningSessionId wird nicht als separates JSON-Feld dupliziert. Das
-Widget behandelt startMessage als opaken, unveränderlichen Wert.
+Die learningSessionId wird nicht als separates JSON-Feld dupliziert. Das Widget
+validiert die `startMessage` gegen das exakte locale- und major-spezifische
+Template und extrahiert daraus genau ein gültiges Sessiontoken ausschließlich
+für die componentseitigen Sessiontools. Die vollständige Nachricht bleibt
+bytegleich und wird weder rekonstruiert noch verändert; Nachricht und
+extrahiertes Token liegen nur in flüchtigen Laufzeitreferenzen bis zum Handoff.
 Das Backend akzeptiert für startMessage ausschließlich das kanonische
 major- und locale-spezifische Template mit genau einem gültigen Sessiontoken;
 freie oder clientseitig gelieferte Instruktionstexte sind ausgeschlossen.
@@ -1012,10 +1208,11 @@ Idempotenzkonflikten zählen, aber niemals ID, Capability, Session oder
 Requestbody erfassen.
 
 Eine unbekannte ID liefert das geschlossene `PROFILE_UNAVAILABLE`-Fehlerschema
-mit identifierfreiem Fallback und ohne unterscheidbare Detailtexte. Ein
-vorhandenes, aber fachlich noch nicht eingerichtetes Profil ist dagegen kein
-Fehler: Der Direct Start erzeugt die Lernsession, und der kanonische
-Coach-Zustandsautomat führt anschließend über `setCurriculum` und
+mit identifierfreiem Fallback und ohne unterscheidbare Detailtexte. CREATE
+erzeugt stattdessen einen neuen pseudonymen Lernenden. Ein vorhandenes oder neu
+erzeugtes, fachlich noch nicht eingerichtetes Profil ist kein Fehler: Der
+Direct Start erzeugt die Lernsession, und die Komponente führt den kanonischen
+Coach-Zustandsautomaten vor dem Chat-Handoff über `setCurriculum` und
 `setPersonalization`. Die Implementierung begrenzt grobe Timingunterschiede,
 ohne über künstliche Wartezeiten einen neuen Denial-of-Service-Hebel zu
 schaffen.
@@ -1047,8 +1244,12 @@ Ein eigener Datensatz bootstrap_launch_attempt enthält mindestens:
 | response_expires_at, attempt_retry_until | statusspezifische Delivery- und Retryfrist |
 | bound_at, completed_at, record_expires_at | Audit- und Löschfristen |
 
-Nicht gespeichert werden Capability-Klartext, SkillPilot-ID, Requestbody,
-Session-Klartext oder Startnachricht im Klartext.
+Nicht gespeichert werden Capability-Klartext, SkillPilot-ID im Klartext in den
+Bootstrap-Tabellen, Requestbody, Session-Klartext oder Startnachricht im
+Klartext. Der kanonische Learner-Datensatz enthält die dauerhafte ID
+notwendigerweise als seine pseudonyme Identität. Bei CREATE ist sie zusätzlich
+für höchstens das Delivery-Fenster Teil des AEAD-verschlüsselten
+Response-Ciphertexts, damit ein exakter Retry dieselbe neu erzeugte ID liefert.
 
 Die Datenbank erzwingt sowohl Eindeutigkeit des Capability-Fingerprints als
 auch von contract_major, oauth_authorization_ref und client_request_id. Damit
@@ -1058,7 +1259,7 @@ unbeabsichtigt eine zweite Session unter derselben App-Autorisierung erzeugen.
 ### 9.3 Vorvalidierung und Request-HMAC
 
 Vor Transaktion A werden Capability, OAuth-Autorisierung, Major, Policy,
-Requestschema und ID-Syntax geprüft. Danach wird ein eigener
+Requestschema und bei EXISTING die ID-Syntax geprüft. Danach wird ein eigener
 domain-separierter HMAC gebildet:
 
 ~~~text
@@ -1070,7 +1271,8 @@ HMAC-SHA-256(
     capabilityFingerprint,
     schemaVersion,
     clientRequestId,
-    normalizedSkillpilotId,
+    identityMode,
+    normalizedSkillpilotIdOrEmpty,
     communicationLocale,
     launchIntent.type,
     providerNoticeVersion,
@@ -1081,9 +1283,12 @@ HMAC-SHA-256(
 ~~~
 
 Der Schlüssel ist von Capability-, Session-HMAC- und AEAD-Schlüsseln getrennt
-und besitzt eine Key-ID. Normalisierung findet genau einmal statt und wird für
-HMAC und Lernendenlookup identisch verwendet. Ein ungekeyter Hash der
-SkillPilot-ID ist verboten. Vergleiche erfolgen in konstanter Zeit.
+und besitzt eine Key-ID. Bei EXISTING findet Normalisierung genau einmal statt
+und wird für HMAC und Lernendenlookup identisch verwendet. Bei CREATE ist der
+Wert `normalizedSkillpilotIdOrEmpty` die kanonisch längenpräfixierte leere
+Bytefolge; die später serverseitig erzeugte ID wird nicht nachträglich in den
+Request-HMAC eingefügt. Ein ungekeyter Hash der SkillPilot-ID ist verboten.
+Vergleiche erfolgen in konstanter Zeit.
 
 ### 9.4 Transaktion A – irreversible Requestbindung
 
@@ -1098,8 +1303,9 @@ SkillPilot-ID ist verboten. Vergleiche erfolgen in konstanter Zeit.
 7. Transaktion vor jeder Profilabfrage committen.
 
 Damit bindet bereits der erste vollständig syntaktisch gültige Request die
-Capability unveränderlich. Unbekanntes Profil, späterer Crash oder fachlicher
-Fehler geben sie nicht für andere IDs frei.
+Capability unveränderlich. `identityMode`, bei EXISTING die gewählte ID,
+spätere Crashes oder fachliche Fehler geben sie weder für eine andere ID noch
+für einen Wechsel zwischen CREATE und EXISTING frei.
 
 ### 9.5 Transaktion B – autoritativer Launch
 
@@ -1122,17 +1328,23 @@ umkehren oder einen Learner sperren, bevor Capability und Attempt gesperrt sind.
 5. Bei FAILED_TERMINAL bis zur Tombstone-Löschfrist denselben stabilen
    neutralen Fehler ausliefern.
 6. Bei BOUND ausschließlich `attempt_retry_until` prüfen. Nach Ablauf wird der
-   Attempt terminal `RETRY_EXPIRED`; vorher wird der Lernende `FOR UPDATE`
-   gesperrt und die gemeinsame fachliche Start-Preparation ausgeführt.
-7. Eine unbekannte SkillPilot-ID als normales persistiertes FAILED_TERMINAL
-   mit PROFILE_UNAVAILABLE committen. Ein vorhandener Lernender ohne
-   Curriculum oder ohne abgeschlossenes Personal Curriculum passiert diese
-   Grenze; die weitere Einrichtung bleibt Eigentum des kanonischen
-   Coach-Zustandsautomaten.
+   Attempt terminal `RETRY_EXPIRED`. Bei EXISTING wird danach der Lernende
+   `FOR UPDATE` gesperrt. Bei CREATE erzeugt die kanonische Learner-Grenze genau
+   eine neue zufällige SkillPilot-ID und persistiert den neuen Lernenden in
+   derselben Transaktion. Danach wird in beiden Modi die gemeinsame fachliche
+   Start-Preparation ausgeführt.
+7. Eine unbekannte SkillPilot-ID ist nur bei EXISTING möglich und wird als
+   normales persistiertes FAILED_TERMINAL mit PROFILE_UNAVAILABLE committet.
+   Ein vorhandener oder neu erzeugter Lernender ohne Curriculum oder ohne
+   abgeschlossenes Personal Curriculum passiert diese Grenze; die weitere
+   Einrichtung bleibt Eigentum des kanonischen Coach-Zustandsautomaten und
+   wird durch die Komponente über die bestehenden Sessiontools abgeschlossen.
 8. Bei Erfolg innerhalb derselben Transaktion:
    - zufällige learningSessionId mit mindestens 256 Bit Entropie erzeugen;
    - CURRENT_UNIT-Stateänderungen anwenden;
    - Session-HMAC und bestehende höchstens 24h gültige Zuordnung speichern;
+   - bei CREATE die neu erzeugte SkillPilot-ID ausschließlich in die direkte
+     Erfolgsantwort aufnehmen;
    - vollständige Erfolgsantwort AEAD-verschlüsseln;
    - Attempt auf SUCCEEDED setzen.
 9. Committen.
@@ -1174,6 +1386,10 @@ Verschlüsselt wird die vollständige, bereits gerenderte Erfolgsantwort:
   "startMessage": "<exact immutable message>"
 }
 ~~~
+
+Bei CREATE gehört `createdSkillpilotId` zur verschlüsselten Erfolgsantwort; bei
+EXISTING ist das Feld verboten. Der Klarwert wird niemals in separaten
+Attempt-Spalten, Logs oder Metriken dupliziert.
 
 Verbindlich:
 
@@ -1225,14 +1441,19 @@ Launch; OAuth-Widerruf und aktuelle Major-Policy werden weiterhin geprüft.
 
 ## 10. Übergabe an den Host und Chat
 
-Nach erfolgreicher Sessionerzeugung bittet das Widget den Host über den für
-den Versuch fixierten Standard- oder ChatGPT-Kompatibilitätskanal, exakt die
-vom Backend gelieferte startMessage als User-Nachricht aufzunehmen.
+Nach erfolgreicher Sessionerzeugung hält das Widget die Startnachricht zunächst
+zurück. Erst nachdem bei CREATE die Recovery-Bestätigung vorliegt und der
+neueste componentseitig geladene Vollkontext weder `setCurriculum` noch
+`setPersonalization` verlangt, bittet es den Host über den für den Versuch
+fixierten Standard- oder ChatGPT-Kompatibilitätskanal, exakt die vom Backend
+gelieferte startMessage als User-Nachricht aufzunehmen.
 
 Regeln:
 
 - keine SkillPilot-ID, Capability oder anderen Bootstrapwerte;
 - genau eine learningSessionId;
+- kein Handoff vor abgeschlossener ID-Recovery-Bestätigung, Curriculumwahl und
+  Personalisierung;
 - keine clientseitige Rekonstruktion oder Änderung;
 - bei Ablehnung, Timeout oder unbekanntem Ergebnis nur dieselbe gespeicherte
   Nachricht erneut senden, niemals den Launch wiederholen;
@@ -1273,13 +1494,16 @@ chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
 | Hinweisversion veraltet | NOTICE_REFRESH_REQUIRED |
 | Capability fehlt, ist manipuliert, major-fremd oder beim Erstgebrauch abgelaufen | keine Session |
 | Requestschema oder ID-Syntax ungültig | keine Bindung und keine Session |
-| unbekannte ID | persistiertes neutrales PROFILE_UNAVAILABLE |
-| vorhandene ID ohne Curriculum oder vollständige Personalisierung | Session erzeugen; nachfolgender Kontext veröffentlicht `setCurriculum` oder `setPersonalization` |
+| `identityMode=CREATE` | genau einen neuen Lernenden plus Session erzeugen; neue ID nur in direkter HTTPS-Antwort; vor Einrichtung Recovery bestätigen |
+| `identityMode=EXISTING`, unbekannte ID | persistiertes neutrales PROFILE_UNAVAILABLE |
+| vorhandene oder neue ID ohne Curriculum oder vollständige Personalisierung | Session erzeugen; Komponente folgt `setCurriculum` beziehungsweise `setPersonalization` bis zum vollständigen Setup; erst danach Chat-Handoff |
+| Setup-Write mit 409 | Optionen verwerfen, Kontext genau einmal frisch laden und nur mit neuer `stateVersion` fortsetzen |
+| unklarer Setup-Write-Transportausgang | ausschließlich unveränderten Versuch mit derselben `clientRequestId` wiederholen |
 | anderer Request nach Bindung | IDEMPOTENCY_KEY_REUSED |
 | transienter Corefehler | BOUND bleibt nur für exakten Retry |
 | Responseverlust nach Commit | gespeichertes AEAD-Resultat innerhalb Delivery-Frist |
 | Delivery-Frist abgelaufen | DELIVERY_EXPIRED, neuer vollständiger Start |
-| Nachrichtenaufruf abgelehnt oder unklar | identische Nachricht auf demselben Kanal erneut senden, kein Relaunch |
+| Nachrichtenaufruf abgelehnt oder unklar | identische Nachricht auf demselben Kanal erneut senden, kein Relaunch und keine erneute Setup-Mutation |
 | Lernsession abgelaufen | unveränderter SESSION_REQUIRED-Vertrag |
 | Artefakt einer anderen Major-Linie | MAJOR_MISMATCH vor Projektion oder Mutation |
 | Ziel-Major vor Commit nicht verfügbar | Quell-Major nur bei dessen aktueller Policy ALLOW oder WARN ausdrücklich anbieten |
@@ -1292,11 +1516,12 @@ im Klartext.
 
 ### 12.1 Internes Entwicklungsgate
 
-Das Plugin ist noch nicht veröffentlicht. Der Phase-1-Slice mit ausschließlich
-manueller SkillPilot-ID-Eingabe ist implementiert und automatisiert getestet;
-sein Einsatz ist nur als interner Canary freigegeben. Ein echter Canary im
-OpenAI-Zielhost steht noch aus. Weder die Implementierung noch ein späterer
-interner Canary-Erfolg ist eine öffentliche Freigabe.
+Das Plugin ist noch nicht veröffentlicht. Der bisherige Slice mit manueller
+Eingabe einer vorhandenen SkillPilot-ID ist implementiert und automatisiert
+getestet. Der vollständige In-Component-Wizard für CREATE, EXISTING,
+Curriculum und Personalisierung ist der aktuelle interne Entwicklungsstand;
+sein Einsatz bleibt auf den internen Canary begrenzt. Weder Implementierung
+noch ein späterer interner Canary-Erfolg ist eine öffentliche Freigabe.
 
 ### 12.2 Hartes Gate vor öffentlicher Einreichung
 
@@ -1308,10 +1533,11 @@ Passwörtern. Siehe
 Die SkillPilot-ID ist in der heutigen Architektur mindestens zugangsähnlich.
 Ein Datei-Passwort oder eine PIN wäre eindeutig credentialartig. Deshalb gilt:
 
-> **Es erfolgt keine öffentliche Einreichung eines Widgets, das SkillPilot-ID,
-> ID-Datei, Passwort oder PIN verarbeitet, solange OpenAI diese konkrete
-> Verarbeitung nicht ausdrücklich schriftlich akzeptiert hat oder eine
-> separat freigegebene Architektur ohne diese Werte vorliegt.**
+> **Es erfolgt keine öffentliche Einreichung eines Widgets, das eine vorhandene
+> oder neu vergebene SkillPilot-ID, ID-Datei, Passwort oder PIN verarbeitet,
+> solange OpenAI diese konkrete Verarbeitung nicht ausdrücklich schriftlich
+> akzeptiert hat oder eine separat freigegebene Architektur ohne diese Werte
+> vorliegt.**
 
 Manuelle ID-Eingabe löst dieses öffentliche Gate nicht. Dateiimport ist nicht
 Teil von Phase 1 und benötigt zusätzlich ein eigenes Sicherheits- und
@@ -1322,7 +1548,13 @@ Policyreview.
 Vor einer späteren Freigabe müssen Datenschutzerklärung und Widget mindestens
 folgende Kategorien, Zwecke, Empfänger und Fristen klar benennen:
 
-- SkillPilot-ID zur Lernendenauswahl, nur im direkten Request;
+- vorhandene SkillPilot-ID zur Lernendenauswahl, nur im direkten Request;
+- neu vergebene SkillPilot-ID, nur in direkter HTTPS-Antwort, flüchtiger
+  Recovery-Darstellung, kanonischem Learner-Datensatz und kurzlebig
+  verschlüsseltem Delivery-Record;
+- Curriculum- und Personalisierungsoptionen sowie bestätigte Auswahlen, die
+  über die bestehenden sessiongebundenen MCP-Werkzeuge durch den Host
+  vermittelt werden;
 - Locale, Providerhinweis-Version und Bestätigung;
 - pseudonymisierte OAuth-Autorisierungsreferenz;
 - Capability-Fingerprint, Request-HMAC und Attemptstatus;
@@ -1331,6 +1563,9 @@ folgende Kategorien, Zwecke, Empfänger und Fristen klar benennen:
 - minimale Netzwerk- und Sicherheitsdaten für Rate Limits und Missbrauchsschutz;
 - OpenAI/ChatGPT als Host der Komponente und eigener Plattform-
   Datenschutzvertrag;
+- die ehrliche Grenze, dass eine im ChatGPT-Clientprozess laufende Komponente
+  keine absolute Nichtbeobachtbarkeit gegenüber dem Plattformbetreiber
+  garantieren kann;
 - Lösch-, Widerrufs- und Supportmöglichkeiten.
 
 Das öffentliche Listing muss außerdem klar 13+ positioniert sein und darf nicht
@@ -1355,17 +1590,22 @@ Datenschutz-/Bedrohungsreview für einen späteren produktiven oder öffentliche
 Betrieb bleibt ein separates Freigabegate und ist durch diesen Stand nicht als
 abgeschlossen behauptet.
 
-### Phase 1: Interner Slice umgesetzt, echter Host-Canary ausstehend
+### Phase 1: Vollständiger In-Component-Slice, echter Host-Canary ausstehend
 
-- ausschließlich manuelle Eingabe einer vorhandenen ID;
-- vorhandene Lernende einschließlich noch nicht abgeschlossener Curriculum-
-  oder Personalisierungseinrichtung;
+- Wahl zwischen CREATE und EXISTING;
+- neue ID ausschließlich über direkte HTTPS-Antwort, flüchtige DOM-
+  Recovery-Darstellung und ausdrückliche Sicherungsbestätigung;
+- vorhandene und neue Lernende einschließlich vollständiger Curriculum- und
+  Personalisierungseinrichtung in derselben Komponente;
 - nur CURRENT_UNIT;
 - Open-Tool, app-only Capability-Issuer und direkter Endpoint;
+- bestehende modell- und appsichtbare Sessiontools für Kontext, Curriculum und
+  Personalisierung mit expliziter Component-Aufruf-Freigabe;
 - Zwei-Transaktions-Attempt, zufällige Session und AEAD-Delivery;
 - Hostannahme über genau einen Standard- oder ChatGPT-Kompatibilitätskanal und
   bestehender Webfallback;
-- keine Datei, keine PIN, kein Export und keine neue ID.
+- im normalen App-first-Ablauf kein Öffnen der SkillPilot-Webanwendung;
+- keine Datei, keine PIN und kein automatischer ID-Export.
 
 Dieser Slice ist implementiert und durch lokale Widget-, Contract-, Backend-
 und Security-Tests abgedeckt. Produktionsnahe Postgres-Concurrency-Tests,
@@ -1392,12 +1632,16 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 - bestehendes Dateiformat und lokale Kryptografie getrennt reviewen;
 - Public-Release-Gate bleibt davon unberührt.
 
-### Phase 4: Neue Identität und persönliches Curriculum
+### Phase 4: Pre-Session-Setup und erweiterte Recovery
 
-- neue ID, Export und Recovery als eigener Vertrag;
-- Curriculumkatalog und adaptive Personalisierung;
-- mehrstufiger kurzlebiger Setup-Workflow statt Launch-Capability;
-- semantische Parität mit SessionSetup, keine zweite Fachlogik.
+- serverseitige kurzlebige Setup-Draftreferenz statt bereits während der
+  Einrichtung laufender Lernsession;
+- Lernsession erst nach vollständiger Curriculum- und
+  Personalisierungsbestätigung;
+- optionaler verschlüsselter Export, Dateiimport und Recovery als jeweils
+  eigener freizugebender Vertrag;
+- semantische Parität mit dem bestehenden Setup-Zustandsautomaten, keine zweite
+  Fachlogik und keine Abschwächung der ID-Datenflussgrenze.
 
 ### Phase 5: Weitere Startarten
 
@@ -1440,6 +1684,10 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 10. Standard-UI-Metadaten und ChatGPT-Aliasse werden getrennt geprüft.
 11. Modell-Evals erzwingen: Open höchstens einmal, niemals Issuer, niemals
     SkillPilot-ID oder PIN im Chat; ohne UI ausschließlich Webfallback.
+12. `get_skillpilot_context`, `set_skillpilot_curriculum` und
+    `set_skillpilot_personalization` bleiben modell- und appsichtbar,
+    UI-ungebunden und explizit component-aufrufbar; keines erhält oder liefert
+    eine permanente SkillPilot-ID.
 
 ### 14.3 Capability-, Endpoint- und Kryptotests
 
@@ -1448,7 +1696,8 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 2. Manipulierte, fremde, abgelaufene oder anders gebundene Capabilities
    mutieren nichts.
 3. Endpoint akzeptiert nur exakte Origin, Methode, Header und geschlossenes
-   JSON unter dem Bodylimit.
+   JSON unter dem Bodylimit; `identityMode=EXISTING` verlangt genau eine ID,
+   `identityMode=CREATE` verbietet das ID-Feld.
 4. Doppelte oder unbekannte JSON-Schlüssel werden abgewiesen.
 5. Capability steht nie in URL oder Logs; Body und Header sind redigiert.
 6. Request-HMAC nutzt eigenen Key, kanonische Kodierung und konstante
@@ -1471,34 +1720,55 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
    Deadlock.
 6. Zwei parallele identische Requests erzeugen höchstens eine Session.
 7. Zwei abweichende Requests können dieselbe Capability nie neu binden.
-8. PROFILE_UNAVAILABLE für eine unbekannte ID bleibt persistiert terminal;
-   vorhandene, noch nicht eingerichtete Lernende starten erfolgreich und
-   erhalten anschließend `setCurriculum` oder `setPersonalization`.
+8. PROFILE_UNAVAILABLE für eine unbekannte EXISTING-ID bleibt persistiert
+   terminal; vorhandene, noch nicht eingerichtete Lernende starten erfolgreich
+   und werden componentseitig über `setCurriculum` beziehungsweise
+   `setPersonalization` eingerichtet.
 9. Transienter Fehler bleibt BOUND und übernimmt keine Teildaten.
 10. OAuth-Widerruf vor Retry invalidiert auch eine bereits CONSUMED Capability
     terminal, setzt einen SUCCEEDED Attempt auf FAILED_TERMINAL, löscht das
     verschlüsselte Delivery-Resultat und verhindert jede Resultatauslieferung.
 11. Fristprüfungen verwenden injizierbare Uhr und exakte Grenzwerte.
+12. Zwei parallele identische CREATE-Requests erzeugen exakt dieselbe neue ID
+    und höchstens eine Session; ein abweichender Retry kann weder eine zweite
+    ID noch eine zweite Session erzeugen.
+13. Die CREATE-ID steht nur in der direkten HTTPS-Antwort und im
+    AEAD-Ciphertext, niemals in Attempt-Spalten, Telemetrie oder Fehlertexten.
 
 ### 14.5 Widget- und Datenschutztests
 
-1. Im Phase-1-Widget existieren weder Datei- noch PIN-Feld.
-2. ID erscheint nicht in Chat, Modellkontext, Toolargument, Resultat,
-   provider-synchronisiertem State, Storage, URL, Console oder Analytics.
+1. Im V1-Widget existieren CREATE und EXISTING, aber weder Datei-, PIN- noch
+   Passwortfeld.
+2. ID erscheint nur bei EXISTING im direkten HTTPS-Request und bei CREATE in
+   direkter HTTPS-Antwort, flüchtiger Laufzeitreferenz und sichtbarem Recovery-
+   DOM. Sie erscheint nie in Chat, Modellkontext, MCP-Toolargument, MCP-
+   Toolresultat einschließlich `_meta`, `window.openai`, provider-
+   synchronisiertem State, Storage, URL, Console oder Analytics.
 3. Ohne vollständiges Paar aus `tools/call` und `ui/message` oder aus
    `callTool` und `sendFollowUpMessage` entsteht weder Capability noch Session.
 4. Capability-Ausstellung erfolgt erst nach ausdrücklicher Bestätigung.
-5. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
+5. CREATE setzt Curriculum-/Personalisierungsmutationen erst nach ausdrücklicher
+   Bestätigung fort, dass die angezeigte ID extern gesichert wurde.
+6. Die Komponente rendert ausschließlich die Optionen des neuesten
+   Vollresultats, kopiert `expectedStateVersion` exakt und verwendet eine neue
+   `clientRequestId` je neuer Auswahl sowie dieselbe nur beim unveränderten
+   Transport-Retry.
+7. Die Hostnachricht wird erst ohne offenes `setCurriculum` oder
+   `setPersonalization` gesendet; im normalen Flow gibt es keinen
+   **SkillPilot öffnen**-Schritt.
+8. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
    Nachricht auf demselben Kanal.
-6. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
-7. Deutsch und Englisch sind semantisch gleichwertig.
-8. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
-9. Webfallback enthält keine technischen Werte.
+9. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
+10. Deutsch und Englisch sind semantisch gleichwertig.
+11. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
+12. Webfallback enthält keine technischen Werte.
 
 ### 14.6 Integrations- und Hosttests
 
-1. Open-Tool → Widget → app-only Issuer → direkter Start → ausgewählter
-   Nachrichtenkanal → beobachteter get_skillpilot_context.
+1. Open-Tool → Widget → CREATE oder EXISTING → app-only Issuer → direkter Start
+   → Recovery-Bestätigung bei CREATE → componentseitiger Context-/Curriculum-/
+   Personalisierungsablauf → ausgewählter Nachrichtenkanal → beobachteter
+   modellseitiger get_skillpilot_context.
 2. Die Startnachricht enthält exakt eine learningSessionId und keine ID.
 3. Lernsession lebt absolut höchstens 24 Stunden.
 4. Webstart bleibt verhaltenskompatibel und zufallsbasiert.
@@ -1510,6 +1780,9 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 7. Der Canary unterscheidet Hostannahme von beobachtetem nachfolgenden
    Modell-/Toolverhalten.
 8. Canaryfehler führen nie zur Aufweitung von Origin oder CSP.
+9. Ein frischer Lernender erreicht ohne Verlassen der Komponente den ersten
+   fachlichen Coach-Zustand; nach dem Handoff stellt das Modell keine bereits im
+   Widget beantwortete Curriculum- oder Personalisierungsfrage erneut.
 
 ### 14.7 Major-Wechsel und Rollback
 
@@ -1550,6 +1823,9 @@ Der umgesetzte interne Phase-1-Slice umfasst:
 - Toolschemas, Exporter, Skill, Policy und Release-Draft;
 - Backend-, Contract-, Security- und lokale E2E-Tests sowie das
   Host-Canary-Testharness; der echte OpenAI-Host-Canary bleibt ausstehend;
+- CREATE und EXISTING im direkten Endpoint, Recovery-Bestätigung für neu
+  erzeugte IDs sowie vollständige componentseitige Curriculum- und
+  Personalisierungseinrichtung über die bestehenden Sessiontools;
 - Datenschutzangaben und Betriebsrunbook.
 
 Ausdrücklich unangetastet bleiben:
@@ -1571,10 +1847,17 @@ werden.
 ### 16.1 Fest verankert
 
 - Tool-Split in read-only Open und app-only Capability-Issuer;
-- SkillPilot-ID ausschließlich im direkten HTTPS-Body;
+- SkillPilot-ID bei EXISTING ausschließlich im direkten HTTPS-Body und bei
+  CREATE ausschließlich in der direkten HTTPS-Antwort; danach nur flüchtige
+  Laufzeitreferenz und sichtbares Recovery-DOM;
+- niemals permanente ID in Chat, Modellkontext, MCP-Argumenten/-Resultaten,
+  Resultat-`_meta`, `window.openai`, Widget-State, Browserstorage, URL, Logs oder
+  Telemetrie;
 - fester V1-UI-Origin und fester Bootstrap-Endpunkt;
 - Capability ausschließlich im Authorization-Header;
-- Phase 1 nur manuelle vorhandene ID;
+- V1 unterstützt CREATE und EXISTING sowie Curriculum und Personalisierung in
+  derselben Komponente; der normale App-first-Ablauf öffnet SkillPilot nicht;
+- policyRevision 2 bindet diese erweiterte Capability-/Bootstrap-Semantik;
 - providerNoticeVersion als bindender Vertragswert;
 - Zwei-Transaktions-Attempt mit einheitlicher Lockreihenfolge Capability,
   Attempt, Learner;
@@ -1689,10 +1972,19 @@ AND ausdrückliche Benutzerentscheidung
 
 direkter Bootstrap:
 gültige V1-Setup-Capability
-AND ausdrücklich gewählte SkillPilot-ID
+AND identityMode CREATE oder EXISTING
+AND bei EXISTING ausdrücklich gewählte SkillPilot-ID
 AND bestätigte aktuelle Providerhinweis-Version
+-> bei CREATE genau eine neue SkillPilot-ID nur in direkter HTTPS-Antwort
 -> zufällige V1-learningSessionId, maximal 24h
 -> kurzlebig verschlüsseltes, exakt wiederholbares Delivery-Resultat
+
+Einrichtung in derselben Komponente:
+aus der unveränderten Startnachricht extrahierte V1-learningSessionId
+AND jeweils neuester serverautoritativ projizierter Vollkontext
+-> bestehende get_context-/set_curriculum-/set_personalization-Tools
+-> niemals permanente SkillPilot-ID als MCP-Datum
+-> Host-Handoff erst ohne offene Curriculum-/Personalisierungsaktion
 
 ui/message oder sendFollowUpMessage auf dem fixierten Kanal:
 opake Startnachricht
@@ -1720,6 +2012,8 @@ learningSessionId -> OAuth-Autorisierung
 Setup-Capability -> fachliche MCP-Autorisierung
 open_skillpilot_start -> Capability-Ausstellung
 app-only Tool -> SkillPilot-ID-Transport
+window.openai oder Widget-State -> SkillPilot-ID-Transport oder -Persistenz
+Setup-Erfolg -> Öffnen der SkillPilot-Webanwendung im normalen App-first-Flow
 deterministische Ableitung -> learningSessionId
 Nachrichten-Ack -> behaupteter Coach-Erfolg
 client_secret_basic -> client_credentials-Grant

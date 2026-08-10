@@ -540,7 +540,7 @@ Gesprächskontext ist eine Komfortoptimierung, keine fachliche Quelle.
 | Modellgeeignete fachliche Referenz | öffentliche Curriculum-/Lernziel-ID aus einer aktuellen erlaubten Option | nur bei Bedarf in `structuredContent`; nicht unnötig in der sichtbaren Antwort wiederholen |
 | Widget-interne Referenz | kurzlebige Setup-Capability, begrenzter Kartenstapel oder spätere Auswahl-/Draft-Referenz | ausschließlich privates Resultat-`_meta` und flüchtiger Komponentenprozess; nicht in `content`, `structuredContent` oder provider-synchronisiertem Zustand |
 | Automatisch transportierte Sitzungsreferenz | temporäre Lernsession aus **Lernen starten** | in vorbereiteter Startnachricht und fachlichen Toolargumenten; keine manuelle Benutzereingabe |
-| Interne Identität und Geheimnis | permanente SkillPilot-ID, OAuth-Token, OAuth-Client-Secret, Datenbankschlüssel | Die SkillPilot-ID existiert im internen Direktstart-Canary nur flüchtig im ausdrücklich ausgefüllten Widgetfeld und im direkten HTTPS-Body an SkillPilot; niemals Chat, Modellkontext, MCP-Toolargument, Toolresultat, provider-synchronisierter Zustand oder Widget-Storage. OAuth-Token, Client-Secret und Datenbankschlüssel erscheinen auch nicht im Widget. |
+| Interne Identität und Geheimnis | permanente SkillPilot-ID, OAuth-Token, OAuth-Client-Secret, Datenbankschlüssel | Bei EXISTING existiert die SkillPilot-ID im internen Direktstart-Canary nur flüchtig im ausdrücklich ausgefüllten Widgetfeld und direkten HTTPS-Body; bei CREATE nur in direkter HTTPS-Antwort und flüchtigem Recovery-DOM. Sie steht niemals in Chat, Modellkontext, MCP-Toolargument/-resultat einschließlich `_meta`, `window.openai`, provider-synchronisiertem Zustand, Widget-Storage, URL, Logs oder Telemetrie. OAuth-Token, Client-Secret und Datenbankschlüssel erscheinen auch nicht im Widget. |
 
 Öffentliche, fachlich sinnvolle Lernziel-IDs dürfen als Produktreferenz sichtbar
 sein, wenn dies didaktisch nützt. Sie sind von Identitäts-, Autorisierungs- und
@@ -552,10 +552,12 @@ In der ersten chat-first Version zeigt der Chat verständliche Labels. Zugehöri
 fachliche IDs bleiben im `structuredContent` der frisch geladenen erlaubten
 Optionen und werden nicht als Bedienkonzept auf die lernende Person abgewälzt.
 Der interne private Direktstart ist die eng begrenzte UI-Ausnahme: Die Person
-gibt eine vorhandene SkillPilot-ID ausschließlich im Start-Widget ein; das
-Widget sendet sie nach ausdrücklicher Bestätigung direkt an den festen
-SkillPilot-HTTPS-Endpunkt, niemals über ein MCP-Tool oder den Chat. Diese
-ID-Verarbeitung ist nicht öffentlich freigegeben. Die dabei beziehungsweise
+erzeugt eine neue SkillPilot-ID oder gibt eine vorhandene ausschließlich im
+Start-Widget ein. Das Widget tauscht sie nach ausdrücklicher Bestätigung direkt
+mit dem festen SkillPilot-HTTPS-Endpunkt aus, niemals über ein MCP-Tool oder den
+Chat, und schließt Curriculum und Personalisierung in derselben Komponente über
+die bestehenden ID-freien Sessiontools ab. Diese ID-Verarbeitung ist nicht
+öffentlich freigegeben. Die dabei beziehungsweise
 beim First-Party-Webstart erzeugte Lernsession bleibt technisch unsichtbar:
 SkillPilot setzt ihre kurzlebige Referenz automatisch in die vorbereitete
 Startnachricht ein, und die App übernimmt sie unverändert in jeden fachlichen
@@ -609,8 +611,9 @@ App. `1.0.0` verwendet normales serverauthentisiertes HTTPS und OAuth. Eine
 spätere zusätzliche Transporthärtung ist ein eigener Entwurf und ersetzt weder
 diese Appidentität noch die Lernsession.
 
-Die interne permanente SkillPilot-ID wird nicht zurückgegeben. Kurzlebige
-Widgetreferenzen sind zusätzlich an Provider, OAuth-Clientverbindung,
+Die interne permanente SkillPilot-ID wird nie als MCP-Datum zurückgegeben. Nur
+CREATE liefert sie direkt per HTTPS an das flüchtige Recovery-DOM der
+Komponente. Kurzlebige Widgetreferenzen sind zusätzlich an Provider, OAuth-Clientverbindung,
 Appvariante, Zweck und Ablaufzeit gebunden und ersetzen niemals
 Authentifizierung oder Lernsession.
 
@@ -728,8 +731,8 @@ End-to-End-Abläufe.
 
 | Nutzerreise | Produktive Mindestanforderung |
 | --- | --- |
-| Einstieg und Wiederaufnahme | vertrauliche OAuth-Appverbindung plus frische, automatisch aus **Lernen starten** transportierte 24h-Lernsession; keine manuelle Token- oder SkillPilot-ID-Eingabe |
-| Natürliche Einrichtung | Fach/Stufe/Region aus Text; nur reale offene Entscheidung als verständliche Auswahl, später optional im Widget |
+| Einstieg und Wiederaufnahme | vertrauliche OAuth-Appverbindung plus frische, automatisch transportierte 24h-Lernsession; permanente ID nur im privaten Direct-Start-Widget oder First-Party-Browser, niemals im Chat |
+| Natürliche Einrichtung | Direct Start führt Curriculum und persönliches Curriculum vollständig in derselben Komponente über serverautoritative Optionen; Chat übernimmt erst danach |
 | Lernpfad und Frontier | frische Backendprojektion; keine Chat-Memory-Autorität |
 | Zielwahl und Ressourcen | gültige Kandidaten; backendgenerierte Links |
 | Erklärung und Aufgabe | alters- und fachgerechte Darstellung; klare Aufgabenfassung |
@@ -1041,8 +1044,9 @@ reduziert werden.
   Direktstart-Öffner, Bild-Renderer und Karteikartenlauncher binden jeweils
   ausschließlich ihre eigene Ressource;
 - capability-geschützter privater Direktstart für den internen Canary; der
-  app-only Capability-Issuer bleibt ungebunden und die SkillPilot-ID bleibt
-  außerhalb von Chat und MCP-Toolargumenten;
+  app-only Capability-Issuer bleibt ungebunden, CREATE und EXISTING werden in
+  derselben Komponente eingerichtet und die SkillPilot-ID bleibt außerhalb von
+  Chat, Modell- und sämtlichen MCP-Datenflächen;
 - genau eine aktuelle bild-only Ressource für den read-only Renderer; ohne
   gültiges kanonisches Bild fällt die Darstellung auf den normalen Chat zurück;
 - eigene interaktive Karteikartenressource mit privatem begrenztem Batch;

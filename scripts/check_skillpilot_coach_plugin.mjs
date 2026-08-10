@@ -541,14 +541,26 @@ assert.match(
 );
 assert.match(
   skill,
-  /not yet configured learner may legitimately return\s+`requiredAction=setCurriculum` or `setPersonalization`/,
-  "The skill must preserve the canonical setup path after Direct Start.",
+  /successful normal Direct Start\s+has already completed curriculum and personalisation in the component/,
+  "The skill must keep normal Direct-Start setup inside the component.",
 );
 assert.match(
   policy,
-  /Treat `requiredAction=setCurriculum` or\s+`setPersonalization`, as applicable, as the authoritative normal Direct-Start\s+path/,
-  "The coaching policy must preserve the canonical setup path after Direct Start.",
+  /component—not the coach dialogue—uses the existing ID-free\s+session tools to load context and complete every published `setCurriculum`\s+and `setPersonalization` action before that message/,
+  "The coaching policy must keep curriculum and personalisation in the component before handoff.",
 );
+assert.match(
+  skill,
+  /create a new opaque SkillPilot ID or use\s+an existing one/,
+  "The skill must support CREATE and EXISTING in the private component.",
+);
+assert.match(
+  policy,
+  /permanent ID is never\s+an MCP tool argument, result, result `_meta`, ChatGPT widget state, or chat\s+value/,
+  "The coaching policy must keep the permanent ID out of every MCP and chat surface.",
+);
+assert.match(skill, /openai-provider-eligibility-v2/);
+assert.match(policy, /openai-provider-eligibility-v2/);
 assert.match(skill, /Never call the app-only\s+`issue_skillpilot_start_capability` tool yourself/);
 assert.match(skill, /Never show, repeat, request, or reconstruct\s+it\./);
 assert.deepEqual(skillAgent, {

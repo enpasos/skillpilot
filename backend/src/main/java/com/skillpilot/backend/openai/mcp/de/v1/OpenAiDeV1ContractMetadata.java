@@ -17,7 +17,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PLUGIN_IDENTITY = "skillpilot-coach-v1";
     public static final String PLUGIN_VERSION = "1.0.0";
     public static final int CONTRACT_MAJOR = 1;
-    public static final long POLICY_REVISION = 1L;
+    public static final long POLICY_REVISION = 2L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";
     public static final String PUBLICATION_STATUS = "DRAFT";
     public static final String NEW_SESSION_POLICY = "ALLOW";
@@ -71,7 +71,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH =
             "/openai/skillpilot-memory-card-practice-v1.html";
     public static final String SKILLPILOT_START_ARTIFACT_SHA256 =
-            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701";
+            "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5";
     public static final String SKILLPILOT_START_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + SKILLPILOT_START_ARTIFACT_SHA256
@@ -81,13 +81,14 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String BOOTSTRAP_LAUNCH_PATH = "/bootstrap/v1/launch";
     public static final String BOOTSTRAP_LAUNCH_ENDPOINT =
             PUBLIC_MCP_ORIGIN + BOOTSTRAP_LAUNCH_PATH;
-    public static final String PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v1";
+    public static final String PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v2";
     /**
      * Every content-addressed direct-start resource previously advertised to
      * a real ChatGPT client. Append only while Coach V1 is usable.
      */
     public static final List<String> RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S = List.of(
-            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c");
+            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c",
+            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701");
     /**
      * Every content-addressed visualization resource previously advertised by
      * Coach V1, ordered oldest first and retained byte-for-byte for connector

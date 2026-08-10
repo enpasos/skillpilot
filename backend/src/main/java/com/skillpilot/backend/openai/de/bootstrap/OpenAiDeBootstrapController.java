@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.de.bootstrap;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -93,7 +94,22 @@ public final class OpenAiDeBootstrapController {
             throw new OpenAiDeBootstrapException(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
         }
         try {
-            return strictMapper.readValue(body, OpenAiDeBootstrapLaunchRequest.class);
+            JsonNode json = strictMapper.readTree(body);
+            JsonNode identityMode = json == null ? null : json.get("identityMode");
+            boolean create = identityMode != null
+                    && identityMode.isTextual()
+                    && "CREATE".equals(identityMode.textValue());
+            boolean existing = identityMode != null
+                    && identityMode.isTextual()
+                    && "EXISTING".equals(identityMode.textValue());
+            if (json == null
+                    || !json.isObject()
+                    || (!create && !existing)
+                    || (create && json.has("skillpilotId"))
+                    || (existing && !json.hasNonNull("skillpilotId"))) {
+                throw new OpenAiDeBootstrapException(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
+            }
+            return strictMapper.treeToValue(json, OpenAiDeBootstrapLaunchRequest.class);
         } catch (IOException exception) {
             throw new OpenAiDeBootstrapException(
                     OpenAiDeBootstrapErrorCode.INVALID_REQUEST,

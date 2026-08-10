@@ -141,7 +141,7 @@ function createHarness(hostCapabilities, options = {}) {
 }
 
 const capabilityArguments = {
-  providerNoticeVersion: "openai-provider-eligibility-v1",
+  providerNoticeVersion: "openai-provider-eligibility-v2",
   providerEligibilityConfirmed: true,
 };
 
@@ -149,7 +149,7 @@ const capabilityEnvelope = {
   structuredContent: {
     status: "CAPABILITY_ISSUED",
     contractMajor: 1,
-    providerNoticeVersion: "openai-provider-eligibility-v1"
+    providerNoticeVersion: "openai-provider-eligibility-v2"
   },
   _meta: {
     skillpilotStart: {
@@ -177,6 +177,48 @@ test("bridge registers the result handler before connect and uses app-only tools
   assert.doesNotMatch(
     JSON.stringify(context.__toolCalls[0].arguments),
     /skillpilot.?id|learner|session/i
+  );
+});
+
+test("setup tools stay on the attempt channel and carry only the learning-session contract", async () => {
+  const { context, bridge } = createHarness({
+    serverTools: {},
+    message: { text: {} }
+  }, {
+    compatibility: {
+      toolResult: capabilityEnvelope,
+      messageResult: undefined
+    }
+  });
+  await bridge.ready;
+  const learningSessionId = `sps_${"S".repeat(43)}`;
+  await bridge.issueCapability(capabilityArguments);
+  await bridge.callSetupTool({
+    name: "get_skillpilot_context",
+    arguments: { learningSessionId }
+  });
+  await bridge.callSetupTool({
+    name: "set_skillpilot_curriculum",
+    arguments: {
+      learningSessionId,
+      curriculumId: "DE_GYMNASIUM",
+      expectedStateVersion: 1,
+      clientRequestId: "11111111-1111-4111-8111-111111111111"
+    }
+  });
+  assert.deepEqual(
+    context.__toolCalls.map((call) => call.name),
+    [
+      "issue_skillpilot_start_capability",
+      "get_skillpilot_context",
+      "set_skillpilot_curriculum"
+    ]
+  );
+  assert.deepEqual(context.__compatToolCalls, []);
+  assert.doesNotMatch(JSON.stringify(context.__toolCalls), /skillpilotId|learnerId/i);
+  await assert.rejects(
+    bridge.callSetupTool({ name: "evil_tool", arguments: {} }),
+    /unsupported-setup-tool/
   );
 });
 

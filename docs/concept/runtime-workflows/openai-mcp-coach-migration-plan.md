@@ -631,7 +631,7 @@ Funktion migriert:
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
 | Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; frühere ausgelieferte Hash-URIs bleiben passiv lesbar; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
-| privater Direktstart | eigene aktive Startressource am read-only Öffner; ID-freier app-only Capability-Issuer und direkter capability-geschützter HTTPS-Request; SkillPilot-ID niemals in Chat oder MCP-Toolargumenten; ausschließlich interner Canary mit hartem Public-Release-Gate |
+| privater Direktstart | eigene aktive Startressource am read-only Öffner; ID-freier app-only Capability-Issuer; CREATE oder EXISTING nur über direkten capability-geschützten HTTPS-Austausch; vollständige Curriculum-/Personalisierungseinrichtung über bestehende ID-freie Sessiontools in derselben Komponente; SkillPilot-ID niemals in Chat, Modell- oder MCP-Datenflächen; ausschließlich interner Canary mit hartem Public-Release-Gate |
 | normales Karteikartenlernen | eigene aktive Kartenressource am read-only Launcher; begrenzter Kartenstapel nur in Resultat-`_meta`; app-only Review ungebunden und ohne Mastery-Mutation |
 | spätere fachliche Widgetdarstellung | jeweils eigene UI-Ressource sowie eng begrenzte app-only Metadaten und Tools; niemals fachliche Modellanweisung |
 
@@ -684,20 +684,23 @@ Scopes, Lernsessionen, Tests und Widerrufslogik.
 2. Authorization Code mit PKCE `S256` verbindet die App mit SkillPilot. Diese
    OAuth-Verbindung authentisiert den Client, erzeugt aber weder Lernenden- noch
    Lernsessionzustand.
-3. Die lernende Person lädt oder erzeugt ihre SkillPilot-ID ausschließlich in
-   der SkillPilot-Weboberfläche, wählt den fachlichen Einstieg und klickt
-   ausdrücklich auf **Lernen starten**.
+3. Die lernende Person lädt oder erzeugt ihre SkillPilot-ID entweder in der
+   SkillPilot-Weboberfläche und klickt ausdrücklich auf **Lernen starten**, oder
+   wählt im privaten Direct-Start-Widget CREATE beziehungsweise EXISTING und
+   schließt dort Curriculum und Personalisierung ab. Die permanente ID gelangt
+   in keinem Fall in Chat oder MCP-Vertrag.
 4. Genau in diesem Augenblick wendet SkillPilot den eng typisierten Start-Intent
    an und erzeugt eine frische, hochentropische `learningSessionId`. Auch zwei
    Starts desselben Lernenden erzeugen zwei verschiedene IDs.
-5. Das Backend speichert nur HMAC beziehungsweise Hash der ID zusammen mit
+5. Das Backend speichert nur HMAC beziehungsweise Hash der Sessionreferenz zusammen mit
    Lernendenreferenz, Erzeugungszeitpunkt und absolutem Ablaufzeitpunkt. Die
    Laufzeit beträgt exakt 24 Stunden und wird durch Nutzung nicht
    verlängert.
-6. SkillPilot setzt die ID automatisch in die URL-codierte natürliche
-   ChatGPT-Startnachricht ein. Die lernende Person muss nichts kopieren und
-   sieht niemals die permanente SkillPilot-ID, ein OAuth-Token oder das
-   Client-Secret.
+6. SkillPilot setzt die Sessionreferenz automatisch in die natürliche
+   ChatGPT-Startnachricht ein. Die lernende Person muss sie nicht kopieren. Bei
+   Direct-Start CREATE sieht und sichert sie die neue permanente SkillPilot-ID
+   ausschließlich im Recovery-DOM der Komponente; die Startnachricht enthält
+   weiterhin weder diese ID noch OAuth-Token oder Client-Secret.
 7. ChatGPT übergibt bei jedem fachlichen MCP-Aufruf sowohl das OAuth-Bearer-Token
    als auch die `learningSessionId` als unverändertes Toolargument.
 8. Das Backend akzeptiert einen fachlichen Aufruf nur, wenn OAuth-Client,
@@ -930,9 +933,10 @@ Gate der Version `1.0.0`.
   `start_skillpilot_memory_practice` jeweils ausschließlich an ihre eigene
   aktuelle Ressource binden; Capability-Issuer, Kartenreview und gewöhnliche
   Coach-Werkzeuge bleiben ungebunden;
-- den privaten Direktstart nur im internen Canary verwenden; die SkillPilot-ID
-  bleibt im flüchtigen Widgetfeld und direkten HTTPS-Body, und das harte
-  Public-Release-Gate bleibt bestehen;
+- den privaten Direktstart nur im internen Canary verwenden; EXISTING bleibt im
+  flüchtigen Widgetfeld und direkten HTTPS-Body, CREATE in direkter HTTPS-
+  Antwort und Recovery-DOM, vollständiges Setup bleibt in derselben Komponente,
+  und das harte Public-Release-Gate bleibt bestehen;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
   Chatdarstellung degradieren;
 - renderer-spezifisch nur `render_skillpilot_goal_visualization` an genau eine

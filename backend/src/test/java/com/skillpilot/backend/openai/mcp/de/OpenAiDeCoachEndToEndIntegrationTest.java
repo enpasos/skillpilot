@@ -655,6 +655,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
                 objectMapper.writeValueAsString(Map.of(
                         "schemaVersion", OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                        "identityMode", "EXISTING",
                         "skillpilotId", PERMANENT_SKILLPILOT_ID,
                         "communicationLocale", "de",
                         "launchIntent", Map.of("type", OpenAiDeBootstrapConstants.LAUNCH_INTENT),
@@ -1334,6 +1335,70 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);
 
+        HttpResponse<String> createCapabilityResponse = postMcp(
+                accessToken,
+                objectMapper.writeValueAsString(Map.of(
+                        "jsonrpc", "2.0",
+                        "id", "direct-start-create-capability",
+                        "method", "tools/call",
+                        "params", Map.of(
+                                "name", OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
+                                "arguments", Map.of(
+                                        "providerNoticeVersion",
+                                        OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
+                                        "providerEligibilityConfirmed",
+                                        true)))));
+        assertMcpPayloadDoesNotExposeIdentity(createCapabilityResponse, applicationSubject);
+        String createCapability = result(createCapabilityResponse)
+                .path("_meta")
+                .path("skillpilotStart")
+                .path("setupCapability")
+                .asText();
+        assertThat(createCapability).startsWith("spc_").hasSize(47);
+
+        HttpResponse<String> createdDirectStart = postJson(
+                OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
+                objectMapper.writeValueAsString(Map.of(
+                        "schemaVersion", OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                        "identityMode", "CREATE",
+                        "communicationLocale", "de",
+                        "launchIntent", Map.of("type", OpenAiDeBootstrapConstants.LAUNCH_INTENT),
+                        "providerNoticeVersion", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
+                        "clientRequestId", UUID.randomUUID().toString())),
+                Map.of(HttpHeaders.AUTHORIZATION, "SkillPilotSetup " + createCapability));
+        assertThat(createdDirectStart.statusCode())
+                .withFailMessage(createdDirectStart.body())
+                .isEqualTo(200);
+        JsonNode createdDirectStartBody = objectMapper.readTree(createdDirectStart.body());
+        String createdSkillpilotId = createdDirectStartBody.path("createdSkillpilotId").asText();
+        assertThat(createdSkillpilotId)
+                .matches("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$");
+        String createdStartMessage = createdDirectStartBody.path("startMessage").asText();
+        assertThat(createdStartMessage).doesNotContain(createdSkillpilotId);
+        String createdLearningSessionId = createdStartMessage.substring(startMessagePrefix.length());
+        assertThat(createdLearningSessionId).startsWith("sps_").hasSize(47);
+        assertThat(learnerRepository.findById(createdSkillpilotId))
+                .get()
+                .satisfies(createdLearner -> {
+                    assertThat(createdLearner.getSelectedCurriculum()).isNull();
+                    assertThat(createdLearner.getPersonalCurriculum()).isNull();
+                });
+
+        HttpResponse<String> createdInitialRead = callTool(
+                accessToken,
+                200,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                createdLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(createdInitialRead, applicationSubject);
+        assertThat(createdInitialRead.body()).doesNotContain(createdSkillpilotId);
+        assertThat(result(createdInitialRead)
+                        .path("structuredContent")
+                        .path("requiredAction")
+                        .asText())
+                .isEqualTo("setCurriculum");
+        assertThat(learningSessionRepository.count()).isEqualTo(2);
+
         HttpResponse<String> revocation = postOpenAiAuthenticatedForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
                 List.of(
@@ -1347,12 +1412,21 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(revokedAuthorization.getRefreshToken().isInvalidated()).isTrue();
         assertThat(learningSessionRepository.count())
                 .as("OAuth revocation does not revoke the independent learning session")
-                .isEqualTo(1);
+                .isEqualTo(2);
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID))
                 .get()
                 .extracting(Learner::getSelectedCurriculum)
                 .isEqualTo(CURRICULUM_ID);
         assertLegacyStateIsEmpty();
+
+        // The CREATE branch intentionally proves a real persisted learner. Keep
+        // the shared integration context isolated for any subsequently ordered
+        // test without weakening the assertions above.
+        jdbcOperations.update(
+                "DELETE FROM openai_de_learning_session WHERE learner_id = ?",
+                createdSkillpilotId);
+        learnerRepository.deleteById(createdSkillpilotId);
+        learnerRepository.flush();
     }
 
     private HttpResponse<String> get(String path) throws Exception {

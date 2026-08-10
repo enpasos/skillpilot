@@ -27,7 +27,7 @@ async function loadStartContract() {
 
 const contractLine = {
   contractMajor: 1,
-  policyRevision: 1,
+  policyRevision: 2,
   displayName: "SkillPilot Coach v1",
   supportLifecycle: "CURRENT",
   publicationStatus: "DRAFT",
@@ -62,7 +62,7 @@ function capabilityResult(overrides = {}, metadataOverrides = {}) {
     structuredContent: {
       status: "CAPABILITY_ISSUED",
       contractMajor: 1,
-      providerNoticeVersion: "openai-provider-eligibility-v1",
+      providerNoticeVersion: "openai-provider-eligibility-v2",
       ...overrides
     },
     _meta: {
@@ -71,8 +71,8 @@ function capabilityResult(overrides = {}, metadataOverrides = {}) {
         setupCapability: capability,
         expiresAt: "2026-08-09T12:05:00Z",
         contractMajor: 1,
-        policyRevision: 1,
-        providerNoticeVersion: "openai-provider-eligibility-v1",
+        policyRevision: 2,
+        providerNoticeVersion: "openai-provider-eligibility-v2",
         sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
         ...metadataOverrides
       }
@@ -183,7 +183,7 @@ test("app-only capability arguments are ID-free and encode the explicit policy d
 
   const arguments_ = createSkillPilotCapabilityArguments(start, true);
   assert.deepEqual(arguments_, {
-    providerNoticeVersion: "openai-provider-eligibility-v1",
+    providerNoticeVersion: "openai-provider-eligibility-v2",
     providerEligibilityConfirmed: true
   });
   assert.doesNotMatch(JSON.stringify(arguments_), /skillpilot.?id|learner|session/i);
@@ -202,7 +202,7 @@ test("app-only capability arguments are ID-free and encode the explicit policy d
   }));
   assert.ok(warnStart);
   assert.deepEqual(createSkillPilotCapabilityArguments(warnStart, true), {
-    providerNoticeVersion: "openai-provider-eligibility-v1",
+    providerNoticeVersion: "openai-provider-eligibility-v2",
     providerEligibilityConfirmed: true,
     sourceMajorDecision: "START_CURRENT_MAJOR"
   });
@@ -215,9 +215,9 @@ test("private capability metadata is strictly closed, bounded, and never read fr
     setupCapability: capability,
     expiresAt: "2026-08-09T12:05:00Z",
     contractMajor: 1,
-    policyRevision: 1,
+    policyRevision: 2,
     sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
-    providerNoticeVersion: "openai-provider-eligibility-v1"
+    providerNoticeVersion: "openai-provider-eligibility-v2"
   });
 
   for (const invalid of [
@@ -234,7 +234,7 @@ test("private capability metadata is strictly closed, bounded, and never read fr
       structuredContent: {
         status: "CAPABILITY_ISSUED",
         contractMajor: 1,
-        providerNoticeVersion: "openai-provider-eligibility-v1",
+        providerNoticeVersion: "openai-provider-eligibility-v2",
         setupCapability: capability
       }
     }
@@ -253,10 +253,11 @@ test("direct bootstrap uses the one fixed endpoint and the exact privacy boundar
       setupCapability: capability,
       expiresAt: "2026-08-09T12:05:00Z",
       contractMajor: 1,
-      policyRevision: 1,
+      policyRevision: 2,
       sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
-      providerNoticeVersion: "openai-provider-eligibility-v1"
+      providerNoticeVersion: "openai-provider-eligibility-v2"
     },
+    "EXISTING",
     ` ${skillpilotId.slice(0, 8)} ${skillpilotId.slice(8)} `,
     "de",
     requestId,
@@ -269,10 +270,11 @@ test("direct bootstrap uses the one fixed endpoint and the exact privacy boundar
   );
   assert.deepEqual(request.body, {
     schemaVersion: 1,
+    identityMode: "EXISTING",
     skillpilotId,
     communicationLocale: "de",
     launchIntent: { type: "CURRENT_UNIT" },
-    providerNoticeVersion: "openai-provider-eligibility-v1",
+    providerNoticeVersion: "openai-provider-eligibility-v2",
     clientRequestId: requestId
   });
   assert.equal(request.capabilityExpiresAtMs, Date.parse("2026-08-09T12:05:00Z"));
@@ -289,6 +291,83 @@ test("direct bootstrap uses the one fixed endpoint and the exact privacy boundar
   });
   assert.deepEqual(JSON.parse(init.body), request.body);
   assert.doesNotMatch(JSON.stringify(init), /oauth|client.?secret|refresh.?token/i);
+});
+
+test("CREATE bootstrap omits the permanent ID and accepts it only from the private HTTPS response", async () => {
+  const {
+    createSkillPilotBootstrapRequest,
+    sendSkillPilotBootstrap
+  } = await loadStartContract();
+  const request = createSkillPilotBootstrapRequest(
+    {
+      setupCapability: capability,
+      expiresAt: new Date(Date.now() + 5 * 60 * 1_000).toISOString(),
+      contractMajor: 1,
+      policyRevision: 2,
+      sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
+      providerNoticeVersion: "openai-provider-eligibility-v2"
+    },
+    "CREATE",
+    undefined,
+    "de",
+    requestId
+  );
+  assert.ok(request);
+  assert.deepEqual(request.body, {
+    schemaVersion: 1,
+    identityMode: "CREATE",
+    communicationLocale: "de",
+    launchIntent: { type: "CURRENT_UNIT" },
+    providerNoticeVersion: "openai-provider-eligibility-v2",
+    clientRequestId: requestId
+  });
+  assert.equal(Object.hasOwn(request.body, "skillpilotId"), false);
+  assert.equal(createSkillPilotBootstrapRequest(
+    {
+      setupCapability: capability,
+      expiresAt: new Date(Date.now() + 5 * 60 * 1_000).toISOString(),
+      contractMajor: 1,
+      policyRevision: 2,
+      sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
+      providerNoticeVersion: "openai-provider-eligibility-v2"
+    },
+    "CREATE",
+    skillpilotId,
+    "de",
+    requestId
+  ), undefined);
+
+  const responseBody = {
+    schemaVersion: 1,
+    status: "SESSION_CREATED",
+    communicationLocale: "de",
+    expiresAt: new Date(Date.now() + 60 * 60 * 1_000).toISOString(),
+    startMessage: `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`,
+    createdSkillpilotId: skillpilotId
+  };
+  assert.deepEqual(
+    await sendSkillPilotBootstrap(request, undefined, async (url) => ({
+      ok: true,
+      redirected: false,
+      url,
+      headers: { get: () => "application/json" },
+      text: async () => JSON.stringify(responseBody)
+    })),
+    responseBody
+  );
+  await assert.rejects(
+    sendSkillPilotBootstrap(request, undefined, async (url) => ({
+      ok: true,
+      redirected: false,
+      url,
+      headers: { get: () => "application/json" },
+      text: async () => JSON.stringify({
+        ...responseBody,
+        createdSkillpilotId: undefined
+      }, (_key, value) => value === undefined ? undefined : value)
+    })),
+    /invalid-bootstrap-identity-result/
+  );
 });
 
 test("bootstrap response is closed and the start message is accepted only from HTTPS JSON", async () => {
@@ -328,10 +407,11 @@ test("bootstrap response is closed and the start message is accepted only from H
       setupCapability: capability,
       expiresAt: new Date(Date.now() + 5 * 60 * 1_000).toISOString(),
       contractMajor: 1,
-      policyRevision: 1,
+      policyRevision: 2,
       sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
-      providerNoticeVersion: "openai-provider-eligibility-v1"
+      providerNoticeVersion: "openai-provider-eligibility-v2"
     },
+    "EXISTING",
     skillpilotId,
     "en",
     requestId
@@ -380,10 +460,11 @@ test("bootstrap error envelopes are closed and distinguish terminal from retryab
       setupCapability: capability,
       expiresAt: new Date(Date.now() + 5 * 60 * 1_000).toISOString(),
       contractMajor: 1,
-      policyRevision: 1,
+      policyRevision: 2,
       sourceMajorDecision: "ALLOW_CURRENT_MAJOR",
-      providerNoticeVersion: "openai-provider-eligibility-v1"
+      providerNoticeVersion: "openai-provider-eligibility-v2"
     },
+    "EXISTING",
     skillpilotId,
     "de",
     requestId
@@ -421,4 +502,108 @@ test("only the one exact first-party fallback is accepted", async () => {
   ]) {
     assert.equal(isExactSkillPilotFallbackUrl(value), false);
   }
+});
+
+test("setup parser and call builders expose only the bounded session-scoped setup contract", async () => {
+  const {
+    createSkillPilotGetContextCall,
+    createSkillPilotSetupMutationCall,
+    learningSessionIdFromStartMessage,
+    skillPilotSetupStateFromToolResult
+  } = await loadStartContract();
+  assert.equal(
+    learningSessionIdFromStartMessage(
+      `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`,
+      "de"
+    ),
+    learningSessionId
+  );
+  assert.deepEqual(createSkillPilotGetContextCall(learningSessionId), {
+    name: "get_skillpilot_context",
+    arguments: { learningSessionId }
+  });
+
+  const curriculumState = {
+    stateVersion: 3,
+    communicationLocale: "de",
+    requiredAction: "setCurriculum",
+    options: [{
+      kind: "curriculum",
+      id: "DE_GYMNASIUM",
+      label: "Gymnasium (DE)",
+      description: "Schulische Lernumgebung"
+    }],
+    decision: null,
+    learningState: "setup"
+  };
+  assert.deepEqual(skillPilotSetupStateFromToolResult({
+    structuredContent: curriculumState,
+    isError: false
+  }, "de"), {
+    stateVersion: 3,
+    communicationLocale: "de",
+    requiredAction: "setCurriculum",
+    options: [{
+      id: "DE_GYMNASIUM",
+      label: "Gymnasium (DE)",
+      description: "Schulische Lernumgebung"
+    }]
+  });
+  assert.deepEqual(createSkillPilotSetupMutationCall(
+    "setCurriculum",
+    learningSessionId,
+    3,
+    "DE_GYMNASIUM",
+    requestId
+  ), {
+    name: "set_skillpilot_curriculum",
+    arguments: {
+      learningSessionId,
+      curriculumId: "DE_GYMNASIUM",
+      expectedStateVersion: 3,
+      clientRequestId: requestId
+    }
+  });
+  assert.deepEqual(createSkillPilotSetupMutationCall(
+    "setPersonalization",
+    learningSessionId,
+    4,
+    "opaque-option",
+    requestId
+  ), {
+    name: "set_skillpilot_personalization",
+    arguments: {
+      learningSessionId,
+      optionId: "opaque-option",
+      expectedStateVersion: 4,
+      clientRequestId: requestId
+    }
+  });
+  for (const invalid of [
+    { ...curriculumState, communicationLocale: "en" },
+    { ...curriculumState, stateVersion: -1 },
+    { ...curriculumState, options: [] },
+    { ...curriculumState, options: [{ ...curriculumState.options[0], extra: true }] },
+    { ...curriculumState, options: [{ ...curriculumState.options[0], kind: "personalization" }] },
+    { ...curriculumState, requiredAction: "unknownAction" }
+  ]) {
+    assert.equal(skillPilotSetupStateFromToolResult({
+      structuredContent: invalid,
+      isError: false
+    }, "de"), undefined);
+  }
+  assert.deepEqual(skillPilotSetupStateFromToolResult({
+    structuredContent: {
+      ...curriculumState,
+      stateVersion: 5,
+      requiredAction: "setScope",
+      options: [{ kind: "scope", id: "never-forwarded", label: "Scope" }]
+    },
+    isError: false
+  }, "de"), {
+    stateVersion: 5,
+    communicationLocale: "de",
+    requiredAction: null,
+    options: []
+  });
 });

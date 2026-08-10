@@ -11,6 +11,8 @@ const setupCapability = `spc_${"B".repeat(43)}`;
 const skillpilotId = "1c90a010-170f-4d48-b624-b0002c591d31";
 const requestId = "11111111-1111-4111-8111-111111111111";
 const secondRequestId = "22222222-2222-4222-8222-222222222222";
+const thirdRequestId = "33333333-3333-4333-8333-333333333333";
+const fourthRequestId = "44444444-4444-4444-8444-444444444444";
 const handoffRetentionMs = 15 * 60 * 1_000;
 
 class FakeElement {
@@ -81,7 +83,10 @@ async function buildLifecycleSource() {
             () => ({
               loader: "ts",
               contents: `
-                import type { SkillPilotCapabilityArguments } from "./skillpilot-start";
+                import type {
+                  SkillPilotCapabilityArguments,
+                  SkillPilotSetupToolCall
+                } from "./skillpilot-start";
                 export type SkillPilotStartToolResult = {
                   structuredContent?: unknown;
                   _meta?: Record<string, unknown>;
@@ -107,6 +112,13 @@ async function buildLifecycleSource() {
                       arguments: args
                     });
                     return globalThis.__issueHandler(args);
+                  }
+                  callSetupTool(call: SkillPilotSetupToolCall) {
+                    globalThis.__toolCalls.push({
+                      name: call.name,
+                      arguments: call.arguments
+                    });
+                    return globalThis.__setupHandler(call);
                   }
                   sendStartMessage(text: string) {
                     globalThis.__messages.push(text);
@@ -212,7 +224,7 @@ function openResult({
         schemaVersion: 1,
         contractLine: {
           contractMajor: 1,
-          policyRevision: 1,
+          policyRevision: 2,
           displayName: "SkillPilot Coach v1",
           supportLifecycle: "CURRENT",
           publicationStatus: "DRAFT",
@@ -229,7 +241,7 @@ function capabilityResult(expiresInMs = 5 * 60 * 1_000) {
     structuredContent: {
       status: "CAPABILITY_ISSUED",
       contractMajor: 1,
-      providerNoticeVersion: "openai-provider-eligibility-v1"
+      providerNoticeVersion: "openai-provider-eligibility-v2"
     },
     _meta: {
       skillpilotStart: {
@@ -237,15 +249,19 @@ function capabilityResult(expiresInMs = 5 * 60 * 1_000) {
         setupCapability,
         expiresAt: new Date(Date.now() + expiresInMs).toISOString(),
         contractMajor: 1,
-        policyRevision: 1,
-        providerNoticeVersion: "openai-provider-eligibility-v1",
+        policyRevision: 2,
+        providerNoticeVersion: "openai-provider-eligibility-v2",
         sourceMajorDecision: "ALLOW_CURRENT_MAJOR"
       }
     }
   };
 }
 
-function launchResult(locale = "de", expiresInMs = 60 * 60 * 1_000) {
+function launchResult(
+  locale = "de",
+  expiresInMs = 60 * 60 * 1_000,
+  createdSkillpilotId
+) {
   const firstLine = locale === "de"
     ? "Verwende SkillPilot Coach v1 und fahre fort."
     : "Use SkillPilot Coach v1 and continue.";
@@ -254,7 +270,28 @@ function launchResult(locale = "de", expiresInMs = 60 * 60 * 1_000) {
     status: "SESSION_CREATED",
     communicationLocale: locale,
     expiresAt: new Date(Date.now() + expiresInMs).toISOString(),
-    startMessage: `${firstLine}\nlearningSessionId: ${learningSessionId}`
+    startMessage: `${firstLine}\nlearningSessionId: ${learningSessionId}`,
+    ...(createdSkillpilotId ? { createdSkillpilotId } : {})
+  };
+}
+
+function setupResult({
+  stateVersion = 1,
+  locale = "de",
+  requiredAction = "",
+  options = [],
+  decision
+} = {}) {
+  return {
+    isError: false,
+    structuredContent: {
+      stateVersion,
+      communicationLocale: locale,
+      requiredAction,
+      options,
+      ...(decision ? { decision } : {}),
+      learningState: "setup"
+    }
   };
 }
 
@@ -282,6 +319,7 @@ function createHarness({
   const timers = new Map();
   let nextTimer = 1;
   let issueHandler = () => Promise.resolve(capabilityResult());
+  let setupHandler = () => Promise.resolve(setupResult());
   let fetchHandler = (url) => Promise.resolve(jsonResponse(launchResult(), url));
   let messageHandler = () => Promise.resolve({ supported: true, hostAccepted: true });
   let randomUuidCalls = 0;
@@ -301,12 +339,21 @@ function createHarness({
     TextEncoder,
     AbortController,
     console,
+    navigator: {
+      clipboard: {
+        writeText(text) {
+          context.__clipboardWrites.push(text);
+          return Promise.resolve();
+        }
+      }
+    },
     __hostSupport: hostSupport,
     __toolCalls: [],
     __fetchCalls: [],
     __messages: [],
     __openedLinks: [],
     __browserOpenCalls: [],
+    __clipboardWrites: [],
     __openLinkResult: true,
     __standardConnects: 0,
     __standardToolCalls: [],
@@ -315,13 +362,18 @@ function createHarness({
     __issueHandler(args) {
       return issueHandler(args);
     },
+    __setupHandler(call) {
+      return setupHandler(call);
+    },
     __messageHandler(text) {
       return messageHandler(text);
     },
     crypto: {
       randomUUID() {
         randomUuidCalls += 1;
-        return randomUuidCalls === 1 ? requestId : secondRequestId;
+        return [requestId, secondRequestId, thirdRequestId, fourthRequestId][
+          randomUuidCalls - 1
+        ] ?? fourthRequestId;
       }
     },
     fetch(url, init) {
@@ -370,7 +422,9 @@ function createHarness({
   if (chatGptCompatibility) {
     context.openai.callTool = (name, arguments_) => {
       context.__toolCalls.push({ name, arguments: arguments_ });
-      return issueHandler(arguments_);
+      return name === "issue_skillpilot_start_capability"
+        ? issueHandler(arguments_)
+        : setupHandler({ name, arguments: arguments_ });
     };
     context.openai.sendFollowUpMessage = ({ prompt }) => {
       context.__messages.push(prompt);
@@ -400,6 +454,9 @@ function createHarness({
     timers,
     setIssueHandler(handler) {
       issueHandler = handler;
+    },
+    setSetupHandler(handler) {
+      setupHandler = handler;
     },
     setFetchHandler(handler) {
       fetchHandler = handler;
@@ -455,6 +512,10 @@ function findInput(rootElement, type, value) {
 }
 
 function enterIdAndConfirm(rootElement, locale = "de") {
+  const existing = findInput(rootElement, "radio", "EXISTING");
+  assert.ok(existing);
+  existing.checked = true;
+  existing.dispatch("change");
   const idInput = findInput(rootElement, "text");
   assert.ok(idInput);
   idInput.value = skillpilotId;
@@ -471,8 +532,275 @@ function enterIdAndConfirm(rootElement, locale = "de") {
 }
 
 async function flushPromises() {
-  for (let index = 0; index < 30; index += 1) await Promise.resolve();
+  for (let index = 0; index < 80; index += 1) await Promise.resolve();
 }
+
+test("CREATE keeps the permanent ID local and completes curriculum and personalisation before handoff", async () => {
+  const harness = createHarness();
+  harness.setFetchHandler((url) => Promise.resolve(
+    jsonResponse(launchResult("de", 60 * 60 * 1_000, skillpilotId), url)
+  ));
+  let setupCall = 0;
+  harness.setSetupHandler(() => {
+    setupCall += 1;
+    if (setupCall === 1) {
+      return Promise.resolve(setupResult({
+        stateVersion: 10,
+        requiredAction: "setCurriculum",
+        options: [{
+          kind: "curriculum",
+          id: "DE_GYMNASIUM",
+          label: "Gymnasium (DE)",
+          description: "Schulische Lernumgebung"
+        }]
+      }));
+    }
+    if (setupCall === 2) {
+      return Promise.resolve(setupResult({
+        stateVersion: 11,
+        requiredAction: "setPersonalization",
+        options: [{
+          kind: "personalization",
+          id: "stage-sek-i",
+          label: "Sekundarstufe I"
+        }],
+        decision: {
+          stageLabel: "Schulstufe",
+          groupLabel: "Aktuelle Schulstufe",
+          minSelections: 1,
+          maxSelections: 1,
+          selectedCount: 0
+        }
+      }));
+    }
+    if (setupCall === 3) {
+      return Promise.resolve(setupResult({
+        stateVersion: 12,
+        requiredAction: "setPersonalization",
+        options: [{
+          kind: "personalization",
+          id: "subject-math",
+          label: "Mathematik"
+        }],
+        decision: {
+          stageLabel: "Fächer",
+          groupLabel: "Fach auswählen",
+          minSelections: 1,
+          maxSelections: 1,
+          selectedCount: 0
+        }
+      }));
+    }
+    return Promise.resolve(setupResult({
+      stateVersion: 13,
+      requiredAction: "setScope",
+      options: [{ kind: "scope", id: "not-for-component", label: "Scope" }]
+    }));
+  });
+  await flushPromises();
+
+  assert.ok(findInput(harness.rootElement, "radio", "CREATE").checked);
+  const eligibility = findInput(harness.rootElement, "checkbox");
+  eligibility.checked = true;
+  eligibility.dispatch("change");
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+
+  const directBody = JSON.parse(harness.context.__fetchCalls[0].init.body);
+  assert.deepEqual(directBody, {
+    schemaVersion: 1,
+    identityMode: "CREATE",
+    communicationLocale: "de",
+    launchIntent: { type: "CURRENT_UNIT" },
+    providerNoticeVersion: "openai-provider-eligibility-v2",
+    clientRequestId: requestId
+  });
+  assert.equal(Object.hasOwn(directBody, "skillpilotId"), false);
+  assert.ok(findByText(harness.rootElement, skillpilotId));
+  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.deepEqual(harness.context.__messages, []);
+
+  findByText(harness.rootElement, "ID kopieren").dispatch("click");
+  await flushPromises();
+  assert.deepEqual(harness.context.__clipboardWrites, [skillpilotId]);
+  assert.ok(findByText(harness.rootElement, "ID kopiert"));
+  const saved = findInput(harness.rootElement, "checkbox");
+  saved.checked = true;
+  saved.dispatch("change");
+  findByText(harness.rootElement, "Einrichtung fortsetzen").dispatch("click");
+  await flushPromises();
+
+  assert.equal(findByText(harness.rootElement, skillpilotId), undefined);
+  assert.equal(harness.context.__toolCalls[1].name, "get_skillpilot_context");
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(harness.context.__toolCalls[1].arguments)),
+    { learningSessionId }
+  );
+  assert.deepEqual(harness.context.__messages, []);
+  assert.ok(findByText(harness.rootElement, "Gymnasium (DE)"));
+
+  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  await flushPromises();
+  assert.ok(findByText(harness.rootElement, "Sekundarstufe I"));
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(harness.context.__toolCalls[2])),
+    {
+      name: "set_skillpilot_curriculum",
+      arguments: {
+        learningSessionId,
+        curriculumId: "DE_GYMNASIUM",
+        expectedStateVersion: 10,
+        clientRequestId: secondRequestId
+      }
+    }
+  );
+  assert.deepEqual(harness.context.__messages, []);
+
+  findByText(harness.rootElement, "Sekundarstufe I").dispatch("click");
+  await flushPromises();
+  assert.ok(findByText(harness.rootElement, "Mathematik"));
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(harness.context.__toolCalls[3].arguments)),
+    {
+      learningSessionId,
+      optionId: "stage-sek-i",
+      expectedStateVersion: 11,
+      clientRequestId: thirdRequestId
+    }
+  );
+  assert.deepEqual(harness.context.__messages, []);
+
+  findByText(harness.rootElement, "Mathematik").dispatch("click");
+  await flushPromises();
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(harness.context.__toolCalls[4].arguments)),
+    {
+      learningSessionId,
+      optionId: "subject-math",
+      expectedStateVersion: 12,
+      clientRequestId: fourthRequestId
+    }
+  );
+  assert.deepEqual(harness.context.__messages, [
+    `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`
+  ]);
+  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
+  assert.doesNotMatch(JSON.stringify(harness.context.__toolCalls), new RegExp(skillpilotId));
+  assert.doesNotMatch(JSON.stringify(harness.context.__messages), new RegExp(skillpilotId));
+  assert.equal(findByText(harness.rootElement, "SkillPilot öffnen"), undefined);
+});
+
+test("pagehide and retention expiry erase a CREATE recovery ID before any setup call", async () => {
+  for (const end of ["pagehide", "retention-expiry"]) {
+    const harness = createHarness();
+    harness.setFetchHandler((url) => Promise.resolve(
+      jsonResponse(launchResult("de", 60 * 60 * 1_000, skillpilotId), url)
+    ));
+    await flushPromises();
+    const eligibility = findInput(harness.rootElement, "checkbox");
+    eligibility.checked = true;
+    eligibility.dispatch("change");
+    findByText(harness.rootElement, "Lernen starten").dispatch("click");
+    await flushPromises();
+    assert.ok(findByText(harness.rootElement, skillpilotId));
+
+    if (end === "pagehide") {
+      harness.dispatchWindow("pagehide");
+      harness.dispatchWindow("pageshow");
+    } else {
+      harness.runTimerWithDelay(handoffRetentionMs);
+    }
+
+    assert.equal(findByText(harness.rootElement, skillpilotId), undefined);
+    assert.ok(findByText(harness.rootElement, "Sicherer Start abgelaufen"));
+    assert.deepEqual(
+      harness.context.__toolCalls.map((call) => call.name),
+      ["issue_skillpilot_start_capability"]
+    );
+    assert.deepEqual(harness.context.__messages, []);
+    assert.deepEqual(harness.context.__clipboardWrites, []);
+    assert.doesNotMatch(JSON.stringify(harness.context.openai), new RegExp(skillpilotId));
+  }
+});
+
+test("an uncertain setup write retries byte-identical arguments and UUID", async () => {
+  const harness = createHarness();
+  let setupCall = 0;
+  harness.setSetupHandler(() => {
+    setupCall += 1;
+    if (setupCall === 1) {
+      return Promise.resolve(setupResult({
+        stateVersion: 7,
+        requiredAction: "setCurriculum",
+        options: [{
+          kind: "curriculum",
+          id: "DE_GYMNASIUM",
+          label: "Gymnasium (DE)"
+        }]
+      }));
+    }
+    if (setupCall === 2) return new Promise(() => {});
+    return Promise.resolve(setupResult({
+      stateVersion: 8,
+      requiredAction: "setScope"
+    }));
+  });
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  await flushPromises();
+  harness.runTimerWithDelay(15_000);
+  await flushPromises();
+
+  assert.ok(findByText(harness.rootElement, "Dieselbe Auswahl wiederholen"));
+  const firstWrite = harness.context.__toolCalls[2];
+  findByText(harness.rootElement, "Dieselbe Auswahl wiederholen").dispatch("click");
+  await flushPromises();
+  const retryWrite = harness.context.__toolCalls[3];
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(retryWrite)),
+    JSON.parse(JSON.stringify(firstWrite))
+  );
+  assert.equal(firstWrite.arguments.clientRequestId, secondRequestId);
+  assert.equal(harness.context.__messages.length, 1);
+});
+
+test("a setup write cannot hand off without a strictly newer state version", async () => {
+  const harness = createHarness();
+  let setupCall = 0;
+  harness.setSetupHandler(() => {
+    setupCall += 1;
+    return Promise.resolve(setupCall === 1
+      ? setupResult({
+        stateVersion: 7,
+        requiredAction: "setCurriculum",
+        options: [{
+          kind: "curriculum",
+          id: "DE_GYMNASIUM",
+          label: "Gymnasium (DE)"
+        }]
+      })
+      : setupResult({
+        stateVersion: 7,
+        requiredAction: "setScope"
+      }));
+  });
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+  findByText(harness.rootElement, "Gymnasium (DE)").dispatch("click");
+  await flushPromises();
+
+  assert.deepEqual(harness.context.__messages, []);
+  assert.ok(findByText(harness.rootElement, "Einrichtung erneut laden"));
+  assert.ok(findByText(
+    harness.rootElement,
+    "Die Auswahl wurde abgelehnt oder ist nicht mehr aktuell. Lade den aktuellen Einrichtungsstand erneut."
+  ));
+});
 
 test("explicit confirmation issues an ID-free capability, posts the ID directly, and retries only ui/message", async () => {
   const harness = createHarness();
@@ -492,14 +820,14 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   const privacyCopy = allElements(harness.rootElement)
     .map((element) => element.textContent)
     .join(" ");
-  assert.match(privacyCopy, /Host vermittelt diese Oberfläche und den App-only-Aufruf/);
-  assert.match(privacyCopy, /private App-Metadaten/);
-  assert.match(privacyCopy, /zur Aufnahme in Chat und Modellkontext/);
+  assert.match(privacyCopy, /ChatGPT hostet und führt diese Komponente aus/);
+  assert.match(privacyCopy, /niemals in Chat, Modellkontext, MCP-Toolargumente oder -resultate/);
+  assert.match(privacyCopy, /nur die kurzlebige Lernsession/);
   enterIdAndConfirm(harness.rootElement);
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(
     harness.context.__toolCalls[0].name,
     "issue_skillpilot_start_capability"
@@ -507,7 +835,7 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   assert.deepEqual(
     JSON.parse(JSON.stringify(harness.context.__toolCalls[0].arguments)),
     {
-      providerNoticeVersion: "openai-provider-eligibility-v1",
+      providerNoticeVersion: "openai-provider-eligibility-v2",
       providerEligibilityConfirmed: true
     }
   );
@@ -530,10 +858,11 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   );
   assert.deepEqual(JSON.parse(firstFetch.init.body), {
     schemaVersion: 1,
+    identityMode: "EXISTING",
     skillpilotId,
     communicationLocale: "de",
     launchIntent: { type: "CURRENT_UNIT" },
-    providerNoticeVersion: "openai-provider-eligibility-v1",
+    providerNoticeVersion: "openai-provider-eligibility-v2",
     clientRequestId: requestId
   });
   assert.equal(
@@ -546,7 +875,7 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1, "message retry must not issue another capability");
+  assert.equal(harness.context.__toolCalls.length, 2, "message retry must not issue another tool call");
   assert.equal(harness.context.__fetchCalls.length, 1, "message retry must not launch again");
   assert.equal(harness.context.__messages.length, 2);
   assert.equal(harness.context.__messages[0], harness.context.__messages[1]);
@@ -561,7 +890,7 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 2, "a new explicit attempt may issue a new capability");
+  assert.equal(harness.context.__toolCalls.length, 4, "a new explicit attempt may issue capability and context again");
   assert.equal(harness.context.__fetchCalls.length, 2, "a new explicit attempt may start one new session");
   assert.equal(harness.context.__messages.length, 3);
   assert.equal(JSON.parse(harness.context.__fetchCalls[1].init.body).clientRequestId, secondRequestId);
@@ -575,7 +904,7 @@ test("ChatGPT Web aliases show the ID form and complete one direct-start handoff
     findByText(harness.rootElement, "Direkter Start nicht verfügbar"),
     undefined
   );
-  assert.ok(findInput(harness.rootElement, "text"));
+  assert.ok(findInput(harness.rootElement, "radio", "CREATE"));
   enterIdAndConfirm(harness.rootElement);
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
@@ -583,13 +912,13 @@ test("ChatGPT Web aliases show the ID form and complete one direct-start handoff
   assert.equal(harness.context.__standardConnects, 1);
   assert.deepEqual(harness.context.__standardToolCalls, []);
   assert.deepEqual(harness.context.__standardMessages, []);
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(
     harness.context.__toolCalls[0].name,
     "issue_skillpilot_start_capability"
   );
   assert.doesNotMatch(
-    JSON.stringify(harness.context.__toolCalls[0].arguments),
+    JSON.stringify(harness.context.__toolCalls),
     new RegExp(skillpilotId)
   );
   assert.equal(harness.context.__fetchCalls.length, 1);
@@ -611,7 +940,7 @@ test("an unclear ui/message outcome is retryable but may duplicate only the same
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(harness.context.__fetchCalls.length, 1);
   assert.equal(harness.context.__messages.length, 1);
   harness.runTimerWithDelay(15_000);
@@ -627,7 +956,7 @@ test("an unclear ui/message outcome is retryable but may duplicate only the same
   findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(harness.context.__fetchCalls.length, 1);
   assert.equal(harness.context.__messages.length, 2);
   assert.equal(harness.context.__messages[0], harness.context.__messages[1]);
@@ -652,7 +981,7 @@ test("an uncertain HTTPS result retries the byte-identical request without reiss
   findByText(harness.rootElement, "Denselben Startversuch wiederholen").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(harness.context.__fetchCalls.length, 2);
   const [first, second] = harness.context.__fetchCalls;
   assert.equal(first.url, second.url);
@@ -678,13 +1007,13 @@ test("a definitive profile rejection clears the bound request and requires a new
   assert.equal(harness.context.__fetchCalls.length, 1);
   assert.deepEqual(harness.context.__messages, []);
   assert.equal(findByText(harness.rootElement, "Denselben Startversuch wiederholen"), undefined);
-  assert.ok(findByText(harness.rootElement, "SkillPilot-ID erneut eingeben"));
+  assert.ok(findByText(harness.rootElement, "Neuen Startversuch beginnen"));
   assert.ok(findByText(
     harness.rootElement,
-    "Dieser Startversuch wurde endgültig abgelehnt. Prüfe deine SkillPilot-ID und beginne ausdrücklich einen neuen Versuch oder öffne SkillPilot."
+    "Dieser Startversuch wurde endgültig abgelehnt. Prüfe bei einer vorhandenen ID deine Eingabe und beginne ausdrücklich einen neuen Versuch."
   ));
 
-  findByText(harness.rootElement, "SkillPilot-ID erneut eingeben").dispatch("click");
+  findByText(harness.rootElement, "Neuen Startversuch beginnen").dispatch("click");
   enterIdAndConfirm(harness.rootElement);
   findByText(harness.rootElement, "Lernen starten").dispatch("click");
   await flushPromises();
@@ -704,7 +1033,7 @@ test("a rejected capability never sends the ID through tools/call and never star
   assert.doesNotMatch(JSON.stringify(harness.context.__toolCalls), new RegExp(skillpilotId));
   assert.deepEqual(harness.context.__fetchCalls, []);
   assert.deepEqual(harness.context.__messages, []);
-  assert.ok(findByText(harness.rootElement, "SkillPilot-ID erneut eingeben"));
+  assert.ok(findByText(harness.rootElement, "Neuen Startversuch beginnen"));
   assert.doesNotMatch(
     allElements(harness.rootElement).map((element) => element.textContent).join(" "),
     new RegExp(skillpilotId)
@@ -724,7 +1053,23 @@ test("issuer decision metadata must match the explicit major-policy decision", a
   assert.equal(harness.context.__toolCalls.length, 1);
   assert.deepEqual(harness.context.__fetchCalls, []);
   assert.deepEqual(harness.context.__messages, []);
-  assert.ok(findByText(harness.rootElement, "SkillPilot-ID erneut eingeben"));
+  assert.ok(findByText(harness.rootElement, "Neuen Startversuch beginnen"));
+});
+
+test("issuer policy revision must match the open component contract", async () => {
+  const harness = createHarness();
+  const mismatched = capabilityResult();
+  mismatched._meta.skillpilotStart.policyRevision = 3;
+  harness.setIssueHandler(() => Promise.resolve(mismatched));
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  await flushPromises();
+
+  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.deepEqual(harness.context.__fetchCalls, []);
+  assert.deepEqual(harness.context.__messages, []);
+  assert.ok(findByText(harness.rootElement, "Neuen Startversuch beginnen"));
 });
 
 test("missing serverTools or message.text falls back before capability issuance", async () => {
@@ -870,7 +1215,7 @@ test("a dispatched request remains replayable past capability expiry until its h
   findByText(harness.rootElement, "Denselben Startversuch wiederholen").dispatch("click");
   await flushPromises();
 
-  assert.equal(harness.context.__toolCalls.length, 1);
+  assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(harness.context.__fetchCalls.length, 2);
   assert.equal(
     harness.context.__fetchCalls[0].init.body,
@@ -882,6 +1227,7 @@ test("a dispatched request remains replayable past capability expiry until its h
 test("the selected locale controls only the direct body and canonical host message", async () => {
   const harness = createHarness();
   harness.setFetchHandler((url) => Promise.resolve(jsonResponse(launchResult("en"), url)));
+  harness.setSetupHandler(() => Promise.resolve(setupResult({ locale: "en" })));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement, "en");
   findByText(harness.rootElement, "Start learning").dispatch("click");

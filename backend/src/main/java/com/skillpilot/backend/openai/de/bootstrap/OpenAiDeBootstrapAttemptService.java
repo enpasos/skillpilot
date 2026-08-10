@@ -5,16 +5,19 @@ import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntent;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.api.OpenAiDeLaunchResponse;
+import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapAttemptStatus;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapCapability;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapCapabilityStatus;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapLaunchAttempt;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapLaunchRequest.IdentityMode;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapCapabilityRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapLaunchAttemptRepository;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerService;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -44,6 +47,7 @@ import org.springframework.web.server.ResponseStatusException;
 public final class OpenAiDeBootstrapAttemptService {
 
     private record NormalizedRequest(
+            IdentityMode identityMode,
             String skillpilotId,
             String communicationLocale,
             String clientRequestId) {
@@ -75,6 +79,7 @@ public final class OpenAiDeBootstrapAttemptService {
     private final OpenAiDeBootstrapCapabilityRepository capabilities;
     private final OpenAiDeBootstrapLaunchAttemptRepository attempts;
     private final LearnerRepository learners;
+    private final LearnerService learnerService;
     private final OpenAiDeCoachConnectionService connectionService;
     private final OpenAiDeBootstrapCrypto crypto;
     private final OpenAiDeBootstrapAuthorizationVerifier authorizationVerifier;
@@ -88,6 +93,7 @@ public final class OpenAiDeBootstrapAttemptService {
             OpenAiDeBootstrapCapabilityRepository capabilities,
             OpenAiDeBootstrapLaunchAttemptRepository attempts,
             LearnerRepository learners,
+            LearnerService learnerService,
             OpenAiDeCoachConnectionService connectionService,
             OpenAiDeBootstrapCrypto crypto,
             OpenAiDeBootstrapAuthorizationVerifier authorizationVerifier,
@@ -98,6 +104,7 @@ public final class OpenAiDeBootstrapAttemptService {
                 capabilities,
                 attempts,
                 learners,
+                learnerService,
                 connectionService,
                 crypto,
                 authorizationVerifier,
@@ -111,6 +118,7 @@ public final class OpenAiDeBootstrapAttemptService {
             OpenAiDeBootstrapCapabilityRepository capabilities,
             OpenAiDeBootstrapLaunchAttemptRepository attempts,
             LearnerRepository learners,
+            LearnerService learnerService,
             OpenAiDeCoachConnectionService connectionService,
             OpenAiDeBootstrapCrypto crypto,
             OpenAiDeBootstrapAuthorizationVerifier authorizationVerifier,
@@ -121,6 +129,7 @@ public final class OpenAiDeBootstrapAttemptService {
         this.capabilities = capabilities;
         this.attempts = attempts;
         this.learners = learners;
+        this.learnerService = learnerService;
         this.connectionService = connectionService;
         this.crypto = crypto;
         this.authorizationVerifier = authorizationVerifier;
@@ -154,7 +163,8 @@ public final class OpenAiDeBootstrapAttemptService {
                         fingerprint.value(),
                         OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
                         normalized.clientRequestId(),
-                        normalized.skillpilotId(),
+                        normalized.identityMode().name(),
+                        normalized.skillpilotId() == null ? "" : normalized.skillpilotId(),
                         normalized.communicationLocale(),
                         OpenAiDeBootstrapConstants.LAUNCH_INTENT,
                         OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
@@ -413,11 +423,17 @@ public final class OpenAiDeBootstrapAttemptService {
             return DeliveryOutcome.failure(OpenAiDeBootstrapErrorCode.RETRY_EXPIRED);
         }
 
-        // CURRENT_UNIT deliberately permits an unfinished learner setup. The
-        // canonical coach state machine will publish setCurriculum or
-        // setPersonalization, as applicable, after the session starts; only an
-        // unknown learner is unavailable at this boundary.
-        if (learners.findBySkillpilotIdForUpdate(normalized.skillpilotId()).isEmpty()) {
+        // CURRENT_UNIT deliberately permits unfinished learner setup. For an
+        // existing identity, the learner lock follows capability and attempt.
+        // CREATE instead persists one new learner inside this same transaction,
+        // before the session is created; rollback therefore removes both.
+        String effectiveSkillpilotId = normalized.skillpilotId();
+        String createdSkillpilotId = null;
+        if (normalized.identityMode() == IdentityMode.CREATE) {
+            Learner createdLearner = learnerService.createLearner();
+            createdSkillpilotId = canonicalCreatedSkillpilotId(createdLearner);
+            effectiveSkillpilotId = createdSkillpilotId;
+        } else if (learners.findBySkillpilotIdForUpdate(effectiveSkillpilotId).isEmpty()) {
             terminalizeConsumedAttempt(
                     capability,
                     attempt,
@@ -427,7 +443,7 @@ public final class OpenAiDeBootstrapAttemptService {
         }
 
         OpenAiDeLaunchResponse launch = connectionService.createLaunch(
-                normalized.skillpilotId(),
+                effectiveSkillpilotId,
                 currentUnitRequest(normalized.communicationLocale()));
         Instant completedAt = clock.instant();
         requireCanonicalLaunch(launch, normalized.communicationLocale(), completedAt);
@@ -436,7 +452,8 @@ public final class OpenAiDeBootstrapAttemptService {
                 OpenAiDeBootstrapConstants.RESPONSE_STATUS,
                 normalized.communicationLocale(),
                 launch.expiresAt(),
-                launch.prompt());
+                launch.prompt(),
+                createdSkillpilotId);
         OpenAiDeBootstrapCrypto.EncryptedDelivery encrypted = crypto.encryptDelivery(
                 serializeResponse(response),
                 attempt.getId(),
@@ -562,7 +579,7 @@ public final class OpenAiDeBootstrapAttemptService {
                 attempt.getRequestHmac(),
                 Objects.requireNonNull(attempt.getResponseSchemaVersion()));
         OpenAiDeBootstrapLaunchResponse response = deserializeResponse(plaintext);
-        requireCanonicalResponse(response, normalized.communicationLocale(), now);
+        requireCanonicalResponse(response, normalized, now);
         return DeliveryOutcome.success(response);
     }
 
@@ -631,13 +648,21 @@ public final class OpenAiDeBootstrapAttemptService {
                         request.providerNoticeVersion())) {
             throw failure(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
         }
-        String skillpilotId = canonicalUuid(request.skillpilotId(), false);
+        IdentityMode identityMode = request.identityMode();
+        String skillpilotId;
+        if (identityMode == IdentityMode.EXISTING) {
+            skillpilotId = canonicalUuid(request.skillpilotId(), false);
+        } else if (identityMode == IdentityMode.CREATE && request.skillpilotId() == null) {
+            skillpilotId = null;
+        } else {
+            throw failure(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
+        }
         String clientRequestId = canonicalUuid(request.clientRequestId(), true);
         String locale = request.communicationLocale();
         if (!"de".equals(locale) && !"en".equals(locale)) {
             throw failure(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
         }
-        return new NormalizedRequest(skillpilotId, locale, clientRequestId);
+        return new NormalizedRequest(identityMode, skillpilotId, locale, clientRequestId);
     }
 
     private String canonicalUuid(String value, boolean requireVersionFour) {
@@ -682,8 +707,9 @@ public final class OpenAiDeBootstrapAttemptService {
 
     private void requireCanonicalResponse(
             OpenAiDeBootstrapLaunchResponse response,
-            String communicationLocale,
+            NormalizedRequest normalized,
             Instant now) {
+        String communicationLocale = normalized.communicationLocale();
         String prefix = startMessagePrefix(communicationLocale) + "\nlearningSessionId: ";
         String message = response == null ? null : response.startMessage();
         String sessionId = message != null && message.startsWith(prefix)
@@ -697,8 +723,34 @@ public final class OpenAiDeBootstrapAttemptService {
                 || !response.expiresAt().isAfter(now)
                 || sessionId == null
                 || !LEARNING_SESSION_ID_PATTERN.matcher(sessionId).matches()
-                || !expectedStartMessage(communicationLocale, sessionId).equals(message)) {
+                || !expectedStartMessage(communicationLocale, sessionId).equals(message)
+                || (normalized.identityMode() == IdentityMode.EXISTING
+                        && response.createdSkillpilotId() != null)
+                || (normalized.identityMode() == IdentityMode.CREATE
+                        && !isCanonicalVersionFourUuid(response.createdSkillpilotId()))) {
             throw failure(OpenAiDeBootstrapErrorCode.DELIVERY_UNAVAILABLE);
+        }
+    }
+
+    private String canonicalCreatedSkillpilotId(Learner learner) {
+        String value = learner == null ? null : learner.getSkillpilotId();
+        if (!isCanonicalVersionFourUuid(value)) {
+            throw failure(OpenAiDeBootstrapErrorCode.DELIVERY_UNAVAILABLE);
+        }
+        return value;
+    }
+
+    private boolean isCanonicalVersionFourUuid(String value) {
+        if (value == null || !SKILLPILOT_ID_PATTERN.matcher(value).matches()) {
+            return false;
+        }
+        try {
+            UUID parsed = UUID.fromString(value);
+            return parsed.version() == 4
+                    && parsed.variant() == 2
+                    && parsed.toString().equals(value);
+        } catch (IllegalArgumentException exception) {
+            return false;
         }
     }
 

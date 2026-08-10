@@ -27,13 +27,24 @@ class OpenAiDeBootstrapControllerTest {
     private static final String REQUEST = """
             {
               "schemaVersion": 1,
+              "identityMode": "EXISTING",
               "skillpilotId": "%s",
               "communicationLocale": "de",
               "launchIntent": {"type": "CURRENT_UNIT"},
-              "providerNoticeVersion": "openai-provider-eligibility-v1",
+              "providerNoticeVersion": "openai-provider-eligibility-v2",
               "clientRequestId": "%s"
             }
             """.formatted(SKILLPILOT_ID, CLIENT_REQUEST_ID);
+    private static final String CREATE_REQUEST = """
+            {
+              "schemaVersion": 1,
+              "identityMode": "CREATE",
+              "communicationLocale": "de",
+              "launchIntent": {"type": "CURRENT_UNIT"},
+              "providerNoticeVersion": "openai-provider-eligibility-v2",
+              "clientRequestId": "%s"
+            }
+            """.formatted(CLIENT_REQUEST_ID);
 
     private OpenAiDeBootstrapAttemptService attemptService;
     private ObjectMapper objectMapper;
@@ -47,13 +58,39 @@ class OpenAiDeBootstrapControllerTest {
     }
 
     @Test
+    void acceptsCreateOnlyWithoutAnExistingIdField() {
+        OpenAiDeBootstrapLaunchResponse expected = new OpenAiDeBootstrapLaunchResponse(
+                1,
+                "SESSION_CREATED",
+                "de",
+                Instant.parse("2026-08-10T08:00:00Z"),
+                "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_test",
+                SKILLPILOT_ID);
+        when(attemptService.launch(eq(CAPABILITY), any())).thenReturn(expected);
+
+        ResponseEntity<OpenAiDeBootstrapLaunchResponse> response = controller.launch(
+                "SkillPilotSetup " + CAPABILITY,
+                CREATE_REQUEST.getBytes(StandardCharsets.UTF_8));
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        ArgumentCaptor<OpenAiDeBootstrapLaunchRequest> request =
+                ArgumentCaptor.forClass(OpenAiDeBootstrapLaunchRequest.class);
+        verify(attemptService).launch(eq(CAPABILITY), request.capture());
+        assertThat(request.getValue().identityMode())
+                .isEqualTo(OpenAiDeBootstrapLaunchRequest.IdentityMode.CREATE);
+        assertThat(request.getValue().skillpilotId()).isNull();
+        assertThat(response.getBody().createdSkillpilotId()).isEqualTo(SKILLPILOT_ID);
+    }
+
+    @Test
     void acceptsOnlyTheClosedCapabilityAuthorizedRequestAndReturnsNoStoreHeaders() {
         OpenAiDeBootstrapLaunchResponse expected = new OpenAiDeBootstrapLaunchResponse(
                 1,
                 "SESSION_CREATED",
                 "de",
                 Instant.parse("2026-08-10T08:00:00Z"),
-                "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_test");
+                "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_test",
+                null);
         when(attemptService.launch(eq(CAPABILITY), any())).thenReturn(expected);
 
         ResponseEntity<OpenAiDeBootstrapLaunchResponse> response = controller.launch(
@@ -71,6 +108,8 @@ class OpenAiDeBootstrapControllerTest {
                 ArgumentCaptor.forClass(OpenAiDeBootstrapLaunchRequest.class);
         verify(attemptService).launch(eq(CAPABILITY), request.capture());
         assertThat(request.getValue().skillpilotId()).isEqualTo(SKILLPILOT_ID);
+        assertThat(request.getValue().identityMode())
+                .isEqualTo(OpenAiDeBootstrapLaunchRequest.IdentityMode.EXISTING);
         assertThat(request.getValue().clientRequestId()).isEqualTo(CLIENT_REQUEST_ID);
         assertThat(request.getValue().launchIntent().type()).isEqualTo("CURRENT_UNIT");
     }
@@ -86,8 +125,60 @@ class OpenAiDeBootstrapControllerTest {
         assertInvalidRequest(REQUEST.replace(
                 "\"clientRequestId\"",
                 "\"providerEligibilityConfirmed\": true, \"clientRequestId\""));
+        assertInvalidRequest(REQUEST.replace("\"EXISTING\"", "\"REUSE\""));
+        assertInvalidRequest(REQUEST.replace(
+                "\"skillpilotId\": \"%s\",\n".formatted(SKILLPILOT_ID),
+                ""));
+        assertInvalidRequest(CREATE_REQUEST.replace(
+                "\"communicationLocale\": \"de\",",
+                "\"skillpilotId\": null,\n  \"communicationLocale\": \"de\","));
+        assertInvalidRequest(CREATE_REQUEST.replace(
+                "\"communicationLocale\": \"de\",",
+                "\"skillpilotId\": \"%s\",\n  \"communicationLocale\": \"de\",".formatted(
+                        SKILLPILOT_ID)));
         assertInvalidRequest(REQUEST + " {}");
         assertInvalidRequest(" ".repeat(8 * 1024 + 1));
+    }
+
+    @Test
+    void responseJsonReturnsCreatedIdOnlyForCreateMode() {
+        Instant expiresAt = Instant.parse("2026-08-10T08:00:00Z");
+        OpenAiDeBootstrapLaunchResponse existing = new OpenAiDeBootstrapLaunchResponse(
+                1,
+                "SESSION_CREATED",
+                "de",
+                expiresAt,
+                "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_test",
+                null);
+        OpenAiDeBootstrapLaunchResponse created = new OpenAiDeBootstrapLaunchResponse(
+                1,
+                "SESSION_CREATED",
+                "de",
+                expiresAt,
+                "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: sps_test",
+                SKILLPILOT_ID);
+
+        assertThat(json(ResponseEntity.ok(existing)).fieldNames())
+                .toIterable()
+                .containsExactlyInAnyOrder(
+                        "schemaVersion",
+                        "status",
+                        "communicationLocale",
+                        "expiresAt",
+                        "startMessage");
+        assertThat(json(ResponseEntity.ok(existing)).toString())
+                .doesNotContain("createdSkillpilotId", SKILLPILOT_ID);
+        assertThat(json(ResponseEntity.ok(created)).fieldNames())
+                .toIterable()
+                .containsExactlyInAnyOrder(
+                        "schemaVersion",
+                        "status",
+                        "communicationLocale",
+                        "expiresAt",
+                        "startMessage",
+                        "createdSkillpilotId");
+        assertThat(json(ResponseEntity.ok(created)).path("createdSkillpilotId").asText())
+                .isEqualTo(SKILLPILOT_ID);
     }
 
     @Test

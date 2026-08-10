@@ -24,9 +24,133 @@ input {
 }
 
 .id-label,
+.identity-fieldset legend,
 .language-fieldset legend {
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.identity-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.identity-fieldset legend {
+  margin-bottom: 0.45rem;
+}
+
+.identity-options,
+.setup-options {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.identity-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem;
+  border: 1px solid #b8c4d3;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.identity-option:focus-within {
+  border-color: #057dbd;
+  outline: 3px solid rgb(3 137 211 / 20%);
+  outline-offset: 2px;
+}
+
+.identity-option input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+  flex: 0 0 auto;
+  accent-color: #0789d1;
+}
+
+.identity-option-text {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.identity-option-title {
+  font-size: 0.95rem;
+}
+
+.identity-option-body,
+.setup-option-description {
+  color: #526077;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.created-id-group {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.85rem;
+  border: 1px solid #d5b66f;
+  border-radius: 0.8rem;
+  background: #ffffff;
+}
+
+.created-id-value {
+  display: block;
+  padding: 0.75rem;
+  border: 1px solid #b8c4d3;
+  border-radius: 0.65rem;
+  background: #f4f8fc;
+  color: #152033;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.setup-decision {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.setup-stage,
+.setup-group {
+  margin: 0;
+}
+
+.setup-stage {
+  color: #526077;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.setup-group {
+  font-size: 1rem;
+}
+
+.setup-option {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #9aa9bc;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: #142033;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+}
+
+.setup-option:hover,
+.setup-option:focus-visible {
+  border-color: #057dbd;
+  outline: 3px solid rgb(3 137 211 / 20%);
+  outline-offset: 2px;
 }
 
 .id-input {
@@ -269,8 +393,27 @@ h1 {
   }
 
   .language-option,
+  .identity-option,
+  .setup-option,
   .button,
   .id-input {
+    border-color: #64748b;
+    background: #172033;
+    color: #edf3fb;
+  }
+
+  .identity-option-body,
+  .setup-option-description,
+  .setup-stage {
+    color: #b9c5d5;
+  }
+
+  .created-id-group {
+    border-color: #8a682d;
+    background: #111827;
+  }
+
+  .created-id-value {
     border-color: #64748b;
     background: #172033;
     color: #edf3fb;
