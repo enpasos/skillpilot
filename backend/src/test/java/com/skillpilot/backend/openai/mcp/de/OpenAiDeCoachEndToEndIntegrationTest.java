@@ -576,7 +576,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 {"jsonrpc":"2.0","id":"resources-1","method":"resources/list","params":{}}
                 """);
         assertMcpPayloadDoesNotExposeIdentity(resources, applicationSubject);
-        List<String> expectedResourceUris = Stream.concat(
+        List<String> expectedResourceUris = Stream.of(
                         Stream.of(
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
@@ -584,7 +584,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                                 OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
                                 .stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
+                        OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S
+                                .stream()
+                                .map(OpenAiDeV1ContractMetadata::skillpilotStartResourceUri))
+                .flatMap(stream -> stream)
                 .toList();
         assertThat(result(resources).path("resources").valueStream()
                         .map(resource -> resource.path("uri").asText())
@@ -617,6 +621,15 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                     applicationSubject,
                     "resource-retained-" + retainedResourceIndex++,
                     OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(retainedSha256),
+                    retainedSha256);
+        }
+        for (String retainedSha256 :
+                OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
+            assertResourceReadableOverAuthenticatedMcp(
+                    accessToken,
+                    applicationSubject,
+                    "resource-retained-start-" + retainedResourceIndex++,
+                    OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(retainedSha256),
                     retainedSha256);
         }
         assertResourceReadableOverAuthenticatedMcp(

@@ -190,11 +190,9 @@ test("SkillPilot start widget is standards-first, bounded, and embedded byte-exa
   assert.match(html, /toolOutput/, "ChatGPT's initial compatibility payload remains read-only input");
   assert.match(html, /toolResponseMetadata/);
   assert.match(html, /openai:set_globals/);
-  assert.doesNotMatch(
-    source,
-    /window\.openai\?\.(?:callTool|sendFollowUpMessage|openExternal)/,
-    "mutations and navigation must use the standard MCP Apps bridge"
-  );
+  assert.match(html, /callTool/);
+  assert.match(html, /sendFollowUpMessage/);
+  assert.match(html, /openExternal/);
   assert.doesNotMatch(html, /launch_skillpilot_session/);
   assert.doesNotMatch(source, /linked SkillPilot profile|verknüpften SkillPilot-Profil/i);
   assert.doesNotMatch(source, /\bPIN\b|password|type\s*=\s*["']file["']/i);

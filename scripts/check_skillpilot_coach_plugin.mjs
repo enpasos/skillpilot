@@ -61,13 +61,20 @@ const skillpilotStartArtifactSha256 = createHash("sha256")
   .digest("hex");
 const skillpilotStartResourceUri =
   `ui://skillpilot/coach/v1/sha256-${skillpilotStartArtifactSha256}/skillpilot-start.html`;
-const retainedGoalVisualizationArtifactSha256s = readdirSync(
+const retainedArtifactDirectoryNames = readdirSync(
   retainedGoalVisualizationRoot,
   { withFileTypes: true },
 )
   .filter((entry) => entry.isDirectory() && entry.name.startsWith("sha256-"))
-  .map((entry) => entry.name.slice("sha256-".length))
+  .map((entry) => entry.name)
   .sort();
+const retainedGoalVisualizationArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) => existsSync(resolve(
+    retainedGoalVisualizationRoot,
+    directoryName,
+    "goal-visualization.html",
+  )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
 assert.ok(
   retainedGoalVisualizationArtifactSha256s.length > 0,
   "At least one retained goal-visualization artifact must stay readable.",
@@ -89,6 +96,34 @@ assert.equal(
   retainedGoalVisualizationArtifactSha256s.includes(goalVisualizationArtifactSha256),
   false,
   "The active goal-visualization artifact must not also be retained.",
+);
+const retainedSkillpilotStartArtifactSha256s = retainedArtifactDirectoryNames
+  .filter((directoryName) => existsSync(resolve(
+    retainedGoalVisualizationRoot,
+    directoryName,
+    "skillpilot-start.html",
+  )))
+  .map((directoryName) => directoryName.slice("sha256-".length));
+assert.ok(
+  retainedSkillpilotStartArtifactSha256s.length > 0,
+  "At least one previously advertised direct-start artifact must stay readable.",
+);
+for (const sha256 of retainedSkillpilotStartArtifactSha256s) {
+  const artifact = resolve(
+    retainedGoalVisualizationRoot,
+    `sha256-${sha256}`,
+    "skillpilot-start.html",
+  );
+  assert.equal(
+    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
+    sha256,
+    "Retained direct-start artifacts must remain byte-for-byte immutable.",
+  );
+}
+assert.equal(
+  retainedSkillpilotStartArtifactSha256s.includes(skillpilotStartArtifactSha256),
+  false,
+  "The active direct-start artifact must not also be retained.",
 );
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
@@ -330,6 +365,11 @@ const expectedUiResources = [
     mimeType: "text/html;profile=mcp-app",
     path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
     uri: `ui://skillpilot/coach/v1/sha256-${sha256}/goal-visualization.html`,
+  })),
+  ...retainedSkillpilotStartArtifactSha256s.map((sha256) => ({
+    mimeType: "text/html;profile=mcp-app",
+    path: `ui/retained/sha256-${sha256}/skillpilot-start.html`,
+    uri: `ui://skillpilot/coach/v1/sha256-${sha256}/skillpilot-start.html`,
   })),
   {
     mimeType: "text/html;profile=mcp-app",
@@ -1124,6 +1164,11 @@ assert.deepEqual(
   javaStringList("RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S").slice().sort(),
   retainedGoalVisualizationArtifactSha256s,
   "Every retained artifact must be declared, and every declared hash must exist.",
+);
+assert.deepEqual(
+  javaStringList("RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S").slice().sort(),
+  retainedSkillpilotStartArtifactSha256s,
+  "Every retained direct-start artifact must be declared, and every declared hash must exist.",
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),

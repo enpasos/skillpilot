@@ -193,7 +193,8 @@ ausdrücklich freigegebene Architekturentscheidung:
 - Bestätigung von Sprache und unveränderlich versioniertem Providerhinweis;
 - Starttyp ausschließlich CURRENT_UNIT;
 - Wiederverwendung der bestehenden autoritativen Startlogik;
-- Host-Anfrage über ui/message mit der fertigen Startnachricht;
+- Host-Anfrage über den ausgewählten Nachrichtenkanal mit der fertigen
+  Startnachricht;
 - sicherer Rückfall auf den bestehenden Webstart.
 
 ### 4.2 Nicht-Ziele von Phase 1
@@ -228,7 +229,9 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
        KEINE Capability, KEINE Lernendenauflösung
                          |
                          v
-        Widget prüft tools/call, ui/message und Fallback
+        Widget prüft einen vollständigen Aktionskanal:
+        tools/call + ui/message oder die dokumentierten
+        ChatGPT-Aliasse callTool + sendFollowUpMessage
         ohne Host-, Plattform- oder User-Agent-Sniffing
                          |
                          v
@@ -252,8 +255,8 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
     + kurzlebig AEAD-verschlüsseltes Delivery-Resultat
                          |
                          v
-     Widget bittet den Host über ui/message,
-     die unveränderte Startnachricht aufzunehmen
+     Widget bittet den Host über den vor dem Issuer-Aufruf
+     ausgewählten Kanal, die unveränderte Startnachricht aufzunehmen
                          |
                          v
        erwarteter nächster Modellschritt:
@@ -268,6 +271,14 @@ MCP-Apps-Flächen. ChatGPT-spezifische Felder sind nur
 Kompatibilitätsaliasse. Siehe
 [Add UI to your MCP server](https://developers.openai.com/plugins/build/chatgpt-ui)
 und [Plugin UI reference](https://developers.openai.com/plugins/reference).
+
+Für den aktuellen ChatGPT-Webhost ist der dokumentierte Kompatibilitätskanal
+ein unterstützter Laufzeitweg: Sind `window.openai.callTool` und
+`window.openai.sendFollowUpMessage` gemeinsam verfügbar, darf die Komponente
+ihn verwenden, wenn die vollständige Standard-Aktionsfähigkeit nicht bereits
+bereitsteht. Die Wahl wird vor dem ersten Aktionsaufruf für den Startversuch
+fixiert. Nach einem dispatchten Aufruf wird niemals auf den jeweils anderen
+Kanal ausgewichen; ein unklarer Ausgang darf keinen Doppelaufruf erzeugen.
 
 ### 6.1 Öffentliches Tool open_skillpilot_start
 
@@ -642,16 +653,23 @@ Das Widget:
 
 - verwendet App und PostMessageTransport;
 - nimmt Toolresultate über ui/notifications/tool-result an;
-- ruft das app-only Capability-Tool über tools/call auf;
-- bittet den Host über ui/message um Aufnahme der Startnachricht;
-- verwendet ui/open-link für erlaubte Fallbacks, soweit unterstützt;
+- ruft das app-only Capability-Tool über `tools/call` oder den dokumentierten
+  ChatGPT-Kompatibilitätsalias `window.openai.callTool` auf;
+- bittet den Host über `ui/message` oder den dokumentierten
+  Kompatibilitätsalias `window.openai.sendFollowUpMessage` um Aufnahme der
+  Startnachricht;
+- verwendet `ui/open-link` oder `window.openai.openExternal` für erlaubte
+  Fallbacks, soweit unterstützt;
 - erkennt optionale Hostfähigkeiten per Capability-API, nicht anhand von
   User-Agent, Hostname, Plattform oder Oberfläche.
 
-Vor jeder Capability-Ausstellung müssen mindestens initialisierte
-MCP-Apps-Verbindung, serverTools/tools/call und message.text/ui.message
-verfügbar sein. Fehlt eine Voraussetzung, wird weder Capability noch Session
-erzeugt. Der Webfallback bleibt erreichbar.
+Vor jeder Capability-Ausstellung muss genau ein vollständiger Aktionskanal
+verfügbar sein: entweder die initialisierte MCP-Apps-Verbindung mit
+`serverTools`/`tools/call` und `message.text`/`ui.message` oder gemeinsam die
+beiden ChatGPT-Kompatibilitätsmethoden `callTool` und
+`sendFollowUpMessage`. Einzelne Methoden aus unterschiedlichen Kanälen werden
+nicht kombiniert. Fehlt ein vollständiger Kanal, wird weder Capability noch
+Session erzeugt. Der Webfallback bleibt erreichbar.
 
 Diese Vorprüfung verhindert Starts, deren Handoff bereits erkennbar unmöglich
 ist. Sie kann einen Host- oder Prozessabsturz nach dem Sessioncommit nicht
@@ -685,8 +703,8 @@ Die ID:
 - wird nicht in DOM-Text, provider-synchronisierten Widget-State, Local oder
   Session Storage, IndexedDB, URL, Clipboard-Helfer, Console, Analytics oder
   Telemetrie geschrieben;
-- wird niemals in structuredContent, Result-_meta, tools/call oder ui/message
-  übernommen;
+- wird niemals in structuredContent, Result-_meta, `tools/call`, `callTool`,
+  `ui/message` oder `sendFollowUpMessage` übernommen;
 - wird nach Antwort oder Abbruch bestmöglich aus allen erreichbaren
   Laufzeitreferenzen entfernt.
 
@@ -1188,8 +1206,9 @@ Launch; OAuth-Widerruf und aktuelle Major-Policy werden weiterhin geprüft.
 
 ## 10. Übergabe an den Host und Chat
 
-Nach erfolgreicher Sessionerzeugung bittet das Widget den Host über ui/message,
-exakt die vom Backend gelieferte startMessage als User-Nachricht aufzunehmen.
+Nach erfolgreicher Sessionerzeugung bittet das Widget den Host über den für
+den Versuch fixierten Standard- oder ChatGPT-Kompatibilitätskanal, exakt die
+vom Backend gelieferte startMessage als User-Nachricht aufzunehmen.
 
 Regeln:
 
@@ -1209,10 +1228,11 @@ Regeln:
 Bis zur Hostannahme hält das Widget die opake startMessage nur in einer lokalen
 Laufzeitreferenz für denselben Nachrichten-Retry. Nach Hostannahme, Abbruch
 oder spätestens beim früheren Ende von Delivery- und Sessionfrist entfernt es
-diese Referenz bestmöglich und sperrt weitere `ui/message`-Aufrufe. Sie wird nie
-in Widget-State oder Browserstorage persistiert.
+diese Referenz bestmöglich und sperrt weitere Nachrichtenaufrufe über beide
+Kanäle. Sie wird nie in Widget-State oder Browserstorage persistiert.
 
-Die Bestätigung von ui/message beweist ausschließlich, dass der Host die
+Die Bestätigung von `ui/message` beziehungsweise das erfolgreiche Auflösen von
+`sendFollowUpMessage` beweist ausschließlich, dass der Host die
 Nachrichtenanfrage angenommen hat. Sie beweist weder, dass das Modell
 geantwortet, der Skill geladen oder get_skillpilot_context stattgefunden hat.
 Der Widget-Endzustand heißt deshalb HOST_MESSAGE_ACCEPTED, nicht DELIVERED.
@@ -1228,7 +1248,7 @@ chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
 | client_credentials | nicht unterstützt; kein mTLS- oder Lernendenfallback |
 | `skillpilot.openai.v1.read` fehlt | open_skillpilot_start abweisen |
 | `skillpilot.openai.v1.write` fehlt | Capability-Issuer abweisen |
-| Host ohne tools/call oder ui/message | keine Capability, keine Session, Webfallback |
+| Host ohne vollständigen Standard- oder ChatGPT-Kompatibilitätskanal | keine Capability, keine Session, Webfallback |
 | WARN ohne ausdrückliche Entscheidung | DECISION_REQUIRED, keine Capability |
 | BLOCK oder Notfallsperre | keine Capability und keine neue Session |
 | Hinweisversion veraltet | NOTICE_REFRESH_REQUIRED |
@@ -1239,7 +1259,7 @@ chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
 | transienter Corefehler | BOUND bleibt nur für exakten Retry |
 | Responseverlust nach Commit | gespeichertes AEAD-Resultat innerhalb Delivery-Frist |
 | Delivery-Frist abgelaufen | DELIVERY_EXPIRED, neuer vollständiger Start |
-| ui/message abgelehnt oder unklar | identische Nachricht erneut senden, kein Relaunch |
+| Nachrichtenaufruf abgelehnt oder unklar | identische Nachricht auf demselben Kanal erneut senden, kein Relaunch |
 | Lernsession abgelaufen | unveränderter SESSION_REQUIRED-Vertrag |
 | Artefakt einer anderen Major-Linie | MAJOR_MISMATCH vor Projektion oder Mutation |
 | Ziel-Major vor Commit nicht verfügbar | Quell-Major nur bei dessen aktueller Policy ALLOW oder WARN ausdrücklich anbieten |
@@ -1322,7 +1342,8 @@ abgeschlossen behauptet.
 - nur CURRENT_UNIT;
 - Open-Tool, app-only Capability-Issuer und direkter Endpoint;
 - Zwei-Transaktions-Attempt, zufällige Session und AEAD-Delivery;
-- Hostannahme über ui/message und bestehender Webfallback;
+- Hostannahme über genau einen Standard- oder ChatGPT-Kompatibilitätskanal und
+  bestehender Webfallback;
 - keine Datei, keine PIN, kein Export und keine neue ID.
 
 Dieser Slice ist implementiert und durch lokale Widget-, Contract-, Backend-
@@ -1441,9 +1462,11 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 1. Im Phase-1-Widget existieren weder Datei- noch PIN-Feld.
 2. ID erscheint nicht in Chat, Modellkontext, Toolargument, Resultat,
    provider-synchronisiertem State, Storage, URL, Console oder Analytics.
-3. Ohne tools/call oder ui/message entsteht weder Capability noch Session.
+3. Ohne vollständiges Paar aus `tools/call` und `ui/message` oder aus
+   `callTool` und `sendFollowUpMessage` entsteht weder Capability noch Session.
 4. Capability-Ausstellung erfolgt erst nach ausdrücklicher Bestätigung.
-5. Fehlgeschlagenes ui.message wiederholt nur die identische Nachricht.
+5. Ein fehlgeschlagener Nachrichtenaufruf wiederholt nur die identische
+   Nachricht auf demselben Kanal.
 6. HOST_MESSAGE_ACCEPTED wird nicht als Modell- oder Coach-Erfolg bezeichnet.
 7. Deutsch und Englisch sind semantisch gleichwertig.
 8. Tastatur-, Fokus-, Screenreader- und Fehlerzustände sind zugänglich.
@@ -1451,15 +1474,16 @@ echten OpenAI-Host-Canarys sowie deren dokumentierte Nachweise stehen noch aus.
 
 ### 14.6 Integrations- und Hosttests
 
-1. Open-Tool → Widget → app-only Issuer → direkter Start → ui.message →
-   beobachteter get_skillpilot_context.
+1. Open-Tool → Widget → app-only Issuer → direkter Start → ausgewählter
+   Nachrichtenkanal → beobachteter get_skillpilot_context.
 2. Die Startnachricht enthält exakt eine learningSessionId und keine ID.
 3. Lernsession lebt absolut höchstens 24 Stunden.
 4. Webstart bleibt verhaltenskompatibel und zufallsbasiert.
 5. Lernziel-, Frontier-, Mastery-, Autopilot- und Coach-Handoff-Tests bleiben
    grün.
 6. Ein echter Host-Canary prüft Resource-Binding, feste UI-Origin, CSP, CORS,
-   tools/call, Result-_meta, ui.message und Cacheverhalten.
+   den vollständigen Standard- und ChatGPT-Kompatibilitätskanal, Result-_meta
+   und Cacheverhalten.
 7. Der Canary unterscheidet Hostannahme von beobachtetem nachfolgenden
    Modell-/Toolverhalten.
 8. Canaryfehler führen nie zur Aufweitung von Origin oder CSP.
@@ -1599,8 +1623,8 @@ Für den direkten Start gelten ergänzend:
    Auswahl und neue Ziel-Major-Lernsession durch.
 6. Der dauerhafte Lernstand bleibt im gemeinsamen Core; die Quell-Session wird
    nicht übernommen oder verändert.
-7. ui/message ist kein Installations-, Autorisierungs- oder
-   Major-Migrationskanal.
+7. Der Standard- oder Kompatibilitäts-Nachrichtenkanal ist kein Installations-,
+   Autorisierungs- oder Major-Migrationskanal.
 8. Alte content-addressierte Ressourcen bleiben byte-identisch lesbar und
     werden niemals an Tools einer anderen Major-Linie gebunden.
 
@@ -1647,7 +1671,7 @@ AND bestätigte aktuelle Providerhinweis-Version
 -> zufällige V1-learningSessionId, maximal 24h
 -> kurzlebig verschlüsseltes, exakt wiederholbares Delivery-Resultat
 
-ui/message:
+ui/message oder sendFollowUpMessage auf dem fixierten Kanal:
 opake Startnachricht
 -> Host hat die Nachrichtenanfrage angenommen
 -> KEIN Beweis für Modellantwort oder get_skillpilot_context
@@ -1674,7 +1698,7 @@ Setup-Capability -> fachliche MCP-Autorisierung
 open_skillpilot_start -> Capability-Ausstellung
 app-only Tool -> SkillPilot-ID-Transport
 deterministische Ableitung -> learningSessionId
-ui/message-Ack -> behaupteter Coach-Erfolg
+Nachrichten-Ack -> behaupteter Coach-Erfolg
 client_secret_basic -> client_credentials-Grant
 mTLS -> Voraussetzung dieses Ausbaus
 alte Plugin-Identität -> stillschweigender Major-Wechsel

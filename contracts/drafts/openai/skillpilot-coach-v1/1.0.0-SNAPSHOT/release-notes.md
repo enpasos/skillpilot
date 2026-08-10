@@ -39,6 +39,10 @@ architecture no longer processes that ID.
   authorize only the fixed App-to-Core connection; the component obtains an
   ID-free, short-lived app-only setup capability and sends an explicitly entered
   existing SkillPilot ID only to the fixed SkillPilot HTTPS bootstrap endpoint
+- direct start supports both the shared MCP Apps action pair and the documented
+  ChatGPT Web compatibility pair `window.openai.callTool` plus
+  `window.openai.sendFollowUpMessage`; one start attempt fixes exactly one
+  complete channel before dispatch and never double-calls across channels
 - irreversible request binding, a random 256-bit learning-session handle, and
   an AEAD-encrypted short-lived delivery record provide crash-safe exact retries
   without persisting the SkillPilot ID, raw capability, session token, request
@@ -57,8 +61,9 @@ architecture no longer processes that ID.
 - structured `goalVisualization` delivery to an image-only component; bare
   MCP `ImageContent` is not used as a visibility contract
 - immutable passive retention of every widget URI already advertised to a real
-  test client, including the original `1.0.0` URI, while only the current
-  content-addressed resource remains bound to the renderer
+  test client, including the original `1.0.0` goal-image URI and earlier
+  direct-start hashes, while only each current content-addressed resource
+  remains bound to its tool
 - immediate data-then-render goal-image flow: after a full result exposes and
   permits an image, the renderer follows exactly once in the same assistant
   turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
