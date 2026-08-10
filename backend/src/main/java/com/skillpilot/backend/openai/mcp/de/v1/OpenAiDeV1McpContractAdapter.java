@@ -783,6 +783,15 @@ public final class OpenAiDeV1McpContractAdapter {
             // component and must never be selected by the model.
             meta.put("ui", Map.of("visibility", List.of("app")));
         }
+        if (GET_CONTEXT.equals(name)
+                || SET_CURRICULUM.equals(name)
+                || SET_PERSONALIZATION.equals(name)) {
+            // The direct-start component completes the server-authoritative
+            // setup through these existing, session-scoped tools. ChatGPT's
+            // compatibility bridge requires this explicit opt-in; the tools
+            // remain model-visible and never accept a permanent SkillPilot ID.
+            meta.put("openai/widgetAccessible", true);
+        }
         McpSchema.Tool descriptor = McpSchema.Tool.builder()
                 .name(name)
                 .title(title)

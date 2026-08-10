@@ -6,6 +6,14 @@ eingereicht, genehmigt oder veröffentlicht wurde. Draft, Domain-Challenge,
 Review-Zugang, Regionen, Attestierungen und Veröffentlichung werden im
 angemeldeten OpenAI-Plugin-Portal verwaltet.
 
+Der interne V1-Draft unterstützt CREATE, EXISTING sowie Curriculum und
+Personalisierung vollständig in derselben Direct-Start-Komponente. Eine
+öffentliche Einreichung bleibt trotzdem gesperrt, bis OpenAI die Verarbeitung
+einer neu vergebenen oder vorhandenen bearer-artigen SkillPilot-ID in dieser
+Komponente ausdrücklich schriftlich akzeptiert hat oder die öffentliche
+Architektur keine solche ID mehr verarbeitet. Die folgenden Direct-Start-
+Reviewfälle sind daher vorbereitet, aber kein Ersatz für dieses Gate.
+
 ## 1. Portal und Submission-Typ
 
 1. `https://platform.openai.com/plugins` öffnen.
@@ -75,6 +83,29 @@ frische, 24 Stunden gültige Lernsession wird jeweils über **Lernen starten** a
 SkillPilot erzeugt und unverändert in der vorbereiteten Startnachricht
 verwendet. Keine permanente SkillPilot-ID wird in das Portal oder in diese
 Testbeschreibung kopiert.
+
+Nach bestandenem Public-Release-Gate ersetzt für den Direct-Start-Fall die
+private Komponente diesen First-Party-Vorlauf:
+
+### P0 – Neue ID und Einrichtung vollständig in der Komponente
+
+- **Prompt:** `Use SkillPilot Coach v1 and start a new learning session
+  directly.`
+- **Erwartetes Verhalten:** `open_skillpilot_start` öffnet genau eine
+  Komponente. Die Person wählt CREATE, bestätigt den Providerhinweis, sichert
+  die nur dort angezeigte neue ID und wählt Curriculum sowie alle erforderlichen
+  Personalisierungsoptionen. Erst danach übernimmt der Host die kurze
+  Startnachricht; die SkillPilot-Webanwendung wird im normalen Ablauf nicht
+  geöffnet und der Chat wiederholt keine Setupfrage.
+- **Datengrenze:** Die permanente ID steht nur in der direkten HTTPS-Antwort,
+  flüchtigem Komponenten-Arbeitsspeicher und Recovery-DOM. Sie erscheint weder
+  in Chat oder Modellkontext noch in MCP-Argumenten/-Resultaten einschließlich
+  `_meta`, `window.openai`, Widget-State, Storage, URL, Logs oder Telemetrie.
+  Der Reviewnachweis verwendet ausschließlich eine wegwerfbare Test-ID und
+  zeigt deren Klarwert weder im Video noch in Screenshots.
+- **Fixture:** Neuer leerer Demo-Lernender; serverautoritativ angebotene
+  Curriculum- und Personalisierungsschritte; `policyRevision=2` und
+  `providerNoticeVersion=openai-provider-eligibility-v2`.
 
 ### P1 – Vorbereitete Lernsession starten und lokalisieren
 
@@ -164,10 +195,11 @@ Testbeschreibung kopiert.
 
 - **Prompt:** `Continue my SkillPilot session` ohne gültige aktuelle
   `learningSessionId` oder mit einem absichtlich ungültigen Wert.
-- **Erwartetes Verhalten:** Fail-closed. Der Coach fordert in der passenden
-  Sprache dazu auf, SkillPilot zu öffnen und **Lernen starten** erneut zu
-  verwenden. Er verlangt weder SkillPilot-ID noch Token und erfindet keinen
-  Lernstand.
+- **Erwartetes Verhalten:** Fail-closed. Bei einem neuen ausdrücklichen
+  Startversuch öffnet der Coach genau einmal die private Direct-Start-
+  Komponente. Er verlangt weder SkillPilot-ID noch Token im Chat und erfindet
+  keinen Lernstand. Nur wenn Komponente oder sicherer Handoff technisch nicht
+  verfügbar sind, verwendet er den vom Tool gelieferten First-Party-Fallback.
 - **Warum nicht ausführen:** OAuth allein autorisiert keine Lernsession; die
   kurzlebige Sessionbindung ist eine unabhängige Datenschutzgrenze.
 
@@ -191,6 +223,8 @@ eine spätere ausdrückliche Lernaktion korrigierbar.
 
 | Tools | `readOnlyHint` | Begründung |
 | --- | --- | --- |
+| `open_skillpilot_start` | `true` | Öffnet nur die private Startressource und liest die Contract-Line-Projektion; keine ID oder Capability. |
+| `issue_skillpilot_start_capability` | `false` | App-only Autorisierung genau eines bestätigten Bootstrapversuchs; ID-frei, keine Lernsession und kein Modellaufruf. |
 | `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `get_skillpilot_navigation`, `get_skillpilot_verified_recall_answer` | `true` | Lesen einen sessiongebundenen, allowlist-projizierten Zustand; keine Mutation. |
 | `render_skillpilot_goal_visualization` | `true` | Liefert nur die freigegebene Bildprojektion an die explizit gebundene UI. |
 | `start_skillpilot_memory_practice`, `start_skillpilot_verified_recall` | `true` | Erzeugen nur eine begrenzte Übungs-/Recall-Projektion; speichern noch kein Ergebnis. |
@@ -198,12 +232,22 @@ eine spätere ausdrückliche Lernaktion korrigierbar.
 | `set_skillpilot_active_goal`, `set_skillpilot_curriculum`, `set_skillpilot_personalization`, `set_skillpilot_scope` | `false` | Ändern nur eine vom Nutzer bestätigte Auswahl innerhalb der aktuell erlaubten Optionen. |
 | `set_skillpilot_mastery` | `false` | Speichert ausschließlich die bestätigte Kompetenzbewertung des aktiven atomaren Ziels. |
 
+Für den In-Component-Setup bleiben `get_skillpilot_context`,
+`set_skillpilot_curriculum` und `set_skillpilot_personalization` modell- und
+appsichtbar, ungebunden und ausdrücklich component-aufrufbar. Ihre Argumente
+verwenden nur die kurzlebige Lernsession sowie fachliche Auswahlreferenzen,
+niemals die permanente SkillPilot-ID.
+
 ## 8. Demo-Recording
 
-Das Reviewvideo zeigt ohne sichtbare Geheimnisse:
+Das Reviewvideo zeigt ohne sichtbare Geheimnisse nach bestandenem
+Public-Release-Gate:
 
-1. **Lernen starten** in SkillPilot und Übergabe der vorbereiteten Nachricht;
-2. OAuth-Verbindung und lokalisierte Sessionfortsetzung;
+1. Direct Start mit CREATE, ausdrücklich verdeckter Wegwerf-ID,
+   Recovery-Bestätigung sowie Curriculum und Personalisierung in derselben
+   Komponente;
+2. Handoff ohne Öffnen der SkillPilot-Webanwendung, OAuth-Verbindung und
+   lokalisierte Sessionfortsetzung;
 3. Motivationsziel und normales dialogisches Lernen;
 4. ein Lernzielbild im Browser;
 5. Karteikarten-UI und getrennten Verified Recall;
@@ -213,7 +257,8 @@ Das Reviewvideo zeigt ohne sichtbare Geheimnisse:
 
 Die private HTTPS-Video-URL wird nur im Portal hinterlegt. Sie darf keine
 permanente SkillPilot-ID, Lernsession, OAuth-Werte oder Review-Zugangsdaten
-zeigen.
+zeigen. Der Klarwert der im CREATE-Schritt notwendigen Recovery-Darstellung
+wird im Reviewvideo und in jedem Screenshot vollständig verdeckt.
 
 ## 9. Release Notes
 
@@ -238,6 +283,9 @@ Uses OAuth and the dedicated V1 MCP endpoint.
   aktuell grün sein.
 - Datenschutzhinweis, Terms, Alters-/Guardian-Regeln, Retention, Revocation und
   Provider-Offenlegung müssen die dokumentierte rechtliche Freigabe erhalten.
+- Schriftliche OpenAI-Akzeptanz für die konkrete CREATE-/EXISTING-ID-
+  Verarbeitung dokumentieren oder Direct Start vor jeder Portal-Einreichung
+  auf eine separat freigegebene ID-freie Architektur umstellen.
 - Erst nach grüner Verhaltens-, Sicherheits-, Client- und Rechtsabnahme
   **Submit for Review** wählen.
 - Erst nach OpenAI-Genehmigung bewusst **Publish** wählen und danach den lokalen

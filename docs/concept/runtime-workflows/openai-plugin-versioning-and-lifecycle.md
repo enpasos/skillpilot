@@ -971,7 +971,7 @@ Die Zustands- und Datumswerte werden konfigurierbar geführt, zum Beispiel:
   "pluginIdentity": "skillpilot-coach-v1",
   "contractLine": {
     "contractMajor": 1,
-    "policyRevision": 1,
+    "policyRevision": 3,
     "displayName": "SkillPilot Coach v1",
     "supportLifecycle": "DEPRECATED",
     "publicationStatus": "PUBLISHED",
@@ -1325,8 +1325,9 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - `newSessionPolicy` mit `ALLOW`, `WARN`, `BLOCK` sowie den nullable
      Nachfolger nach dem kanonischen Contract-Line-Schema konfigurieren;
    - `policyRevision` monoton und revisionsfest führen;
-   - zunächst V1 auf `policyRevision: 1`, `CURRENT`, `DRAFT`, `ALLOW` und
-     `successor: null` setzen.
+   - V1 nach dem vollständigen CREATE-/In-Component-Direktstart auf
+     `policyRevision: 2`, `CURRENT`, `DRAFT`, `ALLOW` und `successor: null`
+     führen; das frühere reine EXISTING-Bootstrap war Revision 1.
 
 10. **Runbook und ADR ablegen**
     - dieses Dokument oder eine verdichtete ADR-Version im Repository aufnehmen;

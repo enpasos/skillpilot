@@ -1,5 +1,9 @@
 import { App, PostMessageTransport } from "@modelcontextprotocol/ext-apps";
-import type { SkillPilotCapabilityArguments } from "./skillpilot-start";
+import type {
+  SkillPilotCapabilityArguments,
+  SkillPilotSetupToolCall,
+  SkillPilotSetupToolName
+} from "./skillpilot-start";
 
 export type SkillPilotStartToolResult = {
   structuredContent?: unknown;
@@ -41,6 +45,11 @@ type OpenAiCompatibilityGlobal = typeof globalThis & {
 };
 
 const MAX_COMPATIBILITY_RESULT_JSON_LENGTH = 64 * 1024;
+const SETUP_TOOL_NAMES = new Set<SkillPilotSetupToolName>([
+  "get_skillpilot_context",
+  "set_skillpilot_curriculum",
+  "set_skillpilot_personalization"
+]);
 
 export class SkillPilotStartBridge {
   private readonly app: App;
@@ -98,6 +107,23 @@ export class SkillPilotStartBridge {
   async issueCapability(
     arguments_: SkillPilotCapabilityArguments
   ): Promise<SkillPilotStartToolResult> {
+    return await this.callTool(
+      "issue_skillpilot_start_capability",
+      arguments_ as Record<string, unknown>
+    );
+  }
+
+  async callSetupTool(call: SkillPilotSetupToolCall): Promise<SkillPilotStartToolResult> {
+    if (!SETUP_TOOL_NAMES.has(call.name)) {
+      throw new Error("unsupported-setup-tool");
+    }
+    return await this.callTool(call.name, call.arguments);
+  }
+
+  private async callTool(
+    name: "issue_skillpilot_start_capability" | SkillPilotSetupToolName,
+    arguments_: Record<string, unknown>
+  ): Promise<SkillPilotStartToolResult> {
     const actionChannel = await this.resolveActionChannel(true);
     if (!actionChannel) {
       throw new Error("host-does-not-support-server-tools");
@@ -108,13 +134,13 @@ export class SkillPilotStartBridge {
         throw new Error("host-compatibility-tools-became-unavailable");
       }
       const result = await compatibilityApi.callTool(
-        "issue_skillpilot_start_capability",
-        arguments_ as Record<string, unknown>
+        name,
+        arguments_
       );
       return normalizeCompatibilityToolResult(result);
     }
     return await this.app.callServerTool({
-      name: "issue_skillpilot_start_capability",
+      name,
       arguments: arguments_
     }) as SkillPilotStartToolResult;
   }

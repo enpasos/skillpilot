@@ -63,6 +63,8 @@ Die maschinenlesbaren Quellen der Wahrheit sind:
   `SUPPORTED`, `DEPRECATED` oder `RETIRED`, den Publikationsstatus `DRAFT`,
   `PUBLISHED` oder `UNPUBLISHED`, die Startpolicy `ALLOW`, `WARN` oder `BLOCK`
   sowie die monotone `policyRevision` und einen optionalen Nachfolger;
+  der vollständige CREATE-/In-Component-Direktstart verlangt Revision `2` und
+  den unveränderlichen Providerhinweis `openai-provider-eligibility-v2`;
 - `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich
   für tatsächlich im OpenAI-Portal veröffentlichte Versionen;
 - `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
@@ -154,27 +156,35 @@ Paketänderung benötigt eine neue SemVer.
    eigene aktive Ressource über `ui.resourceUri` und `openai/outputTemplate`
    referenzieren; Capability-Issuer und Karten-Bewertungswerkzeug bleiben
    app-only und ungebunden. Der Direktstart darf die SkillPilot-ID niemals als
-   Toolargument übernehmen; nur das Widget sendet sie nach expliziter
-   Bestätigung an den capability-geschützten HTTPS-Endpunkt. Bei einem aktiven
+   Toolargument oder Toolresultat übernehmen: Bei EXISTING sendet nur das
+   Widget sie nach expliziter Bestätigung an den capability-geschützten HTTPS-
+   Endpunkt; bei CREATE liefert nur dessen direkte HTTPS-Antwort die neue ID an
+   das flüchtige Recovery-DOM. Bei einem aktiven
    atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
    strukturierte Projektion genau einmal an die bild-only Komponente liefern.
-   Die Direct-Start-Golden-Journey umfasst drei getrennte Fälle: Eine
-   vorhandene ID ohne Curriculum startet und liefert anschließend
-   `requiredAction=setCurriculum`; eine vorhandene ID mit Curriculum, aber
-   offener Personalisierung startet und liefert `setPersonalization`; eine
-   unbekannte syntaktisch gültige ID bleibt ohne Session terminal und
-   identifierfrei `PROFILE_UNAVAILABLE`.
+   Die Direct-Start-Golden-Journey umfasst mindestens vier getrennte Fälle:
+   CREATE vergibt genau eine neue ID, verlangt deren Recovery-Bestätigung und
+   schließt Curriculum und Personalisierung im Widget ab; eine vorhandene ID
+   ohne Curriculum wird dort über `setCurriculum` eingerichtet; eine vorhandene
+   ID mit Curriculum, aber offener Personalisierung wird dort vollständig über
+   `setPersonalization` geführt; eine unbekannte syntaktisch gültige EXISTING-ID
+   bleibt ohne Session terminal und identifierfrei `PROFILE_UNAVAILABLE`.
+   Jeder Setup-Write verwendet die neueste `stateVersion` und einen exakt
+   wiederholbaren `clientRequestId`; erst nach vollständigem Setup geht die
+   unveränderte Startnachricht an den Host. Die normale Journey darf weder
+   **SkillPilot öffnen** noch eine doppelte Setupfrage im Chat benötigen.
    Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
    ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf
    keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur
    `not_known` oder `known`. Ohne gültiges Bild oder nutzbare Komponente muss der
    normale Chat- beziehungsweise Cockpit-Fallback erhalten bleiben.
 8. **Public-Release-Gate prüfen.** Der interne Direktstart-Canary darf die
-   manuelle SkillPilot-ID in der privaten Komponente testen. Eine öffentliche
-   Portal-Einreichung bleibt jedoch gesperrt, solange OpenAI die konkrete
-   Verarbeitung der bearer-/credential-artigen SkillPilot-ID im Widget nicht
-   schriftlich akzeptiert hat oder die öffentliche Architektur die ID nicht
-   mehr verarbeitet. Ohne diesen Nachweis endet der Ablauf nach internem
+   neu vergebene oder vorhandene SkillPilot-ID in der privaten Komponente
+   testen. Eine öffentliche Portal-Einreichung bleibt jedoch gesperrt, solange
+   OpenAI die konkrete Verarbeitung der bearer-/credential-artigen
+   SkillPilot-ID im Widget nicht schriftlich akzeptiert hat oder die
+   öffentliche Architektur die ID nicht mehr verarbeitet. Ohne diesen Nachweis
+   endet der Ablauf nach internem
    Deployment und Canary; es gibt weder Portal-Update noch Publish.
 9. Erst nach bestandenem Public-Release-Gate die neue Plugin-Version im
    OpenAI-Portal aktualisieren. Die

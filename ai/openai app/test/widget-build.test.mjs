@@ -167,12 +167,18 @@ test("SkillPilot start widget is standards-first, bounded, and embedded byte-exa
   assert.match(html, /ui\/message/);
   assert.match(html, /ui\/open-link/);
   assert.match(html, /issue_skillpilot_start_capability/);
+  assert.match(html, /get_skillpilot_context/);
+  assert.match(html, /set_skillpilot_curriculum/);
+  assert.match(html, /set_skillpilot_personalization/);
   assert.match(
     html,
     /https:\/\/mcp-coach-v1\.skillpilot\.com\/bootstrap\/v1\/launch/
   );
   assert.match(html, /providerEligibilityConfirmed/);
   assert.match(html, /providerNoticeVersion/);
+  assert.match(html, /openai-provider-eligibility-v2/);
+  assert.match(html, /identityMode/);
+  assert.match(html, /createdSkillpilotId/);
   assert.match(html, /clientRequestId/);
   assert.match(html, /ID_REQUIRED/);
   assert.match(html, /ISSUING_CAPABILITY/);
@@ -196,10 +202,11 @@ test("SkillPilot start widget is standards-first, bounded, and embedded byte-exa
   assert.doesNotMatch(html, /launch_skillpilot_session/);
   assert.doesNotMatch(source, /linked SkillPilot profile|verknüpften SkillPilot-Profil/i);
   assert.doesNotMatch(source, /\bPIN\b|password|type\s*=\s*["']file["']/i);
-  assert.match(source, /private App-Metadaten/);
-  assert.match(source, /private app metadata/);
-  assert.match(source, /zur Aufnahme in Chat und Modellkontext/);
-  assert.match(source, /for inclusion in the chat and model context/);
+  assert.doesNotMatch(source, /localStorage|sessionStorage|setWidgetState|widgetState/);
+  assert.match(source, /ChatGPT hostet und führt diese Komponente aus/);
+  assert.match(source, /niemals in Chat, Modellkontext, MCP-Toolargumente oder -resultate/);
+  assert.match(source, /ChatGPT hosts and runs this component/);
+  assert.match(source, /Only afterwards is a start message passed on/);
   assert.match(source, /kann dieselbe Nachricht doppelt in den Chat einfügen/);
   assert.match(source, /can add the same message to the chat twice/);
   assertInlineScriptParses(html, "skillpilot-start/widget.html");

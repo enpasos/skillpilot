@@ -48,6 +48,8 @@ export type SkillPilotCapabilityArguments = {
   sourceMajorDecision?: "START_CURRENT_MAJOR";
 };
 
+export type SkillPilotIdentityMode = "CREATE" | "EXISTING";
+
 export type SkillPilotStartCapability = {
   setupCapability: string;
   expiresAt: string;
@@ -59,7 +61,8 @@ export type SkillPilotStartCapability = {
 
 export type SkillPilotBootstrapBody = {
   schemaVersion: 1;
-  skillpilotId: string;
+  identityMode: SkillPilotIdentityMode;
+  skillpilotId?: string;
   communicationLocale: SkillPilotStartLocale;
   launchIntent: { type: "CURRENT_UNIT" };
   providerNoticeVersion: typeof PROVIDER_NOTICE_VERSION;
@@ -80,6 +83,44 @@ export type SkillPilotLaunchResult = {
   expiresAt: string;
   /** Opaque host handoff. Never render, log, copy, or reconstruct this value. */
   startMessage: string;
+  /** CREATE-only recovery value. Keep solely in component memory and local DOM. */
+  createdSkillpilotId?: string;
+};
+
+export type SkillPilotSetupRequiredAction =
+  | "setCurriculum"
+  | "setPersonalization";
+
+export type SkillPilotSetupToolName =
+  | "get_skillpilot_context"
+  | "set_skillpilot_curriculum"
+  | "set_skillpilot_personalization";
+
+export type SkillPilotSetupOption = {
+  id: string;
+  label: string;
+  description?: string;
+};
+
+export type SkillPilotSetupDecision = {
+  stageLabel: string;
+  groupLabel: string;
+  minSelections: number;
+  maxSelections: number;
+  selectedCount: number;
+};
+
+export type SkillPilotSetupState = {
+  stateVersion: number;
+  communicationLocale: SkillPilotStartLocale;
+  requiredAction: SkillPilotSetupRequiredAction | null;
+  options: SkillPilotSetupOption[];
+  decision?: SkillPilotSetupDecision;
+};
+
+export type SkillPilotSetupToolCall = {
+  name: SkillPilotSetupToolName;
+  arguments: Record<string, unknown>;
 };
 
 export type SkillPilotBootstrapErrorStatus =
@@ -102,7 +143,7 @@ export class SkillPilotBootstrapHttpError extends Error {
   }
 }
 
-export const PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v1" as const;
+export const PROVIDER_NOTICE_VERSION = "openai-provider-eligibility-v2" as const;
 export const SKILLPILOT_FALLBACK_URL = "https://skillpilot.com/" as const;
 export const SKILLPILOT_BOOTSTRAP_URL =
   "https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch" as const;
@@ -120,6 +161,17 @@ const MAX_CAPABILITY_LIFETIME_MS = 10 * 60 * 1_000;
 const MAX_SESSION_LIFETIME_MS = 24 * 60 * 60 * 1_000;
 const CLOCK_SKEW_MS = 30_000;
 const MAX_RESPONSE_BYTES = 8 * 1_024;
+const MAX_SETUP_RESULT_BYTES = 64 * 1_024;
+const MAX_SETUP_OPTIONS = 128;
+const SETUP_COMPLETE_REQUIRED_ACTIONS = new Set([
+  "",
+  "getFrontier",
+  "chooseMemoryMode",
+  "orientActiveGoal",
+  "teachActiveGoal",
+  "setActiveGoal",
+  "setScope"
+]);
 const SUCCESSOR_HANDOFF_URLS = new Set([
   "https://skillpilot.com/openai/coach-v2"
 ]);
@@ -259,12 +311,15 @@ export function canonicalSkillPilotId(value: unknown): string | undefined {
 
 export function createSkillPilotBootstrapRequest(
   capability: SkillPilotStartCapability,
+  identityMode: SkillPilotIdentityMode,
   skillpilotId: unknown,
   communicationLocale: SkillPilotStartLocale,
   clientRequestId: unknown,
   nowMs = Date.now()
 ): SkillPilotBootstrapRequest | undefined {
-  const normalizedId = canonicalSkillPilotId(skillpilotId);
+  const normalizedId = identityMode === "EXISTING"
+    ? canonicalSkillPilotId(skillpilotId)
+    : undefined;
   const requestId = exactUuidV4(clientRequestId);
   const setupCapability = exactCapability(capability.setupCapability);
   const capabilityExpiresAt = futureTimestamp(
@@ -273,7 +328,9 @@ export function createSkillPilotBootstrapRequest(
     MAX_CAPABILITY_LIFETIME_MS + CLOCK_SKEW_MS
   );
   if (
-    !normalizedId
+    (identityMode !== "CREATE" && identityMode !== "EXISTING")
+    || (identityMode === "EXISTING" && !normalizedId)
+    || (identityMode === "CREATE" && skillpilotId !== undefined)
     || !requestId
     || !setupCapability
     || !locale(communicationLocale)
@@ -288,7 +345,8 @@ export function createSkillPilotBootstrapRequest(
     capabilityExpiresAtMs: Date.parse(capabilityExpiresAt),
     body: {
       schemaVersion: 1,
-      skillpilotId: normalizedId,
+      identityMode,
+      ...(identityMode === "EXISTING" ? { skillpilotId: normalizedId } : {}),
       communicationLocale,
       launchIntent: { type: "CURRENT_UNIT" },
       providerNoticeVersion: PROVIDER_NOTICE_VERSION,
@@ -357,6 +415,12 @@ export async function sendSkillPilotBootstrap(
   }
   const result = skillPilotLaunchFromHttpResponse(value);
   if (!result) throw new Error("invalid-bootstrap-result");
+  if (
+    (request.body.identityMode === "CREATE" && !result.createdSkillpilotId)
+    || (request.body.identityMode === "EXISTING" && result.createdSkillpilotId)
+  ) {
+    throw new Error("invalid-bootstrap-identity-result");
+  }
   return result;
 }
 
@@ -380,15 +444,25 @@ export function skillPilotLaunchFromHttpResponse(
   nowMs = Date.now()
 ): SkillPilotLaunchResult | undefined {
   const response = record(value);
-  if (
-    !response
-    || !hasExactKeys(response, [
+  const expectedKeys = response && "createdSkillpilotId" in response
+    ? [
+      "schemaVersion",
+      "status",
+      "communicationLocale",
+      "expiresAt",
+      "startMessage",
+      "createdSkillpilotId"
+    ]
+    : [
       "schemaVersion",
       "status",
       "communicationLocale",
       "expiresAt",
       "startMessage"
-    ])
+    ];
+  if (
+    !response
+    || !hasExactKeys(response, expectedKeys)
     || response.schemaVersion !== 1
     || response.status !== "SESSION_CREATED"
   ) {
@@ -401,14 +475,127 @@ export function skillPilotLaunchFromHttpResponse(
     MAX_SESSION_LIFETIME_MS + CLOCK_SKEW_MS
   );
   const startMessage = boundedExactText(response.startMessage, 500);
+  const createdSkillpilotId = response.createdSkillpilotId === undefined
+    ? undefined
+    : canonicalSkillPilotId(response.createdSkillpilotId);
   if (!communicationLocale || !expiresAt || !startMessage) return undefined;
+  if (response.createdSkillpilotId !== undefined && !createdSkillpilotId) return undefined;
   if (!isCanonicalStartMessage(startMessage, communicationLocale)) return undefined;
   return {
     schemaVersion: 1,
     status: "SESSION_CREATED",
     communicationLocale,
     expiresAt,
-    startMessage
+    startMessage,
+    ...(createdSkillpilotId ? { createdSkillpilotId } : {})
+  };
+}
+
+export function learningSessionIdFromStartMessage(
+  startMessage: unknown,
+  communicationLocale: SkillPilotStartLocale
+): string | undefined {
+  if (typeof startMessage !== "string") return undefined;
+  if (!isCanonicalStartMessage(startMessage, communicationLocale)) return undefined;
+  return startMessage.split("\n")[1]?.slice("learningSessionId: ".length);
+}
+
+export function createSkillPilotGetContextCall(
+  learningSessionId: unknown
+): SkillPilotSetupToolCall | undefined {
+  const sessionId = exactLearningSessionId(learningSessionId);
+  return sessionId
+    ? {
+      name: "get_skillpilot_context",
+      arguments: { learningSessionId: sessionId }
+    }
+    : undefined;
+}
+
+export function createSkillPilotSetupMutationCall(
+  requiredAction: SkillPilotSetupRequiredAction,
+  learningSessionId: unknown,
+  stateVersion: unknown,
+  optionId: unknown,
+  clientRequestId: unknown
+): SkillPilotSetupToolCall | undefined {
+  const sessionId = exactLearningSessionId(learningSessionId);
+  const version = nonNegativeSafeInteger(stateVersion);
+  const option = boundedExactText(optionId, 500);
+  const requestId = exactUuidV4(clientRequestId);
+  if (!sessionId || version === undefined || !option || !requestId) return undefined;
+  if (requiredAction === "setCurriculum") {
+    return {
+      name: "set_skillpilot_curriculum",
+      arguments: {
+        learningSessionId: sessionId,
+        curriculumId: option,
+        expectedStateVersion: version,
+        clientRequestId: requestId
+      }
+    };
+  }
+  if (requiredAction === "setPersonalization") {
+    return {
+      name: "set_skillpilot_personalization",
+      arguments: {
+        learningSessionId: sessionId,
+        optionId: option,
+        expectedStateVersion: version,
+        clientRequestId: requestId
+      }
+    };
+  }
+  return undefined;
+}
+
+export function skillPilotSetupStateFromToolResult(
+  value: unknown,
+  expectedLocale: SkillPilotStartLocale
+): SkillPilotSetupState | undefined {
+  const envelope = record(value);
+  if (!envelope || envelope.isError === true) return undefined;
+  const source = record(envelope.structuredContent);
+  if (!source || encodedByteLength(source) > MAX_SETUP_RESULT_BYTES) return undefined;
+  const stateVersion = nonNegativeSafeInteger(source.stateVersion);
+  const communicationLocale = locale(source.communicationLocale);
+  const rawRequiredAction = boundedTrimmedText(source.requiredAction, 100);
+  if (
+    stateVersion === undefined
+    || communicationLocale !== expectedLocale
+    || rawRequiredAction === undefined
+    || !Array.isArray(source.options)
+    || source.options.length > MAX_SETUP_OPTIONS
+  ) {
+    return undefined;
+  }
+  const requiredAction = rawRequiredAction === "setCurriculum"
+    || rawRequiredAction === "setPersonalization"
+    ? rawRequiredAction
+    : null;
+  if (requiredAction === null) {
+    if (!SETUP_COMPLETE_REQUIRED_ACTIONS.has(rawRequiredAction)) return undefined;
+    return {
+      stateVersion,
+      communicationLocale,
+      requiredAction: null,
+      options: []
+    };
+  }
+  const options = setupOptions(source.options, requiredAction);
+  if (!options || options.length === 0) return undefined;
+  const decision = source.decision === undefined || source.decision === null
+    ? undefined
+    : setupDecision(source.decision);
+  if (source.decision !== undefined && source.decision !== null && !decision) {
+    return undefined;
+  }
+  return {
+    stateVersion,
+    communicationLocale,
+    requiredAction,
+    options,
+    ...(decision ? { decision } : {})
   };
 }
 
@@ -590,6 +777,12 @@ function exactCapability(value: unknown): string | undefined {
     : undefined;
 }
 
+function exactLearningSessionId(value: unknown): string | undefined {
+  return typeof value === "string" && SESSION_PATTERN.test(value)
+    ? value
+    : undefined;
+}
+
 function exactUuidV4(value: unknown): string | undefined {
   return typeof value === "string" && UUID_V4_PATTERN.test(value)
     ? value
@@ -673,6 +866,125 @@ function positiveSafeInteger(value: unknown): number | undefined {
     : undefined;
 }
 
+function nonNegativeSafeInteger(value: unknown): number | undefined {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0
+    ? value
+    : undefined;
+}
+
+function setupOptions(
+  value: unknown,
+  requiredAction: SkillPilotSetupRequiredAction
+): SkillPilotSetupOption[] | undefined {
+  if (!Array.isArray(value) || value.length > MAX_SETUP_OPTIONS) return undefined;
+  const expectedKind = requiredAction === "setCurriculum"
+    ? "curriculum"
+    : "personalization";
+  const expectedTool = requiredAction === "setCurriculum"
+    ? "set_skillpilot_curriculum"
+    : "set_skillpilot_personalization";
+  const result: SkillPilotSetupOption[] = [];
+  const ids = new Set<string>();
+  for (const raw of value) {
+    const option = record(raw);
+    if (
+      !option
+      || Object.keys(option).some((key) => ![
+        "kind",
+        "id",
+        "label",
+        "description",
+        "goalIds",
+        "filterIds",
+        "action"
+      ].includes(key))
+      || option.kind !== expectedKind
+    ) {
+      return undefined;
+    }
+    const id = boundedExactText(option.id, 500);
+    const label = boundedExactText(option.label, 500);
+    const description = option.description === undefined || option.description === null
+      ? undefined
+      : boundedExactText(option.description, 2_000);
+    if (!id || !label || ids.has(id)) return undefined;
+    if (option.description !== undefined && option.description !== null && !description) {
+      return undefined;
+    }
+    for (const listName of ["goalIds", "filterIds"] as const) {
+      const list = option[listName];
+      if (
+        list !== undefined
+        && (!Array.isArray(list)
+          || list.length > 32
+          || list.some((entry) => !boundedExactText(entry, 500)))
+      ) {
+        return undefined;
+      }
+    }
+    if (
+      option.action !== undefined
+      && option.action !== null
+      && option.action !== expectedTool
+    ) {
+      return undefined;
+    }
+    ids.add(id);
+    result.push({ id, label, ...(description ? { description } : {}) });
+  }
+  return result;
+}
+
+function setupDecision(value: unknown): SkillPilotSetupDecision | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasExactKeys(source, [
+      "stageLabel",
+      "groupLabel",
+      "minSelections",
+      "maxSelections",
+      "selectedCount"
+    ])
+  ) {
+    return undefined;
+  }
+  const stageLabel = boundedExactText(source.stageLabel, 500);
+  const groupLabel = boundedExactText(source.groupLabel, 500);
+  const minSelections = nonNegativeSafeInteger(source.minSelections);
+  const maxSelections = nonNegativeSafeInteger(source.maxSelections);
+  const selectedCount = nonNegativeSafeInteger(source.selectedCount);
+  if (
+    !stageLabel
+    || !groupLabel
+    || minSelections === undefined
+    || maxSelections === undefined
+    || selectedCount === undefined
+    || minSelections > maxSelections
+    || selectedCount > maxSelections
+  ) {
+    return undefined;
+  }
+  return {
+    stageLabel,
+    groupLabel,
+    minSelections,
+    maxSelections,
+    selectedCount
+  };
+}
+
+function encodedByteLength(value: unknown): number {
+  try {
+    const json = JSON.stringify(value);
+    return typeof json === "string"
+      ? new TextEncoder().encode(json).byteLength
+      : Number.POSITIVE_INFINITY;
+  } catch {
+    return Number.POSITIVE_INFINITY;
+  }
+}
+
 function boundedExactText(value: unknown, maximumLength: number): string | undefined {
   if (
     typeof value !== "string"
@@ -683,6 +995,14 @@ function boundedExactText(value: unknown, maximumLength: number): string | undef
     return undefined;
   }
   return value;
+}
+
+function boundedTrimmedText(value: unknown, maximumLength: number): string | undefined {
+  return typeof value === "string"
+    && value.length <= maximumLength
+    && value === value.trim()
+    ? value
+    : undefined;
 }
 
 function hasExactKeys(

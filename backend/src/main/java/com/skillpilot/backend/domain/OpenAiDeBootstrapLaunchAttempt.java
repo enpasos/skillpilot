@@ -12,8 +12,9 @@ import java.time.Instant;
 /**
  * One irreversible capability/request binding.
  *
- * <p>No SkillPilot ID, capability, learning-session token, request body or
- * plaintext response is persisted here.</p>
+ * <p>No plaintext SkillPilot ID, capability, learning-session token, request
+ * body or response is persisted here. CREATE delivery data, including its new
+ * ID, exists only inside the authenticated ciphertext.</p>
  */
 @Entity
 @Table(name = "openai_de_bootstrap_launch_attempt")

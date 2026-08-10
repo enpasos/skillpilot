@@ -57,6 +57,7 @@ class OpenAiDeBootstrapCryptoTest {
                 capabilityFingerprint,
                 1,
                 "0f967c3b-114e-4b83-891d-cde9863d8fb3",
+                "EXISTING",
                 "2c089f6b-615d-4c14-8225-82a973f842cf",
                 "de",
                 "CURRENT_UNIT",
@@ -68,6 +69,7 @@ class OpenAiDeBootstrapCryptoTest {
                 capabilityFingerprint,
                 1,
                 "0f967c3b-114e-4b83-891d-cde9863d8fb3",
+                "EXISTING",
                 "cf411b27-5fa7-4a5d-a155-669864856073",
                 "de",
                 "CURRENT_UNIT",
@@ -79,6 +81,7 @@ class OpenAiDeBootstrapCryptoTest {
                 capabilityFingerprint,
                 1,
                 "0f967c3b-114e-4b83-891d-cde9863d8fb3",
+                "EXISTING",
                 "2c089f6b-615d-4c14-8225-82a973f842cf",
                 "de",
                 "CURRENT_UNIT",
@@ -90,17 +93,31 @@ class OpenAiDeBootstrapCryptoTest {
                 capabilityFingerprint,
                 1,
                 "0f967c3b-114e-4b83-891d-cde9863d8fb3",
+                "EXISTING",
                 "2c089f6b-615d-4c14-8225-82a973f842cf",
                 "de",
                 "CURRENT_UNIT",
                 "openai-provider-eligibility-v1",
                 2,
                 "ALLOW_CURRENT_MAJOR");
+        var changedMode = crypto.authenticateRequest(
+                1,
+                capabilityFingerprint,
+                1,
+                "0f967c3b-114e-4b83-891d-cde9863d8fb3",
+                "CREATE",
+                "2c089f6b-615d-4c14-8225-82a973f842cf",
+                "de",
+                "CURRENT_UNIT",
+                "openai-provider-eligibility-v1",
+                1,
+                "ALLOW_CURRENT_MAJOR");
 
         assertThat(baseline.keyId()).isEqualTo(OpenAiDeBootstrapCrypto.REQUEST_HMAC_KEY_ID);
         assertThat(baseline.value())
-                .isEqualTo("0df73d8c3e4376375e6c66b62ab50d118ac671735d820ebed61d740a5a95f103");
+                .isEqualTo("a39af6fc7661f7707eb8f83d246172e98e8e335f203f046f423ce1de326f0c6d");
         assertThat(changedId.value()).isNotEqualTo(baseline.value());
+        assertThat(changedMode.value()).isNotEqualTo(baseline.value());
         assertThat(changedPolicy.value()).isNotEqualTo(baseline.value());
         assertThat(changedRevision.value()).isNotEqualTo(baseline.value());
         assertThat(crypto.constantTimeEquals(baseline.value(), baseline.value())).isTrue();

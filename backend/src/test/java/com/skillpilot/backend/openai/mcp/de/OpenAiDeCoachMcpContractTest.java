@@ -90,7 +90,8 @@ class OpenAiDeCoachMcpContractTest {
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
             "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
     private static final List<String> HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S = List.of(
-            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c");
+            "a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c",
+            "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -242,7 +243,11 @@ class OpenAiDeCoachMcpContractTest {
             } else {
                 assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
             }
-            if (!OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START.equals(tool.name())
+            if (OpenAiDeV1McpContractAdapter.GET_CONTEXT.equals(tool.name())
+                    || OpenAiDeV1McpContractAdapter.SET_CURRICULUM.equals(tool.name())
+                    || OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION.equals(tool.name())) {
+                assertThat(tool.meta()).containsEntry("openai/widgetAccessible", true);
+            } else if (!OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START.equals(tool.name())
                     && !OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY.equals(tool.name())) {
                 assertThat(tool.meta()).doesNotContainKey("openai/widgetAccessible");
             }

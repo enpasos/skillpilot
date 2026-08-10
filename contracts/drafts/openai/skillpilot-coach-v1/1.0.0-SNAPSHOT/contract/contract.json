@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "8ae8f66327573894d45271a5c8bfadf311fd8fb19647841aeb1044db37162ce9",
+  "contractSha256" : "2e3e34927d030768b7501ecea340450a606fe86b2dc3132f7704696b11b54e13",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -139,7 +139,7 @@
       }
     },
     "mimeType" : "text/html;profile=mcp-app",
-    "name" : "skillpilot-start-v1-current",
+    "name" : "skillpilot-start-v1-retained-6bd0c614",
     "title" : "Start SkillPilot Coach",
     "uri" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html"
   }, {
@@ -190,6 +190,31 @@
     "name" : "skillpilot-start-v1-retained-a3fa6397",
     "title" : "Start SkillPilot Coach",
     "uri" : "ui://skillpilot/coach/v1/sha256-a3fa63977b0912b42550b25352d3c1e60a5b2de6f59c72ddb8e988214522281c/skillpilot-start.html"
+  }, {
+    "description" : "Private direct-start component for an existing SkillPilot learner ID.",
+    "icons" : [ ],
+    "meta" : {
+      "openai/widgetCSP" : {
+        "connect_domains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+        "redirect_domains" : [ "https://skillpilot.com" ],
+        "resource_domains" : [ ]
+      },
+      "openai/widgetDescription" : "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+      "openai/widgetDomain" : "https://mcp-coach-v1.skillpilot.com",
+      "openai/widgetPrefersBorder" : true,
+      "ui" : {
+        "csp" : {
+          "connectDomains" : [ "https://mcp-coach-v1.skillpilot.com" ],
+          "resourceDomains" : [ ]
+        },
+        "domain" : "https://mcp-coach-v1.skillpilot.com",
+        "prefersBorder" : true
+      }
+    },
+    "mimeType" : "text/html;profile=mcp-app",
+    "name" : "skillpilot-start-v1-current",
+    "title" : "Start SkillPilot Coach",
+    "uri" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html"
   }, {
     "description" : "Displays the approved image for the active atomic learning goal.",
     "icons" : [ ],
@@ -261,6 +286,7 @@
       "type" : "object"
     },
     "meta" : {
+      "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
@@ -1076,7 +1102,7 @@
           "const" : true
         },
         "providerNoticeVersion" : {
-          "const" : "openai-provider-eligibility-v1"
+          "const" : "openai-provider-eligibility-v2"
         },
         "sourceMajorDecision" : {
           "enum" : [ "START_CURRENT_MAJOR" ],
@@ -1106,7 +1132,7 @@
             "const" : 1
           },
           "providerNoticeVersion" : {
-            "const" : "openai-provider-eligibility-v1"
+            "const" : "openai-provider-eligibility-v2"
           },
           "status" : {
             "const" : "CAPABILITY_ISSUED"
@@ -1150,14 +1176,14 @@
       "type" : "object"
     },
     "meta" : {
-      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html",
+      "openai/outputTemplate" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html",
       "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read" ],
         "type" : "oauth2"
       } ],
       "ui" : {
-        "resourceUri" : "ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html",
+        "resourceUri" : "ui://skillpilot/coach/v1/sha256-a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5/skillpilot-start.html",
         "visibility" : [ "model", "app" ]
       }
     },
@@ -2510,6 +2536,7 @@
       "type" : "object"
     },
     "meta" : {
+      "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
         "type" : "oauth2"
@@ -3541,6 +3568,7 @@
       "type" : "object"
     },
     "meta" : {
+      "openai/widgetAccessible" : true,
       "securitySchemes" : [ {
         "scopes" : [ "skillpilot.openai.v1.read", "skillpilot.openai.v1.write" ],
         "type" : "oauth2"

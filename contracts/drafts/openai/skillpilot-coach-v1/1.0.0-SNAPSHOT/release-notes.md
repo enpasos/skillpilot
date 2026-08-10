@@ -5,7 +5,7 @@ line. This version has not been published yet.
 
 The private direct-start surface is currently approved only for internal
 canary use. Public submission remains blocked until OpenAI explicitly accepts
-the widget's handling of the bearer-like SkillPilot ID or the public
+the widget's handling of a newly issued or existing bearer-like SkillPilot ID or the public
 architecture no longer processes that ID.
 
 - language-neutral technical plugin identity `skillpilot-coach-v1`
@@ -37,16 +37,33 @@ architecture no longer processes that ID.
   context, selection, mutation, recall, and assessment tools remain UI-free
 - private app-first start without OAuth-to-learner coupling: OAuth continues to
   authorize only the fixed App-to-Core connection; the component obtains an
-  ID-free, short-lived app-only setup capability and sends an explicitly entered
-  existing SkillPilot ID only to the fixed SkillPilot HTTPS bootstrap endpoint
-- an existing SkillPilot ID can start even before curriculum selection or
-  personalization is complete; the ordinary context state machine then
-  continues with `setCurriculum` or `setPersonalization`, as applicable, while
-  an unknown ID remains terminally unavailable for that attempt
+  ID-free, short-lived app-only setup capability, then either creates a new
+  SkillPilot ID or sends an explicitly entered existing ID only through the
+  fixed SkillPilot HTTPS bootstrap endpoint
+- the same direct-start component completes ID recovery acknowledgement,
+  curriculum selection, and personalisation through the existing ID-free
+  session tools before it submits the short start message to the host; the
+  normal App-first path never opens the SkillPilot web application
+- the permanent SkillPilot ID is confined to the direct HTTPS request/response
+  and ephemeral component memory or recovery DOM; it never enters chat, model
+  context, MCP arguments or results (including `_meta`), `window.openai`,
+  widget state, browser storage, URLs, logs, analytics, or telemetry
+- CREATE returns the newly generated ID only in the direct HTTPS response and
+  requires explicit recovery acknowledgement; EXISTING keeps an unknown ID
+  terminally unavailable for that attempt
+- policy revision `2` binds CREATE plus complete in-component setup semantics
+  and terminally invalidates older direct-start capabilities; the materially
+  expanded disclosure is immutably versioned as
+  `openai-provider-eligibility-v2`
 - direct start supports both the shared MCP Apps action pair and the documented
   ChatGPT Web compatibility pair `window.openai.callTool` plus
   `window.openai.sendFollowUpMessage`; one start attempt fixes exactly one
   complete channel before dispatch and never double-calls across channels
+- `get_skillpilot_context`, `set_skillpilot_curriculum`, and
+  `set_skillpilot_personalization` remain model- and app-visible, UI-unbound,
+  and explicitly component-callable; every write uses the newest exact
+  `stateVersion` and a retry-safe `clientRequestId`, and none carries the
+  permanent SkillPilot ID
 - irreversible request binding, a random 256-bit learning-session handle, and
   an AEAD-encrypted short-lived delivery record provide crash-safe exact retries
   without persisting the SkillPilot ID, raw capability, session token, request

@@ -21,8 +21,11 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapCapabilityRepository;
 import com.skillpilot.backend.repository.OpenAiDeBootstrapLaunchAttemptRepository;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerService;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +68,8 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
     private static final String AUTHORIZATION_REFERENCE = "stable-sas-authorization-id";
     private static final String CLIENT_REQUEST_ID = "0f967c3b-114e-4b83-891d-cde9863d8fb3";
     private static final String SESSION_ID = "sps_" + "Z".repeat(43);
+    private static final String FIRST_CREATED_ID = "f2606874-8f0d-469e-8630-d45eb1345efc";
+    private static final String COMMITTED_CREATED_ID = "98756ef6-935f-431b-b153-14cf026f557a";
 
     @Autowired
     private OpenAiDeBootstrapCapabilityService capabilityService;
@@ -85,6 +90,9 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
     private OpenAiDeCoachConnectionService connectionService;
 
     @Autowired
+    private LearnerService learnerService;
+
+    @Autowired
     private JdbcTemplate jdbc;
 
     @BeforeEach
@@ -93,7 +101,7 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
         jdbc.update("delete from openai_de_bootstrap_capability");
         jdbc.update("delete from openai_de_learning_session");
         jdbc.update("delete from learner");
-        reset(connectionService);
+        reset(connectionService, learnerService);
     }
 
     @Test
@@ -160,8 +168,9 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
                 select count(*) from information_schema.columns
                  where table_name in ('OPENAI_DE_BOOTSTRAP_CAPABILITY',
                                       'OPENAI_DE_BOOTSTRAP_LAUNCH_ATTEMPT')
-                   and column_name in ('SKILLPILOT_ID', 'LEARNING_SESSION_ID',
-                                       'SETUP_CAPABILITY', 'REQUEST_BODY', 'START_MESSAGE')
+                   and (column_name like '%SKILLPILOT_ID%'
+                        or column_name in ('LEARNING_SESSION_ID', 'SETUP_CAPABILITY',
+                                           'REQUEST_BODY', 'START_MESSAGE'))
                 """,
                 Integer.class);
         assertThat(forbiddenPlaintextColumns).isZero();
@@ -202,10 +211,86 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
         verify(connectionService, times(1)).createLaunch(anyString(), any());
     }
 
+    @Test
+    void createModeRollsBackTransientIdentityThenCommitsAndReplaysOneEncryptedIdentity() {
+        List<String> generatedIds = List.of(FIRST_CREATED_ID, COMMITTED_CREATED_ID);
+        AtomicInteger creation = new AtomicInteger();
+        when(learnerService.createLearner()).thenAnswer(invocation -> {
+            Learner learner = new Learner();
+            learner.setSkillpilotId(generatedIds.get(creation.getAndIncrement()));
+            return learners.saveAndFlush(learner);
+        });
+        when(connectionService.createLaunch(anyString(), any()))
+                .thenThrow(new IllegalStateException("transient core failure"))
+                .thenAnswer(invocation -> {
+                    Instant now = Instant.now();
+                    return new OpenAiDeLaunchResponse(
+                            "Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: "
+                                    + SESSION_ID,
+                            "https://chatgpt.com/",
+                            SESSION_ID,
+                            now.plus(Duration.ofHours(24)));
+                });
+
+        var issued = capabilityService.issueCapability(
+                AUTHORIZATION_REFERENCE,
+                new OpenAiDeBootstrapCapabilityIssueRequest(
+                        OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
+                        true,
+                        null));
+        OpenAiDeBootstrapLaunchRequest request = createRequest();
+
+        assertThatExceptionOfType(OpenAiDeBootstrapException.class)
+                .isThrownBy(() -> attemptService.launch(issued.setupCapability(), request))
+                .extracting(OpenAiDeBootstrapException::code)
+                .isEqualTo(OpenAiDeBootstrapErrorCode.DELIVERY_UNAVAILABLE);
+        assertThat(learners.findById(FIRST_CREATED_ID)).isEmpty();
+        assertThat(attempts.findAll().getFirst().getStatus())
+                .isEqualTo(OpenAiDeBootstrapAttemptStatus.BOUND);
+
+        OpenAiDeBootstrapLaunchResponse success =
+                attemptService.launch(issued.setupCapability(), request);
+        OpenAiDeBootstrapLaunchResponse replay =
+                attemptService.launch(issued.setupCapability(), request);
+
+        assertThat(replay).isEqualTo(success);
+        assertThat(success.createdSkillpilotId()).isEqualTo(COMMITTED_CREATED_ID);
+        assertThat(success.startMessage()).doesNotContain(COMMITTED_CREATED_ID);
+        assertThat(learners.findAll())
+                .extracting(Learner::getSkillpilotId)
+                .containsExactly(COMMITTED_CREATED_ID);
+        verify(learnerService, times(2)).createLearner();
+        verify(connectionService, times(2)).createLaunch(anyString(), any());
+
+        OpenAiDeBootstrapLaunchAttempt completed = attempts.findAll().getFirst();
+        assertThat(completed.getStatus()).isEqualTo(OpenAiDeBootstrapAttemptStatus.SUCCEEDED);
+        assertThat(completed.getResponseCiphertext())
+                .doesNotContain(
+                        FIRST_CREATED_ID,
+                        COMMITTED_CREATED_ID,
+                        SESSION_ID,
+                        "createdSkillpilotId",
+                        "learningSessionId");
+        assertThat(completed.getRequestHmac())
+                .doesNotContain(FIRST_CREATED_ID, COMMITTED_CREATED_ID);
+    }
+
     private static OpenAiDeBootstrapLaunchRequest request() {
         return new OpenAiDeBootstrapLaunchRequest(
                 OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                OpenAiDeBootstrapLaunchRequest.IdentityMode.EXISTING,
                 SKILLPILOT_ID,
+                "de",
+                new OpenAiDeBootstrapLaunchRequest.LaunchIntent("CURRENT_UNIT"),
+                OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
+                CLIENT_REQUEST_ID);
+    }
+
+    private static OpenAiDeBootstrapLaunchRequest createRequest() {
+        return new OpenAiDeBootstrapLaunchRequest(
+                OpenAiDeBootstrapConstants.REQUEST_SCHEMA_VERSION,
+                OpenAiDeBootstrapLaunchRequest.IdentityMode.CREATE,
+                null,
                 "de",
                 new OpenAiDeBootstrapLaunchRequest.LaunchIntent("CURRENT_UNIT"),
                 OpenAiDeBootstrapConstants.PROVIDER_NOTICE_VERSION,
@@ -247,6 +332,11 @@ class OpenAiDeBootstrapTransactionIntegrationTest {
         @Bean
         OpenAiDeCoachConnectionService openAiDeCoachConnectionService() {
             return mock(OpenAiDeCoachConnectionService.class);
+        }
+
+        @Bean
+        LearnerService learnerService() {
+            return mock(LearnerService.class);
         }
     }
 }
