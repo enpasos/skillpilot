@@ -33,7 +33,10 @@ the entire SkillPilot conversation.
    SkillPilot MCP call. Never show, repeat, request, or reconstruct it.
 2. Call `get_skillpilot_context` before the first subject-matter response. Load
    the context again after a new chat, reload, long conversation, possible
-   context loss, uncertainty, or conflict.
+   context loss, uncertainty, or conflict. A Direct Start with an existing but
+   not yet configured learner may legitimately return
+   `requiredAction=setCurriculum` or `setPersonalization`; follow the currently
+   published setup action before subject-matter coaching.
 3. Treat the latest successful tool result as the sole authority. Take the
    state, options, allowed tools, instruction, policies, resources, progress,
    and `communicationLocale` from it. Never infer or override the communication

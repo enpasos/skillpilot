@@ -5,7 +5,6 @@ import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntent;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.api.OpenAiDeLaunchResponse;
-import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapAttemptStatus;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapCapability;
 import com.skillpilot.backend.domain.OpenAiDeBootstrapCapabilityStatus;
@@ -414,8 +413,11 @@ public final class OpenAiDeBootstrapAttemptService {
             return DeliveryOutcome.failure(OpenAiDeBootstrapErrorCode.RETRY_EXPIRED);
         }
 
-        Learner learner = learners.findBySkillpilotIdForUpdate(normalized.skillpilotId()).orElse(null);
-        if (!isCompleteProfile(learner)) {
+        // CURRENT_UNIT deliberately permits an unfinished learner setup. The
+        // canonical coach state machine will publish setCurriculum or
+        // setPersonalization, as applicable, after the session starts; only an
+        // unknown learner is unavailable at this boundary.
+        if (learners.findBySkillpilotIdForUpdate(normalized.skillpilotId()).isEmpty()) {
             terminalizeConsumedAttempt(
                     capability,
                     attempt,
@@ -651,14 +653,6 @@ public final class OpenAiDeBootstrapAttemptService {
         } catch (IllegalArgumentException exception) {
             throw failure(OpenAiDeBootstrapErrorCode.INVALID_REQUEST);
         }
-    }
-
-    private boolean isCompleteProfile(Learner learner) {
-        return learner != null
-                && learner.getSelectedCurriculum() != null
-                && !learner.getSelectedCurriculum().isBlank()
-                && learner.getPersonalCurriculum() != null
-                && !learner.getPersonalCurriculum().isBlank();
     }
 
     private OpenAiDeCoachStartRequest currentUnitRequest(String communicationLocale) {
