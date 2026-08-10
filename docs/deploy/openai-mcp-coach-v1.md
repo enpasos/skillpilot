@@ -50,7 +50,9 @@ MCP-Toolargument noch Modell- oder Chatinhalt.
 | Plugin-Identität | `skillpilot-coach-v1` |
 | MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
+| Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
+| Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
+| Zulässige ChatGPT-Sandbox-Familie für Direct-Start-CORS | `https://*.web-sandbox.oaiusercontent.com` |
 | Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
@@ -208,7 +210,7 @@ verglichen und nicht blind überschrieben:
 Zuvor muss der Produktions-Checkout nachweislich bereits den sprachneutralen
 Cutover enthalten. Diese Prüfung ist verpflichtend: Ein altes Skript würde
 weiter den DE-Host testen; ein alter vHost kann unbekannte neue Hostnamen als
-Default-vHost irrtümlich an V1 weiterleiten. Alle fünf Befehle müssen erfolgreich
+Default-vHost irrtümlich an V1 weiterleiten. Alle acht Befehle müssen erfolgreich
 sein und der letzte darf keine Ausgabe erzeugen:
 
 ```bash
@@ -218,7 +220,13 @@ grep -F 'mcp-coach-v9.skillpilot.com' \
   deploy/nginx/skillpilot-mcp-coaches.conf
 grep -F 'proxy_pass http://127.0.0.1:8787/internal/openai/v1/mcp;' \
   deploy/nginx/skillpilot-mcp-coaches.conf
+grep -F 'location = /bootstrap/v1/launch {' \
+  deploy/nginx/skillpilot-mcp-coaches.conf
+grep -F 'proxy_pass http://127.0.0.1:8787/bootstrap/v1/launch;' \
+  deploy/nginx/skillpilot-mcp-coaches.conf
 grep -F 'MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"' \
+  scripts/verify_openai_v1_public_edge.sh
+grep -F 'CHATGPT_WEB_WIDGET_ORIGIN="https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com"' \
   scripts/verify_openai_v1_public_edge.sh
 ! grep -E 'mcp-coach-(de|en)-v[1-9]' \
   deploy/nginx/skillpilot-mcp-coaches.conf
@@ -410,6 +418,14 @@ verankert und wird identisch über `_meta.ui.domain` und
 gleichnamige neue Override-Versuche führen fail-closed zum Abbruch. Damit kann
 eine alte oder falsch geschriebene Route den versionierten V1-Vertrag nicht
 unbemerkt ersetzen.
+
+ChatGPT Web materialisiert diese deklarierte Domain aktuell als isolierte
+Browser-Origin unter `*.web-sandbox.oaiusercontent.com`. Nur für den exakten
+Direct-Start-Endpunkt akzeptiert Spring daher zusätzlich HTTPS-Subdomains
+dieser OpenAI-Sandbox-Familie. Die Antwort spiegelt die konkrete zulässige
+Origin und verwendet niemals `Access-Control-Allow-Origin: *`; `Origin: null`,
+HTTP und fremde Domains bleiben gesperrt. Diese CORS-Freigabe ersetzt weder
+OAuth noch die kurzlebige Setup-Capability.
 
 Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
 `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
@@ -663,8 +679,8 @@ instanzweites Gesamtbudget. Der direkte Bootstrap-POST wird unabhängig nach
 normalisierter Netzwerkadresse, Capability-Fingerprint und instanzweitem
 Gesamtbudget begrenzt; `OPTIONS` verbraucht dabei kein Bootstrap-Budget. Die
 frühe `429`-Antwort folgt auch für den Browserpfad dem geschlossenen
-Bootstrap-Fehlervertrag und setzt CORS ausschließlich für den fest erlaubten
-Widget-Origin.
+Bootstrap-Fehlervertrag und setzt CORS ausschließlich für die deklarierte
+Widget-Origin oder eine HTTPS-Origin der festgelegten OpenAI-Sandbox-Familie.
 
 Die netzbezogenen Budgets verwenden nur die vom Servlet-Container
 normalisierte Netzwerkadresse. Der Limiter parst keine Forwarding-Header.

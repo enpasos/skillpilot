@@ -47,7 +47,8 @@ class CorsConfigTest {
     }
 
     @Test
-    void allowsOnlyCredentialFreeBootstrapPostsFromThePinnedWidgetOrigin() throws Exception {
+    void allowsCredentialFreeBootstrapPostsFromTheDeclaredAndHostedWidgetOrigins()
+            throws Exception {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.setCorsConfigurations(mappings());
         DefaultCorsProcessor processor = new DefaultCorsProcessor();
@@ -56,7 +57,7 @@ class CorsConfigTest {
                 new MockHttpServletRequest(
                         "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
         preflightRequest.addHeader(
-                HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
         preflightRequest.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
         preflightRequest.addHeader(
                 HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS, "authorization,content-type");
@@ -66,6 +67,8 @@ class CorsConfigTest {
         assertThat(bootstrap).isNotNull();
         assertThat(bootstrap.getAllowedOrigins())
                 .containsExactly(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        assertThat(bootstrap.getAllowedOriginPatterns())
+                .containsExactly(OpenAiDeV1ContractMetadata.CHATGPT_WIDGET_ORIGIN_PATTERN);
         assertThat(bootstrap.getAllowedMethods()).containsExactly("POST", "OPTIONS");
         assertThat(bootstrap.getAllowedHeaders())
                 .containsExactly("Authorization", "Content-Type");
@@ -74,19 +77,42 @@ class CorsConfigTest {
         assertThat(processor.processRequest(bootstrap, preflightRequest, preflightResponse))
                 .isTrue();
         assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
-                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                .isEqualTo(OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
         assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS))
                 .isNull();
 
-        MockHttpServletRequest foreignOrigin =
+        MockHttpServletRequest anotherHostedOrigin =
                 new MockHttpServletRequest(
                         "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
-        foreignOrigin.addHeader(
-                HttpHeaders.ORIGIN, "https://example.web-sandbox.oaiusercontent.com");
-        foreignOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
-        MockHttpServletResponse foreignResponse = new MockHttpServletResponse();
-        assertThat(processor.processRequest(bootstrap, foreignOrigin, foreignResponse)).isFalse();
-        assertThat(foreignResponse.getStatus()).isEqualTo(HttpServletResponse.SC_FORBIDDEN);
+        anotherHostedOrigin.addHeader(
+                HttpHeaders.ORIGIN, "https://future-surface.web-sandbox.oaiusercontent.com");
+        anotherHostedOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
+        MockHttpServletResponse anotherHostedResponse = new MockHttpServletResponse();
+        assertThat(processor.processRequest(
+                        bootstrap, anotherHostedOrigin, anotherHostedResponse))
+                .isTrue();
+        assertThat(anotherHostedResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+                .isEqualTo("https://future-surface.web-sandbox.oaiusercontent.com");
+
+        for (String rejectedOrigin : new String[] {
+            "http://future-surface.web-sandbox.oaiusercontent.com",
+            "https://web-sandbox.oaiusercontent.com",
+            "https://future-surface.web-sandbox.oaiusercontent.com.evil.example",
+            "null"
+        }) {
+            MockHttpServletRequest foreignOrigin =
+                    new MockHttpServletRequest(
+                            "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
+            foreignOrigin.addHeader(HttpHeaders.ORIGIN, rejectedOrigin);
+            foreignOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
+            MockHttpServletResponse foreignResponse = new MockHttpServletResponse();
+            assertThat(processor.processRequest(bootstrap, foreignOrigin, foreignResponse))
+                    .as(rejectedOrigin)
+                    .isFalse();
+            assertThat(foreignResponse.getStatus())
+                    .as(rejectedOrigin)
+                    .isEqualTo(HttpServletResponse.SC_FORBIDDEN);
+        }
     }
 
     @Test

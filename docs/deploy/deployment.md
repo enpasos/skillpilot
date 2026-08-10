@@ -272,6 +272,12 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   fixed widget domain `https://mcp-coach-v1.skillpilot.com`; previously
   advertised version-addressed and hash URIs remain passive and byte-identically
   readable.
+  ChatGPT Web currently executes that hosted component on an isolated
+  `https://*.web-sandbox.oaiusercontent.com` browser origin. Only the private
+  `/bootstrap/v1/launch` endpoint accepts that HTTPS sandbox family for CORS,
+  echoes the concrete allowed origin, and still rejects wildcard, `null`, HTTP,
+  and unrelated domains. CORS is only an extra browser boundary; OAuth plus the
+  short-lived setup capability remain authoritative.
   `open_skillpilot_start` binds the private Direct-Start resource,
   `render_skillpilot_goal_visualization` the image-only resource and
   `start_skillpilot_memory_practice` the interactive card-learning resource

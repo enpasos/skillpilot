@@ -171,12 +171,11 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         response.setHeader(HttpHeaders.RETRY_AFTER, Long.toString(Math.max(1, (retryAfterMillis + 999) / 1000)));
         response.setHeader("Referrer-Policy", "no-referrer");
         response.setHeader("X-Content-Type-Options", "nosniff");
-        if (bootstrap
-                && OpenAiDeV1ContractMetadata.WIDGET_DOMAIN.equals(
-                        request.getHeader(HttpHeaders.ORIGIN))) {
+        String origin = request.getHeader(HttpHeaders.ORIGIN);
+        if (bootstrap && OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(origin)) {
             response.setHeader(
                     HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN,
-                    OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                    origin);
             response.setHeader(HttpHeaders.VARY, HttpHeaders.ORIGIN);
         }
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
