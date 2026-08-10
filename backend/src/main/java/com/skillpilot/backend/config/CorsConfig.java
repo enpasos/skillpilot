@@ -42,6 +42,8 @@ public class CorsConfig {
                 // endpoint-specific authorization boundary.
                 registry.addMapping(OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH)
                         .allowedOrigins(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN)
+                        .allowedOriginPatterns(
+                                OpenAiDeV1ContractMetadata.CHATGPT_WIDGET_ORIGIN_PATTERN)
                         .allowedMethods("POST", "OPTIONS")
                         .allowedHeaders("Authorization", "Content-Type")
                         .exposedHeaders("Retry-After")

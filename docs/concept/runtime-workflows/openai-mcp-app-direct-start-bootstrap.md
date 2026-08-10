@@ -958,10 +958,18 @@ Die Startressource veröffentlicht standard-first:
 Im standardisierten ui.csp wird kein nicht standardisiertes redirectDomains
 verwendet. Der ChatGPT-Kompatibilitätsalias redirect_domains bleibt getrennt.
 
-Der Endpoint antwortet beim zulässigen Origin:
+ChatGPT Web führt die Komponente trotz der deklarierten `ui.domain` unter einer
+isolierten Browser-Origin der Form
+`https://<pluginbezogener-host>.web-sandbox.oaiusercontent.com` aus. Der
+Bootstrap erlaubt deshalb zusätzlich zur deklarierten Widget-Origin nur
+HTTPS-Subdomains dieser OpenAI-Sandbox-Familie. Er setzt niemals den
+pauschalen Wert `*`, erlaubt weder `null` noch HTTP und spiegelt bei einer
+zulässigen Cross-Origin-Anfrage ausschließlich die konkrete Request-Origin.
+
+Für die aktuell beobachtete ChatGPT-Web-Origin antwortet der Endpoint:
 
 ~~~http
-Access-Control-Allow-Origin: https://mcp-coach-v1.skillpilot.com
+Access-Control-Allow-Origin: https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com
 Vary: Origin
 Access-Control-Allow-Methods: POST, OPTIONS
 Access-Control-Allow-Headers: Authorization, Content-Type
@@ -970,10 +978,12 @@ Access-Control-Allow-Headers: Authorization, Content-Type
 Access-Control-Allow-Credentials wird nicht gesetzt. Originprüfung ist eine
 zusätzliche Eingrenzung, keine Autorisierung.
 
-Der Phase-0-Canary bestätigt, dass die konkrete Zieloberfläche diesen
-festgelegten Origin tatsächlich verwendet. Liefert sie Origin null oder einen
-anderen Origin, wird weder Wildcard noch null freigegeben; für diese Oberfläche
-bleibt ausschließlich der Webstart.
+Der Phase-0-Canary bestätigt die konkrete Zieloberfläche und die daraus
+resultierende Sandbox-Origin. Eine andere HTTPS-Subdomain derselben
+OpenAI-Sandbox-Familie darf den Preflight ebenfalls passieren, besitzt dadurch
+aber noch keine Startberechtigung: Autoritativ bleibt ausschließlich die zuvor
+über OAuth und das app-only Werkzeug ausgestellte kurzlebige Capability. Andere
+Domains, Suffix-Tricks, HTTP und `Origin: null` bleiben gesperrt.
 
 ### 8.5 Rate Limits und Beobachtbarkeit
 

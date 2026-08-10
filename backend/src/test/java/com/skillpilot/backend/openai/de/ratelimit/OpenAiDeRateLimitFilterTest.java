@@ -102,12 +102,12 @@ class OpenAiDeRateLimitFilterTest {
                 OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
                 "192.0.2.20");
         first.addHeader("Authorization", "SkillPilotSetup " + capability);
-        first.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        first.addHeader("Origin", OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
         MockHttpServletRequest repeated = request(
                 OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
                 "192.0.2.21");
         repeated.addHeader("Authorization", "SkillPilotSetup " + capability);
-        repeated.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        repeated.addHeader("Origin", OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
 
         assertThat(invoke(first).getStatus()).isEqualTo(200);
         MockHttpServletResponse rejected = invoke(repeated);
@@ -115,7 +115,7 @@ class OpenAiDeRateLimitFilterTest {
         assertThat(rejected.getStatus()).isEqualTo(429);
         assertThat(rejected.getHeader("Retry-After")).isEqualTo("60");
         assertThat(rejected.getHeader("Access-Control-Allow-Origin"))
-                .isEqualTo(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+                .isEqualTo(OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
         assertThat(rejected.getHeader("Vary")).isEqualTo("Origin");
         assertThat(rejected.getHeader("Referrer-Policy")).isEqualTo("no-referrer");
         assertThat(rejected.getHeader("X-Content-Type-Options")).isEqualTo("nosniff");
@@ -132,7 +132,7 @@ class OpenAiDeRateLimitFilterTest {
                 "OPTIONS",
                 OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
         preflight.setRemoteAddr("192.0.2.22");
-        preflight.addHeader("Origin", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
+        preflight.addHeader("Origin", OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
 
         assertThat(invoke(preflight).getStatus()).isEqualTo(200);
         assertThat(invokeBootstrap(
@@ -150,7 +150,8 @@ class OpenAiDeRateLimitFilterTest {
                 OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
                 "192.0.2.24");
         repeated.addHeader("Authorization", "SkillPilotSetup " + capability);
-        repeated.addHeader("Origin", "https://example.invalid");
+        repeated.addHeader(
+                "Origin", "https://web-sandbox.oaiusercontent.com.evil.example");
 
         MockHttpServletResponse rejected = invoke(repeated);
 

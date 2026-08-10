@@ -1,5 +1,7 @@
 package com.skillpilot.backend.openai.mcp.de.v1;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -22,6 +24,18 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PUBLIC_MCP_ORIGIN = "https://mcp-coach-v1.skillpilot.com";
     /** Dedicated, plugin-unique origin required for the submitted MCP App UI. */
     public static final String WIDGET_DOMAIN = PUBLIC_MCP_ORIGIN;
+    /**
+     * ChatGPT hosts component documents below an isolated subdomain derived from
+     * the declared widget domain. Limit direct-start browser access to HTTPS
+     * origins in that OpenAI-owned sandbox family; this is an additional browser
+     * boundary, not the endpoint's authorization mechanism.
+     */
+    public static final String CHATGPT_WEB_WIDGET_ORIGIN =
+            "https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com";
+    public static final String CHATGPT_WIDGET_ORIGIN_PATTERN =
+            "https://*.web-sandbox.oaiusercontent.com";
+    private static final String CHATGPT_WIDGET_HOST_SUFFIX =
+            ".web-sandbox.oaiusercontent.com";
     public static final String PUBLIC_MCP_PATH = "/mcp";
     public static final String PUBLIC_MCP_ENDPOINT = PUBLIC_MCP_ORIGIN + PUBLIC_MCP_PATH;
     public static final String OAUTH_RESOURCE = PUBLIC_MCP_ENDPOINT;
@@ -101,6 +115,30 @@ public final class OpenAiDeV1ContractMetadata {
         return "ui://skillpilot/coach/v1/sha256-"
                 + artifactSha256
                 + "/goal-visualization.html";
+    }
+
+    public static boolean isAllowedBootstrapCorsOrigin(String origin) {
+        if (WIDGET_DOMAIN.equals(origin)) {
+            return true;
+        }
+        if (origin == null || origin.isBlank()) {
+            return false;
+        }
+        try {
+            URI candidate = new URI(origin);
+            String host = candidate.getHost();
+            return "https".equalsIgnoreCase(candidate.getScheme())
+                    && candidate.getRawUserInfo() == null
+                    && candidate.getPort() == -1
+                    && (candidate.getRawPath() == null || candidate.getRawPath().isEmpty())
+                    && candidate.getRawQuery() == null
+                    && candidate.getRawFragment() == null
+                    && host != null
+                    && host.length() > CHATGPT_WIDGET_HOST_SUFFIX.length()
+                    && host.endsWith(CHATGPT_WIDGET_HOST_SUFFIX);
+        } catch (URISyntaxException exception) {
+            return false;
+        }
     }
 
     public static String retainedGoalVisualizationResourceClasspath(String artifactSha256) {
