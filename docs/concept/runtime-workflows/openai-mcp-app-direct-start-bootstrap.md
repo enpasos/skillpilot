@@ -753,7 +753,11 @@ Sortierung des veröffentlichten Labels. Kategorie- und Ampelwechsel sind rein
 lokal und erzeugen keinen Toolaufruf. Erst die ausdrückliche Auswahl eines
 sichtbaren, weiterhin im neuesten Vollkontext veröffentlichten `optionId`
 ruft `set_skillpilot_curriculum` auf. Das Widget leitet weder Kategorie noch
-Qualität oder Rang aus Curriculum-ID, Titel oder Beschreibung ab.
+Qualität oder Rang aus Curriculum-ID, Titel oder Beschreibung ab. Der native
+Select bleibt bis dahin ausdrücklich auf dem deaktivierten Placeholder ohne
+fachlichen Wert; eine beim DOM-Aufbau vom Browser automatisch gesetzte erste
+Option gilt niemals als Auswahl und darf das erforderliche `change`-Ereignis
+nicht verschlucken.
 
 Für jede neue Auswahl kopiert die Komponente `expectedStateVersion` exakt aus
 dem neuesten erfolgreichen Vollresultat und erzeugt eine neue UUID-v4 als

@@ -49,6 +49,9 @@ architecture no longer processes that ID.
   server-authoritative catalog projection binds those facets one-to-one to the
   currently allowed curriculum options, so the component never infers them
   from an ID, title, or description
+- the native curriculum selector remains on its explicit disabled placeholder
+  until the learner chooses an option, so browser auto-selection cannot swallow
+  the only `change` event for a single visible curriculum
 - the permanent SkillPilot ID is confined to the direct HTTPS request/response
   and ephemeral component memory or recovery DOM; it never enters chat, model
   context, MCP arguments or results (including `_meta`), `window.openai`,

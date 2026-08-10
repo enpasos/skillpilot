@@ -856,12 +856,12 @@ function renderCurriculumCatalog(
   const select = document.createElement("select");
   select.id = "skillpilot-curriculum-select";
   select.className = "curriculum-select";
-  select.value = "";
   select.disabled = filteredOptions.length === 0;
   const placeholder = document.createElement("option");
   placeholder.value = "";
   placeholder.textContent = copy.curriculumSelect;
   placeholder.disabled = true;
+  placeholder.selected = true;
   select.append(placeholder);
   for (const option of filteredOptions) {
     const selectOption = document.createElement("option");
@@ -869,6 +869,10 @@ function renderCurriculumCatalog(
     selectOption.textContent = option.label;
     select.append(selectOption);
   }
+  // A real browser otherwise selects the first enabled option while the DOM is
+  // assembled. Keep the explicit placeholder selected until the learner makes
+  // a deliberate choice that can emit one change event.
+  select.value = "";
   select.addEventListener("change", () => {
     const optionId = select.value;
     if (filteredOptions.some((option) => option.id === optionId)) {

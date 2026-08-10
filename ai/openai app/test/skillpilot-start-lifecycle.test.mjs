@@ -29,6 +29,7 @@ class FakeElement {
     this.checked = false;
     this.disabled = false;
     this.focused = false;
+    this.selected = false;
   }
 
   addEventListener(type, listener) {
@@ -45,7 +46,19 @@ class FakeElement {
   }
 
   append(...children) {
-    this.children.push(...children);
+    for (const child of children) {
+      this.children.push(child);
+      if (this.tagName !== "select" || child.tagName !== "option") continue;
+      if (child.selected) {
+        this.value = child.value;
+      } else if (
+        !child.disabled
+        && !this.children.some((option) => option.tagName === "option" && option.selected)
+      ) {
+        child.selected = true;
+        this.value = child.value;
+      }
+    }
   }
 
   appendChild(child) {
@@ -633,6 +646,13 @@ test("curriculum selection matches the WebGUI category and quality filters", asy
   };
   const callsBeforeFilters = harness.context.__toolCalls.length;
   assert.deepEqual(visibleCurriculumIds(), ["school-root", "school-math"]);
+  const initialSelect = allElements(harness.rootElement)
+    .find((element) => element.tagName === "select");
+  assert.ok(initialSelect);
+  assert.equal(initialSelect.value, "");
+  assert.equal(initialSelect.children[0]?.textContent, "Curriculum wählen");
+  assert.equal(initialSelect.children[0]?.disabled, true);
+  assert.equal(initialSelect.children[0]?.selected, true);
   assert.ok(findByText(harness.rootElement, "Curriculum wählen"));
   assert.ok(findByText(harness.rootElement, "Schule").className.includes("is-active-category"));
   assert.ok(findByText(harness.rootElement, "Menschliche QS").className.includes("is-active-quality"));
