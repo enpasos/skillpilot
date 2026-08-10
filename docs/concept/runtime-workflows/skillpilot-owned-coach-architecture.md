@@ -556,7 +556,10 @@ erzeugt eine neue SkillPilot-ID oder gibt eine vorhandene ausschließlich im
 Start-Widget ein. Das Widget tauscht sie nach ausdrücklicher Bestätigung direkt
 mit dem festen SkillPilot-HTTPS-Endpunkt aus, niemals über ein MCP-Tool oder den
 Chat, und schließt Curriculum und Personalisierung in derselben Komponente über
-die bestehenden ID-freien Sessiontools ab. Diese ID-Verarbeitung ist nicht
+die bestehenden ID-freien Sessiontools ab. Bestätigte Schritte bleiben dort
+mit serverautoritativen Zusammenfassungen sichtbar und vor dem finalen
+`Lernen starten` änderbar. Erst diese ausdrückliche Aktion gibt die
+Startnachricht an den Host frei. Diese ID-Verarbeitung ist nicht
 öffentlich freigegeben. Die dabei beziehungsweise
 beim First-Party-Webstart erzeugte Lernsession bleibt technisch unsichtbar:
 SkillPilot setzt ihre kurzlebige Referenz automatisch in die vorbereitete
@@ -732,7 +735,7 @@ End-to-End-Abläufe.
 | Nutzerreise | Produktive Mindestanforderung |
 | --- | --- |
 | Einstieg und Wiederaufnahme | vertrauliche OAuth-Appverbindung plus frische, automatisch transportierte 24h-Lernsession; permanente ID nur im privaten Direct-Start-Widget oder First-Party-Browser, niemals im Chat |
-| Natürliche Einrichtung | Direct Start führt Curriculum und persönliches Curriculum vollständig in derselben Komponente über serverautoritative Optionen; Chat übernimmt erst danach |
+| Natürliche Einrichtung | Direct Start führt Curriculum und persönliches Curriculum vollständig in derselben Komponente über serverautoritative Optionen; bestätigte Schritte bleiben sichtbar und änderbar; erst ein abschließendes `Lernen starten` gibt die Startnachricht an den Chat frei |
 | Lernpfad und Frontier | frische Backendprojektion; keine Chat-Memory-Autorität |
 | Zielwahl und Ressourcen | gültige Kandidaten; backendgenerierte Links |
 | Erklärung und Aufgabe | alters- und fachgerechte Darstellung; klare Aufgabenfassung |

@@ -169,9 +169,17 @@ Paketänderung benötigt eine neue SemVer.
    ID mit Curriculum, aber offener Personalisierung wird dort vollständig über
    `setPersonalization` geführt; eine unbekannte syntaktisch gültige EXISTING-ID
    bleibt ohne Session terminal und identifierfrei `PROFILE_UNAVAILABLE`.
+   In allen erfolgreichen Setupfällen bleiben bestätigtes Curriculum sowie
+   aktuelle, abgeschlossene und erhaltene Personalisierungsentscheidungen
+   serverautoritativ sichtbar. `Ändern` lädt einen frischen Curriculumkatalog
+   beziehungsweise verwendet nur die neueste opake Rewind-Referenz. Nach dem
+   vollständigen Setup muss zunächst der finale Review erscheinen; vor dessen
+   ausdrücklichem `Lernen starten` darf keine Hostnachricht entstehen.
    Jeder Setup-Write verwendet die neueste `stateVersion` und einen exakt
-   wiederholbaren `clientRequestId`; erst nach vollständigem Setup geht die
-   unveränderte Startnachricht an den Host. Die normale Journey darf weder
+   wiederholbaren `clientRequestId`; erst nach vollständigem Setup und dem
+   finalen ausdrücklichen `Lernen starten` geht die unveränderte Startnachricht
+   an den Host. Nach bestätigter Hostannahme wird
+   die Startkarte ohne Neustartaktion geschlossen. Die normale Journey darf weder
    **SkillPilot öffnen** noch eine doppelte Setupfrage im Chat benötigen.
    Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
    ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf

@@ -88,8 +88,11 @@ state decisions.
 - After opening the start component, wait for its component-authored start
   message. The component—not the coach dialogue—uses the existing ID-free
   session tools to load context and complete every published `setCurriculum`
-  and `setPersonalization` action before that message. Do not ask those setup
-  questions in chat, interpret the bootstrap receipt as context, teach,
+  and `setPersonalization` action before that message. It shows
+  server-authoritative summaries and lets the learner revise those selections
+  in the component. It sends the start message only after setup is complete and the
+  learner explicitly confirms `Lernen starten` / `Start learning`. Do not ask
+  those setup questions in chat, interpret the bootstrap receipt as context, teach,
   navigate, or mutate learning state while waiting. If the component or secure
   message handoff is unavailable, use only the exact technical fallback
   supplied by the start result and stop the structured workflow.

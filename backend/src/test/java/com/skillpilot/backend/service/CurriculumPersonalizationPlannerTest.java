@@ -129,6 +129,50 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
+    void carriesAuthoredEnglishFlowLandscapeAndFilterLabelsIntoTheProviderNeutralPlan() {
+        LandscapeFilter filter = filter("dial-a", "Deutsche Auswahl");
+        filter.setLabelEn("English choice");
+        SkillLandscape root = landscape(ROOT_ID, "Deutsches Fach", filter);
+        root.setTitleEn("English subject");
+        PersonalizationGroup group = group(
+                "group-mode",
+                1,
+                1,
+                1,
+                landscapeFilters(ROOT_ID));
+        group.setLabel("Welche Auswahl?");
+        group.setLabelEn("Which choice?");
+        PersonalizationStage stage = stage("stage-mode", 1, group);
+        stage.setLabel("Auswahl treffen");
+        stage.setLabelEn("Choose option");
+        root.setPersonalizationFlow(flow(stage));
+
+        PersonalizationPlan open = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                Map.of());
+
+        assertThat(open.stageLabelEn()).isEqualTo("Choose option");
+        assertThat(open.groupLabelEn()).isEqualTo("Which choice?");
+        assertThat(open.options()).singleElement().satisfies(option -> {
+            assertThat(option.landscapeLabelEn()).isEqualTo("English subject");
+            assertThat(option.filterLabelEn()).isEqualTo("English choice");
+        });
+
+        PersonalizationPlan complete = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                config(entry(ROOT_ID, true, "dial-a")));
+
+        assertThat(complete.completedDecisions()).singleElement().satisfies(decision -> {
+            assertThat(decision.stageLabelEn()).isEqualTo("Choose option");
+            assertThat(decision.groupLabelEn()).isEqualTo("Which choice?");
+            assertThat(decision.selectedOptions().getFirst().filterLabelEn())
+                    .isEqualTo("English choice");
+        });
+    }
+
+    @Test
     void rejectsCaseInsensitiveDuplicatesInRestrictedFilterIds() {
         SkillLandscape root = landscape(
                 ROOT_ID,
@@ -226,11 +270,17 @@ class CurriculumPersonalizationPlannerTest {
         assertThat(plan.pendingDecisions()).containsExactly(
                 new PersonalizationPlan.DecisionPrompt(
                         "Einstieg",
+                        "Welche Lernumgebung passt?",
+                        "Einstieg",
                         "Welche Lernumgebung passt?"),
                 new PersonalizationPlan.DecisionPrompt(
                         "Einstieg",
+                        "Welcher Schwerpunkt passt?",
+                        "Einstieg",
                         "Welcher Schwerpunkt passt?"),
                 new PersonalizationPlan.DecisionPrompt(
+                        "Abschluss",
+                        "Welches Zielformat passt?",
                         "Abschluss",
                         "Welches Zielformat passt?"));
     }

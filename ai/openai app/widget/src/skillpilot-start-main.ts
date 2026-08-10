@@ -10,18 +10,22 @@ import {
   canonicalSkillPilotId,
   createSkillPilotBootstrapRequest,
   createSkillPilotCapabilityArguments,
+  createSkillPilotCurriculumNavigationCall,
   createSkillPilotGetContextCall,
+  createSkillPilotPersonalizationRewindCall,
   createSkillPilotSetupMutationCall,
   isExactSkillPilotFallbackUrl,
   learningSessionIdFromStartMessage,
   sendSkillPilotBootstrap,
   skillPilotCapabilityFromToolResult,
+  skillPilotCurriculumNavigationStateFromToolResult,
   skillPilotSetupStateFromToolResult,
   skillPilotStartOpenFromToolResult,
   type SkillPilotBootstrapRequest,
   type SkillPilotCurriculumCatalogCategory,
   type SkillPilotCurriculumQualityStatus,
   type SkillPilotIdentityMode,
+  type SkillPilotPersonalizationDecision,
   type SkillPilotStartLocale,
   type SkillPilotStartOpenResult,
   type SkillPilotSetupState,
@@ -32,6 +36,7 @@ type OpenAiCompatibilityWindow = Window & {
   openai?: {
     toolResponseMetadata?: unknown;
     toolOutput?: unknown;
+    requestClose?: () => void | Promise<unknown>;
   };
 };
 
@@ -50,6 +55,7 @@ type FlowState =
   | "AWAITING_CREATED_ID_SAVE"
   | "LOADING_SETUP"
   | "AWAITING_SETUP_SELECTION"
+  | "AWAITING_SETUP_CONFIRMATION"
   | "APPLYING_SETUP"
   | "SESSION_CREATED_PENDING_HOST_ACCEPTANCE"
   | "HOST_MESSAGE_OUTCOME_UNKNOWN"
@@ -101,6 +107,7 @@ type Copy = {
   upgradeBody: string;
   openSuccessor: string;
   start: string;
+  startLearning: string;
   issuing: string;
   launching: string;
   loadingSetup: string;
@@ -124,8 +131,6 @@ type Copy = {
   retryMessage: string;
   enterAgain: string;
   newStart: string;
-  completeTitle: string;
-  completeBody: string;
   createdIdTitle: string;
   createdIdBody: string;
   createdIdLabel: string;
@@ -133,6 +138,21 @@ type Copy = {
   copiedId: string;
   savedIdConfirmation: string;
   continueSetup: string;
+  setupTitle: string;
+  setupBody: string;
+  reviewTitle: string;
+  reviewBody: string;
+  change: string;
+  collapse: string;
+  step: string;
+  curriculumSelected: string;
+  personalizationConfigured: string;
+  noFurtherDetails: string;
+  readyToStart: string;
+  currentSelection: string;
+  completedSelections: string;
+  preservedSelections: string;
+  noSelection: string;
   curriculumTitle: string;
   curriculumBody: string;
   curriculumSelect: string;
@@ -175,11 +195,12 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
       "Ich bestätige den Hinweis: ChatGPT hostet und führt diese Komponente aus. Die SkillPilot-ID wird nur flüchtig in der Komponente gehalten und direkt per HTTPS an SkillPilot gesendet. Sie wird niemals in Chat, Modellkontext, MCP-Toolargumente oder -resultate, Host-State, Web-Speicher, URL, Logs oder Analytik übernommen. Nur auf meine ausdrückliche Kopieraktion schreibt die Komponente sie zusätzlich in die lokale System-Zwischenablage. Die Einrichtung erfolgt vollständig in dieser Komponente. Erst danach wird eine Startnachricht übergeben, die nur die kurzlebige Lernsession enthält. Zusätzlich gelten die Datenschutzbedingungen des Plattformanbieters. Ich bin mindestens 13 Jahre alt und erfülle höhere Altersanforderungen meines Landes; unter 18 habe ich die erforderliche Erlaubnis.",
     eligibilityFallback: "Ohne Bestätigung wird keine ID erzeugt und keine Lernsession gestartet.",
     currentMajorWarning: "SkillPilot Coach v2 ist verfügbar. Dieser Start bleibt bei v1.",
-    stayCurrent: "Bei v1 bleiben und starten",
+    stayCurrent: "Bei v1 bleiben und Einrichtung starten",
     upgradeTitle: "Neue Coach-Version erforderlich",
     upgradeBody: "Dieser v1-Start erstellt keine neue Lernsession mehr. Öffne SkillPilot Coach v2 als neuen, getrennten Start.",
     openSuccessor: "SkillPilot Coach v2 öffnen",
-    start: "Lernen starten",
+    start: "Einrichtung starten",
+    startLearning: "Lernen starten",
     issuing: "Sicherer Start wird vorbereitet …",
     launching: "Lernsession wird erstellt …",
     loadingSetup: "Einrichtung wird sicher geladen …",
@@ -204,8 +225,6 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     retryMessage: "Dieselbe Nachricht erneut anbieten",
     enterAgain: "SkillPilot-ID erneut eingeben",
     newStart: "Neuen Startversuch beginnen",
-    completeTitle: "Startnachricht angenommen",
-    completeBody: "Der Host hat die Nachrichtenanfrage angenommen. Dies bestätigt noch keine Antwort des Lerncoachs.",
     createdIdTitle: "SkillPilot-ID sicher speichern",
     createdIdBody: "Diese ID ist dein dauerhafter Zugang zu deinem Lernstand. Sie wird nur flüchtig in dieser von ChatGPT gehosteten Komponente angezeigt und nicht in Chat, Modellkontext, MCP-Toolargumente oder -resultate oder Host-State übernommen.",
     createdIdLabel: "Deine neue SkillPilot-ID",
@@ -213,6 +232,21 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     copiedId: "ID kopiert",
     savedIdConfirmation: "Ich habe meine SkillPilot-ID sicher gespeichert.",
     continueSetup: "Einrichtung fortsetzen",
+    setupTitle: "Lernsession einrichten",
+    setupBody: "Wähle dein Curriculum und richte anschließend dein persönliches Curriculum ein.",
+    reviewTitle: "Einrichtung prüfen",
+    reviewBody: "Prüfe deine Auswahl. Erst mit „Lernen starten“ wird die Startnachricht an den Chat übergeben.",
+    change: "Ändern",
+    collapse: "Einklappen",
+    step: "Schritt",
+    curriculumSelected: "Ausgewählt",
+    personalizationConfigured: "Eingerichtet",
+    noFurtherDetails: "Keine weiteren Angaben erforderlich",
+    readyToStart: "Bereit",
+    currentSelection: "Aktuelle Auswahl",
+    completedSelections: "Abgeschlossene Auswahlen",
+    preservedSelections: "Beibehaltene Auswahlen",
+    noSelection: "Noch keine Auswahl",
     curriculumTitle: "Curriculum wählen",
     curriculumBody: "Wähle ein Curriculum.",
     curriculumSelect: "Curriculum wählen",
@@ -226,7 +260,7 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     curriculumQualityOrange: "Maschinelle QS",
     curriculumQualityRed: "Experimentell",
     curriculumQualityAll: "Alle",
-    personalizationTitle: "Lernumgebung personalisieren",
+    personalizationTitle: "Persönliches Curriculum festlegen",
     personalizationBody: "Beantworte den aktuellen Einrichtungsschritt. SkillPilot führt dich danach automatisch weiter.",
     selectedCount: "Ausgewählt",
     unavailableTitle: "SkillPilot-Start nicht verfügbar",
@@ -253,11 +287,12 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
       "I confirm the notice: ChatGPT hosts and runs this component. The SkillPilot ID is held only transiently in the component and sent directly to SkillPilot over HTTPS. It is never placed in chat, model context, MCP tool arguments or results, host state, web storage, URLs, logs, or analytics. Only when I explicitly choose Copy does the component also write it to the local system clipboard. Setup is completed entirely in this component. Only afterwards is a start message passed on, containing only the short-lived learning session. The platform provider's privacy terms also apply. I am at least 13 and meet any higher age requirement in my country; if I am under 18, I have the required permission.",
     eligibilityFallback: "Without confirmation, no ID is created and no learning session is started.",
     currentMajorWarning: "SkillPilot Coach v2 is available. This start remains on v1.",
-    stayCurrent: "Stay on v1 and start",
+    stayCurrent: "Stay on v1 and start setup",
     upgradeTitle: "New Coach version required",
     upgradeBody: "This v1 start no longer creates a new learning session. Open SkillPilot Coach v2 as a new, separate start.",
     openSuccessor: "Open SkillPilot Coach v2",
-    start: "Start learning",
+    start: "Start setup",
+    startLearning: "Start learning",
     issuing: "Preparing the secure start …",
     launching: "Creating the learning session …",
     loadingSetup: "Loading setup securely …",
@@ -282,8 +317,6 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     retryMessage: "Offer the same message again",
     enterAgain: "Enter the SkillPilot ID again",
     newStart: "Begin a new start attempt",
-    completeTitle: "Start message accepted",
-    completeBody: "The host accepted the message request. This does not yet confirm a response from the Learning Coach.",
     createdIdTitle: "Save your SkillPilot ID securely",
     createdIdBody: "This ID is your permanent access to your learning state. It is shown only transiently in this ChatGPT-hosted component and is not placed in chat, model context, MCP tool arguments or results, or host state.",
     createdIdLabel: "Your new SkillPilot ID",
@@ -291,6 +324,21 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     copiedId: "ID copied",
     savedIdConfirmation: "I have saved my SkillPilot ID securely.",
     continueSetup: "Continue setup",
+    setupTitle: "Set up the learning session",
+    setupBody: "Choose your curriculum, then set up your personal curriculum.",
+    reviewTitle: "Review setup",
+    reviewBody: "Review your choices. The start message is sent to the chat only after you choose “Start learning”.",
+    change: "Change",
+    collapse: "Collapse",
+    step: "Step",
+    curriculumSelected: "Selected",
+    personalizationConfigured: "Configured",
+    noFurtherDetails: "No further details required",
+    readyToStart: "Ready",
+    currentSelection: "Current selection",
+    completedSelections: "Completed selections",
+    preservedSelections: "Preserved selections",
+    noSelection: "No selection yet",
     curriculumTitle: "Choose curriculum",
     curriculumBody: "Choose a curriculum.",
     curriculumSelect: "Choose curriculum",
@@ -304,7 +352,7 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     curriculumQualityOrange: "Automated QA",
     curriculumQualityRed: "Experimental",
     curriculumQualityAll: "All",
-    personalizationTitle: "Personalise the learning environment",
+    personalizationTitle: "Set your personal curriculum",
     personalizationBody: "Answer the current setup step. SkillPilot then guides you forward automatically.",
     selectedCount: "Selected",
     unavailableTitle: "SkillPilot start unavailable",
@@ -345,6 +393,9 @@ let createdIdSaveAcknowledged = false;
 let createdIdCopied = false;
 let setupState: SkillPilotSetupState | undefined;
 let pendingSetupMutation: PendingSetupMutation | undefined;
+let curriculumNavigationOpen = false;
+let personalizationExpanded = false;
+let pendingSetupDisclosureFocus: "curriculum" | "personalization" | undefined;
 let curriculumCatalogCategory: SkillPilotCurriculumCatalogCategory = "SCHOOL";
 let curriculumQualityFilter: SkillPilotCurriculumQualityFilter = "green";
 let pendingCurriculumFilterFocus:
@@ -356,6 +407,7 @@ let failureKind: FailureKind | undefined;
 let busy = false;
 let flowRevision = 0;
 let hostSupportCheckRevision = 0;
+let teardownRequested = false;
 let activeAbortController: AbortController | undefined;
 let sensitiveRetentionTimer: number | undefined;
 let compatibilityToolOutput: unknown = compatibilityWindow.openai?.toolOutput;
@@ -492,7 +544,7 @@ function renderCurrent(): void {
     return;
   }
   if (flowState === "HOST_MESSAGE_ACCEPTED") {
-    renderComplete(start, copy);
+    finalizeAcceptedHandoff();
     return;
   }
   if (flowState === "HANDOFF_EXPIRED" || failureKind === "EXPIRED") {
@@ -516,7 +568,11 @@ function renderCurrent(): void {
     return;
   }
   if (flowState === "AWAITING_SETUP_SELECTION" && setupState?.requiredAction) {
-    renderSetupSelection(copy, setupState);
+    renderSetup(copy, setupState);
+    return;
+  }
+  if (flowState === "AWAITING_SETUP_CONFIRMATION" && setupState) {
+    renderSetup(copy, setupState);
     return;
   }
   renderReady(start, copy);
@@ -720,30 +776,240 @@ async function copyCreatedId(expectedId: string): Promise<void> {
   }
 }
 
-function renderSetupSelection(copy: Copy, state: SkillPilotSetupState): void {
-  const curriculum = state.requiredAction === "setCurriculum";
+function renderSetup(copy: Copy, state: SkillPilotSetupState): void {
+  const complete = state.requiredAction === null;
   const article = shell(
-    curriculum ? copy.curriculumTitle : copy.personalizationTitle,
-    curriculum ? copy.curriculumBody : copy.personalizationBody,
-    copy
+    complete ? copy.reviewTitle : copy.setupTitle,
+    complete ? copy.reviewBody : copy.setupBody,
+    copy,
+    "setup-shell"
   );
+  let focusTarget: HTMLButtonElement | undefined;
+
+  if (state.curriculum || state.requiredAction === "setCurriculum") {
+    const curriculumStep = renderCurriculumStep(copy, state);
+    article.append(curriculumStep.element);
+    focusTarget = curriculumStep.focusTarget;
+  }
+  if (
+    state.requiredAction !== "setCurriculum"
+    && (state.requiredAction === "setPersonalization"
+      || state.personalizationHistory
+      || complete)
+  ) {
+    const personalizationStep = renderPersonalizationStep(copy, state);
+    article.append(personalizationStep.element);
+    focusTarget ??= personalizationStep.focusTarget;
+  }
+  if (complete) {
+    article.append(renderFinalReviewStep(copy));
+  }
+  root.replaceChildren(article);
+  pendingCurriculumFilterFocus = undefined;
+  pendingSetupDisclosureFocus = undefined;
+  focusTarget?.focus();
+}
+
+function renderCurriculumStep(
+  copy: Copy,
+  state: SkillPilotSetupState
+): { element: HTMLElement; focusTarget?: HTMLButtonElement } {
+  const section = element("section", "setup-step");
+  section.id = "skillpilot-setup-curriculum";
+  section.setAttribute("aria-labelledby", "skillpilot-setup-curriculum-title");
+  const header = element("div", "setup-step-header");
+  const number = element("span", "setup-step-number");
+  number.textContent = "2";
+  number.setAttribute("aria-hidden", "true");
+  const headingGroup = element("div", "setup-step-heading");
+  const heading = element("h2", "setup-step-title");
+  heading.id = "skillpilot-setup-curriculum-title";
+  appendAccessibleStepHeading(heading, copy, 2, copy.curriculumTitle);
+  headingGroup.append(heading);
+  const open = state.requiredAction === "setCurriculum";
+  if (state.curriculum) {
+    const selected = element("p", "setup-step-summary");
+    selected.textContent = curriculumSummaryText(state);
+    const status = element("p", "setup-step-status");
+    status.textContent = `✓ ${copy.curriculumSelected}`;
+    headingGroup.append(status, selected);
+  }
+  header.append(number, headingGroup);
+
+  let focusTarget: HTMLButtonElement | undefined;
+  if (state.curriculum && (!open || curriculumNavigationOpen)) {
+    const toggle = button(open ? copy.collapse : copy.change, "setup-step-toggle");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-controls", "skillpilot-curriculum-editor");
+    toggle.addEventListener("click", () => {
+      pendingSetupDisclosureFocus = "curriculum";
+      if (open) {
+        void collapseCurriculumEditor();
+      } else {
+        void openCurriculumEditor();
+      }
+    });
+    header.append(toggle);
+    if (pendingSetupDisclosureFocus === "curriculum") focusTarget = toggle;
+  }
+  section.append(header);
+  const editor = element("div", "setup-step-content");
+  editor.id = "skillpilot-curriculum-editor";
+  editor.hidden = !open;
+  if (open) {
+    const body = element("p", "hint");
+    body.textContent = copy.curriculumBody;
+    editor.append(body);
+    focusTarget = renderCurriculumCatalog(editor, copy, state) ?? focusTarget;
+  }
+  section.append(editor);
+  return { element: section, ...(focusTarget ? { focusTarget } : {}) };
+}
+
+function renderPersonalizationStep(
+  copy: Copy,
+  state: SkillPilotSetupState
+): { element: HTMLElement; focusTarget?: HTMLButtonElement } {
+  const section = element("section", "setup-step");
+  section.id = "skillpilot-setup-personalization";
+  section.setAttribute("aria-labelledby", "skillpilot-setup-personalization-title");
+  const header = element("div", "setup-step-header");
+  const number = element("span", "setup-step-number");
+  number.textContent = "3";
+  number.setAttribute("aria-hidden", "true");
+  const headingGroup = element("div", "setup-step-heading");
+  const heading = element("h2", "setup-step-title");
+  heading.id = "skillpilot-setup-personalization-title";
+  appendAccessibleStepHeading(heading, copy, 3, copy.personalizationTitle);
+  headingGroup.append(heading);
+  const active = state.requiredAction === "setPersonalization";
+  const summaryText = personalizationSummaryText(state, copy);
+  if (summaryText) {
+    const summary = element("p", "setup-step-summary");
+    summary.textContent = summaryText;
+    if (active) {
+      headingGroup.append(summary);
+    } else {
+      const status = element("p", "setup-step-status");
+      status.textContent = `✓ ${copy.personalizationConfigured}`;
+      headingGroup.append(status, summary);
+    }
+  }
+  header.append(number, headingGroup);
+
+  const open = active || personalizationExpanded;
+  let focusTarget: HTMLButtonElement | undefined;
+  if (!active && state.personalizationHistory) {
+    const toggle = button(open ? copy.collapse : copy.change, "setup-step-toggle");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-controls", "skillpilot-personalization-editor");
+    toggle.addEventListener("click", () => {
+      personalizationExpanded = !personalizationExpanded;
+      pendingSetupDisclosureFocus = "personalization";
+      renderCurrent();
+    });
+    header.append(toggle);
+    if (pendingSetupDisclosureFocus === "personalization") focusTarget = toggle;
+  }
+  section.append(header);
+  const editor = element("div", "setup-step-content");
+  editor.id = "skillpilot-personalization-editor";
+  editor.hidden = !open;
+  if (open) {
+    if (state.personalizationHistory) {
+      renderPersonalizationHistory(editor, copy, state.personalizationHistory);
+    }
+    if (active) {
+      renderCurrentPersonalizationDecision(editor, copy, state);
+    }
+  }
+  section.append(editor);
+  return { element: section, ...(focusTarget ? { focusTarget } : {}) };
+}
+
+function renderPersonalizationHistory(
+  parent: HTMLElement,
+  copy: Copy,
+  history: NonNullable<SkillPilotSetupState["personalizationHistory"]>
+): void {
+  if (history.currentDecision) {
+    renderPersonalizationDecisionGroup(
+      parent,
+      copy.currentSelection,
+      [history.currentDecision],
+      copy
+    );
+  }
+  if (history.completedDecisions.length > 0) {
+    renderPersonalizationDecisionGroup(
+      parent,
+      copy.completedSelections,
+      history.completedDecisions,
+      copy
+    );
+  }
+  if (history.preservedDecisions.length > 0) {
+    renderPersonalizationDecisionGroup(
+      parent,
+      copy.preservedSelections,
+      history.preservedDecisions,
+      copy
+    );
+  }
+}
+
+function renderPersonalizationDecisionGroup(
+  parent: HTMLElement,
+  title: string,
+  decisions: readonly SkillPilotPersonalizationDecision[],
+  copy: Copy
+): void {
+  const group = element("section", "personalization-history-group");
+  const heading = element("h3", "personalization-history-title");
+  heading.textContent = title;
+  const list = element("div", "personalization-history-list");
+  for (const decision of decisions) {
+    const row = element("div", "personalization-history-row");
+    const labels = element("div", "personalization-history-labels");
+    const groupLabel = element("p", "personalization-history-group-label");
+    groupLabel.textContent = decision.groupLabel || decision.stageLabel || copy.noSelection;
+    const selection = element("p", "personalization-history-selection");
+    selection.textContent = decision.selectedLabels.length > 0
+      ? decision.selectedLabels.join(", ")
+      : copy.noSelection;
+    labels.append(groupLabel, selection);
+    row.append(labels);
+    const rewindId = decision.rewindId;
+    if (rewindId) {
+      const change = button(copy.change, "setup-history-change");
+      change.setAttribute(
+        "aria-label",
+        `${copy.change}: ${decision.groupLabel || decision.stageLabel || title}`
+      );
+      change.addEventListener("click", () => void applyPersonalizationRewind(rewindId));
+      row.append(change);
+    }
+    list.append(row);
+  }
+  group.append(heading, list);
+  parent.append(group);
+}
+
+function renderCurrentPersonalizationDecision(
+  parent: HTMLElement,
+  copy: Copy,
+  state: SkillPilotSetupState
+): void {
   if (state.decision) {
     const decision = element("section", "setup-decision");
     const stage = element("p", "setup-stage");
     stage.textContent = state.decision.stageLabel;
-    const group = element("h2", "setup-group");
+    const group = element("h3", "setup-group");
     group.textContent = state.decision.groupLabel;
     const count = element("p", "hint");
     count.textContent = `${copy.selectedCount}: ${state.decision.selectedCount}/${state.decision.maxSelections}`;
     decision.append(stage, group, count);
-    article.append(decision);
-  }
-  if (curriculum) {
-    const focusTarget = renderCurriculumCatalog(article, copy, state);
-    root.replaceChildren(article);
-    pendingCurriculumFilterFocus = undefined;
-    focusTarget?.focus();
-    return;
+    parent.append(decision);
   }
   const options = element("div", "setup-options");
   for (const option of state.options) {
@@ -756,8 +1022,69 @@ function renderSetupSelection(copy: Copy, state: SkillPilotSetupState): void {
     optionButton.addEventListener("click", () => void applySetupOption(option.id));
     options.append(optionButton);
   }
-  article.append(options);
-  root.replaceChildren(article);
+  parent.append(options);
+}
+
+function curriculumSummaryText(state: SkillPilotSetupState): string {
+  const curriculum = state.curriculum;
+  if (!curriculum) return "";
+  const title = curriculum.title || curriculum.curriculumId;
+  return curriculum.subject && curriculum.subject !== title
+    ? `${title} · ${curriculum.subject}`
+    : title;
+}
+
+function personalizationSummaryText(state: SkillPilotSetupState, copy: Copy): string {
+  const history = state.personalizationHistory;
+  if (!history) {
+    return state.requiredAction === null ? copy.noFurtherDetails : "";
+  }
+  const labels = [
+    ...history.completedDecisions,
+    ...(history.currentDecision ? [history.currentDecision] : []),
+    ...history.preservedDecisions
+  ].flatMap((decision) => decision.selectedLabels);
+  const unique = [...new Set(labels)];
+  if (unique.length === 0) return copy.noSelection;
+  return unique.length <= 3
+    ? unique.join(", ")
+    : `${unique.slice(0, 3).join(", ")} +${unique.length - 3}`;
+}
+
+function renderFinalReviewStep(copy: Copy): HTMLElement {
+  const section = element("section", "setup-step setup-final-step");
+  section.setAttribute("aria-labelledby", "skillpilot-setup-start-title");
+  const header = element("div", "setup-step-header");
+  const number = element("span", "setup-step-number");
+  number.textContent = "4";
+  number.setAttribute("aria-hidden", "true");
+  const headingGroup = element("div", "setup-step-heading");
+  const heading = element("h2", "setup-step-title");
+  heading.id = "skillpilot-setup-start-title";
+  appendAccessibleStepHeading(heading, copy, 4, copy.startLearning);
+  const status = element("p", "setup-step-status");
+  status.textContent = `✓ ${copy.readyToStart}`;
+  headingGroup.append(heading, status);
+  header.append(number, headingGroup);
+  const content = element("div", "setup-step-content setup-final-content");
+  const actions = element("div", "actions setup-final-actions");
+  const startButton = button(copy.startLearning, "button button-primary");
+  startButton.addEventListener("click", () => void confirmSetupAndStart());
+  actions.append(startButton);
+  content.append(actions);
+  section.append(header, content);
+  return section;
+}
+
+function appendAccessibleStepHeading(
+  heading: HTMLElement,
+  copy: Copy,
+  number: number,
+  title: string
+): void {
+  const prefix = element("span", "visually-hidden");
+  prefix.textContent = `${copy.step} ${number}: `;
+  heading.append(prefix, document.createTextNode(title));
 }
 
 function renderCurriculumCatalog(
@@ -936,20 +1263,6 @@ function renderCapabilityFallback(
   const article = shell(copy.unsupportedTitle, copy.unsupportedBody, copy, "status-warning");
   const actions = element("div", "actions");
   actions.append(fallbackButton(startState, copy, true));
-  article.append(actions);
-  root.replaceChildren(article);
-}
-
-function renderComplete(
-  startState: SkillPilotStartOpenResult,
-  copy: Copy
-): void {
-  const article = shell(copy.completeTitle, copy.completeBody, copy, "status-success");
-  article.setAttribute("role", "status");
-  const actions = element("div", "actions");
-  const newStart = button(copy.newStart, "button button-primary");
-  newStart.addEventListener("click", resetForFreshInput);
-  actions.append(newStart);
   article.append(actions);
   root.replaceChildren(article);
 }
@@ -1199,6 +1512,9 @@ async function performPendingBootstrap(revision: number): Promise<void> {
   createdIdCopied = false;
   setupState = undefined;
   pendingSetupMutation = undefined;
+  curriculumNavigationOpen = false;
+  personalizationExpanded = false;
+  pendingSetupDisclosureFocus = undefined;
   scheduleSensitiveCleanup(
     Math.max(0, pendingStartMessage.expiresAtMs - Date.now())
   );
@@ -1285,18 +1601,77 @@ async function loadSetupContext(revision: number): Promise<void> {
   await adoptSetupState(next, revision);
 }
 
+async function openCurriculumEditor(): Promise<void> {
+  if (!learningSessionId || busy || pendingSetupMutation) return;
+  const call = createSkillPilotCurriculumNavigationCall(learningSessionId);
+  if (!call) return;
+  const revision = flowRevision;
+  busy = true;
+  failureKind = undefined;
+  flowState = "LOADING_SETUP";
+  renderCurrent();
+  try {
+    const result = await withTimeout(bridge.callSetupTool(call), ACTION_TIMEOUT_MS);
+    if (revision !== flowRevision) return;
+    const next = skillPilotCurriculumNavigationStateFromToolResult(
+      result,
+      selectedLocale
+    );
+    if (!next) throw new Error("invalid-curriculum-navigation");
+    curriculumNavigationOpen = true;
+    await adoptSetupState(next, revision);
+  } catch {
+    if (revision === flowRevision) {
+      failureKind = "SETUP_READ";
+      flowState = "FAILED";
+    }
+  } finally {
+    if (revision === flowRevision) {
+      busy = false;
+      renderCurrent();
+    }
+  }
+}
+
+async function collapseCurriculumEditor(): Promise<void> {
+  if (!learningSessionId || busy || pendingSetupMutation) return;
+  curriculumNavigationOpen = false;
+  const revision = flowRevision;
+  busy = true;
+  failureKind = undefined;
+  try {
+    await loadSetupContext(revision);
+  } catch {
+    if (revision === flowRevision && !failureKind) {
+      failureKind = "SETUP_READ";
+      flowState = "FAILED";
+    }
+  } finally {
+    if (revision === flowRevision) {
+      busy = false;
+      renderCurrent();
+    }
+  }
+}
+
 async function adoptSetupState(
   next: SkillPilotSetupState,
-  revision: number
+  _revision: number
 ): Promise<void> {
   setupState = next;
   failureKind = undefined;
   if (next.requiredAction) {
+    if (next.requiredAction === "setPersonalization") {
+      personalizationExpanded = true;
+    }
     flowState = "AWAITING_SETUP_SELECTION";
     renderCurrent();
     return;
   }
-  await deliverPendingMessage(revision);
+  curriculumNavigationOpen = false;
+  personalizationExpanded = false;
+  flowState = "AWAITING_SETUP_CONFIRMATION";
+  renderCurrent();
 }
 
 async function applySetupOption(optionId: string): Promise<void> {
@@ -1313,6 +1688,33 @@ async function applySetupOption(optionId: string): Promise<void> {
     clientRequestId
   );
   if (!call) return;
+  await beginSetupMutation(call);
+}
+
+async function applyPersonalizationRewind(rewindId: string): Promise<void> {
+  const current = setupState;
+  const sessionId = learningSessionId;
+  const history = current?.personalizationHistory;
+  if (!current || !sessionId || !history || busy || pendingSetupMutation) return;
+  const publishedRewindIds = [
+    ...(history.currentDecision?.rewindId ? [history.currentDecision.rewindId] : []),
+    ...history.completedDecisions.flatMap((decision) =>
+      decision.rewindId ? [decision.rewindId] : []
+    )
+  ];
+  if (!publishedRewindIds.includes(rewindId)) return;
+  const call = createSkillPilotPersonalizationRewindCall(
+    sessionId,
+    current.stateVersion,
+    rewindId,
+    newClientRequestId()
+  );
+  if (!call) return;
+  await beginSetupMutation(call);
+}
+
+async function beginSetupMutation(call: SkillPilotSetupToolCall): Promise<void> {
+  if (busy || pendingSetupMutation) return;
   const revision = flowRevision;
   pendingSetupMutation = { call };
   busy = true;
@@ -1330,6 +1732,11 @@ async function applySetupOption(optionId: string): Promise<void> {
       renderCurrent();
     }
   }
+}
+
+async function confirmSetupAndStart(): Promise<void> {
+  if (setupState?.requiredAction !== null) return;
+  await retryPendingMessage();
 }
 
 async function retryPendingSetupMutation(): Promise<void> {
@@ -1384,6 +1791,7 @@ async function performPendingSetupMutation(revision: number): Promise<void> {
     flowState = "FAILED";
     throw new Error("setup-mutation-rejected");
   }
+  curriculumNavigationOpen = false;
   await adoptSetupState(next, revision);
 }
 
@@ -1442,9 +1850,32 @@ async function deliverPendingMessage(revision: number): Promise<void> {
   createdIdCopied = false;
   setupState = undefined;
   pendingSetupMutation = undefined;
+  curriculumNavigationOpen = false;
+  personalizationExpanded = false;
+  pendingSetupDisclosureFocus = undefined;
   clearSensitiveRetentionTimer();
   failureKind = undefined;
   flowState = "HOST_MESSAGE_ACCEPTED";
+  finalizeAcceptedHandoff();
+}
+
+function finalizeAcceptedHandoff(): void {
+  root.replaceChildren();
+  root.hidden = true;
+  if (teardownRequested) return;
+  teardownRequested = true;
+
+  const compatibilityApi = compatibilityWindow.openai;
+  const requestClose = compatibilityApi?.requestClose;
+  const closeRequest = typeof requestClose === "function"
+    ? Promise.resolve().then(() => requestClose.call(compatibilityApi))
+    : Promise.resolve();
+  // The message has already been accepted. Closing the component is therefore
+  // best-effort only and must never reopen a retry path or resend anything.
+  void Promise.allSettled([
+    bridge.requestTeardown(),
+    closeRequest
+  ]);
 }
 
 function resetForFreshInput(): void {
@@ -1555,6 +1986,9 @@ function clearSensitiveRuntime(renderAfterClear: boolean): void {
   createdIdCopied = false;
   setupState = undefined;
   pendingSetupMutation = undefined;
+  curriculumNavigationOpen = false;
+  personalizationExpanded = false;
+  pendingSetupDisclosureFocus = undefined;
   curriculumCatalogCategory = "SCHOOL";
   curriculumQualityFilter = "green";
   pendingCurriculumFilterFocus = undefined;

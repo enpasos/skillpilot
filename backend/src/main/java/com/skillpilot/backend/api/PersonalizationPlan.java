@@ -30,7 +30,9 @@ public record PersonalizationPlan(
         List<DecisionSummary> preservedDecisions,
         List<DecisionPrompt> pendingDecisions,
         boolean canReopenMigratedPersonalization,
-        String problemCode) {
+        String problemCode,
+        String stageLabelEn,
+        String groupLabelEn) {
 
     public PersonalizationPlan {
         stage = stage == null ? Stage.INVALID : stage;
@@ -69,6 +71,8 @@ public record PersonalizationPlan(
                 List.of(),
                 List.of(),
                 false,
+                null,
+                null,
                 null);
     }
 
@@ -114,7 +118,54 @@ public record PersonalizationPlan(
                 preservedDecisions,
                 pendingDecisions,
                 canReopenMigratedPersonalization,
-                problemCode);
+                problemCode,
+                null,
+                null);
+    }
+
+    /** Compatibility constructor for the pre-localized canonical plan shape. */
+    public PersonalizationPlan(
+            Stage stage,
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> displayOptions,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions,
+            boolean canReopenMigratedPersonalization,
+            String problemCode) {
+        this(
+                stage,
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayOptions,
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                preservedDecisions,
+                pendingDecisions,
+                canReopenMigratedPersonalization,
+                problemCode,
+                null,
+                null);
     }
 
     public boolean required() {
@@ -148,7 +199,9 @@ public record PersonalizationPlan(
                 decisions,
                 pendingDecisions,
                 canReopenMigratedPersonalization,
-                problemCode);
+                problemCode,
+                stageLabelEn,
+                groupLabelEn);
     }
 
     public enum Stage {
@@ -185,10 +238,45 @@ public record PersonalizationPlan(
             String scopeKey,
             String scopeValue,
             String scopeLabel,
-            OptionKind kind) {
+            OptionKind kind,
+            String landscapeLabelEn,
+            String filterLabelEn,
+            String scopeLabelEn) {
 
         public Option {
             kind = kind == null ? OptionKind.VALUE : kind;
+        }
+
+        /** Compatibility constructor for the pre-localized full option shape. */
+        public Option(
+                String optionId,
+                String stageId,
+                String groupId,
+                String groupInstanceId,
+                String landscapeId,
+                String landscapeLabel,
+                String filterId,
+                String filterLabel,
+                String scopeKey,
+                String scopeValue,
+                String scopeLabel,
+                OptionKind kind) {
+            this(
+                    optionId,
+                    stageId,
+                    groupId,
+                    groupInstanceId,
+                    landscapeId,
+                    landscapeLabel,
+                    filterId,
+                    filterLabel,
+                    scopeKey,
+                    scopeValue,
+                    scopeLabel,
+                    kind,
+                    null,
+                    null,
+                    null);
         }
 
         /**
@@ -298,7 +386,13 @@ public record PersonalizationPlan(
      */
     public record DecisionPrompt(
             String stageLabel,
-            String groupLabel) {
+            String groupLabel,
+            String stageLabelEn,
+            String groupLabelEn) {
+
+        public DecisionPrompt(String stageLabel, String groupLabel) {
+            this(stageLabel, groupLabel, null, null);
+        }
     }
 
     /**
@@ -317,11 +411,33 @@ public record PersonalizationPlan(
             String groupId,
             String groupLabel,
             String groupInstanceId,
-            List<Option> selectedOptions) {
+            List<Option> selectedOptions,
+            String stageLabelEn,
+            String groupLabelEn) {
 
         public CompletedDecision {
             selectedOptions =
                     selectedOptions == null ? List.of() : List.copyOf(selectedOptions);
+        }
+
+        public CompletedDecision(
+                String rewindId,
+                String stageId,
+                String stageLabel,
+                String groupId,
+                String groupLabel,
+                String groupInstanceId,
+                List<Option> selectedOptions) {
+            this(
+                    rewindId,
+                    stageId,
+                    stageLabel,
+                    groupId,
+                    groupLabel,
+                    groupInstanceId,
+                    selectedOptions,
+                    null,
+                    null);
         }
     }
 
@@ -336,11 +452,31 @@ public record PersonalizationPlan(
             String groupId,
             String groupLabel,
             String groupInstanceId,
-            List<Option> selectedOptions) {
+            List<Option> selectedOptions,
+            String stageLabelEn,
+            String groupLabelEn) {
 
         public DecisionSummary {
             selectedOptions =
                     selectedOptions == null ? List.of() : List.copyOf(selectedOptions);
+        }
+
+        public DecisionSummary(
+                String stageId,
+                String stageLabel,
+                String groupId,
+                String groupLabel,
+                String groupInstanceId,
+                List<Option> selectedOptions) {
+            this(
+                    stageId,
+                    stageLabel,
+                    groupId,
+                    groupLabel,
+                    groupInstanceId,
+                    selectedOptions,
+                    null,
+                    null);
         }
     }
 
@@ -549,6 +685,85 @@ public record PersonalizationPlan(
             List<CompletedDecision> completedDecisions,
             List<DecisionSummary> preservedDecisions,
             List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                null,
+                groupId,
+                groupLabel,
+                null,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayOptions,
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                preservedDecisions,
+                pendingDecisions);
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String stageLabelEn,
+            String groupId,
+            String groupLabel,
+            String groupLabelEn,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> displayOptions,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
+        return selection(
+                stageId,
+                stageLabel,
+                stageLabelEn,
+                groupId,
+                groupLabel,
+                groupLabelEn,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                displayOptions,
+                navigationOptions,
+                currentSelectedOptions,
+                currentRewindId,
+                completedDecisions,
+                List.of(),
+                pendingDecisions);
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String stageLabelEn,
+            String groupId,
+            String groupLabel,
+            String groupLabelEn,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> displayOptions,
+            List<Option> navigationOptions,
+            List<Option> currentSelectedOptions,
+            String currentRewindId,
+            List<CompletedDecision> completedDecisions,
+            List<DecisionSummary> preservedDecisions,
+            List<DecisionPrompt> pendingDecisions) {
         return new PersonalizationPlan(
                 Stage.SELECTION,
                 stageId,
@@ -568,7 +783,9 @@ public record PersonalizationPlan(
                 preservedDecisions,
                 pendingDecisions,
                 false,
-                null);
+                null,
+                stageLabelEn,
+                groupLabelEn);
     }
 
     public static PersonalizationPlan complete(List<Option> navigationOptions) {

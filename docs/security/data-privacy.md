@@ -183,7 +183,9 @@ current-unit intent. It keeps four data paths distinct:
    curriculum, and personalisation tools. The provider therefore processes the
    projected setup options, selected curriculum/personalisation references,
    state versions, and retry IDs, but not the permanent SkillPilot ID. Only
-   after setup is complete does the host receive the unchanged start message.
+   after setup is complete and the learner explicitly selects `Lernen starten`
+   / `Start learning` in the final review does the host receive the unchanged
+   start message.
 
 The normal App-first path therefore does not navigate to the SkillPilot web
 application. That web application remains only a technical fallback when the
@@ -283,13 +285,17 @@ complete.
    the learner stored it safely before continuing. The ID is not placed in an
    MCP call, host API, widget-state store, URL, log, or telemetry event.
 5. Using only the temporary learning-session reference, the component loads the
-   authoritative context and applies the learner's curriculum and
-   personalisation choices through the existing MCP tools. Every new write uses
-   the latest state version and a new idempotency request ID; only an unchanged
-   transport retry reuses that request ID.
+   authoritative context, keeps completed choices visible, and applies or
+   revises the learner's curriculum and personalisation choices through the
+   existing MCP tools. Every new write uses the latest state version and a new
+   idempotency request ID; only an unchanged transport retry reuses that request
+   ID.
 6. Once the current context no longer requires curriculum or personalisation,
-   the component sends the unchanged short start message to the host. The model
-   then loads the fresh context and starts coaching without repeating setup.
+   the component shows a final review. Only the learner's explicit
+   `Start learning` action sends the unchanged short start message to the host.
+   After host acceptance the component clears its UI and requests teardown;
+   the model then loads the fresh context and starts coaching without repeating
+   setup.
 
 Closing or remounting the component does not recover the permanent ID,
 capability, session, or pending setup from provider widget state or browser

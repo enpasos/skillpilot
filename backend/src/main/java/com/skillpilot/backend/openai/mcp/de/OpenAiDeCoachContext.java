@@ -15,6 +15,7 @@ public record OpenAiDeCoachContext(
         ActiveGoal activeGoal,
         List<Option> options,
         CurriculumCatalog curriculumCatalog,
+        PersonalizationHistory personalizationHistory,
         Decision decision,
         List<Goal> frontier,
         List<Resource> resources,
@@ -112,6 +113,36 @@ public record OpenAiDeCoachContext(
             String category,
             String qualityStatus,
             int sortRank) {
+    }
+
+    /** Bounded, human-facing history of the authored personalization flow. */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record PersonalizationHistory(
+            int schemaVersion,
+            PersonalizationDecision currentDecision,
+            List<PersonalizationDecision> completedDecisions,
+            List<PersonalizationDecision> preservedDecisions) {
+
+        public PersonalizationHistory {
+            completedDecisions = List.copyOf(completedDecisions);
+            preservedDecisions = List.copyOf(preservedDecisions);
+        }
+    }
+
+    /**
+     * Only the opaque rewind reference and learner-facing labels are exposed;
+     * authored stage, group, landscape and filter identifiers stay private.
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record PersonalizationDecision(
+            String rewindId,
+            String stageLabel,
+            String groupLabel,
+            List<String> selectedLabels) {
+
+        public PersonalizationDecision {
+            selectedLabels = List.copyOf(selectedLabels);
+        }
     }
 
     /**

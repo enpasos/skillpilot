@@ -59,7 +59,7 @@ App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
 | Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
 | Zulässige ChatGPT-Sandbox-Familie für Direct-Start-CORS | `https://*.web-sandbox.oaiusercontent.com` |
-| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c/skillpilot-start.html` |
+| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
 | Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
@@ -1119,15 +1119,22 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   `set_skillpilot_curriculum`. Fehlende, doppelte oder fremde Katalogeinträge
   werden fail closed abgewiesen.
 - Bei `requiredAction=setPersonalization` rendert sie nur die neueste
-  serverautoritative Entscheidung und führt jeweils genau einen Schritt über
-  `set_skillpilot_personalization` aus. Beide Schreibwerkzeuge erhalten
+  serverautoritative Entscheidung. Ausgewähltes Curriculum sowie aktuelle,
+  abgeschlossene und unabhängige erhaltene Personalisierungsentscheidungen
+  bleiben wie in der WebGUI kumulativ sichtbar. Curriculum-`Ändern` lädt einen
+  frischen `get_skillpilot_navigation(target=curriculum)`-Katalog;
+  Personalisierungs-`Ändern` übergibt ausschließlich die im neuesten Kontext
+  veröffentlichte opake `rewindId` über `set_skillpilot_personalization`.
+  Alte Optionen oder Rewind-Referenzen werden nie lokal rekonstruiert oder
+  erneut verwendet. Beide Schreibwerkzeuge erhalten
   `expectedStateVersion` exakt aus dem neuesten Erfolg und eine neue
   `clientRequestId`; nur ein unveränderter Transport-Retry verwendet dieselbe
   ID. Bei 409 wird der Kontext genau einmal frisch geladen und jede alte Option
   verworfen.
 - Erst wenn der neueste Vollkontext weder `setCurriculum` noch
-  `setPersonalization` verlangt, sendet die Komponente die unveränderte
-  Startnachricht an den Host. Im normalen App-first-Canary gibt es keinen
+  `setPersonalization` verlangt, zeigt die Komponente einen finalen Review.
+  Ausschließlich die dortige ausdrückliche Aktion `Lernen starten` sendet die
+  unveränderte Startnachricht an den Host. Im normalen App-first-Canary gibt es keinen
   **SkillPilot öffnen**-Schritt und der Coach fragt die bereits abgeschlossenen
   Setupdimensionen nicht erneut ab.
 - Eine unbekannte SkillPilot-ID liefert dagegen stabil und identifierfrei
@@ -1142,6 +1149,9 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
   `get_skillpilot_context` beweist die fachliche Wiederaufnahme. Ablehnung oder
   unklarer Ausgang darf nur dieselbe Nachricht auf demselben Kanal innerhalb
   der ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
+  Nach bestätigter Annahme entfernt die Komponente ihre Karte lokal und fordert
+  den Host genau einmal best effort zum Schließen auf; sie bietet dort keinen
+  neuen Startversuch an.
 - Abgelaufene, widerrufene oder policy-seitig blockierte Capabilities sowie
   eine unbekannte SkillPilot-ID müssen stabil identifierfrei scheitern.
   Transiente Fehler behalten nur den gebundenen exakten Retry offen.

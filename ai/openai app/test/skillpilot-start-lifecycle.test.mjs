@@ -30,6 +30,7 @@ class FakeElement {
     this.disabled = false;
     this.focused = false;
     this.selected = false;
+    this.hidden = false;
   }
 
   addEventListener(type, listener) {
@@ -142,6 +143,10 @@ async function buildLifecycleSource() {
                     globalThis.__messages.push(text);
                     return globalThis.__messageHandler(text);
                   }
+                  async requestTeardown() {
+                    globalThis.__teardownRequests += 1;
+                    await globalThis.__requestTeardownHandler();
+                  }
                   openLink(url: string) {
                     globalThis.__openedLinks.push(url);
                     return Promise.resolve(globalThis.__openLinkResult);
@@ -200,6 +205,10 @@ async function buildChatGptCompatibilityLifecycleSource() {
                   sendMessage(params) {
                     globalThis.__standardMessages.push(params);
                     return Promise.reject(new Error("unexpected-standard-message"));
+                  }
+                  requestTeardown() {
+                    globalThis.__teardownRequests += 1;
+                    return globalThis.__requestTeardownHandler();
                   }
                   openLink(params) {
                     globalThis.__standardOpenedLinks.push(params);
@@ -305,12 +314,19 @@ function curriculumCatalog(entries) {
   };
 }
 
+const defaultCurriculum = {
+  curriculumId: "DE_GYMNASIUM",
+  title: "Gymnasium (DE)"
+};
+
 function setupResult({
   stateVersion = 1,
   locale = "de",
   requiredAction = "",
   options = [],
+  curriculum = requiredAction === "setCurriculum" ? undefined : defaultCurriculum,
   curriculumCatalog,
+  personalizationHistory,
   decision
 } = {}) {
   return {
@@ -320,9 +336,40 @@ function setupResult({
       communicationLocale: locale,
       requiredAction,
       options,
+      ...(curriculum ? { curriculum } : {}),
       ...(curriculumCatalog ? { curriculumCatalog } : {}),
+      ...(personalizationHistory ? { personalizationHistory } : {}),
       ...(decision ? { decision } : {}),
       learningState: "setup"
+    }
+  };
+}
+
+function curriculumNavigationResult({
+  stateVersion = 1,
+  locale = "de",
+  curriculum,
+  options,
+  catalog
+}) {
+  return {
+    isError: false,
+    structuredContent: {
+      contractMajor: 1,
+      stateVersion,
+      stateSchemaVersion: 1,
+      workflowVersion: "flow-v1",
+      curriculumRevision: "revision-v1",
+      communicationLocale: locale,
+      extensions: {},
+      target: "curriculum",
+      requiredAction: "setCurriculum",
+      ...(curriculum ? { curriculum } : {}),
+      curriculumCatalog: catalog,
+      options,
+      instruction: locale === "de"
+        ? "Wähle ein Curriculum."
+        : "Choose a curriculum."
     }
   };
 }
@@ -344,7 +391,10 @@ function jsonResponse(
 function createHarness({
   initial = openResult(),
   hostSupport = { serverTools: true, textMessages: true, openLinks: true },
-  chatGptCompatibility = false
+  chatGptCompatibility = false,
+  requestClose = true,
+  requestCloseHandler = () => Promise.resolve(),
+  requestTeardownHandler = () => Promise.resolve()
 } = {}) {
   const rootElement = new FakeElement("main");
   const windowListeners = new Map();
@@ -391,6 +441,11 @@ function createHarness({
     __standardToolCalls: [],
     __standardMessages: [],
     __standardOpenedLinks: [],
+    __teardownRequests: 0,
+    __closeRequests: 0,
+    __requestTeardownHandler() {
+      return requestTeardownHandler();
+    },
     __issueHandler(args) {
       return issueHandler(args);
     },
@@ -451,6 +506,12 @@ function createHarness({
     toolOutput: initial?.structuredContent,
     toolResponseMetadata: initial?._meta
   };
+  if (requestClose) {
+    context.openai.requestClose = () => {
+      context.__closeRequests += 1;
+      return requestCloseHandler();
+    };
+  }
   if (chatGptCompatibility) {
     context.openai.callTool = (name, arguments_) => {
       context.__toolCalls.push({ name, arguments: arguments_ });
@@ -570,8 +631,27 @@ function selectCurriculum(rootElement, curriculumId) {
   select.dispatch("change");
 }
 
+function confirmFinalReview(harness, locale = "de") {
+  const label = locale === "de" ? "Lernen starten" : "Start learning";
+  const start = findByText(harness.rootElement, label);
+  assert.ok(start, `missing explicit final review action: ${label}`);
+  start.dispatch("click");
+}
+
 async function flushPromises() {
   for (let index = 0; index < 80; index += 1) await Promise.resolve();
+}
+
+function assertAcceptedWidgetClosed(harness, expectedCloseRequests = 1) {
+  assert.equal(harness.rootElement.hidden, true);
+  assert.equal(harness.rootElement.children.length, 0);
+  assert.equal(harness.context.__teardownRequests, 1);
+  assert.equal(harness.context.__closeRequests, expectedCloseRequests);
+  assert.equal(findByText(harness.rootElement, "Startnachricht angenommen"), undefined);
+  assert.equal(
+    findByText(harness.rootElement, "Neuen Startversuch beginnen"),
+    undefined
+  );
 }
 
 test("duplicate initial result preserves existing-ID and English selections", async () => {
@@ -633,7 +713,7 @@ test("curriculum selection matches the WebGUI category and quality filters", asy
   ));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   const visibleCurriculumIds = () => {
@@ -704,7 +784,7 @@ test("curriculum category and quality copy matches the English WebGUI", async ()
   })));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement, "en");
-  findByText(harness.rootElement, "Start learning").dispatch("click");
+  findByText(harness.rootElement, "Start setup").dispatch("click");
   await flushPromises();
 
   for (const label of [
@@ -719,6 +799,179 @@ test("curriculum category and quality copy matches the English WebGUI", async ()
   ]) {
     assert.ok(findByText(harness.rootElement, label), `missing English filter label: ${label}`);
   }
+});
+
+test("cumulative setup cards use fresh navigation and version-bound retryable rewinds", async () => {
+  const curriculum = {
+    curriculumId: "DE_GYMNASIUM",
+    title: "Gymnasium (DE)",
+    subject: "Mathematik"
+  };
+  const history = {
+    schemaVersion: 1,
+    completedDecisions: [{
+      rewindId: "rewind-stage",
+      stageLabel: "Schulstufe",
+      groupLabel: "Aktuelle Schulstufe",
+      selectedLabels: ["Sekundarstufe II"]
+    }],
+    preservedDecisions: [{
+      stageLabel: "Bundesland",
+      groupLabel: "Land",
+      selectedLabels: ["Hessen"]
+    }]
+  };
+  const curriculumOptions = [{
+    kind: "curriculum",
+    id: "DE_GYMNASIUM",
+    label: "Gymnasium (DE)"
+  }, {
+    kind: "curriculum",
+    id: "DE_UNIVERSITY",
+    label: "Universität (DE)"
+  }];
+  const catalog = curriculumCatalog([
+    ["DE_GYMNASIUM", "SCHOOL", "green", 0],
+    ["DE_UNIVERSITY", "UNI", "orange", 1]
+  ]);
+  const completeContext = () => setupResult({
+    stateVersion: 20,
+    requiredAction: "setScope",
+    curriculum,
+    personalizationHistory: history
+  });
+  const harness = createHarness();
+  let rewindAttempt = 0;
+  harness.setSetupHandler((call) => {
+    if (call.name === "get_skillpilot_context") {
+      return Promise.resolve(completeContext());
+    }
+    if (call.name === "get_skillpilot_navigation") {
+      return Promise.resolve(curriculumNavigationResult({
+        stateVersion: 20,
+        curriculum,
+        options: curriculumOptions,
+        catalog
+      }));
+    }
+    rewindAttempt += 1;
+    if (rewindAttempt === 1) return new Promise(() => {});
+    return Promise.resolve(setupResult({
+      stateVersion: 21,
+      requiredAction: "setPersonalization",
+      curriculum,
+      personalizationHistory: {
+        schemaVersion: 1,
+        currentDecision: {
+          rewindId: "rewind-stage",
+          stageLabel: "Schulstufe",
+          groupLabel: "Aktuelle Schulstufe",
+          selectedLabels: ["Sekundarstufe II"]
+        },
+        completedDecisions: [],
+        preservedDecisions: history.preservedDecisions
+      },
+      decision: {
+        stageLabel: "Schulstufe",
+        groupLabel: "Aktuelle Schulstufe",
+        minSelections: 1,
+        maxSelections: 1,
+        selectedCount: 1
+      },
+      options: [{
+        kind: "personalization",
+        id: "stage-sek-i",
+        label: "Sekundarstufe I"
+      }]
+    }));
+  });
+
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+
+  assert.deepEqual(harness.context.__messages, []);
+  assert.ok(findByText(harness.rootElement, "Einrichtung prüfen"));
+  assert.ok(findByText(harness.rootElement, "Gymnasium (DE) · Mathematik"));
+  assert.ok(findByText(harness.rootElement, "Sekundarstufe II, Hessen"));
+  const setupToggles = () => allElements(harness.rootElement).filter((element) =>
+    element.className === "setup-step-toggle"
+  );
+  assert.equal(setupToggles().length, 2);
+  assert.equal(setupToggles()[0].attributes.get("aria-expanded"), "false");
+  for (const toggle of setupToggles()) {
+    const controlledId = toggle.attributes.get("aria-controls");
+    assert.ok(controlledId);
+    assert.ok(allElements(harness.rootElement).some((element) =>
+      element.id === controlledId
+    ));
+  }
+
+  setupToggles()[0].dispatch("click");
+  await flushPromises();
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(harness.context.__toolCalls.at(-1))),
+    {
+      name: "get_skillpilot_navigation",
+      arguments: { learningSessionId, target: "curriculum" }
+    }
+  );
+  const collapse = findByText(harness.rootElement, "Einklappen");
+  assert.ok(collapse);
+  assert.equal(collapse.attributes.get("aria-expanded"), "true");
+  assert.equal(collapse.focused, true);
+  const callsBeforeFilter = harness.context.__toolCalls.length;
+  findByText(harness.rootElement, "Alle").dispatch("click");
+  assert.equal(harness.context.__toolCalls.length, callsBeforeFilter);
+
+  findByText(harness.rootElement, "Einklappen").dispatch("click");
+  await flushPromises();
+  assert.equal(harness.context.__toolCalls.at(-1).name, "get_skillpilot_context");
+  assert.equal(setupToggles()[0].focused, true);
+
+  const callsBeforeDisclosure = harness.context.__toolCalls.length;
+  setupToggles()[1].dispatch("click");
+  assert.equal(harness.context.__toolCalls.length, callsBeforeDisclosure);
+  assert.equal(setupToggles()[1].attributes.get("aria-expanded"), "true");
+  assert.equal(setupToggles()[1].focused, true);
+  assert.ok(findByText(harness.rootElement, "Abgeschlossene Auswahlen"));
+  assert.ok(findByText(harness.rootElement, "Beibehaltene Auswahlen"));
+  assert.equal(
+    allElements(harness.rootElement).filter((element) =>
+      element.className === "setup-history-change"
+    ).length,
+    1,
+    "preserved decisions must not expose a rewind action"
+  );
+
+  const rewind = allElements(harness.rootElement).find((element) =>
+    element.className === "setup-history-change"
+  );
+  rewind.dispatch("click");
+  await flushPromises();
+  harness.runTimerWithDelay(15_000);
+  await flushPromises();
+  const firstRewind = harness.context.__toolCalls.at(-1);
+  assert.deepEqual(JSON.parse(JSON.stringify(firstRewind)), {
+    name: "set_skillpilot_personalization",
+    arguments: {
+      learningSessionId,
+      rewindId: "rewind-stage",
+      expectedStateVersion: 20,
+      clientRequestId: secondRequestId
+    }
+  });
+  findByText(harness.rootElement, "Dieselbe Auswahl wiederholen").dispatch("click");
+  await flushPromises();
+  const retryRewind = harness.context.__toolCalls.at(-1);
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(retryRewind)),
+    JSON.parse(JSON.stringify(firstRewind))
+  );
+  assert.ok(findByText(harness.rootElement, "Sekundarstufe I"));
+  assert.deepEqual(harness.context.__messages, []);
+  assert.doesNotMatch(JSON.stringify(harness.context.__toolCalls), new RegExp(skillpilotId));
 });
 
 test("CREATE keeps the permanent ID local and completes curriculum and personalisation before handoff", async () => {
@@ -792,7 +1045,7 @@ test("CREATE keeps the permanent ID local and completes curriculum and personali
   const eligibility = findInput(harness.rootElement, "checkbox");
   eligibility.checked = true;
   eligibility.dispatch("change");
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   const directBody = JSON.parse(harness.context.__fetchCalls[0].init.body);
@@ -870,10 +1123,14 @@ test("CREATE keeps the permanent ID local and completes curriculum and personali
       clientRequestId: fourthRequestId
     }
   );
+  assert.deepEqual(harness.context.__messages, []);
+  assert.ok(findByText(harness.rootElement, "Einrichtung prüfen"));
+  confirmFinalReview(harness);
+  await flushPromises();
   assert.deepEqual(harness.context.__messages, [
     `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`
   ]);
-  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
+  assertAcceptedWidgetClosed(harness);
   assert.doesNotMatch(JSON.stringify(harness.context.__toolCalls), new RegExp(skillpilotId));
   assert.doesNotMatch(JSON.stringify(harness.context.__messages), new RegExp(skillpilotId));
   assert.equal(findByText(harness.rootElement, "SkillPilot öffnen"), undefined);
@@ -889,7 +1146,7 @@ test("pagehide and retention expiry erase a CREATE recovery ID before any setup 
     const eligibility = findInput(harness.rootElement, "checkbox");
     eligibility.checked = true;
     eligibility.dispatch("change");
-    findByText(harness.rootElement, "Lernen starten").dispatch("click");
+    findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
     await flushPromises();
     assert.ok(findByText(harness.rootElement, skillpilotId));
 
@@ -939,7 +1196,7 @@ test("an uncertain setup write retries byte-identical arguments and UUID", async
   });
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
   selectCurriculum(harness.rootElement, "DE_GYMNASIUM");
   await flushPromises();
@@ -956,6 +1213,8 @@ test("an uncertain setup write retries byte-identical arguments and UUID", async
     JSON.parse(JSON.stringify(firstWrite))
   );
   assert.equal(firstWrite.arguments.clientRequestId, secondRequestId);
+  confirmFinalReview(harness);
+  await flushPromises();
   assert.equal(harness.context.__messages.length, 1);
 });
 
@@ -984,7 +1243,7 @@ test("a setup write cannot hand off without a strictly newer state version", asy
   });
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
   selectCurriculum(harness.rootElement, "DE_GYMNASIUM");
   await flushPromises();
@@ -1009,7 +1268,7 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   });
   await flushPromises();
 
-  const disabledStart = findByText(harness.rootElement, "Lernen starten");
+  const disabledStart = findByText(harness.rootElement, "Einrichtung starten");
   assert.ok(disabledStart);
   assert.equal(disabledStart.disabled, true);
   const privacyCopy = allElements(harness.rootElement)
@@ -1019,7 +1278,31 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   assert.match(privacyCopy, /niemals in Chat, Modellkontext, MCP-Toolargumente oder -resultate/);
   assert.match(privacyCopy, /nur die kurzlebige Lernsession/);
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  assert.deepEqual(harness.context.__messages, []);
+  assert.deepEqual(
+    allElements(harness.rootElement)
+      .filter((element) => element.className === "setup-step-number")
+      .map((element) => element.textContent),
+    ["2", "3", "4"]
+  );
+  for (const label of [
+    "Schritt 2: ",
+    "Schritt 3: ",
+    "Schritt 4: ",
+    "✓ Ausgewählt",
+    "✓ Eingerichtet",
+    "Keine weiteren Angaben erforderlich"
+  ]) {
+    assert.ok(findByText(harness.rootElement, label), `missing setup review copy: ${label}`);
+  }
+  for (const step of allElements(harness.rootElement).filter((element) =>
+    element.className.split(" ").includes("setup-step")
+  )) {
+    assert.ok(step.attributes.get("aria-labelledby"));
+  }
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 2);
@@ -1067,6 +1350,8 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
 
   assert.equal(harness.context.__messages.length, 1);
   assert.ok(findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten"));
+  assert.equal(harness.context.__teardownRequests, 0);
+  assert.equal(harness.context.__closeRequests, 0);
   findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten").dispatch("click");
   await flushPromises();
 
@@ -1074,21 +1359,7 @@ test("explicit confirmation issues an ID-free capability, posts the ID directly,
   assert.equal(harness.context.__fetchCalls.length, 1, "message retry must not launch again");
   assert.equal(harness.context.__messages.length, 2);
   assert.equal(harness.context.__messages[0], harness.context.__messages[1]);
-  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
-  assert.ok(findByText(
-    harness.rootElement,
-    "Der Host hat die Nachrichtenanfrage angenommen. Dies bestätigt noch keine Antwort des Lerncoachs."
-  ));
-
-  findByText(harness.rootElement, "Neuen Startversuch beginnen").dispatch("click");
-  enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
-  await flushPromises();
-
-  assert.equal(harness.context.__toolCalls.length, 4, "a new explicit attempt may issue capability and context again");
-  assert.equal(harness.context.__fetchCalls.length, 2, "a new explicit attempt may start one new session");
-  assert.equal(harness.context.__messages.length, 3);
-  assert.equal(JSON.parse(harness.context.__fetchCalls[1].init.body).clientRequestId, secondRequestId);
+  assertAcceptedWidgetClosed(harness);
 });
 
 test("ChatGPT Web aliases show the ID form and complete one direct-start handoff", async () => {
@@ -1101,7 +1372,9 @@ test("ChatGPT Web aliases show the ID form and complete one direct-start handoff
   );
   assert.ok(findInput(harness.rootElement, "radio", "CREATE"));
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__standardConnects, 1);
@@ -1124,7 +1397,7 @@ test("ChatGPT Web aliases show the ID form and complete one direct-start handoff
     harness.context.__messages[0],
     `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId: ${learningSessionId}`
   );
-  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
+  assertAcceptedWidgetClosed(harness);
 });
 
 test("an unclear ui/message outcome is retryable but may duplicate only the same chat message", async () => {
@@ -1132,7 +1405,9 @@ test("an unclear ui/message outcome is retryable but may duplicate only the same
   harness.setMessageHandler(() => new Promise(() => {}));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 2);
@@ -1146,6 +1421,8 @@ test("an unclear ui/message outcome is retryable but may duplicate only the same
     "Es ist unklar, ob der Host die Startnachricht bereits aufgenommen hat. Erneutes Anbieten kann dieselbe Nachricht doppelt in den Chat einfügen, erstellt aber keine zweite Lernsession."
   ));
   assert.ok(findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten"));
+  assert.equal(harness.context.__teardownRequests, 0);
+  assert.equal(harness.context.__closeRequests, 0);
 
   harness.setMessageHandler(() => Promise.resolve({ supported: true, hostAccepted: true }));
   findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten").dispatch("click");
@@ -1155,7 +1432,46 @@ test("an unclear ui/message outcome is retryable but may duplicate only the same
   assert.equal(harness.context.__fetchCalls.length, 1);
   assert.equal(harness.context.__messages.length, 2);
   assert.equal(harness.context.__messages[0], harness.context.__messages[1]);
-  assert.ok(findByText(harness.rootElement, "Startnachricht angenommen"));
+  assertAcceptedWidgetClosed(harness);
+});
+
+test("accepted handoff stays closed when teardown fails and duplicate host delivery follows", async () => {
+  const harness = createHarness({
+    requestCloseHandler: () => Promise.reject(new Error("close-rejected")),
+    requestTeardownHandler: () => Promise.reject(new Error("teardown-rejected"))
+  });
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
+  await flushPromises();
+
+  assertAcceptedWidgetClosed(harness);
+  const toolCalls = harness.context.__toolCalls.length;
+  const fetchCalls = harness.context.__fetchCalls.length;
+  const messages = harness.context.__messages.length;
+
+  harness.dispatchWindow("pageshow");
+  harness.context.__deliverToolResult(openResult());
+  await flushPromises();
+
+  assertAcceptedWidgetClosed(harness);
+  assert.equal(harness.context.__toolCalls.length, toolCalls);
+  assert.equal(harness.context.__fetchCalls.length, fetchCalls);
+  assert.equal(harness.context.__messages.length, messages);
+});
+
+test("accepted handoff does not require the optional ChatGPT requestClose alias", async () => {
+  const harness = createHarness({ requestClose: false });
+  await flushPromises();
+  enterIdAndConfirm(harness.rootElement);
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
+  await flushPromises();
+
+  assertAcceptedWidgetClosed(harness, 0);
 });
 
 test("an uncertain HTTPS result retries the byte-identical request without reissuing capability", async () => {
@@ -1169,11 +1485,13 @@ test("an uncertain HTTPS result retries the byte-identical request without reiss
   });
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.ok(findByText(harness.rootElement, "Denselben Startversuch wiederholen"));
   findByText(harness.rootElement, "Denselben Startversuch wiederholen").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 2);
@@ -1195,7 +1513,7 @@ test("a definitive profile rejection clears the bound request and requires a new
   }, url, false)));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 1);
@@ -1210,7 +1528,7 @@ test("a definitive profile rejection clears the bound request and requires a new
 
   findByText(harness.rootElement, "Neuen Startversuch beginnen").dispatch("click");
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
   assert.equal(harness.context.__toolCalls.length, 2);
   assert.equal(harness.context.__fetchCalls.length, 2);
@@ -1221,7 +1539,7 @@ test("a rejected capability never sends the ID through tools/call and never star
   harness.setIssueHandler(() => Promise.resolve({ isError: true }));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 1);
@@ -1242,7 +1560,7 @@ test("issuer decision metadata must match the explicit major-policy decision", a
   harness.setIssueHandler(() => Promise.resolve(mismatched));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 1);
@@ -1258,7 +1576,7 @@ test("issuer policy revision must match the open component contract", async () =
   harness.setIssueHandler(() => Promise.resolve(mismatched));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 1);
@@ -1291,7 +1609,9 @@ test("handoff timeout clears the retained message and prevents another ui/messag
   harness.setMessageHandler(() => Promise.resolve({ supported: true, hostAccepted: false }));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__messages.length, 1);
@@ -1302,6 +1622,8 @@ test("handoff timeout clears the retained message and prevents another ui/messag
   assert.equal(findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten"), undefined);
   assert.equal(findByText(harness.rootElement, "Denselben Startversuch wiederholen"), undefined);
   assert.equal(harness.context.__messages.length, 1);
+  assert.equal(harness.context.__teardownRequests, 0);
+  assert.equal(harness.context.__closeRequests, 0);
 });
 
 test("session expiry releases the start message and permanently blocks its resend", async () => {
@@ -1312,7 +1634,9 @@ test("session expiry releases the start message and permanently blocks its resen
   harness.setMessageHandler(() => Promise.resolve({ supported: true, hostAccepted: false }));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__messages.length, 1);
@@ -1323,6 +1647,8 @@ test("session expiry releases the start message and permanently blocks its resen
   assert.equal(findByText(harness.rootElement, "Dieselbe Nachricht erneut anbieten"), undefined);
   assert.equal(harness.context.__messages.length, 1);
   assert.ok(findByText(harness.rootElement, "Neuen Startversuch beginnen"));
+  assert.equal(harness.context.__teardownRequests, 0);
+  assert.equal(harness.context.__closeRequests, 0);
 });
 
 test("a delayed launch response cannot extend the original handoff-retention deadline", async () => {
@@ -1334,11 +1660,13 @@ test("a delayed launch response cannot extend the original handoff-retention dea
   harness.setMessageHandler(() => Promise.resolve({ supported: true, hostAccepted: false }));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   harness.advanceClock(10_000);
   resolveFetch(jsonResponse(launchResult("de", 60 * 60 * 1_000)));
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__messages.length, 1);
@@ -1361,7 +1689,7 @@ test("WARN offers an explicit v1-or-v2 choice and BLOCK opens only the allowlist
     initial: openResult({ newSessionPolicy: "WARN", successor })
   });
   await flushPromises();
-  assert.ok(findByText(warn.rootElement, "Bei v1 bleiben und starten"));
+  assert.ok(findByText(warn.rootElement, "Bei v1 bleiben und Einrichtung starten"));
   assert.ok(findByText(warn.rootElement, "SkillPilot Coach v2 öffnen"));
   findByText(warn.rootElement, "SkillPilot Coach v2 öffnen").dispatch("click");
   await flushPromises();
@@ -1400,7 +1728,7 @@ test("a dispatched request remains replayable past capability expiry until its h
   });
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 1);
@@ -1408,6 +1736,8 @@ test("a dispatched request remains replayable past capability expiry until its h
   assert.ok(findByText(harness.rootElement, "Denselben Startversuch wiederholen"));
   harness.advanceClock(2_000);
   findByText(harness.rootElement, "Denselben Startversuch wiederholen").dispatch("click");
+  await flushPromises();
+  confirmFinalReview(harness);
   await flushPromises();
 
   assert.equal(harness.context.__toolCalls.length, 2);
@@ -1425,7 +1755,19 @@ test("the selected locale controls only the direct body and canonical host messa
   harness.setSetupHandler(() => Promise.resolve(setupResult({ locale: "en" })));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement, "en");
-  findByText(harness.rootElement, "Start learning").dispatch("click");
+  findByText(harness.rootElement, "Start setup").dispatch("click");
+  await flushPromises();
+  for (const label of [
+    "Step 2: ",
+    "Step 3: ",
+    "Step 4: ",
+    "✓ Selected",
+    "✓ Configured",
+    "No further details required"
+  ]) {
+    assert.ok(findByText(harness.rootElement, label), `missing English review copy: ${label}`);
+  }
+  confirmFinalReview(harness, "en");
   await flushPromises();
 
   assert.equal(
@@ -1443,7 +1785,7 @@ test("pagehide and fallback remove pending secrets and use only the exact allowl
   harness.setFetchHandler(() => Promise.reject(new Error("offline")));
   await flushPromises();
   enterIdAndConfirm(harness.rootElement);
-  findByText(harness.rootElement, "Lernen starten").dispatch("click");
+  findByText(harness.rootElement, "Einrichtung starten").dispatch("click");
   await flushPromises();
   assert.ok(findByText(harness.rootElement, "Denselben Startversuch wiederholen"));
 

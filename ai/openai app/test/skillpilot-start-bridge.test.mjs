@@ -57,6 +57,10 @@ async function buildBridgeSource() {
                     }
                     return Promise.resolve(globalThis.__messageResult);
                   }
+                  requestTeardown() {
+                    globalThis.__teardownRequests += 1;
+                    return Promise.resolve();
+                  }
                   openLink(params) {
                     globalThis.__openedLinks.push(params);
                     return Promise.resolve({});
@@ -77,6 +81,21 @@ async function buildBridgeSource() {
 
 const bridgeSource = await buildBridgeSource();
 
+async function buildRealBridgeSource() {
+  const result = await build({
+    entryPoints: [join(root, "widget/src/skillpilot-start-bridge.ts")],
+    bundle: true,
+    format: "iife",
+    globalName: "SkillPilotStartBridgeBundle",
+    platform: "browser",
+    target: "es2022",
+    write: false
+  });
+  return result.outputFiles[0].text;
+}
+
+const realBridgeSource = await buildRealBridgeSource();
+
 function createHarness(hostCapabilities, options = {}) {
   const context = {
     Promise,
@@ -88,6 +107,7 @@ function createHarness(hostCapabilities, options = {}) {
     __toolCalls: [],
     __messages: [],
     __openedLinks: [],
+    __teardownRequests: 0,
     __standardToolResult: options.standardToolResult
       ?? { structuredContent: { status: "CAPABILITY_ISSUED" } },
     __standardToolError: options.standardToolError,
@@ -158,6 +178,56 @@ const capabilityEnvelope = {
   }
 };
 
+test("teardown does not wait for the standard MCP Apps handshake", async () => {
+  const { context, bridge } = createHarness({}, { connectMode: "pending" });
+
+  await bridge.requestTeardown();
+
+  assert.equal(context.__teardownRequests, 1);
+});
+
+test("the real MCP Apps transport sends teardown before initialize settles", async () => {
+  const messages = [];
+  const listeners = new Map();
+  const parent = {
+    postMessage(message) {
+      messages.push(message);
+    }
+  };
+  const context = {
+    AbortController,
+    Promise,
+    URL,
+    console,
+    parent,
+    setTimeout() {
+      return 1;
+    },
+    clearTimeout() {},
+    addEventListener(type, listener) {
+      listeners.set(type, listener);
+    },
+    removeEventListener(type) {
+      listeners.delete(type);
+    }
+  };
+  context.window = context;
+  context.globalThis = context;
+  vm.runInNewContext(realBridgeSource, context, {
+    filename: "skillpilot-start-real-bridge.test-bundle.js"
+  });
+
+  const { SkillPilotStartBridge } = context.SkillPilotStartBridgeBundle;
+  const bridge = new SkillPilotStartBridge(() => undefined, parent);
+  await Promise.resolve();
+  await bridge.requestTeardown();
+
+  assert.ok(messages.some((message) => message.method === "ui/initialize"));
+  assert.ok(messages.some(
+    (message) => message.method === "ui/notifications/request-teardown"
+  ));
+});
+
 test("bridge registers the result handler before connect and uses app-only tools/call", async () => {
   const { context, bridge } = createHarness({
     serverTools: {},
@@ -198,6 +268,10 @@ test("setup tools stay on the attempt channel and carry only the learning-sessio
     arguments: { learningSessionId }
   });
   await bridge.callSetupTool({
+    name: "get_skillpilot_navigation",
+    arguments: { learningSessionId, target: "curriculum" }
+  });
+  await bridge.callSetupTool({
     name: "set_skillpilot_curriculum",
     arguments: {
       learningSessionId,
@@ -211,6 +285,7 @@ test("setup tools stay on the attempt channel and carry only the learning-sessio
     [
       "issue_skillpilot_start_capability",
       "get_skillpilot_context",
+      "get_skillpilot_navigation",
       "set_skillpilot_curriculum"
     ]
   );

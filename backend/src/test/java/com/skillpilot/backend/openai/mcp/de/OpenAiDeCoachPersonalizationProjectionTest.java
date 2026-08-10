@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.mcp.de;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -316,6 +317,368 @@ class OpenAiDeCoachPersonalizationProjectionTest {
         assertThat(context.instruction())
                 .contains("Choose one route", "Genau eine Auswahl ist erforderlich", "bisher ausgewählt: 0")
                 .doesNotContain("Hessen", "Mathematik", "Bundesland", "Kurs");
+    }
+
+    @Test
+    void projectsBoundedPersonalizationHistoryWithoutTechnicalDecisionOrSelectionIds() {
+        PersonalizationPlan.Option currentSelection = option(
+                "po-current-private",
+                ROOT_ID,
+                "Panel Quartz",
+                "dial-current-private",
+                "Choice Current");
+        PersonalizationPlan.Option completedSelection = option(
+                "po-completed-private",
+                "landscape-completed-private",
+                "Panel Completed",
+                "filter-completed-private",
+                "Choice Completed");
+        PersonalizationPlan.Option preservedSelection = scopeValueOption(
+                "po-preserved-private",
+                "durationModel-private",
+                "G9-private",
+                "G9");
+        PersonalizationPlan plan = new PersonalizationPlan(
+                PersonalizationPlan.Stage.SELECTION,
+                "stage-current-private",
+                "Current stage",
+                "group-current-private",
+                "Current question",
+                "instance-current-private",
+                1,
+                2,
+                1,
+                List.of(currentSelection),
+                List.of(currentSelection),
+                List.of(currentSelection, completedSelection, preservedSelection),
+                List.of(currentSelection),
+                "rewind-current-opaque",
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "rewind-completed-opaque",
+                        "stage-completed-private",
+                        "Completed stage",
+                        "group-completed-private",
+                        "Completed question",
+                        "instance-completed-private",
+                        List.of(completedSelection))),
+                List.of(new PersonalizationPlan.DecisionSummary(
+                        "stage-preserved-private",
+                        "Preserved stage",
+                        "group-preserved-private",
+                        "Preserved question",
+                        "instance-preserved-private",
+                        List.of(preservedSelection))),
+                List.of(),
+                false,
+                null);
+
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
+
+        assertThat(context.personalizationHistory()).isNotNull();
+        assertThat(context.personalizationHistory().schemaVersion()).isEqualTo(1);
+        assertThat(context.personalizationHistory().currentDecision())
+                .isEqualTo(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-current-opaque",
+                        "Current stage",
+                        "Current question",
+                        List.of("Choice Current")));
+        assertThat(context.personalizationHistory().completedDecisions())
+                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-completed-opaque",
+                        "Completed stage",
+                        "Completed question",
+                        List.of("Panel Completed – Choice Completed")));
+        assertThat(context.personalizationHistory().preservedDecisions())
+                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
+                        null,
+                        "Preserved stage",
+                        "Preserved question",
+                        List.of("G9")));
+
+        String publicHistory = new ObjectMapper().valueToTree(context.personalizationHistory()).toString();
+        assertThat(publicHistory)
+                .contains("rewind-current-opaque", "rewind-completed-opaque")
+                .doesNotContain(
+                        "stage-current-private",
+                        "group-current-private",
+                        "instance-current-private",
+                        "po-current-private",
+                        "landscape-completed-private",
+                        "filter-completed-private",
+                        "durationModel-private",
+                        "G9-private");
+    }
+
+    @Test
+    void projectsHistoryFromAuthoritativeEnglishFlowAndOptionLabels() {
+        PersonalizationPlan.Option current = new PersonalizationPlan.Option(
+                "po-current",
+                "stage-current",
+                "group-current",
+                "instance-current",
+                ROOT_ID,
+                "Deutsches Gymnasium",
+                "profile",
+                "Leistungskurs",
+                null,
+                null,
+                null,
+                PersonalizationPlan.OptionKind.VALUE,
+                "German Gymnasium",
+                "Advanced course",
+                null);
+        PersonalizationPlan.Option preservedScope = new PersonalizationPlan.Option(
+                "po-scope",
+                "stage-scope",
+                "group-scope",
+                "instance-scope",
+                ROOT_ID,
+                "Deutsches Gymnasium",
+                null,
+                null,
+                "stage",
+                "SekI",
+                "Sekundarstufe I",
+                PersonalizationPlan.OptionKind.SCOPE_VALUE,
+                "German Gymnasium",
+                null,
+                "Lower secondary");
+        PersonalizationPlan plan = PersonalizationPlan.selection(
+                "stage-current",
+                "Kurswahl",
+                "Choose course",
+                "group-current",
+                "Welcher Kurs?",
+                "Which course?",
+                "instance-current",
+                1,
+                2,
+                1,
+                List.of(current),
+                List.of(current),
+                List.of(current, preservedScope),
+                List.of(current),
+                "rewind-current",
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "rewind-completed",
+                        "stage-completed",
+                        "Fachwahl",
+                        "group-completed",
+                        "Welches Fach?",
+                        "instance-completed",
+                        List.of(current),
+                        "Choose subject",
+                        "Which subject?")),
+                List.of(new PersonalizationPlan.DecisionSummary(
+                        "stage-scope",
+                        "Lernabschnitt",
+                        "group-scope",
+                        "Welcher Abschnitt?",
+                        "instance-scope",
+                        List.of(preservedScope),
+                        "Learning stage",
+                        "Which stage?")),
+                List.of());
+
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "en");
+
+        assertThat(context.personalizationHistory().currentDecision())
+                .isEqualTo(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-current",
+                        "Choose course",
+                        "Which course?",
+                        List.of("Advanced course")));
+        assertThat(context.personalizationHistory().completedDecisions().getFirst())
+                .isEqualTo(new OpenAiDeCoachContext.PersonalizationDecision(
+                        "rewind-completed",
+                        "Choose subject",
+                        "Which subject?",
+                        List.of("Advanced course")));
+        assertThat(context.personalizationHistory().preservedDecisions().getFirst())
+                .isEqualTo(new OpenAiDeCoachContext.PersonalizationDecision(
+                        null,
+                        "Learning stage",
+                        "Which stage?",
+                        List.of("Lower secondary")));
+    }
+
+    @Test
+    void acceptsExactly320CharacterSelectedLabelsAndFailsClosedAboveTheSchemaLimit() {
+        String atLimit = "a".repeat(320);
+        String aboveLimit = "b".repeat(321);
+
+        OpenAiDeCoachContext accepted = projector.project(
+                personalizationState(),
+                completedScopePlan("rewind-at-limit", atLimit),
+                true,
+                "de");
+
+        assertThat(accepted.personalizationHistory().completedDecisions().getFirst().selectedLabels())
+                .containsExactly(atLimit);
+        assertThatThrownBy(() -> projector.project(
+                        personalizationState(),
+                        completedScopePlan("rewind-above-limit", aboveLimit),
+                        true,
+                        "de"))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("label exceeds");
+    }
+
+    @Test
+    void deduplicatesEqualVisibleSelectionLabelsInStableOrderForItsOwnOutputSchema() {
+        PersonalizationPlan.Option first = scopeValueOption(
+                "po-first",
+                "stage",
+                "first",
+                "Gleiches Label");
+        PersonalizationPlan.Option second = scopeValueOption(
+                "po-second",
+                "stage",
+                "second",
+                "Gleiches Label");
+        PersonalizationPlan plan = PersonalizationPlan.complete(
+                List.of(first, second),
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "rewind-unique",
+                        "stage",
+                        "Stufe",
+                        "group",
+                        "Welche Stufe?",
+                        "instance",
+                        List.of(first, second))));
+
+        OpenAiDeCoachContext context = projector.project(personalizationState(), plan, true, "de");
+
+        assertThat(context.personalizationHistory().completedDecisions().getFirst().selectedLabels())
+                .containsExactly("Gleiches Label");
+    }
+
+    @Test
+    void failsClosedForDuplicateEditableRewindReferences() {
+        PersonalizationPlan.Option selected = scopeValueOption(
+                "po-selected",
+                "stage",
+                "value",
+                "Auswahl");
+        PersonalizationPlan plan = PersonalizationPlan.complete(
+                List.of(selected),
+                List.of(
+                        new PersonalizationPlan.CompletedDecision(
+                                "rewind-duplicate",
+                                "stage-one",
+                                "Stufe eins",
+                                "group-one",
+                                "Frage eins",
+                                "instance-one",
+                                List.of(selected)),
+                        new PersonalizationPlan.CompletedDecision(
+                                "rewind-duplicate",
+                                "stage-two",
+                                "Stufe zwei",
+                                "group-two",
+                                "Frage zwei",
+                                "instance-two",
+                                List.of(selected))));
+
+        assertThatThrownBy(() -> projector.project(personalizationState(), plan, true, "de"))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("duplicate rewind reference");
+    }
+
+    @Test
+    void failsClosedWhenEditableHistoryHasNoNonBlankRewindReference() {
+        PersonalizationPlan.Option selected = scopeValueOption(
+                "po-selected",
+                "stage",
+                "SekI",
+                "Sekundarstufe I");
+        PersonalizationPlan currentWithoutRewind = PersonalizationPlan.selection(
+                "stage",
+                "Stufe",
+                "group",
+                "Welche Stufe?",
+                "instance",
+                1,
+                2,
+                1,
+                List.of(selected),
+                List.of(selected),
+                List.of(selected),
+                List.of(selected),
+                " ",
+                List.of(),
+                List.of());
+        PersonalizationPlan completedWithoutRewind = PersonalizationPlan.complete(
+                List.of(selected),
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        "",
+                        "stage",
+                        "Stufe",
+                        "group",
+                        "Welche Stufe?",
+                        "instance",
+                        List.of(selected))));
+
+        assertThatThrownBy(() -> projector.project(
+                        personalizationState(), currentWithoutRewind, true, "de"))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("requires an opaque rewind reference");
+        assertThatThrownBy(() -> projector.project(
+                        personalizationState(), completedWithoutRewind, true, "de"))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("requires an opaque rewind reference");
+    }
+
+    @Test
+    void deserializesThePreLocalizedPlanJsonShapeWithNullEnglishAdditions() throws Exception {
+        String legacyJson = """
+                {
+                  "stage":"COMPLETE",
+                  "options":[],
+                  "displayOptions":[],
+                  "navigationOptions":[{
+                    "optionId":"po-legacy",
+                    "landscapeId":"legacy-landscape",
+                    "landscapeLabel":"Legacy label",
+                    "kind":"VALUE"
+                  }],
+                  "currentSelectedOptions":[],
+                  "completedDecisions":[],
+                  "preservedDecisions":[],
+                  "pendingDecisions":[],
+                  "canReopenMigratedPersonalization":false
+                }
+                """;
+
+        PersonalizationPlan plan = new ObjectMapper().readValue(legacyJson, PersonalizationPlan.class);
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.stageLabelEn()).isNull();
+        assertThat(plan.groupLabelEn()).isNull();
+        assertThat(plan.navigationOptions()).singleElement().satisfies(option -> {
+            assertThat(option.landscapeLabel()).isEqualTo("Legacy label");
+            assertThat(option.landscapeLabelEn()).isNull();
+            assertThat(option.filterLabelEn()).isNull();
+            assertThat(option.scopeLabelEn()).isNull();
+        });
+    }
+
+    private static PersonalizationPlan completedScopePlan(String rewindId, String selectedLabel) {
+        PersonalizationPlan.Option selected = scopeValueOption(
+                "po-selected",
+                "stage",
+                "value",
+                selectedLabel);
+        return PersonalizationPlan.complete(
+                List.of(selected),
+                List.of(new PersonalizationPlan.CompletedDecision(
+                        rewindId,
+                        "stage",
+                        "Stufe",
+                        "group",
+                        "Welche Stufe?",
+                        "instance",
+                        List.of(selected))));
     }
 
     private static UnifiedLearnerStateResponse personalizationState() {

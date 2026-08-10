@@ -1002,6 +1002,145 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(completedCurriculum.path(CURRICULUM_ID).path("stage").asText())
                 .isEqualTo("SekII");
 
+        HttpResponse<String> completedSetupRead = callTool(
+                accessToken,
+                32,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completedSetupRead, applicationSubject);
+        JsonNode completedSetupContext = result(completedSetupRead).path("structuredContent");
+        assertThat(completedSetupContext.path("requiredAction").asText())
+                .isEqualTo("setActiveGoal");
+        assertThat(completedSetupContext.path("curriculum").path("curriculumId").asText())
+                .isEqualTo(CURRICULUM_ID);
+        JsonNode personalizationHistory = completedSetupContext.path("personalizationHistory");
+        assertThat(personalizationHistory.path("schemaVersion").asInt()).isEqualTo(1);
+        assertThat(personalizationHistory.path("currentDecision").isMissingNode()).isTrue();
+        assertThat(personalizationHistory.path("preservedDecisions")).isEmpty();
+        assertThat(personalizationHistory.path("completedDecisions")).isNotEmpty();
+        JsonNode courseProfileDecision = personalizationHistory.path("completedDecisions").valueStream()
+                .filter(decision -> decision.path("selectedLabels").valueStream()
+                        .map(JsonNode::asText)
+                        .anyMatch("Mathematik – Leistungskurs"::equals))
+                .findFirst()
+                .orElseThrow();
+        String courseProfileRewindId = courseProfileDecision.path("rewindId").asText();
+        assertThat(courseProfileRewindId).isNotBlank();
+
+        HttpResponse<String> curriculumNavigationWithoutSession = postMcp(
+                accessToken,
+                """
+                {"jsonrpc":"2.0","id":33,"method":"tools/call",
+                 "params":{"name":"%s","arguments":{"target":"curriculum"}}}
+                """.formatted(OpenAiDeV1McpContractAdapter.GET_NAVIGATION));
+        assertMcpPayloadDoesNotExposeIdentity(curriculumNavigationWithoutSession, applicationSubject);
+        JsonNode missingNavigationSessionResult =
+                objectMapper.readTree(curriculumNavigationWithoutSession.body()).path("result");
+        assertThat(missingNavigationSessionResult.path("isError").asBoolean()).isTrue();
+        assertThat(curriculumNavigationWithoutSession.body()).contains("learningSessionId");
+
+        HttpResponse<String> completedCurriculumNavigation = callTool(
+                accessToken,
+                34,
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                "{\"target\":\"curriculum\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completedCurriculumNavigation, applicationSubject);
+        JsonNode completedCurriculumNavigationContext =
+                result(completedCurriculumNavigation).path("structuredContent");
+        assertThat(completedCurriculumNavigationContext.path("target").asText())
+                .isEqualTo("curriculum");
+        assertThat(completedCurriculumNavigationContext.path("curriculum").path("curriculumId").asText())
+                .isEqualTo(CURRICULUM_ID);
+        List<String> completedCurriculumOptionIds = completedCurriculumNavigationContext.path("options")
+                .valueStream()
+                .map(option -> option.path("id").asText())
+                .toList();
+        assertThat(completedCurriculumOptionIds).isNotEmpty().contains(CURRICULUM_ID);
+        assertThat(completedCurriculumNavigationContext.path("curriculumCatalog").path("schemaVersion").asInt())
+                .isEqualTo(1);
+        assertThat(completedCurriculumNavigationContext.path("curriculumCatalog").path("entries")
+                        .valueStream()
+                        .map(entry -> entry.path("optionId").asText())
+                        .toList())
+                .containsExactlyElementsOf(completedCurriculumOptionIds);
+
+        long completedSetupStateVersion = completedSetupContext.path("stateVersion").asLong();
+        HttpResponse<String> rewindCourseProfile = callTool(
+                accessToken,
+                35,
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                objectMapper.writeValueAsString(Map.of("rewindId", courseProfileRewindId)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(rewindCourseProfile, applicationSubject);
+        JsonNode rewoundCourseProfileContext = result(rewindCourseProfile).path("structuredContent");
+        long rewoundStateVersion = rewoundCourseProfileContext.path("stateVersion").asLong();
+        assertThat(rewoundStateVersion).isEqualTo(completedSetupStateVersion + 1);
+        assertThat(rewoundCourseProfileContext.path("requiredAction").asText())
+                .isEqualTo("setPersonalization");
+        assertThat(rewoundCourseProfileContext.path("decision").path("groupLabel").asText())
+                .isNotBlank();
+        assertThat(rewoundCourseProfileContext.path("options"))
+                .extracting(option -> option.path("label").asText())
+                .contains("Mathematik – Leistungskurs");
+        Learner persistedAfterRewind =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        assertThat(persistedAfterRewind.getCoachStateRevision()).isEqualTo(rewoundStateVersion);
+        String personalCurriculumAfterRewind = persistedAfterRewind.getPersonalCurriculum();
+
+        HttpResponse<String> staleRewind = postMcp(
+                accessToken,
+                objectMapper.writeValueAsString(Map.of(
+                        "jsonrpc", "2.0",
+                        "id", 36,
+                        "method", "tools/call",
+                        "params", Map.of(
+                                "name", OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                                "arguments", Map.of(
+                                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                        resumedLearningSessionId,
+                                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                                        completedSetupStateVersion,
+                                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
+                                        UUID.randomUUID().toString(),
+                                        "rewindId",
+                                        courseProfileRewindId)))));
+        assertMcpPayloadDoesNotExposeIdentity(staleRewind, applicationSubject);
+        JsonNode staleRewindResult = objectMapper.readTree(staleRewind.body()).path("result");
+        assertThat(staleRewindResult.path("isError").asBoolean()).isTrue();
+        assertThat(staleRewindResult.path("structuredContent").path("code").asText())
+                .isEqualTo("STATE_VERSION_CONFLICT");
+        assertThat(staleRewindResult.path("structuredContent").path("stateChanged").asBoolean())
+                .isFalse();
+        assertThat(staleRewindResult.path("structuredContent").path("stateVersion").asLong())
+                .isEqualTo(rewoundStateVersion);
+        Learner persistedAfterStaleRewind =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        assertThat(persistedAfterStaleRewind.getCoachStateRevision()).isEqualTo(rewoundStateVersion);
+        assertThat(persistedAfterStaleRewind.getPersonalCurriculum())
+                .isEqualTo(personalCurriculumAfterRewind);
+
+        String restoredCourseProfileOptionId =
+                optionIdByLabel(rewoundCourseProfileContext, "Mathematik – Leistungskurs");
+        HttpResponse<String> restoreCourseProfile = callTool(
+                accessToken,
+                37,
+                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
+                optionArguments(restoredCourseProfileOptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(restoreCourseProfile, applicationSubject);
+        JsonNode restoredCourseProfileContext = result(restoreCourseProfile).path("structuredContent");
+        assertThat(restoredCourseProfileContext.path("stateVersion").asLong())
+                .isEqualTo(rewoundStateVersion + 1);
+        assertThat(restoredCourseProfileContext.path("requiredAction").asText())
+                .isEqualTo("setActiveGoal");
+        assertThat(objectMapper.readTree(
+                        learnerRepository.findById(PERMANENT_SKILLPILOT_ID)
+                                .orElseThrow()
+                                .getPersonalCurriculum()))
+                .isEqualTo(completedCurriculum);
+
         HttpResponse<String> webLearnerRead = get(
                 "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID));
         assertThat(webLearnerRead.statusCode())

@@ -36,6 +36,7 @@ export type SkillPilotOpenAiCompatibilityApi = {
     href: string;
     redirectUrl?: boolean;
   }) => void | Promise<unknown>;
+  requestClose?: () => void | Promise<unknown>;
 };
 
 type ActionChannel = "mcp-app" | "chatgpt-compatibility";
@@ -47,6 +48,7 @@ type OpenAiCompatibilityGlobal = typeof globalThis & {
 const MAX_COMPATIBILITY_RESULT_JSON_LENGTH = 64 * 1024;
 const SETUP_TOOL_NAMES = new Set<SkillPilotSetupToolName>([
   "get_skillpilot_context",
+  "get_skillpilot_navigation",
   "set_skillpilot_curriculum",
   "set_skillpilot_personalization"
 ]);
@@ -172,6 +174,13 @@ export class SkillPilotStartBridge {
       supported: true,
       hostAccepted: result.isError !== true
     };
+  }
+
+  async requestTeardown(): Promise<void> {
+    // This notification is intentionally independent of ui/initialize. A host
+    // may accept the start message through the compatibility channel while the
+    // shared MCP Apps handshake is still pending or has failed.
+    await this.app.requestTeardown();
   }
 
   async openLink(url: string): Promise<boolean> {

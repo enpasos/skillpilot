@@ -115,6 +115,146 @@ select {
   gap: 0.2rem;
 }
 
+.setup-shell {
+  gap: 0.8rem;
+}
+
+.setup-step {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #d7dee8;
+  border-radius: 0.85rem;
+  background: #ffffff;
+}
+
+.setup-step-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.75rem;
+  padding: 0.9rem;
+}
+
+.setup-step-number {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.setup-step-heading {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.setup-step-title,
+.setup-step-status,
+.setup-step-summary,
+.personalization-history-title,
+.personalization-history-group-label,
+.personalization-history-selection {
+  margin: 0;
+}
+
+.setup-step-title {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.setup-step-status {
+  color: #047857;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.setup-step-summary {
+  color: #526077;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.setup-step-toggle,
+.setup-history-change {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  background: transparent;
+  color: #0369a1;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.setup-step-toggle:hover,
+.setup-step-toggle:focus-visible,
+.setup-history-change:hover,
+.setup-history-change:focus-visible {
+  border-radius: 0.4rem;
+  outline: 3px solid rgb(3 137 211 / 20%);
+  outline-offset: 1px;
+}
+
+.setup-step-content {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0 0.9rem 0.9rem 3.65rem;
+  border-top: 1px solid #e6ebf1;
+  padding-top: 0.9rem;
+}
+
+.setup-step-content[hidden] {
+  display: none;
+}
+
+.personalization-history-group,
+.personalization-history-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.personalization-history-title {
+  color: #526077;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.personalization-history-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem;
+  border-radius: 0.65rem;
+  background: #f4f8fc;
+}
+
+.personalization-history-labels {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.personalization-history-group-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.personalization-history-selection {
+  color: #526077;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.setup-final-actions {
+  justify-content: flex-end;
+}
+
 .setup-stage,
 .setup-group {
   margin: 0;
@@ -539,6 +679,7 @@ h1 {
   .language-option,
   .identity-option,
   .setup-option,
+  .setup-step,
   .curriculum-select,
   .button,
   .id-input {
@@ -550,6 +691,9 @@ h1 {
   .identity-option-body,
   .setup-option-description,
   .setup-stage,
+  .setup-step-summary,
+  .personalization-history-title,
+  .personalization-history-selection,
   .curriculum-filter-label,
   .curriculum-empty {
     color: #b9c5d5;
@@ -563,6 +707,23 @@ h1 {
 
   .curriculum-filter-button {
     color: #dbe5f1;
+  }
+
+  .setup-step-content {
+    border-color: #344056;
+  }
+
+  .personalization-history-row {
+    background: #182235;
+  }
+
+  .setup-step-toggle,
+  .setup-history-change {
+    color: #7dd3fc;
+  }
+
+  .setup-step-status {
+    color: #6ee7b7;
   }
 
   .created-id-group {
@@ -616,6 +777,19 @@ h1 {
   .curriculum-category-tabs,
   .curriculum-quality-buttons {
     grid-template-columns: 1fr;
+  }
+
+  .setup-step-header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .setup-step-toggle {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .setup-step-content {
+    padding-left: 0.85rem;
   }
 
   .actions,

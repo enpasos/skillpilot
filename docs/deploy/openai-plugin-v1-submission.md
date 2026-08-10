@@ -94,9 +94,13 @@ private Komponente diesen First-Party-Vorlauf:
 - **Erwartetes Verhalten:** `open_skillpilot_start` öffnet genau eine
   Komponente. Die Person wählt CREATE, bestätigt den Providerhinweis, sichert
   die nur dort angezeigte neue ID und wählt Curriculum sowie alle erforderlichen
-  Personalisierungsoptionen. Erst danach übernimmt der Host die kurze
-  Startnachricht; die SkillPilot-Webanwendung wird im normalen Ablauf nicht
-  geöffnet und der Chat wiederholt keine Setupfrage.
+  Personalisierungsoptionen. Bestätigte Schritte bleiben mit ihren
+  serverautoritativen Zusammenfassungen sichtbar und können über einen frischen
+  Curriculumkatalog beziehungsweise eine aktuelle opake Rewind-Referenz
+  geändert werden. Nach vollständigem Setup erscheint ein finaler Review; erst
+  dessen ausdrückliches `Start learning` gibt die kurze Startnachricht an den
+  Host frei. Die SkillPilot-Webanwendung wird im normalen Ablauf nicht geöffnet
+  und der Chat wiederholt keine Setupfrage.
 - **Datengrenze:** Die permanente ID steht nur in der direkten HTTPS-Antwort,
   flüchtigem Komponenten-Arbeitsspeicher und Recovery-DOM. Sie erscheint weder
   in Chat oder Modellkontext noch in MCP-Argumenten/-Resultaten einschließlich
@@ -233,10 +237,11 @@ eine spätere ausdrückliche Lernaktion korrigierbar.
 | `set_skillpilot_mastery` | `false` | Speichert ausschließlich die bestätigte Kompetenzbewertung des aktiven atomaren Ziels. |
 
 Für den In-Component-Setup bleiben `get_skillpilot_context`,
-`set_skillpilot_curriculum` und `set_skillpilot_personalization` modell- und
-appsichtbar, ungebunden und ausdrücklich component-aufrufbar. Ihre Argumente
-verwenden nur die kurzlebige Lernsession sowie fachliche Auswahlreferenzen,
-niemals die permanente SkillPilot-ID.
+`get_skillpilot_navigation`, `set_skillpilot_curriculum` und
+`set_skillpilot_personalization` modell- und appsichtbar, ungebunden und
+ausdrücklich component-aufrufbar. Ihre Argumente verwenden nur die kurzlebige
+Lernsession sowie fachliche Auswahlreferenzen, niemals die permanente
+SkillPilot-ID.
 
 ## 8. Demo-Recording
 
@@ -245,15 +250,17 @@ Public-Release-Gate:
 
 1. Direct Start mit CREATE, ausdrücklich verdeckter Wegwerf-ID,
    Recovery-Bestätigung sowie Curriculum und Personalisierung in derselben
-   Komponente;
-2. Handoff ohne Öffnen der SkillPilot-Webanwendung, OAuth-Verbindung und
-   lokalisierte Sessionfortsetzung;
-3. Motivationsziel und normales dialogisches Lernen;
-4. ein Lernzielbild im Browser;
-5. Karteikarten-UI und getrennten Verified Recall;
-6. eine vollständige Prüfungsabgabe und Bewertung;
-7. den aktualisierten Lernstand im Cockpit;
-8. einen fail-closed Versuch ohne gültige Lernsession.
+   Komponente; bestätigte Zusammenfassungen, Curriculum-Änderung und
+   Personalisierungs-Rewind bleiben dabei sichtbar;
+2. finaler Review, ausdrückliches `Start learning`, Handoff ohne Öffnen der
+   SkillPilot-Webanwendung und anschließendes Schließen der Startkomponente;
+3. OAuth-Verbindung und lokalisierte Sessionfortsetzung;
+4. Motivationsziel und normales dialogisches Lernen;
+5. ein Lernzielbild im Browser;
+6. Karteikarten-UI und getrennten Verified Recall;
+7. eine vollständige Prüfungsabgabe und Bewertung;
+8. den aktualisierten Lernstand im Cockpit;
+9. einen fail-closed Versuch ohne gültige Lernsession.
 
 Die private HTTPS-Video-URL wird nur im Portal hinterlegt. Sie darf keine
 permanente SkillPilot-ID, Lernsession, OAuth-Werte oder Review-Zugangsdaten

@@ -93,6 +93,7 @@ export type SkillPilotSetupRequiredAction =
 
 export type SkillPilotSetupToolName =
   | "get_skillpilot_context"
+  | "get_skillpilot_navigation"
   | "set_skillpilot_curriculum"
   | "set_skillpilot_personalization";
 
@@ -117,11 +118,33 @@ export type SkillPilotSetupDecision = {
   selectedCount: number;
 };
 
+export type SkillPilotCurriculumSummary = {
+  curriculumId: string;
+  title?: string;
+  subject?: string;
+};
+
+export type SkillPilotPersonalizationDecision = {
+  rewindId?: string;
+  stageLabel: string;
+  groupLabel: string;
+  selectedLabels: string[];
+};
+
+export type SkillPilotPersonalizationHistory = {
+  schemaVersion: 1;
+  currentDecision?: SkillPilotPersonalizationDecision;
+  completedDecisions: SkillPilotPersonalizationDecision[];
+  preservedDecisions: SkillPilotPersonalizationDecision[];
+};
+
 export type SkillPilotSetupState = {
   stateVersion: number;
   communicationLocale: SkillPilotStartLocale;
   requiredAction: SkillPilotSetupRequiredAction | null;
   options: SkillPilotSetupOption[];
+  curriculum?: SkillPilotCurriculumSummary;
+  personalizationHistory?: SkillPilotPersonalizationHistory;
   decision?: SkillPilotSetupDecision;
 };
 
@@ -170,6 +193,8 @@ const CLOCK_SKEW_MS = 30_000;
 const MAX_RESPONSE_BYTES = 8 * 1_024;
 const MAX_SETUP_RESULT_BYTES = 64 * 1_024;
 const MAX_SETUP_OPTIONS = 128;
+const MAX_PERSONALIZATION_DECISIONS = 64;
+const MAX_PERSONALIZATION_SELECTIONS = 32;
 const SETUP_COMPLETE_REQUIRED_ACTIONS = new Set([
   "",
   "getFrontier",
@@ -519,6 +544,21 @@ export function createSkillPilotGetContextCall(
     : undefined;
 }
 
+export function createSkillPilotCurriculumNavigationCall(
+  learningSessionId: unknown
+): SkillPilotSetupToolCall | undefined {
+  const sessionId = exactLearningSessionId(learningSessionId);
+  return sessionId
+    ? {
+      name: "get_skillpilot_navigation",
+      arguments: {
+        learningSessionId: sessionId,
+        target: "curriculum"
+      }
+    }
+    : undefined;
+}
+
 export function createSkillPilotSetupMutationCall(
   requiredAction: SkillPilotSetupRequiredAction,
   learningSessionId: unknown,
@@ -556,6 +596,28 @@ export function createSkillPilotSetupMutationCall(
   return undefined;
 }
 
+export function createSkillPilotPersonalizationRewindCall(
+  learningSessionId: unknown,
+  stateVersion: unknown,
+  rewindId: unknown,
+  clientRequestId: unknown
+): SkillPilotSetupToolCall | undefined {
+  const sessionId = exactLearningSessionId(learningSessionId);
+  const version = nonNegativeSafeInteger(stateVersion);
+  const rewind = boundedExactText(rewindId, 500);
+  const requestId = exactUuidV4(clientRequestId);
+  if (!sessionId || version === undefined || !rewind || !requestId) return undefined;
+  return {
+    name: "set_skillpilot_personalization",
+    arguments: {
+      learningSessionId: sessionId,
+      rewindId: rewind,
+      expectedStateVersion: version,
+      clientRequestId: requestId
+    }
+  };
+}
+
 export function skillPilotSetupStateFromToolResult(
   value: unknown,
   expectedLocale: SkillPilotStartLocale
@@ -564,6 +626,57 @@ export function skillPilotSetupStateFromToolResult(
   if (!envelope || envelope.isError === true) return undefined;
   const source = record(envelope.structuredContent);
   if (!source || encodedByteLength(source) > MAX_SETUP_RESULT_BYTES) return undefined;
+  return setupStateFromSource(source, expectedLocale);
+}
+
+export function skillPilotCurriculumNavigationStateFromToolResult(
+  value: unknown,
+  expectedLocale: SkillPilotStartLocale
+): SkillPilotSetupState | undefined {
+  const envelope = record(value);
+  if (!envelope || envelope.isError === true) return undefined;
+  const source = record(envelope.structuredContent);
+  if (
+    !source
+    || encodedByteLength(source) > MAX_SETUP_RESULT_BYTES
+    || !hasOnlyKeys(source, [
+      "contractMajor",
+      "stateVersion",
+      "stateSchemaVersion",
+      "workflowVersion",
+      "curriculumRevision",
+      "communicationLocale",
+      "extensions",
+      "target",
+      "requiredAction",
+      "curriculum",
+      "curriculumCatalog",
+      "decision",
+      "options",
+      "instruction"
+    ])
+    || source.contractMajor !== 1
+    || positiveSafeInteger(source.stateSchemaVersion) === undefined
+    || !boundedExactText(source.workflowVersion, 200)
+    || !boundedExactText(source.curriculumRevision, 200)
+    || !record(source.extensions)
+    || source.target !== "curriculum"
+    || source.requiredAction !== "setCurriculum"
+    || !boundedExactText(source.instruction, 2_000)
+    || source.curriculum === undefined
+    || source.curriculum === null
+    || source.curriculumCatalog === undefined
+    || (source.decision !== undefined && source.decision !== null)
+  ) {
+    return undefined;
+  }
+  return setupStateFromSource(source, expectedLocale);
+}
+
+function setupStateFromSource(
+  source: Record<string, unknown>,
+  expectedLocale: SkillPilotStartLocale
+): SkillPilotSetupState | undefined {
   const stateVersion = nonNegativeSafeInteger(source.stateVersion);
   const communicationLocale = locale(source.communicationLocale);
   const rawRequiredAction = boundedTrimmedText(source.requiredAction, 100);
@@ -580,13 +693,38 @@ export function skillPilotSetupStateFromToolResult(
     || rawRequiredAction === "setPersonalization"
     ? rawRequiredAction
     : null;
+  const curriculum = source.curriculum === undefined || source.curriculum === null
+    ? undefined
+    : setupCurriculumSummary(source.curriculum);
+  if (source.curriculum !== undefined && source.curriculum !== null && !curriculum) {
+    return undefined;
+  }
+  const personalizationHistory = source.personalizationHistory === undefined
+    || source.personalizationHistory === null
+    ? undefined
+    : setupPersonalizationHistory(source.personalizationHistory);
+  if (
+    source.personalizationHistory !== undefined
+    && source.personalizationHistory !== null
+    && !personalizationHistory
+  ) {
+    return undefined;
+  }
+  if (
+    (requiredAction === "setPersonalization" || requiredAction === null)
+    && !curriculum
+  ) {
+    return undefined;
+  }
   if (requiredAction === null) {
     if (!SETUP_COMPLETE_REQUIRED_ACTIONS.has(rawRequiredAction)) return undefined;
     return {
       stateVersion,
       communicationLocale,
       requiredAction: null,
-      options: []
+      options: [],
+      ...(curriculum ? { curriculum } : {}),
+      ...(personalizationHistory ? { personalizationHistory } : {})
     };
   }
   const options = setupOptions(source.options, requiredAction);
@@ -615,6 +753,8 @@ export function skillPilotSetupStateFromToolResult(
     communicationLocale,
     requiredAction,
     options,
+    ...(curriculum ? { curriculum } : {}),
+    ...(personalizationHistory ? { personalizationHistory } : {}),
     ...(decision ? { decision } : {})
   };
 }
@@ -1020,6 +1160,130 @@ function setupCurriculumCatalog(
   return result.size === optionIds.size ? result : undefined;
 }
 
+function setupCurriculumSummary(value: unknown): SkillPilotCurriculumSummary | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasOnlyKeys(source, ["curriculumId", "title", "subject"])
+  ) {
+    return undefined;
+  }
+  const curriculumId = boundedExactText(source.curriculumId, 500);
+  const title = source.title === undefined
+    ? undefined
+    : boundedTrimmedText(source.title, 500);
+  const subject = source.subject === undefined
+    ? undefined
+    : boundedTrimmedText(source.subject, 500);
+  if (
+    !curriculumId
+    || (source.title !== undefined && title === undefined)
+    || (source.subject !== undefined && subject === undefined)
+  ) {
+    return undefined;
+  }
+  return {
+    curriculumId,
+    ...(title ? { title } : {}),
+    ...(subject ? { subject } : {})
+  };
+}
+
+function setupPersonalizationHistory(
+  value: unknown
+): SkillPilotPersonalizationHistory | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasOnlyKeys(source, [
+      "schemaVersion",
+      "currentDecision",
+      "completedDecisions",
+      "preservedDecisions"
+    ])
+    || source.schemaVersion !== 1
+    || !Array.isArray(source.completedDecisions)
+    || !Array.isArray(source.preservedDecisions)
+    || source.completedDecisions.length > MAX_PERSONALIZATION_DECISIONS
+    || source.preservedDecisions.length > MAX_PERSONALIZATION_DECISIONS
+  ) {
+    return undefined;
+  }
+  const currentDecision = source.currentDecision === undefined
+    || source.currentDecision === null
+    ? undefined
+    : setupPersonalizationHistoryDecision(source.currentDecision, true);
+  const completedDecisions = source.completedDecisions.map((entry) =>
+    setupPersonalizationHistoryDecision(entry, true)
+  );
+  const preservedDecisions = source.preservedDecisions.map((entry) =>
+    setupPersonalizationHistoryDecision(entry, false)
+  );
+  if (
+    (source.currentDecision !== undefined
+      && source.currentDecision !== null
+      && !currentDecision)
+    || completedDecisions.some((entry) => !entry)
+    || preservedDecisions.some((entry) => !entry)
+  ) {
+    return undefined;
+  }
+  const rewindIds = new Set<string>();
+  for (const decision of [
+    ...(currentDecision ? [currentDecision] : []),
+    ...completedDecisions
+  ]) {
+    if (!decision?.rewindId || rewindIds.has(decision.rewindId)) return undefined;
+    rewindIds.add(decision.rewindId);
+  }
+  return {
+    schemaVersion: 1,
+    ...(currentDecision ? { currentDecision } : {}),
+    completedDecisions: completedDecisions as SkillPilotPersonalizationDecision[],
+    preservedDecisions: preservedDecisions as SkillPilotPersonalizationDecision[]
+  };
+}
+
+function setupPersonalizationHistoryDecision(
+  value: unknown,
+  rewindRequired: boolean
+): SkillPilotPersonalizationDecision | undefined {
+  const source = record(value);
+  if (
+    !source
+    || !hasOnlyKeys(source, ["rewindId", "stageLabel", "groupLabel", "selectedLabels"])
+    || !Object.hasOwn(source, "stageLabel")
+    || !Object.hasOwn(source, "groupLabel")
+    || !Object.hasOwn(source, "selectedLabels")
+    || !Array.isArray(source.selectedLabels)
+    || source.selectedLabels.length > MAX_PERSONALIZATION_SELECTIONS
+  ) {
+    return undefined;
+  }
+  const rewindId = source.rewindId === undefined
+    ? undefined
+    : boundedExactText(source.rewindId, 500);
+  const stageLabel = boundedTrimmedText(source.stageLabel, 500);
+  const groupLabel = boundedTrimmedText(source.groupLabel, 500);
+  const selectedLabels = source.selectedLabels.map((label) =>
+    boundedExactText(label, 320)
+  );
+  if (
+    (rewindRequired ? !rewindId : source.rewindId !== undefined)
+    || stageLabel === undefined
+    || groupLabel === undefined
+    || selectedLabels.some((label) => !label)
+  ) {
+    return undefined;
+  }
+  return {
+    ...(rewindId ? { rewindId } : {}),
+    stageLabel,
+    groupLabel,
+    selectedLabels: selectedLabels as string[]
+  };
+}
+
 function setupDecision(value: unknown): SkillPilotSetupDecision | undefined {
   const source = record(value);
   if (
@@ -1098,6 +1362,14 @@ function hasExactKeys(
   const expected = [...expectedKeys].sort();
   return actual.length === expected.length
     && actual.every((key, index) => key === expected[index]);
+}
+
+function hasOnlyKeys(
+  value: Record<string, unknown>,
+  allowedKeys: readonly string[]
+): boolean {
+  const allowed = new Set(allowedKeys);
+  return Object.keys(value).every((key) => allowed.has(key));
 }
 
 function record(value: unknown): Record<string, unknown> | undefined {
