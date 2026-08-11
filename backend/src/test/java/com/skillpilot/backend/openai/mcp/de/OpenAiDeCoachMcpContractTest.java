@@ -1049,12 +1049,20 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
                 .contains("only a UI receipt")
                 .contains("never replaces that full context")
-                .contains("goalVisualization and nextAllowedTools permits")
-                .contains("either get_skillpilot_context or a successful state-changing result")
-                .contains("call the renderer exactly once as the immediate next tool call")
-                .contains("Do not insert get_skillpilot_context or any other SkillPilot tool")
+                .contains("that full context contains goalVisualization, and its nextAllowedTools permits "
+                        + "render_skillpilot_goal_visualization")
+                .contains("get_skillpilot_context or a successful state-changing result")
+                .contains("form a pair from that context's goalVisualization.goalId and the authorizing result's "
+                        + "top-level stateVersion")
+                .contains("For every previously unseen pair")
+                .contains("even if a different pair was rendered earlier in this conversation")
+                .contains("once as the immediate next tool")
+                .contains("copying the pair to goalId and expectedStateVersion")
+                .contains("A repeated pair creates no automatic call")
+                .contains("Only an explicit learner request to show the current image again creates one new "
+                        + "one-shot call after a fresh qualifying result; never retry otherwise")
+                .contains("Do not insert get_skillpilot_context or another SkillPilot tool")
                 .contains("immediate next action")
-                .contains("retry it automatically")
                 .contains("before any learner-facing response")
                 .contains("Never infer that the component is unavailable")
                 .contains("only when the start tool actually returns an error")
@@ -1091,14 +1099,19 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("For ordinary content goals, call only after two independent");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION).tool().description())
-                .contains("goalVisualization with the same goalId")
                 .contains("successful state-changing result containing its full successor context")
-                .contains("permits this tool in nextAllowedTools")
-                .contains("exact immediate next tool")
-                .contains("never insert get_skillpilot_context or another SkillPilot tool")
-                .contains("top-level stateVersion unchanged into expectedStateVersion")
-                .contains("newer SkillPilot result")
-                .contains("automatic retry");
+                .contains("nextAllowedTools permits this tool")
+                .contains("form a pair from that context's goalVisualization.goalId and the authorizing result's "
+                        + "top-level stateVersion")
+                .contains("For every previously unseen pair")
+                .contains("even if a different pair was rendered earlier in this conversation")
+                .contains("once as the immediate next tool")
+                .contains("copying the pair to goalId and expectedStateVersion")
+                .contains("A repeated pair creates no automatic call")
+                .contains("Only an explicit learner request to show the current image again creates one new "
+                        + "one-shot call after a fresh qualifying result; never retry otherwise")
+                .contains("Never insert get_skillpilot_context or another SkillPilot tool")
+                .contains("newer SkillPilot result");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10,

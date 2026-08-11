@@ -53,10 +53,15 @@ line. This version has not been published yet.
   resources for provider cache and chat-snapshot compatibility
 - goal visualization uses the dedicated read-only renderer when the newest full
   context or successful mutation successor contains a matching approved image
-  and permits it; the renderer is the immediate next tool call, attempts are
-  not retried, top-level `stateVersion` is copied into
-  `expectedStateVersion`, no client-surface gate is applied, and the normal
-  coaching response remains complete if the host omits the optional component
+  and permits it; each previously unseen visualization-goal-ID and top-level-
+  state-version pair creates a separate one-shot authorization, so a later pair
+  is rendered even after an earlier image in the same chat; a repeated pair is
+  rendered again only after an explicit learner request and a fresh qualifying
+  result, never automatically;
+  the renderer is the immediate next tool call and the pair is copied into
+  `goalId` and `expectedStateVersion`; no client-surface gate is applied, and
+  the normal coaching response remains complete if the host omits the optional
+  component
 - memory practice uses a separate component and app-only card review; normal
   practice updates repetition scheduling and never creates mastery evidence
 - exact localized active-goal title announcement, motivational orientation,

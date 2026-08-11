@@ -507,15 +507,20 @@ Rule:
   gate. A conforming host may render or decline the UI resource; this optional
   presentation result must never change authentication, authorization, state,
   persistence, or the ordinary chat result.
-* When the newest successful full context or state-changing result contains
-  `goalVisualization` and permits the renderer, call it exactly once as the
-  immediate next tool call with that result's unchanged `goalId`, copying the
-  top-level `stateVersion` into the renderer input `expectedStateVersion`.
-  Never insert another tool call, reuse stale authorization, or retry the
-  renderer. A mastery handoff remains before the successor section; render
-  before coaching the associated active goal. The receipt does not replace the
-  authoritative full result, and omitted host presentation does not weaken the
-  text path.
+* A full context or state-changing result qualifies only when its full context
+  contains `goalVisualization` and permits the renderer. Every previously
+  unseen pair of that context's `goalVisualization.goalId` and the authorizing
+  result's top-level `stateVersion` creates its own one-shot render
+  authorization. Call the renderer once for that pair as the immediate next
+  tool call, even if an earlier pair in the conversation
+  was already rendered. A repeated pair creates no automatic call. Only an
+  explicit learner request to show the current image again creates one new
+  one-shot authorization after a fresh qualifying result. Copy the pair into
+  `goalId` and `expectedStateVersion` unchanged. Never insert another tool call,
+  reuse stale authorization, or retry otherwise. A mastery handoff remains
+  before the successor section; render before coaching the associated active
+  goal. The receipt does not replace the authoritative full result, and omitted
+  host presentation does not weaken the text path.
 * A content-addressed UI URI becomes immutable as soon as it has been advertised
   to a real client, including during draft testing. Replacing widget HTML
   produces a new active hash-bound URI; older URIs remain registered with their
@@ -1202,10 +1207,13 @@ provider policy and product review explicitly permit it.
   context reads and other state mutations carry no UI metadata and never create
   a UI box. No user-agent or
   client-surface gate changes this contract. When the newest full result
-  contains `goalVisualization` and permits the renderer, the model calls it once
-  with that result's unchanged goal and copies the top-level state version into
-  the renderer input `expectedStateVersion`; stale attempts are neither reused
-  nor retried. Every
+  contains `goalVisualization` and permits the renderer, each previously unseen
+  pair of the full context's `goalVisualization.goalId` and the authorizing
+  result's top-level `stateVersion` creates a separate one-shot authorization. The model renders that pair even if an
+  earlier pair was already rendered. A repeated pair is rendered again only
+  after an explicit learner request and a fresh qualifying result; it is never
+  retried automatically. The pair is copied unchanged into `goalId` and
+  `expectedStateVersion`. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.

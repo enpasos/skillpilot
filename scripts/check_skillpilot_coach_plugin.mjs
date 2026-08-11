@@ -1098,12 +1098,12 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /contains\s+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+once as the immediate next tool call[\s\S]+unchanged `goalId`[\s\S]+`stateVersion`[\s\S]+`expectedStateVersion`/s,
+  /contains[\s\S]+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+form[\s\S]+pair[\s\S]+context's `goalVisualization\.goalId`[\s\S]+result's top-level `stateVersion`[\s\S]+every previously unseen pair[\s\S]+different pair was\s+rendered earlier in this conversation[\s\S]+once as the immediate next tool[\s\S]+pair to `goalId` and[\s\S]+`expectedStateVersion`[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
   "The coach skill must retain the compact, result-bound goal-visualization rule.",
 );
 assert.match(
   combinedSkill,
-  /renderer receipt never\s+replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
+  /renderer\s+receipt never\s+replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
   "The coach skill must keep host image presentation optional and preserve complete coaching text.",
 );
 assert.match(
@@ -1113,7 +1113,7 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /goalVisualization[\s\S]+nextAllowedTools[\s\S]+render_skillpilot_goal_visualization[\s\S]+call the renderer exactly once as the immediate next tool call[\s\S]+goalId[\s\S]+stateVersion/s,
+  /goalVisualization[\s\S]+nextAllowedTools permits render_skillpilot_goal_visualization[\s\S]+form a pair from that context's goalVisualization\.goalId and the authorizing result's top-level stateVersion[\s\S]+every previously unseen pair[\s\S]+different pair was rendered earlier in this conversation[\s\S]+once as the immediate next tool[\s\S]+pair to goalId and expectedStateVersion[\s\S]+repeated pair creates no automatic call[\s\S]+explicit learner request to show the current image again[\s\S]+fresh qualifying result[\s\S]+never retry otherwise/s,
   "The MCP server instructions must retain the result-bound renderer rule.",
 );
 assert.match(

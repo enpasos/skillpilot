@@ -135,13 +135,16 @@ Begin a newly active goal's learner-facing section with one short localized
 sentence containing its exact `activeGoal.title`; never substitute the
 description.
 
-When the newest full context or mutation successor contains
-`goalVisualization` and explicitly permits
-`render_skillpilot_goal_visualization`, invoke that renderer exactly once as
-the immediate next tool call. Pass the same `goalId` and copy the top-level
-`stateVersion` into `expectedStateVersion`. Never insert another tool call, use
-an older result, or retry an attempted image. If a mastery result also requires
-a `completionHandoff`, present that handoff before introducing the successor in
+When the newest full context or mutation successor contains `goalVisualization`
+and explicitly permits `render_skillpilot_goal_visualization`, form a pair from
+that context's `goalVisualization.goalId` and its authorizing result's top-level
+`stateVersion`. For every previously unseen pair—even if a different pair was
+rendered earlier in this conversation—invoke the renderer once as the immediate
+next tool, copying the pair to `goalId` and `expectedStateVersion`. A repeated
+pair creates no automatic call. Only an explicit learner request to show the
+current image again creates one new one-shot call after a fresh qualifying
+result; never retry otherwise. If a mastery result also requires a
+`completionHandoff`, present that handoff before introducing the successor in
 text. The renderer revalidates state; its receipt remains narrow. A host may
 omit the optional image, so the ordinary text response must remain complete.
 Do not gate rendering by user agent or host surface.
