@@ -15,7 +15,10 @@ import org.springframework.ai.mcp.server.webmvc.transport.WebMvcStatelessServerT
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
@@ -30,15 +33,21 @@ import tools.jackson.databind.json.JsonMapper;
 public final class SkillPilotStatelessMcpServerFactory {
 
     private static final Duration DEFAULT_REQUEST_TIMEOUT = Duration.ofSeconds(30);
+    private static final String LEGACY_PROTOCOL_VERSION = "2025-11-25";
     private static final String MODERN_PROTOCOL_VERSION = "2026-07-28";
     private static final String PROTOCOL_VERSION_HEADER = "MCP-Protocol-Version";
     private static final String METHOD_HEADER = "Mcp-Method";
+    private static final String NAME_HEADER = "Mcp-Name";
     private static final String DISCOVER_METHOD = "server/discover";
+    private static final Set<String> LEGACY_RESOURCE_METHODS =
+            Set.of("resources/list", "resources/read");
 
+    private final JsonMapper treeMapper;
     private final McpJsonMapper jsonMapper;
 
     public SkillPilotStatelessMcpServerFactory(JsonMapper jsonMapper) {
         JsonMapper requiredMapper = Objects.requireNonNull(jsonMapper, "jsonMapper");
+        this.treeMapper = requiredMapper;
         this.jsonMapper = new SkillPilotAppsMcpJsonMapper(
                 new JacksonMcpJsonMapper(requiredMapper),
                 requiredMapper);
@@ -126,7 +135,7 @@ public final class SkillPilotStatelessMcpServerFactory {
                 List.copyOf(resources),
                 transport,
                 server,
-                withLegacyProtocolFallback(transport.getRouterFunction()));
+                withLegacyProtocolFallback(transport.getRouterFunction(), !resources.isEmpty()));
     }
 
     /**
@@ -136,21 +145,120 @@ public final class SkillPilotStatelessMcpServerFactory {
      * {@code server/discover} method, which prevents the client from falling back.
      *
      * <p>For Streamable HTTP, an empty 400 response identifies a legacy server. Keep this
-     * compatibility signal outside the SDK transport and leave all legacy requests untouched.</p>
+     * compatibility signal outside the SDK transport. Some hosts retain the modern headers and
+     * request metadata after discovery fallback. For an exact, non-batched resource request whose
+     * body method agrees with {@code Mcp-Method}, forward a buffered copy with the protocol header
+     * downgraded to the version implemented by the SDK. The response remains a legacy response;
+     * this is a narrow host compatibility shim, not an implementation of the 2026-07-28 contract.</p>
      */
-    private static RouterFunction<ServerResponse> withLegacyProtocolFallback(
-            RouterFunction<ServerResponse> routerFunction) {
+    private RouterFunction<ServerResponse> withLegacyProtocolFallback(
+            RouterFunction<ServerResponse> routerFunction,
+            boolean resourceCompatibilityEnabled) {
         return routerFunction.filter((request, next) -> {
             String protocolVersion = request.headers().firstHeader(PROTOCOL_VERSION_HEADER);
             String method = request.headers().firstHeader(METHOD_HEADER);
-            if (HttpMethod.POST.equals(request.method())
-                    && (MODERN_PROTOCOL_VERSION.equals(protocolVersion)
-                            || DISCOVER_METHOD.equals(method))) {
+            if (!HttpMethod.POST.equals(request.method())) {
+                return next.handle(request);
+            }
+            if (DISCOVER_METHOD.equals(method)) {
                 return ServerResponse.badRequest().build();
             }
-            return next.handle(request);
+            if (!MODERN_PROTOCOL_VERSION.equals(protocolVersion)) {
+                return next.handle(request);
+            }
+            if (!resourceCompatibilityEnabled) {
+                return ServerResponse.badRequest().build();
+            }
+            if (request.headers().header(PROTOCOL_VERSION_HEADER).size() != 1) {
+                return ServerResponse.badRequest().build();
+            }
+            List<String> methods = request.headers().header(METHOD_HEADER);
+            if (methods.size() != 1 || !LEGACY_RESOURCE_METHODS.contains(method)) {
+                return ServerResponse.badRequest().build();
+            }
+
+            byte[] body = request.body(byte[].class);
+            CompatibilityRequest compatibilityRequest = singleRequest(body);
+            if (!matchesCompatibilityHeaders(request, method, compatibilityRequest)) {
+                return ServerResponse.badRequest().build();
+            }
+            ServerRequest downgradedRequest = ServerRequest.from(request)
+                    .headers(headers -> headers.set(PROTOCOL_VERSION_HEADER, LEGACY_PROTOCOL_VERSION))
+                    .body(body)
+                    .build();
+            return next.handle(downgradedRequest);
         });
     }
+
+    private boolean matchesCompatibilityHeaders(
+            ServerRequest request,
+            String method,
+            CompatibilityRequest compatibilityRequest) {
+        if (compatibilityRequest == null || !method.equals(compatibilityRequest.method())) {
+            return false;
+        }
+        List<String> names = request.headers().header(NAME_HEADER);
+        if ("resources/list".equals(method)) {
+            return names.isEmpty();
+        }
+        return names.size() == 1 && names.getFirst().equals(compatibilityRequest.name());
+    }
+
+    private CompatibilityRequest singleRequest(byte[] body) {
+        try {
+            JsonNode root = treeMapper.readTree(body);
+            if (root == null || !root.isObject()) {
+                return null;
+            }
+            JsonNode jsonrpc = root.get("jsonrpc");
+            JsonNode id = root.get("id");
+            JsonNode params = root.get("params");
+            if (jsonrpc == null
+                    || !jsonrpc.isTextual()
+                    || !"2.0".equals(jsonrpc.asText())
+                    || id == null
+                    || !(id.isTextual() || id.isNumber())
+                    || !hasModernRequestMetadata(params)) {
+                return null;
+            }
+            JsonNode method = root.get("method");
+            if (method == null || !method.isTextual()) {
+                return null;
+            }
+            String methodValue = method.asText();
+            if ("resources/list".equals(methodValue)) {
+                return new CompatibilityRequest(methodValue, null);
+            }
+            if (!"resources/read".equals(methodValue)) {
+                return new CompatibilityRequest(methodValue, null);
+            }
+            JsonNode uri = params.get("uri");
+            return uri != null && uri.isTextual()
+                    ? new CompatibilityRequest(methodValue, uri.asText())
+                    : null;
+        } catch (JacksonException exception) {
+            return null;
+        }
+    }
+
+    private static boolean hasModernRequestMetadata(JsonNode params) {
+        if (params == null || !params.isObject()) {
+            return false;
+        }
+        JsonNode meta = params.get("_meta");
+        if (meta == null || !meta.isObject()) {
+            return false;
+        }
+        JsonNode protocolVersion = meta.get("io.modelcontextprotocol/protocolVersion");
+        JsonNode clientCapabilities = meta.get("io.modelcontextprotocol/clientCapabilities");
+        return protocolVersion != null
+                && protocolVersion.isTextual()
+                && MODERN_PROTOCOL_VERSION.equals(protocolVersion.asText())
+                && clientCapabilities != null
+                && clientCapabilities.isObject();
+    }
+
+    private record CompatibilityRequest(String method, String name) {}
 
     private static String requireEndpoint(String value) {
         String endpoint = requireText(value, "endpoint");
