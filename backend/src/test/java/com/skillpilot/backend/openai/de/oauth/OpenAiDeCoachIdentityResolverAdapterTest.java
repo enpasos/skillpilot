@@ -10,14 +10,12 @@ import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.DefaultOAuth2AuthenticatedPrincipal;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -82,26 +80,6 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
 
         authenticate("spod_subject", OpenAiDeOAuthConfiguration.READ_SCOPE, OpenAiDeOAuthConfiguration.WRITE_SCOPE);
         resolver.requireWriteAccess(null);
-    }
-
-    @Test
-    void exposesOnlyTheStableOauthAuthorizationIdForSessionlessBootstrap() {
-        OpenAiDeCoachIdentityResolverAdapter resolver = new OpenAiDeCoachIdentityResolverAdapter(
-                mock(OpenAiDeCoachConnectionService.class),
-                properties());
-        var principal = new DefaultOAuth2AuthenticatedPrincipal(
-                "spoa_subject",
-                Map.of("sub", "spoa_subject", "authorization_id", "authorization-id"),
-                List.of(new SimpleGrantedAuthority(
-                        "SCOPE_" + OpenAiDeOAuthConfiguration.READ_SCOPE)));
-        SecurityContextHolder.getContext().setAuthentication(
-                UsernamePasswordAuthenticationToken.authenticated(
-                        principal,
-                        null,
-                        principal.getAuthorities()));
-
-        assertThat(resolver.requireAuthorizationReference(null))
-                .isEqualTo("authorization-id");
     }
 
     @Test

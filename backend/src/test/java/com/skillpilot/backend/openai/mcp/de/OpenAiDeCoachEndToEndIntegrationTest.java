@@ -83,7 +83,6 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.writes-enabled=true",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.v1.secure-cookie=false",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-e2e-client",
@@ -558,17 +557,18 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
                 .doesNotContain(
-                        OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                        OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                        OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
-                        OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
+                        "open_skillpilot_start",
+                        "issue_skillpilot_start_capability",
+                        "set_skillpilot_curriculum",
+                        "set_skillpilot_personalization");
         JsonNode bootstrapTool = toolDescriptor(tools, OpenAiDeV1McpContractAdapter.GET_CONTEXT);
         assertThat(bootstrapTool.path("title").asText())
                 .isEqualTo("Start or continue the SkillPilot learning coach");
         assertThat(bootstrapTool.path("description").asText())
-                .contains("Required before every learner-facing SkillPilot coaching response")
+                .contains("Required to start or refresh a SkillPilot coaching turn")
+                .contains("unless this turn already has a successful state-changing result")
                 .contains("one-hour remaining-lifetime guard")
-                .contains("Only a successful result permits subject-matter SkillPilot communication")
+                .contains("Do not call it redundantly after such a fresh mutation successor")
                 .contains("generic advice", "self-created curriculum", "invented goals")
                 .contains("general subject questions unrelated to SkillPilot");
         JsonNode bootstrapInputSchema = bootstrapTool.path("inputSchema");
@@ -613,10 +613,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                                 OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
                         OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S
                                 .stream()
-                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri),
-                        OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S
-                                .stream()
-                                .map(OpenAiDeV1ContractMetadata::skillpilotStartResourceUri))
+                                .map(OpenAiDeV1ContractMetadata::goalVisualizationResourceUri))
                 .flatMap(stream -> stream)
                 .toList();
         assertThat(result(resources).path("resources").valueStream()
@@ -644,15 +641,6 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                     applicationSubject,
                     "resource-retained-" + retainedResourceIndex++,
                     OpenAiDeV1ContractMetadata.goalVisualizationResourceUri(retainedSha256),
-                    retainedSha256);
-        }
-        for (String retainedSha256 :
-                OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
-            assertResourceReadableOverAuthenticatedMcp(
-                    accessToken,
-                    applicationSubject,
-                    "resource-retained-start-" + retainedResourceIndex++,
-                    OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(retainedSha256),
                     retainedSha256);
         }
         assertResourceReadableOverAuthenticatedMcp(
@@ -1054,7 +1042,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(completionText.indexOf(outcomeFeedback)).isGreaterThan(completionText.indexOf(workFeedback));
         JsonNode autopilotSuccessorContext = masteryResult.path("context");
         String successorGoalId = autopilotSuccessorContext.path("activeGoal").path("goalId").asText();
+        long successorStateVersion = masteryResult.path("stateVersion").asLong();
         assertThat(successorGoalId).isNotBlank().isNotEqualTo(completedOrdinaryGoalId);
+        assertThat(successorStateVersion).isPositive();
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
                 .isEqualTo(successorGoalId);
         assertThat(autopilotSuccessorContext.path("requiredAction").asText())
@@ -1062,9 +1052,17 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(autopilotSuccessorContext.path("interactionMode").asText()).isEqualTo("chat");
         assertThat(autopilotSuccessorContext.path("options")).isEmpty();
         assertThat(autopilotSuccessorContext.path("frontier")).isEmpty();
+        assertThat(autopilotSuccessorContext.path("goalVisualization").path("goalId").asText())
+                .isEqualTo(successorGoalId);
+        assertThat(autopilotSuccessorContext
+                        .path("goalVisualization")
+                        .path("imageUrl")
+                        .asText())
+                .isNotBlank();
         assertThat(autopilotSuccessorContext.path("nextAllowedTools").valueStream()
                         .map(JsonNode::asText)
                         .toList())
+                .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
@@ -1074,6 +1072,25 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         .path("title")
                         .asText()))
                 .isGreaterThan(completionText.indexOf(outcomeFeedback));
+
+        // Regression for the second image in one chat: the mastery successor is
+        // already the fresh authority. Render it immediately with the successor's
+        // unchanged goal and state version, without reloading get_skillpilot_context.
+        HttpResponse<String> renderAutopilotSuccessor = callTool(
+                accessToken,
+                180,
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                objectMapper.writeValueAsString(Map.of(
+                        "goalId", successorGoalId,
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                        successorStateVersion)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(renderAutopilotSuccessor, applicationSubject);
+        JsonNode renderedSuccessor = result(renderAutopilotSuccessor).path("structuredContent");
+        assertThat(renderedSuccessor.path("stateVersion").asLong())
+                .isEqualTo(successorStateVersion);
+        assertThat(renderedSuccessor.path("goalVisualization").path("goalId").asText())
+                .isEqualTo(successorGoalId);
 
         HttpResponse<String> persistedSuccessorRead = callTool(
                 accessToken,

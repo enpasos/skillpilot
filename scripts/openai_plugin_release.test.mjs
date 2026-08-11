@@ -53,13 +53,11 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
 });
 
 test("V1 UI binds one distinct active template per tool and keeps historical templates passive", () => {
-  const retainedStartResourceUri = "ui://skillpilot/coach/v1/sha256-start/start.html";
   const goalResourceUri = "ui://skillpilot/coach/v1/sha256-goal/goal.html";
   const memoryResourceUri = "ui://skillpilot/coach/v1/sha256-memory/memory.html";
   const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
   const resources = [
     { uri: retainedResourceUri, sha256: "retained" },
-    { uri: retainedStartResourceUri, sha256: "start" },
     { uri: goalResourceUri, sha256: "goal" },
     { uri: memoryResourceUri, sha256: "memory" },
   ];
@@ -149,10 +147,10 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
       assertActiveUiBindings(activeBindings, resources, [
         ...tools,
         {
-          name: "retired_skillpilot_start",
+          name: "orphaned_renderer",
           meta: {
-            ui: { resourceUri: retainedStartResourceUri },
-            "openai/outputTemplate": retainedStartResourceUri,
+            ui: { resourceUri: retainedResourceUri },
+            "openai/outputTemplate": retainedResourceUri,
           },
         },
       ]),
@@ -178,21 +176,15 @@ test("lifecycle policy revision never decreases or reuses a changed decision", (
   assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
     lifecycle(1),
     lifecycle(1),
-    "notice-v1",
-    "notice-v1",
   ));
   assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
     lifecycle(1),
     lifecycle(2, "BLOCK"),
-    "notice-v1",
-    "notice-v2",
   ));
   assert.throws(
     () => assertLifecyclePolicyRevisionMonotone(
       lifecycle(2),
       lifecycle(1),
-      "notice-v2",
-      "notice-v2",
     ),
     /must not decrease/,
   );
@@ -200,17 +192,6 @@ test("lifecycle policy revision never decreases or reuses a changed decision", (
     () => assertLifecyclePolicyRevisionMonotone(
       lifecycle(1),
       lifecycle(1, "BLOCK"),
-      "notice-v1",
-      "notice-v1",
-    ),
-    /strictly higher policyRevision/,
-  );
-  assert.throws(
-    () => assertLifecyclePolicyRevisionMonotone(
-      lifecycle(1),
-      lifecycle(1),
-      "notice-v1",
-      "notice-v2",
     ),
     /strictly higher policyRevision/,
   );
@@ -218,8 +199,6 @@ test("lifecycle policy revision never decreases or reuses a changed decision", (
     () => assertLifecyclePolicyRevisionMonotone(
       lifecycle(1),
       lifecycle(0),
-      "notice-v1",
-      "notice-v1",
     ),
     /positive safe integer/,
   );
@@ -227,16 +206,12 @@ test("lifecycle policy revision never decreases or reuses a changed decision", (
     () => assertLifecyclePolicyRevisionMonotone(
       { schemaVersion: 2 },
       lifecycle(1),
-      "notice-v1",
-      "notice-v1",
     ),
     /Only lifecycle schemaVersion 1/,
   );
   assert.doesNotThrow(() => assertLifecyclePolicyRevisionMonotone(
     { schemaVersion: 1 },
     lifecycle(1),
-    null,
-    "notice-v1",
   ));
 });
 

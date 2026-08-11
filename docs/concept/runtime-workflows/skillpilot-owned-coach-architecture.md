@@ -43,14 +43,16 @@ unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand enthält zwei getrennte aktive
 hashgebundene UI-Ressourcen für Lernzielvisualisierung und Karteikartenlernen.
 Jeder UI-Descriptor bindet genau seine Ressource; app-only Kartenreview und
 gewöhnliche Coach-Werkzeuge bleiben ungebunden.
-Früh beworbene Startressourcen bleiben nur passiv und byte-identisch lesbar.
+Der unveröffentlichte Direct-Start-Entwurf und seine Ressourcen sind aus dem
+V1-Vertrag entfernt.
 Für Identität, automatischen OAuth-Token-Transport, Browser-Binding und die
 davon getrennte 24h-Lernsession ist
 [openai-mcp-oauth-learner-session-architecture.md](openai-mcp-oauth-learner-session-architecture.md)
 verbindlich.
-Das nie veröffentlichte
-[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md) ist mit
-Policy-Revision 3 superseded und wird ausschließlich historisch aufbewahrt.
+Der nie veröffentlichte Direct-Start-Entwurf ist mit Policy-Revision 3
+vollständig entfernt. Seine Git-Historie bleibt der Audit-Trail; er ist keine
+aktive Architektur-, Sicherheits-, Implementierungs-, Test- oder
+Releasequelle.
 Für Paket-SemVer, Contract Major, öffentliche Origins, Snapshots, Lifecycle und
 Breaking Changes ist der
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
@@ -366,8 +368,8 @@ Der aktuelle V1-Draft besitzt insgesamt zwei aktive, getrennt hashgebundene
 Ressourcen mit dem MIME-Typ `text/html;profile=mcp-app`: Read-only Bild-Renderer
 und Karteikartenlauncher binden jeweils ausschließlich ihre eigene Ressource
 über `ui.resourceUri` und `openai/outputTemplate`. Das app-only Kartenreview und
-alle gewöhnlichen Coach-Werkzeuge bleiben ungebunden. Früh beworbene
-Startressourcen bleiben nur passiv lesbar.
+alle gewöhnlichen Coach-Werkzeuge bleiben ungebunden. Früher beworbene
+Bildressourcen bleiben nur passiv lesbar.
 
 Das Lernzielbild wird dabei über genau eine aktiv gebundene hashgebundene
 Ressource dargestellt. Es gehört weder in den Skill noch bildet es eine weitere
@@ -967,7 +969,7 @@ folgender Matrix praktisch geprüft:
 | Dimension | Zu prüfende Fälle |
 | --- | --- |
 | Tarif | kostenloser Consumerzugang; unterstützte feste Consumer-Abonnements |
-| Oberfläche | derselbe MCP-Vertrag in ChatGPT-Web, Mobile-Web sowie nativen Desktop- und Mobile-Apps; Bild und Karteikartenlernen verwenden zwei getrennte aktive Ressourcen; frühere Start- und Bild-URIs bleiben passiv lesbar; es gibt keine User-Agent-/Surface-Gates oder Hostdarstellungsbehauptung, und der vollständige Textpfad bleibt erhalten; gegebenenfalls Codex nur als separater Anwendungsfall |
+| Oberfläche | derselbe MCP-Vertrag in ChatGPT-Web, Mobile-Web sowie nativen Desktop- und Mobile-Apps; Bild und Karteikartenlernen verwenden zwei getrennte aktive Ressourcen; frühere Bild-URIs bleiben passiv lesbar; nie veröffentlichte Startressourcen gehören nicht zum V1-Vertrag; es gibt keine User-Agent-/Surface-Gates oder Hostdarstellungsbehauptung, und der vollständige Textpfad bleibt erhalten; gegebenenfalls Codex nur als separater Anwendungsfall |
 | Region | alle vorgesehenen Länder, insbesondere Deutschland/EU |
 | Konto | privates Konto; relevante Workspace-Typen und Adminrichtlinien |
 | Verbindung | Erstinstallation, OAuth, Widerruf, erneute Verbindung |
@@ -1028,8 +1030,8 @@ reduziert werden.
   Bild-Renderer und Karteikartenlauncher binden jeweils ausschließlich ihre
   eigene Ressource;
 - Web-first Übergabe: permanente ID, Providerhinweis und Level-2-Konfiguration
-  bleiben im First-Party-WebGUI; früh beworbene Startressourcen bleiben passiv
-  lesbar und an kein aktives Werkzeug gebunden;
+  bleiben im First-Party-WebGUI; der unveröffentlichte providerseitige
+  Startpfad ist vollständig entfernt;
 - genau eine aktuelle bild-only Ressource für den read-only Renderer; ohne
   gültiges kanonisches Bild fällt die Darstellung auf den normalen Chat zurück;
 - eigene interaktive Karteikartenressource mit privatem begrenztem Batch;
@@ -1168,8 +1170,7 @@ Kernanforderung nicht.
    Oberflächen-Acceptance öffentlich freigeben.
 9. Die zwei aktiven UI-Bindungen getrennt abnehmen: Bild-Renderer und
    Karteikartenlauncher zeigen jeweils nur auf ihre eigene aktuelle Ressource;
-   Kartenreview und gewöhnliche Coach-Werkzeuge bleiben ungebunden. Retained
-   Startressourcen sind an kein Werkzeug gebunden.
+   Kartenreview und gewöhnliche Coach-Werkzeuge bleiben ungebunden.
 10. Die Zielbildfreigabe mit Bild, ohne Bild und bei fehlerhaften Bilddaten
    abnehmen. In Web-, Mobile-Web- und nativen Hosts prüfen, dass derselbe
    Renderer ohne User-Agent-/Surface-Gate die strukturierte Visualisierung an

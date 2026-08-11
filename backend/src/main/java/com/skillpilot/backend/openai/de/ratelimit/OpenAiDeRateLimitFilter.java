@@ -19,7 +19,6 @@ import java.time.Duration;
 import java.util.HexFormat;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Pattern;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
@@ -46,14 +45,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
 
     private static final String OVERFLOW_BUCKET = "overflow";
-    private static final String BOOTSTRAP_GROUP = "bootstrap";
-    private static final String BOOTSTRAP_GLOBAL_BUCKET = BOOTSTRAP_GROUP + ":global";
-    private static final String BOOTSTRAP_AUTHORIZATION_PREFIX = "SkillPilotSetup ";
-    private static final Pattern BOOTSTRAP_AUTHORIZATION_PATTERN =
-            Pattern.compile("^SkillPilotSetup spc_[A-Za-z0-9_-]{43}$");
-    private static final String BOOTSTRAP_REJECTION_BODY =
-            "{\"schemaVersion\":1,\"status\":\"TEMPORARILY_UNAVAILABLE\","
-                    + "\"fallbackUrl\":\"https://skillpilot.com/\"}";
     private static final String DEFAULT_REJECTION_BODY =
             "{\"error\":\"rate_limited\","
                     + "\"error_description\":\"Too many requests. Retry later.\"}";
@@ -91,7 +82,7 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
         Limit limit = limitFor(request);
         if (limit == null || limit.requests() <= 0) {
-            reject(request, response, windowMillis(), limit != null && limit.bootstrap());
+            reject(response, windowMillis());
             return;
         }
 
@@ -102,22 +93,8 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
                 now,
                 window,
                 limit.requests());
-        if (limit.bootstrap() && retryAfterMillis <= 0) {
-            retryAfterMillis = acquire(
-                    bootstrapCapabilityKey(request, now),
-                    now,
-                    window,
-                    properties.getBootstrapCapabilityRequests());
-        }
-        if (limit.bootstrap() && retryAfterMillis <= 0) {
-            retryAfterMillis = acquire(
-                    BOOTSTRAP_GLOBAL_BUCKET,
-                    now,
-                    window,
-                    properties.getBootstrapProcessGlobalRequests());
-        }
         if (retryAfterMillis > 0) {
-            reject(request, response, retryAfterMillis, limit.bootstrap());
+            reject(response, retryAfterMillis);
             return;
         }
         filterChain.doFilter(request, response);
@@ -130,17 +107,6 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         WindowCounter counter =
                 counters.computeIfAbsent(key, ignored -> new WindowCounter(now + window));
         return counter.acquire(now, window, limit);
-    }
-
-    private String bootstrapCapabilityKey(HttpServletRequest request, long now) {
-        String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-        String opaqueBucket = "missing-or-invalid";
-        if (authorization != null
-                && authorization.startsWith(BOOTSTRAP_AUTHORIZATION_PREFIX)
-                && BOOTSTRAP_AUTHORIZATION_PATTERN.matcher(authorization).matches()) {
-            opaqueBucket = digest(authorization);
-        }
-        return boundedBucketKey(BOOTSTRAP_GROUP + "-capability", opaqueBucket, now);
     }
 
     private String clientKey(String group, String remoteAddress, long now) {
@@ -159,11 +125,7 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         return group + ':' + boundedBucket;
     }
 
-    private void reject(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            long retryAfterMillis,
-            boolean bootstrap) throws IOException {
+    private void reject(HttpServletResponse response, long retryAfterMillis) throws IOException {
         telemetry.record(Event.RATE_LIMITED);
         response.setStatus(429);
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
@@ -171,15 +133,8 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         response.setHeader(HttpHeaders.RETRY_AFTER, Long.toString(Math.max(1, (retryAfterMillis + 999) / 1000)));
         response.setHeader("Referrer-Policy", "no-referrer");
         response.setHeader("X-Content-Type-Options", "nosniff");
-        String origin = request.getHeader(HttpHeaders.ORIGIN);
-        if (bootstrap && OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(origin)) {
-            response.setHeader(
-                    HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN,
-                    origin);
-            response.setHeader(HttpHeaders.VARY, HttpHeaders.ORIGIN);
-        }
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().write(bootstrap ? BOOTSTRAP_REJECTION_BODY : DEFAULT_REJECTION_BODY);
+        response.getWriter().write(DEFAULT_REJECTION_BODY);
     }
 
     private long windowMillis() {
@@ -197,23 +152,19 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         }
         if (path.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
                 || path.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/")) {
-            return new Limit("mcp", properties.getMcpRequests(), false);
+            return new Limit("mcp", properties.getMcpRequests());
         }
         if (OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.OPENID_CONFIGURATION_PATH.equals(path)
                 || OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH.equals(path)
                 || OpenAiAppsChallengeController.PATH.equals(path)) {
-            return new Limit("metadata", properties.getMetadataRequests(), false);
+            return new Limit("metadata", properties.getMetadataRequests());
         }
         if (path.startsWith("/api/openai/v1/oauth")) {
-            return new Limit("oauth", properties.getOauthRequests(), false);
+            return new Limit("oauth", properties.getOauthRequests());
         }
         if (path.startsWith("/api/ui/learners/") && path.contains("/openai/v1/")) {
-            return new Limit("ui", properties.getUiRequests(), false);
-        }
-        if (OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH.equals(path)
-                && "POST".equalsIgnoreCase(request.getMethod())) {
-            return new Limit(BOOTSTRAP_GROUP, properties.getBootstrapRequests(), true);
+            return new Limit("ui", properties.getUiRequests());
         }
         return null;
     }
@@ -228,7 +179,7 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
         }
     }
 
-    private record Limit(String name, int requests, boolean bootstrap) {
+    private record Limit(String name, int requests) {
     }
 
     private static final class WindowCounter {

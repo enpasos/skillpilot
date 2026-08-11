@@ -118,7 +118,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                     calls.incrementAndGet();
                     return success(metadata);
                 });
-        session.setExpiresAt(NOW.plus(Duration.ofMinutes(59)));
+        session.setExpiresAt(NOW.plus(OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING));
         McpSchema.CallToolResult replay = coordinator.write(
                 SESSION_ID,
                 TOOL,
@@ -136,6 +136,80 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         assertThat(replay.structuredContent().toString()).contains("stateVersion=1");
         assertThat(replay.structuredContent().toString())
                 .doesNotContain(SESSION_ID, "private-learner-id");
+    }
+
+    @Test
+    void exactRetryBelowTheMinimumRemainingLifetimeRequiresRenewal() {
+        String requestId = UUID.randomUUID().toString();
+        AtomicInteger calls = new AtomicInteger();
+        Map<String, Object> arguments = Map.of("selection", "committed");
+        coordinator.write(
+                SESSION_ID,
+                TOOL,
+                0L,
+                requestId,
+                arguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+        session.setExpiresAt(NOW.plus(Duration.ofMinutes(59)));
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        requestId,
+                        arguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED));
+        assertThat(calls).hasValue(1);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(1L);
+        assertThat(persistedRequest.get()).isNotNull();
+    }
+
+    @Test
+    void exactRetryAfterANewerLearnerRevisionRequiresFreshState() {
+        String requestId = UUID.randomUUID().toString();
+        AtomicInteger calls = new AtomicInteger();
+        Map<String, Object> arguments = Map.of("selection", "committed");
+        coordinator.write(
+                SESSION_ID,
+                TOOL,
+                0L,
+                requestId,
+                arguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+        learner.setCoachStateRevision(2L);
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        requestId,
+                        arguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> {
+                            assertThat(exception.code())
+                                    .isEqualTo(OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT);
+                            assertThat(exception.metadata().stateVersion()).isEqualTo(2L);
+                        });
+        assertThat(calls).hasValue(1);
+        assertThat(persistedRequest.get().getCompletedStateVersion()).isEqualTo(1L);
     }
 
     @Test

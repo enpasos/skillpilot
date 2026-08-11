@@ -270,11 +270,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
   V1 binds exactly two active content-addressed MCP Apps UI resources on the
   fixed widget domain `https://mcp-coach-v1.skillpilot.com`: the image-only
-  goal renderer and interactive card learning. Previously advertised start and
-  image hash URIs remain passive and byte-identically readable, but no active
-  tool binds the retained start resources. The card-review tool is app-only and
-  unbound; ordinary tools remain UI-free. Permanent-ID and Level-2 setup remain
-  exclusively in the SkillPilot WebGUI. Bare MCP `ImageContent` is not the
+  goal renderer and interactive card learning. Previously advertised image
+  hash URIs remain passive and byte-identically readable. The card-review tool
+  is app-only and unbound; ordinary tools remain UI-free. Permanent-ID and
+  Level-2 setup remain exclusively in the SkillPilot WebGUI. Bare MCP
+  `ImageContent` is not the
   visibility contract, and
   the runtime applies no `openai/userAgent` or client-surface gate.
   These URLs are immutable contract values rather than environment settings.

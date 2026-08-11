@@ -89,10 +89,6 @@ const memoryCardPracticeWidgetSource = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
-const skillpilotStartWidgetSource = resolve(
-  repositoryRoot,
-  "backend/src/main/resources/openai/skillpilot-start-v1.html",
-);
 const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
@@ -143,39 +139,12 @@ for (const sha256 of retainedGoalVisualizationArtifactSha256s) {
     "Retained goal-visualization artifacts must remain byte-for-byte immutable.",
   );
 }
-const retainedSkillpilotStartArtifactSha256s = retainedArtifactDirectoryNames
-  .filter((directoryName) =>
-    existsSync(resolve(
-      retainedGoalVisualizationRoot,
-      directoryName,
-      "skillpilot-start.html",
-    )))
-  .map((directoryName) => directoryName.slice("sha256-".length));
-assert.ok(
-  retainedSkillpilotStartArtifactSha256s.length > 0,
-  "At least one previously advertised direct-start artifact must stay readable.",
-);
-for (const sha256 of retainedSkillpilotStartArtifactSha256s) {
-  const artifact = resolve(
-    retainedGoalVisualizationRoot,
-    `sha256-${sha256}`,
-    "skillpilot-start.html",
-  );
-  assert.equal(
-    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
-    sha256,
-    "Retained direct-start artifacts must remain byte-for-byte immutable.",
-  );
-}
 const uiArtifactSource = (releasePath) => {
   if (releasePath === "ui/goal-visualization.html") {
     return goalVisualizationWidgetSource;
   }
   if (releasePath === "ui/memory-card-practice.html") {
     return memoryCardPracticeWidgetSource;
-  }
-  if (releasePath === "ui/skillpilot-start.html") {
-    return skillpilotStartWidgetSource;
   }
   if (releasePath === "ui/retained/legacy-1.0.0/goal-visualization.html") {
     return legacyGoalVisualizationSource;
@@ -187,13 +156,7 @@ const uiArtifactSource = (releasePath) => {
   if (retained) {
     return resolve(retainedGoalVisualizationRoot, retained[1], "goal-visualization.html");
   }
-  const retainedStart =
-    /^ui\/retained\/(sha256-[0-9a-f]{64})\/skillpilot-start\.html$/u.exec(
-      releasePath,
-    );
-  return retainedStart
-    ? resolve(retainedGoalVisualizationRoot, retainedStart[1], "skillpilot-start.html")
-    : undefined;
+  return undefined;
 };
 
 const command = process.argv[2];
@@ -223,8 +186,6 @@ try {
       assertLifecyclePolicyRevisionMonotone(
         readJson(resolve(previous, "lifecycle.json")),
         readJson(resolve(candidate, "lifecycle.json")),
-        providerNoticeVersion(previous),
-        providerNoticeVersion(candidate),
       );
     }
   }
@@ -608,18 +569,6 @@ function validateCandidate(output) {
       `Snapshot is missing referenced plugin asset ${assetPath}.`,
     );
   }
-}
-
-function providerNoticeVersion(releaseRoot) {
-  const contractPath = resolve(releaseRoot, "contract/contract.json");
-  if (!existsSync(contractPath)) {
-    return null;
-  }
-  const contract = readJson(contractPath);
-  const issuer = contract.tools?.find(
-    (tool) => tool.name === "issue_skillpilot_start_capability",
-  );
-  return issuer?.inputSchema?.properties?.providerNoticeVersion?.const ?? null;
 }
 
 function printSurfaceChangeReport(changes) {

@@ -68,7 +68,6 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.server-build=test-build",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=false",
-        "skillpilot.openai.coach.v1.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",

@@ -31,8 +31,6 @@ const legacyGoalVisualizationArtifactSha256 =
   "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
 const legacyGoalVisualizationResourceUri =
   "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
-const lastAdvertisedSkillpilotStartArtifactSha256 =
-  "4bedfcc1f5de64bde6c8cf9f81879d0c80f54ec740de105357fa929be6cf7f85";
 assert.equal(existsSync(legacyGoalVisualizationArtifact), true);
 assert.equal(
   createHash("sha256")
@@ -88,36 +86,6 @@ assert.equal(
   retainedGoalVisualizationArtifactSha256s.includes(goalVisualizationArtifactSha256),
   false,
   "The active goal-visualization artifact must not also be retained.",
-);
-const retainedSkillpilotStartArtifactSha256s = retainedArtifactDirectoryNames
-  .filter((directoryName) => existsSync(resolve(
-    retainedGoalVisualizationRoot,
-    directoryName,
-    "skillpilot-start.html",
-  )))
-  .map((directoryName) => directoryName.slice("sha256-".length));
-assert.ok(
-  retainedSkillpilotStartArtifactSha256s.length > 0,
-  "At least one previously advertised direct-start artifact must stay readable.",
-);
-for (const sha256 of retainedSkillpilotStartArtifactSha256s) {
-  const artifact = resolve(
-    retainedGoalVisualizationRoot,
-    `sha256-${sha256}`,
-    "skillpilot-start.html",
-  );
-  assert.equal(
-    createHash("sha256").update(readFileSync(artifact)).digest("hex"),
-    sha256,
-    "Retained direct-start artifacts must remain byte-for-byte immutable.",
-  );
-}
-assert.equal(
-  retainedSkillpilotStartArtifactSha256s.includes(
-    lastAdvertisedSkillpilotStartArtifactSha256,
-  ),
-  true,
-  "The last advertised direct-start artifact must remain passively readable.",
 );
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
@@ -361,11 +329,6 @@ const expectedUiResources = [
     path: `ui/retained/sha256-${sha256}/goal-visualization.html`,
     uri: `ui://skillpilot/coach/v1/sha256-${sha256}/goal-visualization.html`,
   })),
-  ...retainedSkillpilotStartArtifactSha256s.map((sha256) => ({
-    mimeType: "text/html;profile=mcp-app",
-    path: `ui/retained/sha256-${sha256}/skillpilot-start.html`,
-    uri: `ui://skillpilot/coach/v1/sha256-${sha256}/skillpilot-start.html`,
-  })),
   {
     mimeType: "text/html;profile=mcp-app",
     path: "ui/memory-card-practice.html",
@@ -520,8 +483,8 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /Before (?:\*\*)?every learner-facing coaching response(?:\*\*)?[\s\S]+`get_skillpilot_context`[\s\S]+(?:same|current) assistant turn/i,
-  "The contract must require a fresh session/context preflight in every learner-facing coaching turn.",
+  /Begin (?:each|every) learner turn with a successful `get_skillpilot_context` call[\s\S]+successful mutation[\s\S]+full successor context[\s\S]+(?:do not|not) reload/i,
+  "The contract must require a turn-start preflight and use a fresh mutation successor without a redundant reload.",
 );
 assert.match(
   combinedSkill,
@@ -598,39 +561,28 @@ assert.ok(
   "Could not isolate the V1 tool catalog.",
 );
 const modelToolCatalog = mcpContract.slice(toolCatalogStart, toolCatalogEnd);
-for (const [retiredTool, retiredSymbol] of [
-  ["open_skillpilot_start", "OPEN_SKILLPILOT_START"],
-  ["issue_skillpilot_start_capability", "ISSUE_SKILLPILOT_START_CAPABILITY"],
-  ["set_skillpilot_curriculum", "SET_CURRICULUM"],
-  ["set_skillpilot_personalization", "SET_PERSONALIZATION"],
+for (const retiredTool of [
+  "open_skillpilot_start",
+  "issue_skillpilot_start_capability",
+  "set_skillpilot_curriculum",
+  "set_skillpilot_personalization",
 ]) {
   assert.equal(
-    combinedSkill.includes(retiredTool)
-      || modelToolCatalog.includes(retiredTool)
-      || modelToolCatalog.includes(retiredSymbol),
+    combinedSkill.includes(retiredTool) || modelToolCatalog.includes(retiredTool),
     false,
     `The Web-first V1 contract must not expose retired tool ${retiredTool}.`,
   );
 }
-assert.match(
-  mcpContract,
-  /startResourceSpecification[\s\S]+Retained SkillPilot compatibility resource[\s\S]+not bound to an active tool/u,
-  "Previously advertised start resources must be described as passive compatibility resources.",
-);
-assert.match(
-  mcpContract,
-  /Historical SkillPilot UI resource retained only for provider cache compatibility[\s\S]+active start flow is available through this resource/u,
-  "Retained start resource widget metadata must not advertise an active start flow.",
-);
-for (const activeStartDescription of [
-  "Start SkillPilot Coach",
-  "Private direct-start component for an existing SkillPilot learner ID.",
-  "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+for (const retiredSymbol of [
+  "OPEN_SKILLPILOT_START",
+  "ISSUE_SKILLPILOT_START_CAPABILITY",
+  "SET_CURRICULUM",
+  "SET_PERSONALIZATION",
 ]) {
   assert.equal(
-    mcpContract.includes(activeStartDescription),
+    mcpContract.includes(retiredSymbol),
     false,
-    `Retained resource metadata must not advertise the retired flow: ${activeStartDescription}`,
+    `The Web-first V1 adapter must not retain dead symbol ${retiredSymbol}.`,
   );
 }
 assert.equal(
@@ -1056,7 +1008,7 @@ assert.match(
 );
 assert.match(
   orientationSection[1],
-  /Never call this subject-matter mastery/u,
+  /Never call\s+this subject-matter mastery/u,
   "Orientation completion must not be presented as subject mastery.",
 );
 assert.match(
@@ -1146,12 +1098,12 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /contains `goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+once[\s\S]+unchanged `goalId`[\s\S]+`stateVersion`[\s\S]+`expectedStateVersion`/s,
+  /contains\s+`goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+once as the immediate next tool call[\s\S]+unchanged `goalId`[\s\S]+`stateVersion`[\s\S]+`expectedStateVersion`/s,
   "The coach skill must retain the compact, result-bound goal-visualization rule.",
 );
 assert.match(
   combinedSkill,
-  /renderer receipt never replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
+  /renderer receipt never\s+replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
   "The coach skill must keep host image presentation optional and preserve complete coaching text.",
 );
 assert.match(
@@ -1161,7 +1113,7 @@ assert.match(
 );
 assert.match(
   mcpContract,
-  /goalVisualization[\s\S]+nextAllowedTools[\s\S]+render_skillpilot_goal_visualization[\s\S]+call it once[\s\S]+goalId[\s\S]+expectedStateVersion/s,
+  /goalVisualization[\s\S]+nextAllowedTools[\s\S]+render_skillpilot_goal_visualization[\s\S]+call the renderer exactly once as the immediate next tool call[\s\S]+goalId[\s\S]+stateVersion/s,
   "The MCP server instructions must retain the result-bound renderer rule.",
 );
 assert.match(
@@ -1239,11 +1191,6 @@ assert.equal(javaConstant("POLICY_REVISION"), contractLine.policyRevision);
 assert.equal(javaConstant("SUPPORT_LIFECYCLE"), contractLine.supportLifecycle);
 assert.equal(javaConstant("PUBLICATION_STATUS"), contractLine.publicationStatus);
 assert.equal(javaConstant("NEW_SESSION_POLICY"), contractLine.newSessionPolicy);
-assert.match(
-  mcpContract,
-  /contractLine\.put\("successor", null\)/u,
-  "The current runtime projection must match the lifecycle source's null successor.",
-);
 assert.equal(contractLine.successor, null);
 assert.equal(javaConstant("PUBLIC_MCP_ENDPOINT"), releaseLine.publicMcpEndpoint);
 assert.equal(javaConstant("OAUTH_RESOURCE"), releaseLine.oauthResource);
@@ -1280,11 +1227,6 @@ assert.deepEqual(
   javaStringList("RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S").slice().sort(),
   retainedGoalVisualizationArtifactSha256s,
   "Every retained artifact must be declared, and every declared hash must exist.",
-);
-assert.deepEqual(
-  javaStringList("RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S").slice().sort(),
-  retainedSkillpilotStartArtifactSha256s,
-  "Every retained direct-start artifact must be declared, and every declared hash must exist.",
 );
 assert.equal(
   javaConstant("GOAL_VISUALIZATION_ARTIFACT_SHA256"),

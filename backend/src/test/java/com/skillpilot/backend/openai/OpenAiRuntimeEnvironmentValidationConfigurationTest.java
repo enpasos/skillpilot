@@ -14,9 +14,9 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
     void acceptsLineSpecificAndProcessSharedNames() {
         OpenAiRuntimeEnvironmentValidationConfiguration.requireNoForbiddenNames(List.of(
                 "SKILLPILOT_OPENAI_COACH_V1_ENABLED",
+                "SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED",
                 "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET",
                 "SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE",
-                "SKILLPILOT_OPENAI_SECURE_COOKIE",
                 "SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED"));
     }
 
@@ -31,7 +31,15 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                                 "SKILLPILOT_OPENAI_COACH_V1_TYPO",
                                 "SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED",
                                 "SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED",
-                                "SKILLPILOT_OPENAI_APPS_CHALLENGE")))
+                                "SKILLPILOT_OPENAI_APPS_CHALLENGE",
+                                "SKILLPILOT_OPENAI_SECURE_COOKIE",
+                                "SKILLPILOT_OPENAI_BINDING_TTL",
+                                "SKILLPILOT_OPENAI_LAUNCH_TTL",
+                                "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS",
+                                "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS",
+                                "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS",
+                                "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS",
+                                "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS")))
                 .withMessageContaining("SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET")
                 .withMessageContaining("SKILLPILOT_OPENAI_EN_OAUTH_CLIENT_SECRET")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_MCP_URL")
@@ -39,6 +47,10 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_APPS_CHALLENGE")
+                .withMessageContaining("SKILLPILOT_OPENAI_SECURE_COOKIE")
+                .withMessageContaining("SKILLPILOT_OPENAI_BINDING_TTL")
+                .withMessageContaining("SKILLPILOT_OPENAI_LAUNCH_TTL")
+                .withMessageContaining("SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS")
                 .withMessageContaining("environment values were not inspected");
     }
 

@@ -16,13 +16,6 @@ public interface OpenAiDeCoachIdentityResolver {
             McpTransportContext transportContext,
             String learningSessionId);
 
-    /**
-     * Requires the V1 read scope and returns the stable technical OAuth
-     * authorization reference for this App connection. The reference never
-     * identifies or selects a learner or learning session.
-     */
-    String requireAuthorizationReference(McpTransportContext transportContext);
-
     /** Rejects a mutation unless the current connection has the V1 write scope. */
     void requireWriteAccess(McpTransportContext transportContext);
 

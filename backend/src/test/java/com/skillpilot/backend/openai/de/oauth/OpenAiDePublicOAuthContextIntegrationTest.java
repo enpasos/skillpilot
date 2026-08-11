@@ -33,7 +33,6 @@ import org.springframework.test.context.TestPropertySource;
         "skillpilot.openai.coach.v1.oauth.client-secret=confidential-test-secret-that-is-longer-than-thirty-two-characters",
         "skillpilot.openai.coach.v1.oauth.redirect-uris=https://chatgpt.com/connector/oauth/confidential-test-callback",
         "skillpilot.openai.coach.v1.mcp.enabled=false",
-        "skillpilot.openai.coach.v1.secure-cookie=false",
         "skillpilot.public-base-url=https://skillpilot.test",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",

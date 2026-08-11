@@ -196,7 +196,7 @@ verglichen und nicht blind überschrieben:
 Zuvor muss der Produktions-Checkout nachweislich bereits den sprachneutralen
 Cutover enthalten. Diese Prüfung ist verpflichtend: Ein altes Skript würde
 weiter den DE-Host testen; ein alter vHost kann unbekannte neue Hostnamen als
-Default-vHost irrtümlich an V1 weiterleiten. Alle acht Befehle müssen erfolgreich
+Default-vHost irrtümlich an V1 weiterleiten. Alle fünf Befehle müssen erfolgreich
 sein und der letzte darf keine Ausgabe erzeugen:
 
 ```bash
@@ -206,13 +206,7 @@ grep -F 'mcp-coach-v9.skillpilot.com' \
   deploy/nginx/skillpilot-mcp-coaches.conf
 grep -F 'proxy_pass http://127.0.0.1:8787/internal/openai/v1/mcp;' \
   deploy/nginx/skillpilot-mcp-coaches.conf
-grep -F 'location = /bootstrap/v1/launch {' \
-  deploy/nginx/skillpilot-mcp-coaches.conf
-grep -F 'proxy_pass http://127.0.0.1:8787/bootstrap/v1/launch;' \
-  deploy/nginx/skillpilot-mcp-coaches.conf
 grep -F 'MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"' \
-  scripts/verify_openai_v1_public_edge.sh
-grep -F 'CHATGPT_WEB_WIDGET_ORIGIN="https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com"' \
   scripts/verify_openai_v1_public_edge.sh
 ! grep -E 'mcp-coach-(de|en)-v[1-9]' \
   deploy/nginx/skillpilot-mcp-coaches.conf
@@ -365,7 +359,6 @@ SKILLPILOT_OPENAI_COACH_V1_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommali
 # Nur bei einem tatsächlichen Client-ID-Wechsel, einmalig und danach entfernen:
 # SKILLPILOT_OPENAI_COACH_V1_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
 
-SKILLPILOT_OPENAI_SECURE_COOKIE=true
 SKILLPILOT_OPENAI_LEARNING_SESSION_TTL=PT24H
 # Standardmäßig false; nur für einen kontrollierten First-Party-Live-Test kurz aktivieren:
 SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=false
@@ -378,19 +371,15 @@ SKILLPILOT_OPENAI_RATE_LIMIT_WINDOW=PT1M
 SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS=120
 SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS=60
 SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS=60
-SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS=30
-SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS=30
-SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS=600
-SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS=10
-SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS=300
 SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
 
-Die beiden `PROCESS_GLOBAL`-Budgets gelten jeweils nur innerhalb einer
-Backendinstanz. Vor einem Multi-Instance-Betrieb muss das vertrauenswürdige
-Gateway dieselben Gesamtgrenzen instanzübergreifend erzwingen; die lokalen
-Budgets bleiben als zweite Barriere aktiv.
+Die entfernten Direct-Start-Variablen `SKILLPILOT_OPENAI_SECURE_COOKIE`,
+`SKILLPILOT_OPENAI_BINDING_TTL`, `SKILLPILOT_OPENAI_LAUNCH_TTL` und alle
+`SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_*` dürfen nicht im Service-Environment
+verbleiben. Der Server und der Deployment-Validator lehnen diese alten Namen
+fail-closed ab.
 
 Die drei öffentlichen V1-URLs werden nicht als Umgebungsvariablen
 konfiguriert. Sie sind unveränderliche Bestandteile des V1-Vertrags:
@@ -558,16 +547,18 @@ desselben Lernenden erzeugen verschiedene IDs. Die absolute Frist wird durch
 `PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder parallele
 Chats verlängern sie nicht.
 
-Vor jeder neuen sessiongebundenen Lese- oder Schreiboperation prüft der V1-
+Vor jeder sessiongebundenen Lese-, Schreib- oder Replay-Antwort prüft der V1-
 Adapter zusätzlich den Aktionshorizont `expiresAt >= now + PT1H`. Genau eine
 Stunde Restlaufzeit ist gültig; weniger als eine Stunde liefert
-`SESSION_RENEWAL_REQUIRED`, bevor die fachliche Operation ausgeführt wird. Nur
-ein bereits committeter Write mit demselben Toolnamen, kanonisch identischen
-Argumenten und derselben `clientRequestId` darf bei noch nicht abgelaufener
-Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion sein
-gespeichertes Resultat replayen. Dabei werden weder Operation noch Mutation
-wiederholt. Eine neue Session ist stets ein unabhängiger Datensatz und widerruft
-frühere Sessions nicht.
+`SESSION_RENEWAL_REQUIRED`, bevor die fachliche Operation ausgeführt oder ein
+gespeichertes Resultat zurückgegeben wird. Ein bereits committeter Write mit
+demselben Toolnamen, kanonisch identischen Argumenten und derselben
+`clientRequestId` darf bei weiterhin verfügbarer gepinnter
+Workflow-/Curriculumversion nur dann replayen, wenn seine
+`completedStateVersion` noch der aktuellen kanonischen Learner-Revision
+entspricht. Dabei werden weder Operation noch Mutation wiederholt. Eine neue
+Session ist stets ein unabhängiger Datensatz und widerruft frühere Sessions
+nicht.
 
 Die Session-ID wird einmal automatisch in den URL-codierten Startprompt
 eingetragen und danach von ChatGPT unverändert als Pflichtargument an jedes
@@ -774,8 +765,9 @@ semantisch gleiches Alias-Werkzeug veröffentlichen.
 Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau zwei
 aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
 atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
-Zuvor ausgelieferte Start- und Bild-Hash-URIs bleiben byte-identisch passiv
-lesbar, besitzen aber keine aktive Werkzeugbindung.
+Zuvor ausgelieferte Bild-Hash-URIs bleiben byte-identisch passiv lesbar und
+besitzen keine aktive Werkzeugbindung. Frühere, nie veröffentlichte
+Startressourcen gehören nicht zum V1-Vertrag.
 `render_skillpilot_goal_visualization` und
 `start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
 Ressource über `ui.resourceUri` und den ChatGPT-Kompatibilitätsalias
@@ -1011,7 +1003,7 @@ Antwort notieren:
 | Prompt | Erwartung |
 | --- | --- |
 | `Verwende SkillPilot Coach v1 und fahre fort.` ohne aktuelle SkillPilot-Startnachricht | Kein Werkzeugaufruf. Der Coach verweist kurz in der Unterhaltungssprache auf `https://skillpilot.com/`, die WebGUI-Konfiguration und **Lernen starten** / **Start learning**, das eine neue Session in einem neuen Chat öffnet. |
-| Derselbe Prompt mit aktueller Startnachricht und `learningSessionId: sps_…` | `get_skillpilot_context` läuft in diesem Assistant-Turn vor jeder lernendenbezogenen Antwort. Level 2 wird weder erfragt noch verändert; die Antwort verwendet nur den bestätigten WebGUI-Kontext. |
+| Derselbe Prompt mit aktueller Startnachricht und `learningSessionId: sps_…` | `get_skillpilot_context` läuft zu Beginn dieses Learner-Turns. Level 2 wird weder erfragt noch verändert; die Antwort verwendet nur den bestätigten WebGUI-Kontext. Nach einer erfolgreichen Mutation gilt deren vollständiger Nachfolgerzustand für den Rest desselben Assistant-Turns ohne redundanten Kontextabruf. |
 | Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | Nach erfolgreichem Kontext folgt `render_skillpilot_goal_visualization` genau einmal mit dessen `goalId`; die Top-Level-`stateVersion` wird in `expectedStateVersion` kopiert. Danach bleibt die fachliche Antwort vollständig. |
 | Bildprojektion oder Renderer-Freigabe fehlt | Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig. |
 | Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor | Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht. |
@@ -1106,15 +1098,17 @@ Der Benutzer muss die Session-ID weder kopieren noch verändern.
 - Jede ausdrückliche Aktion **Lernen starten** / **Start learning** erzeugt eine
   neue opake `learningSessionId` und öffnet einen neuen Chat mit der kurzen
   Startnachricht; die permanente SkillPilot-ID bleibt außerhalb des Chats.
-- Vor jeder lernendenbezogenen Coach-Antwort muss der Vollkontext im aktuellen
-  Assistant-Turn erfolgreich geladen worden sein. Level-3-Fokus und aktives
-  Ziel bleiben die einzigen chatseitigen Navigationsänderungen.
+- Zu Beginn jedes Learner-Turns muss der Vollkontext erfolgreich geladen worden
+  sein. Nach einer erfolgreichen Mutation ist ihr vollständiger
+  Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ und wird
+  nicht redundant neu geladen. Level-3-Fokus und aktives Ziel bleiben die
+  einzigen chatseitigen Navigationsänderungen.
 - Für jeden Session-Recovery-Code gilt die oben geprüfte servereigene
   Instruktion mit WebGUI und neuem Chat; es gibt keine Fachantwort und keinen
   OAuth-Reconnect.
-- `resources/list` liefert genau zwei aktiv gebundene UI-Ressourcen. Bereits
-  beworbene Startressourcen bleiben ausschließlich byte-identisch passiv
-  lesbar und besitzen weder Toolbindung noch Startfunktion.
+- `resources/list` liefert die beiden aktiven UI-Ressourcen sowie ausschließlich
+  die zur Cache-Kompatibilität retained Bildressourcen. Der unveröffentlichte
+  providerseitige Startpfad besitzt weder Tool, Ressource noch Runtime-Dienst.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-

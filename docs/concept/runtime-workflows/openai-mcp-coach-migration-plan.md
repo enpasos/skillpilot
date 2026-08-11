@@ -9,7 +9,8 @@ Werkzeugkatalog chat-first. Der noch unveröffentlichte
 `text/html;profile=mcp-app`-Ressourcen für bild-only Lernzielvisualisierung und
 Karteikartenlernen. Beide read-only UI-Werkzeuge binden ausschließlich ihre
 eigene Ressource; app-only Kartenreview und gewöhnliche Coach-Werkzeuge bleiben
-UI-los. Früh beworbene Startressourcen bleiben passiv lesbar.
+UI-los. Der unveröffentlichte Direct-Start-Entwurf und seine Ressourcen sind
+vollständig aus dem V1-Vertrag entfernt.
 Serverauthentisiertes TLS und das
 fail-closed geprüfte OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS
 ist nicht Teil von `1.0.0`; eine mögliche spätere Transporthärtung wird separat
@@ -36,9 +37,10 @@ Die feste V1-Identität, kompatible Versionsänderungen, Contract-Snapshots und
 der Lebenszyklus werden normativ im
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
 geführt.
-Das nie veröffentlichte
-[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md) ist mit
-Policy-Revision 3 superseded und wird nur historisch aufbewahrt.
+Der nie veröffentlichte Direct-Start-Entwurf ist mit Policy-Revision 3
+vollständig entfernt. Seine Git-Historie bleibt der Audit-Trail; er ist keine
+aktive Architektur-, Sicherheits-, Implementierungs-, Test- oder
+Releasequelle.
 
 Die technische Migration und die Zuordnung der früheren Regeln sind nicht mit
 sichtbarer Endnutzerparität gleichzusetzen. Das allgemeine Coach-
@@ -167,8 +169,11 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
 10. **WebGUI-only Setup:** Permanente SkillPilot-ID, Providerhinweis,
     Curriculum, Stufe, Fächer, Kursprofile und Personalisierung bleiben im
     First-Party-WebGUI. Der V1-Modellvertrag besitzt dafür keine Werkzeuge.
-11. **Pre-response Sessionprüfung:** Vor jeder lernendenbezogenen Antwort muss
+11. **Turn-Start-Sessionprüfung:** Zu Beginn jedes Learner-Turns muss
     `get_skillpilot_context` im aktuellen Assistant-Turn erfolgreich sein.
+    Nach genau einer erfolgreichen Mutation ist ihr vollständiger
+    Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ und
+    wird nicht redundant neu geladen.
 
 ## 4. Zieltopologie
 
@@ -378,8 +383,10 @@ werden als Backend-/WebGUI-Vertrag getestet, nicht als Modellorchestrierung.
 technischen Namens das eindeutige Bootstrap-Werkzeug. Wenn die App ausgewählt
 oder SkillPilot genannt
 wurde und die lernende Person lernen, üben, starten, fortsetzen oder den
-gespeicherten Lernstand verwenden möchte, muss es im aktuellen Assistant-Turn
-vor jeder lernendenbezogenen Antwort erfolgreich laufen. Eine allgemeine
+gespeicherten Lernstand verwenden möchte, muss es zu Beginn des aktuellen
+Learner-Turns erfolgreich laufen. Nach einer erfolgreichen Mutation ist deren
+vollständiger Nachfolgerzustand für den Rest desselben Assistant-Turns
+autoritativ; ein weiterer Kontextabruf ist dann redundant. Eine allgemeine
 Lehrplanübersicht oder ein frei erfundener
 Lernpfad ist kein zulässiger Ersatz. Dasselbe Werkzeug rehydriert den Zustand
 nach einem neuen Chat, Reload, langem Dialog, möglicher Kontextkompaktierung,
@@ -756,7 +763,7 @@ Gate der Version `1.0.0`.
   `start_skillpilot_memory_practice` jeweils ausschließlich an ihre eigene
   aktuelle Ressource binden; Kartenreview und gewöhnliche Coach-Werkzeuge
   bleiben ungebunden;
-- früh beworbene Startressourcen byte-identisch passiv lesbar halten, aber an
+- früher beworbene Bildressourcen byte-identisch passiv lesbar halten, aber an
   kein aktives Werkzeug binden;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
   Chatdarstellung degradieren;

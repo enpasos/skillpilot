@@ -27,9 +27,9 @@ Server-Instruktionen, zustandsabhängige Policies, Toolbeschreibungen und
 Backendguards überführt.
 Paket-SemVer, Contract Major, öffentliche Origins und Lifecycle folgen dem
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md).
-Das nie veröffentlichte
-[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md) ist superseded
-und wird nur historisch aufbewahrt.
+Der nie veröffentlichte Direct-Start-Entwurf ist vollständig aus dem V1-Vertrag
+entfernt. Seine Git-Historie bleibt der Audit-Trail; er ist keine aktive
+Architektur-, Sicherheits-, Implementierungs-, Test- oder Releasequelle.
 
 Bis der Skill im realen Providerhost Verhaltensparität erreicht, bleiben die
 heutigen ausführlichen Server-Instruktionen als Kompatibilitätsschicht aktiv.
@@ -101,7 +101,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | Verified Recall: ganzer Batch, Sollantwort erst nach Antwort, jedes Ergebnis speichern, erst dann nächster Batch | Recall-Policy und die drei Recall-Toolbeschreibungen/-Ergebnisse | Skill-Ablauf sowie die drei Recall-Toolbeschreibungen und -Ergebnisse | alle drei Operationen verlangen das aktuelle sichtbare aktive atomische Memory-/SRS-Ziel; Karte und SRS-Typ werden zusätzlich backendseitig geprüft; ein vollständiger Evidence-Receipt bleibt eine spätere Härtung |
 | Prüfung: Aufgabe wortgetreu, keine Hinweise oder Rückfragen, Lösung erst nach vollständiger Abgabe | Exam-Policy, Context-Instruktion und Evaluationstool | Skill, Skill-Referenz, aktuelle Exam-Instruktion und Evaluationstool | Lösung/Raster fehlen im normalen Context und werden nur für das aktive freigegebene Exam ausgeliefert |
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
-| Web-first Einstieg ohne OAuth-zu-Lernenden-Kopplung | First-Party-WebGUI-Launch plus sessiongebundener Kontextabruf; keine Modellwerkzeuge für permanente ID oder Level-2-Konfiguration | kurze Start- und Sessionregel im Skill | OAuth autorisiert nur die feste App; permanente ID, Providerhinweis und Level 2 bleiben im WebGUI; `Lernen starten` erzeugt eine frische Session und einen neuen Chat; ohne Session nur fester WebGUI-Hinweis, bei Sessionfehler nur server-owned Instruktion und `startUrl`; vor jeder Coach-Antwort erfolgreicher Kontextabruf im aktuellen Turn |
+| Web-first Einstieg ohne OAuth-zu-Lernenden-Kopplung | First-Party-WebGUI-Launch plus sessiongebundener Kontextabruf; keine Modellwerkzeuge für permanente ID oder Level-2-Konfiguration | kurze Start- und Sessionregel im Skill | OAuth autorisiert nur die feste App; permanente ID, Providerhinweis und Level 2 bleiben im WebGUI; `Lernen starten` erzeugt eine frische Session und einen neuen Chat; ohne Session nur fester WebGUI-Hinweis, bei Sessionfehler nur server-owned Instruktion und `startUrl`; Kontextabruf zu Beginn jedes Learner-Turns, danach im selben Assistant-Turn der vollständige Nachfolgerzustand einer erfolgreichen Mutation |
 | nur Backend-URLs wortgetreu; keine Links aus IDs oder mit Tokens; passendes Bild des aktiven atomaren Ziels als Orientierung im Cockpit und optional bild-only in ChatGPT | globale Context-Policy, optionale `goalVisualization` und dedizierte hashgebundene Renderer-Ressource | kurze Server-Invariante, Skill-Regel und sichere Projektion | nur ein frisches Vollresultat mit passender `goalVisualization` und Renderer-Freigabe autorisiert genau einen Versuch mit unveränderter Ziel-ID; die Top-Level-`stateVersion` wird in `expectedStateVersion` kopiert; alte Freigaben werden nicht wiederverwendet; keine Surface-Gates oder Hostdarstellungsbehauptung |
 | normales Karteikartenlernen im Chat und harte Verified-Recall-Prüfung bleiben getrennte Modi | Memory-Mode-Instruktion, dedizierte Kartenlern-Ressource sowie Start-/Review-Werkzeuge | Skill-Referenz und aktuelle Modus-Instruktion | nur die UI erhält den begrenzten Kartenstapel in Resultat-`_meta`; Umdrehen und Vor-/Zurückblättern schreiben keinen Zustand; `not_known`/`known` aktualisieren atomar nur die Wiederholungsplanung und erzeugen keine Mastery; Review ist app-only und ungebunden; Cockpit-URL ist der serverseitig erzeugte Fallback |
 | bei ausdrücklich visuell/grafisch/GeoGebra markiertem Ziel sichtbare Interaktion statt reinem Text; bei spezialisiertem App-Training kein paralleler Chatunterricht | Chat- und Ressourcen-Policy | Skill-Referenz `COACH-GOAL-001` und `COACH-RESOURCE-001` | ausschließlich frisch gelieferte Ressourcen; eine normale Lernzielvisualisierung allein löst kein App-Training aus |
@@ -128,9 +128,11 @@ jedem ausdrücklich bestätigten **Lernen starten** über die First-Party-
 Oberfläche neu, trägt sie automatisch genau
 einmal in die Startnachricht ein und ChatGPT muss sie unverändert an jedes
 fachliche MCP-Werkzeug übergeben. Sie ersetzt weder OAuth noch den
-autoritativen Backendzustand. Nach Mutationen sowie bei Reload, Unsicherheit,
-langem Dialog oder möglicher Kontextkompaktierung wird mit derselben noch
-gültigen Session-ID frisch rehydriert.
+autoritativen Backendzustand. Zu Beginn jedes Learner-Turns sowie bei Reload,
+Unsicherheit, langem Dialog oder möglicher Kontextkompaktierung wird mit
+derselben noch gültigen Session-ID frisch rehydriert. Nach einer erfolgreichen
+Mutation ist ihr vollständiger Nachfolgerzustand für den Rest desselben
+Assistant-Turns autoritativ und wird nicht redundant neu geladen.
 
 ## Verbleibende modellseitige Grenzen
 

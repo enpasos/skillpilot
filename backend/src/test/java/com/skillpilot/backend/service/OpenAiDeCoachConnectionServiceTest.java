@@ -96,8 +96,8 @@ class OpenAiDeCoachConnectionServiceTest {
         ArgumentCaptor<OpenAiDeLearningSession> persisted =
                 ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
 
-        var first = service.createLaunch(SKILLPILOT_ID, currentUnitRequest());
-        var second = service.createLaunch(SKILLPILOT_ID, currentUnitRequest());
+        var first = service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest());
+        var second = service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest());
 
         verify(learningSessions, org.mockito.Mockito.times(2)).save(persisted.capture());
         List<OpenAiDeLearningSession> sessions = persisted.getAllValues();
@@ -276,20 +276,6 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     @Test
-    void internalBootstrapEntryPointNeverAcceptsTheDiagnosticTtl() {
-        properties.setDiagnosticSessionTtlEnabled(true);
-
-        assertThatExceptionOfType(ResponseStatusException.class)
-                .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, currentUnitRequest(5_400)))
-                .satisfies(exception -> {
-                    assertThat(exception.getStatusCode().value()).isEqualTo(400);
-                    assertThat(exception.getReason()).contains("first-party UI launch");
-                });
-
-        verify(learningSessions, org.mockito.Mockito.never()).save(any());
-    }
-
-    @Test
     void currentUnitLaunchPreparesAutopilotGoalBeforePinningSessionRevision() {
         learner.setAutoPilot(true);
         learner.setActiveGoalId(null);
@@ -302,7 +288,7 @@ class OpenAiDeCoachConnectionServiceTest {
         ArgumentCaptor<OpenAiDeLearningSession> persisted =
                 ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
 
-        service.createLaunch(SKILLPILOT_ID, currentUnitRequest());
+        service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest());
 
         org.mockito.InOrder ordered = org.mockito.Mockito.inOrder(learnerService, learningSessions);
         ordered.verify(learnerService).getLearnerState(SKILLPILOT_ID);
@@ -339,7 +325,7 @@ class OpenAiDeCoachConnectionServiceTest {
                 true,
                 launchIntent);
 
-        var response = service.createLaunch(SKILLPILOT_ID, request);
+        var response = service.createFirstPartyLaunch(SKILLPILOT_ID, request);
 
         assertThat(response.prompt())
                 .isEqualTo(expectedInstruction
@@ -395,7 +381,7 @@ class OpenAiDeCoachConnectionServiceTest {
                 new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
 
         assertThatExceptionOfType(ResponseStatusException.class)
-                .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, request))
+                .isThrownBy(() -> service.createFirstPartyLaunch(SKILLPILOT_ID, request))
                 .satisfies(exception -> assertThat(exception.getStatusCode().value()).isEqualTo(403));
     }
 
@@ -410,7 +396,7 @@ class OpenAiDeCoachConnectionServiceTest {
                 true,
                 new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
 
-        var response = service.createLaunch(SKILLPILOT_ID, request);
+        var response = service.createFirstPartyLaunch(SKILLPILOT_ID, request);
 
         verify(learningSessions).save(persisted.capture());
         assertThat(persisted.getValue().getCommunicationLocale()).isEqualTo("en-GB");
@@ -430,7 +416,7 @@ class OpenAiDeCoachConnectionServiceTest {
                     new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
 
             assertThatExceptionOfType(ResponseStatusException.class)
-                    .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, request))
+                    .isThrownBy(() -> service.createFirstPartyLaunch(SKILLPILOT_ID, request))
                     .satisfies(exception -> assertThat(exception.getStatusCode().value()).isEqualTo(400));
         }
     }

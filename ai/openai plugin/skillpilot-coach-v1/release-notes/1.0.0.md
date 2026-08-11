@@ -20,13 +20,13 @@ line. This version has not been published yet.
 - no sessionless start tool, provider-side identity bootstrap, in-chat renewal,
   or chat-side curriculum/personalization mutation in the
   active V1 model contract
-- policy revision `3` supersedes the unpublished revision-2 provider-side start
-  provider-notice contract; retained start resources are transport history, not
-  an active product path
+- policy revision `3` removes the unpublished revision-2 provider-side start
+  contract, including its tools, resources, runtime services, and widget source
 - without a current prepared start message, the coach gives only the localized
   `https://skillpilot.com/` start instruction and performs no SkillPilot call
-- `get_skillpilot_context` must succeed in the current assistant turn before
-  every learner-facing coaching response
+- `get_skillpilot_context` establishes fresh state at the start of each learner
+  turn; a successful state-changing result is the authoritative successor for
+  the remainder of that same assistant turn and is not redundantly reloaded
 - every new session-bound operation requires at least `PT1H` remaining; exactly
   one hour is valid, less than one hour returns `SESSION_RENEWAL_REQUIRED`
   before the domain operation
@@ -45,17 +45,18 @@ line. This version has not been published yet.
   backend-published options; curriculum and personalization do not
 - retry-safe writes use a fresh `clientRequestId` and current
   `expectedStateVersion`; an already committed identical write can replay only
-  while the session and pinned revisions remain valid
+  with at least `PT1H` remaining, available pinned revisions, and an unchanged
+  canonical learner-state revision
 - exactly two active content-addressed MCP Apps UI resources: the read-only
   active-goal image renderer and interactive memory-card practice
-- earlier advertised start and image resource URIs remain byte-identical
-  passive resources for provider cache and chat-snapshot compatibility, but no
-  active tool binds the retained start resources
+- earlier advertised image resource URIs remain byte-identical passive
+  resources for provider cache and chat-snapshot compatibility
 - goal visualization uses the dedicated read-only renderer when the newest full
-  context contains a matching approved image and permits it; attempts are not
-  retried, top-level `stateVersion` is copied into `expectedStateVersion`, no
-  client-surface gate is applied, and the normal coaching response remains
-  complete if the host omits the optional component
+  context or successful mutation successor contains a matching approved image
+  and permits it; the renderer is the immediate next tool call, attempts are
+  not retried, top-level `stateVersion` is copied into
+  `expectedStateVersion`, no client-surface gate is applied, and the normal
+  coaching response remains complete if the host omits the optional component
 - memory practice uses a separate component and app-only card review; normal
   practice updates repetition scheduling and never creates mastery evidence
 - exact localized active-goal title announcement, motivational orientation,

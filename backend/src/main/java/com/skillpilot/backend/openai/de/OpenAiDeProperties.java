@@ -13,9 +13,6 @@ public class OpenAiDeProperties {
     private boolean enabled;
     private boolean bootstrapEnabled;
     private boolean writesEnabled;
-    private boolean secureCookie = true;
-    private Duration bindingTtl = Duration.ofMinutes(5);
-    private Duration launchTtl = Duration.ofMinutes(5);
     private Duration learningSessionTtl = Duration.ofHours(24);
     private boolean diagnosticSessionTtlEnabled;
     private String mcpUrl = OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT;
@@ -55,30 +52,6 @@ public class OpenAiDeProperties {
 
     public void setWritesEnabled(boolean writesEnabled) {
         this.writesEnabled = writesEnabled;
-    }
-
-    public boolean isSecureCookie() {
-        return secureCookie;
-    }
-
-    public void setSecureCookie(boolean secureCookie) {
-        this.secureCookie = secureCookie;
-    }
-
-    public Duration getBindingTtl() {
-        return bindingTtl;
-    }
-
-    public void setBindingTtl(Duration bindingTtl) {
-        this.bindingTtl = bindingTtl;
-    }
-
-    public Duration getLaunchTtl() {
-        return launchTtl;
-    }
-
-    public void setLaunchTtl(Duration launchTtl) {
-        this.launchTtl = launchTtl;
     }
 
     public Duration getLearningSessionTtl() {
@@ -201,11 +174,6 @@ public class OpenAiDeProperties {
         private int mcpRequests = 120;
         private int oauthRequests = 60;
         private int uiRequests = 60;
-        private int bootstrapRequests = 30;
-        private int bootstrapCapabilityRequests = 30;
-        private int bootstrapProcessGlobalRequests = 600;
-        private int bootstrapIssuerRequests = 10;
-        private int bootstrapIssuerProcessGlobalRequests = 300;
         private int metadataRequests = 120;
         private int maxClientBuckets = 10_000;
 
@@ -251,47 +219,6 @@ public class OpenAiDeProperties {
 
         public int getMetadataRequests() {
             return metadataRequests;
-        }
-
-        public int getBootstrapRequests() {
-            return bootstrapRequests;
-        }
-
-        public void setBootstrapRequests(int bootstrapRequests) {
-            this.bootstrapRequests = bootstrapRequests;
-        }
-
-        public int getBootstrapCapabilityRequests() {
-            return bootstrapCapabilityRequests;
-        }
-
-        public void setBootstrapCapabilityRequests(int bootstrapCapabilityRequests) {
-            this.bootstrapCapabilityRequests = bootstrapCapabilityRequests;
-        }
-
-        public int getBootstrapProcessGlobalRequests() {
-            return bootstrapProcessGlobalRequests;
-        }
-
-        public void setBootstrapProcessGlobalRequests(int bootstrapProcessGlobalRequests) {
-            this.bootstrapProcessGlobalRequests = bootstrapProcessGlobalRequests;
-        }
-
-        public int getBootstrapIssuerRequests() {
-            return bootstrapIssuerRequests;
-        }
-
-        public void setBootstrapIssuerRequests(int bootstrapIssuerRequests) {
-            this.bootstrapIssuerRequests = bootstrapIssuerRequests;
-        }
-
-        public int getBootstrapIssuerProcessGlobalRequests() {
-            return bootstrapIssuerProcessGlobalRequests;
-        }
-
-        public void setBootstrapIssuerProcessGlobalRequests(
-                int bootstrapIssuerProcessGlobalRequests) {
-            this.bootstrapIssuerProcessGlobalRequests = bootstrapIssuerProcessGlobalRequests;
         }
 
         public void setMetadataRequests(int metadataRequests) {

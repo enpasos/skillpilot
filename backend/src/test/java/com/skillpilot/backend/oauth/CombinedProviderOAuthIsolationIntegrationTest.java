@@ -92,7 +92,6 @@ import tools.jackson.databind.json.JsonMapper;
         "skillpilot.openai.coach.v1.server-build=test-build",
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=true",
-        "skillpilot.openai.coach.v1.secure-cookie=false",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-coach-v1.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-combined-test-client",

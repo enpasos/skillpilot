@@ -105,11 +105,11 @@ Kurzfassung:
   verlängert;
 - neue fachliche Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt
   `PT1H` ist gültig;
-- ein bereits committeter Write darf innerhalb der letzten Stunde nur mit
+- ein bereits committeter Write darf nur bei mindestens `PT1H` Restlaufzeit,
   gleichem Toolnamen, kanonisch identischen Argumenten und derselben
-  `clientRequestId`, bei noch nicht abgelaufener Session und verfügbarer
-  gepinnter Workflow-/Curriculumversion sein gespeichertes Resultat replayen
-  und mutiert nicht erneut;
+  `clientRequestId`, verfügbarer gepinnter Workflow-/Curriculumversion und
+  unveränderter kanonischer Learner-Revision sein gespeichertes Resultat
+  replayen und mutiert nicht erneut;
 - SkillPilot speichert nur den HMAC-Hash und die serverinterne
   Lernendenzuordnung;
 - der Startprompt trägt die ID sichtbar in den neuen Chat;
