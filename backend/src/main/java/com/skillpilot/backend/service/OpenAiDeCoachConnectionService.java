@@ -4,6 +4,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.api.OpenAiDeLaunchResponse;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -182,13 +183,6 @@ public class OpenAiDeCoachConnectionService {
         // content may change before OAuth completes.
         validateLaunchDefinition(learner, launch);
         assertLaunchMutationAllowed(learner, launch);
-        if (launch.selectedCurriculum() != null
-                && !launch.selectedCurriculum().equals(learner.getSelectedCurriculum())) {
-            learnerService.assertWritableLearningSession(skillpilotId);
-            learnerService.setCurriculum(skillpilotId, launch.selectedCurriculum());
-            learner = learnerService.getLearner(skillpilotId);
-        }
-        learner = learnerService.reopenPersonalizationForExplicitLaunch(learner);
         if (launch.type() == LaunchIntentType.CURRENT_UNIT && properties.isWritesEnabled()) {
             // A normal launch promises to continue the next step prepared in
             // SkillPilot. Coach context reads are deliberately side-effect-free,
@@ -217,12 +211,10 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private void assertLaunchMutationAllowed(Learner learner, NormalizedLaunch launch) {
-        boolean changesCurriculum = launch.selectedCurriculum() != null
-                && !launch.selectedCurriculum().equals(learner.getSelectedCurriculum());
         boolean changesActiveGoal = (launch.type() == LaunchIntentType.VERIFIED_RECALL
                         || launch.type() == LaunchIntentType.ABI26_EXAM)
                 && !launch.goalId().equals(learner.getActiveGoalId());
-        if (!properties.isWritesEnabled() && (changesCurriculum || changesActiveGoal)) {
+        if (!properties.isWritesEnabled() && changesActiveGoal) {
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, WRITES_DISABLED_MESSAGE);
         }
     }
@@ -297,23 +289,35 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private void validateLaunchDefinition(Learner learner, NormalizedLaunch launch) {
-        String curriculumId = launch.selectedCurriculum() != null
-                ? launch.selectedCurriculum()
-                : trimToNull(learner.getSelectedCurriculum());
+        String curriculumId = trimToNull(learner.getSelectedCurriculum());
+        if (launch.selectedCurriculum() != null
+                && !launch.selectedCurriculum().equals(curriculumId)) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "selectedCurriculum does not match the configured SkillPilot curriculum.");
+        }
         SkillLandscape curriculum = curriculumId == null ? null : landscapeService.getById(curriculumId);
-        if (launch.selectedCurriculum() != null && curriculum == null) {
-            throw badLaunchRequest("selectedCurriculum is not a known curriculum.");
+        if (curriculum == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Complete the curriculum configuration in SkillPilot before starting the coach.");
         }
         if (curriculum != null && landscapeService.isCompatibilityOnlyLandscape(curriculumId)) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
                     "selectedCurriculum is compatibility-only and cannot be activated.");
         }
+        PersonalizationPlan personalizationPlan =
+                learnerService.getCoachPersonalizationPlan(learner.getSkillpilotId());
+        if (personalizationPlan == null
+                || !personalizationPlan.valid()
+                || personalizationPlan.stage() != PersonalizationPlan.Stage.COMPLETE) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Complete the learning-context configuration in SkillPilot before starting the coach.");
+        }
         if (launch.type() == LaunchIntentType.CURRENT_UNIT) {
             return;
-        }
-        if (curriculum == null) {
-            throw badLaunchRequest("A selected curriculum is required for " + launch.type() + ".");
         }
         if (launch.type() == LaunchIntentType.ABI26_EXAM) {
             validateAbi26TargetPair(launch.goalId(), launch.courseLevel());

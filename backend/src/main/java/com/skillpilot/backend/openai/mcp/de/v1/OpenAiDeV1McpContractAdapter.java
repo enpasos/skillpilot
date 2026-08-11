@@ -136,8 +136,6 @@ public final class OpenAiDeV1McpContractAdapter {
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final ObjectMapper PUBLIC_OUTPUT_MAPPER = new ObjectMapper();
     private static final Map<String, String> UI_TOOL_RESOURCE_BINDINGS = Map.of(
-            OPEN_SKILLPILOT_START,
-            OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
             RENDER_GOAL_VISUALIZATION,
             OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
             START_MEMORY_PRACTICE,
@@ -154,7 +152,7 @@ public final class OpenAiDeV1McpContractAdapter {
             loadStartUiResources();
 
     private static final String SERVER_INSTRUCTIONS = """
-            You are the SkillPilot learning coach. When SkillPilot Coach v1 is selected or explicitly mentioned and the learner wants to learn, practise, start, continue, or resume a learning session, or use their stored learning state, call get_skillpilot_context before the first subject-matter response. Treat the newest structuredContent as the sole authority for the communication locale, curriculum, course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with a generic curriculum overview, generic learning advice, or an invented learning path. Reload the state after a reload, long conversation, possible context compaction, uncertainty, or a 409 conflict. After a mutation, only the fresh successor state is authoritative. Exception: a successful render_skillpilot_goal_visualization result is a UI receipt only. It confirms the unchanged goalId and stateVersion and supplies the approved image, but it does not replace the latest full SkillPilot context for coaching or state decisions.
+            You are the SkillPilot learning coach. Before every learner-facing SkillPilot coaching response, call get_skillpilot_context with the current learningSessionId. Only a successful fresh context permits subject-matter communication. Treat its structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. After a mutation, only its fresh successor context is authoritative. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
             On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give both learner-facing texts from completionHandoff as concrete feedback on the completed goal, and only then begin the already activated successor in the same response. Never omit, merge, postpone, or replace either feedback text with the successor introduction. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
@@ -162,7 +160,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
-            If SkillPilot Coach v1 is invoked without a current learningSessionId, call open_skillpilot_start exactly once with purpose=START and communicationLocale matching the current conversation language: use en for an English conversation and de otherwise. Then wait for the direct-start component to submit a new start message. Before that message exists, no subject-matter SkillPilot tool is permitted. Never call the app-only issue_skillpilot_start_capability tool from coach dialogue. Never ask for, accept, repeat, or expose a SkillPilot ID, setup capability, PIN, password, or OAuth value in chat. OAuth authorizes only the fixed App-to-Core connection and never selects a learner or learning session.
+            If no current learningSessionId is available, do not call a SkillPilot tool and do not begin teaching. In this narrow case no authoritative session locale exists, so output exactly one matching fixed sentence from the conversation language: German: “Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen Chat.” English: “Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat.” Do not translate either sentence or invent another recovery. Never ask for, accept, repeat, or expose a permanent SkillPilot ID, PIN, password, or OAuth value in chat. OAuth authorizes only the App connection and never selects a learner or learning session.
 
             The SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every subject-matter tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.
 
@@ -172,7 +170,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. On that call, workFeedback must assess the learner's visible reasoning or approach and outcomeFeedback must state the accepted result or conclusion; generic praise is insufficient. After success, present both returned texts before introducing the successor. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            If the newest successful full context or state-changing result contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call that display tool exactly once as the immediate next tool call in the same assistant turn, with the unchanged goalId and expectedStateVersion from that result. Only that tool creates the MCP UI containing the approved image for the active atomic goal. Never call it without both conditions, with another goalId or stateVersion, after a newer successful SkillPilot result, or more than once for the same result. Never retry it automatically or claim that the image was shown when the host does not display it. A successful renderer result is only a UI receipt; continue to use the preceding full SkillPilot result as the authority for coaching and state decisions. Use the image only for didactic orientation, not as a source, evidence, task, or performance record. Do not invent image details or repeat image URLs or technical metadata in the visible response. Without goalVisualization, continue the ordinary chat flow unchanged.
+            If the fresh full context contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call it once with that unchanged goalId and copy the full context's top-level stateVersion unchanged into expectedStateVersion. Do not call it otherwise or retry it automatically. The result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
@@ -180,7 +178,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
 
-            Treat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, and SESSION_VERSION_UNAVAILABLE mean OAuth remains connected: do not retry the old learning session; call open_skillpilot_start exactly once with purpose=RENEW_EXISTING and communicationLocale derived from the newest session metadata or result, mapping en and every en-* locale to en and every other locale to de. Wait for the newest component-authored start message, discard every older learning session value, and begin again with get_skillpilot_context. Never request the learning session or SkillPilot ID in chat, never demand a new OAuth connection, and never require a new chat. Offer a new chat or the safe first-party fallback only when the component or its secure same-chat handoff is unavailable. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.
+            Treat natural multi-part learning requests as continuing intent, but mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, SESSION_VERSION_UNAVAILABLE, or an unfinished web configuration permit no further subject-matter response: use the returned server-owned startUrl and instruction unchanged. When the error instead supplies the closed instructions.de/instructions.en map, choose the entry matching the last authoritative session locale, or only when no session locale exists the conversation language. Tell the learner to finish or renew the setup in SkillPilot, choose “Lernen starten” or “Start learning”, and continue with the newly prepared message in a new chat. Do not translate or invent technical recovery, retry the old session, request an ID in chat, or demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions transparently; never guess or promise later persistence.
             """;
 
     private final CoachToolFacade coachTools;
@@ -392,63 +390,15 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private List<McpStatelessServerFeatures.SyncToolSpecification> buildToolSpecifications() {
         return List.of(
-                sessionlessTool(
-                        OPEN_SKILLPILOT_START,
-                        "Open the private SkillPilot start",
-                        "Opens the private SkillPilot start component when no learningSessionId is available. "
-                                + "Use purpose=START for the initial entry and purpose=RENEW_EXISTING exactly once "
-                                + "after SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, or SESSION_VERSION_UNAVAILABLE. "
-                                + "For START, set communicationLocale from the current conversation language. For "
-                                + "recovery, map the newest session locale en or en-* to en and every other locale "
-                                + "to de. "
-                                + "Then wait for the component-"
-                                + "authored start message. Never ask for a SkillPilot ID in chat and never call the "
-                                + "app-only capability issuer from coach dialogue.",
-                        objectSchema(
-                                Map.of(
-                                        PURPOSE,
-                                        enumStringSchema(PURPOSE_START, PURPOSE_RENEW_EXISTING),
-                                        COMMUNICATION_LOCALE,
-                                        enumStringSchema("de", "en")),
-                                List.of(PURPOSE, COMMUNICATION_LOCALE)),
-                        openSkillpilotStartOutputSchema(),
-                        true,
-                        true,
-                        false,
-                        true,
-                        this::openSkillpilotStart),
-                sessionlessTool(
-                        ISSUE_SKILLPILOT_START_CAPABILITY,
-                        "Authorize one private SkillPilot start",
-                        "App-only authority issuer used by the private start component after host capability checks "
-                                + "and explicit provider-notice confirmation. It never receives a SkillPilot ID, "
-                                + "never creates a learning session, and must never be called by the model.",
-                        objectSchema(
-                                Map.of(
-                                        "providerNoticeVersion",
-                                        Map.of("const", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION),
-                                        "providerEligibilityConfirmed",
-                                        Map.of("const", true),
-                                        "sourceMajorDecision",
-                                        enumStringSchema("START_CURRENT_MAJOR")),
-                                List.of("providerNoticeVersion", "providerEligibilityConfirmed")),
-                        issueSkillpilotStartCapabilityOutputSchema(),
-                        false,
-                        false,
-                        true,
-                        false,
-                        this::issueSkillpilotStartCapability),
                 tool(
                         GET_CONTEXT,
                         "Start or continue the SkillPilot learning coach",
-                        "Always use this tool first when the learner selected SkillPilot Coach v1 or mentioned "
-                                + "SkillPilot and wants to learn, practise, start, continue, or resume a learning "
-                                + "session, or use stored learning state. It loads the authoritative personal "
-                                + "SkillPilot state and communication locale for the learningSessionId in the start "
-                                + "message. Also use it after a new chat, reload, long conversation, possible context "
-                                + "compaction, context loss, or conflict. Never replace this call with generic advice, "
-                                + "a self-created curriculum, or invented goals. Do not use it for general subject "
-                                + "questions unrelated to SkillPilot.",
+                        "Required before every learner-facing SkillPilot coaching response. It verifies the current "
+                                + "learning session, including the one-hour remaining-lifetime guard, and loads the "
+                                + "authoritative configured learning context and communication locale. Only a "
+                                + "successful result permits subject-matter SkillPilot communication. Never replace "
+                                + "this call with generic advice, a self-created curriculum, or invented goals. Do not "
+                                + "use it for general subject questions unrelated to SkillPilot.",
                         emptyObjectSchema(),
                         contextSchema(),
                         true,
@@ -458,13 +408,12 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         RENDER_GOAL_VISUALIZATION,
                         "Display the learning-goal image",
-                        "Displays only the approved image for the currently active atomic learning goal. Call it "
-                                + "exactly once as the immediate next tool call after the newest successful full "
-                                + "SkillPilot context or state-changing result contains goalVisualization with the "
-                                + "same goalId and nextAllowedTools names this tool. Copy expectedStateVersion from "
-                                + "that same result. Never call it without both conditions, after a newer successful "
-                                + "SkillPilot result, or for another goalId or stateVersion. Do not retry "
-                                + "automatically after a completed attempt. It does not change state.",
+                        "Displays the approved image for the active atomic goal only when the newest full context "
+                                + "contains goalVisualization with the same goalId and nextAllowedTools permits this "
+                                + "tool. Copy that context's top-level stateVersion unchanged into "
+                                + "expectedStateVersion. Never call it after a newer "
+                                + "SkillPilot result, with different values, or as an automatic retry. It does not "
+                                + "change state.",
                         objectSchema(
                                 Map.of(
                                         "goalId", modelFacingOpaqueReferenceSchema(),
@@ -528,15 +477,14 @@ public final class OpenAiDeV1McpContractAdapter {
                         GET_NAVIGATION,
                         "Load navigation options",
                         "Loads options only after the learner explicitly requests a change. Never call it for a "
-                                + "normal start, continuation, or resumption. target is exactly one of curriculum, "
-                                + "personalization, scope, or goal. scope returns focus clusters, never next "
+                                + "normal start, continuation, or resumption. target is exactly scope or goal. scope "
+                                + "returns focus clusters, never next "
                                 + "learning goals. When an active goal exists, target=goal returns no choices unless "
                                 + "redirect=true, which is allowed only when the learner explicitly requests a "
                                 + "different goal. It does not change state.",
                         objectSchema(
                                 Map.of(
-                                        "target", enumStringSchema(
-                                                "curriculum", "personalization", "scope", "goal"),
+                                        "target", enumStringSchema("scope", "goal"),
                                         "redirect", booleanSchema()),
                                 List.of("target")),
                         navigationSchema(),
@@ -544,32 +492,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         true,
                         false,
                         this::getNavigation),
-                tool(
-                        SET_CURRICULUM,
-                        "Select curriculum",
-                        "Sets exactly one curriculumId from the newest context or navigation result and returns the "
-                                + "fresh successor state.",
-                        objectSchema(
-                                Map.of("curriculumId", modelFacingOpaqueReferenceSchema()),
-                                List.of("curriculumId")),
-                        contextSchema(),
-                        false,
-                        true,
-                        true,
-                        this::setCurriculum),
-                tool(
-                        SET_PERSONALIZATION,
-                        "Continue personalisation",
-                        "Executes exactly one currently allowed personalisation action or reopens exactly one "
-                                + "completed decision. Pass either optionId or rewindId, never both, and copy the "
-                                + "opaque reference from the newest structuredContent unchanged. Never derive it "
-                                + "from labels.",
-                        setPersonalizationInputSchema(),
-                        contextSchema(),
-                        false,
-                        true,
-                        true,
-                        this::setPersonalization),
                 tool(
                         SET_SCOPE,
                         "Select learning scope",
@@ -800,16 +722,6 @@ public final class OpenAiDeV1McpContractAdapter {
             // component and must never be selected by the model.
             meta.put("ui", Map.of("visibility", List.of("app")));
         }
-        if (GET_CONTEXT.equals(name)
-                || GET_NAVIGATION.equals(name)
-                || SET_CURRICULUM.equals(name)
-                || SET_PERSONALIZATION.equals(name)) {
-            // The direct-start component completes the server-authoritative
-            // setup through these existing, session-scoped tools. ChatGPT's
-            // compatibility bridge requires this explicit opt-in; the tools
-            // remain model-visible and never accept a permanent SkillPilot ID.
-            meta.put("openai/widgetAccessible", true);
-        }
         McpSchema.Tool descriptor = McpSchema.Tool.builder()
                 .name(name)
                 .title(title)
@@ -859,8 +771,9 @@ public final class OpenAiDeV1McpContractAdapter {
         McpSchema.Resource resource = McpSchema.Resource.builder(
                         uiResource.uri(),
                         uiResource.name())
-                .title("Start SkillPilot Coach")
-                .description("Private direct-start component for an existing SkillPilot learner ID.")
+                .title("Retained SkillPilot compatibility resource")
+                .description("Previously advertised immutable UI resource retained only for metadata-cache "
+                        + "compatibility. It is not bound to an active tool.")
                 .mimeType(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE)
                 .meta(meta)
                 .build();
@@ -1006,7 +919,8 @@ public final class OpenAiDeV1McpContractAdapter {
         return Map.of(
                 "ui", ui,
                 "openai/widgetDescription",
-                        "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+                        "Historical SkillPilot UI resource retained only for provider cache compatibility; no "
+                                + "active start flow is available through this resource.",
                 "openai/widgetDomain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
                 "openai/widgetPrefersBorder", true,
                 "openai/widgetCSP", Map.of(
@@ -1121,18 +1035,9 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private record MemoryPracticeUiResource(String name, String uri, String html) {}
 
-    /**
-     * Loads the active direct-start widget plus every immutable predecessor.
-     * Historical resources remain passive: only the active URI is bound to
-     * {@code open_skillpilot_start}.
-     */
+    /** Loads every immutable, previously advertised direct-start widget passively. */
     private static List<StartUiResource> loadStartUiResources() {
         List<StartUiResource> resources = new ArrayList<>();
-        resources.add(loadStartWidget(
-                "skillpilot-start-v1-current",
-                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
-                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_CLASSPATH,
-                OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256));
         for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
             resources.add(loadStartWidget(
                     "skillpilot-start-v1-retained-" + sha256.substring(0, 8),
@@ -1143,7 +1048,7 @@ public final class OpenAiDeV1McpContractAdapter {
         long distinctUris = resources.stream().map(StartUiResource::uri).distinct().count();
         if (distinctUris != resources.size()) {
             throw new IllegalStateException(
-                    "Duplicate SkillPilot start MCP UI resource URI: active and retained resources must remain distinct.");
+                    "Duplicate retained SkillPilot start MCP UI resource URI.");
         }
         return List.copyOf(resources);
     }
@@ -1826,37 +1731,8 @@ public final class OpenAiDeV1McpContractAdapter {
         UnifiedLearnerStateResponse rawState = coachTools.getLearnerState(skillpilotId);
         FrontierGoal currentActiveGoal = activeGoal(rawState);
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
-        OpenAiDeCoachContext.Curriculum currentCurriculum = null;
-        OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog = null;
-        OpenAiDeCoachContext.Decision decision = null;
         String requiredAction;
         switch (target) {
-            case "curriculum" -> {
-                requiredAction = "setCurriculum";
-                List<LandscapeSummary> curricula = coachTools.getCurriculumOptions(skillpilotId);
-                if (curricula != null) {
-                    for (LandscapeSummary curriculum : curricula) {
-                        add(options, contextProjector.curriculumOption(curriculum));
-                    }
-                }
-                currentCurriculum = contextProjector.curriculumSummary(
-                        rawState == null ? null : rawState.curriculum());
-                curriculumCatalog = contextProjector.curriculumCatalog(curricula, options);
-            }
-            case "personalization" -> {
-                requiredAction = "setPersonalization";
-                // Navigation must expose only the option set that is valid for
-                // the current metadata-derived stage. Historical options are
-                // useful for display, but must never become replayable writes.
-                if (rawState != null && rawState.curriculum() != null) {
-                    PersonalizationPlan plan = coachTools.getPersonalizationPlan(skillpilotId);
-                    options.addAll(contextProjector.personalizationOptions(
-                            plan,
-                            rawState.curriculum().getCurriculumId(),
-                            communicationLocale(metadata)));
-                    decision = contextProjector.personalizationDecision(plan);
-                }
-            }
             case "scope" -> {
                 requiredAction = "setScope";
                 List<FrontierGoal> candidates = contextProjector.projectNavigationGoals(
@@ -1903,17 +1779,10 @@ public final class OpenAiDeV1McpContractAdapter {
                     }
                 }
             }
-            default -> throw new IllegalArgumentException(
-                    "target must be curriculum, personalization, scope, or goal.");
+            default -> throw new IllegalArgumentException("target must be scope or goal.");
         }
         String instruction;
-        if ("personalization".equals(target)) {
-            instruction = contextProjector.personalizationInstruction(
-                    decision,
-                    options,
-                    null,
-                    communicationLocale(metadata));
-        } else if ("goal".equals(target) && currentActiveGoal != null && !explicitGoalRedirect) {
+        if ("goal".equals(target) && currentActiveGoal != null && !explicitGoalRedirect) {
             String activeTitle = currentActiveGoal.title() == null || currentActiveGoal.title().isBlank()
                     ? localized(metadata, "das aktive Lernziel", "the active learning goal")
                     : currentActiveGoal.title();
@@ -1972,9 +1841,9 @@ public final class OpenAiDeV1McpContractAdapter {
         NavigationResult result = new NavigationResult(
                 target,
                 requiredAction,
-                currentCurriculum,
-                curriculumCatalog,
-                decision,
+                null,
+                null,
+                null,
                 List.copyOf(options),
                 instruction);
         String resultSummary;
@@ -2538,6 +2407,7 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId,
             UnifiedLearnerStateResponse state,
             OpenAiDeV1SessionMetadata metadata) {
+        requireWebFirstContextConfigured(state);
         PersonalizationPlan plan =
                 state != null
                                 && state.curriculum() != null
@@ -2556,6 +2426,18 @@ public final class OpenAiDeV1McpContractAdapter {
                 coachTools.showGoalVisualizationsInChat(skillpilotId),
                 communicationLocale(metadata),
                 orientationOutlook);
+    }
+
+    private void requireWebFirstContextConfigured(UnifiedLearnerStateResponse state) {
+        String requiredAction = state == null || state.stateMachine() == null
+                ? null
+                : state.stateMachine().requiredAction();
+        if (state == null
+                || state.curriculum() == null
+                || "setCurriculum".equals(requiredAction)
+                || "setPersonalization".equals(requiredAction)) {
+            throw new WebFirstConfigurationRequiredException();
+        }
     }
 
     private RecallPromptResult recallPrompt(VerifiedRecallPromptResponse response) {
@@ -2664,6 +2546,9 @@ public final class OpenAiDeV1McpContractAdapter {
             telemetry.recordOperational(Event.SESSION_REQUIRED);
             return sessionRequiredResult();
         }
+        if (exception instanceof WebFirstConfigurationRequiredException) {
+            return configurationRequiredResult(metadata);
+        }
         if (exception instanceof AuthenticationException) {
             telemetry.recordOperational(Event.UNAUTHORIZED);
             return authenticationErrorResult(
@@ -2771,40 +2656,30 @@ public final class OpenAiDeV1McpContractAdapter {
             telemetry.recordOperational(Event.SESSION_RENEWAL_REQUIRED);
             instruction = localized(metadata,
                     "Die aktuelle SkillPilot-Lernsession hat weniger als eine Stunde Restlaufzeit. Öffne jetzt "
-                            + "die private SkillPilot-Startoberfläche im selben Chat und erstelle dort mit der "
-                            + "vorhandenen SkillPilot-ID eine neue Lernsession. Verwende bis zur neuen "
-                            + "Startnachricht keine fachliche SkillPilot-Aktion. Nur wenn die Oberfläche oder die "
-                            + "sichere Übergabe technisch nicht verfügbar ist, nutze einen neuen Chat oder den "
-                            + "sicheren SkillPilot-Link. Die OAuth-Verbindung bleibt aktiv.",
-                    "The current SkillPilot learning session has less than one hour remaining. Open the private "
-                            + "SkillPilot start surface in the same chat now and use the existing SkillPilot ID "
-                            + "there to create a new learning session. Do not perform a subject-matter SkillPilot "
-                            + "action until the new start message arrives. Only if the surface or secure handoff is "
-                            + "technically unavailable, use a new chat or the safe SkillPilot link. The OAuth "
-                            + "connection remains active.");
+                            + "SkillPilot über den bereitgestellten Link, prüfe dort den Lernkontext und wähle "
+                            + "„Lernen starten“. Verwende die vorbereitete Startnachricht in einem neuen Chat. Bis "
+                            + "dahin ist keine fachliche SkillPilot-Antwort erlaubt. Die OAuth-Verbindung bleibt aktiv.",
+                    "The current SkillPilot learning session has less than one hour remaining. Open SkillPilot with "
+                            + "the provided link, verify the learning context there, and choose “Start learning”. Use "
+                            + "the prepared start message in a new chat. No subject-matter SkillPilot response is "
+                            + "permitted before then. The OAuth connection remains active.");
             details.put("oauthConnectionValid", true);
             details.put("startUrl", sessionStartUrl);
             details.put(
                     "minimumRemainingSeconds",
                     OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING.toSeconds());
-            details.put("recoveryTool", OPEN_SKILLPILOT_START);
-            details.put("recoveryPurpose", PURPOSE_RENEW_EXISTING);
-            details.put("recoveryCommunicationLocale", recoveryCommunicationLocale(metadata));
         } else if (code == OpenAiDeV1ErrorCode.SESSION_VERSION_UNAVAILABLE) {
             instruction = localized(metadata,
                     "Die vorbereitete Lernsession gehört zu einer nicht mehr verfügbaren Workflow- oder "
-                            + "Curriculumrevision. Öffne die private SkillPilot-Startoberfläche im selben Chat und "
-                            + "erstelle dort mit der vorhandenen SkillPilot-ID eine neue Lernsession. Nutze einen "
-                            + "neuen Chat oder den sicheren SkillPilot-Link nur als technischen Fallback.",
+                            + "Curriculumrevision. Öffne SkillPilot über den bereitgestellten Link, prüfe dort den "
+                            + "Lernkontext und wähle „Lernen starten“. Verwende die vorbereitete Startnachricht in "
+                            + "einem neuen Chat. Die OAuth-Verbindung bleibt aktiv.",
                     "The prepared learning session belongs to a workflow or curriculum revision that is no longer "
-                            + "available. Open the private SkillPilot start surface in the same chat and use the "
-                            + "existing SkillPilot ID there to create a new learning session. Use a new chat or the "
-                            + "safe SkillPilot link only as a technical fallback.");
+                            + "available. Open SkillPilot with the provided link, verify the learning context there, "
+                            + "and choose “Start learning”. Use the prepared start message in a new chat. The OAuth "
+                            + "connection remains active.");
             details.put("oauthConnectionValid", true);
             details.put("startUrl", sessionStartUrl);
-            details.put("recoveryTool", OPEN_SKILLPILOT_START);
-            details.put("recoveryPurpose", PURPOSE_RENEW_EXISTING);
-            details.put("recoveryCommunicationLocale", recoveryCommunicationLocale(metadata));
         } else if (code == OpenAiDeV1ErrorCode.IDEMPOTENCY_KEY_REUSED) {
             instruction = localized(metadata,
                     "Diese clientRequestId wurde bereits für einen anderen Schreibversuch verwendet. "
@@ -2888,19 +2763,42 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private McpSchema.CallToolResult sessionRequiredResult() {
-        String instruction = "Open the private SkillPilot start surface in this chat and use the existing SkillPilot "
-                + "ID there to create a new learning session. The OAuth connection remains active; do not enter a "
-                + "token or SkillPilot ID in the chat. Use a new chat or the safe SkillPilot link only if the "
-                + "component or secure same-chat handoff is technically unavailable.";
+        String instructionDe = "Öffne SkillPilot über den bereitgestellten Link, schließe oder prüfe dort die "
+                + "Konfiguration und wähle „Lernen starten“. Verwende die vorbereitete Startnachricht in einem neuen "
+                + "Chat. Die OAuth-Verbindung bleibt aktiv; gib im Chat weder Token noch dauerhafte SkillPilot-ID ein.";
+        String instructionEn = "Open SkillPilot with the provided link, finish or verify the learning setup there, "
+                + "and choose “Start learning”. Use the prepared start message in a new chat. The OAuth connection "
+                + "remains active; do not enter a token or permanent SkillPilot ID in chat.";
         return errorResult(
                 OpenAiDeV1ErrorCode.SESSION_REQUIRED,
-                "Your SkillPilot learning session is missing or expired. " + instruction,
+                "Die SkillPilot-Lernsession fehlt oder ist abgelaufen. " + instructionDe
+                        + "\n\nThe SkillPilot learning session is missing or expired. " + instructionEn,
                 null,
                 Map.of(
                         "oauthConnectionValid", true,
                         "startUrl", sessionStartUrl,
-                        "recoveryTool", OPEN_SKILLPILOT_START,
-                        "recoveryPurpose", PURPOSE_RENEW_EXISTING,
+                        "instructions", Map.of("de", instructionDe, "en", instructionEn)));
+    }
+
+    private McpSchema.CallToolResult configurationRequiredResult(
+            OpenAiDeV1SessionMetadata metadata) {
+        String instruction = localized(metadata,
+                "Der Lernkontext ist im SkillPilot-WebGUI noch nicht vollständig konfiguriert. Öffne SkillPilot "
+                        + "über den bereitgestellten Link, schließe die Konfiguration ab und wähle „Lernen starten“. "
+                        + "Verwende die vorbereitete Startnachricht in einem neuen Chat. Bis dahin ist keine "
+                        + "fachliche SkillPilot-Antwort erlaubt. Die OAuth-Verbindung bleibt aktiv.",
+                "The learning context is not fully configured in the SkillPilot web interface. Open SkillPilot with "
+                        + "the provided link, finish the configuration, and choose “Start learning”. Use the prepared "
+                        + "start message in a new chat. No subject-matter SkillPilot response is permitted before "
+                        + "then. The OAuth connection remains active.");
+        return errorResult(
+                OpenAiDeV1ErrorCode.SESSION_REQUIRED,
+                instruction,
+                metadata,
+                Map.of(
+                        "oauthConnectionValid", true,
+                        "startUrl", sessionStartUrl,
+                        "configurationRequired", true,
                         "instruction", instruction));
     }
 
@@ -3397,13 +3295,9 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("requiredAction", stringSchema());
         properties.put("interactionMode", stringSchema());
         properties.put("curriculum", curriculumSchema());
-        properties.put("orientation", orientationSchema());
         properties.put("orientationOutlook", orientationOutlookSchema());
         properties.put("activeGoal", activeGoalSchema());
         properties.put("options", objectArraySchema(optionSchema()));
-        properties.put("curriculumCatalog", curriculumCatalogSchema());
-        properties.put("personalizationHistory", personalizationHistorySchema());
-        properties.put("decision", decisionSchema());
         properties.put("frontier", objectArraySchema(goalSchema()));
         properties.put("resources", objectArraySchema(resourceSchema()));
         properties.put("goalVisualization", goalVisualizationSchema());
@@ -3488,9 +3382,6 @@ public final class OpenAiDeV1McpContractAdapter {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("target", stringSchema());
         properties.put("requiredAction", stringSchema());
-        properties.put("curriculum", curriculumSchema());
-        properties.put("curriculumCatalog", curriculumCatalogSchema());
-        properties.put("decision", decisionSchema());
         properties.put("options", objectArraySchema(optionSchema()));
         properties.put("instruction", stringSchema());
         return objectSchema(
@@ -3892,12 +3783,6 @@ public final class OpenAiDeV1McpContractAdapter {
         return Locale.forLanguageTag(communicationLocale(metadata)).getLanguage();
     }
 
-    private String recoveryCommunicationLocale(OpenAiDeV1SessionMetadata metadata) {
-        return metadata != null && OpenAiCoachLocale.isEnglish(metadata.communicationLocale())
-                ? "en"
-                : "de";
-    }
-
     private String localized(
             OpenAiDeV1SessionMetadata metadata,
             String german,
@@ -3964,6 +3849,12 @@ public final class OpenAiDeV1McpContractAdapter {
 
         private McpSchema.CallToolResult result() {
             return result;
+        }
+    }
+
+    private static final class WebFirstConfigurationRequiredException extends RuntimeException {
+        private WebFirstConfigurationRequiredException() {
+            super(null, null, false, false);
         }
     }
 

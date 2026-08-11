@@ -18,7 +18,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String PLUGIN_IDENTITY = "skillpilot-coach-v1";
     public static final String PLUGIN_VERSION = "1.0.0";
     public static final int CONTRACT_MAJOR = 1;
-    public static final long POLICY_REVISION = 2L;
+    public static final long POLICY_REVISION = 3L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";
     public static final String PUBLICATION_STATUS = "DRAFT";
     public static final String NEW_SESSION_POLICY = "ALLOW";
@@ -93,7 +93,8 @@ public final class OpenAiDeV1ContractMetadata {
             "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5",
             "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc",
             "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c",
-            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1");
+            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1",
+            "4bedfcc1f5de64bde6c8cf9f81879d0c80f54ec740de105357fa929be6cf7f85");
     /**
      * Every content-addressed visualization resource previously advertised by
      * Coach V1, ordered oldest first and retained byte-for-byte for connector

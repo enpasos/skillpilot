@@ -268,26 +268,14 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - OAuth resource: `https://mcp-coach-v1.skillpilot.com/mcp`
   - protected-resource metadata:
     `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-  V1 binds three distinct active content-addressed MCP Apps UI resources on the
-  fixed widget domain `https://mcp-coach-v1.skillpilot.com`; previously
-  advertised version-addressed and hash URIs remain passive and byte-identically
-  readable.
-  ChatGPT Web currently executes that hosted component on an isolated
-  `https://*.web-sandbox.oaiusercontent.com` browser origin. Only the private
-  `/bootstrap/v1/launch` endpoint accepts that HTTPS sandbox family for CORS,
-  echoes the concrete allowed origin, and still rejects wildcard, `null`, HTTP,
-  and unrelated domains. CORS is only an extra browser boundary; OAuth plus the
-  short-lived setup capability remain authoritative.
-  `open_skillpilot_start` binds the private Direct-Start resource,
-  `render_skillpilot_goal_visualization` the image-only resource and
-  `start_skillpilot_memory_practice` the interactive card-learning resource
-  through `ui.resourceUri` and `openai/outputTemplate`. The ID-free capability
-  issuer and the card-review tool are app-only and unbound; ordinary tools
-  remain UI-free. The private Direct Bootstrap is approved only for the
-  internal canary. Public submission remains blocked until OpenAI has accepted
-  the concrete processing of the bearer-like SkillPilot ID in writing or an
-  architecture without ID entry has been implemented. Bare MCP `ImageContent`
-  is not the visibility contract, and
+  V1 binds exactly two active content-addressed MCP Apps UI resources on the
+  fixed widget domain `https://mcp-coach-v1.skillpilot.com`: the image-only
+  goal renderer and interactive card learning. Previously advertised start and
+  image hash URIs remain passive and byte-identically readable, but no active
+  tool binds the retained start resources. The card-review tool is app-only and
+  unbound; ordinary tools remain UI-free. Permanent-ID and Level-2 setup remain
+  exclusively in the SkillPilot WebGUI. Bare MCP `ImageContent` is not the
+  visibility contract, and
   the runtime applies no `openai/userAgent` or client-surface gate.
   These URLs are immutable contract values rather than environment settings.
   Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented

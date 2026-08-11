@@ -11,6 +11,7 @@ import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntent;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
@@ -84,8 +85,8 @@ class OpenAiDeCoachConnectionServiceTest {
         learner.setSkillpilotId(SKILLPILOT_ID);
         learner.setSelectedCurriculum("math");
         when(learnerService.getLearner(SKILLPILOT_ID)).thenReturn(learner);
-        when(learnerService.reopenPersonalizationForExplicitLaunch(any(Learner.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
+        when(learnerService.getCoachPersonalizationPlan(SKILLPILOT_ID))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
         when(learners.findBySkillpilotIdForUpdate(SKILLPILOT_ID)).thenReturn(Optional.of(learner));
         when(landscapeService.getById("math")).thenReturn(mock(SkillLandscape.class));
     }
@@ -124,6 +125,67 @@ class OpenAiDeCoachConnectionServiceTest {
         assertThat(sessions.get(1).getTokenHash()).isNotEqualTo(second.learningSessionId());
         assertThat(first.expiresAt()).isEqualTo(sessions.get(0).getExpiresAt());
         assertThat(second.expiresAt()).isEqualTo(sessions.get(1).getExpiresAt());
+        verify(learnerService, org.mockito.Mockito.never())
+                .setCurriculum(any(), any());
+        verify(learnerService, org.mockito.Mockito.never())
+                .reopenPersonalizationForExplicitLaunch(any());
+    }
+
+    @Test
+    void launchFailsClosedWithoutPersistedCurriculum() {
+        learner.setSelectedCurriculum(null);
+        OpenAiDeCoachStartRequest request = new OpenAiDeCoachStartRequest(
+                "de",
+                "web",
+                null,
+                true,
+                new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+
+        assertThatExceptionOfType(ResponseStatusException.class)
+                .isThrownBy(() -> service.createFirstPartyLaunch(SKILLPILOT_ID, request))
+                .satisfies(exception -> {
+                    assertThat(exception.getStatusCode().value()).isEqualTo(409);
+                    assertThat(exception.getReason()).contains("configuration");
+                });
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
+    }
+
+    @Test
+    void launchFailsClosedWhenRequestCurriculumDiffersFromPersistedConfiguration() {
+        OpenAiDeCoachStartRequest request = new OpenAiDeCoachStartRequest(
+                "de",
+                "web",
+                "physics",
+                true,
+                new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+
+        assertThatExceptionOfType(ResponseStatusException.class)
+                .isThrownBy(() -> service.createFirstPartyLaunch(SKILLPILOT_ID, request))
+                .satisfies(exception -> {
+                    assertThat(exception.getStatusCode().value()).isEqualTo(409);
+                    assertThat(exception.getReason()).contains("does not match");
+                });
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
+        verify(learnerService, org.mockito.Mockito.never()).setCurriculum(any(), any());
+    }
+
+    @ParameterizedTest
+    @MethodSource("incompletePersonalizationPlans")
+    void launchFailsClosedForIncompleteOrInvalidPersonalization(
+            PersonalizationPlan personalizationPlan) {
+        when(learnerService.getCoachPersonalizationPlan(SKILLPILOT_ID))
+                .thenReturn(personalizationPlan);
+
+        assertThatExceptionOfType(ResponseStatusException.class)
+                .isThrownBy(() -> service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest()))
+                .satisfies(exception -> {
+                    assertThat(exception.getStatusCode().value()).isEqualTo(409);
+                    assertThat(exception.getReason()).contains("configuration");
+                });
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
     }
 
     @Test
@@ -421,6 +483,13 @@ class OpenAiDeCoachConnectionServiceTest {
                         "en",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_LK_GOAL_ID, null, "LK"),
                         "Use SkillPilot Coach v1 and start the mathematics Abitur exam (advanced course)."));
+    }
+
+    private static Stream<PersonalizationPlan> incompletePersonalizationPlans() {
+        return Stream.of(
+                (PersonalizationPlan) null,
+                new PersonalizationPlan(PersonalizationPlan.Stage.SELECTION, List.of(), List.of()),
+                new PersonalizationPlan(PersonalizationPlan.Stage.INVALID, List.of(), List.of()));
     }
 
     private void prepareAtomicLaunchGoal(

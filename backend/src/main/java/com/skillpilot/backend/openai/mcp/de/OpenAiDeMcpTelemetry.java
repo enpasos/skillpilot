@@ -51,15 +51,11 @@ public final class OpenAiDeMcpTelemetry {
     private static final int MAX_LOG_VALUE_LENGTH = 160;
     private static final int SESSION_FINGERPRINT_LENGTH = 22;
     private static final Set<String> KNOWN_TOOLS = Set.of(
-            OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-            OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
             OpenAiDeV1McpContractAdapter.GET_CONTEXT,
             OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
             OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
             OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
             OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
-            OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
-            OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
             OpenAiDeV1McpContractAdapter.SET_SCOPE,
             OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
             OpenAiDeV1McpContractAdapter.SET_MASTERY,
@@ -144,11 +140,13 @@ public final class OpenAiDeMcpTelemetry {
                     .tag("plugin.line", OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY)
                     .register(meterRegistry));
             Map<?, ?> structuredContent = structuredContent(result);
+            boolean goalVisualizationOffered = goalVisualizationOffered(
+                    "success".equals(status) ? structuredContent : null);
             LOGGER.info(
                     "OpenAI Coach V1 MCP V1 tool invocation: contractMajor={} pluginLine={} serverBuild={} "
                             + "tool={} status={} resultCode={} latencyMs={} clientRequestId={} "
                             + "learningSessionHash={} stateVersion={} stateSchemaVersion={} "
-                            + "workflowVersion={} curriculumRevision={}",
+                            + "workflowVersion={} curriculumRevision={} goalVisualizationOffered={}",
                     OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
                     OpenAiDeV1ContractMetadata.PLUGIN_IDENTITY,
                     safeLogValue(serverBuild),
@@ -161,7 +159,8 @@ public final class OpenAiDeMcpTelemetry {
                     numericMetadata(structuredContent, "stateVersion"),
                     numericMetadata(structuredContent, "stateSchemaVersion"),
                     textMetadata(structuredContent, "workflowVersion"),
-                    textMetadata(structuredContent, "curriculumRevision"));
+                    textMetadata(structuredContent, "curriculumRevision"),
+                    goalVisualizationOffered);
         }
     }
 
@@ -301,6 +300,32 @@ public final class OpenAiDeMcpTelemetry {
                 : normalized.substring(0, MAX_LOG_VALUE_LENGTH);
     }
 
+    /**
+     * Bounded presentation telemetry derived only from a successful full-context result.
+     * No value from the visualization or action payload is copied into the log.
+     */
+    private static boolean goalVisualizationOffered(Map<?, ?> structuredContent) {
+        Map<?, ?> context = fullContext(structuredContent);
+        return context != null && context.get("goalVisualization") instanceof Map<?, ?>;
+    }
+
+    private static Map<?, ?> fullContext(Map<?, ?> structuredContent) {
+        if (structuredContent == null) {
+            return null;
+        }
+        Object successor = structuredContent.get("context");
+        if (successor instanceof Map<?, ?> successorContext && isFullContext(successorContext)) {
+            return successorContext;
+        }
+        return isFullContext(structuredContent) ? structuredContent : null;
+    }
+
+    private static boolean isFullContext(Map<?, ?> candidate) {
+        return candidate.containsKey("learningState")
+                && candidate.containsKey("interactionMode")
+                && candidate.get("nextAllowedTools") instanceof java.util.List<?>;
+    }
+
     private record ResourceArtifact(String fingerprint, String role) {
 
         private static final ResourceArtifact ACTIVE_GOAL_VISUALIZATION = new ResourceArtifact(
@@ -308,9 +333,6 @@ public final class OpenAiDeMcpTelemetry {
                 ACTIVE_ARTIFACT_ROLE);
         private static final ResourceArtifact ACTIVE_MEMORY_PRACTICE = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256),
-                ACTIVE_ARTIFACT_ROLE);
-        private static final ResourceArtifact ACTIVE_SKILLPILOT_START = new ResourceArtifact(
-                fingerprint(OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256),
                 ACTIVE_ARTIFACT_ROLE);
         private static final ResourceArtifact LEGACY_GOAL_VISUALIZATION = new ResourceArtifact(
                 fingerprint(OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256),
@@ -324,9 +346,6 @@ public final class OpenAiDeMcpTelemetry {
             }
             if (OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI.equals(resourceUri)) {
                 return ACTIVE_MEMORY_PRACTICE;
-            }
-            if (OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI.equals(resourceUri)) {
-                return ACTIVE_SKILLPILOT_START;
             }
             if (OpenAiDeV1ContractMetadata.LEGACY_GOAL_VISUALIZATION_RESOURCE_URI.equals(resourceUri)) {
                 return LEGACY_GOAL_VISUALIZATION;

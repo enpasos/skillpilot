@@ -25,7 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnProperty(
         name = {
             "skillpilot.openai.coach.v1.enabled",
-            "skillpilot.openai.coach.v1.oauth.enabled"
+            "skillpilot.openai.coach.v1.oauth.enabled",
+            "skillpilot.openai.coach.v1.bootstrap-enabled"
         },
         havingValue = "true")
 public final class OpenAiDeBootstrapController {

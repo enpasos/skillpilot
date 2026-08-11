@@ -2,7 +2,6 @@ package com.skillpilot.backend.openai.mcp.de;
 
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -20,6 +19,8 @@ import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
@@ -27,9 +28,9 @@ import io.modelcontextprotocol.spec.McpSchema;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 
 class OpenAiDeCoachPersonalizationContractTest {
 
@@ -50,6 +51,10 @@ class OpenAiDeCoachPersonalizationContractTest {
         when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenReturn(LEARNER_ID);
         SimpleMeterRegistry meterRegistry = new SimpleMeterRegistry();
+        OpenAiDeV1McpSessionCoordinator sessionCoordinator =
+                mock(OpenAiDeV1McpSessionCoordinator.class);
+        when(sessionCoordinator.read(any(), any())).thenAnswer(invocation ->
+                sessionOperation(invocation.getArgument(1)));
         contract = new OpenAiDeV1McpContractAdapter(
                 coachTools,
                 new CoachStateProjection("https://skillpilot.test"),
@@ -57,94 +62,72 @@ class OpenAiDeCoachPersonalizationContractTest {
                 new OpenAiDeMcpTelemetry(
                         meterRegistry,
                         new OpenAiDeOperationalTelemetry(meterRegistry)),
-                "https://skillpilot.test");
+                sessionCoordinator,
+                "https://skillpilot.test",
+                "skillpilot-personalization-contract-test-secret");
     }
 
     @Test
-    void rootMutationReturnsTheFreshDescendantFilterPlan() {
-        UnifiedLearnerStateResponse before = personalizationState(List.of());
-        UnifiedLearnerStateResponse after = personalizationState(List.of("dial-b"));
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID))
-                .thenReturn(rootFilterPlan(), descendantFilterPlan());
-        when(coachTools.setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class)))
-                .thenReturn(after);
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("optionId", "po-root-dial-b"));
-
-        assertThat(result.isError()).isFalse();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(OpenAiDeCoachContext.class, context -> {
-                    assertThat(context.requiredAction()).isEqualTo("setPersonalization");
-                    assertThat(context.options())
-                            .extracting(
-                                    OpenAiDeCoachContext.Option::id,
-                                    OpenAiDeCoachContext.Option::label,
-                                    OpenAiDeCoachContext.Option::goalIds,
-                                    OpenAiDeCoachContext.Option::filterIds)
-                            .containsExactly(
-                                    tuple(
-                                            "po-cobalt-shared-band",
-                                            "Cobalt – Shared Band",
-                                            List.of(),
-                                            List.of()),
-                                    tuple(
-                                            "po-ember-shared-band",
-                                            "Ember – Shared Band",
-                                            List.of(),
-                                            List.of()));
-                });
-
-        ArgumentCaptor<PersonalizationRequest> request =
-                ArgumentCaptor.forClass(PersonalizationRequest.class);
-        verify(coachTools).setPersonalization(eq(LEARNER_ID), request.capture());
-        assertThat(request.getValue().optionId()).isEqualTo("po-root-dial-b");
-        assertThat(request.getValue().goalIds()).isEmpty();
-        assertThat(request.getValue().filters()).isEmpty();
+    void webFirstContractDoesNotPublishPersonalizationMutation() {
+        assertThat(contract.toolSpecifications().stream()
+                        .map(specification -> specification.tool().name()))
+                .doesNotContain("set_skillpilot_personalization");
     }
 
     @Test
-    void opaqueOptionDisambiguatesRepeatedFilterLabels() {
-        UnifiedLearnerStateResponse before = personalizationState(List.of("dial-b"));
-        UnifiedLearnerStateResponse after = scopeState(List.of("dial-b", "shared-band"));
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID))
-                .thenReturn(descendantFilterPlan());
-        when(coachTools.setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class)))
-                .thenReturn(after);
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("optionId", "po-cobalt-shared-band"));
-
-        assertThat(result.isError()).isFalse();
-        ArgumentCaptor<PersonalizationRequest> request =
-                ArgumentCaptor.forClass(PersonalizationRequest.class);
-        verify(coachTools).setPersonalization(eq(LEARNER_ID), request.capture());
-        assertThat(request.getValue().optionId()).isEqualTo("po-cobalt-shared-band");
-        assertThat(request.getValue().goalIds()).isEmpty();
-        assertThat(request.getValue().filters()).isEmpty();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(OpenAiDeCoachContext.class, context -> {
-                    assertThat(context.requiredAction()).isEqualTo("setScope");
-                    assertThat(context.options()).isEmpty();
-                });
-    }
-
-    @Test
-    void unknownOpaqueOptionIsRejectedWithoutCallingTheFacadeMutation() {
+    void incompleteWebGuiPersonalizationFailsClosedWithoutPublishingChoices() {
         when(coachTools.getLearnerState(LEARNER_ID))
                 .thenReturn(personalizationState(List.of("dial-b")));
+
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "SESSION_REQUIRED")
+                .containsEntry("configurationRequired", true)
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsKey("instruction")
+                .doesNotContainKeys(
+                        "options",
+                        "decision",
+                        "orientation",
+                        "personalizationHistory"));
+        assertThat(result.content().toString())
+                .contains("SkillPilot-WebGUI", "Lernen starten", "neuen Chat")
+                .doesNotContain("po-cobalt-shared-band", "po-ember-shared-band");
+        verify(coachTools, never()).getPersonalizationPlan(any());
+        verify(coachTools, never())
+                .setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class));
+    }
+
+    @Test
+    void configuredContextDoesNotExposePersonalizationPlanOrOpaqueOptionIds() {
+        when(coachTools.getLearnerState(LEARNER_ID))
+                .thenReturn(scopeState(List.of("dial-b", "shared-band")));
         when(coachTools.getPersonalizationPlan(LEARNER_ID))
                 .thenReturn(descendantFilterPlan());
 
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("optionId", "po-unknown"));
+        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
 
-        assertThat(result.isError()).isTrue();
+        assertThat(result.isError()).isFalse();
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> {
+                    assertThat(content)
+                            .containsEntry("requiredAction", "setScope")
+                            .containsEntry("options", List.of())
+                            .doesNotContainKeys(
+                                    "orientation",
+                                    "decision",
+                                    "personalizationHistory");
+                    assertThat(content.toString())
+                            .doesNotContain(
+                                    "po-cobalt-shared-band",
+                                    "po-ember-shared-band",
+                                    FIRST_DESCENDANT_ID,
+                                    SECOND_DESCENDANT_ID,
+                                    "shared-band");
+                });
         verify(coachTools, never())
                 .setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class));
     }
@@ -164,21 +147,18 @@ class OpenAiDeCoachPersonalizationContractTest {
                 new McpSchema.CallToolRequest(name, requestArguments));
     }
 
-    private static PersonalizationPlan rootFilterPlan() {
-        List<PersonalizationPlan.Option> options = List.of(
-                option("po-root-dial-a", "stage-root", "group-root", ROOT_ID, "Orbit", "dial-a", "Dial A"),
-                option("po-root-dial-b", "stage-root", "group-root", ROOT_ID, "Orbit", "dial-b", "Dial B"));
-        return PersonalizationPlan.selection(
-                "stage-root",
-                "Root mode",
-                "group-root",
-                "Root mode",
-                "group-root",
-                1,
+    @SuppressWarnings("unchecked")
+    private static McpSchema.CallToolResult sessionOperation(Object operation) {
+        Function<OpenAiDeV1SessionMetadata, McpSchema.CallToolResult> callback =
+                (Function<OpenAiDeV1SessionMetadata, McpSchema.CallToolResult>) operation;
+        return callback.apply(new OpenAiDeV1SessionMetadata(
                 1,
                 0,
-                options,
-                options);
+                1,
+                "coach@1.0",
+                "curricula-tree@test",
+                "de",
+                Map.of()));
     }
 
     private static PersonalizationPlan descendantFilterPlan() {

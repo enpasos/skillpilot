@@ -1,6 +1,6 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 10. August 2026
+**Stand:** 11. August 2026
 
 **Status:** Der mehrsprachige MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
 Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
@@ -9,20 +9,16 @@ Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
 freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
 dedizierten `mcp-coach-v1.skillpilot.com`-Origin. Client-TLS ist nicht
-aktiviert. Der private Direct-Start ist als vollständiger interner
-In-Component-Canary für CREATE, EXISTING, Curriculum und Personalisierung
-implementiert. Eine öffentliche Einreichung dieser ID-verarbeitenden
-Komponente bleibt jedoch gesperrt, bis OpenAI diese konkrete Datenverarbeitung
-schriftlich akzeptiert oder eine alternative Architektur ohne Verarbeitung
-der dauerhaften SkillPilot-ID umgesetzt ist.
+aktiviert. Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben
+ausschließlich im First-Party-WebGUI.
 
-Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit drei
-getrennt gebundenen MCP Apps UIs: dem privaten Direct-Start, der read-only
-Lernzielbildanzeige und dem interaktiven Karteikartenlernen. MCP-Server,
+Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
+getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem
+interaktiven Karteikartenlernen. MCP-Server,
 OAuth-Authorization-Server, UI-Ressourcenauslieferung und SkillPilot-Fachlogik
 laufen im **bestehenden Spring-Boot-Prozess**. Der Node-MCP-Server unter
 `ai/openai app/` bleibt ein lokales Regressionstestbett; dort liegt zugleich
-die geprüfte Quellimplementierung der drei Komponenten, deren selbstenthaltene
+die geprüfte Quellimplementierung der Komponenten, deren selbstenthaltene
 Build-Artefakte in die Spring-Boot-Ressourcen übernommen werden.
 
 Die Architektur- und Migrationsentscheidungen stehen in
@@ -35,19 +31,11 @@ Release, Rollback und Stilllegung folgen dem
 [V1-Release-Runbook](openai-plugin-v1-release.md).
 Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
 Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
-SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start – über die
-First-Party-Weboberfläche oder den capability-geschützten privaten Direct-Start
-– erzeugt jedoch eine davon unabhängige, absolut 24 Stunden gültige
-`learningSessionId`. SkillPilot trägt diese Referenz automatisch in die kurze
-Startnachricht ein; ChatGPT übergibt sie unverändert an jedes fachliche
-MCP-Werkzeug. Beim Direct-Start wird eine vorhandene SkillPilot-ID
-ausschließlich aus der Komponente per HTTPS an den festen SkillPilot-Endpunkt
-gesendet; eine neu vergebene ID kommt ausschließlich in dessen direkter
-HTTPS-Antwort und flüchtig im Recovery-DOM vor. Sie ist weder MCP-Toolargument
-oder -resultat noch Modell-, Chat-, Widget-State-, Storage-, URL-, Log- oder
-Telemetrieinhalt. Curriculum und Personalisierung werden über die bestehenden
-ID-freien Sessiontools in derselben Komponente abgeschlossen; der normale
-App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
+SkillPilot-ID im Chat ein. Jeder ausdrückliche autorisierte Start über die
+First-Party-Weboberfläche erzeugt jedoch eine davon unabhängige, absolut 24
+Stunden gültige `learningSessionId` und öffnet einen neuen Chat. SkillPilot
+trägt diese Referenz automatisch in die kurze Startnachricht ein; ChatGPT
+übergibt sie unverändert an jedes fachliche MCP-Werkzeug.
 
 ## 1. Öffentlicher Vertrag
 
@@ -58,11 +46,8 @@ App-first-Ablauf öffnet die SkillPilot-Webanwendung nicht.
 | OAuth Resource / Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Deklarierte Widget-Origin | `https://mcp-coach-v1.skillpilot.com` |
 | Beobachtete ChatGPT-Web-Origin | `https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com` |
-| Zulässige ChatGPT-Sandbox-Familie für Direct-Start-CORS | `https://*.web-sandbox.oaiusercontent.com` |
-| Direct-Start-Ressource | `ui://skillpilot/coach/v1/sha256-28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1/skillpilot-start.html` |
 | Lernzielbild-Ressource | `ui://skillpilot/coach/v1/sha256-c890cf271307d815256450a2b20b27d57015a84e9f4e39c97532eaefc4e30c26/goal-visualization.html` |
 | Karteikarten-Ressource | `ui://skillpilot/coach/v1/sha256-8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852/memory-card-practice.html` |
-| Privater Direct-Start-Endpunkt | `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | OAuth Issuer | `https://skillpilot.com/api/openai/v1` |
@@ -77,23 +62,18 @@ RFC-8414-Route bleibt maßgeblich. Der issuer-relative Kompatibilitätsalias ist
 zusätzlich erforderlich, weil ChatGPT ihn bei einer erneuten MCP-Initialisierung
 abruft; er aktiviert weder OpenID-Scopes noch ID-Tokens.
 
-Das Draft-Inventar enthält je eine aktive, content-addressierte Ressource für
-Direct-Start, Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte
-Hash-URIs als byte-identische passive Ressourcen. `open_skillpilot_start`,
-`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
-referenzieren jeweils nur ihre eigene aktive URI über `ui.resourceUri` und
-`openai/outputTemplate`. Die app-only Werkzeuge
-`issue_skillpilot_start_capability` und
+Das Draft-Inventar enthält je eine aktive content-addressierte Ressource für
+Lernzielbilder und Karteikartenlernen sowie bereits ausgelieferte Start- und
+Bild-Hash-URIs als byte-identische passive Ressourcen.
+`render_skillpilot_goal_visualization` und
+`start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
+URI über `ui.resourceUri` und `openai/outputTemplate`. Das app-only Werkzeug
 `review_skillpilot_memory_practice_card`, gewöhnliche Werkzeuge und alle
 Retention-Vorgänger bleiben ungebunden. Nach dem Update werden die
-Plugin-Metadaten aktualisiert und neue Chats gegen alle drei aktiven URIs
-geprüft.
+Plugin-Metadaten aktualisiert und neue Chats gegen beide aktiven URIs geprüft.
 
-Der additive V1-vHost reicht den öffentlichen Pfad `/mcp` an den
-loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter und
-exponiert zusätzlich ausschließlich den festen Direct-Start-Pfad
-`/bootstrap/v1/launch` mit seinem gesonderten CORS-, Logging- und
-Rate-Limit-Vertrag.
+Der additive V1-vHost reicht ausschließlich den öffentlichen Pfad `/mcp` an den
+loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` weiter.
 Es gibt keinen öffentlichen Kompatibilitätsalias. Der produktive App-Eintrag
 verwendet ausschließlich diese V1-**Server URL**, nicht den Entwicklungstunnel
 und nicht einen Pfad auf `skillpilot.com`.
@@ -428,12 +408,9 @@ eine alte oder falsch geschriebene Route den versionierten V1-Vertrag nicht
 unbemerkt ersetzen.
 
 ChatGPT Web materialisiert diese deklarierte Domain aktuell als isolierte
-Browser-Origin unter `*.web-sandbox.oaiusercontent.com`. Nur für den exakten
-Direct-Start-Endpunkt akzeptiert Spring daher zusätzlich HTTPS-Subdomains
-dieser OpenAI-Sandbox-Familie. Die Antwort spiegelt die konkrete zulässige
-Origin und verwendet niemals `Access-Control-Allow-Origin: *`; `Origin: null`,
-HTTP und fremde Domains bleiben gesperrt. Diese CORS-Freigabe ersetzt weder
-OAuth noch die kurzlebige Setup-Capability.
+Browser-Origin unter `*.web-sandbox.oaiusercontent.com`. Die beiden aktiven
+UI-Ressourcen kommunizieren ausschließlich über ihre eng gebundenen MCP-
+Werkzeuge; es gibt keinen providerseitigen Permanent-ID- oder Setup-HTTPS-Pfad.
 
 Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
 `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
@@ -600,16 +577,13 @@ Session-ID allein autorisiert keinen MCP-Aufruf. Fehlt einer der beiden
 Nachweise, liefert der Fachvertrag `SESSION_REQUIRED` beziehungsweise einen
 OAuth-Fehler. `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
 `SESSION_VERSION_UNAVAILABLE` lösen keine neue OAuth-Verbindung aus: Der Coach
-öffnet genau einmal `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und
-der erforderlichen `communicationLocale`. Er kopiert bevorzugt
-`recoveryCommunicationLocale` aus den Fehlerdetails, sonst die letzte
-Sessionlocale (`de` für Deutsch, `en` für Englisch). Nur wenn beides fehlt,
-bildet er die aktuelle Unterhaltungssprache auf `de` oder `en` ab. Er wartet auf
-die neueste Startnachricht der privaten Komponente und verwendet danach nur
-deren neue Session-ID im selben Chat. Ein neuer Chat oder die
-First-Party-Website ist nur Fallback, wenn Komponente oder sicherer Handoff
-nicht verfügbar sind. Ein Fallback vom OAuth-Subject auf einen Lernenden ist
-unzulässig.
+gibt `instruction` unverändert aus; fehlt es, verwendet er den passenden
+exakten Eintrag aus `instructions`. Die exakte `startUrl` ergänzt er nur, wenn
+sie nicht bereits in der Instruktion steht. Es folgt keine Fachantwort und kein
+Retry mit der alten Session. Die
+lernende Person verwendet **Lernen starten** im First-Party-WebGUI; die frische
+Session wird im dadurch geöffneten neuen Chat verwendet. Ein Fallback vom
+OAuth-Subject auf einen Lernenden ist unzulässig.
 
 Das Cockpit startet ausschließlich über
 `POST /api/ui/learners/{skillpilotId}/openai/v1/launch`. Ein erfolgreicher
@@ -635,9 +609,7 @@ Die Abweichung gehört nur zu der einen durch diesen Request erzeugten
 unabhängigen Session. Sie verändert keine Konfiguration und keine andere oder
 spätere Session. Bereits der nächste `/launch`-Request ohne das Feld erzeugt
 automatisch wieder eine normale `PT24H`-Session, selbst wenn das Diagnose-Gate
-noch eingeschaltet ist. Der private Component-Endpunkt
-`/bootstrap/v1/launch` lehnt `diagnosticSessionTtlSeconds` ab und bleibt immer
-bei der normalen `PT24H`-Laufzeit.
+noch eingeschaltet ist. Kein anderer Startpfad akzeptiert dieses Feld.
 
 Empfohlene Werte:
 
@@ -689,7 +661,7 @@ Bei `SKILLPILOT_OPENAI_COACH_V1_ENABLED=true` registriert Spring den Health-Cont
 `openAiDeCoach`. Er fließt in die Actuator-Gruppe `readiness` ein. Der Beitrag
 ist nur `UP`, wenn MCP und OAuth aktiviert sind, die erforderlichen Client- und
 Callback-Werte gesetzt sind, die öffentlichen MCP-/Metadata-Ziele gültiges
-HTTPS verwenden und der erwartete Vertrag mit genau sechzehn Werkzeugen geladen ist.
+HTTPS verwenden und der erwartete Vertrag mit genau zwölf Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
@@ -720,7 +692,7 @@ skillpilot.openai.coach.v1.operational.event
 ```
 
 Der Timer besitzt aus dem Anwendungscode ausschließlich die begrenzten Tags `tool`
-(sechzehn bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
+(zwölf bekannte Toolnamen oder `unknown`) und `status` (`success`, `error` oder
 `exception`). Der Timer liefert Aufrufzahl und Dauer. Argumente, Prompts,
 Antworten, Lernenden- oder Verbindungskennungen und OAuth-Werte sind weder Tags
 noch Messdaten. Ein konfigurierter Exporter kann zusätzliche globale
@@ -736,15 +708,8 @@ Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags. Cross-Learner-/IDOR-
 Abwehr wird zusätzlich in negativen Integrationstests geprüft; der MCP-Vertrag
 nimmt absichtlich keine Lernendenkennung als Toolargument entgegen.
 
-Der lokale Limiter trennt MCP, OAuth, Cockpit-Start, Direct Bootstrap und
-Metadaten. Der Capability-Issuer besitzt zusätzlich begrenzte Budgets pro
-pseudonymisierter OAuth-Autorisierungsreferenz und Major sowie ein
-instanzweites Gesamtbudget. Der direkte Bootstrap-POST wird unabhängig nach
-normalisierter Netzwerkadresse, Capability-Fingerprint und instanzweitem
-Gesamtbudget begrenzt; `OPTIONS` verbraucht dabei kein Bootstrap-Budget. Die
-frühe `429`-Antwort folgt auch für den Browserpfad dem geschlossenen
-Bootstrap-Fehlervertrag und setzt CORS ausschließlich für die deklarierte
-Widget-Origin oder eine HTTPS-Origin der festgelegten OpenAI-Sandbox-Familie.
+Der lokale Limiter trennt MCP, OAuth, Cockpit-Start und Metadaten. Die
+First-Party-Launch-Route und der MCP-Pfad besitzen getrennte Budgets.
 
 Die netzbezogenen Budgets verwenden nur die vom Servlet-Container
 normalisierte Netzwerkadresse. Der Limiter parst keine Forwarding-Header.
@@ -755,8 +720,8 @@ mehreren Backendinstanzen ist zusätzlich ein gemeinsames Gateway-Limit
 verbindlich; der In-Process-Limiter ist bewusst nur eine letzte lokale
 Schutzschicht. Eine Ablehnung antwortet mit `429`, `Retry-After` und `no-store`.
 
-Der allgemeine Request-Body-Logger überspringt MCP-, Provider-OAuth-,
-OpenAI-Cockpit-Start- und Direct-Bootstrap-Pfade vollständig. Insbesondere
+Der allgemeine Request-Body-Logger überspringt MCP-, Provider-OAuth- und
+OpenAI-Cockpit-Start-Pfade vollständig. Insbesondere
 Authorization Codes,
 PKCE-Verifier, Access-/Refresh-Tokens und typisierte Lernziel-Startintents dürfen
 auch bei aktiviertem Debug-Logging nicht als Request-Body in den
@@ -780,15 +745,15 @@ Anwendungslogs erscheinen.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
-   ausführen. Prüfen, dass genau die sechzehn sprachneutralen Produktivwerkzeuge
-   erscheinen; keine Claude-, Regression- oder lokalen Widget-Testwerkzeuge
-   dürfen sichtbar sein. `resources/list` muss die drei aktiven hashgebundenen
-   Ressourcen und die passiv aufbewahrte Lernzielbild-Ressource enthalten.
-   `open_skillpilot_start`,
+   ausführen. Prüfen, dass nur die freigegebenen sprachneutralen
+   Produktivwerkzeuge erscheinen; keine Claude-, Regression-, Start- oder
+   lokalen Widget-Testwerkzeuge dürfen sichtbar sein. `resources/list` muss
+   genau zwei aktive hashgebundene Ressourcen sowie alle bereits beworbenen
+   Hash-URIs byte-identisch als passive Retention enthalten.
    `render_skillpilot_goal_visualization` und
-   `start_skillpilot_memory_practice` müssen jeweils ausschließlich ihre eigene
-   aktive Ressource referenzieren. `issue_skillpilot_start_capability` und
-   `review_skillpilot_memory_practice_card` sind app-only und ungebunden.
+   `start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene
+   aktive Ressource. `review_skillpilot_memory_practice_card` bleibt app-only
+   und ungebunden.
 
 Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
 verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
@@ -806,46 +771,28 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 (keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
-Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert drei getrennte
-aktive MCP Apps UI-Ressourcen: den privaten Direct-Start, eine read-only
-Bildressource für das aktive atomare Lernziel und eine interaktive Ressource für
-Karteikartenlernen im Chat.
-Zuvor ausgelieferte Hash-URIs bleiben passiv lesbar.
-`open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+Der unveröffentlichte Arbeitsstand `1.0.0-SNAPSHOT` registriert genau zwei
+aktive MCP Apps UI-Ressourcen: eine read-only Bildressource für das aktive
+atomare Lernziel und eine interaktive Ressource für Karteikartenlernen im Chat.
+Zuvor ausgelieferte Start- und Bild-Hash-URIs bleiben byte-identisch passiv
+lesbar, besitzen aber keine aktive Werkzeugbindung.
+`render_skillpilot_goal_visualization` und
 `start_skillpilot_memory_practice` referenzieren jeweils nur ihre eigene aktive
 Ressource über `ui.resourceUri` und den ChatGPT-Kompatibilitätsalias
-`openai/outputTemplate`. `issue_skillpilot_start_capability` und das app-only
-Bewertungswerkzeug sind ungebunden. Der öffentliche Open-Aufruf zeigt nur die
-Startkomponente und stellt keine Capability aus; erst die Komponente darf nach
-Hostfähigkeitsprüfung und ausdrücklicher Benutzerbestätigung den ID-freien
-Capability-Issuer aufrufen. Die SkillPilot-ID wird anschließend ausschließlich
-im festen Direct-HTTPS-Request verarbeitet. Auswahl und Coaching bleiben im normalen Chat. Der
-Kontext projiziert `goalVisualization` und erlaubt das Anzeige-Werkzeug nur bei
+`openai/outputTemplate`; das app-only Bewertungswerkzeug bleibt ungebunden.
+
+Der Vollkontext projiziert `goalVisualization` und erlaubt den Renderer nur bei
 einem aktiven atomaren Ziel mit passendem kanonischem Bildlink und aktivierter
-Cockpit-Einstellung. Der Renderer prüft Backendzustand, Ziel-ID und
-`expectedStateVersion` erneut und liefert der Komponente die begrenzte
-strukturierte Projektion. Nacktes MCP-`ImageContent` ist kein
-Sichtbarkeitsvertrag. Sichtbar rendert die Komponente ausschließlich das Bild
-mit dem am `img`-Element hinterlegten Alttext; Titel, Lernzielbeschreibung und
-Cockpit-Link erscheinen nicht in der UI. Fehlt ein gültiges Bild, entsteht
-keine UI-Karte und der normale Chatablauf funktioniert unverändert.
-
-Wenn das neueste vollständige Kontext- oder Mutationsergebnis ein zulässiges
-Bild enthält und den Renderer erlaubt, folgt dieser unmittelbar danach im
-selben Assistant-Turn genau einmal mit der unveränderten Ziel-ID und
-`expectedStateVersion` aus genau diesem Ergebnis. Ein neueres erfolgreiches
-SkillPilot-Ergebnis entzieht die vorherige Freigabe. Das Renderer-Ergebnis ist
-nur eine UI-Bestätigung und ersetzt nicht den vorherigen vollständigen Kontext
-für Coaching- oder Zustandsentscheidungen. Ein bereits versuchtes oder nicht
-sicher ladbares Bild wird nicht automatisch erneut aufgerufen.
-
-Der Adapter bietet `goalVisualization` und die Renderer-Freigabe
-oberflächenneutral an. Er wertet weder `openai/userAgent` noch eine andere
-Desktop/Mobile-Klassifikation aus. Frische und idempotent wiedergegebene
-Coordinator-Ergebnisse enthalten dieselbe Freigabe. Der Renderer liefert
-die strukturierte Projektion an die eine MCP Apps UI; der vollständige Textpfad
-bleibt unverändert erhalten, wenn ein Host die optionale Komponente nicht
-darstellt.
+Cockpit-Einstellung. Bei dieser frischen Übereinstimmung ruft der Coach den
+Renderer einmal mit der unveränderten `goalId` auf und kopiert die Top-Level-
+`stateVersion` in dessen Eingabe `expectedStateVersion`. Eine ältere Freigabe
+wird weder wiederverwendet noch erneut versucht. Der Renderer revalidiert
+Backendzustand, Ziel-ID und Version und liefert nur die begrenzte strukturierte
+Projektion; sein Receipt ersetzt den Vollkontext nicht. Nacktes MCP-
+`ImageContent` ist kein Sichtbarkeitsvertrag. Die Komponente rendert nur das
+Bild mit Alttext; Titel, Lernzielbeschreibung und Cockpit-Link bleiben
+unsichtbar. Fehlt ein gültiges Bild oder stellt der Host die optionale
+Komponente nicht dar, bleibt die vollständige Textantwort unverändert.
 
 Für ein aktives Lernkartenziel veröffentlicht der Kontext zwei klar getrennte
 Modi: **Karteikarten lernen** und **Mit Lerncoach prüfen**. Der erste Modus ruft
@@ -1022,9 +969,10 @@ Produktivcoach.
 - `get_skillpilot_context` und alle Navigationsabfragen mit gültigem OAuth
   und der jeweils richtigen Session-ID prüfen.
 - Bei einem aktiven atomaren Ziel mit passendem kanonischem
-  `goal-visualization`-Link muss das dedizierte Anzeige-Werkzeug unmittelbar
-  nach dem freigebenden vollständigen Ergebnis im selben Assistant-Turn genau
-  einmal mit dessen `goalId` und `expectedStateVersion` laufen. Auf einem
+  `goal-visualization`-Link muss das Vollresultat die Bildprojektion und
+  Renderer-Freigabe enthalten. Der Renderer läuft für dieses frische Ergebnis
+  genau einmal mit dessen `goalId`; die Top-Level-`stateVersion` wird in
+  `expectedStateVersion` kopiert. Auf einem
   unterstützten Web-Host zeigt es dann ausschließlich das Bild; der Alttext
   bleibt am `img`-Element,
   während Titel, Lernzielbeschreibung und Cockpit-Link nicht gerendert werden.
@@ -1062,13 +1010,13 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende SkillPilot Coach v1 und fahre fort.`<br>`learningSessionId: sps_…` | `get_skillpilot_context` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
-| Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | `get_skillpilot_context` läuft; unmittelbar danach folgt `render_skillpilot_goal_visualization` genau einmal mit `goalId` und `expectedStateVersion` aus demselben Ergebnis. Danach bleibt die fachliche Antwort vollständig. |
-| Das neueste Ergebnis enthält kein Bild oder erlaubt den Renderer nicht | Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig. |
+| `Verwende SkillPilot Coach v1 und fahre fort.` ohne aktuelle SkillPilot-Startnachricht | Kein Werkzeugaufruf. Der Coach verweist kurz in der Unterhaltungssprache auf `https://skillpilot.com/`, die WebGUI-Konfiguration und **Lernen starten** / **Start learning**, das eine neue Session in einem neuen Chat öffnet. |
+| Derselbe Prompt mit aktueller Startnachricht und `learningSessionId: sps_…` | `get_skillpilot_context` läuft in diesem Assistant-Turn vor jeder lernendenbezogenen Antwort. Level 2 wird weder erfragt noch verändert; die Antwort verwendet nur den bestätigten WebGUI-Kontext. |
+| Derselbe Start bei einem aktiven atomaren Ziel mit freigegebenem Bild | Nach erfolgreichem Kontext folgt `render_skillpilot_goal_visualization` genau einmal mit dessen `goalId`; die Top-Level-`stateVersion` wird in `expectedStateVersion` kopiert. Danach bleibt die fachliche Antwort vollständig. |
+| Bildprojektion oder Renderer-Freigabe fehlt | Es gibt keinen Renderer-Aufruf und keine leere Bild-UI; die normale Coaching-Antwort bleibt vollständig. |
 | Vor dem Renderer liegt bereits ein neueres erfolgreiches SkillPilot-Ergebnis vor | Nur dessen aktuelle Bildfreigabe kann verwendet werden; der alte Bildauftrag wird nicht ausgeführt oder automatisch erneut versucht. |
-| `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context` läuft; eindeutige Teile werden als bestätigter Kontext genannt und nicht erneut erfragt. Alle aktuell bestimmbaren offenen Angaben werden in einer gemeinsamen Frage angeboten. |
-| Mehrere offene Angaben in einer Nachricht und in umgekehrter Reihenfolge beantworten | Der Coach übernimmt die Mehrfachabsicht unabhängig von der Antwortreihenfolge. Er wendet intern jeweils nur die aktuelle Option an, lädt danach den Plan frisch und löst erst dann die nächste Angabe auf. |
-| Eine Antwort auf eine spätere, nur orientierend angezeigte Frage geben | Keine vorweggenommene oder gespeicherte Option-ID wird geschrieben. Der Coach arbeitet zuerst die aktuelle authored Entscheidung ab und prüft die Angabe anschließend gegen die frisch projizierten Optionen; nur verbleibende Mehrdeutigkeit führt zu einer Rückfrage. |
+| `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | Ohne aktuelle Startnachricht folgt nur der WebGUI-Hinweis. Mit gültiger Session bleibt die vorhandene Level-2-Konfiguration autoritativ; eine Änderung erfolgt ausschließlich in SkillPilot und startet danach einen neuen Chat. |
+| Einer der drei Session-Recovery-Codes | Der Coach gibt die Serverinstruktion unverändert aus und ergänzt die exakte `startUrl` nur, wenn sie nicht schon enthalten ist. Keine Fachantwort, kein OAuth-Reconnect; Fortsetzung über WebGUI und neuen Chat. |
 | `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
 | `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
 | `Use SkillPilot Coach v1 and resume my current lesson.` | Das Kontextwerkzeug lädt die Session; die Antwort verwendet ausschließlich die darin festgelegte Interaktionssprache. |
@@ -1087,12 +1035,10 @@ darin nicht erscheinen. Für den Live-Test kann die Zeile mit
 ### Stufe B – funktionsfähiger Schreibpilot
 
 Nach Stufe A `SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true` setzen und neu starten.
-Erst dieser Zustand ist als vollständiger fachlicher Schreibpilot freizugeben;
-die separate Sperre für eine öffentliche Einreichung des ID-verarbeitenden
-Direct-Start-Widgets bleibt davon unberührt.
+Erst dieser Zustand ist als vollständiger fachlicher Schreibpilot freizugeben.
 Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
-1. Curriculum und Personalisierung;
+1. Curriculum, Stage, Subjects, Profile und Personalisierung in der WebGUI;
 2. Scope und aktives Frontier-Ziel;
    beim Zielwechsel muss `set_skillpilot_active_goal` dieselbe
    Visualisierung aktualisieren beziehungsweise ohne gültiges Bild sauber
@@ -1130,18 +1076,18 @@ Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
   identischen Argumenten und derselben `clientRequestId` darf bei noch nicht
   abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion
   nur das gespeicherte Resultat liefern;
-- nach jedem der drei Session-Recovery-Codes muss genau ein
-  `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der bevorzugt aus
-  `recoveryCommunicationLocale`, sonst aus der letzten Session übernommenen
-  `communicationLocale` eine neue unabhängige Session erzeugen und deren
-  Startnachricht im bestehenden Chat übergeben; alte Sessiondatensätze werden
-  dadurch nicht global widerrufen.
+- nach jedem der drei Session-Recovery-Codes muss die Fachoperation stoppen.
+  Der Coach gibt `instruction` unverändert aus; fehlt es, wählt er den exakten
+  Eintrag aus `instructions` anhand der letzten autoritativen
+  `communicationLocale`, sonst der aktuellen Unterhaltungssprache. Die exakte
+  `startUrl` wird nur ergänzt, wenn sie nicht bereits in der Instruktion steht.
+  Es folgen weder Fachantwort noch OAuth-Neuverbindung. Die Person schließt den
+  Start in der WebGUI ab und arbeitet im dadurch geöffneten neuen Chat weiter;
 - für den Live-Grenztest das Diagnose-Gate kurz aktivieren und ausschließlich
   am First-Party-`/launch` einmal `diagnosticSessionTtlSeconds=3660` verwenden;
   alternativ `5400` für einen 90-Minuten-Soak. Werte `3600`, `86401`, Werte über
-  der normalen Laufzeit, ein gesetztes Feld bei deaktiviertem Gate und jeder
-  Versuch am privaten Component-Bootstrap müssen ohne Session fail-closed
-  enden;
+  der normalen Laufzeit sowie ein gesetztes Feld bei deaktiviertem Gate müssen
+  ohne Session fail-closed enden;
 - direkt danach muss ein weiterer First-Party-Start ohne Diagnosefeld wieder
   eine `PT24H`-Session erzeugen. Die globale Learning-Session-TTL bleibt während
   des gesamten Tests unverändert.
@@ -1151,101 +1097,24 @@ erzeugte `learningSessionId` sowie den fachlichen Startzweck. Sie enthält weder
 dauerhafte SkillPilot-ID, OAuth-Token, Client-Secret noch interne Lernziel-ID.
 Der Benutzer muss die Session-ID weder kopieren noch verändern.
 
-### Stufe C – privater Direct-Start-Canary
+### Stufe C – Web-first-Übergabe-Canary
 
-Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
-öffentliche Plugin-Einreichung.
-
-- In einem frischen Chat ruft das Modell genau einmal
-  `open_skillpilot_start` mit `purpose=START` und `communicationLocale=de` für
-  eine deutsche beziehungsweise `communicationLocale=en` für eine englische
-  Unterhaltung auf. Dessen modellseitiges Ergebnis enthält weder
-  Capability noch SkillPilot-ID; die Startressource ist die einzige daran
-  gebundene UI.
-- Vor jeder Authority-Ausstellung prüft die Komponente einen vollständigen
-  Aktionskanal: entweder `serverTools`/`tools/call` plus
-  `message.text`/`ui.message` oder gemeinsam die dokumentierten
-  ChatGPT-Web-Aliasse `window.openai.callTool` und
-  `window.openai.sendFollowUpMessage`. Der Kanal wird vor dem ersten Aufruf
-  fixiert und danach niemals gemischt. Fehlt ein vollständiger Kanal, darf die
-  Komponente keine Capability und keine Lernsession erzeugen, sondern bietet
-  nur den festen First-Party-Fallback an.
-- Erst nach ausdrücklicher Benutzerbestätigung ruft ausschließlich die
-  Komponente `issue_skillpilot_start_capability` auf. Das app-only Werkzeug ist
-  ungebunden, erhält keine SkillPilot-ID und liefert die kurzlebige Capability
-  nur in Resultat-`_meta`. Für diesen Vertrag muss die Laufzeitprojektion
-  `policyRevision=2` und `providerNoticeVersion=openai-provider-eligibility-v2`
-  melden; ältere Capabilities und Hinweise werden terminal abgewiesen.
-- Der Bootstrap akzeptiert exakt `identityMode=EXISTING` mit verpflichtender
-  `skillpilotId` oder `identityMode=CREATE` ohne dieses Feld. Bei EXISTING
-  erscheint die ID ausschließlich im direkten HTTPS-Body. Bei CREATE steht
-  `createdSkillpilotId` ausschließlich in der direkten HTTPS-Antwort und
-  flüchtig im Recovery-DOM; vor jeder Setup-Mutation muss die Person
-  ausdrücklich bestätigen, sie gesichert zu haben. Ein nutzerinitiierter
-  `navigator.clipboard.writeText`-Aufruf ist zulässig, aber keine Host-
-  Geheimhaltungsgrenze.
-- In beiden Modi darf die permanente ID niemals in Chat, Modellkontext,
-  MCP-Argumente oder -Resultate einschließlich `_meta`, `window.openai`,
-  Widget-State, Local/Session Storage, IndexedDB, URL, Console, Analytics,
-  Telemetrie oder Logs gelangen. Dateiimport und PIN/Passwort gehören nicht zu
-  diesem V1-Pfad.
-- Nach dem Launch hält die Komponente die kanonische Startnachricht zurück,
-  extrahiert daraus ausschließlich für den Setupablauf die learningSessionId
-  und ruft `get_skillpilot_context` auf. Bei
-  `requiredAction=setCurriculum` rendert sie nur die veröffentlichten Optionen
-  und deren vollständig 1:1 gebundene `curriculumCatalog`-Projektion. Kategorie,
-  Qualitätsampel, Defaultfilter und Sortierung müssen der SkillPilot-WebGUI
-  entsprechen; Filterwechsel bleiben lokal. Vor der Auswahl muss der Select
-  `Curriculum wählen` statt der ersten fachlichen Option anzeigen. Erst eine
-  ausdrückliche Auswahl speichert genau eine veröffentlichte `curriculumId` über
-  `set_skillpilot_curriculum`. Fehlende, doppelte oder fremde Katalogeinträge
-  werden fail closed abgewiesen.
-- Bei `requiredAction=setPersonalization` rendert sie nur die neueste
-  serverautoritative Entscheidung. Ausgewähltes Curriculum sowie aktuelle,
-  abgeschlossene und unabhängige erhaltene Personalisierungsentscheidungen
-  bleiben wie in der WebGUI kumulativ sichtbar. Curriculum-`Ändern` lädt einen
-  frischen `get_skillpilot_navigation(target=curriculum)`-Katalog;
-  Personalisierungs-`Ändern` übergibt ausschließlich die im neuesten Kontext
-  veröffentlichte opake `rewindId` über `set_skillpilot_personalization`.
-  Alte Optionen oder Rewind-Referenzen werden nie lokal rekonstruiert oder
-  erneut verwendet. Beide Schreibwerkzeuge erhalten
-  `expectedStateVersion` exakt aus dem neuesten Erfolg und eine neue
-  `clientRequestId`; nur ein unveränderter Transport-Retry verwendet dieselbe
-  ID. Bei 409 wird der Kontext genau einmal frisch geladen und jede alte Option
-  verworfen.
-- Erst wenn der neueste Vollkontext weder `setCurriculum` noch
-  `setPersonalization` verlangt, zeigt die Komponente einen finalen Review.
-  Ausschließlich die dortige ausdrückliche Aktion `Lernen starten` sendet die
-  unveränderte Startnachricht an den Host. Im normalen App-first-Canary gibt es keinen
-  **SkillPilot öffnen**-Schritt und der Coach fragt die bereits abgeschlossenen
-  Setupdimensionen nicht erneut ab.
-- Eine unbekannte SkillPilot-ID liefert dagegen stabil und identifierfrei
-  `PROFILE_UNAVAILABLE` und erzeugt keine Lernsession.
-- Ein erfolgreicher Bootstrap erzeugt eine zufällige 256-Bit-Lernsession. Ein
-  identischer Retry liefert die gespeicherte, kurzlebig AEAD-verschlüsselte
-  Antwort ohne zweite Session; ein abweichender Retry bleibt terminal
-  abgewiesen.
-- Die anschließende Bestätigung über `ui/message` oder das erfolgreiche
-  Auflösen von `sendFollowUpMessage` beweist ausschließlich, dass der Host die
-  kurze Startnachricht angenommen hat. Erst der danach beobachtete Aufruf von
-  `get_skillpilot_context` beweist die fachliche Wiederaufnahme. Ablehnung oder
-  unklarer Ausgang darf nur dieselbe Nachricht auf demselben Kanal innerhalb
-  der ursprünglichen Handofffrist erneut senden und niemals erneut launchen.
-  Nach bestätigter Annahme entfernt die Komponente ihre Karte lokal und fordert
-  den Host genau einmal best effort zum Schließen auf; sie bietet dort keinen
-  neuen Startversuch an.
-- Abgelaufene, widerrufene oder policy-seitig blockierte Capabilities sowie
-  eine unbekannte SkillPilot-ID müssen stabil identifierfrei scheitern.
-  Transiente Fehler behalten nur den gebundenen exakten Retry offen.
-- Die lokalen Issuer-, Capability-, Netzwerk- und Instanzbudgets sowie der
-  geschlossene CORS-/`429`-Vertrag werden negativ getestet. Für mehrere
-  Backendinstanzen bleibt ein gemeinsames Gateway-Limit ein Pflichtgate.
-
-Vor einer öffentlichen Einreichung muss zusätzlich entweder eine schriftliche
-OpenAI-Akzeptanz für die konkrete Verarbeitung einer neu vergebenen oder
-vorhandenen bearer-artigen SkillPilot-ID in der Komponente vorliegen oder der
-Direct-Start auf eine Architektur ohne ID-Verarbeitung umgestellt sein. Ein
-erfolgreicher interner Canary hebt dieses Gate nicht auf.
+- Ein Chat ohne aktuelle SkillPilot-Startnachricht ruft kein Werkzeug auf und
+  zeigt nur den kurzen lokalisierten Hinweis mit `https://skillpilot.com/`.
+- CREATE/EXISTING, Providerhinweis und die vollständige Level-2-Konfiguration
+  werden ausschließlich im First-Party-WebGUI abgeschlossen.
+- Jede ausdrückliche Aktion **Lernen starten** / **Start learning** erzeugt eine
+  neue opake `learningSessionId` und öffnet einen neuen Chat mit der kurzen
+  Startnachricht; die permanente SkillPilot-ID bleibt außerhalb des Chats.
+- Vor jeder lernendenbezogenen Coach-Antwort muss der Vollkontext im aktuellen
+  Assistant-Turn erfolgreich geladen worden sein. Level-3-Fokus und aktives
+  Ziel bleiben die einzigen chatseitigen Navigationsänderungen.
+- Für jeden Session-Recovery-Code gilt die oben geprüfte servereigene
+  Instruktion mit WebGUI und neuem Chat; es gibt keine Fachantwort und keinen
+  OAuth-Reconnect.
+- `resources/list` liefert genau zwei aktiv gebundene UI-Ressourcen. Bereits
+  beworbene Startressourcen bleiben ausschließlich byte-identisch passiv
+  lesbar und besitzen weder Toolbindung noch Startfunktion.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU und die vorgesehenen Browser-
@@ -1313,7 +1182,7 @@ kann innerhalb ihrer Frist in einem neuen Chat weiterverwendet werden, wird
 aber weder durch Nutzung noch durch OAuth-Refresh verlängert.
 Nur der oben beschriebene, explizit freigeschaltete und requestlokale
 First-Party-Diagnosewert darf eine einzelne Testsession verkürzen; er verändert
-weder diesen Default noch den privaten Component-Bootstrap.
+diesen Default nicht.
 
 Der Deployment-Canary muss für `CURRENT_UNIT`, `VERIFIED_RECALL` und
 `ABI26_EXAM` zusätzlich prüfen, dass ChatGPT den genau einmal vorhandenen

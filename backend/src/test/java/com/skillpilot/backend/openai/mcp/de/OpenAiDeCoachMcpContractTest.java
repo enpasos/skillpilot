@@ -95,7 +95,8 @@ class OpenAiDeCoachMcpContractTest {
             "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5",
             "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc",
             "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c",
-            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1");
+            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1",
+            "4bedfcc1f5de64bde6c8cf9f81879d0c80f54ec740de105357fa929be6cf7f85");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -161,20 +162,16 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void publishesExactlySixteenNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLinks() {
+    void publishesExactlyTwelveNativeToolsWithSchemasSecurityAnnotationsAndDedicatedUiLinks() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contract.toolSpecifications();
 
-        assertThat(tools).hasSize(16);
+        assertThat(tools).hasSize(12);
         assertThat(tools.stream().map(spec -> spec.tool().name())).containsExactly(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
                 OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                 OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
                 OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
                 OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
-                OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
                 OpenAiDeV1McpContractAdapter.SET_SCOPE,
                 OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
@@ -199,26 +196,7 @@ class OpenAiDeCoachMcpContractTest {
                     assertThat(scheme).containsKey("scopes");
                 });
             });
-            if (OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START.equals(tool.name())) {
-                assertThat(tool.meta().get("ui"))
-                        .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
-                                .containsExactlyInAnyOrderEntriesOf(Map.of(
-                                        "visibility", List.of("model", "app"),
-                                        "resourceUri", OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI)));
-                assertThat(tool.meta())
-                        .containsEntry(
-                                "openai/outputTemplate",
-                                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI)
-                        .containsEntry("openai/widgetAccessible", true);
-            } else if (OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY.equals(tool.name())) {
-                assertThat(tool.meta().get("ui"))
-                        .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
-                                .containsExactlyEntriesOf(Map.of("visibility", List.of("app"))));
-                assertThat(tool.meta())
-                        .containsEntry("openai/widgetAccessible", true)
-                        .containsEntry("openai/visibility", "private")
-                        .doesNotContainKey("openai/outputTemplate");
-            } else if (OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(tool.name())) {
+            if (OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION.equals(tool.name())) {
                 assertThat(tool.meta().get("ui"))
                         .isInstanceOfSatisfying(Map.class, ui -> assertThat(ui)
                                 .containsEntry(
@@ -247,96 +225,14 @@ class OpenAiDeCoachMcpContractTest {
             } else {
                 assertThat(tool.meta()).doesNotContainKeys("ui", "openai/outputTemplate");
             }
-            if (OpenAiDeV1McpContractAdapter.GET_CONTEXT.equals(tool.name())
-                    || OpenAiDeV1McpContractAdapter.GET_NAVIGATION.equals(tool.name())
-                    || OpenAiDeV1McpContractAdapter.SET_CURRICULUM.equals(tool.name())
-                    || OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION.equals(tool.name())) {
-                assertThat(tool.meta()).containsEntry("openai/widgetAccessible", true);
-            } else if (!OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START.equals(tool.name())
-                    && !OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY.equals(tool.name())) {
-                assertThat(tool.meta()).doesNotContainKey("openai/widgetAccessible");
-            }
+            assertThat(tool.meta()).doesNotContainKey("openai/widgetAccessible");
         }
-        assertThat(spec(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                        .tool()
-                        .annotations())
-                .satisfies(annotations -> {
-                    assertThat(annotations.readOnlyHint()).isTrue();
-                    assertThat(annotations.idempotentHint()).isTrue();
-                    assertThat(annotations.destructiveHint()).isFalse();
-                    assertThat(annotations.openWorldHint()).isFalse();
-                });
-        assertThat(spec(OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY)
-                        .tool()
-                        .annotations())
-                .satisfies(annotations -> {
-                    assertThat(annotations.readOnlyHint()).isFalse();
-                    assertThat(annotations.idempotentHint()).isFalse();
-                    assertThat(annotations.destructiveHint()).isFalse();
-                    assertThat(annotations.openWorldHint()).isFalse();
-                });
-        assertExactSecuritySchemes(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                List.of(OpenAiDeV1McpContractAdapter.READ_SCOPE));
-        assertExactSecuritySchemes(
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                List.of(
-                        OpenAiDeV1McpContractAdapter.READ_SCOPE,
-                        OpenAiDeV1McpContractAdapter.WRITE_SCOPE));
-
-        JsonNode openStartInputSchema = objectMapper.valueToTree(
-                spec(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                        .tool()
-                        .inputSchema());
-        assertThat(openStartInputSchema.path("additionalProperties").asBoolean()).isFalse();
-        assertThat(openStartInputSchema.path("properties").size()).isEqualTo(2);
-        assertThat(openStartInputSchema.path("required"))
-                .containsExactly(
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE),
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE));
-        assertThat(openStartInputSchema.at("/properties/purpose/enum"))
-                .containsExactly(
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE_START),
-                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING));
-        assertThat(openStartInputSchema.at("/properties/communicationLocale/enum"))
-                .containsExactly(
-                        objectMapper.valueToTree("de"),
-                        objectMapper.valueToTree("en"));
-        assertThat(openStartInputSchema.toString())
+        assertThat(tools.stream().map(spec -> spec.tool().name()))
                 .doesNotContain(
-                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
-                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
-                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
-                        "skillpilotId");
-
-        JsonNode capabilityInputSchema = objectMapper.valueToTree(
-                spec(OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY)
-                        .tool()
-                        .inputSchema());
-        assertThat(capabilityInputSchema.path("additionalProperties").asBoolean()).isFalse();
-        JsonNode capabilityInputProperties = capabilityInputSchema.path("properties");
-        assertThat(capabilityInputProperties.size()).isEqualTo(3);
-        assertThat(capabilityInputProperties.has("providerNoticeVersion")).isTrue();
-        assertThat(capabilityInputProperties.has("providerEligibilityConfirmed")).isTrue();
-        assertThat(capabilityInputProperties.has("sourceMajorDecision")).isTrue();
-        assertThat(capabilityInputSchema.path("required"))
-                .containsExactly(
-                        objectMapper.valueToTree("providerNoticeVersion"),
-                        objectMapper.valueToTree("providerEligibilityConfirmed"));
-        assertThat(capabilityInputSchema.at("/properties/providerNoticeVersion/const").asText())
-                .isEqualTo(OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION);
-        assertThat(capabilityInputSchema.at("/properties/providerEligibilityConfirmed/const").asBoolean())
-                .isTrue();
-        assertThat(capabilityInputSchema.at("/properties/sourceMajorDecision/enum"))
-                .containsExactly(objectMapper.valueToTree("START_CURRENT_MAJOR"));
-        assertThat(capabilityInputSchema.toString())
-                .doesNotContain(
-                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
-                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
-                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID,
-                        "skillpilotId");
-
-        assertClosedStartOutputSchemas();
+                        OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                        OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
+                        OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
+                        OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().annotations().readOnlyHint()).isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                         .tool()
@@ -462,301 +358,18 @@ class OpenAiDeCoachMcpContractTest {
                         "stateSchemaVersion",
                         "workflowVersion",
                         "curriculumRevision",
-                        "extensions");
+                        "extensions")
+                .doesNotContain("presentationAction");
     }
 
     @Test
-    void openStartIsSessionlessAndKeepsLifecycleStatePrivateWithoutIssuingCapability() {
-        McpSchema.CallToolResult result = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(
-                        OpenAiDeV1McpContractAdapter.PURPOSE,
-                        OpenAiDeV1McpContractAdapter.PURPOSE_START,
-                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
-                        "de"));
-
-        assertThat(result.isError()).isFalse();
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START, result);
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys(
-                                "status",
-                                "purpose",
-                                "communicationLocale",
-                                "supportedLocales",
-                                "fallbackUrl")
-                        .containsEntry("status", "ID_REQUIRED")
-                        .containsEntry("purpose", "START")
-                        .containsEntry("communicationLocale", "de")
-                        .containsEntry("supportedLocales", List.of("de", "en"))
-                        .containsEntry("fallbackUrl", "https://skillpilot.com/"));
-
-        JsonNode privateMeta = objectMapper.valueToTree(result.meta());
-        assertThat(privateMeta.size()).isEqualTo(1);
-        assertThat(privateMeta.has("skillpilotStart")).isTrue();
-        assertThat(privateMeta.at("/skillpilotStart").size()).isEqualTo(2);
-        assertThat(privateMeta.at("/skillpilotStart/schemaVersion").asInt()).isEqualTo(1);
-        JsonNode contractLine = privateMeta.at("/skillpilotStart/contractLine");
-        assertThat(contractLine.size()).isEqualTo(7);
-        assertThat(contractLine.path("contractMajor").asInt())
-                .isEqualTo(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
-        assertThat(contractLine.path("policyRevision").asLong())
-                .isEqualTo(OpenAiDeV1ContractMetadata.POLICY_REVISION);
-        assertThat(contractLine.path("displayName").asText()).isEqualTo("SkillPilot Coach v1");
-        assertThat(contractLine.path("supportLifecycle").asText()).isEqualTo("CURRENT");
-        assertThat(contractLine.path("publicationStatus").asText()).isEqualTo("DRAFT");
-        assertThat(contractLine.path("newSessionPolicy").asText()).isEqualTo("ALLOW");
-        assertThat(contractLine.path("successor").isNull()).isTrue();
-        assertThat(privateMeta.toString())
-                .doesNotContain(
-                        "setupCapability",
-                        "spc_",
-                        "skillpilotId",
-                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
-                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
-                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID);
-        assertThat(result.content().toString())
-                .doesNotContain(
-                        AUTHORIZATION_REFERENCE,
-                        LEARNER_ID,
-                        "setupCapability",
-                        "spc_");
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-        verify(identityResolver, never()).requireWriteAccess(any());
-        verify(bootstrapCapabilityService, never()).issueCapability(any(), any());
-    }
-
-    @Test
-    void openStartRequiresClosedPurposeAndLocaleAndEchoesRenewalIntent() {
-        McpSchema.CallToolResult missingPurpose = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE, "de"));
-        McpSchema.CallToolResult missingLocale = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(OpenAiDeV1McpContractAdapter.PURPOSE, OpenAiDeV1McpContractAdapter.PURPOSE_START));
-        McpSchema.CallToolResult unsupportedPurpose = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(
-                        OpenAiDeV1McpContractAdapter.PURPOSE,
-                        "OTHER",
-                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
-                        "de"));
-        McpSchema.CallToolResult unsupportedLocale = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(
-                        OpenAiDeV1McpContractAdapter.PURPOSE,
-                        OpenAiDeV1McpContractAdapter.PURPOSE_START,
-                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
-                        "fr"));
-        McpSchema.CallToolResult renewal = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of(
-                        OpenAiDeV1McpContractAdapter.PURPOSE,
-                        OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING,
-                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
-                        "en"));
-
-        assertThat(missingPurpose.isError()).isTrue();
-        assertThat(missingPurpose.structuredContent()).isInstanceOfSatisfying(
-                Map.class,
-                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
-        assertThat(missingLocale.isError()).isTrue();
-        assertThat(missingLocale.structuredContent()).isInstanceOfSatisfying(
-                Map.class,
-                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
-        assertThat(unsupportedPurpose.isError()).isTrue();
-        assertThat(unsupportedPurpose.structuredContent()).isInstanceOfSatisfying(
-                Map.class,
-                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
-        assertThat(unsupportedLocale.isError()).isTrue();
-        assertThat(unsupportedLocale.structuredContent()).isInstanceOfSatisfying(
-                Map.class,
-                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
-        assertThat(renewal.isError()).isFalse();
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START, renewal);
-        assertThat(renewal.structuredContent()).isInstanceOfSatisfying(
-                Map.class,
-                content -> assertThat(content)
-                        .containsEntry("status", "ID_REQUIRED")
-                        .containsEntry("purpose", "RENEW_EXISTING")
-                        .containsEntry("communicationLocale", "en"));
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-        verify(bootstrapCapabilityService, never()).issueCapability(any(), any());
-    }
-
-    @Test
-    void appOnlyIssuerIsSessionlessAndKeepsOpaqueCapabilityOnlyInPrivateResultMetadata() {
-        when(bootstrapCapabilityService.issueCapability(eq(AUTHORIZATION_REFERENCE), any()))
-                .thenReturn(new OpenAiDeBootstrapCapabilityIssueResult(
-                        SETUP_CAPABILITY,
-                        CAPABILITY_EXPIRES_AT,
-                        OpenAiDeV1ContractMetadata.CONTRACT_MAJOR,
-                        OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
-                        1L,
-                        "ALLOW_CURRENT_MAJOR"));
-
-        McpSchema.CallToolResult result = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                Map.of(
-                        "providerNoticeVersion", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
-                        "providerEligibilityConfirmed", true));
-
-        assertThat(result.isError()).isFalse();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys("status", "contractMajor", "providerNoticeVersion")
-                        .containsEntry("status", "CAPABILITY_ISSUED")
-                        .containsEntry("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)
-                        .containsEntry(
-                                "providerNoticeVersion",
-                                OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION));
-        assertThat(result.structuredContent().toString())
-                .doesNotContain(
-                        SETUP_CAPABILITY,
-                        "setupCapability",
-                        "expiresAt",
-                        "policyRevision",
-                        "sourceMajorDecision");
-
-        JsonNode privateMeta = objectMapper.valueToTree(result.meta());
-        assertThat(privateMeta.size()).isEqualTo(1);
-        JsonNode privateStart = privateMeta.at("/skillpilotStart");
-        assertThat(privateStart.size()).isEqualTo(7);
-        assertThat(privateStart.path("schemaVersion").asInt()).isEqualTo(1);
-        assertThat(privateStart.path("setupCapability").asText()).isEqualTo(SETUP_CAPABILITY);
-        assertThat(privateStart.path("expiresAt").asText())
-                .isEqualTo(CAPABILITY_EXPIRES_AT.toString());
-        assertThat(privateStart.path("contractMajor").asInt())
-                .isEqualTo(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
-        assertThat(privateStart.path("policyRevision").asLong()).isEqualTo(1L);
-        assertThat(privateStart.path("providerNoticeVersion").asText())
-                .isEqualTo(OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION);
-        assertThat(privateStart.path("sourceMajorDecision").asText())
-                .isEqualTo("ALLOW_CURRENT_MAJOR");
-        assertThat(result.content().toString())
-                .doesNotContain(
-                        SETUP_CAPABILITY,
-                        AUTHORIZATION_REFERENCE,
-                        LEARNER_ID,
-                        "skillpilotId");
-
-        ArgumentCaptor<OpenAiDeBootstrapCapabilityIssueRequest> requestCaptor =
-                ArgumentCaptor.forClass(OpenAiDeBootstrapCapabilityIssueRequest.class);
-        verify(bootstrapCapabilityService)
-                .issueCapability(eq(AUTHORIZATION_REFERENCE), requestCaptor.capture());
-        assertThat(requestCaptor.getValue())
-                .satisfies(request -> {
-                    assertThat(request.providerNoticeVersion())
-                            .isEqualTo(OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION);
-                    assertThat(request.providerEligibilityConfirmed()).isTrue();
-                    assertThat(request.sourceMajorDecision()).isNull();
-                });
-        verify(identityResolver).requireAuthorizationReference(any());
-        verify(identityResolver).requireWriteAccess(any());
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-    }
-
-    @Test
-    void staleIssuerNoticeIsTerminalAndNeverReturnsPrivateCapabilityMetadata() {
-        when(bootstrapCapabilityService.issueCapability(eq(AUTHORIZATION_REFERENCE), any()))
-                .thenThrow(new OpenAiDeBootstrapException(OpenAiDeBootstrapErrorCode.INVALID_REQUEST));
-
-        McpSchema.CallToolResult result = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                Map.of(
-                        "providerNoticeVersion", "stale-provider-notice",
-                        "providerEligibilityConfirmed", true));
-
-        assertThat(result.isError()).isFalse();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys("status", "contractMajor", "fallbackUrl")
-                        .containsEntry("status", "NOTICE_REFRESH_REQUIRED")
-                        .containsEntry("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)
-                        .containsEntry("fallbackUrl", "https://skillpilot.com/"));
-        assertThat(result.meta()).isNullOrEmpty();
-        assertThat(result.toString())
-                .doesNotContain(
-                        "setupCapability",
-                        "spc_",
-                        AUTHORIZATION_REFERENCE,
-                        LEARNER_ID,
-                        "skillpilotId");
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-        verify(bootstrapCapabilityService, never()).issueCapability(any(), any());
-    }
-
-    @Test
-    void unavailableIssuerPolicyIsTerminalAndNeverReturnsPrivateCapabilityMetadata() {
-        when(bootstrapCapabilityService.issueCapability(eq(AUTHORIZATION_REFERENCE), any()))
-                .thenThrow(new OpenAiDeBootstrapException(OpenAiDeBootstrapErrorCode.POLICY_UNAVAILABLE));
-
-        McpSchema.CallToolResult result = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                Map.of(
-                        "providerNoticeVersion", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
-                        "providerEligibilityConfirmed", true));
-
-        assertThat(result.isError()).isFalse();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys("status", "contractMajor", "fallbackUrl")
-                        .containsEntry("status", "TEMPORARILY_UNAVAILABLE")
-                        .containsEntry("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)
-                        .containsEntry("fallbackUrl", "https://skillpilot.com/"));
-        assertThat(result.meta()).isNullOrEmpty();
-        assertThat(result.toString())
-                .doesNotContain(
-                        "setupCapability",
-                        "spc_",
-                        AUTHORIZATION_REFERENCE,
-                        LEARNER_ID,
-                        "skillpilotId");
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-        verify(bootstrapCapabilityService).issueCapability(eq(AUTHORIZATION_REFERENCE), any());
-    }
-
-    @Test
-    void issuerRateLimitReturnsTemporaryUnavailabilityWithoutPrivateCapabilityMetadata() {
-        when(bootstrapCapabilityService.issueCapability(eq(AUTHORIZATION_REFERENCE), any()))
-                .thenThrow(new OpenAiDeBootstrapException(OpenAiDeBootstrapErrorCode.RATE_LIMITED));
-
-        McpSchema.CallToolResult result = callWithoutLearningSession(
-                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
-                Map.of(
-                        "providerNoticeVersion",
-                        OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION,
-                        "providerEligibilityConfirmed",
-                        true));
-
-        assertThat(result.isError()).isFalse();
-        assertThat(result.structuredContent())
-                .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys("status", "contractMajor", "fallbackUrl")
-                        .containsEntry("status", "TEMPORARILY_UNAVAILABLE")
-                        .containsEntry("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR)
-                        .containsEntry("fallbackUrl", "https://skillpilot.com/"));
-        assertThat(result.meta()).isNullOrEmpty();
-        assertThat(result.toString())
-                .doesNotContain(
-                        "setupCapability",
-                        "spc_",
-                        AUTHORIZATION_REFERENCE,
-                        LEARNER_ID,
-                        "skillpilotId");
-        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
-        verify(bootstrapCapabilityService).issueCapability(eq(AUTHORIZATION_REFERENCE), any());
-    }
-
-    @Test
-    void publishesActiveStartGoalVisualizationAllRetainedAndDedicatedMemoryPracticeResources() {
+    void publishesActiveGoalVisualizationAllRetainedStartAndDedicatedMemoryPracticeResources() {
         assertThat(OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S)
                 .containsExactlyElementsOf(HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S);
         assertThat(OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S)
                 .containsExactlyElementsOf(HISTORICAL_SKILLPILOT_START_ARTIFACT_SHA256S);
         List<String> expectedResourceUris = Stream.of(
                         Stream.of(
-                                OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                                 OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                                 LEGACY_GOAL_VISUALIZATION_RESOURCE_URI),
@@ -807,6 +420,19 @@ class OpenAiDeCoachMcpContractTest {
             assertThat(resource.meta().get("openai/widgetPrefersBorder"))
                     .isEqualTo(prefersBorder);
             if (skillpilotStart) {
+                assertThat(resource.title())
+                        .isEqualTo("Retained SkillPilot compatibility resource");
+                assertThat(resource.description())
+                        .isEqualTo("Previously advertised immutable UI resource retained only for metadata-cache "
+                                + "compatibility. It is not bound to an active tool.");
+                assertThat(resource.meta().get("openai/widgetDescription"))
+                        .isEqualTo("Historical SkillPilot UI resource retained only for provider cache "
+                                + "compatibility; no active start flow is available through this resource.");
+                assertThat(resource.toString())
+                        .doesNotContain(
+                                "Start SkillPilot Coach",
+                                "Private direct-start component",
+                                "Private SkillPilot direct start");
                 assertThat(resource.meta().get("openai/widgetCSP"))
                         .isEqualTo(Map.of(
                                 "connect_domains", List.of(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN),
@@ -881,19 +507,6 @@ class OpenAiDeCoachMcpContractTest {
                         .tags(
                                 "artifact",
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256
-                                        .substring(0, 12),
-                                "role",
-                                "active",
-                                "status",
-                                "success")
-                        .timer()
-                        .count())
-                .isEqualTo(1);
-        assertThat(meterRegistry
-                        .get(OpenAiDeMcpTelemetry.RESOURCE_READ_DURATION_METRIC)
-                        .tags(
-                                "artifact",
-                                OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256
                                         .substring(0, 12),
                                 "role",
                                 "active",
@@ -1002,13 +615,11 @@ class OpenAiDeCoachMcpContractTest {
 
         assertThat(bootstrap.title()).isEqualTo("Start or continue the SkillPilot learning coach");
         assertThat(bootstrap.description())
-                .contains("Always use this tool first")
-                .contains("SkillPilot Coach v1")
-                .contains("learn, practise, start, continue, or resume")
-                .contains("stored learning state")
-                .contains("authoritative personal SkillPilot state")
-                .contains("generic advice")
-                .contains("self-created curriculum")
+                .contains("Required before every learner-facing SkillPilot coaching response")
+                .contains("one-hour remaining-lifetime guard")
+                .contains("authoritative configured learning context")
+                .contains("Only a successful result permits subject-matter SkillPilot communication")
+                .contains("generic advice", "self-created curriculum", "invented goals")
                 .contains("unrelated to SkillPilot");
         assertThat(bootstrap.inputSchema())
                 .containsEntry("type", "object")
@@ -1023,7 +634,8 @@ class OpenAiDeCoachMcpContractTest {
                 .doesNotContain(OpenAiDeV1McpContractAdapter.WRITE_SCOPE);
         assertThat(contract.toolSpecifications().stream()
                         .filter(specification -> specification.tool().description() != null
-                                && specification.tool().description().contains("Always use this tool first")))
+                                && specification.tool().description().contains(
+                                        "Required before every learner-facing SkillPilot coaching response")))
                 .singleElement()
                 .extracting(specification -> specification.tool().name())
                 .isEqualTo(OpenAiDeV1McpContractAdapter.GET_CONTEXT);
@@ -1039,13 +651,6 @@ class OpenAiDeCoachMcpContractTest {
                 // are part of the V1 contract. All remaining model-facing strings stay
                 // free of technical validators.
                 properties.remove(OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID);
-            }
-            if (OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION.equals(specification.tool().name())
-                    && inputSchema.path("properties") instanceof ObjectNode properties) {
-                // The two private direct-start references have an explicit runtime-
-                // aligned size boundary. Other model-facing strings remain unbounded.
-                properties.remove("optionId");
-                properties.remove("rewindId");
             }
             String inputSchemaJson = objectMapper.writeValueAsString(inputSchema);
 
@@ -1068,18 +673,10 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void contextOutputSchemaPublishesOrientationAndOrderedOpenQuestions() {
+    void contextOutputSchemaKeepsLearningStateAndOmitsWebGuiOwnedSetupState() {
         JsonNode contextSchema =
                 objectMapper.valueToTree(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
 
-        assertThat(contextSchema.at("/properties/orientation/type").asText())
-                .isEqualTo("object");
-        assertThat(contextSchema.at("/properties/orientation/properties/establishedContext/type").asText())
-                .isEqualTo("string");
-        assertThat(contextSchema.at("/properties/orientation/properties/openQuestions/type").asText())
-                .isEqualTo("array");
-        assertThat(contextSchema.at("/properties/orientation/properties/openQuestions/items/type").asText())
-                .isEqualTo("object");
         assertThat(contextSchema.at("/properties/orientationOutlook/type").asText())
                 .isEqualTo("object");
         assertThat(contextSchema.at("/properties/orientationOutlook/properties/paths/minItems").asInt())
@@ -1094,21 +691,6 @@ class OpenAiDeCoachMcpContractTest {
                         .at("/properties/orientationOutlook/properties/paths/items/properties/representativeGoalTitles/maxItems")
                         .asInt())
                 .isEqualTo(4);
-        assertThat(contextSchema
-                        .at("/properties/orientation/properties/openQuestions/items/properties/topic/type")
-                        .asText())
-                .isEqualTo("string");
-        assertThat(contextSchema
-                        .at("/properties/orientation/properties/openQuestions/items/properties/question/type")
-                        .asText())
-                .isEqualTo("string");
-        JsonNode required = contextSchema
-                .at("/properties/orientation/properties/openQuestions/items/required");
-        assertThat(required.isArray()).isTrue();
-        assertThat(java.util.stream.StreamSupport.stream(required.spliterator(), false)
-                        .map(JsonNode::asText)
-                        .toList())
-                .containsExactly("topic", "question");
         assertThat(contextSchema.at("/properties/goalVisualization/type").asText())
                 .isEqualTo("object");
         assertThat(contextSchema.at("/properties/goalVisualization/properties/imageUrl/type").asText())
@@ -1119,74 +701,21 @@ class OpenAiDeCoachMcpContractTest {
                 .isEqualTo("string");
         assertThat(contextSchema.at("/properties/frontier/items/properties/semanticKind/type").asText())
                 .isEqualTo("string");
-        assertThat(contextSchema.at("/properties/personalizationHistory/type").asText())
-                .isEqualTo("object");
-        assertThat(contextSchema.at("/properties/personalizationHistory/properties/schemaVersion/minimum").asInt())
-                .isEqualTo(1);
-        assertThat(contextSchema.at("/properties/personalizationHistory/properties/schemaVersion/maximum").asInt())
-                .isEqualTo(1);
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/completedDecisions/maxItems")
-                        .asInt())
-                .isEqualTo(64);
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/completedDecisions/items/additionalProperties")
-                        .asBoolean())
-                .isFalse();
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/completedDecisions/items/properties/selectedLabels/maxItems")
-                        .asInt())
-                .isEqualTo(32);
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/completedDecisions/items/properties/selectedLabels/items/maxLength")
-                        .asInt())
-                .isEqualTo(320);
-        assertThat(java.util.stream.StreamSupport.stream(contextSchema
-                                .at("/properties/personalizationHistory/properties/currentDecision/required")
-                                .spliterator(), false)
-                        .map(JsonNode::asText)
-                        .toList())
-                .contains("rewindId");
-        assertThat(java.util.stream.StreamSupport.stream(contextSchema
-                                .at("/properties/personalizationHistory/properties/completedDecisions/items/required")
-                                .spliterator(), false)
-                        .map(JsonNode::asText)
-                        .toList())
-                .contains("rewindId");
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/preservedDecisions/items/properties")
-                        .has("rewindId"))
-                .isFalse();
-        assertThat(contextSchema
-                        .at("/properties/personalizationHistory/properties/preservedDecisions/items/additionalProperties")
-                        .asBoolean())
-                .isFalse();
+
+        JsonNode properties = contextSchema.path("properties");
+        assertThat(properties.has("orientation")).isFalse();
+        assertThat(properties.has("curriculumCatalog")).isFalse();
+        assertThat(properties.has("personalizationHistory")).isFalse();
+        assertThat(properties.has("decision")).isFalse();
+        assertThat(properties.has("presentationAction")).isFalse();
+        assertThat(contextSchema.at("/required").valueStream().map(JsonNode::asText).toList())
+                .doesNotContain(
+                        "orientation",
+                        "curriculumCatalog",
+                        "personalizationHistory",
+                        "decision",
+                        "presentationAction");
     }
-
-    @Test
-    void personalizationInputSchemaRetainsExclusiveOptionOrRewindBranchesAfterSessionWrapping() {
-        JsonNode schema = objectMapper.valueToTree(
-                spec(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION).tool().inputSchema());
-
-        assertThat(schema.path("additionalProperties").asBoolean()).isFalse();
-        assertThat(schema.at("/properties/optionId/type").asText()).isEqualTo("string");
-        assertThat(schema.at("/properties/rewindId/type").asText()).isEqualTo("string");
-        assertThat(schema.at("/properties/optionId/minLength").asInt()).isEqualTo(1);
-        assertThat(schema.at("/properties/optionId/maxLength").asInt()).isEqualTo(500);
-        assertThat(schema.at("/properties/rewindId/minLength").asInt()).isEqualTo(1);
-        assertThat(schema.at("/properties/rewindId/maxLength").asInt()).isEqualTo(500);
-        assertThat(java.util.stream.StreamSupport.stream(schema.path("required").spliterator(), false)
-                        .map(JsonNode::asText)
-                        .toList())
-                .containsExactly(
-                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
-                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
-                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID);
-        assertThat(schema.path("oneOf")).hasSize(2);
-        assertThat(schema.at("/oneOf/0/required/0").asText()).isEqualTo("optionId");
-        assertThat(schema.at("/oneOf/1/required/0").asText()).isEqualTo("rewindId");
-    }
-
     @Test
     void dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization() {
         UnifiedLearnerStateResponse state = visualizationState();
@@ -1404,91 +933,39 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void setupContextAddsClosedCurriculumCatalogWithoutChangingPublishedOptions() {
+    void unconfiguredWebGuiContextFailsClosedWithoutPublishingSetupChoices() {
         LandscapeSummary canonicalSchool = curriculumSummary(
                 OpenAiDeCurriculumOptionFacets.CANONICAL_GYMNASIUM_ROOT_ID,
                 "Gymnasium (DE)",
                 "Other",
                 false,
                 false);
-        LandscapeSummary university = curriculumSummary(
-                "university-red",
-                "Bachelor Mathematik (TUM)",
-                "Other",
-                false,
-                false);
-        LandscapeSummary language = curriculumSummary(
-                "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
-                "Sprache (CEFR)",
-                "CEFR",
-                false,
-                false);
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(curriculumSetupState(
-                List.of(canonicalSchool, university, language)));
+        when(coachTools.getLearnerState(LEARNER_ID))
+                .thenReturn(curriculumSetupState(List.of(canonicalSchool)));
 
         McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
 
-        assertThat(result.isError()).isFalse();
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
-        JsonNode context = objectMapper.valueToTree(result.structuredContent());
-        assertThat(context.path("requiredAction").asText()).isEqualTo("setCurriculum");
-        assertThat(context.at("/curriculumCatalog/schemaVersion").asInt()).isEqualTo(1);
-        assertThat(context.path("options"))
-                .extracting(option -> option.path("id").asText())
-                .containsExactly(
-                        canonicalSchool.getCurriculumId(),
-                        university.getCurriculumId(),
-                        language.getCurriculumId());
-        assertThat(context.at("/curriculumCatalog/entries"))
-                .extracting(entry -> entry.path("optionId").asText())
-                .containsExactly(
-                        canonicalSchool.getCurriculumId(),
-                        university.getCurriculumId(),
-                        language.getCurriculumId());
-        assertThat(context.at("/curriculumCatalog/entries/0/category").asText()).isEqualTo("SCHOOL");
-        assertThat(context.at("/curriculumCatalog/entries/0/qualityStatus").asText()).isEqualTo("green");
-        assertThat(context.at("/curriculumCatalog/entries/0/sortRank").asInt()).isZero();
-        assertThat(context.at("/curriculumCatalog/entries/1/category").asText()).isEqualTo("UNI");
-        assertThat(context.at("/curriculumCatalog/entries/1/qualityStatus").asText()).isEqualTo("red");
-        assertThat(context.at("/curriculumCatalog/entries/1/sortRank").asInt()).isEqualTo(1);
-        assertThat(context.at("/curriculumCatalog/entries/2/category").asText()).isEqualTo("OTHER");
-        assertThat(context.at("/curriculumCatalog/entries/2/qualityStatus").asText()).isEqualTo("orange");
-        assertThat(context.at("/curriculumCatalog/entries/2/sortRank").asInt()).isEqualTo(1);
-        assertThat(context.path("options")).allSatisfy(option -> {
-            assertThat(option.has("curriculumCatalog")).isFalse();
-            assertThat(option.has("category")).isFalse();
-            assertThat(option.has("qualityStatus")).isFalse();
-            assertThat(option.has("sortRank")).isFalse();
-        });
-
-        JsonNode schema = objectMapper.valueToTree(
-                spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema());
-        assertThat(schema.at("/properties/curriculumCatalog/additionalProperties").asBoolean())
-                .isFalse();
-        assertThat(schema.at("/properties/curriculumCatalog/required"))
-                .containsExactly(
-                        objectMapper.valueToTree("schemaVersion"),
-                        objectMapper.valueToTree("entries"));
-        assertThat(schema.at("/properties/curriculumCatalog/properties/schemaVersion/minimum").asInt())
-                .isEqualTo(1);
-        assertThat(schema.at("/properties/curriculumCatalog/properties/schemaVersion/maximum").asInt())
-                .isEqualTo(1);
-        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/category/enum"))
-                .containsExactly(
-                        objectMapper.valueToTree("SCHOOL"),
-                        objectMapper.valueToTree("UNI"),
-                        objectMapper.valueToTree("OTHER"));
-        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/qualityStatus/enum"))
-                .containsExactly(
-                        objectMapper.valueToTree("green"),
-                        objectMapper.valueToTree("orange"),
-                        objectMapper.valueToTree("red"));
-        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/sortRank/minimum").asInt())
-                .isZero();
-        assertThat(schema.at("/properties/curriculumCatalog/properties/entries/items/properties/sortRank/maximum").asInt())
-                .isEqualTo(2);
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "SESSION_REQUIRED")
+                .containsEntry("configurationRequired", true)
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsEntry("communicationLocale", "de")
+                .containsKey("instruction")
+                .doesNotContainKeys(
+                        "instructions",
+                        "options",
+                        "curriculumCatalog",
+                        "decision",
+                        "personalizationHistory",
+                        "recoveryTool",
+                        "purpose"));
+        assertThat(result.content().toString())
+                .contains("SkillPilot-WebGUI", "Lernen starten", "neuen Chat")
+                .doesNotContain(canonicalSchool.getCurriculumId());
+        verify(coachTools, never()).getPersonalizationPlan(any());
     }
-
     @Test
     void releasedExamSummariesRemainSelectableWithoutExposingProtectedExamContent() throws Exception {
         FrontierGoal examFolder = clusterGoal(
@@ -1602,12 +1079,13 @@ class OpenAiDeCoachMcpContractTest {
     @Test
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
-                .contains("call " + OpenAiDeV1McpContractAdapter.GET_CONTEXT + " before the first subject-matter response")
+                .contains("Before every learner-facing SkillPilot coaching response, call "
+                        + OpenAiDeV1McpContractAdapter.GET_CONTEXT)
+                .contains("Only a successful fresh context permits subject-matter communication")
                 .contains("A successful mastery result is the one ordering exception")
                 .contains("first give both learner-facing texts from completionHandoff")
                 .contains("only then begin the already activated successor")
                 .contains("Never call get_skillpilot_navigation or set_skillpilot_active_goal")
-                .contains("generic curriculum overview")
                 .contains("invented learning path")
                 .contains("Assess meaning rather than wording")
                 .contains("alternative methods")
@@ -1642,11 +1120,12 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("completion marker and never certifies subject mastery")
                 .contains(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                 .contains(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
-                .contains("UI receipt only")
-                .contains("preceding full SkillPilot result as the authority")
-                .contains("immediate next tool call in the same assistant turn")
-                .contains("unchanged goalId and expectedStateVersion")
-                .contains("Never retry it automatically")
+                .contains("only a UI receipt")
+                .contains("never replaces that full context")
+                .contains("goalVisualization and nextAllowedTools permits")
+                .contains("copy the full context's top-level stateVersion unchanged into expectedStateVersion")
+                .contains("immediate next action")
+                .contains("retry it automatically")
                 .contains("before any learner-facing response")
                 .contains("Never infer that the component is unavailable")
                 .contains("only when the start tool actually returns an error")
@@ -1656,14 +1135,17 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("activeGoal.exam.hasImage=true")
                 .contains("activeGoal.cockpitUrl verbatim")
                 .contains("do not invent or describe it")
-                .contains("current conversation language")
-                .contains("en and every en-* locale")
+                .contains("matching fixed sentence from the conversation language")
+                .contains("Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration "
+                        + "ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen "
+                        + "Chat.")
+                .contains("Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, "
+                        + "and use the prepared start message in a new chat.")
+                .contains("only when no session locale exists the conversation language")
+                .contains("server-owned startUrl and instruction unchanged")
+                .contains("Do not translate or invent technical recovery")
+                .contains("prepared message in a new chat")
                 .contains("reload exactly once");
-
-        assertThat(spec(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START).tool().description())
-                .contains("communicationLocale from the current conversation language")
-                .contains("en or en-* to en")
-                .contains("every other locale to de");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
                 .contains("interactionMode=orientation")
@@ -1680,11 +1162,11 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("For ordinary content goals, call only after two independent");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION).tool().description())
-                .contains("immediate next tool call")
-                .contains("same goalId")
-                .contains(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)
-                .contains("newer successful SkillPilot result")
-                .contains("Do not retry automatically");
+                .contains("goalVisualization with the same goalId")
+                .contains("nextAllowedTools permits this tool")
+                .contains("top-level stateVersion unchanged into expectedStateVersion")
+                .contains("newer SkillPilot result")
+                .contains("automatic retry");
 
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10,
@@ -2646,49 +2128,6 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void navigationUsesFacadeCatalogAndSafeProjectionInsteadOfInventingOptions() {
-        LandscapeSummary curriculum = new LandscapeSummary(
-                "curriculum-2",
-                "Mathematik Hessen",
-                "Gymnasiale Oberstufe",
-                "DE",
-                "HE",
-                "school",
-                "Mathematik",
-                "de",
-                List.of());
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
-        when(coachTools.getCurriculumOptions(LEARNER_ID)).thenReturn(List.of(curriculum));
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
-                Map.of("target", "curriculum"));
-        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
-                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
-
-        assertThat(navigation.requiredAction()).isEqualTo("setCurriculum");
-        assertThat(navigation.curriculum()).isEqualTo(new OpenAiDeCoachContext.Curriculum(
-                "curriculum-public-id",
-                "Mathematik Oberstufe Hessen",
-                "Mathematik"));
-        assertThat(navigation.options()).singleElement().satisfies(option -> {
-            assertThat(option.id()).isEqualTo("curriculum-2");
-            assertThat(option.label()).isEqualTo("Mathematik Hessen");
-        });
-        assertThat(navigation.curriculumCatalog()).isNotNull();
-        assertThat(navigation.curriculumCatalog().entries())
-                .singleElement()
-                .satisfies(entry -> assertThat(entry.optionId()).isEqualTo("curriculum-2"));
-        assertThat(navigation.curriculumCatalog().entries())
-                .extracting(OpenAiDeCoachContext.CurriculumCatalogEntry::optionId)
-                .containsExactlyElementsOf(navigation.options().stream()
-                        .map(OpenAiDeCoachContext.Option::id)
-                        .toList());
-        verify(coachTools).getCurriculumOptions(LEARNER_ID);
-    }
-
-    @Test
     void goalNavigationWithoutExplicitRedirectKeepsTheActiveSuccessorAndPublishesNoChoices() {
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
 
@@ -2875,332 +2314,6 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void curriculumMutationForwardsExactIdToTheSharedPublicCatalogGuard() {
-        UnifiedLearnerStateResponse state = normalState("setPersonalization");
-        when(coachTools.setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class)))
-                .thenReturn(state);
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
-                Map.of("curriculumId", "curriculum-current"));
-
-        assertThat(result.isError()).isFalse();
-        ArgumentCaptor<UpdateCurriculumRequest> request =
-                ArgumentCaptor.forClass(UpdateCurriculumRequest.class);
-        verify(coachTools).setCurriculum(eq(LEARNER_ID), request.capture());
-        assertThat(request.getValue().getCurriculumId()).isEqualTo("curriculum-current");
-    }
-
-    @Test
-    void curriculumMapsAStalePublicCatalogSelectionToReloadableConflict() {
-        when(coachTools.setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class)))
-                .thenThrow(new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "curriculum is no longer in the public catalog"));
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_CURRICULUM,
-                Map.of("curriculumId", "known-landscape-not-currently-offered"));
-
-        assertThat(result.isError()).isTrue();
-        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
-                .containsEntry("status", "conflict")
-                .containsEntry("stateChanged", false)
-                .containsEntry("reloadContextAtMostOnce", true));
-        verify(coachTools).setCurriculum(eq(LEARNER_ID), any(UpdateCurriculumRequest.class));
-    }
-
-    @Test
-    void personalizationNavigationPublishesQuestionAndCardinalityWithoutTechnicalDecisionIds() throws Exception {
-        UnifiedLearnerStateResponse state = personalizationState();
-        PersonalizationPlan plan = PersonalizationPlan.selection(
-                "stage-internal-11",
-                "Synthetic stage",
-                "group-internal-23",
-                "Which pathways fit?",
-                "instance-internal-37",
-                1,
-                3,
-                1,
-                List.of(
-                        new PersonalizationPlan.Option(
-                                "po-route-amber",
-                                "stage-internal-11",
-                                "group-internal-23",
-                                "instance-internal-37",
-                                state.curriculum().getCurriculumId(),
-                                state.curriculum().getTitle(),
-                                "route-amber",
-                                "Route Amber"),
-                        new PersonalizationPlan.Option(
-                                "po-finish-pathways",
-                                "stage-internal-11",
-                                "group-internal-23",
-                                "instance-internal-37",
-                                null,
-                                null,
-                                null,
-                                null,
-                                PersonalizationPlan.OptionKind.COMPLETE_GROUP)),
-                List.of());
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
-                Map.of("target", "personalization"));
-        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
-                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
-
-        assertThat(navigation.decision()).isEqualTo(new OpenAiDeCoachContext.Decision(
-                "Synthetic stage",
-                "Which pathways fit?",
-                1,
-                3,
-                1));
-        assertThat(navigation.options()).extracting(OpenAiDeCoachContext.Option::id)
-                .containsExactly("po-route-amber", "po-finish-pathways");
-        assertThat(navigation.instruction())
-                .contains(
-                        "Which pathways fit?",
-                        "Mindestens 1 und höchstens 3",
-                        "bisher ausgewählt: 1",
-                        "Minimum ist erfüllt")
-                .doesNotContain(
-                        "stage-internal-11",
-                        "group-internal-23",
-                        "instance-internal-37");
-
-        JsonNode decision = objectMapper.valueToTree(navigation).path("decision");
-        assertThat(decision.has("stageId")).isFalse();
-        assertThat(decision.has("groupId")).isFalse();
-        assertThat(decision.has("groupInstanceId")).isFalse();
-    }
-
-    @Test
-    void personalizationForwardsTheExactOpaqueOptionIdWithoutReconstructingItsVisibleLabel() {
-        UnifiedLearnerStateResponse state = personalizationState();
-        PersonalizationPlan plan = new PersonalizationPlan(
-                PersonalizationPlan.Stage.SELECTION,
-                List.of(new PersonalizationPlan.Option(
-                        "po-hessen",
-                        "jurisdiction",
-                        "jurisdiction",
-                        "jurisdiction:curriculum-public-id",
-                        "curriculum-public-id",
-                        "Gymnasium (DE)",
-                        "DE-HE",
-                        "Hessen")),
-                List.of());
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
-        when(coachTools.setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class)))
-                .thenReturn(state);
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("optionId", "po-hessen"));
-
-        assertThat(result.isError()).isFalse();
-        ArgumentCaptor<PersonalizationRequest> request =
-                ArgumentCaptor.forClass(PersonalizationRequest.class);
-        verify(coachTools).setPersonalization(eq(LEARNER_ID), request.capture());
-        assertThat(request.getValue().goalIds()).isEmpty();
-        assertThat(request.getValue().filters()).isEmpty();
-        assertThat(request.getValue().config()).isEmpty();
-        assertThat(request.getValue().optionId()).isEqualTo("po-hessen");
-    }
-
-    @Test
-    void contextLoadsPersonalizationHistoryAfterSetupHasAdvancedBeyondPersonalization() {
-        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
-        PersonalizationPlan.Option selected = new PersonalizationPlan.Option(
-                "po-private",
-                "stage-private",
-                "group-private",
-                "instance-private",
-                state.curriculum().getCurriculumId(),
-                state.curriculum().getTitle(),
-                "profile-private",
-                "Leistungskurs");
-        PersonalizationPlan plan = PersonalizationPlan.complete(
-                List.of(selected),
-                List.of(new PersonalizationPlan.CompletedDecision(
-                        "rewind-opaque",
-                        "stage-private",
-                        "Schulprofil",
-                        "group-private",
-                        "Kursprofil",
-                        "instance-private",
-                        List.of(selected))));
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
-
-        McpSchema.CallToolResult result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
-        OpenAiDeCoachContext context = structured(result, OpenAiDeCoachContext.class);
-
-        assertThat(context.requiredAction()).isEqualTo("teachActiveGoal");
-        assertThat(context.personalizationHistory()).isNotNull();
-        assertThat(context.personalizationHistory().completedDecisions())
-                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
-                        "rewind-opaque",
-                        "Schulprofil",
-                        "Kursprofil",
-                        List.of("Leistungskurs")));
-        verify(coachTools).getPersonalizationPlan(LEARNER_ID);
-    }
-
-    @Test
-    void contextUsesOnlyAuthoritativeEnglishPersonalizationHistoryLabelsForEnglishSessions() {
-        sessionCommunicationLocale = "en";
-        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
-        PersonalizationPlan.Option selected = new PersonalizationPlan.Option(
-                "po-private",
-                "stage-private",
-                "group-private",
-                "instance-private",
-                state.curriculum().getCurriculumId(),
-                "Deutsches Fach",
-                "profile-private",
-                "Leistungskurs",
-                null,
-                null,
-                null,
-                PersonalizationPlan.OptionKind.VALUE,
-                "English subject",
-                "Advanced course",
-                null);
-        PersonalizationPlan plan = PersonalizationPlan.complete(
-                List.of(selected),
-                List.of(new PersonalizationPlan.CompletedDecision(
-                        "rewind-opaque",
-                        "stage-private",
-                        "Fachwahl",
-                        "group-private",
-                        "Welches Profil?",
-                        "instance-private",
-                        List.of(selected),
-                        "Choose subject",
-                        "Which profile?")));
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
-
-        OpenAiDeCoachContext context = structured(
-                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of()),
-                OpenAiDeCoachContext.class);
-
-        assertThat(context.personalizationHistory().completedDecisions())
-                .containsExactly(new OpenAiDeCoachContext.PersonalizationDecision(
-                        "rewind-opaque",
-                        "Choose subject",
-                        "Which profile?",
-                        List.of("Advanced course")));
-    }
-
-    @Test
-    void personalizationRewindForwardsTheExactOpaqueReferenceAfterSetup() {
-        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
-        when(coachTools.rewindPersonalization(LEARNER_ID, "rewind-opaque"))
-                .thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID))
-                .thenReturn(PersonalizationPlan.complete(List.of()));
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("rewindId", "rewind-opaque"));
-
-        assertThat(result.isError()).isFalse();
-        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION, result);
-        verify(coachTools).rewindPersonalization(LEARNER_ID, "rewind-opaque");
-        verify(coachTools, never()).setPersonalization(any(), any());
-    }
-
-    @Test
-    void personalizationReferenceRuntimeAccepts500CharactersAndRejectsBlankOr501() {
-        String atLimit = "r".repeat(500);
-        UnifiedLearnerStateResponse state = normalState("teachActiveGoal");
-        when(coachTools.rewindPersonalization(LEARNER_ID, atLimit)).thenReturn(state);
-        when(coachTools.getPersonalizationPlan(LEARNER_ID))
-                .thenReturn(PersonalizationPlan.complete(List.of()));
-
-        McpSchema.CallToolResult accepted = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("rewindId", atLimit));
-        McpSchema.CallToolResult blank = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("rewindId", "   "));
-        McpSchema.CallToolResult aboveLimit = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("rewindId", "r".repeat(501)));
-
-        assertThat(accepted.isError()).isFalse();
-        assertThat(List.of(blank, aboveLimit)).allSatisfy(result -> {
-            assertThat(result.isError()).isTrue();
-            assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
-                    .containsEntry("code", "INVALID_INPUT")
-                    .containsEntry("stateChanged", false));
-        });
-        verify(coachTools).rewindPersonalization(LEARNER_ID, atLimit);
-        verify(coachTools, never()).rewindPersonalization(LEARNER_ID, "r".repeat(501));
-    }
-
-    @Test
-    void personalizationRejectsMissingOrAmbiguousExclusiveReferenceWithoutMutation() {
-        McpSchema.CallToolResult missing = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of());
-        McpSchema.CallToolResult ambiguous = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of("optionId", "po-opaque", "rewindId", "rewind-opaque"));
-
-        assertThat(List.of(missing, ambiguous)).allSatisfy(result -> {
-            assertThat(result.isError()).isTrue();
-            assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
-                    .containsEntry("code", "INVALID_INPUT")
-                    .containsEntry("stateChanged", false));
-        });
-        verify(coachTools, never()).setPersonalization(any(), any());
-        verify(coachTools, never()).rewindPersonalization(any(), any());
-    }
-
-    @Test
-    void personalizationRejectsUnknownReferencesWithoutMutation() {
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(personalizationState());
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of(
-                        "goalIds", List.of(),
-                        "filterIds", List.of("Atlantis")));
-
-        assertThat(result.isError()).isTrue();
-        assertThat(result.content().toString()).contains("ungültig");
-        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
-                .containsEntry("code", "INVALID_INPUT")
-                .containsEntry("category", "input")
-                .containsEntry("retryable", false)
-                .containsEntry("stateChanged", false)
-                .containsEntry("stateVersion", 1L));
-        verify(coachTools, never()).setPersonalization(any(), any());
-    }
-
-    @Test
-    void personalizationRejectsSeveralMutuallyExclusiveOptionsWithoutMutation() {
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(personalizationState());
-
-        McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION,
-                Map.of(
-                        "goalIds", List.of(),
-                        "filterIds", List.of("Hessen", "Bayern")));
-
-        assertThat(result.isError()).isTrue();
-        assertThat(result.content().toString()).contains("ungültig");
-        verify(coachTools, never()).setPersonalization(any(), any());
-    }
-
-    @Test
     void expiredLearningSessionReturnsSessionRequiredWithoutAnOauthChallenge() {
         when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenThrow(new OpenAiDeLearningSessionRequiredException());
@@ -3215,11 +2328,20 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("stateChanged", false)
                 .containsEntry("oauthConnectionValid", true)
                 .containsEntry("startUrl", "https://skillpilot.test")
-                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
-                .doesNotContainKey("recoveryCommunicationLocale"));
+                .containsKey("instructions")
+                .doesNotContainKeys(
+                        "recoveryTool",
+                        "recoveryPurpose",
+                        "recoveryCommunicationLocale",
+                        "purpose"));
+        JsonNode instructions = objectMapper.valueToTree(result.structuredContent()).at("/instructions");
+        assertThat(instructions.path("de").asText())
+                .contains("SkillPilot", "Lernen starten", "neuen Chat");
+        assertThat(instructions.path("en").asText())
+                .contains("SkillPilot", "Start learning", "new chat");
+        assertThat(instructions.size()).isEqualTo(2);
         assertThat(result.content().toString())
-                .contains("private SkillPilot start surface", "same-chat handoff")
+                .contains("SkillPilot-Lernsession", "SkillPilot learning session", "neuen Chat", "new chat")
                 .doesNotContain(LEARNER_ID, CONNECTION_SECRET, CHALLENGE);
         verify(coachTools, never()).getLearnerState(any());
         assertThat(operationalEvents("session_required")).isEqualTo(1);
@@ -3258,17 +2380,20 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("workflowVersion", "coach@1.0")
                 .containsEntry("curriculumRevision", "curricula-tree@published")
                 .containsEntry("startUrl", "https://skillpilot.test")
-                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
-                .containsEntry("recoveryCommunicationLocale", "de")
-                .containsEntry("communicationLocale", "de-DE"));
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("communicationLocale", "de-DE")
+                .doesNotContainKeys(
+                        "recoveryTool",
+                        "recoveryPurpose",
+                        "recoveryCommunicationLocale",
+                        "purpose"));
         assertThat(result.content().toString())
-                .contains("private SkillPilot-Startoberfläche", "selben Chat")
+                .contains("SkillPilot", "Lernen starten", "neuen Chat", "OAuth-Verbindung bleibt aktiv")
                 .doesNotContain("private unavailable revision detail", LEARNER_ID);
     }
 
     @Test
-    void expiringSessionReturnsLocalizedComponentFirstRenewalWithoutCallingTheFacade() {
+    void expiringSessionReturnsLocalizedWebGuiRenewalWithoutCallingTheFacade() {
         OpenAiDeV1SessionMetadata germanMetadata = new OpenAiDeV1SessionMetadata(
                 1,
                 27L,
@@ -3313,24 +2438,28 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("oauthConnectionValid", true)
                 .containsEntry("startUrl", "https://skillpilot.test")
                 .containsEntry("minimumRemainingSeconds", 3600L)
-                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
-                .containsEntry("recoveryCommunicationLocale", "de")
-                .containsEntry("communicationLocale", "de-DE"));
+                .containsEntry("communicationLocale", "de-DE")
+                .doesNotContainKeys(
+                        "recoveryTool",
+                        "recoveryPurpose",
+                        "recoveryCommunicationLocale",
+                        "purpose"));
         assertThat(german.content().toString())
-                .contains("private SkillPilot-Startoberfläche", "selben Chat", "OAuth-Verbindung bleibt aktiv")
+                .contains("SkillPilot", "Lernen starten", "neuen Chat", "OAuth-Verbindung bleibt aktiv")
                 .doesNotContain("private expiry detail", LEARNER_ID, CHALLENGE);
         assertThat(english.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
                 .containsEntry("status", "session_renewal_required")
                 .containsEntry("code", "SESSION_RENEWAL_REQUIRED")
                 .containsEntry("oauthConnectionValid", true)
                 .containsEntry("minimumRemainingSeconds", 3600L)
-                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
-                .containsEntry("recoveryCommunicationLocale", "en")
-                .containsEntry("communicationLocale", "en-GB"));
+                .containsEntry("communicationLocale", "en-GB")
+                .doesNotContainKeys(
+                        "recoveryTool",
+                        "recoveryPurpose",
+                        "recoveryCommunicationLocale",
+                        "purpose"));
         assertThat(english.content().toString())
-                .contains("private SkillPilot start surface", "same chat", "OAuth connection remains active")
+                .contains("SkillPilot", "Start learning", "new chat", "OAuth connection remains active")
                 .doesNotContain("private expiry detail", LEARNER_ID, CHALLENGE);
         verify(coachTools, never()).getLearnerState(any());
         assertThat(operationalEvents("session_renewal_required")).isEqualTo(2);
@@ -3348,13 +2477,21 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
                 .containsEntry("code", "SESSION_REQUIRED")
                 .containsEntry("oauthConnectionValid", true)
-                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
-                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
-                .doesNotContainKey("recoveryCommunicationLocale"));
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsKey("instructions")
+                .doesNotContainKeys(
+                        "recoveryTool",
+                        "recoveryPurpose",
+                        "recoveryCommunicationLocale",
+                        "purpose"));
         assertThat(result.content().toString())
-                .contains("Your SkillPilot learning session is missing or expired")
-                .contains("private SkillPilot start surface", "same-chat handoff")
-                .doesNotContain("Lernsession", "Lernen starten");
+                .contains(
+                        "SkillPilot-Lernsession",
+                        "SkillPilot learning session",
+                        "Lernen starten",
+                        "Start learning",
+                        "neuen Chat",
+                        "new chat");
         verify(identityResolver, never()).resolveSkillpilotId(any(), any());
         verify(coachTools, never()).getLearnerState(any());
     }

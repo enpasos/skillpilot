@@ -113,11 +113,16 @@ For the OpenAI Apps, this specifically means:
   `private_key_jwt` and `none` are closed production profiles;
 - every explicit first-party **Lernen starten** creates a new, high-entropy
   learning session with an absolute lifetime of exactly 24 hours. Its reference
-  is inserted automatically into the prepared start message and must be sent
-  unchanged by every fachlicher tool;
+  is inserted automatically into the prepared start message, opens a new chat,
+  and must be sent unchanged by every fachlicher tool;
+- permanent-ID handling and Level-2 curriculum or personalization configuration
+  happen only in the first-party WebGUI; the V1 model contract exposes no
+  setup mutation for them;
 - model-visible read and write tools require both the authenticated OAuth App
   and that valid session reference, then resolve the learner only through the
   session's backend mapping;
+- `get_skillpilot_context` must succeed in the current assistant turn before
+  every learner-facing coaching response;
 - deterministic choices and answer submissions are invoked directly by the
   widget through app-only tools, rather than depending on the model to copy a
   technical selection value;
@@ -331,9 +336,8 @@ requires all of the following:
    Code plus PKCE S256, exact resource/audience and scopes; DCR, CIMD,
    `private_key_jwt` and `none` remain disabled;
 3. a fresh, high-entropy application learning session for every explicit
-   authorized start: first-party **Lernen starten** or the capability-protected
-   private MCP App direct start; stored only as HMAC/hash and mapped internally
-   to the permanent SkillPilot ID;
+   first-party **Lernen starten**; stored only as HMAC/hash and mapped
+   internally to the permanent SkillPilot ID;
 4. automatic start-message transport of that reference and independent
    validation of OAuth plus session on every fachlicher tool.
 

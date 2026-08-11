@@ -58,7 +58,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
   Normative separation of the fixed confidential OAuth client that authenticates the App and the fresh, automatically transported, absolute 24-hour learning session that addresses the learner.
 - [Direkter SkillPilot-Start aus der OpenAI-MCP-App](runtime-workflows/openai-mcp-app-direct-start-bootstrap.md)
-  Review draft for an additional pre-session bootstrap that keeps OAuth App-to-Core authorization, SkillPilot-ID selection, and the explicit 24-hour learning session strictly separate.
+  Superseded historical revision-2 design retained for auditability; it is not
+  an active architecture, security, implementation, test, or release source.
 - [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
   Security source of truth for `client_secret_basic`, exact callback/resource/scope binding, secret lifecycle, and the independent learner-session boundary.
 - [Wissens- und Verhaltensparität des MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)

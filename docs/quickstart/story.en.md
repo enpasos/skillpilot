@@ -201,7 +201,7 @@ If you have not saved a protected ID file and lose your SkillPilot ID, you canno
 
 ### What Happens If the ChatGPT Session Expires?
 
-The learning coach session in ChatGPT is valid for no more than 24 hours and is not extended by use. If it expires, return to [skillpilot.com](https://skillpilot.com), load your protected ID file or enter your SkillPilot ID there, and start the learning coach again. SkillPilot will create a new temporary session token. Do not enter your permanent SkillPilot ID directly in chat.
+The learning coach session in ChatGPT is valid for no more than 24 hours and is not extended by use. Once less than one hour remains, the coach will not begin another learning action; exactly one hour remains valid. Return to [skillpilot.com](https://skillpilot.com/), load your protected ID file or enter your SkillPilot ID there, check your learning context, and choose **Start learning** again. SkillPilot creates a fresh independent session and opens a new chat. Your OAuth connection may remain valid. Do not enter your permanent SkillPilot ID directly in chat.
 
 ### Can I Switch Between Cockpit and Learning Coach?
 

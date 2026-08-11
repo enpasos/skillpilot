@@ -1,14 +1,14 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 9. August 2026
-**Status:** verbindliches Betriebsverfahren für die mehrsprachige Plugin-Linie V1
+**Stand:** 11. August 2026
+**Status:** verbindliches Betriebsverfahren für die noch unveröffentlichte,
+mehrsprachige Plugin-Linie V1
 
 Dieses Runbook setzt den
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
-operativ um. Es gilt für die zur Veröffentlichung vorgesehene und später
-veröffentlichte Linie `skillpilot-coach-v1`.
+operativ um. Es gilt für `skillpilot-coach-v1`.
 
-## 1. Feste Identität der Linie
+## 1. Feste Identität und V1-Vertrag
 
 | Bestandteil | Verbindlicher Wert |
 | --- | --- |
@@ -16,126 +16,88 @@ veröffentlichte Linie `skillpilot-coach-v1`.
 | Anzeigename | `SkillPilot Coach v1` |
 | aktueller Paketstand | `1.0.0` |
 | Contract Major | `1` |
-| öffentlicher MCP-Endpunkt | `https://mcp-coach-v1.skillpilot.com/mcp` |
-| OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
+| Lifecycle-Policy | `policyRevision=3` |
+| öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
-| MCP-UI | drei aktive, getrennt hashgebundene Ressourcen für privaten Direktstart, Lernzielbild und Karteikartenlernen |
-| Support-URL im OpenAI-Portal | `https://skillpilot.com/imprint` |
+| aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
+| Support-URL | `https://skillpilot.com/imprint` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
-Der noch unveröffentlichte V1-Draft bindet drei aktive, getrennte
-content-addressierte MCP-Apps-Ressourcen: eine für den privaten Direktstart,
-eine für das Bild des aktiven atomaren Lernziels und eine für interaktives
-Karteikartenlernen im Chat. Die read-only Werkzeuge `open_skillpilot_start`,
-`render_skillpilot_goal_visualization` und `start_skillpilot_memory_practice`
-referenzieren jeweils ausschließlich ihre eigene Ressource über
-`ui.resourceUri` und `openai/outputTemplate`. Der app-only Capability-Issuer
-und das app-only Kartenbewertungswerkzeug bleiben ungebunden. Bereits an reale Test-Clients ausgelieferte
-Hash-URIs bleiben mit ihren exakten Bytes als passive Ressourcen lesbar. Der Renderer
-liefert der bild-only Komponente eine begrenzte strukturierte
-`goalVisualization`-Projektion; nacktes MCP-`ImageContent` ist kein
-Sichtbarkeitsvertrag. Die Kartenressource erhält einen begrenzten fälligen
-Kartenstapel nur in privatem Resultat-`_meta`. Umdrehen und Vor-/Zurückblättern
-bleiben lokal; nur `Noch nicht gewusst` oder `Gewusst` schreibt die angezeigte
-Karte atomar über das app-only Werkzeug.
-Coach-, Auswahl- und sonstige Zustandsabläufe bleiben Chat-/Tool-basiert und
-ihre Werkzeuge UI-frei. Der Adapter wertet für die
-Freigabe weder `openai/userAgent` noch eine andere Client-Oberflächenklasse aus.
+Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
+Stage, Subjects, Profile und Personalisierung werden ausschließlich im
+First-Party-WebGUI konfiguriert. **Lernen starten** / **Start learning** erzeugt
+bei jedem Aufruf eine frische opake `learningSessionId` und öffnet einen neuen
+Chat mit der vorbereiteten Startnachricht. OAuth autorisiert die feste App,
+wählt aber keinen Lernenden aus.
 
-Der Startöffner besitzt im unveröffentlichten V1-Vertrag das verpflichtende
-geschlossene Paar `purpose=START|RENEW_EXISTING` und
-`communicationLocale=de|en`. `START` verwendet die aktuelle deutsche oder
-englische Unterhaltungssprache. Die einmalige Same-Chat-Erneuerung nach
-`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
-`SESSION_VERSION_UNAVAILABLE` verwendet `purpose=RENEW_EXISTING` und bevorzugt
-`recoveryCommunicationLocale` aus dem Fehler, sonst die Locale der letzten
-Session. Neue
-sessiongebundene Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt
-eine Stunde ist gültig. Ein gespeicherter Write-Replay mit gleichem Toolnamen,
-kanonisch identischen Argumenten und derselben `clientRequestId` bleibt bei
-einer noch nicht abgelaufenen Session und verfügbarer gepinnter
-Workflow-/Curriculumversion zulässig und führt keine Mutation erneut aus.
-Ein separat gegateter First-Party-Live-Test darf die Laufzeit genau einer über
-`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` erzeugten Session mit
-dem optionalen Feld `diagnosticSessionTtlSeconds` verkürzen. Das Feld ist nur
-bei `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true`, nur für
-`3601..86400` Sekunden und niemals oberhalb der normalen `PT24H`-Laufzeit
-zulässig. Es ist kein MCP-/Component-Vertrag: Der private Bootstrap lehnt es ab
-und bleibt bei `PT24H`; der nächste First-Party-Request ohne Feld ist ebenfalls
-automatisch wieder `PT24H`.
-Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und
-Directory verwenden ausschließlich den dedizierten V1-Origin. Die acht
-neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
-`404`.
+Ohne aktuelle Startnachricht ruft der Coach kein SkillPilot-Werkzeug auf. Er
+gibt nur einen kurzen Hinweis in der Unterhaltungssprache mit dem festen Link
+`https://skillpilot.com/` aus und stoppt. Vor jeder lernendenbezogenen
+Coach-Antwort muss `get_skillpilot_context` im aktuellen Assistant-Turn
+erfolgreich sein. Auf `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
+`SESSION_VERSION_UNAVAILABLE` gibt der Coach `instruction` unverändert aus.
+Fehlt es, verwendet er den exakten Eintrag aus `instructions` für die letzte
+autoritative `communicationLocale`, andernfalls für die aktuelle
+Unterhaltungssprache. Die exakte `startUrl` wird nur ergänzt, wenn sie nicht
+bereits in der Instruktion steht. Es folgen keine Fachantwort, kein Retry der
+alten Session und kein OAuth-Reconnect; die Fortsetzung erfolgt über die
+WebGUI und den dadurch geöffneten neuen Chat.
 
-Diese passive Retention ist keine zweite aktive UI-Version: Kein Werkzeug darf
-auf eine Vorgängerressource zeigen. Sie schützt ausschließlich den späteren
-Template-Abruf aus Provider-Metadaten- und Chat-Snapshots. Nach einem
-Draft-Update werden die Plugin-Metadaten zusätzlich aktualisiert und alle drei
-aktiven URIs in einem neuen Chat geprüft.
+Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 
-Die maschinenlesbaren Quellen der Wahrheit sind:
+- `render_skillpilot_goal_visualization` bindet ausschließlich die aktive
+  bild-only Lernzielressource;
+- `start_skillpilot_memory_practice` bindet ausschließlich die aktive
+  Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
-- `.codex-plugin/plugin.json` für Paket-SemVer und sichtbare Metadaten;
-- `release/line.json` für Contract Major, öffentlichen MCP-Endpunkt und
-  Zustands-/Workflowversionen;
-- `release/lifecycle.json` getrennt für den Supportzustand `CURRENT`,
-  `SUPPORTED`, `DEPRECATED` oder `RETIRED`, den Publikationsstatus `DRAFT`,
-  `PUBLISHED` oder `UNPUBLISHED`, die Startpolicy `ALLOW`, `WARN` oder `BLOCK`
-  sowie die monotone `policyRevision` und einen optionalen Nachfolger;
-  der vollständige CREATE-/In-Component-Direktstart verlangt Revision `2` und
-  den unveränderlichen Providerhinweis `openai-provider-eligibility-v2`;
-- `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich
-  für tatsächlich im OpenAI-Portal veröffentlichte Versionen;
+Alle bereits an reale Test-Clients beworbenen Start- und Bild-Hash-URIs bleiben
+mit ihren exakten Bytes passiv lesbar. Diese Retention ist keine aktive
+Funktion: Kein Werkzeug darf eine erhaltene Startressource binden. Bei einer
+frischen `goalVisualization` plus Renderer-Freigabe läuft der Renderer einmal
+mit der unveränderten `goalId`; die Top-Level-`stateVersion` wird in dessen
+Eingabe `expectedStateVersion` kopiert. Eine alte oder bereits versuchte
+Freigabe wird nicht wiederverwendet. Der Textpfad bleibt vollständig, auch
+wenn der Host die optionale UI nicht darstellt.
+
+Neue sessiongebundene Operationen benötigen mindestens `PT1H` Restlaufzeit;
+exakt eine Stunde ist gültig. Ein bereits committeter identischer Write darf
+sein gespeichertes Resultat nur bei noch nicht abgelaufener Session und
+verfügbaren gepinnten Workflow-/Curriculumversionen replayen und führt keine
+Mutation erneut aus.
+
+Für den kontrollierten Live-Test darf nur der First-Party-Launch das optionale
+`diagnosticSessionTtlSeconds` akzeptieren. Das Feld ist ausschließlich bei
+aktivem Diagnose-Gate, als ganze Zahl von `3601..86400` und höchstens bis zur
+normalen `PT24H`-Laufzeit zulässig. Es gilt nur für die von diesem Request
+erzeugte Session. Bereits der nächste Launch ohne Feld verwendet automatisch
+wieder `PT24H`; die globale TTL wird für den Test nicht geändert.
+
+Maschinenlesbare Quellen der Wahrheit sind:
+
+- `.codex-plugin/plugin.json` für Paket-SemVer und Listing;
+- `release/line.json` für Contract Major, Endpoint und Zustandsversionen;
+- `release/lifecycle.json` für Support-, Publikations- und Startstatus sowie
+  die monotone `policyRevision`;
 - `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
-  fortschreibbaren internen Arbeitsstand einer noch nicht veröffentlichten
-  Paketversion;
-- `contracts/published/openai/skillpilot-coach-v1/<version>/` für den
-  unveränderlichen veröffentlichten Snapshot.
+  fortschreibbaren unveröffentlichten Draft;
+- `contracts/published/openai/skillpilot-coach-v1/<version>/` und
+  `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich für
+  tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
-Solange eine Paketversion nicht tatsächlich im OpenAI-Portal veröffentlicht
-wurde, bleibt ihre SemVer unverändert. Beliebig viele interne Commits,
-Deployments, Scans, Reviewkorrekturen und Draft-Aktualisierungen dürfen daher
-weiter an `1.0.0` arbeiten. Das Suffix `-SNAPSHOT` kennzeichnet ausschließlich
-den internen Draft-Pfad und die Operatorausgabe. Die öffentliche Zielversion in
-`plugin.json`, im Tar-Namen und im OpenAI-Portal bleibt `1.0.0`. Erst nach einer
-realen Veröffentlichung ist dieser Stand versiegelt und jede weitere
-Paketänderung benötigt eine neue SemVer.
+Solange `1.0.0` nicht veröffentlicht wurde, bleibt die öffentliche Zielversion
+unverändert. Interne Korrekturen aktualisieren denselben Draft; erst eine reale
+Veröffentlichung versiegelt ihn.
 
 ## 2. Release vorbereiten
 
-1. Für eine noch nicht veröffentlichte Arbeitsversion bleibt die vorhandene
-   Paketversion bestehen. Nur wenn `release-index.json` diese Version bereits
-   als veröffentlicht führt, wird die nächste Änderung als `PATCH` oder
-   `MINOR` eingeordnet. Eine inkompatible Änderung benötigt eine neue
-   Plugin-Identität und einen neuen MCP-Origin.
-2. Release Notes, Lifecycle und alle Contract-/Workflowangaben gezielt
-   aktualisieren. Die Paketversion wird innerhalb desselben unveröffentlichten
-   Drafts nicht hochgezählt.
-   Das gilt auch für den jetzt ergänzten privaten Direktstart und die
-   MCP-Apps-Ressourcen: Da `1.0.0` noch nie veröffentlicht wurde, wird derselbe
-   Draft aktualisiert und keine `1.0.1` erzeugt.
-3. Die kanonischen V1-URLs sind feste Vertragswerte im Backend-Artefakt und
-   keine Laufzeitkonfiguration. Alte `SKILLPILOT_OPENAI_DE_*`-URLvariablen und
-   neu erfundene `SKILLPILOT_OPENAI_COACH_V1_*`-URLvariablen werden aus
-   `/etc/skillpilot/skillpilot.env` entfernt und fail-closed abgelehnt.
-   V1-spezifische Schalter und OAuth-Clientwerte tragen
-   `SKILLPILOT_OPENAI_COACH_V1_*`; gemeinsame Richtlinien des einzigen
-   Spring-Prozesses tragen `SKILLPILOT_OPENAI_*`.
-
-   `SKILLPILOT_SERVER_BUILD` gehört nicht in das `EnvironmentFile`. Gradle
-   erzeugt beim Backend-Build genau ein `skillpilot-server`-Artefakt und bettet
-   den vollständigen lowercase Git-Commit des
-   ausgecheckten `HEAD` in
-   `skillpilot.openai.coach.v1.server-build` und
-   `skillpilot.openai.coach.v1.mcp.server-version` ein. Das Deployment prüft beide
-   Werte im verarbeiteten `application.yml` vor dem Service-Restart. Eine
-   manuell gepflegte Laufzeitvariable könnte die Artefaktidentität daher weder
-   verbessern noch überschreiben.
-4. Alle generischen CI-Gates und danach die versionsspezifischen Gates
-   ausführen:
+1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag und zentrale
+   Dokumentation gemeinsam aktualisieren. Innerhalb des unveröffentlichten
+   Drafts wird keine künstliche Patchversion erzeugt.
+2. Die V1-URLs bleiben feste Vertragswerte im Backend-Artefakt. Geheimnisse und
+   OAuth-Clientwerte bleiben ausschließlich in geschützter Konfiguration.
+3. Generische und versionsspezifische Gates ausführen:
 
    ```bash
    npm --prefix "ai/openai app" test
@@ -144,24 +106,16 @@ Paketänderung benötigt eine neue SemVer.
    node scripts/openai_plugin_release.mjs candidate
    ```
 
-   Der Candidate liegt ausschließlich unter `tmp/` und wird nicht eingecheckt.
-5. Den eingecheckten internen Draft erzeugen oder nach einem weiteren
-   Arbeitsschritt derselben unveröffentlichten Version aktualisieren:
+4. Den internen Draft erzeugen oder aktualisieren:
 
    ```bash
    node scripts/openai_plugin_release.mjs prepare
    ```
 
-   `prepare` ersetzt ausschließlich
-   `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/`. Es
-   ändert weder die öffentliche SemVer noch den Published-Index. Ist die
-   Version bereits veröffentlicht, schlägt der Befehl fail-closed fehl.
-   Das Plugin-Tar wird ohne ein systemspezifisches `tar`-Programm direkt als
-   deterministisches USTAR erzeugt. Eingabe sind ausschließlich reguläre,
-   bereits von Git erfasste Plugin-Dateien mit kanonischen Dateirechten.
-   Unversionierte, ignorierte oder symbolisch verlinkte Dateien unter dem
-   Plugin-Root stoppen die Vorbereitung mit ihrem konkreten Pfad.
-6. Den internen Draft reproduzierbar gegen Quellen und Build prüfen:
+   `prepare` ersetzt nur den unveröffentlichten Snapshot. Es ändert weder
+   SemVer noch Published-Index und stoppt bei einer bereits veröffentlichten
+   Version, unversionierten Plugin-Datei oder einem Symlink.
+5. Quellen und Draft reproduzierbar prüfen:
 
    ```bash
    node scripts/openai_plugin_release.mjs verify
@@ -169,148 +123,93 @@ Paketänderung benötigt eine neue SemVer.
    npm --prefix app run check:docs-indexes
    git diff --check
    ```
-7. Erst nach grüner CI den Backend-Build und die V1-Edge-Konfiguration
-   ausrollen. Danach Discovery, OAuth-Resource, `tools/list`, negative
-   Authentisierungsfälle, Lernsessionbindung und mindestens eine Golden Journey
-   prüfen. `resources/list` muss alle drei aktiven hashgebundenen UI-Ressourcen und
-   alle passiv aufbewahrten Ressourcen enthalten. Bild-Renderer und
-   Karteikarten-Start sowie der Direktstart-Öffner dürfen jeweils nur ihre
-   eigene aktive Ressource über `ui.resourceUri` und `openai/outputTemplate`
-   referenzieren; Capability-Issuer und Karten-Bewertungswerkzeug bleiben
-   app-only und ungebunden. Der Direktstart darf die SkillPilot-ID niemals als
-   Toolargument oder Toolresultat übernehmen: Bei EXISTING sendet nur das
-   Widget sie nach expliziter Bestätigung an den capability-geschützten HTTPS-
-   Endpunkt; bei CREATE liefert nur dessen direkte HTTPS-Antwort die neue ID an
-   das flüchtige Recovery-DOM. Bei einem aktiven
-   atomaren Ziel mit passendem kanonischem Bild muss der Renderer die
-   strukturierte Projektion genau einmal an die bild-only Komponente liefern.
-   Die Direct-Start-Golden-Journey umfasst mindestens vier getrennte Fälle:
-   CREATE vergibt genau eine neue ID, verlangt deren Recovery-Bestätigung und
-   schließt Curriculum und Personalisierung im Widget ab; eine vorhandene ID
-   ohne Curriculum wird dort über `setCurriculum` eingerichtet; eine vorhandene
-   ID mit Curriculum, aber offener Personalisierung wird dort vollständig über
-   `setPersonalization` geführt; eine unbekannte syntaktisch gültige EXISTING-ID
-   bleibt ohne Session terminal und identifierfrei `PROFILE_UNAVAILABLE`.
-   In allen erfolgreichen Setupfällen bleiben bestätigtes Curriculum sowie
-   aktuelle, abgeschlossene und erhaltene Personalisierungsentscheidungen
-   serverautoritativ sichtbar. `Ändern` lädt einen frischen Curriculumkatalog
-   beziehungsweise verwendet nur die neueste opake Rewind-Referenz. Nach dem
-   vollständigen Setup muss zunächst der finale Review erscheinen; vor dessen
-   ausdrücklichem `Lernen starten` darf keine Hostnachricht entstehen.
-   Jeder Setup-Write verwendet die neueste `stateVersion` und einen exakt
-   wiederholbaren `clientRequestId`; erst nach vollständigem Setup und dem
-   finalen ausdrücklichen `Lernen starten` geht die unveränderte Startnachricht
-   an den Host. Nach bestätigter Hostannahme wird
-   die Startkarte ohne Neustartaktion geschlossen. Die normale Journey darf weder
-   **SkillPilot öffnen** noch eine doppelte Setupfrage im Chat benötigen.
-   Zusätzlich muss eine Session mit exakt `PT1H` Restlaufzeit noch genau eine
-   neue Operation zulassen. Bei weniger als `PT1H` müssen Reads und neue Writes
-   vor der Fachoperation `SESSION_RENEWAL_REQUIRED` liefern; ein bereits
-   committeter identischer Write darf bei noch nicht abgelaufener Session und
-   verfügbarer gepinnter Workflow-/Curriculumversion nur sein gespeichertes
-   Resultat replayen. Der Coach öffnet dann genau einmal
-   `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der bevorzugt aus
-   `recoveryCommunicationLocale`, sonst aus der letzten Session übernommenen
-   `communicationLocale`. Er übernimmt ausschließlich die neueste
-   Component-Startnachricht im selben Chat und lädt daraus frischen Kontext.
-   Neuer Chat und First-Party-Website sind ausschließlich Fallback bei
-   tatsächlich fehlender Component-/Handoff-Fähigkeit.
-   Für einen zeitlich praktikablen Live-Nachweis darf das Diagnose-Gate kurz
-   aktiviert und ein einzelner First-Party-Start mit
-   `diagnosticSessionTtlSeconds=3660` verwendet werden; das ergibt ungefähr eine
-   Minute bis zum Guard-Übergang. `5400` eignet sich alternativ für einen
-   90-Minuten-Soak. Die globale Learning-Session-TTL bleibt `PT24H`. Unmittelbar
-   danach muss ein Request ohne Diagnosefeld wieder `PT24H` liefern; außerdem
-   müssen deaktiviertes Gate, `3600`, `86401`, ein Wert über der normalen
-   Laufzeit und jeder Component-Bootstrap-Versuch mit diesem Feld fail-closed
-   bleiben. Für die sofortige Rückkehr zum normalen `PT24H`-Verhalten genügt
-   das Weglassen des Diagnosefeldes und damit kein Deployment; das separate
-   Gate wird nach dem kontrollierten Testfenster über den regulären
-   Konfigurationsweg wieder deaktiviert.
-   Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
-   ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf
-   keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur
-   `not_known` oder `known`. Ohne gültiges Bild oder nutzbare Komponente muss der
-   normale Chat- beziehungsweise Cockpit-Fallback erhalten bleiben.
-8. **Public-Release-Gate prüfen.** Der interne Direktstart-Canary darf die
-   neu vergebene oder vorhandene SkillPilot-ID in der privaten Komponente
-   testen. Eine öffentliche Portal-Einreichung bleibt jedoch gesperrt, solange
-   OpenAI die konkrete Verarbeitung der bearer-/credential-artigen
-   SkillPilot-ID im Widget nicht schriftlich akzeptiert hat oder die
-   öffentliche Architektur die ID nicht mehr verarbeitet. Ohne diesen Nachweis
-   endet der Ablauf nach internem
-   Deployment und Canary; es gibt weder Portal-Update noch Publish.
-9. Erst nach bestandenem Public-Release-Gate die neue Plugin-Version im
-   OpenAI-Portal aktualisieren. Die
-   hostgenerierte `.app.json` im Quellpaket bleibt Test-Wiring; sie ist nicht
-   das Veröffentlichungsvehikel.
-10. Erst nachdem im OpenAI-Portal tatsächlich **Publish** erfolgreich
-   abgeschlossen wurde, den geprüften Draft unveränderlich als veröffentlicht
-   registrieren:
 
-   ```bash
-   node scripts/openai_plugin_release.mjs record-published \
-     --confirm-openai-published
-   ```
+6. Erst danach Backend und V1-Edge ausrollen, die App-Metadaten aktualisieren
+   und in einem frischen Chat erneut scannen.
 
-   Dieser explizite Bestätigungsschritt kopiert den Draft nach
-   `contracts/published/` und aktualisiert `release-index.json`. Vorher darf
-   dort keine Version erscheinen.
+## 3. Release-Acceptance
 
-## 3. Rollback innerhalb von V1
+Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 
-Ein Rollback ändert nicht die Plugin-Identität, den Contract Major, den
-dedizierten MCP-Origin oder die OAuth-Resource.
+1. Discovery, Domain-Challenge, OAuth/PKCE, Resource-/Audience-Prüfung,
+   Callback-Allowlist, Scope-Fehler und Revocation sind grün; Geheimnisse
+   erscheinen weder in Antworten noch Logs.
+2. CREATE und EXISTING, Providerhinweis und alle Level-2-Dimensionen
+   funktionieren ausschließlich im First-Party-WebGUI.
+3. Zwei aufeinanderfolgende WebGUI-Starts erzeugen verschiedene Sessionwerte
+   und jeweils einen neuen Chat. Permanente SkillPilot-ID, OAuth-Werte und
+   interne Lernziel-ID erscheinen nicht in der Startnachricht.
+4. Ohne aktuelle Startnachricht erfolgt kein Toolaufruf, sondern nur der feste
+   WebGUI-Hinweis. Mit Startnachricht läuft vor jeder sichtbaren Coach-Antwort
+   ein erfolgreicher aktueller Kontextabruf.
+5. Die drei Session-Recovery-Codes ergeben ausschließlich die servereigene
+   Instruktion und nötigenfalls die nicht duplizierte `startUrl`; Fachantwort,
+   OAuth-Neuverbindung und Weiterarbeit mit der alten Session bleiben aus.
+6. Chatseitig funktionieren nur die ausdrücklichen Level-3-Änderungen von Fokus
+   und aktivem Ziel. Level 2 wird weder abgefragt noch mutiert.
+7. `resources/list` enthält genau zwei aktiv gebundene UI-Ressourcen und alle
+   beworbenen Vorgänger byte-identisch passiv. Bild- und Kartenwerkzeug binden
+   ausschließlich ihre jeweilige aktive Ressource.
+8. Das Lernzielbild erscheint nur bei frischer passender Projektion und
+   Freigabe. Ohne Bild, bei Clusterzielen oder nach veralteter Freigabe gibt es
+   keinen Renderer-Aufruf und keine leere UI; der Text bleibt vollständig.
+9. Normales Karteikartenlernen verändert nur die Wiederholungsplanung und bleibt
+   vom strengen Verified Recall getrennt. Orientierung, dialogisches Lernen,
+   Mastery und Prüfung erfüllen ihre jeweiligen Evidenz- und Feedbackregeln.
+10. Der Session-Guard akzeptiert exakt `PT1H`, lehnt neue Operationen darunter
+    ab und replayt einen zulässigen identischen Write höchstens ohne neue
+    Mutation.
+11. Der requestlokale Test mit `3660` Sekunden oder optional `5400` Sekunden
+    zeigt den Guard-Übergang. `3600`, `86401`, Werte über der normalen Laufzeit
+    und das Feld bei deaktiviertem Gate scheitern fail-closed. Der unmittelbar
+    folgende Launch ohne Feld liefert wieder `PT24H`.
+12. Sicherheits-, Datenschutz-, Rechts-, Client- und Verhaltensabnahme sind
+    dokumentiert. Dieses Runbook behauptet keinen zusätzlichen
+    ID-in-Komponente-Submission-Blocker; die V1-Identitätsverarbeitung liegt im
+    First-Party-WebGUI.
 
-1. Schreiboperationen bei Datenintegritätsrisiko zuerst über den vorhandenen
-   Kill-Switch deaktivieren.
+Erst nach erfolgreichem **Publish** im OpenAI-Portal wird der geprüfte Draft
+unveränderlich registriert:
+
+```bash
+node scripts/openai_plugin_release.mjs record-published \
+  --confirm-openai-published
+```
+
+Vorher darf `release-index.json` die Version nicht als veröffentlicht führen.
+
+## 4. Rollback innerhalb von V1
+
+Ein Rollback ändert weder Plugin-Identität noch Contract Major, MCP-Origin oder
+OAuth-Resource.
+
+1. Schreiboperationen bei Datenintegritätsrisiko über den Kill-Switch
+   deaktivieren.
 2. Den letzten grünen Backend-/Edge-Build wiederherstellen.
-3. Nur einen bereits veröffentlichten, unveränderten Snapshot aus
-   `contracts/published/openai/skillpilot-coach-v1/` verwenden.
-4. Falls nur Skill- oder Pluginmetadaten fehlerhaft sind, einen neuen
-   kompatiblen Patch veröffentlichen; eine bereits publizierte Versionsnummer
-   wird nicht neu befüllt.
+3. Für eine veröffentlichte Version nur den unveränderten Snapshot unter
+   `contracts/published/` verwenden.
+4. Fehlerhafte veröffentlichte Skill- oder Listing-Metadaten mit einer neuen
+   kompatiblen Patchversion beheben; eine publizierte Version nie neu befüllen.
 5. OAuth-Tokens oder Lernsessionen nur bei einem konkreten Sicherheits- oder
-   Datenintegritätsgrund pauschal widerrufen. Ein normaler Rollback erfordert
-   keine neue Lernendenidentität.
+   Datenintegritätsgrund pauschal widerrufen.
 
-## 4. Deprecation und Unpublish
+## 5. Deprecation, Unpublish und Löschung
 
-Die Zustandsänderung erfolgt zuerst in `release/lifecycle.json` und wird als
-normale, geprüfte Änderung veröffentlicht.
+Die Zustandsänderung beginnt in `release/lifecycle.json`:
 
-- `SUPPORTED`: funktionsfähig und sicherheitsgepflegt, aber nicht die
-  empfohlene Linie.
-- `DEPRECATED`: weiterhin funktionsfähig; Nachfolger, Support-Ende und
-  Unpublish-Datum müssen gesetzt und nutzerverständlich kommuniziert sein.
-- `UNPUBLISHED`: keine Neuinstallation über das Verzeichnis; bestehende
-  Installationen und der dedizierte MCP-Origin bleiben bis zum dokumentierten
-  Support-Ende funktionsfähig.
-- `RETIRED`: Aufrufe werden kontrolliert und ohne Datenverlust abgewiesen.
+- `SUPPORTED`: funktionsfähig und sicherheitsgepflegt, aber nicht empfohlen;
+- `DEPRECATED`: funktionsfähig mit Nachfolger und veröffentlichten Fristen;
+- `UNPUBLISHED`: keine Neuinstallation, bestehende Installationen bleiben bis
+  zum dokumentierten Supportende funktionsfähig;
+- `RETIRED`: kontrollierte Ablehnung ohne Verlust globalen Lernstands.
 
-Unpublish ist kein technischer Shutdown. Vor dem Abschalten müssen installierte
-Clients, Fehler- und Nutzungstelemetrie sowie die veröffentlichten
-Supportfristen geprüft werden.
+Unpublish ist kein technischer Shutdown. Eine Linie wird erst gelöscht, wenn
+Support-, Unpublish- und Löschfristen abgelaufen sind, keine unterstützten
+Installationen oder Migrationspfade verbleiben und globale Mastery unabhängig
+erhalten bleibt. Veröffentlichte Snapshots, Release Notes und Auditnachweise
+bleiben unveränderlich. MCP-Origin, OAuth-Resource und UI-Artefakte werden erst
+nach dem letzten unterstützten Client entfernt.
 
-## 5. Endgültige Löschung
-
-Eine Plugin-Linie darf nur gelöscht werden, wenn alle folgenden Nachweise
-vorliegen:
-
-1. Lifecycle ist `RETIRED`, und Support-, Unpublish- sowie Löschfrist sind
-   abgelaufen.
-2. Es gibt keine unterstützten Installationen und keinen notwendigen
-   Migrationspfad mehr.
-3. Persistierter Lernstand und globale Mastery bleiben unabhängig vom Plugin
-   erhalten; nur linienbezogene, nachweislich entbehrliche Idempotenz- und
-   Sessiondaten werden nach ihrer eigenen Aufbewahrungsfrist bereinigt.
-4. Veröffentlichte Contract-Snapshots, Release Notes und Auditnachweise bleiben
-   als unveränderliche Dokumentation erhalten.
-5. Der dedizierte MCP-Origin, seine OAuth-Resource und die zugehörigen
-   UI-Artefakte werden erst nach dem letzten unterstützten Client und nach
-   Ablauf der dokumentierten Aufbewahrung entfernt. Der gemeinsam genutzte
-   OAuth-Issuer auf `skillpilot.com` bleibt davon unberührt.
-
-Eine zukünftige V2 ersetzt V1 niemals durch stilles Überschreiben. Beide Linien
-haben getrennte Plugin-Identitäten, MCP-Origins, OAuth-Resources,
-Skills, Snapshots, Telemetrie und Lebenszyklen.
+Eine zukünftige V2 überschreibt V1 nie still. Beide Linien besitzen getrennte
+Identitäten, Origins, Resources, Skills, Snapshots, Telemetrie und
+Lebenszyklen.
