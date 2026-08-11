@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v4",
-  "generatedAt": "2026-08-08T12:41:26.487Z",
+  "generatedAt": "2026-08-11T05:31:11.577Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -23,14 +23,14 @@
       "M1": 0,
       "M2": 0,
       "M3": 0,
-      "M4": 0,
+      "M4": 1,
       "M5": 0,
-      "M6": 10,
+      "M6": 9,
       "M7": 0
     },
     "ruleStatus": {
-      "pass": 229,
-      "warn": 21,
+      "pass": 227,
+      "warn": 23,
       "fail": 4,
       "not_configured": 67
     }
@@ -36245,7 +36245,7 @@
       "subject": "Mathematik",
       "frameworkId": "canonical-gymnasium-math",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "maturity": "M6",
+      "maturity": "M4",
       "goals": 1079,
       "atomicGoals": 861,
       "clusterGoals": 218,
@@ -42112,31 +42112,43 @@
         },
         {
           "id": "CQR-301",
-          "status": "pass",
-          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "status": "warn",
+          "summary": "Semantic atomicity review still has missing, stale, or unresolved entries.",
           "metrics": {
             "configs": 2,
             "leafGoals": 758,
-            "atomic": 758,
+            "atomic": 748,
             "needsDeveloperReview": 0,
             "nonAtomic": 0,
             "missing": 0,
-            "stale": 0,
+            "stale": 10,
             "obsolete": 0
-          }
+          },
+          "details": [
+            "canonical-math-full: stale Brüche als Zahlen, Anteile und Quotienten deuten [6b0075bb-f71c-59f6-ab98-fb894568cc26]",
+            "canonical-math-full: stale Sinussatz herleiten [0c8c1ae9-135e-4fe5-bf67-e497eb3a9909]",
+            "canonical-math-full: stale Darstellungsform auswählen und begründen [8dd9f210-2683-5902-acab-e3be22725232]",
+            "canonical-math-full: stale Konvergenz und Grenzen numerischer Verfahren reflektieren [3bfc2747-03e2-57db-b13f-01f78835eefd]",
+            "canonical-math-full: stale Integral als Bestand und Flächeninhalt verstehen [2afba4a2-287d-5e8f-aeee-a3bcf8652236]",
+            "canonical-math-full: stale Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen [6481fc23-d923-5ffc-ba49-f499328f43b8]",
+            "canonical-math-full: stale Zustände in Markov-Ketten berechnen [25157542-a262-562f-a29c-ac8d53b9798f]",
+            "canonical-math-full: stale Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen [508292f2-671b-4fd3-acbf-53d705e44693]",
+            "canonical-math-full: stale Implikation und Äquivalenz unterscheiden [377282dc-80b0-5bbf-bef2-a9f22e3919c1]",
+            "canonical-math-full: stale Strategien nach Kriterien vergleichen (LK) [f9c24dd8-eaa5-5395-8679-820c1a74e7b7]"
+          ]
         },
         {
           "id": "CQR-302",
-          "status": "pass",
-          "summary": "Memory-card review is current: 37/754 ordinary atomic goals intentionally use memorization support, 64/64 primary cards are kept with origin traces, all 6 memory goals are traced, and 15 view-visible memory-required goals resolve to visible memory nodes.",
+          "status": "warn",
+          "summary": "Memory-card review still has missing, stale, invalid, or untraced entries.",
           "metrics": {
             "configs": 1,
             "reviewedGoals": 754,
-            "noMemoryNeeded": 717,
+            "noMemoryNeeded": 707,
             "memoryRequired": 37,
             "needsDeveloperReview": 0,
             "missing": 0,
-            "stale": 0,
+            "stale": 10,
             "obsolete": 0,
             "duplicateRecords": 0,
             "invalidRecords": 0,
@@ -42162,7 +42174,17 @@
             "cardRows": 128
           },
           "details": [
-            "canonical-math-full: audit report docs/qa-ci/status/memory-card-review-canonical-math-full.md"
+            "canonical-math-full: audit report docs/qa-ci/status/memory-card-review-canonical-math-full.md",
+            "canonical-math-full: stale Brüche als Zahlen, Anteile und Quotienten deuten [6b0075bb-f71c-59f6-ab98-fb894568cc26]",
+            "canonical-math-full: stale Sinussatz herleiten [0c8c1ae9-135e-4fe5-bf67-e497eb3a9909]",
+            "canonical-math-full: stale Darstellungsform auswählen und begründen [8dd9f210-2683-5902-acab-e3be22725232]",
+            "canonical-math-full: stale Konvergenz und Grenzen numerischer Verfahren reflektieren [3bfc2747-03e2-57db-b13f-01f78835eefd]",
+            "canonical-math-full: stale Integral als Bestand und Flächeninhalt verstehen [2afba4a2-287d-5e8f-aeee-a3bcf8652236]",
+            "canonical-math-full: stale Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen [6481fc23-d923-5ffc-ba49-f499328f43b8]",
+            "canonical-math-full: stale Zustände in Markov-Ketten berechnen [25157542-a262-562f-a29c-ac8d53b9798f]",
+            "canonical-math-full: stale Bedingte Wahrscheinlichkeiten mit Baumdiagrammen und Vierfeldertafeln bestimmen [508292f2-671b-4fd3-acbf-53d705e44693]",
+            "canonical-math-full: stale Implikation und Äquivalenz unterscheiden [377282dc-80b0-5bbf-bef2-a9f22e3919c1]",
+            "canonical-math-full: stale Strategien nach Kriterien vergleichen (LK) [f9c24dd8-eaa5-5395-8679-820c1a74e7b7]"
           ]
         },
         {

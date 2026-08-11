@@ -6,6 +6,8 @@ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 interface SourceRationaleItem {
   goal?: {
     id?: unknown
+    title?: unknown
+    description?: unknown
   }
   sourceRationaleStatus?: unknown
   classicSourceRoute?: unknown
@@ -89,6 +91,7 @@ const landscape = readJson<SkillLandscape>(landscapePath)
 const report = readJson<SourceRationaleReport>(reportPath)
 const expectedGoalIds = relevantLeafGoalIds(landscape)
 const expectedGoalIdSet = new Set(expectedGoalIds)
+const canonicalGoalsById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
 const items = sourceRationaleItems(report)
 const itemGoalIds = items.map(itemGoalId)
 const itemGoalIdSet = new Set(itemGoalIds.filter((goalId): goalId is string => goalId !== null))
@@ -141,6 +144,20 @@ const malformedItems = items
   .map((item) => itemGoalId(item) ?? 'missing-goal-id')
 if (malformedItems.length > 0) {
   failures.push(`${reportPath}: malformed source-rationale items: ${malformedItems.slice(0, 10).join(', ')}`)
+}
+
+const staleGoalTexts = items.flatMap((item) => {
+  const goalId = itemGoalId(item)
+  if (goalId === null) return []
+  const canonicalGoal = canonicalGoalsById.get(goalId)
+  if (!canonicalGoal) return []
+  return item.goal?.title === canonicalGoal.title
+    && item.goal.description === canonicalGoal.description
+    ? []
+    : [goalId]
+})
+if (staleGoalTexts.length > 0) {
+  failures.push(`${reportPath}: stale canonical goal text: ${staleGoalTexts.slice(0, 10).join(', ')}`)
 }
 
 if (failures.length > 0) {

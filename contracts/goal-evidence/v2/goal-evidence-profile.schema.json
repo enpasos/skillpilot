@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "title": "SkillPilot positive understanding-evidence review record v2",
+  "description": "Fingerprint-bound review record that states only positive, content-specific expectations for understanding, observable performance, and transfer. AI output is a candidate only; approved records require explicit human authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "reviewId",
+    "goalFingerprintRuleVersion",
+    "profileRuleVersion",
+    "reviewCriteriaFingerprint",
+    "landscapeId",
+    "goalId",
+    "goalFingerprint",
+    "reviewInputFingerprint",
+    "profileFingerprint",
+    "status",
+    "reviewAuthority",
+    "reviewedAt",
+    "reviewer",
+    "reason",
+    "evidenceLevel",
+    "maximumClaimScope",
+    "reviewRunIds",
+    "dissent",
+    "profile"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
+    },
+    "schemaVersion": {
+      "const": 2
+    },
+    "reviewId": {
+      "$ref": "#/$defs/slug"
+    },
+    "goalFingerprintRuleVersion": {
+      "const": "goal-evidence-v1"
+    },
+    "profileRuleVersion": {
+      "const": "positive-understanding-evidence-v2"
+    },
+    "reviewCriteriaFingerprint": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "goalId": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "goalFingerprint": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "reviewInputFingerprint": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "profileFingerprint": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "status": {
+      "enum": [
+        "needs_human_review",
+        "approved",
+        "rejected"
+      ]
+    },
+    "reviewAuthority": {
+      "enum": [
+        "ai_candidate",
+        "human"
+      ]
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewer": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "reason": {
+      "$ref": "#/$defs/boundedText"
+    },
+    "evidenceLevel": {
+      "enum": ["E0", "E1", "E2", "E3", "E4", "E5"]
+    },
+    "maximumClaimScope": {
+      "enum": ["G0", "G1", "G2", "G3", "G4"]
+    },
+    "reviewRunIds": {
+      "type": "array",
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/slug"
+      }
+    },
+    "dissent": {
+      "type": "array",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/boundedText"
+      }
+    },
+    "profile": {
+      "$ref": "#/$defs/profile"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "approved"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "reviewAuthority": {
+            "const": "human"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewAuthority": {
+            "const": "ai_candidate"
+          }
+        },
+        "required": ["reviewAuthority"]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "needs_human_review"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "boundedText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "localizedItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "textDe",
+        "textEn"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "textDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "textEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "essentialUnderstandingDe",
+        "essentialUnderstandingEn",
+        "observablePerformanceDe",
+        "observablePerformanceEn"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "essentialUnderstandingDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "essentialUnderstandingEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "observablePerformanceDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "observablePerformanceEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "coverageExpectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredExpectationIds",
+        "alternativeExpectationGroups",
+        "minimumIndependentDemonstrations",
+        "freshVariationRequired",
+        "independentTransferRequired"
+      ],
+      "properties": {
+        "requiredExpectationIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        },
+        "alternativeExpectationGroups": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/slug"
+            }
+          }
+        },
+        "minimumIndependentDemonstrations": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 8
+        },
+        "freshVariationRequired": {
+          "const": true
+        },
+        "independentTransferRequired": {
+          "const": true
+        }
+      }
+    },
+    "applicationCaseBrief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "taskDemandDe",
+        "taskDemandEn",
+        "expectedPerformanceDe",
+        "expectedPerformanceEn",
+        "understandingFocusDe",
+        "understandingFocusEn"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "taskDemandDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "taskDemandEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "expectedPerformanceDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "expectedPerformanceEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "understandingFocusDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "understandingFocusEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archetype",
+        "expectations",
+        "coverageExpectations",
+        "variationAxes",
+        "applicationCaseBriefs"
+      ],
+      "properties": {
+        "archetype": {
+          "enum": [
+            "concept",
+            "procedure",
+            "representation",
+            "modeling",
+            "proof",
+            "experiment",
+            "data"
+          ]
+        },
+        "expectations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/expectation"
+          }
+        },
+        "coverageExpectations": {
+          "$ref": "#/$defs/coverageExpectations"
+        },
+        "variationAxes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/localizedItem"
+          }
+        },
+        "applicationCaseBriefs": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/applicationCaseBrief"
+          }
+        }
+      }
+    }
+  }
+}

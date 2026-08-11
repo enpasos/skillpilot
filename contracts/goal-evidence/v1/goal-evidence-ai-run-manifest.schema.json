@@ -34,6 +34,10 @@
     },
     "schemaVersion": { "const": 1 },
     "runId": { "$ref": "#/$defs/stableId" },
+    "campaignId": { "$ref": "#/$defs/stableId" },
+    "roundId": { "$ref": "#/$defs/stableId" },
+    "batchId": { "$ref": "#/$defs/stableId" },
+    "batchInputFingerprint": { "$ref": "#/$defs/digest" },
     "bundleFingerprint": { "$ref": "#/$defs/digest" },
     "bookDigest": { "$ref": "#/$defs/digest" },
     "provider": { "$ref": "#/$defs/nonBlank" },
@@ -59,7 +63,7 @@
     "goalIds": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 500,
+      "maxItems": 5000,
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/stableId" }
     },
@@ -72,7 +76,23 @@
         "additionalProperties": false,
         "required": ["role", "digest"],
         "properties": {
-          "role": { "$ref": "#/$defs/stableId" },
+          "role": {
+            "enum": [
+              "book_pdf",
+              "book_pdf_render_manifest",
+              "book_html",
+              "book_html_render_manifest",
+              "book_model",
+              "review_input_json",
+              "review_input_jsonl",
+              "description_review_batch_input_jsonl",
+              "review_markdown",
+              "review_prompt",
+              "review_criteria",
+              "finding_schema",
+              "run_manifest_schema"
+            ]
+          },
           "digest": { "$ref": "#/$defs/digest" }
         }
       }
