@@ -96,12 +96,6 @@ public class OpenAiDeCoachConnectionService {
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
     }
 
-    /** Starts one normal 24-hour session for internal callers such as bootstrap. */
-    @Transactional
-    public OpenAiDeLaunchResponse createLaunch(String skillpilotId, OpenAiDeCoachStartRequest request) {
-        return createLaunch(skillpilotId, request, false);
-    }
-
     /**
      * Starts one session through the first-party UI boundary. A gated diagnostic
      * request may shorten only this session; absent input keeps the exact normal
@@ -111,15 +105,8 @@ public class OpenAiDeCoachConnectionService {
     public OpenAiDeLaunchResponse createFirstPartyLaunch(
             String skillpilotId,
             OpenAiDeCoachStartRequest request) {
-        return createLaunch(skillpilotId, request, true);
-    }
-
-    private OpenAiDeLaunchResponse createLaunch(
-            String skillpilotId,
-            OpenAiDeCoachStartRequest request,
-            boolean firstPartyLaunch) {
         requireProviderEligibilityConfirmation(request);
-        Duration learningSessionTtl = learningSessionTtl(request, firstPartyLaunch);
+        Duration learningSessionTtl = learningSessionTtl(request);
         NormalizedLaunch launchRequest = normalizeLaunch(request);
         Learner learner = requireLearnerForUpdate(skillpilotId);
         Instant now = Instant.now();
@@ -178,9 +165,9 @@ public class OpenAiDeCoachConnectionService {
             String skillpilotId,
             Learner learner,
             NormalizedLaunch launch) {
-        // Revalidate immediately before mutation. The same read-only validation
-        // also runs before a browser binding grant is returned, but curriculum
-        // content may change before OAuth completes.
+        // Revalidate under the learner lock immediately before any launch
+        // mutation and session issuance; WebGUI configuration may have changed
+        // since the page rendered its start controls.
         validateLaunchDefinition(learner, launch);
         assertLaunchMutationAllowed(learner, launch);
         if (launch.type() == LaunchIntentType.CURRENT_UNIT && properties.isWritesEnabled()) {
@@ -245,19 +232,13 @@ public class OpenAiDeCoachConnectionService {
         return new IssuedLearningSession(learningSessionId, expiresAt);
     }
 
-    private Duration learningSessionTtl(
-            OpenAiDeCoachStartRequest request,
-            boolean firstPartyLaunch) {
+    private Duration learningSessionTtl(OpenAiDeCoachStartRequest request) {
         Integer requestedSeconds = request == null
                 ? null
                 : request.diagnosticSessionTtlSeconds();
         Duration normalTtl = properties.getLearningSessionTtl();
         if (requestedSeconds == null) {
             return normalTtl;
-        }
-        if (!firstPartyLaunch) {
-            throw badLaunchRequest(
-                    "diagnosticSessionTtlSeconds is allowed only on the first-party UI launch.");
         }
         if (!properties.isDiagnosticSessionTtlEnabled()) {
             throw badLaunchRequest("diagnosticSessionTtlSeconds is disabled on this server.");

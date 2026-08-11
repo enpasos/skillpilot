@@ -34,7 +34,6 @@ class OpenAiDeOperationalTelemetryTest {
                 "http_403",
                 "http_409",
                 "http_429",
-                "issuer_rate_limited",
                 "timeout",
                 "replay_rejected",
                 "cross_provider_rejected",

@@ -6,9 +6,6 @@ MCP_ORIGIN="https://mcp-coach-v1.skillpilot.com"
 AUTHORIZATION_ORIGIN="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
 AUTHORIZATION_ORIGIN="${AUTHORIZATION_ORIGIN%/}"
 MCP_URL="${MCP_ORIGIN}/mcp"
-BOOTSTRAP_URL="${MCP_ORIGIN}/bootstrap/v1/launch"
-CHATGPT_WEB_WIDGET_ORIGIN="https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com"
-UNTRUSTED_WIDGET_ORIGIN="https://web-sandbox.oaiusercontent.com.evil.example"
 EXPECTED_RESOURCE="${MCP_URL}"
 METADATA_URL="${MCP_ORIGIN}/.well-known/oauth-protected-resource/mcp"
 AUTHORIZATION_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/oauth-authorization-server/api/openai/v1"
@@ -63,9 +60,6 @@ PY
 validate_https_url "MCP origin" "${MCP_ORIGIN}" false
 validate_https_url "authorization origin" "${AUTHORIZATION_ORIGIN}" false
 validate_https_url "MCP URL" "${MCP_URL}" true
-validate_https_url "bootstrap URL" "${BOOTSTRAP_URL}" true
-validate_https_url "ChatGPT Web widget origin" "${CHATGPT_WEB_WIDGET_ORIGIN}" false
-validate_https_url "untrusted widget origin" "${UNTRUSTED_WIDGET_ORIGIN}" false
 validate_https_url "OAuth resource" "${EXPECTED_RESOURCE}" true
 validate_https_url "protected-resource metadata URL" "${METADATA_URL}" true
 for reserved_origin in "${RESERVED_MCP_ORIGINS[@]}"; do
@@ -186,99 +180,6 @@ if ! cmp -s \
   exit 1
 fi
 echo "CHECK oauth_discovery_alias_parity PASS byte-identical metadata"
-
-bootstrap_preflight_result="$(
-  "${curl_common[@]}" \
-    --request OPTIONS \
-    --header "Origin: ${CHATGPT_WEB_WIDGET_ORIGIN}" \
-    --header 'Access-Control-Request-Method: POST' \
-    --header 'Access-Control-Request-Headers: authorization,content-type' \
-    --dump-header "${temporary_dir}/bootstrap-preflight.headers" \
-    --output /dev/null \
-    --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
-    "${BOOTSTRAP_URL}"
-)"
-IFS='|' read -r bootstrap_preflight_status bootstrap_preflight_effective_url \
-  bootstrap_preflight_tls_verify_result <<<"${bootstrap_preflight_result}"
-if [[ "${bootstrap_preflight_status}" != "200" ]]; then
-  echo "CHECK public_bootstrap_cors FAIL expected HTTP 200, got ${bootstrap_preflight_status}" >&2
-  exit 1
-fi
-if [[ "${bootstrap_preflight_effective_url}" != "${BOOTSTRAP_URL}" ]]; then
-  echo "CHECK public_bootstrap_cors FAIL unexpected redirect to ${bootstrap_preflight_effective_url}" >&2
-  exit 1
-fi
-if [[ "${bootstrap_preflight_tls_verify_result}" != "0" ]]; then
-  echo "CHECK public_bootstrap_cors FAIL certificate verification result ${bootstrap_preflight_tls_verify_result}" >&2
-  exit 1
-fi
-bootstrap_allow_origin="$(
-  tr -d '\r' <"${temporary_dir}/bootstrap-preflight.headers" \
-    | awk 'tolower($0) ~ /^access-control-allow-origin:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
-)"
-bootstrap_allow_methods="$(
-  tr -d '\r' <"${temporary_dir}/bootstrap-preflight.headers" \
-    | awk 'tolower($0) ~ /^access-control-allow-methods:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = tolower($0) } END { print value }'
-)"
-bootstrap_allow_headers="$(
-  tr -d '\r' <"${temporary_dir}/bootstrap-preflight.headers" \
-    | awk 'tolower($0) ~ /^access-control-allow-headers:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = tolower($0) } END { print value }'
-)"
-bootstrap_allow_credentials="$(
-  tr -d '\r' <"${temporary_dir}/bootstrap-preflight.headers" \
-    | awk 'tolower($0) ~ /^access-control-allow-credentials:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
-)"
-if [[ "${bootstrap_allow_origin}" != "${CHATGPT_WEB_WIDGET_ORIGIN}" ]]; then
-  echo "CHECK public_bootstrap_cors FAIL expected Access-Control-Allow-Origin ${CHATGPT_WEB_WIDGET_ORIGIN}" >&2
-  exit 1
-fi
-if [[ ",${bootstrap_allow_methods// /}," != *",post,"* \
-  || ",${bootstrap_allow_methods// /}," != *",options,"* ]]; then
-  echo "CHECK public_bootstrap_cors FAIL expected POST and OPTIONS methods, got ${bootstrap_allow_methods}" >&2
-  exit 1
-fi
-if [[ ",${bootstrap_allow_headers// /}," != *",authorization,"* \
-  || ",${bootstrap_allow_headers// /}," != *",content-type,"* ]]; then
-  echo "CHECK public_bootstrap_cors FAIL expected Authorization and Content-Type headers, got ${bootstrap_allow_headers}" >&2
-  exit 1
-fi
-if [[ -n "${bootstrap_allow_credentials}" ]]; then
-  echo "CHECK public_bootstrap_cors FAIL bootstrap must not allow credentials" >&2
-  exit 1
-fi
-echo "CHECK public_bootstrap_cors PASS ChatGPT Web sandbox origin can preflight the private launch"
-
-untrusted_preflight_result="$(
-  "${curl_common[@]}" \
-    --request OPTIONS \
-    --header "Origin: ${UNTRUSTED_WIDGET_ORIGIN}" \
-    --header 'Access-Control-Request-Method: POST' \
-    --header 'Access-Control-Request-Headers: authorization,content-type' \
-    --dump-header "${temporary_dir}/bootstrap-untrusted-preflight.headers" \
-    --output /dev/null \
-    --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
-    "${BOOTSTRAP_URL}"
-)"
-IFS='|' read -r untrusted_preflight_status untrusted_preflight_effective_url \
-  untrusted_preflight_tls_verify_result <<<"${untrusted_preflight_result}"
-if [[ "${untrusted_preflight_status}" != "403" ]]; then
-  echo "CHECK public_bootstrap_cors_negative FAIL expected HTTP 403, got ${untrusted_preflight_status}" >&2
-  exit 1
-fi
-if [[ "${untrusted_preflight_effective_url}" != "${BOOTSTRAP_URL}" \
-  || "${untrusted_preflight_tls_verify_result}" != "0" ]]; then
-  echo "CHECK public_bootstrap_cors_negative FAIL redirect or TLS validation failure" >&2
-  exit 1
-fi
-untrusted_allow_origin="$(
-  tr -d '\r' <"${temporary_dir}/bootstrap-untrusted-preflight.headers" \
-    | awk 'tolower($0) ~ /^access-control-allow-origin:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
-)"
-if [[ -n "${untrusted_allow_origin}" ]]; then
-  echo "CHECK public_bootstrap_cors_negative FAIL untrusted origin received Access-Control-Allow-Origin" >&2
-  exit 1
-fi
-echo "CHECK public_bootstrap_cors_negative PASS suffix-confusion origin rejected"
 
 goal_visualization_asset="$({
   find "${GOAL_VISUALIZATION_ASSET_ROOT}" -type f \

@@ -16,6 +16,7 @@ import {
   FORBIDDEN_OPENAI_V1_URL_OVERRIDE_NAMES,
   IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES,
   OPENAI_V1_PUBLIC_CONTRACT,
+  REMOVED_DIRECT_START_ENVIRONMENT_NAMES,
   parseServiceEnvironmentFile,
   validateBuiltApplication,
   validateCanonicalPublicDefaults,
@@ -67,10 +68,18 @@ test("line-specific and process-shared environment names remain valid", () => {
   assert.doesNotThrow(() =>
     validateExplicitPublicOverrides({
       ...lineEnvironment,
-      SKILLPILOT_OPENAI_SECURE_COOKIE: "true",
       SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED: "true",
     }),
   );
+});
+
+test("removed Direct-Start environment names fail closed", () => {
+  for (const name of REMOVED_DIRECT_START_ENVIRONMENT_NAMES) {
+    assert.throws(
+      () => validateExplicitPublicOverrides({ [name]: "do-not-print" }),
+      new RegExp(`${name} is obsolete and must not be set`),
+    );
+  }
 });
 
 test("unimplemented coach lines and misspelled V1 settings fail closed", () => {

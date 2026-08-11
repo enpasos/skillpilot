@@ -2,7 +2,6 @@ package com.skillpilot.backend.config;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,6 @@ class CorsConfigTest {
         assertThat(mappings.keySet())
                 .containsExactly(
                         "/assets/goal-visualizations/**",
-                        OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH,
                         "/**");
 
         CorsConfiguration visualization = mappings.get("/assets/goal-visualizations/**");
@@ -44,75 +42,6 @@ class CorsConfigTest {
         assertThat(application).isNotNull();
         assertThat(application.checkOrigin("https://example.web-sandbox.oaiusercontent.com"))
                 .isNull();
-    }
-
-    @Test
-    void allowsCredentialFreeBootstrapPostsFromTheDeclaredAndHostedWidgetOrigins()
-            throws Exception {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.setCorsConfigurations(mappings());
-        DefaultCorsProcessor processor = new DefaultCorsProcessor();
-
-        MockHttpServletRequest preflightRequest =
-                new MockHttpServletRequest(
-                        "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
-        preflightRequest.addHeader(
-                HttpHeaders.ORIGIN, OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
-        preflightRequest.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
-        preflightRequest.addHeader(
-                HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS, "authorization,content-type");
-        CorsConfiguration bootstrap = source.getCorsConfiguration(preflightRequest);
-        MockHttpServletResponse preflightResponse = new MockHttpServletResponse();
-
-        assertThat(bootstrap).isNotNull();
-        assertThat(bootstrap.getAllowedOrigins())
-                .containsExactly(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN);
-        assertThat(bootstrap.getAllowedOriginPatterns())
-                .containsExactly(OpenAiDeV1ContractMetadata.CHATGPT_WIDGET_ORIGIN_PATTERN);
-        assertThat(bootstrap.getAllowedMethods()).containsExactly("POST", "OPTIONS");
-        assertThat(bootstrap.getAllowedHeaders())
-                .containsExactly("Authorization", "Content-Type");
-        assertThat(bootstrap.getExposedHeaders()).containsExactly("Retry-After");
-        assertThat(bootstrap.getAllowCredentials()).isFalse();
-        assertThat(processor.processRequest(bootstrap, preflightRequest, preflightResponse))
-                .isTrue();
-        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
-                .isEqualTo(OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN);
-        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS))
-                .isNull();
-
-        MockHttpServletRequest anotherHostedOrigin =
-                new MockHttpServletRequest(
-                        "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
-        anotherHostedOrigin.addHeader(
-                HttpHeaders.ORIGIN, "https://future-surface.web-sandbox.oaiusercontent.com");
-        anotherHostedOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
-        MockHttpServletResponse anotherHostedResponse = new MockHttpServletResponse();
-        assertThat(processor.processRequest(
-                        bootstrap, anotherHostedOrigin, anotherHostedResponse))
-                .isTrue();
-        assertThat(anotherHostedResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
-                .isEqualTo("https://future-surface.web-sandbox.oaiusercontent.com");
-
-        for (String rejectedOrigin : new String[] {
-            "http://future-surface.web-sandbox.oaiusercontent.com",
-            "https://web-sandbox.oaiusercontent.com",
-            "https://future-surface.web-sandbox.oaiusercontent.com.evil.example",
-            "null"
-        }) {
-            MockHttpServletRequest foreignOrigin =
-                    new MockHttpServletRequest(
-                            "OPTIONS", OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH);
-            foreignOrigin.addHeader(HttpHeaders.ORIGIN, rejectedOrigin);
-            foreignOrigin.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, "POST");
-            MockHttpServletResponse foreignResponse = new MockHttpServletResponse();
-            assertThat(processor.processRequest(bootstrap, foreignOrigin, foreignResponse))
-                    .as(rejectedOrigin)
-                    .isFalse();
-            assertThat(foreignResponse.getStatus())
-                    .as(rejectedOrigin)
-                    .isEqualTo(HttpServletResponse.SC_FORBIDDEN);
-        }
     }
 
     @Test

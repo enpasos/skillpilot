@@ -355,11 +355,6 @@ public final class OpenAiDeMcpTelemetry {
                     return new ResourceArtifact(fingerprint(sha256), RETAINED_ARTIFACT_ROLE);
                 }
             }
-            for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
-                if (OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(sha256).equals(resourceUri)) {
-                    return new ResourceArtifact(fingerprint(sha256), RETAINED_ARTIFACT_ROLE);
-                }
-            }
             return UNKNOWN;
         }
 

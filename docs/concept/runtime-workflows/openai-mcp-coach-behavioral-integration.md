@@ -137,12 +137,13 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
   Person muss sie weder kopieren noch verstehen.
 - Eine Lernsession aus einer älteren Startnachricht darf nicht für einen neuen
   Start verwendet werden.
-- Jede neue fachliche Operation benötigt mindestens `PT1H` Restlaufzeit. Exakt
-  `PT1H` ist zulässig, darunter endet der Chat-Lernfluss vor der Operation. Ein bereits
-  committeter Write darf mit demselben Toolnamen, kanonisch identischen
-  Argumenten und derselben `clientRequestId` nur bei noch nicht abgelaufener
-  Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion sein
-  gespeichertes Resultat replayen; er mutiert nicht erneut.
+- Jede fachliche Operation und jeder Write-Replay benötigt mindestens `PT1H`
+  Restlaufzeit. Exakt `PT1H` ist zulässig, darunter endet der Chat-Lernfluss.
+  Ein bereits committeter Write darf mit demselben Toolnamen, kanonisch
+  identischen Argumenten und derselben `clientRequestId` nur bei weiterhin
+  verfügbarer gepinnter Workflow-/Curriculumversion und unveränderter
+  kanonischer Learner-Revision sein gespeichertes Resultat replayen; er mutiert
+  nicht erneut.
 
 ### 4.3 Nutzerkommunikation
 
@@ -159,17 +160,18 @@ allgemeinen, zustandsgebundenen Entscheidungszyklus.
 
 ### 5.1 Der Zyklus
 
-Bei Einstieg, Wiederaufnahme, Unsicherheit, möglicher Kompaktierung oder nach
-einer Mutation gilt:
+Bei Einstieg, Wiederaufnahme, Unsicherheit oder möglicher Kompaktierung gilt:
 
 1. **Lernsession übernehmen**
    Die Lernsession kommt ausschließlich aus der aktuellen SkillPilot-
    Startnachricht.
 2. **Frischen Zustand laden**
-   Vor jeder lernendenbezogenen Antwort wird der Kontext im aktuellen
-   Assistant-Turn geladen. Curriculum, Personalisierung, Lernumfang, Fokus,
-   aktives Ziel, Frontier, Modus und Fortschritt werden nicht aus
-   Gesprächserinnerung rekonstruiert.
+   Zu Beginn jedes Learner-Turns wird der Kontext im aktuellen Assistant-Turn
+   geladen. Curriculum, Personalisierung, Lernumfang, Fokus, aktives Ziel,
+   Frontier, Modus und Fortschritt werden nicht aus Gesprächserinnerung
+   rekonstruiert. Nach einer erfolgreichen Mutation ist ihr vollständiger
+   Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ; der
+   Coach lädt ihn nicht redundant erneut.
 3. **Bestätigten Kontext bilden**
    Der Coach unterscheidet klar zwischen bereits bestätigtem Zustand,
    aktuellen Backendoptionen und bloßer Nutzerabsicht.
@@ -182,8 +184,10 @@ einer Mutation gilt:
    erfolgt nach Bedeutung, nicht nach zufälliger Position oder Wortgleichheit.
 6. **Genau eine erlaubte Mutation ausführen**
    Keine spätere Auswahl wird vorweggenommen und keine ID konstruiert.
-7. **Unmittelbar frisch laden**
-   Nach jeder Mutation ist ausschließlich der neue Backendzustand gültig.
+7. **Frischen Nachfolgerzustand übernehmen**
+   Nach jeder Mutation ist ausschließlich ihr vollständiger neuer
+   Backendzustand gültig; ein redundanter Kontextabruf ist im selben
+   Assistant-Turn nicht erforderlich.
 8. **Absicht erneut auf den neuen Zustand anwenden**  
    Solange genau ein fachlicher oder Level-3-Schritt eindeutig ist, wird der
    Zyklus ohne unnötige Zwischenfrage fortgesetzt.
@@ -321,14 +325,14 @@ ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 | --- | --- |
 | `COACH-STATE-001` | Der frisch geladene Backendzustand ist die einzige Zustandsautorität. |
 | `COACH-SESSION-001` | Die aktuelle Lernsession wird unverändert für jeden fachlichen Aufruf verwendet und nie aus OAuth oder älteren Chats abgeleitet. |
-| `COACH-SESSION-002` | Neue Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt `PT1H` ist gültig. Ein gespeicherter Write-Replay mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId` ist nur bei noch nicht abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion zulässig und mutiert nicht erneut. |
+| `COACH-SESSION-002` | Operationen und gespeicherte Write-Replays benötigen mindestens `PT1H` Restlaufzeit; exakt `PT1H` ist gültig. Ein Replay mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId` ist nur bei verfügbarer gepinnter Workflow-/Curriculumversion und unveränderter kanonischer Learner-Revision zulässig und mutiert nicht erneut. |
 | `COACH-SESSION-003` | Sessionfehler ergeben ausschließlich die unveränderte Serverinstruktion und, falls darin noch nicht enthalten, die exakte `startUrl`; keine Fachantwort oder OAuth-Neuverbindung, Fortsetzung über First-Party-Webstart und neuen Chat. |
 | `COACH-BOOTSTRAP-001` | Ohne aktuelle vorbereitete Session nennt der Coach nur `https://skillpilot.com/` und den WebGUI-Startweg; er ruft kein SkillPilot-Tool auf. |
 | `COACH-INTENT-001` | Natürliche mehrteilige Absichten gelten unabhängig von Reihenfolge und Wortlaut fort. |
 | `COACH-CONTEXT-001` | Vor offenen Fragen wird der bereits bestätigte fachliche Kontext knapp genannt. |
 | `COACH-SCOPE-001` | Level-2-Lernumfang und Profile werden ausschließlich im WebGUI aufgelöst; der Coach verwendet sie nur frisch bestätigt. |
 | `COACH-FOCUS-001` | Zieloptionen stammen ausschließlich aus dem bestätigten aktuellen Fokus; frühere Stufen dürfen nicht hineinlecken. |
-| `COACH-MUTATION-001` | Pro frischem Zustand wird nur eine aktuell erlaubte Option mutiert; danach wird neu geladen. |
+| `COACH-MUTATION-001` | Pro frischem Zustand wird nur eine aktuell erlaubte Option mutiert; ihr vollständiger Nachfolgerzustand ist danach für den Rest desselben Assistant-Turns autoritativ. |
 | `COACH-QUESTION-001` | Der Coach fragt nur echte Restmehrdeutigkeiten und fasst zusammengehörige offene Angaben möglichst zusammen. |
 | `COACH-GOAL-001` | Unterricht findet an genau einem bestätigten atomischen Ziel statt. |
 | `COACH-MASTERY-001` | Mastery folgt der global eindeutigen Lernziel-ID und wird nur nach ausreichender Evidenz gespeichert. |

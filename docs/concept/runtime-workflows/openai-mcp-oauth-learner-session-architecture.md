@@ -158,23 +158,26 @@ Das Backend prüft bei jedem Toolaufruf in dieser Reihenfolge:
 5. tatsächlichen Ablauf und Widerruf;
 6. Zuordnung zum autoritativen Lernendenzustand und Verfügbarkeit der gepinnten
    Contract-, Workflow- und Curriculumrevision;
-7. bei einem Write den gespeicherten Replay eines bereits committeten Requests
-   mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben
-   `clientRequestId`;
-8. für jede neue Operation mindestens `PT1H` Restlaufzeit.
+7. für jede Lese-, Schreib- oder Replay-Antwort mindestens `PT1H`
+   Restlaufzeit;
+8. bei einem Write den gespeicherten Replay eines bereits committeten Requests
+   mit gleichem Toolnamen, kanonisch identischen Argumenten, derselben
+   `clientRequestId` und einer `completedStateVersion`, die weiterhin der
+   aktuellen kanonischen Learner-Revision entspricht.
 
 Erst danach wird die fachliche Operation ausgeführt. Schreibende Tools
 benötigen weiterhin zusätzlich den Write-Scope.
 
 Für den Aktionshorizont gilt `expiresAt >= now + PT1H`: Genau eine Stunde
 Restlaufzeit ist gültig, weniger als eine Stunde wird vor der fachlichen
-Operation mit `SESSION_RENEWAL_REQUIRED` abgewiesen. Der beschriebene Replay
-eines bereits committeten Writes darf innerhalb dieser letzten Stunde nur
-solange zurückgegeben werden, wie die Session selbst noch nicht abgelaufen ist
-und die von ihr gepinnten Workflow- und Curriculumversionen weiter verfügbar
-sind. Er liefert das gespeicherte Resultat und führt weder Operation noch
-Mutation erneut aus. Nach dem absoluten Ablauf oder bei nicht mehr verfügbarer
-gepinnter Version ist auch ein Replay unzulässig.
+Operation mit `SESSION_RENEWAL_REQUIRED` abgewiesen. Dasselbe gilt für einen
+Replay eines bereits committeten Writes. Oberhalb der Grenze liefert er das
+gespeicherte Resultat nur, wenn die gepinnten Workflow- und
+Curriculumversionen weiter verfügbar sind und seine
+`completedStateVersion` noch der aktuellen kanonischen Learner-Revision
+entspricht. Er führt weder Operation noch Mutation erneut aus; bei einer
+inzwischen fortgeschrittenen Revision endet er mit
+`STATE_VERSION_CONFLICT`.
 
 Die `learningSessionId` ist Pflichtargument **aller** fachlichen
 SkillPilot-MCP-Tools. Es gibt keine Ausnahme für den ersten Leseaufruf.
@@ -274,11 +277,11 @@ Oberfläche und der dadurch geöffnete neue Chat. OAuth allein ist kein Startweg
 4. Benutzung verlängert die Ablaufzeit nicht.
 5. Jede neue fachliche Operation benötigt mindestens `PT1H` Restlaufzeit; exakt
    `PT1H` ist gültig.
-6. Nur ein gespeicherter Write-Replay mit gleichem Toolnamen, kanonisch
-   identischen Argumenten und derselben `clientRequestId` darf die
-   Ein-Stunden-Grenze bei noch nicht abgelaufener Session und verfügbarer
-   gepinnter Workflow-/Curriculumversion passieren und führt keine Operation
-   erneut aus.
+6. Auch ein gespeicherter Write-Replay benötigt mindestens `PT1H`
+   Restlaufzeit. Bei gleichem Toolnamen, kanonisch identischen Argumenten,
+   derselben `clientRequestId`, verfügbaren gepinnten Versionen und unveränderter
+   kanonischer Learner-Revision liefert er das gespeicherte Resultat, ohne eine
+   Operation erneut auszuführen.
 7. Jeder Start erzeugt eine neue, unabhängige Session.
 8. OAuth allein wählt keinen Lernenden und erzeugt keine Lernsession.
 9. Eine Lernsession allein autorisiert keinen MCP-Aufruf.
@@ -292,8 +295,10 @@ Oberfläche und der dadurch geöffnete neue Chat. OAuth allein ist kein Startweg
 15. Die final bestätigte `communicationLocale` wird beim First-Party-Start in
     der Session gespeichert, bei jedem Kontextabruf geliefert und danach weder
     aus Hostlocale noch aus neutral englischen Pluginmetadaten neu abgeleitet.
-16. Vor jeder lernendenbezogenen Coach-Antwort muss im aktuellen Assistant-Turn
-    `get_skillpilot_context` erfolgreich sein.
+16. Zu Beginn jedes Learner-Turns muss im aktuellen Assistant-Turn
+    `get_skillpilot_context` erfolgreich sein. Nach einer erfolgreichen
+    Mutation ist ihr vollständiger Nachfolgerzustand für den Rest desselben
+    Assistant-Turns autoritativ und wird nicht erneut geladen.
 17. Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben im
     First-Party-WebGUI; V1 besitzt dafür keine Modellwerkzeuge.
 
@@ -330,12 +335,13 @@ Folgendes beweisen:
     gesetztes Feld bei deaktiviertem Gate ab.
 17. Ein Diagnose-Start mit `3660` oder `5400` wirkt nur auf seine eigene
     Session; bereits der nächste Start ohne Feld läuft wieder `PT24H`.
-18. Vor jeder lernendenbezogenen Coach-Antwort läuft in demselben Assistant-Turn
-    ein erfolgreicher Kontextabruf; ein Sessionfehler verhindert jeden
-    fachlichen Text.
+18. Zu Beginn jedes Learner-Turns läuft in demselben Assistant-Turn ein
+    erfolgreicher Kontextabruf; ein Sessionfehler verhindert jeden fachlichen
+    Text. Nach einer erfolgreichen Mutation wird ihr vollständiger
+    Nachfolgerzustand im selben Turn ohne redundanten Kontextabruf verwendet.
 19. Der öffentliche V1-Toolkatalog enthält keine sessionlosen Start-,
     Capability-, Curriculum- oder Personalisierungswerkzeuge.
-20. Ein Write-Replay wird nach Sessionablauf oder bei nicht mehr verfügbarer
-    gepinnter Workflow-/Curriculumversion abgelehnt, auch wenn Toolname,
-    kanonische Argumente und `clientRequestId` dem gespeicherten Write
-    entsprechen.
+20. Ein Write-Replay wird unterhalb `PT1H`, bei nicht mehr verfügbarer
+    gepinnter Workflow-/Curriculumversion oder nach Fortschritt der kanonischen
+    Learner-Revision abgelehnt, auch wenn Toolname, kanonische Argumente und
+    `clientRequestId` dem gespeicherten Write entsprechen.

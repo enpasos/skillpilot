@@ -624,15 +624,15 @@ abgelaufene Sessions verwenden `SESSION_REQUIRED`, eine nicht mehr verfügbare
 gepinnte Revision `SESSION_VERSION_UNAVAILABLE`. OAuth bleibt in allen drei
 Fällen unabhängig und wird nicht neu verbunden.
 
-Die eine bewusst enge Ausnahme ist ein exakter idempotenter Replay eines bereits
-committeten Writes. Stimmen Session, Toolname, kanonisch normalisierte Argumente
-und `clientRequestId`
-mit dem gespeicherten Erfolg überein, ist die Session selbst noch nicht
-abgelaufen und sind ihre gepinnten Workflow- und Curriculumversionen weiterhin
-verfügbar, darf dessen gespeichertes Ergebnis auch innerhalb der letzten Stunde
-zurückgegeben werden. Der Replay führt weder die fachliche Operation noch eine
-zweite Mutation aus. Nach tatsächlichem Ablauf oder bei nicht mehr verfügbarer
-gepinnter Version ist auch dieser Replay gesperrt.
+Ein exakter idempotenter Replay eines bereits committeten Writes unterliegt
+derselben `PT1H`-Grenze. Stimmen Session, Toolname, kanonisch normalisierte
+Argumente und `clientRequestId` mit dem gespeicherten Erfolg überein, sind die
+gepinnten Workflow- und Curriculumversionen weiterhin verfügbar und entspricht
+seine `completedStateVersion` noch der aktuellen kanonischen Learner-Revision,
+darf das gespeicherte Ergebnis zurückgegeben werden. Der Replay führt weder die
+fachliche Operation noch eine zweite Mutation aus. Unterhalb `PT1H`, bei nicht
+mehr verfügbarer gepinnter Version oder nach weiterem Zustandsfortschritt ist
+auch dieser Replay gesperrt.
 
 Ohne aktuelle SkillPilot-Startnachricht ruft das Modell kein SkillPilot-
 Werkzeug auf, sondern nennt nur lokalisiert `https://skillpilot.com/` und den
@@ -1395,8 +1395,9 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - der unveröffentlichte V1-Draft genau zwei aktuelle hashgebundene
   `text/html;profile=mcp-app`-Ressourcen aktiv bindet, Bild-Renderer und
   Kartenlauncher jeweils nur an ihre eigene Ressource bindet, app-only
-  Kartenreview ungebunden lässt und jede bereits ausgelieferte frühere Start-
-  oder Bild-URI byte-identisch passiv lesbar hält;
+  Kartenreview ungebunden lässt und jede bereits ausgelieferte frühere
+  Bild-URI byte-identisch passiv lesbar hält; nie veröffentlichte
+  Startressourcen gehören nicht zum V1-Vertrag;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben

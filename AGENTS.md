@@ -507,13 +507,15 @@ Rule:
   gate. A conforming host may render or decline the UI resource; this optional
   presentation result must never change authentication, authorization, state,
   persistence, or the ordinary chat result.
-* When the newest successful full context contains `goalVisualization` and
-  permits the renderer, call it exactly once with that result's unchanged
-  `goalId`, copying the top-level `stateVersion` into the renderer input
-  `expectedStateVersion`. Never reuse or retry stale authorization. A
-  mastery handoff remains before the successor section; render immediately
-  before coaching the associated active goal. The receipt does not replace
-  full context, and omitted host presentation does not weaken the text path.
+* When the newest successful full context or state-changing result contains
+  `goalVisualization` and permits the renderer, call it exactly once as the
+  immediate next tool call with that result's unchanged `goalId`, copying the
+  top-level `stateVersion` into the renderer input `expectedStateVersion`.
+  Never insert another tool call, reuse stale authorization, or retry the
+  renderer. A mastery handoff remains before the successor section; render
+  before coaching the associated active goal. The receipt does not replace the
+  authoritative full result, and omitted host presentation does not weaken the
+  text path.
 * A content-addressed UI URI becomes immutable as soon as it has been advertised
   to a real client, including during draft testing. Replacing widget HTML
   produces a new active hash-bound URI; older URIs remain registered with their
@@ -1051,15 +1053,17 @@ Provider-facing contracts must use derived temporary context instead:
   absolute validity. Exactly one hour remaining is valid; less than one hour
   returns `SESSION_RENEWAL_REQUIRED` before the fachliche operation executes.
   A retry of an already committed write with the same tool name, canonically
-  identical arguments, and the same `clientRequestId` may still replay its
-  stored result only while the session itself has not expired and its pinned
-  workflow and curriculum versions remain available; that replay performs no
-  operation and no second mutation. Missing, invalid, or expired sessions
+  identical arguments, and the same `clientRequestId` may replay its stored
+  result only while the session still has at least `PT1H` remaining, its pinned
+  workflow and curriculum versions remain available, and its completed
+  `stateVersion` is still the learner's current canonical revision. That replay
+  performs no operation and no second mutation. Missing, invalid, or expired sessions
   return `SESSION_REQUIRED`, and unavailable pinned workflow or curriculum
   revisions return `SESSION_VERSION_UNAVAILABLE`. None is an OAuth failure.
-- Before every learner-facing OpenAI V1 coaching response,
-  `get_skillpilot_context` must succeed in that assistant turn. A mutation
-  result does not waive this pre-response validity and freshness check.
+- At the start of every learner turn, `get_skillpilot_context` must succeed in
+  that assistant turn. After one successful state-changing call, its complete
+  successor result is authoritative for the remainder of the same assistant
+  turn and must not be redundantly reloaded.
 - The OpenAI V1 model contract has no sessionless start tool, provider-side
   SkillPilot-ID input, or in-chat renewal. Without a current
   prepared start message, the coach gives only a short localized instruction
@@ -1098,9 +1102,10 @@ Provider-facing contracts must use derived temporary context instead:
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
   compatibility routes. The still-unpublished `1.0.0` draft binds exactly two
   active, hash-bound MCP Apps resources: the image-only goal renderer and the
-  interactive memory-practice launcher. Previously advertised start and
-  image hash URIs remain byte-identically readable as passive resources, but no
-  active tool binds the retained start resources. Ordinary
+  interactive memory-practice launcher. Previously advertised image hash URIs
+  remain byte-identically readable as passive resources. The unpublished
+  provider-side start tools, resources, widgets, and runtime services are
+  removed. Ordinary
   coaching, selection, mastery, Verified Recall, and exam flows remain normal
   MCP/chat flows without UI bindings; the memory-card review write is app-only
   and has no output template of its own.
@@ -1212,11 +1217,12 @@ provider policy and product review explicitly permit it.
   MCP activity slides its expiry. New session-bound operations require at least
   one hour of remaining validity, including the exact `PT1H` boundary. Below
   that boundary, the coach stops and returns only the server-owned WebGUI start
-  instruction. Only a replay with the same tool name, canonically identical
-  arguments, and the same `clientRequestId` for an already committed write may
-  bypass the one-hour action guard while the session remains unexpired and its
-  pinned workflow and curriculum versions remain available, because it
-  executes no fachliche operation. Session recovery means “start a fresh
+  instruction. A replay with the same tool name, canonically identical
+  arguments, and the same `clientRequestId` for an already committed write is
+  also rejected below the one-hour action guard. It is returned only while the
+  pinned versions remain available and its completed `stateVersion` is still
+  the current canonical learner revision; it executes no fachliche operation.
+  Session recovery means “start a fresh
   learning session in SkillPilot and open a new chat”, never “reconnect OAuth”.
 - **Prototype boundary:** `ai/openai app/` contains an executable neutral
   Streamable-HTTP MCP Apps mechanism prototype and local host simulation with

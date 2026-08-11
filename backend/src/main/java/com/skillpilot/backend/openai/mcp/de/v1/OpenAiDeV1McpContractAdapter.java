@@ -15,10 +15,8 @@ import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
 import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
-import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
-import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
@@ -29,11 +27,6 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.OpenAiCoachLocale;
-import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapCapabilityIssueRequest;
-import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapCapabilityIssueResult;
-import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapCapabilityService;
-import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapErrorCode;
-import com.skillpilot.backend.openai.de.bootstrap.OpenAiDeBootstrapException;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContext;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachContextProjector;
@@ -93,9 +86,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String READ_SCOPE = "skillpilot.openai.v1.read";
     public static final String WRITE_SCOPE = "skillpilot.openai.v1.write";
 
-    public static final String OPEN_SKILLPILOT_START = "open_skillpilot_start";
-    public static final String ISSUE_SKILLPILOT_START_CAPABILITY =
-            "issue_skillpilot_start_capability";
     public static final String GET_CONTEXT = "get_skillpilot_context";
     public static final String RENDER_GOAL_VISUALIZATION =
             "render_skillpilot_goal_visualization";
@@ -103,8 +93,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String REVIEW_MEMORY_PRACTICE_CARD =
             "review_skillpilot_memory_practice_card";
     public static final String GET_NAVIGATION = "get_skillpilot_navigation";
-    public static final String SET_CURRICULUM = "set_skillpilot_curriculum";
-    public static final String SET_PERSONALIZATION = "set_skillpilot_personalization";
     public static final String SET_SCOPE = "set_skillpilot_scope";
     public static final String SET_ACTIVE_GOAL = "set_skillpilot_active_goal";
     public static final String SET_MASTERY = "set_skillpilot_mastery";
@@ -112,10 +100,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String GET_RECALL_ANSWER = "get_skillpilot_verified_recall_answer";
     public static final String RECORD_RECALL_RESULT = "record_skillpilot_verified_recall_result";
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation";
-    public static final String PURPOSE = "purpose";
-    public static final String PURPOSE_START = "START";
-    public static final String PURPOSE_RENEW_EXISTING = "RENEW_EXISTING";
-    public static final String COMMUNICATION_LOCALE = "communicationLocale";
     public static final String LEARNING_SESSION_ID = "learningSessionId";
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
@@ -130,7 +114,6 @@ public final class OpenAiDeV1McpContractAdapter {
     private static final String EXAM_EVALUATION_CAPABILITY_CONTEXT = "skillpilot-exam-evaluation-v1";
     private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
     private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
-    private static final int MAX_PERSONALIZATION_REFERENCE_LENGTH = 500;
 
     private static final Pattern LEARNING_SESSION_PATTERN =
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
@@ -148,11 +131,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_URI,
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
-    private static final List<StartUiResource> SKILLPILOT_START_UI_RESOURCES =
-            loadStartUiResources();
-
     private static final String SERVER_INSTRUCTIONS = """
-            You are the SkillPilot learning coach. Before every learner-facing SkillPilot coaching response, call get_skillpilot_context with the current learningSessionId. Only a successful fresh context permits subject-matter communication. Treat its structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. After a mutation, only its fresh successor context is authoritative. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
+            You are the SkillPilot learning coach. Before every learner-facing SkillPilot coaching response, establish one fresh full SkillPilot context in the current assistant turn. A successful get_skillpilot_context result does this. A successful state-changing tool result that contains its full successor context also does this because SkillPilot has already revalidated the session and canonical state; use that successor directly and do not call get_skillpilot_context again before its immediate renderer or learner-facing response. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
             On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give both learner-facing texts from completionHandoff as concrete feedback on the completed goal, and only then begin the already activated successor in the same response. Never omit, merge, postpone, or replace either feedback text with the successor introduction. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
@@ -170,7 +150,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. On that call, workFeedback must assess the learner's visible reasoning or approach and outcomeFeedback must state the accepted result or conclusion; generic praise is insufficient. After success, present both returned texts before introducing the successor. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            If the fresh full context contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call it once with that unchanged goalId and copy the full context's top-level stateVersion unchanged into expectedStateVersion. Do not call it otherwise or retry it automatically. The result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
+            If the newest fresh full result, either get_skillpilot_context or a successful state-changing result containing its full successor context, contains goalVisualization and nextAllowedTools permits render_skillpilot_goal_visualization, call the renderer exactly once as the immediate next tool call with that result's unchanged goalId and top-level stateVersion. Do not insert get_skillpilot_context or any other SkillPilot tool between that authorizing result and the renderer. Do not call it otherwise or retry it automatically. The result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
@@ -186,7 +166,6 @@ public final class OpenAiDeV1McpContractAdapter {
     private final OpenAiDeCoachIdentityResolver identityResolver;
     private final OpenAiDeMcpTelemetry telemetry;
     private final OpenAiDeV1McpSessionCoordinator sessionCoordinator;
-    private final OpenAiDeBootstrapCapabilityService bootstrapCapabilityService;
     private final OpenAiDeCoachContextProjector contextProjector;
     private final String sessionStartUrl;
     private final byte[] capabilitySecret;
@@ -200,7 +179,6 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeCoachIdentityResolver identityResolver,
             OpenAiDeMcpTelemetry telemetry,
             OpenAiDeV1McpSessionCoordinator sessionCoordinator,
-            OpenAiDeBootstrapCapabilityService bootstrapCapabilityService,
             @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl,
             @Value("${skillpilot.openai.coach.v1.server-build:dev}") String serverBuild,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}")
@@ -210,7 +188,6 @@ public final class OpenAiDeV1McpContractAdapter {
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.sessionCoordinator = sessionCoordinator;
-        this.bootstrapCapabilityService = bootstrapCapabilityService;
         this.contextProjector = new OpenAiDeCoachContextProjector(
                 stateProjection,
                 publicBaseUrl,
@@ -235,7 +212,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 identityResolver,
                 telemetry,
                 sessionCoordinator,
-                null,
                 publicBaseUrl,
                 null,
                 signingSecret);
@@ -252,7 +228,6 @@ public final class OpenAiDeV1McpContractAdapter {
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.sessionCoordinator = null;
-        this.bootstrapCapabilityService = null;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
         this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
         this.capabilitySecret =
@@ -277,9 +252,6 @@ public final class OpenAiDeV1McpContractAdapter {
     public record NavigationResult(
             String target,
             String requiredAction,
-            OpenAiDeCoachContext.Curriculum curriculum,
-            OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog,
-            OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options,
             String instruction) {
     }
@@ -393,12 +365,15 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         GET_CONTEXT,
                         "Start or continue the SkillPilot learning coach",
-                        "Required before every learner-facing SkillPilot coaching response. It verifies the current "
-                                + "learning session, including the one-hour remaining-lifetime guard, and loads the "
-                                + "authoritative configured learning context and communication locale. Only a "
-                                + "successful result permits subject-matter SkillPilot communication. Never replace "
-                                + "this call with generic advice, a self-created curriculum, or invented goals. Do not "
-                                + "use it for general subject questions unrelated to SkillPilot.",
+                        "Required to start or refresh a SkillPilot coaching turn before the learner-facing response "
+                                + "unless this turn already has a successful state-changing result containing its full "
+                                + "successor context. It verifies the current learning session, including the one-hour "
+                                + "remaining-lifetime guard, and loads the authoritative configured learning context "
+                                + "and communication locale. Do not call it redundantly after such a fresh mutation "
+                                + "successor. Without either successful full result, subject-matter SkillPilot "
+                                + "communication is forbidden. Never replace the required full result with generic "
+                                + "advice, a self-created curriculum, or invented goals. Do not use this tool for "
+                                + "general subject questions unrelated to SkillPilot.",
                         emptyObjectSchema(),
                         contextSchema(),
                         true,
@@ -408,10 +383,13 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         RENDER_GOAL_VISUALIZATION,
                         "Display the learning-goal image",
-                        "Displays the approved image for the active atomic goal only when the newest full context "
-                                + "contains goalVisualization with the same goalId and nextAllowedTools permits this "
-                                + "tool. Copy that context's top-level stateVersion unchanged into "
-                                + "expectedStateVersion. Never call it after a newer "
+                        "Displays the approved image for the active atomic goal only when the immediately preceding "
+                                + "fresh full result is either get_skillpilot_context or a successful state-changing "
+                                + "result containing its full successor context, contains goalVisualization with the "
+                                + "same goalId, and permits this tool in nextAllowedTools. Call this renderer as the "
+                                + "exact immediate next tool; never insert get_skillpilot_context or another "
+                                + "SkillPilot tool after the authorizing result. Copy that result's top-level "
+                                + "stateVersion unchanged into expectedStateVersion. Never call it after a newer "
                                 + "SkillPilot result, with different values, or as an automatic retry. It does not "
                                 + "change state.",
                         objectSchema(
@@ -637,65 +615,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         this::getExamEvaluation));
     }
 
-    private McpStatelessServerFeatures.SyncToolSpecification sessionlessTool(
-            String name,
-            String title,
-            String description,
-            Map<String, Object> inputSchema,
-            Map<String, Object> outputSchema,
-            boolean readOnly,
-            boolean idempotent,
-            boolean writeScope,
-            boolean uiBound,
-            SessionlessToolOperation operation) {
-        List<Map<String, Object>> securitySchemes = writeScope
-                ? List.of(oauthScheme(READ_SCOPE, WRITE_SCOPE))
-                : List.of(oauthScheme(READ_SCOPE));
-        Map<String, Object> meta = new LinkedHashMap<>();
-        meta.put("securitySchemes", securitySchemes);
-        if (uiBound) {
-            meta.put(
-                    "ui",
-                    Map.of(
-                            "visibility", List.of("model", "app"),
-                            "resourceUri", OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI));
-            meta.put(
-                    "openai/outputTemplate",
-                    OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI);
-            meta.put("openai/widgetAccessible", true);
-        } else {
-            meta.put("ui", Map.of("visibility", List.of("app")));
-            meta.put("openai/visibility", "private");
-            meta.put("openai/widgetAccessible", true);
-        }
-        McpSchema.Tool descriptor = McpSchema.Tool.builder()
-                .name(name)
-                .title(title)
-                .description(description)
-                .inputSchema(inputSchema)
-                .outputSchema(outputSchema)
-                .annotations(McpSchema.ToolAnnotations.builder()
-                        .title(title)
-                        .readOnlyHint(readOnly)
-                        .destructiveHint(false)
-                        .idempotentHint(idempotent)
-                        .openWorldHint(false)
-                        .build())
-                .meta(Map.copyOf(meta))
-                .build();
-        return McpStatelessServerFeatures.SyncToolSpecification.builder()
-                .tool(descriptor)
-                .callHandler((transportContext, request) -> executeSessionlessWithTelemetry(
-                        name,
-                        transportContext,
-                        request == null || request.arguments() == null
-                                ? Map.of()
-                                : request.arguments(),
-                        writeScope,
-                        operation))
-                .build();
-    }
-
     private McpStatelessServerFeatures.SyncToolSpecification tool(
             String name,
             String title,
@@ -759,46 +678,7 @@ public final class OpenAiDeV1McpContractAdapter {
         resources.add(memoryPracticeResourceSpecification(
                 MEMORY_PRACTICE_UI_RESOURCE,
                 memoryPracticeResourceMeta()));
-        SKILLPILOT_START_UI_RESOURCES.stream()
-                .map(uiResource -> startResourceSpecification(uiResource, startResourceMeta()))
-                .forEach(resources::add);
         return List.copyOf(resources);
-    }
-
-    private McpStatelessServerFeatures.SyncResourceSpecification startResourceSpecification(
-            StartUiResource uiResource,
-            Map<String, Object> meta) {
-        McpSchema.Resource resource = McpSchema.Resource.builder(
-                        uiResource.uri(),
-                        uiResource.name())
-                .title("Retained SkillPilot compatibility resource")
-                .description("Previously advertised immutable UI resource retained only for metadata-cache "
-                        + "compatibility. It is not bound to an active tool.")
-                .mimeType(OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE)
-                .meta(meta)
-                .build();
-        return new McpStatelessServerFeatures.SyncResourceSpecification(
-                resource,
-                (transportContext, request) -> readStartResource(uiResource, meta, request));
-    }
-
-    private McpSchema.ReadResourceResult readStartResource(
-            StartUiResource uiResource,
-            Map<String, Object> meta,
-            McpSchema.ReadResourceRequest request) {
-        String requestedUri = request == null ? null : request.uri();
-        Supplier<McpSchema.ReadResourceResult> read = () -> {
-            if (!uiResource.uri().equals(requestedUri)) {
-                throw new IllegalArgumentException("Unknown SkillPilot start MCP UI resource.");
-            }
-            McpSchema.TextResourceContents contents = new McpSchema.TextResourceContents(
-                    uiResource.uri(),
-                    OpenAiDeV1ContractMetadata.MCP_APP_RESOURCE_MIME_TYPE,
-                    uiResource.html(),
-                    meta);
-            return new McpSchema.ReadResourceResult(List.of(contents));
-        };
-        return telemetry == null ? read.get() : telemetry.recordResourceRead(requestedUri, read);
     }
 
     private McpStatelessServerFeatures.SyncResourceSpecification goalVisualizationResourceSpecification(
@@ -908,27 +788,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         "redirect_domains", List.of("https://skillpilot.com")));
     }
 
-    private Map<String, Object> startResourceMeta() {
-        Map<String, Object> csp = Map.of(
-                "connectDomains", List.of(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN),
-                "resourceDomains", List.of());
-        Map<String, Object> ui = Map.of(
-                "domain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
-                "prefersBorder", true,
-                "csp", csp);
-        return Map.of(
-                "ui", ui,
-                "openai/widgetDescription",
-                        "Historical SkillPilot UI resource retained only for provider cache compatibility; no "
-                                + "active start flow is available through this resource.",
-                "openai/widgetDomain", OpenAiDeV1ContractMetadata.WIDGET_DOMAIN,
-                "openai/widgetPrefersBorder", true,
-                "openai/widgetCSP", Map.of(
-                        "connect_domains", List.of(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN),
-                        "resource_domains", List.of(),
-                        "redirect_domains", List.of("https://skillpilot.com")));
-    }
-
     /**
      * Loads the active widget plus every immutable predecessor. Historical
      * resources remain passive: only the active URI is bound to the tool.
@@ -1034,207 +893,6 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private record MemoryPracticeUiResource(String name, String uri, String html) {}
-
-    /** Loads every immutable, previously advertised direct-start widget passively. */
-    private static List<StartUiResource> loadStartUiResources() {
-        List<StartUiResource> resources = new ArrayList<>();
-        for (String sha256 : OpenAiDeV1ContractMetadata.RETAINED_SKILLPILOT_START_ARTIFACT_SHA256S) {
-            resources.add(loadStartWidget(
-                    "skillpilot-start-v1-retained-" + sha256.substring(0, 8),
-                    OpenAiDeV1ContractMetadata.skillpilotStartResourceUri(sha256),
-                    OpenAiDeV1ContractMetadata.retainedSkillpilotStartResourceClasspath(sha256),
-                    sha256));
-        }
-        long distinctUris = resources.stream().map(StartUiResource::uri).distinct().count();
-        if (distinctUris != resources.size()) {
-            throw new IllegalStateException(
-                    "Duplicate retained SkillPilot start MCP UI resource URI.");
-        }
-        return List.copyOf(resources);
-    }
-
-    private static StartUiResource loadStartWidget(
-            String name,
-            String uri,
-            String classpath,
-            String expectedSha256) {
-        try (InputStream input = OpenAiDeV1McpContractAdapter.class.getResourceAsStream(classpath)) {
-            if (input == null) {
-                throw new IllegalStateException(
-                        "Missing SkillPilot start MCP UI bundle " + classpath + ".");
-            }
-            byte[] bytes = input.readAllBytes();
-            String actualSha256 = HexFormat.of().formatHex(
-                    MessageDigest.getInstance("SHA-256").digest(bytes));
-            if (!expectedSha256.equals(actualSha256)) {
-                throw new IllegalStateException(
-                        "SkillPilot start MCP UI hash mismatch for "
-                                + classpath
-                                + ": expected "
-                                + expectedSha256
-                                + ", got "
-                                + actualSha256
-                                + ".");
-            }
-            return new StartUiResource(name, uri, new String(bytes, StandardCharsets.UTF_8));
-        } catch (IOException exception) {
-            throw new IllegalStateException(
-                    "Could not read SkillPilot start MCP UI bundle " + classpath + ".",
-                    exception);
-        } catch (NoSuchAlgorithmException exception) {
-            throw new IllegalStateException("JVM does not provide SHA-256.", exception);
-        }
-    }
-
-    private record StartUiResource(String name, String uri, String html) {}
-
-    private McpSchema.CallToolResult executeSessionlessWithTelemetry(
-            String toolName,
-            McpTransportContext transportContext,
-            Map<String, Object> arguments,
-            boolean writeScope,
-            SessionlessToolOperation operation) {
-        try {
-            return telemetry.record(toolName, arguments, () -> {
-                String authorizationReference =
-                        identityResolver.requireAuthorizationReference(transportContext);
-                if (writeScope) {
-                    identityResolver.requireWriteAccess(transportContext);
-                }
-                return operation.apply(authorizationReference, arguments);
-            });
-        } catch (AuthenticationException exception) {
-            telemetry.recordOperational(Event.UNAUTHORIZED);
-            return authenticationErrorResult(
-                    OpenAiDeV1ErrorCode.AUTHENTICATION_REQUIRED,
-                    identityResolver.authenticationChallenge(),
-                    "A valid OAuth connection is required for this SkillPilot step.",
-                    null);
-        } catch (AccessDeniedException exception) {
-            telemetry.recordOperational(Event.FORBIDDEN);
-            return authenticationErrorResult(
-                    OpenAiDeV1ErrorCode.INSUFFICIENT_SCOPE,
-                    identityResolver.insufficientScopeChallenge(),
-                    "The connected app does not have the required access for this SkillPilot step.",
-                    null);
-        } catch (OpenAiDeBootstrapException exception) {
-            if (exception.code() == OpenAiDeBootstrapErrorCode.OAUTH_AUTHORIZATION_INVALID) {
-                telemetry.recordOperational(Event.UNAUTHORIZED);
-                return authenticationErrorResult(
-                        OpenAiDeV1ErrorCode.AUTHENTICATION_REQUIRED,
-                        identityResolver.authenticationChallenge(),
-                        "The SkillPilot connection is no longer authorized.",
-                        null);
-            }
-            if (exception.code() == OpenAiDeBootstrapErrorCode.RATE_LIMITED) {
-                telemetry.recordOperational(Event.ISSUER_RATE_LIMITED);
-                return bootstrapIssuerUnavailableResult("TEMPORARILY_UNAVAILABLE");
-            }
-            if (exception.code() == OpenAiDeBootstrapErrorCode.POLICY_UNAVAILABLE) {
-                return bootstrapIssuerUnavailableResult("TEMPORARILY_UNAVAILABLE");
-            }
-            return errorResult(
-                    OpenAiDeV1ErrorCode.INVALID_INPUT,
-                    "The private SkillPilot start request is invalid.",
-                    null);
-        } catch (IllegalArgumentException exception) {
-            return errorResult(
-                    OpenAiDeV1ErrorCode.INVALID_INPUT,
-                    "The private SkillPilot start request is invalid.",
-                    null);
-        } catch (RuntimeException exception) {
-            return unexpectedErrorResult(toolName, exception, null);
-        }
-    }
-
-    private McpSchema.CallToolResult openSkillpilotStart(
-            String authorizationReference,
-            Map<String, Object> arguments) {
-        String purpose = requiredString(arguments, PURPOSE);
-        if (!PURPOSE_START.equals(purpose) && !PURPOSE_RENEW_EXISTING.equals(purpose)) {
-            throw new IllegalArgumentException("Unsupported private SkillPilot start purpose.");
-        }
-        String requestedCommunicationLocale = requiredString(arguments, COMMUNICATION_LOCALE);
-        if (!"de".equals(requestedCommunicationLocale) && !"en".equals(requestedCommunicationLocale)) {
-            throw new IllegalArgumentException("Unsupported private SkillPilot start communication locale.");
-        }
-        Map<String, Object> structured = new LinkedHashMap<>();
-        structured.put("status", "ID_REQUIRED");
-        structured.put(PURPOSE, purpose);
-        structured.put(COMMUNICATION_LOCALE, requestedCommunicationLocale);
-        structured.put("supportedLocales", List.of("de", "en"));
-        structured.put("fallbackUrl", "https://skillpilot.com/");
-
-        Map<String, Object> contractLine = new LinkedHashMap<>();
-        contractLine.put("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
-        contractLine.put("policyRevision", OpenAiDeV1ContractMetadata.POLICY_REVISION);
-        contractLine.put("displayName", "SkillPilot Coach v1");
-        contractLine.put("supportLifecycle", OpenAiDeV1ContractMetadata.SUPPORT_LIFECYCLE);
-        contractLine.put("publicationStatus", OpenAiDeV1ContractMetadata.PUBLICATION_STATUS);
-        contractLine.put("newSessionPolicy", OpenAiDeV1ContractMetadata.NEW_SESSION_POLICY);
-        contractLine.put("successor", null);
-
-        Map<String, Object> privateStart = new LinkedHashMap<>();
-        privateStart.put("schemaVersion", 1);
-        privateStart.put("contractLine", contractLine);
-        return successResult(
-                "The private SkillPilot start surface is ready. Never enter a SkillPilot ID in chat.",
-                Map.copyOf(structured),
-                Map.of("skillpilotStart", privateStart));
-    }
-
-    private McpSchema.CallToolResult issueSkillpilotStartCapability(
-            String authorizationReference,
-            Map<String, Object> arguments) {
-        String providerNoticeVersion = requiredString(arguments, "providerNoticeVersion");
-        if (!OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION.equals(providerNoticeVersion)) {
-            return bootstrapIssuerUnavailableResult("NOTICE_REFRESH_REQUIRED");
-        }
-        if (!Boolean.TRUE.equals(arguments.get("providerEligibilityConfirmed"))) {
-            return bootstrapIssuerUnavailableResult("DECISION_REQUIRED");
-        }
-        String sourceMajorDecision = optionalString(arguments, "sourceMajorDecision");
-        if (sourceMajorDecision != null) {
-            return bootstrapIssuerUnavailableResult("DECISION_REQUIRED");
-        }
-        if (bootstrapCapabilityService == null) {
-            return bootstrapIssuerUnavailableResult("TEMPORARILY_UNAVAILABLE");
-        }
-        OpenAiDeBootstrapCapabilityIssueResult issued =
-                bootstrapCapabilityService.issueCapability(
-                        authorizationReference,
-                        new OpenAiDeBootstrapCapabilityIssueRequest(
-                                providerNoticeVersion,
-                                true,
-                                sourceMajorDecision));
-        Map<String, Object> structured = new LinkedHashMap<>();
-        structured.put("status", "CAPABILITY_ISSUED");
-        structured.put("contractMajor", issued.contractMajor());
-        structured.put("providerNoticeVersion", issued.providerNoticeVersion());
-
-        Map<String, Object> privateStart = new LinkedHashMap<>();
-        privateStart.put("schemaVersion", 1);
-        privateStart.put("setupCapability", issued.setupCapability());
-        privateStart.put("expiresAt", issued.expiresAt().toString());
-        privateStart.put("contractMajor", issued.contractMajor());
-        privateStart.put("policyRevision", issued.policyRevision());
-        privateStart.put("providerNoticeVersion", issued.providerNoticeVersion());
-        privateStart.put("sourceMajorDecision", issued.sourceMajorDecision());
-        return successResult(
-                "The private SkillPilot start authorization is ready.",
-                Map.copyOf(structured),
-                Map.of("skillpilotStart", Map.copyOf(privateStart)));
-    }
-
-    private McpSchema.CallToolResult bootstrapIssuerUnavailableResult(String status) {
-        Map<String, Object> structured = new LinkedHashMap<>();
-        structured.put("status", status);
-        structured.put("contractMajor", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
-        structured.put("fallbackUrl", "https://skillpilot.com/");
-        return successResult(
-                "Use the SkillPilot website to start safely.",
-                Map.copyOf(structured));
-    }
 
     private McpSchema.CallToolResult executeWithTelemetry(
             String toolName,
@@ -1841,9 +1499,6 @@ public final class OpenAiDeV1McpContractAdapter {
         NavigationResult result = new NavigationResult(
                 target,
                 requiredAction,
-                null,
-                null,
-                null,
                 List.copyOf(options),
                 instruction);
         String resultSummary;
@@ -1863,108 +1518,6 @@ public final class OpenAiDeV1McpContractAdapter {
         return successResult(
                 resultSummary,
                 result);
-    }
-
-    private McpSchema.CallToolResult setCurriculum(
-            String skillpilotId,
-            Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata) {
-        UpdateCurriculumRequest request = new UpdateCurriculumRequest();
-        request.setCurriculumId(requiredString(arguments, "curriculumId"));
-        return contextMutationResult(
-                skillpilotId,
-                localized(metadata,
-                        "Lehrplan gespeichert; Folgezustand geladen.",
-                        "Curriculum saved; successor state loaded."),
-                coachTools.setCurriculum(skillpilotId, request),
-                metadata);
-    }
-
-    private McpSchema.CallToolResult setPersonalization(
-            String skillpilotId,
-            Map<String, Object> arguments,
-            OpenAiDeV1SessionMetadata metadata) {
-        String optionId = optionalBoundedNonEmptyString(
-                arguments,
-                "optionId",
-                MAX_PERSONALIZATION_REFERENCE_LENGTH);
-        String rewindId = optionalBoundedNonEmptyString(
-                arguments,
-                "rewindId",
-                MAX_PERSONALIZATION_REFERENCE_LENGTH);
-        boolean hasOptionId = optionId != null;
-        boolean hasRewindId = rewindId != null;
-        if (hasOptionId == hasRewindId) {
-            throw new IllegalArgumentException("Exactly one of optionId or rewindId is required.");
-        }
-        if (hasRewindId) {
-            return contextMutationResult(
-                    skillpilotId,
-                    localized(metadata,
-                            "Personalisierungsentscheidung wieder geöffnet; Folgezustand geladen.",
-                            "Personalisation decision reopened; successor state loaded."),
-                    coachTools.rewindPersonalization(skillpilotId, rewindId),
-                    metadata);
-        }
-        PersonalizationRequest request = resolvePersonalizationRequest(
-                skillpilotId,
-                coachTools.getLearnerState(skillpilotId),
-                optionId,
-                metadata);
-        return contextMutationResult(
-                skillpilotId,
-                localized(metadata,
-                        "Personalisierung aktualisiert; Folgezustand geladen.",
-                        "Personalisation updated; successor state loaded."),
-                coachTools.setPersonalization(skillpilotId, request),
-                metadata);
-    }
-
-    /** Resolves exactly one opaque ID from the currently published option set. */
-    private PersonalizationRequest resolvePersonalizationRequest(
-            String skillpilotId,
-            UnifiedLearnerStateResponse state,
-            String optionId,
-            OpenAiDeV1SessionMetadata metadata) {
-        List<OpenAiDeCoachContext.Option> allowedOptions =
-                personalizationOptions(skillpilotId, state, false, metadata);
-        if (allowedOptions.isEmpty()) {
-            throw new IllegalArgumentException("No personalisation options are currently available.");
-        }
-        List<OpenAiDeCoachContext.Option> matches = allowedOptions.stream()
-                .filter(option -> option.id() != null && option.id().equals(optionId))
-                .toList();
-        if (matches.size() != 1) {
-            throw new IllegalArgumentException(
-                    "The personalisation option is unknown, stale, or ambiguous.");
-        }
-
-        return new PersonalizationRequest(
-                Map.of(),
-                List.of(),
-                List.of(),
-                optionId);
-    }
-
-    private List<OpenAiDeCoachContext.Option> personalizationOptions(
-            String skillpilotId,
-            UnifiedLearnerStateResponse state,
-            boolean navigation,
-            OpenAiDeV1SessionMetadata metadata) {
-        if (state == null || state.curriculum() == null) {
-            return List.of();
-        }
-        PersonalizationPlan plan = coachTools.getPersonalizationPlan(skillpilotId);
-        String rootLandscapeId = state.curriculum().getCurriculumId();
-        return navigation
-                ? contextProjector.personalizationNavigationOptions(
-                        plan,
-                        rootLandscapeId,
-                        communicationLocale(metadata))
-                : contextProjector.personalizationOptions(
-                        plan,
-                        rootLandscapeId,
-                        communicationLocale(metadata));
     }
 
     private McpSchema.CallToolResult setScope(
@@ -3003,21 +2556,6 @@ public final class OpenAiDeV1McpContractAdapter {
         return text.trim();
     }
 
-    private String optionalBoundedNonEmptyString(
-            Map<String, Object> arguments,
-            String name,
-            int maxLength) {
-        String value = optionalString(arguments, name);
-        if (value == null) {
-            return null;
-        }
-        if (value.isBlank() || value.length() > maxLength) {
-            throw new IllegalArgumentException(
-                    name + " muss zwischen 1 und " + maxLength + " Zeichen enthalten.");
-        }
-        return value;
-    }
-
     private List<String> stringList(Map<String, Object> arguments, String name, boolean required) {
         Object value = arguments.get(name);
         if (value == null) {
@@ -3119,67 +2657,6 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private static Map<String, Object> emptyObjectSchema() {
         return objectSchema(Map.of(), List.of());
-    }
-
-    private static Map<String, Object> setPersonalizationInputSchema() {
-        Map<String, Object> schema = new LinkedHashMap<>(objectSchema(
-                Map.of(
-                        "optionId", boundedOpaqueReferenceSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH),
-                        "rewindId", boundedOpaqueReferenceSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH)),
-                List.of()));
-        schema.put(
-                "oneOf",
-                List.of(
-                        Map.of("required", List.of("optionId")),
-                        Map.of("required", List.of("rewindId"))));
-        return Map.copyOf(schema);
-    }
-
-    private static Map<String, Object> openSkillpilotStartOutputSchema() {
-        Map<String, Object> locales = new LinkedHashMap<>();
-        locales.put("type", "array");
-        locales.put("prefixItems", List.of(Map.of("const", "de"), Map.of("const", "en")));
-        locales.put("items", false);
-        locales.put("minItems", 2);
-        locales.put("maxItems", 2);
-        return objectSchema(
-                Map.of(
-                        "status",
-                        enumStringSchema(
-                                "ID_REQUIRED",
-                                "MAJOR_UPGRADE_REQUIRED",
-                                "TEMPORARILY_UNAVAILABLE"),
-                        PURPOSE,
-                        enumStringSchema(PURPOSE_START, PURPOSE_RENEW_EXISTING),
-                        COMMUNICATION_LOCALE,
-                        enumStringSchema("de", "en"),
-                        "supportedLocales",
-                        Map.copyOf(locales),
-                        "fallbackUrl",
-                        Map.of("const", "https://skillpilot.com/")),
-                List.of("status", PURPOSE, COMMUNICATION_LOCALE, "supportedLocales", "fallbackUrl"));
-    }
-
-    private static Map<String, Object> issueSkillpilotStartCapabilityOutputSchema() {
-        Map<String, Object> success = objectSchema(
-                Map.of(
-                        "status", Map.of("const", "CAPABILITY_ISSUED"),
-                        "contractMajor", Map.of("const", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR),
-                        "providerNoticeVersion",
-                        Map.of("const", OpenAiDeV1ContractMetadata.PROVIDER_NOTICE_VERSION)),
-                List.of("status", "contractMajor", "providerNoticeVersion"));
-        Map<String, Object> unavailable = objectSchema(
-                Map.of(
-                        "status",
-                        enumStringSchema(
-                                "DECISION_REQUIRED",
-                                "NOTICE_REFRESH_REQUIRED",
-                                "MAJOR_UPGRADE_REQUIRED",
-                                "TEMPORARILY_UNAVAILABLE"),
-                        "contractMajor", Map.of("const", OpenAiDeV1ContractMetadata.CONTRACT_MAJOR),
-                        "fallbackUrl", Map.of("const", "https://skillpilot.com/")),
-                List.of("status", "contractMajor", "fallbackUrl"));
-        return Map.of("type", "object", "oneOf", List.of(success, unavailable));
     }
 
     @SuppressWarnings("unchecked")
@@ -3322,62 +2799,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         "instruction"));
     }
 
-    private static Map<String, Object> curriculumCatalogSchema() {
-        return objectSchema(
-                Map.of(
-                        "schemaVersion", integerSchema(1, 1),
-                        "entries", objectArraySchema(curriculumCatalogEntrySchema())),
-                List.of("schemaVersion", "entries"));
-    }
-
-    private static Map<String, Object> curriculumCatalogEntrySchema() {
-        return objectSchema(
-                Map.of(
-                        "optionId", nonEmptyStringSchema(),
-                        "category", enumStringSchema("SCHOOL", "UNI", "OTHER"),
-                        "qualityStatus", enumStringSchema("green", "orange", "red"),
-                        "sortRank", integerSchema(0, 2)),
-                List.of(
-                        "optionId",
-                        "category",
-                        "qualityStatus",
-                        "sortRank"));
-    }
-
-    private static Map<String, Object> personalizationHistorySchema() {
-        Map<String, Object> properties = new LinkedHashMap<>();
-        properties.put("schemaVersion", integerSchema(1, 1));
-        properties.put("currentDecision", editablePersonalizationHistoryDecisionSchema());
-        properties.put(
-                "completedDecisions",
-                boundedObjectArraySchema(editablePersonalizationHistoryDecisionSchema(), 0, 64));
-        properties.put(
-                "preservedDecisions",
-                boundedObjectArraySchema(preservedPersonalizationHistoryDecisionSchema(), 0, 64));
-        return objectSchema(
-                properties,
-                List.of("schemaVersion", "completedDecisions", "preservedDecisions"));
-    }
-
-    private static Map<String, Object> editablePersonalizationHistoryDecisionSchema() {
-        return objectSchema(
-                Map.of(
-                        "rewindId", boundedNonEmptyStringSchema(MAX_PERSONALIZATION_REFERENCE_LENGTH),
-                        "stageLabel", boundedNonEmptyStringSchema(320),
-                        "groupLabel", boundedNonEmptyStringSchema(320),
-                        "selectedLabels", boundedStringArraySchema(0, 32)),
-                List.of("rewindId", "stageLabel", "groupLabel", "selectedLabels"));
-    }
-
-    private static Map<String, Object> preservedPersonalizationHistoryDecisionSchema() {
-        return objectSchema(
-                Map.of(
-                        "stageLabel", boundedNonEmptyStringSchema(320),
-                        "groupLabel", boundedNonEmptyStringSchema(320),
-                        "selectedLabels", boundedStringArraySchema(0, 32)),
-                List.of("stageLabel", "groupLabel", "selectedLabels"));
-    }
-
     private static Map<String, Object> navigationSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("target", stringSchema());
@@ -3410,38 +2831,6 @@ public final class OpenAiDeV1McpContractAdapter {
         return objectSchema(
                 Map.of("goalVisualization", goalVisualizationSchema()),
                 List.of("goalVisualization"));
-    }
-
-    private static Map<String, Object> decisionSchema() {
-        return objectSchema(
-                Map.of(
-                        "stageLabel", nonEmptyStringSchema(),
-                        "groupLabel", nonEmptyStringSchema(),
-                        "minSelections", integerSchema(0, null),
-                        "maxSelections", integerSchema(0, null),
-                        "selectedCount", integerSchema(0, null)),
-                List.of(
-                        "stageLabel",
-                        "groupLabel",
-                        "minSelections",
-                        "maxSelections",
-                        "selectedCount"));
-    }
-
-    private static Map<String, Object> orientationSchema() {
-        return objectSchema(
-                Map.of(
-                        "establishedContext", stringSchema(),
-                        "openQuestions", objectArraySchema(openQuestionSchema())),
-                List.of("openQuestions"));
-    }
-
-    private static Map<String, Object> openQuestionSchema() {
-        return objectSchema(
-                Map.of(
-                        "topic", stringSchema(),
-                        "question", stringSchema()),
-                List.of("topic", "question"));
     }
 
     private static Map<String, Object> orientationOutlookSchema() {
@@ -3765,14 +3154,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 "description", "Copy unchanged from the newest SkillPilot result.");
     }
 
-    private static Map<String, Object> boundedOpaqueReferenceSchema(int maxLength) {
-        return Map.of(
-                "type", "string",
-                "minLength", 1,
-                "maxLength", maxLength,
-                "description", "Copy unchanged from the newest SkillPilot result.");
-    }
-
     private String communicationLocale(OpenAiDeV1SessionMetadata metadata) {
         return metadata == null
                 ? OpenAiCoachLocale.CONTROL_PLANE_LOCALE
@@ -3885,13 +3266,6 @@ public final class OpenAiDeV1McpContractAdapter {
                 String skillpilotId,
                 Map<String, Object> arguments,
                 OpenAiDeV1SessionMetadata metadata);
-    }
-
-    @FunctionalInterface
-    private interface SessionlessToolOperation {
-        McpSchema.CallToolResult apply(
-                String authorizationReference,
-                Map<String, Object> arguments);
     }
 
 }

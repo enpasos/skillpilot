@@ -24,7 +24,7 @@ public record OpenAiDeCoachStartRequest(
         LaunchIntent launchIntent,
         Integer diagnosticSessionTtlSeconds) {
 
-    /** Compatibility constructor for ordinary and private-bootstrap launches. */
+    /** Convenience constructor for ordinary first-party launches. */
     public OpenAiDeCoachStartRequest(
             String communicationLocale,
             String client,

@@ -79,11 +79,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             "openai-apps-challenge;",
             coaches,
         )
-        self.assertIn("location = /bootstrap/v1/launch {", coaches)
-        self.assertIn(
-            "proxy_pass http://127.0.0.1:8787/bootstrap/v1/launch;",
-            coaches,
-        )
+        self.assertNotIn("/bootstrap/v1/launch", coaches)
         self.assertNotIn(
             "proxy_pass http://127.0.0.1:8787/.well-known/", coaches
         )
@@ -105,7 +101,6 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             "/internal/openai/v1/mcp",
             "/internal/openai/v1/protected-resource-metadata",
             "/internal/openai/v1/openai-apps-challenge",
-            "/bootstrap/v1/launch",
             "/.well-known/oauth-protected-resource",
             "/.well-known/openai-apps-challenge",
         ):
@@ -139,19 +134,7 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
             'CHALLENGE_URL="${MCP_ORIGIN}/.well-known/openai-apps-challenge"',
             script,
         )
-        self.assertIn(
-            'BOOTSTRAP_URL="${MCP_ORIGIN}/bootstrap/v1/launch"',
-            script,
-        )
-        self.assertIn(
-            'CHATGPT_WEB_WIDGET_ORIGIN="https://mcp-coach-v1-skillpilot-com.'
-            'web-sandbox.oaiusercontent.com"',
-            script,
-        )
-        self.assertIn("public_bootstrap_cors", script)
-        self.assertIn("public_bootstrap_cors_negative", script)
-        self.assertIn("Access-Control-Request-Method: POST", script)
-        self.assertIn("Access-Control-Request-Headers: authorization,content-type", script)
+        self.assertNotIn("/bootstrap/v1/launch", script)
         self.assertIn(
             'AUTHORIZATION_METADATA_URL="${AUTHORIZATION_ORIGIN}/.well-known/'
             'oauth-authorization-server/api/openai/v1"',

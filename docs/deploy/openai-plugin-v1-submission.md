@@ -59,8 +59,9 @@ aktive, getrennt hashgebundene MCP-Apps-Ressourcen erkennen:
 - die read-only Lernzielbildressource;
 - die interaktive Karteikartenressource.
 
-Bereits beworbene Start- und Bild-Hash-URIs bleiben für Provider-Caches
-byte-identisch passiv lesbar, sind aber an kein aktives Startwerkzeug gebunden.
+Bereits beworbene Bild-Hash-URIs bleiben für Provider-Caches byte-identisch
+passiv lesbar. Frühere, nie veröffentlichte Startressourcen gehören nicht zum
+V1-Vertrag.
 
 Falls das Portal eine Domain-Challenge ausstellt, wird ihr exakter Token nur als
 geheimer Runtimewert
@@ -178,10 +179,10 @@ kopiert.
   sie nicht bereits in der Instruktion steht. Es folgen weder Fachantwort noch
   OAuth-Reconnect oder Wiederverwendung der alten Session. Die Fortsetzung
   erfolgt über die WebGUI und den neuen Chat.
-- **Grenze:** Exakt `PT1H` bleibt für eine neue Operation gültig. Ein bereits
-  committeter identischer Write darf nur bei noch nicht abgelaufener Session und
-  verfügbaren gepinnten Versionen sein gespeichertes Ergebnis ohne zweite
-  Mutation replayen.
+- **Grenze:** Exakt `PT1H` bleibt für eine Operation oder einen Replay gültig.
+  Ein bereits committeter identischer Write darf nur bei verfügbaren gepinnten
+  Versionen und unveränderter kanonischer Learner-Revision sein gespeichertes
+  Ergebnis ohne zweite Mutation replayen.
 
 Für einen kurzen Live-Nachweis darf nur am First-Party-Launch und nur bei
 aktivem Diagnose-Gate einmal `diagnosticSessionTtlSeconds=3660` verwendet

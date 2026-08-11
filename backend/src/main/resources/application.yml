@@ -78,11 +78,6 @@ skillpilot:
         enabled: ${SKILLPILOT_OPENAI_COACH_V1_ENABLED:false}
         bootstrap-enabled: ${SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED:false}
         writes-enabled: ${SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED:false}
-        # These policies are shared by every OpenAI coach contract hosted in
-        # this one Spring Boot process.
-        secure-cookie: ${SKILLPILOT_OPENAI_SECURE_COOKIE:true}
-        binding-ttl: ${SKILLPILOT_OPENAI_BINDING_TTL:PT5M}
-        launch-ttl: ${SKILLPILOT_OPENAI_LAUNCH_TTL:PT5M}
         learning-session-ttl: ${SKILLPILOT_OPENAI_LEARNING_SESSION_TTL:PT24H}
         # Live E2E only: permits one request to shorten, never extend, its session TTL.
         diagnostic-session-ttl-enabled: ${SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED:false}
@@ -108,11 +103,6 @@ skillpilot:
           mcp-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_MCP_REQUESTS:120}
           oauth-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_OAUTH_REQUESTS:60}
           ui-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS:60}
-          bootstrap-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS:30}
-          bootstrap-capability-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS:30}
-          bootstrap-process-global-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS:600}
-          bootstrap-issuer-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS:10}
-          bootstrap-issuer-process-global-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS:300}
           metadata-requests: ${SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS:120}
           max-client-buckets: ${SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
         mcp:

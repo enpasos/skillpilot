@@ -37,8 +37,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
 
         assertThat(principal.<List<String>>getAttribute("aud")).containsExactly(MCP_URL);
         assertThat(principal.getName()).isEqualTo(SUBJECT);
-        assertThat(principal.<String>getAttribute("authorization_id"))
-                .isEqualTo("authorization-id");
     }
 
     @Test

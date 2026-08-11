@@ -126,15 +126,11 @@ export function loadReleaseContract(releaseRoot) {
 
 /**
  * Prevents a policy rollback from silently changing the new-session decision.
- * The provider-notice argument is retained for comparison with older drafts
- * that exposed the retired direct-start capability. Revision zero represents
- * the pre-contract-line draft only.
+ * Revision zero represents the pre-contract-line draft only.
  */
 export function assertLifecyclePolicyRevisionMonotone(
   previousLifecycle,
   candidateLifecycle,
-  previousProviderNoticeVersion = null,
-  candidateProviderNoticeVersion = null,
 ) {
   const previousLine = previousLifecycle.contractLine ?? (() => {
     assert.equal(
@@ -168,17 +164,15 @@ export function assertLifecyclePolicyRevisionMonotone(
   const previousDecision = canonicalJson({
     newSessionPolicy: previousLine.newSessionPolicy ?? null,
     successor: previousLine.successor ?? null,
-    providerNoticeVersion: previousProviderNoticeVersion,
   });
   const candidateDecision = canonicalJson({
     newSessionPolicy: candidateLine.newSessionPolicy,
     successor: candidateLine.successor,
-    providerNoticeVersion: candidateProviderNoticeVersion,
   });
   if (previousLine.policyRevision > 0 && previousDecision !== candidateDecision) {
     assert.ok(
       candidateLine.policyRevision > previousLine.policyRevision,
-      "Changing new-session policy, successor, or provider notice requires a strictly higher policyRevision.",
+      "Changing new-session policy or successor requires a strictly higher policyRevision.",
     );
   }
 }

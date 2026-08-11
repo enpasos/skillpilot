@@ -32,6 +32,7 @@ public class OpenAiRuntimeEnvironmentValidationConfiguration {
     private static final Set<String> IMPLEMENTED_V1_NAMES = Set.of(
             "SKILLPILOT_OPENAI_COACH_V1_ENABLED",
             "SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED",
+            "SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED",
             "SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED",
             "SKILLPILOT_OPENAI_COACH_V1_WORKFLOW_VERSION",
             "SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE",
@@ -59,6 +60,15 @@ public class OpenAiRuntimeEnvironmentValidationConfiguration {
             "SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA",
             "SKILLPILOT_OPENAI_PROTECTED_RESOURCE_METADATA_URL",
             "SKILLPILOT_OPENAI_UI_ORIGIN");
+    private static final Set<String> REMOVED_DIRECT_START_NAMES = Set.of(
+            "SKILLPILOT_OPENAI_SECURE_COOKIE",
+            "SKILLPILOT_OPENAI_BINDING_TTL",
+            "SKILLPILOT_OPENAI_LAUNCH_TTL",
+            "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_REQUESTS",
+            "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_CAPABILITY_REQUESTS",
+            "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_PROCESS_GLOBAL_REQUESTS",
+            "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_REQUESTS",
+            "SKILLPILOT_OPENAI_RATE_LIMIT_BOOTSTRAP_ISSUER_PROCESS_GLOBAL_REQUESTS");
 
     @Bean
     InitializingBean validateOpenAiRuntimeEnvironmentNames() {
@@ -86,6 +96,7 @@ public class OpenAiRuntimeEnvironmentValidationConfiguration {
                 && (OBSOLETE_LOCALE_PREFIXES.stream().anyMatch(name::startsWith)
                         || LEGACY_APPS_CHALLENGE.equals(name)
                         || FORBIDDEN_URL_OVERRIDE_NAMES.contains(name)
+                        || REMOVED_DIRECT_START_NAMES.contains(name)
                         || OBSOLETE_LOCALE_COACH_LINE_NAME.matcher(name).matches()
                         || (COACH_LINE_NAME.matcher(name).matches()
                                 && !IMPLEMENTED_V1_NAMES.contains(name)));

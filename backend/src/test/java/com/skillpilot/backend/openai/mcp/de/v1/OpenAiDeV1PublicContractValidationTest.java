@@ -20,34 +20,11 @@ class OpenAiDeV1PublicContractValidationTest {
     }
 
     @Test
-    void pinsTheV1WidgetAndBootstrapToTheDedicatedPublicMcpOrigin() {
+    void pinsTheV1WidgetToTheDedicatedPublicMcpOrigin() {
         assertThat(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN)
                 .isEqualTo("https://mcp-coach-v1.skillpilot.com");
         assertThat(OpenAiDeV1ContractMetadata.WIDGET_DOMAIN)
                 .isEqualTo(OpenAiDeV1ContractMetadata.PUBLIC_MCP_ORIGIN);
-        assertThat(OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN)
-                .isEqualTo(
-                        "https://mcp-coach-v1-skillpilot-com.web-sandbox.oaiusercontent.com");
-        assertThat(OpenAiDeV1ContractMetadata.CHATGPT_WIDGET_ORIGIN_PATTERN)
-                .isEqualTo("https://*.web-sandbox.oaiusercontent.com");
-        assertThat(OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(
-                        OpenAiDeV1ContractMetadata.WIDGET_DOMAIN))
-                .isTrue();
-        assertThat(OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(
-                        OpenAiDeV1ContractMetadata.CHATGPT_WEB_WIDGET_ORIGIN))
-                .isTrue();
-        assertThat(OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(
-                        "https://future-surface.web-sandbox.oaiusercontent.com"))
-                .isTrue();
-        assertThat(OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin(
-                        "https://web-sandbox.oaiusercontent.com.evil.example"))
-                .isFalse();
-        assertThat(OpenAiDeV1ContractMetadata.isAllowedBootstrapCorsOrigin("null"))
-                .isFalse();
-        assertThat(OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_PATH)
-                .isEqualTo("/bootstrap/v1/launch");
-        assertThat(OpenAiDeV1ContractMetadata.BOOTSTRAP_LAUNCH_ENDPOINT)
-                .isEqualTo("https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch");
     }
 
     @Test

@@ -34,9 +34,11 @@ wählt aber keinen Lernenden aus.
 
 Ohne aktuelle Startnachricht ruft der Coach kein SkillPilot-Werkzeug auf. Er
 gibt nur einen kurzen Hinweis in der Unterhaltungssprache mit dem festen Link
-`https://skillpilot.com/` aus und stoppt. Vor jeder lernendenbezogenen
-Coach-Antwort muss `get_skillpilot_context` im aktuellen Assistant-Turn
-erfolgreich sein. Auf `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
+`https://skillpilot.com/` aus und stoppt. Zu Beginn jedes Learner-Turns muss
+`get_skillpilot_context` im aktuellen Assistant-Turn erfolgreich sein. Nach
+einer erfolgreichen Mutation ist ihr vollständiger Nachfolgerzustand für den
+Rest desselben Assistant-Turns autoritativ und wird nicht neu geladen. Auf
+`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
 `SESSION_VERSION_UNAVAILABLE` gibt der Coach `instruction` unverändert aus.
 Fehlt es, verwendet er den exakten Eintrag aus `instructions` für die letzte
 autoritative `communicationLocale`, andernfalls für die aktuelle
@@ -52,20 +54,20 @@ Der Draft bindet genau zwei aktive content-addressierte MCP-Apps-Ressourcen:
 - `start_skillpilot_memory_practice` bindet ausschließlich die aktive
   Karteikartenressource; die Kartenbewertung bleibt app-only und ungebunden.
 
-Alle bereits an reale Test-Clients beworbenen Start- und Bild-Hash-URIs bleiben
-mit ihren exakten Bytes passiv lesbar. Diese Retention ist keine aktive
-Funktion: Kein Werkzeug darf eine erhaltene Startressource binden. Bei einer
-frischen `goalVisualization` plus Renderer-Freigabe läuft der Renderer einmal
-mit der unveränderten `goalId`; die Top-Level-`stateVersion` wird in dessen
-Eingabe `expectedStateVersion` kopiert. Eine alte oder bereits versuchte
-Freigabe wird nicht wiederverwendet. Der Textpfad bleibt vollständig, auch
-wenn der Host die optionale UI nicht darstellt.
+Alle bereits an reale Test-Clients beworbenen Bild-Hash-URIs bleiben mit ihren
+exakten Bytes passiv lesbar. Bei einer frischen `goalVisualization` plus
+Renderer-Freigabe läuft der Renderer einmal als unmittelbar nächster
+Werkzeugaufruf mit der unveränderten `goalId`; die
+Top-Level-`stateVersion` wird in dessen Eingabe `expectedStateVersion`
+kopiert. Eine alte oder bereits versuchte Freigabe wird nicht wiederverwendet.
+Der Textpfad bleibt vollständig, auch wenn der Host die optionale UI nicht
+darstellt.
 
-Neue sessiongebundene Operationen benötigen mindestens `PT1H` Restlaufzeit;
-exakt eine Stunde ist gültig. Ein bereits committeter identischer Write darf
-sein gespeichertes Resultat nur bei noch nicht abgelaufener Session und
-verfügbaren gepinnten Workflow-/Curriculumversionen replayen und führt keine
-Mutation erneut aus.
+Sessiongebundene Operationen und Write-Replays benötigen mindestens `PT1H`
+Restlaufzeit; exakt eine Stunde ist gültig. Ein bereits committeter identischer
+Write darf sein gespeichertes Resultat nur bei verfügbaren gepinnten
+Workflow-/Curriculumversionen und unveränderter kanonischer Learner-Revision
+replayen und führt keine Mutation erneut aus.
 
 Für den kontrollierten Live-Test darf nur der First-Party-Launch das optionale
 `diagnosticSessionTtlSeconds` akzeptieren. Das Feld ist ausschließlich bei
@@ -140,8 +142,10 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
    und jeweils einen neuen Chat. Permanente SkillPilot-ID, OAuth-Werte und
    interne Lernziel-ID erscheinen nicht in der Startnachricht.
 4. Ohne aktuelle Startnachricht erfolgt kein Toolaufruf, sondern nur der feste
-   WebGUI-Hinweis. Mit Startnachricht läuft vor jeder sichtbaren Coach-Antwort
-   ein erfolgreicher aktueller Kontextabruf.
+   WebGUI-Hinweis. Mit Startnachricht läuft zu Beginn jedes Learner-Turns ein
+   erfolgreicher aktueller Kontextabruf. Nach einer erfolgreichen Mutation
+   wird ihr vollständiger Nachfolgerzustand im selben Assistant-Turn ohne
+   redundanten Kontextabruf verwendet.
 5. Die drei Session-Recovery-Codes ergeben ausschließlich die servereigene
    Instruktion und nötigenfalls die nicht duplizierte `startUrl`; Fachantwort,
    OAuth-Neuverbindung und Weiterarbeit mit der alten Session bleiben aus.
@@ -156,9 +160,9 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 9. Normales Karteikartenlernen verändert nur die Wiederholungsplanung und bleibt
    vom strengen Verified Recall getrennt. Orientierung, dialogisches Lernen,
    Mastery und Prüfung erfüllen ihre jeweiligen Evidenz- und Feedbackregeln.
-10. Der Session-Guard akzeptiert exakt `PT1H`, lehnt neue Operationen darunter
-    ab und replayt einen zulässigen identischen Write höchstens ohne neue
-    Mutation.
+10. Der Session-Guard akzeptiert exakt `PT1H`, lehnt Operationen und Replays
+    darunter ab und replayt einen zulässigen identischen Write nur bei
+    unveränderter kanonischer Learner-Revision ohne neue Mutation.
 11. Der requestlokale Test mit `3660` Sekunden oder optional `5400` Sekunden
     zeigt den Guard-Übergang. `3600`, `86401`, Werte über der normalen Laufzeit
     und das Feld bei deaktiviertem Gate scheitern fail-closed. Der unmittelbar

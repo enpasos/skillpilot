@@ -127,9 +127,18 @@ public class OpenAiDeV1McpSessionCoordinator {
                         metadata(locked),
                         "clientRequestId was already used for a different V1 request.");
             }
-            return replay(previous);
         }
         requireMinimumRemaining(locked);
+        if (previous != null) {
+            if (learner.getCoachStateRevision() != previous.getCompletedStateVersion()) {
+                throw new OpenAiDeV1SessionStateException(
+                        OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT,
+                        metadata(locked),
+                        "The completed V1 request no longer represents the current canonical learner-state "
+                                + "revision.");
+            }
+            return replay(previous);
+        }
         if (expectedStateVersion != learner.getCoachStateRevision()) {
             throw new OpenAiDeV1SessionStateException(
                     OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT,
