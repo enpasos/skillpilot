@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "book": {
+    "id": "de-gym-mathematik-bundesweit",
+    "title": "Lernzielbuch Mathematik – bundesweiter Atlas",
+    "locale": "de-DE",
+    "landscapeId": "test-landscape",
+    "edition": "curricular-atomic-v1",
+    "atlasBaseUrl": "https://skillpilot.com/lernzielbuch",
+    "pageCount": 3,
+    "publicationMode": "review",
+    "oneGoalPerPage": true
+  },
+  "chapters": [
+    {
+      "chapterId": "mathematik",
+      "label": "Mathematik",
+      "parentChapterId": null,
+      "goalIds": [
+        "11111111-1111-4111-8111-111111111111",
+        "22222222-2222-4222-8222-222222222222",
+        "33333333-3333-4333-8333-333333333333"
+      ],
+      "pageNumbers": [1, 2, 3]
+    },
+    {
+      "chapterId": "algebra",
+      "label": "Algebra",
+      "parentChapterId": "mathematik",
+      "goalIds": [
+        "11111111-1111-4111-8111-111111111111",
+        "22222222-2222-4222-8222-222222222222"
+      ],
+      "pageNumbers": [1, 2]
+    },
+    {
+      "chapterId": "geometrie",
+      "label": "Geometrie",
+      "parentChapterId": "mathematik",
+      "goalIds": [
+        "33333333-3333-4333-8333-333333333333"
+      ],
+      "pageNumbers": [3]
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "goalId": "11111111-1111-4111-8111-111111111111",
+      "anchor": "goal-11111111-1111-4111-8111-111111111111",
+      "title": "Natürliche Zahlen vergleichen",
+      "description": "Die lernende Person kann natürliche Zahlen sicher vergleichen und ihre Entscheidung begründen.",
+      "breadcrumbs": ["Mathematik", "Algebra"],
+      "chapterIds": ["mathematik", "algebra"],
+      "requires": [],
+      "reverseRequires": [
+        {
+          "goalId": "22222222-2222-4222-8222-222222222222",
+          "title": "Brüche addieren und begründen",
+          "anchor": "goal-22222222-2222-4222-8222-222222222222",
+          "pageNumber": 2
+        }
+      ],
+      "externalPrerequisites": [],
+      "externalReverseRequires": [],
+      "applicability": [
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            { "stage": "SekI", "durationModel": "G8", "courseProfile": null },
+            { "stage": "SekI", "durationModel": "G9", "courseProfile": null },
+            { "stage": "SekII", "durationModel": null, "courseProfile": "GK" }
+          ]
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Zahlen vergleichen",
+        "url": "/assets/goal-visualizations/goal-book-ui-1.svg",
+        "altText": "Zwei Zahlen werden auf einem Zahlenstrahl verglichen.",
+        "originalDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "pageFingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1"
+    },
+    {
+      "pageNumber": 2,
+      "goalId": "22222222-2222-4222-8222-222222222222",
+      "anchor": "goal-22222222-2222-4222-8222-222222222222",
+      "title": "Brüche addieren und begründen",
+      "description": "Die lernende Person kann gleichnamige Brüche addieren und das Ergebnis mit einer Darstellung begründen.",
+      "breadcrumbs": ["Mathematik", "Algebra"],
+      "chapterIds": ["mathematik", "algebra"],
+      "requires": [
+        {
+          "goalId": "11111111-1111-4111-8111-111111111111",
+          "title": "Natürliche Zahlen vergleichen",
+          "anchor": "goal-11111111-1111-4111-8111-111111111111",
+          "pageNumber": 1
+        }
+      ],
+      "reverseRequires": [
+        {
+          "goalId": "33333333-3333-4333-8333-333333333333",
+          "title": "Flächeninhalte berechnen",
+          "anchor": "goal-33333333-3333-4333-8333-333333333333",
+          "pageNumber": 3
+        }
+      ],
+      "externalPrerequisites": [],
+      "externalReverseRequires": [],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            { "stage": "SekI", "durationModel": "G9", "courseProfile": null }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            { "stage": "SekI", "durationModel": "G9", "courseProfile": null }
+          ]
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Brüche addieren",
+        "url": "/assets/goal-visualizations/goal-book-ui-2.svg",
+        "altText": "Zwei Bruchteile werden zu einem Ganzen zusammengesetzt.",
+        "originalDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "qaStatus": "approved",
+        "approvedForPublication": true
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "pageFingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2"
+    },
+    {
+      "pageNumber": 3,
+      "goalId": "33333333-3333-4333-8333-333333333333",
+      "anchor": "goal-33333333-3333-4333-8333-333333333333",
+      "title": "Flächeninhalte berechnen",
+      "description": "Die lernende Person kann Flächeninhalte von Rechtecken berechnen und den gewählten Rechenweg erläutern.",
+      "breadcrumbs": ["Mathematik", "Geometrie"],
+      "chapterIds": ["mathematik", "geometrie"],
+      "requires": [
+        {
+          "goalId": "22222222-2222-4222-8222-222222222222",
+          "title": "Brüche addieren und begründen",
+          "anchor": "goal-22222222-2222-4222-8222-222222222222",
+          "pageNumber": 2
+        }
+      ],
+      "reverseRequires": [],
+      "externalPrerequisites": [
+        {
+          "goalId": "external-measurement-goal",
+          "title": "Längen sicher messen",
+          "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=test-landscape&edition=curricular-atomic-v1#goal-external-measurement-goal"
+        }
+      ],
+      "externalReverseRequires": [],
+      "applicability": [
+        {
+          "jurisdiction": "DE-BY",
+          "scopes": [
+            { "stage": "SekII", "durationModel": "G9", "courseProfile": "GK" }
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "scopes": [
+            { "stage": "SekII", "durationModel": null, "courseProfile": "LK" }
+          ]
+        }
+      ],
+      "visualization": {
+        "resourceType": "image",
+        "title": "Flächeninhalt eines Rechtecks",
+        "url": "/assets/goal-visualizations/goal-book-ui-3.svg",
+        "altText": "Ein Rechteck ist in gleich große Einheitsquadrate zerlegt.",
+        "originalDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "qaStatus": "review_candidate",
+        "approvedForPublication": false
+      },
+      "evidenceReview": null,
+      "goalFingerprint": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "pageFingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3"
+    }
+  ],
+  "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

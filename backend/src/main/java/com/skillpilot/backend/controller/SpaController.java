@@ -21,6 +21,8 @@ public class SpaController {
     // security paths.
     @RequestMapping(value = {
             "/curricula/**",
+            "/lernzielbuch",
+            "/lernziel-feedback",
             "/learner/**",
             "/whitepaper",
             "/whitepaper/{path:[^\\.]*}",

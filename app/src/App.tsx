@@ -47,7 +47,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
-  ...(IS_PACKAGE_CONSUMER_BUILD ? [] : REPOSITORY_AUTHORING_PATHS),
+  ...(IS_PACKAGE_CONSUMER_BUILD ? [] : ['/lernzielbuch', '/lernziel-feedback', ...REPOSITORY_AUTHORING_PATHS]),
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -66,6 +66,12 @@ const StoryView = lazy(() => import('./views/StoryView').then((module) => ({ def
 const UsersView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
+const GoalBookView = IS_PACKAGE_CONSUMER_BUILD
+  ? () => null
+  : lazy(() => import('./views/GoalBookView').then((module) => ({ default: module.GoalBookView })))
+const GoalBookFeedbackPilotView = IS_PACKAGE_CONSUMER_BUILD
+  ? () => null
+  : lazy(() => import('./views/GoalBookFeedbackPilotView').then((module) => ({ default: module.GoalBookFeedbackPilotView })))
 const Abi26MatheStartView = IS_PACKAGE_CONSUMER_BUILD
   ? () => null
   : lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
@@ -471,6 +477,16 @@ const App: React.FC = () => {
         const curriculaTitle = t.startPage.cards.curricula?.title || 'Curricula'
         title = `${curriculaTitle} | ${baseTitle}`
         description = t.curriculaPage.subtitle || defaultDescription
+      } else if (path === '/lernzielbuch') {
+        title = `${language === 'en' ? 'Learning Goal Book' : 'Lernzielbuch'} | ${baseTitle}`
+        description = language === 'en'
+          ? 'Review the SkillPilot mathematics learning goals by chapter, dependency, and full canonical ID.'
+          : 'SkillPilot-Lernziele für Mathematik nach Kapiteln, Abhängigkeiten und vollständiger kanonischer ID prüfen.'
+      } else if (path === '/lernziel-feedback') {
+        title = `${language === 'en' ? 'Feedback Pilot' : 'Feedback-Pilot'} | ${baseTitle}`
+        description = language === 'en'
+          ? 'Information about the planned version-bound learning-goal feedback pilot.'
+          : 'Informationen zum geplanten versionsgebundenen Feedback-Pilot für Lernziele.'
       } else if (path === '/whitepaper' || path.startsWith('/whitepaper/')) {
         const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
         title = `${whitepaperTitle} | ${baseTitle}`
@@ -648,6 +664,12 @@ const App: React.FC = () => {
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />
             <Route path="/curricula" element={<CurriculaView />} />
+            {!IS_PACKAGE_CONSUMER_BUILD && (
+              <>
+                <Route path="/lernzielbuch" element={<GoalBookView />} />
+                <Route path="/lernziel-feedback" element={<GoalBookFeedbackPilotView />} />
+              </>
+            )}
             <Route path="/stats" element={<StatsView />} />
             <Route path="/successes" element={<SuccessView />} />
             <Route path="/quickstart/:lang?" element={<StoryView />} />

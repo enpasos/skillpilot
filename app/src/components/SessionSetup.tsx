@@ -1041,6 +1041,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 <Link to="/faq" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.faq}
                 </Link>
+                {import.meta.env.MODE !== 'package-consumer' && (
+                  <Link to="/lernzielbuch" className="hover:text-sky-500 hover:underline transition-colors">
+                    {t.startPage.links.goalBook}
+                  </Link>
+                )}
                 <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.statistics}
                 </Link>

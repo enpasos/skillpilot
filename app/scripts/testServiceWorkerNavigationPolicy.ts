@@ -5,7 +5,10 @@ import {
   serviceWorkerLifecyclePolicy,
   serviceWorkerRegisterType,
 } from '../serviceWorkerLifecyclePolicy'
-import { serviceWorkerNavigationFallbackDenylist } from '../serviceWorkerNavigationPolicy'
+import {
+  serviceWorkerNavigationFallbackDenylist,
+  serviceWorkerPrecacheGlobIgnores,
+} from '../serviceWorkerNavigationPolicy'
 
 const isDenied = (urlPath: string) =>
   serviceWorkerNavigationFallbackDenylist.some(pattern => pattern.test(urlPath))
@@ -67,6 +70,11 @@ assert.equal(
   serviceWorkerLifecyclePolicy.cleanupOutdatedCaches,
   true,
   'old precaches are cleaned only after a coherent worker activation',
+)
+
+assert.ok(
+  serviceWorkerPrecacheGlobIgnores.includes('lernzielbuch/**'),
+  'large learning-goal publications must stay outside the application-shell precache',
 )
 
 console.log('Service-worker navigation and silent lifecycle policy passed.')

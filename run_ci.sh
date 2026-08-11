@@ -185,6 +185,9 @@ run_application_frontend_ci() {
   echo "--> Testing Service-Worker Navigation Policy"
   npm run test:service-worker-navigation-policy
 
+  echo "--> Testing Learning-Goal Book Contracts and Publication"
+  npm run test:goal-book-pipeline
+
   echo "--> Testing Curriculum Offering Sources"
   npm run test:curriculum-offering-source
 

@@ -22,3 +22,13 @@ export const serviceWorkerNavigationFallbackDenylist = [
   /^\/robots\.txt$/,
   /^\/sitemap\.xml$/,
 ]
+
+/**
+ * Large, immutable publication downloads stay network-only. In particular,
+ * learning-goal PDFs are tens of megabytes and must not enter the application
+ * shell precache or its 5 MB per-file budget.
+ */
+export const serviceWorkerPrecacheGlobIgnores = [
+  '**/version.json',
+  'lernzielbuch/**',
+] as const
