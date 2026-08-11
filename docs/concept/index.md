@@ -25,6 +25,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Production pipeline and review rules for optional atomic-goal image assets.
 - [Human-Readable Source Rationales](skill-graph/human-readable-source-rationales.md)
   Generated explanation model for tracing learning goals back to source evidence.
+- [Learning-Goal Book and Evidence-Review Pipeline](skill-graph/learning-goal-book-and-evidence-review-pipeline.md)
+  Versioned one-goal-per-page HTML/PDF publication and fast multi-AI evidence-review model with a separate slow public feedback channel.
 - [Canonical Gymnasium Rollout Policy](skill-graph/canonical-gymnasium-rollout.md)
   Conceptual rollout rules for canonical German Gymnasium subjects.
 - [MEM/FWU Roundtrip Plan](skill-graph/mem-fwu-roundtrip-plan.md)

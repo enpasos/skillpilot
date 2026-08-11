@@ -9,7 +9,10 @@ import { defineConfig, loadEnv, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
-import { serviceWorkerNavigationFallbackDenylist } from './serviceWorkerNavigationPolicy'
+import {
+  serviceWorkerNavigationFallbackDenylist,
+  serviceWorkerPrecacheGlobIgnores,
+} from './serviceWorkerNavigationPolicy'
 import {
   serviceWorkerInjectRegister,
   serviceWorkerLifecyclePolicy,
@@ -3108,7 +3111,7 @@ export default defineConfig(({ mode }) => {
         workbox: {
           ...serviceWorkerLifecyclePolicy,
           maximumFileSizeToCacheInBytes: 5000000,
-          globIgnores: ['**/version.json'],
+          globIgnores: [...serviceWorkerPrecacheGlobIgnores],
           // Machine endpoints and OAuth redirects must make real network
           // requests instead of falling back to the cached React application.
           navigateFallbackDenylist: serviceWorkerNavigationFallbackDenylist,

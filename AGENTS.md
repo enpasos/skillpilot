@@ -545,6 +545,45 @@ Reference:
 
 * `docs/concept/skill-graph/atomic-goal-visualizations.md`
 
+### 7.4 Learning-goal books and evidence review
+
+The first learning-goal book edition is a deterministic publication and review
+surface for ordinary technical atomic goals in reviewed learner-facing
+composition views. It is not a second curriculum source.
+
+Rules:
+
+* Build HTML and PDF from one shared, versioned BookModel.
+* Include each eligible `target` goal exactly once and on exactly one complete
+  PDF page. Cluster and structure nodes provide chapter paths; memory,
+  orientation, practice/assessment, exam, and runtime-support nodes require
+  separate later edition contracts.
+* Show the full public **Lernziel-ID** on every goal page. Never confuse this
+  curriculum identifier with a learner's permanent SkillPilot ID.
+* Use a stable topological order that respects direct in-scope `requires`.
+  `contains` supplies chapter context and deterministic ordering preferences,
+  but never overrides a prerequisite edge.
+* Render direct `requires` and derived reverse-`requires` as checked links to
+  stable goal destinations. Broken, ambiguous, or missing destinations fail the
+  build.
+* Never clip, truncate, silently shrink, or continue a goal onto a second page.
+  A layout overflow names the affected goal and fails closed.
+* Keep detailed didactic coverage in separate bilingual, fingerprint-bound goal
+  evidence profiles. AI output can create review candidates only; current human
+  approval is required before a profile may become authoritative.
+* The fast multi-AI loop is the primary early improvement engine. The public
+  teacher channel is installed as a slow, moderated signal and challenge path;
+  silence is not evidence and one forceful report cannot create a global rule.
+* Books, evidence profiles, review bundles, and feedback links contain public
+  curriculum data only. They must never contain learner state, learner IDs,
+  sessions, transcripts, credentials, or private provider traces.
+* Runtime and Mastery integration are separate later gates. A prompt-level
+  profile cannot by itself prove that a learner understood a goal.
+
+Reference:
+
+* `docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md`
+
 ---
 
 ## 8. Ideas for future work (for agents and humans)

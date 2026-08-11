@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "title": "SkillPilot learning-goal AI review bundle manifest v1",
+  "description": "Deterministic manifest that binds the exact book, selected goal pages, evidence candidates, PDF/HTML artifacts, prompt, criteria, and output contracts supplied to independent reviewers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "bundleFingerprint",
+    "bookModelDigest",
+    "bookModelSchemaVersion",
+    "bookId",
+    "bookEdition",
+    "publicationMode",
+    "feedbackBaseUrl",
+    "locale",
+    "selectedGoalCount",
+    "goals",
+    "promptFingerprint",
+    "criteriaFingerprint",
+    "artifacts",
+    "reviewPolicy"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookModelDigest": { "$ref": "#/$defs/digest" },
+    "bookModelSchemaVersion": { "const": "1.0.0" },
+    "bookId": { "$ref": "#/$defs/stableId" },
+    "bookEdition": { "$ref": "#/$defs/stableId" },
+    "publicationMode": { "enum": ["review", "public"] },
+    "feedbackBaseUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "locale": { "$ref": "#/$defs/nonBlank" },
+    "selectedGoalCount": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "pageNumber",
+          "goalFingerprint",
+          "pageFingerprint",
+          "evidenceReview"
+        ],
+        "properties": {
+          "goalId": { "$ref": "#/$defs/stableId" },
+          "pageNumber": { "type": "integer", "minimum": 1 },
+          "goalFingerprint": { "$ref": "#/$defs/digest" },
+          "pageFingerprint": { "$ref": "#/$defs/digest" },
+          "evidenceReview": {
+            "oneOf": [
+              { "$ref": "#/$defs/evidenceReview" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "promptFingerprint": { "$ref": "#/$defs/digest" },
+    "criteriaFingerprint": { "$ref": "#/$defs/digest" },
+    "artifacts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "path", "digest", "bytes"],
+        "properties": {
+          "role": {
+            "enum": [
+              "book_pdf",
+              "book_pdf_render_manifest",
+              "book_html",
+              "book_html_render_manifest",
+              "book_model",
+              "review_input_json",
+              "review_input_jsonl",
+              "review_markdown",
+              "review_prompt",
+              "review_criteria",
+              "finding_schema",
+              "run_manifest_schema"
+            ]
+          },
+          "path": { "$ref": "#/$defs/relativePath" },
+          "digest": { "$ref": "#/$defs/digest" },
+          "bytes": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "reviewPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blindIndependentFirstPass",
+        "modelVotesGrantReleaseAuthority",
+        "humanApprovalRequired",
+        "learnerDataAllowed"
+      ],
+      "properties": {
+        "blindIndependentFirstPass": { "const": true },
+        "modelVotesGrantReleaseAuthority": { "const": false },
+        "humanApprovalRequired": { "const": true },
+        "learnerDataAllowed": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "evidenceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "status",
+        "reviewInputFingerprint",
+        "profileFingerprint",
+        "evidenceLevel",
+        "maximumClaimScope"
+      ],
+      "properties": {
+        "reviewId": { "$ref": "#/$defs/stableId" },
+        "status": { "enum": ["needs_human_review", "approved", "rejected"] },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "profileFingerprint": { "$ref": "#/$defs/digest" },
+        "evidenceLevel": { "enum": ["E0", "E1", "E2", "E3", "E4", "E5"] },
+        "maximumClaimScope": { "enum": ["G0", "G1", "G2", "G3", "G4"] }
+      }
+    }
+  }
+}

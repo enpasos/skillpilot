@@ -156,6 +156,7 @@ export const de = {
         },
         links: {
             faq: "FAQ",
+            goalBook: "Lernzielbuch",
             statistics: "Statistiken",
             workbench: "Workbench",
             whitepaper: "Konzept"

@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Image as ImageIcon, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
+import { ArrowRight, Blocks, BookOpenCheck, BookOpenText, FileDown, Gauge, Home, Image as ImageIcon, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useLanguage } from '../contexts/LanguageContext'
+import { WORKBENCH_REVIEW_LINK_DEFINITIONS } from './workbenchReviewLinks'
 
 interface WorkbenchTool {
   title: string
   path: string
   description: string
   scope: string
-  group: 'authoring' | 'maintenance'
+  group: 'authoring' | 'review' | 'maintenance'
+  download?: boolean
   icon: React.ComponentType<{ size?: number; className?: string }>
 }
 
@@ -18,46 +20,50 @@ const WORKBENCH_COPY = {
   de: {
     badge: 'Lokale Tools',
     title: 'Workbench',
-    subtitle: 'Zentrale Einstiegsseite für lokale Editor- und Wartungstools in SkillPilot.',
+    subtitle: 'Zentrale Einstiegsseite für lokale Editor-, Review- und Wartungswerkzeuge in SkillPilot.',
     introTitle: 'Was ist hier gebündelt?',
-    introText: 'Alle lokalen Browser-Tools, die direkt mit Repo-Dateien arbeiten, sind hier an einer Stelle gesammelt. So bleibt sichtbar, welches Tool für welchen Eingriff gedacht ist.',
+    introText: 'Lokale Browser-Tools sowie geprüfte Review- und Publikationsansichten sind hier an einer Stelle gesammelt. So bleibt sichtbar, welcher Einstieg für welchen Zweck gedacht ist.',
     localNoteTitle: 'Lokaler Modus',
-    localNoteText: 'Diese Oberflächen sind für die lokale Entwicklungs- und Authoring-Umgebung gedacht. Sie arbeiten über die internen lokalen Endpunkte der App auf Dateien im Repository.',
+    localNoteText: 'Editoren arbeiten in der lokalen Entwicklungsumgebung über interne Endpunkte auf Repo-Dateien. Review-Ansichten und Publikationsartefakte sind dagegen schreibgeschützt.',
     groups: {
       authoring: 'Curriculum Authoring',
+      review: 'Review und Publikation',
       maintenance: 'Wartung und Inhalte',
     },
     labels: {
       scope: 'Zuständig für',
       route: 'Route',
       open: 'Öffnen',
+      download: 'PDF herunterladen',
       backHome: 'Startseite',
-      toolCount: 'Tools',
+      toolCount: 'Einträge',
     },
   },
   en: {
     badge: 'Local Tools',
     title: 'Workbench',
-    subtitle: 'Central entry page for local editor and maintenance tools in SkillPilot.',
+    subtitle: 'Central entry page for local authoring, review, and maintenance tools in SkillPilot.',
     introTitle: 'What is bundled here?',
-    introText: 'All local browser tools that work directly on repository files are collected here. This keeps the available tooling visible and makes the intended scope of each tool explicit.',
+    introText: 'Local browser tools and validated review and publication views are collected here. This keeps every entry point and its intended purpose visible.',
     localNoteTitle: 'Local mode',
-    localNoteText: 'These interfaces are intended for the local development and authoring environment. They operate on repository files through the app\'s internal local endpoints.',
+    localNoteText: 'Editors use internal endpoints to work on repository files in the local development environment. Review views and publication artifacts are read-only.',
     groups: {
       authoring: 'Curriculum Authoring',
+      review: 'Review and Publication',
       maintenance: 'Maintenance and Content',
     },
     labels: {
       scope: 'Responsible for',
       route: 'Route',
       open: 'Open',
+      download: 'Download PDF',
       backHome: 'Home',
-      toolCount: 'Tools',
+      toolCount: 'Entries',
     },
   },
 } as const
 
-const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
+const WORKBENCH_TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
   de: [
     {
       title: 'Canonical Cluster Editor',
@@ -75,6 +81,11 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       group: 'authoring',
       icon: Layers3,
     },
+    ...WORKBENCH_REVIEW_LINK_DEFINITIONS.de.map((tool) => ({
+      ...tool,
+      group: 'review' as const,
+      icon: tool.download ? FileDown : BookOpenCheck,
+    })),
     {
       title: 'Graph Editor (requires)',
       path: '/graph-editor',
@@ -141,6 +152,11 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       group: 'authoring',
       icon: Layers3,
     },
+    ...WORKBENCH_REVIEW_LINK_DEFINITIONS.en.map((tool) => ({
+      ...tool,
+      group: 'review' as const,
+      icon: tool.download ? FileDown : BookOpenCheck,
+    })),
     {
       title: 'Graph Editor (requires)',
       path: '/graph-editor',
@@ -195,18 +211,15 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
 export const WorkbenchView: React.FC = () => {
   const { language } = useLanguage()
   const copy = WORKBENCH_COPY[language]
-  const tools = TOOL_DEFINITIONS[language]
+  const tools = WORKBENCH_TOOL_DEFINITIONS[language]
   const authoringTools = tools.filter((tool) => tool.group === 'authoring')
+  const reviewTools = tools.filter((tool) => tool.group === 'review')
   const maintenanceTools = tools.filter((tool) => tool.group === 'maintenance')
 
   const renderToolCard = (tool: WorkbenchTool) => {
     const Icon = tool.icon
-    return (
-      <Link
-        key={tool.path}
-        to={tool.path}
-        className="group rounded-2xl border border-border-color bg-white/70 p-5 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400/50 hover:shadow-lg dark:bg-slate-900/70"
-      >
+    const content = (
+      <>
         <div className="flex items-start justify-between gap-4">
           <div className="flex min-w-0 gap-3">
             <div className="rounded-xl bg-sky-100 p-2 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300">
@@ -232,9 +245,22 @@ export const WorkbenchView: React.FC = () => {
         </dl>
 
         <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition-colors group-hover:text-sky-500 dark:text-sky-300">
-          <span>{copy.labels.open}</span>
+          <span>{tool.download ? copy.labels.download : copy.labels.open}</span>
           <ArrowRight size={16} />
         </div>
+      </>
+    )
+    const className = 'group rounded-2xl border border-border-color bg-white/70 p-5 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-400/50 hover:shadow-lg dark:bg-slate-900/70'
+    if (tool.download) {
+      return (
+        <a key={tool.path} href={tool.path} download className={className}>
+          {content}
+        </a>
+      )
+    }
+    return (
+      <Link key={tool.path} to={tool.path} className={className}>
+        {content}
       </Link>
     )
   }
@@ -282,6 +308,18 @@ export const WorkbenchView: React.FC = () => {
               <span>{copy.labels.toolCount}</span>
               <span className="text-text-primary">{tools.length}</span>
             </div>
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-border-color bg-white/70 p-4 backdrop-blur-sm dark:bg-slate-900/70 md:p-5">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="rounded-xl bg-violet-100 p-2 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
+              <BookOpenCheck size={18} />
+            </div>
+            <h2 className="text-xl font-semibold">{copy.groups.review}</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+            {reviewTools.map(renderToolCard)}
           </div>
         </section>
 

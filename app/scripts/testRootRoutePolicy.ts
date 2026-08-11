@@ -36,6 +36,21 @@ assert.equal(
   'the application core must not issue catalog, profile, or mastery requests on the start page',
 )
 assert.equal(
+  shouldRunApplicationCore('/lernzielbuch'),
+  false,
+  'the public learning-goal book must not issue catalog, profile, or mastery requests',
+)
+assert.equal(
+  shouldSyncRouteStateToUrl('/lernzielbuch/'),
+  false,
+  'the learning-goal book must not synchronize stored learner state into its URL',
+)
+assert.equal(
+  shouldRunApplicationCore('/lernziel-feedback'),
+  false,
+  'the feedback-pilot placeholder must not issue learner or mastery requests',
+)
+assert.equal(
   shouldRenderSessionSetup({
     pathname: '/learner',
     hasActiveSession: true,
@@ -106,4 +121,4 @@ assert.match(
   'App core must not synchronize stored route state into the root URL',
 )
 
-console.log('Root route policy passed: 14 guarantees.')
+console.log('Root route policy passed: 17 guarantees.')
