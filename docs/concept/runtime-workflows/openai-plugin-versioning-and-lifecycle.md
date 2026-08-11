@@ -9,7 +9,7 @@ audience: "Codex- und SkillPilot-Entwicklung"
 
 # SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin
 
-**Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills und drei
+**Geltungsbereich:** OpenAI-Plugin mit MCP-API, gebündelten Skills und zwei
 jeweils dediziert an genau ein UI-Werkzeug gebundenen, hashgebundenen
 MCP-Apps-Ressourcen im unveröffentlichten V1-Draft
 
@@ -254,14 +254,13 @@ Die Grenze ist der reale Veröffentlichungsstatus:
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
 Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
-noch nicht veröffentlicht. Der private Direktstart, die Lernzielvisualisierung
-und das interaktive Karteikartenlernen werden deshalb als drei getrennte, aktive hashgebundene
+noch nicht veröffentlicht. Lernzielvisualisierung und interaktives
+Karteikartenlernen werden als zwei getrennte aktive hashgebundene
 `text/html;profile=mcp-app`-Ressourcen in den bestehenden `1.0.0`-Draft
-aufgenommen; es entsteht weder `1.0.1` noch ein Published-Snapshot. Der
-Direktstart-Öffner, der Bild-Renderer und der Start des Karteikartenlernens verweisen jeweils mit
-`ui.resourceUri` und `openai/outputTemplate` auf ihre eigene Ressource. Das
-app-interne Capability-Issuer- und Kartenbewertungswerkzeug sowie gewöhnliche
-Werkzeuge bleiben ungebunden. Alle
+aufgenommen; es entsteht weder `1.0.1` noch ein Published-Snapshot. Bild-
+Renderer und Kartenlernstart verweisen jeweils mit `ui.resourceUri` und
+`openai/outputTemplate` auf ihre eigene Ressource. Kartenbewertung und
+gewöhnliche Werkzeuge bleiben ungebunden. Alle
 zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
 gemeinsam im selben Draft aktualisiert. Bereits an reale Test-Clients
 ausgelieferte Hash-URIs bleiben byte-identisch und passiv lesbar.
@@ -462,29 +461,24 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 ### 9.1 V1 bindet pro UI-Werkzeug genau eine aktuelle Ressource
 
-Der noch unveröffentlichte V1-Draft bindet drei aktive hashgebundene Ressourcen
-mit dem MIME-Typ `text/html;profile=mcp-app`. Das sessionlose read-only Werkzeug
-`open_skillpilot_start` öffnet seine private Direktstart- und
-Same-Chat-Erneuerungsressource, ohne selbst eine Capability oder Lernsession
-auszustellen. Sein verpflichtendes `purpose` unterscheidet den initialen
-`START` vom `RENEW_EXISTING` nach einem Sessionfehler. Das read-only Werkzeug
+Der noch unveröffentlichte V1-Draft bindet zwei aktive hashgebundene Ressourcen
+mit dem MIME-Typ `text/html;profile=mcp-app`. Das read-only Werkzeug
 `render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
 `goalVisualization` an seine bild-only Ressource. Das read-only Werkzeug
 `start_skillpilot_memory_practice` startet das Karteikartenlernen in einer
-eigenen interaktiven Ressource. Jeder dieser drei Descriptoren enthält
+eigenen interaktiven Ressource. Beide Descriptoren enthalten
 `ui.resourceUri` und `openai/outputTemplate` mit genau seiner Ressource. Das nur
-von der App aufrufbare, ID-freie `issue_skillpilot_start_capability`, das
-Bewertungswerkzeug `review_skillpilot_memory_practice_card` und alle gewöhnlichen
+von der App aufrufbare Bewertungswerkzeug
+`review_skillpilot_memory_practice_card` und alle gewöhnlichen
 Werkzeuge bleiben ungebunden; dadurch erzeugen sie weder
 verschachtelte noch leere UI-Komponenten.
 
-Die Freigabe und der Renderer werden weder durch `openai/userAgent` noch durch
-eine Desktop-/Mobile- oder andere Surface-Klassifikation gesteuert. Diese
-optionalen Hostmetadaten sind kein Vertrags-, Authentisierungs- oder
-Sicherheitsmerkmal. Ein erfolgreiches Renderer-Ergebnis bestätigt nur die
-Bereitstellung der strukturierten Visualisierung; SkillPilot behauptet nicht,
-dass der Host die Ressource geladen oder das Bild dargestellt hat. Der
-vollständige Textpfad bleibt unabhängig davon erhalten.
+Wenn das neueste Vollresultat eine `goalVisualization` enthält und den Renderer
+erlaubt, läuft er genau einmal mit dessen unveränderter Ziel-ID; die Top-Level-
+`stateVersion` wird in `expectedStateVersion` kopiert. Eine alte oder bereits
+versuchte Freigabe wird nicht verwendet.
+Surface-Metadaten steuern dies nicht, und das Receipt garantiert keine
+Hostdarstellung.
 
 Sobald eine content-addressierte URI an einen realen Test-Client ausgeliefert
 wurde, kann ein Provider-Metadaten- oder Chat-Snapshot sie später erneut
@@ -521,7 +515,7 @@ Rückwärtskompatibilitätspflicht.
 
 ### 9.3 Autoritativer Zustand bleibt im Backend
 
-Die drei aktiven V1-Ressourcen erzeugen keinen eigenen autoritativen
+Die zwei aktiven V1-Ressourcen erzeugen keinen eigenen autoritativen
 Lernzustand.
 Bildfreigabe, Kartenauswahl, Terminierung und Fortschritt werden aus dem
 Backendzustand projiziert. Die interaktive Karteikarten-UI ruft für eine
@@ -640,19 +634,14 @@ zurückgegeben werden. Der Replay führt weder die fachliche Operation noch eine
 zweite Mutation aus. Nach tatsächlichem Ablauf oder bei nicht mehr verfügbarer
 gepinnter Version ist auch dieser Replay gesperrt.
 
-`open_skillpilot_start` besitzt dafür bereits im unveröffentlichten V1-Vertrag
-das verpflichtende geschlossene Argumentpaar `purpose` und
-`communicationLocale`. Ohne aktuelle Startnachricht ruft das Modell es genau
-einmal mit `START` sowie `de` für eine deutsche beziehungsweise `en` für eine
-englische Unterhaltung auf. Auf
-`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
-`SESSION_VERSION_UNAVAILABLE` ruft es dasselbe Werkzeug genau einmal mit
-`RENEW_EXISTING` auf und kopiert dafür bevorzugt
-`recoveryCommunicationLocale` aus dem Fehler, andernfalls die Locale der
-letzten Session. Die private Komponente nimmt die vorhandene SkillPilot-ID nur
-im direkten HTTPS-Pfad entgegen und übergibt die neue Startnachricht im selben
-Chat. Erst wenn Komponente oder sicherer Host-Handoff nicht verfügbar sind,
-darf ein neuer Chat oder die First-Party-Website als Fallback dienen.
+Ohne aktuelle SkillPilot-Startnachricht ruft das Modell kein SkillPilot-
+Werkzeug auf, sondern nennt nur lokalisiert `https://skillpilot.com/` und den
+First-Party-Startweg. Auf `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE` gibt der Coach `instruction` unverändert aus oder
+wählt den exakten lokalisierten Eintrag aus `instructions`; er ergänzt die
+exakte `startUrl` nur, wenn sie nicht schon enthalten ist. Es gibt keine
+Fachantwort, keinen Retry und keine OAuth-Neuverbindung. **Lernen starten** in der First-Party-Website
+erzeugt die neue Session und öffnet einen neuen Chat.
 
 Für einen normalen App-first-Wechsel gilt deshalb:
 
@@ -854,14 +843,13 @@ OpenAI-Veröffentlichungsprozess:
 |---|---|
 | `ALLOW` | neue Sessions dieser Major-Linie sind erlaubt |
 | `WARN` | Start in dieser Linie erst nach ausdrücklicher Wahl; ein geprüfter Nachfolger muss verfügbar sein |
-| `BLOCK` | keine neue Session und keine startfähige Capability dieser Linie |
+| `BLOCK` | keine neue Session dieser Linie |
 
 Die kanonische, geschlossene Projektion besitzt das folgende JSON-Schema. Der
 `$id` ist die stabile Schemaidentität. Release- und CI-Prüfungen validieren die
-Lifecycle-Quelle und ihre private Runtime-Projektion gegen dieses Schema. Der
-öffentliche Output von `open_skillpilot_start` bleibt bewusst minimal; die
-vollständige Contract Line wird ausschließlich im Resultat-`_meta` an die
-Komponente projiziert und benötigt zur Laufzeit keine externe Schemaauflösung.
+Lifecycle-Quelle und ihre interne Runtime-Projektion gegen dieses Schema. Der
+V1-Modellvertrag veröffentlicht keine sessionlose Startprojektion; die
+Contract Line bleibt Release- und Serverkonfiguration.
 
 ```json
 {
@@ -1315,12 +1303,13 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - OpenAI-Challenge-Route berücksichtigen.
 
 4. **Dedizierte V1-MCP-Apps-UIs absichern**
-   - genau drei aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressourcen
-     für `open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+   - genau zwei aktiv gebundene hashgebundene
+     `text/html;profile=mcp-app`-Ressourcen für
+     `render_skillpilot_goal_visualization` und
      `start_skillpilot_memory_practice` ausliefern;
-   - jedes dieser drei Werkzeuge ausschließlich an seine eigene Ressource mit
-     `ui.resourceUri` und `openai/outputTemplate` binden; app-only Issuer und
-     Kartenreview sowie gewöhnliche Tools bleiben ungebunden;
+   - beide Werkzeuge ausschließlich an ihre eigene Ressource mit
+     `ui.resourceUri` und `openai/outputTemplate` binden; Kartenreview und
+     gewöhnliche Tools bleiben ungebunden;
    - die validierte strukturierte `goalVisualization` bild-only rendern und
      den vollständigen Textpfad bei jedem Hostverhalten erhalten;
    - weder User-Agent- noch Surface-Metadaten als Gate verwenden und keine
@@ -1360,9 +1349,10 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
    - `newSessionPolicy` mit `ALLOW`, `WARN`, `BLOCK` sowie den nullable
      Nachfolger nach dem kanonischen Contract-Line-Schema konfigurieren;
    - `policyRevision` monoton und revisionsfest führen;
-   - V1 nach dem vollständigen CREATE-/In-Component-Direktstart auf
-     `policyRevision: 2`, `CURRENT`, `DRAFT`, `ALLOW` und `successor: null`
-     führen; das frühere reine EXISTING-Bootstrap war Revision 1.
+   - V1 nach dem Web-first-Rückbau auf `policyRevision: 3`, `CURRENT`, `DRAFT`,
+     `ALLOW` und `successor: null` führen; Revision 2 war der nie
+     veröffentlichte Direct-Start-Entwurf und Revision 1 dessen früherer
+     EXISTING-Entwurf.
 
 10. **Runbook und ADR ablegen**
     - dieses Dokument oder eine verdichtete ADR-Version im Repository aufnehmen;
@@ -1402,20 +1392,20 @@ Die Versionierungsarchitektur gilt vor der ersten öffentlichen Einreichung als 
 - V1 bereits dormant das geschlossene Lifecycle-/Nachfolgerschema sowie die
   UI-Zustände für `ALLOW`, `WARN` und `BLOCK` enthält, ohne einen noch nicht
   veröffentlichten Nachfolger zu bewerben;
-- der unveröffentlichte V1-Draft genau drei aktuelle hashgebundene
-  `text/html;profile=mcp-app`-Ressourcen aktiv bindet, Direktstart-Öffner,
-  Bild-Renderer und Kartenlauncher jeweils nur an ihre eigene Ressource bindet,
-  app-only Werkzeuge ungebunden lässt und jede bereits ausgelieferte frühere
-  URI byte-identisch passiv lesbar hält;
+- der unveröffentlichte V1-Draft genau zwei aktuelle hashgebundene
+  `text/html;profile=mcp-app`-Ressourcen aktiv bindet, Bild-Renderer und
+  Kartenlauncher jeweils nur an ihre eigene Ressource bindet, app-only
+  Kartenreview ungebunden lässt und jede bereits ausgelieferte frühere Start-
+  oder Bild-URI byte-identisch passiv lesbar hält;
 - der aktuelle MCP-Vertrag als reproduzierbarer V1-Draft vorliegt;
 - der Published-Index vor der ersten realen Veröffentlichung leer bleibt und
   nur durch einen explizit bestätigten Publikationsschritt fortgeschrieben
   werden kann;
 - öffentliche DTOs vom Core getrennt sind;
 - alle Schreiboperationen idempotent und gegen konkurrierende Zustandsänderungen geschützt sind oder eine dokumentierte Ausnahme besitzen;
-- die optionale Lernzielvisualisierung ausschließlich aus der erneut
-  validierten `goalVisualization` bild-only gerendert wird, ohne
-  User-Agent-/Surface-Gate oder Behauptung einer tatsächlichen Hostdarstellung;
+- die optionale Bilddarstellung nur aus frischer `goalVisualization` und
+  aktueller Renderer-Freigabe entsteht, alte Freigaben nicht wiederverwendet
+  werden und der Textpfad vollständig bleibt;
 - Skills als V1-Bundle reproduzierbar gebaut und geprüft werden;
 - jeder Server-Build gegen den V1-Snapshot getestet wird;
 - Lifecycle- und Migrationsfelder im Datenmodell vorgesehen sind;

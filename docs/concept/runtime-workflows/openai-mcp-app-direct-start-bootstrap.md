@@ -1,21 +1,22 @@
 # Direkter SkillPilot-Start aus der OpenAI-MCP-App
 
-**Stand:** 10. August 2026
+**Stand:** 11. August 2026
 
-**Status:** Verbindliche Zielarchitektur; vollständiger interner V1-Slice und
-Canary freigegeben. Die öffentliche Einreichung bleibt durch Abschnitt 12.2
-gesperrt.
+> **Superseded und nur historisch aufbewahrt:** Dieses nie veröffentlichte
+> Direct-Start-Konzept wurde mit V1-Policy-Revision 3 vollständig durch den
+> First-Party-Webstart ersetzt. Es ist keine aktuelle Architektur-, Sicherheits-,
+> Implementierungs-, Test- oder Releasevorgabe. Aktuell sind permanente
+> SkillPilot-ID, Providerhinweis und Level-2-Konfiguration ausschließlich im
+> SkillPilot-WebGUI; **Lernen starten** erzeugt eine frische Lernsession und
+> öffnet einen neuen Chat. Die früh beworbenen Startressourcen bleiben nur wegen
+> Provider-Caches und alter Test-Chat-Snapshots byte-identisch lesbar und sind an
+> kein aktives Werkzeug gebunden. Die folgenden Abschnitte dokumentieren die
+> verworfene Revision-2-Entscheidung und dürfen nicht operativ angewendet werden.
 
-**Normative Hierarchie:** Abschnitt 3 ist die unveränderliche
-Identitätsverfassung. Der zentrale
-[Plugin-Versionierungs- und Lebenszyklusvertrag](openai-plugin-versioning-and-lifecycle.md)
-ist die einzige normative Quelle für Support-Lifecycle, Publikationsstatus,
-Nachfolger und Startpolicy einer Contract-Major-Linie. Dieses Dokument besitzt
-ausschließlich den direkten Bootstrap-, Capability-, Delivery- und
-App-first-Handoff-Vertrag. Spätere Ablauf-, Schema-, Sicherheits- oder
-Implementierungsdetails dürfen diese Grenzen nicht abschwächen oder umdeuten.
-Ein Widerspruch ist ein Konzept- beziehungsweise Implementierungsfehler und
-keine zulässige Detailentscheidung.
+**Aktuelle normative Quellen:**
+[Plugin-Versionierung und Lebenszyklus](openai-plugin-versioning-and-lifecycle.md),
+[OAuth- und Lernsession-Architektur](openai-mcp-oauth-learner-session-architecture.md)
+und [SkillPilot-owned Coach-Architektur](skillpilot-owned-coach-architecture.md).
 
 ## 1. Kurzfassung
 

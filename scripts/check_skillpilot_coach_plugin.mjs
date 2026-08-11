@@ -19,10 +19,6 @@ const memoryCardPracticeWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-memory-card-practice-v1.html",
 );
-const skillpilotStartWidget = resolve(
-  repositoryRoot,
-  "backend/src/main/resources/openai/skillpilot-start-v1.html",
-);
 const retainedGoalVisualizationRoot = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/retained/skillpilot/coach/v1",
@@ -35,6 +31,8 @@ const legacyGoalVisualizationArtifactSha256 =
   "2655afdde360f80392318a868b51d1d3d8f0d27ab32e73255f0f22656b161e82";
 const legacyGoalVisualizationResourceUri =
   "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
+const lastAdvertisedSkillpilotStartArtifactSha256 =
+  "4bedfcc1f5de64bde6c8cf9f81879d0c80f54ec740de105357fa929be6cf7f85";
 assert.equal(existsSync(legacyGoalVisualizationArtifact), true);
 assert.equal(
   createHash("sha256")
@@ -55,12 +53,6 @@ const memoryCardPracticeArtifactSha256 = createHash("sha256")
   .digest("hex");
 const memoryCardPracticeResourceUri =
   `ui://skillpilot/coach/v1/sha256-${memoryCardPracticeArtifactSha256}/memory-card-practice.html`;
-assert.equal(existsSync(skillpilotStartWidget), true);
-const skillpilotStartArtifactSha256 = createHash("sha256")
-  .update(readFileSync(skillpilotStartWidget))
-  .digest("hex");
-const skillpilotStartResourceUri =
-  `ui://skillpilot/coach/v1/sha256-${skillpilotStartArtifactSha256}/skillpilot-start.html`;
 const retainedArtifactDirectoryNames = readdirSync(
   retainedGoalVisualizationRoot,
   { withFileTypes: true },
@@ -121,9 +113,11 @@ for (const sha256 of retainedSkillpilotStartArtifactSha256s) {
   );
 }
 assert.equal(
-  retainedSkillpilotStartArtifactSha256s.includes(skillpilotStartArtifactSha256),
-  false,
-  "The active direct-start artifact must not also be retained.",
+  retainedSkillpilotStartArtifactSha256s.includes(
+    lastAdvertisedSkillpilotStartArtifactSha256,
+  ),
+  true,
+  "The last advertised direct-start artifact must remain passively readable.",
 );
 const skillRoot = resolve(pluginRoot, "skills/skillpilot-coach-v1");
 
@@ -168,6 +162,7 @@ const contractMetadata = read(resolve(
 ));
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
+const compactWhitespace = (value) => value.replace(/\s+/gu, " ").trim();
 const completeBehavioralSurface =
   `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
 const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
@@ -381,15 +376,9 @@ const expectedUiResources = [
     path: "ui/goal-visualization.html",
     uri: goalVisualizationResourceUri,
   },
-  {
-    mimeType: "text/html;profile=mcp-app",
-    path: "ui/skillpilot-start.html",
-    uri: skillpilotStartResourceUri,
-  },
 ].sort((left, right) => left.uri.localeCompare(right.uri));
 assert.deepEqual(releaseLine.ui, {
   activeBindings: {
-    open_skillpilot_start: skillpilotStartResourceUri,
     render_skillpilot_goal_visualization: goalVisualizationResourceUri,
     start_skillpilot_memory_practice: memoryCardPracticeResourceUri,
   },
@@ -409,11 +398,6 @@ const memoryCardPracticeHtml = read(memoryCardPracticeWidget);
 assert.match(memoryCardPracticeHtml, /^<!doctype html>/i);
 assert.match(memoryCardPracticeHtml, /ui\/notifications\/tool-result/);
 assert.match(memoryCardPracticeHtml, /skillpilotMemoryCard/);
-const skillpilotStartHtml = read(skillpilotStartWidget);
-assert.match(skillpilotStartHtml, /^<!doctype html>/i);
-assert.match(skillpilotStartHtml, /issue_skillpilot_start_capability/);
-assert.match(skillpilotStartHtml, /ui\/message/);
-
 assert.equal(lifecycle.schemaVersion, 2);
 assert.deepEqual(Object.keys(lifecycle).sort(), [
   "contractLine",
@@ -531,44 +515,60 @@ requireString(
 assert.match(skill, /references\/coaching-policy\.md/);
 assert.match(
   skill,
-  /If it does not, call\s+`open_skillpilot_start` exactly once\./,
-  "The skill must use only the dedicated direct-start opener when no session exists.",
+  /If none is present, do not call a SkillPilot tool[\s\S]+Output exactly[\s\S]+https:\/\/skillpilot\.com\/[\s\S]+new chat[\s\S]+Never translate or extend the sentence\./,
+  "The skill must fail closed and explain the WebGUI start when no prepared session exists.",
 );
 assert.match(
-  skill,
-  /do not begin coaching, navigate, or call another SkillPilot tool before it\s+arrives\./,
-  "The skill must fail closed for subject-matter work until the component-authored start message arrives.",
+  combinedSkill,
+  /Before (?:\*\*)?every learner-facing coaching response(?:\*\*)?[\s\S]+`get_skillpilot_context`[\s\S]+(?:same|current) assistant turn/i,
+  "The contract must require a fresh session/context preflight in every learner-facing coaching turn.",
 );
 assert.match(
-  skill,
-  /successful normal Direct Start\s+has already completed curriculum and personalisation in the component/,
-  "The skill must keep normal Direct-Start setup inside the component.",
+  combinedSkill,
+  /curriculum[\s\S]+stage[\s\S]+subjects[\s\S]+profiles[\s\S]+personalization[\s\S]+WebGUI/i,
+  "The skill must keep Level-2 configuration in the first-party WebGUI.",
 );
 assert.match(
-  policy,
-  /component—not the coach dialogue—uses the existing ID-free\s+session tools to load context and complete every published `setCurriculum`\s+and `setPersonalization` action before that message/,
-  "The coaching policy must keep curriculum and personalisation in the component before handoff.",
-);
-assert.match(
-  skill,
-  /create a new opaque SkillPilot ID or use\s+an existing one/,
-  "The skill must support CREATE and EXISTING in the private component.",
+  combinedSkill,
+  /SESSION_REQUIRED[\s\S]+SESSION_RENEWAL_REQUIRED[\s\S]+SESSION_VERSION_UNAVAILABLE[\s\S]+startUrl[\s\S]+new chat/i,
+  "Session failures must return the learner to the WebGUI and a newly prepared chat.",
 );
 assert.match(
   policy,
-  /permanent ID is never\s+an MCP tool argument, result, result `_meta`, ChatGPT widget state, or chat\s+value/,
-  "The coaching policy must keep the permanent ID out of every MCP and chat surface.",
+  /SkillPilot-ID creation or recovery[\s\S]+belong exclusively to the[\s\S]+first-party\s+WebGUI/i,
+  "Permanent-ID handling must remain exclusively first-party.",
 );
-assert.match(skill, /openai-provider-eligibility-v2/);
-assert.match(policy, /openai-provider-eligibility-v2/);
-assert.match(skill, /Never call the app-only\s+`issue_skillpilot_start_capability` tool yourself/);
-assert.match(skill, /Never show, repeat, request, or reconstruct\s+it\./);
+const fixedNoSessionGerman =
+  "Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen Chat.";
+const fixedNoSessionEnglish =
+  "Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat.";
+for (const instruction of [fixedNoSessionGerman, fixedNoSessionEnglish]) {
+  assert.equal(
+    compactWhitespace(skill).includes(instruction),
+    true,
+    "SKILL.md must contain each exact fixed no-session WebGUI handoff sentence.",
+  );
+  assert.equal(
+    compactWhitespace(mcpContract).includes(instruction),
+    true,
+    "Server instructions must contain the same exact no-session WebGUI handoff sentence.",
+  );
+}
+assert.match(
+  policy,
+  /exactly the matching fixed German or English[\s\S]+sentence from `SKILL\.md`[\s\S]+without translating or extending it/u,
+  "The policy must delegate the no-session response to the exact fixed Skill sentence.",
+);
+assert.match(
+  skill,
+  /Never display, repeat, derive, reconstruct, or ask the learner to\s+re-enter it\./,
+);
 assert.deepEqual(skillAgent, {
   interface: {
     display_name: "SkillPilot Coach v1",
-    short_description: "Personal SkillPilot learning coach",
+    short_description: "Web-started SkillPilot learning coach",
     default_prompt:
-      "Use $skillpilot-coach-v1 to start or continue my SkillPilot learning session.",
+      "Use $skillpilot-coach-v1 to continue the learning session prepared by SkillPilot.",
   },
   dependencies: {
     tools: [
@@ -576,7 +576,7 @@ assert.deepEqual(skillAgent, {
         type: "mcp",
         value: "skillpilot-coach-v1",
         description:
-          "Private SkillPilot direct start, learning state, navigation, mastery, verified recall, and assessments",
+          "Session validation, learning state, focus, active goals, mastery, verified recall, and assessments",
         transport: "streamable_http",
         url: "https://mcp-coach-v1.skillpilot.com/mcp",
       },
@@ -586,6 +586,53 @@ assert.deepEqual(skillAgent, {
     allow_implicit_invocation: false,
   },
 });
+const toolCatalogStart = mcpContract.indexOf(
+  "private List<McpStatelessServerFeatures.SyncToolSpecification> buildToolSpecifications()",
+);
+const toolCatalogEnd = mcpContract.indexOf(
+  "\n    private McpStatelessServerFeatures.SyncToolSpecification",
+  toolCatalogStart + 1,
+);
+assert.ok(
+  toolCatalogStart >= 0 && toolCatalogEnd > toolCatalogStart,
+  "Could not isolate the V1 tool catalog.",
+);
+const modelToolCatalog = mcpContract.slice(toolCatalogStart, toolCatalogEnd);
+for (const [retiredTool, retiredSymbol] of [
+  ["open_skillpilot_start", "OPEN_SKILLPILOT_START"],
+  ["issue_skillpilot_start_capability", "ISSUE_SKILLPILOT_START_CAPABILITY"],
+  ["set_skillpilot_curriculum", "SET_CURRICULUM"],
+  ["set_skillpilot_personalization", "SET_PERSONALIZATION"],
+]) {
+  assert.equal(
+    combinedSkill.includes(retiredTool)
+      || modelToolCatalog.includes(retiredTool)
+      || modelToolCatalog.includes(retiredSymbol),
+    false,
+    `The Web-first V1 contract must not expose retired tool ${retiredTool}.`,
+  );
+}
+assert.match(
+  mcpContract,
+  /startResourceSpecification[\s\S]+Retained SkillPilot compatibility resource[\s\S]+not bound to an active tool/u,
+  "Previously advertised start resources must be described as passive compatibility resources.",
+);
+assert.match(
+  mcpContract,
+  /Historical SkillPilot UI resource retained only for provider cache compatibility[\s\S]+active start flow is available through this resource/u,
+  "Retained start resource widget metadata must not advertise an active start flow.",
+);
+for (const activeStartDescription of [
+  "Start SkillPilot Coach",
+  "Private direct-start component for an existing SkillPilot learner ID.",
+  "Private SkillPilot direct start. The learner ID stays outside the chat and model context.",
+]) {
+  assert.equal(
+    mcpContract.includes(activeStartDescription),
+    false,
+    `Retained resource metadata must not advertise the retired flow: ${activeStartDescription}`,
+  );
+}
 assert.equal(
   skillAgent.dependencies.tools[0].url,
   releaseLine.publicMcpEndpoint,
@@ -633,12 +680,12 @@ const assertBehaviorFragments = (source, patterns, label) => {
 assertBehaviorFragments(
   combinedSkill,
   [
-    /Normal card practice and strict verified recall are[\s\S]+different learning modes/u,
+    /(?:Normal card practice and strict Verified Recall are different\s+learning modes|normal component-based card practice separate from strict\s+Verified Recall)/iu,
     /start_skillpilot_memory_practice/u,
     /review_skillpilot_memory_practice_card/u,
-    /dedicated[\s\S]+memory-card component/u,
-    /must never reuse[\s\S]+goal-visualization resource/u,
-    /Cockpit URL as (?:the )?fallback/u,
+    /dedicated component alone may reveal answers/u,
+    /receipt is not full context/u,
+    /Cockpit URL\s+only after an actual practice-tool error/u,
   ],
   "memory-card practice UI boundary",
 );
@@ -646,11 +693,11 @@ assertBehaviorFragments(
 assertBehaviorFragments(
   combinedSkill,
   [
-    /nextAllowedTools[\s\S]+only immediate state-machine actions/u,
-    /Navigation[\s\S]+intentionally absent[\s\S]+explicit[\s\S]+request/u,
-    /active goal[\s\S]+redirect=true[\s\S]+explicitly asks for a[\s\S]+different goal/u,
-    /flag omitted or false[\s\S]+no goal choices are published/u,
-    /invalidates all goal options from earlier results and conversation[\s\S]+turns/u,
+    /nextAllowedTools/u,
+    /Use navigation only after an explicit request/u,
+    /active goal[\s\S]+redirect=true/u,
+    /Without it, retain the active goal/u,
+    /mutation invalidates every option from older results and turns/iu,
   ],
   "fail-closed autopilot continuation and explicit goal redirect",
 );
@@ -948,41 +995,73 @@ const didacticParityRules = [
 for (const rule of didacticParityRules) {
   assertBehaviorFragments(learningCoachDe, rule.de, `${rule.id} in lerncoach.de.md`);
   assertBehaviorFragments(learningCoachEn, rule.en, `${rule.id} in learning_coach.en.md`);
-  assertBehaviorFragments(policy, rule.target, `${rule.id} in coaching-policy.md`);
 }
 
+// The shared policy deliberately states the same durable coaching invariants
+// more compactly than the provider-specific reference documents. Keep this
+// semantic guard focused on behavior instead of requiring their verbose prose.
+assertBehaviorFragments(
+  policy,
+  [
+    /sentence containing its exact `activeGoal\.title`[\s\S]+never substitute the\s+description/u,
+    /A bare path choice starts the dialogue; it is not completion/u,
+    /Complete orientation only after meaningful engagement[\s\S]+explicit request to continue/u,
+    /content-free acknowledgement is\s+insufficient/u,
+    /Connect the next hint or explanation explicitly to the learner's answer/u,
+    /Offer a hint or smaller substep when needed, not the full answer/u,
+    /worked mini-example[\s\S]+genuinely different next task/u,
+    /Reconstruct unusual approaches charitably[\s\S]+Credit valid alternatives/u,
+    /Cover every explicitly named aspect/u,
+    /two independent checks[\s\S]+genuine multi-step transfer in a changed context/u,
+    /visual, graph, or GeoGebra goals[\s\S]+observe, enter, change, and read representations/u,
+    /exactly one goal is\s+selectable[\s\S]+at\s+most three current options/u,
+    /requires a specialized app or cockpit activity[\s\S]+do not teach the same activity in parallel/u,
+    /Treat the person as a learner/u,
+    /Work patiently, concisely, clearly, and dialogically[\s\S]+small steps and\s+frequent feedback/u,
+    /Feynman-style loop[\s\S]+learner's own words[\s\S]+explain only that gap[\s\S]+changed application/u,
+    /distinguish a conceptual gap\s+from a careless error/u,
+    /competence is not yet demonstrated[\s\S]+continue working on the\s+same goal/u,
+    /returned handoff[\s\S]+before any successor/u,
+    /Acknowledge completed focus or curriculum[\s\S]+Never invent extensions/u,
+    /Use navigation only after an explicit request to change focus or goal/u,
+    /missing prerequisite or\s+foundation/u,
+    /Hide system mechanics[\s\S]+Never mention tools, APIs, schemas, storage, internal\s+IDs/u,
+  ],
+  "compact shared coaching policy",
+);
+
 const orientationSection = policy.match(
-  /## 5\. Motivation and orientation mode\n([\s\S]*?)\n## 6\./u,
+  /## 4\. Motivation and orientation\n([\s\S]*?)\n## 5\./u,
 );
 assert.ok(
   orientationSection,
   "The coaching policy must contain a dedicated motivation and orientation mode.",
 );
-assert.match(orientationSection[1], /Show possibilities/u);
-assert.match(orientationSection[1], /Offer positive perspectives/u);
+assert.match(orientationSection[1], /present every\s+supplied path/u);
+assert.match(orientationSection[1], /practical contexts/u);
 assert.match(
   orientationSection[1],
-  /learner\s+responds to that tailored follow-up[\s\S]+or explicitly asks to continue/u,
+  /meaningful engagement with that follow-up[\s\S]+or an explicit request to continue/u,
   "Orientation completion must wait for active follow-up engagement or an explicit direct-continuation request.",
 );
 assert.match(
   orientationSection[1],
-  /content-free acknowledgement alone is insufficient/u,
+  /content-free acknowledgement is\s+insufficient/u,
   "Orientation completion must not treat a content-free acknowledgement as active engagement.",
 );
 assert.match(
   orientationSection[1],
-  /test neither prior knowledge nor terminology, calculations,\s*details/u,
+  /Do not test prior knowledge, terminology, calculations, details/u,
   "Orientation must never become a subject-detail or prior-knowledge check.",
 );
 assert.match(
   orientationSection[1],
-  /never describe the result as subject-matter\s+mastery/u,
+  /Never call this subject-matter mastery/u,
   "Orientation completion must not be presented as subject mastery.",
 );
 assert.match(
   skill,
-  /motivational orientation, dialogic scaffolding,\s*interactive memory-card practice, verified recall, or strict assessment/u,
+  /orientation, dialogic learning,\s*memory practice, verified recall, or assessment/u,
   "The skill workflow must route motivation through its dedicated mode.",
 );
 
@@ -993,7 +1072,7 @@ assert.match(
 );
 assert.match(
   combinedSkill,
-  /Never infer or override[\s\S]+English (?:skill|policy)[\s\S]+tool names/u,
+  /Never infer it from this English policy[\s\S]+tool\s+names/u,
   "English control-plane language must never override the session communication locale.",
 );
 
@@ -1014,10 +1093,17 @@ for (const fragment of forbiddenLegacyFragments) {
   );
 }
 
+const embeddedSkillpilotUrls =
+  (combinedSkill.match(/https:\/\/skillpilot\.com\/[^\s`)\]]*/gu) ?? [])
+    .map((url) => url.replace(/[.,;:!?“”'"]+$/gu, ""));
+assert.ok(
+  embeddedSkillpilotUrls.length > 0,
+  "The skill must publish the fixed first-party no-session start URL.",
+);
 assert.equal(
-  combinedSkill.includes("https://skillpilot.com"),
-  false,
-  "The skill must never contain a model-selected or model-built SkillPilot URL.",
+  embeddedSkillpilotUrls.every((url) => url === "https://skillpilot.com/"),
+  true,
+  "The skill may contain only the exact fixed SkillPilot WebGUI start URL.",
 );
 assert.equal(
   mcpContract.includes("If no approved link is available, do not output a link."),
@@ -1050,35 +1136,43 @@ assert.equal(completeBehavioralSurface.includes("[TODO:"), false);
 assert.match(combinedSkill, /expectedStateVersion/);
 assert.match(combinedSkill, /clientRequestId/);
 assert.match(combinedSkill, /STATE_VERSION_CONFLICT/);
-assert.match(combinedSkill, /MCP App[\s\S]+goal visualization/s);
 assert.match(
   combinedSkill,
-  /never as a source,\s+evidence, task, solution, or performance record/s,
+  /goalVisualization[\s\S]+render_skillpilot_goal_visualization/s,
 );
 assert.match(
   combinedSkill,
-  /goalVisualization[\s\S]+immediate next tool call in the same assistant turn[\s\S]+expectedStateVersion/s,
-  "The coach skill must use the documented data-then-render call flow.",
+  /never as a source, task,\s+solution, assessment, or performance record/s,
 );
 assert.match(
   combinedSkill,
-  /Never call it[\s\S]+after a newer successful SkillPilot result[\s\S]+Never retry/s,
-  "The coach skill must bind one render attempt to the authorizing full result.",
+  /contains `goalVisualization`[\s\S]+permits[\s\S]+`render_skillpilot_goal_visualization`[\s\S]+once[\s\S]+unchanged `goalId`[\s\S]+`stateVersion`[\s\S]+`expectedStateVersion`/s,
+  "The coach skill must retain the compact, result-bound goal-visualization rule.",
 );
 assert.match(
   combinedSkill,
-  /UI-only tool results[\s\S]+Neither (?:result )?replaces the latest full SkillPilot context/s,
+  /renderer receipt never replaces full context[\s\S]+missing[\s\S]+image never blocks[\s\S]+text response/is,
+  "The coach skill must keep host image presentation optional and preserve complete coaching text.",
+);
+assert.match(
+  combinedSkill,
+  /Goal-renderer and memory-practice results[\s\S]+narrow UI receipts[\s\S]+neither replaces a successful full context/is,
   "UI-only receipts must not replace the authoritative full coaching context.",
 );
 assert.match(
   mcpContract,
-  /goalVisualization[\s\S]+render_skillpilot_goal_visualization[\s\S]+immediate next tool call in the same assistant turn[\s\S]+expectedStateVersion/s,
-  "The MCP server instructions must publish the immediate data-then-render boundary.",
+  /goalVisualization[\s\S]+nextAllowedTools[\s\S]+render_skillpilot_goal_visualization[\s\S]+call it once[\s\S]+goalId[\s\S]+expectedStateVersion/s,
+  "The MCP server instructions must retain the result-bound renderer rule.",
 );
 assert.match(
   mcpContract,
-  /UI receipt only[\s\S]+does not replace the latest full SkillPilot context/s,
+  /only a UI receipt[\s\S]+never replaces that full context/s,
   "The MCP server must keep the last full context authoritative after rendering.",
+);
+assert.equal(
+  `${combinedSkill}\n${mcpContract}\n${contextProjector}`.includes("presentationAction"),
+  false,
+  "The retired presentationAction experiment must not remain in the V1 surface.",
 );
 assert.match(
   mcpContract,

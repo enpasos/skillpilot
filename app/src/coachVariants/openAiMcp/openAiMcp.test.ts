@@ -171,7 +171,13 @@ const chatStart: CoachChatStart = {
 }
 let navigatedTo = ''
 const delivered = await deliverCoachChatStart(chatStart, (url) => { navigatedTo = url })
-assertEqual(new URL(navigatedTo).searchParams.get('prompt'), launch.prompt, 'hands prompt to ChatGPT URL')
+const deliveredUrl = new URL(navigatedTo)
+assertEqual(deliveredUrl.origin, 'https://chatgpt.com', 'opens only the fixed ChatGPT origin')
+assertEqual(deliveredUrl.pathname, '/', 'opens a new root ChatGPT conversation')
+assertEqual(deliveredUrl.hash, '', 'does not carry browser fragments into ChatGPT')
+assertEqual(deliveredUrl.searchParams.size, 1, 'carries only the prepared prompt query')
+assertEqual(deliveredUrl.searchParams.get('prompt'), launch.prompt, 'hands prompt to ChatGPT URL')
+assert(!navigatedTo.includes('learner-42'), 'never puts the permanent SkillPilot ID into the ChatGPT URL')
 assertEqual(delivered.copied, false, 'does not use clipboard handoff')
 assertEqual(delivered.promptFallback, null, 'does not require copy-and-paste fallback')
 

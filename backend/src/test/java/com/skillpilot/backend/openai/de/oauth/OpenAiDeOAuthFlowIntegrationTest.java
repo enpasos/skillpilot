@@ -122,6 +122,21 @@ class OpenAiDeOAuthFlowIntegrationTest {
     }
 
     @Test
+    void connectRequiredExplainsTheFirstPartyWebGuiSessionHandoffOnly() throws Exception {
+        HttpResponse<String> response = get(OpenAiDeOAuthConfiguration.CONNECT_REQUIRED_ENDPOINT);
+
+        assertThat(response.statusCode()).isEqualTo(200);
+        assertThat(response.body())
+                .contains(
+                        "neither selects a learner nor creates a learning session",
+                        "first-party SkillPilot web interface",
+                        "Start learning",
+                        "prepared start message",
+                        "new chat")
+                .doesNotContain("direct-start", "capability-protected", "private component");
+    }
+
+    @Test
     void publishesProviderMetadataAndCompletesPkceRefreshAndRevocation() throws Exception {
         JsonNode protectedResource = json(get(OpenAiDeOAuthMetadataController.PROTECTED_RESOURCE_METADATA_PATH));
         assertThat(protectedResource.path("resource").asText())

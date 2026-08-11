@@ -79,8 +79,9 @@ Interpretation rules:
 - user-facing initial narrowing by school form, stage, jurisdiction, duration model, course profile, and current year/phase should be treated as **entry scope** over program units, placements, and applicability, not as duplicated goal semantics
 - catalog navigation (for example Schule / Hochschule / Sprachen) precedes the
   selected base curriculum and is not learner scope; the committed Personal
-  Curriculum is backend-owned Level 2 state, edited through one authored-flow
-  contract shared by start screen, cockpit, and prospective MCP UI hosts
+  Curriculum is backend-owned Level 2 state, edited through the authored flow
+  in first-party WebGUI surfaces. The OpenAI V1 coach neither presents nor
+  mutates that configuration
 - Level 2 contains jurisdiction or canonical view, applicable duration model,
   explicit stage, selected subjects, and course profile per subject; an absent
   stage stays unresolved, and LK is a subject attribute that never implies
@@ -506,14 +507,13 @@ Rule:
   gate. A conforming host may render or decline the UI resource; this optional
   presentation result must never change authentication, authorization, state,
   persistence, or the ordinary chat result.
-* Replayable coordinator results and image authorization remain surface-neutral.
-  When the newest successful full context or mutation contains
-  `goalVisualization` and permits the renderer, call it exactly once as the
-  immediate next tool call with the unchanged `goalId` and
-  `expectedStateVersion`. A newer successful result invalidates the prior
-  authorization. The renderer reprojects current backend state and rejects
-  stale versions or mismatched goal IDs. Its image receipt does not replace the
-  preceding full SkillPilot context. Never retry or claim the host displayed it.
+* When the newest successful full context contains `goalVisualization` and
+  permits the renderer, call it exactly once with that result's unchanged
+  `goalId`, copying the top-level `stateVersion` into the renderer input
+  `expectedStateVersion`. Never reuse or retry stale authorization. A
+  mastery handoff remains before the successor section; render immediately
+  before coaching the associated active goal. The receipt does not replace
+  full context, and omitted host presentation does not weaken the text path.
 * A content-addressed UI URI becomes immutable as soon as it has been advertised
   to a real client, including during draft testing. Replacing widget HTML
   produces a new active hash-bound URI; older URIs remain registered with their
@@ -782,13 +782,13 @@ Key principles for Layer C:
 - The multilingual OpenAI MCP App separates two server-owned bindings:
   - OAuth 2.1 authenticates the registered confidential App connection.
   - An independent, absolute 24-hour learning session addresses one learner for
-    fachliche tool use. It is created anew only by an explicit authorized start:
-    either `Lernen starten` in the first-party SkillPilot UI or the
-    capability-protected private MCP App direct start. It is never extended by
-    OAuth refreshes or MCP calls, enters the provider flow only in the short
-    prepared start message, and is passed unchanged as `learningSessionId` to
-    every fachlicher MCP call. OAuth alone never chooses the learner, and the
-    direct-start SkillPilot ID never becomes an MCP tool argument.
+    fachliche tool use. It is created anew only by `Lernen starten` in the
+    first-party SkillPilot UI after permanent-ID, provider-notice, curriculum,
+    stage, subject, course-profile and personalization configuration there. It
+    is never extended by OAuth refreshes or MCP calls, enters the provider flow
+    only in the short prepared start message, and is passed unchanged as
+    `learningSessionId` to every fachlicher MCP call. OAuth alone never chooses
+    the learner, and the permanent SkillPilot ID never becomes an MCP argument.
   OpenAI attaches the OAuth bearer token to MCP requests automatically. The
   backend requires both proofs and resolves the learner only through the
   learning-session mapping. Because ChatGPT exposes no stable conversation
@@ -804,8 +804,9 @@ Key principles for Layer C:
     a personalization decision;
   - an absent flow means no mandatory guided personalization; a malformed
     authored flow fails closed;
-  - provider adapters submit the currently published opaque `optionId`
-    unchanged. Labels are presentation only and are never mutation keys;
+  - first-party authored-flow hosts submit the currently published opaque
+    `optionId` unchanged. Labels are presentation only and are never mutation
+    keys; the OpenAI V1 coach does not mutate this Level 2 configuration;
   - if a group has met its minimum but not its maximum, the plan publishes an
     opaque `COMPLETE_GROUP` action; only this action, or reaching the maximum,
     closes that concrete group instance. Optional groups use the same action
@@ -1056,26 +1057,24 @@ Provider-facing contracts must use derived temporary context instead:
   operation and no second mutation. Missing, invalid, or expired sessions
   return `SESSION_REQUIRED`, and unavailable pinned workflow or curriculum
   revisions return `SESSION_VERSION_UNAVAILABLE`. None is an OAuth failure.
-- The sessionless `open_skillpilot_start` requires the closed pair `purpose`
-  plus `communicationLocale`, with locale restricted to `de` or `en`.
-  With no current start message, the model calls it exactly once with
-  `{"purpose":"START","communicationLocale":"de"}` for a German
-  conversation or `{"purpose":"START","communicationLocale":"en"}` for an
-  English conversation. On `SESSION_REQUIRED`,
-  `SESSION_RENEWAL_REQUIRED`, or `SESSION_VERSION_UNAVAILABLE`, it calls the
-  same tool exactly once with `purpose=RENEW_EXISTING`. For that call it copies
-  `recoveryCommunicationLocale` from the newest error details when present;
-  otherwise it reuses the last session's authoritative `communicationLocale`.
-  German maps to `de`, English to `en`; only when neither source remains
-  available does the current conversation language supply that same closed
-  `de`/`en` choice. The model then waits for the newest component-authored
-  start message. The existing SkillPilot ID is entered only in the private
-  component and reaches only the fixed direct HTTPS bootstrap endpoint. For
-  subsequent calls in that conversation, the fresh message supersedes every
-  older session value; it does not revoke the older independent session
-  records. A new chat or the SkillPilot website is a fallback only when the
-  component or secure same-chat handoff is unavailable; neither is the normal
-  renewal path and OAuth must not be reconnected.
+- Before every learner-facing OpenAI V1 coaching response,
+  `get_skillpilot_context` must succeed in that assistant turn. A mutation
+  result does not waive this pre-response validity and freshness check.
+- The OpenAI V1 model contract has no sessionless start tool, provider-side
+  SkillPilot-ID input, or in-chat renewal. Without a current
+  prepared start message, the coach gives only a short localized instruction
+  to configure SkillPilot at `https://skillpilot.com/` and use **Lernen
+  starten**, then stops. This is the sole locale exception: with no prepared
+  session or context, it uses German for a German conversation and English for
+  an English conversation only for that fixed instruction; this does not set a
+  session locale. On `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED`, or
+  `SESSION_VERSION_UNAVAILABLE`, it outputs `instruction` unchanged. If only
+  `instructions` is available, it selects the exact entry using the last
+  authoritative `communicationLocale`, otherwise the current conversation
+  language. It includes the exact `startUrl` only if the selected instruction
+  does not already contain it, gives no fachliche response, and neither retries
+  the old session nor reconnects OAuth. The first-party UI creates a fresh
+  session and opens a new chat.
 - The first-party endpoint
   `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` accepts the optional
   live-test-only JSON field `diagnosticSessionTtlSeconds` only while
@@ -1083,8 +1082,7 @@ Provider-facing contracts must use derived temporary context instead:
   value must be between `3601` and `86400` seconds inclusive and must not exceed
   the normal `PT24H` learning-session lifetime. It affects only the independent
   session created by that one request; the next request without the field uses
-  `PT24H` automatically. The private component bootstrap rejects the field and
-  always uses the normal lifetime. Prefer `3660` seconds for an approximately
+  `PT24H` automatically. Prefer `3660` seconds for an approximately
   one-minute transition across the `PT1H` action guard or `5400` seconds for a
   90-minute soak. Never lower the global learning-session TTL for this test, and
   disable the diagnostic gate again after the live check.
@@ -1098,11 +1096,11 @@ Provider-facing contracts must use derived temporary context instead:
   reserved and fail closed with `404`; only V1 is active. Earlier
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
-  compatibility routes. The still-unpublished `1.0.0` draft binds each UI tool
-  to its own active, hash-bound MCP Apps resource: the private start and
-  same-chat renewal component, the image-only goal renderer, and the interactive
-  memory-practice launcher. Previously advertised hash
-  URIs remain byte-identically readable as passive resources. Ordinary
+  compatibility routes. The still-unpublished `1.0.0` draft binds exactly two
+  active, hash-bound MCP Apps resources: the image-only goal renderer and the
+  interactive memory-practice launcher. Previously advertised start and
+  image hash URIs remain byte-identically readable as passive resources, but no
+  active tool binds the retained start resources. Ordinary
   coaching, selection, mastery, Verified Recall, and exam flows remain normal
   MCP/chat flows without UI bindings; the memory-card review write is app-only
   and has no output template of its own.
@@ -1182,11 +1180,11 @@ provider policy and product review explicitly permit it.
   Action-operation, visible-relay, or model-built deep-link mechanics. Later
   fachliche corrections and the current MCP/backend contract take precedence.
 - **MCP-App state rule:** user-facing labels and released learning content belong
-  in `content` / `structuredContent`. In the chat-first coach, a currently valid
-  opaque personalization `optionId` may also be model-visible in
-  `structuredContent`, but must not be repeated in the transcript; the model
-  passes it unchanged to the narrow mutation tool. Widget-only click references
-  remain in result `_meta` and app-only tools apply them directly. The
+  in `content` / `structuredContent`. Permanent-ID handling and Level 2
+  curriculum or personalization configuration stay in the first-party WebGUI;
+  V1 exposes neither their choices nor their mutation tools to the model.
+  Widget-only click references remain in result `_meta` and app-only tools apply
+  them directly. The
   `goalVisualization` projection is present only when the learner's default-on
   chat-visualization preference is enabled and an active atomic goal has a
   matching canonical image link. The dedicated read-only
@@ -1198,29 +1196,28 @@ provider policy and product review explicitly permit it.
   binds its own active resource, while its rating write is app-only. Ordinary
   context reads and other state mutations carry no UI metadata and never create
   a UI box. No user-agent or
-  client-surface gate changes this contract. When their
-  newest full result contains an eligible image and permits the renderer, that
-  renderer follows immediately and exactly once with the unchanged `goalId`
-  and `expectedStateVersion`; an attempted image must not be retried
-  automatically. Its absence must degrade to the ordinary chat response. Every
+  client-surface gate changes this contract. When the newest full result
+  contains `goalVisualization` and permits the renderer, the model calls it once
+  with that result's unchanged goal and copies the top-level state version into
+  the renderer input `expectedStateVersion`; stale attempts are neither reused
+  nor retried. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.
 - **OpenAI identity/session rule:** OAuth authorizes the registered App
   transport but does not select the learner. An independent, absolute 24-hour
   server-side learning session addresses the learner for fachliche tools. Only
-  an explicitly confirmed first-party or private-component `Lernen starten`
-  action creates a new independent session; neither bearer-token refresh nor
+  an explicitly confirmed first-party `Lernen starten` action creates a new
+  independent session and opens a new chat; neither bearer-token refresh nor
   MCP activity slides its expiry. New session-bound operations require at least
-  one hour of remaining validity, including the exact `PT1H` boundary. Below that boundary,
-  the private component renews the session from an existing SkillPilot ID in the
-  same chat. Only a replay with the same tool name, canonically identical
+  one hour of remaining validity, including the exact `PT1H` boundary. Below
+  that boundary, the coach stops and returns only the server-owned WebGUI start
+  instruction. Only a replay with the same tool name, canonically identical
   arguments, and the same `clientRequestId` for an already committed write may
   bypass the one-hour action guard while the session remains unexpired and its
   pinned workflow and curriculum versions remain available, because it
   executes no fachliche operation. Session recovery means “start a fresh
-  learning session”, not “reconnect OAuth” and not necessarily “open a new
-  chat”.
+  learning session in SkillPilot and open a new chat”, never “reconnect OAuth”.
 - **Prototype boundary:** `ai/openai app/` contains an executable neutral
   Streamable-HTTP MCP Apps mechanism prototype and local host simulation with
   localized demo payload catalogs. It exposes one control-plane contract rather

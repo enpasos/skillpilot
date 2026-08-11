@@ -125,9 +125,9 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
 ### 4.2 Appbindung und Lernsession
 
 - OAuth authentisiert die fest konfigurierte App gegenüber SkillPilot.
-- Jedes ausdrücklich bestätigte **Lernen starten** in der First-Party-UI oder
-  privaten Startkomponente erzeugt in genau diesem Augenblick eine neue,
-  unabhängige und absolut 24 Stunden gültige Lernsession für die dort gewählte
+- Jedes ausdrücklich bestätigte **Lernen starten** in der First-Party-UI erzeugt
+  in genau diesem Augenblick eine neue, unabhängige und absolut 24 Stunden
+  gültige Lernsession für die dort gewählte
   SkillPilot-ID. Auch dieselbe SkillPilot-ID erhält bei einem neuen Start eine
   neue Lernsession; ältere Sessiondatensätze werden dadurch nicht widerrufen.
 - Die Lernsession ist von OAuth getrennt. OAuth allein wählt keinen Lernenden
@@ -138,7 +138,7 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
 - Eine Lernsession aus einer älteren Startnachricht darf nicht für einen neuen
   Start verwendet werden.
 - Jede neue fachliche Operation benötigt mindestens `PT1H` Restlaufzeit. Exakt
-  `PT1H` ist zulässig, darunter wird vor der Operation erneuert. Ein bereits
+  `PT1H` ist zulässig, darunter endet der Chat-Lernfluss vor der Operation. Ein bereits
   committeter Write darf mit demselben Toolnamen, kanonisch identischen
   Argumenten und derselben `clientRequestId` nur bei noch nicht abgelaufener
   Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion sein
@@ -162,28 +162,31 @@ allgemeinen, zustandsgebundenen Entscheidungszyklus.
 Bei Einstieg, Wiederaufnahme, Unsicherheit, möglicher Kompaktierung oder nach
 einer Mutation gilt:
 
-1. **Lernsession übernehmen**  
+1. **Lernsession übernehmen**
    Die Lernsession kommt ausschließlich aus der aktuellen SkillPilot-
    Startnachricht.
-2. **Frischen Zustand laden**  
-   Curriculum, Personalisierung, Lernumfang, Fokus, aktives Ziel, Frontier,
-   Modus und Fortschritt werden nicht aus Gesprächserinnerung rekonstruiert.
-3. **Bestätigten Kontext bilden**  
+2. **Frischen Zustand laden**
+   Vor jeder lernendenbezogenen Antwort wird der Kontext im aktuellen
+   Assistant-Turn geladen. Curriculum, Personalisierung, Lernumfang, Fokus,
+   aktives Ziel, Frontier, Modus und Fortschritt werden nicht aus
+   Gesprächserinnerung rekonstruiert.
+3. **Bestätigten Kontext bilden**
    Der Coach unterscheidet klar zwischen bereits bestätigtem Zustand,
    aktuellen Backendoptionen und bloßer Nutzerabsicht.
-4. **Gesamte Nutzerabsicht auswerten**  
-   Mehrere Angaben gelten unabhängig von Reihenfolge und Wortlaut als
-   fortgeltende Absicht.
-5. **Eindeutige nächste Option semantisch zuordnen**  
+4. **Zulässige Nutzerabsicht auswerten**
+   Chatseitig bleiben nur fachliche Arbeit sowie ausdrückliche Level-3-
+   Änderungen von Fokus oder aktivem Ziel. Level-2-Konfiguration wird nie im
+   Chat vervollständigt oder geändert.
+5. **Eindeutige nächste Option semantisch zuordnen**
    Nur eine Option des jüngsten Zustands darf mutiert werden. Die Zuordnung
    erfolgt nach Bedeutung, nicht nach zufälliger Position oder Wortgleichheit.
-6. **Genau eine erlaubte Mutation ausführen**  
+6. **Genau eine erlaubte Mutation ausführen**
    Keine spätere Auswahl wird vorweggenommen und keine ID konstruiert.
-7. **Unmittelbar frisch laden**  
+7. **Unmittelbar frisch laden**
    Nach jeder Mutation ist ausschließlich der neue Backendzustand gültig.
 8. **Absicht erneut auf den neuen Zustand anwenden**  
-   Solange genau ein nächster Schritt eindeutig ist, wird der Zyklus ohne
-   unnötige Zwischenfrage fortgesetzt.
+   Solange genau ein fachlicher oder Level-3-Schritt eindeutig ist, wird der
+   Zyklus ohne unnötige Zwischenfrage fortgesetzt.
 9. **Nur echte Restmehrdeutigkeit erfragen**  
    Alle offenen, zusammengehörigen Angaben werden möglichst gemeinsam und mit
    dem bereits bestätigten Kontext erfragt.
@@ -195,7 +198,7 @@ einer Mutation gilt:
 
 Der Coach muss folgende Begriffe auseinanderhalten:
 
-- **Einstiegskontext:** bereits gewähltes Curriculum beziehungsweise
+- **Einstiegskontext:** im WebGUI gewähltes Curriculum beziehungsweise
   Schulform-/Programmpaket;
 - **Personalisierung:** zum Beispiel Bundesland oder andere
   Gültigkeitsdimensionen;
@@ -209,32 +212,29 @@ Der Coach muss folgende Begriffe auseinanderhalten:
 Kursprofil LK fest. Es legt nicht automatisch fest, ob der Lernumfang nur
 Sekundarstufe II oder auch Sekundarstufe I umfassen soll; ebenso wenig bestimmt
 es G8/G9, Jahrgang oder Phase. Kursprofile werden pro Fach gespeichert, sodass
-zum Beispiel Mathematik LK und Physik GK gleichzeitig bestehen können. Der
-Coach muss echte Mehrdeutigkeiten erfragen. Er darf den Fokus aber nicht auf
-der gesamten Mathematik belassen und anschließend Ziele aus einem nicht
-bestätigten Lernumfang anbieten.
+zum Beispiel Mathematik LK und Physik GK gleichzeitig bestehen können. Diese
+Level-2-Werte werden ausschließlich im WebGUI aufgelöst. Der Coach darf sie
+weder erfragen noch mutieren. Er darf den Fokus aber nicht auf der gesamten
+Mathematik belassen und anschließend Ziele aus einem nicht bestätigten
+Lernumfang anbieten.
 
 Die fachliche Semantik muss aus den vom Backend veröffentlichten
 Programmeinheiten, Optionen, Placements, Kompositionsansichten und
-Kompetenzbeziehungen stammen. Sprachliche Schlussfolgerungen des Modells sind
-Vorschläge zur Auswahl einer veröffentlichten Option, niemals eine eigene
-Curriculumsmutation.
+Kompetenzbeziehungen stammen. Sprachliche Schlussfolgerungen des Modells dürfen
+nur frische Fokus- oder Zieloptionen betreffen, niemals Curriculum oder
+Personalisierung.
 
 ### 5.3 Begrenzte Fehlerbehandlung
 
 - Bei einem Konflikt wird der Zustand genau einmal frisch geladen und die
   aktuelle Absicht erneut geprüft.
 - Bei `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
-  `SESSION_VERSION_UNAVAILABLE` öffnet der Coach genau einmal
-  `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der erforderlichen
-  `communicationLocale`. Vorrangig kopiert er
-  `recoveryCommunicationLocale` aus den neuesten Fehlerdetails, andernfalls die
-  autoritative Locale der letzten Session: Deutsch bleibt `de`, Englisch bleibt
-  `en`. Nur wenn beides fehlt, bildet er die aktuelle Unterhaltungssprache auf
-  dieselben beiden Werte ab. Die SkillPilot-ID wird nur in der privaten
-  Komponente eingegeben; deren neueste Startnachricht setzt den Ablauf im selben
-  Chat fort. Eine neue OAuth-Verbindung ist nicht erforderlich. Neuer Chat oder
-  First-Party-Webstart sind ausschließlich technische Fallbacks.
+  `SESSION_VERSION_UNAVAILABLE` gibt der Coach `instruction` unverändert aus
+  oder wählt den exakten lokalisierten Eintrag aus `instructions`; die exakte
+  `startUrl` ergänzt er nur, wenn sie nicht schon enthalten ist. Er lehrt nicht weiter, verwendet
+  die alte Session nicht erneut und verbindet OAuth nicht neu. **Lernen
+  starten** im First-Party-WebGUI erzeugt eine frische Session und öffnet den
+  neuen Chat.
 - Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler
   stoppt der strukturierte Ablauf transparent.
 - Der Coach darf nach einem Fehler keinen Erfolg vermuten, keinen Zustand
@@ -322,10 +322,11 @@ ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 | `COACH-STATE-001` | Der frisch geladene Backendzustand ist die einzige Zustandsautorität. |
 | `COACH-SESSION-001` | Die aktuelle Lernsession wird unverändert für jeden fachlichen Aufruf verwendet und nie aus OAuth oder älteren Chats abgeleitet. |
 | `COACH-SESSION-002` | Neue Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt `PT1H` ist gültig. Ein gespeicherter Write-Replay mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId` ist nur bei noch nicht abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion zulässig und mutiert nicht erneut. |
-| `COACH-SESSION-003` | Sessionfehler öffnen genau einmal den privaten `RENEW_EXISTING`-Pfad im selben Chat; dessen `communicationLocale=de|en` stammt bevorzugt aus `recoveryCommunicationLocale`, sonst aus der letzten Session. Neuer Chat oder Website sind nur Fallback. |
+| `COACH-SESSION-003` | Sessionfehler ergeben ausschließlich die unveränderte Serverinstruktion und, falls darin noch nicht enthalten, die exakte `startUrl`; keine Fachantwort oder OAuth-Neuverbindung, Fortsetzung über First-Party-Webstart und neuen Chat. |
+| `COACH-BOOTSTRAP-001` | Ohne aktuelle vorbereitete Session nennt der Coach nur `https://skillpilot.com/` und den WebGUI-Startweg; er ruft kein SkillPilot-Tool auf. |
 | `COACH-INTENT-001` | Natürliche mehrteilige Absichten gelten unabhängig von Reihenfolge und Wortlaut fort. |
 | `COACH-CONTEXT-001` | Vor offenen Fragen wird der bereits bestätigte fachliche Kontext knapp genannt. |
-| `COACH-SCOPE-001` | Lernumfang und Profil werden vollständig aufgelöst, bevor Frontier oder Ziele angeboten werden. |
+| `COACH-SCOPE-001` | Level-2-Lernumfang und Profile werden ausschließlich im WebGUI aufgelöst; der Coach verwendet sie nur frisch bestätigt. |
 | `COACH-FOCUS-001` | Zieloptionen stammen ausschließlich aus dem bestätigten aktuellen Fokus; frühere Stufen dürfen nicht hineinlecken. |
 | `COACH-MUTATION-001` | Pro frischem Zustand wird nur eine aktuell erlaubte Option mutiert; danach wird neu geladen. |
 | `COACH-QUESTION-001` | Der Coach fragt nur echte Restmehrdeutigkeiten und fasst zusammengehörige offene Angaben möglichst zusammen. |
@@ -389,30 +390,29 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 - **Ausgang:** SkillPilot-ID und Curriculum sind in der UI gewählt.
 - **Aktion:** einmal **Lernen starten**.
 - **Erwartung:** neue unabhängige 24h-Lernsession, aktuelle eingetragene oder von
-  der Komponente im selben Chat übergebene Startnachricht, richtiger Appkontext,
-  erster Context-Read.
+  SkillPilot vorbereitete Startnachricht, neuer Chat, richtiger Appkontext und
+  erfolgreicher Kontextabruf im ersten Assistant-Turn vor jeder Fachantwort.
 - **Verboten:** zweiter Klick, manuelles Kopieren, allgemeine Lehrplanantwort.
 
-### GJ-02 – Natürliche Mehrfachangabe
+### GJ-02 – Level-2-Änderungswunsch im Chat
 
 - **Eingabevarianten:** „Hessen, Mathe LK“, „Mathe Leistungskurs in Hessen“,
   „Ich bin in Hessen in der Oberstufe und habe Mathe LK“.
-- **Erwartung:** Bundesland, Fach und das fachbezogene Kursprofil werden
-  semantisch korrekt aufgelöst. Nur die dritte Variante löst durch
-  „Oberstufe“ zusätzlich eindeutig Sekundarstufe II auf. Lernstufe,
-  Dauer-/Jahrgangsmodell, Jahr oder Phase bleiben sonst offen und werden
-  gezielt erfragt.
-- **Verboten:** starre Einzelfragen, Wiederholung bereits beantworteter Fragen,
-  globale Übertragung von LK/GK auf andere Fächer oder ein aus LK/GK
-  abgeleiteter Lernstufenfokus.
+- **Erwartung:** keine chatseitige Curriculum- oder Personalisierungsmutation.
+  Der Coach verweist knapp auf den serverseitig gelieferten WebGUI-Weg; nach
+  **Lernen starten** wird im neuen Chat der vollständig konfigurierte Kontext
+  frisch geladen.
+- **Verboten:** Rückfragen zur Level-2-Einrichtung, konstruierte Optionen,
+  inferred Stufe oder Profil und Fortsetzung mit einem nur im Chat behaupteten
+  Scope.
 
-### GJ-02a – Mehrere fachbezogene Kursprofile
+### GJ-02a – Mehrere im WebGUI konfigurierte Kursprofile
 
-- **Eingabe:** „Mathe LK und Physik GK“.
-- **Erwartung:** Mathematik erhält das Kursprofil LK und Physik das Kursprofil
-  GK. Beide Fächer bleiben ausgewählt; Lernstufe und G8/G9 bleiben unabhängig.
-- **Verboten:** ein globales Kursprofil, das Überschreiben eines Fachs durch das
-  andere oder die automatische Festlegung auf Sekundarstufe II.
+- **Ausgang:** Das WebGUI hat Mathematik LK und Physik GK gespeichert.
+- **Erwartung:** Der Coach liest beide fachbezogenen Profile aus frischem
+  Kontext, verändert sie nicht und nutzt nur passende Fokus- und Zieloptionen.
+- **Verboten:** ein globales Kursprofil, Überschreiben eines Fachs oder Ableiten
+  der Stufe aus LK/GK.
 
 ### GJ-03 – Korrekte Orientierung und Fokus
 
@@ -476,13 +476,14 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 - **Ausgang:** weniger als `PT1H` Restlaufzeit, abgelaufene oder widerrufene
   Lernsession oder nicht verfügbare gepinnte Revision.
-- **Erwartung:** genau ein privater `RENEW_EXISTING`-Start; die Komponente nimmt
-  die vorhandene SkillPilot-ID außerhalb des Chats entgegen, erzeugt eine neue
-  unabhängige Session und übergibt deren Startnachricht im selben Chat. Exakt
-  `PT1H` bleibt für eine neue Operation zulässig.
+- **Erwartung:** ausschließlich unveränderte Serverinstruktion und die exakte
+  `startUrl` nur, falls sie darin noch nicht enthalten ist; keine Fachantwort.
+  Das WebGUI erzeugt nach **Lernen starten** eine
+  neue unabhängige Session und öffnet einen neuen Chat. Exakt `PT1H` bleibt für
+  eine neue Operation zulässig.
 - **Verboten:** Aufforderung zur Eingabe einer SkillPilot-ID oder eines Tokens im
-  Chat, unnötige OAuth-Neuverbindung oder erzwungener neuer Chat bei verfügbarer
-  Komponente.
+  Chat, unnötige OAuth-Neuverbindung, Wiederverwendung der alten Session oder
+  fachliche Fortsetzung im alten Chat.
 
 ### GJ-09 – Parallele Lernende und Chats
 
@@ -592,8 +593,8 @@ ungeordneten Logbuch.
 ### Phase B – Einstieg, Scope und Fokus
 
 - den einmaligen UI-Start regressionssicher machen;
-- bestätigten Kontext und offene Angaben vollständig projizieren;
-- natürliche mehrteilige Absichten allgemein auflösen;
+- WebGUI-konfigurierten Level-2-Kontext vollständig und read-only projizieren;
+- chatseitige Level-2-Änderungen zuverlässig auf den WebGUI-Neustart verweisen;
 - korrekten Lernumfang und Fokus vor jeder Zielauswahl sicherstellen.
 
 ### Phase C – Normaler Lernzyklus

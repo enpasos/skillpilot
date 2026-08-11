@@ -3,172 +3,71 @@
 Draft of the first permanently isolatable public SkillPilot Coach contract
 line. This version has not been published yet.
 
-The private direct-start surface is currently approved only for internal
-canary use. Public submission remains blocked until OpenAI explicitly accepts
-the widget's handling of a newly issued or existing bearer-like SkillPilot ID or the public
-architecture no longer processes that ID.
-
-- language-neutral technical plugin identity `skillpilot-coach-v1`
-- MCP contract major `1`
-- one shared coach plugin for German and English; the immutable
-  `communicationLocale` of the learning session is authoritative for every
-  learner-facing response
-- language-neutral English skill, policy, tool names, schemas, and server
-  instructions; runtime payloads remain localized by SkillPilot
+- language-neutral technical plugin identity `skillpilot-coach-v1` and MCP
+  contract major `1`
+- one shared German and English coach; the immutable
+  `communicationLocale` of the learning session controls every learner-facing
+  response
 - public MCP endpoint and exact OAuth resource
-  `https://mcp-coach-v1.skillpilot.com/mcp`
-- path-specific protected-resource metadata at
+  `https://mcp-coach-v1.skillpilot.com/mcp`, with RFC 9728 metadata at
   `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`
-- a dedicated MCP origin that can be verified independently from future
-  contract majors; OAuth authorization continues through
-  `https://skillpilot.com`
-- one widget origin unique to this plugin,
-  `https://mcp-coach-v1.skillpilot.com`, published through `_meta.ui.domain`
-  and the ChatGPT compatibility alias `_meta["openai/widgetDomain"]`
-- three distinct active content-addressed MCP Apps UI resources: a private
-  direct-start surface, the read-only image of an active atomic learning goal
-  with a matching canonical `goal-visualization` link, and interactive
-  memory-card practice in chat; plus
-  immutable passive resources for every previously advertised hash or
-  version-addressed goal-image URI
-- per-tool `ui.resourceUri` and `openai/outputTemplate` bindings for the
-  direct-start opener, goal renderer, and memory-practice launcher; the
-  app-only capability issuer, app-only card-review tool, and all ordinary
-  context, selection, mutation, recall, and assessment tools remain UI-free
-- private app-first start without OAuth-to-learner coupling: OAuth continues to
-  authorize only the fixed App-to-Core connection; the component obtains an
-  ID-free, short-lived app-only setup capability, then either creates a new
-  SkillPilot ID or sends an explicitly entered existing ID only through the
-  fixed SkillPilot HTTPS bootstrap endpoint
-- explicit locale-bound start intent on the sessionless UI opener:
-  `open_skillpilot_start` requires the closed pair `purpose=START|RENEW_EXISTING`
-  and `communicationLocale=de|en`. An initial start uses the current
-  conversation language; after `SESSION_REQUIRED`,
-  `SESSION_RENEWAL_REQUIRED`, or `SESSION_VERSION_UNAVAILABLE`, the one
-  `RENEW_EXISTING` call preferentially copies `recoveryCommunicationLocale`
-  from the error and otherwise reuses the last session locale, so an existing
-  SkillPilot ID can create a fresh same-language session in the same chat
-  without exposing that ID to the model
-- every new session-bound action is accepted only while the session remains
-  valid for at least `PT1H`; exactly one hour remaining is accepted, while less
-  than one hour fails before the domain operation and initiates renewal. A
-  replay of an already committed write with the same tool name, canonically
-  identical arguments, and the same `clientRequestId` remains available while
-  the session itself is not expired and its pinned workflow and curriculum
-  versions remain available, and never executes the mutation again
-- after successful same-chat renewal, only the newest component-authored start
-  message and its fresh learning session remain authoritative. A new chat or
-  the SkillPilot website is used only when the component or secure host handoff
-  is unavailable
-- gated first-party live-test timing without changing the normal session
-  lifetime: `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` may accept
-  one request-local `diagnosticSessionTtlSeconds` value from `3601` through
-  `86400` only when
-  `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true` and never
-  above the normal `PT24H` lifetime. Omitting the field on the next request
-  automatically restores `PT24H`; the private component bootstrap rejects the
-  field and remains `PT24H`
-- the same direct-start component completes ID recovery acknowledgement,
-  curriculum selection, and personalisation through the existing ID-free
-  session tools before it submits the short start message to the host; the
-  normal App-first path never opens the SkillPilot web application
-- curriculum selection uses the same three categories, four quality-light
-  filters, default selection and ordering as the SkillPilot Web UI; a closed
-  server-authoritative catalog projection binds those facets one-to-one to the
-  currently allowed curriculum options, so the component never infers them
-  from an ID, title, or description
-- the native curriculum selector remains on its explicit disabled placeholder
-  until the learner chooses an option, so browser auto-selection cannot swallow
-  the only `change` event for a single visible curriculum
-- completed setup steps remain visible like their SkillPilot Web UI
-  counterparts: the selected curriculum, current choices, completed
-  personalisation decisions, and independent preserved decisions come only
-  from the newest server-authoritative snapshot; curriculum changes reload the
-  current navigation catalog and personalisation changes submit only the
-  newest opaque rewind reference
-- setup completion opens a final review with an explicit `Start learning`
-  action; no host message is sent merely because the last setup mutation
-  succeeded
-- the permanent SkillPilot ID is confined to the direct HTTPS request/response
-  and ephemeral component memory or recovery DOM; it never enters chat, model
-  context, MCP arguments or results (including `_meta`), `window.openai`,
-  widget state, browser storage, URLs, logs, analytics, or telemetry
-- CREATE returns the newly generated ID only in the direct HTTPS response and
-  requires explicit recovery acknowledgement; EXISTING keeps an unknown ID
-  terminally unavailable for that attempt
-- policy revision `2` binds CREATE plus complete in-component setup semantics
-  and terminally invalidates older direct-start capabilities; the materially
-  expanded disclosure is immutably versioned as
-  `openai-provider-eligibility-v2`
-- direct start supports both the shared MCP Apps action pair and the documented
-  ChatGPT Web compatibility pair `window.openai.callTool` plus
-  `window.openai.sendFollowUpMessage`; one start attempt fixes exactly one
-  complete channel before dispatch and never double-calls across channels
-- `get_skillpilot_context`, `get_skillpilot_navigation`,
-  `set_skillpilot_curriculum`, and
-  `set_skillpilot_personalization` remain model- and app-visible, UI-unbound,
-  and explicitly component-callable; every write uses the newest exact
-  `stateVersion` and a retry-safe `clientRequestId`, and none carries the
-  permanent SkillPilot ID
-- after the host accepts the final short message, the component clears itself
-  and requests teardown exactly once; it never offers a misleading new-start
-  action while the Learning Coach is beginning its response
-- irreversible request binding, a random 256-bit learning-session handle, and
-  an AEAD-encrypted short-lived delivery record provide crash-safe exact retries
-  without persisting the SkillPilot ID, raw capability, session token, request
-  body, or start message in the bootstrap tables
-- separate lifecycle axes for support, publication, and new-session policy,
-  with a monotone policy revision that terminally invalidates stale or blocked
-  direct-start capabilities
-- private, bounded due-card batches for the memory-practice component with
-  state-free card flipping and backward/forward navigation; the learner records
-  only the clear `Not yet` or `Got it` choice, mapped internally to the
-  repetition schedule without changing mastery
-- deterministic memory-practice launch: choosing the localized flashcard label
-  invokes the dedicated UI tool immediately; a Cockpit link is permitted only
-  after a real start-tool error, missing current authorization, or an explicit
-  Cockpit request
-- structured `goalVisualization` delivery to an image-only component; bare
-  MCP `ImageContent` is not used as a visibility contract
-- immutable passive retention of every widget URI already advertised to a real
-  test client, including the original `1.0.0` goal-image URI and earlier
-  direct-start hashes, while only each current content-addressed resource
-  remains bound to its tool
-- immediate data-then-render goal-image flow: after a full result exposes and
-  permits an image, the renderer follows exactly once in the same assistant
-  turn with that result's unchanged `goalId` and `expectedStateVersion`; stale
-  or attempted images are not retried and the full result remains authoritative
-- surface-neutral renderer authorization without inspecting
-  `openai/userAgent` or applying Desktop/Mobile presentation gates; the
-  ordinary coaching response remains complete if a host does not display the
-  optional component
-- dedicated read-only rendering action that the coach invokes only when an
-  approved image is present; no image means no renderer call or empty UI card
-- image-only presentation without additional goal text or cockpit link; the
-  component remains hidden until the approved image has loaded successfully
-- cockpit preference for learning-goal images in chat, enabled by default
-- visualizations are orientation only, never evidence, tasks, solutions,
-  assessments, or mastery proof
-- exact localized active-goal title announcement and full dialogic learning
-  behavior carried forward from the proven German and English coach guides
-- mandatory completion handoff for every mastery write: concrete feedback on
-  the learner's work, followed by a clear outcome, is returned and shown before
-  the already activated successor; evidence from the completed goal is reset
-  at that transition
-- fail-closed exam completion: the released evaluation supplies a
-  session-, goal-, state-, and curriculum-bound capability, and mastery is
-  accepted only with that capability and a finite passing score
-- authoritative autopilot continuation without a stale goal menu: immediate
-  next actions no longer advertise navigation, accidental goal navigation
-  publishes no choices while a goal is active, and only an explicit
-  `redirect=true` change request can expose alternative goals
-- active motivation dialogue: choosing a possibility starts a tailored
-  follow-up about what the learner can understand and do; it no longer causes
-  a generic acknowledgement followed immediately by the next-goal menu
-- SkillPilot paper-plane composer icon and plugin logo, copied unchanged from
+- web-first start contract: permanent SkillPilot ID creation or recovery,
+  provider notice, curriculum, stage, subjects, course profiles, and
+  personalization remain exclusively in the first-party SkillPilot WebGUI
+- every explicit **Lernen starten** / **Start learning** action creates a fresh,
+  opaque, absolutely expiring `learningSessionId`, inserts it into the short
+  prepared start message, and opens a new chat
+- no sessionless start tool, provider-side identity bootstrap, in-chat renewal,
+  or chat-side curriculum/personalization mutation in the
+  active V1 model contract
+- policy revision `3` supersedes the unpublished revision-2 provider-side start
+  provider-notice contract; retained start resources are transport history, not
+  an active product path
+- without a current prepared start message, the coach gives only the localized
+  `https://skillpilot.com/` start instruction and performs no SkillPilot call
+- `get_skillpilot_context` must succeed in the current assistant turn before
+  every learner-facing coaching response
+- every new session-bound operation requires at least `PT1H` remaining; exactly
+  one hour is valid, less than one hour returns `SESSION_RENEWAL_REQUIRED`
+  before the domain operation
+- gated first-party-only session UX testing: one WebGUI launch may set
+  request-local `diagnosticSessionTtlSeconds` from `3601` through `86400`, never
+  above `PT24H`; the next launch without it automatically uses `PT24H` again
+- `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED`, and
+  `SESSION_VERSION_UNAVAILABLE` are not OAuth failures: the coach outputs only
+  the server-owned localized instruction, adding the exact `startUrl` only when
+  it is not already present, and the learner starts a fresh session and new chat
+  from SkillPilot
+- OAuth authorizes the fixed App connection but never identifies the learner;
+  the backend resolves the learner only through the explicit learning-session
+  mapping
+- Level 3 focus and active-goal changes remain available through fresh,
+  backend-published options; curriculum and personalization do not
+- retry-safe writes use a fresh `clientRequestId` and current
+  `expectedStateVersion`; an already committed identical write can replay only
+  while the session and pinned revisions remain valid
+- exactly two active content-addressed MCP Apps UI resources: the read-only
+  active-goal image renderer and interactive memory-card practice
+- earlier advertised start and image resource URIs remain byte-identical
+  passive resources for provider cache and chat-snapshot compatibility, but no
+  active tool binds the retained start resources
+- goal visualization uses the dedicated read-only renderer when the newest full
+  context contains a matching approved image and permits it; attempts are not
+  retried, top-level `stateVersion` is copied into `expectedStateVersion`, no
+  client-surface gate is applied, and the normal coaching response remains
+  complete if the host omits the optional component
+- memory practice uses a separate component and app-only card review; normal
+  practice updates repetition scheduling and never creates mastery evidence
+- exact localized active-goal title announcement, motivational orientation,
+  dialogic learning, evidence-based mastery, strict Verified Recall, and
+  criterion-based assessment
+- mandatory mastery completion handoff: concrete feedback on visible work is
+  followed by the outcome before a confirmed successor is introduced
+- exam completion remains fail closed and requires the current opaque
+  evaluation capability plus a finite passing score
+- SkillPilot paper-plane icon and plugin logo copied unchanged from
   `app/public/favicon/`
-- one install bundle for the single shared Spring Boot runtime; language does
-  not create a second server artifact or release line
-- mutable, unpublished `1.0.0-SNAPSHOT` draft; the contract, active per-tool UI
-  bindings, and skill bundle are sealed only after actual portal publication
-- no public compatibility alias on `skillpilot.com`
+- one install bundle for the shared Spring Boot runtime; language does not
+  create another server artifact or release line
+- mutable unpublished `1.0.0-SNAPSHOT` draft; published snapshots remain
+  immutable

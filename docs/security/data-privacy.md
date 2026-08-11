@@ -1,8 +1,7 @@
 # Data Privacy and Storage Concept
 
-Status: updated for the current multilingual OpenAI OAuth/MCP App architecture,
-the private in-component Direct Start, and the rollback-only ChatGPT Visible
-Session on 2026-08-10.
+Status: updated for the current web-started multilingual OpenAI OAuth/MCP App
+architecture and the rollback-only ChatGPT Visible Session on 2026-08-11.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -21,24 +20,15 @@ content**.
 - The browser is the learner's SkillPilot login surface. It may hold the
   permanent SkillPilot ID locally and can optionally save it encrypted with a
   user-chosen password.
-- The permanent SkillPilot ID stays outside the AI chat, OAuth principal, and
-  MCP tool contract. In the private Direct Start, an existing ID travels only
-  in a direct component-to-Core HTTPS request; a new ID returns only in that
-  direct HTTPS response and ephemeral recovery UI. Every explicit UI start
-  creates a separate temporary learning-session reference that the backend
-  resolves to that ID.
+- The permanent SkillPilot ID stays in first-party SkillPilot surfaces and
+  outside the AI chat, OAuth principal, MCP tools, and provider-hosted widgets.
+  Every explicit WebGUI start creates a separate temporary learning-session
+  reference that the backend resolves to that ID.
 - The AI provider processes the chat, uploads, projected learning context, and
   tool results under the provider account and its terms.
 - SkillPilot does not receive the complete provider chat transcript. It does
   receive every explicit API or MCP tool request sent to it, including the
   arguments needed to read or change learning state.
-
-The Direct Start component runs in a provider-hosted iframe inside the ChatGPT
-client process. SkillPilot can enforce that its own application never places the
-permanent ID in chat, model context, MCP arguments/results, `_meta`,
-`window.openai`, widget state, browser storage, URLs, logs, analytics, or
-telemetry. It cannot promise absolute technical non-observability to the
-operator of the client environment executing that component.
 
 Two ChatGPT integration paths coexist during rollback support:
 
@@ -162,34 +152,14 @@ Recall with goal and batch size, and the reviewed Abi 2026 exam entry with goal
 and course level. Free browser-supplied prompt instructions are not persisted as
 launch state.
 
-The private Direct Start is an additional session-creation route for the
-current-unit intent. It keeps four data paths distinct:
-
-1. `open_skillpilot_start` and the app-only capability issuer contain no
-   permanent ID. The capability exists only in UI-only result `_meta`; this is
-   hidden from the model but mediated by the host and is therefore not a secret
-   from the host operator.
-2. With `identityMode=EXISTING`, the permanent ID appears only in the direct
-   HTTPS request body from the component to
-   `https://mcp-coach-v1.skillpilot.com/bootstrap/v1/launch`. With
-   `identityMode=CREATE`, the request contains no ID and the newly generated ID
-   appears only in the direct HTTPS response.
-3. A newly generated ID is held briefly in component memory and recovery DOM.
-   An explicit user action may copy it through the local browser Clipboard API;
-   it is never passed through `window.openai` or saved in provider widget state,
-   local/session storage, IndexedDB, URL, logs, analytics, or telemetry.
-4. The component parses the temporary learning-session reference from the
-   validated start message and uses the existing session-bound context,
-   curriculum, and personalisation tools. The provider therefore processes the
-   projected setup options, selected curriculum/personalisation references,
-   state versions, and retry IDs, but not the permanent SkillPilot ID. Only
-   after setup is complete and the learner explicitly selects `Lernen starten`
-   / `Start learning` in the final review does the host receive the unchanged
-   start message.
-
-The normal App-first path therefore does not navigate to the SkillPilot web
-application. That web application remains only a technical fallback when the
-component or secure handoff is unavailable.
+The OpenAI V1 model contract has no provider-hosted identity or Level-2 setup
+path. Creating or loading a permanent SkillPilot ID, confirming the provider
+notice, and choosing curriculum, stage, subjects, course profiles, and
+personalization happen only in the first-party SkillPilot WebGUI. Its explicit
+**Lernen starten** / **Start learning** action creates the temporary learning
+session and opens a new provider chat with the prepared start message. The
+provider therefore receives neither permanent-ID input nor the option catalog
+and mutations used to configure this Level-2 state.
 
 ChatGPT receives OAuth access and refresh credentials as the OAuth client. They
 are transport credentials between ChatGPT and the SkillPilot authorization/MCP
@@ -205,8 +175,8 @@ Through MCP, the provider receives the projected state needed for the current
 workflow, for example curriculum and scope summaries, active goal, progress,
 permitted next actions, public goal or card references, task content, and
 selected resources. SkillPilot receives explicit MCP method calls and their
-arguments, such as selected curriculum/scope/goal references, Recall result
-flags, or requested evaluation identifiers. These requests are not equivalent
+arguments, such as selected focus/goal references, Recall result flags, or
+requested evaluation identifiers. These requests are not equivalent
 to a full chat transcript, but they are part of the interaction and may update
 the pseudonymous learning state.
 
@@ -269,40 +239,15 @@ complete.
    resource. It neither identifies a SkillPilot learner nor creates or selects
    a learning session.
 
-### Scenario: Direct Start Without Leaving the ChatGPT Component
+### Scenario: Open the Coach Without a Prepared Session
 
-1. The learner explicitly starts SkillPilot Coach v1. The model opens the
-   private component exactly once and then waits; it never asks for a permanent
-   ID, curriculum, or personalisation value in chat.
-2. The learner selects CREATE or EXISTING and confirms the immutable
-   `openai-provider-eligibility-v2` notice. An ID-free app-only MCP call issues
-   one short-lived setup capability.
-3. The component calls the fixed SkillPilot HTTPS bootstrap endpoint directly.
-   EXISTING sends the entered permanent ID only in that request body; CREATE
-   returns the new permanent ID only in the direct response. The backend creates
-   a random 24-hour learning session in both cases.
-4. For CREATE, the component displays the new ID and requires confirmation that
-   the learner stored it safely before continuing. The ID is not placed in an
-   MCP call, host API, widget-state store, URL, log, or telemetry event.
-5. Using only the temporary learning-session reference, the component loads the
-   authoritative context, keeps completed choices visible, and applies or
-   revises the learner's curriculum and personalisation choices through the
-   existing MCP tools. Every new write uses the latest state version and a new
-   idempotency request ID; only an unchanged transport retry reuses that request
-   ID.
-6. Once the current context no longer requires curriculum or personalisation,
-   the component shows a final review. Only the learner's explicit
-   `Start learning` action sends the unchanged short start message to the host.
-   After host acceptance the component clears its UI and requests teardown;
-   the model then loads the fresh context and starts coaching without repeating
-   setup.
-
-Closing or remounting the component does not recover the permanent ID,
-capability, session, or pending setup from provider widget state or browser
-storage. An EXISTING user can enter the ID again in a new attempt. A CREATE user
-must save the ID before setup continues; closing before doing so can make the
-new pseudonymous learner inaccessible. A future pre-session setup draft may
-reduce this orphaning risk without relaxing the provider data boundary.
+1. The model finds no current SkillPilot-prepared `learningSessionId`.
+2. It calls no SkillPilot tool and requests no permanent or temporary ID.
+3. It gives only the localized instruction to open
+   `https://skillpilot.com/`, create or load the permanent ID, configure the
+   learning context there, and select **Lernen starten** / **Start learning**.
+4. The first-party WebGUI creates the session and opens a new chat. Only that
+   new prepared message crosses into the provider flow.
 
 ### Scenario: Start a Learning Session With a Backend-Pinned Locale
 
@@ -351,28 +296,16 @@ and currently set to:
 
 - OAuth access token: 1 hour;
 - rotating refresh token: 30 days;
-- unused Direct-Start setup capability: 10 minutes;
-- bound Direct-Start retry and encrypted response-delivery window: 15 minutes;
-- OpenAI V1 learning session: exactly 24 hours from the
-  corresponding confirmed first-party or Direct-Start action.
+- OpenAI V1 learning session: exactly 24 hours from the corresponding
+  confirmed first-party **Lernen starten** action.
 
 The OpenAI V1 learning-session deadline is not extended by MCP requests,
 access-token refresh, browser reload, a new ChatGPT chat, or context
-compaction. Every new first-party **Lernen starten** or confirmed Direct-Start
-action creates a separate session with its own deadline. The OAuth connection
+compaction. Every new first-party **Lernen starten** action creates a separate
+session with its own deadline. The OAuth connection
 may remain refreshable after a learning session has expired; in that case
 learner-specific tools require a new SkillPilot launch rather than new OAuth
 consent.
-
-Direct-Start bootstrap tables do not store the permanent ID, request body,
-capability, learning-session token, or start message in plaintext. Exact retry
-uses a keyed request fingerprint and an AEAD-encrypted response record. For
-CREATE, that short-lived ciphertext necessarily includes the newly issued ID so
-the same committed attempt can return the same identity after response loss;
-the ID is not duplicated in attempt columns, logs, or metrics. Ciphertext and
-nonce are deleted immediately after the delivery window. The canonical learner
-record remains durable because the random ID is the pseudonymous learner
-identity itself.
 
 App-authorization revocation invalidates the live access/refresh credentials and
 authorization/consent data. Session records remain independently governed by
@@ -405,11 +338,6 @@ remain responsible for preserving access keys and identity mappings.
   backend.
 - A password-protected SkillPilot ID file lets learners retain the ID without
   storing it unencrypted.
-- Direct-Start CREATE currently shows the new ID only in ephemeral recovery UI
-  and requires the learner to acknowledge external safekeeping. It does not
-  persist the ID in ChatGPT widget state or browser storage and does not yet
-  create a protected ID file; losing the copied value can therefore make that
-  pseudonymous learner inaccessible.
 - Logging out clears the active browser login but does not delete downloaded
   protected ID files, inert legacy local profiles, or backend learning progress.
 
@@ -435,15 +363,9 @@ remain responsible for preserving access keys and identity mappings.
 - The temporary OpenAI V1 learning-session reference is automatically carried
   in the prepared start message and MCP tool arguments. It behaves like a
   short-lived bearer reference to one pseudonymous learner and must not be
-  shared manually. In the first-party start the permanent SkillPilot ID remains
-  backend-internal to the provider flow; in Direct Start it is deliberately
-  exposed only to the provider-hosted component through direct HTTPS and
-  ephemeral recovery UI, never to the chat/model/MCP contract.
-- Because that component executes inside the ChatGPT client process, the direct
-  HTTPS path is data minimisation, not proof of secrecy from the host operator.
-  A public submission remains blocked until OpenAI explicitly accepts handling
-  of the existing or newly issued bearer-like ID or a separately approved
-  architecture no longer processes it there.
+  shared manually. The permanent SkillPilot ID remains entirely in first-party
+  SkillPilot surfaces and backend-internal resolution, never in the
+  chat/model/MCP/widget contract.
 - The Visible Session implementation remains an explicit rollback/fallback path;
   retained legacy direct-ID or startcode routes must not be advertised as a
   current provider contract.

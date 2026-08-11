@@ -76,14 +76,13 @@ ChatGPT visibility guarantee here:
 - <https://developers.openai.com/plugins/deploy/troubleshooting#server-side-issues>
 
 The renderer is offered only when the learner preference is enabled and the
-current context contains a safe visualization projection. Ordinary context
-reads and state mutations do not carry image bytes. When the newest successful
-full result contains a safe projection and permits the renderer, it runs
-immediately and exactly once as the next tool call in the same assistant turn,
-with the unchanged `goalId` and `expectedStateVersion` from that result. It
-reprojects current backend state and rejects stale versions or a mismatched
-active goal. Its successful image receipt does not replace the preceding full
-SkillPilot context used for coaching and state decisions. The renderer supplies
+current context contains a safe visualization projection. When the newest full
+result contains `goalVisualization` and permits the renderer, invoke it once
+with that result's unchanged `goalId`, copying its top-level `stateVersion` into
+the renderer input `expectedStateVersion`. Do not reuse or retry stale
+authorization. A required mastery handoff remains before the successor
+section; render immediately before coaching the associated active goal. Its
+receipt does not replace the preceding full context. The renderer supplies
 the following bounded `structuredContent` to the image-only widget:
 
 ```json
@@ -116,14 +115,15 @@ The projection and image result obey these constraints:
   and request teardown, so ordinary tools and unavailable images do not leave
   empty or permanently loading boxes;
 - eligible contexts offer `goalVisualization` and the renderer permission
-  surface-neutrally. The server and widget do not inspect `openai/userAgent`,
+  surface-neutrally. The server and widget do not inspect
+  `openai/userAgent`,
   infer Desktop/Mobile/App/Browser, or apply any client-surface presentation
   gate. A host may render or decline the optional UI resource, while the
   complete ordinary text response remains available;
 - session coordination and idempotent replay preserve the same surface-neutral
   image authorization. No caller-specific presentation filter mutates a fresh
   or replayed result;
-- do not delay ordinary coaching or automatically retry a completed attempt.
+- after an authorized attempt, do not delay ordinary coaching or retry.
   Test renderer invocation and visible host behaviour independently, without
   changing the protocol result by client surface;
 - a widget change creates a new active hash-bound URI. Every URI previously

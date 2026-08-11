@@ -125,8 +125,10 @@ export function loadReleaseContract(releaseRoot) {
 }
 
 /**
- * Prevents a policy rollback from making an older direct-start capability
- * valid again. Revision zero represents the pre-contract-line draft only.
+ * Prevents a policy rollback from silently changing the new-session decision.
+ * The provider-notice argument is retained for comparison with older drafts
+ * that exposed the retired direct-start capability. Revision zero represents
+ * the pre-contract-line draft only.
  */
 export function assertLifecyclePolicyRevisionMonotone(
   previousLifecycle,

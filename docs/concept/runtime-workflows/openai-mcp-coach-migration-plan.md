@@ -1,16 +1,15 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 9. August 2026
+**Stand:** 11. August 2026
 
-**Status:** Die mehrsprachige V1-MCP-App ist der aktuelle ChatGPT-Pfad. Ihr
-Coach-Vertrag bleibt mit 16 neutralen Werkzeugen chat-first. Der noch
-unveröffentlichte `1.0.0-SNAPSHOT`-Arbeitsstand bindet drei getrennte aktive
-hashgebundene `text/html;profile=mcp-app`-Ressourcen für privaten Direktstart,
-bild-only Lernzielvisualisierung und Karteikartenlernen. Jedes der drei
-read-only UI-Werkzeuge bindet ausschließlich seine eigene Ressource; app-only
-Folgetools und gewöhnliche Coach-Werkzeuge bleiben UI-los. Der Direktstart ist
-nur für den internen Canary freigegeben; seine öffentliche Einreichung bleibt
-bis zur Erfüllung des harten Public-Release-Gates gesperrt.
+**Status:** Die web-started mehrsprachige V1-MCP-App ist der aktuelle
+ChatGPT-Pfad. Ihr Coach-Vertrag bleibt mit verdichtetem neutralem
+Werkzeugkatalog chat-first. Der noch unveröffentlichte
+`1.0.0-SNAPSHOT`-Arbeitsstand bindet zwei getrennte aktive hashgebundene
+`text/html;profile=mcp-app`-Ressourcen für bild-only Lernzielvisualisierung und
+Karteikartenlernen. Beide read-only UI-Werkzeuge binden ausschließlich ihre
+eigene Ressource; app-only Kartenreview und gewöhnliche Coach-Werkzeuge bleiben
+UI-los. Früh beworbene Startressourcen bleiben passiv lesbar.
 Serverauthentisiertes TLS und das
 fail-closed geprüfte OAuth-Clientprofil bilden die aktuelle Betriebsbasis. mTLS
 ist nicht Teil von `1.0.0`; eine mögliche spätere Transporthärtung wird separat
@@ -25,11 +24,9 @@ Server direkt über `.mcp.json` und referenziert für den lokalen Pilot zusätzl
 die reale bereits registrierte Verbindung über die hostgenerierte
 `.app.json`-Abbildung. Es gibt keine manuell in den Chat zu übertragenden
 technischen Schlüssel und keine Abhängigkeit von Custom-GPT-Action-Retention.
-Im internen Direktstart-Canary wird eine vorhandene SkillPilot-ID ausschließlich
-im privaten Widget eingegeben und direkt an den festen SkillPilot-HTTPS-Endpunkt
-gesendet; sie ist weder MCP-Toolargument noch Chatinhalt. Die pro Start
-automatisch transportierte, kurzlebige `learningSessionId` bleibt davon
-ausdrücklich getrennt.
+Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
+im SkillPilot-WebGUI. Die pro Start automatisch transportierte, kurzlebige
+`learningSessionId` bleibt davon ausdrücklich getrennt.
 
 Die übergeordnete Architekturentscheidung ist in
 [skillpilot-owned-coach-architecture.md](skillpilot-owned-coach-architecture.md)
@@ -39,9 +36,9 @@ Die feste V1-Identität, kompatible Versionsänderungen, Contract-Snapshots und
 der Lebenszyklus werden normativ im
 [Versionierungs- und Lebenszyklusplan](openai-plugin-versioning-and-lifecycle.md)
 geführt.
-Capability, direkte ID-Übertragung, Delivery und das Public-Release-Gate des
-privaten App-first-Einstiegs folgen dem
-[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md).
+Das nie veröffentlichte
+[Direktstart-Konzept](openai-mcp-app-direct-start-bootstrap.md) ist mit
+Policy-Revision 3 superseded und wird nur historisch aufbewahrt.
 
 Die technische Migration und die Zuordnung der früheren Regeln sind nicht mit
 sichtbarer Endnutzerparität gleichzusetzen. Das allgemeine Coach-
@@ -54,8 +51,8 @@ geführt.
 
 SkillPilot migriert **nicht** den sichtbaren Session-Workaround und baut den
 bestehenden Custom GPT auch nicht weiter aus. Der aktuelle produktionsnahe Pfad
-ist eine mehrsprachige, chat-first OpenAI-MCP-App mit 16 neutralen Werkzeugen
-und drei dedizierten MCP-Apps-UIs:
+ist eine mehrsprachige, chat-first OpenAI-MCP-App mit zwölf neutralen Werkzeugen
+und zwei dedizierten MCP-Apps-UIs:
 
 ```text
 ChatGPT App „SkillPilot Coach v1“
@@ -69,8 +66,8 @@ https://mcp-coach-v1.skillpilot.com/mcp
 Spring Boot am loopback-gebundenen internen V1-Pfad
         |
         +-- isolierter OpenAI-V1-MCP-Transport und neutraler Toolvertrag
-        |     +-- 16 neutrale Werkzeuge
-        |     +-- 3 getrennte aktive UI-Ressourcen
+        |     +-- 12 neutrale Werkzeuge
+        |     +-- 2 getrennte aktive UI-Ressourcen
         +-- OAuth Authorization Server
         |     +-- fester vertraulicher Client: client_id + client_secret_basic
         |     +-- Authorization Code + PKCE S256
@@ -89,8 +86,8 @@ OpenAI-Modell-API auf.
 
 Die V1-App wird für jede freigegebene Interaktionssprache durch eigene
 Acceptance-Fälle stabilisiert; eine weitere Sprache erzeugt keine zweite App.
-Der private Direktstart-Öffner, der Lernzielbild-Renderer und der
-Karteikartenlauncher binden im unveröffentlichten V1-Draft jeweils genau ihre
+Der Lernzielbild-Renderer und der Karteikartenlauncher binden im
+unveröffentlichten V1-Draft jeweils genau ihre
 eigene aktive hashgebundene MCP-Apps-Ressource. Renderer-spezifisch bleibt genau
 eine bild-only Ressource gebunden. Interaktive fachliche Widgets für Auswahl,
 Antwortabgabe oder Prüfungs-Receipts bleiben mögliche spätere Verbesserungen
@@ -139,16 +136,15 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
 3. **Provider bezahlt das Modell:** kein stiller Fallback auf eine von
    SkillPilot bezahlte OpenAI-API.
 4. **Sprache backendautoritativ:** ein neutraler Fachvertrag ohne frei
-   wählbaren `language`-Parameter. Nur der sessionlose Startöffner verlangt die
-   geschlossene `communicationLocale=de|en`; die beim finalen Start festgelegte
-   Locale wird aus der Lernsession geladen und steuert sämtliche sichtbare
+   wählbaren `language`-Parameter. Die beim First-Party-Start festgelegte Locale
+   wird aus der Lernsession geladen und steuert sämtliche sichtbare
    Kommunikation.
 5. **UI-Funktionen strikt trennen:** Der erste produktionsnahe Vertrag besitzt
-   drei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen. Der
-   Direktstart-Öffner, der Bild-Renderer und der Karteikartenlauncher tragen
-   jeweils `ui.resourceUri` und `openai/outputTemplate` ausschließlich für ihre
-   eigene Ressource. Capability-Issuer, Kartenreview und gewöhnliche Werkzeuge
-   bleiben ungebunden. Renderer-spezifisch existiert genau ein read-only
+   zwei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen. Bild-
+   Renderer und Karteikartenlauncher tragen jeweils `ui.resourceUri` und
+   `openai/outputTemplate` ausschließlich für ihre eigene Ressource.
+   Kartenreview und gewöhnliche Werkzeuge bleiben ungebunden.
+   Renderer-spezifisch existiert genau ein read-only
    Rendering-Werkzeug mit genau einer aktuellen bild-only Ressource; sie
    rendert ausschließlich die strukturierte `goalVisualization` und darf weder
    Auswahl noch Lernzustand mutieren. Interaktive fachliche Auswahl-, Abgabe-
@@ -168,11 +164,11 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    fachliche Toolaufruf benötigt beides. OAuth allein erzeugt oder wählt keine
    Lernsession; die Lernsession allein autorisiert keinen MCP-Aufruf. mTLS ist
    nicht Teil des `1.0.0`-Vertrags.
-10. **Direktstart bleibt intern:** Die vorhandene SkillPilot-ID darf im
-    Phase-1-Canary ausschließlich im privaten Widget und im direkten HTTPS-Body
-    an SkillPilot vorkommen. Eine öffentliche Einreichung bleibt gesperrt, bis
-    OpenAI diese konkrete Verarbeitung schriftlich akzeptiert oder eine
-    freigegebene ID-freie öffentliche Architektur vorliegt.
+10. **WebGUI-only Setup:** Permanente SkillPilot-ID, Providerhinweis,
+    Curriculum, Stufe, Fächer, Kursprofile und Personalisierung bleiben im
+    First-Party-WebGUI. Der V1-Modellvertrag besitzt dafür keine Werkzeuge.
+11. **Pre-response Sessionprüfung:** Vor jeder lernendenbezogenen Antwort muss
+    `get_skillpilot_context` im aktuellen Assistant-Turn erfolgreich sein.
 
 ## 4. Zieltopologie
 
@@ -284,20 +280,17 @@ Vertragsfreigabe mit `404`. Frühere, nie veröffentlichte `mcp-coach-de-v*`- un
 ## 5. Sprachneutraler MCP-Vertrag der ersten Version
 
 Die Werkzeuge sind in neutralem Englisch beschrieben und fachlich eng
-geschnitten. Fachliche Tools besitzen keinen frei wählbaren Sprachparameter;
-der sessionlose `open_skillpilot_start` verlangt dagegen das geschlossene Feld
-`communicationLocale` mit genau `de` oder `en`. `learningSessionId` ist
-ausnahmslos Pflichtargument jedes fachlichen Werkzeugs; die übrigen Argumente
-sind werkzeugspezifisch. Das Backend liefert `communicationLocale` und alle
+geschnitten. Fachliche Tools besitzen keinen frei wählbaren Sprachparameter.
+`learningSessionId` ist ausnahmslos Pflichtargument jedes fachlichen Werkzeugs;
+die übrigen Argumente sind werkzeugspezifisch. Das Backend liefert
+`communicationLocale` und alle
 lernerseitigen Nutzdaten in der Zielsprache. Die Namen bleiben technisch
 eindeutig:
 
 | Tool | Aufgabe |
 | --- | --- |
 | `get_skillpilot_context(learningSessionId)` | SkillPilot-Lerncoach bei einer natürlichen SkillPilot-Lernabsicht starten oder fortsetzen sowie den kompakten Lernzustand für die explizit adressierte Lernsession rehydrieren |
-| `get_skillpilot_navigation(learningSessionId, target)` | Optionen für einen ausdrücklichen Wechsel von Curriculum, Personalisierung, Scope oder Ziel laden |
-| `set_skillpilot_curriculum(learningSessionId, curriculumId)` | Ein Curriculum aus den aktuell erlaubten Optionen setzen |
-| `set_skillpilot_personalization(learningSessionId, optionId)` | Genau eine aktuell angebotene, opak referenzierte Personalisierungsoption setzen |
+| `get_skillpilot_navigation(learningSessionId, target)` | Optionen für einen ausdrücklichen Wechsel von Fokus (`scope`) oder aktivem Ziel laden |
 | `set_skillpilot_scope(learningSessionId, goalIds)` | Lernumfang setzen |
 | `set_skillpilot_active_goal(learningSessionId, goalId, redirect)` | Erlaubtes Frontier-Ziel aktivieren |
 | `set_skillpilot_mastery(learningSessionId, goalId)` | Das aktive atomische Nicht-SRS-Ziel nach harter Evidenz mit Mastery `1.0` abschließen |
@@ -318,10 +311,10 @@ Informationen, die dem Modell beim richtigen Tool-Aufruf helfen:
   nichtleere, eindeutige `goalIds`-Liste.
 
 Technische Formdetails opaker Referenzen werden nicht an das Modell
-veröffentlicht. Insbesondere enthält das Tool-Schema für `learningSessionId`,
-`curriculumId`, `optionId`, `goalId` und `cardId` keine regulären Ausdrücke und
-keine Mindest- oder Maximallängen. Das Modell soll solche Werte ausschließlich
-aus der aktuellen SkillPilot-Startnachricht beziehungsweise dem jüngsten
+veröffentlicht. Insbesondere enthalten die Tool-Schemas für
+`learningSessionId`, `goalId` und `cardId` keine regulären Ausdrücke und keine
+Mindest- oder Maximallängen. Das Modell soll solche Werte ausschließlich aus
+der aktuellen SkillPilot-Startnachricht beziehungsweise dem jüngsten
 SkillPilot-Ergebnis unverändert übernehmen, nicht selbst konstruieren.
 
 Die Vereinfachung schwächt die Sicherheits- und Datenintegritätsgrenze nicht:
@@ -330,44 +323,13 @@ Aktualität, Berechtigungen und erlaubte Werte vollständig und lehnt jeden
 ungültigen Aufruf fail-closed ab. Modellvertrag und Servervalidierung bleiben
 damit bewusst getrennt.
 
-Ein generisches `applyChoice` ist für die chat-first Version nicht vorgesehen. Der
-Personalisierungsplan veröffentlicht für jede aktuell zulässige Auswahl eine
-opake `optionId`. Das Modell übergibt ausschließlich diese ID unverändert; es
-rekonstruiert weder Landschafts- noch Filter-IDs und löst keine sichtbaren Label
-auf. Die Mutationsgrenze erzeugt den Plan unter Zeilensperre erneut und akzeptiert
-genau eine noch aktuelle ID. Unbekannte, veraltete, wiederholte oder mehrdeutige
-Werte werden vor jeder Zustandsänderung abgewiesen.
-
-Die Kardinalität einer Landschaftsauswahl wird pro Gruppe explizit durch
-`minSelections` und `maxSelections` beschrieben und ist nicht auf ein Fach oder
-eine Einzelauswahl festgelegt. Eine nichtleere `SkillLandscape.filters`-Liste
-beschreibt dagegen weiterhin genau **eine lokale Single-Choice-Dimension** der
-betreffenden Landschaft. Daher darf eine einzelne Filterentscheidung höchstens
-eine Filteroption dieser Landschaft setzen. Diese Grenze folgt aus dem heutigen
-Persistenzmodell, nicht aus Namen wie Bundesland, Fach oder Kurs.
-
-Erreicht eine Gruppe ihre Höchstzahl, gilt sie automatisch als abgeschlossen.
-Liegt die Zahl der gewählten Werte dagegen zwischen Minimum und Maximum,
-veröffentlicht der Plan neben den verbleibenden Werten eine opake
-`COMPLETE_GROUP`-Option. Nur diese explizite Protokollaktion beendet die
-Gruppeninstanz vorzeitig; aus einem Benutzertext wie „das reicht“ oder aus dem
-Ausbleiben weiterer Werte darf der Provideradapter keinen Abschluss ableiten.
-Eine optionale Gruppe mit `minSelections = 0` kann auf demselben Weg ohne
-fachliche Auswahl abgeschlossen werden. Der Abschluss wird als reservierter
-Flow-Zustand gespeichert, verändert aber weder Landschafts- noch Filterauswahl.
-Bei dynamischen Gruppen gelten Minimum, Maximum und Abschluss jeweils für die
-konkrete Gruppeninstanz, nicht pauschal für alle ausgewählten Landschaften.
-
-Personalisierungsaufrufe des Coaches sind inkrementelle, transaktionale
-Änderungen: Sie erhalten bereits im Cockpit gesetzte Curriculum-, Fach-,
-Stufen- und Kurswerte. Mutation und Projektion des Folgezustands gehören zu
-derselben Transaktion, damit ein Projektionsfehler keine teilweise gespeicherte
-Konfiguration hinterlässt. Vollständige Konfigurationsschreibvorgänge der
-SkillPilot-Weboberfläche behalten dagegen ausdrücklich ihre
-Vollersatzsemantik.
-
-Eine spätere Widget-Version darf opake, kurzlebige Choice-Referenzen und
-app-exklusive Tools ergänzen.
+Der V1-Modellvertrag enthält keine Wahl- oder Mutationseingaben für permanente
+Identität oder Level 2. Jurisdiction, Curriculum beziehungsweise kanonische
+View, Dauer, Stage, Subjects, fachbezogene Profile und Personalisierung werden
+ausschließlich im First-Party-WebGUI gewählt und transaktional gespeichert.
+Der Provider erhält davon nur den für die frische Lernsession bestätigten
+Lernkontext. Chatseitige Navigation ist auf ausdrücklich gewünschte Level-3-
+Änderungen von Fokus oder aktivem Ziel begrenzt.
 
 Der umgesetzte OpenAI-V1-Vertrag konkretisiert `chooseMemoryMode` inzwischen
 provider-spezifisch: „Karteikarten lernen“ startet die dedizierte MCP-Apps-
@@ -375,185 +337,40 @@ Komponente, „Mit Lerncoach prüfen“ startet Verified Recall. Provider ohne d
 Komponente behalten den Cockpit-Link als Übungsweg. Ein `retest`-Feld wird erst
 veröffentlicht, wenn es vom Backend tatsächlich fachlich ausgewertet wird.
 
-### 5.1 Expliziter PersonalizationFlow, zentraler Plan und spärliche Persistenz
+### 5.1 WebGUI-eigenes Level 2 und gemeinsamer authored Flow
 
-Die Personalisierung ist keine aus dem sichtbaren Dialog abzuleitende
-Modellheuristik. Eine Curriculumwurzel kann dafür einen versionierten
-`personalizationFlow` deklarieren. Das Backend wertet diese Deklaration zu einem
-zentralen `PersonalizationPlan` aus. Flow und Plan sind die einzigen Autoritäten
-für:
+Der versionierte `personalizationFlow` und der daraus im Backend erzeugte
+`PersonalizationPlan` bleiben die gemeinsame Quelle der Wahrheit für
+First-Party-Startseite und Cockpit. Sie definieren Jurisdiction beziehungsweise
+kanonische View, Dauer, explizite Stage, Subjects, Kursprofile, Kardinalitäten
+und Abschlussbedingungen, ohne Semantik aus Labels, Graphkanten oder fest
+codierten Fach-IDs abzuleiten.
 
-- Stufen, Gruppen und deren deterministische Reihenfolge;
-- Mindest- und Höchstzahl der Auswahlen je Gruppe;
-- die für die aktuelle Dimension zulässigen Optionen;
-- die kanonischen Mutationsziele wie Filter- und Landschafts-IDs;
-- die Entscheidung, ob die Einrichtung abgeschlossen ist.
+Das First-Party-WebGUI besitzt den vollständigen Interaktions- und
+Persistenzvertrag für diese Level-2-Konfiguration:
 
-MCP-Kontext, Navigation, Mutationsvalidierung und Cockpit-Projektion verwenden
-denselben Plan. Er besitzt derzeit drei allgemeine, kombinierbare Quelltypen:
+- CREATE oder EXISTING sowie der Providerhinweis werden vor dem Launch
+  abgeschlossen und gelangen nie in den Provider-Modellpfad.
+- Das WebGUI zeigt nur aktuelle backend-authored Optionen, wendet sie
+  transaktional an und projiziert den Plan nach jedem bestätigten Schritt neu.
+- Kursprofile sind Fachattribute. Eine LK-Wahl impliziert weder Stage noch
+  Dauermodell; parallele Fächer behalten ihre unabhängigen Profile.
+- Unvollständige oder ungültige authored Flows sperren den Lernstart; das WebGUI
+  leitet keinen Ersatz aus Frontier, Applicability, Tags oder Labels ab.
+- Eine Level-2-Änderung revalidiert Fokus und aktives Ziel gegen die neue
+  `target`-Projektion, ohne stabile Ziel-IDs oder globale Mastery umzuschreiben.
 
-- `landscapeFilters`: die explizit deklarierten Filter genau einer Landschaft;
-- `landscapes`: eine explizit geordnete Menge von Landschaften;
-- `filtersForSelectedLandscapes`: je zuvor gewählter Landschaft deren
-  deklarierte Filter.
+Erst nach vollständigem Level 2 darf **Lernen starten** / **Start learning**
+die frische Lernsession erzeugen und den neuen Chat öffnen. Der MCP-Kontext
+projiziert den bestätigten Lernumfang, veröffentlicht aber keine Level-2-
+Optionen oder Mutationen. Meldet eine vorbereitete Session unerwartet
+unvollständiges Setup, gibt der Coach nur die servereigene WebGUI-Instruktion
+oder URL aus und stoppt die fachliche Arbeit.
 
-Diese Quelltypen sind reine Metadatenoperationen. Der Planer durchläuft weder den
-Skill-Graphen noch dessen `contains`- oder `requires`-Kanten. Er leitet
-Personalisierung auch nicht aus Frontier, Applicability, Composition Views,
-Tags, Labeln, Fachnamen, Regionen oder fest codierten IDs ab. Sichtbare,
-lokalisierbare Label dienen ausschließlich der Darstellung. Hessen,
-Mathematik und LK sind nur Daten einer konkreten Flow-Instanz.
-
-Damit ein Provider die Entscheidung ohne Wissen über eine konkrete Domäne
-korrekt führen kann, projiziert der MCP-Kontext neben den opaken Optionen auch
-die aktuelle Entscheidungsfrage beziehungsweise Stufen- und Gruppenlabel sowie
-`minSelections`, `maxSelections` und `selectedCount`. Diese Angaben sind
-Laufzeitdaten des Plans, keine Instruktionen in der öffentlich sichtbaren
-App-Beschreibung. Der Adapter darf weder Kardinalität noch Bedeutung aus
-Labels, früheren Chatnachrichten oder bekannten Curriculumnamen erraten.
-
-Für den Einstieg gilt zusätzlich ein allgemeiner UX-Vertrag:
-
-1. Der Coach nennt zuerst knapp den vom Backend bestätigten Einstiegskontext.
-   Bereits feststehende Angaben werden nicht erneut erfragt.
-2. Danach fragt er die im authored Flow noch offenen Angaben gemeinsam ab,
-   soweit sie aus dem aktuellen autoritativen Plan bestimmbar sind. Die
-   sichtbare Reihenfolge ist nur Orientierung; die lernende Person darf mehrere
-   Angaben zusammen und in beliebiger Reihenfolge beantworten.
-3. Spätere Entscheidungsgruppen und ihre sichtbaren Antworten sind in dieser
-   Sammelfrage nur Orientierung. Sie sind keine vorab ausführbaren
-   Mutationsoptionen und ihre technischen Referenzen werden nicht
-   zwischengespeichert oder vorweggenommen.
-4. Das Backend verarbeitet die erkennbare Mehrfachabsicht weiterhin streng
-   sequenziell: genau eine aktuell zulässige Option anwenden, den
-   `PersonalizationPlan` frisch laden und erst danach die nächste Angabe gegen
-   die nun aktuellen Optionen auflösen. Nur tatsächlich mehrdeutige oder nach
-   der Neuprojektion noch offene Angaben werden erneut erfragt.
-
-Damit ist die Benutzerantwort reihenfolgefrei, ohne die Autorität der
-zustandsabhängigen Mutationsschnittstelle aufzuweichen. Bedingte Folgefragen,
-deren Inhalt erst nach einer vorgelagerten Auswahl feststeht, werden als solche
-kenntlich gemacht oder erst nach der frischen Neuprojektion konkretisiert; der
-Coach erfindet dafür keine Optionen.
-
-Fehlt `personalizationFlow`, besteht für diese Curriculumwurzel keine
-verpflichtende geführte Personalisierung. Existiert ein Flow, ist aber
-syntaktisch oder semantisch ungültig, schlägt die Einrichtung geschlossen fehl:
-Lehren, Frontier-Aktivierung und schreibende Lernaktionen bleiben gesperrt,
-anstatt aus dem Graphen einen vermeintlichen Ersatzablauf zu erraten.
-
-Die Filter-ID wird immer im Namensraum ihrer deklarierenden Landschaft
-aufgelöst; die kanonische Schreibweise stammt aus den Metadaten. Eine
-Filtergruppe hat wegen des heutigen Landschaftsvertrags höchstens
-`maxSelections = 1`. Eine Landschaftsgruppe darf dagegen beliebige ausdrücklich
-deklarierte `minSelections`/`maxSelections` verwenden. Dynamische Filtergruppen
-werden als je eine Gruppeninstanz pro zuvor ausgewählter, tatsächlich gefilterter
-Landschaft ausgewertet.
-
-Für `filtersForSelectedLandscapes` gilt in Flow-Version 1 eine bewusst enge
-Grenze: Werden `filterIds` angegeben, bilden sie ein gemeinsames,
-groß-/kleinschreibungsunabhängig eindeutiges Filtervokabular und jede ID muss in
-jeder Landschaft auflösbar sein, die die referenzierte Vorgängergruppe anbieten
-kann. Unterschiedliche eingeschränkte Listen je Landschaft sind in Version 1
-nicht darstellbar. Bei heterogenen Filtervokabularen wird `filterIds` deshalb
-weggelassen; dann verwendet jede ausgewählte Landschaft ihre eigenen
-deklarierten Filter. Ein ausdrücklich deklarierter Flow muss mindestens eine
-Stufe enthalten, und jede Stufe sowie Gruppe braucht ein nichtleeres sichtbares
-Label. Verstöße machen den gesamten Flow ungültig und lösen keinen stillen
-Fallback aus.
-
-Für die Zustandsmaschine gilt eine harte Priorität: Solange eine erforderliche
-Einrichtungsdimension offen ist, veröffentlicht der Kontext zuerst die
-entsprechende Setup-Aktion wie `setCurriculum`, `setPersonalization` oder
-`setScope`. Lehren, Aufgabengenerierung, automatische Zielaktivierung und
-sonstige Autopilot-Schritte sind dann noch nicht zulässig. Erst nach einer
-gültigen, vollständig projizierten Auswahl wird die Frontier berechnet. Die
-Frontier ist damit Ergebnis der Personalisierung, niemals deren Eingabe oder
-Steuersignal.
-
-Persistiert wird die Personalisierung **spärlich**: Eine Coach-Mutation schreibt
-nur die durch die aktuelle `optionId` adressierte Landschaft und gegebenenfalls
-deren kanonischen Filter, nicht die vollständige erreichbare Landschafts- oder
-Scope-Closure. Der neue Planpfad durchläuft dabei ausdrücklich keine alten,
-fachspezifischen Kompatibilitätsregeln für Filterbezeichnungen. Ein
-fehlender Nachfahr-Eintrag ist deshalb insbesondere **keine dauerhaft
-gespeicherte negative Entscheidung** und nicht gleichbedeutend mit einem
-expliziten `selected: false`. Er darf aber ebenso wenig pauschal als
-ausdrücklich ausgewählt gelten. Im heutigen Projektionsvertrag wird ein
-fehlender Nachfahr nach Beginn einer persönlichen Konfiguration im gefilterten
-Lernzielgraphen zunächst nicht ausgewählt; der `PersonalizationPlan` kann ihn
-weiterhin als offene oder angebotene Auswahl veröffentlichen. Geerbte,
-implizite oder voreingestellte Werte gelten nur, wenn die Metadaten des
-aktuellen Plans sie tatsächlich definieren.
-
-Insbesondere darf das Backend nicht den gesamten fachlichen Abschluss als
-explizit ausgewählt materialisieren, nur damit ein inkrementeller
-Schreibvorgang funktioniert. Die Leseprojektion wertet die spärliche
-Konfiguration zusammen mit den aktuellen Metadaten aus; eine Mutation schreibt
-nur das kanonische Delta. Ältere Datensätze, die beispielsweise nur eine
-Wurzelentscheidung enthalten, werden deshalb als teilweise eingerichteter
-Zustand interpretiert und nicht als ausdrückliche Abwahl sämtlicher
-untergeordneter Landschaften. So können sich Metadaten weiterentwickeln, ohne
-dass vollmaterialisierte Alt-Snapshots die aktuelle Semantik überdecken.
-
-Inkrementelle Coach-Mutationen verändern ausschließlich die im Plan adressierte
-Dimension. Bereits ausdrücklich gewählte parallele Fächer und deren
-Kursausprägungen bleiben erhalten. Die Auswahl von Mathematik LK darf
-beispielsweise Biologie oder ein anderes ausdrücklich gewähltes Fach nicht
-stillschweigend abwählen. Eine exklusive Einzelfachauswahl ist nur zulässig,
-wenn die Metadaten des Plans diese Dimension ausdrücklich als exklusiv
-definieren und die lernende Person diese Auswahl trifft. Der vollständige
-Ersatz einer Konfiguration bleibt ein ausdrücklich davon getrennter
-Cockpit-Workflow.
-
-Kursprofile sind fachbezogene Werte und keine globale Eigenschaft einer
-Lernsession. Mathematik LK und Physik GK müssen daher gleichzeitig abbildbar
-sein. Ein Kursprofil setzt weder die Lernstufe noch G8/G9: „Mathematik LK“
-beantwortet Fach und Mathematik-Kursprofil; ein nur auf Sekundarstufe II
-begrenzter Lernumfang, ein stufenübergreifender Neustart und das Dauer- oder
-Jahrgangsmodell bleiben eigenständige Entscheidungen. Solange eine davon für
-die aktuelle Nutzerabsicht erforderlich und nicht eindeutig bekannt ist,
-bleibt sie als Rückfrage offen.
-
-Jede eingereichte kanonische ID muss genau zu einer aktuellen Planoption passen.
-Mutation und Neuberechnung von Plan und Coach-Kontext liegen in derselben
-Transaktion. Nach jeder Mutation wird deshalb aus dem gespeicherten Delta und
-den aktuellen Metadaten der Folgezustand neu projiziert; der Client darf ihn
-nicht selbst fortschreiben.
-
-Eine Landschaft, die außerhalb der bisherigen Skill-Graph-Closure liegt,
-darf nur dann in den Lernzeitkontext aufgenommen werden, wenn sie von einer
-gültigen `landscapes`-Quelle des aktiven Flows ausdrücklich angeboten und im
-persönlichen Zustand ausdrücklich gewählt wurde. Eine beliebige oder alte
-Konfigurationszeile erweitert den Laufzeitkontext nicht. Filter bleiben dabei
-grundsätzlich im Namensraum ihrer deklarierenden Landschaft; eine Projektion
-auf eine übergeordnete Wurzel ist ausschließlich eine separat dokumentierte
-Legacy-Kompatibilität und keine Semantik des neuen Flows.
-
-Weitere unabhängige Personalisierungsachsen werden nicht durch Fach-, Label- oder
-ID-Sonderregeln nachgerüstet. Sie benötigen einen neuen, versionierten
-Flow-Quelltyp samt Schema, Validierung, Persistenzsemantik und neutralen
-Vertragstests. Paketweite `scopeDimensions`/`offeredScopes` können dafür später
-eine zusätzliche autoritative Datenquelle werden; sie dürfen erst verwendet
-werden, wenn Planerzeugung, Mutation und Projektion gemeinsam darauf umgestellt
-sind. Nicht darstellbare Entscheidungen werden bis dahin fail-closed abgewiesen.
-
-Die Architektur ist erst fachübergreifend abgenommen, wenn mindestens folgende
-Fälle ohne Sonderlogik funktionieren:
-
-- Wurzel → erste deklarierte Stufe → Landschaft → lokaler Filter →
-  nächster Setup- oder Lernschritt, auch mit rein synthetischen IDs und Labels;
-- Landschaftsgruppen mit unterschiedlichen `minSelections`/`maxSelections`
-  sowie filterlose Landschaften;
-- Erhaltung bereits explizit und schrittweise gewählter paralleler
-  Landschaften beziehungsweise Fächer;
-- Wiederaufnahme einer älteren, nur teilweise gespeicherten
-  Wurzel-/Nachfahrkonfiguration;
-- atomare Ablehnung veralteter Option-IDs, roher Coach-Konfiguration,
-  überschrittener Kardinalität und landschaftsfremder Filter-IDs ohne teilweise
-  Zustandsänderung;
-- keine Ableitung aus Frontier-Tags und keine fest codierten Label, Fachnamen
-  oder fachlichen IDs in Laufzeitlogik oder Vertragstests.
+Der gemeinsame Flow bleibt domänenneutral. Synthetische Labels,
+Mehrfachfach-Kardinalitäten, filterlose Landschaften, teilweise ältere
+Konfigurationen, transaktionales Scheitern und der Erhalt paralleler Fächer
+werden als Backend-/WebGUI-Vertrag getestet, nicht als Modellorchestrierung.
 
 ### 5.2 Context-Ergebnis
 
@@ -561,8 +378,9 @@ Fälle ohne Sonderlogik funktionieren:
 technischen Namens das eindeutige Bootstrap-Werkzeug. Wenn die App ausgewählt
 oder SkillPilot genannt
 wurde und die lernende Person lernen, üben, starten, fortsetzen oder den
-gespeicherten Lernstand verwenden möchte, muss es vor der ersten fachlichen
-Antwort laufen. Eine allgemeine Lehrplanübersicht oder ein frei erfundener
+gespeicherten Lernstand verwenden möchte, muss es im aktuellen Assistant-Turn
+vor jeder lernendenbezogenen Antwort erfolgreich laufen. Eine allgemeine
+Lehrplanübersicht oder ein frei erfundener
 Lernpfad ist kein zulässiger Ersatz. Dasselbe Werkzeug rehydriert den Zustand
 nach einem neuen Chat, Reload, langem Dialog, möglicher Kontextkompaktierung,
 Unsicherheit oder Konflikt.
@@ -576,10 +394,7 @@ Es serialisiert **nicht** den rohen
   eng projizierte `goalVisualization` für ein passendes kanonisches Bild des
   aktiven atomaren Ziels;
 - bei Prüfungen ausschließlich Aufgabe und Maximalpunkte;
-- aktuell erlaubte Optionen mit Label und passender Referenz: opake `optionId`
-  für Personalisierung, fachliche ID nur für bewusst fachliche Navigation;
-- bei einer offenen Personalisierungsgruppe deren Entscheidungslabel,
-  Gruppeninstanz, Minimum, Maximum und bereits gewählte Anzahl;
+- aktuell erlaubte Fokus- oder Zieloptionen mit Label und fachlicher ID;
 - Frontier, relevante Ressourcen und nächste erlaubte Werkzeuge;
 - Scope- und Curriculumfortschritt sowie Abschlussstatus;
 - eine kurze zustandsabhängige Arbeitsanweisung.
@@ -594,14 +409,13 @@ Alttext und Cockpit-Link. Das dedizierte read-only Werkzeug
 ausschließlich ein freigegebenes JPEG oder PNG und gibt die strukturierte
 `goalVisualization` an die bild-only MCP-Apps-UI weiter. Genau sein Descriptor
 enthält `ui.resourceUri` und `openai/outputTemplate`; alle gewöhnlichen
-Werkzeuge bleiben von der UI-Ressource ungebunden. Wenn das
-neueste vollständige Kontext- oder Mutationsergebnis eine zulässige
-Visualisierung enthält und den Renderer erlaubt, läuft er unmittelbar danach
-im selben Assistant-Turn genau einmal mit unveränderter Ziel-ID und
-`expectedStateVersion` aus genau diesem Ergebnis. Er validiert den aktuellen
-Backendzustand erneut. Bei fehlender, veralteter, ungültiger oder zu großer
-Visualisierung wird kein Bild ausgeliefert; der normale Chatablauf bleibt
-vollständig erhalten. Das Bild dient nur der Orientierung, nie als Evidenz,
+Werkzeuge bleiben von der UI-Ressource ungebunden. Wenn das neueste
+Vollresultat eine `goalVisualization` enthält und den Renderer erlaubt, läuft
+dieser genau einmal mit dessen unveränderter Ziel-ID; die Top-Level-
+`stateVersion` wird in `expectedStateVersion` kopiert. Alte oder bereits
+versuchte Freigaben werden nicht verwendet. Das Bild dient nur
+der Orientierung, nie als
+Evidenz,
 Aufgabe, Lösung, Bewertung oder Mastery-Nachweis. Weder User-Agent- noch
 Surface-Metadaten schalten den Renderer frei oder ab. Ein erfolgreiches
 Toolresultat bestätigt nur die Bereitstellung; SkillPilot behauptet nicht, dass
@@ -635,7 +449,7 @@ Funktion migriert:
 | Autorisierung, Mastery-, Recall- und Exam-Invarianten | Spring-Backend-Guards und Domainlogik |
 | echte größere Nachschlageinhalte | später optionaler read-only `search`/`fetch`-Index |
 | Lernzielvisualisierung | optionale sichere `goalVisualization` in `structuredContent` plus genau eine aktiv gebundene hashgebundene `text/html;profile=mcp-app`-Ressource, die ausschließlich das geprüfte JPEG oder PNG darstellt; frühere ausgelieferte Hash-URIs bleiben passiv lesbar; nur der Renderer ist gebunden, niemals fachliche Quelle oder Host-Darstellungsgarantie |
-| privater Direktstart | eigene aktive Startressource am read-only Öffner; ID-freier app-only Capability-Issuer; CREATE oder EXISTING nur über direkten capability-geschützten HTTPS-Austausch; vollständige, serverautoritativ sicht- und änderbare Curriculum-/Personalisierungseinrichtung über bestehende ID-freie Sessiontools in derselben Komponente; finaler expliziter Chat-Handoff; SkillPilot-ID niemals in Chat, Modell- oder MCP-Datenflächen; ausschließlich interner Canary mit hartem Public-Release-Gate |
+| Einstieg und Level-2-Konfiguration | ausschließlich First-Party-WebGUI für permanente ID, Providerhinweis, Curriculum, Stufe, Fächer, Kursprofile und Personalisierung; finaler WebGUI-Start erzeugt frische Session und neuen Chat; ohne Session nur fester WebGUI-Hinweis, bei Sessionfehler nur server-owned Instruktion und `startUrl` |
 | normales Karteikartenlernen | eigene aktive Kartenressource am read-only Launcher; begrenzter Kartenstapel nur in Resultat-`_meta`; app-only Review ungebunden und ohne Mastery-Mutation |
 | spätere fachliche Widgetdarstellung | jeweils eigene UI-Ressource sowie eng begrenzte app-only Metadaten und Tools; niemals fachliche Modellanweisung |
 
@@ -688,11 +502,10 @@ Scopes, Lernsessionen, Tests und Widerrufslogik.
 2. Authorization Code mit PKCE `S256` verbindet die App mit SkillPilot. Diese
    OAuth-Verbindung authentisiert den Client, erzeugt aber weder Lernenden- noch
    Lernsessionzustand.
-3. Die lernende Person lädt oder erzeugt ihre SkillPilot-ID entweder in der
-   SkillPilot-Weboberfläche und klickt ausdrücklich auf **Lernen starten**, oder
-   wählt im privaten Direct-Start-Widget CREATE beziehungsweise EXISTING und
-   schließt dort Curriculum und Personalisierung ab. Die permanente ID gelangt
-   in keinem Fall in Chat oder MCP-Vertrag.
+3. Die lernende Person lädt oder erzeugt ihre SkillPilot-ID in der
+   SkillPilot-Weboberfläche, konfiguriert dort Providerhinweis und Level 2 und
+   klickt ausdrücklich auf **Lernen starten**. Die permanente ID gelangt in
+   keinem Fall in Chat oder MCP-Vertrag.
 4. Genau in diesem Augenblick wendet SkillPilot den eng typisierten Start-Intent
    an und erzeugt eine frische, hochentropische `learningSessionId`. Auch zwei
    Starts desselben Lernenden erzeugen zwei verschiedene IDs.
@@ -700,13 +513,11 @@ Scopes, Lernsessionen, Tests und Widerrufslogik.
    Lernendenreferenz, Erzeugungszeitpunkt und absolutem Ablaufzeitpunkt. Die
    normale Laufzeit beträgt exakt 24 Stunden und wird durch Nutzung nicht
    verlängert. Nur der gegatete, requestlokale First-Party-Live-Test aus der
-   verbindlichen Sessionarchitektur darf eine einzelne Session verkürzen; der
-   private Component-Bootstrap bleibt bei 24 Stunden.
+   verbindlichen Sessionarchitektur darf eine einzelne Session verkürzen.
 6. SkillPilot setzt die Sessionreferenz automatisch in die natürliche
-   ChatGPT-Startnachricht ein. Die lernende Person muss sie nicht kopieren. Bei
-   Direct-Start CREATE sieht und sichert sie die neue permanente SkillPilot-ID
-   ausschließlich im Recovery-DOM der Komponente; die Startnachricht enthält
-   weiterhin weder diese ID noch OAuth-Token oder Client-Secret.
+   ChatGPT-Startnachricht ein und öffnet einen neuen Chat. Die lernende Person
+   muss die Referenz nicht kopieren; die Startnachricht enthält weder permanente
+   ID noch OAuth-Token oder Client-Secret.
 7. ChatGPT übergibt bei jedem fachlichen MCP-Aufruf sowohl das OAuth-Bearer-Token
    als auch die `learningSessionId` als unverändertes Toolargument.
 8. Das Backend akzeptiert einen fachlichen Aufruf nur, wenn OAuth-Client,
@@ -723,17 +534,14 @@ Altersprofil; die Angabe ist eine bewusste Selbstbestätigung und keine
 Identitäts- oder Altersverifikation.
 
 Eine Installation direkt in ChatGPT ohne aktuelle Startnachricht darf OAuth
-erfolgreich verbinden und öffnet genau einmal die private Startkomponente mit
-`purpose=START` und `communicationLocale=de` für die aktuelle deutsche oder
-`communicationLocale=en` für die aktuelle englische Unterhaltung. Liefert ein
-fachliches Tool `SESSION_REQUIRED`,
-`SESSION_RENEWAL_REQUIRED` oder `SESSION_VERSION_UNAVAILABLE`, öffnet der Coach
-dieselbe Komponente genau einmal mit `purpose=RENEW_EXISTING` und kopiert als
-zweites Pflichtargument bevorzugt `recoveryCommunicationLocale` aus den
-Fehlerdetails, andernfalls die autoritative Locale der letzten Session. Er
-übernimmt die neue Startnachricht im selben Chat. Ein neuer Chat oder die
-Rückkehr zu SkillPilot ist nur Fallback, wenn Komponente oder sicherer Handoff
-nicht verfügbar sind.
+erfolgreich verbinden, ruft aber kein SkillPilot-Werkzeug auf. Der Coach nennt
+nur lokalisiert `https://skillpilot.com/` und den WebGUI-Startweg. Liefert ein
+fachliches Tool `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE`, gibt der Coach `instruction` unverändert aus
+oder wählt den exakten lokalisierten Eintrag aus `instructions`. Die exakte
+`startUrl` ergänzt er nur, wenn sie nicht schon enthalten ist. Er lehrt nicht
+weiter, erneuert OAuth nicht und verwendet die alte Session nicht erneut. Der First-Party-
+Webstart erzeugt die neue Session und öffnet einen neuen Chat.
 
 ### 7.2 Vorgesehene Sicherheitsparameter
 
@@ -741,7 +549,7 @@ nicht verfügbar sind.
 | --- | --- |
 | Access Token | 30–60 Minuten |
 | Refresh Token | höchstens 30 Tage, rotierend |
-| Lernsession | bei jedem **Lernen starten** frisch; normaler und privater Component-Ablauf exakt 24 Stunden nach Erzeugung; nur gegateter First-Party-Diagnoserequest requestlokal `3601..86400` Sekunden und höchstens `PT24H`; weder Toolaufruf noch Token-Refresh verlängert sie |
+| Lernsession | bei jedem **Lernen starten** frisch; normal exakt 24 Stunden nach Erzeugung; nur gegateter First-Party-Diagnoserequest requestlokal `3601..86400` Sekunden und höchstens `PT24H`; weder Toolaufruf noch Token-Refresh verlängert sie |
 | Audience/Resource | exakt `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Scopes | `skillpilot.openai.v1.read` und `skillpilot.openai.v1.write` |
 | PKCE | ausschließlich `S256` |
@@ -939,19 +747,17 @@ MCP-Pfads setzt zusätzlich die vollständig abgenommene Kombination aus festem
 vertraulichem OAuth-Client und expliziter 24h-Lernsession voraus. mTLS ist kein
 Gate der Version `1.0.0`.
 
-### Etappe 7 – Drei getrennte MCP-Apps-UIs
+### Etappe 7 – Zwei getrennte MCP-Apps-UIs
 
-- drei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen im
-  unveröffentlichten `1.0.0`-Draft ausliefern: privaten Direktstart,
-  read-only Lernzielbild und Karteikartenlernen;
-- `open_skillpilot_start`, `render_skillpilot_goal_visualization` und
+- zwei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen im
+  unveröffentlichten `1.0.0`-Draft ausliefern: read-only Lernzielbild und
+  Karteikartenlernen;
+- `render_skillpilot_goal_visualization` und
   `start_skillpilot_memory_practice` jeweils ausschließlich an ihre eigene
-  aktuelle Ressource binden; Capability-Issuer, Kartenreview und gewöhnliche
-  Coach-Werkzeuge bleiben ungebunden;
-- den privaten Direktstart nur im internen Canary verwenden; EXISTING bleibt im
-  flüchtigen Widgetfeld und direkten HTTPS-Body, CREATE in direkter HTTPS-
-  Antwort und Recovery-DOM, vollständiges Setup bleibt in derselben Komponente,
-  und das harte Public-Release-Gate bleibt bestehen;
+  aktuelle Ressource binden; Kartenreview und gewöhnliche Coach-Werkzeuge
+  bleiben ungebunden;
+- früh beworbene Startressourcen byte-identisch passiv lesbar halten, aber an
+  kein aktives Werkzeug binden;
 - fehlende, ungültige oder zu große Bilder sicher auf die normale
   Chatdarstellung degradieren;
 - renderer-spezifisch nur `render_skillpilot_goal_visualization` an genau eine
@@ -969,14 +775,12 @@ Gate der Version `1.0.0`.
 - interaktive fachliche Auswahl-, Abgabe- und Prüfungswidgets nur in einer
   späteren, ausdrücklich neu entworfenen Ausbaustufe ergänzen.
 
-**Zwischenstand:** Alle drei aktiven UI-Ressourcen sind im unveröffentlichten
-V1-Draft implementiert und separat gebunden. Der Direktstart ist nur für den
-internen Canary freigegeben; ein echter OpenAI-Host-Canary und das harte
-Public-Release-Gate stehen noch aus. Für die Lernzielvisualisierung bleibt
+**Zwischenstand:** Beide aktiven UI-Ressourcen sind im unveröffentlichten
+V1-Draft implementiert und separat gebunden. Für die Lernzielvisualisierung bleibt
 genau eine aktuelle hashgebundene bild-only Ressource an den Renderer gebunden;
 frühere ausgelieferte Bild-URIs sind ausschließlich passiv lesbar.
 
-**Exit:** Die drei UI-Funktionen schwächen den chat-first Coach nicht; der
+**Exit:** Die zwei UI-Funktionen schwächen den chat-first Coach nicht; der
 normale Text- beziehungsweise Cockpit-Fallback bleibt unabhängig davon
 erhalten, ob der Host die bereitgestellten Komponenten tatsächlich darstellt.
 

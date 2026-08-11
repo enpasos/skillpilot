@@ -118,13 +118,12 @@ Kurzfassung:
 
 `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
 `SESSION_VERSION_UNAVAILABLE` sind keine OAuth-Fehler. Der normale
-Wiederherstellungsweg öffnet genau einmal die private Startkomponente mit
-`purpose=RENEW_EXISTING` und der erforderlichen `communicationLocale=de|en`.
-Diese stammt bevorzugt aus `recoveryCommunicationLocale` im Fehler, sonst aus
-der letzten Sessionlocale. Die Komponente nimmt die vorhandene SkillPilot-ID
-nur dort entgegen und übergibt eine neue Startnachricht im selben Chat. Neuer
-Chat oder Website sind nur Fallback, wenn dieser sichere Handoff nicht
-verfügbar ist.
+Wiederherstellungsweg gibt `instruction` unverändert aus oder wählt den exakten
+lokalisierten Eintrag aus `instructions`; die exakte `startUrl` wird nur
+ergänzt, wenn sie nicht schon enthalten ist. Es folgt keine Fachantwort, kein Retry mit der
+alten Session und keine neue OAuth-Verbindung. Der Lernende konfiguriert den
+Kontext im First-Party-WebGUI, wählt **Lernen starten** und setzt die neue
+Session im dadurch geöffneten neuen Chat fort.
 
 Die dauerhafte SkillPilot-ID bleibt serverseitig.
 

@@ -92,10 +92,13 @@ public final class OpenAiDeCoachContextProjector {
         String rootLandscapeId = state.curriculum() == null
                 ? null
                 : state.curriculum().getCurriculumId();
-        OpenAiDeCoachContext.PersonalizationHistory personalizationHistory = personalizationHistory(
-                personalizationPlan,
-                rootLandscapeId,
-                communicationLocale);
+        OpenAiDeCoachContext.PersonalizationHistory personalizationHistory =
+                "setPersonalization".equals(requiredAction)
+                        ? personalizationHistory(
+                                personalizationPlan,
+                                rootLandscapeId,
+                                communicationLocale)
+                        : null;
         OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
                 ? personalizationDecision(personalizationPlan)
                 : null;
@@ -850,8 +853,10 @@ public final class OpenAiDeCoachContextProjector {
         // advertised as one.
         if (requiredAction != null) {
             switch (requiredAction) {
-                case "setCurriculum" -> tools.add(OpenAiDeV1McpContractAdapter.SET_CURRICULUM);
-                case "setPersonalization" -> tools.add(OpenAiDeV1McpContractAdapter.SET_PERSONALIZATION);
+                case "setCurriculum", "setPersonalization" -> {
+                    // Level-2 configuration is WebGUI-owned in V1. The MCP
+                    // adapter fails closed before such a context is exposed.
+                }
                 case "setScope" -> tools.add(OpenAiDeV1McpContractAdapter.SET_SCOPE);
                 case "setActiveGoal" -> tools.add(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
                 case "orientActiveGoal", "teachActiveGoal", "setMastery" -> {

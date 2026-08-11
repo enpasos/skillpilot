@@ -53,29 +53,21 @@ test("plugin archive name cannot be confused with the shared Spring server", () 
 });
 
 test("V1 UI binds one distinct active template per tool and keeps historical templates passive", () => {
-  const startResourceUri = "ui://skillpilot/coach/v1/sha256-start/start.html";
+  const retainedStartResourceUri = "ui://skillpilot/coach/v1/sha256-start/start.html";
   const goalResourceUri = "ui://skillpilot/coach/v1/sha256-goal/goal.html";
   const memoryResourceUri = "ui://skillpilot/coach/v1/sha256-memory/memory.html";
   const retainedResourceUri = "ui://skillpilot/coach/v1/sha256-retained/widget.html";
   const resources = [
     { uri: retainedResourceUri, sha256: "retained" },
-    { uri: startResourceUri, sha256: "start" },
+    { uri: retainedStartResourceUri, sha256: "start" },
     { uri: goalResourceUri, sha256: "goal" },
     { uri: memoryResourceUri, sha256: "memory" },
   ];
   const activeBindings = {
-    open_skillpilot_start: startResourceUri,
     render_skillpilot_goal_visualization: goalResourceUri,
     start_skillpilot_memory_practice: memoryResourceUri,
   };
   const tools = [
-    {
-      name: "open_skillpilot_start",
-      meta: {
-        ui: { resourceUri: startResourceUri },
-        "openai/outputTemplate": startResourceUri,
-      },
-    },
     {
       name: "render_skillpilot_goal_visualization",
       meta: {
@@ -91,12 +83,6 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
       },
     },
     {
-      name: "issue_skillpilot_start_capability",
-      meta: {
-        ui: { visibility: ["app"] },
-      },
-    },
-    {
       name: "review_skillpilot_memory_practice_card",
       meta: {
         ui: { visibility: ["app"] },
@@ -107,10 +93,7 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
   assert.doesNotThrow(() =>
     assertActiveUiBindings(activeBindings, resources, tools),
   );
-  for (const appOnlyToolName of [
-    "issue_skillpilot_start_capability",
-    "review_skillpilot_memory_practice_card",
-  ]) {
+  for (const appOnlyToolName of ["review_skillpilot_memory_practice_card"]) {
     const appOnlyTool = tools.find((tool) => tool.name === appOnlyToolName);
     assert.deepEqual(appOnlyTool?.meta?.ui, { visibility: ["app"] });
     assert.equal(Object.hasOwn(appOnlyTool.meta.ui, "resourceUri"), false);
@@ -141,7 +124,7 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
         {
           ...tools[1],
           meta: {
-            ui: { resourceUri: goalResourceUri },
+            ui: { resourceUri: memoryResourceUri },
             "openai/outputTemplate": retainedResourceUri,
           },
         },
@@ -160,6 +143,20 @@ test("V1 UI binds one distinct active template per tool and keeps historical tem
         tools,
       ),
     /must own a distinct UI resource/,
+  );
+  assert.throws(
+    () =>
+      assertActiveUiBindings(activeBindings, resources, [
+        ...tools,
+        {
+          name: "retired_skillpilot_start",
+          meta: {
+            ui: { resourceUri: retainedStartResourceUri },
+            "openai/outputTemplate": retainedStartResourceUri,
+          },
+        },
+      ]),
+    /without an active binding/,
   );
 });
 

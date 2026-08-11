@@ -182,7 +182,7 @@ Wenn du keine geschützte ID-Datei gespeichert hast und deine SkillPilot-ID verl
 
 ### Was passiert, wenn die ChatGPT-Session abläuft?
 
-Die Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Sobald weniger als eine Stunde übrig ist, startet der Coach keine neue Lernaktion mehr, sondern öffnet die private Startkomponente im selben Chat. Dort kannst du deine vorhandene SkillPilot-ID eingeben und eine neue, unabhängige Lernsession starten; deine ID erscheint dabei nicht im Chat. Bei exakt einer Stunde Restlaufzeit ist eine neue Aktion noch möglich. Nur wenn die Komponente oder ihre sichere Übergabe nicht verfügbar ist, öffnest du einen neuen Chat oder gehst zurück zu [skillpilot.com](https://skillpilot.com) und klickst dort erneut auf **Lernen starten**. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nie direkt im Chat ein.
+Die Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Sobald weniger als eine Stunde übrig ist, startet der Coach keine neue Lernaktion mehr. Gehe dann zurück zu [skillpilot.com](https://skillpilot.com/), lade dort deine geschützte ID-Datei oder gib deine SkillPilot-ID ein, prüfe deinen Lernkontext und klicke erneut auf **Lernen starten**. SkillPilot erzeugt eine neue, unabhängige Lernsession und öffnet einen neuen Chat. Bei exakt einer Stunde Restlaufzeit ist eine neue Aktion noch möglich. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nie direkt im Chat ein.
 
 ### Kann ich zwischen Cockpit und Lerncoach wechseln?
 

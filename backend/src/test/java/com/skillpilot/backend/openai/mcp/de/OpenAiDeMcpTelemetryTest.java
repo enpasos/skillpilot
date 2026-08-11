@@ -32,8 +32,6 @@ class OpenAiDeMcpTelemetryTest {
 
         telemetry.record(OpenAiDeV1McpContractAdapter.GET_CONTEXT, () -> result(false));
         telemetry.record(OpenAiDeV1McpContractAdapter.GET_CONTEXT, () -> result(true));
-        telemetry.record(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START, () -> result(false));
-        telemetry.record(OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY, () -> result(false));
         telemetry.record("attacker-controlled-value", () -> result(false));
         telemetry.record(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
@@ -45,20 +43,6 @@ class OpenAiDeMcpTelemetryTest {
         assertThat(timer(
                                 registry,
                                 OpenAiDeV1McpContractAdapter.GET_CONTEXT,
-                                "success",
-                                "OK")
-                        .count())
-                .isEqualTo(1);
-        assertThat(timer(
-                                registry,
-                                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                                "success",
-                                "OK")
-                        .count())
-                .isEqualTo(1);
-        assertThat(timer(
-                                registry,
-                                OpenAiDeV1McpContractAdapter.ISSUE_SKILLPILOT_START_CAPABILITY,
                                 "success",
                                 "OK")
                         .count())
@@ -173,13 +157,99 @@ class OpenAiDeMcpTelemetryTest {
                         "stateVersion=42",
                         "stateSchemaVersion=3",
                         "workflowVersion=coach@1.3",
-                        "curriculumRevision=curriculum-package@sha256")
+                        "curriculumRevision=curriculum-package@sha256",
+                        "goalVisualizationOffered=false")
                 .doesNotContain(
                         rawLearningSession,
                         "private learner answer",
                         "secret token",
                         "must not be logged",
                         "unit-test-privacy-hash-key");
+    }
+
+    @Test
+    void logsOnlyBooleanGoalVisualizationSignalForSuccessfulDirectFullContext() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+        String privateGoalId = "private-goal-id-must-not-be-logged";
+        String privateImageUrl = "https://skillpilot.test/private-image-must-not-be-logged.jpg";
+        String privateAltText = "private alt text must not be logged";
+        Logger logger = (Logger) LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
+        ListAppender<ILoggingEvent> appender = new ListAppender<>();
+        appender.start();
+        logger.addAppender(appender);
+        try {
+            telemetry.record(
+                    OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                    () -> result(false, Map.of(
+                            "learningState", "TEACHING",
+                            "interactionMode", "chat",
+                            "nextAllowedTools", List.of(
+                                    OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION),
+                            "goalVisualization", Map.of(
+                                    "goalId", privateGoalId,
+                                    "imageUrl", privateImageUrl,
+                                    "altText", privateAltText))));
+        } finally {
+            logger.detachAppender(appender);
+            appender.stop();
+        }
+
+        assertThat(appender.list)
+                .singleElement()
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .asString()
+                .contains(
+                        "status=success",
+                        "goalVisualizationOffered=true")
+                .doesNotContain(
+                        privateGoalId,
+                        privateImageUrl,
+                        privateAltText);
+    }
+
+    @Test
+    void readsNestedSuccessorContextButDoesNotMistakeUiReceiptForFullContext() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+        String privateSuccessorGoalId = "private-successor-goal-id-must-not-be-logged";
+        String privateReceiptGoalId = "private-receipt-goal-id-must-not-be-logged";
+        Logger logger = (Logger) LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
+        ListAppender<ILoggingEvent> appender = new ListAppender<>();
+        appender.start();
+        logger.addAppender(appender);
+        try {
+            telemetry.record(
+                    OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                    () -> result(false, Map.of(
+                            "status", "UPDATED",
+                            "context", Map.of(
+                                    "learningState", "TEACHING",
+                                    "interactionMode", "chat",
+                                    "nextAllowedTools", List.of(
+                                            OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION),
+                                    "goalVisualization", Map.of("goalId", privateSuccessorGoalId)))));
+            telemetry.record(
+                    OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                    () -> result(false, Map.of(
+                            "goalVisualization", Map.of("goalId", privateReceiptGoalId))));
+        } finally {
+            logger.detachAppender(appender);
+            appender.stop();
+        }
+
+        assertThat(appender.list)
+                .extracting(ILoggingEvent::getFormattedMessage)
+                .anySatisfy(message -> assertThat(message)
+                        .contains(
+                                "tool=" + OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                                "goalVisualizationOffered=true"))
+                .anySatisfy(message -> assertThat(message)
+                        .contains(
+                                "tool=" + OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                                "goalVisualizationOffered=false"))
+                .allSatisfy(message -> assertThat(message)
+                        .doesNotContain(privateSuccessorGoalId, privateReceiptGoalId));
     }
 
     @Test
@@ -229,7 +299,7 @@ class OpenAiDeMcpTelemetryTest {
         OpenAiDeMcpTelemetry telemetry =
                 new OpenAiDeMcpTelemetry(registry, null, properties, "unit-test-privacy-hash-key");
         String activeUri = OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI;
-        String activeStartUri = OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI;
+        String lastDeliveredStartUri = OpenAiDeV1ContractMetadata.SKILLPILOT_START_RESOURCE_URI;
         List<String> retainedSha256s =
                 OpenAiDeV1ContractMetadata.RETAINED_GOAL_VISUALIZATION_ARTIFACT_SHA256S;
         List<String> retainedStartSha256s =
@@ -256,12 +326,6 @@ class OpenAiDeMcpTelemetryTest {
                         return activeResult;
                     }))
                     .isSameAs(activeResult);
-            McpSchema.ReadResourceResult activeStartResult = readResult(activeStartUri);
-            assertThat(telemetry.recordResourceRead(activeStartUri, () -> {
-                        successfulSupplierCalls.incrementAndGet();
-                        return activeStartResult;
-                    }))
-                    .isSameAs(activeStartResult);
             for (String retainedUri : retainedUris) {
                 McpSchema.ReadResourceResult retainedResult = readResult(retainedUri);
                 assertThat(telemetry.recordResourceRead(retainedUri, () -> {
@@ -280,15 +344,11 @@ class OpenAiDeMcpTelemetryTest {
         }
 
         assertThat(successfulSupplierCalls)
-                .hasValue(3 + retainedSha256s.size() + retainedStartSha256s.size());
+                .hasValue(2 + retainedSha256s.size() + retainedStartSha256s.size());
 
         String activeArtifact =
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256.substring(0, 12);
         assertThat(resourceTimer(registry, activeArtifact, "active", "success").count())
-                .isEqualTo(1);
-        String activeStartArtifact =
-                OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256.substring(0, 12);
-        assertThat(resourceTimer(registry, activeStartArtifact, "active", "success").count())
                 .isEqualTo(1);
         for (String retainedSha256 : retainedSha256s) {
             assertThat(resourceTimer(
@@ -321,7 +381,7 @@ class OpenAiDeMcpTelemetryTest {
                 .allSatisfy(meter -> assertThat(meter.getId().getTag("server.build")).isNull());
 
         assertThat(appender.list)
-                .hasSize(4 + retainedSha256s.size() + retainedStartSha256s.size());
+                .hasSize(3 + retainedSha256s.size() + retainedStartSha256s.size());
         assertThat(appender.list)
                 .extracting(ILoggingEvent::getFormattedMessage)
                 .allSatisfy(message -> assertThat(message)
@@ -335,7 +395,7 @@ class OpenAiDeMcpTelemetryTest {
                                 untrustedUri,
                                 "private exception payload",
                                 activeUri,
-                                activeStartUri,
+                                lastDeliveredStartUri,
                                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256,
                                 OpenAiDeV1ContractMetadata.SKILLPILOT_START_ARTIFACT_SHA256));
         for (String retainedSha256 : retainedSha256s) {
@@ -365,11 +425,6 @@ class OpenAiDeMcpTelemetryTest {
                 .anySatisfy(message -> assertThat(message)
                         .contains(
                                 "uiArtifact=" + activeArtifact,
-                                "artifactRole=active",
-                                "status=success"))
-                .anySatisfy(message -> assertThat(message)
-                        .contains(
-                                "uiArtifact=" + activeStartArtifact,
                                 "artifactRole=active",
                                 "status=success"))
                 .anySatisfy(message -> assertThat(message)
