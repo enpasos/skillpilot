@@ -112,6 +112,10 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String GET_RECALL_ANSWER = "get_skillpilot_verified_recall_answer";
     public static final String RECORD_RECALL_RESULT = "record_skillpilot_verified_recall_result";
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation";
+    public static final String PURPOSE = "purpose";
+    public static final String PURPOSE_START = "START";
+    public static final String PURPOSE_RENEW_EXISTING = "RENEW_EXISTING";
+    public static final String COMMUNICATION_LOCALE = "communicationLocale";
     public static final String LEARNING_SESSION_ID = "learningSessionId";
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
     public static final String CLIENT_REQUEST_ID = "clientRequestId";
@@ -158,7 +162,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             When work begins on a newly confirmed active atomic goal, the first learner-facing content sentence of that goal's section must name the exact activeGoal.title in the communicationLocale, for example “Dein aktuelles Lernziel ist: <Titel>.” or “Your current learning goal is: <title>.” Never substitute activeGoal.description, a paraphrase, or an explanation for that title sentence. After mastery, the mandatory completionHandoff for the previous goal must appear before this new-goal section and is not an explanation of the successor.
 
-            If SkillPilot Coach v1 is invoked without a current learningSessionId, call open_skillpilot_start exactly once and wait for the direct-start component to submit a new start message. Before that message exists, no subject-matter SkillPilot tool is permitted. Never call the app-only issue_skillpilot_start_capability tool from coach dialogue. Never ask for, accept, repeat, or expose a SkillPilot ID, setup capability, PIN, password, or OAuth value in chat. OAuth authorizes only the fixed App-to-Core connection and never selects a learner or learning session.
+            If SkillPilot Coach v1 is invoked without a current learningSessionId, call open_skillpilot_start exactly once with purpose=START and communicationLocale matching the current conversation language: use en for an English conversation and de otherwise. Then wait for the direct-start component to submit a new start message. Before that message exists, no subject-matter SkillPilot tool is permitted. Never call the app-only issue_skillpilot_start_capability tool from coach dialogue. Never ask for, accept, repeat, or expose a SkillPilot ID, setup capability, PIN, password, or OAuth value in chat. OAuth authorizes only the fixed App-to-Core connection and never selects a learner or learning session.
 
             The SkillPilot start message contains exactly one short-lived learning session. Copy it unchanged and send it on every subject-matter tool call only in the learningSessionId argument. Never reuse a value from an older start message. Never derive the session from OAuth, conversation content, or another ID. Do not repeat it in responses or ask the learner to copy or re-enter it.
 
@@ -176,7 +180,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
 
-            Treat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED means OAuth remains connected: call open_skillpilot_start exactly once to offer the private direct-start component and its safe first-party fallback; never request the learning session or SkillPilot ID in chat and never demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.
+            Treat natural multi-part requests as continuing intent. During open personalisation, first state the confirmed entry context briefly, then ask together for all information still listed as open by the newest SkillPilot context. Accept multiple answers in any order and partial answers. Apply each unambiguous fresh step directly, reload the context, and ask only for decisions that remain open. Questions announced for later do not authorise early writes; mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, and SESSION_VERSION_UNAVAILABLE mean OAuth remains connected: do not retry the old learning session; call open_skillpilot_start exactly once with purpose=RENEW_EXISTING and communicationLocale derived from the newest session metadata or result, mapping en and every en-* locale to en and every other locale to de. Wait for the newest component-authored start message, discard every older learning session value, and begin again with get_skillpilot_context. Never request the learning session or SkillPilot ID in chat, never demand a new OAuth connection, and never require a new chat. Offer a new chat or the safe first-party fallback only when the component or its secure same-chat handoff is unavailable. On authentication, schema, persistence, or repeated conflict failures, stop structured actions and state transparently that the state cannot be saved reliably; never guess or promise later persistence.
             """;
 
     private final CoachToolFacade coachTools;
@@ -392,10 +396,21 @@ public final class OpenAiDeV1McpContractAdapter {
                         OPEN_SKILLPILOT_START,
                         "Open the private SkillPilot start",
                         "Opens the private SkillPilot start component when no learningSessionId is available. "
-                                + "Call exactly once per explicit direct-start attempt, then wait for the component-"
+                                + "Use purpose=START for the initial entry and purpose=RENEW_EXISTING exactly once "
+                                + "after SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, or SESSION_VERSION_UNAVAILABLE. "
+                                + "For START, set communicationLocale from the current conversation language. For "
+                                + "recovery, map the newest session locale en or en-* to en and every other locale "
+                                + "to de. "
+                                + "Then wait for the component-"
                                 + "authored start message. Never ask for a SkillPilot ID in chat and never call the "
                                 + "app-only capability issuer from coach dialogue.",
-                        emptyObjectSchema(),
+                        objectSchema(
+                                Map.of(
+                                        PURPOSE,
+                                        enumStringSchema(PURPOSE_START, PURPOSE_RENEW_EXISTING),
+                                        COMMUNICATION_LOCALE,
+                                        enumStringSchema("de", "en")),
+                                List.of(PURPOSE, COMMUNICATION_LOCALE)),
                         openSkillpilotStartOutputSchema(),
                         true,
                         true,
@@ -1230,8 +1245,18 @@ public final class OpenAiDeV1McpContractAdapter {
     private McpSchema.CallToolResult openSkillpilotStart(
             String authorizationReference,
             Map<String, Object> arguments) {
+        String purpose = requiredString(arguments, PURPOSE);
+        if (!PURPOSE_START.equals(purpose) && !PURPOSE_RENEW_EXISTING.equals(purpose)) {
+            throw new IllegalArgumentException("Unsupported private SkillPilot start purpose.");
+        }
+        String requestedCommunicationLocale = requiredString(arguments, COMMUNICATION_LOCALE);
+        if (!"de".equals(requestedCommunicationLocale) && !"en".equals(requestedCommunicationLocale)) {
+            throw new IllegalArgumentException("Unsupported private SkillPilot start communication locale.");
+        }
         Map<String, Object> structured = new LinkedHashMap<>();
         structured.put("status", "ID_REQUIRED");
+        structured.put(PURPOSE, purpose);
+        structured.put(COMMUNICATION_LOCALE, requestedCommunicationLocale);
         structured.put("supportedLocales", List.of("de", "en"));
         structured.put("fallbackUrl", "https://skillpilot.com/");
 
@@ -2742,14 +2767,44 @@ public final class OpenAiDeV1McpContractAdapter {
         OpenAiDeV1ErrorCode code = OpenAiDeV1ErrorCode.valueOf(exception.code().name());
         String instruction;
         Map<String, Object> details = new LinkedHashMap<>();
-        if (code == OpenAiDeV1ErrorCode.SESSION_VERSION_UNAVAILABLE) {
+        if (code == OpenAiDeV1ErrorCode.SESSION_RENEWAL_REQUIRED) {
+            telemetry.recordOperational(Event.SESSION_RENEWAL_REQUIRED);
             instruction = localized(metadata,
-                    "Die vorbereitete Lernsession gehört zu einer nicht mehr verfügbaren Workflow- oder "
-                            + "Curriculumrevision. Öffne SkillPilot und wähle erneut „Lernen starten“.",
-                    "The prepared learning session belongs to a workflow or curriculum revision that is no longer "
-                            + "available. Open SkillPilot and choose Start learning again.");
+                    "Die aktuelle SkillPilot-Lernsession hat weniger als eine Stunde Restlaufzeit. Öffne jetzt "
+                            + "die private SkillPilot-Startoberfläche im selben Chat und erstelle dort mit der "
+                            + "vorhandenen SkillPilot-ID eine neue Lernsession. Verwende bis zur neuen "
+                            + "Startnachricht keine fachliche SkillPilot-Aktion. Nur wenn die Oberfläche oder die "
+                            + "sichere Übergabe technisch nicht verfügbar ist, nutze einen neuen Chat oder den "
+                            + "sicheren SkillPilot-Link. Die OAuth-Verbindung bleibt aktiv.",
+                    "The current SkillPilot learning session has less than one hour remaining. Open the private "
+                            + "SkillPilot start surface in the same chat now and use the existing SkillPilot ID "
+                            + "there to create a new learning session. Do not perform a subject-matter SkillPilot "
+                            + "action until the new start message arrives. Only if the surface or secure handoff is "
+                            + "technically unavailable, use a new chat or the safe SkillPilot link. The OAuth "
+                            + "connection remains active.");
             details.put("oauthConnectionValid", true);
             details.put("startUrl", sessionStartUrl);
+            details.put(
+                    "minimumRemainingSeconds",
+                    OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING.toSeconds());
+            details.put("recoveryTool", OPEN_SKILLPILOT_START);
+            details.put("recoveryPurpose", PURPOSE_RENEW_EXISTING);
+            details.put("recoveryCommunicationLocale", recoveryCommunicationLocale(metadata));
+        } else if (code == OpenAiDeV1ErrorCode.SESSION_VERSION_UNAVAILABLE) {
+            instruction = localized(metadata,
+                    "Die vorbereitete Lernsession gehört zu einer nicht mehr verfügbaren Workflow- oder "
+                            + "Curriculumrevision. Öffne die private SkillPilot-Startoberfläche im selben Chat und "
+                            + "erstelle dort mit der vorhandenen SkillPilot-ID eine neue Lernsession. Nutze einen "
+                            + "neuen Chat oder den sicheren SkillPilot-Link nur als technischen Fallback.",
+                    "The prepared learning session belongs to a workflow or curriculum revision that is no longer "
+                            + "available. Open the private SkillPilot start surface in the same chat and use the "
+                            + "existing SkillPilot ID there to create a new learning session. Use a new chat or the "
+                            + "safe SkillPilot link only as a technical fallback.");
+            details.put("oauthConnectionValid", true);
+            details.put("startUrl", sessionStartUrl);
+            details.put("recoveryTool", OPEN_SKILLPILOT_START);
+            details.put("recoveryPurpose", PURPOSE_RENEW_EXISTING);
+            details.put("recoveryCommunicationLocale", recoveryCommunicationLocale(metadata));
         } else if (code == OpenAiDeV1ErrorCode.IDEMPOTENCY_KEY_REUSED) {
             instruction = localized(metadata,
                     "Diese clientRequestId wurde bereits für einen anderen Schreibversuch verwendet. "
@@ -2833,8 +2888,10 @@ public final class OpenAiDeV1McpContractAdapter {
     }
 
     private McpSchema.CallToolResult sessionRequiredResult() {
-        String instruction = "Open SkillPilot and choose Start learning again. The OAuth connection remains active; "
-                + "do not enter a token or SkillPilot ID in the chat.";
+        String instruction = "Open the private SkillPilot start surface in this chat and use the existing SkillPilot "
+                + "ID there to create a new learning session. The OAuth connection remains active; do not enter a "
+                + "token or SkillPilot ID in the chat. Use a new chat or the safe SkillPilot link only if the "
+                + "component or secure same-chat handoff is technically unavailable.";
         return errorResult(
                 OpenAiDeV1ErrorCode.SESSION_REQUIRED,
                 "Your SkillPilot learning session is missing or expired. " + instruction,
@@ -2842,6 +2899,8 @@ public final class OpenAiDeV1McpContractAdapter {
                 Map.of(
                         "oauthConnectionValid", true,
                         "startUrl", sessionStartUrl,
+                        "recoveryTool", OPEN_SKILLPILOT_START,
+                        "recoveryPurpose", PURPOSE_RENEW_EXISTING,
                         "instruction", instruction));
     }
 
@@ -2880,6 +2939,7 @@ public final class OpenAiDeV1McpContractAdapter {
         return switch (code) {
             case STATE_VERSION_CONFLICT, IDEMPOTENCY_KEY_REUSED, STATE_CONFLICT -> "conflict";
             case SESSION_REQUIRED -> "session_required";
+            case SESSION_RENEWAL_REQUIRED -> "session_renewal_required";
             case SESSION_VERSION_UNAVAILABLE -> "session_version_unavailable";
             case AUTHENTICATION_REQUIRED -> "authentication_required";
             case INSUFFICIENT_SCOPE -> "insufficient_scope";
@@ -3191,11 +3251,15 @@ public final class OpenAiDeV1McpContractAdapter {
                                 "ID_REQUIRED",
                                 "MAJOR_UPGRADE_REQUIRED",
                                 "TEMPORARILY_UNAVAILABLE"),
+                        PURPOSE,
+                        enumStringSchema(PURPOSE_START, PURPOSE_RENEW_EXISTING),
+                        COMMUNICATION_LOCALE,
+                        enumStringSchema("de", "en"),
                         "supportedLocales",
                         Map.copyOf(locales),
                         "fallbackUrl",
                         Map.of("const", "https://skillpilot.com/")),
-                List.of("status", "supportedLocales", "fallbackUrl"));
+                List.of("status", PURPOSE, COMMUNICATION_LOCALE, "supportedLocales", "fallbackUrl"));
     }
 
     private static Map<String, Object> issueSkillpilotStartCapabilityOutputSchema() {
@@ -3826,6 +3890,12 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private String communicationLanguage(OpenAiDeV1SessionMetadata metadata) {
         return Locale.forLanguageTag(communicationLocale(metadata)).getLanguage();
+    }
+
+    private String recoveryCommunicationLocale(OpenAiDeV1SessionMetadata metadata) {
+        return metadata != null && OpenAiCoachLocale.isEnglish(metadata.communicationLocale())
+                ? "en"
+                : "de";
     }
 
     private String localized(

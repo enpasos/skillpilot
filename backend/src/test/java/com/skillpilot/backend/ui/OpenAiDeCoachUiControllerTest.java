@@ -43,13 +43,14 @@ class OpenAiDeCoachUiControllerTest {
                 "web",
                 "math",
                 true,
-                new LaunchIntent(LaunchIntentType.ABI26_EXAM, "server-side-goal", null, "GK"));
+                new LaunchIntent(LaunchIntentType.ABI26_EXAM, "server-side-goal", null, "GK"),
+                5_400);
         OpenAiDeLaunchResponse response = new OpenAiDeLaunchResponse(
                 PROMPT,
                 "https://chatgpt.com/",
                 LEARNING_SESSION_ID,
                 Instant.now().plusSeconds(86_400));
-        when(connectionService.createLaunch(SKILLPILOT_ID, request)).thenReturn(response);
+        when(connectionService.createFirstPartyLaunch(SKILLPILOT_ID, request)).thenReturn(response);
 
         OpenAiDeLaunchResponse result = controller.createLaunch(SKILLPILOT_ID, request);
 
@@ -59,7 +60,8 @@ class OpenAiDeCoachUiControllerTest {
                 .doesNotContain(SKILLPILOT_ID)
                 .doesNotContain("promptContext")
                 .doesNotContain("spodb_");
-        verify(connectionService).createLaunch(SKILLPILOT_ID, request);
+        assertThat(request.diagnosticSessionTtlSeconds()).isEqualTo(5_400);
+        verify(connectionService).createFirstPartyLaunch(SKILLPILOT_ID, request);
         verifyNoMoreInteractions(connectionService);
     }
 
@@ -88,11 +90,14 @@ class OpenAiDeCoachUiControllerTest {
                 "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":false}",
                 OpenAiDeCoachStartRequest.class);
         OpenAiDeCoachStartRequest accepted = mapper.readValue(
-                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":true}",
+                "{\"communicationLocale\":\"de\",\"providerEligibilityConfirmed\":true,"
+                        + "\"diagnosticSessionTtlSeconds\":5400}",
                 OpenAiDeCoachStartRequest.class);
 
         assertThat(missing.providerEligibilityConfirmed()).isNull();
+        assertThat(missing.diagnosticSessionTtlSeconds()).isNull();
         assertThat(rejected.providerEligibilityConfirmed()).isFalse();
         assertThat(accepted.providerEligibilityConfirmed()).isTrue();
+        assertThat(accepted.diagnosticSessionTtlSeconds()).isEqualTo(5_400);
     }
 }

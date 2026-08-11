@@ -464,8 +464,10 @@ Toolresultate SOLLEN sowohl strukturierten Inhalt als auch eine knappe Textdarst
 
 Der noch unveröffentlichte V1-Draft bindet drei aktive hashgebundene Ressourcen
 mit dem MIME-Typ `text/html;profile=mcp-app`. Das sessionlose read-only Werkzeug
-`open_skillpilot_start` öffnet seine private Direktstart-Ressource, ohne eine
-Capability oder Lernsession auszustellen. Das read-only Werkzeug
+`open_skillpilot_start` öffnet seine private Direktstart- und
+Same-Chat-Erneuerungsressource, ohne selbst eine Capability oder Lernsession
+auszustellen. Sein verpflichtendes `purpose` unterscheidet den initialen
+`START` vom `RENEW_EXISTING` nach einem Sessionfehler. Das read-only Werkzeug
 `render_skillpilot_goal_visualization` liefert die geprüfte strukturierte
 `goalVisualization` an seine bild-only Ressource. Das read-only Werkzeug
 `start_skillpilot_memory_practice` startet das Karteikartenlernen in einer
@@ -618,6 +620,39 @@ Vertragsversion. **Opak bedeutet jedoch nicht major-neutral:** Der
 Sessiondatensatz ist an genau eine `contractMajor`, `workflowVersion` und
 `stateSchemaVersion` gebunden, und nur der passende Major-Adapter darf ihn
 auflösen.
+
+V1 trennt die absolute 24-Stunden-Laufzeit von einem kürzeren
+Aktionshorizont. Vor jeder **neuen** sessiongebundenen Lese- oder
+Schreiboperation muss `expiresAt >= now + PT1H` gelten. Genau eine Stunde
+Restlaufzeit ist zulässig; bei weniger als einer Stunde endet der Aufruf vor der
+fachlichen Operation mit `SESSION_RENEWAL_REQUIRED`. Fehlende, ungültige oder
+abgelaufene Sessions verwenden `SESSION_REQUIRED`, eine nicht mehr verfügbare
+gepinnte Revision `SESSION_VERSION_UNAVAILABLE`. OAuth bleibt in allen drei
+Fällen unabhängig und wird nicht neu verbunden.
+
+Die eine bewusst enge Ausnahme ist ein exakter idempotenter Replay eines bereits
+committeten Writes. Stimmen Session, Toolname, kanonisch normalisierte Argumente
+und `clientRequestId`
+mit dem gespeicherten Erfolg überein, ist die Session selbst noch nicht
+abgelaufen und sind ihre gepinnten Workflow- und Curriculumversionen weiterhin
+verfügbar, darf dessen gespeichertes Ergebnis auch innerhalb der letzten Stunde
+zurückgegeben werden. Der Replay führt weder die fachliche Operation noch eine
+zweite Mutation aus. Nach tatsächlichem Ablauf oder bei nicht mehr verfügbarer
+gepinnter Version ist auch dieser Replay gesperrt.
+
+`open_skillpilot_start` besitzt dafür bereits im unveröffentlichten V1-Vertrag
+das verpflichtende geschlossene Argumentpaar `purpose` und
+`communicationLocale`. Ohne aktuelle Startnachricht ruft das Modell es genau
+einmal mit `START` sowie `de` für eine deutsche beziehungsweise `en` für eine
+englische Unterhaltung auf. Auf
+`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE` ruft es dasselbe Werkzeug genau einmal mit
+`RENEW_EXISTING` auf und kopiert dafür bevorzugt
+`recoveryCommunicationLocale` aus dem Fehler, andernfalls die Locale der
+letzten Session. Die private Komponente nimmt die vorhandene SkillPilot-ID nur
+im direkten HTTPS-Pfad entgegen und übergibt die neue Startnachricht im selben
+Chat. Erst wenn Komponente oder sicherer Host-Handoff nicht verfügbar sind,
+darf ein neuer Chat oder die First-Party-Website als Fallback dienen.
 
 Für einen normalen App-first-Wechsel gilt deshalb:
 

@@ -94,7 +94,8 @@ class OpenAiDeCoachMcpContractTest {
             "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701",
             "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5",
             "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc",
-            "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c");
+            "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c",
+            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1");
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String AUTHORIZATION_REFERENCE = "oauth-authorization-reference";
@@ -288,7 +289,19 @@ class OpenAiDeCoachMcpContractTest {
                         .tool()
                         .inputSchema());
         assertThat(openStartInputSchema.path("additionalProperties").asBoolean()).isFalse();
-        assertThat(openStartInputSchema.path("properties")).isEmpty();
+        assertThat(openStartInputSchema.path("properties").size()).isEqualTo(2);
+        assertThat(openStartInputSchema.path("required"))
+                .containsExactly(
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE));
+        assertThat(openStartInputSchema.at("/properties/purpose/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE_START),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING));
+        assertThat(openStartInputSchema.at("/properties/communicationLocale/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree("de"),
+                        objectMapper.valueToTree("en"));
         assertThat(openStartInputSchema.toString())
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
@@ -456,14 +469,25 @@ class OpenAiDeCoachMcpContractTest {
     void openStartIsSessionlessAndKeepsLifecycleStatePrivateWithoutIssuingCapability() {
         McpSchema.CallToolResult result = callWithoutLearningSession(
                 OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
-                Map.of());
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.PURPOSE,
+                        OpenAiDeV1McpContractAdapter.PURPOSE_START,
+                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
+                        "de"));
 
         assertThat(result.isError()).isFalse();
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START, result);
         assertThat(result.structuredContent())
                 .isInstanceOfSatisfying(Map.class, structured -> assertThat(structured)
-                        .containsOnlyKeys("status", "supportedLocales", "fallbackUrl")
+                        .containsOnlyKeys(
+                                "status",
+                                "purpose",
+                                "communicationLocale",
+                                "supportedLocales",
+                                "fallbackUrl")
                         .containsEntry("status", "ID_REQUIRED")
+                        .containsEntry("purpose", "START")
+                        .containsEntry("communicationLocale", "de")
                         .containsEntry("supportedLocales", List.of("de", "en"))
                         .containsEntry("fallbackUrl", "https://skillpilot.com/"));
 
@@ -499,6 +523,64 @@ class OpenAiDeCoachMcpContractTest {
                         "spc_");
         verify(identityResolver, never()).resolveSkillpilotId(any(), any());
         verify(identityResolver, never()).requireWriteAccess(any());
+        verify(bootstrapCapabilityService, never()).issueCapability(any(), any());
+    }
+
+    @Test
+    void openStartRequiresClosedPurposeAndLocaleAndEchoesRenewalIntent() {
+        McpSchema.CallToolResult missingPurpose = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                Map.of(OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE, "de"));
+        McpSchema.CallToolResult missingLocale = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                Map.of(OpenAiDeV1McpContractAdapter.PURPOSE, OpenAiDeV1McpContractAdapter.PURPOSE_START));
+        McpSchema.CallToolResult unsupportedPurpose = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.PURPOSE,
+                        "OTHER",
+                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
+                        "de"));
+        McpSchema.CallToolResult unsupportedLocale = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.PURPOSE,
+                        OpenAiDeV1McpContractAdapter.PURPOSE_START,
+                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
+                        "fr"));
+        McpSchema.CallToolResult renewal = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START,
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.PURPOSE,
+                        OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING,
+                        OpenAiDeV1McpContractAdapter.COMMUNICATION_LOCALE,
+                        "en"));
+
+        assertThat(missingPurpose.isError()).isTrue();
+        assertThat(missingPurpose.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
+        assertThat(missingLocale.isError()).isTrue();
+        assertThat(missingLocale.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
+        assertThat(unsupportedPurpose.isError()).isTrue();
+        assertThat(unsupportedPurpose.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
+        assertThat(unsupportedLocale.isError()).isTrue();
+        assertThat(unsupportedLocale.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content).containsEntry("code", "INVALID_INPUT"));
+        assertThat(renewal.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START, renewal);
+        assertThat(renewal.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content)
+                        .containsEntry("status", "ID_REQUIRED")
+                        .containsEntry("purpose", "RENEW_EXISTING")
+                        .containsEntry("communicationLocale", "en"));
+        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
         verify(bootstrapCapabilityService, never()).issueCapability(any(), any());
     }
 
@@ -1574,7 +1656,14 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("activeGoal.exam.hasImage=true")
                 .contains("activeGoal.cockpitUrl verbatim")
                 .contains("do not invent or describe it")
+                .contains("current conversation language")
+                .contains("en and every en-* locale")
                 .contains("reload exactly once");
+
+        assertThat(spec(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START).tool().description())
+                .contains("communicationLocale from the current conversation language")
+                .contains("en or en-* to en")
+                .contains("every other locale to de");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
                 .contains("interactionMode=orientation")
@@ -3125,9 +3214,12 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("code", "SESSION_REQUIRED")
                 .containsEntry("stateChanged", false)
                 .containsEntry("oauthConnectionValid", true)
-                .containsEntry("startUrl", "https://skillpilot.test"));
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
+                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
+                .doesNotContainKey("recoveryCommunicationLocale"));
         assertThat(result.content().toString())
-                .contains("Start learning")
+                .contains("private SkillPilot start surface", "same-chat handoff")
                 .doesNotContain(LEARNER_ID, CONNECTION_SECRET, CHALLENGE);
         verify(coachTools, never()).getLearnerState(any());
         assertThat(operationalEvents("session_required")).isEqualTo(1);
@@ -3142,7 +3234,7 @@ class OpenAiDeCoachMcpContractTest {
                 1,
                 "coach@1.0",
                 "curricula-tree@published",
-                "de",
+                "de-DE",
                 Map.of());
         org.mockito.Mockito.doThrow(new OpenAiDeV1SessionStateException(
                         OpenAiDeV1SessionStateException.Code.SESSION_VERSION_UNAVAILABLE,
@@ -3165,10 +3257,84 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("stateSchemaVersion", 1)
                 .containsEntry("workflowVersion", "coach@1.0")
                 .containsEntry("curriculumRevision", "curricula-tree@published")
-                .containsEntry("startUrl", "https://skillpilot.test"));
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
+                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
+                .containsEntry("recoveryCommunicationLocale", "de")
+                .containsEntry("communicationLocale", "de-DE"));
         assertThat(result.content().toString())
-                .contains("Lernen starten")
+                .contains("private SkillPilot-Startoberfläche", "selben Chat")
                 .doesNotContain("private unavailable revision detail", LEARNER_ID);
+    }
+
+    @Test
+    void expiringSessionReturnsLocalizedComponentFirstRenewalWithoutCallingTheFacade() {
+        OpenAiDeV1SessionMetadata germanMetadata = new OpenAiDeV1SessionMetadata(
+                1,
+                27L,
+                1,
+                "coach@1.0",
+                "curricula-tree@published",
+                "de-DE",
+                Map.of());
+        OpenAiDeV1SessionMetadata englishMetadata = new OpenAiDeV1SessionMetadata(
+                1,
+                28L,
+                1,
+                "coach@1.0",
+                "curricula-tree@published",
+                "en-GB",
+                Map.of());
+        org.mockito.Mockito.doThrow(
+                        new OpenAiDeV1SessionStateException(
+                                OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED,
+                                germanMetadata,
+                                "private expiry detail"),
+                        new OpenAiDeV1SessionStateException(
+                                OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED,
+                                englishMetadata,
+                                "private expiry detail"))
+                .when(sessionCoordinator)
+                .read(any(), any());
+
+        McpSchema.CallToolResult german =
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        McpSchema.CallToolResult english =
+                call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+
+        assertThat(german.isError()).isTrue();
+        assertThat(german.meta()).isNull();
+        assertThat(german.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("status", "session_renewal_required")
+                .containsEntry("code", "SESSION_RENEWAL_REQUIRED")
+                .containsEntry("category", "session")
+                .containsEntry("retryable", false)
+                .containsEntry("stateChanged", false)
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("startUrl", "https://skillpilot.test")
+                .containsEntry("minimumRemainingSeconds", 3600L)
+                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
+                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
+                .containsEntry("recoveryCommunicationLocale", "de")
+                .containsEntry("communicationLocale", "de-DE"));
+        assertThat(german.content().toString())
+                .contains("private SkillPilot-Startoberfläche", "selben Chat", "OAuth-Verbindung bleibt aktiv")
+                .doesNotContain("private expiry detail", LEARNER_ID, CHALLENGE);
+        assertThat(english.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("status", "session_renewal_required")
+                .containsEntry("code", "SESSION_RENEWAL_REQUIRED")
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("minimumRemainingSeconds", 3600L)
+                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
+                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
+                .containsEntry("recoveryCommunicationLocale", "en")
+                .containsEntry("communicationLocale", "en-GB"));
+        assertThat(english.content().toString())
+                .contains("private SkillPilot start surface", "same chat", "OAuth connection remains active")
+                .doesNotContain("private expiry detail", LEARNER_ID, CHALLENGE);
+        verify(coachTools, never()).getLearnerState(any());
+        assertThat(operationalEvents("session_renewal_required")).isEqualTo(2);
+        assertThat(operationalEvents("http_401")).isZero();
     }
 
     @Test
@@ -3181,10 +3347,13 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.meta()).isNull();
         assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
                 .containsEntry("code", "SESSION_REQUIRED")
-                .containsEntry("oauthConnectionValid", true));
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("recoveryTool", OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START)
+                .containsEntry("recoveryPurpose", OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING)
+                .doesNotContainKey("recoveryCommunicationLocale"));
         assertThat(result.content().toString())
                 .contains("Your SkillPilot learning session is missing or expired")
-                .contains("Start learning")
+                .contains("private SkillPilot start surface", "same-chat handoff")
                 .doesNotContain("Lernsession", "Lernen starten");
         verify(identityResolver, never()).resolveSkillpilotId(any(), any());
         verify(coachTools, never()).getLearnerState(any());
@@ -3464,11 +3633,15 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(openOutput.path("required"))
                 .containsExactly(
                         objectMapper.valueToTree("status"),
+                        objectMapper.valueToTree("purpose"),
+                        objectMapper.valueToTree("communicationLocale"),
                         objectMapper.valueToTree("supportedLocales"),
                         objectMapper.valueToTree("fallbackUrl"));
         JsonNode openProperties = openOutput.path("properties");
-        assertThat(openProperties.size()).isEqualTo(3);
+        assertThat(openProperties.size()).isEqualTo(5);
         assertThat(openProperties.has("status")).isTrue();
+        assertThat(openProperties.has("purpose")).isTrue();
+        assertThat(openProperties.has("communicationLocale")).isTrue();
         assertThat(openProperties.has("supportedLocales")).isTrue();
         assertThat(openProperties.has("fallbackUrl")).isTrue();
         assertThat(openProperties.has("contractLine")).isFalse();
@@ -3477,6 +3650,14 @@ class OpenAiDeCoachMcpContractTest {
                         objectMapper.valueToTree("ID_REQUIRED"),
                         objectMapper.valueToTree("MAJOR_UPGRADE_REQUIRED"),
                         objectMapper.valueToTree("TEMPORARILY_UNAVAILABLE"));
+        assertThat(openOutput.at("/properties/purpose/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree("START"),
+                        objectMapper.valueToTree("RENEW_EXISTING"));
+        assertThat(openOutput.at("/properties/communicationLocale/enum"))
+                .containsExactly(
+                        objectMapper.valueToTree("de"),
+                        objectMapper.valueToTree("en"));
         assertThat(openOutput.at("/properties/fallbackUrl/const").asText())
                 .isEqualTo("https://skillpilot.com/");
         assertThat(openOutput.toString())

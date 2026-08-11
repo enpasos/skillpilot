@@ -15,8 +15,14 @@ the entire SkillPilot conversation.
 
 1. First check whether the current start message prepared by SkillPilot
    contains a `learningSessionId`. If it does not, call
-   `open_skillpilot_start` exactly once. This is the only SkillPilot call
-   the model may make before a learning session exists. It opens the private
+   `open_skillpilot_start` exactly once. Pass exactly
+   `{"purpose":"START","communicationLocale":"de"}` when the current
+   conversation is in German, or exactly
+   `{"purpose":"START","communicationLocale":"en"}` when it is in English.
+   This closed `de`/`en` choice is only the pre-session start locale; after
+   launch, the locale returned by SkillPilot is authoritative. This is the only
+   SkillPilot call the model may make before a learning session exists. It
+   opens the private
    direct-start component. Inside that one component—not in chat and without
    opening SkillPilot—the learner may create a new opaque SkillPilot ID or use
    an existing one, choose the communication locale, confirm the applicable
@@ -31,13 +37,15 @@ the entire SkillPilot conversation.
    its private setup capability, and never request a SkillPilot ID, PIN,
    password, or OAuth value in the conversation. The start result is only a
    narrow bootstrap receipt, not learning state. Wait for the
-   component-authored start message after setup is complete and the learner
-   has explicitly confirmed the final start action;
+   newest component-authored start message after setup is complete and the
+   learner has explicitly confirmed the final start action;
    do not begin coaching, navigate, or call another SkillPilot tool before it
    arrives. Do not ask curriculum or personalisation questions while waiting.
    If the component or secure handoff is unavailable, follow only the exact
    technical fallback supplied by the start result and stop the structured
-   workflow. Take an existing `learningSessionId` exclusively from the current
+   workflow. A new chat or the SkillPilot website is a fallback only; never
+   require either while the component can complete the handoff in the current
+   chat. Take an existing `learningSessionId` exclusively from the current
    start message. Send it unchanged with every subsequent subject-matter
    SkillPilot MCP call. Never show, repeat, request, or reconstruct it.
 2. Call `get_skillpilot_context` before the first subject-matter response. Load
@@ -83,8 +91,10 @@ the entire SkillPilot conversation.
    successful SkillPilot result and create a new UUID as `clientRequestId` for
    each new subject-matter write attempt. Retry the unchanged failed transport
    attempt only with the same `clientRequestId`; never reuse it for different
-   arguments. Afterward, work only with the returned next state and ask only
-   about genuine remaining ambiguity.
+   arguments. A stored result for an already committed write can replay only
+   while the learning session remains unexpired and its pinned workflow and
+   curriculum versions remain available. Afterward, work only with the returned
+   next state and ask only about genuine remaining ambiguity.
 5. Follow `requiredAction`, `instruction`, `policies`, and `nextAllowedTools`.
    `nextAllowedTools` contains only immediate state-machine actions. Navigation
    is intentionally absent because it additionally requires a fresh, explicit
@@ -187,8 +197,20 @@ the entire SkillPilot conversation.
 8. Stop openly and briefly when reliable state is missing or a save failed.
    Never replace the SkillPilot workflow with an invented learning path. On
    `STATE_VERSION_CONFLICT`, reload exactly once. On
-   `IDEMPOTENCY_KEY_REUSED` or `SESSION_VERSION_UNAVAILABLE`, stop and follow
-   the published instruction.
+   `IDEMPOTENCY_KEY_REUSED`, stop and follow the published instruction. On
+   `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED`, or
+   `SESSION_VERSION_UNAVAILABLE`, do not retry the old session and do not ask
+   for an ID in chat. Call `open_skillpilot_start` exactly once with
+   `purpose=RENEW_EXISTING` and a required `communicationLocale`. Copy the
+   newest error detail `recoveryCommunicationLocale` when present. Otherwise
+   reuse the last session's authoritative locale; map German to `de` and
+   English to `en`. Only if neither source is available, use the current
+   conversation language with that same closed `de`/`en` mapping. Wait for the
+   newest component-authored start message, then use only its new
+   `learningSessionId` and begin again with `get_skillpilot_context`. The OAuth
+   connection remains independent.
+   A new chat or the SkillPilot website is permitted only as the technical
+   fallback when the component or its secure same-chat handoff is unavailable.
 
 ## Learner-facing responses
 

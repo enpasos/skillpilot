@@ -6,7 +6,8 @@ public final class OpenAiDeV1SessionStateException extends RuntimeException {
     public enum Code {
         STATE_VERSION_CONFLICT,
         IDEMPOTENCY_KEY_REUSED,
-        SESSION_VERSION_UNAVAILABLE
+        SESSION_VERSION_UNAVAILABLE,
+        SESSION_RENEWAL_REQUIRED
     }
 
     private final Code code;

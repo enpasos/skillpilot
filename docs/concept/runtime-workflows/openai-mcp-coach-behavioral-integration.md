@@ -125,10 +125,11 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
 ### 4.2 Appbindung und Lernsession
 
 - OAuth authentisiert die fest konfigurierte App gegenüber SkillPilot.
-- Jeder Klick auf **Lernen starten** erzeugt in genau diesem Augenblick eine
-  neue, absolut 24 Stunden gültige Lernsession für die in der SkillPilot-UI
-  gewählte SkillPilot-ID. Auch dieselbe SkillPilot-ID erhält bei einem neuen
-  Start eine neue Lernsession.
+- Jedes ausdrücklich bestätigte **Lernen starten** in der First-Party-UI oder
+  privaten Startkomponente erzeugt in genau diesem Augenblick eine neue,
+  unabhängige und absolut 24 Stunden gültige Lernsession für die dort gewählte
+  SkillPilot-ID. Auch dieselbe SkillPilot-ID erhält bei einem neuen Start eine
+  neue Lernsession; ältere Sessiondatensätze werden dadurch nicht widerrufen.
 - Die Lernsession ist von OAuth getrennt. OAuth allein wählt keinen Lernenden
   und erzeugt keine Lernsession.
 - SkillPilot trägt die Lernsession automatisch in die Startnachricht ein. Das
@@ -136,6 +137,12 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
   Person muss sie weder kopieren noch verstehen.
 - Eine Lernsession aus einer älteren Startnachricht darf nicht für einen neuen
   Start verwendet werden.
+- Jede neue fachliche Operation benötigt mindestens `PT1H` Restlaufzeit. Exakt
+  `PT1H` ist zulässig, darunter wird vor der Operation erneuert. Ein bereits
+  committeter Write darf mit demselben Toolnamen, kanonisch identischen
+  Argumenten und derselben `clientRequestId` nur bei noch nicht abgelaufener
+  Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion sein
+  gespeichertes Resultat replayen; er mutiert nicht erneut.
 
 ### 4.3 Nutzerkommunikation
 
@@ -217,9 +224,17 @@ Curriculumsmutation.
 
 - Bei einem Konflikt wird der Zustand genau einmal frisch geladen und die
   aktuelle Absicht erneut geprüft.
-- Bei abgelaufener oder fehlender Lernsession wird zurück zu **Lernen starten**
-  geführt; eine neue OAuth-Verbindung oder die Eingabe einer SkillPilot-ID ist
-  nicht erforderlich.
+- Bei `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+  `SESSION_VERSION_UNAVAILABLE` öffnet der Coach genau einmal
+  `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der erforderlichen
+  `communicationLocale`. Vorrangig kopiert er
+  `recoveryCommunicationLocale` aus den neuesten Fehlerdetails, andernfalls die
+  autoritative Locale der letzten Session: Deutsch bleibt `de`, Englisch bleibt
+  `en`. Nur wenn beides fehlt, bildet er die aktuelle Unterhaltungssprache auf
+  dieselben beiden Werte ab. Die SkillPilot-ID wird nur in der privaten
+  Komponente eingegeben; deren neueste Startnachricht setzt den Ablauf im selben
+  Chat fort. Eine neue OAuth-Verbindung ist nicht erforderlich. Neuer Chat oder
+  First-Party-Webstart sind ausschließlich technische Fallbacks.
 - Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler
   stoppt der strukturierte Ablauf transparent.
 - Der Coach darf nach einem Fehler keinen Erfolg vermuten, keinen Zustand
@@ -306,6 +321,8 @@ ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 | --- | --- |
 | `COACH-STATE-001` | Der frisch geladene Backendzustand ist die einzige Zustandsautorität. |
 | `COACH-SESSION-001` | Die aktuelle Lernsession wird unverändert für jeden fachlichen Aufruf verwendet und nie aus OAuth oder älteren Chats abgeleitet. |
+| `COACH-SESSION-002` | Neue Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt `PT1H` ist gültig. Ein gespeicherter Write-Replay mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId` ist nur bei noch nicht abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion zulässig und mutiert nicht erneut. |
+| `COACH-SESSION-003` | Sessionfehler öffnen genau einmal den privaten `RENEW_EXISTING`-Pfad im selben Chat; dessen `communicationLocale=de|en` stammt bevorzugt aus `recoveryCommunicationLocale`, sonst aus der letzten Session. Neuer Chat oder Website sind nur Fallback. |
 | `COACH-INTENT-001` | Natürliche mehrteilige Absichten gelten unabhängig von Reihenfolge und Wortlaut fort. |
 | `COACH-CONTEXT-001` | Vor offenen Fragen wird der bereits bestätigte fachliche Kontext knapp genannt. |
 | `COACH-SCOPE-001` | Lernumfang und Profil werden vollständig aufgelöst, bevor Frontier oder Ziele angeboten werden. |
@@ -371,8 +388,9 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 - **Ausgang:** SkillPilot-ID und Curriculum sind in der UI gewählt.
 - **Aktion:** einmal **Lernen starten**.
-- **Erwartung:** neue 24h-Lernsession, neuer Chat, eingetragene Startnachricht,
-  richtiger Appkontext, erster Context-Read.
+- **Erwartung:** neue unabhängige 24h-Lernsession, aktuelle eingetragene oder von
+  der Komponente im selben Chat übergebene Startnachricht, richtiger Appkontext,
+  erster Context-Read.
 - **Verboten:** zweiter Klick, manuelles Kopieren, allgemeine Lehrplanantwort.
 
 ### GJ-02 – Natürliche Mehrfachangabe
@@ -454,13 +472,17 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 - **Erwartung:** derselbe Backendlernzustand wird mit der noch gültigen
   Lernsession frisch geladen; keine alte Option wird mutiert.
 
-### GJ-08 – Ablauf und Neustart
+### GJ-08 – Aktionshorizont, Ablauf und Erneuerung
 
-- **Ausgang:** abgelaufene oder widerrufene Lernsession.
-- **Erwartung:** klarer Weg zu **Lernen starten**; der nächste UI-Start erzeugt
-  eine neue Session.
-- **Verboten:** Aufforderung zur Eingabe einer SkillPilot-ID, eines Tokens oder
-  zu einer unnötigen OAuth-Neuverbindung.
+- **Ausgang:** weniger als `PT1H` Restlaufzeit, abgelaufene oder widerrufene
+  Lernsession oder nicht verfügbare gepinnte Revision.
+- **Erwartung:** genau ein privater `RENEW_EXISTING`-Start; die Komponente nimmt
+  die vorhandene SkillPilot-ID außerhalb des Chats entgegen, erzeugt eine neue
+  unabhängige Session und übergibt deren Startnachricht im selben Chat. Exakt
+  `PT1H` bleibt für eine neue Operation zulässig.
+- **Verboten:** Aufforderung zur Eingabe einer SkillPilot-ID oder eines Tokens im
+  Chat, unnötige OAuth-Neuverbindung oder erzwungener neuer Chat bei verfügbarer
+  Komponente.
 
 ### GJ-09 – Parallele Lernende und Chats
 

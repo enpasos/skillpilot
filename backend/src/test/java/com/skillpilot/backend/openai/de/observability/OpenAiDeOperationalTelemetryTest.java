@@ -29,6 +29,7 @@ class OpenAiDeOperationalTelemetryTest {
                 "oauth_failure",
                 "refresh_failure",
                 "session_required",
+                "session_renewal_required",
                 "http_401",
                 "http_403",
                 "http_409",

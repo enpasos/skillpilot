@@ -10,9 +10,9 @@ architecture no longer processes that ID.
 
 - language-neutral technical plugin identity `skillpilot-coach-v1`
 - MCP contract major `1`
-- one shared coach plugin for all communication locales supported by the
-  backend; the immutable `communicationLocale` of the learning session is
-  authoritative for every learner-facing response
+- one shared coach plugin for German and English; the immutable
+  `communicationLocale` of the learning session is authoritative for every
+  learner-facing response
 - language-neutral English skill, policy, tool names, schemas, and server
   instructions; runtime payloads remain localized by SkillPilot
 - public MCP endpoint and exact OAuth resource
@@ -40,6 +40,34 @@ architecture no longer processes that ID.
   ID-free, short-lived app-only setup capability, then either creates a new
   SkillPilot ID or sends an explicitly entered existing ID only through the
   fixed SkillPilot HTTPS bootstrap endpoint
+- explicit locale-bound start intent on the sessionless UI opener:
+  `open_skillpilot_start` requires the closed pair `purpose=START|RENEW_EXISTING`
+  and `communicationLocale=de|en`. An initial start uses the current
+  conversation language; after `SESSION_REQUIRED`,
+  `SESSION_RENEWAL_REQUIRED`, or `SESSION_VERSION_UNAVAILABLE`, the one
+  `RENEW_EXISTING` call preferentially copies `recoveryCommunicationLocale`
+  from the error and otherwise reuses the last session locale, so an existing
+  SkillPilot ID can create a fresh same-language session in the same chat
+  without exposing that ID to the model
+- every new session-bound action is accepted only while the session remains
+  valid for at least `PT1H`; exactly one hour remaining is accepted, while less
+  than one hour fails before the domain operation and initiates renewal. A
+  replay of an already committed write with the same tool name, canonically
+  identical arguments, and the same `clientRequestId` remains available while
+  the session itself is not expired and its pinned workflow and curriculum
+  versions remain available, and never executes the mutation again
+- after successful same-chat renewal, only the newest component-authored start
+  message and its fresh learning session remain authoritative. A new chat or
+  the SkillPilot website is used only when the component or secure host handoff
+  is unavailable
+- gated first-party live-test timing without changing the normal session
+  lifetime: `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` may accept
+  one request-local `diagnosticSessionTtlSeconds` value from `3601` through
+  `86400` only when
+  `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true` and never
+  above the normal `PT24H` lifetime. Omitting the field on the next request
+  automatically restores `PT24H`; the private component bootstrap rejects the
+  field and remains `PT24H`
 - the same direct-start component completes ID recovery acknowledgement,
   curriculum selection, and personalisation through the existing ID-free
   session tools before it submits the short start message to the host; the

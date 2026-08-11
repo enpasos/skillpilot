@@ -17,6 +17,7 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.List;
@@ -63,6 +64,8 @@ public class OpenAiDeCoachConnectionService {
             Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final String WRITES_DISABLED_MESSAGE =
             "OpenAI Coach state changes are temporarily disabled.";
+    private static final int MINIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS = 3_601;
+    private static final int MAXIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS = 86_400;
     private static final String ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
     private static final String ABI26_LK_GOAL_ID = "68a262fc-43f4-5d23-af30-853870bfd45b";
 
@@ -92,13 +95,30 @@ public class OpenAiDeCoachConnectionService {
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
     }
 
-    /**
-     * Starts a new learner session independently of the OAuth app connection.
-     * Every invocation creates exactly one fresh 24-hour learning-session ID.
-     */
+    /** Starts one normal 24-hour session for internal callers such as bootstrap. */
     @Transactional
     public OpenAiDeLaunchResponse createLaunch(String skillpilotId, OpenAiDeCoachStartRequest request) {
+        return createLaunch(skillpilotId, request, false);
+    }
+
+    /**
+     * Starts one session through the first-party UI boundary. A gated diagnostic
+     * request may shorten only this session; absent input keeps the exact normal
+     * 24-hour lifetime.
+     */
+    @Transactional
+    public OpenAiDeLaunchResponse createFirstPartyLaunch(
+            String skillpilotId,
+            OpenAiDeCoachStartRequest request) {
+        return createLaunch(skillpilotId, request, true);
+    }
+
+    private OpenAiDeLaunchResponse createLaunch(
+            String skillpilotId,
+            OpenAiDeCoachStartRequest request,
+            boolean firstPartyLaunch) {
         requireProviderEligibilityConfirmation(request);
+        Duration learningSessionTtl = learningSessionTtl(request, firstPartyLaunch);
         NormalizedLaunch launchRequest = normalizeLaunch(request);
         Learner learner = requireLearnerForUpdate(skillpilotId);
         Instant now = Instant.now();
@@ -106,7 +126,8 @@ public class OpenAiDeCoachConnectionService {
         IssuedLearningSession learningSession = issueLearningSession(
                 learner,
                 launchRequest.communicationLocale(),
-                now);
+                now,
+                learningSessionTtl);
 
         return new OpenAiDeLaunchResponse(
                 launchPrompt(launchRequest, learningSession.id()),
@@ -209,13 +230,14 @@ public class OpenAiDeCoachConnectionService {
     private IssuedLearningSession issueLearningSession(
             Learner learner,
             String communicationLocale,
-            Instant startedAt) {
+            Instant startedAt,
+            Duration learningSessionTtl) {
         String learningSessionId = generateSecret("sps_");
         OpenAiDeLearningSession learningSession = new OpenAiDeLearningSession();
         learningSession.setTokenHash(hashSecretValue(learningSessionId));
         learningSession.setLearner(learner);
         learningSession.setStartedAt(startedAt);
-        Instant expiresAt = startedAt.plus(properties.getLearningSessionTtl());
+        Instant expiresAt = startedAt.plus(learningSessionTtl);
         learningSession.setExpiresAt(expiresAt);
         learningSession.setContractMajor(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
         // Retain the revision visible when the session was issued for
@@ -229,6 +251,36 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setCommunicationLocale(communicationLocale);
         learningSessionRepository.save(learningSession);
         return new IssuedLearningSession(learningSessionId, expiresAt);
+    }
+
+    private Duration learningSessionTtl(
+            OpenAiDeCoachStartRequest request,
+            boolean firstPartyLaunch) {
+        Integer requestedSeconds = request == null
+                ? null
+                : request.diagnosticSessionTtlSeconds();
+        Duration normalTtl = properties.getLearningSessionTtl();
+        if (requestedSeconds == null) {
+            return normalTtl;
+        }
+        if (!firstPartyLaunch) {
+            throw badLaunchRequest(
+                    "diagnosticSessionTtlSeconds is allowed only on the first-party UI launch.");
+        }
+        if (!properties.isDiagnosticSessionTtlEnabled()) {
+            throw badLaunchRequest("diagnosticSessionTtlSeconds is disabled on this server.");
+        }
+        if (requestedSeconds < MINIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS
+                || requestedSeconds > MAXIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS) {
+            throw badLaunchRequest(
+                    "diagnosticSessionTtlSeconds must be between 3601 and 86400.");
+        }
+        Duration requestedTtl = Duration.ofSeconds(requestedSeconds);
+        if (normalTtl == null || requestedTtl.compareTo(normalTtl) > 0) {
+            throw badLaunchRequest(
+                    "diagnosticSessionTtlSeconds must not exceed the normal session lifetime.");
+        }
+        return requestedTtl;
     }
 
     private void validateVerifiedRecallGoal(String skillpilotId, String goalId) {

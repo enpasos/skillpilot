@@ -36,6 +36,8 @@ const contractLine = {
 };
 
 const openStructuredContent = {
+  purpose: "START",
+  communicationLocale: "de",
   status: "ID_REQUIRED",
   supportedLocales: ["de", "en"],
   fallbackUrl: "https://skillpilot.com/"
@@ -108,6 +110,17 @@ test("public open result is closed, ID_REQUIRED, and contains no capability", as
     },
     openToolResult({ fallbackUrl: "https://skillpilot.com/start" }),
     openToolResult({ supportedLocales: ["en", "de"] }),
+    openToolResult({ purpose: "UNKNOWN" }),
+    openToolResult({ communicationLocale: "fr" }),
+    {
+      ...openToolResult(),
+      structuredContent: {
+        purpose: "START",
+        status: "ID_REQUIRED",
+        supportedLocales: ["de", "en"],
+        fallbackUrl: "https://skillpilot.com/"
+      }
+    },
     openToolResult({}, {
       contractLine: { ...contractLine, newSessionPolicy: "BLOCK" }
     }),
@@ -115,6 +128,35 @@ test("public open result is closed, ID_REQUIRED, and contains no capability", as
   ]) {
     assert.equal(skillPilotStartOpenFromToolResult(result), undefined);
   }
+});
+
+test("public open result requires and preserves the start purpose", async () => {
+  const { skillPilotStartOpenFromToolResult } = await loadStartContract();
+
+  assert.equal(
+    skillPilotStartOpenFromToolResult(openToolResult()).purpose,
+    "START"
+  );
+  assert.equal(
+    skillPilotStartOpenFromToolResult(
+      openToolResult({ purpose: "RENEW_EXISTING" })
+    ).purpose,
+    "RENEW_EXISTING"
+  );
+});
+
+test("public open result requires the communication locale and uses it as the default", async () => {
+  const { skillPilotStartOpenFromToolResult } = await loadStartContract();
+
+  const english = skillPilotStartOpenFromToolResult(
+    openToolResult({ communicationLocale: "en" })
+  );
+  assert.equal(english.communicationLocale, "en");
+  assert.equal(english.defaultLocale, "en");
+
+  const missingLocale = openToolResult();
+  delete missingLocale.structuredContent.communicationLocale;
+  assert.equal(skillPilotStartOpenFromToolResult(missingLocale), undefined);
 });
 
 test("lifecycle projection allows only closed, allowlisted combinations and URLs", async () => {

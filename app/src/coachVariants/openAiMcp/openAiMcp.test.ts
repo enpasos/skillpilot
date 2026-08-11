@@ -136,6 +136,30 @@ assertEqual(
 )
 assert(!String(launchCalls[0]?.init?.body).includes('promptContext'), 'does not transmit free-form context')
 
+const diagnosticLaunchCalls: Array<{ url: string; init: RequestInit | undefined }> = []
+await requestOpenAiMcpStart({
+  skillpilotId: 'learner-42',
+  language: 'de',
+  providerEligibilityConfirmed: true,
+  diagnosticSessionTtlSeconds: 5_400,
+}, {
+  fetchImpl: async (input, init) => {
+    diagnosticLaunchCalls.push({ url: String(input), init })
+    return new Response(JSON.stringify({
+      prompt: compactCurrentUnitPrompt,
+      webUrl: 'https://chatgpt.com/',
+      learningSessionId: LEARNING_SESSION_A,
+      expiresAt: '2026-07-22T20:00:00Z',
+    }), { status: 200, headers: { 'Content-Type': 'application/json' } })
+  },
+})
+assertEqual(diagnosticLaunchCalls.length, 1, 'performs one diagnostic launch request')
+assertEqual(
+  JSON.parse(String(diagnosticLaunchCalls[0]?.init?.body)).diagnosticSessionTtlSeconds,
+  5_400,
+  'transmits the one-request diagnostic session TTL',
+)
+
 const chatStart: CoachChatStart = {
   variant: 'openai-mcp',
   language: 'de',

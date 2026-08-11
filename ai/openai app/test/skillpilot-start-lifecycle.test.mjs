@@ -236,12 +236,16 @@ const chatGptCompatibilityLifecycleSource =
   await buildChatGptCompatibilityLifecycleSource();
 
 function openResult({
+  purpose = "START",
+  communicationLocale = "de",
   status = "ID_REQUIRED",
   newSessionPolicy = "ALLOW",
   successor = null
 } = {}) {
   return {
     structuredContent: {
+      purpose,
+      communicationLocale,
       status,
       supportedLocales: ["de", "en"],
       fallbackUrl: "https://skillpilot.com/"
@@ -682,6 +686,86 @@ test("duplicate initial result preserves existing-ID and English selections", as
   assert.equal(findInput(harness.rootElement, "radio", "de").checked, false);
   assert.equal(findInput(harness.rootElement, "text").value, skillpilotId);
   assert.equal(findInput(harness.rootElement, "checkbox").checked, true);
+});
+
+test("START defaults the UI to its communication locale and keeps both identity modes", async () => {
+  const harness = createHarness({
+    initial: openResult({ communicationLocale: "en" })
+  });
+  await flushPromises();
+
+  assert.ok(findByText(harness.rootElement, "Start a learning session"));
+  assert.equal(findInput(harness.rootElement, "radio", "en").checked, true);
+  assert.equal(findInput(harness.rootElement, "radio", "de").checked, false);
+  assert.equal(findInput(harness.rootElement, "radio", "CREATE").checked, true);
+  assert.equal(findInput(harness.rootElement, "radio", "EXISTING").checked, false);
+});
+
+test("English renewal defaults to English, forces an existing ID, and keeps the same-chat handoff", async () => {
+  const harness = createHarness({
+    initial: openResult({
+      purpose: "RENEW_EXISTING",
+      communicationLocale: "en"
+    })
+  });
+  harness.setFetchHandler((url) => Promise.resolve(
+    jsonResponse(launchResult("en"), url)
+  ));
+  harness.setSetupHandler(() => Promise.resolve(setupResult({ locale: "en" })));
+  await flushPromises();
+
+  assert.ok(findByText(harness.rootElement, "Renew the learning session"));
+  assert.ok(findByText(
+    harness.rootElement,
+    "Use your existing SkillPilot ID to open a new learning session in this chat. Your learning progress is preserved."
+  ));
+  assert.equal(findInput(harness.rootElement, "radio", "CREATE"), undefined);
+  const existing = findInput(harness.rootElement, "radio", "EXISTING");
+  assert.ok(existing);
+  assert.equal(existing.checked, true);
+  assert.equal(existing.disabled, true);
+
+  const english = findInput(harness.rootElement, "radio", "en");
+  assert.ok(english);
+  assert.equal(english.checked, true);
+  assert.equal(findInput(harness.rootElement, "radio", "de").checked, false);
+  assert.equal(findInput(harness.rootElement, "radio", "CREATE"), undefined);
+
+  const idInput = findInput(harness.rootElement, "text");
+  assert.ok(idInput);
+  idInput.value = skillpilotId;
+  idInput.dispatch("input");
+  const eligibility = findInput(harness.rootElement, "checkbox");
+  assert.ok(eligibility);
+  eligibility.checked = true;
+  eligibility.dispatch("change");
+  findByText(harness.rootElement, "Renew learning session").dispatch("click");
+  await flushPromises();
+
+  assert.equal(harness.context.__fetchCalls.length, 1);
+  assert.deepEqual(
+    JSON.parse(harness.context.__fetchCalls[0].init.body),
+    {
+      schemaVersion: 1,
+      identityMode: "EXISTING",
+      skillpilotId,
+      communicationLocale: "en",
+      launchIntent: { type: "CURRENT_UNIT" },
+      providerNoticeVersion: "openai-provider-eligibility-v2",
+      clientRequestId: requestId
+    }
+  );
+  assert.ok(findByText(harness.rootElement, "Review renewal"));
+  assert.ok(findByText(harness.rootElement, "Use new session in chat"));
+
+  findByText(harness.rootElement, "Use new session in chat").dispatch("click");
+  await flushPromises();
+
+  assert.deepEqual(harness.context.__messages, [
+    "Use SkillPilot Coach v1 and continue.\n"
+      + `learningSessionId: ${learningSessionId}`
+  ]);
+  assertAcceptedWidgetClosed(harness);
 });
 
 test("curriculum selection matches the WebGUI category and quality filters", async () => {

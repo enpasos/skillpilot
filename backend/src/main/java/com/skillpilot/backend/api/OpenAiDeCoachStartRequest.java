@@ -11,13 +11,34 @@ package com.skillpilot.backend.api;
  * confirmation must remain distinguishable from an affirmative confirmation.
  * It is checked before the service reads or mutates learner state and is not
  * persisted as learner data.</p>
+ *
+ * <p>{@code diagnosticSessionTtlSeconds} is a gated, first-party live-test
+ * input. It affects only the learning session created by this request and is
+ * rejected unless the server has explicitly enabled the diagnostic.</p>
  */
 public record OpenAiDeCoachStartRequest(
         String communicationLocale,
         String client,
         String selectedCurriculum,
         Boolean providerEligibilityConfirmed,
-        LaunchIntent launchIntent) {
+        LaunchIntent launchIntent,
+        Integer diagnosticSessionTtlSeconds) {
+
+    /** Compatibility constructor for ordinary and private-bootstrap launches. */
+    public OpenAiDeCoachStartRequest(
+            String communicationLocale,
+            String client,
+            String selectedCurriculum,
+            Boolean providerEligibilityConfirmed,
+            LaunchIntent launchIntent) {
+        this(
+                communicationLocale,
+                client,
+                selectedCurriculum,
+                providerEligibilityConfirmed,
+                launchIntent,
+                null);
+    }
 
     public enum LaunchIntentType {
         CURRENT_UNIT,

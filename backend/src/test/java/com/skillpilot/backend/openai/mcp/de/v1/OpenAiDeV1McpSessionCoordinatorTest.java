@@ -14,8 +14,12 @@ import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeIdempotencyRecordRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
+import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -31,11 +35,13 @@ class OpenAiDeV1McpSessionCoordinatorTest {
     private static final String TOOL = "set_skillpilot_scope";
     private static final String CURRICULUM_REVISION =
             "curricula-sha256@" + "a".repeat(64);
+    private static final Instant NOW = Instant.parse("2026-08-11T10:00:00Z");
 
     private Learner learner;
     private OpenAiDeLearningSession session;
     private AtomicReference<OpenAiDeLearningSession> resolvedSession;
     private AtomicReference<OpenAiDeIdempotencyRecord> persistedRequest;
+    private OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider;
     private OpenAiDeV1McpSessionCoordinator coordinator;
 
     @BeforeEach
@@ -45,8 +51,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         LearnerRepository learners = mock(LearnerRepository.class);
         OpenAiDeIdempotencyRecordRepository requests =
                 mock(OpenAiDeIdempotencyRecordRepository.class);
-        OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider =
-                mock(OpenAiDeCurriculumRevisionProvider.class);
+        curriculumRevisionProvider = mock(OpenAiDeCurriculumRevisionProvider.class);
         OpenAiDeProperties properties = new OpenAiDeProperties();
         when(curriculumRevisionProvider.currentRevision()).thenReturn(CURRICULUM_REVISION);
 
@@ -55,8 +60,8 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         session = new OpenAiDeLearningSession();
         session.setTokenHash("server-side-token-hash");
         session.setLearner(learner);
-        session.setStartedAt(Instant.now().minusSeconds(5));
-        session.setExpiresAt(Instant.now().plusSeconds(300));
+        session.setStartedAt(NOW.minusSeconds(5));
+        session.setExpiresAt(NOW.plus(Duration.ofHours(2)));
         session.setContractMajor(OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
         session.setStateVersion(0L);
         session.setStateSchemaVersion(OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
@@ -89,7 +94,8 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                 requests,
                 properties,
                 curriculumRevisionProvider,
-                "test-signing-secret");
+                "test-signing-secret",
+                Clock.fixed(NOW, ZoneOffset.UTC));
     }
 
     @Test
@@ -112,6 +118,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                     calls.incrementAndGet();
                     return success(metadata);
                 });
+        session.setExpiresAt(NOW.plus(Duration.ofMinutes(59)));
         McpSchema.CallToolResult replay = coordinator.write(
                 SESSION_ID,
                 TOOL,
@@ -129,6 +136,97 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         assertThat(replay.structuredContent().toString()).contains("stateVersion=1");
         assertThat(replay.structuredContent().toString())
                 .doesNotContain(SESSION_ID, "private-learner-id");
+    }
+
+    @Test
+    void readAcceptsExactlyTheMinimumRemainingLifetime() {
+        session.setExpiresAt(NOW.plus(OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING));
+
+        McpSchema.CallToolResult result = coordinator.read(SESSION_ID, this::success);
+
+        assertThat(result.isError()).isFalse();
+    }
+
+    @Test
+    void readBelowTheMinimumRemainingLifetimeStopsBeforeTheOperation() {
+        session.setExpiresAt(NOW.plus(
+                OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING.minusNanos(1)));
+        AtomicInteger calls = new AtomicInteger();
+
+        assertThatThrownBy(() -> coordinator.read(SESSION_ID, metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED));
+        assertThat(calls).hasValue(0);
+    }
+
+    @Test
+    void newWriteBelowTheMinimumRemainingLifetimeStopsBeforeTheMutation() {
+        session.setExpiresAt(NOW.plus(Duration.ofMinutes(59)));
+        AtomicInteger calls = new AtomicInteger();
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        UUID.randomUUID().toString(),
+                        Map.of("selection", "new"),
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED));
+        assertThat(calls).hasValue(0);
+        assertThat(persistedRequest).hasValue(null);
+        assertThat(learner.getCoachStateRevision()).isZero();
+    }
+
+    @Test
+    void actuallyExpiredSessionStillRequiresANewSession() {
+        session.setExpiresAt(NOW);
+
+        assertThatThrownBy(() -> coordinator.read(SESSION_ID, this::success))
+                .isInstanceOf(OpenAiDeLearningSessionRequiredException.class);
+    }
+
+    @Test
+    void actuallyExpiredSessionRejectsEvenAnExactCompletedWriteReplay() {
+        String requestId = UUID.randomUUID().toString();
+        Map<String, Object> arguments = Map.of("selection", "committed");
+        AtomicInteger calls = new AtomicInteger();
+        coordinator.write(
+                SESSION_ID,
+                TOOL,
+                0L,
+                requestId,
+                arguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+        session.setExpiresAt(NOW);
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        requestId,
+                        arguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOf(OpenAiDeLearningSessionRequiredException.class);
+        assertThat(calls).hasValue(1);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(1L);
+        assertThat(session.getStateVersion()).isEqualTo(1L);
     }
 
     @Test
@@ -236,6 +334,62 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                         OpenAiDeV1SessionStateException.class,
                         exception -> assertThat(exception.code())
                                 .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_VERSION_UNAVAILABLE));
+    }
+
+    @Test
+    void unavailablePinnedRevisionRejectsExactCompletedWriteReplayWithoutAnotherOperation() {
+        String requestId = UUID.randomUUID().toString();
+        Map<String, Object> arguments = Map.of("selection", "committed");
+        AtomicInteger calls = new AtomicInteger();
+        coordinator.write(
+                SESSION_ID,
+                TOOL,
+                0L,
+                requestId,
+                arguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+        String availableWorkflowVersion = session.getWorkflowVersion();
+        session.setWorkflowVersion("coach@unavailable");
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        requestId,
+                        arguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_VERSION_UNAVAILABLE));
+
+        session.setWorkflowVersion(availableWorkflowVersion);
+        when(curriculumRevisionProvider.currentRevision())
+                .thenReturn("curricula-sha256@" + "b".repeat(64));
+
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        TOOL,
+                        0L,
+                        requestId,
+                        arguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.SESSION_VERSION_UNAVAILABLE));
+        assertThat(calls).hasValue(1);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(1L);
+        assertThat(session.getStateVersion()).isEqualTo(1L);
     }
 
     private OpenAiDeLearningSession sessionForSameLearner(String tokenHash) {

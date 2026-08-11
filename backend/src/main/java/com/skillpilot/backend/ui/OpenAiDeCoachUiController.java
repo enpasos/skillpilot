@@ -27,6 +27,6 @@ public class OpenAiDeCoachUiController {
     public OpenAiDeLaunchResponse createLaunch(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) OpenAiDeCoachStartRequest request) {
-        return connectionService.createLaunch(skillpilotId, request);
+        return connectionService.createFirstPartyLaunch(skillpilotId, request);
     }
 }

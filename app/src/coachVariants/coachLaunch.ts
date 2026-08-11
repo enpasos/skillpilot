@@ -20,6 +20,8 @@ import { resolveRuntimeCoachVariant } from './versionSelector'
 
 export type CoachChatStartInput = LegacyChatStartInput & {
   launchIntent?: OpenAiMcpLaunchIntent
+  /** Gated first-party live-test override for this launch only. */
+  diagnosticSessionTtlSeconds?: number
   /** Test/host override. Browser starts otherwise ask once per tab session. */
   providerEligibilityConfirmed?: boolean
 }

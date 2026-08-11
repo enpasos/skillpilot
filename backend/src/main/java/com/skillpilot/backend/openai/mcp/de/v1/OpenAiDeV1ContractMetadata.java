@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.mcp.de.v1;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -71,7 +72,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH =
             "/openai/skillpilot-memory-card-practice-v1.html";
     public static final String SKILLPILOT_START_ARTIFACT_SHA256 =
-            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1";
+            "4bedfcc1f5de64bde6c8cf9f81879d0c80f54ec740de105357fa929be6cf7f85";
     public static final String SKILLPILOT_START_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + SKILLPILOT_START_ARTIFACT_SHA256
@@ -91,7 +92,8 @@ public final class OpenAiDeV1ContractMetadata {
             "6bd0c61447830e8515c300d10be727d63ae2e7c4ce3cf38ae49730fb43dde701",
             "a496abebeb55df2b9d601f6a87029c93ca4f51f46807d59057240b7ec6ff40a5",
             "5226d4b800899d58273abd9ecaf7c968692ba73f46d965e4f4e29c3e54f5cfbc",
-            "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c");
+            "f87d979e5b762b4bc03448b5dad34740a61919d88fe43e3093ddca33bfcda90c",
+            "28236257e83739317f342624492944a82a96aef1f0bd60dca63f388fac87b9f1");
     /**
      * Every content-addressed visualization resource previously advertised by
      * Coach V1, ordered oldest first and retained byte-for-byte for connector
@@ -114,6 +116,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final int STATE_SCHEMA_VERSION = 1;
     public static final String WORKFLOW_VERSION = "coach@1.0";
     public static final String DEFAULT_SERVER_BUILD = "dev";
+    public static final Duration MINIMUM_ACTION_SESSION_REMAINING = Duration.ofHours(1);
 
     public static String goalVisualizationResourceUri(String artifactSha256) {
         return "ui://skillpilot/coach/v1/sha256-"

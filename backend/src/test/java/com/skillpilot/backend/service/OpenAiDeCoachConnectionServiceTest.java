@@ -52,6 +52,7 @@ class OpenAiDeCoachConnectionServiceTest {
     private LearnerRepository learners;
     private LearnerService learnerService;
     private LandscapeService landscapeService;
+    private OpenAiDeProperties properties;
     private OpenAiDeCoachConnectionService service;
     private Learner learner;
 
@@ -66,7 +67,7 @@ class OpenAiDeCoachConnectionServiceTest {
         when(curriculumRevisionProvider.currentRevision())
                 .thenReturn("curricula-sha256@" + "a".repeat(64));
 
-        OpenAiDeProperties properties = new OpenAiDeProperties();
+        properties = new OpenAiDeProperties();
         properties.setWritesEnabled(true);
         properties.setChatgptUrl("https://chatgpt.com/");
         properties.setLearningSessionTtl(Duration.ofHours(24));
@@ -123,6 +124,107 @@ class OpenAiDeCoachConnectionServiceTest {
         assertThat(sessions.get(1).getTokenHash()).isNotEqualTo(second.learningSessionId());
         assertThat(first.expiresAt()).isEqualTo(sessions.get(0).getExpiresAt());
         assertThat(second.expiresAt()).isEqualTo(sessions.get(1).getExpiresAt());
+    }
+
+    @Test
+    void gatedFirstPartyDiagnosticTtlAppliesOnceAndTheNextLaunchReturnsToTwentyFourHours() {
+        properties.setDiagnosticSessionTtlEnabled(true);
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        var diagnostic = service.createFirstPartyLaunch(
+                SKILLPILOT_ID,
+                currentUnitRequest(5_400));
+        var normal = service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest());
+
+        verify(learningSessions, org.mockito.Mockito.times(2)).save(persisted.capture());
+        List<OpenAiDeLearningSession> sessions = persisted.getAllValues();
+        assertThat(Duration.between(sessions.get(0).getStartedAt(), sessions.get(0).getExpiresAt()))
+                .isEqualTo(Duration.ofMinutes(90));
+        assertThat(Duration.between(sessions.get(1).getStartedAt(), sessions.get(1).getExpiresAt()))
+                .isEqualTo(Duration.ofHours(24));
+        assertThat(diagnostic.expiresAt()).isEqualTo(sessions.get(0).getExpiresAt());
+        assertThat(normal.expiresAt()).isEqualTo(sessions.get(1).getExpiresAt());
+        assertThat(properties.getLearningSessionTtl()).isEqualTo(Duration.ofHours(24));
+    }
+
+    @Test
+    void firstPartyDiagnosticTtlFailsClosedUnlessExplicitlyEnabled() {
+        assertThat(properties.isDiagnosticSessionTtlEnabled()).isFalse();
+
+        assertThatExceptionOfType(ResponseStatusException.class)
+                .isThrownBy(() -> service.createFirstPartyLaunch(
+                        SKILLPILOT_ID,
+                        currentUnitRequest(5_400)))
+                .satisfies(exception -> {
+                    assertThat(exception.getStatusCode().value()).isEqualTo(400);
+                    assertThat(exception.getReason()).contains("disabled");
+                });
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
+    }
+
+    @Test
+    void diagnosticTtlRejectsOneHourOrLessAndAnythingBeyondTwentyFourHours() {
+        properties.setDiagnosticSessionTtlEnabled(true);
+
+        for (int invalidSeconds : List.of(3_600, 86_401)) {
+            assertThatExceptionOfType(ResponseStatusException.class)
+                    .isThrownBy(() -> service.createFirstPartyLaunch(
+                            SKILLPILOT_ID,
+                            currentUnitRequest(invalidSeconds)))
+                    .satisfies(exception -> assertThat(exception.getStatusCode().value())
+                            .isEqualTo(400));
+        }
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
+    }
+
+    @Test
+    void diagnosticTtlAcceptsTheFirstSecondBeyondTheRenewalWindow() {
+        properties.setDiagnosticSessionTtlEnabled(true);
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        service.createFirstPartyLaunch(SKILLPILOT_ID, currentUnitRequest(3_601));
+
+        verify(learningSessions).save(persisted.capture());
+        assertThat(Duration.between(
+                persisted.getValue().getStartedAt(),
+                persisted.getValue().getExpiresAt()))
+                .isEqualTo(Duration.ofSeconds(3_601));
+    }
+
+    @Test
+    void diagnosticTtlAcceptsTheNormalTwentyFourHourBoundaryExactly() {
+        properties.setDiagnosticSessionTtlEnabled(true);
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        var response = service.createFirstPartyLaunch(
+                SKILLPILOT_ID,
+                currentUnitRequest(86_400));
+
+        verify(learningSessions).save(persisted.capture());
+        OpenAiDeLearningSession session = persisted.getValue();
+        assertThat(properties.getLearningSessionTtl()).isEqualTo(Duration.ofHours(24));
+        assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
+                .isEqualTo(Duration.ofHours(24));
+        assertThat(response.expiresAt()).isEqualTo(session.getExpiresAt());
+    }
+
+    @Test
+    void internalBootstrapEntryPointNeverAcceptsTheDiagnosticTtl() {
+        properties.setDiagnosticSessionTtlEnabled(true);
+
+        assertThatExceptionOfType(ResponseStatusException.class)
+                .isThrownBy(() -> service.createLaunch(SKILLPILOT_ID, currentUnitRequest(5_400)))
+                .satisfies(exception -> {
+                    assertThat(exception.getStatusCode().value()).isEqualTo(400);
+                    assertThat(exception.getReason()).contains("first-party UI launch");
+                });
+
+        verify(learningSessions, org.mockito.Mockito.never()).save(any());
     }
 
     @Test
@@ -272,12 +374,17 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     private OpenAiDeCoachStartRequest currentUnitRequest() {
+        return currentUnitRequest(null);
+    }
+
+    private OpenAiDeCoachStartRequest currentUnitRequest(Integer diagnosticSessionTtlSeconds) {
         return new OpenAiDeCoachStartRequest(
                 "de",
                 "web",
                 "math",
                 true,
-                new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null));
+                new LaunchIntent(LaunchIntentType.CURRENT_UNIT, null, null, null),
+                diagnosticSessionTtlSeconds);
     }
 
     private static Stream<Arguments> launchPromptCases() {

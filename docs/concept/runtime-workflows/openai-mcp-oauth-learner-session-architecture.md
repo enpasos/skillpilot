@@ -20,10 +20,11 @@ SkillPilot verwendet zwei bewusst voneinander getrennte Berechtigungen:
    SkillPilot-Authorization-Server konfiguriert. Am Token-Endpunkt weist die
    App den Besitz des Secrets mit `client_secret_basic` nach.
 2. **Eine temporäre Lernsession wählt den Lernenden und die Kommunikationssprache.**
-   Erst ein ausdrücklicher Klick auf **Lernen starten** in SkillPilot erzeugt
-   eine neue, exakt 24 Stunden gültige `learningSessionId`. Sie verweist
-   ausschließlich im SkillPilot-Backend auf die gewählte SkillPilot-ID und die
-   beim Start festgelegte `communicationLocale`.
+   Erst ein ausdrücklich bestätigtes **Lernen starten** in der
+   First-Party-Oberfläche oder privaten Direct-Start-Komponente erzeugt eine
+   neue `learningSessionId`. Normale Starts sind exakt 24 Stunden gültig. Die
+   Session verweist ausschließlich im SkillPilot-Backend auf die gewählte
+   SkillPilot-ID und die beim Start festgelegte `communicationLocale`.
 
 Beide Nachweise sind für einen fachlichen MCP-Aufruf erforderlich:
 
@@ -84,7 +85,53 @@ Jeder Startrequest erzeugt eine andere Lernsession-ID:
 - unabhängig davon, ob bereits eine OAuth-Verbindung besteht.
 
 Mehrere Sessions dürfen parallel gültig sein. Ihre Gültigkeit wird nicht durch
-Benutzung verlängert und endet exakt 24 Stunden nach ihrer Startzeit.
+Benutzung verlängert. Normale Sessions und alle privaten Component-Sessions
+enden exakt 24 Stunden nach ihrer Startzeit; nur der nachfolgend definierte,
+requestlokale First-Party-Diagnosefall darf eine einzelne Session verkürzen.
+
+### 3.2 Erneuerung im bestehenden Chat
+
+Ohne aktuelle Startnachricht öffnet das Modell die private Komponente genau
+einmal mit `open_skillpilot_start` und dem geschlossenen Argumentpaar
+`purpose=START`, `communicationLocale=de|en`. Es wählt `de` für eine deutsche
+und `en` für eine englische Unterhaltung. Liefert ein
+sessiongebundenes Tool `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE`, wird die alte Session nicht erneut verwendet.
+Das Modell öffnet dieselbe Komponente genau einmal mit
+`purpose=RENEW_EXISTING` und einer erforderlichen `communicationLocale`. Dafür
+kopiert es bevorzugt `recoveryCommunicationLocale` aus den Fehlerdetails,
+andernfalls die autoritative Locale der letzten Session (`de` für Deutsch, `en`
+für Englisch). Nur wenn keine dieser Quellen verfügbar ist, gilt wieder die
+aktuelle Unterhaltungssprache. Nur in der Komponente gibt die lernende Person
+ihre vorhandene SkillPilot-ID ein; sie geht direkt an den geschützten
+HTTPS-Bootstrap und niemals in Chat oder MCP-Argumente. Die Komponente übergibt
+die neue Startnachricht im selben Chat. Ein neuer Chat oder der
+First-Party-Webstart ist nur Fallback, wenn Komponente oder sicherer
+Host-Handoff nicht verfügbar sind.
+
+### 3.3 Gegatete First-Party-Diagnoselaufzeit
+
+Für einen kontrollierten Live-Test darf ausschließlich
+`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` das optionale JSON-Feld
+`diagnosticSessionTtlSeconds` akzeptieren. Das ist kein alternativer
+Sessionvertrag, sondern eine eng begrenzte Testeingabe mit folgenden
+Invarianten:
+
+- der Server akzeptiert sie nur bei
+  `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true`;
+- der ganzzahlige Wert liegt zwischen `3601` und `86400` Sekunden einschließlich
+  und überschreitet niemals die normale `PT24H`-Laufzeit;
+- die verkürzte Laufzeit gilt nur für die unabhängige Session dieses einen
+  Requests und verändert weder Konfiguration noch andere Sessiondatensätze;
+- der nächste First-Party-Request ohne Feld ist automatisch wieder `PT24H`;
+- der private Component-Bootstrap lehnt das Feld ab und bleibt immer `PT24H`.
+
+`3660` Sekunden erzeugen ungefähr eine Minute Beobachtungszeit bis zum Übergang
+unter den `PT1H`-Aktionshorizont. `5400` Sekunden eignen sich für einen
+90-Minuten-Soak. Die globale Learning-Session-TTL wird für beide Tests nicht
+verändert. Schon das Weglassen des Feldes stellt das normale `PT24H`-Verhalten
+ohne Deployment wieder her; das separate Diagnose-Gate wird nach dem
+kontrollierten Testfenster über den regulären Konfigurationsweg deaktiviert.
 
 ## 4. MCP-Aufruf
 
@@ -116,11 +163,26 @@ Das Backend prüft bei jedem Toolaufruf in dieser Reihenfolge:
 2. erwartete Resource/Audience und erforderlicher Read- oder Write-Scope;
 3. vorhandene, syntaktisch gültige `learningSessionId`;
 4. HMAC-basierte Auflösung der Lernsession;
-5. Ablauf und Widerruf;
-6. Zuordnung zum autoritativen Lernendenzustand.
+5. tatsächlichen Ablauf und Widerruf;
+6. Zuordnung zum autoritativen Lernendenzustand und Verfügbarkeit der gepinnten
+   Contract-, Workflow- und Curriculumrevision;
+7. bei einem Write den gespeicherten Replay eines bereits committeten Requests
+   mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben
+   `clientRequestId`;
+8. für jede neue Operation mindestens `PT1H` Restlaufzeit.
 
 Erst danach wird die fachliche Operation ausgeführt. Schreibende Tools
 benötigen weiterhin zusätzlich den Write-Scope.
+
+Für den Aktionshorizont gilt `expiresAt >= now + PT1H`: Genau eine Stunde
+Restlaufzeit ist gültig, weniger als eine Stunde wird vor der fachlichen
+Operation mit `SESSION_RENEWAL_REQUIRED` abgewiesen. Der beschriebene Replay
+eines bereits committeten Writes darf innerhalb dieser letzten Stunde nur
+solange zurückgegeben werden, wie die Session selbst noch nicht abgelaufen ist
+und die von ihr gepinnten Workflow- und Curriculumversionen weiter verfügbar
+sind. Er liefert das gespeicherte Resultat und führt weder Operation noch
+Mutation erneut aus. Nach dem absoluten Ablauf oder bei nicht mehr verfügbarer
+gepinnter Version ist auch ein Replay unzulässig.
 
 Die `learningSessionId` ist Pflichtargument **aller** fachlichen
 SkillPilot-MCP-Tools. Es gibt keine Ausnahme für den ersten Leseaufruf.
@@ -155,7 +217,7 @@ Persistenzgrenze für diese kurzlebige Zuordnung:
 | `learner_id` | serverinterne Fremdschlüsselzuordnung zum Lernenden |
 | `communication_locale` | autoritative Sprache für Backendnutzdaten und jede sichtbare Coachkommunikation |
 | `started_at` | Zeitpunkt des Klicks auf **Lernen starten** |
-| `expires_at` | absolute Ablaufzeit `started_at + 24h` |
+| `expires_at` | absolute Ablaufzeit; normal und im privaten Component-Bootstrap `started_at + PT24H`, ausschließlich beim gegateten First-Party-Diagnoserequest `started_at + diagnosticSessionTtlSeconds` |
 
 Die frühere Belegung derselben Tabelle mit dem OAuth-Subject als
 Primärschlüssel wird bei der Migration verworfen. Ein OAuth-Subject darf bei
@@ -193,40 +255,59 @@ adressiert wird, ergibt sich nur aus der expliziten `learningSessionId`.
 | Situation | Verhalten |
 | --- | --- |
 | OAuth fehlt/ist ungültig | normale OAuth-Neuautorisierung; keine Lernsession wird erzeugt |
-| `learningSessionId` fehlt | `SESSION_REQUIRED`; zurück zu **Lernen starten** |
-| ID unbekannt/manipuliert | `SESSION_REQUIRED`; kein Fallback |
-| Session abgelaufen/widerrufen | `SESSION_REQUIRED`; neuer Start in SkillPilot |
+| `learningSessionId` fehlt | `SESSION_REQUIRED`; genau einmal private Komponente mit `purpose=RENEW_EXISTING` und erforderlicher `communicationLocale=de|en` |
+| ID unbekannt/manipuliert | `SESSION_REQUIRED`; keine Identitätsableitung; derselbe private Erneuerungspfad |
+| Session abgelaufen/widerrufen | `SESSION_REQUIRED`; frische Session im selben Chat |
+| Session hat weniger als eine Stunde Restlaufzeit | `SESSION_RENEWAL_REQUIRED`; exakt eine Stunde ist noch zulässig |
+| gepinnte Workflow-/Curriculumrevision fehlt | `SESSION_VERSION_UNAVAILABLE`; frische Session im selben Chat |
 | Write-Scope fehlt | Operation ablehnen; keine fachliche Teilmutation |
 | Startkontext kann nicht atomar angewendet werden | keine Lernsession ausgeben |
+| Diagnosefeld deaktiviert, außerhalb `3601..86400`, oberhalb der normalen Laufzeit oder am privaten Bootstrap | Request ablehnen; keine Lernsession ausgeben |
 
 Fehlerantworten und Logs dürfen weder Lernsession-ID, OAuth-Token noch
 dauerhafte SkillPilot-ID ausgeben. ChatGPT soll den Benutzer nicht auffordern,
 eine SkillPilot-ID oder einen Token manuell einzutippen. Der normale
-Wiederherstellungsweg ist immer ein neuer ausdrücklicher Start: entweder
-**Lernen starten** in der First-Party-SkillPilot-Oberfläche oder der
-capability-geschützte private Direktstart der MCP-App. OAuth allein ist keiner
-dieser Startwege.
+Wiederherstellungsweg ist immer ein neuer ausdrücklicher Start. Normal ist der
+capability-geschützte private `RENEW_EXISTING`-Direktstart im selben Chat. Nur
+wenn Komponente oder sicherer Handoff nicht verfügbar sind, folgt als Fallback
+ein neuer Chat oder **Lernen starten** in der First-Party-SkillPilot-Oberfläche.
+OAuth allein ist keiner dieser Startwege.
 
 ## 9. Sicherheitsinvarianten
 
 1. Die dauerhafte SkillPilot-ID bleibt serverseitig.
 2. Lernsession-IDs sind zufällig, opak und nur als HMAC-Hash gespeichert.
-3. Eine Lernsession gilt absolut exakt 24 Stunden.
+3. Normale und private Component-Lernsessions gelten absolut exakt 24 Stunden.
+   Ausschließlich der gegatete First-Party-Diagnoserequest darf eine einzelne
+   Session requestlokal auf `3601..86400` Sekunden, höchstens jedoch die normale
+   `PT24H`-Laufzeit, verkürzen. Ein nachfolgender Request ohne Feld ist wieder
+   `PT24H`; der Component-Bootstrap lehnt das Feld ab.
 4. Benutzung verlängert die Ablaufzeit nicht.
-5. Jeder Start erzeugt eine neue, unabhängige Session.
-6. OAuth allein wählt keinen Lernenden und erzeugt keine Lernsession.
-7. Eine Lernsession allein autorisiert keinen MCP-Aufruf.
-8. Jedes fachliche Tool verlangt dieselbe explizite `learningSessionId`.
-9. Es existiert kein Lookup oder Fallback über OAuth-Subject.
-10. Lernziel-, Frontier- und Mastery-Semantik bleiben unverändert.
-11. Nur der vorregistrierte vertrauliche OAuth-Client erhält Tokens; der
+5. Jede neue fachliche Operation benötigt mindestens `PT1H` Restlaufzeit; exakt
+   `PT1H` ist gültig.
+6. Nur ein gespeicherter Write-Replay mit gleichem Toolnamen, kanonisch
+   identischen Argumenten und derselben `clientRequestId` darf die
+   Ein-Stunden-Grenze bei noch nicht abgelaufener Session und verfügbarer
+   gepinnter Workflow-/Curriculumversion passieren und führt keine Operation
+   erneut aus.
+7. Jeder Start erzeugt eine neue, unabhängige Session.
+8. OAuth allein wählt keinen Lernenden und erzeugt keine Lernsession.
+9. Eine Lernsession allein autorisiert keinen MCP-Aufruf.
+10. Jedes fachliche Tool verlangt dieselbe explizite `learningSessionId`.
+11. Es existiert kein Lookup oder Fallback über OAuth-Subject.
+12. Lernziel-, Frontier- und Mastery-Semantik bleiben unverändert.
+13. Nur der vorregistrierte vertrauliche OAuth-Client erhält Tokens; der
     Token-Endpunkt akzeptiert für ihn ausschließlich `client_secret_basic`.
-12. Das OAuth-Client-Secret erscheint niemals in Repository, UI, Prompt,
+14. Das OAuth-Client-Secret erscheint niemals in Repository, UI, Prompt,
     Toolargumenten, Antworten oder Logs.
-13. `communicationLocale` wird ausschließlich bei einem ausdrücklichen
-    First-Party- oder capability-geschützten Direktstart gesetzt, bei jedem
-    Kontextabruf aus derselben Lernsession geliefert und weder aus Hostlocale
-    noch aus neutral englischen Pluginmetadaten neu abgeleitet.
+15. Das sessionlose `open_skillpilot_start` verlangt `communicationLocale=de|en`:
+    `START` bildet die aktuelle deutsche oder englische Unterhaltung ab;
+    `RENEW_EXISTING` verwendet bevorzugt `recoveryCommunicationLocale` aus dem
+    Fehler, sonst die Locale der letzten Session. Die final bestätigte
+    `communicationLocale` wird beim First-Party- oder capability-geschützten
+    Direktstart in der Session gespeichert, bei jedem Kontextabruf geliefert
+    und danach weder aus Hostlocale noch aus neutral englischen
+    Pluginmetadaten neu abgeleitet.
 
 ## 10. Abnahmekriterien
 
@@ -256,3 +337,16 @@ Folgendes beweisen:
 15. Die Authorization-Server-Metadaten veröffentlichen
     `client_secret_basic`; `none`, DCR und CIMD sind nicht Teil des aktiven
     Produktionsprofils.
+16. Der gegatete First-Party-Diagnoserequest akzeptiert `3601` und `86400`,
+    lehnt `3600`, `86401`, einen Wert oberhalb der normalen Laufzeit sowie ein
+    gesetztes Feld bei deaktiviertem Gate ab.
+17. Ein Diagnose-Start mit `3660` oder `5400` wirkt nur auf seine eigene
+    Session; bereits der nächste Start ohne Feld läuft wieder `PT24H`.
+18. Der private Component-Bootstrap lehnt `diagnosticSessionTtlSeconds` ab und
+    erzeugt ohne das Feld weiterhin eine `PT24H`-Session.
+19. Das geschlossene Schema von `open_skillpilot_start` verlangt sowohl
+    `purpose` als auch `communicationLocale`; nur `de` und `en` sind zulässig.
+20. Ein Write-Replay wird nach Sessionablauf oder bei nicht mehr verfügbarer
+    gepinnter Workflow-/Curriculumversion abgelehnt, auch wenn Toolname,
+    kanonische Argumente und `clientRequestId` dem gespeicherten Write
+    entsprechen.
