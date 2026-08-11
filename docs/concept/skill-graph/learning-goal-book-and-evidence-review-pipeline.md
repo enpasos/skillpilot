@@ -35,11 +35,11 @@ products built from the same canonical state:
 2. a structured, fingerprint-bound evidence profile for every reviewed atomic
    goal.
 
-The book makes the graph legible to people and review models. The normative V2
+The book makes the skill graph legible to people and review models. The normative V2
 evidence profile states the goal-specific essential understanding,
 independently observable performance, coverage expectations, meaningful
 variation axes, and application cases for transfer. Neither product replaces
-the canonical goal graph.
+the canonical skill graph.
 
 The first rollout uses a fast, reproducible multi-AI review loop as the primary
 development engine. A public feedback channel is installed early but is treated

@@ -19,6 +19,10 @@ import {
   stableGoalBookJson,
   type GoalBookBuildInput,
 } from './goalBookModel'
+import {
+  fingerprintGoalEvidenceReviewInput,
+  fingerprintGoalForEvidence,
+} from './goalEvidenceProfileModel'
 
 const PILOT_GOAL_ID = '8dd9f210-2683-5902-acab-e3be22725232'
 const PILOT_PREREQUISITE_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
@@ -586,10 +590,6 @@ const goalVisualizationQa = JSON.parse(goalVisualizationQaText) as {
 const goalVisualizationAssetDigests = Object.fromEntries(goalVisualizationQa.records
   .filter(({ visualizationState }) => visualizationState === 'available')
   .map(({ imageUrl, assetSha256 }) => [imageUrl, assetSha256]))
-const currentV1CompatibilityRecord = JSON.parse(archivedPilotEvidenceReviewText) as Record<string, unknown>
-currentV1CompatibilityRecord.goalFingerprint = 'sha256:377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa'
-currentV1CompatibilityRecord.reviewInputFingerprint = 'sha256:20b5e3817868385c4df965434fa4702422cf778fa53158bc9a74aa6326f9699e'
-const currentV1CompatibilityText = `${JSON.stringify(currentV1CompatibilityRecord)}\n`
 const curricularAtomicGoalIds = new Set(semanticKindLedger.decisions
   .filter(({ semanticKind, decisionStatus }) => (
     semanticKind === 'curricularAtomic' && decisionStatus === 'authoritative'
@@ -597,6 +597,25 @@ const curricularAtomicGoalIds = new Set(semanticKindLedger.decisions
   .map(({ goalId }) => goalId))
 const canonicalLandscapeForProjection = normalizeCanonicalLandscape(JSON.parse(canonicalLandscapeText))
 const canonicalGoalById = new Map(canonicalLandscapeForProjection.goals.map((item) => [item.id, item]))
+const pilotGoal = canonicalGoalById.get(PILOT_GOAL_ID)
+assert.ok(pilotGoal)
+const pilotSemanticKind = semanticKindLedger.decisions.find(({ goalId }) => goalId === PILOT_GOAL_ID)
+  ?.semanticKind
+assert.ok(pilotSemanticKind)
+const currentV1CompatibilityRecord = JSON.parse(archivedPilotEvidenceReviewText) as Record<string, unknown>
+const currentV1RuleVersion = String(currentV1CompatibilityRecord.ruleVersion)
+currentV1CompatibilityRecord.goalFingerprint = fingerprintGoalForEvidence(
+  pilotGoal,
+  currentV1RuleVersion,
+  pilotSemanticKind,
+)
+currentV1CompatibilityRecord.reviewInputFingerprint = fingerprintGoalEvidenceReviewInput(
+  pilotGoal,
+  currentV1RuleVersion,
+  goalVisualizationAssetDigests,
+  pilotSemanticKind,
+)
+const currentV1CompatibilityText = `${JSON.stringify(currentV1CompatibilityRecord)}\n`
 const sekICompilation = compileCompositionView(
   normalizeCompositionView(JSON.parse(sekIViewText)),
   canonicalLandscapeForProjection,
