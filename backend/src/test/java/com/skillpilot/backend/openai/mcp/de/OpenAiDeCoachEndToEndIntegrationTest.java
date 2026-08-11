@@ -627,6 +627,18 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "resource-active",
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
                 OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverModernCompatibilityMcp(
+                accessToken,
+                applicationSubject,
+                "resource-active-modern-first",
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
+        assertResourceReadableOverModernCompatibilityMcp(
+                accessToken,
+                applicationSubject,
+                "resource-active-modern-repeated",
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI,
+                OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_ARTIFACT_SHA256);
         assertResourceReadableOverAuthenticatedMcp(
                 accessToken,
                 applicationSubject,
@@ -1258,6 +1270,26 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 HttpResponse.BodyHandlers.ofString());
     }
 
+    private HttpResponse<String> postModernMcp(
+            String accessToken,
+            String method,
+            String name,
+            String body) throws Exception {
+        HttpRequest.Builder request = HttpRequest.newBuilder(
+                localUri(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH))
+                        .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                        .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                        .header("MCP-Protocol-Version", "2026-07-28")
+                        .header("Mcp-Method", method);
+        if (name != null) {
+            request.header("Mcp-Name", name);
+        }
+        return browser.send(
+                request.POST(HttpRequest.BodyPublishers.ofString(body)).build(),
+                HttpResponse.BodyHandlers.ofString());
+    }
+
     private void assertResourceReadableOverAuthenticatedMcp(
             String accessToken,
             String applicationSubject,
@@ -1271,6 +1303,53 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 "method", "resources/read",
                 "params", Map.of("uri", resourceUri)));
         HttpResponse<String> response = postMcp(accessToken, body);
+        assertResourceResponse(
+                response,
+                applicationSubject,
+                resourceUri,
+                expectedSha256);
+    }
+
+    private void assertResourceReadableOverModernCompatibilityMcp(
+            String accessToken,
+            String applicationSubject,
+            String requestId,
+            String resourceUri,
+            String expectedSha256)
+            throws Exception {
+        String body = objectMapper.writeValueAsString(Map.of(
+                "jsonrpc", "2.0",
+                "id", requestId,
+                "method", "resources/read",
+                "params", Map.of(
+                        "uri", resourceUri,
+                        "_meta", Map.of(
+                                "io.modelcontextprotocol/protocolVersion", "2026-07-28",
+                                "io.modelcontextprotocol/clientInfo", Map.of(
+                                        "name", "chatgpt-e2e",
+                                        "version", "1.0"),
+                                "io.modelcontextprotocol/clientCapabilities", Map.of()))));
+        HttpResponse<String> response = postModernMcp(
+                accessToken,
+                "resources/read",
+                resourceUri,
+                body);
+        assertResourceResponse(
+                response,
+                applicationSubject,
+                resourceUri,
+                expectedSha256);
+        assertThat(result(response).has("resultType")).isFalse();
+        assertThat(result(response).has("ttlMs")).isFalse();
+        assertThat(result(response).has("cacheScope")).isFalse();
+    }
+
+    private void assertResourceResponse(
+            HttpResponse<String> response,
+            String applicationSubject,
+            String resourceUri,
+            String expectedSha256)
+            throws Exception {
         assertMcpPayloadDoesNotExposeIdentity(response, applicationSubject);
         JsonNode contents = result(response).path("contents");
         assertThat(contents).singleElement().satisfies(resource -> {

@@ -183,6 +183,27 @@ class OpenAiDeOAuthFlowIntegrationTest {
                                 + "\"")
                         .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
                         .contains(OpenAiDeOAuthConfiguration.WRITE_SCOPE));
+        HttpResponse<String> unauthorizedModernResourceRead = postJson(
+                OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH,
+                """
+                {"jsonrpc":"2.0","id":"resource-without-token","method":"resources/read","params":{
+                  "uri":"%s",
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """.formatted(OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI),
+                Map.of(
+                        "MCP-Protocol-Version", "2026-07-28",
+                        "Mcp-Method", "resources/read",
+                        "Mcp-Name", OpenAiDeV1ContractMetadata.GOAL_VISUALIZATION_RESOURCE_URI));
+        assertThat(unauthorizedModernResourceRead.statusCode()).isEqualTo(401);
+        assertThat(unauthorizedModernResourceRead.headers().firstValue(HttpHeaders.WWW_AUTHENTICATE))
+                .hasValueSatisfying(value -> assertThat(value)
+                        .contains("resource_metadata=\""
+                                + OpenAiDeV1ContractMetadata.PROTECTED_RESOURCE_METADATA_ENDPOINT
+                                + "\"")
+                        .contains(OpenAiDeOAuthConfiguration.READ_SCOPE)
+                        .contains(OpenAiDeOAuthConfiguration.WRITE_SCOPE));
 
         String externalState = "state-kept-by-chatgpt";
         String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(Map.ofEntries(

@@ -118,6 +118,142 @@ class SkillPilotStatelessMcpServerFactoryTest {
     }
 
     @Test
+    void listsAndRepeatedlyReadsResourcesWithModernRequestMetadata() throws Exception {
+        JsonNode legacyInitialize = postJson("/mcp/alpha", initializeRequest(29));
+        assertThat(legacyInitialize.path("result").path("protocolVersion").asText())
+                .isEqualTo(PROTOCOL_VERSION);
+
+        JsonNode alphaResources = postModernJson(
+                "/mcp/alpha",
+                "resources/list",
+                null,
+                """
+                {"jsonrpc":"2.0","id":30,"method":"resources/list","params":{
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientInfo":{"name":"factory-test","version":"1.0"},
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """);
+        assertThat(alphaResources.path("result").path("resources"))
+                .singleElement()
+                .satisfies(resource -> assertThat(resource.path("uri").asText())
+                        .isEqualTo("ui://alpha/card.html"));
+        assertThat(alphaResources.path("result").has("resultType")).isFalse();
+        assertThat(alphaResources.path("result").has("ttlMs")).isFalse();
+        assertThat(alphaResources.path("result").has("cacheScope")).isFalse();
+
+        String firstReadRequest = modernReadResourceRequest(31);
+        String repeatedReadRequest = modernReadResourceRequest(32);
+        JsonNode firstRead = postModernJson(
+                "/mcp/alpha", "resources/read", "ui://alpha/card.html", firstReadRequest);
+        JsonNode repeatedRead = postModernJson(
+                "/mcp/alpha", "resources/read", "ui://alpha/card.html", repeatedReadRequest);
+
+        for (JsonNode read : List.of(firstRead, repeatedRead)) {
+            assertThat(read.path("result").has("resultType")).isFalse();
+            assertThat(read.path("result").has("ttlMs")).isFalse();
+            assertThat(read.path("result").has("cacheScope")).isFalse();
+            assertThat(read.path("result").path("contents"))
+                    .singleElement()
+                    .satisfies(resource -> {
+                        assertThat(resource.path("uri").asText()).isEqualTo("ui://alpha/card.html");
+                        assertThat(resource.path("text").asText()).isEqualTo("<main>alpha</main>");
+                        assertThat(resource.path("_meta").path("ui").path("prefersBorder").asBoolean())
+                                .isTrue();
+                    });
+        }
+
+        String unknownUri = "ui://alpha/unknown.html";
+        JsonNode unknownRead = postModernJson(
+                "/mcp/alpha",
+                "resources/read",
+                unknownUri,
+                modernReadResourceRequest(33, unknownUri));
+        assertThat(unknownRead.hasNonNull("error")).isTrue();
+        assertThat(unknownRead.has("result")).isFalse();
+
+        MvcResult resourceLessServer = postModernExpectingBadRequest(
+                "/mcp/beta",
+                "resources/list",
+                null,
+                """
+                {"jsonrpc":"2.0","id":34,"method":"resources/list","params":{
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """);
+        assertThat(resourceLessServer.getResponse().getContentAsByteArray()).isEmpty();
+        assertThat(resourceLessServer.getResolvedException()).isNull();
+    }
+
+    @Test
+    void rejectsUnsafeModernCompatibilityRequests() throws Exception {
+        List<MvcResult> rejected = List.of(
+                postModernExpectingBadRequest(
+                        "resources/read",
+                        "ui://alpha/card.html",
+                        """
+                        [{"jsonrpc":"2.0","id":40,"method":"resources/read","params":{
+                          "uri":"ui://alpha/card.html",
+                          "_meta":{
+                            "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                            "io.modelcontextprotocol/clientCapabilities":{}}}}]
+                        """),
+                postModernExpectingBadRequest("resources/read", "ui://alpha/card.html", "{"),
+                postModernExpectingBadRequest(
+                        "resources/read",
+                        "ui://alpha/card.html",
+                        """
+                        {"jsonrpc":"2.0","id":41,"method":"resources/list","params":{
+                          "_meta":{
+                            "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                            "io.modelcontextprotocol/clientCapabilities":{}}}}
+                        """),
+                postModernExpectingBadRequest(
+                        "tools/call",
+                        "alpha_tool",
+                        """
+                        {"jsonrpc":"2.0","id":42,"method":"tools/call","params":{
+                          "name":"alpha_tool","arguments":{},
+                          "_meta":{
+                            "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                            "io.modelcontextprotocol/clientCapabilities":{}}}}
+                        """),
+                postModernExpectingBadRequest(
+                        "resources/read",
+                        "ui://alpha/other.html",
+                        modernReadResourceRequest(43)),
+                postModernExpectingBadRequest(
+                        "resources/read",
+                        null,
+                        modernReadResourceRequest(46)),
+                postModernExpectingBadRequest(
+                        "resources/list",
+                        "ui://alpha/card.html",
+                        """
+                        {"jsonrpc":"2.0","id":44,"method":"resources/list","params":{
+                          "_meta":{
+                            "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                            "io.modelcontextprotocol/clientCapabilities":{}}}}
+                        """),
+                postModernExpectingBadRequest(
+                        "resources/read",
+                        "ui://alpha/card.html",
+                        """
+                        {"jsonrpc":"2.0","id":45,"method":"resources/read","params":{
+                          "uri":"ui://alpha/card.html",
+                          "_meta":{
+                            "io.modelcontextprotocol/protocolVersion":"2025-11-25",
+                            "io.modelcontextprotocol/clientCapabilities":{}}}}
+                        """));
+
+        for (MvcResult result : rejected) {
+            assertThat(result.getResponse().getContentAsByteArray()).isEmpty();
+            assertThat(result.getResolvedException()).isNull();
+        }
+    }
+
+    @Test
     void preservesNativeStructuredContentAndAuthenticationMetadata() throws Exception {
         JsonNode call = postJson("/mcp/alpha", callRequest(5, "alpha_tool"));
 
@@ -211,6 +347,45 @@ class SkillPilotStatelessMcpServerFactoryTest {
         return objectMapper.readTree(result.getResponse().getContentAsByteArray());
     }
 
+    private JsonNode postModernJson(String endpoint, String method, String name, String json)
+            throws Exception {
+        var request = post(endpoint)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
+                        .header("MCP-Protocol-Version", MODERN_PROTOCOL_VERSION)
+                        .header("Mcp-Method", method);
+        if (name != null) {
+            request.header("Mcp-Name", name);
+        }
+        MvcResult result = mockMvc.perform(request.content(json))
+                .andExpect(status().isOk())
+                .andReturn();
+        return objectMapper.readTree(result.getResponse().getContentAsByteArray());
+    }
+
+    private MvcResult postModernExpectingBadRequest(String method, String name, String json)
+            throws Exception {
+        return postModernExpectingBadRequest("/mcp/alpha", method, name, json);
+    }
+
+    private MvcResult postModernExpectingBadRequest(
+            String endpoint,
+            String method,
+            String name,
+            String json) throws Exception {
+        var request = post(endpoint)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON, MediaType.TEXT_EVENT_STREAM)
+                        .header("MCP-Protocol-Version", MODERN_PROTOCOL_VERSION)
+                        .header("Mcp-Method", method);
+        if (name != null) {
+            request.header("Mcp-Name", name);
+        }
+        return mockMvc.perform(request.content(json))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+    }
+
     private List<String> toolNames(JsonNode response) {
         return response.path("result").path("tools").valueStream()
                 .map(tool -> tool.path("name").asText())
@@ -229,6 +404,21 @@ class SkillPilotStatelessMcpServerFactoryTest {
         return """
                 {"jsonrpc":"2.0","id":%d,"method":"tools/list","params":{}}
                 """.formatted(id);
+    }
+
+    private String modernReadResourceRequest(int id) {
+        return modernReadResourceRequest(id, "ui://alpha/card.html");
+    }
+
+    private String modernReadResourceRequest(int id, String resourceUri) {
+        return """
+                {"jsonrpc":"2.0","id":%d,"method":"resources/read","params":{
+                  "uri":"%s",
+                  "_meta":{
+                    "io.modelcontextprotocol/protocolVersion":"2026-07-28",
+                    "io.modelcontextprotocol/clientInfo":{"name":"factory-test","version":"1.0"},
+                    "io.modelcontextprotocol/clientCapabilities":{}}}}
+                """.formatted(id, resourceUri);
     }
 
     private String callRequest(int id, String toolName) {
