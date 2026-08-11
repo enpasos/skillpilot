@@ -35,10 +35,11 @@ products built from the same canonical state:
 2. a structured, fingerprint-bound evidence profile for every reviewed atomic
    goal.
 
-The book makes the graph legible to people and review models. The evidence
-profile states what must actually be understood, which misconceptions and
-representation cues are dangerous, and what would or would not count as
-evidence of mastery. Neither product replaces the canonical goal graph.
+The book makes the graph legible to people and review models. The normative V2
+evidence profile states the goal-specific essential understanding,
+independently observable performance, coverage expectations, meaningful
+variation axes, and application cases for transfer. Neither product replaces
+the canonical goal graph.
 
 The first rollout uses a fast, reproducible multi-AI review loop as the primary
 development engine. A public feedback channel is installed early but is treated
@@ -117,26 +118,25 @@ conservative outer bound, but it is not precise enough to print or filter the
 final Bundesland/G8/G9/GK/LK matrix. Changes to any bound projection or to the
 duration policy make the generated atlas stale.
 
-### 3.2 Evidence profiles
+### 3.2 Positive understanding-evidence profiles
 
 Evidence profiles are separate curriculum-quality artifacts. They explain the
 competence more precisely without turning the ordinary goal description into a
-large prompt. A profile may contain:
+large prompt. A V2 profile may contain:
 
-- independently checkable facets of understanding;
-- required coverage across those facets;
-- common misconceptions and plausible shallow answers;
-- relevant variation axes and contrasting cases;
-- assistance, cues, repetitions, or copied wording that do not count as
-  independent evidence;
+- content-specific statements of essential understanding;
+- independently observable learner performance;
+- required coverage across those expectations;
+- meaningful variation axes;
+- application-case briefs for changed contexts and representations;
 - teaching-case blueprints;
-- mastery-check blueprints; and
-- the minimum number and independence requirements of checks.
+- transfer-case blueprints; and
+- the minimum number and independence requirements of demonstrations.
 
 The canonical description may be improved when a review demonstrates real
 ambiguity. It must nevertheless remain short enough to be understandable in the
-normal learner UI. Detailed examples, rubrics, failure modes, and review
-arguments stay in the evidence profile.
+normal learner UI. Detailed examples, positive evidence requirements,
+variation designs, and review arguments stay in the evidence profile.
 
 ### 3.3 Generated publications
 
@@ -151,12 +151,13 @@ are not edited by hand and are not a second source of truth.
 
 ## 4. Evidence-profile contract
 
-### 4.1 Conceptual record
+### 4.1 Archived V1 conceptual record
 
-The initial record has the following conceptual shape. The closed implemented
-contract is
+The initially implemented V1 record is retained unchanged as audit history. It
+is not reviewer guidance for new campaigns. Its conceptual shape and closed
+implemented contract are
 `contracts/goal-evidence/v1/goal-evidence-profile.schema.json`; bounded
-operational fields must preserve these semantics:
+operational fields preserve the historical semantics:
 
 ```json
 {
@@ -202,6 +203,23 @@ operational fields must preserve these semantics:
 The archetype vocabulary is deliberately small. A goal may declare one primary
 archetype and bounded secondary characteristics, but the pipeline must not grow
 a subject ontology merely to classify review prompts.
+
+#### 4.1.1 Positive understanding-evidence contract V2
+
+The V1 profile and its representation-choice record are retained unchanged as
+an archived AI experiment. They are not the normative authoring target for new
+profiles. The closed V2 contract is
+`contracts/goal-evidence/v2/goal-evidence-profile.schema.json`.
+
+V2 states the expected competence positively and content-specifically through
+`expectations`, `coverageExpectations`, `variationAxes`, and
+`applicationCaseBriefs`. Each expectation pairs essential understanding with
+observable learner performance. Application cases state the task demand,
+expected performance, and understanding focus for a fresh variation. The
+established `goal-evidence-v1` goal-fingerprint rule remains unchanged, while a
+separate V2 profile-rule version binds the new profile semantics and review
+criteria. V2 is initially a review contract only; GoalBook and Coach runtime
+projection require their own later acceptance gate.
 
 ### 4.2 Fingerprint binding
 
@@ -403,9 +421,10 @@ states only when their complete ordered scope tuple lists are identical; it
 must link to the full online matrix rather than truncate silently.
 
 The public learner/teacher edition does not need to expose the complete evidence
-profile. A reviewer edition may add bounded facets, misconceptions, contrasting
-cases, and non-evidence notes if they fit the same fixed page contract. Longer
-AI findings and adjudication records remain in the structured review bundle.
+profile. A reviewer edition may add bounded essential-understanding,
+observable-performance, coverage, variation, and application-case summaries if
+they fit the same fixed page contract. Longer AI findings and adjudication
+records remain in the structured review bundle.
 
 ### 5.6 Named destinations and links
 
@@ -508,6 +527,10 @@ checks relationships and vocabulary across the complete subject without asking
 one model invocation to rewrite the entire book.
 
 ## 6. Fast independent multi-AI loop
+
+This generic diagnostic loop remains available for non-V2 quality lanes and
+historical V1 auditability. It is not the prompt, criteria, or output model of
+the positive V2 understanding-evidence campaign in Section 9.4.1.
 
 ### 6.1 Role and cadence
 
@@ -661,12 +684,11 @@ Every feedback action carries immutable context supplied by the publication:
 
 The form asks for structured observations such as:
 
-- What might the learner have understood?
-- What observable evidence supports that interpretation?
-- What alternative explanation is plausible?
-- Could the learner solve or explain it without the visible cue?
-- Which information is missing?
-- How broad is the claimed problem?
+- Which mathematical idea or relationship should become clear?
+- Which observable performance would demonstrate that understanding?
+- Which changed example, representation, or context would show transfer?
+- Which parts of the goal should be covered together?
+- Which concrete improvement would make those expectations clearer?
 
 It may request an optional role and contact path, but it must not solicit learner
 names, permanent SkillPilot IDs, chat secrets, or unnecessary personal data.
@@ -722,14 +744,14 @@ begründen”). The pilot must test at least:
 - whether the learner can compare the chosen representation with the closest
   alternative;
 - whether the learner can name a limitation of the chosen representation;
-- whether a highlighted visualization or suggestive wording can produce a
-  shallow “Graph” answer; and
-- whether a new, cue-free transfer case distinguishes understanding from
-  repetition.
+- whether the learner can choose and justify a representation independently in
+  a fresh presentation; and
+- whether the learner transfers the same selection criteria to a changed case
+  with a different surface form.
 
 The output is one approved pilot profile, one chapter-scale HTML/PDF book, a
-reproducible adversarial review set, and documented dissent. The pilot is not
-evidence for a global Coach rule.
+reproducible understanding-evidence review set, and documented dissent. The
+pilot is not evidence for a global Coach rule.
 
 ### 9.3 Phase 2: mathematics and physics calibration
 
@@ -739,12 +761,13 @@ Calibrate on a default stratified set of at least 24 ordinary atomic goals:
 - both Sekundarstufe I and Sekundarstufe II;
 - all relevant archetypes present in each subject; and
 - cases with and without visualizations, cross-chapter prerequisites, common
-  misconceptions, and representation choices.
+  conceptual distinctions, and representation choices.
 
 The sample and replacement rationale are versioned in configuration. Exit
 requires stable schemas, acceptable inter-review consistency, successful
-disconfirming tests, deterministic books, and no unresolved high-severity
-findings. Calibration changes invalidate prior unbound bulk output.
+calibration of the positive evidence fields, deterministic books, and no
+unresolved substantive disagreements. Calibration changes invalidate prior
+unbound bulk output.
 
 ### 9.4 Phase 3: bulk mathematics and physics review
 
@@ -752,17 +775,89 @@ After calibration, generate and review profiles for all in-scope ordinary
 atomic goals in canonical Gymnasium mathematics and physics. Work in bounded
 chapter batches, then run overlap batches and global passes for:
 
-- duplicate or contradictory facets;
-- missing prerequisite coverage;
-- inconsistent terminology and difficulty;
-- visual cue and answer leakage;
+- coherent, non-duplicative expectations;
+- complete prerequisite coverage;
+- consistent terminology and difficulty;
+- alignment between visualizations and independently observable performance;
 - cross-chapter progression; and
-- repeated shallow-mastery paths.
+- coverage of changed-case transfer expectations.
 
-Bulk generation never bulk-approves. Risk, disagreement, novel mechanisms,
-schema violations, and proposed canonical text changes stay in explicit review
-queues. A green count is not obtained by filling every profile with a generic
-template.
+Bulk generation never bulk-approves. Content-specific disagreement, novel
+evidence expectations, schema violations, and proposed canonical text changes
+stay in explicit review queues. A green count is not obtained by filling every
+profile with a generic template.
+
+### 9.4.1 Concrete two-round understanding-evidence workflow
+
+The first nationwide mathematics wording pass uses a small, versioned
+calibration before the 754-goal run. Its 16 goals cover Jahrgangsstufe 5 through
+10 and E through Q4, including concepts, procedures, representations, modeling,
+proof/derivation, data, and strategy choice. The sample calibrates three
+positive, content-specific expectations for every goal: essential
+understanding, independently observable performance, and transfer to a
+structurally related but changed case presented independently as a fresh task.
+The exact sample and order are authored in
+`mathematik-description-understanding-evidence-kalibrierung.view.json`; the
+corresponding GoalBook configuration is
+`de-de-gym-math-description-understanding-evidence-calibration.json`. Replacing
+a convenient sample goal silently is not allowed; a changed calibration sample
+is a new version.
+
+The operational sequence is:
+
+1. **Freeze Atlas V1 inputs.** Build the calibration book and review packets
+   from the current canonical graph. Bind the book, page, goal, prompt, criteria,
+   and batch fingerprints before any reviewer starts.
+2. **Codex blind V1 review.** Codex receives no earlier reviewer output and
+   writes exactly one candidate record for every assigned goal against
+   `goal-description-review-record.schema.json`. Every record states, in German
+   and English, the content-specific essential understanding, the independently
+   observable learner performance, and the expected transfer to a changed,
+   independently presented case. `keep` leaves the text alone; `revise` supplies
+   one exact German and one semantically equivalent English replacement;
+   `split_review` and `block` prevent a wording-only repair. Detailed assessment
+   cases and variation sequences remain work for the
+   `positive-understanding-evidence-v2` profile rather than being copied into
+   the learner-facing description. Each record binds that exact profile
+   contract and recommends `none`, `create`, or `revise`; this recommendation
+   remains a candidate and never mutates a profile.
+3. **Deterministic validation and human adjudication.** The campaign check proves
+   exact sample coverage, order, fingerprints, DE/EN replacement parity fields,
+   candidate authority, and absence of learner data. A responsible human then
+   accepts or rejects proposals goal by goal. AI output, an empty finding set,
+   or model agreement is never an adjudication and never writes canonical data.
+4. **Controlled V2 authoring.** Only human-accepted replacements enter an
+   authoring change set. The application step preserves stable goal IDs and
+   graph relations, changes German and English together, and re-runs every
+   fingerprint-bound quality lane affected by the semantic text. Stale
+   semantic-kind, semantic-atomicity, memory-card, visualization, evidence, and
+   publication records are reviewed or regenerated according to their own
+   contracts; their hashes are not merely refreshed to make checks pass. The
+   nationwide Atlas V2 and its manifests are then rebuilt from canonical data.
+5. **External blind V2 review.** A reviewer from another provider or model family
+   receives Atlas V2 with the same locked understanding-evidence prompt,
+   criteria, output schema, goal order, and batch policy, but receives neither
+   Codex records, adjudication notes, nor the V1-to-V2 diff. The new run binds the
+   V2 bundle and fingerprints and also remains `candidate`/`ai_candidate`.
+6. **Compare and resolve.** Synthesis joins both rounds by stable goal ID while
+   retaining their different input fingerprints and all dissent. An external
+   `revise`, `split_review`, `block`, substantive disagreement about essential
+   understanding, independently observable performance or changed-case
+   transfer, or a DE/EN regression returns the goal to human adjudication. It
+   does not trigger an automatic second canonical rewrite.
+
+After the 16-goal calibration passes, the same sequence is applied to all 754
+mathematics goals in deterministic bounded batches with a final exact-coverage
+check. “The same external round” means the same locked review contract and
+sampling policy over V2, not reuse of V1 fingerprints or disclosure of the
+first reviewer's answer.
+
+Sharper descriptions help the current coach identify the aspects covered by an
+active goal. They do not by themselves establish the expected evidence of
+understanding. Detailed content-specific facets, independent-performance tasks,
+and changed-case transfer tasks remain in
+`positive-understanding-evidence-v2` profiles, and hard Mastery enforcement
+remains subject to the separate runtime gates in Section 10.
 
 ### 9.5 Phase 4: public atlas and slow feedback integration
 
@@ -803,10 +898,10 @@ design may use server-issued challenges or evidence receipts that bind facets,
 assistance level, case variation, and state version. It must prove that all
 required facets and independent checks were covered.
 
-A learner answer obtained directly from a highlighted image, a suggested option,
-the coach's own wording, or a repeated near-identical task does not by itself
-prove mastery. A fresh cue-free case is required when cue contamination is
-plausible. Until the server can enforce these rules, the profile is guidance and
+Mastery requires an independently completed fresh application case whose
+variation is meaningfully different from the teaching example and whose
+performance covers the profile's required expectations. Until the server can
+enforce these positive evidence requirements, the profile is guidance and
 evaluation material, not a hard Mastery guarantee.
 
 ## 11. Publication versions and reproducibility
@@ -854,8 +949,9 @@ The first production-capable implementation is accepted only when:
    fingerprints;
 10. AI findings are reproducible, structured, dissent-preserving, and scoped;
 11. public feedback is version-bound and cannot mutate canonical state;
-12. the mathematics pilot catches the shallow always-`Graph` strategy instead
-    of treating it as sufficient understanding;
+12. the mathematics pilot requires the learner to choose and justify
+    representations across fresh questions whose information needs make
+    different representations suitable;
 13. runtime and Mastery remain unchanged until their later explicit gates pass;
 14. a nationwide atlas contains the exact union of all bound
     curricular-atomic targets once and only once;

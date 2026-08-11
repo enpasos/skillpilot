@@ -62,8 +62,10 @@ const run = {
   blindToOtherRuns: true,
   goalIds: ['8dd9f210-2683-5902-acab-e3be22725232'],
   inputArtifacts: [
-    { role: 'book-model', digest: otherDigest },
-    { role: 'review-markdown', digest: thirdDigest },
+    { role: 'book_model', digest: otherDigest },
+    { role: 'review_input_jsonl', digest },
+    { role: 'review_prompt', digest: thirdDigest },
+    { role: 'review_criteria', digest },
   ],
   startedAt: '2026-08-10T08:00:00.000Z',
   completedAt: '2026-08-10T08:01:00.000Z',
@@ -139,7 +141,11 @@ const bundle: GoalBookReviewBundleManifest = {
   ].map((role, index) => ({
     role: role as GoalBookReviewBundleManifest['artifacts'][number]['role'],
     path: `artifact-${index}.json`,
-    digest,
+    digest: role === 'book_model'
+      ? otherDigest
+      : role === 'review_prompt'
+        ? thirdDigest
+        : digest,
     bytes: 1,
   })),
   reviewPolicy: {
@@ -163,6 +169,42 @@ const validBatch = await validateGoalEvidenceFindingBatch({
   findingsBytes,
 })
 assert.deepEqual(validBatch.errors, [])
+
+const secondGoal = {
+  goalId: 'goal-b',
+  pageNumber: 2,
+  goalFingerprint: otherDigest,
+  pageFingerprint: thirdDigest,
+  evidenceReview: null,
+}
+const twoGoalBundle: GoalBookReviewBundleManifest = {
+  ...bundle,
+  selectedGoalCount: 2,
+  goals: [...bundle.goals, secondGoal],
+}
+const validSubsetBatch = await validateGoalEvidenceFindingBatch({
+  bundle: twoGoalBundle,
+  run: boundRun,
+  findingsBytes,
+})
+assert.deepEqual(validSubsetBatch.errors, [])
+
+const outsideRunFindingBytes = Buffer.from(`${JSON.stringify({
+  ...finding,
+  findingId: 'finding-outside-run',
+  goalId: secondGoal.goalId,
+  goalFingerprint: secondGoal.goalFingerprint,
+  pageFingerprint: secondGoal.pageFingerprint,
+})}\n`)
+const outsideRunBatch = await validateGoalEvidenceFindingBatch({
+  bundle: twoGoalBundle,
+  run: {
+    ...boundRun,
+    outputDigest: `sha256:${createHash('sha256').update(outsideRunFindingBytes).digest('hex')}`,
+  },
+  findingsBytes: outsideRunFindingBytes,
+})
+assert.match(outsideRunBatch.errors.join('\n'), /outside the run batch/u)
 
 const staleFindingBytes = Buffer.from(`${JSON.stringify({ ...finding, pageFingerprint: thirdDigest })}\n`)
 const staleBatch = await validateGoalEvidenceFindingBatch({

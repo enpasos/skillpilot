@@ -13,11 +13,19 @@ const FINDING_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-finding.sc
 
 export type GoalEvidenceAiRunManifest = {
   runId: string
+  campaignId?: string
+  roundId?: string
+  batchId?: string
+  batchInputFingerprint?: string
   bundleFingerprint: string
   bookDigest: string
+  promptFingerprint: string
+  criteriaFingerprint: string
+  independenceGroupId: string
   role: string
   blindToOtherRuns: boolean
   goalIds: string[]
+  inputArtifacts: Array<{ role: string; digest: string }>
   startedAt: string
   completedAt: string
   outputDigest: string
@@ -59,6 +67,109 @@ const parseJsonl = (value: Buffer, label: string) => value.toString('utf8')
   .filter(({ line }) => line !== '')
   .map(({ line, lineNumber }) => parseJson<GoalEvidenceFinding>(line, `${label}:${lineNumber}`))
 
+const sameOrderedValues = (left: readonly string[], right: readonly string[]) => (
+  left.length === right.length && left.every((value, index) => value === right[index])
+)
+
+const contentArtifactRoles = new Set([
+  'book_pdf',
+  'book_html',
+  'book_model',
+  'review_input_json',
+  'review_input_jsonl',
+  'description_review_batch_input_jsonl',
+  'review_markdown',
+])
+
+export const validateGoalReviewRunBindings = ({
+  bundle,
+  run,
+  expectedGoalIds,
+  expectedBatchInputFingerprint,
+}: {
+  bundle: GoalBookReviewBundleManifest
+  run: GoalEvidenceAiRunManifest
+  expectedGoalIds?: readonly string[]
+  expectedBatchInputFingerprint?: string
+}) => {
+  const errors: string[] = []
+  if (run.bundleFingerprint !== bundle.bundleFingerprint) {
+    errors.push('Run bundleFingerprint does not match the review bundle')
+  }
+  if (run.bookDigest !== bundle.bookModelDigest) {
+    errors.push('Run bookDigest does not match the review bundle')
+  }
+  if (run.promptFingerprint !== bundle.promptFingerprint) {
+    errors.push('Run promptFingerprint does not match the review bundle')
+  }
+  if (run.criteriaFingerprint !== bundle.criteriaFingerprint) {
+    errors.push('Run criteriaFingerprint does not match the review bundle')
+  }
+
+  const bundleGoalIds = bundle.goals.map(({ goalId }) => goalId)
+  if (expectedGoalIds) {
+    if (!sameOrderedValues(run.goalIds, expectedGoalIds)) {
+      errors.push('Run goalIds do not match the campaign batch exactly and in order')
+    }
+  } else {
+    const startIndex = bundleGoalIds.indexOf(run.goalIds[0] ?? '')
+    const expectedSlice = startIndex < 0
+      ? []
+      : bundleGoalIds.slice(startIndex, startIndex + run.goalIds.length)
+    if (startIndex < 0 || !sameOrderedValues(run.goalIds, expectedSlice)) {
+      errors.push('Run goalIds must be an exact ordered contiguous subset of the review bundle')
+    }
+  }
+
+  const bundleArtifacts = new Map(bundle.artifacts.map((artifact) => [artifact.role, artifact]))
+  const seenArtifactRoles = new Set<string>()
+  run.inputArtifacts.forEach(({ role, digest }) => {
+    if (seenArtifactRoles.has(role)) errors.push(`Run inputArtifacts repeat role ${role}`)
+    seenArtifactRoles.add(role)
+    if (role === 'description_review_batch_input_jsonl') {
+      if (!expectedBatchInputFingerprint) {
+        errors.push('Run input artifact description_review_batch_input_jsonl is not valid outside a bound description-review batch')
+      } else if (digest !== expectedBatchInputFingerprint) {
+        errors.push('Run description_review_batch_input_jsonl digest does not match the campaign batch')
+      }
+      return
+    }
+    const artifact = bundleArtifacts.get(role as GoalBookReviewBundleManifest['artifacts'][number]['role'])
+    if (!artifact) errors.push(`Run input artifact ${role} is absent from the review bundle`)
+    else if (artifact.digest !== digest) {
+      errors.push(`Run input artifact ${role} digest does not match the review bundle`)
+    }
+  })
+  if (!seenArtifactRoles.has('review_prompt')) {
+    errors.push('Run inputArtifacts must include the bound review_prompt')
+  }
+  if (!seenArtifactRoles.has('review_criteria')) {
+    errors.push('Run inputArtifacts must include the bound review_criteria')
+  }
+  if (expectedBatchInputFingerprint && !seenArtifactRoles.has('description_review_batch_input_jsonl')) {
+    errors.push('Run inputArtifacts must include the bound description_review_batch_input_jsonl')
+  }
+  if (![...seenArtifactRoles].some((role) => contentArtifactRoles.has(role))) {
+    errors.push('Run inputArtifacts must include at least one bound review content artifact')
+  }
+  const promptArtifact = bundleArtifacts.get('review_prompt')
+  if (promptArtifact && promptArtifact.digest !== bundle.promptFingerprint) {
+    errors.push('Review bundle promptFingerprint does not match its review_prompt artifact')
+  }
+  const criteriaArtifact = bundleArtifacts.get('review_criteria')
+  if (criteriaArtifact && criteriaArtifact.digest !== bundle.criteriaFingerprint) {
+    errors.push('Review bundle criteriaFingerprint does not match its review_criteria artifact')
+  }
+
+  if (run.role !== 'synthesizer' && run.blindToOtherRuns !== true) {
+    errors.push('Independent AI review runs must be blind to other runs')
+  }
+  if (Date.parse(run.completedAt) < Date.parse(run.startedAt)) {
+    errors.push('Run completedAt precedes startedAt')
+  }
+  return errors
+}
+
 const loadValidators = async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   addFormats(ajv)
@@ -96,32 +207,21 @@ export const validateGoalEvidenceFindingBatch = async ({
   })
   if (errors.length > 0) return { errors, findings }
 
-  if (run.bundleFingerprint !== bundle.bundleFingerprint) {
-    errors.push('Run bundleFingerprint does not match the review bundle')
-  }
-  if (run.bookDigest !== bundle.bookModelDigest) {
-    errors.push('Run bookDigest does not match the review bundle')
-  }
-  const bundleGoalIds = bundle.goals.map(({ goalId }) => goalId)
-  if (JSON.stringify(run.goalIds) !== JSON.stringify(bundleGoalIds)) {
-    errors.push('Run goalIds must match the ordered review-bundle goal IDs exactly')
-  }
-  if (run.role !== 'synthesizer' && run.blindToOtherRuns !== true) {
-    errors.push('Independent AI review runs must be blind to other runs')
-  }
-  if (Date.parse(run.completedAt) < Date.parse(run.startedAt)) {
-    errors.push('Run completedAt precedes startedAt')
-  }
+  errors.push(...validateGoalReviewRunBindings({ bundle, run }))
   if (run.outputDigest !== sha256(findingsBytes)) {
     errors.push('Run outputDigest does not match findings.jsonl bytes')
   }
 
   const goalById = new Map(bundle.goals.map((goal) => [goal.goalId, goal]))
+  const runGoalIds = new Set(run.goalIds)
   const findingIds = new Set<string>()
   findings.forEach((finding) => {
     const goal = goalById.get(finding.goalId)
     if (findingIds.has(finding.findingId)) errors.push(`Duplicate findingId ${finding.findingId}`)
     findingIds.add(finding.findingId)
+    if (!runGoalIds.has(finding.goalId)) {
+      errors.push(`Finding ${finding.findingId} cites a goal outside the run batch`)
+    }
     if (!goal) errors.push(`Finding ${finding.findingId} cites a goal outside the bundle`)
     else if (
       finding.goalFingerprint !== goal.goalFingerprint

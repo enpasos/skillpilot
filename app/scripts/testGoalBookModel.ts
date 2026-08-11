@@ -27,6 +27,25 @@ const SEKI_VIEW_PATH = 'curricula/DE/Gymnasium/composition-views/mathematik/de-d
 const SEMANTIC_KIND_LEDGER_PATH = 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'
 const GOAL_VISUALIZATION_QA_PATH = 'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'
 const PILOT_EVIDENCE_REVIEW_PATH = 'curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-representation-choice-pilot.review.jsonl'
+const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_CONFIG_PATH = './config/goal-books/de-de-gym-math-description-understanding-evidence-calibration.json'
+const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
+  'cf474eab-1379-4877-907e-58b0892ce734',
+  '6b0075bb-f71c-59f6-ab98-fb894568cc26',
+  '2242c379-ddbb-4f03-8aed-13f49a4674e8',
+  '8dd9f210-2683-5902-acab-e3be22725232',
+  'e09072f9-67d9-412c-b872-24ecbf329232',
+  '797c4b05-96c4-59a7-85b2-f2690e22918f',
+  '0c8c1ae9-135e-4fe5-bf67-e497eb3a9909',
+  '27b63e2e-6a34-483e-8e5a-fe0f49670d1d',
+  '2143e9e8-b176-545b-b2fa-91bbb6c8cf5c',
+  '3bfc2747-03e2-57db-b13f-01f78835eefd',
+  '2afba4a2-287d-5e8f-aeee-a3bcf8652236',
+  '6481fc23-d923-5ffc-ba49-f499328f43b8',
+  '25157542-a262-562f-a29c-ac8d53b9798f',
+  '508292f2-671b-4fd3-acbf-53d705e44693',
+  '377282dc-80b0-5bbf-bef2-a9f22e3919c1',
+  'f9c24dd8-eaa5-5395-8679-820c1a74e7b7',
+] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
 
@@ -543,7 +562,7 @@ const [
   canonicalLandscapeText,
   sekIViewText,
   goalVisualizationQaText,
-  pilotEvidenceReviewText,
+  archivedPilotEvidenceReviewText,
 ] = await Promise.all([
   readFile(fileURLToPath(new URL(`../../${LANDSCAPE_PATH}`, import.meta.url)), 'utf8'),
   readFile(fileURLToPath(new URL(`../../${SEKI_VIEW_PATH}`, import.meta.url)), 'utf8'),
@@ -567,6 +586,10 @@ const goalVisualizationQa = JSON.parse(goalVisualizationQaText) as {
 const goalVisualizationAssetDigests = Object.fromEntries(goalVisualizationQa.records
   .filter(({ visualizationState }) => visualizationState === 'available')
   .map(({ imageUrl, assetSha256 }) => [imageUrl, assetSha256]))
+const currentV1CompatibilityRecord = JSON.parse(archivedPilotEvidenceReviewText) as Record<string, unknown>
+currentV1CompatibilityRecord.goalFingerprint = 'sha256:377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa'
+currentV1CompatibilityRecord.reviewInputFingerprint = 'sha256:20b5e3817868385c4df965434fa4702422cf778fa53158bc9a74aa6326f9699e'
+const currentV1CompatibilityText = `${JSON.stringify(currentV1CompatibilityRecord)}\n`
 const curricularAtomicGoalIds = new Set(semanticKindLedger.decisions
   .filter(({ semanticKind, decisionStatus }) => (
     semanticKind === 'curricularAtomic' && decisionStatus === 'authoritative'
@@ -622,9 +645,7 @@ assert.equal(
   sekIIPilotPage.visualization?.originalDigest,
   'sha256:c016cda41bb13375f1ec5eec23ca3fdace458322e4bd174ce9b7601e7fca5cd2',
 )
-assert.equal(sekIIPilotPage.evidenceReview?.status, 'needs_human_review')
-assert.equal(sekIIPilotPage.evidenceReview?.evidenceLevel, 'E1')
-assert.equal(sekIIPilotPage.evidenceReview?.maximumClaimScope, 'G1')
+assert.equal(sekIIPilotPage.evidenceReview, null)
 
 const nationalAtlasConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-gym-math-national-atlas.json',
@@ -705,6 +726,29 @@ assert.ok(allAtlasScopes.every(({ stage, durationModel, courseProfile }) => (
   || (stage === 'SekII' && (courseProfile === 'GK' || courseProfile === 'LK'))
 )))
 
+const descriptionUnderstandingEvidenceCalibrationConfigPath = fileURLToPath(new URL(
+  DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_CONFIG_PATH,
+  import.meta.url,
+))
+const descriptionUnderstandingEvidenceCalibration = (
+  await loadGoalBookBuildInputs(descriptionUnderstandingEvidenceCalibrationConfigPath)
+).model
+assert.equal(
+  descriptionUnderstandingEvidenceCalibration.book.id,
+  'de-de-gym-math-description-understanding-evidence-calibration-v1',
+)
+assert.equal(descriptionUnderstandingEvidenceCalibration.book.publicationMode, 'review')
+assert.deepEqual(
+  descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId),
+  DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS,
+  'the versioned calibration book must retain all 16 goals in the reviewed order',
+)
+assert.equal(descriptionUnderstandingEvidenceCalibration.book.pageCount, 16)
+assert.equal(
+  new Set(descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId)).size,
+  16,
+)
+
 const canonicalLandscape = JSON.parse(canonicalLandscapeText) as {
   landscapeId: string
   goals: Array<{ id: string }>
@@ -728,7 +772,7 @@ const pilotBuildInput: GoalBookBuildInput = {
   goalVisualizationAssetDigests,
   evidenceReviewSources: [{
     path: PILOT_EVIDENCE_REVIEW_PATH,
-    text: pilotEvidenceReviewText,
+    text: currentV1CompatibilityText,
   }],
   config: {
     bookId: 'pilot-goal',
@@ -749,7 +793,7 @@ assert.equal(pilotPage.anchor, `goal-${PILOT_GOAL_ID}`)
 assert.equal(pilotPage.title, 'Darstellungsform auswählen und begründen')
 assert.equal(
   pilotPage.goalFingerprint,
-  'sha256:a6953d180237613eaa93b1516289ca02c0084aa1409280e7403636b1c220152a',
+  'sha256:377ebf71de434b0f58f9472b5ebf9a47539d8b59aec4e23010a2a4b54eef7baa',
   'the book reuses the goal-evidence semantic fingerprint contract',
 )
 assert.match(pilotPage.pageFingerprint, /^sha256:[0-9a-f]{64}$/u)
@@ -764,8 +808,12 @@ assert.equal(
 assert.equal(pilotPage.evidenceReview?.reviewId, 'canonical-math-representation-choice-pilot')
 assert.equal(pilotPage.evidenceReview?.status, 'needs_human_review')
 
+const archivedV1EvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
+archivedV1EvidenceInput.evidenceReviewSources[0].text = archivedPilotEvidenceReviewText
+expectBuildFailure(archivedV1EvidenceInput, /stale goalFingerprint/u)
+
 const changedEvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
-const changedEvidenceRecord = JSON.parse(pilotEvidenceReviewText.trim()) as Record<string, unknown>
+const changedEvidenceRecord = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 changedEvidenceRecord.status = 'rejected'
 changedEvidenceInput.evidenceReviewSources[0].text = `${JSON.stringify(changedEvidenceRecord)}\n`
 const changedEvidenceBook = buildGoalBookModel(changedEvidenceInput)
@@ -774,19 +822,19 @@ assert.notEqual(changedEvidenceBook.pages[0].pageFingerprint, pilotPage.pageFing
 assert.notEqual(changedEvidenceBook.digest, pilotBook.digest)
 
 const staleEvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
-const staleEvidenceRecord = JSON.parse(pilotEvidenceReviewText.trim()) as Record<string, unknown>
+const staleEvidenceRecord = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 staleEvidenceRecord.reviewInputFingerprint = `sha256:${'f'.repeat(64)}`
 staleEvidenceInput.evidenceReviewSources[0].text = `${JSON.stringify(staleEvidenceRecord)}\n`
 expectBuildFailure(staleEvidenceInput, /stale reviewInputFingerprint/u)
 
 const evidenceWithUnknownFieldInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
-const evidenceWithUnknownField = JSON.parse(pilotEvidenceReviewText.trim()) as Record<string, unknown>
+const evidenceWithUnknownField = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 evidenceWithUnknownField.unexpected = true
 evidenceWithUnknownFieldInput.evidenceReviewSources[0].text = `${JSON.stringify(evidenceWithUnknownField)}\n`
 expectBuildFailure(evidenceWithUnknownFieldInput, /violates the closed goal-evidence schema/u)
 
 const evidenceWithUnknownFacetInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
-const evidenceWithUnknownFacet = JSON.parse(pilotEvidenceReviewText.trim()) as {
+const evidenceWithUnknownFacet = JSON.parse(currentV1CompatibilityText.trim()) as {
   profile: { coverageRequirements: { allOf: string[] } }
 }
 evidenceWithUnknownFacet.profile.coverageRequirements.allOf.push('unknown-facet')
@@ -827,5 +875,5 @@ staleBookDigestModel.digest = `sha256:${'0'.repeat(64)}`
 assert.throws(() => parseAndValidateGoalBookModel(staleBookDigestModel), /stale digest/u)
 
 console.log(
-  `Goal-book model tests passed (${sekIBook.pages.length} Sek-I, ${sekIIGkBook.pages.length} SekII-GK, and ${nationalAtlas.pages.length} nationwide curricular pages).`,
+  `Goal-book model tests passed (${sekIBook.pages.length} Sek-I, ${sekIIGkBook.pages.length} SekII-GK, ${nationalAtlas.pages.length} nationwide curricular pages, and ${descriptionUnderstandingEvidenceCalibration.pages.length} calibration pages).`,
 )

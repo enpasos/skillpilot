@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 interface RuntimeIndexConfig {
   label: string
+  landscapePath: string
   publicIndexPath: string
   minimumItemCount: number
   minimumClassicSourceRoutes: number
@@ -24,6 +25,7 @@ const repoRoot = resolve(scriptDir, '../..')
 const runtimeIndexes: RuntimeIndexConfig[] = [
   {
     label: 'Mathematik',
+    landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
     publicIndexPath: 'app/public/data/goal-source-rationales-math-public.json',
     minimumItemCount: 600,
     minimumClassicSourceRoutes: 600,
@@ -42,6 +44,7 @@ const runtimeIndexes: RuntimeIndexConfig[] = [
   },
   {
     label: 'Physik',
+    landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
     publicIndexPath: 'app/public/data/goal-source-rationales-physics-public.json',
     minimumItemCount: 350,
     minimumClassicSourceRoutes: 350,
@@ -101,6 +104,7 @@ function readIndex(
 function validateIndex(
   config: RuntimeIndexConfig,
   payload: Record<string, unknown>,
+  canonicalGoalsById: ReadonlyMap<string, Record<string, unknown>>,
   failures: string[],
 ): void {
   const request = asRecord(payload.request)
@@ -113,6 +117,9 @@ function validateIndex(
   }
   if (request.goalSelection !== config.expectedRequest.goalSelection) {
     failures.push(`${pathLabel}: request.goalSelection must be ${config.expectedRequest.goalSelection}`)
+  }
+  if (request.landscapePath !== config.landscapePath) {
+    failures.push(`${pathLabel}: request.landscapePath must be ${config.landscapePath}`)
   }
   if (request.jurisdiction !== config.expectedRequest.jurisdiction) {
     failures.push(`${pathLabel}: request.jurisdiction must be ${config.expectedRequest.jurisdiction}`)
@@ -154,7 +161,19 @@ function validateIndex(
   items.forEach((item) => {
     const goal = asRecord(item.goal)
     const goalId = readString(goal.id)
-    if (goalId !== null) itemsByGoalId.set(goalId, item)
+    if (goalId === null) return
+    itemsByGoalId.set(goalId, item)
+    const canonicalGoal = canonicalGoalsById.get(goalId)
+    if (!canonicalGoal) {
+      failures.push(`${pathLabel}: goal ${goalId} is missing from ${config.landscapePath}`)
+      return
+    }
+    if (goal.title !== canonicalGoal.title) {
+      failures.push(`${pathLabel}: goal ${goalId} title is stale relative to ${config.landscapePath}`)
+    }
+    if (goal.description !== canonicalGoal.description) {
+      failures.push(`${pathLabel}: goal ${goalId} description is stale relative to ${config.landscapePath}`)
+    }
   })
 
   config.requiredMemPocGoals.forEach((goalId) => {
@@ -182,8 +201,16 @@ const passedSummaries: string[] = []
 
 runtimeIndexes.forEach((config) => {
   const publicIndex = readIndex(config.publicIndexPath, failures)
+  const canonicalLandscape = readIndex(config.landscapePath, failures)
   if (publicIndex !== null) {
-    validateIndex(config, publicIndex.payload, failures)
+    const canonicalGoals = canonicalLandscape === null || !Array.isArray(canonicalLandscape.payload.goals)
+      ? []
+      : canonicalLandscape.payload.goals.map(asRecord)
+    const canonicalGoalsById = new Map(canonicalGoals.flatMap((goal) => {
+      const goalId = readString(goal.id)
+      return goalId === null ? [] : [[goalId, goal] as const]
+    }))
+    validateIndex(config, publicIndex.payload, canonicalGoalsById, failures)
     const summary = asRecord(publicIndex.payload.summary)
     passedSummaries.push(
       [
