@@ -76,14 +76,19 @@ ChatGPT visibility guarantee here:
 - <https://developers.openai.com/plugins/deploy/troubleshooting#server-side-issues>
 
 The renderer is offered only when the learner preference is enabled and the
-current context contains a safe visualization projection. When the newest full
-result contains `goalVisualization` and permits the renderer, invoke it once
-with that result's unchanged `goalId`, copying its top-level `stateVersion` into
-the renderer input `expectedStateVersion`. Do not reuse or retry stale
-authorization. A required mastery handoff remains before the successor
-section; render immediately before coaching the associated active goal. Its
-receipt does not replace the preceding full context. The renderer supplies
-the following bounded `structuredContent` to the image-only widget:
+current context contains a safe visualization projection. Each previously
+unseen pair of the full context's `goalVisualization.goalId` and the authorizing
+result's top-level `stateVersion` in a result that permits the renderer creates
+a separate one-shot authorization. Invoke it once for that pair—even if an
+earlier pair in the conversation was already rendered. A repeated pair creates
+no automatic call; an explicit learner request to show the current image again
+creates one new one-shot call after a fresh qualifying result. Copy the context
+goal and top-level version unchanged into `goalId` and `expectedStateVersion`.
+Do not reuse stale authorization or retry otherwise.
+A required mastery handoff remains before
+the successor section; render immediately before coaching the associated active
+goal. Its receipt does not replace the preceding full context. The renderer
+supplies the following bounded `structuredContent` to the image-only widget:
 
 ```json
 {

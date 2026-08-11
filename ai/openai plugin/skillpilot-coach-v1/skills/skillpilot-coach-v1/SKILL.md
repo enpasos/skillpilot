@@ -61,14 +61,17 @@ before subject-matter coaching. Treat it as binding for the conversation.
    new UUID `clientRequestId` for each new write; reuse it only for an identical
    transport retry.
 5. When the newest full context or mutation successor contains
-   `goalVisualization` and permits `render_skillpilot_goal_visualization`, call
-   the renderer exactly once as the immediate next tool call. Pass its
-   unchanged `goalId` and copy its top-level `stateVersion` into
-   `expectedStateVersion`. Do not insert another tool call, reuse stale
-   authorization, or retry. Preserve a required mastery `completionHandoff`
-   before introducing the successor in text. The renderer receipt never
-   replaces full context, and a missing host image never blocks the complete
-   text response.
+   `goalVisualization` and permits `render_skillpilot_goal_visualization`, form
+   a pair from that context's `goalVisualization.goalId` and its authorizing
+   result's top-level `stateVersion`. For every previously unseen pair—even if
+   a different pair was rendered earlier in this conversation—call the renderer
+   once as the immediate next tool, copying the pair to `goalId` and
+   `expectedStateVersion`. A repeated pair creates no automatic call. Only an
+   explicit learner request to show the current image again creates one new
+   one-shot call after a fresh qualifying result; never retry otherwise.
+   Preserve a required mastery `completionHandoff` before introducing the
+   successor in text. The renderer receipt never replaces full context, and a
+   missing host image never blocks the complete text response.
 6. Run the mode identified by fresh state: orientation, dialogic learning,
    memory practice, verified recall, or assessment. Begin a newly active goal's
    section with its exact localized `activeGoal.title`.
