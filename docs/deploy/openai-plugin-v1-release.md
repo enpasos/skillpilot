@@ -43,6 +43,28 @@ Karte atomar über das app-only Werkzeug.
 Coach-, Auswahl- und sonstige Zustandsabläufe bleiben Chat-/Tool-basiert und
 ihre Werkzeuge UI-frei. Der Adapter wertet für die
 Freigabe weder `openai/userAgent` noch eine andere Client-Oberflächenklasse aus.
+
+Der Startöffner besitzt im unveröffentlichten V1-Vertrag das verpflichtende
+geschlossene Paar `purpose=START|RENEW_EXISTING` und
+`communicationLocale=de|en`. `START` verwendet die aktuelle deutsche oder
+englische Unterhaltungssprache. Die einmalige Same-Chat-Erneuerung nach
+`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE` verwendet `purpose=RENEW_EXISTING` und bevorzugt
+`recoveryCommunicationLocale` aus dem Fehler, sonst die Locale der letzten
+Session. Neue
+sessiongebundene Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt
+eine Stunde ist gültig. Ein gespeicherter Write-Replay mit gleichem Toolnamen,
+kanonisch identischen Argumenten und derselben `clientRequestId` bleibt bei
+einer noch nicht abgelaufenen Session und verfügbarer gepinnter
+Workflow-/Curriculumversion zulässig und führt keine Mutation erneut aus.
+Ein separat gegateter First-Party-Live-Test darf die Laufzeit genau einer über
+`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` erzeugten Session mit
+dem optionalen Feld `diagnosticSessionTtlSeconds` verkürzen. Das Feld ist nur
+bei `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true`, nur für
+`3601..86400` Sekunden und niemals oberhalb der normalen `PT24H`-Laufzeit
+zulässig. Es ist kein MCP-/Component-Vertrag: Der private Bootstrap lehnt es ab
+und bleibt bei `PT24H`; der nächste First-Party-Request ohne Feld ist ebenfalls
+automatisch wieder `PT24H`.
 Die V1-Linie besitzt keinen öffentlichen Kompatibilitätsalias; Plugin und
 Directory verwenden ausschließlich den dedizierten V1-Origin. Die acht
 neutralen Major-Hosts V2 bis V9 antworten bis zu ihrer jeweiligen Freigabe mit
@@ -181,6 +203,30 @@ Paketänderung benötigt eine neue SemVer.
    an den Host. Nach bestätigter Hostannahme wird
    die Startkarte ohne Neustartaktion geschlossen. Die normale Journey darf weder
    **SkillPilot öffnen** noch eine doppelte Setupfrage im Chat benötigen.
+   Zusätzlich muss eine Session mit exakt `PT1H` Restlaufzeit noch genau eine
+   neue Operation zulassen. Bei weniger als `PT1H` müssen Reads und neue Writes
+   vor der Fachoperation `SESSION_RENEWAL_REQUIRED` liefern; ein bereits
+   committeter identischer Write darf bei noch nicht abgelaufener Session und
+   verfügbarer gepinnter Workflow-/Curriculumversion nur sein gespeichertes
+   Resultat replayen. Der Coach öffnet dann genau einmal
+   `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der bevorzugt aus
+   `recoveryCommunicationLocale`, sonst aus der letzten Session übernommenen
+   `communicationLocale`. Er übernimmt ausschließlich die neueste
+   Component-Startnachricht im selben Chat und lädt daraus frischen Kontext.
+   Neuer Chat und First-Party-Website sind ausschließlich Fallback bei
+   tatsächlich fehlender Component-/Handoff-Fähigkeit.
+   Für einen zeitlich praktikablen Live-Nachweis darf das Diagnose-Gate kurz
+   aktiviert und ein einzelner First-Party-Start mit
+   `diagnosticSessionTtlSeconds=3660` verwendet werden; das ergibt ungefähr eine
+   Minute bis zum Guard-Übergang. `5400` eignet sich alternativ für einen
+   90-Minuten-Soak. Die globale Learning-Session-TTL bleibt `PT24H`. Unmittelbar
+   danach muss ein Request ohne Diagnosefeld wieder `PT24H` liefern; außerdem
+   müssen deaktiviertes Gate, `3600`, `86401`, ein Wert über der normalen
+   Laufzeit und jeder Component-Bootstrap-Versuch mit diesem Feld fail-closed
+   bleiben. Für die sofortige Rückkehr zum normalen `PT24H`-Verhalten genügt
+   das Weglassen des Diagnosefeldes und damit kein Deployment; das separate
+   Gate wird nach dem kontrollierten Testfenster über den regulären
+   Konfigurationsweg wieder deaktiviert.
    Beim Kartenlernen müssen Vorder-/Rückseiten des begrenzten Stapels
    ausschließlich in Resultat-`_meta` zur Komponente gelangen; Blättern darf
    keinen Toolaufruf auslösen und der Review-Vertrag akzeptiert nur

@@ -84,6 +84,13 @@ SkillPilot erzeugt und unverändert in der vorbereiteten Startnachricht
 verwendet. Keine permanente SkillPilot-ID wird in das Portal oder in diese
 Testbeschreibung kopiert.
 
+Nur für den separaten Live-Nachweis des Session-Guards darf am First-Party-
+`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` einmal das optionale
+`diagnosticSessionTtlSeconds` verwendet werden. Voraussetzung ist
+`SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true`; zulässig sind
+`3601..86400` Sekunden, höchstens jedoch die normale `PT24H`-Laufzeit. Alle
+gewöhnlichen Reviewfälle und der private Component-Bootstrap bleiben `PT24H`.
+
 Nach bestandenem Public-Release-Gate ersetzt für den Direct-Start-Fall die
 private Komponente diesen First-Party-Vorlauf:
 
@@ -91,7 +98,9 @@ private Komponente diesen First-Party-Vorlauf:
 
 - **Prompt:** `Use SkillPilot Coach v1 and start a new learning session
   directly.`
-- **Erwartetes Verhalten:** `open_skillpilot_start` öffnet genau eine
+- **Erwartetes Verhalten:** `open_skillpilot_start` wird genau einmal mit
+  `purpose=START` und, entsprechend der englischen Unterhaltung,
+  `communicationLocale=en` aufgerufen und öffnet genau eine
   Komponente. Die Person wählt CREATE, bestätigt den Providerhinweis, sichert
   die nur dort angezeigte neue ID und wählt Curriculum sowie alle erforderlichen
   Personalisierungsoptionen. Bestätigte Schritte bleiben mit ihren
@@ -195,17 +204,44 @@ private Komponente diesen First-Party-Vorlauf:
 - **Warum nicht ausführen:** Der Skill ist absichtlich nicht implizit aktiv und
   eine allgemeine Fachfrage autorisiert weder Sessionzugriff noch Zustandslesen.
 
-### N2 – Fehlende, ungültige oder abgelaufene Lernsession
+### N2 – Fehlende, ungültige, bald ablaufende oder abgelaufene Lernsession
 
 - **Prompt:** `Continue my SkillPilot session` ohne gültige aktuelle
-  `learningSessionId` oder mit einem absichtlich ungültigen Wert.
+  `learningSessionId`, mit einem absichtlich ungültigen Wert oder mit einer
+  Fixture, deren Restlaufzeit kleiner als `PT1H` ist.
 - **Erwartetes Verhalten:** Fail-closed. Bei einem neuen ausdrücklichen
-  Startversuch öffnet der Coach genau einmal die private Direct-Start-
-  Komponente. Er verlangt weder SkillPilot-ID noch Token im Chat und erfindet
-  keinen Lernstand. Nur wenn Komponente oder sicherer Handoff technisch nicht
-  verfügbar sind, verwendet er den vom Tool gelieferten First-Party-Fallback.
+  Startversuch ohne Startnachricht öffnet der Coach genau einmal
+  `open_skillpilot_start` mit `purpose=START` und der aktuellen deutschen oder
+  englischen Unterhaltungssprache als `communicationLocale=de|en`. Auf
+  `SESSION_REQUIRED`,
+  `SESSION_RENEWAL_REQUIRED` oder `SESSION_VERSION_UNAVAILABLE` öffnet er es
+  stattdessen genau einmal mit `purpose=RENEW_EXISTING` und kopiert bevorzugt
+  `recoveryCommunicationLocale` aus den Fehlerdetails, sonst die Locale der
+  letzten Session. Er verlangt weder SkillPilot-ID noch Token im Chat und
+  erfindet keinen Lernstand. Die vorhandene ID wird nur in der Komponente
+  eingegeben; deren neueste Startnachricht setzt den Ablauf im selben Chat fort
+  und ersetzt jeden älteren Sessionwert. Nur wenn Komponente oder sicherer
+  Handoff technisch nicht verfügbar sind, bietet er einen neuen Chat oder den
+  vom Tool gelieferten First-Party-Fallback an.
 - **Warum nicht ausführen:** OAuth allein autorisiert keine Lernsession; die
   kurzlebige Sessionbindung ist eine unabhängige Datenschutzgrenze.
+- **Grenzfälle:** Eine Fixture mit exakt `PT1H` Restlaufzeit ist noch
+  ausführbar. Unterhalb dieser Grenze darf keine neue fachliche Operation
+  beginnen. Ein Retry eines bereits committeten Writes darf bei gleichem
+  Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId`
+  nur bei noch nicht abgelaufener Session und verfügbarer gepinnter
+  Workflow-/Curriculumversion das gespeicherte Ergebnis liefern und keine
+  zweite Mutation ausführen.
+- **Live-Fixture:** Für einen kurzen Übergang genau einen First-Party-Start mit
+  `diagnosticSessionTtlSeconds=3660` erzeugen; alternativ `5400` für einen
+  90-Minuten-Soak. Das Feld wirkt nur auf diesen Request. Direkt danach muss ein
+  Start ohne Feld wieder eine normale `PT24H`-Session liefern. `3600`, `86401`,
+  ein Wert oberhalb der normalen Laufzeit, ein gesetztes Feld bei deaktiviertem
+  Gate und der private Component-Bootstrap müssen ohne neue Session abweisen.
+  Die globale Learning-Session-TTL wird dafür nie geändert. Das Weglassen des
+  Feldes stellt das normale `PT24H`-Verhalten ohne Deployment sofort wieder her;
+  das separate Gate wird nach dem kontrollierten Testfenster über den regulären
+  Konfigurationsweg wieder deaktiviert.
 
 ### N3 – Prüfungslösung vor vollständiger Abgabe anfordern
 
@@ -227,7 +263,7 @@ eine spätere ausdrückliche Lernaktion korrigierbar.
 
 | Tools | `readOnlyHint` | Begründung |
 | --- | --- | --- |
-| `open_skillpilot_start` | `true` | Öffnet nur die private Startressource und liest die Contract-Line-Projektion; keine ID oder Capability. |
+| `open_skillpilot_start` | `true` | Öffnet mit verpflichtendem `purpose=START|RENEW_EXISTING` und `communicationLocale=de|en` nur die private Start-/Erneuerungsressource und liest die Contract-Line-Projektion; keine ID oder Capability. |
 | `issue_skillpilot_start_capability` | `false` | App-only Autorisierung genau eines bestätigten Bootstrapversuchs; ID-frei, keine Lernsession und kein Modellaufruf. |
 | `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `get_skillpilot_navigation`, `get_skillpilot_verified_recall_answer` | `true` | Lesen einen sessiongebundenen, allowlist-projizierten Zustand; keine Mutation. |
 | `render_skillpilot_goal_visualization` | `true` | Liefert nur die freigegebene Bildprojektion an die explizit gebundene UI. |
@@ -260,7 +296,18 @@ Public-Release-Gate:
 6. Karteikarten-UI und getrennten Verified Recall;
 7. eine vollständige Prüfungsabgabe und Bewertung;
 8. den aktualisierten Lernstand im Cockpit;
-9. einen fail-closed Versuch ohne gültige Lernsession.
+9. einen fail-closed Versuch ohne gültige Lernsession sowie die Grenzfälle
+   exakt `PT1H`, weniger als `PT1H` und gespeicherter Write-Replay mit gleichem
+   Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId`
+   bei noch nicht abgelaufener Session und verfügbarer gepinnter
+   Workflow-/Curriculumversion;
+10. die einmalige `RENEW_EXISTING`-Erneuerung mit vorhandener, im Video
+    verdeckter Test-ID, bevorzugt aus `recoveryCommunicationLocale`
+    übernommener DE-/EN-Locale und neuer Startnachricht im selben Chat; neuer
+    Chat oder Website nur in einem getrennten technischen Fallbackfall;
+11. den requestlokalen `3660`-Sekunden-Live-Test samt unmittelbar folgendem
+    normalem `PT24H`-Start; optional `5400` Sekunden als 90-Minuten-Soak, ohne
+    Änderung der globalen TTL und ohne Diagnosefeld am Component-Bootstrap.
 
 Die private HTTPS-Video-URL wird nur im Portal hinterlegt. Sie darf keine
 permanente SkillPilot-ID, Lernsession, OAuth-Werte oder Review-Zugangsdaten

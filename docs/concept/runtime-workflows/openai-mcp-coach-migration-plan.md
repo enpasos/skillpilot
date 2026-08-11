@@ -138,9 +138,11 @@ Lernsession, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    Recall und Prüfungszustand liegen dauerhaft nur bei SkillPilot.
 3. **Provider bezahlt das Modell:** kein stiller Fallback auf eine von
    SkillPilot bezahlte OpenAI-API.
-4. **Sprache backendautoritativ:** ein neutraler Vertrag ohne frei wählbaren
-   `language`-Parameter. Die beim Start festgelegte `communicationLocale` wird
-   aus der Lernsession geladen und steuert sämtliche sichtbare Kommunikation.
+4. **Sprache backendautoritativ:** ein neutraler Fachvertrag ohne frei
+   wählbaren `language`-Parameter. Nur der sessionlose Startöffner verlangt die
+   geschlossene `communicationLocale=de|en`; die beim finalen Start festgelegte
+   Locale wird aus der Lernsession geladen und steuert sämtliche sichtbare
+   Kommunikation.
 5. **UI-Funktionen strikt trennen:** Der erste produktionsnahe Vertrag besitzt
    drei aktive hashgebundene `text/html;profile=mcp-app`-Ressourcen. Der
    Direktstart-Öffner, der Bild-Renderer und der Karteikartenlauncher tragen
@@ -281,10 +283,12 @@ Vertragsfreigabe mit `404`. Frühere, nie veröffentlichte `mcp-coach-de-v*`- un
 
 ## 5. Sprachneutraler MCP-Vertrag der ersten Version
 
-Die Werkzeuge sind in neutralem Englisch beschrieben, fachlich eng geschnitten
-und besitzen keinen frei wählbaren Sprachparameter. `learningSessionId` ist
-ausnahmslos Pflichtargument jedes Werkzeugs; die übrigen Argumente sind
-werkzeugspezifisch. Das Backend liefert `communicationLocale` und alle
+Die Werkzeuge sind in neutralem Englisch beschrieben und fachlich eng
+geschnitten. Fachliche Tools besitzen keinen frei wählbaren Sprachparameter;
+der sessionlose `open_skillpilot_start` verlangt dagegen das geschlossene Feld
+`communicationLocale` mit genau `de` oder `en`. `learningSessionId` ist
+ausnahmslos Pflichtargument jedes fachlichen Werkzeugs; die übrigen Argumente
+sind werkzeugspezifisch. Das Backend liefert `communicationLocale` und alle
 lernerseitigen Nutzdaten in der Zielsprache. Die Namen bleiben technisch
 eindeutig:
 
@@ -694,8 +698,10 @@ Scopes, Lernsessionen, Tests und Widerrufslogik.
    Starts desselben Lernenden erzeugen zwei verschiedene IDs.
 5. Das Backend speichert nur HMAC beziehungsweise Hash der Sessionreferenz zusammen mit
    Lernendenreferenz, Erzeugungszeitpunkt und absolutem Ablaufzeitpunkt. Die
-   Laufzeit beträgt exakt 24 Stunden und wird durch Nutzung nicht
-   verlängert.
+   normale Laufzeit beträgt exakt 24 Stunden und wird durch Nutzung nicht
+   verlängert. Nur der gegatete, requestlokale First-Party-Live-Test aus der
+   verbindlichen Sessionarchitektur darf eine einzelne Session verkürzen; der
+   private Component-Bootstrap bleibt bei 24 Stunden.
 6. SkillPilot setzt die Sessionreferenz automatisch in die natürliche
    ChatGPT-Startnachricht ein. Die lernende Person muss sie nicht kopieren. Bei
    Direct-Start CREATE sieht und sichert sie die neue permanente SkillPilot-ID
@@ -716,9 +722,18 @@ Person vorliegt. SkillPilot speichert dafür weder Geburtsdatum noch
 Altersprofil; die Angabe ist eine bewusste Selbstbestätigung und keine
 Identitäts- oder Altersverifikation.
 
-Eine Installation direkt in ChatGPT ohne vorheriges **Lernen starten** darf
-OAuth erfolgreich verbinden, erhält bei fachlichen Tools jedoch
-`SESSION_REQUIRED` und verweist verständlich zurück auf SkillPilot.
+Eine Installation direkt in ChatGPT ohne aktuelle Startnachricht darf OAuth
+erfolgreich verbinden und öffnet genau einmal die private Startkomponente mit
+`purpose=START` und `communicationLocale=de` für die aktuelle deutsche oder
+`communicationLocale=en` für die aktuelle englische Unterhaltung. Liefert ein
+fachliches Tool `SESSION_REQUIRED`,
+`SESSION_RENEWAL_REQUIRED` oder `SESSION_VERSION_UNAVAILABLE`, öffnet der Coach
+dieselbe Komponente genau einmal mit `purpose=RENEW_EXISTING` und kopiert als
+zweites Pflichtargument bevorzugt `recoveryCommunicationLocale` aus den
+Fehlerdetails, andernfalls die autoritative Locale der letzten Session. Er
+übernimmt die neue Startnachricht im selben Chat. Ein neuer Chat oder die
+Rückkehr zu SkillPilot ist nur Fallback, wenn Komponente oder sicherer Handoff
+nicht verfügbar sind.
 
 ### 7.2 Vorgesehene Sicherheitsparameter
 
@@ -726,7 +741,7 @@ OAuth erfolgreich verbinden, erhält bei fachlichen Tools jedoch
 | --- | --- |
 | Access Token | 30–60 Minuten |
 | Refresh Token | höchstens 30 Tage, rotierend |
-| Lernsession | bei jedem **Lernen starten** frisch; Ablauf exakt 24 Stunden nach Erzeugung; weder Toolaufruf noch Token-Refresh verlängert sie |
+| Lernsession | bei jedem **Lernen starten** frisch; normaler und privater Component-Ablauf exakt 24 Stunden nach Erzeugung; nur gegateter First-Party-Diagnoserequest requestlokal `3601..86400` Sekunden und höchstens `PT24H`; weder Toolaufruf noch Token-Refresh verlängert sie |
 | Audience/Resource | exakt `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Scopes | `skillpilot.openai.v1.read` und `skillpilot.openai.v1.write` |
 | PKCE | ausschließlich `S256` |

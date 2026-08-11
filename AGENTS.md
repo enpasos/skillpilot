@@ -1039,16 +1039,55 @@ Provider-facing contracts must use derived temporary context instead:
   resolves it inside the backend. The model never supplies a learner ID.
 - Current multilingual OpenAI MCP App line `SkillPilot Coach v1`: OAuth authorizes the fixed registered App
   connection but does not select or identify the learner. `Lernen starten`
-  atomically creates or replaces an independent learning session with an
+  atomically creates a new independent learning session with an
   absolute lifetime of at most 24 hours and inserts its
   `learningSessionId` into the prepared start message. Every fachlicher tool
   requires both a valid OAuth-authorized App request and exactly that current
   `learningSessionId`; the backend selects the learner only through the
   learning-session mapping. OAuth refresh, tool calls, retries, and ChatGPT
-  reconnects must not extend the learning session. A missing or expired
-  learning session returns the bounded MCP application result
-  `SESSION_REQUIRED` with a normal SkillPilot start link; it is not an OAuth
-  failure and must not trigger a reconnect loop.
+  reconnects must not extend the learning session. Before every new
+  session-bound read or write, the backend requires at least `PT1H` of remaining
+  absolute validity. Exactly one hour remaining is valid; less than one hour
+  returns `SESSION_RENEWAL_REQUIRED` before the fachliche operation executes.
+  A retry of an already committed write with the same tool name, canonically
+  identical arguments, and the same `clientRequestId` may still replay its
+  stored result only while the session itself has not expired and its pinned
+  workflow and curriculum versions remain available; that replay performs no
+  operation and no second mutation. Missing, invalid, or expired sessions
+  return `SESSION_REQUIRED`, and unavailable pinned workflow or curriculum
+  revisions return `SESSION_VERSION_UNAVAILABLE`. None is an OAuth failure.
+- The sessionless `open_skillpilot_start` requires the closed pair `purpose`
+  plus `communicationLocale`, with locale restricted to `de` or `en`.
+  With no current start message, the model calls it exactly once with
+  `{"purpose":"START","communicationLocale":"de"}` for a German
+  conversation or `{"purpose":"START","communicationLocale":"en"}` for an
+  English conversation. On `SESSION_REQUIRED`,
+  `SESSION_RENEWAL_REQUIRED`, or `SESSION_VERSION_UNAVAILABLE`, it calls the
+  same tool exactly once with `purpose=RENEW_EXISTING`. For that call it copies
+  `recoveryCommunicationLocale` from the newest error details when present;
+  otherwise it reuses the last session's authoritative `communicationLocale`.
+  German maps to `de`, English to `en`; only when neither source remains
+  available does the current conversation language supply that same closed
+  `de`/`en` choice. The model then waits for the newest component-authored
+  start message. The existing SkillPilot ID is entered only in the private
+  component and reaches only the fixed direct HTTPS bootstrap endpoint. For
+  subsequent calls in that conversation, the fresh message supersedes every
+  older session value; it does not revoke the older independent session
+  records. A new chat or the SkillPilot website is a fallback only when the
+  component or secure same-chat handoff is unavailable; neither is the normal
+  renewal path and OAuth must not be reconnected.
+- The first-party endpoint
+  `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` accepts the optional
+  live-test-only JSON field `diagnosticSessionTtlSeconds` only while
+  `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true`. Its integer
+  value must be between `3601` and `86400` seconds inclusive and must not exceed
+  the normal `PT24H` learning-session lifetime. It affects only the independent
+  session created by that one request; the next request without the field uses
+  `PT24H` automatically. The private component bootstrap rejects the field and
+  always uses the normal lifetime. Prefer `3660` seconds for an approximately
+  one-minute transition across the `PT1H` action guard or `5400` seconds for a
+  90-minute soak. Never lower the global learning-session TTL for this test, and
+  disable the diagnostic gate again after the live check.
 - The V1 public MCP endpoint and its exact OAuth Resource/Audience are both
   `https://mcp-coach-v1.skillpilot.com/mcp`. Protected-resource metadata
   is published at the RFC 9728 path-insertion URL
@@ -1060,8 +1099,9 @@ Provider-facing contracts must use derived temporary context instead:
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
   compatibility routes. The still-unpublished `1.0.0` draft binds each UI tool
-  to its own active, hash-bound MCP Apps resource: the image-only goal renderer
-  and the interactive memory-practice launcher. Previously advertised hash
+  to its own active, hash-bound MCP Apps resource: the private start and
+  same-chat renewal component, the image-only goal renderer, and the interactive
+  memory-practice launcher. Previously advertised hash
   URIs remain byte-identically readable as passive resources. Ordinary
   coaching, selection, mastery, Verified Recall, and exam flows remain normal
   MCP/chat flows without UI bindings; the memory-card review write is app-only
@@ -1169,9 +1209,18 @@ provider policy and product review explicitly permit it.
 - **OpenAI identity/session rule:** OAuth authorizes the registered App
   transport but does not select the learner. An independent, absolute 24-hour
   server-side learning session addresses the learner for fachliche tools. Only
-  a first-party `Lernen starten` action creates or replaces it; neither
-  bearer-token refresh nor MCP activity slides its expiry. `SESSION_REQUIRED`
-  means “start again in SkillPilot”, not “reconnect OAuth”.
+  an explicitly confirmed first-party or private-component `Lernen starten`
+  action creates a new independent session; neither bearer-token refresh nor
+  MCP activity slides its expiry. New session-bound operations require at least
+  one hour of remaining validity, including the exact `PT1H` boundary. Below that boundary,
+  the private component renews the session from an existing SkillPilot ID in the
+  same chat. Only a replay with the same tool name, canonically identical
+  arguments, and the same `clientRequestId` for an already committed write may
+  bypass the one-hour action guard while the session remains unexpired and its
+  pinned workflow and curriculum versions remain available, because it
+  executes no fachliche operation. Session recovery means “start a fresh
+  learning session”, not “reconnect OAuth” and not necessarily “open a new
+  chat”.
 - **Prototype boundary:** `ai/openai app/` contains an executable neutral
   Streamable-HTTP MCP Apps mechanism prototype and local host simulation with
   localized demo payload catalogs. It exposes one control-plane contract rather

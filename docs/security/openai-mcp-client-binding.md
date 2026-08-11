@@ -103,11 +103,28 @@ Kurzfassung:
 - jeder Klick erzeugt eine andere ID, auch für denselben Lernenden;
 - die absolute Laufzeit beträgt exakt 24 Stunden und wird nicht
   verlängert;
+- neue fachliche Operationen benötigen mindestens `PT1H` Restlaufzeit; exakt
+  `PT1H` ist gültig;
+- ein bereits committeter Write darf innerhalb der letzten Stunde nur mit
+  gleichem Toolnamen, kanonisch identischen Argumenten und derselben
+  `clientRequestId`, bei noch nicht abgelaufener Session und verfügbarer
+  gepinnter Workflow-/Curriculumversion sein gespeichertes Resultat replayen
+  und mutiert nicht erneut;
 - SkillPilot speichert nur den HMAC-Hash und die serverinterne
   Lernendenzuordnung;
 - der Startprompt trägt die ID sichtbar in den neuen Chat;
 - jedes fachliche MCP-Tool verlangt dieselbe ID;
 - fehlende, unbekannte oder abgelaufene IDs werden ohne Fallback abgelehnt.
+
+`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
+`SESSION_VERSION_UNAVAILABLE` sind keine OAuth-Fehler. Der normale
+Wiederherstellungsweg öffnet genau einmal die private Startkomponente mit
+`purpose=RENEW_EXISTING` und der erforderlichen `communicationLocale=de|en`.
+Diese stammt bevorzugt aus `recoveryCommunicationLocale` im Fehler, sonst aus
+der letzten Sessionlocale. Die Komponente nimmt die vorhandene SkillPilot-ID
+nur dort entgegen und übergibt eine neue Startnachricht im selben Chat. Neuer
+Chat oder Website sind nur Fallback, wenn dieser sichere Handoff nicht
+verfügbar ist.
 
 Die dauerhafte SkillPilot-ID bleibt serverseitig.
 

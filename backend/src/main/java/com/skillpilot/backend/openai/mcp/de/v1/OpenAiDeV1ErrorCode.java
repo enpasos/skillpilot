@@ -16,6 +16,7 @@ public enum OpenAiDeV1ErrorCode {
     IDEMPOTENCY_KEY_REUSED("state", false, "use_new_client_request_id"),
     SESSION_VERSION_UNAVAILABLE("state", false, "restart_learning_session"),
     SESSION_REQUIRED("session", false, "restart_learning_session"),
+    SESSION_RENEWAL_REQUIRED("session", false, "restart_learning_session"),
     AUTHENTICATION_REQUIRED("auth", true, "authenticate"),
     INSUFFICIENT_SCOPE("scope", false, "grant_required_scope"),
     INVALID_INPUT("input", false, "correct_input"),

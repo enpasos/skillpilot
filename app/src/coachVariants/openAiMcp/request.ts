@@ -7,6 +7,8 @@ export interface OpenAiMcpStartInput {
   client?: string
   launchIntent?: OpenAiMcpLaunchIntent
   providerEligibilityConfirmed: boolean
+  /** Gated first-party live-test override for this launch only. */
+  diagnosticSessionTtlSeconds?: number
 }
 
 export type OpenAiMcpLaunchIntent =
@@ -136,6 +138,7 @@ const requestBody = (input: OpenAiMcpStartInput) => JSON.stringify({
   selectedCurriculum: input.selectedCurriculum || undefined,
   launchIntent: input.launchIntent,
   providerEligibilityConfirmed: input.providerEligibilityConfirmed,
+  diagnosticSessionTtlSeconds: input.diagnosticSessionTtlSeconds,
 })
 
 const requestLaunch = async (

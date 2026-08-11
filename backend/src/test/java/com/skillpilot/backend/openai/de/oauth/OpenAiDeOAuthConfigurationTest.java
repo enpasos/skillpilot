@@ -84,6 +84,22 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
+    void diagnosticSessionTtlIsDisabledByDefaultAndRequiresAnExplicitProperty() {
+        assertThat(new OpenAiDeProperties().isDiagnosticSessionTtlEnabled()).isFalse();
+
+        new ApplicationContextRunner()
+                .withUserConfiguration(OpenAiDeConfiguration.class)
+                .withPropertyValues(
+                        secureProviderPropertiesWith(
+                                "skillpilot.openai.coach.v1.diagnostic-session-ttl-enabled=true"))
+                .run(context -> {
+                    assertThat(context).hasNotFailed();
+                    assertThat(context.getBean(OpenAiDeProperties.class)
+                            .isDiagnosticSessionTtlEnabled()).isTrue();
+                });
+    }
+
+    @Test
     void learningSessionTtlRejectsAnythingOtherThanTwentyFourHours() {
         for (String invalidTtl : List.of("PT0S", "-PT1S", "PT1H", "PT23H59M59S", "PT24H1S")) {
             new ApplicationContextRunner()

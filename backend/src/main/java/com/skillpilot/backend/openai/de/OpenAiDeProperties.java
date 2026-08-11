@@ -17,6 +17,7 @@ public class OpenAiDeProperties {
     private Duration bindingTtl = Duration.ofMinutes(5);
     private Duration launchTtl = Duration.ofMinutes(5);
     private Duration learningSessionTtl = Duration.ofHours(24);
+    private boolean diagnosticSessionTtlEnabled;
     private String mcpUrl = OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT;
     private String oauthResource = OpenAiDeV1ContractMetadata.OAUTH_RESOURCE;
     private String serverBuild = OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD;
@@ -86,6 +87,14 @@ public class OpenAiDeProperties {
 
     public void setLearningSessionTtl(Duration learningSessionTtl) {
         this.learningSessionTtl = learningSessionTtl;
+    }
+
+    public boolean isDiagnosticSessionTtlEnabled() {
+        return diagnosticSessionTtlEnabled;
+    }
+
+    public void setDiagnosticSessionTtlEnabled(boolean diagnosticSessionTtlEnabled) {
+        this.diagnosticSessionTtlEnabled = diagnosticSessionTtlEnabled;
     }
 
     public String getMcpUrl() {

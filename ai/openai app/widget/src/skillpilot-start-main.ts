@@ -28,6 +28,7 @@ import {
   type SkillPilotPersonalizationDecision,
   type SkillPilotStartLocale,
   type SkillPilotStartOpenResult,
+  type SkillPilotStartPurpose,
   type SkillPilotSetupState,
   type SkillPilotSetupToolCall
 } from "./skillpilot-start";
@@ -89,6 +90,12 @@ type Copy = {
   eyebrow: string;
   title: string;
   readyBody: string;
+  renewalTitle: string;
+  renewalReadyBody: string;
+  renewalStart: string;
+  renewalReviewTitle: string;
+  renewalReviewBody: string;
+  renewalStartLearning: string;
   newIdentity: string;
   newIdentityBody: string;
   existingIdentity: string;
@@ -181,6 +188,12 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     eyebrow: "SkillPilot Coach v1",
     title: "Lernsession starten",
     readyBody: "Erstelle hier eine neue SkillPilot-ID oder verwende eine vorhandene. Die gesamte Einrichtung bleibt in diesem Fenster.",
+    renewalTitle: "Lernsession erneuern",
+    renewalReadyBody: "Verwende deine bestehende SkillPilot-ID, um in diesem Chat eine neue Lernsession zu öffnen. Dein Lernstand bleibt erhalten.",
+    renewalStart: "Lernsession erneuern",
+    renewalReviewTitle: "Erneuerung prüfen",
+    renewalReviewBody: "Prüfe deine Auswahl. Erst mit „Neue Lernsession im Chat verwenden“ wird die neue kurzlebige Lernsession an diesen Chat übergeben.",
+    renewalStartLearning: "Neue Lernsession im Chat verwenden",
     newIdentity: "Neue SkillPilot-ID erstellen",
     newIdentityBody: "SkillPilot erzeugt die ID beim Start. Sie wird dir anschließend einmal zum sicheren Speichern angezeigt.",
     existingIdentity: "Vorhandene SkillPilot-ID verwenden",
@@ -273,6 +286,12 @@ const COPY: Record<SkillPilotStartLocale, Copy> = {
     eyebrow: "SkillPilot Coach v1",
     title: "Start a learning session",
     readyBody: "Create a new SkillPilot ID here or use an existing one. The complete setup stays in this window.",
+    renewalTitle: "Renew the learning session",
+    renewalReadyBody: "Use your existing SkillPilot ID to open a new learning session in this chat. Your learning progress is preserved.",
+    renewalStart: "Renew learning session",
+    renewalReviewTitle: "Review renewal",
+    renewalReviewBody: "Review your choices. The new short-lived learning session is passed to this chat only after you choose “Use new session in chat”.",
+    renewalStartLearning: "Use new session in chat",
     newIdentity: "Create a new SkillPilot ID",
     newIdentityBody: "SkillPilot creates the ID when you start. It is then shown once so you can save it securely.",
     existingIdentity: "Use an existing SkillPilot ID",
@@ -477,7 +496,7 @@ function acceptOpenResult(value: unknown, metadataSource?: unknown): void {
   clearSensitiveRuntime(false);
   start = next;
   selectedLocale = next.defaultLocale;
-  identityMode = "CREATE";
+  identityMode = initialIdentityMode(next.purpose);
   flowState = next.status === "ID_REQUIRED" ? "READY_FOR_ID" : "FAILED";
   failureKind = undefined;
   renderCurrent();
@@ -492,6 +511,8 @@ function sameOpenResult(
   const leftSuccessor = leftLine.successor;
   const rightSuccessor = rightLine.successor;
   return left.status === right.status
+    && left.purpose === right.purpose
+    && left.communicationLocale === right.communicationLocale
     && left.fallbackUrl === right.fallbackUrl
     && left.defaultLocale === right.defaultLocale
     && left.supportedLocales.length === right.supportedLocales.length
@@ -579,12 +600,22 @@ function renderCurrent(): void {
 }
 
 function renderReady(startState: SkillPilotStartOpenResult, copy: Copy): void {
-  const article = shell(copy.title, copy.readyBody, copy);
+  const renewal = startState.purpose === "RENEW_EXISTING";
+  if (renewal) identityMode = "EXISTING";
+  const article = shell(
+    renewal ? copy.renewalTitle : copy.title,
+    renewal ? copy.renewalReadyBody : copy.readyBody,
+    copy
+  );
   const actions = element("div", "actions");
   const warningWithSuccessor = startState.contractLine.newSessionPolicy === "WARN"
     && startState.contractLine.successor !== null;
   const startButton = button(
-    warningWithSuccessor ? copy.stayCurrent : copy.start,
+    warningWithSuccessor
+      ? copy.stayCurrent
+      : renewal
+        ? copy.renewalStart
+        : copy.start,
     "button button-primary"
   );
   const syncStartButton = () => {
@@ -604,13 +635,17 @@ function renderReady(startState: SkillPilotStartOpenResult, copy: Copy): void {
   identityLegend.textContent = copy.idLabel;
   identity.append(identityLegend);
   const identityChoices = element("div", "identity-options");
-  for (const mode of ["CREATE", "EXISTING"] as const) {
+  const identityModes: readonly SkillPilotIdentityMode[] = renewal
+    ? ["EXISTING"]
+    : ["CREATE", "EXISTING"];
+  for (const mode of identityModes) {
     const label = element("label", "identity-option");
     const input = document.createElement("input");
     input.type = "radio";
     input.name = "skillpilot-start-identity";
     input.value = mode;
     input.checked = identityMode === mode;
+    input.disabled = renewal;
     input.addEventListener("change", () => {
       if (!input.checked || busy || pendingBootstrapRequest || pendingStartMessage) return;
       identityMode = mode;
@@ -778,9 +813,14 @@ async function copyCreatedId(expectedId: string): Promise<void> {
 
 function renderSetup(copy: Copy, state: SkillPilotSetupState): void {
   const complete = state.requiredAction === null;
+  const renewal = start?.purpose === "RENEW_EXISTING";
   const article = shell(
-    complete ? copy.reviewTitle : copy.setupTitle,
-    complete ? copy.reviewBody : copy.setupBody,
+    complete
+      ? renewal ? copy.renewalReviewTitle : copy.reviewTitle
+      : copy.setupTitle,
+    complete
+      ? renewal ? copy.renewalReviewBody : copy.reviewBody
+      : copy.setupBody,
     copy,
     "setup-shell"
   );
@@ -802,7 +842,7 @@ function renderSetup(copy: Copy, state: SkillPilotSetupState): void {
     focusTarget ??= personalizationStep.focusTarget;
   }
   if (complete) {
-    article.append(renderFinalReviewStep(copy));
+    article.append(renderFinalReviewStep(copy, renewal));
   }
   root.replaceChildren(article);
   pendingCurriculumFilterFocus = undefined;
@@ -1051,7 +1091,8 @@ function personalizationSummaryText(state: SkillPilotSetupState, copy: Copy): st
     : `${unique.slice(0, 3).join(", ")} +${unique.length - 3}`;
 }
 
-function renderFinalReviewStep(copy: Copy): HTMLElement {
+function renderFinalReviewStep(copy: Copy, renewal: boolean): HTMLElement {
+  const actionLabel = renewal ? copy.renewalStartLearning : copy.startLearning;
   const section = element("section", "setup-step setup-final-step");
   section.setAttribute("aria-labelledby", "skillpilot-setup-start-title");
   const header = element("div", "setup-step-header");
@@ -1061,14 +1102,14 @@ function renderFinalReviewStep(copy: Copy): HTMLElement {
   const headingGroup = element("div", "setup-step-heading");
   const heading = element("h2", "setup-step-title");
   heading.id = "skillpilot-setup-start-title";
-  appendAccessibleStepHeading(heading, copy, 4, copy.startLearning);
+  appendAccessibleStepHeading(heading, copy, 4, actionLabel);
   const status = element("p", "setup-step-status");
   status.textContent = `✓ ${copy.readyToStart}`;
   headingGroup.append(heading, status);
   header.append(number, headingGroup);
   const content = element("div", "setup-step-content setup-final-content");
   const actions = element("div", "actions setup-final-actions");
-  const startButton = button(copy.startLearning, "button button-primary");
+  const startButton = button(actionLabel, "button button-primary");
   startButton.addEventListener("click", () => void confirmSetupAndStart());
   actions.append(startButton);
   content.append(actions);
@@ -1338,7 +1379,9 @@ function renderFailure(
 
 async function beginFreshStart(): Promise<void> {
   const current = start;
-  const submittedIdentityMode = identityMode;
+  const submittedIdentityMode = current?.purpose === "RENEW_EXISTING"
+    ? "EXISTING"
+    : identityMode;
   let submittedId = submittedIdentityMode === "EXISTING"
     ? canonicalSkillPilotId(manualSkillPilotId)
     : undefined;
@@ -1880,10 +1923,16 @@ function finalizeAcceptedHandoff(): void {
 
 function resetForFreshInput(): void {
   clearSensitiveRuntime(false);
-  identityMode = "CREATE";
+  identityMode = initialIdentityMode(start?.purpose);
   flowState = "READY_FOR_ID";
   failureKind = undefined;
   renderCurrent();
+}
+
+function initialIdentityMode(
+  purpose: SkillPilotStartPurpose | undefined
+): SkillPilotIdentityMode {
+  return purpose === "RENEW_EXISTING" ? "EXISTING" : "CREATE";
 }
 
 function fallbackButton(

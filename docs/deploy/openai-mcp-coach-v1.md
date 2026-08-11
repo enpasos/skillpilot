@@ -387,6 +387,8 @@ SKILLPILOT_OPENAI_COACH_V1_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommali
 
 SKILLPILOT_OPENAI_SECURE_COOKIE=true
 SKILLPILOT_OPENAI_LEARNING_SESSION_TTL=PT24H
+# Standardmäßig false; nur für einen kontrollierten First-Party-Live-Test kurz aktivieren:
+SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=false
 SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS=3600000
 SKILLPILOT_OPENAI_OAUTH_ACCESS_TOKEN_TTL=PT1H
 SKILLPILOT_OPENAI_OAUTH_REFRESH_TOKEN_TTL=P30D
@@ -579,13 +581,34 @@ desselben Lernenden erzeugen verschiedene IDs. Die absolute Frist wird durch
 `PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder parallele
 Chats verlängern sie nicht.
 
+Vor jeder neuen sessiongebundenen Lese- oder Schreiboperation prüft der V1-
+Adapter zusätzlich den Aktionshorizont `expiresAt >= now + PT1H`. Genau eine
+Stunde Restlaufzeit ist gültig; weniger als eine Stunde liefert
+`SESSION_RENEWAL_REQUIRED`, bevor die fachliche Operation ausgeführt wird. Nur
+ein bereits committeter Write mit demselben Toolnamen, kanonisch identischen
+Argumenten und derselben `clientRequestId` darf bei noch nicht abgelaufener
+Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion sein
+gespeichertes Resultat replayen. Dabei werden weder Operation noch Mutation
+wiederholt. Eine neue Session ist stets ein unabhängiger Datensatz und widerruft
+frühere Sessions nicht.
+
 Die Session-ID wird einmal automatisch in den URL-codierten Startprompt
 eingetragen und danach von ChatGPT unverändert als Pflichtargument an jedes
 lernendenbezogene Tool weitergegeben. SkillPilot löst ausschließlich den Hash
 auf den Lernenden auf. OAuth allein erzeugt oder wählt keine Lernsession; eine
 Session-ID allein autorisiert keinen MCP-Aufruf. Fehlt einer der beiden
 Nachweise, liefert der Fachvertrag `SESSION_REQUIRED` beziehungsweise einen
-OAuth-Fehler. Ein Fallback vom OAuth-Subject auf einen Lernenden ist
+OAuth-Fehler. `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` und
+`SESSION_VERSION_UNAVAILABLE` lösen keine neue OAuth-Verbindung aus: Der Coach
+öffnet genau einmal `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und
+der erforderlichen `communicationLocale`. Er kopiert bevorzugt
+`recoveryCommunicationLocale` aus den Fehlerdetails, sonst die letzte
+Sessionlocale (`de` für Deutsch, `en` für Englisch). Nur wenn beides fehlt,
+bildet er die aktuelle Unterhaltungssprache auf `de` oder `en` ab. Er wartet auf
+die neueste Startnachricht der privaten Komponente und verwendet danach nur
+deren neue Session-ID im selben Chat. Ein neuer Chat oder die
+First-Party-Website ist nur Fallback, wenn Komponente oder sicherer Handoff
+nicht verfügbar sind. Ein Fallback vom OAuth-Subject auf einen Lernenden ist
 unzulässig.
 
 Das Cockpit startet ausschließlich über
@@ -595,6 +618,40 @@ Lernsession samt Startprompt. Jeder weitere Aufruf erzeugt unabhängig von
 Browser, bestehender App-Autorisierung oder früheren Starts eine neue Session.
 Der `/launch`-Aufruf ist eigenständig und benötigt keinen vorgeschalteten
 Verbindungsstatus oder kurzlebigen Browser-Zwischenzustand.
+
+#### Requestlokale Diagnose-Laufzeit
+
+Für einen kontrollierten Live-Test des Ein-Stunden-Aktionshorizonts darf nur der
+First-Party-Endpunkt
+`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` das optionale JSON-Feld
+`diagnosticSessionTtlSeconds` erhalten. Der Server akzeptiert es ausschließlich,
+wenn
+`SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true` gesetzt ist.
+Der ganzzahlige Wert muss zwischen `3601` und `86400` Sekunden einschließlich
+liegen und darf die normale, weiterhin auf `PT24H` konfigurierte
+Lernsessionlaufzeit nicht überschreiten.
+
+Die Abweichung gehört nur zu der einen durch diesen Request erzeugten
+unabhängigen Session. Sie verändert keine Konfiguration und keine andere oder
+spätere Session. Bereits der nächste `/launch`-Request ohne das Feld erzeugt
+automatisch wieder eine normale `PT24H`-Session, selbst wenn das Diagnose-Gate
+noch eingeschaltet ist. Der private Component-Endpunkt
+`/bootstrap/v1/launch` lehnt `diagnosticSessionTtlSeconds` ab und bleibt immer
+bei der normalen `PT24H`-Laufzeit.
+
+Empfohlene Werte:
+
+- `3660` Sekunden: ungefähr eine Minute bis zum Übergang unter den
+  `PT1H`-Aktionshorizont;
+- `5400` Sekunden: 90-Minuten-Soak mit ungefähr 30 Minuten bis zum Übergang.
+
+Für diesen Test darf `SKILLPILOT_OPENAI_LEARNING_SESSION_TTL` **nicht** global
+abgesenkt werden. Für die sofortige Rückkehr zum normalen Laufzeitverhalten
+genügt ein Request ohne Diagnosefeld; dafür ist weder ein Deployment noch eine
+Konfigurationsänderung nötig. Dessen `expiresAt` wird gegen
+`startedAt + PT24H` verifiziert. Das separate Diagnose-Gate bleibt nur für das
+kontrollierte Testfenster aktiv und wird danach über den regulären
+Konfigurationsweg wieder auf `false` gesetzt.
 
 Abgelaufene oder widerrufene Lernsession-Datensätze werden unabhängig vom
 OAuth-Lebenszyklus abgewiesen und bereinigt. Authorization Codes, Access- und
@@ -672,8 +729,9 @@ enthalten.
 
 Der zweite Name ist ein Counter mit genau einem begrenzten Tag `event`. Er
 erfasst ausschließlich `oauth_failure`, `refresh_failure`, `session_required`,
-`http_401`, `http_403`, `http_409`, `http_429`, `issuer_rate_limited`, `timeout`,
-`replay_rejected`, `cross_provider_rejected` und `tool_exception`. Es gibt keine dynamischen
+`session_renewal_required`, `http_401`, `http_403`, `http_409`, `http_429`,
+`issuer_rate_limited`, `timeout`, `replay_rejected`, `cross_provider_rejected`
+und `tool_exception`. Es gibt keine dynamischen
 Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags. Cross-Learner-/IDOR-
 Abwehr wird zusätzlich in negativen Integrationstests geprüft; der MCP-Vertrag
 nimmt absichtlich keine Lernendenkennung als Toolargument entgegen.
@@ -1064,7 +1122,29 @@ Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
   expliziten Start erzeugte Session-ID;
 - nach Ablauf der TTL muss die Lernsession unabhängig von OAuth abgewiesen und
   bereinigt werden; abgelaufene OAuth-Codes und -Tokens werden separat
-  bereinigt, während eine weiterhin gültige App-Autorisierung bestehen bleibt.
+  bereinigt, während eine weiterhin gültige App-Autorisierung bestehen bleibt;
+- bei exakt `PT1H` Restlaufzeit muss eine neue Operation noch zulässig sein; bei
+  weniger als `PT1H` müssen Reads und neue Writes vor der Fachoperation mit
+  `SESSION_RENEWAL_REQUIRED` enden;
+- ein Retry eines committeten Writes mit gleichem Toolnamen, kanonisch
+  identischen Argumenten und derselben `clientRequestId` darf bei noch nicht
+  abgelaufener Session und verfügbarer gepinnter Workflow-/Curriculumversion
+  nur das gespeicherte Resultat liefern;
+- nach jedem der drei Session-Recovery-Codes muss genau ein
+  `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und der bevorzugt aus
+  `recoveryCommunicationLocale`, sonst aus der letzten Session übernommenen
+  `communicationLocale` eine neue unabhängige Session erzeugen und deren
+  Startnachricht im bestehenden Chat übergeben; alte Sessiondatensätze werden
+  dadurch nicht global widerrufen.
+- für den Live-Grenztest das Diagnose-Gate kurz aktivieren und ausschließlich
+  am First-Party-`/launch` einmal `diagnosticSessionTtlSeconds=3660` verwenden;
+  alternativ `5400` für einen 90-Minuten-Soak. Werte `3600`, `86401`, Werte über
+  der normalen Laufzeit, ein gesetztes Feld bei deaktiviertem Gate und jeder
+  Versuch am privaten Component-Bootstrap müssen ohne Session fail-closed
+  enden;
+- direkt danach muss ein weiterer First-Party-Start ohne Diagnosefeld wieder
+  eine `PT24H`-Session erzeugen. Die globale Learning-Session-TTL bleibt während
+  des gesamten Tests unverändert.
 
 In allen drei Fällen enthält die sichtbare Startnachricht genau die neu
 erzeugte `learningSessionId` sowie den fachlichen Startzweck. Sie enthält weder
@@ -1077,7 +1157,9 @@ Dieser Canary ist ausschließlich intern. Er ist keine Freigabe für eine
 öffentliche Plugin-Einreichung.
 
 - In einem frischen Chat ruft das Modell genau einmal
-  `open_skillpilot_start` auf. Dessen modellseitiges Ergebnis enthält weder
+  `open_skillpilot_start` mit `purpose=START` und `communicationLocale=de` für
+  eine deutsche beziehungsweise `communicationLocale=en` für eine englische
+  Unterhaltung auf. Dessen modellseitiges Ergebnis enthält weder
   Capability noch SkillPilot-ID; die Startressource ist die einzige daran
   gebundene UI.
 - Vor jeder Authority-Ausstellung prüft die Komponente einen vollständigen
@@ -1220,14 +1302,18 @@ mit der zurückgegebenen, natürlichsprachlichen Startnachricht im URL-codierten
 `prompt`-Parameter. Der Benutzer muss keinen Text kopieren oder einfügen.
 Spezielle Starts werden serverseitig als enges, auditierbares Intent-Schema
 vorbereitet; es wird kein freier Instruktionstext aus dem Browser übernommen.
-Jeder erfolgreiche Aufruf erzeugt unabhängig vom App-Autorisierungsstatus eine
-neue `learningSessionId` mit exakt 24 Stunden absoluter Gültigkeit und
+Jeder normale erfolgreiche Aufruf erzeugt unabhängig vom
+App-Autorisierungsstatus eine neue `learningSessionId` mit exakt 24 Stunden
+absoluter Gültigkeit und
 nimmt sie in denselben Prompt auf. Die dauerhafte SkillPilot-ID bleibt
 außerhalb von OAuth-Principal, Chat, URL-Prompt und Toolvertrag. ChatGPT muss
 die Session-ID aus dem Prompt unverändert in **jedem** fachlichen MCP-Aufruf
 mitsenden. Die Session-ID ist nicht an eine Chat-Konversation gebunden; sie
 kann innerhalb ihrer Frist in einem neuen Chat weiterverwendet werden, wird
 aber weder durch Nutzung noch durch OAuth-Refresh verlängert.
+Nur der oben beschriebene, explizit freigeschaltete und requestlokale
+First-Party-Diagnosewert darf eine einzelne Testsession verkürzen; er verändert
+weder diesen Default noch den privaten Component-Bootstrap.
 
 Der Deployment-Canary muss für `CURRENT_UNIT`, `VERIFIED_RECALL` und
 `ABI26_EXAM` zusätzlich prüfen, dass ChatGPT den genau einmal vorhandenen

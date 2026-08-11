@@ -17,6 +17,7 @@ import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.time.Clock;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.HexFormat;
@@ -26,6 +27,7 @@ import java.util.UUID;
 import java.util.function.Function;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -53,7 +55,9 @@ public class OpenAiDeV1McpSessionCoordinator {
     private final OpenAiDeProperties properties;
     private final OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider;
     private final byte[] hashSecret;
+    private final Clock clock;
 
+    @Autowired
     public OpenAiDeV1McpSessionCoordinator(
             OpenAiDeLearningSessionRepository sessions,
             LearnerRepository learners,
@@ -62,12 +66,31 @@ public class OpenAiDeV1McpSessionCoordinator {
             OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}")
                     String hashSecret) {
+        this(
+                sessions,
+                learners,
+                requests,
+                properties,
+                curriculumRevisionProvider,
+                hashSecret,
+                Clock.systemUTC());
+    }
+
+    OpenAiDeV1McpSessionCoordinator(
+            OpenAiDeLearningSessionRepository sessions,
+            LearnerRepository learners,
+            OpenAiDeIdempotencyRecordRepository requests,
+            OpenAiDeProperties properties,
+            OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider,
+            String hashSecret,
+            Clock clock) {
         this.sessions = sessions;
         this.learners = learners;
         this.requests = requests;
         this.properties = properties;
         this.curriculumRevisionProvider = curriculumRevisionProvider;
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
+        this.clock = clock;
     }
 
     @Transactional
@@ -75,6 +98,7 @@ public class OpenAiDeV1McpSessionCoordinator {
             String learningSessionId,
             Function<OpenAiDeV1SessionMetadata, McpSchema.CallToolResult> operation) {
         LockedSession locked = requireCurrentSession(learningSessionId);
+        requireMinimumRemaining(locked);
         McpSchema.CallToolResult result = operation.apply(metadata(locked));
         return withCurrentMetadata(result, metadata(locked));
     }
@@ -105,6 +129,7 @@ public class OpenAiDeV1McpSessionCoordinator {
             }
             return replay(previous);
         }
+        requireMinimumRemaining(locked);
         if (expectedStateVersion != learner.getCoachStateRevision()) {
             throw new OpenAiDeV1SessionStateException(
                     OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT,
@@ -143,7 +168,7 @@ public class OpenAiDeV1McpSessionCoordinator {
         completed.setCompletedStateVersion(resultingStateVersion);
         completed.setResponseText(firstText(completedResult));
         completed.setResponseJson(writeJson(completedResult.structuredContent()));
-        completed.setCreatedAt(Instant.now());
+        completed.setCreatedAt(clock.instant());
         requests.save(completed);
         return completedResult;
     }
@@ -152,7 +177,7 @@ public class OpenAiDeV1McpSessionCoordinator {
         OpenAiDeLearningSession session = sessions
                 .findByTokenHashForUpdate(hash(learningSessionId))
                 .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
-        if (!session.getExpiresAt().isAfter(Instant.now())) {
+        if (!session.getExpiresAt().isAfter(clock.instant())) {
             throw new OpenAiDeLearningSessionRequiredException();
         }
         Learner learner = learners
@@ -170,6 +195,20 @@ public class OpenAiDeV1McpSessionCoordinator {
                     "The pinned workflow or curriculum revision is not available in this server build.");
         }
         return locked;
+    }
+
+    private void requireMinimumRemaining(LockedSession locked) {
+        Instant now = clock.instant();
+        if (!locked.session().getExpiresAt().isAfter(now)) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
+        if (locked.session().getExpiresAt().isBefore(
+                now.plus(OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING))) {
+            throw new OpenAiDeV1SessionStateException(
+                    OpenAiDeV1SessionStateException.Code.SESSION_RENEWAL_REQUIRED,
+                    metadata(locked),
+                    "The learning session has less than the required minimum remaining lifetime.");
+        }
     }
 
     private OpenAiDeV1SessionMetadata metadata(LockedSession locked) {

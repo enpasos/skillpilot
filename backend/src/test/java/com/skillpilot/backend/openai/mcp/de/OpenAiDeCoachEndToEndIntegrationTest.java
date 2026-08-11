@@ -34,6 +34,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.HexFormat;
@@ -704,6 +705,31 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialSession.getStateSchemaVersion()).isEqualTo(1);
         assertThat(initialSession.getWorkflowVersion()).isEqualTo("coach@1.0");
         assertThat(initialSession.getCurriculumRevision()).isNotBlank();
+        Instant originalExpiresAt = initialSession.getExpiresAt();
+        initialSession.setExpiresAt(Instant.now().plus(Duration.ofMinutes(59)));
+        learningSessionRepository.saveAndFlush(initialSession);
+        HttpResponse<String> expiringSession = callTool(
+                accessToken,
+                19,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                initialLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(expiringSession, applicationSubject);
+        JsonNode expiringSessionResult = objectMapper.readTree(expiringSession.body()).path("result");
+        assertThat(expiringSessionResult.path("isError").asBoolean()).isTrue();
+        assertThat(expiringSessionResult.path("structuredContent").path("code").asText())
+                .isEqualTo("SESSION_RENEWAL_REQUIRED");
+        assertThat(expiringSessionResult.path("structuredContent").path("minimumRemainingSeconds").asLong())
+                .isEqualTo(OpenAiDeV1ContractMetadata.MINIMUM_ACTION_SESSION_REMAINING.toSeconds());
+        assertThat(expiringSessionResult.path("structuredContent").path("oauthConnectionValid").asBoolean())
+                .isTrue();
+        assertThat(expiringSessionResult.path("structuredContent").path("recoveryTool").asText())
+                .isEqualTo(OpenAiDeV1McpContractAdapter.OPEN_SKILLPILOT_START);
+        assertThat(expiringSessionResult.path("structuredContent").path("recoveryPurpose").asText())
+                .isEqualTo(OpenAiDeV1McpContractAdapter.PURPOSE_RENEW_EXISTING);
+        assertLegacyStateIsEmpty();
+        initialSession.setExpiresAt(originalExpiresAt);
+        learningSessionRepository.saveAndFlush(initialSession);
         String initialLearningSessionHash = initialSession.getTokenHash();
         learningSessionRepository.deleteById(initialLearningSessionHash);
         learningSessionRepository.flush();

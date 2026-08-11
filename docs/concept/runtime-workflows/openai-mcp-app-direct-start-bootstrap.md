@@ -262,7 +262,11 @@ ausdrücklich freigegebene Architekturentscheidung:
 Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
                          |
                          v
-               open_skillpilot_start
+       open_skillpilot_start({purpose: START,
+                              communicationLocale: de|en})
+       oder nach Sessionfehler genau einmal
+       open_skillpilot_start({purpose: RENEW_EXISTING,
+                              communicationLocale: de|en})
        OAuth: bestehender Authorization-Code+PKCE-
        beziehungsweise Refresh-Flow des festen V1-Clients
                          |
@@ -277,9 +281,10 @@ Person öffnet SkillPilot Coach v1 direkt im OpenAI-Host
         ohne Host-, Plattform- oder User-Agent-Sniffing
                          |
                          v
-       Person wählt CREATE oder EXISTING, bestätigt
-       Sprache, Providerhinweis und Start; bei EXISTING
-       bleibt die ID nur im flüchtigen Komponentenprozess
+       Bei START wählt die Person CREATE oder EXISTING.
+       Bei RENEW_EXISTING ist der vorhandene-ID-Pfad
+       vorgegeben. Sprache, Providerhinweis und Start werden
+       bestätigt; die ID bleibt nur im Komponentenprozess.
                          |
                          v
       issue_skillpilot_start_capability, app-only
@@ -343,6 +348,7 @@ Kanal ausgewichen; ein unklarer Ausgang darf keinen Doppelaufruf erzeugen.
 | --- | --- |
 | Sichtbarkeit | Modell und App über `_meta.ui.visibility: ["model", "app"]` |
 | Zweck | Startkomponente öffnen und aktuelle Contract-Line-Projektion lesen |
+| Input | verpflichtendes geschlossenes Paar: `purpose` = `START` oder `RENEW_EXISTING`; `communicationLocale` = `de` oder `en` |
 | OAuth | V1-Bearer-Token mit `skillpilot.openai.v1.read`; kein neuer Grant |
 | learningSessionId | nicht vorhanden |
 | SkillPilot-ID | nicht vorhanden |
@@ -386,13 +392,35 @@ enthalten zur Laufzeit bytegleich denselben Wert.
 }
 ~~~
 
-Das Inputschema ist leer und geschlossen:
+Das Inputschema ist geschlossen und macht die beiden sicher unterschiedlichen
+Aufrufgründe explizit. `START` ist ausschließlich der initiale Einstieg ohne
+aktuelle Startnachricht. `RENEW_EXISTING` folgt genau einmal auf
+`SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder
+`SESSION_VERSION_UNAVAILABLE` und richtet die Komponente auf eine vorhandene
+SkillPilot-ID aus. Beim initialen `START` bildet das Modell die aktuelle
+Unterhaltungssprache geschlossen ab: Deutsch auf `de`, Englisch auf `en`. Beim
+`RENEW_EXISTING` kopiert es bevorzugt `recoveryCommunicationLocale` aus den
+neuesten Fehlerdetails; fehlt dieser Wert, verwendet es die autoritative
+`communicationLocale` der letzten Session. Nur wenn beides nicht mehr
+verfügbar ist, wird erneut die aktuelle Unterhaltungssprache auf `de` oder `en`
+abgebildet. Ein Fehlertext oder die Sprache einer einzelnen Nachricht darf eine
+bekannte letzte Sessionlocale nicht überschreiben.
 
 ~~~json
 {
   "type": "object",
   "additionalProperties": false,
-  "properties": {}
+  "properties": {
+    "purpose": {
+      "type": "string",
+      "enum": ["START", "RENEW_EXISTING"]
+    },
+    "communicationLocale": {
+      "type": "string",
+      "enum": ["de", "en"]
+    }
+  },
+  "required": ["purpose", "communicationLocale"]
 }
 ~~~
 
@@ -1587,7 +1615,11 @@ chatsichtbar. Alle anderen Bootstrapwerte bleiben außerhalb des Transkripts.
 | Responseverlust nach Commit | gespeichertes AEAD-Resultat innerhalb Delivery-Frist |
 | Delivery-Frist abgelaufen | DELIVERY_EXPIRED, neuer vollständiger Start |
 | Nachrichtenaufruf abgelehnt oder unklar | identische Nachricht auf demselben Kanal erneut senden, kein Relaunch und keine erneute Setup-Mutation |
-| Lernsession abgelaufen | unveränderter SESSION_REQUIRED-Vertrag |
+| Lernsession fehlt, ist ungültig oder abgelaufen | `SESSION_REQUIRED`; Modell öffnet genau einmal `open_skillpilot_start` mit `purpose=RENEW_EXISTING` und übernimmt `communicationLocale` bevorzugt aus `recoveryCommunicationLocale`, sonst aus der letzten Sessionlocale |
+| Lernsession hat weniger als `PT1H` Restlaufzeit | `SESSION_RENEWAL_REQUIRED` vor jeder neuen fachlichen Operation; exakt `PT1H` bleibt zulässig |
+| gepinnte Workflow- oder Curriculumrevision nicht verfügbar | `SESSION_VERSION_UNAVAILABLE`; derselbe einmalige `RENEW_EXISTING`-Pfad |
+| Retry eines bereits committeten Writes innerhalb der letzten Sessionstunde mit gleichem Toolnamen, kanonisch identischen Argumenten und derselben `clientRequestId` | gespeichertes Resultat nur bei noch nicht abgelaufener Session und weiterhin verfügbarer gepinnter Workflow-/Curriculumversion wiedergeben; keine Operation und keine zweite Mutation |
+| Same-Chat-Komponente oder sicherer Handoff nicht verfügbar | erst dann neuen Chat oder First-Party-Website als Fallback anbieten |
 | Artefakt einer anderen Major-Linie | MAJOR_MISMATCH vor Projektion oder Mutation |
 | Ziel-Major vor Commit nicht verfügbar | Quell-Major nur bei dessen aktueller Policy ALLOW oder WARN ausdrücklich anbieten |
 | Ziel-Major nach Commit nicht verfügbar | nur idempotenter Retry in derselben Ziel-Major-Linie |
@@ -2072,6 +2104,8 @@ vorregistrierter V1-Confidential-Client
 
 open_skillpilot_start:
 gültiges V1-App-OAuth mit skillpilot.openai.v1.read
+AND purpose START oder RENEW_EXISTING
+AND communicationLocale de oder en
 -> Start-UI und Contract-Line-Projektion
 -> KEINE Capability und KEINE Lernendenauswahl
 

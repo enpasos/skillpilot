@@ -1,5 +1,7 @@
 export type SkillPilotStartLocale = "de" | "en";
 
+export type SkillPilotStartPurpose = "START" | "RENEW_EXISTING";
+
 export type SkillPilotStartStatus =
   | "ID_REQUIRED"
   | "MAJOR_UPGRADE_REQUIRED"
@@ -35,6 +37,8 @@ export type SkillPilotContractLine = {
 };
 
 export type SkillPilotStartOpenResult = {
+  purpose: SkillPilotStartPurpose;
+  communicationLocale: SkillPilotStartLocale;
   status: SkillPilotStartStatus;
   supportedLocales: ["de", "en"];
   fallbackUrl: typeof SKILLPILOT_FALLBACK_URL;
@@ -220,6 +224,8 @@ export function skillPilotStartOpenFromToolResult(
   if (
     !structured
     || !hasExactKeys(structured, [
+      "purpose",
+      "communicationLocale",
       "status",
       "supportedLocales",
       "fallbackUrl"
@@ -236,19 +242,33 @@ export function skillPilotStartOpenFromToolResult(
   ) {
     return undefined;
   }
+  const purpose = startPurpose(structured.purpose);
+  const communicationLocale = locale(structured.communicationLocale);
   const status = startStatus(structured.status);
   const supportedLocales = locales(structured.supportedLocales);
   const fallbackUrl = exactFallbackUrl(structured.fallbackUrl);
   const contractLine = contractLineFromUnknown(metadata.contractLine);
-  if (!status || !supportedLocales || !fallbackUrl || !contractLine) return undefined;
+  if (
+    !purpose
+    || !communicationLocale
+    || !status
+    || !supportedLocales
+    || !supportedLocales.includes(communicationLocale)
+    || !fallbackUrl
+    || !contractLine
+  ) {
+    return undefined;
+  }
   if (!validStatusPolicyCombination(status, contractLine)) return undefined;
 
   return {
+    purpose,
+    communicationLocale,
     status,
     supportedLocales,
     fallbackUrl,
     contractLine,
-    defaultLocale: supportedLocales[0]
+    defaultLocale: communicationLocale
   };
 }
 
@@ -968,6 +988,12 @@ function startStatus(value: unknown): SkillPilotStartStatus | undefined {
   return value === "ID_REQUIRED"
     || value === "MAJOR_UPGRADE_REQUIRED"
     || value === "TEMPORARILY_UNAVAILABLE"
+    ? value
+    : undefined;
+}
+
+function startPurpose(value: unknown): SkillPilotStartPurpose | undefined {
+  return value === "START" || value === "RENEW_EXISTING"
     ? value
     : undefined;
 }

@@ -84,6 +84,8 @@ skillpilot:
         binding-ttl: ${SKILLPILOT_OPENAI_BINDING_TTL:PT5M}
         launch-ttl: ${SKILLPILOT_OPENAI_LAUNCH_TTL:PT5M}
         learning-session-ttl: ${SKILLPILOT_OPENAI_LEARNING_SESSION_TTL:PT24H}
+        # Live E2E only: permits one request to shorten, never extend, its session TTL.
+        diagnostic-session-ttl-enabled: ${SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED:false}
         cleanup-interval-ms: ${SKILLPILOT_OPENAI_CLEANUP_INTERVAL_MS:3600000}
         # Public endpoints are immutable parts of the language-neutral V1
         # contract. Nginx maps this origin to its internal route in this JVM.

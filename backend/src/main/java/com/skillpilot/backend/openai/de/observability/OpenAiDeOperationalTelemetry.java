@@ -28,6 +28,7 @@ public final class OpenAiDeOperationalTelemetry {
         REPLAY_REJECTED("replay_rejected"),
         CROSS_PROVIDER_REJECTED("cross_provider_rejected"),
         SESSION_REQUIRED("session_required"),
+        SESSION_RENEWAL_REQUIRED("session_renewal_required"),
         TOOL_EXCEPTION("tool_exception");
 
         private final String tag;
