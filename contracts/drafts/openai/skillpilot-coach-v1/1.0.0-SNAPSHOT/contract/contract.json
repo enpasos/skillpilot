@@ -1,6 +1,6 @@
 {
   "contractMajor" : 1,
-  "contractSha256" : "1f95833cfe1be0c1ae7d15dcc1a5cff11098407f9f8a421234186c706a3bccf1",
+  "contractSha256" : "374dd5322cce4749636a320dd328f6e535fbe7760860de316d937e5c2924b62f",
   "pluginIdentity" : "skillpilot-coach-v1",
   "resources" : [ {
     "description" : "Displays the approved image for the active atomic learning goal.",
@@ -1128,9 +1128,6 @@
               "required" : [ "goalId", "title", "imageUrl", "altText", "cockpitUrl" ],
               "type" : "object"
             },
-            "instruction" : {
-              "type" : "string"
-            },
             "interactionMode" : {
               "type" : "string"
             },
@@ -1302,9 +1299,6 @@
               "required" : [ "masteredAtomic", "totalAtomic", "scopeCompleted" ],
               "type" : "object"
             },
-            "requiredAction" : {
-              "type" : "string"
-            },
             "resources" : {
               "items" : {
                 "additionalProperties" : false,
@@ -1337,7 +1331,7 @@
               "type" : "array"
             }
           },
-          "required" : [ "learningState", "requiredAction", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies", "instruction" ],
+          "required" : [ "learningState", "interactionMode", "options", "frontier", "resources", "nextAllowedTools", "progress", "completion", "policies" ],
           "type" : "object"
         },
         "continuation" : {
