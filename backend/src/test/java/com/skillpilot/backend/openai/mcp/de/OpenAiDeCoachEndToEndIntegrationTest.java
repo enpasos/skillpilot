@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -102,6 +103,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
             "composition:de-he-gym-sekii-math-lk:structure:e-phase";
     private static final String HESSEN_SEKII_MATH_LK_SCOPE_ID =
             "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
+    private static final String FUNCTIONS_FLASHCARDS_ID =
+            "77259806-add7-5fcb-b89c-376e1b0c88d6";
     private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
@@ -1241,6 +1244,99 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .isEqualTo(redirectedGoalId);
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
                 .isEqualTo(redirectedGoalId);
+
+        // Regression for the production transition after the complete eight-card
+        // functions Recall: the terminal write must hand the visual successor's
+        // renderer call to the client directly. There is deliberately no
+        // get_skillpilot_context call between the write and the renderer.
+        Learner recallLearner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        recallLearner.setActiveGoalId(FUNCTIONS_FLASHCARDS_ID);
+        recallLearner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(recallLearner);
+
+        HttpResponse<String> startRecall = callTool(
+                accessToken,
+                24,
+                OpenAiDeV1McpContractAdapter.START_RECALL,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(startRecall, applicationSubject);
+        JsonNode recallPrompt = result(startRecall).path("structuredContent");
+        assertThat(recallPrompt.path("cards")).hasSize(8);
+        assertThat(recallPrompt.path("totalCards").asInt()).isEqualTo(8);
+        assertThat(recallPrompt.path("pendingCards").asInt()).isEqualTo(8);
+        String batchCapability = recallPrompt.path("batchCapability").asText();
+        assertThat(batchCapability).isNotBlank();
+
+        HttpResponse<String> getRecallAnswers = callTool(
+                accessToken,
+                25,
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                objectMapper.writeValueAsString(Map.of("batchCapability", batchCapability)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(getRecallAnswers, applicationSubject);
+        JsonNode recallAnswers = result(getRecallAnswers).path("structuredContent");
+        assertThat(recallAnswers.path("answers")).hasSize(8);
+        String gradingCapability = recallAnswers.path("gradingCapability").asText();
+        assertThat(gradingCapability).isNotBlank().isNotEqualTo(batchCapability);
+        List<Map<String, Object>> passingAssessments = recallAnswers.path("answers").valueStream()
+                .map(ignored -> Map.<String, Object>of(
+                        "passed", true,
+                        "feedback", "Ohne Hilfe vollständig richtig."))
+                .toList();
+
+        HttpResponse<String> completeRecall = callTool(
+                accessToken,
+                26,
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                objectMapper.writeValueAsString(Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", passingAssessments)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completeRecall, applicationSubject);
+        JsonNode recallReceipt = result(completeRecall).path("structuredContent");
+        assertThat(recallReceipt.path("savedAssessments").asInt()).isEqualTo(8);
+        assertThat(recallReceipt.path("passedAssessments").asInt()).isEqualTo(8);
+        assertThat(recallReceipt.path("masterySaved").asBoolean()).isTrue();
+        JsonNode recallSuccessor = recallReceipt.path("context");
+        String recallSuccessorGoalId = recallSuccessor.path("activeGoal").path("goalId").asText();
+        assertThat(recallSuccessorGoalId).isNotBlank().isNotEqualTo(FUNCTIONS_FLASHCARDS_ID);
+        assertThat(recallSuccessor.path("goalVisualization").path("goalId").asText())
+                .isEqualTo(recallSuccessorGoalId);
+        assertThat(recallSuccessor.path("goalVisualization").path("imageUrl").asText())
+                .isNotBlank();
+
+        JsonNode recallContinuation = recallReceipt.path("continuation");
+        assertThat(recallContinuation.path("action").asText())
+                .isEqualTo("renderGoalVisualizationThenTeachActiveGoal");
+        assertThat(recallContinuation.path("consentRequired").asBoolean()).isFalse();
+        assertThat(recallContinuation.path("toolCall").path("name").asText())
+                .isEqualTo(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        JsonNode recallRendererArguments = recallContinuation.path("toolCall").path("arguments");
+        long recallSuccessorStateVersion = recallRendererArguments
+                .path(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)
+                .asLong();
+        assertThat(recallRendererArguments.size()).isEqualTo(2);
+        assertThat(recallRendererArguments.path("goalId").asText())
+                .isEqualTo(recallSuccessorGoalId);
+        assertThat(recallReceipt.path("stateVersion").asLong())
+                .isEqualTo(recallSuccessorStateVersion);
+        assertThat(recallReceipt.findValues(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID))
+                .isEmpty();
+        assertThat(recallReceipt.toString()).doesNotContain(resumedLearningSessionId);
+
+        HttpResponse<String> renderRecallSuccessor = callTool(
+                accessToken,
+                27,
+                recallContinuation.path("toolCall").path("name").asText(),
+                objectMapper.writeValueAsString(recallRendererArguments),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(renderRecallSuccessor, applicationSubject);
+        JsonNode renderedRecallSuccessor = result(renderRecallSuccessor).path("structuredContent");
+        assertThat(renderedRecallSuccessor.path("stateVersion").asLong())
+                .isEqualTo(recallSuccessorStateVersion);
+        assertThat(renderedRecallSuccessor.path("goalVisualization").path("goalId").asText())
+                .isEqualTo(recallSuccessorGoalId);
 
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);

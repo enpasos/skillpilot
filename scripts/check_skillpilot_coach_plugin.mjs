@@ -101,6 +101,14 @@ const lifecycle = readJson(resolve(pluginRoot, "release/lifecycle.json"));
 const skill = read(resolve(skillRoot, "SKILL.md"));
 const policy = read(resolve(skillRoot, "references/coaching-policy.md"));
 const agentsGuide = read(resolve(repositoryRoot, "AGENTS.md"));
+const communicationContract = read(resolve(
+  repositoryRoot,
+  "docs/concept/runtime-workflows/provider-neutral-coach-boundary.md",
+));
+const behavioralIntegration = read(resolve(
+  repositoryRoot,
+  "docs/concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md",
+));
 const learningCoachDe = read(resolve(
   repositoryRoot,
   "ai/openai custom gpt/knowledge_docs/lerncoach.de.md",
@@ -131,6 +139,8 @@ const contractMetadata = read(resolve(
 ));
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
+const recallCrossFlowDocumentation =
+  `${agentsGuide}\n${communicationContract}\n${behavioralIntegration}`;
 const compactWhitespace = (value) => value.replace(/\s+/gu, " ").trim();
 const completeBehavioralSurface =
   `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
@@ -737,6 +747,76 @@ assertBehaviorFragments(
   "server-owned atomic Verified Recall workflow",
 );
 assertBehaviorFragments(
+  combinedSkill,
+  [
+    /terminal Verified Recall receipt[\s\S]+narrow cross-flow exception/iu,
+    /continuation\.action[`=\s]+renderGoalVisualizationThenTeachActiveGoal/u,
+    /continuation\.toolCall[\s\S]+exactly once/iu,
+    /server-filled[\s\S]+goalId[\s\S]+expectedStateVersion[\s\S]+unchanged/iu,
+    /already current unchanged `learningSessionId`[\s\S]+not mirrored[\s\S]+receipt/iu,
+    /then begin the already active goal[\s\S]+same response/iu,
+    /Do not reload context/iu,
+    /do not retry/iu,
+    /never (?:use|introduce) a sibling `presentationAction`/iu,
+    /never (?:expect|bind) the Recall write itself[\s\S]+(?:render UI|image UI)/iu,
+  ],
+  "terminal Recall image handoff",
+);
+assertBehaviorFragments(
+  recallCrossFlowDocumentation,
+  [
+    /renderGoalVisualizationThenTeachActiveGoal/u,
+    /continuation\.toolCall/u,
+    /render_skillpilot_goal_visualization/u,
+    /goalId[\s\S]+expectedStateVersion/u,
+    /learningSessionId[\s\S]+(?:Session-Gate|session gate)[\s\S]+(?:nicht|not)[\s\S]+(?:spiegelt|mirror)/iu,
+    /server(?:seitig|gefüllt|gefüllten|gefüllte|gefüllter)/iu,
+    /keinen (?:neuen )?Context|nicht erneut[\s\S]+Context|reload context/iu,
+    /keinen Retry|nicht erneut|do not retry/iu,
+    /presentationAction/u,
+    /Recall-(?:Write|Mutation)[\s\S]+(?:keine UI-Bindung|nicht an die Bild-UI)/iu,
+  ],
+  "documented terminal Recall image handoff",
+);
+assert.match(
+  mcpContract,
+  /record RecallToolCall\(String name, Map<String, Object> arguments\)/u,
+  "Recall continuation must carry one typed server-filled tool call.",
+);
+assert.match(
+  mcpContract,
+  /renderGoalVisualizationThenTeachActiveGoal/u,
+  "The terminal Recall image successor needs its explicit compound continuation action.",
+);
+assert.match(
+  mcpContract,
+  /continuation\.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception:[\s\S]+continuation\.toolCall[\s\S]+do not derive a second call from context/u,
+  "Server instructions must treat the Recall toolCall as the one renderer invocation, not create a competing call.",
+);
+assert.match(
+  mcpContract,
+  /new RecallToolCall\([\s\S]+RENDER_GOAL_VISUALIZATION[\s\S]+Map\.of\([\s\S]+"goalId"[\s\S]+EXPECTED_STATE_VERSION/u,
+  "The terminal Recall image continuation must fill renderer name, goal, and successor state server-side.",
+);
+const recallResultSchemaSource = mcpContract.slice(
+  mcpContract.indexOf("private static Map<String, Object> recallResultSchema()"),
+  mcpContract.indexOf("private static Map<String, Object> recallSuccessorContextSchema()"),
+);
+assert.ok(
+  recallResultSchemaSource.length > 0,
+  "Could not isolate the Recall result schema.",
+);
+assert.equal(
+  recallResultSchemaSource.includes("LEARNING_SESSION_ID"),
+  false,
+  "The Recall receipt must not mirror the current learning-session capability.",
+);
+assert.doesNotMatch(
+  recallResultsCatalog,
+  /ui\.resourceUri|openai\/outputTemplate/u,
+  "The Recall write must not bind the goal-visualization UI directly.",
+);
+assertBehaviorFragments(
   agentsGuide,
   [
     /Deterministic orchestration boundary/u,
@@ -1270,7 +1350,7 @@ assert.match(
   "The MCP server must keep the last full context authoritative after rendering.",
 );
 assert.equal(
-  `${combinedSkill}\n${mcpContract}\n${contextProjector}`.includes("presentationAction"),
+  `${mcpContract}\n${contextProjector}`.includes("presentationAction"),
   false,
   "The retired presentationAction experiment must not remain in the V1 surface.",
 );

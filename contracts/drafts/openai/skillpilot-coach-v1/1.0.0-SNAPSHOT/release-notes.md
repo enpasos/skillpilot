@@ -26,6 +26,10 @@ line. This version has not been published yet.
   server-sized question batch, one complete answer release, and one atomic
   result write; SkillPilot owns the exact batch, state, retry identity, and
   continuation while the model performs only presentation and semantic grading
+- a visual successor after Verified Recall is explicit in that single
+  continuation: SkillPilot supplies the renderer, goal, and successor state;
+  the coach renders exactly once and immediately continues teaching without a
+  context reload or acknowledgement pause
 - without a current prepared start message, the coach gives only the localized
   `https://skillpilot.com/` start instruction and performs no SkillPilot call
 - `get_skillpilot_context` establishes fresh state at the start of each learner

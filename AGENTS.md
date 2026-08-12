@@ -478,7 +478,20 @@ Interpretation:
   exactly one ordered `{passed, feedback}` entry per returned card. This
   capability-bound write derives its expected state version and idempotency key
   server-side; the model supplies neither `expectedStateVersion` nor
-  `clientRequestId`.
+  `clientRequestId`. When a terminal Recall write activates an ordinary atomic
+  successor with an authorized image, its one imperative `continuation` uses
+  `action: "renderGoalVisualizationThenTeachActiveGoal"` and contains one
+  `toolCall` for `render_skillpilot_goal_visualization` whose image-specific
+  fields are fully server-filled. That call supplies `goalId` and
+  `expectedStateVersion`; the model copies them unchanged and adds only the
+  already current unchanged `learningSessionId` required by the global session
+  gate. The receipt never mirrors that session capability. The model invokes
+  the renderer exactly once immediately and then begins the active goal in the
+  same response. It must not reconstruct the image-specific arguments from the
+  successor context, reload context, or wait for an acknowledgement. If
+  rendering fails or the host omits the component, it does not retry and
+  continues with complete teaching text. Other Recall continuations contain no
+  `toolCall`.
 * Give every interactive memory-card view its own explicitly bound, reviewed,
   content-addressed MCP Apps UI resource. Do not attach generic MCP
   `ImageContent` to ordinary memory-card tools, expose private card answers in
@@ -555,6 +568,12 @@ Rule:
   before the successor section; render before coaching the associated active
   goal. The receipt does not replace the authoritative full result, and omitted
   host presentation does not weaken the text path.
+  The terminal Verified-Recall cross-flow is the narrow exception to deriving
+  this call from those generic facts: when its authoritative `continuation`
+  has `action: "renderGoalVisualizationThenTeachActiveGoal"`, execute the
+  continuation's server-filled image-specific `toolCall` fields unchanged. This remains the
+  same single imperative channel; never add a sibling `presentationAction` or
+  bind the Recall write itself to the image UI.
 * A content-addressed UI URI becomes immutable as soon as it has been advertised
   to a real client, including during draft testing. Replacing widget HTML
   produces a new active hash-bound URI; older URIs remain registered with their
@@ -1220,7 +1239,11 @@ provider policy and product review explicitly permit it.
   in a prompt when one server operation can validate and execute it atomically.
   For Verified Recall this means one server-sized full batch, one full answer
   release after the learner submission and one atomic result write, followed
-  immediately by the server-provided continuation. The plugin checker must
+  immediately by the server-provided continuation. If the terminal successor
+  authorizes an image, that continuation itself owns the renderer call with
+  fully server-filled image-specific arguments and then teaching; the model
+  derives no cross-flow arguments.
+  The plugin checker must
   reject singular per-card Recall tools, model-facing Recall goal/count inputs,
   model-supplied state or retry fields on the capability-bound write, and a
   server Recall instruction longer than the concise cross-tool invariant.
@@ -1272,7 +1295,11 @@ provider policy and product review explicitly permit it.
   earlier pair was already rendered. A repeated pair is rendered again only
   after an explicit learner request and a fresh qualifying result; it is never
   retried automatically. The pair is copied unchanged into `goalId` and
-  `expectedStateVersion`. Every
+  `expectedStateVersion`. Every terminal Verified-Recall receipt that
+  authorizes a successor image instead carries that complete renderer
+  invocation inside its sole `continuation` as
+  `renderGoalVisualizationThenTeachActiveGoal`; it is neither a sibling
+  `presentationAction` nor a UI binding on the Recall write. Every
   fachlicher model-facing tool, including state reads, receives the unchanged
   `learningSessionId` to rehydrate state after a new turn, reload, or context
   compaction.

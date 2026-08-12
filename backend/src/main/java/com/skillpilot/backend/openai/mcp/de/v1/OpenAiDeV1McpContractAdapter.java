@@ -163,13 +163,13 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For ordinary content goals, coach dialogically on exactly one confirmed atomic goal. After the exact goal-title sentence, briefly check prior knowledge, connect the next hint or explanation explicitly to the learner's answer, provide small hints, and let the learner work. Do not reveal the solution to the immediate next task; if a mini-example is needed, the following exercise must use a different case or wording. Use one to three tasks and require intermediate steps or justification. For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and learner interaction rather than pure text. Assess meaning rather than wording and fully accept equivalent correct results, representations, justifications, and alternative methods; explicit format, unit, percentage, justification, and other criteria remain binding. Save mastery only for the active content goal after exactly two independent checks or genuine multi-step transfer in a changed context, covering every aspect. On that call, workFeedback must assess the learner's visible reasoning or approach and outcomeFeedback must state the accepted result or conclusion; generic praise is insufficient. After success, present both returned texts before introducing the successor. If competence has not yet been demonstrated, stay on the same active goal and continue with one short additional question, targeted hint or substep, or a suitable new exercise; after an error, require correction and fresh evidence. Self-assessment, repetition, or the same worked case is insufficient. Never manually master clusters or memorisation goals.
 
-            When the newest full result is get_skillpilot_context or a successful state-changing result containing its full successor context, that full context contains goalVisualization, and its nextAllowedTools permits render_skillpilot_goal_visualization, form a pair from that context's goalVisualization.goalId and the authorizing result's top-level stateVersion. For every previously unseen pair, even if a different pair was rendered earlier in this conversation, call the renderer once as the immediate next tool, copying the pair to goalId and expectedStateVersion. A repeated pair creates no automatic call. Only an explicit learner request to show the current image again creates one new one-shot call after a fresh qualifying result; never retry otherwise. Do not insert get_skillpilot_context or another SkillPilot tool before the required renderer. The renderer result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
+            When the newest full result is get_skillpilot_context or a successful state-changing result containing its full successor context, that full context contains goalVisualization, and its nextAllowedTools permits render_skillpilot_goal_visualization, form a pair from that context's goalVisualization.goalId and the authorizing result's top-level stateVersion. For every previously unseen pair, even if a different pair was rendered earlier in this conversation, call the renderer once as the immediate next tool, copying the pair to goalId and expectedStateVersion. A repeated pair creates no automatic call. Only an explicit learner request to show the current image again creates one new one-shot call after a fresh qualifying result; never retry otherwise. A terminal Recall result with continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow exception: use its continuation.toolCall as this one required render call and do not derive a second call from context. Do not insert get_skillpilot_context or another SkillPilot tool before the required renderer. The renderer result is only a UI receipt. Never claim display, invent image details, expose image URLs or metadata, or use the image as evidence.
 
             For a memory goal, keep normal flashcard learning and Verified Recall strictly separate. The published normal-practice option uses the exact action start_skillpilot_memory_practice. Treat the exact localized option label “Karteikarten lernen” or “Learn with flashcards”, and any unambiguous equivalent request, as confirmation of that option. When the newest full context permits start_skillpilot_memory_practice, call it exactly once as the immediate next action with the confirmed activeGoal.goalId and stateVersion, before any learner-facing response. Never infer that the component is unavailable and never replace this required call pre-emptively with a Cockpit link. Its dedicated component alone may reveal card fronts and backs and call review_skillpilot_memory_practice_card. Never call the review tool from ordinary coach dialogue, reproduce or answer the private card content in the transcript, infer a rating, or claim that the host displayed the component. The component may navigate locally through the supplied bounded card batch without any tool call or state change. It records exactly not_known or known for an explicitly rated card; that updates only the card's repetition schedule. After its loaded batch is exhausted, only the component may call start_skillpilot_memory_practice again with the newest stateVersion to load another private batch. Normal flashcard learning never certifies mastery, completes the active goal, or substitutes for Verified Recall. When no cards are due, say only that flashcard learning is complete for today and offer the separate strict learning-coach check if appropriate. Offer the supplied activeGoal.cockpitUrl verbatim as the fallback for flashcard learning only when the start tool actually returns an error, the newest context does not permit it, or the learner explicitly asks for the Cockpit. For the learner-visible German wording, say „Karteikarten lernen“ or „Karteikartenlernen“, never „SRS-Kartendrill“.
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints plus concrete workFeedback and outcomeFeedback. Present the returned feedback and score before introducing the successor.
 
-            For Verified Recall, the backend owns the goal, batch size, card identities, order, completeness, state transition, and retry identity. Start the server-sized batch without choosing technical parameters, show every returned question in order, and wait for all answers. Then load all expected answers once with batchCapability, compare each learner answer by meaning, and submit exactly one ordered assessment per returned answer in one atomic call with gradingCapability; passed=true only for a correct answer without help. Never grade from memory, invent counts, perform a per-card tool loop, or expose expected answers early. Use only the confirmed atomic receipt and follow its continuation immediately. Do not save additional manual mastery.
+            For Verified Recall, SkillPilot owns goal, batch count, card IDs, order, completeness, state transition, retry identity, and continuation. Start without technical selection, show every returned question in order, and wait for all answers. Load all expected answers once with batchCapability, compare by meaning, then submit exactly one ordered assessment per answer in one atomic call with gradingCapability; passed=true only when correct without help. Never invent counts, expose answers early, use per-card tools, grade from memory, or save manual mastery. Follow the confirmed continuation immediately. For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next after adding only the current learningSessionId, then teach in the same response; never reload or retry.
 
             Change the Level-3 learning focus only after an explicit learner request and only through fresh published scope options. When completion.scopeComplete=true and requiredAction=setScope supplies options, briefly offer the first option as the backend-recommended broader focus but do not mutate until the learner accepts. Backend-published suitable learner-facing ancestors come first, nearest broader focus first; other valid focus choices may follow. For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged, never infer an ancestor or construct an ID. A scope option is a focus cluster, never a next learning goal. The requires relation is one-way: mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite. Every unmastered target in the Personal Curriculum remains subject to the normal frontier test using its own effective prerequisites.
 
@@ -343,7 +343,15 @@ public final class OpenAiDeV1McpContractAdapter {
     public record RecallAssessment(boolean passed, String feedback) {
     }
 
-    public record RecallContinuation(String action, boolean consentRequired, String instruction) {
+    public record RecallToolCall(String name, Map<String, Object> arguments) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record RecallContinuation(
+            String action,
+            boolean consentRequired,
+            String instruction,
+            RecallToolCall toolCall) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -627,7 +635,8 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Save the complete recall assessment",
                         "Atomically saves one ordered assessment for every answer in the exact released batch. "
                                 + "Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, "
-                                + "counts or other technical workflow values.",
+                                + "counts or other technical workflow values. Execute the returned continuation "
+                                + "immediately and exactly.",
                         objectSchema(
                                 Map.of(
                                         RECALL_GRADING_CAPABILITY, modelFacingOpaqueReferenceSchema(),
@@ -1555,14 +1564,16 @@ public final class OpenAiDeV1McpContractAdapter {
     private RecallContinuation recallContinuation(
             RecallPromptResult next,
             OpenAiDeCoachContext context,
-            OpenAiDeV1SessionMetadata metadata) {
+            OpenAiDeV1SessionMetadata metadata,
+            long successorStateVersion) {
         if (next != null && "ready".equals(next.status())) {
             return new RecallContinuation(
                     "askNextRecallBatch",
                     false,
                     localized(metadata,
                             "Zeige jetzt den nächsten vollständigen Kartenbatch und warte wieder auf alle Antworten.",
-                            "Show the next complete card batch now and again wait for all answers."));
+                            "Show the next complete card batch now and again wait for all answers."),
+                    null);
         }
         if (context != null
                 && context.activeGoal() != null
@@ -1574,7 +1585,28 @@ public final class OpenAiDeV1McpContractAdapter {
                             "Die Kartenprüfung ist beendet. Biete für das aktive Lernkartenziel genau die vom "
                                     + "Backend veröffentlichten Lernmodi an und warte auf die Auswahl.",
                             "The recall check is complete. Offer exactly the backend-published learning modes for "
-                                    + "the active memory goal and wait for the learner's choice."));
+                                    + "the active memory goal and wait for the learner's choice."),
+                    null);
+        }
+        if (context != null
+                && context.activeGoal() != null
+                && context.goalVisualization() != null
+                && context.activeGoal().goalId().equals(context.goalVisualization().goalId())
+                && context.nextAllowedTools() != null
+                && context.nextAllowedTools().contains(RENDER_GOAL_VISUALIZATION)) {
+            return new RecallContinuation(
+                    "renderGoalVisualizationThenTeachActiveGoal",
+                    false,
+                    localized(metadata,
+                            "Die Kartenprüfung ist beendet. Führe jetzt genau den angegebenen Bildaufruf aus und "
+                                    + "beginne danach das bereits aktivierte Lernziel sofort im selben Antwortturn.",
+                            "The recall check is complete. Execute exactly the supplied image call now, then begin "
+                                    + "the already active learning goal immediately in the same assistant turn."),
+                    new RecallToolCall(
+                            RENDER_GOAL_VISUALIZATION,
+                            Map.of(
+                                    "goalId", context.goalVisualization().goalId(),
+                                    EXPECTED_STATE_VERSION, successorStateVersion)));
         }
         if (context != null && context.activeGoal() != null) {
             return new RecallContinuation(
@@ -1584,7 +1616,8 @@ public final class OpenAiDeV1McpContractAdapter {
                             "Die Kartenprüfung ist beendet. Beginne das bereits aktivierte Lernziel sofort im selben "
                                     + "Antwortturn.",
                             "The recall check is complete. Begin the already active learning goal immediately in "
-                                    + "the same assistant turn."));
+                                    + "the same assistant turn."),
+                    null);
         }
         if (context != null && "setScope".equals(context.requiredAction())
                 && context.options() != null && !context.options().isEmpty()) {
@@ -1595,7 +1628,8 @@ public final class OpenAiDeV1McpContractAdapter {
                             "Die Kartenprüfung und der aktuelle Fokus sind abgeschlossen. Biete genau die erste "
                                     + "veröffentlichte breitere Fokusoption an und warte auf Zustimmung.",
                             "The recall check and current focus are complete. Offer exactly the first published "
-                                    + "broader focus option and wait for consent."));
+                                    + "broader focus option and wait for consent."),
+                    null);
         }
         if (context != null && "setActiveGoal".equals(context.requiredAction())) {
             return new RecallContinuation(
@@ -1603,7 +1637,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     true,
                     localized(metadata,
                             "Biete die veröffentlichte Lernzielauswahl an und warte auf die Auswahl.",
-                            "Offer the published learning-goal choices and wait for a selection."));
+                            "Offer the published learning-goal choices and wait for a selection."),
+                    null);
         }
         boolean curriculumComplete = context != null
                 && context.completion() != null
@@ -1614,7 +1649,8 @@ public final class OpenAiDeV1McpContractAdapter {
                     false,
                     localized(metadata,
                             "Bestätige den Abschluss des persönlichen Curriculums.",
-                            "Confirm completion of the personal curriculum."));
+                            "Confirm completion of the personal curriculum."),
+                    null);
         }
         return new RecallContinuation(
                 "waitUntilEligible",
@@ -1623,7 +1659,8 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Nur die harte Kartenprüfung ist für heute beendet. Erkläre den bestätigten Gesamtbefund; "
                                 + "behaupte keinen Fokusabschluss und keine automatische Weitung.",
                         "Only strict card recall is finished for today. Explain the confirmed aggregate result; "
-                                + "do not claim focus completion or automatic widening."));
+                                + "do not claim focus completion or automatic widening."),
+                null);
     }
 
     private byte[] capabilityBytes(String context, String... frames) {
@@ -2263,7 +2300,11 @@ public final class OpenAiDeV1McpContractAdapter {
                 skillpilotId,
                 response.successor(),
                 metadata);
-        RecallContinuation continuation = recallContinuation(next, successorContext, metadata);
+        RecallContinuation continuation = recallContinuation(
+                next,
+                successorContext,
+                metadata,
+                successorStateVersion);
         OpenAiDeCoachContext publicSuccessorContext = next == null
                 ? recallSuccessorContext(successorContext)
                 : null;
@@ -3374,13 +3415,23 @@ public final class OpenAiDeV1McpContractAdapter {
                         "action", enumStringSchema(
                                 "askNextRecallBatch",
                                 "chooseMemoryMode",
+                                "renderGoalVisualizationThenTeachActiveGoal",
                                 "teachActiveGoal",
                                 "offerScope",
                                 "offerGoal",
                                 "waitUntilEligible",
                                 "curriculumComplete"),
                         "consentRequired", booleanSchema(),
-                        "instruction", stringSchema()),
+                        "instruction", stringSchema(),
+                        "toolCall", objectSchema(
+                                Map.of(
+                                        "name", enumStringSchema(RENDER_GOAL_VISUALIZATION),
+                                        "arguments", objectSchema(
+                                                Map.of(
+                                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                                        EXPECTED_STATE_VERSION, integerSchema(0, null)),
+                                                List.of("goalId", EXPECTED_STATE_VERSION))),
+                                List.of("name", "arguments"))),
                 List.of("action", "consentRequired", "instruction")));
         properties.put("context", recallSuccessorContextSchema());
         return objectSchema(properties, List.of(

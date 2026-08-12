@@ -163,6 +163,19 @@ text. The renderer revalidates state; its receipt remains narrow. A host may
 omit the optional image, so the ordinary text response must remain complete.
 Do not gate rendering by user agent or host surface.
 
+A terminal Verified Recall receipt is the narrow cross-flow exception to
+forming that call from generic context facts. If its only imperative channel is
+`continuation.action=renderGoalVisualizationThenTeachActiveGoal`, immediately
+invoke the supplied `continuation.toolCall` exactly once. Copy its server-filled
+`name`, `goalId`, and `expectedStateVersion` unchanged. Add only the already
+current unchanged `learningSessionId` required by the global session gate; the
+receipt deliberately does not mirror that session capability. Then begin the
+already active goal in the same response. Do not reload context, wait for
+acknowledgement, or derive either image-specific argument. A renderer or
+host-presentation failure causes no retry and does not block complete teaching
+text. Never introduce a sibling
+`presentationAction` and never bind the Recall write itself to the image UI.
+
 ## 4. Motivation and orientation
 
 Use this mode only when fresh context explicitly classifies the active goal as
@@ -291,7 +304,11 @@ per-card read/write loops.
    The backend rejects an incomplete, duplicate or stale batch and persists an
    accepted batch atomically. Follow its full successor context and continuation
    immediately in the same response; do not stop for an acknowledgement and do
-   not reload context in that learner turn.
+   not reload context in that learner turn. If the terminal continuation is
+   `renderGoalVisualizationThenTeachActiveGoal`, execute its server-filled
+   image-specific renderer `toolCall` fields exactly once before teaching the
+   active successor. All
+   other Recall continuations omit `toolCall`.
 
 Do not ask one card twice on the same calendar day. After an error, explain the
 idea briefly but do not repeat the card. Do not set additional manual mastery.
