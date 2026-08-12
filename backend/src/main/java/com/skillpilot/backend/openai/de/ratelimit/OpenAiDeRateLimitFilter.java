@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.de.ratelimit;
 
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.config.RawHttpServletRequest;
 import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
@@ -146,7 +147,7 @@ public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
     }
 
     private Limit limitFor(HttpServletRequest request) {
-        String path = request.getRequestURI();
+        String path = RawHttpServletRequest.requestUri(request);
         if (path == null) {
             return null;
         }

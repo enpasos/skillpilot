@@ -7,6 +7,8 @@ import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthMetadataController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -91,11 +93,28 @@ class OpenAiDeRateLimitFilterTest {
         assertThat(invoke(path, "192.0.2.14").getStatus()).isEqualTo(429);
     }
 
+    @Test
+    void forwardingWrapperCannotHideTheRawMcpPathFromTheLimiter() throws Exception {
+        MockHttpServletRequest raw = request(
+                OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH,
+                "192.0.2.15");
+        HttpServletRequest wrapped = new HttpServletRequestWrapper(raw) {
+            @Override
+            public String getRequestURI() {
+                return "/untrusted-prefix" + super.getRequestURI();
+            }
+        };
+
+        assertThat(invoke(wrapped).getStatus()).isEqualTo(200);
+        assertThat(invoke(wrapped).getStatus()).isEqualTo(200);
+        assertThat(invoke(wrapped).getStatus()).isEqualTo(429);
+    }
+
     private MockHttpServletResponse invoke(String path, String remoteAddress) throws Exception {
         return invoke(request(path, remoteAddress));
     }
 
-    private MockHttpServletResponse invoke(MockHttpServletRequest request) throws Exception {
+    private MockHttpServletResponse invoke(HttpServletRequest request) throws Exception {
         MockHttpServletResponse response = new MockHttpServletResponse();
         filter.doFilter(request, response, new MockFilterChain());
         return response;

@@ -37,6 +37,15 @@ public class OpenAiDeConfiguration {
                 throw new IllegalStateException(
                         "skillpilot.openai.coach.v1.learning-session-ttl must be exactly PT24H.");
             }
+            String configuredMtlsEdgeMode = environment.getProperty(
+                    "skillpilot.openai.coach.v1.mtls-edge-mode",
+                    OpenAiDeProperties.MtlsEdgeMode.DISABLED.wireValue());
+            if (properties.getMtlsEdgeMode() == null
+                    || !properties.getMtlsEdgeMode().wireValue().equals(configuredMtlsEdgeMode)) {
+                throw new IllegalStateException(
+                        "skillpilot.openai.coach.v1.mtls-edge-mode must be exactly one of "
+                                + "disabled, observe, or enforce.");
+            }
             OpenAiDeSecureModeValidation.Result secureMode =
                     OpenAiDeSecureModeValidation.inspect(properties);
             if (!secureMode.valid()) {

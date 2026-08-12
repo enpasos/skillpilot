@@ -291,4 +291,5 @@ and the dedicated V1 MCP endpoint.
 - Erst nach grüner Verhaltens-, Sicherheits-, Client- und Rechtsabnahme
   **Submit for Review** wählen.
 - Erst nach Genehmigung bewusst **Publish** wählen und danach den Snapshot mit
-  `record-published --confirm-openai-published` versiegeln.
+  `record-published --confirm-openai-published --confirm-mtls-enforced-and-verified`
+  versiegeln.

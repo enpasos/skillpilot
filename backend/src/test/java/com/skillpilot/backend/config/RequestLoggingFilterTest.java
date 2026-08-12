@@ -3,6 +3,8 @@ package com.skillpilot.backend.config;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -45,6 +47,27 @@ class RequestLoggingFilterTest {
             assertThat(chain.getRequest()).as(path).isSameAs(request);
             assertThat(chain.getResponse()).as(path).isSameAs(response);
         }
+    }
+
+    @Test
+    void forwardingWrapperCannotExposeAnInternalOpenAiBodyToTheLogger() throws Exception {
+        MockHttpServletRequest raw = new MockHttpServletRequest(
+                "POST",
+                "/internal/openai/v1/mcp");
+        raw.setContent("private-mcp-body".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        HttpServletRequest wrapped = new HttpServletRequestWrapper(raw) {
+            @Override
+            public String getRequestURI() {
+                return "/api/not-the-mcp-path";
+            }
+        };
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        MockFilterChain chain = new MockFilterChain();
+
+        filter.doFilter(wrapped, response, chain);
+
+        assertThat(chain.getRequest()).isSameAs(wrapped);
+        assertThat(chain.getResponse()).isSameAs(response);
     }
 
     @Test

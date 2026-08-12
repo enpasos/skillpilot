@@ -1,6 +1,6 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 11. August 2026
+**Stand:** 12. August 2026
 **Status:** verbindliches Betriebsverfahren für die noch unveröffentlichte,
 mehrsprachige Plugin-Linie V1
 
@@ -102,6 +102,7 @@ Veröffentlichung versiegelt ihn.
 3. Generische und versionsspezifische Gates ausführen:
 
    ```bash
+   ./scripts/verify_openai_v1_mtls_edge.sh --static
    npm --prefix "ai/openai app" test
    node scripts/check_openai_plugin_versioning.mjs
    node scripts/check_skillpilot_coach_plugin.mjs
@@ -126,8 +127,21 @@ Veröffentlichung versiegelt ihn.
    git diff --check
    ```
 
-6. Erst danach Backend und V1-Edge ausrollen, die App-Metadaten aktualisieren
-   und in einem frischen Chat erneut scannen.
+6. Erst danach Backend und V1-Edge geordnet ausrollen: In der geschützten
+   Backend-EnvironmentFile zunächst `observe` vorbereiten; CA-Bundle,
+   root-eigene Modusdatei und Loopback-Verifier mit
+   `install_openai_v1_mtls_edge.sh --mode observe` staged installieren und
+   prüfen; anschließend die Nginx-Vorlage installieren. Der Installer editiert,
+   testet oder reloadet Nginx niemals. Vor der Aktivierung folgen als root
+   `verify_openai_v1_mtls_edge.sh --preflight --expected-mode observe` und ein
+   explizites `nginx -t`; danach zuerst das Backend neu starten und erst dann
+   Nginx reloaden. Abschließend den Runtime-Smoke und einen realen
+   ChatGPT-Toolaufruf nachweisen. Der spätere Wechsel auf `enforce` folgt
+   derselben EnvironmentFile → Installer → Preflight → `nginx -t` →
+   Backend-Restart → Nginx-Reload →
+   Runtime-/ChatGPT-Evidence-Reihenfolge.
+7. Erst nach diesen Nachweisen die App-Metadaten aktualisieren und in einem
+   frischen Chat erneut scannen.
 
 ## 3. Release-Acceptance
 
@@ -136,38 +150,45 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 1. Discovery, Domain-Challenge, OAuth/PKCE, Resource-/Audience-Prüfung,
    Callback-Allowlist, Scope-Fehler und Revocation sind grün; Geheimnisse
    erscheinen weder in Antworten noch Logs.
-2. CREATE und EXISTING, Providerhinweis und alle Level-2-Dimensionen
+2. Der root-eigene und der Backend-mTLS-Modus stehen beide auf `enforce`.
+   Ein externer `/mcp`-Aufruf ohne Clientzertifikat endet mit `403`; ein realer
+   ChatGPT-Toolaufruf erhöht `mtls_edge_verified`, ohne einen Reject im
+   Journal des mTLS-Verifiers oder einen Backend-Assertion-Reject
+   (`mtls_edge_rejected`) für diesen Aufruf zu erzeugen. Metadata und
+   Domain-Challenge bleiben ohne Clientzertifikat
+   erreichbar.
+3. CREATE und EXISTING, Providerhinweis und alle Level-2-Dimensionen
    funktionieren ausschließlich im First-Party-WebGUI.
-3. Zwei aufeinanderfolgende WebGUI-Starts erzeugen verschiedene Sessionwerte
+4. Zwei aufeinanderfolgende WebGUI-Starts erzeugen verschiedene Sessionwerte
    und jeweils einen neuen Chat. Permanente SkillPilot-ID, OAuth-Werte und
    interne Lernziel-ID erscheinen nicht in der Startnachricht.
-4. Ohne aktuelle Startnachricht erfolgt kein Toolaufruf, sondern nur der feste
+5. Ohne aktuelle Startnachricht erfolgt kein Toolaufruf, sondern nur der feste
    WebGUI-Hinweis. Mit Startnachricht läuft zu Beginn jedes Learner-Turns ein
    erfolgreicher aktueller Kontextabruf. Nach einer erfolgreichen Mutation
    wird ihr vollständiger Nachfolgerzustand im selben Assistant-Turn ohne
    redundanten Kontextabruf verwendet.
-5. Die drei Session-Recovery-Codes ergeben ausschließlich die servereigene
+6. Die drei Session-Recovery-Codes ergeben ausschließlich die servereigene
    Instruktion und nötigenfalls die nicht duplizierte `startUrl`; Fachantwort,
    OAuth-Neuverbindung und Weiterarbeit mit der alten Session bleiben aus.
-6. Chatseitig funktionieren nur die ausdrücklichen Level-3-Änderungen von Fokus
+7. Chatseitig funktionieren nur die ausdrücklichen Level-3-Änderungen von Fokus
    und aktivem Ziel. Level 2 wird weder abgefragt noch mutiert.
-7. `resources/list` enthält genau zwei aktiv gebundene UI-Ressourcen und alle
+8. `resources/list` enthält genau zwei aktiv gebundene UI-Ressourcen und alle
    beworbenen Vorgänger byte-identisch passiv. Bild- und Kartenwerkzeug binden
    ausschließlich ihre jeweilige aktive Ressource.
-8. Das Lernzielbild erscheint nur bei frischer passender Projektion und
+9. Das Lernzielbild erscheint nur bei frischer passender Projektion und
    Freigabe. Ohne Bild, bei Clusterzielen oder nach veralteter Freigabe gibt es
    keinen Renderer-Aufruf und keine leere UI; der Text bleibt vollständig.
-9. Normales Karteikartenlernen verändert nur die Wiederholungsplanung und bleibt
+10. Normales Karteikartenlernen verändert nur die Wiederholungsplanung und bleibt
    vom strengen Verified Recall getrennt. Orientierung, dialogisches Lernen,
    Mastery und Prüfung erfüllen ihre jeweiligen Evidenz- und Feedbackregeln.
-10. Der Session-Guard akzeptiert exakt `PT1H`, lehnt Operationen und Replays
+11. Der Session-Guard akzeptiert exakt `PT1H`, lehnt Operationen und Replays
     darunter ab und replayt einen zulässigen identischen Write nur bei
     unveränderter kanonischer Learner-Revision ohne neue Mutation.
-11. Der requestlokale Test mit `3660` Sekunden oder optional `5400` Sekunden
+12. Der requestlokale Test mit `3660` Sekunden oder optional `5400` Sekunden
     zeigt den Guard-Übergang. `3600`, `86401`, Werte über der normalen Laufzeit
     und das Feld bei deaktiviertem Gate scheitern fail-closed. Der unmittelbar
     folgende Launch ohne Feld liefert wieder `PT24H`.
-12. Sicherheits-, Datenschutz-, Rechts-, Client- und Verhaltensabnahme sind
+13. Sicherheits-, Datenschutz-, Rechts-, Client- und Verhaltensabnahme sind
     dokumentiert. Dieses Runbook behauptet keinen zusätzlichen
     ID-in-Komponente-Submission-Blocker; die V1-Identitätsverarbeitung liegt im
     First-Party-WebGUI.
@@ -177,12 +198,31 @@ unveränderlich registriert:
 
 ```bash
 node scripts/openai_plugin_release.mjs record-published \
-  --confirm-openai-published
+  --confirm-openai-published \
+  --confirm-mtls-enforced-and-verified
 ```
 
 Vorher darf `release-index.json` die Version nicht als veröffentlicht führen.
 
-## 4. Rollback innerhalb von V1
+## 4. mTLS-Betrieb und CA-Pflege
+
+Mindestens alle 90 Tage werden die offiziellen OpenAI-Root- und Connectors-
+Intermediate-Dateien gegen die gepinnten Repositorydateien, Hashes,
+Fingerprints, Gültigkeitszeiträume und die dokumentierte Kette geprüft. Es gibt
+keinen automatischen Download in Produktion. Eine Änderung wird als
+reviewpflichtige CA-Rotation gemäß der
+[CA-Provenienz](https://github.com/enpasos/skillpilot/blob/main/deploy/openai-mtls/PROVENANCE.md) mit statischem Gate,
+Preflight, Runtime-Smoke und realem ChatGPT-Positivtest ausgerollt; bei
+überlappenden OpenAI-Ketten wird ein überlappender Trust-Cutover geplant.
+Spätestens 90 Tage vor CA-Ablauf muss die Nachfolgestrategie bestätigt sein.
+Im Regelbetrieb werden `mtls_edge_verified`, `mtls_edge_observed_no_cert` und
+der Backend-Assertion-Counter `mtls_edge_rejected` überwacht. Zertifikats- und
+No-Certificate-Rejects entstehen bereits vor Spring und werden deshalb über
+das begrenzte Journal des mTLS-Verifiers sowie den öffentlichen `403`-Edge-
+Status beobachtet. Fehlende verifizierte Aufrufe oder steigende Reject-Signale
+werden vor dem nächsten Release geklärt.
+
+## 5. Rollback innerhalb von V1
 
 Ein Rollback ändert weder Plugin-Identität noch Contract Major, MCP-Origin oder
 OAuth-Resource.
@@ -197,7 +237,7 @@ OAuth-Resource.
 5. OAuth-Tokens oder Lernsessionen nur bei einem konkreten Sicherheits- oder
    Datenintegritätsgrund pauschal widerrufen.
 
-## 5. Deprecation, Unpublish und Löschung
+## 6. Deprecation, Unpublish und Löschung
 
 Die Zustandsänderung beginnt in `release/lifecycle.json`:
 

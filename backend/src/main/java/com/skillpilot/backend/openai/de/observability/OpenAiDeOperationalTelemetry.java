@@ -28,6 +28,10 @@ public final class OpenAiDeOperationalTelemetry {
         CROSS_PROVIDER_REJECTED("cross_provider_rejected"),
         SESSION_REQUIRED("session_required"),
         SESSION_RENEWAL_REQUIRED("session_renewal_required"),
+        MTLS_EDGE_VERIFIED("mtls_edge_verified"),
+        MTLS_EDGE_OBSERVED_NO_CERT("mtls_edge_observed_no_cert"),
+        MTLS_EDGE_LOCAL_OPERATOR("mtls_edge_local_operator"),
+        MTLS_EDGE_REJECTED("mtls_edge_rejected"),
         TOOL_EXCEPTION("tool_exception");
 
         private final String tag;

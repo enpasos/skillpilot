@@ -1,0 +1,38 @@
+[Unit]
+Description=SkillPilot OpenAI Coach V1 mTLS certificate verifier
+Documentation=https://developers.openai.com/plugins/build/auth#mutual-tls-mtls
+After=local-fs.target
+Before=nginx.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/bin/python3 -B /usr/local/libexec/skillpilot-openai-v1-mtls-verifier.py --listen 127.0.0.1 --port 8792 --root-ca /etc/skillpilot/openai-mtls/openai-root-ca.pem --intermediate-ca /etc/skillpilot/openai-mtls/openai-connectors-mtls-ca.pem
+Restart=on-failure
+RestartSec=2s
+TasksMax=32
+MemoryMax=256M
+LimitNOFILE=256
+IPAddressDeny=any
+IPAddressAllow=localhost
+LogRateLimitIntervalSec=30s
+LogRateLimitBurst=200
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

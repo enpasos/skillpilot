@@ -1169,6 +1169,20 @@ Provider-facing contracts must use derived temporary context instead:
   coaching, selection, mastery, Verified Recall, and exam flows remain normal
   MCP/chat flows without UI bindings; the memory-card review write is app-only
   and has no output template of its own.
+- The dedicated V1 edge requests ChatGPT's OpenAI-managed client certificate
+  only for transport authentication; OAuth and the learning session remain
+  mandatory and independent. Trust only the published OpenAI Root and
+  Connectors intermediate CAs, client-authentication EKU, and exact SAN
+  `mtls.prod.connectors.openai.com`; never pin a rotating leaf. The root-owned
+  edge has only `observe` and `enforce`: `observe` accepts an absent certificate
+  temporarily through to OAuth while recording only `OBSERVE_NO_CERT`, but
+  always rejects an invalid presented certificate; `enforce` accepts external
+  `/mcp` traffic only as `VERIFIED`. A certificate-less `LOCAL_OPERATOR` lane
+  may exist only for an actual loopback socket peer. Never derive it from
+  `X-Forwarded-For`, a request header, URL, query, or shared secret. Public
+  protected-resource metadata and domain challenge remain certificate-free.
+  The backend mode and root-owned nginx mode must match fail-closed, and plugin
+  publication requires `enforce`.
 - OpenAI MCP uses one App, public tool catalog, endpoint and
   registration per contract major, not per language. Plugin metadata, skill
   instructions, tool names, descriptions, schemas and stable machine values use

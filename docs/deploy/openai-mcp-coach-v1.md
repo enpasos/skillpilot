@@ -1,16 +1,18 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 11. August 2026
+**Stand:** 12. August 2026
 
 **Status:** Der mehrsprachige MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
 Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
 nicht öffentlich veröffentlichte Paketversion `1.0.0`.
 Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
 OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
-freigegeben. Der V1-Vertrag verwendet normales HTTPS und OAuth/PKCE auf dem
-dedizierten `mcp-coach-v1.skillpilot.com`-Origin. Client-TLS ist nicht
-aktiviert. Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben
-ausschließlich im First-Party-WebGUI.
+freigegeben. Der V1-Vertrag verwendet serverauthentisiertes HTTPS, OpenAI-
+Connector-mTLS und OAuth/PKCE auf dem dedizierten
+`mcp-coach-v1.skillpilot.com`-Origin. mTLS wird zunächst kontrolliert im Modus
+`observe` nachgewiesen und vor der Veröffentlichung auf `enforce` gestellt.
+Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
+im First-Party-WebGUI.
 
 Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
 getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem
@@ -95,7 +97,9 @@ Das Secret ist ausschließlich geschützte Konfiguration in ChatGPT und
 SkillPilot. Es gehört weder in Repository, Browser, Startnachricht,
 Toolargumente noch Logs. PKCE bindet zusätzlich den Authorization Code an den
 von ChatGPT erzeugten Verifier. Normales serverauthentisiertes HTTPS bleibt
-Pflicht. Eine Clientzertifikat-Infrastruktur ist nicht Teil des V1-Vertrags.
+Pflicht. Am dedizierten MCP-Rand präsentiert ChatGPT zusätzlich ein von OpenAI
+verwaltetes Clientzertifikat; SkillPilot muss dafür kein eigenes Zertifikat
+beantragen.
 
 Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
 Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
@@ -141,10 +145,11 @@ nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.
 Für den sicheren Cutover können Code und additive Liquibase-Migration zunächst
 in einem getrennten read-only Canary geprüft werden. Der produktive
 Vollbetrieb benötigt dagegen aktivierte Schreiboperationen und
-verwendet normales serverauthentisiertes HTTPS am dedizierten V1-vHost und
-verpflichtendes OAuth/PKCE mit exakter Resource-/Audience- und Scope-Prüfung.
-Der separate Host isoliert Domainverifikation und Plugin-Lifecycle; er aktiviert
-kein mTLS. Der bestehende `skillpilot.com`-vHost wird nicht grundsätzlich
+verwendet serverauthentisiertes HTTPS am dedizierten V1-vHost, OpenAI-
+Connector-mTLS und verpflichtendes OAuth/PKCE mit exakter Resource-/Audience-
+und Scope-Prüfung. Der separate Host isoliert Domainverifikation,
+Plugin-Lifecycle und die Clientzertifikatsprüfung. Der bestehende
+`skillpilot.com`-vHost wird nicht grundsätzlich
 umgebaut; er erhält nur die unten beschriebene enge `404`-Sperre gegen
 MCP-/Internpfad-Aliasse.
 
@@ -239,17 +244,12 @@ if sudo test -e /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf; the
 fi
 ```
 
-Erst nach Prüfung des Diffs werden aus dem Repository-Root die beiden Dateien
-getrennt installiert:
-
-```bash
-sudo install -o root -g root -m 0644 \
-  deploy/nginx/skillpilot-mcp-coaches.conf \
-  /etc/nginx/skillpilot-mcp-coaches.conf
-sudo install -o root -g root -m 0644 \
-  deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf \
-  /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf
-```
+Die beiden Dateien werden an dieser Stelle noch **nicht** installiert oder
+aktiviert. Beim ersten mTLS-Cutover werden zuerst Backend-Modus, CA-Bundle,
+root-eigene Modusdatei und Loopback-Verifier vorbereitet. Erst danach werden
+die Nginx-Vorlagen im unten beschriebenen gemeinsamen Ablauf installiert. So
+verweist die neue V1-Konfiguration beim vollständigen Nginx-Test niemals auf
+noch fehlende mTLS-Artefakte.
 
 Die zwei Includes haben absichtlich verschiedene Kontexte:
 
@@ -273,25 +273,23 @@ http {
 
 Der Ausschnitt ist eine Platzierungshilfe und kein Ersatz für den bestehenden
 Haupt-vHost. Das zweite Include wird gezielt in genau diesen vorhandenen
-`server {}`-Block aufgenommen; weitere Einträge bleiben unverändert. Danach
-wird immer zuerst die vollständige Konfiguration geprüft. Nur ein erfolgreicher
-Test erlaubt den Reload:
+`server {}`-Block aufgenommen; weitere Einträge bleiben unverändert. Die
+Installation allein aktiviert noch nichts. Vor jedem Reload folgen der
+root-only mTLS-Preflight und ein explizites `nginx -t` im koordinierten Ablauf
+weiter unten.
 
-```bash
-sudo nginx -t
-sudo systemctl reload nginx
-sudo systemctl is-active nginx
-```
-
-Vor dem öffentlichen V1-Smoke muss die bestehende Let's-Encrypt-Lineage auf
-die neun sprachneutralen Major-Hosts umgestellt werden. Zuerst müssen alle
-vorhandenen DNS-A-/AAAA-Einträge auf denselben Server zeigen; ein fehlender
-AAAA-Eintrag ist zulässig, ein veralteter AAAA-Eintrag dagegen nicht. Nach den
-Backups und der
-sichtbaren Diff-Prüfung wird der additive Repository-vHost installiert und mit
-`nginx -t` sowie Reload aktiviert, damit der Port-80-vHost alle HTTP-Challenges
-bedienen kann. Der bestehende Haupt-vHost wird dabei nicht ersetzt. Erst danach
-folgen Dry-Run und tatsächliche Erneuerung derselben Lineage:
+Vor der Installation der neuen TLS-vHost-Vorlage muss die bestehende
+Let's-Encrypt-Lineage bereits auf die neun sprachneutralen Major-Hosts
+umgestellt sein. Zuerst müssen alle vorhandenen DNS-A-/AAAA-Einträge auf
+denselben Server zeigen; ein fehlender AAAA-Eintrag ist zulässig, ein veralteter
+AAAA-Eintrag dagegen nicht. Die folgenden `certbot --nginx`-Befehle setzen
+voraus, dass noch der zuvor geprüfte, funktionsfähige V1-vHost ohne die neue
+mTLS-Dateireferenz aktiv ist. Bei einer echten Neuinstallation ohne vorhandene
+Lineage wird stattdessen zunächst ausschließlich eine separat geprüfte
+Port-80-Challenge-Konfiguration verwendet; die vollständige Repository-vHost-
+Vorlage wird erst nach Zertifikatsausstellung und danach in der weiter unten
+festgelegten Reihenfolge EnvironmentFile → mTLS-Artefakte → Nginx-Vorlage →
+Preflight aktiviert. Der bestehende Haupt-vHost wird dabei nicht ersetzt.
 
 ```bash
 sudo certbot certonly --nginx --dry-run \
@@ -350,6 +348,7 @@ SKILLPILOT_OPENAI_COACH_V1_BOOTSTRAP_ENABLED=false
 SKILLPILOT_OPENAI_COACH_V1_OAUTH_ENABLED=true
 SKILLPILOT_OPENAI_COACH_V1_MCP_ENABLED=true
 SKILLPILOT_OPENAI_COACH_V1_WRITES_ENABLED=true
+SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe
 
 SKILLPILOT_OPENAI_CHATGPT_URL=https://chatgpt.com/
 
@@ -376,6 +375,128 @@ SKILLPILOT_OPENAI_RATE_LIMIT_UI_REQUESTS=60
 SKILLPILOT_OPENAI_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
+
+`MTLS_EDGE_MODE=disabled` ist nur der rückrollbare Ausgangszustand vor der
+separaten Edge-Installation. `observe` prüft vorhandene OpenAI-Zertifikate,
+erlaubt fehlende Zertifikate aber noch bis OAuth und liefert damit den
+Realverkehrsnachweis ohne Ausfall des bisherigen Operator-Smokes. Ein ungültig
+präsentiertes Zertifikat wird auch dort abgelehnt. Nach erfolgreichem
+ChatGPT-Nachweis werden root-eigener Nginx-Modus und Backend-Modus gemeinsam auf
+`enforce` gesetzt. Veröffentlichung ist nur in `enforce` zulässig.
+
+Der erstmalige Cutover auf `observe` ist eine geordnete, fail-closed
+Aktivierung. Zuerst wird in der root-geschützten systemd-EnvironmentFile
+`SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe` vorbereitet, ohne den
+Backend-Dienst bereits neu zu starten. Danach gilt exakt diese Reihenfolge:
+
+```bash
+cd /home/enpasos/skillpilot
+
+# 1. Repositoryvertrag und CA-Pins prüfen.
+./scripts/verify_openai_v1_mtls_edge.sh --static
+
+# 2. CA-Bundle, Modusdatei und Loopback-Verifier staged installieren.
+sudo ./scripts/install_openai_v1_mtls_edge.sh --mode observe
+sudo systemctl is-active skillpilot-openai-v1-mtls-verifier
+
+# 3. Erst jetzt die bereits gesicherten und geprüften Nginx-Vorlagen installieren.
+sudo install -o root -g root -m 0644 \
+  deploy/nginx/skillpilot-mcp-coaches.conf \
+  /etc/nginx/skillpilot-mcp-coaches.conf
+sudo install -o root -g root -m 0644 \
+  deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf \
+  /etc/nginx/skillpilot-main-vhost-openai-deny-locations.conf
+
+# 4. Geschützte Backend-Konfiguration, installierte Artefakte und Nginx-Diskstand prüfen.
+sudo ./scripts/verify_openai_v1_mtls_edge.sh \
+  --preflight --expected-mode observe
+sudo nginx -t
+
+# 5. Backend zuerst, danach den bereits geprüften Nginx-Stand aktivieren.
+sudo systemctl restart skillpilot
+sudo systemctl is-active skillpilot
+sudo systemctl reload nginx
+sudo systemctl is-active nginx
+
+# 6. Laufzeitvertrag prüfen; danach folgt der reale ChatGPT-Nachweis.
+./scripts/verify_openai_v1_mtls_edge.sh --runtime --expected-mode observe
+```
+
+Der Installer bezieht die CA-Dateien nicht live, sondern prüft die reviewten
+OpenAI-Dateien, ihre SHA-256-Werte, X.509-Fingerprints und die Intermediate-
+Kette. Er installiert den Verifier ausschließlich auf `127.0.0.1:8792` und
+schreibt den ausdrücklich gewählten root-eigenen Nginx-Modus atomar nach
+`/etc/skillpilot/openai-mtls/mode.conf`. Er editiert, testet und reloadet die
+aktive Nginx-Konfiguration **nie**. Vor jedem Reload muss der separate root-only
+`--preflight` belegen, dass der installierte Modus exakt mit
+`SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE` in der geschützten systemd-
+EnvironmentFile übereinstimmt und dass installierte Dateien sowie Nginx-
+Diskkonfiguration dem Repositoryvertrag entsprechen. Weder die EnvironmentFile
+noch ein Secret wird dabei ausgegeben.
+
+Auch beim erstmaligen Wechsel von `disabled` auf `observe` muss der Backend-
+Dienst vor dem Nginx-Reload neu gestartet werden. Zwischen Backend-Neustart und
+Nginx-Reload werden widersprüchliche beziehungsweise noch fehlende Edge-
+Header absichtlich mit `403` abgewiesen. Dieses kurze fail-closed Fenster wird
+nicht durch einen öffentlichen Diagnose-Bypass aufgehoben.
+
+Der Cutover von `observe` nach `enforce` erfolgt in dieser Reihenfolge:
+
+1. In `observe` mindestens einen realen ChatGPT-Toolaufruf nachweisen. Der
+   privacy-beschränkte Counter mit
+   `event="mtls_edge_verified"` muss für den Aufruf steigen; der Counter
+   `event="mtls_edge_observed_no_cert"` darf nicht steigen. Zertifikat, Token
+   und Session-ID dürfen nicht geloggt werden.
+2. Wartungsfenster beginnen und den Wert in der Backend-EnvironmentFile auf
+   `enforce` setzen, den Dienst aber noch nicht neu starten. Der laufende
+   Backend-/Edge-Vertrag bleibt dadurch zunächst vollständig auf `observe`.
+3. `sudo ./scripts/install_openai_v1_mtls_edge.sh --mode enforce` ausführen und
+   anschließend den getrennten
+   `sudo ./scripts/verify_openai_v1_mtls_edge.sh --preflight --expected-mode enforce`
+   sowie ein explizites `sudo nginx -t` ausführen. Erst diese Prüfungen
+   bestätigen Backend-EnvironmentFile, installierten Edge-Modus, Artefakte und
+   Nginx-Diskstand als konsistent. Der Installer editiert oder reloadet Nginx
+   weiterhin nicht.
+4. Jetzt den Backend-Dienst neu starten, unmittelbar danach
+   `sudo systemctl reload nginx` und anschließend
+   `./scripts/verify_openai_v1_mtls_edge.sh --runtime --expected-mode enforce`
+   ausführen. Der öffentliche Aufruf ohne Zertifikat muss `403` liefern;
+   Metadata und Challenge bleiben erreichbar. Der positive OAuth-Smoke ohne
+   Zertifikat läuft ausschließlich über den echten Loopback-Socket-Peer.
+   Zwischen Backend-Restart und Nginx-Reload lehnt der Backend-Filter die noch
+   aus dem laufenden `observe`-Edge kommende widersprüchliche Klassifikation
+   absichtlich mit `403` ab. Dieser kurze fail-closed Übergang ist erwartbar und
+   darf nicht mit einem öffentlichen Bypass überbrückt werden.
+5. App in einem frischen Chat aktualisieren/verbinden und einen realen
+   ChatGPT-Toolaufruf durchführen. Erst wenn erneut
+   `event="mtls_edge_verified"` steigt, das Verifier-Journal keinen Reject für
+   diesen Aufruf enthält, kein Backend-Assertion-Reject steigt und der
+   geschützte `openAiDeCoach`-Health-Detailwert
+   `mtlsEdgeMode="enforce"` meldet, ist der Cutover publikationsfähig.
+
+Schlägt Schritt 3 bis 5 fehl, bleibt der Rand fail-closed. Ein Rollback auf
+`observe` wird ebenfalls als abgestimmte Backend-plus-root-owned-Edge-Änderung
+mit Preflight, `nginx -t`, Reload und Runtime-Smoke durchgeführt; es ist kein
+veröffentlichungsfähiger Endzustand.
+
+CA-Vertrauen wird nicht bei Start oder Deployment aus dem Netz aktualisiert.
+Mindestens alle 90 Tage werden die beiden offiziellen OpenAI-CA-Dateien mit den
+gepinnten Repositorydateien, SHA-256-Werten, X.509-Fingerprints,
+Gültigkeitszeiträumen und der Intermediate-Kette verglichen; das Ergebnis und
+das Prüfdatum werden im Betriebsnachweis festgehalten. Unveränderte Dateien
+werden mit `./scripts/verify_openai_v1_mtls_edge.sh --static` erneut geprüft.
+Eine Abweichung ist kein automatisches Update, sondern eine reviewpflichtige
+CA-Rotation gemäß der
+[CA-Provenienz](https://github.com/enpasos/skillpilot/blob/main/deploy/openai-mtls/PROVENANCE.md), einschließlich
+überlappendem Trust-Cutover, falls OpenAI beide Ketten zeitweise veröffentlicht,
+und erneutem ChatGPT-Positivtest. Zusätzlich werden `mtls_edge_verified`,
+`mtls_edge_observed_no_cert` und der Backend-Assertion-Counter
+`mtls_edge_rejected` überwacht. Zertifikats- und No-Certificate-Rejects vor
+Spring werden aus dem begrenzten Verifier-Journal und dem öffentlichen
+`403`-Edge-Status abgeleitet. Ein Ausbleiben verifizierter ChatGPT-Aufrufe oder
+ein unerwarteter Anstieg dieser Reject-Signale löst eine Betriebsprüfung aus.
+Spätestens 90 Tage vor Ablauf einer
+gepinnten CA muss eine bestätigte Nachfolge- oder Erneuerungsstrategie vorliegen.
 
 Die entfernten Direct-Start-Variablen `SKILLPILOT_OPENAI_SECURE_COOKIE`,
 `SKILLPILOT_OPENAI_BINDING_TTL`, `SKILLPILOT_OPENAI_LAUNCH_TTL` und alle
@@ -407,7 +528,9 @@ Vor dem ersten Subdomain-Deployment werden insbesondere alte Einträge für
 `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, `SKILLPILOT_OPENAI_DE_V1_ORIGIN`,
 `SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED`,
 `SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES` und mTLS-Smoke-Zertifikate aus
-der EnvironmentFile entfernt. Sie gehören nicht zum `1.0.0`-Vertrag. Ebenso
+der EnvironmentFile entfernt. Sie werden nicht durch neue locale-bound Namen
+ersetzt; der einzige aktuelle Backend-Schalter ist
+`SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE`. Ebenso
 müssen `SKILLPILOT_OPENAI_DE_MCP_URL`,
 `SKILLPILOT_OPENAI_DE_OAUTH_RESOURCE` und
 `SKILLPILOT_OPENAI_DE_RESOURCE_METADATA` vollständig entfernt werden.
@@ -666,7 +789,7 @@ geprüft werden.
 
 Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
 `serverBuild`, `serverBuildConfigured`, `mcpEnabled`, `oauthEnabled`,
-`writesEnabled`, `secureMode`,
+`mtlsEdgeMode`, `writesEnabled`, `secureMode`,
 `clientAuthenticationMethod`, `publicClientConfigured`,
 `privateKeyJwtConfigured`, `clientIdConfigured`, `redirectUrisConfigured`,
 `contractToolCount`, `contractHash`, `rateLimitEnabled` und
@@ -695,11 +818,13 @@ enthalten.
 Der zweite Name ist ein Counter mit genau einem begrenzten Tag `event`. Er
 erfasst ausschließlich `oauth_failure`, `refresh_failure`, `session_required`,
 `session_renewal_required`, `http_401`, `http_403`, `http_409`, `http_429`,
-`issuer_rate_limited`, `timeout`, `replay_rejected`, `cross_provider_rejected`
-und `tool_exception`. Es gibt keine dynamischen
-Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags. Cross-Learner-/IDOR-
-Abwehr wird zusätzlich in negativen Integrationstests geprüft; der MCP-Vertrag
-nimmt absichtlich keine Lernendenkennung als Toolargument entgegen.
+`issuer_rate_limited`, `timeout`, `replay_rejected`, `cross_provider_rejected`,
+`mtls_edge_verified`, `mtls_edge_observed_no_cert`,
+`mtls_edge_local_operator`, `mtls_edge_rejected` und `tool_exception`. Es gibt
+keine dynamischen Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags.
+Cross-Learner-/IDOR-Abwehr wird zusätzlich in negativen Integrationstests
+geprüft; der MCP-Vertrag nimmt absichtlich keine Lernendenkennung als
+Toolargument entgegen.
 
 Der lokale Limiter trennt MCP, OAuth, Cockpit-Start und Metadaten. Die
 First-Party-Launch-Route und der MCP-Pfad besitzen getrennte Budgets.

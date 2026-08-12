@@ -106,6 +106,11 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                 .withDetail("curriculumRevisionAvailable", curriculumRevisionAvailable)
                 .withDetail("mcpEnabled", mcpEnabled)
                 .withDetail("oauthEnabled", oauthEnabled)
+                .withDetail(
+                        "mtlsEdgeMode",
+                        properties.getMtlsEdgeMode() == null
+                                ? "invalid"
+                                : properties.getMtlsEdgeMode().wireValue())
                 .withDetail("writesEnabled", properties.isWritesEnabled())
                 .withDetail("clientIdConfigured", clientIdConfigured)
                 .withDetail("clientAuthenticationMethod", clientAuthenticationMethod)
