@@ -1,6 +1,9 @@
-# Client-State Sync (SRS and Verified Recall Progress)
+# Client-State Sync for Browser SRS Progress
 
-This document defines the backend contract for syncing **flashcard progress** to the backend. The browser uses it for local SRS backups; learning-coach/GPT verification also writes its per-card `verifiedRecall` results into the same node state.
+This document defines the UI-facing backend contract for syncing browser
+flashcard progress. Verified Recall may update the same internal node state,
+but it does so through its own capability-bound atomic batch use case, not
+through this browser API contract.
 
 ## Endpoint
 
@@ -17,31 +20,18 @@ ID automatically into the prepared start message, and every fachlicher MCP
 tool receives that ID as a required argument. The permanent SkillPilot ID is
 never a tool argument or result.
 
-The separate Visible Session endpoints below remain available only for the
-Custom-GPT rollback path. English and every other supported interaction
-language use the same V1 MCP App in normal operation:
-
-```
-POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/start
-POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/answer
-POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/result
-```
-
-`start` returns a batch of prompts but no answers. The coach must display every
-`cardId` next to its prompt so the later user turn can address it visibly. Only
-after the learner has answered a visible card may `answer` return the expected
-answer. `result` then stores `passed`/`failed` for exactly that card and updates
-SRS scheduling. Every card in the current batch is recorded before another batch
-starts. If the backend returns `masterySaved=true`, the coach must not also call
-the ordinary mastery Action.
+The old Visible-Session per-card endpoints belong only to the isolated Custom-
+GPT rollback implementation and are documented in
+[ChatGPT Visible Session Flow](chatgpt-visible-session-flow.md). They are not an
+alternative current V1 communication contract.
 
 ## Purpose
-- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after learning-coach/GPT hard-recall decisions.
+- Persist browser **SRS progress** per memorization node (`nodeId`)
+  periodically, on demand, or during export/import recovery.
 - Keep the backend **PII-free**. Browser/UI routes use the pseudonymous
   `skillpilotId`; the multilingual V1 MCP lane resolves the learner only through the
   explicit active 24-hour learning-session argument. OAuth authorizes the app
-  but never selects the learner. Visible-session fallback routes use only a
-  temporary `chatSessionToken`, which the backend resolves internally.
+  but never selects the learner.
 - Allow later recovery or cross-device continuity via **export/import**.
 
 ## Request

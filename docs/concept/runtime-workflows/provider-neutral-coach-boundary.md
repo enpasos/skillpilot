@@ -1,385 +1,349 @@
-# Provider-Neutral Learning-Coach Boundary
+# Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend
 
-Status: durable application and security boundary for all SkillPilot
-learning-coach adapters. The OpenAI channel is one multilingual MCP App per
-contract major. Visible Session remains only an independently rollbackable
-Custom-GPT path. Claude OAuth/MCP remains disabled until its own acceptance
-gate is complete.
+**Status:** kanonische, provider-neutrale Kommunikationsnorm für alle
+SkillPilot-Lerncoaches.
 
-The product decision and migration sequence are specified in the
-[SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
-For the OpenAI App, the normative identity and session contract is
-[OpenAI MCP OAuth App binding and explicit 24-hour learning sessions](openai-mcp-oauth-learner-session-architecture.md).
+**Geltungsbereich:** OpenAI MCP App V1, künftige Provideradapter und alle
+neuen Coach-Werkzeuge. Sicherheits-, Session-, Didaktik- und
+Deploymentdokumente konkretisieren diese Grenze, dürfen sie aber nicht
+abweichend neu definieren.
 
-## Purpose
+## Ein Satz, der die Grenze festlegt
 
-SkillPilot owns the learning workflow. A provider-hosted conversation is a user
-interface and model runtime, not the source of truth for curriculum, scope,
-active goal, mastery, Recall state or exam authorization. The target keeps model
-execution and consumer billing at the provider: a learner uses the provider's
-available free access or fixed-price consumer subscription. SkillPilot does not
-call a metered model API for this channel and does not resell model usage.
+> Der ChatClient versteht und formuliert; das Backend weiß, entscheidet,
+> validiert, speichert und liefert den nächsten technischen Schritt.
 
-This billing rule is architectural, not a promise that every provider plan can
-install or run every App. Plan, workspace, role, surface, regional and product
-restrictions remain provider-controlled and must be verified as separate release
-acceptance cases.
+Das ist keine Aussage über die allgemeine Leistungsfähigkeit beider Seiten,
+sondern eine bewusste Arbeitsteilung:
 
-The shared runtime boundary is:
+- Ein Sprachmodell ist stark beim Verstehen freier Sprache, beim Erkennen
+  fachlicher Muster, beim dialogischen Erklären und beim semantischen
+  Vergleichen unterschiedlicher Lösungswege.
+- Das Backend ist stark bei Identität, aktuellem Zustand, exakten Mengen und
+  Reihenfolgen, Berechtigungen, Transaktionen, Nebenläufigkeit, Persistenz und
+  reproduzierbaren Entscheidungen.
 
-```text
-OpenAI App V1 | Claude MCP | Visible Session fallback
-      |              |                    |
-      +------ provider-specific OAuth, tools and UI ------+
-                             |
-              CoachStateProjection + CoachToolFacade
-                              |
-              LearnerService, state machine and database
-```
+Eine technische Entscheidung wird deshalb nie dem Modell überlassen, wenn das
+Backend sie selbst ableiten, prüfen oder atomar ausführen kann. Umgekehrt wird
+das Backend nicht zu einem Ersatz-Sprachmodell ausgebaut: Es interpretiert
+keine offenen Lernendenäußerungen und bewertet keine fachlich gleichwertigen
+Formulierungen durch Wortlautvergleich.
 
-There is no separate integration-gateway process. The logical gateway and the
-core currently run in the same Spring Boot application. A separate service is
-only justified by a future need for independent scaling, deployment or tenant
-isolation.
+## Verantwortungsmatrix
 
-OpenAI distributes Apps through Plugins in its current product model. That
-distribution package combines one language-neutral English control-plane skill
-with the registered MCP connection. The skill owns repeatable dialogue and
-tool-orchestration guidance; it does not change the runtime boundary: ChatGPT
-hosts and bills the model interaction, while the MCP server and persistent
-learning state remain SkillPilot services. Authorization, current state and
-allowed transitions are never moved into the skill.
+| Beteiligter | Besitzt | Besitzt ausdrücklich nicht |
+| --- | --- | --- |
+| Lernende Person | Lernabsicht, Antworten, freie Formulierungen und ausdrückliche Zustimmung | technische IDs, Zustandsversionen, Retry-Schlüssel oder Toolreihenfolgen |
+| ChatClient / Provider-Modell | Sprachverstehen, eindeutige Intent-Zuordnung zu frisch gelieferten Optionen, didaktischen Dialog, fachlich-semantischen Vergleich und lernendengerechte Formulierung | autoritativen Lernzustand, technische Auswahlmengen, Workflowfortschritt, Persistenzerfolg oder Berechtigung |
+| Provideradapter / MCP-Vertrag | kleine use-case-orientierte Werkzeugoberfläche, sichere Projektion, kurze Beschreibungen, lokalisierte Ergebnisdarstellung und Transportbindung | eigene Fachdatenbank, rohe Domain-DTOs oder promptbasierte Sicherheitsgarantien |
+| SkillPilot-Backend | Identität, Session, Curriculum, Personalisierung, Fokus, aktives Ziel, Frontier, Mastery, Recall, Prüfungsfreigabe, technische IDs und Capabilities, Mengen, Reihenfolge, Vollständigkeit, State, Concurrency, Idempotenz, Persistenz und Fortsetzung | freie Sprachinterpretation oder die semantische Beurteilung sichtbarer Lernendenarbeit |
+| App-Widget | direkte deterministische Interaktion innerhalb seines eng begrenzten UI-Workflows | Ersatz für den autoritativen Backendzustand oder allgemeine Chat-Orchestrierung |
 
-## One OpenAI App Per Contract Major
+Die Interaktionssprache ist ebenfalls Backendzustand. Der ChatClient verwendet
+die `communicationLocale` des jüngsten autoritativen Vollergebnisses für jede
+sichtbare Antwort und leitet sie nicht aus Toolnamen, Hostlocale oder
+Curriculumsprache ab.
 
-German, English and later supported interaction languages use the same
-**SkillPilot Coach v1** App and the same public contract. Language is not an App
-identity, OAuth-client identity, endpoint or release-line dimension.
+## Der minimale Turn-Vertrag
 
-The static control plane is deliberately English and language neutral: plugin
-metadata, skill instructions, tool names, descriptions, schemas and stable
-machine values do not change with the learner's language. The backend pins the
-interaction language when it creates the `learningSessionId` and returns all
-learner-facing payloads in that language. The plugin must treat that session
-language as authoritative, communicate exclusively in it, and never infer the
-answer language from its English control plane, tool names or the ChatGPT host
-locale.
-
-This separates three concerns that must not be conflated:
-
-- **control-plane language:** stable English plugin and MCP contract text;
-- **interaction language:** backend-owned language of the learning session and
-  all user communication;
-- **curriculum or target language:** subject/content semantics, which may differ
-  from the interaction language, for example an English curriculum coached in
-  German.
-
-The single public V1 endpoint is
-`https://mcp-coach-v1.skillpilot.com/mcp`. The already reserved future major
-hosts `mcp-coach-v2.skillpilot.com` through
-`mcp-coach-v9.skillpilot.com` fail closed with `404` until their own breaking
-contracts are implemented. They do not create sibling endpoints per language.
-The old `mcp-coach-de-v*` and
-`mcp-coach-en-v*` names belonged only to unpublished local infrastructure and
-must not be exposed as compatibility routes.
-
-## Shared And Provider-Specific Responsibilities
-
-The shared application layer owns:
-
-- state-machine authorization and checks for an active, provider-specific
-  learning session;
-- curriculum, personalization, scope, active-goal and mastery use cases;
-- deterministic technical orchestration: opaque IDs and capabilities, counts,
-  order, completeness, state transitions, concurrency, idempotency and the
-  server-selected continuation;
-- Verified Recall batch selection, one-shot answer release, atomic complete
-  persistence and continuation;
-- safe normal-state projection;
-- authorization of released exam evaluation material.
-
-Each provider adapter owns:
-
-- transport authentication and learner resolution;
-- its exact tool catalog and schemas;
-- compact response rendering; learner-facing localization is authoritative
-  backend output selected by the learning session;
-- provider-specific session, footer, widget or OAuth behavior;
-- instructions for recovering from lost model context.
-
-The provider model owns natural-language understanding, didactic dialogue and
-semantic comparison of learner work with backend-released reference content.
-It never owns a deterministic per-item workflow loop or chooses a technical
-batch size. Provider prompts remain short because the backend rejects
-incomplete, reordered, duplicate, stale or replayed batch operations itself.
-
-For the OpenAI Apps, this specifically means:
-
-- the authorization server accepts exactly one fixed, pre-registered
-  confidential OAuth client for the V1 App. ChatGPT and SkillPilot hold the
-  same long random client secret, and the token endpoint requires
-  `client_secret_basic`; exact redirect URI, Authorization Code with PKCE S256,
-  resource/audience and scopes are mandatory, while DCR, CIMD,
-  `private_key_jwt` and `none` are closed production profiles;
-- every explicit first-party **Lernen starten** creates a new, high-entropy
-  learning session with an absolute lifetime of exactly 24 hours. Its reference
-  is inserted automatically into the prepared start message, opens a new chat,
-  and must be sent unchanged by every fachlicher tool;
-- permanent-ID handling and Level-2 curriculum or personalization configuration
-  happen only in the first-party WebGUI; the V1 model contract exposes no
-  setup mutation for them;
-- model-visible read and write tools require both the authenticated OAuth App
-  and that valid session reference, then resolve the learner only through the
-  session's backend mapping;
-- `get_skillpilot_context` must succeed in the current assistant turn before
-  every learner-facing coaching response;
-- deterministic choices and answer submissions are invoked directly by the
-  widget through app-only tools, rather than depending on the model to copy a
-  technical selection value;
-- short-lived choice and receipt references may be returned in tool result
-  `_meta` for the widget. The learning-session reference is intentionally
-  transported in the prepared start message and fachlichen tool arguments, but
-  requires no manual user handling;
-- the permanent SkillPilot ID is neither a tool argument nor a tool result.
-
-mTLS is not part of the `1.0.0` contract. Any later transport hardening needs
-its own design and does not become the identity of the particular SkillPilot
-App.
-
-Provider neutrality therefore does not require one universal schema across
-different providers or contract majors. Within one OpenAI contract major,
-however, the external tool schema is language neutral and shared by every
-supported interaction language.
-
-## Safe Normal-State Projection
-
-Every model-facing normal state passes through `CoachStateProjection` before it
-is serialized. The projection:
-
-- removes the permanent SkillPilot ID and `copySources`;
-- normalizes public resource URLs and chat math delimiters;
-- removes exam payloads from frontier, planned goals and selectable options;
-- suppresses unreleased or structurally incomplete exam tasks;
-- exposes an active released exam only as task content plus maximum points;
-- never includes an exam solution, source-artifact path, passing threshold or
-  scoring steps.
-
-Adapters may reduce this allowlisted state further. They must not serialize a raw
-`UnifiedLearnerStateResponse` as provider context.
-
-## Motivation and Orientation Completion
-
-An active goal with authoritative `semanticKind=orientation` uses the shared
-`orientActiveGoal` state. Explicit `Motivation` or `Orientation` tags are a
-legacy fallback only when no semantic kind exists. Every provider must use this
-state to build interest: it shows accessible possibilities, applications, and
-honest positive perspectives of the material that follows, then invites a
-low-pressure reaction or decision to continue.
-
-Every newly active goal is introduced with its exact learner-facing title,
-never by substituting its description. For orientation, a response that merely
-selects one of the offered possibilities starts the motivational dialogue. The
-provider must take up that interest, connect it to concrete things the learner
-can understand, explore, shape, or do, and invite one active personal reaction
-that has no technically right or wrong answer. It must not replace that
-follow-up with generic praise and an immediate list of next goals.
-
-Orientation never diagnoses or grades prior knowledge, terminology,
-calculations, subject details, correctness, transfer, recall, or exam
-performance. Its observable completion criterion is that the learner has
-answered the tailored motivational follow-up or explicitly chooses to leave
-the orientation and continue directly. A bare label copied from the offered
-possibilities is not sufficient. The existing numeric `1.0` is retained only
-as a binary compatibility marker; no provider or UI may call it proven subject
-mastery. Normal evidence-based mastery rules continue to apply unchanged to
-ordinary content goals.
-
-## Protected Exam Evaluation
-
-Exam solutions and scoring are loaded through the separate
-`CoachToolFacade.getExamEvaluation` use case. It checks the authenticated learner
-internally and requires that:
-
-- the cited goal is the current active goal;
-- the active goal is an exam;
-- its review and completeness checks pass;
-- released solution and scoring data exist.
-
-The result contains no learner identifier. Provider adapters localize and render
-it only in their dedicated evaluation operation. The existing Visible-Session
-OpenAPI request and response remain unchanged.
-
-Evaluation semantics are provider-neutral as well. The released solution is a
-reference, not an exact-match template or exclusive method. Every
-subject-correct equivalent result, representation, permitted rounding,
-explanation, or alternative route receives the same credit under the applicable
-criterion unless the task or rubric explicitly requires a particular answer form;
-explicit requirements remain binding. Providers must not invent additional
-wording or formatting requirements. Exam
-submissions are graded conclusively without a follow-up dialogue. An illegible
-fragment is identified as illegible and evaluated only as reliably visible
-evidence; it must never be turned into an invented, specific subject error.
-
-This is an authorization boundary for evaluation material, not a cryptographic
-proof that the learner submitted an answer. In the current provider-hosted chat
-channels, the tool description and coach instructions require a complete visible
-answer before evaluation is requested. The backend cannot independently prove
-that conversational event because it intentionally does not receive the chat
-transcript.
-
-A strong submission proof uses a direct SkillPilot widget or cockpit flow:
+Ein normaler Lernenden-Turn hat genau diese Form:
 
 ```text
-startExam -> attemptId
-submitExamAnswer(attemptId, answer) -> submissionReceipt
-getExamEvaluation(attemptId, submissionReceipt)
+neue Lernendennachricht
+        |
+        v
+genau ein frischer Vollzustand
+        |
+        v
+Entscheidung auf diesem Vollzustand
+        |
+        +-- sprechen / fragen / gebundene UI-Aktion --> sichtbare Antwort
+        |
+        +-- höchstens eine eindeutige Mutation aus diesem Vollzustand
+                  |
+                  v
+          autoritativer Nachfolgerzustand
+                  |
+                  +-- fortbestehende eindeutige Absicht
+                  |   erneut auf den neuen Zustand anwenden
+                  |
+                  +-- sprechen / gebundene UI-Aktion --> sichtbare Antwort
 ```
 
-The OpenAI MCP App widget is a valid host for this flow: the provider embeds the
-UI, but the widget invokes the SkillPilot submission tool directly and the
-backend creates the receipt. The provider model may subsequently load the
-pending submission through a receipt- and learning-session-bound read operation
-and record a fachliche evaluation. Introducing complete exam attempts still
-changes persistence and privacy behavior and therefore requires its own review
-and acceptance gate; it is not retrofitted into the Visible-Session fallback.
+Regeln:
 
-## Identity, Connection And Coach State
+1. Nach einer neuen Lernendennachricht wird genau einmal frischer Kontext
+   geladen. Polling innerhalb desselben Assistant-Turns ist verboten.
+2. Der jüngste erfolgreiche Vollzustand ist die einzige Autorität für
+   Sprache, Zustand, Optionen und erlaubte Aktionen.
+3. Eine erfolgreiche Mutation liefert ihren vollständigen
+   Nachfolgerzustand. Dieser ersetzt den vorherigen Kontext für den Rest des
+   Turns; ein anschließender Context-Reload ist redundant. Er ist zugleich ein
+   neuer Vollzustand: Eine fortbestehende eindeutige Absicht darf erneut auf
+   genau eine dort erlaubte Mutation abgebildet werden.
+4. Ein schmaler Renderer- oder Widget-Receipt ist kein Vollkontext.
+5. Bei einem State-Konflikt darf genau einmal frisch geladen und die Absicht
+   neu bewertet werden. Wiederholte Konflikte oder andere harte Fehler stoppen
+   den strukturierten Ablauf.
 
-Provider bindings remain separate:
+## Werkzeuge bilden Nutzerhandlungen ab
 
-- the rollback-only ChatGPT Visible Session resolves a short-lived,
-  HMAC-stored bearer token to a learner;
-- Claude resolves an authenticated opaque OAuth connection subject to a learner;
-- each production OpenAI major-line App authenticates through its own fixed confidential
-  OAuth client and additionally requires a fresh, first-party created,
-  absolutely limited 24-hour learning session to address the learner.
+Ein Werkzeug repräsentiert eine zusammenhängende Handlung mit einem für die
+lernende Person erkennbaren Ergebnis. Es spiegelt keine interne Service-API und
+keine Datenbankoperation eins zu eins.
 
-The permanent SkillPilot ID is never a model-provided argument. The backend
-looks it up only through the HMAC/hash-bound temporary session. OAuth App
-identity, 24-hour learning session, durable learner state, provider conversation
-and temporary widget workflow remain distinct concepts. OAuth alone neither
-creates nor selects a learner session; a session alone does not authorize MCP.
-OAuth access-token refresh does not extend the learning session. Short-lived
-widget references are capability-scoped to the current authorized workflow
-revision; possession outside that App and session context must not authorize a
-different learner or later state.
+Vor einem neuen oder geänderten Werkzeug werden diese Fragen in der
+angegebenen Reihenfolge beantwortet:
 
-The current OpenAI MCP contract does not expose a documented stable ChatGPT
-conversation ID. The learning session is therefore an explicit application
-capability, not a provider conversation identity. Every first-party
-**Start learning** action creates a different session, even for the same
-learner; sessions expire independently.
+1. Welches Ergebnis erwartet die lernende Person?
+2. Welcher Anteil erfordert wirklich Sprachverstehen oder semantische
+   Beurteilung?
+3. Welche technischen Werte kann das Backend selbst ableiten?
+4. Welche zusammengehörenden technischen Schritte kann das Backend in einer
+   Transaktion oder einem Batch ausführen?
+5. Welche eine Fortsetzung gilt nach Erfolg?
 
-## Context Loss And Recovery
+Folgerungen:
 
-Normal turns reload current backend state instead of depending on an older hidden
-tool response. Visible Session does this through `getVisibleState`; Claude uses
-`getCoachContext`. Each OpenAI App exposes its own locale-specific context read.
-In production every such call carries the automatically inserted
-learning-session reference, requires valid OAuth independently, resolves the
-learner from the session mapping, and then projects fresh backend state. There
-is no fallback to OAuth subject, provider account or inferred conversation
-identity if the session is absent or expired.
+- Ableitbare technische Parameter erscheinen nicht im Modellinput.
+- Wiederholte technische Item-Schleifen werden als eine Batchoperation
+  angeboten.
+- Unterschiedliche Berechtigungen, Risiken oder notwendige
+  Nutzerbestätigungen bleiben getrennte Werkzeuge.
+- Ein Read und ein Write bleiben unterscheidbar; Annotationen beschreiben das
+  wirkliche Verhalten.
+- Toolnamen und Beschreibungen sprechen über Nutzerabsicht, nicht über
+  interne Implementierungsbegriffe.
 
-Result `_meta` is a widget transport for opake references, not cross-turn model
-memory. The widget may retain those references for a direct app-only choice or
-submission call. The next model turn rehydrates fachliche state from SkillPilot;
-it must not require earlier `_meta`, `structuredContent` or a provider
-conversation summary to be intact.
+Die offizielle OpenAI-Leitlinie fordert ebenfalls use-case-orientierte,
+zusammenhängende Aktionen, explizite Eingaben und verbietet, für die
+Korrektheit notwendige IDs oder Scopes vom Modell erraten zu lassen. Diese
+Leitlinie ist Mindeststandard, nicht Ersatz für die strengere SkillPilot-
+Grenze.
 
-This division removes model mediation from deterministic widget interactions but
-does not claim that every free-form user message is delivered to SkillPilot: the
-provider host still decides when to invoke model-visible tools. Workflows that
-need a hard event proof must use a direct App-widget or cockpit action and a
-server-side receipt. A first-party turn orchestrator remains a possible separate
-product, but it is not the sole target and is incompatible with the current hard
-requirement that SkillPilot must not pay metered model inference for this
-channel.
+## Eingaben: semantisch klein, technisch abgeleitet
 
-## Concurrency And Idempotency
+Ein Modellinput enthält nur Werte, die eine der folgenden Bedingungen
+erfüllen:
 
-The current production contract deliberately does not claim a global state
-revision or universal command idempotency.
+- Die lernende Person hat den Wert semantisch geliefert, zum Beispiel eine
+  Antwort oder ein Feedback.
+- Das Modell hat eine fachlich-semantische Entscheidung getroffen, die das
+  Backend nicht selbst treffen kann, zum Beispiel `passed` nach Vergleich der
+  sichtbaren Antwort mit einer freigegebenen Sollantwort.
+- Der Wert ist ein frisch vom Backend veröffentlichter Optionspayload oder
+  eine opake Capability und wird unverändert kopiert.
 
-Existing protections include:
+Das Modell darf technische Werte nicht konstruieren, kürzen, sortieren,
+zählen, zusammenführen oder aus älteren Ergebnissen wiederverwenden.
 
-- state-machine and active-goal validation for mutations;
-- state-dependent Visible-Session selection references and `409` for stale
-  selections;
-- transactional or locked handling of critical persistence paths;
-- domain-specific duplicate and eligibility checks in Verified Recall.
+Insbesondere besitzt das Backend:
 
-A hard `expectedStateRevision` is not currently safe to add. Coach state spans
-learner, mastery, planned goals, client state and Recall records, and not every
-mutation passes through `CoachToolFacade`. A revision on only the learner row
-would provide false guarantees.
+- Ziel- und Kartenidentitäten, sofern der aktuelle Workflow sie eindeutig
+  bestimmt;
+- Batchgröße, konkrete Menge und Reihenfolge;
+- Vollständigkeits- und Duplikatprüfung;
+- Zustandsversion und Retry-Identität, sofern sie aus einer Capability
+  ableitbar sind;
+- Fristen, Eligibility, Berechtigungen und erlaubte Zustandsübergänge.
 
-Global command receipts are also deferred. Custom GPT Actions do not provide a
-reliable transport request ID suitable for deduplication, while a model-generated
-ID can itself be forgotten or changed. An App widget may already use a narrower
-server-issued submission receipt or idempotency key for its own direct operation;
-that does not imply a global revision across every coach mutation. A global
-mechanism may be added only once all relevant paths advance one shared state
-clock and the adapter supplies a stable request identity.
+Einige allgemeine V1-Schreibwerkzeuge erhalten weiterhin eine frisch
+veröffentlichte Option, `expectedStateVersion` und `clientRequestId`. Das
+Modell **wählt** diese Werte nicht: Es kopiert den Optionspayload und die
+Version unverändert und erzeugt nur die dokumentierte neue Request-UUID. Bei
+neuen mehrstufigen Workflows ist die bevorzugte Form eine serverseitig
+abgeleitete Capability, damit auch diese technische Last entfällt.
 
-The OpenAI V1 Verified-Recall batch is one deliberate narrow exception, not a
-global claim: `batchCapability` binds the server-selected cards and their order;
-`gradingCapability` binds that batch, the answer release, expected state and
-one retry identity. The single result write must cover the complete ordered
-batch and is replay-safe without asking the model for `expectedStateVersion` or
-`clientRequestId`.
+## Ergebnisse: eine Faktenquelle, eine nächste Aktion
 
-No event-sourcing system or global state-revision migration is required for the
-shared boundary. A provider adapter may use a narrow migration to persist its
-own capability-bound workflow directive without changing the provider-neutral
-learning-state contract.
+Ein Modellergebnis bleibt klein und hat klar getrennte Rollen:
 
-## Prototype And Current V1 Production Boundary
+- `structuredContent` enthält nur die Fakten, die das Modell für die
+  sichtbare Antwort oder den nächsten erlaubten Aufruf benötigt.
+- `content` enthält höchstens eine kurze, nutzbare Zusammenfassung und keine
+  zweite Zustandsmaschine.
+- `_meta` enthält ausschließlich widget-private Daten. Es ist kein
+  Cross-Turn-Gedächtnis und keine Autorisierungsgrenze.
 
-The executable mechanism prototype under [`ai/openai app`](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20app/README.md)
-exposes one language-neutral V1 `/mcp` endpoint with English control metadata,
-separate localized demo payload/UI catalogs, app-only choice and submission
-calls, hidden result `_meta`, argumentless state reads and persistent demo state.
-It deliberately uses one **no-auth development identity**. That prototype
-remains useful for protocol mechanics and synthetic data, but it is neither
-account linking nor tenant isolation and must not be exposed as a production
-service.
+Jedes Ergebnis hat genau **einen logischen imperativen Kanal**:
 
-The Spring Boot V1 path implements the data-only contract against the existing
-database-backed domain use cases. Its secure production boundary
-requires all of the following:
+- Ein normaler Vollkontext verwendet das zusammengehörige Paar aus
+  `requiredAction` und lokalisierter `instruction`.
+- Ein abgeschlossener Spezialworkflow verwendet eine einzelne
+  `continuation`.
+- Ein Ergebnis darf nicht gleichzeitig eine Spezial-`continuation` und einen
+  zweiten handlungssteuernden Context-Text liefern.
 
-1. server-authenticated TLS at the major-version MCP edge;
-2. one fixed confidential OAuth client, authenticated at the token endpoint
-   through `client_secret_basic`, with exact callback allowlist, Authorization
-   Code plus PKCE S256, exact resource/audience and scopes; DCR, CIMD,
-   `private_key_jwt` and `none` remain disabled;
-3. a fresh, high-entropy application learning session for every explicit
-   first-party **Lernen starten**; stored only as HMAC/hash and mapped
-   internally to the permanent SkillPilot ID;
-4. automatic start-message transport of that reference and independent
-   validation of OAuth plus session on every fachlicher tool.
+Fakten dürfen redundant prüfbar sein; Handlungsanweisungen dürfen nicht
+konkurrieren. Wenn die nächste technische Aktion deterministisch feststeht,
+liefert das Backend sie. Der ChatClient fragt nicht noch einmal nach Kontext
+und wartet nicht auf ein inhaltsleeres „ok“.
 
-mTLS is outside the `1.0.0` release gates and would not replace the fixed
-confidential OAuth client as the App identity.
+## Opake Capabilities statt technischer Bauanleitungen
 
-The production gate also includes full workflow parity for curriculum and scope
-selection, active goals, frontier, mastery, Verified Recall and exams; acceptance
-of every supported session language through the same V1 host; and validation on
-the intended free and fixed-price provider plans. A passing local MCP simulation
-proves none of those gates by itself.
+Eine Capability kapselt die technische Workflowautorität, die das Modell nur
+transportieren muss. Sie ist:
 
-## Compatibility Rule
+- nicht vom Modell zu interpretieren oder zu verändern;
+- an Session, Workflowtyp und relevante kanonische Zustandsdaten gebunden;
+- kurzlebig beziehungsweise durch State und Eligibility begrenzt;
+- serverseitig auf Vollständigkeit, Wiederverwendung und Stale State
+  geprüft;
+- kein Ersatz für OAuth, Autorisierung oder Backendvalidierung.
 
-Shared hardening must preserve the configured Visible-Session rollback routes, operation
-IDs, request bodies, response fields, status codes and DE/EN GPT packages, as
-well as the older Startcode sources required for rollback. The multilingual
-OpenAI App lives in its own package and does not overwrite either fallback.
+Sensible technische Nutzdaten werden nicht nur base64-kodiert. Wenn ihre
+Vertraulichkeit relevant ist, wird die Capability authentifiziert
+verschlüsselt. Der ChatClient sieht nur den opaken Transportwert.
 
-New provider capabilities remain disabled until their release gates pass. An App
-is not released merely because its unit tests or local host simulation pass; it
-needs OAuth, a real host-specific end-to-end acceptance run and provider review.
-Under OpenAI's current distribution model, each App is published as part of a
-Plugin. Permissions, connection behavior and provider availability remain the
-authoritative controls described in
-[Plugins in ChatGPT and Codex](https://help.openai.com/de-de/articles/20001256-plugins-in-chatgpt-and-codex).
+## Referenz: Verified Recall
+
+Verified Recall zeigt die gewünschte Grenze besonders deutlich.
+
+Alt und unzulässig:
+
+```text
+Batchgröße vom Modell wählen
+-> je Karte Sollantwort laden
+-> je Karte Ergebnis schreiben
+-> State-Version fortschreiben
+-> selbst zählen, ob alles gespeichert ist
+-> selbst entscheiden, wie es weitergeht
+```
+
+Aktueller Vertrag:
+
+```text
+start_skillpilot_verified_recall(learningSessionId)
+-> kompletter serverseitiger Batch + batchCapability
+
+get_skillpilot_verified_recall_answers(
+  learningSessionId,
+  batchCapability
+)
+-> komplette geordnete Sollantworten + gradingCapability
+
+record_skillpilot_verified_recall_results(
+  learningSessionId,
+  gradingCapability,
+  assessments[{passed, feedback}]
+)
+-> ein atomarer Receipt + genau eine continuation
+```
+
+Das Modell zeigt alle Fragen, wartet auf die vollständige Antwort und
+beurteilt jede Antwort nach Bedeutung. Das Backend garantiert Ziel, Anzahl,
+Reihenfolge, Vollständigkeit, genau einen Write, Idempotenz, Mastery und die
+Fortsetzung. Bei einem Folgebatch enthält das Ergebnis keinen konkurrierenden
+Successor-Context; beim Ende des Recall-Batches enthält der factual Context
+keine zweite imperative `instruction` oder `requiredAction`.
+
+## Freie Auswahl und ausdrückliche Zustimmung
+
+Das Backend darf keine menschliche Entscheidung vortäuschen. Wenn mehrere
+fachlich sinnvolle Optionen bestehen oder eine folgenreiche Aenderung
+ausdrückliche Zustimmung braucht, veröffentlicht es eine kleine aktuelle
+Optionsmenge. Der ChatClient:
+
+1. versteht die freie Formulierung der lernenden Person;
+2. ordnet sie nur bei Eindeutigkeit einer frischen Option zu;
+3. kopiert deren vollständigen Payload unverändert;
+4. fragt nur bei echter Mehrdeutigkeit nach.
+
+Das Backend revalidiert die Option beim Write. Eine frühere Option, eine
+erfundene ID oder ein aus der Hierarchie abgeleiteter Payload ist ungültig.
+
+## Fehlerkommunikation
+
+Fehler sind ebenfalls Backendentscheidungen. Ein Fehlerresultat liefert:
+
+- einen stabilen Code;
+- keine teilweise fachliche Mutation;
+- eine kurze lokalisierte Recovery-Anweisung, wenn eine sichere Recovery
+  existiert;
+- nur die für diese Recovery notwendige URL oder Option.
+
+Der ChatClient erklärt keinen technischen Ersatzablauf, verspricht keinen
+späteren Save und setzt Unterricht oder Bewertung nicht fort. Sessionfehler
+enden ausschließlich mit der serverseitigen WebGUI-Startanweisung. Ein
+fehlgeschlagenes UI-Rendering darf dagegen den bereits erfolgreichen
+fachlichen Textpfad nicht blockieren.
+
+## Datenschutz und sichtbare Technik
+
+Nicht in modell- oder nutzersichtbare Ergebnisse gehören:
+
+- permanente SkillPilot-ID, OAuth-Token, Client-Secret oder interne
+  Autorisierungsreferenzen;
+- rohe Domainobjekte, Datenbank- oder Dateipfade;
+- nicht freigegebene Antworten, Lösungen oder Bewertungsdaten;
+- technische Diagnostik und unnötige personenbezogene Daten.
+
+Die automatisch transportierte `learningSessionId` ist eine explizite
+Anwendungscapability für den aktuellen Chat. Sie wird vom ChatClient
+unverändert an Fachwerkzeuge weitergegeben, aber niemals sichtbar erklärt,
+rekonstruiert oder von der lernenden Person erfragt. OAuth authentisiert den
+Providertransport; die Lernsession adressiert den Lernenden. Beides bleibt
+getrennt.
+
+## Anti-Patterns
+
+Folgende Muster sind ein Architekturfehler, auch wenn ein starkes Modell sie in
+einem Testlauf zufällig korrekt ausführt:
+
+- technische Schleifen pro Karte, Ziel oder Rubrikpunkt;
+- optionale Modellparameter für Werte, die das Backend bereits kennt;
+- mehrere konkurrierende `instruction`-, `requiredAction`-, `next`- oder
+  `continuation`-Kanäle für denselben Schritt;
+- ein erneuter Context-Read nach einem bereits autoritativen
+  Mutationsergebnis;
+- Sicherheits- oder Vollständigkeitsregeln, die nur im Prompt stehen;
+- rohe interne DTOs als bequemer Tooloutput;
+- IDs, URLs oder Hierarchiepfade, die das Modell selbst zusammensetzt;
+- sichtbare Behauptungen über Saves, Counts oder Abschluss ohne
+  Backendreceipt;
+- Backend-NLP, das freie Antworten durch exakten Wortlautvergleich bewertet.
+
+## Verbindlicher Ort einer Regel
+
+| Regelart | Einziger primärer Ort |
+| --- | --- |
+| Diese Verantwortungsgrenze und neue Tool-Designentscheidungen | dieses Dokument |
+| Lernendensichtbares Coach-Verhalten und Golden Journeys | [Verhaltensintegration](openai-mcp-coach-behavioral-integration.md) |
+| Produkt-, Provider- und Deploymenttopologie | [SkillPilot-eigene Coach-Architektur](skillpilot-owned-coach-architecture.md) |
+| OAuth, Lernsession und Ablauf | [OpenAI OAuth-/Sessionarchitektur](openai-mcp-oauth-learner-session-architecture.md) |
+| Wiederholbares Modellverhalten | ausgelieferte `SKILL.md` und `coaching-policy.md` |
+| Werkzeugbedingung | genau eine Toolbeschreibung und ihr Schema |
+| Aktuelle Entscheidung | genau ein frisches Toolergebnis |
+| Fachliche oder Sicherheitsgarantie | Backendguard, Transaktion und Test |
+| Betrieb und Release | Runbooks unter `docs/deploy/` |
+
+Abgeschlossene Migrationspläne und frühere Knowledge-Paritätsmatrizen sind
+keine aktuellen Normquellen. Ihre Geschichte bleibt in Git erhalten; aktive
+Dokumente verlinken sie nicht als Vertragsautorität.
+
+## Abnahmeregel für jede Schnittstellenänderung
+
+Eine Aenderung ist erst fertig, wenn alle Antworten „ja“ lauten:
+
+1. Bildet jedes Werkzeug genau eine zusammenhängende Nutzerhandlung ab?
+2. Sind alle backendableitbaren technischen Werte aus dem Modellinput
+   entfernt?
+3. Muss das Modell keine technische Menge, Reihenfolge oder Schleife verwalten?
+4. Liefert jeder Erfolg genau eine autoritative Fortsetzung?
+5. Kann das Backend unvollständige, doppelte, stale und unerlaubte Aufrufe
+   selbst ablehnen?
+6. Ist ein exakter Retry von einer fachlich neuen Operation unterscheidbar?
+7. Sind sichtbare Aussagen über Zustand und Counts durch einen Receipt
+   belegt?
+8. Bleiben freie Sprache und semantische Fachbeurteilung beim ChatClient?
+9. Gibt es Contracttests für gültige, ungültige und adversariale Inputs?
+10. Belegt ein realer Provider-Trace die beabsichtigte Toolanzahl und
+    Fortsetzung ohne zusätzliche Polls?
+
+## Referenzen
+
+- [OpenAI: Define tools](https://developers.openai.com/plugins/plan/tools)
+- [OpenAI: Build an MCP server](https://developers.openai.com/plugins/build/mcp-server)
+- [OpenAI OAuth-/Sessionarchitektur](openai-mcp-oauth-learner-session-architecture.md)
+- [OpenAI-Plugin-Versionierung und Lebenszyklus](openai-plugin-versioning-and-lifecycle.md)
+- [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md)

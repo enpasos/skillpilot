@@ -68,21 +68,19 @@ the candidate space for focus, frontier, progress, and completion. A Level 2
 change revalidates the current focus and active goal, but it does not rename
 goals, change stable goal IDs, or erase global mastery values.
 
-### One editor contract, multiple hosts
+### One first-party editor contract
 
-Level 2 is **web-primary, not web-exclusive**. The same state contract,
-option sources, validation, normalization, summary, and save semantics should
-be presented through three host shells:
+Level 2 is configured only through SkillPilot's first-party WebGUI:
 
 - on the start screen, after Base Curriculum selection and before learning
   starts;
-- in the Cockpit, for later adjustments;
-- prospectively as an MCP UI inside the chat.
+- in the Cockpit, for later adjustments.
 
-The host controls presentation and navigation; it must not redefine Level 2
-semantics. The ChatCoach may also apply an unambiguous Level 2 request directly.
-For an ambiguous request it asks a clarifying question instead of guessing.
-All hosts read and write the same backend-owned learner state.
+Both surfaces use the same backend-owned option sources, validation,
+normalization, summary, and save semantics. The current OpenAI V1 ChatClient
+neither presents nor mutates Level 2. If the configuration is missing or
+incomplete, it stops fachliches Coaching and sends the learner back to the
+first-party flow instead of asking configuration questions in chat.
 
 ## Level 3: Learning Focus and Active Goal
 

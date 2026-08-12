@@ -2,8 +2,8 @@
 
 This document describes the runtime workflow from static curricula to learner-specific navigation and mastery updates.
 
-The workflow is provider-neutral inside the backend. The current German
-learner-facing ChatGPT adapter is the
+The workflow is provider-neutral inside the backend. The current multilingual
+ChatGPT adapter is the
 [OpenAI MCP App](openai-mcp-oauth-learner-session-architecture.md): a fixed
 confidential OAuth client authenticates the App, while every explicit
 **Lernen starten** action creates a fresh, absolutely expiring 24-hour learning
@@ -12,12 +12,12 @@ the ChatGPT start message automatically, and the App must pass it unchanged to
 every learner-specific MCP tool call. The permanent SkillPilot ID remains
 backend-only; OAuth alone neither selects a learner nor creates a learning
 session.
-The [Visible Session flow](chatgpt-visible-session-flow.md) remains only a
-Custom-GPT rollback path and possible English fallback. The retained Claude
+The [Visible Session flow](chatgpt-visible-session-flow.md) remains only an
+isolated Custom-GPT rollback path, never a language fallback. The retained Claude
 adapter uses the same safe state projection and protected exam authorization,
 but remains disabled until its complete provider-specific workflow has passed a
 real adult-only end-to-end acceptance run. The shared boundary is documented in
-[Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md).
+[communication contract between ChatClient and backend](provider-neutral-coach-boundary.md).
 
 ## 1. Data Foundation: Landscapes, Structure, and Filters
 SkillPilot starts from curriculum landscapes stored as JSON files under `curricula/`.
@@ -55,9 +55,9 @@ their own path.
   model, stage, subjects, then course profile per subject.
 - Result: the resolved learner-facing composition view becomes the candidate
   space for focus, frontier, progress, and completion.
-- Ownership: one backend-owned state is edited through the start screen, the
-  Cockpit, prospectively an MCP UI, or an unambiguous ChatCoach request. The web
-  editor is the primary control surface, not the only one.
+- Ownership: one backend-owned state is configured exclusively through the
+  first-party start screen and Cockpit. The OpenAI V1 ChatClient neither asks
+  for nor mutates Level 2.
 - Invariants: LK is a subject profile and never implies upper secondary;
   missing stage information never means both stages; ambiguous scope requests
   require clarification.

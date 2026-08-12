@@ -220,7 +220,7 @@ bestimmten fachlichen Fehler erfinden.
 
 Die dauerhafte gemeinsame Architekturgrenze und die bewusst zurückgestellten
 Revision-/Idempotenzmechanismen sind unter
-[Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md)
+[ChatClient/Backend Communication Contract](provider-neutral-coach-boundary.md)
 dokumentiert.
 
 Alle neun Operationen:

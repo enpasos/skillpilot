@@ -21,8 +21,10 @@ laufen im **bestehenden Spring-Boot-Prozess**. Der Node-MCP-Server unter
 die geprüfte Quellimplementierung der Komponenten, deren selbstenthaltene
 Build-Artefakte in die Spring-Boot-Ressourcen übernommen werden.
 
-Die Architektur- und Migrationsentscheidungen stehen in
-[openai-mcp-coach-migration-plan.md](../concept/runtime-workflows/openai-mcp-coach-migration-plan.md).
+Die kanonische Verantwortungsgrenze zwischen ChatClient und Backend steht im
+[Kommunikationsvertrag](../concept/runtime-workflows/provider-neutral-coach-boundary.md).
+Die Produkt- und Providerarchitektur steht in der
+[SkillPilot-eigenen Coach-Architektur](../concept/runtime-workflows/skillpilot-owned-coach-architecture.md).
 Der verbindliche Identitäts- und Sitzungsablauf steht getrennt in
 [openai-mcp-oauth-learner-session-architecture.md](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
 Paket-, Contract- und Lifecycle-Versionen folgen dem
