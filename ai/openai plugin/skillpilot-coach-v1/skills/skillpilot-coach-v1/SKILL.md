@@ -80,6 +80,19 @@ before subject-matter coaching. Treat it as binding for the conversation.
    Preserve a required mastery `completionHandoff` before introducing the
    successor in text. The renderer receipt never replaces full context, and a
    missing host image never blocks the complete text response.
+   A terminal Verified Recall receipt is the narrow cross-flow exception: when
+   its sole `continuation.action` is
+   `renderGoalVisualizationThenTeachActiveGoal`, do not derive the render call
+   from context. Invoke `continuation.toolCall` exactly once immediately,
+   copying its server-filled `name`, `goalId`, and `expectedStateVersion`
+   unchanged. Add only the already current unchanged `learningSessionId`
+   required by the global session gate; it is deliberately not mirrored in the
+   receipt. Then begin the already active goal in the same response. Do not
+   reload context or wait for an
+   acknowledgement. If the renderer fails or the host omits it, do not retry;
+   continue with complete teaching text. This tool call remains inside the one
+   continuation channel: never use a sibling `presentationAction`, and never
+   expect the Recall write itself to render UI.
 6. Run the mode identified by fresh state: orientation, dialogic learning,
    memory practice, verified recall, or assessment. Begin a newly active goal's
    section with its exact localized `activeGoal.title`.
@@ -115,7 +128,11 @@ before subject-matter coaching. Treat it as binding for the conversation.
   once after the complete submission; then call
   `record_skillpilot_verified_recall_results(learningSessionId,
   gradingCapability, assessments)` once with all ordered assessments and
-  follow the returned continuation immediately.
+  follow the returned continuation immediately. For the terminal
+  `renderGoalVisualizationThenTeachActiveGoal` continuation, execute its
+  server-filled image-specific renderer `toolCall` fields exactly once and
+  then teach in the same
+  response; other Recall continuations have no `toolCall`.
 - **Assessment:** Release evaluation only after a complete visible submission.
   Grade only visible evidence against the supplied criteria, accept equivalent
   correct methods, report sub-scores and remediation, and save mastery only

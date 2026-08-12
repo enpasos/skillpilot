@@ -382,6 +382,48 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(recallResultsOutputSchema.at("/properties/next/properties").has("instruction")).isFalse();
         assertThat(recallResultsOutputSchema.at("/properties/continuation/properties").has("instruction"))
                 .isTrue();
+        assertThat(recallResultsOutputSchema.at("/properties/continuation/properties").has("toolCall"))
+                .isTrue();
+        assertThat(recallResultsOutputSchema.at("/properties/continuation/required")
+                        .valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .doesNotContain("toolCall");
+        assertThat(recallResultsOutputSchema
+                        .at("/properties/continuation/properties/action/enum")
+                        .valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .contains("renderGoalVisualizationThenTeachActiveGoal");
+        JsonNode recallRendererToolCallSchema = recallResultsOutputSchema
+                .at("/properties/continuation/properties/toolCall");
+        assertThat(recallRendererToolCallSchema.path("additionalProperties").asBoolean()).isFalse();
+        assertThat(recallRendererToolCallSchema.at("/required")
+                        .valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .containsExactly("name", "arguments");
+        assertThat(recallRendererToolCallSchema.at("/properties/name/enum")
+                        .valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .containsExactly(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        JsonNode recallRendererArgumentsSchema = recallRendererToolCallSchema.at("/properties/arguments");
+        assertThat(recallRendererArgumentsSchema.path("additionalProperties").asBoolean()).isFalse();
+        assertThat(recallRendererArgumentsSchema.path("properties").fieldNames())
+                .toIterable()
+                .containsExactlyInAnyOrder(
+                        "goalId",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION);
+        assertThat(recallRendererArgumentsSchema.path("required")
+                        .valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .containsExactly(
+                        "goalId",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION);
+        assertThat(recallResultsOutputSchema.toString())
+                .doesNotContain(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID);
         assertThat(recallResultsOutputSchema.at("/properties/context/properties").has("instruction"))
                 .isFalse();
         assertThat(recallResultsOutputSchema.at("/properties/context/properties").has("requiredAction"))
@@ -1076,6 +1118,10 @@ class OpenAiDeCoachMcpContractTest {
                         + "satisfies the requirement")
                 .contains("Do not insert get_skillpilot_context or another SkillPilot tool before the required "
                         + "renderer")
+                .contains("continuation.action=renderGoalVisualizationThenTeachActiveGoal is the sole cross-flow "
+                        + "exception")
+                .contains("use its continuation.toolCall as this one required render call")
+                .contains("do not derive a second call from context")
                 .contains("A successful mastery result is the one ordering exception")
                 .contains("first give both learner-facing texts from completionHandoff")
                 .contains("only then begin the already activated successor")
@@ -1086,10 +1132,13 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("explicit format")
                 .contains("follow-up questions")
                 .contains("show every returned question in order, and wait for all answers")
-                .contains("load all expected answers once with batchCapability")
-                .contains("one ordered assessment per returned answer in one atomic call with gradingCapability")
-                .contains("Never grade from memory, invent counts, perform a per-card tool loop")
-                .contains("Use only the confirmed atomic receipt and follow its continuation immediately")
+                .contains("Load all expected answers once with batchCapability")
+                .contains("one ordered assessment per answer in one atomic call with gradingCapability")
+                .contains("Never invent counts, expose answers early, use per-card tools, grade from memory")
+                .contains("Follow the confirmed continuation immediately")
+                .contains("For renderGoalVisualizationThenTeachActiveGoal, call its toolCall once next")
+                .contains("adding only the current learningSessionId")
+                .contains("then teach in the same response; never reload or retry")
                 .contains("permanent SkillPilot IDs")
                 .contains("exact activeGoal.title")
                 .contains("Dein aktuelles Lernziel ist: <Titel>")
@@ -2195,6 +2244,10 @@ class OpenAiDeCoachMcpContractTest {
                         OpenAiDeV1McpContractAdapter.RecallContinuation::action,
                         OpenAiDeV1McpContractAdapter.RecallContinuation::consentRequired)
                 .containsExactly("askNextRecallBatch", false);
+        assertThat(objectMapper.valueToTree(result.structuredContent())
+                        .path("continuation")
+                        .has("toolCall"))
+                .isFalse();
         assertThat(receipt.context()).isNull();
         assertThat(answers.structuredContent())
                 .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
@@ -2280,6 +2333,10 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(receipt.context().instruction()).isNull();
         assertThat(receipt.context().requiredAction()).isNull();
         assertThat(receipt.continuation().action()).isEqualTo("chooseMemoryMode");
+        assertThat(objectMapper.valueToTree(result.structuredContent())
+                        .path("continuation")
+                        .has("toolCall"))
+                .isFalse();
         assertThat(result.structuredContent())
                 .isInstanceOfSatisfying(Map.class, content -> {
                     assertThat(content)
@@ -2289,6 +2346,112 @@ class OpenAiDeCoachMcpContractTest {
                             .isInstanceOfSatisfying(Map.class, context -> assertThat(context)
                                     .doesNotContainKeys("instruction", "requiredAction"));
                 });
+    }
+
+    @Test
+    void completedRecallBatchWithVisualSuccessorReturnsAndExecutesTheServerDirectedRendererCall() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        UnifiedLearnerStateResponse visualSuccessor = visualizationState();
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(
+                        List.of(
+                                new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                                new VerifiedRecallBatchSavedResult("card-public-id-2", true)),
+                        2,
+                        0,
+                        true,
+                        "memory-public-id",
+                        null,
+                        visualSuccessor));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
+
+        McpSchema.CallToolResult recallResult = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", twoCardAssessments(true, true)));
+
+        assertThat(recallResult.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, recallResult);
+        JsonNode continuation = objectMapper.valueToTree(recallResult.structuredContent())
+                .path("continuation");
+        assertThat(continuation.path("action").asText())
+                .isEqualTo("renderGoalVisualizationThenTeachActiveGoal");
+        assertThat(continuation.path("consentRequired").asBoolean()).isFalse();
+        assertThat(continuation.path("toolCall").path("name").asText())
+                .isEqualTo(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION);
+        JsonNode rendererArguments = continuation.path("toolCall").path("arguments");
+        assertThat(rendererArguments)
+                .isEqualTo(objectMapper.valueToTree(Map.of(
+                        "goalId", "goal-with-image",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION, 1L)));
+        JsonNode recallStructuredContent = objectMapper.valueToTree(recallResult.structuredContent());
+        assertThat(recallStructuredContent.findValues(
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID))
+                .isEmpty();
+        assertThat(recallStructuredContent.toString()).doesNotContain(LEARNING_SESSION_ID);
+
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualSuccessor);
+        org.mockito.Mockito.doAnswer(invocation ->
+                        sessionOperation(invocation.getArgument(1), 1L))
+                .when(sessionCoordinator)
+                .read(any(), any());
+        @SuppressWarnings("unchecked")
+        Map<String, Object> directRendererArguments = objectMapper.convertValue(
+                rendererArguments,
+                Map.class);
+        directRendererArguments.put(
+                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                LEARNING_SESSION_ID);
+
+        McpSchema.CallToolResult rendererResult = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
+                directRendererArguments);
+
+        assertThat(rendererResult.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION, rendererResult);
+        JsonNode rendered = objectMapper.valueToTree(rendererResult.structuredContent());
+        assertThat(rendered.path("stateVersion").asLong()).isEqualTo(1L);
+        assertThat(rendered.path("goalVisualization").path("goalId").asText())
+                .isEqualTo("goal-with-image");
+        verify(coachTools, times(2)).getLearnerState(LEARNER_ID);
+    }
+
+    @Test
+    void completedRecallBatchWithNonVisualSuccessorDoesNotPublishARendererCall() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(
+                        List.of(
+                                new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                                new VerifiedRecallBatchSavedResult("card-public-id-2", true)),
+                        2,
+                        0,
+                        true,
+                        "memory-public-id",
+                        null,
+                        normalState("teachActiveGoal")));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", twoCardAssessments(true, true)));
+
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, result);
+        JsonNode continuation = objectMapper.valueToTree(result.structuredContent())
+                .path("continuation");
+        assertThat(continuation.path("action").asText()).isEqualTo("teachActiveGoal");
+        assertThat(continuation.path("consentRequired").asBoolean()).isFalse();
+        assertThat(continuation.has("toolCall")).isFalse();
     }
 
     @Test

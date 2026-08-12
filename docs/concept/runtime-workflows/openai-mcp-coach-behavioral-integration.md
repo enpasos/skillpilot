@@ -416,10 +416,22 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
   keine zusätzliche manuelle Mastery und keinen weiteren Context-Abruf im
   selben Lernendenzug. Die genau eine bestätigte Backend-`continuation` wird
   unverändert und sofort umgesetzt, ohne sie auf eine lokale Fallliste zu
-  reduzieren und ohne auf ein inhaltsfreies „weiter“ zu warten.
+  reduzieren und ohne auf ein inhaltsfreies „weiter“ zu warten. Aktiviert der
+  terminale Write ein Folgeziel mit freigegebenem Bild, lautet die Aktion
+  `renderGoalVisualizationThenTeachActiveGoal`: Der Coach führt den vollständig
+  servergefüllten `continuation.toolCall` für
+  `render_skillpilot_goal_visualization` mit `goalId` und
+  `expectedStateVersion` unverändert genau einmal unmittelbar aus, ergänzt nur
+  die bereits aktuelle unveränderte `learningSessionId` gemäß Session-Gate und
+  beginnt danach im selben Antwortturn das aktive Ziel. Das Receipt spiegelt
+  die Session-Capability nicht. Der Coach leitet die bildspezifischen Argumente
+  nicht selbst aus dem Successor-Context ab. Bei Renderer- oder Hostfehlern
+  versucht er es nicht erneut und setzt den vollständigen Textunterricht fort.
 - **Verboten:** eine Teilmenge wie fünf von acht Fragen zeigen, IDs oder
   Reihenfolge selbst bestimmen, nach einzelnen Karten lesen oder schreiben,
-  Erfolg vor dem atomaren Receipt behaupten oder nach dem Recall stehenbleiben.
+  Erfolg vor dem atomaren Receipt behaupten, nach dem Recall stehenbleiben,
+  einen parallelen `presentationAction` verwenden oder die Recall-Mutation
+  selbst an die Bild-UI binden.
 
 ### GJ-06 – Prüfung
 

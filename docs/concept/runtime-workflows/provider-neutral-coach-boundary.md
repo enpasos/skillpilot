@@ -174,6 +174,12 @@ Jedes Ergebnis hat genau **einen logischen imperativen Kanal**:
 - Ein Ergebnis darf nicht gleichzeitig eine Spezial-`continuation` und einen
   zweiten handlungssteuernden Context-Text liefern.
 
+Eine `continuation` darf eine deterministische Toolaktion enthalten, deren
+workflowspezifische Felder vollständig servergefüllt sind. Diese ist Bestandteil
+desselben imperativen Kanals und kein zweiter Kanal. Ein paralleles
+`presentationAction` oder eine implizite UI-Bindung an ein fachliches
+Write-Werkzeug ist nicht zulässig.
+
 Fakten dürfen redundant prüfbar sein; Handlungsanweisungen dürfen nicht
 konkurrieren. Wenn die nächste technische Aktion deterministisch feststeht,
 liefert das Backend sie. Der ChatClient fragt nicht noch einmal nach Kontext
@@ -236,6 +242,42 @@ Reihenfolge, Vollständigkeit, genau einen Write, Idempotenz, Mastery und die
 Fortsetzung. Bei einem Folgebatch enthält das Ergebnis keinen konkurrierenden
 Successor-Context; beim Ende des Recall-Batches enthält der factual Context
 keine zweite imperative `instruction` oder `requiredAction`.
+
+Aktiviert ein terminaler Recall-Write ein gewöhnliches atomisches Folgeziel
+mit autorisiertem Bild, sieht die einzige Fortsetzung so aus:
+
+```json
+{
+  "continuation": {
+    "action": "renderGoalVisualizationThenTeachActiveGoal",
+    "consentRequired": false,
+    "toolCall": {
+      "name": "render_skillpilot_goal_visualization",
+      "arguments": {
+        "goalId": "<server-filled successor goal>",
+        "expectedStateVersion": 11
+      }
+    }
+  }
+}
+```
+
+Der ChatClient kopiert Name, `goalId` und `expectedStateVersion` unverändert und
+ergänzt ausschließlich die bereits aktuelle unveränderte `learningSessionId`
+gemäß dem globalen Session-Gate. Das Receipt spiegelt diese Session-Capability
+aus Datenschutzgründen nicht. Der Client ruft den Renderer genau einmal
+unmittelbar auf und beginnt danach im selben Antwortturn das bereits aktive
+Folgeziel. Er rekonstruiert die bildspezifischen Argumente nicht aus
+`goalVisualization`, `nextAllowedTools` oder Top-Level-Metadaten und lädt keinen
+neuen Context. Scheitert das Rendering oder lässt der Host die Komponente weg,
+gibt es keinen Retry; der vollständige Textunterricht beginnt trotzdem. Ein
+Folgebatch, eine Moduswahl oder eine Fortsetzung ohne autorisiertes Bild enthält
+keinen `toolCall`.
+
+Der dedizierte Renderer bleibt das einzige an die Bild-UI gebundene Werkzeug.
+Das Recall-Write selbst erhält keine UI-Bindung: Eine solche Descriptor-Bindung
+wäre statisch und würde auch bei Folgebatches und bildlosen Successors eine
+Komponenteninstanz anfordern.
 
 ## Freie Auswahl und ausdrückliche Zustimmung
 
