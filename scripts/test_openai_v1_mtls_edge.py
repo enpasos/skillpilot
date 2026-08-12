@@ -725,6 +725,49 @@ server {
 
 
 class ShellSecurityContractTest(unittest.TestCase):
+    def test_listener_classifier_accepts_only_numeric_loopback_forms(self) -> None:
+        accepted = (
+            "127.0.0.1:8787",
+            "[::1]:8787",
+            "::1:8787",
+            "[::ffff:127.0.0.1]:8787",
+            "::ffff:127.0.0.1:8787",
+        )
+        rejected = (
+            "*:8787",
+            "0.0.0.0:8787",
+            "[::]:8787",
+            "192.0.2.1:8787",
+            "[::ffff:192.0.2.1]:8787",
+            "127.0.0.1:9999",
+        )
+        script = (
+            'source "$1"; shift; expected="$1"; shift; '
+            'for address in "$@"; do '
+            '  if is_openai_v1_mtls_loopback_listener "$address" 8787; then actual=accept; '
+            '  else actual=reject; fi; '
+            '  [[ "$actual" == "$expected" ]] || exit 1; '
+            'done'
+        )
+        for expected, addresses in (("accept", accepted), ("reject", rejected)):
+            with self.subTest(expected=expected):
+                result = subprocess.run(
+                    [
+                        "bash",
+                        "-c",
+                        script,
+                        "listener-classifier-test",
+                        str(MTLS_MODE_LIBRARY_PATH),
+                        expected,
+                        *addresses,
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_secure_path_rejects_symlink_wrong_kind_owner_and_write_bits(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)

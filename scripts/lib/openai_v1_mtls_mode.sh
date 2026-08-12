@@ -2,6 +2,24 @@
 
 # Read only the non-secret OpenAI V1 mTLS mode from a systemd EnvironmentFile.
 # The file is never sourced and no other assignment or value is emitted.
+is_openai_v1_mtls_loopback_listener() {
+  local address="$1"
+  local port="$2"
+
+  case "${address}" in
+    "127.0.0.1:${port}"|\
+    "[::1]:${port}"|\
+    "::1:${port}"|\
+    "[::ffff:127.0.0.1]:${port}"|\
+    "::ffff:127.0.0.1:${port}")
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 assert_openai_v1_mtls_secure_path() {
   local path="$1"
   local expected_kind="$2"

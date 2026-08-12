@@ -198,14 +198,10 @@ assert_loopback_listener() {
   fi
   local address
   while IFS= read -r address; do
-    case "${address}" in
-      "127.0.0.1:${VERIFIER_PORT}"|"[::1]:${VERIFIER_PORT}"|"::1:${VERIFIER_PORT}")
-        ;;
-      *)
-        echo "CHECK mtls_verifier_listener FAIL non-loopback listener ${address}" >&2
-        exit 1
-        ;;
-    esac
+    if ! is_openai_v1_mtls_loopback_listener "${address}" "${VERIFIER_PORT}"; then
+      echo "CHECK mtls_verifier_listener FAIL non-loopback listener ${address}" >&2
+      exit 1
+    fi
   done <<<"${listeners}"
   echo "CHECK mtls_verifier_listener PASS loopback-only"
 }
@@ -219,14 +215,10 @@ assert_backend_loopback_listener() {
   fi
   local address
   while IFS= read -r address; do
-    case "${address}" in
-      "127.0.0.1:${BACKEND_PORT}"|"[::1]:${BACKEND_PORT}"|"::1:${BACKEND_PORT}")
-        ;;
-      *)
-        echo "CHECK mtls_backend_listener FAIL non-loopback listener ${address}" >&2
-        exit 1
-        ;;
-    esac
+    if ! is_openai_v1_mtls_loopback_listener "${address}" "${BACKEND_PORT}"; then
+      echo "CHECK mtls_backend_listener FAIL non-loopback listener ${address}" >&2
+      exit 1
+    fi
   done <<<"${listeners}"
   echo "CHECK mtls_backend_listener PASS loopback-only"
 }
