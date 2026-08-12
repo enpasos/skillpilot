@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LandscapeProperties;
+import com.skillpilot.backend.landscape.LearningGoal;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,31 +69,6 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findFollowingStructureSiblings_returnsNextYearForMergedMathView() {
-        CompositionViewService service = createService();
-
-        List<CompositionViewService.CompositionStructureResolution> siblings =
-                service.findFollowingStructureSiblings(
-                        "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8");
-
-        assertThat(siblings).isNotEmpty();
-        assertThat(siblings.get(0).syntheticGoalId())
-                .isEqualTo("composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j9");
-        assertThat(siblings.get(0).label()).isEqualTo("Jahrgangsstufe 9");
-        assertThat(siblings.get(0).referencedGoalIds()).isNotEmpty();
-    }
-
-    @Test
-    void findFollowingScopeSiblings_doesNotReturnSeparateSekOneCapstoneAfterFinalYear() {
-        CompositionViewService service = createService();
-
-        List<CompositionViewService.CompositionStructureResolution> siblings =
-                service.findFollowingScopeSiblings("composition:de-de-gym-math-lk:structure:j10");
-
-        assertThat(siblings).isEmpty();
-    }
-
-    @Test
     void findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView() {
         CompositionViewService service = createService();
 
@@ -129,6 +105,224 @@ class CompositionViewServiceTest {
             assertThat(service.resolveStructureReference(option.syntheticGoalId()))
                     .isEqualTo(option);
         });
+    }
+
+    @Test
+    void findLearnerFacingFocusAncestors_followsTheSingleAuthoredContainsAndCompositionPath(
+            @TempDir Path tempDir) throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("focus-path.view.json"), """
+                {
+                  "viewId": "focus-path-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII"
+                  },
+                  "rootNodes": [{
+                    "kind": "structure",
+                    "id": "outer",
+                    "label": "Outer",
+                    "children": [
+                      {
+                        "kind": "structure",
+                        "id": "inner",
+                        "label": "Inner",
+                        "children": [{
+                          "kind": "canonicalSubtree",
+                          "goalId": "subtree-root",
+                          "displayLabel": "Visible subtree root"
+                        }]
+                      },
+                      {
+                        "kind": "structure",
+                        "id": "direct-inner",
+                        "label": "Direct inner",
+                        "children": [{
+                          "kind": "goalEntry",
+                          "goalId": "direct-leaf"
+                        }]
+                      },
+                      {
+                        "kind": "structure",
+                        "id": "prerequisite-lane",
+                        "label": "Prerequisite lane",
+                        "children": [{
+                          "kind": "goalEntry",
+                          "goalId": "requires-decoy",
+                          "projectionRole": "prerequisiteOnly"
+                        }]
+                      }
+                    ]
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        LinkedHashMap<String, LearningGoal> structuralGoals = new LinkedHashMap<>();
+        structuralGoals.put("subtree-root", goal(
+                "subtree-root",
+                "Canonical subtree root",
+                List.of("preferred-parent", "hidden-parent", "unrelated-parent"),
+                List.of()));
+        structuralGoals.put("preferred-parent", goal(
+                "preferred-parent",
+                "Preferred parent",
+                List.of("focus-leaf"),
+                List.of()));
+        structuralGoals.put("hidden-parent", goal(
+                "hidden-parent",
+                "Hidden second parent",
+                List.of("focus-leaf"),
+                List.of()));
+        structuralGoals.put("unrelated-parent", goal(
+                "unrelated-parent",
+                "Unrelated canonical parent",
+                List.of("direct-leaf"),
+                List.of()));
+        structuralGoals.put("focus-leaf", goal(
+                "focus-leaf",
+                "Focus leaf",
+                List.of(),
+                List.of("requires-decoy")));
+        structuralGoals.put("direct-leaf", goal(
+                "direct-leaf",
+                "Direct leaf",
+                List.of(),
+                List.of()));
+        structuralGoals.put("requires-decoy", goal(
+                "requires-decoy",
+                "Requires decoy",
+                List.of(),
+                List.of()));
+
+        List<CompositionViewService.CompositionStructureResolution> ancestors =
+                service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "focus-leaf",
+                        structuralGoals);
+
+        assertThat(ancestors)
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .containsExactly(
+                        "preferred-parent",
+                        "subtree-root",
+                        "composition:focus-path-view:structure:inner",
+                        "composition:focus-path-view:structure:outer");
+        assertThat(ancestors)
+                .extracting(CompositionViewService.CompositionStructureResolution::label)
+                .containsExactly(
+                        "Preferred parent",
+                        "Visible subtree root",
+                        "Inner",
+                        "Outer");
+        assertThat(ancestors)
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .doesNotContain("hidden-parent", "requires-decoy");
+
+        assertThat(service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "subtree-root",
+                        structuralGoals))
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .containsExactly(
+                        "composition:focus-path-view:structure:inner",
+                        "composition:focus-path-view:structure:outer");
+        assertThat(service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "composition:focus-path-view:structure:inner",
+                        structuralGoals))
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .containsExactly("composition:focus-path-view:structure:outer");
+    }
+
+    @Test
+    void findLearnerFacingFocusAncestors_directGoalEntrySkipsCanonicalParentsAndPrerequisiteOnlyPaths(
+            @TempDir Path tempDir) throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("focus-path.view.json"), """
+                {
+                  "viewId": "focus-path-view",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekII"
+                  },
+                  "rootNodes": [{
+                    "kind": "structure",
+                    "id": "outer",
+                    "label": "Outer",
+                    "children": [
+                      {
+                        "kind": "canonicalSubtree",
+                        "goalId": "subtree-root"
+                      },
+                      {
+                        "kind": "structure",
+                        "id": "direct-inner",
+                        "label": "Direct inner",
+                        "children": [{
+                          "kind": "goalEntry",
+                          "goalId": "direct-leaf"
+                        }]
+                      },
+                      {
+                        "kind": "goalEntry",
+                        "goalId": "requires-decoy",
+                        "projectionRole": "prerequisiteOnly"
+                      }
+                    ]
+                  }]
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        LinkedHashMap<String, LearningGoal> structuralGoals = new LinkedHashMap<>();
+        structuralGoals.put("subtree-root", goal(
+                "subtree-root",
+                "Subtree root",
+                List.of("unrelated-parent"),
+                List.of()));
+        structuralGoals.put("unrelated-parent", goal(
+                "unrelated-parent",
+                "Unrelated canonical parent",
+                List.of("direct-leaf"),
+                List.of()));
+        structuralGoals.put("direct-leaf", goal(
+                "direct-leaf",
+                "Direct leaf",
+                List.of(),
+                List.of("requires-decoy")));
+        structuralGoals.put("requires-decoy", goal(
+                "requires-decoy",
+                "Requires decoy",
+                List.of(),
+                List.of()));
+
+        assertThat(service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "direct-leaf",
+                        structuralGoals))
+                .extracting(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                .containsExactly(
+                        "composition:focus-path-view:structure:direct-inner",
+                        "composition:focus-path-view:structure:outer");
+        assertThat(service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "requires-decoy",
+                        structuralGoals))
+                .isEmpty();
+        assertThat(service.findLearnerFacingFocusAncestors(
+                        "focus-path-view",
+                        "composition:other-view:structure:direct-inner",
+                        structuralGoals))
+                .isEmpty();
     }
 
     @Test
@@ -1370,6 +1564,19 @@ class CompositionViewServiceTest {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());
         return new CompositionViewService(properties, new ObjectMapper());
+    }
+
+    private static LearningGoal goal(
+            String id,
+            String title,
+            List<String> contains,
+            List<String> requires) {
+        LearningGoal goal = new LearningGoal();
+        goal.setId(id);
+        goal.setTitle(title);
+        goal.setContains(contains);
+        goal.setRequires(requires);
+        return goal;
     }
 
     private record AuthoredProfileView(

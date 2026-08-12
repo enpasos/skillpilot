@@ -61,6 +61,10 @@ public class VisibleSessionService {
             return new OptionTarget(identity, value, List.of(), List.of(), null);
         }
 
+        private static OptionTarget scope(String identity, List<String> goalIds) {
+            return new OptionTarget(identity, null, List.copyOf(goalIds), List.of(), null);
+        }
+
         private static OptionTarget personalization(String identity, List<String> goalIds, List<String> filters) {
             return new OptionTarget(identity, null, List.copyOf(goalIds), List.copyOf(filters), null);
         }
@@ -220,7 +224,10 @@ public class VisibleSessionService {
                 }
                 case "setScope" -> coachToolFacade.setSessionScope(
                         chatSessionToken,
-                        new ScopeRequest(selectedTargets.stream().map(OptionTarget::value).toList()));
+                        new ScopeRequest(selectedTargets.stream()
+                                .flatMap(selected -> selected.goalIds().stream())
+                                .distinct()
+                                .toList()));
                 case "setActiveGoal" -> coachToolFacade.setSessionActiveGoal(
                         chatSessionToken,
                         new ActiveGoalRequest(target.value(), plan.activeGoalRedirect()));
@@ -635,7 +642,11 @@ public class VisibleSessionService {
                 if (option == null || option.id() == null) {
                     continue;
                 }
-                targets.add(OptionTarget.value("goal:" + curriculumId + ":" + option.id(), option.id()));
+                targets.add("setScope".equals(action)
+                        ? OptionTarget.scope(
+                                "goal:" + curriculumId + ":" + String.join(",", option.selectionGoalIds()),
+                                option.selectionGoalIds())
+                        : OptionTarget.value("goal:" + curriculumId + ":" + option.id(), option.id()));
                 displayOptions.add(new VisibleCoachStateResponse.SelectionOption(
                         displayOptions.size() + 1,
                         option.title(),
@@ -846,9 +857,14 @@ public class VisibleSessionService {
                     String curriculumId = preparedState == null || preparedState.curriculum() == null
                             ? ""
                             : preparedState.curriculum().getCurriculumId();
-                    targets.add(OptionTarget.value(
-                            "navigation:" + target.value() + ":" + curriculumId + ":" + goal.id(),
-                            goal.id()));
+                    targets.add(target == VisibleNavigationRequest.Target.SCOPE
+                            ? OptionTarget.scope(
+                                    "navigation:" + target.value() + ":" + curriculumId + ":"
+                                            + String.join(",", goal.selectionGoalIds()),
+                                    goal.selectionGoalIds())
+                            : OptionTarget.value(
+                                    "navigation:" + target.value() + ":" + curriculumId + ":" + goal.id(),
+                                    goal.id()));
                     displayOptions.add(new VisibleCoachStateResponse.SelectionOption(
                             displayOptions.size() + 1,
                             goal.title(),

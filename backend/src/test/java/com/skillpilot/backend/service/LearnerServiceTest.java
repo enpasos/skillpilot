@@ -65,8 +65,20 @@ public class LearnerServiceTest {
             "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_MATH_ORIENTATION_ID =
             "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+    private static final String CANONICAL_E_ONE_SCOPE_ID =
+            "c9d92f32-167a-4006-a940-b8063a6ed434";
+    private static final String CANONICAL_REPRESENTATION_CLUSTER_ID =
+            "34047d7c-3a92-59fa-91b4-354211ff36e1";
+    private static final String CANONICAL_CHOOSE_REPRESENTATION_ID =
+            "8dd9f210-2683-5902-acab-e3be22725232";
+    private static final String CANONICAL_CREATE_REPRESENTATION_ID =
+            "3f4d1340-1fbb-5109-b9c2-08fc61303133";
     private static final String CANONICAL_MATH_SEK_ONE_ORIENTATION_ID =
             "65365dce-f33f-49d8-9516-42f75883aa86";
+    private static final String COMPOSITION_SEK_ONE_G9_SCOPE_ID =
+            "composition:de-he-gym-math-gk-g9:structure:sek1-g9";
+    private static final String COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID =
+            "composition:de-he-gym-math-gk-g9:structure:math-root";
     private static final String COMPOSITION_J7_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j7-g9";
     private static final String COMPOSITION_J8_SCOPE_ID =
@@ -81,6 +93,12 @@ public class LearnerServiceTest {
             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8-additional-competencies";
     private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
             "composition:de-de-gym-math-lk:structure:math-root";
+    private static final String COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID =
+            "composition:de-de-gym-math-lk:structure:analysis-basics";
+    private static final String COMPOSITION_HE_SEK_TWO_MATH_LK_ROOT_SCOPE_ID =
+            "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
+    private static final String COMPOSITION_HE_SEK_TWO_MATH_LK_E_PHASE_SCOPE_ID =
+            "composition:de-he-gym-sekii-math-lk:structure:e-phase";
     private static final String COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID =
             "composition:de-de-gym-physics-lk:structure:physics-root";
     private static final String CANONICAL_SPANISH_LANDSCAPE_ID =
@@ -742,7 +760,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void publishedCrossStageScopeOptionIsAcceptedByScopeWriteAndNavigation() {
+    void equivalentCrossStageScopeAliasIsNotRepublishedButRemainsAcceptedByScopeWrite() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -775,8 +793,7 @@ public class LearnerServiceTest {
                 .extracting(FrontierGoal::semanticKind)
                 .containsOnly("orientation");
         assertThat(learnerService.getScopeNavigationOptions(learnerId))
-                .extracting(FrontierGoal::id)
-                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+                .isEmpty();
 
         assertThatCode(() -> learnerService.setScope(
                         learnerId,
@@ -785,6 +802,92 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+    }
+
+    @Test
+    @Transactional
+    void hessenSekTwoLkFocusNavigationWidensEOneToEPhaseAndPreservesActiveGoal() {
+        selectCompletedHessenSekTwoLkCurriculum();
+        learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_E_ONE_SCOPE_ID));
+
+        String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .findFirst()
+                .orElseThrow()
+                .id();
+        learnerService.setActiveGoal(learnerId, activeGoalId);
+
+        assertThat(learnerService.getScopeNavigationOptions(learnerId))
+                .extracting(FrontierGoal::id)
+                .startsWith(
+                        COMPOSITION_HE_SEK_TWO_MATH_LK_E_PHASE_SCOPE_ID,
+                        COMPOSITION_HE_SEK_TWO_MATH_LK_ROOT_SCOPE_ID);
+
+        var widenedState = learnerService.setScope(
+                learnerId,
+                List.of(COMPOSITION_HE_SEK_TWO_MATH_LK_E_PHASE_SCOPE_ID));
+
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactly(COMPOSITION_HE_SEK_TWO_MATH_LK_E_PHASE_SCOPE_ID);
+        assertThat(widenedState.activeGoal()).isNotNull();
+        assertThat(widenedState.activeGoal().id()).isEqualTo(activeGoalId);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                .isEqualTo(activeGoalId);
+    }
+
+    @Test
+    @Transactional
+    void blockedIncompleteFocusDoesNotTriggerAutomaticFocusWidening() {
+        selectCompletedHessenSekTwoLkCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setStrictMode(true);
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(CANONICAL_CREATE_REPRESENTATION_ID));
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.frontier()).isEmpty();
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .doesNotContain(CANONICAL_REPRESENTATION_CLUSTER_ID);
+    }
+
+    @Test
+    @Transactional
+    void masteredDependentDoesNotMasterPrerequisiteAfterFocusWidening() {
+        selectCompletedHessenSekTwoLkCurriculum();
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAll(List.of(
+                new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0),
+                new Mastery(learner, CANONICAL_CREATE_REPRESENTATION_ID, 1.0)));
+        learnerService.setPlannedGoals(
+                learnerId,
+                Set.of(CANONICAL_CREATE_REPRESENTATION_ID));
+
+        var completedNarrowState = learnerService.getLearnerState(learnerId);
+
+        assertThat(completedNarrowState.goals().scope_completed()).isTrue();
+        assertThat(completedNarrowState.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(completedNarrowState.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .startsWith(CANONICAL_REPRESENTATION_CLUSTER_ID);
+
+        var widenedState = learnerService.setScope(
+                learnerId,
+                List.of(CANONICAL_REPRESENTATION_CLUSTER_ID));
+
+        assertThat(learnerService.getMastery(learnerId))
+                .containsEntry(CANONICAL_CREATE_REPRESENTATION_ID, 1.0)
+                .doesNotContainKey(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(widenedState.goals().scope_completed()).isFalse();
+        assertThat(widenedState.frontier())
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
     }
 
     @Test
@@ -821,9 +924,7 @@ public class LearnerServiceTest {
                 .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
         assertThat(learnerService.getScopeNavigationOptions(learnerId))
                 .extracting(FrontierGoal::id)
-                .containsExactly(
-                        COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID,
-                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+                .containsExactly(COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
 
         learnerService.setScope(
                 learnerId,
@@ -854,6 +955,63 @@ public class LearnerServiceTest {
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .extracting(PlannedGoal::getGoalId)
                 .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
+    }
+
+    @Test
+    @Transactional
+    void multiRootFocusWideningPreservesTheUntouchedPhysicsFocus() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "ALL",
+                    "stage": "CrossStage"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "LK"
+                  },
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                    "selected": true,
+                    "filterId": "LK"
+                  }
+                }
+                """));
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(
+                learnerId,
+                new LinkedHashSet<>(List.of(
+                        CANONICAL_E_ONE_SCOPE_ID,
+                        COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID)));
+        String activeGoalId = learnerService.getLearnerState(learnerId).frontier().stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .findFirst()
+                .orElseThrow()
+                .id();
+        learnerService.setActiveGoal(learnerId, activeGoalId);
+
+        FrontierGoal broaderAnalysis = learnerService.getScopeNavigationOptions(learnerId).stream()
+                .filter(option -> COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID.equals(option.id()))
+                .findFirst()
+                .orElseThrow();
+        assertThat(broaderAnalysis.selectionGoalIds()).containsExactly(
+                COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID,
+                COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+
+        var widenedState = learnerService.setScope(
+                learnerId,
+                broaderAnalysis.selectionGoalIds());
+
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId)
+                .containsExactlyInAnyOrderElementsOf(broaderAnalysis.selectionGoalIds());
+        assertThat(widenedState.goals().planned())
+                .extracting(FrontierGoal::id)
+                .containsExactlyInAnyOrderElementsOf(broaderAnalysis.selectionGoalIds());
+        assertThat(widenedState.activeGoal()).isNotNull();
+        assertThat(widenedState.activeGoal().id()).isEqualTo(activeGoalId);
     }
 
     @Test
@@ -931,7 +1089,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void getLearnerState_offersNextCompositionYearWhenCurrentYearScopeIsComplete() {
+    void getLearnerState_offersNearestCompositionAncestorWhenCurrentYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -951,12 +1109,16 @@ public class LearnerServiceTest {
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(goal -> goal.id())
-                .contains(COMPOSITION_J9_SCOPE_ID);
+                .startsWith(
+                        COMPOSITION_SEK_ONE_G9_SCOPE_ID,
+                        CANONICAL_MATH_ROOT_SCOPE_ID)
+                .doesNotContain(COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID)
+                .doesNotContain(COMPOSITION_J9_SCOPE_ID);
         assertThat(state.stateMachine().goalOptions())
-                .filteredOn(goal -> COMPOSITION_J9_SCOPE_ID.equals(goal.id()))
+                .filteredOn(goal -> COMPOSITION_SEK_ONE_G9_SCOPE_ID.equals(goal.id()))
                 .singleElement()
                 .satisfies(goal -> {
-                    assertThat(goal.title()).isEqualTo("Jahrgangsstufe 9");
+                    assertThat(goal.title()).isEqualTo("Sekundarstufe I");
                     assertThat(goal.type()).isEqualTo("cluster");
                 });
     }
@@ -1872,6 +2034,26 @@ public class LearnerServiceTest {
                 }
                 """));
         learnerRepository.save(learner);
+    }
+
+    private void selectCompletedHessenSekTwoLkCurriculum() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "DE-HE",
+                    "stage": "SekII",
+                    "durationModel": "G9"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+                    "selected": true,
+                    "filterId": "LK"
+                  }
+                }
+                """));
+        learnerRepository.saveAndFlush(learner);
     }
 
     private void selectCompletedCanonicalMathCrossStageCurriculum() {

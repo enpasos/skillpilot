@@ -82,6 +82,14 @@ Year, phase, or module choices are focus over program structure; they are not
 silently converted into canonical learning goals. A focus change does not
 rewrite the Personal Curriculum.
 
+When focus is widened, the backend follows the learner-facing ancestor path
+toward the root and publishes valid broader ancestors that add unmastered
+`target` goals. Options are ordered nearest suitable ancestor first. The coach
+or UI uses these published options rather than reconstructing hierarchy or IDs.
+An automatic widening proposal requires completed current-scope progress; an
+empty frontier is not completion. The first option is offered as the default,
+but focus is persisted only after learner acceptance.
+
 ### Step 4: Frontier Calculation and Navigation Loop
 Learning proceeds along the **frontier**: the set of sensible next goals.
 
@@ -91,6 +99,11 @@ Learning proceeds along the **frontier**: the set of sensible next goals.
 - Effective prerequisites include:
   - the goal's direct `requires`
   - inherited `requires` from ancestor clusters via `contains`
+
+`requires` is directional. If A is required by B, mastery of B does not imply
+mastery of A. An unmastered A remains in normal frontier evaluation and appears
+once A's own effective prerequisites are satisfied. Focus widening never
+creates backward mastery or removes such targets from expected progress.
 
 SkillPilot supports two evaluation modes for filtered learning:
 

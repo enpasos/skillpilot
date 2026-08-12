@@ -381,7 +381,7 @@ public final class OpenAiDeCoachContextProjector {
                 goal.id(),
                 fallback(goal.title(), goal.id()),
                 compact(goal.description()),
-                List.of(goal.id()),
+                goal.selectionGoalIds(),
                 List.of(),
                 null);
     }

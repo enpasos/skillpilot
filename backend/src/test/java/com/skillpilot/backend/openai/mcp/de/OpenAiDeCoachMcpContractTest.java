@@ -28,6 +28,7 @@ import com.skillpilot.backend.api.MemoryPracticeResponse;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
+import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
@@ -1082,6 +1083,18 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("server-owned startUrl and instruction unchanged")
                 .contains("Do not translate or invent technical recovery")
                 .contains("prepared message in a new chat")
+                .contains("When completion.scopeComplete=true and requiredAction=setScope supplies options")
+                .contains("offer the first option as the backend-recommended broader focus but do not mutate until "
+                        + "the learner accepts")
+                .contains("suitable learner-facing ancestors come first")
+                .contains("nearest broader focus first")
+                .contains("copy exactly the first published option's goalIds unchanged")
+                .contains("never infer an ancestor or construct an ID")
+                .contains("The requires relation is one-way")
+                .contains("mastery of a dependent goal never implies mastery of, or suppresses, an "
+                        + "unmastered prerequisite")
+                .contains("Every unmastered target in the Personal Curriculum remains subject to the normal "
+                        + "frontier test")
                 .contains("reload exactly once");
 
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().description())
@@ -2219,11 +2232,19 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void scopeNavigationIsExplicitlyFocusOnlyAndNeverPublishesClustersAsNextLearningGoals() {
-        FrontierGoal yearSeven = clusterGoal("year-7", "Jahrgangsstufe 7");
-        FrontierGoal yearSevenExams = clusterGoal("year-7-exams", "Prüfungen Jahrgangsstufe 7");
+    void scopeNavigationPublishesBroaderAncestorsNearestFirstAndCopiesTheFirstGoalIdsUnchanged() {
+        FrontierGoal ePhase = clusterGoal(
+                "composition:de-he-gym-sekii-math-lk:structure:e-phase",
+                "E-Phase: Grundlagen der Analysis und mathematische Modelle")
+                .withSelectionGoalIds(List.of(
+                        "composition:de-he-gym-sekii-math-lk:structure:e-phase",
+                        "composition:de-de-gym-physics-lk:structure:physics-root"));
+        FrontierGoal sekTwo = clusterGoal(
+                "composition:de-he-gym-sekii-math-lk:structure:sek2-lk",
+                "Sekundarstufe II (LK)");
+        FrontierGoal mathematics = clusterGoal("math-root", "Mathematik");
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
-        when(coachTools.getScopeOptions(LEARNER_ID)).thenReturn(List.of(yearSeven, yearSevenExams));
+        when(coachTools.getScopeOptions(LEARNER_ID)).thenReturn(List.of(ePhase, sekTwo, mathematics));
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
@@ -2234,16 +2255,33 @@ class OpenAiDeCoachMcpContractTest {
 
         assertThat(navigation.requiredAction()).isEqualTo("setScope");
         assertThat(navigation.options())
-                .extracting(OpenAiDeCoachContext.Option::kind, OpenAiDeCoachContext.Option::label)
+                .extracting(
+                        OpenAiDeCoachContext.Option::kind,
+                        OpenAiDeCoachContext.Option::label,
+                        OpenAiDeCoachContext.Option::goalIds)
                 .containsExactly(
-                        org.assertj.core.groups.Tuple.tuple("scope", "Jahrgangsstufe 7"),
-                        org.assertj.core.groups.Tuple.tuple("scope", "Prüfungen Jahrgangsstufe 7"));
+                        org.assertj.core.groups.Tuple.tuple(
+                                "scope",
+                                "E-Phase: Grundlagen der Analysis und mathematische Modelle",
+                                ePhase.selectionGoalIds()),
+                        org.assertj.core.groups.Tuple.tuple(
+                                "scope",
+                                "Sekundarstufe II (LK)",
+                                List.of(sekTwo.id())),
+                        org.assertj.core.groups.Tuple.tuple(
+                                "scope",
+                                "Mathematik",
+                                List.of(mathematics.id())));
         assertThat(navigation.instruction())
                 .contains(
                         "ausschließlich den Lernfokus",
                         "keine nächsten Lernziele",
                         "ausdrücklichen Wunsch zum Fokuswechsel",
-                        "Bei Start, Fortsetzen oder Wiederaufnehmen darfst du sie nicht präsentieren")
+                        "Bei Start, Fortsetzen oder Wiederaufnehmen darfst du sie nicht präsentieren",
+                        "Geeignete learner-facing Vorfahren stehen zuerst",
+                        "der nächste breitere Fokus an erster Stelle",
+                        "kopiere genau das goalIds-Feld der ersten veröffentlichten Option unverändert",
+                        "Leite niemals selbst einen Vorfahren oder eine ID ab")
                 .doesNotContain("Womit möchtest du weitermachen");
 
         McpSchema.Tool navigationTool = contract.toolSpecifications().stream()
@@ -2255,7 +2293,66 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(
                         "only after the learner explicitly requests a change",
                         "Never call it for a normal start, continuation, or resumption",
-                        "focus clusters, never next learning goals");
+                        "focus clusters, never next learning goals",
+                        "learner-facing ancestors come first",
+                        "nearest broader focus first",
+                        "use exactly the first option's goalIds unchanged",
+                        "never infer an ancestor or ID");
+
+        List<String> firstFreshOption = navigation.options().getFirst().goalIds();
+        when(coachTools.setScope(eq(LEARNER_ID), any(ScopeRequest.class)))
+                .thenReturn(normalState("teachActiveGoal"));
+        McpSchema.CallToolResult scopeWrite = call(
+                OpenAiDeV1McpContractAdapter.SET_SCOPE,
+                Map.of("goalIds", firstFreshOption));
+
+        assertThat(scopeWrite.isError()).isFalse();
+        ArgumentCaptor<ScopeRequest> scopeRequest = ArgumentCaptor.forClass(ScopeRequest.class);
+        verify(coachTools).setScope(eq(LEARNER_ID), scopeRequest.capture());
+        assertThat(scopeRequest.getValue().goalIds()).containsExactlyElementsOf(ePhase.selectionGoalIds());
+    }
+
+    @Test
+    void scopeNavigationLocalizesTheBroaderFocusRuleInEnglish() {
+        sessionCommunicationLocale = "en-GB";
+        FrontierGoal ePhase = clusterGoal(
+                "composition:de-he-gym-sekii-math-lk:structure:e-phase",
+                "E phase");
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(normalState("teachActiveGoal"));
+        when(coachTools.getScopeOptions(LEARNER_ID)).thenReturn(List.of(ePhase));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                Map.of("target", "scope"));
+        OpenAiDeV1McpContractAdapter.NavigationResult navigation =
+                structured(result, OpenAiDeV1McpContractAdapter.NavigationResult.class);
+
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, result);
+        assertThat(navigation.options()).singleElement()
+                .extracting(OpenAiDeCoachContext.Option::goalIds)
+                .isEqualTo(List.of(ePhase.id()));
+        assertThat(navigation.instruction()).contains(
+                "Suitable learner-facing ancestors come first",
+                "nearest broader focus first",
+                "copy exactly the first published option's goalIds unchanged",
+                "Never infer an ancestor or construct an ID");
+    }
+
+    @Test
+    void setScopeRejectsGoalIdsThatDoNotMatchOneFreshPublishedOption() {
+        FrontierGoal published = clusterGoal("scope-parent", "Broader scope")
+                .withSelectionGoalIds(List.of("scope-parent", "preserved-root"));
+        when(coachTools.getScopeOptions(LEARNER_ID)).thenReturn(List.of(published));
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.SET_SCOPE,
+                Map.of("goalIds", List.of("scope-parent")));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "STATE_CONFLICT")
+                .containsEntry("stateChanged", false));
+        verify(coachTools, never()).setScope(any(), any());
     }
 
     @Test

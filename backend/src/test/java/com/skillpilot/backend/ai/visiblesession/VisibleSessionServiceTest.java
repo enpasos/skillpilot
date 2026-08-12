@@ -251,7 +251,8 @@ class VisibleSessionServiceTest {
     @Test
     void scopeChoiceKeepsInternalGoalIdOutOfVisibleOptionsButResolvesItServerSide() {
         CoachToolFacade facade = mock(CoachToolFacade.class);
-        FrontierGoal scope = goal("internal-scope-goal", "Analysis");
+        FrontierGoal scope = goal("internal-scope-goal", "Analysis")
+                .withSelectionGoalIds(List.of("broader-analysis", "preserved-physics"));
         UnifiedLearnerStateResponse choices = state("setScope", null, List.of(scope));
         UnifiedLearnerStateResponse updated = state("setActiveGoal", null, List.of());
         when(facade.getSessionState(TOKEN)).thenReturn(choices, choices, updated);
@@ -274,7 +275,8 @@ class VisibleSessionServiceTest {
         assertThat(outcome.status()).isEqualTo(HttpStatus.OK);
         ArgumentCaptor<ScopeRequest> requestCaptor = ArgumentCaptor.forClass(ScopeRequest.class);
         verify(facade).setSessionScope(eq(TOKEN), requestCaptor.capture());
-        assertThat(requestCaptor.getValue().goalIds()).containsExactly(scope.id());
+        assertThat(requestCaptor.getValue().goalIds())
+                .containsExactly("broader-analysis", "preserved-physics");
     }
 
     @Test

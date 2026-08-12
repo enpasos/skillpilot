@@ -89,6 +89,21 @@ Interpretation rules:
 - current focus roots and the one active atomic goal are mutable Level 3 state;
   changing Level 2 revalidates them against the new learner-facing `target`
   projection without rewriting stable goal IDs or global Level 4 mastery
+- all `target` goals in the committed Personal Curriculum remain intended
+  learning goals; Level 3 focus is only a temporary narrowing of that target
+  universe, and a learner who wants a permanently narrower plan sets that focus
+  explicitly in the Cockpit
+- Level 3 focus widening follows the single learner-facing `contains` path
+  toward the root. The backend publishes strict supersets that add at least one
+  unmastered target, nearest suitable ancestor first. It proposes widening only
+  after actual current-focus completion, never from an empty frontier alone,
+  and persists the published option only after learner acceptance. With
+  multiple focus roots, widening replaces only the covered branch and the
+  option's complete ordered `goalIds` payload retains every independent root
+- `requires` is strictly directional for mastery: mastery of a dependent goal
+  never creates mastery of, or suppresses, an unmastered prerequisite. After
+  focus widening, every newly included unmastered target remains eligible for
+  the normal frontier test using its own effective prerequisites
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
