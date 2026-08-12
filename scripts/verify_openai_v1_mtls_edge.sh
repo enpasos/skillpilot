@@ -39,12 +39,13 @@ Modes:
   --staged          Root-only Fresh Install check; does not require active Nginx
   --preflight       Root-only backend-mode, installed-artifact, and Nginx disk check
   --installed       Root-only installed-file, service, listener, and Nginx checks
-  --runtime         Installed verifier, public edge, and loopback operator checks
-  --local-operator  OAuth challenge through 127.0.0.1; never a public bypass
+  --runtime         Non-root public TLS/HTTP matrix and loopback operator checks
+  --local-operator  Non-root OAuth challenge through 127.0.0.1
 
-MODE is observe or enforce. If omitted for a live check, the exact root-owned
-/etc/skillpilot/openai-mtls/mode.conf is used. An explicitly supplied mode or
-SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE must match that file.
+For --runtime and --local-operator, MODE may be disabled, observe, or enforce;
+the active mode is detected without reading root-owned files and an explicitly
+supplied mode must match it. Root-only staged, preflight, and installed checks
+read the exact /etc/skillpilot/openai-mtls/mode.conf (observe or enforce).
 EOF
 }
 
@@ -623,26 +624,158 @@ assert_invalid_public_client_certificate_accepted_by_legacy_edge() {
   echo "CHECK mtls_disabled_edge_identity PASS no active optional-client-cert edge"
 }
 
+validate_runtime_expected_mode() {
+  if [[ -n "${EXPECTED_MODE}" \
+    && "${EXPECTED_MODE}" != "disabled" \
+    && "${EXPECTED_MODE}" != "observe" \
+    && "${EXPECTED_MODE}" != "enforce" ]]; then
+    echo "CHECK mtls_runtime_mode FAIL expected mode must be disabled, observe, or enforce" >&2
+    exit 2
+  fi
+}
+
+probe_public_mcp_without_certificate_status() {
+  local result status effective_url tls_result
+  result="$(
+    curl \
+      --proto '=https' --tlsv1.2 \
+      --connect-timeout 5 --max-time 15 --max-redirs 0 \
+      --silent --show-error \
+      --request POST \
+      --header 'Accept: application/json, text/event-stream' \
+      --header 'Content-Type: application/json' \
+      --data '{"jsonrpc":"2.0","id":"runtime-mode-smoke","method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"skillpilot-runtime-mode-smoke","version":"1"}}}' \
+      --output /dev/null \
+      --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+      "${MCP_URL}"
+  )"
+  IFS='|' read -r status effective_url tls_result <<<"${result}"
+  if [[ "${effective_url}" != "${MCP_URL}" || "${tls_result}" != "0" \
+    || ( "${status}" != "401" && "${status}" != "403" ) ]]; then
+    echo "CHECK mtls_runtime_mode FAIL unexpected no-certificate result ${result}" >&2
+    return 1
+  fi
+  printf '%s\n' "${status}"
+}
+
+probe_invalid_public_client_certificate_outcome() {
+  local temporary
+  temporary="$(mktemp -d)"
+  if ! openssl req \
+    -x509 -newkey rsa:2048 -sha256 -nodes -days 1 \
+    -subj '/CN=skillpilot-runtime-mode-invalid-client' \
+    -keyout "${temporary}/client.key" \
+    -out "${temporary}/client.crt" >/dev/null 2>&1; then
+    rm -rf -- "${temporary}"
+    echo "CHECK mtls_runtime_mode FAIL invalid-certificate fixture generation failed" >&2
+    return 1
+  fi
+
+  local result=""
+  local curl_exit_code=0
+  if result="$(
+    curl \
+      --proto '=https' --tlsv1.2 \
+      --connect-timeout 5 --max-time 15 --max-redirs 0 \
+      --silent --show-error \
+      --cert "${temporary}/client.crt" \
+      --key "${temporary}/client.key" \
+      --request POST \
+      --header 'Accept: application/json, text/event-stream' \
+      --header 'Content-Type: application/json' \
+      --data '{"jsonrpc":"2.0","id":"runtime-mode-invalid-client","method":"initialize","params":{}}' \
+      --output /dev/null \
+      --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+      "${MCP_URL}" 2>"${temporary}/curl.stderr"
+  )"; then
+    curl_exit_code=0
+  else
+    curl_exit_code=$?
+  fi
+
+  if [[ "${curl_exit_code}" == "35" || "${curl_exit_code}" == "56" ]]; then
+    rm -rf -- "${temporary}"
+    printf '%s\n' rejected
+    return 0
+  fi
+  if [[ "${curl_exit_code}" != "0" ]]; then
+    rm -rf -- "${temporary}"
+    echo "CHECK mtls_runtime_mode FAIL unexpected invalid-certificate curl exit ${curl_exit_code}" >&2
+    return 1
+  fi
+
+  local status effective_url tls_result
+  IFS='|' read -r status effective_url tls_result <<<"${result}"
+  rm -rf -- "${temporary}"
+  if [[ "${effective_url}" != "${MCP_URL}" || "${tls_result}" != "0" ]]; then
+    echo "CHECK mtls_runtime_mode FAIL unexpected invalid-certificate result ${result}" >&2
+    return 1
+  fi
+  case "${status}" in
+    401)
+      printf '%s\n' accepted_401
+      ;;
+    403)
+      printf '%s\n' rejected
+      ;;
+    *)
+      echo "CHECK mtls_runtime_mode FAIL unexpected invalid-certificate HTTP ${status}" >&2
+      return 1
+      ;;
+  esac
+}
+
+detect_and_assert_runtime_mode() {
+  validate_runtime_expected_mode
+  local no_certificate_status invalid_certificate_outcome detected_mode
+  no_certificate_status="$(probe_public_mcp_without_certificate_status)"
+  invalid_certificate_outcome="$(probe_invalid_public_client_certificate_outcome)"
+  detected_mode="$(
+    classify_openai_v1_mtls_runtime_mode \
+      "${no_certificate_status}" \
+      "${invalid_certificate_outcome}"
+  )"
+  if [[ -n "${EXPECTED_MODE}" && "${EXPECTED_MODE}" != "${detected_mode}" ]]; then
+    echo "CHECK mtls_runtime_mode FAIL expected=${EXPECTED_MODE} detected=${detected_mode}" >&2
+    exit 1
+  fi
+  EXPECTED_MODE="${detected_mode}"
+  echo "CHECK mtls_runtime_mode PASS detected=${EXPECTED_MODE}"
+  if [[ "${invalid_certificate_outcome}" == "accepted_401" ]]; then
+    echo "CHECK mtls_disabled_edge_identity PASS no active optional-client-cert edge"
+  else
+    echo "CHECK mtls_invalid_client_certificate PASS rejected by active mTLS edge"
+  fi
+}
+
+run_non_root_runtime_checks() {
+  detect_and_assert_runtime_mode
+  SKILLPILOT_PUBLIC_BASE_URL="${AUTHORIZATION_BASE_URL}" \
+    SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE="${EXPECTED_MODE}" \
+    "${ROOT_DIR}/scripts/verify_openai_v1_public_edge.sh"
+  assert_local_operator_lane
+  echo "CHECK mtls_runtime PASS mode=${EXPECTED_MODE}"
+}
+
 if [[ "${ACTION}" == "--static" ]]; then
   run_static_checks
   exit 0
 fi
 
-if [[ "${ACTION}" == "--runtime" \
-  && ! -e "${INSTALL_DIR}/mode.conf" \
-  && ! -L "${INSTALL_DIR}/mode.conf" ]]; then
-  if [[ "${EXPECTED_MODE}" != "disabled" ]]; then
-    echo "CHECK mtls_mode FAIL an explicit disabled mode is required when no installed edge exists" >&2
-    exit 1
-  fi
-  echo "Checking disabled pre-cutover candidate with the legacy public-edge smoke..."
-  assert_backend_loopback_listener
-  SKILLPILOT_PUBLIC_BASE_URL="${AUTHORIZATION_BASE_URL}" \
-  SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=disabled \
-    "${ROOT_DIR}/scripts/verify_openai_v1_public_edge.sh"
-  assert_invalid_public_client_certificate_accepted_by_legacy_edge
-  echo "CHECK mtls_mode PASS disabled pre-cutover without an installed mTLS edge"
+if [[ "${ACTION}" == "--runtime" ]]; then
+  run_non_root_runtime_checks
   exit 0
+fi
+
+if [[ "${ACTION}" == "--local-operator" ]]; then
+  detect_and_assert_runtime_mode
+  assert_local_operator_lane
+  exit 0
+fi
+
+if [[ "${EUID}" -ne 0 ]]; then
+  echo "${ACTION} must run as root to read the protected installed configuration." >&2
+  exit 2
 fi
 
 resolve_live_mode
@@ -655,10 +788,6 @@ fi
 if [[ "${ACTION}" == "--staged" \
   || "${ACTION}" == "--preflight" \
   || "${ACTION}" == "--installed" ]]; then
-  if [[ "${EUID}" -ne 0 ]]; then
-    echo "${ACTION} must run as root to read the protected backend configuration." >&2
-    exit 2
-  fi
   assert_backend_mode_matches_edge
 fi
 
@@ -678,16 +807,6 @@ if [[ "${ACTION}" == "--preflight" || "${ACTION}" == "--installed" ]]; then
 fi
 
 case "${ACTION}" in
-  --local-operator)
-    assert_local_operator_lane
-    ;;
-  --runtime)
-    SKILLPILOT_PUBLIC_BASE_URL="${AUTHORIZATION_BASE_URL}" \
-      SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE="${EXPECTED_MODE}" \
-      "${ROOT_DIR}/scripts/verify_openai_v1_public_edge.sh"
-    assert_invalid_public_client_certificate_rejected
-    assert_local_operator_lane
-    ;;
   --installed)
     SKILLPILOT_PUBLIC_BASE_URL="${AUTHORIZATION_BASE_URL}" \
       SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE="${EXPECTED_MODE}" \

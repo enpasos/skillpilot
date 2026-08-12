@@ -20,6 +20,30 @@ is_openai_v1_mtls_loopback_listener() {
   esac
 }
 
+# Classify the active public edge without reading root-owned configuration.
+# The no-certificate request distinguishes enforce from the OAuth-capable modes;
+# the deliberately untrusted certificate distinguishes observe from disabled.
+classify_openai_v1_mtls_runtime_mode() {
+  local no_certificate_status="$1"
+  local invalid_certificate_outcome="$2"
+
+  case "${no_certificate_status}:${invalid_certificate_outcome}" in
+    401:accepted_401)
+      printf '%s\n' disabled
+      ;;
+    401:rejected)
+      printf '%s\n' observe
+      ;;
+    403:rejected)
+      printf '%s\n' enforce
+      ;;
+    *)
+      echo "Cannot classify active mTLS edge from no-cert=${no_certificate_status}, invalid-cert=${invalid_certificate_outcome}" >&2
+      return 1
+      ;;
+  esac
+}
+
 assert_openai_v1_mtls_secure_path() {
   local path="$1"
   local expected_kind="$2"

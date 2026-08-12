@@ -768,6 +768,36 @@ class ShellSecurityContractTest(unittest.TestCase):
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_runtime_mode_classifier_requires_the_complete_public_matrix(self) -> None:
+        cases = (
+            ("401", "accepted_401", "disabled", 0),
+            ("401", "rejected", "observe", 0),
+            ("403", "rejected", "enforce", 0),
+            ("403", "accepted_401", "", 1),
+            ("200", "rejected", "", 1),
+            ("401", "unexpected", "", 1),
+        )
+        for no_cert, invalid_cert, expected, expected_returncode in cases:
+            with self.subTest(no_cert=no_cert, invalid_cert=invalid_cert):
+                result = subprocess.run(
+                    [
+                        "bash",
+                        "-c",
+                        'source "$1"; classify_openai_v1_mtls_runtime_mode "$2" "$3"',
+                        "runtime-mode-classifier-test",
+                        str(MTLS_MODE_LIBRARY_PATH),
+                        no_cert,
+                        invalid_cert,
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+                self.assertEqual(result.returncode, expected_returncode)
+                if expected_returncode == 0:
+                    self.assertEqual(result.stdout.strip(), expected)
+
     def test_secure_path_rejects_symlink_wrong_kind_owner_and_write_bits(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)
@@ -1159,23 +1189,34 @@ class RepositoryContractTest(unittest.TestCase):
         self.assertIn('-n "${listeners}"', service_check)
         self.assertIn("sleep 1", service_check)
 
-    def test_runtime_smokes_invalid_client_cert_and_deploy_confirms_disabled(self) -> None:
+    def test_runtime_is_non_root_black_box_and_deploy_does_not_probe_protected_mode(self) -> None:
         verifier = MTLS_EDGE_VERIFIER_PATH.read_text(encoding="utf-8")
-        runtime_case = verifier.split('case "${ACTION}" in', 1)[1]
-        self.assertRegex(
-            runtime_case,
-            r"(?s)--runtime\).*?assert_invalid_public_client_certificate_rejected",
+        runtime_dispatch = verifier.split(
+            'if [[ "${ACTION}" == "--runtime" ]]; then', 1
+        )[1].split("\nfi\n", 1)[0]
+        self.assertIn("run_non_root_runtime_checks", runtime_dispatch)
+        self.assertNotIn("INSTALL_DIR", runtime_dispatch)
+        self.assertNotIn("systemctl", runtime_dispatch)
+        self.assertNotIn("resolve_live_mode", runtime_dispatch)
+        self.assertLess(
+            verifier.index('if [[ "${ACTION}" == "--runtime" ]]; then'),
+            verifier.rindex("\nresolve_live_mode\n"),
         )
-        disabled_case = verifier.split(
-            'if [[ "${ACTION}" == "--runtime"', 1
-        )[1].split("resolve_live_mode", 1)[0]
-        self.assertIn(
-            "assert_invalid_public_client_certificate_accepted_by_legacy_edge",
-            disabled_case,
-        )
-        self.assertIn("assert_backend_loopback_listener", verifier)
+        runtime_checks = verifier.split("run_non_root_runtime_checks() {", 1)[1].split(
+            "\n}\n", 1
+        )[0]
+        self.assertIn("detect_and_assert_runtime_mode", runtime_checks)
+        self.assertIn("verify_openai_v1_public_edge.sh", runtime_checks)
+        self.assertIn("assert_local_operator_lane", runtime_checks)
+        self.assertNotIn("INSTALL_DIR", runtime_checks)
+        self.assertNotIn("systemctl", runtime_checks)
         deploy = (ROOT / "scripts" / "deploy.sh").read_text(encoding="utf-8")
-        self.assertIn("--runtime --expected-mode disabled", deploy)
+        self.assertEqual(
+            deploy.count("verify_openai_v1_mtls_edge.sh --runtime"),
+            1,
+        )
+        self.assertNotIn("openai-mtls/mode.conf", deploy)
+        self.assertNotIn("--runtime --expected-mode disabled", deploy)
 
     def test_shell_invokes_nginx_parser_with_both_vhost_contracts(self) -> None:
         verifier = MTLS_EDGE_VERIFIER_PATH.read_text(encoding="utf-8")
