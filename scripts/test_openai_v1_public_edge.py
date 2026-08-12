@@ -486,6 +486,8 @@ class PublicEdgeDeploymentContractTest(unittest.TestCase):
         )
         self.assertNotIn("SKILLPILOT_OPENAI_DE_V1_PUBLIC_EDGE_SMOKE_ENABLED", script)
         self.assertNotIn("SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED", script)
+        self.assertNotIn("openai-mtls/mode.conf", script)
+        self.assertNotIn("--runtime --expected-mode disabled", script)
         mtls_verifier = (
             ROOT / "scripts" / "verify_openai_v1_mtls_edge.sh"
         ).read_text(encoding="utf-8")

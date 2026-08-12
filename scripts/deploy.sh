@@ -334,13 +334,7 @@ node scripts/verify_frontend_shell_assets.mjs \
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe den installierten und öffentlichen OpenAI-Plugin-V1-mTLS-Edge..."
-  if [ ! -e /etc/skillpilot/openai-mtls/mode.conf ] \
-    && [ ! -L /etc/skillpilot/openai-mtls/mode.conf ]; then
-    ./scripts/verify_openai_v1_mtls_edge.sh \
-      --runtime --expected-mode disabled
-  else
-    ./scripts/verify_openai_v1_mtls_edge.sh --runtime
-  fi
+  ./scripts/verify_openai_v1_mtls_edge.sh --runtime
 fi
 
 echo "Prüfe ausgelieferte Coach-Variante..."

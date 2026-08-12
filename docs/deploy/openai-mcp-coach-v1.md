@@ -422,6 +422,14 @@ sudo systemctl is-active nginx
 ./scripts/verify_openai_v1_mtls_edge.sh --runtime --expected-mode observe
 ```
 
+Der Runtime-Smoke läuft absichtlich ohne `sudo` und liest weder die
+root-geschützte `mode.conf` noch die Backend-EnvironmentFile. Er erkennt den
+aktiven Modus ausschließlich über die öffentliche No-Certificate-/Invalid-
+Certificate-Matrix und bestätigt über die Loopback-Operator-Lane zugleich,
+dass der laufende Backend-Filter denselben Modus akzeptiert. Die getrennten
+root-only Gates `--staged`, `--preflight` und `--installed` bleiben für
+Artefaktparität, Dateirechte, systemd, Listener und Nginx-Diskvertrag zuständig.
+
 Der Installer bezieht die CA-Dateien nicht live, sondern prüft die reviewten
 OpenAI-Dateien, ihre SHA-256-Werte, X.509-Fingerprints und die Intermediate-
 Kette. Die systemd-Unit stellt dem isolierten `DynamicUser` genau diese beiden
