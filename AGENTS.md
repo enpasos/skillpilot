@@ -1181,8 +1181,9 @@ LLM/learning-coach prompts should reinforce that:
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
 uses separate provider-specific adapters. The current multilingual OpenAI
-channel is the provider-hosted MCP App with a chat-first tool contract
-and one bounded read-only image-only MCP Apps UI result; its target packaging
+channel is the provider-hosted MCP App with a chat-first tool contract,
+one bounded read-only image-only MCP Apps UI result, and one independently
+bound memory-practice UI result; its target packaging
 combines that registered connection with a language-neutral English control-plane skill as
 documented in
 `docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
@@ -1201,6 +1202,13 @@ provider policy and product review explicitly permit it.
 
 ### 12.1 Key Features for AI
 
+- **Canonical ChatClient/backend contract:**
+  `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md` is the
+  single durable source for communication and new tool-design decisions. The
+  ChatClient understands and formulates; the backend knows, decides,
+  validates, persists, and returns the next technical action. Other
+  architecture, behavior, skill, policy, and runbook documents may specialize
+  this boundary but must not redefine it.
 - **Backend authority:** curriculum, personalization, scope, frontier, active goal,
   allowed transitions, Mastery, Verified Recall, and exam evaluation remain
   backend decisions.
@@ -1233,12 +1241,13 @@ provider policy and product review explicitly permit it.
   guarantees stay in backend guards. Chat-only evidence is not a hard guarantee
   until a server-side evidence or submission receipt exists. The skill is never
   a source of learner state or authorization.
-- **Coach-content source:** synthesize the neutral English skill from the behavior that
-  worked well under `ai/openai custom gpt/`, especially its established system
-  instructions and learning-coach, Mastery, exam, state-machine, error and
-  resource guidance. Do not copy obsolete `startCode`, `chatSessionToken`,
-  Action-operation, visible-relay, or model-built deep-link mechanics. Later
-  fachliche corrections and the current MCP/backend contract take precedence.
+- **Coach-content maintenance:** current backend/MCP contract,
+  ChatClient/backend communication contract, behavioral integration,
+  `SKILL.md`, and `coaching-policy.md` are the active sources. The frozen
+  Custom-GPT and Visible-Session packages are historical baseline or isolated
+  rollback artifacts, not active parity targets; do not edit them to mirror a
+  current V1 feature. Obsolete `startCode`, `chatSessionToken`, Action,
+  visible-relay, and model-built deep-link mechanics never return to V1.
 - **MCP-App state rule:** user-facing labels and released learning content belong
   in `content` / `structuredContent`. Permanent-ID handling and Level 2
   curriculum or personalization configuration stay in the first-party WebGUI;
@@ -1319,8 +1328,7 @@ provider policy and product review explicitly permit it.
   `ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md` and
   `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
   update the two existing GPTs in place; they do not create new GPTs.
-- **OpenAI MCP Apps:** See `ai/openai app/README.md` and
-  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. The versioned multilingual source
+- **OpenAI MCP Apps:** See `ai/openai app/README.md`. The versioned multilingual source
   plugin lives under `ai/openai plugin/skillpilot-coach-v1`, directly declares
   the production MCP server plus its language-neutral English control-plane
   skill, and contains the real host-generated mapping for the registered V1

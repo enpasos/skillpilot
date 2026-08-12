@@ -1,6 +1,6 @@
 # Verhaltensintegration des MCP-Lerncoaches
 
-**Stand:** 30. Juli 2026
+**Stand:** 12. August 2026
 
 **Status:** lebendes, normatives Leitdokument und übergreifende Produktaufgabe  
 
@@ -15,13 +15,8 @@ MCP erreichbar zu machen. Sie lautet:
 > wieder einen zusammenhängenden, verlässlichen und für Lernende natürlichen
 > Coach zu bilden.
 
-Der frühere Custom-GPT-Coach ist dafür die beobachtete Verhaltensbaseline. Die
-bewährten deutschen Inhalte unter
-[`ai/openai custom gpt`](https://github.com/enpasos/skillpilot/tree/main/ai/openai%20custom%20gpt) sind der
-Migrationskorpus für den künftigen Coach-Skill. Seine technische Architektur,
-alte Action-Methoden und insbesondere das sichtbare Relay-Protokoll werden
-nicht zurückgebaut. Wiederhergestellt werden sollen die Qualitäten, die aus
-Sicht der lernenden Person entscheidend waren:
+Der aktuelle V1-Coach wird an den Qualitäten gemessen, die aus Sicht der
+lernenden Person entscheidend sind:
 
 - ein natürlicher Einstieg statt technischer Bedienung;
 - korrektes Verstehen mehrteiliger Wünsche;
@@ -31,10 +26,10 @@ Sicht der lernenden Person entscheidend waren:
 - faire Bewertung, Verified Recall und strenger Prüfungsmodus;
 - robuste Wiederaufnahme nach Reload, langem Dialog oder Kontextverlust.
 
-Die aktuelle MCP-Lösung ist technisch weit fortgeschritten, aber noch nicht
-verhaltensgleich rund. Eine erfolgreiche OAuth-Verbindung, ein gültiger
-MCP-Vertrag, vorhandene Tools oder eine technisch vollständige Zuordnung der
-früheren Knowledge-Regeln beweisen noch keine Endnutzerparität.
+Eine erfolgreiche OAuth-Verbindung, ein gültiger MCP-Vertrag und vorhandene
+Tools beweisen noch kein verlässliches Endnutzerverhalten. Dafür zählen die
+vollständige Nutzerreise, der tatsächliche Tooltrace, der kanonische
+Backendzustand und die sichtbare Antwort zusammen.
 
 Dieses Dokument hält den Nordstern, die allgemeinen Verhaltensregeln, die
 offenen Integrationsfelder und die Abnahmeform fest. Einzelne Testergebnisse
@@ -48,15 +43,10 @@ Verhalten** des mehrsprachigen MCP-Lerncoaches und für dessen End-to-End-Abnahm
 
 Die folgenden Dokumente bleiben für ihre engeren Themen maßgeblich:
 
-- [Wissens- und Verhaltensparität](openai-mcp-coach-knowledge-parity.md):
-  technische Zuordnung der früheren Instructions und Knowledge-Regeln zu
-  Laufzeitorten;
-- [MCP-Migrationsplan](openai-mcp-coach-migration-plan.md):
-  technische Etappen, Rollout, Betrieb und Rückfall;
+- [Kommunikationsvertrag zwischen ChatClient und Backend](provider-neutral-coach-boundary.md):
+  kanonische Arbeitsteilung, Tooldesign, Ergebnisautorität und Fortsetzung;
 - [OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md):
   Trennung von App-Authentisierung und Lernsession;
-- [Provider-neutrale Coach-Grenze](provider-neutral-coach-boundary.md):
-  gemeinsame Anwendungsgrenze für Provideradapter;
 - [SkillPilot-eigene Coach-Architektur](skillpilot-owned-coach-architecture.md):
   langfristiges Produkt- und Verantwortungsmodell;
 - [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md):
@@ -64,12 +54,8 @@ Die folgenden Dokumente bleiben für ihre engeren Themen maßgeblich:
 - [Deployment-Runbook](../../deploy/openai-mcp-coach-v1.md):
   produktiver Betrieb und technische Smoke-Tests.
 
-Dabei gilt:
-
-> „Knowledge-Parität“ bedeutet zunächst, dass jede frühere Regel einem
-> wirksamen technischen Ort zugeordnet ist. „Verhaltensparität“ ist erst
-> erreicht, wenn die vollständigen Nutzerreisen mit realem Modellverhalten
-> reproduzierbar funktionieren.
+Dabei gilt: Dokument- oder Schemaparität ist erst relevant, wenn vollständige
+Nutzerreisen mit realem Modellverhalten reproduzierbar funktionieren.
 
 ## 3. Erfolgsbild aus Sicht der lernenden Person
 
@@ -79,34 +65,20 @@ Kontextprojektion oder Lernsessionen funktionieren. Sie soll:
 1. in SkillPilot auf **Lernen starten** klicken;
 2. in einem neuen Chat mit bereits eingetragener Startnachricht landen;
 3. ihren Lernwunsch natürlich formulieren können;
-4. kurz erfahren, welcher Kontext bereits feststeht;
-5. nur nach den tatsächlich noch offenen Angaben gefragt werden;
-6. anschließend am richtigen Ziel im richtigen Modus lernen;
+4. unmittelbar im bereits im WebGUI konfigurierten Kontext weiterlernen;
+5. nur bei einer echten fachlichen oder Level-3-Mehrdeutigkeit gefragt werden;
+6. am richtigen Ziel im richtigen Modus lernen;
 7. nach Unterbrechungen verlässlich dort fortsetzen können.
 
-Ein Einstieg wie „Hessen, Mathe LK“ darf daher nicht zu einer starren
-Dialogkette „Bundesland → Fach → Stufe → Kurs → Jahr“ führen. Der Coach muss
-alle eindeutigen Angaben als fortgeltende Absicht verstehen, die dazu passenden
-aktuellen Backendoptionen nacheinander anwenden und nur die nicht ableitbaren
-Restentscheidungen erfragen. `LK` beziehungsweise `GK` ist dabei immer das
-Profil eines konkreten Fachkurses: Eine lernende Person kann beispielsweise
-gleichzeitig Mathematik LK und Physik GK belegen. Das Kursprofil bestimmt weder
-allein die Lernstufe noch das Dauer- oder Jahrgangsmodell. Wenn Lernstufe,
-G8/G9, Jahrgang oder Phase fachlich offen bleiben, sind genau diese Rückfragen
-richtig.
-
-Die lernende Person sieht dabei eine kurze fachliche Orientierung, zum Beispiel:
-
-> Du lernst im Curriculum Gymnasium (DE). Hessen und Mathematik LK sind bereits
-> gewählt. Möchtest du nur in der Sekundarstufe II lernen oder auch Stoff aus
-> der Sekundarstufe I einbeziehen? Gilt für dich G8 oder G9?
-
-Die Formulierung darf variieren. Kontext, offene Entscheidung und fachliche
-Bedeutung müssen korrekt sein.
+Curriculum, Bundesland, Dauer- oder Jahrgangsmodell, Stufe, Fächer,
+Kursprofile und Personalisierung werden ausschließlich im First-Party-WebGUI
+konfiguriert. Der Chat darf diese Level-2-Werte weder erfragen noch verändern.
+Freie Sprache ordnet er nur aktuellen fachlichen, Fokus- oder Zieloptionen zu.
 
 ## 4. Nicht verhandelbare Invarianten
 
-Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
+Diese Regeln dürfen durch Provider-, Modell- oder Runtimeänderungen nicht
+verändert werden:
 
 ### 4.1 Backend und Skill-Graph
 
@@ -257,89 +229,39 @@ erste Option an und setzt sie erst nach Zustimmung der lernenden Person.
 - Der Coach darf nach einem Fehler keinen Erfolg vermuten, keinen Zustand
   weiterschreiben und keinen allgemeinen Lernpfad als Ersatz erfinden.
 
-## 6. Wie die früheren Instructions und Knowledge-Regeln heute und künftig wirken
+## 6. Wirksame Laufzeitorte und Regelpflege
 
-Eine MCP-App besitzt keine Custom-GPT-Knowledge-Fläche, aus der das Modell
-automatisch alle früheren Dokumente als dauerhaftes Hintergrundwissen erhält.
-Das kombinierte Ziel-Plugin bündelt deshalb einen Coach-Skill mit der
-registrierten MCP-App. Das gewünschte Verhalten wird bewusst auf mehrere
-Durchsetzungsschichten verteilt:
+Jede Regel hat genau einen primären Ort. Weitere Stellen dürfen sie absichern,
+aber nicht mit einer zweiten Bedeutung formulieren:
 
-| Zielschicht | Aufgabe |
+| Regelart | Primärer Ort |
 | --- | --- |
-| dieses Leitdokument und der bewährte Custom-GPT-Korpus | menschenlesbare Produktnorm und fachlich-didaktische Migrationsquelle |
-| Plugin-Skill | Coachrolle, Didaktik, Dialogzyklus, Toolreihenfolge, Ausgabe- und Stopregeln |
-| kurze MCP-Server-Instruktionen | nur wenige über alle Werkzeuge geltende Invarianten |
-| einfache Toolnamen, Beschreibungen und Eingabeschemas | dem Modell verständlich machen, wann und wie genau dieses Werkzeug verwendet wird |
-| frische `policies` und `instruction` im projizierten Zustand | nur im aktuellen Zustand relevante Regeln und nächster Schritt |
-| Backendzustandsmaschine und Guards | fachlich und sicherheitlich harte Invarianten |
-| Activation-Evaluation, Acceptance-Szenarien und Tool-Traces | getrennt nachweisen, dass der Skill richtig aktiviert wird und das Gesamtsystem richtig handelt |
+| Grenze zwischen Sprache und technischer Orchestrierung | [Kommunikationsvertrag](provider-neutral-coach-boundary.md) |
+| sichtbares didaktisches Coach-Verhalten | dieses Dokument |
+| wiederholbares Modellverhalten | ausgelieferte `SKILL.md` und `coaching-policy.md` |
+| werkzeugübergreifende Invariante | kurze `SERVER_INSTRUCTIONS` in `OpenAiDeV1McpContractAdapter` |
+| Auswahl und Bedingung eines Werkzeugs | Toolname, Beschreibung und Schema im V1-Adapter |
+| aktuell zustandsabhängige Entscheidung | genau ein frisches Toolergebnis aus `OpenAiDeCoachContextProjector` beziehungsweise dem Workflowadapter |
+| fachliche und sicherheitsrelevante Garantie | Domainservice, Guard, Transaktion und Test |
+| reales Zusammenspiel | Golden Journey, Tooltrace, Backendzustand und sichtbare Antwort |
 
-OpenAI beschreibt für Remote-MCP-Werkzeuge, dass Tooldefinitionen dem Modell
-bereitgestellt werden und das Modell abhängig vom Kontext über Aufrufe
-entscheidet; Ein- und Ausgaben der Aufrufe werden wiederum Teil des
-Modellkontexts. Deshalb sind knappe, eindeutige Toolbeschreibungen,
-LLM-gerechte Schemas und frische zustandsbezogene Ergebnisse Teil des
-Produktverhaltens und keine bloße technische Dokumentation. Sie ersetzen
-jedoch keine Backendguards.
+Eine Regeländerung ist erst vollständig, wenn ihr primärer Ort, die wirksame
+Runtime und mindestens ein passender Test zusammenpassen. Eine monolithische
+Rieseninstruktion ist ebenso falsch wie dieselbe Anweisung in mehreren
+Ergebniskanälen.
 
-Im aktuellen Übergangszustand liegen die Regeln technisch verteilt in:
-
-- dem noch nicht produktiv aktivierten Quellskill unter
-  `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1`;
-- `OpenAiDeCoachMcpContract.SERVER_INSTRUCTIONS`;
-- den Toolverträgen in `OpenAiDeCoachMcpContract`;
-- den dynamischen Policies und Instruktionen in
-  `OpenAiDeCoachContextProjector`;
-- den Domainservices, der Zustandsprojektion und ihren Guards.
-
-Die ausführlichen Server-Instruktionen bleiben während des Skill-Piloten als
-Kompatibilitätsschicht bestehen. Erst nach nachgewiesener Golden-Journey- und
-Fehlerfallparität werden Coachrolle, Stil und Dialogablauf daraus entfernt.
-Session-, Zustands- und Fail-closed-Invarianten bleiben dort in kurzer Form;
-konkrete Aufrufbedingungen verbleiben an den Tools.
-
-Die deutschen Dateien `system_instructions.de.md` und `knowledge_docs/*.de.md`
-unter `ai/openai custom gpt` bleiben fachlich-didaktische
-Ausgangsspezifikation. Sie werden nicht zur Laufzeit hochgeladen oder
-automatisch als MCP-Resource eingelesen. Verwendet werden insbesondere Rolle
-und Stil, Scaffolding und Feynman-Loop, ungewöhnliche Lösungswege,
-Mastery-Evidenz, Prüfungsführung und ehrliche Fehlerkommunikation.
-
-Nicht migriert werden `startCode`, `chatSessionToken`, `redeemStartCode`, alte
-Action-Operations, sichtbare Relaywerte oder modellseitig konstruierte Deep
-Links. Ihr fachlicher Zweck wird auf die aktuelle OAuth-,
-`learningSessionId`-, MCP- und backendgenerierte Linkgrenze abgebildet.
-
-### 6.1 Ziel für die Regelpflege
-
-Jede produktionsrelevante Coach-Regel benötigt künftig eine stabile
-Policy-Referenz und eine geschlossene Nachweiskette:
-
-```text
-bewährte Quellstelle unter ai/openai custom gpt
-  -> menschenlesbare COACH-Policy
-  -> wirksame Laufzeitschicht
-  -> mindestens ein Acceptance-Szenario
-  -> erwartete und verbotene Toolaufrufe
-  -> erwarteter Backendzustand
-  -> sichtbares Sollverhalten
-```
-
-Eine Regel ist erst vollständig migriert, wenn diese Kette geschlossen ist.
-Eine monolithische Rieseninstruktion ist ebenso wenig das Ziel wie die
-Verteilung wichtiger Regeln auf nicht auffindbare Codefragmente. Jede Regel
-hat genau einen primären Zielort; zusätzliche Defense-in-depth-Orte werden
-ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
-
-Technische Orchestrierung wird dabei nicht durch mehr Prompttext abgesichert.
-Das Backend besitzt deterministische IDs, Mengen, Reihenfolgen,
+Technische Orchestrierung wird nicht durch mehr Prompttext abgesichert. Das
+Backend besitzt deterministische IDs, Mengen, Reihenfolgen,
 Vollständigkeitsprüfungen, Zustandsübergänge, Nebenläufigkeit, Idempotenz und
-Fortsetzungen. Das Modell besitzt Sprachverständnis, didaktischen Dialog und
-fachlich-semantische Vergleiche. Sobald ein Ablauf technisch zähl- oder
+Fortsetzung. Das Modell besitzt Sprachverständnis, didaktischen Dialog und
+fachlich-semantischen Vergleich. Sobald ein Ablauf technisch zähl- oder
 validierbar ist, stellt das Backend eine vollständige atomare Operation bereit;
-der Skill beschreibt nur noch die minimale fachliche Übergabe. Ein Checker
-muss alte per-item Toolschleifen und modellseitige Mengenwahl zurückweisen.
+der Skill beschreibt nur die minimale fachliche Übergabe.
+
+Die eingefrorenen Custom-GPT- und Visible-Session-Pakete sind historische
+Baseline beziehungsweise Rollbackquelle. Sie werden weder als aktuelle
+Runtime-Knowledge geladen noch für Parität editiert. Aktueller Backendvertrag,
+Kommunikationsvertrag und ausgelieferter V1-Skill haben Vorrang.
 
 ## 7. Verbindliche Verhaltensregeln
 
@@ -360,7 +282,7 @@ muss alte per-item Toolschleifen und modellseitige Mengenwahl zurückweisen.
 | `COACH-MASTERY-001` | Mastery folgt der global eindeutigen Lernziel-ID und wird nur nach ausreichender Evidenz gespeichert. |
 | `COACH-RECALL-001` | Das Backend besitzt IDs, Kartenzahl, Reihenfolge, Vollständigkeit, Status, Idempotenz und Fortsetzung eines Recall-Batches. Das Modell zeigt den vollständigen serverseitigen Batch, wartet auf alle Antworten, lädt alle Sollantworten genau einmal, vergleicht nur fachlich-semantisch und speichert alle Bewertungen genau einmal atomar. Es wählt keine Batchgröße und führt keine technischen Schleifen pro Karte aus. |
 | `COACH-EXAM-001` | Prüfung bedeutet wortgetreue Aufgabe, keine Hilfen oder Rückfragen und faire kriteriumsbezogene Bewertung gleichwertiger Wege. |
-| `COACH-RESOURCE-001` | Fachliche Ressourcen werden nur aus dem frischen Zustand verwendet; der Coach entscheidet allgemein zwischen Erklärung im Chat und einem passenden Cockpit-Deep-Link. |
+| `COACH-RESOURCE-001` | Fachliche Ressourcen werden nur aus dem frischen Zustand verwendet. Eine frisch autorisierte Zielvisualisierung wird genau einmal unmittelbar über ihren gebundenen Renderer dargestellt; nach Wahl normaler Kartenpraxis startet die gebundene Kartenkomponente. Nur andere optionale Ressourcen folgen einer fachlichen Chat-/Cockpit-Entscheidung, und der Cockpit-Fallback gilt nur in den ausdrücklich dokumentierten Fällen. |
 | `COACH-ERROR-001` | Fehlerbehandlung ist begrenzt, wahrheitsgemäß und erzeugt keinen erfundenen Ersatzablauf. |
 | `COACH-PRIVACY-001` | Technische Identitäten, Geheimnisse und interne IDs bleiben außerhalb sichtbarer Coachantworten. |
 
@@ -492,9 +414,9 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
   `record_skillpilot_verified_recall_results` exakt eine Bewertung je Karte.
   Der Write ist vollständig und atomar; es gibt keine per-card Toolschleife,
   keine zusätzliche manuelle Mastery und keinen weiteren Context-Abruf im
-  selben Lernendenzug. Die bestätigte Backendfortsetzung wird sofort umgesetzt:
-  entweder das neue aktive Lernziel beginnen oder den frisch veröffentlichten
-  breiteren Fokus vorschlagen, ohne auf ein inhaltsfreies „weiter“ zu warten.
+  selben Lernendenzug. Die genau eine bestätigte Backend-`continuation` wird
+  unverändert und sofort umgesetzt, ohne sie auf eine lokale Fallliste zu
+  reduzieren und ohne auf ein inhaltsfreies „weiter“ zu warten.
 - **Verboten:** eine Teilmenge wie fünf von acht Fragen zeigen, IDs oder
   Reihenfolge selbst bestimmen, nach einzelnen Karten lesen oder schreiben,
   Erfolg vor dem atomaren Receipt behaupten oder nach dem Recall stehenbleiben.
@@ -535,14 +457,20 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 - **Erwartung:** derselbe allgemeine Entscheidungszyklus funktioniert ohne
   schul-, bundesland-, fach- oder zielbezogene Code-Sonderregel.
 
-### GJ-11 – Ressourcen und Cockpit-Grenze
+### GJ-11 – Gebundene UI-Aktionen und Cockpit-Grenze
 
-- **Erwartung:** Der Coach nutzt nur Ressourcen des frischen Zustands und
-  entscheidet anhand allgemeiner fachlicher Regeln, ob eine Erklärung im Chat
-  genügt oder eine Visualisierung beziehungsweise Interaktion im Cockpit
-  sinnvoll ist.
-- **Verboten:** erfundene Ressource, veralteter Deep-Link, Chat-Ersatz für eine
-  notwendige Cockpit-Interaktion oder unnötiger Cockpit-Wechsel.
+- **Erwartung:** Der Coach nutzt nur Ressourcen des frischen Zustands. Jedes
+  neu autorisierte Paar aus Ziel und State-Version löst genau einmal und
+  unmittelbar den gebundenen Zielbild-Renderer aus. Wählt die lernende Person
+  normale Kartenpraxis, startet der Coach die gebundene Kartenkomponente. Der
+  Cockpit-Fallback erscheint nur nach tatsächlichem Komponentenfehler,
+  fehlender Berechtigung, ausdrücklichem Cockpit-Wunsch oder Serveranweisung.
+  Nur bei anderen optionalen Ressourcen entscheidet der Coach anhand
+  allgemeiner fachlicher Regeln zwischen Chat und Cockpit.
+- **Verboten:** eine verpflichtende gebundene Aktion überspringen oder
+  automatisch wiederholen, eine Ressource oder einen Deep-Link erfinden,
+  veraltete Links verwenden, notwendige Cockpit-Interaktion durch Chat ersetzen
+  oder ohne dokumentierten Grund ins Cockpit wechseln.
 
 ## 10. Acceptance- und Evidenzstrategie
 
@@ -619,69 +547,7 @@ Wiederholte Screenshots und Logs gehören in ein passendes QA-Artefakt oder
 Issue; dieses Leitdokument bleibt die stabile Gesamtaufgabe und wird nicht zum
 ungeordneten Logbuch.
 
-## 12. Arbeitsprogramm
-
-### Phase A – Baseline und Regeltrace
-
-- die wichtigsten erfolgreichen früheren Custom-GPT-Dialoge als Golden
-  Journeys sichern;
-- jede bindende frühere Regel einer Policy-ID, Laufzeitschicht und einem Test
-  zuordnen;
-- klar markieren, welche Aussagen nur technische Zuordnung und welche
-  nachgewiesene Verhaltensparität bedeuten.
-
-### Phase B – Einstieg, Scope und Fokus
-
-- den einmaligen UI-Start regressionssicher machen;
-- WebGUI-konfigurierten Level-2-Kontext vollständig und read-only projizieren;
-- chatseitige Level-2-Änderungen zuverlässig auf den WebGUI-Neustart verweisen;
-- korrekten Lernumfang und Fokus vor jeder Zielauswahl sicherstellen.
-
-### Phase C – Normaler Lernzyklus
-
-- Zielwahl, Erklären, Üben, Lösungsauswertung, Ressourcen, Fortschritt und
-  Mastery Ende-zu-Ende abnehmen;
-- alternative korrekte Lösungswege und explizite Aufgabenanforderungen
-  regressionssicher prüfen.
-
-### Phase D – Recall und Prüfung
-
-- modellseitige Regeln, Backendguards und sichtbare Abläufe zusammen abnehmen;
-- keine grüne Freigabe allein aufgrund vorhandener Tools oder Unit-Tests.
-
-### Phase E – Resilienz
-
-- Reload, langer Dialog, Kompaktierung, parallele Sessions, Ablauf,
-  Backendneustart und Provideränderungen testen;
-- alte Conversation-Information nie über den frischen Backendzustand stellen.
-
-### Phase F – Produktreife und weitere Interaktionssprachen
-
-- unnötige technische Reibung und sichtbare Zwischenzustände entfernen;
-- optionale UI nur dort ergänzen, wo sie Bedienung oder Integrität messbar
-  verbessert;
-- Englisch und jede weitere freigegebene Interaktionssprache nach stabiler
-  deutscher Verhaltensbaseline im selben V1-Vertrag mit eigenen Acceptance-
-  Fällen freigeben.
-
-## 13. Aktueller ehrlicher Stand
-
-| Bereich | Stand |
-| --- | --- |
-| Spring-MCP-Transport und Toolkatalog | technisch implementiert |
-| OAuth-Appbindung und explizite 24h-Lernsession | technisch implementiert; produktive Regression weiter beobachten |
-| Zuordnung der früheren Knowledge-Regeln | dokumentiert und technisch verteilt |
-| einmaliger Start aus der SkillPilot-UI | zuletzt erfolgreich getestet; dauerhaftes Regression-Gate noch erforderlich |
-| natürlicher mehrteiliger Einstieg | teilweise funktionsfähig |
-| Scope- und Fokusauflösung | noch nicht allgemein zuverlässig |
-| normaler Coachingzyklus | in realen Dialogen weiter abzunehmen |
-| Verified Recall und Prüfung | Verträge vorhanden; reales Modellverhalten nicht vollständig abgenommen |
-| Reload, Langdialog und Kompaktierung | noch nicht ausreichend nachgewiesen |
-| Endnutzer-Verhaltensparität zum früheren Coach | **offen** |
-
-Dieser Stand darf nur durch nachvollziehbare Evidenz hochgestuft werden.
-
-## 14. Was ausdrücklich nicht getan wird
+## 12. Was ausdrücklich nicht getan wird
 
 - keine Änderung der globalen Lernziel- oder Mastery-Semantik zur Reparatur
   eines Coachdialogs;
@@ -696,7 +562,7 @@ Dieser Stand darf nur durch nachvollziehbare Evidenz hochgestuft werden.
 - keine optionale Widget-UI als Ausrede für einen unvollständigen data-only
   Dialog.
 
-## 15. Definition of Done
+## 13. Definition of Done
 
 Die große Aufgabe ist abgeschlossen, wenn:
 
@@ -715,51 +581,12 @@ Die große Aufgabe ist abgeschlossen, wenn:
 10. der frühere Custom-GPT-Coach nur noch als historische Baseline und
     Rollbackquelle benötigt wird, nicht als fehlende Verhaltensschicht.
 
-## 16. Fortsetzung in einem neuen Chat
-
-Der folgende Text kann als Übergabe in einen neuen Codex-Chat kopiert werden:
-
-```text
-Arbeite im Repository /home/enpasos/projects/skillpilot an der großen Aufgabe
-„Verhaltensintegration des MCP-Lerncoaches“.
-
-Lies zuerst vollständig:
-1. AGENTS.md
-2. docs/concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md
-3. docs/concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md
-4. docs/concept/runtime-workflows/openai-mcp-coach-migration-plan.md
-5. für Auth/Session nur bei Bedarf:
-   docs/concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md
-
-Wichtig:
-- Technisch vorhandene Tools oder zugeordnete Knowledge-Regeln bedeuten noch
-  keine Endnutzer-Verhaltensparität.
-- Der Backendzustand ist autoritativ.
-- Lernziel-IDs sind global eindeutig; verändere nicht die Mastery-Semantik.
-- Repariere allgemeine Mechanismen für Intent, Scope, Fokus,
-  Zustandsprojektion und Orchestrierung; baue keine Curriculum-Sonderfälle.
-- Nach jeder Mutation muss der frische Zustand geladen werden.
-- Bewerte ein Ergebnis anhand von Toolspur, Backendzustand und sichtbarer
-  Antwort, nicht anhand der Selbstauskunft des Modells.
-
-Aktueller Test beziehungsweise Fehler:
-<hier Screenshot, Eingaben, Logs, Git-SHA und erwartetes Verhalten einsetzen>
-
-Ordne den Fehler zuerst einer Fehlerklasse und den Policy-IDs des
-Leitdokuments zu. Vergleiche bei Bedarf mit dem früheren Custom-GPT-Verhalten.
-Diagnostiziere die allgemeine Ursache, implementiere nur die engste allgemeine
-Korrektur und führe passende deterministische sowie reale Acceptance-Tests
-durch. Dokumentiere anschließend, was bewiesen ist und was noch offen bleibt.
-```
-
-## 17. Referenzen
+## 14. Referenzen
 
 - [OpenAI: Plugin-Architektur](https://developers.openai.com/plugins/concepts/plugins)
 - [OpenAI: Skills bauen](https://developers.openai.com/plugins/build/skills)
 - [OpenAI: Connectors and remote MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)
-- `ai/openai custom gpt/system_instructions.de.md`
-- `ai/openai custom gpt/knowledge_docs/`
-- `ai/openai-custom-gpt-visible-session/de/system_instructions.md`
-- `ai/openai-custom-gpt-visible-session/de/knowledge_docs/`
-- `backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContract.java`
+- `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md`
+- `ai/openai plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/references/coaching-policy.md`
+- `backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java`
 - `backend/src/main/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachContextProjector.java`

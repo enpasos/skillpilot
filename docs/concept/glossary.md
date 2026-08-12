@@ -372,14 +372,13 @@ the learner-facing composition view and becomes the candidate space for focus,
 frontier, progress, and completion, while the backend may still use the full
 graph for strict prerequisite checks.
 
-The state is backend-owned and can be edited through several hosts. The web UI
-is the primary control surface, but an MCP UI or an unambiguous ChatCoach
-request may use the same contract. It is not the learner's temporary year or
-topic focus.
+The state is backend-owned. In the current OpenAI V1 product it is configured
+exclusively through the first-party WebGUI and Cockpit; the ChatClient neither
+asks for nor mutates it. It is not the learner's temporary year or topic focus.
 
 ### Personalization
 
-*DE: Personalisierung* — see [Behavioral Integration of the German MCP Coach](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
+*DE: Personalisierung* — see [Behavioral Integration of the multilingual MCP Coach](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
 
 The authored validity decisions of a learner, such as jurisdiction or course profile. Personalization is never derived from the skill graph: neither `contains` nor `requires` may be read as a personalization decision. Options always come from the most recent backend state and are opaque — an adapter selects one of them by its ID and never constructs an ID of its own.
 
@@ -387,7 +386,7 @@ Course profiles are stored per subject, so Mathematik LK and Physik GK can coexi
 
 ### Learning scope and focus
 
-*DE: Lernumfang und Fokus* — see [Behavioral Integration of the German MCP Coach](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
+*DE: Lernumfang und Fokus* — see [Behavioral Integration of the multilingual MCP Coach](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
 
 Two decisions the coach must keep apart:
 
@@ -493,7 +492,7 @@ The one-time, revocable, confidential-client authorization that lets the approve
 
 ### SkillPilot Lerncoach
 
-*DE: SkillPilot Lerncoach* — see [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
+*DE: SkillPilot Lerncoach* — see [ChatClient/Backend Communication Contract](runtime-workflows/provider-neutral-coach-boundary.md)
 
 The AI-facing interaction layer that turns backend state into dialogue. The coach speaks; the backend decides. Learning state, active filters, allowed transitions, and next steps are authoritative in the backend and are never reconstructed from conversation memory.
 
@@ -505,13 +504,13 @@ The SkillPilot web surface showing learning goals, progress, and sensible next s
 
 ### Safe state projection
 
-*DE: sichere Zustandsprojektion* — see [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
+*DE: sichere Zustandsprojektion* — see [ChatClient/Backend Communication Contract](runtime-workflows/provider-neutral-coach-boundary.md)
 
 The rule that only an allowlisted, minimized view of learner state crosses the provider boundary. Internal identity, secrets, and private asset paths are removed before anything reaches a model, chat, or widget.
 
 ### Provider-neutral boundary
 
-*DE: providerneutrale Grenze* — see [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
+*DE: providerneutrale Grenze* — see [ChatClient/Backend Communication Contract](runtime-workflows/provider-neutral-coach-boundary.md)
 
 The separation between the shared SkillPilot application core and provider-specific adapters. Domain rules, exam authorization, and state projection live in the shared core so that adding or replacing a provider does not fork the learning logic.
 
