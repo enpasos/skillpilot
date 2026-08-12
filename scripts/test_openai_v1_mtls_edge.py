@@ -1054,6 +1054,27 @@ class RepositoryContractTest(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("--listen 127.0.0.1 --port 8792", unit)
         self.assertIn("DynamicUser=yes", unit)
+        self.assertIn(
+            "LoadCredential=openai-root-ca.pem:/etc/skillpilot/openai-mtls/openai-root-ca.pem",
+            unit,
+        )
+        self.assertIn(
+            "LoadCredential=openai-connectors-mtls-ca.pem:/etc/skillpilot/openai-mtls/openai-connectors-mtls-ca.pem",
+            unit,
+        )
+        self.assertIn(
+            "--root-ca ${CREDENTIALS_DIRECTORY}/openai-root-ca.pem",
+            unit,
+        )
+        self.assertIn(
+            "--intermediate-ca ${CREDENTIALS_DIRECTORY}/openai-connectors-mtls-ca.pem",
+            unit,
+        )
+        exec_start = next(
+            line for line in unit.splitlines() if line.startswith("ExecStart=")
+        )
+        self.assertNotIn("--root-ca /etc/skillpilot/", exec_start)
+        self.assertNotIn("--intermediate-ca /etc/skillpilot/", exec_start)
         self.assertIn("ProtectSystem=strict", unit)
         self.assertIn("NoNewPrivileges=yes", unit)
         self.assertIn("CapabilityBoundingSet=", unit)
@@ -1113,10 +1134,30 @@ class RepositoryContractTest(unittest.TestCase):
         self.assertNotIn("nginx -t", installer)
         self.assertIn("No active Nginx file was edited or reloaded", installer)
         self.assertIn("--staged", installer)
+        self.assertIn("systemd-analyze verify", installer)
         invocation = installer[installer.index(
             '"${ROOT_DIR}/scripts/verify_openai_v1_mtls_edge.sh"'
         ):]
         self.assertNotIn("--preflight", invocation.split("cat <<EOF", 1)[0])
+
+    def test_static_gate_validates_the_systemd_unit(self) -> None:
+        verifier = MTLS_EDGE_VERIFIER_PATH.read_text(encoding="utf-8")
+        static_checks = verifier.split("run_static_checks() {", 1)[1].split(
+            "\n}\n", 1
+        )[0]
+        self.assertIn("systemd-analyze verify", static_checks)
+        self.assertIn("CHECK mtls_systemd_unit PASS", static_checks)
+
+    def test_staged_gate_waits_boundedly_for_verifier_readiness(self) -> None:
+        verifier = MTLS_EDGE_VERIFIER_PATH.read_text(encoding="utf-8")
+        self.assertIn('VERIFIER_READY_TIMEOUT_SECONDS="20"', verifier)
+        service_check = verifier.split("assert_verifier_service() {", 1)[1].split(
+            "\n}\n", 1
+        )[0]
+        self.assertIn("SECONDS + VERIFIER_READY_TIMEOUT_SECONDS", service_check)
+        self.assertIn('service_state}" == "active"', service_check)
+        self.assertIn('-n "${listeners}"', service_check)
+        self.assertIn("sleep 1", service_check)
 
     def test_runtime_smokes_invalid_client_cert_and_deploy_confirms_disabled(self) -> None:
         verifier = MTLS_EDGE_VERIFIER_PATH.read_text(encoding="utf-8")

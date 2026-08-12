@@ -7,7 +7,9 @@ Before=nginx.service
 [Service]
 Type=simple
 DynamicUser=yes
-ExecStart=/usr/bin/python3 -B /usr/local/libexec/skillpilot-openai-v1-mtls-verifier.py --listen 127.0.0.1 --port 8792 --root-ca /etc/skillpilot/openai-mtls/openai-root-ca.pem --intermediate-ca /etc/skillpilot/openai-mtls/openai-connectors-mtls-ca.pem
+LoadCredential=openai-root-ca.pem:/etc/skillpilot/openai-mtls/openai-root-ca.pem
+LoadCredential=openai-connectors-mtls-ca.pem:/etc/skillpilot/openai-mtls/openai-connectors-mtls-ca.pem
+ExecStart=/usr/bin/python3 -B /usr/local/libexec/skillpilot-openai-v1-mtls-verifier.py --listen 127.0.0.1 --port 8792 --root-ca ${CREDENTIALS_DIRECTORY}/openai-root-ca.pem --intermediate-ca ${CREDENTIALS_DIRECTORY}/openai-connectors-mtls-ca.pem
 Restart=on-failure
 RestartSec=2s
 TasksMax=32

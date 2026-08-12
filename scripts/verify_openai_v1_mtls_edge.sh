@@ -10,6 +10,7 @@ ACTIVE_MAIN_NGINX_DENY_CONFIG="/etc/nginx/skillpilot-main-vhost-openai-deny-loca
 SERVICE_NAME="skillpilot-openai-v1-mtls-verifier.service"
 VERIFIER_PORT="8792"
 BACKEND_PORT="8787"
+VERIFIER_READY_TIMEOUT_SECONDS="20"
 MCP_HOST="mcp-coach-v1.skillpilot.com"
 MAIN_HOST="skillpilot.com"
 MCP_URL="https://${MCP_HOST}/mcp"
@@ -127,6 +128,7 @@ assert_certificate_valid_for_cutover() {
 run_static_checks() {
   local root_ca="${SOURCE_DIR}/openai-root-ca.pem"
   local intermediate_ca="${SOURCE_DIR}/openai-connectors-mtls-ca.pem"
+  local verifier_unit="${SOURCE_DIR}/skillpilot-openai-v1-mtls-verifier.service"
   assert_file_hash "${EXPECTED_ROOT_FILE_SHA256}" "${root_ca}"
   assert_file_hash "${EXPECTED_INTERMEDIATE_FILE_SHA256}" "${intermediate_ca}"
   assert_certificate_fingerprint "${EXPECTED_ROOT_CERT_SHA256}" "${root_ca}"
@@ -144,6 +146,17 @@ run_static_checks() {
   PYTHONDONTWRITEBYTECODE=1 python3 -B \
     "${ROOT_DIR}/scripts/verify_openai_v1_mtls_nginx_contract.py" \
     --help >/dev/null
+  if ! command -v systemd-analyze >/dev/null 2>&1; then
+    echo "CHECK mtls_systemd_unit FAIL systemd-analyze is unavailable" >&2
+    exit 1
+  fi
+  local systemd_verify_output
+  if ! systemd_verify_output="$(systemd-analyze verify "${verifier_unit}" 2>&1)"; then
+    echo "CHECK mtls_systemd_unit FAIL invalid verifier service unit" >&2
+    printf '%s\n' "${systemd_verify_output}" >&2
+    exit 1
+  fi
+  echo "CHECK mtls_systemd_unit PASS"
   bash -n \
     "${ROOT_DIR}/scripts/install_openai_v1_mtls_edge.sh" \
     "${ROOT_DIR}/scripts/lib/openai_v1_mtls_mode.sh" \
@@ -243,7 +256,26 @@ assert_verifier_service() {
     echo "CHECK mtls_verifier_service FAIL unexpected effective systemd unit or drop-in" >&2
     exit 1
   fi
-  systemctl is-active --quiet "${SERVICE_NAME}"
+  local deadline=$((SECONDS + VERIFIER_READY_TIMEOUT_SECONDS))
+  local service_state="unknown"
+  local listeners=""
+  while (( SECONDS < deadline )); do
+    service_state="$(
+      systemctl is-active "${SERVICE_NAME}" 2>/dev/null || true
+    )"
+    listeners="$(
+      ss -ltnH \
+        | awk -v suffix=":${VERIFIER_PORT}" '$4 ~ suffix "$" {print $4}'
+    )"
+    if [[ "${service_state}" == "active" && -n "${listeners}" ]]; then
+      break
+    fi
+    sleep 1
+  done
+  if [[ "${service_state}" != "active" || -z "${listeners}" ]]; then
+    echo "CHECK mtls_verifier_service FAIL verifier not ready after ${VERIFIER_READY_TIMEOUT_SECONDS}s (state=${service_state})" >&2
+    exit 1
+  fi
   echo "CHECK mtls_verifier_service PASS exact unit without drop-ins, active"
   assert_loopback_listener
   assert_backend_loopback_listener

@@ -424,7 +424,14 @@ sudo systemctl is-active nginx
 
 Der Installer bezieht die CA-Dateien nicht live, sondern prüft die reviewten
 OpenAI-Dateien, ihre SHA-256-Werte, X.509-Fingerprints und die Intermediate-
-Kette. Er installiert den Verifier ausschließlich auf `127.0.0.1:8792` und
+Kette. Die systemd-Unit stellt dem isolierten `DynamicUser` genau diese beiden
+CA-Dateien über schreibgeschützte Service-Credentials bereit; der Dienst
+benötigt deshalb kein Leserecht auf das geschützte Elternverzeichnis
+`/etc/skillpilot`. Dafür wird systemd 247 oder neuer vorausgesetzt; die Unit
+verwendet bewusst `${CREDENTIALS_DIRECTORY}` statt des erst später
+eingeführten `%d`-Specifiers. Das statische Gate validiert die Unit vor der
+Installation mit `systemd-analyze verify`. Er installiert den Verifier ausschließlich auf
+`127.0.0.1:8792` und
 schreibt den ausdrücklich gewählten root-eigenen Nginx-Modus atomar nach
 `/etc/skillpilot/openai-mtls/mode.conf`. Er editiert, testet und reloadet die
 aktive Nginx-Konfiguration **nie**. Vor jedem Reload muss der separate root-only

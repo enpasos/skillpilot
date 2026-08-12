@@ -81,7 +81,7 @@ if [[ "${SERVICE_ENV_FILE}" != /* ]]; then
   exit 2
 fi
 
-for command_name in curl install mv openssl python3 sha256sum ss stat systemctl; do
+for command_name in curl install mv openssl python3 sha256sum ss stat systemctl systemd-analyze; do
   if ! command -v "${command_name}" >/dev/null 2>&1; then
     echo "Required command is unavailable: ${command_name}" >&2
     exit 1
@@ -150,6 +150,16 @@ assert_regular_source "${ROOT_DIR}/scripts/openai_v1_mtls_verifier.py"
 assert_regular_source "${MODE_SOURCE}"
 assert_regular_source "${NGINX_SOURCE_DIR}/skillpilot-openai-mtls-mode-observe.conf"
 assert_regular_source "${NGINX_SOURCE_DIR}/skillpilot-openai-mtls-mode-enforce.conf"
+
+systemd_verify_output=""
+if ! systemd_verify_output="$(
+  systemd-analyze verify \
+    "${SOURCE_DIR}/skillpilot-openai-v1-mtls-verifier.service" 2>&1
+)"; then
+  echo "Verifier systemd unit is invalid." >&2
+  printf '%s\n' "${systemd_verify_output}" >&2
+  exit 1
+fi
 
 assert_file_hash "${EXPECTED_ROOT_FILE_SHA256}" "${ROOT_CA}"
 assert_file_hash "${EXPECTED_INTERMEDIATE_FILE_SHA256}" "${INTERMEDIATE_CA}"
