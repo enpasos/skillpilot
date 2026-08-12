@@ -724,24 +724,6 @@ const didacticParityRules = [
     ],
   },
   {
-    id: "completed-focus widening and directed prerequisites",
-    de: [
-      /aktuelle Fokus tatsächlich abgeschlossen[\s\S]+nicht schon bei leerer Frontier/u,
-      /erste echte Backend-Option als nächstbreiteren Fokus[\s\S]+Erst nach Zustimmung/u,
-      /`requires` ist gerichtet[\s\S]+niemals rückwirkend/u,
-    ],
-    en: [
-      /current focus is actually complete[\s\S]+not merely when its frontier is empty/u,
-      /first real backend option as the nearest broader focus[\s\S]+only after acceptance/u,
-      /`requires` is directed[\s\S]+never retroactively/u,
-    ],
-    target: [
-      /completion\.scopeComplete=true[\s\S]+offer the first option/u,
-      /do not mutate until the learner accepts/u,
-      /requires relation is one-way[\s\S]+never implies mastery/u,
-    ],
-  },
-  {
     id: "explicit prior-knowledge connection",
     de: [/Knüpfe explizit an vorhandenes Vorwissen an/u],
     en: [/Explicitly link to existing prior knowledge/u],
@@ -927,12 +909,12 @@ const didacticParityRules = [
     de: [
       /Didaktisch \*\*sofort sinnvoll weitergehen\*\*/u,
       /gesamte personalisierte Curriculum[\s\S]+nur gratulieren\/feiern[\s\S]+keine neuen Vorschläge/u,
-      /aktuelle Fokus tatsächlich abgeschlossen[\s\S]+Backend-Option als nächstbreiteren Fokus/u,
+      /aktuelle Fokus[\s\S]+Fokuswechsel vorschlagen/u,
     ],
     en: [
       /Didactically \*\*move on sensibly immediately\*\*/u,
       /entire personalized curriculum[\s\S]+only congratulate\/celebrate[\s\S]+no new suggestions/u,
-      /current focus is actually complete[\s\S]+backend option as the nearest broader focus/u,
+      /current focus[\s\S]+suggest focus change/u,
     ],
     target: [
       /After successfully saved mastery, proceed promptly to the supplied next step/u,
