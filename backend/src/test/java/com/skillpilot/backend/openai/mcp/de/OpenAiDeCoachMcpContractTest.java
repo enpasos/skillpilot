@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,10 +33,14 @@ import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
-import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchSavedResult;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
-import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeFilter;
@@ -88,6 +93,8 @@ class OpenAiDeCoachMcpContractTest {
     private static final String LEARNER_ID = "permanent-secret-learner-id";
     private static final String LEARNING_SESSION_ID =
             "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    private static final String OTHER_LEARNING_SESSION_ID =
+            "sps_BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
     private static final String CONNECTION_SECRET = "opaque-oauth-subject-secret";
     private static final String CHALLENGE = "Bearer resource_metadata=\"https://skillpilot.test/meta\"";
     private static final String INSUFFICIENT_SCOPE_CHALLENGE =
@@ -155,8 +162,8 @@ class OpenAiDeCoachMcpContractTest {
                 OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
                 OpenAiDeV1McpContractAdapter.START_RECALL,
-                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWER,
-                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT,
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
                 OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION);
 
         for (McpStatelessServerFeatures.SyncToolSpecification specification : tools) {
@@ -211,7 +218,9 @@ class OpenAiDeCoachMcpContractTest {
                         "open_skillpilot_start",
                         "issue_skillpilot_start_capability",
                         "set_skillpilot_curriculum",
-                        "set_skillpilot_personalization");
+                        "set_skillpilot_personalization",
+                        "get_skillpilot_verified_recall_answer",
+                        "record_skillpilot_verified_recall_result");
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().annotations().readOnlyHint()).isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION)
                         .tool()
@@ -249,7 +258,7 @@ class OpenAiDeCoachMcpContractTest {
                         .idempotentHint())
                 .isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_MASTERY).tool().annotations().readOnlyHint()).isFalse();
-        assertThat(spec(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT).tool().annotations().idempotentHint())
+        assertThat(spec(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS).tool().annotations().idempotentHint())
                 .isTrue();
         assertThat(spec(OpenAiDeV1McpContractAdapter.SET_SCOPE).tool().meta().toString())
                 .contains(OpenAiDeV1McpContractAdapter.READ_SCOPE, OpenAiDeV1McpContractAdapter.WRITE_SCOPE);
@@ -329,6 +338,56 @@ class OpenAiDeCoachMcpContractTest {
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID),
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION),
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
+        assertThat(spec(OpenAiDeV1McpContractAdapter.START_RECALL).tool().inputSchema().get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID));
+        JsonNode recallStartOutputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.START_RECALL).tool().outputSchema());
+        assertThat(recallStartOutputSchema.at("/properties").has("batchCapability")).isTrue();
+        assertThat(recallStartOutputSchema.at("/properties").has("cards")).isTrue();
+        assertThat(recallStartOutputSchema.at("/properties").has("batchSize")).isFalse();
+        assertThat(recallStartOutputSchema.at("/properties").has("goalId")).isFalse();
+        assertThat(recallStartOutputSchema.at("/properties").has("instruction")).isFalse();
+        assertThat(recallStartOutputSchema.at("/properties/cards/items/properties").has("cardId")).isFalse();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS).tool().inputSchema().get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(
+                                "batchCapability",
+                                OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID));
+        JsonNode recallAnswersOutputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS).tool().outputSchema());
+        assertThat(recallAnswersOutputSchema.at("/properties").has("instruction")).isFalse();
+        JsonNode recallResultsInputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS).tool().inputSchema());
+        assertThat(recallResultsInputSchema.at("/properties").fieldNames())
+                .toIterable()
+                .containsExactlyInAnyOrder(
+                        "gradingCapability",
+                        "assessments",
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID);
+        assertThat(recallResultsInputSchema.at("/required"))
+                .containsExactly(
+                        objectMapper.valueToTree("gradingCapability"),
+                        objectMapper.valueToTree("assessments"),
+                        objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID));
+        assertThat(recallResultsInputSchema.toString())
+                .doesNotContain(
+                        "goalId",
+                        "cardId",
+                        OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                        OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID);
+        JsonNode recallResultsOutputSchema = objectMapper.valueToTree(
+                spec(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS).tool().outputSchema());
+        assertThat(recallResultsOutputSchema.at("/properties").has("instruction")).isFalse();
+        assertThat(recallResultsOutputSchema.at("/properties/next/properties").has("instruction")).isFalse();
+        assertThat(recallResultsOutputSchema.at("/properties/continuation/properties").has("instruction"))
+                .isTrue();
+        assertThat(recallResultsOutputSchema.at("/properties/context/properties").has("instruction"))
+                .isFalse();
+        assertThat(recallResultsOutputSchema.at("/properties/context/properties").has("requiredAction"))
+                .isFalse();
+        assertThat(recallResultsOutputSchema.at("/required"))
+                .doesNotContain(objectMapper.valueToTree("next"), objectMapper.valueToTree("context"));
         assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema().get("required"))
                 .asString()
                 .contains(
@@ -577,6 +636,12 @@ class OpenAiDeCoachMcpContractTest {
                 // are part of the V1 contract. All remaining model-facing strings stay
                 // free of technical validators.
                 properties.remove(OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID);
+            }
+            if (OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS.equals(specification.tool().name())
+                    && inputSchema.at("/properties/assessments/items/properties") instanceof ObjectNode properties) {
+                // Recall feedback is learner-facing assessment content. Its explicit
+                // 1..800 bound is part of the public contract, not a technical token format.
+                properties.remove("feedback");
             }
             String inputSchemaJson = objectMapper.writeValueAsString(inputSchema);
 
@@ -1005,11 +1070,12 @@ class OpenAiDeCoachMcpContractTest {
     @Test
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
-                .contains("Before every learner-facing SkillPilot coaching response, establish one fresh full "
-                        + "SkillPilot context")
+                .contains("After each new learner message, establish exactly one fresh full SkillPilot context "
+                        + "before learner-facing SkillPilot coaching")
                 .contains("A successful state-changing tool result that contains its full successor context also "
-                        + "does this")
-                .contains("do not call get_skillpilot_context again before its immediate renderer")
+                        + "satisfies the requirement")
+                .contains("Do not insert get_skillpilot_context or another SkillPilot tool before the required "
+                        + "renderer")
                 .contains("A successful mastery result is the one ordering exception")
                 .contains("first give both learner-facing texts from completionHandoff")
                 .contains("only then begin the already activated successor")
@@ -1019,7 +1085,11 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("alternative methods")
                 .contains("explicit format")
                 .contains("follow-up questions")
-                .contains("expected answer only after")
+                .contains("show every returned question in order, and wait for all answers")
+                .contains("load all expected answers once with batchCapability")
+                .contains("one ordered assessment per returned answer in one atomic call with gradingCapability")
+                .contains("Never grade from memory, invent counts, perform a per-card tool loop")
+                .contains("Use only the confirmed atomic receipt and follow its continuation immediately")
                 .contains("permanent SkillPilot IDs")
                 .contains("exact activeGoal.title")
                 .contains("Dein aktuelles Lernziel ist: <Titel>")
@@ -1950,10 +2020,12 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void recallProjectionDropsPermanentLearnerIdFromTopLevelAndNestedPrompt() throws Exception {
+    void recallStartUsesOnlyTheSessionBoundDirectiveAndProjectsAnOpaqueCompleteBatch() throws Exception {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());
         VerifiedRecallPromptResponse response = new VerifiedRecallPromptResponse(
                 "ready",
-                "Frage stellen; Sollantwort noch nicht laden.",
+                "Alle Fragen stellen; Sollantworten noch nicht laden.",
                 LEARNER_ID,
                 "memory-public-id",
                 "Grundwissen",
@@ -1964,125 +2036,518 @@ class OpenAiDeCoachMcpContractTest {
                 0,
                 null,
                 2,
-                List.of(new VerifiedRecallPromptCard("card-public-id", "Was gilt?", "Formel")),
-                "card-public-id",
+                List.of(
+                        new VerifiedRecallPromptCard("card-public-id-1", "Was gilt?", "Formel"),
+                        new VerifiedRecallPromptCard("card-public-id-2", "Wie lautet die Umkehrung?", "Satz")),
+                "card-public-id-1",
                 "Was gilt?",
-                "Formel");
-        when(coachTools.startVerifiedRecall(eq(LEARNER_ID), eq("de"), any()))
+                "Formel",
+                10,
+                issuedAt);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10))
                 .thenReturn(response);
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.START_RECALL,
-                Map.of("goalId", "memory-public-id", "batchSize", 2));
+                Map.of());
 
+        OpenAiDeV1McpContractAdapter.RecallPromptResult prompt =
+                structured(result, OpenAiDeV1McpContractAdapter.RecallPromptResult.class);
         String json = objectMapper.writeValueAsString(result.structuredContent());
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.START_RECALL, result);
         String nativeJson = new JacksonMcpJsonMapperSupplier().get().writeValueAsString(result);
+        assertThat(prompt.cards()).hasSize(2);
+        assertThat(prompt.cards())
+                .extracting(OpenAiDeV1McpContractAdapter.RecallCard::prompt)
+                .containsExactly("Was gilt?", "Wie lautet die Umkehrung?");
+        assertThat(prompt.batchCapability()).isNotBlank();
         assertThat(nativeJson).doesNotContain(":null", LEARNER_ID, "skillpilotId", "expectedAnswer");
         assertThat(json)
-                .contains("memory-public-id", "card-public-id", "Was gilt?")
+                .contains("Was gilt?", "Wie lautet die Umkehrung?", "batchCapability")
                 .doesNotContain(":null")
-                .doesNotContain(LEARNER_ID, "skillpilotId", "expectedAnswer");
+                .doesNotContain(
+                        LEARNER_ID,
+                        "memory-public-id",
+                        "card-public-id-1",
+                        "card-public-id-2",
+                        "skillpilotId",
+                        "goalId",
+                        "cardId",
+                        "batchSize",
+                        "eligibleCards",
+                        "expectedAnswer");
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("extensions", Map.of())
+                        .doesNotContainKey("instruction"));
         verify(identityResolver, never()).requireWriteAccess(any());
+        verify(coachTools).startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10);
     }
 
     @Test
-    void activeLearnerFacingMemoryGoalAllowsAnswerLookupAndResultRecording() {
+    void capabilityBoundRecallFlowLoadsAllAnswersAndSavesOneAtomicOrderedReceipt() {
         UnifiedLearnerStateResponse state = memoryState("memory-public-id");
-        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());
+        Instant nextIssuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(5).toEpochMilli());
+        VerifiedRecallPromptResponse issued = new VerifiedRecallPromptResponse(
                 "ready",
-                "Nächste Frage stellen.",
+                "Beantworte beide Fragen.",
                 LEARNER_ID,
                 "memory-public-id",
                 "Grundwissen",
+                3,
+                0,
+                3,
+                2,
+                1,
+                null,
+                2,
+                List.of(
+                        new VerifiedRecallPromptCard("card-public-id-1", "Was gilt?", "Formel"),
+                        new VerifiedRecallPromptCard("card-public-id-2", "Wie lautet die Umkehrung?", "Satz")),
+                "card-public-id-1",
+                "Was gilt?",
+                "Formel",
+                10,
+                issuedAt);
+        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+                "ready",
+                "Nächsten vollständigen Batch stellen.",
+                LEARNER_ID,
+                "memory-public-id",
+                "Grundwissen",
+                3,
+                1,
                 2,
                 1,
                 1,
-                1,
-                0,
                 null,
                 1,
                 List.of(new VerifiedRecallPromptCard("card-next", "Was kommt als Nächstes?", "Formel")),
                 "card-next",
                 "Was kommt als Nächstes?",
-                "Formel");
+                "Formel",
+                10,
+                nextIssuedAt);
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
-        when(coachTools.getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any()))
-                .thenReturn(new VerifiedRecallAnswerResponse(
-                        "Vergleichen.",
+        when(coachTools.startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10))
+                .thenReturn(issued);
+        when(coachTools.getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchAnswerResponse(
+                        "Beide Antworten vergleichen.",
                         "memory-public-id",
-                        "card-public-id",
-                        "Was gilt?",
-                        "Die Sollantwort.",
-                        "Formel"));
-        when(coachTools.recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any()))
-                .thenReturn(new VerifiedRecallResultResponse(
-                        "card-public-id",
-                        true,
+                        List.of(
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-1", "Was gilt?", "Die Sollantwort.", "Formel"),
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-2", "Wie lautet die Umkehrung?", "Die Umkehrung.", "Satz"))));
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(
+                        List.of(
+                                new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                                new VerifiedRecallBatchSavedResult("card-public-id-2", false)),
                         1,
                         1,
                         false,
                         null,
-                        "Gespeichert.",
-                        next));
+                        next,
+                        state));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
 
-        McpSchema.CallToolResult answer = call(
-                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWER,
-                Map.of("goalId", "memory-public-id", "cardId", "card-public-id"));
+        McpSchema.CallToolResult start = call(OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+        String batchCapability =
+                structured(start, OpenAiDeV1McpContractAdapter.RecallPromptResult.class).batchCapability();
+        McpSchema.CallToolResult answers = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", batchCapability));
+        OpenAiDeV1McpContractAdapter.RecallAnswersResult answerPayload =
+                structured(answers, OpenAiDeV1McpContractAdapter.RecallAnswersResult.class);
         McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT,
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
                 Map.of(
-                        "goalId", "memory-public-id",
-                        "cardId", "card-public-id",
-                        "passed", true));
+                        "gradingCapability", answerPayload.gradingCapability(),
+                        "assessments", List.of(
+                                Map.of("passed", true, "feedback", "Vollständig richtig."),
+                                Map.of("passed", false, "feedback", "Die Richtung wurde vertauscht."))));
+        OpenAiDeV1McpContractAdapter.RecallResultsReceipt receipt =
+                structured(result, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
 
-        assertThat(answer.isError()).isFalse();
+        assertThat(answers.isError()).isFalse();
         assertThat(result.isError()).isFalse();
-        assertThat(structured(answer, OpenAiDeV1McpContractAdapter.RecallAnswerResult.class).expectedAnswer())
-                .isEqualTo("Die Sollantwort.");
-        assertThat(structured(result, OpenAiDeV1McpContractAdapter.RecallResult.class).savedCardId())
-                .isEqualTo("card-public-id");
-        verify(coachTools).getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any());
-        verify(coachTools).recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any());
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, answers);
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, result);
+        assertThat(answerPayload.answers())
+                .extracting(OpenAiDeV1McpContractAdapter.RecallAnswerCard::expectedAnswer)
+                .containsExactly("Die Sollantwort.", "Die Umkehrung.");
+        assertThat(answerPayload.gradingCapability()).isNotBlank().isNotEqualTo(batchCapability);
+        assertThat(receipt.savedAssessments()).isEqualTo(2);
+        assertThat(receipt.passedAssessments()).isEqualTo(1);
+        assertThat(receipt.next()).isNotNull();
+        assertThat(receipt.next().cards())
+                .extracting(OpenAiDeV1McpContractAdapter.RecallCard::prompt)
+                .containsExactly("Was kommt als Nächstes?");
+        assertThat(receipt.next().batchCapability()).isNotBlank();
+        assertThat(receipt.continuation())
+                .extracting(
+                        OpenAiDeV1McpContractAdapter.RecallContinuation::action,
+                        OpenAiDeV1McpContractAdapter.RecallContinuation::consentRequired)
+                .containsExactly("askNextRecallBatch", false);
+        assertThat(receipt.context()).isNull();
+        assertThat(answers.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .doesNotContainKeys("instruction", "goalId", "cardId"));
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> {
+                    assertThat(content)
+                            .containsEntry("extensions", Map.of())
+                            .doesNotContainKeys(
+                                    "instruction",
+                                    "context",
+                                    "savedCardId",
+                                    "goalId",
+                                    "cardId",
+                                    "expectedStateVersion",
+                                    "clientRequestId");
+                    assertThat(content.get("next"))
+                            .isInstanceOfSatisfying(Map.class, nextContent -> assertThat(nextContent)
+                                    .doesNotContainKeys(
+                                            "instruction",
+                                            "goalId",
+                                            "cardId",
+                                            "expectedStateVersion",
+                                            "clientRequestId"));
+                    assertThat(content.get("continuation"))
+                            .isInstanceOfSatisfying(Map.class, continuation -> assertThat(continuation)
+                                    .containsKey("instruction"));
+                });
+
+        ArgumentCaptor<VerifiedRecallBatchAnswerRequest> answerRequest =
+                ArgumentCaptor.forClass(VerifiedRecallBatchAnswerRequest.class);
+        verify(coachTools).getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), answerRequest.capture());
+        assertThat(answerRequest.getValue().goalId()).isEqualTo("memory-public-id");
+        assertThat(answerRequest.getValue().configuredBatchSize()).isEqualTo(10);
+        assertThat(answerRequest.getValue().cardIds())
+                .containsExactly("card-public-id-1", "card-public-id-2");
+        assertThat(answerRequest.getValue().issuedAt()).isEqualTo(issuedAt);
+        ArgumentCaptor<VerifiedRecallBatchResultRequest> resultRequest =
+                ArgumentCaptor.forClass(VerifiedRecallBatchResultRequest.class);
+        verify(coachTools).recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), resultRequest.capture());
+        assertThat(resultRequest.getValue().goalId()).isEqualTo("memory-public-id");
+        assertThat(resultRequest.getValue().configuredBatchSize()).isEqualTo(10);
+        assertThat(resultRequest.getValue().cardIds())
+                .containsExactly("card-public-id-1", "card-public-id-2");
+        assertThat(resultRequest.getValue().issuedAt()).isEqualTo(issuedAt);
+        assertThat(resultRequest.getValue().results())
+                .extracting(resultEntry -> resultEntry.cardId() + ":" + resultEntry.passed())
+                .containsExactly("card-public-id-1:true", "card-public-id-2:false");
     }
 
     @Test
-    void allRecallOperationsMapTheSharedActiveGoalGuardToReloadableConflict() {
-        ResponseStatusException conflict =
-                new ResponseStatusException(HttpStatus.CONFLICT, "active memory goal changed");
-        when(coachTools.startVerifiedRecall(eq(LEARNER_ID), eq("de"), any()))
-                .thenThrow(conflict);
-        when(coachTools.getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any()))
-                .thenThrow(conflict);
-        when(coachTools.recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any()))
-                .thenThrow(conflict);
+    void completedRecallBatchReturnsSuccessorContextInsteadOfAnotherBatch() {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(
+                        List.of(
+                                new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                                new VerifiedRecallBatchSavedResult("card-public-id-2", true)),
+                        2,
+                        0,
+                        true,
+                        "memory-public-id",
+                        null,
+                        state));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
 
-        McpSchema.CallToolResult start = call(
-                OpenAiDeV1McpContractAdapter.START_RECALL,
-                Map.of("goalId", "known-but-not-active-memory-id"));
-        McpSchema.CallToolResult answer = call(
-                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWER,
-                Map.of("goalId", "known-but-not-active-memory-id", "cardId", "foreign-card-id"));
         McpSchema.CallToolResult result = call(
-                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT,
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
                 Map.of(
-                        "goalId", "known-but-not-active-memory-id",
-                        "cardId", "foreign-card-id",
-                        "passed", true));
+                        "gradingCapability", gradingCapability,
+                        "assessments", twoCardAssessments(true, true)));
+        OpenAiDeV1McpContractAdapter.RecallResultsReceipt receipt =
+                structured(result, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
 
-        assertThat(List.of(start, answer, result))
-                .allSatisfy(rejected -> {
-                    assertThat(rejected.isError()).isTrue();
-                    assertThat(rejected.structuredContent()).isInstanceOfSatisfying(
-                            Map.class,
-                            content -> assertThat(content)
-                                    .containsEntry("status", "conflict")
-                                    .containsEntry("stateChanged", false)
-                                    .containsEntry("reloadContextAtMostOnce", true));
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, result);
+        assertThat(receipt.next()).isNull();
+        assertThat(receipt.context()).isNotNull();
+        assertThat(receipt.context().instruction()).isNull();
+        assertThat(receipt.context().requiredAction()).isNull();
+        assertThat(receipt.continuation().action()).isEqualTo("chooseMemoryMode");
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> {
+                    assertThat(content)
+                            .containsKey("context")
+                            .doesNotContainKey("next");
+                    assertThat(content.get("context"))
+                            .isInstanceOfSatisfying(Map.class, context -> assertThat(context)
+                                    .doesNotContainKeys("instruction", "requiredAction"));
                 });
-        verify(coachTools).startVerifiedRecall(eq(LEARNER_ID), eq("de"), any());
-        verify(coachTools).getVerifiedRecallAnswer(eq(LEARNER_ID), eq("de"), any());
-        verify(coachTools).recordVerifiedRecallResult(eq(LEARNER_ID), eq("de"), any());
+    }
+
+    @Test
+    void recallCapabilitiesRejectManipulationAndTruncatedAssessmentsBeforeAnyWrite() {
+        UnifiedLearnerStateResponse state = memoryState("memory-public-id");
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());
+        VerifiedRecallPromptResponse issued = new VerifiedRecallPromptResponse(
+                "ready",
+                "Beantworte beide Fragen.",
+                LEARNER_ID,
+                "memory-public-id",
+                "Grundwissen",
+                2,
+                0,
+                2,
+                2,
+                0,
+                null,
+                2,
+                List.of(
+                        new VerifiedRecallPromptCard("card-public-id-1", "Frage eins?", "Formel"),
+                        new VerifiedRecallPromptCard("card-public-id-2", "Frage zwei?", "Satz")),
+                "card-public-id-1",
+                "Frage eins?",
+                "Formel",
+                10,
+                issuedAt);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10))
+                .thenReturn(issued);
+        when(coachTools.getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchAnswerResponse(
+                        "Vergleichen.",
+                        "memory-public-id",
+                        List.of(
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-1", "Frage eins?", "Antwort eins.", "Formel"),
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-2", "Frage zwei?", "Antwort zwei.", "Satz"))));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
+
+        McpSchema.CallToolResult start = call(OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+        String batchCapability =
+                structured(start, OpenAiDeV1McpContractAdapter.RecallPromptResult.class).batchCapability();
+        int manipulatedIndex = batchCapability.length() / 2;
+        char originalCapabilityCharacter = batchCapability.charAt(manipulatedIndex);
+        String manipulatedCapability = batchCapability.substring(0, manipulatedIndex)
+                + (originalCapabilityCharacter == 'A' ? 'B' : 'A')
+                + batchCapability.substring(manipulatedIndex + 1);
+        McpSchema.CallToolResult rejectedCapability = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", manipulatedCapability));
+        McpSchema.CallToolResult answers = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", batchCapability));
+        String gradingCapability =
+                structured(answers, OpenAiDeV1McpContractAdapter.RecallAnswersResult.class).gradingCapability();
+        McpSchema.CallToolResult rejectedTruncation = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", List.of(Map.of("passed", true))));
+
+        assertThat(rejectedCapability.isError()).isTrue();
+        assertThat(rejectedCapability.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("code", "INVALID_INPUT"));
+        assertThat(rejectedTruncation.isError()).isTrue();
+        assertThat(rejectedTruncation.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("code", "INVALID_INPUT"));
+        assertThat(rejectedCapability.content().toString())
+                .doesNotContain(batchCapability, manipulatedCapability, LEARNING_SESSION_ID);
+        assertThat(rejectedTruncation.content().toString())
+                .doesNotContain(gradingCapability, LEARNING_SESSION_ID);
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+    }
+
+    @Test
+    void recallCapabilitiesAreBoundToTheIssuingLearningSession() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        when(identityResolver.resolveSkillpilotId(any(), eq(OTHER_LEARNING_SESSION_ID)))
+                .thenReturn(LEARNER_ID);
+
+        McpSchema.CallToolResult foreignBatch = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, OTHER_LEARNING_SESSION_ID,
+                        "batchCapability", batchCapability));
+        McpSchema.CallToolResult foreignGrading = callWithoutLearningSession(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, OTHER_LEARNING_SESSION_ID,
+                        "gradingCapability", gradingCapability,
+                        "assessments", twoCardAssessments(true, false)));
+
+        assertInvalidRecallCapability(foreignBatch, batchCapability);
+        assertInvalidRecallCapability(foreignGrading, gradingCapability);
+        verify(coachTools).getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
+    }
+
+    @Test
+    void recallCapabilitiesCannotBeUsedForTheOtherCapabilityStage() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+
+        McpSchema.CallToolResult gradingAsBatch = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", gradingCapability));
+        McpSchema.CallToolResult batchAsGrading = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", batchCapability,
+                        "assessments", twoCardAssessments(true, false)));
+
+        assertInvalidRecallCapability(gradingAsBatch, gradingCapability);
+        assertInvalidRecallCapability(batchAsGrading, batchCapability);
+        verify(coachTools).getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
+    }
+
+    @Test
+    void staleRecallCapabilitiesFailClosedBeforeTheirBackendOperations() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(1), 1L))
+                .when(sessionCoordinator)
+                .read(any(), any());
+
+        McpSchema.CallToolResult staleBatch = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", batchCapability));
+        McpSchema.CallToolResult staleGrading = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", twoCardAssessments(true, false)));
+
+        assertStaleRecallCapability(staleBatch, batchCapability);
+        assertStaleRecallCapability(staleGrading, gradingCapability);
+        verify(coachTools).getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any());
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+        verify(sessionCoordinator).write(
+                eq(LEARNING_SESSION_ID),
+                eq(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS),
+                eq(0L),
+                any(),
+                any(),
+                any());
+    }
+
+    @Test
+    void recallResultRetriesDeriveOneStableIdentityFromTheGradingCapability() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        McpSchema.CallToolResult coordinatorReceipt = McpSchema.CallToolResult.builder()
+                .isError(false)
+                .addTextContent("stored")
+                .structuredContent(Map.of("status", "stored"))
+                .build();
+        org.mockito.Mockito.doReturn(coordinatorReceipt)
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
+        List<Map<String, Object>> originalAssessments = twoCardAssessments(true, false);
+        List<Map<String, Object>> changedAssessments = twoCardAssessments(false, false);
+
+        McpSchema.CallToolResult first = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", originalAssessments));
+        McpSchema.CallToolResult exactRetry = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", originalAssessments));
+        McpSchema.CallToolResult changedRetry = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", changedAssessments));
+
+        assertThat(List.of(first, exactRetry, changedRetry))
+                .allSatisfy(result -> assertThat(result.isError()).isFalse());
+        ArgumentCaptor<Long> expectedStateVersion = ArgumentCaptor.forClass(Long.class);
+        ArgumentCaptor<String> requestId = ArgumentCaptor.forClass(String.class);
+        @SuppressWarnings("unchecked")
+        ArgumentCaptor<Map<String, Object>> arguments = ArgumentCaptor.forClass(Map.class);
+        verify(sessionCoordinator, times(3)).write(
+                eq(LEARNING_SESSION_ID),
+                eq(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS),
+                expectedStateVersion.capture(),
+                requestId.capture(),
+                arguments.capture(),
+                any());
+
+        String expectedRequestId = UUID.nameUUIDFromBytes(
+                        ("skillpilot-verified-recall-write-v1\0" + gradingCapability)
+                                .getBytes(StandardCharsets.UTF_8))
+                .toString();
+        assertThat(expectedStateVersion.getAllValues()).containsExactly(0L, 0L, 0L);
+        assertThat(requestId.getAllValues())
+                .containsExactly(expectedRequestId, expectedRequestId, expectedRequestId);
+        assertThat(arguments.getAllValues().get(0)).isEqualTo(arguments.getAllValues().get(1));
+        assertThat(arguments.getAllValues().get(2)).isNotEqualTo(arguments.getAllValues().get(0));
+        assertThat(arguments.getAllValues())
+                .allSatisfy(argument -> assertThat(argument)
+                        .doesNotContainKeys(
+                                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
+                                OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
+        assertThat(arguments.getAllValues().get(0)).containsEntry("assessments", originalAssessments);
+        assertThat(arguments.getAllValues().get(2)).containsEntry("assessments", changedAssessments);
+        verify(coachTools, never()).recordVerifiedRecallResultsBatch(any(), any(), any());
+    }
+
+    @Test
+    void recallAssessmentFeedbackIsSafelyTruncatedBeforeTheAtomicDomainWrite() {
+        String batchCapability = issueTwoCardRecallBatchCapability();
+        String gradingCapability = issueTwoCardRecallGradingCapability(batchCapability);
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchResultResponse(
+                        List.of(
+                                new VerifiedRecallBatchSavedResult("card-public-id-1", true),
+                                new VerifiedRecallBatchSavedResult("card-public-id-2", false)),
+                        1,
+                        1,
+                        false,
+                        null,
+                        null,
+                        memoryState("memory-public-id")));
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator)
+                .write(any(), any(), anyLong(), any(), any(), any());
+        String overlongFeedback = "x".repeat(799) + "😀" + "must-be-truncated";
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of(
+                        "gradingCapability", gradingCapability,
+                        "assessments", List.of(
+                                Map.of("passed", true, "feedback", overlongFeedback),
+                                Map.of("passed", false, "feedback", "Kurz."))));
+
+        assertThat(result.isError()).isFalse();
+        ArgumentCaptor<VerifiedRecallBatchResultRequest> request =
+                ArgumentCaptor.forClass(VerifiedRecallBatchResultRequest.class);
+        verify(coachTools).recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), request.capture());
+        String truncated = request.getValue().results().getFirst().feedback();
+        assertThat(truncated)
+                .hasSizeLessThanOrEqualTo(800)
+                .isEqualTo("x".repeat(799))
+                .doesNotContain("😀", "must-be-truncated");
+        assertThat(truncated.chars().noneMatch(codeUnit -> Character.isSurrogate((char) codeUnit))).isTrue();
     }
 
     @Test
@@ -2729,12 +3194,97 @@ class OpenAiDeCoachMcpContractTest {
         return arguments;
     }
 
+    private String issueTwoCardRecallBatchCapability() {
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(memoryState("memory-public-id"));
+        when(coachTools.startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10))
+                .thenReturn(new VerifiedRecallPromptResponse(
+                        "ready",
+                        "Beantworte beide Fragen.",
+                        LEARNER_ID,
+                        "memory-public-id",
+                        "Grundwissen",
+                        2,
+                        0,
+                        2,
+                        2,
+                        0,
+                        null,
+                        2,
+                        List.of(
+                                new VerifiedRecallPromptCard("card-public-id-1", "Frage eins?", "Formel"),
+                                new VerifiedRecallPromptCard("card-public-id-2", "Frage zwei?", "Satz")),
+                        "card-public-id-1",
+                        "Frage eins?",
+                        "Formel",
+                        10,
+                        issuedAt));
+
+        McpSchema.CallToolResult start = call(OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+
+        assertThat(start.isError()).isFalse();
+        return structured(start, OpenAiDeV1McpContractAdapter.RecallPromptResult.class).batchCapability();
+    }
+
+    private String issueTwoCardRecallGradingCapability(String batchCapability) {
+        when(coachTools.getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any()))
+                .thenReturn(new VerifiedRecallBatchAnswerResponse(
+                        "Vergleiche beide Antworten.",
+                        "memory-public-id",
+                        List.of(
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-1", "Frage eins?", "Antwort eins.", "Formel"),
+                                new VerifiedRecallBatchAnswerCard(
+                                        "card-public-id-2", "Frage zwei?", "Antwort zwei.", "Satz"))));
+
+        McpSchema.CallToolResult answers = call(
+                OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                Map.of("batchCapability", batchCapability));
+
+        assertThat(answers.isError()).isFalse();
+        return structured(answers, OpenAiDeV1McpContractAdapter.RecallAnswersResult.class)
+                .gradingCapability();
+    }
+
+    private static List<Map<String, Object>> twoCardAssessments(
+            boolean firstPassed,
+            boolean secondPassed) {
+        return List.of(
+                Map.<String, Object>of("passed", firstPassed, "feedback", "Bewertung eins."),
+                Map.<String, Object>of("passed", secondPassed, "feedback", "Bewertung zwei."));
+    }
+
+    private void assertInvalidRecallCapability(
+            McpSchema.CallToolResult result,
+            String capability) {
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("code", "INVALID_INPUT"));
+        assertThat(result.content().toString())
+                .doesNotContain(capability, LEARNING_SESSION_ID, OTHER_LEARNING_SESSION_ID);
+    }
+
+    private void assertStaleRecallCapability(
+            McpSchema.CallToolResult result,
+            String capability) {
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent())
+                .isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                        .containsEntry("code", "STATE_VERSION_CONFLICT")
+                        .containsEntry("status", "conflict")
+                        .containsEntry("reloadContextAtMostOnce", true));
+        assertThat(result.content().toString())
+                .doesNotContain(capability, LEARNING_SESSION_ID, OTHER_LEARNING_SESSION_ID);
+    }
+
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {
         Map<String, Object> requestArguments = new java.util.LinkedHashMap<>(arguments);
         requestArguments.put(
                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                 LEARNING_SESSION_ID);
-        if (Boolean.FALSE.equals(spec(name).tool().annotations().readOnlyHint())) {
+        if (Boolean.FALSE.equals(spec(name).tool().annotations().readOnlyHint())
+                && !OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS.equals(name)) {
             requestArguments.putIfAbsent(
                     OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION,
                     0L);

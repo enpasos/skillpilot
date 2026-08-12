@@ -98,7 +98,7 @@ Normative Quellen der späteren Visible-Session-Variante:
 | ungewöhnliche, aber gleichwertige Lösungswege voll anerkennen; explizite Anforderungen einhalten | Server-Instruktionen, Chat-Policy und Exam-Evaluation-Instruktion | Skill-Referenz `coaching-policy.md` und aktuelle Exam-Instruktion | Prüfungsgrundlage wird erst für das aktive freigegebene Exam geliefert |
 | Mastery nur nach zwei unabhängigen Checks oder echtem mehrschrittigem Transfer; alle Zielaspekte prüfen | Server-Instruktionen, Chat-Policy und Mastery-Toolbeschreibung | Skill, Skill-Referenz und Mastery-Toolbeschreibung | Coach-Mastery hat keinen frei wählbaren Wert und speichert ausschließlich `1.0` für das aktive atomische Nicht-SRS-Ziel |
 | Cluster und Memorierungs-/SRS-Ziele niemals manuell meistern | Chat-Policy und Mastery-Toolbeschreibung | Skill-Referenz und Mastery-Toolbeschreibung | Mastery-Handler weist Cluster und Memory/SRS ab; Recall speichert Abschluss selbst |
-| Verified Recall: ganzer Batch, Sollantwort erst nach Antwort, jedes Ergebnis speichern, erst dann nächster Batch | Recall-Policy und die drei Recall-Toolbeschreibungen/-Ergebnisse | Skill-Ablauf sowie die drei Recall-Toolbeschreibungen und -Ergebnisse | alle drei Operationen verlangen das aktuelle sichtbare aktive atomische Memory-/SRS-Ziel; Karte und SRS-Typ werden zusätzlich backendseitig geprüft; ein vollständiger Evidence-Receipt bleibt eine spätere Härtung |
+| Verified Recall: vollständiger serverseitiger Batch, alle Sollantworten erst nach vollständiger Lernendenantwort, ein atomarer Ergebnis-Write und sofortige Fortsetzung | kurze Recall-Policy und die drei Batch-Toolbeschreibungen/-Ergebnisse | minimaler Skill-Ablauf mit `start_skillpilot_verified_recall`, `get_skillpilot_verified_recall_answers` und `record_skillpilot_verified_recall_results` | Start bindet aktives Memory-/SRS-Ziel, exakte Menge und Reihenfolge in `batchCapability`; Answer-Release erzeugt `gradingCapability`; der Write verlangt exakt eine geordnete Bewertung je Karte, leitet State und Idempotenz aus der Capability ab und liefert genau einen nächsten vollständigen Batch oder den frischen Folgezustand |
 | Prüfung: Aufgabe wortgetreu, keine Hinweise oder Rückfragen, Lösung erst nach vollständiger Abgabe | Exam-Policy, Context-Instruktion und Evaluationstool | Skill, Skill-Referenz, aktuelle Exam-Instruktion und Evaluationstool | Lösung/Raster fehlen im normalen Context und werden nur für das aktive freigegebene Exam ausgeliefert |
 | Rasterpunktweise bewerten; nur sichtbare Leistung; gleichwertige Wege; Teilpunkte und konkrete Abzüge | Exam-Policy und dynamische Evaluation-Instruktion | Skill-Referenz und dynamische Evaluation-Instruktion | Scoring ist strukturiert; die fachliche Auswertung bleibt Aufgabe des Provider-Modells |
 | Web-first Einstieg ohne OAuth-zu-Lernenden-Kopplung | First-Party-WebGUI-Launch plus sessiongebundener Kontextabruf; keine Modellwerkzeuge für permanente ID oder Level-2-Konfiguration | kurze Start- und Sessionregel im Skill | OAuth autorisiert nur die feste App; permanente ID, Providerhinweis und Level 2 bleiben im WebGUI; `Lernen starten` erzeugt eine frische Session und einen neuen Chat; ohne Session nur fester WebGUI-Hinweis, bei Sessionfehler nur server-owned Instruktion und `startUrl`; Kontextabruf zu Beginn jedes Learner-Turns, danach im selben Assistant-Turn der vollständige Nachfolgerzustand einer erfolgreichen Mutation |
@@ -137,8 +137,11 @@ Assistant-Turns autoritativ und wird nicht redundant neu geladen.
 ## Verbleibende modellseitige Grenzen
 
 In der ersten chat-first Version kann das Backend nicht kryptografisch beweisen,
-dass vor dem Abruf einer Recall-Sollantwort tatsächlich eine Lernendenantwort
-oder vor der Exam-Evaluation eine vollständige Chat-Abgabe vorlag. Ebenso kann
+dass vor dem einmaligen Abruf der Recall-Sollantworten tatsächlich eine
+vollständige Lernendenantwort oder vor der Exam-Evaluation eine vollständige
+Chat-Abgabe vorlag. Es erzwingt aber serverseitig die exakte Batchmenge,
+Reihenfolge, einmalige Antwortfreigabe und atomare vollständige Speicherung;
+das Modell führt keine technische Schleife pro Karte aus. Ebenso kann
 es die fachliche Qualität zweier Mastery-Checks nicht aus einem reinen
 Abschlussaufruf ableiten. Deshalb stehen diese Regeln in jedem relevanten
 frischen Policy-Paket und Toolergebnis.

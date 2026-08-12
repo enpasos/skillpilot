@@ -22,6 +22,10 @@ line. This version has not been published yet.
   active V1 model contract
 - policy revision `3` removes the unpublished revision-2 provider-side start
   contract, including its tools, resources, runtime services, and widget source
+- policy revision `4` replaces per-card Verified Recall orchestration with one
+  server-sized question batch, one complete answer release, and one atomic
+  result write; SkillPilot owns the exact batch, state, retry identity, and
+  continuation while the model performs only presentation and semantic grading
 - without a current prepared start message, the coach gives only the localized
   `https://skillpilot.com/` start instruction and performs no SkillPilot call
 - `get_skillpilot_context` establishes fresh state at the start of each learner

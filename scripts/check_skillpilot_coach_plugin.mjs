@@ -100,6 +100,7 @@ const releaseLine = readJson(resolve(pluginRoot, "release/line.json"));
 const lifecycle = readJson(resolve(pluginRoot, "release/lifecycle.json"));
 const skill = read(resolve(skillRoot, "SKILL.md"));
 const policy = read(resolve(skillRoot, "references/coaching-policy.md"));
+const agentsGuide = read(resolve(repositoryRoot, "AGENTS.md"));
 const learningCoachDe = read(resolve(
   repositoryRoot,
   "ai/openai custom gpt/knowledge_docs/lerncoach.de.md",
@@ -561,6 +562,84 @@ assert.ok(
   "Could not isolate the V1 tool catalog.",
 );
 const modelToolCatalog = mcpContract.slice(toolCatalogStart, toolCatalogEnd);
+for (const activeRecallTool of [
+  "start_skillpilot_verified_recall",
+  "get_skillpilot_verified_recall_answers",
+  "record_skillpilot_verified_recall_results",
+]) {
+  assert.equal(
+    mcpContract.includes(`\"${activeRecallTool}\"`),
+    true,
+    `The V1 adapter must publish ${activeRecallTool}.`,
+  );
+  assert.equal(
+    combinedSkill.includes(activeRecallTool),
+    true,
+    `The V1 skill must document ${activeRecallTool}.`,
+  );
+}
+for (const retiredRecallTool of [
+  "get_skillpilot_verified_recall_answer",
+  "record_skillpilot_verified_recall_result",
+]) {
+  assert.doesNotMatch(
+    mcpContract,
+    new RegExp(`\"${retiredRecallTool}\"`, "u"),
+    `The singular per-card V1 tool ${retiredRecallTool} must stay retired.`,
+  );
+  assert.doesNotMatch(
+    combinedSkill,
+    new RegExp("`" + retiredRecallTool + "`", "u"),
+    `The V1 skill must not prescribe retired per-card tool ${retiredRecallTool}.`,
+  );
+}
+const recallStartCatalogStart = modelToolCatalog.indexOf("START_RECALL,");
+const recallAnswersCatalogStart = modelToolCatalog.indexOf("GET_RECALL_ANSWERS,");
+const recallResultsCatalogStart = modelToolCatalog.indexOf("RECORD_RECALL_RESULTS,");
+const examCatalogStart = modelToolCatalog.indexOf("GET_EXAM_EVALUATION,");
+assert.ok(
+  recallStartCatalogStart >= 0
+    && recallAnswersCatalogStart > recallStartCatalogStart
+    && recallResultsCatalogStart > recallAnswersCatalogStart
+    && examCatalogStart > recallResultsCatalogStart,
+  "Could not isolate the three batch-oriented Verified Recall tools.",
+);
+const recallStartCatalog = modelToolCatalog.slice(
+  recallStartCatalogStart,
+  recallAnswersCatalogStart,
+);
+const recallAnswersCatalog = modelToolCatalog.slice(
+  recallAnswersCatalogStart,
+  recallResultsCatalogStart,
+);
+const recallResultsCatalog = modelToolCatalog.slice(
+  recallResultsCatalogStart,
+  examCatalogStart,
+);
+assert.doesNotMatch(
+  recallStartCatalog,
+  /"goalId"|"batchSize"/u,
+  "Recall start must bind the active goal and exact batch size server-side.",
+);
+assert.match(recallAnswersCatalog, /RECALL_BATCH_CAPABILITY/u);
+assert.doesNotMatch(recallAnswersCatalog, /"goalId"|"cardId"/u);
+assert.match(recallResultsCatalog, /RECALL_GRADING_CAPABILITY/u);
+assert.match(recallResultsCatalog, /"assessments"/u);
+assert.doesNotMatch(
+  recallResultsCatalog,
+  /EXPECTED_STATE_VERSION|CLIENT_REQUEST_ID|"goalId"|"cardId"/u,
+  "The capability-bound atomic Recall write must not ask the model for state, retry, goal, or card identifiers.",
+);
+assert.match(
+  mcpContract,
+  /withSessionSchema\(\s*inputSchema,\s*writeScope && !RECORD_RECALL_RESULTS\.equals\(name\)\)/u,
+  "The Recall batch write schema must omit model-supplied state and retry fields.",
+);
+assert.match(
+  mcpContract,
+  /serverManagedRecallWrite[\s\S]+recallWriteCapability\.stateVersion\(\)[\s\S]+recallWriteRequestId\(arguments\)/u,
+  "The Recall batch write must derive state and retry identity from its server capability.",
+);
 for (const retiredTool of [
   "open_skillpilot_start",
   "issue_skillpilot_start_capability",
@@ -640,6 +719,45 @@ assertBehaviorFragments(
     /Cockpit URL\s+only after an actual practice-tool error/u,
   ],
   "memory-card practice UI boundary",
+);
+
+assertBehaviorFragments(
+  combinedSkill,
+  [
+    /backend orchestration owns IDs, count, order, completeness, state and\s+idempotency/iu,
+    /start_skillpilot_verified_recall\(learningSessionId\)/u,
+    /get_skillpilot_verified_recall_answers\(learningSessionId, batchCapability\)/u,
+    /record_skillpilot_verified_recall_results\(learningSessionId,[\s\S]+gradingCapability, assessments\)/u,
+    /neither a goal nor a batch size/iu,
+    /exactly one ordered[\s\S]+assessment for every returned card/iu,
+    /rejects an incomplete, duplicate or stale batch[\s\S]+atomically/iu,
+    /Follow its full successor context and continuation\s+immediately/iu,
+    /do\s+not\s+reload context in that learner turn/iu,
+  ],
+  "server-owned atomic Verified Recall workflow",
+);
+assertBehaviorFragments(
+  agentsGuide,
+  [
+    /Deterministic orchestration boundary/u,
+    /backend owns technical workflow[\s\S]+opaque IDs, counts, order, completeness, state transitions,[\s\S]+idempotency/iu,
+    /model owns natural\s+language, didactic dialogue and semantic comparison/iu,
+    /Never encode a deterministic technical loop\s+in a prompt/iu,
+  ],
+  "repository-wide backend/model orchestration boundary",
+);
+const recallInstructionMatch = mcpContract.match(
+  /For Verified Recall,([\s\S]*?)\n\n\s+Change the Level-3 learning focus/u,
+);
+assert.ok(recallInstructionMatch, "Missing concise server-side Recall invariant.");
+assert.ok(
+  compactWhitespace(recallInstructionMatch[1]).split(" ").length <= 120,
+  "The server-side Recall invariant must stay concise; deterministic orchestration belongs in backend code.",
+);
+assert.doesNotMatch(
+  recallInstructionMatch[1],
+  /for each card[\s\S]+call/iu,
+  "Server instructions must not prescribe a technical per-card tool loop.",
 );
 
 assertBehaviorFragments(

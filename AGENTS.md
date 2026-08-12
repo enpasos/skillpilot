@@ -460,6 +460,25 @@ Interpretation:
   memory-goal mastery rule. Completing today's due cards must not be described
   as mastering or completing the learning goal. The cockpit remains the
   fallback when the component cannot be used.
+* Verified Recall uses one server-sized complete batch, never a model-chosen
+  subset. The backend owns the card IDs, exact count and order, completeness
+  checks, answer-release boundary, atomic persistence, state/version checks,
+  idempotency and the continuation after the batch. The model only presents
+  every returned prompt, waits for the complete learner submission, compares
+  its meaning with the complete answer set, and submits one assessment per
+  returned card in one atomic batch write. It must not choose a `batchSize`,
+  fetch or save cards in a technical per-card loop, shorten the returned batch,
+  or pause after persistence when the server supplies a continuation. The V1
+  operations are `start_skillpilot_verified_recall(learningSessionId)`,
+  `get_skillpilot_verified_recall_answers(learningSessionId,
+  batchCapability)` and `record_skillpilot_verified_recall_results(
+  learningSessionId, gradingCapability, assessments)`. The start result carries
+  `batchCapability` and the complete ordered cards; the answer result carries
+  `gradingCapability` and the complete ordered answers. `assessments` contains
+  exactly one ordered `{passed, feedback}` entry per returned card. This
+  capability-bound write derives its expected state version and idempotency key
+  server-side; the model supplies neither `expectedStateVersion` nor
+  `clientRequestId`.
 * Give every interactive memory-card view its own explicitly bound, reviewed,
   content-addressed MCP Apps UI resource. Do not attach generic MCP
   `ImageContent` to ordinary memory-card tools, expose private card answers in
@@ -1081,7 +1100,9 @@ Provider-facing contracts must use derived temporary context instead:
   return `SESSION_REQUIRED`, and unavailable pinned workflow or curriculum
   revisions return `SESSION_VERSION_UNAVAILABLE`. None is an OAuth failure.
 - At the start of every learner turn, `get_skillpilot_context` must succeed in
-  that assistant turn. After one successful state-changing call, its complete
+  that assistant turn. Call it only once in that learner turn: after a
+  successful context read, do not poll it again between steps of one
+  server-owned workflow; after one successful state-changing call, its complete
   successor result is authoritative for the remainder of the same assistant
   turn and must not be redundantly reloaded.
 - The OpenAI V1 model contract has no sessionless start tool, provider-side
@@ -1183,6 +1204,18 @@ provider policy and product review explicitly permit it.
 - **Backend authority:** curriculum, personalization, scope, frontier, active goal,
   allowed transitions, Mastery, Verified Recall, and exam evaluation remain
   backend decisions.
+- **Deterministic orchestration boundary:** the backend owns technical workflow
+  orchestration: opaque IDs, counts, order, completeness, state transitions,
+  concurrency, idempotency and the exact next action. The model owns natural
+  language, didactic dialogue and semantic comparison of visible learner work
+  with backend-released criteria. Never encode a deterministic technical loop
+  in a prompt when one server operation can validate and execute it atomically.
+  For Verified Recall this means one server-sized full batch, one full answer
+  release after the learner submission and one atomic result write, followed
+  immediately by the server-provided continuation. The plugin checker must
+  reject singular per-card Recall tools, model-facing Recall goal/count inputs,
+  model-supplied state or retry fields on the capability-bound write, and a
+  server Recall instruction longer than the concise cross-tool invariant.
 - **Target OpenAI plugins:** maintain one public submission per contract major,
   not per language. V1 combines one neutral English coach-control skill with one
   directly submitted MCP server, stable tool names and descriptions, endpoint,
@@ -1190,8 +1223,10 @@ provider policy and product review explicitly permit it.
   learning session pins the interaction language; all learner-facing payloads
   arrive in that language and the model must use it exclusively. Local pilot
   packages may reference the registered connection through `.app.json`.
-- **Coach-skill boundary:** coaching role, dialogue, didactic scaffolding, tool
-  sequence, response format and bounded error behavior belong in the skill.
+- **Coach-skill boundary:** coaching role, dialogue, didactic scaffolding,
+  semantic evaluation, response format and bounded error behavior belong in the
+  skill. Deterministic multi-step tool sequencing belongs in the backend, not
+  in model instructions.
   MCP server instructions contain only short cross-tool invariants; per-tool
   conditions stay in tool descriptions; current-step instructions stay in fresh
   tool results. Authorization, state-transition and already implemented safety

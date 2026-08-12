@@ -108,8 +108,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final Set<String> MUTATING_TOOLS = Set.of(
             OpenAiDeV1McpContractAdapter.SET_SCOPE,
             OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
-            OpenAiDeV1McpContractAdapter.SET_MASTERY,
-            OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULT);
+            OpenAiDeV1McpContractAdapter.SET_MASTERY);
 
     @LocalServerPort
     private int port;
@@ -559,12 +558,45 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains(
                         OpenAiDeV1McpContractAdapter.GET_CONTEXT,
                         OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION,
-                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE)
+                        OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                        OpenAiDeV1McpContractAdapter.START_RECALL,
+                        OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
+                        OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS)
                 .doesNotContain(
                         "open_skillpilot_start",
                         "issue_skillpilot_start_capability",
                         "set_skillpilot_curriculum",
-                        "set_skillpilot_personalization");
+                        "set_skillpilot_personalization",
+                        "get_skillpilot_verified_recall_answer",
+                        "record_skillpilot_verified_recall_result");
+        JsonNode recallStartProperties = toolDescriptor(
+                        tools,
+                        OpenAiDeV1McpContractAdapter.START_RECALL)
+                .path("inputSchema")
+                .path("properties");
+        assertThat(recallStartProperties.size()).isEqualTo(1);
+        assertThat(recallStartProperties.has(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID)).isTrue();
+        JsonNode recallAnswersProperties = toolDescriptor(
+                        tools,
+                        OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS)
+                .path("inputSchema")
+                .path("properties");
+        assertThat(recallAnswersProperties.size()).isEqualTo(2);
+        assertThat(recallAnswersProperties.has("batchCapability")).isTrue();
+        assertThat(recallAnswersProperties.has(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID)).isTrue();
+        JsonNode recallResultsProperties = toolDescriptor(
+                        tools,
+                        OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS)
+                .path("inputSchema")
+                .path("properties");
+        assertThat(recallResultsProperties.size()).isEqualTo(3);
+        assertThat(recallResultsProperties.has("gradingCapability")).isTrue();
+        assertThat(recallResultsProperties.has("assessments")).isTrue();
+        assertThat(recallResultsProperties.has(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID)).isTrue();
+        assertThat(recallResultsProperties.has("goalId")).isFalse();
+        assertThat(recallResultsProperties.has("cardId")).isFalse();
+        assertThat(recallResultsProperties.has(OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)).isFalse();
+        assertThat(recallResultsProperties.has(OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID)).isFalse();
         JsonNode bootstrapTool = toolDescriptor(tools, OpenAiDeV1McpContractAdapter.GET_CONTEXT);
         assertThat(bootstrapTool.path("title").asText())
                 .isEqualTo("Start or continue the SkillPilot learning coach");

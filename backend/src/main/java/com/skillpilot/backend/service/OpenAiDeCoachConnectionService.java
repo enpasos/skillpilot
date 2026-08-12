@@ -67,6 +67,7 @@ public class OpenAiDeCoachConnectionService {
             "OpenAI Coach state changes are temporarily disabled.";
     private static final int MINIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS = 3_601;
     private static final int MAXIMUM_DIAGNOSTIC_SESSION_TTL_SECONDS = 86_400;
+    private static final int DEFAULT_VERIFIED_RECALL_BATCH_SIZE = 10;
     private static final String ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
     private static final String ABI26_LK_GOAL_ID = "68a262fc-43f4-5d23-af30-853870bfd45b";
 
@@ -113,7 +114,7 @@ public class OpenAiDeCoachConnectionService {
         learner = prepareLaunchState(skillpilotId, learner, launchRequest);
         IssuedLearningSession learningSession = issueLearningSession(
                 learner,
-                launchRequest.communicationLocale(),
+                launchRequest,
                 now,
                 learningSessionTtl);
 
@@ -208,7 +209,7 @@ public class OpenAiDeCoachConnectionService {
 
     private IssuedLearningSession issueLearningSession(
             Learner learner,
-            String communicationLocale,
+            NormalizedLaunch launch,
             Instant startedAt,
             Duration learningSessionTtl) {
         String learningSessionId = generateSecret("sps_");
@@ -227,7 +228,12 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setStateSchemaVersion(OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
         learningSession.setWorkflowVersion(properties.getWorkflowVersion());
         learningSession.setCurriculumRevision(curriculumRevisionProvider.currentRevision());
-        learningSession.setCommunicationLocale(communicationLocale);
+        learningSession.setCommunicationLocale(launch.communicationLocale());
+        learningSession.setVerifiedRecallBatchSize(switch (launch.type()) {
+            case CURRENT_UNIT -> DEFAULT_VERIFIED_RECALL_BATCH_SIZE;
+            case VERIFIED_RECALL -> launch.batchSize();
+            case ABI26_EXAM -> DEFAULT_VERIFIED_RECALL_BATCH_SIZE;
+        });
         learningSessionRepository.save(learningSession);
         return new IssuedLearningSession(learningSessionId, expiresAt);
     }
@@ -510,10 +516,8 @@ public class OpenAiDeCoachConnectionService {
                             : "Verwende SkillPilot Coach v1 und fahre fort.";
             case VERIFIED_RECALL ->
                     english
-                            ? "Use SkillPilot Coach v1 and start a strict recall check with "
-                                    + launch.batchSize() + " cards."
-                            : "Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit "
-                                    + launch.batchSize() + " Karten.";
+                            ? "Use SkillPilot Coach v1 and start the strict recall check."
+                            : "Verwende SkillPilot Coach v1 und starte die harte Kartenprüfung.";
             case ABI26_EXAM ->
                     english
                             ? "Use SkillPilot Coach v1 and start the mathematics Abitur exam ("

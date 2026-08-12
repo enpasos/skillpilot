@@ -58,6 +58,13 @@ public class OpenAiDeLearningSession {
     private String communicationLocale;
 
     /**
+     * Recall batch size pinned by the WebGUI launch or by the generic server
+     * default. The current active backend goal remains authoritative.
+     */
+    @Column(name = "verified_recall_batch_size", nullable = false)
+    private int verifiedRecallBatchSize;
+
+    /**
      * Hash of the successor session after an explicit cross-major migration.
      *
      * <p>The opaque learning-session handle is never persisted. Keeping only
@@ -146,6 +153,14 @@ public class OpenAiDeLearningSession {
 
     public void setCommunicationLocale(String communicationLocale) {
         this.communicationLocale = communicationLocale;
+    }
+
+    public int getVerifiedRecallBatchSize() {
+        return verifiedRecallBatchSize;
+    }
+
+    public void setVerifiedRecallBatchSize(int verifiedRecallBatchSize) {
+        this.verifiedRecallBatchSize = verifiedRecallBatchSize;
     }
 
     public String getMigratedToTokenHash() {

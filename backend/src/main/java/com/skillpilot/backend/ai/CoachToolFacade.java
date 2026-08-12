@@ -15,6 +15,10 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
@@ -255,6 +259,23 @@ public class CoachToolFacade {
         return learnerService.startVerifiedRecall(skillpilotId, language, request);
     }
 
+    public VerifiedRecallPromptResponse startVerifiedRecallBatch(
+            String skillpilotId,
+            String language,
+            String goalId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecallBatch(skillpilotId, language, goalId);
+    }
+
+    public VerifiedRecallPromptResponse startVerifiedRecallBatch(
+            String skillpilotId,
+            String language,
+            String goalId,
+            int batchSize) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecallBatch(skillpilotId, language, goalId, batchSize);
+    }
+
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             String skillpilotId,
             String language,
@@ -263,12 +284,28 @@ public class CoachToolFacade {
         return learnerService.getVerifiedRecallAnswer(skillpilotId, language, request);
     }
 
+    public VerifiedRecallBatchAnswerResponse getVerifiedRecallAnswersBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchAnswerRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getVerifiedRecallAnswersBatch(skillpilotId, language, request);
+    }
+
     public VerifiedRecallResultResponse recordVerifiedRecallResult(
             String skillpilotId,
             String language,
             VerifiedRecallResultRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
         return learnerService.recordVerifiedRecallResult(skillpilotId, language, request);
+    }
+
+    public VerifiedRecallBatchResultResponse recordVerifiedRecallResultsBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchResultRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.recordVerifiedRecallResultsBatch(skillpilotId, language, request);
     }
 
     /**
@@ -562,7 +599,9 @@ public class CoachToolFacade {
                 response.cards(),
                 response.cardId(),
                 response.prompt(),
-                response.category());
+                response.category(),
+                response.configuredBatchSize(),
+                response.issuedAt());
     }
 
     private VerifiedRecallResultResponse withoutSkillpilotId(VerifiedRecallResultResponse response) {

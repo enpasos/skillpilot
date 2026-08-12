@@ -81,6 +81,26 @@ class OpenAiDeMcpTelemetryTest {
     }
 
     @Test
+    void recognizesPluralRecallToolsAndBoundsRetiredSingularNamesAsUnknown() {
+        SimpleMeterRegistry registry = new SimpleMeterRegistry();
+        OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);
+
+        telemetry.record(OpenAiDeV1McpContractAdapter.START_RECALL, () -> result(false));
+        telemetry.record(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, () -> result(false));
+        telemetry.record(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, () -> result(false));
+        telemetry.record("get_skillpilot_verified_recall_answer", () -> result(false));
+        telemetry.record("record_skillpilot_verified_recall_result", () -> result(false));
+
+        assertThat(timer(registry, OpenAiDeV1McpContractAdapter.START_RECALL, "success", "OK").count())
+                .isEqualTo(1);
+        assertThat(timer(registry, OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, "success", "OK").count())
+                .isEqualTo(1);
+        assertThat(timer(registry, OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, "success", "OK").count())
+                .isEqualTo(1);
+        assertThat(timer(registry, "unknown", "success", "OK").count()).isEqualTo(2);
+    }
+
+    @Test
     void recordsUnexpectedExceptionsWithoutSwallowingThem() {
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         OpenAiDeMcpTelemetry telemetry = new OpenAiDeMcpTelemetry(registry);

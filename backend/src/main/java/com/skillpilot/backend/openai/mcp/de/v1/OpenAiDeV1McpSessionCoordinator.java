@@ -236,7 +236,9 @@ public class OpenAiDeV1McpSessionCoordinator {
                 session.getWorkflowVersion(),
                 session.getCurriculumRevision(),
                 OpenAiCoachLocale.normalize(session.getCommunicationLocale()),
-                Map.of());
+                Map.of(),
+                new OpenAiDeV1SessionMetadata.RecallDirective(
+                        session.getVerifiedRecallBatchSize()));
     }
 
     private McpSchema.CallToolResult withCurrentMetadata(

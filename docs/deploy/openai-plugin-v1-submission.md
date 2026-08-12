@@ -50,7 +50,7 @@ Draft unter `contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT/`.
 | MCP URL type | `Universal` |
 | MCP Server URL | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Authentication | OAuth 2.0 Authorization Code with PKCE S256 |
-| Lifecycle policy | `policyRevision=3` |
+| Lifecycle policy | `policyRevision=4` |
 
 Nach dem Eintragen wird **Scan Tools** ausgeführt. Der Scan muss den aktuellen
 Produktivkatalog, den neutralen `skillpilot-coach-v1`-Skill und genau zwei
@@ -147,7 +147,12 @@ kopiert.
   Vorder- und Rückseiten bleiben in Component-`_meta`; Blättern ist lokal. Nur
   die explizite Kartenbewertung ändert die Wiederholungsplanung. Normales
   Üben wird nicht als Mastery ausgegeben; Verified Recall bleibt ein eigener
-  Ablauf ohne Hilfen.
+  Ablauf ohne Hilfen. `start_skillpilot_verified_recall` liefert ohne
+  modellseitige Ziel- oder Batchgrößenwahl den vollständigen servergebundenen
+  Batch. Nach allen Lernendenantworten folgen genau ein
+  `get_skillpilot_verified_recall_answers` und genau ein atomarer
+  `record_skillpilot_verified_recall_results`; der Coach setzt die gelieferte
+  Fortsetzung sofort um.
 
 ### P6 – Prüfungsaufgabe ohne Hilfen auswerten
 
@@ -232,10 +237,10 @@ Zustandsmaschine.
 
 | Tools | `readOnlyHint` | Begründung |
 | --- | --- | --- |
-| `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `get_skillpilot_navigation`, `get_skillpilot_verified_recall_answer` | `true` | Lesen einen sessiongebundenen, allowlist-projizierten Zustand. Navigation bietet nur Fokus- oder Zieloptionen. |
+| `get_skillpilot_context`, `get_skillpilot_exam_evaluation`, `get_skillpilot_navigation`, `get_skillpilot_verified_recall_answers` | `true` | Lesen einen sessiongebundenen, allowlist-projizierten Zustand. Navigation bietet nur Fokus- oder Zieloptionen; Recall-Sollantworten werden capability-gebunden genau einmal für den vollständigen Batch freigegeben. |
 | `render_skillpilot_goal_visualization` | `true` | Liefert nur die freigegebene Bildprojektion an die explizit gebundene UI. |
 | `start_skillpilot_memory_practice`, `start_skillpilot_verified_recall` | `true` | Erzeugen eine begrenzte Übungs- oder Recall-Projektion; sie speichern noch kein Ergebnis. |
-| `record_skillpilot_verified_recall_result`, `review_skillpilot_memory_practice_card` | `false` | Speichern genau ein bestätigtes Recall- oder Kartenresultat. |
+| `record_skillpilot_verified_recall_results`, `review_skillpilot_memory_practice_card` | `false` | Der Recall-Write speichert den vollständigen capability-gebundenen Bewertungsbatch atomar; der app-only Review-Write speichert genau die explizite Bewertung einer angezeigten Übungskarte. |
 | `set_skillpilot_scope`, `set_skillpilot_active_goal` | `false` | Ändern nach ausdrücklichem Wunsch nur einen aktuellen Level-3-Fokus oder ein aktives Ziel aus den frisch erlaubten Optionen. |
 | `set_skillpilot_mastery` | `false` | Speichert ausschließlich evidenzbasierte Bewertung des bestätigten aktiven atomaren Ziels. |
 

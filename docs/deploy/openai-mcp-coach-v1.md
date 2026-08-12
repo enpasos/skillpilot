@@ -1037,7 +1037,9 @@ Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
    ausblenden;
 3. Erklärung, Aufgabe und fachlich alternative korrekte Lösung;
 4. Mastery-Update einschließlich Konfliktfall;
-5. Verified Recall mit Antwortfreigabe erst nach Lernendenantwort;
+5. Verified Recall mit exakt dem serverseitig gepinnten vollständigen Batch,
+   einmaliger Antwortfreigabe nach vollständiger Lernendenantwort, genau einem
+   atomaren Ergebnis-Write und unmittelbar umgesetzter Backendfortsetzung;
 6. Prüfung ohne lösungslenkende Nachfrage und Evaluation erst nach vollständiger
    sichtbarer Abgabe;
 7. Wiederaufnahme, Parallelchat, Retry, Widerruf und erneute Verbindung.
@@ -1049,9 +1051,13 @@ Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
   Lernendenzustand unter Learner-Lock anwenden und genau eine neue Session
   erzeugen. Das gilt unabhängig davon, ob die App bereits autorisiert ist;
   OAuth-Tokenausgabe darf daran weder beteiligt sein noch darauf warten;
-- Verified Recall: Ziel und Batchgröße müssen als typisierter Intent ankommen,
-  das aktivierte Ziel muss serverseitig als atomares Memory-/SRS-Ziel validiert
-  sein;
+- Verified Recall: Ziel und Batchgröße müssen als typisierter First-Party-Intent
+  ankommen, in der Lernsession serverseitig gepinnt sein und dürfen in den
+  modellseitigen Startargumenten nicht erneut gewählt werden. Das aktivierte
+  Ziel muss serverseitig als atomares Memory-/SRS-Ziel validiert sein. Der
+  Start liefert alle Karten und eine `batchCapability`, der einmalige
+  Sollantwortabruf eine `gradingCapability`; genau ein vollständiger Write
+  speichert alle Bewertungen atomar und liefert die Fortsetzung;
 - Abi 2026: Kursniveau und Prüfungsziel müssen typisiert gespeichert und auf
   die bekannten GK-/LK-Kampagnenziele, vorhandene `examData` und den passenden
   Kurs-Tag begrenzt sein;

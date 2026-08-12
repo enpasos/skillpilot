@@ -266,14 +266,32 @@ Cockpit request, or a server instruction.
 
 ### Verified Recall
 
-1. Start recall for the active goal using the supplied batch size, or 10.
-2. Show all returned cards as a numbered batch without expected answers.
-3. Wait for answers to every card.
-4. Then load each expected answer, compare by subject meaning, and accept
-   equivalent formulations.
-5. Immediately record each card. Set `passed=true` only for a correct answer
-   without help; otherwise record `false`.
-6. Store the whole batch before another batch.
+The backend owns all technical orchestration: opaque card and batch references,
+the exact number and order of cards, completeness, answer release, atomic
+persistence, state/version checks, idempotency, mastery and continuation. The
+model owns only learner-facing language and semantic comparison. It must never
+choose a batch size, shorten a returned batch, construct or reorder IDs, or run
+per-card read/write loops.
+
+1. Call `start_skillpilot_verified_recall(learningSessionId)` once. It accepts
+   neither a goal nor a batch size. Show every returned card in its server order
+   as one numbered batch without expected answers, retain its opaque
+   `batchCapability`, and wait for answers to all cards.
+2. After the complete learner submission, call
+   `get_skillpilot_verified_recall_answers(learningSessionId, batchCapability)`
+   exactly once. Retain its opaque `gradingCapability`. Compare every learner
+   answer by subject meaning with the corresponding ordered expected answer and
+   accept equivalent formulations. Set `passed=true` only for a correct answer
+   without help.
+3. Call `record_skillpilot_verified_recall_results(learningSessionId,
+   gradingCapability, assessments)` exactly once with exactly one ordered
+   `{passed, feedback}` assessment for every returned card. Do not supply
+   `expectedStateVersion` or `clientRequestId`; this capability-bound write
+   derives both server-side.
+   The backend rejects an incomplete, duplicate or stale batch and persists an
+   accepted batch atomically. Follow its full successor context and continuation
+   immediately in the same response; do not stop for an acknowledgement and do
+   not reload context in that learner turn.
 
 Do not ask one card twice on the same calendar day. After an error, explain the
 idea briefly but do not repeat the card. Do not set additional manual mastery.

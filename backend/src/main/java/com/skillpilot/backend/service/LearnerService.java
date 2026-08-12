@@ -9,6 +9,7 @@ import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
+import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -83,6 +84,13 @@ import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchCardResult;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchSavedResult;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
@@ -107,6 +115,7 @@ public class LearnerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
+    private static final int DEFAULT_VERIFIED_RECALL_BATCH_SIZE = 10;
     private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
     private static final Object COACH_STATE_REVISION_TRANSACTION_RESOURCE =
             LearnerService.class.getName() + ".coachStateRevision";
@@ -123,6 +132,7 @@ public class LearnerService {
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
     private final TransactionTemplate transactionTemplate;
+    private Clock verifiedRecallClock = Clock.systemUTC();
 
     private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
             "structure",
@@ -628,6 +638,14 @@ public class LearnerService {
         return testedDate.equals(referenceDate);
     }
 
+    private boolean wasVerifiedRecallTestedAfter(Object value, Instant instant) {
+        if (!(value instanceof Map<?, ?> verified) || instant == null) {
+            return false;
+        }
+        Instant testedAt = parseInstant(verified.get("lastTestedAt"));
+        return testedAt != null && testedAt.isAfter(instant);
+    }
+
     private Instant parseInstant(Object value) {
         if (value instanceof Instant instant) {
             return instant;
@@ -1005,7 +1023,44 @@ public class LearnerService {
                 skillpilotId,
                 language,
                 context,
-                normalizeVerifiedRecallBatchSize(request != null ? request.batchSize() : null));
+                normalizeVerifiedRecallBatchSize(request != null ? request.batchSize() : null),
+                false);
+    }
+
+    /** Starts the provider-neutral strict recall flow with a backend-owned batch size. */
+    @Transactional
+    public VerifiedRecallPromptResponse startVerifiedRecallBatch(
+            String skillpilotId,
+            String language,
+            String goalId) {
+        return startVerifiedRecallBatch(
+                skillpilotId,
+                language,
+                goalId,
+                DEFAULT_VERIFIED_RECALL_BATCH_SIZE);
+    }
+
+    /** Starts a batch whose size was selected by a trusted first-party launcher. */
+    @Transactional
+    public VerifiedRecallPromptResponse startVerifiedRecallBatch(
+            String skillpilotId,
+            String language,
+            String goalId,
+            int batchSize) {
+        requireVerifiedRecallBatchSize(batchSize);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context = resolveVerifiedRecallContext(
+                skillpilotId,
+                goalId,
+                language,
+                learner);
+        return buildVerifiedRecallPromptResponse(
+                skillpilotId,
+                language,
+                context,
+                batchSize,
+                true);
     }
 
     @Transactional
@@ -1033,6 +1088,44 @@ public class LearnerService {
                 card.front,
                 card.back,
                 card.category);
+    }
+
+    /**
+     * Loads the expected answers for one complete, ordered server-issued batch.
+     * The caller must pass the immutable card order from the batch receipt; a
+     * shortened, reordered, duplicated, stale, or foreign batch is rejected.
+     */
+    @Transactional
+    public VerifiedRecallBatchAnswerResponse getVerifiedRecallAnswersBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchAnswerRequest request) {
+        if (request == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall answer batch is required.");
+        }
+        requireVerifiedRecallBatchIssuedAt(request.issuedAt());
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context =
+                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
+        List<SrsCard> cards = requireCurrentVerifiedRecallBatch(
+                context,
+                request.configuredBatchSize(),
+                request.cardIds(),
+                request.issuedAt());
+        List<VerifiedRecallBatchAnswerCard> answers = cards.stream()
+                .map(card -> new VerifiedRecallBatchAnswerCard(
+                        card.id,
+                        card.front,
+                        card.back,
+                        card.category))
+                .toList();
+        return new VerifiedRecallBatchAnswerResponse(
+                verifiedRecallBatchAnswerInstruction(language),
+                context.goal().getId(),
+                answers);
     }
 
     @Transactional
@@ -1086,7 +1179,8 @@ public class LearnerService {
                 skillpilotId,
                 language,
                 updatedContext,
-                LEGACY_VERIFIED_RECALL_BATCH_SIZE);
+                LEGACY_VERIFIED_RECALL_BATCH_SIZE,
+                false);
         int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
         int pendingCards = Math.max(0, updatedContext.cards().size() - verifiedCards);
         boolean masterySaved = false;
@@ -1105,7 +1199,251 @@ public class LearnerService {
                 next);
     }
 
+    /**
+     * Persists one complete verified-recall batch atomically.
+     *
+     * <p>All structural and state-dependent checks happen before the first
+     * mutation. The card state is written once, the learner revision advances
+     * once, and one aggregate learner-state event is published. The returned
+     * successor is the authoritative mutable state after normal active-goal,
+     * autopilot, and focus-completion transitions have run.</p>
+     */
+    @Transactional
+    public VerifiedRecallBatchResultResponse recordVerifiedRecallResultsBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchResultRequest request) {
+        validateVerifiedRecallBatchResultRequest(request);
+
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        VerifiedRecallContext context =
+                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
+        Instant testedAt = verifiedRecallNow();
+        List<SrsCard> cards = requireCurrentVerifiedRecallBatch(
+                context,
+                request.configuredBatchSize(),
+                request.cardIds(),
+                request.issuedAt());
+
+        // Validate every item before building or persisting any successor state.
+        for (int index = 0; index < cards.size(); index++) {
+            VerifiedRecallBatchCardResult result = request.results().get(index);
+            if (!cards.get(index).id.equals(result.cardId())) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall results must match the complete batch in exact order.");
+            }
+        }
+
+        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
+        List<VerifiedRecallBatchSavedResult> savedResults = new ArrayList<>(cards.size());
+        for (int index = 0; index < cards.size(); index++) {
+            SrsCard card = cards.get(index);
+            VerifiedRecallBatchCardResult result = request.results().get(index);
+            Map<String, Object> cardState = toMutableStringObjectMap(nextState.get(card.id));
+            cardState.put("id", card.id);
+            applyVerifiedRecallScheduling(
+                    cardState,
+                    result.passed(),
+                    testedAt,
+                    result.feedback());
+            nextState.put(card.id, cardState);
+            savedResults.add(new VerifiedRecallBatchSavedResult(card.id, result.passed()));
+        }
+
+        persistVerifiedRecallBatchClientState(
+                learner,
+                context.goal().getId(),
+                nextState,
+                testedAt);
+
+        VerifiedRecallContext updatedContext = new VerifiedRecallContext(
+                context.goal(),
+                context.cards(),
+                nextState);
+        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        int pendingCards = Math.max(0, updatedContext.cards().size() - verifiedCards);
+        boolean masterySaved = pendingCards == 0
+                && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        if (masterySaved) {
+            persistVerifiedRecallMastery(skillpilotId, context.goal(), false);
+        }
+
+        // One public batch mutation occupies one optimistic-concurrency revision,
+        // even when mastery and autopilot also change inside this transaction.
+        advanceCoachStateRevision(learner);
+
+        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(
+                skillpilotId,
+                language,
+                updatedContext,
+                request.configuredBatchSize(),
+                true);
+        UnifiedLearnerStateResponse successor = getLearnerState(
+                skillpilotId,
+                context.goal().getId(),
+                true,
+                false);
+        eventPublisher.publishEvent(new LearnerStateChangedEvent(
+                this,
+                skillpilotId,
+                "VERIFIED_RECALL_BATCH_UPDATE",
+                context.goal().getId()));
+
+        return new VerifiedRecallBatchResultResponse(
+                List.copyOf(savedResults),
+                verifiedCards,
+                pendingCards,
+                masterySaved,
+                masterySaved ? context.goal().getId() : null,
+                next,
+                successor);
+    }
+
+    private void validateVerifiedRecallBatchResultRequest(VerifiedRecallBatchResultRequest request) {
+        if (request == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall result batch is required.");
+        }
+        requireVerifiedRecallBatchSize(request.configuredBatchSize());
+        requireVerifiedRecallBatchIssuedAt(request.issuedAt());
+        requireNonEmptyDistinctVerifiedRecallCardIds(request.cardIds());
+        if (request.results() == null || request.results().isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall results must not be empty.");
+        }
+        if (request.results().size() != request.cardIds().size()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall results must cover the complete batch.");
+        }
+        for (int index = 0; index < request.results().size(); index++) {
+            VerifiedRecallBatchCardResult result = request.results().get(index);
+            if (result == null || result.cardId() == null || result.cardId().isBlank()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall result cardId must not be empty.");
+            }
+            if (result.passed() == null) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall result requires passed=true or passed=false for every card.");
+            }
+            if (!request.cardIds().get(index).equals(result.cardId())) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall results must match the complete batch in exact order.");
+            }
+        }
+    }
+
+    private List<SrsCard> requireCurrentVerifiedRecallBatch(
+            VerifiedRecallContext context,
+            int batchSize,
+            List<String> cardIds,
+            Instant now) {
+        requireVerifiedRecallBatchSize(batchSize);
+        requireNonEmptyDistinctVerifiedRecallCardIds(cardIds);
+        List<SrsCard> expected = selectNextVerifiedRecallCards(
+                context.cards(),
+                context.srsState(),
+                now,
+                batchSize);
+        List<String> expectedIds = expected.stream().map(card -> card.id).toList();
+        if (!expectedIds.equals(cardIds)) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "verified-recall batch is incomplete, reordered, or no longer current.");
+        }
+        for (SrsCard card : expected) {
+            Object rawState = context.srsState().get(card.id);
+            if (rawState instanceof Map<?, ?> stateMap
+                    && wasVerifiedRecallTestedAfter(stateMap.get("verifiedRecall"), now)) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "verified-recall batch changed after it was issued.");
+            }
+        }
+        return expected;
+    }
+
+    private void requireVerifiedRecallBatchIssuedAt(Instant issuedAt) {
+        if (issuedAt == null || issuedAt.isAfter(verifiedRecallNow().plusSeconds(300))) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall batch issuedAt is invalid.");
+        }
+    }
+
+    private void requireVerifiedRecallBatchSize(int batchSize) {
+        if (batchSize < 1 || batchSize > MAX_VERIFIED_RECALL_BATCH_SIZE) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall batchSize must be between 1 and 20.");
+        }
+    }
+
+    private void requireNonEmptyDistinctVerifiedRecallCardIds(List<String> cardIds) {
+        if (cardIds == null || cardIds.isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall batch cardIds must not be empty.");
+        }
+        if (cardIds.size() > MAX_VERIFIED_RECALL_BATCH_SIZE) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall batch exceeds the maximum card count.");
+        }
+        LinkedHashSet<String> distinct = new LinkedHashSet<>();
+        for (String cardId : cardIds) {
+            if (cardId == null || cardId.isBlank()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall batch cardId must not be empty.");
+            }
+            if (!distinct.add(cardId)) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "verified-recall batch cardIds must not contain duplicates.");
+            }
+        }
+    }
+
+    private void persistVerifiedRecallBatchClientState(
+            Learner learner,
+            String goalId,
+            Map<String, Object> srsState,
+            Instant testedAt) {
+        String json;
+        try {
+            json = objectMapper.writeValueAsString(srsState);
+        } catch (Exception exception) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Verified-recall batch state could not be stored.");
+        }
+        LearnerClientStateId id = new LearnerClientStateId(learner.getSkillpilotId(), goalId);
+        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
+        if (stored == null) {
+            stored = new LearnerClientState(learner, goalId, json, testedAt);
+        } else {
+            stored.setClientState(json);
+            stored.setClientStateUpdatedAt(testedAt);
+        }
+        learnerClientStateRepository.save(stored);
+    }
+
     private void persistVerifiedRecallMastery(String skillpilotId, LearningGoal goal) {
+        persistVerifiedRecallMastery(skillpilotId, goal, true);
+    }
+
+    private void persistVerifiedRecallMastery(
+            String skillpilotId,
+            LearningGoal goal,
+            boolean publishEvent) {
         if (goal == null || goal.getId() == null || goal.getId().isBlank()) {
             return;
         }
@@ -1125,7 +1463,7 @@ public class LearnerService {
             learnerRepository.save(learner);
         }
 
-        if (masteryChanged || activeGoalCleared) {
+        if (publishEvent && (masteryChanged || activeGoalCleared)) {
             eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
         }
     }
@@ -1345,10 +1683,13 @@ public class LearnerService {
             String skillpilotId,
             String language,
             VerifiedRecallContext context,
-            int batchSize) {
-        Instant now = Instant.now();
-        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(context.cards(), context.srsState(), now);
-        List<SrsCard> nextCards = selectNextVerifiedRecallCards(context.cards(), context.srsState(), now, batchSize);
+            int batchSize,
+            boolean batchContract) {
+        Instant issuedAt = verifiedRecallNow();
+        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(
+                context.cards(), context.srsState(), issuedAt);
+        List<SrsCard> nextCards = selectNextVerifiedRecallCards(
+                context.cards(), context.srsState(), issuedAt, batchSize);
         if (nextCards.isEmpty()) {
             boolean complete = status.pendingCards() == 0;
             return new VerifiedRecallPromptResponse(
@@ -1369,7 +1710,9 @@ public class LearnerService {
                     Collections.emptyList(),
                     null,
                     null,
-                    null);
+                    null,
+                    batchSize,
+                    issuedAt);
         }
         List<VerifiedRecallPromptCard> promptCards = nextCards.stream()
                 .map(card -> new VerifiedRecallPromptCard(card.id, card.front, card.category))
@@ -1377,7 +1720,9 @@ public class LearnerService {
         SrsCard firstCard = nextCards.get(0);
         return new VerifiedRecallPromptResponse(
                 "ready",
-                verifiedRecallPromptInstruction(language),
+                batchContract
+                        ? verifiedRecallBatchPromptInstruction(language)
+                        : verifiedRecallPromptInstruction(language),
                 skillpilotId,
                 context.goal().getId(),
                 context.goal().getTitle(),
@@ -1391,7 +1736,13 @@ public class LearnerService {
                 promptCards,
                 firstCard.id,
                 firstCard.front,
-                firstCard.category);
+                firstCard.category,
+                batchSize,
+                issuedAt);
+    }
+
+    private Instant verifiedRecallNow() {
+        return Instant.now(verifiedRecallClock);
     }
 
     private int countVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
@@ -1614,10 +1965,22 @@ public class LearnerService {
                 : "Stelle alle zurückgegebenen Kartenfragen als einen nummerierten Batch. Verrate die erwarteten Antworten nicht, bevor die Antworten ohne Hilfe abgegeben wurden. Rufe danach je Karte das Antwort-Werkzeug auf und speichere passed oder failed mit dem Ergebnis-Werkzeug.";
     }
 
+    private String verifiedRecallBatchPromptInstruction(String language) {
+        return isEnglish(language)
+                ? "Ask every returned prompt as one numbered batch and wait for all answers. Do not reveal expected answers early. Then load all expected answers once and save exactly one complete result batch."
+                : "Stelle jede zurückgegebene Frage als einen nummerierten Batch und warte auf alle Antworten. Verrate die Sollantworten nicht vorzeitig. Lade danach alle Sollantworten genau einmal und speichere genau einen vollständigen Ergebnis-Batch.";
+    }
+
     private String verifiedRecallAnswerInstruction(String language) {
         return isEnglish(language)
                 ? "Compare the learner answer with the expected answer. Accept equivalent wording when the substance is correct. Then call the result tool with passed=true or passed=false."
                 : "Vergleiche die Lernendenantwort mit der erwarteten Antwort. Akzeptiere gleichwertige Formulierungen, wenn die Sache stimmt. Rufe danach das Ergebnis-Werkzeug mit passed=true oder passed=false auf.";
+    }
+
+    private String verifiedRecallBatchAnswerInstruction(String language) {
+        return isEnglish(language)
+                ? "Compare every submitted answer with the matching expected answer in this exact order. Accept substantively equivalent wording and submit exactly one complete result batch."
+                : "Vergleiche jede abgegebene Antwort in dieser exakten Reihenfolge mit der zugehörigen Sollantwort. Akzeptiere sachlich gleichwertige Formulierungen und übermittle genau einen vollständigen Ergebnis-Batch.";
     }
 
     private String verifiedRecallCompleteInstruction(String language) {
@@ -6222,7 +6585,7 @@ public class LearnerService {
 
     @Transactional
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
-        return getLearnerState(skillpilotId, null, true);
+        return getLearnerState(skillpilotId, null, true, true);
     }
 
     /**
@@ -6234,7 +6597,7 @@ public class LearnerService {
      */
     @Transactional(readOnly = true)
     public UnifiedLearnerStateResponse getCoachLearnerState(String skillpilotId) {
-        return getLearnerState(skillpilotId, null, false);
+        return getLearnerState(skillpilotId, null, false, true);
     }
 
     /**
@@ -6490,13 +6853,25 @@ public class LearnerService {
     private UnifiedLearnerStateResponse getLearnerState(
             String skillpilotId,
             String sequentialAutopilotAnchorGoalId) {
-        return getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId, true);
+        return getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId, true, true);
     }
 
     private UnifiedLearnerStateResponse getLearnerState(
             String skillpilotId,
             String sequentialAutopilotAnchorGoalId,
             boolean allowSideEffects) {
+        return getLearnerState(
+                skillpilotId,
+                sequentialAutopilotAnchorGoalId,
+                allowSideEffects,
+                true);
+    }
+
+    private UnifiedLearnerStateResponse getLearnerState(
+            String skillpilotId,
+            String sequentialAutopilotAnchorGoalId,
+            boolean allowSideEffects,
+            boolean publishTransitionEvents) {
         Learner learner = allowSideEffects
                 ? learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                         .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"))
@@ -6633,7 +7008,8 @@ public class LearnerService {
                                         ? "ACTIVE_GOAL_CLEARED_ASSESSMENT_FOCUS"
                                 : activeGoalOutOfScope
                                         ? "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE"
-                                        : "ACTIVE_GOAL_CLEARED_STALE");
+                                        : "ACTIVE_GOAL_CLEARED_STALE",
+                        publishTransitionEvents);
             }
             activeGoalId = null;
             activeGoalMastered = false;
@@ -6646,7 +7022,8 @@ public class LearnerService {
                     clearPersistedActiveGoal(
                             learner,
                             skillpilotId,
-                            "ACTIVE_GOAL_CLEARED_UNAVAILABLE_HARD_CHECK");
+                            "ACTIVE_GOAL_CLEARED_UNAVAILABLE_HARD_CHECK",
+                            publishTransitionEvents);
                 }
                 activeGoalId = null;
                 activeGoalMastered = false;
@@ -6735,7 +7112,8 @@ public class LearnerService {
                     sequentialAutopilotSearchAtomic,
                     personalizationRequired,
                     sequentialAutopilotAnchorGoalId,
-                    structuralGoals);
+                    structuralGoals,
+                    publishTransitionEvents);
         }
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
@@ -6814,6 +7192,26 @@ public class LearnerService {
             boolean personalizationRequired,
             String sequentialAutopilotAnchorGoalId,
             Map<String, LearningGoal> structuralGoals) {
+        return maybeAutoActivateFrontierGoal(
+                learner,
+                activeGoalId,
+                frontierAtomic,
+                sequentialAutopilotSearchAtomic,
+                personalizationRequired,
+                sequentialAutopilotAnchorGoalId,
+                structuralGoals,
+                true);
+    }
+
+    private String maybeAutoActivateFrontierGoal(
+            Learner learner,
+            String activeGoalId,
+            List<FrontierGoal> frontierAtomic,
+            List<FrontierGoal> sequentialAutopilotSearchAtomic,
+            boolean personalizationRequired,
+            String sequentialAutopilotAnchorGoalId,
+            Map<String, LearningGoal> structuralGoals,
+            boolean publishEvent) {
         if (!Boolean.TRUE.equals(learner.getAutoPilot())) {
             return activeGoalId;
         }
@@ -6837,8 +7235,10 @@ public class LearnerService {
         learner.setActiveGoalId(nextGoal.id());
         learner.setLearningState(LearningState.TEACHING);
         advanceCoachStateRevision(learner);
-        eventPublisher.publishEvent(
-                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "ACTIVE_GOAL_UPDATE_AUTOPILOT"));
+        if (publishEvent) {
+            eventPublisher.publishEvent(
+                    new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "ACTIVE_GOAL_UPDATE_AUTOPILOT"));
+        }
         return nextGoal.id();
     }
 
@@ -10575,10 +10975,20 @@ public class LearnerService {
     }
 
     private void clearPersistedActiveGoal(Learner learner, String skillpilotId, String changeType) {
+        clearPersistedActiveGoal(learner, skillpilotId, changeType, true);
+    }
+
+    private void clearPersistedActiveGoal(
+            Learner learner,
+            String skillpilotId,
+            String changeType,
+            boolean publishEvent) {
         learner.setActiveGoalId(null);
         learner.setLearningState(LearningState.FRONTIER);
         advanceCoachStateRevision(learner);
-        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, changeType));
+        if (publishEvent) {
+            eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, changeType));
+        }
     }
 
     /**

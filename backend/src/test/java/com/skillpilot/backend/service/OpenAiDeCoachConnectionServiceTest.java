@@ -326,6 +326,9 @@ class OpenAiDeCoachConnectionServiceTest {
                 launchIntent);
 
         var response = service.createFirstPartyLaunch(SKILLPILOT_ID, request);
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+        verify(learningSessions).save(persisted.capture());
 
         assertThat(response.prompt())
                 .isEqualTo(expectedInstruction
@@ -336,6 +339,11 @@ class OpenAiDeCoachConnectionServiceTest {
         if (launchIntent.goalId() != null) {
             assertThat(response.prompt()).doesNotContain(launchIntent.goalId());
         }
+        int expectedRecallBatchSize = launchIntent.type() == LaunchIntentType.VERIFIED_RECALL
+                ? launchIntent.batchSize()
+                : 10;
+        assertThat(persisted.getValue().getVerifiedRecallBatchSize())
+                .isEqualTo(expectedRecallBatchSize);
     }
 
     @Test
@@ -448,11 +456,11 @@ class OpenAiDeCoachConnectionServiceTest {
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
-                        "Verwende SkillPilot Coach v1 und starte eine harte Kartenprüfung mit 7 Karten."),
+                        "Verwende SkillPilot Coach v1 und starte die harte Kartenprüfung."),
                 Arguments.of(
                         "en",
                         new LaunchIntent(LaunchIntentType.VERIFIED_RECALL, "memory-goal", 7, null),
-                        "Use SkillPilot Coach v1 and start a strict recall check with 7 cards."),
+                        "Use SkillPilot Coach v1 and start the strict recall check."),
                 Arguments.of(
                         "de",
                         new LaunchIntent(LaunchIntentType.ABI26_EXAM, ABI26_GK_GOAL_ID, null, "GK"),
