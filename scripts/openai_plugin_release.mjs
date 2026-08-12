@@ -162,7 +162,7 @@ const uiArtifactSource = (releasePath) => {
 const command = process.argv[2];
 if (!new Set(["candidate", "prepare", "verify", "record-published"]).has(command)) {
   throw new Error(
-    "Usage: node scripts/openai_plugin_release.mjs <candidate|prepare|verify|record-published> [--confirm-openai-published]",
+    "Usage: node scripts/openai_plugin_release.mjs <candidate|prepare|verify|record-published> [--confirm-openai-published] [--confirm-mtls-enforced-and-verified]",
   );
 }
 if (
@@ -171,6 +171,14 @@ if (
 ) {
   throw new Error(
     "record-published requires --confirm-openai-published after the OpenAI portal publication has actually completed.",
+  );
+}
+if (
+  command === "record-published" &&
+  !process.argv.includes("--confirm-mtls-enforced-and-verified")
+) {
+  throw new Error(
+    "record-published requires --confirm-mtls-enforced-and-verified after the enforce-mode production edge and a real ChatGPT VERIFIED call have been confirmed.",
   );
 }
 

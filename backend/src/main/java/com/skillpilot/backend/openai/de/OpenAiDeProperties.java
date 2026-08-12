@@ -15,6 +15,7 @@ public class OpenAiDeProperties {
     private boolean writesEnabled;
     private Duration learningSessionTtl = Duration.ofHours(24);
     private boolean diagnosticSessionTtlEnabled;
+    private MtlsEdgeMode mtlsEdgeMode = MtlsEdgeMode.DISABLED;
     private String mcpUrl = OpenAiDeV1ContractMetadata.PUBLIC_MCP_ENDPOINT;
     private String oauthResource = OpenAiDeV1ContractMetadata.OAUTH_RESOURCE;
     private String serverBuild = OpenAiDeV1ContractMetadata.DEFAULT_SERVER_BUILD;
@@ -68,6 +69,14 @@ public class OpenAiDeProperties {
 
     public void setDiagnosticSessionTtlEnabled(boolean diagnosticSessionTtlEnabled) {
         this.diagnosticSessionTtlEnabled = diagnosticSessionTtlEnabled;
+    }
+
+    public MtlsEdgeMode getMtlsEdgeMode() {
+        return mtlsEdgeMode;
+    }
+
+    public void setMtlsEdgeMode(MtlsEdgeMode mtlsEdgeMode) {
+        this.mtlsEdgeMode = mtlsEdgeMode;
     }
 
     public String getMcpUrl() {
@@ -136,6 +145,23 @@ public class OpenAiDeProperties {
 
     public RateLimit getRateLimit() {
         return rateLimit;
+    }
+
+    /** Backend assertion for the root-owned OpenAI V1 mTLS edge mode. */
+    public enum MtlsEdgeMode {
+        DISABLED("disabled"),
+        OBSERVE("observe"),
+        ENFORCE("enforce");
+
+        private final String wireValue;
+
+        MtlsEdgeMode(String wireValue) {
+            this.wireValue = wireValue;
+        }
+
+        public String wireValue() {
+            return wireValue;
+        }
     }
 
     /**

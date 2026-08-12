@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,8 +60,13 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        boolean openAiMcp = isInternalOpenAiMcp(request.getRequestURI());
-        if (!request.getRequestURI().startsWith("/api") && !openAiMcp) {
+        String requestUri = RawHttpServletRequest.requestUri(request);
+        if (requestUri == null) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        boolean openAiMcp = isInternalOpenAiV1(requestUri);
+        if (!requestUri.startsWith("/api") && !openAiMcp) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -72,7 +76,6 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         // field, which cannot be safely redacted as ordinary nested JSON. OAuth
         // token/authorization forms can likewise contain codes, verifiers or refresh
         // tokens. These protocol endpoints are therefore not body-logged here.
-        String requestUri = request.getRequestURI();
         if (requestUri.equals("/api/action-regression")
                 || requestUri.startsWith("/api/action-regression/")
                 || requestUri.equals("/api/claude/mcp")
@@ -92,8 +95,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         }
 
         // Skip response wrapping for SSE endpoints - they need to stay open!
-        if (request.getRequestURI().contains("/updates/")) {
-            logger.debug("Skipping response logging for SSE endpoint: {}", request.getRequestURI());
+        if (requestUri.contains("/updates/")) {
+            logger.debug("Skipping response logging for SSE endpoint: {}", requestUri);
             filterChain.doFilter(request, response);
             return;
         }
@@ -110,7 +113,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             String responseBody = new String(responseWrapper.getContentAsByteArray(), StandardCharsets.UTF_8);
 
             logger.info("API Request: {} {} | Status: {} | Duration: {}ms",
-                    request.getMethod(), sanitizeUriForOperationalLog(request.getRequestURI()), response.getStatus(), duration);
+                    request.getMethod(), sanitizeUriForOperationalLog(requestUri), response.getStatus(), duration);
 
             if (logger.isDebugEnabled()) {
                 if (!requestBody.isBlank()) {
@@ -121,7 +124,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 }
             }
 
-            if (aiTraceEnabled && request.getRequestURI().startsWith("/api/ai")) {
+            if (aiTraceEnabled && requestUri.startsWith("/api/ai")) {
                 writeAiTrace(request, response, duration, requestBody, responseBody);
             }
 
@@ -129,10 +132,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         }
     }
 
-    private static boolean isInternalOpenAiMcp(String requestUri) {
-        return requestUri != null
-                && (requestUri.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
-                        || requestUri.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/"));
+    private static boolean isInternalOpenAiV1(String requestUri) {
+        return requestUri != null && requestUri.startsWith("/internal/openai/v1/");
     }
 
     private void writeAiTrace(HttpServletRequest request,

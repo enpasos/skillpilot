@@ -71,6 +71,11 @@ test("line-specific and process-shared environment names remain valid", () => {
       SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED: "true",
     }),
   );
+  assert.ok(
+    IMPLEMENTED_OPENAI_COACH_V1_ENVIRONMENT_NAMES.includes(
+      "SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE",
+    ),
+  );
 });
 
 test("removed Direct-Start environment names fail closed", () => {
@@ -279,6 +284,12 @@ esac
       0,
       diagnosticSessionTtlGate.stderr,
     );
+
+    const mtlsEdgeMode = runGate({
+      FAKE_DIRECT_ENVIRONMENT:
+        "SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=observe",
+    });
+    assert.equal(mtlsEdgeMode.status, 0, mtlsEdgeMode.stderr);
 
     const missingEnvironmentPath = resolve(directory, "missing.env");
     const optionalMissing = runGate({

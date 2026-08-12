@@ -280,9 +280,11 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   These URLs are immutable contract values rather than environment settings.
   Obsolete `SKILLPILOT_OPENAI_DE_*` URL names and newly invented
   `SKILLPILOT_OPENAI_COACH_V1_*` URL overrides fail closed.
-  Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin,
-  mTLS-edge, and mTLS-smoke variables before the first subdomain deployment;
-  they are not part of the `1.0.0` runtime contract.
+  Remove stale `SKILLPILOT_OPENAI_DE_UI_ORIGIN`, obsolete V1-origin and old
+  locale-bound mTLS/smoke variables before the first subdomain deployment.
+  The current neutral edge uses only
+  `SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE=disabled|observe|enforce` and a
+  root-owned Nginx mode file; old `SKILLPILOT_OPENAI_DE_*` names stay forbidden.
 - Treat MCP tool descriptions, input/output schemas, annotations, server
   instructions, and skills as versioned model-facing metadata. A server deploy
   updates compatible live result behavior, but it does not rewrite an existing
@@ -303,7 +305,9 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   only inside the existing `skillpilot.com` HTTPS `server {}` block before its
   general `location /`. The first file activates only neutral V1 and keeps
   neutral V2 through V9 at `404`; the second prevents a main-origin or internal-path
-  alias. Neither template enables client-TLS or replaces existing vHosts.
+  alias. The dedicated coaches template also applies the OpenAI client-mTLS
+  boundary only to V1 `/mcp`; it does not replace existing vHosts or protect
+  OAuth/discovery paths with a client certificate.
 - Production uses exactly one systemd `EnvironmentFile`, normally
   `/etc/skillpilot/skillpilot.env`. Before copying assets or building,
   `./deploy_skillpilot.sh` verifies that this is the file configured for the

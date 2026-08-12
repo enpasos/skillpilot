@@ -29,7 +29,17 @@ RESERVED_MCP_ORIGINS=(
   "https://mcp-coach-v9.skillpilot.com"
 )
 EXPECTED_CHALLENGE="${SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE:-}"
+MTLS_EDGE_MODE="${SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE:-disabled}"
 GOAL_VISUALIZATION_ASSET_ROOT="${ROOT_DIR}/app/public/assets/goal-visualizations"
+
+case "${MTLS_EDGE_MODE}" in
+  disabled|observe|enforce)
+    ;;
+  *)
+    echo "CHECK public_edge_configuration FAIL invalid mTLS edge mode ${MTLS_EDGE_MODE}" >&2
+    exit 2
+    ;;
+esac
 
 validate_https_url() {
   local label="$1"
@@ -308,21 +318,64 @@ if [[ "${mcp_tls_verify_result}" != "0" ]]; then
   echo "CHECK public_mcp_tls FAIL certificate verification result ${mcp_tls_verify_result}" >&2
   exit 1
 fi
-if [[ "${mcp_status}" != "401" ]]; then
-  echo "CHECK public_mcp_oauth_challenge FAIL expected HTTP 401, got ${mcp_status}" >&2
-  exit 1
-fi
-www_authenticate="$(
-  tr -d '\r' <"${temporary_dir}/mcp.headers" \
-    | awk 'tolower($0) ~ /^www-authenticate:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
-)"
-if [[ "${www_authenticate}" != Bearer* \
-  || "${www_authenticate}" != *"resource_metadata=\"${METADATA_URL}\""* ]]; then
-  echo "CHECK public_mcp_oauth_challenge FAIL missing exact Bearer resource metadata" >&2
-  exit 1
-fi
 echo "CHECK public_mcp_no_redirect PASS ${MCP_URL}"
-echo "CHECK public_mcp_oauth_challenge PASS HTTP 401 with exact protected-resource metadata"
+if [[ "${MTLS_EDGE_MODE}" == "enforce" ]]; then
+  if [[ "${mcp_status}" != "403" ]]; then
+    echo "CHECK public_mcp_mtls_enforce FAIL expected HTTP 403 without client certificate, got ${mcp_status}" >&2
+    exit 1
+  fi
+  echo "CHECK public_mcp_mtls_enforce PASS HTTP 403 without client certificate"
+
+  spoofed_mcp_url="${MCP_URL}?skillpilot_mtls_classification=LOCAL_OPERATOR"
+  spoofed_mcp_result="$(
+    "${curl_common[@]}" \
+      --path-as-is \
+      --request POST \
+      --header 'Accept: application/json, text/event-stream' \
+      --header 'Content-Type: application/json' \
+      --header 'X-SkillPilot-OpenAI-mTLS-Mode: enforce' \
+      --header 'X-SkillPilot-OpenAI-mTLS-Classification: VERIFIED' \
+      --header 'X-SkillPilot-OpenAI-mTLS-SAN: mtls.prod.connectors.openai.com' \
+      --header 'X-SkillPilot-OpenAI-mTLS-Remote-Addr: 127.0.0.1' \
+      --header 'X-SkillPilot-OpenAI-mTLS-Client-Verify: SUCCESS' \
+      --header 'X-SkillPilot-OpenAI-mTLS-Client-Cert: spoofed' \
+      --header 'X-Forwarded-For: 127.0.0.1' \
+      --header 'X-Forwarded-Prefix: /untrusted-prefix' \
+      --header 'X-Real-IP: 127.0.0.1' \
+      --header 'Forwarded: for=127.0.0.1;proto=https' \
+      --header 'X-SSL-Client-Verify: SUCCESS' \
+      --header 'X-SSL-Client-Cert: spoofed' \
+      --header 'X-Forwarded-Client-Cert: spoofed' \
+      --data '{"jsonrpc":"2.0","id":"public-edge-spoof-smoke","method":"initialize","params":{}}' \
+      --output "${temporary_dir}/mcp-spoof.body" \
+      --write-out '%{http_code}|%{url_effective}|%{ssl_verify_result}' \
+      "${spoofed_mcp_url}"
+  )"
+  IFS='|' read -r spoofed_mcp_status spoofed_mcp_effective_url \
+    spoofed_mcp_tls_verify_result <<<"${spoofed_mcp_result}"
+  if [[ "${spoofed_mcp_status}" != "403" \
+    || "${spoofed_mcp_effective_url}" != "${spoofed_mcp_url}" \
+    || "${spoofed_mcp_tls_verify_result}" != "0" ]]; then
+    echo "CHECK public_mcp_mtls_spoofing FAIL public aliases or query bypassed mTLS" >&2
+    exit 1
+  fi
+  echo "CHECK public_mcp_mtls_spoofing PASS forged headers and query remain HTTP 403"
+else
+  if [[ "${mcp_status}" != "401" ]]; then
+    echo "CHECK public_mcp_oauth_challenge FAIL expected HTTP 401, got ${mcp_status}" >&2
+    exit 1
+  fi
+  www_authenticate="$(
+    tr -d '\r' <"${temporary_dir}/mcp.headers" \
+      | awk 'tolower($0) ~ /^www-authenticate:/ { sub(/^[^:]*:[[:space:]]*/, ""); value = $0 } END { print value }'
+  )"
+  if [[ "${www_authenticate}" != Bearer* \
+    || "${www_authenticate}" != *"resource_metadata=\"${METADATA_URL}\""* ]]; then
+    echo "CHECK public_mcp_oauth_challenge FAIL missing exact Bearer resource metadata" >&2
+    exit 1
+  fi
+  echo "CHECK public_mcp_oauth_challenge PASS HTTP 401 with exact protected-resource metadata (${MTLS_EDGE_MODE})"
+fi
 
 assert_removed_route() {
   local label="$1"
@@ -333,6 +386,7 @@ assert_removed_route() {
   local effective_url
   result="$(
     "${curl_common[@]}" \
+      --path-as-is \
       --request POST \
       --header 'Accept: application/json, text/event-stream' \
       --header 'Content-Type: application/json' \
@@ -353,6 +407,13 @@ assert_removed_route legacy_main_origin_mcp_route "${LEGACY_MCP_URL}"
 assert_removed_route abandoned_versioned_main_origin_mcp_route \
   "${ABANDONED_VERSIONED_MCP_URL}"
 assert_removed_route internal_openai_mcp_route "${INTERNAL_MCP_URL}"
+assert_removed_route internal_openai_mcp_matrix_route \
+  "${INTERNAL_MCP_URL};probe=1"
+assert_removed_route internal_openai_mcp_encoded_route \
+  "${AUTHORIZATION_ORIGIN}/internal/openai/v1/%6dcp"
+assert_removed_route internal_openai_mcp_suffix_route \
+  "${INTERNAL_MCP_URL}-suffix"
+assert_removed_route trailing_slash_mcp_route "${MCP_URL}/"
 
 assert_removed_get_route() {
   local label="$1"

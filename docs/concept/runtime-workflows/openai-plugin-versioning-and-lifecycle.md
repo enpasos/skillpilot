@@ -175,8 +175,10 @@ Für die V1-Linie gibt es keinen öffentlichen Kompatibilitätsalias. Der
 dedizierte Nginx-vHost bildet ausschließlich den öffentlichen Pfad `/mcp` auf
 den loopback-gebundenen Spring-Transport `/internal/openai/v1/mcp` ab. Der
 OAuth-Issuer und seine Browser-Endpunkte bleiben auf `skillpilot.com`; der
-MCP-Origin verwendet normales serverauthentisiertes TLS und OAuth, aber kein
-Clientzertifikat.
+MCP-Origin verwendet serverauthentisiertes TLS, das von ChatGPT präsentierte
+OpenAI-Clientzertifikat und OAuth. Die öffentlichen Discovery- und
+Domain-Challenge-Pfade verlangen kein Clientzertifikat. Der mTLS-Cutover ändert
+weder Endpoint noch Tool-/Skillvertrag und ist daher keine neue Contract-Major.
 
 ### 6.2 Spätere V2
 

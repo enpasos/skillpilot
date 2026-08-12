@@ -23,11 +23,12 @@ Lernstand hängt. Dieses Dokument behandelt ein davon unabhängiges Schutzziel:
 Die Schutzgrenze verändert weder SkillPilot-ID noch Lernziel-, Mastery-,
 Curriculum- oder Coach-Semantik.
 
-## 2. Drei unabhängige Nachweise
+## 2. Vier unabhängige Nachweise
 
 | Nachweis | Zweck | Verbindlicher Mechanismus |
 | --- | --- | --- |
 | SkillPilot-Server | Vertraulichkeit und Serverauthentisierung | normales HTTPS/TLS am Reverse Proxy |
+| OpenAI-Connector | nur ChatGPT-Verbindungen aus OpenAIs veröffentlichter Zertifikatskette erreichen den produktiven MCP-Pfad | mTLS mit OpenAI Root CA, Connectors-Intermediate, `clientAuth`-EKU und exaktem SAN `mtls.prod.connectors.openai.com` |
 | zugelassene MCP-App | nur die vom Autor konfigurierte App erhält verwendbare OAuth-Tokens | fester vorregistrierter vertraulicher OAuth-Client, exakte Callback-Allowlist, `client_secret_basic`, Authorization Code mit PKCE `S256` |
 | aktuelle Lernsession | der konkrete Chat adressiert genau den beim UI-Start gewählten Lernenden | bei jedem **Lernen starten** frisch erzeugte, exakt 24 Stunden gültige `learningSessionId` als Pflichtargument jedes fachlichen MCP-Tools |
 
@@ -37,6 +38,8 @@ Für jeden fachlichen Aufruf gilt:
 gültiges, client- und resource-gebundenes OAuth Access Token
 AND
 gültige explizite learningSessionId
+AND, im produktiven `enforce`-Modus,
+gültiges OpenAI-Connector-Clientzertifikat
 ```
 
 OAuth authentisiert und autorisiert die App. Die Lernsession wählt den
@@ -127,14 +130,31 @@ Session im dadurch geöffneten neuen Chat fort.
 
 Die dauerhafte SkillPilot-ID bleibt serverseitig.
 
-## 6. Transporthärtung außerhalb von 1.0.0
+## 6. mTLS am MCP-Rand
 
-Die Linie `1.0.0` verwendet normales serverauthentisiertes HTTPS und OAuth.
-mTLS ist weder Bestandteil ihres Vertrags noch ein Deployment- oder
-Release-Gate. Der dedizierte MCP-Hostname trennt Domainverifikation und
-Plugin-Lifecycle; er ist kein mTLS-Mechanismus. Eine spätere zusätzliche
-Transporthärtung benötigt ein eigenes Design und darf die app-spezifische
-OAuth-Clientbindung nicht ersetzen oder auf andere Pfade ausgeweitet werden.
+ChatGPT präsentiert beim TLS-Aufbau zum MCP-Server ein von OpenAI verwaltetes
+Clientzertifikat. SkillPilot beschafft daher kein eigenes Clientzertifikat und
+pinnt kein rotierendes Leaf. Der dedizierte V1-vHost vertraut ausschließlich
+der veröffentlichten OpenAI Root CA und dem Connectors-Intermediate. Zusätzlich
+prüft ein loopback-gebundener Verifier die `clientAuth`-Eignung, die Kette und
+den exakten SAN `mtls.prod.connectors.openai.com`.
+
+Der Rand kennt genau zwei Betriebsarten:
+
+- `observe`: Ein gültiges Zertifikat wird vollständig geprüft und als
+  `VERIFIED` klassifiziert. Eine Verbindung ohne Zertifikat darf vorübergehend
+  bis zur unveränderten OAuth-Schicht passieren und wird ausschließlich als
+  `OBSERVE_NO_CERT` gezählt. Ein ungültig präsentiertes Zertifikat wird immer
+  abgelehnt. Dieser Modus dient dem kontrollierten Cutover und ist kein
+  veröffentlichungsfähiger Dauerzustand.
+- `enforce`: Externe `/mcp`-Aufrufe benötigen `VERIFIED`. Nur ein Aufruf, dessen
+  unmittelbarer Socket-Peer Loopback ist, darf als `LOCAL_OPERATOR` ohne
+  Clientzertifikat den unveränderten OAuth-Pfad testen. Internet-Header,
+  Queryparameter und `X-Forwarded-For` erzeugen niemals einen Bypass.
+
+Protected-Resource-Metadaten und Domain-Challenge bleiben ohne
+Clientzertifikat erreichbar. mTLS authentisiert die OpenAI-Infrastruktur und
+ersetzt weder OAuth noch die Lernsession.
 
 ## 7. Fail-closed Secure Mode
 
@@ -150,6 +170,8 @@ dieser Punkte fehlt oder widersprüchlich ist:
 - exakte HTTPS-Callback-Allowlist;
 - PKCE `S256`;
 - exakte HTTPS-Resource und OAuth-Endpunkte;
+- im aktivierten mTLS-Rand exakte Übereinstimmung von root-eigenem Nginx-Modus,
+  Backend-Modus und intern erzeugter Klassifikation;
 - veröffentlichte und intern identische Resource, Scopes und Clientmethode;
 - keine offene DCR und kein stiller Wechsel auf `none`, CIMD oder
   `private_key_jwt`.
@@ -198,10 +220,17 @@ Vor Freigabe müssen mindestens folgende Fälle objektiv scheitern:
 - gültige Lernsession ohne OAuth;
 - unbekannte, manipulierte, widerrufene oder abgelaufene Lernsession;
 - direkte Umgehung des Reverse Proxys zu Port 8787.
+- im `enforce`-Modus ein externer `/mcp`-Aufruf ohne Clientzertifikat;
+- falsche Zertifikatskette, falscher SAN oder fehlende `clientAuth`-Eignung;
+- gefälschte mTLS-Klassifikations-, Modus-, SAN- oder Forwarding-Header.
 
 Positiv wird der vollständige Ablauf über genau die konfigurierte
 Produktions-App geprüft. Dabei muss jeder fachliche Aufruf sowohl das
 passende OAuth-Token als auch die beim UI-Start erzeugte Lernsession tragen.
+Vor der Veröffentlichung muss er zusätzlich im `enforce`-Modus als
+`VERIFIED` klassifiziert sein. Der positive öffentliche mTLS-Test kann nur
+über ChatGPT erfolgen, weil ausschließlich OpenAI den privaten Schlüssel des
+Clientzertifikats besitzt.
 
 ## 10. Restannahmen
 

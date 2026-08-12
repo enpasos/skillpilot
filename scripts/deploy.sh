@@ -238,6 +238,8 @@ echo "Prüfe konsistente OpenAI-Plugin-V1-Versionierung..."
 node scripts/check_openai_plugin_versioning.mjs
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+  echo "Prüfe statischen OpenAI-V1-mTLS-Edge-Vertrag..."
+  ./scripts/verify_openai_v1_mtls_edge.sh --static
   echo "Prüfe exakte OpenAI-Plugin-V1-Runtime-Konfiguration..."
   node scripts/validate_openai_v1_runtime_config.mjs
   echo "Prüfe OpenAI-V1-Konfiguration der systemd-EnvironmentFile..."
@@ -305,6 +307,8 @@ if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
     --tests com.skillpilot.backend.openai.OpenAiRuntimeEnvironmentValidationConfigurationTest \
     --tests com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest \
     --tests com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProviderTest \
+    --tests com.skillpilot.backend.openai.de.mtls.OpenAiDeMtlsEdgeClassificationFilterTest \
+    --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeMtlsEdgeIntegrationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest \
     --tests com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest \
@@ -329,9 +333,14 @@ node scripts/verify_frontend_shell_assets.mjs \
   "${SMOKE_BASE_URL}"
 
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
-  echo "Prüfe den öffentlichen OpenAI-Plugin-V1-Edge..."
-  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
-    ./scripts/verify_openai_v1_public_edge.sh
+  echo "Prüfe den installierten und öffentlichen OpenAI-Plugin-V1-mTLS-Edge..."
+  if [ ! -e /etc/skillpilot/openai-mtls/mode.conf ] \
+    && [ ! -L /etc/skillpilot/openai-mtls/mode.conf ]; then
+    ./scripts/verify_openai_v1_mtls_edge.sh \
+      --runtime --expected-mode disabled
+  else
+    ./scripts/verify_openai_v1_mtls_edge.sh --runtime
+  fi
 fi
 
 echo "Prüfe ausgelieferte Coach-Variante..."

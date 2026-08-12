@@ -236,9 +236,13 @@ OAuth Authorization Code mit PKCE bleibt von der Lernsession getrennt:
   Ablauf und Widerruf werden weiterhin geprüft.
 - Offene Dynamic Client Registration und CIMD sind in diesem produktiven
   Profil weder erforderlich noch erlaubt.
-- mTLS gehört nicht zum Vertrag oder Deployment von `1.0.0`. Eine spätere
-  Transporthärtung benötigt eine eigene Architekturentscheidung und ersetzt
-  die app-spezifische OAuth-Clientauthentisierung nicht.
+- Der dedizierte V1-MCP-vHost prüft zusätzlich das von ChatGPT präsentierte,
+  OpenAI-verwaltete Clientzertifikat. Ein kontrollierter `observe`-Modus lässt
+  fehlende Zertifikate zunächst bis OAuth passieren, lehnt aber ungültige
+  Zertifikate ab. Vor Veröffentlichung wird auf `enforce` umgestellt; dann
+  benötigen externe `/mcp`-Aufrufe die verifizierte OpenAI-Kette, den
+  `clientAuth`-EKU und den exakten Connector-SAN. mTLS ersetzt weder die
+  app-spezifische OAuth-Clientauthentisierung noch die Lernsession.
 
 Der OAuth-Principal oder ein OAuth-Subject ist kein Ersatz für die temporäre
 Lernsession. OAuth dient ausschließlich der App-Autorisierung und dem

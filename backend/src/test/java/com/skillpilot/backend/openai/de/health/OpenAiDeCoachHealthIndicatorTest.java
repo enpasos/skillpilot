@@ -9,6 +9,7 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.de.OpenAiDeProperties.MtlsEdgeMode;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachIdentityResolver;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -30,6 +31,7 @@ class OpenAiDeCoachHealthIndicatorTest {
     void reportsUpWithStableContractHashAndOnlyNonSecretConfigurationDetails() {
         assertThat(OpenAiDeCoachHealthIndicator.EXPECTED_TOOL_COUNT).isEqualTo(12);
         OpenAiDeProperties properties = secureProperties();
+        properties.setMtlsEdgeMode(MtlsEdgeMode.OBSERVE);
         OpenAiDeV1McpContractAdapter contract = contract();
         OpenAiDeCoachHealthIndicator indicator = new OpenAiDeCoachHealthIndicator(
                 properties,
@@ -47,6 +49,7 @@ class OpenAiDeCoachHealthIndicatorTest {
                 .containsEntry("communicationLanguages", List.of("de", "en"))
                 .containsEntry("mcpEnabled", true)
                 .containsEntry("oauthEnabled", true)
+                .containsEntry("mtlsEdgeMode", "observe")
                 .containsEntry("clientIdConfigured", true)
                 .containsEntry("clientSecretBasicConfigured", true)
                 .containsEntry("clientSecretConfigured", true)

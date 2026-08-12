@@ -40,6 +40,36 @@ const fixturePath = fileURLToPath(
   ),
 );
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
+const releaseScriptPath = fileURLToPath(
+  new URL("./openai_plugin_release.mjs", import.meta.url),
+);
+const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
+
+test("published registration requires portal and enforced mTLS attestations", () => {
+  const cases = [
+    {
+      flags: [],
+      expected: /requires --confirm-openai-published/u,
+    },
+    {
+      flags: ["--confirm-openai-published"],
+      expected: /requires --confirm-mtls-enforced-and-verified/u,
+    },
+    {
+      flags: ["--confirm-mtls-enforced-and-verified"],
+      expected: /requires --confirm-openai-published/u,
+    },
+  ];
+  for (const { flags, expected } of cases) {
+    const result = spawnSync(
+      process.execPath,
+      [releaseScriptPath, "record-published", ...flags],
+      { cwd: repositoryRoot, encoding: "utf8", stdio: "pipe" },
+    );
+    assert.notEqual(result.status, 0);
+    assert.match(`${result.stdout}\n${result.stderr}`, expected);
+  }
+});
 
 test("plugin archive name cannot be confused with the shared Spring server", () => {
   assert.equal(

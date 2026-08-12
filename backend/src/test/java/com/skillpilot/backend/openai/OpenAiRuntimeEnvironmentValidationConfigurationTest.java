@@ -15,6 +15,7 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
         OpenAiRuntimeEnvironmentValidationConfiguration.requireNoForbiddenNames(List.of(
                 "SKILLPILOT_OPENAI_COACH_V1_ENABLED",
                 "SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED",
+                "SKILLPILOT_OPENAI_COACH_V1_MTLS_EDGE_MODE",
                 "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_SECRET",
                 "SKILLPILOT_OPENAI_COACH_V1_OPENAI_APPS_CHALLENGE",
                 "SKILLPILOT_OPENAI_RATE_LIMIT_ENABLED"));

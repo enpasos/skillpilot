@@ -52,7 +52,10 @@ jobs:
           bash -n \
             deploy_skillpilot.sh \
             scripts/deploy.sh \
-            scripts/lib/openai_v1_service_environment.sh
+            scripts/lib/openai_v1_service_environment.sh \
+            scripts/lib/openai_v1_mtls_mode.sh \
+            scripts/install_openai_v1_mtls_edge.sh \
+            scripts/verify_openai_v1_mtls_edge.sh
           ./deploy_skillpilot.sh --help | grep -Fq 'openai-mcp coach'
           ln -s "${GITHUB_WORKSPACE}/deploy_skillpilot.sh" \
             "${RUNNER_TEMP}/deploy_skillpilot.sh"
@@ -105,6 +108,8 @@ jobs:
         run: |
           bash -n scripts/verify_openai_v1_public_edge.sh
           PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_openai_v1_public_edge.py
+      - name: Validate OpenAI V1 mTLS edge verifier
+        run: ./scripts/verify_openai_v1_mtls_edge.sh --static
 
   frontend-ci:
     name: Application frontend CI

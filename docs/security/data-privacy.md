@@ -120,7 +120,7 @@ and Claude connection records.
 
 The protected public V1 endpoint
 `https://mcp-coach-v1.skillpilot.com/mcp` uses normal server-authenticated
-HTTPS and requires a valid OAuth access token. Its dedicated nginx virtual
+HTTPS, OpenAI connector mTLS and a valid OAuth access token. Its dedicated nginx virtual
 host maps only the public `/mcp` endpoint to the loopback-only Spring handler
 `/internal/openai/v1/mcp`; the eight reserved V2-to-V9 sibling hosts return
 `404`. The
@@ -129,8 +129,12 @@ authenticated with `client_secret_basic`, together with PKCE S256 and exact
 client ID, redirect URI, resource, audience, and scopes. The client secret is
 stored only in the ChatGPT App configuration and the SkillPilot secret store.
 Open DCR, CIMD, `none`, `private_key_jwt`, and implicit profile fallback are not
-production modes. mTLS is not part of the `1.0.0` contract or deployment
-gates; any later transport hardening needs a separate design.
+production modes. The mTLS edge validates OpenAI's published CA chain,
+client-authentication EKU and exact connector SAN. It records only the bounded
+classification (`VERIFIED`, temporary `OBSERVE_NO_CERT`, or loopback-only
+`LOCAL_OPERATOR`), never the certificate or its contents. The temporary
+`observe` mode is used only to prove real ChatGPT certificate presentation;
+publication requires `enforce`.
 
 It stores:
 

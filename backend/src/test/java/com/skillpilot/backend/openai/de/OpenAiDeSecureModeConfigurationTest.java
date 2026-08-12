@@ -169,6 +169,31 @@ class OpenAiDeSecureModeConfigurationTest {
                 });
     }
 
+    @Test
+    void mtlsEdgeModeUsesOnlyExactCanonicalEnumValues() {
+        for (String mode : new String[] {"disabled", "observe", "enforce"}) {
+            runner.withPropertyValues(
+                            securePropertiesWith(
+                                    "skillpilot.openai.coach.v1.mtls-edge-mode=" + mode))
+                    .run(context -> {
+                        assertThat(context).hasNotFailed();
+                        assertThat(context.getBean(OpenAiDeProperties.class)
+                                .getMtlsEdgeMode()
+                                .wireValue()).isEqualTo(mode);
+                    });
+        }
+        for (String mode : new String[] {"OBSERVE"}) {
+            runner.withPropertyValues(
+                            securePropertiesWith(
+                                    "skillpilot.openai.coach.v1.mtls-edge-mode=" + mode))
+                    .run(context -> assertThat(context.getStartupFailure())
+                            .isNotNull()
+                            .hasRootCauseMessage(
+                                    "skillpilot.openai.coach.v1.mtls-edge-mode must be exactly one of "
+                                            + "disabled, observe, or enforce."));
+        }
+    }
+
     private static String[] validSecureProperties() {
         return new String[] {
             "skillpilot.openai.coach.v1.enabled=true",

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.de.observability;
 
 import com.skillpilot.backend.openai.de.OpenAiAppsChallengeController;
+import com.skillpilot.backend.config.RawHttpServletRequest;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthMetadataController;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -35,7 +36,10 @@ public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilt
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        String path = request.getRequestURI();
+        String path = RawHttpServletRequest.requestUri(request);
+        if (path == null) {
+            return false;
+        }
         return !(path.startsWith(OPENAI_API_PREFIX)
                 || path.equals(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH)
                 || path.startsWith(OpenAiDeV1ContractMetadata.INTERNAL_MCP_PATH + "/")
@@ -63,7 +67,7 @@ public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilt
         } finally {
             int status = response.getStatus();
             telemetry.recordHttpStatus(status);
-            if (status >= 400 && isOAuthProtocolPath(request.getRequestURI())) {
+            if (status >= 400 && isOAuthProtocolPath(RawHttpServletRequest.requestUri(request))) {
                 telemetry.record(Event.OAUTH_FAILURE);
                 if ("refresh_token".equals(request.getParameter("grant_type"))) {
                     telemetry.record(Event.REFRESH_FAILURE);
