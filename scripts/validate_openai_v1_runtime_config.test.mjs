@@ -270,6 +270,16 @@ esac
     assert.ok(!passing.stdout.includes(secretSentinel));
     assert.ok(!passing.stderr.includes(secretSentinel));
 
+    const diagnosticSessionTtlGate = runGate({
+      FAKE_DIRECT_ENVIRONMENT:
+        "SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true",
+    });
+    assert.equal(
+      diagnosticSessionTtlGate.status,
+      0,
+      diagnosticSessionTtlGate.stderr,
+    );
+
     const missingEnvironmentPath = resolve(directory, "missing.env");
     const optionalMissing = runGate({
       FAKE_SERVICE_ENV_FILE: missingEnvironmentPath,
