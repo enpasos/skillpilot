@@ -6445,9 +6445,10 @@ public class LearnerService {
     }
 
     /**
-     * Return the same personalized top-level modules used when a learner has no
-     * scope yet. This read model lets coach adapters offer an explicit focus
-     * switch even while another scope or active goal is present.
+     * Returns backend-authorized Level-3 focus choices for an explicit focus
+     * change. Genuine learner-facing ancestors that add unmastered targets are
+     * published nearest-first; the existing top-level choices follow so a
+     * deliberate lateral/root switch remains possible.
      */
     @Transactional(readOnly = true)
     public List<FrontierGoal> getScopeNavigationOptions(String skillpilotId) {
@@ -6459,7 +6460,31 @@ public class LearnerService {
         GoalProjection projection = getGoalProjection(
                 curriculumId,
                 learner.getPersonalCurriculum());
-        return getInitialScopeOptions(curriculumId, projection);
+        List<String> currentFocusIds = resolveEffectiveProjectedFocusIds(
+                learner,
+                projection);
+        Map<String, Double> mastery = getMastery(skillpilotId);
+
+        LinkedHashMap<String, FrontierGoal> options = new LinkedHashMap<>();
+        buildBroaderFocusOptions(projection, currentFocusIds, mastery)
+                .forEach(option -> options.putIfAbsent(option.id(), option));
+
+        Set<String> currentTargetAtoms = projectedAtomicTargetIds(
+                currentFocusIds,
+                projection);
+        for (FrontierGoal rootOption : getInitialScopeOptions(curriculumId, projection)) {
+            if (rootOption == null || rootOption.id() == null || rootOption.id().isBlank()) {
+                continue;
+            }
+            Set<String> optionTargetAtoms = projectedAtomicTargetIds(
+                    List.of(rootOption.id()),
+                    projection);
+            if (optionTargetAtoms.equals(currentTargetAtoms)) {
+                continue;
+            }
+            options.putIfAbsent(rootOption.id(), rootOption);
+        }
+        return new ArrayList<>(options.values());
     }
 
     private UnifiedLearnerStateResponse getLearnerState(
@@ -6753,18 +6778,11 @@ public class LearnerService {
 
         List<FrontierGoal> scopeExpansionOptions = Collections.emptyList();
         if (curriculumId != null && !personalizationRequired && activeGoal == null
-                && frontier.isEmpty() && !plannedScopeIds.isEmpty()) {
-            Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, mastery);
-            Map<String, LearningGoal> structuralForExpansion = structuralGoals;
-            if (structuralForExpansion == null || structuralForExpansion.isEmpty()) {
-                structuralForExpansion = getStructuralGoals(curriculumId);
-            }
-            Set<String> scopeForExpansion = scope;
-            if (scopeForExpansion == null || scopeForExpansion.isEmpty()) {
-                scopeForExpansion = computeScope(plannedScopeIds, structuralForExpansion, Collections.emptyMap());
-            }
-            scopeExpansionOptions = buildScopeExpansionOptions(curriculumId, allGoals, structuralForExpansion,
-                    scopeForExpansion, plannedScopeIds, plannedIds, effectiveMastery);
+                && scopeCompleted && !plannedScopeIds.isEmpty()) {
+            scopeExpansionOptions = buildBroaderFocusOptions(
+                    goalProjection,
+                    plannedIds,
+                    mastery);
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
@@ -7133,136 +7151,262 @@ public class LearnerService {
         return goal.tags().stream().anyMatch(tag -> "memorization".equals(tag) || tag.startsWith("srs-deck:"));
     }
 
-    private List<FrontierGoal> buildScopeExpansionOptions(String curriculumId, Map<String, LearningGoal> filteredGoals,
-            Map<String, LearningGoal> structuralGoals, Set<String> scope, List<String> plannedIds,
-            List<String> storedPlannedIds, Map<String, Double> effectiveMastery) {
-        if (plannedIds == null || plannedIds.isEmpty()) {
+    /**
+     * Builds strict Level-3 supersets along the learner-facing contains path.
+     * A candidate is useful only when it adds at least one unmastered atomic
+     * target. The requires graph is intentionally irrelevant here: mastery of
+     * a dependent goal never implies mastery of its prerequisites.
+     */
+    private List<FrontierGoal> buildBroaderFocusOptions(
+            GoalProjection projection,
+            List<String> currentFocusIds,
+            Map<String, Double> mastery) {
+        if (projection == null || currentFocusIds == null || currentFocusIds.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<FrontierGoal> compositionOptions = buildCompositionScopeExpansionOptions(
-                filteredGoals,
-                scope,
-                storedPlannedIds,
-                effectiveMastery);
-        if (!compositionOptions.isEmpty()) {
-            return compositionOptions;
+        Set<String> currentTargetAtoms = projectedAtomicTargetIds(
+                currentFocusIds,
+                projection);
+        if (currentTargetAtoms.isEmpty()) {
+            return Collections.emptyList();
         }
 
-        Map<String, Set<String>> parentMap = buildParentMap(structuralGoals);
         LinkedHashSet<String> candidateIds = new LinkedHashSet<>();
-
-        for (String plannedId : plannedIds) {
-            if (!structuralGoals.containsKey(plannedId)) {
-                continue;
-            }
-            Set<String> parents = parentMap.getOrDefault(plannedId, Collections.emptySet());
-            for (String parentId : parents) {
-                LearningGoal parent = structuralGoals.get(parentId);
-                if (parent == null || parent.getContains() == null) {
-                    continue;
-                }
-                for (String childRef : parent.getContains()) {
-                    String childId = resolveGoalRef(childRef, structuralGoals);
-                    if (childId == null || scope.contains(childId)) {
-                        continue;
-                    }
-                    if (!filteredGoals.containsKey(childId)) {
-                        continue;
-                    }
-                    if (effectiveMastery != null && effectiveMastery.getOrDefault(childId, 0.0) >= 0.9) {
-                        continue;
-                    }
-                    candidateIds.add(childId);
+        if (projection.compositionViewApplied() && compositionViewService != null) {
+            for (String viewId : projection.compositionViewIds()) {
+                for (String currentFocusId : currentFocusIds) {
+                    compositionViewService.findLearnerFacingFocusAncestors(
+                                    viewId,
+                                    currentFocusId,
+                                    projection.structuralGoals())
+                            .stream()
+                            .map(CompositionViewService.CompositionStructureResolution::syntheticGoalId)
+                            .filter(Objects::nonNull)
+                            .filter(id -> !id.isBlank())
+                            .forEach(candidateIds::add);
                 }
             }
+            candidateIds.addAll(projection.presentationRootGoalIds());
+        } else {
+            candidateIds.addAll(findCanonicalFocusAncestorIds(
+                    currentFocusIds,
+                    projection.structuralGoals()));
         }
 
-        List<FrontierGoal> result = new ArrayList<>();
-        for (String id : candidateIds) {
-            LearningGoal g = filteredGoals.get(id);
-            if (g == null) {
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(
+                projection.visibleGoals(),
+                mastery == null ? Collections.emptyMap() : mastery);
+        LinkedHashMap<List<String>, FrontierGoal> options = new LinkedHashMap<>();
+        for (String rawCandidateId : candidateIds) {
+            String candidateId = preferFlattenedPresentationRoot(
+                    rawCandidateId,
+                    projection);
+            if (candidateId == null
+                    || candidateId.isBlank()
+                    || currentFocusIds.contains(candidateId)
+                    || !isProjectedTargetFocus(candidateId, projection)) {
                 continue;
             }
-            result.add(toFrontierGoal(g, "Scope expansion", null));
-        }
+            List<String> replacementFocusIds = replaceCoveredFocusRoots(
+                    currentFocusIds,
+                    candidateId,
+                    projection);
+            if (replacementFocusIds.isEmpty() || replacementFocusIds.equals(currentFocusIds)) {
+                continue;
+            }
+            Set<String> candidateTargetAtoms = projectedAtomicTargetIds(
+                    replacementFocusIds,
+                    projection);
+            if (candidateTargetAtoms.size() <= currentTargetAtoms.size()
+                    || !candidateTargetAtoms.containsAll(currentTargetAtoms)) {
+                continue;
+            }
+            boolean addsUnmasteredTarget = candidateTargetAtoms.stream()
+                    .filter(goalId -> !currentTargetAtoms.contains(goalId))
+                    .anyMatch(goalId -> effectiveMastery.getOrDefault(goalId, 0.0) < 0.9);
+            if (!addsUnmasteredTarget) {
+                continue;
+            }
 
-        if (!result.isEmpty()) {
-            return result;
+            FrontierGoal option = focusNavigationGoal(
+                    candidateId,
+                    projection,
+                    "Broader focus");
+            if (option != null) {
+                List<String> immutableReplacement = List.copyOf(replacementFocusIds);
+                options.putIfAbsent(
+                        immutableReplacement,
+                        option.withSelectionGoalIds(immutableReplacement));
+            }
         }
-
-        // Fallback: Offer top-level modules not already in scope
-        List<FrontierGoal> topLevel = getTopLevelModules(curriculumId, filteredGoals);
-        return topLevel.stream()
-                .filter(g -> !scope.contains(g.id()))
-                .filter(g -> effectiveMastery == null || effectiveMastery.getOrDefault(g.id(), 0.0) < 0.9)
-                .map(g -> new FrontierGoal(
-                        g.id(),
-                        g.title(),
-                        g.description(),
-                        g.type(),
-                        g.nodeKind(),
-                        g.semanticKind(),
-                        "Scope expansion",
-                        g.tags(),
-                        g.resourceLinks(),
-                        g.sourceRef(),
-                        g.sourceLicense(),
-                        g.sourceLicenseUrl(),
-                        g.examData(),
-                        g.examReadyForSelection()))
-                .toList();
+        return new ArrayList<>(options.values());
     }
 
-    private List<FrontierGoal> buildCompositionScopeExpansionOptions(
-            Map<String, LearningGoal> filteredGoals,
-            Set<String> scope,
-            List<String> storedPlannedIds,
-            Map<String, Double> effectiveMastery) {
-        if (compositionViewService == null || storedPlannedIds == null || storedPlannedIds.isEmpty()) {
+    /**
+     * The cockpit flattens an outer composition wrapper when it represents the
+     * same atomic target set as the canonical presentation root. Publish the
+     * same canonical root instead of a duplicate synthetic alias.
+     */
+    private String preferFlattenedPresentationRoot(
+            String candidateId,
+            GoalProjection projection) {
+        if (candidateId == null
+                || projection == null
+                || compositionViewService == null
+                || !isCompositionStructureGoalId(candidateId)) {
+            return candidateId;
+        }
+        CompositionViewService.CompositionStructureResolution candidate =
+                compositionViewService.resolveStructureReference(candidateId);
+        if (candidate == null) {
+            return candidateId;
+        }
+        List<CompositionViewService.CompositionStructureResolution> viewRoots =
+                compositionViewService.findRootScopeOptions(candidate.viewId());
+        if (viewRoots.size() != 1
+                || !candidateId.equals(viewRoots.getFirst().syntheticGoalId())) {
+            return candidateId;
+        }
+        Set<String> candidateAtoms = projectedAtomicTargetIds(
+                List.of(candidateId),
+                projection);
+        if (candidateAtoms.isEmpty()) {
+            return candidateId;
+        }
+        for (String presentationRootId : projection.presentationRootGoalIds()) {
+            LearningGoal presentationRoot = projection.visibleGoals().get(presentationRootId);
+            if (presentationRoot == null) {
+                presentationRoot = projection.structuralGoals().get(presentationRootId);
+            }
+            Set<String> presentationAtoms = projectedAtomicTargetIds(
+                    List.of(presentationRootId),
+                    projection);
+            if (presentationRoot != null
+                    && presentationRoot.getTitle() != null
+                    && candidate.label() != null
+                    && presentationRoot.getTitle().trim().equalsIgnoreCase(candidate.label().trim())
+                    && !presentationAtoms.isEmpty()
+                    && presentationAtoms.equals(candidateAtoms)) {
+                return presentationRootId;
+            }
+        }
+        return candidateId;
+    }
+
+    /**
+     * Widens the branch covered by {@code candidateId} while retaining every
+     * independent focus root. If the ancestor covers several current roots,
+     * they collapse into that one ancestor at their first position.
+     */
+    private List<String> replaceCoveredFocusRoots(
+            List<String> currentFocusIds,
+            String candidateId,
+            GoalProjection projection) {
+        if (currentFocusIds == null
+                || currentFocusIds.isEmpty()
+                || candidateId == null
+                || candidateId.isBlank()) {
+            return Collections.emptyList();
+        }
+        Set<String> candidateAtoms = projectedAtomicTargetIds(
+                List.of(candidateId),
+                projection);
+        if (candidateAtoms.isEmpty()) {
             return Collections.emptyList();
         }
 
-        LinkedHashMap<String, FrontierGoal> options = new LinkedHashMap<>();
-        for (String storedPlannedId : storedPlannedIds) {
-            if (!isCompositionStructureGoalId(storedPlannedId)) {
-                continue;
-            }
-            List<CompositionViewService.CompositionStructureResolution> siblings =
-                    compositionViewService.findFollowingScopeSiblings(storedPlannedId);
-            for (CompositionViewService.CompositionStructureResolution sibling : siblings) {
-                if (sibling == null || sibling.syntheticGoalId() == null || sibling.syntheticGoalId().isBlank()) {
-                    continue;
+        List<String> replacement = new ArrayList<>();
+        boolean insertedCandidate = false;
+        boolean coveredAnyRoot = false;
+        for (String currentFocusId : currentFocusIds) {
+            Set<String> currentRootAtoms = projectedAtomicTargetIds(
+                    List.of(currentFocusId),
+                    projection);
+            boolean covered = !currentRootAtoms.isEmpty()
+                    && candidateAtoms.containsAll(currentRootAtoms);
+            if (covered) {
+                coveredAnyRoot = true;
+                if (!insertedCandidate) {
+                    replacement.add(candidateId);
+                    insertedCandidate = true;
                 }
-                List<String> mappedReferenceIds = sibling.referencedGoalIds().stream()
-                        .map(goalId -> mapGoalIdForVisibleGoals(goalId, filteredGoals, true))
-                        .filter(goalId -> goalId != null && filteredGoals.containsKey(goalId))
-                        .distinct()
-                        .toList();
-                if (mappedReferenceIds.isEmpty()) {
-                    continue;
-                }
-                if (scope != null && !scope.isEmpty() && mappedReferenceIds.stream().allMatch(scope::contains)) {
-                    continue;
-                }
-                boolean siblingCompleted = mappedReferenceIds.stream()
-                        .allMatch(goalId -> effectiveMastery != null
-                                && effectiveMastery.getOrDefault(goalId, 0.0) >= 0.9);
-                if (siblingCompleted) {
-                    continue;
-                }
-
-                FrontierGoal option = isCompositionStructureGoalId(sibling.syntheticGoalId())
-                        ? toCompositionStructureFrontierGoal(sibling.syntheticGoalId(), "Scope expansion")
-                        : toFrontierGoal(filteredGoals.get(mappedReferenceIds.get(0)), "Scope expansion", null);
-                if (option != null) {
-                    options.putIfAbsent(option.id(), option);
-                }
-                break;
+            } else if (currentFocusId != null
+                    && !currentFocusId.isBlank()
+                    && !replacement.contains(currentFocusId)) {
+                replacement.add(currentFocusId);
             }
         }
+        return coveredAnyRoot ? replacement : Collections.emptyList();
+    }
 
-        return new ArrayList<>(options.values());
+    private Set<String> projectedAtomicTargetIds(
+            List<String> focusIds,
+            GoalProjection projection) {
+        if (focusIds == null || focusIds.isEmpty() || projection == null) {
+            return Collections.emptySet();
+        }
+        List<String> projectedRoots = resolveProjectedTargetScopeIds(
+                focusIds,
+                projection);
+        if (projectedRoots.isEmpty()) {
+            return Collections.emptySet();
+        }
+        Set<String> expanded = computeScope(
+                projectedRoots,
+                projection.structuralGoals(),
+                Collections.emptyMap());
+        return projection.targetGoalIds().stream()
+                .filter(expanded::contains)
+                .filter(goalId -> isAtomicGoal(projection.visibleGoals().get(goalId)))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    private List<String> findCanonicalFocusAncestorIds(
+            List<String> focusIds,
+            Map<String, LearningGoal> structuralGoals) {
+        if (focusIds == null
+                || focusIds.isEmpty()
+                || structuralGoals == null
+                || structuralGoals.isEmpty()) {
+            return Collections.emptyList();
+        }
+        Map<String, Set<String>> parentMap = buildParentMap(structuralGoals);
+        LinkedHashSet<String> ancestors = new LinkedHashSet<>();
+        for (String focusId : focusIds) {
+            if (focusId == null || focusId.isBlank()) {
+                continue;
+            }
+            LinkedHashSet<String> visited = new LinkedHashSet<>();
+            String currentId = focusId;
+            while (visited.add(currentId)) {
+                String parentId = parentMap
+                        .getOrDefault(currentId, Collections.emptySet())
+                        .stream()
+                        .findFirst()
+                        .orElse(null);
+                if (parentId == null) {
+                    break;
+                }
+                ancestors.add(parentId);
+                currentId = parentId;
+            }
+        }
+        return new ArrayList<>(ancestors);
+    }
+
+    private FrontierGoal focusNavigationGoal(
+            String focusId,
+            GoalProjection projection,
+            String reason) {
+        if (isCompositionStructureGoalId(focusId)) {
+            return toCompositionStructureFrontierGoal(focusId, reason);
+        }
+        LearningGoal goal = projection.visibleGoals().get(focusId);
+        if (goal == null) {
+            goal = projection.structuralGoals().get(focusId);
+        }
+        return toFrontierGoal(goal, reason, null);
     }
 
     private Map<String, Set<String>> buildParentMap(Map<String, LearningGoal> allGoals) {

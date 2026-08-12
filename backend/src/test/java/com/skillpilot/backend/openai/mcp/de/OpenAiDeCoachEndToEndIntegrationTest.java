@@ -96,6 +96,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATHEMATICS_ROOT_FOCUS_ID =
             "c01b1ce9-a667-4a46-b251-ec33ae602b15";
+    private static final String E_ONE_FOCUS_ID =
+            "c9d92f32-167a-4006-a940-b8063a6ed434";
+    private static final String E_PHASE_SCOPE_ID =
+            "composition:de-he-gym-sekii-math-lk:structure:e-phase";
     private static final String HESSEN_SEKII_MATH_LK_SCOPE_ID =
             "composition:de-he-gym-sekii-math-lk:structure:sek2-lk";
     private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
@@ -818,7 +822,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(objectMapper.readTree(webPersonalizationRead.body()).path("stage").asText())
                 .isEqualTo("COMPLETE");
 
-
+        // With no explicit Level-3 narrowing, the resolved learner-facing root is
+        // already the effective focus and must not be republished as a no-op
+        // scope change.
         HttpResponse<String> scopeNavigation = callTool(
                 accessToken,
                 10,
@@ -829,45 +835,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         JsonNode scopeNavigationContext = result(scopeNavigation).path("structuredContent");
         assertThat(scopeNavigationContext.path("target").asText()).isEqualTo("scope");
         assertThat(scopeNavigationContext.path("requiredAction").asText()).isEqualTo("setScope");
-        JsonNode publishedNavigationOption = scopeNavigationContext.path("options").valueStream()
-                .filter(option -> optionGoalIds(option).equals(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID)))
-                .findFirst()
-                .orElseThrow();
-        List<String> publishedScopeGoalIds = optionGoalIds(publishedNavigationOption);
-
-        HttpResponse<String> scopeWrite = callTool(
-                accessToken,
-                11,
-                OpenAiDeV1McpContractAdapter.SET_SCOPE,
-                scopeArguments(publishedScopeGoalIds),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(scopeWrite, applicationSubject);
-        JsonNode scopeContext = result(scopeWrite).path("structuredContent");
-        assertThat(scopeContext.path("requiredAction").asText()).isEqualTo("setActiveGoal");
-        assertThat(scopeContext.path("options")).isNotEmpty();
-        assertThat(scopeContext.path("curriculum").path("curriculumId").asText())
-                .isEqualTo(CURRICULUM_ID);
-        assertThat(persistedScopeGoalIds()).containsExactlyElementsOf(publishedScopeGoalIds);
-
-        Learner persistedAfterScope =
-                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
-        assertThat(persistedAfterScope.getActiveGoalId()).isNull();
-        assertThat(objectMapper.readTree(persistedAfterScope.getPersonalCurriculum()))
-                .isEqualTo(completedCurriculum);
-
-        HttpResponse<String> idempotentScopeWrite = callTool(
-                accessToken,
-                12,
-                OpenAiDeV1McpContractAdapter.SET_SCOPE,
-                scopeArguments(optionGoalIds(publishedNavigationOption)),
-                resumedLearningSessionId);
-        assertMcpPayloadDoesNotExposeIdentity(idempotentScopeWrite, applicationSubject);
-        assertThat(result(idempotentScopeWrite)
-                        .path("structuredContent")
-                        .path("requiredAction")
-                        .asText())
-                .isEqualTo("setActiveGoal");
-        assertThat(persistedScopeGoalIds()).containsExactlyElementsOf(publishedScopeGoalIds);
+        assertThat(scopeNavigationContext.path("options").valueStream()
+                        .map(this::optionGoalIds)
+                        .toList())
+                .doesNotContain(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
+        assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
         assertThat(objectMapper.readTree(
                         learnerRepository.findById(PERMANENT_SKILLPILOT_ID)
                                 .orElseThrow()
@@ -1125,6 +1097,69 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .doesNotContain(
                         OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
                         OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
+        // The Cockpit may deliberately narrow the Level-3 focus to one canonical
+        // subtree. A later unqualified coach request to broaden must publish the
+        // learner-facing ancestors nearest-first and preserve an active goal that
+        // remains inside the widened scope.
+        HttpResponse<String> narrowFocus = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/scope",
+                scopeArguments(List.of(E_ONE_FOCUS_ID)),
+                Map.of());
+        assertThat(narrowFocus.statusCode()).withFailMessage(narrowFocus.body()).isEqualTo(200);
+        assertThat(persistedScopeGoalIds()).containsExactly(E_ONE_FOCUS_ID);
+
+        HttpResponse<String> narrowFocusRead = callTool(
+                accessToken,
+                191,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(narrowFocusRead, applicationSubject);
+        JsonNode narrowFocusContext = result(narrowFocusRead).path("structuredContent");
+        String activeGoalInsideEOne = narrowFocusContext.path("activeGoal").path("goalId").asText();
+        assertThat(activeGoalInsideEOne).isNotBlank();
+        assertThat(narrowFocusContext.path("requiredAction").asText()).isEqualTo("teachActiveGoal");
+
+        HttpResponse<String> broaderFocusNavigation = callTool(
+                accessToken,
+                192,
+                OpenAiDeV1McpContractAdapter.GET_NAVIGATION,
+                "{\"target\":\"scope\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(broaderFocusNavigation, applicationSubject);
+        JsonNode broaderNavigation = result(broaderFocusNavigation).path("structuredContent");
+        assertThat(broaderNavigation.path("requiredAction").asText()).isEqualTo("setScope");
+        List<List<String>> broaderGoalIds = broaderNavigation.path("options").valueStream()
+                .map(this::optionGoalIds)
+                .toList();
+        assertThat(broaderGoalIds)
+                .startsWith(List.of(E_PHASE_SCOPE_ID), List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
+        JsonNode nearestBroaderFocus = broaderNavigation.path("options").get(0);
+        assertThat(nearestBroaderFocus.path("label").asText())
+                .isEqualTo("E-Phase: Grundlagen der Analysis und mathematische Modelle");
+        assertThat(broaderNavigation.path("instruction").asText()).contains(
+                "Geeignete learner-facing Vorfahren stehen zuerst",
+                "der nächste breitere Fokus an erster Stelle",
+                "kopiere genau das goalIds-Feld der ersten veröffentlichten Option unverändert",
+                "Leite niemals selbst einen Vorfahren oder eine ID ab");
+
+        List<String> nearestBroaderGoalIds = optionGoalIds(nearestBroaderFocus);
+        HttpResponse<String> broadenFocus = callTool(
+                accessToken,
+                193,
+                OpenAiDeV1McpContractAdapter.SET_SCOPE,
+                scopeArguments(nearestBroaderGoalIds),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(broadenFocus, applicationSubject);
+        JsonNode broadenedContext = result(broadenFocus).path("structuredContent");
+        assertThat(nearestBroaderGoalIds).containsExactly(E_PHASE_SCOPE_ID);
+        assertThat(persistedScopeGoalIds()).containsExactly(E_PHASE_SCOPE_ID);
+        assertThat(broadenedContext.path("activeGoal").path("goalId").asText())
+                .isEqualTo(activeGoalInsideEOne);
+        assertThat(broadenedContext.path("requiredAction").asText()).isEqualTo("teachActiveGoal");
+        assertThat(broadenedContext.path("curriculum").path("curriculumId").asText())
+                .isEqualTo(CURRICULUM_ID);
 
         HttpResponse<String> accidentalGoalNavigation = callTool(
                 accessToken,

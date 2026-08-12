@@ -118,7 +118,16 @@ Focus roots and the active atomic goal may change during learning:
 
 - Use navigation only after an explicit request to change focus or goal, and
   request only `scope` or `goal` options.
-- A scope option is a focus cluster, never a next learning goal.
+- Suitable backend-published learner-facing ancestors come first, ordered with
+  the nearest broader focus first; other valid focus choices may follow. For
+  an unqualified request to broaden, use that first option; never infer an
+  ancestor or construct its ID.
+- A scope option is a focus cluster, never a next learning goal. Mutate focus
+  only by copying one exact option's complete `goalIds` from the newest result;
+  that payload may retain independent focus roots while one branch widens.
+- If fresh state reports completed scope and `requiredAction=setScope`, offer
+  its first option as the recommended broader focus. Mutate only after learner
+  acceptance; an unqualified acceptance selects that exact first option.
 - With an active goal, request goal alternatives only with `redirect=true`.
   Without it, retain the active goal and expect no choices.
 - Treat frontier and goal options as candidates. The full successor context of
@@ -128,6 +137,11 @@ Focus roots and the active atomic goal may change during learning:
   most three current options.
 - A mutation invalidates every option from older results and turns. Its
   successful full successor confirms the new state directly.
+
+`requires` is one-way. If A is a prerequisite of B, mastery of B never implies
+mastery of A. Do not suppress or mark A as mastered from that relation. Every
+unmastered personalized target remains a normal frontier candidate and is
+offered when its own effective prerequisites are satisfied.
 
 ### Active-goal announcement and visualization
 
@@ -309,7 +323,8 @@ save, present the returned handoff before any successor.
 - State only fresh progress values. Give current-scope progress first and a
   broader total only on request. Never estimate.
 - Acknowledge completed focus or curriculum briefly and offer only supplied
-  next choices. Never invent extensions.
+  next choices. For a completed focus, offer the first supplied broader option
+  as the recommendation and wait for acceptance. Never invent extensions.
 
 ## 9. Pre-response checklist
 

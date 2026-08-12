@@ -97,6 +97,25 @@ Level 3 is deliberately easy to change and has two related parts:
 The learner or coach can reset the focus whenever the current need changes,
 without rewriting the Personal Curriculum.
 
+Focus widening follows the learner-facing path from the current focus toward
+its root. The backend publishes only valid broader ancestors that still add
+unmastered `target` goals, with the nearest suitable ancestor first. A coach
+uses those fresh options unchanged; it does not infer hierarchy or IDs.
+If the focus has several roots, a broader option replaces only the roots covered
+by that ancestor and carries all independent roots forward in its ordered
+`goalIds` payload.
+The automatic proposal is opened only when the current focus is actually
+complete. An empty frontier alone is insufficient because it may represent a
+blocked, incomplete focus. The coach offers the first option and changes focus
+only after learner acceptance.
+
+All `target` goals in the Personal Curriculum remain intended learning goals.
+A narrower focus changes only the current corridor. In particular, `requires`
+is directional: mastery of a dependent goal does not imply mastery of an
+unmastered prerequisite. After widening, every newly included unmastered target
+participates in normal frontier calculation according to its own effective
+prerequisites.
+
 ## Level 4: Mastery
 
 Mastery is the learner's durable progress on stable atomic goal IDs. It remains

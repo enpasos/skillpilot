@@ -119,6 +119,10 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
 - `requires` bestimmt didaktische Voraussetzungen, `contains` die
   Komposition. Ein Motivationsziel ist nur dann Voraussetzung anderer Ziele,
   wenn der Skill-Graph dies tatsächlich ausdrückt.
+- `requires` ist gerichtet. Die Beherrschung eines abhängigen Ziels belegt
+  niemals rückwirkend die Beherrschung seiner noch offenen Voraussetzungen.
+  Jedes nicht beherrschte `target`-Ziel bleibt nach seinen eigenen effektiven
+  Voraussetzungen ein normaler Frontier-Kandidat.
 - Frontier und Empfehlungen werden erst nach korrekt festgelegtem Lernumfang
   und Fokus bestimmt.
 
@@ -227,6 +231,15 @@ Programmeinheiten, Optionen, Placements, Kompositionsansichten und
 Kompetenzbeziehungen stammen. Sprachliche Schlussfolgerungen des Modells dürfen
 nur frische Fokus- oder Zieloptionen betreffen, niemals Curriculum oder
 Personalisierung.
+
+Bei einer Fokusweitung veröffentlicht das Backend ausschließlich den
+learner-facing Vorfahrenpfad zur Root, soweit ein breiterer Fokus noch offene
+`target`-Ziele hinzunimmt. Der nächstgelegene geeignete Vorfahr steht zuerst.
+Der Coach verwendet ausschließlich eine exakte frische Option und leitet weder
+Vorfahren noch interne IDs selbst her.
+Eine automatische Empfehlung entsteht nur nach tatsächlichem Abschluss des
+aktuellen Fokus; eine leere Frontier allein reicht nicht. Der Coach bietet die
+erste Option an und setzt sie erst nach Zustimmung der lernenden Person.
 
 ### 5.3 Begrenzte Fehlerbehandlung
 

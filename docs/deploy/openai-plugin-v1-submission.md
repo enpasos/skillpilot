@@ -158,6 +158,21 @@ kopiert.
   akzeptiert fachlich gleichwertige Wege und speichert Mastery nur beim
   Erreichen der Bestehensgrenze.
 
+### P7 – Fokus entlang des sichtbaren Pfads weiten
+
+- **Prompt:** Einen abgeschlossenen oder bewusst zu engen Fokus erweitern
+  lassen.
+- **Erwartung:** Die Scope-Navigation liefert geeignete backendseitig
+  veröffentlichte learner-facing Vorfahren zuerst, der nächstgelegene breitere
+  Fokus steht an erster Stelle; andere gültige Fokusoptionen können folgen. Der
+  Coach verwendet nur eine exakte frische Option.
+  Neu einbezogene nicht beherrschte `target`-Ziele bleiben normale
+  Frontier-Kandidaten nach ihren eigenen Voraussetzungen. Ein bereits
+  beherrschtes abhängiges Ziel erzeugt keine rückwirkende Mastery seiner
+  Voraussetzungen. Der automatische Vorschlag erscheint nur bei tatsächlich
+  abgeschlossenem Fokus, nicht bloß bei leerer Frontier, und wird erst nach
+  Zustimmung gesetzt.
+
 ## 6. Negative Reviewfälle
 
 ### N1 – Allgemeine Fachfrage ohne SkillPilot-Intent

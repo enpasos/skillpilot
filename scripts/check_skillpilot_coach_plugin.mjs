@@ -647,11 +647,41 @@ assertBehaviorFragments(
   [
     /nextAllowedTools/u,
     /Use navigation only after an explicit request/u,
+    /Suitable backend-published\s+learner-facing ancestors come first[\s\S]+nearest broader focus\s+first/u,
+    /completed scope and `requiredAction=setScope`[\s\S]+offer[\s\S]+first option/u,
+    /Set it only after the\s+learner accepts/u,
+    /never infer an\s+ancestor or construct its ID/u,
+    /Mutate focus\s+only by copying one exact option's complete `goalIds` from the newest result/u,
+    /payload may retain independent focus roots while one branch widens/u,
     /active goal[\s\S]+redirect=true/u,
     /Without it, retain the active goal/u,
     /mutation invalidates every option from older results and turns/iu,
   ],
   "fail-closed autopilot continuation and explicit goal redirect",
+);
+
+assertBehaviorFragments(
+  combinedSkill,
+  [
+    /`requires` is one-way/u,
+    /mastery of B never implies\s+mastery of A/u,
+    /Every\s+unmastered personalized target remains a normal frontier candidate/u,
+    /own effective prerequisites are satisfied/u,
+  ],
+  "directed prerequisite and frontier preservation",
+);
+
+assertBehaviorFragments(
+  mcpContract,
+  [
+    /Backend-published suitable learner-facing ancestors come first, nearest broader focus first/u,
+    /completion\.scopeComplete=true and requiredAction=setScope[\s\S]+offer the first option/u,
+    /do not mutate until the learner accepts/u,
+    /For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged/u,
+    /mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite/u,
+    /Every unmastered target in the Personal Curriculum remains subject to the normal frontier test/u,
+  ],
+  "server-owned focus widening and directed prerequisites",
 );
 
 const didacticParityRules = [
@@ -691,6 +721,24 @@ const didacticParityRules = [
       /learner\s+responds to that tailored follow-up[\s\S]+explicitly asks to continue/u,
       /content-free acknowledgement alone is insufficient/u,
       /generic acknowledgement[\s\S]+next-goal\s+options[\s\S]+forbidden/u,
+    ],
+  },
+  {
+    id: "completed-focus widening and directed prerequisites",
+    de: [
+      /aktuelle Fokus tatsächlich abgeschlossen[\s\S]+nicht schon bei leerer Frontier/u,
+      /erste echte Backend-Option als nächstbreiteren Fokus[\s\S]+Erst nach Zustimmung/u,
+      /`requires` ist gerichtet[\s\S]+niemals rückwirkend/u,
+    ],
+    en: [
+      /current focus is actually complete[\s\S]+not merely when its frontier is empty/u,
+      /first real backend option as the nearest broader focus[\s\S]+only after acceptance/u,
+      /`requires` is directed[\s\S]+never retroactively/u,
+    ],
+    target: [
+      /completion\.scopeComplete=true[\s\S]+offer the first option/u,
+      /do not mutate until the learner accepts/u,
+      /requires relation is one-way[\s\S]+never implies mastery/u,
     ],
   },
   {
@@ -879,16 +927,16 @@ const didacticParityRules = [
     de: [
       /Didaktisch \*\*sofort sinnvoll weitergehen\*\*/u,
       /gesamte personalisierte Curriculum[\s\S]+nur gratulieren\/feiern[\s\S]+keine neuen Vorschläge/u,
-      /aktuelle Fokus[\s\S]+Fokuswechsel vorschlagen/u,
+      /aktuelle Fokus tatsächlich abgeschlossen[\s\S]+Backend-Option als nächstbreiteren Fokus/u,
     ],
     en: [
       /Didactically \*\*move on sensibly immediately\*\*/u,
       /entire personalized curriculum[\s\S]+only congratulate\/celebrate[\s\S]+no new suggestions/u,
-      /current focus[\s\S]+suggest focus change/u,
+      /current focus is actually complete[\s\S]+backend option as the nearest broader focus/u,
     ],
     target: [
       /After successfully saved mastery, proceed promptly to the supplied next step/u,
-      /completed focus[\s\S]+supplied switching\s+options/u,
+      /completed focus[\s\S]+first supplied broader option[\s\S]+wait for acceptance/u,
       /entire personal curriculum[\s\S]+without\s+inventing new goals or extensions/u,
     ],
   },

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
+import com.skillpilot.backend.landscape.LearningGoal;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -118,43 +119,127 @@ public class CompositionViewService {
                 .toList();
     }
 
-    public List<CompositionStructureResolution> findFollowingStructureSiblings(String syntheticGoalId) {
-        CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
-        if (reference == null) {
+    /**
+     * Returns the learner-facing ancestors of one current focus in a matched
+     * composition view.
+     *
+     * <p>The current focus itself is excluded. A canonical descendant follows
+     * the first authored {@code contains} path to its matching
+     * {@code canonicalSubtree} root, followed by the enclosing composition
+     * structure nodes. A direct {@code goalEntry} deliberately skips unrelated
+     * canonical parents and follows only its authored composition structure
+     * path. A synthetic structure focus follows its enclosing structure path.
+     * Results are nearest-first and de-duplicated. {@code requires} edges are
+     * not part of this lookup.</p>
+     */
+    public List<CompositionStructureResolution> findLearnerFacingFocusAncestors(
+            String viewId,
+            String focusGoalId,
+            Map<String, LearningGoal> structuralGoals) {
+        if (!StringUtils.hasText(viewId) || !StringUtils.hasText(focusGoalId)) {
             return Collections.emptyList();
         }
 
-        Map<String, Object> view = findViewById(reference.viewId());
+        Map<String, Object> view = findViewById(viewId);
         if (view == null) {
             return Collections.emptyList();
         }
-
-        List<CompositionStructureResolution> siblings = findFollowingStructureSiblings(
-                view.get("rootNodes"),
-                reference.viewId(),
-                reference.nodeId());
-        return siblings == null ? Collections.emptyList() : siblings;
-    }
-
-    public List<CompositionStructureResolution> findFollowingScopeSiblings(String syntheticGoalId) {
-        CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
-        if (reference == null) {
+        String resolvedViewId = asString(view.get("viewId"));
+        if (!StringUtils.hasText(resolvedViewId)) {
             return Collections.emptyList();
         }
 
-        Map<String, Object> view = findViewById(reference.viewId());
-        if (view == null) {
+        CompositionStructureReference structureReference = parseStructureReference(focusGoalId);
+        if (structureReference != null) {
+            if (!resolvedViewId.equals(structureReference.viewId())) {
+                return Collections.emptyList();
+            }
+            List<Map<String, Object>> structurePath = findStructurePath(
+                    view.get("rootNodes"),
+                    structureReference.nodeId(),
+                    List.of());
+            if (structurePath == null) {
+                return Collections.emptyList();
+            }
+            return resolveEnclosingStructures(
+                    structurePath.subList(0, structurePath.size() - 1),
+                    resolvedViewId,
+                    new LinkedHashMap<>());
+        }
+
+        if (structuralGoals == null || structuralGoals.isEmpty()) {
+            return Collections.emptyList();
+        }
+        String resolvedFocusGoalId = resolveCanonicalGoalReference(focusGoalId, structuralGoals);
+        if (resolvedFocusGoalId == null) {
             return Collections.emptyList();
         }
 
-        List<CompositionStructureResolution> siblings = findFollowingScopeSiblings(
+        List<FocusPathCandidate> candidates = new ArrayList<>();
+        collectFocusPathCandidates(
                 view.get("rootNodes"),
-                reference.viewId(),
-                reference.nodeId());
-        return siblings == null ? Collections.emptyList() : siblings;
+                List.of(),
+                resolvedFocusGoalId,
+                structuralGoals,
+                candidates,
+                new int[]{0});
+        FocusPathCandidate selectedPath = candidates.stream()
+                .sorted(Comparator
+                        .comparingInt((FocusPathCandidate candidate) -> candidate.directGoalEntry() ? 0 : 1)
+                        .thenComparingInt(candidate -> candidate.canonicalPath().size())
+                        .thenComparingInt(candidate -> candidate.role() == ProjectionRole.TARGET ? 0 : 1)
+                        .thenComparingInt(FocusPathCandidate::authoredOrder))
+                .findFirst()
+                .orElse(null);
+        if (selectedPath == null || selectedPath.role() != ProjectionRole.TARGET) {
+            return Collections.emptyList();
+        }
+
+        LinkedHashMap<String, CompositionStructureResolution> ancestors = new LinkedHashMap<>();
+        if (!selectedPath.directGoalEntry()) {
+            List<String> canonicalPath = selectedPath.canonicalPath();
+            for (int index = canonicalPath.size() - 2; index >= 0; index -= 1) {
+                String ancestorGoalId = canonicalPath.get(index);
+                LearningGoal ancestor = structuralGoals.get(ancestorGoalId);
+                String label = ancestor == null ? "" : ancestor.getTitle();
+                if (index == 0) {
+                    String displayLabel = asString(selectedPath.referenceNode().get("displayLabel"));
+                    if (StringUtils.hasText(displayLabel)) {
+                        label = displayLabel;
+                    }
+                }
+                ancestors.putIfAbsent(
+                        ancestorGoalId,
+                        new CompositionStructureResolution(
+                                ancestorGoalId,
+                                resolvedViewId,
+                                ancestorGoalId,
+                                label,
+                                List.of(ancestorGoalId)));
+            }
+        }
+        return resolveEnclosingStructures(
+                selectedPath.structurePath(),
+                resolvedViewId,
+                ancestors);
     }
 
     private record CompositionStructureReference(String viewId, String nodeId) {
+    }
+
+    private record FocusPathCandidate(
+            ProjectionRole role,
+            boolean directGoalEntry,
+            List<String> canonicalPath,
+            List<Map<String, Object>> structurePath,
+            Map<String, Object> referenceNode,
+            int authoredOrder) {
+
+        private FocusPathCandidate {
+            canonicalPath = List.copyOf(canonicalPath);
+            structurePath = List.copyOf(structurePath);
+            referenceNode = Collections.unmodifiableMap(new LinkedHashMap<>(referenceNode));
+        }
     }
 
     private static CompositionStructureReference parseStructureReference(String syntheticGoalId) {
@@ -178,77 +263,168 @@ public class CompositionViewService {
         return new CompositionStructureReference(viewId, nodeId);
     }
 
-    private static List<CompositionStructureResolution> findFollowingStructureSiblings(
+    private static List<Map<String, Object>> findStructurePath(
             Object rawNodes,
-            String viewId,
-            String nodeId) {
-        List<Map<String, Object>> nodes = asNodeList(rawNodes);
-        for (int index = 0; index < nodes.size(); index += 1) {
-            Map<String, Object> node = nodes.get(index);
-            if ("structure".equals(asString(node.get("kind"))) && nodeId.equals(asString(node.get("id")))) {
-                List<CompositionStructureResolution> siblings = new ArrayList<>();
-                for (int siblingIndex = index + 1; siblingIndex < nodes.size(); siblingIndex += 1) {
-                    Map<String, Object> sibling = nodes.get(siblingIndex);
-                    if (!"structure".equals(asString(sibling.get("kind")))) {
-                        continue;
-                    }
-                    String siblingNodeId = asString(sibling.get("id"));
-                    if (!StringUtils.hasText(siblingNodeId)) {
-                        continue;
-                    }
-                    LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
-                    collectReferencedGoalIds(sibling, referencedGoalIds);
-                    if (referencedGoalIds.isEmpty()) {
-                        continue;
-                    }
-                    siblings.add(new CompositionStructureResolution(
-                            COMPOSITION_SYNTHETIC_PREFIX + viewId + COMPOSITION_STRUCTURE_SEPARATOR + siblingNodeId,
-                            viewId,
-                            siblingNodeId,
-                            asString(sibling.get("label")),
-                            List.copyOf(referencedGoalIds)));
-                }
-                return siblings;
+            String nodeId,
+            List<Map<String, Object>> structurePath) {
+        for (Map<String, Object> node : asNodeList(rawNodes)) {
+            if (!"structure".equals(asString(node.get("kind")))) {
+                continue;
             }
-
-            List<CompositionStructureResolution> childMatch = findFollowingStructureSiblings(
+            List<Map<String, Object>> nextPath = new ArrayList<>(structurePath);
+            nextPath.add(node);
+            if (nodeId.equals(asString(node.get("id")))) {
+                return List.copyOf(nextPath);
+            }
+            List<Map<String, Object>> childPath = findStructurePath(
                     node.get("children"),
-                    viewId,
-                    nodeId);
-            if (childMatch != null) {
-                return childMatch;
+                    nodeId,
+                    nextPath);
+            if (childPath != null) {
+                return childPath;
             }
         }
         return null;
     }
 
-    private static List<CompositionStructureResolution> findFollowingScopeSiblings(
+    private static void collectFocusPathCandidates(
             Object rawNodes,
-            String viewId,
-            String nodeId) {
-        List<Map<String, Object>> nodes = asNodeList(rawNodes);
-        for (int index = 0; index < nodes.size(); index += 1) {
-            Map<String, Object> node = nodes.get(index);
-            if ("structure".equals(asString(node.get("kind"))) && nodeId.equals(asString(node.get("id")))) {
-                List<CompositionStructureResolution> siblings = new ArrayList<>();
-                for (int siblingIndex = index + 1; siblingIndex < nodes.size(); siblingIndex += 1) {
-                    CompositionStructureResolution sibling = resolveScopeSibling(nodes.get(siblingIndex), viewId);
-                    if (sibling != null) {
-                        siblings.add(sibling);
-                    }
-                }
-                return siblings;
+            List<Map<String, Object>> structurePath,
+            String focusGoalId,
+            Map<String, LearningGoal> structuralGoals,
+            List<FocusPathCandidate> candidates,
+            int[] authoredOrder) {
+        for (Map<String, Object> node : asNodeList(rawNodes)) {
+            String kind = asString(node.get("kind"));
+            if ("structure".equals(kind)) {
+                List<Map<String, Object>> childStructurePath = new ArrayList<>(structurePath);
+                childStructurePath.add(node);
+                collectFocusPathCandidates(
+                        node.get("children"),
+                        childStructurePath,
+                        focusGoalId,
+                        structuralGoals,
+                        candidates,
+                        authoredOrder);
+                continue;
+            }
+            if (!supportsProjectionRole(kind)) {
+                continue;
             }
 
-            List<CompositionStructureResolution> childMatch = findFollowingScopeSiblings(
-                    node.get("children"),
-                    viewId,
-                    nodeId);
-            if (childMatch != null) {
-                return childMatch;
+            int candidateOrder = authoredOrder[0];
+            authoredOrder[0] += 1;
+            String referencedGoalId = resolveCanonicalGoalReference(
+                    asString(node.get("goalId")),
+                    structuralGoals);
+            if (referencedGoalId == null) {
+                continue;
+            }
+
+            boolean directGoalEntry = "goalEntry".equals(kind);
+            List<String> canonicalPath;
+            if (directGoalEntry) {
+                if (!referencedGoalId.equals(focusGoalId)) {
+                    continue;
+                }
+                canonicalPath = List.of(focusGoalId);
+            } else {
+                canonicalPath = findCanonicalContainsPath(
+                        referencedGoalId,
+                        focusGoalId,
+                        structuralGoals,
+                        new LinkedHashSet<>());
+                if (canonicalPath == null) {
+                    continue;
+                }
+            }
+            candidates.add(new FocusPathCandidate(
+                    projectionRole(node, null, "focus ancestor path"),
+                    directGoalEntry,
+                    canonicalPath,
+                    structurePath,
+                    node,
+                    candidateOrder));
+        }
+    }
+
+    private static List<String> findCanonicalContainsPath(
+            String currentGoalId,
+            String targetGoalId,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> visiting) {
+        if (currentGoalId.equals(targetGoalId)) {
+            return List.of(currentGoalId);
+        }
+        if (!visiting.add(currentGoalId)) {
+            return null;
+        }
+
+        LearningGoal currentGoal = structuralGoals.get(currentGoalId);
+        if (currentGoal != null && currentGoal.getContains() != null) {
+            for (String childReference : currentGoal.getContains()) {
+                String childGoalId = resolveCanonicalGoalReference(childReference, structuralGoals);
+                if (childGoalId == null) {
+                    continue;
+                }
+                List<String> childPath = findCanonicalContainsPath(
+                        childGoalId,
+                        targetGoalId,
+                        structuralGoals,
+                        visiting);
+                if (childPath != null) {
+                    List<String> path = new ArrayList<>(childPath.size() + 1);
+                    path.add(currentGoalId);
+                    path.addAll(childPath);
+                    visiting.remove(currentGoalId);
+                    return List.copyOf(path);
+                }
             }
         }
+        visiting.remove(currentGoalId);
         return null;
+    }
+
+    private static String resolveCanonicalGoalReference(
+            String goalReference,
+            Map<String, LearningGoal> structuralGoals) {
+        if (!StringUtils.hasText(goalReference)
+                || structuralGoals == null
+                || structuralGoals.isEmpty()) {
+            return null;
+        }
+        String normalizedReference = goalReference.trim();
+        if (structuralGoals.containsKey(normalizedReference)) {
+            return normalizedReference;
+        }
+        int separatorIndex = normalizedReference.indexOf(':');
+        if (separatorIndex >= 0 && separatorIndex + 1 < normalizedReference.length()) {
+            String unqualifiedReference = normalizedReference.substring(separatorIndex + 1);
+            if (structuralGoals.containsKey(unqualifiedReference)) {
+                return unqualifiedReference;
+            }
+        }
+        String qualifiedSuffix = ":" + normalizedReference;
+        return structuralGoals.keySet().stream()
+                .filter(goalId -> goalId.endsWith(qualifiedSuffix))
+                .sorted()
+                .findFirst()
+                .orElse(null);
+    }
+
+    private static List<CompositionStructureResolution> resolveEnclosingStructures(
+            List<Map<String, Object>> structurePath,
+            String viewId,
+            LinkedHashMap<String, CompositionStructureResolution> ancestors) {
+        for (int index = structurePath.size() - 1; index >= 0; index -= 1) {
+            CompositionStructureResolution resolution = resolveScopeSibling(
+                    structurePath.get(index),
+                    viewId);
+            if (resolution != null) {
+                ancestors.putIfAbsent(resolution.syntheticGoalId(), resolution);
+            }
+        }
+        return List.copyOf(ancestors.values());
     }
 
     private static CompositionStructureResolution resolveScopeSibling(Map<String, Object> node, String viewId) {

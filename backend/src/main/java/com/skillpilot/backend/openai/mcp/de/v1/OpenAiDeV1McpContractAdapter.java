@@ -158,6 +158,8 @@ public final class OpenAiDeV1McpContractAdapter {
 
             For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
 
+            Change the Level-3 learning focus only after an explicit learner request and only through fresh published scope options. When completion.scopeComplete=true and requiredAction=setScope supplies options, briefly offer the first option as the backend-recommended broader focus but do not mutate until the learner accepts. Backend-published suitable learner-facing ancestors come first, nearest broader focus first; other valid focus choices may follow. For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged, never infer an ancestor or construct an ID. A scope option is a focus cluster, never a next learning goal. The requires relation is one-way: mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite. Every unmastered target in the Personal Curriculum remains subject to the normal frontier test using its own effective prerequisites.
+
             Treat natural multi-part learning requests as continuing intent, but mutate only through an option in the newest context. Claim a state change only after confirmed success. After a 409 conflict, reload exactly once. SESSION_REQUIRED, SESSION_RENEWAL_REQUIRED, SESSION_VERSION_UNAVAILABLE, or an unfinished web configuration permit no further subject-matter response: use the returned server-owned startUrl and instruction unchanged. When the error instead supplies the closed instructions.de/instructions.en map, choose the entry matching the last authoritative session locale, or only when no session locale exists the conversation language. Tell the learner to finish or renew the setup in SkillPilot, choose “Lernen starten” or “Start learning”, and continue with the newly prepared message in a new chat. Do not translate or invent technical recovery, retry the old session, request an ID in chat, or demand a new OAuth connection. On authentication, schema, persistence, or repeated conflict failures, stop structured actions transparently; never guess or promise later persistence.
             """;
 
@@ -459,8 +461,11 @@ public final class OpenAiDeV1McpContractAdapter {
                         "Load navigation options",
                         "Loads options only after the learner explicitly requests a change. Never call it for a "
                                 + "normal start, continuation, or resumption. target is exactly scope or goal. scope "
-                                + "returns focus clusters, never next "
-                                + "learning goals. When an active goal exists, target=goal returns no choices unless "
+                                + "returns backend-published focus clusters, never next learning goals. Suitable "
+                                + "learner-facing ancestors come first, nearest broader focus first; other valid "
+                                + "focus choices may follow. For an unqualified request to broaden, use exactly the "
+                                + "first option's goalIds unchanged and never infer an ancestor or ID. When an active goal "
+                                + "exists, target=goal returns no choices unless "
                                 + "redirect=true, which is allowed only when the learner explicitly requests a "
                                 + "different goal. It does not change state.",
                         objectSchema(
@@ -476,8 +481,9 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         SET_SCOPE,
                         "Select learning scope",
-                        "Replaces the learning scope with one or more currently allowed subject goalIds and returns "
-                                + "the fresh successor state.",
+                        "After an explicit learner request or acceptance, replaces the learning focus with exactly "
+                                + "one fresh published scope option's goalIds and returns the fresh successor state. "
+                                + "Never construct, merge, or reuse option IDs.",
                         objectSchema(
                                 Map.of("goalIds", modelFacingOpaqueReferenceArraySchema(1)),
                                 List.of("goalIds")),
@@ -1478,13 +1484,18 @@ public final class OpenAiDeV1McpContractAdapter {
                             + "Verwende sie nur nach einem ausdrücklichen Wunsch zum Fokuswechsel. Bei Start, "
                             + "Fortsetzen oder Wiederaufnehmen darfst du sie nicht präsentieren; lade stattdessen "
                             + "den vollständigen Kontext und folge dessen aktivem Lernziel und requiredAction. "
-                            + "Übernimm beim Fokuswechsel ausschließlich eine veröffentlichte Options-ID "
-                            + "unverändert.",
+                            + "Geeignete learner-facing Vorfahren stehen zuerst, der nächste breitere Fokus an "
+                            + "erster Stelle; andere gültige Fokusoptionen können folgen. Bei einem nicht weiter "
+                            + "qualifizierten Wunsch zum Weiten kopiere genau das goalIds-Feld der ersten "
+                            + "veröffentlichten Option unverändert. Leite niemals selbst einen Vorfahren oder "
+                            + "eine ID ab.",
                     "These options change only the learning focus; they are not next learning goals. Use them "
                             + "only after an explicit request to change focus. Never present them during a normal "
                             + "start, continuation, or resumption; load the full context instead and follow its "
-                            + "active goal and requiredAction. For a focus change, copy exactly one published "
-                            + "option ID unchanged.");
+                            + "active goal and requiredAction. Suitable learner-facing ancestors come first, with "
+                            + "the nearest broader focus first; other valid focus choices may follow. For an "
+                            + "otherwise unqualified request to broaden, copy exactly the first published option's "
+                            + "goalIds unchanged. Never infer an ancestor or construct an ID.");
         } else if ("goal".equals(target) && currentActiveGoal != null) {
             instruction = localized(metadata,
                     "Die lernende Person hat ausdrücklich einen Wechsel auf ein anderes Ziel angefordert. "
@@ -1528,6 +1539,15 @@ public final class OpenAiDeV1McpContractAdapter {
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
         List<String> goalIds = stringList(arguments, "goalIds", true);
+        boolean matchesFreshPublishedOption = coachTools.getScopeOptions(skillpilotId).stream()
+                .filter(Objects::nonNull)
+                .map(FrontierGoal::selectionGoalIds)
+                .anyMatch(goalIds::equals);
+        if (!matchesFreshPublishedOption) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "The selected learning scope is no longer a fresh published option.");
+        }
         return contextMutationResult(
                 skillpilotId,
                 localized(metadata,

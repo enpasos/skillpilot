@@ -420,7 +420,7 @@ public class LearnerServiceReproTest {
     }
 
     @Test
-    void getLearnerState_shouldOfferScopeExpansionWhenScopeCompleted() {
+    void getLearnerState_shouldOfferNearestAncestorWhenScopeCompleted() {
         SkillLandscape landscape = new SkillLandscape();
         landscape.setLandscapeId(curriculumId);
         landscape.setTitle("Test Curriculum");
@@ -464,10 +464,80 @@ public class LearnerServiceReproTest {
 
         assertThat(state.frontier()).isEmpty();
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
-        assertThat(state.stateMachine().goalOptions()).anyMatch(g -> g.id().equals("YEAR_13"));
-        assertThat(state.stateMachine().goalOptions()).noneMatch(g -> g.id().equals("YEAR_11"));
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactly("ROOT");
         assertThat(state.goals().mastered_count()).isEqualTo(2);
         assertThat(state.goals().total_count()).isEqualTo(2);
+    }
+
+    @Test
+    void legacyFocusWithSeveralContainsParentsUsesOneDeterministicLearnerFacingPath() {
+        SkillLandscape landscape = new SkillLandscape();
+        landscape.setLandscapeId(curriculumId);
+        landscape.setTitle("Test Curriculum");
+        landscape.setSubject("Math");
+
+        LearningGoal root = goal("ROOT", null, List.of("PARENT_A", "PARENT_B"));
+        LearningGoal parentA = goal("PARENT_A", null, List.of("LEAF", "A_NEXT"));
+        LearningGoal parentB = goal("PARENT_B", null, List.of("LEAF", "B_NEXT"));
+        LearningGoal leaf = goal("LEAF", null, null);
+        LearningGoal aNext = goal("A_NEXT", null, null);
+        LearningGoal bNext = goal("B_NEXT", null, null);
+        landscape.setGoals(List.of(root, parentA, parentB, leaf, aNext, bNext));
+
+        when(landscapeService.getById(curriculumId)).thenReturn(landscape);
+        when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
+        when(landscapeService.getOverview(anyString(), anyBoolean()))
+                .thenReturn(new com.skillpilot.backend.api.LandscapeOverviewResponse(
+                        Collections.emptyList(), Collections.emptyMap()));
+        when(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "LEAF")));
+        when(masteryRepository.findByLearner_SkillpilotId(learnerId))
+                .thenReturn(List.of(new com.skillpilot.backend.domain.Mastery(learner, "LEAF", 1.0)));
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactly("PARENT_A", "ROOT")
+                .doesNotContain("PARENT_B");
+    }
+
+    @Test
+    void completedFocusSkipsAncestorThatAddsOnlyAlreadyMasteredTargets() {
+        SkillLandscape landscape = new SkillLandscape();
+        landscape.setLandscapeId(curriculumId);
+        landscape.setTitle("Test Curriculum");
+        landscape.setSubject("Math");
+
+        LearningGoal root = goal("ROOT", null, List.of("NEAR_PARENT", "NEW_TARGET"));
+        LearningGoal nearParent = goal("NEAR_PARENT", null, List.of("LEAF", "ALREADY_MASTERED"));
+        LearningGoal leaf = goal("LEAF", null, null);
+        LearningGoal alreadyMastered = goal("ALREADY_MASTERED", null, null);
+        LearningGoal newTarget = goal("NEW_TARGET", null, null);
+        landscape.setGoals(List.of(root, nearParent, leaf, alreadyMastered, newTarget));
+
+        when(landscapeService.getById(curriculumId)).thenReturn(landscape);
+        when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
+        when(landscapeService.getOverview(anyString(), anyBoolean()))
+                .thenReturn(new com.skillpilot.backend.api.LandscapeOverviewResponse(
+                        Collections.emptyList(), Collections.emptyMap()));
+        when(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "LEAF")));
+        when(masteryRepository.findByLearner_SkillpilotId(learnerId))
+                .thenReturn(List.of(
+                        new com.skillpilot.backend.domain.Mastery(learner, "LEAF", 1.0),
+                        new com.skillpilot.backend.domain.Mastery(learner, "ALREADY_MASTERED", 1.0)));
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(FrontierGoal::id)
+                .containsExactly("ROOT")
+                .doesNotContain("NEAR_PARENT");
     }
 
     private LearningGoal goal(String id, List<String> requires, List<String> contains) {

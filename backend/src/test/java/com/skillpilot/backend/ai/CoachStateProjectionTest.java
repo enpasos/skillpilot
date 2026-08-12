@@ -136,6 +136,7 @@ class CoachStateProjectionTest {
         assertThat(new ObjectMapper().writeValueAsString(projected))
                 .doesNotContain(
                         "examReadyForSelection",
+                        "selectionGoalIds",
                         "taskContent",
                         "solutionContent",
                         "passingPoints");

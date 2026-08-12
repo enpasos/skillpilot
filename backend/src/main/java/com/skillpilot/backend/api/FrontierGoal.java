@@ -17,7 +17,52 @@ public record FrontierGoal(
                 String sourceLicense,
                 String sourceLicenseUrl,
                 ExamData examData,
-                @JsonIgnore boolean examReadyForSelection) {
+                @JsonIgnore boolean examReadyForSelection,
+                @JsonIgnore java.util.List<String> selectionGoalIds) {
+
+        public FrontierGoal {
+                selectionGoalIds = selectionGoalIds == null || selectionGoalIds.isEmpty()
+                                ? id == null || id.isBlank() ? java.util.List.of() : java.util.List.of(id)
+                                : java.util.List.copyOf(selectionGoalIds);
+        }
+
+        /**
+         * Compatibility constructor for callers without a compound focus
+         * selection. Ordinary goals select themselves; a broader-focus option
+         * may carry several replacement roots through {@link #selectionGoalIds()}.
+         */
+        public FrontierGoal(
+                        String id,
+                        String title,
+                        String description,
+                        String type,
+                        String nodeKind,
+                        String semanticKind,
+                        String reason,
+                        java.util.List<String> tags,
+                        java.util.List<GoalSourceLink> resourceLinks,
+                        String sourceRef,
+                        String sourceLicense,
+                        String sourceLicenseUrl,
+                        ExamData examData,
+                        boolean examReadyForSelection) {
+                this(
+                                id,
+                                title,
+                                description,
+                                type,
+                                nodeKind,
+                                semanticKind,
+                                reason,
+                                tags,
+                                resourceLinks,
+                                sourceRef,
+                                sourceLicense,
+                                sourceLicenseUrl,
+                                examData,
+                                examReadyForSelection,
+                                id == null || id.isBlank() ? java.util.List.of() : java.util.List.of(id));
+        }
 
         /**
          * Compatibility constructor for callers without the internal exam
@@ -52,7 +97,8 @@ public record FrontierGoal(
                                 sourceLicense,
                                 sourceLicenseUrl,
                                 examData,
-                                false);
+                                false,
+                                id == null || id.isBlank() ? java.util.List.of() : java.util.List.of(id));
         }
 
         /**
@@ -88,6 +134,26 @@ public record FrontierGoal(
                                 sourceLicense,
                                 sourceLicenseUrl,
                                 examData,
-                                false);
+                                false,
+                                id == null || id.isBlank() ? java.util.List.of() : java.util.List.of(id));
+        }
+
+        public FrontierGoal withSelectionGoalIds(java.util.List<String> goalIds) {
+                return new FrontierGoal(
+                                id,
+                                title,
+                                description,
+                                type,
+                                nodeKind,
+                                semanticKind,
+                                reason,
+                                tags,
+                                resourceLinks,
+                                sourceRef,
+                                sourceLicense,
+                                sourceLicenseUrl,
+                                examData,
+                                examReadyForSelection,
+                                goalIds);
         }
 }

@@ -43,6 +43,12 @@ line. This version has not been published yet.
   mapping
 - Level 3 focus and active-goal changes remain available through fresh,
   backend-published options; curriculum and personalization do not
+- focus widening follows the learner-facing ancestor path: suitable strict
+  supersets that add unmastered personalized targets are published nearest
+  first only after true current-focus completion, not merely an empty frontier;
+  the coach offers the first option and persists it only after acceptance,
+  retaining independent roots when one branch widens; `requires` remains
+  one-way and never creates backward mastery
 - retry-safe writes use a fresh `clientRequestId` and current
   `expectedStateVersion`; an already committed identical write can replay only
   with at least `PT1H` remaining, available pinned revisions, and an unchanged
