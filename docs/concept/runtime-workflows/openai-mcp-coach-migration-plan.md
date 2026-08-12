@@ -299,9 +299,9 @@ eindeutig:
 | `set_skillpilot_scope(learningSessionId, goalIds)` | Lernumfang setzen |
 | `set_skillpilot_active_goal(learningSessionId, goalId, redirect)` | Erlaubtes Frontier-Ziel aktivieren |
 | `set_skillpilot_mastery(learningSessionId, goalId)` | Das aktive atomische Nicht-SRS-Ziel nach harter Evidenz mit Mastery `1.0` abschließen |
-| `start_skillpilot_verified_recall(learningSessionId, goalId, batchSize)` | Kartenprüfung starten oder fortsetzen |
-| `get_skillpilot_verified_recall_answer(learningSessionId, goalId, cardId)` | Sollantwort erst nach der Lernendenantwort laden |
-| `record_skillpilot_verified_recall_result(learningSessionId, goalId, cardId, passed, feedback)` | Recall-Ergebnis speichern |
+| `start_skillpilot_verified_recall(learningSessionId)` | Den vom Webstart gepinnten vollständigen serverseitigen Kartenbatch laden; liefert `batchCapability` und geordnete `cards` |
+| `get_skillpilot_verified_recall_answers(learningSessionId, batchCapability)` | Nach der vollständigen Lernendenantwort alle geordneten Sollantworten genau einmal laden; liefert `gradingCapability` |
+| `record_skillpilot_verified_recall_results(learningSessionId, gradingCapability, assessments[{passed,feedback}])` | Genau eine geordnete Bewertung je Karte atomar speichern und genau eine Fortsetzung liefern: entweder den nächsten vollständigen Batch oder den frischen Folgezustand |
 | `get_skillpilot_exam_evaluation(learningSessionId, goalId)` | Freigegebene Lösung und Bewertungsraster erst nach vollständiger Abgabe laden |
 
 ### 5.1 LLM-gerechter Eingabevertrag
@@ -312,15 +312,25 @@ Informationen, die dem Modell beim richtigen Tool-Aufruf helfen:
 
 - Datentypen, Pflichtfelder und kurze handlungsorientierte Beschreibungen;
 - echte fachliche Auswahlmengen wie `target`;
-- fachlich relevante Zahlen- und Listengrenzen wie `batchSize` oder eine
-  nichtleere, eindeutige `goalIds`-Liste.
+- fachlich relevante Listenregeln wie eine nichtleere, eindeutige
+  `goalIds`-Liste. Technische Mengen wie die Recall-Batchgröße gehören dagegen
+  nicht in den modellseitigen Vertrag; sie werden beim First-Party-Start
+  serverseitig gebunden.
 
 Technische Formdetails opaker Referenzen werden nicht an das Modell
 veröffentlicht. Insbesondere enthalten die Tool-Schemas für
-`learningSessionId`, `goalId` und `cardId` keine regulären Ausdrücke und keine
-Mindest- oder Maximallängen. Das Modell soll solche Werte ausschließlich aus
-der aktuellen SkillPilot-Startnachricht beziehungsweise dem jüngsten
-SkillPilot-Ergebnis unverändert übernehmen, nicht selbst konstruieren.
+`learningSessionId`, `goalId`, `batchCapability` und `gradingCapability` keine
+regulären Ausdrücke und keine Mindest- oder Maximallängen. Das Modell soll
+solche Werte ausschließlich aus der aktuellen SkillPilot-Startnachricht
+beziehungsweise dem jüngsten SkillPilot-Ergebnis unverändert übernehmen, nicht
+selbst konstruieren.
+
+Für den capability-gebundenen Recall-Write liefert das Modell weder
+`expectedStateVersion` noch `clientRequestId`. Beide werden aus der einmalig
+ausgegebenen `gradingCapability` serverseitig abgeleitet. Damit besitzt das
+Backend IDs, Batchgröße, Reihenfolge, Vollständigkeit, Zustandsprüfung,
+Idempotenz und Fortsetzung; das Modell besitzt ausschließlich die sprachliche
+Darstellung und den fachlich-semantischen Vergleich.
 
 Die Vereinfachung schwächt die Sicherheits- und Datenintegritätsgrenze nicht:
 Das Spring-Backend prüft weiterhin Format, Nichtleere, Gültigkeit,
@@ -486,7 +496,9 @@ gehören insbesondere:
 - keine Wortlautgleichheit mit einer Musterlösung verlangen;
 - Mastery erst nach der vorgesehenen Evidenz setzen;
 - im Prüfungsmodus keine lösungslenkende Nachfrage stellen;
-- Recall-Antworten erst nach der Lernendenantwort freigeben.
+- den vollständigen Recall-Sollantwortbatch erst nach der vollständigen
+  Lernendenantwort genau einmal freigeben und alle Bewertungen anschließend in
+  genau einem vollständigen atomaren Write speichern.
 
 ## 7. OAuth-Appbindung und Lernsession
 
@@ -600,7 +612,7 @@ freigegebenen Interaktionssprache auf realen SkillPilot-Daten funktionieren:
 | Lösung bewerten | gleichwertige korrekte Wege werden anerkannt; explizite Anforderungen bleiben bindend |
 | Mastery | nur erlaubter Wert und korrektes aktives Ziel; frischer Folgezustand |
 | Fortschritt und Abschluss | Scope- und Curriculumfortschritt konsistent |
-| Verified Recall | Start, Antwortfreigabe, Ergebnis, Tageslock und automatische Mastery |
+| Verified Recall | serverseitig gepinnter vollständiger Batch; exakt eine Sollantwortfreigabe und ein atomarer vollständiger Ergebnis-Write; Tageslock, automatische Mastery und bestätigte Fortsetzung |
 | Prüfung | Aufgabe ohne Lösung; Auswertung erst nach vollständiger sichtbarer Abgabe; keine Nachfrage |
 | Fehler und Retry | keine Doppelmutation; sinnvoller Reload bei Konflikt |
 | Reload/Kompaktierung | Zustand wird mit derselben noch gültigen Lernsession-ID aus dem Backend rehydriert |
@@ -701,7 +713,9 @@ durch fallspezifische Curriculumregeln.
 
 ### Etappe 4 – Recall und Prüfung
 
-- drei Verified-Recall-Tools anbinden und alle Domain-Grenzen testen;
+- die drei batchorientierten Verified-Recall-Tools ohne modellseitige Ziel-,
+  Mengen- oder per-card Schleifen anbinden und Vollständigkeit, atomare
+  Speicherung, Replay und unmittelbare Fortsetzung testen;
 - sichere Prüfungsprojektion und getrennte Evaluation anbinden;
 - alternative richtige Lösungswege, explizite Formanforderungen,
   Handschrift-Leseunsicherheit und „keine Nachfrage im Prüfungsmodus“ als
@@ -903,9 +917,10 @@ Mastery-, Curriculum- oder Coach-Semantik:
 9. die implementierten Backendguards für die aktuelle veröffentlichte
    Curriculumsmenge und das aktuelle sichtbare aktive Recall-Merkziel als
    Regression-Gates beibehalten;
-10. erst nach diesem Paritäts- und Backendgate die monolithischen
-   Server-Instruktionen
-   schrittweise auf werkzeugübergreifende Invarianten reduzieren.
+10. Server-Instruktionen dauerhaft auf kurze werkzeugübergreifende Invarianten
+   begrenzen. Deterministische Orchestrierung wird vorher im Backend umgesetzt
+   und per Checker abgesichert; sie darf nicht als technische Schleife in einen
+   Modellprompt zurückkehren.
 
 Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
 [openai-mcp-coach-v1.md](../../deploy/openai-mcp-coach-v1.md).

@@ -17,6 +17,10 @@ import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
@@ -354,6 +358,46 @@ class CoachToolFacadeTest {
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void providerNeutralVerifiedRecallBatchMethodsDelegateThroughTheExpectedAccessGuards() {
+        String skillpilotId = "learner-1";
+        Instant issuedAt = Instant.now();
+        VerifiedRecallBatchAnswerRequest answerRequest =
+                new VerifiedRecallBatchAnswerRequest("goal-1", 8, List.of("card-1"), issuedAt);
+        VerifiedRecallBatchAnswerResponse answerResponse =
+                new VerifiedRecallBatchAnswerResponse("compare", "goal-1", List.of());
+        VerifiedRecallBatchResultRequest resultRequest =
+                new VerifiedRecallBatchResultRequest("goal-1", 8, List.of("card-1"), issuedAt, List.of());
+        VerifiedRecallBatchResultResponse resultResponse =
+                new VerifiedRecallBatchResultResponse(
+                        List.of(), 0, 1, false, null, null, null);
+        VerifiedRecallPromptResponse promptResponse = new VerifiedRecallPromptResponse(
+                "ready", "ask", skillpilotId, "goal-1", "Goal", 8, 0, 8, 8, 0, null,
+                1, List.of(), null, null, null);
+        when(learnerService.startVerifiedRecallBatch(skillpilotId, "de", "goal-1", 8))
+                .thenReturn(promptResponse);
+        when(learnerService.getVerifiedRecallAnswersBatch(skillpilotId, "de", answerRequest))
+                .thenReturn(answerResponse);
+        when(learnerService.recordVerifiedRecallResultsBatch(skillpilotId, "de", resultRequest))
+                .thenReturn(resultResponse);
+
+        assertThat(facade.startVerifiedRecallBatch(skillpilotId, "de", "goal-1", 8))
+                .isSameAs(promptResponse);
+        assertThat(facade.getVerifiedRecallAnswersBatch(skillpilotId, "de", answerRequest))
+                .isSameAs(answerResponse);
+        assertThat(facade.recordVerifiedRecallResultsBatch(skillpilotId, "de", resultRequest))
+                .isSameAs(resultResponse);
+
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        ordered.verify(learnerService).startVerifiedRecallBatch(skillpilotId, "de", "goal-1", 8);
+        ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        ordered.verify(learnerService).getVerifiedRecallAnswersBatch(skillpilotId, "de", answerRequest);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).recordVerifiedRecallResultsBatch(skillpilotId, "de", resultRequest);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 

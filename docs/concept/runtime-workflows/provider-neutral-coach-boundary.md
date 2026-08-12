@@ -90,7 +90,11 @@ The shared application layer owns:
 - state-machine authorization and checks for an active, provider-specific
   learning session;
 - curriculum, personalization, scope, active-goal and mastery use cases;
-- Verified Recall sequencing and persistence;
+- deterministic technical orchestration: opaque IDs and capabilities, counts,
+  order, completeness, state transitions, concurrency, idempotency and the
+  server-selected continuation;
+- Verified Recall batch selection, one-shot answer release, atomic complete
+  persistence and continuation;
 - safe normal-state projection;
 - authorization of released exam evaluation material.
 
@@ -102,6 +106,12 @@ Each provider adapter owns:
   backend output selected by the learning session;
 - provider-specific session, footer, widget or OAuth behavior;
 - instructions for recovering from lost model context.
+
+The provider model owns natural-language understanding, didactic dialogue and
+semantic comparison of learner work with backend-released reference content.
+It never owns a deterministic per-item workflow loop or chooses a technical
+batch size. Provider prompts remain short because the backend rejects
+incomplete, reordered, duplicate, stale or replayed batch operations itself.
 
 For the OpenAI Apps, this specifically means:
 
@@ -312,8 +322,17 @@ that does not imply a global revision across every coach mutation. A global
 mechanism may be added only once all relevant paths advance one shared state
 clock and the adapter supplies a stable request identity.
 
-No event-sourcing system or new database migration is required for the current
-shared boundary.
+The OpenAI V1 Verified-Recall batch is one deliberate narrow exception, not a
+global claim: `batchCapability` binds the server-selected cards and their order;
+`gradingCapability` binds that batch, the answer release, expected state and
+one retry identity. The single result write must cover the complete ordered
+batch and is replay-safe without asking the model for `expectedStateVersion` or
+`clientRequestId`.
+
+No event-sourcing system or global state-revision migration is required for the
+shared boundary. A provider adapter may use a narrow migration to persist its
+own capability-bound workflow directive without changing the provider-neutral
+learning-state contract.
 
 ## Prototype And Current V1 Production Boundary
 

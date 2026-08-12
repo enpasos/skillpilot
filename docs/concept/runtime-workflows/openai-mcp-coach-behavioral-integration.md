@@ -332,6 +332,15 @@ Verteilung wichtiger Regeln auf nicht auffindbare Codefragmente. Jede Regel
 hat genau einen primären Zielort; zusätzliche Defense-in-depth-Orte werden
 ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 
+Technische Orchestrierung wird dabei nicht durch mehr Prompttext abgesichert.
+Das Backend besitzt deterministische IDs, Mengen, Reihenfolgen,
+Vollständigkeitsprüfungen, Zustandsübergänge, Nebenläufigkeit, Idempotenz und
+Fortsetzungen. Das Modell besitzt Sprachverständnis, didaktischen Dialog und
+fachlich-semantische Vergleiche. Sobald ein Ablauf technisch zähl- oder
+validierbar ist, stellt das Backend eine vollständige atomare Operation bereit;
+der Skill beschreibt nur noch die minimale fachliche Übergabe. Ein Checker
+muss alte per-item Toolschleifen und modellseitige Mengenwahl zurückweisen.
+
 ## 7. Verbindliche Verhaltensregeln
 
 | Policy-ID | Regel |
@@ -349,7 +358,7 @@ ausdrücklich benannt und nicht als zweite Quelle der Bedeutung behandelt.
 | `COACH-QUESTION-001` | Der Coach fragt nur echte Restmehrdeutigkeiten und fasst zusammengehörige offene Angaben möglichst zusammen. |
 | `COACH-GOAL-001` | Unterricht findet an genau einem bestätigten atomischen Ziel statt. |
 | `COACH-MASTERY-001` | Mastery folgt der global eindeutigen Lernziel-ID und wird nur nach ausreichender Evidenz gespeichert. |
-| `COACH-RECALL-001` | Sollantworten werden erst nach Lernendenantworten geladen; jeder Recall-Schritt wird vollständig gespeichert. |
+| `COACH-RECALL-001` | Das Backend besitzt IDs, Kartenzahl, Reihenfolge, Vollständigkeit, Status, Idempotenz und Fortsetzung eines Recall-Batches. Das Modell zeigt den vollständigen serverseitigen Batch, wartet auf alle Antworten, lädt alle Sollantworten genau einmal, vergleicht nur fachlich-semantisch und speichert alle Bewertungen genau einmal atomar. Es wählt keine Batchgröße und führt keine technischen Schleifen pro Karte aus. |
 | `COACH-EXAM-001` | Prüfung bedeutet wortgetreue Aufgabe, keine Hilfen oder Rückfragen und faire kriteriumsbezogene Bewertung gleichwertiger Wege. |
 | `COACH-RESOURCE-001` | Fachliche Ressourcen werden nur aus dem frischen Zustand verwendet; der Coach entscheidet allgemein zwischen Erklärung im Chat und einem passenden Cockpit-Deep-Link. |
 | `COACH-ERROR-001` | Fehlerbehandlung ist begrenzt, wahrheitsgemäß und erzeugt keinen erfundenen Ersatzablauf. |
@@ -472,9 +481,23 @@ Die folgenden Nutzerreisen bilden die minimale Verhaltensbaseline:
 
 ### GJ-05 – Verified Recall
 
-- **Erwartung:** vollständiger Batch, Antwort der lernenden Person vor
-  Sollantwort, fachlich äquivalente Formulierungen, jede Karte gespeichert,
-  keine zusätzliche manuelle Mastery.
+- **Ausgang:** Der First-Party-Start hat acht heute prüfbare Karten vorbereitet;
+  der Test wird zusätzlich mit fünf und zehn vorbereiteten Karten wiederholt.
+- **Erwartung:** Genau ein Aufruf von `start_skillpilot_verified_recall` ohne
+  modellseitige `goalId` oder `batchSize` liefert den vollständigen
+  serverseitigen Batch. Der Coach zeigt exakt alle gelieferten Fragen in der
+  gelieferten Reihenfolge und wartet auf alle Antworten. Danach lädt er mit
+  genau einem `get_skillpilot_verified_recall_answers` alle Sollantworten,
+  akzeptiert fachlich äquivalente Formulierungen und speichert mit genau einem
+  `record_skillpilot_verified_recall_results` exakt eine Bewertung je Karte.
+  Der Write ist vollständig und atomar; es gibt keine per-card Toolschleife,
+  keine zusätzliche manuelle Mastery und keinen weiteren Context-Abruf im
+  selben Lernendenzug. Die bestätigte Backendfortsetzung wird sofort umgesetzt:
+  entweder das neue aktive Lernziel beginnen oder den frisch veröffentlichten
+  breiteren Fokus vorschlagen, ohne auf ein inhaltsfreies „weiter“ zu warten.
+- **Verboten:** eine Teilmenge wie fünf von acht Fragen zeigen, IDs oder
+  Reihenfolge selbst bestimmen, nach einzelnen Karten lesen oder schreiben,
+  Erfolg vor dem atomaren Receipt behaupten oder nach dem Recall stehenbleiben.
 
 ### GJ-06 – Prüfung
 

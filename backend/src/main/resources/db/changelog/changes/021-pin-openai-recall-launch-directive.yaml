@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 021-pin-openai-recall-launch-directive
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: openai_de_learning_session
+        - not:
+            - columnExists:
+                tableName: openai_de_learning_session
+                columnName: verified_recall_batch_size
+      changes:
+        # Existing short-lived sessions use the server-owned recall default.
+        - addColumn:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: verified_recall_batch_size
+                  type: INTEGER
+                  defaultValueNumeric: 10
+                  constraints:
+                    nullable: false
+        - dropDefaultValue:
+            tableName: openai_de_learning_session
+            columnName: verified_recall_batch_size
+            columnDataType: INTEGER

@@ -430,6 +430,16 @@ Persönlichkeits- oder Coaching-Gesamtspezifikation. Sie enthalten nur wenige
 ersten 512 Zeichen. Toolbeschreibungen bleiben handlungsspezifisch. Der Skill
 orchestriert beide, ohne die Backendguards zu ersetzen.
 
+Für technische Orchestrierung gilt eine härtere Grenze: SkillPilot besitzt
+opake IDs und Capabilities, exakte Mengen und Reihenfolgen,
+Vollständigkeitsprüfungen, Zustandsübergänge, Nebenläufigkeit, Idempotenz und die
+Fortsetzung. Das Modell besitzt natürliche Sprache, didaktische Reaktion und
+fachlich-semantische Vergleiche. Zählbare technische Schleifen gehören nicht in
+Prompts. Verified Recall besteht daher modellseitig nur aus drei Schritten:
+vollständigen serverseitigen Batch anzeigen und Antworten abwarten, alle
+Sollantworten einmal laden, alle Bewertungen einmal atomar speichern und die
+gelieferte Fortsetzung unmittelbar umsetzen.
+
 ### 6.4 State- und Konfliktgrenze
 
 Das Plugin und der Skill besitzen keinen autoritativen Lernzustand. Auch bei
@@ -726,7 +736,7 @@ End-to-End-Abläufe.
 | Lösung einreichen | zunächst sichtbare Chatabgabe; später direkte Widgetaktion mit persistentem Submission-Receipt |
 | Bewertung | fachlich gleichwertige Wege anerkennen; keine reine Wortlautprüfung |
 | Mastery | nur nach erlaubter Evidenz; sichtbar und korrigierbar |
-| Verified Recall | serverseitiger Kartenstatus; später zusätzlich Evidence-/Result-Receipt |
+| Verified Recall | vollständiger servergebundener Batch mit `batchCapability`, einmalige Sollantwortfreigabe mit `gradingCapability`, atomarer vollständiger Result-Receipt und serverseitige Fortsetzung; das Modell übernimmt nur Darstellung und semantische Bewertung |
 | Prüfung | zunächst sichtbare Chatabgabe und regelgesteuerte Freigabe; später Attempt und explizite Widgetabgabe |
 | Profil-/Curriculumwechsel | ausschließlich im First-Party-WebGUI erklären, validieren und soweit sinnvoll Undo anbieten; der Chat verweist auf diesen Weg |
 | Fehler und Quoten | keine Doppelmutation; Zustand bleibt erhalten; Cockpit nutzbar |

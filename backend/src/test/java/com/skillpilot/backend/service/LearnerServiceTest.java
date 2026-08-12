@@ -13,6 +13,10 @@ import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
 import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchCardResult;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
@@ -29,7 +33,9 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CompositionViewService.CompositionStructureResolution;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -161,6 +167,7 @@ public class LearnerServiceTest {
 
     @AfterEach
     void tearDown() {
+        ReflectionTestUtils.setField(learnerService, "verifiedRecallClock", Clock.systemUTC());
         learnerClientStateRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
@@ -1644,6 +1651,347 @@ public class LearnerServiceTest {
         assertThat(prompt.cards())
                 .extracting(VerifiedRecallPromptCard::cardId)
                 .doesNotHaveDuplicates();
+    }
+
+    @Test
+    void verifiedRecallBatchAnswersRequireTheCompleteBackendOwnedOrder() {
+        activateSekOneCoreFormulaFlashcards();
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+
+        var answers = learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt()));
+
+        assertThat(answers.cards()).hasSize(prompt.batchSize());
+        assertThat(answers.cards())
+                .extracting(card -> card.cardId())
+                .containsExactlyElementsOf(cardIds);
+        assertThat(answers.cards())
+                .allSatisfy(card -> assertThat(card.expectedAnswer()).isNotBlank());
+
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds.subList(0, cardIds.size() - 1),
+                        prompt.issuedAt())))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("incomplete, reordered, or no longer current");
+
+        List<String> duplicateIds = new ArrayList<>(cardIds);
+        duplicateIds.set(duplicateIds.size() - 1, duplicateIds.getFirst());
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        duplicateIds,
+                        prompt.issuedAt())))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("must not contain duplicates");
+    }
+
+    @Test
+    void verifiedRecallBatchResultPersistsEveryCardAtomicallyWithOneRevision() {
+        activateSekOneCoreFormulaFlashcards();
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+        long beforeRevision = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        List<VerifiedRecallBatchCardResult> results = cardIds.stream()
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .toList();
+
+        var response = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt(),
+                        results));
+
+        assertThat(response.savedResults())
+                .extracting(saved -> saved.cardId())
+                .containsExactlyElementsOf(cardIds);
+        assertThat(response.savedResults()).allMatch(saved -> saved.passed());
+        assertThat(response.successor()).isNotNull();
+        assertThat(response.successor().skillpilotId()).isEqualTo(learnerId);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(beforeRevision + 1);
+
+        var stored = learnerService.getClientState(
+                learnerId,
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(stored.srsState()).containsKeys(cardIds.toArray(String[]::new));
+        assertThat(cardIds).allSatisfy(cardId -> assertThat(stored.srsState().get(cardId))
+                .isInstanceOfSatisfying(Map.class, cardState -> assertThat(cardState.get("verifiedRecall"))
+                        .isInstanceOfSatisfying(Map.class, verified -> assertThat(verified)
+                                .containsEntry("status", "passed"))));
+    }
+
+    @Test
+    void verifiedRecallTrustedCustomSizeCarriesIntoTheNextCompleteBatch() {
+        activateSekOneCoreFormulaFlashcards();
+
+        var first = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                3);
+        assertThat(first.cards()).hasSize(3);
+        assertThat(first.configuredBatchSize()).isEqualTo(3);
+        List<String> firstCardIds = first.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+        List<VerifiedRecallBatchCardResult> firstResults = firstCardIds.stream()
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .toList();
+
+        var recorded = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        first.configuredBatchSize(),
+                        firstCardIds,
+                        first.issuedAt(),
+                        firstResults));
+
+        assertThat(recorded.next()).isNotNull();
+        assertThat(recorded.next().status()).isEqualTo("ready");
+        assertThat(recorded.next().cards()).hasSize(3);
+        assertThat(recorded.next().configuredBatchSize()).isEqualTo(3);
+        assertThat(recorded.next().issuedAt()).isNotNull();
+        List<String> nextCardIds = recorded.next().cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+        assertThat(nextCardIds).doesNotContainAnyElementsOf(firstCardIds);
+
+        var nextAnswers = learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        recorded.next().configuredBatchSize(),
+                        nextCardIds,
+                        recorded.next().issuedAt()));
+        assertThat(nextAnswers.cards()).hasSize(3);
+        assertThat(nextAnswers.cards())
+                .extracting(VerifiedRecallBatchAnswerCard::cardId)
+                .containsExactlyElementsOf(nextCardIds);
+    }
+
+    @Test
+    void verifiedRecallKeepsConfiguredSizeWhenOnlyTwoCardsAreIssued() {
+        activateSekOneCoreFormulaFlashcards();
+        Instant issuedAt = Instant.parse("2026-08-12T12:00:00Z");
+        ReflectionTestUtils.setField(
+                learnerService,
+                "verifiedRecallClock",
+                Clock.fixed(issuedAt, ZoneOffset.UTC));
+
+        var completeDeck = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                20);
+        assertThat(completeDeck.cards()).hasSizeGreaterThan(2);
+        List<String> blockedCardIds = completeDeck.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .limit(completeDeck.cards().size() - 2L)
+                .toList();
+        Map<String, Object> state = new LinkedHashMap<>();
+        blockedCardIds.forEach(cardId -> state.put(
+                cardId,
+                Map.of(
+                        "id", cardId,
+                        "verifiedRecall", Map.of(
+                                "status", "failed",
+                                "lastTestedAt", issuedAt.minusSeconds(60).toString()))));
+        learnerService.upsertClientState(
+                learnerId,
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                new ClientStateRequest(issuedAt.minusSeconds(30), state));
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                5);
+        assertThat(prompt.batchSize()).isEqualTo(2);
+        assertThat(prompt.cards()).hasSize(2);
+        assertThat(prompt.configuredBatchSize()).isEqualTo(5);
+        assertThat(prompt.issuedAt()).isEqualTo(issuedAt);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+
+        var answers = learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt()));
+        assertThat(answers.cards())
+                .extracting(VerifiedRecallBatchAnswerCard::cardId)
+                .containsExactlyElementsOf(cardIds);
+
+        var saved = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt(),
+                        cardIds.stream()
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, false, "offen"))
+                                .toList()));
+        assertThat(saved.next().status()).isEqualTo("waiting");
+        assertThat(saved.next().batchSize()).isZero();
+        assertThat(saved.next().configuredBatchSize()).isEqualTo(5);
+        assertThat(saved.next().issuedAt()).isEqualTo(issuedAt);
+    }
+
+    @Test
+    void verifiedRecallUsesTheIssuedSelectionInstantAcrossBerlinMidnight() {
+        activateSekOneCoreFormulaFlashcards();
+        Instant beforeMidnight = Instant.parse("2026-08-12T21:59:30Z");
+        Instant afterMidnight = Instant.parse("2026-08-12T22:00:30Z");
+        ReflectionTestUtils.setField(
+                learnerService,
+                "verifiedRecallClock",
+                Clock.fixed(beforeMidnight, ZoneOffset.UTC));
+
+        var completeDeck = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                20);
+        String cardBlockedBeforeMidnight = completeDeck.cards().getFirst().cardId();
+        learnerService.upsertClientState(
+                learnerId,
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                new ClientStateRequest(
+                        beforeMidnight.minusSeconds(15),
+                        Map.of(
+                                cardBlockedBeforeMidnight,
+                                Map.of(
+                                        "id", cardBlockedBeforeMidnight,
+                                        "verifiedRecall", Map.of(
+                                                "status", "failed",
+                                                "lastTestedAt", beforeMidnight.minusSeconds(30).toString())))));
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                5);
+        assertThat(prompt.issuedAt()).isEqualTo(beforeMidnight);
+        assertThat(prompt.configuredBatchSize()).isEqualTo(5);
+        assertThat(prompt.cards())
+                .extracting(VerifiedRecallPromptCard::cardId)
+                .doesNotContain(cardBlockedBeforeMidnight);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+
+        ReflectionTestUtils.setField(
+                learnerService,
+                "verifiedRecallClock",
+                Clock.fixed(afterMidnight, ZoneOffset.UTC));
+        var answers = learnerService.getVerifiedRecallAnswersBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchAnswerRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt()));
+        assertThat(answers.cards())
+                .extracting(VerifiedRecallBatchAnswerCard::cardId)
+                .containsExactlyElementsOf(cardIds);
+
+        var saved = learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt(),
+                        cardIds.stream()
+                                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                                .toList()));
+        assertThat(saved.next().issuedAt()).isEqualTo(afterMidnight);
+        assertThat(saved.next().configuredBatchSize()).isEqualTo(5);
+        assertThat(saved.next().cards())
+                .extracting(VerifiedRecallPromptCard::cardId)
+                .contains(cardBlockedBeforeMidnight);
+    }
+
+    @Test
+    void invalidVerifiedRecallBatchResultWritesNothing() {
+        activateSekOneCoreFormulaFlashcards();
+
+        var prompt = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        List<String> cardIds = prompt.cards().stream()
+                .map(VerifiedRecallPromptCard::cardId)
+                .toList();
+        long beforeRevision = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        List<VerifiedRecallBatchCardResult> incompleteResults = cardIds.subList(0, cardIds.size() - 1).stream()
+                .map(cardId -> new VerifiedRecallBatchCardResult(cardId, true, "korrekt"))
+                .toList();
+
+        assertThatThrownBy(() -> learnerService.recordVerifiedRecallResultsBatch(
+                learnerId,
+                "de",
+                new VerifiedRecallBatchResultRequest(
+                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                        prompt.configuredBatchSize(),
+                        cardIds,
+                        prompt.issuedAt(),
+                        incompleteResults)))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("cover the complete batch");
+
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(beforeRevision);
+        var restarted = learnerService.startVerifiedRecallBatch(
+                learnerId,
+                "de",
+                SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(restarted.verifiedCards()).isZero();
+        assertThat(restarted.cards())
+                .extracting(VerifiedRecallPromptCard::cardId)
+                .containsExactlyElementsOf(cardIds);
     }
 
     @Test

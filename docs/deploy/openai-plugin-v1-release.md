@@ -16,7 +16,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | Anzeigename | `SkillPilot Coach v1` |
 | aktueller Paketstand | `1.0.0` |
 | Contract Major | `1` |
-| Lifecycle-Policy | `policyRevision=3` |
+| Lifecycle-Policy | `policyRevision=4` |
 | öffentlicher MCP-Endpunkt und OAuth Resource/Audience | `https://mcp-coach-v1.skillpilot.com/mcp` |
 | Protected Resource Metadata | `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp` |
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |

@@ -16,6 +16,7 @@ import com.skillpilot.backend.repository.OpenAiDeIdempotencyRecordRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.nio.charset.StandardCharsets;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -68,6 +69,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         session.setWorkflowVersion(properties.getWorkflowVersion());
         session.setCurriculumRevision(CURRICULUM_REVISION);
         session.setCommunicationLocale("en-GB");
+        session.setVerifiedRecallBatchSize(10);
 
         resolvedSession = new AtomicReference<>(session);
         when(sessions.findByTokenHashForUpdate(any()))
@@ -96,6 +98,24 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                 curriculumRevisionProvider,
                 "test-signing-secret",
                 Clock.fixed(NOW, ZoneOffset.UTC));
+    }
+
+    @Test
+    void readExposesOnlyTheBackendOwnedRecallBatchSizeToTheInternalOperation() {
+        session.setVerifiedRecallBatchSize(7);
+        AtomicReference<OpenAiDeV1SessionMetadata> observed = new AtomicReference<>();
+
+        McpSchema.CallToolResult result = coordinator.read(SESSION_ID, metadata -> {
+            observed.set(metadata);
+            return success(metadata);
+        });
+
+        assertThat(observed.get().verifiedRecallBatchSize()).isEqualTo(7);
+        assertThat(observed.get().extensions()).isEmpty();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(
+                Map.class,
+                content -> assertThat(content.get("extensions"))
+                        .isEqualTo(observed.get().extensions()));
     }
 
     @Test
@@ -136,6 +156,68 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         assertThat(replay.structuredContent().toString()).contains("stateVersion=1");
         assertThat(replay.structuredContent().toString())
                 .doesNotContain(SESSION_ID, "private-learner-id");
+    }
+
+    @Test
+    void capabilityDerivedRecallRetryReplaysOnlyTheExactOrderedAssessments() {
+        String gradingCapability = "opaque-server-issued-grading-capability";
+        String requestId = UUID.nameUUIDFromBytes(
+                        ("skillpilot-verified-recall-write-v1\0" + gradingCapability)
+                                .getBytes(StandardCharsets.UTF_8))
+                .toString();
+        Map<String, Object> exactArguments = Map.of(
+                "learningSessionId", SESSION_ID,
+                "gradingCapability", gradingCapability,
+                "assessments", java.util.List.of(
+                        Map.of("passed", true, "feedback", "correct"),
+                        Map.of("passed", false, "feedback", "incorrect")));
+        Map<String, Object> changedArguments = Map.of(
+                "learningSessionId", SESSION_ID,
+                "gradingCapability", gradingCapability,
+                "assessments", java.util.List.of(
+                        Map.of("passed", false, "feedback", "changed"),
+                        Map.of("passed", false, "feedback", "incorrect")));
+        AtomicInteger calls = new AtomicInteger();
+
+        McpSchema.CallToolResult first = coordinator.write(
+                SESSION_ID,
+                "record_skillpilot_verified_recall_results",
+                0L,
+                requestId,
+                exactArguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+        McpSchema.CallToolResult exactRetry = coordinator.write(
+                SESSION_ID,
+                "record_skillpilot_verified_recall_results",
+                0L,
+                requestId,
+                exactArguments,
+                metadata -> {
+                    calls.incrementAndGet();
+                    return success(metadata);
+                });
+
+        assertThat(first.structuredContent().toString()).contains("stateVersion=1");
+        assertThat(exactRetry.structuredContent().toString()).contains("stateVersion=1");
+        assertThatThrownBy(() -> coordinator.write(
+                        SESSION_ID,
+                        "record_skillpilot_verified_recall_results",
+                        0L,
+                        requestId,
+                        changedArguments,
+                        metadata -> {
+                            calls.incrementAndGet();
+                            return success(metadata);
+                        }))
+                .isInstanceOfSatisfying(
+                        OpenAiDeV1SessionStateException.class,
+                        exception -> assertThat(exception.code())
+                                .isEqualTo(OpenAiDeV1SessionStateException.Code.IDEMPOTENCY_KEY_REUSED));
+        assertThat(calls).hasValue(1);
+        assertThat(session.getStateVersion()).isEqualTo(1L);
     }
 
     @Test
@@ -478,6 +560,7 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         another.setWorkflowVersion(session.getWorkflowVersion());
         another.setCurriculumRevision(session.getCurriculumRevision());
         another.setCommunicationLocale(session.getCommunicationLocale());
+        another.setVerifiedRecallBatchSize(session.getVerifiedRecallBatchSize());
         return another;
     }
 

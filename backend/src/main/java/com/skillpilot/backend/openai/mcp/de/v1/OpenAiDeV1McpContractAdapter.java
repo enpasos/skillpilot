@@ -17,13 +17,13 @@ import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
-import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
-import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallBatchCardResult;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallBatchResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
-import com.skillpilot.backend.api.VerifiedRecallResultRequest;
-import com.skillpilot.backend.api.VerifiedRecallResultResponse;
-import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.OpenAiCoachLocale;
@@ -42,6 +42,8 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HexFormat;
@@ -55,7 +57,9 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
+import javax.crypto.Cipher;
 import javax.crypto.Mac;
+import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,8 +101,8 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String SET_ACTIVE_GOAL = "set_skillpilot_active_goal";
     public static final String SET_MASTERY = "set_skillpilot_mastery";
     public static final String START_RECALL = "start_skillpilot_verified_recall";
-    public static final String GET_RECALL_ANSWER = "get_skillpilot_verified_recall_answer";
-    public static final String RECORD_RECALL_RESULT = "record_skillpilot_verified_recall_result";
+    public static final String GET_RECALL_ANSWERS = "get_skillpilot_verified_recall_answers";
+    public static final String RECORD_RECALL_RESULTS = "record_skillpilot_verified_recall_results";
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation";
     public static final String LEARNING_SESSION_ID = "learningSessionId";
     public static final String EXPECTED_STATE_VERSION = "expectedStateVersion";
@@ -109,9 +113,18 @@ public final class OpenAiDeV1McpContractAdapter {
     public static final String EXAM_EVALUATION_CAPABILITY = "evaluationCapability";
     public static final String EXAM_EARNED_POINTS = "earnedPoints";
     private static final String MEMORY_PRACTICE_REVIEW_CAPABILITY = "reviewCapability";
+    private static final String RECALL_BATCH_CAPABILITY = "batchCapability";
+    private static final String RECALL_GRADING_CAPABILITY = "gradingCapability";
     private static final String HMAC_ALGORITHM = "HmacSHA256";
     private static final String MEMORY_PRACTICE_CAPABILITY_CONTEXT = "skillpilot-memory-practice-card-v1";
     private static final String EXAM_EVALUATION_CAPABILITY_CONTEXT = "skillpilot-exam-evaluation-v1";
+    private static final String RECALL_BATCH_CAPABILITY_CONTEXT = "skillpilot-verified-recall-batch-v1";
+    private static final String RECALL_GRADING_CAPABILITY_CONTEXT = "skillpilot-verified-recall-grading-v1";
+    private static final String RECALL_WRITE_REQUEST_CONTEXT = "skillpilot-verified-recall-write-v1";
+    private static final String RECALL_CAPABILITY_CIPHER = "AES/GCM/NoPadding";
+    private static final int RECALL_CAPABILITY_IV_BYTES = 12;
+    private static final int RECALL_CAPABILITY_TAG_BITS = 128;
+    private static final SecureRandom RECALL_CAPABILITY_RANDOM = new SecureRandom();
     private static final int MAX_WORK_FEEDBACK_LENGTH = 1_600;
     private static final int MAX_OUTCOME_FEEDBACK_LENGTH = 800;
 
@@ -132,7 +145,7 @@ public final class OpenAiDeV1McpContractAdapter {
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_RESOURCE_CLASSPATH,
                     OpenAiDeV1ContractMetadata.MEMORY_CARD_PRACTICE_ARTIFACT_SHA256);
     private static final String SERVER_INSTRUCTIONS = """
-            You are the SkillPilot learning coach. Before every learner-facing SkillPilot coaching response, establish one fresh full SkillPilot context in the current assistant turn. A successful get_skillpilot_context result does this. A successful state-changing tool result that contains its full successor context also does this because SkillPilot has already revalidated the session and canonical state; use that successor directly and do not call get_skillpilot_context again before its immediate renderer or learner-facing response. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
+            You are the SkillPilot learning coach. After each new learner message, establish exactly one fresh full SkillPilot context before learner-facing SkillPilot coaching. One successful get_skillpilot_context satisfies this requirement for the whole assistant turn, including every subsequent tool call; never call it again until a new learner message, except for the single explicit reload allowed after a state conflict. A successful state-changing tool result that contains its full successor context also satisfies the requirement for the rest of that assistant turn because SkillPilot has already revalidated the session and canonical state; use that successor directly. Without either successful full result, provide no subject-matter communication. Treat the newest full result's structuredContent as the sole authority for the communication locale, configured curriculum and course profile, scope, active goal, mastery, frontier, task, recall, exam, progress, and next step. Never replace a missing or failed call with generic advice, an invented curriculum, or an invented learning path. A successful render_skillpilot_goal_visualization result is only a UI receipt and never replaces that full context.
 
             On a normal start, continuation, or resumption, if the newest full context or mutation successor contains an activeGoal, continue that exact goal immediately. A successful mastery result is the one ordering exception: first give both learner-facing texts from completionHandoff as concrete feedback on the completed goal, and only then begin the already activated successor in the same response. Never omit, merge, postpone, or replace either feedback text with the successor introduction. Never call get_skillpilot_navigation or set_skillpilot_active_goal for that already active successor and never wait for another acknowledgement before beginning it. Every goal option from an earlier result or earlier conversation turn is invalidated by that successor.
 
@@ -156,7 +169,7 @@ public final class OpenAiDeV1McpContractAdapter {
 
             In exam mode, reproduce taskContent verbatim except for replacing dollar TeX delimiters. If activeGoal.exam.hasImage=true, provide activeGoal.cockpitUrl verbatim before the task and state in the session communication locale that the image is there; do not invent or describe it. Give no hints, partial answers, solutions, scaffolds, or follow-up questions. Wait for a complete visible submission, then call get_skillpilot_exam_evaluation. Assess visible work criterion by criterion; the sample solution does not prescribe wording. Equivalent approaches receive full credit. Identify unreadable content without inventing an error. Save mastery only after a final pass with at least passingPoints, copying evaluationCapability unchanged and passing earnedPoints plus concrete workFeedback and outcomeFeedback. Present the returned feedback and score before introducing the successor.
 
-            For Verified Recall, show the full question batch and wait for all answers. Fetch each expected answer only after the corresponding learner answer, accept technically equivalent wording, and save each card immediately; passed=true only for a correct answer without help. Save all cards before the next batch, check a card at most once per day, and do not save additional manual mastery.
+            For Verified Recall, the backend owns the goal, batch size, card identities, order, completeness, state transition, and retry identity. Start the server-sized batch without choosing technical parameters, show every returned question in order, and wait for all answers. Then load all expected answers once with batchCapability, compare each learner answer by meaning, and submit exactly one ordered assessment per returned answer in one atomic call with gradingCapability; passed=true only for a correct answer without help. Never grade from memory, invent counts, perform a per-card tool loop, or expose expected answers early. Use only the confirmed atomic receipt and follow its continuation immediately. Do not save additional manual mastery.
 
             Change the Level-3 learning focus only after an explicit learner request and only through fresh published scope options. When completion.scopeComplete=true and requiredAction=setScope supplies options, briefly offer the first option as the backend-recommended broader focus but do not mutate until the learner accepts. Backend-published suitable learner-facing ancestors come first, nearest broader focus first; other valid focus choices may follow. For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged, never infer an ancestor or construct an ID. A scope option is a focus cluster, never a next learning goal. The requires relation is one-way: mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite. Every unmastered target in the Personal Curriculum remains subject to the normal frontier test using its own effective prerequisites.
 
@@ -297,7 +310,6 @@ public final class OpenAiDeV1McpContractAdapter {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record RecallCard(
-            String cardId,
             String prompt,
             String category) {
     }
@@ -305,40 +317,64 @@ public final class OpenAiDeV1McpContractAdapter {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record RecallPromptResult(
             String status,
-            String instruction,
-            String goalId,
             String goalTitle,
             int totalCards,
             int verifiedCards,
             int pendingCards,
-            int eligibleCards,
             int blockedCards,
             String nextEligibleAt,
-            int batchSize,
-            List<RecallCard> cards) {
+            List<RecallCard> cards,
+            String batchCapability) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record RecallAnswerResult(
-            String instruction,
-            String goalId,
-            String cardId,
+    public record RecallAnswerCard(
             String prompt,
             String expectedAnswer,
             String category) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record RecallResult(
-            String savedCardId,
-            boolean passed,
+    public record RecallAnswersResult(
+            List<RecallAnswerCard> answers,
+            String gradingCapability) {
+    }
+
+    public record RecallAssessment(boolean passed, String feedback) {
+    }
+
+    public record RecallContinuation(String action, boolean consentRequired, String instruction) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record RecallResultsReceipt(
+            int savedAssessments,
+            int passedAssessments,
             int verifiedCards,
             int pendingCards,
             boolean masterySaved,
-            String masteryGoalId,
-            String instruction,
             RecallPromptResult next,
+            RecallContinuation continuation,
             OpenAiDeCoachContext context) {
+
+        public RecallResultsReceipt {
+            if ((next == null) == (context == null)) {
+                throw new IllegalArgumentException(
+                        "A recall receipt requires exactly one of next or context.");
+            }
+        }
+    }
+
+    private record RecallCapabilityPayload(
+            String goalId,
+            int configuredBatchSize,
+            List<String> cardIds,
+            long stateVersion,
+            long issuedAtEpochMilli) {
+
+        private RecallCapabilityPayload {
+            cardIds = cardIds == null ? List.of() : List.copyOf(cardIds);
+        }
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -565,48 +601,50 @@ public final class OpenAiDeV1McpContractAdapter {
                 tool(
                         START_RECALL,
                         "Start verified recall",
-                        "Starts or continues the strict card recall check for the active memorisation goal. "
-                                + "batchSize is between 1 and 20.",
-                        objectSchema(
-                                Map.of(
-                                        "goalId", modelFacingOpaqueReferenceSchema(),
-                                        "batchSize", integerSchema(1, 20)),
-                                List.of("goalId")),
+                        "Starts the strict card recall check for the active memorisation goal. SkillPilot chooses "
+                                + "the goal, complete batch and question count; supply no technical selection.",
+                        emptyObjectSchema(),
                         recallPromptSchema(),
                         true,
                         true,
                         false,
                         this::startRecall),
                 tool(
-                        GET_RECALL_ANSWER,
-                        "Load a card's expected answer",
-                        "Loads the expected answer for exactly one card only after the learner has answered it.",
+                        GET_RECALL_ANSWERS,
+                        "Load the batch's expected answers",
+                        "After the learner answered every displayed question, loads every expected answer for the "
+                                + "exact server-issued batch in one operation. Copy batchCapability unchanged.",
                         objectSchema(
-                                Map.of(
-                                        "goalId", modelFacingOpaqueReferenceSchema(),
-                                        "cardId", modelFacingOpaqueReferenceSchema()),
-                                List.of("goalId", "cardId")),
+                                Map.of(RECALL_BATCH_CAPABILITY, modelFacingOpaqueReferenceSchema()),
+                                List.of(RECALL_BATCH_CAPABILITY)),
                         recallAnswerSchema(),
                         true,
                         true,
                         false,
-                        this::getRecallAnswer),
+                        this::getRecallAnswers),
                 tool(
-                        RECORD_RECALL_RESULT,
-                        "Save card result",
-                        "Saves passed=true for exactly one card only for a correct answer without help; otherwise false.",
+                        RECORD_RECALL_RESULTS,
+                        "Save the complete recall assessment",
+                        "Atomically saves one ordered assessment for every answer in the exact released batch. "
+                                + "Copy gradingCapability unchanged; do not pass card IDs, state versions, retry IDs, "
+                                + "counts or other technical workflow values.",
                         objectSchema(
                                 Map.of(
-                                        "goalId", modelFacingOpaqueReferenceSchema(),
-                                        "cardId", modelFacingOpaqueReferenceSchema(),
-                                        "passed", booleanSchema(),
-                                        "feedback", stringSchema()),
-                                List.of("goalId", "cardId", "passed")),
+                                        RECALL_GRADING_CAPABILITY, modelFacingOpaqueReferenceSchema(),
+                                        "assessments", boundedObjectArraySchema(
+                                                objectSchema(
+                                                        Map.of(
+                                                                "passed", booleanSchema(),
+                                                                "feedback", stringSchema()),
+                                                        List.of("passed")),
+                                                1,
+                                                20)),
+                                List.of(RECALL_GRADING_CAPABILITY, "assessments")),
                         recallResultSchema(),
                         false,
                         true,
                         true,
-                        this::recordRecallResult),
+                        this::recordRecallResults),
                 tool(
                         GET_EXAM_EVALUATION,
                         "Load exam evaluation",
@@ -654,7 +692,9 @@ public final class OpenAiDeV1McpContractAdapter {
                 .name(name)
                 .title(title)
                 .description(description)
-                .inputSchema(withSessionSchema(inputSchema, writeScope))
+                .inputSchema(withSessionSchema(
+                        inputSchema,
+                        writeScope && !RECORD_RECALL_RESULTS.equals(name)))
                 .outputSchema(withVersionMetadataSchema(outputSchema))
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
@@ -944,8 +984,19 @@ public final class OpenAiDeV1McpContractAdapter {
                 if (sessionCoordinator == null) {
                     return operation.apply(skillpilotId, arguments, null);
                 }
-                long expectedStateVersion = requiredLong(arguments, EXPECTED_STATE_VERSION);
-                String clientRequestId = requiredString(arguments, CLIENT_REQUEST_ID);
+                boolean serverManagedRecallWrite = RECORD_RECALL_RESULTS.equals(toolName);
+                RecallCapabilityPayload recallWriteCapability = serverManagedRecallWrite
+                        ? requireRecallCapability(
+                                requiredString(arguments, RECALL_GRADING_CAPABILITY),
+                                RECALL_GRADING_CAPABILITY_CONTEXT,
+                                learningSessionId)
+                        : null;
+                long expectedStateVersion = serverManagedRecallWrite
+                        ? recallWriteCapability.stateVersion()
+                        : requiredLong(arguments, EXPECTED_STATE_VERSION);
+                String clientRequestId = serverManagedRecallWrite
+                        ? recallWriteRequestId(arguments)
+                        : requiredString(arguments, CLIENT_REQUEST_ID);
                 return sessionCoordinator.write(
                         learningSessionId,
                         toolName,
@@ -1360,6 +1411,219 @@ public final class OpenAiDeV1McpContractAdapter {
                 goalId,
                 Long.toString(metadata.stateVersion()),
                 metadata.curriculumRevision());
+    }
+
+    private String recallCapability(
+            String context,
+            String learningSessionId,
+            String goalId,
+            int configuredBatchSize,
+            List<String> cardIds,
+            long stateVersion,
+            Instant issuedAt) {
+        try {
+            RecallCapabilityPayload payload = new RecallCapabilityPayload(
+                    goalId,
+                    configuredBatchSize,
+                    cardIds,
+                    stateVersion,
+                    issuedAt.toEpochMilli());
+            byte[] iv = new byte[RECALL_CAPABILITY_IV_BYTES];
+            RECALL_CAPABILITY_RANDOM.nextBytes(iv);
+            Cipher cipher = Cipher.getInstance(RECALL_CAPABILITY_CIPHER);
+            cipher.init(
+                    Cipher.ENCRYPT_MODE,
+                    recallCapabilityEncryptionKey(),
+                    new GCMParameterSpec(RECALL_CAPABILITY_TAG_BITS, iv));
+            cipher.updateAAD(recallCapabilityAssociatedData(context, learningSessionId));
+            byte[] encrypted = cipher.doFinal(PUBLIC_OUTPUT_MAPPER.writeValueAsBytes(payload));
+            byte[] token = new byte[iv.length + encrypted.length];
+            System.arraycopy(iv, 0, token, 0, iv.length);
+            System.arraycopy(encrypted, 0, token, iv.length, encrypted.length);
+            return Base64.getUrlEncoder().withoutPadding().encodeToString(token);
+        } catch (Exception exception) {
+            throw new IllegalStateException("Could not encode a verified-recall capability.", exception);
+        }
+    }
+
+    private RecallCapabilityPayload requireRecallCapability(
+            String capability,
+            String context,
+            String learningSessionId) {
+        try {
+            if (capability == null || capability.isBlank() || capability.length() > 16_000) {
+                throw new IllegalArgumentException("Invalid verified-recall capability.");
+            }
+            byte[] token = Base64.getUrlDecoder().decode(capability);
+            if (token.length <= RECALL_CAPABILITY_IV_BYTES + (RECALL_CAPABILITY_TAG_BITS / 8)) {
+                throw new IllegalArgumentException("Invalid verified-recall capability.");
+            }
+            byte[] iv = java.util.Arrays.copyOfRange(token, 0, RECALL_CAPABILITY_IV_BYTES);
+            byte[] encrypted = java.util.Arrays.copyOfRange(token, RECALL_CAPABILITY_IV_BYTES, token.length);
+            Cipher cipher = Cipher.getInstance(RECALL_CAPABILITY_CIPHER);
+            cipher.init(
+                    Cipher.DECRYPT_MODE,
+                    recallCapabilityEncryptionKey(),
+                    new GCMParameterSpec(RECALL_CAPABILITY_TAG_BITS, iv));
+            cipher.updateAAD(recallCapabilityAssociatedData(context, learningSessionId));
+            RecallCapabilityPayload payload = PUBLIC_OUTPUT_MAPPER.readValue(
+                    cipher.doFinal(encrypted),
+                    RecallCapabilityPayload.class);
+            if (payload.goalId() == null
+                    || payload.goalId().isBlank()
+                    || payload.configuredBatchSize() < 1
+                    || payload.configuredBatchSize() > 20
+                    || payload.cardIds().isEmpty()
+                    || payload.cardIds().size() > 20
+                    || payload.cardIds().size() > payload.configuredBatchSize()
+                    || payload.stateVersion() < 0
+                    || payload.issuedAtEpochMilli() <= 0
+                    || payload.issuedAtEpochMilli() > Instant.now().plusSeconds(300).toEpochMilli()
+                    || payload.cardIds().stream().anyMatch(cardId -> cardId == null || cardId.isBlank())
+                    || new LinkedHashSet<>(payload.cardIds()).size() != payload.cardIds().size()) {
+                throw new IllegalArgumentException("Invalid verified-recall capability.");
+            }
+            return payload;
+        } catch (IllegalArgumentException exception) {
+            throw exception;
+        } catch (Exception exception) {
+            throw new IllegalArgumentException("Invalid verified-recall capability.", exception);
+        }
+    }
+
+    private SecretKeySpec recallCapabilityEncryptionKey() {
+        try {
+            byte[] key = MessageDigest.getInstance("SHA-256").digest(capabilitySecret);
+            return new SecretKeySpec(key, "AES");
+        } catch (NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("Could not derive the verified-recall capability key.", exception);
+        }
+    }
+
+    private byte[] recallCapabilityAssociatedData(String context, String learningSessionId) {
+        return (context + "\0" + learningSessionId).getBytes(StandardCharsets.UTF_8);
+    }
+
+    private String recallWriteRequestId(Map<String, Object> arguments) {
+        String gradingCapability = requiredString(arguments, RECALL_GRADING_CAPABILITY);
+        byte[] serverOwnedIdentity = (RECALL_WRITE_REQUEST_CONTEXT + "\0" + gradingCapability)
+                .getBytes(StandardCharsets.UTF_8);
+        return UUID.nameUUIDFromBytes(serverOwnedIdentity).toString();
+    }
+
+    private void requireRecallCapabilityState(
+            RecallCapabilityPayload payload,
+            OpenAiDeV1SessionMetadata metadata) {
+        if (metadata == null || payload.stateVersion() != metadata.stateVersion()) {
+            throw new OpenAiDeV1SessionStateException(
+                    OpenAiDeV1SessionStateException.Code.STATE_VERSION_CONFLICT,
+                    metadata,
+                    "The verified-recall capability no longer represents the current learner state.");
+        }
+    }
+
+    private List<RecallAssessment> requiredRecallAssessments(Map<String, Object> arguments) {
+        Object raw = arguments.get("assessments");
+        if (!(raw instanceof List<?> list) || list.isEmpty() || list.size() > 20) {
+            throw new IllegalArgumentException("assessments must contain between 1 and 20 entries.");
+        }
+        List<RecallAssessment> assessments = new ArrayList<>(list.size());
+        for (Object entry : list) {
+            if (!(entry instanceof Map<?, ?> map) || !(map.get("passed") instanceof Boolean passed)) {
+                throw new IllegalArgumentException("Each assessment requires passed=true or passed=false.");
+            }
+            Object rawFeedback = map.get("feedback");
+            if (rawFeedback != null && !(rawFeedback instanceof String)) {
+                throw new IllegalArgumentException("assessment feedback must be a string.");
+            }
+            String feedback = rawFeedback == null ? null : ((String) rawFeedback).trim();
+            if (feedback != null && feedback.isEmpty()) {
+                feedback = null;
+            } else if (feedback != null && feedback.length() > MAX_OUTCOME_FEEDBACK_LENGTH) {
+                int end = MAX_OUTCOME_FEEDBACK_LENGTH;
+                if (Character.isHighSurrogate(feedback.charAt(end - 1))
+                        && Character.isLowSurrogate(feedback.charAt(end))) {
+                    end--;
+                }
+                feedback = feedback.substring(0, end);
+            }
+            assessments.add(new RecallAssessment(passed, feedback));
+        }
+        return List.copyOf(assessments);
+    }
+
+    private RecallContinuation recallContinuation(
+            RecallPromptResult next,
+            OpenAiDeCoachContext context,
+            OpenAiDeV1SessionMetadata metadata) {
+        if (next != null && "ready".equals(next.status())) {
+            return new RecallContinuation(
+                    "askNextRecallBatch",
+                    false,
+                    localized(metadata,
+                            "Zeige jetzt den nächsten vollständigen Kartenbatch und warte wieder auf alle Antworten.",
+                            "Show the next complete card batch now and again wait for all answers."));
+        }
+        if (context != null
+                && context.activeGoal() != null
+                && "memory".equals(context.activeGoal().nodeKind())) {
+            return new RecallContinuation(
+                    "chooseMemoryMode",
+                    true,
+                    localized(metadata,
+                            "Die Kartenprüfung ist beendet. Biete für das aktive Lernkartenziel genau die vom "
+                                    + "Backend veröffentlichten Lernmodi an und warte auf die Auswahl.",
+                            "The recall check is complete. Offer exactly the backend-published learning modes for "
+                                    + "the active memory goal and wait for the learner's choice."));
+        }
+        if (context != null && context.activeGoal() != null) {
+            return new RecallContinuation(
+                    "teachActiveGoal",
+                    false,
+                    localized(metadata,
+                            "Die Kartenprüfung ist beendet. Beginne das bereits aktivierte Lernziel sofort im selben "
+                                    + "Antwortturn.",
+                            "The recall check is complete. Begin the already active learning goal immediately in "
+                                    + "the same assistant turn."));
+        }
+        if (context != null && "setScope".equals(context.requiredAction())
+                && context.options() != null && !context.options().isEmpty()) {
+            return new RecallContinuation(
+                    "offerScope",
+                    true,
+                    localized(metadata,
+                            "Die Kartenprüfung und der aktuelle Fokus sind abgeschlossen. Biete genau die erste "
+                                    + "veröffentlichte breitere Fokusoption an und warte auf Zustimmung.",
+                            "The recall check and current focus are complete. Offer exactly the first published "
+                                    + "broader focus option and wait for consent."));
+        }
+        if (context != null && "setActiveGoal".equals(context.requiredAction())) {
+            return new RecallContinuation(
+                    "offerGoal",
+                    true,
+                    localized(metadata,
+                            "Biete die veröffentlichte Lernzielauswahl an und warte auf die Auswahl.",
+                            "Offer the published learning-goal choices and wait for a selection."));
+        }
+        boolean curriculumComplete = context != null
+                && context.completion() != null
+                && context.completion().curriculumComplete();
+        if (curriculumComplete) {
+            return new RecallContinuation(
+                    "curriculumComplete",
+                    false,
+                    localized(metadata,
+                            "Bestätige den Abschluss des persönlichen Curriculums.",
+                            "Confirm completion of the personal curriculum."));
+        }
+        return new RecallContinuation(
+                "waitUntilEligible",
+                false,
+                localized(metadata,
+                        "Nur die harte Kartenprüfung ist für heute beendet. Erkläre den bestätigten Gesamtbefund; "
+                                + "behaupte keinen Fokusabschluss und keine automatische Weitung.",
+                        "Only strict card recall is finished for today. Explain the confirmed aggregate result; "
+                                + "do not claim focus completion or automatic widening."));
     }
 
     private byte[] capabilityBytes(String context, String... frames) {
@@ -1848,73 +2112,204 @@ public final class OpenAiDeV1McpContractAdapter {
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
-        String goalId = requiredString(arguments, "goalId");
-        Integer batchSize = optionalInteger(arguments, "batchSize");
-        if (batchSize != null && (batchSize < 1 || batchSize > 20)) {
-            throw new IllegalArgumentException("batchSize must be between 1 and 20.");
+        String learningSessionId = requiredLearningSessionId(arguments);
+        UnifiedLearnerStateResponse state = coachTools.getLearnerState(skillpilotId);
+        FrontierGoal activeGoal = activeGoal(state);
+        String goalId = activeGoal == null ? null : activeGoal.id();
+        if (goalId == null || goalId.isBlank()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Verified Recall requires an active memory goal.");
         }
-        RecallPromptResult result = recallPrompt(coachTools.startVerifiedRecall(
+        int batchSize = metadata != null && metadata.verifiedRecallBatchSize() != null
+                ? metadata.verifiedRecallBatchSize()
+                : 10;
+        VerifiedRecallPromptResponse response = coachTools.startVerifiedRecallBatch(
                 skillpilotId,
                 communicationLanguage(metadata),
-                new VerifiedRecallStartRequest(goalId, false, batchSize)));
+                goalId,
+                batchSize);
+        String batchCapability = response != null
+                        && "ready".equals(response.status())
+                        && response.cards() != null
+                        && !response.cards().isEmpty()
+                ? recallCapability(
+                        RECALL_BATCH_CAPABILITY_CONTEXT,
+                        learningSessionId,
+                        response.goalId(),
+                        response.configuredBatchSize(),
+                        response.cards().stream().map(VerifiedRecallPromptCard::cardId).toList(),
+                        metadata.stateVersion(),
+                        response.issuedAt())
+                : null;
+        RecallPromptResult result = recallPrompt(response, batchCapability);
+        String summary;
+        if ("ready".equals(response.status())) {
+            summary = localized(metadata,
+                    "Vollständiger Prüfungsbatch geladen. Zeige alle Fragen in der gelieferten Reihenfolge und "
+                            + "warte auf alle Antworten.",
+                    "Complete recall batch loaded. Show every question in the supplied order and wait for all "
+                            + "answers.");
+        } else if ("waiting".equals(response.status())) {
+            summary = localized(metadata,
+                    "Heute ist kein Prüfungsbatch verfügbar. Erfinde keine Karten; erkläre kurz, dass die harte "
+                            + "Kartenprüfung später fortgesetzt werden kann.",
+                    "No recall batch is available today. Do not invent cards; briefly explain that strict recall "
+                            + "can continue later.");
+        } else {
+            summary = localized(metadata,
+                    "Dieses Lernkartenziel ist bereits vollständig hart geprüft. Erfinde keine Karten und speichere "
+                            + "keine zusätzliche Mastery.",
+                    "This memory goal is already fully verified. Do not invent cards or save additional mastery.");
+        }
         return successResult(
-                localized(metadata,
-                        "Abrufprüfung geladen. Zeige jeweils nur die Frage, nicht die Sollantwort.",
-                        "Recall check loaded. Show only each question, never the expected answer."),
+                summary,
                 result);
     }
 
-    private McpSchema.CallToolResult getRecallAnswer(
+    private McpSchema.CallToolResult getRecallAnswers(
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
-        VerifiedRecallAnswerResponse response = coachTools.getVerifiedRecallAnswer(
+        String learningSessionId = requiredLearningSessionId(arguments);
+        RecallCapabilityPayload payload = requireRecallCapability(
+                requiredString(arguments, RECALL_BATCH_CAPABILITY),
+                RECALL_BATCH_CAPABILITY_CONTEXT,
+                learningSessionId);
+        requireRecallCapabilityState(payload, metadata);
+        VerifiedRecallBatchAnswerResponse response = coachTools.getVerifiedRecallAnswersBatch(
                 skillpilotId,
                 communicationLanguage(metadata),
-                new VerifiedRecallAnswerRequest(
-                        requiredString(arguments, "goalId"),
-                        requiredString(arguments, "cardId")));
-        RecallAnswerResult result = new RecallAnswerResult(
-                response.instruction(),
-                response.goalId(),
-                response.cardId(),
-                response.prompt(),
-                response.expectedAnswer(),
-                response.category());
+                new VerifiedRecallBatchAnswerRequest(
+                        payload.goalId(),
+                        payload.configuredBatchSize(),
+                        payload.cardIds(),
+                        Instant.ofEpochMilli(payload.issuedAtEpochMilli())));
+        RecallAnswersResult result = new RecallAnswersResult(
+                response.cards().stream()
+                        .map(card -> new RecallAnswerCard(
+                                card.prompt(),
+                                card.expectedAnswer(),
+                                card.category()))
+                        .toList(),
+                recallCapability(
+                        RECALL_GRADING_CAPABILITY_CONTEXT,
+                        learningSessionId,
+                        payload.goalId(),
+                        payload.configuredBatchSize(),
+                        payload.cardIds(),
+                        payload.stateVersion(),
+                        Instant.ofEpochMilli(payload.issuedAtEpochMilli())));
         return successResult(
                 localized(metadata,
-                        "Sollantwort nach der Lernendenantwort geladen; jetzt fachlich vergleichen.",
-                        "Expected answer loaded after the learner answer; now compare technical meaning."),
+                        "Alle Sollantworten des vollständigen Batches sind geladen. Vergleiche nun die Antworten "
+                                + "inhaltlich und speichere genau einen atomaren Gesamtbefund.",
+                        "All expected answers for the complete batch are loaded. Compare the answers by meaning "
+                                + "and save exactly one atomic batch assessment."),
                 result);
     }
 
-    private McpSchema.CallToolResult recordRecallResult(
+    private McpSchema.CallToolResult recordRecallResults(
             String skillpilotId,
             Map<String, Object> arguments,
             OpenAiDeV1SessionMetadata metadata) {
-        VerifiedRecallResultResponse response = coachTools.recordVerifiedRecallResult(
+        String learningSessionId = requiredLearningSessionId(arguments);
+        RecallCapabilityPayload payload = requireRecallCapability(
+                requiredString(arguments, RECALL_GRADING_CAPABILITY),
+                RECALL_GRADING_CAPABILITY_CONTEXT,
+                learningSessionId);
+        requireRecallCapabilityState(payload, metadata);
+        List<RecallAssessment> assessments = requiredRecallAssessments(arguments);
+        if (assessments.size() != payload.cardIds().size()) {
+            throw new IllegalArgumentException(
+                    "assessments must cover the complete verified-recall batch in order.");
+        }
+        List<VerifiedRecallBatchCardResult> domainResults = new ArrayList<>(assessments.size());
+        for (int index = 0; index < assessments.size(); index++) {
+            RecallAssessment assessment = assessments.get(index);
+            domainResults.add(new VerifiedRecallBatchCardResult(
+                    payload.cardIds().get(index),
+                    assessment.passed(),
+                    assessment.feedback()));
+        }
+        VerifiedRecallBatchResultResponse response = coachTools.recordVerifiedRecallResultsBatch(
                 skillpilotId,
                 communicationLanguage(metadata),
-                new VerifiedRecallResultRequest(
-                        requiredString(arguments, "goalId"),
-                        requiredString(arguments, "cardId"),
-                        requiredBoolean(arguments, "passed"),
-                        optionalString(arguments, "feedback")));
-        RecallResult result = new RecallResult(
-                response.savedCardId(),
-                response.passed(),
+                new VerifiedRecallBatchResultRequest(
+                        payload.goalId(),
+                        payload.configuredBatchSize(),
+                        payload.cardIds(),
+                        Instant.ofEpochMilli(payload.issuedAtEpochMilli()),
+                        domainResults));
+        long successorStateVersion = Math.addExact(payload.stateVersion(), 1L);
+        RecallPromptResult next = response.next() != null
+                        && "ready".equals(response.next().status())
+                        && response.next().cards() != null
+                        && !response.next().cards().isEmpty()
+                ? recallPrompt(
+                        response.next(),
+                        recallCapability(
+                                RECALL_BATCH_CAPABILITY_CONTEXT,
+                                learningSessionId,
+                                response.next().goalId(),
+                                response.next().configuredBatchSize(),
+                                response.next().cards().stream()
+                                        .map(VerifiedRecallPromptCard::cardId)
+                                        .toList(),
+                                successorStateVersion,
+                                response.next().issuedAt()))
+                : null;
+        OpenAiDeCoachContext successorContext = projectContext(
+                skillpilotId,
+                response.successor(),
+                metadata);
+        RecallContinuation continuation = recallContinuation(next, successorContext, metadata);
+        OpenAiDeCoachContext publicSuccessorContext = next == null
+                ? recallSuccessorContext(successorContext)
+                : null;
+        int passedAssessments = (int) assessments.stream().filter(RecallAssessment::passed).count();
+        RecallResultsReceipt result = new RecallResultsReceipt(
+                response.savedResults().size(),
+                passedAssessments,
                 response.verifiedCards(),
                 response.pendingCards(),
                 response.masterySaved(),
-                response.masteryGoalId(),
-                response.instruction(),
-                recallPrompt(response.next()),
-                projectContext(skillpilotId, coachTools.getLearnerState(skillpilotId), metadata));
+                next,
+                continuation,
+                publicSuccessorContext);
         return successResult(
                 localized(metadata,
-                        "Kartenergebnis gespeichert; Folgezustand geladen.",
-                        "Card result saved; successor state loaded."),
+                        "Der vollständige Prüfungsbatch wurde atomar gespeichert. Verwende ausschließlich den "
+                                + "bestätigten Gesamtbefund und führe continuation jetzt aus.",
+                        "The complete recall batch was saved atomically. Use only the confirmed aggregate receipt "
+                                + "and execute continuation now."),
                 result);
+    }
+
+    private OpenAiDeCoachContext recallSuccessorContext(OpenAiDeCoachContext context) {
+        if (context == null) {
+            return null;
+        }
+        return new OpenAiDeCoachContext(
+                context.learningState(),
+                null,
+                context.interactionMode(),
+                context.curriculum(),
+                context.orientation(),
+                context.orientationOutlook(),
+                context.activeGoal(),
+                context.options(),
+                context.curriculumCatalog(),
+                context.personalizationHistory(),
+                context.decision(),
+                context.frontier(),
+                context.resources(),
+                context.goalVisualization(),
+                context.nextAllowedTools(),
+                context.progress(),
+                context.completion(),
+                context.policies(),
+                null);
     }
 
     private McpSchema.CallToolResult getExamEvaluation(
@@ -2016,7 +2411,9 @@ public final class OpenAiDeV1McpContractAdapter {
         }
     }
 
-    private RecallPromptResult recallPrompt(VerifiedRecallPromptResponse response) {
+    private RecallPromptResult recallPrompt(
+            VerifiedRecallPromptResponse response,
+            String batchCapability) {
         if (response == null) {
             return null;
         }
@@ -2025,21 +2422,18 @@ public final class OpenAiDeV1McpContractAdapter {
                 : response.cards().stream().map(this::recallCard).toList();
         return new RecallPromptResult(
                 response.status(),
-                response.instruction(),
-                response.goalId(),
                 response.goalTitle(),
                 response.totalCards(),
                 response.verifiedCards(),
                 response.pendingCards(),
-                response.eligibleCards(),
                 response.blockedCards(),
                 response.nextEligibleAt(),
-                response.batchSize(),
-                cards);
+                cards,
+                batchCapability);
     }
 
     private RecallCard recallCard(VerifiedRecallPromptCard card) {
-        return new RecallCard(card.cardId(), card.prompt(), card.category());
+        return new RecallCard(card.prompt(), card.category());
     }
 
     private McpSchema.CallToolResult successResult(String summary, Object structuredContent) {
@@ -2937,48 +3331,74 @@ public final class OpenAiDeV1McpContractAdapter {
 
     private static Map<String, Object> recallPromptSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
-        properties.put("status", stringSchema());
-        properties.put("instruction", stringSchema());
-        properties.put("goalId", stringSchema());
+        properties.put("status", enumStringSchema("ready", "waiting", "complete"));
         properties.put("goalTitle", stringSchema());
         properties.put("totalCards", integerSchema(0, null));
         properties.put("verifiedCards", integerSchema(0, null));
         properties.put("pendingCards", integerSchema(0, null));
-        properties.put("eligibleCards", integerSchema(0, null));
         properties.put("blockedCards", integerSchema(0, null));
         properties.put("nextEligibleAt", stringSchema());
-        properties.put("batchSize", integerSchema(0, 20));
         properties.put("cards", objectArraySchema(recallCardSchema()));
+        properties.put(RECALL_BATCH_CAPABILITY, modelFacingOpaqueReferenceSchema());
         return objectSchema(properties, List.of(
-                "status", "instruction", "goalId", "totalCards", "verifiedCards", "pendingCards",
-                "eligibleCards", "blockedCards", "batchSize", "cards"));
+                "status", "totalCards", "verifiedCards", "pendingCards",
+                "blockedCards", "cards"));
     }
 
     private static Map<String, Object> recallAnswerSchema() {
         return objectSchema(
                 Map.of(
-                        "instruction", stringSchema(),
-                        "goalId", stringSchema(),
-                        "cardId", stringSchema(),
-                        "prompt", stringSchema(),
-                        "expectedAnswer", stringSchema(),
-                        "category", stringSchema()),
-                List.of("instruction", "goalId", "cardId", "prompt", "expectedAnswer"));
+                        "answers", boundedObjectArraySchema(
+                                objectSchema(
+                                        Map.of(
+                                                "prompt", stringSchema(),
+                                                "expectedAnswer", stringSchema(),
+                                                "category", stringSchema()),
+                                        List.of("prompt", "expectedAnswer")),
+                                1,
+                                20),
+                        RECALL_GRADING_CAPABILITY, modelFacingOpaqueReferenceSchema()),
+                List.of("answers", RECALL_GRADING_CAPABILITY));
     }
 
     private static Map<String, Object> recallResultSchema() {
         Map<String, Object> properties = new LinkedHashMap<>();
-        properties.put("savedCardId", stringSchema());
-        properties.put("passed", booleanSchema());
+        properties.put("savedAssessments", integerSchema(1, 20));
+        properties.put("passedAssessments", integerSchema(0, 20));
         properties.put("verifiedCards", integerSchema(0, null));
         properties.put("pendingCards", integerSchema(0, null));
         properties.put("masterySaved", booleanSchema());
-        properties.put("masteryGoalId", stringSchema());
-        properties.put("instruction", stringSchema());
         properties.put("next", recallPromptSchema());
-        properties.put("context", contextSchema());
+        properties.put("continuation", objectSchema(
+                Map.of(
+                        "action", enumStringSchema(
+                                "askNextRecallBatch",
+                                "chooseMemoryMode",
+                                "teachActiveGoal",
+                                "offerScope",
+                                "offerGoal",
+                                "waitUntilEligible",
+                                "curriculumComplete"),
+                        "consentRequired", booleanSchema(),
+                        "instruction", stringSchema()),
+                List.of("action", "consentRequired", "instruction")));
+        properties.put("context", recallSuccessorContextSchema());
         return objectSchema(properties, List.of(
-                "savedCardId", "passed", "verifiedCards", "pendingCards", "masterySaved", "context"));
+                "savedAssessments", "passedAssessments", "verifiedCards", "pendingCards",
+                "masterySaved", "continuation"));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> recallSuccessorContextSchema() {
+        Map<String, Object> full = contextSchema();
+        Map<String, Object> properties = new LinkedHashMap<>(
+                (Map<String, Object>) full.get("properties"));
+        properties.remove("requiredAction");
+        properties.remove("instruction");
+        List<String> required = new ArrayList<>((List<String>) full.get("required"));
+        required.remove("requiredAction");
+        required.remove("instruction");
+        return objectSchema(properties, required);
     }
 
     private static Map<String, Object> examEvaluationSchema() {
@@ -3109,10 +3529,9 @@ public final class OpenAiDeV1McpContractAdapter {
     private static Map<String, Object> recallCardSchema() {
         return objectSchema(
                 Map.of(
-                        "cardId", stringSchema(),
                         "prompt", stringSchema(),
                         "category", stringSchema()),
-                List.of("cardId", "prompt"));
+                List.of("prompt"));
     }
 
     private static Map<String, Object> scoringSchema() {
