@@ -1,12 +1,14 @@
 import React from 'react'
 import { AlertTriangle, Database, Download, Trash2, Upload, X } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import type { CopySource } from '../learnerTypes'
 import type { LearnerRetentionStatus } from '../utils/learnerDataManagement'
 import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 
 interface LearnerDataManagementDialogProps {
   isOpen: boolean
   skillpilotId: string
+  copySources?: readonly CopySource[]
   retention: LearnerRetentionStatus | null
   retentionLoading: boolean
   retentionError: 'missing' | 'failed' | null
@@ -27,11 +29,22 @@ const formatInstant = (value: string, language: 'de' | 'en') => {
   }).format(new Date(value))
 }
 
+const formatDate = (value: string, language: 'de' | 'en') => {
+  const locale = language === 'de' ? 'de-DE' : 'en-GB'
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: 'medium',
+  }).format(new Date(value))
+}
+
+const formatCopySourceId = (value: string) =>
+  value.length > 8 ? `${value.slice(0, 8)}…` : value
+
 export const LearnerDataManagementDialog: React.FC<
   LearnerDataManagementDialogProps
 > = ({
   isOpen,
   skillpilotId,
+  copySources = [],
   retention,
   retentionLoading,
   retentionError,
@@ -50,6 +63,7 @@ export const LearnerDataManagementDialog: React.FC<
   const initialDeleteActionRef = React.useRef<HTMLButtonElement>(null)
   const confirmCheckboxRef = React.useRef<HTMLInputElement>(null)
   const importFileInputRef = React.useRef<HTMLInputElement>(null)
+  const copySourcesDetailsRef = React.useRef<HTMLDetailsElement>(null)
   const [view, setView] = React.useState<'overview' | 'confirm-delete'>('overview')
   const [deleteConfirmed, setDeleteConfirmed] = React.useState(false)
 
@@ -64,6 +78,7 @@ export const LearnerDataManagementDialog: React.FC<
     if (!isOpen) {
       setView('overview')
       setDeleteConfirmed(false)
+      if (copySourcesDetailsRef.current) copySourcesDetailsRef.current.open = false
     }
   }, [isOpen])
 
@@ -209,6 +224,38 @@ export const LearnerDataManagementDialog: React.FC<
                   />
                 </section>
               </div>
+            )}
+
+            {copySources.length > 0 && (
+              <details
+                ref={copySourcesDetailsRef}
+                className="rounded-xl border border-border-color bg-input-bg/40"
+              >
+                <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-text-secondary transition-colors hover:text-text-primary">
+                  {copy.copySourcesTitle} · {copySources.length}{' '}
+                  {copySources.length === 1
+                    ? copy.copySourcesEntrySingular
+                    : copy.copySourcesEntryPlural}
+                </summary>
+                <div className="space-y-2 border-t border-border-color px-4 py-3 text-sm text-text-secondary">
+                  {copySources.map((source, index) => (
+                    <div
+                      key={`${source.sourceId}:${source.copiedAt}:${index}`}
+                      className="flex items-center justify-between gap-3"
+                    >
+                      <span className="min-w-0 truncate font-mono" title={source.sourceId}>
+                        {formatCopySourceId(source.sourceId)}
+                      </span>
+                      <time
+                        dateTime={source.copiedAt}
+                        className="shrink-0 whitespace-nowrap"
+                      >
+                        {formatDate(source.copiedAt, localizedLanguage)}
+                      </time>
+                    </div>
+                  ))}
+                </div>
+              </details>
             )}
 
             <section className="rounded-xl border border-rose-300 bg-rose-50/70 p-4 dark:border-rose-900/70 dark:bg-rose-950/20">

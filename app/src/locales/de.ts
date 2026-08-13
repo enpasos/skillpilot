@@ -260,7 +260,6 @@ export const de = {
         completed: "abgeschlossen",
         totalInContext: "Ziele im Kontext",
         of: "von",
-        includesDataFrom: "Enthält Daten von",
         nextSteps: "Als nächste Lernziele stehen dir offen:",
         chooseNext: "Welches möchtest du als Nächstes angehen?",
         velocity: {

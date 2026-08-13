@@ -3230,25 +3230,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             />
           )}
         </div>
-        {learnerData && learnerData.copySources && learnerData.copySources.length > 0 && (
-          <div className="p-3 border-t border-border-color bg-gray-50 dark:bg-slate-900 text-xs text-text-secondary shrink-0">
-            <h3 className="font-semibold mb-1">
-              {t.learner.includesDataFrom}
-            </h3>
-            <div className="flex flex-col gap-1 max-h-[100px] overflow-y-auto">
-              {learnerData.copySources.map((src, idx) => (
-                <div key={idx} className="flex justify-between">
-                  <span className="truncate" title={src.sourceId}>
-                    {src.sourceId.substring(0, 8)}...
-                  </span>
-                  <span className="whitespace-nowrap ml-2">
-                    {new Date(src.copiedAt).toLocaleDateString()}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
           <button
             type="button"
@@ -3611,6 +3592,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       <LearnerDataManagementDialog
         isOpen={isDataManagementOpen}
         skillpilotId={skillpilotId}
+        copySources={learnerData?.copySources}
         retention={learnerRetention}
         retentionLoading={learnerRetentionLoading}
         retentionError={learnerRetentionError}

@@ -36,6 +36,16 @@ const Fixture = () => {
         <LearnerDataManagementDialog
           isOpen={open}
           skillpilotId="11111111-1111-4111-8111-111111111111"
+          copySources={[
+            {
+              sourceId: '22222222-2222-4222-8222-222222222222',
+              copiedAt: '2026-08-12T07:30:00Z',
+            },
+            {
+              sourceId: '33333333-3333-4333-8333-333333333333',
+              copiedAt: '2026-08-13T09:15:00Z',
+            },
+          ]}
           retention={{
             lastActivityAt: '2026-08-13T08:00:00Z',
             scheduledDeletionAt: '2027-08-13T08:00:00Z',

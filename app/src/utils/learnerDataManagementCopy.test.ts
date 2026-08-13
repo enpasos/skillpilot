@@ -10,6 +10,15 @@ const en = getLearnerDataManagementCopy('en')
 assert(de.title === 'Daten & SkillPilot-ID', 'German dialog has the agreed plain-language title')
 assert(en.title === 'Data & SkillPilot ID', 'English dialog has a matching title')
 assert(
+  de.copySourcesTitle === 'Datenherkunft'
+    && de.copySourcesEntrySingular === 'Eintrag'
+    && de.copySourcesEntryPlural === 'Einträge'
+    && en.copySourcesTitle === 'Data origin'
+    && en.copySourcesEntrySingular === 'entry'
+    && en.copySourcesEntryPlural === 'entries',
+  'copy-source provenance has matching German and English counted summaries',
+)
+assert(
   de.scheduledDeletionLabel === 'Automatische Löschung ab'
     && en.scheduledDeletionLabel === 'Automatic deletion from',
   'the deadline labels do not promise an exact scheduler execution time',
