@@ -140,6 +140,10 @@ const installApi = async (page: Page) => {
     landscapeRequests: 0,
     rewindRequests: 0,
     curriculumSaveRequests: 0,
+    resumeRequests: 0,
+    retentionRequests: 0,
+    deletionRequests: 0,
+    lastDeletionConfirmation: '',
   }
   await page.route('**/api/ui/**', async (route) => {
     const request = route.request()
@@ -187,6 +191,34 @@ const installApi = async (page: Page) => {
       selectedCurriculumId = body.curriculumId
       metrics.curriculumSaveRequests += 1
       await respond({ status: 'updated' })
+      return
+    }
+    if (path.endsWith('/resume') && request.method() === 'POST') {
+      metrics.resumeRequests += 1
+      await respond({
+        lastActivityAt: '2026-08-13T08:00:00Z',
+        scheduledDeletionAt: '2027-08-13T08:00:00Z',
+      })
+      return
+    }
+    if (path.endsWith('/retention') && request.method() === 'GET') {
+      metrics.retentionRequests += 1
+      await respond({
+        lastActivityAt: '2026-08-13T08:00:00Z',
+        scheduledDeletionAt: '2027-08-13T08:00:00Z',
+      })
+      return
+    }
+    if (
+      path.startsWith('/api/ui/learners/')
+      && request.method() === 'DELETE'
+    ) {
+      const body = request.postDataJSON() as { confirmationSkillpilotId?: string }
+      metrics.deletionRequests += 1
+      metrics.lastDeletionConfirmation = body.confirmationSkillpilotId ?? ''
+      await route.fulfill({
+        status: path.endsWith(`/${incompleteLearnerId}`) ? 404 : 204,
+      })
       return
     }
     if (
@@ -339,6 +371,10 @@ try {
   const returning = await openFreshSetupPage(context, baseUrl)
   await returning.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)
   await continueToCompletedSetup(returning.page)
+  assert(
+    returning.apiMetrics.resumeRequests === 1,
+    'continuing with an existing learner records exactly one resume activity',
+  )
 
   const compactButtons = returning.page.getByRole('button', { name: /^Ändern:/u })
   await compactButtons.first().waitFor()
@@ -456,6 +492,10 @@ try {
       && await curriculumSelect.evaluate((select) => document.activeElement === select),
     'changing the curriculum keeps the stable select focused after the authoritative reread',
   )
+  assert(
+    curriculumChange.apiMetrics.resumeRequests === 1,
+    'the authoritative reread after a curriculum save does not create another resume activity',
+  )
   const landscapeRequestsAfterCurriculumChange = curriculumChange.apiMetrics.landscapeRequests
   await curriculumChange.page.waitForTimeout(150)
   assert(
@@ -467,6 +507,56 @@ try {
     `curriculum change browser errors:\n${curriculumChange.browserErrors.join('\n')}`,
   )
   await curriculumChange.page.close()
+
+  const freshGeneratedDeletion = await openFreshSetupPage(context, baseUrl)
+  await freshGeneratedDeletion.page.getByRole('button', { name: 'Neue SkillPilot-ID erstellen' }).click()
+  await freshGeneratedDeletion.page.waitForFunction(
+    (learnerId) => {
+      const input = document.getElementById('skillpilotIdInput') as HTMLInputElement | null
+      return input?.value === learnerId
+    },
+    generatedLearnerId,
+  )
+  const freshDataAction = freshGeneratedDeletion.page.getByRole('button', {
+    name: 'Daten & SkillPilot-ID',
+  })
+  await freshDataAction.waitFor()
+  assert(
+    await freshGeneratedDeletion.page.getByRole('heading', { name: 'Curriculum wählen' }).count() === 0,
+    'a freshly generated learner can manage its data before curriculum setup starts',
+  )
+  await freshDataAction.click()
+  await freshGeneratedDeletion.page.getByRole('dialog', { name: 'Daten & SkillPilot-ID' }).waitFor()
+  assert(
+    freshGeneratedDeletion.apiMetrics.retentionRequests === 1
+      && await freshGeneratedDeletion.page.locator('time[datetime="2027-08-13T08:00:00Z"]').count() === 1,
+    'the fresh-ID dialog loads authoritative retention data',
+  )
+  assert(
+    await freshGeneratedDeletion.page.getByRole('button', { name: 'Lernstand exportieren' }).count() === 0
+      && await freshGeneratedDeletion.page.getByRole('button', { name: 'Sicherungsdatei importieren' }).count() === 0,
+    'SessionSetup exposes a delete-only data dialog without non-functional transfer actions',
+  )
+  await freshGeneratedDeletion.page.getByRole('button', { name: 'SkillPilot-ID und Daten löschen' }).click()
+  await freshGeneratedDeletion.page.getByRole('checkbox', {
+    name: /Ich verstehe, dass die SkillPilot-ID/u,
+  }).check()
+  await freshGeneratedDeletion.page.getByRole('button', { name: 'Endgültig löschen' }).click()
+  await freshGeneratedDeletion.page.getByRole('button', { name: 'Jetzt starten' }).waitFor()
+  assert(
+    freshGeneratedDeletion.apiMetrics.deletionRequests === 1
+      && freshGeneratedDeletion.apiMetrics.lastDeletionConfirmation === generatedLearnerId,
+    'fresh-ID deletion sends exactly one ID-confirmed DELETE before resetting setup',
+  )
+  assert(
+    await freshGeneratedDeletion.page.evaluate(() => localStorage.getItem('skillpilot_id')) === null,
+    'server-confirmed fresh-ID deletion leaves no current learner browser session',
+  )
+  assert(
+    freshGeneratedDeletion.browserErrors.length === 0,
+    `fresh generated deletion browser errors:\n${freshGeneratedDeletion.browserErrors.join('\n')}`,
+  )
+  await freshGeneratedDeletion.page.close()
 
   const generated = await openFreshSetupPage(context, baseUrl)
   await generated.page.getByRole('button', { name: 'Neue SkillPilot-ID erstellen' }).click()
@@ -514,6 +604,18 @@ try {
   assert(
     incomplete.browserErrors.length === 0,
     `incomplete learner browser errors:\n${incomplete.browserErrors.join('\n')}`,
+  )
+  await incomplete.page.getByRole('button', { name: 'Daten & SkillPilot-ID' }).click()
+  await incomplete.page.getByRole('button', { name: 'SkillPilot-ID und Daten löschen' }).click()
+  await incomplete.page.getByRole('checkbox', {
+    name: /Ich verstehe, dass die SkillPilot-ID/u,
+  }).check()
+  await incomplete.page.getByRole('button', { name: 'Endgültig löschen' }).click()
+  await incomplete.page.getByRole('button', { name: 'Jetzt starten' }).waitFor()
+  assert(
+    incomplete.apiMetrics.deletionRequests === 1
+      && incomplete.apiMetrics.lastDeletionConfirmation === incompleteLearnerId,
+    'a deletion 404 is treated as already absent and resets incomplete setup',
   )
 
   await context.close()

@@ -42,6 +42,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 @RestController
 @RequestMapping(value = "/api/ai/{lang}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,14 +93,18 @@ public class LearnerAiController {
     @GetMapping("/learners/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
-        return withAbsoluteExamAssetUrls(coachToolFacade.getLearnerState(skillpilotId));
+        return learnerActivity(
+                skillpilotId,
+                () -> withAbsoluteExamAssetUrls(coachToolFacade.getLearnerState(skillpilotId)));
     }
 
     @PostMapping("/learners/{skillpilotId}/scope")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
-        return withAbsoluteExamAssetUrls(coachToolFacade.setScope(skillpilotId, request));
+        return learnerActivity(
+                skillpilotId,
+                () -> withAbsoluteExamAssetUrls(coachToolFacade.setScope(skillpilotId, request)));
     }
 
     @PostMapping("/learners/{skillpilotId}/active-goal")
@@ -108,7 +114,10 @@ public class LearnerAiController {
             parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
-        return prepareLearnerState(coachToolFacade.setActiveGoal(skillpilotId, request), false);
+        return learnerActivity(
+                skillpilotId,
+                () -> prepareLearnerState(
+                        coachToolFacade.setActiveGoal(skillpilotId, request), false));
     }
 
     @PostMapping("/learners/{skillpilotId}/mastery")
@@ -116,7 +125,10 @@ public class LearnerAiController {
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
-        return masteryResponse(coachToolFacade.setMastery(skillpilotId, request), false);
+        return learnerActivity(
+                skillpilotId,
+                () -> masteryResponse(coachToolFacade.setMastery(skillpilotId, request), false),
+                LearnerAiController::isSuccessfulResponse);
     }
 
     @PostMapping("/chat-start/redeem")
@@ -139,7 +151,10 @@ public class LearnerAiController {
     @GetMapping("/sessions/{chatSessionToken}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getSessionState(@PathVariable String chatSessionToken) {
-        return prepareLearnerState(coachToolFacade.getSessionState(chatSessionToken), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> prepareLearnerState(
+                        coachToolFacade.getSessionState(chatSessionToken), true));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/scope")
@@ -147,7 +162,10 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionScope(
             @PathVariable String chatSessionToken,
             @RequestBody ScopeRequest request) {
-        return prepareLearnerState(coachToolFacade.setSessionScope(chatSessionToken, request), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> prepareLearnerState(
+                        coachToolFacade.setSessionScope(chatSessionToken, request), true));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/active-goal")
@@ -158,7 +176,10 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionActiveGoal(
             @PathVariable String chatSessionToken,
             @Valid @RequestBody ActiveGoalRequest request) {
-        return prepareLearnerState(coachToolFacade.setSessionActiveGoal(chatSessionToken, request), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> prepareLearnerState(
+                        coachToolFacade.setSessionActiveGoal(chatSessionToken, request), true));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/mastery")
@@ -166,7 +187,11 @@ public class LearnerAiController {
     public org.springframework.http.ResponseEntity<?> setSessionMastery(
             @PathVariable String chatSessionToken,
             @RequestBody(required = false) MasteryUpdateRequest request) {
-        return masteryResponse(coachToolFacade.setSessionMastery(chatSessionToken, request), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> masteryResponse(
+                        coachToolFacade.setSessionMastery(chatSessionToken, request), true),
+                LearnerAiController::isSuccessfulResponse);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
@@ -178,7 +203,10 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
-        return coachToolFacade.startSessionVerifiedRecall(chatSessionToken, lang, request);
+        return sessionActivity(
+                chatSessionToken,
+                () -> coachToolFacade.startSessionVerifiedRecall(
+                        chatSessionToken, lang, request));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/answer")
@@ -190,7 +218,10 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallAnswerRequest request) {
-        return coachToolFacade.getSessionVerifiedRecallAnswer(chatSessionToken, lang, request);
+        return sessionActivity(
+                chatSessionToken,
+                () -> coachToolFacade.getSessionVerifiedRecallAnswer(
+                        chatSessionToken, lang, request));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/result")
@@ -202,7 +233,10 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallResultRequest request) {
-        return coachToolFacade.recordSessionVerifiedRecallResult(chatSessionToken, lang, request);
+        return sessionActivity(
+                chatSessionToken,
+                () -> coachToolFacade.recordSessionVerifiedRecallResult(
+                        chatSessionToken, lang, request));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/curriculum")
@@ -210,7 +244,10 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionCurriculum(
             @PathVariable String chatSessionToken,
             @RequestBody UpdateCurriculumRequest request) {
-        return prepareLearnerState(coachToolFacade.setSessionCurriculum(chatSessionToken, request), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> prepareLearnerState(
+                        coachToolFacade.setSessionCurriculum(chatSessionToken, request), true));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/personalization")
@@ -218,7 +255,10 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionPersonalization(
             @PathVariable String chatSessionToken,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
-        return prepareLearnerState(coachToolFacade.setSessionPersonalization(chatSessionToken, request), true);
+        return sessionActivity(
+                chatSessionToken,
+                () -> prepareLearnerState(
+                        coachToolFacade.setSessionPersonalization(chatSessionToken, request), true));
     }
 
     private org.springframework.http.ResponseEntity<?> masteryResponse(
@@ -244,7 +284,9 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
-        return coachToolFacade.startVerifiedRecall(skillpilotId, lang, request);
+        return learnerActivity(
+                skillpilotId,
+                () -> coachToolFacade.startVerifiedRecall(skillpilotId, lang, request));
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/answer")
@@ -256,7 +298,9 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody VerifiedRecallAnswerRequest request) {
-        return coachToolFacade.getVerifiedRecallAnswer(skillpilotId, lang, request);
+        return learnerActivity(
+                skillpilotId,
+                () -> coachToolFacade.getVerifiedRecallAnswer(skillpilotId, lang, request));
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/result")
@@ -268,14 +312,19 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody VerifiedRecallResultRequest request) {
-        return coachToolFacade.recordVerifiedRecallResult(skillpilotId, lang, request);
+        return learnerActivity(
+                skillpilotId,
+                () -> coachToolFacade.recordVerifiedRecallResult(skillpilotId, lang, request));
     }
 
     @PostMapping("/learners/{skillpilotId}/curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
-        return withAbsoluteExamAssetUrls(coachToolFacade.setCurriculum(skillpilotId, request));
+        return learnerActivity(
+                skillpilotId,
+                () -> withAbsoluteExamAssetUrls(
+                        coachToolFacade.setCurriculum(skillpilotId, request)));
     }
 
     @PostMapping("/learners/{skillpilotId}/personalization")
@@ -283,7 +332,42 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
-        return withAbsoluteExamAssetUrls(coachToolFacade.setPersonalization(skillpilotId, request));
+        return learnerActivity(
+                skillpilotId,
+                () -> withAbsoluteExamAssetUrls(
+                        coachToolFacade.setPersonalization(skillpilotId, request)));
+    }
+
+    private <T> T learnerActivity(String skillpilotId, Supplier<T> operation) {
+        return coachToolFacade.withLearnerActivity(skillpilotId, operation);
+    }
+
+    private <T> T learnerActivity(
+            String skillpilotId,
+            Supplier<T> operation,
+            Predicate<T> successfulResult) {
+        return coachToolFacade.withLearnerActivity(
+                skillpilotId,
+                operation,
+                successfulResult);
+    }
+
+    private <T> T sessionActivity(String chatSessionToken, Supplier<T> operation) {
+        return coachToolFacade.withSessionActivity(chatSessionToken, operation);
+    }
+
+    private <T> T sessionActivity(
+            String chatSessionToken,
+            Supplier<T> operation,
+            Predicate<T> successfulResult) {
+        return coachToolFacade.withSessionActivity(
+                chatSessionToken,
+                operation,
+                successfulResult);
+    }
+
+    private static boolean isSuccessfulResponse(org.springframework.http.ResponseEntity<?> response) {
+        return response != null && response.getStatusCode().is2xxSuccessful();
     }
 
     private void markAiTraceSkillpilotId(HttpServletRequest request, String skillpilotId) {

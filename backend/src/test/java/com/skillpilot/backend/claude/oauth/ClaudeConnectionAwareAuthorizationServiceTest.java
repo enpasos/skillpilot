@@ -2,6 +2,7 @@ package com.skillpilot.backend.claude.oauth;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -27,6 +28,12 @@ class ClaudeConnectionAwareAuthorizationServiceTest {
         when(authorization.getAccessToken()).thenReturn(accessToken);
         when(accessToken.isActive()).thenReturn(true);
         when(delegate.findById("authorization-id")).thenReturn(null);
+        doAnswer(invocation -> {
+            invocation.<Runnable>getArgument(1).run();
+            return null;
+        }).when(connections).withOAuthPersistenceLock(
+                org.mockito.ArgumentMatchers.eq("spc_subject"),
+                org.mockito.ArgumentMatchers.any(Runnable.class));
 
         service.save(authorization);
 
@@ -46,10 +53,17 @@ class ClaudeConnectionAwareAuthorizationServiceTest {
         OAuth2Authorization.Token<org.springframework.security.oauth2.core.OAuth2AccessToken> accessToken =
                 mock(OAuth2Authorization.Token.class);
         when(authorization.getId()).thenReturn("authorization-id");
+        when(authorization.getPrincipalName()).thenReturn("spc_subject");
         when(authorization.getAccessToken()).thenReturn(accessToken);
         when(accessToken.isActive()).thenReturn(true);
         when(existing.getAccessToken()).thenReturn(accessToken);
         when(delegate.findById("authorization-id")).thenReturn(existing);
+        doAnswer(invocation -> {
+            invocation.<Runnable>getArgument(1).run();
+            return null;
+        }).when(connections).withOAuthPersistenceLock(
+                org.mockito.ArgumentMatchers.eq("spc_subject"),
+                org.mockito.ArgumentMatchers.any(Runnable.class));
 
         service.save(authorization);
 

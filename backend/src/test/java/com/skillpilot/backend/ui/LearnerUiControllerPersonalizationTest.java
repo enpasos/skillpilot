@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
@@ -18,9 +19,11 @@ import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -32,14 +35,28 @@ class LearnerUiControllerPersonalizationTest {
     private static final String LEARNER_ID = "learner-level-2";
 
     private LearnerService learnerService;
+    private LearnerLifecycleService learnerLifecycle;
     private LearnerUiController controller;
 
     @BeforeEach
     void setUp() {
         learnerService = mock(LearnerService.class);
+        learnerLifecycle = mock(LearnerLifecycleService.class);
+        doAnswer(invocation -> ((Supplier<?>) invocation.getArgument(1)).get())
+                .when(learnerLifecycle)
+                .withActivity(org.mockito.ArgumentMatchers.eq(LEARNER_ID),
+                        org.mockito.ArgumentMatchers.<Supplier<Object>>any());
+        doAnswer(invocation -> {
+                    ((Runnable) invocation.getArgument(1)).run();
+                    return null;
+                })
+                .when(learnerLifecycle)
+                .withActivity(org.mockito.ArgumentMatchers.eq(LEARNER_ID),
+                        org.mockito.ArgumentMatchers.any(Runnable.class));
         controller = new LearnerUiController(
                 learnerService,
-                mock(ChatSessionService.class));
+                mock(ChatSessionService.class),
+                learnerLifecycle);
     }
 
     @Test

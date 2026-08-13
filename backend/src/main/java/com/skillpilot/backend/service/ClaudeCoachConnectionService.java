@@ -83,7 +83,7 @@ public class ClaudeCoachConnectionService {
 
     @Transactional
     public BindingGrant createBindingGrant(String skillpilotId, ChatStartRequest request) {
-        Learner learner = requireLearner(skillpilotId);
+        Learner learner = requireLearnerForUpdate(skillpilotId);
         Instant now = Instant.now();
         String token = generateSecret("spcb_");
 
@@ -95,6 +95,7 @@ public class ClaudeCoachConnectionService {
         grant.setLanguage(normalizeLanguage(request == null ? null : request.language()));
         grant.setClient(trimToNull(request == null ? null : request.client()));
         bindingGrantRepository.save(grant);
+        learner.setLastActivityAt(now);
 
         String installUrl = "https://claude.ai/customize/connectors"
                 + "?modal=add-custom-connector"
@@ -114,8 +115,23 @@ public class ClaudeCoachConnectionService {
         if (token == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing Claude binding grant.");
         }
-        ClaudeBindingGrant grant = bindingGrantRepository.findByTokenHashForUpdate(hashSecretValue(token))
+        String tokenHash = hashSecretValue(token);
+        String skillpilotId = bindingGrantRepository
+                .findLearnerSkillpilotIdByTokenHash(tokenHash)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Invalid Claude binding grant."));
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Learner for Claude binding grant no longer exists."));
+        ClaudeBindingGrant grant = bindingGrantRepository.findByTokenHashForUpdate(tokenHash)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Claude binding grant."));
+        if (!learner.getSkillpilotId().equals(grant.getLearner().getSkillpilotId())) {
+            throw new ResponseStatusException(
+                    HttpStatus.UNAUTHORIZED,
+                    "Learner for Claude binding grant no longer exists.");
+        }
         Instant now = Instant.now();
         if (grant.getConsumedAt() != null) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Claude binding grant has already been used.");
@@ -124,11 +140,6 @@ public class ClaudeCoachConnectionService {
             throw new ResponseStatusException(HttpStatus.GONE, "Claude binding grant has expired.");
         }
 
-        String skillpilotId = grant.getLearner().getSkillpilotId();
-        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Learner for Claude binding grant no longer exists."));
         // Each OAuth ceremony receives a new opaque subject. The previously
         // authorized connection remains usable until this one actually obtains
         // an access token; markOAuthConnected then performs the atomic replace.
@@ -154,7 +165,7 @@ public class ClaudeCoachConnectionService {
         if (selectedCurriculum != null && !selectedCurriculum.equals(learner.getSelectedCurriculum())) {
             learnerService.assertWritableLearningSession(skillpilotId);
             learnerService.setCurriculum(skillpilotId, selectedCurriculum);
-            learner = learnerService.getLearner(skillpilotId);
+            learner = findLearnerForUpdate(skillpilotId, HttpStatus.NOT_FOUND);
         }
 
         Instant now = Instant.now();
@@ -168,6 +179,7 @@ public class ClaudeCoachConnectionService {
         launch.setSelectedCurriculum(selectedCurriculum);
         launch.setClient(trimToNull(request == null ? null : request.client()));
         pendingLaunchRepository.save(launch);
+        learner.setLastActivityAt(now);
 
         String prompt = "en".equals(launch.getLanguage())
                 ? "Use the SkillPilot connector and start my current learning session."
@@ -179,9 +191,13 @@ public class ClaudeCoachConnectionService {
     @Transactional
     public Optional<PendingLaunch> consumePendingLaunch(String connectionSubject) {
         ClaudeConnection connection = authorizedConnection(connectionSubject);
+        Learner learner = findLearnerForUpdate(
+                connection.getLearner().getSkillpilotId(),
+                HttpStatus.UNAUTHORIZED);
         Instant now = Instant.now();
         connection.setLastUsedAt(now);
         connectionRepository.save(connection);
+        learner.setLastActivityAt(now);
 
         return pendingLaunchRepository
                 .findFirstByConnectionSubjectAndConsumedAtIsNullAndExpiresAtAfterOrderByCreatedAtDesc(
@@ -200,9 +216,41 @@ public class ClaudeCoachConnectionService {
     @Transactional
     public String resolveSkillpilotId(String connectionSubject) {
         ClaudeConnection connection = authorizedConnection(connectionSubject);
-        connection.setLastUsedAt(Instant.now());
+        Learner learner = findLearnerForUpdate(
+                connection.getLearner().getSkillpilotId(),
+                HttpStatus.UNAUTHORIZED);
+        Instant now = Instant.now();
+        connection.setLastUsedAt(now);
         connectionRepository.save(connection);
-        return connection.getLearner().getSkillpilotId();
+        learner.setLastActivityAt(now);
+        return learner.getSkillpilotId();
+    }
+
+    /** OAuth introspection authenticates transport only and is not learner activity. */
+    @Transactional(readOnly = true)
+    public String resolveSkillpilotIdWithoutActivity(String connectionSubject) {
+        return authorizedConnection(connectionSubject).getLearner().getSkillpilotId();
+    }
+
+    /**
+     * Serializes every learner-bound OAuth authorization/consent write with
+     * learner deletion without turning transport maintenance into activity.
+     */
+    @Transactional
+    public void withOAuthPersistenceLock(String connectionSubject, Runnable operation) {
+        String normalizedSubject = trimToNull(connectionSubject);
+        if (normalizedSubject == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing Claude connection subject.");
+        }
+        String skillpilotId = connectionRepository.findLearnerSkillpilotIdBySubject(normalizedSubject)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Unknown Claude connection."));
+        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Learner for Claude connection no longer exists."));
+        operation.run();
     }
 
     @Transactional
@@ -240,6 +288,7 @@ public class ClaudeCoachConnectionService {
         List<ClaudeConnection> connections = connectionRepository
                 .findAllByLearnerSkillpilotIdAndRevokedAtIsNull(learner.getSkillpilotId());
         revokeConnections(connections, now);
+        learner.setLastActivityAt(now);
     }
 
     @Transactional(readOnly = true)
@@ -259,8 +308,12 @@ public class ClaudeCoachConnectionService {
 
     private Learner requireLearnerForUpdate(String skillpilotId) {
         Learner learner = requireLearner(skillpilotId);
-        return learnerRepository.findBySkillpilotIdForUpdate(learner.getSkillpilotId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Learner not found."));
+        return findLearnerForUpdate(learner.getSkillpilotId(), HttpStatus.NOT_FOUND);
+    }
+
+    private Learner findLearnerForUpdate(String skillpilotId, HttpStatus missingStatus) {
+        return learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(missingStatus, "Learner not found."));
     }
 
     private ClaudeConnection authorizedConnection(String subject) {

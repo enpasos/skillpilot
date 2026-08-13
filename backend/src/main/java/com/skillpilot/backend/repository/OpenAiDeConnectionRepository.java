@@ -26,6 +26,11 @@ public interface OpenAiDeConnectionRepository extends JpaRepository<OpenAiDeConn
 
     List<OpenAiDeConnection> findAllByLearnerSkillpilotIdAndRevokedAtIsNull(String skillpilotId);
 
+    List<OpenAiDeConnection> findAllByLearnerSkillpilotId(String skillpilotId);
+
+    @Query("select c.subject from OpenAiDeConnection c where c.learner.skillpilotId = :skillpilotId")
+    List<String> findSubjectsByLearnerSkillpilotId(@Param("skillpilotId") String skillpilotId);
+
     List<OpenAiDeConnection> findAllByLastAuthorizedAtIsNullAndRevokedAtIsNullAndCreatedAtLessThanEqual(
             Instant cutoff);
 

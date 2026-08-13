@@ -58,7 +58,7 @@ public final class SkillPilotOpaqueTokenIntrospector implements OpaqueTokenIntro
         }
 
         String subject = authorization.getPrincipalName();
-        connectionService.resolveSkillpilotId(subject);
+        connectionService.resolveSkillpilotIdWithoutActivity(subject);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         accessTokenScopes.forEach(scope ->

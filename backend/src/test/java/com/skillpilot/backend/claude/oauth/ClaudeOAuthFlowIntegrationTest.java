@@ -3,6 +3,7 @@ package com.skillpilot.backend.claude.oauth;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -90,8 +91,16 @@ class ClaudeOAuthFlowIntegrationTest {
     @BeforeEach
     void setUp() {
         reset(connectionService);
+        doAnswer(invocation -> {
+                    invocation.<Runnable>getArgument(1).run();
+                    return null;
+                })
+                .when(connectionService)
+                .withOAuthPersistenceLock(Mockito.anyString(), Mockito.any(Runnable.class));
         when(connectionService.consumeBindingGrant(BINDING_GRANT)).thenReturn(CONNECTION_SUBJECT);
         when(connectionService.resolveSkillpilotId(CONNECTION_SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(CONNECTION_SUBJECT))
+                .thenReturn(SKILLPILOT_ID);
         CookieManager cookies = new CookieManager(null, CookiePolicy.ACCEPT_ALL);
         client = HttpClient.newBuilder()
                 .cookieHandler(cookies)

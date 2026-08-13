@@ -5,9 +5,10 @@ import { CurriculumDropdown } from './CurriculumDropdown'
 import { LearnerSetupStepCard } from './LearnerSetupStepCard'
 import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
+import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, Copy, FileDown, FileUp } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, Copy, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -69,6 +70,15 @@ import {
 } from '../utils/skillpilotIdFile'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import {
+  clearDeletedLearnerBrowserState,
+  LearnerDataApiError,
+  requestLearnerDeletion,
+  requestLearnerResume,
+  requestLearnerRetention,
+  type LearnerRetentionStatus,
+} from '../utils/learnerDataManagement'
+import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import { usePersonalCurriculumEditor } from '../hooks/usePersonalCurriculumEditor'
 import {
   getLearnerPathToken,
@@ -89,6 +99,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const t = useTranslation()
   const { language } = useLanguage()
   const legalCopy = getLegalTermsCopy(language === 'en' ? 'en' : 'de')
+  const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
   const openAiMcpCoachActive = isOpenAiMcpCoachActive(language)
   const isPublicSkillpilot =
@@ -104,6 +115,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const learnerCheckRequestRef = React.useRef(0)
   const idAcquisitionRequestRef = React.useRef(0)
   const idAcquisitionInFlightRef = React.useRef(createSynchronousInFlightGuard())
+  const learnerDeletionInFlightRef = React.useRef(createSynchronousInFlightGuard())
+  const resetTransientSetupStateRef = React.useRef<(clearSkillpilotId?: boolean) => void>(() => undefined)
   const skillpilotIdFileInputRef = React.useRef<HTMLInputElement>(null)
   const curriculumStepRef = React.useRef<HTMLElement>(null)
   const curriculumSelectRef = React.useRef<HTMLSelectElement>(null)
@@ -138,6 +151,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [selectedCurriculumTitle, setSelectedCurriculumTitle] = useState('')
   const [setupChangedInVisit, setSetupChangedInVisit] = useState(false)
   const [compactCompletedSetupScope, setCompactCompletedSetupScope] = useState('')
+  const [validatedLearnerId, setValidatedLearnerId] = useState('')
+  const [isDataManagementOpen, setIsDataManagementOpen] = useState(false)
+  const [learnerRetention, setLearnerRetention] = useState<LearnerRetentionStatus | null>(null)
+  const [learnerRetentionLoading, setLearnerRetentionLoading] = useState(false)
+  const [learnerRetentionError, setLearnerRetentionError] = useState<'missing' | 'failed' | null>(null)
+  const [learnerDeleteBusy, setLearnerDeleteBusy] = useState(false)
+  const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
 
   // Collapsible logic for Login form
   const [showLogin, setShowLogin] = useState(false);
@@ -326,6 +346,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     evaluatedCompletedSetupScopeRef.current = ''
     setHasCheckedId(false)
     setIdStepComplete(false)
+    setValidatedLearnerId('')
+    setIsDataManagementOpen(false)
+    setLearnerRetention(null)
+    setLearnerRetentionLoading(false)
+    setLearnerRetentionError(null)
+    setLearnerDeleteBusy(false)
+    setLearnerDeleteError(null)
     setChatLaunchIssue('none')
     setChatStartLoading(false)
     setClaudeActionState('idle')
@@ -343,6 +370,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setSkillpilotIdSource(null)
     }
   }
+  resetTransientSetupStateRef.current = resetTransientSetupState
 
   const handleSkillpilotIdFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget
@@ -467,6 +495,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       const sanitizedId = sanitizeSkillpilotId(String(id))
       setSkillpilotId(sanitizedId)
       setSkillpilotIdSource('generated')
+      setValidatedLearnerId(sanitizedId)
       setChatLaunchIssue('none')
 
       if (data.availableCurricula) {
@@ -489,7 +518,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
-  const checkLearner = async (id: string): Promise<boolean> => {
+  const checkLearner = async (id: string, markActivity = false): Promise<boolean> => {
     const sanitizedId = sanitizeSkillpilotId(id)
     if (!sanitizedId) {
       curriculumSelectionRequestRef.current += 1
@@ -509,10 +538,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     let checked = false
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      if (markActivity) {
+        await requestLearnerResume(fetch, apiBase, sanitizedId)
+        if (learnerCheckRequestRef.current !== requestId) return false
+      }
       const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}` : `/api/ui/learners/${sanitizedId}`
       const res = await fetch(url)
       if (!res.ok) {
-        throw new Error(`Server ${res.status}`)
+        throw new LearnerDataApiError(res.status, `learner-check-failed:${res.status}`)
       }
       const data = await res.json() as Record<string, unknown>
       if (learnerCheckRequestRef.current !== requestId) return false
@@ -527,10 +560,21 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         localStorage.removeItem('skillpilot_learner_landscape')
       }
       checked = true
+      setValidatedLearnerId(sanitizedId)
     } catch (caught) {
       if (learnerCheckRequestRef.current !== requestId) return false
       setPersistedLearnerLandscapeId('')
-      setError(caught instanceof Error ? caught.message : String(caught))
+      setValidatedLearnerId('')
+      if (caught instanceof LearnerDataApiError && caught.status === 404) {
+        setError(t.startPage.login.idNotFound)
+      } else if (
+        caught instanceof LearnerDataApiError
+        && caught.message.startsWith('learner-resume-failed:')
+      ) {
+        setError(t.startPage.login.resumeFailed)
+      } else {
+        setError(t.startPage.login.learnerCheckFailed)
+      }
     } finally {
       if (learnerCheckRequestRef.current === requestId) {
         setHasCheckedId(checked)
@@ -642,13 +686,74 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       return
     }
     advanceToCurriculumRef.current = true
-    const checked = await checkLearner(sanitizedId)
+    const checked = await checkLearner(sanitizedId, true)
     if (!checked) {
       advanceToCurriculumRef.current = false
       return
     }
     setIdStepComplete(true)
   }
+
+  const loadLearnerRetention = React.useCallback(async () => {
+    if (!validatedLearnerId) return
+    setLearnerRetentionLoading(true)
+    setLearnerRetention(null)
+    setLearnerRetentionError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const retention = await requestLearnerRetention(fetch, apiBase, validatedLearnerId)
+      setLearnerRetention(retention)
+    } catch (caught) {
+      setLearnerRetentionError(
+        caught instanceof LearnerDataApiError && caught.status === 404
+          ? 'missing'
+          : 'failed',
+      )
+    } finally {
+      setLearnerRetentionLoading(false)
+    }
+  }, [validatedLearnerId])
+
+  React.useEffect(() => {
+    if (!isDataManagementOpen) return
+    void loadLearnerRetention()
+  }, [isDataManagementOpen, loadLearnerRetention])
+
+  const finishDeletedLearnerSetup = React.useCallback((learnerId: string) => {
+    try {
+      clearDeletedLearnerBrowserState(
+        window.localStorage,
+        window.sessionStorage,
+        learnerId,
+      )
+    } catch (caught) {
+      console.warn('Deleted learner browser cleanup was incomplete', caught)
+    }
+    resetTransientSetupStateRef.current(true)
+    setRole(null)
+    setShowLogin(false)
+  }, [setRole])
+
+  const handleLearnerDeletion = React.useCallback(async () => {
+    const learnerId = validatedLearnerId
+    if (!learnerId || !learnerDeletionInFlightRef.current.tryStart()) return
+    setLearnerDeleteBusy(true)
+    setLearnerDeleteError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      await requestLearnerDeletion(fetch, apiBase, learnerId)
+      finishDeletedLearnerSetup(learnerId)
+    } catch (caught) {
+      if (caught instanceof LearnerDataApiError && caught.status === 404) {
+        finishDeletedLearnerSetup(learnerId)
+        return
+      }
+      setLearnerDeleteError('failed')
+    } finally {
+      setLearnerDeleteBusy(false)
+      learnerDeletionInFlightRef.current.finish()
+    }
+  }, [finishDeletedLearnerSetup, validatedLearnerId])
 
   React.useEffect(() => {
     if (!idStepComplete || !hasCheckedId || !advanceToCurriculumRef.current) return
@@ -1205,6 +1310,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             </span>
                           </div>
                         )}
+                        {validatedLearnerId === sanitizedLearnerId && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setLearnerDeleteError(null)
+                              setIsDataManagementOpen(true)
+                            }}
+                            className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-slate-400 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:border-sky-500 hover:bg-sky-50 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-sky-950/40"
+                          >
+                            <Database size={15} />
+                            {learnerDataManagementCopy.openAction}
+                          </button>
+                        )}
                         {skillpilotIdSource === 'generated' && sanitizedLearnerId && (
                           <span className="mt-2 block rounded border border-amber-200 bg-amber-100 px-2 py-1 text-[11px] text-amber-800 dark:border-amber-900/50 dark:bg-amber-900/20 dark:text-amber-200">
                             {t.startPage.login.idWarning}
@@ -1291,7 +1409,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         )}
                         {error && (
                           <span className="block text-xs font-semibold text-rose-600 dark:text-rose-300">
-                            Fehler: {error}
+                            {error}
                           </span>
                         )}
                       </div>
@@ -1634,6 +1752,21 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         copy={t.startPage.login.idFileDialog}
         onClose={handleCloseSkillpilotIdFileDialog}
         onSubmit={handleSkillpilotIdFilePasswordSubmit}
+      />
+
+      <LearnerDataManagementDialog
+        isOpen={isDataManagementOpen}
+        skillpilotId={validatedLearnerId}
+        retention={learnerRetention}
+        retentionLoading={learnerRetentionLoading}
+        retentionError={learnerRetentionError}
+        deleteBusy={learnerDeleteBusy}
+        deleteError={learnerDeleteError}
+        onClose={() => setIsDataManagementOpen(false)}
+        onExport={() => undefined}
+        onImportFileChange={() => undefined}
+        onDelete={() => { void handleLearnerDeletion() }}
+        showTransferActions={false}
       />
 
       <div className="mt-10 flex flex-wrap justify-center gap-4 py-6 text-xs text-slate-500">

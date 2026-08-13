@@ -33,9 +33,8 @@ public class TelemetryUiController {
         Instant occurredAt = request.occurredAt() != null ? request.occurredAt() : Instant.now();
         int contextSize = request.context() != null ? request.context().size() : 0;
         log.info(
-                "UI_EVENT event={} skillpilotId={} path={} occurredAt={} contextSize={}",
+                "UI_EVENT event={} path={} occurredAt={} contextSize={}",
                 request.event(),
-                request.skillpilotId(),
                 request.path(),
                 occurredAt,
                 contextSize);

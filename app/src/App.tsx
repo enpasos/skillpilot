@@ -738,13 +738,16 @@ const App: React.FC = () => {
   }
 
   const sessionSetupElement = (
-    <SessionSetup
-      role={role}
-      setRole={setRole}
-      skillpilotId={sanitizedSkillpilotId}
-      setSkillpilotId={setSkillpilotId}
-      onStart={handleSessionStart}
-    />
+    <>
+      <ToastHost toast={toast} />
+      <SessionSetup
+        role={role}
+        setRole={setRole}
+        skillpilotId={sanitizedSkillpilotId}
+        setSkillpilotId={setSkillpilotId}
+        onStart={handleSessionStart}
+      />
+    </>
   )
 
   if (isRootRoute(normalizedPath)) {

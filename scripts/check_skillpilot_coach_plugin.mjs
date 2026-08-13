@@ -113,6 +113,30 @@ const submissionDossier = read(resolve(
   repositoryRoot,
   "docs/deploy/openai-plugin-v1-submission.md",
 ));
+const legalViewCopy = read(resolve(
+  repositoryRoot,
+  "app/src/utils/legalViewCopy.ts",
+));
+const privacyViewCopy = read(resolve(
+  repositoryRoot,
+  "app/src/utils/privacyViewCopy.ts",
+));
+const dataPrivacyConcept = read(resolve(
+  repositoryRoot,
+  "docs/security/data-privacy.md",
+));
+const legalTermsCopy = read(resolve(
+  repositoryRoot,
+  "app/src/utils/legalTermsCopy.ts",
+));
+const learnerDataManagementCopy = read(resolve(
+  repositoryRoot,
+  "app/src/utils/learnerDataManagementCopy.ts",
+));
+const legalTermsVersion = read(resolve(
+  repositoryRoot,
+  "app/src/utils/legalTermsVersion.ts",
+));
 const learningCoachDe = read(resolve(
   repositoryRoot,
   "ai/openai custom gpt/knowledge_docs/lerncoach.de.md",
@@ -170,6 +194,143 @@ assert.match(submissionDossier, /a_\(n\+1\)=a_n\+d/u);
 assert.match(submissionDossier, /start\/abi26-he-mathe-k1\?courseLevel=GK/u);
 assert.match(submissionDossier, /25 von 25 Punkten/u);
 assert.match(submissionDossier, /13 von 25 Punkten/u);
+assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
+for (const [label, source] of [
+  ["legal", legalViewCopy],
+  ["privacy", privacyViewCopy],
+]) {
+  assert.match(
+    source,
+    /365 aufeinanderfolgenden Tagen/u,
+    `${label} copy must publish the German 365-day inactivity boundary.`,
+  );
+  assert.match(
+    source,
+    /365 consecutive days/u,
+    `${label} copy must publish the English 365-day inactivity boundary.`,
+  );
+  for (const activityPattern of [
+    /erfolgreiche Erstellung einer SkillPilot-ID/u,
+    /successful creation of a SkillPilot ID/u,
+    /aktive Laden oder Fortsetzen des Lernstands in der SkillPilot-Weboberfläche/u,
+    /foreground loading or resuming of the learning state in the SkillPilot web interface/u,
+    /vom Server abgeschlossener Import oder Export signierter Lerndaten/u,
+    /server-completed import or export of signed learner data/u,
+    /serverseitig erfolgreich gespeicherte Änderung des Lernstands/u,
+    /learner-state change successfully stored on the server/u,
+    /SkillPilot-Sitzungs- oder KI-Anbieter-Verbindungsaktion/u,
+    /SkillPilot session or AI-provider connection action/u,
+    /gültiger Coach-\/MCP-Aufruf, den SkillPilot mit einem fachlich erfolgreichen Ergebnis abschließt/u,
+    /valid Coach\/MCP call that SkillPilot completes with a successful domain result/u,
+  ]) {
+    assert.match(source, activityPattern, `${label} copy is missing an activity boundary.`);
+  }
+  for (const exclusionPattern of [
+    /Hintergrund-GET-Anfragen/u,
+    /Background GET requests/u,
+    /SSE-Verkehr/u,
+    /SSE traffic/u,
+    /OAuth-Token-Aktualisierungen/u,
+    /OAuth token refreshes/u,
+    /bloße Auswählen oder Öffnen einer lokalen Datei/u,
+    /merely selecting or opening a local file/u,
+    /vom Server nicht abgeschlossene oder fachlich abgewiesene Aktionen/u,
+    /server operations that do not complete or are domain-rejected/u,
+  ]) {
+    assert.match(source, exclusionPattern, `${label} copy is missing a non-activity boundary.`);
+  }
+  assert.match(source, /SkillPilot-Datenbank/u);
+  assert.match(source, /SkillPilot database/u);
+  assert.match(source, /Sicherungskopien gehören nicht zum aktiven Lernstand/u);
+  assert.match(source, /backup copies are not part of the active learning state/u);
+  assert.match(source, /365-Tage-Ablauf löschen sie nicht unmittelbar einzeln/u);
+  assert.match(source, /365-day expiry immediately deletes each backup copy individually/u);
+  assert.doesNotMatch(
+    source,
+    /Aufbewahrungs- und Löschverfahren|operational retention and deletion procedures/u,
+  );
+  assert.doesNotMatch(source, /Bloße Nichtnutzung löscht|Merely ceasing use does not delete/u);
+}
+assert.match(legalTermsCopy, /nach 365 Tagen zur automatischen Löschung fällig/u);
+assert.match(legalTermsCopy, /due for automatic deletion after 365 days/u);
+for (const summaryPattern of [
+  /erfolgreiche ID-Erstellung/u,
+  /successful ID creation/u,
+  /aktive Laden oder Fortsetzen/u,
+  /foreground loading or resuming/u,
+  /vom Server abgeschlossener Import oder Export signierter Lerndaten/u,
+  /server-completed import or export of signed learner data/u,
+  /gespeicherte Lernstandsänderung/u,
+  /stored learner-state change/u,
+  /SkillPilot-Sitzungs- oder KI-Anbieter-Verbindungsaktion/u,
+  /SkillPilot session or AI-provider connection action/u,
+  /gültiger Coach-\/MCP-Aufruf mit fachlich erfolgreichem Ergebnis/u,
+  /valid Coach\/MCP call with a successful domain result/u,
+]) {
+  assert.match(legalTermsCopy, summaryPattern);
+  assert.match(learnerDataManagementCopy, summaryPattern);
+}
+for (const learnerCopyExclusionPattern of [
+  /Hintergrund-GET-Anfragen/u,
+  /Background GET requests/u,
+  /SSE-Verkehr/u,
+  /SSE traffic/u,
+  /OAuth-Token-Aktualisierungen/u,
+  /OAuth token refreshes/u,
+  /bloße Dateiauswahl oder -öffnung/u,
+  /merely selecting or opening a file/u,
+  /vom Server nicht abgeschlossene oder fachlich abgewiesene Aktionen/u,
+  /server operations that do not complete or are domain-rejected/u,
+]) {
+  assert.match(legalTermsCopy, learnerCopyExclusionPattern);
+  assert.match(learnerDataManagementCopy, learnerCopyExclusionPattern);
+}
+assert.match(submissionDossier, /dieselbe 1\.0\.0-Lösch- und\s+Aufbewahrungsgrenze/u);
+for (const submissionActivityPattern of [
+  /erfolgreiche Erstellung einer\s+SkillPilot-ID/u,
+  /aktive Laden oder Fortsetzen des Lernstands über\s+die\s+SkillPilot-Weboberfläche/u,
+  /vom Server abgeschlossener Import oder\s+Export signierter Lerndaten/u,
+  /serverseitig erfolgreich gespeicherte\s+Änderung des Lernstands/u,
+  /SkillPilot-Sitzungs-\s+oder KI-Anbieter-Verbindungsaktion/u,
+  /gültiger Coach-\/MCP-Aufruf mit\s+fachlich erfolgreichem Ergebnis/u,
+  /Hintergrund-GET-Anfragen/u,
+  /SSE-Verkehr/u,
+  /OAuth-Token-Aktualisierungen/u,
+  /bloße Dateiöffnung/u,
+  /vom Server nicht\s+abgeschlossene oder fachlich abgewiesene Aktionen/u,
+]) {
+  assert.match(submissionDossier, submissionActivityPattern);
+}
+assert.match(submissionDossier, /Sicherungskopien gehören nicht zum aktiven Lernstand/u);
+assert.match(submissionDossier, /365-Tage-Ablauf löschen sie nicht unmittelbar einzeln/u);
+assert.doesNotMatch(
+  submissionDossier,
+  /Aufbewahrungs- und Löschverfahren|backup-retention and deletion procedures/u,
+);
+assert.match(dataPrivacyConcept, /backup copies are not\s+part of the active learning state/u);
+for (const conceptActivityPattern of [
+  /successful creation of a SkillPilot ID/u,
+  /foreground loading or resuming of the learning state through the SkillPilot WebGUI/u,
+  /server-completed import or export of signed learner data/u,
+  /learner-state change successfully stored on the server/u,
+  /successfully completed SkillPilot session or AI-provider connection action/u,
+  /valid Coach\/MCP invocation that completes with a successful domain result/u,
+  /Background GET requests/u,
+  /SSE traffic/u,
+  /OAuth token refreshes/u,
+  /merely selecting,\s+opening, or reading a local file/u,
+  /server operations that do not complete or\s+are domain-rejected/u,
+]) {
+  assert.match(dataPrivacyConcept, conceptActivityPattern);
+}
+assert.match(
+  dataPrivacyConcept,
+  /365-day\s+expiry immediately deletes each backup copy individually/u,
+);
+assert.doesNotMatch(
+  dataPrivacyConcept,
+  /backup copies remain governed|backup-retention(?: and deletion)? (?:policy|procedures)/u,
+);
 
 // Final directory limits and required MCP listing URLs:
 // https://developers.openai.com/plugins/deploy/submission-errors#listing-and-interface-errors

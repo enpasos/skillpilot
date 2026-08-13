@@ -7,6 +7,7 @@ import com.skillpilot.backend.domain.ChatStartCode;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.ChatSessionRepository;
 import com.skillpilot.backend.repository.ChatStartCodeRepository;
+import com.skillpilot.backend.repository.LearnerRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.time.Duration;
@@ -54,6 +55,7 @@ public class ChatSessionService {
 
     private final ChatStartCodeRepository startCodeRepository;
     private final ChatSessionRepository sessionRepository;
+    private final LearnerRepository learnerRepository;
     private final LearnerService learnerService;
     private final SecureRandom secureRandom = new SecureRandom();
     private final Duration startCodeTtl;
@@ -63,12 +65,14 @@ public class ChatSessionService {
     public ChatSessionService(
             ChatStartCodeRepository startCodeRepository,
             ChatSessionRepository sessionRepository,
+            LearnerRepository learnerRepository,
             LearnerService learnerService,
             @Value("${skillpilot.chat.start-code-ttl:PT5M}") Duration startCodeTtl,
             @Value("${skillpilot.chat.session-ttl:PT24H}") Duration sessionTtl,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
         this.startCodeRepository = startCodeRepository;
         this.sessionRepository = sessionRepository;
+        this.learnerRepository = learnerRepository;
         this.learnerService = learnerService;
         this.startCodeTtl = startCodeTtl;
         this.sessionTtl = sessionTtl;
@@ -104,6 +108,8 @@ public class ChatSessionService {
         entity.setLanguage(normalizeLanguage(request == null ? null : request.language()));
         startCodeRepository.save(entity);
 
+        learner.setLastActivityAt(now);
+
         return new ChatStartResponse(startCode, entity.getExpiresAt(), buildPrompt(startCode, request));
     }
 
@@ -128,6 +134,7 @@ public class ChatSessionService {
         session.setSourceStartCodeHash(null);
         session.setLanguage(normalizeLanguage(request == null ? null : request.language()));
         sessionRepository.save(session);
+        learner.setLastActivityAt(now);
 
         return new IssuedVisibleSession(
                 token,
@@ -143,8 +150,17 @@ public class ChatSessionService {
         }
 
         String codeHash = hashSecretValue(normalizedCode);
+        String skillpilotId = startCodeRepository
+                .findLearnerSkillpilotIdByCodeHash(codeHash)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Start code not found."));
+        Learner learner = requireLearnerForUpdate(skillpilotId, HttpStatus.UNAUTHORIZED);
         ChatStartCode code = startCodeRepository.findByCodeHashForUpdate(codeHash)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Start code not found."));
+        if (!learner.getSkillpilotId().equals(code.getLearner().getSkillpilotId())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Learner for start code no longer exists.");
+        }
 
         Instant now = Instant.now();
         if (code.getRedeemedAt() != null) {
@@ -159,7 +175,7 @@ public class ChatSessionService {
 
         ChatSession session = new ChatSession();
         session.setTokenHash(tokenHash);
-        session.setLearner(code.getLearner());
+        session.setLearner(learner);
         session.setCreatedAt(now);
         session.setExpiresAt(now.plus(sessionTtl));
         session.setLastUsedAt(now);
@@ -170,12 +186,31 @@ public class ChatSessionService {
         code.setRedeemedAt(now);
         code.setRedeemedSessionTokenHash(tokenHash);
         startCodeRepository.save(code);
+        learner.setLastActivityAt(now);
 
-        return new RedeemedSession(token, session.getExpiresAt(), code.getLearner().getSkillpilotId());
+        return new RedeemedSession(token, session.getExpiresAt(), learner.getSkillpilotId());
     }
 
     @Transactional
     public String resolveSkillpilotId(String chatSessionToken) {
+        ChatSession session = requireActiveSession(chatSessionToken);
+        Instant now = Instant.now();
+        Learner learner = requireLearnerForUpdate(
+                session.getLearner().getSkillpilotId(),
+                HttpStatus.UNAUTHORIZED);
+        session.setLastUsedAt(now);
+        sessionRepository.save(session);
+        learner.setLastActivityAt(now);
+        return learner.getSkillpilotId();
+    }
+
+    /** Resolves transport identity only; the completed tool operation owns activity. */
+    @Transactional(readOnly = true)
+    public String resolveSkillpilotIdWithoutActivity(String chatSessionToken) {
+        return requireActiveSession(chatSessionToken).getLearner().getSkillpilotId();
+    }
+
+    private ChatSession requireActiveSession(String chatSessionToken) {
         String token = trimToNull(chatSessionToken);
         if (token == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing chat session token.");
@@ -189,10 +224,7 @@ public class ChatSessionService {
         if (session.getRevokedAt() != null || !session.getExpiresAt().isAfter(now)) {
             throw new ChatSessionExpiredException();
         }
-
-        session.setLastUsedAt(now);
-        sessionRepository.save(session);
-        return session.getLearner().getSkillpilotId();
+        return session;
     }
 
     private String generateStartCode() {
@@ -216,14 +248,19 @@ public class ChatSessionService {
         if (skillpilotId == null || skillpilotId.isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "skillpilotId must not be empty.");
         }
-        Learner learner = learnerService.getLearner(skillpilotId);
+        Learner learner = requireLearnerForUpdate(skillpilotId, HttpStatus.NOT_FOUND);
         String selectedCurriculum = trimToNull(request == null ? null : request.selectedCurriculum());
         if (selectedCurriculum != null && !selectedCurriculum.equals(learner.getSelectedCurriculum())) {
             learnerService.assertWritableLearningSession(skillpilotId);
             learnerService.setCurriculum(skillpilotId, selectedCurriculum);
-            learner = learnerService.getLearner(skillpilotId);
+            learner = requireLearnerForUpdate(skillpilotId, HttpStatus.NOT_FOUND);
         }
         return learner;
+    }
+
+    private Learner requireLearnerForUpdate(String skillpilotId, HttpStatus missingStatus) {
+        return learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(missingStatus, "Learner not found."));
     }
 
     private String normalizeStartCode(String value) {

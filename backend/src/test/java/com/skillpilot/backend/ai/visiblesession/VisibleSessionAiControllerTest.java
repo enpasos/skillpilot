@@ -1,6 +1,8 @@
 package com.skillpilot.backend.ai.visiblesession;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -10,6 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import io.swagger.v3.oas.annotations.Operation;
 import java.lang.reflect.Method;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -21,6 +25,7 @@ class VisibleSessionAiControllerTest {
     void expiredSessionReturnsGoneWithoutLeakingToken() throws Exception {
         String token = "sps_expiredVisibleSecret";
         VisibleSessionService service = mock(VisibleSessionService.class);
+        passThroughActivity(service, token);
         when(service.getState(token, "de"))
                 .thenThrow(new com.skillpilot.backend.service.ChatSessionService.ChatSessionExpiredException());
         MockMvc mockMvc = MockMvcBuilders
@@ -43,6 +48,7 @@ class VisibleSessionAiControllerTest {
     void successfulStateResponseIsNotCacheable() throws Exception {
         String token = "sps_visibleSecret";
         VisibleSessionService service = mock(VisibleSessionService.class);
+        passThroughActivity(service, token);
         when(service.getState(token, "de")).thenReturn(new VisibleCoachStateResponse(
                 "— SkillPilot · Sitzung: " + token,
                 "READY",
@@ -107,5 +113,23 @@ class VisibleSessionAiControllerTest {
     private void assertOperationId(String methodName, Class<?>[] parameterTypes, String expected) throws Exception {
         Method method = VisibleSessionAiController.class.getDeclaredMethod(methodName, parameterTypes);
         assertThat(method.getAnnotation(Operation.class).operationId()).isEqualTo(expected);
+    }
+
+    private static void passThroughActivity(VisibleSessionService service, String token) {
+        doAnswer(invocation -> ((Supplier<?>) invocation.getArgument(1)).get())
+                .when(service)
+                .withActivity(eq(token), org.mockito.ArgumentMatchers.<Supplier<Object>>any());
+        doAnswer(invocation -> {
+                    Supplier<?> operation = invocation.getArgument(1);
+                    Predicate<Object> successful = invocation.getArgument(2);
+                    Object result = operation.get();
+                    successful.test(result);
+                    return result;
+                })
+                .when(service)
+                .withActivity(
+                        eq(token),
+                        org.mockito.ArgumentMatchers.<Supplier<Object>>any(),
+                        org.mockito.ArgumentMatchers.<Predicate<Object>>any());
     }
 }

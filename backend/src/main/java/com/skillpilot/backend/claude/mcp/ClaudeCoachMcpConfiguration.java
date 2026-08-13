@@ -3,6 +3,7 @@ package com.skillpilot.backend.claude.mcp;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -23,8 +24,13 @@ public class ClaudeCoachMcpConfiguration {
     ClaudeCoachMcpTools claudeCoachMcpTools(
             CoachToolFacade coachTools,
             ClaudeCoachConnectionService connectionService,
-            CoachStateProjection stateProjection) {
-        return new ClaudeCoachMcpTools(coachTools, connectionService, stateProjection);
+            CoachStateProjection stateProjection,
+            LearnerLifecycleService learnerLifecycle) {
+        return new ClaudeCoachMcpTools(
+                coachTools,
+                connectionService,
+                stateProjection,
+                learnerLifecycle);
     }
 
     @Bean

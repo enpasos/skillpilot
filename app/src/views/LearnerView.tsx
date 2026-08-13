@@ -5,10 +5,11 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
+import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
+import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
 import { GoalCard } from '../components/GoalCard'
 import { FlashcardDrill } from '../components/srs/FlashcardDrill'
 import { ProgressPopover } from '../components/ProgressPopover'
@@ -53,6 +54,15 @@ import {
   isLatestRequestForScope,
 } from '../utils/latestRequestSequence'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import {
+  clearDeletedLearnerBrowserState,
+  LearnerDataApiError,
+  requestLearnerDeletion,
+  requestLearnerResume,
+  requestLearnerRetention,
+  type LearnerRetentionStatus,
+} from '../utils/learnerDataManagement'
+import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
 import {
   getFocusMutationRevealTarget,
   getInitialLearnerGoalReveal,
@@ -397,6 +407,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [isCutoverPending, setIsCutoverPending] = useState(false)
   const [compatibilityRouteRetired, setCompatibilityRouteRetired] = useState(false)
   const [isCompatibilityArchivePending, setIsCompatibilityArchivePending] = useState(false)
+  const [isDataManagementOpen, setIsDataManagementOpen] = useState(false)
+  const [learnerRetention, setLearnerRetention] = useState<LearnerRetentionStatus | null>(null)
+  const [learnerRetentionLoading, setLearnerRetentionLoading] = useState(false)
+  const [learnerRetentionError, setLearnerRetentionError] = useState<'missing' | 'failed' | null>(null)
+  const [learnerDeleteBusy, setLearnerDeleteBusy] = useState(false)
+  const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -410,10 +426,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
 
 
-  const fileInputRef = useRef<HTMLInputElement>(null)
   const srsCompletionRef = useRef<Record<string, number>>({})
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
   const verifiedRecallStartInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learnerDeletionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learnerResumeAttemptedIdRef = useRef('')
+  const currentSkillpilotIdRef = useRef(skillpilotId)
+  const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
   const forceActiveGoalRevealRef = useRef(false)
@@ -426,8 +445,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const personalCurriculumRefreshSequenceRef = useRef(0)
   const currentLearnerStateScopeKeyRef = useRef(learnerStateScopeKey)
   currentLearnerStateScopeKeyRef.current = learnerStateScopeKey
+  currentSkillpilotIdRef.current = skillpilotId
 
   const { language, setLanguage } = useLanguage();
+  const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const t = useTranslation();
   const location = useLocation()
@@ -441,6 +462,50 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const hessenFilterDisplay = import.meta.env.MODE === 'package-consumer'
     ? ''
     : formatFilterDisplayLabel('DE-HE', localizedLanguage)
+
+  useEffect(() => {
+    const resumeId = skillpilotId
+    if (!resumeId || learnerResumeAttemptedIdRef.current === resumeId) return
+    learnerResumeAttemptedIdRef.current = resumeId
+
+    void (async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const retention = await requestLearnerResume(fetch, apiBase, resumeId)
+        if (currentSkillpilotIdRef.current === resumeId) {
+          setLearnerRetention(retention)
+        }
+      } catch (error) {
+        if (currentSkillpilotIdRef.current !== resumeId) return
+        console.error('Learner resume activity failed', error)
+        if (error instanceof LearnerDataApiError && error.status === 404) {
+          try {
+            clearDeletedLearnerBrowserState(
+              window.localStorage,
+              window.sessionStorage,
+              resumeId,
+            )
+          } catch (cleanupError) {
+            console.warn('Missing learner browser cleanup was incomplete', cleanupError)
+          }
+          if (onNotify) onNotify('error', learnerDataManagementCopy.missingLearner)
+          else queueToastForNextLoad('error', learnerDataManagementCopy.missingLearner)
+          if (onLogout) onLogout()
+          else window.location.replace('/')
+          return
+        }
+
+        if (onNotify) {
+          onNotify('error', learnerDataManagementCopy.resumeFailed)
+        } else {
+          setModalTitle(learnerDataManagementCopy.title)
+          setModalMessage(learnerDataManagementCopy.resumeFailed)
+          setModalType('error')
+          setIsModalOpen(true)
+        }
+      }
+    })()
+  }, [learnerDataManagementCopy.missingLearner, learnerDataManagementCopy.resumeFailed, learnerDataManagementCopy.title, onLogout, onNotify, skillpilotId])
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
   const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
@@ -2698,6 +2763,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
 
         downloadJsonPayload(exportPayload, 'learner_data')
+        await loadLearnerRetentionRef.current()
         onNotify?.('success', t.notifications.learnerExported)
       } else {
         console.error("Export failed", res.status, res.statusText)
@@ -2791,10 +2857,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })()
   }, [currentGoal?.id, currentGoal?.tags, skillpilotId, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
 
-  const handleImportClick = () => {
-    fileInputRef.current?.click();
-  }
-
   const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file || !skillpilotId) return;
@@ -2824,6 +2886,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         });
 
         if (res.ok) {
+          let localRestoreComplete = true
           // Restore Local Data (SRS State) if present
           if (clientDataToRestore && (clientDataToRestore as Record<string, unknown>).srsState) {
             try {
@@ -2858,7 +2921,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
               // Persist restored SRS state to backend for memory nodes
               const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-              await Promise.all(
+              const persisted = await Promise.all(
                 Array.from(goalStateMap.entries()).map(async ([goalId, state]) => {
                   const syncUrl = apiBase
                     ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${goalId}`
@@ -2875,18 +2938,29 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     if (res.ok) {
                       const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${goalId}`
                       localStorage.setItem(lastSyncKey, new Date().toISOString())
+                      return true
                     }
+                    console.warn('Failed to persist imported SRS state', res.status)
+                    return false
                   } catch (err) {
                     console.warn('Failed to persist imported SRS state', err)
+                    return false
                   }
                 })
               )
+              localRestoreComplete = persisted.every(Boolean)
             } catch (err) {
               console.error("Error restoring local state", err)
+              localRestoreComplete = false
             }
           }
 
-          queueToastForNextLoad('success', t.notifications.learnerImported)
+          queueToastForNextLoad(
+            localRestoreComplete ? 'success' : 'error',
+            localRestoreComplete
+              ? t.notifications.learnerImported
+              : t.notifications.learnerImportPartial,
+          )
           // Keep the reload for now because import may replace learner context,
           // selected curriculum, and local mirrored state across the app.
           window.location.reload();
@@ -2934,10 +3008,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 	          setIsModalOpen(true);
 	        }
 	      }
-	    };
+    };
     reader.readAsText(file);
     // Reset input so same file can be selected again if needed
-    if (fileInputRef.current) fileInputRef.current.value = '';
+    event.currentTarget.value = '';
   }, [
     skillpilotId,
     learnerViewCopy.importErrorTitle,
@@ -2946,10 +3020,90 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     learnerViewCopy.importValidationFailedTitle,
     onNotify,
     t.notifications.learnerImported,
+    t.notifications.learnerImportPartial,
     t.notifications.learnerImportFailed,
     t.notifications.learnerImportSystemFailed,
     t.notifications.learnerImportValidationFailed,
   ]);
+
+  const loadLearnerRetention = useCallback(async () => {
+    if (!skillpilotId) return
+    setLearnerRetentionLoading(true)
+    setLearnerRetention(null)
+    setLearnerRetentionError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const retention = await requestLearnerRetention(fetch, apiBase, skillpilotId)
+      setLearnerRetention(retention)
+    } catch (error) {
+      console.error('Learner retention lookup failed', error)
+      setLearnerRetentionError(
+        error instanceof LearnerDataApiError && error.status === 404
+          ? 'missing'
+          : 'failed',
+      )
+    } finally {
+      setLearnerRetentionLoading(false)
+    }
+  }, [skillpilotId])
+  loadLearnerRetentionRef.current = loadLearnerRetention
+
+  useEffect(() => {
+    if (!isDataManagementOpen) return
+    void loadLearnerRetention()
+  }, [isDataManagementOpen, loadLearnerRetention])
+
+  const handleLearnerDeletion = useCallback(async () => {
+    if (!skillpilotId || !learnerDeletionInFlightRef.current.tryStart()) return
+    setLearnerDeleteBusy(true)
+    setLearnerDeleteError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      await requestLearnerDeletion(fetch, apiBase, skillpilotId)
+
+      // The browser mirror is removed only after the server has confirmed the
+      // irreversible deletion. A storage failure must not turn that confirmed
+      // server result into a misleading deletion error.
+      try {
+        clearDeletedLearnerBrowserState(
+          window.localStorage,
+          window.sessionStorage,
+          skillpilotId,
+        )
+      } catch (error) {
+        console.warn('Deleted learner browser cleanup was incomplete', error)
+      }
+
+      setIsDataManagementOpen(false)
+      onNotify?.('success', learnerDataManagementCopy.deleteSuccess)
+      onLogout?.()
+    } catch (error) {
+      console.error('Learner deletion failed', error)
+      if (error instanceof LearnerDataApiError && error.status === 404) {
+        try {
+          clearDeletedLearnerBrowserState(
+            window.localStorage,
+            window.sessionStorage,
+            skillpilotId,
+          )
+        } catch (cleanupError) {
+          console.warn('Missing learner browser cleanup was incomplete', cleanupError)
+        }
+        setIsDataManagementOpen(false)
+        if (onNotify) onNotify('error', learnerDataManagementCopy.deleteMissing)
+        else queueToastForNextLoad('error', learnerDataManagementCopy.deleteMissing)
+        if (onLogout) onLogout()
+        else window.location.replace('/')
+        return
+      }
+      setLearnerDeleteError(
+        'failed',
+      )
+    } finally {
+      setLearnerDeleteBusy(false)
+      learnerDeletionInFlightRef.current.finish()
+    }
+  }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
@@ -3095,13 +3249,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </div>
           </div>
         )}
-        {/* Footer Imports/Exports */}
-        <div className="p-2 border-t border-border-color flex justify-between">
-          <div className="flex gap-2">
-            <button onClick={handleExport} className="text-text-secondary hover:text-sky-400"><Download size={16} /></button>
-            <button onClick={handleImportClick} className="text-text-secondary hover:text-sky-400"><Upload size={16} /></button>
-            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept=".json" />
-          </div>
+        <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
+          <button
+            type="button"
+            onClick={() => {
+              setLearnerDeleteError(null)
+              setIsDataManagementOpen(true)
+            }}
+            className="inline-flex min-h-9 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-text-secondary transition-colors hover:bg-sky-50 hover:text-sky-600 dark:hover:bg-sky-950/30 dark:hover:text-sky-300"
+          >
+            <Database size={16} />
+            <span>{learnerDataManagementCopy.openAction}</span>
+          </button>
           {onLogout && <LogoutButton onLogout={onLogout} />}
         </div>
 
@@ -3448,6 +3607,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         )}
       </main>
+
+      <LearnerDataManagementDialog
+        isOpen={isDataManagementOpen}
+        skillpilotId={skillpilotId}
+        retention={learnerRetention}
+        retentionLoading={learnerRetentionLoading}
+        retentionError={learnerRetentionError}
+        deleteBusy={learnerDeleteBusy}
+        deleteError={learnerDeleteError}
+        onClose={() => setIsDataManagementOpen(false)}
+        onExport={() => { void handleExport() }}
+        onImportFileChange={handleFileChange}
+        onDelete={() => { void handleLearnerDeletion() }}
+      />
 
       <PersonalCurriculumSetup
         key={`personal-curriculum:${skillpilotId}:${landscapeId}:${rootLandscapeId ?? 'no-root'}:${availableLandscapes.map((landscape) => landscape.landscapeId).join(',')}:${isSetupOpen ? 'open' : 'closed'}`}

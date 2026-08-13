@@ -22,4 +22,12 @@ public interface OpenAiDeLearningSessionRepository
             """)
     Optional<OpenAiDeLearningSession> findByTokenHashForUpdate(
             @Param("tokenHash") String tokenHash);
+
+    @Query("""
+            select session.learner.skillpilotId
+            from OpenAiDeLearningSession session
+            where session.tokenHash = :tokenHash
+            """)
+    Optional<String> findLearnerSkillpilotIdByTokenHash(
+            @Param("tokenHash") String tokenHash);
 }

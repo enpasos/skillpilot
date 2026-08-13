@@ -26,11 +26,15 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -109,19 +113,64 @@ public class CoachToolFacade {
     private final LearnerService learnerService;
     private final ChatSessionService chatSessionService;
     private final CoachStateProjection coachStateProjection;
+    private final LearnerLifecycleService learnerLifecycle;
+    private final ThreadLocal<SessionActivityScope> activeSessionActivity = new ThreadLocal<>();
 
     public CoachToolFacade(
             LearnerService learnerService,
             ChatSessionService chatSessionService,
-            CoachStateProjection coachStateProjection) {
+            CoachStateProjection coachStateProjection,
+            LearnerLifecycleService learnerLifecycle) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
         this.coachStateProjection = coachStateProjection;
+        this.learnerLifecycle = learnerLifecycle;
     }
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getCoachLearnerState(skillpilotId);
+    }
+
+    /** Owns one complete legacy ID-based coach request. */
+    public <T> T withLearnerActivity(
+            String skillpilotId,
+            Supplier<T> operation,
+            Predicate<T> successfulResult) {
+        return learnerLifecycle.withActivity(skillpilotId, operation, successfulResult);
+    }
+
+    public <T> T withLearnerActivity(String skillpilotId, Supplier<T> operation) {
+        return withLearnerActivity(skillpilotId, operation, result -> true);
+    }
+
+    /**
+     * Owns one complete session-token coach request. Nested session adapters
+     * participate in this boundary without advancing activity independently.
+     */
+    public <T> T withSessionActivity(
+            String sessionToken,
+            Supplier<T> operation,
+            Predicate<T> successfulResult) {
+        SessionActivityScope outer = activeSessionActivity.get();
+        if (outer != null) {
+            if (!outer.sessionToken().equals(sessionToken)) {
+                throw new IllegalStateException(
+                        "A coach activity boundary cannot switch sessions.");
+            }
+            return operation.get();
+        }
+        String skillpilotId = chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken);
+        activeSessionActivity.set(new SessionActivityScope(sessionToken, skillpilotId));
+        try {
+            return learnerLifecycle.withActivity(skillpilotId, operation, successfulResult);
+        } finally {
+            activeSessionActivity.remove();
+        }
+    }
+
+    public <T> T withSessionActivity(String sessionToken, Supplier<T> operation) {
+        return withSessionActivity(sessionToken, operation, result -> true);
     }
 
     public boolean showGoalVisualizationsInChat(String skillpilotId) {
@@ -383,96 +432,180 @@ public class CoachToolFacade {
     }
 
     public UnifiedLearnerStateResponse getSessionState(String sessionToken) {
-        return withoutSkillpilotId(learnerService.getCoachLearnerState(resolveSessionLearnerId(sessionToken)));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(learnerService.getCoachLearnerState(skillpilotId));
+                });
     }
 
     /** Read-only catalog access used for explicit mid-session curriculum navigation. */
     public List<LandscapeSummary> getSessionCurriculumOptions(String sessionToken) {
-        resolveSessionLearnerId(sessionToken);
-        return learnerService.getAvailableBaseCurricula(false);
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return learnerService.getAvailableBaseCurricula(false);
+                });
     }
 
     /** Read-only personalized scope roots for an explicit mid-session focus switch. */
     public List<com.skillpilot.backend.api.FrontierGoal> getSessionScopeOptions(String sessionToken) {
-        return learnerService.getScopeNavigationOptions(resolveSessionLearnerId(sessionToken));
+        return withSessionActivity(sessionToken, skillpilotId -> {
+            learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+            return learnerService.getScopeNavigationOptions(skillpilotId);
+        });
     }
 
     public UnifiedLearnerStateResponse setSessionScope(String sessionToken, ScopeRequest request) {
-        return withoutSkillpilotId(setScope(resolveSessionLearnerId(sessionToken), request));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(setScope(skillpilotId, request));
+                });
     }
 
     public UnifiedLearnerStateResponse setSessionActiveGoal(String sessionToken, ActiveGoalRequest request) {
-        return withoutSkillpilotId(setActiveGoal(resolveSessionLearnerId(sessionToken), request));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(setActiveGoal(skillpilotId, request));
+                });
     }
 
     public MasteryResult setSessionMastery(String sessionToken, MasteryUpdateRequest request) {
-        MasteryResult result = setMastery(resolveSessionLearnerId(sessionToken), request);
-        if (result.status() != MasteryStatus.CONFLICT || result.state() == null) {
-            return result;
-        }
-        return MasteryResult.conflict(withoutSkillpilotId(result.state()));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    MasteryResult result = setMastery(skillpilotId, request);
+                    if (result.status() != MasteryStatus.CONFLICT || result.state() == null) {
+                        return result;
+                    }
+                    return MasteryResult.conflict(withoutSkillpilotId(result.state()));
+                },
+                result -> result != null && result.status() == MasteryStatus.UPDATED);
     }
 
     public MemoryPracticeResponse startSessionMemoryPractice(
             String sessionToken,
             String language,
             MemoryPracticeStartRequest request) {
-        return startMemoryPractice(resolveSessionLearnerId(sessionToken), language, request);
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return startMemoryPractice(skillpilotId, language, request);
+                });
     }
 
     public MemoryPracticeResponse reviewSessionMemoryPracticeCard(
             String sessionToken,
             String language,
             MemoryPracticeReviewRequest request) {
-        return reviewMemoryPracticeCard(resolveSessionLearnerId(sessionToken), language, request);
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return reviewMemoryPracticeCard(skillpilotId, language, request);
+                });
     }
 
     public VerifiedRecallPromptResponse startSessionVerifiedRecall(
             String sessionToken,
             String language,
             VerifiedRecallStartRequest request) {
-        String skillpilotId = resolveSessionLearnerId(sessionToken);
-        return withoutSkillpilotId(learnerService.startVerifiedRecall(skillpilotId, language, request));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(
+                            learnerService.startVerifiedRecall(skillpilotId, language, request));
+                });
     }
 
     public VerifiedRecallAnswerResponse getSessionVerifiedRecallAnswer(
             String sessionToken,
             String language,
             VerifiedRecallAnswerRequest request) {
-        String skillpilotId = resolveSessionLearnerId(sessionToken);
-        return learnerService.getVerifiedRecallAnswer(skillpilotId, language, request);
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return learnerService.getVerifiedRecallAnswer(skillpilotId, language, request);
+                });
     }
 
     public VerifiedRecallResultResponse recordSessionVerifiedRecallResult(
             String sessionToken,
             String language,
             VerifiedRecallResultRequest request) {
-        String skillpilotId = resolveSessionLearnerId(sessionToken);
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return withoutSkillpilotId(learnerService.recordVerifiedRecallResult(skillpilotId, language, request));
+        return withSessionActivity(sessionToken, skillpilotId -> {
+            learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return withoutSkillpilotId(
+                    learnerService.recordVerifiedRecallResult(skillpilotId, language, request));
+        });
     }
 
     /** Session-token adapter for {@link #getExamEvaluation(String, ExamEvaluationRequest)}. */
     public ExamEvaluationResult getSessionExamEvaluation(
             String sessionToken,
             ExamEvaluationRequest request) {
-        return getExamEvaluation(chatSessionService.resolveSkillpilotId(sessionToken), request);
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> getExamEvaluation(skillpilotId, request));
     }
 
     public UnifiedLearnerStateResponse setSessionCurriculum(String sessionToken, UpdateCurriculumRequest request) {
-        return withoutSkillpilotId(setCurriculum(resolveSessionLearnerId(sessionToken), request));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(setCurriculum(skillpilotId, request));
+                });
     }
 
     public UnifiedLearnerStateResponse setSessionPersonalization(
             String sessionToken,
             PersonalizationRequest request) {
-        return withoutSkillpilotId(setPersonalization(resolveSessionLearnerId(sessionToken), request));
+        return withSessionActivity(
+                sessionToken,
+                skillpilotId -> {
+                    learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+                    return withoutSkillpilotId(setPersonalization(skillpilotId, request));
+                });
     }
 
-    private String resolveSessionLearnerId(String sessionToken) {
-        String skillpilotId = chatSessionService.resolveSkillpilotId(sessionToken);
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return skillpilotId;
+    private <T> T withSessionActivity(
+            String sessionToken,
+            Function<String, T> operation) {
+        return withSessionActivity(sessionToken, operation, result -> true);
+    }
+
+    private <T> T withSessionActivity(
+            String sessionToken,
+            Function<String, T> operation,
+            Predicate<T> successfulResult) {
+        SessionActivityScope outer = activeSessionActivity.get();
+        if (outer != null) {
+            if (!outer.sessionToken().equals(sessionToken)) {
+                throw new IllegalStateException(
+                        "A coach activity boundary cannot switch sessions.");
+            }
+            return operation.apply(outer.skillpilotId());
+        }
+        String skillpilotId = chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken);
+        return learnerLifecycle.withActivity(
+                skillpilotId,
+                () -> operation.apply(skillpilotId),
+                successfulResult);
+    }
+
+    private record SessionActivityScope(String sessionToken, String skillpilotId) {
     }
 
     private String validateMasteryRequest(MasteryUpdateRequest request) {

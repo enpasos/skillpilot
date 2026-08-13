@@ -1,7 +1,8 @@
 # Data Privacy and Storage Concept
 
-Status: updated for the current web-started multilingual OpenAI OAuth/MCP App
-architecture and the rollback-only ChatGPT Visible Session on 2026-08-11.
+Status: updated for the current web-started multilingual OpenAI OAuth/MCP App,
+the rollback-only ChatGPT Visible Session, and the SkillPilot-ID deletion and
+retention boundary on 2026-08-13.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -314,23 +315,51 @@ consent.
 App-authorization revocation invalidates the live access/refresh credentials and
 authorization/consent data. Session records remain independently governed by
 expiry and revocation, but cannot authorize a request without valid OAuth.
-OAuth-authorization audit timestamps and revoked markers remain pseudonymous
-operational records unless a separate retention policy removes them.
+OAuth-authorization audit timestamps and revoked markers are pseudonymous
+operational records. While the learner exists, they remain governed by their
+technical purpose; deletion of the learner removes the associated active
+SkillPilot connection records as described below. Independent logs are not
+part of those active connection records.
 
-Visible Session tokens expire after at most 24 hours. A future cockpit session
-management view should make all still-active Visible Session credentials
-inspectable and revocable before their natural expiry.
+Visible Session tokens expire after at most 24 hours. Learning progress is not
+deleted merely because an AI connection expires or is revoked.
 
-Learning progress is durable product data and is not deleted merely because an
-AI connection expires or is revoked. Since SkillPilot has no real-world identity
-link, access or deletion requests can be processed only when the requester
-provides the corresponding SkillPilot ID.
+The active learning state stored under a SkillPilot ID in the SkillPilot
+database, including its associated SkillPilot learning sessions and SkillPilot
+connections, has one common deletion boundary:
 
-Authorization data and database backups contain credential material and must be
-encrypted, access-controlled, and governed by the production backup-retention
-policy. Plaintext learning-session references, OAuth credentials, OAuth client
-secrets, request bodies, learner answers, and launch secrets must not enter
-application, reverse proxy, trace, or support logs.
+- the learner can delete it manually with the designated WebGUI function; and
+- after 365 consecutive days without a successful activity, it becomes due for
+  automatic deletion and is removed during the next automatic deletion run.
+
+Activity is recorded only for these successfully completed boundaries:
+
+- successful creation of a SkillPilot ID;
+- foreground loading or resuming of the learning state through the SkillPilot WebGUI;
+- a server-completed import or export of signed learner data;
+- a learner-state change successfully stored on the server; or
+- a successfully completed SkillPilot session or AI-provider connection action;
+- a valid Coach/MCP invocation that completes with a successful domain result.
+
+Background GET requests, SSE traffic, OAuth token refreshes, merely selecting,
+opening, or reading a local file, and server operations that do not complete or
+are domain-rejected do not count and do not restart the 365-day period.
+
+After deletion, the permanent SkillPilot ID can no longer access that learning
+state and the associated SkillPilot learning sessions and connections cannot be
+used. Because SkillPilot has no real-world identity link, data-subject requests
+can be attributed only when the requester provides the corresponding SkillPilot
+ID or otherwise demonstrates access to it.
+
+This boundary does not delete downloaded or other local files, provider-side
+chats, or other data held by the AI provider. Existing backup copies are not
+part of the active learning state. Neither manual deletion nor the 365-day
+expiry immediately deletes each backup copy individually.
+
+Authorization data can contain credential material and must be encrypted and
+access-controlled. Plaintext learning-session references, OAuth credentials,
+OAuth client secrets, request bodies, learner answers, and launch secrets must
+not enter application, reverse proxy, trace, or support logs.
 
 ## 5. Backup and Recovery
 
@@ -343,7 +372,10 @@ remain responsible for preserving access keys and identity mappings.
 - A password-protected SkillPilot ID file lets learners retain the ID without
   storing it unencrypted.
 - Logging out clears the active browser login but does not delete downloaded
-  protected ID files, inert legacy local profiles, or backend learning progress.
+  protected ID files, exports, or backend learning progress.
+- Deleting the active server-side learner does not delete exports, SkillPilot-ID
+  files, or other copies on learner-controlled devices. The learner must remove
+  those local copies separately if they are no longer wanted.
 
 ## 6. Residual Risks and Operating Rules
 

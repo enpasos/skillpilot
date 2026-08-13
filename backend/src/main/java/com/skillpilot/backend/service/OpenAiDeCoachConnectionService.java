@@ -117,6 +117,8 @@ public class OpenAiDeCoachConnectionService {
                 launchRequest,
                 now,
                 learningSessionTtl);
+        learner.setLastActivityAt(now);
+        learnerRepository.save(learner);
 
         return new OpenAiDeLaunchResponse(
                 launchPrompt(launchRequest, learningSession.id()),

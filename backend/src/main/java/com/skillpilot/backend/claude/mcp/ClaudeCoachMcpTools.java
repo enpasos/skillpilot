@@ -21,10 +21,13 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.claude.oauth.ClaudeOAuthConfiguration;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.security.access.AccessDeniedException;
@@ -80,14 +83,17 @@ public final class ClaudeCoachMcpTools {
     private final CoachToolFacade coachTools;
     private final ClaudeCoachConnectionService connectionService;
     private final CoachStateProjection stateProjection;
+    private final LearnerLifecycleService learnerLifecycle;
 
     ClaudeCoachMcpTools(
             CoachToolFacade coachTools,
             ClaudeCoachConnectionService connectionService,
-            CoachStateProjection stateProjection) {
+            CoachStateProjection stateProjection,
+            LearnerLifecycleService learnerLifecycle) {
         this.coachTools = coachTools;
         this.connectionService = connectionService;
         this.stateProjection = stateProjection;
+        this.learnerLifecycle = learnerLifecycle;
     }
 
     @Tool(
@@ -97,21 +103,23 @@ public final class ClaudeCoachMcpTools {
                     + "The response never contains the permanent SkillPilot ID or authentication credentials.")
     public CoachContext getCoachContext() {
         String subject = connectionSubject();
-        String skillpilotId = connectionService.resolveSkillpilotId(subject);
-        Optional<ClaudeCoachConnectionService.PendingLaunch> launch = connectionService.consumePendingLaunch(subject);
-        CoachState state = toCoachState(coachTools.getLearnerState(skillpilotId));
-        return new CoachContext(
-                launch.isPresent(),
-                launch.map(ClaudeCoachConnectionService.PendingLaunch::language).orElse(null),
-                launch.map(ClaudeCoachConnectionService.PendingLaunch::selectedCurriculum).orElse(null),
-                state,
-                "When language is present, answer in that language; otherwise continue in the user's language. "
-                        + "Follow state.stateMachine.requiredAction. "
-                        + "When requiredAction=orientActiveGoal and activeGoal.semanticKind=orientation, build interest "
-                        + "by showing accessible possibilities and positive perspectives; do not test prior or detailed "
-                        + "subject knowledge or grade answers as right or wrong. Save 1.0 only after the learner engages "
-                        + "with a perspective or explicitly chooses to continue. "
-                        + "Reload this context instead of relying on an old tool result.");
+        return withActivity(subject, skillpilotId -> {
+            Optional<ClaudeCoachConnectionService.PendingLaunch> launch =
+                    connectionService.consumePendingLaunch(subject);
+            CoachState state = toCoachState(coachTools.getLearnerState(skillpilotId));
+            return new CoachContext(
+                    launch.isPresent(),
+                    launch.map(ClaudeCoachConnectionService.PendingLaunch::language).orElse(null),
+                    launch.map(ClaudeCoachConnectionService.PendingLaunch::selectedCurriculum).orElse(null),
+                    state,
+                    "When language is present, answer in that language; otherwise continue in the user's language. "
+                            + "Follow state.stateMachine.requiredAction. "
+                            + "When requiredAction=orientActiveGoal and activeGoal.semanticKind=orientation, build interest "
+                            + "by showing accessible possibilities and positive perspectives; do not test prior or detailed "
+                            + "subject knowledge or grade answers as right or wrong. Save 1.0 only after the learner engages "
+                            + "with a perspective or explicitly chooses to continue. "
+                            + "Reload this context instead of relying on an old tool result.");
+        });
     }
 
     @Tool(
@@ -121,7 +129,9 @@ public final class ClaudeCoachMcpTools {
     public CoachState setScope(
             @ToolParam(description = "Exact SkillPilot goal IDs from the current coach context") List<String> goalIds) {
         requireWriteScope();
-        return toCoachState(coachTools.setScope(skillpilotId(), new ScopeRequest(goalIds)));
+        return withActivity(
+                connectionSubject(),
+                skillpilotId -> toCoachState(coachTools.setScope(skillpilotId, new ScopeRequest(goalIds))));
     }
 
     @Tool(
@@ -134,12 +144,12 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Exact curriculum filter IDs; use an empty list when goal IDs are used")
             List<String> filters) {
         requireWriteScope();
-        return toCoachState(coachTools.setPersonalization(
-                skillpilotId(),
+        return withActivity(connectionSubject(), skillpilotId -> toCoachState(coachTools.setPersonalization(
+                skillpilotId,
                 new PersonalizationRequest(
                         Map.of(),
                         goalIds == null ? List.of() : goalIds,
-                        filters == null ? List.of() : filters)));
+                        filters == null ? List.of() : filters))));
     }
 
     @Tool(
@@ -150,7 +160,10 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Exact goal ID from goalOptions or the current frontier") String goalId,
             @ToolParam(description = "Whether this is an explicit learner-requested redirect") Boolean redirect) {
         requireWriteScope();
-        return toCoachState(coachTools.setActiveGoal(skillpilotId(), new ActiveGoalRequest(goalId, redirect)));
+        return withActivity(
+                connectionSubject(),
+                skillpilotId -> toCoachState(
+                        coachTools.setActiveGoal(skillpilotId, new ActiveGoalRequest(goalId, redirect))));
     }
 
     @Tool(
@@ -171,14 +184,19 @@ public final class ClaudeCoachMcpTools {
         if (mastery == null || !Double.isFinite(mastery) || mastery < 0.0 || mastery > 1.0) {
             return badMasteryRequest("setMastery value must be between 0.0 and 1.0.");
         }
-        CoachToolFacade.MasteryResult result = coachTools.setMastery(
-                skillpilotId(),
-                new MasteryUpdateRequest(Map.of(normalizedGoalId, mastery), normalizedGoalId));
-        return new MasteryToolResult(
-                result.status().name().toLowerCase(Locale.ROOT),
-                stateProjection.project(result.update()),
-                toCoachState(result.state()),
-                result.error());
+        return withActivity(
+                connectionSubject(),
+                skillpilotId -> {
+                    CoachToolFacade.MasteryResult result = coachTools.setMastery(
+                            skillpilotId,
+                            new MasteryUpdateRequest(Map.of(normalizedGoalId, mastery), normalizedGoalId));
+                    return new MasteryToolResult(
+                            result.status().name().toLowerCase(Locale.ROOT),
+                            stateProjection.project(result.update()),
+                            toCoachState(result.state()),
+                            result.error());
+                },
+                result -> result != null && "updated".equals(result.status()));
     }
 
     @Tool(
@@ -189,7 +207,9 @@ public final class ClaudeCoachMcpTools {
         requireWriteScope();
         UpdateCurriculumRequest request = new UpdateCurriculumRequest();
         request.setCurriculumId(curriculumId);
-        return toCoachState(coachTools.setCurriculum(skillpilotId(), request));
+        return withActivity(
+                connectionSubject(),
+                skillpilotId -> toCoachState(coachTools.setCurriculum(skillpilotId, request)));
     }
 
     @Tool(
@@ -200,23 +220,25 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Exact active exam goal ID") String goalId,
             @ToolParam(description = "Response language, normally de or en") String language) {
         requireWriteScope();
-        CoachToolFacade.ExamEvaluationResult result = coachTools.getExamEvaluation(
-                skillpilotId(),
-                new CoachToolFacade.ExamEvaluationRequest(goalId));
-        String normalizedLanguage = normalizeLanguage(language);
-        String localizedSolution = localizedContent(
-                normalizedLanguage,
-                result.solutionContent(),
-                result.solutionContentEn());
-        String instruction = localizedContent(
-                normalizedLanguage,
-                "Bewerte die bereits vorliegende Antwort kriteriumsbezogen nach Aufgabe und Raster. Die Lösung ist nur Referenz: Fachlich gleichwertige Ergebnisse, Darstellungen, Begründungen und korrekte alternative Wege zählen voll, sofern Aufgabe oder Raster keine bestimmte Antwortform verlangt; ausdrückliche Anforderungen bleiben verbindlich. Bewerte abschließend ohne Rückfrage; benenne Unleserliches als solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach einem final bestandenen Ergebnis.",
-                "Grade the answer already present criterion by criterion against the task and rubric. The solution is a reference only: give full credit to subject-correct equivalent results, representations, explanations, and alternative methods unless the task or rubric explicitly requires a specific answer form; explicit requirements remain binding. Grade conclusively without follow-up questions; identify illegible work as such and never invent a specific subject error from it. Save mastery only after a final passing result.");
-        return new ExamEvaluationToolResult(
-                result.goalId(),
-                stateProjection.projectReleasedEvaluationContent(localizedSolution),
-                result.scoring(),
-                instruction);
+        return withActivity(connectionSubject(), skillpilotId -> {
+            CoachToolFacade.ExamEvaluationResult result = coachTools.getExamEvaluation(
+                    skillpilotId,
+                    new CoachToolFacade.ExamEvaluationRequest(goalId));
+            String normalizedLanguage = normalizeLanguage(language);
+            String localizedSolution = localizedContent(
+                    normalizedLanguage,
+                    result.solutionContent(),
+                    result.solutionContentEn());
+            String instruction = localizedContent(
+                    normalizedLanguage,
+                    "Bewerte die bereits vorliegende Antwort kriteriumsbezogen nach Aufgabe und Raster. Die Lösung ist nur Referenz: Fachlich gleichwertige Ergebnisse, Darstellungen, Begründungen und korrekte alternative Wege zählen voll, sofern Aufgabe oder Raster keine bestimmte Antwortform verlangt; ausdrückliche Anforderungen bleiben verbindlich. Bewerte abschließend ohne Rückfrage; benenne Unleserliches als solches und erfinde daraus keinen konkreten fachlichen Fehler. Speichere Mastery erst nach einem final bestandenen Ergebnis.",
+                    "Grade the answer already present criterion by criterion against the task and rubric. The solution is a reference only: give full credit to subject-correct equivalent results, representations, explanations, and alternative methods unless the task or rubric explicitly requires a specific answer form; explicit requirements remain binding. Grade conclusively without follow-up questions; identify illegible work as such and never invent a specific subject error from it. Save mastery only after a final passing result.");
+            return new ExamEvaluationToolResult(
+                    result.goalId(),
+                    stateProjection.projectReleasedEvaluationContent(localizedSolution),
+                    result.scoring(),
+                    instruction);
+        });
     }
 
     @Tool(
@@ -228,10 +250,11 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Number of prompts in this batch") Integer batchSize,
             @ToolParam(description = "Response language, normally de or en") String language) {
         requireWriteScope();
-        return withoutSkillpilotId(coachTools.startVerifiedRecall(
-                skillpilotId(),
-                normalizeLanguage(language),
-                new VerifiedRecallStartRequest(goalId, retest, batchSize)));
+        return withActivity(connectionSubject(), skillpilotId -> withoutSkillpilotId(
+                coachTools.startVerifiedRecall(
+                        skillpilotId,
+                        normalizeLanguage(language),
+                        new VerifiedRecallStartRequest(goalId, retest, batchSize))));
     }
 
     @Tool(
@@ -241,10 +264,10 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Exact goal ID from the recall prompt") String goalId,
             @ToolParam(description = "Exact card ID from the recall prompt") String cardId,
             @ToolParam(description = "Response language, normally de or en") String language) {
-        return coachTools.getVerifiedRecallAnswer(
-                skillpilotId(),
+        return withActivity(connectionSubject(), skillpilotId -> coachTools.getVerifiedRecallAnswer(
+                skillpilotId,
                 normalizeLanguage(language),
-                new VerifiedRecallAnswerRequest(goalId, cardId));
+                new VerifiedRecallAnswerRequest(goalId, cardId)));
     }
 
     @Tool(
@@ -257,14 +280,26 @@ public final class ClaudeCoachMcpTools {
             @ToolParam(description = "Short evidence-based feedback") String feedback,
             @ToolParam(description = "Response language, normally de or en") String language) {
         requireWriteScope();
-        return withoutSkillpilotId(coachTools.recordVerifiedRecallResult(
-                skillpilotId(),
-                normalizeLanguage(language),
-                new VerifiedRecallResultRequest(goalId, cardId, passed, feedback)));
+        return withActivity(connectionSubject(), skillpilotId -> withoutSkillpilotId(
+                coachTools.recordVerifiedRecallResult(
+                        skillpilotId,
+                        normalizeLanguage(language),
+                        new VerifiedRecallResultRequest(goalId, cardId, passed, feedback))));
     }
 
-    private String skillpilotId() {
-        return connectionService.resolveSkillpilotId(connectionSubject());
+    private <T> T withActivity(String subject, Function<String, T> operation) {
+        return withActivity(subject, operation, result -> true);
+    }
+
+    private <T> T withActivity(
+            String subject,
+            Function<String, T> operation,
+            Predicate<T> successfulResult) {
+        String skillpilotId = connectionService.resolveSkillpilotIdWithoutActivity(subject);
+        return learnerLifecycle.withActivity(
+                skillpilotId,
+                () -> operation.apply(skillpilotId),
+                successfulResult);
     }
 
     private MasteryToolResult badMasteryRequest(String error) {

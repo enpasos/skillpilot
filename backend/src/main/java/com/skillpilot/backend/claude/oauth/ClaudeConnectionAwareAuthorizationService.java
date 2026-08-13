@@ -20,14 +20,16 @@ final class ClaudeConnectionAwareAuthorizationService implements OAuth2Authoriza
 
     @Override
     public void save(OAuth2Authorization authorization) {
-        OAuth2Authorization existing = delegate.findById(authorization.getId());
-        boolean firstAccessTokenIssued = authorization.getAccessToken() != null
-                && authorization.getAccessToken().isActive()
-                && (existing == null || existing.getAccessToken() == null);
-        delegate.save(authorization);
-        if (firstAccessTokenIssued) {
-            connectionService.markOAuthConnected(authorization.getPrincipalName());
-        }
+        connectionService.withOAuthPersistenceLock(authorization.getPrincipalName(), () -> {
+            OAuth2Authorization existing = delegate.findById(authorization.getId());
+            boolean firstAccessTokenIssued = authorization.getAccessToken() != null
+                    && authorization.getAccessToken().isActive()
+                    && (existing == null || existing.getAccessToken() == null);
+            delegate.save(authorization);
+            if (firstAccessTokenIssued) {
+                connectionService.markOAuthConnected(authorization.getPrincipalName());
+            }
+        });
     }
 
     @Override

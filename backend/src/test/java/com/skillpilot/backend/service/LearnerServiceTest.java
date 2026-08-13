@@ -292,6 +292,9 @@ public class LearnerServiceTest {
         assertThat(learnerService.getPlannedGoals(sourceLearnerId)).isEmpty();
         var signedExport = learnerService.exportLearner(sourceLearnerId);
         assertThat(signedExport.data().plannedGoals()).containsExactly(staleFocusId);
+        assertThat(signedExport.data().copySources()).isEmpty();
+        assertThat(objectMapper.valueToTree(signedExport).toString())
+                .doesNotContain("lastActivityAt");
 
         assertThatCode(() -> learnerService.importLearner(learnerId, signedExport))
                 .doesNotThrowAnyException();
@@ -301,12 +304,31 @@ public class LearnerServiceTest {
                 .isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(importedLearner.getPersonalCurriculum()).isEqualTo("{}");
         assertThat(importedLearner.getShowGoalVisualizationsInChat()).isFalse();
+        assertThat(importedLearner.getCopySources())
+                .extracting(com.skillpilot.backend.domain.CopySource::getSourceId)
+                .contains(sourceLearnerId);
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
                 .isEmpty();
         assertThat(masteryRepository.findById(new MasteryId(learnerId, masteryGoalId)))
                 .get()
                 .extracting(Mastery::getValue)
                 .isEqualTo(0.625);
+    }
+
+    @Test
+    void importFromAnAlreadyDeletedSourceSucceedsWithoutRecreatingItsIdAsProvenance() {
+        Learner sourceLearner = new Learner();
+        sourceLearner.setSkillpilotId("deleted-export-source");
+        learnerRepository.saveAndFlush(sourceLearner);
+        var signedExport = learnerService.exportLearner(sourceLearner.getSkillpilotId());
+        learnerRepository.delete(sourceLearner);
+        learnerRepository.flush();
+
+        assertThatCode(() -> learnerService.importLearner(learnerId, signedExport))
+                .doesNotThrowAnyException();
+
+        Learner importedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(importedLearner.getCopySources()).isEmpty();
     }
 
     @Test

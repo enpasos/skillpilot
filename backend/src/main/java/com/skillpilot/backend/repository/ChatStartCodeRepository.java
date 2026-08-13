@@ -10,6 +10,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface ChatStartCodeRepository extends JpaRepository<ChatStartCode, String> {
 
+    @Query("select c.learner.skillpilotId from ChatStartCode c where c.codeHash = :codeHash")
+    Optional<String> findLearnerSkillpilotIdByCodeHash(@Param("codeHash") String codeHash);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select c from ChatStartCode c where c.codeHash = :codeHash")
     Optional<ChatStartCode> findByCodeHashForUpdate(@Param("codeHash") String codeHash);

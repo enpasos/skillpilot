@@ -3,6 +3,7 @@ package com.skillpilot.backend.openai.mcp.de.v1;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -28,6 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 
 class OpenAiDeV1McpSessionCoordinatorTest {
 
@@ -44,12 +46,13 @@ class OpenAiDeV1McpSessionCoordinatorTest {
     private AtomicReference<OpenAiDeIdempotencyRecord> persistedRequest;
     private OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider;
     private OpenAiDeV1McpSessionCoordinator coordinator;
+    private OpenAiDeLearningSessionRepository sessions;
+    private LearnerRepository learners;
 
     @BeforeEach
     void setUp() {
-        OpenAiDeLearningSessionRepository sessions =
-                mock(OpenAiDeLearningSessionRepository.class);
-        LearnerRepository learners = mock(LearnerRepository.class);
+        sessions = mock(OpenAiDeLearningSessionRepository.class);
+        learners = mock(LearnerRepository.class);
         OpenAiDeIdempotencyRecordRepository requests =
                 mock(OpenAiDeIdempotencyRecordRepository.class);
         curriculumRevisionProvider = mock(OpenAiDeCurriculumRevisionProvider.class);
@@ -72,6 +75,8 @@ class OpenAiDeV1McpSessionCoordinatorTest {
         session.setVerifiedRecallBatchSize(10);
 
         resolvedSession = new AtomicReference<>(session);
+        when(sessions.findLearnerSkillpilotIdByTokenHash(any()))
+                .thenReturn(Optional.of("private-learner-id"));
         when(sessions.findByTokenHashForUpdate(any()))
                 .thenAnswer(invocation -> Optional.of(resolvedSession.get()));
         when(learners.findBySkillpilotIdForUpdate("private-learner-id"))
@@ -101,6 +106,16 @@ class OpenAiDeV1McpSessionCoordinatorTest {
     }
 
     @Test
+    void locksTheLearnerBeforeLockingTheLearningSession() {
+        coordinator.read(SESSION_ID, this::success);
+
+        InOrder ordered = inOrder(sessions, learners);
+        ordered.verify(sessions).findLearnerSkillpilotIdByTokenHash(any());
+        ordered.verify(learners).findBySkillpilotIdForUpdate("private-learner-id");
+        ordered.verify(sessions).findByTokenHashForUpdate(any());
+    }
+
+    @Test
     void readExposesOnlyTheBackendOwnedRecallBatchSizeToTheInternalOperation() {
         session.setVerifiedRecallBatchSize(7);
         AtomicReference<OpenAiDeV1SessionMetadata> observed = new AtomicReference<>();
@@ -116,6 +131,23 @@ class OpenAiDeV1McpSessionCoordinatorTest {
                 Map.class,
                 content -> assertThat(content.get("extensions"))
                         .isEqualTo(observed.get().extensions()));
+        assertThat(learner.getLastActivityAt()).isEqualTo(NOW);
+    }
+
+    @Test
+    void modelVisibleErrorResultDoesNotCountAsLearnerActivity() {
+        Instant previousActivity = NOW.minus(Duration.ofDays(100));
+        learner.setLastActivityAt(previousActivity);
+
+        McpSchema.CallToolResult result = coordinator.read(
+                SESSION_ID,
+                metadata -> McpSchema.CallToolResult.builder()
+                        .isError(true)
+                        .addTextContent("not completed")
+                        .build());
+
+        assertThat(result.isError()).isTrue();
+        assertThat(learner.getLastActivityAt()).isEqualTo(previousActivity);
     }
 
     @Test
