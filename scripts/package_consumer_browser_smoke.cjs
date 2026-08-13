@@ -155,7 +155,7 @@ const run = async () => {
       localStorage.setItem('skillpilot_role', 'learner')
       localStorage.setItem('skillpilot_learner_landscape', landscapeId)
       localStorage.setItem('skillpilot_lang', 'de')
-      localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
+      localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
     }, { id: learnerId, landscapeId: rootId })
 
     const page = await context.newPage()
@@ -208,7 +208,7 @@ const run = async () => {
         localStorage.setItem('skillpilot_role', 'explorer')
         localStorage.removeItem('skillpilot_learner_landscape')
         localStorage.setItem('skillpilot_lang', 'de')
-        localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
+        localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
       })
       const failureRequests = []
       const failurePageErrors = []

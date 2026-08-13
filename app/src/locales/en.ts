@@ -164,7 +164,7 @@ export const en = {
         footer: {
             privacy: "Privacy",
             imprint: "Imprint",
-            legal: "Legal"
+            legal: "Terms of Use"
         }
     },
     statsHub: {

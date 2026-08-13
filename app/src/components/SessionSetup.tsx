@@ -33,7 +33,11 @@ import { useTranslation } from '../hooks/useTranslation'
 import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
-import { getLegalWaiverCopy } from '../utils/legalWaiverCopy'
+import { getLegalTermsCopy } from '../utils/legalTermsCopy'
+import {
+  acceptCurrentTerms,
+  hasAcceptedCurrentTerms,
+} from '../utils/legalTermsAcceptance'
 import {
   deliverCoachChatStart,
   getActiveVisibleSessionLaunchCopy,
@@ -84,7 +88,7 @@ import type { CurriculumQualityFilter } from '../utils/curriculumQualityTrafficL
 export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skillpilotId, setSkillpilotId, onStart }) => {
   const t = useTranslation()
   const { language } = useLanguage()
-  const legalCopy = getLegalWaiverCopy(language === 'en' ? 'en' : 'de')
+  const legalCopy = getLegalTermsCopy(language === 'en' ? 'en' : 'de')
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
   const openAiMcpCoachActive = isOpenAiMcpCoachActive(language)
   const isPublicSkillpilot =
@@ -148,11 +152,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [skillpilotIdSource, setSkillpilotIdSource] = useState<SkillpilotIdSource>(() => (
     sanitizeSkillpilotId(skillpilotId) ? 'existing' : null
   ))
-  const [legalAccepted, setLegalAccepted] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.localStorage.getItem('skillpilot_legal_waiver_accepted') === 'true'
-  })
-  const [legalChecked, setLegalChecked] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(() => (
+    hasAcceptedCurrentTerms(window.localStorage)
+  ))
+  const [termsChecked, setTermsChecked] = useState(false)
+  const [termsStorageFailed, setTermsStorageFailed] = useState(false)
   const [chatLaunchIssue, setChatLaunchIssue] = useState<ChatLaunchIssue>('none')
   const [chatStartLoading, setChatStartLoading] = useState(false)
   const chatStartInFlightRef = React.useRef(createSynchronousInFlightGuard())
@@ -608,9 +612,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
-  const handleAcceptLegalWaiver = () => {
-    localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
-    setLegalAccepted(true)
+  const handleAcceptTerms = () => {
+    try {
+      acceptCurrentTerms(window.localStorage)
+      setTermsStorageFailed(false)
+      setTermsAccepted(true)
+    } catch {
+      setTermsStorageFailed(true)
+    }
   }
 
   const handlePersonalCurriculumPlanChanged = () => {
@@ -893,6 +902,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+    if (!termsAccepted) return
     if (role === 'learner' && !sanitizeSkillpilotId(skillpilotId)) return
     if (role === 'learner' && !personalCurriculumReady) return
 
@@ -1105,7 +1115,49 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   {/* Secondary Roles Access removed as per user request */}
                 </div>
 
-                {role === 'learner' && (
+                {!termsAccepted && (
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-700/50 dark:bg-amber-950/30 dark:text-amber-100">
+                    <div className="flex items-start gap-3">
+                      <ShieldCheck size={18} className="mt-1 shrink-0 text-amber-600 dark:text-amber-300" />
+                      <div className="min-w-0">
+                        <div className="prose prose-sm max-w-none text-amber-950 dark:prose-invert dark:text-amber-100">
+                          <ReactMarkdown>{legalCopy.summary}</ReactMarkdown>
+                        </div>
+                        <p className="mt-2 text-xs leading-relaxed">
+                          {legalCopy.detailsPrefix}
+                          <Link to="/legal" target="_blank" rel="noopener noreferrer" className="font-semibold text-sky-700 underline dark:text-sky-300">
+                            {legalCopy.detailsLinkLabel}
+                          </Link>
+                          {legalCopy.detailsSuffix}
+                        </p>
+                        <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs font-semibold">
+                          <input
+                            type="checkbox"
+                            checked={termsChecked}
+                            onChange={event => setTermsChecked(event.target.checked)}
+                            className="mt-0.5 h-4 w-4 rounded border-amber-300 accent-sky-600"
+                          />
+                          <span>{legalCopy.acceptanceLabel}</span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={handleAcceptTerms}
+                          disabled={!termsChecked}
+                          className="mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
+                        >
+                          {legalCopy.confirmButton}
+                        </button>
+                        {termsStorageFailed && (
+                          <p role="alert" className="mt-2 text-xs font-semibold text-rose-700 dark:text-rose-300">
+                            {legalCopy.storageError}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {termsAccepted && role === 'learner' && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
@@ -1118,43 +1170,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     </div>
 
                     <div className="space-y-3">
-                      {!legalAccepted && (
-                        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-700/50 dark:bg-amber-950/30 dark:text-amber-100">
-                          <div className="flex items-start gap-3">
-                            <ShieldCheck size={18} className="mt-1 shrink-0 text-amber-600 dark:text-amber-300" />
-                            <div className="min-w-0">
-                              <div className="prose prose-sm max-w-none text-amber-950 dark:prose-invert dark:text-amber-100">
-                                <ReactMarkdown>{legalCopy.shortDisclaimer}</ReactMarkdown>
-                              </div>
-                              <p className="mt-2 text-xs leading-relaxed">
-                                {legalCopy.detailsPrefix}
-                                <Link to="/legal" target="_blank" rel="noopener noreferrer" className="font-semibold text-sky-700 underline dark:text-sky-300">
-                                  {legalCopy.detailsLinkLabel}
-                                </Link>
-                                {legalCopy.detailsSuffix}
-                              </p>
-                              <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs font-semibold">
-                                <input
-                                  type="checkbox"
-                                  checked={legalChecked}
-                                  onChange={event => setLegalChecked(event.target.checked)}
-                                  className="mt-0.5 h-4 w-4 rounded border-amber-300 accent-sky-600"
-                                />
-                                <span>{legalCopy.acceptanceLabel}</span>
-                              </label>
-                              <button
-                                type="button"
-                                onClick={handleAcceptLegalWaiver}
-                                disabled={!legalChecked}
-                                className="mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
-                              >
-                                {legalCopy.confirmButton}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
                       <div className="rounded-xl border-2 border-sky-300 bg-sky-50/70 p-4 shadow-sm dark:border-sky-700 dark:bg-sky-950/20">
                         <label htmlFor="skillpilotIdInput" className="flex items-center gap-2 text-sm font-semibold text-text-primary">
                           <KeyRound size={16} className="text-sky-600 dark:text-sky-300" />
@@ -1245,7 +1260,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           <button
                             type="button"
                             onClick={requestNewId}
-                            disabled={!legalAccepted || idAcquisitionBusy}
+                            disabled={!termsAccepted || idAcquisitionBusy}
                             className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
                           >
                             {creatingNewId ? t.startPage.login.creatingNewId : t.startPage.login.requestNewId}
@@ -1284,7 +1299,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       <button
                         type="button"
                         onClick={handleContinueToCurriculum}
-                        disabled={!legalAccepted || !sanitizedLearnerId || idAcquisitionBusy}
+                        disabled={!termsAccepted || !sanitizedLearnerId || idAcquisitionBusy}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:border-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
                       >
                         {loading && !creatingNewId ? t.startPage.login.checking : t.startPage.login.checkButton}
@@ -1295,7 +1310,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role === 'trainer' && (
+                {termsAccepted && role === 'trainer' && (
                   <div className="bg-sky-100 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-500/20 rounded p-3 text-xs text-sky-800 dark:text-sky-200/80 leading-relaxed">
                     <p className="mb-1 font-bold flex items-center gap-2">
                       <Save size={16} /> {t.startPage.login.trainerInfo.title}
@@ -1306,7 +1321,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {role && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
+                {termsAccepted && role && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
                   <LearnerSetupStepCard
                     ref={curriculumStepRef}
                     stepNumber={curriculumPanelCopy.showStepNumber ? 2 : undefined}
@@ -1358,7 +1373,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </LearnerSetupStepCard>
                 )}
 
-                {role === 'learner' && learnerSetupStepVisibility.personalCurriculum && (
+                {termsAccepted && role === 'learner' && learnerSetupStepVisibility.personalCurriculum && (
                   <LearnerSetupStepCard
                     stepNumber={3}
                     stepLabel={t.startPage.login.completedSetup.step}
@@ -1378,7 +1393,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </LearnerSetupStepCard>
                 )}
 
-                {role === 'learner' && learnerSetupStepVisibility.start && (
+                {termsAccepted && role === 'learner' && learnerSetupStepVisibility.start && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">

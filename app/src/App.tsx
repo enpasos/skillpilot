@@ -462,8 +462,8 @@ const App: React.FC = () => {
         : 'Impressum und Kontaktinformationen für SkillPilot.'
     const legalDescription =
       language === 'en'
-        ? 'Legal notice, licensing, and usage disclaimer for SkillPilot.'
-        : 'Rechtliche Hinweise, Lizenz und Haftung für SkillPilot.'
+        ? 'Terms of Use, legal notices, licensing, and AI transparency for SkillPilot.'
+        : 'Nutzungsbedingungen, rechtliche Hinweise, Lizenz und KI-Transparenz für SkillPilot.'
     const faqDescription =
       language === 'en'
         ? 'Recommended devices, supported ChatGPT modes, and troubleshooting for SkillPilot Coach.'
@@ -658,8 +658,6 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
             <Route path="/faq" element={<FaqView />} />
-            <Route path="/legal" element={<LegalView />} />
-            <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/legal" element={<LegalView />} />
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />

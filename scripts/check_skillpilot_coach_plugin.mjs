@@ -109,6 +109,10 @@ const behavioralIntegration = read(resolve(
   repositoryRoot,
   "docs/concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md",
 ));
+const submissionDossier = read(resolve(
+  repositoryRoot,
+  "docs/deploy/openai-plugin-v1-submission.md",
+));
 const learningCoachDe = read(resolve(
   repositoryRoot,
   "ai/openai custom gpt/knowledge_docs/lerncoach.de.md",
@@ -146,6 +150,26 @@ const completeBehavioralSurface =
   `${manifestSource}\n${combinedSkill}\n${openAiYaml}\n${mcpContract}\n${contextProjector}\n${launchService}`;
 const runtimeCurriculumRevision = computeRepositoryCurriculumRevision();
 assert.match(runtimeCurriculumRevision, /^curricula-sha256@[0-9a-f]{64}$/);
+
+const positiveReviewCases = [...submissionDossier.matchAll(/^### (P\d+) – /gmu)]
+  .map((match) => match[1]);
+const negativeReviewCases = [...submissionDossier.matchAll(/^### (N\d+) – /gmu)]
+  .map((match) => match[1]);
+assert.deepEqual(positiveReviewCases, ["P1", "P2", "P3", "P4", "P5"]);
+assert.deepEqual(negativeReviewCases, ["N1", "N2", "N3"]);
+assert.doesNotMatch(submissionDossier, /rücksetzbar|rücksetzbarer|\| Reset \|/u);
+assert.doesNotMatch(submissionDossier, /<festgelegte|<Fixture|<Antwort/u);
+assert.match(submissionDossier, /neuen Wegwerf-Lernstand/u);
+assert.match(
+  submissionDossier,
+  /sps_A{43}/u,
+  "The missing-session review case must use one deterministic non-secret opaque fixture value.",
+);
+assert.match(submissionDossier, /exakt 8\/8 Karten/u);
+assert.match(submissionDossier, /a_\(n\+1\)=a_n\+d/u);
+assert.match(submissionDossier, /start\/abi26-he-mathe-k1\?courseLevel=GK/u);
+assert.match(submissionDossier, /25 von 25 Punkten/u);
+assert.match(submissionDossier, /13 von 25 Punkten/u);
 
 // Final directory limits and required MCP listing URLs:
 // https://developers.openai.com/plugins/deploy/submission-errors#listing-and-interface-errors
@@ -233,6 +257,7 @@ assert.ok(
 );
 for (const field of [
   "websiteURL",
+  "supportURL",
   "privacyPolicyURL",
   "termsOfServiceURL",
 ]) {
@@ -242,7 +267,7 @@ for (const field of [
     1024,
   );
 }
-assert.equal(Object.hasOwn(pluginInterface, "supportURL"), false);
+assert.equal(pluginInterface.supportURL, "https://skillpilot.com/imprint");
 assert.equal(pluginInterface.brandColor, "#f59e0b");
 assert.equal(pluginInterface.composerIcon, "./assets/favicon-96x96.png");
 assert.equal(pluginInterface.logo, "./assets/web-app-manifest-512x512.png");
@@ -270,6 +295,9 @@ assert.ok(
     pluginInterface.defaultPrompt.length <= 3,
   "Plugin starter prompts must contain one to three entries.",
 );
+assert.deepEqual(pluginInterface.defaultPrompt, [
+  "How do I start a learning session with SkillPilot?",
+]);
 const normalizedPrompts = new Set();
 for (const prompt of pluginInterface.defaultPrompt) {
   requireString(prompt, "interface.defaultPrompt[]", 128);

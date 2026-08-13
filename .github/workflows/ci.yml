@@ -161,6 +161,8 @@ jobs:
         run: npm run test:coach-variants
       - name: Test contextual AI transparency
         run: npm run test:ai-transparency-ui
+      - name: Test Terms of Use and versioned acceptance
+        run: npm run test:legal-terms
       - name: Test remote AI transparency artifact crawler
         run: npm run test:ai-transparency-artifact
       - name: Test frontend shell asset verifier
