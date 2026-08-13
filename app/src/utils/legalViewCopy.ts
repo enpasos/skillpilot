@@ -34,7 +34,7 @@ Für eine Verbindung mit ChatGPT gelten zusätzlich die Alters- und Nutzungsrege
 
 ## 4. Leistungsumfang und Zugangsschlüssel
 
-SkillPilot bildet Lernziele als Kompetenzgraphen ab, speichert pseudonyme Lernstände und unterstützt die Planung, Übung, Reflexion und Bewertung von Lernprozessen. Einzelne Funktionen können eine Verbindung zu einem ausdrücklich ausgewählten KI-Anbieter verwenden. SkillPilot betreibt dabei kein eigenes Dialogmodell.
+SkillPilot bildet Lernziele in einem Skill-Graphen ab, speichert pseudonyme Lernstände und unterstützt die Planung, Übung, Reflexion und Bewertung von Lernprozessen. Einzelne Funktionen können eine Verbindung zu einem ausdrücklich ausgewählten KI-Anbieter verwenden. SkillPilot betreibt dabei kein eigenes Dialogmodell.
 
 Die zufällig erzeugte dauerhafte SkillPilot-ID ist der alleinige Zugriffsschlüssel zum pseudonymen Lernstand. Bewahren Sie diese ID, verschlüsselte ID-Dateien, temporäre Lernsession-Werte und sonstige Zugangsdaten sicher auf und geben Sie sie nicht an Unbefugte weiter. Ohne die dauerhafte ID kann der Betreiber den Lernstand grundsätzlich weder einer Person zuordnen noch wiederherstellen. Kurzlebige Lernsessions und OAuth-Verbindungen ersetzen die dauerhafte ID nicht.
 
@@ -159,7 +159,7 @@ A connection to ChatGPT is additionally subject to the provider's age and use re
 
 ## 4. Service and access credentials
 
-SkillPilot represents learning goals as competency graphs, stores pseudonymous learning state, and supports the planning, practice, reflection, and assessment of learning. Individual features may connect to an explicitly selected AI provider. SkillPilot does not operate its own conversational model.
+SkillPilot represents learning goals in a skill graph, stores pseudonymous learning state, and supports the planning, practice, reflection, and assessment of learning. Individual features may connect to an explicitly selected AI provider. SkillPilot does not operate its own conversational model.
 
 The randomly generated permanent SkillPilot ID is the sole access key to the pseudonymous learning state. Keep this ID, encrypted ID files, temporary learning-session values, and other credentials secure and do not disclose them to unauthorised persons. Without the permanent ID, the provider generally cannot associate the learning state with a person or restore access. Short-lived learning sessions and OAuth connections do not replace the permanent ID.
 
