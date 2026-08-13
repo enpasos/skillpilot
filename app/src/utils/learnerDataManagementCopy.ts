@@ -20,6 +20,9 @@ export interface LearnerDataManagementCopy {
   importTitle: string
   importDescription: string
   importAction: string
+  copySourcesTitle: string
+  copySourcesEntrySingular: string
+  copySourcesEntryPlural: string
   dangerTitle: string
   dangerDescription: string
   beginDeleteAction: string
@@ -60,6 +63,9 @@ export const getLearnerDataManagementCopy = (
       importTitle: 'Lernstand wiederherstellen',
       importDescription: 'Importiere eine zuvor von SkillPilot erzeugte Sicherungsdatei in diese SkillPilot-ID.',
       importAction: 'Sicherungsdatei importieren',
+      copySourcesTitle: 'Datenherkunft',
+      copySourcesEntrySingular: 'Eintrag',
+      copySourcesEntryPlural: 'Einträge',
       dangerTitle: 'SkillPilot-ID löschen',
       dangerDescription: 'Die SkillPilot-ID, der aktuell verwendete serverseitige Lernstand sowie zugehörige SkillPilot-Sitzungen und -Verbindungen werden aus dem aktiven SkillPilot-System gelöscht. Diese Aktion lässt sich nicht rückgängig machen.',
       beginDeleteAction: 'SkillPilot-ID und Daten löschen',
@@ -96,6 +102,9 @@ export const getLearnerDataManagementCopy = (
       importTitle: 'Restore learning state',
       importDescription: 'Import a backup file previously created by SkillPilot into this SkillPilot ID.',
       importAction: 'Import backup file',
+      copySourcesTitle: 'Data origin',
+      copySourcesEntrySingular: 'entry',
+      copySourcesEntryPlural: 'entries',
       dangerTitle: 'Delete SkillPilot ID',
       dangerDescription: 'The SkillPilot ID, the server-side learning state currently in use, and associated SkillPilot sessions and connections will be deleted from the active SkillPilot system. This action cannot be undone.',
       beginDeleteAction: 'Delete SkillPilot ID and data',

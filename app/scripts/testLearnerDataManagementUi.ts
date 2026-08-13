@@ -49,6 +49,18 @@ try {
       && await dePage.getByText(/nächsten Bereinigungslauf/u).isVisible(),
     'the German retention explanation distinguishes policy from cleanup timing',
   )
+  const deCopySourcesSummary = dePage.getByText('Datenherkunft · 2 Einträge')
+  const deFirstCopySource = dePage.getByText('22222222…')
+  assert(
+    await deCopySourcesSummary.isVisible() && !await deFirstCopySource.isVisible(),
+    'copy-source provenance is discoverable but initially collapsed in German',
+  )
+  await deCopySourcesSummary.click()
+  assert(
+    await deFirstCopySource.isVisible()
+      && await dePage.locator('time[datetime="2026-08-12T07:30:00Z"]').isVisible(),
+    'expanding provenance reveals the shortened source ID and copy date',
+  )
 
   await dePage.getByRole('button', { name: 'Lernstand exportieren' }).click()
   const fileChooserPromise = dePage.waitForEvent('filechooser')
@@ -106,6 +118,12 @@ try {
     await enPage.getByRole('button', { name: 'Export learning state' }).isVisible()
       && await enPage.getByRole('button', { name: 'Import backup file' }).isVisible(),
     'the English dialog keeps the existing data actions discoverable',
+  )
+  const enCopySourcesSummary = enPage.getByText('Data origin · 2 entries')
+  assert(
+    await enCopySourcesSummary.isVisible()
+      && !await enPage.getByText('22222222…').isVisible(),
+    'copy-source provenance is discoverable but initially collapsed in English',
   )
   assert(enErrors.length === 0, `English dialog browser errors:\n${enErrors.join('\n')}`)
   await enContext.close()
