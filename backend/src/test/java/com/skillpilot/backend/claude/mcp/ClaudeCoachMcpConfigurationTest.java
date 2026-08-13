@@ -5,6 +5,7 @@ import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ class ClaudeCoachMcpConfigurationTest {
             .withBean(CoachToolFacade.class, () -> mock(CoachToolFacade.class))
             .withBean(CoachStateProjection.class, () -> new CoachStateProjection("https://skillpilot.test"))
             .withBean(ClaudeCoachConnectionService.class, () -> mock(ClaudeCoachConnectionService.class))
+            .withBean(LearnerLifecycleService.class, () -> mock(LearnerLifecycleService.class))
             .withUserConfiguration(ClaudeCoachMcpConfiguration.class);
 
     @Test
@@ -76,6 +78,7 @@ class ClaudeCoachMcpConfigurationTest {
                 .withBean(CoachToolFacade.class, () -> mock(CoachToolFacade.class))
                 .withBean(CoachStateProjection.class, () -> new CoachStateProjection("https://skillpilot.test"))
                 .withBean(ClaudeCoachConnectionService.class, () -> mock(ClaudeCoachConnectionService.class))
+                .withBean(LearnerLifecycleService.class, () -> mock(LearnerLifecycleService.class))
                 .withUserConfiguration(ClaudeMcpConfiguration.class, ClaudeCoachMcpConfiguration.class)
                 .withPropertyValues(
                         "skillpilot.claude.mcp.enabled=true",

@@ -20,7 +20,7 @@ public class SseService {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(SseService.class);
 
     public SseEmitter subscribe(String skillpilotId) {
-        log.info("SSE Subscribe request for learner: {}", skillpilotId);
+        log.info("SSE subscribe request accepted");
         SseEmitter emitter = new SseEmitter(30 * 60 * 1000L);
 
         emitters.computeIfAbsent(skillpilotId, k -> new java.util.concurrent.CopyOnWriteArrayList<>())
@@ -60,7 +60,7 @@ public class SseService {
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT, fallbackExecution = true)
     public void handleLearnerStateChanged(LearnerStateChangedEvent event) {
         String id = event.getSkillpilotId();
-        log.info("SSE Processing event '{}' for learner: {}", event.getChangeType(), id);
+        log.info("SSE processing event '{}'", event.getChangeType());
         java.util.List<SseEmitter> userEmitters = emitters.get(id);
 
         if (userEmitters != null) {
@@ -86,7 +86,15 @@ public class SseService {
                 }
             }
         } else {
-            log.debug("No active SSE emitters for learner: {}", id);
+            log.debug("No active SSE emitters for learner event");
+        }
+    }
+
+    /** Completes and removes every live stream for a deleted learner. */
+    public void forgetLearner(String skillpilotId) {
+        java.util.List<SseEmitter> removed = emitters.remove(skillpilotId);
+        if (removed != null) {
+            removed.forEach(SseEmitter::complete);
         }
     }
 

@@ -2,6 +2,7 @@ package com.skillpilot.backend.oauth;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
@@ -140,7 +141,15 @@ class CombinedProviderOAuthIsolationIntegrationTest {
     @BeforeEach
     void setUp() {
         reset(openAiConnections, claudeConnections);
+        doAnswer(invocation -> {
+                    invocation.<Runnable>getArgument(1).run();
+                    return null;
+                })
+                .when(claudeConnections)
+                .withOAuthPersistenceLock(Mockito.anyString(), Mockito.any(Runnable.class));
         when(claudeConnections.resolveSkillpilotId(CLAUDE_SUBJECT)).thenReturn("SP-CLAUDE-COMBINED");
+        when(claudeConnections.resolveSkillpilotIdWithoutActivity(CLAUDE_SUBJECT))
+                .thenReturn("SP-CLAUDE-COMBINED");
         client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))
                 .build();

@@ -10809,15 +10809,30 @@ public class LearnerService {
         // ... rest of logic
 
         // Provenance / Chain of Custody
+        Map<String, CopySource> candidateCopySources = new LinkedHashMap<>();
         if (data.copySources() != null) {
-            existing.getCopySources().addAll(data.copySources());
+            data.copySources().stream()
+                    .filter(Objects::nonNull)
+                    .filter(source -> source.getSourceId() != null)
+                    .filter(source -> !source.getSourceId().isBlank())
+                    .filter(source -> source.getCopiedAt() != null)
+                    .forEach(source -> candidateCopySources.put(source.getSourceId(), source));
         }
         if (data.learner() != null) {
             String sourceId = data.learner().getSkillpilotId();
             // Add immediate source if not self
-            if (!sourceId.equals(skillpilotId)) {
-                existing.getCopySources().add(new CopySource(sourceId, Instant.now()));
+            if (sourceId != null && !sourceId.isBlank() && !sourceId.equals(skillpilotId)) {
+                candidateCopySources.put(sourceId, new CopySource(sourceId, Instant.now()));
             }
+        }
+        candidateCopySources.remove(skillpilotId);
+        if (!candidateCopySources.isEmpty()) {
+            Set<String> existingSourceIds = new HashSet<>(
+                    learnerRepository.findExistingSkillpilotIds(candidateCopySources.keySet()));
+            candidateCopySources.entrySet().stream()
+                    .filter(entry -> existingSourceIds.contains(entry.getKey()))
+                    .map(Map.Entry::getValue)
+                    .forEach(existing.getCopySources()::add);
         }
 
         // Restore Learner properties

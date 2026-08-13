@@ -100,7 +100,11 @@ public class OpenAiDeV1McpSessionCoordinator {
         LockedSession locked = requireCurrentSession(learningSessionId);
         requireMinimumRemaining(locked);
         McpSchema.CallToolResult result = operation.apply(metadata(locked));
-        return withCurrentMetadata(result, metadata(locked));
+        McpSchema.CallToolResult completed = withCurrentMetadata(result, metadata(locked));
+        if (completed != null && !Boolean.TRUE.equals(completed.isError())) {
+            touchActivity(locked.learner());
+        }
+        return completed;
     }
 
     @Transactional
@@ -137,7 +141,9 @@ public class OpenAiDeV1McpSessionCoordinator {
                         "The completed V1 request no longer represents the current canonical learner-state "
                                 + "revision.");
             }
-            return replay(previous);
+            McpSchema.CallToolResult replay = replay(previous);
+            touchActivity(learner);
+            return replay;
         }
         if (expectedStateVersion != learner.getCoachStateRevision()) {
             throw new OpenAiDeV1SessionStateException(
@@ -179,19 +185,32 @@ public class OpenAiDeV1McpSessionCoordinator {
         completed.setResponseJson(writeJson(completedResult.structuredContent()));
         completed.setCreatedAt(clock.instant());
         requests.save(completed);
+        touchActivity(learner);
         return completedResult;
     }
 
+    private void touchActivity(Learner learner) {
+        learner.setLastActivityAt(clock.instant());
+        learners.save(learner);
+    }
+
     private LockedSession requireCurrentSession(String learningSessionId) {
+        String tokenHash = hash(learningSessionId);
+        String skillpilotId = sessions
+                .findLearnerSkillpilotIdByTokenHash(tokenHash)
+                .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
+        Learner learner = learners
+                .findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
         OpenAiDeLearningSession session = sessions
-                .findByTokenHashForUpdate(hash(learningSessionId))
+                .findByTokenHashForUpdate(tokenHash)
                 .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
         if (!session.getExpiresAt().isAfter(clock.instant())) {
             throw new OpenAiDeLearningSessionRequiredException();
         }
-        Learner learner = learners
-                .findBySkillpilotIdForUpdate(session.getLearner().getSkillpilotId())
-                .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
+        if (!learner.getSkillpilotId().equals(session.getLearner().getSkillpilotId())) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
         LockedSession locked = new LockedSession(session, learner);
         if (session.getContractMajor() != OpenAiDeV1ContractMetadata.CONTRACT_MAJOR
                 || session.getStateSchemaVersion() != OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION

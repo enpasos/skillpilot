@@ -60,7 +60,9 @@ public class VisibleSessionAiController {
             @PathVariable String chatSessionToken) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(visibleSessionService.getState(chatSessionToken, lang));
+                .body(visibleSessionService.withActivity(
+                        chatSessionToken,
+                        () -> visibleSessionService.getState(chatSessionToken, lang)));
     }
 
     @PostMapping("/choice")
@@ -75,10 +77,9 @@ public class VisibleSessionAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @Valid @RequestBody VisibleChoiceRequest request) {
-        VisibleSessionService.ActionOutcome outcome = visibleSessionService.choose(
+        VisibleSessionService.ActionOutcome outcome = actionActivity(
                 chatSessionToken,
-                lang,
-                request);
+                () -> visibleSessionService.choose(chatSessionToken, lang, request));
         return ResponseEntity.status(outcome.status())
                 .cacheControl(CacheControl.noStore())
                 .body(outcome.response());
@@ -96,10 +97,9 @@ public class VisibleSessionAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @Valid @RequestBody VisibleNavigationRequest request) {
-        VisibleSessionService.ActionOutcome outcome = visibleSessionService.requestNavigation(
+        VisibleSessionService.ActionOutcome outcome = actionActivity(
                 chatSessionToken,
-                lang,
-                request);
+                () -> visibleSessionService.requestNavigation(chatSessionToken, lang, request));
         return ResponseEntity.status(outcome.status())
                 .cacheControl(CacheControl.noStore())
                 .body(outcome.response());
@@ -117,10 +117,9 @@ public class VisibleSessionAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @Valid @RequestBody VisibleActiveGoalRequest request) {
-        VisibleSessionService.ActionOutcome outcome = visibleSessionService.setActiveGoal(
+        VisibleSessionService.ActionOutcome outcome = actionActivity(
                 chatSessionToken,
-                lang,
-                request);
+                () -> visibleSessionService.setActiveGoal(chatSessionToken, lang, request));
         return ResponseEntity.status(outcome.status())
                 .cacheControl(CacheControl.noStore())
                 .body(outcome.response());
@@ -138,10 +137,9 @@ public class VisibleSessionAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @Valid @RequestBody VisibleMasteryRequest request) {
-        VisibleSessionService.ActionOutcome outcome = visibleSessionService.setMastery(
+        VisibleSessionService.ActionOutcome outcome = actionActivity(
                 chatSessionToken,
-                lang,
-                request);
+                () -> visibleSessionService.setMastery(chatSessionToken, lang, request));
         return ResponseEntity.status(outcome.status())
                 .cacheControl(CacheControl.noStore())
                 .body(outcome.response());
@@ -161,7 +159,10 @@ public class VisibleSessionAiController {
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(visibleSessionService.startVerifiedRecall(chatSessionToken, lang, request));
+                .body(visibleSessionService.withActivity(
+                        chatSessionToken,
+                        () -> visibleSessionService.startVerifiedRecall(
+                                chatSessionToken, lang, request)));
     }
 
     @PostMapping("/verified-recall/answer")
@@ -178,7 +179,10 @@ public class VisibleSessionAiController {
             @RequestBody VerifiedRecallAnswerRequest request) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(visibleSessionService.getVerifiedRecallAnswer(chatSessionToken, lang, request));
+                .body(visibleSessionService.withActivity(
+                        chatSessionToken,
+                        () -> visibleSessionService.getVerifiedRecallAnswer(
+                                chatSessionToken, lang, request)));
     }
 
     @PostMapping("/verified-recall/result")
@@ -195,7 +199,10 @@ public class VisibleSessionAiController {
             @RequestBody VerifiedRecallResultRequest request) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(visibleSessionService.recordVerifiedRecallResult(chatSessionToken, lang, request));
+                .body(visibleSessionService.withActivity(
+                        chatSessionToken,
+                        () -> visibleSessionService.recordVerifiedRecallResult(
+                                chatSessionToken, lang, request)));
     }
 
     @PostMapping("/exam/evaluation")
@@ -212,6 +219,18 @@ public class VisibleSessionAiController {
             @Valid @RequestBody VisibleExamEvaluationRequest request) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .body(visibleSessionService.getExamEvaluation(chatSessionToken, lang, request));
+                .body(visibleSessionService.withActivity(
+                        chatSessionToken,
+                        () -> visibleSessionService.getExamEvaluation(
+                                chatSessionToken, lang, request)));
+    }
+
+    private VisibleSessionService.ActionOutcome actionActivity(
+            String chatSessionToken,
+            java.util.function.Supplier<VisibleSessionService.ActionOutcome> operation) {
+        return visibleSessionService.withActivity(
+                chatSessionToken,
+                operation,
+                outcome -> outcome != null && outcome.status().is2xxSuccessful());
     }
 }

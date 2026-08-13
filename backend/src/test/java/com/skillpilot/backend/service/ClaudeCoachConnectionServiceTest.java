@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -32,6 +33,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.web.server.ResponseStatusException;
@@ -112,13 +114,16 @@ class ClaudeCoachConnectionServiceTest {
         verify(connectionRepository)
                 .existsByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNull(SKILLPILOT_ID);
         verifyNoMoreInteractions(bindingGrantRepository, connectionRepository, learnerService);
-        verifyNoInteractions(pendingLaunchRepository, learnerRepository);
+        verify(learnerRepository).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
+        verifyNoInteractions(pendingLaunchRepository);
     }
 
     @Test
     void consumeBindingGrantCreatesOpaqueSubjectAndCanUseTheGrantOnlyOnce() throws Exception {
         String rawGrant = "spcb_raw-grant-value";
         ClaudeBindingGrant grant = validGrant(learner);
+        when(bindingGrantRepository.findLearnerSkillpilotIdByTokenHash(anyString()))
+                .thenReturn(Optional.of(SKILLPILOT_ID));
         when(bindingGrantRepository.findByTokenHashForUpdate(anyString())).thenReturn(Optional.of(grant));
         ArgumentCaptor<String> hashLookup = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<ClaudeConnection> savedConnection = ArgumentCaptor.forClass(ClaudeConnection.class);
@@ -139,11 +144,17 @@ class ClaudeCoachConnectionServiceTest {
         assertThat(grant.getConsumedAt()).isNotNull();
         assertThat(grant.getConnectionSubject()).isEqualTo(subject);
         verify(bindingGrantRepository).save(grant);
+        InOrder ordered = inOrder(bindingGrantRepository, learnerRepository);
+        ordered.verify(bindingGrantRepository).findLearnerSkillpilotIdByTokenHash(hmac(rawGrant));
+        ordered.verify(learnerRepository).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
+        ordered.verify(bindingGrantRepository).findByTokenHashForUpdate(hmac(rawGrant));
 
         assertThatExceptionOfType(ResponseStatusException.class)
                 .isThrownBy(() -> service.consumeBindingGrant(rawGrant))
                 .satisfies(exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
         verify(bindingGrantRepository, times(2)).findByTokenHashForUpdate(hmac(rawGrant));
+        verify(bindingGrantRepository, times(2)).findLearnerSkillpilotIdByTokenHash(hmac(rawGrant));
+        verify(learnerRepository, times(2)).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
         verify(connectionRepository, times(1)).save(any(ClaudeConnection.class));
         verify(bindingGrantRepository, times(1)).save(grant);
         verifyNoMoreInteractions(bindingGrantRepository, connectionRepository, learnerRepository);
@@ -154,15 +165,19 @@ class ClaudeCoachConnectionServiceTest {
     void consumeBindingGrantRejectsExpiredGrantWithoutCreatingConnection() {
         ClaudeBindingGrant grant = validGrant(learner);
         grant.setExpiresAt(Instant.now().minusSeconds(1));
+        when(bindingGrantRepository.findLearnerSkillpilotIdByTokenHash(anyString()))
+                .thenReturn(Optional.of(SKILLPILOT_ID));
         when(bindingGrantRepository.findByTokenHashForUpdate(anyString())).thenReturn(Optional.of(grant));
 
         assertThatExceptionOfType(ResponseStatusException.class)
                 .isThrownBy(() -> service.consumeBindingGrant("spcb_expired"))
                 .satisfies(exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.GONE));
 
+        verify(bindingGrantRepository).findLearnerSkillpilotIdByTokenHash(anyString());
         verify(bindingGrantRepository).findByTokenHashForUpdate(anyString());
         verify(bindingGrantRepository, never()).save(any(ClaudeBindingGrant.class));
-        verifyNoInteractions(connectionRepository, pendingLaunchRepository, learnerRepository, learnerService);
+        verify(learnerRepository).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
+        verifyNoInteractions(connectionRepository, pendingLaunchRepository, learnerService);
     }
 
     @Test
@@ -305,7 +320,7 @@ class ClaudeCoachConnectionServiceTest {
                         SKILLPILOT_ID);
         verify(learnerService).assertActiveLearnerRouteAccess(SKILLPILOT_ID);
         verify(learnerService).getLearner(SKILLPILOT_ID);
-        verify(learnerRepository).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
+        verify(learnerRepository, times(3)).findBySkillpilotIdForUpdate(SKILLPILOT_ID);
         verifyNoMoreInteractions(
                 bindingGrantRepository,
                 connectionRepository,

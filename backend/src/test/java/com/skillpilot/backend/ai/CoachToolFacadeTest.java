@@ -27,7 +27,10 @@ import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
+import java.util.function.Supplier;
+import java.util.function.Predicate;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -43,16 +46,31 @@ class CoachToolFacadeTest {
 
     private LearnerService learnerService;
     private ChatSessionService chatSessionService;
+    private LearnerLifecycleService learnerLifecycle;
     private CoachToolFacade facade;
 
     @BeforeEach
     void setUp() {
         learnerService = mock(LearnerService.class);
         chatSessionService = mock(ChatSessionService.class);
+        learnerLifecycle = mock(LearnerLifecycleService.class);
+        org.mockito.Mockito.doAnswer(invocation -> {
+                    Supplier<?> operation = invocation.getArgument(1);
+                    Predicate<Object> successful = invocation.getArgument(2);
+                    Object result = operation.get();
+                    successful.test(result);
+                    return result;
+                })
+                .when(learnerLifecycle)
+                .withActivity(
+                        org.mockito.ArgumentMatchers.anyString(),
+                        org.mockito.ArgumentMatchers.<Supplier<Object>>any(),
+                        org.mockito.ArgumentMatchers.<Predicate<Object>>any());
         facade = new CoachToolFacade(
                 learnerService,
                 chatSessionService,
-                new CoachStateProjection("https://skillpilot.test"));
+                new CoachStateProjection("https://skillpilot.test"),
+                learnerLifecycle);
     }
 
     @Test
@@ -83,7 +101,7 @@ class CoachToolFacadeTest {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";
         String goalId = "goal-2";
-        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken)).thenReturn(skillpilotId);
         when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(
                         learnerState(skillpilotId, "chooseMemoryMode"),
@@ -96,7 +114,7 @@ class CoachToolFacadeTest {
         assertThat(result.skillpilotId()).isNull();
         assertThat(result.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
         InOrder ordered = inOrder(chatSessionService, learnerService);
-        ordered.verify(chatSessionService).resolveSkillpilotId(sessionToken);
+        ordered.verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -134,14 +152,14 @@ class CoachToolFacadeTest {
         FrontierGoal scope = new FrontierGoal(
                 "scope-1", "Scope", "Beschreibung", "cluster", null, null,
                 List.of(), List.of(), null, null, null, null);
-        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken)).thenReturn(skillpilotId);
         when(learnerService.getAvailableBaseCurricula(false)).thenReturn(List.of(curriculum));
         when(learnerService.getScopeNavigationOptions(skillpilotId)).thenReturn(List.of(scope));
 
         assertThat(facade.getSessionCurriculumOptions(sessionToken)).containsExactly(curriculum);
         assertThat(facade.getSessionScopeOptions(sessionToken)).containsExactly(scope);
 
-        verify(chatSessionService, org.mockito.Mockito.times(2)).resolveSkillpilotId(sessionToken);
+        verify(chatSessionService, org.mockito.Mockito.times(2)).resolveSkillpilotIdWithoutActivity(sessionToken);
         verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getAvailableBaseCurricula(false);
         verify(learnerService).getScopeNavigationOptions(skillpilotId);
@@ -216,7 +234,7 @@ class CoachToolFacadeTest {
     void sessionMasteryConflictReturnsProviderSafeCurrentState() {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";
-        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken)).thenReturn(skillpilotId);
         when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "setPersonalization"));
 
@@ -227,7 +245,7 @@ class CoachToolFacadeTest {
         assertThat(result.status()).isEqualTo(CoachToolFacade.MasteryStatus.CONFLICT);
         assertThat(result.state().skillpilotId()).isNull();
         assertThat(result.state().stateMachine().requiredAction()).isEqualTo("setPersonalization");
-        verify(chatSessionService).resolveSkillpilotId(sessionToken);
+        verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
@@ -345,7 +363,7 @@ class CoachToolFacadeTest {
                 "card-2",
                 "Question",
                 "Category");
-        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken)).thenReturn(skillpilotId);
         when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request))
                 .thenReturn(new VerifiedRecallResultResponse("card-1", true, 1, 1, next));
 
@@ -354,7 +372,7 @@ class CoachToolFacadeTest {
         assertThat(result.next()).isNotNull();
         assertThat(result.next().skillpilotId()).isNull();
         assertThat(result.next().cardId()).isEqualTo("card-2");
-        verify(chatSessionService).resolveSkillpilotId(sessionToken);
+        verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
@@ -432,7 +450,7 @@ class CoachToolFacadeTest {
         String skillpilotId = "learner-1";
         String sessionToken = "session-token";
         FrontierGoal examGoal = examGoal("exam-1", "released");
-        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(sessionToken)).thenReturn(skillpilotId);
         when(learnerService.getCoachLearnerState(skillpilotId))
                 .thenReturn(learnerState(skillpilotId, "teachActiveGoal", examGoal));
 
@@ -442,7 +460,7 @@ class CoachToolFacadeTest {
 
         assertThat(result.goalId()).isEqualTo(examGoal.id());
         InOrder ordered = inOrder(chatSessionService, learnerService);
-        ordered.verify(chatSessionService).resolveSkillpilotId(sessionToken);
+        ordered.verify(chatSessionService).resolveSkillpilotIdWithoutActivity(sessionToken);
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);

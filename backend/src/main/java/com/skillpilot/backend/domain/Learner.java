@@ -1,10 +1,12 @@
 package com.skillpilot.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Enumerated;
 import java.time.Instant;
@@ -27,6 +29,11 @@ public class Learner {
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
+
+    /** Server-authoritative retention timestamp; never restored from backups. */
+    @JsonIgnore
+    @Column(name = "last_activity_at", nullable = false)
+    private Instant lastActivityAt;
 
     @Column(name = "selected_curriculum")
     private String selectedCurriculum;
@@ -78,6 +85,14 @@ public class Learner {
 
     public Instant getCreatedAt() {
         return createdAt;
+    }
+
+    public Instant getLastActivityAt() {
+        return lastActivityAt;
+    }
+
+    public void setLastActivityAt(Instant lastActivityAt) {
+        this.lastActivityAt = lastActivityAt;
     }
 
     public String getSelectedCurriculum() {
@@ -182,9 +197,13 @@ public class Learner {
     }
 
     @PrePersist
+    @PreUpdate
     void ensureId() {
         if (this.skillpilotId == null || this.skillpilotId.isBlank()) {
             this.skillpilotId = UUID.randomUUID().toString();
+        }
+        if (this.lastActivityAt == null) {
+            this.lastActivityAt = Instant.now();
         }
         if (this.learningState == null) {
             this.learningState = LearningState.FRONTIER;

@@ -225,7 +225,7 @@ class RequestLoggingFilterTest {
         assertThat(filter.resolveTraceSubjectRef(
                 request,
                 "{\"startCode\":\"SP-2345-6789\"}",
-                responseBody)).isEqualTo("8452dc51-dc6d-43c2-aa16-53c150f2bff4");
+                responseBody)).isEmpty();
     }
 
     @Test

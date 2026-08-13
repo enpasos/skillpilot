@@ -31,6 +31,7 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
 import java.time.Instant;
@@ -45,6 +46,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 class LearnerAiControllerTest {
 
@@ -56,12 +59,26 @@ class LearnerAiControllerTest {
     void setUp() {
         learnerService = mock(LearnerService.class);
         chatSessionService = mock(ChatSessionService.class);
+        LearnerLifecycleService learnerLifecycle = mock(LearnerLifecycleService.class);
+        org.mockito.Mockito.doAnswer(invocation -> {
+                    Supplier<?> operation = invocation.getArgument(1);
+                    Predicate<Object> successful = invocation.getArgument(2);
+                    Object result = operation.get();
+                    successful.test(result);
+                    return result;
+                })
+                .when(learnerLifecycle)
+                .withActivity(
+                        org.mockito.ArgumentMatchers.anyString(),
+                        org.mockito.ArgumentMatchers.<Supplier<Object>>any(),
+                        org.mockito.ArgumentMatchers.<Predicate<Object>>any());
         controller = new LearnerAiController(
                 learnerService,
                 new CoachToolFacade(
                         learnerService,
                         chatSessionService,
-                        new CoachStateProjection("https://skillpilot.test")));
+                        new CoachStateProjection("https://skillpilot.test"),
+                        learnerLifecycle));
 
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setScheme("https");
@@ -329,7 +346,7 @@ class LearnerAiControllerTest {
                 "Prompt",
                 "Formeln");
 
-        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(chatSessionToken)).thenReturn(skillpilotId);
         when(learnerService.startVerifiedRecall(skillpilotId, "de", request)).thenReturn(serviceResponse);
 
         VerifiedRecallPromptResponse response = controller.startSessionVerifiedRecall("de", chatSessionToken, request);
@@ -337,7 +354,7 @@ class LearnerAiControllerTest {
         assertThat(response.skillpilotId()).isNull();
         assertThat(response.goalId()).isEqualTo("goal-1");
         assertThat(response.cardId()).isEqualTo("card-1");
-        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(chatSessionService).resolveSkillpilotIdWithoutActivity(chatSessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).startVerifiedRecall(skillpilotId, "de", request);
         verifyNoMoreInteractions(chatSessionService, learnerService);
@@ -418,7 +435,7 @@ class LearnerAiControllerTest {
                 "Formeln");
         VerifiedRecallResultResponse serviceResponse = new VerifiedRecallResultResponse("card-1", true, 1, 1, next);
 
-        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(chatSessionToken)).thenReturn(skillpilotId);
         when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request)).thenReturn(serviceResponse);
 
         VerifiedRecallResultResponse response = controller.recordSessionVerifiedRecallResult("de", chatSessionToken, request);
@@ -426,7 +443,7 @@ class LearnerAiControllerTest {
         assertThat(response.next()).isNotNull();
         assertThat(response.next().skillpilotId()).isNull();
         assertThat(response.next().cardId()).isEqualTo("card-2");
-        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(chatSessionService).resolveSkillpilotIdWithoutActivity(chatSessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
@@ -464,7 +481,7 @@ class LearnerAiControllerTest {
                 "Backend saved mastery; do not call setMastery.",
                 next);
 
-        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(chatSessionService.resolveSkillpilotIdWithoutActivity(chatSessionToken)).thenReturn(skillpilotId);
         when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request)).thenReturn(serviceResponse);
 
         VerifiedRecallResultResponse response = controller.recordSessionVerifiedRecallResult("de", chatSessionToken, request);
@@ -476,7 +493,7 @@ class LearnerAiControllerTest {
         assertThat(response.next().skillpilotId()).isNull();
         assertThat(response.next().status()).isEqualTo("complete");
 
-        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(chatSessionService).resolveSkillpilotIdWithoutActivity(chatSessionToken);
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);

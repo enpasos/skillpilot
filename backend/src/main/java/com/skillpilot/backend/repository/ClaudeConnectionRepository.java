@@ -18,5 +18,10 @@ public interface ClaudeConnectionRepository extends JpaRepository<ClaudeConnecti
 
     List<ClaudeConnection> findAllByLearnerSkillpilotIdAndRevokedAtIsNull(String skillpilotId);
 
+    List<ClaudeConnection> findAllByLearnerSkillpilotId(String skillpilotId);
+
+    @Query("select c.subject from ClaudeConnection c where c.learner.skillpilotId = :skillpilotId")
+    List<String> findSubjectsByLearnerSkillpilotId(@Param("skillpilotId") String skillpilotId);
+
     boolean existsByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNull(String skillpilotId);
 }

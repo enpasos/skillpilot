@@ -96,7 +96,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
         // Skip response wrapping for SSE endpoints - they need to stay open!
         if (requestUri.contains("/updates/")) {
-            logger.debug("Skipping response logging for SSE endpoint: {}", requestUri);
+            logger.debug("Skipping response logging for SSE endpoint: {}", sanitizeUriForOperationalLog(requestUri));
             filterChain.doFilter(request, response);
             return;
         }
@@ -205,18 +205,13 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         if (traceSubject == null || traceSubject.value() == null || traceSubject.value().isBlank()) {
             return "";
         }
+        // A permanent SkillPilot ID must not become a stable identifier in
+        // operational trace files. Session and one-time capability values may
+        // still be correlated by a short-lived derived reference.
         if ("skillpilotId".equals(traceSubject.type())) {
-            return sanitizeTraceFileSegment(traceSubject.value());
-        }
-        return stableSensitiveRef(traceSubject.value());
-    }
-
-    private String sanitizeTraceFileSegment(String value) {
-        if (value == null || value.isBlank()) {
             return "";
         }
-        String sanitized = value.replaceAll("[^A-Za-z0-9._-]", "_");
-        return sanitized.length() <= 128 ? sanitized : sanitized.substring(0, 128);
+        return stableSensitiveRef(traceSubject.value());
     }
 
     private String truncate(String value) {

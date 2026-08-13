@@ -87,8 +87,11 @@ public class ClaudeOAuthConfiguration {
     @Bean
     OAuth2AuthorizationConsentService claudeAuthorizationConsentService(
             JdbcOperations jdbcOperations,
-            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository) {
-        return new JdbcOAuth2AuthorizationConsentService(jdbcOperations, registeredClientRepository);
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
+            ClaudeCoachConnectionService connectionService) {
+        return new ClaudeConnectionAwareAuthorizationConsentService(
+                new JdbcOAuth2AuthorizationConsentService(jdbcOperations, registeredClientRepository),
+                connectionService);
     }
 
     @Bean

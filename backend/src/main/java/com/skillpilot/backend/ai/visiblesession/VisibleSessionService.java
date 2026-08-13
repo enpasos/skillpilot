@@ -34,6 +34,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -94,6 +96,20 @@ public class VisibleSessionService {
         this.publicBaseUrl = normalizeBaseUrl(publicBaseUrl);
         this.statePreparer = new VisibleSessionAiStatePreparer(this.publicBaseUrl);
         this.stateProjection = new CoachStateProjection(this.publicBaseUrl);
+    }
+
+    <T> T withActivity(
+            String chatSessionToken,
+            Supplier<T> operation,
+            Predicate<T> successfulResult) {
+        return coachToolFacade.withSessionActivity(
+                chatSessionToken,
+                operation,
+                successfulResult);
+    }
+
+    <T> T withActivity(String chatSessionToken, Supplier<T> operation) {
+        return coachToolFacade.withSessionActivity(chatSessionToken, operation);
     }
 
     public VisibleCoachStateResponse getState(String chatSessionToken, String language) {

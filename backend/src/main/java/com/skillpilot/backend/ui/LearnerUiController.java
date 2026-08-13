@@ -26,11 +26,19 @@ import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
 import com.skillpilot.backend.api.LearnerDataDTO;
+import com.skillpilot.backend.api.DeleteLearnerRequest;
+import com.skillpilot.backend.api.LearnerRetentionResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.CacheControl;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,10 +56,15 @@ public class LearnerUiController {
 
     private final LearnerService learnerService;
     private final ChatSessionService chatSessionService;
+    private final LearnerLifecycleService learnerLifecycle;
 
-    public LearnerUiController(LearnerService learnerService, ChatSessionService chatSessionService) {
+    public LearnerUiController(
+            LearnerService learnerService,
+            ChatSessionService chatSessionService,
+            LearnerLifecycleService learnerLifecycle) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
+        this.learnerLifecycle = learnerLifecycle;
     }
 
     @PostMapping
@@ -71,6 +84,46 @@ public class LearnerUiController {
         return learnerService.getLearnerState(skillpilotId);
     }
 
+    @PostMapping("/{skillpilotId}/resume")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(
+            name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ResponseEntity<LearnerRetentionResponse> resume(
+            @PathVariable String skillpilotId,
+            HttpServletResponse response) {
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(learnerLifecycle.resume(skillpilotId));
+    }
+
+    @GetMapping("/{skillpilotId}/retention")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(
+            name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ResponseEntity<LearnerRetentionResponse> retention(
+            @PathVariable String skillpilotId,
+            HttpServletResponse response) {
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(learnerLifecycle.retention(skillpilotId));
+    }
+
+    @DeleteMapping(value = "/{skillpilotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(
+            name = "x-openai-isConsequential", value = "true", parseValue = true)))
+    public ResponseEntity<Void> deleteLearner(
+            @PathVariable String skillpilotId,
+            @RequestBody(required = false) DeleteLearnerRequest request,
+            HttpServletResponse response) {
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
+        learnerLifecycle.deleteConfirmed(
+                skillpilotId,
+                request == null ? null : request.confirmationSkillpilotId());
+        return ResponseEntity.noContent()
+                .cacheControl(CacheControl.noStore())
+                .build();
+    }
+
     @GetMapping("/{skillpilotId}/personalization-plan")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public PersonalizationPlan getPersonalizationPlan(@PathVariable String skillpilotId) {
@@ -83,39 +136,45 @@ public class LearnerUiController {
     public PersonalizationPlan applyPersonalizationOption(
             @PathVariable String skillpilotId,
             @RequestBody PersonalizationRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        if (request == null) {
-            throw new org.springframework.web.server.ResponseStatusException(
-                    org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Personalization request is required.");
-        }
-        if (request.optionId() == null || request.optionId().isBlank()) {
-            throw new org.springframework.web.server.ResponseStatusException(
-                    org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "A current opaque personalization option is required.");
-        }
-        learnerService.patchPersonalCurriculum(
-                skillpilotId,
-                request.config(),
-                request.goalIds(),
-                request.filters(),
-                request.optionId());
-        return learnerService.getPersonalizationPlan(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            if (request == null) {
+                throw new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Personalization request is required.");
+            }
+            if (request.optionId() == null || request.optionId().isBlank()) {
+                throw new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "A current opaque personalization option is required.");
+            }
+            learnerService.patchPersonalCurriculum(
+                    skillpilotId,
+                    request.config(),
+                    request.goalIds(),
+                    request.filters(),
+                    request.optionId());
+            return learnerService.getPersonalizationPlan(skillpilotId);
+        });
     }
 
     @PostMapping("/{skillpilotId}/personalization-restart")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public PersonalizationPlan restartPersonalization(@PathVariable String skillpilotId) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.restartPersonalization(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return learnerService.restartPersonalization(skillpilotId);
+        });
     }
 
     @PostMapping("/{skillpilotId}/personalization-reopen")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public PersonalizationPlan reopenMigratedPersonalization(
             @PathVariable String skillpilotId) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.reopenMigratedPersonalization(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return learnerService.reopenMigratedPersonalization(skillpilotId);
+        });
     }
 
     @PostMapping("/{skillpilotId}/personalization-rewind")
@@ -123,15 +182,17 @@ public class LearnerUiController {
     public PersonalizationPlan rewindPersonalization(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) PersonalizationRewindRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        if (request == null
-                || request.rewindId() == null
-                || request.rewindId().isBlank()) {
-            throw new org.springframework.web.server.ResponseStatusException(
-                    org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "A current opaque personalization rewind reference is required.");
-        }
-        return learnerService.rewindPersonalization(skillpilotId, request.rewindId());
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            if (request == null
+                    || request.rewindId() == null
+                    || request.rewindId().isBlank()) {
+                throw new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "A current opaque personalization rewind reference is required.");
+            }
+            return learnerService.rewindPersonalization(skillpilotId, request.rewindId());
+        });
     }
 
     @GetMapping("/{skillpilotId}/landscapes/{landscapeId}/closure")
@@ -153,8 +214,10 @@ public class LearnerUiController {
     @PostMapping("/{skillpilotId}/cutover/canonical-gymnasium")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse cutoverCanonicalGymnasium(@PathVariable String skillpilotId) {
-        learnerService.cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(skillpilotId);
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.cutoverLegacyHessenGymnasiumToCanonicalAndPersistPlannedGoals(skillpilotId);
+            return learnerService.getLearnerState(skillpilotId);
+        });
     }
 
     @PostMapping("/cutover/canonical-gymnasium/bulk")
@@ -174,8 +237,10 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public ClientStateResponse upsertClientState(@PathVariable String skillpilotId, @PathVariable String nodeId,
             @RequestBody(required = false) ClientStateRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.upsertClientState(skillpilotId, nodeId, request);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return learnerService.upsertClientState(skillpilotId, nodeId, request);
+        });
     }
 
     @PostMapping("/{skillpilotId}/scope")
@@ -183,17 +248,21 @@ public class LearnerUiController {
     public UnifiedLearnerStateResponse setScope(
             @PathVariable String skillpilotId,
             @RequestBody ScopeRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.setScope(skillpilotId, request.goalIds());
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return learnerService.setScope(skillpilotId, request.goalIds());
+        });
     }
 
     @PostMapping("/{skillpilotId}/active-goal")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            learnerService.setActiveGoal(skillpilotId, request.goalId());
+            return learnerService.getLearnerState(skillpilotId);
+        });
     }
 
     @GetMapping("/{skillpilotId}/mastery")
@@ -219,8 +288,10 @@ public class LearnerUiController {
     public PlannedGoalsMutationResponse setPlanned(
             @PathVariable String skillpilotId,
             @Valid @RequestBody PlannedGoalsRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.setPlannedGoalsAndGetState(skillpilotId, request.goals());
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            return learnerService.setPlannedGoalsAndGetState(skillpilotId, request.goals());
+        });
     }
 
     @GetMapping("/{skillpilotId}")
@@ -233,44 +304,54 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public ChatStartResponse createChatStart(@PathVariable String skillpilotId,
             @RequestBody(required = false) ChatStartRequest request) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return chatSessionService.createStartCode(skillpilotId, request);
+        return learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+            return chatSessionService.createStartCode(skillpilotId, request);
+        });
     }
 
     @PutMapping("/{skillpilotId}/curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updateCurriculum(@PathVariable String skillpilotId, @RequestBody UpdateCurriculumRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+        learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+        });
     }
 
     @PutMapping("/{skillpilotId}/preferences")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePreferences(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PreferencesRequest request) {
-        learnerService.setPreferences(skillpilotId, request.learningStrategy(), request.autoPilot(),
-                request.strictMode(), request.showGoalVisualizationsInChat());
+        learnerLifecycle.withActivity(skillpilotId, () -> learnerService.setPreferences(
+                skillpilotId,
+                request.learningStrategy(),
+                request.autoPilot(),
+                request.strictMode(),
+                request.showGoalVisualizationsInChat()));
     }
 
     @PutMapping("/{skillpilotId}/personal-curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePersonalCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdatePersonalCurriculumRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setPersonalCurriculum(skillpilotId, request, null, null);
+        learnerLifecycle.withActivity(skillpilotId, () -> {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            learnerService.setPersonalCurriculum(skillpilotId, request, null, null);
+        });
     }
 
     @GetMapping("/{skillpilotId}/export")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public com.skillpilot.backend.api.SignedLearnerDataDTO exportLearner(@PathVariable String skillpilotId) {
-        return learnerService.exportLearner(skillpilotId);
+        return learnerLifecycle.withActivity(skillpilotId, () -> learnerService.exportLearner(skillpilotId));
     }
 
     @PostMapping("/{skillpilotId}/import")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void importLearner(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.SignedLearnerDataDTO data) {
-        learnerService.importLearner(skillpilotId, data);
+        learnerLifecycle.withActivity(skillpilotId, () -> learnerService.importLearner(skillpilotId, data));
     }
 
     @GetMapping("/{skillpilotId}/history")

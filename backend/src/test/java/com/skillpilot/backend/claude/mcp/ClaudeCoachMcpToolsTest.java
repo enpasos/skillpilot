@@ -14,10 +14,13 @@ import com.skillpilot.backend.claude.oauth.ClaudeOAuthConfiguration;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
+import com.skillpilot.backend.service.LearnerLifecycleService;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +48,7 @@ class ClaudeCoachMcpToolsTest {
     private CoachToolFacade coachTools;
     private ClaudeCoachConnectionService connectionService;
     private CoachStateProjection stateProjection;
+    private LearnerLifecycleService learnerLifecycle;
     private ClaudeCoachMcpTools tools;
 
     @BeforeEach
@@ -52,7 +56,24 @@ class ClaudeCoachMcpToolsTest {
         coachTools = mock(CoachToolFacade.class);
         connectionService = mock(ClaudeCoachConnectionService.class);
         stateProjection = new CoachStateProjection("https://skillpilot.test");
-        tools = new ClaudeCoachMcpTools(coachTools, connectionService, stateProjection);
+        learnerLifecycle = mock(LearnerLifecycleService.class);
+        org.mockito.Mockito.doAnswer(invocation -> {
+                    Supplier<?> operation = invocation.getArgument(1);
+                    Predicate<Object> successful = invocation.getArgument(2);
+                    Object result = operation.get();
+                    successful.test(result);
+                    return result;
+                })
+                .when(learnerLifecycle)
+                .withActivity(
+                        org.mockito.ArgumentMatchers.anyString(),
+                        org.mockito.ArgumentMatchers.<Supplier<Object>>any(),
+                        org.mockito.ArgumentMatchers.<Predicate<Object>>any());
+        tools = new ClaudeCoachMcpTools(
+                coachTools,
+                connectionService,
+                stateProjection,
+                learnerLifecycle);
     }
 
     @AfterEach
@@ -63,7 +84,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void resolvesLearnerFromAuthenticatedConnectionSubjectAndRedactsPermanentId() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.of(
                 new ClaudeCoachConnectionService.PendingLaunch(
                         "launch-id",
@@ -80,7 +101,7 @@ class ClaudeCoachMcpToolsTest {
         assertThat(context.state().learningState()).isEqualTo("learning");
         assertThat(objectMapper.writeValueAsString(context)).doesNotContain(SKILLPILOT_ID);
         assertThat(objectMapper.writeValueAsString(context)).doesNotContain("copied-learner-secret-id");
-        verify(connectionService).resolveSkillpilotId(SUBJECT);
+        verify(connectionService).resolveSkillpilotIdWithoutActivity(SUBJECT);
         verify(connectionService).consumePendingLaunch(SUBJECT);
         verify(coachTools).getLearnerState(SKILLPILOT_ID);
     }
@@ -96,7 +117,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void doesNotInventGermanLanguageWhenAConsumedLaunchIsReloaded() {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.empty());
         when(coachTools.getLearnerState(SKILLPILOT_ID)).thenReturn(stateWithSkillpilotId());
 
@@ -110,7 +131,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void orientationContractBuildsInterestWithoutAssessingSubjectKnowledge() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.empty());
         when(coachTools.getLearnerState(SKILLPILOT_ID)).thenReturn(stateWithSkillpilotId());
 
@@ -147,7 +168,7 @@ class ClaudeCoachMcpToolsTest {
         verifyNoInteractions(coachTools, connectionService);
 
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(coachTools.setScope(eq(SKILLPILOT_ID), any(ScopeRequest.class)))
                 .thenReturn(stateWithSkillpilotId());
 
@@ -173,7 +194,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void redactsPermanentIdFromMasteryConflictState() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(coachTools.setMastery(eq(SKILLPILOT_ID), any(MasteryUpdateRequest.class)))
                 .thenReturn(new CoachToolFacade.MasteryResult(
                         CoachToolFacade.MasteryStatus.CONFLICT,
@@ -195,7 +216,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void projectsMasteryUpdateBeforeReturningItToClaude() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         UnifiedLearnerStateResponse unsafeState = stateWithReleasedExam();
         MasteryUpdateResponse unsafeUpdate = new MasteryUpdateResponse(
                 true,
@@ -235,7 +256,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void normalCoachContextProjectsReleasedExamWithoutSolutionOrRubric() throws Exception {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.empty());
         when(coachTools.getLearnerState(SKILLPILOT_ID)).thenReturn(stateWithReleasedExam());
 
@@ -257,7 +278,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void appliesPersonalizationThroughTheSharedFacade() {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         when(coachTools.setPersonalization(eq(SKILLPILOT_ID), any(PersonalizationRequest.class)))
                 .thenReturn(stateWithSkillpilotId());
 
@@ -273,7 +294,7 @@ class ClaudeCoachMcpToolsTest {
     @Test
     void releasesLocalizedExamEvaluationOnlyThroughTheDedicatedTool() {
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveSkillpilotIdWithoutActivity(SUBJECT)).thenReturn(SKILLPILOT_ID);
         CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
                 10.0,
                 5.0,

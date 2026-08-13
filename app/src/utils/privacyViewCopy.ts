@@ -23,7 +23,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: July 22, 2026',
+        effectiveDate: 'Date: August 13, 2026',
         intro:
           'We appreciate your interest in SkillPilot. Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.',
         sections: [
@@ -43,9 +43,11 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
               'Your chosen learning path (curriculum/landscape).',
               'Your current learning status (mastery) for individual skills.',
               'Your planned learning goals (frontier).',
+              'The time of your last successful activity for the deletion period.',
+              'SkillPilot-side learning-session and connection data associated with the SkillPilot ID.',
             ],
             paragraphsAfterBullets: [
-              'This data is used exclusively to provide you with suitable learning suggestions and to visualize your progress.',
+              'This data is used to provide suitable learning suggestions, visualize your progress, operate and secure the service, and apply the deletion period described below.',
             ],
           },
           {
@@ -62,20 +64,29 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '5. Your Rights',
+            title: '5. Storage Period, Activity, and Deletion',
             paragraphs: [
-              'Since we only store your data pseudonymously, we can only process information or deletion requests if you provide us with your SkillPilot ID. You can have your data deleted at any time by transmitting your ID to us or (if implemented) using the delete function in the app.',
+              'After 365 consecutive days without successful activity, the active learning state stored under your SkillPilot ID in the SkillPilot database, including the associated SkillPilot learning sessions and SkillPilot connections, becomes due for automatic deletion and is removed during the next automatic deletion run.',
+              'Only the following count as activity: successful creation of a SkillPilot ID; foreground loading or resuming of the learning state in the SkillPilot web interface; a server-completed import or export of signed learner data; a learner-state change successfully stored on the server; a successfully completed SkillPilot session or AI-provider connection action; and a valid Coach/MCP call that SkillPilot completes with a successful domain result. Background GET requests, SSE traffic, OAuth token refreshes, merely selecting or opening a local file, and server operations that do not complete or are domain-rejected do not count and do not restart the 365-day period.',
+              'You can delete the same active server-side data at any time using the designated function in the SkillPilot web interface. The SkillPilot ID can then no longer be used for that learning state.',
+              'Manual or automatic deletion does not delete downloaded or other local files, or chats or other data held by an AI provider. Existing backup copies are not part of the active learning state. Neither the delete function nor the 365-day expiry immediately deletes each backup copy individually. Mandatory legal retention obligations and other lawful exceptions remain unaffected.',
+            ],
+          },
+          {
+            title: '6. Your Rights',
+            paragraphs: [
+              'Because we store your data pseudonymously, we can process information or deletion requests only if you provide the relevant SkillPilot ID or otherwise demonstrate access to it. You can contact us using the details below. Your statutory data-protection rights remain unaffected by the deletion function and automatic deletion.',
             ],
           },
         ],
-        contactTitle: '6. Contact',
+        contactTitle: '7. Contact',
         contactIntro: 'If you have any questions about data protection, please contact us at:',
         imprintLabel: 'Imprint',
       }
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 22. Juli 2026',
+        effectiveDate: 'Stand: 13. August 2026',
         intro:
           'Wir freuen uns über Ihr Interesse an SkillPilot. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.',
         sections: [
@@ -95,9 +106,11 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
               'Ihren gewählten Lernpfad (Curriculum/Landschaft).',
               'Ihren aktuellen Lernstand (Mastery) für einzelne Kompetenzen.',
               'Ihre geplanten Lernziele (Frontier).',
+              'Den Zeitpunkt Ihrer letzten erfolgreichen Tätigkeit für die Löschfrist.',
+              'SkillPilot-seitige Lernsession- und Verbindungsdaten, die der SkillPilot-ID zugeordnet sind.',
             ],
             paragraphsAfterBullets: [
-              'Diese Daten dienen ausschließlich dazu, Ihnen passende Lernvorschläge zu machen und Ihren Fortschritt zu visualisieren.',
+              'Diese Daten dienen dazu, Ihnen passende Lernvorschläge zu machen, Ihren Fortschritt zu visualisieren, den Dienst zu betreiben und abzusichern sowie die nachstehende Löschfrist anzuwenden.',
             ],
           },
           {
@@ -114,13 +127,22 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '5. Ihre Rechte',
+            title: '5. Speicherdauer, Tätigkeit und Löschung',
             paragraphs: [
-              'Da wir Ihre Daten nur pseudonym speichern, können wir Auskunfts- oder Löschanfragen nur bearbeiten, wenn Sie uns Ihre SkillPilot-ID mitteilen. Sie können Ihre Daten jederzeit löschen lassen, indem Sie uns Ihre ID übermitteln oder (sofern implementiert) die Löschfunktion in der App nutzen.',
+              'Nach 365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit ist der aktive, unter Ihrer SkillPilot-ID in der SkillPilot-Datenbank gespeicherte Lernstand einschließlich der zugehörigen SkillPilot-Lernsessions und SkillPilot-Verbindungen zur automatischen Löschung fällig und wird beim nächsten automatischen Löschlauf entfernt.',
+              'Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands in der SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs- oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf, den SkillPilot mit einem fachlich erfolgreichen Ergebnis abschließt. Hintergrund-GET-Anfragen, SSE-Verkehr, OAuth-Token-Aktualisierungen, das bloße Auswählen oder Öffnen einer lokalen Datei sowie vom Server nicht abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht und starten die 365-Tage-Frist nicht neu.',
+              'Dieselben aktiven serverseitigen Daten können Sie jederzeit über die dafür vorgesehene Funktion in der SkillPilot-Weboberfläche löschen. Danach kann die SkillPilot-ID nicht mehr für diesen Lernstand verwendet werden.',
+              'Die manuelle oder automatische Löschung entfernt keine heruntergeladenen oder sonstigen lokalen Dateien und keine Chats oder sonstigen Daten bei einem KI-Anbieter. Bestehende Sicherungskopien gehören nicht zum aktiven Lernstand. Die Löschfunktion und der 365-Tage-Ablauf löschen sie nicht unmittelbar einzeln. Zwingende gesetzliche Aufbewahrungspflichten und andere zulässige Ausnahmefälle bleiben unberührt.',
+            ],
+          },
+          {
+            title: '6. Ihre Rechte',
+            paragraphs: [
+              'Da wir Ihre Daten pseudonym speichern, können wir Auskunfts- oder Löschanfragen nur bearbeiten, wenn Sie uns die betreffende SkillPilot-ID mitteilen oder den Zugriff darauf anderweitig nachweisen. Sie können dafür die unten genannten Kontaktdaten verwenden. Ihre gesetzlichen Datenschutzrechte bleiben von der Löschfunktion und der automatischen Löschung unberührt.',
             ],
           },
         ],
-        contactTitle: '6. Kontakt',
+        contactTitle: '7. Kontakt',
         contactIntro: 'Bei Fragen zum Datenschutz erreichen Sie uns unter:',
         imprintLabel: 'Impressum',
       }

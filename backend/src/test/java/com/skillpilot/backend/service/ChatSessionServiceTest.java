@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -11,14 +12,17 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.ChatStartRequest;
 import com.skillpilot.backend.domain.ChatSession;
+import com.skillpilot.backend.domain.ChatStartCode;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.ChatSessionRepository;
 import com.skillpilot.backend.repository.ChatStartCodeRepository;
+import com.skillpilot.backend.repository.LearnerRepository;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -30,13 +34,16 @@ class ChatSessionServiceTest {
         ChatStartCodeRepository startCodeRepository = mock(ChatStartCodeRepository.class);
         ChatSessionRepository sessionRepository = mock(ChatSessionRepository.class);
         LearnerService learnerService = mock(LearnerService.class);
+        LearnerRepository learnerRepository = mock(LearnerRepository.class);
         Learner learner = new Learner();
         learner.setSkillpilotId(skillpilotId);
         learner.setSelectedCurriculum("math");
         when(learnerService.getLearner(skillpilotId)).thenReturn(learner);
+        when(learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)).thenReturn(Optional.of(learner));
         ChatSessionService service = new ChatSessionService(
                 startCodeRepository,
                 sessionRepository,
+                learnerRepository,
                 learnerService,
                 Duration.ofMinutes(5),
                 Duration.ofHours(24),
@@ -85,12 +92,15 @@ class ChatSessionServiceTest {
         ChatStartCodeRepository startCodeRepository = mock(ChatStartCodeRepository.class);
         ChatSessionRepository sessionRepository = mock(ChatSessionRepository.class);
         LearnerService learnerService = mock(LearnerService.class);
+        LearnerRepository learnerRepository = mock(LearnerRepository.class);
         Learner learner = new Learner();
         learner.setSkillpilotId(skillpilotId);
         when(learnerService.getLearner(skillpilotId)).thenReturn(learner);
+        when(learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)).thenReturn(Optional.of(learner));
         ChatSessionService service = new ChatSessionService(
                 startCodeRepository,
                 sessionRepository,
+                learnerRepository,
                 learnerService,
                 Duration.ofMinutes(5),
                 Duration.ofHours(24),
@@ -114,12 +124,15 @@ class ChatSessionServiceTest {
         ChatStartCodeRepository startCodeRepository = mock(ChatStartCodeRepository.class);
         ChatSessionRepository sessionRepository = mock(ChatSessionRepository.class);
         LearnerService learnerService = mock(LearnerService.class);
+        LearnerRepository learnerRepository = mock(LearnerRepository.class);
         Learner learner = new Learner();
         learner.setSkillpilotId(skillpilotId);
         when(learnerService.getLearner(skillpilotId)).thenReturn(learner);
+        when(learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)).thenReturn(Optional.of(learner));
         ChatSessionService service = new ChatSessionService(
                 startCodeRepository,
                 sessionRepository,
+                learnerRepository,
                 learnerService,
                 Duration.ofMinutes(5),
                 Duration.ofHours(48),
@@ -139,9 +152,11 @@ class ChatSessionServiceTest {
         ChatStartCodeRepository startCodeRepository = mock(ChatStartCodeRepository.class);
         ChatSessionRepository sessionRepository = mock(ChatSessionRepository.class);
         LearnerService learnerService = mock(LearnerService.class);
+        LearnerRepository learnerRepository = mock(LearnerRepository.class);
         ChatSessionService service = new ChatSessionService(
                 startCodeRepository,
                 sessionRepository,
+                learnerRepository,
                 learnerService,
                 Duration.ofMinutes(5),
                 Duration.ofHours(24),
@@ -158,6 +173,43 @@ class ChatSessionServiceTest {
                             .contains("Chat session has expired")
                             .contains("skillpilot.com");
                 });
+    }
+
+    @Test
+    void redeemStartCodeLocksTheLearnerBeforeTheStartCode() {
+        String skillpilotId = "learner-visible";
+        ChatStartCodeRepository startCodeRepository = mock(ChatStartCodeRepository.class);
+        ChatSessionRepository sessionRepository = mock(ChatSessionRepository.class);
+        LearnerService learnerService = mock(LearnerService.class);
+        LearnerRepository learnerRepository = mock(LearnerRepository.class);
+        Learner learner = new Learner();
+        learner.setSkillpilotId(skillpilotId);
+        ChatStartCode code = new ChatStartCode();
+        code.setCodeHash("stored-hash");
+        code.setLearner(learner);
+        code.setCreatedAt(Instant.now().minusSeconds(10));
+        code.setExpiresAt(Instant.now().plusSeconds(300));
+        when(startCodeRepository.findLearnerSkillpilotIdByCodeHash(anyString()))
+                .thenReturn(Optional.of(skillpilotId));
+        when(learnerRepository.findBySkillpilotIdForUpdate(skillpilotId))
+                .thenReturn(Optional.of(learner));
+        when(startCodeRepository.findByCodeHashForUpdate(anyString()))
+                .thenReturn(Optional.of(code));
+        ChatSessionService service = new ChatSessionService(
+                startCodeRepository,
+                sessionRepository,
+                learnerRepository,
+                learnerService,
+                Duration.ofMinutes(5),
+                Duration.ofHours(24),
+                "test-secret");
+
+        service.redeemStartCode("SP-1234-5678", "de");
+
+        InOrder ordered = inOrder(startCodeRepository, learnerRepository);
+        ordered.verify(startCodeRepository).findLearnerSkillpilotIdByCodeHash(anyString());
+        ordered.verify(learnerRepository).findBySkillpilotIdForUpdate(skillpilotId);
+        ordered.verify(startCodeRepository).findByCodeHashForUpdate(anyString());
     }
 
     private static int countOccurrences(String text, String value) {

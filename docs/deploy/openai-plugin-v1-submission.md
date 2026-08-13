@@ -440,6 +440,24 @@ prepared first-party SkillPilot start flow described in the test fixture.
   Nutzungsbedingungen und die rechtlichen Hinweise unter einer einzigen URL.
   Vor Submit müssen Geschäftsführung beziehungsweise Rechtsberatung den Inhalt
   und insbesondere die Aussage zur Verbraucherschlichtung bestätigen.
+- `/legal` und `/privacy` verwenden dieselbe 1.0.0-Lösch- und
+  Aufbewahrungsgrenze: Der aktive
+  SkillPilot-Datenbank-Lernstand und die zugehörigen SkillPilot-Sitzungen und
+  -Verbindungen können über die Weboberfläche gelöscht werden und werden nach
+  365 aufeinanderfolgenden Tagen ohne erfolgreiche Tätigkeit zur automatischen
+  Löschung fällig und beim nächsten automatischen Löschlauf entfernt.
+  Als Tätigkeit zählen ausschließlich die erfolgreiche Erstellung einer
+  SkillPilot-ID, das aktive Laden oder Fortsetzen des Lernstands über die
+  SkillPilot-Weboberfläche, ein vom Server abgeschlossener Import oder
+  Export signierter Lerndaten, eine serverseitig erfolgreich gespeicherte
+  Änderung des Lernstands, eine erfolgreich abgeschlossene SkillPilot-Sitzungs-
+  oder KI-Anbieter-Verbindungsaktion sowie ein gültiger Coach-/MCP-Aufruf mit
+  fachlich erfolgreichem Ergebnis. Hintergrund-GET-Anfragen, SSE-Verkehr,
+  OAuth-Token-Aktualisierungen, bloße Dateiöffnung sowie vom Server nicht
+  abgeschlossene oder fachlich abgewiesene Aktionen zählen nicht.
+- Lokale Dateien und Provider-Chats liegen außerhalb dieser Löschung. Bestehende
+  Sicherungskopien gehören nicht zum aktiven Lernstand; die Löschfunktion und
+  der 365-Tage-Ablauf löschen sie nicht unmittelbar einzeln.
 - Datenschutz, Terms, Alters-/Guardian-Regeln, Retention, Revocation und
   Provider-Offenlegung müssen rechtlich freigegeben sein.
 - Erst nach grüner Verhaltens-, Sicherheits-, Client- und Rechtsabnahme
