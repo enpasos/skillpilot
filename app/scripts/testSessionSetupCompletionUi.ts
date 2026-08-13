@@ -261,10 +261,79 @@ try {
     ],
   })
   const baseUrl = `${server.baseUrl}/scripts/fixtures/sessionSetupCompletionUi.html`
+
+  const termsContext = await browser.newContext({ locale: 'de-DE' })
+  await termsContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+  })
+  const termsPage = await termsContext.newPage()
+  await installApi(termsPage)
+  await termsPage.goto(baseUrl)
+  await termsPage.getByRole('button', { name: 'Jetzt starten' }).click()
+  await termsPage.getByRole('heading', {
+    name: 'Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:',
+  }).waitFor()
+  assert(
+    await termsPage.getByLabel('Deine SkillPilot-ID').count() === 0,
+    'learner setup remains hidden before accepting Terms 1.0.0',
+  )
+  await termsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
+  await termsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
+  await termsPage.getByLabel('Deine SkillPilot-ID').waitFor()
+  assert(
+    await termsPage.evaluate(() => localStorage.getItem('skillpilot_terms_accepted_version')) === '1.0.0',
+    'the first-party gate stores exactly the canonical Terms 1.0.0 acceptance',
+  )
+  await termsContext.close()
+
+  const trainerTermsContext = await browser.newContext({ locale: 'de-DE' })
+  await trainerTermsContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+  })
+  const trainerTermsPage = await trainerTermsContext.newPage()
+  await installApi(trainerTermsPage)
+  await trainerTermsPage.goto(baseUrl)
+  await trainerTermsPage.getByRole('button', { name: 'Lehrkräfte' }).click()
+  await trainerTermsPage.getByRole('heading', {
+    name: 'Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:',
+  }).waitFor()
+  assert(
+    await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).count() === 0,
+    'trainer setup remains hidden before accepting the same Terms 1.0.0',
+  )
+  await trainerTermsPage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
+  await trainerTermsPage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
+  await trainerTermsPage.getByRole('heading', { name: 'Kurs vorbereiten' }).waitFor()
+  await trainerTermsContext.close()
+
+  const blockedStorageContext = await browser.newContext({ locale: 'de-DE' })
+  await blockedStorageContext.addInitScript(() => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    const originalSetItem = Storage.prototype.setItem
+    Storage.prototype.setItem = function (key: string, value: string) {
+      if (key === 'skillpilot_terms_accepted_version') {
+        throw new DOMException('Storage blocked', 'SecurityError')
+      }
+      originalSetItem.call(this, key, value)
+    }
+  })
+  const blockedStoragePage = await blockedStorageContext.newPage()
+  await installApi(blockedStoragePage)
+  await blockedStoragePage.goto(baseUrl)
+  await blockedStoragePage.getByRole('button', { name: 'Jetzt starten' }).click()
+  await blockedStoragePage.getByRole('checkbox', { name: /Ich akzeptiere die Nutzungsbedingungen/u }).check()
+  await blockedStoragePage.getByRole('button', { name: 'Akzeptieren & Fortfahren' }).click()
+  await blockedStoragePage.getByRole('alert').waitFor()
+  assert(
+    await blockedStoragePage.getByLabel('Deine SkillPilot-ID').count() === 0,
+    'a failed Terms write remains fail-closed instead of creating a page-only acceptance',
+  )
+  await blockedStorageContext.close()
+
   const context = await browser.newContext({ locale: 'de-DE' })
   await context.addInitScript(() => {
     localStorage.setItem('skillpilot_lang', 'de')
-    localStorage.setItem('skillpilot_legal_waiver_accepted', 'true')
+    localStorage.setItem('skillpilot_terms_accepted_version', '1.0.0')
   })
 
   const returning = await openFreshSetupPage(context, baseUrl)

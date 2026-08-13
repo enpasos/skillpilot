@@ -216,9 +216,9 @@ const germanCopy: FaqViewCopy = {
   ],
   moreInformation: {
     title: 'Weitere Informationen',
-    text: 'Fragen zu Datenverarbeitung oder rechtlichen Hinweisen beantworten die folgenden Seiten. Technische Probleme kannst du dem SkillPilot-Team melden.',
+    text: 'Fragen zu Datenverarbeitung oder den Nutzungsbedingungen beantworten die folgenden Seiten. Technische Probleme kannst du dem SkillPilot-Team melden.',
     privacy: 'Datenschutz',
-    legal: 'Rechtliches',
+    legal: 'Nutzungsbedingungen',
     contact: 'support@skillpilot.com',
   },
 }
@@ -382,9 +382,9 @@ const englishCopy: FaqViewCopy = {
   ],
   moreInformation: {
     title: 'More information',
-    text: 'The following pages answer questions about data processing and legal notices. You can report technical problems to the SkillPilot team.',
+    text: 'The following pages answer questions about data processing and the Terms of Use. You can report technical problems to the SkillPilot team.',
     privacy: 'Privacy',
-    legal: 'Legal',
+    legal: 'Terms of Use',
     contact: 'support@skillpilot.com',
   },
 }

@@ -82,7 +82,7 @@ const repositoryLegalCopy = readFileSync(
 )
 const extractGermanAiSection = (markdown: string) => {
   const match = markdown.match(
-    /## KI-Transparenz\n\n([\s\S]*?)(?=\n## )/u,
+    /## KI-Transparenz\n\n([\s\S]*?)(?=\n## |\s*$)/u,
   )
   return (match?.[1].trim() ?? '').replace(
     'https://skillpilot.com/privacy',
@@ -107,9 +107,11 @@ assert(
   'German runtime and repository legal copy use the same AI-transparency section',
 )
 assert(
-  germanLegalCopy.includes('Dieser Hinweis begründet keinen Haftungsverzicht')
-    && englishLegalCopy.includes('does not constitute a waiver of liability'),
-  'legal copy separates transparency from a liability waiver in both languages',
+  germanLegalCopy.includes('Die gesetzlichen Rechte bei Mängeln')
+    && germanLegalCopy.includes('Vorsatz und grober Fahrlässigkeit')
+    && englishLegalCopy.includes('Statutory rights concerning defective performance')
+    && englishLegalCopy.includes('intent and gross negligence'),
+  'legal copy preserves statutory remedies and differentiated liability in both languages',
 )
 
 console.log('AI transparency UI tests passed')

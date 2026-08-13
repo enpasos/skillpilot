@@ -164,7 +164,7 @@ export const de = {
         footer: {
             privacy: "Datenschutz",
             imprint: "Impressum",
-            legal: "Rechtliches"
+            legal: "Nutzungsbedingungen"
         }
     },
     statsHub: {

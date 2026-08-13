@@ -81,7 +81,7 @@ PINNED_HELPER_SHA256 = {
     "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
-    "scripts/package_consumer_browser_smoke.cjs": "b5fae928700ba0092a599a854322598a228be8716e84407f1a0d2b4a62a47b05",
+    "scripts/package_consumer_browser_smoke.cjs": "380c80e9211f026a3fae5e521a2d2f681715a08244a092b05f500862828e129f",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
     "scripts/package_consumer_smoke_http.py": "d9617437722a6a651f35f1e8e614e98db4569e97d9ff519a9e10d2c70101acbb",
