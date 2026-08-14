@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Video Fixture</title>
+    <style>
+      :root { font-family: Inter, system-ui, sans-serif; color: #172033; background: #f5f7fb; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; }
+      main { width: min(760px, calc(100vw - 64px)); padding: 56px; background: white; border-radius: 24px; box-shadow: 0 18px 70px #20305022; }
+      h1 { font-size: 48px; margin: 0 0 16px; }
+      p { font-size: 22px; line-height: 1.5; }
+      label { display: grid; gap: 8px; margin: 32px 0; font-weight: 700; }
+      input { font: inherit; padding: 14px; border: 2px solid #bac5d8; border-radius: 10px; }
+      button { font: 700 20px/1 system-ui; padding: 16px 24px; border: 0; border-radius: 12px; background: #f59e0b; color: #241700; cursor: pointer; }
+      #result { margin-top: 28px; padding: 20px; background: #e9f9f1; border-radius: 12px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Browser Demo Video</h1>
+      <p>Declarative scenarios become reproducible, narrated product videos.</p>
+      <label>Private reference <input id="secret" value=""></label>
+      <button type="button" id="run">Run scenario</button>
+      <div id="result" hidden>Scenario completed successfully.</div>
+    </main>
+    <script>
+      const showResultFromLocation = () => {
+        document.querySelector('#result').hidden = window.location.hash !== '#complete';
+      };
+      showResultFromLocation();
+      window.addEventListener('hashchange', showResultFromLocation);
+      document.querySelector('#run').addEventListener('click', () => {
+        const popup = window.open('', '_blank');
+        if (!popup) throw new Error('Demo popup was blocked');
+        window.setTimeout(() => popup.location.replace(`${window.location.href.split('#')[0]}#complete`), 50);
+      });
+    </script>
+  </body>
+</html>

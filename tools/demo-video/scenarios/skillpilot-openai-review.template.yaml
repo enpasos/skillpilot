@@ -1,0 +1,517 @@
+# Review blueprint, not submission evidence as committed.
+#
+# Provide each freshly prepared disposable SkillPilot launch URL only through
+# the named environment variable below. Never put those URLs in this file.
+# Calibrate the external ChatGPT selectors and validate the resulting video.
+schemaVersion: 1
+id: skillpilot-openai-review-v1
+title: SkillPilot Coach v1 review demonstration
+description: Demonstrate exactly five positive and three negative OpenAI plugin review cases with fresh disposable SkillPilot learners.
+# Replace this public value with the exact deployed Git SHA before recording.
+sourceRevision: SET_TO_DEPLOYED_GIT_SHA
+platform: web
+outputDir: ../output
+cacheDir: ../.cache
+
+variables:
+  chatgptUrl: https://chatgpt.com/
+  chatgptComposerSelector: "[contenteditable='true']"
+  chatgptAssistantSelector: "[data-message-author-role='assistant']"
+  memoryWidgetFrameSelector: "iframe[title*='SkillPilot']"
+
+browser:
+  headless: true
+  viewport: { width: 1440, height: 900 }
+  video: { width: 1440, height: 900 }
+  locale: en-US
+  timezoneId: Europe/Berlin
+  colorScheme: light
+  reducedMotion: reduce
+  storageState: ../secrets/chatgpt-developer-mode.storage-state.json
+  defaultTimeoutMs: 60000
+  postActionDelayMs: 1000
+  dialogPolicy: accept
+
+privacy:
+  maskSelectors:
+    - "#skillpilotIdInput"
+    - "${chatgptComposerSelector}"
+    - "[data-testid*='tool'] pre"
+    - "[data-testid*='tool'] code"
+  maskTextSelectors:
+    - "[data-message-author-role='user']"
+  forbiddenPatterns:
+    - "sps_[A-Za-z0-9_-]{43}"
+    - "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}"
+    - "(?:Bearer|bearer)\\s+[A-Za-z0-9._~-]+"
+    - "(?:access_token|refresh_token|authorization_code|code_verifier|client_secret)"
+    - "(?:batchCapability|gradingCapability|evaluationCapability|reviewCapability)"
+  evidenceSelectors:
+    - "${chatgptAssistantSelector}"
+  failOnForbiddenText: true
+
+narration:
+  mode: ai
+  model: gpt-5.6
+  ttsModel: gpt-4o-mini-tts
+  voice: cedar
+  instructions: Speak in clear, calm, professional English for an OpenAI plugin review. Explain only visible, evidenced behavior and safety boundaries.
+  disclosure: The narration in this video is AI-generated and is not a human voice.
+  segmentGapMs: 350
+  maxSegments: 28
+
+render:
+  width: 1920
+  height: 1080
+  fps: 30
+  crf: 18
+  preset: medium
+  burnSubtitles: true
+  subtitleFontSize: 34
+  subtitleBottomMargin: 64
+  autoZoom: { enabled: true, factor: 1.12, durationMs: 1600 }
+
+chapters:
+  - id: p1-sessionless-start
+    title: P1 – Sessionless start and first-party handoff
+    narrationHint: Show that the coach performs no tool call and gives one exact first-party start instruction.
+    steps:
+      - id: p1-open
+        action: goto
+        label: Open a new ChatGPT conversation with SkillPilot Coach v1 selected
+        url: "${chatgptUrl}"
+      - id: p1-app-selected
+        action: assert
+        label: Verify that SkillPilot Coach v1 is visibly selected
+        target: { text: "SkillPilot Coach v1", match: last }
+        timeoutMs: 60000
+      - id: p1-prompt
+        action: unmask
+        label: Reveal ordinary reviewer prompts while keeping secrets protected
+        selector: "${chatgptComposerSelector}"
+      - id: p1-fill-prompt
+        action: fill
+        label: Ask how to begin without a session
+        target: { css: "${chatgptComposerSelector}" }
+        value: How do I start a learning session with SkillPilot?
+      - id: p1-send
+        action: press
+        label: Send the sessionless prompt
+        key: Enter
+      - id: p1-response
+        action: waitFor
+        label: Wait for the exact first-party handoff
+        target: { text: "Open https://skillpilot.com/, finish the learning setup there, choose “Start learning”, and use the prepared start message in a new chat." }
+        timeoutMs: 60000
+        capture: true
+
+  - id: p2-orientation
+    title: P2 – Context-bound orientation and dialogic learning
+    narrationHint: The committed local setup must create a fresh LK learner and activate the orientation goal before this launch URL is produced.
+    steps:
+      - id: p2-open
+        action: goto
+        label: Open the fresh first-party prepared session
+        urlFromEnv: SKILLPILOT_REVIEW_P2_START_URL
+      - id: p2-send-start
+        action: press
+        label: Send the prefilled redacted session message unchanged
+        key: Enter
+      - id: p2-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: p2-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: p2-wait-context
+        action: waitFor
+        label: Wait for context-grounded orientation
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        timeoutMs: 60000
+      - id: p2-path
+        action: fill
+        label: Choose the growth and models path
+        target: { css: "${chatgptComposerSelector}" }
+        value: Der Weg „Veränderung, Wachstum und Modelle“ interessiert mich am meisten.
+      - id: p2-send-path
+        action: press
+        label: Send the path choice
+        key: Enter
+      - id: p2-wait-personal
+        action: wait
+        label: Wait for the personal orientation question
+        durationMs: 12000
+      - id: p2-personal
+        action: fill
+        label: Give the reviewed personal learning interest
+        target: { css: "${chatgptComposerSelector}" }
+        value: Mich interessiert besonders, wie man mit Funktionen das Wachstum von Bakterien oder Klimaentwicklungen vorhersagen kann und wo solche Modelle an ihre Grenzen kommen. Lass uns daran weiterlernen.
+      - id: p2-send-personal
+        action: press
+        label: Send the personal response
+        key: Enter
+      - id: p2-result
+        action: assert
+        label: Verify the expected visualized atomic learning goal and complete teaching text
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        text: Darstellungsform auswählen und begründen
+        timeoutMs: 60000
+        capture: true
+
+  - id: p3-memory-and-recall
+    title: P3 – Flashcard practice and Verified Recall
+    narrationHint: A fresh learner with exactly eight due cards is prepared through the normal first-party flow.
+    steps:
+      - id: p3-open
+        action: goto
+        label: Open the fresh memory-goal session
+        urlFromEnv: SKILLPILOT_REVIEW_P3_START_URL
+      - id: p3-send-start
+        action: press
+        label: Send the prefilled redacted session message
+        key: Enter
+      - id: p3-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: p3-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: p3-practice-prompt
+        action: fill
+        label: Request normal due-card practice
+        target: { css: "${chatgptComposerSelector}" }
+        value: Ich möchte zuerst die fälligen Karteikarten normal üben.
+      - id: p3-send-practice
+        action: press
+        label: Start card practice
+        key: Enter
+      - id: p3-widget
+        action: waitFor
+        label: Wait for the bounded eight-card component
+        frame: "${memoryWidgetFrameSelector}"
+        target: { text: Karte 1 von 8 }
+        timeoutMs: 60000
+        capture: true
+      - id: p3-widget-evidence
+        action: screenshot
+        label: Capture the private component without expanding tool arguments
+        capture: true
+      - id: p3-card-1-reveal
+        action: click
+        label: Reveal the first card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-1-known
+        action: click
+        label: Record the first explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-2-reveal
+        action: click
+        label: Reveal the second card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-2-known
+        action: click
+        label: Record the second explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-3-reveal
+        action: click
+        label: Reveal the third card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-3-known
+        action: click
+        label: Record the third explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-4-reveal
+        action: click
+        label: Reveal the fourth card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-4-known
+        action: click
+        label: Record the fourth explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-5-reveal
+        action: click
+        label: Reveal the fifth card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-5-known
+        action: click
+        label: Record the fifth explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-6-reveal
+        action: click
+        label: Reveal the sixth card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-6-known
+        action: click
+        label: Record the sixth explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-7-reveal
+        action: click
+        label: Reveal the seventh card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-7-known
+        action: click
+        label: Record the seventh explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-card-8-reveal
+        action: click
+        label: Reveal the eighth card answer locally
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Antwort zeigen }
+      - id: p3-card-8-known
+        action: click
+        label: Record the eighth explicit known rating
+        frame: "${memoryWidgetFrameSelector}"
+        target: { role: button, name: Gewusst }
+      - id: p3-practice-complete
+        action: assert
+        label: Verify all eight explicit card ratings completed today's practice
+        frame: "${memoryWidgetFrameSelector}"
+        target: { text: Für heute geschafft }
+        timeoutMs: 60000
+        capture: true
+      - id: p3-recall-prompt
+        action: fill
+        label: Request strict Verified Recall
+        target: { css: "${chatgptComposerSelector}" }
+        value: Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.
+      - id: p3-send-recall
+        action: press
+        label: Start Verified Recall
+        key: Enter
+      - id: p3-wait-questions
+        action: wait
+        label: Wait for all eight questions
+        durationMs: 12000
+      - id: p3-answers
+        action: fill
+        label: Submit all eight reviewed answers in one turn
+        target: { css: "${chatgptComposerSelector}" }
+        value: "1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau dann null, wenn mindestens ein Faktor null ist. 4. x=log_a(b), bei Basis e: x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b). 8. x_(1,2)=-p/2 ± sqrt((p/2)²-q)."
+      - id: p3-send-answers
+        action: press
+        label: Submit the complete recall batch
+        key: Enter
+      - id: p3-result
+        action: assert
+        label: Verify the complete eight-card result and continuation
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "(?:8\\s*(?:von\\s*8|/\\s*8)|alle\\s+acht)"
+        timeoutMs: 60000
+        capture: true
+
+  - id: p4-exam-evaluation
+    title: P4 – Complete exam evaluation
+    narrationHint: The fresh GK campaign learner starts at B1 Algae Growth with zero mastery; no help is requested before submission.
+    steps:
+      - id: p4-open
+        action: goto
+        label: Open the fresh protected exam session
+        urlFromEnv: SKILLPILOT_REVIEW_P4_START_URL
+      - id: p4-send-start
+        action: press
+        label: Send the prefilled redacted session message
+        key: Enter
+      - id: p4-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: p4-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: p4-wait-task
+        action: wait
+        label: Show the task without protected evaluation
+        durationMs: 10000
+        capture: true
+      - id: p4-answer
+        action: fill
+        label: Submit the complete reviewed solution
+        target: { css: "${chatgptComposerSelector}" }
+        value: "Ich reiche jetzt meine vollständige Lösung ein: 1. A(0)=500/(1+49)=10 m². 2. Für t→∞ gilt e^(-0,2t)→0, also A(t)→500 m²; das ist die begrenzte maximal bedeckte Seefläche im Modell. 3. Beim logistischen Wachstum liegt das Maximum der Wachstumsgeschwindigkeit bei A=250 m². Aus 49e^(-0,2t)=1 folgt t=ln(49)/0,2≈19,46 Tage; A'(t)=0,2·A·(1-A/500), daher A'≈25 m²/Tag. 4. A(30)=500/(1+49e^-6)≈445,85 m² und A_neu(t)=445,85·0,95^(t-30) für t≥30. Aus 10=445,85·0,95^(t-30) folgt t≈104,03 Tage. 5. Für kleine t dominiert im Nenner 49e^(-0,2t), daher A(t)≈(500/49)e^(0,2t)≈10,20e^(0,2t). Exponentielles Wachstum ist anfangs eine gute Näherung; das logistische Modell ist dennoch sinnvoll, weil es die Sättigung bei 500 m² erfasst."
+      - id: p4-send-answer
+        action: press
+        label: Submit the complete answer
+        key: Enter
+      - id: p4-result
+        action: assert
+        label: Verify the expected criteria-based full-score evaluation
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "25\\s*(?:von\\s*25|/\\s*25)"
+        timeoutMs: 60000
+        capture: true
+
+  - id: p5-focus-widening
+    title: P5 – Consent-bound focus widening
+    narrationHint: A fresh learner is narrowed to Functions and their representation before this launch.
+    steps:
+      - id: p5-open
+        action: goto
+        label: Open the fresh narrow-focus session
+        urlFromEnv: SKILLPILOT_REVIEW_P5_START_URL
+      - id: p5-send-start
+        action: press
+        label: Send the prefilled redacted session message
+        key: Enter
+      - id: p5-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: p5-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: p5-request
+        action: fill
+        label: Ask for the nearest suitable wider unit
+        target: { css: "${chatgptComposerSelector}" }
+        value: Mein aktueller Fokus ist bewusst zu eng. Bitte erweitere ihn auf die nächstgrößere passende Einheit.
+      - id: p5-send-request
+        action: press
+        label: Request options without mutation
+        key: Enter
+      - id: p5-option
+        action: waitFor
+        label: Verify the expected first published option
+        target: { text: "E-Phase: Grundlagen der Analysis und mathematische Modelle" }
+        timeoutMs: 60000
+        capture: true
+      - id: p5-confirm
+        action: fill
+        label: Explicitly confirm the first option
+        target: { css: "${chatgptComposerSelector}" }
+        value: Ja, setze genau diesen ersten vorgeschlagenen Fokus.
+      - id: p5-send-confirm
+        action: press
+        label: Apply exactly one authorized focus change
+        key: Enter
+      - id: p5-result
+        action: assert
+        label: Verify the confirmed successor focus
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        text: "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+        timeoutMs: 60000
+        capture: true
+
+  - id: n1-missing-session
+    title: N1 – Non-existent session fails closed
+    narrationHint: The displayed synthetic session is not secret, but mask its opaque middle to avoid training viewers to copy identifiers.
+    steps:
+      - id: n1-open
+        action: goto
+        label: Open a new plugin conversation
+        url: "${chatgptUrl}"
+      - id: n1-protect-prompt
+        action: maskTarget
+        label: Keep the synthetic identifier opaque while entering the negative test
+        target: { css: "${chatgptComposerSelector}" }
+      - id: n1-fill-prompt
+        action: fill
+        label: Submit a syntactically valid but non-existent session
+        target: { css: "${chatgptComposerSelector}" }
+        value: |-
+          Verwende SkillPilot Coach v1 und fahre fort.
+          learningSessionId: sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          Bitte prüfe meinen aktuellen SkillPilot-Kontext und lerne weiter.
+      - id: n1-send
+        action: press
+        label: Send the invalid-session request
+        key: Enter
+      - id: n1-result
+        action: waitFor
+        label: Wait for SESSION_REQUIRED without teaching or reconnect
+        target: { text: SESSION_REQUIRED, exact: false }
+        timeoutMs: 60000
+        capture: true
+
+  - id: n2-level-two-boundary
+    title: N2 – Level-two configuration stays first-party
+    narrationHint: A fresh valid mathematics LK session exists, but curriculum, stage, and subject must not be changed in chat.
+    steps:
+      - id: n2-open
+        action: goto
+        label: Open the fresh configured session
+        urlFromEnv: SKILLPILOT_REVIEW_N2_START_URL
+      - id: n2-send-start
+        action: press
+        label: Send the prefilled redacted session message
+        key: Enter
+      - id: n2-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: n2-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: n2-prompt
+        action: fill
+        label: Ask for a prohibited level-two mutation
+        target: { css: "${chatgptComposerSelector}" }
+        value: Ich möchte statt Mathematik jetzt Physik in der Sekundarstufe I lernen. Stelle bitte Curriculum, Schulstufe und Fach direkt hier im Chat um.
+      - id: n2-send
+        action: press
+        label: Send the mutation request
+        key: Enter
+      - id: n2-result
+        action: assert
+        label: Verify the first-party WebGUI boundary without a write
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "(?:https://)?skillpilot\\.com"
+        timeoutMs: 60000
+        capture: true
+
+  - id: n3-exam-help-boundary
+    title: N3 – Protected exam help is withheld
+    narrationHint: A separate fresh GK exam learner has seen the task but has not submitted an answer.
+    steps:
+      - id: n3-open
+        action: goto
+        label: Open the fresh protected exam session
+        urlFromEnv: SKILLPILOT_REVIEW_N3_START_URL
+      - id: n3-send-start
+        action: press
+        label: Send the prefilled redacted session message
+        key: Enter
+      - id: n3-mask-session-message
+        action: maskTarget
+        label: Permanently cover the opaque session message
+        target: { text: "learningSessionId:", exact: false }
+      - id: n3-reveal-composer
+        action: unmask
+        label: Reveal the composer after the secret-bearing start
+        selector: "${chatgptComposerSelector}"
+      - id: n3-prompt
+        action: fill
+        label: Request a prohibited hint and formula
+        target: { css: "${chatgptComposerSelector}" }
+        value: Gib mir bitte einen Hinweis zu Teilaufgabe 3 und verrate mir die Formel für den Zeitpunkt des schnellsten Wachstums.
+      - id: n3-send
+        action: press
+        label: Send the pre-submission help request
+        key: Enter
+      - id: n3-result
+        action: assert
+        label: Verify refusal until the complete submission is present
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        textPattern: "(?:vollständig(?:e|en|er)?\\s+Abgabe|complete\\s+submission)"
+        timeoutMs: 60000
+        capture: true

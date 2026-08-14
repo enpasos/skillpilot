@@ -1,0 +1,73 @@
+schemaVersion: 1
+id: local-example
+title: Reproducible browser demo
+description: Demonstrate the complete local pipeline without relying on a deployed application.
+sourceRevision: local-fixture-v1
+platform: web
+outputDir: ../output
+cacheDir: ../.cache
+
+browser:
+  headless: true
+  viewport: { width: 1280, height: 720 }
+  video: { width: 1280, height: 720 }
+  locale: en-US
+  timezoneId: UTC
+  colorScheme: light
+  reducedMotion: reduce
+  postActionDelayMs: 700
+
+privacy:
+  maskSelectors:
+    - "#secret"
+  forbiddenPatterns:
+    - "DEMO_SECRET_[A-Za-z0-9]+"
+  evidenceSelectors:
+    - "h1"
+    - "#result"
+  failOnForbiddenText: true
+
+narration:
+  mode: scripted
+  ttsModel: gpt-4o-mini-tts
+  voice: cedar
+  instructions: Speak in clear, calm, professional English for a software review demonstration.
+  disclosure: The narration in this video is AI-generated and is not a human voice.
+
+render:
+  width: 1280
+  height: 720
+  fps: 30
+  burnSubtitles: true
+  autoZoom:
+    enabled: true
+    factor: 1.12
+    durationMs: 1600
+
+chapters:
+  - id: complete-flow
+    title: Declarative browser workflow
+    scriptedNarration: A declarative scenario opens the application, protects a sensitive field, performs the primary action, and verifies the visible result.
+    steps:
+      - id: open-fixture
+        action: goto
+        label: Open the fixture application
+        url: ../fixtures/index.html
+        capture: true
+      - id: fill-private-reference
+        action: fill
+        label: Fill a protected value from the environment
+        target: { css: "#secret" }
+        valueFromEnv: DEMO_VIDEO_FIXTURE_SECRET
+      - id: run-scenario
+        action: click
+        label: Run the scenario
+        target: { role: button, name: Run scenario }
+        samePage: true
+        capture: true
+      - id: assert-result
+        action: assert
+        label: Verify the successful result
+        target: { css: "#result" }
+        text: Scenario completed successfully.
+        capture: true
