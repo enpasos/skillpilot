@@ -1,6 +1,6 @@
 import { chmod, mkdir, mkdtemp, rm } from "node:fs/promises";
 import { join } from "node:path";
-import { type Page } from "playwright";
+import { type Page, type Video } from "playwright";
 import { launchScenarioBrowserSession, type ScenarioBrowserSession } from "./browser-session.js";
 import { resolveLocator } from "./locator.js";
 import { ensurePrivateDirectory, ensurePrivateFile } from "./private-fs.js";
@@ -28,6 +28,47 @@ function resolveUrl(url: string, baseUrl?: string): string {
   if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
   if (!baseUrl) throw new Error(`Relative URL ${JSON.stringify(url)} needs browser.baseUrl`);
   return new URL(url, baseUrl).toString();
+}
+
+/**
+ * Finalize the page-owned video while the Playwright connection is still
+ * alive. Video.saveAs() is valid after the page closes, but not after the
+ * surrounding browser session has disconnected.
+ */
+export async function finalizeRecordingSession(
+  page: Pick<Page, "close"> | undefined,
+  video: Pick<Video, "saveAs" | "delete"> | null | undefined,
+  outputPath: string,
+  session: Pick<ScenarioBrowserSession, "close"> | undefined,
+): Promise<void> {
+  const errors: unknown[] = [];
+  let pageClosed = page === undefined;
+  try {
+    await page?.close();
+    pageClosed = true;
+  } catch (error) {
+    errors.push(error);
+  }
+
+  if (video && pageClosed) {
+    try {
+      await video.saveAs(outputPath);
+    } catch (error) {
+      errors.push(error);
+    }
+    await video.delete().catch(() => undefined);
+  }
+
+  try {
+    await session?.close();
+  } catch (error) {
+    errors.push(error);
+  }
+
+  if (errors.length === 1) throw errors[0];
+  if (errors.length > 1) {
+    throw new AggregateError(errors, "Recording finalization was incomplete");
+  }
 }
 
 export class PlaywrightRecordingAdapter implements RecordingAdapter {
@@ -130,18 +171,9 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
     } catch (error) {
       failure = error;
     } finally {
-      await page?.close().catch((error) => {
+      await finalizeRecordingSession(page, video, temporaryVideoPath, session).catch((error) => {
         if (!failure) failure = error;
       });
-      await session?.close().catch((error) => {
-        if (!failure) failure = error;
-      });
-      if (video) {
-        await video.saveAs(temporaryVideoPath).catch((error) => {
-          if (!failure) failure = error;
-        });
-        await video.delete().catch(() => undefined);
-      }
     }
 
     try {
