@@ -353,7 +353,8 @@ chmod 700 /home/enpasos/projects/skillpilot/tools/demo-video/secrets/chatgpt-log
 
 # Create this file with a local editor. Never paste its values into a shell
 # command, commit it, or include it in the screen recording.
-install -m 600 /dev/null /home/enpasos/projects/skillpilot/tools/demo-video/secrets/skillpilot-review.json
+test -e /home/enpasos/projects/skillpilot/tools/demo-video/secrets/skillpilot-review.json || \
+  install -m 600 /dev/null /home/enpasos/projects/skillpilot/tools/demo-video/secrets/skillpilot-review.json
 vi /home/enpasos/projects/skillpilot/tools/demo-video/secrets/skillpilot-review.json
 
 # Strict private file shape (insert the real OpenAI API key):
@@ -413,7 +414,7 @@ ledger; a later preflight retries that ledger before any external browser
 checks or new fixture generation and removes it after successful cleanup. The
 profile snapshot carries a private process-ownership marker; a later run removes
 only a well-formed abandoned snapshot from a process known to be dead on the
-same host.
+same host and only after Chromium's own profile lock has disappeared.
 
 One unavoidable boundary remains in the current public CREATE contract: if the
 server commits a learner but its response is lost before the client receives

@@ -160,6 +160,15 @@ async function preflightPreparedSkillPilotReviewBuild(
   options: PipelineOptions,
   dependencies: SkillPilotReviewBuildDependencies,
 ): Promise<SkillPilotReviewPreflightResult> {
+  if (options.scenario.platform !== "web") {
+    throw new Error("SkillPilot v1 review supports exactly the ChatGPT browser Web surface");
+  }
+  if (options.scenario.platformClips.length !== 0) {
+    throw new Error("SkillPilot v1 browser-only review must not append native platform clips");
+  }
+  if (options.scenario.browser.userAgent !== undefined) {
+    throw new Error("SkillPilot v1 review must use Chromium's ordinary user agent without spoofing");
+  }
   const usesPersistentProfile = Boolean(options.scenario.browser.persistentProfilePathFromEnv);
   if (options.scenario.browser.storageState) {
     throw new Error("SkillPilot v1 review requires a run-owned persistent-profile snapshot, not browser.storageState");
