@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import { runProcess } from "./process.js";
+import { runProcess, safeChildEnvironment } from "./process.js";
 import type { DemoScenario } from "./types.js";
 
 export interface DoctorCheck {
@@ -14,6 +14,10 @@ export interface FfmpegRenderCapabilities {
   subtitles: boolean;
 }
 
+export interface DoctorOptions {
+  openAiApiKeyConfigured?: boolean;
+}
+
 export function inspectFfmpegRenderCapabilities(
   encodersOutput: string,
   filtersOutput: string,
@@ -26,7 +30,10 @@ export function inspectFfmpegRenderCapabilities(
   };
 }
 
-export async function runDoctor(scenario: DemoScenario): Promise<DoctorCheck[]> {
+export async function runDoctor(
+  scenario: DemoScenario,
+  options: DoctorOptions = {},
+): Promise<DoctorCheck[]> {
   const checks: DoctorCheck[] = [];
   for (const [name, executable] of [
     ["ffmpeg", scenario.binaries.ffmpeg],
@@ -62,7 +69,10 @@ export async function runDoctor(scenario: DemoScenario): Promise<DoctorCheck[]> 
     checks.push({ name: "ffmpeg-render-features", ok: false, detail: String(error) });
   }
   try {
-    const browser = await chromium.launch({ headless: true });
+    const browser = await chromium.launch({
+      headless: true,
+      env: safeChildEnvironment(),
+    });
     checks.push({ name: "playwright-chromium", ok: true, detail: browser.version() });
     await browser.close();
   } catch (error) {
@@ -72,10 +82,12 @@ export async function runDoctor(scenario: DemoScenario): Promise<DoctorCheck[]> 
       detail: `${String(error)} Run: npx playwright install chromium`,
     });
   }
+  const openAiApiKeyConfigured = options.openAiApiKeyConfigured
+    ?? Boolean(process.env.OPENAI_API_KEY);
   checks.push({
     name: "openai-api-key",
-    ok: Boolean(process.env.OPENAI_API_KEY),
-    detail: process.env.OPENAI_API_KEY
+    ok: openAiApiKeyConfigured,
+    detail: openAiApiKeyConfigured
       ? "configured"
       : "OPENAI_API_KEY is missing; recording alone still works, but TTS and a complete build do not",
   });

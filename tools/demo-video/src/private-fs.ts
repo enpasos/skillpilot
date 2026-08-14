@@ -101,9 +101,32 @@ export async function writePrivateFile(
 
 export async function assertPrivateInputFile(path: string, label: string): Promise<void> {
   await rejectSymlinkComponents(path);
-  const metadata = await lstat(path);
+  const metadata = await lstat(path).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") throw new Error(`${label} does not exist: ${path}`);
+    throw error;
+  });
   if (metadata.isSymbolicLink() || !metadata.isFile()) {
     throw new Error(`${label} must be a regular non-symlink file`);
+  }
+  if (process.platform !== "win32") {
+    const currentUid = process.getuid?.();
+    if (currentUid !== undefined && metadata.uid !== currentUid) {
+      throw new Error(`${label} must be owned by the current user`);
+    }
+    if ((metadata.mode & 0o077) !== 0) {
+      throw new Error(`${label} must not be accessible by group or others`);
+    }
+  }
+}
+
+export async function assertPrivateInputDirectory(path: string, label: string): Promise<void> {
+  await rejectSymlinkComponents(path);
+  const metadata = await lstat(path).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") throw new Error(`${label} does not exist: ${path}`);
+    throw error;
+  });
+  if (metadata.isSymbolicLink() || !metadata.isDirectory()) {
+    throw new Error(`${label} must be a directory reached without symbolic links`);
   }
   if (process.platform !== "win32") {
     const currentUid = process.getuid?.();

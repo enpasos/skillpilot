@@ -30,7 +30,7 @@ test("fails early for an invalid privacy regular expression", () => {
 
 test("redacts exact runtime secrets and fails closed before artifact publication", () => {
   const config = {
-    maskSelectors: [], maskTextSelectors: [], maskLabel: "REDACTED", maskColor: "#111111",
+    maskSelectors: [], requiredMaskSelectors: [], maskTextSelectors: [], maskLabel: "REDACTED", maskColor: "#111111",
     forbiddenPatterns: ["sps_[A-Za-z0-9_-]+"], evidenceSelectors: [], failOnForbiddenText: true,
   };
   assert.equal(redactSensitiveText("URL=private-url", config, ["private-url"]), "URL=[REDACTED]");

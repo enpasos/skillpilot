@@ -50,9 +50,16 @@ export async function loadScenario(path: string): Promise<DemoScenario> {
     privacy: {
       ...parsed.privacy,
       maskSelectors: parsed.privacy.maskSelectors.map((selector) => interpolateVariables(selector, variables)),
+      requiredMaskSelectors: parsed.privacy.requiredMaskSelectors.map((selector) => interpolateVariables(selector, variables)),
       maskTextSelectors: parsed.privacy.maskTextSelectors.map((selector) => interpolateVariables(selector, variables)),
       evidenceSelectors: parsed.privacy.evidenceSelectors.map((selector) => interpolateVariables(selector, variables)),
     },
+    platformClips: parsed.platformClips.map((clip) => ({
+      ...clip,
+      ...(clip.path
+        ? { path: resolveMaybeRelative(baseDir, interpolateVariables(clip.path, variables)) }
+        : {}),
+    })),
     chapters,
   };
 }
@@ -124,7 +131,24 @@ export function redactedScenario(scenario: DemoScenario): unknown {
       ...scenario.browser,
       ...(scenario.browser.baseUrl ? { baseUrl: "[CONFIGURED_URL]" } : {}),
       ...(scenario.browser.storageState ? { storageState: "[PROTECTED_STORAGE_STATE_PATH]" } : {}),
+      ...(scenario.browser.persistentProfilePathFromEnv
+        ? { persistentProfilePathFromEnv: `[ENV:${scenario.browser.persistentProfilePathFromEnv}]` }
+        : {}),
     },
+    platformClips: scenario.platformClips.map((clip) => ({
+      ...clip,
+      ...(clip.path ? { path: "[PROTECTED_PLATFORM_CLIP_PATH]" } : {}),
+      ...(clip.pathFromEnv ? { pathFromEnv: `[ENV:${clip.pathFromEnv}]` } : {}),
+      ...(clip.expectedSha256FromEnv
+        ? { expectedSha256FromEnv: `[ENV:${clip.expectedSha256FromEnv}]` }
+        : {}),
+      ...(clip.sourceRevisionFromEnv
+        ? { sourceRevisionFromEnv: `[ENV:${clip.sourceRevisionFromEnv}]` }
+        : {}),
+      ...(clip.privacyReviewedFromEnv
+        ? { privacyReviewedFromEnv: `[ENV:${clip.privacyReviewedFromEnv}]` }
+        : {}),
+    })),
     chapters: scenario.chapters.map((chapter) => ({
       ...chapter,
       steps: chapter.steps.map((step) => {

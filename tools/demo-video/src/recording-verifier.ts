@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { chromium, type Page } from "playwright";
 
 import { assertTextIsPrivate, configuredEnvironmentSecrets } from "./privacy.js";
+import { safeChildEnvironment } from "./process.js";
+import type { RuntimeEnvironment } from "./runtime-environment.js";
 import { readReusableRecording } from "./recording-cache.js";
 import type { DemoScenario, MaskRegion, TimelineEvent } from "./types.js";
 import { scenarioWorkDir } from "./workdir.js";
@@ -43,7 +45,7 @@ async function matchingPixels(
   dataUrl: string,
   color: [number, number, number],
   regions: MaskRegion[],
-): Promise<Array<{ area: number; matches: number; secret: boolean; configured: boolean }>> {
+): Promise<Array<{ area: number; matches: number; secret: boolean; configured: boolean; selector?: string }>> {
   return page.evaluate(async ({ source, target, masks }) => {
       const image = new Image();
       image.src = source;
@@ -69,7 +71,13 @@ async function matchingPixels(
             if (bytes[index] === target[0] && bytes[index + 1] === target[1] && bytes[index + 2] === target[2]) matches += 1;
           }
         }
-        return { area, matches, secret: mask.secret, configured: mask.configured };
+        return {
+          area,
+          matches,
+          secret: mask.secret,
+          configured: mask.configured,
+          ...(mask.selector ? { selector: mask.selector } : {}),
+        };
       });
     }, { source: dataUrl, target: color, masks: regions });
 }
@@ -86,11 +94,12 @@ export function requiredSecretCaptures(timeline: TimelineEvent[]): TimelineEvent
 export interface MaskVerificationSummary {
   capturedConfiguredMask: boolean;
   matchingMaskPixels: number;
+  opaqueConfiguredSelectors: string[];
 }
 
 export function verifyMaskEvidence(
   event: TimelineEvent,
-  results: Array<{ area: number; matches: number; secret: boolean; configured: boolean }>,
+  results: Array<{ area: number; matches: number; secret: boolean; configured: boolean; selector?: string }>,
   requiresSecretMask: boolean,
 ): MaskVerificationSummary {
   const opaque = results.filter((result) => result.area >= 20 && result.matches / result.area >= 0.5);
@@ -100,14 +109,31 @@ export function verifyMaskEvidence(
   return {
     capturedConfiguredMask: opaque.some((result) => result.configured),
     matchingMaskPixels: Math.max(...opaque.map((result) => result.matches), 0),
+    opaqueConfiguredSelectors: [...new Set(opaque.flatMap((result) => (
+      result.configured && result.selector ? [result.selector] : []
+    )))],
   };
 }
 
-export async function verifyPublishedRecording(scenario: DemoScenario): Promise<RecordingVerification> {
+export function assertRequiredMaskSelectors(
+  required: readonly string[],
+  captured: ReadonlySet<string>,
+): void {
+  for (const selector of required) {
+    if (!captured.has(selector)) {
+      throw new Error(`Required opaque mask selector was not visibly exercised: ${selector}`);
+    }
+  }
+}
+
+export async function verifyPublishedRecording(
+  scenario: DemoScenario,
+  environment?: RuntimeEnvironment,
+): Promise<RecordingVerification> {
   const workDir = scenarioWorkDir(scenario);
   const recording = await readReusableRecording(workDir);
   if (!recording) throw new Error("No complete, hash-consistent recording generation exists");
-  const environmentSecrets = configuredEnvironmentSecrets(scenario);
+  const environmentSecrets = configuredEnvironmentSecrets(scenario, environment);
   for (const path of [recording.timelinePath, join(workDir, "recording.json"), join(workDir, "analysis.json")]) {
     assertTextIsPrivate(await readFile(path, "utf8"), scenario.privacy, environmentSecrets, path);
   }
@@ -118,7 +144,11 @@ export async function verifyPublishedRecording(scenario: DemoScenario): Promise<
   const secretCaptures = new Set(requiredSecretCaptures(recording.timeline));
   let matchingMaskPixelCount = 0;
   let capturedConfiguredMask = false;
-  const browser = await chromium.launch({ headless: true });
+  const opaqueConfiguredSelectors = new Set<string>();
+  const browser = await chromium.launch({
+    headless: true,
+    env: safeChildEnvironment(),
+  });
   try {
     const page = await browser.newPage();
     for (const event of screenshotEvents) {
@@ -133,6 +163,9 @@ export async function verifyPublishedRecording(scenario: DemoScenario): Promise<
       const summary = verifyMaskEvidence(event, results, secretCaptures.has(event));
       matchingMaskPixelCount = Math.max(matchingMaskPixelCount, summary.matchingMaskPixels);
       if (summary.capturedConfiguredMask) capturedConfiguredMask = true;
+      for (const selector of summary.opaqueConfiguredSelectors) {
+        opaqueConfiguredSelectors.add(selector);
+      }
     }
   } finally {
     await browser.close();
@@ -141,5 +174,6 @@ export async function verifyPublishedRecording(scenario: DemoScenario): Promise<
       && !capturedConfiguredMask) {
     throw new Error("Configured opaque masks were not visibly exercised in the captured screenshots");
   }
+  assertRequiredMaskSelectors(scenario.privacy.requiredMaskSelectors, opaqueConfiguredSelectors);
   return { workDir, screenshots: screenshots.length, matchingMaskPixels: matchingMaskPixelCount };
 }

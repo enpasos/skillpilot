@@ -1,4 +1,5 @@
 import type { Locator, Page } from "playwright";
+import { runtimeEnvironmentSecrets, type RuntimeEnvironment } from "./runtime-environment.js";
 import type { DemoScenario, MaskRegion, PrivacyConfig, StepEvidence } from "./types.js";
 
 const redactorApiName = "__DEMO_VIDEO_REDACTOR__";
@@ -22,17 +23,11 @@ export function redactForbiddenText(text: string, patterns: RegExp[]): string {
   return patterns.reduce((redacted, pattern) => redacted.replace(pattern, "[REDACTED]"), text);
 }
 
-export function configuredEnvironmentSecrets(scenario: DemoScenario): string[] {
-  const environmentNames = new Set<string>();
-  for (const chapter of scenario.chapters) {
-    for (const step of chapter.steps) {
-      if (step.action === "fill" && step.valueFromEnv) environmentNames.add(step.valueFromEnv);
-      if (step.action === "goto" && step.urlFromEnv) environmentNames.add(step.urlFromEnv);
-    }
-  }
-  return [...environmentNames]
-    .map((name) => process.env[name])
-    .filter((value): value is string => Boolean(value));
+export function configuredEnvironmentSecrets(
+  scenario: DemoScenario,
+  environment?: RuntimeEnvironment,
+): string[] {
+  return runtimeEnvironmentSecrets(scenario, environment);
 }
 
 export function redactSensitiveText(
@@ -203,6 +198,7 @@ export async function collectVisibleMaskRegions(page: Page): Promise<MaskRegion[
       const overlay = overlays.nth(index);
       const box = await overlay.boundingBox();
       if (!box || box.width <= 0 || box.height <= 0) continue;
+      const selector = await overlay.getAttribute("data-demo-video-mask-selector");
       regions.push({
         x: box.x,
         y: box.y,
@@ -210,6 +206,7 @@ export async function collectVisibleMaskRegions(page: Page): Promise<MaskRegion[
         height: box.height,
         secret: await overlay.getAttribute("data-demo-video-secret-mask") === "true",
         configured: await overlay.getAttribute("data-demo-video-configured-mask") === "true",
+        ...(selector ? { selector } : {}),
       });
     }
   }

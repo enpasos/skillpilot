@@ -1,14 +1,17 @@
 import assert from "node:assert/strict";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, rm, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
 import {
   buildAutoZoomFilter,
+  buildFfmpegVideoCompositionPlan,
   buildFfmpegRenderPlan,
+  composeVideoClips,
   escapeFfmpegFilterPath,
   probeMediaDurationMs,
+  probeMediaStreamTypes,
   renderVideo,
   scheduleNarrationAudio,
 } from "../src/media.js";
@@ -71,6 +74,44 @@ test("creates a shell-free H.264/AAC/faststart render plan", () => {
   assert.match(plan.filterComplex, /tpad=stop_mode=clone/u);
   assert.match(plan.filterComplex, /trim=start=0\.000:end=2\.000/u);
   assert.match(plan.filterComplex, /concat=n=2:v=1:a=0\[vpaced\]/u);
+});
+
+test("creates a normalized, explicitly labeled Web and native clip composition plan", () => {
+  const plan = buildFfmpegVideoCompositionPlan({
+    sources: [
+      {
+        id: "web-playwright",
+        filePath: "/private/web.mp4",
+        audio: "preserve",
+        durationMs: 2_000,
+        hasAudio: true,
+        labelFilePath: "/private/labels/web.srt",
+      },
+      {
+        id: "native-ios",
+        filePath: "/private/ios.mov",
+        audio: "mute",
+        durationMs: 1_000,
+        hasAudio: true,
+        labelFilePath: "/private/labels/ios.srt",
+      },
+    ],
+    outputVideoPath: "/private/final.mp4",
+    width: 1_920,
+    height: 1_080,
+    fps: 30,
+  });
+
+  assert.equal(plan.outputDurationMs, 3_000);
+  assert.match(plan.filterComplex, /subtitles=filename=/u);
+  assert.match(plan.filterComplex, /Alignment=7/u);
+  assert.match(plan.filterComplex, /scale=w=1920:h=1080:force_original_aspect_ratio=decrease/u);
+  assert.match(plan.filterComplex, /anullsrc=channel_layout=stereo:sample_rate=48000/u);
+  assert.match(plan.filterComplex, /concat=n=2:v=1:a=1\[vout\]\[aout\]/u);
+  assert.equal(plan.args[plan.args.indexOf("-c:v") + 1], "libx264");
+  assert.equal(plan.args[plan.args.indexOf("-c:a") + 1], "aac");
+  assert.equal(plan.args[plan.args.indexOf("-map_metadata") + 1], "-1");
+  assert.equal(plan.args[plan.args.indexOf("-map_chapters") + 1], "-1");
 });
 
 test("escapes Windows-style filter paths without shell quoting", () => {
@@ -187,6 +228,58 @@ test("renders a synthetic clip with scheduled narration and burned captions", as
       tailPaddingMs: 0,
     });
     assert.ok(replacement.actualOutputDurationMs >= 900);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("normalizes and concatenates Web and muted native clips into one playable MP4", async (t) => {
+  if (!(await hasRequiredFfmpegFeatures())) {
+    t.skip("ffmpeg with libx264, AAC and subtitles support is not installed");
+    return;
+  }
+
+  const directory = await mkdtemp(path.join(os.tmpdir(), "demo-video-composition-"));
+  try {
+    const web = path.join(directory, "web.mp4");
+    const native = path.join(directory, "ios.mov");
+    const label = path.join(directory, "ios.srt");
+    const output = path.join(directory, "review.mp4");
+    await runProcess("ffmpeg", [
+      "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+      "-f", "lavfi", "-i", "color=c=0x203050:s=320x180:r=30:d=0.6",
+      "-f", "lavfi", "-i", "sine=frequency=440:sample_rate=48000:duration=0.6",
+      "-shortest", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", web,
+    ]);
+    await runProcess("ffmpeg", [
+      "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+      "-f", "lavfi", "-i", "color=c=0x805020:s=180x320:r=24:d=0.4",
+      "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", native,
+    ]);
+    await writeFile(
+      label,
+      "1\n00:00:00,000 --> 00:00:01,000\niOS — externally recorded native clip\n",
+      "utf8",
+    );
+
+    const result = await composeVideoClips({
+      sources: [
+        { id: "web-playwright", filePath: web, audio: "preserve" },
+        { id: "native-ios", filePath: native, audio: "mute", labelFilePath: label },
+      ],
+      outputVideoPath: output,
+      width: 640,
+      height: 360,
+      fps: 30,
+    });
+
+    assert.ok(result.actualOutputDurationMs >= 900);
+    assert.ok(result.actualOutputDurationMs <= 1_100);
+    assert.deepEqual(await probeMediaStreamTypes(output), { video: 1, audio: 1 });
+    assert.ok((await stat(output)).size > 0);
+    if (process.platform !== "win32") {
+      assert.equal((await stat(output)).mode & 0o077, 0);
+    }
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

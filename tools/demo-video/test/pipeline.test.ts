@@ -1,14 +1,49 @@
 import assert from "node:assert/strict";
-import { access, mkdir, mkdtemp, readFile, stat, writeFile } from "node:fs/promises";
+import { access, chmod, mkdir, mkdtemp, readFile, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
 import { loadScenario } from "../src/config.js";
+import { sha256File } from "../src/hash.js";
 import { runProcess } from "../src/process.js";
-import { buildPipeline, narrationStage, recordStage, renderStage, speechStage, type RecordStageResult } from "../src/pipeline.js";
+import {
+  assertSkillPilotBrowserOnlyNarration,
+  buildPipeline,
+  narrationStage,
+  recordStage,
+  renderStage,
+  speechStage,
+  type RecordStageResult,
+} from "../src/pipeline.js";
 import type { TtsOpenAIClient } from "../src/tts.js";
-import type { RecordingAdapter, RecordingContext } from "../src/types.js";
+import type { NarrationPlan, RecordingAdapter, RecordingContext } from "../src/types.js";
 import { scenarioWorkDir } from "../src/workdir.js";
+
+test("SkillPilot review narration cannot mention unsupported surfaces", async () => {
+  const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));
+  const plan: NarrationPlan = {
+    title: "SkillPilot browser review",
+    overview: "Visible browser evidence",
+    disclosure: scenario.narration.disclosure,
+    segments: [{
+      id: "segment",
+      chapterId: "p1-sessionless-start",
+      title: "Browser start",
+      text: "The SkillPilot Coach starts in ChatGPT in the browser.",
+      subtitle: "The SkillPilot Coach starts in ChatGPT in the browser.",
+      startAfterStepId: "p1-open",
+      desiredStartMs: 0,
+    }],
+  };
+  assert.doesNotThrow(() => assertSkillPilotBrowserOnlyNarration(scenario, plan));
+  assert.throws(
+    () => assertSkillPilotBrowserOnlyNarration(scenario, {
+      ...plan,
+      segments: [{ ...plan.segments[0]!, text: "This is a cross-platform coach." }],
+    }),
+    /must not mention unsupported surfaces/u,
+  );
+});
 
 test("recordStage injects an adapter and records fresh unless reuse is explicit", async () => {
   const directory = await mkdtemp(join(tmpdir(), "demo-video-adapter-"));
@@ -369,4 +404,125 @@ test("joins scripted narration, mocked OpenAI WAV speech, subtitles, and recorde
   assert.match(manifest.artifacts.narrationAudio[0]?.path ?? "", /^audio\/[0-9a-f]{64}\.wav$/u);
   assert.doesNotMatch(manifest.artifacts.narrationAudio[0]?.path ?? "", /(?:^|\/)\.\.(?:\/|$)/u);
   assert.doesNotMatch(manifestText, new RegExp(directory.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"));
+
+  const iosClip = join(directory, "reviewed-ios.mov");
+  const androidClip = join(directory, "reviewed-android.mp4");
+  await runProcess("ffmpeg", [
+    "-y", "-f", "lavfi", "-i", "color=c=0x604080:s=180x320:r=24:d=0.4",
+    "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", iosClip,
+  ]);
+  await runProcess("ffmpeg", [
+    "-y", "-f", "lavfi", "-i", "color=c=0x406080:s=180x320:r=30:d=0.4",
+    "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", androidClip,
+  ]);
+  await Promise.all([chmod(iosClip, 0o600), chmod(androidClip, 0o600)]);
+  const [iosSha256, androidSha256] = await Promise.all([
+    sha256File(iosClip),
+    sha256File(androidClip),
+  ]);
+  process.env.DEMO_VIDEO_PIPELINE_IOS_CLIP = iosClip;
+  process.env.DEMO_VIDEO_PIPELINE_IOS_SHA256 = iosSha256;
+  process.env.DEMO_VIDEO_PIPELINE_IOS_REVIEWED = "true";
+  process.env.DEMO_VIDEO_PIPELINE_ANDROID_CLIP = androidClip;
+  process.env.DEMO_VIDEO_PIPELINE_ANDROID_SHA256 = androidSha256;
+  process.env.DEMO_VIDEO_PIPELINE_ANDROID_REVIEWED = "true";
+  scenario.platformClips = [
+    {
+      id: "native-ios-core-flow",
+      title: "Core flow",
+      platform: "ios",
+      pathFromEnv: "DEMO_VIDEO_PIPELINE_IOS_CLIP",
+      expectedSha256FromEnv: "DEMO_VIDEO_PIPELINE_IOS_SHA256",
+      sourceRevision: "f".repeat(40),
+      privacyReviewedFromEnv: "DEMO_VIDEO_PIPELINE_IOS_REVIEWED",
+      audio: "mute",
+    },
+    {
+      id: "native-android-core-flow",
+      title: "Core flow",
+      platform: "android",
+      pathFromEnv: "DEMO_VIDEO_PIPELINE_ANDROID_CLIP",
+      expectedSha256FromEnv: "DEMO_VIDEO_PIPELINE_ANDROID_SHA256",
+      sourceRevision: "f".repeat(40),
+      privacyReviewedFromEnv: "DEMO_VIDEO_PIPELINE_ANDROID_REVIEWED",
+      audio: "mute",
+    },
+  ];
+  scenario.outputDir = join(directory, "composition-output");
+  scenario.cacheDir = join(directory, "composition-cache");
+  let composed: Awaited<ReturnType<typeof buildPipeline>>;
+  try {
+    composed = await buildPipeline({
+      scenario,
+      scenarioPath: examplePath,
+      ttsClient,
+      recordingAdapter: {
+        kind: "fixture-recording",
+        record: async () => ({
+          videoPath,
+          timelinePath,
+          timeline,
+          durationMs: 2_000,
+          browserVersion: "fixture",
+        }),
+      },
+    });
+  } finally {
+    delete process.env.DEMO_VIDEO_PIPELINE_IOS_CLIP;
+    delete process.env.DEMO_VIDEO_PIPELINE_IOS_SHA256;
+    delete process.env.DEMO_VIDEO_PIPELINE_IOS_REVIEWED;
+    delete process.env.DEMO_VIDEO_PIPELINE_ANDROID_CLIP;
+    delete process.env.DEMO_VIDEO_PIPELINE_ANDROID_SHA256;
+    delete process.env.DEMO_VIDEO_PIPELINE_ANDROID_REVIEWED;
+  }
+  const composedManifestText = await readFile(composed.manifestPath, "utf8");
+  const composedManifest = JSON.parse(composedManifestText) as {
+    composition: {
+      sequence: Array<{
+        id: string;
+        platform: string;
+        captureMethod: string;
+        sourceRevision: string;
+        sourceSha256?: string;
+        privacyReviewed?: boolean;
+        label: { path: string; sha256: string };
+      }>;
+      outputDurationMs: number;
+      actualOutputDurationMs: number;
+    };
+    artifacts: {
+      video: { path: string; sha256: string };
+      webVideo: { path: string; sha256: string };
+    };
+  };
+  assert.deepEqual(
+    composedManifest.composition.sequence.map((entry) => [entry.id, entry.platform, entry.captureMethod]),
+    [
+      ["web-playwright", "web", "playwright-chromium"],
+      ["native-ios-core-flow", "ios", "external-native-recording"],
+      ["native-android-core-flow", "android", "external-native-recording"],
+    ],
+  );
+  assert.equal(composedManifest.composition.sequence[1]?.sourceSha256, iosSha256);
+  assert.equal(composedManifest.composition.sequence[2]?.sourceSha256, androidSha256);
+  assert.equal(composedManifest.composition.sequence[1]?.sourceRevision, "f".repeat(40));
+  assert.equal(composedManifest.composition.sequence[2]?.sourceRevision, "f".repeat(40));
+  assert.equal(composedManifest.composition.sequence[1]?.privacyReviewed, true);
+  assert.equal(composedManifest.composition.sequence[2]?.privacyReviewed, true);
+  assert.match(
+    await readFile(join(composed.workDir, composedManifest.composition.sequence[0]!.label.path), "utf8"),
+    /Web — Playwright Chromium recording/u,
+  );
+  assert.match(
+    await readFile(join(composed.workDir, composedManifest.composition.sequence[1]!.label.path), "utf8"),
+    /iOS: Core flow — externally recorded native clip/u,
+  );
+  assert.match(
+    await readFile(join(composed.workDir, composedManifest.composition.sequence[2]!.label.path), "utf8"),
+    /Android: Core flow — externally recorded native clip/u,
+  );
+  assert.ok(composedManifest.composition.actualOutputDurationMs > 2_500);
+  assert.notEqual(composedManifest.artifacts.video.sha256, composedManifest.artifacts.webVideo.sha256);
+  assert.doesNotMatch(composedManifestText, new RegExp(directory.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "u"));
+  assert.doesNotMatch(composedManifestText, /reviewed-(?:ios|android)/u);
 });
