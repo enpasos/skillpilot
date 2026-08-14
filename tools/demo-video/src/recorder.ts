@@ -1,8 +1,9 @@
 import { chmod, mkdir, mkdtemp, rm } from "node:fs/promises";
 import { join } from "node:path";
-import { chromium, type Browser, type BrowserContext, type Page } from "playwright";
+import { type Page } from "playwright";
+import { launchScenarioBrowserSession, type ScenarioBrowserSession } from "./browser-session.js";
 import { resolveLocator } from "./locator.js";
-import { assertPrivateInputFile, ensurePrivateDirectory, ensurePrivateFile } from "./private-fs.js";
+import { ensurePrivateDirectory, ensurePrivateFile } from "./private-fs.js";
 import {
   addMaskSelector,
   assertTextIsPrivate,
@@ -16,6 +17,7 @@ import {
   removeMaskSelector,
 } from "./privacy.js";
 import { invalidateRecordingCache, publishRecordingGeneration, readReusableRecording } from "./recording-cache.js";
+import { runtimeEnvironmentValue, type RuntimeEnvironment } from "./runtime-environment.js";
 import type { DemoScenario, DemoStep, RecordingAdapter, RecordingContext, RecordingResult, TimelineEvent } from "./types.js";
 
 function safeName(value: string): string {
@@ -31,12 +33,9 @@ function resolveUrl(url: string, baseUrl?: string): string {
 export class PlaywrightRecordingAdapter implements RecordingAdapter {
   readonly kind = "playwright-chromium";
 
-  async record({ scenario, workDir, force }: RecordingContext): Promise<RecordingResult> {
+  async record({ scenario, workDir, force, environment }: RecordingContext): Promise<RecordingResult> {
     await ensurePrivateDirectory(workDir);
-    if (scenario.browser.storageState) {
-      await assertPrivateInputFile(scenario.browser.storageState, "browser.storageState");
-    }
-    const environmentSecrets = configuredEnvironmentSecrets(scenario);
+    const environmentSecrets = configuredEnvironmentSecrets(scenario, environment);
     if (!force) {
       const reusable = await readReusableRecording(workDir);
       if (reusable) {
@@ -59,8 +58,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
     const temporaryVideoPath = join(temporaryDirectory, "recording.webm");
     await mkdir(temporaryScreenshotsPath, { recursive: true, mode: 0o700 });
 
-    let browser: Browser | undefined;
-    let context: BrowserContext | undefined;
+    let session: ScenarioBrowserSession | undefined;
     let page: Page | undefined;
     const timeline: TimelineEvent[] = [];
     let video: ReturnType<Page["video"]> | undefined;
@@ -68,20 +66,12 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
     let failure: unknown;
 
     try {
-      browser = await chromium.launch({ headless: scenario.browser.headless });
-      browserVersion = browser.version();
-      context = await browser.newContext({
-        viewport: scenario.browser.viewport,
+      session = await launchScenarioBrowserSession(scenario, environment, {
         recordVideo: { dir: temporaryDirectory, size: scenario.browser.video },
-        locale: scenario.browser.locale,
-        timezoneId: scenario.browser.timezoneId,
-        colorScheme: scenario.browser.colorScheme,
-        reducedMotion: scenario.browser.reducedMotion,
-        deviceScaleFactor: scenario.browser.deviceScaleFactor,
-        ...(scenario.browser.storageState ? { storageState: scenario.browser.storageState } : {}),
-        ...(scenario.browser.userAgent ? { userAgent: scenario.browser.userAgent } : {}),
+        freshBlankPage: true,
       });
-      page = await context.newPage();
+      browserVersion = session.browserVersion;
+      page = session.page;
       page.setDefaultTimeout(scenario.browser.defaultTimeoutMs);
       page.on("dialog", async (dialog) => {
         if (scenario.browser.dialogPolicy === "accept") await dialog.accept();
@@ -97,7 +87,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
           let click: { x: number; y: number } | undefined;
           let secretInput = false;
           try {
-            const result = await executeStep(page, step, scenario);
+            const result = await executeStep(page, step, scenario, environment);
             click = result.click;
             secretInput = result.secretInput;
             if (step.action !== "wait") {
@@ -143,7 +133,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
       await page?.close().catch((error) => {
         if (!failure) failure = error;
       });
-      await context?.close().catch((error) => {
+      await session?.close().catch((error) => {
         if (!failure) failure = error;
       });
       if (video) {
@@ -152,7 +142,6 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
         });
         await video.delete().catch(() => undefined);
       }
-      await browser?.close().catch(() => undefined);
     }
 
     try {
@@ -186,11 +175,14 @@ async function executeStep(
   page: Page,
   step: DemoStep,
   scenario: DemoScenario,
+  environment?: RuntimeEnvironment,
 ): Promise<{ click?: { x: number; y: number }; secretInput: boolean }> {
   switch (step.action) {
     case "goto":
       {
-        const url = step.urlFromEnv ? process.env[step.urlFromEnv] : step.url;
+        const url = step.urlFromEnv
+          ? runtimeEnvironmentValue(environment, step.urlFromEnv)
+          : step.url;
         if (!url) throw new Error(step.urlFromEnv ? `Missing environment variable ${step.urlFromEnv}` : "Goto URL is missing");
         await page.goto(resolveUrl(url, scenario.browser.baseUrl), { waitUntil: step.waitUntil ?? "domcontentloaded" });
       }
@@ -220,6 +212,10 @@ async function executeStep(
               reload: () => window.location.reload(),
               toString: () => window.location.href,
             };
+            Object.defineProperty(locationProxy, "href", {
+              get: () => window.location.href,
+              set: (target) => navigate(target),
+            });
             const popup = {
               close: () => { closed = true; },
               focus: () => undefined,
@@ -254,7 +250,9 @@ async function executeStep(
       const locator = resolveLocator(page, step.target, step.frame);
       const environmentName = step.valueFromEnv;
       const usesEnvironment = environmentName !== undefined;
-      const value = environmentName !== undefined ? process.env[environmentName] : step.value;
+      const value = environmentName !== undefined
+        ? runtimeEnvironmentValue(environment, environmentName)
+        : step.value;
       if (value === undefined) throw new Error(`Missing environment variable ${step.valueFromEnv}`);
       const secretInput = step.secret ?? usesEnvironment;
       if (secretInput) await maskLocator(locator, `secret-${step.id}`);

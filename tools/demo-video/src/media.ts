@@ -56,6 +56,53 @@ export interface SubtitleBurnInOptions {
   fontName?: string;
   fontSize?: number;
   marginBottom?: number;
+  marginLeft?: number;
+  alignment?: number;
+  opaqueBox?: boolean;
+}
+
+export interface VideoCompositionSource {
+  id: string;
+  filePath: string;
+  audio: "mute" | "preserve";
+  /** Optional private SRT rendered into this source before concatenation. */
+  labelFilePath?: string;
+}
+
+export interface PreparedVideoCompositionSource extends VideoCompositionSource {
+  durationMs: number;
+  hasAudio: boolean;
+}
+
+export interface VideoCompositionPlanOptions {
+  sources: readonly PreparedVideoCompositionSource[];
+  outputVideoPath: string;
+  width?: number;
+  height?: number;
+  fps?: number;
+  crf?: number;
+  preset?: string;
+  audioBitrate?: string;
+}
+
+export interface FfmpegVideoCompositionPlan {
+  args: string[];
+  filterComplex: string;
+  outputDurationMs: number;
+}
+
+export interface ComposeVideoClipsOptions
+  extends Omit<VideoCompositionPlanOptions, "sources">, MediaBinaryPaths {
+  sources: readonly VideoCompositionSource[];
+  timeoutMs?: number;
+}
+
+export interface ComposeVideoClipsResult {
+  outputVideoPath: string;
+  outputDurationMs: number;
+  actualOutputDurationMs: number;
+  sources: PreparedVideoCompositionSource[];
+  ffmpegArgs: readonly string[];
 }
 
 export interface RenderPlanOptions {
@@ -155,6 +202,34 @@ export async function probeMediaDurationMs(
   }
   // Rounding up avoids trimming the last partial millisecond of a TTS asset.
   return Math.ceil(durationSeconds * 1_000);
+}
+
+export async function probeMediaStreamTypes(
+  filePath: string,
+  options: MediaBinaryPaths = {},
+): Promise<{ video: number; audio: number }> {
+  const ffprobe = options.ffprobe ?? "ffprobe";
+  const result = await runProcess(ffprobe, [
+    "-v",
+    "error",
+    "-show_entries",
+    "stream=codec_type",
+    "-of",
+    "json",
+    filePath,
+  ]);
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(result.stdout);
+  } catch (cause) {
+    throw new Error(`ffprobe returned invalid stream JSON for ${filePath}`, { cause });
+  }
+  const streams = (parsed as { streams?: Array<{ codec_type?: unknown }> }).streams;
+  if (!Array.isArray(streams)) throw new Error(`ffprobe did not report streams for ${filePath}`);
+  return {
+    video: streams.filter((stream) => stream.codec_type === "video").length,
+    audio: streams.filter((stream) => stream.codec_type === "audio").length,
+  };
 }
 
 /**
@@ -322,10 +397,12 @@ function subtitleFilter(options: SubtitleBurnInOptions): string {
     `FontSize=${options.fontSize ?? 22}`,
     "PrimaryColour=&H00FFFFFF",
     "OutlineColour=&H90000000",
-    "BorderStyle=1",
-    "Outline=2",
+    `BorderStyle=${options.opaqueBox ? 3 : 1}`,
+    options.opaqueBox ? "BackColour=&H98000000" : "Outline=2",
+    ...(options.opaqueBox ? ["Outline=0"] : []),
     "Shadow=0",
-    "Alignment=2",
+    `Alignment=${options.alignment ?? 2}`,
+    `MarginL=${options.marginLeft ?? 20}`,
     `MarginV=${options.marginBottom ?? 48}`,
   ];
   if (options.fontName) {
@@ -338,6 +415,167 @@ function subtitleFilter(options: SubtitleBurnInOptions): string {
     ? `:fontsdir='${escapeFfmpegFilterPath(options.fontsDirectory)}'`
     : "";
   return `subtitles=filename='${escapeFfmpegFilterPath(options.filePath)}'${fontsDirectory}:charenc=UTF-8:force_style='${styleParts.join(",")}'`;
+}
+
+export function buildFfmpegVideoCompositionPlan(
+  options: VideoCompositionPlanOptions,
+): FfmpegVideoCompositionPlan {
+  if (options.sources.length === 0) throw new Error("Video composition needs at least one source");
+  const width = options.width ?? DEFAULT_WIDTH;
+  const height = options.height ?? DEFAULT_HEIGHT;
+  const fps = options.fps ?? DEFAULT_FPS;
+  requirePositiveInteger(width, "width");
+  requirePositiveInteger(height, "height");
+  requirePositiveInteger(fps, "fps");
+
+  const ids = new Set<string>();
+  let outputDurationMs = 0;
+  for (const source of options.sources) {
+    if (!source.id.trim()) throw new TypeError("Video composition source IDs must not be empty");
+    if (ids.has(source.id)) throw new Error(`Duplicate video composition source ID: ${source.id}`);
+    ids.add(source.id);
+    requirePositiveInteger(source.durationMs, `durationMs for ${source.id}`);
+    if (source.audio === "preserve" && !source.hasAudio) {
+      throw new Error(`Video composition source ${source.id} requested preserved audio but has no audio stream`);
+    }
+    outputDurationMs += source.durationMs;
+    if (!Number.isSafeInteger(outputDurationMs)) throw new RangeError("Composed video duration is too large");
+  }
+
+  const args = ["-y", "-nostdin", "-hide_banner", "-loglevel", "warning"];
+  for (const source of options.sources) args.push("-i", source.filePath);
+  const filters: string[] = [];
+  options.sources.forEach((source, index) => {
+    const videoFilters = [
+      `trim=duration=${seconds(source.durationMs)}`,
+      `fps=${fps}`,
+      `scale=w=${width}:h=${height}:force_original_aspect_ratio=decrease`,
+      `pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2:color=black`,
+      "setsar=1",
+      "setpts=PTS-STARTPTS",
+    ];
+    if (source.labelFilePath) {
+      videoFilters.push(subtitleFilter({
+        filePath: source.labelFilePath,
+        fontSize: Math.max(18, Math.round(height / 36)),
+        marginBottom: Math.max(20, Math.round(height / 36)),
+        marginLeft: Math.max(20, Math.round(width / 64)),
+        alignment: 7,
+        opaqueBox: true,
+      }));
+    }
+    filters.push(`[${index}:v:0]${videoFilters.join(",")}[compose-v${index}]`);
+    if (source.audio === "preserve") {
+      filters.push(
+        `[${index}:a:0]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,` +
+        `apad,atrim=duration=${seconds(source.durationMs)},asetpts=PTS-STARTPTS[compose-a${index}]`,
+      );
+    } else {
+      filters.push(
+        `anullsrc=channel_layout=stereo:sample_rate=48000,` +
+        `atrim=duration=${seconds(source.durationMs)},asetpts=PTS-STARTPTS[compose-a${index}]`,
+      );
+    }
+  });
+  const concatInputs = options.sources.map((_, index) => `[compose-v${index}][compose-a${index}]`).join("");
+  filters.push(`${concatInputs}concat=n=${options.sources.length}:v=1:a=1[vout][aout]`);
+  const filterComplex = filters.join(";");
+  args.push(
+    "-filter_complex",
+    filterComplex,
+    "-map",
+    "[vout]",
+    "-map",
+    "[aout]",
+    "-map_metadata",
+    "-1",
+    "-map_chapters",
+    "-1",
+    "-metadata",
+    "creation_time=1970-01-01T00:00:00Z",
+    "-t",
+    seconds(outputDurationMs),
+    "-c:v",
+    "libx264",
+    "-preset",
+    options.preset ?? "medium",
+    "-crf",
+    String(options.crf ?? 18),
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "aac",
+    "-b:a",
+    options.audioBitrate ?? "192k",
+    "-ar",
+    "48000",
+    "-movflags",
+    "+faststart",
+    options.outputVideoPath,
+  );
+  return { args, filterComplex, outputDurationMs };
+}
+
+export async function composeVideoClips(
+  options: ComposeVideoClipsOptions,
+): Promise<ComposeVideoClipsResult> {
+  const ffmpeg = options.ffmpeg ?? "ffmpeg";
+  if (path.extname(options.outputVideoPath).toLowerCase() !== ".mp4") {
+    throw new Error("Composed output must use the .mp4 extension");
+  }
+  for (const source of options.sources) {
+    if (path.resolve(source.filePath) === path.resolve(options.outputVideoPath)) {
+      throw new Error("The composed output path must differ from every source path");
+    }
+  }
+  const sources = await Promise.all(options.sources.map(async (source) => {
+    const [durationMs, streams] = await Promise.all([
+      probeMediaDurationMs(source.filePath, options),
+      probeMediaStreamTypes(source.filePath, options),
+    ]);
+    if (streams.video === 0) throw new Error(`Video composition source ${source.id} has no video stream`);
+    return { ...source, durationMs, hasAudio: streams.audio > 0 };
+  }));
+
+  await ensurePrivateDirectory(path.dirname(options.outputVideoPath));
+  const temporaryOutput = path.join(
+    path.dirname(options.outputVideoPath),
+    `.${path.basename(options.outputVideoPath, ".mp4")}.${randomUUID()}.composing.mp4`,
+  );
+  const plan = buildFfmpegVideoCompositionPlan({
+    ...options,
+    sources,
+    outputVideoPath: temporaryOutput,
+  });
+  try {
+    await runProcess(ffmpeg, plan.args, {
+      timeoutMs: options.timeoutMs ?? 30 * 60_000,
+      maxOutputBytes: 32 * 1024 * 1024,
+    });
+    try {
+      await rename(temporaryOutput, options.outputVideoPath);
+    } catch (error) {
+      const code = (error as NodeJS.ErrnoException).code;
+      if (process.platform !== "win32"
+          || (code !== "EEXIST" && code !== "EPERM" && code !== "EACCES")) throw error;
+      await rm(options.outputVideoPath, { force: true });
+      await rename(temporaryOutput, options.outputVideoPath);
+    }
+    await ensurePrivateFile(options.outputVideoPath);
+  } catch (error) {
+    await rm(temporaryOutput, { force: true });
+    throw error;
+  }
+  const actualOutputDurationMs = await probeMediaDurationMs(options.outputVideoPath, options);
+  return {
+    outputVideoPath: options.outputVideoPath,
+    outputDurationMs: plan.outputDurationMs,
+    actualOutputDurationMs,
+    sources,
+    ffmpegArgs: plan.args.map((argument) =>
+      argument === temporaryOutput ? options.outputVideoPath : argument,
+    ),
+  };
 }
 
 function validateScheduledAudio(

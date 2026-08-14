@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { chmod, lstat, mkdtemp, readFile, symlink, writeFile } from "node:fs/promises";
+import { chmod, lstat, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
@@ -50,4 +50,13 @@ test("rejects symlink path components and non-private storage state", async (t) 
   await assert.rejects(assertPrivateInputFile(state, "browser.storageState"), /group or others/u);
   await chmod(state, 0o600);
   await assertPrivateInputFile(state, "browser.storageState");
+});
+
+test("reports a missing protected input with its operator-facing label", async (t) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "demo-video-private-missing-"));
+  t.after(async () => await rm(root, { recursive: true, force: true }));
+  await assert.rejects(
+    assertPrivateInputFile(path.join(root, "missing.json"), "ChatGPT storage state"),
+    /ChatGPT storage state does not exist/u,
+  );
 });

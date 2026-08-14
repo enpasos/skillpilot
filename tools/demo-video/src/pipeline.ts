@@ -15,6 +15,7 @@ import { verifyPublishedRecording } from "./recording-verifier.js";
 import { ensurePrivateDirectory, ensurePrivateFile, writePrivateFile } from "./private-fs.js";
 import { assertTextIsPrivate, configuredEnvironmentSecrets } from "./privacy.js";
 import { runProcess } from "./process.js";
+import type { RuntimeEnvironment } from "./runtime-environment.js";
 import {
   renderVideo,
   probeMediaDurationMs,
@@ -24,6 +25,11 @@ import {
   type VideoHoldPoint,
 } from "./media.js";
 import { createNarrationPacingPlan, shiftRecordedTimestamp } from "./pacing.js";
+import {
+  composeScenarioPlatformClips,
+  validatePlatformClipInputs,
+  type ComposedPlatformClip,
+} from "./platform-clips.js";
 import { createSubtitleCues, writeSrtFile } from "./subtitles.js";
 import { synthesizeSpeechSegments } from "./tts.js";
 import type { TtsOpenAIClient } from "./tts.js";
@@ -44,6 +50,9 @@ export interface PipelineOptions {
   refreshAi?: boolean;
   narrationClient?: NarrationOpenAIClient;
   ttsClient?: TtsOpenAIClient;
+  environment?: RuntimeEnvironment;
+  /** Write manifest.pending.json; the caller promotes it only after external cleanup succeeds. */
+  deferCompletionMarker?: boolean;
 }
 
 export interface RecordStageResult {
@@ -57,6 +66,17 @@ interface SpeechStageResult {
   narration: NarrationPlan;
   scheduled: ScheduledNarrationAudio[];
   videoHolds: VideoHoldPoint[];
+}
+
+export interface RenderStageResult {
+  subtitlesPath: string;
+  webVideoPath: string;
+  outputVideoPath: string;
+  webDurationMs?: number;
+  webLabelPath?: string;
+  platformClips: ComposedPlatformClip[];
+  outputDurationMs?: number;
+  actualOutputDurationMs?: number;
 }
 
 function fromOpenAiPlan(plan: OpenAiNarrationPlan): NarrationPlan {
@@ -135,10 +155,30 @@ function narrationInput(scenario: DemoScenario, analysis: RecordingAnalysis): Na
     evidence,
     constraints: [
       `Create at most ${scenario.narration.maxSegments} segments.`,
+      scenario.narration.instructions,
       "Never mention or reconstruct redacted identifiers, authentication data, capabilities, or secrets.",
       "Do not claim that an emulated mobile browser is a native iOS or Android application.",
     ],
   };
+}
+
+const REVIEW_UNSUPPORTED_SURFACE_PATTERN = /\b(?:iOS|Android|mobile|native(?:\s+app)?|cross[- ]platform|Windows|macOS|Linux|operating[- ]system)\b/iu;
+
+export function assertSkillPilotBrowserOnlyNarration(
+  scenario: DemoScenario,
+  narration: NarrationPlan,
+): void {
+  if (scenario.id !== "skillpilot-openai-review-v1") return;
+  const publicNarrationText = [
+    narration.title,
+    narration.overview,
+    ...narration.segments.flatMap((segment) => [segment.title, segment.text, segment.subtitle ?? ""]),
+  ].join("\n");
+  if (REVIEW_UNSUPPORTED_SURFACE_PATTERN.test(publicNarrationText)) {
+    throw new Error(
+      "SkillPilot v1 review narration must describe only the supported ChatGPT browser experience and must not mention unsupported surfaces",
+    );
+  }
 }
 
 async function exists(path: string): Promise<boolean> {
@@ -150,11 +190,16 @@ async function writeJson(path: string, value: unknown): Promise<void> {
   await writePrivateFile(path, `${JSON.stringify(value, null, 2)}\n`, { encoding: "utf8" });
 }
 
-function assertPrivateValue(scenario: DemoScenario, value: unknown, label: string): void {
+function assertPrivateValue(
+  scenario: DemoScenario,
+  value: unknown,
+  label: string,
+  environment?: RuntimeEnvironment,
+): void {
   assertTextIsPrivate(
     typeof value === "string" ? value : JSON.stringify(value),
     scenario.privacy,
-    configuredEnvironmentSecrets(scenario),
+    configuredEnvironmentSecrets(scenario, environment),
     label,
   );
 }
@@ -172,7 +217,10 @@ export async function recordStage(options: PipelineOptions): Promise<RecordStage
   await ensurePrivateDirectory(options.scenario.cacheDir);
   await ensurePrivateDirectory(workDir);
   if (!(options.reuseRecording ?? false)) {
-    await rm(join(workDir, "manifest.json"), { force: true });
+    await Promise.all([
+      rm(join(workDir, "manifest.json"), { force: true }),
+      rm(join(workDir, "manifest.pending.json"), { force: true }),
+    ]);
   }
   const adapter = options.recordingAdapter ?? new PlaywrightRecordingAdapter();
   const recording = await adapter.record({
@@ -180,9 +228,10 @@ export async function recordStage(options: PipelineOptions): Promise<RecordStage
     scenarioPath: resolve(options.scenarioPath),
     workDir,
     force: !(options.reuseRecording ?? false),
+    ...(options.environment ? { environment: options.environment } : {}),
   });
   const analysis = analyzeRecording(options.scenario, recording);
-  assertPrivateValue(options.scenario, analysis, "recording analysis");
+  assertPrivateValue(options.scenario, analysis, "recording analysis", options.environment);
   const analysisPath = join(workDir, "analysis.json");
   await writeAnalysis(analysisPath, workDir, analysis);
   return { workDir, recording, analysis, analysisPath };
@@ -209,7 +258,8 @@ export async function narrationStage(
   const mayReuseNarration = options.scenario.narration.mode === "ai";
   if (mayReuseNarration && !options.force && !options.refreshAi && await exists(narrationCachePath)) {
     const narration = JSON.parse(await readFile(narrationCachePath, "utf8")) as NarrationPlan;
-    assertPrivateValue(options.scenario, narration, "cached narration");
+    assertPrivateValue(options.scenario, narration, "cached narration", options.environment);
+    assertSkillPilotBrowserOnlyNarration(options.scenario, narration);
     await writeJson(narrationPath, narration);
     return { narration, narrationPath };
   }
@@ -221,9 +271,10 @@ export async function narrationStage(
         disclosure: options.scenario.narration.disclosure,
         maxImageEvidence: 8,
         maxSegments: options.scenario.narration.maxSegments,
-        sensitiveValues: configuredEnvironmentSecrets(options.scenario),
+        sensitiveValues: configuredEnvironmentSecrets(options.scenario, options.environment),
       }));
-  assertPrivateValue(options.scenario, narration, "narration");
+  assertPrivateValue(options.scenario, narration, "narration", options.environment);
+  assertSkillPilotBrowserOnlyNarration(options.scenario, narration);
   await writeJson(narrationPath, narration);
   if (mayReuseNarration) await writeJson(narrationCachePath, narration);
   return { narration, narrationPath };
@@ -234,7 +285,7 @@ export async function speechStage(
   narration: NarrationPlan,
   recording: RecordingResult,
 ): Promise<SpeechStageResult> {
-  assertPrivateValue(options.scenario, narration, "TTS input");
+  assertPrivateValue(options.scenario, narration, "TTS input", options.environment);
   await ensurePrivateDirectory(options.scenario.cacheDir);
   const speech = await synthesizeSpeechSegments(
     narration.segments.map((segment) => ({
@@ -349,7 +400,7 @@ export async function renderStage(
   narration: NarrationPlan,
   scheduled: ScheduledNarrationAudio[],
   videoHolds: VideoHoldPoint[],
-): Promise<{ subtitlesPath: string; outputVideoPath: string }> {
+): Promise<RenderStageResult> {
   const subtitlesPath = join(recorded.workDir, "subtitles.srt");
   const cues = createSubtitleCues(narration.segments.map((segment) => {
     if (segment.startMs === undefined || segment.endMs === undefined) {
@@ -362,10 +413,13 @@ export async function renderStage(
       endMs: segment.endMs,
     };
   }));
-  assertPrivateValue(options.scenario, cues, "subtitles");
+  assertPrivateValue(options.scenario, cues, "subtitles", options.environment);
   await writeSrtFile(subtitlesPath, cues);
   await ensurePrivateFile(subtitlesPath);
   const outputVideoPath = join(recorded.workDir, `${options.scenario.id}.mp4`);
+  const webVideoPath = options.scenario.platformClips.length > 0
+    ? join(recorded.workDir, `${options.scenario.id}.web.mp4`)
+    : outputVideoPath;
   const clickFocusPoints: ClickFocusPoint[] = recorded.recording.timeline.flatMap((event) => event.click
     ? [{
         atMs: shiftRecordedTimestamp(event.startedAtMs, videoHolds),
@@ -377,7 +431,7 @@ export async function renderStage(
     : []);
   await renderVideo({
     inputVideoPath: recorded.recording.videoPath,
-    outputVideoPath,
+    outputVideoPath: webVideoPath,
     audioSegments: scheduled,
     videoHolds,
     clickFocusPoints,
@@ -401,8 +455,28 @@ export async function renderStage(
     ffmpeg: options.scenario.binaries.ffmpeg,
     ffprobe: options.scenario.binaries.ffprobe,
   });
+  await ensurePrivateFile(webVideoPath);
+  if (options.scenario.platformClips.length === 0) {
+    return { subtitlesPath, webVideoPath, outputVideoPath, platformClips: [] };
+  }
+  const composed = await composeScenarioPlatformClips({
+    scenario: options.scenario,
+    workDir: recorded.workDir,
+    webVideoPath,
+    outputVideoPath,
+    ...(options.environment ? { environment: options.environment } : {}),
+  });
   await ensurePrivateFile(outputVideoPath);
-  return { subtitlesPath, outputVideoPath };
+  return {
+    subtitlesPath,
+    webVideoPath,
+    outputVideoPath,
+    webDurationMs: composed.webDurationMs,
+    webLabelPath: composed.webLabelPath,
+    platformClips: composed.platformClips,
+    outputDurationMs: composed.outputDurationMs,
+    actualOutputDurationMs: composed.actualOutputDurationMs,
+  };
 }
 
 export async function buildPipeline(options: PipelineOptions): Promise<BuildArtifacts> {
@@ -413,9 +487,17 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
   // manifest.json is the completion marker for the assembled package. Remove
   // it before any mutable stage so a failed regeneration cannot leave an old
   // build looking current.
-  await rm(join(intendedWorkDir, "manifest.json"), { force: true });
+  await Promise.all([
+    rm(join(intendedWorkDir, "manifest.json"), { force: true }),
+    rm(join(intendedWorkDir, "manifest.pending.json"), { force: true }),
+  ]);
+  if (buildOptions.scenario.platformClips.length > 0) {
+    await validatePlatformClipInputs(buildOptions.scenario, buildOptions.environment);
+  }
   const recorded = await recordStage(buildOptions);
-  if (!options.recordingAdapter) await verifyPublishedRecording(buildOptions.scenario);
+  if (!options.recordingAdapter) {
+    await verifyPublishedRecording(buildOptions.scenario, buildOptions.environment);
+  }
   const narrated = await narrationStage(buildOptions, recorded);
   const synthesizedSpeech = await speechStage(buildOptions, narrated.narration, recorded.recording);
   const speech = await publishSpeechAudio(synthesizedSpeech, recorded.workDir);
@@ -427,7 +509,10 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
     speech.scheduled,
     speech.videoHolds,
   );
-  const manifestPath = join(recorded.workDir, "manifest.json");
+  const manifestPath = join(
+    recorded.workDir,
+    buildOptions.deferCompletionMarker ? "manifest.pending.json" : "manifest.json",
+  );
   const [ffmpegVersion, ffprobeVersion] = await Promise.all([
     runProcess(buildOptions.scenario.binaries.ffmpeg, ["-version"]).then((result) => result.stdout.split(/\r?\n/, 1)[0] ?? "unknown"),
     runProcess(buildOptions.scenario.binaries.ffprobe, ["-version"]).then((result) => result.stdout.split(/\r?\n/, 1)[0] ?? "unknown"),
@@ -442,6 +527,20 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
     path: relative(recorded.workDir, path),
     sha256: await sha256File(path),
   });
+  const platformClipManifest = await Promise.all(rendered.platformClips.map(async (clip) => ({
+    id: clip.id,
+    title: clip.title,
+    platform: clip.platform,
+    captureMethod: clip.captureMethod,
+    sourceRevision: clip.sourceRevision,
+    privacyReviewed: clip.privacyReviewed,
+    audioPolicy: clip.audioPolicy,
+    sourceSha256: clip.sourceSha256,
+    sourceDurationMs: clip.sourceDurationMs,
+    sourceHasAudio: clip.sourceHasAudio,
+    label: await artifact(clip.labelPath),
+  })));
+  const webVideoArtifact = await artifact(rendered.webVideoPath);
   const manifest = {
     schemaVersion: 1,
     scenario: redactedScenario(buildOptions.scenario),
@@ -457,8 +556,28 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
       tts: buildOptions.scenario.narration.ttsModel,
       voice: buildOptions.scenario.narration.voice,
     },
+    ...(rendered.platformClips.length > 0 ? {
+      composition: {
+        sequence: [
+          {
+            id: "web-playwright",
+            title: buildOptions.scenario.title,
+            platform: buildOptions.scenario.platform,
+            captureMethod: "playwright-chromium",
+            sourceRevision: buildOptions.scenario.sourceRevision,
+            durationMs: rendered.webDurationMs,
+            artifact: webVideoArtifact,
+            ...(rendered.webLabelPath ? { label: await artifact(rendered.webLabelPath) } : {}),
+          },
+          ...platformClipManifest,
+        ],
+        outputDurationMs: rendered.outputDurationMs,
+        actualOutputDurationMs: rendered.actualOutputDurationMs,
+      },
+    } : {}),
     artifacts: {
       video: await artifact(rendered.outputVideoPath),
+      webVideo: webVideoArtifact,
       sourceRecording: await artifact(recorded.recording.videoPath),
       subtitles: await artifact(rendered.subtitlesPath),
       timeline: await artifact(recorded.recording.timelinePath),
@@ -479,6 +598,7 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
     buildOptions.scenario,
     { ...manifest, scenario: scenarioForPrivacyCheck },
     "manifest",
+    buildOptions.environment,
   );
   await writeJson(manifestPath, manifest);
   return {
@@ -487,6 +607,7 @@ export async function buildPipeline(options: PipelineOptions): Promise<BuildArti
     narrationPath: narrated.narrationPath,
     narration: speech.narration,
     subtitlesPath: rendered.subtitlesPath,
+    webVideoPath: rendered.webVideoPath,
     outputVideoPath: rendered.outputVideoPath,
     manifestPath,
   };

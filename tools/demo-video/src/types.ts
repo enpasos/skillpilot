@@ -1,6 +1,24 @@
 import type { Page } from "playwright";
 
 export type DemoPlatform = "web" | "mobile-web";
+export type NativePlatform = "ios" | "android";
+
+export interface PlatformClipConfig {
+  id: string;
+  title: string;
+  /** Real native platform represented by this externally recorded clip. */
+  platform: NativePlatform;
+  path?: string;
+  pathFromEnv?: string;
+  expectedSha256?: string;
+  expectedSha256FromEnv?: string;
+  sourceRevision?: string;
+  sourceRevisionFromEnv?: string;
+  /** Explicit operator attestation; this tool cannot inspect native pixels or audio for private data. */
+  privacyReviewed?: true;
+  privacyReviewedFromEnv?: string;
+  audio: "mute" | "preserve";
+}
 
 type LocatorMatch = { match?: "first" | "last" };
 
@@ -56,6 +74,18 @@ export interface BrowserConfig {
   colorScheme: "light" | "dark" | "no-preference";
   reducedMotion: "reduce" | "no-preference";
   storageState?: string;
+  /**
+   * Runtime environment name whose value is an absolute private Chromium
+   * user-data directory. The path itself must never be authored in a scenario
+   * or serialized into a manifest.
+   */
+  persistentProfilePathFromEnv?: string;
+  /**
+   * Require the resolved profile to be a private run-owned snapshot created by
+   * this process. Review scenarios enable this so an operator source profile
+   * can never be launched directly.
+   */
+  persistentProfileRequiresSnapshot: boolean;
   userAgent?: string;
   deviceScaleFactor: number;
   defaultTimeoutMs: number;
@@ -65,6 +95,8 @@ export interface BrowserConfig {
 
 export interface PrivacyConfig {
   maskSelectors: string[];
+  /** Configured selectors that must be visibly present and opaque in evidence. */
+  requiredMaskSelectors: string[];
   maskTextSelectors: string[];
   maskLabel: string;
   maskColor: string;
@@ -121,6 +153,8 @@ export interface DemoScenario {
   narration: NarrationConfig;
   render: RenderConfig;
   binaries: BinaryConfig;
+  /** Review-ready native clips appended after the Playwright Web segment. */
+  platformClips: PlatformClipConfig[];
   chapters: DemoChapter[];
 }
 
@@ -134,6 +168,7 @@ export interface RecordingContext {
   scenarioPath: string;
   workDir: string;
   force: boolean;
+  environment?: Readonly<Record<string, string>>;
 }
 
 export interface StepEvidence {
@@ -148,6 +183,8 @@ export interface MaskRegion {
   height: number;
   secret: boolean;
   configured: boolean;
+  /** The configured selector that produced this overlay, when applicable. */
+  selector?: string;
 }
 
 export interface TimelineEvent {
@@ -205,6 +242,8 @@ export interface BuildArtifacts {
   narrationPath: string;
   narration: NarrationPlan;
   subtitlesPath: string;
+  /** Rendered Playwright Web segment before optional native-clip composition. */
+  webVideoPath: string;
   outputVideoPath: string;
   manifestPath: string;
 }

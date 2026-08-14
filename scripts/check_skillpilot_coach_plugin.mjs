@@ -194,6 +194,26 @@ assert.match(submissionDossier, /a_\(n\+1\)=a_n\+d/u);
 assert.match(submissionDossier, /start\/abi26-he-mathe-k1\?courseLevel=GK/u);
 assert.match(submissionDossier, /25 von 25 Punkten/u);
 assert.match(submissionDossier, /13 von 25 Punkten/u);
+assert.match(
+  submissionDossier,
+  /unterstützte Review- und Produktoberfläche ist\s+ChatGPT im Webbrowser/u,
+  "The V1 dossier must declare the supported SkillPilot review surface as ChatGPT in a browser.",
+);
+assert.match(
+  submissionDossier,
+  /benötigten Plugin-Funktionen in den aktuellen nativen\s+Apps nicht vollständig unterstützt/u,
+  "The browser-only boundary must remain tied to the empirically verified SkillPilot V1 feature set.",
+);
+assert.match(
+  submissionDossier,
+  /Betriebssystem ist nicht Teil des\s+Supportversprechens/u,
+  "The V1 review contract must not claim support for an underlying operating system.",
+);
+assert.match(
+  submissionDossier,
+  /keine allgemeine Aussage über die\s+Plattformverfügbarkeit anderer\s+OpenAI-Plugins/u,
+  "The project-specific browser boundary must not be generalized to other OpenAI plugins.",
+);
 assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
 for (const [label, source] of [
   ["legal", legalViewCopy],

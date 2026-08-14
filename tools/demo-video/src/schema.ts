@@ -47,6 +47,21 @@ const chapterSchema = z.object({
   steps: z.array(stepSchema).min(1),
 }).strict();
 
+const platformClipSchema = z.object({
+  id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+  title: nonEmpty,
+  platform: z.enum(["ios", "android"]),
+  path: nonEmpty.optional(),
+  pathFromEnv: nonEmpty.optional(),
+  expectedSha256: z.string().regex(/^[0-9a-f]{64}$/).optional(),
+  expectedSha256FromEnv: nonEmpty.optional(),
+  sourceRevision: z.string().regex(/^[0-9a-f]{40}$/).optional(),
+  sourceRevisionFromEnv: nonEmpty.optional(),
+  privacyReviewed: z.literal(true).optional(),
+  privacyReviewedFromEnv: nonEmpty.optional(),
+  audio: z.enum(["mute", "preserve"]).default("mute"),
+}).strict();
+
 export const scenarioSchema = z.object({
   schemaVersion: z.literal(1),
   id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
@@ -67,6 +82,8 @@ export const scenarioSchema = z.object({
     colorScheme: z.enum(["light", "dark", "no-preference"]).default("light"),
     reducedMotion: z.enum(["reduce", "no-preference"]).default("reduce"),
     storageState: nonEmpty.optional(),
+    persistentProfilePathFromEnv: nonEmpty.optional(),
+    persistentProfileRequiresSnapshot: z.boolean().default(false),
     userAgent: nonEmpty.optional(),
     deviceScaleFactor: z.number().positive().max(4).default(1),
     defaultTimeoutMs: z.number().int().positive().default(15_000),
@@ -75,6 +92,7 @@ export const scenarioSchema = z.object({
   }).strict().prefault({}),
   privacy: z.object({
     maskSelectors: z.array(nonEmpty).default([]),
+    requiredMaskSelectors: z.array(nonEmpty).default([]),
     maskTextSelectors: z.array(nonEmpty).default([]),
     maskLabel: z.string().default("REDACTED"),
     maskColor: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#111111"),
@@ -111,10 +129,79 @@ export const scenarioSchema = z.object({
     ffmpeg: nonEmpty.default("ffmpeg"),
     ffprobe: nonEmpty.default("ffprobe"),
   }).strict().prefault({}),
+  platformClips: z.array(platformClipSchema).max(16).default([]),
   chapters: z.array(chapterSchema).min(1),
 }).strict().superRefine((scenario, context) => {
   const chapterIds = new Set<string>();
   const stepIds = new Set<string>();
+  const platformClipIds = new Set<string>();
+
+  if (scenario.browser.storageState && scenario.browser.persistentProfilePathFromEnv) {
+    context.addIssue({
+      code: "custom",
+      message: "browser.storageState and browser.persistentProfilePathFromEnv are mutually exclusive",
+      path: ["browser"],
+    });
+  }
+  if (scenario.browser.persistentProfilePathFromEnv) {
+    if (scenario.browser.headless) {
+      context.addIssue({
+        code: "custom",
+        message: "A persistent Chromium profile requires a headful browser",
+        path: ["browser", "headless"],
+      });
+    }
+    for (const [name, size] of [
+      ["viewport", scenario.browser.viewport],
+      ["video", scenario.browser.video],
+    ] as const) {
+      if (size.width !== 1440 || size.height !== 900) {
+        context.addIssue({
+          code: "custom",
+          message: `A persistent Chromium profile requires browser.${name} to be exactly 1440x900`,
+          path: ["browser", name],
+        });
+      }
+    }
+  }
+  if (scenario.browser.persistentProfileRequiresSnapshot
+      && !scenario.browser.persistentProfilePathFromEnv) {
+    context.addIssue({
+      code: "custom",
+      message: "browser.persistentProfileRequiresSnapshot requires browser.persistentProfilePathFromEnv",
+      path: ["browser", "persistentProfileRequiresSnapshot"],
+    });
+  }
+
+  const configuredMaskSelectors = new Set(scenario.privacy.maskSelectors);
+  for (const selector of scenario.privacy.requiredMaskSelectors) {
+    if (!configuredMaskSelectors.has(selector)) {
+      context.addIssue({
+        code: "custom",
+        message: `Required mask selector is not configured in privacy.maskSelectors: ${selector}`,
+        path: ["privacy", "requiredMaskSelectors"],
+      });
+    }
+  }
+
+  for (const clip of scenario.platformClips) {
+    if (platformClipIds.has(clip.id)) {
+      context.addIssue({ code: "custom", message: `Duplicate platform clip id: ${clip.id}`, path: ["platformClips"] });
+    }
+    platformClipIds.add(clip.id);
+    if (Number(clip.path !== undefined) + Number(clip.pathFromEnv !== undefined) !== 1) {
+      context.addIssue({ code: "custom", message: `Platform clip ${clip.id} needs exactly one of path or pathFromEnv`, path: ["platformClips"] });
+    }
+    if (Number(clip.expectedSha256 !== undefined) + Number(clip.expectedSha256FromEnv !== undefined) !== 1) {
+      context.addIssue({ code: "custom", message: `Platform clip ${clip.id} needs exactly one expected SHA-256 value or environment variable`, path: ["platformClips"] });
+    }
+    if (Number(clip.sourceRevision !== undefined) + Number(clip.sourceRevisionFromEnv !== undefined) !== 1) {
+      context.addIssue({ code: "custom", message: `Platform clip ${clip.id} needs exactly one source revision or environment variable`, path: ["platformClips"] });
+    }
+    if (Number(clip.privacyReviewed === true) + Number(clip.privacyReviewedFromEnv !== undefined) !== 1) {
+      context.addIssue({ code: "custom", message: `Platform clip ${clip.id} needs exactly one privacy review attestation`, path: ["platformClips"] });
+    }
+  }
 
   for (const chapter of scenario.chapters) {
     if (chapterIds.has(chapter.id)) {

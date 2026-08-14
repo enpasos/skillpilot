@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { requiredSecretCaptures, verifyMaskEvidence } from "../src/recording-verifier.js";
+import {
+  assertRequiredMaskSelectors,
+  requiredSecretCaptures,
+  verifyMaskEvidence,
+} from "../src/recording-verifier.js";
 import type { TimelineEvent } from "../src/types.js";
 
 const event = (stepId: string, options: { screenshot?: string; secretInput?: boolean } = {}): TimelineEvent => ({
@@ -42,4 +46,37 @@ test("does not let an automatic secret mask satisfy a missing configured-selecto
   );
   assert.equal(summary.matchingMaskPixels, 100);
   assert.equal(summary.capturedConfiguredMask, false);
+});
+
+test("requires opaque evidence for the exact account-mask selector", () => {
+  const accountSelector = "[data-testid='accounts-profile-button']";
+  const capture = event("account-mask", { screenshot: "account-mask.png" });
+  const summary = verifyMaskEvidence(
+    capture,
+    [{
+      area: 100,
+      matches: 100,
+      secret: false,
+      configured: true,
+      selector: "#unrelated-private-value",
+    }],
+    false,
+  );
+  assert.throws(
+    () => assertRequiredMaskSelectors(
+      [accountSelector],
+      new Set(summary.opaqueConfiguredSelectors),
+    ),
+    /accounts-profile-button/u,
+  );
+
+  const accountSummary = verifyMaskEvidence(
+    capture,
+    [{ area: 100, matches: 100, secret: false, configured: true, selector: accountSelector }],
+    false,
+  );
+  assert.doesNotThrow(() => assertRequiredMaskSelectors(
+    [accountSelector],
+    new Set(accountSummary.opaqueConfiguredSelectors),
+  ));
 });

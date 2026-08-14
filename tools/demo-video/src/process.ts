@@ -1,5 +1,49 @@
 import { spawn } from "node:child_process";
 
+const CHILD_ENVIRONMENT_KEYS = new Set([
+  "comspec",
+  "display",
+  "dyld_fallback_library_path",
+  "dyld_library_path",
+  "fontconfig_file",
+  "fontconfig_path",
+  "home",
+  "lang",
+  "language",
+  "lc_all",
+  "lc_ctype",
+  "localappdata",
+  "path",
+  "pathext",
+  "systemdrive",
+  "systemroot",
+  "temp",
+  "tmp",
+  "tmpdir",
+  "tz",
+  "userprofile",
+  "wayland_display",
+  "windir",
+  "xdg_cache_home",
+  "xdg_config_home",
+  "xdg_runtime_dir",
+]);
+
+/**
+ * Build the deliberately small environment inherited by Chromium and media
+ * helpers. Scenario capabilities and OPENAI_API_KEY must stay in this Node
+ * process and never become readable from those child processes.
+ */
+export function safeChildEnvironment(
+  source: NodeJS.ProcessEnv = process.env,
+): Record<string, string> {
+  return Object.fromEntries(Object.entries(source).flatMap(([name, value]) => (
+    value !== undefined && CHILD_ENVIRONMENT_KEYS.has(name.toLocaleLowerCase("en-US"))
+      ? [[name, value]]
+      : []
+  )));
+}
+
 export interface ProcessOptions {
   cwd?: string;
   env?: NodeJS.ProcessEnv;
@@ -71,7 +115,7 @@ export async function runProcess(
   return await new Promise<ProcessResult>((resolve, reject) => {
     const child = spawn(executable, [...args], {
       cwd: options.cwd,
-      env: options.env ?? process.env,
+      env: options.env ?? safeChildEnvironment(),
       shell: false,
       windowsHide: true,
       stdio: ["pipe", "pipe", "pipe"],
@@ -168,4 +212,3 @@ export async function runProcess(
     }
   });
 }
-

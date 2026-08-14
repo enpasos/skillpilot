@@ -33,7 +33,10 @@
       document.querySelector('#run').addEventListener('click', () => {
         const popup = window.open('', '_blank');
         if (!popup) throw new Error('Demo popup was blocked');
-        window.setTimeout(() => popup.location.replace(`${window.location.href.split('#')[0]}#complete`), 50);
+        window.setTimeout(() => {
+          popup.location.href = `${window.location.href.split('#')[0]}#intermediate`;
+          window.setTimeout(() => popup.location.replace(`${window.location.href.split('#')[0]}#complete`), 50);
+        }, 50);
       });
     </script>
   </body>

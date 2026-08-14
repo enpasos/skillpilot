@@ -1,43 +1,51 @@
 # Review blueprint, not submission evidence as committed.
 #
-# Provide each freshly prepared disposable SkillPilot launch URL only through
-# the named environment variable below. Never put those URLs in this file.
-# Calibrate the external ChatGPT selectors and validate the resulting video.
+# `review-build` prepares six fresh disposable learners and passes the protected
+# P2 SkillPilot ID plus five launch URLs only through an in-memory environment
+# map. Never put those values in this file. The verified operator Chromium
+# profile path is likewise supplied only through the private review file; each
+# command works on a disposable private snapshot and never modifies the source
+# profile. Calibrate the external ChatGPT selectors and validate the result.
 schemaVersion: 1
 id: skillpilot-openai-review-v1
 title: SkillPilot Coach v1 review demonstration
 description: Demonstrate exactly five positive and three negative OpenAI plugin review cases with fresh disposable SkillPilot learners.
-# Replace this public value with the exact deployed Git SHA before recording.
+# `review-build --source-revision` replaces this public placeholder in memory.
 sourceRevision: SET_TO_DEPLOYED_GIT_SHA
 platform: web
 outputDir: ../output
 cacheDir: ../.cache
 
 variables:
+  skillpilotUrl: https://skillpilot.com/
   chatgptUrl: https://chatgpt.com/
   chatgptComposerSelector: "[contenteditable='true']"
   chatgptAssistantSelector: "[data-message-author-role='assistant']"
   memoryWidgetFrameSelector: "iframe[title*='SkillPilot']"
 
 browser:
-  headless: true
+  headless: false
   viewport: { width: 1440, height: 900 }
   video: { width: 1440, height: 900 }
   locale: en-US
   timezoneId: Europe/Berlin
   colorScheme: light
   reducedMotion: reduce
-  storageState: ../secrets/chatgpt-developer-mode.storage-state.json
+  persistentProfilePathFromEnv: SKILLPILOT_REVIEW_CHATGPT_PROFILE
+  persistentProfileRequiresSnapshot: true
   defaultTimeoutMs: 60000
   postActionDelayMs: 1000
   dialogPolicy: accept
 
 privacy:
   maskSelectors:
+    - "[data-testid='accounts-profile-button']"
     - "#skillpilotIdInput"
     - "${chatgptComposerSelector}"
     - "[data-testid*='tool'] pre"
     - "[data-testid*='tool'] code"
+  requiredMaskSelectors:
+    - "[data-testid='accounts-profile-button']"
   maskTextSelectors:
     - "[data-message-author-role='user']"
   forbiddenPatterns:
@@ -55,7 +63,7 @@ narration:
   model: gpt-5.6
   ttsModel: gpt-4o-mini-tts
   voice: cedar
-  instructions: Speak in clear, calm, professional English for an OpenAI plugin review. Explain only visible, evidenced behavior and safety boundaries.
+  instructions: Speak in clear, calm, professional English for an OpenAI plugin review. Explain only visible, evidenced behavior and safety boundaries. Describe SkillPilot Coach v1 only as a ChatGPT browser experience; do not claim operating-system, native-app, mobile, or cross-platform support.
   disclosure: The narration in this video is AI-generated and is not a human voice.
   segmentGapMs: 350
   maxSegments: 28
@@ -71,6 +79,11 @@ render:
   subtitleBottomMargin: 64
   autoZoom: { enabled: true, factor: 1.12, durationMs: 1600 }
 
+# SkillPilot Coach v1 declares ChatGPT in a browser as its only supported review
+# surface. Generic scenarios may still append reviewed native clips, but this
+# submission contains none; that boundary remains subject to portal review.
+platformClips: []
+
 chapters:
   - id: p1-sessionless-start
     title: P1 – Sessionless start and first-party handoff
@@ -78,13 +91,19 @@ chapters:
     steps:
       - id: p1-open
         action: goto
-        label: Open a new ChatGPT conversation with SkillPilot Coach v1 selected
+        label: Open a new ChatGPT conversation with the draft app available
         url: "${chatgptUrl}"
       - id: p1-app-selected
         action: assert
-        label: Verify that SkillPilot Coach v1 is visibly selected
+        label: Verify that the SkillPilot Coach v1 app name is visible
         target: { text: "SkillPilot Coach v1", match: last }
         timeoutMs: 60000
+      - id: p1-account-mask-target
+        action: assert
+        label: Verify that the visible account control is protected by the required opaque mask
+        target: { css: "[data-testid='accounts-profile-button']", match: last }
+        timeoutMs: 60000
+        capture: true
       - id: p1-prompt
         action: unmask
         label: Reveal ordinary reviewer prompts while keeping secrets protected
@@ -107,15 +126,101 @@ chapters:
 
   - id: p2-orientation
     title: P2 – Context-bound orientation and dialogic learning
-    narrationHint: The committed local setup must create a fresh LK learner and activate the orientation goal before this launch URL is produced.
+    narrationHint: Show the normal first-party EXISTING handoff for the fresh public-CREATE LK fixture, including its configured Level 2 and provider notice, before opening ChatGPT.
     steps:
-      - id: p2-open
+      - id: p2-open-first-party
         action: goto
-        label: Open the fresh first-party prepared session
-        urlFromEnv: SKILLPILOT_REVIEW_P2_START_URL
+        label: Open the SkillPilot first-party start page
+        url: "${skillpilotUrl}"
+      - id: p2-open-setup
+        action: click
+        label: Open the learner setup
+        target: { role: button, name: "Jetzt starten" }
+      - id: p2-terms-heading
+        action: waitFor
+        label: Show the current SkillPilot Terms before first use
+        target: { role: heading, name: "Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:" }
+        timeoutMs: 60000
+      - id: p2-terms-check
+        action: check
+        label: Accept the current Terms for this clean recording context
+        target: { role: checkbox, name: "Ich akzeptiere die Nutzungsbedingungen", exact: false }
+      - id: p2-terms-accept
+        action: click
+        label: Confirm the Terms acceptance
+        target: { role: button, name: "Akzeptieren & Fortfahren" }
+      - id: p2-enter-disposable-id
+        action: fill
+        label: Enter the freshly public-CREATE disposable SkillPilot ID as an existing ID
+        target: { css: "#skillpilotIdInput" }
+        valueFromEnv: SKILLPILOT_REVIEW_P2_SKILLPILOT_ID
+        secret: true
+      - id: p2-existing-id-label
+        action: assert
+        label: Show that EXISTING is only the visible first-party selection mode
+        target: { text: "Vorhandene ID", exact: true }
+        capture: true
+      - id: p2-continue-to-curriculum
+        action: click
+        label: Load the freshly configured disposable learner
+        target: { role: button, name: "Weiter zu Schritt 2: Curriculum wählen" }
+      - id: p2-level-two-complete
+        action: waitFor
+        label: Verify that the personal curriculum is fully configured
+        target: { role: heading, name: "Dein persönlicher Lehrplan ist eingerichtet." }
+        timeoutMs: 60000
+      - id: p2-level-two-jurisdiction
+        action: assert
+        label: Verify the configured jurisdiction
+        target: { text: "Hessen", exact: true, match: last }
+      - id: p2-level-two-duration
+        action: assert
+        label: Verify the configured duration model
+        target: { text: "G9", exact: true, match: last }
+      - id: p2-level-two-stage
+        action: assert
+        label: Verify the configured upper-secondary scope
+        target: { text: "Gymnasiale Oberstufe (Sekundarstufe II)", exact: true, match: last }
+      - id: p2-level-two-subject
+        action: assert
+        label: Verify the configured subject
+        target: { text: "Mathematik", exact: true, match: last }
+      - id: p2-level-two-course
+        action: assert
+        label: Verify the configured course profile
+        target: { text: "Mathematik – Leistungskurs", exact: true, match: last }
+      - id: p2-provider-notice
+        action: assert
+        label: Verify the first-party AI fallibility notice
+        target: { text: "Der Lerncoach ist ein KI-Assistent und kann Fehler machen. Prüfe wichtige Antworten.", exact: true }
+      - id: p2-provider-title
+        action: assert
+        label: Verify the selected ChatGPT provider integration
+        target: { text: "SkillPilot-App in ChatGPT", exact: true }
+      - id: p2-provider-handoff
+        action: assert
+        label: Verify the fresh-chat handoff explanation
+        target: { text: "SkillPilot öffnet einen neuen ChatGPT-Chat mit einer zum vorbereiteten nächsten Schritt passenden Startnachricht. Aktiviere dort bei Bedarf die App „SkillPilot Coach v1“ und sende die bereits eingetragene Nachricht ab.", exact: true }
+        capture: true
+      - id: p2-open-chatgpt
+        action: click
+        label: Start learning through the normal first-party handoff
+        target: { role: button, name: "SkillPilot-App öffnen" }
+        samePage: true
+      - id: p2-wait-chatgpt
+        action: waitFor
+        label: Wait for the automatically opened fresh ChatGPT conversation
+        target: { css: "${chatgptComposerSelector}" }
+        timeoutMs: 60000
+      - id: p2-app-selected
+        action: assert
+        label: Verify that the SkillPilot Coach v1 app name remains visible
+        target: { text: "SkillPilot Coach v1", match: last }
+        timeoutMs: 60000
       - id: p2-send-start
         action: press
         label: Send the prefilled redacted session message unchanged
+        target: { css: "${chatgptComposerSelector}" }
         key: Enter
       - id: p2-mask-session-message
         action: maskTarget
@@ -162,11 +267,11 @@ chapters:
 
   - id: p3-memory-and-recall
     title: P3 – Flashcard practice and Verified Recall
-    narrationHint: A fresh learner with exactly eight due cards is prepared through the normal first-party flow.
+    narrationHint: A fresh learner starts at the required orientation. Complete it with real dialogic evidence, follow the server-authorized continuation, then explicitly switch to the newly available memory goal with exactly eight due cards.
     steps:
       - id: p3-open
         action: goto
-        label: Open the fresh memory-goal session
+        label: Open the fresh orientation session for the memory case
         urlFromEnv: SKILLPILOT_REVIEW_P3_START_URL
       - id: p3-send-start
         action: press
@@ -180,11 +285,45 @@ chapters:
         action: unmask
         label: Reveal the composer after the secret-bearing start
         selector: "${chatgptComposerSelector}"
+      - id: p3-wait-orientation
+        action: waitFor
+        label: Wait for the context-grounded orientation before answering
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        timeoutMs: 60000
+      - id: p3-orientation-path
+        action: fill
+        label: Choose the reviewed growth and models path
+        target: { css: "${chatgptComposerSelector}" }
+        value: Der Weg „Veränderung, Wachstum und Modelle“ interessiert mich am meisten.
+      - id: p3-send-orientation-path
+        action: press
+        label: Send the orientation path choice
+        key: Enter
+      - id: p3-wait-personal-question
+        action: wait
+        label: Wait for the personal orientation question
+        durationMs: 12000
+      - id: p3-orientation-personal
+        action: fill
+        label: Supply real dialogic evidence before orientation completion
+        target: { css: "${chatgptComposerSelector}" }
+        value: Mich interessiert besonders, wie man mit Funktionen das Wachstum von Bakterien oder Klimaentwicklungen vorhersagen kann und wo solche Modelle an ihre Grenzen kommen. Lass uns daran weiterlernen.
+      - id: p3-send-orientation-personal
+        action: press
+        label: Send the personal orientation response
+        key: Enter
+      - id: p3-orientation-continuation
+        action: assert
+        label: Wait for the server-authorized post-orientation continuation
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        text: Darstellungsform auswählen und begründen
+        timeoutMs: 60000
+        capture: true
       - id: p3-practice-prompt
         action: fill
-        label: Request normal due-card practice
+        label: Select the now-frontier-eligible memory goal and request normal practice
         target: { css: "${chatgptComposerSelector}" }
-        value: Ich möchte zuerst die fälligen Karteikarten normal üben.
+        value: Ich möchte jetzt zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die fälligen Karteikarten normal üben.
       - id: p3-send-practice
         action: press
         label: Start card practice
@@ -338,9 +477,10 @@ chapters:
         label: Reveal the composer after the secret-bearing start
         selector: "${chatgptComposerSelector}"
       - id: p4-wait-task
-        action: wait
-        label: Show the task without protected evaluation
-        durationMs: 10000
+        action: waitFor
+        label: Wait until the protected exam task is visibly presented without evaluation
+        target: { text: "B1 (Analysis – „Das Algenwachstum“, 25 BE)", exact: false, match: last }
+        timeoutMs: 60000
         capture: true
       - id: p4-answer
         action: fill
@@ -379,6 +519,11 @@ chapters:
         action: unmask
         label: Reveal the composer after the secret-bearing start
         selector: "${chatgptComposerSelector}"
+      - id: p5-wait-context
+        action: waitFor
+        label: Wait for the fresh context-grounded coach response before requesting a focus change
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        timeoutMs: 60000
       - id: p5-request
         action: fill
         label: Ask for the nearest suitable wider unit
@@ -462,6 +607,11 @@ chapters:
         action: unmask
         label: Reveal the composer after the secret-bearing start
         selector: "${chatgptComposerSelector}"
+      - id: n2-wait-context
+        action: waitFor
+        label: Wait for the fresh configured coach response before requesting a prohibited Level-2 change
+        target: { css: "${chatgptAssistantSelector}", match: last }
+        timeoutMs: 60000
       - id: n2-prompt
         action: fill
         label: Ask for a prohibited level-two mutation
@@ -499,6 +649,12 @@ chapters:
         action: unmask
         label: Reveal the composer after the secret-bearing start
         selector: "${chatgptComposerSelector}"
+      - id: n3-wait-task
+        action: waitFor
+        label: Wait until the protected exam task is visibly presented before requesting help
+        target: { text: "B1 (Analysis – „Das Algenwachstum“, 25 BE)", exact: false, match: last }
+        timeoutMs: 60000
+        capture: true
       - id: n3-prompt
         action: fill
         label: Request a prohibited hint and formula

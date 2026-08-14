@@ -183,14 +183,23 @@ frische opake Sessionnachricht ohne permanente ID.
 ### P3 – Karteikartenlernen und Verified Recall trennen
 
 - **Vorbereitung je Lauf:** Über `CREATE` einen unabhängigen neuen Lernstand mit
-  derselben Level-2-Konfiguration wie P2 erzeugen. Die Orientierung mit dem Weg
-  `Veränderung, Wachstum und Modelle` und einer persönlichen Antwort
-  regelkonform abschließen, im Cockpit `Lernkarten - Funktionen und
-  Gleichungen` aktivieren und **Lernen starten** wählen. Weil dieser Lernstand
-  noch keinen Karten-Client-State besitzt, sind unabhängig vom Kalendertag
-  exakt 8/8 Karten fällig und für den vollständigen Verified Recall verfügbar.
-- **Benutzer-Turns:** `Ich möchte zuerst die fälligen Karteikarten normal üben.`
-  Danach alle acht Fixture-Karten in der UI als **Gewusst** bewerten und senden:
+  derselben Level-2-Konfiguration wie P2 erzeugen, das Orientierungsziel
+  aktivieren und **Lernen starten** wählen. Im aufgezeichneten Lauf zuerst den
+  Weg `Veränderung, Wachstum und Modelle` wählen, mit der festgelegten
+  persönlichen Antwort regelkonform abschließen und die serverautorisierte
+  Fortsetzung `Darstellungsform auswählen und begründen` abwarten. Danach den
+  Wechsel zum nun erreichbaren Ziel `Lernkarten - Funktionen und Gleichungen`
+  ausdrücklich anfordern. Weil dieser Lernstand noch keinen
+  Karten-Client-State besitzt, sind unabhängig vom Kalendertag exakt 8/8 Karten
+  fällig und für den vollständigen Verified Recall verfügbar.
+- **Benutzer-Turns:** `Der Weg „Veränderung, Wachstum und Modelle“ interessiert
+  mich am meisten.` Danach: `Mich interessiert besonders, wie man mit
+  Funktionen das Wachstum von Bakterien oder Klimaentwicklungen vorhersagen
+  kann und wo solche Modelle an ihre Grenzen kommen. Lass uns daran
+  weiterlernen.` Nach der autorisierten Fortsetzung senden: `Ich möchte jetzt
+  zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die
+  fälligen Karteikarten normal üben.` Danach alle acht Fixture-Karten in der UI
+  als **Gewusst** bewerten und senden:
   `Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.` Nach Ausgabe
   sämtlicher Prüfungsfragen in genau einem Turn einreichen:
   `1. m=(y₂-y₁)/(x₂-x₁). 2. f(x)=a(x-d)²+e mit S(d|e). 3. Ein Produkt ist genau
@@ -198,6 +207,9 @@ frische opake Sessionnachricht ohne permanente ID.
   x=ln(b). 5. a_(n+1)=a_n+d. 6. a_n=a_1·q^(n-1). 7. x^a·x^b=x^(a+b).
   8. x_(1,2)=-p/2 ± sqrt((p/2)²-q).`
 - **Erwarteter Ablauf:** `start_skillpilot_memory_practice` öffnet seine eigene UI.
+  Der Zielwechsel erfolgt zuvor nur auf ausdrücklichen Wunsch über frisch
+  publizierte Zieloptionen mit `redirect=true`; der Coach erfindet weder eine
+  Ziel-ID noch überspringt er die Orientierungsabhängigkeit.
   Vorder- und Rückseiten bleiben in Component-`_meta`; Blättern ist lokal. Nur
   die explizite Kartenbewertung ändert die Wiederholungsplanung. Normales
   Üben wird nicht als Mastery ausgegeben; Verified Recall bleibt ein eigener
@@ -391,6 +403,19 @@ folgende Werte und Begründungen:
 
 ## 10. Demo-Recording
 
+Die von SkillPilot Coach v1 unterstützte Review- und Produktoberfläche ist
+ChatGPT im Webbrowser. Empirische Kompatibilitätstests haben bestätigt, dass
+die für diese Version benötigten Plugin-Funktionen in den aktuellen nativen
+Apps nicht vollständig unterstützt werden. Das darunterliegende
+Betriebssystem ist nicht Teil des Supportversprechens. Entsprechend belegt das
+Reviewvideo die Hauptabläufe und Tools in genau einer Browseraufnahme. Native
+Desktop-, iOS- und Android-Apps sind für v1 nicht als unterstützte
+SkillPilot-Oberflächen deklariert und werden nur dann als zusätzliche Evidenz
+aufgenommen, wenn das Portal oder die Review dies ausdrücklich verlangt. Diese
+Abgrenzung folgt der offiziellen Videoanforderung, die Abdeckung über die
+*unterstützten* Plattformen verlangt; sie ist keine allgemeine Aussage über die
+Plattformverfügbarkeit anderer OpenAI-Plugins.
+
 Das Reviewvideo zeigt ohne sichtbare Geheimnisse die fünf positiven und drei
 negativen Portalabläufe in kompakter Form:
 
@@ -402,8 +427,10 @@ negativen Portalabläufe in kompakter Form:
    serverautorisierte Fortsetzung;
 5. Karteikarten-UI und getrennten vollständigen Verified Recall;
 6. vollständige Prüfungsabgabe und Bewertung;
-7. Session-Recovery ohne Fachantwort oder OAuth-Reconnect;
-8. Ablehnung einer Level-2-Änderung im Chat und einer Prüfungshilfe vor der
+7. bewusst angeforderte Fokusweitung, die erst nach ausdrücklicher Zustimmung
+   genau eine frisch veröffentlichte Option setzt;
+8. Session-Recovery ohne Fachantwort oder OAuth-Reconnect;
+9. Ablehnung einer Level-2-Änderung im Chat und einer Prüfungshilfe vor der
    vollständigen Abgabe.
 
 Die private Video-URL wird nur im Portal hinterlegt. Das Video darf keine
