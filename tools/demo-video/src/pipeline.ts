@@ -162,7 +162,7 @@ function narrationInput(scenario: DemoScenario, analysis: RecordingAnalysis): Na
   };
 }
 
-const REVIEW_UNSUPPORTED_SURFACE_PATTERN = /\b(?:iOS|Android|mobile|native(?:\s+app)?|cross[- ]platform|Windows|macOS|Linux|operating[- ]system)\b/iu;
+const REVIEW_UNSUPPORTED_SURFACE_PATTERN = /\b(?:iOS|Android|mobile|(?:native|desktop)(?:\s+app)?|cross[- ]platform|Windows|macOS|Linux|operating[- ]system)\b/iu;
 
 export function assertSkillPilotBrowserOnlyNarration(
   scenario: DemoScenario,

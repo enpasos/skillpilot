@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { once } from "node:events";
 import {
   access,
   cp,
@@ -8,7 +10,7 @@ import {
   rm,
   writeFile,
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { hostname, tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
 
@@ -18,6 +20,7 @@ import {
   assertRunOwnedPersistentProfileSnapshot,
   createPersistentProfileSnapshot,
   persistentProfilePath,
+  recoverAbandonedPersistentProfileSnapshots,
   validatePersistentChromiumProfile,
 } from "../src/persistent-browser-profile.js";
 
@@ -89,6 +92,16 @@ test("uses a private disposable snapshot without modifying or syncing back to th
       /run-owned disposable Chromium profile snapshot/u,
     );
 
+    const markerPath = join(snapshot.path, ".skillpilot-demo-profile-snapshot.json");
+    const originalMarker = await readFile(markerPath, "utf8");
+    await writeFile(markerPath, "{\"token\":\"tampered\"}\n", { mode: 0o600 });
+    await assert.rejects(
+      assertRunOwnedPersistentProfileSnapshot(snapshot.path),
+      /provenance is invalid/u,
+    );
+    await writeFile(markerPath, originalMarker, { mode: 0o600 });
+    await assertRunOwnedPersistentProfileSnapshot(snapshot.path);
+
     await writeFile(join(snapshot.path, "Default", "Preferences"), "runtime-only\n", { mode: 0o600 });
     assert.equal(await readFile(join(profile, "Default", "Preferences"), "utf8"), "source\n");
 
@@ -156,6 +169,40 @@ test("reports both copy and partial-snapshot cleanup failures", async () => {
         assert.match(String(error.errors[1]), /planned partial cleanup failure/u);
         return true;
       },
+    );
+    const release = await acquirePersistentProfileLock(profile);
+    await release();
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("abandoned-snapshot recovery waits until Chromium releases its profile lock", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "demo-video-profile-recovery-"));
+  try {
+    const cache = join(directory, "cache");
+    const snapshotRoot = join(cache, ".browser-profile-snapshot-abandoned");
+    const snapshotProfile = join(snapshotRoot, "profile");
+    await mkdir(snapshotProfile, { recursive: true, mode: 0o700 });
+    const exitedOwner = spawn(process.execPath, ["-e", ""], { stdio: "ignore" });
+    const exitedPid = exitedOwner.pid;
+    assert.ok(exitedPid);
+    await once(exitedOwner, "exit");
+    await writeFile(
+      join(snapshotRoot, ".skillpilot-demo-snapshot-owner.json"),
+      `${JSON.stringify({ token: "abandoned-snapshot-token", pid: exitedPid, hostname: hostname() })}\n`,
+      { mode: 0o600 },
+    );
+    const chromiumLock = join(snapshotProfile, "SingletonLock");
+    await writeFile(chromiumLock, "still-open\n", { mode: 0o600 });
+
+    assert.equal(await recoverAbandonedPersistentProfileSnapshots(cache), 0);
+    await access(snapshotRoot);
+    await rm(chromiumLock);
+    assert.equal(await recoverAbandonedPersistentProfileSnapshots(cache), 1);
+    await assert.rejects(
+      access(snapshotRoot),
+      (error: NodeJS.ErrnoException) => error.code === "ENOENT",
     );
   } finally {
     await rm(directory, { recursive: true, force: true });

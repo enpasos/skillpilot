@@ -43,6 +43,13 @@ test("SkillPilot review narration cannot mention unsupported surfaces", async ()
     }),
     /must not mention unsupported surfaces/u,
   );
+  assert.throws(
+    () => assertSkillPilotBrowserOnlyNarration(scenario, {
+      ...plan,
+      segments: [{ ...plan.segments[0]!, subtitle: "The desktop app shows the same flow." }],
+    }),
+    /must not mention unsupported surfaces/u,
+  );
 });
 
 test("recordStage injects an adapter and records fresh unless reuse is explicit", async () => {

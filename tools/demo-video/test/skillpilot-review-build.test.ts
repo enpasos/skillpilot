@@ -238,6 +238,69 @@ test("SkillPilot v1 review rejects legacy storage-state authentication", async (
   }
 });
 
+test("SkillPilot v1 runtime rejects non-browser evidence and user-agent spoofing", async () => {
+  const mutations: Array<{
+    name: string;
+    apply(scenario: Awaited<ReturnType<typeof loadScenario>>): void;
+    expected: RegExp;
+  }> = [
+    {
+      name: "mobile-web",
+      apply: (scenario) => { scenario.platform = "mobile-web"; },
+      expected: /exactly the ChatGPT browser Web surface/u,
+    },
+    {
+      name: "native clip",
+      apply: (scenario) => {
+        scenario.platformClips = [{
+          id: "native-ios",
+          title: "must be rejected",
+          platform: "ios",
+          path: "/private/native.mov",
+          expectedSha256: "a".repeat(64),
+          sourceRevision: "b".repeat(40),
+          privacyReviewed: true,
+          audio: "mute",
+        }];
+      },
+      expected: /must not append native platform clips/u,
+    },
+    {
+      name: "custom user agent",
+      apply: (scenario) => { scenario.browser.userAgent = "custom-review-agent"; },
+      expected: /ordinary user agent without spoofing/u,
+    },
+  ];
+
+  for (const mutation of mutations) {
+    const directory = await mkdtemp(join(tmpdir(), `demo-video-review-${mutation.name}-`));
+    try {
+      const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));
+      scenario.sourceRevision = "a".repeat(40);
+      scenario.outputDir = join(directory, "output");
+      scenario.cacheDir = join(directory, "cache");
+      mutation.apply(scenario);
+      let cleanupCalls = 0;
+      const profile = mockReviewProfile(scenario, directory, async () => { cleanupCalls += 1; });
+      await assert.rejects(
+        preflightSkillPilotReviewBuild({
+          scenario,
+          scenarioPath: resolve("scenarios/skillpilot-openai-review.template.yaml"),
+          environment: profile.environment,
+          narrationClient: {} as never,
+          ttsClient: {} as never,
+        }, {
+          createProfileSnapshot: profile.createProfileSnapshot,
+        }),
+        mutation.expected,
+      );
+      assert.equal(cleanupCalls, 1);
+    } finally {
+      await rm(directory, { recursive: true, force: true });
+    }
+  }
+});
+
 test("review preflight recovers pending cleanup before ordered external checks", async () => {
   const directory = await mkdtemp(join(tmpdir(), "demo-video-review-order-"));
   const scenario = await loadScenario(resolve("scenarios/skillpilot-openai-review.template.yaml"));

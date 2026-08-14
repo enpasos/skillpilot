@@ -196,6 +196,23 @@ export async function recoverAbandonedPersistentProfileSnapshots(
     if (!metadata?.isFile() || metadata.isSymbolicLink()) continue;
     const owner = parseSnapshotOwnership(await readFile(markerPath, "utf8"));
     if (!owner || owner.hostname !== hostname() || processIsAlive(owner.pid)) continue;
+    const profilePath = join(root, "profile");
+    const profileMetadata = await lstat(profilePath).catch((error: NodeJS.ErrnoException) => {
+      if (error.code === "ENOENT") return undefined;
+      throw error;
+    });
+    if (profileMetadata?.isSymbolicLink()) continue;
+    if (profileMetadata?.isDirectory()) {
+      const chromiumLock = await lstat(join(profilePath, PROFILE_LOCK_NAME)).catch(
+        (error: NodeJS.ErrnoException) => {
+          if (error.code === "ENOENT") return undefined;
+          throw error;
+        },
+      );
+      // Node may have died while its Chromium child remains alive. Never
+      // remove a snapshot until Chromium has released its own profile lock.
+      if (chromiumLock) continue;
+    }
     await fileSystem.remove(root, { recursive: true, force: true });
     recovered += 1;
   }
