@@ -30,9 +30,13 @@ class WebConfigTest {
             "/assets/goal-visualizations/test-goal/test-goal.txt";
     private static final String OPENAI_REVIEW_VIDEO =
             "/api/public/openai/review/skillpilot-coach-v1/1.0.0/test-video.mp4";
+    private static final String QUICKSTART_VIDEO =
+            "/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/test-video.mp4";
     private static final String OPENAI_ORIGIN = "https://platform.openai.com";
     private static final String OPENAI_REVIEW_VIDEO_FIXTURE =
             "0123456789abcdefghijklmnopqrstuvwxyz\n";
+    private static final String QUICKSTART_VIDEO_FIXTURE =
+            "quickstart-video-fixture-0123456789\n";
 
     @Autowired
     private WebApplicationContext context;
@@ -87,6 +91,26 @@ class WebConfigTest {
                 .andExpect(header().string(
                         HttpHeaders.CONTENT_RANGE,
                         "bytes 0-15/" + OPENAI_REVIEW_VIDEO_FIXTURE.length()));
+    }
+
+    @Test
+    void servesQuickstartVideoFromNetworkOnlyApiPath() throws Exception {
+        mockMvc.perform(get(QUICKSTART_VIDEO))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("video/mp4"))
+                .andExpect(content().string(QUICKSTART_VIDEO_FIXTURE))
+                .andExpect(header().string(HttpHeaders.ACCEPT_RANGES, "bytes"));
+
+        mockMvc.perform(get(QUICKSTART_VIDEO)
+                        .header(HttpHeaders.RANGE, "bytes=0-15"))
+                .andExpect(status().isPartialContent())
+                .andExpect(content().contentType("video/mp4"))
+                .andExpect(content().string(QUICKSTART_VIDEO_FIXTURE.substring(0, 16)))
+                .andExpect(header().string(HttpHeaders.ACCEPT_RANGES, "bytes"))
+                .andExpect(header().string(HttpHeaders.CONTENT_LENGTH, "16"))
+                .andExpect(header().string(
+                        HttpHeaders.CONTENT_RANGE,
+                        "bytes 0-15/" + QUICKSTART_VIDEO_FIXTURE.length()));
     }
 
     @Test

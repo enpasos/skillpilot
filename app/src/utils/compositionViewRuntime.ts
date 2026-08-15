@@ -341,6 +341,13 @@ export const deriveRuntimeGoalPlacementFilters = ({
   return filters
 }
 
+export const selectCompositionManagedLandscapeIds = (
+  role: 'learner' | 'trainer' | 'explorer',
+  requestedLandscapeIds: Iterable<string>,
+): Set<string> => role === 'learner'
+  ? new Set(requestedLandscapeIds)
+  : new Set<string>()
+
 export const deriveRuntimeCompositionScope = ({
   landscapeId,
   rootLandscapeId = CANONICAL_GYMNASIUM_ROOT_ID,

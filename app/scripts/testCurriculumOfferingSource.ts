@@ -9,6 +9,7 @@ import {
 import {
   applyCompositionViewProjection,
   deriveRuntimeCompositionScope,
+  selectCompositionManagedLandscapeIds,
   shouldApplyLearnerPlacementFallback,
 } from '../src/utils/compositionViewRuntime'
 import {
@@ -352,6 +353,30 @@ assert.equal(
   true,
   'A landscape without a composition request may still use its ordinary placement projection.',
 )
+
+const learnerManagedCompositionIds = selectCompositionManagedLandscapeIds(
+  'learner',
+  [canonicalMathId],
+)
+assert.deepEqual(
+  [...learnerManagedCompositionIds],
+  [canonicalMathId],
+  'Learner projection must keep composition-managed landscapes fail-closed.',
+)
+
+for (const role of ['trainer', 'explorer'] as const) {
+  const managedIds = selectCompositionManagedLandscapeIds(role, [canonicalMathId])
+  assert.deepEqual(
+    [...managedIds],
+    [],
+    `${role} must not inherit the learner-only composition fail-closed boundary.`,
+  )
+  assert.equal(
+    shouldApplyLearnerPlacementFallback(canonicalMathId, managedIds),
+    true,
+    `${role} must retain the ordinary landscape projection when no learner composition view is loaded.`,
+  )
+}
 
 const hessenMathSekTwoLkView = JSON.parse(readFileSync(
   new URL(
