@@ -5,7 +5,7 @@
 
 Turn an official curriculum into a dependency graph of skills, then let learners walk it with an AI coach that always knows the next sensible step.
 
-![The SkillPilot cockpit: learning goals with mastery state on the left, the selected goal and its suggested next steps on the right](docs/quickstart/screenshot_11.en.png)
+![Illustration of a learner opening the SkillPilot cockpit to review progress](docs/quickstart/comic05.en.png)
 
 - **Skill graphs built from official curricula.** Every learning goal traces back to the published source it came from.
 - **An AI learning coach** that runs inside ChatGPT through MCP and works from the learner's real position in the graph.

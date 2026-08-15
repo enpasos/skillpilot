@@ -115,6 +115,29 @@ const upsertLinkTag = (rel: string, href: string) => {
   element.setAttribute('href', href)
 }
 
+const updateQuickstartAlternateLinks = (origin: string, enabled: boolean) => {
+  document.head
+    .querySelectorAll('link[data-skillpilot-quickstart-alternate]')
+    .forEach((element) => element.remove())
+
+  if (!enabled) return
+
+  const alternates = [
+    { hrefLang: 'de', href: `${origin}/quickstart/de` },
+    { hrefLang: 'en', href: `${origin}/quickstart/en` },
+    { hrefLang: 'x-default', href: `${origin}/quickstart/de` },
+  ]
+
+  for (const alternate of alternates) {
+    const element = document.createElement('link')
+    element.setAttribute('rel', 'alternate')
+    element.setAttribute('hreflang', alternate.hrefLang)
+    element.setAttribute('href', alternate.href)
+    element.setAttribute('data-skillpilot-quickstart-alternate', '')
+    document.head.appendChild(element)
+  }
+}
+
 const stripSensitiveSkillpilotUrlParams = (search: string) => {
   const params = new URLSearchParams(search)
   let changed = false
@@ -444,6 +467,11 @@ const App: React.FC = () => {
       path === '/whitepaper' || path.startsWith('/whitepaper/') ||
       path === '/quickstart' || path.startsWith('/quickstart/') ||
       path === '/start' || path.startsWith('/start/')
+    const isQuickstartPath = path === '/quickstart' || path.startsWith('/quickstart/')
+    const quickstartRouteLanguage = path.split('/')[2]?.toLowerCase()
+    const metadataLanguage = isQuickstartPath && (quickstartRouteLanguage === 'de' || quickstartRouteLanguage === 'en')
+      ? quickstartRouteLanguage
+      : language
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasActiveSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
@@ -491,6 +519,13 @@ const App: React.FC = () => {
         const whitepaperTitle = t.startPage.cards.whitepaper.title || 'Whitepaper'
         title = `${whitepaperTitle} | ${baseTitle}`
         description = t.startPage.cards.whitepaper.description || defaultDescription
+      } else if (isQuickstartPath) {
+        title = metadataLanguage === 'en'
+          ? `Start SkillPilot in 5 Steps | ${baseTitle}`
+          : `SkillPilot in 5 Schritten starten | ${baseTitle}`
+        description = metadataLanguage === 'en'
+          ? 'Configure your learning context in SkillPilot and learn with SkillPilot Coach in ChatGPT in a browser.'
+          : 'Lernkontext in SkillPilot einrichten und mit SkillPilot Coach in ChatGPT im Browser lernen.'
       } else if (path === '/users') {
         const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`
@@ -573,21 +608,28 @@ const App: React.FC = () => {
       description = core.currentGoal.description || defaultDescription
     }
 
-    const canonicalPath = !hasAccess ? '/' : path
+    const canonicalPath = !hasAccess
+      ? '/'
+      : isQuickstartPath
+        ? `/quickstart/${metadataLanguage}`
+        : path
     const canonicalUrl = `${window.location.origin}${canonicalPath}`
     const finalDescription = trimDescription(description) || defaultDescription
     const robots = !hasAccess ? 'noindex, follow' : 'index, follow'
     const imageUrl = `${window.location.origin}/favicon/web-app-manifest-512x512.png`
 
     document.title = title
+    document.documentElement.lang = metadataLanguage
     upsertMetaTag('name', 'description', finalDescription)
     upsertMetaTag('name', 'robots', robots)
     upsertMetaTag('name', 'googlebot', `${robots}, max-image-preview:large, max-snippet:-1, max-video-preview:-1`)
     upsertLinkTag('canonical', canonicalUrl)
+    updateQuickstartAlternateLinks(window.location.origin, isQuickstartPath)
     upsertMetaTag('property', 'og:title', title)
     upsertMetaTag('property', 'og:description', finalDescription)
     upsertMetaTag('property', 'og:type', 'website')
     upsertMetaTag('property', 'og:url', canonicalUrl)
+    upsertMetaTag('property', 'og:locale', metadataLanguage === 'en' ? 'en_US' : 'de_DE')
     upsertMetaTag('property', 'og:image', imageUrl)
     upsertMetaTag('name', 'twitter:card', 'summary_large_image')
     upsertMetaTag('name', 'twitter:title', title)
