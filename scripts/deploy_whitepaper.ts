@@ -22,6 +22,11 @@ const MAPPINGS = [
         source: path.join(ROOT_DIR, 'docs', 'comic2'),
         target: path.join(ROOT_DIR, 'app', 'public', 'comic2'),
         extensions: ['.png', '.jpg', '.jpeg']
+    },
+    {
+        source: path.join(ROOT_DIR, 'docs', 'comic3'),
+        target: path.join(ROOT_DIR, 'app', 'public', 'comic3'),
+        extensions: ['.png', '.jpg', '.jpeg']
     }
 ];
 

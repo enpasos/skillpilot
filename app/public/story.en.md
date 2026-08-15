@@ -18,11 +18,41 @@ For students, the browser-based web app on a smartphone is particularly useful: 
 
 ## Start in 5 Steps
 
-1. Open [skillpilot.com](https://skillpilot.com) and select **Start Learning**.
-2. Create a new SkillPilot ID, load your protected ID file, or enter an existing SkillPilot ID. If you create a new ID, save it as a protected file as soon as possible.
-3. Configure your personal curriculum and current learning context.
-4. Select **Open SkillPilot app**. SkillPilot opens a new ChatGPT browser chat with a prepared message. On the first app call, ChatGPT may ask you once to connect **SkillPilot Coach v1**.
-5. Send the prepared message unchanged. The coach loads your learning state and guides you through the current learning goal. Use the **Cockpit** to view your progress and next goals.
+The screenshots below show the German interface. Select English on skillpilot.com for English labels; the coach follows the language stored in the learning session.
+
+### 1. Open SkillPilot
+
+Open [skillpilot.com](https://skillpilot.com) and select **Start Learning**.
+
+![Current SkillPilot landing page with the Start Learning option](quickstart-01-start.webp)
+
+### 2. Set Your SkillPilot ID
+
+Create a new SkillPilot ID, load your protected ID file, or enter an existing SkillPilot ID. If you create a new ID, save it as a protected file as soon as possible.
+
+![Options to create, load, or enter a SkillPilot ID](quickstart-02-id.webp)
+
+### 3. Configure Your Personal Curriculum
+
+Configure your personal curriculum and current learning context. This includes items such as school type, learning stage, subject, and course profile.
+
+![Selection of the personal curriculum and learning context](quickstart-03-curriculum.webp)
+
+### 4. Open SkillPilot Coach v1
+
+Select **Open SkillPilot app**. SkillPilot opens a new ChatGPT browser chat with a prepared message. On the first app call, ChatGPT may ask you once to connect **SkillPilot Coach v1**.
+
+![Completed configuration with the Open SkillPilot app button](quickstart-04-launch.webp)
+
+The prepared message already contains the new learning session, which is valid for 24 hours. You do not need to add anything.
+
+![Message prepared by SkillPilot in a new ChatGPT browser chat](quickstart-05-prepared-message.webp)
+
+### 5. Send the Prepared Message
+
+Send the prepared message unchanged. The coach loads your learning state and guides you through the current learning goal.
+
+![SkillPilot Coach v1 guiding the learner through a specific learning goal](quickstart-06-coach.webp)
 
 You do not need to copy, edit, or manually enter a session ID in ChatGPT.
 
@@ -34,6 +64,10 @@ Open ChatGPT in your smartphone browser, or save the browser page as a home-scre
 - work through calculations, sketches, and longer solutions on paper,
 - photograph your work and upload it in the same chat.
 
+Depending on the learning goal, the coach may also open an appropriate interactive learning view, such as due flashcards.
+
+![Interactive SkillPilot Coach v1 flashcard view in ChatGPT](quickstart-08-cards.webp)
+
 ## SkillPilot ID and Learning Session
 
 Your permanent SkillPilot ID is the key to your learning progress. It stays with SkillPilot and is not copied into the chat.
@@ -42,7 +76,7 @@ Every time you select **Start Learning**, SkillPilot creates a new random learni
 
 ## Progress in the Cockpit
 
-![Illustration: SkillPilot Cockpit](comic05.en.png)
+![Current SkillPilot Cockpit with learning tree, active goal, and goal visualization](quickstart-07-cockpit.webp)
 
 *The Cockpit and learning coach use the same learning state. The Cockpit shows your progress and useful next goals.*
 

@@ -147,7 +147,7 @@
       ]
     },
     "whitepaperRasterFigures": {
-      "classification": "Documentation and explanatory raster figures with mixed or incompletely documented provenance. Inclusion in this inventory does not assert that every file was AI-generated.",
+      "classification": "Documentation raster figures include legacy diagrams and illustrations as well as current documentary product screenshots. Inclusion in this inventory does not assert that every file was AI-generated.",
       "sourceDir": "docs/whitepaper",
       "runtimeDir": "app/public/whitepaper",
       "sourceFiles": [
@@ -155,6 +155,11 @@
         "architecture.en.png",
         "champion.de.png",
         "champion.en.png",
+        "current-coach.png",
+        "current-cockpit.png",
+        "current-curriculum.png",
+        "current-handoff.png",
+        "current-memory.png",
         "examnode.de.png",
         "examnode.en.png",
         "graph_example.de.png",
@@ -176,9 +181,21 @@
         "velocity.de.png",
         "velocity.en.png"
       ],
-      "sourceDigestSha256": "b47820b758ed2bc74f4fd6dbaad66e8f4762d6c9d227f9a0137d10d6ff0a4e9e",
-      "runtimeDigestSha256": "1a646a5f67eb3439f07177407ba6bc9d963f4665cad96d6a7c65a02fef601cdf",
-      "reviewConclusion": "The figures are presented as diagrams or stylized illustrations rather than documentary records. New realistic figures still require an item-level assessment before release."
+      "sourceDigestSha256": "3f9fd718937fca0e91e752213f6c27224f1b00b895c4510041e1477d14e66b62",
+      "runtimeDigestSha256": "a4a169a7bc2ea3fe52cc174d2a96466331ddc28c2edca5a0e62980ad23e2eee6",
+      "currentScreenshots": {
+        "files": [
+          "current-coach.png",
+          "current-cockpit.png",
+          "current-curriculum.png",
+          "current-handoff.png",
+          "current-memory.png"
+        ],
+        "sourceVideo": "tools/demo-video/output/manual-review-en/skillpilot-openai-review-en-upload.mp4",
+        "sourceVideoSha256": "20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb",
+        "privacyReview": "Browser chrome and permanent SkillPilot ID fields were excluded. The short-lived learning-session value may remain visible in the handoff screenshot by explicit product-owner decision."
+      },
+      "reviewConclusion": "The current documentary screenshots were derived from the frozen reviewed video and checked for the stated privacy boundary. The remaining legacy raster figures are presented as diagrams or stylized illustrations, not documentary records."
     },
     "podcastAudio": {
       "provenanceStatus": "The files contain generic Google encoder and creation-time tags. Those tags do not establish the exact generation workflow or whether every voice segment is synthetic.",

@@ -12,6 +12,7 @@ PUBLIC_QUICKSTART_PATTERNS = (
     "comic_prompts.*.md",
     "comic*.png",
     "screenshot_*.png",
+    "quickstart-*.webp",
 )
 
 
