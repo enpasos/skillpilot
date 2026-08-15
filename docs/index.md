@@ -40,6 +40,7 @@ freigegebenen Interaktionssprachen.
 -   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
 -   [Release, Rollback und Stilllegung von SkillPilot Coach v1](deploy/openai-plugin-v1-release.md)
+-   [Aktive OpenAI-Review-Sperre für SkillPilot Coach v1.0.0](deploy/openai-plugin-v1-review-freeze.md)
 -   [OpenAI-Submission-Dossier für SkillPilot Coach v1](deploy/openai-plugin-v1-submission.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 

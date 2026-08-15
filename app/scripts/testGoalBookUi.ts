@@ -273,6 +273,8 @@ try {
   await page.getByRole('navigation', { name: 'Kapitel' })
     .getByRole('button', { name: /Geometrie/u })
     .click()
+  await results.getByRole('link', { name: /Natürliche Zahlen vergleichen/u })
+    .waitFor({ state: 'hidden' })
   assert(
     await results.getByRole('link').count() === 1
       && await results.getByRole('link', { name: /Flächeninhalte berechnen/u }).count() === 1,

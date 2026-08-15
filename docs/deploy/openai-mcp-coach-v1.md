@@ -1,18 +1,16 @@
 # ChatGPT-App „SkillPilot Coach v1“: Deployment und Cutover
 
-**Stand:** 12. August 2026
+**Stand:** 15. August 2026
 
-**Status:** Der mehrsprachige MCP-Coach ist der aktuelle ChatGPT-Entwicklungs- und
-Produktkandidat; der interne Arbeitsstand `1.0.0-SNAPSHOT` zielt auf die noch
-nicht öffentlich veröffentlichte Paketversion `1.0.0`.
-Die Clientbindung wird nach vollständiger Prüfung des ausgewählten
-OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
-freigegeben. Der V1-Vertrag verwendet serverauthentisiertes HTTPS, OpenAI-
-Connector-mTLS und OAuth/PKCE auf dem dedizierten
-`mcp-coach-v1.skillpilot.com`-Origin. mTLS wird zunächst kontrolliert im Modus
-`observe` nachgewiesen und vor der Veröffentlichung auf `enforce` gestellt.
-Permanente ID, Providerhinweis und Level-2-Konfiguration bleiben ausschließlich
-im First-Party-WebGUI.
+**Status:** Version `1.0.0` befindet sich im OpenAI-Portal im Status `Review`
+und ist noch nicht veröffentlicht. Der V1-Vertrag läuft auf dem dedizierten
+`mcp-coach-v1.skillpilot.com`-Origin mit serverauthentisiertem HTTPS,
+OpenAI-Connector-mTLS im Modus `enforce` und OAuth/PKCE. Bis zum Ende des
+Reviews gilt die aktive
+[Review-Sperre](openai-plugin-v1-review-freeze.md): Vertrag,
+Produktionsverhalten und Portalwerte bleiben unverändert. Permanente ID,
+Providerhinweis und Level-2-Konfiguration bleiben ausschließlich im
+First-Party-WebGUI.
 
 Dieses Runbook aktiviert den mehrsprachigen, chat-first MCP-Lerncoach mit zwei
 getrennt gebundenen MCP Apps UIs: der read-only Lernzielbildanzeige und dem

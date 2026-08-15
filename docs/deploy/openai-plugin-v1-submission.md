@@ -1,12 +1,19 @@
 # SkillPilot Coach v1: OpenAI-Submission-Dossier
 
-**Stand:** 14. August 2026
+**Stand:** 15. August 2026
 
-Dieses Dossier enthält die nicht geheimen, reproduzierbaren Angaben für den
-öffentlichen OpenAI-Plugin-Draft. Es bestätigt weder Einreichung noch
-Genehmigung oder Veröffentlichung. Draft, Domain-Challenge, Review-Zugang,
-Regionen, Attestierungen und Veröffentlichung werden im angemeldeten
-OpenAI-Plugin-Portal verwaltet.
+**Portalstatus:** `Review`; noch nicht genehmigt und noch nicht veröffentlicht
+
+**Änderungsstatus:** aktive
+[Review-Sperre](openai-plugin-v1-review-freeze.md)
+
+Dieses Dossier ist die eingecheckte, nicht geheime Referenz der am
+15. August 2026 eingereichten Angaben. Die Domain ist verifiziert und die
+Version befindet sich im OpenAI-Review. Das Dossier bestätigt weder Approval
+noch Veröffentlichung. Geheimnisse, Review-Zugang und die eigentlichen
+Attestierungen bleiben ausschließlich im angemeldeten OpenAI-Plugin-Portal.
+Die eingereichten Werte dürfen während der Review-Sperre nicht verändert oder
+neu gespeichert werden.
 
 Die V1-Identitäts- und Konfigurationsgrenze ist Web-first: permanente
 SkillPilot-ID, CREATE/EXISTING, Providerhinweis und die vollständige Level-2-

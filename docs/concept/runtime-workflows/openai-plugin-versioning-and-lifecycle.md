@@ -235,19 +235,36 @@ werden nicht weiterbetrieben.
 
 ### 7.0 Unveröffentlichte Arbeitsversion
 
+Eine noch nicht veröffentlichte Version ist nur bis zur Portal-Einreichung ein
+fortschreibbarer Arbeitsdraft. Ab **Submit for Review** gilt eine separate,
+maschinenlesbare Review-Sperre. Der Lifecycle-Wert bleibt bis zur tatsächlichen
+Veröffentlichung `DRAFT`; er sagt nichts über die Änderbarkeit während des
+Reviews aus. Während der Sperre sind Paket, Portalwerte und beobachtbares
+Runtime-Verhalten eingefroren, und `prepare` ist verboten. Die konkrete
+V1-Regel steht in
+[`openai-plugin-v1-review-freeze.md`](../../deploy/openai-plugin-v1-review-freeze.md).
+
+Approval oder Rejection hebt die Sperre nicht automatisch auf. Eine
+Remediation benötigt eine ausdrückliche, begrenzte Product-Owner-Entscheidung
+und danach eine neue Review-Baseline. Nach tatsächlicher Veröffentlichung gilt
+die bestehende dauerhafte Published-Immutabilität.
+
 SemVer bezeichnet den beabsichtigten öffentlichen Paketstand, nicht jeden
-internen Arbeitsschritt. Solange eine Paketversion noch nicht tatsächlich im
-OpenAI-Portal veröffentlicht wurde, darf SkillPilot denselben internen Draft
-beliebig oft fortschreiben, deployen, scannen, korrigieren und erneut prüfen.
-Commits, interne Deployments und Reviewkorrekturen erhöhen die Paketversion
-nicht.
+internen Arbeitsschritt. Bis **vor** der Portal-Einreichung darf SkillPilot
+denselben internen Draft beliebig oft fortschreiben, deployen, scannen,
+korrigieren und erneut prüfen. Ab **Submit for Review** ist das nur nach einer
+ausdrücklichen, begrenzten Aufhebung und anschließenden Neusetzung der
+Review-Sperre zulässig. Solche internen Arbeitsschritte erhöhen die
+Paketversion nicht.
 
 Die Grenze ist der reale Veröffentlichungsstatus:
 
 - `contracts/drafts/openai/<plugin>/<version>-SNAPSHOT/` ist ein
-  reproduzierbarer, aber fortschreibbarer Arbeitsstand. `-SNAPSHOT` ist nur
-  dessen interne Kennzeichnung; Manifest und OpenAI-Portal behalten die
-  vorgesehene öffentliche Zielversion `<version>`;
+  reproduzierbarer Arbeitsstand, der nur vor der Portal-Einreichung
+  fortschreibbar ist. Während eines Reviews wird er durch den separaten
+  Review-Freeze versiegelt. `-SNAPSHOT` ist nur dessen interne Kennzeichnung;
+  Manifest und OpenAI-Portal behalten die vorgesehene öffentliche Zielversion
+  `<version>`;
 - `contracts/published/openai/<plugin>/<version>/` darf erst nach bestätigtem
   **Publish** im OpenAI-Portal entstehen und ist danach unveränderlich;
 - der maschinenlesbare `release-index.json` enthält ausschließlich tatsächlich
@@ -255,17 +272,17 @@ Die Grenze ist der reale Veröffentlichungsstatus:
 - sobald eine Version veröffentlicht ist, erfordert jede weitere Änderung am
   Plugin-Paket je nach Änderung einen PATCH-, MINOR- oder MAJOR-Schritt.
 
-Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde
-noch nicht veröffentlicht. Lernzielvisualisierung und interaktives
-Karteikartenlernen werden als zwei getrennte aktive hashgebundene
-`text/html;profile=mcp-app`-Ressourcen in den bestehenden `1.0.0`-Draft
-aufgenommen; es entsteht weder `1.0.1` noch ein Published-Snapshot. Bild-
-Renderer und Kartenlernstart verweisen jeweils mit `ui.resourceUri` und
-`openai/outputTemplate` auf ihre eigene Ressource. Kartenbewertung und
-gewöhnliche Werkzeuge bleiben ungebunden. Alle
-zugehörigen Contract-, UI- und Skill-Artefakte werden beim nächsten `prepare`
-gemeinsam im selben Draft aktualisiert. Bereits an reale Test-Clients
-ausgelieferte Hash-URIs bleiben byte-identisch und passiv lesbar.
+Für die aktuelle Linie bedeutet das konkret: `SkillPilot Coach v1` wurde noch
+nicht veröffentlicht, befindet sich aber bereits im Portal-Review. Der
+eingereichte `1.0.0`-Draft enthält zwei getrennte aktive hashgebundene
+`text/html;profile=mcp-app`-Ressourcen für Lernzielvisualisierung und
+interaktives Karteikartenlernen. Bild-Renderer und Kartenlernstart verweisen
+jeweils mit `ui.resourceUri` und `openai/outputTemplate` auf ihre eigene
+Ressource; Kartenbewertung und gewöhnliche Werkzeuge bleiben ungebunden. Bis zu
+einer ausdrücklich autorisierten Remediation oder tatsächlichen
+Veröffentlichung werden weder diese Artefakte noch der Draft mit `prepare`
+aktualisiert. Bereits ausgelieferte Hash-URIs bleiben byte-identisch und passiv
+lesbar.
 
 ### 7.1 Server-Build ohne Plugin-Release
 
@@ -1332,7 +1349,9 @@ Codex soll die Architektur so vorbereiten, dass die erste Veröffentlichung bere
 7. **Draft- und Published-Snapshots trennen**
    - Tool-, Schema-, Ressourcen-, UI-, Skill- und Security-Metadaten automatisiert exportieren;
    - Snapshotpfad und Hashes standardisieren;
-   - denselben unveröffentlichten V1-Draft ohne Versionssprung fortschreibbar halten;
+   - denselben unveröffentlichten V1-Draft nur bis `Submit for Review` ohne
+     Versionssprung fortschreibbar halten; während der Portalprüfung gilt die
+     separate Review-Sperre;
    - Published-Baseline erst nach bestätigter Portal-Veröffentlichung
      unveränderlich einfrieren.
 
