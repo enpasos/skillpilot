@@ -301,6 +301,10 @@ try {
   const termsPage = await termsContext.newPage()
   await installApi(termsPage)
   await termsPage.goto(baseUrl)
+  assert(
+    await termsPage.getByRole('link', { name: 'Lernzielbuch', exact: true }).count() === 0,
+    'the learning-goal book stays discoverable only from the local Workbench',
+  )
   await termsPage.getByRole('button', { name: 'Jetzt starten' }).click()
   await termsPage.getByRole('heading', {
     name: 'Bitte akzeptiere die Nutzungsbedingungen, um mit SkillPilot zu starten:',

@@ -60,6 +60,40 @@ test("submitted OpenAI V1 review baseline remains exact", () => {
   });
 });
 
+test("review exception keeps the submitted hash and pins the Workbench-only runtime", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  assert.deepEqual(freeze.authorizedRuntimeExceptions, [
+    {
+      id: "2026-08-15-goal-book-public-promotion-off",
+      approvedAt: "2026-08-15",
+      approvedBy: "product-owner",
+      reason:
+        "Keep the incomplete learning-goal book discoverable only from the local Workbench.",
+      scope:
+        "Disable the public start-page link and remove the public sitemap entry; " +
+        "retain the read-only route, assets, and local Workbench links for later reactivation.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-no-submitted-plugin-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        authorizedSha256:
+          "3834b8c813719e21dffb767b9e5fe60890845769e188b49a239da57f4577b9a4",
+      },
+      additionalFile: {
+        path: "app/public/sitemap.xml",
+        submittedSha256:
+          "bbe29194631db31a643773035aef2ee734f76e6f1188f669a5decdeaa2a140f0",
+        authorizedSha256:
+          "b1f26f19e72a5bf698c88289b502ffab669c0a330356e1549049d38437c60869",
+      },
+    },
+  ]);
+});
+
 test("protected tree digest changes for changed, added, or removed files", () => {
   const root = mkdtempSync(resolve(tmpdir(), "skillpilot-v1-review-freeze-"));
   try {

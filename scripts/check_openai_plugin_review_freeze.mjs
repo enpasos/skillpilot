@@ -18,6 +18,37 @@ const defaultRepositoryRoot = resolve(
 export const reviewFreezeRelativePath =
   "contracts/openai/skillpilot-coach-v1/review-freeze.json";
 
+const expectedAuthorizedRuntimeExceptions = [
+  {
+    id: "2026-08-15-goal-book-public-promotion-off",
+    approvedAt: "2026-08-15",
+    approvedBy: "product-owner",
+    reason:
+      "Keep the incomplete learning-goal book discoverable only from the local Workbench.",
+    scope:
+      "Disable the public start-page link and remove the public sitemap entry; " +
+      "retain the read-only route, assets, and local Workbench links for later reactivation.",
+    target: "current-production-web-frontend",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-no-submitted-plugin-contract-or-review-flow-effect",
+    protectedFile: {
+      path: "app/src/components/SessionSetup.tsx",
+      submittedSha256:
+        "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+      authorizedSha256:
+        "3834b8c813719e21dffb767b9e5fe60890845769e188b49a239da57f4577b9a4",
+    },
+    additionalFile: {
+      path: "app/public/sitemap.xml",
+      submittedSha256:
+        "bbe29194631db31a643773035aef2ee734f76e6f1188f669a5decdeaa2a140f0",
+      authorizedSha256:
+        "b1f26f19e72a5bf698c88289b502ffab669c0a330356e1549049d38437c60869",
+    },
+  },
+];
+
 export function loadOpenAiPluginReviewFreeze(
   repositoryRoot = defaultRepositoryRoot,
 ) {
@@ -79,8 +110,21 @@ export function verifyOpenAiPluginReviewFreeze({
     freeze.unfreezeRequires,
     "explicit-product-owner-approval-with-reason-scope-and-target-version",
   );
+  assert.deepEqual(
+    freeze.authorizedRuntimeExceptions,
+    expectedAuthorizedRuntimeExceptions,
+    "Review-time runtime exceptions must match the explicitly approved, hash-pinned scope.",
+  );
   assert.equal(Array.isArray(freeze.protectedTrees), true);
   assert.equal(Array.isArray(freeze.protectedFiles), true);
+
+  for (const exception of expectedAuthorizedRuntimeExceptions) {
+    assertFileSha256(
+      safeRepositoryPath(repositoryRoot, exception.additionalFile.path),
+      exception.additionalFile.authorizedSha256,
+      `Authorized review exception changed: ${exception.additionalFile.path}`,
+    );
+  }
 
   const expectedDraftPath =
     "contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT";
@@ -155,6 +199,22 @@ export function verifyOpenAiPluginReviewFreeze({
   }
   for (const protectedFile of freeze.protectedFiles) {
     assert.match(protectedFile.sha256, /^[0-9a-f]{64}$/u);
+    const authorizedException = expectedAuthorizedRuntimeExceptions.find(
+      (entry) => entry.protectedFile.path === protectedFile.path,
+    );
+    if (authorizedException) {
+      assert.equal(
+        protectedFile.sha256,
+        authorizedException.protectedFile.submittedSha256,
+        `Submitted V1 baseline changed: ${protectedFile.path}`,
+      );
+      assertFileSha256(
+        safeRepositoryPath(repositoryRoot, protectedFile.path),
+        authorizedException.protectedFile.authorizedSha256,
+        `Authorized review exception changed: ${protectedFile.path}`,
+      );
+      continue;
+    }
     assertFileSha256(
       safeRepositoryPath(repositoryRoot, protectedFile.path),
       protectedFile.sha256,

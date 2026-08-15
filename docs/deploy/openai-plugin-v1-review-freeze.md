@@ -129,6 +129,30 @@ Product Owners mit:
    eingereicht werden muss;
 5. neuer, nach vollständiger Prüfung erneut gesetzter Freeze-Baseline.
 
+### 6.1 Eng begrenzte Ausnahme: öffentliche Lernzielbuch-Bewerbung aus
+
+Der Product Owner hat am 15. August 2026 entschieden, das noch unvollständige
+Lernzielbuch vorerst ausschließlich über die lokale Workbench auffindbar zu
+machen. Dafür ist genau folgende Ausnahme freigegeben:
+
+- Auf der öffentlichen Startseite bleibt
+  `PUBLIC_GOAL_BOOK_PROMOTION_ENABLED` ausgeschaltet.
+- Der öffentliche Sitemap-Eintrag `/lernzielbuch` entfällt.
+- Die Read-only-Route, ihre Artefakte sowie die deutschen und englischen
+  Workbench-Einstiege bleiben erhalten. Dadurch kann die Bewerbung später nach
+  einer neuen ausdrücklichen Produktentscheidung wieder aktiviert werden.
+- Ziel ist ausschließlich das aktuelle Produktions-Webfrontend. Das
+  eingereichte Plugin bleibt `skillpilot-coach-v1` Version `1.0.0`.
+- Ein Zurückziehen oder erneutes Einreichen im OpenAI-Portal ist nicht nötig:
+  Paket, Skill, First-Party-Startablauf, MCP/OAuth-Vertrag, Portalwerte,
+  Reviewfälle, Fixtures und Reviewartefakte bleiben unverändert.
+
+Der ursprüngliche SHA-256 von `SessionSetup.tsx` bleibt als eingereichte
+Baseline erhalten. Der freigegebene neue SHA-256 sowie der Sitemap-Hash sind
+zusätzlich in `review-freeze.json` hinterlegt und werden vom Freeze-Checker
+gegen eine fest codierte Ausnahmeliste geprüft. Andere Änderungen an diesen
+Dateien bleiben fail-closed gesperrt.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
