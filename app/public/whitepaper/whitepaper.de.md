@@ -102,8 +102,6 @@ Diese drei Typen beschreiben **Lernmodi**. Die in Abschnitt 3.3 beschriebene did
 
 Im Fach **Mathematik** innerhalb der Gymnasium-Landschaften werden beispielsweise **alle drei Knotentypen** eingesetzt.
 
-![Aktuelle interaktive Karteikartenübung als Beispiel für den Lernmodus „Sich merken“](current-memory.png)
-
 **Formale Spezifikation:** Die mathematische Definition des Graphen (u.a. Acyclicity, Effective Requires) ist öffentlich dokumentiert:
 [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
@@ -127,7 +125,9 @@ Die in Kapitel 3.1 für den **aktiven Scope** berechnete **Frontier** dient dem 
 
 #### Mastery: Fortschritt als Evidenzmodell
 
-![Aktueller Lernfortschritt im persönlichen Curriculum](current-cockpit.png)
+Die aktuelle Cockpit-Ansicht trennt gewöhnliches Karteikartenüben vom evidenzwirksamen **Verified Recall**.
+
+![Aktueller Fortschritts- und Prüfstatus eines aktiven Memorierlernziels](current-mastery.png)
 
 **Mastery** ist der backendseitige Lernzustand auf atomaren Zielen, kein Chatprotokoll. Bei gewöhnlichen atomaren Zielen kann er im Cockpit angepasst oder vom Lerncoach erst nach ausreichender Evidenz gespeichert werden. Orientierungsknoten verwenden nur einen Abschlussmarker und bescheinigen keine fachliche Beherrschung. Bei Memorierknoten wird Mastery aus dem serverseitigen Kartenstatus und dem strengen **Verified Recall** abgeleitet; gewöhnliches Karteikartenüben verändert nur den Wiederholungsplan. Clusterfortschritt wird gewichtet aus den enthaltenen Zielen aggregiert.
 
@@ -187,9 +187,9 @@ SkillPilot nutzt bereits freigegebene Übungs- und Prüfungsknoten für passende
 
 ### 4.1 Datenansatz: Sicherheit, Datenschutz & Souveränität by Design
 
-Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**. Der aktuelle Übergang aus der First-Party-Weboberfläche öffnet ChatGPT im Browser mit einer vorbereiteten Startnachricht für die neue, zeitlich begrenzte Lernsession.
+Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**. Die folgende Architekturübersicht zeigt, wie dauerhafte pseudonyme Identität, kurzlebige Lernsession, App-Autorisierung und autoritativer Lernzustand voneinander getrennt bleiben.
 
-![Aktueller Übergang von SkillPilot zu einer vorbereiteten Lernsession in ChatGPT im Browser](current-handoff.png)
+![Schematische Darstellung der Datentrennung](architecture.de.png)
 
 #### Pseudonym statt Identität
 
@@ -199,11 +199,13 @@ Lernstände werden unter einer dauerhaften **pseudonymen SkillPilot-ID** geführ
 
 Jeder bewusste Start von **SkillPilot Coach v1** aus der First-Party-Weboberfläche erzeugt eine neue zufällige `learningSessionId` mit einer absoluten Gültigkeit von genau 24 Stunden und öffnet einen neuen vorbereiteten Chat. SkillPilot setzt die Session automatisch in die vorbereitete Startnachricht ein; die lernende Person muss keinen technischen Wert kopieren oder verwalten. Die Gültigkeit wird weder durch Nutzung noch durch eine OAuth-Aktualisierung verlängert. Die Session übernimmt die im bestätigten Kontext festgelegte Kommunikationssprache Deutsch oder Englisch. Eine einzige sprachneutrale V1-App bedient beide Sprachen. OAuth autorisiert die App, wählt aber weder die lernende Person noch ihren Lernkontext aus.
 
+![Aktueller Übergang von SkillPilot zu einer vorbereiteten Lernsession in ChatGPT im Browser](current-handoff.png)
+
 Die Verbindung zum Backend wird unabhängig davon mehrschichtig abgesichert: SkillPilot akzeptiert fachliche Zugriffe nur über die zugelassene und authentisierte Coach-App und nur zusammen mit einer gültigen Lernsession. Die App-Freigabe allein eröffnet keinen Lernstand; eine Lernsession allein gewährt keinen Backend-Zugriff. So bleiben Integrationsberechtigung und zeitlich begrenzter Lernkontext bewusst getrennt.
 
 #### Dialoginhalt ist entkoppelt
 
-Das SkillPilot-Backend speichert keinen vollständigen Lerncoach-Chatverlauf. Es verarbeitet nur die zweckgebundenen Angaben, die für Lernstand, Navigation und freigegebene Aktionen benötigt werden. Chatdaten beim gewählten KI-Anbieter unterliegen dessen Bedingungen. So bleibt der zentrale SkillPilot-Datenbestand begrenzt.
+Das SkillPilot-Backend speichert keinen vollständigen Lerncoach-Chatverlauf. Es verarbeitet nur die zweckgebundenen Angaben, die für Lernstand, Navigation und freigegebene Aktionen benötigt werden. Der vollständige Chatverlauf in ChatGPT unterliegt den Bedingungen von ChatGPT/OpenAI. So bleibt der zentrale SkillPilot-Datenbestand begrenzt.
 
 **Empfehlung für Bildungsinstitutionen:**
 Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
@@ -212,9 +214,9 @@ Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles
 
 Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkraft und wird **lokal** gespeichert (z.B. in geschützter Ablage) – nicht zentral.
 
-#### KI-Frontend / Provider-Wahl (Souveränität)
+#### KI-Frontend / Providergrenze
 
-Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Die derzeit unterstützte Oberfläche für **SkillPilot Coach v1** ist **ChatGPT im Browser**. Die First-Party-SkillPilot-Weboberfläche ist responsiv und kann auch im mobilen Browser genutzt werden; native ChatGPT-Apps gehören derzeit nicht zum unterstützten Ablauf. Das darunterliegende Betriebssystem ist nicht Teil des Supportversprechens. Weitere Provider-Integrationen werden getrennt geführt und erst nach einem vollständigen End-to-End-Akzeptanztest sowie einer Prüfung der Datenschutzgrenzen freigegeben.
+Der Lerncoach-Dialog von **SkillPilot Coach v1** findet in **ChatGPT im Browser** statt und unterliegt dem Betriebs- und Datenschutzrahmen von ChatGPT/OpenAI. Die First-Party-SkillPilot-Weboberfläche ist responsiv und kann auch im mobilen Browser genutzt werden; native ChatGPT-Apps gehören derzeit nicht zum unterstützten Ablauf. Das darunterliegende Betriebssystem ist nicht Teil des Supportversprechens. Weitere Provider-Integrationen werden getrennt geführt und erst nach einem vollständigen End-to-End-Akzeptanztest sowie einer Prüfung der Datenschutzgrenzen freigegeben.
 
 Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie Tool-Nutzung, Stabilität, Datenschutzgrenzen, Struktur und Didaktik zuverlässig erfüllen.
 

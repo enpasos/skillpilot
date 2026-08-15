@@ -2,9 +2,13 @@ import { createServer as createHttpServer } from 'node:http'
 import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { createServer as createViteServer } from 'vite'
+import { createServer as createViteServer, type Plugin } from 'vite'
 
-export const startViteTestServer = async (root: string, fixtureEntry: string) => {
+export const startViteTestServer = async (
+  root: string,
+  fixtureEntry: string,
+  options: { plugins?: Plugin[] } = {},
+) => {
   const cacheDir = await mkdtemp(join(tmpdir(), 'skillpilot-vite-test-'))
   let vite: Awaited<ReturnType<typeof createViteServer>>
   try {
@@ -12,6 +16,7 @@ export const startViteTestServer = async (root: string, fixtureEntry: string) =>
       root,
       cacheDir,
       configFile: false,
+      plugins: options.plugins ?? [],
       appType: 'custom',
       logLevel: 'error',
       // Discover dependencies from the fixture only. Scanning the production
@@ -52,8 +57,22 @@ export const startViteTestServer = async (root: string, fixtureEntry: string) =>
         }
         export const createHotContext = () => hotContext
         export const injectQuery = (url) => url
-        export const updateStyle = () => {}
-        export const removeStyle = () => {}
+        const styles = new Map()
+        export const updateStyle = (id, content) => {
+          let style = styles.get(id)
+          if (!style) {
+            style = document.createElement('style')
+            style.setAttribute('data-vite-dev-id', id)
+            document.head.appendChild(style)
+            styles.set(id, style)
+          }
+          style.textContent = content
+        }
+        export const removeStyle = (id) => {
+          const style = styles.get(id)
+          style?.remove()
+          styles.delete(id)
+        }
       `)
       return
     }

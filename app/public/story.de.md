@@ -52,6 +52,8 @@ Sende die vorbereitete Nachricht unverändert ab. Der Coach lädt deinen Lernsta
 
 ![SkillPilot Coach v1 führt durch ein konkretes Lernziel](quickstart-06-coach.webp)
 
+![Illustration: Der Lerncoach stimmt den Chat mit dem SkillPilot-Lernstand ab](comic03.de.png)
+
 Du musst keine Session-ID kopieren, bearbeiten oder selbst in ChatGPT eintragen.
 
 ## Lernen auf dem Smartphone
@@ -75,6 +77,8 @@ Bei jedem Klick auf **Lernen starten** erzeugt SkillPilot eine neue, zufällige 
 ## Fortschritt im Cockpit
 
 ![Aktuelles SkillPilot-Cockpit mit Lernbaum, aktivem Ziel und Zielvisualisierung](quickstart-07-cockpit.webp)
+
+![Illustration: Lernerfolge im SkillPilot-Cockpit ansehen](comic05.de.png)
 
 *Cockpit und Lerncoach verwenden denselben Lernstand. Im Cockpit siehst du deinen Fortschritt und sinnvolle nächste Ziele.*
 

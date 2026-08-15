@@ -54,6 +54,8 @@ Send the prepared message unchanged. The coach loads your learning state and gui
 
 ![SkillPilot Coach v1 guiding the learner through a specific learning goal](quickstart-06-coach.webp)
 
+![Illustration: The learning coach aligns the chat with the SkillPilot learning state](comic03.en.png)
+
 You do not need to copy, edit, or manually enter a session ID in ChatGPT.
 
 ## Learning on a Smartphone
@@ -77,6 +79,8 @@ Every time you select **Start Learning**, SkillPilot creates a new random learni
 ## Progress in the Cockpit
 
 ![Current SkillPilot Cockpit with learning tree, active goal, and goal visualization](quickstart-07-cockpit.webp)
+
+![Illustration: Viewing learning achievements in the SkillPilot Cockpit](comic05.en.png)
 
 *The Cockpit and learning coach use the same learning state. The Cockpit shows your progress and useful next goals.*
 

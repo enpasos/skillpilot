@@ -104,10 +104,6 @@ These three types describe **learning modes**. The didactic route described in s
 
 In **mathematics** within the Gymnasium landscapes, **all three node types** are used.
 
-<div style="page-break-after: always;"></div>
-
-![Current interactive flashcard practice as an example of the memorization learning mode](current-memory.png)
-
 **Formal specification:** The mathematical definition of the graph (e.g., acyclicity, Effective Requires) is publicly documented:
 [Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
@@ -131,7 +127,9 @@ The **frontier** calculated in chapter 3.1 for the **active scope** serves as a 
 
 #### Mastery: Progress as an Evidence Model
 
-![Current learning progress in the Personal Curriculum](current-cockpit.png)
+The current Cockpit view separates ordinary flashcard practice from evidence-bearing **Verified Recall**.
+
+![Current progress and assessment state for an active memorization goal](current-mastery.png)
 
 **Mastery** is the backend-owned learning state on atomic goals, not a chat log. For ordinary atomic goals, it can be adjusted in the Cockpit or stored by the learning coach only after sufficient evidence. Orientation nodes use a completion marker only and do not certify subject mastery. For memorization nodes, mastery is derived from server-side card state and strict **Verified Recall**; ordinary flashcard practice changes only the repetition schedule. Cluster progress is aggregated from contained goals using their weights.
 
@@ -193,9 +191,9 @@ SkillPilot already uses approved practice and assessment nodes for suitable scop
 
 ### 4.1 Data Approach: Security, Privacy & Sovereignty by Design
 
-A central pillar of SkillPilot is **data separation**. The current handoff from the first-party web interface opens ChatGPT in a browser with a prepared start message for the new, time-bounded learning session.
+A central pillar of SkillPilot is **data separation**. The following architecture overview shows how permanent pseudonymous identity, the short-lived learning session, app authorization, and authoritative learning state remain separated.
 
-![Current handoff from SkillPilot to a prepared learning session in ChatGPT in a browser](current-handoff.png)
+![Schematic representation of data separation](architecture.en.png)
 
 #### Pseudonym Instead of Identity
 
@@ -205,11 +203,13 @@ Learning states are managed under a permanent **pseudonymous SkillPilot ID**. In
 
 Each deliberate start of **SkillPilot Coach v1** from the first-party web app creates a new random `learningSessionId` with an absolute lifetime of exactly 24 hours and opens a new prepared chat. SkillPilot inserts the session automatically into the prepared start message; the learner does not need to copy or manage any technical value. Its lifetime is not extended by use or by an OAuth refresh. The session carries the German or English communication locale selected in the confirmed context. One language-neutral V1 app serves both languages. OAuth authorizes the app but does not select the learner or learning context.
 
+![Current handoff from SkillPilot to a prepared learning session in ChatGPT in a browser](current-handoff.png)
+
 The backend connection is secured independently through several layers: SkillPilot accepts functional access only through the admitted and authenticated coach app and only together with a valid learning session. App authorization alone does not open a learning state, and a learning session alone does not grant backend access. This keeps integration permission and the time-bounded learning context deliberately separate.
 
 #### Dialog Content Is Decoupled
 
-The SkillPilot backend does not store the complete learning-coach chat history. It processes only the purpose-bound information needed for learning state, navigation, and authorized actions. Chat data held by the selected AI provider is governed by that provider's terms. This keeps SkillPilot's central data store limited.
+The SkillPilot backend does not store the complete learning-coach chat history. It processes only the purpose-bound information needed for learning state, navigation, and authorized actions. The complete chat history in ChatGPT is governed by ChatGPT/OpenAI terms. This keeps SkillPilot's central data store limited.
 
 **Recommendation for educational institutions:**
 Clear guidelines on which data should not be shared in learning-coach chats (sensitive personal data) and how learners are supported safely.
@@ -218,9 +218,9 @@ Clear guidelines on which data should not be shared in learning-coach chats (sen
 
 The mapping "who is which pseudonym?" stays with the institution/teacher and is stored **locally** (e.g., in protected storage) - not centrally.
 
-#### AI Frontend / Provider Choice (Sovereignty)
+#### AI Frontend / Provider Boundary
 
-The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. The currently supported surface for **SkillPilot Coach v1** is **ChatGPT in a browser**. The first-party SkillPilot web app is responsive and can also be used in a mobile browser; native ChatGPT apps are not currently part of the supported workflow. The underlying operating system is not part of the support promise. Further provider integrations are kept separate and released only after a complete end-to-end acceptance test and a review of their privacy boundaries.
+The learning-coach dialog for **SkillPilot Coach v1** takes place in **ChatGPT in a browser** and is governed by the operational and privacy framework of ChatGPT/OpenAI. The first-party SkillPilot web app is responsive and can also be used in a mobile browser; native ChatGPT apps are not currently part of the supported workflow. The underlying operating system is not part of the support promise. Further provider integrations are kept separate and released only after a complete end-to-end acceptance test and a review of their privacy boundaries.
 
 For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
 
