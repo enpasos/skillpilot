@@ -24,6 +24,7 @@ const networkOnlyNavigations = [
   '/learner/example-goal',
   '/learner/example-goal?l=example-focus',
   '/api/public/openai/review/skillpilot-coach-v1/1.0.0/example.mp4',
+  '/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/example.mp4',
 ]
 
 for (const urlPath of networkOnlyNavigations) {

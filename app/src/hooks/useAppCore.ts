@@ -22,6 +22,7 @@ import {
   applyCompositionViewProjection,
   deriveRuntimeGoalPlacementFilters,
   deriveRuntimeCompositionScope,
+  selectCompositionManagedLandscapeIds,
   shouldApplyLearnerPlacementFallback,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
@@ -594,7 +595,10 @@ export function useAppCore({
   )
 
   const projectedLandscapeEntries = useMemo(() => {
-    const compositionManagedLandscapeIds = new Set(runtimeCompositionRequests.keys())
+    const compositionManagedLandscapeIds = selectCompositionManagedLandscapeIds(
+      role,
+      runtimeCompositionRequests.keys(),
+    )
     const rawEntriesWithMatchedCompositionView = graphSourceLandscapeEntries.filter((entry) =>
       !!effectiveMatchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
     )
