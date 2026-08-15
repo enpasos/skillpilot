@@ -99,10 +99,10 @@ try {
     await configurePage(page)
     await page.goto(`${server.baseUrl}/scripts/fixtures/curriculaQualityLayoutUi.html`)
 
-    const card = page.getByTestId('canonical-gymnasium-overview-card')
+    const card = page.getByTestId('curriculum-quality-overview-card')
     await card.waitFor()
-    const grid = page.getByTestId('canonical-gymnasium-quality-grid')
-    const rows = page.getByTestId('canonical-gymnasium-quality-row')
+    const grid = page.getByTestId('curriculum-quality-grid')
+    const rows = page.getByTestId('curriculum-quality-row')
     assert(await rows.count() === subjectMaturities.length, 'every subject has one quality row')
 
     const rowGeometry = await rows.evaluateAll((elements) => elements.map((element) => {

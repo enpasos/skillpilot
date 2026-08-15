@@ -1085,7 +1085,7 @@ export const CurriculaView: React.FC = () => {
                     isCanonicalGymnasiumOverview(curriculum) ? 'md:col-span-2' : ''
                   }`}
                   data-testid={isCanonicalGymnasiumOverview(curriculum)
-                    ? 'canonical-gymnasium-overview-card'
+                    ? 'curriculum-quality-overview-card'
                     : undefined}
                 >
                   {(() => {
@@ -1169,7 +1169,7 @@ export const CurriculaView: React.FC = () => {
                         </div>
                         <div
                           className="mt-3 grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))]"
-                          data-testid="canonical-gymnasium-quality-grid"
+                          data-testid="curriculum-quality-grid"
                         >
                           {qualityRows.map(({ subject, quality }) => {
                             const qualityStatus = getGymnasiumSubjectQualityStatus(
@@ -1181,7 +1181,7 @@ export const CurriculaView: React.FC = () => {
                               <div
                                 key={quality?.subject ?? subject}
                                 className="grid min-w-0 grid-cols-1 gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center dark:bg-slate-900/40"
-                                data-testid="canonical-gymnasium-quality-row"
+                                data-testid="curriculum-quality-row"
                                 title={quality
                                   ? `${statusTitle} · ${getQualityTooltip(quality, qualityCopy)}`
                                   : statusTitle}
