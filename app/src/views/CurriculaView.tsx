@@ -1081,7 +1081,12 @@ export const CurriculaView: React.FC = () => {
               {filteredCurricula.map((curriculum) => (
                 <div
                   key={curriculum.curriculumId}
-                  className="rounded-2xl border border-border-color bg-white/40 dark:bg-slate-800/40 p-5"
+                  className={`rounded-2xl border border-border-color bg-white/40 p-5 dark:bg-slate-800/40 ${
+                    isCanonicalGymnasiumOverview(curriculum) ? 'md:col-span-2' : ''
+                  }`}
+                  data-testid={isCanonicalGymnasiumOverview(curriculum)
+                    ? 'canonical-gymnasium-overview-card'
+                    : undefined}
                 >
                   {(() => {
                     const hasCurriculumCertificate = curriculum.champions.some(
@@ -1162,7 +1167,10 @@ export const CurriculaView: React.FC = () => {
                         <div className="text-xs uppercase tracking-wider text-text-secondary">
                           {qualityCopy.subjectStatusTitle}
                         </div>
-                        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                        <div
+                          className="mt-3 grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))]"
+                          data-testid="canonical-gymnasium-quality-grid"
+                        >
                           {qualityRows.map(({ subject, quality }) => {
                             const qualityStatus = getGymnasiumSubjectQualityStatus(
                               subject,
@@ -1172,7 +1180,8 @@ export const CurriculaView: React.FC = () => {
                             return (
                               <div
                                 key={quality?.subject ?? subject}
-                                className="flex items-center justify-between gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs dark:bg-slate-900/40"
+                                className="grid min-w-0 grid-cols-1 gap-2 rounded-lg border border-border-color bg-white/70 px-3 py-2 text-xs sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center dark:bg-slate-900/40"
+                                data-testid="canonical-gymnasium-quality-row"
                                 title={quality
                                   ? `${statusTitle} · ${getQualityTooltip(quality, qualityCopy)}`
                                   : statusTitle}
@@ -1180,9 +1189,9 @@ export const CurriculaView: React.FC = () => {
                                 <span className="min-w-0 truncate font-medium text-text-primary">
                                   {subject}
                                 </span>
-                                <span className="flex shrink-0 items-center gap-1.5">
+                                <span className="flex max-w-full flex-wrap items-center gap-1.5 sm:justify-end">
                                   <span
-                                    className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
+                                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 font-semibold ${qualityStatusBadgeClass[qualityStatus]}`}
                                   >
                                     <span
                                       aria-hidden="true"
@@ -1191,7 +1200,7 @@ export const CurriculaView: React.FC = () => {
                                     {curriculaViewCopy.qualityStatusLabels[qualityStatus]}
                                   </span>
                                   {quality && (
-                                    <span className={`rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
+                                    <span className={`whitespace-nowrap rounded-full border px-2 py-0.5 font-semibold ${maturityClass[quality.maturity]}`}>
                                       {quality.maturity}
                                     </span>
                                   )}

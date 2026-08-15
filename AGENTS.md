@@ -1401,7 +1401,6 @@ provider policy and product review explicitly permit it.
   `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`.
 
 ### 12.2 Setup Guides
-- **Google Gemini:** See `ai/google gem/gemini.md` for the current status notes.
 - **ChatGPT Visible Session (rollback package):** See
   `ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md` and
   `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
