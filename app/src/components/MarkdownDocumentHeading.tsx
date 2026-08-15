@@ -20,7 +20,11 @@ const getSkillPilotSubtitle = (text: string) => {
   return null
 }
 
-export const MarkdownDocumentH1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ children, ...props }) => {
+interface MarkdownDocumentH1Props extends React.HTMLAttributes<HTMLHeadingElement> {
+  compact?: boolean
+}
+
+export const MarkdownDocumentH1: React.FC<MarkdownDocumentH1Props> = ({ children, compact = false, ...props }) => {
   const subtitle = getSkillPilotSubtitle(getTextContent(children).trim())
 
   if (!subtitle) {
@@ -32,10 +36,10 @@ export const MarkdownDocumentH1: React.FC<React.HTMLAttributes<HTMLHeadingElemen
   }
 
   return (
-    <h1 {...props} className="not-prose mb-10">
+    <h1 {...props} className={`not-prose ${compact ? 'mb-6' : 'mb-10'}`}>
       <span className="flex items-center gap-3 text-4xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
         <Send size={44} strokeWidth={2} className="shrink-0 text-amber-500" aria-hidden="true" />
-        <span>SkillPilot</span>
+        <span>SkillPilot{' '}</span>
       </span>
       <span className="mt-3 block text-2xl font-normal tracking-normal text-text-secondary">
         {subtitle}

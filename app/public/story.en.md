@@ -1,208 +1,67 @@
-# Start SkillPilot in 5 Minutes
+# SkillPilot: Start in 5 Steps
 
-**Status:** July 30, 2026
+**Status:** August 15, 2026
 
-SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
+> **Publication status:** SkillPilot Coach v1, as described here, is currently undergoing publication review.
 
-> **Architecture status:** German, English, and every later supported interaction
-> language use the same ChatGPT plugin line **SkillPilot Coach v1** at
-> `https://mcp-coach-v1.skillpilot.com/mcp`. SkillPilot creates a fresh learning
-> session for every explicit UI start and pins the interaction language in that
-> session. Plugin instructions and tool metadata are neutral English; all
-> learner-facing backend payloads and coach replies use the session language.
+SkillPilot connects the learning context you configure on [skillpilot.com](https://skillpilot.com) with your learning coach in ChatGPT. You use **ChatGPT in a browser**.
 
-All you need is a browser and a ChatGPT account for which the required GPT or app is available. Availability and usage limits are controlled by ChatGPT.
+For students, the browser-based web app on a smartphone is particularly useful: you can enter answers as text by voice, work on paper, and then upload a photo of your solution. The native ChatGPT app is currently not part of the supported SkillPilot workflow.
 
-> **Note:** For now, please use SkillPilot in the normal ChatGPT chat, not in ChatGPT voice mode. The reason is explained below in the frequently asked questions.
-
----
-
-## Quick Start in 5 Steps
-
-1. Open [skillpilot.com](https://skillpilot.com).
-2. Click **Login**.
-3. Accept the notice and choose your login path: create a new SkillPilot ID, load a protected ID file, or enter an existing SkillPilot ID.
-4. Choose your curriculum and click **Start SkillPilot Learning Coach** or **Open Cockpit**.
-5. In the ChatGPT window, send the prepared session message unchanged. The first
-   time, connect **SkillPilot Coach v1** once. The message contains a learning
-   session valid for exactly 24 hours, but not your permanent SkillPilot ID.
-
----
+> Use normal text chat. You may use dictation or voice input in the text field. Do not start continuous ChatGPT voice mode during a SkillPilot learning session.
 
 ## What You Need
 
-- a browser
-- a ChatGPT account for which the required GPT or app is available
-- no SkillPilot registration with name or email address
+- a browser on a computer, tablet, or smartphone
+- a ChatGPT account whose plan or workspace provides access to apps
+- no SkillPilot registration with a name or email address
 
----
+## Start in 5 Steps
 
-## Five Important Terms
+1. Open [skillpilot.com](https://skillpilot.com) and select **Start Learning**.
+2. Create a new SkillPilot ID, load your protected ID file, or enter an existing SkillPilot ID. If you create a new ID, save it as a protected file as soon as possible.
+3. Configure your personal curriculum and current learning context.
+4. Select **Open SkillPilot app**. SkillPilot opens a new ChatGPT browser chat with a prepared message. On the first app call, ChatGPT may ask you once to connect **SkillPilot Coach v1**.
+5. Send the prepared message unchanged. The coach loads your learning state and guides you through the current learning goal. Use the **Cockpit** to view your progress and next goals.
 
-**SkillPilot ID:** Your permanent key to your learning progress. You can enter it directly or save it as a password-protected ID file.
+You do not need to copy, edit, or manually enter a session ID in ChatGPT.
 
-**OAuth connection:** The one-time, revocable connection between the SkillPilot
-V1 App and the backend. It authorizes the approved App but does not select a
-learner state.
+## Learning on a Smartphone
 
-**Learning session:** A random reference valid for exactly 24 hours for the
-learner state and interaction language selected when you click **Start
-learning**. SkillPilot places it in the prepared message automatically; you do
-not copy or manage it.
+Open ChatGPT in your smartphone browser, or save the browser page as a home-screen web app. You can then:
 
-**Learning goal ID:** A stable, globally unique identifier for a learning goal. It may be visible and makes a goal unambiguous; it is not an access credential.
+- dictate into the normal text field, review the recognized text, and send it,
+- work through calculations, sketches, and longer solutions on paper,
+- photograph your work and upload it in the same chat.
 
-**Cockpit:** Your overview of learning goals, progress, and useful next steps.
+## SkillPilot ID and Learning Session
 
----
+Your permanent SkillPilot ID is the key to your learning progress. It stays with SkillPilot and is not copied into the chat.
 
-## Step by Step with Images
+Every time you select **Start Learning**, SkillPilot creates a new random learning session. It is valid for exactly 24 hours and is inserted into the prepared message automatically.
 
-| <img src="../comic01.en.png" alt="Start at SkillPilot" width="650" /> |
-| --- |
-| *You start on SkillPilot, choose your curriculum, and then continue working with the learning coach.* |
+## Progress in the Cockpit
 
----
+![Illustration: SkillPilot Cockpit](comic05.en.png)
 
-## 1) Open SkillPilot and Choose Login
+*The Cockpit and learning coach use the same learning state. The Cockpit shows your progress and useful next goals.*
 
-| <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
-| --- |
-| *To learn, log in from the homepage. It costs nothing and you do not need to register with a name or email address.* |
+## If Something Does Not Work
 
-SkillPilot stores your learning progress under a pseudonymous SkillPilot ID.
-Starting the learning coach creates a separate learning-session ID valid for
-exactly 24 hours. The permanent SkillPilot ID stays in the browser and backend;
-SkillPilot puts the temporary learning session into the prepared start message,
-and the coach carries it into every functional tool call. You do not copy or
-manage it.
+### What should I do when the learning session expires?
 
----
+A learning session is valid for exactly 24 hours and is not extended by use. Once less than one hour remains, the coach will not begin another learning action.
 
-## 2) Create, Load, or Enter a SkillPilot ID
+Return to [skillpilot.com](https://skillpilot.com), load your protected ID file or enter your SkillPilot ID there, review your learning context, and select **Start Learning** again. Send the new prepared message in the newly opened chat. Never enter your permanent SkillPilot ID directly in chat.
 
-| <img src="../screenshot_02.en.png" alt="SkillPilot Login with ID creation and direct ID entry" width="700" /> |
-| --- |
-| *This is where your SkillPilot ID is created or appears. If you do not have a login yet, SkillPilot creates a new pseudonymous ID for you.* |
+### What should I do if I accidentally started voice mode?
 
-You have three options:
+End voice mode and use SkillPilot to start a new chat with a new learning session. Do not simply continue in the previous chat.
 
-1. **Create a new SkillPilot ID:** For your first start.
-2. **Load a protected ID file:** If you previously saved your ID as a password-protected file.
-3. **Enter an existing SkillPilot ID:** If you already have your ID.
+### What should I do if the ChatGPT window does not open?
 
-**Remember:** Keep your SkillPilot ID safe or save it as a protected ID file. Without it, you cannot reopen your previous progress later.
+Allow pop-ups for skillpilot.com and select **Open SkillPilot app** again.
 
----
+### What should I do if I lost my SkillPilot ID?
 
-## 3) Choose Curriculum and Prepare Start
-
-After login, choose your curriculum. Then you can start the SkillPilot Learning Coach directly or open your cockpit first.
-
-When you start the coach, SkillPilot creates a learning session valid for
-exactly 24 hours, pins the selected interaction language, and opens ChatGPT with
-a prepared message. The permanent SkillPilot ID stays with SkillPilot and is
-not copied into the chat.
-
----
-
-## 4) Start the Learning Coach in ChatGPT
-
-Send the prepared session message unchanged. The SkillPilot Learning Coach uses
-it to load your current learning state and session language from the backend.
-There is no additional start code or redemption step.
-
-After that, continue working normally in chat: ask questions, work on tasks,
-upload photos, or enter text by dictation. When the coach needs a choice, it
-displays the available options; technical selection references remain managed
-by the backend.
-
----
-
-## 5) Start the First Learning Session
-
-The learning coach starts with a suitable learning goal and checks your understanding step by step.
-
-| <img src="../comic03.en.png" alt="Mission Control" width="650" /> |
-| --- |
-| *The learning coach guides you like mission control: it gives orientation, checks your understanding, and suggests next steps.* |
-
-| <img src="../comic04.en.png" alt="Frontier" width="650" /> |
-| --- |
-| *You work on your current learning frontier: exactly where it makes sense for you to continue next.* |
-
----
-
-## 6) How a Learning Session Works
-
-SkillPilot checks not only definitions but also application and transfer. You can upload photos, worksheets, or your own sketches and receive feedback. Once there is sufficient evidence that a goal is mastered, the coach saves that progress in the backend and reloads the useful next goals.
-
----
-
-## 7) View Progress: Cockpit
-
-| <img src="../comic05.en.png" alt="Cockpit" width="650" /> |
-| --- |
-| *In the cockpit, you keep track of learning goals, progress, and next steps.* |
-
-| <img src="../comic06.en.png" alt="Connection with Mission Control" width="650" /> |
-| --- |
-| *Cockpit and learning coach work with the same learning state. This lets you switch between overview and learning.* |
-
-| <img src="../screenshot_10.en.png" alt="Choose curriculum and start" width="700" /> |
-| --- |
-| *Choose curriculum, open cockpit, or start learning coach: you continue working with the same learning state.* |
-
----
-
-## 8) Keep the Overview and Continue
-
-| <img src="../screenshot_11.en.png" alt="Cockpit: learning goals and next steps" width="900" /> |
-| --- |
-| *In the cockpit, you see what you have already mastered and what comes next.* |
-
-| <img src="../comic07.en.png" alt="Max keeps the overview" width="650" /> |
-| --- |
-| *You do not have to guess by yourself what to continue with. SkillPilot makes your progress visible.* |
-
-| <img src="../screenshot_12.en.png" alt="Cockpit: example for another learning goal" width="900" /> |
-| --- |
-| *You can also choose other learning goals and display their contents.* |
-
----
-
-## Frequently Asked Questions
-
-### Does ChatGPT See My SkillPilot ID?
-
-No. Your permanent SkillPilot ID stays in the browser and with SkillPilot.
-ChatGPT receives only the temporary learning-session ID and the learning
-information needed for the current coaching dialog. The session ID is inserted
-automatically into the prepared start message and carried into every functional
-tool call.
-
-### Do I Need ChatGPT Plus?
-
-SkillPilot itself does not require a paid subscription. Whether the required GPT or app is available in your ChatGPT plan or workspace, and which usage limits apply, is controlled by ChatGPT.
-
-### Do I Need a Computer?
-
-No. A phone is enough. You can write on paper as usual, then take a photo with your phone and upload it to the chat.
-
-### Can I Use ChatGPT Voice Mode?
-
-Please not at the moment. If you use ChatGPT voice mode in a SkillPilot chat, ChatGPT can no longer talk to the SkillPilot backend in that chat afterwards. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix.
-
-You can still chat normally with the learning coach, upload photos of your tasks or paper solutions, and enter text by voice dictation. Only ChatGPT voice mode should not be used in the SkillPilot chat.
-
-### What Happens If I Lose My SkillPilot ID?
-
-If you have not saved a protected ID file and lose your SkillPilot ID, you cannot reopen your previous progress. Store the protected file safely or keep your SkillPilot ID in a safe place.
-
-### What Happens If the ChatGPT Session Expires?
-
-The learning coach session in ChatGPT is valid for no more than 24 hours and is not extended by use. If it expires, return to [skillpilot.com](https://skillpilot.com), load your protected ID file or enter your SkillPilot ID there, and start the learning coach again. SkillPilot will create a new temporary session token. Do not enter your permanent SkillPilot ID directly in chat.
-
-### Can I Switch Between Cockpit and Learning Coach?
-
-Yes. The cockpit shows your learning state. The learning coach helps you learn. Both work with the same progress as long as you use the same SkillPilot ID.
+Load your previously saved protected ID file. Without the SkillPilot ID or that file, your previous learning state cannot be reopened.

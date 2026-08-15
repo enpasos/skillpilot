@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { MarkdownDocumentH1 } from '../components/MarkdownDocumentHeading'
@@ -32,11 +32,17 @@ const convertHtmlImagesToMarkdown = (markdown: string) => (
 )
 
 export const StoryView: React.FC = () => {
-    const { language } = useLanguage()
+    const { language, setLanguage } = useLanguage()
     const { lang } = useParams()
     const activeLanguage = useMemo(() => resolveLanguage(lang, language), [lang, language])
     const [content, setContent] = useState('')
     const [loadState, setLoadState] = useState<LoadState>('loading')
+
+    useEffect(() => {
+        if (language !== activeLanguage) {
+            setLanguage(activeLanguage)
+        }
+    }, [activeLanguage, language, setLanguage])
 
     useEffect(() => {
         const fileLanguage = activeLanguage === 'en' ? 'en' : 'de'
@@ -73,6 +79,10 @@ export const StoryView: React.FC = () => {
     const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
     const basePath = '/quickstart'
 
+    if (lang !== activeLanguage) {
+        return <Navigate to={`${basePath}/${activeLanguage}`} replace />
+    }
+
     return (
         <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-6 sm:px-6 lg:px-10 flex justify-center transition-colors">
             <div className="max-w-4xl w-full">
@@ -102,14 +112,15 @@ export const StoryView: React.FC = () => {
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
-                                h1: MarkdownDocumentH1,
+                                h1: (props) => <MarkdownDocumentH1 {...props} compact />,
                                 img: ({ title, ...props }) => {
                                     const widthMatch = typeof title === 'string'
                                         ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
                                         : null
                                     const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
-                                    const rawSrc = typeof props.src === 'string' ? props.src.toLowerCase() : ''
-                                    const src = rawSrc.startsWith('/') || rawSrc.startsWith('http') ? rawSrc : `/${rawSrc}`
+                                    const rawSrc = typeof props.src === 'string' ? props.src : ''
+                                    const normalizedSrc = rawSrc.toLowerCase()
+                                    const src = normalizedSrc.startsWith('/') || normalizedSrc.startsWith('http') ? rawSrc : `/${rawSrc}`
 
                                     const maxWidth = explicitMaxWidth
                                     const className = [
@@ -124,6 +135,8 @@ export const StoryView: React.FC = () => {
                                         <img
                                             {...props}
                                             src={src}
+                                            loading={props.loading ?? 'lazy'}
+                                            decoding={props.decoding ?? 'async'}
                                             title={explicitMaxWidth ? undefined : title}
                                             className={className}
                                             style={style}
