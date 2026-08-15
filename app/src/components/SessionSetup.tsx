@@ -16,6 +16,10 @@ type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' 
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
+// Keep the review pilot discoverable only from the local Workbench for now.
+// Re-enable this deliberately when the learning-goal book is ready for public promotion.
+const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = false
+
 interface ClaudeLaunchFallback {
   prompt: string
   webUrl: string
@@ -1156,11 +1160,15 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 <Link to="/faq" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.faq}
                 </Link>
-                {import.meta.env.MODE !== 'package-consumer' && (
-                  <Link to="/lernzielbuch" className="hover:text-sky-500 hover:underline transition-colors">
-                    {t.startPage.links.goalBook}
-                  </Link>
-                )}
+                {PUBLIC_GOAL_BOOK_PROMOTION_ENABLED &&
+                  import.meta.env.MODE !== 'package-consumer' && (
+                    <Link
+                      to="/lernzielbuch"
+                      className="hover:text-sky-500 hover:underline transition-colors"
+                    >
+                      {t.startPage.links.goalBook}
+                    </Link>
+                  )}
                 <Link to="/stats" className="hover:text-sky-500 hover:underline transition-colors">
                   {t.startPage.links.statistics}
                 </Link>

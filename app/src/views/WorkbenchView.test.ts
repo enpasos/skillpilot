@@ -1,3 +1,7 @@
+/// <reference types="node" />
+
+import { readFileSync } from 'node:fs'
+
 import { GOAL_BOOK_PDF_URL } from '../utils/goalBookRuntime'
 import { WORKBENCH_REVIEW_LINK_DEFINITIONS } from './workbenchReviewLinks'
 
@@ -23,5 +27,23 @@ for (const language of ['de', 'en'] as const) {
     `${language}: review entries must remain read-only public routes`,
   )
 }
+
+const sessionSetupSource = readFileSync(
+  new URL('../components/SessionSetup.tsx', import.meta.url),
+  'utf8',
+)
+const publicSitemap = readFileSync(
+  new URL('../../public/sitemap.xml', import.meta.url),
+  'utf8',
+)
+
+ensure(
+  /const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = false/u.test(sessionSetupSource),
+  'public learning-goal book promotion must stay disabled until an explicit release decision',
+)
+ensure(
+  !publicSitemap.includes('https://skillpilot.com/lernzielbuch'),
+  'public sitemap must not promote the Workbench-only learning-goal book',
+)
 
 console.log('Workbench learning-goal book links passed')
