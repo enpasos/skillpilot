@@ -38,7 +38,7 @@ nicht als bestehende Integration eingereicht.
 | Support | `https://skillpilot.com/imprint` |
 | Privacy policy | `https://skillpilot.com/privacy` |
 | Terms of service | `https://skillpilot.com/legal` |
-| Demo recording | `https://skillpilot.com/assets/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
+| Demo recording | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
 
 | Brand color | `#f59e0b` |
 | Capabilities | `Interactive`, `Read`, `Write` |
@@ -448,7 +448,7 @@ nicht künstlich als zusätzliche Videokapitel wiederholt.
 Das freigegebene, content-addressierte Artefakt hat folgende unveränderliche
 Bindung:
 
-- URL: `https://skillpilot.com/assets/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
+- URL: `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
 - SHA-256: `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`
 - Größe: `11.104.503` Bytes
 - Format: H.264/AAC, 1920 × 1080, 329,110 Sekunden
@@ -478,8 +478,9 @@ prepared first-party SkillPilot start flow described in the test fixture.
 - Demo-OAuth-Zugang ohne MFA ausschließlich im Portal hinterlegen und testen.
 - Nach dem Produktionsrollout die content-addressierte Demo-Recording-URL auf
   HTTP 200, `video/mp4`, Byte-Range-Unterstützung, `11.104.503` Bytes und den
-  dokumentierten SHA-256 prüfen; erst danach exakt diese URL im Portal
-  eintragen.
+  dokumentierten SHA-256 prüfen. Ein Range-Abruf mit OpenAI-Origin sowie der
+  zugehörige CORS-Preflight für `GET` und `Range` müssen ebenfalls erfolgreich
+  sein; erst danach exakt diese URL im Portal eintragen.
 - Screenshots nur einreichen, wenn sie tatsächlich hilfreich sind; für den
   einen Starter Prompt ist die aktuelle Entscheidung **keine Screenshots**. Falls
   später doch einer eingereicht wird, ist genau ein PNG oder JPEG mit exakt

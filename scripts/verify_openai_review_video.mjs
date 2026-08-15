@@ -18,6 +18,7 @@ if (!artifactSourceArgument) {
 }
 
 const isRemoteSource = /^https?:\/\//iu.test(artifactSourceArgument)
+const openAiPortalOrigin = 'https://platform.openai.com'
 
 async function verifyLocal() {
   const buildDirectory = path.resolve(artifactSourceArgument)
@@ -38,16 +39,39 @@ async function verifyLocal() {
   return validateOpenAiReviewVideoBytes(await readFile(videoPath))
 }
 
-function requireHeader(response, name, expected) {
+function requireHeader(
+  response,
+  name,
+  expected,
+  context = 'review video response',
+) {
   const actual = response.headers.get(name) ?? ''
   if (typeof expected === 'string' ? actual !== expected : !expected.test(actual)) {
     throw new Error(
-      `${name} is ${JSON.stringify(actual)}; expected ${String(expected)}`,
+      `${context} ${name} is ${JSON.stringify(actual)}; expected ${String(expected)}`,
     )
   }
 }
 
-async function fetchReviewVideo(url, headers = {}) {
+function requireHeaderTokens(response, name, expectedTokens, context) {
+  const actual = response.headers.get(name) ?? ''
+  const actualTokens = new Set(
+    actual
+      .split(',')
+      .map(token => token.trim().toLowerCase())
+      .filter(Boolean),
+  )
+  const missingTokens = expectedTokens.filter(
+    token => !actualTokens.has('*') && !actualTokens.has(token.toLowerCase()),
+  )
+  if (missingTokens.length > 0) {
+    throw new Error(
+      `${context} ${name} is ${JSON.stringify(actual)}; missing ${missingTokens.join(', ')}`,
+    )
+  }
+}
+
+async function fetchReviewVideo(url, { headers = {}, method = 'GET' } = {}) {
   return fetch(url, {
     cache: 'no-store',
     headers: {
@@ -55,6 +79,7 @@ async function fetchReviewVideo(url, headers = {}) {
       pragma: 'no-cache',
       ...headers,
     },
+    method,
     redirect: 'manual',
     signal: AbortSignal.timeout(60_000),
   })
@@ -80,7 +105,9 @@ async function verifyRemote() {
 
   const rangeEnd = 1023
   const rangeResponse = await fetchReviewVideo(expectedPublicUrl, {
-    range: `bytes=0-${rangeEnd}`,
+    headers: {
+      range: `bytes=0-${rangeEnd}`,
+    },
   })
   if (rangeResponse.status !== 206) {
     throw new Error(
@@ -97,6 +124,86 @@ async function verifyRemote() {
   if (!rangeBytes.equals(fullBytes.subarray(0, rangeEnd + 1))) {
     throw new Error('review video range bytes differ from the complete artifact')
   }
+
+  const corsRangeResponse = await fetchReviewVideo(expectedPublicUrl, {
+    headers: {
+      origin: openAiPortalOrigin,
+      range: `bytes=0-${rangeEnd}`,
+    },
+  })
+  if (corsRangeResponse.status !== 206) {
+    throw new Error(
+      `review video OpenAI-origin range request returned HTTP ${corsRangeResponse.status} instead of 206`,
+    )
+  }
+  requireHeader(
+    corsRangeResponse,
+    'access-control-allow-origin',
+    '*',
+    'review video OpenAI-origin range response',
+  )
+  requireHeader(
+    corsRangeResponse,
+    'content-range',
+    `bytes 0-${rangeEnd}/${OPENAI_REVIEW_VIDEO.bytes}`,
+    'review video OpenAI-origin range response',
+  )
+  requireHeader(
+    corsRangeResponse,
+    'access-control-allow-credentials',
+    /^(?:|false)$/iu,
+    'review video OpenAI-origin range response',
+  )
+  requireHeaderTokens(
+    corsRangeResponse,
+    'access-control-expose-headers',
+    ['accept-ranges', 'content-length', 'content-range'],
+    'review video OpenAI-origin range response',
+  )
+  const corsRangeBytes = Buffer.from(await corsRangeResponse.arrayBuffer())
+  if (!corsRangeBytes.equals(fullBytes.subarray(0, rangeEnd + 1))) {
+    throw new Error(
+      'review video OpenAI-origin range bytes differ from the complete artifact',
+    )
+  }
+
+  const preflightResponse = await fetchReviewVideo(expectedPublicUrl, {
+    headers: {
+      origin: openAiPortalOrigin,
+      'access-control-request-headers': 'range',
+      'access-control-request-method': 'GET',
+    },
+    method: 'OPTIONS',
+  })
+  if (![200, 204].includes(preflightResponse.status)) {
+    throw new Error(
+      `review video OpenAI-origin CORS preflight returned HTTP ${preflightResponse.status} instead of 200 or 204`,
+    )
+  }
+  requireHeader(
+    preflightResponse,
+    'access-control-allow-origin',
+    '*',
+    'review video OpenAI-origin CORS preflight',
+  )
+  requireHeader(
+    preflightResponse,
+    'access-control-allow-credentials',
+    /^(?:|false)$/iu,
+    'review video OpenAI-origin CORS preflight',
+  )
+  requireHeaderTokens(
+    preflightResponse,
+    'access-control-allow-methods',
+    ['GET'],
+    'review video OpenAI-origin CORS preflight',
+  )
+  requireHeaderTokens(
+    preflightResponse,
+    'access-control-allow-headers',
+    ['range'],
+    'review video OpenAI-origin CORS preflight',
+  )
 
   return verified
 }

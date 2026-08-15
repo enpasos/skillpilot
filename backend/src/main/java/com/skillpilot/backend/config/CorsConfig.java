@@ -22,12 +22,24 @@ public class CorsConfig {
                     origins[i] = origins[i].trim();
                 }
 
+                // Keep the explicitly public asset mappings before the general
+                // credentialed application mapping; no other API endpoint
+                // inherits these public CORS policies.
+                //
+                // The content-addressed review video is public submission evidence.
+                // OpenAI's portal may validate or stream it from a foreign origin.
+                registry.addMapping("/api/public/openai/review/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "HEAD", "OPTIONS")
+                        .allowedHeaders("Range")
+                        .exposedHeaders("Accept-Ranges", "Content-Length", "Content-Range")
+                        .allowCredentials(false)
+                        .maxAge(3600);
+
                 // Goal visualizations are public, immutable learning assets. ChatGPT
                 // hosts the same MCP App resource from product-owned sandbox origins,
                 // and native WebViews may use an opaque `null` origin. Allow every
                 // origin to read only these public image bytes without credentials.
-                // Keep this mapping before the general credentialed application
-                // mapping; no API endpoint inherits this public CORS policy.
                 registry.addMapping("/assets/goal-visualizations/**")
                         .allowedOrigins("*")
                         .allowedMethods("GET", "HEAD", "OPTIONS")

@@ -18,6 +18,9 @@ class CorsConfigTest {
 
     private static final String VISUALIZATION_PATH =
             "/assets/goal-visualizations/mathematik/goal/goal.jpg";
+    private static final String OPENAI_REVIEW_VIDEO_PATH =
+            "/api/public/openai/review/skillpilot-coach-v1/1.0.0/review.mp4";
+    private static final String OPENAI_ORIGIN = "https://platform.openai.com";
 
     @Test
     void allowsOnlyReadOnlyVisualizationRequestsFromEverySandboxOrigin() {
@@ -25,6 +28,7 @@ class CorsConfigTest {
 
         assertThat(mappings.keySet())
                 .containsExactly(
+                        "/api/public/openai/review/**",
                         "/assets/goal-visualizations/**",
                         "/**");
 
@@ -45,13 +49,53 @@ class CorsConfigTest {
     }
 
     @Test
+    void allowsCredentialFreeOpenAiReviewVideoReadsAndRangesFromEveryOrigin() throws Exception {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.setCorsConfigurations(mappings());
+        DefaultCorsProcessor processor = new DefaultCorsProcessor();
+
+        CorsConfiguration reviewVideo = source.getCorsConfiguration(
+                request("GET", OPENAI_REVIEW_VIDEO_PATH, OPENAI_ORIGIN));
+        assertThat(reviewVideo).isNotNull();
+        assertThat(reviewVideo.checkOrigin(OPENAI_ORIGIN)).isEqualTo("*");
+        assertThat(reviewVideo.checkOrigin("https://chatgpt.com")).isEqualTo("*");
+        assertThat(reviewVideo.checkOrigin("null")).isEqualTo("*");
+        assertThat(reviewVideo.getAllowedMethods()).containsExactly("GET", "HEAD", "OPTIONS");
+        assertThat(reviewVideo.getAllowedHeaders()).containsExactly("Range");
+        assertThat(reviewVideo.getExposedHeaders())
+                .containsExactly("Accept-Ranges", "Content-Length", "Content-Range");
+        assertThat(reviewVideo.getAllowCredentials()).isFalse();
+
+        MockHttpServletRequest getRequest =
+                request("GET", OPENAI_REVIEW_VIDEO_PATH, OPENAI_ORIGIN);
+        getRequest.addHeader(HttpHeaders.RANGE, "bytes=0-1023");
+        MockHttpServletResponse getResponse = new MockHttpServletResponse();
+        assertThat(processor.processRequest(reviewVideo, getRequest, getResponse)).isTrue();
+        assertThat(getResponse.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
+        assertThat(getResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN)).isEqualTo("*");
+        assertThat(getResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS)).isNull();
+        assertThat(getResponse.getHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS))
+                .isEqualTo("Accept-Ranges, Content-Length, Content-Range");
+
+        MockHttpServletRequest preflight =
+                preflight(OPENAI_REVIEW_VIDEO_PATH, OPENAI_ORIGIN, "GET", "Range");
+        MockHttpServletResponse preflightResponse = new MockHttpServletResponse();
+        assertThat(processor.processRequest(reviewVideo, preflight, preflightResponse)).isTrue();
+        assertThat(preflightResponse.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
+        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+                .isEqualTo("*");
+        assertThat(preflightResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS))
+                .isEqualTo("Range");
+    }
+
+    @Test
     void theSpecificVisualizationMappingWinsForSimpleAndPreflightRequests() throws Exception {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.setCorsConfigurations(mappings());
 
-        MockHttpServletRequest imageRequest = new MockHttpServletRequest("GET", VISUALIZATION_PATH);
-        imageRequest.addHeader(
-                HttpHeaders.ORIGIN,
+        MockHttpServletRequest imageRequest = request(
+                "GET",
+                VISUALIZATION_PATH,
                 "https://example.web-sandbox.oaiusercontent.com");
         CorsConfiguration configuration = source.getCorsConfiguration(imageRequest);
         MockHttpServletResponse imageResponse = new MockHttpServletResponse();
@@ -66,7 +110,10 @@ class CorsConfigTest {
                 .isEqualTo("*");
         assertThat(imageResponse.getHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS)).isNull();
 
-        MockHttpServletRequest preflightRequest = preflight("GET");
+        MockHttpServletRequest preflightRequest = preflight(
+                VISUALIZATION_PATH,
+                "https://example.web-sandbox.oaiusercontent.com",
+                "GET");
         MockHttpServletResponse preflightResponse = new MockHttpServletResponse();
         assertThat(processor.processRequest(configuration, preflightRequest, preflightResponse))
                 .isTrue();
@@ -92,7 +139,10 @@ class CorsConfigTest {
         source.setCorsConfigurations(mappings());
         DefaultCorsProcessor processor = new DefaultCorsProcessor();
 
-        MockHttpServletRequest writeRequest = preflight("POST");
+        MockHttpServletRequest writeRequest = preflight(
+                VISUALIZATION_PATH,
+                "https://example.web-sandbox.oaiusercontent.com",
+                "POST");
         MockHttpServletResponse writeResponse = new MockHttpServletResponse();
         CorsConfiguration visualization = source.getCorsConfiguration(writeRequest);
         assertThat(visualization).isNotNull();
@@ -118,12 +168,24 @@ class CorsConfigTest {
         return registry.configurations();
     }
 
-    private static MockHttpServletRequest preflight(String requestedMethod) {
-        MockHttpServletRequest request = new MockHttpServletRequest("OPTIONS", VISUALIZATION_PATH);
-        request.addHeader(
-                HttpHeaders.ORIGIN,
-                "https://example.web-sandbox.oaiusercontent.com");
+    private static MockHttpServletRequest request(String method, String path, String origin) {
+        MockHttpServletRequest request = new MockHttpServletRequest(method, path);
+        request.addHeader(HttpHeaders.ORIGIN, origin);
+        return request;
+    }
+
+    private static MockHttpServletRequest preflight(
+            String path,
+            String origin,
+            String requestedMethod,
+            String... requestedHeaders) {
+        MockHttpServletRequest request = request("OPTIONS", path, origin);
         request.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, requestedMethod);
+        if (requestedHeaders.length > 0) {
+            request.addHeader(
+                    HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS,
+                    String.join(", ", requestedHeaders));
+        }
         return request;
     }
 

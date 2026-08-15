@@ -22,6 +22,7 @@ operativ um. Es gilt für `skillpilot-coach-v1`.
 | Domain-Challenge | `https://mcp-coach-v1.skillpilot.com/.well-known/openai-apps-challenge` |
 | aktive MCP-Apps-UIs | genau zwei: Lernzielbild und Karteikartenlernen |
 | Support-URL | `https://skillpilot.com/imprint` |
+| Reviewvideo | `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
 | Veröffentlichungsstatus | noch nicht veröffentlicht; interner Draft `1.0.0-SNAPSHOT` |
 | Quellpaket | `ai/openai plugin/skillpilot-coach-v1/` |
 
@@ -192,10 +193,13 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
     dokumentiert. Dieses Runbook behauptet keinen zusätzlichen
     ID-in-Komponente-Submission-Blocker; die V1-Identitätsverarbeitung liegt im
     First-Party-WebGUI.
-14. Das freigegebene Reviewvideo ist ohne Anmeldung unter der im
-    Submission-Dossier content-addressiert gebundenen URL erreichbar, liefert
+14. Das freigegebene Reviewvideo ist ohne Anmeldung unter
+    `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
+    erreichbar, liefert
     `video/mp4` mit Byte-Range-Unterstützung und stimmt vor dem Portal-Submit in
-    Größe und SHA-256 exakt mit dem geprüften Repositoryartefakt überein.
+    Größe und SHA-256 exakt mit dem geprüften Repositoryartefakt überein. Ein
+    Range-Abruf mit OpenAI-Origin und der zugehörige CORS-Preflight für `GET`
+    und `Range` sind ebenfalls grün.
 
 Erst nach erfolgreichem **Publish** im OpenAI-Portal wird der geprüfte Draft
 unveränderlich registriert:

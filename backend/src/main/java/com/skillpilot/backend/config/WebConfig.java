@@ -17,6 +17,15 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.noStore());
 
+        // Expose the content-addressed OpenAI review recording only through an
+        // /api path. Existing service workers already exclude /api/** from
+        // their SPA navigation fallback, so this remains a real network request
+        // even for clients controlled by an older worker. The classpath source
+        // deliberately lives outside the general static-resource locations.
+        registry.addResourceHandler("/api/public/openai/review/**")
+                .addResourceLocations("classpath:/openai-review/")
+                .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic());
+
         // Goal IDs are stable while their reviewed visualization bytes may be
         // replaced. Revalidate the canonical URL; provider widgets receive an
         // additional deployed-build revision in their image URL.
