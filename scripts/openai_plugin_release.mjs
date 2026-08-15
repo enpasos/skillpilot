@@ -32,6 +32,7 @@ import {
   createReproducibleTrackedArchive,
   pluginInstallBundleArchiveName,
 } from "./lib/reproducible_plugin_archive.mjs";
+import { assertOpenAiPluginReleaseMutationAllowed } from "./check_openai_plugin_review_freeze.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -180,6 +181,14 @@ if (
   throw new Error(
     "record-published requires --confirm-mtls-enforced-and-verified after the enforce-mode production edge and a real ChatGPT VERIFIED call have been confirmed.",
   );
+}
+if (command === "prepare" || command === "record-published") {
+  assertOpenAiPluginReleaseMutationAllowed({
+    repositoryRoot,
+    pluginIdentity: line.pluginIdentity,
+    pluginVersion: manifest.version,
+    command,
+  });
 }
 
 mkdirSync(tmpRoot, { recursive: true });

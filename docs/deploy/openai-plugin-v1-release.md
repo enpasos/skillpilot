@@ -1,8 +1,14 @@
 # SkillPilot Coach v1: Release, Rollback und Stilllegung
 
-**Stand:** 12. August 2026
-**Status:** verbindliches Betriebsverfahren für die noch unveröffentlichte,
-mehrsprachige Plugin-Linie V1
+**Stand:** 15. August 2026
+
+**Status:** Portalstatus `Review`; noch nicht veröffentlicht; aktive
+[Review-Sperre](openai-plugin-v1-review-freeze.md)
+
+> **STOP:** Solange die Review-Sperre aktiv ist, sind die eingereichte V1 und
+> ihr beobachtbares Produktionsverhalten unveränderlich. Insbesondere darf
+> `prepare` nicht ausgeführt werden. `DRAFT` bezeichnet hier ausschließlich
+> den noch nicht veröffentlichten Lifecycle-Status.
 
 Dieses Runbook setzt den
 [Versionierungs- und Lebenszyklusplan](../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
@@ -84,16 +90,24 @@ Maschinenlesbare Quellen der Wahrheit sind:
 - `release/lifecycle.json` für Support-, Publikations- und Startstatus sowie
   die monotone `policyRevision`;
 - `contracts/drafts/openai/skillpilot-coach-v1/<version>-SNAPSHOT/` für den
-  fortschreibbaren unveröffentlichten Draft;
+  vor der Einreichung fortschreibbaren Draft; während eines Portal-Reviews ist
+  dieser Snapshot durch die separate Review-Sperre eingefroren;
 - `contracts/published/openai/skillpilot-coach-v1/<version>/` und
   `contracts/openai/skillpilot-coach-v1/release-index.json` ausschließlich für
   tatsächlich im OpenAI-Portal veröffentlichte Versionen.
 
-Solange `1.0.0` nicht veröffentlicht wurde, bleibt die öffentliche Zielversion
-unverändert. Interne Korrekturen aktualisieren denselben Draft; erst eine reale
-Veröffentlichung versiegelt ihn.
+Vor der Portal-Einreichung durfte derselbe unveröffentlichte Draft kohärent
+aktualisiert werden. Seit **Submit for Review** ist auch dieser Draft operativ
+eingefroren. Approval oder Rejection beendet die Sperre nicht automatisch;
+maßgeblich ist ausschließlich das Verfahren in der
+[Review-Sperre](openai-plugin-v1-review-freeze.md). Eine reale
+Veröffentlichung versiegelt `1.0.0` anschließend dauerhaft.
 
 ## 2. Release vorbereiten
+
+> Die folgenden Vorbereitungsschritte sind während der aktiven Review-Sperre
+> nicht auszuführen. Sie gelten erst nach einer ausdrücklich dokumentierten
+> Freigabe; `prepare` wird zusätzlich maschinell verweigert.
 
 1. Release Notes, Lifecycle, Listing, Skill, Policy, Serververtrag und zentrale
    Dokumentation gemeinsam aktualisieren. Innerhalb des unveröffentlichten
@@ -105,6 +119,7 @@ Veröffentlichung versiegelt ihn.
    ```bash
    ./scripts/verify_openai_v1_mtls_edge.sh --static
    npm --prefix "ai/openai app" test
+   node scripts/check_openai_plugin_review_freeze.mjs
    node scripts/check_openai_plugin_versioning.mjs
    node scripts/check_skillpilot_coach_plugin.mjs
    node scripts/openai_plugin_release.mjs candidate
@@ -116,8 +131,9 @@ Veröffentlichung versiegelt ihn.
    node scripts/openai_plugin_release.mjs prepare
    ```
 
-   `prepare` ersetzt nur den unveröffentlichten Snapshot. Es ändert weder
-   SemVer noch Published-Index und stoppt bei einer bereits veröffentlichten
+   Außerhalb einer Review-Sperre ersetzt `prepare` nur den unveröffentlichten
+   Snapshot. Es ändert weder SemVer noch Published-Index und stoppt bei einer
+   eingereichten, bereits veröffentlichten oder anderweitig gesperrten
    Version, unversionierten Plugin-Datei oder einem Symlink.
 5. Quellen und Draft reproduzierbar prüfen:
 
@@ -203,6 +219,11 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
 
 Erst nach erfolgreichem **Publish** im OpenAI-Portal wird der geprüfte Draft
 unveränderlich registriert:
+
+> Solange der maschinenlesbare Status noch `IN_REVIEW` lautet, verweigert der
+> Release-Befehl auch `record-published`. Nach dem realen Portal-Publish muss
+> der Product Owner zuerst ausdrücklich den begrenzten Übergang zur dauerhaften
+> Published-Sperre autorisieren.
 
 ```bash
 node scripts/openai_plugin_release.mjs record-published \

@@ -1,0 +1,142 @@
+# SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
+
+**Stand:** 15. August 2026
+
+**Portalstatus:** `Review`
+
+**Öffentlicher Status:** noch nicht genehmigt und noch nicht veröffentlicht
+
+**Sperrstatus:** aktiv
+
+## 1. Verbindliche Entscheidung
+
+Der am 15. August 2026 eingereichte Stand von `skillpilot-coach-v1` Version
+`1.0.0` ist für die gesamte Dauer des OpenAI-Reviews eingefroren. Das betrifft
+nicht nur das hochgeladene Paket, sondern jeden beobachtbaren Vertrag, gegen
+den OpenAI scannt oder die fünf positiven und drei negativen Reviewfälle
+ausführt.
+
+`publicationStatus: DRAFT` bleibt dabei korrekt: Die Version ist im Portal
+eingereicht, aber noch nicht veröffentlicht. **DRAFT bedeutet während des
+Reviews nicht veränderlich.** Der separate Review-Freeze schließt genau diese
+Lücke zwischen Einreichung und tatsächlicher Veröffentlichung.
+
+Maschinenlesbarer Status und Hashanker:
+
+- `contracts/openai/skillpilot-coach-v1/review-freeze.json`
+- eingereichter Quellstand: `ff3a16b0d6e3c8a564176ab4743e777cddf3e79c`
+- interner Snapshot: `contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT/`
+- Snapshot-Manifest SHA-256:
+  `e6408e7054d53ab4a52f32f541b07201f1a8f6e183ff5772bc2d8164162b0f32`
+- exportierter Contract-Fingerprint:
+  `d2f08a66efa3488e5f87758de41688a18ce47ba2951bb2d3147e522d1fd30b38`
+- Plugin-Bundle SHA-256:
+  `f6f69b7b42b6904ad6ff1796190cf687af72c2e4af62edcac0bd04d6603ae697`
+- Reviewvideo SHA-256:
+  `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`
+
+Die im eingereichten Paket enthaltenen Release Notes nennen den Stand noch
+einen fortschreibbaren unveröffentlichten Draft. Diese Formulierung entstand
+vor der Einreichung und bleibt absichtlich byte-identisch im eingereichten
+Paket. Für die operative Arbeit wird sie seit dem 15. August 2026 durch diese
+Review-Sperre überstimmt.
+
+## 2. Eingefrorener Wirkungsbereich
+
+Die Sperre ist wirkungsbezogen. Ein Dateipfad außerhalb der unten genannten
+Beispiele macht eine Änderung nicht automatisch sicher. Eingefroren sind
+insbesondere:
+
+- Paketidentität, Version, Listing, Icons, Skill, Coaching Policy und die
+  eingereichten Release Notes;
+- Namen, Beschreibungen, Ein- und Ausgabeschemas, Annotationen, Security
+  Schemes, Ressourcenbindungen, Server Instructions und Fehlersemantik aller
+  zwölf V1-Werkzeuge;
+- aktive und beibehaltene MCP-Apps-Ressourcen einschließlich Bytes, Hash-URIs,
+  CSP, Domain und Toolbindung;
+- MCP-Endpoint, OAuth-Issuer und -Discovery, feste Clientregistrierung,
+  Callback, Scopes, PKCE, mTLS-Edge, Domain-Challenge und Fail-closed-Routen;
+- 24-Stunden-Lernsession, Identitäts-, Locale-, Zustands-, Mastery-,
+  Navigation-, Memory-, Recall- und Prüfungssemantik;
+- der First-Party-Ablauf WebGUI-Konfiguration → **Lernen starten** → frische
+  vorbereitete Chatnachricht sowie alle dafür sichtbaren Texte und URLs;
+- Portalwerte: Beschreibungen und Übersetzungen, Starter Prompt,
+  Länderfreigabe, Tool-Begründungen, exakt fünf positive und drei negative
+  Testfälle, Testzugang, Attestierungen und Domain-Verifikation;
+- die von den Reviewfällen vorausgesetzten Curricula, Ziele, Exam-, Memory- und
+  Visualisierungsdaten sowie die Reviewzugänge und Wegwerf-Fixtures;
+- Rechtstexte und Datenschutzaussagen, auf die Listing und Review verweisen;
+- Reviewvideo, SHA-256 und die einzige Portal-URL
+  `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`;
+- Abhängigkeiten, Runtime- oder Deploymentänderungen, wenn sie einen dieser
+  Punkte beobachtbar verändern könnten.
+
+## 3. Ohne ausdrückliche Freigabe verboten
+
+- `node scripts/openai_plugin_release.mjs prepare` oder `record-published`
+  ausführen;
+- Package, Skill, MCP-Metadaten oder Tools neu scannen oder hochladen;
+- Portalwerte speichern, Testfälle oder Credentials austauschen oder
+  Attestierungen ändern;
+- Draft-Snapshot, UI-Artefakte, Reviewvideo oder deren Hashanker ersetzen;
+- Produktionsverhalten „nur intern“ korrigieren, wenn ein Reviewfall oder der
+  öffentliche Vertrag betroffen sein kann;
+- nach Approval, Rejection oder Withdrawal eigenmächtig weiterarbeiten.
+
+Der Release-Befehl verweigert `prepare` und `record-published` bei aktiver
+Sperre. CI und Deployment prüfen zusätzlich die Hashanker und die gepinnten
+V1-Quellbäume.
+
+## 4. Weiterhin erlaubt
+
+- rein lesende Audits, Tests, Health-/Security-Smokes und Monitoring;
+- Störungsanalyse ohne Mutation;
+- reine Dokumentationskorrekturen, die den eingefrorenen Stand exakt
+  beschreiben und keine Portalwerte, Vertragsbehauptungen oder Artefakte
+  verändern;
+- unabhängige Arbeiten, deren fehlender V1-Effekt konkret belegt ist und bei
+  denen alle Freeze-, Candidate- und Runtime-Gates grün bleiben.
+
+Quickstart-Texte, Screenshots und reine Story-Darstellung dürfen aktualisiert
+werden. Sie dürfen aber nur den eingefrorenen Ablauf dokumentieren. Änderungen
+an `SessionSetup`, Coach-Launch, Plugin-Namen, Browsergrenze, Sessiondauer,
+Datenschutzversprechen oder Providerverhalten sind keine Quickstart-Arbeit und
+bleiben gesperrt.
+
+## 5. Pflichtprüfung vor Änderung und Deployment
+
+```bash
+node scripts/check_openai_plugin_review_freeze.mjs
+node scripts/openai_plugin_release.mjs verify
+node scripts/check_skillpilot_coach_plugin.mjs
+node scripts/check_openai_plugin_versioning.mjs
+```
+
+`verify` vergleicht die aktuellen Quellen reproduzierbar mit dem eingereichten
+Draft. Der Freeze-Check pinnt zusätzlich Snapshot, Bundle, Contract, Video und
+kritische Runtime-/Start-/Edge-Bäume. Ein grüner Pfadfilter ersetzt dennoch
+nicht die Wirkungsprüfung.
+
+## 6. Ausnahmen und Ende der Sperre
+
+Eine Ausnahme benötigt vor jeder Änderung eine ausdrückliche Entscheidung des
+Product Owners mit:
+
+1. Grund der Änderung;
+2. exakt freigegebenem Wirkungs- und Dateiumfang;
+3. Zielversion;
+4. Entscheidung, ob das Portal-Review zurückgezogen beziehungsweise neu
+   eingereicht werden muss;
+5. neuer, nach vollständiger Prüfung erneut gesetzter Freeze-Baseline.
+
+Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
+Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
+ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine
+Veröffentlichung und ändert die Sperre ebenfalls nicht.
+
+Nach der tatsächlichen Portal-Veröffentlichung autorisiert der Product Owner
+zuerst ausdrücklich den rein operativen Zustandswechsel vom Review-Freeze zur
+dauerhaften Published-Sperre. Im selben begrenzten Arbeitsschritt wird der
+reale Publish mit dem bestehenden `record-published`-Verfahren dokumentiert.
+Ab dann ist `1.0.0` dauerhaft unveränderlich; jede Weiterentwicklung beginnt
+als neue SemVer-Kandidatin.

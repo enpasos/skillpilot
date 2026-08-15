@@ -237,6 +237,9 @@ fi
 echo "Prüfe konsistente OpenAI-Plugin-V1-Versionierung..."
 node scripts/check_openai_plugin_versioning.mjs
 
+echo "Prüfe aktive OpenAI-Plugin-V1-Review-Sperre..."
+node scripts/check_openai_plugin_review_freeze.mjs
+
 if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
   echo "Prüfe statischen OpenAI-V1-mTLS-Edge-Vertrag..."
   ./scripts/verify_openai_v1_mtls_edge.sh --static

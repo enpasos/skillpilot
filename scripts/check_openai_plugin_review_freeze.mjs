@@ -1,0 +1,304 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import {
+  existsSync,
+  lstatSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+} from "node:fs";
+import { dirname, isAbsolute, relative, resolve, sep } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const defaultRepositoryRoot = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
+
+export const reviewFreezeRelativePath =
+  "contracts/openai/skillpilot-coach-v1/review-freeze.json";
+
+export function loadOpenAiPluginReviewFreeze(
+  repositoryRoot = defaultRepositoryRoot,
+) {
+  const freezePath = resolve(repositoryRoot, reviewFreezeRelativePath);
+  assert.equal(
+    existsSync(freezePath),
+    true,
+    `Missing OpenAI V1 review freeze record ${reviewFreezeRelativePath}.`,
+  );
+  return JSON.parse(readFileSync(freezePath, "utf8"));
+}
+
+export function assertOpenAiPluginReleaseMutationAllowed({
+  repositoryRoot = defaultRepositoryRoot,
+  pluginIdentity,
+  pluginVersion,
+  command,
+}) {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  throw new Error(
+    `OpenAI review freeze is active for ${pluginIdentity} ${pluginVersion}. ` +
+      `The release mutation ${command} is forbidden while the recorded ` +
+      `submission ${freeze.pluginIdentity ?? "UNKNOWN"} ` +
+      `${freeze.pluginVersion ?? "UNKNOWN"} has freeze state ` +
+      `${freeze.portalReviewState ?? "UNKNOWN"}. Read ` +
+      "docs/deploy/openai-plugin-v1-review-freeze.md and obtain an explicit, " +
+      "scoped product-owner unfreeze before changing the review contract.",
+  );
+}
+
+export function verifyOpenAiPluginReviewFreeze({
+  repositoryRoot = defaultRepositoryRoot,
+} = {}) {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  assert.equal(freeze.schemaVersion, 1, "Unsupported review-freeze schemaVersion.");
+  assert.equal(freeze.pluginIdentity, "skillpilot-coach-v1");
+  assert.equal(freeze.pluginVersion, "1.0.0");
+  assert.equal(
+    freeze.portalReviewState,
+    "IN_REVIEW",
+    "The V1 review freeze may change state only through the documented product-owner procedure.",
+  );
+  assert.match(freeze.enteredAt, /^\d{4}-\d{2}-\d{2}$/u);
+  assert.match(freeze.submittedSourceCommit, /^[0-9a-f]{40}$/u);
+  assert.match(freeze.frozenSnapshotManifestSha256, /^[0-9a-f]{64}$/u);
+  assert.match(freeze.pluginArchiveSha256, /^[0-9a-f]{64}$/u);
+  assert.match(freeze.exportedContractSha256, /^[0-9a-f]{64}$/u);
+  assert.match(freeze.reviewVideoSha256, /^[0-9a-f]{64}$/u);
+  assert.equal(
+    freeze.publicMcpEndpoint,
+    "https://mcp-coach-v1.skillpilot.com/mcp",
+  );
+  assert.equal(
+    freeze.reviewVideoUrl,
+    "https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/" +
+      "1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4",
+  );
+  assert.equal(
+    freeze.unfreezeRequires,
+    "explicit-product-owner-approval-with-reason-scope-and-target-version",
+  );
+  assert.equal(Array.isArray(freeze.protectedTrees), true);
+  assert.equal(Array.isArray(freeze.protectedFiles), true);
+
+  const expectedDraftPath =
+    "contracts/drafts/openai/skillpilot-coach-v1/1.0.0-SNAPSHOT";
+  assert.equal(freeze.frozenDraftPath, expectedDraftPath);
+  const draftRoot = safeRepositoryPath(repositoryRoot, freeze.frozenDraftPath);
+  const snapshotPath = resolve(draftRoot, "snapshot-manifest.json");
+  assertFileSha256(snapshotPath, freeze.frozenSnapshotManifestSha256);
+
+  const snapshot = JSON.parse(readFileSync(snapshotPath, "utf8"));
+  assert.equal(snapshot.schemaVersion, 1);
+  assert.equal(snapshot.pluginIdentity, freeze.pluginIdentity);
+  assert.equal(snapshot.pluginVersion, freeze.pluginVersion);
+  assert.equal(snapshot.archiveRole, "plugin-install-bundle");
+  assertSnapshotInventory(draftRoot, snapshot);
+
+  const archiveEntries = snapshot.files.filter((entry) =>
+    entry.path.endsWith(".tar"),
+  );
+  assert.equal(
+    archiveEntries.length,
+    1,
+    "Frozen draft must contain one plugin archive.",
+  );
+  assert.equal(archiveEntries[0].sha256, freeze.pluginArchiveSha256);
+
+  const contract = JSON.parse(
+    readFileSync(resolve(draftRoot, "contract/contract.json"), "utf8"),
+  );
+  assert.equal(contract.contractSha256, freeze.exportedContractSha256);
+  assert.equal(contract.pluginIdentity, freeze.pluginIdentity);
+
+  const line = JSON.parse(readFileSync(resolve(draftRoot, "line.json"), "utf8"));
+  assert.equal(line.publicMcpEndpoint, freeze.publicMcpEndpoint);
+  assert.equal(line.oauthResource, freeze.publicMcpEndpoint);
+
+  const lifecycle = JSON.parse(
+    readFileSync(resolve(draftRoot, "lifecycle.json"), "utf8"),
+  );
+  assert.equal(
+    lifecycle.contractLine?.publicationStatus,
+    "DRAFT",
+    "Portal review is not publication; the submitted snapshot must remain DRAFT.",
+  );
+
+  const releaseIndex = JSON.parse(
+    readFileSync(
+      safeRepositoryPath(
+        repositoryRoot,
+        "contracts/openai/skillpilot-coach-v1/release-index.json",
+      ),
+      "utf8",
+    ),
+  );
+  assert.equal(releaseIndex.latestPublishedVersion, null);
+  assert.deepEqual(releaseIndex.publishedVersions, []);
+  assert.equal(releaseIndex.baselinePath, null);
+
+  const reviewVideoPath = safeRepositoryPath(
+    repositoryRoot,
+    freeze.reviewVideoPath,
+  );
+  assertFileSha256(reviewVideoPath, freeze.reviewVideoSha256);
+
+  for (const protectedTree of freeze.protectedTrees) {
+    assert.match(protectedTree.sha256, /^[0-9a-f]{64}$/u);
+    const treeRoot = safeRepositoryPath(repositoryRoot, protectedTree.path);
+    assert.equal(
+      sha256Tree(treeRoot),
+      protectedTree.sha256,
+      `Protected V1 tree changed: ${protectedTree.path}`,
+    );
+  }
+  for (const protectedFile of freeze.protectedFiles) {
+    assert.match(protectedFile.sha256, /^[0-9a-f]{64}$/u);
+    assertFileSha256(
+      safeRepositoryPath(repositoryRoot, protectedFile.path),
+      protectedFile.sha256,
+      `Protected V1 file changed: ${protectedFile.path}`,
+    );
+  }
+
+  return {
+    pluginIdentity: freeze.pluginIdentity,
+    pluginVersion: freeze.pluginVersion,
+    portalReviewState: freeze.portalReviewState,
+    protectedFileCount: freeze.protectedFiles.length,
+    protectedTreeCount: freeze.protectedTrees.length,
+  };
+}
+
+export function sha256Tree(root) {
+  const rootStat = lstatSync(root);
+  assert.equal(
+    rootStat.isSymbolicLink(),
+    false,
+    `Protected path is a symlink: ${root}`,
+  );
+  assert.equal(
+    rootStat.isDirectory(),
+    true,
+    `Protected tree is not a directory: ${root}`,
+  );
+  const records = [];
+  visitTree(root, root, records);
+  return sha256(Buffer.from(records.join(""), "utf8"));
+}
+
+function visitTree(root, current, records) {
+  const entries = readdirSync(current, { withFileTypes: true }).sort(
+    (left, right) => left.name.localeCompare(right.name),
+  );
+  for (const entry of entries) {
+    const absolute = resolve(current, entry.name);
+    const path = relative(root, absolute).replaceAll(sep, "/");
+    assert.equal(
+      entry.isSymbolicLink(),
+      false,
+      `Protected tree contains symlink: ${path}`,
+    );
+    if (entry.isDirectory()) {
+      visitTree(root, absolute, records);
+    } else {
+      assert.equal(
+        entry.isFile(),
+        true,
+        `Protected tree contains non-file: ${path}`,
+      );
+      const bytes = statSync(absolute).size;
+      records.push(`${path}\0${bytes}\0${sha256(readFileSync(absolute))}\n`);
+    }
+  }
+}
+
+function assertSnapshotInventory(draftRoot, snapshot) {
+  assert.equal(Array.isArray(snapshot.files), true);
+  const expectedPaths = snapshot.files.map((entry) => entry.path).sort();
+  assert.deepEqual(
+    expectedPaths,
+    [...new Set(expectedPaths)],
+    "Snapshot inventory paths must be unique.",
+  );
+  const actualPaths = listRegularFiles(draftRoot)
+    .filter((path) => path !== "snapshot-manifest.json")
+    .sort();
+  assert.deepEqual(actualPaths, expectedPaths, "Frozen draft file inventory changed.");
+  for (const entry of snapshot.files) {
+    assert.match(entry.path, /^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$)).+$/u);
+    assert.match(entry.sha256, /^[0-9a-f]{64}$/u);
+    const file = resolve(draftRoot, entry.path);
+    assert.equal(
+      statSync(file).size,
+      entry.bytes,
+      `Frozen draft size changed: ${entry.path}`,
+    );
+    assertFileSha256(file, entry.sha256, `Frozen draft bytes changed: ${entry.path}`);
+  }
+}
+
+function listRegularFiles(root) {
+  const files = [];
+  const visit = (current) => {
+    for (const entry of readdirSync(current, { withFileTypes: true })) {
+      const absolute = resolve(current, entry.name);
+      assert.equal(
+        entry.isSymbolicLink(),
+        false,
+        `Frozen draft contains symlink: ${absolute}`,
+      );
+      if (entry.isDirectory()) {
+        visit(absolute);
+      } else {
+        assert.equal(
+          entry.isFile(),
+          true,
+          `Frozen draft contains non-file: ${absolute}`,
+        );
+        files.push(relative(root, absolute).replaceAll(sep, "/"));
+      }
+    }
+  };
+  visit(root);
+  return files;
+}
+
+function safeRepositoryPath(repositoryRoot, path) {
+  assert.equal(typeof path, "string");
+  assert.equal(
+    isAbsolute(path),
+    false,
+    `Review-freeze path must be relative: ${path}`,
+  );
+  assert.equal(path.includes("\0"), false, "Review-freeze path contains NUL.");
+  const resolved = resolve(repositoryRoot, path);
+  assert.equal(
+    resolved.startsWith(`${resolve(repositoryRoot)}${sep}`),
+    true,
+    `Review-freeze path escapes repository: ${path}`,
+  );
+  return resolved;
+}
+
+function assertFileSha256(path, expected, message = `SHA-256 mismatch: ${path}`) {
+  const fileStat = lstatSync(path);
+  assert.equal(fileStat.isSymbolicLink(), false, `Protected file is a symlink: ${path}`);
+  assert.equal(fileStat.isFile(), true, `Protected path is not a file: ${path}`);
+  assert.equal(sha256(readFileSync(path)), expected, message);
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : "";
+if (invokedPath === import.meta.url) {
+  const result = verifyOpenAiPluginReviewFreeze();
+  console.log(
+    `CHECK openai_plugin_review_freeze PASS ${result.pluginIdentity} ` +
+      `${result.pluginVersion} state=${result.portalReviewState} ` +
+      `trees=${result.protectedTreeCount} files=${result.protectedFileCount}`,
+  );
+}

@@ -45,6 +45,37 @@ const releaseScriptPath = fileURLToPath(
 );
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 
+test("submitted V1 draft cannot be prepared while portal review is active", () => {
+  const result = spawnSync(
+    process.execPath,
+    [releaseScriptPath, "prepare"],
+    { cwd: repositoryRoot, encoding: "utf8", stdio: "pipe" },
+  );
+  assert.notEqual(result.status, 0);
+  assert.match(
+    `${result.stdout}\n${result.stderr}`,
+    /release mutation prepare is forbidden/u,
+  );
+});
+
+test("submitted V1 cannot be recorded as published while portal review is active", () => {
+  const result = spawnSync(
+    process.execPath,
+    [
+      releaseScriptPath,
+      "record-published",
+      "--confirm-openai-published",
+      "--confirm-mtls-enforced-and-verified",
+    ],
+    { cwd: repositoryRoot, encoding: "utf8", stdio: "pipe" },
+  );
+  assert.notEqual(result.status, 0);
+  assert.match(
+    `${result.stdout}\n${result.stderr}`,
+    /release mutation record-published is forbidden/u,
+  );
+});
+
 test("published registration requires portal and enforced mTLS attestations", () => {
   const cases = [
     {

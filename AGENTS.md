@@ -1,5 +1,42 @@
 # AGENTS.md – Skill Graph Memory & Design Guide
 
+## 0. ACTIVE STOP — SkillPilot Coach v1.0.0 is under OpenAI review
+
+Since **15 August 2026**, the submitted `skillpilot-coach-v1` version `1.0.0`,
+its portal metadata, review fixtures, demo recording, and observable production
+behaviour are frozen. Repository `publicationStatus: DRAFT` means “not yet
+published”; it does **not** mean that the submitted review candidate remains
+mutable.
+
+Before any write that could affect the submitted app, read
+[`docs/deploy/openai-plugin-v1-review-freeze.md`](docs/deploy/openai-plugin-v1-review-freeze.md)
+and run:
+
+```bash
+node scripts/check_openai_plugin_review_freeze.mjs
+```
+
+The freeze is **effect-based, not path-based**. Do not change or regenerate the
+V1 package, MCP/OAuth contract, tools, schemas, annotations, instructions,
+resources, UI bytes or hashes, session/identity/locale/state semantics,
+first-party launch flow, portal values, test cases, reviewer credentials,
+review fixtures, legal promises, demo-video bytes/hash/URL, or production edge
+configuration. Do not run `openai_plugin_release.mjs prepare` or
+`record-published`, rescan/re-upload the MCP or Skill, save altered portal
+fields, or replace review artifacts.
+
+Read-only audits, tests, monitoring, and documentation-only corrections that
+describe the frozen behaviour exactly are allowed. Quickstart text and
+screenshots may be updated only as documentation: they must not change the
+actual V1 flow or expand its browser/platform, privacy, retention, OAuth,
+session, locale, or tool claims. If impact is uncertain, treat the change as
+frozen and ask the product owner before writing.
+
+Approval, rejection, or a security incident does not silently remove this
+stop. An unfreeze requires an explicit product-owner decision naming the
+reason, exact scope, and target version. After actual publication, `1.0.0`
+remains permanently immutable; later work starts as a new SemVer candidate.
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
