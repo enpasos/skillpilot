@@ -94,7 +94,7 @@ jobs:
       - name: Test and validate approved OpenAI review video
         run: |
           node scripts/verify_openai_review_video.test.mjs
-          node scripts/verify_openai_review_video.mjs app/public
+          node scripts/verify_openai_review_video.mjs backend/src/main/resources
       - name: Test OpenAI V1 runtime configuration guard
         run: node --test scripts/validate_openai_v1_runtime_config.test.mjs
       - name: Validate exact V1 production boundary configuration
@@ -206,8 +206,8 @@ jobs:
         run: npm run lint
       - name: Build application without regenerating curriculum assets
         run: npm run build:application
-      - name: Check approved OpenAI review video in the built application
-        run: node ../scripts/verify_openai_review_video.mjs ../backend/src/main/resources/static
+      - name: Check approved OpenAI review video backend resource
+        run: node ../scripts/verify_openai_review_video.mjs ../backend/src/main/resources
       - name: Test service-worker update lifecycle
         run: npm run test:service-worker-update-lifecycle
       - name: Check AI transparency inventory

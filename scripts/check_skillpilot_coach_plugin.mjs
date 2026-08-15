@@ -17,13 +17,13 @@ const pluginRoot = resolve(
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
 const reviewVideoArtifact = resolve(
   repositoryRoot,
-  "app/public",
+  "backend/src/main/resources",
   OPENAI_REVIEW_VIDEO.relativePath,
 );
 assert.equal(
   existsSync(reviewVideoArtifact),
   true,
-  "The approved OpenAI review video must be present as a tracked public asset.",
+  "The approved OpenAI review video must be present as a tracked backend resource.",
 );
 validateOpenAiReviewVideoBytes(readFileSync(reviewVideoArtifact));
 const goalVisualizationWidget = resolve(

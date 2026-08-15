@@ -275,9 +275,9 @@ npm install
 echo "Baue Anwendung..."
 npm run build
 
-echo "Prüfe freigegebenes OpenAI-Reviewvideo im Frontend-Artefakt..."
+echo "Prüfe freigegebenes OpenAI-Reviewvideo in der Backend-Ressource..."
 node ../scripts/verify_openai_review_video.mjs \
-  ../backend/src/main/resources/static
+  ../backend/src/main/resources
 
 # Der Build synchronisiert auch die nicht eingecheckten Backend-Kopien der
 # Runtime-Assets. Das Inventar darf erst den vollständig gebauten Stand prüfen.

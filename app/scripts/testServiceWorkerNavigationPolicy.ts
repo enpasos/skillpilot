@@ -23,7 +23,7 @@ const networkOnlyNavigations = [
   '/learner?l=example-focus',
   '/learner/example-goal',
   '/learner/example-goal?l=example-focus',
-  '/assets/openai/review/skillpilot-coach-v1/1.0.0/example.mp4',
+  '/api/public/openai/review/skillpilot-coach-v1/1.0.0/example.mp4',
 ]
 
 for (const urlPath of networkOnlyNavigations) {
@@ -71,11 +71,6 @@ assert.equal(
   serviceWorkerLifecyclePolicy.cleanupOutdatedCaches,
   true,
   'old precaches are cleaned only after a coherent worker activation',
-)
-
-assert.ok(
-  serviceWorkerPrecacheGlobIgnores.includes('assets/openai/review/**'),
-  'the OpenAI review recording must stay outside the application-shell precache',
 )
 
 assert.ok(

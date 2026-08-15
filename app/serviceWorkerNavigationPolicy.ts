@@ -31,6 +31,5 @@ export const serviceWorkerNavigationFallbackDenylist = [
  */
 export const serviceWorkerPrecacheGlobIgnores = [
   '**/version.json',
-  'assets/openai/review/**',
   'lernzielbuch/**',
 ] as const

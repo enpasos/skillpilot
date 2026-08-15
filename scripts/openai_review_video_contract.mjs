@@ -3,10 +3,10 @@ import { createHash } from 'node:crypto'
 export const OPENAI_REVIEW_VIDEO = Object.freeze({
   bytes: 11_104_503,
   publicUrl:
-    'https://skillpilot.com/assets/openai/review/skillpilot-coach-v1/1.0.0/'
+    'https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/'
     + 'sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4',
   relativePath:
-    'assets/openai/review/skillpilot-coach-v1/1.0.0/'
+    'openai-review/skillpilot-coach-v1/1.0.0/'
     + 'sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4',
   sha256: '20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb',
 })
