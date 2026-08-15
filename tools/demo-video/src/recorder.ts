@@ -20,6 +20,64 @@ import { invalidateRecordingCache, publishRecordingGeneration, readReusableRecor
 import { runtimeEnvironmentValue, type RuntimeEnvironment } from "./runtime-environment.js";
 import type { DemoScenario, DemoStep, RecordingAdapter, RecordingContext, RecordingResult, TimelineEvent } from "./types.js";
 
+interface RecordingRuntimeState {
+  preparedChatGptPrompt?: string;
+}
+
+const LEARNING_SESSION_ID_PATTERN = /(?<![A-Za-z0-9_-])sps_[A-Za-z0-9_-]{43}(?![A-Za-z0-9_-])/gu;
+
+function normalizedVisibleText(value: string): string {
+  return value
+    .replace(/[\u200B-\u200D\u2060\uFEFF\uFFFC]/gu, "")
+    .replace(/\u00a0/gu, " ")
+    .replace(/\s+/gu, " ")
+    .trim();
+}
+
+export function assertPreparedPromptContent(expectedPrompt: string, actualPrompt: string): void {
+  const expectedSessionIds = expectedPrompt.match(LEARNING_SESSION_ID_PATTERN) ?? [];
+  const actualSessionIds = actualPrompt.match(LEARNING_SESSION_ID_PATTERN) ?? [];
+  if (
+    expectedSessionIds.length !== 1
+    || actualSessionIds.length !== 1
+    || actualSessionIds[0] !== expectedSessionIds[0]
+  ) {
+    throw new Error("The URL-prefilled composer does not contain the exact first-party 43-character learning session ID");
+  }
+  const normalizedExpected = normalizedVisibleText(expectedPrompt);
+  const normalizedActual = normalizedVisibleText(actualPrompt);
+  if (normalizedActual !== normalizedExpected) {
+    let firstDifference = 0;
+    while (
+      firstDifference < normalizedExpected.length
+      && firstDifference < normalizedActual.length
+      && normalizedExpected[firstDifference] === normalizedActual[firstDifference]
+    ) firstDifference += 1;
+    const expectedCode = normalizedExpected.codePointAt(firstDifference) ?? -1;
+    const actualCode = normalizedActual.codePointAt(firstDifference) ?? -1;
+    throw new Error(
+      "The prepared ChatGPT message changed after the first-party WebGUI handoff "
+      + `(sessionExact=yes, expectedLength=${normalizedExpected.length}, `
+      + `actualLength=${normalizedActual.length}, firstDifference=${firstDifference}, `
+      + `expectedCodePoint=${expectedCode}, actualCodePoint=${actualCode})`,
+    );
+  }
+}
+
+function capturePreparedChatGptPrompt(state: RecordingRuntimeState, rawUrl: string): void {
+  try {
+    const url = new URL(rawUrl);
+    if (url.origin === "https://chatgpt.com" && url.pathname === "/" && url.searchParams.has("prompt")) {
+      const prompt = url.searchParams.get("prompt");
+      if (prompt !== null) state.preparedChatGptPrompt = prompt;
+      return;
+    }
+    if (url.origin !== "https://chatgpt.com") delete state.preparedChatGptPrompt;
+  } catch {
+    // Browser navigation will report malformed URLs itself. Never echo the URL.
+  }
+}
+
 function safeName(value: string): string {
   return value.replace(/[^a-zA-Z0-9._-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 100) || "capture";
 }
@@ -105,6 +163,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
     let video: ReturnType<Page["video"]> | undefined;
     let browserVersion = "unknown";
     let failure: unknown;
+    const runtimeState: RecordingRuntimeState = {};
 
     try {
       session = await launchScenarioBrowserSession(scenario, environment, {
@@ -113,6 +172,11 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
       });
       browserVersion = session.browserVersion;
       page = session.page;
+      page.on("request", (request) => {
+        if (request.isNavigationRequest() && request.frame() === page?.mainFrame()) {
+          capturePreparedChatGptPrompt(runtimeState, request.url());
+        }
+      });
       page.setDefaultTimeout(scenario.browser.defaultTimeoutMs);
       page.on("dialog", async (dialog) => {
         if (scenario.browser.dialogPolicy === "accept") await dialog.accept();
@@ -128,7 +192,7 @@ export class PlaywrightRecordingAdapter implements RecordingAdapter {
           let click: { x: number; y: number } | undefined;
           let secretInput = false;
           try {
-            const result = await executeStep(page, step, scenario, environment);
+            const result = await executeStep(page, step, scenario, environment, runtimeState);
             click = result.click;
             secretInput = result.secretInput;
             if (step.action !== "wait") {
@@ -208,6 +272,7 @@ async function executeStep(
   step: DemoStep,
   scenario: DemoScenario,
   environment?: RuntimeEnvironment,
+  runtimeState: RecordingRuntimeState = {},
 ): Promise<{ click?: { x: number; y: number }; secretInput: boolean }> {
   switch (step.action) {
     case "goto":
@@ -291,6 +356,12 @@ async function executeStep(
       await locator.fill(value);
       return { secretInput };
     }
+    case "type":
+      await resolveLocator(page, step.target, step.frame).pressSequentially(
+        step.value,
+        step.delayMs === undefined ? {} : { delay: step.delayMs },
+      );
+      return { secretInput: false };
     case "press":
       if (step.target) await resolveLocator(page, step.target, step.frame).press(step.key);
       else await page.keyboard.press(step.key);
@@ -315,23 +386,45 @@ async function executeStep(
       await page.waitForTimeout(step.durationMs);
       return { secretInput: false };
     case "assert": {
-      const locator = resolveLocator(page, step.target, step.frame);
+      let locator = resolveLocator(page, step.target, step.frame);
+      if (step.text !== undefined) {
+        locator = locator.filter({ hasText: step.text });
+      }
+      if (step.textPattern !== undefined) {
+        locator = locator.filter({ hasText: new RegExp(step.textPattern, "iu") });
+      }
       await locator.waitFor({
         state: step.state ?? "visible",
         ...(step.timeoutMs !== undefined ? { timeout: step.timeoutMs } : {}),
       });
-      if (step.text !== undefined) {
-        const text = await locator.textContent();
-        if (!text?.includes(step.text)) {
-          throw new Error(`Expected ${JSON.stringify(step.text)} in ${JSON.stringify(text)}`);
-        }
+      return { secretInput: false };
+    }
+    case "assertPreparedPrompt": {
+      const expectedPrompt = runtimeState.preparedChatGptPrompt;
+      if (!expectedPrompt) {
+        throw new Error("No first-party ChatGPT prompt navigation was observed for this chapter");
       }
-      if (step.textPattern !== undefined) {
-        const text = await locator.textContent();
-        if (!text || !new RegExp(step.textPattern, "iu").test(text)) {
-          throw new Error(`Expected text matching ${JSON.stringify(step.textPattern)} in ${JSON.stringify(text)}`);
+      const locator = resolveLocator(page, step.target, step.frame);
+      await locator.waitFor({
+        state: "visible",
+        ...(step.timeoutMs !== undefined ? { timeout: step.timeoutMs } : {}),
+      });
+      const actualPrompt = await locator.evaluate((element) => {
+        const clone = element.cloneNode(true) as HTMLElement;
+        for (const chip of Array.from(clone.querySelectorAll("span[contenteditable='false']"))) {
+          if ((chip.textContent ?? "").trim() === "SkillPilot Coach v1") chip.remove();
         }
-      }
+        for (const block of Array.from(clone.querySelectorAll("br, div, li, p"))) {
+          if (block.tagName === "BR") {
+            block.replaceWith(document.createTextNode(" "));
+          } else {
+            block.before(document.createTextNode(" "));
+            block.after(document.createTextNode(" "));
+          }
+        }
+        return clone.textContent ?? "";
+      });
+      assertPreparedPromptContent(expectedPrompt, actualPrompt);
       return { secretInput: false };
     }
     case "screenshot":

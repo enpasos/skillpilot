@@ -1,6 +1,6 @@
 # SkillPilot Coach v1: OpenAI-Submission-Dossier
 
-**Stand:** 13. August 2026
+**Stand:** 14. August 2026
 
 Dieses Dossier enthält die nicht geheimen, reproduzierbaren Angaben für den
 öffentlichen OpenAI-Plugin-Draft. Es bestätigt weder Einreichung noch
@@ -38,6 +38,7 @@ nicht als bestehende Integration eingereicht.
 | Support | `https://skillpilot.com/imprint` |
 | Privacy policy | `https://skillpilot.com/privacy` |
 | Terms of service | `https://skillpilot.com/legal` |
+| Demo recording | `https://skillpilot.com/assets/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4` |
 
 | Brand color | `#f59e0b` |
 | Capabilities | `Interactive`, `Read`, `Write` |
@@ -156,13 +157,16 @@ frische opake Sessionnachricht ohne permanente ID.
   `Darstellungsform auswählen und begründen` mit freigegebenem Lernzielbild
   erwartet.
 - **Benutzer-Turns:** Zuerst die vom First-Party-WebGUI vorbereitete
-  Startnachricht unverändert senden. Danach: `Der Weg „Veränderung, Wachstum
-  und Modelle“ interessiert mich am meisten.` Auf die persönliche Einstiegsfrage
-  antworten: `Mich interessiert besonders, wie man mit Funktionen das Wachstum
-  von Bakterien oder Klimaentwicklungen vorhersagen kann und wo solche Modelle
-  an ihre Grenzen kommen. Lass uns daran weiterlernen.` Falls SkillPilot danach
-  Zieloptionen anbietet: `Nimm bitte den ersten von SkillPilot angebotenen
-  nächsten Schritt und beginne direkt.`
+  Startnachricht unverändert senden. Auf die Frage nach dem interessantesten
+  Weg antworten: `Wachstum fände ich spannend`. Auf die anschließende Frage
+  nach einem konkreten persönlichen Beispiel antworten:
+  `Bakterienwachstum`. Anschließend dem Coach flexibel folgen: `Ich möchte jetzt
+  mit Bakterienwachstum konkret weiterlernen. Ich würde einen Graphen wählen,
+  weil man daran die Entwicklung über die Zeit und Veränderungen besonders
+  schnell erkennt. Was kann ich am Graphen erkennen, das eine Tabelle weniger
+  direkt zeigt?` Diese Antwort ist sowohl eine ausdrückliche Bereitschaft zum
+  Weiterlernen als auch eine fachliche Anschlussfrage, unabhängig davon, ob der
+  Coach das nächste Lernziel bereits namentlich eingeführt hat.
 - **Erwarteter Ablauf:** `get_skillpilot_context` läuft vor jeder
   lernendenbezogenen Antwort. Der Coach nutzt nur die bestätigte Locale und den
   autoritativen Level-2-, Fokus- und Zielzustand. Die Wahl des
@@ -192,13 +196,13 @@ frische opake Sessionnachricht ohne permanente ID.
   ausdrücklich anfordern. Weil dieser Lernstand noch keinen
   Karten-Client-State besitzt, sind unabhängig vom Kalendertag exakt 8/8 Karten
   fällig und für den vollständigen Verified Recall verfügbar.
-- **Benutzer-Turns:** `Der Weg „Veränderung, Wachstum und Modelle“ interessiert
-  mich am meisten.` Danach: `Mich interessiert besonders, wie man mit
-  Funktionen das Wachstum von Bakterien oder Klimaentwicklungen vorhersagen
-  kann und wo solche Modelle an ihre Grenzen kommen. Lass uns daran
-  weiterlernen.` Nach der autorisierten Fortsetzung senden: `Ich möchte jetzt
+- **Benutzer-Turns:** `Wachstum fände ich spannend`. Danach auf die konkrete
+  persönliche Einstiegsfrage: `Bakterienwachstum`. Anschließend dem Coach mit
+  derselben flexiblen Weiterlern- und Graphenfrage wie in P2 folgen und seine
+  fachliche Antwort abwarten. Danach senden: `Ich möchte jetzt
   zum Lernziel „Lernkarten - Funktionen und Gleichungen“ wechseln und dort die
-  fälligen Karteikarten normal üben.` Danach alle acht Fixture-Karten in der UI
+  fälligen Karteikarten normal üben.` Nach dem bestätigten Zielwechsel die vom
+  Coach angebotene Aktion `Karteikarten lernen.` senden. Danach alle acht Fixture-Karten in der UI
   als **Gewusst** bewerten und senden:
   `Jetzt möchte ich die strenge Kartenprüfung ohne Hilfen machen.` Nach Ausgabe
   sämtlicher Prüfungsfragen in genau einem Turn einreichen:
@@ -262,9 +266,11 @@ frische opake Sessionnachricht ohne permanente ID.
   angebotenen atomaren Schritt aktivieren und **Lernen starten** wählen. Die
   erwartete erste frisch veröffentlichte breitere Option lautet
   `E-Phase: Grundlagen der Analysis und mathematische Modelle`.
-- **Benutzer-Turns:** `Mein aktueller Fokus ist bewusst zu eng. Bitte erweitere
-  ihn auf die nächstgrößere passende Einheit.` Danach: `Ja, setze genau diesen
-  ersten vorgeschlagenen Fokus.`
+- **Benutzer-Turns:** `Mein aktueller Fokus ist bewusst zu eng. Zeige mir bitte
+  die aktuell veröffentlichte nächstgrößere passende Fokusoption, aber ändere
+  den Fokus noch nicht.` Danach: `Ja. Prüfe die aktuell veröffentlichten
+  Fokusoptionen noch einmal, setze exakt die erste Option und nenne mir danach
+  den bestätigten Fokus mit seinem exakten Titel.`
 - **Erwarteter Ablauf:** Die Scope-Navigation liefert geeignete backendseitig
   veröffentlichte learner-facing Vorfahren zuerst, der nächstgelegene breitere
   Fokus steht an erster Stelle; andere gültige Fokusoptionen können folgen. Der
@@ -416,26 +422,42 @@ Abgrenzung folgt der offiziellen Videoanforderung, die Abdeckung über die
 *unterstützten* Plattformen verlangt; sie ist keine allgemeine Aussage über die
 Plattformverfügbarkeit anderer OpenAI-Plugins.
 
-Das Reviewvideo zeigt ohne sichtbare Geheimnisse die fünf positiven und drei
-negativen Portalabläufe in kompakter Form:
+Das freigegebene Reviewvideo ist eine kompakte Browseraufnahme des tatsächlichen
+Produktablaufs. Es zeigt:
 
-1. CREATE oder EXISTING, Providerhinweis und Level-2-Konfiguration in der
-   First-Party-WebGUI;
-2. **Start learning**, frische Session und automatisch geöffneten neuen Chat;
-3. erfolgreichen aktuellen Kontextabruf vor sichtbarem Coaching;
-4. Orientierungsziel, dialogisches Lernen, freigegebenes Lernzielbild und
-   serverautorisierte Fortsetzung;
-5. Karteikarten-UI und getrennten vollständigen Verified Recall;
-6. vollständige Prüfungsabgabe und Bewertung;
-7. bewusst angeforderte Fokusweitung, die erst nach ausdrücklicher Zustimmung
-   genau eine frisch veröffentlichte Option setzt;
-8. Session-Recovery ohne Fachantwort oder OAuth-Reconnect;
-9. Ablehnung einer Level-2-Änderung im Chat und einer Prüfungshilfe vor der
-   vollständigen Abgabe.
+1. die First-Party-Erstellung einer SkillPilot-ID und die vollständige sichtbare
+   Level-2-Konfiguration für Mathematik Leistungskurs;
+2. **SkillPilot-App öffnen**, die dadurch frisch erzeugte 24-Stunden-Session,
+   die per URL vorbereitete Startnachricht in ChatGPT und deren ausdrückliches
+   Absenden durch den Benutzer;
+3. zwei aufeinanderfolgende coachgeführte Lernziele mit ihren Visualisierungen,
+   dem Dialog mit der lernenden Person und dem sichtbaren Abschluss beider
+   Ziele;
+4. den anschließenden Wechsel auf das Lernziel für Funktionen-Karteikarten und
+   das normale interaktive Karteikartenlernen.
 
-Die private Video-URL wird nur im Portal hinterlegt. Das Video darf keine
-permanente SkillPilot-ID, Lernsession, OAuth-Werte oder Review-Zugangsdaten
-zeigen.
+Die englische Sprecherstimme erklärt die deutschsprachige Oberfläche und den
+fachlichen Ablauf für englischsprachige Reviewer. Auf ausdrückliche
+Produktfreigabe enthält die Fassung keine eingebrannten Untertitel. Die
+Aufnahme behauptet weder eine native App- noch eine Betriebssystemunterstützung.
+
+Die exakt fünf positiven und drei negativen Fälle bleiben eigenständige,
+reproduzierbare Einträge im Portalbereich **Testing**. P1 sowie N1 bis N3 werden
+nicht künstlich als zusätzliche Videokapitel wiederholt.
+
+Das freigegebene, content-addressierte Artefakt hat folgende unveränderliche
+Bindung:
+
+- URL: `https://skillpilot.com/assets/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`
+- SHA-256: `20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb`
+- Größe: `11.104.503` Bytes
+- Format: H.264/AAC, 1920 × 1080, 329,110 Sekunden
+
+Die direkte URL wird nicht in der SkillPilot-Oberfläche verlinkt, ist für die
+Portal-Review aber ohne Anmeldung per HTTPS abrufbar. Sie ist daher keine
+private oder zugriffsgeschützte URL. OAuth-Werte und Review-Zugangsdaten sind
+nicht Bestandteil der Aufnahme. Die nur 24 Stunden gültige
+`learningSessionId` darf im aufgezeichneten Startablauf sichtbar sein.
 
 ## 11. Release Notes
 
@@ -454,7 +476,10 @@ prepared first-party SkillPilot start flow described in the test fixture.
 
 - Verfügbarkeit nur für rechtlich freigegebene Länder und Regionen auswählen.
 - Demo-OAuth-Zugang ohne MFA ausschließlich im Portal hinterlegen und testen.
-- Demo-Recording erstellen und private HTTPS-URL eintragen.
+- Nach dem Produktionsrollout die content-addressierte Demo-Recording-URL auf
+  HTTP 200, `video/mp4`, Byte-Range-Unterstützung, `11.104.503` Bytes und den
+  dokumentierten SHA-256 prüfen; erst danach exakt diese URL im Portal
+  eintragen.
 - Screenshots nur einreichen, wenn sie tatsächlich hilfreich sind; für den
   einen Starter Prompt ist die aktuelle Entscheidung **keine Screenshots**. Falls
   später doch einer eingereicht wird, ist genau ein PNG oder JPEG mit exakt

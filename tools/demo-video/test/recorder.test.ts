@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { Page, Video } from "playwright";
 
-import { finalizeRecordingSession } from "../src/recorder.js";
+import { assertPreparedPromptContent, finalizeRecordingSession } from "../src/recorder.js";
 
 test("saves a completed page video before disconnecting the browser session", async () => {
   const calls: string[] = [];
@@ -25,4 +25,25 @@ test("saves a completed page video before disconnecting the browser session", as
     "video.delete",
     "session.close",
   ]);
+});
+
+test("accepts only the exact first-party URL prompt with one 43-character session ID", () => {
+  const sessionId = `sps_${"A".repeat(43)}`;
+  const expected = `Verwende SkillPilot Coach v1 und fahre fort.\nlearningSessionId:\n${sessionId}`;
+
+  assert.doesNotThrow(() => assertPreparedPromptContent(expected, expected));
+  assert.doesNotThrow(() => assertPreparedPromptContent(expected, expected.replaceAll("\n", "  ")));
+  assert.doesNotThrow(() => assertPreparedPromptContent(expected, `\u200B${expected}\uFFFC`));
+  assert.throws(
+    () => assertPreparedPromptContent(expected, `${expected}c`),
+    /exact first-party 43-character learning session ID/u,
+  );
+  assert.throws(
+    () => assertPreparedPromptContent(expected, expected.replace("A".repeat(43), `${"A".repeat(20)}\u200B${"A".repeat(23)}`)),
+    /exact first-party 43-character learning session ID/u,
+  );
+  assert.throws(
+    () => assertPreparedPromptContent(expected, `${expected} SkillPilot Coach v1`),
+    /prepared ChatGPT message changed/u,
+  );
 });

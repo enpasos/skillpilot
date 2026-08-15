@@ -90,7 +90,6 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
   const createdIds: string[] = [];
   const deletedIds: string[] = [];
   const personalizationSteps = new Map<string, number>();
-  let launchCount = 0;
 
   const fetchImpl = (async (
     input: string | URL | Request,
@@ -115,7 +114,10 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
     const id = decodeURIComponent(learnerMatch[1]!);
     const suffix = learnerMatch[2] ?? "";
 
-    if (method === "PUT" && suffix === "/curriculum") return jsonResponse(undefined, 204);
+    // Spring's void curriculum endpoint returns HTTP 200 with an empty body in
+    // production. The fixture client must accept that successful response
+    // without weakening JSON validation for endpoints that return content.
+    if (method === "PUT" && suffix === "/curriculum") return new Response(null, { status: 200 });
     if (method === "GET" && suffix === "/personalization-plan") {
       return jsonResponse(personalizationPlan(personalizationSteps.get(id) ?? 0));
     }
@@ -131,16 +133,6 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
       const requestedGoalId = (body as { goalId?: unknown } | undefined)?.goalId;
       return jsonResponse({ activeGoal: { id: requestedGoalId } });
     }
-    if (method === "POST" && suffix === "/openai/v1/launch") {
-      launchCount += 1;
-      const learningSessionId = `sps_${String(launchCount).padStart(43, "a")}`;
-      return jsonResponse({
-        prompt: `learningSessionId: ${learningSessionId}`,
-        webUrl: "https://chatgpt.com/",
-        learningSessionId,
-        expiresAt: "2099-01-01T00:00:00Z",
-      });
-    }
     if (method === "DELETE" && suffix === "") {
       deletedIds.push(id);
       return jsonResponse(undefined, 204);
@@ -151,46 +143,41 @@ const createMockReviewApi = (options: MockReviewApiOptions = {}) => {
   return { fetchImpl, requests, createdIds, deletedIds };
 };
 
-test("prepares six disposable review learners only through normal public learner routes", async () => {
+test("prepares four disposable upload-video learners only through normal public learner routes", async () => {
   const mock = createMockReviewApi();
   const fixtures = await prepareSkillPilotReviewFixtures({
     baseUrl: "https://skillpilot.example",
     fetchImpl: mock.fetchImpl,
   });
 
-  assert.equal(fixtures.learnerCount, 6);
+  assert.equal(fixtures.learnerCount, 4);
   assert.deepEqual(mock.createdIds, [
     "sps_review_00000001",
     "sps_review_00000002",
     "sps_review_00000003",
     "sps_review_00000004",
-    "sps_review_00000005",
-    "sps_review_00000006",
   ]);
   assert.equal(
     fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p2SkillpilotId],
     mock.createdIds[0],
   );
-  for (const name of [
-    SKILLPILOT_REVIEW_ENVIRONMENT.p3StartUrl,
-    SKILLPILOT_REVIEW_ENVIRONMENT.p4StartUrl,
-    SKILLPILOT_REVIEW_ENVIRONMENT.p5StartUrl,
-    SKILLPILOT_REVIEW_ENVIRONMENT.n2StartUrl,
-    SKILLPILOT_REVIEW_ENVIRONMENT.n3StartUrl,
-  ]) {
-    const value = fixtures.environment[name];
-    assert.ok(value, `missing protected fixture environment value ${name}`);
-    const url = new URL(value);
-    assert.equal(url.origin, "https://chatgpt.com");
-    assert.match(url.searchParams.get("prompt") ?? "", /^learningSessionId: sps_[A-Za-z0-9_-]{43}$/u);
-  }
+  assert.deepEqual(
+    [
+      fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p2SkillpilotId],
+      fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p3SkillpilotId],
+      fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p4SkillpilotId],
+      fixtures.environment[SKILLPILOT_REVIEW_ENVIRONMENT.p5SkillpilotId],
+    ],
+    mock.createdIds,
+  );
   assert.equal(
     mock.requests.filter((request) => request.method === "POST" && request.pathname === "/api/ui/learners").length,
-    6,
+    4,
   );
   assert.equal(
     mock.requests.filter((request) => request.method === "POST" && request.pathname.endsWith("/openai/v1/launch")).length,
-    5,
+    0,
+    "fixture preparation must never mint a learning session outside the recorded WebGUI flow",
   );
   const activeGoalRequests = mock.requests.filter((request) => (
     request.method === "POST" && request.pathname.endsWith("/active-goal")
@@ -285,7 +272,7 @@ test("retries failed deletes and retains only pending learner IDs for a later cl
     fixtures.cleanup(),
     /Failed to delete 1 disposable review learner\(s\); 1 cleanup operation\(s\) remain pending/u,
   );
-  assert.equal(mock.deletedIds.length, 5);
+  assert.equal(mock.deletedIds.length, 3);
   assert.ok(!mock.deletedIds.includes(pendingId));
   assert.equal(
     mock.requests.filter((request) => (
@@ -298,7 +285,7 @@ test("retries failed deletes and retains only pending learner IDs for a later cl
 
   rejectPendingDelete = false;
   await fixtures.cleanup();
-  assert.equal(mock.deletedIds.length, 6);
+  assert.equal(mock.deletedIds.length, 4);
   assert.equal(mock.deletedIds.filter((id) => id === pendingId).length, 1);
   const deleteRequestsAfterRecovery = mock.requests.filter((request) => request.method === "DELETE").length;
 
@@ -338,7 +325,7 @@ test("recovers a private cleanup ledger before creating a new review generation"
     const activeLedger = JSON.parse(await readFile(ledgerPath, "utf8")) as {
       skillpilotIds: string[];
     };
-    assert.equal(activeLedger.skillpilotIds.length, 6);
+    assert.equal(activeLedger.skillpilotIds.length, 4);
     assert.ok(!activeLedger.skillpilotIds.includes(previousId));
 
     await fixtures.cleanup();

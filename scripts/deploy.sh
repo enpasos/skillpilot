@@ -275,6 +275,10 @@ npm install
 echo "Baue Anwendung..."
 npm run build
 
+echo "Prüfe freigegebenes OpenAI-Reviewvideo im Frontend-Artefakt..."
+node ../scripts/verify_openai_review_video.mjs \
+  ../backend/src/main/resources/static
+
 # Der Build synchronisiert auch die nicht eingecheckten Backend-Kopien der
 # Runtime-Assets. Das Inventar darf erst den vollständig gebauten Stand prüfen.
 echo "Prüfe KI-Transparenznachweis..."
@@ -327,6 +331,10 @@ else
 fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
+
+echo "Prüfe öffentliches OpenAI-Reviewvideo..."
+node scripts/verify_openai_review_video.mjs \
+  "${SMOKE_BASE_URL}"
 
 echo "Prüfe ausgelieferte Frontend-Shell-Assets..."
 node scripts/verify_frontend_shell_assets.mjs \

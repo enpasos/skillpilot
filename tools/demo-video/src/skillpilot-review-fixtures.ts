@@ -11,11 +11,9 @@ const ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
 
 export const SKILLPILOT_REVIEW_ENVIRONMENT = Object.freeze({
   p2SkillpilotId: "SKILLPILOT_REVIEW_P2_SKILLPILOT_ID",
-  p3StartUrl: "SKILLPILOT_REVIEW_P3_START_URL",
-  p4StartUrl: "SKILLPILOT_REVIEW_P4_START_URL",
-  p5StartUrl: "SKILLPILOT_REVIEW_P5_START_URL",
-  n2StartUrl: "SKILLPILOT_REVIEW_N2_START_URL",
-  n3StartUrl: "SKILLPILOT_REVIEW_N3_START_URL",
+  p3SkillpilotId: "SKILLPILOT_REVIEW_P3_SKILLPILOT_ID",
+  p4SkillpilotId: "SKILLPILOT_REVIEW_P4_SKILLPILOT_ID",
+  p5SkillpilotId: "SKILLPILOT_REVIEW_P5_SKILLPILOT_ID",
 });
 
 type CourseLevel = "GK" | "LK";
@@ -42,15 +40,6 @@ interface LearnerState {
   stateMachine?: { goalOptions?: unknown; activeGoal?: unknown } | null;
 }
 
-interface LaunchResponse {
-  prompt?: unknown;
-  webUrl?: unknown;
-  learningSessionId?: unknown;
-  expiresAt?: unknown;
-}
-
-const LEARNING_SESSION_PATTERN = /^sps_[A-Za-z0-9_-]{43}$/u;
-const LEARNING_SESSION_IN_PROMPT_PATTERN = /sps_[A-Za-z0-9_-]{43}/gu;
 const DEFAULT_REQUEST_TIMEOUT_MS = 15_000;
 const DEFAULT_CLEANUP_MAX_ATTEMPTS = 3;
 
@@ -181,7 +170,9 @@ class SkillPilotReviewApi {
       }
       if (response.status === 204) return undefined as T;
       try {
-        return await response.json() as T;
+        const responseBody = await response.text();
+        if (!responseBody.trim()) return undefined as T;
+        return JSON.parse(responseBody) as T;
       } catch (error) {
         if (controller.signal.aborted) {
           throw new Error(`${operation} timed out after ${this.#requestTimeoutMs} ms`, { cause: error });
@@ -263,58 +254,6 @@ class SkillPilotReviewApi {
     if (actualActiveGoal !== idOfGoal) {
       throw new Error("Set disposable review goal did not persist the requested active goal");
     }
-  }
-
-  async createLaunch(
-    id: string,
-    launchIntent?: Record<string, unknown>,
-  ): Promise<string> {
-    const response = await this.#request<LaunchResponse>(
-      "POST",
-      `/api/ui/learners/${encodeURIComponent(id)}/openai/v1/launch`,
-      "Create protected review launch",
-      {
-        communicationLocale: "de",
-        client: "openai-plugin-review-demo",
-        selectedCurriculum: ROOT_CURRICULUM_ID,
-        providerEligibilityConfirmed: true,
-        ...(launchIntent ? { launchIntent } : {}),
-      },
-    );
-    const prompt = asString(response.prompt);
-    const webUrl = asString(response.webUrl);
-    const sessionId = asString(response.learningSessionId);
-    const expiresAt = asString(response.expiresAt);
-    if (!prompt || !webUrl || !sessionId || !expiresAt) {
-      throw new Error("Protected review launch response is incomplete");
-    }
-    const promptSessions = prompt.match(LEARNING_SESSION_IN_PROMPT_PATTERN) ?? [];
-    if (!LEARNING_SESSION_PATTERN.test(sessionId)
-        || promptSessions.length !== 1
-        || promptSessions[0] !== sessionId) {
-      throw new Error("Protected review launch returned an invalid session prompt");
-    }
-    const expiry = Date.parse(expiresAt);
-    if (!Number.isFinite(expiry) || expiry <= Date.now()) {
-      throw new Error("Protected review launch returned an invalid expiry");
-    }
-    const provider = new URL(webUrl);
-    if (provider.origin !== "https://chatgpt.com"
-        || provider.pathname !== "/"
-        || provider.search
-        || provider.hash
-        || provider.username
-        || provider.password) {
-      throw new Error("Protected review launch returned an untrusted provider origin");
-    }
-    const start = new URL("https://chatgpt.com/");
-    start.searchParams.set("prompt", prompt);
-    const startUrl = start.toString();
-    const reparsed = new URL(startUrl);
-    if (reparsed.searchParams.size !== 1 || reparsed.searchParams.get("prompt") !== prompt) {
-      throw new Error("Protected review start URL failed canonicalization");
-    }
-    return startUrl;
   }
 
   async deleteLearner(id: string): Promise<void> {
@@ -523,42 +462,23 @@ export async function prepareSkillPilotReviewFixtures(
     // normal frontier and let the recorded coach flow complete orientation
     // before it requests card practice; never manufacture mastery as setup.
     await api.setActiveGoal(p3, ORIENTATION_GOAL_ID);
-    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p3StartUrl] = await api.createLaunch(p3);
+    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p3SkillpilotId] = p3;
 
     const p4 = await create("GK");
     await api.setScope(p4, [ABI26_GK_SCOPE_ID]);
     await api.setActiveGoal(p4, ABI26_GK_GOAL_ID);
-    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p4StartUrl] = await api.createLaunch(p4, {
-      type: "ABI26_EXAM",
-      goalId: ABI26_GK_GOAL_ID,
-      courseLevel: "GK",
-    });
+    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p4SkillpilotId] = p4;
 
     const p5 = await create("LK");
     const p5State = await api.setScope(p5, [NARROW_FUNCTIONS_FOCUS_ID]);
     const p5Goal = firstAvailableGoalId(p5State);
     if (!p5Goal) throw new Error("The narrowed review focus offers no active learning goal");
     await api.setActiveGoal(p5, p5Goal);
-    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p5StartUrl] = await api.createLaunch(p5);
+    environment[SKILLPILOT_REVIEW_ENVIRONMENT.p5SkillpilotId] = p5;
 
-    const n2 = await create("LK");
-    await api.setActiveGoal(n2, ORIENTATION_GOAL_ID);
-    environment[SKILLPILOT_REVIEW_ENVIRONMENT.n2StartUrl] = await api.createLaunch(n2);
-
-    const n3 = await create("GK");
-    await api.setScope(n3, [ABI26_GK_SCOPE_ID]);
-    await api.setActiveGoal(n3, ABI26_GK_GOAL_ID);
-    environment[SKILLPILOT_REVIEW_ENVIRONMENT.n3StartUrl] = await api.createLaunch(n3, {
-      type: "ABI26_EXAM",
-      goalId: ABI26_GK_GOAL_ID,
-      courseLevel: "GK",
-    });
-
-    const protectedStartUrls = Object.entries(environment)
-      .filter(([name]) => name.endsWith("_START_URL"))
-      .map(([, value]) => value);
-    if (protectedStartUrls.length !== 5 || new Set(protectedStartUrls).size !== 5) {
-      throw new Error("Review fixture preparation did not create five distinct protected start URLs");
+    const disposableIds = Object.values(environment);
+    if (disposableIds.length !== 4 || new Set(disposableIds).size !== 4) {
+      throw new Error("Review fixture preparation did not create four distinct disposable learners");
     }
 
     return {

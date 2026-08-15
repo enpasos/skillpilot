@@ -28,6 +28,17 @@ chapters:
         label: Secret
         target: { css: "#secret" }
         valueFromEnv: CONFIG_TEST_SECRET
+      - id: type
+        action: type
+        label: Type without replacing
+        target: { css: "#editor" }
+        value: SkillPilot Coach v1
+        delayMs: 50
+      - id: prepared-prompt
+        action: assertPreparedPrompt
+        label: Verify the URL-prefilled prompt
+        target: { css: "#editor" }
+        timeoutMs: 5000
 `;
 
 test("loads defaults, resolves local URLs, and keeps environment values out of configuration", async () => {
@@ -45,6 +56,15 @@ test("loads defaults, resolves local URLs, and keeps environment values out of c
   assert.match(scenario.chapters[0]!.steps[0]!.action === "goto" ? scenario.chapters[0]!.steps[0]!.url ?? "" : "", /^file:/);
   assert.doesNotMatch(JSON.stringify(scenario), /must-not-appear/);
   assert.match(JSON.stringify(redactedScenario(scenario)), /\[ENV:CONFIG_TEST_SECRET\]/);
+  const typeStep = scenario.chapters[0]!.steps[2]!;
+  assert.equal(typeStep.action === "type" ? typeStep.value : undefined, "SkillPilot Coach v1");
+  assert.equal(typeStep.action === "type" ? typeStep.delayMs : undefined, 50);
+  const preparedPromptStep = scenario.chapters[0]!.steps[3]!;
+  assert.equal(preparedPromptStep.action, "assertPreparedPrompt");
+  assert.equal(
+    preparedPromptStep.action === "assertPreparedPrompt" ? preparedPromptStep.timeoutMs : undefined,
+    5000,
+  );
 });
 
 test("requires every mandatory evidence mask to be an active configured selector", async () => {

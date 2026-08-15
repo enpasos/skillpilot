@@ -14,6 +14,7 @@ export const serviceWorkerNavigationFallbackDenylist = [
   /^\/internal(?:\/|$)/,
   /^\/learner(?:\/|\?|$)/,
   /^\/.*\.pdf$/,
+  /^\/.*\.mp4$/,
   /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
   /^\/claude\/mcp-regression(?:\/|$)/,
   /^\/curricula\?auth_success/,
@@ -30,5 +31,6 @@ export const serviceWorkerNavigationFallbackDenylist = [
  */
 export const serviceWorkerPrecacheGlobIgnores = [
   '**/version.json',
+  'assets/openai/review/**',
   'lernzielbuch/**',
 ] as const

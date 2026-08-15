@@ -4,6 +4,10 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
+import {
+  OPENAI_REVIEW_VIDEO,
+  validateOpenAiReviewVideoBytes,
+} from "./openai_review_video_contract.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pluginRoot = resolve(
@@ -11,6 +15,17 @@ const pluginRoot = resolve(
   "ai/openai plugin/skillpilot-coach-v1",
 );
 const faviconRoot = resolve(repositoryRoot, "app/public/favicon");
+const reviewVideoArtifact = resolve(
+  repositoryRoot,
+  "app/public",
+  OPENAI_REVIEW_VIDEO.relativePath,
+);
+assert.equal(
+  existsSync(reviewVideoArtifact),
+  true,
+  "The approved OpenAI review video must be present as a tracked public asset.",
+);
+validateOpenAiReviewVideoBytes(readFileSync(reviewVideoArtifact));
 const goalVisualizationWidget = resolve(
   repositoryRoot,
   "backend/src/main/resources/openai/skillpilot-goal-visualization-v1.html",
@@ -213,6 +228,16 @@ assert.match(
   submissionDossier,
   /keine allgemeine Aussage über die\s+Plattformverfügbarkeit anderer\s+OpenAI-Plugins/u,
   "The project-specific browser boundary must not be generalized to other OpenAI plugins.",
+);
+assert.equal(
+  submissionDossier.includes(OPENAI_REVIEW_VIDEO.publicUrl),
+  true,
+  "The submission dossier must bind the exact public review-video URL.",
+);
+assert.equal(
+  submissionDossier.includes(OPENAI_REVIEW_VIDEO.sha256),
+  true,
+  "The submission dossier must bind the approved review-video SHA-256.",
 );
 assert.match(legalTermsVersion, /CURRENT_TERMS_VERSION = '1\.0\.0'/u);
 for (const [label, source] of [
