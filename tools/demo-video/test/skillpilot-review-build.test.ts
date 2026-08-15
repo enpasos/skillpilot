@@ -81,7 +81,6 @@ test("standalone review preflight validates a private profile snapshot and delet
         return {
           origin: "https://chatgpt.com",
           composerVisible: true,
-          skillPilotAppVisible: true,
         };
       },
     });
@@ -136,12 +135,11 @@ test("review build reuses one profile snapshot for preflight and recording then 
         return {
           origin: "https://chatgpt.com",
           composerVisible: true,
-          skillPilotAppVisible: true,
         };
       },
       prepareFixtures: async () => ({
         environment: {},
-        learnerCount: 6,
+        learnerCount: 4,
         cleanup: async () => undefined,
       }),
       build: (async (options): Promise<BuildArtifacts> => {
@@ -171,7 +169,7 @@ test("review build reuses one profile snapshot for preflight and recording then 
 
     assert.deepEqual(seenProfiles, [snapshotProfile, snapshotProfile]);
     assert.equal(snapshotCleanup, 1);
-    assert.equal(result.learnerCount, 6);
+    assert.equal(result.learnerCount, 4);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -344,7 +342,6 @@ test("review preflight recovers pending cleanup before ordered external checks",
       return {
         origin: "https://chatgpt.com",
         composerVisible: true,
-        skillPilotAppVisible: true,
       };
     },
   });
@@ -391,7 +388,6 @@ test("fixture preparation failure leaves no stale review completion marker", asy
       validateReviewBrowser: async () => ({
         origin: "https://chatgpt.com",
         composerVisible: true,
-        skillPilotAppVisible: true,
       }),
       prepareFixtures: async () => {
         throw new Error("planned fixture failure");
@@ -458,7 +454,6 @@ test("review manifest becomes complete only after disposable learner cleanup", a
     validateReviewBrowser: async () => ({
       origin: "https://chatgpt.com",
       composerVisible: true,
-      skillPilotAppVisible: true,
     }),
     validatePlatformInputs: async () => scenario.platformClips.map((config) => ({
       config,
@@ -469,7 +464,7 @@ test("review manifest becomes complete only after disposable learner cleanup", a
     validateNativeMedia: async () => [],
     prepareFixtures: async () => ({
       environment: {},
-      learnerCount: 6,
+      learnerCount: 4,
       cleanup: async () => { order.push("cleanup"); },
     }),
     build: buildArtifacts as typeof import("../src/pipeline.js").buildPipeline,
@@ -477,7 +472,7 @@ test("review manifest becomes complete only after disposable learner cleanup", a
 
   order.push("returned");
   assert.deepEqual(order, ["build", "cleanup", "profile-cleanup", "returned"]);
-  assert.equal(result.learnerCount, 6);
+  assert.equal(result.learnerCount, 4);
   assert.equal(result.artifacts.manifestPath, join(workDir, "manifest.json"));
   assert.equal(await readFile(result.artifacts.manifestPath, "utf8"), "pending\n");
   await assert.rejects(
@@ -514,11 +509,10 @@ test("profile snapshot cleanup failure removes every completion marker", async (
         validateReviewBrowser: async () => ({
           origin: "https://chatgpt.com",
           composerVisible: true,
-          skillPilotAppVisible: true,
         }),
         prepareFixtures: async () => ({
           environment: {},
-          learnerCount: 6,
+          learnerCount: 4,
           cleanup: async () => undefined,
         }),
         build: (async (): Promise<BuildArtifacts> => {

@@ -287,19 +287,21 @@ devices. Native-app evidence is therefore outside this V1 review artifact and
 will be reconsidered only if the portal or reviewer explicitly challenges that
 declared boundary. This scope is not a guarantee of advance acceptance. The
 same submission contract requires exactly five positive and three negative
-review cases. See
+review cases as separate portal Testing entries; it does not require all eight
+test cases to be replayed inside the demo recording. See
 the official [final submission errors](https://developers.openai.com/plugins/deploy/submission-errors#final-directory-submission)
 and [submission testing](https://developers.openai.com/plugins/deploy/submission#testing)
 guidance.
 
-The target review blueprint is defined in
-`scenarios/skillpilot-openai-review.template.yaml`. It locks the five positive
-and three negative case IDs from
-`docs/deploy/openai-plugin-v1-submission.md`, retains the reviewed prompts,
-performs all eight explicit card ratings, and centralizes external ChatGPT
-locators. A contract test locks the case order, protected URL inputs, eight
-ratings, the visible P1 app-name gate, and a captured fail-closed result gate
-per case.
+The target recording blueprint is defined in
+`scenarios/skillpilot-openai-review.template.yaml`. Its four browser chapters P2–P5
+show the supported first-party launch, context-bound orientation, a second
+goal completed through Verified Recall, complete exam evaluation, and consent-bound
+focus widening. The five positive and three negative cases remain separate portal Testing entries in
+`docs/deploy/openai-plugin-v1-submission.md`. A contract test locks all four
+first-party WebGUI launches, the URL-prefilled-message and exact-session gate,
+the complete eight-answer Recall batch, the absence of any redundant app lookup, and a captured result gate
+per video chapter.
 
 Before treating that template as release evidence:
 
@@ -317,14 +319,19 @@ Before treating that template as release evidence:
    syncing changes back.
 3. Calibrate only the external ChatGPT locator variables against the current
    UI; SkillPilot's own selectors/accessible labels are repository-owned.
-4. Let `review-build` create one fresh disposable learner for each stateful
-   P2-P5/N2-N3 case through the public first-party endpoints. It prepares the
-   normal reviewed state, records the P2 SkillPilot handoff visibly, creates
-   five fresh protected launches in memory, and deletes every learner ID that
-   the public CREATE endpoint successfully returned. There is no reset, admin
-   backdoor, or reused learner.
-5. Keep permanent IDs, `learningSessionId`, OAuth material, tool capabilities,
-   credentials, and prompt-bearing URLs under opaque masks.
+4. Let `review-build` create one fresh disposable learner for each P2–P5 video
+   chapter through the public first-party endpoints. It prepares the normal
+   reviewed state, then records every P2–P5 launch through the real SkillPilot
+   WebGUI. Each click creates that chapter's fresh 24-hour learning session and
+   passes its prepared message to ChatGPT through the product URL. The fixture
+   code never creates a learning session or constructs a ChatGPT start URL.
+   After the run it deletes every learner ID that the public CREATE endpoint
+   successfully returned. There is no reset, admin backdoor, reused learner,
+   or generator-entered session ID.
+5. Keep permanent SkillPilot IDs, OAuth material, tool capabilities,
+   credentials, and prompt-bearing URLs outside artifacts or under opaque
+   masks. The short-lived `learningSessionId` is intentionally visible in the
+   recording; it expires after 24 hours and is not a permanent learner ID.
 6. Put the OpenAI API key and absolute persistent-profile path in the private
    review-secrets JSON shown below. `platformClips` is empty because this V1
    submission supports only the browser surface. Generic scenarios may still
@@ -388,11 +395,16 @@ unset SKILLPILOT_REVIEW_SOURCE_REVISION
 creates any learner, it runs the full Doctor, validates and snapshots the
 closed private Chromium profile, opens that snapshot headfully with a fixed
 1440x900 Playwright viewport for a read-only ChatGPT new-chat preflight, and
-verifies the composer and visible `SkillPilot Coach v1` app name. The recorder
-then reuses the same snapshot and deletes it afterward. The ChatGPT browser
-check proves that the draft app name is visible; the final human review must
-still confirm that the app is actually selected in every recorded
-conversation.
+verifies the authenticated new-chat composer. The recorder then reuses the
+same snapshot and deletes it afterward. It does not open the app lookup or add
+an app chip: ChatGPT invokes SkillPilot Coach v1 from the first-party prepared
+message itself. The visible context-grounded tool response after sending is the
+review evidence for that invocation.
+For each chapter the recorder compares the normalized visible composer text
+with the `prompt` value observed on the first-party WebGUI navigation and
+separately requires the exact unchanged 43-character `learningSessionId`.
+It sends nothing if either check fails and never fills, reconstructs, or repairs
+that session message.
 Sensitive values are read directly from the private file and passed only
 through explicit in-memory interfaces. Chromium and FFmpeg receive a minimal
 allow-listed environment.

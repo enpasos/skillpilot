@@ -5,7 +5,6 @@ import type { DemoScenario } from "./types.js";
 export interface ChatGptReviewBrowserPreflightResult {
   origin: "https://chatgpt.com";
   composerVisible: true;
-  skillPilotAppVisible: true;
 }
 
 /**
@@ -34,18 +33,15 @@ export async function validateChatGptReviewBrowser(
     if (new URL(page.url()).origin !== "https://chatgpt.com") {
       throw new Error("ChatGPT review browser did not remain on the trusted provider origin");
     }
-    await page.locator(composerSelector).first().waitFor({ state: "visible" });
-    await page.getByText("SkillPilot Coach v1", { exact: false }).last().waitFor({
-      state: "visible",
-    });
+    const composer = page.locator(composerSelector).first();
+    await composer.waitFor({ state: "visible" });
     return {
       origin: "https://chatgpt.com",
       composerVisible: true,
-      skillPilotAppVisible: true,
     };
   } catch (cause) {
     throw new Error(
-      "ChatGPT Developer Mode state is not ready: the new-chat composer and SkillPilot Coach v1 must both be visible",
+      "ChatGPT Developer Mode state is not ready: the authenticated new-chat composer must be visible",
       { cause },
     );
   } finally {

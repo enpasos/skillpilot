@@ -192,6 +192,10 @@ Vor einer Portalaktualisierung sind mindestens folgende Nachweise erforderlich:
     dokumentiert. Dieses Runbook behauptet keinen zusätzlichen
     ID-in-Komponente-Submission-Blocker; die V1-Identitätsverarbeitung liegt im
     First-Party-WebGUI.
+14. Das freigegebene Reviewvideo ist ohne Anmeldung unter der im
+    Submission-Dossier content-addressiert gebundenen URL erreichbar, liefert
+    `video/mp4` mit Byte-Range-Unterstützung und stimmt vor dem Portal-Submit in
+    Größe und SHA-256 exakt mit dem geprüften Repositoryartefakt überein.
 
 Erst nach erfolgreichem **Publish** im OpenAI-Portal wird der geprüfte Draft
 unveränderlich registriert:
