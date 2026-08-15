@@ -12,10 +12,9 @@ Für Schüler:innen eignet sich besonders die browserbasierte Web-App auf dem Sm
 
 ## Ablauf im Video
 
-Die beiden Fassungen zeigen denselben aktuellen Browser-Ablauf. Die sichtbare Oberfläche ist deutsch; beide Tonspuren wurden mit KI erzeugt.
+Das Video zeigt den aktuellen Browser-Ablauf. Die Tonspur wurde mit KI erzeugt.
 
-- [Video mit deutscher KI-Tonspur](https://skillpilot.com/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/sha256-151a5c097a2c73e73b40e6521e410724e6b0737630dff8d5f40419e673132ee6.mp4)
-- [Video mit englischer KI-Tonspur](https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4)
+[Video ansehen](https://skillpilot.com/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/sha256-151a5c097a2c73e73b40e6521e410724e6b0737630dff8d5f40419e673132ee6.mp4)
 
 ## Das brauchst du
 

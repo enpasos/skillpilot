@@ -12,10 +12,9 @@ For students, the browser-based web app on a smartphone is particularly useful: 
 
 ## Watch the Workflow
 
-Both versions show the same current browser workflow. The visible interface is German; both voice-overs were generated with AI.
+The video shows the current browser workflow. The narration was generated with AI.
 
-- [Video with English AI narration](https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4)
-- [Video with German AI narration](https://skillpilot.com/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/sha256-151a5c097a2c73e73b40e6521e410724e6b0737630dff8d5f40419e673132ee6.mp4)
+[Watch the video](https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4)
 
 ## What You Need
 
@@ -24,8 +23,6 @@ Both versions show the same current browser workflow. The visible interface is G
 - no SkillPilot registration with a name or email address
 
 ## Start in 5 Steps
-
-The screenshots below show the German interface. Select English on skillpilot.com for English labels; the coach follows the language stored in the learning session.
 
 ### 1. Open SkillPilot
 
