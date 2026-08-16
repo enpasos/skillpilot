@@ -4,45 +4,24 @@
 
 - SkillPilot-ID: `82bce6e8-7dc7-501a-a4f6-df8a3b905e3c`
 - Titel: Gütefunktion und Teststärke untersuchen (LK)
-- Beschreibung: Die lernende Person kann für einen Hypothesentest die Operationscharakteristik beziehungsweise Gütefunktion grafisch darstellen oder skizzieren, Wahrscheinlichkeiten für das Beibehalten bzw. Verwerfen der Nullhypothese in Abhängigkeit vom wahren Wert der Trefferwahrscheinlichkeit p beschreiben und den Einfluss von Stichprobenumfang und Signifikanzniveau diskutieren.
+- Beschreibung: Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI image generation
 - Status: pilot
-- Quellbild: `82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.jpg`
+- Quellbild: `82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Gütefunktion und Teststärke untersuchen
-Beschreibung: Die lernende Person kann für einen Hypothesentest die Operationscharakteristik beziehungsweise Gütefunktion grafisch darstellen oder skizzieren, Wahrscheinlichkeiten für das Beibehalten bzw. Verwerfen der Nullhypothese in Abhängigkeit vom wahren Wert der Trefferwahrscheinlichkeit p beschreiben und den Einfluss von Stichprobenumfang und Signifikanzniveau diskutieren.
-
-Zusatzanweisung:
-Korrigiere Rechtschreibung, Dezimalzeichen und Titel, ohne die fachlich korrekte Teststärke-Grafik zu verändern.
-
-Pflichtinhalt:
-- Titel: „Gütefunktion und Teststärke eines Binomialtests deuten“.
-- Zeige G(p) = Pₚ(H₀ verwerfen), G(p₁) = 1 − β und G(p₀) ≤ α.
-- Verwende p₀ = 0,10 mit deutschem Dezimalkomma.
-- Beschrifte korrekt „größeres n“ und „Teststärke“.
-- Zeige plausibel: Größeres n führt bei gleicher Alternative zu höherer Teststärke, während das Signifikanzniveau bei p₀ begrenzt bleibt.
-
-Vermeiden:
-- Kein Kurslabel im Titel, kein „groesseres“, kein „Teststaerke“, kein „0.10“.
-- Keine falschen Wahrscheinlichkeitsaussagen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
+Use case: scientific-educational
+Asset type: SkillPilot learning-goal visualization, landscape 16:9
+Primary request: Create a mathematically exact German infographic titled "Operationscharakteristik und Gütefunktion unterscheiden" for one right-sided binomial test.
+Style/medium: clean modern textbook infographic, white/light blue background, high legibility, no decorative imagery.
+Composition: one shared coordinate system is mandatory (not two separate graphs). Horizontal axis "wahrer Wert p", vertical axis "Wahrscheinlichkeit" from 0 to 1. Draw exactly two pointwise complementary curves: blue decreasing L(p)=P_p(H₀ nicht verwerfen), orange increasing G(p)=P_p(H₀ verwerfen)=1-L(p). At one marked p₁ choose visibly complementary heights, for example L(p₁)=β=0,3 and G(p₁)=1-β=0,7=Teststärke. Show "L(p₁)+G(p₁)=1". At a marked null-hypothesis boundary p₀ show "G(p₀)≤α" and "L(p₀)≥1−α". Add two short separate notes: "Größeres n: steilerer Übergang und höhere Teststärke für relevante Alternativen." and "Größeres α: höhere Verwerfungswahrscheinlichkeit, aber auch größeres Risiko eines Fehlers 1. Art."
+Constraints: The two curves at every p must be visually complementary about probability 0.5. At p₁ the plotted ordinates must visibly be 0.3 and 0.7, not equal. Correct labels β and Teststärke. Correct German umlauts. No logos, watermark, product name, technical IDs, extra plots, or extra topics.
 ```
 
 ## Review-Notiz

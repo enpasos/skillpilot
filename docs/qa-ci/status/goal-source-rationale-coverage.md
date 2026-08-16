@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/public/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-08-07T20:44:48.057Z
+Generated: 2026-08-16T05:55:19.482Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1079 |
-| Atomare Blattleernziele | 861 |
-| Davon relevant fuer Quellenbegruendung | 754 |
+| Alle Mathematik-Ziele | 1081 |
+| Atomare Blattleernziele | 862 |
+| Davon relevant fuer Quellenbegruendung | 755 |
 | Memory-/Nicht-Content-Blattziele | 107 |
-| Clusterziele | 218 |
-| Runtime-Quellenbegruendungen | 701 |
-| Runtime-Ziele mit klassischem Quellenweg | 701 |
+| Clusterziele | 219 |
+| Runtime-Quellenbegruendungen | 702 |
+| Runtime-Ziele mit klassischem Quellenweg | 702 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 187 |
-| Relevante Blattziele mit klassischem Quellenweg | 701/754 (93.0%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 187/754 (24.8%) |
+| Relevante Blattziele mit klassischem Quellenweg | 702/755 (93.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 187/755 (24.8%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/218 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 218 |
-| contains-Relationen mit Begruendungstext | 0/1194 |
-| requires-Relationen mit Begruendungstext | 0/2371 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/219 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 219 |
+| contains-Relationen mit Begruendungstext | 0/1196 |
+| requires-Relationen mit Begruendungstext | 0/2374 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 701 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 702 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -45,7 +45,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | --- | --- | --- | --- | --- |
 | Q4 | 158 | 118 (74.7%) | 33 (20.9%) | 40 |
 | E | 93 | 85 (91.4%) | 24 (25.8%) | 8 |
-| Q2 | 139 | 136 (97.8%) | 16 (11.5%) | 3 |
+| Q2 | 140 | 137 (97.9%) | 16 (11.4%) | 3 |
 | Q3 | 68 | 66 (97.1%) | 11 (16.2%) | 2 |
 | J10 | 56 | 56 (100.0%) | 19 (33.9%) | 0 |
 | Q1 | 47 | 47 (100.0%) | 10 (21.3%) | 0 |
@@ -60,7 +60,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| unknown | 368 | 322 (87.5%) | 57 (15.5%) | 46 |
+| unknown | 369 | 323 (87.5%) | 57 (15.4%) | 46 |
 | Analysis | 124 | 118 (95.2%) | 35 (28.2%) | 6 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | LinearAlgebra | 70 | 70 (100.0%) | 5 (7.1%) | 0 |
@@ -217,13 +217,13 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Stochastische Übergangsmatrizen für Markov-Ketten prüfen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Stochastische Übergangsmatrizen für Markov-Ketten prüfen |
 | Übergangsprozesse mit stochastischen Matrizen modellieren (canonical_math_q2_model_transition_processes_with_stochastic_matrices) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.4.STOCHASTIC_MATRIX_MODELING | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Übergangsprozesse mit stochastischen Matrizen modellieren |
 | Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben (canonical_math_q2_describe_transition_processes_with_state_vectors_and_transition_matrices) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.4.STATE_VECTORS_TRANSITION_MATRICES | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben |
-| Zustände in Markov-Ketten berechnen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen |
+| Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen (canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen |
+| Zustände in Markov-Ketten vorwärts berechnen und deuten (canonical_math_q2_calculate_and_interpret_forward_markov_state_developments) | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen > Zustände in Markov-Ketten vorwärts berechnen und deuten |
 | Abstand zweier Punkte im Raum berechnen (canonical_math_q2_compute_distance_between_two_points_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Abstand zweier Punkte im Raum berechnen |
 | Betrag eines Vektors im Raum bestimmen (canonical_math_q2_compute_vector_magnitude_in_space) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.VECTOR_MAGNITUDE_SPACE | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Betrag eines Vektors im Raum bestimmen |
 | Geometriesoftware zur Raumorientierung nutzen (canonical_math_q2_use_geometry_software_for_spatial_orientation) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geometriesoftware zur Raumorientierung nutzen |
-| Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen |
 
-Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 435 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -251,6 +251,7 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Mit Matrizen rechnen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Matrixoperationen und Mehrschrittprozesse > Mit Matrizen rechnen |
 | Matrizen als Darstellungsform verstehen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Matrizen als Darstellungsform verstehen |
 | Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.MATRICES.TRANSITIONS_AND_STATE_VECTORS | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen |
+| Zustände in Markov-Ketten berechnen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Matrizen, Übergangsprozesse und lineare Modelle (Sek II) > Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen > Zustände in Markov-Ketten berechnen |
 | Punkte, Vektoren und Bewegungen im Raum | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.SPACE.POINTS_VECTORS_AND_MOTION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum |
 | Körper und Figuren im Raum charakterisieren | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren |
 | Eigenschaften ebener Figuren für Flächenberechnungen untersuchen (canonical_math_q2_analyze_plane_figures_area_congruence_similarity) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Körper und Figuren im Raum charakterisieren > Eigenschaften ebener Figuren für Flächenberechnungen untersuchen |
@@ -288,13 +289,12 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Ergebnisse adressatengerecht erklären | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Ergebnisse adressatengerecht erklären |
 | Ergebnisse formal überprüfen | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Ergebnisse formal überprüfen |
 | Fachsprache präzisieren (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Fachsprache präzisieren (LK) |
-| Formale Argumentationen im Leistungskurs entwickeln (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Formale Argumentationen im Leistungskurs entwickeln (LK) |
 
-Weitere 158 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 159 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/public/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-07-09T13:20:21.311Z
+- Runtime index generated: 2026-08-16T05:20:46.356Z
 

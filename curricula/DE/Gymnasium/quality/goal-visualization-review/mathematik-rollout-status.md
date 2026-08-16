@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-06T02:00:35.345Z
+Generated: 2026-08-16T08:54:46.989Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,16 +16,16 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1079 |
-| Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 731 |
-| Coverage | 96.9% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 754 |
+| Alle Ziele in der Landschaft | 1081 |
+| Atomare Ziele im Visualisierungs-Scope | 755 |
+| Ziele mit primaerem Visualisierungslink | 733 |
+| Coverage | 97.1% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 755 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 219 |
-| Offene Provider-Deferred-Ziele | 23 |
+| Review-Ledger-Dateien | 221 |
+| Offene Provider-Deferred-Ziele | 22 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 1 |
 | `approved` | 18 |
-| `pilot` | 712 |
+| `pilot` | 714 |
 
 ## Ledger Decisions
 
@@ -48,17 +48,20 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 602 |
+| `accepted_pilot` | 603 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 1 |
 | `accepted_pilot_after_provider_retry` | 2 |
-| `accepted_pilot_after_regeneration` | 160 |
+| `accepted_pilot_after_regeneration` | 161 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
 | `accepted_pilot_after_third_attempt` | 5 |
 | `accepted_pilot_after_third_regeneration` | 6 |
 | `accepted_pilot_after_user_review_correction` | 47 |
+| `accepted_replacement` | 4 |
+| `accepted_reuse_after_description_review` | 27 |
+| `accepted_unchanged_human_approval_preserved` | 2 |
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
@@ -68,6 +71,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_followup_then_replaced` | 1 |
 | `rejected_after_user_review_replaced` | 5 |
+| `rejected_axis_label_artifact` | 1 |
+| `rejected_bad_vector_geometry` | 1 |
+| `rejected_coordinate_geometry` | 1 |
+| `rejected_line_not_matching_equation` | 1 |
+| `rejected_noncomplementary_ordinates` | 1 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
 | `rejected_regenerated` | 80 |
@@ -77,8 +85,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-arrow-source-correction-2026-08-05.md` |
-| Latest ledger status | `completed_pilot` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-markov-split-2026-08-16.md` |
+| Latest ledger status | `completed` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -87,7 +95,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 23 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 22 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -101,7 +109,6 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | mathematik-ai-correction-shard-1 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | Kettenlinien und Glockenkurven untersuchen (LK) | `deferred_provider_limitation` |
 | 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
 | 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
-| 197 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_provider_limitation` |
 | 205 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `deferred_provider_limitation` |
 | 205 | `3bfc2747-03e2-57db-b13f-01f78835eefd` | Konvergenz und Grenzen numerischer Verfahren reflektieren | `deferred_provider_limitation` |
 | 205 | `0408ac7f-0530-5de5-b248-cf581c9b5a17` | Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell) | `deferred_provider_limitation` |
@@ -115,8 +122,9 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | 206 | `3256476b-ec65-4038-9f5a-a8808fbcf207` | Punkt-Gerade-Abstände im Raum bestimmen | `deferred_provider_limitation` |
 | 206 | `075f1ef2-6860-4b20-9df2-878157eb395e` | Punkte und Vektoren im Raum koordinatisieren | `deferred_provider_limitation` |
 | 206 | `47400de4-b0e4-5bb6-a1bd-bd2beee616bb` | Regula falsi zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
+| 206 | `36728db8-da44-4add-97b8-0fdd7cfd9c41` | Satz des Thales begründen und anwenden | `deferred_provider_limitation` |
 
-Weitere 3 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 2 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 

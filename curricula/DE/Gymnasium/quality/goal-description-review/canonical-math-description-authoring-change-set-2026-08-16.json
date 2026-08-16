@@ -1,0 +1,1228 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-authoring-change-set.schema.json",
+  "schemaVersion": 1,
+  "changeSetId": "canonical-math-description-authoring-20260816-v1",
+  "createdAt": "2026-08-16",
+  "authoringStatus": "accepted_and_applied",
+  "scope": {
+    "country": "DE",
+    "schoolType": "Gymnasium",
+    "subject": "Mathematik",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "canonicalFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "languagePair": [
+      "de",
+      "en"
+    ],
+    "changeKind": "description_only",
+    "reviewedGoalCount": 755,
+    "approvedRevisionCount": 33
+  },
+  "approval": {
+    "approvedAt": "2026-08-16",
+    "authority": "product_owner",
+    "instructionLanguage": "de",
+    "instructionVerbatim": "Die drei stichproben sind ok. Bitte führe alle Änderungen aus, die auf Basis meiner Stichprobenzustimmung, nicht notwendigerweise eine weitere Zustimmung von mir erwarten und präsentiere mir danach die Fälle, wo meine Entscheidung aus Deiner Sicht notwendig ist.",
+    "interpretationDe": "Für dieses Change Set autorisiert die Stichprobenzustimmung die exakten 33 bilingualen, als R01 bis R33 ausgewiesenen Beschreibungsrevisionen. Sie autorisiert weder konkrete Split-Entwürfe noch blockierte Fachentscheidungen, temporäre Evidenzprofile, Graphänderungen oder Deployment.",
+    "sampleReferences": [
+      {
+        "code": "R01",
+        "kind": "bilingual_parity_revision",
+        "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+      },
+      {
+        "code": "R09",
+        "kind": "technical_correction",
+        "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf"
+      },
+      {
+        "code": "S08",
+        "kind": "split_need_sample",
+        "goalId": "34735a1a-c9d9-5378-805e-b48f9c2d947f"
+      }
+    ]
+  },
+  "sourceReview": {
+    "campaignId": "canonical-math-description-full-20260816-v1",
+    "roundId": "codex-first-pass-20260816-v1",
+    "reconciliationId": "codex-independent-second-qa-20260816-v1",
+    "bundleFingerprint": "sha256:db9e6e203e98d2206da297f6874a86fb67a6bd3dc525f7782c01c71deba332bc",
+    "bookDigest": "sha256:f4950f5e735928d1719800fdd562a7c13ec1a10c946afe7c57644d6bb6564798",
+    "reviewInputFingerprint": "sha256:6b044f77243bf8cc2bd6589972b2f8388ea59b706e54a8c8e2b5d85ae4fc7ce0",
+    "reconciliationDigest": "sha256:a82a7ba8d16e651ab7b070f6128e5d486ad4bf40b115804ae1d3a974b3018d32",
+    "sourceFile": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/human-approval-reconciliation.json",
+    "sourceFileSha256": "sha256:46e1a38cb03835d4be4c30cf1db1982e151f3fe21a2c0d410d08866f87d0c371",
+    "humanReportFile": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/review-campaign/human-approval-required.de.md",
+    "humanReportSha256": "sha256:b89f77df50dbb4f31fc4724994a03a27a242ac1b0990c0de179ccc5c25ec377a"
+  },
+  "authorizationBoundaries": {
+    "included": [
+      "Die exakten deutschen und englischen Beschreibungsersetzungen R01 bis R33 bei unveränderten Ziel-IDs, Titeln und Graphbeziehungen.",
+      "Eine frische inhaltliche Nachprüfung der 33 geänderten Beschreibungen für semanticKind, semantische Atomicity und Memory-Eignung."
+    ],
+    "excluded": [
+      "Die 27 Split-Bedarfe S01 bis S27: neue Ziel-IDs, Titel, Beschreibungen, Kanten, Bilder und QA-Bindungen benötigen einen eigenen Entwurf.",
+      "Die 20 blockierten Fälle B01 bis B20, deren Zielidentität oder fachlicher Umfang eine Product-Owner-Entscheidung benötigt.",
+      "Temporäre Verständnis-, Leistungs-, Transfer- und Evidenzprofil-Kandidaten; die 440 quarantänisierten Kandidaten werden nicht promoviert.",
+      "Bilder, Assessments, Coach-Vorgaben, Veröffentlichung, Deployment und der eingefrorene OpenAI-Coach-V1-Vertrag."
+    ],
+    "temporaryEvidencePromoted": false,
+    "graphMutationAuthorized": false,
+    "deploymentAuthorized": false
+  },
+  "postChangeReReview": {
+    "reviewedAt": "2026-08-16",
+    "reviewer": "codex-post-change-content-review",
+    "reviewMethod": "fresh_content_review_after_approved_bilingual_revision",
+    "notHashRefresh": true,
+    "methodologyDe": "Alle 33 angewendeten DE/EN-Beschreibungspaare wurden nach der Änderung erneut vollständig und zielweise gelesen; frühere Klassifikationen wurden nicht nur per neuem Hash übernommen. semanticKind wurde nach der tatsächlichen Knotenfunktion geprüft, semantische Atomicity nach der Zahl unabhängig assessierbarer Leistungskerne und Memory-Eignung nach der Notwendigkeit eines kompakten, zuverlässig abrufbaren Faktenbestands. R11, R12 und R24 behalten nach dieser Inhaltsprüfung ihre eng begrenzten Memory-Bindungen; bei den übrigen 30 Zielen tragen Verständnis, Anwendung, Begründung und Aufgabenpraxis den Kompetenzaufbau ohne eigenes Memory-Ziel.",
+    "counts": {
+      "semanticKindCurricularAtomic": 33,
+      "semanticAtomicityAtomic": 33,
+      "memoryRequired": 3,
+      "noMemoryNeeded": 30
+    }
+  },
+  "applicationVerification": {
+    "verifiedAt": "2026-08-16",
+    "canonicalMatchCount": 33,
+    "allApprovedDescriptionsMatchCanonical": true
+  },
+  "changeCount": 33,
+  "changes": [
+    {
+      "reviewCode": "R01",
+      "reviewOrder": 47,
+      "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "originalGoalFingerprint": "sha256:a4509be0215d155ab6375e03bff7960146d49263d535e49d3455721effd018b2",
+      "originalPageFingerprint": "sha256:bb3d5143a5d7fbbaee0cfb1c816167cc214aa31c02b84f70170a71e4c88c1142",
+      "titleDe": "Flächeninhalte ebener Figuren berechnen",
+      "titleEn": "Calculate areas of plane figures",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "reviewedCurrentDescriptionEn": "The learner can calculate areas of plane and composite figures, use decomposition strategies, and interpret results with suitable units.",
+      "approvedDescriptionDe": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "approvedDescriptionEn": "The learner can calculate the areas of parallelograms, triangles, trapezoids, and composite figures, use decomposition strategies, and interpret results using appropriate units.",
+      "rationaleDe": "Nur die englische Fassung nennt die in der deutschen Fassung verbindlich aufgeführten Figurtypen nicht. Die deutsche Fassung bleibt unverändert; die englische wird ohne Erhöhung des Anspruchsniveaus angeglichen.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:f1bca5587569d09cee53838605c86b7e1b354a1b1ce00e0d5ddc23aa5e5951d7",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Flächeninhalte ebener Figuren berechnen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Flächeninhalte ebener Figuren berechnen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Flächeninhalte ebener Figuren berechnen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-003.records.jsonl"
+    },
+    {
+      "reviewCode": "R02",
+      "reviewOrder": 100,
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "originalGoalFingerprint": "sha256:fb55e89d2def54d3463c08dba6a445bb93c30d6f930fbfa5653a6861deef6d94",
+      "originalPageFingerprint": "sha256:096358736ffcaafa5cb74659e5f91a69ae7bb898ff48c2041fba5890b58e32ec",
+      "titleDe": "Quadratwurzeln definieren und schätzen",
+      "titleEn": "Define and estimate square roots",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann die Quadratwurzel definieren und Werte geeigneter Quadratwurzeln exakt oder näherungsweise bestimmen.",
+      "reviewedCurrentDescriptionEn": "The learner can define square roots and determine suitable square-root values exactly or approximately.",
+      "approvedDescriptionDe": "Die lernende Person kann die Quadratwurzel einer nichtnegativen Zahl als die nichtnegative Zahl erklären, deren Quadrat die Ausgangszahl ergibt, und Quadratwurzeln aus Quadratzahlen exakt sowie andere Quadratwurzeln näherungsweise bestimmen.",
+      "approvedDescriptionEn": "The learner can explain the square root of a non-negative number as the non-negative number whose square equals the original number, determine square roots of perfect squares exactly, and approximate other square roots.",
+      "rationaleDe": "Die bisherige Formulierung „geeignete Quadratwurzeln“ liefert keinen klaren Beherrschungsmaßstab. Die Revision präzisiert die Hauptwurzel durch Nichtnegativität und trennt exakt bestimmbare Quadratzahlen von näherungsweise zu bestimmenden Wurzeln.",
+      "reconciliationNoteDe": "Die Zweitprüfung hat eine notwendige fachliche Präzisierung festgestellt.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:a102e7cc5d3eb304ae61d102e13ff310633d5be3584f825a5751f4f56259a371",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Quadratwurzeln definieren und schätzen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Quadratwurzeln definieren und schätzen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Quadratwurzeln definieren und schätzen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-006.records.jsonl"
+    },
+    {
+      "reviewCode": "R03",
+      "reviewOrder": 139,
+      "goalId": "99bfb566-f875-5646-ac3e-05a039838c54",
+      "originalGoalFingerprint": "sha256:74a274b962dd2eac2c5f330fd44a1af14865f02e81726bed7a5f0728e3626bd8",
+      "originalPageFingerprint": "sha256:755338fd77924c7360180a68ea08a96f2686626514fd7bcdcf41b0bd19ec1b45",
+      "titleDe": "Termmerkmale aus Graphen ableiten",
+      "titleEn": "Derive expression features from a graph",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann aus einem Graphen zentrale Termmerkmale wie Funktionsfamilie, Parameter, Nullstellen oder Symmetrie ableiten und fachsprachlich formulieren.",
+      "reviewedCurrentDescriptionEn": "The learner can derive key expression features from a graph (e.g. function family, parameters, zeros, symmetry) and state a suitable function equation.",
+      "approvedDescriptionDe": "Die lernende Person kann aus einem Graphen zentrale Termmerkmale wie Funktionsfamilie, Parameter, Nullstellen oder Symmetrie ableiten und fachsprachlich formulieren.",
+      "approvedDescriptionEn": "The learner can derive key features of a corresponding expression, such as its function family, parameters, zeros, or symmetry, from a graph and describe them using appropriate mathematical terminology.",
+      "rationaleDe": "Nur die englische Fassung verlangt zusätzlich eine Funktionsgleichung. Die deutsche Fassung bleibt unverändert; der zusätzliche englische Umfang wird entfernt.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:7128044f24b2cb200bd8b5cbb0ad0fdb11915d7a112ceb3dd9fbd0a4398ac4e7",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Termmerkmale aus Graphen ableiten“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Termmerkmale aus Graphen ableiten“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Termmerkmale aus Graphen ableiten“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-007.records.jsonl"
+    },
+    {
+      "reviewCode": "R04",
+      "reviewOrder": 193,
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "originalGoalFingerprint": "sha256:396feeac9133c43d5236575778365792297d0f9ab223f5caae0acf695ca8691b",
+      "originalPageFingerprint": "sha256:2b4d4c54189f813fa9a7addf90c1ae8e738cedf6b43543d6df1cbae76a71aff6",
+      "titleDe": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
+      "titleEn": "Differentiate sine and cosine functions",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann mithilfe geometrischer Argumente oder Grenzwertüberlegungen die Ableitungen von $\\sin(x)$ und $\\cos(x)$ nachvollziehen.",
+      "reviewedCurrentDescriptionEn": "The learner can use geometric arguments or limit considerations to understand the derivatives of $\\sin(x)$ and $\\cos(x)$ and use them to investigate trigonometric functions.",
+      "approvedDescriptionDe": "Die lernende Person kann die Ableitungen von $\\sin(x)$ und $\\cos(x)$ mithilfe geometrischer Argumente oder Grenzwertüberlegungen herleiten und die einzelnen Zusammenhänge fachlich erläutern.",
+      "approvedDescriptionEn": "The learner can derive the derivatives of $\\sin(x)$ and $\\cos(x)$ using geometric arguments or limit considerations and explain the individual relationships mathematically.",
+      "rationaleDe": "Die englische Fassung ergänzt eine Funktionsuntersuchung, die im deutschen Herleitungsziel nicht vorkommt. Der bilinguale Vorschlag hält beide Fassungen beim fachlichen Herleiten und Erläutern derselben Ableitungszusammenhänge.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:5dd9e3cebcda2feda05eeabf1731ee52aca556cbc4d2c2c9946cc04a5d3fa08f",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Ableitungen von Sinus- und Kosinusfunktionen herleiten“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Ableitungen von Sinus- und Kosinusfunktionen herleiten“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Ableitungen von Sinus- und Kosinusfunktionen herleiten“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-010.records.jsonl"
+    },
+    {
+      "reviewCode": "R05",
+      "reviewOrder": 202,
+      "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "originalGoalFingerprint": "sha256:bdf11995196648012b0224f41d818a56c0d28754b5a955dea568b3311ba0098e",
+      "originalPageFingerprint": "sha256:6664adb1883315ee83b95411040fe7365c40b46e45a143dd79bb17ca55148773",
+      "titleDe": "Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen",
+      "titleEn": "Factorize and analyze polynomial functions",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Nullstellen ganzrationaler Funktionen systematisch suchen, Funktionen in Linearfaktordarstellung überführen und Nullstellen aus linearen Faktoren ablesen.",
+      "reviewedCurrentDescriptionEn": "The learner can systematically search for roots, convert functions into linear factor representation, assess multiplicities, and draw conclusions about the behavior of the graph.",
+      "approvedDescriptionDe": "Die lernende Person kann Nullstellen ganzrationaler Funktionen systematisch suchen, Funktionen in Linearfaktordarstellung überführen und Nullstellen aus linearen Faktoren ablesen.",
+      "approvedDescriptionEn": "The learner can systematically search for zeros of polynomial functions, transform the functions into linear-factor form, and determine the zeros from the linear factors.",
+      "rationaleDe": "Nur die englische Beschreibung ergänzt Vielfachheiten und Graphenverhalten, die im unmittelbar folgenden eigenen Lernziel behandelt werden. Die deutsche Fassung bleibt unverändert; die englische wird auf Nullstellensuche und Linearfaktorzerlegung begrenzt.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:a70ecc2042ded406ae1fcb6311f87102420dedbad9f0fd5e9d40a3b16a77147c",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-011.records.jsonl"
+    },
+    {
+      "reviewCode": "R06",
+      "reviewOrder": 318,
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "originalGoalFingerprint": "sha256:ed3d762d24a344f56f3baba3fe5b14e6fcb7985521b69da22d0565c4755b2386",
+      "originalPageFingerprint": "sha256:6aac5742bc9248ddbf89b2af68346d88b18bd1a4ca0d54a50c3f8ff24b3b5934",
+      "titleDe": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+      "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann geradlinige Bewegungen im Raum beschreiben und untersuchen, den Zusammenhang $s=vcdot t$ nutzen und den Richtungsvektor als Geschwindigkeitsvektor interpretieren.",
+      "reviewedCurrentDescriptionEn": "The learner can describe and analyze rectilinear motion in space, use the relation $s=vcdot t$, and interpret the direction vector as a velocity vector.",
+      "approvedDescriptionDe": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+      "approvedDescriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+      "rationaleDe": "Die beschädigte skalare Formel $s=vcdot t$ ist für eine räumliche Bewegung mit Orts- und Geschwindigkeitsvektoren außerdem unvollständig. Die Revision verwendet die Ortsfunktion mit Anfangsort und macht die Vektorbedeutung eindeutig.",
+      "reconciliationNoteDe": "Die Zweitprüfung korrigiert nicht nur den LaTeX-Fehler, sondern auch die fachlich unzureichende Modellgleichung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:3ec817cd435b75fcda1b348b4ecee0d22fa4ccfc821fbde8847a6bf751e6a6be",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-016.records.jsonl"
+    },
+    {
+      "reviewCode": "R07",
+      "reviewOrder": 326,
+      "goalId": "ce491ec0-c558-5872-86fd-289e60a38403",
+      "originalGoalFingerprint": "sha256:d8ee6f352be36930585a0fc4b366915111e7eb47862dda761ebfe1aef533cc31",
+      "originalPageFingerprint": "sha256:49281687552a46be89407b511c5cb5c237ea251dfc79aecf47eb234e8dd75fe9",
+      "titleDe": "Punktprobe und Lage eines Punktes zur Ebene prüfen",
+      "titleEn": "Test a point and its position relative to a plane",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann eine Punktprobe durchführen und die Lage eines Punktes zur Ebene (auf, parallel, nicht auf) bestimmen.",
+      "reviewedCurrentDescriptionEn": "The learner can perform a point test and determine a point’s position relative to a plane (on, parallel, not on).",
+      "approvedDescriptionDe": "Die lernende Person kann eine Punktprobe durchführen und bestimmen, ob ein Punkt auf einer Ebene liegt oder nicht.",
+      "approvedDescriptionEn": "The learner can perform a point test and determine whether a point lies on a plane or not.",
+      "rationaleDe": "Die aktuelle Aufzählung nennt einen Punkt als „parallel“ zu einer Ebene; diese Lagebeziehung ist für einen Punkt fachlich nicht definiert. Die vollständigen DE/EN-Vorschläge erhalten die prüfbare Punktprobe und korrigieren die Lageklassifikation auf „liegt auf der Ebene“ beziehungsweise „liegt nicht auf der Ebene“.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:b4acfb6c8cb74e1acae4da1e7954d2bd79383bbf27d4b2f5eb2b1477a17fcfa7",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Punktprobe und Lage eines Punktes zur Ebene prüfen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Punktprobe und Lage eines Punktes zur Ebene prüfen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Punktprobe und Lage eines Punktes zur Ebene prüfen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-017.records.jsonl"
+    },
+    {
+      "reviewCode": "R08",
+      "reviewOrder": 336,
+      "goalId": "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+      "originalGoalFingerprint": "sha256:146b3b46b02d7cba5032894ad1e8f13a0e7f49962aec99648c177af981ce7495",
+      "originalPageFingerprint": "sha256:4aa7ca154ad0c66206a9c47017533793a225ae64f5ecd770a92b5119ba799e35",
+      "titleDe": "Längen- und Winkelbeziehungen einfacher Körper untersuchen",
+      "titleEn": "Analyze length and angle relations in simple solids",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann einfache geometrische Körper mithilfe von Seitenlängen und Winkelgrößen untersuchen.",
+      "reviewedCurrentDescriptionEn": "The learner can analyze simple geometric solids using side lengths and angle measures.",
+      "approvedDescriptionDe": "Die lernende Person kann an Würfeln, Quadern, geraden und schiefen Prismen sowie geraden und schiefen Pyramiden Längen- und Winkelbeziehungen aus geometrischen Eigenschaften und geeigneten Vektordarstellungen bestimmen, begründen und deuten.",
+      "approvedDescriptionEn": "The learner can determine, justify, and interpret length and angle relationships in cubes, cuboids, right and oblique prisms, and right and oblique pyramids using geometric properties and suitable vector representations.",
+      "rationaleDe": "„Einfache geometrische Körper untersuchen“ benennt weder die Körperklassen noch eine selbstständig beobachtbare Leistung. Der angrenzende kanonische Kontext legt die Körper eindeutig fest; die Revision macht Objekte und Leistungsmaßstab explizit.",
+      "reconciliationNoteDe": "Die Zweitprüfung hat eine source-grounded lokale Präzisierung statt eines Blocks bestätigt.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:f80706314e96ec3c653f6d05aea755063c0d27bdd7b72618f752cde9ded6f075",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Längen- und Winkelbeziehungen einfacher Körper untersuchen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Längen- und Winkelbeziehungen einfacher Körper untersuchen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Längen- und Winkelbeziehungen einfacher Körper untersuchen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-017.records.jsonl"
+    },
+    {
+      "reviewCode": "R09",
+      "reviewOrder": 370,
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "originalGoalFingerprint": "sha256:e0c7381f0fe3da5772382d141182a37f50a63a3b76d1b5d171123872030ad4fb",
+      "originalPageFingerprint": "sha256:c2ad89fa385df2a239e1abe2d0b2e2a61447b815bd964ab0a2ec504107a20cf7",
+      "titleDe": "Geometrische Abbildungen als linear erkennen",
+      "titleEn": "Recognize geometric mappings as linear",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann eine einfache geometrische Abbildung anhand der Wirkung auf Ursprungsgeraden als linear einordnen.",
+      "reviewedCurrentDescriptionEn": "The learner can classify a simple geometric mapping as linear based on its effect on lines through the origin.",
+      "approvedDescriptionDe": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+      "approvedDescriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication.",
+      "rationaleDe": "Die Wirkung auf Ursprungsgeraden ist allein kein hinreichendes Kriterium für Linearität. Der vollständige DE/EN-Vorschlag korrigiert diese fachliche Ungenauigkeit lokal, behält die verlangte Klassifikation einfacher geometrischer Abbildungen bei und macht die Zielerreichung eindeutig beobachtbar.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:8476f3bfff5864e00fbca5773483e71dc00e6291d6dbc3be076e284485d48f63",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Geometrische Abbildungen als linear erkennen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Geometrische Abbildungen als linear erkennen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Geometrische Abbildungen als linear erkennen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-019.records.jsonl"
+    },
+    {
+      "reviewCode": "R10",
+      "reviewOrder": 384,
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "originalGoalFingerprint": "sha256:bfbf1739c0bb47466b4bbfd0477a9bb7266e5d850dacb4b67f73ddbf665da293",
+      "originalPageFingerprint": "sha256:91ffeb429975a45e437918fa7d595b937c9e187102f4a922dc3d8e23bb2673e2",
+      "titleDe": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+      "titleEn": "Critically examine data-based claims using conditional probabilities",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch hinterfragen, indem sie Stichprobenumfang und -zusammensetzung, Teilmengen- und Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+      "reviewedCurrentDescriptionEn": "The learner can critically question claims derived from data by considering sample size and composition, subgroup and base-rate effects, data-collection method and framing, and by distinguishing correlation from causation.",
+      "approvedDescriptionDe": "Die lernende Person kann aus Daten abgeleitete Aussagen kritisch prüfen, indem sie Stichprobenumfang und -zusammensetzung, Veränderungen bedingter Wahrscheinlichkeiten in relevanten Teilmengen, Basisrateneffekte, Art der Datenerhebung und Fragestellung berücksichtigt sowie Korrelation und Kausalität unterscheidet.",
+      "approvedDescriptionEn": "The learner can critically examine claims derived from data by considering sample size and composition, changes in conditional probabilities across relevant subsets, base-rate effects, data-collection methods and framing, and by distinguishing correlation from causation.",
+      "rationaleDe": "Der Titel bindet bedingte Wahrscheinlichkeiten, die bisherige Beschreibung nennt sie jedoch nicht. Die Prüfdimensionen bilden in einem Fall eine integrierte kritische Datenbewertung; deshalb ist eine explizite Ergänzung belastbarer als ein Split.",
+      "reconciliationNoteDe": "Die unabhängige Adjudikation ersetzt den Erstentscheid split_review durch eine lokale, bilinguale Revision.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:5dab44e2b4f2ffa1e5248fa36e1940c9d2247a39691712b9830d5fb150f2008b",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-020.records.jsonl"
+    },
+    {
+      "reviewCode": "R11",
+      "reviewOrder": 421,
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "originalGoalFingerprint": "sha256:be7bd290bb3a15add71d87c1f37e8406598a1767f0947ece24b2fcc2a5316e56",
+      "originalPageFingerprint": "sha256:79c2470be8f2ff03fe301cbee1b5bc94f3cad930865d4edc8e5e6f0cbd40d386",
+      "titleDe": "Sigma-Regeln für Verteilungen anwenden",
+      "titleEn": "Apply sigma rules for distributions",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen ungefähr symmetrischer Verteilungen ablesen, welcher Anteil der Werte in σ-Umgebungen um den Mittelwert liegt, und die Sigma-Regeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+      "reviewedCurrentDescriptionEn": "The learner can use histograms, density graphs, and diagrams of approximately symmetric distributions to identify what proportion of values lies within sigma neighborhoods around the mean, and qualitatively explain the sigma rules for $1\\sigma$, $1.64\\sigma$, $1.96\\sigma$, $2\\sigma$, $2.58\\sigma$, and $3\\sigma$.",
+      "approvedDescriptionDe": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+      "approvedDescriptionEn": "The learner can use histograms, density graphs, and diagrams of approximately normally distributed variables to identify what proportion of values lies within $\\sigma$ neighborhoods around the mean and qualitatively explain the sigma and quantile rules for $1\\sigma$, $1.64\\sigma$, $1.96\\sigma$, $2\\sigma$, $2.58\\sigma$, and $3\\sigma$.",
+      "rationaleDe": "Die genannten Flächenanteile folgen nicht aus bloßer Symmetrie, sondern aus der (annähernden) Normalverteilung; außerdem sind 1,64, 1,96 und 2,58 Quantilwerte. Die vollständigen DE/EN-Vorschläge korrigieren diese fachliche Voraussetzung lokal und erhalten die bestehende Kompetenz.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:ee371bfdb67cf11bdb4bc29797491a2a3cb1850ea959d860ef1623c8eb8a9805",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Sigma-Regeln für Verteilungen anwenden“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Sigma-Regeln für Verteilungen anwenden“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reasonDe": "Die Sigma-Regeln enthalten kompakte, exakt abrufbare Intervallgrenzen und Zuordnungen. Das Memory-Ziel sichert nur diesen Faktenanteil; Anwendung, Auswahl und Deutung bleiben Aufgaben- und Coachingpraxis.",
+          "memoryGoalIds": [
+            "ffbdd7a9-45c6-54f1-988c-58256ca05eeb"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_stochastics_core"
+          ]
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R12",
+      "reviewOrder": 422,
+      "goalId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+      "originalGoalFingerprint": "sha256:01389f1f9105ca778872ec3d99e762ce2b66539108e01d82614c350c4565f71a",
+      "originalPageFingerprint": "sha256:f7dcb317f5032006f6e8de5ac83457bbc5c504149227d695d04b6ce6f84a85a0",
+      "titleDe": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+      "titleEn": "Determine decision rules and rejection regions",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte bzw. Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen, dabei systematisches Probieren nutzen und Sigma-Regeln als Hilfsmittel einordnen.",
+      "reviewedCurrentDescriptionEn": "The learner can determine decision rules and critical values or rejection regions for one- or two-sided binomial tests at given significance levels, use systematic trial, and classify sigma rules as an aid.",
+      "approvedDescriptionDe": "Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.",
+      "approvedDescriptionEn": "The learner can determine decision rules and critical values or rejection regions for one- or two-sided binomial tests at given significance levels and assess sigma rules as a possible approximation aid.",
+      "rationaleDe": "„Systematisches Probieren“ schreibt ohne fachliche Notwendigkeit ein einzelnes Vorgehen vor. Die vollständigen Vorschläge erhalten Gegenstand und Anspruch, lassen aber exakte, digitale und andere mathematisch gleichwertige Bestimmungswege zu.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:668784e4fa81eaed96504b895013c2a2189edd8eed8cb153b54c9475c04752ca",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Entscheidungsregeln und Verwerfungsbereiche bestimmen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Entscheidungsregeln und Verwerfungsbereiche bestimmen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reasonDe": "Entscheidungsregel und Verwerfungsbereich setzen kompakte Testbegriffe, Grenzzuordnungen und Konventionen voraus, die zuverlässig abrufbar sein müssen. Das Memory-Ziel bleibt auf diesen Faktenanteil begrenzt und ersetzt keine Testkonstruktion oder Begründung.",
+          "memoryGoalIds": [
+            "ffbdd7a9-45c6-54f1-988c-58256ca05eeb"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_stochastics_core"
+          ]
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R13",
+      "reviewOrder": 425,
+      "goalId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "originalGoalFingerprint": "sha256:f36f3e82d1f2161690ded76ad1a61669d1ceda1bb9583b6f6a1544aa1a1331c2",
+      "originalPageFingerprint": "sha256:b94be9b1ffcc009f0211c39954d01890444f4c96672f407463390fd4b6bb9ed3",
+      "titleDe": "Testergebnisse im Kontext interpretieren",
+      "titleEn": "Interpret test results in context",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder beibehalten wird, das Ergebnis verständlich formulieren und die Aussagekraft des Tests kommentieren.",
+      "reviewedCurrentDescriptionEn": "The learner can decide whether the null hypothesis is rejected or retained, formulate the result understandably, and comment on the significance of the test.",
+      "approvedDescriptionDe": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+      "approvedDescriptionEn": "The learner can decide whether the null hypothesis is rejected or not rejected, state the result clearly in context, and explain what the test result does and does not support.",
+      "rationaleDe": "Eine Nullhypothese wird nicht „beibehalten“ oder als wahr angenommen, sondern lediglich nicht verworfen. Die Revision verhindert diese Fehlinterpretation und macht die Aussagegrenzen des Tests zum klaren Beherrschungsmaßstab.",
+      "reconciliationNoteDe": "Fachkorrektur aus der unabhängigen Zweitprüfung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:760102911a857d5928bf97ad6e13d477059e7c76593651d4a97cea18a28f463b",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Testergebnisse im Kontext interpretieren“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Testergebnisse im Kontext interpretieren“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Testergebnisse im Kontext interpretieren“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R14",
+      "reviewOrder": 427,
+      "goalId": "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "originalGoalFingerprint": "sha256:e7b71bbc6aed3b716875a6f386028069445324f8255e69cdb0ea4d8897c31cd3",
+      "originalPageFingerprint": "sha256:962be645398a874aed20651bb22fb9de08dfb7c93d0ee9f01f872bd3b44baba8",
+      "titleDe": "Gütefunktion und Teststärke untersuchen (LK)",
+      "titleEn": "Investigate power function and test power (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik beziehungsweise Gütefunktion grafisch darstellen oder skizzieren, Wahrscheinlichkeiten für das Beibehalten bzw. Verwerfen der Nullhypothese in Abhängigkeit vom wahren Wert der Trefferwahrscheinlichkeit p beschreiben und den Einfluss von Stichprobenumfang und Signifikanzniveau diskutieren.",
+      "reviewedCurrentDescriptionEn": "The learner can graphically represent or sketch the operating characteristic or power function for a hypothesis test, describe probabilities for retaining or rejecting the null hypothesis depending on the true success probability p, and discuss the influence of sample size and significance level.",
+      "approvedDescriptionDe": "Die lernende Person kann für einen Hypothesentest die Operationscharakteristik als Wahrscheinlichkeit für das Nichtverwerfen der Nullhypothese und die Gütefunktion als Wahrscheinlichkeit für ihr Verwerfen in Abhängigkeit vom wahren Wert von $p$ unterscheiden, beide grafisch darstellen und den Einfluss von Stichprobenumfang und Signifikanzniveau auf die Teststärke erläutern.",
+      "approvedDescriptionEn": "For a hypothesis test, the learner can distinguish the operating-characteristic function as the probability of not rejecting the null hypothesis from the power function as the probability of rejecting it, both as functions of the true value of $p$, graph both functions, and explain how sample size and significance level affect test power.",
+      "rationaleDe": "Operationscharakteristik und Gütefunktion werden bisher mit „beziehungsweise“ wie austauschbare Begriffe behandelt. Die Revision unterscheidet die komplementären Wahrscheinlichkeiten und benennt die daraus abzulesende Teststärke eindeutig.",
+      "reconciliationNoteDe": "Fachkorrektur aus der unabhängigen Zweitprüfung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:02565b161cd69074298fed85ecef8067fad5f2338339e3169ce765b53c306f72",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Gütefunktion und Teststärke untersuchen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Gütefunktion und Teststärke untersuchen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Gütefunktion und Teststärke untersuchen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R15",
+      "reviewOrder": 429,
+      "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
+      "originalGoalFingerprint": "sha256:844f1c7f01a12554e844209651da9cafb1092fdf49eba2610b45636a9e3a2932",
+      "originalPageFingerprint": "sha256:2d5e6b09aa1c9cf75a135ed8fe1e3dfb56300d11ce1402a2c9d83e827c305ef6",
+      "titleDe": "Prognoseintervalle für relative Häufigkeiten bestimmen",
+      "titleEn": "Determine prediction intervals for relative frequencies",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann von einer bekannten Trefferwahrscheinlichkeit der Grundgesamtheit auf relative Häufigkeiten in zukünftigen Stichproben schließen, auf Grundlage der Sigma-Regeln Prognoseintervalle der Form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ in Sachzusammenhängen bestimmen und die Prognoseunsicherheit erläutern.",
+      "reviewedCurrentDescriptionEn": "The learner can infer relative frequencies in future samples from a known population success probability, determine prediction intervals of the form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ in contexts based on sigma rules, and explain forecast uncertainty.",
+      "approvedDescriptionDe": "Die lernende Person kann für hinreichend große unabhängige Bernoulli-Stichproben aus einer bekannten Trefferwahrscheinlichkeit näherungsweise Prognoseintervalle der Form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ für die relative Häufigkeit bestimmen und die Voraussetzungen sowie die verbleibende Prognoseunsicherheit erläutern.",
+      "approvedDescriptionEn": "For sufficiently large independent Bernoulli samples, the learner can use a known success probability to determine approximate prediction intervals of the form $\\left[p-c\\sqrt{\\frac{p(1-p)}{n}};\\ p+c\\sqrt{\\frac{p(1-p)}{n}}\\right]$ for the relative frequency and explain the assumptions and remaining prediction uncertainty.",
+      "rationaleDe": "Das Sigma- beziehungsweise Normalintervall ist eine Näherung, wird bisher aber wie ein exaktes Prognoseintervall formuliert. Die Revision macht Näherungscharakter und notwendige Stichprobenvoraussetzungen explizit.",
+      "reconciliationNoteDe": "Fachkorrektur aus der unabhängigen Zweitprüfung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:8cb752b5150f18b0f3510d1de9e249f29ba20eda1d1cc8f4967db0f240dbb305",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Prognoseintervalle für relative Häufigkeiten bestimmen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Prognoseintervalle für relative Häufigkeiten bestimmen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Prognoseintervalle für relative Häufigkeiten bestimmen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R16",
+      "reviewOrder": 430,
+      "goalId": "5f328147-619c-568d-9a0d-e1787ca0c01b",
+      "originalGoalFingerprint": "sha256:c824882d31404e4f85363c1845a948d1d1e8c6aa9f0ba093bc07a6e932a80c28",
+      "originalPageFingerprint": "sha256:481d21b26081722236a15abb7afff2b24e2fa0cd384c466c115c642065e15cd3",
+      "titleDe": "Konfidenzintervalle für Wahrscheinlichkeiten berechnen",
+      "titleEn": "Compute confidence intervals for probabilities",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen durch Lösen der Gleichung $h_n-p=c\\sqrt{\\frac{p(1-p)}{n}}$ durch Quadrieren bestimmen und die Vereinfachung $h_n-p=c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall bezüglich $h_n$ verwenden.",
+      "reviewedCurrentDescriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in contexts by solving $h_n-p=c\\sqrt{\\frac{p(1-p)}{n}}$ by squaring, and use the simplification $h_n-p=c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+      "approvedDescriptionDe": "Die lernende Person kann von einer Stichprobe auf die unbekannte Trefferwahrscheinlichkeit der Grundgesamtheit schließen, Konfidenzintervalle in Sachzusammenhängen aus $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$ bestimmen und die Näherung $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ als symmetrisches Intervall um $h_n$ verwenden.",
+      "approvedDescriptionEn": "The learner can infer the unknown population success probability from a sample, determine confidence intervals in context from $\\left|h_n-p\\right|\\leq c\\sqrt{\\frac{p(1-p)}{n}}$, and use the approximation $h_n\\pm c\\sqrt{\\frac{h_n(1-h_n)}{n}}$ as an interval symmetric about $h_n$.",
+      "rationaleDe": "Die aktuelle Fassung bindet die Lösung unnötig an Quadrieren und notiert die beidseitige Intervallbedingung als einseitige Gleichung. Der vollständige DE/EN-Vorschlag stellt Betrag beziehungsweise ±-Intervall fachlich korrekt und methodenneutral dar, ohne den Zielumfang zu erweitern.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:214472d449d4321782e5fa623b8849f9178193cd7674ac7e2b7ba24ccb545b26",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Konfidenzintervalle für Wahrscheinlichkeiten berechnen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Konfidenzintervalle für Wahrscheinlichkeiten berechnen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Konfidenzintervalle für Wahrscheinlichkeiten berechnen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R17",
+      "reviewOrder": 435,
+      "goalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+      "originalGoalFingerprint": "sha256:6383d626f2ad1844acd6a03667d2232eba1182d54845be14dd8d213cf84ad34e",
+      "originalPageFingerprint": "sha256:5084a11d4572d18fa33ab1416ece7bbf53292ff6028bda25de2699c2e065d67c",
+      "titleDe": "Lageparameter von Daten bestimmen und deuten",
+      "titleEn": "Determine and interpret location parameters of data",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann aus Daten arithmetische Mittelwerte sowie weitere Lageparameter bestimmen, diese in Tabellen und Diagrammen verorten und im Kontext der Fragestellung sinnvoll interpretieren.",
+      "reviewedCurrentDescriptionEn": "The learner can determine mean, median, and potentially mode from data, locate them in tables and diagrams, and interpret them meaningfully in the context of the question.",
+      "approvedDescriptionDe": "Die lernende Person kann aus Daten arithmetisches Mittel, Median und gegebenenfalls Modalwert bestimmen, diese Lageparameter in Tabellen und Diagrammen verorten und im Kontext der Fragestellung sinnvoll interpretieren.",
+      "approvedDescriptionEn": "The learner can determine mean, median, and potentially mode from data, locate them in tables and diagrams, and interpret them meaningfully in the context of the question.",
+      "rationaleDe": "Nur die deutsche Fassung lässt mit „weitere Lageparameter“ offen, welche Größen gemeint sind. Die bereits eindeutige englische Fassung bleibt unverändert; die deutsche nennt arithmetisches Mittel, Median und gegebenenfalls Modalwert ausdrücklich.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die unbestimmte deutsche Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:6fe2a1bb6fc1463cc1dd98a30c6472e09af3ec248adfb9ae2294fa5ab2bab1ee",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Lageparameter von Daten bestimmen und deuten“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Lageparameter von Daten bestimmen und deuten“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Lageparameter von Daten bestimmen und deuten“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R18",
+      "reviewOrder": 436,
+      "goalId": "e402f330-8ac6-525f-b3ff-bc4be229d131",
+      "originalGoalFingerprint": "sha256:86f7ee0ed93508e7e7c8a9d9b3f5069a8e7f61a6b2db44fa87973696d71ba6da",
+      "originalPageFingerprint": "sha256:7f86a949ed91b11378fe53736aa64476542e6ffb22f2ec8efcf5938b4f0bad13",
+      "titleDe": "Streuungsmaße von Daten bestimmen und deuten",
+      "titleEn": "Determine and interpret dispersion measures of data",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann empirische Varianz und empirische Standardabweichung für Datensätze berechnen, beide Streuungsmaße in Bezug auf die Daten deuten und einfache Vergleiche zwischen Datensätzen anstellen.",
+      "reviewedCurrentDescriptionEn": "The learner can calculate range, empirical variance, and standard deviation for data sets, interpret them regarding data dispersion, and make simple comparisons between data sets.",
+      "approvedDescriptionDe": "Die lernende Person kann empirische Varianz und empirische Standardabweichung für Datensätze berechnen, beide Streuungsmaße in Bezug auf die Daten deuten und einfache Vergleiche zwischen Datensätzen anstellen.",
+      "approvedDescriptionEn": "The learner can calculate empirical variance and empirical standard deviation for data sets, interpret both values as measures of dispersion, and compare data sets using these measures.",
+      "rationaleDe": "Nur die englische Fassung fügt die Spannweite hinzu. Die deutsche Fassung bleibt unverändert; die englische wird auf empirische Varianz und Standardabweichung begrenzt.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:925af7bbd5170796d37bf16101b3c6daf31b78d4c9f55a8828f8c263572e76e4",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Streuungsmaße von Daten bestimmen und deuten“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Streuungsmaße von Daten bestimmen und deuten“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Streuungsmaße von Daten bestimmen und deuten“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R19",
+      "reviewOrder": 439,
+      "goalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "originalGoalFingerprint": "sha256:57e84675b25c562f0d8408627450685b187b6a0fc1812289b43bec272c125d9a",
+      "originalPageFingerprint": "sha256:35301f014a28dc6d8aacf8c7f63ad6d583552ff135aff8669cc4800a943cd49f",
+      "titleDe": "Zufallsexperimente mit Software simulieren",
+      "titleEn": "Simulate random experiments with software",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.",
+      "reviewedCurrentDescriptionEn": "The learner can simulate random experiments using suitable software (e.g., spreadsheets), evaluate relative frequencies and present results graphically.",
+      "approvedDescriptionDe": "Die lernende Person kann Zufallsexperimente mit geeigneter Software (z. B. Tabellenkalkulation) simulieren, absolute und relative Häufigkeiten auswerten und die Ergebnisse grafisch darstellen.",
+      "approvedDescriptionEn": "The learner can simulate random experiments using suitable software, such as a spreadsheet, evaluate absolute and relative frequencies, and present the results graphically.",
+      "rationaleDe": "Nur die englische Fassung lässt die ausdrücklich verlangten absoluten Häufigkeiten aus. Die deutsche Fassung bleibt unverändert; die englische wird um diesen fehlenden Bestandteil ergänzt.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:036ff146c33a35d31110b53506c8c2bf2dd0d7daf501cd04a6cd172c0723db53",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Zufallsexperimente mit Software simulieren“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Zufallsexperimente mit Software simulieren“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Zufallsexperimente mit Software simulieren“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-022.records.jsonl"
+    },
+    {
+      "reviewCode": "R20",
+      "reviewOrder": 445,
+      "goalId": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "originalGoalFingerprint": "sha256:8c2ecf7e3660e4f725f2cbf36324ea9f19640996f766c0773ffe4d08726ac39e",
+      "originalPageFingerprint": "sha256:d16cc66c522ec42a05e9495dc7ea9d793370b6fc99cc900b41cf22bdd1f9e924",
+      "titleDe": "Normalverteilung als Approximation binomialer Modelle (LK)",
+      "titleEn": "Normal Distribution as Approximation of Binomial Models (Advanced Course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+      "reviewedCurrentDescriptionEn": "The learner can approximate binomial situations with suitable parameters by a normal distribution, justify the approximation mathematically, and interpret its relation to sigma rules and later inference.",
+      "approvedDescriptionDe": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+      "approvedDescriptionEn": "The learner can approximate histograms of binomial random variables by a normal distribution for suitable parameters and a sufficiently large standard deviation, justify the approximation mathematically, and interpret its relation to sigma rules.",
+      "rationaleDe": "Nur die englische Fassung lässt Histogramm und Standardabweichungsbedingung weg und fügt stattdessen „later inference“ hinzu. Die deutsche Fassung bleibt unverändert; die englische wird auf den verbindlichen Approximationsumfang angeglichen.",
+      "reconciliationNoteDe": "Die Zweitprüfung beschränkt die Änderung auf die tatsächlich abweichende englische Fassung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:55f5eacfcb538e774e94cf54c0d780933588d0fe1c1f2f6573208b27e31f5f5e",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Normalverteilung als Approximation binomialer Modelle (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Normalverteilung als Approximation binomialer Modelle (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Normalverteilung als Approximation binomialer Modelle (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-023.records.jsonl"
+    },
+    {
+      "reviewCode": "R21",
+      "reviewOrder": 446,
+      "goalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "originalGoalFingerprint": "sha256:19393d7577a97ff310724c38db1dbe4b369504e48b5b5eff98f8aa8f0191895b",
+      "originalPageFingerprint": "sha256:04f7f16b93622cf1bddd9ed65f945a4eb7043caa687240f4950c3403a778902f",
+      "titleDe": "Herleitung der Poisson-Verteilung als Grenzfall (LK)",
+      "titleEn": "Derive the Poisson distribution as a limit case",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann die Poisson-Verteilung als Näherung der Binomialverteilung bei konstantem Erwartungswert begründen und den Grenzübergang $n\\to\\infty$ beweisen beziehungsweise nachvollziehen.",
+      "reviewedCurrentDescriptionEn": "The learner can justify the Poisson distribution as a limit case of the binomial distribution for rare events (limit transition n → ∞ with constant expected value).",
+      "approvedDescriptionDe": "Die lernende Person kann für $n\\to\\infty$, $p_n\\to 0$ und $n p_n\\to\\lambda>0$ den Grenzübergang von der Binomial- zur Poisson-Verteilung herleiten, die Grenzschritte fachlich erklären und daraus ihre Eignung für seltene Ereignisse begründen.",
+      "approvedDescriptionEn": "The learner can derive the limiting transition from the binomial to the Poisson distribution for $n\\to\\infty$, $p_n\\to 0$, and $n p_n\\to\\lambda>0$, explain the limiting steps, and use them to justify the Poisson distribution's suitability for rare events.",
+      "rationaleDe": "„Beweisen beziehungsweise nachvollziehen“ erzeugt zwei ungleiche Beherrschungsschwellen. Die Revision benennt die Grenzbedingungen und verlangt in beiden Sprachen dieselbe eigenständige Herleitung, fachliche Erklärung und Begründung des Anwendungsbereichs.",
+      "reconciliationNoteDe": "Die Zweitprüfung vereinheitlicht den beobachtbaren Leistungsmaßstab.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:68bebfd75aca21650c70f0b6fb4aaba8100be5e4e3fe22d06738b3ef07caaf22",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Herleitung der Poisson-Verteilung als Grenzfall (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Herleitung der Poisson-Verteilung als Grenzfall (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Herleitung der Poisson-Verteilung als Grenzfall (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-023.records.jsonl"
+    },
+    {
+      "reviewCode": "R22",
+      "reviewOrder": 530,
+      "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "originalGoalFingerprint": "sha256:ff9ecc29186be3e75950dbb5e63237cd43583bd0311c37aedced6bcb194a5808",
+      "originalPageFingerprint": "sha256:e1ec8f7419d3969c43a502d958b1bde57867a9558dcf1c743b94c95b328a4a43",
+      "titleDe": "Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
+      "titleEn": "Determine decision rule or sample size from power-function graphs",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann aus dem Graphen der Operationscharakteristik beziehungsweise Gütefunktion eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang ablesen und fachlich begründen.",
+      "reviewedCurrentDescriptionEn": "The learner can read a suitable decision rule or sample size from the graph of the operating characteristic or power function and justify it mathematically.",
+      "approvedDescriptionDe": "Die lernende Person kann für vorgegebene Kandidaten von Entscheidungsregeln oder Stichprobenumfängen eindeutig gekennzeichnete Graphen der Operationscharakteristik oder Gütefunktion auswerten, die jeweiligen Nichtverwerfungs- beziehungsweise Verwerfungswahrscheinlichkeiten mit vorgegebenen Anforderungen vergleichen und eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang auswählen und fachlich begründen.",
+      "approvedDescriptionEn": "The learner can evaluate clearly labeled operating-characteristic or power-function graphs for given candidate decision rules or sample sizes, compare the corresponding probabilities of not rejecting or rejecting the null hypothesis with specified requirements, and select and justify a suitable decision rule or sample size.",
+      "rationaleDe": "Aus einem einzelnen Graphen lassen sich Entscheidungsregel oder Stichprobenumfang im Allgemeinen nicht eindeutig bestimmen. Die Revision macht vergleichbare Kandidaten und Anforderungen explizit und benennt klar, welche Wahrscheinlichkeit der jeweilige Graph zeigt.",
+      "reconciliationNoteDe": "Die fachliche Endprüfung beseitigt die verbleibende Unterbestimmtheit des Erstvorschlags.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:7bc9ebe304e4be9272cebb1fec39987fd86c97789e9b5e7dbba091d5da2e97ad",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-027/records.jsonl"
+    },
+    {
+      "reviewCode": "R23",
+      "reviewOrder": 533,
+      "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "originalGoalFingerprint": "sha256:45abde829e7ad15c13fb3402ededecf576393e350e700bbb3098273d4b06da2e",
+      "originalPageFingerprint": "sha256:e1bbd3829f311ec985b0065df9014e0b5bd76770331f447b164316cf7f78c06b",
+      "titleDe": "Euklidische Algorithmen digital nachvollziehen (LK)",
+      "titleEn": "Trace digital implementations of Euclidean algorithms (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann eine Implementierung euklidischer Algorithmen in Tabellenkalkulation oder Programmierumgebung nachvollziehen.",
+      "reviewedCurrentDescriptionEn": "The learner can trace an implementation of Euclidean algorithms in a spreadsheet or programming environment.",
+      "approvedDescriptionDe": "Die lernende Person kann die Schritte einer Implementierung des euklidischen oder erweiterten euklidischen Algorithmus in einer Tabellenkalkulation oder Programmierumgebung den mathematischen Operationen zuordnen und das Ergebnis an einem Beispiel prüfen.",
+      "approvedDescriptionEn": "The learner can relate the steps of a spreadsheet or program implementation of the Euclidean or extended Euclidean algorithm to the corresponding mathematical operations and check the result on an example.",
+      "rationaleDe": "Das bloße „Nachvollziehen“ nennt keine eigenständig beobachtbare Leistung; die lokale Revision operationalisiert genau die bereits beanspruchte digitale Implementierungsanalyse, ohne den fachlichen Umfang zu erweitern.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:be092258dee3a41cb9b3f1f5e5d0d47e4d223182c3921bea569178e1639339fe",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Euklidische Algorithmen digital nachvollziehen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Euklidische Algorithmen digital nachvollziehen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Euklidische Algorithmen digital nachvollziehen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-027/records.jsonl"
+    },
+    {
+      "reviewCode": "R24",
+      "reviewOrder": 545,
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "originalGoalFingerprint": "sha256:d04d2d715c13691cbaa5475ce3344ce9ed3a71c480afaf390e2526344e14f847",
+      "originalPageFingerprint": "sha256:e63ba179358534616edc3c453f0219ba0184b2ee08a805b112e153f9ce6dc58c",
+      "titleDe": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "titleEn": "Represent complex numbers in polar form and in the Gaussian plane",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene darstellen, Betrag und Argument bestimmen und Darstellungen der Form z = e^{iωt} = cos(ωt) + i·sin(ωt) fachsprachlich deuten.",
+      "reviewedCurrentDescriptionEn": "The learner can represent complex numbers in the Gaussian plane, determine modulus and argument, and interpret representations of the form z = e^{iωt} = cos(ωt) + i·sin(ωt).",
+      "approvedDescriptionDe": "Die lernende Person kann komplexe Zahlen in der Gaußschen Zahlenebene und in Polarform $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ mit $r\\ge 0$ darstellen, ihren Betrag und für $z\\ne 0$ ein Argument bestimmen sowie Darstellungen mit $\\varphi=\\omega t$ fachsprachlich deuten.",
+      "approvedDescriptionEn": "The learner can represent complex numbers in the Gaussian plane and in polar form $z=r\\cdot e^{i\\varphi}=r\\cdot(\\cos\\varphi+i\\cdot\\sin\\varphi)$ with $r\\ge 0$, determine their modulus and, for $z\\ne 0$, an argument, and interpret representations with $\\varphi=\\omega t$ using appropriate mathematical terminology.",
+      "rationaleDe": "Die bisherige Formel beschreibt nur den Einheitskreis und ist für die behauptete allgemeine Polarform fachlich falsch. Der Titel legt die Zielidentität eindeutig fest; der fehlende Betragfaktor lässt sich daher lokal und vollständig korrigieren.",
+      "reconciliationNoteDe": "Die Zweitprüfung ersetzt den Block durch eine fachlich eindeutige bilinguale Revision.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:ff5d25ef61dfa571b6d15e3bed6ee2f86a3d114f97a14d48a89cfc309d545c1c",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reasonDe": "Polarform und Gaußsche Zahlenebene verwenden eine kompakte Notation sowie feste Beziehungen zwischen Betrag, Argument und kartesischer Darstellung. Das Memory-Ziel sichert diese Formeln und Begriffe; Umformen und Darstellen bleiben Verständnis- und Anwendungspraxis.",
+          "memoryGoalIds": [
+            "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_complex_parameter"
+          ]
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-028/records.jsonl"
+    },
+    {
+      "reviewCode": "R25",
+      "reviewOrder": 613,
+      "goalId": "e9c401b1-144d-525f-a148-a1113b2e82a8",
+      "originalGoalFingerprint": "sha256:33dcbb21ca482c25566b608098d180c3563da44c0ef9f8134b35b057da970c3b",
+      "originalPageFingerprint": "sha256:4cbf76ec009934ab3264091a0de7cf57d35cd8577179474ba5002244a4b1c5f1",
+      "titleDe": "Polynomgleichungen in Funktionsuntersuchungen lösen",
+      "titleEn": "Solve polynomial equations in function investigations",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Polynomgleichungen, die bei Nullstellen-, Extrem- oder Wendestellenbedingungen entstehen, durch Ausklammern oder biquadratische Substitution lösen und die Lösungen in der Funktionsuntersuchung verwenden.",
+      "reviewedCurrentDescriptionEn": "The learner can solve polynomial equations arising from zero, extremum, or inflection conditions by factoring or biquadratic substitution and use the solutions in function investigations.",
+      "approvedDescriptionDe": "Die lernende Person kann Polynomgleichungen, die bei Nullstellen-, Extremstellen- oder Wendestellenbedingungen entstehen, mit einem zur Termstruktur passenden algebraischen Verfahren lösen und die Lösungen in der Funktionsuntersuchung verwenden.",
+      "approvedDescriptionEn": "The learner can solve polynomial equations arising from zero, extremum, or inflection-point conditions using an algebraic method suited to the expression structure and use the solutions in the function investigation.",
+      "rationaleDe": "Die Festlegung auf Ausklammern oder biquadratische Substitution schließt gleichwertige geeignete Lösungswege unnötig aus. Die Revision bleibt methodenneutral; die im Erstvorschlag zusätzlich verlangte Lösungsprüfung wird nicht ohne Quellenbeleg in den Umfang aufgenommen.",
+      "reconciliationNoteDe": "Die Zweitprüfung hat eine unbegründete Scope-Erweiterung aus dem Erstvorschlag entfernt.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:993fc80ff47d4b5c60056084b1a97ca9a1e9b8ddebeae81fd088fc8c6f9503c6",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Polynomgleichungen in Funktionsuntersuchungen lösen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Polynomgleichungen in Funktionsuntersuchungen lösen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Polynomgleichungen in Funktionsuntersuchungen lösen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-031/records.jsonl"
+    },
+    {
+      "reviewCode": "R26",
+      "reviewOrder": 633,
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "originalGoalFingerprint": "sha256:381954e7cf2547eeccb9b3b261a9bec2de832e5b0e29edba2e96c9360478b917",
+      "originalPageFingerprint": "sha256:63de02b22f64995226036c278701a4d56deb095180a864e3911b026aa81e2a54",
+      "titleDe": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+      "titleEn": "Represent parallel projections onto origin planes with matrices (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf beliebige Ursprungsebenen im $\\mathbb{R}^3$ untersuchen und bestimmen.",
+      "reviewedCurrentDescriptionEn": "The learner can analyze and determine mapping matrices for parallel projections onto arbitrary origin planes in $\\mathbb{R}^3$.",
+      "approvedDescriptionDe": "Die lernende Person kann für eine Parallelprojektion entlang einer vorgegebenen Richtung, die nicht in der Zielebene liegt, auf eine beliebige Ursprungsebene im $\\mathbb{R}^3$ die Abbildungsmatrix bestimmen und untersuchen.",
+      "approvedDescriptionEn": "The learner can determine and analyze the mapping matrix for a parallel projection along a given direction that does not lie in the target plane onto an arbitrary plane through the origin in $\\mathbb{R}^3$.",
+      "rationaleDe": "Eine Parallelprojektion wird erst durch Zielebene und Projektionsrichtung eindeutig. Die Revision ergänzt die notwendige Richtungsbedingung, bewahrt „beliebige Ursprungsebene“ und fügt keine neue geometrische Deutungsleistung hinzu.",
+      "reconciliationNoteDe": "Die Zweitprüfung korrigiert Verengung und Scope-Erweiterung des Erstvorschlags.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:67f22489ddbaa37af483b832ae8c484190d33211c61b11872c477b903c68b987",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-032.records.jsonl"
+    },
+    {
+      "reviewCode": "R27",
+      "reviewOrder": 650,
+      "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "originalGoalFingerprint": "sha256:454b7ca0ccbb40ed26dbd27d4aa712e9ae414ac9804dc61b3d62d26602bcd94b",
+      "originalPageFingerprint": "sha256:3c6594ee524e9eccbe7514635a1ebafd2df8c8f9cac2636f4a796030abacb738",
+      "titleDe": "Parameterabhängige Winkel und Lagebeziehungen untersuchen",
+      "titleEn": "Analyze parameter-dependent angles and spatial relations",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Winkel, Orthogonalität, Parallelität und die genannten Lagebeziehungen in räumlichen Konfigurationen in Abhängigkeit von einem zusätzlichen Parameter untersuchen.",
+      "reviewedCurrentDescriptionEn": "The learner can analyze angles, orthogonality, parallelism, and the specified spatial relations in configurations depending on an additional parameter.",
+      "approvedDescriptionDe": "Die lernende Person kann in räumlichen Konfigurationen mit einem zusätzlichen Parameter Winkel zwischen einer Geraden und einer Ebene sowie zwischen zwei Ebenen untersuchen und Parameterwerte bestimmen, für die eine vorgegebene Winkel-, Orthogonalitäts-, Parallelitäts- oder Lagebedingung erfüllt ist.",
+      "approvedDescriptionEn": "The learner can analyze, in spatial configurations with an additional parameter, angles between a line and a plane and between two planes, and determine parameter values for which a specified angle, orthogonality, parallelism, or positional condition is satisfied.",
+      "rationaleDe": "Der Rückverweis „die genannten Lagebeziehungen“ und „Winkel zwischen geometrischen Objekten“ wären kein eindeutiger Prüfmaßstab. Die bindende Quelle benennt Gerade–Ebene und Ebene–Ebene; die Revision macht genau diese Objektpaare und die vorgegebene Bedingung explizit, ohne eine zusätzliche Deutungsleistung einzuführen.",
+      "reconciliationNoteDe": "Die fachliche Endprüfung präzisiert die source-grounded lokale Revision.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:4381d6afd6a8a0010e665cac64683274f7cf1c0b487625393dac8776108303cb",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Parameterabhängige Winkel und Lagebeziehungen untersuchen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Parameterabhängige Winkel und Lagebeziehungen untersuchen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Parameterabhängige Winkel und Lagebeziehungen untersuchen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-033.records.jsonl"
+    },
+    {
+      "reviewCode": "R28",
+      "reviewOrder": 651,
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "originalGoalFingerprint": "sha256:9ad6f65651f971a7787da16fc0aa039ca49636635e3febae1faa4375f5cede15",
+      "originalPageFingerprint": "sha256:205cb76175d757968aa7fdbbcddf05cc70b32ca6e974841fd0079316a15e3352",
+      "titleDe": "Geradenscharen untersuchen (LK)",
+      "titleEn": "Analyze families of lines (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, besondere Parameterwerte bestimmen und die zugehörigen Lage- oder Schnittsituationen geometrisch deuten.",
+      "reviewedCurrentDescriptionEn": "The learner can analyze one-parameter families of lines, determine special parameter values, and interpret the corresponding positional or intersection situations geometrically.",
+      "approvedDescriptionDe": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+      "approvedDescriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically.",
+      "rationaleDe": "„Besondere Parameterwerte“ und „Lage- oder Schnittsituationen“ geben allein keinen vollständigen Prüfmaßstab. Die Revision bindet die gesuchten Parameterwerte an jeweils vorgegebene Bedingungen und lässt die konkrete Aufgabenbedingung variabel.",
+      "reconciliationNoteDe": "Die Adjudikation bestätigt eine lokale Präzisierung statt eines Blocks.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:879d17cde6e97aed3b3ecdf110790252b528b0da0f2d69fb8c2f90b86f60ccae",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Geradenscharen untersuchen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Geradenscharen untersuchen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Geradenscharen untersuchen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-033.records.jsonl"
+    },
+    {
+      "reviewCode": "R29",
+      "reviewOrder": 672,
+      "goalId": "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+      "originalGoalFingerprint": "sha256:4f3e2b4f510b33c996df68a94ca0d05fae25063fcb3404a2b4f38a4d8f9abd7d",
+      "originalPageFingerprint": "sha256:806875315a921ee784a4bab52c22c9ad15305cfdb4b308fb833170143769e931",
+      "titleDe": "Randverhalten ganzrationaler Funktionen aus dem Term begründen",
+      "titleEn": "Justify polynomial end behavior from the expression",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann anhand des Funktionsterms einer ganzrationalen Funktion das Verhalten an den Rändern des Definitionsbereichs begründen.",
+      "reviewedCurrentDescriptionEn": "The learner can justify the end behavior of a polynomial function from its expression.",
+      "approvedDescriptionDe": "Die lernende Person kann das Verhalten einer ganzrationalen Funktion für $x\\to\\infty$ und $x\\to-\\infty$ aus dem Grad und dem Vorzeichen ihres führenden Koeffizienten begründen.",
+      "approvedDescriptionEn": "The learner can justify the behavior of a polynomial function as $x\\to\\infty$ and $x\\to-\\infty$ from its degree and the sign of its leading coefficient.",
+      "rationaleDe": "Ganzrationale Funktionen haben auf $\\mathbb{R}$ keine „Ränder des Definitionsbereichs“. Die Revision benennt das tatsächlich gemeinte Endverhalten und seinen fachlichen Begründungsmaßstab.",
+      "reconciliationNoteDe": "Fachkorrektur aus der unabhängigen Zweitprüfung.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:cd51807e5c699f39843ad215422206e323cdd8be69b4899151fd99ae73c265d4",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Randverhalten ganzrationaler Funktionen aus dem Term begründen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Randverhalten ganzrationaler Funktionen aus dem Term begründen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Randverhalten ganzrationaler Funktionen aus dem Term begründen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-034.records.jsonl"
+    },
+    {
+      "reviewCode": "R30",
+      "reviewOrder": 678,
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "originalGoalFingerprint": "sha256:e7e59173f51e639df7fb48799f2b16724f380fb4119e454307a2193c5febba5f",
+      "originalPageFingerprint": "sha256:73b799525a801e1e7d26b1dabf273e68673921ee438c690a85f64d52c0d71981",
+      "titleDe": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+      "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Ebenenscharen, insbesondere in der Darstellung durch eine Koordinatengleichung, parameterabhängig untersuchen und besondere Lage- oder Schnittsituationen geometrisch deuten.",
+      "reviewedCurrentDescriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, and geometrically interpret special positional or intersection situations.",
+      "approvedDescriptionDe": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+      "approvedDescriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically.",
+      "rationaleDe": "„Besondere Lage- oder Schnittsituationen“ ist ohne Bedingung kein abschließbarer Maßstab. Die Revision verlangt Parameterwerte für jeweils vorgegebene Bedingungen und erhält die geometrische Deutung.",
+      "reconciliationNoteDe": "Die Adjudikation bestätigt eine lokale Präzisierung statt eines Blocks.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:e462679a849aa8d7a694031c8befd20585daaa47aed85acb56b71f0eb565de0c",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Ebenenscharen in Koordinatengleichung untersuchen (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Ebenenscharen in Koordinatengleichung untersuchen (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Ebenenscharen in Koordinatengleichung untersuchen (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-034.records.jsonl"
+    },
+    {
+      "reviewCode": "R31",
+      "reviewOrder": 682,
+      "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+      "originalGoalFingerprint": "sha256:e43c2e175d033804ef2a431ab164f43b334ef8dd3c298e187135d05897dc67f9",
+      "originalPageFingerprint": "sha256:91fe34f5b310b38a1e4730c9b78d32cfe1acd4557722bac1389c27ded7ab24ab",
+      "titleDe": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+      "titleEn": "Apply foot-of-perpendicular methods for distances between points, lines, and planes (advanced course)",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Lotfußpunktverfahren zur Abstandsbestimmung zwischen Punkten, Geraden und Ebenen erarbeiten, auswählen und in unterschiedlichen räumlichen Konfigurationen anwenden.",
+      "reviewedCurrentDescriptionEn": "The learner can develop, select, and apply foot-of-perpendicular methods for determining distances between points, lines, and planes in different spatial configurations.",
+      "approvedDescriptionDe": "Die lernende Person kann Lotfußpunktverfahren zur Bestimmung des kürzesten Abstands zwischen Punkt und Gerade, Punkt und Ebene, zwei parallelen oder windschiefen Geraden, einer Geraden und einer zu ihr parallelen Ebene sowie zwei parallelen Ebenen entwickeln, auswählen und anwenden.",
+      "approvedDescriptionEn": "The learner can develop, select, and apply perpendicular-foot methods to determine the shortest distance between a point and a line, a point and a plane, two parallel or skew lines, a line and a plane parallel to it, and two parallel planes.",
+      "rationaleDe": "„Geeignete Konfigurationen“ wäre weiterhin kein eindeutiger Prüfmaßstab. Die Revision benennt genau die Objektlagen mit positivem Abstand, für die ein Lotfußpunktverfahren fachlich sinnvoll ist, und schließt den unnötigen Punkt–Punkt-Fall aus.",
+      "reconciliationNoteDe": "Die fachliche Endprüfung beseitigt die verbleibende Unbestimmtheit der lokalen Revision.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:5ac1d84b0890ae0178d134a2934dd87a5cb93f4cc307c5f382b7c0d73ad1e114",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-035.records.jsonl"
+    },
+    {
+      "reviewCode": "R32",
+      "reviewOrder": 693,
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "originalGoalFingerprint": "sha256:5f566ba3e27ea17d5474d28e7d510df56763418d4e095dd7035d7502dfd19ff4",
+      "originalPageFingerprint": "sha256:38f7565f26cd26cf666a7c16798161c4ca59a6c5e14d0c0996a180f1405b3774",
+      "titleDe": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+      "titleEn": "Describe positional relations of geometric objects using mathematical language",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann Lagebeziehungen geometrischer Objekte wie parallel, senkrecht, schneidend oder halbierend fachsprachlich beschreiben und an Skizzen sicher zuordnen.",
+      "reviewedCurrentDescriptionEn": "The learner can describe positional relations of geometric objects such as parallel, perpendicular, intersecting, or bisecting using mathematical language and identify them reliably in sketches.",
+      "approvedDescriptionDe": "Die lernende Person kann Lagebeziehungen geometrischer Objekte wie parallel, senkrecht oder schneidend sowie Aussagen wie „halbiert einen Winkel“ oder „halbiert eine Strecke“ fachsprachlich beschreiben und in Skizzen sicher zuordnen.",
+      "approvedDescriptionEn": "The learner can use appropriate mathematical terminology to describe positional relationships such as parallel, perpendicular, or intersecting and statements such as “bisects an angle” or “bisects a segment”, and can identify them reliably in sketches.",
+      "rationaleDe": "„Halbierend“ ist ohne benanntes Objekt keine Lagebeziehung. Die Revision trennt echte Lagebeziehungen von präzisen Halbierungsaussagen und formuliert beide Sprachfassungen grammatisch parallel.",
+      "reconciliationNoteDe": "Die Zweitprüfung präzisiert die englische Fassung des Erstvorschlags.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:4b27158974e0c1a629a53a049d4b2f92726f86423f8723327c7482f354c9ecf0",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-035.records.jsonl"
+    },
+    {
+      "reviewCode": "R33",
+      "reviewOrder": 698,
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "originalGoalFingerprint": "sha256:703169b0017fb177418af552ae60117366a640357f7e1070dc3b3abcb79c9ba1",
+      "originalPageFingerprint": "sha256:c28adaced0ccbf6cb2cee7c01a89f57693e1e1b9d59bd086ff399185228011a5",
+      "titleDe": "Besondere Dreiecke untersuchen",
+      "titleEn": "Analyze special triangles",
+      "reviewedCurrentDescriptionDe": "Die lernende Person kann besondere Dreiecke anhand von Seiten-, Winkel- und Symmetrieeigenschaften erkennen, beschreiben und in einfachen Begründungen nutzen.",
+      "reviewedCurrentDescriptionEn": "The learner can identify and describe special triangles using side, angle, and symmetry properties and use them in simple justifications.",
+      "approvedDescriptionDe": "Die lernende Person kann rechtwinklige, spitzwinklige, stumpfwinklige, gleichschenklige und gleichseitige Dreiecke anhand ihrer Seiten- und Winkeleigenschaften identifizieren und beschreiben sowie passende Eigenschaften in einfachen Begründungen nutzen.",
+      "approvedDescriptionEn": "The learner can identify and describe right, acute, obtuse, isosceles, and equilateral triangles from their side and angle properties and use appropriate properties in simple justifications.",
+      "rationaleDe": "„Besondere Dreiecke“ benennt keinen vollständigen Prüfbereich. Der kanonische Kontext trägt die üblichen Winkel- und Seitentypen; die Revision macht sie und die erwartete Anwendung in einfachen Begründungen explizit.",
+      "reconciliationNoteDe": "Die Adjudikation bestätigt eine lokale Präzisierung statt eines Blocks.",
+      "postChangeReview": {
+        "reviewedAt": "2026-08-16",
+        "reviewedDescriptionDigest": "sha256:04a637e47fd34d7b0a0079da1b248c10bafa2f700082691efcdb7536e9b4f9a3",
+        "semanticKind": {
+          "decision": "curricularAtomic",
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde inhaltlich neu gelesen und beschreibt mit „Besondere Dreiecke untersuchen“ weiterhin eine reguläre fachliche Lernleistung; sie ist kein Struktur-, Orientierungs-, Memory-, Runtime- oder Assessmentknoten."
+        },
+        "semanticAtomicity": {
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reasonDe": "Die überarbeitete bilinguale Beschreibung wurde für „Besondere Dreiecke untersuchen“ erneut auf unabhängig prüfbare Leistungskerne geprüft. Die verbundenen Handlungen bilden einen zusammenhängenden Kompetenzkern und führen keinen eigenständig prüfbaren zweiten Lernzielkern ein."
+        },
+        "memoryCardSuitability": {
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reasonDe": "Die Kompetenz „Besondere Dreiecke untersuchen“ wird durch fachliches Verstehen, Anwenden, Begründen oder Aufgabenpraxis aufgebaut. Die Revision führt keinen eigenständigen kompakten Abrufbestand ein, der ein separates Memory-Ziel rechtfertigt."
+        }
+      },
+      "sourceResultFile": "results/codex-first-pass-20260816-v1.batch-035.records.jsonl"
+    }
+  ],
+  "changeSetDigest": "sha256:4c67bf2e33df254c07e538459b37c4502ca22f5e0ee3db6fc6545ac10ff72290"
+}

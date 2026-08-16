@@ -1,0 +1,1045 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-math-structural-split-composition-view-follow-up-2026-08-16",
+  "appliedAt": "2026-08-16",
+  "status": "APPLIED_AND_VALIDATED",
+  "scope": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "subject": "Mathematik",
+    "schoolForm": "Gymnasium",
+    "changeType": "structural-split-composition-view-and-generator-follow-up"
+  },
+  "authorization": {
+    "basis": "Product owner blanket approval for all changes that follow from the approved representative samples without a further product decision; this follow-up restores learner-facing composition semantics and generator reproducibility after the approved 25 structural splits.",
+    "furtherProductOwnerDecisionRequired": false,
+    "commitPushDeployAuthorized": false,
+    "affectsOpenAiCoachV1Contract": false
+  },
+  "parentReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-derivative-core-follow-up-2026-08-16.receipt.json",
+    "receiptDigest": "2a1772ddd1f67a4388b8978b6204c832b7c0c9065007b354cdee3cfb946c59dd",
+    "afterCanonicalSha256": "cade3f5e5165bbc43d7a59399e281492d59168fe4adf29aa4220bfed6b72baf0"
+  },
+  "canonicalBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "cade3f5e5165bbc43d7a59399e281492d59168fe4adf29aa4220bfed6b72baf0",
+    "unchangedByThisFollowUp": true
+  },
+  "auditInputs": {
+    "spanningTreePlan": {
+      "extractionPath": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/split-composition-view-migration-audit/spanning-tree-parent-plan.json",
+      "sha256": "c71c62a2c9b483f6fb49de28b8ffa58d5bf2e2526d4c26136ee82c16230b47cb",
+      "runtimeDependency": false,
+      "supersedesSha256": "5c5d1103aea52bd888aabb6e26b4bc8e3e4fd397d295400f8877403cde3327c1"
+    },
+    "candidateValidation": {
+      "extractionPath": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/split-composition-view-migration-audit/candidate-validation.json",
+      "sha256": "c86eec090cd0a28266a10416a56f5fe380433be2ea5608f452669ff0a939c1bd",
+      "runtimeDependency": false
+    },
+    "durationLayoutExtraction": {
+      "extractionPath": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/split-composition-view-migration-audit/duration-generator-split-layout-plan.json",
+      "sha256": "d1c56edad4b326f243159af5df2dee6fdb2efbca7ea1348d930a6cad3bf9d723",
+      "runtimeDependency": false
+    },
+    "oldClusterReferenceInventory": {
+      "sourcePlanSha256": "3887e6dcf04978c168ecf3f5d7e4440c97bcc4b88b2537826ecbd20187d50504",
+      "referenceCount": 227,
+      "fileCount": 57,
+      "exactJsonPointersEmbeddedInExtractionPlan": true
+    },
+    "structuralSplitManifestSha256": "b0629a0fb93d8b1e862443700a41f8a698cfc7485d862fc8e677cad749bc1070"
+  },
+  "counts": {
+    "viewFileCount": 88,
+    "changedViewCount": 87,
+    "directReferenceViewCount": 57,
+    "indirectAncestorViewCount": 30,
+    "unaffectedViewCount": 1,
+    "generatedDurationViewCount": 18,
+    "errorViewCount": 0,
+    "candidateDuplicateGoalCount": 0,
+    "candidateMultipleParentGoalCount": 0,
+    "candidateSubtreeOverlapCount": 0,
+    "missingAtomicGoalCount": 0,
+    "unexpectedAtomicGoalCount": 0,
+    "memoryVisibilityViewCount": 2,
+    "memoryVisibilityAddedViewCount": 2,
+    "oldClusterReferenceCount": 227,
+    "oldClusterReferenceFileCount": 57,
+    "reusedChildParentPolicyCount": 11,
+    "splitPlacementCount": 39
+  },
+  "viewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "beforeSha256": "1bf72244e736ecd438abdb4efe30ee3a0e326daf235c6226db2133e7e1397b8d",
+      "afterSha256": "5981c435c31bf314e1c629b5307661fe71c4e4c58018f0ddb455319aa3a68a61",
+      "afterBytes": 26884,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "beforeSha256": "3b3d757f4f88ff02f378ad63bb7e6a86e8dc3b8ba8091ae427ba0b3d368b2d3d",
+      "afterSha256": "1c7db79627b028f88d9cc000c38e1bdf624ecc3b107b8b9dbefe594fa58cca49",
+      "afterBytes": 26884,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "beforeSha256": "857c6a17e4c8326525475ba0fd1b1127eec1eb0775bc63aaa4c05358046c4097",
+      "afterSha256": "a2287761097d1e52c4c8aaea3b477ad9f82e97db81939ccde58b57e88e2532b3",
+      "afterBytes": 9470,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "beforeSha256": "14c6aa52058869d5c1c7fbe249f19b29c313ee3cd7163cd4c576cac9b39412f1",
+      "afterSha256": "47e9838b408be5190e636c0ea18becc8434364dc42b98eb39d7586c2b1d63603",
+      "afterBytes": 9470,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "beforeSha256": "583e2f41d7dbafad38b2ea90ccf68de9cacadfed0be4b3316bb777dc06bacb8e",
+      "afterSha256": "149418a00050d12b05a3906828b696c410dac4df4d05e43baf9d097353091907",
+      "afterBytes": 26750,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "beforeSha256": "0b9b7ecd8f48f8bc03ebc487cf0103c53b1898b13821b52710550273c25ff4d7",
+      "afterSha256": "af8e2aaa96cb6659bd09f567101eb86a438e93b737961d56a447d024c21b34ff",
+      "afterBytes": 26900,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "beforeSha256": "798131183d7656c06027d2c34e01f715fb62caa3f332547f03d0886902a94c82",
+      "afterSha256": "8f0128fbd116b918bcf40a533440320a810ff84c1c00166ab74476587b9cb46d",
+      "afterBytes": 9470,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "beforeSha256": "4c2be04f59de2383bd36ae16c4a1a31ef4ba0e81929950ce682b4dbf008ad1ac",
+      "afterSha256": "c680bffce9c2b8f4dddbc1a41d68d51e128cd82fede74227371b017cc373394f",
+      "afterBytes": 9604,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "beforeSha256": "5efce12f25e16c5eae7ab1e838cf565c0ba7d0c88cdd856b4122768a99cb5e11",
+      "afterSha256": "8025aaf459eabbcd7284c874277584c4d8c86711cb2a4bb60d5273be64e5c907",
+      "afterBytes": 40614,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "beforeSha256": "6de3166778c451fae5994a56822836184d5e26738c67c42bab93dc5aab5823bd",
+      "afterSha256": "adf530ec8621c79211b46b96bd60b47717ebe55e803422cef9f181cd4ff410ed",
+      "afterBytes": 41418,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "beforeSha256": "81e2b07c4092a0aaf67132c56426af25ca6d3b8b813aa956247e8949ff03357a",
+      "afterSha256": "fb5207e81d2eec5d4e3d1ea2ceadc7505c363489c4bb3fe0f8518ef5ed63dcb4",
+      "afterBytes": 27940,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 6
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "beforeSha256": "5c2d3182953e4a9375fd218735cc0609b763b43f4c9c9f98cbc869f8be066b2b",
+      "afterSha256": "d43e33824b3179755abfa726b35b57added0d25f5f22026b8ff7c9f314bb2fc5",
+      "afterBytes": 10752,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "beforeSha256": "0024474f6f35b978151e0722a02e484e6f8e19daa86dedaf33e1742377a59808",
+      "afterSha256": "9746afa9300c78ef1dfd92674aac860ebef597223f05849deca7c721dc1a82d5",
+      "afterBytes": 10886,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "beforeSha256": "4e5b014785312a568c2b73308b350d455e9587e5e8edc39420f5cbf32cf78b81",
+      "afterSha256": "60ab937bded503fc6a1900712e1e9a9c2eb3afb6d34e551f34745e8b6a123ad9",
+      "afterBytes": 65608,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "beforeSha256": "c5325df2732e38bb8b608b2ff8aa334731e3227a126972ce7c7ee99bf8569e9e",
+      "afterSha256": "cf26cc2e61eb8714f67f0e61b0eeb6ff358fdc34d5308719960b91b5522ff2ad",
+      "afterBytes": 93152,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 14
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "beforeSha256": "70620402f2902587621a437964488d301d2925dcebc1397ad156b7a2f3bb04b7",
+      "afterSha256": "70620402f2902587621a437964488d301d2925dcebc1397ad156b7a2f3bb04b7",
+      "afterBytes": 25277,
+      "changed": false,
+      "migrationClass": "unaffected",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "beforeSha256": "432bb12e850e1109d415dea381d8a57606a6293ce70aa718435248c96dee94f2",
+      "afterSha256": "82d0bd4775ddad10f937686b1de894a5c454372a495aabcadf13f551735d68f4",
+      "afterBytes": 46888,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 11
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "beforeSha256": "9e948430c0d0cf474ddd33bdf1e64b8524182ffd9cd8671f07a537eed851a645",
+      "afterSha256": "d76359eb0d485985e566e6e4fc90543a2aeb94eae0030e5208cb5ce37ccd166a",
+      "afterBytes": 30980,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+      "beforeSha256": "d54884fe801092f595dff6a29d7db167562acea9c165790eaa56013ff60b233f",
+      "afterSha256": "1fc0965d8293bb8e101f6cef7f219eab8b0b92b96d1823f8a0fdc25b1251f50c",
+      "afterBytes": 30980,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "beforeSha256": "754d2a0573c900d98db23dc75793f570d6dca1b350a8327e8783614358ca1115",
+      "afterSha256": "b31c6a28d753b0652904fd756cddaf36360e8243331e50aba48605fedb43b87d",
+      "afterBytes": 11216,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "beforeSha256": "d4d05551ec686bbf6870cc2016e80c85d404f5f96c4209bc43a4ce0b856a88c8",
+      "afterSha256": "2c18393bafbee384ed52f45f2b186756673d8b59146ce48574042434fb3abf1d",
+      "afterBytes": 8624,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+      "beforeSha256": "a68404720fcbf380eac656b19c4fe10a9d682145d453cf56cb82ad9275afbc9a",
+      "afterSha256": "8e56e0c2cfa61f9461470417f1937caa7f20c9be80be9ad3daa83d4ee718d81b",
+      "afterBytes": 8624,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "beforeSha256": "6b5133915096536d6cc8532b98001c4c016342b81181b516aba29b7739338c58",
+      "afterSha256": "02a459cb78b962f801b0f7f611ab68516bbba2fcab3bc910edd887f5ffe692bf",
+      "afterBytes": 27604,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "beforeSha256": "b325e5ebff117a17830220d2fb7bce0c651ed17f361d140c2557935419fb65b7",
+      "afterSha256": "0b3590f2456d2d53fbced101244aaf7d66ca02d0f4950cc2a966b22dabf42f3f",
+      "afterBytes": 27604,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "beforeSha256": "7424407b2a2156f1e1310f0f6a16314cbdbe4087cedc9f916ad79328952ae019",
+      "afterSha256": "b89222edb232c38616cda4bdd7697d5c06b7d46f7babf31aef4f0be341356dd4",
+      "afterBytes": 8653,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "beforeSha256": "ee43ef6b0974609951c23a389c6d3f8f10b342a3d5ef2787a4ec8cd6f0787dc4",
+      "afterSha256": "6970128a2513ef09b3a124200297a93a2f68dd3eeeabb996435bbd71805d8852",
+      "afterBytes": 8653,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "beforeSha256": "5336155bbab7760127b46fc40b2606333ab5d4f962e467023915271c9b4a72e3",
+      "afterSha256": "07afff9e4cb630910ed2897d22ecfea62a75603ce4b74f1d102c2b79dc343c36",
+      "afterBytes": 54289,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 9
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "beforeSha256": "cbcddc64ac9a8c19260f2c42a75eb0d522ef3753fd1afd2eb9a73fbd60f7651e",
+      "afterSha256": "2706d01cb7091060477e9c72b5e56c08ed3d7f7dadcb5e8eb316466d69f3ac90",
+      "afterBytes": 59209,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 10
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "beforeSha256": "e60addb75a91773416f9d4db8bb6b06927cd3065740e103ab161c165a981b5eb",
+      "afterSha256": "d52e4621202067546563d730900b9589c0168c44f14029f59b0fedd075b1a9db",
+      "afterBytes": 35854,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 7
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "beforeSha256": "fc5e1a9aeebe6089eb880814622e2573d02fec07dc3169cfddab7696587f9b76",
+      "afterSha256": "d61be68a854266c78af2de619ff5bdcd96c1ad231095e5e3b58f789c3ccf7807",
+      "afterBytes": 56086,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 9
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "beforeSha256": "5f908c0b8249d4e1f2f45e111a404c62076ed27fbec2fe4682bc81a6a0a499e7",
+      "afterSha256": "682d6084f5697f5f891907a1ec237646be84e1fa757026d9a47f314d6393ff90",
+      "afterBytes": 61006,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 10
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "beforeSha256": "28c005a12e709736a1752181b2d88b43f9b36cbcaabacff21c0bf2adf9cec559",
+      "afterSha256": "141ab186dedbcc4103ca0013574d01288964121100ce5d76578e59d89cbe7137",
+      "afterBytes": 37651,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 7
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "beforeSha256": "7016299219016f1400ad38047fdcadfc7bd21536359d173a99611aad57bacbde",
+      "afterSha256": "8960dc5479d482eb6c67eb2d51530b678feeaddb59a2dabde28b733c369158b3",
+      "afterBytes": 41521,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 9
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "beforeSha256": "75c0fdbdc2331900b1ae61449666d9f94e95bcebd8a3e0e0fce47a628b13bf84",
+      "afterSha256": "b94941cd8b09928b14cee1e0030816baa996d20cff36368b888e70753097108f",
+      "afterBytes": 49365,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 10
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "beforeSha256": "af6c4616715832c15239f0f78301cfce969353d9c50dd83ece6eb1dd4a0a9317",
+      "afterSha256": "09661368fcfac2a7a3964fc69ae7d97b9fce3fa7480eb051203fc6424fad060c",
+      "afterBytes": 11396,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "beforeSha256": "269cb80292852e1a8aea8caa90e5d6a16566d725109cb492f9359af132ea51e9",
+      "afterSha256": "68b32d7072f1630edb5e32b17a1cfa980b9d0126eedb544dba219598b4c94d0f",
+      "afterBytes": 16840,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 2
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "beforeSha256": "f5b5bea835e185254c7cc541c77ae5c251edff920452476eefaf7ae8c8ec9657",
+      "afterSha256": "db398b4148ac22956ecc78a0b8119a792b4ba08db06ecb30a0e894efa7f47e21",
+      "afterBytes": 26827,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "beforeSha256": "b1faff5f03f0d08eae6f6d1f56cc57d909383b8c9110c98567c97d938f39f77d",
+      "afterSha256": "56065159dbbc488422908320e6cfbe5926f66d02955d46bfd2e5b81c4598fa98",
+      "afterBytes": 26827,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "beforeSha256": "d5c72f38d3a9b7a8d8cffc106147c554cbfbd90291a217578027de8fcfc831f6",
+      "afterSha256": "3a97e5f52d7af998871d0bbb1a1165b783b6fb7fa6c4577ab4a4e21c4e2846b8",
+      "afterBytes": 8653,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "beforeSha256": "6fdbfae0b3d62014a9f7bf9369ec3c4446ba6e7d5b1fdbc9ec6db00968c903d8",
+      "afterSha256": "928bfc1ba5327b58159cb4a1348fb117ef611255c054699a87b3682e0d550c21",
+      "afterBytes": 8653,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "beforeSha256": "a0b36ca4618f012fcf352a75f9499f99a0bdb69048717a76d4c74327e08d587f",
+      "afterSha256": "d318970cf4591886992f9fc46a48aa58df55bf3a93890a2b520365810b24346e",
+      "afterBytes": 17903,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "beforeSha256": "22029f3246f5edd8bed4a3b9e6221a88d1935e3dfe5bbad12aac9de71ad4874b",
+      "afterSha256": "c01727cf99d91700dd8616c8433f2bb7e225dc5e426c74e187229a3f788579b7",
+      "afterBytes": 17903,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "beforeSha256": "b2a0de70e8194c03c6bc04ba07197e4f5b850863fa2c07c9f6ea4d7b8344789c",
+      "afterSha256": "40118dada2ba560a3b1bd0e46a17b2b30faf71fd53620fa4af7f1de7c65a0a19",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "beforeSha256": "7321574dad631875b047217f25c37d02394ffc72cb305a86d271ed0de7d1a44b",
+      "afterSha256": "5a731da47390ff6b12166dffa8f16ab98f9c516c5d36b4fb95563c9022aaf675",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "beforeSha256": "dceff78c9c33d533c306f803d7b6941c5815bd948705b2b6b9cbbb04155ab76e",
+      "afterSha256": "a90332aa92446b33e2951fd6c5cd03d42b7cf4a8ef5a61f137732a7a69a658ca",
+      "afterBytes": 27783,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 2
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "beforeSha256": "2fc98e67e6359d05c2b067e644aa9c5be5f16a36e13f14985bf1f6348cea49b7",
+      "afterSha256": "3220b113d9f4e0b9936746187f533d57c42bab3fc86d84c5da473d6fdf01cdd6",
+      "afterBytes": 27783,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 2
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "beforeSha256": "8c1ad1151907ff32dae40bb3b8e5b46fb3459012202049724cadad54336f3054",
+      "afterSha256": "4d42d70052c80ae930c2d7338888d1373323603e5c3d1398284793b141b8829c",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "beforeSha256": "aa07212028e72733937488cd6bf7b73e8b06626cc8a8a8887f494bf4cb47112b",
+      "afterSha256": "d29f4af03fd228e23fc1ce53933d763072d68f598533a4133f8ec8ffcfbd2480",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "beforeSha256": "c2dab4c13424c9e50823d57220b2593aba4b7eb471930ec839b1bedc3542e43f",
+      "afterSha256": "cb7075e2690208bd18a01ddbd1a30f7774f5ccdac71b738c9cca8804d23fc9d4",
+      "afterBytes": 26834,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "beforeSha256": "2feb1ed9dfc1e04f974a2519b960ae3b6b577d0f0d4b2e35bedfbc3e5d34e145",
+      "afterSha256": "a0c4951be0790d588c46ccd038996d418bdd7dfcc8a8f48eb3a96592341f0b5a",
+      "afterBytes": 26867,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "beforeSha256": "ba304b7c10811fb2d6c090775e709077c9ac13f09adf345aba2d2fd11bb45a06",
+      "afterSha256": "f75fbc86e5ad8b53248c5bd75c2d8adb8627e89d4a157152ed23d64a588660bc",
+      "afterBytes": 8080,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "beforeSha256": "25eb079c6bcdbd292e215550cf9d3a77e06cc88bcdea422efe0d69208f9147de",
+      "afterSha256": "71e25d84b1703062dceaab2e775e968c0e374733bdbc1d9f2d4a0742f8d91699",
+      "afterBytes": 8113,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "beforeSha256": "768b4e51d7223cad1a45951b887381ae91cd33d678a342ef103e19471019fedc",
+      "afterSha256": "6ec7deb923c55aa362af4ec41ce92783e0ca1c15b1b8eadd74c4106e112b75c5",
+      "afterBytes": 33094,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "beforeSha256": "03907cb106c46b8ad29ff87796c67d5a52bfa12ec8e3cab44ed1c56de4c38a0b",
+      "afterSha256": "8b6a507ac3ddf588f861622b06fd2b41c35f2b5fc62c492613b838f2b7fecccd",
+      "afterBytes": 33314,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "beforeSha256": "fe5d235b8bb9df973b021793d922eccc69714068363aabc6644c5490b6b98e7e",
+      "afterSha256": "30234c1455a02e31b60c06609131fc1140a15a266e5637cd0dbec7fc805077cd",
+      "afterBytes": 27135,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "beforeSha256": "1e24bf940b214707a096092ba3fe201c2abc55b2f6c2261a7c8cf2f9af064559",
+      "afterSha256": "b9ddbedc362e45be2bb0af0d46008ef8ef3e623b6afca2a3e66408ee97a0fed7",
+      "afterBytes": 33094,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "beforeSha256": "4dd00e3078b3ed7ef5afc9d6e3ad9666f325b171a6b4a173c485f04fada21ede",
+      "afterSha256": "8f6dfd273fc9a04ef8c9e438c9a57ff7a6b5d9428833e26a078af10a81118cfc",
+      "afterBytes": 33314,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "beforeSha256": "ae10f9757f1cf7a82c8d9322d73d775ef848d25d67ff1098dca67801048d4586",
+      "afterSha256": "fac39f6b6bafc141ff9b54e1d1c8db073c645b0f816aaf2b289d6ece8738302f",
+      "afterBytes": 27135,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "beforeSha256": "6e675c755de7fb5c676e2d783b5004fd86f84b33c8e047043df2d577ac3ff312",
+      "afterSha256": "29578556ce972b683f8cb72a9ae589a5f8211af4dbdd775d913adb63134fd010",
+      "afterBytes": 18490,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "beforeSha256": "2d568c80ae2fa1e3ff406cdddc41fa4b8e5cd3cb0ea3ba08fb503a3f6e6550c0",
+      "afterSha256": "e21689357969e300c6bc4000a304d603d9c689bcce71e944ab8b551ef4606f09",
+      "afterBytes": 18690,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 3
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "beforeSha256": "c5560edf0753fa86a04194ad2e0e2495c577d0297f9b8a939b4b9ab0007c7922",
+      "afterSha256": "20d9b852209479adc2dbd0880d72ce03c21d87cf038d54d09efaca1c81bdfa96",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "beforeSha256": "c74c6edc96954e2b3940b8ee39a8e57d2690d06f32445c17518eff3882c145ba",
+      "afterSha256": "38f106ffc8c9a1865852febfb2e2d59f081ab9ec83128ccd89617cd0f6ae730d",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "beforeSha256": "b63501d9a873ddf0acf4b42e74d73c65c3188e6d2596165f962d2ba3530f1129",
+      "afterSha256": "9264fa4992b20a3b9ee05506836f0f9d33ea611863c069939002572de8285813",
+      "afterBytes": 50330,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "beforeSha256": "8a3e5e8274300cb8f9139237d257a1a7c5be4e0f8c1e22f67ce907f7a9e81579",
+      "afterSha256": "7ac49c1be6abb4f0150775e4a10422506d7499ab0a6411cdd872050bfa471873",
+      "afterBytes": 50537,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "beforeSha256": "d28c262a493ae609e77ae517294a92bcb5b732fcb844998b26eaa05159181c7b",
+      "afterSha256": "3fadbb8f7d3c0b6ca28cc74c7960953d0301e25bd0436b3bb0720eed3fa50470",
+      "afterBytes": 31111,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 4
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "beforeSha256": "d702c8f1305b98fe0712461a14e970667a8df8cd5ff07b4aeff2246b23c9fa33",
+      "afterSha256": "8d4fde05706d3ba2aa059116962461cccef17a812fe4dfe2b07431bb80c51749",
+      "afterBytes": 52310,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "beforeSha256": "97c1bee9a884933854a9f346d6bd5dfb5f143df196f4ca0e61dc3fbf0884d3f8",
+      "afterSha256": "6950316990073d2b67c90425888cf5b61f55637a5f54ba16acae9a51ba545d30",
+      "afterBytes": 52517,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "beforeSha256": "4f4eadca216ef43a885e5536cefc22e5eec40ded95956bd1c98688f082517472",
+      "afterSha256": "4b4afffeb937987ee6b1586146ad8261262a662f94503d8f92ef3e2e75a9eba0",
+      "afterBytes": 33091,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 4
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "beforeSha256": "9dcbdc3e5cf27852f8e98f8abbf93c8f1c3574e360fe4d0708dee56e7df19c5d",
+      "afterSha256": "04e4e58d180e2147259be14386dcd434a300636c4607238c1a6d5ca4d29b2735",
+      "afterBytes": 28341,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 7
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "beforeSha256": "9fefe33afe87b50d37ac75c163601eaf22f733c169646908fe8072cd12add224",
+      "afterSha256": "2497aa8882322c9393eaafd5a555115b21d6030f1191ccf34372d3c628a27e26",
+      "afterBytes": 28528,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 7
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "beforeSha256": "54398a0430cbb4d281f9b7f68cc5a34b7730dd32fc2021ba8468974e604b701c",
+      "afterSha256": "1dd6b8838efb75216d87be94a820e00a440cfc24f1abab49a02031025a11d927",
+      "afterBytes": 13962,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "beforeSha256": "d00cfe1180902cf7c3689ce28faa18bf40916ee57e292df0f2da72c37f81fe99",
+      "afterSha256": "e24ceba772be2b338318ef1b204cf339b1eed07a00964cf76b2308d0f0272258",
+      "afterBytes": 15758,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "beforeSha256": "c658300f2468f63c22e268bd9ec817d9321141daef864fa2343806eced01a8cf",
+      "afterSha256": "6250ab3dfeefcd3df886b5beabb13f9c9cd2e3519a5304f1e83b5bb27957fd2a",
+      "afterBytes": 27469,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "beforeSha256": "561b2907963b55893ac609d8a8ea2d871c1f631c82b4a079c4bcaf2e76d4a40e",
+      "afterSha256": "4fe14e6d948884f433beeca501f17fef6ce21efe59de859f45b8f43bb1b1b0ed",
+      "afterBytes": 27469,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "beforeSha256": "7328441b801243a5b3a97a2c739e3e14ea0be0930fd24155c4ad2c2505ef44bf",
+      "afterSha256": "3364eb220bad7bdde3c5759784565a87f217e52a1817c3dc80ee9ad2dba85f56",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "beforeSha256": "4ede802eef1199b43d3a31b7a8cf0d94ef8a8da6639deb82e67df2c7ec564acc",
+      "afterSha256": "ad8303341fda90f06a4aebf1361bbf6573915fe0006a070845022860809323fd",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "beforeSha256": "2597be7a91fb2df656042aac8c564852e264d3d7f07b0b677799aa4436166006",
+      "afterSha256": "fa298eb1421a02236539b75d1db20ad341e4d9ab310770c7f3cc7935e8689c0e",
+      "afterBytes": 27437,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "beforeSha256": "6b16757b1d87cfea5d61b5b0d560b8bc8ee0cd00aad3c0dabf8ed3111674d793",
+      "afterSha256": "abad4e79202f5f43ca9023b06c277b71b3cff42be93a86ddab351f333270373c",
+      "afterBytes": 27437,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "beforeSha256": "851b1ce9d08ca995f549f55bb1117fef93590069c4b8f24e6b87ff97b460c728",
+      "afterSha256": "1745d76ee9fdcc9818dec5ac851e474631b137874c9e562ac0eb0d7c9f362d28",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "beforeSha256": "937334641ce4c6fe87b029722c01d34ba852b9f9b061f8a257c0a96a357d791b",
+      "afterSha256": "5ed405115afbda44ea8889a5b3e6252ab27a90f5fd0dfe74a2862b8e388fac17",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "beforeSha256": "4c21fc634190f3036dbadb24e2f5cacd7aef780fdb8df00c896ba4692eeaa000",
+      "afterSha256": "19a32c8bb8a95d015fe6207c7e15400d3bdbda99a11a03669d895b93520404d9",
+      "afterBytes": 26604,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "beforeSha256": "86943acd460e84eb77b7b4689e1dbb1543829c4d15d85143982d90aa78901ec0",
+      "afterSha256": "a272b4e8423b780ce69ba016e541e46f7ccadc60523a4fa05cea5c2d6c2ea6ce",
+      "afterBytes": 26604,
+      "changed": true,
+      "migrationClass": "direct_old_cluster_reference",
+      "directOldClusterReferenceCount": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "beforeSha256": "8048fc8473b27d76d51d78315f11bebee3bc0b13bbc2e0c6c6b66bfc6c6d8647",
+      "afterSha256": "3be393bc3b1903958e58e7b25dd7e5c7ff8132eab834145fa054015d739ffbe4",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "beforeSha256": "80b79c2afab4c755d1bf6c1e37561d86be76d41a4cfe3c6c904a7cb2eee837f1",
+      "afterSha256": "43826a5338c3a7ba0347dd87932d81b4442a34b289f6e9f4ca041d925743721f",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "beforeSha256": "f9651611f367647237bc55a8606bb58aaad9d408524ce44248ef1b5845d50266",
+      "afterSha256": "c2ef053f9c838b73f587f225631498c6871a33c9f7c5b8ef4621521304e466fe",
+      "afterBytes": 16890,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "beforeSha256": "4b36877088becdafe36ed7ce9c2b3e18335891e344e5a5ec15c9a0df00edf954",
+      "afterSha256": "d0829e5eff102bab0ed03ac87518a890c02b90820a9ef796e4def06701682d07",
+      "afterBytes": 16890,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "beforeSha256": "378f608f3b23f2acd3c7581354bf359c5c11eeb4d980e1e145628a8da357f137",
+      "afterSha256": "838418a7cbbab783d0f6c2e33293e29cff7a9d3317099ebee47c537417afdf02",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "beforeSha256": "8fb8c6cd14efcc563bd40930e739456e52cd042e0c060962bff778f8c500c0db",
+      "afterSha256": "c5dd32067ec1faa7476c8a9cf37184d1869b36e337dba9f379f893b300587e1c",
+      "afterBytes": 8126,
+      "changed": true,
+      "migrationClass": "indirect_ancestor_expansion",
+      "directOldClusterReferenceCount": 0
+    }
+  ],
+  "memoryVisibilityChanges": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "beforeFileSha256": "81e2b07c4092a0aaf67132c56426af25ca6d3b8b813aa956247e8949ff03357a",
+      "candidateSha256": "fb5207e81d2eec5d4e3d1ea2ceadc7505c363489c4bb3fe0f8518ef5ed63dcb4",
+      "triggerGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "memoryGoalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+      "action": "add_root_canonicalSubtree_after_seki_core_memory",
+      "parentStructureId": "sek1",
+      "afterGoalId": "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+      "candidatePointer": "/rootNodes/0/children/2",
+      "rationale": "The visible Laplace goal is memory_required and references the stochastics memory goal. CQR-302 requires that memory goal in the same configured composition scope."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "beforeFileSha256": "754d2a0573c900d98db23dc75793f570d6dca1b350a8327e8783614358ca1115",
+      "candidateSha256": "b31c6a28d753b0652904fd756cddaf36360e8243331e50aba48605fedb43b87d",
+      "triggerGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "memoryGoalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+      "action": "add_root_canonicalSubtree_after_seki_core_memory",
+      "parentStructureId": "math-root",
+      "afterGoalId": "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+      "candidatePointer": "/rootNodes/0/children/2",
+      "rationale": "The visible Laplace goal is memory_required and references the stochastics memory goal. CQR-302 requires that memory goal in the same configured composition scope."
+    }
+  ],
+  "reusedChildParentPolicies": [
+    {
+      "childGoalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "childTitle": "Sinussatz herleiten",
+      "splitCode": "S21",
+      "oldClusterGoalId": "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+      "baselineParentGoalIds": [],
+      "parentPolicy": "move_standalone_occurrence_under_split_cluster"
+    },
+    {
+      "childGoalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "childTitle": "Lineare Gleichungen systematisch lösen",
+      "splitCode": "S16",
+      "oldClusterGoalId": "e6eb42c7-454f-49bf-b598-64d2935d2735",
+      "baselineParentGoalIds": [
+        "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    },
+    {
+      "childGoalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
+      "childTitle": "Schnittpunkt von Gerade und Ebene berechnen",
+      "splitCode": "S19",
+      "oldClusterGoalId": "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
+      "baselineParentGoalIds": [],
+      "parentPolicy": "move_standalone_occurrence_under_split_cluster"
+    },
+    {
+      "childGoalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "childTitle": "Laplace-Experimente auswerten",
+      "splitCode": "S07",
+      "oldClusterGoalId": "1769fcdc-33a6-586f-9b15-17f6f32579cf",
+      "baselineParentGoalIds": [
+        "3823e90d-a34b-46d2-a0f8-3168138d3a95",
+        "d64516eb-9dd2-4808-91d0-0040ccdc281f"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    },
+    {
+      "childGoalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "childTitle": "Abstand zweier Punkte im Raum berechnen",
+      "splitCode": "S18",
+      "oldClusterGoalId": "164eb50f-1a5e-44a2-932e-561862e1378e",
+      "baselineParentGoalIds": [
+        "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    },
+    {
+      "childGoalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
+      "childTitle": "Lagebeziehungen von Geraden im Raum untersuchen",
+      "splitCode": "S19",
+      "oldClusterGoalId": "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
+      "baselineParentGoalIds": [],
+      "parentPolicy": "move_standalone_occurrence_under_split_cluster"
+    },
+    {
+      "childGoalId": "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+      "childTitle": "Kosinussatz herleiten",
+      "splitCode": "S21",
+      "oldClusterGoalId": "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+      "baselineParentGoalIds": [],
+      "parentPolicy": "move_standalone_occurrence_under_split_cluster"
+    },
+    {
+      "childGoalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "childTitle": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+      "splitCode": "S18",
+      "oldClusterGoalId": "164eb50f-1a5e-44a2-932e-561862e1378e",
+      "baselineParentGoalIds": [],
+      "parentPolicy": "move_standalone_occurrence_under_split_cluster"
+    },
+    {
+      "childGoalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "childTitle": "Exponentielle Modelle anwenden",
+      "splitCode": "S01",
+      "oldClusterGoalId": "47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+      "baselineParentGoalIds": [
+        "48e7615d-3e6e-4b5c-9df3-310e510f91f0"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    },
+    {
+      "childGoalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "childTitle": "Bruchterme strukturieren, erweitern und kürzen",
+      "splitCode": "S17",
+      "oldClusterGoalId": "2fb12329-9160-5c44-af5b-8731ecb05ba4",
+      "baselineParentGoalIds": [
+        "792b3f32-4c13-423d-89c2-facb34827f47"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    },
+    {
+      "childGoalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+      "childTitle": "Exponentialgleichungen lösen",
+      "splitCode": "S01",
+      "oldClusterGoalId": "47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+      "baselineParentGoalIds": [
+        "48e7615d-3e6e-4b5c-9df3-310e510f91f0"
+      ],
+      "parentPolicy": "preserve_pre_split_visible_parent_else_use_split_cluster"
+    }
+  ],
+  "generatorChange": {
+    "path": "app/scripts/generateMathDurationCompositionViews.ts",
+    "beforeSha256": "3a1c5f9b816f70bffbe53d7654c100b875c6a156b019550cb13db1b968ac3dce",
+    "afterSha256": "1c2effc5ba162421dada2ae2c1d7cf14f858ff8d297250fc6b9d705958eedfb0",
+    "trackedLayoutConfig": {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "sha256": "6d653bc928389ae1013e2ae6ed7c0be2893aaed75c89834f5e26725219200b63",
+      "sourceExtractionSha256": "d1c56edad4b326f243159af5df2dee6fdb2efbca7ea1348d930a6cad3bf9d723",
+      "templateCount": 6,
+      "placementCount": 39
+    },
+    "invariants": [
+      "Ordinary generated atomic targets remain goalEntry and are rejected if they are missing or non-atomic.",
+      "actualAfter equals (flatBefore minus removeAtomicGoalIds) union atomicClosure(filtered replacementNodes).",
+      "Every non-excluded preserved reused child remains visible and is never removed.",
+      "Generated views reject CPV-004, CPV-005, CPV-006, CPV-007, CPV-009 and atomic-target-set drift.",
+      "All 18 duration-specific generated files are byte-stable against the reviewed candidate hashes."
+    ]
+  },
+  "validation": {
+    "allCurrentViewHashesMatchReviewedCandidates": true,
+    "compositionViewCompiler": {
+      "viewCount": 297,
+      "errors": 0,
+      "warnings": 0
+    },
+    "durationGenerator": {
+      "outputCount": 18,
+      "byteStable": true
+    },
+    "candidateDiagnostics": {
+      "duplicateGoals": 0,
+      "multipleParents": 0,
+      "subtreeOverlaps": 0,
+      "missingAtomicGoals": 0,
+      "unexpectedAtomicGoals": 0
+    },
+    "memoryCardVisibility": {
+      "reviewedCases": 17,
+      "missingMemoryNodes": 0
+    },
+    "applicability": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "freeze": "PASS"
+  },
+  "validatorPath": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-composition-view-follow-up.mjs",
+  "receiptDigest": "8552324ee86ad4237df45041c2fe3b112a3775fee053bd882e55de7cb2c49f7c"
+}

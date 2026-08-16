@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-structural-split-phase-follow-up.receipt.schema.json",
+  "title": "Canonical Mathematics Structural Split Phase-Prerequisite Follow-up Receipt",
+  "description": "Append-only receipt for four necessary phase-monotonic prerequisite corrections discovered by the repository graph gate after the approved 25-split application.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "parentReceipt",
+    "authorization",
+    "scope",
+    "changes",
+    "beforeCanonical",
+    "afterCanonical",
+    "validatorPath",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptId": { "const": "canonical-math-structural-split-phase-follow-up-2026-08-16-v1" },
+    "appliedAt": { "const": "2026-08-16" },
+    "status": { "const": "applied-locally-not-committed" },
+    "parentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "receiptDigest", "applyPlanSha256", "applyPlanDigest"],
+      "properties": {
+        "path": { "const": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json" },
+        "receiptDigest": { "const": "bbc31bfe7767ff74328919d87324c59cacc60c31cc8f2091d17700fd41c9ca59" },
+        "applyPlanSha256": { "const": "430e8f668841a2fb65be1962ea860abcddccf60a63f91e87eea3d84b52e1b47b" },
+        "applyPlanDigest": { "const": "70048d02ded23eeabae0429b1ed583a6557663ecdc5fd253456dfe6ec4b4e282" }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "furtherProductOwnerDecisionRequired", "commitPushDeployAuthorized", "affectsOpenAiCoachV1Contract"],
+      "properties": {
+        "basis": { "type": "string", "minLength": 1 },
+        "furtherProductOwnerDecisionRequired": { "const": false },
+        "commitPushDeployAuthorized": { "const": false },
+        "affectsOpenAiCoachV1Contract": { "const": false }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalPath", "changedGoalCount", "changedField", "excludedSplitCodes", "excludedBlockCodes"],
+      "properties": {
+        "canonicalPath": { "const": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json" },
+        "changedGoalCount": { "const": 4 },
+        "changedField": { "const": "requires" },
+        "excludedSplitCodes": { "const": ["S05", "S24"] },
+        "excludedBlockCodes": { "const": ["B19"] }
+      }
+    },
+    "changes": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalId", "title", "phase", "beforeRequires", "afterRequires", "replacedLaterPhase", "rationale"]
+      }
+    },
+    "beforeCanonical": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "5fd5a45eb0103703f962db31c47933c7398e806598c4b8572f02b957c7acdba6",
+        "bytes": 3034073
+      }
+    },
+    "afterCanonical": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094",
+        "bytes": 3034121
+      }
+    },
+    "validatorPath": {
+      "const": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-phase-follow-up.mjs"
+    },
+    "receiptDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

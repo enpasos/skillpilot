@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-structural-split-weight-closure-follow-up.receipt.schema.json",
+  "title": "Canonical Mathematics Structural Split Weight-Closure Follow-up Receipt",
+  "description": "Append-only receipt for the deterministic weight closure of the independently approved 25 canonical mathematics structural splits.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "parentReceipt",
+    "structuralReceipt",
+    "authorization",
+    "scope",
+    "algorithm",
+    "auditedSplitDeltaGoalIds",
+    "corrected",
+    "alreadyCorrect",
+    "excludedClosureNeighbors",
+    "globalPreExistingUnrelatedDebt",
+    "beforeCanonical",
+    "afterCanonical",
+    "validatorPath",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptId": { "const": "canonical-math-structural-split-weight-closure-follow-up-2026-08-16-v1" },
+    "appliedAt": { "const": "2026-08-16" },
+    "status": { "const": "applied-locally-not-committed" },
+    "parentReceipt": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-phase-follow-up-2026-08-16.receipt.json",
+        "receiptDigest": "7e3d2ca89a4abc75af98f1c353310e51101ef7047c97b673dcc1abfaaaced9bb",
+        "afterCanonicalSha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094"
+      }
+    },
+    "structuralReceipt": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json",
+        "receiptDigest": "bbc31bfe7767ff74328919d87324c59cacc60c31cc8f2091d17700fd41c9ca59",
+        "applyPlanSha256": "430e8f668841a2fb65be1962ea860abcddccf60a63f91e87eea3d84b52e1b47b",
+        "applyPlanDigest": "70048d02ded23eeabae0429b1ed583a6557663ecdc5fd253456dfe6ec4b4e282"
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "furtherProductOwnerDecisionRequired", "commitPushDeployAuthorized", "affectsOpenAiCoachV1Contract"],
+      "properties": {
+        "basis": { "type": "string", "minLength": 1 },
+        "furtherProductOwnerDecisionRequired": { "const": false },
+        "commitPushDeployAuthorized": { "const": false },
+        "affectsOpenAiCoachV1Contract": { "const": false }
+      }
+    },
+    "scope": {
+      "const": {
+        "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "changedGoalCount": 37,
+        "changedField": "weight",
+        "auditedSplitDeltaClusterCount": 65,
+        "alreadyCorrectClusterCount": 28,
+        "rawReconstructedClosureCount": 69,
+        "excludedClosureNeighborCount": 4,
+        "globalPreExistingUnrelatedDebtCount": 45,
+        "excludedSplitCodes": ["S05", "S24"],
+        "excludedBlockCodes": ["B19"]
+      }
+    },
+    "algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["leafRule", "clusterRule", "weightRule", "splitDeltaBasis", "globalAuditDisposition"],
+      "properties": {
+        "leafRule": { "type": "string", "minLength": 1 },
+        "clusterRule": { "type": "string", "minLength": 1 },
+        "weightRule": { "type": "string", "minLength": 1 },
+        "splitDeltaBasis": { "type": "string", "minLength": 1 },
+        "globalAuditDisposition": { "type": "string", "minLength": 1 }
+      }
+    },
+    "auditedSplitDeltaGoalIds": {
+      "type": "array",
+      "minItems": 65,
+      "maxItems": 65,
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "corrected": {
+      "type": "array",
+      "minItems": 37,
+      "maxItems": 37,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalId", "title", "beforeWeight", "afterWeight", "uniqueAtomicDescendantCount"],
+        "properties": {
+          "goalId": { "type": "string", "format": "uuid" },
+          "title": { "type": "string", "minLength": 1 },
+          "beforeWeight": { "type": "integer", "minimum": 1 },
+          "afterWeight": { "type": "integer", "minimum": 1 },
+          "uniqueAtomicDescendantCount": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "alreadyCorrect": {
+      "type": "array",
+      "minItems": 28,
+      "maxItems": 28,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalId", "title", "weight", "uniqueAtomicDescendantCount"],
+        "properties": {
+          "goalId": { "type": "string", "format": "uuid" },
+          "title": { "type": "string", "minLength": 1 },
+          "weight": { "type": "integer", "minimum": 1 },
+          "uniqueAtomicDescendantCount": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "excludedClosureNeighbors": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalId", "title", "actualWeight", "uniqueAtomicDescendantCount", "disposition"],
+        "properties": {
+          "goalId": { "type": "string", "format": "uuid" },
+          "title": { "type": "string", "minLength": 1 },
+          "actualWeight": { "type": "integer", "minimum": 1 },
+          "uniqueAtomicDescendantCount": { "type": "integer", "minimum": 1 },
+          "disposition": {
+            "enum": [
+              "outside-audited-65-already-correct",
+              "outside-audited-65-pre-existing-weight-debt"
+            ]
+          }
+        }
+      }
+    },
+    "globalPreExistingUnrelatedDebt": {
+      "type": "array",
+      "minItems": 45,
+      "maxItems": 45,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["goalId", "title", "actualWeight", "expectedWeight"],
+        "properties": {
+          "goalId": { "type": "string", "format": "uuid" },
+          "title": { "type": "string", "minLength": 1 },
+          "actualWeight": { "type": "integer", "minimum": 1 },
+          "expectedWeight": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "beforeCanonical": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094",
+        "bytes": 3034121
+      }
+    },
+    "afterCanonical": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "1d586cc85c800bf37ec6cb4cc32c77817bacbe959b9a84df5e56bd6f64c5a541",
+        "bytes": 3034125
+      }
+    },
+    "validatorPath": {
+      "const": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-weight-closure-follow-up.mjs"
+    },
+    "receiptDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

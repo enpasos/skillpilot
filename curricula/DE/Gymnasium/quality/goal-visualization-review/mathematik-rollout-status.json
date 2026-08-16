@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T02:00:35.345Z",
+  "generatedAt": "2026-08-16T08:54:46.989Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -10,40 +10,43 @@
     "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "summary": {
-    "totalGoals": 1079,
-    "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 731,
-    "coveragePercent": 96.9,
-    "goalsAccountedForByAssetOrDeferred": 754,
+    "totalGoals": 1081,
+    "atomicGoalsInScope": 755,
+    "goalsWithPrimaryVisualization": 733,
+    "coveragePercent": 97.1,
+    "goalsAccountedForByAssetOrDeferred": 755,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "accepted": 1,
       "approved": 18,
-      "pilot": 712
+      "pilot": 714
     },
     "linkedVisualizationReviewStatuses": {
       "accepted": 1,
       "approved": 18,
-      "pilot": 712
+      "pilot": 714
     },
-    "reviewLedgerFiles": 219,
+    "reviewLedgerFiles": 221,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
       "accepted_after_user_issue_correction": 8,
       "accepted_context_visualization": 2,
-      "accepted_pilot": 602,
+      "accepted_pilot": 603,
       "accepted_pilot_after_fresh_ai_review": 88,
       "accepted_pilot_after_fresh_ai_review_correction": 1,
       "accepted_pilot_after_provider_retry": 2,
-      "accepted_pilot_after_regeneration": 160,
+      "accepted_pilot_after_regeneration": 161,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_attempt": 13,
       "accepted_pilot_after_second_regeneration": 15,
       "accepted_pilot_after_third_attempt": 5,
       "accepted_pilot_after_third_regeneration": 6,
       "accepted_pilot_after_user_review_correction": 47,
+      "accepted_replacement": 4,
+      "accepted_reuse_after_description_review": 27,
+      "accepted_unchanged_human_approval_preserved": 2,
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
@@ -53,12 +56,17 @@
       "rejected_after_second_regeneration": 1,
       "rejected_after_user_followup_then_replaced": 1,
       "rejected_after_user_review_replaced": 5,
+      "rejected_axis_label_artifact": 1,
+      "rejected_bad_vector_geometry": 1,
+      "rejected_coordinate_geometry": 1,
+      "rejected_line_not_matching_equation": 1,
+      "rejected_noncomplementary_ordinates": 1,
       "rejected_not_linked": 4,
       "rejected_regenerate": 22,
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 23,
+    "openProviderDeferredGoals": 22,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
@@ -67,8 +75,8 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-arrow-source-correction-2026-08-05.md",
-    "latestLedgerStatus": "completed_pilot",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-markov-split-2026-08-16.md",
+    "latestLedgerStatus": "completed",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
@@ -115,13 +123,6 @@
         "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
         "decision": "deferred_provider_limitation",
         "notes": "Attempts 1 and 2 rendered the wrong double-factorial denominator `(n−k)!!`; the final fresh candidate corrected the calculation but visibly placed six balls in the ground-set urn labelled `n = 5`. The active link and all deployed image copies were removed."
-      },
-      {
-        "batch": "197",
-        "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
-        "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
-        "decision": "deferred_provider_limitation",
-        "notes": "All three attempts retained an extra closing parenthesis in the trigonometric polar form despite increasingly explicit formula constraints. The active link and all deployed image copies were removed."
       },
       {
         "batch": "205",
@@ -2554,7 +2555,7 @@
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.jpg"
+      "url": "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png"
     },
     {
       "goalId": "4c494716-567b-59c2-855c-6ea45635c666",
@@ -2850,7 +2851,7 @@
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.jpg"
+      "url": "/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.png"
     },
     {
       "goalId": "cba4cad7-926d-5035-a7dd-d450afccccb3",
@@ -3179,6 +3180,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/22b66c1e-50b1-505f-a388-c39131a4e1c3/22b66c1e-50b1-505f-a388-c39131a4e1c3.jpg"
+    },
+    {
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.png"
     },
     {
       "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
@@ -4234,7 +4243,7 @@
       "phase": "Q2",
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/5f90df42-8a71-534d-b995-b8f7dcaf1661/5f90df42-8a71-534d-b995-b8f7dcaf1661.jpg"
+      "url": "/assets/goal-visualizations/mathematik/5f90df42-8a71-534d-b995-b8f7dcaf1661/5f90df42-8a71-534d-b995-b8f7dcaf1661.png"
     },
     {
       "goalId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
@@ -4867,6 +4876,14 @@
       "area": "Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg"
+    },
+    {
+      "goalId": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+      "title": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3d4d510c-0fd7-55ea-9b79-1db8d640758f/3d4d510c-0fd7-55ea-9b79-1db8d640758f.png"
     },
     {
       "goalId": "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
@@ -6405,12 +6422,12 @@
       "url": "/assets/goal-visualizations/mathematik/ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c/ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c.jpg"
     },
     {
-      "goalId": "25157542-a262-562f-a29c-ac8d53b9798f",
-      "title": "Zustände in Markov-Ketten berechnen",
+      "goalId": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+      "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
       "phase": "Q2",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/25157542-a262-562f-a29c-ac8d53b9798f/25157542-a262-562f-a29c-ac8d53b9798f.jpg"
+      "url": "/assets/goal-visualizations/mathematik/10a33d93-dc20-5edd-ae3b-32338d05407c/10a33d93-dc20-5edd-ae3b-32338d05407c.png"
     },
     {
       "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",

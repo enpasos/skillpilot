@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-structural-splits.receipt.schema.json",
+  "title": "Canonical Mathematics Structural Split Receipt",
+  "description": "Digest-bound local application receipt for the 25 product-owner-approved canonical mathematics goal splits from 2026-08-16. S05 and S24 are explicitly outside this change set.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "authorization",
+    "frozenContractBoundary",
+    "designDigests",
+    "counts",
+    "splits",
+    "sourceEdgeDecisions",
+    "provenanceActions",
+    "assessmentArtifactMigrations",
+    "postApplyDigests",
+    "validatorPath",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptId": { "const": "canonical-math-structural-splits-2026-08-16-v1" },
+    "appliedAt": { "const": "2026-08-16" },
+    "status": { "const": "applied-locally-not-committed" },
+    "authorization": {
+      "type": "object",
+      "required": [
+        "basis",
+        "originalReconciliationDigest",
+        "includedSplitCodes",
+        "explicitlyExcludedSplitCodes",
+        "automaticWithoutFurtherProductOwnerDecision",
+        "commitPushDeployAuthorized"
+      ],
+      "properties": {
+        "basis": { "type": "string", "minLength": 1 },
+        "originalReconciliationDigest": {
+          "const": "sha256:a82a7ba8d16e651ab7b070f6128e5d486ad4bf40b115804ae1d3a974b3018d32"
+        },
+        "includedSplitCodes": {
+          "const": [
+            "S01", "S02", "S03", "S04", "S06", "S07", "S08", "S09", "S10",
+            "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19",
+            "S20", "S21", "S22", "S23", "S25", "S26", "S27"
+          ]
+        },
+        "explicitlyExcludedSplitCodes": { "const": ["S05", "S24"] },
+        "automaticWithoutFurtherProductOwnerDecision": { "const": true },
+        "commitPushDeployAuthorized": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "frozenContractBoundary": {
+      "type": "object",
+      "required": ["affectsOpenAiCoachV1Contract", "permittedScope", "forbiddenScope"],
+      "properties": {
+        "affectsOpenAiCoachV1Contract": { "const": false },
+        "permittedScope": { "type": "string", "minLength": 1 },
+        "forbiddenScope": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "designDigests": {
+      "type": "object",
+      "required": [
+        "manifestSha256",
+        "inventorySha256",
+        "sourceEdgeAdjudicationsSha256",
+        "applyPlanSha256",
+        "applyPlanDigest"
+      ],
+      "properties": {
+        "manifestSha256": { "const": "b0629a0fb93d8b1e862443700a41f8a698cfc7485d862fc8e677cad749bc1070" },
+        "inventorySha256": { "const": "515a1090a260022cc5cc0b357c552e3d5ae6b998d62ad8570fa323c1c29fcc37" },
+        "sourceEdgeAdjudicationsSha256": { "const": "cb15ade2dadad4f6a6c7a583d50497a1eb1673e7b0d5cafd3b490add24abf4d0" },
+        "applyPlanSha256": { "const": "430e8f668841a2fb65be1962ea860abcddccf60a63f91e87eea3d84b52e1b47b" },
+        "applyPlanDigest": { "const": "70048d02ded23eeabae0429b1ed583a6557663ecdc5fd253456dfe6ec4b4e282" }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "splitClusters",
+        "newAtomicGoals",
+        "reusedChildReferences",
+        "logicalSourceEdges",
+        "physicalSourceOccurrences",
+        "multiSplitPhysicalMerges",
+        "provenanceActions"
+      ],
+      "properties": {
+        "splitClusters": { "const": 25 },
+        "newAtomicGoals": { "const": 49 },
+        "reusedChildReferences": { "const": 11 },
+        "logicalSourceEdges": { "const": 451 },
+        "physicalSourceOccurrences": { "const": 836 },
+        "multiSplitPhysicalMerges": { "const": 8 },
+        "provenanceActions": { "const": 85 }
+      },
+      "additionalProperties": false
+    },
+    "splits": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "oldGoalId",
+          "clusterConversion",
+          "children",
+          "parentRestructure",
+          "downstreamReferencePlan",
+          "assessmentReferencePlan"
+        ]
+      }
+    },
+    "sourceEdgeDecisions": {
+      "type": "array",
+      "minItems": 451,
+      "maxItems": 451,
+      "items": {
+        "type": "object",
+        "required": [
+          "edgeId",
+          "splitCode",
+          "mappingFile",
+          "sourceLandscapeId",
+          "sourceGoalId",
+          "oldGoalId",
+          "replacementTargetGoalIds",
+          "retainOldClusterMapping",
+          "matchType",
+          "routingRules",
+          "evidenceExcerpt",
+          "occurrences"
+        ]
+      }
+    },
+    "provenanceActions": { "type": "array", "minItems": 85, "maxItems": 85 },
+    "assessmentArtifactMigrations": { "type": "array", "minItems": 2, "maxItems": 2 },
+    "postApplyDigests": {
+      "type": "array",
+      "minItems": 46,
+      "maxItems": 46,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bytes": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "validatorPath": {
+      "const": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-splits.mjs"
+    },
+    "receiptDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

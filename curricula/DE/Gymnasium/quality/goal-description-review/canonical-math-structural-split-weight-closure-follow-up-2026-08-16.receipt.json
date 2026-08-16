@@ -1,0 +1,859 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-math-structural-split-weight-closure-follow-up-2026-08-16-v1",
+  "appliedAt": "2026-08-16",
+  "status": "applied-locally-not-committed",
+  "parentReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-phase-follow-up-2026-08-16.receipt.json",
+    "receiptDigest": "7e3d2ca89a4abc75af98f1c353310e51101ef7047c97b673dcc1abfaaaced9bb",
+    "afterCanonicalSha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094"
+  },
+  "structuralReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json",
+    "receiptDigest": "bbc31bfe7767ff74328919d87324c59cacc60c31cc8f2091d17700fd41c9ca59",
+    "applyPlanSha256": "430e8f668841a2fb65be1962ea860abcddccf60a63f91e87eea3d84b52e1b47b",
+    "applyPlanDigest": "70048d02ded23eeabae0429b1ed583a6557663ecdc5fd253456dfe6ec4b4e282"
+  },
+  "authorization": {
+    "basis": "Necessary deterministic cluster-weight closure for the already approved and independently reviewed 25 structural splits. It changes no competency, edge, assessment, source mapping, provenance, resource link, or OpenAI Coach V1 contract field.",
+    "furtherProductOwnerDecisionRequired": false,
+    "commitPushDeployAuthorized": false,
+    "affectsOpenAiCoachV1Contract": false
+  },
+  "scope": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "changedGoalCount": 37,
+    "changedField": "weight",
+    "auditedSplitDeltaClusterCount": 65,
+    "alreadyCorrectClusterCount": 28,
+    "rawReconstructedClosureCount": 69,
+    "excludedClosureNeighborCount": 4,
+    "globalPreExistingUnrelatedDebtCount": 45,
+    "excludedSplitCodes": [
+      "S05",
+      "S24"
+    ],
+    "excludedBlockCodes": [
+      "B19"
+    ]
+  },
+  "algorithm": {
+    "leafRule": "A goal with an empty contains array contributes the singleton Set containing its own goal ID.",
+    "clusterRule": "A cluster contributes the Set-union of all recursively reachable child leaf IDs; shared descendants are counted once.",
+    "weightRule": "Every leaf has weight 1. Every audited cluster weight equals the cardinality of its Set-deduplicated atomic-descendant Set.",
+    "splitDeltaBasis": "Reconstruct the approved pre-split contains graph from the digest-bound structural apply plan; compare recursive atomic-descendant Sets with the current graph; use the independently audited 65-cluster receipt scope and keep four closure neighbors outside this follow-up.",
+    "globalAuditDisposition": "Run the same deterministic recomputation over every current cluster. Report the 45 pre-existing or unrelated mismatches exactly, but do not mutate them in this append-only 25-split follow-up."
+  },
+  "auditedSplitDeltaGoalIds": [
+    "0416f809-3f23-4774-8622-cf9b7a6d26d6",
+    "05946a6a-b41e-5cec-8a39-237f889f4d93",
+    "0756b198-0074-49d5-becd-9bb9f161a291",
+    "0a86e9a3-041e-5f15-874d-8eb17b69784d",
+    "0cefa694-636e-4c4b-abff-3ac3750dca18",
+    "164eb50f-1a5e-44a2-932e-561862e1378e",
+    "1769fcdc-33a6-586f-9b15-17f6f32579cf",
+    "187c1bef-57bc-4a93-a26b-04191879626c",
+    "1e26404a-93ef-45f3-a28c-15679fbae96b",
+    "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+    "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+    "219ce079-6bfd-4827-8b66-5dd199e44686",
+    "248d7dc3-6d85-55b3-8859-584c79869d75",
+    "29d48dc6-1746-57b3-bc14-00a7198aac02",
+    "2fb12329-9160-5c44-af5b-8731ecb05ba4",
+    "320bc921-06df-4500-96fd-93f9f6fee9b4",
+    "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+    "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+    "392440db-6a43-59c0-a48d-958128fa16a8",
+    "3d9530ef-8355-59fc-b8c1-afe42cf9e888",
+    "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+    "46a5ce30-a281-457c-b71e-9cfea2bffbc7",
+    "4720daf4-cefe-43a9-a0e8-9db55286f558",
+    "47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+    "4af3fe2f-851c-520a-9a1d-b8036ac1dbb1",
+    "4fc77ab5-90aa-4aa7-941f-6c807dde54fe",
+    "52758ed0-cba8-5583-9e69-906d2e7c7843",
+    "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
+    "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+    "64ec32d7-6d82-40ec-b827-148b90e564f4",
+    "67ef9787-d540-5f30-9995-f1f9c39a1a45",
+    "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28",
+    "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+    "6fd35cc4-c375-4e58-b6f1-5382d8422906",
+    "76842ec4-c76b-5c03-9694-8a18acb1da0f",
+    "77be59e3-08a3-5466-9df9-843937ce5ab7",
+    "797c4b05-96c4-59a7-85b2-f2690e22918f",
+    "845f2a2c-e6aa-4991-8a12-645b8a9f70fe",
+    "879389a7-73de-45bb-a632-0d918c23a082",
+    "88f8e185-a89b-4a34-869d-766042977f38",
+    "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+    "8e68f24a-8b0e-4ce6-9567-a49e706f83be",
+    "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+    "990d7514-c4c3-485e-907e-91687676a8cc",
+    "9b4e8f0b-d447-4dad-b2a6-2a50ef99d9f6",
+    "a5f07620-a895-52db-a0cc-1d05bf64c3d6",
+    "aa334054-d145-4ece-a796-f5b8159ef76f",
+    "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+    "bb25e25c-173f-463f-b602-2687d3ebf66f",
+    "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+    "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+    "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+    "c92133c6-d5de-4902-936c-321915cf21e9",
+    "cba4cad7-926d-5035-a7dd-d450afccccb3",
+    "ce774aad-edd7-4f86-a431-6ca921b8e570",
+    "cea13aa9-f102-5c22-b2f0-81767d000f41",
+    "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+    "dd550132-2a3f-5b4e-a3c6-f940621186ac",
+    "e6eb42c7-454f-49bf-b598-64d2935d2735",
+    "e9fa1a26-6c5a-548b-95ff-bfadfb6bc733",
+    "ecce03e4-0082-41e1-95bd-0244e76ed292",
+    "ed631938-ad77-405e-ac25-b06d750b9c05",
+    "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+    "f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824",
+    "faa5b388-7b24-4f8c-9cc0-1de9372e836c"
+  ],
+  "corrected": [
+    {
+      "goalId": "0416f809-3f23-4774-8622-cf9b7a6d26d6",
+      "title": "Exponentialfunktionen in Wachstum, Parametern und Asymptotik deuten",
+      "beforeWeight": 2,
+      "afterWeight": 5,
+      "uniqueAtomicDescendantCount": 5
+    },
+    {
+      "goalId": "0756b198-0074-49d5-becd-9bb9f161a291",
+      "title": "Trigonometrische und exponentielle Funktionen in J10",
+      "beforeWeight": 9,
+      "afterWeight": 13,
+      "uniqueAtomicDescendantCount": 13
+    },
+    {
+      "goalId": "0a86e9a3-041e-5f15-874d-8eb17b69784d",
+      "title": "Logische Schlussfolgerungen ziehen",
+      "beforeWeight": 4,
+      "afterWeight": 6,
+      "uniqueAtomicDescendantCount": 6
+    },
+    {
+      "goalId": "187c1bef-57bc-4a93-a26b-04191879626c",
+      "title": "Zufallsgrößen und Binomialverteilungen",
+      "beforeWeight": 4,
+      "afterWeight": 5,
+      "uniqueAtomicDescendantCount": 5
+    },
+    {
+      "goalId": "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+      "title": "Stochastik, Tests und Statistik (Sek II)",
+      "beforeWeight": 62,
+      "afterWeight": 77,
+      "uniqueAtomicDescendantCount": 77
+    },
+    {
+      "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75",
+      "title": "Komplexe Zahlen",
+      "beforeWeight": 9,
+      "afterWeight": 11,
+      "uniqueAtomicDescendantCount": 11
+    },
+    {
+      "goalId": "29d48dc6-1746-57b3-bc14-00a7198aac02",
+      "title": "Funktionenscharen und Parameteruntersuchungen",
+      "beforeWeight": 12,
+      "afterWeight": 13,
+      "uniqueAtomicDescendantCount": 13
+    },
+    {
+      "goalId": "320bc921-06df-4500-96fd-93f9f6fee9b4",
+      "title": "Werkzeuge und abgeleitete Größen situationsgerecht nutzen",
+      "beforeWeight": 4,
+      "afterWeight": 5,
+      "uniqueAtomicDescendantCount": 5
+    },
+    {
+      "goalId": "392440db-6a43-59c0-a48d-958128fa16a8",
+      "title": "Natürlichen Logarithmus als Umkehrfunktion und Stammfunktion untersuchen (LK)",
+      "beforeWeight": 2,
+      "afterWeight": 4,
+      "uniqueAtomicDescendantCount": 4
+    },
+    {
+      "goalId": "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+      "title": "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+      "beforeWeight": 67,
+      "afterWeight": 83,
+      "uniqueAtomicDescendantCount": 83
+    },
+    {
+      "goalId": "46a5ce30-a281-457c-b71e-9cfea2bffbc7",
+      "title": "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+      "beforeWeight": 129,
+      "afterWeight": 147,
+      "uniqueAtomicDescendantCount": 147
+    },
+    {
+      "goalId": "4720daf4-cefe-43a9-a0e8-9db55286f558",
+      "title": "Raum, Matrizen und lineare Modelle (Sek II)",
+      "beforeWeight": 110,
+      "afterWeight": 120,
+      "uniqueAtomicDescendantCount": 120
+    },
+    {
+      "goalId": "4af3fe2f-851c-520a-9a1d-b8036ac1dbb1",
+      "title": "Prognoseintervalle, Konfidenzintervalle und Stichprobenplanung",
+      "beforeWeight": 7,
+      "afterWeight": 8,
+      "uniqueAtomicDescendantCount": 8
+    },
+    {
+      "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+      "title": "Vertiefung der Analysis",
+      "beforeWeight": 19,
+      "afterWeight": 25,
+      "uniqueAtomicDescendantCount": 25
+    },
+    {
+      "goalId": "64ec32d7-6d82-40ec-b827-148b90e564f4",
+      "title": "Kreisbeziehungen und Satz des Thales",
+      "beforeWeight": 4,
+      "afterWeight": 5,
+      "uniqueAtomicDescendantCount": 5
+    },
+    {
+      "goalId": "67ef9787-d540-5f30-9995-f1f9c39a1a45",
+      "title": "Wahrscheinlichkeitsverteilungen (Überblick)",
+      "beforeWeight": 14,
+      "afterWeight": 22,
+      "uniqueAtomicDescendantCount": 22
+    },
+    {
+      "goalId": "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28",
+      "title": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+      "beforeWeight": 139,
+      "afterWeight": 157,
+      "uniqueAtomicDescendantCount": 157
+    },
+    {
+      "goalId": "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+      "title": "Zahlen, Terme und Algebra",
+      "beforeWeight": 59,
+      "afterWeight": 84,
+      "uniqueAtomicDescendantCount": 84
+    },
+    {
+      "goalId": "6fd35cc4-c375-4e58-b6f1-5382d8422906",
+      "title": "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+      "beforeWeight": 33,
+      "afterWeight": 45,
+      "uniqueAtomicDescendantCount": 45
+    },
+    {
+      "goalId": "76842ec4-c76b-5c03-9694-8a18acb1da0f",
+      "title": "Vertiefung der Differenzial- und Integralrechnung",
+      "beforeWeight": 10,
+      "afterWeight": 13,
+      "uniqueAtomicDescendantCount": 13
+    },
+    {
+      "goalId": "77be59e3-08a3-5466-9df9-843937ce5ab7",
+      "title": "Symbolsprache sicher verwenden",
+      "beforeWeight": 4,
+      "afterWeight": 6,
+      "uniqueAtomicDescendantCount": 6
+    },
+    {
+      "goalId": "845f2a2c-e6aa-4991-8a12-645b8a9f70fe",
+      "title": "Jahrgangsstufe 10",
+      "beforeWeight": 33,
+      "afterWeight": 56,
+      "uniqueAtomicDescendantCount": 56
+    },
+    {
+      "goalId": "879389a7-73de-45bb-a632-0d918c23a082",
+      "title": "Vierecke, Dreiecke und Kongruenzsätze",
+      "beforeWeight": 6,
+      "afterWeight": 9,
+      "uniqueAtomicDescendantCount": 9
+    },
+    {
+      "goalId": "88f8e185-a89b-4a34-869d-766042977f38",
+      "title": "Strukturen und funktionale Zusammenhänge",
+      "beforeWeight": 32,
+      "afterWeight": 41,
+      "uniqueAtomicDescendantCount": 41
+    },
+    {
+      "goalId": "8e68f24a-8b0e-4ce6-9567-a49e706f83be",
+      "title": "Frühe Geometrie und Raumvorstellungen",
+      "beforeWeight": 6,
+      "afterWeight": 12,
+      "uniqueAtomicDescendantCount": 12
+    },
+    {
+      "goalId": "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+      "title": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "beforeWeight": 82,
+      "afterWeight": 151,
+      "uniqueAtomicDescendantCount": 151
+    },
+    {
+      "goalId": "9b4e8f0b-d447-4dad-b2a6-2a50ef99d9f6",
+      "title": "Späte J10-Funktionsfortsetzungen",
+      "beforeWeight": 15,
+      "afterWeight": 21,
+      "uniqueAtomicDescendantCount": 21
+    },
+    {
+      "goalId": "a5f07620-a895-52db-a0cc-1d05bf64c3d6",
+      "title": "Problemlösen und Argumentieren",
+      "beforeWeight": 116,
+      "afterWeight": 123,
+      "uniqueAtomicDescendantCount": 123
+    },
+    {
+      "goalId": "bb25e25c-173f-463f-b602-2687d3ebf66f",
+      "title": "Lagebeziehungen und Schnittmengen im Raum",
+      "beforeWeight": 11,
+      "afterWeight": 10,
+      "uniqueAtomicDescendantCount": 10
+    },
+    {
+      "goalId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "title": "Mathematik",
+      "beforeWeight": 646,
+      "afterWeight": 886,
+      "uniqueAtomicDescendantCount": 886
+    },
+    {
+      "goalId": "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+      "title": "Integralrechnung und Differenzialgleichungen",
+      "beforeWeight": 51,
+      "afterWeight": 59,
+      "uniqueAtomicDescendantCount": 59
+    },
+    {
+      "goalId": "ce774aad-edd7-4f86-a431-6ca921b8e570",
+      "title": "Stichprobenkennwerte, Bernoulli-Modelle und Binomialverteilungen",
+      "beforeWeight": 6,
+      "afterWeight": 7,
+      "uniqueAtomicDescendantCount": 7
+    },
+    {
+      "goalId": "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+      "title": "Jahrgangsstufe 8",
+      "beforeWeight": 18,
+      "afterWeight": 37,
+      "uniqueAtomicDescendantCount": 37
+    },
+    {
+      "goalId": "dd550132-2a3f-5b4e-a3c6-f940621186ac",
+      "title": "Grundlegende Begriffe und Methoden der Stochastik",
+      "beforeWeight": 21,
+      "afterWeight": 23,
+      "uniqueAtomicDescendantCount": 23
+    },
+    {
+      "goalId": "ecce03e4-0082-41e1-95bd-0244e76ed292",
+      "title": "Spätere Figuren-, Abbildungs- und Satzgeometrie",
+      "beforeWeight": 16,
+      "afterWeight": 24,
+      "uniqueAtomicDescendantCount": 24
+    },
+    {
+      "goalId": "ed631938-ad77-405e-ac25-b06d750b9c05",
+      "title": "Geometrie und Raum",
+      "beforeWeight": 39,
+      "afterWeight": 51,
+      "uniqueAtomicDescendantCount": 51
+    },
+    {
+      "goalId": "faa5b388-7b24-4f8c-9cc0-1de9372e836c",
+      "title": "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+      "beforeWeight": 12,
+      "afterWeight": 13,
+      "uniqueAtomicDescendantCount": 13
+    }
+  ],
+  "alreadyCorrect": [
+    {
+      "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93",
+      "title": "Kettenlinien und Glockenkurven untersuchen (LK)",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "0cefa694-636e-4c4b-abff-3ac3750dca18",
+      "title": "Sinus- und Kosinussatz sowie trigonometrische Orientierung nutzen",
+      "weight": 4,
+      "uniqueAtomicDescendantCount": 4
+    },
+    {
+      "goalId": "164eb50f-1a5e-44a2-932e-561862e1378e",
+      "title": "Punkt-Punkt- und Punkt-Ebene-Abstände im Raum bestimmen",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "1769fcdc-33a6-586f-9b15-17f6f32579cf",
+      "title": "Zufallsexperimente beschreiben und Laplace-Wahrscheinlichkeiten vergleichen",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "1e26404a-93ef-45f3-a28c-15679fbae96b",
+      "title": "Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+      "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "219ce079-6bfd-4827-8b66-5dd199e44686",
+      "title": "Trigonometrie am Dreieck anwenden",
+      "weight": 5,
+      "uniqueAtomicDescendantCount": 5
+    },
+    {
+      "goalId": "2fb12329-9160-5c44-af5b-8731ecb05ba4",
+      "title": "Terme korrekt umformen",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+      "title": "Bernoulli-Experimente und -Ketten beschreiben",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
+      "title": "Implikation und Äquivalenz unterscheiden",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "3d9530ef-8355-59fc-b8c1-afe42cf9e888",
+      "title": "Mit der Normalverteilung rechnen (LK)",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+      "title": "Wachstums- und Zerfallsprozesse modellieren",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "4fc77ab5-90aa-4aa7-941f-6c807dde54fe",
+      "title": "Volumen von schiefen Prismen und Pyramiden plausibilisieren",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "52758ed0-cba8-5583-9e69-906d2e7c7843",
+      "title": "Prognose- und Konfidenzintervalle im Kontext interpretieren",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
+      "title": "Schnittpunkte von Geraden und Ebenen bestimmen und deuten",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+      "title": "Tangenten an Kreise konstruieren",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+      "title": "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "990d7514-c4c3-485e-907e-91687676a8cc",
+      "title": "Punkt-, Intervall- und kumulierte Binomialwahrscheinlichkeiten bestimmen und deuten",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "aa334054-d145-4ece-a796-f5b8159ef76f",
+      "title": "Verdoppelungszeit, Halbwertszeit und Asymptotik deuten",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "acbe35aa-0aeb-4582-b2c5-65caa0ba5014",
+      "title": "Gleichungen, Lösbarkeit und algebraisches Modellieren",
+      "weight": 7,
+      "uniqueAtomicDescendantCount": 7
+    },
+    {
+      "goalId": "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+      "title": "Messungen in Umwelt und Quellenmaterial durchführen",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "c92133c6-d5de-4902-936c-321915cf21e9",
+      "title": "Diskrete und stetige Zufallsgrößen unterscheiden und Verteilungsfunktion als Integralfunktion deuten (LK)",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "cba4cad7-926d-5035-a7dd-d450afccccb3",
+      "title": "Halbierende Geraden mit Geodreieck und Zirkel konstruieren",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "cea13aa9-f102-5c22-b2f0-81767d000f41",
+      "title": "Zahlbereichserweiterung zu komplexen Zahlen begründen (LK)",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "e6eb42c7-454f-49bf-b598-64d2935d2735",
+      "title": "Lineare Gleichungen und Ungleichungen lösen",
+      "weight": 2,
+      "uniqueAtomicDescendantCount": 2
+    },
+    {
+      "goalId": "e9fa1a26-6c5a-548b-95ff-bfadfb6bc733",
+      "title": "Statistischen Wahrscheinlichkeitsbegriff anwenden",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+      "title": "Sinus- und Kosinussatz begründen und anwenden",
+      "weight": 3,
+      "uniqueAtomicDescendantCount": 3
+    },
+    {
+      "goalId": "f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824",
+      "title": "Dreieckskonstruktionen nach Kongruenzsätzen planen, ausführen und ihre Lösbarkeit begründen",
+      "weight": 4,
+      "uniqueAtomicDescendantCount": 4
+    }
+  ],
+  "excludedClosureNeighbors": [
+    {
+      "goalId": "1a84cea4-d2a2-4527-b914-1a03e56e0814",
+      "title": "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum",
+      "actualWeight": 20,
+      "uniqueAtomicDescendantCount": 22,
+      "disposition": "outside-audited-65-pre-existing-weight-debt"
+    },
+    {
+      "goalId": "8034d078-facf-450c-bed6-b00b9a94f07d",
+      "title": "Größen, Proportionalität und Trigonometrie",
+      "actualWeight": 20,
+      "uniqueAtomicDescendantCount": 23,
+      "disposition": "outside-audited-65-pre-existing-weight-debt"
+    },
+    {
+      "goalId": "902de188-6f27-47c2-ace1-9b2c5771fde8",
+      "title": "Jahrgangsstufe 9",
+      "actualWeight": 39,
+      "uniqueAtomicDescendantCount": 52,
+      "disposition": "outside-audited-65-pre-existing-weight-debt"
+    },
+    {
+      "goalId": "9710e996-f6d0-4b8b-b893-592213c91767",
+      "title": "Trigonometrische Brücke und spätere Raumprobleme",
+      "actualWeight": 12,
+      "uniqueAtomicDescendantCount": 12,
+      "disposition": "outside-audited-65-already-correct"
+    }
+  ],
+  "globalPreExistingUnrelatedDebt": [
+    {
+      "goalId": "074d755a-d307-4569-baa9-128ad6ea97dd",
+      "title": "Matrixoperationen und Mehrschrittprozesse",
+      "actualWeight": 7,
+      "expectedWeight": 6
+    },
+    {
+      "goalId": "0c5ab1e7-1060-4d1f-b96b-4b1cb2f0a96f",
+      "title": "Arithmetische Routinen und Zahlvorstellungen",
+      "actualWeight": 25,
+      "expectedWeight": 34
+    },
+    {
+      "goalId": "1a84cea4-d2a2-4527-b914-1a03e56e0814",
+      "title": "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum",
+      "actualWeight": 20,
+      "expectedWeight": 22
+    },
+    {
+      "goalId": "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654",
+      "title": "Beschreibende Statistik und Datenvergleich",
+      "actualWeight": 3,
+      "expectedWeight": 4
+    },
+    {
+      "goalId": "1c1d8828-6a1b-4a12-a3a9-a1e5df5bc0d1",
+      "title": "Variablen, Terme und äquivalente Umformungen",
+      "actualWeight": 8,
+      "expectedWeight": 7
+    },
+    {
+      "goalId": "2022b141-bf15-457e-9011-bf0c5664f05c",
+      "title": "Tabellen in einfachen Zusammenhängen nutzen",
+      "actualWeight": 3,
+      "expectedWeight": 2
+    },
+    {
+      "goalId": "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+      "title": "Trigonometrische Funktionen in Periodik, Einheitskreis und Parametern deuten",
+      "actualWeight": 2,
+      "expectedWeight": 6
+    },
+    {
+      "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd",
+      "title": "Körper und Figuren im Raum charakterisieren",
+      "actualWeight": 14,
+      "expectedWeight": 20
+    },
+    {
+      "goalId": "2e00d486-59ca-4c93-9dc9-e6921d0af627",
+      "title": "Quadratische Funktionen und die Gleichungsgrenze",
+      "actualWeight": 6,
+      "expectedWeight": 7
+    },
+    {
+      "goalId": "38234acf-d0f8-4ff9-a6f8-852d1596a692",
+      "title": "Ableitungen zur Funktionsuntersuchung und Optimierung nutzen",
+      "actualWeight": 9,
+      "expectedWeight": 11
+    },
+    {
+      "goalId": "383ca2b2-565e-5725-a568-7937bb707175",
+      "title": "Anwendungen der Integralrechnung",
+      "actualWeight": 11,
+      "expectedWeight": 13
+    },
+    {
+      "goalId": "3f03058e-7f93-44ca-a08e-e22349ead59d",
+      "title": "Diagramme in einfachen Zusammenhängen nutzen",
+      "actualWeight": 3,
+      "expectedWeight": 2
+    },
+    {
+      "goalId": "4047af71-de53-5dc3-80c6-a7c78fb4bfe4",
+      "title": "Exponentialfunktionen",
+      "actualWeight": 12,
+      "expectedWeight": 18
+    },
+    {
+      "goalId": "4fb3444d-1299-4ac2-bf3d-6ef238427f6a",
+      "title": "Lineare Funktionen, rechnerische Verfahren und Anwendungen",
+      "actualWeight": 3,
+      "expectedWeight": 5
+    },
+    {
+      "goalId": "528cab0b-399d-4d4b-97ea-c32733eb821c",
+      "title": "Exponential-, logarithmische und periodische Modelle (Sek II)",
+      "actualWeight": 29,
+      "expectedWeight": 30
+    },
+    {
+      "goalId": "552111c6-965a-557a-9450-3fe5ed2d09cd",
+      "title": "Zahlentheorie und Kryptologie im Vertiefungskurs (LK)",
+      "actualWeight": 6,
+      "expectedWeight": 11
+    },
+    {
+      "goalId": "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
+      "title": "Jahrgangsstufe 7",
+      "actualWeight": 12,
+      "expectedWeight": 29
+    },
+    {
+      "goalId": "5a9702f4-7e4d-457d-b98c-f0bafcd1e386",
+      "title": "Quadratische Funktionen beschreiben und anwenden",
+      "actualWeight": 10,
+      "expectedWeight": 11
+    },
+    {
+      "goalId": "5adabf7f-1b43-4b35-8d28-c438d62a0f4d",
+      "title": "Proportionale Zusammenhänge, Prozentrechnung und Dreisatz",
+      "actualWeight": 6,
+      "expectedWeight": 9
+    },
+    {
+      "goalId": "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+      "title": "Funktionsgrundlagen",
+      "actualWeight": 14,
+      "expectedWeight": 20
+    },
+    {
+      "goalId": "6248bbd7-c7e8-4f91-b3dc-de885cf5abce",
+      "title": "Raumgeometrische Probleme mit Körpern lösen",
+      "actualWeight": 10,
+      "expectedWeight": 7
+    },
+    {
+      "goalId": "6377e1e3-8c26-4cf1-997d-8802690d74dd",
+      "title": "Jahrgangsstufe 5",
+      "actualWeight": 34,
+      "expectedWeight": 36
+    },
+    {
+      "goalId": "65cacc1f-e961-5e47-b8fa-764c40c129a7",
+      "title": "Q3.5 Statistik: Kenngrößen",
+      "actualWeight": 3,
+      "expectedWeight": 2
+    },
+    {
+      "goalId": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+      "title": "Punkte, Vektoren und Bewegungen im Raum",
+      "actualWeight": 26,
+      "expectedWeight": 34
+    },
+    {
+      "goalId": "6c16599a-b61f-414f-a55a-79efada9c8f5",
+      "title": "Spätere Zahlbereichserweiterungen, Prozentrechnung, Potenzen und Wurzeln",
+      "actualWeight": 6,
+      "expectedWeight": 12
+    },
+    {
+      "goalId": "6fc51848-6705-532f-9dfe-2070bef2f9ad",
+      "title": "Differentialrechnung, Untersuchung und Optimierung",
+      "actualWeight": 11,
+      "expectedWeight": 13
+    },
+    {
+      "goalId": "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+      "title": "Daten und Zufall",
+      "actualWeight": 14,
+      "expectedWeight": 15
+    },
+    {
+      "goalId": "8034d078-facf-450c-bed6-b00b9a94f07d",
+      "title": "Größen, Proportionalität und Trigonometrie",
+      "actualWeight": 20,
+      "expectedWeight": 23
+    },
+    {
+      "goalId": "8bee4de6-3051-5d6a-97de-c437086fae47",
+      "title": "Digitale Werkzeuge · Analysis",
+      "actualWeight": 4,
+      "expectedWeight": 3
+    },
+    {
+      "goalId": "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
+      "title": "Jahrgangsstufe 6",
+      "actualWeight": 31,
+      "expectedWeight": 38
+    },
+    {
+      "goalId": "902de188-6f27-47c2-ace1-9b2c5771fde8",
+      "title": "Jahrgangsstufe 9",
+      "actualWeight": 39,
+      "expectedWeight": 52
+    },
+    {
+      "goalId": "9220b6b6-c023-501b-ad8f-e42e4f51d979",
+      "title": "Modulare Arithmetik und chinesischen Restsatz nutzen (LK)",
+      "actualWeight": 3,
+      "expectedWeight": 4
+    },
+    {
+      "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1",
+      "title": "Einführung in die Integralrechnung",
+      "actualWeight": 16,
+      "expectedWeight": 18
+    },
+    {
+      "goalId": "93e0c472-d51c-4f73-9ff3-8acd5032c018",
+      "title": "Prozentrechnung und einfache Zinsrechnung",
+      "actualWeight": 4,
+      "expectedWeight": 6
+    },
+    {
+      "goalId": "a115f984-2628-54fb-9702-9511e460d684",
+      "title": "Einführung in den Ableitungsbegriff",
+      "actualWeight": 22,
+      "expectedWeight": 17
+    },
+    {
+      "goalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "title": "Grundlagen der Analysis und mathematische Modelle",
+      "actualWeight": 108,
+      "expectedWeight": 122
+    },
+    {
+      "goalId": "adc2b45c-67c7-4f5a-8b9c-ec944a96a8d2",
+      "title": "Ganze und rationale Zahlen",
+      "actualWeight": 3,
+      "expectedWeight": 2
+    },
+    {
+      "goalId": "b18ec043-d84d-5b88-a5cf-be01d620c98b",
+      "title": "Folgen und Reihen",
+      "actualWeight": 8,
+      "expectedWeight": 15
+    },
+    {
+      "goalId": "b40bebc2-91e3-5aac-916d-43247ee08d09",
+      "title": "Größen, Maßstab und Flächenvorstellungen anwenden",
+      "actualWeight": 6,
+      "expectedWeight": 5
+    },
+    {
+      "goalId": "bc68c585-3b1d-4c94-8a2b-c10a4dcdb4e8",
+      "title": "Einstieg Ableitungsbegriff und Änderungsraten",
+      "actualWeight": 14,
+      "expectedWeight": 16
+    },
+    {
+      "goalId": "c89ba738-4b7f-459f-b060-83fe1c01f91b",
+      "title": "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
+      "actualWeight": 31,
+      "expectedWeight": 36
+    },
+    {
+      "goalId": "c930edbf-535c-48c5-b38b-ed3cf56ea184",
+      "title": "Exponentialgleichungen und Logarithmen in J10 nutzen",
+      "actualWeight": 1,
+      "expectedWeight": 2
+    },
+    {
+      "goalId": "ca834a7d-5a66-4876-b24c-143b1464d937",
+      "title": "Geometrische Figuren und Lagebeziehungen beschreiben",
+      "actualWeight": 9,
+      "expectedWeight": 5
+    },
+    {
+      "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7",
+      "title": "Räumliche Objekte im dreidimensionalen Koordinatensystem darstellen",
+      "actualWeight": 4,
+      "expectedWeight": 3
+    },
+    {
+      "goalId": "fa273adc-25c0-4ba7-90da-57e68c59390e",
+      "title": "Ableitungseinstieg und Differentialrechnung (Sek II)",
+      "actualWeight": 79,
+      "expectedWeight": 30
+    }
+  ],
+  "beforeCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094",
+    "bytes": 3034121
+  },
+  "afterCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "1d586cc85c800bf37ec6cb4cc32c77817bacbe959b9a84df5e56bd6f64c5a541",
+    "bytes": 3034125
+  },
+  "validatorPath": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-weight-closure-follow-up.mjs",
+  "receiptDigest": "1711b59b9655ef229c7892a861a2b231659804ff60d6d7f201e19283f90348fc"
+}

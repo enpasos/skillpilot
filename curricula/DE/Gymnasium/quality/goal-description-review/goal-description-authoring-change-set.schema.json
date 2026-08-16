@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-authoring-change-set.schema.json",
+  "title": "SkillPilot human-approved goal-description authoring change set v1",
+  "description": "A durable approval receipt for exact bilingual description-only revisions. It intentionally excludes temporary understanding-evidence candidates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "changeSetId",
+    "createdAt",
+    "authoringStatus",
+    "scope",
+    "approval",
+    "sourceReview",
+    "authorizationBoundaries",
+    "postChangeReReview",
+    "applicationVerification",
+    "changeCount",
+    "changes",
+    "changeSetDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-authoring-change-set.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "changeSetId": { "$ref": "#/$defs/stableId" },
+    "createdAt": { "$ref": "#/$defs/date" },
+    "authoringStatus": { "const": "accepted_and_applied" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "country",
+        "schoolType",
+        "subject",
+        "landscapeId",
+        "canonicalFile",
+        "languagePair",
+        "changeKind",
+        "reviewedGoalCount",
+        "approvedRevisionCount"
+      ],
+      "properties": {
+        "country": { "const": "DE" },
+        "schoolType": { "const": "Gymnasium" },
+        "subject": { "const": "Mathematik" },
+        "landscapeId": { "$ref": "#/$defs/stableId" },
+        "canonicalFile": { "$ref": "#/$defs/nonBlank" },
+        "languagePair": {
+          "const": ["de", "en"]
+        },
+        "changeKind": { "const": "description_only" },
+        "reviewedGoalCount": { "type": "integer", "minimum": 1 },
+        "approvedRevisionCount": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approvedAt",
+        "authority",
+        "instructionLanguage",
+        "instructionVerbatim",
+        "interpretationDe",
+        "sampleReferences"
+      ],
+      "properties": {
+        "approvedAt": { "$ref": "#/$defs/date" },
+        "authority": { "const": "product_owner" },
+        "instructionLanguage": { "const": "de" },
+        "instructionVerbatim": { "$ref": "#/$defs/longText" },
+        "interpretationDe": { "$ref": "#/$defs/longText" },
+        "sampleReferences": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code", "kind", "goalId"],
+            "properties": {
+              "code": { "pattern": "^[RS][0-9]{2}$", "type": "string" },
+              "kind": { "$ref": "#/$defs/stableId" },
+              "goalId": { "$ref": "#/$defs/stableId" }
+            }
+          }
+        }
+      }
+    },
+    "sourceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "campaignId",
+        "roundId",
+        "reconciliationId",
+        "bundleFingerprint",
+        "bookDigest",
+        "reviewInputFingerprint",
+        "reconciliationDigest",
+        "sourceFile",
+        "sourceFileSha256",
+        "humanReportFile",
+        "humanReportSha256"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/$defs/stableId" },
+        "roundId": { "$ref": "#/$defs/stableId" },
+        "reconciliationId": { "$ref": "#/$defs/stableId" },
+        "bundleFingerprint": { "$ref": "#/$defs/digest" },
+        "bookDigest": { "$ref": "#/$defs/digest" },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "reconciliationDigest": { "$ref": "#/$defs/digest" },
+        "sourceFile": { "$ref": "#/$defs/nonBlank" },
+        "sourceFileSha256": { "$ref": "#/$defs/digest" },
+        "humanReportFile": { "$ref": "#/$defs/nonBlank" },
+        "humanReportSha256": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "authorizationBoundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "included",
+        "excluded",
+        "temporaryEvidencePromoted",
+        "graphMutationAuthorized",
+        "deploymentAuthorized"
+      ],
+      "properties": {
+        "included": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/longText" }
+        },
+        "excluded": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/longText" }
+        },
+        "temporaryEvidencePromoted": { "const": false },
+        "graphMutationAuthorized": { "const": false },
+        "deploymentAuthorized": { "const": false }
+      }
+    },
+    "postChangeReReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewedAt",
+        "reviewer",
+        "reviewMethod",
+        "notHashRefresh",
+        "methodologyDe",
+        "counts"
+      ],
+      "properties": {
+        "reviewedAt": { "$ref": "#/$defs/date" },
+        "reviewer": { "$ref": "#/$defs/stableId" },
+        "reviewMethod": { "const": "fresh_content_review_after_approved_bilingual_revision" },
+        "notHashRefresh": { "const": true },
+        "methodologyDe": { "$ref": "#/$defs/longText" },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "semanticKindCurricularAtomic",
+            "semanticAtomicityAtomic",
+            "memoryRequired",
+            "noMemoryNeeded"
+          ],
+          "properties": {
+            "semanticKindCurricularAtomic": { "const": 33 },
+            "semanticAtomicityAtomic": { "const": 33 },
+            "memoryRequired": { "const": 3 },
+            "noMemoryNeeded": { "const": 30 }
+          }
+        }
+      }
+    },
+    "applicationVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verifiedAt",
+        "canonicalMatchCount",
+        "allApprovedDescriptionsMatchCanonical"
+      ],
+      "properties": {
+        "verifiedAt": { "$ref": "#/$defs/date" },
+        "canonicalMatchCount": { "type": "integer", "minimum": 1 },
+        "allApprovedDescriptionsMatchCanonical": { "const": true }
+      }
+    },
+    "changeCount": { "type": "integer", "minimum": 1 },
+    "changes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/change" }
+    },
+    "changeSetDigest": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewCode",
+        "reviewOrder",
+        "goalId",
+        "originalGoalFingerprint",
+        "originalPageFingerprint",
+        "titleDe",
+        "titleEn",
+        "reviewedCurrentDescriptionDe",
+        "reviewedCurrentDescriptionEn",
+        "approvedDescriptionDe",
+        "approvedDescriptionEn",
+        "rationaleDe",
+        "postChangeReview",
+        "sourceResultFile"
+      ],
+      "properties": {
+        "reviewCode": { "type": "string", "pattern": "^R[0-9]{2}$" },
+        "reviewOrder": { "type": "integer", "minimum": 1 },
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "originalGoalFingerprint": { "$ref": "#/$defs/digest" },
+        "originalPageFingerprint": { "$ref": "#/$defs/digest" },
+        "titleDe": { "$ref": "#/$defs/nonBlank" },
+        "titleEn": { "$ref": "#/$defs/nonBlank" },
+        "reviewedCurrentDescriptionDe": { "$ref": "#/$defs/longText" },
+        "reviewedCurrentDescriptionEn": { "$ref": "#/$defs/longText" },
+        "approvedDescriptionDe": { "$ref": "#/$defs/longText" },
+        "approvedDescriptionEn": { "$ref": "#/$defs/longText" },
+        "rationaleDe": { "$ref": "#/$defs/longText" },
+        "reconciliationNoteDe": { "$ref": "#/$defs/longText" },
+        "postChangeReview": { "$ref": "#/$defs/postChangeReview" },
+        "sourceResultFile": { "$ref": "#/$defs/nonBlank" }
+      }
+    },
+    "postChangeReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewedAt",
+        "reviewedDescriptionDigest",
+        "semanticKind",
+        "semanticAtomicity",
+        "memoryCardSuitability"
+      ],
+      "properties": {
+        "reviewedAt": { "$ref": "#/$defs/date" },
+        "reviewedDescriptionDigest": { "$ref": "#/$defs/digest" },
+        "semanticKind": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision", "reasonDe"],
+          "properties": {
+            "decision": { "const": "curricularAtomic" },
+            "reasonDe": { "$ref": "#/$defs/longText" }
+          }
+        },
+        "semanticAtomicity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "semanticAtomic", "reasonDe"],
+          "properties": {
+            "status": { "const": "atomic" },
+            "semanticAtomic": { "const": true },
+            "reasonDe": { "$ref": "#/$defs/longText" }
+          }
+        },
+        "memoryCardSuitability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "memoryUseful", "reasonDe"],
+          "properties": {
+            "status": { "enum": ["memory_required", "no_memory_needed"] },
+            "memoryUseful": { "type": "boolean" },
+            "reasonDe": { "$ref": "#/$defs/longText" },
+            "memoryGoalIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/stableId" }
+            },
+            "deckIds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/stableId" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
