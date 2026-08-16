@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-structural-split-derivative-core-follow-up.receipt.schema.json",
+  "title": "Canonical Mathematics Structural Split Derivative Core Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "parentReceipt",
+    "authorization",
+    "scope",
+    "beforeFiles",
+    "afterFiles",
+    "baselineSemanticInventory",
+    "applicabilityChanges",
+    "semanticKindChanges",
+    "atomicityChanges",
+    "memoryGoalChanges",
+    "memoryCardChanges",
+    "validation",
+    "validatorPath",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-math-structural-split-derivative-core-follow-up-2026-08-16-v1"
+    },
+    "appliedAt": {
+      "const": "2026-08-16"
+    },
+    "status": {
+      "const": "applied-locally-not-committed"
+    },
+    "parentReceipt": {
+      "const": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-orientation-milestone-follow-up-2026-08-16.receipt.json",
+        "receiptDigest": "c27e8a9e393bfaa09e4f7ea4852439b0ebb2f32a46873a3427d69f6f9da3a9d3",
+        "afterCanonicalSha256": "16b57e488c82718dca36184fe3b383e3423ce3b78271baef95f60d9e179cc1d7"
+      }
+    },
+    "authorization": {
+      "type": "object"
+    },
+    "scope": {
+      "const": {
+        "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "applicabilityGoalCount": 13,
+        "semanticKindDecisionChangeCount": 155,
+        "semanticKindNewAtomCount": 49,
+        "semanticKindSplitAttributedStaleCount": 74,
+        "semanticKindPreExistingStaleReReviewedCount": 31,
+        "atomicityRemovedClusterCount": 25,
+        "atomicityAddedAtomCount": 49,
+        "memoryRemovedClusterCount": 25,
+        "memoryUpdatedGoalCount": 1,
+        "memoryAddedAtomCount": 49,
+        "memoryCardOriginChangeCount": 3,
+        "excludedCanonicalFields": [
+          "contains",
+          "requires",
+          "title",
+          "titleEn",
+          "description",
+          "descriptionEn",
+          "weight",
+          "resourceLinks",
+          "examData"
+        ],
+        "excludedSplitCodes": [
+          "S05",
+          "S24"
+        ],
+        "excludedBlockCodes": [
+          "B19"
+        ]
+      }
+    },
+    "beforeFiles": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "afterFiles": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "baselineSemanticInventory": {
+      "type": "object"
+    },
+    "applicabilityChanges": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13
+    },
+    "semanticKindChanges": {
+      "type": "array",
+      "minItems": 155,
+      "maxItems": 155
+    },
+    "atomicityChanges": {
+      "type": "object"
+    },
+    "memoryGoalChanges": {
+      "type": "object"
+    },
+    "memoryCardChanges": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "validation": {
+      "const": {
+        "exactAfterFileHashes": true,
+        "exactBeforeReconstruction": true,
+        "semanticReviewWasContentAware": true,
+        "atomicityReviewWasPerAtom": true,
+        "memoryReviewWasPerAtom": true,
+        "applicabilityOfficialValidatorResult": "0 errors, 0 warnings",
+        "deferredToLaterReceipts": [
+          "composition-view migration and memory visibility",
+          "requires route closure",
+          "new local assessment endpoints"
+        ]
+      }
+    },
+    "validatorPath": {
+      "const": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-derivative-core-follow-up.mjs"
+    },
+    "receiptDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

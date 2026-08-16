@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-07T20:44:48.057Z",
+  "generatedAt": "2026-08-16T05:55:19.482Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/public/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-07-09T13:20:21.311Z",
+    "generatedAt": "2026-08-16T05:20:46.356Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
-      "requestedGoals": 701,
-      "resolvedGoals": 701,
-      "goalsWithClassicSourceRoute": 701,
+      "requestedGoals": 702,
+      "resolvedGoals": 702,
+      "goalsWithClassicSourceRoute": 702,
       "goalsWithoutClassicSourceRoute": 0,
       "goalsWithMemSparqlConsistentRoute": 187
     },
@@ -730,24 +730,24 @@
     }
   },
   "summary": {
-    "totalGoals": 1079,
-    "atomicLeaves": 861,
-    "relevantAtomicLeaves": 754,
+    "totalGoals": 1081,
+    "atomicLeaves": 862,
+    "relevantAtomicLeaves": 755,
     "memoryOrNonContentLeaves": 107,
-    "clusters": 218,
-    "containsRelations": 1194,
-    "requiresRelations": 2371,
-    "runtimeItems": 701,
-    "runtimeItemsInLandscape": 701,
+    "clusters": 219,
+    "containsRelations": 1196,
+    "requiresRelations": 2374,
+    "runtimeItems": 702,
+    "runtimeItemsInLandscape": 702,
     "runtimeItemsMissingFromLandscape": 0,
-    "runtimeGoalsWithClassicSourceRationale": 701,
+    "runtimeGoalsWithClassicSourceRationale": 702,
     "runtimeGoalsWithMemSparqlConsistentRoute": 187,
-    "relevantLeavesWithClassicSourceRationale": 701,
+    "relevantLeavesWithClassicSourceRationale": 702,
     "relevantLeavesWithMemSparqlConsistentRoute": 187,
     "relevantLeavesMissingRuntimeSourceRationale": 53,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
-    "clustersWithoutDirectRuntimeSourceRationale": 218,
+    "clustersWithoutDirectRuntimeSourceRationale": 219,
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93,
@@ -771,8 +771,8 @@
       },
       {
         "key": "Q2",
-        "totalRelevantLeaves": 139,
-        "leavesWithClassicSourceRationale": 136,
+        "totalRelevantLeaves": 140,
+        "leavesWithClassicSourceRationale": 137,
         "leavesWithMemSparqlConsistentRoute": 16,
         "missingRelevantLeaves": 3
       },
@@ -843,8 +843,8 @@
     "byArea": [
       {
         "key": "unknown",
-        "totalRelevantLeaves": 368,
-        "leavesWithClassicSourceRationale": 322,
+        "totalRelevantLeaves": 369,
+        "leavesWithClassicSourceRationale": 323,
         "leavesWithMemSparqlConsistentRoute": 57,
         "missingRelevantLeaves": 46
       },
@@ -3567,9 +3567,9 @@
         "classification": "covered_runtime_classic_mem_pending"
       },
       {
-        "id": "25157542-a262-562f-a29c-ac8d53b9798f",
-        "shortKey": null,
-        "title": "Zustände in Markov-Ketten berechnen",
+        "id": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+        "shortKey": "canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness",
+        "title": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
         "type": "atomic",
         "phase": "Q2",
         "area": "unknown",
@@ -3580,7 +3580,30 @@
           "Raum, Matrizen und lineare Modelle (Sek II)",
           "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
           "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
-          "Zustände in Markov-Ketten berechnen"
+          "Zustände in Markov-Ketten berechnen",
+          "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen"
+        ],
+        "runtimeCovered": true,
+        "classicSourceRoute": true,
+        "memSparqlStatus": "mem_sparql_not_configured",
+        "classification": "covered_runtime_classic_mem_pending"
+      },
+      {
+        "id": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "shortKey": "canonical_math_q2_calculate_and_interpret_forward_markov_state_developments",
+        "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+        "type": "atomic",
+        "phase": "Q2",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+          "Raum, Matrizen und lineare Modelle (Sek II)",
+          "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+          "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
+          "Zustände in Markov-Ketten berechnen",
+          "Zustände in Markov-Ketten vorwärts berechnen und deuten"
         ],
         "runtimeCovered": true,
         "classicSourceRoute": true,
@@ -12728,6 +12751,27 @@
         "classification": "cluster_aggregate_pending"
       },
       {
+        "id": "25157542-a262-562f-a29c-ac8d53b9798f",
+        "shortKey": null,
+        "title": "Zustände in Markov-Ketten berechnen",
+        "type": "cluster",
+        "phase": "Q2",
+        "area": "unknown",
+        "topicCode": null,
+        "pathTitles": [
+          "Mathematik",
+          "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+          "Raum, Matrizen und lineare Modelle (Sek II)",
+          "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+          "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
+          "Zustände in Markov-Ketten berechnen"
+        ],
+        "runtimeCovered": false,
+        "classicSourceRoute": false,
+        "memSparqlStatus": null,
+        "classification": "cluster_aggregate_pending"
+      },
+      {
         "id": "6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
         "shortKey": null,
         "title": "Punkte, Vektoren und Bewegungen im Raum",
@@ -16397,8 +16441,8 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1194,
-      "requiresRelationsPending": 2371
+      "containsRelationsPending": 1196,
+      "requiresRelationsPending": 2374
     }
   },
   "rows": [
@@ -19025,7 +19069,7 @@
       "id": "25157542-a262-562f-a29c-ac8d53b9798f",
       "shortKey": null,
       "title": "Zustände in Markov-Ketten berechnen",
-      "type": "atomic",
+      "type": "cluster",
       "phase": "Q2",
       "area": "unknown",
       "topicCode": null,
@@ -19036,6 +19080,50 @@
         "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
         "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
         "Zustände in Markov-Ketten berechnen"
+      ],
+      "runtimeCovered": false,
+      "classicSourceRoute": false,
+      "memSparqlStatus": null,
+      "classification": "cluster_aggregate_pending"
+    },
+    {
+      "id": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+      "shortKey": "canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness",
+      "title": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+        "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
+        "Zustände in Markov-Ketten berechnen",
+        "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen"
+      ],
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_not_configured",
+      "classification": "covered_runtime_classic_mem_pending"
+    },
+    {
+      "id": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+      "shortKey": "canonical_math_q2_calculate_and_interpret_forward_markov_state_developments",
+      "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+      "type": "atomic",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Matrizen, Übergangsprozesse und lineare Modelle (Sek II)",
+        "Übergangsprozesse, Zustandsvektoren und Übergangsmatrizen",
+        "Zustände in Markov-Ketten berechnen",
+        "Zustände in Markov-Ketten vorwärts berechnen und deuten"
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,

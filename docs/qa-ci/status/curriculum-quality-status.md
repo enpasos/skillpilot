@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-08-11T06:49:55.498Z
+Generated: 2026-08-16T05:10:26.680Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -18,10 +18,10 @@ Rules version: curriculum-quality-v4
 | M0 | 11 |
 | M1 | 0 |
 | M2 | 0 |
-| M3 | 0 |
+| M3 | 1 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 10 |
+| M6 | 9 |
 | M7 | 0 |
 
 ## Curricula
@@ -40,7 +40,7 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1079 | 861 | 31/31 | 16/16 | 2 | 1 | 0 |
+| Mathematik (Gymnasium, DE) | M3 | 1081 | 862 | 31/31 | 16/16 | 2 | 2 | 1 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M6 | 588 | 499 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
@@ -239,7 +239,7 @@ Rules version: curriculum-quality-v4
 | Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 URL; local cache 0/12 | 3/3 | - | 66 | 468 | 262 | 206 | 56% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 76 | 180 | 30% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 316 | 0 | 100% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 315 | 1 | 100% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 599 | 2 | 100% | 598/598; diff 118; open 0 |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 138 | 300 | 32% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
@@ -373,7 +373,7 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 677 | 861 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 677 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 678 | 862 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 678 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 499 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |

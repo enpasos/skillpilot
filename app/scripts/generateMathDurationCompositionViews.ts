@@ -1,6 +1,12 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  compileCompositionView,
+  normalizeCompositionView,
+  type CompiledCompositionPreviewNode,
+} from '../src/utils/authoring/compositionViewAuthoring'
+import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 
 type DurationModel = 'G8' | 'G9'
 
@@ -60,6 +66,36 @@ interface MappingEntry {
   canonicalGoalId?: string
 }
 
+interface SplitLayoutPlacement {
+  parentStructureId: string
+  splitCode: string
+  oldClusterGoalId: string
+  renderKind: 'canonicalSubtree' | 'structure'
+  removeAtomicGoalIds: string[]
+  preservedReusedGoalIds?: string[]
+  replacementNode: CompositionNode
+}
+
+interface SplitLayoutTemplate {
+  fileName: string
+  viewId: string
+  fileSha256: string
+  placementCount: number
+  placements: SplitLayoutPlacement[]
+}
+
+interface SplitLayoutPlan {
+  schemaVersion: number
+  status: string
+  counts: {
+    sek1TemplateCount: number
+    splitPlacementCount: number
+    crossStageOutputCount: number
+    totalOutputCount: number
+  }
+  sek1Templates: SplitLayoutTemplate[]
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 const shouldWrite = process.argv.includes('--write')
@@ -99,6 +135,10 @@ const shMappingPath = resolve(
   'curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json',
 )
 const compositionViewDir = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/mathematik')
+const splitLayoutPlanPath = resolve(
+  scriptDir,
+  'config/math-duration-split-spanning-tree-policy.json',
+)
 
 const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
@@ -147,13 +187,19 @@ const extractTagValue = (tags: string[] | undefined, prefix: string): string | n
 
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T
 
-const sortGoalIdsByTitle = (goalIds: Iterable<string>, goalById: Map<string, LearningGoal>) =>
-  Array.from(goalIds).sort((left, right) => {
+const compareGoalIdsByTitle = (
+  left: string,
+  right: string,
+  goalById: Map<string, LearningGoal>,
+) => {
     const leftTitle = goalById.get(left)?.title ?? ''
     const rightTitle = goalById.get(right)?.title ?? ''
     const titleCompare = leftTitle.localeCompare(rightTitle, 'de', { numeric: true, sensitivity: 'base' })
     return titleCompare || left.localeCompare(right)
-  })
+  }
+
+const sortGoalIdsByTitle = (goalIds: Iterable<string>, goalById: Map<string, LearningGoal>) =>
+  Array.from(goalIds).sort((left, right) => compareGoalIdsByTitle(left, right, goalById))
 
 const collectReferencedGoalIds = (node: CompositionNode, target: Set<string>) => {
   if (node.kind === 'canonicalSubtree' || node.kind === 'goalEntry') {
@@ -173,6 +219,10 @@ const collectGoalEntriesFromStructure = (rootNodes: CompositionNode[], structure
       const collect = (child: CompositionNode) => {
         if (child.kind === 'goalEntry') {
           entries.push(child.goalId)
+          return
+        }
+        if (child.kind === 'canonicalSubtree') {
+          collectAtomicDescendantIds(child.goalId).forEach((goalId) => entries.push(goalId))
           return
         }
         if (child.kind === 'structure') {
@@ -265,6 +315,21 @@ const shSourceJson = readJson<{ goals?: LearningGoal[] }>(shSourceJsonPath)
 const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
 const baseShGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-gk.view.json'))
 const baseShLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-lk.view.json'))
+const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
+
+if (
+  splitLayoutPlan.schemaVersion !== 1
+  || splitLayoutPlan.status !== 'APPROVED_REVIEWED_LAYOUT'
+  || splitLayoutPlan.sek1Templates.length !== splitLayoutPlan.counts.sek1TemplateCount
+  || splitLayoutPlan.sek1Templates.reduce((sum, template) => sum + template.placements.length, 0)
+    !== splitLayoutPlan.counts.splitPlacementCount
+) {
+  throw new Error(`Invalid reviewed split-layout plan ${splitLayoutPlanPath}`)
+}
+
+const splitLayoutTemplateByFileName = new Map(
+  splitLayoutPlan.sek1Templates.map((template) => [template.fileName, template]),
+)
 
 const goalById = new Map(
   (canonicalMath.goals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
@@ -483,10 +548,14 @@ const baseSek1SupplementIds = Array.from(new Set([
   ...collectGoalEntriesFromStructure(baseGkView.rootNodes, 'he-source-extraction-supplements-seki'),
 ])).filter((goalId) => !sek1ExamGoalIds.has(goalId))
 
-const createGoalEntry = (goalId: string): CompositionNode => ({
-  kind: 'goalEntry',
-  goalId,
-})
+const createGoalEntry = (goalId: string): CompositionNode => {
+  const goal = goalById.get(goalId)
+  if (!goal) throw new Error(`Cannot generate missing canonical goal ${goalId}`)
+  if ((goal.contains?.length ?? 0) > 0) {
+    throw new Error(`Generated direct target ${goalId} is a cluster; use an adjudicated spanning-tree subtree instead`)
+  }
+  return { kind: 'goalEntry', goalId }
+}
 
 const createCanonicalSubtree = (goalId: string, displayLabel?: string): CompositionNode => ({
   kind: 'canonicalSubtree',
@@ -505,6 +574,153 @@ const createSek1ExamFolderEntry = (year: string): CompositionNode => {
 const createSek1CommonTail = (): CompositionNode[] => [
   createCanonicalSubtree(SEK1_MEMORY_GOAL_ID),
 ]
+
+const collectAtomicGoalIdsFromNodes = (nodes: CompositionNode[]): Set<string> => {
+  const result = new Set<string>()
+  const visit = (node: CompositionNode) => {
+    if (node.kind === 'structure') {
+      node.children.forEach(visit)
+      return
+    }
+    if (node.kind === 'landscapeEntry' || node.projectionRole === 'prerequisiteOnly') return
+    collectAtomicDescendantIds(node.goalId).forEach((goalId) => result.add(goalId))
+  }
+  nodes.forEach(visit)
+  return result
+}
+
+const removeDirectGoalReferences = (
+  nodes: CompositionNode[],
+  removeGoalIds: ReadonlySet<string>,
+): CompositionNode[] => nodes.flatMap((node) => {
+  if (node.kind !== 'structure') {
+    return node.kind !== 'landscapeEntry' && removeGoalIds.has(node.goalId) ? [] : [node]
+  }
+  return [{
+    ...node,
+    children: removeDirectGoalReferences(node.children, removeGoalIds),
+  }]
+})
+
+const findStructureNode = (nodes: CompositionNode[], structureId: string): Extract<CompositionNode, { kind: 'structure' }> | null => {
+  for (const node of nodes) {
+    if (node.kind !== 'structure') continue
+    if (node.id === structureId) return node
+    const child = findStructureNode(node.children, structureId)
+    if (child) return child
+  }
+  return null
+}
+
+const filterLayoutNodeByExcludedGoals = (
+  node: CompositionNode,
+  excludedGoalIds: ReadonlySet<string>,
+): CompositionNode | null => {
+  if (node.kind === 'landscapeEntry') return clone(node)
+  if (node.kind === 'structure') {
+    const children = node.children
+      .map((child) => filterLayoutNodeByExcludedGoals(child, excludedGoalIds))
+      .filter((child): child is CompositionNode => child !== null)
+    return children.length > 0 ? { ...clone(node), children } : null
+  }
+
+  const atomicGoalIds = collectAtomicDescendantIds(node.goalId)
+  const retainedAtomicGoalIds = atomicGoalIds.filter((goalId) => !excludedGoalIds.has(goalId))
+  if (retainedAtomicGoalIds.length === 0) return null
+  if (retainedAtomicGoalIds.length === atomicGoalIds.length) return clone(node)
+  if (node.kind === 'goalEntry') {
+    throw new Error(`Cannot partially filter atomic goal entry ${node.goalId}`)
+  }
+
+  const goal = goalById.get(node.goalId)
+  const children = (goal?.contains ?? [])
+    .map((childGoalId) => filterLayoutNodeByExcludedGoals(
+      { kind: 'canonicalSubtree', goalId: childGoalId },
+      excludedGoalIds,
+    ))
+    .filter((child): child is CompositionNode => child !== null)
+  if (children.length === 0) return null
+  return {
+    kind: 'structure',
+    id: `canonical-selection-${node.goalId}`,
+    label: node.displayLabel?.trim() || goal?.title || node.goalId,
+    children,
+  }
+}
+
+const applyReviewedSplitLayout = (
+  sek1Node: CompositionNode,
+  templateFileName: string,
+  excludedGoalIds: ReadonlySet<string> = new Set<string>(),
+): CompositionNode => {
+  const template = splitLayoutTemplateByFileName.get(templateFileName)
+  if (!template) throw new Error(`Missing reviewed split-layout template ${templateFileName}`)
+  if (template.placements.length !== template.placementCount) {
+    throw new Error(`Split-layout placement count mismatch for ${templateFileName}`)
+  }
+
+  const beforeAtomicGoalIds = collectAtomicGoalIdsFromNodes([sek1Node])
+  const removeGoalIds = new Set(template.placements.flatMap((placement) => placement.removeAtomicGoalIds))
+  const transformed = removeDirectGoalReferences([clone(sek1Node)], removeGoalIds)[0]
+  if (!transformed || transformed.kind !== 'structure') {
+    throw new Error(`Reviewed split layout removed the Sek-I root for ${templateFileName}`)
+  }
+
+  const replacementSortGoalIdByStructureId = new Map<string, string>()
+  for (const placement of template.placements) {
+    const parent = findStructureNode([transformed], placement.parentStructureId)
+    if (!parent) {
+      throw new Error(
+        `${templateFileName}: missing placement parent ${placement.parentStructureId} for ${placement.splitCode}`,
+      )
+    }
+    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, excludedGoalIds)
+    if (!replacement) continue
+    if (replacement.kind === 'structure') {
+      replacementSortGoalIdByStructureId.set(replacement.id, placement.oldClusterGoalId)
+    }
+    parent.children.push(replacement)
+    parent.children.sort((left, right) => {
+      const sortGoalId = (node: CompositionNode): string => {
+        if (node.kind === 'goalEntry' || node.kind === 'canonicalSubtree') return node.goalId
+        if (node.kind === 'structure') {
+          return replacementSortGoalIdByStructureId.get(node.id) ?? node.id
+        }
+        return node.landscapeId
+      }
+      return compareGoalIdsByTitle(sortGoalId(left), sortGoalId(right), goalById)
+    })
+  }
+
+  const expectedAfterAtomicGoalIds = new Set(beforeAtomicGoalIds)
+  removeGoalIds.forEach((goalId) => expectedAfterAtomicGoalIds.delete(goalId))
+  template.placements.forEach((placement) => {
+    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, excludedGoalIds)
+    if (!replacement) return
+    collectAtomicGoalIdsFromNodes([replacement])
+      .forEach((goalId) => expectedAfterAtomicGoalIds.add(goalId))
+  })
+  const afterAtomicGoalIds = collectAtomicGoalIdsFromNodes([transformed])
+  const missing = [...expectedAfterAtomicGoalIds].filter((goalId) => !afterAtomicGoalIds.has(goalId))
+  const unexpected = [...afterAtomicGoalIds].filter((goalId) => !expectedAfterAtomicGoalIds.has(goalId))
+  if (missing.length > 0 || unexpected.length > 0) {
+    throw new Error(
+      `${templateFileName}: split layout changed the atomic target set; missing=${missing.join(',') || '-'} unexpected=${unexpected.join(',') || '-'}`,
+    )
+  }
+  for (const placement of template.placements) {
+    for (const goalId of placement.preservedReusedGoalIds ?? []) {
+      if (removeGoalIds.has(goalId)) {
+        throw new Error(`${templateFileName}: preserved reused goal ${goalId} is also scheduled for removal`)
+      }
+      if (excludedGoalIds.has(goalId)) continue
+      if (!beforeAtomicGoalIds.has(goalId) || !afterAtomicGoalIds.has(goalId)) {
+        throw new Error(`${templateFileName}: preserved reused goal ${goalId} did not remain visible`)
+      }
+    }
+  }
+  return transformed
+}
 
 const heBucketForCanonicalYear = (durationModel: DurationModel, year: string): string | null => {
   if (durationModel === 'G8' && year === '10') return '9'
@@ -563,12 +779,17 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
     ...createSek1CommonTail(),
   ]
 
-  return {
+  const sek1Node: CompositionNode = {
     kind: 'structure',
     id: `sek1-${durationModel.toLowerCase()}`,
     label: 'Sekundarstufe I',
     children,
   }
+  return applyReviewedSplitLayout(
+    sek1Node,
+    `de-he-seki-${durationModel.toLowerCase()}.view.json`,
+    excludedGoalIds,
+  )
 }
 
 const createSek1View = (durationModel: DurationModel): CompositionView => ({
@@ -730,12 +951,17 @@ const createRpSek1Node = (
     ...createSek1CommonTail(),
   ]
 
-  return {
+  const sek1Node: CompositionNode = {
     kind: 'structure',
     id: `rp-sek1-${durationModel.toLowerCase()}`,
     label: 'Sekundarstufe I',
     children,
   }
+  return applyReviewedSplitLayout(
+    sek1Node,
+    `de-rp-seki-${durationModel.toLowerCase()}.view.json`,
+    excludedGoalIds,
+  )
 }
 
 const createRpSek1View = (durationModel: DurationModel): CompositionView => ({
@@ -875,7 +1101,7 @@ const createShSek1Node = (
   excludedGoalIds: Set<string> = new Set(),
 ): CompositionNode => {
   const buckets = assignShBandBuckets(excludedGoalIds)
-  return {
+  const sek1Node: CompositionNode = {
     kind: 'structure',
     id: `sh-sek1-${durationModel.toLowerCase()}`,
     label: 'Sekundarstufe I',
@@ -887,6 +1113,11 @@ const createShSek1Node = (
       ...createSek1CommonTail(),
     ],
   }
+  return applyReviewedSplitLayout(
+    sek1Node,
+    `de-sh-seki-${durationModel.toLowerCase()}.view.json`,
+    excludedGoalIds,
+  )
 }
 
 const createShSek1View = (durationModel: DurationModel): CompositionView => ({
@@ -1013,6 +1244,47 @@ const generatedViews = new Map<string, CompositionView>([
 ])
 
 const serialize = (view: CompositionView) => `${JSON.stringify(view, null, 2)}\n`
+const canonicalAuthoringLandscape = normalizeCanonicalLandscape(canonicalMath)
+const collectCompiledAtomicGoalIds = (nodes: CompiledCompositionPreviewNode[]): Set<string> => {
+  const result = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode) => {
+    if (
+      node.kind === 'goal'
+      && node.sourceGoalId
+      && (goalById.get(node.sourceGoalId)?.contains?.length ?? 0) === 0
+    ) result.add(node.sourceGoalId)
+    node.children.forEach(visit)
+  }
+  nodes.forEach(visit)
+  return result
+}
+
+const assertGeneratedViewIntegrity = (view: CompositionView) => {
+  const normalized = normalizeCompositionView(view)
+  const result = compileCompositionView(normalized, canonicalAuthoringLandscape)
+  const blockingCodes = new Set(['CPV-004', 'CPV-005', 'CPV-006', 'CPV-007', 'CPV-009'])
+  const blockingFindings = result.findings.filter(
+    (finding) => finding.severity === 'error' || blockingCodes.has(finding.code),
+  )
+  if (blockingFindings.length > 0) {
+    throw new Error(
+      `${view.viewId} fails composition compilation: ${blockingFindings.map((finding) => `${finding.code}: ${finding.message}`).join(' | ')}`,
+    )
+  }
+
+  const expectedGoalIds = new Set(
+    [...collectProjectedTargetGoalIds(view.rootNodes)]
+      .filter((goalId) => (goalById.get(goalId)?.contains?.length ?? 0) === 0),
+  )
+  const actualGoalIds = collectCompiledAtomicGoalIds(result.compiledRootNodes)
+  const missing = [...expectedGoalIds].filter((goalId) => !actualGoalIds.has(goalId))
+  const unexpected = [...actualGoalIds].filter((goalId) => !expectedGoalIds.has(goalId))
+  if (missing.length > 0 || unexpected.length > 0) {
+    throw new Error(
+      `${view.viewId} compiled goal-set mismatch; missing=${missing.join(',') || '-'} unexpected=${unexpected.join(',') || '-'}`,
+    )
+  }
+}
 
 let differences = 0
 for (const fileName of GENERATED_VIEW_PATHS) {
@@ -1021,6 +1293,7 @@ for (const fileName of GENERATED_VIEW_PATHS) {
     throw new Error(`Missing generator output for ${fileName}`)
   }
   assertCompleteHeSek1DirectRequirements(generatedView)
+  assertGeneratedViewIntegrity(generatedView)
 
   const targetPath = resolve(compositionViewDir, fileName)
   const generated = serialize(generatedView)

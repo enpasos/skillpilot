@@ -45,7 +45,8 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
   '3bfc2747-03e2-57db-b13f-01f78835eefd',
   '2afba4a2-287d-5e8f-aeee-a3bcf8652236',
   '6481fc23-d923-5ffc-ba49-f499328f43b8',
-  '25157542-a262-562f-a29c-ac8d53b9798f',
+  '10a33d93-dc20-5edd-ae3b-32338d05407c',
+  '3d4d510c-0fd7-55ea-9b79-1db8d640758f',
   '508292f2-671b-4fd3-acbf-53d705e44693',
   '377282dc-80b0-5bbf-bef2-a9f22e3919c1',
   'f9c24dd8-eaa5-5395-8679-820c1a74e7b7',
@@ -673,10 +674,10 @@ const nationalAtlasConfigPath = fileURLToPath(new URL(
 const nationalAtlas = (await loadGoalBookBuildInputs(nationalAtlasConfigPath)).model
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 754)
+assert.equal(nationalAtlas.book.pageCount, 755)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 754)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 755)
 assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(nationalAtlas.source.navigationOwnership, 'common-topic-suffix-v1')
@@ -760,12 +761,12 @@ assert.equal(descriptionUnderstandingEvidenceCalibration.book.publicationMode, '
 assert.deepEqual(
   descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId),
   DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS,
-  'the versioned calibration book must retain all 16 goals in the reviewed order',
+  'the versioned calibration book must retain all 17 goals in the reviewed order',
 )
-assert.equal(descriptionUnderstandingEvidenceCalibration.book.pageCount, 16)
+assert.equal(descriptionUnderstandingEvidenceCalibration.book.pageCount, 17)
 assert.equal(
   new Set(descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId)).size,
-  16,
+  17,
 )
 
 const canonicalLandscape = JSON.parse(canonicalLandscapeText) as {

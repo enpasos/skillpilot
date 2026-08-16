@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-math-structural-split-phase-follow-up-2026-08-16-v1",
+  "appliedAt": "2026-08-16",
+  "status": "applied-locally-not-committed",
+  "parentReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json",
+    "receiptDigest": "bbc31bfe7767ff74328919d87324c59cacc60c31cc8f2091d17700fd41c9ca59",
+    "applyPlanSha256": "430e8f668841a2fb65be1962ea860abcddccf60a63f91e87eea3d84b52e1b47b",
+    "applyPlanDigest": "70048d02ded23eeabae0429b1ed583a6557663ecdc5fd253456dfe6ec4b4e282"
+  },
+  "authorization": {
+    "basis": "Necessary GVR-002 phase-monotonicity correction within the product owner's blanket approval for the reviewed structural splits; no additional product decision changes the intended competencies.",
+    "furtherProductOwnerDecisionRequired": false,
+    "commitPushDeployAuthorized": false,
+    "affectsOpenAiCoachV1Contract": false
+  },
+  "scope": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "changedGoalCount": 4,
+    "changedField": "requires",
+    "excludedSplitCodes": [
+      "S05",
+      "S24"
+    ],
+    "excludedBlockCodes": [
+      "B19"
+    ]
+  },
+  "changes": [
+    {
+      "goalId": "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+      "title": "Verdoppelungs- und Halbwertszeiten bestimmen und deuten",
+      "phase": "J10",
+      "beforeRequires": [
+        "ab720928-9dbc-53c2-a1f8-865dda92122d"
+      ],
+      "afterRequires": [
+        "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89"
+      ],
+      "replacedLaterPhase": [
+        {
+          "goalId": "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "phase": "E"
+        }
+      ],
+      "rationale": "The J10 factor-time goal now uses the existing J10 exponential-model and logarithm foundations. The former E-phase prerequisite was later than J10 and therefore violated GVR-002."
+    },
+    {
+      "goalId": "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+      "title": "Asymptotisches Verhalten exponentieller Funktionen deuten",
+      "phase": "J10",
+      "beforeRequires": [
+        "dc69a261-31c9-5c6b-af71-ae27877a3dc1"
+      ],
+      "afterRequires": [
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f"
+      ],
+      "replacedLaterPhase": [
+        {
+          "goalId": "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "phase": "E"
+        }
+      ],
+      "rationale": "The J10 asymptotics goal now uses the existing J10 graph-analysis foundation that explicitly includes asymptotic behaviour. The former E-phase prerequisite was later than J10 and violated GVR-002."
+    },
+    {
+      "goalId": "a506fc1d-b784-548f-90c3-5aae1b819b68",
+      "title": "Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren",
+      "phase": "J10",
+      "beforeRequires": [
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "afterRequires": [
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "replacedLaterPhase": [
+        {
+          "goalId": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+          "phase": "Q2"
+        }
+      ],
+      "rationale": "The J10 Cavalieri plausibility goal now builds on the existing J10 prism-and-pyramid volume goal. The former Q2 prerequisite was later than J10 and violated GVR-002."
+    },
+    {
+      "goalId": "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+      "title": "Die Volumenformel von Pyramiden begründen",
+      "phase": "J10",
+      "beforeRequires": [
+        "288633c1-f61c-5b48-af7e-a80357f96cad",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "afterRequires": [
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "replacedLaterPhase": [
+        {
+          "goalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "phase": "Q2"
+        }
+      ],
+      "rationale": "The J10 pyramid-formula reasoning goal now builds on the existing J10 prism-and-pyramid volume goal. The former Q2 prerequisite was later than J10 and violated GVR-002."
+    }
+  ],
+  "beforeCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "5fd5a45eb0103703f962db31c47933c7398e806598c4b8572f02b957c7acdba6",
+    "bytes": 3034073
+  },
+  "afterCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "c477e6aea242632edcc273e778916a3df6d8d55f40adf58a926504a47df7b094",
+    "bytes": 3034121
+  },
+  "validatorPath": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-phase-follow-up.mjs",
+  "receiptDigest": "7e3d2ca89a4abc75af98f1c353310e51101ef7047c97b673dcc1abfaaaced9bb"
+}

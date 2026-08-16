@@ -4,56 +4,52 @@
 
 - SkillPilot-ID: `69243680-c2c1-5661-80c0-c95a2be1dabf`
 - Titel: Geometrische Abbildungen als linear erkennen
-- Beschreibung: Die lernende Person kann eine einfache geometrische Abbildung anhand der Wirkung auf Ursprungsgeraden als linear einordnen.
+- Beschreibung: Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI image generation
 - Status: pilot
-- Quellbild: `69243680-c2c1-5661-80c0-c95a2be1dabf.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.jpg`
+- Quellbild: `69243680-c2c1-5661-80c0-c95a2be1dabf.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Erzeuge eine fachlich exakte Mathematik-Infografik im Querformat 16:9, weißer bis sehr hellblauer Hintergrund, moderner ruhiger Schulbuchstil, ausschließlich deutscher Text, keine Logos/Wasserzeichen. Titel: „Geometrische Abbildungen als linear erkennen“.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Die Grafik muss zwei gleich große Hauptpanels zeigen und mathematisch exakt gezeichnet sein.
 
-Titel: Geometrische Abbildungen als linear erkennen
-Beschreibung: Die lernende Person kann eine einfache geometrische Abbildung anhand der Wirkung auf Ursprungsgeraden als linear einordnen.
+Linkes Panel „1 Additivität“:
 
-Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Eine geometrische Abbildung als linear erkennen.
-- Zeige eine einfache lineare Abbildung:
-  T(x,y) = (2x, y).
-- Zeichne links ein Koordinatensystem mit Ursprung O, der Ursprungsgeraden g: y=x und den Punkten P=(1,1), Q=(2,2).
-- Zeichne rechts das Bild:
-  O bleibt O.
-  P' = T(P) = (2,1).
-  Q' = T(Q) = (4,2).
-  Die Bildpunkte P' und Q' liegen auf der Ursprungsgeraden g': y = 0,5x.
-- Kriterien:
-  T(0,0) = (0,0).
-  Ursprungsgeraden werden wieder auf Ursprungsgeraden abgebildet.
-  Deshalb ist diese Streckung in x-Richtung linear.
-- Kleiner Warnhinweis:
-  Eine Verschiebung um (1,0) waere nicht linear, weil der Ursprung nicht fest bleibt.
+- Definiere sichtbar die Beispielabbildung `T(x,y)=(2x,y)`.
+- Linke Koordinatenskizze mit exakt diesen Pfeilen vom Ursprung: `u=(1,0)`, `v=(0,1)`, `u+v=(1,1)`. Zeichne das Einheitsquadrat/Parallelogramm vollständig und korrekt: u horizontal, v vertikal, u+v diagonal; gestrichelte Parallelogrammseiten schließen exakt bei `(1,1)`.
+- Rechte Koordinatenskizze mit exakt diesen Pfeilen vom Ursprung: `T(u)=(2,0)`, `T(v)=(0,1)`, `T(u+v)=(2,1)`. Zeichne das transformierte Rechteck/Parallelogramm vollständig und korrekt; gestrichelte Seiten schließen exakt bei `(2,1)`. Beschrifte jeden Pfeil eindeutig.
+- Großes korrektes Formelfeld: `T(u+v)=T(u)+T(v)`.
 
-Vermeiden:
-- Nicht eine Verschiebung als lineare Abbildung darstellen.
-- Nicht P'=(2,2) angeben; korrekt ist P'=(2,1).
-- Nicht Q'=(4,4) angeben; korrekt ist Q'=(4,2).
-- Die Bildgerade muss durch den Ursprung gehen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Rechtes Panel „2 Homogenität“:
+
+- Verwende dieselbe Abbildung `T(x,y)=(2x,y)`, `u=(1,1)`, `λ=2`.
+- Linke kleine Skizze: `u=(1,1)`, `λu=(2,2)` auf derselben Ursprungsgeraden.
+- Rechte kleine Skizze: `T(u)=(2,1)`, `T(λu)=(4,2)=λT(u)`, ebenfalls kollinear und im Längenverhältnis 1:2.
+- Großes korrektes Formelfeld: `T(λu)=λT(u)`.
+
+Schlussfelder:
+
+„LINEAR ⇔ beide Regeln gelten für alle u, v und λ“
+
+und darunter als Warnung:
+
+„Nur T(0)=0 oder Ursprungsgeraden zu erhalten reicht nicht.“
+
+Unbedingt vermeiden:
+
+- keine ungefähr gezeichneten oder offenen Parallelogramme;
+- `T(u+v)` muss geometrisch exakt die Summe `T(u)+T(v)` sein;
+- keine Pfeilspitze am falschen Koordinatenpunkt;
+- keine Vertauschung von u, v, λu, T(u), T(v);
+- kein Beispiel, das nur `T(0)=0` zeigt;
+- mathematische Notation und Umlaute fehlerfrei und groß lesbar.
 ```
 
 ## Review-Notiz

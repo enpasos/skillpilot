@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-math-structural-split-orientation-milestone-follow-up-2026-08-16-v1",
+  "appliedAt": "2026-08-16",
+  "status": "applied-locally-not-committed",
+  "parentReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-weight-closure-follow-up-2026-08-16.receipt.json",
+    "receiptDigest": "1711b59b9655ef229c7892a861a2b231659804ff60d6d7f201e19283f90348fc",
+    "afterCanonicalSha256": "1d586cc85c800bf37ec6cb4cc32c77817bacbe959b9a84df5e56bd6f64c5a541"
+  },
+  "authorization": {
+    "basis": "Necessary derivative-route correction after the independently approved 25 structural splits: two learner-orientation milestones must reference reachable atomic goals rather than retained navigation clusters.",
+    "furtherProductOwnerDecisionRequired": false,
+    "commitPushDeployAuthorized": false,
+    "affectsOpenAiCoachV1Contract": false
+  },
+  "scope": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "orientationGoalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+    "orientationPathId": "data-and-decisions",
+    "changedScalarCount": 2,
+    "changedField": "extendedData.orientationOutlook.paths[data-and-decisions].milestoneGoalIds",
+    "excludedCanonicalFields": [
+      "contains",
+      "requires",
+      "title",
+      "titleEn",
+      "description",
+      "descriptionEn",
+      "weight",
+      "resourceLinks",
+      "applicability"
+    ],
+    "excludedSplitCodes": [
+      "S05",
+      "S24"
+    ],
+    "excludedBlockCodes": [
+      "B19"
+    ]
+  },
+  "changes": [
+    {
+      "oldGoalId": "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+      "newGoalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+      "rationale": "The Bernoulli aggregate is now a retained navigation cluster. The atomic identification-and-parameterisation goal is reachable from the path entry and is the narrow first Bernoulli milestone described by the outlook."
+    },
+    {
+      "oldGoalId": "52758ed0-cba8-5583-9e69-906d2e7c7843",
+      "newGoalId": "5c9ac68c-3928-518c-bbe0-e044667035a6",
+      "rationale": "The interval aggregate is now a retained navigation cluster. The atomic confidence-interval interpretation goal directly matches the outlook's evidence-assessment endpoint and remains reachable in the reviewed route."
+    }
+  ],
+  "semanticKindRebind": {
+    "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+    "requiredBecause": "The authoritative semantic-kind fingerprint includes extendedData. The derivative-QA follow-up must semantically re-review and rebind this orientation decision to the exact after bytes."
+  },
+  "beforeCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "1d586cc85c800bf37ec6cb4cc32c77817bacbe959b9a84df5e56bd6f64c5a541",
+    "bytes": 3034125
+  },
+  "afterCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "16b57e488c82718dca36184fe3b383e3423ce3b78271baef95f60d9e179cc1d7",
+    "bytes": 3034125
+  },
+  "validatorPath": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-orientation-milestone-follow-up.mjs",
+  "receiptDigest": "c27e8a9e393bfaa09e4f7ea4852439b0ebb2f32a46873a3427d69f6f9da3a9d3"
+}

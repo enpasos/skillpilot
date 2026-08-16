@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-math-structural-split-composition-view-follow-up.receipt.schema.json",
+  "title": "Canonical Mathematics Structural Split Composition View Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "scope",
+    "authorization",
+    "parentReceipt",
+    "canonicalBinding",
+    "auditInputs",
+    "counts",
+    "viewFiles",
+    "memoryVisibilityChanges",
+    "reusedChildParentPolicies",
+    "generatorChange",
+    "validation",
+    "validatorPath",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptId": { "const": "canonical-math-structural-split-composition-view-follow-up-2026-08-16" },
+    "appliedAt": { "const": "2026-08-16" },
+    "status": { "const": "APPLIED_AND_VALIDATED" },
+    "scope": {
+      "const": {
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "subject": "Mathematik",
+        "schoolForm": "Gymnasium",
+        "changeType": "structural-split-composition-view-and-generator-follow-up"
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "required": ["basis", "furtherProductOwnerDecisionRequired", "commitPushDeployAuthorized", "affectsOpenAiCoachV1Contract"]
+    },
+    "parentReceipt": { "type": "object" },
+    "canonicalBinding": { "type": "object" },
+    "auditInputs": { "type": "object" },
+    "counts": {
+      "type": "object",
+      "required": [
+        "viewFileCount",
+        "changedViewCount",
+        "directReferenceViewCount",
+        "indirectAncestorViewCount",
+        "unaffectedViewCount",
+        "generatedDurationViewCount",
+        "oldClusterReferenceCount",
+        "oldClusterReferenceFileCount",
+        "reusedChildParentPolicyCount",
+        "splitPlacementCount"
+      ]
+    },
+    "viewFiles": { "type": "array", "minItems": 88, "maxItems": 88 },
+    "memoryVisibilityChanges": { "type": "array", "minItems": 2, "maxItems": 2 },
+    "reusedChildParentPolicies": { "type": "array", "minItems": 11, "maxItems": 11 },
+    "generatorChange": { "type": "object" },
+    "validation": { "type": "object" },
+    "validatorPath": {
+      "const": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-math-structural-split-composition-view-follow-up.mjs"
+    },
+    "receiptDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
