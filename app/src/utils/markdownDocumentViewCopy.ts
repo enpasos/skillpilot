@@ -7,6 +7,10 @@ export interface MarkdownDocumentViewCopy {
   switchLabel: string
   loading: string
   error: string
+  videoEyebrow: string
+  videoTitle: string
+  videoDescription: string
+  videoOpen: string
 }
 
 export const getMarkdownDocumentViewCopy = (
@@ -29,11 +33,19 @@ export const getMarkdownDocumentViewCopy = (
         switchLabel: 'Deutsch',
         loading: `Loading ${subject.en}...`,
         error: `${subject.de} could not be loaded.`,
+        videoEyebrow: 'Watch the concept',
+        videoTitle: 'SkillPilot in a nutshell',
+        videoDescription: 'A short introduction to the ideas behind SkillPilot and its skill-graph approach.',
+        videoOpen: 'Open video in a new tab',
       }
     : {
         back: 'Zurück zur App',
         switchLabel: 'English',
         loading: `${subject.de} wird geladen...`,
         error: `${subject.de} konnte nicht geladen werden.`,
+        videoEyebrow: 'Konzeptvideo',
+        videoTitle: 'SkillPilot kurz erklärt',
+        videoDescription: 'Eine kurze Einführung in die Idee hinter SkillPilot und den Ansatz mit Kompetenzgraphen.',
+        videoOpen: 'Video in neuem Tab öffnen',
       }
 }

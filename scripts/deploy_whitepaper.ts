@@ -11,7 +11,7 @@ const MAPPINGS = [
     {
         source: path.join(ROOT_DIR, 'docs', 'whitepaper'),
         target: path.join(ROOT_DIR, 'app', 'public', 'whitepaper'),
-        extensions: ['.md', '.png', '.jpg', '.jpeg', '.svg', '.pdf']
+        extensions: ['.md', '.png', '.jpg', '.jpeg', '.svg', '.pdf', '.mp4']
     },
     {
         source: path.join(ROOT_DIR, 'docs', 'comic1'),
