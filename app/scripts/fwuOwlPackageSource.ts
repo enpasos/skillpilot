@@ -106,7 +106,11 @@ export type SourceBinaryResource = {
   bytes: number
   sha256: string
   licenseExpression: string | null
-  provenanceClass: 'ai-generated-curated' | 'user-provided-generated-claim' | 'third-party'
+  provenanceClass:
+    | 'skillpilot-authored-deterministic-render'
+    | 'ai-generated-curated'
+    | 'user-provided-generated-claim'
+    | 'third-party'
   redistributionStatus: 'allowed' | 'review-required' | 'prohibited'
   resourceRecord: JsonObject
 }
@@ -461,10 +465,15 @@ const loadSourceFromRoot = (
         fail(`FWU-OWL v1 cannot embed binary media type ${record.mediaType}: ${resourceId}`)
       }
       if (
-        record.provenanceClass !== 'ai-generated-curated'
+        record.provenanceClass !== 'skillpilot-authored-deterministic-render'
+        && record.provenanceClass !== 'ai-generated-curated'
         && record.provenanceClass !== 'user-provided-generated-claim'
         && record.provenanceClass !== 'third-party'
       ) fail(`Unsupported binary provenance class: ${record.provenanceClass}`)
+      if (
+        record.provenanceClass === 'skillpilot-authored-deterministic-render'
+        && record.mediaType !== 'image/png'
+      ) fail(`Deterministically rendered binary resource must be PNG: ${resourceId}`)
       const mediaType = record.mediaType as SourceBinaryResource['mediaType']
       const provenanceClass = record.provenanceClass as SourceBinaryResource['provenanceClass']
       return {

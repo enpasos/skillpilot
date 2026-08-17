@@ -2,10 +2,14 @@ package com.skillpilot.backend.composition;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.BiFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,9 +34,139 @@ public final class CourseProfileCompositionViewMerger {
     }
 
     public static List<Map<String, Object>> merge(List<Map<String, Object>> nodes) {
-        return mergeSiblings(nodes, new MergeState()).stream()
+        return freeze(mergeSiblings(nodes, new MergeState()));
+    }
+
+    /**
+     * Merges course-profile views with canonical subtree awareness.
+     *
+     * <p>After profile-equivalent wrappers have been folded, a broader sibling canonical subtree
+     * may subsume a narrower sibling canonical subtree from the other course profile. When both
+     * references have the same projection role and presentation metadata, the narrow subtree is
+     * redundant and the broader authored subtree remains. Direct {@code goalEntry} references,
+     * references under different parents, partial overlaps, equal-but-differently-rooted subtrees,
+     * and presentation conflicts remain fail-closed. Different projection roles remain explicit so
+     * the existing specificity rules can resolve them.</p>
+     *
+     * @param goalCoverageResolver resolves {@code (kind, goalId)} to the exact visible goal IDs of
+     *        that reference
+     */
+    public static List<Map<String, Object>> merge(
+            List<Map<String, Object>> nodes,
+            BiFunction<String, String, Set<String>> goalCoverageResolver) {
+        if (goalCoverageResolver == null) {
+            throw new IllegalArgumentException("goalCoverageResolver must not be null");
+        }
+        List<Map<String, Object>> merged = mergeSiblings(nodes, new MergeState());
+        return freeze(removeRedundantNestedReferences(merged, goalCoverageResolver));
+    }
+
+    private static List<Map<String, Object>> freeze(List<Map<String, Object>> nodes) {
+        return nodes.stream()
                 .map(CourseProfileCompositionViewMerger::deepFreeze)
                 .toList();
+    }
+
+    private static List<Map<String, Object>> removeRedundantNestedReferences(
+            List<Map<String, Object>> nodes,
+            BiFunction<String, String, Set<String>> goalCoverageResolver) {
+        List<GoalReference> references = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            String kind = text(node.get("kind"));
+            if (supportsProjectionRole(kind)) {
+                references.add(goalReference(node, goalCoverageResolver));
+            }
+        }
+        Set<Map<String, Object>> redundant = Collections.newSetFromMap(new IdentityHashMap<>());
+        for (int leftIndex = 0; leftIndex < references.size(); leftIndex += 1) {
+            GoalReference left = references.get(leftIndex);
+            for (int rightIndex = leftIndex + 1; rightIndex < references.size(); rightIndex += 1) {
+                GoalReference right = references.get(rightIndex);
+                if (!left.projectionRole().equals(right.projectionRole())) {
+                    continue;
+                }
+                Set<String> overlap = new LinkedHashSet<>(left.goalIds());
+                overlap.retainAll(right.goalIds());
+                if (overlap.isEmpty()) {
+                    continue;
+                }
+
+                boolean leftStrictlyContainsRight = left.goalIds().size() > right.goalIds().size()
+                        && left.goalIds().containsAll(right.goalIds());
+                boolean rightStrictlyContainsLeft = right.goalIds().size() > left.goalIds().size()
+                        && right.goalIds().containsAll(left.goalIds());
+                if (!leftStrictlyContainsRight && !rightStrictlyContainsLeft) {
+                    throw overlapConflict(left, right);
+                }
+
+                GoalReference broader = leftStrictlyContainsRight ? left : right;
+                GoalReference narrower = leftStrictlyContainsRight ? right : left;
+                if (!"canonicalSubtree".equals(broader.kind())
+                        || !"canonicalSubtree".equals(narrower.kind())
+                        || !broader.presentationMetadata().equals(narrower.presentationMetadata())) {
+                    throw overlapConflict(left, right);
+                }
+                redundant.add(narrower.node());
+            }
+        }
+
+        List<Map<String, Object>> retained = new ArrayList<>();
+        for (Map<String, Object> node : nodes) {
+            if (redundant.contains(node)) {
+                continue;
+            }
+            String kind = text(node.get("kind"));
+            if ("structure".equals(kind)) {
+                Map<String, Object> copy = new LinkedHashMap<>(node);
+                copy.put(
+                        "children",
+                        List.copyOf(removeRedundantNestedReferences(
+                                nodeMaps(node.get("children")), goalCoverageResolver)));
+                retained.add(copy);
+            } else {
+                retained.add(node);
+            }
+        }
+        return retained;
+    }
+
+    private static GoalReference goalReference(
+            Map<String, Object> node,
+            BiFunction<String, String, Set<String>> goalCoverageResolver) {
+        String kind = text(node.get("kind"));
+        String goalId = text(node.get("goalId"));
+        Set<String> resolved = goalCoverageResolver.apply(kind, goalId);
+        if (resolved == null || resolved.isEmpty()) {
+            throw new IllegalStateException(
+                    "Cannot resolve composition-view goal coverage: " + nodeSignature(node));
+        }
+        return new GoalReference(
+                node,
+                kind,
+                effectiveProjectionRole(node),
+                Collections.unmodifiableSet(new LinkedHashSet<>(resolved)),
+                presentationMetadata(node));
+    }
+
+    private static String effectiveProjectionRole(Map<String, Object> node) {
+        return "prerequisiteOnly".equals(node.get("projectionRole"))
+                ? "prerequisiteOnly"
+                : "target";
+    }
+
+    private static Map<String, Object> presentationMetadata(Map<String, Object> node) {
+        Map<String, Object> metadata = new LinkedHashMap<>(node);
+        metadata.remove("kind");
+        metadata.remove("goalId");
+        metadata.remove("projectionRole");
+        metadata.remove("children");
+        return Collections.unmodifiableMap(metadata);
+    }
+
+    private static IllegalStateException overlapConflict(GoalReference left, GoalReference right) {
+        return new IllegalStateException(
+                "Conflicting overlapping goal references while merging composition views: "
+                        + nodeSignature(left.node()) + " <> " + nodeSignature(right.node()));
     }
 
     private static List<Map<String, Object>> mergeSiblings(
@@ -409,6 +543,14 @@ public final class CourseProfileCompositionViewMerger {
             }
         });
         return deepFreeze(child);
+    }
+
+    private record GoalReference(
+            Map<String, Object> node,
+            String kind,
+            String projectionRole,
+            Set<String> goalIds,
+            Map<String, Object> presentationMetadata) {
     }
 
     private record NodeGroup(String key, List<Map<String, Object>> nodes) {

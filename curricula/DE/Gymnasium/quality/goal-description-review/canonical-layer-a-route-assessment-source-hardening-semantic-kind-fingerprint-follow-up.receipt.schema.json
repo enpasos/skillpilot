@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-layer-a-route-assessment-source-hardening-semantic-kind-fingerprint-follow-up.receipt.schema.json",
+  "title": "Canonical Layer-A Route Assessment Source Hardening Semantic-Kind Fingerprint Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "receiptRole",
+    "parentAuthority",
+    "authorization",
+    "scope",
+    "ledgerTransition",
+    "causeProof",
+    "algorithmBindings",
+    "artifactBindings",
+    "validation",
+    "receiptDigestAlgorithm",
+    "receiptDigest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "semanticKindDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "sourceFingerprint",
+        "semanticKind",
+        "decisionStatus",
+        "decisionBasis"
+      ],
+      "properties": {
+        "goalId": {
+          "const": "a70d4194-1f95-5dc4-884d-8ca856663601"
+        },
+        "sourceFingerprint": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "semanticKind": {
+          "const": "practiceAssessment"
+        },
+        "decisionStatus": {
+          "const": "authoritative"
+        },
+        "decisionBasis": {
+          "const": "individually-reviewed-route-assessment-follow-up-2026-08-16"
+        }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-layer-a-route-assessment-source-hardening-semantic-kind-fingerprint-follow-up-2026-08-17-v1"
+    },
+    "appliedAt": {
+      "const": "2026-08-17"
+    },
+    "status": {
+      "const": "APPLIED_AND_VALIDATED"
+    },
+    "receiptRole": {
+      "const": "append-only-child-of-immutable-layer-a-authority"
+    },
+    "parentAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt",
+        "receiptDigest",
+        "candidateCanonicalMathematics",
+        "candidateSemanticKindsBefore",
+        "contentChangeSetSemanticKindsAfter"
+      ],
+      "properties": {
+        "receipt": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "receiptDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "candidateCanonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "candidateSemanticKindsBefore": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "contentChangeSetSemanticKindsAfter": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "furtherProductOwnerDecisionRequired",
+        "affectsOpenAiCoachV1Contract",
+        "v1Version",
+        "commitPushDeployAuthorized"
+      ],
+      "properties": {
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "furtherProductOwnerDecisionRequired": {
+          "const": false
+        },
+        "affectsOpenAiCoachV1Contract": {
+          "const": false
+        },
+        "v1Version": {
+          "const": "1.0.0 unchanged"
+        },
+        "commitPushDeployAuthorized": {
+          "const": false
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ledgerPath",
+        "goalId",
+        "canonicalGoalIndex",
+        "ledgerDecisionIndex",
+        "decisionPointer",
+        "changedFieldCount",
+        "changedFields",
+        "canonicalMutationCount"
+      ],
+      "properties": {
+        "ledgerPath": {
+          "const": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json"
+        },
+        "goalId": {
+          "const": "a70d4194-1f95-5dc4-884d-8ca856663601"
+        },
+        "canonicalGoalIndex": {
+          "const": 1133
+        },
+        "ledgerDecisionIndex": {
+          "const": 1133
+        },
+        "decisionPointer": {
+          "const": "/decisions/1133/sourceFingerprint"
+        },
+        "changedFieldCount": {
+          "const": 1
+        },
+        "changedFields": {
+          "const": [
+            "sourceFingerprint"
+          ]
+        },
+        "canonicalMutationCount": {
+          "const": 0
+        }
+      }
+    },
+    "ledgerTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "before",
+        "after",
+        "beforeDecision",
+        "afterDecision"
+      ],
+      "properties": {
+        "before": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "after": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "beforeDecision": {
+          "$ref": "#/$defs/semanticKindDecision"
+        },
+        "afterDecision": {
+          "$ref": "#/$defs/semanticKindDecision"
+        }
+      }
+    },
+    "causeProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalMathematics",
+        "goalPointer",
+        "changedCanonicalPointer",
+        "beforeState",
+        "afterValue",
+        "fingerprintWithoutBoundary",
+        "fingerprintWithBoundary",
+        "canonicalFileChangedByFollowUp"
+      ],
+      "properties": {
+        "canonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "goalPointer": {
+          "const": "/goals/1133"
+        },
+        "changedCanonicalPointer": {
+          "const": "/goals/1133/extendedData/applicabilityMappingInheritance"
+        },
+        "beforeState": {
+          "const": "missing"
+        },
+        "afterValue": {
+          "const": "boundary"
+        },
+        "fingerprintWithoutBoundary": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "fingerprintWithBoundary": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "canonicalFileChangedByFollowUp": {
+          "const": false
+        }
+      }
+    },
+    "algorithmBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyProfile",
+        "normalizationProfile",
+        "releaseCompiler",
+        "independentReleaseValidator",
+        "fingerprintContract"
+      ],
+      "properties": {
+        "ontologyProfile": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "normalizationProfile": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "releaseCompiler": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "independentReleaseValidator": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "fingerprintContract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "algorithm",
+            "domain",
+            "canonicalJsonProfile",
+            "canonicalJsonProfileVersion",
+            "canonicalJsonProfilePath",
+            "canonicalJsonProfileSha256",
+            "pointers"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "semantic-kind-source-fingerprint-v1"
+            },
+            "algorithm": {
+              "const": "sha-256-over-skillpilot-canonical-json-v1"
+            },
+            "domain": {
+              "const": "skillpilot:semantic-kind-source-fingerprint:v1"
+            },
+            "canonicalJsonProfile": {
+              "const": "semantic-normal-form-v1"
+            },
+            "canonicalJsonProfileVersion": {
+              "const": "1.0.0"
+            },
+            "canonicalJsonProfilePath": {
+              "const": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json"
+            },
+            "canonicalJsonProfileSha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "pointers": {
+              "type": "array",
+              "minItems": 15,
+              "maxItems": 15,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^/[A-Za-z]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "artifactBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "validator"
+      ],
+      "properties": {
+        "schema": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "validator": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentFileAndSelfDigest",
+        "parentAuthorityLeafExtension",
+        "exactOneFieldLedgerReverse",
+        "decisionSemanticsUnchanged",
+        "independentFingerprintRecomputation",
+        "causeReverseProof",
+        "childSchema",
+        "childSelfDigest",
+        "officialCompilerAndIndependentValidatorRequired"
+      ],
+      "properties": {
+        "parentFileAndSelfDigest": {
+          "const": "PASS"
+        },
+        "parentAuthorityLeafExtension": {
+          "const": "PASS"
+        },
+        "exactOneFieldLedgerReverse": {
+          "const": "PASS"
+        },
+        "decisionSemanticsUnchanged": {
+          "const": "PASS"
+        },
+        "independentFingerprintRecomputation": {
+          "const": "PASS"
+        },
+        "causeReverseProof": {
+          "const": "PASS"
+        },
+        "childSchema": {
+          "const": "PASS"
+        },
+        "childSelfDigest": {
+          "const": "PASS"
+        },
+        "officialCompilerAndIndependentValidatorRequired": {
+          "const": true
+        }
+      }
+    },
+    "receiptDigestAlgorithm": {
+      "const": "sha256(JSON.stringify(document_without_receiptDigest))"
+    },
+    "receiptDigest": {
+      "$ref": "#/$defs/sha256"
+    }
+  }
+}

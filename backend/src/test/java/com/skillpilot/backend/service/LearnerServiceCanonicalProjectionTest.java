@@ -126,7 +126,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_NUMBER_BASICS_HE_ID = "cf474eab-1379-4877-907e-58b0892ce734";
     private static final String CANONICAL_LINEAR_ANALYSIS_ID = "e4f3a846-d2b8-4ee5-b0a2-4dc2833b2ecb";
     private static final String CANONICAL_LINEAR_ANALYSIS_BAYERN_ID = "ae772695-d55e-4cc5-81bc-6605272759b4";
-    private static final String CANONICAL_LINEAR_EQUATIONS_HE_ID = "e6eb42c7-454f-49bf-b598-64d2935d2735";
+    private static final String CANONICAL_SOLVE_LINEAR_EQUATIONS_ID = "325771e1-602d-4bca-a199-a8f39a2d3dee";
     private static final String CANONICAL_QUADRATIC_VERTEX_ID = "c23705d2-57fc-4260-80d8-2d340203a173";
     private static final String CANONICAL_QUADRATIC_VERTEX_BAYERN_ID = "3e4032bd-4d8c-4e72-bfdd-64a34df053c9";
     private static final String CANONICAL_BINOMIALS_HE_ID = "e322310f-f33a-485d-bc23-2412a6b8fa12";
@@ -883,7 +883,7 @@ class LearnerServiceCanonicalProjectionTest {
 
         List<String> plannedGoals = learnerService.getPlannedGoals(LEARNER_ID);
 
-        assertThat(plannedGoals).containsExactly(CANONICAL_LINEAR_EQUATIONS_HE_ID);
+        assertThat(plannedGoals).containsExactly(CANONICAL_SOLVE_LINEAR_EQUATIONS_ID);
     }
 
     @Test

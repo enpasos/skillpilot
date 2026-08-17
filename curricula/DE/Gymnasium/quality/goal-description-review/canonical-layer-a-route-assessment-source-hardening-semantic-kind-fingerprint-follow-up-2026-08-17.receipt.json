@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-layer-a-route-assessment-source-hardening-semantic-kind-fingerprint-follow-up-2026-08-17-v1",
+  "appliedAt": "2026-08-17",
+  "status": "APPLIED_AND_VALIDATED",
+  "receiptRole": "append-only-child-of-immutable-layer-a-authority",
+  "parentAuthority": {
+    "receipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-layer-a-route-assessment-source-hardening-authority-2026-08-17.receipt.json",
+      "bytes": 1066134,
+      "sha256": "8eec05a01829669fbfc6bdcb3ab127ad3aa27b1e65717f396a8c3b4344a6bcf3"
+    },
+    "receiptDigest": "c0f389f9b492a8f57ea8823d93250fa3e85dd96ef1970b90ba0b48f8ae524add",
+    "candidateCanonicalMathematics": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3123302,
+      "sha256": "4a099ada2b496cec6595092780d729211eaad9dd1bad066aaac087f983559c31"
+    },
+    "candidateSemanticKindsBefore": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 369293,
+      "sha256": "7a4316e0d92420c12b80f4f26a2ab3ddb9a1944036484902aa44efb02b72376a"
+    },
+    "contentChangeSetSemanticKindsAfter": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 369293,
+      "sha256": "7a4316e0d92420c12b80f4f26a2ab3ddb9a1944036484902aa44efb02b72376a"
+    }
+  },
+  "authorization": {
+    "basis": "Product-owner-approved append-only correction of the one stale semantic-kind sourceFingerprint caused by the already-authorized Layer-A boundary field.",
+    "furtherProductOwnerDecisionRequired": false,
+    "affectsOpenAiCoachV1Contract": false,
+    "v1Version": "1.0.0 unchanged",
+    "commitPushDeployAuthorized": false
+  },
+  "scope": {
+    "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "goalId": "a70d4194-1f95-5dc4-884d-8ca856663601",
+    "canonicalGoalIndex": 1133,
+    "ledgerDecisionIndex": 1133,
+    "decisionPointer": "/decisions/1133/sourceFingerprint",
+    "changedFieldCount": 1,
+    "changedFields": [
+      "sourceFingerprint"
+    ],
+    "canonicalMutationCount": 0
+  },
+  "ledgerTransition": {
+    "before": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 369293,
+      "sha256": "7a4316e0d92420c12b80f4f26a2ab3ddb9a1944036484902aa44efb02b72376a"
+    },
+    "after": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "bytes": 369293,
+      "sha256": "db6cb2fe38bb1daafccd1328f7c1475b23e0099baab5073cf6994702816c961f"
+    },
+    "beforeDecision": {
+      "goalId": "a70d4194-1f95-5dc4-884d-8ca856663601",
+      "sourceFingerprint": "sha256:e070c1eef92ee89bdf6483183684e54ce67c39b8d2d04f98ca16c027446538d3",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "individually-reviewed-route-assessment-follow-up-2026-08-16"
+    },
+    "afterDecision": {
+      "goalId": "a70d4194-1f95-5dc4-884d-8ca856663601",
+      "sourceFingerprint": "sha256:b5593b3bdc76c95481511edcd66b5e242a5d3bd783e9c7ebf3c9637fe089fc53",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "individually-reviewed-route-assessment-follow-up-2026-08-16"
+    }
+  },
+  "causeProof": {
+    "canonicalMathematics": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3123302,
+      "sha256": "4a099ada2b496cec6595092780d729211eaad9dd1bad066aaac087f983559c31"
+    },
+    "goalPointer": "/goals/1133",
+    "changedCanonicalPointer": "/goals/1133/extendedData/applicabilityMappingInheritance",
+    "beforeState": "missing",
+    "afterValue": "boundary",
+    "fingerprintWithoutBoundary": "sha256:e070c1eef92ee89bdf6483183684e54ce67c39b8d2d04f98ca16c027446538d3",
+    "fingerprintWithBoundary": "sha256:b5593b3bdc76c95481511edcd66b5e242a5d3bd783e9c7ebf3c9637fe089fc53",
+    "canonicalFileChangedByFollowUp": false
+  },
+  "algorithmBindings": {
+    "ontologyProfile": {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "bytes": 23381,
+      "sha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968"
+    },
+    "normalizationProfile": {
+      "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+      "bytes": 3877,
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    "releaseCompiler": {
+      "path": "scripts/compile_curriculum_release_model.py",
+      "bytes": 183191,
+      "sha256": "be95dc01b0f75c7533a54b9021b2a72626ee5252c1be7e0e0f78ab4c62cf0941"
+    },
+    "independentReleaseValidator": {
+      "path": "scripts/validate_curriculum_release_model.py",
+      "bytes": 255354,
+      "sha256": "20684324491bf3f1aa01b5e36b4b6989899bfb6cb2c7a70b1ab5bc9d06fe76d1"
+    },
+    "fingerprintContract": {
+      "contractId": "semantic-kind-source-fingerprint-v1",
+      "algorithm": "sha-256-over-skillpilot-canonical-json-v1",
+      "domain": "skillpilot:semantic-kind-source-fingerprint:v1",
+      "canonicalJsonProfile": "semantic-normal-form-v1",
+      "canonicalJsonProfileVersion": "1.0.0",
+      "canonicalJsonProfilePath": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+      "canonicalJsonProfileSha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca",
+      "pointers": [
+        "/id",
+        "/type",
+        "/nodeKind",
+        "/title",
+        "/titleEn",
+        "/description",
+        "/descriptionEn",
+        "/tags",
+        "/contains",
+        "/requires",
+        "/semanticAtomic",
+        "/dimensionTags",
+        "/examData",
+        "/extendedData",
+        "/release"
+      ]
+    }
+  },
+  "artifactBindings": {
+    "schema": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-layer-a-route-assessment-source-hardening-semantic-kind-fingerprint-follow-up.receipt.schema.json",
+      "bytes": 10410,
+      "sha256": "e72bf9da352e722bcc111bebfb93d3f8b1ce8c64e2347795478a7cbcb67f689f"
+    },
+    "validator": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-layer-a-route-assessment-source-hardening-semantic-kind-fingerprint-follow-up.mjs",
+      "bytes": 13013,
+      "sha256": "657591bbe868280f11dde2ab8fbb2be47eec37f62a7a55f2e299c0c7e9ffdd26"
+    }
+  },
+  "validation": {
+    "parentFileAndSelfDigest": "PASS",
+    "parentAuthorityLeafExtension": "PASS",
+    "exactOneFieldLedgerReverse": "PASS",
+    "decisionSemanticsUnchanged": "PASS",
+    "independentFingerprintRecomputation": "PASS",
+    "causeReverseProof": "PASS",
+    "childSchema": "PASS",
+    "childSelfDigest": "PASS",
+    "officialCompilerAndIndependentValidatorRequired": true
+  },
+  "receiptDigestAlgorithm": "sha256(JSON.stringify(document_without_receiptDigest))",
+  "receiptDigest": "dc31b852d9dae252c29f85506c285eb4488d855017d6e90cdf515528d2db1219"
+}

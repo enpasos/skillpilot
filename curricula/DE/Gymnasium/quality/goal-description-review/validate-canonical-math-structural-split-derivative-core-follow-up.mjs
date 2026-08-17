@@ -25,14 +25,14 @@ assert.deepEqual(schema.properties.scope.const, receipt.scope);
 assert.equal(parent.receiptDigest, receipt.parentReceipt.receiptDigest);
 assert.equal(parent.afterCanonical.sha256, receipt.parentReceipt.afterCanonicalSha256);
 for (const expected of receipt.afterFiles) {
-  const bytes = fs.readFileSync(path.join(repoRoot, expected.path));
+  const bytes = receiptChain.historicalFileBytes(expected.path);
   assert.equal(bytes.length, expected.bytes, expected.path + " byte count");
   assert.equal(sha(bytes), expected.sha256, expected.path + " SHA-256");
 }
 
 const canonicalMeta = fileMeta(receipt.afterFiles, "/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
 const canonicalBeforeMeta = fileMeta(receipt.beforeFiles, "/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
-const canonical = JSON.parse(fs.readFileSync(path.join(repoRoot, canonicalMeta.path), "utf8"));
+const canonical = structuredClone(receiptChain.snapshots.current.value);
 assert.equal(canonicalMeta.sha256, receiptChain.snapshots.current.binding.sha256, "derivative leaf does not match complete receipt chain");
 const reconstructedCanonical = structuredClone(canonical);
 for (const change of receipt.applicabilityChanges) {
@@ -47,7 +47,7 @@ assert.equal(sha(reconstructedCanonicalBytes), canonicalBeforeMeta.sha256);
 
 const semanticMeta = fileMeta(receipt.afterFiles, "mathematik.semantic-kinds.json");
 const semanticBeforeMeta = fileMeta(receipt.beforeFiles, "mathematik.semantic-kinds.json");
-const semantic = JSON.parse(fs.readFileSync(path.join(repoRoot, semanticMeta.path), "utf8"));
+const semantic = JSON.parse(receiptChain.historicalFileBytes(semanticMeta.path));
 const semanticById = new Map(semantic.decisions.map((decision) => [decision.goalId, decision]));
 for (const change of receipt.semanticKindChanges) assert.deepEqual(semanticById.get(change.goalId), change.afterDecision);
 const reconstructedSemantic = structuredClone(semantic);
@@ -67,7 +67,7 @@ assert.equal(reconstructedSemanticBytes.length, semanticBeforeMeta.bytes);
 assert.equal(sha(reconstructedSemanticBytes), semanticBeforeMeta.sha256);
 
 const reconstructJsonl = (afterMeta, beforeMeta, changes, updatedKey = null) => {
-  let rows = readJsonl(fs.readFileSync(path.join(repoRoot, afterMeta.path)));
+  let rows = readJsonl(receiptChain.historicalFileBytes(afterMeta.path));
   const addedIds = new Set((changes.added ?? []).map((entry) => entry.record.goalId));
   rows = rows.filter((row) => !addedIds.has(row.goalId));
   if (updatedKey) {
@@ -89,7 +89,7 @@ reconstructJsonl(memoryAfterMeta, memoryBeforeMeta, receipt.memoryGoalChanges, "
 
 const cardsAfterMeta = fileMeta(receipt.afterFiles, "canonical-math-full.cards.review.jsonl");
 const cardsBeforeMeta = fileMeta(receipt.beforeFiles, "canonical-math-full.cards.review.jsonl");
-const cardRows = readJsonl(fs.readFileSync(path.join(repoRoot, cardsAfterMeta.path)));
+const cardRows = readJsonl(receiptChain.historicalFileBytes(cardsAfterMeta.path));
 for (const change of receipt.memoryCardChanges) {
   assert.deepEqual(cardRows[change.index], change.afterRecord);
   cardRows[change.index] = change.beforeRecord;

@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-16T05:55:19.623Z",
+  "generatedAt": "2026-08-17T01:01:06.831Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-08-16T05:20:47.962Z",
+    "generatedAt": "2026-08-17T01:01:03.520Z",
     "summary": {
-      "requestedGoals": 755,
-      "resolvedGoals": 755,
-      "goalsWithClassicSourceRoute": 702,
-      "goalsWithoutClassicSourceRoute": 53,
-      "goalsWithMemSparqlConsistentRoute": 187
+      "requestedGoals": 780,
+      "resolvedGoals": 780,
+      "goalsWithClassicSourceRoute": 725,
+      "goalsWithoutClassicSourceRoute": 55,
+      "goalsWithMemSparqlConsistentRoute": 214
     }
   },
   "summary": {
-    "totalClassicSourceGapIssues": 53,
-    "coveredSiblingMappingGaps": 22,
+    "totalClassicSourceGapIssues": 55,
+    "coveredSiblingMappingGaps": 24,
     "isolatedSourceExpansionGaps": 31,
     "phases": 4,
     "areas": 3
@@ -39,22 +39,22 @@
       },
       {
         "key": "Q2",
-        "issues": 3,
-        "coveredSiblingMappingGaps": 3,
+        "issues": 4,
+        "coveredSiblingMappingGaps": 4,
         "isolatedSourceExpansionGaps": 0
       },
       {
         "key": "Q3",
-        "issues": 2,
-        "coveredSiblingMappingGaps": 2,
+        "issues": 3,
+        "coveredSiblingMappingGaps": 3,
         "isolatedSourceExpansionGaps": 0
       }
     ],
     "byArea": [
       {
         "key": "unknown",
-        "issues": 46,
-        "coveredSiblingMappingGaps": 21,
+        "issues": 48,
+        "coveredSiblingMappingGaps": 23,
         "isolatedSourceExpansionGaps": 25
       },
       {
@@ -79,8 +79,8 @@
       },
       {
         "key": "covered-sibling-mapping-gap",
-        "issues": 22,
-        "coveredSiblingMappingGaps": 22,
+        "issues": 24,
+        "coveredSiblingMappingGaps": 24,
         "isolatedSourceExpansionGaps": 0
       }
     ]
@@ -109,8 +109,8 @@
       "parentTitles": [
         "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum"
       ],
-      "siblingGoals": 18,
-      "coveredSiblingGoals": 18,
+      "siblingGoals": 16,
+      "coveredSiblingGoals": 16,
       "gapSiblingGoals": 0,
       "coveredSiblingExamples": [
         {
@@ -147,17 +147,6 @@
           "matchType": "exact"
         },
         {
-          "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
-          "title": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-3-b10-a02-444cef77",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10, Aspekt 2",
-          "topicCode": null,
-          "matchType": "exact"
-        },
-        {
           "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
           "title": "Vektorprodukt definieren (LK)",
           "sourceRationaleStatus": "classic_source_reviewed",
@@ -167,6 +156,17 @@
           "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
           "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-T037",
           "matchType": "exact"
+        },
+        {
+          "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+          "title": "Abstandsverfahren im Raum auswählen und anwenden",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
+          "topicCode": "Q2.3",
+          "matchType": null
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -214,6 +214,58 @@
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
     },
     {
+      "id": "GSR-GAP-D8F1FD06",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "d8f1fd06-785e-5d15-a8e5-7d8b36f91287",
+      "shortKey": "canonical_math_q2_use_composed_functions_for_quantifiable_models_lk",
+      "title": "Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)",
+      "description": "Die lernende Person kann einen quantifizierbaren Zusammenhang durch eine geeignete Funktionsverkettung modellieren und die Bedeutung von innerer und äußerer Funktion im Sachkontext erläutern.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Vertiefung der Analysis",
+        "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
+        "Zusammengesetzte Funktionen für quantifizierbare Zusammenhänge nutzen (LK)"
+      ],
+      "parentGoalIds": [
+        "899ed286-0cc2-4d6d-ba46-7d4e40a11f41"
+      ],
+      "parentTitles": [
+        "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "title": "Kettenregel beim Ableiten anwenden (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
+          "topicCode": "M12-EA.4.2",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+          "title": "Produktregel beim Ableiten anwenden (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
+          "topicCode": "M12-EA.4.2",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
       "id": "GSR-GAP-BF17CADA",
       "lane": "covered-sibling-mapping-gap",
       "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
@@ -235,8 +287,8 @@
       "parentTitles": [
         "Vertiefung der Analysis"
       ],
-      "siblingGoals": 7,
-      "coveredSiblingGoals": 7,
+      "siblingGoals": 6,
+      "coveredSiblingGoals": 6,
       "gapSiblingGoals": 0,
       "coveredSiblingExamples": [
         {
@@ -321,8 +373,8 @@
       "parentTitles": [
         "Funktionenscharen und Parameteruntersuchungen"
       ],
-      "siblingGoals": 11,
-      "coveredSiblingGoals": 9,
+      "siblingGoals": 10,
+      "coveredSiblingGoals": 8,
       "gapSiblingGoals": 2,
       "coveredSiblingExamples": [
         {
@@ -348,17 +400,6 @@
           "matchType": "exact"
         },
         {
-          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
-          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
-          "matchType": "exact"
-        },
-        {
           "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
           "title": "Parameter in Funktionenscharen deuten",
           "sourceRationaleStatus": "classic_source_reviewed",
@@ -377,6 +418,17 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-1-b01-a02-825e2758",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+          "title": "Funktionenscharen mit Exponential- und ganzrationalen Anteilen untersuchen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a01-44e89453",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 1",
           "topicCode": null,
           "matchType": "exact"
         }
@@ -407,21 +459,10 @@
       "parentTitles": [
         "Funktionenscharen und Parameteruntersuchungen"
       ],
-      "siblingGoals": 11,
-      "coveredSiblingGoals": 9,
+      "siblingGoals": 10,
+      "coveredSiblingGoals": 8,
       "gapSiblingGoals": 2,
       "coveredSiblingExamples": [
-        {
-          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
-          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
-          "matchType": "exact"
-        },
         {
           "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
           "title": "Parameter in Funktionenscharen deuten",
@@ -465,6 +506,17 @@
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
           "topicCode": null,
           "matchType": "exact"
+        },
+        {
+          "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "title": "Integrale ganzrationaler Funktionenscharen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -493,8 +545,8 @@
       "parentTitles": [
         "Funktionenscharen und Parameteruntersuchungen"
       ],
-      "siblingGoals": 11,
-      "coveredSiblingGoals": 9,
+      "siblingGoals": 10,
+      "coveredSiblingGoals": 8,
       "gapSiblingGoals": 2,
       "coveredSiblingExamples": [
         {
@@ -2259,6 +2311,60 @@
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
     },
     {
+      "id": "GSR-GAP-CE2EB0A8",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+      "shortKey": "canonical_math_q3_distinguish_empirical_and_theoretical_probability",
+      "title": "Empirische und theoretische Wahrscheinlichkeit unterscheiden",
+      "description": "Die lernende Person kann eine aus relativen Häufigkeiten geschätzte empirische Wahrscheinlichkeit von einer aus einem Modell bestimmten theoretischen Wahrscheinlichkeit unterscheiden und beide Aussagen im Kontext einordnen.",
+      "phase": "Q3",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+        "Stochastik, Tests und Statistik (Sek II)",
+        "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+        "Grundlegende Begriffe und Methoden der Stochastik",
+        "Statistischen Wahrscheinlichkeitsbegriff anwenden",
+        "Empirische und theoretische Wahrscheinlichkeit unterscheiden"
+      ],
+      "parentGoalIds": [
+        "e9fa1a26-6c5a-548b-95ff-bfadfb6bc733"
+      ],
+      "parentTitles": [
+        "Statistischen Wahrscheinlichkeitsbegriff anwenden"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "8823e26e-694c-581b-9adf-4db7db6f43c9",
+          "title": "Häufigkeiten bestimmen und Wahrscheinlichkeiten schätzen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-seki-bp2016-3-2-5-09-3be8a9b5",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.5, Kompetenz 9, S. 29.",
+          "topicCode": "BP2016-3.2.5",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+          "title": "Das empirische Gesetz der großen Zahlen erläutern",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-seki-bp2016-3-2-5-09-3be8a9b5",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.2.5, Kompetenz 9, S. 29.",
+          "topicCode": "BP2016-3.2.5",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
       "id": "GSR-GAP-5B54F272",
       "lane": "covered-sibling-mapping-gap",
       "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
@@ -2282,8 +2388,8 @@
       "parentTitles": [
         "Wahrscheinlichkeitsverteilungen (Überblick)"
       ],
-      "siblingGoals": 13,
-      "coveredSiblingGoals": 13,
+      "siblingGoals": 10,
+      "coveredSiblingGoals": 10,
       "gapSiblingGoals": 0,
       "coveredSiblingExamples": [
         {
@@ -2309,28 +2415,6 @@
           "matchType": "exact"
         },
         {
-          "goalId": "34735a1a-c9d9-5378-805e-b48f9c2d947f",
-          "title": "Bernoulli-Experimente und -Ketten beschreiben",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T046-bf5541268e",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
-          "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T046",
-          "matchType": "exact"
-        },
-        {
-          "goalId": "c92133c6-d5de-4902-936c-321915cf21e9",
-          "title": "Diskrete und stetige Zufallsgrößen unterscheiden und Verteilungsfunktion als Integralfunktion deuten (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BY",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
-          "sourceGoalId": "d8c42bfc-ee1b-52b3-9409-276164c61829",
-          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.2",
-          "topicCode": "M13.2",
-          "matchType": "exact"
-        },
-        {
           "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
           "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
           "sourceRationaleStatus": "classic_source_reviewed",
@@ -2339,6 +2423,28 @@
           "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T090-3dd4c59368",
           "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 69",
           "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T090",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+          "title": "Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K011-7b740b9432",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+          "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K011",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T034-dbbdfa08f8",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+          "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T034",
           "matchType": "exact"
         }
       ],

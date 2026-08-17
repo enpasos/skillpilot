@@ -327,6 +327,25 @@
       ]
     },
     {
+      "id": "deterministic-render-class-on-non-binary-file",
+      "description": "The deterministic-render provenance class is restricted to PNG binary-resource records.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "provenanceClass",
+          "value": "skillpilot-authored-deterministic-render"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA",
+        "MANIFEST_SCHEMA",
+        "MANIFEST_SCHEMA",
+        "MANIFEST_SCHEMA",
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
       "id": "pending-with-license-expression",
       "description": "Review-required redistribution uses null instead of a pseudo or apparently cleared license expression.",
       "mutations": [

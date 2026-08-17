@@ -1,0 +1,352 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-layer-a-route-assessment-source-hardening-deterministic-render-provenance-follow-up.receipt.schema.json",
+  "title": "Canonical Layer-A Route Assessment Source Hardening Deterministic Render Provenance Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "receiptRole",
+    "parentReceipt",
+    "transitiveAuthority",
+    "authorization",
+    "scope",
+    "promptTransition",
+    "renderEvidence",
+    "artifactBindings",
+    "validation",
+    "receiptDigestAlgorithm",
+    "receiptDigest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-layer-a-route-assessment-source-hardening-deterministic-render-provenance-follow-up-2026-08-17-v1"
+    },
+    "appliedAt": {
+      "const": "2026-08-17"
+    },
+    "status": {
+      "const": "APPLIED_AND_VALIDATED"
+    },
+    "receiptRole": {
+      "const": "append-only-child-of-provider-metadata-follow-up"
+    },
+    "parentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt",
+        "receiptDigest"
+      ],
+      "properties": {
+        "receipt": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "receiptDigest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "transitiveAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt",
+        "receiptDigest",
+        "canonicalMathematics",
+        "authorityPromptAfter"
+      ],
+      "properties": {
+        "receipt": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "receiptDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "authorityPromptAfter": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "furtherProductOwnerDecisionRequired",
+        "affectsOpenAiCoachV1Contract",
+        "v1Version",
+        "commitPushDeployAuthorized"
+      ],
+      "properties": {
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "furtherProductOwnerDecisionRequired": {
+          "const": false
+        },
+        "affectsOpenAiCoachV1Contract": {
+          "const": false
+        },
+        "v1Version": {
+          "const": "1.0.0 unchanged"
+        },
+        "commitPushDeployAuthorized": {
+          "const": false
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "promptPath",
+        "goalId",
+        "lineNumber",
+        "linePointer",
+        "changedLineCount",
+        "canonicalMutationCount",
+        "sourceMutationCount",
+        "assetMutationCount"
+      ],
+      "properties": {
+        "promptPath": {
+          "const": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/prompt.de.md"
+        },
+        "goalId": {
+          "const": "2c97548a-77d2-57ef-98f7-a6d06aab48c9"
+        },
+        "lineNumber": {
+          "const": 11
+        },
+        "linePointer": {
+          "const": "/lines/10"
+        },
+        "changedLineCount": {
+          "const": 1
+        },
+        "canonicalMutationCount": {
+          "const": 0
+        },
+        "sourceMutationCount": {
+          "const": 0
+        },
+        "assetMutationCount": {
+          "const": 0
+        }
+      }
+    },
+    "promptTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "before",
+        "after",
+        "beforeLine",
+        "afterLine"
+      ],
+      "properties": {
+        "before": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "after": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "beforeLine": {
+          "const": "- Provider: SkillPilot-authored deterministic SVG rendered with librsvg rsvg-convert 2.52.5"
+        },
+        "afterLine": {
+          "const": "- Provider: Deterministically rendered from reviewed SVG assessment source"
+        }
+      }
+    },
+    "renderEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalMathematics",
+        "goalIndex",
+        "resourceLinkIndex",
+        "providerPointer",
+        "provider",
+        "licenseNote",
+        "publicUrl",
+        "sourceSvg",
+        "renderer",
+        "rendererVersion",
+        "renderContractId",
+        "renderCommand",
+        "canonicalAsset",
+        "publicAsset",
+        "backendAsset",
+        "assetSha256"
+      ],
+      "properties": {
+        "canonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "goalIndex": {
+          "const": 1131
+        },
+        "resourceLinkIndex": {
+          "const": 0
+        },
+        "providerPointer": {
+          "const": "/goals/1131/resourceLinks/0/provider"
+        },
+        "provider": {
+          "const": "Deterministically rendered from reviewed SVG assessment source"
+        },
+        "licenseNote": {
+          "const": "SkillPilot-authored"
+        },
+        "publicUrl": {
+          "const": "/assets/goal-visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/2c97548a-77d2-57ef-98f7-a6d06aab48c9.png"
+        },
+        "sourceSvg": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "renderer": {
+          "const": "librsvg rsvg-convert"
+        },
+        "rendererVersion": {
+          "const": "2.52.5"
+        },
+        "renderContractId": {
+          "const": "rsvg-convert-fixed-png-v1"
+        },
+        "renderCommand": {
+          "const": "rsvg-convert --width 1200 --height 360 --format png --output 2c97548a-77d2-57ef-98f7-a6d06aab48c9.png measurement-strip-v1.svg"
+        },
+        "canonicalAsset": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "publicAsset": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "backendAsset": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "assetSha256": {
+          "$ref": "#/$defs/prefixedSha256"
+        }
+      }
+    },
+    "artifactBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "validator"
+      ],
+      "properties": {
+        "schema": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "validator": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentFileAndSelfDigest",
+        "transitiveAuthorityFileAndSelfDigest",
+        "authorityPromptLeafReverse",
+        "exactOneLineReverse",
+        "unchangedPromptRemainder",
+        "canonicalProviderParity",
+        "sourceSvgBinding",
+        "renderContractBinding",
+        "threeWayAssetParity",
+        "childSchema",
+        "childSelfDigest"
+      ],
+      "properties": {
+        "parentFileAndSelfDigest": {
+          "const": "PASS"
+        },
+        "transitiveAuthorityFileAndSelfDigest": {
+          "const": "PASS"
+        },
+        "authorityPromptLeafReverse": {
+          "const": "PASS"
+        },
+        "exactOneLineReverse": {
+          "const": "PASS"
+        },
+        "unchangedPromptRemainder": {
+          "const": "PASS"
+        },
+        "canonicalProviderParity": {
+          "const": "PASS"
+        },
+        "sourceSvgBinding": {
+          "const": "PASS"
+        },
+        "renderContractBinding": {
+          "const": "PASS"
+        },
+        "threeWayAssetParity": {
+          "const": "PASS"
+        },
+        "childSchema": {
+          "const": "PASS"
+        },
+        "childSelfDigest": {
+          "const": "PASS"
+        }
+      }
+    },
+    "receiptDigestAlgorithm": {
+      "const": "sha256(JSON.stringify(document_without_receiptDigest))"
+    },
+    "receiptDigest": {
+      "$ref": "#/$defs/sha256"
+    }
+  }
+}

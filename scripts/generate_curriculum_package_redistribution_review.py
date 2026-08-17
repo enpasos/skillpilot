@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+import shlex
 import sys
 import tempfile
 from collections import Counter
@@ -55,6 +56,13 @@ ROOT_APACHE_LICENSE_SHA256 = (
     "6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae"
 )
 LEGACY_IMAGE_LICENSE_NOTE = "AI-generated, SkillPilot-curated"
+SKILLPILOT_AUTHORED_LICENSE_NOTE = "SkillPilot-authored"
+DETERMINISTIC_RENDER_PROVIDER = (
+    "Deterministically rendered from reviewed SVG assessment source"
+)
+DETERMINISTIC_RENDER_PROVENANCE_CLASS = "skillpilot-authored-deterministic-render"
+DETERMINISTIC_RENDER_PROVENANCE_SOURCE = "hash-bound-skillpilot-source-render"
+DETERMINISTIC_RENDER_CONTRACT_ID = "rsvg-convert-fixed-png-v1"
 
 PATH_CLASSIFICATION_OVERRIDES: tuple[dict[str, str], ...] = (
     {
@@ -67,6 +75,18 @@ PATH_CLASSIFICATION_OVERRIDES: tuple[dict[str, str], ...] = (
 
 USER_PROVIDED_RE = re.compile(r"user-provided", re.IGNORECASE)
 PROMPT_PROVIDER_RE = re.compile(r"^- Provider: (.+)$", re.MULTILINE)
+PROMPT_SOURCE_SVG_RE = re.compile(r"^- Immutable SVG: `([^`]+)`$", re.MULTILINE)
+PROMPT_SOURCE_SVG_SHA_RE = re.compile(
+    r"^- SVG SHA-256: `([a-f0-9]{64})`$", re.MULTILINE
+)
+PROMPT_RENDERER_RE = re.compile(
+    r"^- Renderer: (librsvg rsvg-convert) ([0-9]+(?:\.[0-9]+){2})$",
+    re.MULTILINE,
+)
+PROMPT_RENDER_COMMAND_RE = re.compile(r"^- Befehl: `([^`]+)`$", re.MULTILINE)
+PROMPT_OUTPUT_PNG_SHA_RE = re.compile(
+    r"^- PNG SHA-256: `([a-f0-9]{64})`$", re.MULTILINE
+)
 SHA256_RE = re.compile(r"^sha256:[a-f0-9]{64}$")
 
 CLASS_SPECS: tuple[dict[str, Any], ...] = (
@@ -263,6 +283,89 @@ def verify_asset_source(source_path: str, expected_bytes: int, expected_sha256: 
         )
 
 
+def unique_prompt_match(pattern: re.Pattern[str], prompt_text: str, label: str) -> Any:
+    matches = pattern.findall(prompt_text)
+    if len(matches) != 1:
+        raise ReviewError(f"Prompt must contain exactly one {label}; found {len(matches)}")
+    return matches[0]
+
+
+def deterministic_render_evidence(
+    prompt_text: str,
+    artifact_path: str,
+    output_bytes: int,
+    output_sha256: str,
+) -> dict[str, Any]:
+    source_path = unique_prompt_match(PROMPT_SOURCE_SVG_RE, prompt_text, "immutable SVG")
+    if not source_path.startswith("curricula/DE/Gymnasium/assessments/") or not source_path.endswith(".svg"):
+        raise ReviewError(
+            "Deterministic render source must be a reviewed SVG below "
+            "curricula/DE/Gymnasium/assessments/"
+        )
+    declared_source_sha256 = unique_prompt_match(
+        PROMPT_SOURCE_SVG_SHA_RE, prompt_text, "source SVG SHA-256"
+    )
+    source_file = repo_file(source_path)
+    actual_source_sha256 = sha256_file(source_file)
+    if actual_source_sha256 != declared_source_sha256:
+        raise ReviewError(
+            f"Deterministic render source hash drift for {source_path}: "
+            f"declared {declared_source_sha256}, got {actual_source_sha256}"
+        )
+
+    renderer, renderer_version = unique_prompt_match(
+        PROMPT_RENDERER_RE, prompt_text, "renderer/version binding"
+    )
+    command = unique_prompt_match(
+        PROMPT_RENDER_COMMAND_RE, prompt_text, "render command"
+    )
+    try:
+        command_parts = shlex.split(command, posix=True)
+    except ValueError as error:
+        raise ReviewError(f"Invalid deterministic render command: {error}") from error
+    if len(command_parts) != 10 or command_parts[0] != "rsvg-convert":
+        raise ReviewError("Deterministic render command must be the closed rsvg-convert form")
+    expected_flags = ["--width", "--height", "--format", "--output"]
+    if command_parts[1:8:2] != expected_flags:
+        raise ReviewError("Deterministic render command flags or order changed")
+    try:
+        width = int(command_parts[2])
+        height = int(command_parts[4])
+    except ValueError as error:
+        raise ReviewError("Deterministic render dimensions must be integers") from error
+    if not 1 <= width <= 16384 or not 1 <= height <= 16384:
+        raise ReviewError("Deterministic render dimensions are outside the closed bounds")
+    output_format = command_parts[6]
+    if output_format != "png":
+        raise ReviewError("Deterministic render output format must be png")
+    if command_parts[8] != Path(artifact_path).name:
+        raise ReviewError("Deterministic render output filename differs from the artifact")
+    if command_parts[9] != Path(source_path).name:
+        raise ReviewError("Deterministic render source filename differs from the bound SVG")
+
+    declared_output_sha256 = unique_prompt_match(
+        PROMPT_OUTPUT_PNG_SHA_RE, prompt_text, "output PNG SHA-256"
+    )
+    if declared_output_sha256 != output_sha256:
+        raise ReviewError(
+            "Deterministic render prompt output SHA-256 differs from the active asset"
+        )
+    return {
+        "contractId": DETERMINISTIC_RENDER_CONTRACT_ID,
+        "sourcePath": source_path,
+        "sourceBytes": source_file.stat().st_size,
+        "sourceSha256": f"sha256:{actual_source_sha256}",
+        "renderer": renderer,
+        "rendererVersion": renderer_version,
+        "width": width,
+        "height": height,
+        "format": output_format,
+        "command": command,
+        "outputBytes": output_bytes,
+        "outputSha256": f"sha256:{output_sha256}",
+    }
+
+
 def load_source_model(release_root: Path) -> SourceModel:
     if not release_root.is_dir() or release_root.is_symlink():
         raise ReviewError(f"Release-model root must be a regular directory: {release_root}")
@@ -379,7 +482,10 @@ def load_source_model(release_root: Path) -> SourceModel:
         if artifact_path in artifact_paths:
             raise ReviewError(f"Duplicate embedded artifactPath {artifact_path!r}")
         artifact_paths.add(artifact_path)
-        if legacy_license_note != LEGACY_IMAGE_LICENSE_NOTE:
+        if legacy_license_note not in {
+            LEGACY_IMAGE_LICENSE_NOTE,
+            SKILLPILOT_AUTHORED_LICENSE_NOTE,
+        }:
             raise ReviewError(
                 f"Unexpected legacy image license/provenance note on {resource_id!r}: "
                 f"{legacy_license_note!r}"
@@ -414,15 +520,38 @@ def load_source_model(release_root: Path) -> SourceModel:
                 f"Prompt provider metadata differs for resource {resource_id!r}"
             )
         prompt_sha256 = sha256_file(prompt_path)
-        user_provided = USER_PROVIDED_RE.search(provider) is not None
-        provenance_class = (
-            "user-provided-generated-claim" if user_provided else "ai-generated-curated"
-        )
-        provenance_source = (
-            "user-provided-generated-claim"
-            if user_provided
-            else "provider-pipeline-claim"
-        )
+        deterministic_evidence: dict[str, Any] | None = None
+        if legacy_license_note == SKILLPILOT_AUTHORED_LICENSE_NOTE:
+            if provider != DETERMINISTIC_RENDER_PROVIDER:
+                raise ReviewError(
+                    f"SkillPilot-authored asset {resource_id!r} lacks the closed "
+                    "deterministic-render provider"
+                )
+            user_provided = False
+            provenance_class = DETERMINISTIC_RENDER_PROVENANCE_CLASS
+            provenance_source = DETERMINISTIC_RENDER_PROVENANCE_SOURCE
+            deterministic_evidence = deterministic_render_evidence(
+                prompt_text,
+                artifact_path,
+                byte_count,
+                asset_sha256,
+            )
+        else:
+            if provider == DETERMINISTIC_RENDER_PROVIDER:
+                raise ReviewError(
+                    f"Deterministic asset {resource_id!r} is incorrectly labeled as AI-generated"
+                )
+            user_provided = USER_PROVIDED_RE.search(provider) is not None
+            provenance_class = (
+                "user-provided-generated-claim"
+                if user_provided
+                else "ai-generated-curated"
+            )
+            provenance_source = (
+                "user-provided-generated-claim"
+                if user_provided
+                else "provider-pipeline-claim"
+            )
         base = {
             "resourceId": resource_id,
             "ownerGoalId": owner_goal_id,
@@ -438,6 +567,8 @@ def load_source_model(release_root: Path) -> SourceModel:
             "promptPath": prompt_relative,
             "promptSha256": f"sha256:{prompt_sha256}",
         }
+        if deterministic_evidence is not None:
+            base["deterministicRenderEvidence"] = deterministic_evidence
         base["provenanceFingerprint"] = digest(base)
         asset_bases.append(base)
 
@@ -764,7 +895,9 @@ def validate_decision_policy(
         kinds = evidence_kinds(decision)
         required_kinds: set[str]
         if asset:
-            required_kinds = {"project-license-decision", "provider-terms-review"}
+            required_kinds = {"project-license-decision"}
+            if decision.get("provenanceClass") != DETERMINISTIC_RENDER_PROVENANCE_CLASS:
+                required_kinds.add("provider-terms-review")
             if decision.get("userProvided") is True:
                 required_kinds.add("uploader-rights-attestation")
         else:
@@ -1017,6 +1150,7 @@ def validate_review(
         "provenanceSource": "ASSET_PROVENANCE_DRIFT",
         "userProvided": "ASSET_PROVENANCE_DRIFT",
         "promptSha256": "ASSET_PROVENANCE_DRIFT",
+        "deterministicRenderEvidence": "ASSET_PROVENANCE_DRIFT",
         "provenanceFingerprint": "ASSET_PROVENANCE_DRIFT",
     }
     for resource_id in sorted(set(expected_by_id) & set(actual_by_id)):
@@ -1176,6 +1310,48 @@ def run_self_test(
                 "provenanceSource": "provider-pipeline-claim",
             }
         ),
+    )
+    deterministic_index = next(
+        index
+        for index, item in enumerate(review["assetDecisions"])
+        if item["provenanceClass"] == DETERMINISTIC_RENDER_PROVENANCE_CLASS
+    )
+    case(
+        "deterministic-render-source-hash-drift",
+        "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][deterministic_index][
+            "deterministicRenderEvidence"
+        ].update({"sourceSha256": f"sha256:{'0' * 64}"}),
+    )
+    case(
+        "deterministic-render-output-hash-drift",
+        "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][deterministic_index][
+            "deterministicRenderEvidence"
+        ].update({"outputSha256": f"sha256:{'0' * 64}"}),
+    )
+    case(
+        "deterministic-render-evidence-removed",
+        "ASSET_PROVENANCE_DRIFT",
+        lambda value: value["assetDecisions"][deterministic_index].pop(
+            "deterministicRenderEvidence"
+        ),
+    )
+
+    def deterministic_render_relabelled_as_ai(value: dict[str, Any]) -> None:
+        item = value["assetDecisions"][deterministic_index]
+        item.update(
+            {
+                "legacyLicenseNote": LEGACY_IMAGE_LICENSE_NOTE,
+                "provenanceClass": "ai-generated-curated",
+                "provenanceSource": "provider-pipeline-claim",
+            }
+        )
+
+    case(
+        "deterministic-render-ai-relabel",
+        "ASSET_PROVENANCE_DRIFT",
+        deterministic_render_relabelled_as_ai,
     )
 
     def unsupported_allowed(value: dict[str, Any]) -> None:

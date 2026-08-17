@@ -5,6 +5,7 @@ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import type { ApplicabilityEvidence } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -112,7 +113,7 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
 }
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
-  if (!goal) return true
+  if (!goal) return false
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
   if (tags.includes('Motivation') || tags.includes('Orientation')) return false
@@ -181,48 +182,6 @@ function readAcceptedSurrogateEvidenceByKey(): Map<string, SurrogateEvidenceEntr
     entriesByKey.set(key, [...(entriesByKey.get(key) ?? []), entry])
   }
   return entriesByKey
-}
-
-function hasReviewedRequiresClosureSurrogateEvidence(
-  report: CoverageReport,
-  goal: CoverageGoalReport,
-  jurisdiction: string,
-  surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
-  visitedGoalIds: Set<string> = new Set(),
-): boolean {
-  const entries = surrogateEntriesByKey.get(surrogateEvidenceKey(report.landscapeId, goal.goalId, jurisdiction)) ?? []
-  if (entries.length === 0) return false
-  const goalById = new Map(report.goals.map((candidate) => [candidate.goalId, candidate]))
-
-  return entries.some((entry) => {
-    const requiredByGoalId = entry.requiredByGoalId!
-    const requiredByGoal = goalById.get(requiredByGoalId)
-    if (!requiredByGoal || visitedGoalIds.has(requiredByGoalId)) return false
-
-    return goal.evidence.some((evidence) =>
-      evidence.kind === 'requires-closure'
-      && evidence.dimension === 'jurisdiction'
-      && evidence.value === jurisdiction
-      && evidence.source === `required by ${requiredByGoalId}`)
-      && hasCoverageBackedJurisdictionEvidence(
-        report,
-        requiredByGoal,
-        jurisdiction,
-        surrogateEntriesByKey,
-        new Set([...visitedGoalIds, goal.goalId]),
-      )
-  })
-}
-
-function hasCoverageBackedJurisdictionEvidence(
-  report: CoverageReport,
-  goal: CoverageGoalReport,
-  jurisdiction: string,
-  surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
-  visitedGoalIds: Set<string> = new Set(),
-): boolean {
-  return hasDirectSourceBackedJurisdictionEvidence(goal, jurisdiction)
-    || hasReviewedRequiresClosureSurrogateEvidence(report, goal, jurisdiction, surrogateEntriesByKey, visitedGoalIds)
 }
 
 function roundPercent(numerator: number, denominator: number): number {
@@ -314,19 +273,27 @@ function buildAudit(): SourceCoverageAudit {
     const atomicGoals = report.goals.filter((goal) =>
       goal.goalType === 'atomic' && isCurriculumSourceCoverageGoal(goalById.get(goal.goalId)))
     const jurisdictions = report.projections.map((projection) => {
+      const coverageEvidence = createReviewedRequiresClosureCoverageChecker({
+        landscapeId: report.landscapeId,
+        jurisdiction: projection.value,
+        goals: report.goals,
+        canonicalGoalById: goalById,
+        surrogateEntriesByKey,
+        isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+      })
       const sourceBackedAtomicGoals = atomicGoals.filter((goal) =>
-        hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey))
+        coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const surrogateBackedAtomicGoals = atomicGoals.filter((goal) =>
         !hasDirectSourceBackedJurisdictionEvidence(goal, projection.value)
-        && hasReviewedRequiresClosureSurrogateEvidence(report, goal, projection.value, surrogateEntriesByKey))
+        && coverageEvidence.hasReviewedRequiresClosureSurrogateEvidence(goal))
       const visibleAtomicGoals = atomicGoals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const unsupportedAssignedAtomicGoals = visibleAtomicGoals.filter((goal) =>
-        !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey))
+        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const visibleCoveredAtomicGoals = visibleAtomicGoals.filter((goal) =>
-        hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey))
+        coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const missingSourceBackedAtomicGoals = atomicGoals.filter((goal) =>
-        !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey))
+        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
       const nonVisibleMissingSourceBackedAtomicGoals = missingSourceBackedAtomicGoals.filter((goal) =>
         !(goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const partialSourceLinkedAtomicGoals = visibleAtomicGoals.filter((goal) =>

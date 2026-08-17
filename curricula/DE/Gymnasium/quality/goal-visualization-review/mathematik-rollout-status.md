@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-16T08:54:46.989Z
+Generated: 2026-08-16T22:53:45.445Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1081 |
-| Atomare Ziele im Visualisierungs-Scope | 755 |
-| Ziele mit primaerem Visualisierungslink | 733 |
-| Coverage | 97.1% |
-| Durch Asset oder Provider-Deferred dokumentierte Ziele | 755 |
+| Alle Ziele in der Landschaft | 1146 |
+| Atomare Ziele im Visualisierungs-Scope | 780 |
+| Ziele mit primaerem Visualisierungslink | 711 |
+| Coverage | 91.2% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 780 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 221 |
-| Offene Provider-Deferred-Ziele | 22 |
+| Review-Ledger-Dateien | 222 |
+| Offene Provider-Deferred-Ziele | 69 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 1 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -37,8 +37,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 1 |
-| `approved` | 18 |
-| `pilot` | 714 |
+| `approved` | 20 |
+| `pilot` | 690 |
 
 ## Ledger Decisions
 
@@ -65,7 +65,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
-| `deferred_provider_limitation` | 36 |
+| `deferred_provider_limitation` | 85 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -85,8 +85,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-markov-split-2026-08-16.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-structural-split-deferred-2026-08-16.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
@@ -95,7 +95,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 22 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 69 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -103,28 +103,28 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| mathematik-structural-split-deferred-2026-08-16 | `74dc4b0d-a167-564c-bdc1-5cf510aee280` | Algebraische Terme ausmultiplizieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `96c55cb6-d2c7-5145-8567-b5f570f55a8a` | Algebraische Terme faktorisieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `e2bf726a-126c-5c66-9fbb-6e04c129bb0f` | Äquivalenz durch Begründung oder Gegenbeispiel prüfen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `308f19e2-e202-5300-a2fa-1eaa717f4e73` | Asymptotisches Verhalten exponentieller Funktionen deuten | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `4ae9e316-509f-517d-bd94-a165817af24f` | Begrenzte Wachstums- und Zerfallsprozesse aus Daten modellieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `e495fa38-b198-5280-a405-9e41cafd6d17` | Bernoulli-Experimente und -Ketten identifizieren und parametrisieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `aa00edfa-cf8d-500e-994f-7e33a5ebd045` | Binomialwahrscheinlichkeiten bestimmen und deuten | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `b7cc2fc4-c695-5a97-93b0-3a619c632ca8` | Das empirische Gesetz der großen Zahlen erläutern | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `06ce2b1b-e888-5322-9ed9-dfc6d322956a` | Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK) | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `9b6f4d7d-a804-5666-b7ea-85bb3c73da4a` | Die Formel für Binomialwahrscheinlichkeiten an einem Beispiel begründen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `e105bad8-b4e5-53fc-b02e-604f1df5b503` | Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK) | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `a7778885-17aa-5eeb-a6a7-fbf4c8d55a16` | Die Verteilungsfunktion der Normalverteilung als Integralfunktion deuten (LK) | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `a506fc1d-b784-548f-90c3-5aae1b819b68` | Die Volumenformel schiefer Prismen mit Cavalieri plausibilisieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `5619ca5b-dc2a-504e-ad89-2e0ca0a83822` | Die Volumenformel von Pyramiden begründen | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0` | Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK) | `deferred_provider_limitation` |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
-| 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
-| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_provider_limitation` |
-| mathematik-ai-correction-shard-1 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | Kettenlinien und Glockenkurven untersuchen (LK) | `deferred_provider_limitation` |
-| 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
-| 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
-| 205 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `deferred_provider_limitation` |
-| 205 | `3bfc2747-03e2-57db-b13f-01f78835eefd` | Konvergenz und Grenzen numerischer Verfahren reflektieren | `deferred_provider_limitation` |
-| 205 | `0408ac7f-0530-5de5-b248-cf581c9b5a17` | Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell) | `deferred_provider_limitation` |
-| 205 | `fc34449a-fbf4-574c-884f-ecdf48b42d2e` | Laufzeit tabellarisch näherungsweise bestimmen | `deferred_provider_limitation` |
-| 205 | `0de1e45c-aea9-5e53-932a-027dcf509efa` | Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK) | `deferred_provider_limitation` |
-| 205 | `0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` | Newton-Verfahren zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
-| 193 | `5bced7dc-6557-4af1-9e70-d87f850d3b7f` | Parameter quadratischer Funktionen in Scheitelpunktform deuten | `deferred_provider_limitation` |
-| 195 | `e7350739-c89f-5c7b-b4d1-717d6a767298` | Parameteruntersuchungen mit Exponentialfunktionen (LK) | `deferred_provider_limitation` |
-| 195 | `1e164a09-0a2b-55ab-b927-08a4a278f72b` | Plausibilität mit Beispielen testen | `deferred_provider_limitation` |
-| 206 | `52758ed0-cba8-5583-9e69-906d2e7c7843` | Prognose- und Konfidenzintervalle im Kontext interpretieren | `deferred_provider_limitation` |
-| 206 | `3256476b-ec65-4038-9f5a-a8808fbcf207` | Punkt-Gerade-Abstände im Raum bestimmen | `deferred_provider_limitation` |
-| 206 | `075f1ef2-6860-4b20-9df2-878157eb395e` | Punkte und Vektoren im Raum koordinatisieren | `deferred_provider_limitation` |
-| 206 | `47400de4-b0e4-5bb6-a1bd-bd2beee616bb` | Regula falsi zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
-| 206 | `36728db8-da44-4add-97b8-0fdd7cfd9c41` | Satz des Thales begründen und anwenden | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `55d0474b-b82c-59b6-a62a-b6a0a34d9c4b` | Diskrete und stetige Zufallsgrößen unterscheiden (LK) | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `3017e774-8d9f-5129-828f-7684db5afc1e` | Dreiecke aus Kongruenzangaben konstruieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `570d5931-f126-5bb4-8b7f-db236d6b727f` | Eine Kreistangente im Berührpunkt konstruieren | `deferred_provider_limitation` |
+| mathematik-structural-split-deferred-2026-08-16 | `ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c` | Empirische und theoretische Wahrscheinlichkeit unterscheiden | `deferred_provider_limitation` |
 
-Weitere 2 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 49 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -170,7 +170,9 @@ Weitere 27 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `03703b29-efd8-57e0-acf5-4381b1dc67ec` | Modalwert bestimmen und im Kontext deuten | `approved` | - |
 
 ### Accepted Review Without Link
 

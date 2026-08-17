@@ -270,6 +270,71 @@
       "maxLength": 300,
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
     },
+    "deterministicRenderEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "sourcePath",
+        "sourceBytes",
+        "sourceSha256",
+        "renderer",
+        "rendererVersion",
+        "width",
+        "height",
+        "format",
+        "command",
+        "outputBytes",
+        "outputSha256"
+      ],
+      "properties": {
+        "contractId": {
+          "const": "rsvg-convert-fixed-png-v1"
+        },
+        "sourcePath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourceBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sourceSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "renderer": {
+          "const": "librsvg rsvg-convert"
+        },
+        "rendererVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+){2}$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "format": {
+          "const": "png"
+        },
+        "command": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "outputBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "outputSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
     "licenseExpression": {
       "type": "string",
       "minLength": 1,
@@ -629,13 +694,15 @@
             "provenanceClass": {
               "enum": [
                 "ai-generated-curated",
-                "user-provided-generated-claim"
+                "user-provided-generated-claim",
+                "skillpilot-authored-deterministic-render"
               ]
             },
             "provenanceSource": {
               "enum": [
                 "provider-pipeline-claim",
-                "user-provided-generated-claim"
+                "user-provided-generated-claim",
+                "hash-bound-skillpilot-source-render"
               ]
             },
             "userProvided": {
@@ -646,6 +713,9 @@
             },
             "promptSha256": {
               "$ref": "#/$defs/sha256Digest"
+            },
+            "deterministicRenderEvidence": {
+              "$ref": "#/$defs/deterministicRenderEvidence"
             },
             "provenanceFingerprint": {
               "$ref": "#/$defs/sha256Digest"
@@ -660,6 +730,41 @@
             "reviewer": {},
             "reviewedAt": {},
             "reviewEvidence": {}
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "provenanceClass"
+            ],
+            "properties": {
+              "provenanceClass": {
+                "const": "skillpilot-authored-deterministic-render"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "deterministicRenderEvidence"
+            ],
+            "properties": {
+              "legacyLicenseNote": {
+                "const": "SkillPilot-authored"
+              },
+              "provenanceSource": {
+                "const": "hash-bound-skillpilot-source-render"
+              },
+              "userProvided": {
+                "const": false
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": [
+                "deterministicRenderEvidence"
+              ]
+            }
           }
         }
       ]

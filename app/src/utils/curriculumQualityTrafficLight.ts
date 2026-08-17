@@ -27,7 +27,6 @@ export const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d03
 
 const GREEN_CURRICULUM_IDS = new Set([
   CANONICAL_GYMNASIUM_ROOT_ID,
-  CANONICAL_GYMNASIUM_MATH_ID,
   CANONICAL_GYMNASIUM_PHYSICS_ID,
 ])
 
@@ -39,14 +38,11 @@ export const MANUAL_ORANGE_CURRICULUM_IDS = [
   '7d51b38c-a149-5407-bddc-d2ce7878b020', // Informatik
   '668cf206-941e-51f8-8704-3e8938631235', // Latein
   '51b60137-46e8-5498-973e-ea38bb32f327', // Politik und Wirtschaft
-  '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', // Wirtschaftswissenschaften
 ] as const
 
 const ORANGE_CURRICULUM_IDS = new Set<string>(MANUAL_ORANGE_CURRICULUM_IDS)
 
 const GREEN_GYMNASIUM_SUBJECTS = new Set([
-  'mathematik',
-  'mathematics',
   'physik',
   'physics',
 ])
@@ -66,8 +62,6 @@ const ORANGE_GYMNASIUM_SUBJECTS = new Set([
   'latin',
   'politik und wirtschaft',
   'politics and economics',
-  'wirtschaftswissenschaften',
-  'economics',
 ])
 
 export const getCurriculumQualityStatus = (

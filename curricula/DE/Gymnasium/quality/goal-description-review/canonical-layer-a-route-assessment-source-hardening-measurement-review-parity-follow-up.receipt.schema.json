@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-layer-a-route-assessment-source-hardening-measurement-review-parity-follow-up.receipt.schema.json",
+  "title": "Canonical Layer-A Route Assessment Source Hardening Measurement Review Parity Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "receiptRole",
+    "parentReceipt",
+    "authorization",
+    "scope",
+    "promptTransition",
+    "measurementEvidence",
+    "artifactBindings",
+    "validation",
+    "receiptDigestAlgorithm",
+    "receiptDigest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptId": {
+      "const": "canonical-layer-a-route-assessment-source-hardening-measurement-review-parity-follow-up-2026-08-17-v1"
+    },
+    "appliedAt": { "const": "2026-08-17" },
+    "status": { "const": "APPLIED_AND_VALIDATED" },
+    "receiptRole": {
+      "const": "append-only-child-of-deterministic-render-provenance-follow-up"
+    },
+    "parentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt", "receiptDigest"],
+      "properties": {
+        "receipt": { "$ref": "#/$defs/fileBinding" },
+        "receiptDigest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "furtherProductOwnerDecisionRequired",
+        "affectsOpenAiCoachV1Contract",
+        "v1Version",
+        "commitPushDeployAuthorized"
+      ],
+      "properties": {
+        "basis": { "type": "string", "minLength": 1 },
+        "furtherProductOwnerDecisionRequired": { "const": false },
+        "affectsOpenAiCoachV1Contract": { "const": false },
+        "v1Version": { "const": "1.0.0 unchanged" },
+        "commitPushDeployAuthorized": { "const": false }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "promptPath",
+        "goalId",
+        "lineNumber",
+        "linePointer",
+        "changedLineCount",
+        "canonicalMutationCount",
+        "sourceMutationCount",
+        "assetMutationCount"
+      ],
+      "properties": {
+        "promptPath": {
+          "const": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/prompt.de.md"
+        },
+        "goalId": { "const": "2c97548a-77d2-57ef-98f7-a6d06aab48c9" },
+        "lineNumber": { "const": 28 },
+        "linePointer": { "const": "/lines/27" },
+        "changedLineCount": { "const": 1 },
+        "canonicalMutationCount": { "const": 0 },
+        "sourceMutationCount": { "const": 0 },
+        "assetMutationCount": { "const": 0 }
+      }
+    },
+    "promptTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "after", "beforeLine", "afterLine"],
+      "properties": {
+        "before": { "$ref": "#/$defs/fileBinding" },
+        "after": { "$ref": "#/$defs/fileBinding" },
+        "beforeLine": {
+          "const": "Die Millimeterskala, der Nullpunkt und die markierte Strecke bis 47 mm wurden unabhängig geprüft. Das gerenderte PNG ist 1200 × 360 Pixel groß und byteidentisch in Canonical-, Web- und Backend-Assetwurzel."
+        },
+        "afterLine": {
+          "const": "Die Millimeterskala, der Nullpunkt und die markierte Strecke bis 74 mm wurden unabhängig geprüft. Das gerenderte PNG ist 1200 × 360 Pixel groß und byteidentisch in Canonical-, Web- und Backend-Assetwurzel."
+        }
+      }
+    },
+    "measurementEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalMathematics",
+        "goalIndex",
+        "resourceLinkIndex",
+        "altTextPointer",
+        "altText",
+        "sourceSvg",
+        "solution",
+        "svgDescription",
+        "svgGeometry",
+        "solutionStatement",
+        "measurementMm",
+        "provider",
+        "renderer",
+        "rendererVersion",
+        "renderContractId",
+        "renderCommand",
+        "canonicalAsset",
+        "publicAsset",
+        "backendAsset",
+        "assetSha256"
+      ],
+      "properties": {
+        "canonicalMathematics": { "$ref": "#/$defs/fileBinding" },
+        "goalIndex": { "const": 1131 },
+        "resourceLinkIndex": { "const": 0 },
+        "altTextPointer": { "const": "/goals/1131/resourceLinks/0/altText" },
+        "altText": {
+          "const": "Ein Messstreifen mit Millimeterskala, dessen blaue Messstrecke bei null Millimetern beginnt und bei vierundsiebzig Millimetern endet."
+        },
+        "sourceSvg": { "$ref": "#/$defs/fileBinding" },
+        "solution": { "$ref": "#/$defs/fileBinding" },
+        "svgDescription": {
+          "const": "Ein blauer Prüfstreifen beginnt am Nullstrich und endet am vierten Millimeterstrich nach sieben Zentimetern."
+        },
+        "svgGeometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stripStartX",
+            "stripWidthPixels",
+            "stripEndX",
+            "millimeterTickWidthPixels",
+            "derivedMeasurementMm"
+          ],
+          "properties": {
+            "stripStartX": { "const": 100 },
+            "stripWidthPixels": { "const": 740 },
+            "stripEndX": { "const": 840 },
+            "millimeterTickWidthPixels": { "const": 10 },
+            "derivedMeasurementMm": { "const": 74 }
+          }
+        },
+        "solutionStatement": {
+          "const": "Die Länge beträgt deshalb $7{,}4\\,\\mathrm{cm}=74\\,\\mathrm{mm}$."
+        },
+        "measurementMm": { "const": 74 },
+        "provider": {
+          "const": "Deterministically rendered from reviewed SVG assessment source"
+        },
+        "renderer": { "const": "librsvg rsvg-convert" },
+        "rendererVersion": { "const": "2.52.5" },
+        "renderContractId": { "const": "rsvg-convert-fixed-png-v1" },
+        "renderCommand": {
+          "const": "rsvg-convert --width 1200 --height 360 --format png --output 2c97548a-77d2-57ef-98f7-a6d06aab48c9.png measurement-strip-v1.svg"
+        },
+        "canonicalAsset": { "$ref": "#/$defs/fileBinding" },
+        "publicAsset": { "$ref": "#/$defs/fileBinding" },
+        "backendAsset": { "$ref": "#/$defs/fileBinding" },
+        "assetSha256": { "$ref": "#/$defs/prefixedSha256" }
+      }
+    },
+    "artifactBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "validator"],
+      "properties": {
+        "schema": { "$ref": "#/$defs/fileBinding" },
+        "validator": { "$ref": "#/$defs/fileBinding" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentFileAndSelfDigest",
+        "exactOneLineReverse",
+        "unchangedPromptRemainder",
+        "svgGeometryParity",
+        "canonicalAltTextParity",
+        "solutionParity",
+        "providerRendererAssetParity",
+        "childSchema",
+        "childSelfDigest"
+      ],
+      "properties": {
+        "parentFileAndSelfDigest": { "const": "PASS" },
+        "exactOneLineReverse": { "const": "PASS" },
+        "unchangedPromptRemainder": { "const": "PASS" },
+        "svgGeometryParity": { "const": "PASS" },
+        "canonicalAltTextParity": { "const": "PASS" },
+        "solutionParity": { "const": "PASS" },
+        "providerRendererAssetParity": { "const": "PASS" },
+        "childSchema": { "const": "PASS" },
+        "childSelfDigest": { "const": "PASS" }
+      }
+    },
+    "receiptDigestAlgorithm": {
+      "const": "sha256(JSON.stringify(document_without_receiptDigest))"
+    },
+    "receiptDigest": { "$ref": "#/$defs/sha256" }
+  }
+}

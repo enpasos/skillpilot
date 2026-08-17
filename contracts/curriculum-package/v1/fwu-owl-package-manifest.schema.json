@@ -239,7 +239,7 @@
             "id": { "const": "full-standalone-v1" },
             "path": { "const": "schemas/profiles/full-standalone-v1.profile.json" },
             "bytes": { "const": 16926 },
-            "sha256": { "const": "27e4370dd7eecf4c308265fbad08d638976853a0c1c0b96d3c58b91d87733543" }
+            "sha256": { "const": "00aaa154e43ea6440a745b53fdd089ae20a2eb89b4208016335fcb784ec2066c" }
           }
         },
         "supportedSkillpilotSoftware": {
@@ -533,10 +533,10 @@
           "const": "text/turtle"
         },
         "bytes": {
-          "const": 5427
+          "const": 5421
         },
         "sha256": {
-          "const": "22358a2aa96c16250d0f73fe6683fe6a0bda501b776dd6376a04b1980728e05a"
+          "const": "c42cd5a9698b438c6cb7c1cb4fba02da46fea70c247be75f2f6d57f126c994c6"
         }
       }
     },
@@ -805,6 +805,26 @@
         }
       }
     },
+    "binaryResourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "resourceId", "publicReference"],
+      "properties": {
+        "kind": { "const": "binary-resource" },
+        "resourceId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "publicReference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^/assets/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)*$"
+        }
+      }
+    },
     "semanticBinding": {
       "oneOf": [
         {
@@ -886,26 +906,7 @@
           "required": ["kind"],
           "properties": { "kind": { "const": "ontology-catalog" } }
         },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["kind", "resourceId", "publicReference"],
-          "properties": {
-            "kind": { "const": "binary-resource" },
-            "resourceId": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500,
-              "pattern": "^\\S(?:.*\\S)?$"
-            },
-            "publicReference": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 1000,
-              "pattern": "^/assets/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)*$"
-            }
-          }
-        },
+        { "$ref": "#/$defs/binaryResourceBinding" },
         {
           "type": "object",
           "additionalProperties": false,
@@ -995,6 +996,7 @@
         "provenanceClass": {
           "enum": [
             "skillpilot-authored",
+            "skillpilot-authored-deterministic-render",
             "fwu-core-pinned-copy",
             "official-source-metadata",
             "ai-generated-curated",
@@ -1019,6 +1021,23 @@
           },
           "then": { "properties": { "licenseExpression": { "type": "string" } } },
           "else": { "properties": { "licenseExpression": { "type": "null" } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "provenanceClass": {
+                "const": "skillpilot-authored-deterministic-render"
+              }
+            },
+            "required": ["provenanceClass"]
+          },
+          "then": {
+            "properties": {
+              "role": { "const": "binary-resource" },
+              "mediaType": { "const": "image/png" },
+              "semanticBinding": { "$ref": "#/$defs/binaryResourceBinding" }
+            }
+          }
         }
       ]
     }

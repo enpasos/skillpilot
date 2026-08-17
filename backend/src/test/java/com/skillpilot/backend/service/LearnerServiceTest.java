@@ -63,6 +63,7 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 public class LearnerServiceTest {
 
+    private static final int SCOPE_COMPLETION_SAFETY_MARGIN = 5;
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_LANDSCAPE_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_SCOPE_ID =
@@ -128,6 +129,7 @@ public class LearnerServiceTest {
     private static final String J8_EXAM_TASK_5_ID = "3045f00d-a5b9-547c-b568-593aeac9ffa3";
     private static final String J8_EXAM_TASK_6_ID = "fbf10244-9e55-597a-98d4-006d972a5c41";
     private static final String J8_EXAM_TASK_7_ID = "10a77422-6ceb-57ce-a90f-0ebc1179aaae";
+    private static final String J8_EXAM_TASK_8_ID = "a70d4194-1f95-5dc4-884d-8ca856663601";
 
     @Autowired
     private LearnerService learnerService;
@@ -625,7 +627,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void coachStateKeepsFiveRemainingReleasedJ8ExamTasksSelectable() {
+    void coachStateKeepsSixRemainingReleasedJ8ExamTasksSelectable() {
         selectCompletedCanonicalMathCrossStageCurriculum();
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID));
         Set<String> remainingExamTaskIds = Set.of(
@@ -633,13 +635,16 @@ public class LearnerServiceTest {
                 J8_EXAM_TASK_2_ID,
                 J8_EXAM_TASK_4_ID,
                 J8_EXAM_TASK_5_ID,
-                J8_EXAM_TASK_6_ID);
+                J8_EXAM_TASK_6_ID,
+                J8_EXAM_TASK_8_ID);
         Set<String> completedExamTaskIds = Set.of(J8_EXAM_TASK_3_ID, J8_EXAM_TASK_7_ID);
+        Set<String> allExamTaskIds = new LinkedHashSet<>(remainingExamTaskIds);
+        allExamTaskIds.addAll(completedExamTaskIds);
         Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
                 .getGoals().stream()
                 .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
         Set<String> directExamRequirementIds = new LinkedHashSet<>();
-        java.util.stream.Stream.concat(remainingExamTaskIds.stream(), completedExamTaskIds.stream())
+        allExamTaskIds.stream()
                 .map(canonicalGoals::get)
                 .flatMap(goal -> goal.getRequires().stream())
                 .forEach(directExamRequirementIds::add);
@@ -655,7 +660,7 @@ public class LearnerServiceTest {
                     .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
             assertThat(sourceJ8AtomicGoalIds)
                     .as(viewId)
-                    .hasSize(49)
+                    .hasSize(53)
                     .containsAll(directExamRequirementIds);
         }
         CompositionStructureResolution j8Scope = compositionViewService
@@ -665,21 +670,29 @@ public class LearnerServiceTest {
         Set<String> j8AtomicGoalIds = new LinkedHashSet<>();
         j8Scope.referencedGoalIds()
                 .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, j8AtomicGoalIds));
-        assertThat(j8AtomicGoalIds).hasSize(49);
-        assertThat(additionalCompetencies.referencedGoalIds()).hasSize(25);
+        Set<String> additionalCompetencyAtomicGoalIds = new LinkedHashSet<>();
+        additionalCompetencies.referencedGoalIds()
+                .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, additionalCompetencyAtomicGoalIds));
+        assertThat(j8AtomicGoalIds).hasSize(53);
+        assertThat(additionalCompetencyAtomicGoalIds)
+                .isNotEmpty()
+                .doesNotContainAnyElementsOf(allExamTaskIds);
         assertThat(j8AtomicGoalIds)
                 .containsAll(remainingExamTaskIds)
                 .containsAll(completedExamTaskIds)
-                .containsAll(additionalCompetencies.referencedGoalIds());
+                .containsAll(additionalCompetencyAtomicGoalIds);
 
-        // This mirrors the former compact J8 tree: all 19 non-exam targets and
-        // the orientation were complete while five exam targets remained.
+        // This mirrors the former compact J8 tree: all non-exam targets and
+        // the orientation were complete while six exam targets remained.
         Set<String> formerlyVisibleGoalIds = new LinkedHashSet<>(j8AtomicGoalIds);
-        formerlyVisibleGoalIds.removeAll(additionalCompetencies.referencedGoalIds());
-        assertThat(formerlyVisibleGoalIds).hasSize(24);
+        formerlyVisibleGoalIds.removeAll(additionalCompetencyAtomicGoalIds);
+        assertThat(formerlyVisibleGoalIds)
+                .hasSize(j8AtomicGoalIds.size() - additionalCompetencyAtomicGoalIds.size());
         Set<String> formerlyCompletedGoalIds = new LinkedHashSet<>(formerlyVisibleGoalIds);
         formerlyCompletedGoalIds.removeAll(remainingExamTaskIds);
         formerlyCompletedGoalIds.add(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID);
+        Set<String> formerlyCompletedAtomicGoalIds = new LinkedHashSet<>(formerlyCompletedGoalIds);
+        formerlyCompletedAtomicGoalIds.retainAll(j8AtomicGoalIds);
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         masteryRepository.saveAllAndFlush(formerlyCompletedGoalIds.stream()
                 .map(goalId -> new Mastery(learner, goalId, 1.0))
@@ -687,25 +700,27 @@ public class LearnerServiceTest {
 
         var resumedCoachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(49);
-        assertThat(resumedCoachState.goals().scope().mastered_atomic()).isEqualTo(19);
+        assertThat(resumedCoachState.goals().scope().total_atomic()).isEqualTo(53);
+        assertThat(resumedCoachState.goals().scope().mastered_atomic())
+                .isEqualTo(formerlyCompletedAtomicGoalIds.size());
         assertThat(resumedCoachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         assertThat(resumedCoachState.stateMachine().goalOptions()).isNotEmpty();
         assertThat(resumedCoachState.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
-                .allMatch(additionalCompetencies.referencedGoalIds()::contains);
+                .allMatch(additionalCompetencyAtomicGoalIds::contains);
 
-        masteryRepository.saveAllAndFlush(additionalCompetencies.referencedGoalIds().stream()
+        masteryRepository.saveAllAndFlush(additionalCompetencyAtomicGoalIds.stream()
                 .map(goalId -> new Mastery(learner, goalId, 1.0))
                 .toList());
 
         var coachState = learnerService.getCoachLearnerState(learnerId);
 
-        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(49);
-        assertThat(coachState.goals().scope().mastered_atomic()).isEqualTo(44);
+        assertThat(coachState.goals().scope().total_atomic()).isEqualTo(53);
+        assertThat(coachState.goals().scope().mastered_atomic())
+                .isEqualTo(coachState.goals().scope().total_atomic() - remainingExamTaskIds.size());
         assertThat(coachState.goals().scope().total_atomic()
                         - coachState.goals().scope().mastered_atomic())
-                .isEqualTo(5);
+                .isEqualTo(6);
         assertThat(coachState.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         assertThat(coachState.stateMachine().goalOptions())
                 .extracting(FrontierGoal::id)
@@ -2346,10 +2361,19 @@ public class LearnerServiceTest {
     }
 
     private void completeCurrentScope() {
-        completeCurrentScope(50);
+        var initialState = learnerService.getLearnerState(learnerId);
+        if (initialState.goals().scope() == null) {
+            throw new AssertionError("Expected a selected scope before completing it.");
+        }
+        int remainingAtomicGoals = Math.toIntExact(Math.max(
+                0L,
+                initialState.goals().scope().total_atomic()
+                        - initialState.goals().scope().mastered_atomic()));
+        completeCurrentScope(remainingAtomicGoals + SCOPE_COMPLETION_SAFETY_MARGIN);
     }
 
     private void completeCurrentScope(int maxIterations) {
+        Set<String> attemptedGoalIds = new LinkedHashSet<>();
         for (int iteration = 0; iteration < maxIterations; iteration += 1) {
             var state = learnerService.getLearnerState(learnerId);
             if (Boolean.TRUE.equals(state.goals().scope_completed())) {
@@ -2359,6 +2383,10 @@ public class LearnerServiceTest {
                     .filter(goal -> "atomic".equals(goal.type()))
                     .findFirst()
                     .orElseThrow(() -> new AssertionError("Expected an atomic frontier goal before scope completion."));
+            if (!attemptedGoalIds.add(nextGoal.id())) {
+                throw new AssertionError(
+                        "Scope completion stalled on the already attempted frontier goal " + nextGoal.id() + ".");
+            }
             learnerService.setMastery(
                     learnerId,
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));

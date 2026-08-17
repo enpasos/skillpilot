@@ -38,7 +38,6 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
   '2242c379-ddbb-4f03-8aed-13f49a4674e8',
   '8dd9f210-2683-5902-acab-e3be22725232',
   'e09072f9-67d9-412c-b872-24ecbf329232',
-  '797c4b05-96c4-59a7-85b2-f2690e22918f',
   '0c8c1ae9-135e-4fe5-bf67-e497eb3a9909',
   '27b63e2e-6a34-483e-8e5a-fe0f49670d1d',
   '2143e9e8-b176-545b-b2fa-91bbb6c8cf5c',
@@ -48,7 +47,6 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
   '10a33d93-dc20-5edd-ae3b-32338d05407c',
   '3d4d510c-0fd7-55ea-9b79-1db8d640758f',
   '508292f2-671b-4fd3-acbf-53d705e44693',
-  '377282dc-80b0-5bbf-bef2-a9f22e3919c1',
   'f9c24dd8-eaa5-5395-8679-820c1a74e7b7',
 ] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
@@ -674,10 +672,10 @@ const nationalAtlasConfigPath = fileURLToPath(new URL(
 const nationalAtlas = (await loadGoalBookBuildInputs(nationalAtlasConfigPath)).model
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
-assert.equal(nationalAtlas.book.pageCount, 755)
+assert.equal(nationalAtlas.book.pageCount, 780)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
-assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 755)
+assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 780)
 assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(nationalAtlas.source.navigationOwnership, 'common-topic-suffix-v1')
@@ -761,12 +759,12 @@ assert.equal(descriptionUnderstandingEvidenceCalibration.book.publicationMode, '
 assert.deepEqual(
   descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId),
   DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS,
-  'the versioned calibration book must retain all 17 goals in the reviewed order',
+  'the versioned calibration book must retain all 15 goals in the reviewed order',
 )
-assert.equal(descriptionUnderstandingEvidenceCalibration.book.pageCount, 17)
+assert.equal(descriptionUnderstandingEvidenceCalibration.book.pageCount, 15)
 assert.equal(
   new Set(descriptionUnderstandingEvidenceCalibration.pages.map(({ goalId }) => goalId)).size,
-  17,
+  15,
 )
 
 const canonicalLandscape = JSON.parse(canonicalLandscapeText) as {

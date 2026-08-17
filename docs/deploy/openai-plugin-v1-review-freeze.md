@@ -1,6 +1,6 @@
 # SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
 
-**Stand:** 15. August 2026
+**Stand:** 17. August 2026
 
 **Portalstatus:** `Review`
 
@@ -15,6 +15,14 @@ Der am 15. August 2026 eingereichte Stand von `skillpilot-coach-v1` Version
 nicht nur das hochgeladene Paket, sondern jeden beobachtbaren Vertrag, gegen
 den OpenAI scannt oder die fünf positiven und drei negativen Reviewfälle
 ausführt.
+
+Der Product Owner hat am 17. August 2026 klargestellt, dass die öffentliche
+fachliche Curriculum-Schicht (Layer A) ein getrennt fortschreibbarer
+Inhaltsbestand ist. Ihre exakten Curriculum-, Lernziel-, Assessment- und
+curricularen Visualisierungsbytes gehören weder zum Pluginvertrag noch zur
+Plugin-SemVer. Diese Klarstellung ändert weder `skillpilot-coach-v1` Version
+`1.0.0` noch den laufenden Portalreview und erfordert kein Zurückziehen oder
+erneutes Einreichen.
 
 `publicationStatus: DRAFT` bleibt dabei korrekt: Die Version ist im Portal
 eingereicht, aber noch nicht veröffentlicht. **DRAFT bedeutet während des
@@ -63,13 +71,26 @@ insbesondere:
 - Portalwerte: Beschreibungen und Übersetzungen, Starter Prompt,
   Länderfreigabe, Tool-Begründungen, exakt fünf positive und drei negative
   Testfälle, Testzugang, Attestierungen und Domain-Verifikation;
-- die von den Reviewfällen vorausgesetzten Curricula, Ziele, Exam-, Memory- und
-  Visualisierungsdaten sowie die Reviewzugänge und Wegwerf-Fixtures;
+- die Ablauf-, Zugangs- und Assertion-Verträge der Reviewfälle sowie
+  Reviewzugänge, Wegwerf-Fixtures und deren Setup- und Zustandssemantik;
 - Rechtstexte und Datenschutzaussagen, auf die Listing und Review verweisen;
 - Reviewvideo, SHA-256 und die einzige Portal-URL
   `https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4`;
 - Abhängigkeiten, Runtime- oder Deploymentänderungen, wenn sie einen dieser
   Punkte beobachtbar verändern könnten.
+
+Nicht vom Byte-Freeze erfasst ist die fortschreibbare öffentliche Layer-A-
+Schicht. Dazu gehören insbesondere die exakten Bytes, Hashes, IDs, Kanten und
+Anzahlen der Curricula, Lernziele, fachlichen Assessments und curricularen
+Visualisierungen. Reviewfälle dürfen diese fachlichen Daten über die
+unveränderten V1-Schnittstellen live lesen; sie müssen deshalb nicht auf
+beliebige am 15. August vorhandene Zielbytes oder Zielanzahlen festgeschrieben
+werden. Eingefroren bleiben ihr Ablauf, ihr Zugang und ihre Assertion-Verträge
+sowie alle Plugin-, MCP-, OAuth-, Tool-, Schema-, MCP-Apps-UI-,
+Session- und Zustandsverträge. Insbesondere sind curriculare Bildbytes Layer A,
+die Bytes und Bindungen des MCP-Apps-Widgets dagegen Teil des eingefrorenen
+UI-Vertrags; Assessment-Inhalte sind Layer A, Prüfungsworkflow und
+Zustandssemantik dagegen Teil des eingefrorenen Runtime-Vertrags.
 
 ## 3. Ohne ausdrückliche Freigabe verboten
 
@@ -79,8 +100,8 @@ insbesondere:
 - Portalwerte speichern, Testfälle oder Credentials austauschen oder
   Attestierungen ändern;
 - Draft-Snapshot, UI-Artefakte, Reviewvideo oder deren Hashanker ersetzen;
-- Produktionsverhalten „nur intern“ korrigieren, wenn ein Reviewfall oder der
-  öffentliche Vertrag betroffen sein kann;
+- Produktionsverhalten „nur intern“ korrigieren, wenn der eingefrorene Ablauf
+  eines Reviewfalls oder der öffentliche V1-Vertrag betroffen sein kann;
 - nach Approval, Rejection oder Withdrawal eigenmächtig weiterarbeiten.
 
 Der Release-Befehl verweigert `prepare` und `record-published` bei aktiver
@@ -94,6 +115,10 @@ V1-Quellbäume.
 - reine Dokumentationskorrekturen, die den eingefrorenen Stand exakt
   beschreiben und keine Portalwerte, Vertragsbehauptungen oder Artefakte
   verändern;
+- fachliche Fortschreibung der öffentlichen Layer-A-Curricula einschließlich
+  Lernzielen, Assessments und curricularen Visualisierungen, sofern ihre
+  eigenen Quellen-, Review- und Qualitätsregeln eingehalten werden und kein
+  eingefrorener V1-Vertrag verändert wird;
 - unabhängige Arbeiten, deren fehlender V1-Effekt konkret belegt ist und bei
   denen alle Freeze-, Candidate- und Runtime-Gates grün bleiben.
 
@@ -115,12 +140,14 @@ node scripts/check_openai_plugin_versioning.mjs
 `verify` vergleicht die aktuellen Quellen reproduzierbar mit dem eingereichten
 Draft. Der Freeze-Check pinnt zusätzlich Snapshot, Bundle, Contract, Video und
 kritische Runtime-/Start-/Edge-Bäume. Ein grüner Pfadfilter ersetzt dennoch
-nicht die Wirkungsprüfung.
+nicht die Wirkungsprüfung. Umgekehrt ist ein fachlicher Layer-A-Diff allein
+kein Plugin-SemVer- oder Review-Freeze-Verstoß; er bleibt durch die fachlichen
+Curriculum-Gates zu prüfen.
 
 ## 6. Ausnahmen und Ende der Sperre
 
-Eine Ausnahme benötigt vor jeder Änderung eine ausdrückliche Entscheidung des
-Product Owners mit:
+Eine Ausnahme im eingefrorenen Wirkungsbereich benötigt vor jeder Änderung eine
+ausdrückliche Entscheidung des Product Owners mit:
 
 1. Grund der Änderung;
 2. exakt freigegebenem Wirkungs- und Dateiumfang;
@@ -128,6 +155,11 @@ Product Owners mit:
 4. Entscheidung, ob das Portal-Review zurückgezogen beziehungsweise neu
    eingereicht werden muss;
 5. neuer, nach vollständiger Prüfung erneut gesetzter Freeze-Baseline.
+
+Die in Abschnitt 4 beschriebene fachliche Layer-A-Fortschreibung ist keine
+solche Ausnahme. Solange sie keinen eingefrorenen V1-Vertrag verändert,
+benötigt sie weder eine neue Plugin-SemVer noch ein Zurückziehen oder erneutes
+Einreichen des Portalreviews.
 
 ### 6.1 Eng begrenzte Ausnahme: öffentliche Lernzielbuch-Bewerbung aus
 

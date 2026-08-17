@@ -3,7 +3,7 @@
 ## 0. ACTIVE STOP — SkillPilot Coach v1.0.0 is under OpenAI review
 
 Since **15 August 2026**, the submitted `skillpilot-coach-v1` version `1.0.0`,
-its portal metadata, review fixtures, demo recording, and observable production
+its portal metadata, review fixtures, demo recording, and observable V1 contract
 behaviour are frozen. Repository `publicationStatus: DRAFT` means “not yet
 published”; it does **not** mean that the submitted review candidate remains
 mutable.
@@ -24,6 +24,16 @@ review fixtures, legal promises, demo-video bytes/hash/URL, or production edge
 configuration. Do not run `openai_plugin_release.mjs prepare` or
 `record-published`, rescan/re-upload the MCP or Skill, save altered portal
 fields, or replace review artifacts.
+
+The public **Layer A curriculum is explicitly outside this byte freeze**.
+Exact curriculum, learning-goal, assessment, and curriculum-visualization
+bytes, hashes, IDs, edges, and counts are live fachliche data; they are not part
+of the V1 plugin contract or its SemVer. Review cases may read the current
+Layer A data through the unchanged V1 interfaces. Their workflow, access,
+fixture setup and identity, assertions, and the Plugin/MCP/OAuth/tool/schema/UI/
+session/state contracts remain frozen, not arbitrary current goal bytes or
+counts. This exclusion does not cover MCP Apps UI/widget/resource bytes or
+assessment, visualization, and learning-state workflow semantics.
 
 Read-only audits, tests, monitoring, and documentation-only corrections that
 describe the frozen behaviour exactly are allowed. Quickstart text and
