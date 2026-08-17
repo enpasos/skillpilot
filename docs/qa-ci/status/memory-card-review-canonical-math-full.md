@@ -22,16 +22,16 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 754 |
-| goals without memory need | 717 |
-| goals with intentional memory support | 37 |
+| ordinary atomic goals reviewed | 780 |
+| goals without memory need | 741 |
+| goals with intentional memory support | 39 |
 | goals needing developer review | 0 |
 | primary cards in scope | 64 |
 | kept primary cards with origin trace | 64 |
 | cards removed from active decks | 13 |
 | memory goals traced | 6/6 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 15 |
+| memory-required goals checked in views | 17 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 248 | 1 | 6 | 0 |
-| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 243 | 1 | 9 | 0 |
+| Mathematik Sek I (DE) | `curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json` | 258 | 2 | 7 | 0 |
+| Mathematik Sek I (DE-BW) | `curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json` | 265 | 2 | 10 | 0 |
 
 ## Memory-Required Goals
 
@@ -56,6 +56,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | J10: Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen (`f9fdb733-5838-4983-888a-05624eabbe17`) | `de_gymnasium_math_analysis_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | J10: Logarithmus definieren und einfache Werte bestimmen (`3c1d6ce7-099e-4267-9ff2-3d1526209a89`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | J8: Geradengleichungen linearer Funktionen aufstellen (`ae772695-d55e-4cc5-81bc-6605272759b4`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
+| J8: Laplace-Experimente auswerten (`5ab17678-bba7-4e6b-9aff-5a909e24d40e`) | `de_gymnasium_math_stochastics_core` | Laplace-Bedingung und Laplace-Formel sind ein enger, notwendiger Abrufbaustein; die fachliche Auswertung und Interpretation bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |
 | J8: Potenzgesetze mit ganzzahligen Exponenten anwenden (`6596405a-9728-41df-9163-53670ec2a937`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
 | J9: Abstände, Beträge und Mittelpunkte im Raum berechnen (`a8ff2666-8df3-4253-8021-3efe42114e40`) | `de_gymnasium_math_linalg_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
 | J9: Quadratische Gleichungen lösen (`9023226b-fc17-412b-807c-2bb45cd551d5`) | `de_gymnasium_math_functions_basics`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend. |
@@ -63,7 +64,9 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Q1: Einfache Integrale berechnen (`a9ed219d-d497-55e5-a4e0-4d45d2554f6b`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | Q1: Hauptsatz der Differential- und Integralrechnung nutzen (`b9bbd2a8-1379-5ffb-817f-41467d48abef`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
 | Q2: Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) (`3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4`) | `de_gymnasium_math_analysis_core` | Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend. |
+| Q2: Kettenregel beim Ableiten anwenden (LK) (`ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75`) | `de_gymnasium_math_analysis_core` | Die Kettenregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |
 | Q2: Matrizen multiplizieren (`304111dd-426b-520b-a275-3fa37da1b0e0`) | `de_gymnasium_math_linalg_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
+| Q2: Produktregel beim Ableiten anwenden (LK) (`cf48c918-f6c1-5429-8da6-14df43f2f550`) | `de_gymnasium_math_analysis_core` | Die Produktregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert. |
 | Q2: Skalarprodukt als Orthogonalitätskriterium nutzen (`9460c3ff-e72d-4107-bc73-087d217200aa`) | `de_gymnasium_math_linalg_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
 | Q2: Skalarprodukt zur Winkelberechnung nutzen (`265af6af-8eac-5632-b730-800aafcde26a`) | `de_gymnasium_math_linalg_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
 | Q2: Stochastische Übergangsmatrizen für Markov-Ketten prüfen (`9bf67cce-4c8f-5497-8e64-825b83c6aa40`) | `de_gymnasium_math_linalg_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra. |
@@ -76,7 +79,6 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Q3: Sigma-Regeln für Verteilungen anwenden (`8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d`) | `de_gymnasium_math_stochastics_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q3: Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen (`dabff49b-d40a-4c81-a584-21408b2d4219`) | `de_gymnasium_math_stochastics_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q3: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (`837b015a-c2a2-5f31-831c-ae16ee2ee6ce`) | `de_gymnasium_math_stochastics_core`, `de_gymnasium_math_seki_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
-| Q3: Zufallsexperimente beschreiben und Laplace-Wahrscheinlichkeiten vergleichen (`1769fcdc-33a6-586f-9b15-17f6f32579cf`) | `de_gymnasium_math_stochastics_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q3: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen (`5927ca6a-91d5-4541-84e9-833bbb2cd7df`) | `de_gymnasium_math_stochastics_core` | Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik. |
 | Q4: Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK) (`8e18154d-41d6-592e-ba98-537edad338e8`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
 | Q4: Grundrechenarten in der Gaußschen Zahlenebene deuten (`a7fb1a7a-8315-5bcb-842e-48293293dfcc`) | `de_gymnasium_math_complex_parameter` | Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen. |
@@ -89,8 +91,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Deck | Card | Front | Answer | Origin goals | Begründung |
 | --- | --- | --- | --- | --- | --- |
 | `de_gymnasium_math_analysis_core` | `math_analysis_c01` | Ableitungsregel für Potenzen: $f(x) = x^n$ | $f'(x) = n \cdot x^{n-1}$ | E: Ableitungen elementarer Funktionen berechnen (`858113c5-e53b-57bb-b01f-ba95c3ddcb6f`) | Behalten: Potenzregel ist kompakte Ableitungsregel; Verständnis bleibt nötig, aber die Regel muss sicher abrufbar sein. |
-| `de_gymnasium_math_analysis_core` | `math_analysis_c02` | Produktregel: $f(x) = u(x) \cdot v(x)$ | $f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$ | E: Produkt- und Kettenregel an Beispielen überprüfen (`864f9a45-badf-5a31-88d3-da4525808c2d`) | Behalten: Produktregel ist eine knappe Regelstruktur und dem Produkt-/Kettenregel-Lernziel zugeordnet. |
-| `de_gymnasium_math_analysis_core` | `math_analysis_c03` | Kettenregel: $f(x) = u(v(x))$ | $f'(x) = u'(v(x)) \cdot v'(x)$ Äußere Ableitung $\cdot$ Innere Ableitung. | E: Produkt- und Kettenregel an Beispielen überprüfen (`864f9a45-badf-5a31-88d3-da4525808c2d`) | Behalten: Kettenregel ist eine knappe Regelstruktur und dem Produkt-/Kettenregel-Lernziel zugeordnet. |
+| `de_gymnasium_math_analysis_core` | `math_analysis_c02` | Produktregel: $f(x) = u(x) \cdot v(x)$ | $f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$ | E: Produkt- und Kettenregel an Beispielen überprüfen (`864f9a45-badf-5a31-88d3-da4525808c2d`)<br>Q2: Produktregel beim Ableiten anwenden (LK) (`cf48c918-f6c1-5429-8da6-14df43f2f550`) | Behalten: Die Produktregel-Karte ist ein enger Abrufbaustein sowohl für die vorhandene Kontrollkompetenz als auch für das neue atomare Produktregel-Anwendungsziel. |
+| `de_gymnasium_math_analysis_core` | `math_analysis_c03` | Kettenregel: $f(x) = u(v(x))$ | $f'(x) = u'(v(x)) \cdot v'(x)$ Äußere Ableitung $\cdot$ Innere Ableitung. | E: Produkt- und Kettenregel an Beispielen überprüfen (`864f9a45-badf-5a31-88d3-da4525808c2d`)<br>Q2: Kettenregel beim Ableiten anwenden (LK) (`ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75`) | Behalten: Die Kettenregel-Karte ist ein enger Abrufbaustein sowohl für die vorhandene Kontrollkompetenz als auch für das neue atomare Kettenregel-Anwendungsziel. |
 | `de_gymnasium_math_analysis_core` | `math_analysis_c04` | Ableitung e-Funktion: $f(x) = e^{kx}$ | $f'(x) = k \cdot e^{kx}$ | E: Ableitungen von $e^x$ und $a^x$ verwenden (`c3c057a3-caf9-44a5-ae60-639e3119e94a`) | Behalten: Ableitung von e^{kx} ist eine kompakte Regel und direkt auf Exponentialableitungen bezogen. |
 | `de_gymnasium_math_analysis_core` | `math_analysis_c05` | Ableitung Logarithmus: $f(x) = \ln(x)$ | $f'(x) = \frac{1}{x}$ | Q2: Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) (`3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4`) | Behalten: Ableitungs-/Stammfunktionsbezug von ln ist ein kurzer Regelzusammenhang, der sicher abrufbar sein muss. |
 | `de_gymnasium_math_analysis_core` | `math_analysis_c06` | Ableitung Sinus: $f(x) = \sin(x)$ | $f'(x) = \cos(x)$ | J10: Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen (`f9fdb733-5838-4983-888a-05624eabbe17`) | Behalten: Ableitung von sin ist eine elementare trigonometrische Regel, die korrekt abrufbar sein muss. |
@@ -142,7 +144,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | `de_gymnasium_math_seki_core` | `math_seki_c14` | Erwartungswert und Standardabweichung von $X \sim B(n;p)$ | $\mu=n\cdot p$ und $\sigma=\sqrt{n\cdot p\cdot(1-p)}$ | Q3: Kenngrößen binomialverteilter Zufallsgrößen (`7d41b805-0fd8-5ac3-980d-79112a27c1b4`) | Behalten: Erwartungswert und Standardabweichung der Binomialverteilung sind kurze Kenngrößenformeln. |
 | `de_gymnasium_math_stochastics_core` | `math_stoch_c01` | Formel für bedingte Wahrscheinlichkeit $P(A\|B)$ | $P(A\|B) = \frac{P(A \cap B)}{P(B)}$ | Q3: Bedingte Wahrscheinlichkeiten berechnen (`c3b9c561-dd83-5903-9ec6-49c7f51bafd5`) | Behalten: Formel für bedingte Wahrscheinlichkeit ist kompakte Grundformel und direkt auf das Lernziel bezogen. |
 | `de_gymnasium_math_stochastics_core` | `math_stoch_c02` | Bedingung für stochastische Unabhängigkeit von $A$ und $B$ | $P(A \cap B) = P(A) \cdot P(B)$ | Q3: Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen (`dabff49b-d40a-4c81-a584-21408b2d4219`) | Behalten: Unabhängigkeitskriterium ist ein kurzer abrufbarer Kriterienbaustein. |
-| `de_gymnasium_math_stochastics_core` | `math_stoch_c03` | Laplace-Experiment: Bedingung und Berechnung | Alle Ergebnisse sind gleich wahrscheinlich. $P(E) = \frac{\text{Anzahl günstige Ergebnisse}}{\text{Anzahl mögliche Ergebnisse}}$ | Q3: Zufallsexperimente beschreiben und Laplace-Wahrscheinlichkeiten vergleichen (`1769fcdc-33a6-586f-9b15-17f6f32579cf`) | Behalten: Laplace-Bedingung und Formel sind kompakte Grundlagen der Wahrscheinlichkeit. |
+| `de_gymnasium_math_stochastics_core` | `math_stoch_c03` | Laplace-Experiment: Bedingung und Berechnung | Alle Ergebnisse sind gleich wahrscheinlich. $P(E) = \frac{\text{Anzahl günstige Ergebnisse}}{\text{Anzahl mögliche Ergebnisse}}$ | J8: Laplace-Experimente auswerten (`5ab17678-bba7-4e6b-9aff-5a909e24d40e`) | Behalten und neu binden: Bedingung und Formel der Laplace-Wahrscheinlichkeit stammen fachlich exakt aus dem bestehenden atomaren Ziel „Laplace-Experimente auswerten“, nicht aus dem nun nicht-atomaren Sammelcluster. |
 | `de_gymnasium_math_stochastics_core` | `math_stoch_c04` | Erwartungswert $E(X)$ einer Zufallsgröße | Summe der Produkte aus Wert und Wahrscheinlichkeit. $\mu = \sum x_i \cdot P(X=x_i)$ | Q3: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen (`5927ca6a-91d5-4541-84e9-833bbb2cd7df`) | Behalten: Erwartungswertformel ist kompakte Formelkenntnis zu Zufallsgrößen. |
 | `de_gymnasium_math_stochastics_core` | `math_stoch_c05` | Binomialkoeffizient $\binom{n}{k}$: Bedeutung | Anzahl der Möglichkeiten, $k$ Elemente aus $n$ Elementen auszuwählen. Ohne Reihenfolge, ohne Zurücklegen. | Q3: Binomialkoeffizienten als Abkürzung verwenden (`e8d810de-95ed-52d6-ab1f-0560398e35c0`) | Behalten: Bedeutung des Binomialkoeffizienten ist eine kurze Notationsklärung. |
 | `de_gymnasium_math_stochastics_core` | `math_stoch_c06` | Bernoulli-Formel (Binomialverteilung) | $P(X=k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}$ | Q3: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen (`837b015a-c2a2-5f31-831c-ae16ee2ee6ce`) | Behalten: Bernoulli-Formel ist zentraler kompakter Formelabruf. |

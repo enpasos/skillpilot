@@ -239,11 +239,11 @@ const humanQaSubjectSelection = renderEditor('de', {
   displayOptions: humanQaOptions,
 }, 'green')
 assert(
-  humanQaSubjectSelection.includes('2 von 5 Optionen verfügbar')
-    && humanQaSubjectSelection.includes('Wähle zwischen 1 und 2 Optionen.'),
-  'the human-QA filter offers only mathematics and physics in the subject step',
+  humanQaSubjectSelection.includes('1 von 5 Optionen verfügbar')
+    && humanQaSubjectSelection.includes('Wähle 1 Option.'),
+  'the human-QA filter offers only physics in the subject step',
 )
-for (const subject of ['Mathematik', 'Physik']) {
+for (const subject of ['Physik']) {
   assert(
     new RegExp(`<button(?![^>]*disabled="")[^>]*>\\s*${subject}\\s*</button>`).test(
       humanQaSubjectSelection,
@@ -251,7 +251,7 @@ for (const subject of ['Mathematik', 'Physik']) {
     `${subject} is enabled under the human-QA filter`,
   )
 }
-for (const subject of ['Chemie', 'Geschichte', 'Deutsch']) {
+for (const subject of ['Mathematik', 'Chemie', 'Geschichte', 'Deutsch']) {
   assert(
     new RegExp(
       `<button[^>]*disabled=""[^>]*>\\s*${subject}\\s*<span class="sr-only">`,
@@ -265,11 +265,27 @@ const experimentalSubjectSelection = renderEditor('de', {
   displayOptions: humanQaOptions,
 }, 'red')
 assert(
-  experimentalSubjectSelection.includes(
+  experimentalSubjectSelection.includes('1 von 5 Optionen verfügbar')
+    && experimentalSubjectSelection.includes('Wähle 1 Option.')
+    && new RegExp('<button(?![^>]*disabled="")[^>]*>\\s*Mathematik\\s*</button>').test(
+      experimentalSubjectSelection,
+    ),
+  'the experimental filter offers only mathematics in the subject step',
+)
+const emptyExperimentalOptions = humanQaOptions.filter(
+  (option) => option.landscapeId !== CANONICAL_GYMNASIUM_MATH_ID,
+)
+const emptyExperimentalSubjectSelection = renderEditor('de', {
+  ...historyPlan,
+  options: emptyExperimentalOptions,
+  displayOptions: emptyExperimentalOptions,
+}, 'red')
+assert(
+  emptyExperimentalSubjectSelection.includes(
     'Für diesen Qualitätsfilter sind derzeit nicht genügend Fächer auswählbar.',
   )
-    && experimentalSubjectSelection.includes('Wähle einen anderen Qualitätsfilter.')
-    && !experimentalSubjectSelection.includes('Wähle zwischen 1 und 0 Optionen.'),
+    && emptyExperimentalSubjectSelection.includes('Wähle einen anderen Qualitätsfilter.')
+    && !emptyExperimentalSubjectSelection.includes('Wähle zwischen 1 und 0 Optionen.'),
   'an empty subject quality filter has actionable guidance instead of an impossible range',
 )
 
