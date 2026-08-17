@@ -37,7 +37,7 @@ export const getMarkdownDocumentViewCopy = (
         de: {
           eyebrow: 'Konzeptvideo',
           title: 'SkillPilot kurz erklärt',
-          description: 'Eine kurze Einführung in die Idee hinter SkillPilot und den Ansatz mit Kompetenzgraphen.',
+          description: 'Eine kurze Einführung in die Idee hinter SkillPilot und den Ansatz mit dem Skill-Graph.',
         },
       }
     : {
