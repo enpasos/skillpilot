@@ -481,6 +481,7 @@ try {
   })
   await curriculumChangeButton.waitFor()
   await curriculumChangeButton.click()
+  await curriculumChange.page.getByRole('button', { name: 'Alle', exact: true }).click()
   const curriculumSelect = curriculumChange.page.getByLabel('Dein Curriculum')
   await curriculumSelect.focus()
   await curriculumSelect.selectOption(alternativeLandscape.curriculumId)
