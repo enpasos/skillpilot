@@ -57,7 +57,7 @@ def deploy_whitepaper():
     comic3_dest = os.path.join(project_root, "app", "public", "comic3")
 
     total = 0
-    total += copy_assets(whitepaper_src, whitepaper_dest, {".md", ".png", ".jpg", ".jpeg", ".svg", ".pdf"})
+    total += copy_assets(whitepaper_src, whitepaper_dest, {".md", ".png", ".jpg", ".jpeg", ".svg", ".pdf", ".mp4"})
     total += copy_assets(comic1_src, comic1_dest, {".png", ".jpg", ".jpeg"})
     total += copy_assets(comic2_src, comic2_dest, {".png", ".jpg", ".jpeg"})
     total += copy_assets(comic3_src, comic3_dest, {".png", ".jpg", ".jpeg"})

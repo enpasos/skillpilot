@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Play } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { MarkdownDocumentH1 } from '../components/MarkdownDocumentHeading'
 import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
@@ -72,6 +72,7 @@ export const WhitepaperView: React.FC = () => {
   const labels = getMarkdownDocumentViewCopy(activeLanguage, 'whitepaper')
 
   const switchLanguage = activeLanguage === 'en' ? 'de' : 'en'
+  const videoUrl = `/whitepaper/SkillPilot_Whitepaper_${activeLanguage}.mp4`
 
   return (
     <div className="min-h-screen bg-chat-bg text-text-primary px-4 py-6 sm:px-6 lg:px-10 flex justify-center transition-colors">
@@ -98,44 +99,82 @@ export const WhitepaperView: React.FC = () => {
           <p className="text-rose-400">{labels.error}</p>
         )}
         {loadState === 'ready' && (
-          <div className="prose dark:prose-invert max-w-none text-text-primary">
-            <ReactMarkdown
-              components={{
-                h1: MarkdownDocumentH1,
-                img: ({ title, ...props }) => {
-                  const widthMatch = typeof title === 'string'
-                    ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
-                    : null
-                  const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
-                  const src = typeof props.src === 'string' ? props.src.toLowerCase() : ''
-                  const fallbackMaxWidth = src.includes('velocity')
-                    ? '420px'
-                    : src.includes('memorize')
-                      ? '400px'
-                      : undefined
-                  const maxWidth = explicitMaxWidth ?? fallbackMaxWidth
-                  const className = [
-                    'max-w-full h-auto rounded-lg border border-border-color',
-                    maxWidth ? 'block mx-auto' : '',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')
-                  const style = maxWidth ? { maxWidth, width: '100%' } : undefined
+          <>
+            <section className="mb-10 overflow-hidden rounded-3xl border border-sky-400/30 bg-gradient-to-br from-sky-950 via-slate-900 to-indigo-950 p-1 shadow-2xl shadow-sky-950/30">
+              <div className="rounded-[1.35rem] bg-slate-950/55 p-5 sm:p-7">
+                <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+                      <Play size={15} fill="currentColor" aria-hidden="true" />
+                      {labels.videoEyebrow}
+                    </div>
+                    <h2 className="m-0 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                      {labels.videoTitle}
+                    </h2>
+                    <p className="mb-0 mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
+                      {labels.videoDescription}
+                    </p>
+                  </div>
+                  <a
+                    href={videoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-sky-300/40 bg-sky-400/10 px-4 py-2 text-sm font-semibold text-sky-200 transition hover:border-sky-200/70 hover:bg-sky-300/20 hover:text-white sm:self-auto"
+                  >
+                    <ExternalLink size={16} aria-hidden="true" />
+                    {labels.videoOpen}
+                  </a>
+                </div>
+                <video
+                  className="aspect-video w-full rounded-2xl border border-white/10 bg-black object-contain shadow-xl"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  src={videoUrl}
+                >
+                  <a href={videoUrl}>{labels.videoOpen}</a>
+                </video>
+              </div>
+            </section>
+            <div className="prose dark:prose-invert max-w-none text-text-primary">
+              <ReactMarkdown
+                components={{
+                  h1: MarkdownDocumentH1,
+                  img: ({ title, ...props }) => {
+                    const widthMatch = typeof title === 'string'
+                      ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
+                      : null
+                    const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
+                    const src = typeof props.src === 'string' ? props.src.toLowerCase() : ''
+                    const fallbackMaxWidth = src.includes('velocity')
+                      ? '420px'
+                      : src.includes('memorize')
+                        ? '400px'
+                        : undefined
+                    const maxWidth = explicitMaxWidth ?? fallbackMaxWidth
+                    const className = [
+                      'max-w-full h-auto rounded-lg border border-border-color',
+                      maxWidth ? 'block mx-auto' : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')
+                    const style = maxWidth ? { maxWidth, width: '100%' } : undefined
 
-                  return (
-                    <img
-                      {...props}
-                      title={explicitMaxWidth ? undefined : title}
-                      className={className}
-                      style={style}
-                    />
-                  )
-                },
-              }}
-            >
-              {content}
-            </ReactMarkdown>
-          </div>
+                    return (
+                      <img
+                        {...props}
+                        title={explicitMaxWidth ? undefined : title}
+                        className={className}
+                        style={style}
+                      />
+                    )
+                  },
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
+          </>
         )}
       </div>
     </div>
