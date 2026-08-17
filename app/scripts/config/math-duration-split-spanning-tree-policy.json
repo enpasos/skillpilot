@@ -5,12 +5,12 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "cade3f5e5165bbc43d7a59399e281492d59168fe4adf29aa4220bfed6b72baf0"
+      "sha256": "4a099ada2b496cec6595092780d729211eaad9dd1bad066aaac087f983559c31"
     },
     "parentDerivativeReceipt": {
-      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-derivative-core-follow-up-2026-08-16.receipt.json",
-      "receiptDigest": "2a1772ddd1f67a4388b8978b6204c832b7c0c9065007b354cdee3cfb946c59dd",
-      "fileSha256": "9f4f0ed37fcd1fe7148f6b662125418984bd769b4e829bfe5effbf2204bc43a7"
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
+      "receiptDigest": "8552324ee86ad4237df45041c2fe3b112a3775fee053bd882e55de7cb2c49f7c",
+      "fileSha256": "f0aa55d2f4f1390fa3f511c885ce1f297eebb787ae04d9146a779a85ecbe08ab"
     },
     "extractionProvenance": {
       "path": "tmp/goal-description-reviews/math-gymnasium-full-20260816-v1/implementation-design/split-implementation-manifest.json",
@@ -23,7 +23,7 @@
     "transform": [
       "Generate the flat mapping-derived Sek-I view exactly as before, with atomic-asserted goalEntry nodes.",
       "For each placement, remove removeAtomicGoalIds from every direct reference occurrence in the generated Sek-I node.",
-      "Insert replacementNode under parentStructureId. For a materialized split structure, preservedReusedGoalIds remain in their existing pre-split parent and are not removed.",
+      "Apply each template's reviewed excludedGoalIds before inserting replacementNode under parentStructureId. For a materialized split structure, preservedReusedGoalIds remain in their existing pre-split parent and are not removed.",
       "Sort the placement parent children by canonical title using the existing de locale comparator and oldClusterGoalId as the tie-break key for the replacement.",
       "Assert actualAfter equals (flatBefore minus the union of removeAtomicGoalIds) union the atomic closure of every filtered replacementNode; additionally assert each non-excluded preservedReusedGoalId was visible before, is never removed, and remains visible after. Then compile and reject CPV-004/005/006/007/009.",
       "Use the transformed Sek-I node as the standalone output and as the authoritative replacement node for both GK and LK cross-stage outputs."
@@ -39,7 +39,7 @@
     {
       "fileName": "de-he-seki-g8.view.json",
       "viewId": "de-he-gym-seki-math-g8",
-      "fileSha256": "8960dc5479d482eb6c67eb2d51530b678feeaddb59a2dabde28b733c369158b3",
+      "fileSha256": "e2f2131851d517c0d5d3fb5d8d5901ac2dfb89624e89ab1ab94beec05138e433",
       "placementCount": 9,
       "placements": [
         {
@@ -213,7 +213,7 @@
     {
       "fileName": "de-he-seki-g9.view.json",
       "viewId": "de-he-gym-seki-math-g9",
-      "fileSha256": "b94941cd8b09928b14cee1e0030816baa996d20cff36368b888e70753097108f",
+      "fileSha256": "e114aa296b513c8021fc73411df3c3f7afa52c6d12b351ccd0f56bc9bcafd7c1",
       "placementCount": 10,
       "placements": [
         {
@@ -507,8 +507,11 @@
     {
       "fileName": "de-sh-seki-g8.view.json",
       "viewId": "de-sh-gym-seki-math-g8",
-      "fileSha256": "04e4e58d180e2147259be14386dcd434a300636c4607238c1a6d5ca4d29b2735",
+      "fileSha256": "e9ccaa03f6c0b67106d6b44c1ffc01549f49d5cd96121783aba12afb729d9473",
       "placementCount": 7,
+      "excludedGoalIds": [
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
       "placements": [
         {
           "parentStructureId": "sh-jg5-6-g8-kompetenzen",
@@ -625,8 +628,11 @@
     {
       "fileName": "de-sh-seki-g9.view.json",
       "viewId": "de-sh-gym-seki-math-g9",
-      "fileSha256": "2497aa8882322c9393eaafd5a555115b21d6030f1191ccf34372d3c628a27e26",
+      "fileSha256": "b54d85a44cecec4cfb24dbe4bfd2f8ce6822b18d72d22d8c4eb0b2a61a1af7be",
       "placementCount": 7,
+      "excludedGoalIds": [
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
       "placements": [
         {
           "parentStructureId": "sh-jg5-6-g9-kompetenzen",
@@ -792,25 +798,25 @@
     },
     {
       "outputFileName": "de-sh-gk-g8.view.json",
-      "outputSha256": "9264fa4992b20a3b9ee05506836f0f9d33ea611863c069939002572de8285813",
+      "outputSha256": "a4b0984b815e03fe6e0320669aa23b67d6f9c4ecdea09e63ed03aa026bcaaa0a",
       "sek1TemplateFileName": "de-sh-seki-g8.view.json",
       "baseViewFileName": "de-sh-gk.view.json"
     },
     {
       "outputFileName": "de-sh-gk-g9.view.json",
-      "outputSha256": "7ac49c1be6abb4f0150775e4a10422506d7499ab0a6411cdd872050bfa471873",
+      "outputSha256": "fa2ece031ae8f5e5431b17ab0a0929f4849519c746587e2bd5f85310febb0723",
       "sek1TemplateFileName": "de-sh-seki-g9.view.json",
       "baseViewFileName": "de-sh-gk.view.json"
     },
     {
       "outputFileName": "de-sh-lk-g8.view.json",
-      "outputSha256": "8d4fde05706d3ba2aa059116962461cccef17a812fe4dfe2b07431bb80c51749",
+      "outputSha256": "a0cda79dbb600488c60a393d07eb01c1f28067fb2847602f4c451cc44221a33c",
       "sek1TemplateFileName": "de-sh-seki-g8.view.json",
       "baseViewFileName": "de-sh-lk.view.json"
     },
     {
       "outputFileName": "de-sh-lk-g9.view.json",
-      "outputSha256": "6950316990073d2b67c90425888cf5b61f55637a5f54ba16acae9a51ba545d30",
+      "outputSha256": "90ee4a54766ca28922c4af4013411146b4cd63b980984982decbc969d7b25624",
       "sek1TemplateFileName": "de-sh-seki-g9.view.json",
       "baseViewFileName": "de-sh-lk.view.json"
     }

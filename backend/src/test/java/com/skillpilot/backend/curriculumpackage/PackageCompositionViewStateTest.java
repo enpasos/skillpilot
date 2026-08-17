@@ -149,6 +149,95 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
+    void deduplicatesStrictlyContainedSiblingSubtreeAcrossCourseProfiles() throws Exception {
+        CurriculumPackageTestFixture.PackageSpec base =
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
+        CurriculumPackageTestFixture.PackageSpec merge = new CurriculumPackageTestFixture.PackageSpec(
+                base.suffix(),
+                base.packageId(),
+                base.landscapeId(),
+                base.hashCharacter(),
+                base.closureHashCharacter(),
+                base.indexHashCharacter(),
+                base.definitionKey(),
+                base.definitionOwner(),
+                base.definitionDigest(),
+                base.moduleLandscapeId(),
+                true,
+                base.externalUrlScheme());
+        CurriculumRuntimeSnapshot snapshot = load(merge);
+
+        CurriculumRuntimeSnapshot.LandscapeDescriptor originalLandscape =
+                snapshot.landscapesById().get("landscape-alpha");
+        String landscapeJson = mapper.writeValueAsString(Map.of(
+                "landscapeId", originalLandscape.landscapeId(),
+                "goals", List.of(
+                        Map.of("id", "broad-goal", "contains", List.of("narrow-goal")),
+                        Map.of("id", "narrow-goal", "contains", List.of()))));
+        CurriculumRuntimeSnapshot.LandscapeDescriptor landscape =
+                new CurriculumRuntimeSnapshot.LandscapeDescriptor(
+                        originalLandscape.packageId(),
+                        originalLandscape.landscapeId(),
+                        originalLandscape.role(),
+                        originalLandscape.locale(),
+                        originalLandscape.frameworkId(),
+                        originalLandscape.subject(),
+                        originalLandscape.country(),
+                        originalLandscape.region(),
+                        originalLandscape.schoolForm(),
+                        originalLandscape.defaultOfferingId(),
+                        originalLandscape.parentLandscapeId(),
+                        originalLandscape.artifact(),
+                        landscapeJson);
+
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {
+            boolean isLk = descriptor.viewId().endsWith("secondary");
+            String document = mapper.writeValueAsString(Map.of(
+                    "viewId", descriptor.viewId(),
+                    "landscapeId", descriptor.landscapeId(),
+                    "scope", descriptor.scope(),
+                    "rootNodes", List.of(Map.of(
+                            "kind", "structure",
+                            "id", isLk ? "branch-lk" : "branch-gk",
+                            "children", List.of(Map.of(
+                                    "kind", "canonicalSubtree",
+                                    "goalId", isLk ? "broad-goal" : "narrow-goal"))))));
+            views.put(descriptor.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(
+                    descriptor.packageId(),
+                    descriptor.viewId(),
+                    descriptor.landscapeId(),
+                    descriptor.language(),
+                    descriptor.scope(),
+                    descriptor.artifact(),
+                    document));
+        }
+
+        CurriculumRuntimeSnapshot candidate = copy(
+                snapshot,
+                Map.of(landscape.landscapeId(), landscape),
+                views,
+                snapshot.offeringsById());
+        PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
+        PackageCompositionViewState.ResolvedView resolved = state.resolveOffering("offering-alpha");
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> rootNodes =
+                (List<Map<String, Object>>) resolved.document().get("rootNodes");
+        assertThat(rootNodes).singleElement().satisfies(root -> {
+            assertThat(root).containsEntry("id", "branch-gk-lk");
+            assertThat((List<?>) root.get("children"))
+                    .singleElement()
+                    .satisfies(child -> {
+                        assertThat(((Map<?, ?>) child).get("kind"))
+                                .isEqualTo("canonicalSubtree");
+                        assertThat(((Map<?, ?>) child).get("goalId"))
+                                .isEqualTo("broad-goal");
+                    });
+        });
+    }
+
+    @Test
     void mergesSameGoalAcrossProjectionRolesWithTargetDominance() throws Exception {
         CurriculumPackageTestFixture.PackageSpec base =
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a');
@@ -475,11 +564,19 @@ class PackageCompositionViewStateTest {
             CurriculumRuntimeSnapshot snapshot,
             Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views,
             Map<String, CurriculumRuntimeSnapshot.OfferingDescriptor> offerings) {
+        return copy(snapshot, snapshot.landscapesById(), views, offerings);
+    }
+
+    private static CurriculumRuntimeSnapshot copy(
+            CurriculumRuntimeSnapshot snapshot,
+            Map<String, CurriculumRuntimeSnapshot.LandscapeDescriptor> landscapes,
+            Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views,
+            Map<String, CurriculumRuntimeSnapshot.OfferingDescriptor> offerings) {
         return new CurriculumRuntimeSnapshot(
                 snapshot.generationSha256(),
                 snapshot.packages(),
                 snapshot.rootLandscapeIds(),
-                snapshot.landscapesById(),
+                landscapes,
                 views,
                 offerings,
                 snapshot.decksByKey(),

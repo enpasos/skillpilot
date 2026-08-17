@@ -6,8 +6,8 @@ Diese Seite ist die zentrale, kurze Arbeitsliste für Entscheidungen, die die To
 
 | Gate | Offener Umfang | Blockiert | Primäre Arbeitsquelle |
 | --- | ---: | --- | --- |
-| HR-001 Fachliche Bildfreigabe | 576 aktive Bilder warten auf Review; 23 von 754 Scope-Zielen sind bewusst providerbedingt zurückgestellt | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
-| HR-002 Bildrechte | 734 Einzelentscheidungen, davon 6 mit nutzerbereitgestellter Erzeugungsbehauptung | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
+| HR-001 Fachliche Bildfreigabe | 559 aktive Bilder warten auf Review; 69 von 780 Scope-Zielen sind bewusst providerbedingt zurückgestellt | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
+| HR-002 Bildrechte | 715 Einzelentscheidungen: 708 Provider-Pipeline-Claims, 6 nutzerbereitgestellte Erzeugungsbehauptungen und 1 hashgebundener deterministischer SkillPilot-Render | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
 | HR-003 Rechte der Nicht-Binärartefakte | 3 Klassenentscheidungen | öffentliche Weiterverbreitung | dasselbe Redistribution-Ledger |
 | HR-004 Source-Text-Verifikation | 479 Einzelentscheidungen | Quellen-QA/Promotion | `curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json` |
 | HR-005 Core-first Ontologie-Sign-off | 1 hashgebundene fachlich-ontologische und rechtliche Expertenfreigabe für exaktes FWU-Paket, Reverse-Receipt, Profil und Registry | Ontologie-Promotion | DPK-008c-FWU-Receipt und DPK-008d-Reverse-Receipt |
@@ -17,7 +17,7 @@ Die Gates sind unabhängig. Ein fachlich korrektes Bild kann rechtlich ungeklär
 
 ## HR-001 – Fachliche Bildfreigabe
 
-Aktuell umfasst die Visualisierungs-QA alle 754 Goals des Atomic-Scope. Davon haben 731 ein aktives Bild; 23 sind nach wiederholt fachlich fehlerhaften Provider-Ergebnissen als `deferred_provider_limitation` bewusst ohne aktiven Link und ohne veröffentlichtes Asset zurückgestellt. 155 aktive Visualisierungen sind menschlich freigegeben, 576 warten auf Review.
+Aktuell umfasst die Visualisierungs-QA alle 780 Goals des Atomic-Scope. Davon haben 711 ein aktives Bild; 69 sind nach wiederholt fachlich fehlerhaften Provider-Ergebnissen als `deferred_provider_limitation` bewusst ohne aktiven Link und ohne veröffentlichtes Asset zurückgestellt. 152 aktive Visualisierungen sind menschlich freigegeben, 559 warten auf Review.
 
 Für jedes neue oder geänderte Bild sind mindestens zu prüfen:
 
@@ -28,19 +28,19 @@ Für jedes neue oder geänderte Bild sind mindestens zu prüfen:
 
 Bereits freigegebene Bilder benötigen nur bei Hash- oder relevanter Metadatenänderung ein neues Review.
 
-## HR-002 – Rechte an 734 Bildern
+## HR-002 – Rechte an 715 Bildern
 
-Jedes eingebettete Bild steht bewusst auf `pending-human-review`, `review-required` und `licenseExpression: null`. Die Herkunftsangabe „AI-generated, SkillPilot-curated“ ist keine Lizenz.
+Jedes eingebettete Bild steht bewusst auf `pending-human-review`, `review-required` und `licenseExpression: null`. Bei 708 Bildern ist die Herkunftsangabe ein Provider-Pipeline-Claim, bei sechs ein nutzerbereitgestellter Erzeugungsclaim. Ein weiteres PNG ist ausdrücklich nicht als KI-generiert klassifiziert, sondern bindet den deterministischen Rendervertrag, `librsvg rsvg-convert` 2.52.5, das reviewte SkillPilot-SVG und beide Byte-Hashes. Keine dieser Provenienzangaben ist bereits eine Lizenz.
 
 Erforderlich sind je Bild oder über eine belastbare, auf jedes Bild angewandte Batch-Evidenz:
 
-- Prüfung der maßgeblichen Providerbedingungen zum Erzeugungszeitpunkt;
+- Prüfung der maßgeblichen Providerbedingungen zum Erzeugungszeitpunkt, soweit ein Provider- oder Nutzerclaim vorliegt; beim deterministischen SkillPilot-Render stattdessen eine konkrete Projektlizenzentscheidung für Source und Output;
 - Bestätigung, dass Eingaben und Ausgaben weiterverbreitet werden dürfen;
 - konkrete SPDX-artige `licenseExpression` und belastbare Review-Evidence;
 - Reviewer und Zeitstempel;
 - für die sechs `user-provided-generated-claim`-Fälle zusätzlich eine Rechte-/Uploader-Attestation.
 
-Eine Batchentscheidung darf Arbeit bündeln, muss aber weiterhin alle 734 hashgebundenen Assetrecords eindeutig abdecken. Nicht belegbare Assets werden `prohibited` und müssen vor einem öffentlichen Paket entfernt oder ersetzt werden.
+Eine Batchentscheidung darf Arbeit bündeln, muss aber weiterhin alle 715 hashgebundenen Assetrecords eindeutig abdecken. Nicht belegbare Assets werden `prohibited` und müssen vor einem öffentlichen Paket entfernt oder ersetzt werden.
 
 ## HR-003 – Rechte der Nicht-Binärartefakte
 
@@ -102,7 +102,7 @@ Ein technisch gültiger, aber nicht vertrauenswürdig zugeordneter Signaturnachw
 
 - vollständige, hashgebundene Queue-Erzeugung ohne erfundene Human-Freigaben;
 - 9.498 technische Source-Text-Treffer und 479 exakt abgegrenzte Restfälle;
-- 734 einzeln gebundene Bildrechte-Records und drei disjunkte Nicht-Binärklassen, zusammen 737 offene Redistribution-Entscheidungen;
+- 715 einzeln gebundene Bildrechte-Records und drei disjunkte Nicht-Binärklassen, zusammen 718 offene Redistribution-Entscheidungen;
 - automatische Apache-2.0-Freigabe ausschließlich für den exakten Softwarevertragsbestand;
 - fail-closed Erkennung von fehlenden, obsoleten oder gedrifteten Reviewrecords;
 - strukturell gültige Staging-Kandidaten bleiben bei offenen Rechten `not-ready-incomplete` und können nicht als `ready` promotet werden.

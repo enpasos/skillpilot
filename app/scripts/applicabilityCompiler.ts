@@ -206,6 +206,18 @@ export interface ApplicabilityCompilationResult {
   }
 }
 
+export function hasOnlyPartialMappingSourceEvidence(
+  evidence: ApplicabilityEvidence[],
+  jurisdiction: string,
+): boolean {
+  const sourceEvidence = evidence.filter((entry) =>
+    entry.dimension === SUPPORTED_DIMENSION
+    && entry.value === jurisdiction
+    && (entry.kind === 'provenance' || entry.kind === 'mapping'))
+  return sourceEvidence.length > 0
+    && sourceEvidence.every((entry) => entry.kind === 'mapping' && entry.mappingStrength === 'partial')
+}
+
 function loadSupportedJurisdictions(): SupportedJurisdiction[] {
   const json = JSON.parse(readFileSync(canonicalOverviewFile, 'utf8')) as unknown
   if (!isSkillLandscapeJson(json)) {
@@ -735,6 +747,29 @@ function normalizeCompiledApplicability(values: Iterable<SupportedJurisdiction>)
   return sorted.length > 0 ? { [SUPPORTED_DIMENSION]: sorted } : {}
 }
 
+export function intersectApplicabilityJurisdictions(
+  requirementApplicabilities: ApplicabilityMap[],
+): SupportedJurisdiction[] {
+  if (requirementApplicabilities.length === 0) return []
+
+  const intersection = new Set(
+    (requirementApplicabilities[0][SUPPORTED_DIMENSION] ?? [])
+      .map((value) => normalizeJurisdictionCode(value))
+      .filter(isSupportedJurisdiction),
+  )
+  for (const applicability of requirementApplicabilities.slice(1)) {
+    const values = new Set(
+      (applicability[SUPPORTED_DIMENSION] ?? [])
+        .map((value) => normalizeJurisdictionCode(value))
+        .filter(isSupportedJurisdiction),
+    )
+    for (const jurisdiction of intersection) {
+      if (!values.has(jurisdiction)) intersection.delete(jurisdiction)
+    }
+  }
+  return Array.from(intersection).sort()
+}
+
 function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {
   const current = goal.applicability
   if (!current || typeof current !== 'object') return {}
@@ -1148,29 +1183,16 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       }
 
       if (isApplicabilityFromRequiresEnabled(goal)) {
-        for (const rawReq of goal.requires ?? []) {
-          const req = resolveCanonicalReference(rawReq, landscapeId)
-          const requiredApplicability = compileGoal(req.landscapeId, req.goalId, visiting)
-          for (const rawValue of requiredApplicability[SUPPORTED_DIMENSION] ?? []) {
-            const jurisdiction = normalizeJurisdictionCode(rawValue)
-            if (!jurisdiction || !isSupportedJurisdiction(jurisdiction)) continue
-            jurisdictions.add(jurisdiction)
-            evidence.push({
-              dimension: SUPPORTED_DIMENSION,
-              value: jurisdiction,
-              kind: 'assessment-requires',
-              source: `requires ${req.goalId}`,
-            })
-          }
-        }
+        // A local practice/assessment endpoint is visible only where every
+        // assessed prerequisite is independently applicable. Its own broad
+        // placement/mapping must not reintroduce a jurisdiction that one of
+        // the required competencies does not support.
+        jurisdictions.clear()
+        evidence.length = 0
       }
 
       for (const jurisdiction of Array.from(jurisdictions).sort()) {
-        const matchingEvidence = evidence.filter((entry) => entry.value === jurisdiction)
-        if (
-          matchingEvidence.length > 0
-          && matchingEvidence.every((entry) => entry.kind === 'mapping' && entry.mappingStrength === 'partial')
-        ) {
+        if (hasOnlyPartialMappingSourceEvidence(evidence, jurisdiction)) {
           findings.push({
             code: 'APV-202',
             severity: 'diagnostic',
@@ -1268,6 +1290,38 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       return changed
     }
 
+    const refreshRequiresDerivedApplicability = (): boolean => {
+      let changed = false
+      for (const goal of canonical.landscape.goals) {
+        if (!isAtomicGoal(goal) || !isApplicabilityFromRequiresEnabled(goal)) continue
+        const refs = (goal.requires ?? []).map((rawReq) =>
+          resolveCanonicalReference(rawReq, canonical.landscape.landscapeId))
+        const requirementApplicabilities = refs.map((ref) =>
+          compiledByGoalId.get(goalKey(ref.landscapeId, ref.goalId)) ?? {})
+        const jurisdictions = intersectApplicabilityJurisdictions(requirementApplicabilities)
+        const compiled = normalizeCompiledApplicability(jurisdictions)
+        const evidence = jurisdictions.flatMap((jurisdiction) => refs.map((ref) => ({
+          dimension: SUPPORTED_DIMENSION,
+          value: jurisdiction,
+          kind: 'assessment-requires' as const,
+          source: `requires ${ref.goalId}`,
+        })))
+        const key = goalKey(canonical.landscape.landscapeId, goal.id)
+        const beforeCompiled = compiledByGoalId.get(key) ?? {}
+        const beforeEvidence = evidenceByGoalId.get(key) ?? []
+        const afterEvidence = sortEvidence(evidence)
+        if (
+          JSON.stringify(beforeCompiled) !== JSON.stringify(compiled)
+          || JSON.stringify(beforeEvidence) !== JSON.stringify(afterEvidence)
+        ) {
+          compiledByGoalId.set(key, compiled)
+          evidenceByGoalId.set(key, afterEvidence)
+          changed = true
+        }
+      }
+      return changed
+    }
+
     canonical.landscape.goals.forEach((goal) => {
       compileGoal(canonical.landscape.landscapeId, goal.id)
     })
@@ -1279,6 +1333,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       for (const goal of canonical.landscape.goals) {
         if (!isAtomicGoal(goal)) continue
         if (isMemoryGoal(goal)) continue
+        if (isApplicabilityFromRequiresEnabled(goal)) continue
         const currentApplicability = compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id))
         const jurisdictions = currentApplicability?.[SUPPORTED_DIMENSION] ?? []
         if (jurisdictions.length === 0) continue
@@ -1296,6 +1351,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         }
       }
 
+      applicabilityChanged = refreshRequiresDerivedApplicability() || applicabilityChanged
       applicabilityChanged = propagateChildUnionApplicability() || applicabilityChanged
     }
 

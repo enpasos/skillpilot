@@ -8,6 +8,7 @@ import { startViteTestServer } from './viteTestServer'
 
 const chemistryCurriculumId = 'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0'
 const experimentalCurriculumId = 'experimental-school-curriculum'
+const universityPhysicsId = 'university-physics'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -81,22 +82,23 @@ try {
     (options) => options.map((option) => (option as HTMLOptionElement).value),
   )
   await page.waitForFunction(
-    ({ mathId, currentId }) => {
+    ({ physicsId, currentId }) => {
       const values = [...document.querySelectorAll(
         '[data-testid="quality-filter-fixture"] select option',
       )]
         .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(mathId) && values.includes(currentId)
+      return values.includes(physicsId) && values.includes(currentId)
     },
     {
-      mathId: CANONICAL_GYMNASIUM_MATH_ID,
+      physicsId: CANONICAL_GYMNASIUM_PHYSICS_ID,
       currentId: experimentalCurriculumId,
     },
   )
 
   const defaultIds = await visibleCurriculumIds()
   assert(
-    defaultIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
+    defaultIds.includes(CANONICAL_GYMNASIUM_PHYSICS_ID)
+      && !defaultIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
     'the default green filter shows a human-reviewed curriculum',
   )
   assert(
@@ -145,6 +147,19 @@ try {
   )
 
   await qualityButtons.red.click()
+  await page.waitForFunction(
+    ({ mathId, currentId }) => {
+      const values = [...document.querySelectorAll(
+        '[data-testid="quality-filter-fixture"] select option',
+      )]
+        .map((option) => (option as HTMLOptionElement).value)
+      return values.includes(mathId) && values.includes(currentId)
+    },
+    {
+      mathId: CANONICAL_GYMNASIUM_MATH_ID,
+      currentId: experimentalCurriculumId,
+    },
+  )
   assert(
     await qualityButtons.red.getAttribute('aria-pressed') === 'true',
     'the experimental filter exposes its active state accessibly',
@@ -160,7 +175,7 @@ try {
       return values.includes(greenId) && values.includes(orangeId) && values.includes(redId)
     },
     {
-      greenId: CANONICAL_GYMNASIUM_MATH_ID,
+      greenId: CANONICAL_GYMNASIUM_PHYSICS_ID,
       orangeId: chemistryCurriculumId,
       redId: experimentalCurriculumId,
     },
@@ -181,7 +196,7 @@ try {
         .map((option) => (option as HTMLOptionElement).value)
       return values.includes(physicsId)
     },
-    CANONICAL_GYMNASIUM_PHYSICS_ID,
+    universityPhysicsId,
   )
   assert(
     await qualityFixture.getByTestId('quality-filter-selection').textContent()

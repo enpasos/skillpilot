@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs'
 import {
-  CANONICAL_GYMNASIUM_MATH_ID,
   CANONICAL_GYMNASIUM_PHYSICS_ID,
   MANUAL_ORANGE_CURRICULUM_IDS,
 } from '../src/utils/curriculumQualityTrafficLight'
@@ -34,7 +33,6 @@ const currentM6Ids = (artifact.curricula ?? [])
   .sort()
 
 const manualM6Ids = [
-  CANONICAL_GYMNASIUM_MATH_ID,
   CANONICAL_GYMNASIUM_PHYSICS_ID,
   ...MANUAL_ORANGE_CURRICULUM_IDS,
 ].sort()

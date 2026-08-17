@@ -10,12 +10,9 @@ const path = require('node:path')
 const RUNTIME_ROOT = '/opt/skillpilot-runtime'
 const OUTPUT_ROOT = '/opt/runtime-output'
 const BASE_URL = 'http://127.0.0.1:18080'
-const EXPECTED = JSON.parse(fs.readFileSync(path.join(RUNTIME_ROOT, 'expected.json'), 'utf8'))
-const { chromium } = require(path.join(RUNTIME_ROOT, 'playwright/node_modules/playwright'))
-const PLAYWRIGHT_VERSION = require(path.join(
-  RUNTIME_ROOT,
-  'playwright/node_modules/playwright/package.json',
-)).version
+let EXPECTED
+let chromium
+let PLAYWRIGHT_VERSION
 
 // JSON.stringify's replacer array is not recursive-friendly for arbitrary
 // evidence. Canonicalize first so every nested object uses sorted keys.
@@ -92,7 +89,98 @@ const assertNoForbiddenRequests = (requests, label) => {
   requireCondition(forbiddenData.length === 0, `${label} attempted a repository/raw-data fallback: ${forbiddenData.slice(0, 3)}`)
 }
 
+const selectDefaultOffering = (catalog, rootId) => {
+  requireCondition(typeof rootId === 'string' && rootId.length > 0,
+    'browser catalog root landscape ID is missing')
+  requireCondition(Array.isArray(catalog?.landscapes),
+    'browser catalog landscapes are missing')
+  const rootDescriptors = catalog.landscapes.filter((item) => (
+    item && typeof item === 'object' && item.landscapeId === rootId
+  ))
+  requireCondition(rootDescriptors.length === 1,
+    `browser catalog root descriptor count differs: ${rootDescriptors.length}`)
+  const rootDescriptor = rootDescriptors[0]
+  requireCondition(rootDescriptor.role === 'root',
+    'browser catalog root descriptor has a non-root role')
+  requireCondition(typeof rootDescriptor.packageId === 'string' && rootDescriptor.packageId.length > 0,
+    'browser catalog root descriptor has no package identity')
+  requireCondition(
+    typeof rootDescriptor.defaultOfferingId === 'string'
+      && rootDescriptor.defaultOfferingId.length > 0,
+    'browser catalog root descriptor has no default offering',
+  )
+  requireCondition(Array.isArray(catalog.offerings),
+    'browser catalog offerings are missing')
+  const offeringMatches = catalog.offerings.filter((item) => (
+    item && typeof item === 'object'
+      && item.offeringId === rootDescriptor.defaultOfferingId
+  ))
+  requireCondition(offeringMatches.length === 1,
+    `browser catalog default offering count differs: ${offeringMatches.length}`)
+  const offeringDescriptor = offeringMatches[0]
+  requireCondition(offeringDescriptor.landscapeId === rootId,
+    'browser catalog default offering belongs to a different landscape')
+  requireCondition(offeringDescriptor.packageId === rootDescriptor.packageId,
+    'browser catalog default offering belongs to a different package')
+  return { rootDescriptor, offeringDescriptor }
+}
+
+const selfTestDefaultOfferingSelector = () => {
+  const validCatalog = {
+    landscapes: [{
+      packageId: 'org.skillpilot.fixture',
+      landscapeId: 'fixture-root',
+      role: 'root',
+      defaultOfferingId: 'offering.fixture',
+    }],
+    offerings: [{
+      packageId: 'org.skillpilot.fixture',
+      landscapeId: 'fixture-root',
+      offeringId: 'offering.fixture',
+      scope: { schoolForm: 'Gymnasium', stage: 'CrossStage' },
+    }],
+  }
+  const clone = (value) => JSON.parse(JSON.stringify(value))
+  const selected = selectDefaultOffering(validCatalog, 'fixture-root')
+  requireCondition(selected.offeringDescriptor.offeringId === 'offering.fixture',
+    'default-offering selector changed the valid offering')
+
+  let rejected = 0
+  const expectFailure = (label, mutate) => {
+    const fixture = clone(validCatalog)
+    mutate(fixture)
+    try {
+      selectDefaultOffering(fixture, 'fixture-root')
+    } catch {
+      rejected += 1
+      return
+    }
+    throw new Error(`default-offering selector accepted ${label}`)
+  }
+  expectFailure('a missing default offering', (fixture) => {
+    fixture.offerings = []
+  })
+  expectFailure('a duplicate root descriptor', (fixture) => {
+    fixture.landscapes.push(clone(fixture.landscapes[0]))
+  })
+  expectFailure('a duplicate default offering', (fixture) => {
+    fixture.offerings.push(clone(fixture.offerings[0]))
+  })
+  expectFailure('a cross-root default offering', (fixture) => {
+    fixture.offerings[0].landscapeId = 'other-root'
+  })
+  requireCondition(rejected === 4,
+    `default-offering selector rejection count differs: ${rejected}`)
+  process.stdout.write('Package-consumer browser default-offering selector self-test passed (1 valid, 4 invalid).\n')
+}
+
 const run = async () => {
+  EXPECTED = JSON.parse(fs.readFileSync(path.join(RUNTIME_ROOT, 'expected.json'), 'utf8'))
+  ;({ chromium } = require(path.join(RUNTIME_ROOT, 'playwright/node_modules/playwright')))
+  PLAYWRIGHT_VERSION = require(path.join(
+    RUNTIME_ROOT,
+    'playwright/node_modules/playwright/package.json',
+  )).version
   requireCondition(
     PLAYWRIGHT_VERSION === EXPECTED.playwrightVersion,
     `Playwright version differs: ${PLAYWRIGHT_VERSION} != ${EXPECTED.playwrightVersion}`,
@@ -127,6 +215,10 @@ const run = async () => {
       'browser catalog has no root landscape')
     const rootId = catalog.rootLandscapeIds[0]
     const encodedRootId = encodeURIComponent(rootId)
+    const { rootDescriptor, offeringDescriptor } = selectDefaultOffering(catalog, rootId)
+    const defaultOfferingId = offeringDescriptor.offeringId
+    const encodedDefaultOfferingId = encodeURIComponent(defaultOfferingId)
+    const defaultOfferingPath = `/api/ui/composition-views/offerings/${encodedDefaultOfferingId}`
     const landscapeResponse = await api.get(`/api/ui/landscapes/${encodedRootId}`)
     const landscape = await responseJson(landscapeResponse, 'root landscape')
     requireCondition(landscape.landscapeId === rootId, 'browser root landscape differs from catalog')
@@ -170,20 +262,42 @@ const run = async () => {
       }
     })
     page.on('pageerror', (error) => pageErrors.push(error.message))
-    const navigation = await page.goto(`/learner?l=${encodedRootId}`, { waitUntil: 'domcontentloaded', timeout: 120000 })
+    const appOfferingResponsePromise = page.waitForResponse((response) => {
+      const url = normalizedUrl(response.url())
+      return url?.origin === BASE_URL && url.pathname === defaultOfferingPath
+    }, { timeout: 120000 })
+    const learnerSearch = new URLSearchParams({
+      l: rootId,
+      offering: defaultOfferingId,
+    })
+    const navigation = await page.goto(`/learner?${learnerSearch}`, { waitUntil: 'domcontentloaded', timeout: 120000 })
     requireCondition(navigation?.status() === 200, `React app navigation returned ${navigation?.status()}`)
+    const appOfferingResponse = await appOfferingResponsePromise
+    requireCondition(appOfferingResponse.status() === 200,
+      `React app default offering returned ${appOfferingResponse.status()}`)
     await page.waitForFunction(() => document.querySelector('#root')?.childElementCount > 0, null, { timeout: 60000 })
-    const renderedText = await page.waitForFunction((candidates) => {
-      const text = document.body?.innerText ?? ''
-      return candidates.find((candidate) => text.includes(candidate)) ?? null
-    }, contentCandidates, { timeout: 120000 }).then((handle) => handle.jsonValue())
+    let renderedText
+    try {
+      renderedText = await page.waitForFunction((candidates) => {
+        const text = document.body?.innerText ?? ''
+        return candidates.find((candidate) => text.includes(candidate)) ?? null
+      }, contentCandidates, { timeout: 120000 }).then((handle) => handle.jsonValue())
+    } catch (error) {
+      const bodyText = (await page.locator('body').innerText()).slice(0, 3000)
+      await page.screenshot({ path: path.join(OUTPUT_ROOT, 'browser-package-ui-debug.png'), fullPage: false })
+      throw new Error(
+        `React app rendered no package goal content; defaultOffering=${JSON.stringify(defaultOfferingId)}; `
+        + `body=${JSON.stringify(bodyText)}; appResponses=${JSON.stringify(appResponses.slice(0, 30))}; `
+        + `pageErrors=${JSON.stringify(pageErrors.slice(0, 10))}; ${error.message}`,
+      )
+    }
     requireCondition(typeof renderedText === 'string', 'React app rendered no package goal content')
     // These must be requests made by the application page, not only by the
     // API setup above. They prove the compiled JavaScript uses package APIs.
     const requiredPageResponses = [
       (item) => item.path.startsWith('/api/ui/curriculum-catalog') && item.status === 200,
       (item) => item.path.includes(`/api/ui/landscapes/${encodedRootId}/closure`) && item.status === 200,
-      (item) => item.path.startsWith('/api/ui/composition-views/') && item.status === 200,
+      (item) => item.path === defaultOfferingPath && item.status === 200,
     ]
     for (const predicate of requiredPageResponses) {
       requireCondition(appResponses.some(predicate), `React app omitted a required package API response: ${JSON.stringify(appResponses.slice(0, 20))}`)
@@ -271,6 +385,8 @@ const run = async () => {
         packageCase: {
           catalogGenerationSha256: catalog.generationSha256,
           rootLandscapeId: rootId,
+          rootPackageId: rootDescriptor.packageId,
+          defaultOfferingId,
           learnerId,
           renderedContent: renderedText,
           renderedBodyBytes: Buffer.byteLength(renderedBody),
@@ -299,12 +415,21 @@ const run = async () => {
   }
 }
 
-run().catch((error) => {
-  writeResult({
-    reportFormatVersion: 1,
-    status: 'failed',
-    diagnostics: [{ code: 'BROWSER_SMOKE_FAILED', message: error?.stack ?? String(error) }],
+if (process.argv.includes('--self-test')) {
+  try {
+    selfTestDefaultOfferingSelector()
+  } catch (error) {
+    process.stderr.write(`FAIL package-consumer browser selector self-test: ${error?.stack ?? error}\n`)
+    process.exitCode = 1
+  }
+} else {
+  run().catch((error) => {
+    writeResult({
+      reportFormatVersion: 1,
+      status: 'failed',
+      diagnostics: [{ code: 'BROWSER_SMOKE_FAILED', message: error?.stack ?? String(error) }],
+    })
+    process.stderr.write(`FAIL package-consumer browser smoke: ${error?.stack ?? error}\n`)
+    process.exitCode = 1
   })
-  process.stderr.write(`FAIL package-consumer browser smoke: ${error?.stack ?? error}\n`)
-  process.exitCode = 1
-})
+}

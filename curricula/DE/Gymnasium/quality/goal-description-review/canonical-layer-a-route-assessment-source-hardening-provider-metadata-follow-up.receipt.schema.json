@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/canonical-layer-a-route-assessment-source-hardening-provider-metadata-follow-up.receipt.schema.json",
+  "title": "Canonical Layer-A Route Assessment Source Hardening Provider Metadata Follow-up Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "appliedAt",
+    "status",
+    "receiptRole",
+    "parentReceipt",
+    "transitiveAuthority",
+    "authorization",
+    "scope",
+    "promptTransition",
+    "canonicalParity",
+    "artifactBindings",
+    "validation",
+    "receiptDigestAlgorithm",
+    "receiptDigest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-layer-a-route-assessment-source-hardening-provider-metadata-follow-up-2026-08-17-v1"
+    },
+    "appliedAt": {
+      "const": "2026-08-17"
+    },
+    "status": {
+      "const": "APPLIED_AND_VALIDATED"
+    },
+    "receiptRole": {
+      "const": "append-only-child-of-semantic-kind-fingerprint-follow-up"
+    },
+    "parentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt",
+        "receiptDigest"
+      ],
+      "properties": {
+        "receipt": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "receiptDigest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "transitiveAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt",
+        "receiptDigest",
+        "canonicalMathematics"
+      ],
+      "properties": {
+        "receipt": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "receiptDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "furtherProductOwnerDecisionRequired",
+        "affectsOpenAiCoachV1Contract",
+        "v1Version",
+        "commitPushDeployAuthorized"
+      ],
+      "properties": {
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "furtherProductOwnerDecisionRequired": {
+          "const": false
+        },
+        "affectsOpenAiCoachV1Contract": {
+          "const": false
+        },
+        "v1Version": {
+          "const": "1.0.0 unchanged"
+        },
+        "commitPushDeployAuthorized": {
+          "const": false
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "promptPath",
+        "goalId",
+        "lineNumber",
+        "linePointer",
+        "changedLineCount",
+        "canonicalMutationCount",
+        "assetMutationCount",
+        "generatorMutationCount"
+      ],
+      "properties": {
+        "promptPath": {
+          "const": "curricula/DE/Gymnasium/visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/prompt.de.md"
+        },
+        "goalId": {
+          "const": "616c72a4-972d-5cc0-b903-e2a24bcb150c"
+        },
+        "lineNumber": {
+          "const": 11
+        },
+        "linePointer": {
+          "const": "/lines/10"
+        },
+        "changedLineCount": {
+          "const": 1
+        },
+        "canonicalMutationCount": {
+          "const": 0
+        },
+        "assetMutationCount": {
+          "const": 0
+        },
+        "generatorMutationCount": {
+          "const": 0
+        }
+      }
+    },
+    "promptTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "before",
+        "after",
+        "beforeLine",
+        "afterLine"
+      ],
+      "properties": {
+        "before": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "after": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "beforeLine": {
+          "const": "- Provider: OpenAI image generation, two-step reviewed edit chain"
+        },
+        "afterLine": {
+          "const": "- Provider: OpenAI image generation"
+        }
+      }
+    },
+    "canonicalParity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalMathematics",
+        "goalIndex",
+        "resourceLinkIndex",
+        "providerPointer",
+        "provider",
+        "publicUrl",
+        "visualizationQa",
+        "qaRecordIndex",
+        "canonicalAsset",
+        "publicAsset",
+        "assetSha256"
+      ],
+      "properties": {
+        "canonicalMathematics": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "goalIndex": {
+          "const": 683
+        },
+        "resourceLinkIndex": {
+          "const": 0
+        },
+        "providerPointer": {
+          "const": "/goals/683/resourceLinks/0/provider"
+        },
+        "provider": {
+          "const": "OpenAI image generation"
+        },
+        "publicUrl": {
+          "const": "/assets/goal-visualizations/mathematik/616c72a4-972d-5cc0-b903-e2a24bcb150c/616c72a4-972d-5cc0-b903-e2a24bcb150c.png"
+        },
+        "visualizationQa": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "qaRecordIndex": {
+          "const": 381
+        },
+        "canonicalAsset": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "publicAsset": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "assetSha256": {
+          "$ref": "#/$defs/prefixedSha256"
+        }
+      }
+    },
+    "artifactBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "validator"
+      ],
+      "properties": {
+        "schema": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "validator": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentFileAndSelfDigest",
+        "transitiveAuthorityFileAndSelfDigest",
+        "exactOneLineReverse",
+        "unchangedPromptRemainder",
+        "canonicalProviderParity",
+        "assetShaParity",
+        "childSchema",
+        "childSelfDigest",
+        "redistributionGeneratorRequired"
+      ],
+      "properties": {
+        "parentFileAndSelfDigest": {
+          "const": "PASS"
+        },
+        "transitiveAuthorityFileAndSelfDigest": {
+          "const": "PASS"
+        },
+        "exactOneLineReverse": {
+          "const": "PASS"
+        },
+        "unchangedPromptRemainder": {
+          "const": "PASS"
+        },
+        "canonicalProviderParity": {
+          "const": "PASS"
+        },
+        "assetShaParity": {
+          "const": "PASS"
+        },
+        "childSchema": {
+          "const": "PASS"
+        },
+        "childSelfDigest": {
+          "const": "PASS"
+        },
+        "redistributionGeneratorRequired": {
+          "const": true
+        }
+      }
+    },
+    "receiptDigestAlgorithm": {
+      "const": "sha256(JSON.stringify(document_without_receiptDigest))"
+    },
+    "receiptDigest": {
+      "$ref": "#/$defs/sha256"
+    }
+  }
+}

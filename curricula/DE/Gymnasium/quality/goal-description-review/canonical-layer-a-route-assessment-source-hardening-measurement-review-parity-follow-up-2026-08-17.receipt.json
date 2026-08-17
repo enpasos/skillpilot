@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "canonical-layer-a-route-assessment-source-hardening-measurement-review-parity-follow-up-2026-08-17-v1",
+  "appliedAt": "2026-08-17",
+  "status": "APPLIED_AND_VALIDATED",
+  "receiptRole": "append-only-child-of-deterministic-render-provenance-follow-up",
+  "parentReceipt": {
+    "receipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-layer-a-route-assessment-source-hardening-deterministic-render-provenance-follow-up-2026-08-17.receipt.json",
+      "bytes": 6486,
+      "sha256": "54e6c180642f60bd74c98231d70f36b2b1115a358605572868962ce04eb2f796"
+    },
+    "receiptDigest": "f18d7aa625bb51bc10f6f56c4c15935a9aca74981b8bdcad736137260045b380"
+  },
+  "authorization": {
+    "basis": "Product-owner-approved exact correction of the receipt-bound deterministic measurement review note from 47 mm to the source-, solution-, and canonical-altText-bound 74 mm value.",
+    "furtherProductOwnerDecisionRequired": false,
+    "affectsOpenAiCoachV1Contract": false,
+    "v1Version": "1.0.0 unchanged",
+    "commitPushDeployAuthorized": false
+  },
+  "scope": {
+    "promptPath": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/prompt.de.md",
+    "goalId": "2c97548a-77d2-57ef-98f7-a6d06aab48c9",
+    "lineNumber": 28,
+    "linePointer": "/lines/27",
+    "changedLineCount": 1,
+    "canonicalMutationCount": 0,
+    "sourceMutationCount": 0,
+    "assetMutationCount": 0
+  },
+  "promptTransition": {
+    "before": {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/prompt.de.md",
+      "bytes": 1635,
+      "sha256": "7a653d1ac14219bc5dec393dfd81d553270eae991f15d459292c88010d847580"
+    },
+    "after": {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/prompt.de.md",
+      "bytes": 1635,
+      "sha256": "4740cc1871f1cc3d0ec7c2862ad2171a174a032b646c31aaf3e76d4fd0b1fa3c"
+    },
+    "beforeLine": "Die Millimeterskala, der Nullpunkt und die markierte Strecke bis 47 mm wurden unabhängig geprüft. Das gerenderte PNG ist 1200 × 360 Pixel groß und byteidentisch in Canonical-, Web- und Backend-Assetwurzel.",
+    "afterLine": "Die Millimeterskala, der Nullpunkt und die markierte Strecke bis 74 mm wurden unabhängig geprüft. Das gerenderte PNG ist 1200 × 360 Pixel groß und byteidentisch in Canonical-, Web- und Backend-Assetwurzel."
+  },
+  "measurementEvidence": {
+    "canonicalMathematics": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "bytes": 3123302,
+      "sha256": "4a099ada2b496cec6595092780d729211eaad9dd1bad066aaac087f983559c31"
+    },
+    "goalIndex": 1131,
+    "resourceLinkIndex": 0,
+    "altTextPointer": "/goals/1131/resourceLinks/0/altText",
+    "altText": "Ein Messstreifen mit Millimeterskala, dessen blaue Messstrecke bei null Millimetern beginnt und bei vierundsiebzig Millimetern endet.",
+    "sourceSvg": {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/j7/j7-measurement/measurement-strip-v1.svg",
+      "bytes": 1846,
+      "sha256": "c9290e654d029599344be4f37d42600277b32cb4d6b6c6401c66cfbbf74bfd4c"
+    },
+    "solution": {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/j7/j7-measurement/solution_v2.md",
+      "bytes": 1579,
+      "sha256": "a4149111365e589aaaaae879741070f3dce409f14f8e51b86e09867603c3348f"
+    },
+    "svgDescription": "Ein blauer Prüfstreifen beginnt am Nullstrich und endet am vierten Millimeterstrich nach sieben Zentimetern.",
+    "svgGeometry": {
+      "stripStartX": 100,
+      "stripWidthPixels": 740,
+      "stripEndX": 840,
+      "millimeterTickWidthPixels": 10,
+      "derivedMeasurementMm": 74
+    },
+    "solutionStatement": "Die Länge beträgt deshalb $7{,}4\\,\\mathrm{cm}=74\\,\\mathrm{mm}$.",
+    "measurementMm": 74,
+    "provider": "Deterministically rendered from reviewed SVG assessment source",
+    "renderer": "librsvg rsvg-convert",
+    "rendererVersion": "2.52.5",
+    "renderContractId": "rsvg-convert-fixed-png-v1",
+    "renderCommand": "rsvg-convert --width 1200 --height 360 --format png --output 2c97548a-77d2-57ef-98f7-a6d06aab48c9.png measurement-strip-v1.svg",
+    "canonicalAsset": {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/2c97548a-77d2-57ef-98f7-a6d06aab48c9.png",
+      "bytes": 11328,
+      "sha256": "bfea78720ef94c2db7c9d913feabb94486bef94fc7bd58ab173fb5abf19d6906"
+    },
+    "publicAsset": {
+      "path": "app/public/assets/goal-visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/2c97548a-77d2-57ef-98f7-a6d06aab48c9.png",
+      "bytes": 11328,
+      "sha256": "bfea78720ef94c2db7c9d913feabb94486bef94fc7bd58ab173fb5abf19d6906"
+    },
+    "backendAsset": {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/2c97548a-77d2-57ef-98f7-a6d06aab48c9/2c97548a-77d2-57ef-98f7-a6d06aab48c9.png",
+      "bytes": 11328,
+      "sha256": "bfea78720ef94c2db7c9d913feabb94486bef94fc7bd58ab173fb5abf19d6906"
+    },
+    "assetSha256": "sha256:bfea78720ef94c2db7c9d913feabb94486bef94fc7bd58ab173fb5abf19d6906"
+  },
+  "artifactBindings": {
+    "schema": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-layer-a-route-assessment-source-hardening-measurement-review-parity-follow-up.receipt.schema.json",
+      "bytes": 8315,
+      "sha256": "b15d5a39c502a5db20d578b9fe8ef8482056cd0d7021c375baed0d97434ba16b"
+    },
+    "validator": {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/validate-canonical-layer-a-route-assessment-source-hardening-measurement-review-parity-follow-up.mjs",
+      "bytes": 11105,
+      "sha256": "10ecff5461af093b98fa37770478da656e3000142f9767cfecc5e7ef3678ec69"
+    }
+  },
+  "validation": {
+    "parentFileAndSelfDigest": "PASS",
+    "exactOneLineReverse": "PASS",
+    "unchangedPromptRemainder": "PASS",
+    "svgGeometryParity": "PASS",
+    "canonicalAltTextParity": "PASS",
+    "solutionParity": "PASS",
+    "providerRendererAssetParity": "PASS",
+    "childSchema": "PASS",
+    "childSelfDigest": "PASS"
+  },
+  "receiptDigestAlgorithm": "sha256(JSON.stringify(document_without_receiptDigest))",
+  "receiptDigest": "309fa4d6f55012aec19e9f58bb5379c5da785260b59a81b08dc22620ea5095e1"
+}

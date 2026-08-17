@@ -15,6 +15,7 @@ import json
 import math
 import os
 import re
+import shlex
 import stat
 import struct
 import sys
@@ -71,6 +72,51 @@ ZIP_LOCAL_HEADER_SIGNATURE = b"PK\x03\x04"
 ZIP64_EXTRA_FIELD_ID = 0x0001
 ALLOWED_COMPRESSION_METHODS = {zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED}
 ALLOWED_GENERAL_PURPOSE_FLAGS = {0, 0x0800}
+
+REDISTRIBUTION_REVIEW_PATH = "metadata/provenance/redistribution-review.json"
+DETERMINISTIC_RENDER_PROVENANCE_CLASS = "skillpilot-authored-deterministic-render"
+DETERMINISTIC_RENDER_PROVENANCE_SOURCE = "hash-bound-skillpilot-source-render"
+DETERMINISTIC_RENDER_PROVIDER = (
+    "Deterministically rendered from reviewed SVG assessment source"
+)
+DETERMINISTIC_RENDER_CONTRACT_ID = "rsvg-convert-fixed-png-v1"
+DETERMINISTIC_RENDERER = "librsvg rsvg-convert"
+DETERMINISTIC_RENDERER_VERSION = "2.52.5"
+DETERMINISTIC_RENDER_WIDTH = 1200
+DETERMINISTIC_RENDER_HEIGHT = 360
+DETERMINISTIC_RENDER_RECEIPT_PATH = (
+    "curricula/DE/Gymnasium/quality/goal-description-review/"
+    "canonical-layer-a-route-assessment-source-hardening-deterministic-render-"
+    "provenance-follow-up-2026-08-17.receipt.json"
+)
+MEASUREMENT_REVIEW_RECEIPT_PATH = (
+    "curricula/DE/Gymnasium/quality/goal-description-review/"
+    "canonical-layer-a-route-assessment-source-hardening-measurement-review-"
+    "parity-follow-up-2026-08-17.receipt.json"
+)
+MEASUREMENT_REVIEW_RECEIPT_BYTES = 6433
+MEASUREMENT_REVIEW_RECEIPT_SHA256 = (
+    "b07e4b0d9a3a4afbe7252099b415f948b9f8095e228793bb4555824a77524dc8"
+)
+MEASUREMENT_REVIEW_RECEIPT_DIGEST = (
+    "309fa4d6f55012aec19e9f58bb5379c5da785260b59a81b08dc22620ea5095e1"
+)
+DETERMINISTIC_RENDER_EVIDENCE_KEYS = frozenset(
+    {
+        "command",
+        "contractId",
+        "format",
+        "height",
+        "outputBytes",
+        "outputSha256",
+        "renderer",
+        "rendererVersion",
+        "sourceBytes",
+        "sourcePath",
+        "sourceSha256",
+        "width",
+    }
+)
 
 SEMANTIC_BINDING_NAMES = tuple(
     name for name, _schema_id in package_contracts.SEMANTIC_CONTRACT_BINDINGS
@@ -171,6 +217,29 @@ class DiagnosticCollector:
 
 
 @dataclass(frozen=True)
+class DeterministicRenderAuthority:
+    goal_id: str
+    resource_id: str
+    prompt_path: str
+    prompt_sha256: str
+    source_path: str
+    source_bytes: int
+    source_sha256: str
+    provider: str
+    renderer: str
+    renderer_version: str
+    contract_id: str
+    width: int
+    height: int
+    command: str
+    output_path: str
+    output_bytes: int
+    output_sha256: str
+    authority_receipt_sha256: str
+    authority_receipt_digest: str
+
+
+@dataclass(frozen=True)
 class TrustedContext:
     contract_dir: Path
     profile: dict[str, Any]
@@ -182,6 +251,7 @@ class TrustedContext:
     trusted_schema_documents: dict[str, dict[str, Any]]
     trusted_schema_metadata: dict[str, tuple[str, str, int]]
     schema_catalog_validator: Draft202012Validator
+    deterministic_render_authority: DeterministicRenderAuthority
 
 
 @dataclass
@@ -372,6 +442,220 @@ def object_value(value: Any, source: str) -> dict[str, Any]:
     return value
 
 
+def load_deterministic_render_authority() -> DeterministicRenderAuthority:
+    def receipt_self_digest(document: Mapping[str, Any]) -> str:
+        payload = dict(document)
+        payload.pop("receiptDigest", None)
+        raw = json.dumps(
+            payload,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        return sha256_bytes(raw)
+
+    def read_receipt(
+        relative_path: str,
+        expected_bytes: int,
+        expected_sha256: str,
+        expected_digest: str,
+    ) -> dict[str, Any]:
+        path = REPO_ROOT / relative_path
+        raw = path.read_bytes()
+        if len(raw) != expected_bytes or sha256_bytes(raw) != expected_sha256:
+            raise TrustRootError(
+                f"deterministic-render authority receipt bytes drifted: {relative_path}"
+            )
+        document = object_value(parse_json_bytes(raw, str(path)), str(path))
+        if (
+            document.get("receiptDigestAlgorithm")
+            != "sha256(JSON.stringify(document_without_receiptDigest))"
+            or document.get("receiptDigest") != expected_digest
+            or receipt_self_digest(document) != expected_digest
+            or document.get("status") != "APPLIED_AND_VALIDATED"
+        ):
+            raise TrustRootError(
+                f"deterministic-render authority receipt is invalid: {relative_path}"
+            )
+        authorization = document.get("authorization")
+        validation = document.get("validation")
+        if not (
+            isinstance(authorization, dict)
+            and authorization.get("furtherProductOwnerDecisionRequired") is False
+            and authorization.get("affectsOpenAiCoachV1Contract") is False
+            and authorization.get("v1Version") == "1.0.0 unchanged"
+            and isinstance(validation, dict)
+            and validation
+            and all(value == "PASS" for value in validation.values())
+        ):
+            raise TrustRootError(
+                f"deterministic-render authority receipt is not a closed validated Layer-A authorization: {relative_path}"
+            )
+        for binding_name in ("schema", "validator"):
+            artifact_bindings = document.get("artifactBindings")
+            binding = artifact_bindings.get(binding_name) if isinstance(artifact_bindings, dict) else None
+            if not isinstance(binding, dict) or not isinstance(binding.get("path"), str):
+                raise TrustRootError(
+                    f"authority receipt lacks {binding_name} binding: {relative_path}"
+                )
+            bound_path = REPO_ROOT / binding["path"]
+            bound_raw = bound_path.read_bytes()
+            if (
+                len(bound_raw) != binding.get("bytes")
+                or sha256_bytes(bound_raw) != binding.get("sha256")
+            ):
+                raise TrustRootError(
+                    f"authority receipt {binding_name} bytes drifted: {binding['path']}"
+                )
+        return document
+
+    measurement = read_receipt(
+        MEASUREMENT_REVIEW_RECEIPT_PATH,
+        MEASUREMENT_REVIEW_RECEIPT_BYTES,
+        MEASUREMENT_REVIEW_RECEIPT_SHA256,
+        MEASUREMENT_REVIEW_RECEIPT_DIGEST,
+    )
+    parent = measurement.get("parentReceipt")
+    parent_receipt = parent.get("receipt") if isinstance(parent, dict) else None
+    if not (
+        isinstance(parent_receipt, dict)
+        and parent_receipt.get("path") == DETERMINISTIC_RENDER_RECEIPT_PATH
+        and isinstance(parent_receipt.get("bytes"), int)
+        and isinstance(parent_receipt.get("sha256"), str)
+        and isinstance(parent.get("receiptDigest"), str)
+    ):
+        raise TrustRootError(
+            "measurement authority does not linearly bind the deterministic-render receipt"
+        )
+    deterministic = read_receipt(
+        DETERMINISTIC_RENDER_RECEIPT_PATH,
+        parent_receipt["bytes"],
+        parent_receipt["sha256"],
+        parent["receiptDigest"],
+    )
+
+    deterministic_scope = deterministic.get("scope")
+    measurement_scope = measurement.get("scope")
+    render = deterministic.get("renderEvidence")
+    measurement_evidence = measurement.get("measurementEvidence")
+    deterministic_transition = deterministic.get("promptTransition")
+    measurement_transition = measurement.get("promptTransition")
+    if not all(
+        isinstance(value, dict)
+        for value in (
+            deterministic_scope,
+            measurement_scope,
+            render,
+            measurement_evidence,
+            deterministic_transition,
+            measurement_transition,
+        )
+    ):
+        raise TrustRootError("deterministic-render authority tuple is incomplete")
+    goal_id = deterministic_scope.get("goalId")
+    resource_link_index = render.get("resourceLinkIndex")
+    source = render.get("sourceSvg")
+    measurement_source = measurement_evidence.get("sourceSvg")
+    canonical_asset = render.get("canonicalAsset")
+    measurement_asset = measurement_evidence.get("canonicalAsset")
+    prompt_after = measurement_transition.get("after")
+    deterministic_prompt_after = deterministic_transition.get("after")
+    if not (
+        isinstance(goal_id, str)
+        and measurement_scope.get("goalId") == goal_id
+        and isinstance(resource_link_index, int)
+        and not isinstance(resource_link_index, bool)
+        and resource_link_index >= 0
+        and isinstance(source, dict)
+        and source == measurement_source
+        and isinstance(canonical_asset, dict)
+        and canonical_asset == measurement_asset
+        and isinstance(prompt_after, dict)
+        and isinstance(deterministic_prompt_after, dict)
+        and measurement_transition.get("before") == deterministic_prompt_after
+        and measurement_scope.get("promptPath") == deterministic_scope.get("promptPath")
+        and prompt_after.get("path") == deterministic_scope.get("promptPath")
+        and measurement_evidence.get("provider") == render.get("provider")
+        and measurement_evidence.get("renderer") == render.get("renderer")
+        and measurement_evidence.get("rendererVersion") == render.get("rendererVersion")
+        and measurement_evidence.get("renderContractId") == render.get("renderContractId")
+        and measurement_evidence.get("renderCommand") == render.get("renderCommand")
+        and measurement_evidence.get("assetSha256") == render.get("assetSha256")
+    ):
+        raise TrustRootError(
+            "deterministic-render and measurement authority receipts do not bind one exact tuple"
+        )
+
+    public_url = render.get("publicUrl")
+    command = render.get("renderCommand")
+    if not (
+        isinstance(public_url, str)
+        and public_url.startswith("/assets/")
+        and isinstance(command, str)
+        and isinstance(source.get("path"), str)
+        and isinstance(canonical_asset.get("path"), str)
+    ):
+        raise TrustRootError("deterministic-render authority paths are incomplete")
+    output_path = public_url[1:]
+    command_parts = shlex.split(command, posix=True)
+    if not (
+        len(command_parts) == 10
+        and command_parts[0] == "rsvg-convert"
+        and command_parts[1] == "--width"
+        and command_parts[3] == "--height"
+        and command_parts[5:7] == ["--format", "png"]
+        and command_parts[7] == "--output"
+        and command_parts[8] == Path(output_path).name
+        and command_parts[9] == Path(source["path"]).name
+    ):
+        raise TrustRootError("deterministic-render authority command is not closed")
+    try:
+        width = int(command_parts[2])
+        height = int(command_parts[4])
+    except ValueError as error:
+        raise TrustRootError(
+            "deterministic-render authority dimensions are invalid"
+        ) from error
+    output_sha256 = canonical_asset.get("sha256")
+    output_bytes = canonical_asset.get("bytes")
+    source_sha256 = source.get("sha256")
+    source_bytes = source.get("bytes")
+    if not (
+        isinstance(output_sha256, str)
+        and re.fullmatch(r"[a-f0-9]{64}", output_sha256)
+        and isinstance(output_bytes, int)
+        and output_bytes > 0
+        and render.get("assetSha256") == f"sha256:{output_sha256}"
+        and isinstance(source_sha256, str)
+        and re.fullmatch(r"[a-f0-9]{64}", source_sha256)
+        and isinstance(source_bytes, int)
+        and source_bytes > 0
+        and isinstance(prompt_after.get("sha256"), str)
+        and re.fullmatch(r"[a-f0-9]{64}", prompt_after["sha256"])
+    ):
+        raise TrustRootError("deterministic-render authority hashes or byte counts are invalid")
+    return DeterministicRenderAuthority(
+        goal_id=goal_id,
+        resource_id=f"goal-resource:{goal_id}:{resource_link_index}",
+        prompt_path=prompt_after["path"],
+        prompt_sha256=prompt_after["sha256"],
+        source_path=source["path"],
+        source_bytes=source_bytes,
+        source_sha256=source_sha256,
+        provider=render["provider"],
+        renderer=render["renderer"],
+        renderer_version=render["rendererVersion"],
+        contract_id=render["renderContractId"],
+        width=width,
+        height=height,
+        command=command,
+        output_path=output_path,
+        output_bytes=output_bytes,
+        output_sha256=output_sha256,
+        authority_receipt_sha256=MEASUREMENT_REVIEW_RECEIPT_SHA256,
+        authority_receipt_digest=MEASUREMENT_REVIEW_RECEIPT_DIGEST,
+    )
+
+
 def load_trusted_context(contract_dir: Path) -> TrustedContext:
     contract_dir = contract_dir.resolve()
     try:
@@ -425,6 +709,7 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
             trusted_schema_documents=trusted_schema_documents,
             trusted_schema_metadata=trusted_schema_metadata,
             schema_catalog_validator=Draft202012Validator(catalog_schema, format_checker=FormatChecker()),
+            deterministic_render_authority=load_deterministic_render_authority(),
         )
     except TrustRootError:
         raise
@@ -1691,6 +1976,273 @@ def semantic_binding_records(manifest: Mapping[str, Any], kind: str) -> list[dic
     ] if isinstance(files, list) else []
 
 
+def validate_deterministic_render_provenance(
+    snapshot: ArchiveSnapshot,
+    documents: PackageDocuments,
+    manifest_binary: Mapping[str, Mapping[str, Any]],
+    embedded_resources: Mapping[str, Mapping[str, Any]],
+    authority: DeterministicRenderAuthority,
+    collector: DiagnosticCollector,
+) -> None:
+    review = documents.values.get(REDISTRIBUTION_REVIEW_PATH)
+    if not isinstance(review, dict):
+        collector.add(
+            "assetBytes",
+            "REDISTRIBUTION_REVIEW_UNAVAILABLE",
+            f"/{REDISTRIBUTION_REVIEW_PATH}",
+            "the package-local redistribution review is required for binary provenance validation",
+        )
+        return
+    manifest = snapshot.manifest if isinstance(snapshot.manifest, dict) else {}
+    if review.get("contentDigest") != manifest.get("contentDigest"):
+        collector.add(
+            "assetBytes",
+            "REDISTRIBUTION_CONTENT_DIGEST_MISMATCH",
+            f"/{REDISTRIBUTION_REVIEW_PATH}/contentDigest",
+            "redistribution review and manifest content digests differ",
+        )
+
+    raw_decisions = review.get("assetDecisions")
+    decisions = [item for item in raw_decisions if isinstance(item, dict)] if isinstance(raw_decisions, list) else []
+    decisions_by_id: dict[str, dict[str, Any]] = {}
+    for index, decision in enumerate(decisions):
+        resource_id = decision.get("resourceId")
+        if not isinstance(resource_id, str):
+            continue
+        if resource_id in decisions_by_id:
+            collector.add(
+                "assetBytes",
+                "REDISTRIBUTION_ASSET_DECISION_DUPLICATE",
+                f"/{REDISTRIBUTION_REVIEW_PATH}/assetDecisions/{index}/resourceId",
+                resource_id,
+            )
+        decisions_by_id[resource_id] = decision
+    if set(decisions_by_id) != set(manifest_binary):
+        collector.add(
+            "assetBytes",
+            "REDISTRIBUTION_ASSET_SET_MISMATCH",
+            f"/{REDISTRIBUTION_REVIEW_PATH}/assetDecisions",
+            f"reviewOnly={sorted(set(decisions_by_id)-set(manifest_binary))[:10]}, packageOnly={sorted(set(manifest_binary)-set(decisions_by_id))[:10]}",
+        )
+    deterministic_marker_ids = {
+        resource_id
+        for resource_id, record in manifest_binary.items()
+        if record.get("provenanceClass") == DETERMINISTIC_RENDER_PROVENANCE_CLASS
+    }
+    deterministic_marker_ids.update(
+        resource_id
+        for resource_id, decision in decisions_by_id.items()
+        if (
+            decision.get("provenanceClass") == DETERMINISTIC_RENDER_PROVENANCE_CLASS
+            or decision.get("provenanceSource") == DETERMINISTIC_RENDER_PROVENANCE_SOURCE
+            or decision.get("provider") == DETERMINISTIC_RENDER_PROVIDER
+            or isinstance(decision.get("deterministicRenderEvidence"), dict)
+        )
+    )
+    deterministic_marker_ids.update(
+        resource_id
+        for resource_id, resource in embedded_resources.items()
+        if resource.get("provider") == DETERMINISTIC_RENDER_PROVIDER
+    )
+    for resource_id in sorted(deterministic_marker_ids - {authority.resource_id}):
+        collector.add(
+            "assetBytes",
+            "DETERMINISTIC_RENDER_RESOURCE_UNAUTHORIZED",
+            f"/{REDISTRIBUTION_REVIEW_PATH}/assetDecisions/{resource_id}",
+            "the deterministic-render class is reserved for the exact receipt-authorized resource tuple",
+        )
+
+    authority_present = any(
+        authority.resource_id in values
+        for values in (manifest_binary, embedded_resources, decisions_by_id)
+    )
+    authority_complete = all(
+        authority.resource_id in values
+        for values in (manifest_binary, embedded_resources, decisions_by_id)
+    )
+    if authority_present and not authority_complete:
+        collector.add(
+            "assetBytes",
+            "DETERMINISTIC_RENDER_AUTHORITY_RESOURCE_MISSING",
+            f"/{REDISTRIBUTION_REVIEW_PATH}/assetDecisions",
+            f"authority-bound resource {authority.resource_id!r} must be present in manifest, resource index, and redistribution review",
+        )
+
+    for resource_id, record in manifest_binary.items():
+        decision = decisions_by_id.get(resource_id)
+        resource = embedded_resources.get(resource_id)
+        if decision is None or resource is None:
+            continue
+        record_path = record.get("path")
+        decision_location = f"/{REDISTRIBUTION_REVIEW_PATH}/assetDecisions/{resource_id}"
+        expected_decision_binding = {
+            "artifactPath": record_path,
+            "mediaType": record.get("mediaType"),
+            "bytes": record.get("bytes"),
+            "assetSha256": f"sha256:{record.get('sha256')}",
+            "provenanceClass": record.get("provenanceClass"),
+            "redistributionStatus": record.get("redistributionStatus"),
+            "licenseExpression": record.get("licenseExpression"),
+        }
+        actual_decision_binding = {
+            key: decision.get(key) for key in expected_decision_binding
+        }
+        if actual_decision_binding != expected_decision_binding:
+            collector.add(
+                "assetBytes",
+                "REDISTRIBUTION_ASSET_BINDING_MISMATCH",
+                decision_location,
+                f"expected {expected_decision_binding!r}, found {actual_decision_binding!r}",
+            )
+
+        evidence = decision.get("deterministicRenderEvidence")
+        authority_bound = resource_id == authority.resource_id
+        if not authority_bound:
+            continue
+        if not all(
+            (
+                record.get("provenanceClass") == DETERMINISTIC_RENDER_PROVENANCE_CLASS,
+                decision.get("provenanceClass") == DETERMINISTIC_RENDER_PROVENANCE_CLASS,
+                decision.get("provenanceSource") == DETERMINISTIC_RENDER_PROVENANCE_SOURCE,
+                decision.get("provider") == authority.provider,
+                decision.get("legacyLicenseNote") == "SkillPilot-authored",
+                decision.get("userProvided") is False,
+                resource.get("provider") == authority.provider,
+                resource.get("license") == "SkillPilot-authored",
+            )
+        ):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_CLASS_MISMATCH",
+                decision_location,
+                "manifest, review, and resource-index deterministic-render classifications are not exact",
+            )
+
+        authority_binding_expected = {
+            "recordPath": authority.output_path,
+            "recordMediaType": "image/png",
+            "recordBytes": authority.output_bytes,
+            "recordSha256": authority.output_sha256,
+            "resourceArtifactPath": authority.output_path,
+            "resourceOwnerGoalId": authority.goal_id,
+            "resourceMediaType": "image/png",
+            "resourceBytes": authority.output_bytes,
+            "resourceSha256": authority.output_sha256,
+            "resourceProvider": authority.provider,
+            "decisionArtifactPath": authority.output_path,
+            "decisionOwnerGoalId": authority.goal_id,
+            "decisionMediaType": "image/png",
+            "decisionBytes": authority.output_bytes,
+            "decisionAssetSha256": f"sha256:{authority.output_sha256}",
+            "decisionPromptPath": authority.prompt_path,
+            "decisionPromptSha256": f"sha256:{authority.prompt_sha256}",
+        }
+        authority_binding_actual = {
+            "recordPath": record_path,
+            "recordMediaType": record.get("mediaType"),
+            "recordBytes": record.get("bytes"),
+            "recordSha256": record.get("sha256"),
+            "resourceArtifactPath": resource.get("artifactPath"),
+            "resourceOwnerGoalId": resource.get("ownerGoalId"),
+            "resourceMediaType": resource.get("mediaType"),
+            "resourceBytes": resource.get("bytes"),
+            "resourceSha256": resource.get("sha256"),
+            "resourceProvider": resource.get("provider"),
+            "decisionArtifactPath": decision.get("artifactPath"),
+            "decisionOwnerGoalId": decision.get("ownerGoalId"),
+            "decisionMediaType": decision.get("mediaType"),
+            "decisionBytes": decision.get("bytes"),
+            "decisionAssetSha256": decision.get("assetSha256"),
+            "decisionPromptPath": decision.get("promptPath"),
+            "decisionPromptSha256": decision.get("promptSha256"),
+        }
+        if authority_binding_actual != authority_binding_expected:
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_AUTHORITY_TUPLE_MISMATCH",
+                decision_location,
+                f"receipt-authorized tuple expected {authority_binding_expected!r}, found {authority_binding_actual!r}",
+            )
+        semantic_binding = record.get("semanticBinding")
+        if not (
+            record.get("role") == "binary-asset"
+            and record.get("mediaType") == "image/png"
+            and isinstance(semantic_binding, dict)
+            and semantic_binding.get("kind") == "binary-resource"
+            and semantic_binding.get("resourceId") == resource_id
+        ):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_MANIFEST_BINDING_INVALID",
+                f"/metadata/manifest.json/files/{record_path}",
+                "deterministic render provenance is restricted to its PNG binary-resource record",
+            )
+        if not isinstance(evidence, dict):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_EVIDENCE_MISSING",
+                decision_location,
+                "deterministic render provenance requires closed render evidence",
+            )
+            continue
+        if set(evidence) != DETERMINISTIC_RENDER_EVIDENCE_KEYS:
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_EVIDENCE_INVALID",
+                f"{decision_location}/deterministicRenderEvidence",
+                f"expected keys {sorted(DETERMINISTIC_RENDER_EVIDENCE_KEYS)}, found {sorted(evidence)}",
+            )
+
+        if not (
+            evidence.get("sourcePath") == authority.source_path
+            and evidence.get("sourceBytes") == authority.source_bytes
+            and evidence.get("sourceSha256") == f"sha256:{authority.source_sha256}"
+        ):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_SOURCE_INVALID",
+                f"{decision_location}/deterministicRenderEvidence",
+                "source path, byte count, and SHA-256 must equal the receipt-authorized SkillPilot SVG",
+            )
+
+        command = evidence.get("command")
+        try:
+            command_parts = shlex.split(command, posix=True) if isinstance(command, str) else []
+        except ValueError:
+            command_parts = []
+        authority_command_parts = shlex.split(authority.command, posix=True)
+        if not (
+            evidence.get("contractId") == authority.contract_id
+            and evidence.get("renderer") == authority.renderer
+            and evidence.get("rendererVersion") == authority.renderer_version
+            and evidence.get("width") == authority.width
+            and evidence.get("height") == authority.height
+            and evidence.get("format") == "png"
+            and command_parts == authority_command_parts
+        ):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_CONTRACT_INVALID",
+                f"{decision_location}/deterministicRenderEvidence",
+                "renderer, version, dimensions, format, and closed rsvg-convert command must match",
+            )
+
+        actual_bytes = snapshot.actual_bytes.get(record_path) if isinstance(record_path, str) else None
+        actual_sha = snapshot.actual_sha256.get(record_path) if isinstance(record_path, str) else None
+        expected_output_sha = f"sha256:{actual_sha}" if isinstance(actual_sha, str) else None
+        if not (
+            evidence.get("outputBytes") == actual_bytes == record.get("bytes") == decision.get("bytes") == authority.output_bytes
+            and evidence.get("outputSha256") == expected_output_sha == decision.get("assetSha256") == f"sha256:{authority.output_sha256}"
+            and record.get("sha256") == actual_sha == authority.output_sha256
+        ):
+            collector.add(
+                "assetBytes",
+                "DETERMINISTIC_RENDER_OUTPUT_MISMATCH",
+                f"{decision_location}/deterministicRenderEvidence",
+                "render evidence output identity differs from the packaged PNG bytes",
+            )
+
+
 def validate_content_and_assets(
     snapshot: ArchiveSnapshot,
     documents: PackageDocuments,
@@ -1909,6 +2461,15 @@ def validate_content_and_assets(
             "/data/resources/resource-index.json/resources",
             f"indexOnly={sorted(set(embedded_resources)-set(binary_ids))[:10]}, semanticOnly={sorted(set(binary_ids)-set(embedded_resources))[:10]}",
         )
+
+    validate_deterministic_render_provenance(
+        snapshot,
+        documents,
+        manifest_binary,
+        embedded_resources,
+        trusted.deterministic_render_authority,
+        collector,
+    )
 
     total_image_bytes = 0
     for resource in binary_resources:
@@ -3343,6 +3904,7 @@ def run_self_test(trusted: TrustedContext, fixture_path: Path, verbose: bool) ->
                     trusted_schema_documents=trusted.trusted_schema_documents,
                     trusted_schema_metadata=trusted.trusted_schema_metadata,
                     schema_catalog_validator=trusted.schema_catalog_validator,
+                    deterministic_render_authority=trusted.deterministic_render_authority,
                 )
                 entries = [
                     (regular_zip_info("fixture/a.txt"), b"a"),
@@ -3362,6 +3924,7 @@ def run_self_test(trusted: TrustedContext, fixture_path: Path, verbose: bool) ->
                     trusted_schema_documents=trusted.trusted_schema_documents,
                     trusted_schema_metadata=trusted.trusted_schema_metadata,
                     schema_catalog_validator=trusted.schema_catalog_validator,
+                    deterministic_render_authority=trusted.deterministic_render_authority,
                 )
                 entries = [(regular_zip_info("fixture/a.txt"), b"a")]
             elif kind in {"local-central-mismatch", "symlink-input", "missing-manifest-prerequisites"}:
@@ -3803,6 +4366,327 @@ def run_self_test(trusted: TrustedContext, fixture_path: Path, verbose: bool) ->
                     print(f"PASS {case_id}: {expected_code}")
     except Exception as error:
         failures.append(f"runtime-projection-fixtures: self-test crashed: {error}")
+
+    # The authored deterministic-render class is a cross-document claim.  It is
+    # valid only when manifest, resource index, redistribution review, closed
+    # renderer command, hash-bound SVG source, and packaged PNG identity agree.
+    try:
+        authority = trusted.deterministic_render_authority
+        deterministic_resource_id = authority.resource_id
+        deterministic_path = authority.output_path
+        deterministic_sha = authority.output_sha256
+        deterministic_bytes = authority.output_bytes
+        deterministic_record = {
+            "path": deterministic_path,
+            "role": "binary-asset",
+            "mediaType": "image/png",
+            "bytes": deterministic_bytes,
+            "sha256": deterministic_sha,
+            "runtimeRequired": True,
+            "semanticBinding": {
+                "kind": "binary-resource",
+                "resourceId": deterministic_resource_id,
+            },
+            "licenseExpression": None,
+            "provenanceClass": DETERMINISTIC_RENDER_PROVENANCE_CLASS,
+            "redistributionStatus": "review-required",
+        }
+        deterministic_resource = {
+            "resourceId": deterministic_resource_id,
+            "ownerGoalId": authority.goal_id,
+            "artifactPath": deterministic_path,
+            "mediaType": "image/png",
+            "bytes": deterministic_bytes,
+            "sha256": deterministic_sha,
+            "provider": authority.provider,
+            "license": "SkillPilot-authored",
+        }
+        deterministic_decision = {
+            "resourceId": deterministic_resource_id,
+            "ownerGoalId": authority.goal_id,
+            "artifactPath": deterministic_path,
+            "mediaType": "image/png",
+            "bytes": deterministic_bytes,
+            "assetSha256": f"sha256:{deterministic_sha}",
+            "provider": authority.provider,
+            "legacyLicenseNote": "SkillPilot-authored",
+            "provenanceClass": DETERMINISTIC_RENDER_PROVENANCE_CLASS,
+            "provenanceSource": DETERMINISTIC_RENDER_PROVENANCE_SOURCE,
+            "userProvided": False,
+            "promptPath": authority.prompt_path,
+            "promptSha256": f"sha256:{authority.prompt_sha256}",
+            "redistributionStatus": "review-required",
+            "licenseExpression": None,
+            "deterministicRenderEvidence": {
+                "contractId": authority.contract_id,
+                "sourcePath": authority.source_path,
+                "sourceBytes": authority.source_bytes,
+                "sourceSha256": f"sha256:{authority.source_sha256}",
+                "renderer": authority.renderer,
+                "rendererVersion": authority.renderer_version,
+                "width": authority.width,
+                "height": authority.height,
+                "format": "png",
+                "command": authority.command,
+                "outputBytes": deterministic_bytes,
+                "outputSha256": f"sha256:{deterministic_sha}",
+            },
+        }
+        deterministic_manifest = {
+            "contentDigest": "sha256:" + "d" * 64,
+        }
+
+        def deterministic_mutation_codes(mutate: Any | None = None) -> set[str]:
+            record = copy.deepcopy(deterministic_record)
+            resource = copy.deepcopy(deterministic_resource)
+            decision = copy.deepcopy(deterministic_decision)
+            review = {
+                "contentDigest": deterministic_manifest["contentDigest"],
+                "assetDecisions": [decision],
+            }
+            if mutate is not None:
+                mutate(record, resource, decision, review)
+            semantic_binding = record.get("semanticBinding")
+            candidate_resource_id = (
+                semantic_binding.get("resourceId")
+                if isinstance(semantic_binding, dict)
+                else deterministic_resource_id
+            )
+            candidate_path = record.get("path")
+            candidate_bytes = record.get("bytes")
+            candidate_sha = record.get("sha256")
+            deterministic_snapshot = ArchiveSnapshot(
+                path=Path("deterministic-render-pure-fixture.zip"),
+                outer_bytes=0,
+                outer_sha256="",
+                archive_root="fixture",
+                infos_by_relative_path={},
+                raw_documents={},
+                actual_bytes={candidate_path: candidate_bytes} if isinstance(candidate_path, str) and isinstance(candidate_bytes, int) else {},
+                actual_sha256={candidate_path: candidate_sha} if isinstance(candidate_path, str) and isinstance(candidate_sha, str) else {},
+                content_prefixes={candidate_path: b"\x89PNG\r\n\x1a\n"} if isinstance(candidate_path, str) else {},
+                manifest=copy.deepcopy(deterministic_manifest),
+            )
+            deterministic_documents = PackageDocuments(
+                values={REDISTRIBUTION_REVIEW_PATH: review}
+            )
+            deterministic_collector = DiagnosticCollector()
+            validate_deterministic_render_provenance(
+                deterministic_snapshot,
+                deterministic_documents,
+                {str(candidate_resource_id): record},
+                {str(candidate_resource_id): resource},
+                authority,
+                deterministic_collector,
+            )
+            return deterministic_collector.codes_by_gate["assetBytes"]
+
+        def deterministic_absence_codes(partial_authority: bool) -> set[str]:
+            absence_snapshot = ArchiveSnapshot(
+                path=Path("no-deterministic-render-pure-fixture.zip"),
+                outer_bytes=0,
+                outer_sha256="",
+                archive_root="fixture",
+                infos_by_relative_path={},
+                raw_documents={},
+                actual_bytes={},
+                actual_sha256={},
+                content_prefixes={},
+                manifest=copy.deepcopy(deterministic_manifest),
+            )
+            absence_documents = PackageDocuments(
+                values={
+                    REDISTRIBUTION_REVIEW_PATH: {
+                        "contentDigest": deterministic_manifest["contentDigest"],
+                        "assetDecisions": [],
+                    }
+                }
+            )
+            absence_collector = DiagnosticCollector()
+            validate_deterministic_render_provenance(
+                absence_snapshot,
+                absence_documents,
+                {deterministic_resource_id: copy.deepcopy(deterministic_record)}
+                if partial_authority
+                else {},
+                {},
+                authority,
+                absence_collector,
+            )
+            return absence_collector.codes_by_gate["assetBytes"]
+
+        absent_codes = deterministic_absence_codes(False)
+        if absent_codes:
+            failures.append(
+                f"deterministic-render-absent-generic-package: expected no diagnostics, got {sorted(absent_codes)}"
+            )
+        else:
+            passed += 1
+            if verbose:
+                print("PASS deterministic-render-absent-generic-package: optional class remains absent")
+
+        partial_codes = deterministic_absence_codes(True)
+        if "DETERMINISTIC_RENDER_AUTHORITY_RESOURCE_MISSING" not in partial_codes:
+            failures.append(
+                "deterministic-render-partial-authority: expected "
+                f"DETERMINISTIC_RENDER_AUTHORITY_RESOURCE_MISSING, got {sorted(partial_codes)}"
+            )
+        else:
+            passed += 1
+            if verbose:
+                print(
+                    "PASS deterministic-render-partial-authority: "
+                    "DETERMINISTIC_RENDER_AUTHORITY_RESOURCE_MISSING"
+                )
+
+        valid_codes = deterministic_mutation_codes()
+        if valid_codes:
+            failures.append(
+                f"deterministic-render-valid: expected no diagnostics, got {sorted(valid_codes)}"
+            )
+        else:
+            passed += 1
+            if verbose:
+                print("PASS deterministic-render-valid: closed provenance chain")
+
+        def all_document_ai_relabel(
+            record: dict[str, Any],
+            resource: dict[str, Any],
+            decision: dict[str, Any],
+            _review: dict[str, Any],
+        ) -> None:
+            record["provenanceClass"] = "ai-generated-curated"
+            resource["provider"] = "OpenAI image generation"
+            resource["license"] = "AI-generated under provider terms"
+            decision["provenanceClass"] = "ai-generated-curated"
+            decision["provenanceSource"] = "provider-pipeline-claim"
+            decision["provider"] = "OpenAI image generation"
+            decision["legacyLicenseNote"] = "AI-generated under provider terms"
+            decision.pop("deterministicRenderEvidence")
+
+        def fabricated_unrelated_render_tuple(
+            record: dict[str, Any],
+            resource: dict[str, Any],
+            decision: dict[str, Any],
+            _review: dict[str, Any],
+        ) -> None:
+            fake_goal_id = "fabricated-unrelated-goal"
+            fake_resource_id = f"goal-resource:{fake_goal_id}:0"
+            fake_path = (
+                "assets/goal-visualizations/mathematik/fabricated-unrelated-goal/"
+                "fabricated-unrelated-goal.png"
+            )
+            fake_sha = "e" * 64
+            fake_bytes = 2048
+            record.update(
+                {
+                    "path": fake_path,
+                    "bytes": fake_bytes,
+                    "sha256": fake_sha,
+                    "semanticBinding": {
+                        "kind": "binary-resource",
+                        "resourceId": fake_resource_id,
+                    },
+                }
+            )
+            resource.update(
+                {
+                    "resourceId": fake_resource_id,
+                    "ownerGoalId": fake_goal_id,
+                    "artifactPath": fake_path,
+                    "bytes": fake_bytes,
+                    "sha256": fake_sha,
+                }
+            )
+            decision.update(
+                {
+                    "resourceId": fake_resource_id,
+                    "ownerGoalId": fake_goal_id,
+                    "artifactPath": fake_path,
+                    "bytes": fake_bytes,
+                    "assetSha256": f"sha256:{fake_sha}",
+                    "promptPath": (
+                        "curricula/DE/Gymnasium/visualizations/mathematik/"
+                        "fabricated-unrelated-goal/prompt.de.md"
+                    ),
+                    "promptSha256": "sha256:" + "f" * 64,
+                    "deterministicRenderEvidence": {
+                        "contractId": authority.contract_id,
+                        "sourcePath": (
+                            "curricula/DE/Gymnasium/assessments/mathematik/"
+                            "fabricated/fabricated-source.svg"
+                        ),
+                        "sourceBytes": 1024,
+                        "sourceSha256": "sha256:" + "a" * 64,
+                        "renderer": authority.renderer,
+                        "rendererVersion": authority.renderer_version,
+                        "width": authority.width,
+                        "height": authority.height,
+                        "format": "png",
+                        "command": (
+                            "rsvg-convert --width 1200 --height 360 --format png "
+                            "--output fabricated-unrelated-goal.png fabricated-source.svg"
+                        ),
+                        "outputBytes": fake_bytes,
+                        "outputSha256": f"sha256:{fake_sha}",
+                    },
+                }
+            )
+
+        deterministic_cases = [
+            (
+                "deterministic-render-evidence-missing",
+                lambda _record, _resource, decision, _review: decision.pop("deterministicRenderEvidence"),
+                "DETERMINISTIC_RENDER_EVIDENCE_MISSING",
+            ),
+            (
+                "deterministic-render-source-missing",
+                lambda _record, _resource, decision, _review: decision["deterministicRenderEvidence"].pop("sourcePath"),
+                "DETERMINISTIC_RENDER_SOURCE_INVALID",
+            ),
+            (
+                "deterministic-render-source-hash-missing",
+                lambda _record, _resource, decision, _review: decision["deterministicRenderEvidence"].pop("sourceSha256"),
+                "DETERMINISTIC_RENDER_SOURCE_INVALID",
+            ),
+            (
+                "deterministic-render-renderer-missing",
+                lambda _record, _resource, decision, _review: decision["deterministicRenderEvidence"].pop("renderer"),
+                "DETERMINISTIC_RENDER_CONTRACT_INVALID",
+            ),
+            (
+                "deterministic-render-command-drift",
+                lambda _record, _resource, decision, _review: decision["deterministicRenderEvidence"].__setitem__("command", "rsvg-convert source.svg"),
+                "DETERMINISTIC_RENDER_CONTRACT_INVALID",
+            ),
+            (
+                "deterministic-render-output-hash-drift",
+                lambda _record, _resource, decision, _review: decision["deterministicRenderEvidence"].__setitem__("outputSha256", "sha256:" + "e" * 64),
+                "DETERMINISTIC_RENDER_OUTPUT_MISMATCH",
+            ),
+            (
+                "deterministic-render-all-document-ai-relabel",
+                all_document_ai_relabel,
+                "DETERMINISTIC_RENDER_CLASS_MISMATCH",
+            ),
+            (
+                "deterministic-render-fabricated-unrelated-tuple",
+                fabricated_unrelated_render_tuple,
+                "DETERMINISTIC_RENDER_RESOURCE_UNAUTHORIZED",
+            ),
+        ]
+        for case_id, mutation, expected_code in deterministic_cases:
+            codes = deterministic_mutation_codes(mutation)
+            if expected_code not in codes:
+                failures.append(
+                    f"{case_id}: expected {expected_code}, got {sorted(codes)}"
+                )
+            else:
+                passed += 1
+                if verbose:
+                    print(f"PASS {case_id}: {expected_code}")
+    except Exception as error:
+        failures.append(f"deterministic-render-provenance-fixtures: self-test crashed: {error}")
 
     # Report protocol v2 closes the extracted-payload replay gap by binding the
     # independently read manifest and its closure identities directly.

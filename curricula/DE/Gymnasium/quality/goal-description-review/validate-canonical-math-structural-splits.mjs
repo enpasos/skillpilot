@@ -141,7 +141,9 @@ for (const binding of receipt.postApplyDigests) {
   assert.equal(binding.path.startsWith("curricula/DE/Gymnasium/"), true, `out-of-scope path in receipt: ${binding.path}`);
   const isCanonicalBinding = binding.path === canonicalPath;
   const effectiveBinding = isCanonicalBinding ? binding : postApplyBindingOverrides.get(binding.path) ?? binding;
-  const bytes = isCanonicalBinding ? receiptChain.snapshots.structuralAfter.bytes : readBytes(binding.path);
+  const bytes = isCanonicalBinding
+    ? receiptChain.snapshots.structuralAfter.bytes
+    : receiptChain.historicalFileBytes(binding.path);
   assert.equal(bytes.length, effectiveBinding.bytes, `${binding.path}: byte length drift`);
   assert.equal(sha256Bytes(bytes), effectiveBinding.sha256, `${binding.path}: post-apply digest drift`);
 }
@@ -276,7 +278,10 @@ const mappingFiles = unique(receipt.sourceEdgeDecisions.map((edge) => edge.mappi
 assert.equal(mappingFiles.length, 38);
 for (const mappingFile of mappingFiles) assert.equal(boundPaths.has(mappingFile), true, `${mappingFile}: missing post-apply binding`);
 
-const mappingDocuments = new Map(mappingFiles.map((mappingFile) => [mappingFile, readJson(mappingFile)]));
+const mappingDocuments = new Map(mappingFiles.map((mappingFile) => [
+  mappingFile,
+  JSON.parse(receiptChain.historicalFileBytes(mappingFile)),
+]));
 for (const [mappingFile, document] of mappingDocuments) {
   const rawPairs = new Set();
   const decisionPairs = new Set();
@@ -343,7 +348,7 @@ for (const group of sourceRouteGroups.values()) {
   );
 }
 
-const provenance = readJson(provenancePath);
+const provenance = JSON.parse(receiptChain.historicalFileBytes(provenancePath));
 const provenanceLandscape = provenance.landscapes.find((entry) => entry.landscapeId === canonical.landscapeId);
 assert(provenanceLandscape, "canonical provenance landscape is missing");
 assert.equal(receipt.provenanceActions.length, 85);

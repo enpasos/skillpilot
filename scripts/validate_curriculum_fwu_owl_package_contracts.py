@@ -167,7 +167,7 @@ TRUSTED_JSON_RELEASE_PROFILE = {
     "packagePath": "support/json/schemas/profiles/full-standalone-v1.profile.json",
     "mediaType": "application/json",
     "bytes": 16926,
-    "sha256": "27e4370dd7eecf4c308265fbad08d638976853a0c1c0b96d3c58b91d87733543",
+    "sha256": "00aaa154e43ea6440a745b53fdd089ae20a2eb89b4208016335fcb784ec2066c",
     "schemaTrustField": "trustedContractSchemas",
     "trustedSchemaCount": 22,
 }
@@ -200,8 +200,8 @@ APPLICATION_PROFILE_POLICY = {
     "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
     "packagePath": "skillpilot-curriculum-profile.ttl",
     "mediaType": "text/turtle",
-    "bytes": 5427,
-    "sha256": "22358a2aa96c16250d0f73fe6683fe6a0bda501b776dd6376a04b1980728e05a",
+    "bytes": 5421,
+    "sha256": "c42cd5a9698b438c6cb7c1cb4fba02da46fea70c247be75f2f6d57f126c994c6",
 }
 PARSER_BOOTSTRAP_POLICY = {
     "purpose": "declare-non-application-predicates-before-standalone-rdf-to-owl-parsing",
@@ -1532,6 +1532,8 @@ def run_mutations(fixture: dict[str, Any], schemas: dict[str, dict[str, Any]], v
     case("manifest-shapes-identity", "MANIFEST_SHAPES_IDENTITY", lambda value: value["manifest"]["shapes"].update({"sha256": "f" * 64}))
     case("manifest-registry-binding", "MANIFEST_REGISTRY_BINDING", lambda value: value["manifest"]["contractBindings"]["fieldSemanticsRegistry"].update({"id": "attacker"}))
     case("manifest-role-policy", "MANIFEST_ROLE_POLICY", lambda value: file_for(value, "binary-resource").update({"mediaType": "application/octet-stream"}))
+    case("manifest-deterministic-render-on-non-binary", "MANIFEST_SCHEMA", lambda value: file_for(value, "ontology-profile").update({"provenanceClass": "skillpilot-authored-deterministic-render"}))
+    case("manifest-deterministic-render-on-jpeg", "MANIFEST_SCHEMA", lambda value: file_for(value, "binary-resource").update({"mediaType": "image/jpeg", "provenanceClass": "skillpilot-authored-deterministic-render"}))
     case("manifest-contract-role-swap", "MANIFEST_CONTRACT_BINDING", swap_contract_roles)
     case("manifest-sidecar-limit", "MANIFEST_SECURITY_LIMIT", lambda value: file_for(value, "binary-resource").update({"bytes": 67108865}))
     case("manifest-sidecar-reference-mismatch", "MANIFEST_SIDECAR_BINDING", lambda value: file_for(value, "binary-resource")["semanticBinding"].update({"publicReference": "/assets/goal-visualizations/goal-1/other.png"}))

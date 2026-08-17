@@ -29,6 +29,18 @@ const landscapes: LandscapeSummary[] = [
     schoolType: 'Gymnasium',
   },
   {
+    curriculumId: CANONICAL_GYMNASIUM_PHYSICS_ID,
+    filename: 'physics.json',
+    country: 'DE',
+    region: 'DE',
+    type: 'GYMNASIUM',
+    level: 'Sekundarstufe',
+    subject: 'Physik',
+    locale: 'de-DE',
+    title: 'Physik',
+    schoolType: 'Gymnasium',
+  },
+  {
     curriculumId: chemistryCurriculumId,
     filename: 'chemistry.json',
     country: 'DE',
@@ -53,7 +65,7 @@ const landscapes: LandscapeSummary[] = [
     schoolType: 'Gymnasium',
   },
   {
-    curriculumId: CANONICAL_GYMNASIUM_PHYSICS_ID,
+    curriculumId: 'university-physics',
     filename: 'university-physics.json',
     country: 'DE',
     region: 'DE',
@@ -100,6 +112,7 @@ const Fixture = () => {
           currentLandscapeId={singleCurriculumId}
           landscapes={landscapes.slice(0, 1)}
           onSelect={setSingleCurriculumId}
+          qualityFilter="all"
           showCompatibilityViews={false}
           showQualityFilter
         />

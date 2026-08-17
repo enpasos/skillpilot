@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 
 const receiptNames = {
   structural: "canonical-math-structural-splits-2026-08-16.receipt.json",
@@ -11,6 +12,8 @@ const receiptNames = {
   derivative: "canonical-math-structural-split-derivative-core-follow-up-2026-08-16.receipt.json",
   composition: "canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
 };
+
+const authorityReceiptName = "canonical-layer-a-route-assessment-source-hardening-authority-2026-08-17.receipt.json";
 
 const sha256 = (bytes) => crypto.createHash("sha256").update(bytes).digest("hex");
 const serializeJson = (value) => Buffer.from(`${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -29,6 +32,40 @@ const goalMap = (canonical) => {
   const result = new Map(canonical.goals.map((goal) => [goal.id, goal]));
   assert.equal(result.size, canonical.goals.length, "duplicate canonical goal IDs");
   return result;
+};
+
+const withoutGoals = (canonical) => {
+  const result = structuredClone(canonical);
+  delete result.goals;
+  return result;
+};
+
+const reconstructAuthorityBeforeCanonical = (current, reversal) => {
+  assert.deepEqual(withoutGoals(current), reversal.afterTopLevel, "authority canonical top-level after-state drift");
+  const currentById = goalMap(current);
+  const beforeById = new Map(currentById);
+
+  for (const change of reversal.changedGoals) {
+    assert.deepEqual(currentById.get(change.goalId), change.afterGoal, `${change.goalId}: authority canonical changed after-state drift`);
+    beforeById.set(change.goalId, change.beforeGoal);
+  }
+  for (const addition of reversal.addedGoals) {
+    assert.deepEqual(currentById.get(addition.goalId), addition.afterGoal, `${addition.goalId}: authority canonical addition drift`);
+    beforeById.delete(addition.goalId);
+  }
+  for (const removal of reversal.removedGoals) {
+    assert.equal(currentById.has(removal.goalId), false, `${removal.goalId}: authority canonical removed goal unexpectedly present`);
+    beforeById.set(removal.goalId, removal.beforeGoal);
+  }
+
+  assert.equal(beforeById.size, reversal.beforeGoalIds.length, "authority canonical reversal goal-count drift");
+  const reconstructed = structuredClone(reversal.beforeTopLevel);
+  reconstructed.goals = reversal.beforeGoalIds.map((goalId) => {
+    const goal = beforeById.get(goalId);
+    assert(goal, `${goalId}: authority canonical reversal goal missing`);
+    return goal;
+  });
+  return reconstructed;
 };
 
 /**
@@ -74,7 +111,52 @@ export function validateStructuralSplitReceiptChain({ here, repoRoot }) {
   assert.equal(composition.canonicalBinding.sha256, derivativeAfter.sha256, "composition canonical SHA drift");
   assert.equal(composition.canonicalBinding.unchangedByThisFollowUp, true, "composition unexpectedly mutates canonical bytes");
 
-  const currentBytes = fs.readFileSync(path.join(repoRoot, derivativeAfter.path));
+  const authorityPath = path.join(here, authorityReceiptName);
+  const authority = fs.existsSync(authorityPath)
+    ? JSON.parse(fs.readFileSync(authorityPath, "utf8"))
+    : null;
+  const authorityFilesByPath = new Map(authority?.contentChangeSet?.files?.map((entry) => [entry.path, entry]) ?? []);
+  const historicalFileBytes = (relativePath) => {
+    const livePath = path.join(repoRoot, relativePath);
+    const entry = authorityFilesByPath.get(relativePath);
+    if (!entry) return fs.readFileSync(livePath);
+
+    const liveBytes = fs.existsSync(livePath) ? fs.readFileSync(livePath) : null;
+    assert.equal(liveBytes === null, entry.after === null, `${relativePath}: authority after existence drift`);
+    if (liveBytes) assertBinding(liveBytes, entry.after, `${relativePath}: authority after binding`);
+    if (entry.before === null) return null;
+    const beforeBytes = execFileSync(
+      "git",
+      ["show", `${authority.candidateBindings.baselineGitCommit}:${relativePath}`],
+      { cwd: repoRoot, encoding: null, maxBuffer: 1024 * 1024 * 256 },
+    );
+    assertBinding(beforeBytes, entry.before, `${relativePath}: authority before binding`);
+    return beforeBytes;
+  };
+
+  let authorityCurrent = null;
+  let currentBytes;
+  if (authority) {
+    assert.equal(receiptDigest(authority), authority.receiptDigest, "authority receipt digest drift");
+    const compositionParent = authority.parentReceiptChain.at(-1);
+    assert(compositionParent, "authority receipt parent chain is empty");
+    assert.equal(compositionParent.receiptDigest, composition.receiptDigest, "authority receipt does not append to composition receipt");
+    const reversal = authority.canonicalReversal;
+    assert(reversal, "authority receipt lacks canonical reversal");
+    assert.equal(reversal.path, derivativeAfter.path, "authority canonical reversal path drift");
+    assert.deepEqual(reversal.before, derivativeAfter, "authority canonical reversal does not start at derivative leaf");
+    const liveBytes = fs.readFileSync(path.join(repoRoot, reversal.path));
+    assertBinding(liveBytes, reversal.after, "authority current canonical");
+    const live = JSON.parse(liveBytes);
+    const reconstructed = reconstructAuthorityBeforeCanonical(live, reversal);
+    currentBytes = serializeJson(reconstructed);
+    assertBinding(currentBytes, reversal.before, "reconstructed authority parent canonical");
+    const baseline = historicalFileBytes(reversal.path);
+    assert.deepEqual(currentBytes, baseline, "authority canonical reversal differs from bound before bytes");
+    authorityCurrent = { value: live, bytes: liveBytes, binding: reversal.after, receipt: authority };
+  } else {
+    currentBytes = fs.readFileSync(path.join(repoRoot, derivativeAfter.path));
+  }
   assertBinding(currentBytes, derivativeAfter, "current derivative leaf canonical");
   const current = JSON.parse(currentBytes);
 
@@ -128,8 +210,11 @@ export function validateStructuralSplitReceiptChain({ here, repoRoot }) {
 
   return {
     receipts,
+    authority,
+    historicalFileBytes,
     snapshots: {
       current: { value: current, bytes: currentBytes, binding: derivativeAfter },
+      authorityCurrent,
       orientationAfter: { value: orientationAfter, bytes: orientationAfterBytes, binding: orientation.afterCanonical },
       weightAfter: { value: weightAfter, bytes: weightAfterBytes, binding: weight.afterCanonical },
       phaseAfter: { value: phaseAfter, bytes: phaseAfterBytes, binding: phase.afterCanonical },

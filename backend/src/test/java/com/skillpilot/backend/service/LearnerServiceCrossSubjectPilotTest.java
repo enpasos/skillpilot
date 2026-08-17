@@ -1036,7 +1036,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotElectricalEnergyGoalDependsOnReviewedVoltageBridge() {
+    void canonicalPhysicsPilotElectricalEnergyGoalDependsOnReviewedVoltageAtom() {
         SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal heatGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_SEK1_HEAT_ENERGY_ID.equals(goal.getId()))
@@ -1050,7 +1050,7 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(heatGoal.getRequires())
                 .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_HEAT_CLUSTER_ID);
         assertThat(electricalGoal.getRequires())
-                .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_VOLTAGE_CLUSTER_ID);
+                .containsExactly(CANONICAL_PHYSICS_SEK1_ENERGY_ID, CANONICAL_PHYSICS_SEK1_VOLTAGE_CURRENT_ID);
     }
 
     @Test
@@ -1088,7 +1088,7 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void canonicalPhysicsPilotElectromagneticSpectrumEntryDependsOnReviewedSek1ColorsBridge() {
+    void canonicalPhysicsPilotElectromagneticSpectrumEntryDependsOnlyOnReviewedHarmonicWaves() {
         SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal electromagneticSpectrumGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_EM_SPECTRUM_ID.equals(goal.getId()))
@@ -1096,11 +1096,11 @@ class LearnerServiceCrossSubjectPilotTest {
                 .orElseThrow();
 
         assertThat(electromagneticSpectrumGoal.getRequires())
-                .containsExactly(CANONICAL_PHYSICS_HARMONIC_WAVES_ID, CANONICAL_PHYSICS_SEK1_COLORS_CLUSTER_ID);
+                .containsExactly(CANONICAL_PHYSICS_HARMONIC_WAVES_ID);
     }
 
     @Test
-    void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadioactivityBridge() {
+    void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadiationAtom() {
         SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
         LearningGoal upperSecondaryRadiationGoal = landscape.getGoals().stream()
                 .filter(goal -> CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID.equals(goal.getId()))
@@ -1108,7 +1108,7 @@ class LearnerServiceCrossSubjectPilotTest {
                 .orElseThrow();
 
         assertThat(upperSecondaryRadiationGoal.getRequires())
-                .containsExactly("5c44b9ba-9b05-4774-95d5-073230d3fc4f", CANONICAL_PHYSICS_SEK1_RADIOACTIVITY_CLUSTER_ID);
+                .containsExactly("5c44b9ba-9b05-4774-95d5-073230d3fc4f", CANONICAL_PHYSICS_SEK1_RADIATION_ID);
     }
 
     @Test

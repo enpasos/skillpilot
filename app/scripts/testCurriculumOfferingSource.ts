@@ -33,6 +33,7 @@ import {
 import { migrateTrainerClassSession } from '../src/utils/trainerLandscapeContext'
 
 const canonicalGymnasiumRootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+const canonicalBiologyId = '08a43a1b-d97e-522c-9dfa-c950a493364e'
 const canonicalMathId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 
 const catalog: RuntimeCurriculumCatalog = {
@@ -134,6 +135,10 @@ assert.deepEqual(
 const repositorySource = resolveCurriculumOfferingSource({ mode: 'repository' })
 assert.deepEqual(
   getOfferedGymnasiumDurationModels(canonicalMathId, 'DE-HE', repositorySource),
+  [],
+)
+assert.deepEqual(
+  getOfferedGymnasiumDurationModels(canonicalBiologyId, 'DE-BB', repositorySource),
   ['G8', 'G9'],
 )
 

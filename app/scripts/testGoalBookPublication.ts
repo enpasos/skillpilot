@@ -10,7 +10,7 @@ import { serviceWorkerPrecacheGlobIgnores } from '../serviceWorkerNavigationPoli
 
 const verified = await verifyPublishedGoalBook()
 assert.equal(verified.model.book.id, 'de-gym-mathematik-bundesweit')
-assert.equal(verified.model.pages.length, 755)
+assert.equal(verified.model.pages.length, 780)
 assert.equal(verified.index.books[0].model.url, '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json')
 assert.equal(verified.index.books[0].pdf.url, '/lernzielbuch/de-gym-mathematik-bundesweit.pdf')
 assert.ok(

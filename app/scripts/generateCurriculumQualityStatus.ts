@@ -10,12 +10,13 @@ import { applyCompositionViewProjection } from '../src/utils/compositionViewRunt
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import { buildDirectChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
 import type { ApplicabilityCompilationResult, ApplicabilityEvidence, ApplicabilityFinding } from './applicabilityCompiler'
-import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { buildApplicabilityCompilation, hasOnlyPartialMappingSourceEvidence } from './applicabilityCompiler'
 import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 import { isGoalVisualizationAiApproved } from './goalVisualizationQaModel'
+import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -1526,7 +1527,7 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
 }
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
-  if (!goal) return true
+  if (!goal) return false
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
   if (tags.includes('Motivation') || tags.includes('Orientation')) return false
@@ -3413,11 +3414,7 @@ function isPartialSourceLinkedJurisdictionEvidence(
   evidence: ApplicabilityEvidence[],
   jurisdiction: string,
 ): boolean {
-  const matchingEvidence = evidence.filter((entry) =>
-    entry.dimension === 'jurisdiction' && entry.value === jurisdiction)
-  return matchingEvidence.length > 0
-    && !matchingEvidence.some((entry) => isSourceBackedJurisdictionEvidence(entry, jurisdiction))
-    && matchingEvidence.some((entry) => entry.kind === 'mapping' && entry.mappingStrength === 'partial')
+  return hasOnlyPartialMappingSourceEvidence(evidence, jurisdiction)
 }
 
 function surrogateEvidenceKey(
@@ -3458,58 +3455,19 @@ function createCoverageEvidenceChecker(
   report: CoverageReport,
   jurisdiction: string,
   surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
+  canonicalGoalById: Map<string, LearningGoal>,
 ): {
   hasCoverageBackedJurisdictionEvidence: (goal: CoverageGoalReport) => boolean
   hasReviewedRequiresClosureSurrogateEvidence: (goal: CoverageGoalReport) => boolean
 } {
-  const goalById = new Map(report.goals.map((candidate) => [candidate.goalId, candidate]))
-  const coverageMemo = new Map<string, boolean>()
-  const surrogateMemo = new Map<string, boolean>()
-
-  const hasReviewedRequiresClosureSurrogateEvidence = (
-    goal: CoverageGoalReport,
-    visitedGoalIds: Set<string> = new Set(),
-  ): boolean => {
-    const cached = surrogateMemo.get(goal.goalId)
-    if (cached !== undefined) return cached
-
-    const entries = surrogateEntriesByKey.get(surrogateEvidenceKey(report.landscapeId, goal.goalId, jurisdiction)) ?? []
-    const result = entries.some((entry) => {
-      const requiredByGoalId = entry.requiredByGoalId!
-      const requiredByGoal = goalById.get(requiredByGoalId)
-      if (!requiredByGoal || visitedGoalIds.has(requiredByGoalId)) return false
-      return goal.evidence.some((evidence) =>
-        evidence.kind === 'requires-closure'
-        && evidence.dimension === 'jurisdiction'
-        && evidence.value === jurisdiction
-        && evidence.source === `required by ${requiredByGoalId}`)
-        && hasCoverageBackedJurisdictionEvidence(
-          requiredByGoal,
-          new Set([...visitedGoalIds, goal.goalId]),
-        )
-    })
-
-    surrogateMemo.set(goal.goalId, result)
-    return result
-  }
-
-  const hasCoverageBackedJurisdictionEvidence = (
-    goal: CoverageGoalReport,
-    visitedGoalIds: Set<string> = new Set(),
-  ): boolean => {
-    const cached = coverageMemo.get(goal.goalId)
-    if (cached !== undefined) return cached
-
-    const result = hasDirectSourceBackedJurisdictionEvidence(goal, jurisdiction)
-      || hasReviewedRequiresClosureSurrogateEvidence(goal, visitedGoalIds)
-    coverageMemo.set(goal.goalId, result)
-    return result
-  }
-
-  return {
-    hasCoverageBackedJurisdictionEvidence,
-    hasReviewedRequiresClosureSurrogateEvidence,
-  }
+  return createReviewedRequiresClosureCoverageChecker({
+    landscapeId: report.landscapeId,
+    jurisdiction,
+    goals: report.goals,
+    canonicalGoalById,
+    surrogateEntriesByKey,
+    isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+  })
 }
 
 const compositionViewDirectoryByLandscapeId = new Map<string, string>([
@@ -4746,7 +4704,12 @@ function readJurisdictionCoverageByLandscapeId(
         .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
       const visibleAtomicGoals = visibleAtomicGoalReports.length
       const visibleClusterGoals = Math.max(0, projection.visibleGoals - visibleAtomicGoals)
-      const coverageEvidence = createCoverageEvidenceChecker(report, projection.value, surrogateEntriesByKey)
+      const coverageEvidence = createCoverageEvidenceChecker(
+        report,
+        projection.value,
+        surrogateEntriesByKey,
+        canonicalGoalById,
+      )
       const sourceBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
         coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)).length
       const surrogateBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
@@ -5301,6 +5264,7 @@ function renderMarkdown(status: StatusDocument): string {
 }
 
 function main() {
+  const shouldCheck = process.argv.includes('--check')
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
@@ -5410,9 +5374,25 @@ function main() {
     generatedAt: reusableGeneratedAt(statusDraft) ?? statusDraft.generatedAt,
   }
 
+  const jsonOutput = `${JSON.stringify(status, null, 2)}\n`
+  const markdownOutput = renderMarkdown(status)
+  if (shouldCheck) {
+    const stale = [
+      [statusJsonPath, jsonOutput],
+      [statusMarkdownPath, markdownOutput],
+    ].filter(([file, expected]) => !existsSync(file) || readFileSync(file, 'utf8') !== expected)
+    if (stale.length > 0) {
+      stale.forEach(([file]) => console.error(`${toRepoPath(file)} is stale. Run: npm run quality:curriculum-status`))
+      process.exitCode = 1
+      return
+    }
+    console.log('Curriculum quality status is up to date.')
+    return
+  }
+
   mkdirSync(statusDir, { recursive: true })
-  writeFileSync(statusJsonPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8')
-  writeFileSync(statusMarkdownPath, renderMarkdown(status), 'utf8')
+  writeFileSync(statusJsonPath, jsonOutput, 'utf8')
+  writeFileSync(statusMarkdownPath, markdownOutput, 'utf8')
   console.log(`Wrote ${toRepoPath(statusJsonPath)}`)
   console.log(`Wrote ${toRepoPath(statusMarkdownPath)}`)
 }

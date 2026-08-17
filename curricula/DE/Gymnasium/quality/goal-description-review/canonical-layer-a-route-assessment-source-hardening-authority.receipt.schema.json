@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Canonical Layer-A route, assessment, source and scope hardening authority receipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "status",
+    "scope",
+    "authorization",
+    "parentReceiptChain",
+    "immutableBindings",
+    "candidateBindings",
+    "contentChangeSet",
+    "canonicalReversal",
+    "invariants",
+    "validation",
+    "receiptDigestAlgorithm",
+    "receiptDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "receiptId": {
+      "const": "canonical-layer-a-route-assessment-source-hardening-authority-2026-08-17"
+    },
+    "status": {
+      "const": "IMMUTABLE_CHANGESET_AUTHORITY_NOT_APPLIED"
+    },
+    "receiptDigest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -18,7 +18,8 @@ const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
 const structuralReceipt = JSON.parse(fs.readFileSync(structuralReceiptPath, "utf8"));
 const parent = JSON.parse(fs.readFileSync(path.join(repoRoot, receipt.parentReceipt.path), "utf8"));
 const sha = (bytes) => crypto.createHash("sha256").update(bytes).digest("hex");
-const fileSha = (relativePath) => sha(fs.readFileSync(path.join(repoRoot, relativePath)));
+const historicalBytes = (relativePath) => receiptChain.historicalFileBytes(relativePath);
+const fileSha = (relativePath) => sha(historicalBytes(relativePath));
 const digestReceipt = (value) => {
   const clone = structuredClone(value);
   delete clone.receiptDigest;
@@ -41,7 +42,7 @@ assert.equal(receipt.receiptDigest, "8552324ee86ad4237df45041c2fe3b112a3775fee05
 assert.equal(parent.receiptDigest, receipt.parentReceipt.receiptDigest, "parent receipt digest drift");
 assert.equal(parent.receiptDigest, "2a1772ddd1f67a4388b8978b6204c832b7c0c9065007b354cdee3cfb946c59dd");
 assert.equal(parent.afterFiles.find((entry) => entry.path === receipt.canonicalBinding.path)?.sha256, receipt.parentReceipt.afterCanonicalSha256);
-assert.equal(fileSha(receipt.canonicalBinding.path), receipt.canonicalBinding.sha256, "canonical changed during view follow-up");
+assert.equal(fileSha(receipt.canonicalBinding.path), receipt.canonicalBinding.sha256, "historical canonical changed during view follow-up");
 assert.equal(receipt.canonicalBinding.sha256, receiptChain.snapshots.current.binding.sha256, "composition leaf does not match complete receipt chain");
 assert.equal(receipt.canonicalBinding.unchangedByThisFollowUp, true);
 
@@ -76,7 +77,7 @@ assert.equal(receipt.viewFiles.reduce((count, entry) => count + entry.directOldC
 const oldClusterIds = new Set(structuralReceipt.splits.map((split) => split.oldGoalId));
 assert.equal(oldClusterIds.size, 25);
 for (const expected of receipt.viewFiles) {
-  const bytes = fs.readFileSync(path.join(repoRoot, expected.path));
+  const bytes = historicalBytes(expected.path);
   assert.equal(bytes.length, expected.afterBytes, expected.path + " byte count");
   assert.equal(sha(bytes), expected.afterSha256, expected.path + " SHA-256");
   const view = JSON.parse(bytes);
@@ -87,7 +88,7 @@ for (const expected of receipt.viewFiles) {
 
 assert.equal(receipt.memoryVisibilityChanges.length, 2);
 for (const change of receipt.memoryVisibilityChanges) {
-  const view = JSON.parse(fs.readFileSync(path.join(repoRoot, change.file), "utf8"));
+  const view = JSON.parse(historicalBytes(change.file));
   const node = nodeAtPointer(view, change.candidatePointer);
   assert.deepEqual(node, { kind: "canonicalSubtree", goalId: change.memoryGoalId }, change.file + " memory insertion");
   assert.equal(fileSha(change.file), change.candidateSha256);
@@ -102,7 +103,7 @@ assert.equal(fileSha(generator.path), generator.afterSha256, "duration generator
 assert.equal(generator.afterSha256, "1c2effc5ba162421dada2ae2c1d7cf14f858ff8d297250fc6b9d705958eedfb0");
 assert.equal(fileSha(generator.trackedLayoutConfig.path), generator.trackedLayoutConfig.sha256, "duration policy SHA-256");
 assert.equal(generator.trackedLayoutConfig.sha256, "6d653bc928389ae1013e2ae6ed7c0be2893aaed75c89834f5e26725219200b63");
-const policy = JSON.parse(fs.readFileSync(path.join(repoRoot, generator.trackedLayoutConfig.path), "utf8"));
+const policy = JSON.parse(historicalBytes(generator.trackedLayoutConfig.path));
 assert.equal(policy.status, "APPROVED_REVIEWED_LAYOUT");
 assert.equal(policy.inputs.canonical.sha256, receipt.canonicalBinding.sha256);
 assert.equal(policy.inputs.parentDerivativeReceipt.receiptDigest, receipt.parentReceipt.receiptDigest);

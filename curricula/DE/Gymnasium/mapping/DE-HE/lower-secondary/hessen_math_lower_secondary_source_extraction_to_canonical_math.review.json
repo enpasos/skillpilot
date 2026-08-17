@@ -5206,6 +5206,12 @@
       "reviewDecisionId": "he-math-seki-g9-9-7-03-34671f65"
     },
     {
+      "legacyGoalId": "he-math-seki-g9-9-7-03-34671f65",
+      "canonicalGoalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
+      "matchType": "partial",
+      "reviewDecisionId": "he-math-seki-g9-9-7-03-34671f65"
+    },
+    {
       "legacyGoalId": "he-math-seki-g9-9-7-04-52758e3c",
       "canonicalGoalId": "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
       "matchType": "exact",
@@ -8423,8 +8429,8 @@
     },
     {
       "legacyGoalId": "he-math-seki-g8-7g-4-03-2d6b5dcd",
-      "canonicalGoalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
-      "matchType": "exact",
+      "canonicalGoalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
+      "matchType": "partial",
       "reviewDecisionId": "he-math-seki-g8-7g-4-03-2d6b5dcd"
     },
     {
@@ -8448,12 +8454,6 @@
     {
       "legacyGoalId": "he-math-seki-g8-7g-4-04-700000cd",
       "canonicalGoalId": "acbb7e26-f85f-405b-a3e5-affa6add6711",
-      "matchType": "exact",
-      "reviewDecisionId": "he-math-seki-g8-7g-4-04-700000cd"
-    },
-    {
-      "legacyGoalId": "he-math-seki-g8-7g-4-04-700000cd",
-      "canonicalGoalId": "616c72a4-972d-5cc0-b903-e2a24bcb150c",
       "matchType": "exact",
       "reviewDecisionId": "he-math-seki-g8-7g-4-04-700000cd"
     },
@@ -14168,11 +14168,13 @@
         "075ef99c-7f84-48b5-97f1-4e28c7d78f95",
         "2242c379-ddbb-4f03-8aed-13f49a4674e8",
         "15505229-efec-4d01-8e71-acf15f9c2424",
-        "14af09c2-999f-52fa-8d42-1f2f6b23629b"
+        "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+        "03703b29-efd8-57e0-acf5-4381b1dc67ec"
       ],
-      "rationale": "Lagemaße wie Modalwert, Median und arithmetisches Mittel sowie PC-Einsatz werden durch Kenngroessen-, Median-, Mittelwert- und Werkzeugziele abgedeckt.",
-      "reviewedAt": "2026-05-06",
-      "reviewer": "codex"
+      "rationale": "Lagemaße wie Modalwert, Median und arithmetisches Mittel sowie PC-Einsatz werden durch Kenngroessen-, Median-, Mittelwert- und Werkzeugziele abgedeckt. Follow-up 2026-08-16: explicit Modalwert (häufigster Wert); only the directly supported targets were added or removed.",
+      "reviewedAt": "2026-08-16",
+      "reviewer": "codex-independent-route-review",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "he-math-seki-g9-9-7-04-52758e3c",
@@ -16657,11 +16659,12 @@
         "075ef99c-7f84-48b5-97f1-4e28c7d78f95",
         "2242c379-ddbb-4f03-8aed-13f49a4674e8",
         "15505229-efec-4d01-8e71-acf15f9c2424",
-        "616c72a4-972d-5cc0-b903-e2a24bcb150c"
+        "03703b29-efd8-57e0-acf5-4381b1dc67ec"
       ],
-      "rationale": "Modalwert, Median, arithmetisches Mittel und qualitative Streuung entsprechen den kanonischen Kenngroessen/Lageparametern.",
-      "reviewedAt": "2026-05-21",
-      "reviewer": "codex"
+      "rationale": "Modalwert, Median, arithmetisches Mittel und qualitative Streuung entsprechen den kanonischen Kenngroessen/Lageparametern. Follow-up 2026-08-16: explicit Modalwert (häufigster Wert); only the directly supported targets were added or removed.",
+      "reviewedAt": "2026-08-16",
+      "reviewer": "codex-independent-route-review",
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "he-math-seki-g8-7g-4-04-700000cd",
@@ -16672,12 +16675,11 @@
         "1b02d4ec-acc0-4c5f-b3f3-5c3876c42654",
         "91571d3f-3651-4477-ba21-320fc4077453",
         "83a5546e-0ea6-576e-83e2-3387b30872bb",
-        "acbb7e26-f85f-405b-a3e5-affa6add6711",
-        "616c72a4-972d-5cc0-b903-e2a24bcb150c"
+        "acbb7e26-f85f-405b-a3e5-affa6add6711"
       ],
-      "rationale": "Daten erheben, Haeufigkeitsverteilungen, graphische Darstellung, Auswertung mit Lageparametern und Bewertung statistischer Angaben werden durch Statistik-, Haeufigkeits-, Diagramm- und Kenngroessenziele abgedeckt.",
-      "reviewedAt": "2026-05-21",
-      "reviewer": "codex"
+      "rationale": "Daten erheben, Haeufigkeitsverteilungen, graphische Darstellung, Auswertung mit Lageparametern und Bewertung statistischer Angaben werden durch Statistik-, Haeufigkeits-, Diagramm- und Kenngroessenziele abgedeckt. Follow-up 2026-08-16: generic Lageparameter workflow does not specifically support Q3 cross-measure selection; only the directly supported targets were added or removed.",
+      "reviewedAt": "2026-08-16",
+      "reviewer": "codex-independent-route-review"
     },
     {
       "sourceGoalId": "he-math-seki-g8-7g-5-01-07fce4ea",

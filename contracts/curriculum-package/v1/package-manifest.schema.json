@@ -255,6 +255,7 @@
         "provenanceClass": {
           "enum": [
             "skillpilot-authored",
+            "skillpilot-authored-deterministic-render",
             "official-source-metadata",
             "ai-generated-curated",
             "user-provided-generated-claim",
@@ -297,6 +298,31 @@
             "properties": {
               "licenseExpression": {
                 "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provenanceClass": {
+                "const": "skillpilot-authored-deterministic-render"
+              }
+            },
+            "required": [
+              "provenanceClass"
+            ]
+          },
+          "then": {
+            "properties": {
+              "role": {
+                "const": "binary-asset"
+              },
+              "mediaType": {
+                "const": "image/png"
+              },
+              "semanticBinding": {
+                "$ref": "#/$defs/binaryResourceBinding"
               }
             }
           }

@@ -2808,10 +2808,10 @@ def main() -> int:
             profile_bytes,
             args.verbose,
         )
-        if (valid_count, invalid_count) != (1, 61):
+        if (valid_count, invalid_count) != (1, 62):
             raise ContractDefinitionError(
                 "Existing package-manifest fixture coverage drifted; expected exactly "
-                f"1 valid and 61 invalid cases, found {valid_count}/{invalid_count}"
+                f"1 valid and 62 invalid cases, found {valid_count}/{invalid_count}"
             )
         operational_validators = load_operational_schema_validators(contract_dir)
         (

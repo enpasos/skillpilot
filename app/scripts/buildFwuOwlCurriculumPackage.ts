@@ -210,6 +210,7 @@ export type FwuOwlManifestFile = {
   licenseExpression: string | null
   provenanceClass:
     | 'skillpilot-authored'
+    | 'skillpilot-authored-deterministic-render'
     | 'fwu-core-pinned-copy'
     | 'official-source-metadata'
     | 'ai-generated-curated'
@@ -407,6 +408,7 @@ const assertArchiveRoot = (archiveRoot: string) => {
 
 const mappedProvenance = (value: string): FwuOwlManifestFile['provenanceClass'] => {
   if (value === 'software-contract' || value === 'skillpilot-authored') return 'skillpilot-authored'
+  if (value === 'skillpilot-authored-deterministic-render') return value
   if (value === 'generated-metadata') return 'generated-package-metadata'
   if (value === 'official-source-metadata') return 'official-source-metadata'
   if (value === 'ai-generated-curated') return 'ai-generated-curated'

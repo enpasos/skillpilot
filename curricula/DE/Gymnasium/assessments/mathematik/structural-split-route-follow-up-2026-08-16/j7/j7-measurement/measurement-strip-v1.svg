@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Prüfstreifen an einem Millimeterlineal</title>
+  <desc id="desc">Ein blauer Prüfstreifen beginnt am Nullstrich und endet am vierten Millimeterstrich nach sieben Zentimetern.</desc>
+  <defs>
+    <pattern id="minorTicks" x="100" y="0" width="10" height="45" patternUnits="userSpaceOnUse">
+      <path d="M0 15V45" stroke="#102d55" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="360" fill="#fff"/>
+  <text x="100" y="48" font-family="Arial, sans-serif" font-size="28" fill="#102d55">Prüfstreifen</text>
+  <rect x="100" y="70" width="740" height="82" rx="8" fill="#84d6f4" stroke="#102d55" stroke-width="4"/>
+  <line x1="100" y1="58" x2="100" y2="252" stroke="#f28c00" stroke-width="5"/>
+  <line x1="840" y1="58" x2="840" y2="252" stroke="#f28c00" stroke-width="5"/>
+  <rect x="100" y="205" width="1000" height="45" fill="url(#minorTicks)"/>
+  <g stroke="#102d55" stroke-width="4">
+    <path d="M100 188V250 M200 188V250 M300 188V250 M400 188V250 M500 188V250 M600 188V250 M700 188V250 M800 188V250 M900 188V250 M1000 188V250 M1100 188V250"/>
+    <path d="M150 203V250 M250 203V250 M350 203V250 M450 203V250 M550 203V250 M650 203V250 M750 203V250 M850 203V250 M950 203V250 M1050 203V250"/>
+    <path d="M100 250H1100"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="25" text-anchor="middle" fill="#102d55">
+    <text x="100" y="292">0</text><text x="200" y="292">1</text><text x="300" y="292">2</text><text x="400" y="292">3</text><text x="500" y="292">4</text><text x="600" y="292">5</text><text x="700" y="292">6</text><text x="800" y="292">7</text><text x="900" y="292">8</text><text x="1000" y="292">9</text><text x="1100" y="292">10 cm</text>
+  </g>
+</svg>

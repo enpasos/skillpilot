@@ -81,6 +81,7 @@ interface SplitLayoutTemplate {
   viewId: string
   fileSha256: string
   placementCount: number
+  excludedGoalIds?: string[]
   placements: SplitLayoutPlacement[]
 }
 
@@ -659,6 +660,11 @@ const applyReviewedSplitLayout = (
     throw new Error(`Split-layout placement count mismatch for ${templateFileName}`)
   }
 
+  const effectiveExcludedGoalIds = new Set([
+    ...excludedGoalIds,
+    ...(template.excludedGoalIds ?? []),
+  ])
+
   const beforeAtomicGoalIds = collectAtomicGoalIdsFromNodes([sek1Node])
   const removeGoalIds = new Set(template.placements.flatMap((placement) => placement.removeAtomicGoalIds))
   const transformed = removeDirectGoalReferences([clone(sek1Node)], removeGoalIds)[0]
@@ -674,7 +680,7 @@ const applyReviewedSplitLayout = (
         `${templateFileName}: missing placement parent ${placement.parentStructureId} for ${placement.splitCode}`,
       )
     }
-    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, excludedGoalIds)
+    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, effectiveExcludedGoalIds)
     if (!replacement) continue
     if (replacement.kind === 'structure') {
       replacementSortGoalIdByStructureId.set(replacement.id, placement.oldClusterGoalId)
@@ -695,7 +701,7 @@ const applyReviewedSplitLayout = (
   const expectedAfterAtomicGoalIds = new Set(beforeAtomicGoalIds)
   removeGoalIds.forEach((goalId) => expectedAfterAtomicGoalIds.delete(goalId))
   template.placements.forEach((placement) => {
-    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, excludedGoalIds)
+    const replacement = filterLayoutNodeByExcludedGoals(placement.replacementNode, effectiveExcludedGoalIds)
     if (!replacement) return
     collectAtomicGoalIdsFromNodes([replacement])
       .forEach((goalId) => expectedAfterAtomicGoalIds.add(goalId))
@@ -713,7 +719,7 @@ const applyReviewedSplitLayout = (
       if (removeGoalIds.has(goalId)) {
         throw new Error(`${templateFileName}: preserved reused goal ${goalId} is also scheduled for removal`)
       }
-      if (excludedGoalIds.has(goalId)) continue
+      if (effectiveExcludedGoalIds.has(goalId)) continue
       if (!beforeAtomicGoalIds.has(goalId) || !afterAtomicGoalIds.has(goalId)) {
         throw new Error(`${templateFileName}: preserved reused goal ${goalId} did not remain visible`)
       }

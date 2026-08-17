@@ -461,7 +461,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(288);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(294);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -472,7 +472,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(288);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(294);
                 });
     }
 
@@ -5691,22 +5691,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "215", "215" },
-                { "DE-BE", "215", "215" },
-                { "DE-BW", "229", "229" },
-                { "DE-BY", "215", "215" },
-                { "DE-HB", "183", "183" },
-                { "DE-HE", "293", "349" },
-                { "DE-HH", "215", "215" },
-                { "DE-MV", "215", "215" },
-                { "DE-NI", "215", "215" },
-                { "DE-NW", "215", "215" },
-                { "DE-RP", "146", "152" },
-                { "DE-SH", "193", "199" },
-                { "DE-SL", "215", "215" },
-                { "DE-SN", "215", "215" },
-                { "DE-ST", "215", "215" },
-                { "DE-TH", "215", "215" }
+                { "DE-BB", "222", "222" },
+                { "DE-BE", "221", "221" },
+                { "DE-BW", "242", "242" },
+                { "DE-BY", "210", "210" },
+                { "DE-HB", "194", "194" },
+                { "DE-HE", "306", "364" },
+                { "DE-HH", "221", "221" },
+                { "DE-MV", "221", "221" },
+                { "DE-NI", "221", "221" },
+                { "DE-NW", "221", "221" },
+                { "DE-RP", "152", "159" },
+                { "DE-SH", "207", "214" },
+                { "DE-SL", "221", "221" },
+                { "DE-SN", "221", "221" },
+                { "DE-ST", "221", "221" },
+                { "DE-TH", "221", "221" }
         };
 
         for (String[] scope : scopes) {
@@ -5740,12 +5740,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "697", "730" },
-                { "DE-HE", "LK", "807", "840" },
-                { "DE-RP", "GK", "553", "559" },
-                { "DE-RP", "LK", "650", "656" },
-                { "DE-SH", "GK", "581", "587" },
-                { "DE-SH", "LK", "664", "670" }
+                { "DE-HE", "GK", "719", "754" },
+                { "DE-HE", "LK", "845", "880" },
+                { "DE-RP", "GK", "570", "577" },
+                { "DE-RP", "LK", "681", "688" },
+                { "DE-SH", "GK", "606", "613" },
+                { "DE-SH", "LK", "702", "709" }
         };
 
         for (String[] scope : scopes) {
@@ -5807,7 +5807,7 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "64", "64" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "55", "55" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "51", "51" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "64", "64" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "64", "64" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "64", "64" },
@@ -5896,10 +5896,10 @@ public class LearnerControllerIntegrationTest {
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-SN", "19", "19" },
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-ST", "19", "19" },
                 { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-TH", "18", "18" },
-                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BB", "86", "86" },
-                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BE", "86", "86" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BB", "82", "82" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BE", "82", "82" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BY", "128", "128" },
-                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HB", "41", "41" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HB", "40", "40" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HH", "38", "38" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-MV", "26", "26" },
                 { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-NI", "47", "47" },

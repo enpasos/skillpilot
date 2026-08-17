@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -81,10 +82,10 @@ PINNED_HELPER_SHA256 = {
     "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
-    "scripts/package_consumer_browser_smoke.cjs": "380c80e9211f026a3fae5e521a2d2f681715a08244a092b05f500862828e129f",
+    "scripts/package_consumer_browser_smoke.cjs": "b328b8ab63f8df6143602a2b2fd71fcf88008b7c4de7e2f9845a1fb476081f6e",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
-    "scripts/package_consumer_smoke_http.py": "d9617437722a6a651f35f1e8e614e98db4569e97d9ff519a9e10d2c70101acbb",
+    "scripts/package_consumer_smoke_http.py": "233ff0e1e96d40c4763893f4db17aca110cb72e206edc5a59ccad97c1d929964",
 }
 
 BACKEND_CLASSPATH_RESOURCES = (
@@ -1465,6 +1466,359 @@ def validate_report(report: dict[str, Any]) -> None:
 
 def self_test() -> None:
     verify_pinned_helpers()
+
+    browser_selector_self_test = run_command(
+        [require_tool("node"), "scripts/package_consumer_browser_smoke.cjs", "--self-test"],
+        cwd=REPO_ROOT,
+        timeout=30,
+    )
+    if "selector self-test passed (1 valid, 4 invalid)" not in browser_selector_self_test.stdout:
+        raise SmokeFailure("Package-consumer browser default-offering selector self-test emitted no PASS marker")
+
+    helper_path = REPO_ROOT / "scripts/package_consumer_smoke_http.py"
+    helper_spec = importlib.util.spec_from_file_location("package_consumer_smoke_http_self_test", helper_path)
+    if helper_spec is None or helper_spec.loader is None:
+        raise SmokeFailure("Could not load package-consumer HTTP helper for self-test")
+    helper_module = importlib.util.module_from_spec(helper_spec)
+    helper_spec.loader.exec_module(helper_module)
+    fixture_orientation = {
+        "id": "orientation-goal",
+        "type": "atomic",
+        "semanticKind": "orientation",
+        "requires": [],
+    }
+    fixture_memory = {
+        "id": "memory-goal",
+        "type": "atomic",
+        "nodeKind": "memory",
+        "semanticKind": "memory",
+        "requires": ["orientation-goal"],
+        "tags": ["memorization", "srs-deck:fixture-deck"],
+    }
+    fixture_goals = [fixture_orientation, fixture_memory]
+    encoded_learner = "learner%2Fid"
+
+    def fixture_json_responses() -> list[tuple[str, str, Any, int, Any, bytes]]:
+        def item(path: str, method: str, request_body: Any, status: int, response: Any):
+            return path, method, request_body, status, response, helper_module.canonical_json(response)
+
+        orientation_state = {
+            "activeGoal": {"id": "orientation-goal"},
+            "stateMachine": {"requiredAction": "orientActiveGoal", "modeOptions": []},
+        }
+        memory_state = {
+            "activeGoal": {"id": "memory-goal"},
+            "stateMachine": {
+                "requiredAction": "chooseMemoryMode",
+                "modeOptions": [
+                    {
+                        "id": "verify",
+                        "action": "startVerifiedRecall",
+                        "target": "gpt",
+                        "goalId": "memory-goal",
+                    }
+                ],
+            },
+        }
+        orientation_frontier_state = {
+            "activeGoal": None,
+            "frontier": [{"id": "orientation-goal"}],
+            "stateMachine": {
+                "requiredAction": "setActiveGoal",
+                "goalOptions": [{"id": "orientation-goal"}],
+            },
+        }
+        memory_frontier_state = {
+            "activeGoal": None,
+            "frontier": [{"id": "memory-goal"}],
+            "stateMachine": {
+                "requiredAction": "setActiveGoal",
+                "goalOptions": [{"id": "memory-goal"}],
+            },
+        }
+        return [
+            item(f"/api/ui/learners/{encoded_learner}", "GET", None, 200, {"autoPilot": False}),
+            item(
+                f"/api/ui/learners/{encoded_learner}/scope",
+                "POST",
+                {"goalIds": ["orientation-goal", "memory-goal"]},
+                200,
+                orientation_frontier_state,
+            ),
+            item(f"/api/ui/learners/{encoded_learner}/frontier", "GET", None, 200, {"goals": ["orientation-goal"]}),
+            item(f"/api/ui/learners/{encoded_learner}/state", "GET", None, 200, orientation_frontier_state),
+            item(
+                f"/api/ui/learners/{encoded_learner}/active-goal",
+                "POST",
+                {"goalId": "memory-goal", "redirect": False},
+                409,
+                {"error": "Conflict"},
+            ),
+            item(f"/api/ui/learners/{encoded_learner}/state", "GET", None, 200, orientation_frontier_state),
+            item(
+                f"/api/ui/learners/{encoded_learner}/active-goal",
+                "POST",
+                {"goalId": "orientation-goal", "redirect": False},
+                200,
+                orientation_state,
+            ),
+            item(f"/api/ui/learners/{encoded_learner}/state", "GET", None, 200, orientation_state),
+            item(
+                f"/api/ai/de/learners/{encoded_learner}/mastery",
+                "POST",
+                {"goalId": "orientation-goal", "mastery": {"orientation-goal": 0.5}},
+                400,
+                {"error": "Orientation goals use completion marker 1.0 only"},
+            ),
+            item(f"/api/ui/learners/{encoded_learner}/state", "GET", None, 200, orientation_state),
+            item(
+                f"/api/ai/de/learners/{encoded_learner}/mastery",
+                "POST",
+                {"goalId": "orientation-goal", "mastery": {"orientation-goal": 1.0}},
+                200,
+                {
+                    "saved": True,
+                    "savedGoalId": "orientation-goal",
+                    "savedMastery": 1.0,
+                    **memory_frontier_state,
+                },
+            ),
+            item(f"/api/ui/learners/{encoded_learner}/state", "GET", None, 200, memory_frontier_state),
+            item(f"/api/ui/learners/{encoded_learner}/frontier", "GET", None, 200, {"goals": ["memory-goal"]}),
+            item(
+                f"/api/ui/learners/{encoded_learner}/active-goal",
+                "POST",
+                {"goalId": "memory-goal", "redirect": False},
+                200,
+                memory_state,
+            ),
+        ]
+
+    def run_fixture_helper(
+        responses: list[tuple[str, str, Any, int, Any, bytes]],
+        *,
+        goals: list[dict[str, Any]] | None = None,
+        preferences_status: int = 200,
+    ):
+        preference_calls: list[tuple[str, str, Any]] = []
+
+        def fake_request(path: str, *, method: str = "GET", json_body: Any | None = None):
+            preference_calls.append((path, method, json_body))
+            return preferences_status, {}, b""
+
+        queue = list(responses)
+
+        def fake_json_response(path: str, *, method: str = "GET", json_body: Any | None = None):
+            if not queue:
+                raise SmokeFailure(f"Unexpected fixture helper request: {method} {path}")
+            expected_path, expected_method, expected_body, status, response, body = queue.pop(0)
+            if (path, method, json_body) != (expected_path, expected_method, expected_body):
+                raise SmokeFailure(
+                    "Fixture helper request sequence differs: "
+                    f"{(path, method, json_body)!r} != {(expected_path, expected_method, expected_body)!r}"
+                )
+            return status, response, body
+
+        helper_module.request = fake_request
+        helper_module.json_response = fake_json_response
+        result = helper_module.prepare_verified_recall_fixture(
+            "learner/id",
+            fixture_goals if goals is None else goals,
+            {"fixture-deck"},
+        )
+        expected_preference_call = (
+            f"/api/ui/learners/{encoded_learner}/preferences",
+            "PUT",
+            {"autoPilot": False},
+        )
+        if preference_calls != [expected_preference_call] or queue:
+            raise SmokeFailure("Fixture helper did not execute the exact closed request sequence")
+        return result
+
+    memory_goal, fixture_evidence = run_fixture_helper(fixture_json_responses())
+    if (
+        memory_goal["id"] != "memory-goal"
+        or fixture_evidence["fixtureScopeGoalIds"] != ["orientation-goal", "memory-goal"]
+        or fixture_evidence["orientationFixtureCompletionMarker"] != 1.0
+    ):
+        raise SmokeFailure("Verified-recall helper did not bind the exact fixture pair and completion marker")
+
+    adversarial_fixture_count = 0
+
+    def expect_fixture_failure(label: str, operation) -> None:
+        nonlocal adversarial_fixture_count
+        adversarial_fixture_count += 1
+        try:
+            operation()
+        except helper_module.CheckFailure:
+            return
+        raise SmokeFailure(f"Verified-recall helper accepted adversarial fixture: {label}")
+
+    bad_autopilot = fixture_json_responses()
+    path, method, body, status, _response, _response_body = bad_autopilot[0]
+    bad_autopilot[0] = (path, method, body, status, {"autoPilot": True}, b'{"autoPilot":true}\n')
+    expect_fixture_failure("AutoPilot remained enabled", lambda: run_fixture_helper(bad_autopilot))
+    expect_fixture_failure(
+        "AutoPilot update failed",
+        lambda: run_fixture_helper(fixture_json_responses(), preferences_status=500),
+    )
+
+    bad_scope = fixture_json_responses()
+    path, method, body, status, _response, _response_body = bad_scope[1]
+    bad_scope[1] = (
+        path,
+        method,
+        body,
+        status,
+        {"activeGoal": {"id": "orientation-goal"}},
+        b'{"activeGoal":{"id":"orientation-goal"}}\n',
+    )
+    expect_fixture_failure("scope activated a goal", lambda: run_fixture_helper(bad_scope))
+
+    non_object_scope = fixture_json_responses()
+    path, method, body, status, _response, _response_body = non_object_scope[1]
+    non_object_scope[1] = (path, method, body, status, [], b'[]\n')
+    expect_fixture_failure("scope returned a non-object", lambda: run_fixture_helper(non_object_scope))
+
+    bad_frontier = fixture_json_responses()
+    path, method, body, status, _response, _response_body = bad_frontier[2]
+    bad_frontier[2] = (
+        path,
+        method,
+        body,
+        status,
+        {"goals": ["orientation-goal", "memory-goal"]},
+        b'{"goals":["orientation-goal","memory-goal"]}\n',
+    )
+    expect_fixture_failure("memory leaked into initial frontier", lambda: run_fixture_helper(bad_frontier))
+
+    wrong_required_action = fixture_json_responses()
+    path, method, body, status, response, _response_body = wrong_required_action[1]
+    response = json.loads(json.dumps(response))
+    response["stateMachine"]["requiredAction"] = "teachActiveGoal"
+    wrong_required_action[1] = (path, method, body, status, response, helper_module.canonical_json(response))
+    expect_fixture_failure("scope requiredAction drift", lambda: run_fixture_helper(wrong_required_action))
+
+    wrong_goal_options = fixture_json_responses()
+    path, method, body, status, response, _response_body = wrong_goal_options[1]
+    response = json.loads(json.dumps(response))
+    response["stateMachine"]["goalOptions"] = [{"id": "memory-goal"}]
+    wrong_goal_options[1] = (path, method, body, status, response, helper_module.canonical_json(response))
+    expect_fixture_failure("scope goalOptions drift", lambda: run_fixture_helper(wrong_goal_options))
+
+    memory_not_blocked = fixture_json_responses()
+    path, method, body, _status, response, response_body = memory_not_blocked[4]
+    memory_not_blocked[4] = (path, method, body, 200, response, response_body)
+    expect_fixture_failure("premature memory activation returned 200", lambda: run_fixture_helper(memory_not_blocked))
+
+    state_changed_after_block = fixture_json_responses()
+    path, method, body, status, response, _response_body = state_changed_after_block[5]
+    response = json.loads(json.dumps(response))
+    response["frontier"] = [{"id": "memory-goal"}]
+    state_changed_after_block[5] = (path, method, body, status, response, helper_module.canonical_json(response))
+    expect_fixture_failure("rejected memory activation changed state", lambda: run_fixture_helper(state_changed_after_block))
+
+    half_marker_accepted = fixture_json_responses()
+    path, method, body, _status, response, response_body = half_marker_accepted[8]
+    half_marker_accepted[8] = (path, method, body, 200, response, response_body)
+    expect_fixture_failure("non-binary orientation marker returned 200", lambda: run_fixture_helper(half_marker_accepted))
+
+    state_changed_after_half = fixture_json_responses()
+    path, method, body, status, response, _response_body = state_changed_after_half[9]
+    response = json.loads(json.dumps(response))
+    response["activeGoal"] = None
+    state_changed_after_half[9] = (path, method, body, status, response, helper_module.canonical_json(response))
+    expect_fixture_failure("rejected orientation marker changed state", lambda: run_fixture_helper(state_changed_after_half))
+
+    expect_fixture_failure(
+        "orientation semantic kind drift",
+        lambda: helper_module.select_verified_recall_fixture_pair(
+            [{**fixture_orientation, "semanticKind": "curricularAtomic"}, fixture_memory],
+            {"fixture-deck"},
+        ),
+    )
+    expect_fixture_failure(
+        "memory requirement shape drift",
+        lambda: helper_module.select_verified_recall_fixture_pair(
+            [fixture_orientation, {**fixture_memory, "requires": []}],
+            {"fixture-deck"},
+        ),
+    )
+    expect_fixture_failure(
+        "memory deck absent from package catalog",
+        lambda: helper_module.select_verified_recall_fixture_pair(fixture_goals, {"different-deck"}),
+    )
+
+    helper_module.json_response = lambda *_args, **_kwargs: (
+        200,
+        {
+            "activeGoal": {"id": "different-goal"},
+            "stateMachine": {"requiredAction": "orientActiveGoal"},
+        },
+        b'{"activeGoal":{"id":"different-goal"}}',
+    )
+    expect_fixture_failure(
+        "active-goal response selected a different goal",
+        lambda: helper_module.activate_fixture_goal(
+            "learner",
+            "orientation-goal",
+            expected_required_action="orientActiveGoal",
+        ),
+    )
+
+    wrong_memory_mode = fixture_json_responses()
+    path, method, body, status, response, _response_body = wrong_memory_mode[13]
+    response = json.loads(json.dumps(response))
+    response["stateMachine"]["modeOptions"][0]["action"] = "openCockpitPractice"
+    wrong_memory_mode[13] = (path, method, body, status, response, helper_module.canonical_json(response))
+    expect_fixture_failure("memory verify mode drift", lambda: run_fixture_helper(wrong_memory_mode))
+
+    missing_successor = fixture_json_responses()
+    path, method, body, status, _response, _response_body = missing_successor[12]
+    missing_successor[12] = (path, method, body, status, {"goals": []}, b'{"goals":[]}\n')
+    expect_fixture_failure("memory successor missing", lambda: run_fixture_helper(missing_successor))
+
+    valid_recall = {
+        "status": "ready",
+        "goalId": "memory-goal",
+        "batchSize": 1,
+        "cards": [{"cardId": "card-1", "prompt": "Prompt", "category": "fixture"}],
+    }
+    helper_module.validate_verified_recall_prompt_response(valid_recall, "memory-goal")
+    expect_fixture_failure(
+        "empty recall prompt",
+        lambda: helper_module.validate_verified_recall_prompt_response(
+            {**valid_recall, "cards": [{"cardId": "card-1", "prompt": " ", "category": "fixture"}]},
+            "memory-goal",
+        ),
+    )
+    expect_fixture_failure(
+        "recall batchSize mismatch",
+        lambda: helper_module.validate_verified_recall_prompt_response({**valid_recall, "batchSize": 2}, "memory-goal"),
+    )
+    expect_fixture_failure(
+        "top-level recall answer leakage",
+        lambda: helper_module.validate_verified_recall_prompt_response(
+            {**valid_recall, "expectedAnswer": "secret"},
+            "memory-goal",
+        ),
+    )
+    expect_fixture_failure(
+        "card recall answer leakage",
+        lambda: helper_module.validate_verified_recall_prompt_response(
+            {
+                **valid_recall,
+                "cards": [
+                    {"cardId": "card-1", "prompt": "Prompt", "category": "fixture", "back": "secret"}
+                ],
+            },
+            "memory-goal",
+        ),
+    )
+    print(
+        "PASS verified-recall helper uses an AutoPilot-off, multi-root, orientation-gated fixture "
+        f"and rejects {adversarial_fixture_count} adversarial mutations"
+    )
     pinned_runtime = validate_pinned_java_runtime(Path(require_tool("java")))
     python_runtime = inspect_python_runtime_layout()
     node_runtime = inspect_host_executable("node", Path(require_tool("node")))
