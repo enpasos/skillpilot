@@ -10,12 +10,6 @@ For students, the browser-based web app on a smartphone is particularly useful: 
 
 > Use normal text chat. You may use dictation or voice input in the text field. Do not start continuous ChatGPT voice mode during a SkillPilot learning session.
 
-## Watch the Workflow
-
-The video shows the current browser workflow. The narration was generated with AI.
-
-[Watch the video](https://skillpilot.com/api/public/openai/review/skillpilot-coach-v1/1.0.0/sha256-20f5327535513df8b1c088b553195baf6ae339d57fc417b303488ae597644deb.mp4)
-
 ## What You Need
 
 - a browser on a computer, tablet, or smartphone

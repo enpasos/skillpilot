@@ -23,6 +23,12 @@ const networkOnlyNavigations = [
   '/learner?l=example-focus',
   '/learner/example-goal',
   '/learner/example-goal?l=example-focus',
+  '/quickstart',
+  '/quickstart/de',
+  '/quickstart/en',
+  '/whitepaper',
+  '/whitepaper/de',
+  '/whitepaper/en',
   '/api/public/openai/review/skillpilot-coach-v1/1.0.0/example.mp4',
   '/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/example.mp4',
 ]

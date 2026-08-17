@@ -98,8 +98,8 @@ try {
   const defaultIds = await visibleCurriculumIds()
   assert(
     defaultIds.includes(CANONICAL_GYMNASIUM_PHYSICS_ID)
-      && !defaultIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
-    'the default green filter shows a human-reviewed curriculum',
+      && defaultIds.includes(CANONICAL_GYMNASIUM_MATH_ID),
+    'the default green filter shows human-reviewed mathematics and physics',
   )
   assert(
     !defaultIds.includes(chemistryCurriculumId),
@@ -148,21 +148,22 @@ try {
 
   await qualityButtons.red.click()
   await page.waitForFunction(
-    ({ mathId, currentId }) => {
+    (currentId) => {
       const values = [...document.querySelectorAll(
         '[data-testid="quality-filter-fixture"] select option',
       )]
         .map((option) => (option as HTMLOptionElement).value)
-      return values.includes(mathId) && values.includes(currentId)
+      return values.includes(currentId)
     },
-    {
-      mathId: CANONICAL_GYMNASIUM_MATH_ID,
-      currentId: experimentalCurriculumId,
-    },
+    experimentalCurriculumId,
   )
   assert(
     await qualityButtons.red.getAttribute('aria-pressed') === 'true',
     'the experimental filter exposes its active state accessibly',
+  )
+  assert(
+    !(await visibleCurriculumIds()).includes(CANONICAL_GYMNASIUM_MATH_ID),
+    'the experimental filter no longer contains human-reviewed mathematics',
   )
 
   await qualityButtons.all.click()

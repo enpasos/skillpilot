@@ -60,8 +60,8 @@ assertCurriculumStatus(
 assertCurriculumStatus(
   CANONICAL_GYMNASIUM_MATH_ID,
   'M3',
-  'red',
-  'canonical Gymnasium mathematics follows its current quality maturity',
+  'green',
+  'canonical Gymnasium mathematics retains its explicit human-QA classification',
 )
 assertCurriculumStatus(
   CANONICAL_GYMNASIUM_PHYSICS_ID,
@@ -102,8 +102,8 @@ assertCurriculumStatus(
 
 assertEqual(
   getGymnasiumSubjectQualityStatus('Mathematik', 'M3'),
-  'red',
-  'the mathematics subject row follows its current quality maturity',
+  'green',
+  'the mathematics subject row retains its explicit human-QA classification',
 )
 assertEqual(
   getGymnasiumSubjectQualityStatus('Physics', 'M7'),
@@ -211,7 +211,7 @@ const packageStatusCounts = packageRows.reduce<Record<CurriculumQualityStatus, n
 )
 assertEqual(
   JSON.stringify(packageStatusCounts),
-  JSON.stringify({ green: 1, orange: 7, red: 12 }),
+  JSON.stringify({ green: 2, orange: 7, red: 11 }),
   'package mode applies the complete manual green, orange, and red subject projection',
 )
 

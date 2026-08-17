@@ -1,5 +1,6 @@
 /**
- * Browser navigations to machine endpoints and learner cockpits must always
+ * Browser navigations to machine endpoints, learner cockpits, and public
+ * documents that can change independently of an open app shell must always
  * reach the network.
  *
  * Workbox otherwise serves the cached SPA shell for navigation requests. That
@@ -13,6 +14,8 @@ export const serviceWorkerNavigationFallbackDenylist = [
   /^\/api(?:\/|$)/,
   /^\/internal(?:\/|$)/,
   /^\/learner(?:\/|\?|$)/,
+  /^\/quickstart(?:\/|\?|$)/,
+  /^\/whitepaper(?:\/|\?|$)/,
   /^\/.*\.pdf$/,
   /^\/.*\.mp4$/,
   /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
