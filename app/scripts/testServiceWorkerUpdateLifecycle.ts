@@ -74,7 +74,15 @@ const server = createServer(async (request, response) => {
     const requestUrl = new URL(request.url ?? '/', 'http://127.0.0.1')
     const pathname = decodeURIComponent(requestUrl.pathname)
 
-    if (pathname === '/' || pathname === '/index.html' || pathname.startsWith('/learner/')) {
+    if (
+      pathname === '/'
+      || pathname === '/index.html'
+      || pathname.startsWith('/learner/')
+      || pathname === '/quickstart'
+      || pathname.startsWith('/quickstart/')
+      || pathname === '/whitepaper'
+      || pathname.startsWith('/whitepaper/')
+    ) {
       response.writeHead(200, {
         'cache-control': 'no-store',
         'content-type': 'text/html; charset=utf-8',
@@ -200,6 +208,42 @@ try {
       'reloading the learner cockpit must not be required to leave a stale shell',
     )
     await cockpitPage.close()
+
+    const whitepaperPage = await context.newPage()
+    await whitepaperPage.goto(
+      `${origin}/whitepaper/de`,
+      { waitUntil: 'domcontentloaded' },
+    )
+    assert.equal(
+      await readBuildId(whitepaperPage),
+      versions.b.buildId,
+      'a newly opened whitepaper must load the current network shell while an older worker waits',
+    )
+    await whitepaperPage.reload({ waitUntil: 'domcontentloaded' })
+    assert.equal(
+      await readBuildId(whitepaperPage),
+      versions.b.buildId,
+      'reloading the whitepaper must not fall back to a stale cached shell',
+    )
+    await whitepaperPage.close()
+
+    const quickstartPage = await context.newPage()
+    await quickstartPage.goto(
+      `${origin}/quickstart/de`,
+      { waitUntil: 'domcontentloaded' },
+    )
+    assert.equal(
+      await readBuildId(quickstartPage),
+      versions.b.buildId,
+      'a newly opened quickstart must load the current network shell while an older worker waits',
+    )
+    await quickstartPage.reload({ waitUntil: 'domcontentloaded' })
+    assert.equal(
+      await readBuildId(quickstartPage),
+      versions.b.buildId,
+      'reloading the quickstart must not fall back to a stale cached shell',
+    )
+    await quickstartPage.close()
 
     await firstPage.close()
     assert.equal(

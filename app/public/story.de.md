@@ -10,12 +10,6 @@ Für Schüler:innen eignet sich besonders die browserbasierte Web-App auf dem Sm
 
 > Nutze den normalen Textchat. Diktier- und Spracheingabe im Textfeld kannst du verwenden. Den fortlaufenden ChatGPT Voice Mode solltest du während einer SkillPilot-Lernsession nicht starten.
 
-## Ablauf im Video
-
-Das Video zeigt den aktuellen Browser-Ablauf. Die Tonspur wurde mit KI erzeugt.
-
-[Video ansehen](https://skillpilot.com/api/public/quickstart/videos/skillpilot-coach-v1/1.0.0/de/sha256-151a5c097a2c73e73b40e6521e410724e6b0737630dff8d5f40419e673132ee6.mp4)
-
 ## Das brauchst du
 
 - einen Browser auf Computer, Tablet oder Smartphone

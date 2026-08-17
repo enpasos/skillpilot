@@ -25,8 +25,11 @@ export interface GymnasiumSubjectQualityRow<
 export const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 export const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 
+// Explicit human-QA decisions are independent of the generated technical
+// maturity snapshot and therefore take precedence in the learner-facing filter.
 const GREEN_CURRICULUM_IDS = new Set([
   CANONICAL_GYMNASIUM_ROOT_ID,
+  CANONICAL_GYMNASIUM_MATH_ID,
   CANONICAL_GYMNASIUM_PHYSICS_ID,
 ])
 
@@ -43,6 +46,8 @@ export const MANUAL_ORANGE_CURRICULUM_IDS = [
 const ORANGE_CURRICULUM_IDS = new Set<string>(MANUAL_ORANGE_CURRICULUM_IDS)
 
 const GREEN_GYMNASIUM_SUBJECTS = new Set([
+  'mathematik',
+  'mathematics',
   'physik',
   'physics',
 ])
