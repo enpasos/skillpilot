@@ -7,6 +7,9 @@
 **Governing constraint:** OpenAI Plugin V1 review freeze, active since
 15 August 2026
 
+**Developer handoff:**
+[SkillPilot Claude Connector v1 — Umsetzungsplan](claude-connector-v1-implementation-plan.md)
+
 This document proposes a greenfield SkillPilot connector for the Anthropic
 Connectors Directory. Its purpose is to make SkillPilot available in Claude
 without silently widening the submitted ChatGPT/OpenAI V1 contract.
@@ -561,7 +564,7 @@ behaviour:
 | Set Level 3 focus | write | Exact server-published option, expected revision and idempotency |
 | Set active goal | write | Current allowed option; explicit redirect semantics |
 | Set mastery | write | Active goal only; orientation and assessment capability rules preserved |
-| Start Verified Recall | write | Server chooses complete batch; caller supplies neither goal nor batch size |
+| Start Verified Recall | read | Server chooses complete batch without mutating state; caller supplies neither goal nor batch size |
 | Get Verified Recall answers | sensitive read | One capability-bound read after complete learner submission |
 | Record Verified Recall results | write | One ordered, complete, capability-bound atomic batch |
 | Get exam evaluation | sensitive read | Released only after a complete visible submission and valid state |
