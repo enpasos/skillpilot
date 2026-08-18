@@ -1,0 +1,35 @@
+{
+  "variant": "action-session-with-visible-fallback",
+  "locale": "en",
+  "gpt": {
+    "creation": "new",
+    "name": "SkillPilot GPT Coach (en)",
+    "initialVisibility": "private"
+  },
+  "instructions": "system_instructions.md",
+  "knowledge": [
+    "knowledge_docs/visible_session_protocol.md",
+    "knowledge_docs/state_personalization_and_progress.md",
+    "knowledge_docs/coaching_and_mastery.md",
+    "knowledge_docs/deep_linking_and_resources.md",
+    "knowledge_docs/verified_recall.md",
+    "knowledge_docs/exam_proctor.md",
+    "knowledge_docs/errors_and_restart.md"
+  ],
+  "action": {
+    "schema": "skillpilot-api-4ai.en.json",
+    "pathPrefix": "/api/ai/en/sessions/{chatSessionToken}/visible",
+    "operationIds": [
+      "redeemStartCode",
+      "getVisibleState",
+      "applyVisibleChoice",
+      "requestVisibleNavigation",
+      "setVisibleActiveGoal",
+      "setVisibleMastery",
+      "startVisibleVerifiedRecall",
+      "getVisibleVerifiedRecallAnswer",
+      "recordVisibleVerifiedRecallResult",
+      "getVisibleExamEvaluation"
+    ]
+  }
+}

@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 const maxChars = 8000
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const files = [
-  'ai/openai custom gpt/system_instructions.de.md',
-  'ai/openai custom gpt/system_instructions.en.md',
+  'ai/openai custom gpt/de/system_instructions.md',
+  'ai/openai custom gpt/en/system_instructions.md',
 ]
 
 const failures = []

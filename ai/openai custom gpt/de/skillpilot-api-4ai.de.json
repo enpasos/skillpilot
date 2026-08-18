@@ -1,0 +1,1510 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SkillPilot Action Session API (DE)",
+    "version": "0.3.0",
+    "description": "Deutsche Action-API für private Startcode-Sitzungen mit ausdrücklich aktiviertem sichtbarem Notfallfallback."
+  },
+  "servers": [
+    {
+      "url": "https://skillpilot.com"
+    }
+  ],
+  "paths": {
+    "/api/ai/de/chat-start/redeem": {
+      "post": {
+        "operationId": "redeemStartCode",
+        "summary": "Einmaligen SkillPilot-Startcode einlösen",
+        "description": "Genau einmal beim privaten Start aufrufen. Das zurückgegebene Sitzungstoken bleibt intern und wird sofort für getVisibleState verwendet.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeemStartCodeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Startcode eingelöst; temporäre Sitzung erzeugt.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeemStartCodeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ungültiges Startcodeformat."
+          },
+          "404": {
+            "description": "Startcode nicht gefunden."
+          },
+          "409": {
+            "description": "Startcode wurde bereits verwendet."
+          },
+          "410": {
+            "description": "Startcode ist abgelaufen."
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/state": {
+      "get": {
+        "operationId": "getVisibleState",
+        "summary": "Aktuellen Coach-Zustand laden",
+        "description": "Vor jedem neuen substantiellen normalen Antwortturn genau einmal aufrufen. Technische Werte im privaten Modus geheim halten; nur im Notfallmodus ausgeben.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/choice": {
+      "post": {
+        "operationId": "applyVisibleChoice",
+        "summary": "Frische nummerierte Auswahl anwenden",
+        "description": "Verwendet Auswahlreferenz und Nummern aus dem jüngsten Action-Response oder sichtbaren Notfallchat. Löst eine frische backendseitige Auswahl auf.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleChoiceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/navigation": {
+      "post": {
+        "operationId": "requestVisibleNavigation",
+        "summary": "Fokus- oder Zielnavigation anfordern",
+        "description": "Erzeugt ohne Zustandsänderung eine frische Auswahl für einen ausdrücklichen Fokus-/Scope- oder Zielwechsel.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleNavigationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/active-goal": {
+      "post": {
+        "operationId": "setVisibleActiveGoal",
+        "summary": "Frisch referenziertes Lernziel aktivieren",
+        "description": "Aktiviert nur eine vollständige global eindeutige Lernziel-ID aus dem jüngsten Action-Response oder sichtbaren Notfallchat.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleActiveGoalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/mastery": {
+      "post": {
+        "operationId": "setVisibleMastery",
+        "summary": "Mastery für aktives Lernziel speichern",
+        "description": "Speichert Mastery 1.0 nur für die frisch gelieferte aktive Lernziel-ID und nach ausreichender Evidenz; im privaten Modus bleibt die ID intern.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleMasteryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/start": {
+      "post": {
+        "operationId": "startVisibleVerifiedRecall",
+        "summary": "Verified-Recall-Batch starten",
+        "description": "Liefert den backendbestimmten Kartenbatch. Prompts werden gezeigt; Karten-IDs bleiben privat oder werden nur im Notfallmodus sichtbar getragen.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallPrompt"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/answer": {
+      "post": {
+        "operationId": "getVisibleVerifiedRecallAnswer",
+        "summary": "Sollantwort nach Lernendenantwort laden",
+        "description": "Nur nach der Lernendenantwort für die frisch gelieferte cardId aufrufen. expectedAnswer vorher nie ausgeben.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallAnswer"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/result": {
+      "post": {
+        "operationId": "recordVisibleVerifiedRecallResult",
+        "summary": "Bewertetes Kartenergebnis speichern",
+        "description": "Speichert passed oder failed für die frisch gelieferte cardId; der Tages-Lock wird serverseitig erzwungen.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallResultRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallResult"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/exam/evaluation": {
+      "post": {
+        "operationId": "getVisibleExamEvaluation",
+        "summary": "Prüfung nach vollständiger Abgabe evaluieren",
+        "description": "Nur nach vollständiger sichtbarer Prüfungsabgabe aufrufen. solutionContent bleibt bis dahin geschützt und wird nie im State geliefert.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes temporäres Sitzungstoken aus dem letzten Action-Response oder dem ausdrücklich sichtbaren Notfallstart; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleExamEvaluationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExamEvaluation"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "responses": {
+      "VisibleState": {
+        "description": "Vollständiger relay-sicherer sichtbarer Coach-Zustand.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallPrompt": {
+        "description": "Sichtbar zu stellender Lernkartenbatch oder Warte-/Abschlussstatus.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallPromptResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallAnswer": {
+        "description": "Erwartete Antwort für eine Karte, die die lernende Person bereits beantwortet hat.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallResult": {
+        "description": "Gespeichertes Kartenergebnis und nächster Recall-Status.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallResultResponse"
+            }
+          }
+        }
+      },
+      "ExamEvaluation": {
+        "description": "Geschützte Prüfungslösung und Bewertungsschema nach vollständiger Abgabe.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleExamEvaluationResponse"
+            }
+          }
+        }
+      },
+      "StateConflict": {
+        "description": "Der Ablaufzustand hat sich geändert. Den zurückgegebenen Zustand verwenden und seiner instruction gemäß dem aktiven Modus folgen.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Ungültige sichtbare Auswahl oder Anfrage.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Ungültiges Sitzungstoken oder ungültige Action-Authentifizierung.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "SessionExpired": {
+        "description": "Die Sitzung ist abgelaufen. Keine weitere Action; Neustart über skillpilot.com.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SessionExpiredResponse"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "RedeemStartCodeRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "startCode"
+        ],
+        "properties": {
+          "startCode": {
+            "type": "string",
+            "pattern": "^SP-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}$",
+            "description": "Frischer fünf Minuten gültiger Einmalcode aus der SkillPilot-WebGUI."
+          }
+        }
+      },
+      "RedeemStartCodeResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "chatSessionToken",
+          "expiresAt"
+        ],
+        "properties": {
+          "chatSessionToken": {
+            "type": "string",
+            "pattern": "^sps_[A-Za-z0-9_-]{43}$",
+            "description": "Internes 24-Stunden-Sitzungsgeheimnis; niemals im privaten Chat ausgeben."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "assistantMessage": {
+            "type": "string"
+          },
+          "state": {
+            "type": "object",
+            "description": "Initiale Startprojektion; danach getVisibleState als aktuelle Autorität laden."
+          }
+        }
+      },
+      "VisibleChoiceRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selectionReference"
+        ],
+        "properties": {
+          "selectionReference": {
+            "type": "string",
+            "description": "Exakte Referenz aus dem jüngsten Action-Response oder der letzten sichtbaren Notfallauswahl."
+          },
+          "choiceNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Genau eine angezeigte oder vom aktuellen Wunsch eindeutig bestimmte Nummer; nicht mit choiceNumbers senden."
+          },
+          "choiceNumbers": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "Nur für eine ausdrücklich gewählte Mehrfachauswahl des Lernumfangs; sonst choiceNumber verwenden."
+          }
+        }
+      },
+      "VisibleActiveGoalRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Vollständige global eindeutige Lernziel-ID aus dem jüngsten Action-Response oder sichtbaren Notfallchat."
+          },
+          "redirect": {
+            "type": "boolean",
+            "default": false,
+            "description": "Nur bei einem ausdrücklichen bewussten Wechsel weg vom aktiven Ziel true."
+          }
+        }
+      },
+      "VisibleNavigationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "scope",
+              "goal"
+            ],
+            "description": "Nur der von der lernenden Person ausdrücklich gewünschte Navigationsbereich."
+          }
+        }
+      },
+      "VisibleMasteryRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Frisch gelieferte aktive Lernziel-ID; im privaten Modus intern behalten."
+          }
+        }
+      },
+      "VisibleVerifiedRecallStartRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Frisch gelieferte aktive Lernziel-ID eines Memorierungsziels; im privaten Modus intern behalten."
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "description": "Nur eine ausdrücklich gelieferte Backend-/Cockpit-Vorgabe kopieren; sonst weglassen und nie selbst wählen."
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Frisch gelieferte aktive Lernziel-ID; im privaten Modus intern behalten."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Frisch gelieferte Karten-ID des aktuellen Batches; im privaten Modus intern behalten."
+          }
+        }
+      },
+      "VisibleVerifiedRecallResultRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId",
+          "passed"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Frisch gelieferte aktive Lernziel-ID; im privaten Modus intern behalten."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Frisch gelieferte Karten-ID."
+          },
+          "passed": {
+            "type": "boolean",
+            "description": "Nur true, wenn die Lernendenantwort ohne vorweggenommene Lösung ausreichend korrekt war."
+          },
+          "feedback": {
+            "type": "string",
+            "description": "Kurze fachliche Begründung der Bewertung."
+          }
+        }
+      },
+      "VisibleExamEvaluationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Frisch gelieferte aktive Exam-Lernziel-ID nach vollständiger Abgabe; im privaten Modus intern behalten."
+          }
+        }
+      },
+      "VisibleCoachStateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "learningState",
+          "requiredAction",
+          "interactionMode",
+          "resources",
+          "progress",
+          "completion",
+          "allowedActions",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Nur im ausdrücklich aktivierten sichtbaren Notfallmodus wortgleich ausgeben; im privaten Modus geheim halten."
+          },
+          "learningState": {
+            "type": "string",
+            "description": "Kompakter aktueller Lernzustand."
+          },
+          "requiredAction": {
+            "type": "string",
+            "description": "Nächster verbindlicher Coach-Schritt. teachActiveGoal bedeutet Dialog, nicht Action."
+          },
+          "interactionMode": {
+            "type": "string",
+            "enum": [
+              "selection",
+              "chat",
+              "cockpit",
+              "exam",
+              "verifiedRecall",
+              "complete"
+            ],
+            "description": "Verbindlicher Ausgabemodus; entscheidet vor jeder inhaltlichen Antwort über den erlaubten Ablauf."
+          },
+          "curriculum": {
+            "$ref": "#/components/schemas/CurriculumSummary"
+          },
+          "activeGoal": {
+            "$ref": "#/components/schemas/PublicActiveGoal"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleResource"
+            }
+          },
+          "selection": {
+            "$ref": "#/components/schemas/VisibleSelection"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/VisibleProgress"
+          },
+          "completion": {
+            "$ref": "#/components/schemas/VisibleCompletion"
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "getVisibleState",
+                "applyVisibleChoice",
+                "requestVisibleNavigation",
+                "setVisibleActiveGoal",
+                "setVisibleMastery",
+                "startVisibleVerifiedRecall",
+                "getVisibleVerifiedRecallAnswer",
+                "recordVisibleVerifiedRecallResult",
+                "getVisibleExamEvaluation"
+              ]
+            },
+            "description": "Im aktuellen Zustand zulässige operationId-Werte dieser Visible-Session-API."
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Kurze verbindliche Folgeanweisung des Backend."
+          }
+        },
+        "description": "Kompakter Coach-Zustand für privaten Action-Kontext und sichtbaren Notfallfallback."
+      },
+      "CurriculumSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          }
+        }
+      },
+      "PublicActiveGoal": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "title",
+          "description",
+          "nodeKind",
+          "cockpitUrl"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Global eindeutige kanonische Lernziel-ID; im privaten Modus nicht ausgeben."
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "nodeKind": {
+            "type": "string",
+            "enum": [
+              "tutor",
+              "memory",
+              "exam"
+            ]
+          },
+          "cockpitUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Vom Backend erzeugter öffentlicher Link zum aktiven Lernziel; exakt verwenden und nie selbst zusammensetzen."
+          },
+          "examData": {
+            "$ref": "#/components/schemas/VisibleExamPresentation"
+          }
+        }
+      },
+      "VisibleSelection": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selectionReference",
+          "question",
+          "options"
+        ],
+        "properties": {
+          "selectionReference": {
+            "type": "string",
+            "description": "Zeitlich lokale Auswahlreferenz; im privaten Modus intern behalten, im Notfallmodus bei nötigem Folgeturn anzeigen."
+          },
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleChoiceOption"
+            }
+          }
+        }
+      },
+      "VisibleChoiceOption": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "choiceNumber",
+          "label"
+        ],
+        "properties": {
+          "choiceNumber": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Nur bei Lernzieloptionen vorhanden; im privaten Modus intern behalten."
+          }
+        }
+      },
+      "VisibleProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic",
+          "scopeCompleted"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "personalized": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scopeCompleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GoalProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "VisibleCompletion": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scopeComplete",
+          "curriculumComplete"
+        ],
+        "properties": {
+          "scopeComplete": {
+            "type": "boolean"
+          },
+          "curriculumComplete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VisibleResource": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "title",
+          "url",
+          "requiresCockpit"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "altText": {
+            "type": "string"
+          },
+          "requiresCockpit": {
+            "type": "boolean",
+            "description": "Bei true ist diese einzelne Ressource nur im Cockpit nutzbar; der Zielmodus entscheidet separat über Chat-Unterricht."
+          }
+        }
+      },
+      "VisibleExamPresentation": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "taskContent",
+          "hasImage"
+        ],
+        "properties": {
+          "taskContent": {
+            "type": "string",
+            "description": "Lokalisierter Aufgabenblock ohne IMAGE_PATH-Marker; wortgetreu ausgeben, nur TeX-Delimiter normalisieren."
+          },
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Optionale maximale Punktzahl zur Orientierung; Lösung und Bewertungsschema bleiben geschützt."
+          },
+          "hasImage": {
+            "type": "boolean",
+            "description": "Bei true auf die Bilddarstellung im Cockpit hinweisen; kein privates Backend-Bild im Chat rendern."
+          }
+        }
+      },
+      "VisibleExamScoring": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "maxPoints",
+          "passingPoints",
+          "steps"
+        ],
+        "properties": {
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "passingPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleExamScoringStep"
+            }
+          }
+        }
+      },
+      "VisibleExamScoringStep": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "points",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleExamEvaluationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "goalId",
+          "solutionContent",
+          "scoring",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Nur im ausdrücklich aktivierten sichtbaren Notfallmodus wortgleich ausgeben; im privaten Modus geheim halten."
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "solutionContent": {
+            "type": "string",
+            "description": "Geschützte lokalisierte Referenzlösung; erst nach vollständiger Abgabe verwenden. Kein Pflichtwortlaut oder exklusiver Lösungsweg."
+          },
+          "scoring": {
+            "$ref": "#/components/schemas/VisibleExamScoring"
+          },
+          "instruction": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cardId",
+          "prompt"
+        ],
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "description": "Im privaten Modus intern behalten; nur im Notfallmodus mit dem Prompt ausgeben."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Frage sichtbar stellen, ohne die erwartete Antwort vorwegzunehmen."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallState": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "status",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallPromptResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "status",
+          "instruction",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Nur im ausdrücklich aktivierten sichtbaren Notfallmodus wortgleich ausgeben; im privaten Modus geheim halten."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "instruction",
+          "goalId",
+          "cardId",
+          "prompt",
+          "expectedAnswer"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Nur im ausdrücklich aktivierten sichtbaren Notfallmodus wortgleich ausgeben; im privaten Modus geheim halten."
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "expectedAnswer": {
+            "type": "string",
+            "description": "Erst nach der Lernendenantwort verwenden und nie vorher ausgeben."
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "description": "Sollantwort für eine Karte, die die lernende Person bereits beantwortet hat."
+      },
+      "VisibleVerifiedRecallResultResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "savedCardId",
+          "passed",
+          "verifiedCards",
+          "pendingCards",
+          "masterySaved",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Nur im ausdrücklich aktivierten sichtbaren Notfallmodus wortgleich ausgeben; im privaten Modus geheim halten."
+          },
+          "savedCardId": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "masterySaved": {
+            "type": "boolean",
+            "description": "Bei true hat das Backend Mastery 1.0 für das Memorierungsziel bereits gespeichert."
+          },
+          "masteryGoalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "next": {
+            "$ref": "#/components/schemas/VisibleVerifiedRecallState"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "SessionExpiredResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error",
+          "message",
+          "recovery"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "enum": [
+              "chat_session_expired"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "recovery": {
+            "type": "string",
+            "description": "Neustart über skillpilot.com erklären; keine dauerhafte ID im Chat erfragen."
+          }
+        }
+      }
+    }
+  }
+}

@@ -212,9 +212,11 @@ Providerneutralität bedeutet einen gemeinsamen Fachkern, nicht identische
 - dieselben freigegebenen Facade-Use-Cases und dieselbe sichere Projektion;
 - eine vollständige eigene End-to-End-Acceptance.
 
-Claude bleibt deaktiviert, bis genau diese providerbezogenen Gates erfüllt
-sind. Der Visible-Session-Custom-GPT ist ausschließlich ein isolierter
-Rollbackpfad und keine aktuelle Architekturbasis.
+Claude bleibt deaktiviert, bis genau diese providerbezogenen Gates erfüllt sind.
+Der Custom GPT kann befristet als separat getesteter Übergangskanal dienen; sein
+privater Action-Kontext braucht einen realen Cross-Turn-Canary, der sichtbare
+Session-Relay bleibt nur Notfallfallback. Beides ist keine Architekturbasis für
+den versionierten Pluginvertrag.
 
 ## Release und Kompatibilität
 

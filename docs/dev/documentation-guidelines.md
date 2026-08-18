@@ -138,7 +138,7 @@ The rule table lives in `app/scripts/checkTerminology.ts`. Each rule carries the
 
 The check scans what is authored and live. Trees that record what was captured at a point in time — retired landscapes, captured source snapshots, build output — are listed as frozen evidence in the same file and are skipped rather than rewritten.
 
-Hash-pinned packages are not exempt. When a rename touches one, update its wording and its pinned digests in the same change, for example `ai/openai-custom-gpt-visible-session/legacy-production-baseline.sha256`, and re-run that package's own validator.
+Contract-validated packages are not exempt. When a rename touches one, update its wording and validation expectations in the same change and re-run that package's own validator.
 
 When a term is consolidated, add a rule in the same change that renames the occurrences. That keeps the cleanup from having to be repeated later.
 
