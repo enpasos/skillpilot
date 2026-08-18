@@ -1,13 +1,17 @@
-# Rollback/Kompatibilität: ChatGPT Visible Session
+# Custom GPT: sichtbarer Notfallfallback
 
-Status: getrennt erhaltener Custom-GPT-Rollback- und Kompatibilitätspfad. Er ist
-für keine Sprache der aktuelle Laufzeitvertrag. Der mehrsprachige V1-MCP-Vertrag
-ersetzt ihn im Normalbetrieb.
+Status: sichtbar relayed Notfallzweig des aktuellen Interim-Custom-GPTs. Er ist
+weder normaler Custom-GPT-Start noch Referenzarchitektur. Der aktuelle
+Interimsvorschlag kombiniert privaten Startcode-Redeem mit diesem Rückfall und
+steht unter
+[Custom GPT als Übergangskanal](../../deploy/openai-custom-gpt-interim.md).
+Der mehrsprachige V1-MCP-Vertrag bleibt die Zielarchitektur.
 
-Dieses Dokument beschreibt den erhaltenen Start- und Dialogfluss der
-bestehenden SkillPilot Custom GPTs für Deutsch und Englisch. Die
-Konfiguration wird **Visible Session** genannt, weil alle Werte, die ein späterer
-ChatGPT-Action-Aufruf benötigt, sichtbar durch den Dialog getragen werden.
+Dieses Dokument beschreibt ausschließlich den sichtbaren Notfallzweig der beiden
+neu anzulegenden GPTs `SkillPilot GPT Coach (de)` und
+`SkillPilot GPT Coach (en)`. Die Konfiguration wird **Visible Session** genannt,
+weil alle Werte, die ein späterer ChatGPT-Action-Aufruf benötigt, sichtbar durch
+den Dialog getragen werden. Sie ist keine aufzubewahrende alte GPT-Konfiguration.
 
 Die Architektur ist ein Workaround für die beobachtete ChatGPT-Regression, bei der
 ein Custom GPT Werte aus einem früheren unsichtbaren Action-Response nach dem
@@ -23,10 +27,9 @@ Tools. SkillPilot setzt diese Session automatisch in die vorbereitete
 Startnachricht ein. Die dauerhafte SkillPilot-ID bleibt ausschließlich im
 Backend; OAuth allein wählt keinen Lernenden.
 
-Die frühere Startcode-/Redeem-Architektur ist ebenfalls kein aktueller
-Laufzeitpfad. Sie
-bleibt vollständig als koordinierte Rollback-Variante erhalten und ist in
-[ChatGPT-Startcode-/Session-Flow (Legacy)](chatgpt-startcode-session-flow.md)
+Die frühere Startcode-/Redeem-Architektur liefert inzwischen wieder den privaten
+Standardstart des Interim-Custom-GPTs. Ihre historischen Transportdetails sind in
+[ChatGPT-Startcode-/Session-Flow](chatgpt-startcode-session-flow.md)
 dokumentiert.
 
 ## Architekturgrenzen
@@ -35,7 +38,8 @@ dokumentiert.
 | --- | --- | --- |
 | Browser/Cockpit | ja | beim Start kurzzeitig ja |
 | SkillPilot-Backend | ja; löst intern die Sitzung darauf auf | nur gehasht gespeichert |
-| ChatGPT/Custom GPT | nein | ja; sichtbar im Chat |
+| ChatGPT/Custom GPT, privater Standardstart | nein | ja; nur im Action-Kontext |
+| ChatGPT/Custom GPT, sichtbarer Notfallstart | nein | ja; sichtbar im Chat |
 | Links aus dem Coach | nein | nein |
 
 Die dauerhafte SkillPilot-ID bleibt im Browser und im SkillPilot-Backend. Das
@@ -52,7 +56,7 @@ stabile fachliche Referenzen und keine Zugangsdaten.
 ## Startfluss
 
 ```text
-Browser/Cockpit        SkillPilot-Backend       bestehender DE- oder EN-GPT
+Browser/Cockpit        SkillPilot-Backend       neuer DE- oder EN-GPT
       |                         |                           |
       | POST .../visible-chat-start                        |
       |------------------------>|                           |
@@ -81,8 +85,8 @@ Im Einzelnen:
 3. Der vorbereitete deutsche oder englische Prompt enthält das Token genau einmal.
    Ein vorhandener Prompt-Kontext wird von SkillPilot-ID, weiteren Sitzungstokens
    und alten Startcodes bereinigt.
-4. Das Web-Frontend öffnet die feste URL des bestehenden sprachlich passenden GPTs
-   mit diesem Prompt. Es wird kein neuer GPT angelegt.
+4. Das Web-Frontend öffnet die nach privater Abnahme konfigurierte URL des
+   sprachlich passenden neuen GPTs mit diesem Prompt.
 5. Die lernende Person sendet die vorbereitete Nachricht in ChatGPT ab.
 6. Der GPT ruft sofort `getVisibleState` auf und übernimmt den vom Backend
    gelieferten `relayFooter` wortgleich als letzte Zeile seiner Antwort.
@@ -159,7 +163,7 @@ Folge von Einfachauswahlen und keine Scope-Mehrfachauswahl über `choiceNumbers`
 Das beseitigt unnötige Zwischenfragen, löst aber nicht jede Formulierung allein
 durch Prompting. Insbesondere kann „Oberstufe“ nur automatisch aufgelöst werden,
 wenn die aktuelle Backend-Auswahl eine passende Stufen- oder Composition-View-
-Option tatsächlich anbietet. Diese Rollback-Oberfläche bildet diese
+Option tatsächlich anbietet. Diese Fallback-Oberfläche bildet diese
 Dimension nicht in jedem Zustand als eigene Option ab. Der GPT darf dann keine
 erfundene Auflösung behaupten, sondern muss bei der ersten echten Lücke stoppen.
 Die strategische Ablösung des sichtbaren Relay-Mechanismus durch zwei
@@ -169,8 +173,8 @@ provider-gehostete MCP Apps beschreibt die
 ## Action-Oberfläche und Workflow-Abdeckung
 
 Jede Sprachvariante besitzt ein eigenständiges, fest auf `/de/` beziehungsweise
-`/en/` begrenztes OpenAPI-Schema. Die neun Actions bilden die vollständigen
-Rollback-Coach-Abläufe ab:
+`/en/` begrenztes OpenAPI-Schema. Die neun Session-Actions bilden die
+vollständigen sichtbaren Fallback-Abläufe ab:
 
 | Action | Methode und Suffix unter `/visible` | Aufgabe im Workflow |
 | --- | --- | --- |
@@ -223,7 +227,9 @@ Revision-/Idempotenzmechanismen sind unter
 [ChatClient/Backend Communication Contract](provider-neutral-coach-boundary.md)
 dokumentiert.
 
-Alle neun Operationen:
+Der sichtbare Fallback verwendet neun Session-Operationen. Das aktuelle
+Builder-Schema ergänzt davor `redeemStartCode` als zehnte Operation für den
+privaten Standardstart. Die neun Session-Operationen:
 
 - liegen unter `/api/ai/{de|en}/sessions/{chatSessionToken}/visible/...`;
 - verwenden die konfigurierte Bearer-Authentifizierung der GPT Action;
@@ -234,10 +240,11 @@ Alle neun Operationen:
 Die Inline-Definition ist eine Kompatibilitätsmaßnahme für den GPT Builder, der die
 betroffenen Operationen bei einem Parameter-`$ref` derzeit überspringt.
 
-## Sprachpakete und bestehende GPTs
+## Sprachpakete und neue GPTs
 
-Die beiden bestehenden GPTs werden in place konfiguriert. Jede Sprachvariante hat
-ein vollständiges eigenes Paket mit:
+Die beiden GPTs werden unabhängig voneinander aus leeren Builder-Konfigurationen
+erstellt. Es werden weder frühere IDs noch URLs oder Builder-Dateien übernommen.
+Jede Sprachvariante hat ein vollständiges eigenes Paket mit:
 
 - eigenen System Instructions;
 - genau sieben eigenen Knowledge-Dokumenten;
@@ -247,38 +254,38 @@ ein vollständiges eigenes Paket mit:
 
 Maßgebliche Quellen und Builder-Anleitungen:
 
-- [Visible-Session-Paket](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/README.md)
-- [deutsches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md)
-- [englisches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md)
+- [Aktuelles Custom-GPT-Paket](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20custom%20gpt/README.md)
+- [deutsches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20custom%20gpt/de/gpt_setup_guide.md)
+- [englisches Builder-Setup](https://github.com/enpasos/skillpilot/blob/main/ai/openai%20custom%20gpt/en/gpt_setup_guide.md)
 
 Die Sprachschemata dürfen nicht zusammengeführt oder gegeneinander ausgetauscht
 werden. Unter `ai/` gibt es absichtlich kein gemeinsames
 `skillpilot-api-4ai.*`-Fallback.
 
-## Laufzeitwahl und koordinierter Rückfall
+## Laufzeitwahl und Aktivierung
 
-Der Web-Start verwendet für jede unterstützte Interaktionssprache die
-`openai-mcp`-Variante. `visible-session` darf nur für einen koordinierten
-Custom-GPT-Rollback aktiviert werden. Die festen URLs der bestehenden deutschen
-und englischen Legacy-GPTs liegen im sprachspezifischen Frontend-Paket. Die gewöhnlichen
+Der eingefrorene Web-Start verwendet weiterhin `openai-mcp`. Der vorgeschlagene
+Interimszugang ist eine getrennte Route und schaltet diesen Variant-Selector nicht
+um. Die neuen GPT-URLs entstehen erst im Builder und werden nach erfolgreicher
+Abnahme über eine eigene sprachspezifische Deployment-Konfiguration eingebunden.
+Gelöschte, noch in eingefrorenem Frontendcode sichtbare Alt-URLs dürfen dafür
+nicht wiederverwendet werden. Die gewöhnlichen
 Produktionsgeheimnisse des Backends, insbesondere Action-API-Key und Signing
 Secret, bleiben davon unberührt und müssen weiterhin korrekt konfiguriert sein.
 
 Ein Rollout erfolgt koordiniert:
 
-1. Backend mit den `/visible/...`-Routen deployen.
-2. Web-Frontend ausdrücklich mit der Rollback-/Fallbackvariante deployen.
-3. Bestehenden deutschen GPT nur mit dem deutschen Visible-Session-Bundle
-   aktualisieren.
-4. Bestehenden englischen GPT nur mit dem englischen Bundle aktualisieren.
-5. Pro Sprache einen frischen End-to-End-Test durchführen.
+1. Vorhandene Startcode- und `/visible/...`-Routen verifizieren.
+2. `SkillPilot GPT Coach (de)` neu und zunächst privat erstellen und abnehmen.
+3. `SkillPilot GPT Coach (en)` getrennt neu und zunächst privat erstellen und
+   abnehmen.
+4. Erst danach die beiden neuen URLs in der dedizierten Deployment-Konfiguration
+   setzen.
+5. Den getrennten WebGUI-Einstieg nur nach der erforderlichen Freeze-Entscheidung
+   aktivieren und pro Sprache erneut Ende-zu-Ende testen.
 
-Für einen Rollback werden zuerst beide bestehenden GPTs aus den unveränderten
-Quellen unter `ai/openai custom gpt/` auf die passende Legacy-Konfiguration
-zurückgesetzt. Erst danach wird das Web-Frontend mit
-`VITE_SKILLPILOT_COACH_VARIANT=legacy` gebaut. Nur eine Seite umzuschalten würde
-ein Visible-Session-Token an ein Startcode-Schema oder einen Startcode an das
-Visible-Session-Schema senden und ist unzulässig.
+Der sichtbare Modus wird nicht als separates altes GPT aufbewahrt. Er ist allein
+eine ausdrücklich gestartete Notfallfunktion derselben neuen Sprach-GPTs.
 
 ## Fehler- und Betriebsregeln
 
@@ -299,7 +306,7 @@ Visible-Session-Schema senden und ist unzulässig.
 Die paketlokale Architekturprüfung läuft mit:
 
 ```bash
-npm test --prefix ai/openai-custom-gpt-visible-session
+npm test --prefix "ai/openai custom gpt"
 ```
 
 Die Frontend-Variantenprüfung läuft mit:
@@ -309,8 +316,9 @@ npm --prefix app run test:coach-variants
 ```
 
 Zusätzlich braucht jeder Builder-Rollout einen echten DE- und EN-Acceptance-Test:
-Start, Turn-Refresh, nummerierte Auswahl, sichtbarer Footer, Zielwechsel, Mastery,
-Verified Recall, Prüfung, Ablauf und Neustart.
+privater Start und Cross-Turn-Retention, Turn-Refresh, nummerierte Auswahl,
+Zielwechsel, Mastery, Verified Recall, Prüfung, Ablauf und Neustart. Der sichtbare
+Footer wird separat als Notfallmodus geprüft.
 
 ## Claude-Abgrenzung
 

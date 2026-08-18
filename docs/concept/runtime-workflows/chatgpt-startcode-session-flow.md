@@ -1,28 +1,31 @@
-# Legacy: SkillPilot Lerncoach mit Startcode und Session-Token
+# Custom GPT: privater Startcode- und Session-Flow
 
-Status: historische Architektur vom 19. Mai 2026; für keine Sprache aktueller
-Laufzeitvertrag.
+Status: ursprünglich am 19. Mai 2026 eingeführte Architektur, seit 18. August
+2026 wieder privater Standardstart für die zwei neu aufzubauenden GPTs
+`SkillPilot GPT Coach (de)` und `SkillPilot GPT Coach (en)`. Turnübergreifende
+Action-Retention bleibt ein real zu prüfendes Rollout-Gate.
 
-> Dieses Dokument bleibt als technische Rollback-Referenz erhalten. Der aktuelle
-> mehrsprachige V1-Architektur ist die
+> Dieses Dokument beschreibt den Custom-GPT-Transport. Die mehrsprachige
+> Zielarchitektur bleibt die
 > [OpenAI-MCP-App mit OAuth- und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
 > Dabei transportiert ChatGPT den OAuth-Zugriff automatisch. Jeder ausdrückliche
 > Start in SkillPilot erzeugt eine davon getrennte, absolut höchstens 24 Stunden
 > gültige Lernsession, setzt sie automatisch in die vorbereitete
 > Startnachricht ein und verlangt sie danach als Argument jedes fachlichen
 > Tools. Die dauerhafte SkillPilot-ID erscheint nicht im Chat. Die
-> [Visible-Session-Architektur](chatgpt-visible-session-flow.md) bleibt ein
-> separater Custom-GPT-Rollbackpfad. Deutsch, Englisch und jede später
+> [Visible-Session-Architektur](chatgpt-visible-session-flow.md) ist nur der
+> ausdrücklich gestartete Notfallfallback derselben neuen GPTs. Deutsch,
+> Englisch und jede später
 > unterstützte Interaktionssprache verwenden im Normalbetrieb dieselbe
 > Major-versionierte App.
 
-Dieses Dokument beschreibt ausschließlich den früheren Browser-first-Flow für den
-Start des SkillPilot Lerncoachs in ChatGPT. Ziel war, dass Lernende auf
+Dieses Dokument beschreibt den Browser-first-Flow für den Start der neuen
+SkillPilot GPT Coaches in ChatGPT. Ziel ist, dass Lernende auf
 `skillpilot.com` starten, während ChatGPT nur kurzlebige Start- und
 Session-Schlüssel sieht. Die dauerhafte SkillPilot-ID blieb im Browser und
 serverseitig im SkillPilot-Backend.
 
-Erhaltener Legacy-Implementierungsstand:
+Deployte Implementierungsgrundlage:
 
 - Web-Start und relevante Kampagnenstarts erzeugen Startcodes ueber `/api/ui/learners/{skillpilotId}/chat-start`.
 - Custom-GPT-Actions loesen Startcodes ueber `/api/ai/{lang}/chat-start/redeem` ein.
@@ -185,7 +188,7 @@ Response:
 Der Browser kann daraus optional eine ChatGPT-URL bauen:
 
 ```text
-https://chatgpt.com/g/...skillpilot-gpt-deutsch?prompt=<url-encoded prompt>
+https://chatgpt.com/g/...skillpilot-gpt-coach-de?prompt=<url-encoded prompt>
 ```
 
 Der Prompt-Link ist Komfort, nicht Sicherheitsanker. Im normalen Web-Flow wird der Startcode direkt ueber den ChatGPT-Prompt-Parameter uebergeben. Eine manuelle Copy-Ansicht ist nur als Diagnose- oder Fallback-Option noetig, falls ein Browser den Popup-/Prompt-Start blockiert.

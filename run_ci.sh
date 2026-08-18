@@ -159,7 +159,7 @@ run_action_regression_ci() {
   echo "=========================================="
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
-  npm --prefix "${PROJECT_ROOT}/ai/openai-custom-gpt-visible-session" test
+  npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt" test
   npm --prefix "${PROJECT_ROOT}/ai/openai app" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai app" test
   node --test "${PROJECT_ROOT}/scripts/openai_plugin_release.test.mjs"

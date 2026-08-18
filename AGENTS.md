@@ -1114,9 +1114,10 @@ Guiding principle:
   credential, and the coach must not repeat the learning-session value.
   Human-readable learning-goal IDs may still be shown when they are
   intentionally part of the learning product rather than access credentials.
-- The rollback-only Visible Session Custom GPT does place a temporary token in
-  every response footer; that separate relay convention must not be copied into
-  MCP-App workflows.
+- The interim Custom GPT keeps its temporary token inside Action context after
+  start-code redemption. Only its explicitly started emergency fallback places
+  the token in response footers; neither convention may be copied into MCP-App
+  workflows.
 - Local frontends (web GUI, notebooks, etc.) may:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.
@@ -1137,12 +1138,14 @@ email address. Typical browser/domain endpoints include:
 
 Provider-facing contracts must use derived temporary context instead:
 
-- Rollback-only Visible Session Custom GPT: the browser calls
-  `POST /api/ui/learners/{skillpilotId}/visible-chat-start`; the GPT then uses only
-  the nine locale-specific
+- Interim Custom GPT: the proposed separate launcher calls
+  `POST /api/ui/learners/{skillpilotId}/chat-start`; the GPT redeems the one-time
+  code and then uses nine locale-specific
   `/api/ai/{lang}/sessions/{chatSessionToken}/visible/...` Actions. Values needed
-  after a user turn are visible in the footer, numbered selection, full canonical
-  goal ID, or Recall card prompt.
+  after a user turn remain in Action context, with a real retention canary as a
+  release gate. The separate `visible-chat-start` route remains an explicitly
+  chosen emergency relay in which the footer, current selection, full canonical
+  goal ID, and Recall card IDs are visible.
 - Paused Claude/MCP: the transport authenticates an OAuth connection subject and
   resolves it inside the backend. The model never supplies a learner ID.
 - Current multilingual OpenAI MCP App line `SkillPilot Coach v1`: OAuth authorizes the fixed registered App
@@ -1267,8 +1270,9 @@ bound memory-practice UI result; its target packaging
 combines that registered connection with a language-neutral English control-plane skill as
 documented in
 `docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`. The
-Visible Session Custom GPT remains a rollback package and must stay isolated
-from the MCP-App implementation.
+interim Custom GPT remains a separately tested compatibility channel and must
+stay isolated from the MCP-App implementation; its visible session mode is only
+an emergency fallback.
 
 The billing boundary is a hard product requirement: the learner uses the model
 under the provider's available free access or fixed-price consumer subscription.
@@ -1386,12 +1390,17 @@ provider policy and product review explicitly permit it.
   production auth. The production Spring Boot adapter requires OAuth App
   authorization plus an explicit database-backed learning-session mapping and
   uses `CoachToolFacade`; do not route real learner data through the demo store.
-- **Rollback ChatGPT projection:** nine locale-specific Visible Session Actions
-  consolidate setup and navigation into numbered choices, reload state on normal
-  user turns, and protect Recall answers and exam solutions behind later Actions.
-- **Visible cross-turn relay:** only the temporary session token, selection
-  reference/numbers, canonical active-goal ID, and Recall card IDs are carried in
-  conversation text when a later Action needs them.
+- **Interim Custom GPT projection:** ten locale-specific Actions combine one-time
+  start-code redemption with the compact nine-operation coach adapter, reload
+  state on normal user turns, and protect Recall answers and exam solutions behind
+  later Actions.
+- **Private cross-turn default:** the temporary session token, selection
+  reference, canonical active-goal ID, and Recall card IDs remain in Action
+  context. A real cross-turn retention canary is a release gate because provider
+  retention is empirical, not an official stability guarantee.
+- **Visible emergency relay:** only an explicitly generated fallback start carries
+  the temporary token and later required technical values in conversation text.
+  A private chat never switches to this mode automatically.
 - **Visible same-turn intake:** a natural multi-part request remains active only
   within the current assistant turn. Fresh uniquely matched selections may chain
   without displaying intermediate codes; a numbers-only reply is consumed by
@@ -1411,10 +1420,11 @@ provider policy and product review explicitly permit it.
   `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`.
 
 ### 12.2 Setup Guides
-- **ChatGPT Visible Session (rollback package):** See
-  `ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md` and
-  `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
-  update the two existing GPTs in place; they do not create new GPTs.
+- **Current Custom GPT Action Session:** See
+  `ai/openai custom gpt/de/gpt_setup_guide.md` and
+  `ai/openai custom gpt/en/gpt_setup_guide.md`. These guides create two
+  independent new GPTs named `SkillPilot GPT Coach (de)` and
+  `SkillPilot GPT Coach (en)` from empty Builder configurations.
 - **OpenAI MCP Apps:** See `ai/openai app/README.md`. The versioned multilingual source
   plugin lives under `ai/openai plugin/skillpilot-coach-v1`, directly declares
   the production MCP server plus its language-neutral English control-plane
@@ -1435,15 +1445,12 @@ provider policy and product review explicitly permit it.
   `contracts/drafts/` without a SemVer increment. Only a confirmed publication
   may create `contracts/published/` and advance `release-index.json`; published
   snapshots are immutable.
-- **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
-  setup and must stay unchanged so a coordinated rollback does not require Git
-  archaeology. It is also the review-only content baseline for the new coaching
-  skill; reuse its didactic meaning without reactivating its old transport.
-- **OpenAPI specs are package-local:** The legacy rollback bundle owns
-  `ai/openai custom gpt/skillpilot-api-4ai.de.json` or
-  `ai/openai custom gpt/skillpilot-api-4ai.en.json`. The Visible Session package
-  owns separate schemas under `ai/openai-custom-gpt-visible-session/de/` and
-  `ai/openai-custom-gpt-visible-session/en/`. Do not place or treat a
+- **ChatGPT clean source:** `ai/openai custom gpt/` retains no prior GPT IDs,
+  URLs, screenshots, Instructions, Knowledge, or rollback Builder bundle.
+  `action-regression/` is test infrastructure only and is never uploaded.
+- **OpenAPI specs are package-local:** The new locale packages own separate
+  schemas under `ai/openai custom gpt/de/` and
+  `ai/openai custom gpt/en/`. Do not place or treat a
   `skillpilot-api-4ai.*` file directly below `ai/` as a shared schema.
 
 ## 13. Curriculum Assets & Flashcard Decks

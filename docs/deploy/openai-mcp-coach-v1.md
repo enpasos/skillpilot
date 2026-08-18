@@ -1346,9 +1346,8 @@ Client-Secret enthalten; die einmalige
 4. Bestehende OpenAI-V1-Verbindungen serverseitig widerrufen, falls ein
    Sicherheitsgrund vorliegt.
 
-Die additiven Datenbanktabellen können stehen bleiben. Die getrennten Quellen
-unter `ai/openai custom gpt/` und `ai/openai-custom-gpt-visible-session/` werden
-nicht entfernt oder überschrieben.
+Die additiven Datenbanktabellen können stehen bleiben. Der getrennte Clean-Slate-
+Custom-GPT-Quellbaum unter `ai/openai custom gpt/` wird davon nicht verändert.
 
 ## 9. Externe Restarbeiten
 

@@ -45,8 +45,8 @@ jobs:
         run: npm --prefix "ai/openai custom gpt/action-regression" ci
       - name: Test Spring-hosted Custom GPT Action control client
         run: npm --prefix "ai/openai custom gpt/action-regression" test
-      - name: Validate Visible Session Custom GPT source contract
-        run: npm --prefix ai/openai-custom-gpt-visible-session test
+      - name: Validate current Custom GPT Action Session contract
+        run: npm --prefix "ai/openai custom gpt" test
       - name: Validate production deployment entrypoint
         run: |
           bash -n \

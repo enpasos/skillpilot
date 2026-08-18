@@ -9,7 +9,9 @@ This page groups deployment-facing operational documentation.
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](openai-plugin-v1-release.md)
 - [SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre](openai-plugin-v1-review-freeze.md)
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](openai-plugin-v1-submission.md)
+- [Neue SkillPilot Custom GPTs als befristeter Übergangskanal](openai-custom-gpt-interim.md)
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
+- [SkillPilot Claude Connector v1: one-JVM architecture and service concept](claude-connector-v1-concept.md)
 
 ## Maintenance
 
