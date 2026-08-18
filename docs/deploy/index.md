@@ -12,6 +12,7 @@ This page groups deployment-facing operational documentation.
 - [Neue SkillPilot Custom GPTs als befristeter Übergangskanal](openai-custom-gpt-interim.md)
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
 - [SkillPilot Claude Connector v1: one-JVM architecture and service concept](claude-connector-v1-concept.md)
+- [SkillPilot Claude Connector v1: developer implementation plan](claude-connector-v1-implementation-plan.md)
 
 ## Maintenance
 
