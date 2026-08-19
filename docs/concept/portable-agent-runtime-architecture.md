@@ -1,17 +1,25 @@
-# Architekturkonzept: SkillPilot mit portabler Agent Runtime
+# Architekturkonzept: SkillPilot mit austauschbarem MCP Host
 
 **Status:** Strategiekonzept für die langfristige Host- und
-Runtime-Unabhängigkeit von SkillPilot. Stand: 18. August 2026.
+Anbieterunabhängigkeit von SkillPilot.
 
 **Geltungsbereich:** Auswahl, Bewertung und Ablösung von AI Chat Applications
-beziehungsweise MCP Hosts, die Verantwortungsgrenze zwischen Host und
-SkillPilot Core sowie der daraus folgende Stufenplan.
+beziehungsweise MCP Hosts, die Verantwortungsgrenze zwischen SkillPilot Core,
+MCP Host und Model Provider sowie der daraus folgende Stufenplan.
 
 Dieses Dokument legt die Richtung fest, nicht den ausgelieferten Vertrag. Die
-verbindlichen Verträge des heutigen Coach-Pfades stehen weiterhin in den
-verlinkten Dokumenten unter [Verwandte Dokumente](#15-verwandte-dokumente); bei
-Abweichungen gelten diese. Host-, Plan- und Altersangaben sind Bewertungen zum
-oben genannten Stand und werden vor einer Freigabe erneut geprüft.
+verbindlichen Verträge des heutigen Coach-Pfades stehen in den Dokumenten unter
+[Verwandte Dokumente](#15-verwandte-dokumente); bei Abweichungen gelten diese.
+
+**Aufbau:** [Teil A](#teil-a-stabile-architektur) enthält die normative
+Architektur und ändert sich nur mit einer bewussten Architekturentscheidung.
+[Teil B](#teil-b-marktanhang-stand-19-august-2026) bewertet die heute
+verfügbaren Hosts und ist ausdrücklich datiert. Ändert ein Anbieter seine Pläne,
+Oberflächen oder Altersbedingungen, wird nur Teil B nachgezogen.
+
+---
+
+# Teil A — Stabile Architektur
 
 ## 1. Architekturentscheidung
 
@@ -19,7 +27,8 @@ SkillPilot sollte langfristig aus drei unabhängig austauschbaren Bereichen best
 
 1. **SkillPilot Core** als dauerhaftes, anbieterneutrales Lernsystem,
 2. eine **austauschbare AI Chat Application beziehungsweise ein MCP Host**,
-3. ein **austauschbarer Model Provider**, der möglichst über Open Responses angesprochen wird.
+3. ein **austauschbarer Model Provider**, der möglichst über eine
+   Open-Responses-kompatible Schnittstelle angesprochen wird.
 
 Die zentrale Architekturregel lautet:
 
@@ -27,19 +36,24 @@ Die zentrale Architekturregel lautet:
 
 Gleichrangig daneben steht eine zweite, ebenso verbindliche Regel:
 
-> **SkillPilot Core speichert ausschließlich Lernerfolg. Die Lernkommunikation
-> selbst — Gesprächsverlauf, Formulierungen, Fotos, Anhänge, Schülerlösungen —
-> wird nicht in SkillPilot Core gespeichert.**
+> **SkillPilot Core persistiert pro Lernendem ausschließlich strukturierten,
+> schema-validierten Lern- und Steuerungszustand. SkillPilot Core speichert
+> keine Chatnachrichten, Formulierungen, Freitextantworten, Schülerlösungen,
+> Bilder, Anhänge oder modellseitigen Analyseprotokolle.**
 
 Beide Regeln stützen sich gegenseitig: Ein Kern, der keine Gesprächsinhalte
 hält, ist leichter host- und anbieterneutral zu halten, und ein Kern ohne
 Hostbindung darf keine hostspezifischen Inhalte übernehmen. Abschnitt 4.2 führt
 die Regel gegen die tatsächliche MCP-Oberfläche aus.
 
+Was diese Regel **nicht** behauptet: dass die Lernkommunikation nirgends
+gespeichert wird. Sie liegt beim MCP Host und, bei Vision-Nutzung, zusätzlich
+beim Model Provider. Abschnitt 6.3 zieht diese Grenze ausdrücklich.
+
 Für die nächsten Entwicklungsschritte ergibt sich daraus folgende Strategie:
 
 - **Kurzfristig:** selbst betriebener Open-Source-MCP-Host für wenige Testnutzer, am sinnvollsten zunächst LibreChat.
-- **Parallel:** Archestra als technisches Standardslabor für Open-Responses-Routing und MCP Apps untersuchen.
+- **Parallel:** Archestra als zweiten Pilotkandidaten und Standardslabor für Open-Responses-Routing und MCP Apps prüfen.
 - **Mittelfristig:** ChatGPT und Claude als vom jeweiligen Anbieter betriebene Zugangskanäle verwenden, sobald sie die benötigten Funktionen, Altersgruppen und Oberflächen tatsächlich unterstützen.
 - **Langfristig:** Wechsel zu einem fremdbetriebenen, standardkonformen MCP Host mit benutzereigenen Modellzugängen, sobald ein solcher Dienst alle Anforderungen erfüllt.
 
@@ -62,11 +76,13 @@ Deshalb ist eine Architektur mit mehreren Betriebswegen sinnvoller als die Suche
 
 ---
 
-## 2. Präzisierung der Standards
+## 2. Standards und ihre Rollen
 
 ### 2.1 Open Responses
 
-**Open Responses** standardisiert die Schnittstelle zwischen Agent Runtime und Model Provider. Dazu gehören unter anderem:
+**Open Responses** definiert eine offene, providerneutrale Spezifikation für die
+Schnittstelle zwischen Agent Runtime und Model Provider beziehungsweise Model
+Access Layer. Dazu gehören unter anderem:
 
 - typisierte Eingaben und Ausgaben,
 - Messages,
@@ -75,6 +91,20 @@ Deshalb ist eine Architektur mit mehreren Betriebswegen sinnvoller als die Suche
 - Reasoning-Elemente,
 - mehrstufige Agent Loops,
 - providerabhängige Erweiterungen.
+
+Drei Begriffe werden im weiteren Text streng auseinandergehalten, weil sie
+regelmäßig verwechselt werden:
+
+| Begriff | Bedeutung |
+| --- | --- |
+| **OpenAI Responses API** | proprietäre API von OpenAI |
+| **OpenAI-compatible `/responses`** | nachgebildete API-Oberfläche eines Dritten |
+| **Open Responses** | die unabhängige, offene Spezifikation |
+
+> **Ein Endpunkt mit dem Namen `/responses` belegt keine
+> Open-Responses-Konformität.** Konformität wird anhand der offiziellen
+> Acceptance Tests und eines SkillPilot-spezifischen Capability-Profils geprüft,
+> nicht aus einem Pfadnamen abgeleitet.
 
 Open Responses reduziert die technische Bindung an die proprietäre API eines einzelnen Modellanbieters. Es garantiert aber nicht, dass alle Modelle dieselben Fähigkeiten besitzen. Bildverarbeitung, Tool Calling, strukturierte Ausgaben und Reasoning bleiben modellabhängige Fähigkeiten.
 
@@ -121,23 +151,44 @@ skillpilot-plugin/
 
 Der portable Kern besteht damit aus:
 
-- Manifest,
-- Skills,
-- MCP-Server-Konfiguration.
+- Manifest (`plugin.json`, erforderlich),
+- Skills (optional),
+- MCP-Server-Konfiguration (optional).
 
 **MCP Apps UI ist keine dritte, separat im Agent Plugin verpackte Komponente.** Die UI wird zur Laufzeit vom in `mcp.json` referenzierten MCP Server bereitgestellt.
 
-Agent Plugins 1.0 ist derzeit noch ein Working Draft. Das Paket sollte deshalb als kanonisches, portables Auslieferungsformat gepflegt werden, ohne vorauszusetzen, dass jeder Host es bereits vollständig importieren kann.
+Agent Plugins 1.0 ist derzeit noch ein Working Draft. Installation, Verteilung
+und Update-Oberflächen bleiben bewusst außerhalb des portablen Standards. Das
+Paket sollte deshalb als kanonisches, portables Auslieferungsformat gepflegt
+werden, ohne vorauszusetzen, dass jeder Host es bereits vollständig importieren
+kann.
 
 Die treffende Formulierung für SkillPilot lautet daher:
 
 > SkillPilot wird als Agent Plugin mit Skill und MCP-Konfiguration ausgeliefert. Der referenzierte SkillPilot-MCP-Server stellt zusätzlich optionale MCP Apps UIs bereit.
+
+#### Das Plugin löst die Authentifizierung nicht mit
+
+Agent Plugins v1 definiert ausdrücklich **keine portable OAuth-Konfiguration und
+keine portablen Credential-Referenzen**:
+
+> **Das Agent Plugin beschreibt den SkillPilot-MCP-Endpunkt, transportiert aber
+> keine OAuth-Client-Secrets und keine hostübergreifend portablen Zugangsdaten.
+> OAuth-Discovery, Benutzerzustimmung, Callback-Konfiguration und
+> Token-Speicherung bleiben hostverwaltet. Jeder Host benötigt daher ein dünnes
+> Installationsprofil für die SkillPilot-Authentifizierung.**
+
+Das ist wichtig, weil sonst der Eindruck entsteht, ein Plugin-Import erledige die
+Einrichtung vollständig portabel. Er erledigt Skill und Serveradresse, nicht die
+Identität.
 
 Host-spezifische Erweiterungen dürfen ergänzend vorhanden sein, sollten aber nur dünne Adapter enthalten. Die didaktischen Regeln gehören in den portablen Skill beziehungsweise in SkillPilot Core.
 
 ---
 
 ## 3. Zielarchitektur
+
+### 3.1 Laufzeitsicht
 
 ```text
 ┌──────────────────────────── Endgeräte ─────────────────────────────┐
@@ -163,47 +214,99 @@ Host-spezifische Erweiterungen dürfen ergänzend vorhanden sein, sollten aber n
 │  ├── Conversation Context                                          │
 │  ├── Session- und Chat-Speicher                                    │
 │  ├── Attachment Handling                                           │
-│  ├── Model Client / Router                                         │
-│  │     └── Open Responses Client – Zielstandard                    │
 │  └── MCP Client                                                    │
 └──────────────────────┬──────────────────────┬──────────────────────┘
                        │                      │
-          Open Responses API          Remote MCP
-                       │          Streamable HTTP + OAuth
+       Open-Responses- │                      │ Remote MCP
+       kompatible API  │                      │ Streamable HTTP + OAuth
                        ▼                      ▼
 ┌────────────────────────────┐   ┌────────────────────────────────────┐
-│ Model Provider /           │   │ SkillPilot Core                    │
-│ benutzereigener Gateway    │   │                                    │
+│ Model Access Layer /       │   │ SkillPilot Core                    │
+│ AI Gateway (optional)      │   │                                    │
 │                            │   │ ┌────────────────────────────────┐ │
-│ • OpenAI                   │   │ │ MCP Server                     │ │
-│ • Anthropic                │   │ │                                │ │
-│ • Google                   │   │ │ • Tools                        │ │
-│ • xAI                      │   │ │ • Resources                    │ │
-│ • Open-Model-Hoster        │   │ │ • Prompts                      │ │
-│ • weitere Provider         │   │ │ • optionale MCP Apps UI        │ │
-│                            │   │ └───────────────┬────────────────┘ │
-│ Benutzer- oder             │   │                 │                  │
-│ Elternkonto trägt Kosten   │   │ ┌───────────────▼────────────────┐ │
-└────────────────────────────┘   │ │ Didactic Services              │ │
-                                 │ │                                │ │
-                                 │ │ • Lernzielsteuerung            │ │
-                                 │ │ • Lernkarten                   │ │
-                                 │ │ • Aufgaben und Bewertungsraster│ │
-                                 │ │ • Lernstandsmodell             │ │
-                                 │ │ • Curriculare Ontologie        │ │
-                                 │ └───────────────┬────────────────┘ │
-                                 │                 │                  │
-                                 │ ┌───────────────▼────────────────┐ │
-                                 │ │ Learning State Database        │ │
-                                 │ │ nur Lernerfolg,                │ │
-                                 │ │ keine Gesprächsinhalte         │ │
+│ • Routing und Fallback     │   │ │ MCP Server                     │ │
+│ • nutzt die Credentials    │   │ │                                │ │
+│   des Lernenden            │   │ │ • Tools                        │ │
+└─────────────┬──────────────┘   │ │ • Resources                    │ │
+              │                  │ │ • Prompts                      │ │
+   provider-native API,          │ │ • optionale MCP Apps UI        │ │
+   falls erforderlich            │ └───────────────┬────────────────┘ │
+              ▼                  │                 │                  │
+┌────────────────────────────┐   │ ┌───────────────▼────────────────┐ │
+│ Model Provider             │   │ │ Didactic Services              │ │
+│                            │   │ │                                │ │
+│ • OpenAI, Anthropic        │   │ │ • Lernzielsteuerung            │ │
+│ • Google, xAI              │   │ │ • Lernkarten                   │ │
+│ • Open-Model-Hoster        │   │ │ • Aufgaben und Bewertungsraster│ │
+│                            │   │ │ • Lernstandsmodell             │ │
+│ Providerkonto des          │   │ │ • Curriculare Ontologie        │ │
+│ Lernenden / der Eltern     │   │ └───────────────┬────────────────┘ │
+│ trägt die Kosten           │   │                 │                  │
+│                            │   │ ┌───────────────▼────────────────┐ │
+│ Bilder zur Vision-Analyse  │   │ │ Learning State Database        │ │
+│ landen HIER, nicht im      │   │ │                                │ │
+│ SkillPilot Core            │   │ │ strukturierter Lern- und       │ │
+└────────────────────────────┘   │ │ Steuerungszustand              │ │
                                  │ └────────────────────────────────┘ │
                                  └────────────────────────────────────┘
 ```
 
+Der **Model Access Layer** ist bewusst als eigene, optionale Komponente
+gezeichnet. Die Agent Runtime spricht entweder direkt einen
+Open-Responses-kompatiblen Provider an oder geht über einen Router, der auf
+provider-native APIs übersetzt:
+
+```text
+Agent Runtime
+    ├── direkt zu einem Open-Responses-kompatiblen Provider
+    └── oder über Model Access Layer / AI Gateway
+```
+
+Die Gateway-Instanz ist dabei **nicht** benutzereigen. Benutzereigen sind das
+Providerkonto und die Credentials; die Instanz betreibt der MCP-Host-Betreiber
+oder ein externer Gateway-Anbieter. Abschnitt 7 zieht daraus die
+Abrechnungsregel.
+
+### 3.2 Installationssicht: das Agent Plugin
+
+Das Agent Plugin ist keine weitere Laufzeitverbindung, sondern ein
+**Installations- und Konfigurationsartefakt**. Es taucht deshalb nicht im
+Laufzeitdiagramm auf, entscheidet aber, wie Skill und Serveradresse überhaupt in
+den Host gelangen:
+
+```text
+SkillPilot Agent Plugin
+├── plugin.json
+├── skills/skillpilot-coach/SKILL.md
+└── mcp.json
+        │
+        │ Installation / Import
+        ▼
+AI Chat Application / MCP Host
+├── Agent Runtime lädt den Skill
+├── MCP Client erhält die Serverkonfiguration
+└── OAuth-Profil hostseitig    ← nicht im Plugin enthalten
+        │
+        │ Remote MCP + OAuth
+        ▼
+SkillPilot Core
+```
+
+Die letzte Zeile vor der Verbindung ist der Punkt aus Abschnitt 2.4: Das Paket
+bringt Skill und Endpunkt mit, die Authentifizierung bleibt hostverwaltet.
+
 ---
 
 ## 4. Verantwortungs- und Zustandsgrenzen
+
+Die Architektur kennt **drei getrennte Datenverarbeitungsbereiche**. Keiner davon
+verschwindet dadurch, dass ein anderer nichts speichert:
+
+| Bereich | Hält | Verantwortlich |
+| --- | --- | --- |
+| MCP Host | Chatverlauf, Nachrichten, Anhänge, Sitzungen, Credentials | Hostbetreiber (im Pilot: enpasos) |
+| Model Provider | übermittelte Prompts und Bilddaten, je nach Anbieterbedingungen | Modellanbieter, Vertrag mit dem Nutzer |
+| SkillPilot Core | strukturierter Lern- und Steuerungszustand | enpasos |
 
 ### 4.1 Zustand des MCP Hosts
 
@@ -223,8 +326,8 @@ Damit kann der Nutzer denselben Chat auf Smartphone und Desktop fortsetzen.
 
 ### 4.2 Zustand von SkillPilot Core
 
-SkillPilot Core speichert **ausschließlich Lernerfolg**, also das Ergebnis des
-Lernens — nicht seinen Verlauf und nicht sein Material:
+SkillPilot Core persistiert **ausschließlich strukturierten, schema-validierten
+Lern- und Steuerungszustand**:
 
 - Zuordnung zum SkillPilot-Lernenden,
 - gewähltes Curriculum und Personalisierung,
@@ -233,13 +336,19 @@ Lernens — nicht seinen Verlauf und nicht sein Material:
 - Lernkartenplanung und fällige Wiederholungen,
 - Verified-Recall-Ergebnis je Karte als bestanden oder nicht bestanden.
 
+Die Liste enthält bewusst beides: Ergebniswerte wie Mastery und
+**Steuerungszustand** wie Curriculum, Scope, aktives Lernziel und fällige
+Wiederholungen. Letzteres ist kein Lernerfolg im engeren Sinn, aber es ist
+strukturiert, schema-validiert und für die Fortsetzung des Lernens nötig.
+
 Ebenso wichtig ist die Negativliste. SkillPilot Core speichert **nicht**:
 
 - Chatverläufe, Nachrichten oder Formulierungen der lernenden Person,
 - Fotos, Scans, Dateianhänge oder sonstige Binärinhalte,
 - eingereichte Schülerlösungen oder deren Korrekturen,
 - Freitextantworten zu Aufgaben,
-- Analyse- oder Bewertungsprotokolle des Modells.
+- Analyse- oder Bewertungsprotokolle des Modells,
+- OCR-Text, Bild-URLs oder sonstige Verweise auf Bildmaterial.
 
 Diese Grenze ist keine Absicht für später, sondern der heutige Stand: Die
 schreibenden Werkzeuge der MCP-Oberfläche sind `setCurriculum`,
@@ -255,7 +364,7 @@ abgelegt wird. Sie ist aus dem Recall-Versuch abgeleitet und kein Mitschnitt des
 Gesprächs, aber sie ist Freitext und damit eine Ausnahme von der Regel.
 
 Diese Ausnahme wird **nicht als Bestandteil der Architektur akzeptiert**. Sie ist
-als [Korrektur für v2](#14-offene-korrekturen-fur-v2) vorgemerkt. Bis dahin gilt
+als [Korrektur für v2](#12-offene-korrekturen-fur-v2) vorgemerkt. Bis dahin gilt
 sie als geduldete Altlast: Kein neues Werkzeug und kein neuer Zustand darf sich
 auf sie berufen, und die Negativliste bleibt vollständig gültig.
 
@@ -291,20 +400,38 @@ activeGoal
 masteryValue
 dueItems
 lastRecallOutcome
-nextRecommendedAction
 ```
 
 Ein Checkpoint darf ausdrücklich keine Nachrichtenauszüge, keine Lösungstexte und
 keine Verweise auf Bilddateien enthalten. Geht der Chatverlauf verloren, ist der
-Lernerfolg vollständig erhalten und die Lernkommunikation bewusst nicht.
+Lern- und Steuerungszustand vollständig erhalten und die Lernkommunikation
+bewusst nicht.
 
-### 4.4 Identität
+**Eine bewusst abgelehnte Ergänzung:** Eine frühere Fassung führte
+`nextRecommendedAction` als Checkpoint-Feld. Dafür gibt es in der beschriebenen
+Werkzeugoberfläche keinen Schreibvertrag. Die nächste empfohlene Aktion wird
+deshalb **aus dem gespeicherten Zustand abgeleitet und nicht persistiert**. Sie
+darf nicht als neuer, frei beschreibbarer Zustand in die Architektur rutschen;
+soll sie später persistiert werden, ist das ein eigener, strukturierter
+v2-Vertrag mit fester Wertemenge.
+
+### 4.4 Identität und sichtbare Kennungen
 
 Die Identität sollte über SkillPilot-OAuth hergestellt werden.
 
-Der MCP Host erhält ein Zugriffstoken, das SkillPilot intern dem Lernenden zuordnet. Interne SkillPilot-IDs müssen weder im Chat noch gegenüber dem Modell sichtbar sein.
+Der MCP Host erhält ein Zugriffstoken, das SkillPilot intern dem Lernenden zuordnet. Die vom Host gemeldete E-Mail-Adresse oder der Anzeigename darf nicht als alleiniger Identitätsnachweis dienen.
 
-Die vom Host gemeldete E-Mail-Adresse oder der Anzeigename darf nicht als alleiniger Identitätsnachweis dienen.
+Beim Thema sichtbare Kennungen sind zwei Dinge zu unterscheiden, die sich sonst
+zu widersprechen scheinen — die Abnahmetests verlangen eine sichtbare Session-ID,
+diese Regel verbietet sichtbare IDs:
+
+| | |
+| --- | --- |
+| **sichtbar erlaubt** | eine zufällige, opake `learningSessionId` |
+| **nicht sichtbar** | interne Lernenden-ID, Konto-ID, Datenbank-ID oder jede daraus ableitbare Kennung |
+
+Die Session-ID darf also im Chat und im Modellkontext erscheinen, weil sie
+nichts über die lernende Person verrät und mit der Session endet.
 
 ---
 
@@ -356,7 +483,7 @@ selbst oder fremd betriebener Open-Source-MCP-Host
 ├── Chat UI
 ├── serverseitige Agent Runtime
 ├── Chat-Speicher
-├── Open Responses Client
+├── Open-Responses-kompatibler Client
 └── MCP Client
         │                       │
         ▼                       ▼
@@ -377,6 +504,7 @@ Nachteile:
 
 - zunächst eigener Betrieb,
 - Verwaltung benutzereigener API-Zugangsdaten,
+- eigene Verantwortung für Chatdaten, Anhänge, Backups und Löschung,
 - mobile Qualität hängt vom gewählten Open-Source-Host ab,
 - die Standards werden von aktuellen Hosts noch nicht überall vollständig unterstützt.
 
@@ -384,227 +512,9 @@ Dieser Weg ist die **Zielarchitektur** und zugleich die Grundlage für den kurzf
 
 ---
 
-## 6. Tatsächlich verfügbare Host-Optionen
+## 6. Spracheingabe und Bildanalyse
 
-### 6.1 ChatGPT
-
-#### Was funktioniert
-
-ChatGPT bietet:
-
-- vollständig gehostete Chat- und Agent-Laufzeit,
-- geräteübergreifende Chatverläufe,
-- mobile und Weboberflächen,
-- Spracheingabe und Bildverarbeitung,
-- direkte Abrechnung über das ChatGPT-Konto,
-- einen Plugin-Veröffentlichungs- und Verzeichnisprozess.
-
-OpenAI hat das frühere App Directory durch ein Plugin Directory ersetzt. Die konkrete Verfügbarkeit von Plugins hängt jedoch weiterhin von Plan, Workspace, Rolle, Region und Oberfläche ab.
-
-#### Aktuelle Einschränkungen
-
-Custom MCP Apps im Developer Mode sind derzeit auf bestimmte Business-, Enterprise- beziehungsweise Edu-Szenarien und auf die Weboberfläche beschränkt. OpenAI weist ausdrücklich darauf hin, dass Custom MCP Apps nicht auf mobilen Oberflächen unterstützt werden.
-
-ChatGPT unterstützt zwar Sprache und Bilder allgemein, der Live-Sprachmodus unterstützt Plugins beziehungsweise verbundene Apps zunächst nicht vollständig.
-
-Die interne Verbindung zwischen ChatGPT-Agent-Runtime und OpenAI-Modellen ist zudem nicht die von SkillPilot kontrollierte Open-Responses-Grenze.
-
-#### Eignung
-
-**Geeignet als:**
-
-- späterer, fremdbetriebener Vertriebskanal,
-- Zugang für Nutzer mit passendem ChatGPT-Konto,
-- skalierbare Variante nach erfolgreichem Review.
-
-**Nicht geeignet als:**
-
-- kurzfristig garantiert verfügbare private Testumgebung,
-- derzeit verlässliche mobile Custom-MCP-App-Lösung,
-- anbieterneutrale Agent Runtime.
-
-Für Minderjährige gilt bei ChatGPT grundsätzlich ein Mindestalter von 13 Jahren; unter 18 ist die Zustimmung eines Elternteils oder Erziehungsberechtigten erforderlich.
-
-**Bewertung:** strategisch wichtig, aber nicht als alleinige Pilotlösung einplanen.
-
----
-
-### 6.2 Claude
-
-#### Was funktioniert
-
-Claude unterstützt Remote MCP Connectors und stellt sie über Web-, Desktop- und mobile Oberflächen bereit. Interaktive Connectors beziehungsweise MCP Apps können inzwischen ebenfalls auf unterstützten Claude-Oberflächen dargestellt werden.
-
-Claude bietet außerdem:
-
-- mobile Diktierfunktion,
-- Voice Mode,
-- Bild- und Dateiupload,
-- vom Nutzer bezahlte Claude-Abonnements.
-
-#### Aktuelle Einschränkungen
-
-- Anthropic verlangt für Claude-Consumerkonten derzeit ein Mindestalter von 18 Jahren.
-- Der Nutzer ist an die Claude-Agent-Runtime und Anthropic-Modelle gebunden.
-- Ein Import portabler Agent-Plugins-v1-Pakete ist nicht als belastbarer allgemeiner Produktweg verifiziert.
-- Ein Claude-Abonnement ist nicht automatisch ein Claude-API-Guthaben; Consumer- und API-Abrechnung sind getrennt.
-
-#### Eignung
-
-**Geeignet als:**
-
-- technisch sehr guter gehosteter Remote-MCP-Test,
-- Test von MCP Apps auf mobilen Endgeräten,
-- Pilot mit volljährigen Testpersonen,
-- Referenz für die gewünschte spätere Benutzererfahrung.
-
-**Nicht geeignet als:**
-
-- reguläre Plattform für minderjährige Schülerinnen und Schüler,
-- anbieterneutrale Agent Runtime.
-
-**Bewertung:** aktuell die technisch überzeugendste gehostete MCP-Variante, aber wegen der Altersgrenze nicht die allgemeine Schülerlösung.
-
----
-
-### 6.3 LibreChat
-
-#### Was funktioniert
-
-LibreChat ist eine selbst hostbare Open-Source-Chatplattform. Für einen kleinen Pilotbetrieb kann sie per Docker Compose auf einem einzelnen Server betrieben werden. Sie besitzt einen serverseitigen Chat- und Sitzungsspeicher und unterstützt wiederaufnehmbare Streams und geräteübergreifende Chatnutzung.
-
-Für die SkillPilot-Anforderungen sind besonders relevant:
-
-- browserbasierte Spracheingabe,
-- Bild- und Dateiupload für Vision-Modelle,
-- benutzereigene API-Schlüssel,
-- Remote MCP,
-- OAuth 2.0 mit Authorization Code und PKCE,
-- mehrere Modellanbieter.
-
-LibreChat kann damit die Modellkosten über den persönlichen API-Zugang des Lernenden beziehungsweise der Eltern direkt beim Modellanbieter abrechnen.
-
-#### Stand der Standards
-
-Agent Plugins 1.0 wurden im August 2026 als experimentelle Funktion in LibreChat integriert. Das System kann portable Pakete mit `plugin.json`, Skills und `mcp.json` aus einem Betreiberverzeichnis laden.
-
-Die vollständige Unterstützung der offiziellen MCP-Apps-Erweiterung befindet sich dagegen derzeit noch in einem offenen Draft Pull Request und ist noch nicht Bestandteil einer belastbaren regulären Version.
-
-LibreChat besitzt außerdem einen Responses-kompatiblen Zugang zu seinen eigenen Agents. Das ist jedoch nicht dasselbe wie eine nachweislich durchgängige Open-Responses-Schnittstelle zwischen LibreChat und allen dahinterliegenden Modellanbietern.
-
-#### Eignung
-
-**Geeignet als:**
-
-- unmittelbare Testplattform für fünf bis zehn Nutzer,
-- serverseitiger MCP Host,
-- geräteübergreifender Chat,
-- mobile Browseroberfläche,
-- Spracheingabe,
-- Bildanalyse,
-- BYOK-Betrieb,
-- Remote-MCP-Integration.
-
-**Noch nicht belastbar für:**
-
-- vollständige MCP-Apps-Darstellung ohne eigene Anpassungen,
-- vollständig standardisierte Open-Responses-Modellgrenze,
-- produktive Abhängigkeit vom experimentellen Agent-Plugin-Import.
-
-#### Konkrete Verwendung im Pilot
-
-Für den Pilot sollte SkillPilot zunächst auf dem stabilsten Weg angebunden werden:
-
-1. SkillPilot als normalen Remote-MCP-Server in LibreChat konfigurieren.
-2. Skill-Anweisungen über den vorhandenen Skill- beziehungsweise Agent-Mechanismus einbinden.
-3. Das kanonische Agent-Plugin-Paket parallel weiterpflegen.
-4. MCP Apps nicht zur Voraussetzung machen.
-5. Jede SkillPilot-Funktion zunächst vollständig über Text und strukturierte Tool-Ergebnisse nutzbar machen.
-
-**Bewertung:** beste kurzfristige Hauptlösung.
-
----
-
-### 6.4 Archestra
-
-#### Was funktioniert
-
-Archestra ist eine selbst hostbare Open-Source-Plattform mit:
-
-- serverseitiger Agent Runtime,
-- Chatoberfläche,
-- MCP-Unterstützung,
-- MCP Apps,
-- Model Router,
-- `/responses`- und `/chat/completions`-Endpunkten,
-- persönlichen Modellanbieter-Zugangsdaten.
-
-Damit kommt Archestra der langfristigen Zielarchitektur näher als viele klassische Chat-UIs:
-
-```text
-Agent Runtime
-    ├── Responses-basierter Model Router
-    ├── persönliche Provider Keys
-    ├── MCP Client
-    └── MCP Apps Host
-```
-
-#### Aktuelle Einschränkungen
-
-- Die Dokumentation bezeichnet den Model Router als OpenAI-kompatible Responses API. Eine vollständige Konformität zur unabhängigen Open-Responses-Spezifikation sollte separat getestet und nicht nur aus dem Endpunktnamen abgeleitet werden.
-- Eine belastbare Agent-Plugins-v1-Unterstützung ist nicht verifiziert.
-- Mobile Browserqualität, Diktierfunktion und der vollständige Kamera-Workflow sind in den verfügbaren Unterlagen nicht ausreichend belegt.
-- Die Plattform ist stärker auf Unternehmens- und Plattformbetrieb ausgerichtet und komplexer als LibreChat.
-- Das Lizenzmodell ist Open Core; der freie Basisteil steht unter AGPL, während bestimmte Funktionen gesondert lizenziert sein können.
-
-#### Eignung
-
-**Geeignet als:**
-
-- technisches Standardslabor,
-- Testumgebung für MCP Apps,
-- Untersuchung des `/responses`-Model-Routers,
-- möglicher späterer produktiver Host.
-
-**Noch nicht als Hauptpilot verwenden, bevor folgende Punkte praktisch geprüft sind:**
-
-- Smartphone-Bedienung,
-- Diktat,
-- Kamera- und Dateiupload,
-- geräteübergreifende Chats,
-- persönliche Provider Keys,
-- Open-Responses-Konformität,
-- Betriebsaufwand.
-
-**Bewertung:** stärkster paralleler Kandidat für die langfristige Architektur, aber nicht die risikoärmste unmittelbare Schüleroberfläche.
-
----
-
-### 6.5 Open WebUI
-
-Open WebUI besitzt eine breite Modellanbieterunterstützung und experimentelle Responses-API-Funktionen. Eine native, vollständige MCP-Apps-Unterstützung ist jedoch derzeit nicht der stabile Kernweg; dafür wären zusätzliche Bridges oder Erweiterungen nötig.
-
-Damit würde gerade in dem Bereich eigener Integrationscode entstehen, den SkillPilot vermeiden möchte.
-
-**Bewertung:** für dieses Vorhaben derzeit nicht gegenüber LibreChat oder Archestra bevorzugen.
-
----
-
-## 7. Vergleich
-
-| Option | Betrieb der Runtime | Direkte Nutzerabrechnung | Mobile Nutzung | Diktat und Bilder | Remote MCP | MCP Apps UI | Open Responses kontrollierbar | Agent Plugin v1 | Empfehlung |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---|
-| ChatGPT | OpenAI | über ChatGPT-Abo | ja | allgemein ja | ja, planabhängig | Custom Apps derzeit nicht mobil | nein | OpenAI-Produktweg, nicht überall portabel | strategischer Vertriebskanal |
-| Claude | Anthropic | über Claude-Abo | ja | ja | ja | ja | nein | nicht verifiziert | sehr gut für volljährige Tester |
-| LibreChat | selbst/fremd hostbar | BYOK beim Provider | mobile Weboberfläche | ja | ja | noch nicht stabil | nur teilweise | experimentell | **unmittelbarer Pilot** |
-| Archestra | selbst/fremd hostbar | persönliche Provider Keys | zu testen | zu testen | ja | ja | vielversprechend, zu verifizieren | nicht verifiziert | **Standardslabor** |
-| künftiger Managed Host | fremder Betreiber | idealerweise BYOK | gefordert | gefordert | gefordert | gefordert | gefordert | gefordert | langfristiges Ziel |
-
----
-
-## 8. Spracheingabe und Bildanalyse
-
-### 8.1 Spracheingabe
+### 6.1 Spracheingabe
 
 Spracheingabe sollte eine Funktion des Chat-Clients beziehungsweise MCP Hosts sein:
 
@@ -632,9 +542,10 @@ Das hat mehrere Vorteile:
 
 Ein echter kontinuierlicher Voice Mode ist optional. Für den Lernbetrieb reicht zunächst eine zuverlässige Diktierfunktion im Eingabefeld.
 
-### 8.2 Flüchtige Bildanalyse
+### 6.2 Flüchtige Bildanalyse
 
-Für eine kurzfristige Analyse einer fotografierten Aufgabenlösung genügt:
+Für die Analyse einer fotografierten Aufgabenlösung sieht der tatsächliche
+Datenfluss so aus:
 
 ```text
 Kamera / Bild-Upload
@@ -642,17 +553,32 @@ Kamera / Bild-Upload
         ▼
 MCP Host
         │
+        │ Bild beziehungsweise Bilddaten
         ▼
-vision-fähiges Modell
+Model Provider  (vision-fähiges Modell)
         │
-        ├── sprachliche Analyse
-        └── SkillPilot Tool Calls
+        │ Analyseergebnis im Chat
+        ▼
+MCP Host
+        │
+        │ setMastery(goalId, wert)
+        ▼
+SkillPilot Core
 ```
 
-Das Bild wird in diesem Fall nicht an SkillPilot Core übertragen — und zwar nicht
-nur aus Sparsamkeit, sondern weil SkillPilot Core es gar nicht entgegennehmen
-kann. Das Modell analysiert das Bild, bespricht den Fehler im Chat und schreibt
-anschließend nur den **Lernerfolg** zurück.
+Wichtig ist, was dieser Fluss **nicht** behauptet:
+
+> **Bei einem remote betriebenen Vision-Modell übermittelt der MCP Host das Bild
+> an den ausgewählten Model Provider. Das Bild wird weder an den
+> SkillPilot-MCP-Server übertragen noch in SkillPilot Core gespeichert.
+> SkillPilot Core erhält ausschließlich schema-validierte Werte des Lern- und
+> Steuerungszustands.**
+
+Die Grenze verläuft also nicht zwischen Gerät und Host, sondern zwischen
+**Host plus Model Provider** auf der einen und **SkillPilot Core** auf der
+anderen Seite. Nur ein lokal betriebenes Vision-Modell würde das Bild im
+Verantwortungsbereich des Hosts halten; das ist der Ausnahme-, nicht der
+Regelfall.
 
 Was zurückgeschrieben wird, ist genau ein Mastery-Wert zu einem Lernziel:
 
@@ -665,58 +591,50 @@ Was zurückgeschrieben wird, ist genau ein Mastery-Wert zu einem Lernziel:
 ```
 
 Die inhaltliche Beobachtung — welche Aufgabe es war, welchen Fehler die lernende
-Person gemacht hat, wie sicher das Modell war — bleibt im Gespräch beim Host. Sie
-wird nicht als Analyseprotokoll an SkillPilot übergeben. Ein Tool, das ein Feld
-wie `observedAnswer` oder `suspectedError` annähme, gibt es nicht und soll es
-auch nicht geben: Es würde die Lernkommunikation in den Kern ziehen.
+Person gemacht hat, wie sicher das Modell war — bleibt im Gespräch bei Host und
+Model Provider. Sie wird nicht als Analyseprotokoll an SkillPilot übergeben. Ein
+Tool, das ein Feld wie `observedAnswer` oder `suspectedError` annähme, gibt es
+nicht und soll es auch nicht geben: Es würde die Lernkommunikation in den Kern
+ziehen.
 
-### 8.3 Keine dauerhaft gespeicherte Schülerlösung
+### 6.3 Keine dauerhaft gespeicherte Schülerlösung in SkillPilot Core
 
-Eine fotografierte oder ausformulierte Schülerlösung wird **nicht** in SkillPilot
-Core abgelegt. Weder als Bild noch als Text, weder direkt im Tool Call noch über
-einen eigenen Uploadweg.
+Eine fotografierte oder ausformulierte Schülerlösung wird **nicht in SkillPilot
+Core** abgelegt. Weder als Bild noch als Text, weder direkt im Tool Call noch
+über einen eigenen Uploadweg.
 
-Der Ablauf bei einer fotografierten Abituraufgabe ist deshalb durchgehend
-flüchtig:
-
-```text
-Kamera / Bild-Upload
-        │
-        ▼
-MCP Host  ── Bild bleibt hier
-        │
-        ▼
-vision-fähiges Modell
-        │
-        ├── Analyse und Korrektur im Gespräch
-        │
-        └── setMastery(goalId, wert)
-                    │
-                    ▼
-            SkillPilot Core
-            speichert nur den Mastery-Wert
-```
-
-Dauerhaft bleibt davon in SkillPilot Core genau eine Aussage übrig: dass dieses
+Dauerhaft bleibt in SkillPilot Core genau eine Aussage übrig: dass dieses
 Lernziel zu diesem Grad beherrscht wird. Nicht, woran es gezeigt wurde.
 
 Das ist eine bewusste Entscheidung mit einem bewussten Preis:
 
-- Eine Lösung kann später nicht erneut aufgerufen oder nachkorrigiert werden.
+- Eine Lösung kann über SkillPilot später nicht erneut aufgerufen oder nachkorrigiert werden.
 - Es entsteht kein Portfolio und kein belegbarer Lernnachweis im Sinne
   archivierter Schülerarbeit.
 - Ein Wechsel des Chat-Hosts nimmt die frühere Lernkommunikation mit.
 
-Dafür entfallen die schwersten Lasten: kein Object Storage für Schülerarbeit,
-keine Aufbewahrungs- und Löschfristen für personenbezogene Inhalte Minderjähriger,
-keine Herausgabe- und Einsichtsfragen, keine Migration von Binärbeständen beim
-Hostwechsel. Für ein Lernsystem, dessen Kern anbieterneutral und langlebig sein
-soll, ist das der günstigere Tausch.
+#### Die Verantwortung verschwindet nicht, sie wandert
+
+Der naheliegende Fehlschluss wäre, dass mit dem Verzicht auf Speicherung im Kern
+auch die Aufbewahrungs- und Löschfragen entfallen. Für SkillPilot Core stimmt
+das; für das Gesamtsystem nicht:
+
+> **Für SkillPilot Core entfallen Speicherung, Archivierung und Migration von
+> Schülerartefakten. Der MCP Host und der Model Provider bleiben jedoch
+> eigenständige Datenverarbeitungsbereiche. Betreibt enpasos den MCP Host selbst,
+> benötigt dieser eine eigene Regelung für Zugriff, Aufbewahrung, Löschung,
+> Backups und den Umgang mit Chat-Anhängen. SkillPilot Core übernimmt keine
+> Portabilitäts- oder Archivierungsgarantie für die beim Host gespeicherte
+> Lernkommunikation.**
+
+Im Pilot betreibt enpasos den Host selbst. Die Fragen nach Aufbewahrungsfristen,
+Löschung, Backup und Einsicht sind dort also real zu beantworten — Abschnitt 8.2
+führt das aus. Was der Kern gewinnt, ist Schmalheit und Austauschbarkeit, nicht
+Verantwortungsfreiheit für das Gesamtsystem.
 
 Will eine lernende Person eine Lösung behalten, geschieht das außerhalb von
 SkillPilot Core — in der Fotobibliothek des Geräts oder im Anhangspeicher des
-jeweiligen Hosts. SkillPilot verspricht dafür nichts und übernimmt dafür keine
-Verantwortung.
+jeweiligen Hosts.
 
 Tool Calls transportieren entsprechend keine großen Bilder als Base64-Daten. Das
 ist hier keine Optimierung mehr, sondern folgt unmittelbar aus der Regel.
@@ -727,9 +645,17 @@ wäre gesondert zu entscheiden und zu dokumentieren.
 
 ---
 
-## 9. Abrechnungsmodell
+## 7. Abrechnungsmodell und Credential-Eigentum
 
-### 9.1 Fremdbetriebener Host
+Die Grundregel für alle Betriebswege:
+
+> **Providerkonto und Modell-Credentials gehören dem Lernenden beziehungsweise
+> der erziehungsberechtigten Person. Der MCP Host oder dessen Model Access Layer
+> darf die Credentials im Auftrag des Nutzers verwenden. Ein zentraler
+> Betreiber-Key mit anschließender Weiterberechnung an SkillPilot-Nutzer ist
+> ausgeschlossen.**
+
+### 7.1 Fremdbetriebener Host
 
 Bei ChatGPT oder Claude zahlt der Nutzer das jeweilige Consumer-Abonnement direkt an den Plattformanbieter.
 
@@ -741,7 +667,7 @@ Das erfüllt die direkte Abrechnung, führt aber zu einer Bindung an dessen:
 - Altersbedingungen,
 - Plugin-Unterstützung.
 
-### 9.2 Selbst betriebener Host mit BYOK
+### 7.2 Selbst betriebener Host mit BYOK
 
 Beim Open-Source-Host verwendet jeder Nutzer einen eigenen API-Zugang:
 
@@ -754,6 +680,8 @@ Lernender beziehungsweise Elternteil
                  │
                  ▼
         selbst betriebener MCP Host
+        (verwendet den Key im Auftrag,
+         besitzt ihn nicht)
 ```
 
 Der MCP Host führt die Anfrage aus, aber der Provider rechnet über das Konto des Nutzers ab.
@@ -765,7 +693,7 @@ Wichtig ist die Trennung von Consumer- und API-Abonnements:
 
 Für minderjährige Lernende sollte das Providerkonto in der Regel durch Eltern beziehungsweise Erziehungsberechtigte angelegt und mit einer festen Ausgabengrenze versehen werden.
 
-### 9.3 Ausschlusskriterium
+### 7.3 Ausschlusskriterium
 
 Nicht geeignet ist ein Host, der:
 
@@ -777,7 +705,9 @@ Das würde das von SkillPilot zu vermeidende Tokenkosten- und Abrechnungsrisiko 
 
 ---
 
-## 10. Empfohlener Pilotaufbau
+## 8. Pilotarchitektur
+
+### 8.1 Aufbau
 
 ```text
 Internet
@@ -793,7 +723,8 @@ Single Node                 bestehende Infrastruktur
    ├── MongoDB                  ├── MCP Server
    ├── Chat Sessions            ├── OAuth
    ├── User Accounts            └── Learning State
-   ├── User Provider Keys           (nur Lernerfolg)
+   ├── User Provider Keys           (strukturierter Lern-
+   ├── Upload-Volume                 und Steuerungszustand)
    ├── Voice Dictation
    ├── Image Upload
    └── MCP Client
@@ -808,30 +739,57 @@ Für eine Handvoll Testnutzer genügt:
 - MongoDB,
 - geschlossene Registrierung,
 - manuell angelegte Testkonten,
-- tägliche Datenbanksicherung,
 - keine Kubernetes-Infrastruktur,
 - zunächst kein horizontaler Betrieb,
 - kein zusätzlicher Redis-Cluster.
 
 SkillPilot Core bleibt davon getrennt und wird lediglich als Remote-MCP-Server angebunden.
 
-### Pilotkonfiguration
+### 8.2 Persistenz, Sicherung und Löschung
 
-1. Jeder Tester erhält ein Konto im selbst betriebenen Chat-Host.
-2. Jeder Tester beziehungsweise Elternteil hinterlegt einen eigenen Provider-API-Key.
-3. Es werden nur Modelle freigeschaltet, die:
+„Tägliche Datenbanksicherung" reicht als Konzept nicht, sobald Bilder und
+Anhänge in einem eigenen Volume liegen. Der Pilot muss deshalb für jeden dieser
+Bestände ausdrücklich benennen, wo er liegt und wer ihn löscht:
+
+| Bestand | Zu entscheiden |
+| --- | --- |
+| MongoDB (Chats, Nachrichten, Konten) | Sicherungsintervall, Aufbewahrung, Wiederherstellungstest |
+| Upload-Volume (Bilder, Anhänge) | gesichert oder bewusst nicht gesichert; Aufbewahrungs- und Löschfrist |
+| Verschlüsselungsschlüssel für Provider-Credentials und OAuth-Tokens | getrennte Sicherung, Rotationsweg |
+| Konfiguration und Plugin-Paket | versioniert, reproduzierbar wiederherstellbar |
+| Provider-seitige Verarbeitung von Bilddaten | welcher Provider, welche Aufbewahrungsbedingungen |
+
+Zusätzlich ist festzulegen:
+
+- **Löschverhalten:** Was passiert mit Anhängen und Provider-Credentials, wenn
+  ein Chat oder ein Benutzerkonto gelöscht wird?
+- **Zugriff:** Wer im Betreiberteam kann auf Chatinhalte Minderjähriger sehen,
+  und unter welchen Bedingungen?
+
+Das muss kein Compliance-Kapitel werden. Es muss nur klar sein, **welche Daten wo
+liegen und wer sie löscht**.
+
+### 8.3 Pilotkonfiguration
+
+1. **Version Pinning:** LibreChat-Version beziehungsweise Commit, Agent-Plugin-Version und
+   SkillPilot-Plugin-Version werden festgeschrieben. „LibreChat aktuell" ist bei
+   experimentellen Funktionen zu unbestimmt.
+2. Jeder Tester erhält ein Konto im selbst betriebenen Chat-Host.
+3. Jeder Tester beziehungsweise Elternteil hinterlegt einen eigenen Provider-API-Key.
+4. Es werden nur Modelle freigeschaltet, die:
    - Bilder verarbeiten,
    - Tools zuverlässig aufrufen,
    - Streaming unterstützen,
    - deutschsprachige Antworten in ausreichender Qualität erzeugen.
-4. SkillPilot wird nativ als Remote-MCP-Server konfiguriert.
-5. Der SkillPilot Skill wird als Agent- beziehungsweise Skill-Anweisung eingebunden.
-6. MCP Apps werden nur zusätzlich verwendet, sobald der Host sie stabil unterstützt.
-7. Die kritischen Lernabläufe bleiben textbasiert nutzbar.
+5. Der konkrete Vision-Provider und dessen Datenpfad werden protokolliert.
+6. SkillPilot wird nativ als Remote-MCP-Server konfiguriert.
+7. Der SkillPilot Skill wird als Agent- beziehungsweise Skill-Anweisung eingebunden.
+8. MCP Apps werden nur zusätzlich verwendet, sobald der Host sie stabil unterstützt.
+9. Die kritischen Lernabläufe bleiben textbasiert nutzbar.
 
 ---
 
-## 11. Stufenplan
+## 9. Stufenplan
 
 ### Phase 1: Schnittstellen stabilisieren
 
@@ -846,7 +804,7 @@ SkillPilot Core erhält eine hostunabhängige MCP-Schnittstelle mit:
 - `structuredContent`,
 - optionalen MCP-Apps-Ressourcen,
 - klaren Fehlercodes,
-- dauerhaftem Learning State, der ausschließlich Lernerfolg enthält.
+- dauerhaftem Lern- und Steuerungszustand.
 
 Diese Schnittstelle erhält bewusst **kein** Werkzeug zum Hochladen von Bildern,
 Anhängen oder Schülerlösungen. Die Speichergrenze aus Abschnitt 4.2 ist damit
@@ -874,16 +832,15 @@ Ziel:
 
 In dieser Phase ist es akzeptabel, dass LibreChat intern noch providerabhängige Adapter verwendet. SkillPilot selbst bleibt trotzdem entkoppelt, weil seine einzige Verbindung Remote MCP ist.
 
-### Phase 3: Standardslabor mit Archestra
+### Phase 3: Zweiter Kandidat Archestra
 
-Parallel wird geprüft:
+Parallel wird praktisch geprüft:
 
-- `/responses`-Verhalten,
-- Open-Responses-Kompatibilität,
+- `/responses`-Verhalten gegen die offiziellen Open-Responses-Acceptance-Tests,
 - persönliche Provider Keys,
 - MCP Apps,
 - mobile Browserqualität,
-- Bild- und Sprachworkflow,
+- Kameraaufnahme und Diktierfunktion,
 - Agent-Plugin-Import,
 - Betriebsaufwand.
 
@@ -928,7 +885,7 @@ Ein Wechsel vom eigenen Betrieb zu einem fremden Betreiber erfolgt erst, wenn di
 
 ---
 
-## 12. Abnahmetests für jeden MCP Host
+## 10. Abnahmetests für jeden MCP Host
 
 Ein Host darf für SkillPilot erst freigegeben werden, wenn folgende Tests bestehen:
 
@@ -951,18 +908,46 @@ Ein Host darf für SkillPilot erst freigegeben werden, wenn folgende Tests beste
 - Foto direkt mit der Smartphone-Kamera aufnehmen,
 - JPEG und typische Smartphoneformate verarbeiten,
 - handschriftliche Lösung analysieren,
-- nachweisen, dass das Bild den Host nicht verlässt und in SkillPilot Core kein
-  Bild, kein Anhang und kein Lösungstext ankommt,
 - anschließend ein SkillPilot-Tool aufrufen,
-- Bild und Text gemeinsam in einem Turn verarbeiten.
+- Bild und Text gemeinsam in einem Turn verarbeiten,
+- **dokumentieren, an welchen Model Provider das Bild übertragen wird und welche
+  Speicherungs- beziehungsweise Aufbewahrungsbedingungen dort gelten.**
 
-### MCP
+### MCP-Negativtest
+
+Der zentrale Datenschutznachweis. Zu prüfen ist nicht, ob das Bild den Host
+verlässt — das tut es bei einem remote betriebenen Vision-Modell —, sondern was
+bei SkillPilot ankommt:
+
+> **Nachweisen, dass weder Bilddaten noch OCR-Text, Lösungstext, Bild-URL oder
+> modellseitiges Analyseprotokoll in MCP-Toolargumenten, SkillPilot-Logs,
+> SkillPilot-Traces oder der Learning-State-Datenbank erscheinen.**
+
+### Credential-Negativtest
+
+- Provider-API-Schlüssel und MCP-OAuth-Tokens dürfen weder in
+  SkillPilot-Toolargumenten noch in SkillPilot-Logs erscheinen.
+- API-Schlüssel erscheinen nicht in Chatnachrichten.
+
+### MCP und Identität
 
 - OAuth-Anmeldung auf dem Smartphone abschließen,
 - Zugriffstoken erneuern,
 - unterbrochene MCP-Verbindung wiederherstellen,
 - Tool Call eindeutig einem Lernenden zuordnen,
-- keine interne SkillPilot-ID im Modellkontext anzeigen.
+- keine interne SkillPilot-ID im Modellkontext anzeigen; eine opake
+  `learningSessionId` ist dabei ausdrücklich erlaubt (Abschnitt 4.4).
+
+### Idempotenz
+
+- Wiederholte beziehungsweise nach Verbindungsabbrüchen erneut ausgeführte
+  `setMastery`- oder Recall-Schreibaufrufe dürfen nicht zu widersprüchlichen
+  Zuständen führen.
+
+### Löschtest
+
+- Das Löschen eines Chats oder eines Kontos muss das in Abschnitt 8.2 definierte
+  Verhalten für Anhänge und Provider-Credentials auslösen.
 
 ### UI
 
@@ -976,8 +961,13 @@ Ein Host darf für SkillPilot erst freigegeben werden, wenn folgende Tests beste
 - jeder Nutzer verwendet ein eigenes Providerkonto,
 - kein zentraler SkillPilot-API-Key,
 - Modellanbieter rechnet direkt mit Nutzer beziehungsweise Eltern ab,
-- Nutzer kann Ausgaben begrenzen,
-- API-Schlüssel erscheinen nicht in Logs oder Chatnachrichten.
+- Nutzer kann Ausgaben begrenzen.
+
+### Open-Responses-Konformität
+
+- Konformität wird anhand der offiziellen Acceptance Tests und eines
+  SkillPilot-spezifischen Capability-Profils geprüft.
+- Ein Endpunktname `/responses` gilt ausdrücklich nicht als Nachweis.
 
 ### Modellwechsel
 
@@ -995,7 +985,7 @@ Open Responses standardisiert die technische Nachrichtenschnittstelle. Es ersetz
 
 ---
 
-## 13. Endgültige Empfehlung
+## 11. Endgültige Empfehlung
 
 ### Zielarchitektur
 
@@ -1025,7 +1015,7 @@ Dabei werden Agent Plugins und MCP Apps noch nicht als zwingende Laufzeitvorauss
 
 ### Parallelversuch
 
-**Archestra als internes Standardslabor**:
+**Archestra als zweiter Pilotkandidat und Standardslabor**:
 
 - Open-Responses-nahe Modellgrenze,
 - persönliche Provider Keys,
@@ -1038,22 +1028,22 @@ Dabei werden Agent Plugins und MCP Apps noch nicht als zwingende Laufzeitvorauss
 - **ChatGPT:** strategisch wichtigster Distributionskanal, aber nicht als kurzfristig garantierte private mobile Testumgebung.
 - **Künftiger Managed Host:** bevorzugte langfristige Betriebsform, sobald direkte Nutzerabrechnung, Open Responses, Remote MCP, MCP Apps, Agent Plugins und mobile Schülernutzung gemeinsam nachweisbar sind.
 
-Die entscheidende Maßnahme ist daher nicht, schon heute den endgültigen Chat-Host auszuwählen. Entscheidend ist, **SkillPilot Core, seinen Lernzustand und das Agent Plugin so sauber zu trennen, dass der Host später ohne Änderung der didaktischen Kernanwendung ersetzt werden kann**.
+Die entscheidende Maßnahme ist daher nicht, schon heute den endgültigen Chat-Host auszuwählen. Entscheidend ist, **SkillPilot Core, seinen Lern- und Steuerungszustand und das Agent Plugin so sauber zu trennen, dass der Host später ohne Änderung der didaktischen Kernanwendung ersetzt werden kann**.
 
 ---
 
-## 14. Offene Korrekturen für v2
+## 12. Offene Korrekturen für v2
 
 Bekannte Abweichungen zwischen dieser Konzeptfassung und dem gewünschten
 Zielzustand. Sie sind hier festgehalten, damit sie nicht stillschweigend zur
 Architektur werden.
 
-### 14.1 Freitext-Rückmeldung im Verified Recall entfernen
+### 12.1 Freitext-Rückmeldung im Verified Recall entfernen
 
 **Abweichung:** `recordVerifiedRecallResult` nimmt einen Freitextparameter
 entgegen, der als `lastFeedback` im Lernzustand persistiert wird. Damit speichert
 SkillPilot Core eine formulierte Aussage aus der Lernkommunikation und nicht nur
-Lernerfolg.
+strukturierten Lern- und Steuerungszustand.
 
 **Zielzustand in v2:** Das Kartenergebnis besteht ausschließlich aus
 Kennung und Ausgang — `cardId` und bestanden/nicht bestanden. Die Begründung
@@ -1069,6 +1059,280 @@ neue Vertragslinie.
 
 ---
 
+# Teil B — Marktanhang (Stand 19. August 2026)
+
+Dieser Teil bewertet die heute verfügbaren Hosts. Er ist **datiert und
+veränderlich**. Ändert ein Anbieter Pläne, Oberflächen, Altersbedingungen oder
+MCP-Unterstützung, wird nur dieser Teil nachgezogen — Teil A bleibt unberührt.
+
+Die Angaben beruhen auf den Anbieterdokumentationen zum genannten Stand. Vor
+einer Freigabeentscheidung sind sie erneut zu prüfen; die Abnahmetests aus
+Abschnitt 10 ersetzen sie nicht, sondern setzen sie voraus.
+
+## 13. Host-Optionen
+
+### 13.1 ChatGPT
+
+#### Was funktioniert
+
+ChatGPT bietet:
+
+- vollständig gehostete Chat- und Agent-Laufzeit,
+- geräteübergreifende Chatverläufe,
+- mobile und Weboberflächen für den allgemeinen Chat,
+- Spracheingabe und Bildverarbeitung,
+- direkte Abrechnung über das ChatGPT-Konto,
+- einen Plugin-Veröffentlichungs- und Verzeichnisprozess.
+
+#### Aktuelle Einschränkungen
+
+Die Plugin Directory ist derzeit für ChatGPT Web und Desktop beschrieben. Ob ein
+Plugin installiert oder aufgerufen werden kann, hängt von Plan, Workspace, Rolle,
+Oberfläche und Region ab.
+
+Custom MCP Apps im Developer Mode sind ausdrücklich **web-only**. Vollständiges
+MCP mit Schreibaktionen ist gegenwärtig Business sowie Enterprise/Edu
+vorbehalten, während Pro nur einen eingeschränkteren Developer-Mode-Pfad besitzt.
+
+Daraus folgt eine wichtige Präzisierung gegenüber einer pauschalen Zeile
+„mobile Nutzung: ja":
+
+```text
+Mobile Chat-Nutzung:                        ja
+SkillPilot-MCP-/Plugin-Nutzung mobil:       derzeit nicht belastbar nachgewiesen
+Custom MCP Apps im Developer Mode mobil:    nein
+```
+
+ChatGPT unterstützt zwar Sprache und Bilder allgemein, der Live-Sprachmodus unterstützt Plugins beziehungsweise verbundene Apps zunächst nicht vollständig.
+
+Die interne Verbindung zwischen ChatGPT-Agent-Runtime und OpenAI-Modellen ist zudem nicht die von SkillPilot kontrollierte Open-Responses-Grenze.
+
+#### Eignung
+
+**Geeignet als:**
+
+- späterer, fremdbetriebener Vertriebskanal,
+- Zugang für Nutzer mit passendem ChatGPT-Konto,
+- skalierbare Variante nach erfolgreichem Review.
+
+**Nicht geeignet als:**
+
+- kurzfristig garantiert verfügbare private Testumgebung,
+- derzeit verlässliche mobile Custom-MCP-App-Lösung,
+- anbieterneutrale Agent Runtime.
+
+Für Minderjährige gilt bei ChatGPT ein Mindestalter von 13 Jahren; von 13 bis 18 ist die Zustimmung eines Elternteils oder Erziehungsberechtigten erforderlich.
+
+**Bewertung:** strategisch wichtig, aber nicht als alleinige Pilotlösung einplanen.
+
+---
+
+### 13.2 Claude
+
+#### Was funktioniert
+
+Claude unterstützt Remote MCP Connectors und stellt sie über Web-, Desktop- und
+mobile Oberflächen bereit. Interaktive Connectors beziehungsweise MCP Apps werden
+auch unter iOS und Android unterstützt.
+
+Claude bietet außerdem:
+
+- mobile Diktierfunktion, dokumentiert auch für Deutsch,
+- Voice Mode,
+- Bild- und Dateiupload,
+- vom Nutzer bezahlte Claude-Abonnements.
+
+#### Aktuelle Einschränkungen
+
+- Für den **Claude-Consumerdienst** gilt ein Mindestalter von 18 Jahren.
+- Der Nutzer ist an die Claude-Agent-Runtime und Anthropic-Modelle gebunden.
+- Ein Import portabler Agent-Plugins-v1-Pakete ist nicht als belastbarer allgemeiner Produktweg verifiziert.
+- Ein Claude-Abonnement ist nicht automatisch ein Claude-API-Guthaben; Consumer- und API-Abrechnung sind getrennt.
+
+#### Zwei Rollen sauber trennen
+
+Die 18-Jahre-Grenze betrifft den Consumerdienst und darf nicht zu „Anthropic ist
+als Modellanbieter für Schüler ausgeschlossen" verallgemeinert werden:
+
+```text
+Claude als MCP Host:                für minderjährige Schüler nicht geeignet
+Anthropic als Model Provider
+hinter eigenem Host:                grundsätzlich möglich, aber nur nach Prüfung
+                                    und Umsetzung der Minderjährigenschutz-
+                                    anforderungen des Anbieters
+```
+
+Für Betriebsweg B ist Anthropic damit ein zulässiger Modellanbieter, auch wenn
+Claude als Host für die Zielgruppe ausscheidet.
+
+#### Eignung
+
+**Geeignet als:**
+
+- technisch sehr guter gehosteter Remote-MCP-Test,
+- Test von MCP Apps auf mobilen Endgeräten,
+- Pilot mit volljährigen Testpersonen,
+- Referenz für die gewünschte spätere Benutzererfahrung.
+
+**Nicht geeignet als:**
+
+- reguläre Host-Plattform für minderjährige Schülerinnen und Schüler,
+- anbieterneutrale Agent Runtime.
+
+**Bewertung:** aktuell die technisch überzeugendste gehostete MCP-Variante, aber wegen der Altersgrenze nicht die allgemeine Schülerlösung.
+
+---
+
+### 13.3 LibreChat
+
+#### Was funktioniert
+
+LibreChat ist eine selbst hostbare Open-Source-Chatplattform. Für einen kleinen Pilotbetrieb kann sie per Docker Compose auf einem einzelnen Server betrieben werden. Sie besitzt einen serverseitigen Chat- und Sitzungsspeicher und unterstützt wiederaufnehmbare Streams und geräteübergreifende Chatnutzung.
+
+Für die SkillPilot-Anforderungen sind besonders relevant:
+
+- browserbasierte Spracheingabe,
+- Bild- und Dateiupload für Vision-Modelle,
+- nutzerbereitgestellte Modell-API-Schlüssel,
+- Remote MCP einschließlich OAuth Authorization Code mit PKCE und Refresh Tokens,
+- mehrere Modellanbieter.
+
+LibreChat kann damit die Modellkosten über den persönlichen API-Zugang des Lernenden beziehungsweise der Eltern direkt beim Modellanbieter abrechnen.
+
+Für seinen Standard-Bildupload dokumentiert LibreChat ausdrücklich, dass Bilder
+für die native Vision-Verarbeitung **direkt an den Model Provider gesendet**
+werden. Das ist die Belegstelle für den Datenfluss aus Abschnitt 6.2.
+
+Für eine einzelne Instanz ist der Verzicht auf Redis vertretbar; LibreChat sieht
+dafür einen In-Memory-Modus vor.
+
+#### Stand der Standards
+
+Agent Plugins 1.0 wurden im August 2026 als **experimentelle** Funktion in LibreChat integriert. Das System kann portable Pakete mit `plugin.json`, Skills und `mcp.json` aus einem Betreiberverzeichnis laden.
+
+Die offizielle MCP-Apps-Unterstützung liegt weiterhin als **offener Draft Pull Request** vor und ist nicht Bestandteil einer belastbaren regulären Version.
+
+LibreChat besitzt außerdem einen Responses-kompatiblen Zugang zu seinen eigenen Agents. Das ist jedoch nicht dasselbe wie eine nachweislich durchgängige Open-Responses-Schnittstelle zwischen LibreChat und allen dahinterliegenden Modellanbietern.
+
+Weil beide Funktionen experimentell beziehungsweise offen sind, ist eine
+**feste Version beziehungsweise ein bestimmter Commit** Pflicht (Abschnitt 8.3).
+
+#### Eignung
+
+**Geeignet als:**
+
+- unmittelbare Testplattform für fünf bis zehn Nutzer,
+- serverseitiger MCP Host,
+- geräteübergreifender Chat,
+- mobile Browseroberfläche,
+- Spracheingabe,
+- Bildanalyse,
+- BYOK-Betrieb,
+- Remote-MCP-Integration.
+
+**Noch nicht belastbar für:**
+
+- vollständige MCP-Apps-Darstellung ohne eigene Anpassungen,
+- vollständig standardisierte Open-Responses-Modellgrenze,
+- produktive Abhängigkeit vom experimentellen Agent-Plugin-Import.
+
+#### Konkrete Verwendung im Pilot
+
+1. SkillPilot als normalen Remote-MCP-Server in LibreChat konfigurieren.
+2. Skill-Anweisungen über den vorhandenen Skill- beziehungsweise Agent-Mechanismus einbinden.
+3. Das kanonische Agent-Plugin-Paket parallel weiterpflegen.
+4. MCP Apps nicht zur Voraussetzung machen.
+5. Jede SkillPilot-Funktion zunächst vollständig über Text und strukturierte Tool-Ergebnisse nutzbar machen.
+
+**Bewertung:** beste kurzfristige Hauptlösung.
+
+---
+
+### 13.4 Archestra
+
+#### Was funktioniert
+
+Archestra ist eine selbst hostbare Open-Source-Plattform. Dokumentiert sind
+inzwischen:
+
+- eingebauter serverseitiger Chat,
+- Bild-, PDF- und Dateianhänge,
+- persönliche Provider-Keys,
+- ein OpenAI-kompatibler `/responses`-Model-Router über mehrere Provider,
+- nutzergebundener OAuth-Zugriff auf die jeweils persönlichen Provider-Keys,
+- Darstellung von MCP Apps externer MCP Server.
+
+Damit kommt Archestra der langfristigen Zielarchitektur näher als viele klassische Chat-UIs:
+
+```text
+Agent Runtime
+    ├── Responses-basierter Model Router
+    ├── persönliche Provider Keys
+    ├── MCP Client
+    └── MCP Apps Host
+```
+
+#### Aktuelle Einschränkungen
+
+- Der Model Router ist als **OpenAI-kompatible** Responses API dokumentiert, der Providerformate übersetzt. Das ist technisch attraktiv, aber kein Nachweis vollständiger Open-Responses-Konformität; diese ist gegen die offiziellen Acceptance Tests zu prüfen.
+- Eine belastbare Agent-Plugins-v1-Unterstützung ist nicht verifiziert.
+- Die Plattform ist stärker auf Unternehmens- und Plattformbetrieb ausgerichtet und komplexer als LibreChat.
+- Das Lizenzmodell ist Open Core; der freie Basisteil steht unter AGPL, bestimmte Enterprise-Funktionen sind separat lizenziert. Für Organisationen unter 30 Nutzern besteht derzeit eine besondere Nutzungsmöglichkeit für Enterprise-Funktionen.
+
+#### Was noch praktisch zu prüfen ist
+
+```text
+Datei- und Bildanhänge:   dokumentiert
+mobile Kameraaufnahme:    praktisch zu testen
+Diktierfunktion:          nicht ausreichend belegt, praktisch zu testen
+mobile Gesamtqualität:    praktisch zu testen
+Open-Responses-Konformität: gegen Acceptance Tests zu prüfen
+Betriebsaufwand:          praktisch zu ermitteln
+```
+
+**Bewertung:** nicht nur ein abstraktes Standardslabor, sondern ein **ernsthafter
+zweiter Pilotkandidat**. LibreChat bleibt für den unmittelbaren Schülerpilot
+wahrscheinlich risikoärmer, weil Sprach- und mobile Bedienung dort klarer
+dokumentiert sind.
+
+---
+
+### 13.5 Open WebUI
+
+Open WebUI besitzt eine breite Modellanbieterunterstützung und experimentelle Responses-API-Funktionen. Eine native, vollständige MCP-Apps-Unterstützung ist jedoch derzeit nicht der stabile Kernweg; dafür wären zusätzliche Bridges oder Erweiterungen nötig.
+
+Damit würde gerade in dem Bereich eigener Integrationscode entstehen, den SkillPilot vermeiden möchte.
+
+**Bewertung:** für dieses Vorhaben derzeit nicht gegenüber LibreChat oder Archestra bevorzugen.
+
+---
+
+## 14. Vergleichsmatrix
+
+Die Matrix fragt bewusst nicht nach allgemeinen Produktfähigkeiten, sondern
+danach, ob etwas **im SkillPilot-MCP-Workflow** funktioniert. Deshalb sind
+„Mobile Chat UI" und „SkillPilot/MCP mobil" getrennte Zeilen: Eine mobile App zu
+haben bedeutet nicht, dass SkillPilot darin mobil nutzbar ist.
+
+| Kriterium | ChatGPT | Claude | LibreChat | Archestra | Künftiger Managed Host |
+| --- | --- | --- | --- | --- | --- |
+| Betrieb der Runtime | OpenAI | Anthropic | selbst/fremd hostbar | selbst/fremd hostbar | fremder Betreiber |
+| Mobile Chat UI | ja | ja | mobile Weboberfläche | zu testen | gefordert |
+| SkillPilot/MCP mobil | nicht belastbar nachgewiesen | ja | ja | zu testen | gefordert |
+| Diktat im MCP-Chat | Live-Modus eingeschränkt | ja | ja | nicht belegt, zu testen | gefordert |
+| Kamera/Bild im MCP-Chat | ja | ja | ja | Anhänge dokumentiert, Kamera zu testen | gefordert |
+| Geräteübergreifender Chat | ja | ja | ja | dokumentiert | gefordert |
+| Persönliche Provider-Credentials | nein, Plattformkonto | nein, Plattformkonto | BYOK | persönliche Provider Keys | gefordert |
+| Direkte Abrechnung | über ChatGPT-Abo | über Claude-Abo | Provider ↔ Nutzer | Provider ↔ Nutzer | gefordert |
+| Open Responses | nein, intern nicht erzwingbar | nein | nur teilweise | OpenAI-kompatibel, Konformität zu prüfen | gefordert |
+| Remote MCP + OAuth | ja, planabhängig | ja | ja, PKCE + Refresh | ja | gefordert |
+| MCP Apps | Custom Apps web-only | ja, auch mobil | Draft PR, nicht stabil | ja | gefordert, Text-Fallback bleibt Pflicht |
+| Agent Plugins v1 | OpenAI-Produktweg, nicht portabel | nicht verifiziert | experimentell | nicht verifiziert | gefordert |
+| Altersgruppe | ab 13, unter 18 mit Zustimmung | Consumer ab 18 | vom Betreiber bestimmt | vom Betreiber bestimmt | für Zielgruppe zulässig |
+| **Rolle** | strategischer Vertriebskanal | sehr gut für volljährige Tester | **unmittelbarer Pilot** | **zweiter Pilotkandidat** | langfristiges Ziel |
+
+---
+
 ## 15. Verwandte Dokumente
 
 - [Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend](runtime-workflows/provider-neutral-coach-boundary.md)
@@ -1081,10 +1345,10 @@ neue Vertragslinie.
 - [OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
   Identitäts- und Sessionarchitektur hinter Abschnitt 4.4.
 - [Verhaltensintegration des MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
-  Sichtbares Coach-Verhalten und End-to-End-Acceptance hinter Abschnitt 12.
+  Sichtbares Coach-Verhalten und End-to-End-Acceptance hinter Abschnitt 10.
 - [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
   Sicherheitsquelle für Clientbindung, Callback, Scopes und Secret-Lebenszyklus.
 - [ChatGPT-App „SkillPilot Coach v1“](../deploy/openai-mcp-coach-v1.md)
-  Betriebsstand des fremdbetriebenen ChatGPT-Kanals aus Abschnitt 6.1.
+  Betriebsstand des fremdbetriebenen ChatGPT-Kanals aus Abschnitt 13.1.
 - [Claude Coach (pausierte Beta)](../deploy/claude-coach-beta.md)
-  Betriebsstand des Claude-Kanals aus Abschnitt 6.2.
+  Betriebsstand des Claude-Kanals aus Abschnitt 13.2.
