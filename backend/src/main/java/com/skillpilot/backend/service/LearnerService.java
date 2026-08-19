@@ -7263,7 +7263,10 @@ public class LearnerService {
             if (localNext != null) {
                 return localNext;
             }
-            return null;
+            // A finished program segment is not the end of the learning route. The
+            // frontier is already restricted to the current focus and ordered by the
+            // authored target order, so falling through never leaves the focus and never
+            // skips an earlier open goal.
         }
         return frontierAtomic.get(0);
     }
