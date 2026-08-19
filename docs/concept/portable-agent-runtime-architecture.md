@@ -9,7 +9,7 @@ SkillPilot Core sowie der daraus folgende Stufenplan.
 
 Dieses Dokument legt die Richtung fest, nicht den ausgelieferten Vertrag. Die
 verbindlichen Verträge des heutigen Coach-Pfades stehen weiterhin in den
-verlinkten Dokumenten unter [Verwandte Dokumente](#14-verwandte-dokumente); bei
+verlinkten Dokumenten unter [Verwandte Dokumente](#15-verwandte-dokumente); bei
 Abweichungen gelten diese. Host-, Plan- und Altersangaben sind Bewertungen zum
 oben genannten Stand und werden vor einer Freigabe erneut geprüft.
 
@@ -24,6 +24,17 @@ SkillPilot sollte langfristig aus drei unabhängig austauschbaren Bereichen best
 Die zentrale Architekturregel lautet:
 
 > **SkillPilot Core darf weder von einem bestimmten Chat-Host noch von einem bestimmten LLM-Anbieter abhängig sein.**
+
+Gleichrangig daneben steht eine zweite, ebenso verbindliche Regel:
+
+> **SkillPilot Core speichert ausschließlich Lernerfolg. Die Lernkommunikation
+> selbst — Gesprächsverlauf, Formulierungen, Fotos, Anhänge, Schülerlösungen —
+> wird nicht in SkillPilot Core gespeichert.**
+
+Beide Regeln stützen sich gegenseitig: Ein Kern, der keine Gesprächsinhalte
+hält, ist leichter host- und anbieterneutral zu halten, und ein Kern ohne
+Hostbindung darf keine hostspezifischen Inhalte übernehmen. Abschnitt 4.2 führt
+die Regel gegen die tatsächliche MCP-Oberfläche aus.
 
 Für die nächsten Entwicklungsschritte ergibt sich daraus folgende Strategie:
 
@@ -177,14 +188,15 @@ Host-spezifische Erweiterungen dürfen ergänzend vorhanden sein, sollten aber n
                                  │ │                                │ │
                                  │ │ • Lernzielsteuerung            │ │
                                  │ │ • Lernkarten                   │ │
-                                 │ │ • Aufgaben und Bewertungen     │ │
+                                 │ │ • Aufgaben und Bewertungsraster│ │
                                  │ │ • Lernstandsmodell             │ │
                                  │ │ • Curriculare Ontologie        │ │
                                  │ └───────────────┬────────────────┘ │
                                  │                 │                  │
                                  │ ┌───────────────▼────────────────┐ │
                                  │ │ Learning State Database        │ │
-                                 │ │ + optional Object Storage      │ │
+                                 │ │ nur Lernerfolg,                │ │
+                                 │ │ keine Gesprächsinhalte         │ │
                                  │ └────────────────────────────────┘ │
                                  └────────────────────────────────────┘
 ```
@@ -211,18 +223,41 @@ Damit kann der Nutzer denselben Chat auf Smartphone und Desktop fortsetzen.
 
 ### 4.2 Zustand von SkillPilot Core
 
-SkillPilot Core speichert:
+SkillPilot Core speichert **ausschließlich Lernerfolg**, also das Ergebnis des
+Lernens — nicht seinen Verlauf und nicht sein Material:
 
 - Zuordnung zum SkillPilot-Lernenden,
-- Bildungsgang und Lehrplankontext,
-- ausgewählte Lernziele,
-- Kompetenz- und Lernstand,
-- Lernkartenplanung,
-- fällige Wiederholungen,
-- bearbeitete Aufgaben,
-- Bewertungen und Lernnachweise,
-- didaktische Sitzungszustände,
-- gegebenenfalls dauerhaft gespeicherte Schülerlösungen.
+- gewähltes Curriculum und Personalisierung,
+- ausgewählter Lernzielbereich (Scope) und aktives Lernziel,
+- Mastery je Lernziel als Zahlenwert,
+- Lernkartenplanung und fällige Wiederholungen,
+- Verified-Recall-Ergebnis je Karte als bestanden oder nicht bestanden.
+
+Ebenso wichtig ist die Negativliste. SkillPilot Core speichert **nicht**:
+
+- Chatverläufe, Nachrichten oder Formulierungen der lernenden Person,
+- Fotos, Scans, Dateianhänge oder sonstige Binärinhalte,
+- eingereichte Schülerlösungen oder deren Korrekturen,
+- Freitextantworten zu Aufgaben,
+- Analyse- oder Bewertungsprotokolle des Modells.
+
+Diese Grenze ist keine Absicht für später, sondern der heutige Stand: Die
+schreibenden Werkzeuge der MCP-Oberfläche sind `setCurriculum`,
+`setPersonalization`, `setScope`, `setActiveGoal`, `setMastery` und
+`recordVerifiedRecallResult`. Sie nehmen ausschließlich Lernziel-IDs, einen
+Mastery-Zahlenwert und ein bestanden/nicht-bestanden entgegen. Es gibt kein
+Werkzeug, das ein Bild, einen Anhang, eine Lösung oder einen Gesprächsausschnitt
+entgegennimmt.
+
+Eine einzige textuelle Abweichung besteht heute noch: `recordVerifiedRecallResult`
+nimmt eine kurze Rückmeldung entgegen, die als `lastFeedback` beim Kartenergebnis
+abgelegt wird. Sie ist aus dem Recall-Versuch abgeleitet und kein Mitschnitt des
+Gesprächs, aber sie ist Freitext und damit eine Ausnahme von der Regel.
+
+Diese Ausnahme wird **nicht als Bestandteil der Architektur akzeptiert**. Sie ist
+als [Korrektur für v2](#14-offene-korrekturen-fur-v2) vorgemerkt. Bis dahin gilt
+sie als geduldete Altlast: Kein neues Werkzeug und kein neuer Zustand darf sich
+auf sie berufen, und die Negativliste bleibt vollständig gültig.
 
 Der Lernzustand muss unabhängig vom jeweiligen Chat-Host sein.
 
@@ -230,8 +265,11 @@ Ein Lernender kann dann beispielsweise zuerst über LibreChat und später über 
 
 - das aktuelle Lernziel,
 - den bisherigen Lernstand,
-- die nächste fällige Lernkarte,
-- die zuletzt bearbeitete Aufgabe.
+- die nächste fällige Lernkarte.
+
+Was er dort ausdrücklich **nicht** wiederfindet, ist die frühere Lernkommunikation
+selbst: das fotografierte Aufgabenblatt, seine ausformulierte Lösung und den
+Dialog, in dem sie besprochen wurde. Das ist gewollt und keine Lücke.
 
 ### 4.3 Keine hostübergreifende Chatportabilität
 
@@ -243,18 +281,22 @@ Daraus folgt:
 
 Der Chat darf deshalb niemals die einzige Quelle für didaktisch relevanten Zustand sein.
 
-SkillPilot sollte nach wichtigen Schritten selbst einen kompakten Checkpoint speichern, beispielsweise:
+SkillPilot sollte nach wichtigen Schritten selbst einen kompakten Checkpoint
+speichern. Dieser Checkpoint besteht aus Kennungen und Ergebniswerten, nicht aus
+Gesprächsinhalten:
 
 ```text
 learner
-learningSession
 activeGoal
-currentActivity
-masteryEvidence
+masteryValue
 dueItems
-lastAssessment
+lastRecallOutcome
 nextRecommendedAction
 ```
+
+Ein Checkpoint darf ausdrücklich keine Nachrichtenauszüge, keine Lösungstexte und
+keine Verweise auf Bilddateien enthalten. Geht der Chatverlauf verloren, ist der
+Lernerfolg vollständig erhalten und die Lernkommunikation bewusst nicht.
 
 ### 4.4 Identität
 
@@ -607,46 +649,81 @@ vision-fähiges Modell
         └── SkillPilot Tool Calls
 ```
 
-Das Bild muss in diesem Fall nicht an SkillPilot Core übertragen werden. Das Modell analysiert es und übermittelt SkillPilot nur die daraus abgeleiteten strukturierten Informationen.
+Das Bild wird in diesem Fall nicht an SkillPilot Core übertragen — und zwar nicht
+nur aus Sparsamkeit, sondern weil SkillPilot Core es gar nicht entgegennehmen
+kann. Das Modell analysiert das Bild, bespricht den Fehler im Chat und schreibt
+anschließend nur den **Lernerfolg** zurück.
 
-Beispiel:
+Was zurückgeschrieben wird, ist genau ein Mastery-Wert zu einem Lernziel:
 
 ```json
 {
-  "learningGoal": "lineare Funktionen",
-  "taskType": "graph interpretation",
-  "observedAnswer": "m = 2, b = 0",
-  "suspectedError": "y-axis intercept overlooked",
-  "confidence": 0.91
+  "tool": "setMastery",
+  "goalId": "<exakte Lernziel-ID>",
+  "mastery": 0.6
 }
 ```
 
-### 8.3 Dauerhaft gespeicherte Schülerlösung
+Die inhaltliche Beobachtung — welche Aufgabe es war, welchen Fehler die lernende
+Person gemacht hat, wie sicher das Modell war — bleibt im Gespräch beim Host. Sie
+wird nicht als Analyseprotokoll an SkillPilot übergeben. Ein Tool, das ein Feld
+wie `observedAnswer` oder `suspectedError` annähme, gibt es nicht und soll es
+auch nicht geben: Es würde die Lernkommunikation in den Kern ziehen.
 
-Soll eine Abituraufgabenlösung dauerhaft gespeichert, später korrigiert oder als Lernnachweis verwendet werden, darf man sich nicht auf den Anhangspeicher des jeweiligen Hosts verlassen.
+### 8.3 Keine dauerhaft gespeicherte Schülerlösung
 
-Dafür sollte SkillPilot einen eigenen Uploadweg besitzen:
+Eine fotografierte oder ausformulierte Schülerlösung wird **nicht** in SkillPilot
+Core abgelegt. Weder als Bild noch als Text, weder direkt im Tool Call noch über
+einen eigenen Uploadweg.
+
+Der Ablauf bei einer fotografierten Abituraufgabe ist deshalb durchgehend
+flüchtig:
 
 ```text
-SkillPilot Tool: createSubmissionUpload
+Kamera / Bild-Upload
         │
         ▼
-zeitlich begrenzte Upload-URL
+MCP Host  ── Bild bleibt hier
         │
         ▼
-Browser lädt Originalbild direkt
-in SkillPilot Object Storage
+vision-fähiges Modell
         │
-        ▼
-submissionId
+        ├── Analyse und Korrektur im Gespräch
         │
-        ▼
-weitere SkillPilot Tools referenzieren submissionId
+        └── setMastery(goalId, wert)
+                    │
+                    ▼
+            SkillPilot Core
+            speichert nur den Mastery-Wert
 ```
 
-Auf Hosts mit MCP Apps kann die Uploadoberfläche direkt als MCP App angezeigt werden. Auf anderen Hosts wird eine normale SkillPilot-Webseite geöffnet.
+Dauerhaft bleibt davon in SkillPilot Core genau eine Aussage übrig: dass dieses
+Lernziel zu diesem Grad beherrscht wird. Nicht, woran es gezeigt wurde.
 
-Tool Calls sollten keine großen Bilder als Base64-Daten transportieren.
+Das ist eine bewusste Entscheidung mit einem bewussten Preis:
+
+- Eine Lösung kann später nicht erneut aufgerufen oder nachkorrigiert werden.
+- Es entsteht kein Portfolio und kein belegbarer Lernnachweis im Sinne
+  archivierter Schülerarbeit.
+- Ein Wechsel des Chat-Hosts nimmt die frühere Lernkommunikation mit.
+
+Dafür entfallen die schwersten Lasten: kein Object Storage für Schülerarbeit,
+keine Aufbewahrungs- und Löschfristen für personenbezogene Inhalte Minderjähriger,
+keine Herausgabe- und Einsichtsfragen, keine Migration von Binärbeständen beim
+Hostwechsel. Für ein Lernsystem, dessen Kern anbieterneutral und langlebig sein
+soll, ist das der günstigere Tausch.
+
+Will eine lernende Person eine Lösung behalten, geschieht das außerhalb von
+SkillPilot Core — in der Fotobibliothek des Geräts oder im Anhangspeicher des
+jeweiligen Hosts. SkillPilot verspricht dafür nichts und übernimmt dafür keine
+Verantwortung.
+
+Tool Calls transportieren entsprechend keine großen Bilder als Base64-Daten. Das
+ist hier keine Optimierung mehr, sondern folgt unmittelbar aus der Regel.
+
+Sollte später ein echter, archivierter Lernnachweis fachlich gefordert werden,
+ist das eine Änderung dieser Architekturregel und keine bloße Erweiterung. Sie
+wäre gesondert zu entscheiden und zu dokumentieren.
 
 ---
 
@@ -715,8 +792,8 @@ Single Node                 bestehende Infrastruktur
    │                            │
    ├── MongoDB                  ├── MCP Server
    ├── Chat Sessions            ├── OAuth
-   ├── User Accounts            ├── Learning State
-   ├── User Provider Keys       └── optional Object Storage
+   ├── User Accounts            └── Learning State
+   ├── User Provider Keys           (nur Lernerfolg)
    ├── Voice Dictation
    ├── Image Upload
    └── MCP Client
@@ -769,7 +846,11 @@ SkillPilot Core erhält eine hostunabhängige MCP-Schnittstelle mit:
 - `structuredContent`,
 - optionalen MCP-Apps-Ressourcen,
 - klaren Fehlercodes,
-- dauerhaftem Learning State.
+- dauerhaftem Learning State, der ausschließlich Lernerfolg enthält.
+
+Diese Schnittstelle erhält bewusst **kein** Werkzeug zum Hochladen von Bildern,
+Anhängen oder Schülerlösungen. Die Speichergrenze aus Abschnitt 4.2 ist damit
+schon in Phase 1 durch die Toolliste erzwungen und nicht bloß eine Zusage.
 
 Parallel wird das kanonische Agent Plugin gepflegt:
 
@@ -870,6 +951,8 @@ Ein Host darf für SkillPilot erst freigegeben werden, wenn folgende Tests beste
 - Foto direkt mit der Smartphone-Kamera aufnehmen,
 - JPEG und typische Smartphoneformate verarbeiten,
 - handschriftliche Lösung analysieren,
+- nachweisen, dass das Bild den Host nicht verlässt und in SkillPilot Core kein
+  Bild, kein Anhang und kein Lösungstext ankommt,
 - anschließend ein SkillPilot-Tool aufrufen,
 - Bild und Text gemeinsam in einem Turn verarbeiten.
 
@@ -959,7 +1042,34 @@ Die entscheidende Maßnahme ist daher nicht, schon heute den endgültigen Chat-H
 
 ---
 
-## 14. Verwandte Dokumente
+## 14. Offene Korrekturen für v2
+
+Bekannte Abweichungen zwischen dieser Konzeptfassung und dem gewünschten
+Zielzustand. Sie sind hier festgehalten, damit sie nicht stillschweigend zur
+Architektur werden.
+
+### 14.1 Freitext-Rückmeldung im Verified Recall entfernen
+
+**Abweichung:** `recordVerifiedRecallResult` nimmt einen Freitextparameter
+entgegen, der als `lastFeedback` im Lernzustand persistiert wird. Damit speichert
+SkillPilot Core eine formulierte Aussage aus der Lernkommunikation und nicht nur
+Lernerfolg.
+
+**Zielzustand in v2:** Das Kartenergebnis besteht ausschließlich aus
+Kennung und Ausgang — `cardId` und bestanden/nicht bestanden. Die Begründung
+gehört in das Gespräch beim Host, nicht in den Kern.
+
+**Umfang:** Entfernen des Parameters aus der Werkzeugsignatur, Entfernen des
+Feldes aus dem persistierten Kartenzustand, Migration bestehender Einträge sowie
+Nachziehen der abhängigen Prompt- und Vertragsdokumente. Es ist ein
+Contract-Major-Schnitt, keine kompatible Erweiterung, und gehört deshalb in eine
+neue Vertragslinie.
+
+**Bis dahin:** Die Ausnahme bleibt bestehen, wird aber nicht ausgeweitet.
+
+---
+
+## 15. Verwandte Dokumente
 
 - [Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend](runtime-workflows/provider-neutral-coach-boundary.md)
   Kanonische, provider-neutrale Verantwortungsgrenze. Sie ist der verbindliche
