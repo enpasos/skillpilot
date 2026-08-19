@@ -9,6 +9,11 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Levels of Personalization](levels-of-personalization.md)
   Product-level personalization model.
 
+## Platform Strategy
+
+- [Architekturkonzept: SkillPilot mit portabler Agent Runtime](portable-agent-runtime-architecture.md)
+  Strategiekonzept für die Trennung von SkillPilot Core, austauschbarem MCP Host und austauschbarem Model Provider, mit Bewertung der verfügbaren Hosts, Abrechnungsmodell, Stufenplan und Abnahmetests je Host.
+
 ## Skill Graph
 
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
