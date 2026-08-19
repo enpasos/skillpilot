@@ -168,11 +168,11 @@ public class ClaudeV1BindingAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private static String normalizeScope(String requestedScope) {
+        // A client that omits `scope` gets the minimum the connector needs to work. Refresh-token
+        // issuance follows `offline_access`, so it must be asked for and is never granted by
+        // default.
         String effective = requestedScope == null || requestedScope.isBlank()
-                ? String.join(" ",
-                        ClaudeV1Contract.SCOPE_READ,
-                        ClaudeV1Contract.SCOPE_WRITE,
-                        ClaudeV1Contract.SCOPE_OFFLINE_ACCESS)
+                ? String.join(" ", ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE)
                 : requestedScope.trim();
         Set<String> requested = new LinkedHashSet<>(List.of(effective.split("\\s+")));
         if (requested.isEmpty()

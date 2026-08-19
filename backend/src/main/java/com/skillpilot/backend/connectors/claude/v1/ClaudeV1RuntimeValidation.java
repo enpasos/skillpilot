@@ -135,8 +135,8 @@ public final class ClaudeV1RuntimeValidation {
                 600,
                 violations);
         requireRange(
-                properties.getMaxAuthorizeRequestsPerClientPerMinute(),
-                "maxAuthorizeRequestsPerClientPerMinute",
+                properties.getMaxOAuthRequestsPerCallerPerMinute(),
+                "maxOAuthRequestsPerCallerPerMinute",
                 1,
                 300,
                 violations);

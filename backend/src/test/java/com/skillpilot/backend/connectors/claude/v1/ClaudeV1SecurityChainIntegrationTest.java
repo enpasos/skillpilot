@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1BindingService;
 import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -79,6 +80,9 @@ class ClaudeV1SecurityChainIntegrationTest {
 
     @Autowired
     private ClaudeV1ConnectionRepository connectionRepository;
+
+    @Autowired
+    private ClaudeV1BindingService bindingService;
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -251,6 +255,57 @@ class ClaudeV1SecurityChainIntegrationTest {
         assertTrue(location.startsWith(ClaudeV1Contract.DEFAULT_PUBLIC_BASE_URL + "/connect#handle="),
                 () -> "Redirect must use the public origin, was: " + location);
         assertFalse(location.contains(ClaudeV1Contract.INTERNAL_BASE_PATH));
+    }
+
+    @Test
+    void authorizeWithoutAScopeDoesNotGrantOfflineAccess() throws Exception {
+        // Refresh-token issuance follows offline_access. A client that does not ask for it must not
+        // receive it, so the omitted-scope default stays at read + write.
+        HttpResponse<String> response = get(
+                ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH
+                        + "?response_type=code&client_id=" + enc(ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID)
+                        + "&redirect_uri=" + enc(ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK)
+                        + "&state=state-" + System.nanoTime()
+                        + "&code_challenge=" + PKCE_CHALLENGE + "&code_challenge_method=S256"
+                        + "&resource=" + enc(ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL),
+                CLAUDE_HOST);
+
+        assertEquals(302, response.statusCode());
+        String location = response.headers().firstValue("Location").orElse("");
+        String handle = location.substring(location.indexOf("#handle=") + "#handle=".length());
+
+        String scope = bindingService.requirePendingTransaction(
+                java.net.URLDecoder.decode(handle, java.nio.charset.StandardCharsets.UTF_8)).scope();
+
+        assertEquals(
+                ClaudeV1Contract.SCOPE_READ + " " + ClaudeV1Contract.SCOPE_WRITE,
+                scope,
+                "An omitted scope must not silently enable refresh tokens");
+    }
+
+    @Test
+    void authorizeKeepsOfflineAccessWhenItIsExplicitlyRequested() throws Exception {
+        String requested = ClaudeV1Contract.SCOPE_READ
+                + " " + ClaudeV1Contract.SCOPE_WRITE
+                + " " + ClaudeV1Contract.SCOPE_OFFLINE_ACCESS;
+        HttpResponse<String> response = get(
+                ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH
+                        + "?response_type=code&client_id=" + enc(ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID)
+                        + "&redirect_uri=" + enc(ClaudeV1Contract.HOSTED_CLAUDE_AUTH_CALLBACK)
+                        + "&state=state-" + System.nanoTime()
+                        + "&scope=" + enc(requested)
+                        + "&code_challenge=" + PKCE_CHALLENGE + "&code_challenge_method=S256"
+                        + "&resource=" + enc(ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL),
+                CLAUDE_HOST);
+
+        assertEquals(302, response.statusCode());
+        String location = response.headers().firstValue("Location").orElse("");
+        String handle = location.substring(location.indexOf("#handle=") + "#handle=".length());
+
+        String scope = bindingService.requirePendingTransaction(
+                java.net.URLDecoder.decode(handle, java.nio.charset.StandardCharsets.UTF_8)).scope();
+
+        assertEquals(requested, scope);
     }
 
     @Test

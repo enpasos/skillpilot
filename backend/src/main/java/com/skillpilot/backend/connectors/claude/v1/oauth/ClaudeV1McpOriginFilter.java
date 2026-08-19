@@ -15,8 +15,13 @@ final class ClaudeV1McpOriginFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
+        // The raw URI is preferred because framework wrappers can rewrite the path. When it cannot
+        // be resolved, fall back to the container URI rather than filtering every request: the
+        // browser-facing /connect flow carries a normal same-origin Origin header that is not an
+        // allowed MCP origin, and would otherwise be rejected here.
         String rawUri = RawHttpServletRequest.requestUri(request);
-        return rawUri != null && !ClaudeV1Contract.INTERNAL_MCP_PATH.equals(rawUri);
+        String uri = rawUri != null ? rawUri : request.getRequestURI();
+        return !ClaudeV1Contract.INTERNAL_MCP_PATH.equals(uri);
     }
 
     @Override

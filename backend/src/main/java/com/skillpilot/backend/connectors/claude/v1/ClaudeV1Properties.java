@@ -34,7 +34,12 @@ public class ClaudeV1Properties {
     private int maxRequestBodyBytes = 65536;
     private int maxResponseBytes = 262144;
     private int maxToolCallsPerConnectionPerMinute = 60;
-    private int maxAuthorizeRequestsPerClientPerMinute = 30;
+    /**
+     * Abuse budget for the OAuth and connect endpoints, counted per calling peer rather than per
+     * OAuth client: the allowed CIMD client identities are shared by every learner, so a per-client
+     * budget would be a single global bucket. See {@code ClaudeV1OAuthBoundaryFilter}.
+     */
+    private int maxOAuthRequestsPerCallerPerMinute = 30;
 
     public boolean isEnabled() {
         return enabled;
@@ -257,11 +262,11 @@ public class ClaudeV1Properties {
         this.maxToolCallsPerConnectionPerMinute = maxToolCallsPerConnectionPerMinute;
     }
 
-    public int getMaxAuthorizeRequestsPerClientPerMinute() {
-        return maxAuthorizeRequestsPerClientPerMinute;
+    public int getMaxOAuthRequestsPerCallerPerMinute() {
+        return maxOAuthRequestsPerCallerPerMinute;
     }
 
-    public void setMaxAuthorizeRequestsPerClientPerMinute(int maxAuthorizeRequestsPerClientPerMinute) {
-        this.maxAuthorizeRequestsPerClientPerMinute = maxAuthorizeRequestsPerClientPerMinute;
+    public void setMaxOAuthRequestsPerCallerPerMinute(int maxOAuthRequestsPerCallerPerMinute) {
+        this.maxOAuthRequestsPerCallerPerMinute = maxOAuthRequestsPerCallerPerMinute;
     }
 }

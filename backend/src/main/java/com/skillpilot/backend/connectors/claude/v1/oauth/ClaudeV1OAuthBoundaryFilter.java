@@ -30,7 +30,7 @@ final class ClaudeV1OAuthBoundaryFilter extends OncePerRequestFilter {
 
     ClaudeV1OAuthBoundaryFilter(ClaudeV1Properties properties) {
         this.maxRequestsPerMinute = Objects.requireNonNull(properties, "properties")
-                .getMaxAuthorizeRequestsPerClientPerMinute();
+                .getMaxOAuthRequestsPerCallerPerMinute();
     }
 
     @Override
@@ -59,12 +59,31 @@ final class ClaudeV1OAuthBoundaryFilter extends OncePerRequestFilter {
             error(response, HttpServletResponse.SC_BAD_REQUEST, "invalid_request");
             return;
         }
-        if (!tryAcquire(request.getRequestURI() + "|" + request.getRemoteAddr())) {
+        if (!tryAcquire(budgetKey(request))) {
             response.setHeader(HttpHeaders.RETRY_AFTER, "60");
             error(response, 429, "rate_limited");
             return;
         }
         filterChain.doFilter(request, response);
+    }
+
+    /**
+     * Builds the abuse-budget key.
+     *
+     * <p>The two allowed CIMD client identities are shared by the whole user base, so keying on
+     * {@code client_id} alone would put every learner into one bucket. The peer address is the only
+     * pre-authentication identifier that separates callers, so it stays in the key and
+     * {@code client_id} only separates the Claude lanes from each other. The connect endpoints
+     * carry no {@code client_id} and fall back to the address alone.
+     *
+     * <p>Reading the parameter here is safe: {@link ClaudeV1RequestSizeFilter} runs first and
+     * replaces form POSTs with a cached-body request, so the body stays readable downstream.
+     */
+    private String budgetKey(HttpServletRequest request) {
+        String clientId = request.getParameter("client_id");
+        return request.getRequestURI()
+                + "|" + (clientId == null || clientId.isBlank() ? "-" : clientId)
+                + "|" + request.getRemoteAddr();
     }
 
     private boolean requiresFormEncoding(HttpServletRequest request) {
