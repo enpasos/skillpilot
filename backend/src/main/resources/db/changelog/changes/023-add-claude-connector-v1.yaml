@@ -1,0 +1,213 @@
+databaseChangeLog:
+  - changeSet:
+      id: 023-add-claude-connector-v1
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - not:
+            - tableExists:
+                tableName: claude_v1_connection
+        - not:
+            - tableExists:
+                tableName: claude_v1_binding_transaction
+        - not:
+            - tableExists:
+                tableName: claude_v1_idempotency
+      changes:
+        # Durable link between one Claude client authorization and one learner.
+        # skillpilot_id is nullable because revocation clears it while keeping the audit row.
+        - createTable:
+            tableName: claude_v1_connection
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_connection
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(64)
+              - column:
+                  name: learner_id_hash
+                  type: VARCHAR(64)
+              - column:
+                  name: registered_client_id
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_activity_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_claude_v1_conn_learner_hash
+            tableName: claude_v1_connection
+            columns:
+              - column:
+                  name: learner_id_hash
+        - createIndex:
+            indexName: idx_claude_v1_conn_client
+            tableName: claude_v1_connection
+            columns:
+              - column:
+                  name: registered_client_id
+
+        # Short-lived binding handshake. The primary key is the SHA-256 of the one-time handle;
+        # the clear handle is never stored. No permanent learner id lives in this table.
+        - createTable:
+            tableName: claude_v1_binding_transaction
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_binding_transaction
+              - column:
+                  name: oauth_state
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code_challenge
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code_challenge_method
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: registered_client_id
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: redirect_uri
+                  type: VARCHAR(1024)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: scope
+                  type: VARCHAR(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: resource
+                  type: VARCHAR(512)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bound_connection_id
+                  type: VARCHAR(128)
+              - column:
+                  name: status
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        # One authorization request means one binding transaction; a duplicate state must not
+        # create a second, ambiguous row.
+        - addUniqueConstraint:
+            tableName: claude_v1_binding_transaction
+            columnNames: oauth_state
+            constraintName: uq_claude_v1_bind_state
+        - createIndex:
+            indexName: idx_claude_v1_bind_expires
+            tableName: claude_v1_binding_transaction
+            columns:
+              - column:
+                  name: expires_at
+        - addForeignKeyConstraint:
+            baseTableName: claude_v1_binding_transaction
+            baseColumnNames: bound_connection_id
+            referencedTableName: claude_v1_connection
+            referencedColumnNames: id
+            constraintName: fk_claude_v1_bind_connection
+
+        # Exact-once record for mutating tool calls.
+        - createTable:
+            tableName: claude_v1_idempotency
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_idempotency
+              - column:
+                  name: connection_id
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_request_id
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hash
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_payload
+                  type: CLOB
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        # The uniqueness guarantee behind exact-once: two concurrent duplicates cannot both insert.
+        - addUniqueConstraint:
+            tableName: claude_v1_idempotency
+            columnNames: connection_id, client_request_id
+            constraintName: uq_claude_v1_idemp_conn_req
+        - createIndex:
+            indexName: idx_claude_v1_idemp_expires
+            tableName: claude_v1_idempotency
+            columns:
+              - column:
+                  name: expires_at
+        - addForeignKeyConstraint:
+            baseTableName: claude_v1_idempotency
+            baseColumnNames: connection_id
+            referencedTableName: claude_v1_connection
+            referencedColumnNames: id
+            constraintName: fk_claude_v1_idemp_connection
+            onDelete: CASCADE

@@ -68,7 +68,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    maxHeapSize = "1536m"
+    // The suite runs 22 @SpringBootTest classes whose distinct property sets each pin their own
+    // cached Spring context in this one JVM. 1536m stopped being enough when the Claude v1
+    // connector added ten of them, and the executor died with "Java heap space" rather than a
+    // test failure.
+    maxHeapSize = "3g"
 }
 
 tasks.processResources {
