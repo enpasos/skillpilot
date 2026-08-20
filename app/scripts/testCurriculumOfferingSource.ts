@@ -135,7 +135,7 @@ assert.deepEqual(
 const repositorySource = resolveCurriculumOfferingSource({ mode: 'repository' })
 assert.deepEqual(
   getOfferedGymnasiumDurationModels(canonicalMathId, 'DE-HE', repositorySource),
-  [],
+  ['G8', 'G9'],
 )
 assert.deepEqual(
   getOfferedGymnasiumDurationModels(canonicalBiologyId, 'DE-BB', repositorySource),

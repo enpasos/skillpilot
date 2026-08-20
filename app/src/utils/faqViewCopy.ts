@@ -198,6 +198,48 @@ const germanCopy: FaqViewCopy = {
       ],
     },
     {
+      id: 'ask-to-improve',
+      question: 'Was mache ich, wenn ich etwas nicht lesen oder nicht verstehen kann?',
+      paragraphs: [
+        'Sag es dem Coach direkt im Chat. Er schreibt die Stelle dann neu – anders formuliert, einfacher, ausführlicher oder mit einem Beispiel. Nachfragen gehört zum Lernen und zählt nicht als falsche Antwort.',
+        'Das gilt für alles, was dich aufhält: eine Formel, die seltsam dargestellt wird, ein Fachwort, das du noch nicht kennst, ein Satz, der zu kompliziert ist, oder ein Rechenschritt, der zu schnell ging.',
+      ],
+      bullets: [
+        '„Die Formel wird bei mir nicht richtig angezeigt. Schreib sie bitte noch einmal.“',
+        '„Das Wort … kenne ich nicht. Erklär es mir bitte einfacher.“',
+        '„Diesen Schritt habe ich nicht verstanden. Erklär ihn bitte noch einmal langsamer.“',
+        '„Zeig mir das bitte an einem einfachen Beispiel mit Zahlen.“',
+        '„Bitte stell die Aufgabe noch einmal ohne Fachbegriffe.“',
+      ],
+    },
+    {
+      id: 'formula-looks-broken',
+      question: 'Eine Formel erscheint als merkwürdiger Text mit Zeichen wie \\[ oder \\cdot. Was bedeutet das?',
+      paragraphs: [
+        'Das ist ein Anzeigefehler im Chat. Formeln werden in einer Schreibweise übermittelt, die ChatGPT normalerweise in eine gesetzte Formel umwandelt – an dieser Stelle hat die Umwandlung nicht funktioniert. Der Inhalt ist dadurch nicht falsch, nur schlecht lesbar.',
+        'Du musst das nicht entziffern und du hast nichts falsch gemacht. Bitte den Coach einfach, die Formel neu zu schreiben, zum Beispiel: „Die Formel ist bei mir nicht lesbar. Schreib sie bitte noch einmal im Fließtext.“ Danach erscheint sie in aller Regel korrekt.',
+        'Wenn es im selben Chat mehrfach vorkommt, hilft ein Satz für den Rest der Sitzung: „Bitte schreib Formeln in diesem Chat immer im Fließtext.“',
+      ],
+    },
+    {
+      id: 'disagree-with-coach',
+      question: 'Was mache ich, wenn der Coach etwas Falsches sagt oder schlecht erklärt?',
+      paragraphs: [
+        'Widersprich. Sag konkret, was du für falsch hältst und warum – der Coach prüft den Schritt dann noch einmal. Übernimm nichts nur deshalb, weil es überzeugend formuliert ist: eine flüssige Erklärung ist kein Beweis dafür, dass sie stimmt.',
+        'Das gilt besonders für die Bewertung deiner eigenen Lösung. Wenn dein Ergebnis als falsch eingestuft wird, obwohl du es für richtig hältst, zeig deinen Rechenweg und sag das. Ein anderer, gleichwertiger Lösungsweg ist erlaubt – bewertet wird, was du inhaltlich zeigst, nicht die Formulierung.',
+        'Auch wenn nicht der Inhalt, sondern die Art des Unterrichts nicht passt, sag es: zu schnell, zu viel auf einmal, oder eine Lösung, die verraten wurde, bevor du selbst nachdenken konntest.',
+        'Ein begründeter Widerspruch schadet deinem Lernstand nicht. Er zeigt im Gegenteil, dass du den Schritt durchdacht hast.',
+        'Bleibt der Fehler bestehen, oder ist schon die Aufgabe selbst fehlerhaft, dann liegt es nicht am Chat: Schreib in dem Fall an support@skillpilot.com und nenne kurz Fach, Lernziel und was nicht stimmte.',
+      ],
+      bullets: [
+        '„Das halte ich für falsch, weil …“',
+        '„Rechne den Schritt bitte noch einmal nach.“',
+        '„Ich habe anders gerechnet und bekomme … . Prüf bitte, ob mein Weg auch gilt.“',
+        '„Das geht mir zu schnell. Mach bitte kleinere Schritte.“',
+        '„Verrat mir die Lösung bitte noch nicht, gib mir nur einen Tipp.“',
+      ],
+    },
+    {
       id: 'native-app',
       question: 'Warum empfehlen wir derzeit nicht die native ChatGPT-App?',
       paragraphs: [
@@ -361,6 +403,48 @@ const englishCopy: FaqViewCopy = {
       paragraphs: [
         'Yes. If ChatGPT offers uploads in your normal text chat, you can photograph a calculation, diagram, or handwritten solution and upload the image. The coach can then include it in the conversation.',
         'If the chat is running on your computer, open that exact chat on your smartphone in a browser or browser web app and upload the photo there. This keeps using the same SkillPilot learning session ID that was already passed to the chat. A larger screen may then be more comfortable again for longer text, formulas, and visualizations.',
+      ],
+    },
+    {
+      id: 'ask-to-improve',
+      question: 'What should I do if I cannot read or understand something?',
+      paragraphs: [
+        'Tell the coach directly in the chat. It will rewrite the passage – differently worded, simpler, more detailed, or with an example. Asking is part of learning and does not count as a wrong answer.',
+        'This applies to anything that slows you down: a formula that displays oddly, a technical term you do not know yet, a sentence that is too complicated, or a step that went too fast.',
+      ],
+      bullets: [
+        '“That formula is not displaying properly for me. Please write it again.”',
+        '“I do not know the word … . Please explain it more simply.”',
+        '“I did not follow that step. Please explain it again, more slowly.”',
+        '“Please show me a simple example with numbers.”',
+        '“Please restate the task without technical terms.”',
+      ],
+    },
+    {
+      id: 'formula-looks-broken',
+      question: 'A formula shows up as odd text with characters like \\[ or \\cdot. What does that mean?',
+      paragraphs: [
+        'That is a display glitch in the chat. Formulas are sent in a notation that ChatGPT normally turns into typeset mathematics, and here that conversion did not happen. The content is not wrong, just hard to read.',
+        'You do not need to decipher it, and you did nothing wrong. Just ask the coach to write it again, for example: “That formula is unreadable for me. Please write it again as running text.” It usually comes out correctly afterwards.',
+        'If it happens repeatedly in the same chat, one sentence covers the rest of the session: “Please always write formulas as running text in this chat.”',
+      ],
+    },
+    {
+      id: 'disagree-with-coach',
+      question: 'What if the coach says something wrong or explains it badly?',
+      paragraphs: [
+        'Push back. Say specifically what you think is wrong and why – the coach will then check that step again. Do not accept something just because it is confidently worded: a fluent explanation is no proof that it is correct.',
+        'This matters most when your own solution is being judged. If your result is marked wrong and you believe it is right, show your working and say so. A different but equivalent approach is allowed – what counts is the substance of what you show, not the wording.',
+        'Say it too when the problem is not the content but the teaching: too fast, too much at once, or a solution given away before you had a chance to think.',
+        'Disagreeing with good reasons does not hurt your learning record. It shows the opposite – that you thought the step through.',
+        'If the error persists, or the task itself is faulty, it is not a chat problem: write to support@skillpilot.com with the subject, the learning goal, and what was wrong.',
+      ],
+      bullets: [
+        '“I think that is wrong, because …”',
+        '“Please redo that calculation.”',
+        '“I worked it out differently and get … . Please check whether my approach also holds.”',
+        '“That is going too fast for me. Please use smaller steps.”',
+        '“Please do not give away the solution yet, just a hint.”',
       ],
     },
     {

@@ -305,6 +305,7 @@ jobs:
         run: |
           npm run quality:memory-card-review:report:all
           npm run quality:curriculum-status
+          npm run check:curriculum-maturity-floors
           git diff --exit-code -- ../docs/qa-ci/status
           test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
       - name: Prepare generated curriculum runtime assets

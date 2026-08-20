@@ -11,8 +11,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 ## Platform Strategy
 
-- [Architekturkonzept: SkillPilot mit portabler Agent Runtime](portable-agent-runtime-architecture.md)
-  Strategiekonzept für die Trennung von SkillPilot Core, austauschbarem MCP Host und austauschbarem Model Provider, mit Bewertung der verfügbaren Hosts, Abrechnungsmodell, Stufenplan und Abnahmetests je Host.
+- [Architekturkonzept: SkillPilot mit austauschbarem MCP Host](portable-agent-runtime-architecture.md)
+  Strategiekonzept für die Trennung von SkillPilot Core, austauschbarem MCP Host und austauschbarem Model Provider. Teil A ist die normative Architektur mit Zustands- und Datenschutzgrenzen, Abrechnungsmodell, Stufenplan und Abnahmetests; Teil B ist ein datierter Marktanhang zu den verfügbaren Hosts.
 
 ## Skill Graph
 

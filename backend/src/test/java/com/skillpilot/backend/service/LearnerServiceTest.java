@@ -2337,16 +2337,10 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void sequentialAutopilot_doesNotFallBackToGlobalFrontierAfterLocalExamTask() {
+    void sequentialAutopilot_continuesInsideFocusWhenLocalSegmentIsExhausted() {
         Learner learner = new Learner();
         learner.setLearningStrategy("SEQUENTIAL");
-        Map<String, LearningGoal> goals = new HashMap<>();
-        goals.put("ROOT", goal("ROOT", List.of(), List.of("J5_EXAMS", "SEK2")));
-        goals.put("J5_EXAMS", goal("J5_EXAMS", List.of(), List.of("J5_TASK_1", "J5_TASK_2")));
-        goals.put("J5_TASK_1", goal("J5_TASK_1", List.of(), List.of()));
-        goals.put("J5_TASK_2", goal("J5_TASK_2", List.of(), List.of()));
-        goals.put("SEK2", goal("SEK2", List.of(), List.of("SEK2_TASK")));
-        goals.put("SEK2_TASK", goal("SEK2_TASK", List.of(), List.of()));
+        Map<String, LearningGoal> goals = sequentialAutopilotFocusGoals();
 
         FrontierGoal selected = ReflectionTestUtils.invokeMethod(
                 learnerService,
@@ -2357,7 +2351,39 @@ public class LearnerServiceTest {
                 "J5_TASK_1",
                 goals);
 
-        assertThat(selected).isNull();
+        assertThat(selected).isNotNull();
+        assertThat(selected.id()).isEqualTo("SEK2_TASK");
+    }
+
+    @Test
+    void sequentialAutopilot_prefersOpenLocalSiblingOverEarlierFrontierEntry() {
+        Learner learner = new Learner();
+        learner.setLearningStrategy("SEQUENTIAL");
+        Map<String, LearningGoal> goals = sequentialAutopilotFocusGoals();
+        List<FrontierGoal> frontier = List.of(frontierGoal("SEK2_TASK"), frontierGoal("J5_TASK_2"));
+
+        FrontierGoal selected = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "chooseAutopilotFrontierGoal",
+                learner,
+                frontier,
+                frontier,
+                "J5_TASK_1",
+                goals);
+
+        assertThat(selected).isNotNull();
+        assertThat(selected.id()).isEqualTo("J5_TASK_2");
+    }
+
+    private Map<String, LearningGoal> sequentialAutopilotFocusGoals() {
+        Map<String, LearningGoal> goals = new HashMap<>();
+        goals.put("ROOT", goal("ROOT", List.of(), List.of("J5_EXAMS", "SEK2")));
+        goals.put("J5_EXAMS", goal("J5_EXAMS", List.of(), List.of("J5_TASK_1", "J5_TASK_2")));
+        goals.put("J5_TASK_1", goal("J5_TASK_1", List.of(), List.of()));
+        goals.put("J5_TASK_2", goal("J5_TASK_2", List.of(), List.of()));
+        goals.put("SEK2", goal("SEK2", List.of(), List.of("SEK2_TASK")));
+        goals.put("SEK2_TASK", goal("SEK2_TASK", List.of(), List.of()));
+        return goals;
     }
 
     private void completeCurrentScope() {
