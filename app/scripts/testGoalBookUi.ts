@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
@@ -9,6 +10,10 @@ const THIRD_GOAL_ID = '33333333-3333-4333-8333-333333333333'
 const INDEX_PATH = '/lernzielbuch/index.json'
 const MODEL_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json'
 const PDF_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.pdf'
+const PHYSICS_MODEL_PATH = '/lernzielbuch/de-gym-physik-bundesweit.book-model.json'
+const PHYSICS_PDF_PATH = '/lernzielbuch/de-gym-physik-bundesweit.pdf'
+const MATHEMATICS_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -19,10 +24,50 @@ const modelFixture = await readFile(
   fileURLToPath(new URL('./fixtures/goalBookUi.model.json', import.meta.url)),
   'utf8',
 )
-const indexFixture = await readFile(
+const singleBookIndexFixture = await readFile(
   fileURLToPath(new URL('./fixtures/goalBookUi.index.json', import.meta.url)),
   'utf8',
 )
+const physicsModel = JSON.parse(
+  modelFixture.replaceAll(MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID),
+) as Record<string, unknown>
+const physicsBook = physicsModel.book as Record<string, unknown>
+physicsBook.id = 'de-gym-physik-bundesweit'
+physicsBook.title = 'Lernzielbuch Physik – bundesweiter Atlas'
+const physicsSource = physicsModel.source as Record<string, unknown>
+physicsSource.externalLandscapes = [{
+  path: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+  landscapeId: MATHEMATICS_LANDSCAPE_ID,
+  digest: `sha256:${'9'.repeat(64)}`,
+}]
+const physicsPages = physicsModel.pages as Array<Record<string, unknown>>
+const externalPrerequisites = physicsPages[2].externalPrerequisites as Array<Record<string, unknown>>
+externalPrerequisites[0].landscapeId = MATHEMATICS_LANDSCAPE_ID
+const physicsFixture = `${JSON.stringify(physicsModel, null, 2)}\n`
+const physicsFixtureSha256 = `sha256:${createHash('sha256').update(physicsFixture).digest('hex')}`
+const index = JSON.parse(singleBookIndexFixture) as {
+  schemaVersion: 1
+  books: Array<Record<string, unknown>>
+}
+index.books.push({
+  bookId: 'de-gym-physik-bundesweit',
+  title: physicsBook.title,
+  locale: 'de-DE',
+  publicationMode: 'review',
+  pageCount: 3,
+  model: {
+    url: PHYSICS_MODEL_PATH,
+    sha256: physicsFixtureSha256,
+    modelDigest: physicsModel.digest,
+  },
+  pdf: {
+    url: PHYSICS_PDF_PATH,
+    sha256: `sha256:${'e'.repeat(64)}`,
+    renderManifestUrl: `${PHYSICS_PDF_PATH}.render-manifest.json`,
+    renderManifestSha256: `sha256:${'f'.repeat(64)}`,
+  },
+})
+const indexFixture = JSON.stringify(index)
 const server = await startViteTestServer(
   appRoot,
   'scripts/fixtures/goalBookUi.html',
@@ -90,7 +135,8 @@ try {
   const browserErrors: string[] = []
   const requests: Array<{ method: string; pathname: string }> = []
   let indexRequests = 0
-  let modelRequests = 0
+  let mathModelRequests = 0
+  let physicsModelRequests = 0
   let imageRequests = 0
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -111,11 +157,19 @@ try {
     })
   })
   await page.route(`**${MODEL_PATH}`, async (route) => {
-    modelRequests += 1
+    mathModelRequests += 1
     await route.fulfill({
       status: 200,
       contentType: 'application/json; charset=utf-8',
       body: modelFixture,
+    })
+  })
+  await page.route(`**${PHYSICS_MODEL_PATH}`, async (route) => {
+    physicsModelRequests += 1
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json; charset=utf-8',
+      body: physicsFixture,
     })
   })
   await page.route('**/assets/goal-visualizations/goal-book-ui-*.svg', async (route) => {
@@ -132,7 +186,7 @@ try {
   await page.getByRole('heading', { name: 'Brüche addieren und begründen' }).waitFor()
     .catch(async (error: unknown) => {
       throw new Error(
-        `${error instanceof Error ? error.message : String(error)}\nBrowser errors:\n${browserErrors.join('\n')}\nIndex requests: ${indexRequests}; model requests: ${modelRequests}\nPage text:\n${(await page.locator('body').innerText()).slice(0, 4_000)}`,
+        `${error instanceof Error ? error.message : String(error)}\nBrowser errors:\n${browserErrors.join('\n')}\nIndex requests: ${indexRequests}; math model requests: ${mathModelRequests}; physics model requests: ${physicsModelRequests}\nPage text:\n${(await page.locator('body').innerText()).slice(0, 4_000)}`,
       )
     })
 
@@ -168,7 +222,7 @@ try {
   )
 
   assert(
-    indexRequests >= 1 && modelRequests >= 1,
+    indexRequests >= 1 && mathModelRequests >= 1 && physicsModelRequests === 0,
     'the read-only view loads its publication index and bound goal-book model',
   )
   assert(
@@ -286,7 +340,7 @@ try {
     await page.getByTestId('goal-book-page')
       .getByRole('link', { name: /Längen sicher messen/u })
       .getAttribute('href')
-      === 'https://skillpilot.com/lernzielbuch?landscape=test-landscape&edition=curricular-atomic-v1#goal-external-measurement-goal',
+      === 'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external-measurement-goal',
     'an external prerequisite remains a canonical, edition-bound atlas link',
   )
 
@@ -316,6 +370,33 @@ try {
       && await pdfLink.getAttribute('download') !== null,
     'the UI exposes the published PDF as a real download link',
   )
+  const subjectNavigation = page.getByRole('navigation', { name: 'Fach auswählen' })
+  assert(
+    await subjectNavigation.getByRole('link', { name: 'Mathematik', exact: true }).getAttribute('aria-current') === 'page'
+      && await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).count() === 1,
+    'the complete closed publication catalog is presented as a subject selector',
+  )
+  await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).click()
+  await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).waitFor()
+  assert(
+    mathModelRequests >= 1
+      && physicsModelRequests === 1
+      && page.url().includes('?book=de-gym-physik-bundesweit')
+      && await page.getByTestId('goal-book-pdf').getAttribute('href') === PHYSICS_PDF_PATH,
+    'a stable subject deep link loads only the selected physics model and follows it with the physics PDF',
+  )
+  await page.evaluate(() => {
+    window.location.hash = '#goal-external-measurement-goal'
+  })
+  await page.getByRole('heading', { name: 'Lernziel außerhalb dieser Ausgabe' }).waitFor()
+  assert(
+    await page.getByText('Fachliche Herkunft: Mathematik', { exact: true }).count() === 1,
+    'a cross-subject relation identifies mathematics as its bound subject source',
+  )
+  await page.evaluate((goalId) => {
+    window.location.hash = `#goal-${goalId}`
+  }, FIRST_GOAL_ID)
+  await page.getByRole('heading', { name: 'Natürliche Zahlen vergleichen' }).waitFor()
   await page.getByRole('button', { name: 'EN', exact: true }).click()
   assert(
     await page.getByRole('link', { name: /Download PDF/u }).count() === 1
@@ -350,6 +431,7 @@ try {
   const feedbackUrl = new URL(feedbackHref ?? '', 'https://skillpilot.test')
   assert(
     feedbackUrl.pathname === '/lernziel-feedback'
+      && feedbackUrl.searchParams.get('bookId') === 'de-gym-physik-bundesweit'
       && feedbackUrl.searchParams.get('goalId') === FIRST_GOAL_ID
       && feedbackUrl.searchParams.get('edition') === 'curricular-atomic-v1'
       && feedbackUrl.searchParams.get('goalFingerprint')?.startsWith('sha256:') === true

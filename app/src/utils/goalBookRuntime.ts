@@ -1,8 +1,22 @@
-export const GOAL_BOOK_MODEL_URL =
-  '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json'
-export const GOAL_BOOK_PDF_URL =
-  '/lernzielbuch/de-gym-mathematik-bundesweit.pdf'
-export const GOAL_BOOK_INDEX_URL = '/lernzielbuch/index.json'
+import {
+  DEFAULT_GOAL_BOOK_ID,
+  GOAL_BOOK_INDEX_URL,
+  GOAL_BOOK_PUBLICATION_REGISTRY,
+  goalBookDefinitionById,
+  goalBookDefinitionByLandscapeId,
+  goalBookModelUrl,
+  goalBookPdfUrl,
+  goalBookRenderManifestUrl,
+} from './goalBookPublicationRegistry'
+
+const DEFAULT_GOAL_BOOK_DEFINITION = GOAL_BOOK_PUBLICATION_REGISTRY[0]
+const PHYSICS_GOAL_BOOK_DEFINITION = GOAL_BOOK_PUBLICATION_REGISTRY[1]
+
+export const GOAL_BOOK_MODEL_URL = goalBookModelUrl(DEFAULT_GOAL_BOOK_DEFINITION)
+export const GOAL_BOOK_PDF_URL = goalBookPdfUrl(DEFAULT_GOAL_BOOK_DEFINITION)
+export const PHYSICS_GOAL_BOOK_MODEL_URL = goalBookModelUrl(PHYSICS_GOAL_BOOK_DEFINITION)
+export const PHYSICS_GOAL_BOOK_PDF_URL = goalBookPdfUrl(PHYSICS_GOAL_BOOK_DEFINITION)
+export { GOAL_BOOK_INDEX_URL }
 
 const SAFE_GOAL_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,499}$/u
 const SAFE_JURISDICTIONS = new Set([
@@ -27,7 +41,14 @@ export interface GoalBookRuntimeReference {
 export interface GoalBookRuntimeExternalReference {
   goalId: string
   title: string
+  landscapeId?: string
   canonicalUrl: string | null
+}
+
+export interface GoalBookRuntimeExternalLandscapeSource {
+  path: string
+  landscapeId: string
+  digest: string
 }
 
 export interface GoalBookRuntimeChapter {
@@ -105,6 +126,9 @@ export interface GoalBookRuntimeModel {
     publicationMode: 'review' | 'public'
     oneGoalPerPage: true
   }
+  source: {
+    externalLandscapes: GoalBookRuntimeExternalLandscapeSource[]
+  }
   chapters: GoalBookRuntimeChapter[]
   pages: GoalBookRuntimePage[]
   digest: string
@@ -112,6 +136,8 @@ export interface GoalBookRuntimeModel {
 
 export interface GoalBookRuntimePublication {
   bookId: string
+  landscapeId: string
+  edition: string
   title: string
   locale: string
   publicationMode: 'review' | 'public'
@@ -120,6 +146,11 @@ export interface GoalBookRuntimePublication {
   modelSha256: string
   modelDigest: string
   pdfUrl: string
+}
+
+export interface GoalBookRuntimePublicationIndex {
+  schemaVersion: 1
+  books: GoalBookRuntimePublication[]
 }
 
 const record = (value: unknown): Record<string, unknown> | null => (
@@ -168,16 +199,27 @@ const parseInternalReferences = (value: unknown): GoalBookRuntimeReference[] | n
 const parseExternalReferences = (
   value: unknown,
   binding: { landscapeId: string; edition: string; atlasBaseUrl: string },
+  externalLandscapeIds: ReadonlySet<string>,
 ): GoalBookRuntimeExternalReference[] | null => {
   if (!Array.isArray(value) || value.length > MAX_PAGES) return null
   const parsed: GoalBookRuntimeExternalReference[] = []
   for (const item of value) {
     const candidate = record(item)
-    if (!candidate || !exactKeys(candidate, ['goalId', 'title', 'canonicalUrl'])) return null
+    if (!candidate || !exactKeys(candidate, ['goalId', 'title', 'landscapeId', 'canonicalUrl'])) return null
+    const referenceLandscapeId = candidate.landscapeId
     if (
       !nonBlank(candidate.goalId, 500)
       || !SAFE_GOAL_ID.test(candidate.goalId)
       || !nonBlank(candidate.title, 1_000)
+      || !(
+        referenceLandscapeId === undefined
+        || (
+          nonBlank(referenceLandscapeId, 500)
+          && SAFE_GOAL_ID.test(referenceLandscapeId)
+          && referenceLandscapeId !== binding.landscapeId
+          && externalLandscapeIds.has(referenceLandscapeId)
+        )
+      )
       || !(candidate.canonicalUrl === null || nonBlank(candidate.canonicalUrl, 2_000))
     ) return null
     let canonicalUrl: string | null = null
@@ -185,6 +227,9 @@ const parseExternalReferences = (
       try {
         const url = new URL(candidate.canonicalUrl)
         const parameterKeys = [...url.searchParams.keys()]
+        // `landscapeId` records the reference's source landscape. The URL
+        // deliberately stays in the containing book context so its hash can
+        // resolve references that are not pages in the source landscape book.
         if (
           url.origin !== new URL(binding.atlasBaseUrl).origin
           || url.pathname !== new URL(binding.atlasBaseUrl).pathname
@@ -203,9 +248,48 @@ const parseExternalReferences = (
         return null
       }
     }
-    parsed.push({ goalId: candidate.goalId, title: candidate.title, canonicalUrl })
+    parsed.push({
+      goalId: candidate.goalId,
+      title: candidate.title,
+      ...(typeof referenceLandscapeId === 'string' ? { landscapeId: referenceLandscapeId } : {}),
+      canonicalUrl,
+    })
   }
   return parsed
+}
+
+const parseExternalLandscapeSources = (
+  value: unknown,
+  primaryLandscapeId: string,
+): GoalBookRuntimeExternalLandscapeSource[] | null => {
+  if (value === undefined) return []
+  if (!Array.isArray(value) || value.length < 1 || value.length > 100) return null
+  const result: GoalBookRuntimeExternalLandscapeSource[] = []
+  const paths = new Set<string>()
+  const landscapeIds = new Set<string>()
+  for (const item of value) {
+    const candidate = record(item)
+    if (
+      !candidate
+      || !exactKeys(candidate, ['path', 'landscapeId', 'digest'])
+      || !nonBlank(candidate.path, 2_000)
+      || !nonBlank(candidate.landscapeId, 500)
+      || !SAFE_GOAL_ID.test(candidate.landscapeId)
+      || candidate.landscapeId === primaryLandscapeId
+      || !nonBlank(candidate.digest, 71)
+      || !SAFE_SHA256.test(candidate.digest)
+      || paths.has(candidate.path)
+      || landscapeIds.has(candidate.landscapeId)
+    ) return null
+    paths.add(candidate.path)
+    landscapeIds.add(candidate.landscapeId)
+    result.push({
+      path: candidate.path,
+      landscapeId: candidate.landscapeId,
+      digest: candidate.digest,
+    })
+  }
+  return result
 }
 
 const isSafeVisualizationPath = (value: string): boolean => {
@@ -351,6 +435,15 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
   ensure(rawBook.publicationMode === 'review' || rawBook.publicationMode === 'public')
   ensure(rawBook.oneGoalPerPage === true)
 
+  const rawSource = record(root.source)
+  ensure(rawSource !== null)
+  const externalLandscapes = parseExternalLandscapeSources(
+    rawSource.externalLandscapes,
+    rawBook.landscapeId,
+  )
+  ensure(externalLandscapes !== null)
+  const externalLandscapeIds = new Set(externalLandscapes.map(({ landscapeId }) => landscapeId))
+
   ensure(Array.isArray(root.pages))
   ensure(root.pages.length === rawBook.pageCount)
   const pages: GoalBookRuntimePage[] = []
@@ -366,8 +459,16 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
       edition: rawBook.edition,
       atlasBaseUrl: rawBook.atlasBaseUrl,
     } as { landscapeId: string; edition: string; atlasBaseUrl: string }
-    const externalPrerequisites = parseExternalReferences(page.externalPrerequisites, externalBinding)
-    const externalReverseRequires = parseExternalReferences(page.externalReverseRequires, externalBinding)
+    const externalPrerequisites = parseExternalReferences(
+      page.externalPrerequisites,
+      externalBinding,
+      externalLandscapeIds,
+    )
+    const externalReverseRequires = parseExternalReferences(
+      page.externalReverseRequires,
+      externalBinding,
+      externalLandscapeIds,
+    )
     const applicability = parseApplicability(page.applicability)
     const visualization = parseVisualization(page.visualization)
     const evidenceReview = parseEvidenceReview(page.evidenceReview)
@@ -473,6 +574,7 @@ export const parseGoalBookRuntimeModel = (value: unknown): GoalBookRuntimeModel 
       publicationMode: rawBook.publicationMode,
       oneGoalPerPage: true,
     },
+    source: { externalLandscapes },
     chapters,
     pages,
     digest: root.digest,
@@ -501,42 +603,98 @@ export const parseVerifiedGoalBookRuntimeModel = async (
   }
 }
 
-export const parseGoalBookPublicationIndex = (value: unknown): GoalBookRuntimePublication => {
+export const parseGoalBookPublicationIndex = (value: unknown): GoalBookRuntimePublicationIndex => {
   const root = record(value)
   ensure(root !== null)
   ensure(exactKeys(root, ['schemaVersion', 'books']))
   ensure(root.schemaVersion === 1)
-  ensure(Array.isArray(root.books) && root.books.length === 1)
-  const book = record(root.books[0])
-  ensure(book !== null)
-  ensure(exactKeys(book, ['bookId', 'title', 'locale', 'publicationMode', 'pageCount', 'model', 'pdf']))
-  ensure(nonBlank(book.bookId, 500))
-  ensure(nonBlank(book.title, 1_000))
-  ensure(nonBlank(book.locale, 50))
-  ensure(book.publicationMode === 'review' || book.publicationMode === 'public')
-  ensure(typeof book.pageCount === 'number' && Number.isSafeInteger(book.pageCount) && book.pageCount >= 1)
-  const model = record(book.model)
-  const pdf = record(book.pdf)
-  ensure(model !== null && exactKeys(model, ['url', 'sha256', 'modelDigest']))
-  ensure(pdf !== null && exactKeys(pdf, ['url', 'sha256', 'renderManifestUrl', 'renderManifestSha256']))
-  ensure(model.url === GOAL_BOOK_MODEL_URL)
-  ensure(pdf.url === GOAL_BOOK_PDF_URL)
-  ensure(typeof model.sha256 === 'string' && SAFE_SHA256.test(model.sha256))
-  ensure(typeof model.modelDigest === 'string' && SAFE_SHA256.test(model.modelDigest))
-  ensure(typeof pdf.sha256 === 'string' && SAFE_SHA256.test(pdf.sha256))
-  ensure(typeof pdf.renderManifestUrl === 'string' && pdf.renderManifestUrl.startsWith('/lernzielbuch/'))
-  ensure(typeof pdf.renderManifestSha256 === 'string' && SAFE_SHA256.test(pdf.renderManifestSha256))
-  return {
-    bookId: book.bookId,
-    title: book.title,
-    locale: book.locale,
-    publicationMode: book.publicationMode,
-    pageCount: book.pageCount,
-    modelUrl: model.url,
-    modelSha256: model.sha256,
-    modelDigest: model.modelDigest,
-    pdfUrl: pdf.url,
+  ensure(
+    Array.isArray(root.books)
+    && root.books.length === GOAL_BOOK_PUBLICATION_REGISTRY.length,
+  )
+  const publications: GoalBookRuntimePublication[] = []
+  const seenBookIds = new Set<string>()
+  let previousRegistryIndex = -1
+  for (const item of root.books) {
+    const book = record(item)
+    ensure(book !== null)
+    ensure(exactKeys(book, ['bookId', 'title', 'locale', 'publicationMode', 'pageCount', 'model', 'pdf']))
+    ensure(nonBlank(book.bookId, 500))
+    const definition = goalBookDefinitionById(book.bookId)
+    ensure(definition !== undefined)
+    const registryIndex = GOAL_BOOK_PUBLICATION_REGISTRY.findIndex(
+      (candidate) => candidate.bookId === definition.bookId,
+    )
+    ensure(registryIndex > previousRegistryIndex && !seenBookIds.has(book.bookId))
+    previousRegistryIndex = registryIndex
+    seenBookIds.add(book.bookId)
+    ensure(nonBlank(book.title, 1_000))
+    ensure(nonBlank(book.locale, 50))
+    ensure(book.publicationMode === 'review' || book.publicationMode === 'public')
+    ensure(typeof book.pageCount === 'number' && Number.isSafeInteger(book.pageCount) && book.pageCount >= 1)
+    const model = record(book.model)
+    const pdf = record(book.pdf)
+    ensure(model !== null && exactKeys(model, ['url', 'sha256', 'modelDigest']))
+    ensure(pdf !== null && exactKeys(pdf, ['url', 'sha256', 'renderManifestUrl', 'renderManifestSha256']))
+    ensure(model.url === goalBookModelUrl(definition))
+    ensure(pdf.url === goalBookPdfUrl(definition))
+    ensure(pdf.renderManifestUrl === goalBookRenderManifestUrl(definition))
+    ensure(typeof model.sha256 === 'string' && SAFE_SHA256.test(model.sha256))
+    ensure(typeof model.modelDigest === 'string' && SAFE_SHA256.test(model.modelDigest))
+    ensure(typeof pdf.sha256 === 'string' && SAFE_SHA256.test(pdf.sha256))
+    ensure(typeof pdf.renderManifestSha256 === 'string' && SAFE_SHA256.test(pdf.renderManifestSha256))
+    publications.push({
+      bookId: book.bookId,
+      landscapeId: definition.landscapeId,
+      edition: definition.edition,
+      title: book.title,
+      locale: book.locale,
+      publicationMode: book.publicationMode,
+      pageCount: book.pageCount,
+      modelUrl: model.url,
+      modelSha256: model.sha256,
+      modelDigest: model.modelDigest,
+      pdfUrl: pdf.url,
+    })
   }
+  return { schemaVersion: 1, books: publications }
+}
+
+export const selectGoalBookPublication = (
+  index: GoalBookRuntimePublicationIndex,
+  search: string,
+): GoalBookRuntimePublication => {
+  const params = new URLSearchParams(search)
+  const requestedBookIds = params.getAll('book')
+  const requestedLandscapeIds = params.getAll('landscape')
+  const requestedEditions = params.getAll('edition')
+  ensure(
+    requestedBookIds.length <= 1
+    && requestedLandscapeIds.length <= 1
+    && requestedEditions.length <= 1,
+  )
+  const requestedBookDefinition = requestedBookIds.length === 1
+    ? goalBookDefinitionById(requestedBookIds[0])
+    : undefined
+  const requestedLandscapeDefinition = requestedLandscapeIds.length === 1
+    ? goalBookDefinitionByLandscapeId(requestedLandscapeIds[0])
+    : undefined
+  if (requestedBookIds.length === 1) ensure(requestedBookDefinition !== undefined)
+  if (requestedLandscapeIds.length === 1) ensure(requestedLandscapeDefinition !== undefined)
+  if (requestedBookDefinition && requestedLandscapeDefinition) {
+    ensure(requestedBookDefinition.bookId === requestedLandscapeDefinition.bookId)
+  }
+  const selectedBookId = requestedBookDefinition?.bookId
+    ?? requestedLandscapeDefinition?.bookId
+    ?? DEFAULT_GOAL_BOOK_ID
+  const selectedDefinition = goalBookDefinitionById(selectedBookId)
+  ensure(selectedDefinition !== undefined)
+  if (requestedEditions.length === 1) {
+    ensure(requestedEditions[0] === selectedDefinition.edition)
+  }
+  const publication = index.books.find(({ bookId }) => bookId === selectedBookId)
+  ensure(publication !== undefined)
+  return publication
 }
 
 export const assertGoalBookPublicationBinding = (
@@ -544,6 +702,8 @@ export const assertGoalBookPublicationBinding = (
   model: GoalBookRuntimeModel,
 ): void => {
   ensure(model.book.id === publication.bookId)
+  ensure(model.book.landscapeId === publication.landscapeId)
+  ensure(model.book.edition === publication.edition)
   ensure(model.book.title === publication.title)
   ensure(model.book.locale === publication.locale)
   ensure(model.book.publicationMode === publication.publicationMode)

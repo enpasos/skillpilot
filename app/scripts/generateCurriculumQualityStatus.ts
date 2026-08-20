@@ -678,6 +678,7 @@ interface MemoryCardReviewConfig {
   reviewPath: string
   cardReviewPath?: string
   reportPath?: string
+  visibilityScopeCoverageRequired?: boolean
   visibilityScopes?: MemoryVisibilityScope[]
   scope: {
     label: string
@@ -2554,8 +2555,35 @@ function collectMemoryVisibilityReport(
     missingVisibleMemoryGoals: 0,
     errors: [],
   }
+  const configuredScopes = Array.isArray(config.visibilityScopes) ? config.visibilityScopes : []
+  const memoryRequiredRecords = currentRecords.filter((record) => record.status === 'memory_required')
+  const coveredMemoryRequiredGoalIds = new Set<string>()
+  const visibleMemoryGoalIdsAcrossScopes = new Set<string>()
 
-  ;(config.visibilityScopes ?? []).forEach((scope) => {
+  if (config.visibilityScopes !== undefined && !Array.isArray(config.visibilityScopes)) {
+    report.errors.push(`${config.reviewId}: visibilityScopes must be an array`)
+  }
+  if (
+    config.visibilityScopeCoverageRequired !== undefined
+    && typeof config.visibilityScopeCoverageRequired !== 'boolean'
+  ) {
+    report.errors.push(`${config.reviewId}: visibilityScopeCoverageRequired must be a boolean`)
+  }
+  if (config.visibilityScopeCoverageRequired === true && configuredScopes.length === 0) {
+    report.errors.push(
+      `${config.reviewId}: visibilityScopeCoverageRequired requires at least one visibilityScopes entry`,
+    )
+  }
+
+  configuredScopes.forEach((scope, index) => {
+    if (!scope || typeof scope.label !== 'string' || !scope.label.trim()) {
+      report.errors.push(`${config.reviewId}: visibilityScopes[${index}].label must be a non-empty string`)
+      return
+    }
+    if (typeof scope.viewPath !== 'string' || !scope.viewPath.trim()) {
+      report.errors.push(`${config.reviewId}: visibilityScopes[${index}].viewPath must be a non-empty string`)
+      return
+    }
     report.scopes += 1
     const { visibleGoalIds, errors } = collectCompositionViewVisibleGoalIds(scope.viewPath, goalById)
     const visibleMemoryGoalIds = new Set(Array.from(visibleGoalIds)
@@ -2563,9 +2591,10 @@ function collectMemoryVisibilityReport(
         const goal = goalById.get(goalId)
         return !!goal && isMemoryGoal(goal)
       }))
-    const memoryRequiredInView = currentRecords
-      .filter((record) => record.status === 'memory_required')
+    visibleMemoryGoalIds.forEach((goalId) => visibleMemoryGoalIdsAcrossScopes.add(goalId))
+    const memoryRequiredInView = memoryRequiredRecords
       .filter((record) => visibleGoalIds.has(record.goalId))
+    memoryRequiredInView.forEach((record) => coveredMemoryRequiredGoalIds.add(record.goalId))
     const missingVisibleMemoryGoalRecords = memoryRequiredInView
       .filter((record) => !(record.memoryGoalIds ?? []).some((memoryGoalId) => visibleMemoryGoalIds.has(memoryGoalId)))
 
@@ -2578,6 +2607,23 @@ function collectMemoryVisibilityReport(
     report.checkedMemoryRequiredGoals += memoryRequiredInView.length
     report.missingVisibleMemoryGoals += missingVisibleMemoryGoalRecords.length
   })
+
+  if (config.visibilityScopeCoverageRequired === true) {
+    memoryRequiredRecords
+      .filter((record) => !coveredMemoryRequiredGoalIds.has(record.goalId))
+      .forEach((record) => report.errors.push(
+        `${config.reviewId}: visibility coverage required: ${formatGoal(goalById.get(record.goalId), record.goalId)} is not visible in any configured scope`,
+      ))
+    const referencedMemoryGoalIds = new Set(memoryRequiredRecords
+      .flatMap((record) => record.memoryGoalIds ?? []))
+    referencedMemoryGoalIds.forEach((memoryGoalId) => {
+      if (!visibleMemoryGoalIdsAcrossScopes.has(memoryGoalId)) {
+        report.errors.push(
+          `${config.reviewId}: visibility coverage required: referenced memory goal ${formatGoal(goalById.get(memoryGoalId), memoryGoalId)} is not visible in any configured scope`,
+        )
+      }
+    })
+  }
 
   return report
 }

@@ -420,6 +420,8 @@ const feedbackUrl = (
     throw new Error('feedbackBaseUrl must not contain credentials or a fragment')
   }
   const reservedParameters = new Set([
+    'bookid',
+    'edition',
     'goalid',
     'goalfingerprint',
     'pagefingerprint',
@@ -434,6 +436,8 @@ const feedbackUrl = (
       throw new Error(`feedbackBaseUrl contains reserved or privacy-sensitive parameter ${parameter}`)
     }
   }
+  url.searchParams.set('bookId', model.book.id)
+  url.searchParams.set('edition', model.book.edition)
   url.searchParams.set('goalId', goal.goalId)
   url.searchParams.set('goalFingerprint', goal.goalFingerprint)
   url.searchParams.set('pageFingerprint', goal.pageFingerprint)
@@ -1248,16 +1252,21 @@ ${pages}
 const optionsWithPreparedAssetMetadata = (
   options: GoalBookPdfOptions,
   assets: ReadonlyMap<string, PreparedGoalBookAsset>,
-): GoalBookPdfOptions => ({
-  ...options,
-  renderedVisualizationByUrl: Object.fromEntries([...assets.values()].map((asset) => [
-    asset.publicPath,
-    {
-      digest: asset.renderedSha256,
-      profile: GOAL_BOOK_PRINT_DERIVATIVE_POLICY.version,
-    },
-  ])),
-})
+): GoalBookPdfOptions => {
+  const printDerivativePolicy = printDerivativePolicyForProfile(
+    options.printDerivativeProfile,
+  )
+  return {
+    ...options,
+    renderedVisualizationByUrl: Object.fromEntries([...assets.values()].map((asset) => [
+      asset.publicPath,
+      {
+        digest: asset.renderedSha256,
+        profile: printDerivativePolicy.version,
+      },
+    ])),
+  }
+}
 
 const createGoalBookRenderManifest = (
   model: GoalBookModel,

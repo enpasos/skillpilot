@@ -30,14 +30,17 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | kept primary cards with origin trace | 148 |
 | cards removed from active decks | 15 |
 | memory goals traced | 5/5 |
-| composition visibility scopes | 0 |
-| memory-required goals checked in views | 0 |
+| composition visibility scopes | 2 |
+| memory-required goals checked in views | 254 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
 ## Composition Visibility
 
-Keine view-spezifische Memory-Erreichbarkeitsprüfung konfiguriert.
+| Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
+| --- | --- | --- | --- | --- | --- |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 458 | 5 | 127 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 458 | 5 | 127 | 0 |
 
 ## Memory-Required Goals
 
