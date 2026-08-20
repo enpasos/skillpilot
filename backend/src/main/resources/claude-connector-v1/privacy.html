@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none';">
+  <meta name="referrer" content="no-referrer">
+  <title>SkillPilot Claude Connector — Datenschutzerklärung</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 { color: #38bdf8; font-size: 2rem; margin-bottom: 8px; }
+    h2 { color: #94a3b8; font-size: 1.3rem; margin-top: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+    p, li { color: #cbd5e1; font-size: 1rem; }
+    .badge { display: inline-block; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-weight: 600; margin-bottom: 16px; }
+    a { color: #38bdf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .box { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; margin: 24px 0; }
+  </style>
+</head>
+<body>
+  <div class="badge">Stand: August 2026</div>
+  <h1>Datenschutzerklärung — SkillPilot Claude Connector v1</h1>
+  <p>Diese Datenschutzerklärung informiert über die Verarbeitung personenbezogener bzw. pseudonymer Daten bei der Nutzung des SkillPilot Claude Connectors.</p>
+
+  <div class="box">
+    <strong>Wichtiger Hinweis zum Mindestalter (18+):</strong><br>
+    Die Nutzung dieses Connectors über Claude.ai / Anthropic richtet sich nach den Nutzungsbedingungen von Anthropic ausschließlich an volljährige Personen (ab 18 Jahren).
+  </div>
+
+  <h2>1. Verantwortliche Stelle</h2>
+  <p>Verantwortlich für die Datenverarbeitung auf den Systemen von SkillPilot ist die enpasos – Enterprise Patterns &amp; Solutions GmbH, Heuhohlweg 42, D-61462 Königstein. Datenschutzanfragen: <a href="mailto:support@skillpilot.com">support@skillpilot.com</a>.</p>
+
+  <h2>2. Zweck und Funktionsweise der Datenverarbeitung</h2>
+  <p>Der SkillPilot Claude Connector ermöglicht es volljährigen Lernenden, ihren bestehenden pseudonymen SkillPilot-Lernstand in Anthropic Claude für personalisiertes KI-Coaching zu nutzen.</p>
+  <ul>
+    <li><strong>Clientseitige Entschlüsselung:</strong> Ihre ID-Datei (.skillpilot) wird ausschließlich lokal im Browser mittels PBKDF2/AES-GCM entschlüsselt. Ihr Passwort und der verschlüsselte Dateiinhalt werden zu keinem Zeitpunkt an unsere Server übertragen.</li>
+    <li><strong>Pseudonyme Bindung:</strong> Nach der Entschlüsselung wird Ihre SkillPilot-ID über eine gesicherte TLS-Verbindung an das Backend übermittelt und an ein opakes, zufälliges Claude-Verbindungs-Subject gebunden.</li>
+    <li><strong>Keine Weitergabe der permanenten ID:</strong> Claude und Anthropic erhalten zu keinem Zeitpunkt Ihre permanente SkillPilot-ID, sondern ausschließlich opake OAuth- bzw. Ablauf-Tokens und lernbezogene Zustandsprojektionen.</li>
+  </ul>
+
+  <h2>3. An Claude übermittelte Daten</h2>
+  <p>Während einer Coaching-Sitzung in Claude ruft das System über standardisierte MCP-Tools projektbezogene Lernstandsdaten ab:</p>
+  <ul>
+    <li>Aktuelles Thema und Lernziele des gewählten Curriculums</li>
+    <li>Lernstand und Mastery-Werte (ohne persönliche Klartextidentifikatoren)</li>
+    <li>Ergebnisse von Überprüfungen (Verified Recall / Prüfungsbewertungen)</li>
+  </ul>
+
+  <h2>4. Speicherdauer und Widerruf (Revocation)</h2>
+  <p>OAuth-Access-Token sind kurzlebig; die derzeit vorgesehene Gültigkeit beträgt höchstens eine Stunde. Refresh-Tokens rotieren bei jeder Nutzung und sind derzeit höchstens 30 Tage gültig. Offene Binding-Transaktionen werden nach höchstens fünf Minuten, technische Idempotenznachweise nach höchstens 24 Stunden ungültig. Abgelaufene Datensätze werden bei nachfolgenden Connector-Vorgängen bereinigt; beim Widerruf werden die zur Verbindung gehörenden Binding- und Idempotenzdatensätze unmittelbar entfernt.</p>
+  <p>Sie können die Verbindung über die von Claude aufgerufene OAuth-Revocation-Schnittstelle trennen. Dabei werden die OAuth-Autorisierung und kurzfristige Idempotenzdaten entfernt, die Verbindung gesperrt und der Bezug zur permanenten SkillPilot-ID einschließlich des Audit-Hashes gelöscht. Ein nicht-identifizierbarer Sperrdatensatz mit Verbindungs-ID, Clienttyp und Zeitstempeln bleibt bestehen, damit eine widerrufene Verbindung nicht wiederverwendet werden kann. Der eigentliche SkillPilot-Lernstand und Verbindungen anderer Anbieter bleiben unverändert.</p>
+
+  <h2>5. Datenverarbeitung durch Anthropic</h2>
+  <p>Für die Datenverarbeitung innerhalb von Claude (Prompts, Antworten, Chatverlauf) gelten zusätzlich die Nutzungsbedingungen und Datenschutzbestimmungen der Anthropic PBC.</p>
+</body>
+</html>
