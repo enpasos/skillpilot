@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
   AlertTriangle,
   ArrowLeft,
@@ -24,24 +24,37 @@ import {
   goalBookPageFromHash,
   parseGoalBookPublicationIndex,
   parseVerifiedGoalBookRuntimeModel,
+  selectGoalBookPublication,
   type GoalBookRuntimeExternalReference,
   type GoalBookApplicabilityFilter,
   type GoalBookApplicabilityGroup,
   type GoalBookRuntimeModel,
   type GoalBookRuntimePage,
   type GoalBookRuntimePublication,
+  type GoalBookRuntimePublicationIndex,
   type GoalBookRuntimeReference,
 } from '../utils/goalBookRuntime'
+import {
+  goalBookDefinitionById,
+  goalBookDefinitionByLandscapeId,
+  goalBookRoute,
+  type GoalBookSubject,
+} from '../utils/goalBookPublicationRegistry'
 
 const copy = {
   de: {
     back: 'Zurück zur Startseite',
     eyebrow: 'LERNZIELBUCH · REVIEW-PILOT',
+    titleFallback: 'Lernzielbuch',
+    subtitleFallback: 'Gymnasium · Sekundarstufe I und II · Deutschland',
     subtitle: 'Mathematik · Gymnasium · Sekundarstufe I',
     subtitleNationwide: 'Mathematik · Gymnasium · Sekundarstufe I und II · Deutschland',
     pilotNotice: 'Diese Fassung dient der fachlichen und didaktischen Prüfung. Inhalte und Bilder können sich noch ändern.',
     download: 'PDF herunterladen',
     downloadHint: 'Lernziele · ein Lernziel pro Seite',
+    books: 'Fach auswählen',
+    mathematics: 'Mathematik',
+    physics: 'Physik',
     filters: 'Curriculum filtern',
     filterHint: 'G8 und G9 werden nur innerhalb des gewählten Bundeslands angeboten.',
     jurisdiction: 'Bundesland',
@@ -82,6 +95,7 @@ const copy = {
     requiredBy: 'Wird direkt vorausgesetzt von',
     outsideBook: 'Außerhalb dieser Ausgabe',
     outsideBookHint: 'Diese Relation ist fachlich erfasst, das Ziel besitzt in diesem Band jedoch keine eigene Seite.',
+    sourceSubject: 'Fachliche Herkunft',
     externalPageTitle: 'Lernziel außerhalb dieser Ausgabe',
     externalPageText: 'Das Lernziel ist als fachliche Relation erfasst, gehört aber nicht zu den curricular-atomaren Zielseiten dieses Bands.',
     page: 'Seite',
@@ -102,11 +116,16 @@ const copy = {
   en: {
     back: 'Back to home',
     eyebrow: 'LEARNING GOAL BOOK · REVIEW PILOT',
+    titleFallback: 'Learning goal book',
+    subtitleFallback: 'Gymnasium · lower and upper secondary · Germany',
     subtitle: 'Mathematics · Gymnasium · lower secondary',
     subtitleNationwide: 'Mathematics · Gymnasium · lower and upper secondary · Germany',
     pilotNotice: 'This edition is intended for subject and didactic review. Content and images may still change.',
     download: 'Download PDF',
     downloadHint: 'learning goals · one goal per page',
+    books: 'Select subject',
+    mathematics: 'Mathematics',
+    physics: 'Physics',
     filters: 'Filter curriculum',
     filterHint: 'G8 and G9 are offered only within the selected German state.',
     jurisdiction: 'German state',
@@ -147,6 +166,7 @@ const copy = {
     requiredBy: 'Directly required by',
     outsideBook: 'Outside this edition',
     outsideBookHint: 'This relation is recorded, but the goal has no page in this volume.',
+    sourceSubject: 'Subject source',
     externalPageTitle: 'Learning goal outside this edition',
     externalPageText: 'This learning goal is recorded as a subject relation but is not one of the curricular-atomic pages in this volume.',
     page: 'Page',
@@ -165,6 +185,37 @@ const copy = {
     germanContent: 'The book content is currently available in German.',
   },
 } as const
+
+const goalBookSubject = (bookId: string): GoalBookSubject | null => (
+  goalBookDefinitionById(bookId)?.subject ?? null
+)
+
+const subjectLabel = (
+  bookId: string,
+  c: typeof copy.de | typeof copy.en,
+): string => {
+  const subject = goalBookSubject(bookId)
+  return subject ? c[subject] : bookId
+}
+
+const subjectSubtitle = (
+  bookId: string,
+  language: 'de' | 'en',
+  c: typeof copy.de | typeof copy.en,
+): string => {
+  const subject = subjectLabel(bookId, c)
+  return language === 'de'
+    ? `${subject} · Gymnasium · Sekundarstufe I und II · Deutschland`
+    : `${subject} · Gymnasium · lower and upper secondary · Germany`
+}
+
+const sourceSubjectLabel = (
+  landscapeId: string,
+  c: typeof copy.de | typeof copy.en,
+): string | null => {
+  const definition = goalBookDefinitionByLandscapeId(landscapeId)
+  return definition ? subjectLabel(definition.bookId, c) : null
+}
 
 const JURISDICTION_LABELS: Record<string, { de: string; en: string }> = {
   'DE-BB': { de: 'Brandenburg', en: 'Brandenburg' },
@@ -278,9 +329,8 @@ const RelationList: React.FC<{
   title: string
   internal: GoalBookRuntimeReference[]
   external: GoalBookRuntimeExternalReference[]
-  outsideBook: string
-  outsideBookHint: string
-}> = ({ title, internal, external, outsideBook, outsideBookHint }) => {
+  c: typeof copy.de | typeof copy.en
+}> = ({ title, internal, external, c }) => {
   if (internal.length === 0 && external.length === 0) return null
   return (
     <section className="rounded-xl border border-border-color bg-white/60 p-4 dark:bg-slate-900/45">
@@ -304,16 +354,24 @@ const RelationList: React.FC<{
       )}
       {external.length > 0 && (
         <div className="mt-3 rounded-lg border border-dashed border-slate-300 px-3 py-2 dark:border-slate-700">
-          <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{outsideBook}</p>
-          <p className="mt-1 text-xs text-text-secondary">{outsideBookHint}</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{c.outsideBook}</p>
+          <p className="mt-1 text-xs text-text-secondary">{c.outsideBookHint}</p>
           <ul className="mt-2 space-y-2">
             {external.map((relation) => {
+              const source = relation.landscapeId
+                ? sourceSubjectLabel(relation.landscapeId, c)
+                : null
               const content = (
                 <>
                   <InlineMathText className="font-medium" text={relation.title} />
                   <span className="mt-0.5 block break-all font-mono text-[11px] text-text-secondary">
                     {relation.goalId}
                   </span>
+                  {source && (
+                    <span className="mt-0.5 block text-xs text-text-secondary">
+                      {c.sourceSubject}: {source}
+                    </span>
+                  )}
                 </>
               )
               return (
@@ -408,15 +466,13 @@ const GoalPage: React.FC<{
           title={c.prerequisites}
           internal={page.requires}
           external={page.externalPrerequisites}
-          outsideBook={c.outsideBook}
-          outsideBookHint={c.outsideBookHint}
+          c={c}
         />
         <RelationList
           title={c.requiredBy}
           internal={page.reverseRequires}
           external={page.externalReverseRequires}
-          outsideBook={c.outsideBook}
-          outsideBookHint={c.outsideBookHint}
+          c={c}
         />
       </div>
 
@@ -600,9 +656,11 @@ const ChapterControls: React.FC<{
 
 export const GoalBookView: React.FC = () => {
   const { language } = useLanguage()
+  const location = useLocation()
   const c = copy[language === 'en' ? 'en' : 'de']
   const [model, setModel] = useState<GoalBookRuntimeModel | null>(null)
   const [publication, setPublication] = useState<GoalBookRuntimePublication | null>(null)
+  const [publicationIndex, setPublicationIndex] = useState<GoalBookRuntimePublicationIndex | null>(null)
   const [loadingAttempt, setLoadingAttempt] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -630,7 +688,9 @@ export const GoalBookView: React.FC = () => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         return parseGoalBookPublicationIndex(await response.json())
       })
-      .then(async (nextPublication) => {
+      .then(async (nextPublicationIndex) => {
+        const nextPublication = selectGoalBookPublication(nextPublicationIndex, location.search)
+        setPublicationIndex(nextPublicationIndex)
         const response = await fetch(nextPublication.modelUrl, {
           credentials: 'omit',
           redirect: 'error',
@@ -658,7 +718,7 @@ export const GoalBookView: React.FC = () => {
         setError(true)
       })
     return () => abortController.abort()
-  }, [loadingAttempt])
+  }, [loadingAttempt, location.search])
 
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash)
@@ -687,6 +747,9 @@ export const GoalBookView: React.FC = () => {
     () => model && hash ? goalBookExternalReferenceFromHash(model, hash) : null,
     [hash, model],
   )
+  const linkedExternalSource = linkedExternalReference?.landscapeId
+    ? sourceSubjectLabel(linkedExternalReference.landscapeId, c)
+    : null
   const invalidHash = Boolean(model && hash && !linkedPage && !linkedExternalReference)
   const linkedPageInFilter = linkedPage
     ? filteredPages.some(({ goalId }) => goalId === linkedPage.goalId)
@@ -735,11 +798,44 @@ export const GoalBookView: React.FC = () => {
               <BookOpen size={18} aria-hidden="true" />
               {c.eyebrow}
             </p>
+            {publicationIndex && publicationIndex.books.length > 1 && (
+              <nav aria-label={c.books} className="mt-4 flex w-fit flex-wrap gap-1 rounded-xl border border-border-color bg-white/80 p-1 dark:bg-slate-900/70">
+                {publicationIndex.books.map((book) => {
+                  const active = publication?.bookId === book.bookId
+                  return (
+                    <Link
+                      key={book.bookId}
+                      to={goalBookRoute(book.bookId)}
+                      onClick={() => {
+                        if (active) return
+                        setLoading(true)
+                        setError(false)
+                        setModel(null)
+                        setPublication(null)
+                        setQuery('')
+                        setChapterId(null)
+                        setApplicabilityFilter({
+                          jurisdiction: null,
+                          stage: null,
+                          durationModel: null,
+                          courseProfile: null,
+                        })
+                      }}
+                      aria-current={active ? 'page' : undefined}
+                      data-testid={`goal-book-select-${book.bookId}`}
+                      className={`inline-flex min-h-11 items-center rounded-lg px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-sky-500 ${active ? 'bg-sky-700 text-white' : 'text-text-primary hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+                    >
+                      {subjectLabel(book.bookId, c)}
+                    </Link>
+                  )
+                })}
+              </nav>
+            )}
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
-              {model?.book.title ?? 'Lernzielbuch Mathematik'}
+              {model?.book.title ?? c.titleFallback}
             </h1>
             <p className="mt-2 text-lg text-text-secondary">
-              {model?.book.id === 'de-gym-mathematik-bundesweit' ? c.subtitleNationwide : c.subtitle}
+              {model ? subjectSubtitle(model.book.id, language === 'en' ? 'en' : 'de', c) : c.subtitleFallback}
             </p>
             {language === 'en' && <p className="mt-1 text-sm text-text-secondary">{c.germanContent}</p>}
           </div>
@@ -929,6 +1025,11 @@ export const GoalBookView: React.FC = () => {
                     <code className="mt-2 block break-all rounded-lg bg-slate-100 px-3 py-2 text-xs dark:bg-slate-800">
                       {linkedExternalReference.goalId}
                     </code>
+                    {linkedExternalSource && (
+                      <p className="mt-3 text-sm text-text-secondary">
+                        {c.sourceSubject}: {linkedExternalSource}
+                      </p>
+                    )}
                   </article>
                 )}
               </div>
@@ -945,6 +1046,7 @@ export const GoalBookView: React.FC = () => {
               <Link
                 to={selectedPage
                   ? `/lernziel-feedback?${new URLSearchParams({
+                      bookId: model.book.id,
                       goalId: selectedPage.goalId,
                       edition: model.book.edition,
                       page: String(selectedPage.pageNumber),

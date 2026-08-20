@@ -58,10 +58,45 @@ const GOAL_BOOK_SOURCE_MANIFEST_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-book/v1/goal-book-source-manifest.schema.json',
 )
+const SEMANTIC_KIND_LEDGER_SCHEMA_PATH = resolve(
+  REPOSITORY_ROOT,
+  'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
+)
 const GOAL_EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
 )
+export const SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID = (
+  'semantic-kind-source-fingerprint-v1'
+) as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_DOMAIN = (
+  'skillpilot:semantic-kind-source-fingerprint:v1'
+) as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_ID = 'semantic-normal-form-v1' as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_VERSION = '1.0.0' as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_PATH = (
+  'contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+) as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_SHA256 = (
+  '22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca'
+) as const
+const SEMANTIC_KIND_SOURCE_FINGERPRINT_POINTERS = [
+  '/id',
+  '/type',
+  '/nodeKind',
+  '/title',
+  '/titleEn',
+  '/description',
+  '/descriptionEn',
+  '/tags',
+  '/contains',
+  '/requires',
+  '/semanticAtomic',
+  '/dimensionTags',
+  '/examData',
+  '/extendedData',
+  '/release',
+] as const
 const SAFE_GOAL_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]*$/u
 
 const createSchemaValidator = (schemaPath: string, includeFormats = false) => {
@@ -74,6 +109,8 @@ const createSchemaValidator = (schemaPath: string, includeFormats = false) => {
 let cachedGoalBookSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedEvidenceSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedSourceManifestSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
+let cachedSemanticKindLedgerSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
+let semanticKindFingerprintProfileVerified = false
 
 export interface GoalBookApplicabilityScope {
   stage: 'SekI' | 'SekII'
@@ -94,7 +131,14 @@ export interface GoalBookReference {
 }
 
 export interface GoalBookExternalReference extends GoalBookReference {
+  landscapeId?: string
   canonicalUrl: string | null
+}
+
+export interface GoalBookExternalLandscapeSource {
+  path: string
+  landscapeId: string
+  digest: string
 }
 
 export interface GoalBookChapter {
@@ -196,6 +240,7 @@ export interface GoalBookModel {
     navigationOwnership?: typeof GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP
     durationModelPolicyPath?: string
     durationModelPolicyDigest?: string
+    externalLandscapes?: GoalBookExternalLandscapeSource[]
     evidenceReviewSources: GoalBookEvidenceReviewSource[]
     goalFingerprintRuleVersion: typeof GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION
   }
@@ -217,6 +262,7 @@ export interface GoalBookConfigFile {
   publicationMode: GoalBookPublicationMode
   atlasBaseUrl?: string
   evidenceReviewPaths: string[]
+  externalLandscapePaths?: string[]
   outputPath: string
 }
 
@@ -231,6 +277,7 @@ export interface GoalBookBuildConfig {
   publicationMode: GoalBookPublicationMode
   atlasBaseUrl?: string
   evidenceReviewPaths: string[]
+  externalLandscapePaths?: string[]
 }
 
 export interface GoalBookEvidenceReviewBuildSource {
@@ -243,6 +290,7 @@ export interface GoalBookBuildInput {
   compositionView?: unknown
   compositionViewManifest?: unknown
   compositionViewSources?: GoalBookCompositionViewBuildSource[]
+  externalLandscapeSources?: GoalBookExternalLandscapeBuildSource[]
   durationModelPolicy?: unknown
   semanticKindLedger: unknown
   goalVisualizationQa: unknown
@@ -254,6 +302,11 @@ export interface GoalBookBuildInput {
 export interface GoalBookCompositionViewBuildSource {
   path: string
   view: unknown
+}
+
+export interface GoalBookExternalLandscapeBuildSource {
+  path: string
+  landscape: unknown
 }
 
 interface GoalBookSourceManifest {
@@ -320,6 +373,13 @@ interface CompiledGoalBookViewSource {
 interface SemanticKindLedgerResult {
   semanticKindByGoalId: Map<string, string>
   ledgerId: string
+}
+
+interface ResolvedExternalLandscapes {
+  landscape: CanonicalAuthoringLandscape
+  primaryGoalIds: Set<string>
+  externalLandscapeIdByGoalId: Map<string, string>
+  sourceBindings: GoalBookExternalLandscapeSource[]
 }
 
 interface GoalVisualizationQaRecord {
@@ -433,6 +493,126 @@ const asRecord = (value: unknown, label: string): Record<string, unknown> => {
   return value as Record<string, unknown>
 }
 
+const compareUnicodeCodePoints = (left: string, right: string): number => {
+  const leftPoints = Array.from(left, (value) => value.codePointAt(0) ?? 0)
+  const rightPoints = Array.from(right, (value) => value.codePointAt(0) ?? 0)
+  const length = Math.min(leftPoints.length, rightPoints.length)
+  for (let index = 0; index < length; index += 1) {
+    if (leftPoints[index] !== rightPoints[index]) return leftPoints[index] - rightPoints[index]
+  }
+  return leftPoints.length - rightPoints.length
+}
+
+const assertSemanticKindCanonicalString = (value: string, label: string): void => {
+  for (let index = 0; index < value.length; index += 1) {
+    const codeUnit = value.charCodeAt(index)
+    let codePoint = codeUnit
+    if (codeUnit >= 0xd800 && codeUnit <= 0xdbff) {
+      const low = value.charCodeAt(index + 1)
+      if (!(low >= 0xdc00 && low <= 0xdfff)) {
+        fail(`${label} contains an unpaired Unicode surrogate.`)
+      }
+      codePoint = ((codeUnit - 0xd800) * 0x400) + (low - 0xdc00) + 0x10000
+      index += 1
+    } else if (codeUnit >= 0xdc00 && codeUnit <= 0xdfff) {
+      fail(`${label} contains an unpaired Unicode surrogate.`)
+    }
+    if (
+      (codePoint < 0x20 && codePoint !== 0x09 && codePoint !== 0x0a && codePoint !== 0x0d)
+      || codePoint === 0xfffe
+      || codePoint === 0xffff
+    ) {
+      fail(`${label} contains a character forbidden by semantic-normal-form-v1.`)
+    }
+  }
+}
+
+const semanticKindCanonicalJson = (value: unknown, label: string): string => {
+  if (value === null) return 'null'
+  if (typeof value === 'boolean') return value ? 'true' : 'false'
+  if (typeof value === 'string') {
+    assertSemanticKindCanonicalString(value, label)
+    return JSON.stringify(value)
+  }
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) fail(`${label} contains a non-finite number.`)
+    return JSON.stringify(Object.is(value, -0) ? 0 : value)
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map((item, index) => semanticKindCanonicalJson(item, `${label}[${index}]`)).join(',')}]`
+  }
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value as Record<string, unknown>)
+      .sort(compareUnicodeCodePoints)
+      .map((key) => {
+        assertSemanticKindCanonicalString(key, `${label} object key`)
+        return `${JSON.stringify(key)}:${semanticKindCanonicalJson(
+          (value as Record<string, unknown>)[key],
+          `${label}.${key}`,
+        )}`
+      })
+      .join(',')}}`
+  }
+  return fail(`${label} contains an unsupported canonical JSON value.`)
+}
+
+const assertPinnedSemanticKindFingerprintProfile = (): void => {
+  if (semanticKindFingerprintProfileVerified) return
+  const absolutePath = resolve(REPOSITORY_ROOT, SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_PATH)
+  const bytes = readFileSync(absolutePath)
+  const actualSha256 = createHash('sha256').update(bytes).digest('hex')
+  if (actualSha256 !== SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_SHA256) {
+    fail(
+      `pinned ${SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_ID} bytes have SHA-256 ${actualSha256}, `
+      + `expected ${SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_SHA256}.`,
+    )
+  }
+  let profile: Record<string, unknown>
+  try {
+    profile = asRecord(JSON.parse(bytes.toString('utf8')), 'semantic-kind normalization profile')
+  } catch (error) {
+    fail(`pinned semantic-kind normalization profile is not valid JSON: ${String(error)}.`)
+  }
+  if (
+    profile.profileId !== SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_ID
+    || profile.version !== SEMANTIC_KIND_SOURCE_FINGERPRINT_PROFILE_VERSION
+    || asRecord(profile.canonicalJson, 'semantic-kind normalization profile canonicalJson').algorithm
+      !== 'skillpilot-canonical-json-v1'
+  ) {
+    fail('pinned semantic-kind normalization profile identity or algorithm is inconsistent.')
+  }
+  semanticKindFingerprintProfileVerified = true
+}
+
+export const fingerprintSemanticKindSourceGoal = (
+  rawGoal: Record<string, unknown>,
+): string => {
+  assertPinnedSemanticKindFingerprintProfile()
+  const goalId = nonEmptyString(rawGoal.id, 'semantic-kind source goal id')
+  const fields = SEMANTIC_KIND_SOURCE_FINGERPRINT_POINTERS.map((pointer) => {
+    const key = pointer.slice(1)
+    if (!Object.prototype.hasOwnProperty.call(rawGoal, key)) {
+      return { path: pointer, state: 'missing' }
+    }
+    let value = rawGoal[key]
+    if (pointer === '/tags') {
+      if (!Array.isArray(value) || !value.every((entry) => typeof entry === 'string')) {
+        fail(`goal ${goalId} has invalid tags for semantic-kind fingerprint.`)
+      }
+      if (new Set(value).size !== value.length) {
+        fail(`goal ${goalId} has duplicate tags for semantic-kind fingerprint.`)
+      }
+      value = [...value].sort(compareUnicodeCodePoints)
+    }
+    return { path: pointer, state: 'value', value }
+  })
+  const canonicalBytes = semanticKindCanonicalJson(
+    { domain: SEMANTIC_KIND_SOURCE_FINGERPRINT_DOMAIN, fields },
+    `semantic-kind source goal ${goalId}`,
+  )
+  return `sha256:${createHash('sha256').update(canonicalBytes, 'utf8').digest('hex')}`
+}
+
 const assertUniqueCanonicalGoalIds = (landscape: unknown) => {
   const record = asRecord(landscape, 'landscape')
   const rawGoals = record.goals
@@ -446,25 +626,177 @@ const assertUniqueCanonicalGoalIds = (landscape: unknown) => {
   })
 }
 
+const resolveExternalLandscapes = (
+  rawLandscape: unknown,
+  externalSources: GoalBookExternalLandscapeBuildSource[],
+): ResolvedExternalLandscapes => {
+  assertUniqueCanonicalGoalIds(rawLandscape)
+  const primaryRecord = asRecord(rawLandscape, 'landscape')
+  const rawPrimaryGoals = Array.isArray(primaryRecord.goals)
+    ? primaryRecord.goals.map((goal, index) => asRecord(goal, `landscape.goals[${index}]`))
+    : fail('landscape.goals must be an array.')
+  const primaryGoalIds = new Set(rawPrimaryGoals.map((goal, index) => (
+    nonEmptyString(goal.id, `landscape.goals[${index}].id`)
+  )))
+  const externalLandscapeIdByGoalId = new Map<string, string>()
+  const rawExternalGoalById = new Map<string, Record<string, unknown>>()
+  const sourceBindings: GoalBookExternalLandscapeSource[] = []
+  const seenPaths = new Set<string>()
+  const seenLandscapeIds = new Set<string>()
+
+  externalSources.forEach((source, sourceIndex) => {
+    const path = nonEmptyString(source.path, `externalLandscapeSources[${sourceIndex}].path`)
+    if (seenPaths.has(path)) fail(`external landscape source path ${path} is duplicated.`)
+    seenPaths.add(path)
+    assertUniqueCanonicalGoalIds(source.landscape)
+    const externalLandscape = normalizeCanonicalLandscape(source.landscape)
+    const externalErrors = validateCanonicalLandscape(externalLandscape)
+      .filter(({ severity }) => severity === 'error')
+    if (externalErrors.length > 0) {
+      fail(`invalid external canonical landscape ${path}: ${externalErrors
+        .map((finding) => `${finding.goalId ?? 'landscape'}: ${finding.message}`)
+        .join(' | ')}`)
+    }
+    if (externalLandscape.landscapeId === primaryRecord.landscapeId) {
+      fail(`external landscape ${path} duplicates the primary landscape identity.`)
+    }
+    if (seenLandscapeIds.has(externalLandscape.landscapeId)) {
+      fail(`external landscape ID ${externalLandscape.landscapeId} is bound more than once.`)
+    }
+    seenLandscapeIds.add(externalLandscape.landscapeId)
+    const externalRecord = asRecord(source.landscape, `external landscape ${path}`)
+    const rawExternalGoals = Array.isArray(externalRecord.goals)
+      ? externalRecord.goals
+      : fail(`external landscape ${path}.goals must be an array.`)
+    rawExternalGoals.forEach((rawGoal, goalIndex) => {
+      const goal = asRecord(rawGoal, `external landscape ${path}.goals[${goalIndex}]`)
+      const goalId = nonEmptyString(goal.id, `external landscape ${path}.goals[${goalIndex}].id`)
+      if (primaryGoalIds.has(goalId) || externalLandscapeIdByGoalId.has(goalId)) {
+        fail(`external goal ID ${goalId} is ambiguous across bound landscapes.`)
+      }
+      externalLandscapeIdByGoalId.set(goalId, externalLandscape.landscapeId)
+      rawExternalGoalById.set(goalId, goal)
+    })
+    sourceBindings.push({
+      path,
+      landscapeId: externalLandscape.landscapeId,
+      digest: digest(source.landscape),
+    })
+  })
+
+  const requiredExternalGoalIds = new Set<string>()
+  rawPrimaryGoals.forEach((goal, goalIndex) => {
+    const ownerId = nonEmptyString(goal.id, `landscape.goals[${goalIndex}].id`)
+    const contains = Array.isArray(goal.contains) ? goal.contains : []
+    contains.forEach((reference) => {
+      const goalId = normalizeGoalRef(reference)
+      if (!goalId) fail(`goal ${ownerId} has malformed contains reference.`)
+      if (!primaryGoalIds.has(goalId)) {
+        const relation = externalLandscapeIdByGoalId.has(goalId) ? 'foreign' : 'unresolved'
+        fail(`goal ${ownerId} has ${relation} contains reference ${goalId}; cross-landscape composition is forbidden.`)
+      }
+    })
+    const requires = Array.isArray(goal.requires) ? goal.requires : []
+    requires.forEach((reference) => {
+      const goalId = normalizeGoalRef(reference)
+      if (!goalId) fail(`goal ${ownerId} has malformed requires reference.`)
+      if (primaryGoalIds.has(goalId)) return
+      if (!externalLandscapeIdByGoalId.has(goalId)) {
+        fail(`goal ${ownerId} has unresolved cross-landscape prerequisite ${goalId}.`)
+      }
+      requiredExternalGoalIds.add(goalId)
+    })
+  })
+
+  const externalGoalStubs = [...requiredExternalGoalIds]
+    .sort(compareStrings)
+    .map((goalId) => {
+      const goal = rawExternalGoalById.get(goalId)
+        ?? fail(`cannot materialize external prerequisite ${goalId}.`)
+      return {
+        ...structuredClone(goal),
+        type: 'atomic',
+        contains: [],
+        requires: [],
+      }
+    })
+  const augmentedRawLandscape = {
+    ...structuredClone(primaryRecord),
+    goals: [...structuredClone(rawPrimaryGoals), ...externalGoalStubs],
+  }
+  const landscape = normalizeCanonicalLandscape(augmentedRawLandscape)
+  const canonicalFindings = validateCanonicalLandscape(landscape)
+    .filter(({ severity }) => severity === 'error')
+  if (canonicalFindings.length > 0) {
+    fail(`invalid canonical landscape: ${canonicalFindings
+      .map((finding) => `${finding.goalId ?? 'landscape'}: ${finding.message}`)
+      .join(' | ')}`)
+  }
+  return {
+    landscape,
+    primaryGoalIds,
+    externalLandscapeIdByGoalId,
+    sourceBindings,
+  }
+}
+
 const parseSemanticKindLedger = (
   value: unknown,
-  landscape: CanonicalAuthoringLandscape,
+  rawLandscape: unknown,
+  landscapeId: string,
+  landscapePath: string,
 ): SemanticKindLedgerResult => {
+  const validator = cachedSemanticKindLedgerSchemaValidator
+    ?? (cachedSemanticKindLedgerSchemaValidator = createSchemaValidator(
+      SEMANTIC_KIND_LEDGER_SCHEMA_PATH,
+      true,
+    ))
+  if (!validator.validate(value)) {
+    fail(`semantic-kind ledger violates its closed JSON Schema: ${validator.ajv.errorsText(
+      validator.validate.errors,
+      { separator: '; ' },
+    )}.`)
+  }
   const record = asRecord(value, 'semanticKindLedger')
   const ledgerId = nonEmptyString(record.ledgerId, 'semanticKindLedger.ledgerId')
   const sourceLandscapeId = nonEmptyString(
     record.sourceLandscapeId,
     'semanticKindLedger.sourceLandscapeId',
   )
-  if (sourceLandscapeId !== landscape.landscapeId) {
-    fail(`semantic-kind ledger targets ${sourceLandscapeId}, expected ${landscape.landscapeId}.`)
+  if (sourceLandscapeId !== landscapeId) {
+    fail(`semantic-kind ledger targets ${sourceLandscapeId}, expected ${landscapeId}.`)
+  }
+  const sourceLandscapePath = nonEmptyString(
+    record.sourceLandscapePath,
+    'semanticKindLedger.sourceLandscapePath',
+  )
+  if (sourceLandscapePath !== landscapePath) {
+    fail(`semantic-kind ledger binds ${sourceLandscapePath}, expected ${landscapePath}.`)
+  }
+  if (record.sourceFingerprintContractId !== SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID) {
+    fail(
+      `semantic-kind ledger uses unsupported source fingerprint contract `
+      + `${String(record.sourceFingerprintContractId)}.`,
+    )
   }
   const decisions = Array.isArray(record.decisions)
     ? record.decisions
     : fail('semanticKindLedger.decisions must be an array.')
 
-  const canonicalGoalIds = new Set(landscape.goals.map(({ id }) => id))
+  const rawLandscapeRecord = asRecord(rawLandscape, 'landscape')
+  const rawGoals = Array.isArray(rawLandscapeRecord.goals)
+    ? rawLandscapeRecord.goals
+    : fail('landscape.goals must be an array.')
+  const rawGoalById = new Map<string, Record<string, unknown>>()
+  rawGoals.forEach((rawGoal, index) => {
+    const goal = asRecord(rawGoal, `landscape.goals[${index}]`)
+    const goalId = nonEmptyString(goal.id, `landscape.goals[${index}].id`)
+    if (rawGoalById.has(goalId)) fail(`duplicate canonical goal ID ${goalId}.`)
+    rawGoalById.set(goalId, goal)
+  })
+  const canonicalGoalIds = new Set(rawGoalById.keys())
   const semanticKindByGoalId = new Map<string, string>()
+  const actualCounts = new Map<string, number>([...SEMANTIC_KINDS].map((kind) => [kind, 0]))
   decisions.forEach((rawDecision, index) => {
     const decision = asRecord(rawDecision, `semanticKindLedger.decisions[${index}]`)
     const goalId = nonEmptyString(decision.goalId, `semanticKindLedger.decisions[${index}].goalId`)
@@ -484,14 +816,28 @@ const parseSemanticKindLedger = (
     if (semanticKindByGoalId.has(goalId)) {
       fail(`semantic-kind ledger contains duplicate decision for ${goalId}.`)
     }
+    const currentFingerprint = fingerprintSemanticKindSourceGoal(rawGoalById.get(goalId)!)
+    if (decision.sourceFingerprint !== currentFingerprint) {
+      fail(`stale semantic-kind decision for goal ${goalId}; expected ${currentFingerprint}.`)
+    }
     semanticKindByGoalId.set(goalId, semanticKind)
+    actualCounts.set(semanticKind, (actualCounts.get(semanticKind) ?? 0) + 1)
   })
 
-  const missingGoalIds = landscape.goals
-    .map(({ id }) => id)
+  const missingGoalIds = [...canonicalGoalIds]
     .filter((goalId) => !semanticKindByGoalId.has(goalId))
   if (missingGoalIds.length > 0) {
     fail(`semantic-kind ledger has no authoritative decision for ${missingGoalIds.slice(0, 10).join(', ')}${missingGoalIds.length > 10 ? ' ...' : ''}.`)
+  }
+
+  const declaredCounts = asRecord(record.counts, 'semanticKindLedger.counts')
+  SEMANTIC_KINDS.forEach((semanticKind) => {
+    if (declaredCounts[semanticKind] !== actualCounts.get(semanticKind)) {
+      fail(`semantic-kind ledger count for ${semanticKind} does not match its decisions.`)
+    }
+  })
+  if (declaredCounts.total !== decisions.length || decisions.length !== canonicalGoalIds.size) {
+    fail('semantic-kind ledger total count must match exactly every canonical goal.')
   }
 
   return { semanticKindByGoalId, ledgerId }
@@ -723,6 +1069,7 @@ const collectTargetAtomicGoals = (
 const mergeTargetCollections = (
   sources: CompiledGoalBookViewSource[],
   navigationOwnership: typeof GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP,
+  subject: string,
 ): TargetGoalCollection => {
   if (navigationOwnership !== GOAL_BOOK_ATLAS_NAVIGATION_OWNERSHIP) {
     fail(`unsupported atlas navigation ownership ${navigationOwnership}.`)
@@ -734,7 +1081,7 @@ const mergeTargetCollections = (
   const breadcrumbPathsByGoalId = new Map<string, string[][]>()
 
   sources.forEach(({ targetCollection }) => targetCollection.occurrences.forEach((occurrence) => {
-    const withoutSubjectRoot = occurrence.breadcrumbs[0] === 'Mathematik'
+    const withoutSubjectRoot = occurrence.breadcrumbs[0] === subject
       ? occurrence.breadcrumbs.slice(1)
       : occurrence.breadcrumbs
     const paths = breadcrumbPathsByGoalId.get(occurrence.goalId) ?? []
@@ -776,7 +1123,7 @@ const mergeTargetCollections = (
   })
 
   breadcrumbPathsByGoalId.forEach((paths, goalId) => {
-    const breadcrumbs = ['Mathematik', ...commonSuffix(paths)]
+    const breadcrumbs = [subject, ...commonSuffix(paths)]
     occurrences.push({
       goalId,
       breadcrumbs,
@@ -1078,6 +1425,7 @@ const resolvedInternalReference = (
 const resolvedExternalReference = (
   goalId: string,
   goalById: ReadonlyMap<string, CanonicalAuthoringGoal>,
+  referenceLandscapeId: string | undefined,
   canonicalUrl: string | null,
   mode: GoalBookPublicationMode,
 ): GoalBookExternalReference => {
@@ -1089,6 +1437,7 @@ const resolvedExternalReference = (
   return {
     goalId,
     title: nonEmptyString(goal.title, `goal ${goalId} title`),
+    ...(referenceLandscapeId ? { landscapeId: referenceLandscapeId } : {}),
     canonicalUrl,
   }
 }
@@ -1115,11 +1464,13 @@ const parseSourceManifest = (value: unknown): GoalBookSourceManifest => {
   return manifest
 }
 
-export const parseMathDurationModelPolicy = (
+export const parseSubjectDurationModelPolicy = (
   value: unknown,
+  subject: string,
   expectedJurisdictions: string[],
   sourceViews: readonly GoalBookDurationPolicyViewSource[],
 ): Map<string, GoalBookDurationModelPolicyDecision> => {
+  const normalizedSubject = nonEmptyString(subject, 'landscape.subject')
   const record = asRecord(value, 'durationModelPolicy')
   if (record.schemaVersion !== 1) fail('durationModelPolicy.schemaVersion must be 1.')
   const sourceByViewId = new Map<string, GoalBookDurationPolicyViewSource>()
@@ -1136,16 +1487,16 @@ export const parseMathDurationModelPolicy = (
   const byJurisdiction = new Map<string, GoalBookDurationModelPolicyDecision>()
   decisions.forEach((rawDecision, index) => {
     const decision = asRecord(rawDecision, `durationModelPolicy.decisions[${index}]`)
-    if (decision.subject !== 'Mathematik') return
+    if (decision.subject !== normalizedSubject) return
     if (decision.status !== 'reviewed') {
-      fail(`mathematics duration-model decision ${index} is not reviewed.`)
+      fail(`${normalizedSubject} duration-model decision ${index} is not reviewed.`)
     }
     const jurisdiction = nonEmptyString(
       decision.jurisdiction,
       `durationModelPolicy.decisions[${index}].jurisdiction`,
     )
     if (byJurisdiction.has(jurisdiction)) {
-      fail(`duration-model policy contains duplicate mathematics decision for ${jurisdiction}.`)
+      fail(`duration-model policy contains duplicate ${normalizedSubject} decision for ${jurisdiction}.`)
     }
     const durationModels = uniqueStringArray(
       decision.durationModels,
@@ -1213,7 +1564,7 @@ export const parseMathDurationModelPolicy = (
   })
   const actualJurisdictions = [...byJurisdiction.keys()].sort(compareStrings)
   if (actualJurisdictions.join('\0') !== expectedJurisdictions.join('\0')) {
-    fail('duration-model policy must contain exactly one reviewed mathematics decision per atlas jurisdiction.')
+    fail(`duration-model policy must contain exactly one reviewed ${normalizedSubject} decision per atlas jurisdiction.`)
   }
 
   const durationRole = (source: GoalBookDurationPolicyViewSource): string => {
@@ -1309,6 +1660,7 @@ export const buildGoalBookModel = ({
   compositionView: rawCompositionView,
   compositionViewManifest: rawCompositionViewManifest,
   compositionViewSources: rawCompositionViewSources,
+  externalLandscapeSources: rawExternalLandscapeSources,
   durationModelPolicy: rawDurationModelPolicy,
   semanticKindLedger: rawSemanticKindLedger,
   goalVisualizationQa: rawGoalVisualizationQa,
@@ -1338,21 +1690,39 @@ export const buildGoalBookModel = ({
     config.evidenceReviewPaths,
     'config.evidenceReviewPaths',
   )
-
-  assertUniqueCanonicalGoalIds(rawLandscape)
-  const landscape = normalizeCanonicalLandscape(rawLandscape)
-  const canonicalFindings = validateCanonicalLandscape(landscape)
-    .filter(({ severity }) => severity === 'error')
-  if (canonicalFindings.length > 0) {
-    fail(`invalid canonical landscape: ${canonicalFindings
-      .map((finding) => `${finding.goalId ?? 'landscape'}: ${finding.message}`)
-      .join(' | ')}`)
+  const externalLandscapePaths = config.externalLandscapePaths
+    ? uniqueStringArray(config.externalLandscapePaths, 'config.externalLandscapePaths')
+    : []
+  const externalLandscapeSources = rawExternalLandscapeSources ?? []
+  if (externalLandscapeSources.length !== externalLandscapePaths.length) {
+    fail('externalLandscapeSources must match config.externalLandscapePaths exactly.')
   }
+  externalLandscapeSources.forEach((source, index) => {
+    if (source.path !== externalLandscapePaths[index]) {
+      fail(`externalLandscapeSources[${index}].path does not match config.externalLandscapePaths.`)
+    }
+  })
+
+  const resolvedExternalLandscapes = resolveExternalLandscapes(
+    rawLandscape,
+    externalLandscapeSources,
+  )
+  const {
+    landscape,
+    primaryGoalIds,
+    externalLandscapeIdByGoalId,
+    sourceBindings: externalLandscapeBindings,
+  } = resolvedExternalLandscapes
 
   const locale = nonEmptyString((landscape as Record<string, unknown>).locale, 'landscape.locale')
   const landscapeId = nonEmptyString(landscape.landscapeId, 'landscape.landscapeId')
 
-  const semanticKindLedger = parseSemanticKindLedger(rawSemanticKindLedger, landscape)
+  const semanticKindLedger = parseSemanticKindLedger(
+    rawSemanticKindLedger,
+    rawLandscape,
+    landscapeId,
+    landscapePath,
+  )
   const sourceManifest = compositionViewManifestPath
     ? parseSourceManifest(rawCompositionViewManifest)
     : null
@@ -1384,9 +1754,13 @@ export const buildGoalBookModel = ({
     )]
   }
   const viewId = sourceManifest?.manifestId ?? compiledViewSources[0].view.viewId
+  const subject = sourceManifest
+    ? nonEmptyString((landscape as Record<string, unknown>).subject, 'landscape.subject')
+    : null
   const durationPolicyByJurisdiction = sourceManifest
-    ? parseMathDurationModelPolicy(
+    ? parseSubjectDurationModelPolicy(
       rawDurationModelPolicy,
+      subject!,
       sourceManifest.expectedJurisdictions,
       compiledViewSources.map(({ view }) => ({
         viewId: view.viewId,
@@ -1398,7 +1772,7 @@ export const buildGoalBookModel = ({
     )
     : null
   const targetCollection = sourceManifest
-    ? mergeTargetCollections(compiledViewSources, sourceManifest.navigationOwnership)
+    ? mergeTargetCollections(compiledViewSources, sourceManifest.navigationOwnership, subject!)
     : compiledViewSources[0].targetCollection
   const compositionScope = sourceManifest
     ? { schoolForm: 'Gymnasium' }
@@ -1455,7 +1829,7 @@ export const buildGoalBookModel = ({
   const internalDependentsById = new Map<string, string[]>()
   const allDependentsById = new Map<string, string[]>()
 
-  landscape.goals.forEach((goal) => {
+  landscape.goals.filter(({ id }) => primaryGoalIds.has(id)).forEach((goal) => {
     directRequires(goal, graph.goalById).forEach((prerequisiteId) => {
       const dependents = allDependentsById.get(prerequisiteId) ?? []
       dependents.push(goal.id)
@@ -1509,18 +1883,23 @@ export const buildGoalBookModel = ({
         .sort(compareByPage)
         .map((dependentId) => resolvedInternalReference(dependentId, graph.goalById, pageNumberById)),
       externalPrerequisites: externalPrerequisiteIds
-        .map((prerequisiteId) => resolvedExternalReference(
-          prerequisiteId,
-          graph.goalById,
-          canonicalGoalUrl(normalizedAtlasBaseUrl, landscapeId, prerequisiteId),
-          mode,
-        )),
+        .map((prerequisiteId) => {
+          const referenceLandscapeId = externalLandscapeIdByGoalId.get(prerequisiteId)
+          return resolvedExternalReference(
+            prerequisiteId,
+            graph.goalById,
+            referenceLandscapeId,
+            canonicalGoalUrl(normalizedAtlasBaseUrl, landscapeId, prerequisiteId),
+            mode,
+          )
+        }),
       externalReverseRequires: [...(allDependentsById.get(goalId) ?? [])]
         .filter((dependentId) => !targetIds.has(dependentId))
         .sort(compareStrings)
         .map((dependentId) => resolvedExternalReference(
           dependentId,
           graph.goalById,
+          undefined,
           canonicalGoalUrl(normalizedAtlasBaseUrl, landscapeId, dependentId),
           mode,
         )),
@@ -1607,6 +1986,9 @@ export const buildGoalBookModel = ({
         durationModelPolicyPath: sourceManifest.durationModelPolicyPath,
         durationModelPolicyDigest: digest(rawDurationModelPolicy),
       } : {}),
+      ...(externalLandscapeBindings.length > 0
+        ? { externalLandscapes: externalLandscapeBindings }
+        : {}),
       evidenceReviewSources: evidenceReviews.sources,
       goalFingerprintRuleVersion: GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
     },
@@ -1670,6 +2052,19 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
       fail('source.compositionViewSources contains duplicate view IDs.')
     }
   }
+  const externalLandscapeIds = new Set<string>()
+  const externalLandscapePaths = new Set<string>()
+  ;(model.source.externalLandscapes ?? []).forEach(({ path, landscapeId: externalId }) => {
+    if (
+      externalId === model.book.landscapeId
+      || externalLandscapeIds.has(externalId)
+      || externalLandscapePaths.has(path)
+    ) {
+      fail('source.externalLandscapes must bind unique foreign paths and landscape IDs.')
+    }
+    externalLandscapeIds.add(externalId)
+    externalLandscapePaths.add(path)
+  })
   model.pages.forEach((page, index) => {
     if (pageByGoalId.has(page.goalId)) fail(`duplicate page for goal ${page.goalId}.`)
     pageByGoalId.set(page.goalId, page)
@@ -1767,6 +2162,14 @@ export const parseAndValidateGoalBookModel = (raw: unknown): GoalBookModel => {
       const { goalId } = reference
       if (pageByGoalId.has(goalId)) {
         fail(`${page.goalId} contains in-book goal ${goalId} as external reference.`)
+      }
+      if (reference.landscapeId !== undefined) {
+        if (
+          reference.landscapeId === model.book.landscapeId
+          || !externalLandscapeIds.has(reference.landscapeId)
+        ) {
+          fail(`${page.goalId} references unbound external landscape ${reference.landscapeId}.`)
+        }
       }
       const expectedUrl = canonicalGoalUrl(
         model.book.atlasBaseUrl ?? undefined,
@@ -1918,6 +2321,14 @@ const parseGoalBookConfig = (value: unknown): GoalBookConfigFile => {
       record.evidenceReviewPaths,
       'config.evidenceReviewPaths',
     ),
+    ...(record.externalLandscapePaths === undefined
+      ? {}
+      : {
+          externalLandscapePaths: uniqueStringArray(
+            record.externalLandscapePaths,
+            'config.externalLandscapePaths',
+          ),
+        }),
     outputPath: nonEmptyString(record.outputPath, 'config.outputPath'),
   }
 }
@@ -1961,6 +2372,12 @@ export const loadGoalBookBuildInputs = async (
   const evidenceReviewAbsolutePaths = config.evidenceReviewPaths.map((configuredPath, index) => (
     resolveRepositoryPath(repositoryRoot, configuredPath, `config.evidenceReviewPaths[${index}]`)
   ))
+  const externalLandscapeAbsolutePaths = (config.externalLandscapePaths ?? [])
+    .map((configuredPath, index) => resolveRepositoryPath(
+      repositoryRoot,
+      configuredPath,
+      `config.externalLandscapePaths[${index}]`,
+    ))
   const [
     landscapeText,
     compositionViewText,
@@ -1968,6 +2385,7 @@ export const loadGoalBookBuildInputs = async (
     semanticKindLedgerText,
     goalVisualizationQaText,
     evidenceReviewTexts,
+    externalLandscapeTexts,
   ] = await Promise.all([
     readFile(landscapePath, 'utf8'),
     compositionViewPath ? readFile(compositionViewPath, 'utf8') : Promise.resolve(null),
@@ -1977,6 +2395,7 @@ export const loadGoalBookBuildInputs = async (
     readFile(semanticKindLedgerPath, 'utf8'),
     readFile(goalVisualizationQaPath, 'utf8'),
     Promise.all(evidenceReviewAbsolutePaths.map((path) => readFile(path, 'utf8'))),
+    Promise.all(externalLandscapeAbsolutePaths.map((path) => readFile(path, 'utf8'))),
   ])
   const goalVisualizationQa = parseJson(goalVisualizationQaText, config.goalVisualizationQaPath)
   const compositionViewManifest = compositionViewManifestText
@@ -2019,6 +2438,12 @@ export const loadGoalBookBuildInputs = async (
       : {}),
     ...(compositionViewManifest ? { compositionViewManifest } : {}),
     ...(compositionViewSources ? { compositionViewSources } : {}),
+    ...(externalLandscapeTexts.length > 0 ? {
+      externalLandscapeSources: externalLandscapeTexts.map((text, index) => ({
+        path: config.externalLandscapePaths![index],
+        landscape: parseJson(text, config.externalLandscapePaths![index]),
+      })),
+    } : {}),
     ...(durationModelPolicy ? { durationModelPolicy } : {}),
     semanticKindLedger: parseJson(semanticKindLedgerText, config.semanticKindLedgerPath),
     goalVisualizationQa,

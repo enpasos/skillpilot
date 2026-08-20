@@ -5,25 +5,30 @@ Initial scope: canonical German Gymnasium mathematics and physics
 Audience: curriculum authors, didactic reviewers, teachers, AI-review operators,
 and runtime implementers
 
-Implementation status (2026-08-10): Phase 0 and the nationwide mathematics
-review-atlas slice are implemented. Closed contracts exist for evidence
+Implementation status (2026-08-20): Phase 0 and the nationwide mathematics and
+physics review-atlas slices are implemented. Closed contracts exist for evidence
 profiles, review configuration, BookModel, render manifests, AI-review bundles,
 AI runs, findings, and the public-feedback envelope. The deterministic renderer
-has completed a real 754-page review edition covering the deduplicated union of
-curricular-atomic Gymnasium mathematics targets from all 16 German states,
-Sekundarstufe I and II. Every goal has exactly one physical PDF page. Exact
+has completed a 780-page mathematics review edition and a 426-page physics
+review edition. Each covers the deduplicated union of its current
+curricular-atomic Gymnasium targets from all 16 German states, Sekundarstufe I
+and II. Every goal has exactly one physical PDF page. Exact
 applicability remains state-first: G8/G9 and GK/LK are displayed only in their
 bound jurisdiction, stage, and profile tuples and are never inferred as global
 goal properties. The same digest-bound reviewer edition is shipped by the
 regular repository build as a coreless, read-only `/lernzielbuch` preview with
-chapter navigation, search, stable goal deep links, state-bound scope filters,
-and PDF download. The reserved `/lernziel-feedback` target is currently a
+subject selection, chapter navigation, search, stable goal deep links,
+state-bound scope filters, and PDF download. The reserved
+`/lernziel-feedback` target is currently a
 clearly labelled, non-writing pilot placeholder. The representation-choice
 profile is deliberately still an
 `ai_candidate` with `needs_human_review`; no independent multi-provider review
 or human approval is claimed. Public feedback links and their version-bound
 privacy-minimized envelope are prepared, but the moderated production intake
-is a later phase. Coach runtime and Mastery behavior remain unchanged.
+is a later phase. The physics review edition carries 406 current
+QA-ledger-bound candidate visualizations and 20 explicit no-image pages; it does
+not claim human image approval. Coach runtime and Mastery behavior remain
+unchanged.
 
 ## 1. Purpose
 
@@ -339,7 +344,9 @@ manifest enumerates every admitted Bundesland/stage/course projection and binds
 the reviewed G8/G9 policy by path and digest; filesystem discovery or a broad
 glob is not a publication contract. Its target set must equal the complete
 union of current curricular-atomic targets across the effective projections.
-At the current bound revision this means 754 unique goal pages. Missing,
+At the current bound revision this means 780 unique mathematics goal pages.
+The nationwide physics atlas follows the same contract with 426 unique goal
+pages from 64 explicitly bound state, stage, and course projections. Missing,
 additional, or duplicate IDs fail the build.
 
 Each nationwide page carries groups of the form:
@@ -370,15 +377,15 @@ has one and only one complete page, and every goal page belongs to exactly one
 goal.
 
 When a union edition consumes several composition views, view-local runtime IDs
-must not create repeated roots such as several indistinguishable
-`Mathematik` chapters. The nationwide mathematics atlas binds
+must not create repeated roots such as several indistinguishable subject
+chapters. The nationwide mathematics and physics atlases bind
 `common-topic-suffix-v1`: it compares every admitted placement of a goal,
 removes state-, stage-, duration-, and course-specific wrappers that are not
 common to all of them, and retains only their exact shared topic suffix below a
-single neutral `Mathematik` root. If no shared topic path exists, the goal stays
-at that root rather than inheriting a misleading path from whichever source
-file happens to sort first. Source-specific supplement chapters remain
-distinguishable only when their complete labels are genuinely shared.
+single neutral subject root. If no shared topic path exists, the goal stays at
+that root rather than inheriting a misleading path from whichever source file
+happens to sort first. Source-specific supplement chapters remain distinguishable
+only when their complete labels are genuinely shared.
 
 ### 5.4 Stable topological order from `requires`
 
@@ -440,8 +447,13 @@ destination names. Link labels continue to display the full unmodified ID.
 
 - An in-book prerequisite links to the goal's named destination.
 - An in-book reverse prerequisite uses the same mechanism.
-- An out-of-book prerequisite links to the versioned online atlas when a
-  canonical public target exists and is marked explicitly as external.
+- An out-of-book prerequisite records its fachliche source landscape separately
+  from the book context that resolves the link. The optional relation
+  `landscapeId` must match a digest-bound external-landscape source. The
+  historical `canonicalUrl` field points to the containing versioned book when
+  that book owns the external-reference detail record; this keeps links valid
+  even when the source subject's atomic-goal edition has no page for a referenced
+  cluster.
 - Missing, ambiguous, or unsafe targets fail the build; they are never rendered
   as apparently valid dead links.
 
@@ -790,7 +802,7 @@ profile with a generic template.
 ### 9.4.1 Concrete two-round understanding-evidence workflow
 
 The first nationwide mathematics wording pass uses a small, versioned
-calibration before the 754-goal run. Its 16 goals cover Jahrgangsstufe 5 through
+calibration before the 780-goal run. Its 16 goals cover Jahrgangsstufe 5 through
 10 and E through Q4, including concepts, procedures, representations, modeling,
 proof/derivation, data, and strategy choice. The sample calibrates three
 positive, content-specific expectations for every goal: essential
@@ -846,7 +858,7 @@ The operational sequence is:
    transfer, or a DE/EN regression returns the goal to human adjudication. It
    does not trigger an automatic second canonical rewrite.
 
-After the 16-goal calibration passes, the same sequence is applied to all 754
+After the 16-goal calibration passes, the same sequence is applied to all 780
 mathematics goals in deterministic bounded batches with a final exact-coverage
 check. “The same external round” means the same locked review contract and
 sampling policy over V2, not reuse of V1 fingerprints or disclosure of the
@@ -1015,10 +1027,19 @@ npm --prefix app run build:goal-book-model -- \
 npm --prefix app run build:goal-book-model -- \
   scripts/config/goal-books/de-gym-math-national-atlas.json
 
+npm --prefix app run build:goal-book-model -- \
+  scripts/config/goal-books/de-gym-physics-national-atlas.json
+
 npm --prefix app run render:goal-book -- \
   --model ../tmp/goal-books/de-gym-mathematik-bundesweit.book-model.json \
   --feedback-base-url https://skillpilot.com/lernziel-feedback \
   --pdf public/lernzielbuch/de-gym-mathematik-bundesweit.pdf \
+  --print-derivative-profile bounded-atlas
+
+npm --prefix app run render:goal-book -- \
+  --model ../tmp/goal-books/de-gym-physik-bundesweit.book-model.json \
+  --feedback-base-url https://skillpilot.com/lernziel-feedback \
+  --pdf public/lernzielbuch/de-gym-physik-bundesweit.pdf \
   --print-derivative-profile bounded-atlas
 
 npm --prefix app run render:goal-book -- \

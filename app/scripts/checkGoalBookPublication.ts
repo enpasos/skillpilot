@@ -10,23 +10,24 @@ import {
   stableGoalBookJson,
   type GoalBookModel,
 } from './goalBookModel'
+import {
+  DEFAULT_GOAL_BOOK_ID,
+  GOAL_BOOK_PUBLICATION_REGISTRY,
+  goalBookDefinitionById,
+  goalBookModelUrl,
+  goalBookPdfUrl,
+  goalBookRenderManifestUrl,
+  type GoalBookPublicationDefinition,
+} from '../src/utils/goalBookPublicationRegistry'
 
 const APP_ROOT = fileURLToPath(new URL('../', import.meta.url))
 const REPOSITORY_ROOT = resolve(APP_ROOT, '..')
 const PUBLICATION_ROOT = resolve(APP_ROOT, 'public', 'lernzielbuch')
-const CONFIG_PATH = resolve(
-  APP_ROOT,
-  'scripts/config/goal-books/de-gym-math-national-atlas.json',
-)
 const RENDER_MANIFEST_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-book/v1/goal-book-render-manifest.schema.json',
 )
 
-const BOOK_FILE_STEM = 'de-gym-mathematik-bundesweit'
-const MODEL_URL = `/lernzielbuch/${BOOK_FILE_STEM}.book-model.json`
-const PDF_URL = `/lernzielbuch/${BOOK_FILE_STEM}.pdf`
-const RENDER_MANIFEST_URL = `${PDF_URL}.render-manifest.json`
 const SHA256_PATTERN = /^sha256:[0-9a-f]{64}$/u
 const MAX_MODEL_BYTES = 8 * 1024 * 1024
 const MAX_PDF_BYTES = 90 * 1024 * 1024
@@ -66,6 +67,7 @@ export type GoalBookPublicationIndex = {
 }
 
 export type GoalBookPublicationPaths = {
+  bookId: string
   indexPath: string
   modelPath: string
   pdfPath: string
@@ -74,17 +76,28 @@ export type GoalBookPublicationPaths = {
   renderManifestSchemaPath: string
 }
 
-export const defaultGoalBookPublicationPaths = Object.freeze({
-  indexPath: resolve(PUBLICATION_ROOT, 'index.json'),
-  modelPath: resolve(PUBLICATION_ROOT, `${BOOK_FILE_STEM}.book-model.json`),
-  pdfPath: resolve(PUBLICATION_ROOT, `${BOOK_FILE_STEM}.pdf`),
+export const goalBookPublicationPaths = (
+  definition: GoalBookPublicationDefinition,
+  publicationRoot = PUBLICATION_ROOT,
+): GoalBookPublicationPaths => ({
+  bookId: definition.bookId,
+  indexPath: resolve(publicationRoot, 'index.json'),
+  modelPath: resolve(publicationRoot, `${definition.artifactStem}.book-model.json`),
+  pdfPath: resolve(publicationRoot, `${definition.artifactStem}.pdf`),
   renderManifestPath: resolve(
-    PUBLICATION_ROOT,
-    `${BOOK_FILE_STEM}.pdf.render-manifest.json`,
+    publicationRoot,
+    `${definition.artifactStem}.pdf.render-manifest.json`,
   ),
-  configPath: CONFIG_PATH,
+  configPath: resolve(APP_ROOT, definition.configPath),
   renderManifestSchemaPath: RENDER_MANIFEST_SCHEMA_PATH,
-}) satisfies GoalBookPublicationPaths
+})
+
+const defaultGoalBookDefinition = goalBookDefinitionById(DEFAULT_GOAL_BOOK_ID)
+if (!defaultGoalBookDefinition) throw new Error('Default goal-book publication is not registered')
+
+export const defaultGoalBookPublicationPaths = Object.freeze(
+  goalBookPublicationPaths(defaultGoalBookDefinition),
+) satisfies GoalBookPublicationPaths
 
 const fail = (message: string): never => {
   throw new Error(`Published goal book: ${message}`)
@@ -133,56 +146,75 @@ const sha256 = (bytes: Uint8Array): string => (
   `sha256:${createHash('sha256').update(bytes).digest('hex')}`
 )
 
-const parsePublicationIndex = (raw: string): GoalBookPublicationIndex => {
+export const parseGoalBookPublicationIndex = (raw: string): GoalBookPublicationIndex => {
   const index = asRecord(parseJson(raw, 'index.json'), 'index.json')
   exactKeys(index, ['schemaVersion', 'books'], 'index.json')
   if (index.schemaVersion !== 1) fail('index.json.schemaVersion must be 1')
   const books = index.books
-  if (!Array.isArray(books) || books.length !== 1) {
-    fail('index.json.books must contain exactly the published nationwide mathematics atlas')
-  }
-  const book = asRecord((books as unknown[])[0], 'index.json.books[0]')
-  exactKeys(
-    book,
-    ['bookId', 'title', 'locale', 'publicationMode', 'pageCount', 'model', 'pdf'],
-    'index.json.books[0]',
-  )
-  const model = asRecord(book.model, 'index.json.books[0].model')
-  exactKeys(model, ['url', 'sha256', 'modelDigest'], 'index.json.books[0].model')
-  const pdf = asRecord(book.pdf, 'index.json.books[0].pdf')
-  exactKeys(
-    pdf,
-    ['url', 'sha256', 'renderManifestUrl', 'renderManifestSha256'],
-    'index.json.books[0].pdf',
-  )
-
-  const publicationMode = requiredString(book, 'publicationMode', 'index.json.books[0]')
-  if (publicationMode !== 'review' && publicationMode !== 'public') {
-    fail('index.json.books[0].publicationMode must be review or public')
-  }
-  if (!Number.isInteger(book.pageCount) || Number(book.pageCount) < 1) {
-    fail('index.json.books[0].pageCount must be a positive integer')
-  }
-  if (requiredString(model, 'url', 'index.json.books[0].model') !== MODEL_URL) {
-    fail(`model URL must be exactly ${MODEL_URL}`)
-  }
-  if (requiredString(pdf, 'url', 'index.json.books[0].pdf') !== PDF_URL) {
-    fail(`PDF URL must be exactly ${PDF_URL}`)
-  }
   if (
-    requiredString(pdf, 'renderManifestUrl', 'index.json.books[0].pdf')
-    !== RENDER_MANIFEST_URL
+    !Array.isArray(books)
+    || books.length !== GOAL_BOOK_PUBLICATION_REGISTRY.length
   ) {
-    fail(`render-manifest URL must be exactly ${RENDER_MANIFEST_URL}`)
+    fail('index.json.books must contain exactly the complete publication registry')
   }
-  requiredSha256(model, 'sha256', 'index.json.books[0].model')
-  requiredSha256(model, 'modelDigest', 'index.json.books[0].model')
-  requiredSha256(pdf, 'sha256', 'index.json.books[0].pdf')
-  requiredSha256(pdf, 'renderManifestSha256', 'index.json.books[0].pdf')
-  requiredString(book, 'bookId', 'index.json.books[0]')
-  requiredString(book, 'title', 'index.json.books[0]')
-  requiredString(book, 'locale', 'index.json.books[0]')
+  const seenBookIds = new Set<string>()
+  let previousRegistryIndex = -1
+  for (const [indexPosition, item] of (books as unknown[]).entries()) {
+    const label = `index.json.books[${indexPosition}]`
+    const book = asRecord(item, label)
+    exactKeys(
+      book,
+      ['bookId', 'title', 'locale', 'publicationMode', 'pageCount', 'model', 'pdf'],
+      label,
+    )
+    const bookId = requiredString(book, 'bookId', label)
+    const definition = goalBookDefinitionById(bookId)
+    if (!definition) fail(`${label}.bookId is not in the closed publication registry`)
+    const registryIndex = GOAL_BOOK_PUBLICATION_REGISTRY.findIndex(
+      (candidate) => candidate.bookId === definition.bookId,
+    )
+    if (seenBookIds.has(bookId)) fail(`${label}.bookId is duplicated`)
+    if (registryIndex <= previousRegistryIndex) {
+      fail(`${label}.bookId is outside the canonical registry order`)
+    }
+    previousRegistryIndex = registryIndex
+    seenBookIds.add(bookId)
 
+    const model = asRecord(book.model, `${label}.model`)
+    exactKeys(model, ['url', 'sha256', 'modelDigest'], `${label}.model`)
+    const pdf = asRecord(book.pdf, `${label}.pdf`)
+    exactKeys(
+      pdf,
+      ['url', 'sha256', 'renderManifestUrl', 'renderManifestSha256'],
+      `${label}.pdf`,
+    )
+
+    const publicationMode = requiredString(book, 'publicationMode', label)
+    if (publicationMode !== 'review' && publicationMode !== 'public') {
+      fail(`${label}.publicationMode must be review or public`)
+    }
+    if (!Number.isInteger(book.pageCount) || Number(book.pageCount) < 1) {
+      fail(`${label}.pageCount must be a positive integer`)
+    }
+    const expectedModelUrl = goalBookModelUrl(definition)
+    const expectedPdfUrl = goalBookPdfUrl(definition)
+    const expectedRenderManifestUrl = goalBookRenderManifestUrl(definition)
+    if (requiredString(model, 'url', `${label}.model`) !== expectedModelUrl) {
+      fail(`${label}.model.url must be exactly ${expectedModelUrl}`)
+    }
+    if (requiredString(pdf, 'url', `${label}.pdf`) !== expectedPdfUrl) {
+      fail(`${label}.pdf.url must be exactly ${expectedPdfUrl}`)
+    }
+    if (requiredString(pdf, 'renderManifestUrl', `${label}.pdf`) !== expectedRenderManifestUrl) {
+      fail(`${label}.pdf.renderManifestUrl must be exactly ${expectedRenderManifestUrl}`)
+    }
+    requiredSha256(model, 'sha256', `${label}.model`)
+    requiredSha256(model, 'modelDigest', `${label}.model`)
+    requiredSha256(pdf, 'sha256', `${label}.pdf`)
+    requiredSha256(pdf, 'renderManifestSha256', `${label}.pdf`)
+    requiredString(book, 'title', label)
+    requiredString(book, 'locale', label)
+  }
   return index as GoalBookPublicationIndex
 }
 
@@ -223,7 +255,7 @@ const assertNoLearnerDataKeys = (value: unknown, path = '$') => {
   }
 }
 
-const assertCanonicalRelationUrls = (model: GoalBookModel) => {
+export const assertCanonicalRelationUrls = (model: GoalBookModel) => {
   const externalReferences = model.pages.flatMap((page) => [
     ...page.externalPrerequisites,
     ...page.externalReverseRequires,
@@ -231,10 +263,19 @@ const assertCanonicalRelationUrls = (model: GoalBookModel) => {
   for (const reference of externalReferences) {
     if (reference.canonicalUrl === null) continue
     const url = new URL(reference.canonicalUrl)
+    const parameterKeys = [...url.searchParams.keys()]
     if (
       url.origin !== PUBLIC_ORIGIN
       || url.pathname !== '/lernzielbuch'
+      || url.username !== ''
+      || url.password !== ''
       || url.hash !== `#goal-${reference.goalId}`
+      || parameterKeys.length !== 2
+      || new Set(parameterKeys).size !== 2
+      || !parameterKeys.includes('landscape')
+      || !parameterKeys.includes('edition')
+      || url.searchParams.get('landscape') !== model.book.landscapeId
+      || url.searchParams.get('edition') !== model.book.edition
     ) {
       fail(`external relation ${reference.goalId} has an unsafe canonical URL`)
     }
@@ -260,12 +301,21 @@ export const verifyPublishedGoalBook = async (
     loadGoalBookBuildInputs(paths.configPath),
   ])
 
-  const index = parsePublicationIndex(indexRaw)
-  const indexBook = index.books[0]
+  const index = parseGoalBookPublicationIndex(indexRaw)
+  const indexBook = index.books.find(({ bookId }) => bookId === paths.bookId)
+  if (!indexBook) fail(`registered book ${paths.bookId} is missing from index.json`)
+  const definition = goalBookDefinitionById(paths.bookId)
+  if (!definition) fail(`book ${paths.bookId} is missing from the publication registry`)
   if (Buffer.byteLength(publishedModelRaw, 'utf8') > MAX_MODEL_BYTES) {
     fail('published BookModel exceeds the browser runtime size budget')
   }
   const publishedModel = parseAndValidateGoalBookModel(publishedModelRaw)
+  if (publishedModel.book.landscapeId !== definition.landscapeId) {
+    fail('BookModel landscapeId differs from the closed publication registry')
+  }
+  if (publishedModel.book.edition !== definition.edition) {
+    fail('BookModel edition differs from the closed publication registry')
+  }
   assertNoLearnerDataKeys(publishedModel)
   assertCanonicalRelationUrls(publishedModel)
   const expectedSerializedModel = `${JSON.stringify(currentBuild.model, null, 2)}\n`
@@ -351,14 +401,29 @@ export const verifyPublishedGoalBook = async (
   }
 }
 
+export const verifyPublishedGoalBooks = async (): Promise<Awaited<
+  ReturnType<typeof verifyPublishedGoalBook>
+>[]> => {
+  const index = parseGoalBookPublicationIndex(
+    await readFile(defaultGoalBookPublicationPaths.indexPath, 'utf8'),
+  )
+  return Promise.all(index.books.map((book) => {
+    const definition = goalBookDefinitionById(book.bookId)
+    if (!definition) return fail(`registered book ${book.bookId} has no publication definition`)
+    return verifyPublishedGoalBook(goalBookPublicationPaths(definition))
+  }))
+}
+
 const isMain = process.argv[1]
   && import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 
 if (isMain) {
-  verifyPublishedGoalBook().then(({ model, pdfSha256 }) => {
-    console.log(
-      `Published goal book verified: ${model.book.id}; ${model.pages.length} pages; ${pdfSha256}`,
-    )
+  verifyPublishedGoalBooks().then((verifiedBooks) => {
+    for (const { model, pdfSha256 } of verifiedBooks) {
+      console.log(
+        `Published goal book verified: ${model.book.id}; ${model.pages.length} pages; ${pdfSha256}`,
+      )
+    }
   }).catch((error) => {
     console.error(error instanceof Error ? error.message : String(error))
     process.exitCode = 1

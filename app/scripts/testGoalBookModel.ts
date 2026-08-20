@@ -13,9 +13,10 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   buildGoalBookModel,
+  fingerprintSemanticKindSourceGoal,
   loadGoalBookBuildInputs,
   parseAndValidateGoalBookModel,
-  parseMathDurationModelPolicy,
+  parseSubjectDurationModelPolicy,
   stableGoalBookJson,
   type GoalBookBuildInput,
 } from './goalBookModel'
@@ -51,6 +52,7 @@ const DESCRIPTION_UNDERSTANDING_EVIDENCE_CALIBRATION_GOAL_IDS = [
 ] as const
 const BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const FIXTURE_ASSET_DIGEST = `sha256:${'1'.repeat(64)}`
+const EXPECTED_NATIONAL_MATH_MODEL_DIGEST = 'sha256:b9602c0c242a3ebe9f0041c88c274f3ba5f5ac315334558554bea2609c81ffab'
 
 const goal = ({
   id,
@@ -86,8 +88,8 @@ const goal = ({
   ...(resourceLinks ? { resourceLinks } : {}),
 })
 
-const fixtureInput = (): GoalBookBuildInput => ({
-  landscape: {
+const fixtureInput = (): GoalBookBuildInput => {
+  const landscape = {
     landscapeId: 'fixture-landscape',
     locale: 'de-DE',
     title: 'Fixture',
@@ -112,8 +114,19 @@ const fixtureInput = (): GoalBookBuildInput => ({
         }],
       }),
     ],
-  },
-  compositionView: {
+  }
+  const semanticKindByGoalId = new Map<string, 'curricularAtomic' | 'curricularArea'>([
+    ['main', 'curricularArea'],
+    ['external', 'curricularAtomic'],
+    ['future', 'curricularAtomic'],
+    ['A', 'curricularAtomic'],
+    ['B', 'curricularAtomic'],
+    ['C', 'curricularAtomic'],
+    ['D', 'curricularAtomic'],
+  ])
+  return {
+    landscape,
+    compositionView: {
     viewId: 'fixture-view',
     landscapeId: 'fixture-landscape',
     scope: { schoolForm: 'Fixture', stage: 'Fixture' },
@@ -124,19 +137,40 @@ const fixtureInput = (): GoalBookBuildInput => ({
       children: [{ kind: 'canonicalSubtree', goalId: 'main' }],
     }],
   },
-  semanticKindLedger: {
-    ledgerId: 'fixture-semantic-kinds',
-    sourceLandscapeId: 'fixture-landscape',
-    decisions: [
-      { goalId: 'main', semanticKind: 'curricularArea', decisionStatus: 'authoritative' },
-      { goalId: 'external', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-      { goalId: 'future', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-      { goalId: 'A', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-      { goalId: 'B', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-      { goalId: 'C', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-      { goalId: 'D', semanticKind: 'curricularAtomic', decisionStatus: 'authoritative' },
-    ],
-  },
+    semanticKindLedger: {
+      $schema: 'https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json',
+      documentType: 'semantic-kind-ledger',
+      ledgerFormatVersion: 1,
+      ledgerId: 'fixture-semantic-kinds',
+      profileId: 'fixture-semantic-kinds',
+      profileVersion: '1.0.0',
+      sourceLandscapeId: 'fixture-landscape',
+      sourceLandscapePath: 'fixtures/landscape.json',
+      sourceFingerprintContractId: 'semantic-kind-source-fingerprint-v1',
+      reviewMethod: 'one-time-reviewed-pilot-migration-v1',
+      counts: {
+        curricularAtomic: 6,
+        curricularArea: 1,
+        practiceAssessment: 0,
+        programStructure: 0,
+        memory: 0,
+        runtimeSupport: 0,
+        orientation: 0,
+        total: 7,
+      },
+      decisions: landscape.goals.map((sourceGoal) => {
+        const semanticKind = semanticKindByGoalId.get(sourceGoal.id)!
+        return {
+          goalId: sourceGoal.id,
+          sourceFingerprint: fingerprintSemanticKindSourceGoal(sourceGoal),
+          semanticKind,
+          decisionStatus: 'authoritative',
+          decisionBasis: semanticKind === 'curricularArea'
+            ? 'reviewed-current-pilot-curricular-area'
+            : 'reviewed-current-pilot-curricular-atomic',
+        }
+      }),
+    },
   goalVisualizationQa: {
     records: [{
       goalId: 'A',
@@ -155,7 +189,7 @@ const fixtureInput = (): GoalBookBuildInput => ({
     '/assets/a.png': FIXTURE_ASSET_DIGEST,
   },
   evidenceReviewSources: [],
-  config: {
+    config: {
     bookId: 'fixture-book',
     title: 'Fixture book',
     landscapePath: 'fixtures/landscape.json',
@@ -164,8 +198,23 @@ const fixtureInput = (): GoalBookBuildInput => ({
     goalVisualizationQaPath: 'fixtures/goal-visualization-qa.json',
     publicationMode: 'review',
     evidenceReviewPaths: [],
-  },
-})
+    },
+  }
+}
+
+const refreshFixtureSemanticKindFingerprint = (
+  input: GoalBookBuildInput,
+  goalId: string,
+): void => {
+  const sourceGoal = (input.landscape as { goals: Array<Record<string, unknown>> }).goals
+    .find(({ id }) => id === goalId)
+  assert(sourceGoal, `missing fixture source goal ${goalId}`)
+  const decision = (input.semanticKindLedger as {
+    decisions: Array<{ goalId: string; sourceFingerprint: string }>
+  }).decisions.find((candidate) => candidate.goalId === goalId)
+  assert(decision, `missing fixture semantic-kind decision ${goalId}`)
+  decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(sourceGoal)
+}
 
 const expectBuildFailure = (input: GoalBookBuildInput, pattern: RegExp) => {
   assert.throws(() => buildGoalBookModel(input), pattern)
@@ -337,16 +386,19 @@ for (const forbiddenLearnerField of ['learnerId', 'skillpilotId', 'learningSessi
 const requiresCycle = fixtureInput()
 const requiresCycleGoals = (requiresCycle.landscape as { goals: Array<{ id: string; requires: string[] }> }).goals
 requiresCycleGoals.find(({ id }) => id === 'B')!.requires = ['D']
+refreshFixtureSemanticKindFingerprint(requiresCycle, 'B')
 expectBuildFailure(requiresCycle, /direct requires cycle/u)
 
 const unresolvedRequires = fixtureInput()
 const unresolvedGoals = (unresolvedRequires.landscape as { goals: Array<{ id: string; requires: string[] }> }).goals
 unresolvedGoals.find(({ id }) => id === 'A')!.requires = ['missing']
-expectBuildFailure(unresolvedRequires, /unresolved direct prerequisite "missing"/u)
+refreshFixtureSemanticKindFingerprint(unresolvedRequires, 'A')
+expectBuildFailure(unresolvedRequires, /unresolved cross-landscape prerequisite missing/u)
 
 const containsCycle = fixtureInput()
 const containsCycleGoals = (containsCycle.landscape as { goals: Array<{ id: string; contains: string[] }> }).goals
 containsCycleGoals.find(({ id }) => id === 'main')!.contains.push('main')
+refreshFixtureSemanticKindFingerprint(containsCycle, 'main')
 expectBuildFailure(containsCycle, /invalid canonical landscape/u)
 
 const unresolvedComposition = fixtureInput()
@@ -394,7 +446,123 @@ const nonAuthoritativeLedger = nonAuthoritativeSemanticKind.semanticKindLedger a
   decisions: Array<{ goalId: string; decisionStatus: string }>
 }
 nonAuthoritativeLedger.decisions.find(({ goalId }) => goalId === 'A')!.decisionStatus = 'candidate'
-expectBuildFailure(nonAuthoritativeSemanticKind, /not authoritative/u)
+expectBuildFailure(nonAuthoritativeSemanticKind, /closed JSON Schema/u)
+
+const staleSemanticKindFingerprint = fixtureInput()
+;(staleSemanticKindFingerprint.landscape as { goals: Array<{ id: string; title: string }> }).goals
+  .find(({ id }) => id === 'A')!.title = 'Mutated source title'
+expectBuildFailure(staleSemanticKindFingerprint, /stale semantic-kind decision for goal A/u)
+
+const wrongSemanticKindContract = fixtureInput()
+;(wrongSemanticKindContract.semanticKindLedger as { sourceFingerprintContractId: string })
+  .sourceFingerprintContractId = 'semantic-kind-source-fingerprint-v2'
+expectBuildFailure(wrongSemanticKindContract, /closed JSON Schema/u)
+
+const openSemanticKindLedger = fixtureInput()
+;(openSemanticKindLedger.semanticKindLedger as Record<string, unknown>).unexpected = true
+expectBuildFailure(openSemanticKindLedger, /closed JSON Schema/u)
+
+const openSemanticKindDecision = fixtureInput()
+;(openSemanticKindDecision.semanticKindLedger as {
+  decisions: Array<Record<string, unknown>>
+}).decisions[0].unexpected = true
+expectBuildFailure(openSemanticKindDecision, /closed JSON Schema/u)
+
+const inconsistentSemanticKindCounts = fixtureInput()
+;(inconsistentSemanticKindCounts.semanticKindLedger as {
+  counts: { curricularAtomic: number }
+}).counts.curricularAtomic = 5
+expectBuildFailure(inconsistentSemanticKindCounts, /count for curricularAtomic/u)
+
+const externalLandscapeFixture = {
+  landscapeId: 'fixture-mathematics',
+  locale: 'de-DE',
+  title: 'External mathematics fixture',
+  description: 'External mathematics fixture landscape',
+  goals: [goal({ id: 'math-foundation', title: 'External mathematics foundation' })],
+}
+const crossLandscapePrerequisite = fixtureInput()
+const crossLandscapeGoalA = (crossLandscapePrerequisite.landscape as {
+  goals: Array<{ id: string; requires: string[] }>
+}).goals.find(({ id }) => id === 'A')!
+crossLandscapeGoalA.requires = ['math-foundation']
+refreshFixtureSemanticKindFingerprint(crossLandscapePrerequisite, 'A')
+crossLandscapePrerequisite.config.externalLandscapePaths = ['fixtures/mathematics.json']
+crossLandscapePrerequisite.externalLandscapeSources = [{
+  path: 'fixtures/mathematics.json',
+  landscape: externalLandscapeFixture,
+}]
+crossLandscapePrerequisite.config.atlasBaseUrl = 'https://skillpilot.com/goal-atlas'
+const crossLandscapeBook = buildGoalBookModel(crossLandscapePrerequisite)
+assert.deepEqual(crossLandscapeBook.source.externalLandscapes, [{
+  path: 'fixtures/mathematics.json',
+  landscapeId: 'fixture-mathematics',
+  digest: crossLandscapeBook.source.externalLandscapes?.[0].digest,
+}])
+assert.match(crossLandscapeBook.source.externalLandscapes![0].digest, /^sha256:[0-9a-f]{64}$/u)
+assert.deepEqual(
+  crossLandscapeBook.pages.find(({ goalId }) => goalId === 'A')?.externalPrerequisites,
+  [{
+    goalId: 'math-foundation',
+    title: 'External mathematics foundation',
+    landscapeId: 'fixture-mathematics',
+    canonicalUrl: 'https://skillpilot.com/goal-atlas?landscape=fixture-landscape&edition=curricular-atomic-v1#goal-math-foundation',
+  }],
+)
+parseAndValidateGoalBookModel(crossLandscapeBook)
+
+const openCrossLandscapeSource = structuredClone(crossLandscapeBook) as unknown as {
+  source: { externalLandscapes: Array<Record<string, unknown>> }
+}
+openCrossLandscapeSource.source.externalLandscapes[0].unexpected = true
+assert.throws(
+  () => parseAndValidateGoalBookModel(openCrossLandscapeSource),
+  /closed JSON Schema/u,
+  'external landscape source bindings use a closed schema',
+)
+
+const openCrossLandscapeReference = structuredClone(crossLandscapeBook) as unknown as {
+  pages: Array<{ externalPrerequisites: Array<Record<string, unknown>> }>
+}
+openCrossLandscapeReference.pages
+  .find(({ externalPrerequisites }) => externalPrerequisites.length > 0)!
+  .externalPrerequisites[0].unexpected = true
+assert.throws(
+  () => parseAndValidateGoalBookModel(openCrossLandscapeReference),
+  /closed JSON Schema/u,
+  'cross-landscape references use a closed schema',
+)
+
+const unboundCrossLandscapePrerequisite = fixtureInput()
+;(unboundCrossLandscapePrerequisite.landscape as {
+  goals: Array<{ id: string; requires: string[] }>
+}).goals.find(({ id }) => id === 'A')!.requires = ['math-foundation']
+refreshFixtureSemanticKindFingerprint(unboundCrossLandscapePrerequisite, 'A')
+expectBuildFailure(unboundCrossLandscapePrerequisite, /unresolved cross-landscape prerequisite math-foundation/u)
+
+const ambiguousExternalGoal = fixtureInput()
+ambiguousExternalGoal.config.externalLandscapePaths = ['fixtures/colliding.json']
+ambiguousExternalGoal.externalLandscapeSources = [{
+  path: 'fixtures/colliding.json',
+  landscape: {
+    ...externalLandscapeFixture,
+    landscapeId: 'fixture-colliding',
+    goals: [goal({ id: 'A', title: 'Colliding goal' })],
+  },
+}]
+expectBuildFailure(ambiguousExternalGoal, /external goal ID A is ambiguous/u)
+
+const forbiddenCrossLandscapeContains = fixtureInput()
+;(forbiddenCrossLandscapeContains.landscape as {
+  goals: Array<{ id: string; contains: string[] }>
+}).goals.find(({ id }) => id === 'main')!.contains.push('math-foundation')
+refreshFixtureSemanticKindFingerprint(forbiddenCrossLandscapeContains, 'main')
+forbiddenCrossLandscapeContains.config.externalLandscapePaths = ['fixtures/mathematics.json']
+forbiddenCrossLandscapeContains.externalLandscapeSources = [{
+  path: 'fixtures/mathematics.json',
+  landscape: externalLandscapeFixture,
+}]
+expectBuildFailure(forbiddenCrossLandscapeContains, /foreign contains reference math-foundation/u)
 
 const missingVisualizationQa = fixtureInput()
 const missingVisualizationQaLedger = missingVisualizationQa.goalVisualizationQa as {
@@ -415,7 +583,7 @@ const singleStatePolicy = {
   }],
 }
 assert.deepEqual(
-  parseMathDurationModelPolicy(singleStatePolicy, ['DE-BY'], []).get('DE-BY'),
+  parseSubjectDurationModelPolicy(singleStatePolicy, 'Mathematik', ['DE-BY'], []).get('DE-BY'),
   {
     jurisdiction: 'DE-BY',
     stage: 'SekI+SekII',
@@ -427,14 +595,14 @@ assert.deepEqual(
 const stalePolicyStage = JSON.parse(JSON.stringify(singleStatePolicy)) as typeof singleStatePolicy
 stalePolicyStage.decisions[0].stage = 'CrossStage'
 assert.throws(
-  () => parseMathDurationModelPolicy(stalePolicyStage, ['DE-BY'], []),
+  () => parseSubjectDurationModelPolicy(stalePolicyStage, 'Mathematik', ['DE-BY'], []),
   /unsupported stage CrossStage/u,
 )
 
 const invalidSingleStatePolicy = JSON.parse(JSON.stringify(singleStatePolicy)) as typeof singleStatePolicy
 invalidSingleStatePolicy.decisions[0].durationModels = ['G8', 'G9']
 assert.throws(
-  () => parseMathDurationModelPolicy(invalidSingleStatePolicy, ['DE-BY'], []),
+  () => parseSubjectDurationModelPolicy(invalidSingleStatePolicy, 'Mathematik', ['DE-BY'], []),
   /single-duration policy.*exactly one duration/u,
 )
 
@@ -450,11 +618,11 @@ const neutralStatePolicy = {
   }],
 }
 assert.equal(
-  parseMathDurationModelPolicy(neutralStatePolicy, ['DE-BB'], []).get('DE-BB')?.decision,
+  parseSubjectDurationModelPolicy(neutralStatePolicy, 'Mathematik', ['DE-BB'], []).get('DE-BB')?.decision,
   'duration-neutral-projection',
 )
 assert.throws(
-  () => parseMathDurationModelPolicy(neutralStatePolicy, ['DE-BB'], [{
+  () => parseSubjectDurationModelPolicy(neutralStatePolicy, 'Mathematik', ['DE-BB'], [{
     viewId: 'unexpected-bb-g8',
     jurisdiction: 'DE-BB',
     stage: 'SekI',
@@ -496,8 +664,9 @@ const heDualDurationPolicy = {
   }],
 }
 assert.equal(
-  parseMathDurationModelPolicy(
+  parseSubjectDurationModelPolicy(
     heDualDurationPolicy,
+    'Mathematik',
     ['DE-HE'],
     heDualDurationSources,
   ).get('DE-HE')?.compositionViewIds.length,
@@ -507,8 +676,9 @@ assert.equal(
 const hePolicyWithMissingBinding = JSON.parse(JSON.stringify(heDualDurationPolicy)) as typeof heDualDurationPolicy
 hePolicyWithMissingBinding.decisions[0].compositionViewIds.pop()
 assert.throws(
-  () => parseMathDurationModelPolicy(
+  () => parseSubjectDurationModelPolicy(
     hePolicyWithMissingBinding,
+    'Mathematik',
     ['DE-HE'],
     heDualDurationSources,
   ),
@@ -516,8 +686,9 @@ assert.throws(
 )
 
 assert.throws(
-  () => parseMathDurationModelPolicy(
+  () => parseSubjectDurationModelPolicy(
     heDualDurationPolicy,
+    'Mathematik',
     ['DE-HE'],
     [...heDualDurationSources, {
       viewId: 'he-extra-g8',
@@ -534,13 +705,67 @@ const heSourcesWithWrongRole = heDualDurationSources.map((source) => (
   source.viewId === 'he-lk-g9' ? { ...source, courseProfile: 'GK' as const } : source
 ))
 assert.throws(
-  () => parseMathDurationModelPolicy(
+  () => parseSubjectDurationModelPolicy(
     heDualDurationPolicy,
+    'Mathematik',
     ['DE-HE'],
     heSourcesWithWrongRole,
   ),
   /exactly one SekI, CrossStage\/GK, and CrossStage\/LK view/u,
 )
+
+const physicsAtlasInput = fixtureInput()
+;(physicsAtlasInput.landscape as Record<string, unknown>).subject = 'Physik'
+const physicsAtlasView = JSON.parse(JSON.stringify(physicsAtlasInput.compositionView)) as {
+  scope: Record<string, string>
+  rootNodes: Array<{ label: string }>
+}
+physicsAtlasView.scope = {
+  schoolForm: 'Gymnasium',
+  jurisdiction: 'DE-BY',
+  stage: 'SekI',
+}
+physicsAtlasView.rootNodes[0].label = 'Physik'
+delete physicsAtlasInput.compositionView
+delete physicsAtlasInput.config.compositionViewPath
+physicsAtlasInput.config.compositionViewManifestPath = 'fixtures/physics-atlas.sources.json'
+physicsAtlasInput.compositionViewManifest = {
+  schemaVersion: 1,
+  manifestId: 'fixture-physics-atlas',
+  landscapeId: 'fixture-landscape',
+  navigationOwnership: 'common-topic-suffix-v1',
+  expectedJurisdictions: ['DE-BY'],
+  durationModelPolicyPath: 'fixtures/duration-model-policy.json',
+  expectedCurricularAtomicGoalCount: 4,
+  sourcePaths: ['fixtures/physics.view.json'],
+}
+physicsAtlasInput.compositionViewSources = [{
+  path: 'fixtures/physics.view.json',
+  view: physicsAtlasView,
+}]
+physicsAtlasInput.durationModelPolicy = {
+  schemaVersion: 1,
+  decisions: [
+    ...singleStatePolicy.decisions,
+    {
+      subject: 'Physik',
+      jurisdiction: 'DE-BY',
+      stage: 'SekI+SekII',
+      status: 'reviewed',
+      decision: 'single-duration-source',
+      durationModels: ['G9'],
+    },
+  ],
+}
+const physicsAtlas = buildGoalBookModel(physicsAtlasInput)
+const physicsAtlasRootChapters = physicsAtlas.chapters
+  .filter(({ parentChapterId }) => parentChapterId === null)
+assert.deepEqual(physicsAtlasRootChapters.map(({ label }) => label), ['Physik'])
+assert.ok(physicsAtlas.pages.every(({ breadcrumbs }) => breadcrumbs[0] === 'Physik'))
+assert.ok(physicsAtlas.pages.every(({ applicability }) => (
+  applicability?.[0]?.jurisdiction === 'DE-BY'
+  && applicability[0].scopes[0]?.durationModel === 'G9'
+)))
 
 const sekIBookConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-de-gym-seki-math.json',
@@ -670,12 +895,22 @@ const nationalAtlasConfigPath = fileURLToPath(new URL(
   import.meta.url,
 ))
 const nationalAtlas = (await loadGoalBookBuildInputs(nationalAtlasConfigPath)).model
+const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
+  '../public/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json',
+  import.meta.url,
+)), 'utf8')
 assert.equal(nationalAtlas.book.id, 'de-gym-mathematik-bundesweit')
 assert.equal(nationalAtlas.book.viewId, 'de-gym-math-national-atlas')
 assert.equal(nationalAtlas.book.pageCount, 780)
 assert.equal(nationalAtlas.book.scope.schoolForm, 'Gymnasium')
 assert.deepEqual(Object.keys(nationalAtlas.book.scope), ['schoolForm'])
 assert.equal(new Set(nationalAtlas.pages.map(({ goalId }) => goalId)).size, 780)
+assert.equal(nationalAtlas.digest, EXPECTED_NATIONAL_MATH_MODEL_DIGEST)
+assert.equal(
+  `${JSON.stringify(nationalAtlas, null, 2)}\n`,
+  publishedNationalAtlasText,
+  'subject-neutral atlas refactors must leave the published mathematics BookModel byte-exact',
+)
 assert.equal(nationalAtlas.source.compositionViewSources?.length, 83)
 assert.match(nationalAtlas.source.compositionViewManifestDigest ?? '', /^sha256:[0-9a-f]{64}$/u)
 assert.equal(nationalAtlas.source.navigationOwnership, 'common-topic-suffix-v1')

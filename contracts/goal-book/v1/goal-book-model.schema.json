@@ -135,6 +135,11 @@
         "navigationOwnership": { "const": "common-topic-suffix-v1" },
         "durationModelPolicyPath": { "$ref": "#/$defs/nonBlank" },
         "durationModelPolicyDigest": { "$ref": "#/$defs/sha256" },
+        "externalLandscapes": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/externalLandscapeSource" }
+        },
         "evidenceReviewSources": {
           "type": "array",
           "items": { "$ref": "#/$defs/evidenceReviewSource" }
@@ -148,6 +153,16 @@
       "required": ["path", "digest"],
       "properties": {
         "path": { "$ref": "#/$defs/nonBlank" },
+        "digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "externalLandscapeSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "landscapeId", "digest"],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlank" },
+        "landscapeId": { "$ref": "#/$defs/goalId" },
         "digest": { "$ref": "#/$defs/sha256" }
       }
     },
@@ -214,6 +229,7 @@
       "properties": {
         "goalId": { "$ref": "#/$defs/goalId" },
         "title": { "$ref": "#/$defs/nonBlank" },
+        "landscapeId": { "$ref": "#/$defs/goalId" },
         "canonicalUrl": {
           "oneOf": [
             { "type": "string", "pattern": "^https://" },

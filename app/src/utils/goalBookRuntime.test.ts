@@ -8,6 +8,7 @@ import {
   parseGoalBookPublicationIndex,
   parseGoalBookRuntimeModel,
   parseVerifiedGoalBookRuntimeModel,
+  selectGoalBookPublication,
 } from './goalBookRuntime'
 
 const assert = {
@@ -42,10 +43,10 @@ const sha = `sha256:${'a'.repeat(64)}`
 const fixture = () => ({
   schemaVersion: '1.0.0',
   book: {
-    id: 'book',
+    id: 'de-gym-mathematik-bundesweit',
     title: 'Lernzielbuch',
     locale: 'de-DE',
-    landscapeId: 'landscape',
+    landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced',
     viewId: 'view',
     scope: {},
     pageCount: 2,
@@ -133,7 +134,7 @@ const fixture = () => ({
       externalPrerequisites: [{
         goalId: 'external',
         title: 'Externe Grundlage',
-        canonicalUrl: 'https://skillpilot.com/lernzielbuch?landscape=landscape&edition=curricular-atomic-v1#goal-external',
+        canonicalUrl: 'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external',
       }],
       externalReverseRequires: [],
       applicability: [{
@@ -172,13 +173,62 @@ assert.equal(model.pages[0].goalFingerprint, sha)
 assert.equal(model.pages[0].applicability?.[1].scopes[0].durationModel, 'G8')
 assert.equal(
   model.pages[1].externalPrerequisites[0].canonicalUrl,
-  'https://skillpilot.com/lernzielbuch?landscape=landscape&edition=curricular-atomic-v1#goal-external',
+  'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external',
 )
 
-const publication = parseGoalBookPublicationIndex({
+const crossLandscapeFixture = fixture()
+;(crossLandscapeFixture.source as Record<string, unknown>).externalLandscapes = [{
+  path: 'curricula/DE/Gymnasium/canonical/external-mathematics.json',
+  landscapeId: 'external-mathematics',
+  digest: sha,
+}]
+;(crossLandscapeFixture.pages[1].externalPrerequisites[0] as Record<string, unknown>)
+  .landscapeId = 'external-mathematics'
+const crossLandscapeModel = parseGoalBookRuntimeModel(crossLandscapeFixture)
+assert.equal(
+  crossLandscapeModel.pages[1].externalPrerequisites[0].landscapeId,
+  'external-mathematics',
+  'the runtime retains the strictly source-bound external landscape identity',
+)
+assert.equal(
+  crossLandscapeModel.pages[1].externalPrerequisites[0].canonicalUrl,
+  'https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&edition=curricular-atomic-v1#goal-external',
+  'the canonical URL resolves in the containing book context rather than pretending provenance is navigation',
+)
+
+const unboundExternalLandscape = fixture()
+;(unboundExternalLandscape.pages[1].externalPrerequisites[0] as Record<string, unknown>)
+  .landscapeId = 'external-mathematics'
+assert.throws(
+  () => parseGoalBookRuntimeModel(unboundExternalLandscape),
+  /nicht sicher gelesen/u,
+  'an external reference landscape must be bound by source.externalLandscapes',
+)
+
+const openExternalLandscapeSource = crossLandscapeFixture
+  .source as Record<string, Array<Record<string, unknown>>>
+openExternalLandscapeSource.externalLandscapes[0].unexpected = true
+assert.throws(
+  () => parseGoalBookRuntimeModel(crossLandscapeFixture),
+  /nicht sicher gelesen/u,
+  'cross-landscape source bindings use a closed runtime shape',
+)
+delete openExternalLandscapeSource.externalLandscapes[0].unexpected
+
+const openExternalReference = crossLandscapeFixture.pages[1]
+  .externalPrerequisites[0] as Record<string, unknown>
+openExternalReference.unexpected = true
+assert.throws(
+  () => parseGoalBookRuntimeModel(crossLandscapeFixture),
+  /nicht sicher gelesen/u,
+  'cross-landscape references use a closed runtime shape',
+)
+delete openExternalReference.unexpected
+
+const publicationIndexFixture = {
   schemaVersion: 1,
   books: [{
-    bookId: 'book',
+    bookId: 'de-gym-mathematik-bundesweit',
     title: 'Lernzielbuch',
     locale: 'de-DE',
     publicationMode: 'review',
@@ -194,10 +244,89 @@ const publication = parseGoalBookPublicationIndex({
       renderManifestUrl: '/lernzielbuch/de-gym-mathematik-bundesweit.pdf.render-manifest.json',
       renderManifestSha256: sha,
     },
+  }, {
+    bookId: 'de-gym-physik-bundesweit',
+    title: 'Lernzielbuch Physik',
+    locale: 'de-DE',
+    publicationMode: 'review',
+    pageCount: 426,
+    model: {
+      url: '/lernzielbuch/de-gym-physik-bundesweit.book-model.json',
+      sha256: sha,
+      modelDigest: sha,
+    },
+    pdf: {
+      url: '/lernzielbuch/de-gym-physik-bundesweit.pdf',
+      sha256: sha,
+      renderManifestUrl: '/lernzielbuch/de-gym-physik-bundesweit.pdf.render-manifest.json',
+      renderManifestSha256: sha,
+    },
   }],
-})
+}
+const publicationIndex = parseGoalBookPublicationIndex(publicationIndexFixture)
+const publication = selectGoalBookPublication(publicationIndex, '')
 assertGoalBookPublicationBinding(publication, model)
 assert.equal(publication.pdfUrl, '/lernzielbuch/de-gym-mathematik-bundesweit.pdf')
+assert.throws(
+  () => assertGoalBookPublicationBinding({ ...publication, landscapeId: 'wrong-landscape' }, model),
+  /nicht sicher gelesen/u,
+  'the publication landscape binding is fail-closed',
+)
+assert.throws(
+  () => assertGoalBookPublicationBinding({ ...publication, edition: 'wrong-edition' }, model),
+  /nicht sicher gelesen/u,
+  'the publication edition binding is fail-closed',
+)
+assert.equal(
+  selectGoalBookPublication(publicationIndex, '?book=de-gym-physik-bundesweit').bookId,
+  'de-gym-physik-bundesweit',
+  'a stable book query selects the published physics atlas',
+)
+assert.equal(
+  selectGoalBookPublication(
+    publicationIndex,
+    '?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=curricular-atomic-v1',
+  ).bookId,
+  'de-gym-physik-bundesweit',
+  'a canonical physics landscape deep link selects the matching atlas',
+)
+assert.throws(
+  () => selectGoalBookPublication(publicationIndex, '?book=unknown-book'),
+  /nicht sicher gelesen/u,
+  'unknown book selectors fail closed',
+)
+assert.throws(
+  () => selectGoalBookPublication(
+    publicationIndex,
+    '?book=de-gym-mathematik-bundesweit&landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a',
+  ),
+  /nicht sicher gelesen/u,
+  'conflicting book and landscape selectors fail closed',
+)
+assert.throws(
+  () => selectGoalBookPublication(
+    publicationIndex,
+    '?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&edition=stale-edition',
+  ),
+  /nicht sicher gelesen/u,
+  'a stale deep-link edition may not silently select the current atlas',
+)
+assert.throws(
+  () => selectGoalBookPublication(
+    publicationIndex,
+    '?edition=curricular-atomic-v1&edition=curricular-atomic-v1',
+  ),
+  /nicht sicher gelesen/u,
+  'duplicate edition selectors fail closed even when their values agree',
+)
+assert.throws(
+  () => parseGoalBookPublicationIndex({
+    ...publicationIndexFixture,
+    books: publicationIndexFixture.books.slice(0, 1),
+  }),
+  /nicht sicher gelesen/u,
+  'the closed index may not silently remove the physics publication',
+)
 
 assert.deepEqual(
   filterGoalBookPages({ model, query: 'bruche goal-a', chapterId: null })

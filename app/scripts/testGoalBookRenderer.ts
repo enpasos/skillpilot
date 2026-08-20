@@ -351,6 +351,8 @@ assert.match(html, /Anwendung &lt;script&gt;alert\(1\)&lt;\/script&gt;/u)
 assert.doesNotMatch(html, /<title>Lernzielbuch <Pilot>/u)
 
 const expectedFeedback = new URL(renderOptions.feedbackBaseUrl)
+expectedFeedback.searchParams.set('bookId', model.book.id)
+expectedFeedback.searchParams.set('edition', model.book.edition)
 expectedFeedback.searchParams.set('goalId', GOAL_A)
 expectedFeedback.searchParams.set('goalFingerprint', model.pages[0].goalFingerprint)
 expectedFeedback.searchParams.set('pageFingerprint', model.pages[0].pageFingerprint)
@@ -358,7 +360,11 @@ expectedFeedback.searchParams.set('bookDigest', model.digest)
 expectedFeedback.searchParams.set('page', '1')
 assert.ok(
   html.includes(expectedFeedback.toString().replaceAll('&', '&amp;')),
-  'feedback links bind goal ID, page, goal fingerprint and book digest',
+  'German feedback links bind book, edition, goal, page and immutable fingerprints',
+)
+assert.ok(
+  englishHtml.includes(expectedFeedback.toString().replaceAll('&', '&amp;')),
+  'English feedback links preserve the same privacy-minimized publication binding',
 )
 assert.match(html, new RegExp(`Buch-Digest <code>${model.digest}</code>`, 'u'))
 
@@ -486,6 +492,16 @@ assert.throws(
   }),
   /must use HTTPS/u,
 )
+for (const reservedParameter of ['bookId', 'edition']) {
+  assert.throws(
+    () => renderGoalBookHtml(model, {
+      ...renderOptions,
+      feedbackBaseUrl: `https://skillpilot.example/goal-feedback?${reservedParameter}=attacker-controlled`,
+    }),
+    new RegExp(`reserved or privacy-sensitive parameter ${reservedParameter}`, 'u'),
+    `feedbackBaseUrl cannot manipulate the renderer-owned ${reservedParameter} binding`,
+  )
+}
 
 const unsafePublicModel = {
   ...model,
@@ -651,10 +667,16 @@ const runChromiumSmoke = async (required: boolean) => {
       'render manifest binds a bounded local print derivative',
     )
 
+    const boundedHtmlPath = join(temporaryDirectory, 'goal-book-bounded-atlas.html')
     const boundedHtmlManifest = await writeGoalBookHtml(
       localAssetModel,
-      join(temporaryDirectory, 'goal-book-bounded-atlas.html'),
+      boundedHtmlPath,
       { ...localRenderOptions, printDerivativeProfile: 'bounded-atlas' },
+    )
+    assert.match(
+      readFileSync(boundedHtmlPath, 'utf8'),
+      /data-render-profile="chromium-canvas-bounded-atlas-v1"/u,
+      'bounded-atlas HTML binds every prepared visualization to the selected profile',
     )
     assert.equal(
       boundedHtmlManifest.printDerivativePolicy.version,

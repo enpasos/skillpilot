@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
+import { goalBookDefinitionById, goalBookRoute } from '../utils/goalBookPublicationRegistry'
 
 const SAFE_GOAL_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,499}$/u
 const SAFE_EDITION = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,499}$/u
@@ -19,7 +20,9 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
       return pattern.test(candidate) ? candidate : ''
     }
     const pageCandidate = params.get('page') ?? ''
+    const bookIdCandidate = params.get('bookId') ?? ''
     return {
+      bookId: goalBookDefinitionById(bookIdCandidate)?.bookId ?? '',
       goalId: safeValue('goalId', SAFE_GOAL_ID),
       edition: safeValue('edition', SAFE_EDITION),
       goalFingerprint: safeValue('goalFingerprint', SAFE_SHA256),
@@ -29,7 +32,8 @@ export const GoalBookFeedbackPilotView: React.FC = () => {
     }
   }, [location.search])
   const goalId = binding.goalId
-  const backTarget = goalId ? `/lernzielbuch#goal-${goalId}` : '/lernzielbuch'
+  const bookTarget = binding.bookId ? goalBookRoute(binding.bookId) : '/lernzielbuch'
+  const backTarget = goalId ? `${bookTarget}#goal-${goalId}` : bookTarget
   const english = language === 'en'
 
   return (
