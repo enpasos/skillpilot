@@ -488,6 +488,7 @@ Interpretation:
 * `no_memory_needed` is the conservative default.
 * A deck should stay narrow and should not become a second curriculum hidden inside flashcards.
 * Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, configured learner-facing visibility for required memory nodes, and no unresolved/removal debt in active decks. It upgrades a curriculum from core-ready `M5` to memory-layer-ready `M6`.
+* Canonical description, assessment, route, mapping, or composition-view work is not complete until the curriculum-quality status has been regenerated and the protected maturity floors have been checked. A previously reached maturity such as `M6` must not silently fall to a lower level; the floor gate reports the concrete non-passing CQR rules and fails closed. Lowering a protected floor requires an explicit product-owner decision with the fachliche reason recorded in the floor policy.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible

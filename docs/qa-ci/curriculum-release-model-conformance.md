@@ -8,12 +8,12 @@ Current result: DPK-004 through DPK-007a are `passed`: the real profile, fixture
 
 | Question | Current answer |
 | --- | --- |
-| Is real curriculum data compiled? | Yes: 1 Mathematik landscape, 1,146 goals, 88 views, 12 decks, 128 cards, and 784 resource links. |
+| Is real curriculum data compiled? | Yes: 1 Mathematik landscape, 1,147 goals, 88 views, 12 decks, 128 cards, and 784 resource links. |
 | Are runtime payloads strict? | Yes: every compiled runtime role has a closed Draft 2020-12 schema; unknown fields fail. |
 | Is dependency closure explicit? | Yes: typed definitions and schema-registered hard references are closed to a fixed point; the real model has no unresolved hard reference or external runtime dependency. |
 | Are images part of semantic identity? | Yes: all 715 active package images, totaling 1,549,052,741 bytes, contribute byte length and SHA-256 records to the shared `contentDigest`. |
 | Is publication evidence part of semantic identity? | Yes: mappings, official sources, source-goal references, and quality evidence are four normalized logical artifacts in the same `contentDigest`. |
-| Is publication evidence in the Runtime closure? | No: all four package roles declare `runtimeRequired: false`; the closure contains 2,428 Runtime definitions and 20,495 references, with zero publication roles. |
+| Is publication evidence in the Runtime closure? | No: all four package roles declare `runtimeRequired: false`; the closure contains 2,429 Runtime definitions and 20,523 references, with zero publication roles. |
 | Is publication quality honestly releasable? | No: 711 of 780 atomic scope goals have an active image, 69 are deliberately provider-deferred, and only 152 active visualizations are human-approved; 559 active reviews remain open, so the evidence artifact reports `publicationStatus: not-ready`. |
 | Are image files copied into this output? | Not into the unpacked conformance-model directory. The companion ZIP materializes all 715 byte-bound package images. |
 | Is this output a standalone package? | The unpacked directory deliberately remains `conformance-model-only-not-a-package`. The DPK-007a freeze derives a structurally valid `full-standalone-v1` ZIP; DPK-006a–c safely provision, activate, load and serve it, and DPK-007 proves hermetic whole-application consumption. |
@@ -29,13 +29,13 @@ The compiler does not discover release semantics from filenames or goal titles. 
 - the [Mathematik semantic-kind ledger](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json), which carries a current source fingerprint for every goal and forbids title-, ID-, or path-based kind inference;
 - the [field-semantics registry](https://github.com/enpasos/skillpilot/blob/main/contracts/curriculum-package/v1/profiles/skillpilot-fwu-field-semantics-v1.registry.json), normalization profile, strict payload schemas, and canonical definition-digest profile under `contracts/curriculum-package/v1/`.
 
-The semantic-kind ledger covers all 1,146 goals:
+The semantic-kind ledger covers all 1,147 goals:
 
 | Semantic kind | Count |
 | --- | ---: |
 | `curricularAtomic` | 780 |
 | `curricularArea` | 218 |
-| `practiceAssessment` | 128 |
+| `practiceAssessment` | 129 |
 | `programStructure` | 7 |
 | `memory` | 6 |
 | `runtimeSupport` | 5 |
@@ -72,7 +72,7 @@ metadata/
 
 The compiler performs only declared relocations. In particular, deck references below `/data/` become `data/cards/...`, and Mathematik assessment-source references become `data/assessment-sources/...`. It preserves the relative source path instead of collapsing files to basenames.
 
-The historical DPK-007a freeze turned an earlier state of this directory into `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`; its 914-entry, 757-image byte bindings remain immutable historical evidence. The current authoring-state [full-package Builder](https://github.com/enpasos/skillpilot/blob/main/app/scripts/buildFullStandaloneCurriculumPackage.ts) instead plans 896 entries, 894 manifest-inventoried files, and 715 binary assets bound to the current semantic digest below. Manifest and `SHA256SUMS` are the only profile-declared self-referential files outside the manifest inventory. Package-local schemas and semantic contracts, license evidence, source-/redistribution-review evidence, and every active image byte are copied into a newly built staging archive; no historical DPK-007a/008 artifact is overwritten or silently rebuilt.
+The historical DPK-007a freeze turned an earlier state of this directory into `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`; its 914-entry, 757-image byte bindings remain immutable historical evidence. The current authoring-state [full-package Builder](https://github.com/enpasos/skillpilot/blob/main/app/scripts/buildFullStandaloneCurriculumPackage.ts) instead plans 897 entries, 895 manifest-inventoried files, and 715 binary assets bound to the current semantic digest below. Manifest and `SHA256SUMS` are the only profile-declared self-referential files outside the manifest inventory. Package-local schemas and semantic contracts, license evidence, source-/redistribution-review evidence, and every active image byte are copied into a newly built staging archive; no historical DPK-007a/008 artifact is overwritten or silently rebuilt.
 
 The [implementation-independent finished-ZIP validator](https://github.com/enpasos/skillpilot/blob/main/scripts/validate_full_standalone_curriculum_package.py) checks the physical archive, inventory and actual payloads without importing Builder code. The v1 trust profile exposes its JSON resource limits directly: 64 MiB per JSON entry, maximum nesting depth 128 and at most 5,000,000 parsed nodes. Thus a package cannot pass the Builder but encounter an undocumented stricter JSON limit only in this validator.
 
@@ -82,7 +82,7 @@ Before compiling payloads, the compiler proves that `tmp/lehrplan-ontologie` is 
 
 `dependency-closure.json` inventories typed Runtime definitions and every schema-classified Runtime reference. Identical definitions can be deduplicated by canonical definition digest; the same stable identity with a different definition is a hard conflict. Publication evidence is deliberately not seeded or traversed: evidence about a goal must roundtrip and affect the content digest, but it must not become a navigation dependency. The initial Mathematik release has no predecessor, so `migration-aliases.json` uses an explicit `initial` baseline and an empty rule set. Later releases must compare against a pinned stable baseline and use the registered migration relation and mastery/history policy for every identity change.
 
-`semantic-content-index.json` is package-path-neutral. It binds 111 normalized logical records—including all four publication artifacts—and 715 image binary records into one deterministic `contentDigest`; generated digest fields are excluded through the versioned normalization contract to avoid self-reference. For the current `0.1.0-conformance.3` authoring state, including the declared `GK+LK` composite offerings, the result is `sha256:578db3d5af23c394d872c155acc9a30ede6c6950f918abd2c19cdb89fc4dcbf0`. The older DPK-007a/008 release freeze remains bound to its historical digest and must be supplied as a frozen artifact rather than rebuilt from current sources. The closure digest is `sha256:5f1fe3ad66f05593ba1a0d1d81bd5f042c4deeefa29d3401325d6b78bc3a9544`; the definition-index digest is `sha256:edc612a38d048ad8d92c44e8d6b17baf1485583b4dd2a28f8acf2c9992cced84`.
+`semantic-content-index.json` is package-path-neutral. It binds 111 normalized logical records—including all four publication artifacts—and 715 image binary records into one deterministic `contentDigest`; generated digest fields are excluded through the versioned normalization contract to avoid self-reference. For the current `0.1.0-conformance.3` authoring state, including the declared `GK+LK` composite offerings, the result is `sha256:0dea9680485898c91cb59dc70f67e161bced4085772edb8a4d6e6e50fea20f53`. The older DPK-007a/008 release freeze remains bound to its historical digest and must be supplied as a frozen artifact rather than rebuilt from current sources. The closure digest is `sha256:93210bbb8ba91dae5572f49786ae164764a97771bec114166af1cfdd66fa7342`; the definition-index digest is `sha256:dd378c7592d06c117d7c6a8f5fc90bddd92478930ecf0620cf2ee2b4206485d0`.
 
 ## Publication Evidence
 

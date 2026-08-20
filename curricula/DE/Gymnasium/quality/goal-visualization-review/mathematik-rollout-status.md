@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-08-16T22:53:45.445Z
+Generated: 2026-08-20T04:38:02.405Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,7 +16,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1146 |
+| Alle Ziele in der Landschaft | 1147 |
 | Atomare Ziele im Visualisierungs-Scope | 780 |
 | Ziele mit primaerem Visualisierungslink | 711 |
 | Coverage | 91.2% |

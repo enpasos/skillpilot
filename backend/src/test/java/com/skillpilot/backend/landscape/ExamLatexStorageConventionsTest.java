@@ -20,7 +20,24 @@ class ExamLatexStorageConventionsTest {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final Pattern INLINE_MATH =
             Pattern.compile("(?<!\\\\)\\$(?!\\$)(.*?)(?<!\\\\)\\$(?!\\$)", Pattern.DOTALL);
+    private static final Pattern MATRIX_ROW_SPACING = Pattern.compile(
+            Pattern.quote("\\\\[")
+                    + "[ \\t]*[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:pt|pc|in|bp|cm|mm|dd|cc|sp|ex|em)[ \\t]*"
+                    + Pattern.quote("]"));
     private static final String UPRIGHT_EURO = "\\,\\mathrm{EUR}";
+
+    @Test
+    void matrixRowSpacingMustNotBeConfusedWithOverEscapedDisplayMath() {
+        assertThat(hasOverEscapedDelimiter("\\begin{pmatrix}1\\\\[2pt]2\\end{pmatrix}")).isFalse();
+        assertThat(hasOverEscapedDelimiter("\\(x\\) and \\[x\\]")).isFalse();
+
+        assertThat(hasOverEscapedDelimiter("\\\\(x\\\\)")).isTrue();
+        assertThat(hasOverEscapedDelimiter("\\\\[\\nx\\n\\\\]")).isTrue();
+        assertThat(hasOverEscapedDelimiter("\\\\[2pt")).isTrue();
+        assertThat(hasOverEscapedDelimiter("\\\\[2]")).isTrue();
+        assertThat(hasOverEscapedDelimiter("\\\\[foo]")).isTrue();
+        assertThat(hasOverEscapedDelimiter("\\\\\\[2pt]")).isTrue();
+    }
 
     @Test
     void examDataMustNotContainOverEscapedLatexDelimiters() throws Exception {
@@ -146,7 +163,24 @@ class ExamLatexStorageConventionsTest {
     private static boolean hasOverEscapedDelimiter(String s) {
         // Parsed JSON should contain \(...\) or \[...\] at most.
         // If it still contains double backslashes before delimiters, it was stored over-escaped.
-        return s.contains("\\\\(") || s.contains("\\\\)") || s.contains("\\\\[") || s.contains("\\\\]");
+        if (s.contains("\\\\(") || s.contains("\\\\)") || s.contains("\\\\]")) {
+            return true;
+        }
+        for (int index = s.indexOf("\\\\["); index >= 0; index = s.indexOf("\\\\[", index + 1)) {
+            // In a matrix, exactly two backslashes followed by a complete numeric
+            // TeX length such as \\[2pt] are a row break with optional spacing,
+            // not an over-escaped display-math delimiter. Longer backslash runs
+            // and every malformed/non-numeric lookalike remain violations.
+            if (index > 0 && s.charAt(index - 1) == '\\') {
+                return true;
+            }
+            Matcher rowSpacing = MATRIX_ROW_SPACING.matcher(s);
+            rowSpacing.region(index, s.length());
+            if (!rowSpacing.lookingAt()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Path resolveCurriculaDir() {

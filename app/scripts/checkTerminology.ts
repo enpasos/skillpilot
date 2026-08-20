@@ -85,6 +85,9 @@ const frozenEvidencePaths = [
   // Retired landscapes and captured source snapshots behind coverage claims.
   'curricula/DE/Gymnasium/archive',
   'curricula/DE/Gymnasium/input',
+  // Submitted V1 demo evidence is byte-frozen while the app is under review.
+  'tools/demo-video/output/manual-review-de',
+  'tools/demo-video/output/manual-review-en',
   'tmp',
 ]
 

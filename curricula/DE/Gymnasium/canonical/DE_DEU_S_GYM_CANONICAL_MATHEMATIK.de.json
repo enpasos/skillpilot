@@ -2700,7 +2700,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 902,
+      "weight": 903,
       "tags": [
         "root",
         "canonical",
@@ -57062,7 +57062,7 @@
       "titleEn": "Analytic Geometry, Linear Algebra and Advanced Analysis",
       "description": "Überblicksknoten für vertiefte Analysis, Orientieren und Bewegen im Raum, Geraden und Ebenen im Raum, ebene Figuren in Raumdarstellungen, Spiegelungen an Ebenen sowie Matrizen für Übergangsprozesse und lineare geometrische Abbildungen.",
       "descriptionEn": "Overview node for advanced analysis, orientation and movement in space, lines and planes in space, and matrices for transition processes and linear geometric mappings.",
-      "weight": 154,
+      "weight": 155,
       "tags": [
         "GK",
         "LK"
@@ -68838,7 +68838,7 @@
       "id": "14b19ee4-364e-50bd-b6a3-499471356ef3",
       "title": "Übungen Q2",
       "description": "Bündelt materialgestützte Q2-Klausuraufgaben mit normalem Klausurcharakter zu Vertiefung der Analysis, Raumgeometrie und Matrizen. Die globalen Abituraufgaben bleiben davon getrennt modelliert.",
-      "weight": 8,
+      "weight": 9,
       "tags": [
         "GK",
         "LK"
@@ -68867,6 +68867,7 @@
         "1878f680-095c-511d-aaed-e98393f7fde9",
         "2f8a3a90-717d-5ac1-b54e-facca26e9008",
         "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
+        "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
         "81823f27-0c92-5444-ac4e-32b83169f318",
         "66d75e35-bcbc-5ec9-95f9-8e0558e75f14",
         "3db949bd-3091-5a25-a1a0-c8ff0369db94",
@@ -69372,7 +69373,7 @@
     },
     {
       "id": "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
-      "title": "Übergangsprozesse mit Matrizen modellieren",
+      "title": "Übergangsprozesse mit Matrizen modellieren (GK)",
       "applicability": {
         "jurisdiction": [
           "DE-BB",
@@ -69391,11 +69392,171 @@
           "DE-TH"
         ]
       },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-pilot-v1.md",
-      "description": "Die lernende Person kann eine Q2-Klausuraufgabe zu Übergangsprozessen und Matrizen selbstständig bearbeiten, Rechenschritte reflektieren, langfristige Entwicklungen deuten und mögliche Vorgängerzustände auf Eindeutigkeit und Zulässigkeit prüfen.",
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/gk_task_v2.md#aufgabe",
+      "description": "Die lernende Person kann eine umfassende Q2-GK-Klausuraufgabe zu Matrixoperationen und Übergangsprozessen selbstständig bearbeiten, Matrixdarstellungen und Tabellenkalkulation fachgerecht nutzen, Zustände vorwärts und rückwärts untersuchen sowie Fixvektoren im Kontext deuten.",
       "weight": 1,
       "tags": [
         "GK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "requires": [
+        "5e893892-393e-5df0-b705-fb3b3458122f",
+        "4fb40e58-58c1-5964-b58e-3347a8022b97",
+        "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+        "304111dd-426b-520b-a275-3fa37da1b0e0",
+        "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "03685f87-7570-5bb3-b1c7-134124abb317",
+        "6aa593a3-6690-581d-9b7d-37cac78187a1",
+        "10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+        "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+      ],
+      "contains": [],
+      "examples": [],
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "5e893892-393e-5df0-b705-fb3b3458122f",
+          "4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "304111dd-426b-520b-a275-3fa37da1b0e0",
+          "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "03685f87-7570-5bb3-b1c7-134124abb317",
+          "6aa593a3-6690-581d-9b7d-37cac78187a1",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c",
+          "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/gk_task_v2.md",
+        "taskContent": "Alle Zustände werden als Spaltenvektoren in der Reihenfolge $(A,B)$ notiert; es gilt\n\n$$\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nGleichwertige mathematisch korrekte Verfahren sind in allen Teilaufgaben zulässig.\n\n## Ausgangssituation\n\nIn einer Region leben zu Beginn eines Jahres $10\\,000$ Personen in Stadt A und $8\\,000$ Personen in Stadt B. Von Jahr zu Jahr wechseln $8\\,\\%$ der in A lebenden Personen nach B; $5\\,\\%$ der in B lebenden Personen wechseln nach A. Die Übergangsraten bleiben zunächst konstant.\n\n## 1. Modellierung (10 BE)\n\na) Zeichnen Sie einen vollständigen Zustands-/Übergangsgraphen mit allen vier Übergängen und den zugehörigen Wahrscheinlichkeiten. (4 BE)\n\nb) Geben Sie den Anfangszustand $\\vec x_0$ und die Übergangsmatrix $M$ an. Machen Sie Zeilen-/Spaltenreihenfolge und Rechenkonvention kenntlich. (4 BE)\n\nc) Deuten Sie die Matrixeinträge $m_{12}$ und $m_{21}$ im Sachzusammenhang. (2 BE)\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\na) Bestimmen Sie $\\vec x_1$ und $\\vec x_2$. (4 BE)\n\nb) Deuten Sie $\\vec x_2$ im Kontext und begründen Sie, weshalb die Gesamtzahl von $18\\,000$ Personen im Modell erhalten bleibt. (2 BE)\n\nc) Bestimmen Sie $M^2$. Begründen Sie, weshalb das Produkt in dieser Reihenfolge definiert und sachgerecht ist, und deuten Sie den Eintrag $(M^2)_{21}$. (4 BE)\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\nEin alternatives Szenario wird durch\n\n$$\nN=\\begin{pmatrix}\n0{,}88 & 0{,}10\\\\\n0{,}12 & 0{,}90\n\\end{pmatrix}\n$$\n\nbeschrieben. Es gilt dieselbe Konvention wie für $M$.\n\na) Berechnen Sie $D=N-M$ und deuten Sie $d_{21}$. (3 BE)\n\nb) Für eine Sensitivitätsanalyse wird\n\n$$\nP=\\frac34M+\\frac14N\n$$\n\nverwendet. Berechnen Sie $P$, prüfen Sie, ob $P$ eine stochastische Übergangsmatrix ist, und erläutern Sie die Bedeutung dieser gewichteten Modellmischung. (4 BE)\n\nc) In einer Tabellenkalkulation stehen $M$ in `B2:C3`, $N$ in `E2:F3`, $D$ in `H2:I3` und $P$ in `K2:L3`; Zeilen bezeichnen Zielstädte, Spalten Ausgangsstädte. Geben Sie je eine kopierbare Formel für `H2` und `K2` an und deuten Sie den Zellinhalt `F3` im Kontext. (3 BE)\n\n## 4. Rückwärtsrechnung (12 BE)\n\na) Bestimmen Sie $M^{-1}$ mit einem geeigneten Verfahren und prüfen Sie Ihr Ergebnis durch Multiplikation. (5 BE)\n\nb) Beobachtet wurden\n\n$$\n\\vec u_{n+1}=\\begin{pmatrix}11\\,340\\\\6\\,660\\end{pmatrix}\n\\qquad\\text{und}\\qquad\n\\vec w_{n+1}=\\begin{pmatrix}17\\,430\\\\570\\end{pmatrix}.\n$$\n\nBestimmen Sie jeweils den rechnerisch möglichen unmittelbaren Vorgänger. Beurteilen Sie Zulässigkeit und Eindeutigkeit beider Vorgänger und begründen Sie. (7 BE)\n\n## 5. Stabiler Zustand (8 BE)\n\nBestimmen Sie einen Fixvektor $\\vec v$ mit $M\\vec v=\\vec v$ und $v_A+v_B=18\\,000$. Geben Sie das Ergebnis exakt und auf ganze Personen gerundet an und erläutern Sie, was „stabil“ hier bedeutet. (8 BE)",
+        "solutionContent": "Gleichwertige mathematisch korrekte Lösungswege und sachlich gleichwertige Deutungen sind anzuerkennen.\n\n## 1. Modellierung (10 BE)\n\n### a) Zustands-/Übergangsgraph (4 BE)\n\nDer vollständige Graph besitzt die Zustände A und B sowie die vier gerichteten Übergänge\n\n- A $\\to$ A mit $0{,}92$,\n- A $\\to$ B mit $0{,}08$,\n- B $\\to$ A mit $0{,}05$,\n- B $\\to$ B mit $0{,}95$.\n\nBewertung: je ein korrekt gerichteter und beschrifteter Übergang 1 BE.\n\n### b) Anfangszustand und Übergangsmatrix (4 BE)\n\nMit Spalten als Ausgangsstädten, Zeilen als Zielstädten und der Reihenfolge $(A,B)$ gilt\n\n$$\n\\vec x_0=\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix},\n\\qquad\nM=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix},\n\\qquad\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nBewertung: Anfangszustand 1 BE, Matrixeinträge 2 BE, Reihenfolge und Rechenkonvention 1 BE.\n\n### c) Eintragsdeutung (2 BE)\n\n- $m_{12}=0{,}05$ ist der Anteil der Personen aus B, die im Folgejahr in A leben.\n- $m_{21}=0{,}08$ ist der Anteil der Personen aus A, die im Folgejahr in B leben.\n\nBewertung: je korrekte Deutung 1 BE.\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\n### a) Zustände nach einem und zwei Jahren (4 BE)\n\n$$\n\\vec x_1=M\\vec x_0\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix}\n=\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}.\n$$\n\n$$\n\\vec x_2=M\\vec x_1\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}\n=\\begin{pmatrix}9\\,252\\\\8\\,748\\end{pmatrix}.\n$$\n\nBewertung: $\\vec x_1$ 2 BE, $\\vec x_2$ 2 BE.\n\n### b) Kontext und Erhaltung (2 BE)\n\nNach zwei Jahren leben dem Modell zufolge $9\\,252$ Personen in A und $8\\,748$ Personen in B. Beide Spaltensummen von $M$ sind 1. Daher gilt\n\n$$\n\\begin{pmatrix}1&1\\end{pmatrix}M=\\begin{pmatrix}1&1\\end{pmatrix},\n$$\n\nund die Komponentensumme bleibt bei jedem Übergang $18\\,000$.\n\nBewertung: Kontextdeutung 1 BE, tragfähige Erhaltungsbegründung 1 BE.\n\n### c) Zweischritt-Matrix (4 BE)\n\n$$\nM^2=M\\cdot M\n=\\begin{pmatrix}\n0{,}8504 & 0{,}0935\\\\\n0{,}1496 & 0{,}9065\n\\end{pmatrix}.\n$$\n\nDas Produkt ist definiert, weil beide Faktoren $2\\times2$-Matrizen sind. Der rechte Faktor wirkt zuerst; beide Faktoren bilden jeweils einen Jahresübergang ab. Deshalb beschreibt $M\\cdot M$ zwei aufeinanderfolgende Jahresübergänge.\n\nDer Eintrag $(M^2)_{21}=0{,}1496$ bedeutet: Eine zunächst in A lebende Person befindet sich nach zwei Übergängen mit Wahrscheinlichkeit $14{,}96\\,\\%$ in B.\n\nBewertung: Matrix $M^2$ 2 BE, Dimensions-/Reihenfolgebegründung 1 BE, Eintragsdeutung 1 BE.\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\n### a) Differenzmatrix (3 BE)\n\n$$\nD=N-M\n=\\begin{pmatrix}\n-0{,}04 & 0{,}05\\\\\n0{,}04 & -0{,}05\n\\end{pmatrix}.\n$$\n\n$d_{21}=0{,}04$ bedeutet: Im alternativen Modell ist die Übergangswahrscheinlichkeit A $\\to$ B um 4 Prozentpunkte höher.\n\nBewertung: Differenzmatrix 2 BE, Deutung 1 BE.\n\n### b) Gewichtete Modellmischung (4 BE)\n\n$$\nP=\\frac34M+\\frac14N\n=\\begin{pmatrix}\n0{,}91 & 0{,}0625\\\\\n0{,}09 & 0{,}9375\n\\end{pmatrix}.\n$$\n\nAlle Einträge sind nichtnegativ und beide Spaltensummen sind 1. Somit ist $P$ eine stochastische Übergangsmatrix. $P$ ist die eintragsweise gewichtete Kombination des Basismodells $M$ mit Gewicht $75\\,\\%$ und des Alternativmodells $N$ mit Gewicht $25\\,\\%$. Eine sachlich gleichwertige Beschreibung der Sensitivitätsmischung ist ebenfalls korrekt.\n\nBewertung: Matrix $P$ 2 BE, Stochastikprüfung 1 BE, Mischungsdeutung 1 BE.\n\n### c) Tabellenkalkulation (3 BE)\n\n- In `H2`: `=E2-B2`; die Formel ist nach `H2:I3` kopierbar.\n- In `K2`: `=0,75*B2+0,25*E2`; die Formel ist nach `K2:L3` kopierbar. Eine für die verwendete Tabellenkalkulation gültige Dezimalpunktschreibweise ist ebenfalls korrekt.\n- `F3` enthält $0{,}90$: Im alternativen Modell bleiben $90\\,\\%$ der aus B kommenden Personen im Folgejahr in B.\n\nBewertung: Formeln 2 BE, Deutung 1 BE.\n\n## 4. Rückwärtsrechnung (12 BE)\n\n### a) Inverse Matrix (5 BE)\n\n$$\n\\det(M)=0{,}92\\cdot0{,}95-0{,}05\\cdot0{,}08=0{,}87\\ne0.\n$$\n\nDamit ist $M$ invertierbar und\n\n$$\nM^{-1}\n=\\frac1{0{,}87}\n\\begin{pmatrix}\n0{,}95 & -0{,}05\\\\\n-0{,}08 & 0{,}92\n\\end{pmatrix}\n=\\begin{pmatrix}\n\\frac{95}{87} & -\\frac5{87}\\\\\n-\\frac8{87} & \\frac{92}{87}\n\\end{pmatrix}.\n$$\n\nDirekte Multiplikation ergibt\n\n$$\nMM^{-1}=M^{-1}M=I_2.\n$$\n\nBewertung: Determinante und Existenz 1 BE, Inverse 2 BE, Produktprüfung 2 BE.\n\n### b) Vorgänger, Zulässigkeit und Eindeutigkeit (7 BE)\n\nFür den ersten Zustand gilt\n\n$$\n\\vec u_n=M^{-1}\\vec u_{n+1}\n=\\begin{pmatrix}12\\,000\\\\6\\,000\\end{pmatrix}.\n$$\n\nBeide Komponenten sind nichtnegativ und ihre Summe ist $18\\,000$; der Vorgänger ist daher zulässig.\n\nFür den zweiten Zustand gilt\n\n$$\n\\vec w_n=M^{-1}\\vec w_{n+1}\n=\\begin{pmatrix}19\\,000\\\\-1\\,000\\end{pmatrix}.\n$$\n\nDie Summe ist zwar $18\\,000$, wegen der negativen B-Komponente ist dieser Vorgänger aber unzulässig. Weil $\\det(M)\\ne0$, ist die algebraische Lösung in beiden Fällen eindeutig. Zu $\\vec w_{n+1}$ existiert deshalb kein anderer zulässiger unmittelbarer Vorgänger.\n\nBewertung: $\\vec u_n$ 2 BE, Zulässigkeit von $\\vec u_n$ 1 BE, $\\vec w_n$ 2 BE, Unzulässigkeit von $\\vec w_n$ 1 BE, gemeinsame Eindeutigkeitsfolgerung 1 BE.\n\n## 5. Stabiler Zustand (8 BE)\n\nAus $M\\vec v=\\vec v$ folgt beispielsweise\n\n$$\n-0{,}08v_A+0{,}05v_B=0,\n$$\n\nalso\n\n$$\nv_B=1{,}6v_A=\\frac85v_A.\n$$\n\nZusammen mit $v_A+v_B=18\\,000$ erhält man\n\n$$\n\\vec v\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}\n\\approx\\begin{pmatrix}6\\,923\\\\11\\,077\\end{pmatrix}.\n$$\n\n„Stabil“ bedeutet: Startet das Modell in genau dieser Verteilung, bleibt die Verteilung nach jedem weiteren Jahresübergang unverändert. Eine darüber hinausgehende Langzeitkonvergenz ist für diese Deutung nicht vorausgesetzt.\n\nBewertung: Gleichungssystem und Normierung 1 BE, Verhältnis 2 BE, Lösung 2 BE, exakte und gerundete Angabe 1 BE, Stabilitätsdeutung 2 BE.\n\n## Gesamtbewertung\n\n| Aufgabe | BE |\n|---|---:|\n| 1. Modellierung | 10 |\n| 2. Vorwärtsentwicklung und Matrixprodukt | 10 |\n| 3. Vergleich eines zweiten Modells | 10 |\n| 4. Rückwärtsrechnung | 12 |\n| 5. Stabiler Zustand | 8 |\n| **Gesamt** | **50** |\n\nBestanden ab 25 BE.",
+        "scoring": {
+          "maxPoints": 50,
+          "passingPoints": 25,
+          "steps": [
+            {
+              "id": "q2_markov_gk_1a",
+              "points": 4,
+              "description": "Zustandsgraph mit allen vier Übergängen korrekt dargestellt"
+            },
+            {
+              "id": "q2_markov_gk_1b",
+              "points": 4,
+              "description": "Anfangszustand und Übergangsmatrix konventionsgerecht aufgestellt"
+            },
+            {
+              "id": "q2_markov_gk_1c",
+              "points": 2,
+              "description": "Zwei Matrixeinträge im Kontext korrekt gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_2a",
+              "points": 4,
+              "description": "Zustände nach einem und zwei Jahren korrekt berechnet"
+            },
+            {
+              "id": "q2_markov_gk_2b",
+              "points": 2,
+              "description": "Zweijahreszustand und Erhaltung der Gesamtzahl korrekt gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_2c",
+              "points": 4,
+              "description": "Matrixquadrat korrekt berechnet und einen Eintrag als Zweischrittübergang gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_3a",
+              "points": 3,
+              "description": "Differenzmatrix korrekt berechnet und einen Eintrag als Änderung in Prozentpunkten gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_3b",
+              "points": 4,
+              "description": "Gewichtete Matrixmischung korrekt berechnet, geprüft und gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_3c",
+              "points": 3,
+              "description": "Matrixblöcke und übertragbare Tabellenkalkulationsformeln korrekt organisiert und einen Zellwert gedeutet"
+            },
+            {
+              "id": "q2_markov_gk_4a",
+              "points": 5,
+              "description": "Inverse Matrix methodenoffen korrekt bestimmt und durch Multiplikation geprüft"
+            },
+            {
+              "id": "q2_markov_gk_4b",
+              "points": 7,
+              "description": "Beide Vorgängerzustände korrekt bestimmt sowie Zulässigkeit und Eindeutigkeit begründet beurteilt"
+            },
+            {
+              "id": "q2_markov_gk_5",
+              "points": 8,
+              "description": "Stationäre Verteilung als Fixvektor korrekt bestimmt und im Kontext gedeutet"
+            }
+          ]
+        }
+      },
+      "phase": "Q2",
+      "type": "atomic"
+    },
+    {
+      "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+      "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/lk_task_v2.md#aufgabe",
+      "description": "Die lernende Person kann eine umfassende Q2-LK-Klausuraufgabe zu Matrixoperationen und Übergangsprozessen selbstständig bearbeiten, Matrixdarstellungen und Tabellenkalkulation fachgerecht nutzen, Zustände vorwärts und rückwärts untersuchen sowie Fixvektoren, Matrixpotenzen und Grenzmatrizen im Kontext deuten.",
+      "weight": 1,
+      "tags": [
         "LK",
         "Practice",
         "Assessment"
@@ -69413,7 +69574,6 @@
         "guidingIdeas": [
           "L1",
           "L2",
-          "L3",
           "L4"
         ],
         "phase": "Q2"
@@ -69424,40 +69584,41 @@
         "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
         "304111dd-426b-520b-a275-3fa37da1b0e0",
         "ce198bc9-b014-52ba-814f-25cc3e020668",
-        "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
         "f378917f-2ca7-4c68-bd66-3f9457095dd5",
         "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
         "03685f87-7570-5bb3-b1c7-134124abb317",
         "6aa593a3-6690-581d-9b7d-37cac78187a1",
+        "10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+        "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
         "0de1e45c-aea9-5e53-932a-027dcf509efa",
         "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
-        "10a33d93-dc20-5edd-ae3b-32338d05407c",
-        "3d4d510c-0fd7-55ea-9b79-1db8d640758f"
+        "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
       ],
       "contains": [],
       "examples": [],
       "examData": {
-        "reviewStatus": "needs_review",
+        "reviewStatus": "released",
         "coveredGoalIds": [
           "5e893892-393e-5df0-b705-fb3b3458122f",
           "4fb40e58-58c1-5964-b58e-3347a8022b97",
           "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
           "304111dd-426b-520b-a275-3fa37da1b0e0",
           "ce198bc9-b014-52ba-814f-25cc3e020668",
-          "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
           "f378917f-2ca7-4c68-bd66-3f9457095dd5",
           "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
           "03685f87-7570-5bb3-b1c7-134124abb317",
           "6aa593a3-6690-581d-9b7d-37cac78187a1",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c",
+          "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
           "0de1e45c-aea9-5e53-932a-027dcf509efa",
           "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
-          "10a33d93-dc20-5edd-ae3b-32338d05407c",
-          "3d4d510c-0fd7-55ea-9b79-1db8d640758f"
+          "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
         ],
         "coveredStrands": [
           "L1",
           "L2",
-          "L3",
           "L4"
         ],
         "demandLevels": [
@@ -69465,46 +69626,82 @@
           "AB2",
           "AB3"
         ],
-        "taskContent": "In einer Region leben zu Beginn eines Jahres $10{,}000$ Personen in Stadt A und $8{,}000$ Personen in Stadt B. Von Jahr zu Jahr ziehen $8\\,$% der Bevölkerung von A nach B und $5\\,$% der Bevölkerung von B nach A. Es wird mit Zustands-Spaltenvektoren in der Reihenfolge $(A,B)$ und mit der Konvention $\\vec x_{n+1}=M\\vec x_n$ gearbeitet.\n\n1. Stellen Sie eine Übergangsmatrix $M$ auf, die die Verteilung der Bevölkerung von einem Jahr zum nächsten beschreibt.\n2. Berechnen Sie die Bevölkerungsverteilung nach einem Jahr und nach zwei Jahren.\n3. Für denselben Übergangsprozess wurden zu zwei Zeitpunkten die Zustandsvektoren $\\vec u_{n+1}=\\begin{pmatrix}11340\\\\6660\\end{pmatrix}$ und $\\vec w_{n+1}=\\begin{pmatrix}17430\\\\570\\end{pmatrix}$ beobachtet. Bestimmen Sie jeweils den rechnerisch möglichen unmittelbaren Vorgängerzustand. Beurteilen Sie für beide Beobachtungen, ob dieser Vorgänger als Bevölkerungsverteilung zulässig ist und ob er eindeutig ist. Begründen Sie Ihre Urteile.\n4. Untersuchen Sie eine stationäre Verteilung $\\vec v$ mit $M\\vec v = \\vec v$ und insgesamt $18{,}000$ Personen.\n5. Erläutern Sie die Bedeutung der stationären Verteilung im gegebenen Kontext.",
-        "solutionContent": "1. Mit der Reihenfolge $(A,B)$ und der Konvention $\\vec x_{n+1}=M\\vec x_n$ gilt:\n- In A bleiben $92\\,$% und aus B kommen $5\\,$% nach A.\n- In B bleiben $95\\,$% und aus A wechseln $8\\,$% nach B.\n\nAlso ist\n$$\nM = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}.\n$$\n\n2. Anfangsvektor:\n$$\n\\vec x_0 = \\begin{pmatrix}10000\\\\8000\\end{pmatrix}.\n$$\nNach einem Jahr:\n$$\n\\vec x_1 = M\\vec x_0 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}10000\\\\8000\\end{pmatrix} = \\begin{pmatrix}9600\\\\8400\\end{pmatrix}.\n$$\nNach zwei Jahren:\n$$\n\\vec x_2 = M\\vec x_1 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}9600\\\\8400\\end{pmatrix} = \\begin{pmatrix}9252\\\\8748\\end{pmatrix}.\n$$\n\n3. Beispielsweise zeigt $\\det(M)=0.92\\cdot0.95-0.05\\cdot0.08=0.87\\neq0$, dass $M$ invertierbar ist. Damit ist jeder rechnerisch mögliche Vorgängerzustand eindeutig. Gleichwertige korrekte Begründungen sind ebenfalls möglich.\n\nAus $M\\vec u_n=\\vec u_{n+1}$ folgt\n$$\n\\vec u_n=\\begin{pmatrix}12000\\\\6000\\end{pmatrix}.\n$$\nBeide Komponenten sind nichtnegativ und ihre Summe ist $18{,}000$. Dieser Vorgänger ist daher eine zulässige Bevölkerungsverteilung.\n\nAus $M\\vec w_n=\\vec w_{n+1}$ folgt\n$$\n\\vec w_n=\\begin{pmatrix}19000\\\\-1000\\end{pmatrix}.\n$$\nDie Komponentensumme ist zwar $18{,}000$, aber wegen der negativen zweiten Komponente ist dieser Vektor keine zulässige Bevölkerungsverteilung. Da die algebraische Lösung eindeutig ist, gibt es zu $\\vec w_{n+1}$ keinen anderen zulässigen unmittelbaren Vorgänger.\n\n4. Für die stationäre Verteilung gilt\n$$\nM\\vec v = \\vec v,\\qquad v_A+v_B=18000.\n$$\nAus der ersten Zeile folgt\n$$\n0.92v_A + 0.05v_B = v_A \\Rightarrow -0.08v_A + 0.05v_B = 0.\n$$\nAlso\n$$\n0.05v_B = 0.08v_A \\Rightarrow v_B = 1.6v_A.\n$$\nMit $v_A+v_B=18000$ folgt\n$$\n2.6v_A = 18000 \\Rightarrow v_A \\approx 6923.08.\n$$\nDaraus ergibt sich\n$$\nv_B \\approx 11076.92.\n$$\n\n5. Die stationäre Verteilung beschreibt den langfristigen Zustand, auf den sich die Bevölkerungszahlen bei unveränderten Übergangsraten zubewegen. Langfristig leben also etwa $6923$ Personen in A und $11077$ Personen in B.",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/lk_task_v2.md",
+        "taskContent": "Alle Zustände werden als Spaltenvektoren in der Reihenfolge $(A,B)$ notiert; es gilt\n\n$$\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nGleichwertige mathematisch korrekte Verfahren sind in allen Teilaufgaben zulässig.\n\n## Ausgangssituation\n\nIn einer Region leben zu Beginn eines Jahres $10\\,000$ Personen in Stadt A und $8\\,000$ Personen in Stadt B. Von Jahr zu Jahr wechseln $8\\,\\%$ der in A lebenden Personen nach B; $5\\,\\%$ der in B lebenden Personen wechseln nach A. Die Übergangsraten bleiben zunächst konstant.\n\n## 1. Modellierung (10 BE)\n\na) Zeichnen Sie einen vollständigen Zustands-/Übergangsgraphen mit allen vier Übergängen und den zugehörigen Wahrscheinlichkeiten. (4 BE)\n\nb) Geben Sie den Anfangszustand $\\vec x_0$ und die Übergangsmatrix $M$ an. Machen Sie Zeilen-/Spaltenreihenfolge und Rechenkonvention kenntlich. (4 BE)\n\nc) Deuten Sie die Matrixeinträge $m_{12}$ und $m_{21}$ im Sachzusammenhang. (2 BE)\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\na) Bestimmen Sie $\\vec x_1$ und $\\vec x_2$. (4 BE)\n\nb) Deuten Sie $\\vec x_2$ im Kontext und begründen Sie, weshalb die Gesamtzahl von $18\\,000$ Personen im Modell erhalten bleibt. (2 BE)\n\nc) Bestimmen Sie $M^2$. Begründen Sie, weshalb das Produkt in dieser Reihenfolge definiert und sachgerecht ist, und deuten Sie den Eintrag $(M^2)_{21}$. (4 BE)\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\nEin alternatives Szenario wird durch\n\n$$\nN=\\begin{pmatrix}\n0{,}88 & 0{,}10\\\\\n0{,}12 & 0{,}90\n\\end{pmatrix}\n$$\n\nbeschrieben. Es gilt dieselbe Konvention wie für $M$.\n\na) Berechnen Sie $D=N-M$ und deuten Sie $d_{21}$. (3 BE)\n\nb) Für eine Sensitivitätsanalyse wird\n\n$$\nP=\\frac34M+\\frac14N\n$$\n\nverwendet. Berechnen Sie $P$, prüfen Sie, ob $P$ eine stochastische Übergangsmatrix ist, und erläutern Sie die Bedeutung dieser gewichteten Modellmischung. (4 BE)\n\nc) In einer Tabellenkalkulation stehen $M$ in `B2:C3`, $N$ in `E2:F3`, $D$ in `H2:I3` und $P$ in `K2:L3`; Zeilen bezeichnen Zielstädte, Spalten Ausgangsstädte. Geben Sie je eine kopierbare Formel für `H2` und `K2` an und deuten Sie den Zellinhalt `F3` im Kontext. (3 BE)\n\n## 4. Rückwärtsrechnung (12 BE)\n\na) Bestimmen Sie $M^{-1}$ mit einem geeigneten Verfahren und prüfen Sie Ihr Ergebnis durch Multiplikation. (5 BE)\n\nb) Beobachtet wurden\n\n$$\n\\vec u_{n+1}=\\begin{pmatrix}11\\,340\\\\6\\,660\\end{pmatrix}\n\\qquad\\text{und}\\qquad\n\\vec w_{n+1}=\\begin{pmatrix}17\\,430\\\\570\\end{pmatrix}.\n$$\n\nBestimmen Sie jeweils den rechnerisch möglichen unmittelbaren Vorgänger. Beurteilen Sie Zulässigkeit und Eindeutigkeit beider Vorgänger und begründen Sie. (7 BE)\n\n## 5. Stabiler Zustand (8 BE)\n\nBestimmen Sie einen Fixvektor $\\vec v$ mit $M\\vec v=\\vec v$ und $v_A+v_B=18\\,000$. Geben Sie das Ergebnis exakt und auf ganze Personen gerundet an und erläutern Sie, was „stabil“ hier bedeutet. (8 BE)\n\n## 6. Langfristige Entwicklung – nur LK (10 BE)\n\nUntersuchen Sie die langfristige Entwicklung von $M^n$. Entwickeln oder begründen Sie dazu eine Darstellung, die den Grenzübergang $n\\to\\infty$ erlaubt. Bestimmen und interpretieren Sie die Grenzmatrix\n\n$$\nL=\\lim_{n\\to\\infty}M^n.\n$$\n\nWenden Sie das Ergebnis auf einen beliebigen nichtnegativen Anfangszustand\n\n$$\n\\vec x_0=\\begin{pmatrix}a\\\\b\\end{pmatrix}\n\\quad\\text{mit}\\quad a+b=18\\,000\n$$\n\nan und beschreiben Sie auch, wie sich die Abweichung vom Grenzzustand von Jahr zu Jahr verändert. Geeignete Verfahren, beispielsweise Matrixpotenzen, Eigenwerte oder eine Zerlegung, sind gleichberechtigt. (10 BE)",
+        "solutionContent": "Gleichwertige mathematisch korrekte Lösungswege und sachlich gleichwertige Deutungen sind anzuerkennen.\n\n## 1. Modellierung (10 BE)\n\n### a) Zustands-/Übergangsgraph (4 BE)\n\nDer vollständige Graph besitzt die Zustände A und B sowie die vier gerichteten Übergänge\n\n- A $\\to$ A mit $0{,}92$,\n- A $\\to$ B mit $0{,}08$,\n- B $\\to$ A mit $0{,}05$,\n- B $\\to$ B mit $0{,}95$.\n\nBewertung: je ein korrekt gerichteter und beschrifteter Übergang 1 BE.\n\n### b) Anfangszustand und Übergangsmatrix (4 BE)\n\nMit Spalten als Ausgangsstädten, Zeilen als Zielstädten und der Reihenfolge $(A,B)$ gilt\n\n$$\n\\vec x_0=\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix},\n\\qquad\nM=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix},\n\\qquad\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nBewertung: Anfangszustand 1 BE, Matrixeinträge 2 BE, Reihenfolge und Rechenkonvention 1 BE.\n\n### c) Eintragsdeutung (2 BE)\n\n- $m_{12}=0{,}05$ ist der Anteil der Personen aus B, die im Folgejahr in A leben.\n- $m_{21}=0{,}08$ ist der Anteil der Personen aus A, die im Folgejahr in B leben.\n\nBewertung: je korrekte Deutung 1 BE.\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\n### a) Zustände nach einem und zwei Jahren (4 BE)\n\n$$\n\\vec x_1=M\\vec x_0\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix}\n=\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}.\n$$\n\n$$\n\\vec x_2=M\\vec x_1\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}\n=\\begin{pmatrix}9\\,252\\\\8\\,748\\end{pmatrix}.\n$$\n\nBewertung: $\\vec x_1$ 2 BE, $\\vec x_2$ 2 BE.\n\n### b) Kontext und Erhaltung (2 BE)\n\nNach zwei Jahren leben dem Modell zufolge $9\\,252$ Personen in A und $8\\,748$ Personen in B. Beide Spaltensummen von $M$ sind 1. Daher gilt\n\n$$\n\\begin{pmatrix}1&1\\end{pmatrix}M=\\begin{pmatrix}1&1\\end{pmatrix},\n$$\n\nund die Komponentensumme bleibt bei jedem Übergang $18\\,000$.\n\nBewertung: Kontextdeutung 1 BE, tragfähige Erhaltungsbegründung 1 BE.\n\n### c) Zweischritt-Matrix (4 BE)\n\n$$\nM^2=M\\cdot M\n=\\begin{pmatrix}\n0{,}8504 & 0{,}0935\\\\\n0{,}1496 & 0{,}9065\n\\end{pmatrix}.\n$$\n\nDas Produkt ist definiert, weil beide Faktoren $2\\times2$-Matrizen sind. Der rechte Faktor wirkt zuerst; beide Faktoren bilden jeweils einen Jahresübergang ab. Deshalb beschreibt $M\\cdot M$ zwei aufeinanderfolgende Jahresübergänge.\n\nDer Eintrag $(M^2)_{21}=0{,}1496$ bedeutet: Eine zunächst in A lebende Person befindet sich nach zwei Übergängen mit Wahrscheinlichkeit $14{,}96\\,\\%$ in B.\n\nBewertung: Matrix $M^2$ 2 BE, Dimensions-/Reihenfolgebegründung 1 BE, Eintragsdeutung 1 BE.\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\n### a) Differenzmatrix (3 BE)\n\n$$\nD=N-M\n=\\begin{pmatrix}\n-0{,}04 & 0{,}05\\\\\n0{,}04 & -0{,}05\n\\end{pmatrix}.\n$$\n\n$d_{21}=0{,}04$ bedeutet: Im alternativen Modell ist die Übergangswahrscheinlichkeit A $\\to$ B um 4 Prozentpunkte höher.\n\nBewertung: Differenzmatrix 2 BE, Deutung 1 BE.\n\n### b) Gewichtete Modellmischung (4 BE)\n\n$$\nP=\\frac34M+\\frac14N\n=\\begin{pmatrix}\n0{,}91 & 0{,}0625\\\\\n0{,}09 & 0{,}9375\n\\end{pmatrix}.\n$$\n\nAlle Einträge sind nichtnegativ und beide Spaltensummen sind 1. Somit ist $P$ eine stochastische Übergangsmatrix. $P$ ist die eintragsweise gewichtete Kombination des Basismodells $M$ mit Gewicht $75\\,\\%$ und des Alternativmodells $N$ mit Gewicht $25\\,\\%$. Eine sachlich gleichwertige Beschreibung der Sensitivitätsmischung ist ebenfalls korrekt.\n\nBewertung: Matrix $P$ 2 BE, Stochastikprüfung 1 BE, Mischungsdeutung 1 BE.\n\n### c) Tabellenkalkulation (3 BE)\n\n- In `H2`: `=E2-B2`; die Formel ist nach `H2:I3` kopierbar.\n- In `K2`: `=0,75*B2+0,25*E2`; die Formel ist nach `K2:L3` kopierbar. Eine für die verwendete Tabellenkalkulation gültige Dezimalpunktschreibweise ist ebenfalls korrekt.\n- `F3` enthält $0{,}90$: Im alternativen Modell bleiben $90\\,\\%$ der aus B kommenden Personen im Folgejahr in B.\n\nBewertung: Formeln 2 BE, Deutung 1 BE.\n\n## 4. Rückwärtsrechnung (12 BE)\n\n### a) Inverse Matrix (5 BE)\n\n$$\n\\det(M)=0{,}92\\cdot0{,}95-0{,}05\\cdot0{,}08=0{,}87\\ne0.\n$$\n\nDamit ist $M$ invertierbar und\n\n$$\nM^{-1}\n=\\frac1{0{,}87}\n\\begin{pmatrix}\n0{,}95 & -0{,}05\\\\\n-0{,}08 & 0{,}92\n\\end{pmatrix}\n=\\begin{pmatrix}\n\\frac{95}{87} & -\\frac5{87}\\\\\n-\\frac8{87} & \\frac{92}{87}\n\\end{pmatrix}.\n$$\n\nDirekte Multiplikation ergibt\n\n$$\nMM^{-1}=M^{-1}M=I_2.\n$$\n\nBewertung: Determinante und Existenz 1 BE, Inverse 2 BE, Produktprüfung 2 BE.\n\n### b) Vorgänger, Zulässigkeit und Eindeutigkeit (7 BE)\n\nFür den ersten Zustand gilt\n\n$$\n\\vec u_n=M^{-1}\\vec u_{n+1}\n=\\begin{pmatrix}12\\,000\\\\6\\,000\\end{pmatrix}.\n$$\n\nBeide Komponenten sind nichtnegativ und ihre Summe ist $18\\,000$; der Vorgänger ist daher zulässig.\n\nFür den zweiten Zustand gilt\n\n$$\n\\vec w_n=M^{-1}\\vec w_{n+1}\n=\\begin{pmatrix}19\\,000\\\\-1\\,000\\end{pmatrix}.\n$$\n\nDie Summe ist zwar $18\\,000$, wegen der negativen B-Komponente ist dieser Vorgänger aber unzulässig. Weil $\\det(M)\\ne0$, ist die algebraische Lösung in beiden Fällen eindeutig. Zu $\\vec w_{n+1}$ existiert deshalb kein anderer zulässiger unmittelbarer Vorgänger.\n\nBewertung: $\\vec u_n$ 2 BE, Zulässigkeit von $\\vec u_n$ 1 BE, $\\vec w_n$ 2 BE, Unzulässigkeit von $\\vec w_n$ 1 BE, gemeinsame Eindeutigkeitsfolgerung 1 BE.\n\n## 5. Stabiler Zustand (8 BE)\n\nAus $M\\vec v=\\vec v$ folgt beispielsweise\n\n$$\n-0{,}08v_A+0{,}05v_B=0,\n$$\n\nalso\n\n$$\nv_B=1{,}6v_A=\\frac85v_A.\n$$\n\nZusammen mit $v_A+v_B=18\\,000$ erhält man\n\n$$\n\\vec v\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}\n\\approx\\begin{pmatrix}6\\,923\\\\11\\,077\\end{pmatrix}.\n$$\n\n„Stabil“ bedeutet: Startet das Modell in genau dieser Verteilung, bleibt die Verteilung nach jedem weiteren Jahresübergang unverändert. Eine darüber hinausgehende Langzeitkonvergenz ist für diese Deutung nicht vorausgesetzt.\n\nBewertung: Gleichungssystem und Normierung 1 BE, Verhältnis 2 BE, Lösung 2 BE, exakte und gerundete Angabe 1 BE, Stabilitätsdeutung 2 BE.\n\n## 6. Langfristige Entwicklung – nur LK (10 BE)\n\nEine mögliche, aber nicht vorgeschriebene Lösung verwendet\n\n$$\nL=\\frac1{13}\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}.\n$$\n\nEs gilt\n\n$$\nL^2=L,\n\\qquad\nL(I-L)=(I-L)L=0\n$$\n\nund\n\n$$\nM=L+0{,}87(I-L).\n$$\n\nDie beiden Summanden wirken somit auf komplementären invarianten Teilräumen. Daher folgt für $n\\in\\mathbb N$\n\n$$\nM^n=L+0{,}87^n(I-L).\n$$\n\nWeil $0{,}87^n\\to0$ für $n\\to\\infty$, gilt\n\n$$\n\\lim_{n\\to\\infty}M^n\n=L\n=\\frac1{13}\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}.\n$$\n\nFür einen beliebigen nichtnegativen Anfangszustand mit $a+b=18\\,000$ erhält man\n\n$$\nL\\vec x_0\n=\\frac1{13}\n\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}\n\\begin{pmatrix}a\\\\b\\end{pmatrix}\n=\\begin{pmatrix}\\frac5{13}(a+b)\\\\[2pt]\\frac8{13}(a+b)\\end{pmatrix}\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}.\n$$\n\nDie Grenzmatrix bildet jeden nichtnegativen Zustand mit derselben Gesamtzahl auf denselben stabilen Zustand ab. Außerdem gilt\n\n$$\nM^n\\vec x_0-L\\vec x_0\n=0{,}87^n(I-L)\\vec x_0.\n$$\n\nDie Abweichung vom Grenzzustand wird daher pro Jahr mit dem Faktor $0{,}87$ multipliziert; relativ zum vorangehenden Schritt nimmt sie um $13\\,\\%$ ab.\n\nBewertung: Grenzmatrix $L$ 2 BE, tragfähige Potenzdarstellung oder Herleitung 3 BE, Grenzübergang 1 BE, Anwendung auf beliebiges $\\vec x_0$ 2 BE, Kontextdeutung 1 BE, Faktor $0{,}87$ 1 BE.\n\n## Gesamtbewertung\n\n| Aufgabe | BE |\n|---|---:|\n| 1. Modellierung | 10 |\n| 2. Vorwärtsentwicklung und Matrixprodukt | 10 |\n| 3. Vergleich eines zweiten Modells | 10 |\n| 4. Rückwärtsrechnung | 12 |\n| 5. Stabiler Zustand | 8 |\n| 6. Langfristige Entwicklung | 10 |\n| **Gesamt** | **60** |\n\nBestanden ab 30 BE.",
         "scoring": {
-          "maxPoints": 25,
-          "passingPoints": 13,
+          "maxPoints": 60,
+          "passingPoints": 30,
           "steps": [
             {
-              "id": "q2_mat_1",
-              "points": 5,
-              "description": "Übergangsmatrix korrekt aufgestellt"
-            },
-            {
-              "id": "q2_mat_2",
-              "points": 5,
-              "description": "Verteilungen nach einem und zwei Jahren korrekt berechnet"
-            },
-            {
-              "id": "q2_mat_3a",
-              "points": 2,
-              "description": "Vorgänger des u-Zustands korrekt bestimmt und als zulässig beurteilt"
-            },
-            {
-              "id": "q2_mat_3b",
-              "points": 2,
-              "description": "Vorgänger des w-Zustands korrekt bestimmt und wegen der negativen Komponente als unzulässig beurteilt"
-            },
-            {
-              "id": "q2_mat_3c",
-              "points": 1,
-              "description": "Eindeutigkeit beider algebraischer Vorgänger und die Folgerung für den unzulässigen Fall korrekt begründet"
-            },
-            {
-              "id": "q2_mat_4",
-              "points": 6,
-              "description": "Stationäre Verteilung korrekt bestimmt"
-            },
-            {
-              "id": "q2_mat_5",
+              "id": "q2_markov_lk_1a",
               "points": 4,
-              "description": "Bedeutung der stationären Verteilung korrekt erläutert"
+              "description": "Zustandsgraph mit allen vier Übergängen korrekt dargestellt"
+            },
+            {
+              "id": "q2_markov_lk_1b",
+              "points": 4,
+              "description": "Anfangszustand und Übergangsmatrix konventionsgerecht aufgestellt"
+            },
+            {
+              "id": "q2_markov_lk_1c",
+              "points": 2,
+              "description": "Zwei Matrixeinträge im Kontext korrekt gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_2a",
+              "points": 4,
+              "description": "Zustände nach einem und zwei Jahren korrekt berechnet"
+            },
+            {
+              "id": "q2_markov_lk_2b",
+              "points": 2,
+              "description": "Zweijahreszustand und Erhaltung der Gesamtzahl korrekt gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_2c",
+              "points": 4,
+              "description": "Matrixquadrat korrekt berechnet und einen Eintrag als Zweischrittübergang gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_3a",
+              "points": 3,
+              "description": "Differenzmatrix korrekt berechnet und einen Eintrag als Änderung in Prozentpunkten gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_3b",
+              "points": 4,
+              "description": "Gewichtete Matrixmischung korrekt berechnet, geprüft und gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_3c",
+              "points": 3,
+              "description": "Matrixblöcke und übertragbare Tabellenkalkulationsformeln korrekt organisiert und einen Zellwert gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_4a",
+              "points": 5,
+              "description": "Inverse Matrix methodenoffen korrekt bestimmt und durch Multiplikation geprüft"
+            },
+            {
+              "id": "q2_markov_lk_4b",
+              "points": 7,
+              "description": "Beide Vorgängerzustände korrekt bestimmt sowie Zulässigkeit und Eindeutigkeit begründet beurteilt"
+            },
+            {
+              "id": "q2_markov_lk_5",
+              "points": 8,
+              "description": "Stationäre Verteilung als Fixvektor korrekt bestimmt und im Kontext gedeutet"
+            },
+            {
+              "id": "q2_markov_lk_6a",
+              "points": 6,
+              "description": "Potenzen der Übergangsmatrix und Grenzmatrix methodenoffen korrekt hergeleitet"
+            },
+            {
+              "id": "q2_markov_lk_6b",
+              "points": 4,
+              "description": "Grenzmatrix angewendet sowie Langzeitverhalten und Konvergenzrate im Kontext gedeutet"
             }
           ]
         }
@@ -81365,8 +81562,13 @@
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
         "demandLevel": "AB3",
-        "processCompetencies": [],
-        "guidingIdeas": [],
+        "processCompetencies": [
+          "K2.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
         "phase": "J6",
         "area": "Mathematik",
         "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J6.J6_MODAL_VALUE"
@@ -81387,7 +81589,9 @@
         "coveredGoalIds": [
           "03703b29-efd8-57e0-acf5-4381b1dc67ec"
         ],
-        "coveredStrands": [],
+        "coveredStrands": [
+          "L5"
+        ],
         "demandLevels": [
           "AB1",
           "AB2",
