@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-08-16T23:16:21.752Z
+Generated: 2026-08-20T04:34:32.896Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -18,10 +18,10 @@ Rules version: curriculum-quality-v4
 | M0 | 11 |
 | M1 | 0 |
 | M2 | 1 |
-| M3 | 1 |
+| M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 8 |
+| M6 | 9 |
 | M7 | 0 |
 
 ## Curricula
@@ -40,7 +40,7 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M3 | 1146 | 902 | 31/31 | 16/16 | 2 | 3 | 1 |
+| Mathematik (Gymnasium, DE) | M6 | 1147 | 903 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M6 | 588 | 499 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
@@ -373,7 +373,7 @@ Rules version: curriculum-quality-v4
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 699 | 902 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 699 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 699 | 903 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 699 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 499 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |

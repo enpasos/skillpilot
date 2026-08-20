@@ -218,6 +218,62 @@ export const GYMNASIUM_DURATION_OFFERINGS = {
       'G8'
     ]
   },
+  '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced': {
+    'DE-BB': [
+      'G8',
+      'G9'
+    ],
+    'DE-BE': [
+      'G8',
+      'G9'
+    ],
+    'DE-BW': [
+      'G8',
+      'G9'
+    ],
+    'DE-BY': [
+      'G9'
+    ],
+    'DE-HB': [
+      'G8'
+    ],
+    'DE-HE': [
+      'G8',
+      'G9'
+    ],
+    'DE-HH': [
+      'G8'
+    ],
+    'DE-MV': [
+      'G8'
+    ],
+    'DE-NI': [
+      'G9'
+    ],
+    'DE-NW': [
+      'G9'
+    ],
+    'DE-RP': [
+      'G8',
+      'G9'
+    ],
+    'DE-SH': [
+      'G8',
+      'G9'
+    ],
+    'DE-SL': [
+      'G9'
+    ],
+    'DE-SN': [
+      'G8'
+    ],
+    'DE-ST': [
+      'G8'
+    ],
+    'DE-TH': [
+      'G8'
+    ]
+  },
   '7d51b38c-a149-5407-bddc-d2ce7878b020': {
     'DE-BB': [
       'G8',
@@ -993,6 +1049,174 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     'DE-TH': {
       'stages': [
         'SekI',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    }
+  },
+  '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced': {
+    'DE-BB': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-BE': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-BW': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-BY': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G9'
+      ]
+    },
+    'DE-HB': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    },
+    'DE-HE': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-HH': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    },
+    'DE-MV': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    },
+    'DE-NI': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G9'
+      ]
+    },
+    'DE-NW': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G9'
+      ]
+    },
+    'DE-RP': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-SH': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
+    },
+    'DE-SL': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G9'
+      ]
+    },
+    'DE-SN': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    },
+    'DE-ST': {
+      'stages': [
+        'SekI',
+        'SekII',
+        'CrossStage'
+      ],
+      'durationModels': [
+        'G8'
+      ]
+    },
+    'DE-TH': {
+      'stages': [
+        'SekI',
+        'SekII',
         'CrossStage'
       ],
       'durationModels': [
