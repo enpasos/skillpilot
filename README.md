@@ -88,7 +88,7 @@ The repository currently focuses on German Gymnasium curricula. Subject coverage
 - [Security and privacy](docs/security/data-privacy.md)
 - [Legal and AI transparency](docs/legal/index.md)
 - [Contributing](CONTRIBUTING.md)
-- [Whitepaper](docs/whitepaper/whitepaper.en.md)
+- [Whitepaper](https://skillpilot.com/whitepaper/en)
 - [Reference learner experience](#reference-learner-experience)
 
 ## Reference learner experience
@@ -134,7 +134,7 @@ Choose a curriculum, inspect it as a learner or subject expert, and improve goal
 
 SkillPilot is the open-source technical reference implementation associated with Aifyer's German-language concept of [AI-supported learning guidance](https://aifyer.com/ki-lernbegleitung/). The concept provides background and motivation; the repository documentation and generated QA artifacts define the implemented architecture and its current limits.
 
-For a longer project introduction, read the [English whitepaper](docs/whitepaper/whitepaper.en.md) or the [German whitepaper](docs/whitepaper/whitepaper.de.md).
+For a longer project introduction, read the [English whitepaper](https://skillpilot.com/whitepaper/en) or the [German whitepaper](https://skillpilot.com/whitepaper/de).
 
 ## License
 
