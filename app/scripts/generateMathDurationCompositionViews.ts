@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -88,6 +89,12 @@ interface SplitLayoutTemplate {
 interface SplitLayoutPlan {
   schemaVersion: number
   status: string
+  inputs: {
+    canonical: {
+      path: string
+      sha256: string
+    }
+  }
   counts: {
     sek1TemplateCount: number
     splitPlacementCount: number
@@ -317,10 +324,17 @@ const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
 const baseShGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-gk.view.json'))
 const baseShLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-lk.view.json'))
 const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
+const canonicalMathRelativePath =
+  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+const canonicalMathSha256 = createHash('sha256')
+  .update(readFileSync(canonicalMathPath))
+  .digest('hex')
 
 if (
   splitLayoutPlan.schemaVersion !== 1
   || splitLayoutPlan.status !== 'APPROVED_REVIEWED_LAYOUT'
+  || splitLayoutPlan.inputs?.canonical?.path !== canonicalMathRelativePath
+  || splitLayoutPlan.inputs?.canonical?.sha256 !== canonicalMathSha256
   || splitLayoutPlan.sek1Templates.length !== splitLayoutPlan.counts.sek1TemplateCount
   || splitLayoutPlan.sek1Templates.reduce((sum, template) => sum + template.placements.length, 0)
     !== splitLayoutPlan.counts.splitPlacementCount
