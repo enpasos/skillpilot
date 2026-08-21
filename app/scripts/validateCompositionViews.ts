@@ -897,6 +897,24 @@ for (const canonicalPath of canonicalFiles) {
 const canonicalLandscapeUniverseById = new Map(
   Array.from(canonicalByLandscapeId.entries()).map(([landscapeId, match]) => [landscapeId, match.landscape]),
 )
+const canonicalGoalOwnerById = new Map<string, string>()
+const canonicalGoalUniverseGoals = Array.from(canonicalByLandscapeId.entries())
+  .sort(([leftLandscapeId], [rightLandscapeId]) => leftLandscapeId.localeCompare(rightLandscapeId))
+  .flatMap(([landscapeId, match]) => match.landscape.goals.map((goal) => {
+    const previousOwner = canonicalGoalOwnerById.get(goal.id)
+    if (previousOwner) {
+      throw new Error(
+        `Kanonische Ziel-ID ${goal.id} ist nicht global eindeutig (${previousOwner} / ${landscapeId}).`,
+      )
+    }
+    canonicalGoalOwnerById.set(goal.id, landscapeId)
+    return goal
+  }))
+const canonicalGoalUniverse: CanonicalAuthoringLandscape = {
+  landscapeId: 'de-gymnasium-global-canonical-goal-universe',
+  title: 'Globales kanonisches Zieluniversum Gymnasium DE',
+  goals: canonicalGoalUniverseGoals,
+}
 const normalizedViews: ReturnType<typeof normalizeCompositionView>[] = []
 
 const findings: CompositionViewValidationFinding[] = []
@@ -929,7 +947,7 @@ for (const viewPath of compositionViewFiles) {
     const result = compileCompositionView(
       normalizedView,
       canonicalMatch?.landscape ?? null,
-      null,
+      canonicalGoalUniverse,
       canonicalLandscapeUniverseById,
     )
     const additionalFindings = [

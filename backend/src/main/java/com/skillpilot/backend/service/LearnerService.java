@@ -9270,8 +9270,14 @@ public class LearnerService {
                     : identityGoalProjection(allGoals, structuralGoals);
         }
 
+        Map<String, LearningGoal> compositionStructuralGoals =
+                hydrateExternalPrerequisiteOnlyStructuralGoals(
+                        referencedGoals,
+                        structuralGoals);
         Map<String, CompositionProjectionAssignment> projectionAssignments =
-                resolveCompositionProjectionAssignments(referencedGoals, structuralGoals);
+                resolveCompositionProjectionAssignments(
+                        referencedGoals,
+                        compositionStructuralGoals);
         LinkedHashSet<String> targetGoalIds = projectionAssignments.entrySet().stream()
                 .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
                 .map(Map.Entry::getKey)
@@ -9280,14 +9286,14 @@ public class LearnerService {
         targetGoalIds.addAll(fallbackGoalIds);
         if (targetGoalIds.isEmpty()) {
             return authoritativeCandidateSeen
-                    ? emptyGoalProjection(structuralGoals)
-                    : identityGoalProjection(allGoals, structuralGoals);
+                    ? emptyGoalProjection(compositionStructuralGoals)
+                    : identityGoalProjection(allGoals, compositionStructuralGoals);
         }
 
         LinkedHashSet<String> prerequisiteOnlyGoalIds = projectionAssignments.entrySet().stream()
                 .filter(entry -> entry.getValue().role() == ProjectionRole.PREREQUISITE_ONLY)
                 .map(Map.Entry::getKey)
-                .filter(structuralGoals::containsKey)
+                .filter(compositionStructuralGoals::containsKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         // Non-authoritative fallback goals are learner-facing targets.
         prerequisiteOnlyGoalIds.removeAll(targetGoalIds);
@@ -9319,13 +9325,13 @@ public class LearnerService {
                 .filter(scopedGoals::containsKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         LinkedHashSet<String> effectivePrerequisiteOnlyGoalIds = prerequisiteOnlyGoalIds.stream()
-                .filter(structuralGoals::containsKey)
+                .filter(compositionStructuralGoals::containsKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         GoalProjection provisionalProjection = new GoalProjection(
                 immutableGoalMap(scopedGoals),
                 Collections.unmodifiableSet(effectiveTargetGoalIds),
                 Collections.unmodifiableSet(effectivePrerequisiteOnlyGoalIds),
-                immutableGoalMap(structuralGoals),
+                immutableGoalMap(compositionStructuralGoals),
                 Collections.unmodifiableSet(compositionViewIds),
                 Collections.emptyList(),
                 true);
@@ -9670,6 +9676,134 @@ public class LearnerService {
             mergedSources.addAll(right.sources());
         }
         return new CompositionGoalReference(mergedSources);
+    }
+
+    /**
+     * Adds only explicitly authored prerequisite-only references from a matched
+     * composition view to the structural goal universe.
+     *
+     * <p>Cross-subject prerequisites do not have to belong to the selected
+     * landscape closure. They still need their definitions for exact
+     * prerequisite checks, while remaining outside the learner-facing target
+     * and visible-goal sets. A direct {@code goalEntry} contributes exactly one
+     * definition; a {@code canonicalSubtree} contributes its complete
+     * {@code contains} subtree.</p>
+     *
+     * <p>A reference with any target source is never hydrated here. Unknown
+     * support references and external cluster {@code goalEntry} nodes make the
+     * authored projection invalid instead of weakening prerequisite checks.</p>
+     */
+    private Map<String, LearningGoal> hydrateExternalPrerequisiteOnlyStructuralGoals(
+            Map<String, CompositionGoalReference> references,
+            Map<String, LearningGoal> structuralGoals) {
+        LinkedHashMap<String, LearningGoal> hydrated = new LinkedHashMap<>();
+        if (structuralGoals != null) {
+            hydrated.putAll(structuralGoals);
+        }
+        if (references == null || references.isEmpty()) {
+            return hydrated;
+        }
+
+        references.forEach((goalRef, reference) -> {
+            if (reference == null || reference.sources().isEmpty()) {
+                return;
+            }
+            boolean exclusivelyPrerequisiteOnly = reference.sources().stream()
+                    .allMatch(source -> source.role() == ProjectionRole.PREREQUISITE_ONLY);
+            if (!exclusivelyPrerequisiteOnly) {
+                return;
+            }
+
+            boolean alreadyStructural = resolveGoalRef(goalRef, hydrated) != null;
+            LearningGoal referencedGoal = resolveCompositionStructuralGoal(goalRef, hydrated);
+            if (referencedGoal == null) {
+                throw invalidCompositionPrerequisiteReference(
+                        goalRef,
+                        "does not resolve to a known goal");
+            }
+
+            boolean directReference = reference.sources().stream()
+                    .anyMatch(source -> !source.includeDescendants());
+            if (!alreadyStructural
+                    && directReference
+                    && ("cluster".equalsIgnoreCase(referencedGoal.getType())
+                            || (referencedGoal.getContains() != null
+                                    && !referencedGoal.getContains().isEmpty()))) {
+                throw invalidCompositionPrerequisiteReference(
+                        goalRef,
+                        "external goalEntry must reference an atomic goal");
+            }
+
+            for (CompositionProjectionSource source : reference.sources()) {
+                if (source.includeDescendants()) {
+                    hydrateExternalStructuralGoalAndDescendants(
+                            goalRef,
+                            hydrated,
+                            new HashSet<>());
+                } else {
+                    LearningGoal goal = resolveCompositionStructuralGoal(goalRef, hydrated);
+                    if (goal != null && goal.getId() != null && !goal.getId().isBlank()) {
+                        hydrated.putIfAbsent(goal.getId(), goal);
+                    }
+                }
+            }
+        });
+        return hydrated;
+    }
+
+    private void hydrateExternalStructuralGoalAndDescendants(
+            String goalRef,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> visiting) {
+        LearningGoal goal = resolveCompositionStructuralGoal(goalRef, structuralGoals);
+        if (goal == null) {
+            throw invalidCompositionPrerequisiteReference(
+                    goalRef,
+                    "canonicalSubtree contains an unknown goal");
+        }
+        if (goal.getId() == null || goal.getId().isBlank()) {
+            throw invalidCompositionPrerequisiteReference(
+                    goalRef,
+                    "resolved goal has no stable id");
+        }
+        if (!visiting.add(goal.getId())) {
+            return;
+        }
+        structuralGoals.putIfAbsent(goal.getId(), goal);
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                hydrateExternalStructuralGoalAndDescendants(
+                        childRef,
+                        structuralGoals,
+                        visiting);
+            }
+        }
+        visiting.remove(goal.getId());
+    }
+
+    private LearningGoal resolveCompositionStructuralGoal(
+            String goalRef,
+            Map<String, LearningGoal> structuralGoals) {
+        String resolvedGoalId = resolveGoalRef(goalRef, structuralGoals);
+        if (resolvedGoalId != null) {
+            return structuralGoals.get(resolvedGoalId);
+        }
+        LearningGoal definition = landscapeService.getGoalDefinition(goalRef);
+        if (definition == null && goalRef != null && goalRef.contains(":")) {
+            definition = landscapeService.getGoalDefinition(
+                    goalRef.substring(goalRef.indexOf(':') + 1));
+        }
+        return definition;
+    }
+
+    private IllegalStateException invalidCompositionPrerequisiteReference(
+            String goalRef,
+            String reason) {
+        return new IllegalStateException(
+                "Invalid prerequisiteOnly composition reference '"
+                        + goalRef
+                        + "': "
+                        + reason);
     }
 
     private Map<String, CompositionProjectionAssignment> resolveCompositionProjectionAssignments(
