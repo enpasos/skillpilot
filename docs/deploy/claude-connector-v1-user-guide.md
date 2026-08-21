@@ -57,10 +57,25 @@ button **Lokal entschlüsseln & verbinden**.
 SkillPilot supports German and English coaching. Claude should answer in the
 language used by the learner.
 
+Claude is instructed to keep normal coaching responses centred on the learner:
+the learning goal, feedback and next step should appear in plain language.
+Claude should discuss internal fields, security mechanisms or test details only
+when you explicitly ask a developer or diagnostic question, and it must never
+reveal secret values.
+
+## Recall and exam timing
+
+Claude is instructed to present every returned recall prompt or the complete
+exam task and wait for your complete answer before requesting protected answers,
+solutions or scoring criteria. The current text-only v1 connector does not send
+the complete Claude conversation to SkillPilot, so SkillPilot cannot technically
+prove that Claude waited. Later recall and exam steps still remain bound to the
+current authorized learning state through short-lived security proofs.
+
 ## Read and write access
 
 The connector can read the current learning context and the navigation options
-published by SkillPilot. With `skillpilot.write`, it can also save a selected
+published by SkillPilot. With write access, it can also save a selected
 focus, active goal, verified progress and recall results. It cannot change the
 learner's base curriculum or personal-curriculum configuration.
 
@@ -70,9 +85,16 @@ write. It stores the resulting canonical learning-state changes and the
 short-lived security records described in the connector privacy policy. It
 does not ingest the complete Claude transcript.
 
-Every write is bound to the current state revision and an idempotency key. If
-another SkillPilot client changed the state first, Claude must reload the
-current context instead of overwriting the newer state.
+Claude is instructed to record completion only after suitable visible evidence.
+SkillPilot stores only “completed” or “not completed”; this is not a grade. To
+correct or withdraw completion for an
+ordinary learning goal, open the learner profile in the
+[SkillPilot Cockpit](https://skillpilot.com/) instead of asking Claude to invent
+a lower score. Orientation and memory goals use their own completion rules.
+
+If another SkillPilot application changed the learning state in the meantime,
+Claude must reload the current context instead of overwriting the newer state
+or applying a change twice.
 
 ## Disconnect or reconnect
 

@@ -63,10 +63,27 @@ Auf der Autorisierungsseite heißen die drei Bedienelemente
 SkillPilot unterstützt deutsch- und englischsprachiges Coaching. Claude sollte
 in der Sprache der lernenden Person antworten.
 
+Claude ist angewiesen, normale Coaching-Antworten an der lernenden Person
+auszurichten: Lernziel, Rückmeldung und nächster Schritt sollen in verständlicher
+Sprache erscheinen. Interne Felder, Sicherheitsmechanismen oder Prüftechnik soll
+Claude nur bei einer ausdrücklichen Entwickler- oder Diagnosefrage erläutern;
+geheime Werte darf es nie ausgeben.
+
+## Ablauf bei Recall und Prüfungen
+
+Claude ist angewiesen, alle zurückgegebenen Recall-Fragen beziehungsweise die
+vollständige Prüfungsaufgabe zu zeigen und die vollständige Antwort abzuwarten,
+bevor geschützte Sollantworten, Lösungen oder Bewertungskriterien angefordert
+werden. Der aktuelle textbasierte v1-Connector übermittelt das vollständige
+Claude-Gespräch nicht an SkillPilot. SkillPilot kann deshalb nicht technisch
+belegen, dass Claude tatsächlich gewartet hat. Die weiteren Recall- und
+Prüfungsschritte bleiben trotzdem durch kurzlebige Sicherheitsnachweise an den
+aktuellen autorisierten Lernstand gebunden.
+
 ## Lese- und Schreibzugriff
 
 Der Connector kann den aktuellen Lernkontext und die von SkillPilot
-veröffentlichten Navigationsoptionen lesen. Mit `skillpilot.write` kann er auch
+veröffentlichten Navigationsoptionen lesen. Mit Schreibfreigabe kann er auch
 einen gewählten Fokus, das aktive Lernziel, belegten Fortschritt und
 Recall-Ergebnisse speichern. Das Basiscurriculum und die Konfiguration des
 persönlichen Curriculums kann er nicht ändern.
@@ -78,10 +95,17 @@ resultierenden kanonischen Lernstandsänderungen und die in der
 Connector-Datenschutzerklärung beschriebenen kurzlebigen Sicherheitsdaten.
 SkillPilot übernimmt nicht das vollständige Claude-Chatprotokoll.
 
-Jeder Schreibvorgang ist an die aktuelle Zustandsrevision und einen
-Idempotenzschlüssel gebunden. Hat ein anderer SkillPilot-Client den Stand zuerst
-geändert, muss Claude den aktuellen Kontext neu laden, statt den neueren Stand
-zu überschreiben.
+Claude ist angewiesen, den Abschluss erst nach geeigneter sichtbarer Evidenz zu
+speichern. Gespeichert wird dabei nur „abgeschlossen“ oder „nicht abgeschlossen“;
+das ist keine Note. Den
+Abschluss eines gewöhnlichen Lernziels korrigiert oder nimmt man im
+[SkillPilot-Cockpit](https://skillpilot.com/) zurück, statt Claude einen
+niedrigeren Wert erfinden zu lassen. Für Orientierungs- und Memory-Ziele gelten
+eigene Abschlussregeln.
+
+Hat eine andere SkillPilot-Anwendung den Lernstand zwischenzeitlich geändert,
+muss Claude den aktuellen Kontext neu laden, statt den neueren Stand zu
+überschreiben oder eine Änderung doppelt auszuführen.
 
 ## Trennen oder erneut verbinden
 
@@ -130,4 +154,3 @@ Endpoint. Kompatible Korrekturen können dort bereitgestellt werden. Eine
 inkompatible Protokoll- oder Identitätsänderung wird zunächst an einem getrennten
 versionierten Endpoint entwickelt, damit der bestehende Connector während der
 Migration verfügbar bleiben kann.
-

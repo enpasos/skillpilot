@@ -5,9 +5,11 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.OrientationOutlook;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
+import com.skillpilot.backend.landscape.LandscapeSummary;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +44,12 @@ public class ClaudeV1CoachContextProjector {
         Map<String, Object> context = new LinkedHashMap<>();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
-        context.put("curriculum", projectedState.curriculum());
+        context.put("curriculum", projectCurriculum(projectedState.curriculum()));
+        List<Map<String, Object>> learningContext = projectLearningContext(
+                coachToolFacade.getPersonalizationPlan(skillpilotId), language);
+        if (!learningContext.isEmpty()) {
+            context.put("learningContext", learningContext);
+        }
 
         StateMachineInfo stateMachine = projectedState.stateMachine();
         if (stateMachine != null) {
@@ -55,16 +62,22 @@ public class ClaudeV1CoachContextProjector {
             context.put("stateMachine", stateMachineContext);
         }
 
-        context.put("activeGoal", formatGoal(projectedState.activeGoal()));
+        FrontierGoal activeGoal = projectedState.activeGoal();
+        context.put("activeGoal", formatGoal(activeGoal));
 
-        if (isOrientationGoal(projectedState.activeGoal())) {
+        if (isOrientationGoal(activeGoal)) {
             context.put("orientationOutlook", projectOrientationOutlook(
                     coachToolFacade.getOrientationOutlook(skillpilotId, language),
-                    projectedState.activeGoal().id()));
+                    activeGoal.id()));
         }
 
         List<FrontierGoal> frontier = projectedState.frontier();
-        context.put("frontier", frontier == null ? List.of() : frontier.stream().map(this::formatGoal).toList());
+        String activeGoalId = activeGoal == null ? null : activeGoal.id();
+        context.put("frontier", frontier == null ? List.of() : frontier.stream()
+                .filter(Objects::nonNull)
+                .filter(goal -> !Objects.equals(activeGoalId, goal.id()))
+                .map(this::formatGoal)
+                .toList());
 
         LearnerGoals goals = projectedState.goals();
         if (goals != null) {
@@ -87,7 +100,6 @@ public class ClaudeV1CoachContextProjector {
         formatted.put("description", goal.description());
         formatted.put("nodeKind", goal.nodeKind());
         formatted.put("semanticKind", goal.semanticKind());
-        formatted.put("tags", goal.tags());
 
         if (goal.examData() != null) {
             Map<String, Object> exam = new LinkedHashMap<>();
@@ -105,6 +117,95 @@ public class ClaudeV1CoachContextProjector {
             formatted.put("examData", exam);
         }
         return formatted;
+    }
+
+    /**
+     * Projects only learner-relevant curriculum identity.
+     *
+     * <p>The canonical summary also carries maintainer descriptions, filter inventories and
+     * compatibility flags. Those fields are useful to first-party configuration surfaces, but
+     * they are neither learning content nor Claude control data. Keeping them out here prevents
+     * quality-level, CI/QA and configuration terminology from reaching an ordinary learner
+     * response through an otherwise innocent context summary.</p>
+     */
+    Map<String, Object> projectCurriculum(LandscapeSummary curriculum) {
+        if (curriculum == null) {
+            return Map.of();
+        }
+        Map<String, Object> projected = new LinkedHashMap<>();
+        putIfPresent(projected, "title", curriculum.getTitle());
+        return projected;
+    }
+
+    /**
+     * Publishes the already completed Personal-Curriculum choices as localized labels only.
+     *
+     * <p>This gives the coach the learner's actual subject/stage context without leaking the
+     * opaque option, rewind, landscape, filter or scope identifiers used by the authored setup
+     * protocol. The connector remains read-only for Level-2 configuration.</p>
+     */
+    List<Map<String, Object>> projectLearningContext(PersonalizationPlan plan, String language) {
+        if (plan == null) {
+            return List.of();
+        }
+        List<Map<String, Object>> projected = new java.util.ArrayList<>();
+        for (PersonalizationPlan.CompletedDecision decision : plan.completedDecisions()) {
+            addLearningContextDecision(
+                    projected,
+                    localized(language, decision.groupLabel(), decision.groupLabelEn()),
+                    decision.selectedOptions(),
+                    language);
+        }
+        for (PersonalizationPlan.DecisionSummary decision : plan.preservedDecisions()) {
+            addLearningContextDecision(
+                    projected,
+                    localized(language, decision.groupLabel(), decision.groupLabelEn()),
+                    decision.selectedOptions(),
+                    language);
+        }
+        return List.copyOf(projected);
+    }
+
+    private void addLearningContextDecision(
+            List<Map<String, Object>> target,
+            String label,
+            List<PersonalizationPlan.Option> options,
+            String language) {
+        if (label == null || options == null) {
+            return;
+        }
+        List<String> values = options.stream()
+                .filter(Objects::nonNull)
+                .filter(option -> option.kind() != PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                .map(option -> localizedOptionLabel(language, option))
+                .filter(Objects::nonNull)
+                .distinct()
+                .toList();
+        if (!values.isEmpty()) {
+            target.add(Map.of("label", label, "values", values));
+        }
+    }
+
+    private String localizedOptionLabel(String language, PersonalizationPlan.Option option) {
+        String localizedScope = localized(language, option.scopeLabel(), option.scopeLabelEn());
+        if (localizedScope != null) {
+            return localizedScope;
+        }
+        String localizedFilter = localized(language, option.filterLabel(), option.filterLabelEn());
+        if (localizedFilter != null) {
+            return localizedFilter;
+        }
+        return localized(language, option.landscapeLabel(), option.landscapeLabelEn());
+    }
+
+    private String localized(String language, String germanOrDefault, String english) {
+        String selected = language != null && language.toLowerCase(java.util.Locale.ROOT).startsWith("en")
+                ? english
+                : germanOrDefault;
+        if (selected == null || selected.isBlank()) {
+            selected = germanOrDefault;
+        }
+        return selected == null || selected.isBlank() ? null : selected;
     }
 
     /**
@@ -169,5 +270,11 @@ public class ClaudeV1CoachContextProjector {
                 .filter(Objects::nonNull)
                 .anyMatch(tag -> "orientation".equalsIgnoreCase(tag)
                         || "semantic:orientation".equalsIgnoreCase(tag));
+    }
+
+    private void putIfPresent(Map<String, Object> target, String key, String value) {
+        if (value != null && !value.isBlank()) {
+            target.put(key, value);
+        }
     }
 }
