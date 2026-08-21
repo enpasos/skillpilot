@@ -11,7 +11,8 @@ build sources. It is not a catalog of currently supported products.
 | `openai app/` | **Active build and regression source** | Required by CI and by the MCP Apps UI build. It is not a second production server. Keep tracked sources; `dist/` and `node_modules/` are generated locally. |
 | `openai custom gpt/` | **Clean interim Custom GPT source** | Creates new, separate DE/EN GPTs; no previous GPT identity or Builder source is retained. Never change the submitted plugin or its frozen WebGUI launch flow as a side effect. |
 | `openai custom gpt/action-regression/` | **Provider regression tests** | Test infrastructure only; never upload it as GPT Instructions or Knowledge. |
-| `claude/mcp-regression/` | **Paused provider evaluation** | Referenced regression material for the existing Claude MCP connector. It is the likely next provider candidate, but no Claude plugin package has been selected yet. |
+| `claude/connector-v1/` | **Claude Directory pre-submission candidate** | Versioned release dossier for the isolated remote-MCP connector. It remains blocked until its strict release gate and external approvals pass. |
+| `claude/mcp-regression/` | **Historical provider regression material** | Synthetic MCP retention protocol for the dormant pre-v1 Claude beta; it is not the Directory package or the nine-tool v1 acceptance plan. |
 
 ## Direction
 
