@@ -106,6 +106,13 @@ class ClaudeV1RuntimeValidationTest {
         ClaudeV1Properties mismatchedMetadata = validEnabledProperties();
         mismatchedMetadata.setPublicResourceMetadataUrl("https://elsewhere.example/.well-known/x");
         assertFalse(ClaudeV1RuntimeValidation.inspect(mismatchedMetadata, environmentWithBeta(false)).valid());
+
+        ClaudeV1Properties insecureDocumentation = validEnabledProperties();
+        insecureDocumentation.setPublicDocumentationUrl("http://docs.example/claude");
+        var invalidDocumentation =
+                ClaudeV1RuntimeValidation.inspect(insecureDocumentation, environmentWithBeta(false));
+        assertFalse(invalidDocumentation.valid());
+        assertTrue(hasViolationContaining(invalidDocumentation, "publicDocumentationUrl"));
     }
 
     @Test

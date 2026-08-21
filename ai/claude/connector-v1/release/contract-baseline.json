@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "state": "PRE_SUBMISSION_CANDIDATE",
+  "capturedAt": "2026-08-21",
+  "baseRevision": "d54c0dc05eb411319747d0d13b7ae8a2fcae63a0",
+  "candidateContractSha256": "05eb1cb12c250c8c04cffced0e920f3a90a4c8ac3dd70f6f45affe965d36305a",
+  "digestAlgorithm": "SHA-256 over sorted UTF-8 records: base:baseRevision + LF, and kind + colon + path + NUL + digest + LF",
+  "purpose": "Pins the reviewed immutable Claude Connector v1 candidate bytes. Mutable release gates, evidence references and lifecycle state are deliberately outside this digest.",
+  "trees": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1",
+      "sha256": "1c23fc675075cb3cc9e9d06a49d5dae439632b75ff50ed532ff34000cfab5698"
+    },
+    {
+      "path": "backend/src/main/resources/claude-connector-v1",
+      "sha256": "8951970045fc0ee0d405a0675c79242bc0aaf471bfffa392a463494830ac704c"
+    }
+  ],
+  "files": [
+    {
+      "path": "ai/claude/connector-v1/assets/icon-512.png",
+      "sha256": "3d46b8a80ef081878bb28bce7915b4d1308a45e75f8771dedcf23aeb2f277052"
+    },
+    {
+      "path": "ai/claude/connector-v1/directory-listing.json",
+      "sha256": "6f138cda462dcb964be5a0986b554669c498dd95fe582f2fa8de5a250aa62415"
+    },
+    {
+      "path": "ai/claude/connector-v1/reviewer-test-plan.md",
+      "sha256": "1f813c966cec92c7b425205d785b685d88035cd5d7f45a699b2adf83623fee06"
+    },
+    {
+      "path": "backend/src/main/resources/db/changelog/changes/023-add-claude-connector-v1.yaml",
+      "sha256": "643968362f13d61cef438a51eebc4f8320661a4c0678e3d3d98becdaeecc761b"
+    },
+    {
+      "path": "deploy/nginx/skillpilot-claude-acme.conf",
+      "sha256": "7e1d1050e629979b1007a0ba02588fdd7d5f98cd077eb87073ac2948f4e16aad"
+    },
+    {
+      "path": "deploy/nginx/skillpilot-claude-connector-v1.conf",
+      "sha256": "e63281884bc436f4ca10d8a7f601cba2fc717b886bb58d80d1d264bc688b27f0"
+    },
+    {
+      "path": "docs/deploy/claude-connector-v1-release.md",
+      "sha256": "5fb3f51c6f0046088a1842c0169507782ae37d797c86135e25475c495ccf2bb6"
+    },
+    {
+      "path": "docs/deploy/claude-connector-v1-user-guide.de.md",
+      "sha256": "47e023e34dad44350c2fe79dfad2a3c37fc7fe1fc40fdab33b6fcc029473a75a"
+    },
+    {
+      "path": "docs/deploy/claude-connector-v1-user-guide.md",
+      "sha256": "881e7b6e78c6f50515296f20a3d57acf3c357c99b9a49ce244e3807e4852903b"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ public final class ClaudeV1Contract {
             DEFAULT_PUBLIC_BASE_URL + "/.well-known/oauth-protected-resource/mcp";
     public static final String DEFAULT_PUBLIC_AUTH_SERVER_METADATA_URL =
             DEFAULT_PUBLIC_BASE_URL + "/.well-known/oauth-authorization-server";
+    public static final String DEFAULT_PUBLIC_DOCUMENTATION_URL =
+            "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/";
 
     public static final String PUBLIC_PATH_MCP = "/mcp";
     public static final String PUBLIC_PATH_PROTECTED_RESOURCE_METADATA =

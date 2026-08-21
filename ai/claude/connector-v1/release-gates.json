@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-21",
+  "submissionReady": false,
+  "statusSemantics": {
+    "pass": "Every named evidence ID resolves to an approved manifest record bound to this candidateContractSha256.",
+    "pending": "Required work or approval is still outstanding.",
+    "blocked": "The gate cannot proceed until the named dependency is resolved.",
+    "not_required": "The capability is deliberately not claimed by this release candidate."
+  },
+  "gates": [
+    {
+      "id": "openai-review-freeze",
+      "owner": "Release",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "claude-contract-tests",
+      "owner": "Backend",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "full-backend-suite",
+      "owner": "Backend",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "release-package-validation",
+      "owner": "Release",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "public-docs-online",
+      "owner": "Release",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "public-edge-and-oauth",
+      "owner": "Operations",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "operator-prod-edge-2026-08-21"
+      ]
+    },
+    {
+      "id": "openai-production-differential",
+      "owner": "Release",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "operator-openai-differential-2026-08-21"
+      ]
+    },
+    {
+      "id": "mcp-inspector-all-nine-tools",
+      "owner": "QA",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "hosted-claude-all-nine-tools",
+      "owner": "QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "operator-real-claude-smoke-2026-08-21"
+      ]
+    },
+    {
+      "id": "negative-and-replay-cases",
+      "owner": "QA/Security",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "reviewer-account-and-reset",
+      "owner": "Product/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "privacy-and-legal-approval",
+      "owner": "Product/Legal",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "support-and-security-owner",
+      "owner": "Product/Security",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "load-latency-and-log-redaction",
+      "owner": "Operations/Security",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "rollback-drill",
+      "owner": "Operations",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "listing-and-permanent-slug-approval",
+      "owner": "Product Owner",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "icon-rights-and-portal-asset",
+      "owner": "Product Owner/Legal",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "candidate-icon-provenance"
+      ]
+    },
+    {
+      "id": "team-enterprise-directory-access",
+      "owner": "Product Owner",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "portal-compliance-acknowledgements",
+      "owner": "Product Owner/Legal",
+      "required": true,
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "claude-code-client",
+      "owner": "QA",
+      "required": false,
+      "status": "not_required",
+      "evidence": [],
+      "note": "The directory candidate claims Claude.ai only. Claude Code remains implemented but is not part of the submitted surface claim."
+    },
+    {
+      "id": "mcp-app-carousel",
+      "owner": "Product",
+      "required": false,
+      "status": "not_required",
+      "evidence": [],
+      "note": "Claude Connector v1 is text-only and publishes no MCP Apps resources."
+    },
+    {
+      "id": "allowed-link-uris",
+      "owner": "Product",
+      "required": false,
+      "status": "not_required",
+      "evidence": [],
+      "note": "Claude Connector v1 does not publish ui/open-link."
+    }
+  ]
+}

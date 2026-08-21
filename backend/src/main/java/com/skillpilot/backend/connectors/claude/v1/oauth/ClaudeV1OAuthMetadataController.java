@@ -36,7 +36,7 @@ public class ClaudeV1OAuthMetadataController {
                 "authorization_servers", List.of(properties.getPublicOrigin()),
                 "scopes_supported", List.of(ClaudeV1Contract.SCOPE_READ, ClaudeV1Contract.SCOPE_WRITE),
                 "bearer_methods_supported", List.of("header"),
-                "resource_documentation", properties.getPublicPrivacyUrl());
+                "resource_documentation", properties.getPublicDocumentationUrl());
         return ResponseEntity.ok(metadata);
     }
 

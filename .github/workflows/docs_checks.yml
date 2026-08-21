@@ -2,7 +2,8 @@ name: Docs Checks
 
 # The main CI workflow deliberately skips docs-only changes, so its documentation
 # gates never run for exactly the changes they are meant to protect. This workflow
-# runs the same five documentation checks for docs-only pushes and pull requests.
+# runs the documentation checks and the structural Claude release-dossier guard
+# for documentation- or dossier-only pushes and pull requests.
 on:
   push:
     branches: [ main ]
@@ -11,6 +12,14 @@ on:
       - 'README.md'
       - 'AGENTS.md'
       - 'mkdocs.yml'
+      - 'ai/README.md'
+      - 'ai/claude/connector-v1/**'
+      - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
+      - 'backend/src/main/resources/claude-connector-v1/**'
+      - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
+      - 'deploy/nginx/skillpilot-claude-*.conf'
+      - 'scripts/check_claude_connector_v1_release.mjs'
+      - 'scripts/check_claude_connector_v1_release.test.mjs'
       - '.github/workflows/docs_checks.yml'
   pull_request:
     branches: [ main ]
@@ -19,6 +28,14 @@ on:
       - 'README.md'
       - 'AGENTS.md'
       - 'mkdocs.yml'
+      - 'ai/README.md'
+      - 'ai/claude/connector-v1/**'
+      - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
+      - 'backend/src/main/resources/claude-connector-v1/**'
+      - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
+      - 'deploy/nginx/skillpilot-claude-*.conf'
+      - 'scripts/check_claude_connector_v1_release.mjs'
+      - 'scripts/check_claude_connector_v1_release.test.mjs'
       - '.github/workflows/docs_checks.yml'
 
 permissions:
@@ -46,6 +63,12 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Check Claude Connector v1 release dossier
+        working-directory: .
+        run: node scripts/check_claude_connector_v1_release.mjs
+      - name: Test Claude Connector v1 release gate
+        working-directory: .
+        run: node --test scripts/check_claude_connector_v1_release.test.mjs
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry

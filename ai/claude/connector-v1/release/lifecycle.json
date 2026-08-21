@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "state": "PRE_SUBMISSION",
+  "externalStateEvidence": {
+    "submissionEvidenceId": null,
+    "publicationEvidenceId": null
+  },
+  "directoryIdentity": {
+    "displayNameCandidate": "SkillPilot",
+    "permanentSlugCandidate": "skillpilot",
+    "slugApproved": false,
+    "rule": "The Directory slug is version-neutral and is never changed or treated as a protocol version."
+  },
+  "majorLines": [
+    {
+      "major": 1,
+      "endpoint": "https://mcp-claude-v1.skillpilot.com/mcp",
+      "status": "active_custom_connector",
+      "compatibilityPolicy": "Only backward-compatible, re-tested fixes and additions are deployed on the v1 line."
+    },
+    {
+      "major": 2,
+      "endpoint": "https://mcp-claude-v2.skillpilot.com/mcp",
+      "status": "unallocated",
+      "compatibilityPolicy": "This endpoint is created only by a future Product Owner decision for a breaking protocol, identity, OAuth or state-semantics change."
+    }
+  ],
+  "breakingChangeProcess": [
+    "Open a new major-line design and threat review without changing v1.",
+    "Use a separate DNS name, OAuth audience, secrets, test fixtures and acceptance evidence.",
+    "Run MCP Inspector and real-Claude acceptance for the new major.",
+    "Keep v1 available during an explicit migration window.",
+    "Update Directory metadata and privacy statements through the Anthropic dashboard when the offered behavior changes.",
+    "Retire v1 only after documented migration, rollback and Product Owner approval."
+  ],
+  "anthropicCurrentBehavior": {
+    "checkedAt": "2026-08-21",
+    "source": "https://claude.com/docs/connectors/building/after-publishing",
+    "toolSurfaceUpdates": "Anthropic currently says remote MCP tool changes are deployed to the live server without resubmission and are picked up on the next connection.",
+    "semverDisclaimer": "Anthropic does not define a SemVer or major-upgrade protocol for remote MCP connectors.",
+    "slugRule": "The Directory slug is permanent after publication."
+  }
+}

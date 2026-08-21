@@ -102,6 +102,9 @@ public final class ClaudeV1RuntimeValidation {
             violations.add("publicAuthServerMetadataUrl must be exactly publicBaseUrl + '"
                     + ClaudeV1Contract.PUBLIC_PATH_AUTH_SERVER_METADATA + "'.");
         }
+        if (!isHttpsUrl(properties.getPublicDocumentationUrl())) {
+            violations.add("publicDocumentationUrl must be an absolute HTTPS URL.");
+        }
 
         String internalBasePath = properties.getInternalBasePath();
         if (internalBasePath == null || !internalBasePath.startsWith("/") || internalBasePath.endsWith("/")) {

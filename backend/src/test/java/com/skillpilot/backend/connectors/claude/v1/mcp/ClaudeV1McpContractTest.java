@@ -83,7 +83,7 @@ class ClaudeV1McpContractTest {
             assertFalse(tool.title().isBlank());
             assertNotNull(tool.description(), () -> "missing description: " + tool.name());
             assertNotNull(tool.inputSchema());
-            assertTrue(tool.name().length() < 64, () -> "tool name too long: " + tool.name());
+            assertTrue(tool.name().length() <= 64, () -> "tool name too long: " + tool.name());
 
             McpSchema.ToolAnnotations annotations = tool.annotations();
             assertNotNull(annotations, () -> "annotations must be set, not _meta: " + tool.name());

@@ -159,6 +159,17 @@ class ClaudeV1SecurityChainIntegrationTest {
                 get(ClaudeV1Contract.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH, CLAUDE_HOST);
         assertEquals(200, resourceMetadata.statusCode());
         assertTrue(resourceMetadata.body().contains(ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL));
+        assertTrue(resourceMetadata.body().contains(
+                "\"resource_documentation\":\""
+                        + ClaudeV1Contract.DEFAULT_PUBLIC_DOCUMENTATION_URL
+                        + "\""));
+        assertFalse(
+                resourceMetadata.body().contains(
+                        "\"resource_documentation\":\""
+                                + ClaudeV1Contract.DEFAULT_PUBLIC_BASE_URL
+                                + ClaudeV1Contract.PUBLIC_PATH_PRIVACY
+                                + "\""),
+                "The RFC 9728 documentation field must not be overloaded with the privacy URL");
         assertFalse(
                 resourceMetadata.body().contains(ClaudeV1Contract.INTERNAL_BASE_PATH),
                 "Discovery documents must never publish the internal prefix");
