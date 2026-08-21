@@ -804,7 +804,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void getLearnerStateHttpTreatsAuthoredNewtonGoalEntryAsOpaqueTarget() throws Exception {
+    void getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster() throws Exception {
         String responseBody = getLearnerStateBody(
                 List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
                 List.of(LEGACY_PHYSICS_ACCELERATED_ID),
@@ -819,29 +819,31 @@ public class LearnerControllerIntegrationTest {
                 .containsExactly(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
         assertThat(root.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
+                .contains(CANONICAL_PHYSICS_FIRST_LAW_ID)
                 .doesNotContain(
-                        CANONICAL_PHYSICS_FIRST_LAW_ID,
+                        CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID,
                         LEGACY_PHYSICS_ACCELERATED_ID);
         assertThat(jsonIds(frontier))
-                .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
-                .doesNotContain(CANONICAL_PHYSICS_FIRST_LAW_ID);
+                .contains(CANONICAL_PHYSICS_FIRST_LAW_ID)
+                .doesNotContain(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
 
-        learnerService.setActiveGoal(learnerId, CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+        learnerService.setActiveGoal(learnerId, CANONICAL_PHYSICS_FIRST_LAW_ID);
         var masteryUpdate = learnerService.setMastery(
                 learnerId,
                 new MasteryUpdateRequest(
-                        Map.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID, 1.0),
-                        CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID));
+                        Map.of(CANONICAL_PHYSICS_FIRST_LAW_ID, 1.0),
+                        CANONICAL_PHYSICS_FIRST_LAW_ID));
 
         assertThat(masteryUpdate.saved()).isTrue();
-        assertThat(masteryUpdate.savedGoalId()).isEqualTo(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+        assertThat(masteryUpdate.savedGoalId()).isEqualTo(CANONICAL_PHYSICS_FIRST_LAW_ID);
         assertThat(masteryUpdate.activeGoal()).isNull();
         assertThat(masteryUpdate.frontier())
                 .extracting(goal -> goal.id())
-                .doesNotContain(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+                .doesNotContain(
+                        CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID,
+                        CANONICAL_PHYSICS_FIRST_LAW_ID);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId))
-                .filteredOn(mastery -> CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID.equals(mastery.getGoalKey()))
+                .filteredOn(mastery -> CANONICAL_PHYSICS_FIRST_LAW_ID.equals(mastery.getGoalKey()))
                 .singleElement()
                 .extracting(Mastery::getValue)
                 .isEqualTo(1.0);
@@ -1007,8 +1009,9 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned).hasSize(1);
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_CLUSTER_ID);
         assertThat(jsonIds(goalOptions))
-                .doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID, LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
-        assertThat(jsonIds(frontier)).doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID);
+                .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
+                .doesNotContain(LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
+        assertThat(jsonIds(frontier)).contains(CANONICAL_PHYSICS_DIAGRAMS_ID);
 
         assertThat(response.body())
                 .doesNotContain(LEGACY_PHYSICS_WHY_ID)
@@ -2760,9 +2763,8 @@ public class LearnerControllerIntegrationTest {
                 .containsExactlyInAnyOrder(CANONICAL_MATH_ANALYSIS_CLUSTER_ID, CANONICAL_PHYSICS_CLUSTER_ID);
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_WHY_ID)
+                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID)
                 .doesNotContain(
-                        CANONICAL_MATH_FUNCTION_CONCEPT_ID,
                         CANONICAL_MATH_CALCULATE_VALUES_ID,
                         CANONICAL_MATH_READ_VALUES_ID,
                         CANONICAL_MATH_SYMMETRY_ID,
@@ -2773,9 +2775,8 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_MATH_READ_VALUES_ID,
                         LEGACY_PHYSICS_WHY_ID);
         assertThat(jsonIds(frontier))
-                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_WHY_ID)
+                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID)
                 .doesNotContain(
-                        CANONICAL_MATH_FUNCTION_CONCEPT_ID,
                         CANONICAL_MATH_CALCULATE_VALUES_ID,
                         CANONICAL_MATH_READ_VALUES_ID,
                         CANONICAL_MATH_SYMMETRY_ID,

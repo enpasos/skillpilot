@@ -7,13 +7,16 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import {
   normalizeCanonicalLandscape,
+  normalizeGoalRef,
   resolveCanonicalNodeType,
   type CanonicalAuthoringGoal,
+  type CanonicalAuthoringLandscape,
 } from '../src/utils/authoring/canonicalAuthoring'
 import {
   compileCompositionView,
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
+  type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
 
@@ -111,6 +114,21 @@ const CONFIG_PATH = 'app/scripts/config/goal-books/de-gym-physics-national-atlas
 const DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-physics-duration-model-policy.json'
 const SHARED_DURATION_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json'
 const COMPOSITION_VIEW_DIRECTORY = 'curricula/DE/Gymnasium/composition-views/physik'
+const NATIONAL_PHYSICS_VIEW_IDS = new Set([
+  'de-de-gym-physics-gk',
+  'de-de-gym-physics-lk',
+  'de-de-gym-sekii-physics-gk',
+  'de-de-gym-sekii-physics-lk',
+])
+const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
+  '31a2ef52-114b-4d2c-a720-6ef5a390b6dc',
+  '32b896b9-f2f1-4d4e-96ad-e869ac3d3759',
+  'a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20',
+  '5f289cdc-fda1-4058-b44f-041ba1398e79',
+  'ad984bb6-e225-432a-952d-d83cda40b7f8',
+  'a0aaedcb-41f8-4891-af77-a69a76b8c10d',
+  '00245a43-eb89-47d2-92d7-21799dbec9f3',
+] as const
 
 const EXPECTED_JURISDICTIONS = [
   'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',
@@ -353,6 +371,39 @@ const collectAtomicGoalIds = (
   return result
 }
 
+const collectVisibleGoalIds = (nodes: CompiledCompositionPreviewNode[]): Set<string> => {
+  const result = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode) => {
+    if (node.kind === 'goal' && node.sourceGoalId) result.add(node.sourceGoalId)
+    node.children.forEach(visit)
+  }
+  nodes.forEach(visit)
+  return result
+}
+
+interface AuthoredPrerequisiteRoot {
+  goalId: string
+  kind: 'goalEntry' | 'canonicalSubtree'
+}
+
+const collectAuthoredPrerequisiteRoots = (
+  nodes: CompositionViewNode[],
+): AuthoredPrerequisiteRoot[] => {
+  const result: AuthoredPrerequisiteRoot[] = []
+  const visit = (node: CompositionViewNode) => {
+    if (node.kind === 'structure') {
+      node.children.forEach(visit)
+      return
+    }
+    if (node.kind === 'landscapeEntry') return
+    if (node.projectionRole === 'prerequisiteOnly') {
+      result.push({ goalId: node.goalId, kind: node.kind })
+    }
+  }
+  nodes.forEach(visit)
+  return result
+}
+
 const rawLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(LANDSCAPE_PATH)
 const landscape = normalizeCanonicalLandscape(rawLandscape)
 assert.equal(landscape.landscapeId, LANDSCAPE_ID)
@@ -408,8 +459,9 @@ assert.equal(
   fingerprintContract.canonicalJsonProfileSha256,
   sha256(readFileSync(resolve(repoRoot, fingerprintContract.canonicalJsonProfilePath), 'utf8')),
 )
-const mathLandscape = readJson<{ goals: Array<Record<string, unknown>> }>(MATH_LANDSCAPE_PATH)
-const mathGoalIds = new Set(mathLandscape.goals.map(({ id }) => String(id)))
+const rawMathLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(MATH_LANDSCAPE_PATH)
+const mathLandscape = normalizeCanonicalLandscape(rawMathLandscape)
+const mathGoalIds = new Set(mathLandscape.goals.map(({ id }) => id))
 const foreignContainsEdges: Array<{ ownerId: string; goalId: string }> = []
 const foreignRequiresEdges: Array<{ ownerId: string; goalId: string }> = []
 rawLandscape.goals.forEach((goal) => {
@@ -437,7 +489,7 @@ foreignRequiresEdges.forEach(({ goalId }) => {
   assert(mathGoalIds.has(goalId), `Physics cross-subject prerequisite ${goalId} is not canonical mathematics`)
 })
 assert(!foreignRequiresEdges.some(({ goalId }) => goalId === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'))
-const mathFixtureGoal = mathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
+const mathFixtureGoal = rawMathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
 assert(mathFixtureGoal, 'known mathematics source-fingerprint fixture is missing')
 assert.equal(
   sourceFingerprint(mathFixtureGoal, fingerprintContract),
@@ -548,6 +600,101 @@ const landscapeWithSemanticKinds = {
   })),
 }
 const semanticGoalById = new Map(landscapeWithSemanticKinds.goals.map((goal) => [goal.id, goal]))
+const mathGoalById = new Map(mathLandscape.goals.map((goal) => [goal.id, goal]))
+const canonicalGoalOwnerById = new Map<string, string>()
+const physicsAndMathGoalUniverseGoals = [
+  [LANDSCAPE_ID, landscapeWithSemanticKinds] as const,
+  [mathLandscape.landscapeId, mathLandscape] as const,
+].flatMap(([landscapeId, canonicalLandscape]) => canonicalLandscape.goals.map((goal) => {
+  const previousOwner = canonicalGoalOwnerById.get(goal.id)
+  assert(!previousOwner, `canonical goal ${goal.id} is duplicated in ${previousOwner} and ${landscapeId}`)
+  canonicalGoalOwnerById.set(goal.id, landscapeId)
+  return goal
+}))
+const physicsAndMathGoalUniverse: CanonicalAuthoringLandscape = {
+  landscapeId: 'de-gymnasium-physics-goal-book-goal-universe',
+  title: 'Canonical Physics goal-book goal universe',
+  goals: physicsAndMathGoalUniverseGoals,
+}
+const allPhysicsViewPaths = readdirSync(resolve(repoRoot, COMPOSITION_VIEW_DIRECTORY))
+  .filter((fileName) => fileName.endsWith('.view.json'))
+  .map((fileName) => `${COMPOSITION_VIEW_DIRECTORY}/${fileName}`)
+  .sort(compareCodePoints)
+assert.equal(allPhysicsViewPaths.length, 69, 'Physics projection QA must bind all 69 composition views')
+const validatedNationalPhysicsViewIds = new Set<string>()
+
+allPhysicsViewPaths.forEach((viewPath) => {
+  const view = normalizeCompositionView(readJson(viewPath))
+  assert.equal(view.landscapeId, LANDSCAPE_ID, `${view.viewId} must reference canonical Physics`)
+  const compilation = compileCompositionView(
+    view,
+    landscapeWithSemanticKinds,
+    physicsAndMathGoalUniverse,
+  )
+  const errors = compilation.findings.filter(({ severity }) => severity === 'error')
+  assert.deepEqual(errors, [], `invalid Physics composition view ${viewPath}`)
+
+  const visibleGoalIds = collectVisibleGoalIds(compilation.compiledRootNodes)
+  const expectedForeignPrerequisiteIds = new Set<string>()
+  visibleGoalIds.forEach((goalId) => {
+    const physicsGoal = semanticGoalById.get(goalId)
+    if (!physicsGoal) return
+    physicsGoal.requires
+      .map(normalizeGoalRef)
+      .filter((requiredGoalId) => !semanticGoalById.has(requiredGoalId))
+      .forEach((requiredGoalId) => expectedForeignPrerequisiteIds.add(requiredGoalId))
+  })
+
+  const authoredForeignPrerequisiteRoots = collectAuthoredPrerequisiteRoots(view.rootNodes)
+    .map((root) => ({ ...root, goalId: normalizeGoalRef(root.goalId) }))
+    .filter(({ goalId }) => !semanticGoalById.has(goalId))
+  const authoredForeignPrerequisiteRootById = new Map<string, AuthoredPrerequisiteRoot>()
+  authoredForeignPrerequisiteRoots.forEach((root) => {
+    assert(
+      !authoredForeignPrerequisiteRootById.has(root.goalId),
+      `${view.viewId} duplicates authored prerequisite-only root ${root.goalId}`,
+    )
+    authoredForeignPrerequisiteRootById.set(root.goalId, root)
+  })
+
+  assert.deepEqual(
+    [...authoredForeignPrerequisiteRootById.keys()].sort(compareCodePoints),
+    [...expectedForeignPrerequisiteIds].sort(compareCodePoints),
+    `${view.viewId} prerequisite-only support roots must exactly match direct foreign requires of visible Physics targets`,
+  )
+  expectedForeignPrerequisiteIds.forEach((goalId) => {
+    const mathGoal = mathGoalById.get(goalId)
+    assert(mathGoal, `${view.viewId} foreign prerequisite ${goalId} is not canonical mathematics`)
+    const expectedKind = resolveCanonicalNodeType(mathGoal) === 'cluster'
+      ? 'canonicalSubtree'
+      : 'goalEntry'
+    assert.equal(
+      authoredForeignPrerequisiteRootById.get(goalId)?.kind,
+      expectedKind,
+      `${view.viewId} prerequisite-only support root ${goalId} must use ${expectedKind}`,
+    )
+  })
+
+  if (NATIONAL_PHYSICS_VIEW_IDS.has(view.viewId)) {
+    REVIEWED_NEWTON_ATOMIC_GOAL_IDS.forEach((goalId) => {
+      assert(
+        visibleGoalIds.has(goalId),
+        `${view.viewId} must retain reviewed Newton atom ${goalId}`,
+      )
+    })
+    assert(
+      !visibleGoalIds.has('4dc9a094-66d7-4d4d-9436-134aabe48f39'),
+      `${view.viewId} must not expose the Newton curricular-area cluster as an opaque target`,
+    )
+    validatedNationalPhysicsViewIds.add(view.viewId)
+  }
+})
+assert.deepEqual(
+  [...validatedNationalPhysicsViewIds].sort(compareCodePoints),
+  [...NATIONAL_PHYSICS_VIEW_IDS].sort(compareCodePoints),
+  'Physics projection QA must bind all four national CrossStage/SekII GK/LK views',
+)
+
 const atlasCurricularAtomicGoalIds = new Set<string>()
 const sourceViews: Array<{
   viewId: string
@@ -577,7 +724,11 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
   assert(!roleSet.has(expectedRole), `${view.scope.jurisdiction} has duplicate ${expectedRole} views`)
   roleSet.add(expectedRole)
   roleCountByJurisdiction.set(view.scope.jurisdiction!, roleSet)
-  const compilation = compileCompositionView(view, landscapeWithSemanticKinds)
+  const compilation = compileCompositionView(
+    view,
+    landscapeWithSemanticKinds,
+    physicsAndMathGoalUniverse,
+  )
   const errors = compilation.findings.filter(({ severity }) => severity === 'error')
   assert.deepEqual(errors, [], `invalid Physics atlas source ${sourcePath}`)
   collectAtomicGoalIds(compilation.compiledRootNodes, semanticGoalById).forEach((goalId) => {
