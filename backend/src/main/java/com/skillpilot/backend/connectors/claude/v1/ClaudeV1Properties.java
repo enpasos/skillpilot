@@ -17,6 +17,7 @@ public class ClaudeV1Properties {
     private String publicMcpUrl = ClaudeV1Contract.DEFAULT_PUBLIC_MCP_URL;
     private String publicResourceMetadataUrl = ClaudeV1Contract.DEFAULT_PUBLIC_RESOURCE_METADATA_URL;
     private String publicAuthServerMetadataUrl = ClaudeV1Contract.DEFAULT_PUBLIC_AUTH_SERVER_METADATA_URL;
+    private String publicDocumentationUrl = ClaudeV1Contract.DEFAULT_PUBLIC_DOCUMENTATION_URL;
     private String internalBasePath = ClaudeV1Contract.INTERNAL_BASE_PATH;
     private String serverName = "SkillPilot Claude Connector";
     private String serverVersion = "1.0.0";
@@ -79,6 +80,14 @@ public class ClaudeV1Properties {
 
     public void setPublicAuthServerMetadataUrl(String publicAuthServerMetadataUrl) {
         this.publicAuthServerMetadataUrl = publicAuthServerMetadataUrl;
+    }
+
+    public String getPublicDocumentationUrl() {
+        return publicDocumentationUrl;
+    }
+
+    public void setPublicDocumentationUrl(String publicDocumentationUrl) {
+        this.publicDocumentationUrl = publicDocumentationUrl;
     }
 
     /** Public origin without a trailing slash, or {@code null} when unset. */

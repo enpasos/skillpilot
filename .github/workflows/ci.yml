@@ -434,3 +434,8 @@ jobs:
       - name: Verify OpenAI V1 release or draft snapshot
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify
+      - name: Check Claude Connector v1 release dossier
+        working-directory: .
+        run: |
+          node scripts/check_claude_connector_v1_release.mjs
+          node --test scripts/check_claude_connector_v1_release.test.mjs

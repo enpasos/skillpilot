@@ -13,6 +13,9 @@ This page groups deployment-facing operational documentation.
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
 - [SkillPilot Claude Connector v1: one-JVM architecture and service concept](claude-connector-v1-concept.md)
 - [SkillPilot Claude Connector v1: developer implementation plan](claude-connector-v1-implementation-plan.md)
+- [SkillPilot Claude Connector: user setup and usage guide](claude-connector-v1-user-guide.md)
+- [SkillPilot Claude Connector: Einrichtung und Nutzung (DE)](claude-connector-v1-user-guide.de.md)
+- [SkillPilot Claude Connector v1: release and rollback runbook](claude-connector-v1-release.md)
 
 ## Maintenance
 

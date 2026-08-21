@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "connector": {
+    "type": "remote_mcp",
+    "serverUrl": "https://mcp-claude-v1.skillpilot.com/mcp",
+    "transport": "streamable_http",
+    "sameUrlForEveryUser": true,
+    "mcpApps": false,
+    "prompts": false,
+    "resources": false
+  },
+  "listing": {
+    "name": "SkillPilot",
+    "tagline": "Personal learning paths and progress with Claude",
+    "description": "SkillPilot connects Claude to a pseudonymous learning profile. It gives Claude the learner's selected curriculum, current focus, next goals and mastery state, and lets the learner update focus and progress through explicit tool calls. It also supports server-controlled verified recall and exam evaluation without exposing the permanent SkillPilot ID to Claude. Learners create or resume a SkillPilot profile at skillpilot.com, keep the encrypted .skillpilot ID file, and authorize the connector with OAuth. SkillPilot processes explicit MCP requests and arguments, but not the complete Claude transcript or Claude memory. For adults aged 18 or older.",
+    "categories": [
+      "Education"
+    ],
+    "documentationUrl": "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/",
+    "privacyPolicyUrl": "https://mcp-claude-v1.skillpilot.com/privacy",
+    "supportContact": "support@skillpilot.com",
+    "iconPath": "ai/claude/connector-v1/assets/icon-512.png",
+    "iconSha256": "3d46b8a80ef081878bb28bce7915b4d1308a45e75f8771dedcf23aeb2f277052",
+    "slug": "skillpilot"
+  },
+  "useCases": [
+    {
+      "title": "Choose the next learning goal",
+      "description": "Load the learner's current focus, prerequisites and frontier, then explain and choose a sensible next goal.",
+      "examplePrompt": "Use SkillPilot to load my current learning context and help me choose the next sensible learning goal."
+    },
+    {
+      "title": "Learn and record verified progress",
+      "description": "Coach the active goal and save completion only after the learner has shown the evidence required by SkillPilot.",
+      "examplePrompt": "Help me work on my active SkillPilot goal. Check my understanding before recording any progress."
+    },
+    {
+      "title": "Run protected recall and exam workflows",
+      "description": "Use server-controlled recall batches or evaluate a complete exam answer without releasing protected answers too early.",
+      "examplePrompt": "Start verified recall for my active SkillPilot memory goal and wait for all my answers before grading."
+    }
+  ],
+  "prerequisites": [
+    "A Claude account that can use connectors",
+    "An existing SkillPilot learning profile",
+    "The encrypted .skillpilot ID file and its password",
+    "Age 18 or older"
+  ],
+  "authentication": {
+    "mode": "oauth_2_cimd",
+    "pkce": "S256",
+    "authorizationServer": "https://mcp-claude-v1.skillpilot.com",
+    "scopes": [
+      "skillpilot.read",
+      "skillpilot.write",
+      "offline_access"
+    ]
+  },
+  "dataHandling": {
+    "apiOwnership": "first_party",
+    "readsUserData": true,
+    "writesUserData": true,
+    "personalHealthData": false,
+    "sponsoredContent": false,
+    "receivesCompleteClaudeTranscript": false,
+    "receivesClaudeMemory": false,
+    "processesExplicitMcpRequestsAndArguments": true,
+    "storesResultingLearningState": true,
+    "portalConversationDataClassification": "requires_product_legal_portal_decision"
+  },
+  "allowedLinkUris": [],
+  "surfacesClaimed": [
+    "Claude.ai"
+  ],
+  "company": {
+    "name": "enpasos - Enterprise Patterns & Solutions GmbH",
+    "website": "https://skillpilot.com"
+  },
+  "sourceReviewDate": "2026-08-21",
+  "sourceUrls": [
+    "https://claude.com/docs/connectors/building/submission",
+    "https://claude.com/docs/connectors/building/review-criteria",
+    "https://claude.com/docs/connectors/building/testing",
+    "https://claude.com/docs/connectors/building/authentication",
+    "https://claude.com/docs/connectors/building/after-publishing"
+  ]
+}
