@@ -46,6 +46,9 @@ class ProjectionRoleLearnerServiceTest {
     private static final String TARGET_ID = "sek2-target";
     private static final String PREREQUISITE_ID = "sek1-bridge";
     private static final String TRANSITIVE_PREREQUISITE_ID = "sek1-deep";
+    private static final String EXTERNAL_PREREQUISITE_ID = "external-sek1-bridge";
+    private static final String EXTERNAL_PREREQUISITE_ROOT_ID = "external-sek1-root";
+    private static final String EXTERNAL_PREREQUISITE_CHILD_ID = "external-sek1-child";
     private static final String ROOT_CLUSTER_ID = "projection-root";
     private static final String NESTED_CLUSTER_ID = "projection-nested";
     private static final String OUTSIDE_TARGET_ID = "outside-target";
@@ -77,6 +80,145 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(projection.prerequisiteOnlyGoalIds()).containsExactly(PREREQUISITE_ID);
         assertThat(projection.prerequisiteOnlyGoalIds())
                 .doesNotContain(TRANSITIVE_PREREQUISITE_ID);
+    }
+
+    @Test
+    void externalPrerequisiteOnlyGoalEntryHydratesExactlyOneStructuralGoal() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(EXTERNAL_PREREQUISITE_ID, "prerequisiteOnly")));
+        LearningGoal externalPrerequisite = atomicGoal(
+                EXTERNAL_PREREQUISITE_ID,
+                List.of());
+        LearningGoal externalChild = atomicGoal(EXTERNAL_PREREQUISITE_CHILD_ID, List.of());
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                .thenReturn(externalPrerequisite);
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_CHILD_ID))
+                .thenReturn(externalChild);
+        fixture.landscape().getGoals().stream()
+                .filter(goal -> TARGET_ID.equals(goal.getId()))
+                .findFirst()
+                .orElseThrow()
+                .setRequires(List.of(EXTERNAL_PREREQUISITE_ID));
+        Mastery externalMastery = new Mastery(
+                fixture.learner(),
+                EXTERNAL_PREREQUISITE_ID,
+                1.0);
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of())
+                .thenReturn(List.of(externalMastery));
+
+        ProjectionSets projection = projectionSets(fixture.service());
+
+        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds())
+                .containsExactly(EXTERNAL_PREREQUISITE_ID);
+        assertThat(projection.structuralGoalIds())
+                .contains(EXTERNAL_PREREQUISITE_ID)
+                .doesNotContain(EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.visibleGoalIds())
+                .doesNotContain(
+                        EXTERNAL_PREREQUISITE_ID,
+                        EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+    }
+
+    @Test
+    void externalPrerequisiteOnlyCanonicalSubtreeHydratesAllStructuralDescendants() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID, "prerequisiteOnly")));
+        LearningGoal externalRoot = clusterGoal(
+                EXTERNAL_PREREQUISITE_ROOT_ID,
+                List.of(EXTERNAL_PREREQUISITE_ID));
+        LearningGoal externalPrerequisite = clusterGoal(
+                EXTERNAL_PREREQUISITE_ID,
+                List.of(EXTERNAL_PREREQUISITE_CHILD_ID));
+        LearningGoal externalChild = atomicGoal(EXTERNAL_PREREQUISITE_CHILD_ID, List.of());
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ROOT_ID))
+                .thenReturn(externalRoot);
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                .thenReturn(externalPrerequisite);
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_CHILD_ID))
+                .thenReturn(externalChild);
+
+        ProjectionSets projection = projectionSets(fixture.service());
+
+        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds())
+                .containsExactlyInAnyOrder(
+                        EXTERNAL_PREREQUISITE_ROOT_ID,
+                        EXTERNAL_PREREQUISITE_ID,
+                        EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.structuralGoalIds())
+                .contains(
+                        EXTERNAL_PREREQUISITE_ROOT_ID,
+                        EXTERNAL_PREREQUISITE_ID,
+                        EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.visibleGoalIds())
+                .doesNotContain(
+                        EXTERNAL_PREREQUISITE_ROOT_ID,
+                        EXTERNAL_PREREQUISITE_ID,
+                        EXTERNAL_PREREQUISITE_CHILD_ID);
+    }
+
+    @Test
+    void unknownExternalPrerequisiteOnlyReferenceMakesProjectionInvalid() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry("unknown-external-prerequisite", "prerequisiteOnly")));
+
+        assertThatThrownBy(() -> projectionSets(fixture.service()))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Invalid prerequisiteOnly composition reference")
+                .hasMessageContaining("unknown-external-prerequisite")
+                .hasMessageContaining("does not resolve");
+    }
+
+    @Test
+    void externalPrerequisiteOnlyClusterGoalEntryMakesProjectionInvalid() {
+        Fixture fixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(EXTERNAL_PREREQUISITE_ROOT_ID, "prerequisiteOnly")));
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ROOT_ID))
+                .thenReturn(clusterGoal(
+                        EXTERNAL_PREREQUISITE_ROOT_ID,
+                        List.of(EXTERNAL_PREREQUISITE_CHILD_ID)));
+
+        assertThatThrownBy(() -> projectionSets(fixture.service()))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Invalid prerequisiteOnly composition reference")
+                .hasMessageContaining(EXTERNAL_PREREQUISITE_ROOT_ID)
+                .hasMessageContaining("goalEntry must reference an atomic goal");
+    }
+
+    @Test
+    void externalTargetOrMixedRoleReferenceDoesNotHydrateStructuralGoals() {
+        Fixture targetFixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(EXTERNAL_PREREQUISITE_ID)));
+        when(targetFixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                .thenReturn(atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of()));
+
+        Fixture mixedRoleFixture = fixture(view(
+                goalEntry(TARGET_ID),
+                goalEntry(EXTERNAL_PREREQUISITE_ID),
+                goalEntry(EXTERNAL_PREREQUISITE_ID, "prerequisiteOnly")));
+        when(mixedRoleFixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_ID))
+                .thenReturn(atomicGoal(EXTERNAL_PREREQUISITE_ID, List.of()));
+
+        for (ProjectionSets projection : List.of(
+                projectionSets(targetFixture.service()),
+                projectionSets(mixedRoleFixture.service()))) {
+            assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.prerequisiteOnlyGoalIds())
+                    .doesNotContain(EXTERNAL_PREREQUISITE_ID);
+            assertThat(projection.structuralGoalIds())
+                    .doesNotContain(EXTERNAL_PREREQUISITE_ID);
+            assertThat(projection.visibleGoalIds())
+                    .doesNotContain(EXTERNAL_PREREQUISITE_ID);
+        }
     }
 
     @Test
@@ -642,6 +784,7 @@ class ProjectionRoleLearnerServiceTest {
                 service,
                 learner,
                 landscape,
+                landscapeService,
                 masteryRepository,
                 compositionViewService,
                 plannedGoalRepository,
@@ -781,16 +924,23 @@ class ProjectionRoleLearnerServiceTest {
                 ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
         List<String> presentationRootGoalIds =
                 ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds");
+        Map<String, LearningGoal> visibleGoals =
+                ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+        Map<String, LearningGoal> structuralGoals =
+                ReflectionTestUtils.invokeMethod(projection, "structuralGoals");
         return new ProjectionSets(
                 targetGoalIds,
                 prerequisiteOnlyGoalIds,
-                presentationRootGoalIds);
+                presentationRootGoalIds,
+                visibleGoals.keySet(),
+                structuralGoals.keySet());
     }
 
     private record Fixture(
             LearnerService service,
             Learner learner,
             SkillLandscape landscape,
+            LandscapeService landscapeService,
             MasteryRepository masteryRepository,
             CompositionViewService compositionViewService,
             PlannedGoalRepository plannedGoalRepository,
@@ -802,6 +952,8 @@ class ProjectionRoleLearnerServiceTest {
     private record ProjectionSets(
             Set<String> targetGoalIds,
             Set<String> prerequisiteOnlyGoalIds,
-            List<String> presentationRootGoalIds) {
+            List<String> presentationRootGoalIds,
+            Set<String> visibleGoalIds,
+            Set<String> structuralGoalIds) {
     }
 }

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -35,6 +36,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.SimpleTransactionStatus;
 
 class LearnerServiceCrossSubjectPilotTest {
 
@@ -45,7 +48,11 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_WHY_ID = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
     private static final String CANONICAL_PHYSICS_GK_PERSONAL_CONFIG = """
             {
-              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
+              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                "selected": true,
+                "filterId": "GK",
+                "stage": "CrossStage"
+              }
             }
             """;
     private static final String HESSEN_PHYSICS_LANDSCAPE_ID = "24f2ca0f-b94a-444e-bb70-677cb6f85c02";
@@ -217,6 +224,7 @@ class LearnerServiceCrossSubjectPilotTest {
     private static ObjectMapper objectMapper;
     private static LandscapeService landscapeService;
     private static GoalMappingService goalMappingService;
+    private static CompositionViewService compositionViewService;
 
     private LearnerRepository learnerRepository;
     private LearnerClientStateRepository learnerClientStateRepository;
@@ -234,6 +242,7 @@ class LearnerServiceCrossSubjectPilotTest {
         properties.setDirectory(resolveCurriculaDir().toString());
         landscapeService = new LandscapeService(properties, objectMapper);
         goalMappingService = new GoalMappingService(properties, objectMapper);
+        compositionViewService = new CompositionViewService(properties, objectMapper);
     }
 
     @BeforeEach
@@ -947,8 +956,9 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotFrontierBlocksDiagramGoalUntilMathPrerequisitesAreMastered() {
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0)));
+        learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
 
-        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
+        List<FrontierGoal> frontier = compositionAwareLearnerService().getRichFrontier(LEARNER_ID);
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
@@ -964,7 +974,7 @@ class LearnerServiceCrossSubjectPilotTest {
                         new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0)));
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
 
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
+        UnifiedLearnerStateResponse state = compositionAwareLearnerService().getLearnerState(LEARNER_ID);
 
         assertThat(state.curriculum()).isNotNull();
         assertThat(state.curriculum().getCurriculumId()).isEqualTo(CANONICAL_PHYSICS_ID);
@@ -973,6 +983,23 @@ class LearnerServiceCrossSubjectPilotTest {
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
                 .doesNotContain(LEGACY_PHYSICS_WHY_ID, LEGACY_MATH_FUNCTION_CONCEPT_ID, LEGACY_MATH_READ_VALUES_ID);
+    }
+
+    private LearnerService compositionAwareLearnerService() {
+        PlatformTransactionManager transactionManager = mock(PlatformTransactionManager.class);
+        when(transactionManager.getTransaction(any())).thenReturn(new SimpleTransactionStatus());
+        return new LearnerService(
+                learnerRepository,
+                learnerClientStateRepository,
+                masteryRepository,
+                plannedGoalRepository,
+                landscapeService,
+                goalMappingService,
+                deckResourceService,
+                compositionViewService,
+                objectMapper,
+                eventPublisher,
+                transactionManager);
     }
 
     @Test

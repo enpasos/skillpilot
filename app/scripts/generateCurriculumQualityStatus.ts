@@ -2504,7 +2504,13 @@ function collectCompositionViewVisibleGoalIds(
 
   const visitNode = (node: unknown) => {
     if (!node || typeof node !== 'object') return
-    const row = node as { kind?: unknown; goalId?: unknown; children?: unknown }
+    const row = node as {
+      kind?: unknown
+      goalId?: unknown
+      projectionRole?: unknown
+      children?: unknown
+    }
+    if (row.projectionRole === 'prerequisiteOnly') return
     if (row.kind === 'canonicalSubtree') {
       if (typeof row.goalId === 'string' && row.goalId.trim()) {
         addSubtree(row.goalId)
