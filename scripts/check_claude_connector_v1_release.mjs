@@ -18,6 +18,8 @@ const defaultRepositoryRoot = resolve(
 );
 
 const dossierRoot = "ai/claude/connector-v1";
+const retainedResourceIndexPath =
+  "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json";
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
 const expectedBaseUrl = "https://mcp-claude-v1.skillpilot.com";
 const expectedDocumentationUrl =
@@ -100,6 +102,7 @@ export function verifyClaudeConnectorV1Release({
   let lifecycle;
   let evidence;
   let baseline;
+  let retainedResourceIndex;
   try {
     listing = readJson(repositoryRoot, `${dossierRoot}/directory-listing.json`);
     gates = readJson(repositoryRoot, `${dossierRoot}/release-gates.json`);
@@ -109,6 +112,7 @@ export function verifyClaudeConnectorV1Release({
       repositoryRoot,
       `${dossierRoot}/release/contract-baseline.json`,
     );
+    retainedResourceIndex = readJson(repositoryRoot, retainedResourceIndexPath);
     verifyOpenAiPluginReviewFreeze({ repositoryRoot });
   } catch (error) {
     return {
@@ -246,7 +250,7 @@ export function verifyClaudeConnectorV1Release({
   check(sameSet(listing.surfacesClaimed, ["Claude.ai"]), "Only Claude.ai may be claimed.");
 
   verifyIcon(repositoryRoot, listingCopy, check);
-  const toolCount = verifyImplementation(repositoryRoot, check);
+  const toolCount = verifyImplementation(repositoryRoot, retainedResourceIndex, check);
   verifyDocumentationAndEdge(repositoryRoot, check);
   verifyBaseline(repositoryRoot, baseline, check);
   verifyRepositoryEvidence(repositoryRoot, evidence, check);
@@ -562,7 +566,7 @@ function verifyRepositoryEvidence(repositoryRoot, evidence, check) {
   }
 }
 
-function verifyImplementation(repositoryRoot, check) {
+function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   const contract = readText(
     repositoryRoot,
     "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1Contract.java",
@@ -591,10 +595,6 @@ function verifyImplementation(repositoryRoot, check) {
     repositoryRoot,
     "backend/src/main/resources/claude-connector-v1/mcp-apps/memory-card-practice.html",
   );
-  const retainedResourceIndex = JSON.parse(readText(
-    repositoryRoot,
-    "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json",
-  ));
   const appBuildScript = readText(
     repositoryRoot,
     "ai/claude/app/scripts/build-apps.mjs",

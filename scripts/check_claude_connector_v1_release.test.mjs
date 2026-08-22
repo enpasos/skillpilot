@@ -1,7 +1,15 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import {
+  copyFileSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
 import test from "node:test";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   calculateCandidateContractSha256,
@@ -23,6 +31,50 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
   assert.equal(result.toolCount, 12);
   assert.equal(result.requiredGateCount, 19);
   assert.equal(result.blockers.length, result.requiredPendingCount);
+});
+
+test("malformed retained-resource JSON is reported as a structured failure", () => {
+  const fixtureRoot = mkdtempSync(
+    resolve(tmpdir(), "skillpilot-claude-release-malformed-index-"),
+  );
+  const retainedResourceIndexPath =
+    "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json";
+
+  try {
+    for (const path of [
+      "ai/claude/connector-v1/directory-listing.json",
+      "ai/claude/connector-v1/release-gates.json",
+      "ai/claude/connector-v1/release/lifecycle.json",
+      "ai/claude/connector-v1/evidence/manifest.json",
+      "ai/claude/connector-v1/release/contract-baseline.json",
+    ]) {
+      const destination = resolve(fixtureRoot, path);
+      mkdirSync(dirname(destination), { recursive: true });
+      copyFileSync(resolve(repositoryRoot, path), destination);
+    }
+
+    const retainedResourceIndex = resolve(fixtureRoot, retainedResourceIndexPath);
+    mkdirSync(dirname(retainedResourceIndex), { recursive: true });
+    writeFileSync(retainedResourceIndex, '{"schemaVersion":1,"resources":[\n', "utf8");
+
+    let result;
+    assert.doesNotThrow(() => {
+      result = verifyClaudeConnectorV1Release({ repositoryRoot: fixtureRoot });
+    });
+    assert.equal(result.errors.length, 1);
+    assert.match(
+      result.errors[0],
+      new RegExp(`^Cannot parse ${retainedResourceIndexPath}:`, "u"),
+    );
+    assert.equal(result.publicationStatus, "UNKNOWN");
+    assert.equal(result.lifecycleState, "UNKNOWN");
+    assert.equal(result.toolCount, 0);
+    assert.equal(result.requiredGateCount, 0);
+    assert.equal(result.requiredPendingCount, 0);
+    assert.deepEqual(result.blockers, []);
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
 });
 
 test("strict state accepts a fully approved candidate fixture", () => {

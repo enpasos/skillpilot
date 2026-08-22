@@ -15,8 +15,10 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -34,6 +36,8 @@ public class ClaudeV1CoachContextProjector {
 
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
+    private static final Set<String> CURATED_GOAL_VISUALIZATION_STATUSES = Set.of(
+            "pilot", "accepted", "approved", "release_approved", "released");
 
     private final CoachStateProjection coachStateProjection;
     private final CoachToolFacade coachToolFacade;
@@ -117,8 +121,9 @@ public class ClaudeV1CoachContextProjector {
     }
 
     /**
-     * Builds the bounded public projection consumed by the dedicated image-only MCP App. Only a
-     * reviewed canonical visualization belonging to the exact active atomic goal is accepted.
+     * Builds the bounded public projection consumed by the dedicated image-only MCP App. The
+     * link-level status allowlist is defense in depth; the authoritative content approval remains
+     * the hash-bound visualization QA gate that runs before canonical runtime assets are built.
      */
     Map<String, Object> projectGoalVisualization(
             LandscapeSummary curriculum,
@@ -135,6 +140,8 @@ public class ClaudeV1CoachContextProjector {
                 .filter(link -> link != null
                         && "goal-visualization".equals(link.type())
                         && "image".equals(link.resourceType())
+                        && "primary".equals(link.role())
+                        && isCuratedGoalVisualizationStatus(link.reviewStatus())
                         && goal.id().equals(link.skillpilotId())
                         && link.url() != null
                         && !link.url().isBlank())
@@ -166,6 +173,12 @@ public class ClaudeV1CoachContextProjector {
         projected.put("altText", bounded(altText.trim(), 1_000));
         projected.put("cockpitUrl", cockpitUrl);
         return Map.copyOf(projected);
+    }
+
+    private static boolean isCuratedGoalVisualizationStatus(String reviewStatus) {
+        return reviewStatus != null
+                && CURATED_GOAL_VISUALIZATION_STATUSES.contains(
+                        reviewStatus.trim().toLowerCase(Locale.ROOT));
     }
 
     public Map<String, Object> formatGoal(FrontierGoal goal) {

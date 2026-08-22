@@ -2,6 +2,8 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -15,6 +17,7 @@ import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -167,35 +170,9 @@ class ClaudeV1CoachContextProjectorTest {
                 List.of(),
                 true,
                 true);
-        GoalSourceLink link = new GoalSourceLink(
-                "goal-visualization",
-                "Bild",
-                "/assets/goal-visualizations/goal-1.png",
-                "image",
-                "SkillPilot",
-                List.of(),
-                null,
-                "de",
-                null,
-                "goal-1",
-                null,
-                "Ein Koordinatensystem zum Lernziel.",
-                "reviewed");
-        FrontierGoal goal = new FrontierGoal(
-                "goal-1",
-                "Bogenmaß nutzen",
-                "Winkel im Bogenmaß verstehen und anwenden.",
-                "atomic",
-                "tutor",
-                "content",
-                null,
-                List.of(),
-                List.of(link),
-                null,
-                null,
-                null,
-                null,
-                false);
+        GoalSourceLink link = visualizationLink(
+                "/assets/goal-visualizations/goal-1.png", "primary", "approved");
+        FrontierGoal goal = goalWithLinks(List.of(link));
 
         assertEquals(
                 Map.of(
@@ -206,10 +183,77 @@ class ClaudeV1CoachContextProjectorTest {
                         "cockpitUrl", "https://skillpilot.com/?l=curriculum+with+spaces&goal=goal-1"),
                 projector.projectGoalVisualization(curriculum, goal, "de"));
 
-        GoalSourceLink traversal = new GoalSourceLink(
+        GoalSourceLink traversal = visualizationLink(
+                "/assets/goal-visualizations/../secret.png", "primary", "approved");
+        assertNull(projector.projectGoalVisualization(curriculum, goalWithLinks(List.of(traversal)), "de"));
+    }
+
+    @Test
+    void goalVisualizationProjectionAllowsOnlyCuratedReviewStatuses() {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class));
+
+        for (String status : List.of(
+                "pilot", "accepted", "approved", "release_approved", "released", " RELEASED ")) {
+            assertNotNull(
+                    projector.projectGoalVisualization(
+                            curriculum(),
+                            goalWithLinks(List.of(visualizationLink(
+                                    "/assets/goal-visualizations/goal-1.png", "primary", status))),
+                            "de"),
+                    status);
+        }
+
+        for (String status : Arrays.asList(
+                null, "", " ", "draft", "needs_review", "reviewed", "unknown")) {
+            assertNull(
+                    projector.projectGoalVisualization(
+                            curriculum(),
+                            goalWithLinks(List.of(visualizationLink(
+                                    "/assets/goal-visualizations/goal-1.png", "primary", status))),
+                            "de"),
+                    String.valueOf(status));
+        }
+        assertNull(projector.projectGoalVisualization(
+                curriculum(),
+                goalWithLinks(List.of(visualizationLink(
+                        "/assets/goal-visualizations/goal-1.png", null, "approved"))),
+                "de"));
+    }
+
+    @Test
+    void goalVisualizationProjectionFindsValidLinkAfterRejectedLink() {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class), mock(CoachToolFacade.class));
+        GoalSourceLink draft = visualizationLink(
+                "/assets/goal-visualizations/goal-1.png", "primary", "draft");
+        GoalSourceLink approved = visualizationLink(
+                "/assets/goal-visualizations/goal-1.png", "primary", "approved");
+
+        assertNotNull(projector.projectGoalVisualization(
+                curriculum(), goalWithLinks(List.of(draft, approved)), "de"));
+    }
+
+    private LandscapeSummary curriculum() {
+        return new LandscapeSummary(
+                "curriculum-1",
+                "Gymnasium (DE)",
+                null,
+                "DE",
+                "ALL",
+                "school",
+                "Mathematik",
+                "de-DE",
+                List.of(),
+                true,
+                true);
+    }
+
+    private GoalSourceLink visualizationLink(String url, String role, String reviewStatus) {
+        return new GoalSourceLink(
                 "goal-visualization",
                 "Bild",
-                "/assets/goal-visualizations/../secret.png",
+                url,
                 "image",
                 "SkillPilot",
                 List.of(),
@@ -217,10 +261,13 @@ class ClaudeV1CoachContextProjectorTest {
                 "de",
                 null,
                 "goal-1",
-                null,
-                null,
-                "reviewed");
-        FrontierGoal unsafe = new FrontierGoal(
+                role,
+                "Ein Koordinatensystem zum Lernziel.",
+                reviewStatus);
+    }
+
+    private FrontierGoal goalWithLinks(List<GoalSourceLink> links) {
+        return new FrontierGoal(
                 "goal-1",
                 "Bogenmaß nutzen",
                 "Winkel im Bogenmaß verstehen und anwenden.",
@@ -229,13 +276,12 @@ class ClaudeV1CoachContextProjectorTest {
                 "content",
                 null,
                 List.of(),
-                List.of(traversal),
+                links,
                 null,
                 null,
                 null,
                 null,
                 false);
-        assertEquals(null, projector.projectGoalVisualization(curriculum, unsafe, "de"));
     }
 
     private FrontierGoal goal(String id, List<String> tags) {
