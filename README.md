@@ -55,6 +55,12 @@ Learners and teachers can use the hosted reference application to explore skill 
 
 These parts have different assurance and release boundaries. Follow the linked architecture, package, QA, and deployment documentation for the exact guarantees of each part.
 
+## Reference architecture
+
+The runtime architecture separates the first-party Cockpit, backend-owned SkillPilot Core, the MCP-based coach adapter, and the external AI host and model. The arrows show which component initiates each interaction; provider-specific capabilities and release gates still apply.
+
+![SkillPilot reference architecture separating the Cockpit, SkillPilot Core, MCP-based coach adapter, AI host, and model](docs/whitepaper/architecture.en.png)
+
 ## How it works
 
 1. **Capture source evidence.** Official curriculum documents are referenced and processed into retained source structures.
