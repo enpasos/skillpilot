@@ -1,0 +1,65 @@
+import assert from "node:assert/strict";
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, resolve } from "node:path";
+import test from "node:test";
+import { fileURLToPath } from "node:url";
+import { validateClaudePluginPackage } from "./check-package.mjs";
+
+const packageRoot = dirname(fileURLToPath(import.meta.url));
+
+test("validates the checked-in Claude plugin package", () => {
+  assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 12 });
+});
+
+test("rejects a provider-foreign MCP endpoint", () => {
+  withPackageCopy((root) => {
+    mutate(root, ".mcp.json", (value) => value.replace(
+      "https://mcp-claude-v1.skillpilot.com/mcp",
+      "https://skillpilot.com/mcp",
+    ));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /Unexpected SkillPilot MCP endpoint/u);
+  });
+});
+
+test("rejects a foreign session selector concept", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => `${value}\n${["learning", "Session", "Id"].join("")}\n`);
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /foreign session selector/u);
+  });
+});
+
+test("rejects loss of the learner presentation boundary", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "do not narrate tool calls",
+      "may narrate tool calls",
+    ));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /learner presentation boundary/u);
+  });
+});
+
+test("rejects incomplete coverage of the twelve-tool contract", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "`get_skillpilot_exam_evaluation`",
+      "the exam evaluation operation",
+    ));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /get_skillpilot_exam_evaluation/u);
+  });
+});
+
+function withPackageCopy(callback) {
+  const root = mkdtempSync(resolve(tmpdir(), "skillpilot-claude-plugin-"));
+  try {
+    cpSync(packageRoot, root, { recursive: true });
+    callback(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+function mutate(root, relativePath, transform) {
+  const target = resolve(root, relativePath);
+  writeFileSync(target, transform(readFileSync(target, "utf8")));
+}

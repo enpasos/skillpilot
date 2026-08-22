@@ -23,6 +23,16 @@ public final class ClaudeV1Contract {
             DEFAULT_PUBLIC_BASE_URL + "/.well-known/oauth-authorization-server";
     public static final String DEFAULT_PUBLIC_DOCUMENTATION_URL =
             "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/";
+    /**
+     * Anthropic-hosted MCP Apps origin derived from the public Claude MCP endpoint according to
+     * Anthropic's SHA-256 resource-domain rule. This is deliberately independent from both the
+     * SkillPilot application origin and the connector's public MCP origin.
+     */
+    public static final String MCP_APP_UI_DOMAIN =
+            "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com";
+    public static final String MCP_APP_RESOURCE_MIME_TYPE = "text/html;profile=mcp-app";
+    public static final String MCP_APP_RESOURCE_URI_PREFIX =
+            "ui://skillpilot/claude/connector/v1/";
 
     public static final String PUBLIC_PATH_MCP = "/mcp";
     public static final String PUBLIC_PATH_PROTECTED_RESOURCE_METADATA =
@@ -74,6 +84,12 @@ public final class ClaudeV1Contract {
     public static final Set<String> LOOPBACK_CALLBACK_HOSTS = Set.of("127.0.0.1", "localhost");
 
     public static final String TOOL_GET_COACH_CONTEXT = "get_skillpilot_coach_context";
+    public static final String TOOL_RENDER_GOAL_VISUALIZATION =
+            "render_skillpilot_goal_visualization";
+    public static final String TOOL_START_MEMORY_PRACTICE =
+            "start_skillpilot_memory_practice";
+    public static final String TOOL_REVIEW_MEMORY_PRACTICE_CARD =
+            "review_skillpilot_memory_practice_card";
     public static final String TOOL_GET_NAVIGATION_OPTIONS = "get_skillpilot_navigation_options";
     public static final String TOOL_SET_FOCUS = "set_skillpilot_focus";
     public static final String TOOL_SET_ACTIVE_GOAL = "set_skillpilot_active_goal";
@@ -87,6 +103,9 @@ public final class ClaudeV1Contract {
 
     public static final List<String> ALL_TOOL_NAMES = List.of(
             TOOL_GET_COACH_CONTEXT,
+            TOOL_RENDER_GOAL_VISUALIZATION,
+            TOOL_START_MEMORY_PRACTICE,
+            TOOL_REVIEW_MEMORY_PRACTICE_CARD,
             TOOL_GET_NAVIGATION_OPTIONS,
             TOOL_SET_FOCUS,
             TOOL_SET_ACTIVE_GOAL,
@@ -99,6 +118,8 @@ public final class ClaudeV1Contract {
     /** Tools that must never mutate learner state; callable with the read scope alone. */
     public static final Set<String> READ_TOOL_NAMES = Set.of(
             TOOL_GET_COACH_CONTEXT,
+            TOOL_RENDER_GOAL_VISUALIZATION,
+            TOOL_START_MEMORY_PRACTICE,
             TOOL_GET_NAVIGATION_OPTIONS,
             TOOL_START_VERIFIED_RECALL,
             TOOL_GET_VERIFIED_RECALL_ANSWERS,
@@ -106,6 +127,7 @@ public final class ClaudeV1Contract {
 
     /** Tools that mutate canonical learner state; they additionally require the write scope. */
     public static final Set<String> WRITE_TOOL_NAMES = Set.of(
+            TOOL_REVIEW_MEMORY_PRACTICE_CARD,
             TOOL_SET_FOCUS,
             TOOL_SET_ACTIVE_GOAL,
             TOOL_SET_MASTERY,

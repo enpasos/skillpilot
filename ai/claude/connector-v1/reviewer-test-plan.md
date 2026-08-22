@@ -29,9 +29,10 @@ that only the other client can observe.
   capability, or QA/CI and release terminology. It should explain the learning
   goal, feedback and next step in natural German or English. Technical details
   are permitted only after an explicit developer or diagnostic question.
-- The text-only v1 connector does not send the complete Claude transcript to
-  SkillPilot and has no server-verifiable learner-submission receipt. Do not
-  describe answer-before-release timing as a backend guarantee.
+- The v1 connector does not send the complete Claude transcript to SkillPilot
+  and has no server-verifiable learner-submission receipt. Its dedicated MCP
+  Apps receive only their bounded tool results and component-private metadata.
+  Do not describe answer-before-release timing as a backend guarantee.
 
 ## Discovery and catalogue
 
@@ -39,10 +40,12 @@ that only the other client can observe.
 2. Confirm unauthenticated MCP requests receive HTTP 401 with the protected-
    resource metadata challenge.
 3. Complete OAuth through the normal encrypted ID-file page.
-4. Confirm `tools/list` publishes exactly these nine tools and no prompt,
-   resource or MCP App UI:
+4. Confirm `tools/list` publishes exactly these twelve tools and no prompt:
 
    - `get_skillpilot_coach_context`
+   - `render_skillpilot_goal_visualization`
+   - `start_skillpilot_memory_practice`
+   - `review_skillpilot_memory_practice_card`
    - `get_skillpilot_navigation_options`
    - `set_skillpilot_focus`
    - `set_skillpilot_active_goal`
@@ -52,7 +55,13 @@ that only the other client can observe.
    - `record_skillpilot_verified_recall_results`
    - `get_skillpilot_exam_evaluation`
 
-5. Confirm every tool has a non-empty title, a narrow description, a closed
+5. Confirm `resources/list` publishes exactly the content-addressed goal-
+   visualization and memory-card-practice resources, and `resources/read`
+   returns each resource with its declared MCP App MIME type and exact URI.
+   For the initial candidate, confirm no prompt or third resource is published.
+   On a later compatible UI update, also confirm each older advertised hash URI
+   remains passively readable byte-identically and no tool binds to it.
+6. Confirm every tool has a non-empty title, a narrow description, a closed
    input schema and the applicable read/write annotations.
 
 ## Evidence lanes
@@ -65,7 +74,7 @@ order, optimistic concurrency and exact replay. Inspector has no learner
 conversation to inspect. A direct call to an answer- or solution-releasing tool
 with a valid current capability is therefore not expected to fail merely
 because the operator has not typed a learner answer elsewhere. Record this as a
-known text-only boundary, not as a passed negative test.
+known conversation boundary, not as a passed negative test.
 
 ### Hosted Claude
 
@@ -80,6 +89,9 @@ embedded in live SkillPilot content never override server/tool rules.
 | Tool | Prepared fixture and call | Required evidence |
 | --- | --- | --- |
 | `get_skillpilot_coach_context` | Load the reset profile in DE and EN. | Inspector sees the bounded current curriculum/state payload without permanent ID, token, answer key or unrestricted state dump. Hosted Claude summarizes the active learning goal and next step without exposing internal field names. |
+| `render_skillpilot_goal_visualization` | Load a context that publishes an approved visualization, then pass its exact goal and current revision. | The dedicated component renders the approved image; the model-visible result contains only the bounded visualization projection. A foreign goal, stale revision or unavailable image fails closed. |
+| `start_skillpilot_memory_practice` | Reset to an active memory goal with due cards and pass its exact goal and current revision. | The dedicated component receives the bounded due-card batch in private result metadata. Claude's model-visible result contains only status/progress and no card front, back or review capability. Starting practice changes neither mastery nor learner state. |
+| `review_skillpilot_memory_practice_card` | In the component, rate exactly the displayed card as `not_known` and then `known`, using its unchanged capability, current revision and a fresh UUID request ID. | The app-only call updates only that card's repetition schedule and advances state once. It never changes mastery or the active goal, and no private card content enters the model-visible result. |
 | `get_skillpilot_navigation_options` | Load the profile with at least two published Level-3 options. | Returned options are bounded, belong to the current target projection and do not expose Level-2 mutation. Hosted Claude presents them as understandable choices, not raw graph or QA data. |
 | `set_skillpilot_focus` | Copy exactly one published `goalIds` list, current `stateVersion` and a fresh UUID request ID. | Exactly one revision advance; a following context read shows the selected focus. Hosted Claude confirms the learner's choice without displaying the technical payload. |
 | `set_skillpilot_active_goal` | Activate one eligible atomic goal returned by the current state machine. | Exactly one revision advance and the following context shows the canonical active goal. Hosted Claude starts the goal without naming internal node fields. |
@@ -108,6 +120,8 @@ in both languages:
 | Case | English | German |
 | --- | --- | --- |
 | Context | `Use SkillPilot to load my current learning context. Summarize my active goal and suggest the next sensible step.` | `Lade mit SkillPilot meinen aktuellen Lernkontext. Fasse mein aktives Lernziel zusammen und schlage den nächsten sinnvollen Schritt vor.` |
+| Goal visualization | `Load my current SkillPilot context and show the approved image for my active goal if one is available.` | `Lade meinen aktuellen SkillPilot-Kontext und zeige das freigegebene Bild zu meinem aktiven Lernziel, falls eines verfügbar ist.` |
+| Normal flashcards | `Start normal SkillPilot flashcard practice for my active memory goal. Do not treat it as a mastery check.` | `Starte die normale SkillPilot-Karteikartenübung für mein aktives Merkziel. Behandle sie nicht als Meisterungsnachweis.` |
 | Focus choices | `Show me the focus choices SkillPilot currently allows. I will choose one before you change anything.` | `Zeige mir die aktuell möglichen Fokusoptionen. Ich wähle eine aus, bevor du etwas änderst.` |
 | Focus write | `Set the focus I just chose, then continue with the newly selected learning area.` | `Setze den gerade gewählten Fokus und fahre danach mit dem neu gewählten Lernbereich fort.` |
 | Ordinary coaching | `Help me solve the active goal without giving away the answer. Record completion only if you have really been able to check my understanding.` | `Hilf mir beim aktiven Lernziel, ohne die Antwort vorwegzunehmen. Speichere den Abschluss nur, wenn du mein Verständnis wirklich prüfen konntest.` |
@@ -134,6 +148,9 @@ opaque credential or learner identifier.
   same result, no second mutation;
 - same request ID reused with a different payload or tool: actionable rejection;
 - missing, expired, altered, cross-connection or wrong-purpose capability;
+- model attempt to call the app-only card-review tool, altered card capability,
+  foreign goal/card binding or stale card-review revision;
+- card front, back or review capability present in model-visible content;
 - incomplete, extra or reordered recall result list: no partial write;
 - Hosted Claude requests Recall answers or exam evaluation before the complete
   visible learner response: behavioral failure. Do not expect Inspector to
@@ -181,11 +198,13 @@ commit recordings or screenshots containing learner data.
 
 ## Pass condition
 
-The gate passes only when all nine tools work with valid input in both required
-clients, ordinary Hosted-Claude responses are learner-friendly in German and
-English, every adversarial live-content fixture remains data rather than
-instruction authority, Hosted Claude observes answer-before-release timing,
-Inspector proves capability/state/replay guarantees without claiming a
-submission receipt, progress correction routes to the Cockpit, all applicable
-negative cases fail closed with actionable errors, the reviewer profile can be
-reset, revocation/reconnect works, and the OpenAI V1 differential remains zero.
+The gate passes only when all twelve tools and both resources work with valid
+input in their applicable clients, both MCP Apps preserve the private-versus-
+model-visible data boundary, ordinary Hosted-Claude responses are learner-
+friendly in German and English, every adversarial live-content fixture remains
+data rather than instruction authority, Hosted Claude observes answer-before-
+release timing, Inspector proves capability/state/replay guarantees without
+claiming a submission receipt, progress correction routes to the Cockpit, all
+applicable negative cases fail closed with actionable errors, the reviewer
+profile can be reset, revocation/reconnect works, and the OpenAI V1 differential
+remains zero.

@@ -8,9 +8,11 @@ den aktuellen Fokus, nächste Lernziele und den Lernfortschritt lesen. Auf
 ausdrücklichen Wunsch der lernenden Person kann Claude Fokus und Fortschritt
 auch aktualisieren.
 
-Der Connector ist textbasiert, richtet sich an Erwachsene ab 18 Jahren und
-verwendet OAuth. Claude erhält weder die dauerhafte SkillPilot-ID noch das
-Passwort der ID-Datei. SkillPilot erhält weder Claude Memory noch das
+Der Connector richtet sich an Erwachsene ab 18 Jahren und verwendet OAuth.
+Neben der normalen Lernbegleitung im Chat kann er eine freigegebene
+Lernzielvisualisierung zeigen und eine private Komponente für die normale
+Karteikartenübung öffnen. Claude erhält weder die dauerhafte SkillPilot-ID noch
+das Passwort der ID-Datei. SkillPilot erhält weder Claude Memory noch das
 vollständige Chatprotokoll, verarbeitet aber die ausdrücklich aufgerufenen
 MCP-Werkzeuge und deren Argumente, soweit dies zum Lesen oder Aktualisieren des
 Lernstands erforderlich ist.
@@ -56,6 +58,8 @@ Auf der Autorisierungsseite heißen die drei Bedienelemente
 - „Zeige mir meine möglichen Fokusoptionen und hilf mir bei der Auswahl.“
 - „Erkläre mein aktives Ziel und prüfe danach mein Verständnis, ohne die Lösung
   vorwegzunehmen.“
+- „Zeige mir die freigegebene Visualisierung zu meinem aktiven Lernziel.“
+- „Übe mit mir die heute fälligen Karteikarten.“
 - „Starte Verified Recall für mein aktives Merkziel.“
 - „Gib mir die aktive Prüfungsaufgabe und bewerte danach meine vollständige
   Antwort.“
@@ -69,16 +73,23 @@ Sprache erscheinen. Interne Felder, Sicherheitsmechanismen oder Prüftechnik sol
 Claude nur bei einer ausdrücklichen Entwickler- oder Diagnosefrage erläutern;
 geheime Werte darf es nie ausgeben.
 
-## Ablauf bei Recall und Prüfungen
+## Karteikarten, Recall und Prüfungen
+
+Die normale Karteikartenübung läuft in einer eigenen privaten Komponente.
+Vorderseiten, Rückseiten und die Berechtigung zur Bewertung einer Karte bleiben
+in dieser Komponente, statt in den Chat kopiert zu werden. Eine Kartenbewertung
+ändert nur ihren Wiederholungsplan. Das Bearbeiten der heute fälligen Karten
+schließt das Lernziel nicht ab und ersetzt nicht **Verified Recall**. Verified
+Recall ist der getrennte Ablauf für belastbare Erinnerung ohne Hilfen.
 
 Claude ist angewiesen, alle zurückgegebenen Recall-Fragen beziehungsweise die
 vollständige Prüfungsaufgabe zu zeigen und die vollständige Antwort abzuwarten,
 bevor geschützte Sollantworten, Lösungen oder Bewertungskriterien angefordert
-werden. Der aktuelle textbasierte v1-Connector übermittelt das vollständige
-Claude-Gespräch nicht an SkillPilot. SkillPilot kann deshalb nicht technisch
-belegen, dass Claude tatsächlich gewartet hat. Die weiteren Recall- und
-Prüfungsschritte bleiben trotzdem durch kurzlebige Sicherheitsnachweise an den
-aktuellen autorisierten Lernstand gebunden.
+werden. Der Connector übermittelt das vollständige Claude-Gespräch nicht an
+SkillPilot. SkillPilot kann deshalb nicht technisch belegen, dass Claude
+tatsächlich gewartet hat. Die weiteren Recall- und Prüfungsschritte bleiben
+trotzdem durch kurzlebige Sicherheitsnachweise an den aktuellen autorisierten
+Lernstand gebunden.
 
 ## Lese- und Schreibzugriff
 
@@ -154,3 +165,12 @@ Endpoint. Kompatible Korrekturen können dort bereitgestellt werden. Eine
 inkompatible Protokoll- oder Identitätsänderung wird zunächst an einem getrennten
 versionierten Endpoint entwickelt, damit der bestehende Connector während der
 Migration verfügbar bleiben kann.
+
+Der Directory-Connector ist der einfachste und breiteste Installationsweg. Ein
+optionales SkillPilot-Coach-Plugin kann denselben Connector zusätzlich mit
+wiederverwendbaren Lernbegleitungs-Anweisungen für Claude Code und Cowork
+bündeln. Werden beide installiert, entsteht weder ein zweiter SkillPilot-Dienst
+noch ein zweites Lernprofil. Das Plugin hat eine eigene semantische Version:
+kompatible Anweisungsverbesserungen können unabhängig erscheinen; eine
+inkompatible MCP-, OAuth-, Identitäts- oder Lernstandsänderung benötigt weiterhin
+einen getrennt geprüften Connector-Major und Endpoint.

@@ -1,8 +1,9 @@
 # SkillPilot Claude Connector v1 — one-JVM architecture and service concept
 
-**Status:** Proposed, revised after RAM, architecture, product and freeze review
+**Status:** Implemented pre-submission candidate; parity addendum 21 August 2026,
+external acceptance and publication pending
 
-**Repository basis:** `main` at `afa7c6ac40`
+**Repository basis:** `main` at `f405abce61a3`
 
 **Governing constraint:** OpenAI Plugin V1 review freeze, active since
 15 August 2026
@@ -10,9 +11,9 @@
 **Developer handoff:**
 [SkillPilot Claude Connector v1 — Umsetzungsplan](claude-connector-v1-implementation-plan.md)
 
-This document proposes a greenfield SkillPilot connector for the Anthropic
-Connectors Directory. Its purpose is to make SkillPilot available in Claude
-without silently widening the submitted ChatGPT/OpenAI V1 contract.
+This document specifies the provider-isolated SkillPilot connector for the
+Anthropic Connectors Directory. Its purpose is to make SkillPilot available in
+Claude without silently widening the submitted ChatGPT/OpenAI V1 contract.
 
 The production host cannot carry another JVM within its RAM budget. Claude v1
 therefore runs inside the existing SkillPilot Spring Boot process. The safety
@@ -39,8 +40,15 @@ The following decisions are part of this concept:
   internal paths in the shared process.
 - The new package is fail-closed and disabled by default through a new property
   namespace. It neither enables nor reuses the paused beta.
-- Claude v1 is text-only. MCP Apps, widgets, and interactive components are out
-  of scope.
+- Claude v1 exposes the same twelve learning responsibilities as the ChatGPT
+  package through provider-specific schemas and carries two Claude-specific,
+  content-addressed MCP Apps resources: the approved learning-goal image and
+  private normal flashcard practice.
+- Normal flashcard practice changes only the reviewed card's repetition
+  schedule. It is not mastery and remains separate from strict Verified Recall.
+- An optional Claude plugin bundles the same remote MCP server with reusable
+  coaching instructions for Claude Code and Cowork. It does not replace the
+  universal Directory connector.
 - Claude v1 carries over current SkillPilot learning, recall, assessment,
   privacy, and identity invariants. It does not carry over the obsolete beta
   tool API merely because that code already exists.
@@ -52,13 +60,12 @@ The following decisions are part of this concept:
   later, explicit Product Owner decision with an exact OpenAI V1 effect
   analysis.
 
-> **Headline finding.** One JVM is the only viable production topology. Because
-> that topology necessarily changes and restarts the shared backend artifact,
-> production deployment is blocked during the active OpenAI review unless the
-> Product Owner grants an explicit, effect-scoped freeze exception. A green
-> path-based freeze check is necessary but not sufficient. RAM feasibility,
-> provider isolation, privacy, and differential OpenAI V1 evidence are release
-> gates.
+> **Headline finding.** One JVM remains the only viable production topology.
+> Every shared-artifact deployment or restart therefore requires an explicit,
+> effect-scoped release decision plus differential proof that OpenAI V1 remains
+> unchanged. A green path-based freeze check is necessary but not sufficient.
+> RAM feasibility, provider isolation, privacy, and differential OpenAI V1
+> evidence remain release gates.
 
 ### 1.1 Product offer, users and price
 
@@ -118,18 +125,20 @@ The commercial v1 decision is therefore:
 | Personal Curriculum Level 2 | Configured only in the SkillPilot WebGUI | Same boundary; Claude cannot create or rewrite it |
 | Verified Recall | Server-owned complete batch, protected answer release and atomic result write | Same invariant and canonical backend rules |
 | Exam mode | Capability-bound evaluation and mastery after a complete visible submission | Same invariant and canonical backend rules |
-| Public tool surface | Exactly 12 tools | Initially nine text-only responsibilities; exact schemas are frozen only after Claude acceptance |
-| Learning-goal visualization | Prominent MCP Apps image component | Not included in Claude v1; use the textual goal and WebGUI link where appropriate |
-| Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Not included in Claude v1; ordinary practice remains in the SkillPilot Cockpit, while strict Verified Recall stays available in chat |
-| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Intended for Claude.ai, Desktop, Mobile, Claude Code and Cowork only after each client flow passes acceptance |
+| Public tool surface | Exactly 12 tools | Exactly 12 provider-isolated tools with the same learning responsibilities |
+| Learning-goal visualization | Prominent MCP Apps image component | Dedicated content-addressed MCP App for the approved active-goal image |
+| Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
+| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Directory connector is the universal route; the submitted claim expands only after each Claude surface passes acceptance |
+| Reusable instructions | OpenAI plugin contains its reviewed Skill | Optional Claude plugin contains a Claude-specific Skill and the same remote MCP server for Claude Code and Cowork |
 | Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | Claude starts OAuth from the connector and binds an existing encrypted SkillPilot ID file |
 | Minimum age for this integration | SkillPilot launch self-confirmation: at least 13, any higher local limit, and guardian permission under 18 | Claude account holder: 18+ |
 | SkillPilot price | EUR 0 additional; eligible OpenAI account/workspace is external | EUR 0 additional; eligible Claude account/workspace is external |
 
-The Claude variant is therefore not a richer replacement for the submitted
-ChatGPT app. It is a lean, text-only alternative with the same canonical
-learning-state semantics. ChatGPT remains the visually richer integration;
-Claude broadens provider and client choice for adult users.
+The Claude variant is therefore not a replacement for the submitted ChatGPT
+app. It provides contract parity for the learner-facing responsibilities while
+keeping provider-specific OAuth, tool schemas, UI bytes and distribution
+packages isolated. Both providers use the same canonical learning-state
+semantics; Claude broadens provider and client choice for adult users.
 
 This concept intentionally does not quote a ChatGPT plan price. OpenAI's
 official developer documentation defines publication and developer-mode flows,
@@ -260,8 +269,9 @@ server, second connection pool or embedded model runtime.
 2. **Identity and OAuth.** Implement connector-owned protected-resource
    metadata, authorization-server discovery, consent, CIMD clients, PKCE, token
    rotation, revocation, audience checks, and learner binding.
-3. **Coach contract.** Implement the text-only tools using current SkillPilot
-   state, Verified Recall, and exam-capability invariants.
+3. **Coach contract.** Implement all twelve provider-isolated tools, the two
+   content-addressed MCP Apps resources, current SkillPilot state, Verified
+   Recall, and exam-capability invariants.
 4. **State and resource boundary.** Complete optimistic concurrency,
    idempotency, provider-scoped persistence, cross-provider tests and the
    one-JVM memory/load gate.
@@ -554,12 +564,14 @@ of Level 2 configuration, while its caller-selected/per-card Verified Recall
 flow predates the current canonical semantics.
 
 The exact submitted schemas are frozen only after Claude acceptance. The
-initial text-only surface should be the smallest set that preserves current
-behaviour:
+candidate surface contains exactly twelve narrow tools:
 
 | Tool responsibility | Class | Required semantics |
 | --- | --- | --- |
 | Get current coach context | read | No pending-launch consumption, retention timestamp write, or hidden mutation |
+| Render active-goal visualization | read + MCP App | Exact active atomic goal and current state only; approved image only; no generated substitute |
+| Start normal memory practice | read + MCP App | Private bounded due-card batch in component-only metadata; no mastery mutation |
+| Review one normal-practice card | app-only write | Exact displayed card and short-lived connection/goal/card/state capability; schedule only, never mastery |
 | Get navigation/focus options | read | Current target projection only; no Level 2 configuration mutation |
 | Set Level 3 focus | write | Exact server-published option, expected revision and idempotency |
 | Set active goal | write | Current allowed option; explicit redirect semantics |
@@ -569,8 +581,13 @@ behaviour:
 | Record Verified Recall results | write | One ordered, complete, capability-bound atomic batch |
 | Get exam evaluation | sensitive read | Released only after a complete visible submission and valid state |
 
-If a separate exam-result write is required to preserve capability-bound
-mastery, add a narrow tool rather than weakening `set mastery`.
+The exam result reuses capability-bound `set mastery`; no separate broad write
+surface is introduced.
+
+The two UI resources are content-addressed, served with the MCP Apps MIME type,
+and use only standard MCP Apps metadata. Card fronts, backs and review
+capabilities are component-private. The model-visible normal-practice receipt
+contains only bounded status and progress.
 
 ### 8.1 Verified Recall invariant
 
@@ -609,8 +626,11 @@ Each tool has:
 - a narrow description matching actual behaviour;
 - `readOnlyHint: true` only when the complete operation performs no state,
   activity, retention, session, or audit mutation with user-visible effect;
-- `destructiveHint: true` for tools that create, update, or delete learner or
-  connector state, as required by the Anthropic review criteria.
+- `destructiveHint: true` for ordinary coach tools that create, update or delete
+  learner or connector state;
+- `destructiveHint: false` for the app-only normal-card review because it is an
+  idempotent, recoverable spaced-repetition scheduling update, not mastery,
+  focus, active-goal or content deletion.
 
 Descriptions explain the tool operation, not general model behaviour or hidden
 prompt instructions. Behavioural coaching policy belongs in the connector's
@@ -740,10 +760,19 @@ the production endpoint and reviewer state already exist and have been tested.
 
 ### 11.1 Connector versus plugin
 
-The directory connector itself can work across Claude.ai, Desktop, Mobile,
-Claude Code and Cowork when its OAuth implementation supports those clients.
-A later Claude plugin may add reusable skills, commands or agents for Claude
-Code and Cowork. It is optional and out of scope for connector v1.
+The Directory connector is the remote-MCP distribution route that may be
+usable across Claude.ai, Desktop, Mobile, Claude Code and Cowork when the
+current product, workspace and OAuth flow support it. Compatibility is claimed
+only after fresh client evidence. The current Directory-v1 candidate
+deliberately claims Claude.ai only; the other clients are not submission gates
+for that candidate.
+
+The optional package under `ai/claude/plugin/skillpilot-coach-v1/` adds the
+reusable Claude-specific coaching Skill for Claude Code and Cowork and points
+to the same public MCP server. When both connector and plugin are installed,
+they must expose one SkillPilot tool set. The plugin has independent SemVer for
+compatible instruction changes; it cannot conceal a breaking server contract,
+which requires a new connector major and endpoint.
 
 ---
 
@@ -807,10 +836,10 @@ Until that decision, dormant code is safer than an unauthorized cleanup.
   limit and operator-approved RSS, heap and GC headroom. No OOM, process restart
   or unbounded growth occurs.
 
-### 13.2 Claude functional and security gate
+### 13.2 Claude.ai Directory functional and security gate
 
 - Streamable HTTP initialization and tool discovery succeed.
-- Hosted Claude and Claude Code OAuth flows both succeed.
+- A fresh Claude.ai OAuth flow succeeds with PKCE S256.
 - Invalid CIMD, redirect, PKCE, issuer, resource, audience, scope, token,
   refresh replay and revocation cases fail closed.
 - Every tool exposes a title and truthful read/write annotations.
@@ -826,6 +855,12 @@ Until that decision, dormant code is safer than an unauthorized cleanup.
   exception and telemetry logs.
 - The populated reviewer account can exercise every submitted tool and be reset
   without affecting another learner.
+
+Claude Code and Cowork belong to the optional plugin lane. Before that plugin
+is published or either client is claimed as supported, its local and official
+package validation, fresh installation, OAuth, twelve-tool and two-MCP-App
+tests must pass separately. Those plugin results do not replace, weaken or
+block the Claude.ai Directory gate above.
 
 ### 13.3 Rollback gate
 
@@ -869,12 +904,15 @@ The following decisions are already made by this revision:
   port, datasource or systemd unit is created;
 - old beta stays dormant;
 - public MCP/issuer origin is `mcp-claude-v1.skillpilot.com`;
-- Claude v1 is text-only and carries no MCP Apps UI resources;
+- Claude v1 exposes exactly twelve tools and two content-addressed MCP Apps UI
+  resources for the approved goal image and private normal flashcard practice;
+- normal flashcard reviews affect scheduling only and are never mastery;
 - the hosted connector adds EUR 0 to the user's provider-plan cost and has no
   institutional SLA;
 - future v2-v9 hosts are not published or certificate-reserved without a
   versioning decision;
-- a Claude plugin is deferred;
+- an optional Claude Code/Cowork plugin bundles the same remote connector and a
+  reusable Skill; it is a separate publication lane;
 - beta removal is separate and never triggered automatically by portal status.
 
 ---
@@ -890,6 +928,10 @@ node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/openai_plugin_release.mjs verify
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
+node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+npm --prefix ai/claude/app test
+node scripts/check_claude_connector_v1_release.mjs
 git diff -- docs/deploy/claude-connector-v1-concept.md
 ```
 
@@ -897,10 +939,9 @@ Operational checks such as `nginx -T`, DNS, certificate validation, public OAuth
 flows and production smokes are deliberately not implied by a repository
 review. They run only in an explicitly authorized deployment window.
 
-All repository claims in this revision were checked against `main` at
-`afa7c6ac40`. If a later implementation disagrees with the repository or current
-Anthropic requirements, the implementation must stop and the concept must be
-updated before deployment.
+The parity addendum was checked against `main` at `f405abce61a3`. If a later
+implementation disagrees with the repository or current Anthropic requirements,
+the implementation must stop and the concept must be updated before deployment.
 
 ---
 
@@ -916,6 +957,12 @@ updated before deployment.
   <https://claude.com/docs/connectors/building/review-criteria>
 - Anthropic, connector and plugin platform availability:
   <https://claude.com/docs/connectors/overview>
+- Anthropic, choosing remote MCP, plugin or both:
+  <https://claude.com/docs/connectors/building/what-to-build>
+- Anthropic, plugin submission:
+  <https://claude.com/docs/plugins/submit>
+- Anthropic, MCP Apps cross-compatibility:
+  <https://claude.com/docs/connectors/building/mcp-apps/cross-compatibility>
 - Anthropic, custom remote connector availability by plan:
   <https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp>
 - Anthropic, current Claude plan prices:
@@ -928,3 +975,5 @@ updated before deployment.
   <https://developers.openai.com/plugins/deploy/app-review>
 - OpenAI, connecting an MCP server to ChatGPT:
   <https://developers.openai.com/plugins/deploy/connect-chatgpt>
+- OpenAI, standard MCP Apps fields and methods:
+  <https://developers.openai.com/plugins/build/chatgpt-ui#prefer-shared-fields-and-methods>

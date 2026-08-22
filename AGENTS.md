@@ -1248,6 +1248,21 @@ Provider-facing contracts must use derived temporary context instead:
 - Any new provider adapter must define its own minimum data projection and
   authentication/context boundary. Do not expose the permanent SkillPilot ID just
   because an internal facade accepts it.
+- The SkillPilot Claude Connector v1 is a provider-isolated remote-MCP lane at
+  `https://mcp-claude-v1.skillpilot.com/mcp`. Its OAuth connection is the
+  identity boundary; it never accepts or exposes an OpenAI
+  `learningSessionId`. Its reviewed candidate surface contains exactly twelve
+  tools and two content-addressed MCP Apps resources: the approved active-goal
+  visualization and private normal memory practice. Normal-practice card
+  fronts, backs and review capabilities stay in component-only metadata; the
+  review tool is app-only, updates only the exact displayed card's repetition
+  schedule and never changes mastery. Normal practice remains separate from
+  strict Verified Recall. Learner-facing Claude responses translate tool
+  results into the learning goal, feedback and next step and do not expose
+  revisions, graph fields, capabilities or QA terminology unless the user asks
+  an explicit developer or diagnostic question. The optional Claude
+  Code/Cowork plugin bundles the same remote MCP server with a provider-specific
+  Skill; it is a separate distribution lane, not a second service or identity.
 
 LLM/learning-coach prompts should reinforce that:
 

@@ -17,11 +17,12 @@ import javax.crypto.spec.SecretKeySpec;
 import org.springframework.stereotype.Service;
 
 /**
- * Mints and cryptographically validates short-lived capabilities for Verified Recall and Exam
- * Evaluation.
+ * Mints and cryptographically validates short-lived capabilities for normal memory practice,
+ * Verified Recall and Exam Evaluation.
  *
- * <p>Every capability binds provider, connection, learning goal, the exact card list in order, the
- * learner state revision it was issued against, and an expiry. The payload is authenticated and
+ * <p>Every capability binds provider, connection, learning goal, the exact card or ordered card
+ * list relevant to its purpose, the learner state revision it was issued against, and an expiry.
+ * The payload is authenticated and
  * encrypted: Claude can copy it unchanged but cannot read the OAuth subject embedded in it.
  * Verification is fail-closed: an unparsable, unauthenticated, expired or mismatched capability
  * throws rather than degrading to a weaker check.</p>
@@ -33,6 +34,7 @@ public class ClaudeV1CapabilityService {
     private static final String KIND_RECALL_BATCH = "RECALL_BATCH";
     private static final String KIND_RECALL_GRADING = "RECALL_GRADING";
     private static final String KIND_EXAM_EVALUATION = "EXAM_EVAL";
+    private static final String KIND_MEMORY_PRACTICE_REVIEW = "MEMORY_REVIEW";
     private static final String FIELD_SEPARATOR = "|";
     private static final String CARD_SEPARATOR = ",";
     private static final int MAX_CAPABILITY_CHARACTERS = 16_384;
@@ -66,6 +68,13 @@ public class ClaudeV1CapabilityService {
             String connectionId,
             String goalId,
             long stateVersion,
+            Instant expiresAt) {}
+
+    public record MemoryPracticeReviewClaim(
+            String connectionId,
+            String goalId,
+            String cardId,
+            long issuedStateVersion,
             Instant expiresAt) {}
 
     private final ClaudeV1Properties properties;
@@ -172,6 +181,71 @@ public class ClaudeV1CapabilityService {
                 Long.toString(stateVersion),
                 Long.toString(expiresAt.toEpochMilli()));
         return encryptAndEncode(payload);
+    }
+
+    /**
+     * Authorizes one app-only rating for one exact card in the bounded batch issued to this OAuth
+     * connection. The encrypted token carries the technical identifiers and the state revision at
+     * which the batch was loaded, so none of those bindings must be exposed in model-visible
+     * content.
+     */
+    public String mintMemoryPracticeReviewCapability(
+            String connectionId,
+            String goalId,
+            String cardId,
+            long issuedStateVersion) {
+        requireBindingValue(connectionId, "connectionId");
+        requireBindingValue(goalId, "goalId");
+        requireBindingValue(cardId, "cardId");
+        requireStateVersion(issuedStateVersion);
+        Instant expiresAt = Instant.now().plus(properties.getCapabilityTtl());
+        String payload = String.join(
+                FIELD_SEPARATOR,
+                KIND_MEMORY_PRACTICE_REVIEW,
+                connectionId,
+                goalId,
+                cardId,
+                Long.toString(issuedStateVersion),
+                Long.toString(expiresAt.toEpochMilli()));
+        return encryptAndEncode(payload);
+    }
+
+    /**
+     * Verifies a private review capability against the current OAuth connection, active goal and
+     * exact card. The issued revision is a lower bound rather than an equality check: every card in
+     * one component-local batch is minted at the same revision, while each preceding card rating
+     * legitimately advances the canonical revision. The caller still supplies the newest revision
+     * to {@link ClaudeV1SessionCoordinator}, which enforces exact optimistic concurrency before the
+     * write.
+     */
+    public MemoryPracticeReviewClaim verifyMemoryPracticeReviewCapability(
+            String capability,
+            String expectedConnectionId,
+            String expectedGoalId,
+            String expectedCardId,
+            long currentStateVersion) {
+        String[] parts = verifyAndSplit(capability, KIND_MEMORY_PRACTICE_REVIEW, 6);
+        String connectionId = parts[1];
+        String goalId = parts[2];
+        String cardId = parts[3];
+        long issuedStateVersion = parseLong(parts[4]);
+        Instant expiresAt = parseInstant(parts[5]);
+
+        requireNotExpired(expiresAt);
+        requireBinding(expectedConnectionId, connectionId, "connection");
+        requireBinding(expectedGoalId, goalId, "goal");
+        requireBinding(expectedCardId, cardId, "card");
+        requireStateVersion(currentStateVersion);
+        requireStateVersion(issuedStateVersion);
+        if (currentStateVersion < issuedStateVersion) {
+            throw new CapabilityException("Capability was issued for a newer learner state.");
+        }
+        return new MemoryPracticeReviewClaim(
+                connectionId,
+                goalId,
+                cardId,
+                issuedStateVersion,
+                expiresAt);
     }
 
     public ExamEvaluationClaim verifyExamEvaluationCapability(

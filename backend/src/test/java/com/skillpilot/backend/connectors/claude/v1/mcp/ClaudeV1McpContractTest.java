@@ -5,6 +5,10 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +22,7 @@ import org.springframework.test.context.TestPropertySource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -58,20 +63,21 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void publishesExactlyTheNineApprovedTools() {
+    void publishesExactlyTheTwelveApprovedTools() {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = contractAdapter.toolSpecifications();
-        assertEquals(9, tools.size());
+        assertEquals(12, tools.size());
 
         Set<String> published = tools.stream()
                 .map(specification -> specification.tool().name())
                 .collect(Collectors.toSet());
         assertEquals(Set.copyOf(ClaudeV1Contract.ALL_TOOL_NAMES), published);
 
-        // Level 2 configuration and MCP App widgets are out of scope for Claude v1.
+        // Level 2 configuration remains out of scope for Claude v1.
         assertFalse(published.contains("set_skillpilot_curriculum"));
         assertFalse(published.contains("set_skillpilot_personalization"));
-        assertFalse(published.contains("render_skillpilot_goal_visualization"));
-        assertFalse(published.contains("start_skillpilot_memory_practice"));
+        assertTrue(published.contains(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION));
+        assertTrue(published.contains(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE));
+        assertTrue(published.contains(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD));
     }
 
     @Test
@@ -90,7 +96,9 @@ class ClaudeV1McpContractTest {
 
             boolean expectedReadOnly = ClaudeV1Contract.READ_TOOL_NAMES.contains(tool.name());
             assertEquals(expectedReadOnly, annotations.readOnlyHint(), () -> "readOnlyHint: " + tool.name());
-            assertEquals(!expectedReadOnly, annotations.destructiveHint(), () -> "destructiveHint: " + tool.name());
+            boolean expectedDestructive = !expectedReadOnly
+                    && !ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD.equals(tool.name());
+            assertEquals(expectedDestructive, annotations.destructiveHint(), () -> "destructiveHint: " + tool.name());
             assertEquals(Boolean.TRUE, annotations.idempotentHint(), () -> "idempotentHint: " + tool.name());
             assertEquals(Boolean.FALSE, annotations.openWorldHint(), () -> "openWorldHint: " + tool.name());
         }
@@ -114,6 +122,125 @@ class ClaudeV1McpContractTest {
             assertTrue(required.contains("expectedStateVersion"), () -> writeTool + " must require expectedStateVersion");
             assertTrue(required.contains("clientRequestId"), () -> writeTool + " must require clientRequestId");
         }
+    }
+
+    @Test
+    void memoryReviewSchemaIsAppOnlyAndAcceptsNoSessionIdentifier() {
+        McpSchema.Tool review = tool(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD);
+        assertEquals(
+                Map.of("ui", Map.of("visibility", List.of("app"))),
+                review.meta());
+        assertEquals(
+                Set.of(
+                        "goalId",
+                        "cardId",
+                        "reviewCapability",
+                        "rating",
+                        "expectedStateVersion",
+                        "clientRequestId"),
+                Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD)));
+        @SuppressWarnings("unchecked")
+        Map<String, Object> properties = (Map<String, Object>) schemaOf(
+                ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD).get("properties");
+        assertEquals(
+                Set.of(
+                        "goalId",
+                        "cardId",
+                        "reviewCapability",
+                        "rating",
+                        "expectedStateVersion",
+                        "clientRequestId",
+                        "language"),
+                properties.keySet());
+        assertFalse(properties.containsKey("learningSessionId"));
+        @SuppressWarnings("unchecked")
+        Map<String, Object> capabilitySchema =
+                (Map<String, Object>) properties.get("reviewCapability");
+        assertEquals(1, capabilitySchema.get("minLength"));
+        assertEquals(16_384, capabilitySchema.get("maxLength"));
+        assertEquals("^[A-Za-z0-9_-]+$", capabilitySchema.get("pattern"));
+        assertFalse(review.meta().toString().contains("domain"));
+        assertFalse(review.meta().toString().contains("openai"));
+    }
+
+    @Test
+    void uiToolsBindOnlyTheirResourceUrisWithoutProviderCompatibilityKeys() {
+        McpSchema.Tool render = tool(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION);
+        McpSchema.Tool start = tool(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE);
+        for (McpSchema.Tool candidate : List.of(render, start)) {
+            assertNotNull(candidate.outputSchema());
+            assertNotNull(candidate.meta());
+            assertEquals(Set.of("ui"), candidate.meta().keySet());
+            @SuppressWarnings("unchecked")
+            Map<String, Object> ui = (Map<String, Object>) candidate.meta().get("ui");
+            assertEquals(Set.of("resourceUri"), ui.keySet());
+            assertTrue(ui.get("resourceUri").toString().startsWith(
+                    ClaudeV1Contract.MCP_APP_RESOURCE_URI_PREFIX + "sha256-"));
+            assertFalse(candidate.meta().toString().contains("domain"));
+            assertFalse(candidate.meta().toString().contains("openai"));
+        }
+    }
+
+    @Test
+    void publishesTwoActiveByteAddressedClaudeResourcesWithHostOnlyUiDomainAndPassiveRetention() {
+        List<McpStatelessServerFeatures.SyncResourceSpecification> resources =
+                contractAdapter.resourceSpecifications();
+        assertTrue(resources.size() >= 2);
+        Set<String> activeResourceUris = Set.of(
+                uiResourceUri(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION),
+                uiResourceUri(ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE));
+        assertEquals(2, activeResourceUris.size());
+        Set<String> publishedResourceUris = resources.stream()
+                .map(specification -> specification.resource().uri())
+                .collect(Collectors.toSet());
+        assertTrue(publishedResourceUris.containsAll(activeResourceUris));
+        assertEquals(resources.size(), publishedResourceUris.size());
+        Set<String> filenames = Set.of("goal-visualization.html", "memory-card-practice.html");
+        for (McpStatelessServerFeatures.SyncResourceSpecification specification : resources) {
+            McpSchema.Resource resource = specification.resource();
+            assertEquals(ClaudeV1Contract.MCP_APP_RESOURCE_MIME_TYPE, resource.mimeType());
+            assertTrue(filenames.stream().anyMatch(resource.uri()::endsWith));
+            assertTrue(resource.uri().matches(
+                    "^ui://skillpilot/claude/connector/v1/sha256-[0-9a-f]{64}/[^/]+\\.html$"));
+
+            assertEquals(Set.of("ui"), resource.meta().keySet());
+            @SuppressWarnings("unchecked")
+            Map<String, Object> ui = (Map<String, Object>) resource.meta().get("ui");
+            assertEquals(ClaudeV1Contract.MCP_APP_UI_DOMAIN, ui.get("domain"));
+            assertFalse(ui.get("domain").toString().contains("://"));
+            @SuppressWarnings("unchecked")
+            Map<String, Object> csp = (Map<String, Object>) ui.get("csp");
+            assertEquals(
+                    Set.of("connectDomains", "resourceDomains", "frameDomains", "baseUriDomains"),
+                    csp.keySet());
+            assertFalse(resource.meta().toString().contains("openai"));
+            assertFalse(resource.meta().toString().contains("redirectDomains"));
+
+            McpSchema.ReadResourceResult result = specification.readHandler().apply(
+                    null,
+                    new McpSchema.ReadResourceRequest(resource.uri()));
+            assertEquals(1, result.contents().size());
+            McpSchema.TextResourceContents contents =
+                    (McpSchema.TextResourceContents) result.contents().getFirst();
+            assertEquals(resource.uri(), contents.uri());
+            assertEquals(resource.mimeType(), contents.mimeType());
+            assertEquals(resource.meta(), contents.meta());
+            String digestInUri = resource.uri().substring(
+                    resource.uri().indexOf("sha256-") + "sha256-".length(),
+                    resource.uri().lastIndexOf('/'));
+            assertEquals(digestInUri, sha256(contents.text()));
+            assertThrows(
+                    IllegalArgumentException.class,
+                    () -> specification.readHandler().apply(
+                            null,
+                            new McpSchema.ReadResourceRequest(resource.uri() + "-foreign")));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private String uiResourceUri(String toolName) {
+        Map<String, Object> ui = (Map<String, Object>) tool(toolName).meta().get("ui");
+        return ui.get("resourceUri").toString();
     }
 
     @Test
@@ -202,6 +329,9 @@ class ClaudeV1McpContractTest {
         assertTrue(instructions.contains("two independent checks"));
         assertTrue(instructions.contains("merely selecting one offered path"));
         assertTrue(instructions.contains("follow the returned next continuation immediately"));
+        assertTrue(instructions.contains("Normal flashcard practice is separate from Verified Recall"));
+        assertTrue(instructions.contains("Ordinary coach dialogue must never"));
+        assertTrue(instructions.contains("render_skillpilot_goal_visualization exactly once"));
     }
 
     @Test
@@ -238,5 +368,15 @@ class ClaudeV1McpContractTest {
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("workFeedback"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("outcomeFeedback"));
         assertFalse(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("successor"));
+    }
+
+    private String sha256(String value) {
+        try {
+            return HexFormat.of().formatHex(
+                    MessageDigest.getInstance("SHA-256")
+                            .digest(value.getBytes(StandardCharsets.UTF_8)));
+        } catch (NoSuchAlgorithmException e) {
+            throw new AssertionError(e);
+        }
     }
 }

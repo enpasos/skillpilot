@@ -27,8 +27,12 @@ client has its own recorded acceptance run.
 - Connector privacy policy:
   `https://mcp-claude-v1.skillpilot.com/privacy`
 - Candidate permanent Directory slug: `skillpilot`
-- Text-only connector: no MCP Apps resources and no `ui/open-link`
-- Tool surface: exactly nine purpose-built learning tools
+- MCP Apps: two dedicated, content-addressed resources for approved goal
+  visualization and private normal flashcard practice; no `ui/open-link`
+- Previously advertised hash URIs remain passively readable with their exact
+  bytes after a compatible UI update; tools bind only the two current URIs
+- Tool surface: exactly twelve purpose-built learning tools, including one
+  app-only card-review tool
 
 The version-neutral `skillpilot` slug is a candidate until the Product Owner
 confirms it in the portal. Anthropic makes the slug permanent on publication.

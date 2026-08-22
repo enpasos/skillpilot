@@ -107,6 +107,40 @@ jobs:
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
 
+  claude-connector-v1-ci:
+    name: Claude Connector V1 CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: ai/claude/app/package-lock.json
+      - name: Install Claude MCP App dependencies
+        run: npm --prefix ai/claude/app ci
+      - name: Test and rebuild Claude MCP Apps
+        run: npm --prefix ai/claude/app test
+      - name: Verify committed Claude MCP App resources
+        run: |
+          git diff --exit-code -- \
+            ai/claude/app/dist \
+            backend/src/main/resources/claude-connector-v1/mcp-apps
+      - name: Audit Claude MCP App dependencies
+        run: npm --prefix ai/claude/app audit --audit-level=moderate
+      - name: Validate optional Claude plugin package
+        run: |
+          node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+          node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+      - name: Validate Claude Connector V1 release dossier
+        run: |
+          node scripts/check_claude_connector_v1_release.mjs
+          node --test scripts/check_claude_connector_v1_release.test.mjs
+      - name: Verify submitted OpenAI V1 review freeze
+        run: node scripts/check_openai_plugin_review_freeze.mjs
+
   openai-v1-public-edge-ci:
     name: OpenAI MCP V1 public edge CI
     runs-on: ubuntu-latest

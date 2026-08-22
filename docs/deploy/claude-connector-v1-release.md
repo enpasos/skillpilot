@@ -17,11 +17,15 @@ node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/openai_plugin_release.mjs verify
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
+node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+npm --prefix ai/claude/app test
 node scripts/check_claude_connector_v1_release.mjs
 ```
 
 The strict `--submission-ready` mode is expected to fail while manual gates are
-open. Do not weaken it.
+open. The repository-local plugin check does not replace the official
+`claude plugin validate` command. Do not weaken either gate.
 
 ## 2. Configuration and database
 
@@ -135,9 +139,13 @@ edge.
 ## 7. Real-client acceptance
 
 Follow the repository test plan at
-`ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all nine tools in the
-pinned MCP Inspector and in a fresh Claude.ai custom connector. Claude Code is
-not part of the directory claim until its own acceptance evidence exists.
+`ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all twelve tools and
+both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
+fresh Claude.ai custom connector. Confirm that the normal flashcard component
+keeps cards and review capabilities out of model-visible content, that its
+app-only review changes only scheduling, and that neither normal practice nor a
+single review changes mastery. Claude Code is not part of the current Directory
+claim until its own acceptance evidence exists.
 
 ## 8. Rollback drill
 
@@ -166,11 +174,37 @@ Only after `node scripts/check_claude_connector_v1_release.mjs
 4. compare the live tool catalogue with the contract baseline;
 5. copy the reviewed listing and use-case values from
    `ai/claude/connector-v1/directory-listing.json`;
-6. provide the reviewer package through the approved secure channel;
-7. complete all required policy acknowledgements; and
-8. read the final portal summary before submitting.
+6. upload sanitized screenshots that show both MCP Apps in their real
+   learner-facing states without credentials, capabilities or learner data;
+7. provide the reviewer package through the approved secure channel;
+8. complete all required policy acknowledgements; and
+9. read the final portal summary before submitting.
 
 Submission, review status and publication are external Anthropic actions. Do
 not mark this repository `PUBLISHED` until the actual directory state has been
 verified and recorded by the Product Owner.
 
+## 10. Optional plugin publication
+
+The remote Directory connector is the universal product entry point. The
+optional package at `ai/claude/plugin/skillpilot-coach-v1/` adds the reusable
+SkillPilot coaching Skill for Claude Code and Cowork while pointing to the same
+remote MCP endpoint. It is published as a separate plugin lane and must not
+delay or replace the connector submission.
+
+Before submitting the plugin:
+
+1. run the repository-local package checker and tests from Section 1;
+2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` with the
+   current Claude CLI;
+3. test install, OAuth, all twelve tools and both MCP Apps in fresh Claude Code
+   and Cowork environments where those capabilities are supported;
+4. verify that installing both the plugin and Directory connector does not
+   expose duplicate SkillPilot tool sets; and
+5. submit the public repository or package through Anthropic's plugin workflow
+   with its own sanitized evidence.
+
+Compatible Skill-only improvements increment the plugin SemVer independently.
+A breaking MCP, OAuth, identity or state contract still requires a separately
+reviewed connector major and endpoint; a plugin major must not disguise such a
+server-side breaking change.

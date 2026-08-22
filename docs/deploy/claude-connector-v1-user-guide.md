@@ -7,11 +7,13 @@ SkillPilot learning profile. It lets Claude read the learner's selected
 curriculum, current focus, next learning goals and progress, and it can update
 focus and progress when the learner explicitly asks it to do so.
 
-The connector is text-only, is intended for adults aged 18 or older, and uses
-OAuth. Claude does not receive the permanent SkillPilot ID or the ID-file
-password. SkillPilot does not receive Claude memory or the complete chat
-history, but it does process the explicit MCP tool requests and arguments needed
-to read or update the learning state.
+The connector is intended for adults aged 18 or older and uses OAuth. In
+addition to normal chat coaching, it can show an approved learning-goal image
+and open a private component for normal flashcard practice. Claude does not
+receive the permanent SkillPilot ID or the ID-file password. SkillPilot does
+not receive Claude memory or the complete chat history, but it does process the
+explicit MCP tool requests and arguments needed to read or update the learning
+state.
 
 ## Start in five steps
 
@@ -51,6 +53,8 @@ button **Lokal entschlüsseln & verbinden**.
 - "Show me my available focus choices and help me choose one."
 - "Explain my active goal, then check my understanding without giving away the
   answer."
+- "Show me the approved visualization for my active learning goal."
+- "Practise the flashcards due today with me."
 - "Start verified recall for my active memory goal."
 - "Give me the active exam task and evaluate my complete answer afterwards."
 
@@ -63,14 +67,21 @@ Claude should discuss internal fields, security mechanisms or test details only
 when you explicitly ask a developer or diagnostic question, and it must never
 reveal secret values.
 
-## Recall and exam timing
+## Flashcards, recall and exam timing
+
+Normal flashcard practice runs in a dedicated private component. Card fronts,
+backs and the authorization for each review stay inside that component instead
+of being copied into the chat. A card review changes only its repetition
+schedule. Finishing the cards due today does not complete the learning goal and
+does not replace **Verified Recall**, which is the separate no-help workflow for
+reliable recall evidence.
 
 Claude is instructed to present every returned recall prompt or the complete
 exam task and wait for your complete answer before requesting protected answers,
-solutions or scoring criteria. The current text-only v1 connector does not send
-the complete Claude conversation to SkillPilot, so SkillPilot cannot technically
-prove that Claude waited. Later recall and exam steps still remain bound to the
-current authorized learning state through short-lived security proofs.
+solutions or scoring criteria. The connector does not send the complete Claude
+conversation to SkillPilot, so SkillPilot cannot technically prove that Claude
+waited. Later recall and exam steps still remain bound to the current authorized
+learning state through short-lived security proofs.
 
 ## Read and write access
 
@@ -141,3 +152,11 @@ The public endpoint above is the stable SkillPilot Claude Connector v1
 endpoint. Compatible fixes can be deployed there. A breaking protocol or
 identity change is developed on a separate versioned endpoint first, so the
 existing connector can remain available while users migrate.
+
+The Directory connector is the simplest and broadest installation route. An
+optional SkillPilot Coach plugin can additionally bundle the same connector
+with reusable coaching instructions for Claude Code and Cowork. Installing both
+does not create a second SkillPilot service or a second learning profile. The
+plugin has its own semantic version: compatible instruction improvements can
+ship independently, while a breaking MCP, OAuth, identity or state change still
+requires a separately reviewed connector major and endpoint.

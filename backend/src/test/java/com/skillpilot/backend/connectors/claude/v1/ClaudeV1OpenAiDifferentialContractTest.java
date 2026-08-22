@@ -63,7 +63,7 @@ class ClaudeV1OpenAiDifferentialContractTest {
         OpenAiDeSecureOAuthTestServer.registerConfidentialSecureProperties(registry);
     }
 
-    @Autowired(required = false)
+    @Autowired
     private OpenAiDeV1McpContractAdapter openAiContract;
 
     @Test
@@ -94,9 +94,6 @@ class ClaudeV1OpenAiDifferentialContractTest {
 
     @Test
     void openAiToolSurfaceIsUnaffectedByTheClaudeLane() {
-        if (openAiContract == null) {
-            return; // OpenAI lane is not active in this context; nothing to compare against.
-        }
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = openAiContract.toolSpecifications();
         assertEquals(12, tools.size(), "The frozen OpenAI v1 toolset must still publish exactly 12 tools");
 
