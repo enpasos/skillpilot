@@ -20,7 +20,7 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
       result.lifecycleState,
     ),
   );
-  assert.equal(result.toolCount, 9);
+  assert.equal(result.toolCount, 12);
   assert.equal(result.requiredGateCount, 19);
   assert.equal(result.blockers.length, result.requiredPendingCount);
 });

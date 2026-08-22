@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -146,6 +147,95 @@ class ClaudeV1CoachContextProjectorTest {
         assertEquals("content", projected.get("semanticKind"));
         assertFalse(projected.containsKey("tags"));
         assertTrue(projected.containsKey("id"), "The opaque goal id remains available for tool calls");
+    }
+
+    @Test
+    void goalVisualizationProjectionAcceptsOnlyTheExactCanonicalGoalAssetShape() {
+        ClaudeV1CoachContextProjector projector = new ClaudeV1CoachContextProjector(
+                mock(CoachStateProjection.class),
+                mock(CoachToolFacade.class),
+                "https://skillpilot.com/");
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum with spaces",
+                "Gymnasium (DE)",
+                null,
+                "DE",
+                "ALL",
+                "school",
+                "Mathematik",
+                "de-DE",
+                List.of(),
+                true,
+                true);
+        GoalSourceLink link = new GoalSourceLink(
+                "goal-visualization",
+                "Bild",
+                "/assets/goal-visualizations/goal-1.png",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-1",
+                null,
+                "Ein Koordinatensystem zum Lernziel.",
+                "reviewed");
+        FrontierGoal goal = new FrontierGoal(
+                "goal-1",
+                "Bogenmaß nutzen",
+                "Winkel im Bogenmaß verstehen und anwenden.",
+                "atomic",
+                "tutor",
+                "content",
+                null,
+                List.of(),
+                List.of(link),
+                null,
+                null,
+                null,
+                null,
+                false);
+
+        assertEquals(
+                Map.of(
+                        "goalId", "goal-1",
+                        "title", "Bogenmaß nutzen",
+                        "imageUrl", "https://skillpilot.com/assets/goal-visualizations/goal-1.png",
+                        "altText", "Ein Koordinatensystem zum Lernziel.",
+                        "cockpitUrl", "https://skillpilot.com/?l=curriculum+with+spaces&goal=goal-1"),
+                projector.projectGoalVisualization(curriculum, goal, "de"));
+
+        GoalSourceLink traversal = new GoalSourceLink(
+                "goal-visualization",
+                "Bild",
+                "/assets/goal-visualizations/../secret.png",
+                "image",
+                "SkillPilot",
+                List.of(),
+                null,
+                "de",
+                null,
+                "goal-1",
+                null,
+                null,
+                "reviewed");
+        FrontierGoal unsafe = new FrontierGoal(
+                "goal-1",
+                "Bogenmaß nutzen",
+                "Winkel im Bogenmaß verstehen und anwenden.",
+                "atomic",
+                "tutor",
+                "content",
+                null,
+                List.of(),
+                List.of(traversal),
+                null,
+                null,
+                null,
+                null,
+                false);
+        assertEquals(null, projector.projectGoalVisualization(curriculum, unsafe, "de"));
     }
 
     private FrontierGoal goal(String id, List<String> tags) {

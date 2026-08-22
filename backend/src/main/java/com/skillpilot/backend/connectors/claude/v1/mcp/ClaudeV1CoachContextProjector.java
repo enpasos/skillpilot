@@ -3,6 +3,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
@@ -10,10 +11,14 @@ import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,14 +32,27 @@ import org.springframework.stereotype.Component;
 @ConditionalOnClaudeV1Enabled
 public class ClaudeV1CoachContextProjector {
 
+    private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
+            "/assets/goal-visualizations/";
+
     private final CoachStateProjection coachStateProjection;
     private final CoachToolFacade coachToolFacade;
+    private final String publicBaseUrl;
 
-    public ClaudeV1CoachContextProjector(
+    ClaudeV1CoachContextProjector(
             CoachStateProjection coachStateProjection,
             CoachToolFacade coachToolFacade) {
+        this(coachStateProjection, coachToolFacade, "https://skillpilot.com");
+    }
+
+    @Autowired
+    public ClaudeV1CoachContextProjector(
+            CoachStateProjection coachStateProjection,
+            CoachToolFacade coachToolFacade,
+            @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl) {
         this.coachStateProjection = Objects.requireNonNull(coachStateProjection, "coachStateProjection");
         this.coachToolFacade = Objects.requireNonNull(coachToolFacade, "coachToolFacade");
+        this.publicBaseUrl = normalizePublicBaseUrl(publicBaseUrl);
     }
 
     public Map<String, Object> projectContext(String skillpilotId, long stateVersion, String language) {
@@ -65,6 +83,14 @@ public class ClaudeV1CoachContextProjector {
         FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("activeGoal", formatGoal(activeGoal));
 
+        if (coachToolFacade.showGoalVisualizationsInChat(skillpilotId)) {
+            Map<String, Object> goalVisualization = projectGoalVisualization(
+                    projectedState.curriculum(), activeGoal, language);
+            if (goalVisualization != null) {
+                context.put("goalVisualization", goalVisualization);
+            }
+        }
+
         if (isOrientationGoal(activeGoal)) {
             context.put("orientationOutlook", projectOrientationOutlook(
                     coachToolFacade.getOrientationOutlook(skillpilotId, language),
@@ -88,6 +114,58 @@ public class ClaudeV1CoachContextProjector {
         }
 
         return context;
+    }
+
+    /**
+     * Builds the bounded public projection consumed by the dedicated image-only MCP App. Only a
+     * reviewed canonical visualization belonging to the exact active atomic goal is accepted.
+     */
+    Map<String, Object> projectGoalVisualization(
+            LandscapeSummary curriculum,
+            FrontierGoal goal,
+            String language) {
+        if (goal == null
+                || !"atomic".equalsIgnoreCase(goal.type())
+                || goal.id() == null
+                || goal.id().isBlank()
+                || goal.resourceLinks() == null) {
+            return null;
+        }
+        GoalSourceLink visualization = goal.resourceLinks().stream()
+                .filter(link -> link != null
+                        && "goal-visualization".equals(link.type())
+                        && "image".equals(link.resourceType())
+                        && goal.id().equals(link.skillpilotId())
+                        && link.url() != null
+                        && !link.url().isBlank())
+                .findFirst()
+                .orElse(null);
+        if (visualization == null) {
+            return null;
+        }
+        String imageUrl = publicAssetUrl(visualization.url());
+        String cockpitUrl = cockpitUrl(
+                curriculum == null ? null : curriculum.getCurriculumId(),
+                goal.id());
+        if (imageUrl == null || cockpitUrl == null) {
+            return null;
+        }
+        String title = goal.title() == null || goal.title().isBlank()
+                ? goal.id()
+                : goal.title().trim();
+        String altText = visualization.altText();
+        if (altText == null || altText.isBlank()) {
+            altText = language != null && language.toLowerCase(java.util.Locale.ROOT).startsWith("en")
+                    ? "Didactic visualisation for the learning goal “" + title + "”."
+                    : "Didaktische Visualisierung zum Lernziel „" + title + "“.";
+        }
+        Map<String, Object> projected = new LinkedHashMap<>();
+        projected.put("goalId", goal.id());
+        projected.put("title", bounded(title, 320));
+        projected.put("imageUrl", imageUrl);
+        projected.put("altText", bounded(altText.trim(), 1_000));
+        projected.put("cockpitUrl", cockpitUrl);
+        return Map.copyOf(projected);
     }
 
     public Map<String, Object> formatGoal(FrontierGoal goal) {
@@ -276,5 +354,48 @@ public class ClaudeV1CoachContextProjector {
         if (value != null && !value.isBlank()) {
             target.put(key, value);
         }
+    }
+
+    private String publicAssetUrl(String path) {
+        if (path == null) {
+            return null;
+        }
+        String normalized = path.trim();
+        if (!normalized.startsWith(GOAL_VISUALIZATION_ASSET_PREFIX)
+                || normalized.contains("..")
+                || normalized.contains("\\")
+                || normalized.contains("%")
+                || normalized.contains("?")
+                || normalized.contains("#")) {
+            return null;
+        }
+        return publicBaseUrl + normalized;
+    }
+
+    private String cockpitUrl(String curriculumId, String goalId) {
+        if (goalId == null || goalId.isBlank()) {
+            return null;
+        }
+        StringBuilder url = new StringBuilder(publicBaseUrl).append("/?");
+        if (curriculumId != null && !curriculumId.isBlank()) {
+            url.append("l=").append(queryValue(curriculumId)).append('&');
+        }
+        return url.append("goal=").append(queryValue(goalId)).toString();
+    }
+
+    private String queryValue(String value) {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
+    }
+
+    private String bounded(String value, int maxLength) {
+        return value.length() <= maxLength ? value : value.substring(0, maxLength);
+    }
+
+    private String normalizePublicBaseUrl(String value) {
+        String normalized = value == null ? "" : value.trim();
+        if (normalized.isEmpty()) {
+            return "https://skillpilot.com";
+        }
+        return normalized.replaceAll("/+$", "");
     }
 }

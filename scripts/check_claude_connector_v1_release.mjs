@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import {
   existsSync,
   lstatSync,
+  readdirSync,
   readFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, resolve, sep } from "node:path";
@@ -24,6 +25,9 @@ const expectedDocumentationUrl =
 const expectedPrivacyUrl = `${expectedBaseUrl}/privacy`;
 const expectedTools = [
   "get_skillpilot_coach_context",
+  "render_skillpilot_goal_visualization",
+  "start_skillpilot_memory_practice",
+  "review_skillpilot_memory_practice_card",
   "get_skillpilot_navigation_options",
   "set_skillpilot_focus",
   "set_skillpilot_active_goal",
@@ -42,8 +46,8 @@ const expectedRequiredGates = [
   "public-docs-online",
   "public-edge-and-oauth",
   "openai-production-differential",
-  "mcp-inspector-all-nine-tools",
-  "hosted-claude-all-nine-tools",
+  "mcp-inspector-all-twelve-tools-two-resources",
+  "hosted-claude-all-twelve-tools-two-apps",
   "negative-and-replay-cases",
   "reviewer-account-and-reset",
   "privacy-and-legal-approval",
@@ -137,9 +141,9 @@ export function verifyClaudeConnectorV1Release({
     "Claude Connector v1 must use Streamable HTTP.",
   );
   check(listing.connector?.sameUrlForEveryUser === true, "Connector URL must be user-neutral.");
-  check(listing.connector?.mcpApps === false, "Claude Connector v1 must remain text-only.");
+  check(listing.connector?.mcpApps === true, "Claude Connector v1 must publish its two MCP Apps.");
   check(listing.connector?.prompts === false, "Claude Connector v1 must not publish prompts.");
-  check(listing.connector?.resources === false, "Claude Connector v1 must not publish resources.");
+  check(listing.connector?.resources === true, "Claude Connector v1 must publish its two UI resources.");
 
   const listingCopy = listing.listing ?? {};
   check(nonBlankWithin(listingCopy.name, 100), "Listing name must contain 1-100 characters.");
@@ -237,7 +241,7 @@ export function verifyClaudeConnectorV1Release({
   );
   check(
     Array.isArray(listing.allowedLinkUris) && listing.allowedLinkUris.length === 0,
-    "Text-only v1 must not declare allowed link URIs.",
+    "Claude Connector v1 must not declare allowed link URIs.",
   );
   check(sameSet(listing.surfacesClaimed, ["Claude.ai"]), "Only Claude.ai may be claimed.");
 
@@ -579,11 +583,31 @@ function verifyImplementation(repositoryRoot, check) {
     repositoryRoot,
     "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
   );
+  const goalVisualizationResource = readText(
+    repositoryRoot,
+    "backend/src/main/resources/claude-connector-v1/mcp-apps/goal-visualization.html",
+  );
+  const memoryPracticeResource = readText(
+    repositoryRoot,
+    "backend/src/main/resources/claude-connector-v1/mcp-apps/memory-card-practice.html",
+  );
+  const retainedResourceIndex = JSON.parse(readText(
+    repositoryRoot,
+    "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json",
+  ));
+  const appBuildScript = readText(
+    repositoryRoot,
+    "ai/claude/app/scripts/build-apps.mjs",
+  );
+  const appBuildTest = readText(
+    repositoryRoot,
+    "ai/claude/app/test/build.test.mjs",
+  );
 
   const actualTools = [...contract.matchAll(
     /public static final String TOOL_[A-Z_]+\s*=\s*"([^"]+)";/gu,
   )].map((match) => match[1]);
-  check(sameSet(actualTools, expectedTools), "Java contract must publish exactly the nine approved tools.");
+  check(sameSet(actualTools, expectedTools), "Java contract must publish exactly the twelve approved tools.");
   check(actualTools.every((name) => codePointLength(name) <= 64), "Every Claude tool name must contain at most 64 characters.");
   check(
     contract.includes(`"${expectedDocumentationUrl}"`),
@@ -597,6 +621,12 @@ function verifyImplementation(repositoryRoot, check) {
     ".idempotentHint(true)",
     ".openWorldHint(false)",
     'schema.put("additionalProperties", false)',
+    "buildResourceSpecifications()",
+    "resourceSpecifications()",
+    "loadRetainedUiResources()",
+    "RETAINED_RESOURCE_INDEX_CLASSPATH",
+    "MCP_APP_RESOURCE_URI_PREFIX",
+    '"visibility", List.of("app")',
   ]) {
     check(adapter.includes(fragment), `MCP adapter is missing contract fragment: ${fragment}`);
   }
@@ -609,15 +639,70 @@ function verifyImplementation(repositoryRoot, check) {
     "OAuth resource_documentation must not point at the privacy page.",
   );
   for (const fragment of [
-    "publishesExactlyTheNineApprovedTools",
+    "publishesExactlyTheTwelveApprovedTools",
     "everyToolCarriesRealMcpAnnotationsNotMetaHints",
     "readAndWriteToolSetsCoverTheWholeCatalogue",
     "everyWriteToolDemandsConcurrencyAndIdempotencyArguments",
     "solutionReleasingToolsRequireACapability",
     'schemaOf(toolName).get("additionalProperties")',
+    "publishesTwoActiveByteAddressedClaudeResourcesWithHostOnlyUiDomainAndPassiveRetention",
+    "memoryReviewSchemaIsAppOnlyAndAcceptsNoSessionIdentifier",
   ]) {
     check(contractTest.includes(fragment), `MCP contract test is missing guard: ${fragment}`);
   }
+  check(
+    contract.includes(
+      '"ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com"',
+    ) && !contract.includes(
+      '"https://ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com"',
+    ),
+    "Claude resource ui.domain must be the endpoint-derived host without a URL scheme.",
+  );
+  check(
+    goalVisualizationResource.length > 0
+      && memoryPracticeResource.length > 0
+      && readdirSync(safeRepositoryPath(
+        repositoryRoot,
+        "backend/src/main/resources/claude-connector-v1/mcp-apps",
+      )).filter((entry) => entry.endsWith(".html")).sort().join(",")
+        === "goal-visualization.html,memory-card-practice.html",
+    "Claude Connector v1 must package exactly two non-empty MCP Apps UI resources.",
+  );
+  check(
+    retainedResourceIndex?.schemaVersion === 1
+      && Array.isArray(retainedResourceIndex.resources),
+    "Claude Connector v1 must publish a retained-resource index.",
+  );
+  const retainedKeys = new Set();
+  for (const entry of retainedResourceIndex.resources ?? []) {
+    const valid = entry
+      && Object.keys(entry).sort().join(",") === "filename,sha256"
+      && ["goal-visualization.html", "memory-card-practice.html"].includes(entry.filename)
+      && /^[0-9a-f]{64}$/u.test(entry.sha256)
+      && !retainedKeys.has(`${entry.sha256}/${entry.filename}`);
+    check(valid, "Claude retained-resource index entry has an invalid shape.");
+    if (!valid) continue;
+    retainedKeys.add(`${entry.sha256}/${entry.filename}`);
+    const retainedBytes = readText(
+      repositoryRoot,
+      `backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-${entry.sha256}/${entry.filename}`,
+    );
+    check(
+      sha256(Buffer.from(retainedBytes, "utf8")) === entry.sha256,
+      `Claude retained resource digest changed: ${entry.sha256}/${entry.filename}`,
+    );
+  }
+  for (const fragment of [
+    "retainPreviousClasspathResource",
+    "materializeRetainedResources",
+    "retainedResources.delete",
+  ]) {
+    check(appBuildScript.includes(fragment), `Claude MCP Apps build lacks retention guard: ${fragment}`);
+  }
+  check(
+    appBuildTest.includes("a changed active UI is retained byte-identically and never rebound to a tool"),
+    "Claude MCP Apps tests must protect passive retained-resource continuity.",
+  );
   check(
     changelogMaster.includes(
       "file: db/changelog/changes/023-add-claude-connector-v1.yaml",
