@@ -74,6 +74,72 @@ class ClaudeV1CapabilityServiceTest {
     }
 
     @Test
+    void memoryReviewCapabilityBindsConnectionGoalCardAndIssuedRevision() {
+        String capability = capabilityService.mintMemoryPracticeReviewCapability(
+                CONNECTION_ID,
+                GOAL_ID,
+                "card_1",
+                5L);
+
+        ClaudeV1CapabilityService.MemoryPracticeReviewClaim claim =
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability,
+                        CONNECTION_ID,
+                        GOAL_ID,
+                        "card_1",
+                        5L);
+        assertEquals(CONNECTION_ID, claim.connectionId());
+        assertEquals(GOAL_ID, claim.goalId());
+        assertEquals("card_1", claim.cardId());
+        assertEquals(5L, claim.issuedStateVersion());
+
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability, OTHER_CONNECTION_ID, GOAL_ID, "card_1", 5L));
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability, CONNECTION_ID, "other_goal", "card_1", 5L));
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability, CONNECTION_ID, GOAL_ID, "card_2", 5L));
+    }
+
+    @Test
+    void memoryReviewCapabilityRemainsUsableAcrossEarlierRatingsButNotBeforeItsIssueRevision() {
+        String capability = capabilityService.mintMemoryPracticeReviewCapability(
+                CONNECTION_ID,
+                GOAL_ID,
+                "card_2",
+                5L);
+
+        assertEquals(
+                5L,
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability, CONNECTION_ID, GOAL_ID, "card_2", 7L).issuedStateVersion());
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyMemoryPracticeReviewCapability(
+                        capability, CONNECTION_ID, GOAL_ID, "card_2", 4L));
+    }
+
+    @Test
+    void memoryReviewCapabilityIsEncryptedAndCannotCrossCapabilityKinds() {
+        String capability = capabilityService.mintMemoryPracticeReviewCapability(
+                CONNECTION_ID,
+                GOAL_ID,
+                "card_1",
+                5L);
+        byte[] envelope = java.util.Base64.getUrlDecoder().decode(capability);
+        String printableEnvelope = new String(envelope, java.nio.charset.StandardCharsets.ISO_8859_1);
+        assertFalse(printableEnvelope.contains(CONNECTION_ID));
+        assertFalse(printableEnvelope.contains(GOAL_ID));
+        assertFalse(printableEnvelope.contains("card_1"));
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyRecallBatchCapability(capability, CONNECTION_ID, GOAL_ID));
+        assertThrows(ClaudeV1CapabilityService.CapabilityException.class, () ->
+                capabilityService.verifyExamEvaluationCapability(capability, CONNECTION_ID, GOAL_ID));
+    }
+
+    @Test
     void verificationWithoutAnExpectedGoalStillReturnsTheSignedGoal() {
         // The answers tool does not know the goal before verifying; the authenticated value is
         // authoritative because it is integrity-protected.

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 
 /**
- * Registers the Claude v1 text-based MCP server at its dedicated internal endpoint.
+ * Registers the provider-isolated Claude v1 MCP server at its dedicated internal endpoint.
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClaudeV1Enabled
@@ -28,7 +28,8 @@ public class ClaudeV1McpServerConfiguration {
                 properties.getServerVersion(),
                 contract.serverInstructions(),
                 properties.getRequestTimeout(),
-                contract.toolSpecifications());
+                contract.toolSpecifications(),
+                contract.resourceSpecifications());
     }
 
     @Bean(name = "claudeV1McpRouterFunction")

@@ -1,11 +1,11 @@
 # SkillPilot Claude Connector v1 — Umsetzungsplan
 
-**Status:** Entwickler-Handoff; keine Merge-, Deployment- oder
-Produktionsfreigabe
+**Status:** Lokaler Pre-Submission-Kandidat; externe Abnahme, Merge und
+Veröffentlichung nicht freigegeben
 
-**Stand:** 18. August 2026
+**Stand:** 21. August 2026
 
-**Repository-Basis:** `main` bei `ecaccc14dd`
+**Repository-Basis:** `main` bei `f405abce61a3`
 
 **Architekturgrundlage:**
 [SkillPilot Claude Connector v1 — one-JVM architecture and service concept](claude-connector-v1-concept.md)
@@ -27,7 +27,7 @@ Release-Freigabe.
 
 ## 1. Zielzustand
 
-Am Ende der Umsetzung existiert ein textbasierter Remote-MCP-Connector für
+Am Ende der Umsetzung existiert ein providerisolierter Remote-MCP-Connector für
 Claude mit folgenden Eigenschaften:
 
 - öffentliche MCP-URL
@@ -42,10 +42,15 @@ Claude mit folgenden Eigenschaften:
   `CoachToolFacade` und `CoachStateProjection`;
 - gemeinsamer kanonischer Lernfortschritt für WebGUI, ChatGPT und Claude mit
   optimistischer Nebenläufigkeitskontrolle;
-- textbasierte Lernbegleitung, Level-3-Fokus, aktives Lernziel, Mastery,
-  Verified Recall und Prüfungsmodus;
+- genau zwölf Werkzeuge für Lernbegleitung, Lernzielvisualisierung, normale
+  Karteikartenübung, Level-3-Fokus, aktives Lernziel, Mastery, Verified Recall
+  und Prüfungsmodus;
 - keine Änderung der Personal-Curriculum-Konfiguration auf Level 2;
-- keine MCP Apps, Widgets oder interaktiven Kartenkomponenten in Claude v1;
+- zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
+  normale Karteikartenübung; Kartenbewertungen ändern nur den
+  Wiederholungsplan, niemals Mastery;
+- ein optionales Claude-Code-/Cowork-Plugin mit demselben Remote-MCP-Server und
+  einer wiederverwendbaren Claude-spezifischen Skill-Anweisung;
 - der alte Claude-Beta-Endpunkt bleibt deaktiviert und ist weder Grundlage
   noch Fallback des neuen Connectors.
 
@@ -108,7 +113,9 @@ Vorgesehene neue Implementierungsbereiche sind:
 backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/
 backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/
 backend/src/main/resources/claude-connector-v1/
+ai/claude/app/
 ai/claude/connector-v1/
+ai/claude/plugin/skillpilot-coach-v1/
 deploy/nginx/skillpilot-claude-connector-v1.conf
 docs/deploy/claude-connector-v1-*.md
 ```
@@ -468,15 +475,19 @@ Mutation; Beta- und OpenAI-Datensätze bleiben unangetastet.
 
 **Aufwand:** 4–6 Personentage.
 
-### WP6 — Textbasierter MCP-Vertrag
+### WP6 — MCP-Vertrag und providerisolierte MCP Apps
 
-**Zweck:** Die kleinste sichere Claude-v1-Werkzeugoberfläche bereitstellen.
+**Zweck:** Die kleinste sichere Claude-v1-Werkzeugoberfläche mit Parität der
+zwölf Lernverantwortlichkeiten bereitstellen.
 
 Vorgesehene Namen und Annotationen:
 
 | MCP-Tool | Klasse | Annotation | Fachliche Grenze |
 | --- | --- | --- | --- |
 | `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand, keine versteckte Mutation |
+| `render_skillpilot_goal_visualization` | read + App | `readOnlyHint: true` | freigegebenes Bild nur für das exakte aktive Ziel und den aktuellen Zustand |
+| `start_skillpilot_memory_practice` | read + App | `readOnlyHint: true` | private vollständige Fälligkeitsauswahl, keine Mastery-Mutation |
+| `review_skillpilot_memory_practice_card` | app-only write | `destructiveHint: false` | exakt angezeigte Karte; nur Wiederholungsplan, niemals Mastery |
 | `get_skillpilot_navigation_options` | read | `readOnlyHint: true` | aktuelle Level-3-Optionen, kein Level 2 |
 | `set_skillpilot_focus` | write | `destructiveHint: true` | exakt eine frisch publizierte Focus-Option |
 | `set_skillpilot_active_goal` | write | `destructiveHint: true` | erlaubtes aktives Ziel, expliziter Redirect |
@@ -510,10 +521,18 @@ die Server Instructions.
    klare, maschinenlesbare Fehlercodes für Input, Auth, Conflict, Stale State
    und Capability-Mismatch.
 8. Keine Catch-all-API und kein freies URL-, Method- oder Query-Argument.
+9. Beide UI-Ressourcen sind content-addressed und nutzen den MCP-Apps-MIME-Typ.
+   Vorderseite, Rückseite und Review-Capability einer Karte stehen nur in
+   Component-Metadaten; der modell-sichtbare Receipt enthält nur begrenzten
+   Status und Fortschritt.
+10. Das Review-Tool ist nur für die App sichtbar und bindet Verbindung, Ziel,
+    Karte, Ausgaberevision und Ablaufzeit kryptographisch. Es akzeptiert nur
+    `not_known` oder `known` und eine frische `clientRequestId`.
 
-**Abnahme:** Toolkatalog enthält exakt die freigegebene Liste, korrekte Schemas
-und Annotationen; alle gültigen Aufrufe liefern fachliche Antworten statt
-generischer 400/500-Fehler.
+**Abnahme:** Toolkatalog enthält exakt zwölf freigegebene Werkzeuge, zwei
+Ressourcen, korrekte Schemas und Annotationen; alle gültigen Aufrufe liefern
+fachliche Antworten statt generischer 400/500-Fehler. Normale Kartenpraxis ist
+in Tests von Verified Recall und Mastery getrennt.
 
 **Aufwand:** 5–8 Personentage einschließlich Contract-Tests.
 
@@ -527,7 +546,7 @@ freigeben.
 - Start-Tool übernimmt weder `goalId` noch `batchSize` vom Modell, sondern
   verwendet aktives Memory-Ziel und serverbestimmte vollständige Batchgröße.
 - Es ruft die Facade-Variante ohne callergewählte Batchgröße auf.
-- Die Batch-Capability bindet Provider, Verbindung/Session, Learner, Ziel,
+- Die Batch-Capability bindet Provider, Claude-v1-Verbindung, Learner, Ziel,
   Karten-IDs in Reihenfolge, Anzahl, Ausgaberevision und Ablaufzeit.
 - Answer-Tool gibt alle Sollantworten als einen vollständigen Satz aus und
   erzeugt eine getrennte Grading-Capability. Der Modellablauf ruft es genau
@@ -543,8 +562,9 @@ freigeben.
 
 - Normaler Coach-Kontext enthält Aufgabe und höchstens Maximalpunktzahl, nie
   Lösung, Passing Points oder Rubrik.
-- Evaluation-Tool prüft aktives Exam, Zustand und Session und mintet eine kurze
-  provider-/session-/goal-/revisiongebundene Evaluation-Capability.
+- Evaluation-Tool prüft aktives Exam, Zustand und Claude-v1-Verbindung und
+  mintet eine kurze provider-/connection-/goal-/revisiongebundene
+  Evaluation-Capability.
 - Exam-Mastery verlangt diese Capability, endliche `earnedPoints`, konkrete
   Rückmeldung und mindestens `passingPoints`.
 - Alternative fachlich korrekte Verfahren werden akzeptiert; die Musterlösung
@@ -553,14 +573,14 @@ freigeben.
 **Wichtige Beweisgrenze:** Der MCP-Server erhält den Claude-Chat nicht. Er kann
 daher technisch nicht beweisen, dass der Lernende vor dem Answer- oder
 Evaluation-Aufruf bereits vollständig geantwortet hat. Serverseitig beweisbar
-sind Geheimhaltung bis zum Toolaufruf, State-/Session-/Goal-Bindung,
+sind Geheimhaltung bis zum Toolaufruf, State-/Connection-/Goal-Bindung,
 Vollständigkeit des Result-Batches und die Capability-Kette. Das vorherige
 Warten auf eine vollständige sichtbare Abgabe ist zusätzlich eine
 Server-Instruction und ein Real-Claude-Verhaltenstest; es darf nicht als
 kryptographisch erzwungen dokumentiert werden.
 
 **Tests:** Capability-Replay, anderer Provider, anderer Learner, anderes Ziel,
-andere Session, stale state, abgelaufen, Batch-Manipulation, atomarer Rollback,
+andere Verbindung, stale state, abgelaufen, Batch-Manipulation, atomarer Rollback,
 Exam nicht bereit und nicht bestandene Prüfung.
 
 **Abnahme:** Vorzeitiges oder fremdes Wiederverwenden von Lösungsmaterial
@@ -615,6 +635,7 @@ Veröffentlichung belegen.
 - `ClaudeV1CimdMetadataValidatorTest`;
 - `ClaudeV1BindingBrowserTest`;
 - `ClaudeV1McpContractTest`;
+- `ClaudeV1MemoryPracticeContractTest`;
 - `ClaudeV1VerifiedRecallContractTest`;
 - `ClaudeV1ExamContractTest`;
 - `ClaudeV1SessionCoordinatorTest`;
@@ -634,9 +655,12 @@ Veröffentlichung belegen.
 
 **Real-Client-Abnahme:**
 
-- jeden Toolpfad mit MCP Inspector prüfen;
+- alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
 - eine reale Hosted-Claude-Verbindung als Custom Connector testen;
-- eine reale Claude-Code-Verbindung mit dynamischem Loopback-Port testen;
+- beide MCP Apps in Hosted Claude mit privaten Kartenmetadaten und app-only
+  Review testen;
+- die optionale Plugin-Lane getrennt in Claude Code und Cowork mit offizieller
+  Plugin-Validierung testen;
 - DE- und EN-Coaching, Konflikt, Recall, Exam, Revocation und Reconnect testen;
 - mit vollständig bestücktem, wegwerfbarem Erwachsenen-Testlearner testen;
 - keine echten Lernenden- oder Produktiv-Credentials im Mitschnitt verwenden.
@@ -647,8 +671,8 @@ Entwickler-/Staging-Instanz über einen öffentlichen Test-Host oder Tunnel
 angebunden. Das ist kein zweiter Prozess auf der RAM-begrenzten
 Produktionsmaschine. Der Tunnel wird nach dem Test geschlossen.
 
-**Abnahme:** Alle automatisierten Tests, MCP Inspector und beide realen
-Claude-Clienttypen sind grün; die OpenAI-Differenz ist null.
+**Abnahme:** Alle automatisierten Tests, MCP Inspector, Hosted Claude und die
+jeweils beanspruchten Plugin-Clients sind grün; die OpenAI-Differenz ist null.
 
 **Aufwand:** 4–7 Personentage.
 
@@ -729,9 +753,15 @@ node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/openai_plugin_release.mjs verify
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
+node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+npm --prefix ai/claude/app test
+node --test scripts/check_claude_connector_v1_release.test.mjs
+node scripts/check_claude_connector_v1_release.mjs
 
 cd backend
-./gradlew test --tests 'com.skillpilot.backend.connectors.claude.v1.*'
+./gradlew test --tests 'com.skillpilot.backend.connectors.claude.v1.*' \
+  --tests 'com.skillpilot.backend.connectors.claude.v1.**'
 ./gradlew test
 ```
 
@@ -756,10 +786,11 @@ ungefiltert in CI-Logs oder Tickets.
 
 ---
 
-## 9. Definition of Done
+## 9. Definition of Done für den Claude.ai-Directory-Kandidaten
 
-Claude Connector v1 gilt nur dann als umsetzungs- und releasefertig, wenn alle
-folgenden Punkte erfüllt sind:
+Der aktuelle Claude Connector v1 beansprucht für die Directory-Einreichung
+ausschließlich Claude.ai. Er gilt nur dann als umsetzungs- und releasefertig,
+wenn alle folgenden Punkte erfüllt sind:
 
 - die OpenAI App und ihr V1-Vertrag sind byte- und verhaltensgleich zur
   freigegebenen Baseline;
@@ -767,24 +798,42 @@ folgenden Punkte erfüllt sind:
 - es existiert nur das bestehende Backend-Deployable und die bestehende JVM;
 - öffentliche und interne Pfade, OAuth-Issuer und Resource-Identifier sind
   exakt versioniert und isoliert;
-- Hosted Claude und Claude Code bestehen OAuth mit PKCE S256;
+- Claude.ai besteht OAuth mit PKCE S256;
 - ID-Datei und Passwort werden ausschließlich lokal im Browser verarbeitet;
 - Claude erhält nie die permanente SkillPilot-ID;
-- alle neun freigegebenen Tools haben genaue Schemas, Titel und korrekte
+- alle zwölf freigegebenen Tools haben genaue Schemas, Titel und korrekte
   Anthropic-Annotationen;
+- beide content-addressed MCP Apps sind deterministisch gebaut; private
+  Kartendaten bleiben component-only und das Review-Tool app-only;
+- normale Karteikartenpraxis ändert nur Wiederholungsplanung und nie Mastery;
 - Level 2 ist nicht schreibbar; Level 3 und Lernzustandsmutationen verwenden
   kanonische Regeln, Revision und Idempotenz;
-- Recall- und Exam-Capabilities sind provider-, learner-, session-, goal-,
+- Recall- und Exam-Capabilities sind provider-, learner-, connection-, goal-,
   state- und zeitgebunden;
 - Cross-Provider-Konflikt-, Token-, Revocation- und Fault-Tests sind grün;
 - RAM-, Thread-, Pool- und OpenAI-Latenzbudgets sind numerisch erfüllt;
 - Privacy, Altersgrenze, Supportkontakt, Testkonto und Reviewer-Anleitung sind
   freigegeben;
 - Disabled-first-Rollout und Rollback sind praktisch belegt;
-- MCP Inspector, Hosted Claude und Claude Code wurden gegen den finalen
+- MCP Inspector und eine frische Claude.ai-Verbindung wurden gegen den finalen
   öffentlichen Endpoint getestet;
 - Product Owner hat die konkrete Produktionsaktivierung ausdrücklich
   freigegeben.
+
+### 9.1 Separate Definition of Done der optionalen Plugin-Lane
+
+Claude Code und Cowork sind nicht Teil des aktuellen Directory-v1-Claims und
+blockieren dessen Einreichung nicht. Das optionale Plugin darf erst separat
+veröffentlicht oder als kompatibel beworben werden, wenn zusätzlich:
+
+- der lokale Paketcheck und die offizielle Prüfung mit
+  `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
+- Installation, OAuth, alle zwölf Tools und beide MCP Apps jeweils in einer
+  frischen Claude-Code- und Cowork-Umgebung getestet wurden;
+- eine gleichzeitige Installation von Directory-Connector und Plugin kein
+  doppeltes oder abweichendes SkillPilot-Toolset erzeugt;
+- die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und
+  Funktionen beansprucht.
 
 ---
 
