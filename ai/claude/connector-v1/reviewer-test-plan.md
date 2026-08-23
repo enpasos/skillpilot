@@ -47,9 +47,12 @@ that only the other client can observe.
    resource metadata challenge.
 3. Connect the plugin's connector through OAuth. Confirm that the connection
    alone cannot select or access a learner.
-4. Open `https://skillpilot.com/lernen/claude` and start a fresh learner
-   session. Confirm an opaque `spc_` value is created, expires after exactly
-   24 hours and is never displayed in normal Claude prose.
+4. Open `https://skillpilot.com/lernen/claude`. Confirm it enters the shared
+   SkillPilot web start, requires visible selection or loading of the reviewer
+   SkillPilot ID, shows the curriculum and Personal Curriculum, and offers
+   separate ChatGPT and Claude decisions. Choose Claude explicitly and confirm
+   that only then an opaque `spc_` value is created, expires after exactly 24
+   hours and is never displayed in normal Claude prose.
 5. Confirm `tools/list` publishes exactly these twelve tools and no prompt:
 
    - `get_skillpilot_coach_context`

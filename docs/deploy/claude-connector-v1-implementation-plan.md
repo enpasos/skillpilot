@@ -61,8 +61,10 @@ Claude mit folgenden Eigenschaften:
   Remote-MCP-Server; beide MCP Apps kommen über den Connector, eine getrennte
   Installation bleibt nur Fallback ohne Funktionsvorteil;
 - jede Lernsitzung startet ausschließlich über
-  `https://skillpilot.com/lernen/claude`, verwendet nur eine opake `spc_`-
-  Kennung und endet exakt 24 Stunden nach Ausstellung;
+  `https://skillpilot.com/lernen/claude` im gemeinsamen SkillPilot-Webstart;
+  die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
+  Curriculum und Claude, bevor eine opake `spc_`-Kennung ausgestellt wird, die
+  exakt 24 Stunden nach Ausstellung endet;
 - dauerhaftes Connector-OAuth einschließlich `offline_access` bleibt reiner
   Transport und enthält oder wählt keine Lernendenidentität;
 - der alte Claude-Beta-Endpunkt bleibt deaktiviert und ist weder Grundlage

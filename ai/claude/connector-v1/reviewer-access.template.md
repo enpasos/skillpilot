@@ -56,11 +56,12 @@ The profile is usable only when it contains:
    connected. It must not contain, select, mint, renew or extend learner
    identity or a learner session.
 4. Add no custom headers and never enter a permanent SkillPilot ID.
-5. Open `https://skillpilot.com/lernen/claude`, choose the prepared reviewer
-   profile and start learning.
-6. Confirm the launch creates a fresh opaque value beginning with `spc_`, valid
-   for exactly 24 hours, and opens a fresh Claude chat without displaying that
-   value in normal learner-facing prose.
+5. Open `https://skillpilot.com/lernen/claude`. In the shared SkillPilot web
+   start, visibly select or load the prepared reviewer ID, confirm its
+   curriculum and Personal Curriculum, and explicitly choose Claude.
+6. Confirm only that explicit Claude launch creates a fresh opaque value
+   beginning with `spc_`, valid for exactly 24 hours, and opens a fresh Claude
+   chat without displaying that value in normal learner-facing prose.
 7. Enable only SkillPilot and follow `reviewer-test-plan.md`.
 8. Record evidence without credentials, OAuth values, `spc_` values, permanent
    IDs, learner data or protected answers.

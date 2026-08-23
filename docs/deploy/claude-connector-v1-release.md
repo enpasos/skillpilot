@@ -126,8 +126,10 @@ sanitized evidence:
 - unauthenticated MCP returns HTTP 401 plus `WWW-Authenticate`;
 - connector OAuth, including optional `offline_access`, remains transport-only
   and cannot access a learner without a current `learningSessionId`;
-- `https://skillpilot.com/lernen/claude` creates a fresh opaque `spc_` session
-  that expires after exactly 24 hours;
+- `https://skillpilot.com/lernen/claude` enters the shared SkillPilot web
+  start; it visibly requires the learner to select or load the SkillPilot ID,
+  confirm curriculum and Personal Curriculum, and choose Claude before it
+  creates a fresh opaque `spc_` session that expires after exactly 24 hours;
 - expired, altered and foreign sessions fail closed while OAuth can remain
   connected; OAuth refresh never mints, renews or extends a learner session;
 - no permanent SkillPilot ID, ID file or ID-file password crosses the

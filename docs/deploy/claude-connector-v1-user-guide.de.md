@@ -25,8 +25,12 @@ Lernsitzung.
 ## Jedes Mal Lernen starten
 
 1. Öffne [skillpilot.com/lernen/claude](https://skillpilot.com/lernen/claude).
-2. Wähle in SkillPilot deinen Lernstand und tippe **Lernen starten**.
-3. SkillPilot öffnet einen neuen Claude-Chat mit einer vorbereiteten Nachricht.
+   Der Link führt in den gemeinsamen SkillPilot-Webstart.
+2. Wähle oder lade dort sichtbar deine SkillPilot-ID und bestätige Curriculum
+   und persönliches Curriculum.
+3. Wähle im letzten Schritt ausdrücklich **Mit Claude starten**. Du kannst dich
+   bei jedem Start neu zwischen ChatGPT und Claude entscheiden.
+4. SkillPilot öffnet einen neuen Claude-Chat mit einer vorbereiteten Nachricht.
 
 Dabei entsteht eine neue, undurchsichtige Kennung mit dem Anfang `spc_`. Sie ist
 exakt 24 Stunden gültig. Claude verwendet sie nur für SkillPilot-Aufrufe; sie
