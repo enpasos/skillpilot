@@ -3,6 +3,7 @@ package com.skillpilot.backend.connectors.claude.v1.session;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Optional;
 import org.springframework.jdbc.core.JdbcOperations;
@@ -27,8 +28,8 @@ public class ClaudeV1LearningSessionRepository {
                 "INSERT INTO claude_v1_learning_session (" + COLUMNS + ") VALUES (?, ?, ?, ?, ?, ?)",
                 session.tokenHash(),
                 session.learnerId(),
-                session.startedAt(),
-                session.expiresAt(),
+                Timestamp.from(session.startedAt()),
+                Timestamp.from(session.expiresAt()),
                 session.communicationLocale(),
                 session.stateVersion());
     }
@@ -70,7 +71,9 @@ public class ClaudeV1LearningSessionRepository {
     }
 
     public int deleteExpired(Instant now) {
-        return jdbc.update("DELETE FROM claude_v1_learning_session WHERE expires_at <= ?", now);
+        return jdbc.update(
+                "DELETE FROM claude_v1_learning_session WHERE expires_at <= ?",
+                Timestamp.from(now));
     }
 
     private ClaudeV1LearningSession map(ResultSet rs, int rowNum) throws SQLException {
