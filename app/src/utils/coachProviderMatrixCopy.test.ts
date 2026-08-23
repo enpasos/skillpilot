@@ -19,6 +19,16 @@ assert(
 )
 assert(new Set(variantIds).size === variantIds.length, 'provider variant IDs are unique')
 assert(
+  de.variants.filter(variant => variant.provider === 'ChatGPT').length === 4
+    && en.variants.filter(variant => variant.provider === 'ChatGPT').length === 4,
+  'the ChatGPT provider view contains exactly four plan variants in both languages',
+)
+assert(
+  de.variants.filter(variant => variant.provider === 'Claude').length === 3
+    && en.variants.filter(variant => variant.provider === 'Claude').length === 3,
+  'the Claude provider view contains exactly three plan variants in both languages',
+)
+assert(
   JSON.stringify(ids(de.groups)) === JSON.stringify(ids(en.groups)),
   'German and English matrix groups have identical IDs and ordering',
 )

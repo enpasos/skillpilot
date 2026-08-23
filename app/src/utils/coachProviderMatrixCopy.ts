@@ -17,6 +17,8 @@ export type CoachMatrixVariantId =
   | 'claude-pro-max'
   | 'claude-team-enterprise'
 
+export type CoachMatrixProvider = 'ChatGPT' | 'Claude'
+
 export interface CoachMatrixCell {
   status: CoachMatrixStatus
   value: string
@@ -25,7 +27,7 @@ export interface CoachMatrixCell {
 
 export interface CoachMatrixVariant {
   id: CoachMatrixVariantId
-  provider: 'ChatGPT' | 'Claude'
+  provider: CoachMatrixProvider
   plan: string
   badge?: string
   summary: string
@@ -55,6 +57,8 @@ export interface CoachProviderMatrixCopy {
   asOf: string
   featureHeading: string
   mobileFeatureHeading: string
+  providerFilterLabel: string
+  providerFilterHint: string
   statusLabels: Record<CoachMatrixStatus, string>
   legendLabel: string
   bundleTitle: string
@@ -747,6 +751,8 @@ const germanCopy: CoachProviderMatrixCopy = {
   asOf: 'Stand: 23. August 2026',
   featureHeading: 'Funktion oder Voraussetzung',
   mobileFeatureHeading: 'Funktionen und Voraussetzungen',
+  providerFilterLabel: 'Anbieter auswählen',
+  providerFilterHint: 'Zeige die Tarife eines Anbieters. Du kannst jederzeit wechseln.',
   statusLabels: {
     available: 'Verfügbar',
     tested: 'Von SkillPilot getestet',
@@ -781,6 +787,8 @@ const englishCopy: CoachProviderMatrixCopy = {
   asOf: 'Status: August 23, 2026',
   featureHeading: 'Feature or requirement',
   mobileFeatureHeading: 'Features and requirements',
+  providerFilterLabel: 'Choose provider',
+  providerFilterHint: 'Show one provider’s plans at a time. You can switch at any time.',
   statusLabels: {
     available: 'Available',
     tested: 'Tested by SkillPilot',

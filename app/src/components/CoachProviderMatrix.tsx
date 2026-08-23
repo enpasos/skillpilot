@@ -12,6 +12,7 @@ import type { LabelLanguage } from '../utils/filterLabels'
 import {
   getCoachProviderMatrixCopy,
   type CoachMatrixCell,
+  type CoachMatrixProvider,
   type CoachMatrixStatus,
 } from '../utils/coachProviderMatrixCopy'
 
@@ -52,9 +53,14 @@ const MatrixCell: React.FC<{
 
 export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ language }) => {
   const copy = getCoachProviderMatrixCopy(language)
+  const [selectedProvider, setSelectedProvider] = React.useState<CoachMatrixProvider>('ChatGPT')
+  const visibleVariants = copy.variants.filter(variant => variant.provider === selectedProvider)
 
   return (
-    <section aria-labelledby="coach-provider-matrix-title" className="mt-12">
+    <section
+      aria-labelledby="coach-provider-matrix-title"
+      className="relative left-1/2 mt-12 w-[calc(100vw-2rem)] max-w-[1800px] -translate-x-1/2 sm:w-[calc(100vw-3rem)] lg:w-[calc(100vw-5rem)]"
+    >
       <div className="rounded-3xl border border-border-color bg-white/60 p-5 shadow-sm dark:bg-slate-900/40 sm:p-7">
         <div className="max-w-4xl">
           <h2 id="coach-provider-matrix-title" className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
@@ -88,8 +94,41 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
           </aside>
         </div>
 
+        <fieldset className="mt-6" aria-describedby="coach-provider-filter-hint">
+          <legend className="text-sm font-semibold text-slate-800 dark:text-slate-100">
+            {copy.providerFilterLabel}
+          </legend>
+          <p id="coach-provider-filter-hint" className="mt-1 text-sm text-text-secondary">
+            {copy.providerFilterHint}
+          </p>
+          <div className="mt-3 inline-flex rounded-xl border border-border-color bg-slate-100 p-1 dark:bg-slate-950/70">
+            {(['ChatGPT', 'Claude'] as CoachMatrixProvider[]).map(provider => {
+              const isSelected = selectedProvider === provider
+              return (
+                <label key={provider} className="cursor-pointer">
+                  <input
+                    type="radio"
+                    name="coach-provider-filter"
+                    value={provider}
+                    checked={isSelected}
+                    onChange={() => setSelectedProvider(provider)}
+                    className="peer sr-only"
+                  />
+                  <span
+                    className={`block rounded-lg px-4 py-2 text-sm font-semibold transition-colors peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-sky-500 peer-focus-visible:ring-offset-2 dark:peer-focus-visible:ring-offset-slate-950 ${isSelected
+                      ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'}`}
+                  >
+                    {provider}
+                  </span>
+                </label>
+              )
+            })}
+          </div>
+        </fieldset>
+
         <div className="mt-6 space-y-3 sm:hidden">
-          {copy.variants.map((variant) => (
+          {visibleVariants.map((variant) => (
             <details
               key={variant.id}
               className={`group rounded-2xl border bg-white/80 shadow-sm dark:bg-slate-950/40 ${variant.badge ? 'border-emerald-400 dark:border-emerald-700' : 'border-border-color'}`}
@@ -137,22 +176,24 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
           ))}
         </div>
 
-        <div className="mt-6 hidden max-h-[72vh] overflow-auto rounded-2xl border border-border-color bg-white dark:bg-slate-950/50 sm:block">
-          <table className="min-w-[2180px] border-collapse text-left">
+        <div className="mt-6 hidden overflow-x-auto rounded-2xl border border-border-color bg-white dark:bg-slate-950/50 sm:block">
+          <table
+            className={`${selectedProvider === 'ChatGPT' ? 'min-w-[1260px]' : 'min-w-[1020px]'} w-full border-collapse text-left`}
+          >
             <caption className="sr-only">{copy.title}</caption>
             <thead>
               <tr>
                 <th
                   scope="col"
-                  className="sticky left-0 top-0 z-30 w-[270px] min-w-[270px] border-b border-r border-border-color bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-800 dark:bg-slate-900 dark:text-slate-100"
+                  className="sticky left-0 z-30 w-[260px] min-w-[260px] border-b border-r border-border-color bg-slate-100 px-4 py-4 text-sm font-semibold text-slate-800 dark:bg-slate-900 dark:text-slate-100"
                 >
                   {copy.featureHeading}
                 </th>
-                {copy.variants.map((variant) => (
+                {visibleVariants.map((variant) => (
                   <th
                     key={variant.id}
                     scope="col"
-                    className={`sticky top-0 z-20 w-[270px] min-w-[270px] border-b border-border-color px-4 py-4 align-top ${variant.badge ? 'bg-emerald-50 dark:bg-emerald-950/70' : 'bg-slate-100 dark:bg-slate-900'}`}
+                    className={`w-[250px] min-w-[250px] border-b border-border-color px-4 py-4 align-top ${variant.badge ? 'bg-emerald-50 dark:bg-emerald-950/70' : 'bg-slate-100 dark:bg-slate-900'}`}
                   >
                     <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{variant.provider}</p>
                     <p className="mt-1 text-base font-semibold text-slate-900 dark:text-white">{variant.plan}</p>
@@ -171,7 +212,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
                 <React.Fragment key={group.id}>
                   <tr>
                     <th
-                      colSpan={copy.variants.length + 1}
+                      colSpan={visibleVariants.length + 1}
                       className="border-b border-border-color bg-slate-800 px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-white dark:bg-slate-700"
                     >
                       {group.title}
@@ -185,7 +226,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
                       >
                         {row.feature}
                       </th>
-                      {copy.variants.map((variant) => {
+                      {visibleVariants.map((variant) => {
                         const matrixCell = row.cells[variant.id]
                         return (
                           <td key={variant.id} className="border-b border-border-color px-4 py-4">
@@ -201,9 +242,9 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
           </table>
         </div>
 
-        <p className="mt-5 text-sm leading-relaxed text-text-secondary">{copy.caveat}</p>
+        <p className="mt-5 max-w-5xl text-sm leading-relaxed text-text-secondary">{copy.caveat}</p>
 
-        <div className="mt-5 border-t border-border-color pt-5">
+        <div className="mt-5 max-w-5xl border-t border-border-color pt-5">
           <h3 className="font-semibold text-slate-800 dark:text-slate-100">{copy.sourcesTitle}</h3>
           <p className="mt-1 text-sm text-text-secondary">{copy.sourcesNote}</p>
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
