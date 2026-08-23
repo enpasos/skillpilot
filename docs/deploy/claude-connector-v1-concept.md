@@ -443,12 +443,15 @@ separate:
    `offline_access` scope may keep it connected, but contains and selects no
    learner identity.
 3. For every learning session the user opens
-   `https://skillpilot.com/lernen/claude`, which enters the shared first-party
+   `https://skillpilot.com/?coach=claude`, which enters the shared first-party
    SkillPilot web start.
 4. The user visibly selects or loads the SkillPilot ID, confirms curriculum
    and Personal Curriculum, and explicitly chooses Claude. Only then does
    SkillPilot create a fresh opaque token beginning with `spc_` that is valid
    for exactly 24 hours.
+   SkillPilot then opens only `https://claude.ai/new` with the prepared prompt
+   URL-encoded in exactly one `q` parameter. Claude prefills the composer, but
+   the learner reviews and sends the message deliberately.
 5. Every one of the twelve tools requires that unchanged
    `learningSessionId`, including the app-only memory-review tool.
 6. On expiry, the user starts again in SkillPilot. OAuth refresh cannot mint,
@@ -473,6 +476,11 @@ learner.
   tokens with replay detection.
 - Never log OAuth bodies, learner-session values, MCP bodies, Recall answers or
   exam material.
+- The first-party Web handoff is the sole URL exception for learner-session
+  material: its one `q` parameter contains the current 24-hour session inside
+  the prepared prompt. It must use the exact Claude Web origin and `/new` path,
+  contain no second parameter, fragment, credentials or permanent ID, and must
+  not be captured by SkillPilot analytics or logs.
 - Revoking OAuth removes only the connector connection. Expiring or revoking a
   learner session does not delete learner state and does not affect OpenAI
   sessions.
@@ -693,9 +701,11 @@ For CIMD:
 - RFC-compliant `invalid_grant` handling;
 - explicit revocation;
 - read and write scopes separated;
-- no bearer token in query parameters;
-- no credentials or token material in logs, telemetry, URLs, tool results, or
-  browser storage beyond the minimum OAuth transaction requirement.
+- no OAuth bearer token in query parameters;
+- no credentials or token material in logs, telemetry, tool results, or
+  browser storage beyond the minimum OAuth transaction requirement and the
+  explicitly reviewed one-time Claude Web `q` handoff for the separate
+  24-hour learner session.
 - validate HTTP `Origin` according to the MCP security requirements without
   using unauthenticated `clientInfo` as an authorization signal, and test the
   policy across every supported Claude surface.

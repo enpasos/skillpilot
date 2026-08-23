@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "state": "PRE_SUBMISSION_CANDIDATE",
   "capturedAt": "2026-08-23",
-  "baseRevision": "0d3c74312b13a3d22534166512a83453ad81c6f8",
-  "candidateContractSha256": "e911d0cb7ee0c3ee3909bc9b688d41c1d94a8ba85f0053cd4eb7501717da40b6",
+  "baseRevision": "7b7dae34af2282f47e5546f2ddcee38b58bb2220",
+  "candidateContractSha256": "f214a2e5124b4f09495fa923b3a15470d222589575c18346fcc9f2f53fbff7b5",
   "digestAlgorithm": "SHA-256 over sorted UTF-8 records: base:baseRevision + LF, and kind + colon + path + NUL + digest + LF",
   "purpose": "Pins the reviewed immutable Claude Connector v1 candidate bytes. Mutable release gates, evidence references and lifecycle state are deliberately outside this digest.",
   "trees": [
@@ -13,11 +13,11 @@
     },
     {
       "path": "ai/claude/plugin/skillpilot-coach-v1",
-      "sha256": "b26109d3f85b86a1cdbcb370d53893dff0744ac071ea44df8b9de9e60850e749"
+      "sha256": "18690a06e49eaf0c7491ceb3bbc5b54cf804eb8061ab0026b61e1700a88710d5"
     },
     {
       "path": "app/src/coachVariants/claudeV1",
-      "sha256": "24c6e82034bc28c35396bba6cbf6d09b481e842d835225a81452ab682f6b022a"
+      "sha256": "4fea6c461b3a04ce4dba8c220c27b61349ced010c10e3a9a943fbbfb7e9fc5ba"
     },
     {
       "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1",
@@ -25,7 +25,7 @@
     },
     {
       "path": "backend/src/main/resources/claude-connector-v1",
-      "sha256": "c1a2cb312a88c177bce4d2e0de30602bc14d8bbc0606dc37ba81410c0c247cd9"
+      "sha256": "641a1bfefff7363e825262f7aec39ff602f4c667a62d3d86d3fb3201965cd389"
     }
   ],
   "files": [
@@ -35,11 +35,11 @@
     },
     {
       "path": "ai/claude/connector-v1/directory-listing.json",
-      "sha256": "4ab8292a9db44e627c420d8db76b7f12a282388ac83b539ac42b9576092197ba"
+      "sha256": "71f25bcbed3baa6c1ac3da95d41b0600317057f4d51d7ea74d749d3801553bb9"
     },
     {
       "path": "ai/claude/connector-v1/reviewer-test-plan.md",
-      "sha256": "c9e4c3f684d401633a3d2a4655adb73116ae096979438bdd496232f8585f509c"
+      "sha256": "affd6d02b253f4285997ae0bd282f90b3e49365dac66c9fd091b1e1c847e235f"
     },
     {
       "path": "app/package.json",
@@ -47,15 +47,15 @@
     },
     {
       "path": "app/scripts/testClaudeV1StartUi.tsx",
-      "sha256": "fc25eac43a61c8b1219ed0def1bdba95628d89b1b2c57270e757f385c5b4944c"
+      "sha256": "e1c18cafd18ab4d032273145b4d2ab0b6e9a76fa690346874c117ea7621ce0fc"
     },
     {
       "path": "app/scripts/testRootRoutePolicy.ts",
-      "sha256": "b38654b640c7f852e7518212b421f43d0e284ab3aae5eb4ed2f26721394c125d"
+      "sha256": "5ee19cca163d0ff20c08f618c585803c150e194fce7ec1691d04f319c869d2d1"
     },
     {
       "path": "app/src/App.tsx",
-      "sha256": "980096a1c96a87ce663b999b5326a39499af2050c4948c1a6c8fbaa80fd987f6"
+      "sha256": "b4a80a29ad79188d8927f6352a9ee09af8f061fb452a4095901091470a495a16"
     },
     {
       "path": "app/src/components/SessionSetup.tsx",
@@ -63,23 +63,19 @@
     },
     {
       "path": "app/src/locales/de.ts",
-      "sha256": "e1c785954cb7f59f649049e4b440425e81f3c2819a6a848f22fc19f69864a5bb"
+      "sha256": "a69f7defda1832d35ed3ac14a0096462e24f34d3b8433f58ea6f9528b687545d"
     },
     {
       "path": "app/src/locales/en.ts",
-      "sha256": "8995bce801faa7330acc5a2252229c98983c3d7262a9f2415e5ffa4e08b6b6b8"
+      "sha256": "b496daea6f318a096157807c7fb688439ec4249b1328bdc4acfdbf8442eb1ef2"
     },
     {
       "path": "app/src/utils/claudeCoach.ts",
-      "sha256": "53da9c35717cb64a49ac5ca1ab5b2e49f350999ac2425dfd1eec68cb9ce13d5a"
+      "sha256": "817c855aeca7406cd923dc7ce56538c2b8f67ec90b7750b064b873f1976a539d"
     },
     {
       "path": "app/src/utils/rootRoutePolicy.ts",
-      "sha256": "95a436edde4b85399fd8b4b5d2b54fdda13bcfa1fd69fcb51c91e5004081a634"
-    },
-    {
-      "path": "app/src/views/ClaudeV1StartView.tsx",
-      "sha256": "1ed7d705d363b90fb95419083733183cdfbc979ca029ea3c498e68bc624993c9"
+      "sha256": "f823f76c816722038ab793e2d95a0f790ca5dfa663a680d2084abbe2ac1b15f7"
     },
     {
       "path": "backend/src/main/resources/db/changelog/changes/023-add-claude-connector-v1.yaml",
@@ -103,15 +99,15 @@
     },
     {
       "path": "docs/deploy/claude-connector-v1-release.md",
-      "sha256": "fb1bac96ab02482017bafc1677eb6f8808534325290e0779ae3daef80ab765e4"
+      "sha256": "e165882dba109660796fdf327768d9835978b20dfdde485af602c0de7844a32e"
     },
     {
       "path": "docs/deploy/claude-connector-v1-user-guide.de.md",
-      "sha256": "b41723a39ba407c5f34062fcc668918fa936ab5fb180b73a3cdfa9ec445aa9d2"
+      "sha256": "d16fadcb0c2205ce0f6c12bded816c708fd67b9f35507a82248b16ca2111749d"
     },
     {
       "path": "docs/deploy/claude-connector-v1-user-guide.md",
-      "sha256": "e6de7e09ac1894ee3c2a1dcc7dfd7be85cce5e4cf180b15599697eebcf9367b8"
+      "sha256": "a271cef7aeda644e32f37184e127aef5423fdf0c06cbb3b07dcbd19e6de4b8a6"
     }
   ]
 }

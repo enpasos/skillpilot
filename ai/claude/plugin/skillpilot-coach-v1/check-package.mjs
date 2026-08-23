@@ -102,7 +102,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SKILL.md must require the first-party learningSessionId on every SkillPilot tool call.",
   );
   check(
-    publishedText.includes("https://skillpilot.com/lernen/claude")
+    publishedText.includes("https://skillpilot.com/?coach=claude")
       && publishedText.includes("spc_")
       && /exact(?:ly|e) 24(?:-hour| hours| Stunden)/iu.test(publishedText),
     "Package must document the exact 24-hour first-party spc_ start flow.",

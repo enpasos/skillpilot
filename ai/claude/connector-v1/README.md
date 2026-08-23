@@ -30,11 +30,14 @@ client has its own recorded acceptance run.
   keep the plugin connected, but contains and selects no learner identity and
   cannot mint, renew or extend a learner session.
 - Every learner session starts at
-  `https://skillpilot.com/lernen/claude`. The shared first-party web start
+  `https://skillpilot.com/?coach=claude`. The shared first-party web start
   visibly selects the SkillPilot ID, curriculum, Personal Curriculum and
   provider. Only an explicit Claude choice creates an opaque `spc_` value,
   which expires after exactly 24 hours. The permanent SkillPilot ID remains
   inside SkillPilot; no ID file or password is used.
+- The selected Claude start opens only Claude Web. Its composer is prefilled
+  through exactly one `q` parameter; the learner reviews and sends the message
+  explicitly. There is no automatic send or desktop launch route.
 - The plugin is the preferred one-time installation because it bundles the
   coaching Skill and connector. Both MCP Apps UIs are supplied by that
   connector. Separate Skill-plus-connector installation is only a fallback and

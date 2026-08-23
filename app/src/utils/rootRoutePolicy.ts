@@ -6,7 +6,7 @@ interface SessionSetupRouteContext {
 
 export const isRootRoute = (pathname: string) => pathname === '/'
 
-const CORELESS_PUBLIC_PATHS = new Set(['/lernzielbuch', '/lernziel-feedback', '/lernen/claude'])
+const CORELESS_PUBLIC_PATHS = new Set(['/lernzielbuch', '/lernziel-feedback'])
 
 export const shouldRunApplicationCore = (pathname: string) => (
   !isRootRoute(pathname) && !CORELESS_PUBLIC_PATHS.has(pathname.replace(/\/+$/u, ''))
