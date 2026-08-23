@@ -27,7 +27,7 @@ Provide only the following through the approved secret channel:
 
 Never provide the permanent SkillPilot ID, an encrypted ID file, an ID-file
 password or a pre-generated `spc_` value. The reviewer starts each learner
-session at `https://skillpilot.com/lernen/claude`; SkillPilot creates the opaque
+session at `https://skillpilot.com/?coach=claude`; SkillPilot creates the opaque
 `spc_` session and keeps permanent identity inside the first-party system.
 
 ## Reviewer profile checklist
@@ -56,15 +56,23 @@ The profile is usable only when it contains:
    connected. It must not contain, select, mint, renew or extend learner
    identity or a learner session.
 4. Add no custom headers and never enter a permanent SkillPilot ID.
-5. Open `https://skillpilot.com/lernen/claude`. In the shared SkillPilot web
+5. Open `https://skillpilot.com/?coach=claude`. In the shared SkillPilot web
    start, visibly select or load the prepared reviewer ID, confirm its
    curriculum and Personal Curriculum, and explicitly choose Claude.
 6. Confirm only that explicit Claude launch creates a fresh opaque value
-   beginning with `spc_`, valid for exactly 24 hours, and opens a fresh Claude
-   chat without displaying that value in normal learner-facing prose.
+   beginning with `spc_`, valid for exactly 24 hours. The Web-only handoff
+   targets exactly `https://claude.ai/new` with exactly one non-empty,
+   URL-encoded `q` query parameter containing the complete prepared start
+   prompt. Claude Web prefills but never auto-sends it; the reviewer explicitly
+   selects **Send**. The normal start path uses no manual copy/paste and exposes
+   no Claude Desktop launch route. The session is not displayed in normal
+   learner-facing prose.
 7. Enable only SkillPilot and follow `reviewer-test-plan.md`.
-8. Record evidence without credentials, OAuth values, `spc_` values, permanent
-   IDs, learner data or protected answers.
+8. Treat the complete `q`-bearing Claude Web URL, including its encoded `spc_`
+   value, like a credential. Never capture that URL in evidence or screenshots;
+   redact the entire browser address bar. Record all other evidence without
+   credentials, OAuth values, `spc_` values, permanent IDs, learner data or
+   protected answers.
 
 ## Reset procedure
 

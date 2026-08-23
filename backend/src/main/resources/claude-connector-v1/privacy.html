@@ -41,8 +41,8 @@
   <h2>2. Zweck und Funktionsweise der Datenverarbeitung</h2>
   <p>Der SkillPilot Claude Connector ermöglicht es volljährigen Lernenden, ihren bestehenden pseudonymen SkillPilot-Lernstand in Anthropic Claude für personalisiertes KI-Coaching zu nutzen.</p>
   <ul>
-    <li><strong>Start ausschließlich bei SkillPilot:</strong> Eine neue Lernsitzung wird über <a href="https://skillpilot.com/lernen/claude">skillpilot.com/lernen/claude</a> vorbereitet. Die permanente SkillPilot-ID bleibt dabei in der SkillPilot-Weboberfläche und im SkillPilot-Core.</li>
-    <li><strong>Zeitlich begrenzte Lernsitzung:</strong> Claude erhält in der vorbereiteten Startnachricht nur eine zufällige, opake Sitzungskennung. Sie ist ab ihrer Ausgabe genau 24 Stunden gültig und kann in Claude weder verlängert noch erneuert werden.</li>
+    <li><strong>Start ausschließlich bei SkillPilot:</strong> Eine neue Lernsitzung wird über <a href="https://skillpilot.com/?coach=claude">Lernen starten</a> in der gemeinsamen SkillPilot-Weboberfläche vorbereitet. Die permanente SkillPilot-ID bleibt dabei in der SkillPilot-Weboberfläche und im SkillPilot-Core.</li>
+    <li><strong>Zeitlich begrenzte Lernsitzung:</strong> Claude erhält in der vorbereiteten Startnachricht nur eine zufällige, opake Sitzungskennung. SkillPilot übergibt diese Nachricht nach Ihrer ausdrücklichen Auswahl über den einzigen <code>q</code>-Parameter von <code>https://claude.ai/new</code> an das Eingabefeld; Claude sendet sie nicht automatisch. Die Kennung ist ab ihrer Ausgabe genau 24 Stunden gültig und kann in Claude weder verlängert noch erneuert werden.</li>
     <li><strong>Getrennte Berechtigungen:</strong> Die OAuth-Verbindung authentifiziert nur das installierte Plugin bzw. den Connector. Sie enthält keine permanente SkillPilot-ID und wählt keinen Lernstand aus. Auf Lernstandsdaten kann der Connector nur mit einer zusätzlich gültigen 24-Stunden-Sitzungskennung zugreifen.</li>
     <li><strong>Keine Weitergabe der permanenten ID:</strong> Claude und Anthropic erhalten zu keinem Zeitpunkt die permanente SkillPilot-ID, eine SkillPilot-ID-Datei oder deren Passwort.</li>
   </ul>

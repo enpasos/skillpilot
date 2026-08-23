@@ -24,19 +24,26 @@ Lernsitzung.
 
 ## Jedes Mal Lernen starten
 
-1. Öffne [skillpilot.com/lernen/claude](https://skillpilot.com/lernen/claude).
+1. Öffne [Lernen starten](https://skillpilot.com/?coach=claude) bei SkillPilot.
    Der Link führt in den gemeinsamen SkillPilot-Webstart.
 2. Wähle oder lade dort sichtbar deine SkillPilot-ID und bestätige Curriculum
    und persönliches Curriculum.
 3. Wähle im letzten Schritt ausdrücklich **Mit Claude starten**. Du kannst dich
    bei jedem Start neu zwischen ChatGPT und Claude entscheiden.
-4. SkillPilot öffnet einen neuen Claude-Chat mit einer vorbereiteten Nachricht.
+4. SkillPilot öffnet Claude Web. Die vorbereitete Startnachricht ist bereits im
+   Eingabefeld eingetragen. Prüfe sie und sende sie bewusst ab; du musst nichts
+   kopieren oder einfügen. Claude kann dabei vor extern übergebenen Inhalten
+   warnen. Das ist bei diesem Startweg erwartbar.
 
 Dabei entsteht eine neue, undurchsichtige Kennung mit dem Anfang `spc_`. Sie ist
 exakt 24 Stunden gültig. Claude verwendet sie nur für SkillPilot-Aufrufe; sie
 soll nicht im Chat wiederholt oder weitergegeben werden. Nach Ablauf startest
 du auf derselben Seite eine neue Sitzung. Der Konnektor muss dafür nicht erneut
 verbunden werden.
+
+Für die Übergabe an das Claude-Eingabefeld steht diese kurze Kennung vorübergehend
+im `q`-Parameter der Claude-Webadresse. Teile weder diese Adresse noch einen
+Screenshot davon. Die permanente SkillPilot-ID wird dabei nicht übertragen.
 
 ## Was du machen kannst
 
@@ -63,7 +70,7 @@ Toolnamen oder Zustandsversionen nicht in normale Lernantworten mischen.
 - **SkillPilot wird nicht gefunden:** Prüfe, ob das Plugin eingeschaltet und
   sein Konnektor verbunden ist.
 - **Die Sitzung ist abgelaufen:** Öffne
-  [Lernen starten](https://skillpilot.com/lernen/claude) erneut. Eine
+  [Lernen starten](https://skillpilot.com/?coach=claude) erneut. Eine
   24-Stunden-Sitzung wird nie durch OAuth verlängert.
 - **Die falsche Person oder der falsche Lernstand erscheint:** Verwende den Chat
   nicht weiter. Starte in SkillPilot eine neue Sitzung mit dem richtigen

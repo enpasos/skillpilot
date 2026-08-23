@@ -25,7 +25,7 @@ const expectedBaseUrl = "https://mcp-claude-v1.skillpilot.com";
 const expectedDocumentationUrl =
   "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/";
 const expectedPrivacyUrl = `${expectedBaseUrl}/privacy`;
-const expectedLearnerStartUrl = "https://skillpilot.com/lernen/claude";
+const expectedLearnerStartUrl = "https://skillpilot.com/?coach=claude";
 const expectedTools = [
   "get_skillpilot_coach_context",
   "render_skillpilot_goal_visualization",
@@ -93,7 +93,6 @@ const expectedContractFiles = [
   "app/src/locales/en.ts",
   "app/src/utils/claudeCoach.ts",
   "app/src/utils/rootRoutePolicy.ts",
-  "app/src/views/ClaudeV1StartView.tsx",
   "backend/src/main/resources/db/changelog/changes/023-add-claude-connector-v1.yaml",
   "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
   "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
@@ -645,6 +644,122 @@ function verifyRepositoryEvidence(repositoryRoot, evidence, check) {
   }
 }
 
+export function validateClaudeWebStartImplementation(adapterSource, uiTestSource) {
+  const errors = [];
+  const check = (condition, message) => {
+    if (!condition) errors.push(message);
+  };
+
+  check(
+    adapterSource.includes("const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'"),
+    "Claude Web start must pin exactly https://claude.ai/new.",
+  );
+  check(
+    adapterSource.includes("if (!prompt.trim()) throw new Error('Missing Claude start prompt')")
+      && adapterSource.includes(
+        "return `${CLAUDE_V1_WEB_CHAT_URL}?q=${encodeURIComponent(prompt)}`",
+      ),
+    "Claude Web start must encode one non-empty complete prompt as q.",
+  );
+  check(
+    [
+      "const keys = [...url.searchParams.keys()]",
+      "return keys.length === 1",
+      "&& keys[0] === 'q'",
+      "url.searchParams.getAll('q').length === 1",
+      "Boolean(url.searchParams.get('q')?.trim())",
+    ].every((fragment) => adapterSource.includes(fragment)),
+    "Claude Web URL validation must require exactly one non-empty q parameter.",
+  );
+  check(
+    [
+      "url.origin !== 'https://claude.ai'",
+      "url.pathname !== '/new'",
+      "url.username",
+      "url.password",
+      "url.hash",
+    ].every((fragment) => adapterSource.includes(fragment)),
+    "Claude Web URL validation must reject foreign origins, paths, credentials and fragments.",
+  );
+  check(
+    adapterSource.includes("webUrl: buildClaudeWebPromptUrl(response.prompt)")
+      && adapterSource.includes("desktopUrl: ''")
+      && !adapterSource.includes("claude://")
+      && /export const getSafeClaudeDesktopUrl = \(value: string\): string \| null => \{\s*void value\s*return null\s*\}/u.test(
+        adapterSource,
+      ),
+    "Claude v1 start must remain Web-only with no Desktop route.",
+  );
+
+  for (const fragment of [
+    "assert.equal(promptUrl, `https://claude.ai/new?q=${encodeURIComponent(startPrompt)}`)",
+    "assert.deepEqual([...parsedPromptUrl.searchParams.keys()], ['q'])",
+    "assert.equal(parsedPromptUrl.searchParams.get('q'), startPrompt)",
+    "assert.equal(new URL(launch.webUrl).searchParams.get('q'), launch.prompt)",
+    "https://user:password@claude.ai/new?q=prompt",
+    "https://claude.ai/new?q=prompt#fragment",
+    "https://claude.ai/new?q=prompt&next=https%3A%2F%2Fevil.example",
+    "https://claude.ai/new?q=one&q=two",
+    "https://claude.ai/new?q=",
+    "https://claude.ai/new?q=%20%20%20",
+    "assert.equal(launch.desktopUrl, '')",
+    "getSafeClaudeDesktopUrl('claude://claude.ai/new')",
+    "!promptUrl.toLowerCase().includes(LEARNER_ID.toLowerCase())",
+    "!promptUrl.includes(encodeURIComponent(LEARNER_ID))",
+  ]) {
+    check(
+      uiTestSource.includes(fragment),
+      `Claude Web-start UI test is missing guard: ${fragment}`,
+    );
+  }
+
+  return errors;
+}
+
+export function validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerAccess) {
+  const errors = [];
+  const check = (condition, message) => {
+    if (!condition) errors.push(message);
+  };
+
+  check(
+    /opens exactly `https:\/\/claude\.ai\/new` with one\s+URL-encoded `q` parameter containing the complete start prompt/u.test(
+      reviewerTestPlan,
+    )
+      && reviewerTestPlan.includes("prefills but does not automatically send it")
+      && reviewerTestPlan.includes("explicitly select **Send**"),
+    "Reviewer test plan must verify the exact q prefill and explicit Send boundary.",
+  );
+  check(
+    reviewerTestPlan.includes("redact it from screenshots and")
+      && reviewerTestPlan.includes("recorded browser addresses"),
+    "Reviewer test plan must redact the learner session from screenshots and browser addresses.",
+  );
+  check(
+    /targets exactly `https:\/\/claude\.ai\/new` with exactly one non-empty,\s+URL-encoded `q` query parameter containing the complete prepared start\s+prompt/u.test(
+      reviewerAccess,
+    )
+      && reviewerAccess.includes("never auto-sends it")
+      && /reviewer explicitly\s+selects \*\*Send\*\*/u.test(reviewerAccess),
+    "Reviewer access must describe the exact Web q prefill without auto-send.",
+  );
+  check(
+    reviewerAccess.includes("normal start path uses no manual copy/paste")
+      && reviewerAccess.includes("no Claude Desktop launch route"),
+    "Reviewer access must keep the normal start free of copy/paste and Desktop routing.",
+  );
+  check(
+    /Treat the complete `q`-bearing Claude Web URL, including its encoded `spc_`\s+value, like a credential\./u.test(
+      reviewerAccess,
+    )
+      && reviewerAccess.includes("Never capture that URL in evidence or screenshots")
+      && reviewerAccess.includes("redact the entire browser address bar"),
+    "Reviewer evidence must treat the complete q URL, including spc_, as a redacted secret.",
+  );
+
+  return errors;
+}
+
 function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   for (const retiredResource of [
     "backend/src/main/resources/claude-connector-v1/connect.html",
@@ -667,6 +782,19 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   const firstPartyStartTest = readText(
     repositoryRoot,
     "app/src/coachVariants/claudeV1/claudeV1Start.test.ts",
+  );
+  const unifiedWebStartAdapter = readText(
+    repositoryRoot,
+    "app/src/utils/claudeCoach.ts",
+  );
+  const unifiedWebStartTest = readText(
+    repositoryRoot,
+    "app/scripts/testClaudeV1StartUi.tsx",
+  );
+  const sharedStartApp = readText(repositoryRoot, "app/src/App.tsx");
+  const rootRoutePolicy = readText(
+    repositoryRoot,
+    "app/src/utils/rootRoutePolicy.ts",
   );
   const contract = readText(
     repositoryRoot,
@@ -719,6 +847,32 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   const learningSessionMigration = readText(
     repositoryRoot,
     "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
+  );
+
+  for (const error of validateClaudeWebStartImplementation(
+    unifiedWebStartAdapter,
+    unifiedWebStartTest,
+  )) {
+    check(false, error);
+  }
+  check(
+    !sharedStartApp.includes("/lernen/claude")
+      && !sharedStartApp.includes("ClaudeV1StartView")
+      && !rootRoutePolicy.includes("/lernen/claude")
+      && !existsSync(safeRepositoryPath(
+        repositoryRoot,
+        "app/src/views/ClaudeV1StartView.tsx",
+      )),
+    "The retired standalone Claude start route and view must remain absent.",
+  );
+  check(
+    unifiedWebStartTest.includes(
+      "assert.equal(isClaudeV1WebStartRequested('?coach=claude'), true)",
+    )
+      && unifiedWebStartTest.includes(
+        "the retired standalone Claude URL must not remain in the application router",
+      ),
+    "Claude Web-start tests must pin the shared provider-selected root and retired-route absence.",
   );
 
   for (const fragment of [
@@ -906,8 +1060,22 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     repositoryRoot,
     "docs/deploy/claude-connector-v1-implementation-plan.md",
   );
+  const reviewerTestPlan = readText(
+    repositoryRoot,
+    "ai/claude/connector-v1/reviewer-test-plan.md",
+  );
+  const reviewerAccess = readText(
+    repositoryRoot,
+    "ai/claude/connector-v1/reviewer-access.template.md",
+  );
   const tls = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf");
   const acme = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-acme.conf");
+  for (const error of validateClaudeWebStartReviewEvidence(
+    reviewerTestPlan,
+    reviewerAccess,
+  )) {
+    check(false, error);
+  }
   for (const path of [
     "claude-connector-v1-user-guide.md",
     "claude-connector-v1-user-guide.de.md",

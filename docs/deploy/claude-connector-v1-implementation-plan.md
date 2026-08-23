@@ -21,7 +21,7 @@ Release-Freigabe.
 > **Ablösung des alten Plans:** Die bis 21. August beschriebene verschlüsselte
 > ID-Datei-/Binding-Seite ist vollständig verworfen. Verbindlich ist nur die in
 > dieser Revision beschriebene Zielstruktur: lernendenfreies Connector-OAuth,
-> First-Party-Start unter `https://skillpilot.com/lernen/claude`, eine opake
+> First-Party-Start unter `https://skillpilot.com/?coach=claude`, eine opake
 > `spc_`-Lernsession für exakt 24 Stunden und die permanente ID ausschließlich
 > innerhalb SkillPilots. Widersprechende ältere Evidenz ist nicht wiederverwendbar.
 
@@ -61,7 +61,7 @@ Claude mit folgenden Eigenschaften:
   Remote-MCP-Server; beide MCP Apps kommen über den Connector, eine getrennte
   Installation bleibt nur Fallback ohne Funktionsvorteil;
 - jede Lernsitzung startet ausschließlich über
-  `https://skillpilot.com/lernen/claude` im gemeinsamen SkillPilot-Webstart;
+  `https://skillpilot.com/?coach=claude` im gemeinsamen SkillPilot-Webstart;
   die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
   Curriculum und Claude, bevor eine opake `spc_`-Kennung ausgestellt wird, die
   exakt 24 Stunden nach Ausstellung endet;
@@ -411,7 +411,7 @@ Resource gebunden.
 **Aufgaben:**
 
 1. Eine isolierte First-Party-Route
-   `https://skillpilot.com/lernen/claude` bereitstellen; bestehende
+   `https://skillpilot.com/?coach=claude` bereitstellen; bestehende
    ChatGPT-Startbytes und -Semantik nicht ändern.
 2. Der First-Party-POST
    `/api/ui/learners/{skillpilotId}/claude/v1/launch` wählt den Learner nur
@@ -428,12 +428,19 @@ Resource gebunden.
    oder verlängern.
 7. Fehlende, manipulierte, abgelaufene und fremde Sessions scheitern
    fail-closed; ein neuer First-Party-Start ist die einzige Erneuerung.
-8. Keine Session, permanente ID oder OAuth-Zugangsdaten in URL, Referrer,
-   Analytics, Logs, Toolergebnissen oder normalem Claude-Text.
+8. Keine permanente ID oder OAuth-Zugangsdaten in URL, Referrer, Analytics,
+   Logs, Toolergebnissen oder normalem Claude-Text. Einzige explizite
+   V1-Ausnahme ist der vom Nutzer gewählte Web-Handoff: genau eine aktuelle
+   24-Stunden-Session steht URL-kodiert im einzigen `q`-Parameter von
+   `https://claude.ai/new`, damit Claude die Startnachricht vorbefüllt. Sie
+   darf weder von SkillPilot analysiert oder geloggt noch automatisch gesendet
+   werden; der Nutzer prüft und sendet selbst.
 
 **Tests:** Tokenformat und HMAC, exakt 24h mit kontrollierter Uhr, fehlende und
 abgelaufene Session, Cross-Learner/Session, all-tool Schema-Guard, app-only
-Review-Guard, OAuth-Refresh bei abgelaufener Session und Log-Redaktion.
+Review-Guard, OAuth-Refresh bei abgelaufener Session, Log-Redaktion sowie
+strikte Web-Handoff-Allowlist mit exakt einem `q`-Parameter und ohne permanente
+ID, Zusatzparameter, Fragment, Zugangsdaten, Fremdhost oder Auto-Send.
 
 **Abnahme:** Eine bestehende Testperson startet über SkillPilot; alle zwölf
 Tools funktionieren nur mit der aktuellen Session; nach exakt 24 Stunden ist
@@ -814,7 +821,7 @@ wenn alle folgenden Punkte erfüllt sind:
 - öffentliche und interne Pfade, OAuth-Issuer und Resource-Identifier sind
   exakt versioniert und isoliert;
 - Claude.ai besteht OAuth mit PKCE S256;
-- jede Lernsitzung startet über `https://skillpilot.com/lernen/claude` und
+- jede Lernsitzung startet über `https://skillpilot.com/?coach=claude` und
   erhält ausschließlich eine opake `spc_`-Kennung für exakt 24 Stunden;
 - alle zwölf Tools einschließlich des app-only Review-Tools verlangen dieselbe
   aktuelle `learningSessionId`;

@@ -28,6 +28,7 @@ export interface ClaudeConnectionStatusResponse {
 
 const CLAUDE_V1_CONNECTOR_URL = 'https://mcp-claude-v1.skillpilot.com/mcp'
 const CLAUDE_V1_READY_STORAGE_KEY = 'skillpilot_claude_v1_setup_opened'
+const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'
 
 export const isClaudeV1WebStartRequested = (
   search = typeof window === 'undefined' ? '' : window.location.search,
@@ -36,8 +37,8 @@ export const isClaudeV1WebStartRequested = (
   return requestedCoaches.length === 1 && requestedCoaches[0] === 'claude'
 }
 
-// The submitted ChatGPT root remains unchanged. Only the explicit Claude
-// alias enables the additional provider choice in the shared setup flow.
+// The submitted ChatGPT root remains unchanged. Only an explicit provider
+// selection enables Claude inside the same shared setup flow.
 export const CLAUDE_COACH_BETA_ENABLED = isClaudeV1WebStartRequested()
 
 const requireSkillpilotId = (skillpilotId: string) => {
@@ -87,8 +88,8 @@ export const requestClaudeLaunch = async (
   })
   return {
     prompt: response.prompt,
-    desktopUrl: 'claude://claude.ai/new',
-    webUrl: response.webUrl,
+    desktopUrl: '',
+    webUrl: buildClaudeWebPromptUrl(response.prompt),
     expiresAt: response.expiresAt,
   }
 }
@@ -111,8 +112,17 @@ export const requestClaudeDisconnect = async (
   return { connected: false }
 }
 
-const isClaudeHostname = (hostname: string) => {
-  return hostname === 'claude.ai' || hostname.endsWith('.claude.ai')
+export const buildClaudeWebPromptUrl = (prompt: string) => {
+  if (!prompt.trim()) throw new Error('Missing Claude start prompt')
+  return `${CLAUDE_V1_WEB_CHAT_URL}?q=${encodeURIComponent(prompt)}`
+}
+
+const hasExactlyOnePromptQuery = (url: URL) => {
+  const keys = [...url.searchParams.keys()]
+  return keys.length === 1
+    && keys[0] === 'q'
+    && url.searchParams.getAll('q').length === 1
+    && Boolean(url.searchParams.get('q')?.trim())
 }
 
 export const getSafeClaudeInstallUrl = (value: string): string | null => {
@@ -141,7 +151,14 @@ export const getSafeClaudeInstallUrl = (value: string): string | null => {
 export const getSafeClaudeWebUrl = (value: string): string | null => {
   try {
     const url = new URL(value)
-    if (url.protocol !== 'https:' || !isClaudeHostname(url.hostname) || url.pathname !== '/new') {
+    if (
+      url.origin !== 'https://claude.ai'
+      || url.pathname !== '/new'
+      || url.username
+      || url.password
+      || url.hash
+      || !hasExactlyOnePromptQuery(url)
+    ) {
       return null
     }
     return url.toString()
@@ -151,12 +168,6 @@ export const getSafeClaudeWebUrl = (value: string): string | null => {
 }
 
 export const getSafeClaudeDesktopUrl = (value: string): string | null => {
-  try {
-    const url = new URL(value)
-    return url.protocol === 'claude:' && url.hostname === 'claude.ai' && url.pathname === '/new'
-      ? url.toString()
-      : null
-  } catch {
-    return null
-  }
+  void value
+  return null
 }

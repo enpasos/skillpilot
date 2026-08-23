@@ -24,18 +24,25 @@ learning session.
 
 ## Start learning every time
 
-1. Open [skillpilot.com/lernen/claude](https://skillpilot.com/lernen/claude).
+1. Open [Start learning](https://skillpilot.com/?coach=claude) at SkillPilot.
    The link enters the shared SkillPilot web start.
 2. Visibly choose or load your SkillPilot ID there and confirm the curriculum
    and Personal Curriculum.
 3. Explicitly choose **Start with Claude** in the final step. You can choose
    again between ChatGPT and Claude at every start.
-4. SkillPilot opens a new Claude chat with a prepared message.
+4. SkillPilot opens Claude Web with the prepared start message already filled
+   into the composer. Review and deliberately send it; there is nothing to copy
+   or paste. Claude may warn about externally supplied content. That warning is
+   expected for this start route.
 
 This creates a fresh opaque value beginning with `spc_`. It is valid for
 exactly 24 hours. Claude uses it only for SkillPilot calls; it must not repeat
 or share it in the chat. After expiry, start a new session on the same page.
 The connector does not need to be reconnected.
+
+During handoff to the Claude composer, this short value temporarily appears in
+the `q` parameter of the Claude Web address. Do not share that address or a
+screenshot containing it. The permanent SkillPilot ID is not transferred.
 
 ## What you can do
 
@@ -62,7 +69,7 @@ IDs, tool names and state versions out of ordinary learning responses.
 - **SkillPilot is not available:** Check that the plugin is enabled and its
   connector is connected.
 - **The session expired:** Open
-  [Start learning](https://skillpilot.com/lernen/claude) again. OAuth never
+  [Start learning](https://skillpilot.com/?coach=claude) again. OAuth never
   extends the 24-hour learner session.
 - **The wrong person or learning profile appears:** Stop using the chat and
   start a new session from the correct profile in SkillPilot.

@@ -14,13 +14,74 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   calculateCandidateContractSha256,
+  validateClaudeWebStartImplementation,
+  validateClaudeWebStartReviewEvidence,
   validateClaudeReleaseState,
   verifyClaudeConnectorV1Release,
 } from "./check_claude_connector_v1_release.mjs";
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 
-test("retired Claude learner-binding edge and static resources stay absent", () => {
+test("Claude v1 Web q launch and evidence contract reject weakened sources", () => {
+  const adapter = readFileSync(
+    resolve(repositoryRoot, "app/src/utils/claudeCoach.ts"),
+    "utf8",
+  );
+  const uiTest = readFileSync(
+    resolve(repositoryRoot, "app/scripts/testClaudeV1StartUi.tsx"),
+    "utf8",
+  );
+  const reviewerTestPlan = readFileSync(
+    resolve(repositoryRoot, "ai/claude/connector-v1/reviewer-test-plan.md"),
+    "utf8",
+  );
+  const reviewerAccess = readFileSync(
+    resolve(repositoryRoot, "ai/claude/connector-v1/reviewer-access.template.md"),
+    "utf8",
+  );
+
+  assert.deepEqual(validateClaudeWebStartImplementation(adapter, uiTest), []);
+  assert.deepEqual(
+    validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerAccess),
+    [],
+  );
+
+  const wrongRouteErrors = validateClaudeWebStartImplementation(
+    adapter.replace(
+      "const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'",
+      "const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/chat'",
+    ),
+    uiTest,
+  );
+  assert.ok(wrongRouteErrors.some((error) => error.includes("pin exactly")));
+
+  const duplicateQueryErrors = validateClaudeWebStartImplementation(
+    adapter.replace("return keys.length === 1", "return keys.length >= 1"),
+    uiTest,
+  );
+  assert.ok(
+    duplicateQueryErrors.some((error) => error.includes("exactly one non-empty q")),
+  );
+
+  const desktopRouteErrors = validateClaudeWebStartImplementation(
+    adapter.replace("desktopUrl: ''", "desktopUrl: 'claude://claude.ai/new'"),
+    uiTest,
+  );
+  assert.ok(desktopRouteErrors.some((error) => error.includes("Web-only")));
+
+  const unredactedEvidenceErrors = validateClaudeWebStartReviewEvidence(
+    reviewerTestPlan,
+    reviewerAccess.replace(
+      "redact the entire browser address bar",
+      "retain the browser address bar",
+    ),
+  );
+  assert.ok(
+    unredactedEvidenceErrors.some((error) => error.includes("redacted secret")),
+  );
+});
+
+test("retired Claude learner-binding and standalone-start surfaces stay absent", () => {
   for (const path of [
     "backend/src/main/resources/claude-connector-v1/connect.html",
     "backend/src/main/resources/claude-connector-v1/connect.js",
@@ -28,6 +89,23 @@ test("retired Claude learner-binding edge and static resources stay absent", () 
   ]) {
     assert.equal(existsSync(resolve(repositoryRoot, path)), false, path);
   }
+  assert.equal(
+    existsSync(resolve(repositoryRoot, "app/src/views/ClaudeV1StartView.tsx")),
+    false,
+    "the standalone Claude start view must remain deleted",
+  );
+
+  const app = readFileSync(resolve(repositoryRoot, "app/src/App.tsx"), "utf8");
+  assert.doesNotMatch(app, /\/lernen\/claude|ClaudeV1StartView/u);
+
+  const listing = JSON.parse(readFileSync(
+    resolve(repositoryRoot, "ai/claude/connector-v1/directory-listing.json"),
+    "utf8",
+  ));
+  assert.equal(
+    listing.learnerSession.startUrl,
+    "https://skillpilot.com/?coach=claude",
+  );
 
   const vhost = readFileSync(
     resolve(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf"),
