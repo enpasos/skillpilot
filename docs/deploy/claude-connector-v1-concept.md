@@ -132,7 +132,7 @@ The commercial v1 decision is therefore:
 | Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
 | Provider UI support | Submitted SkillPilot scope is ChatGPT Web | The plugin is the preferred installation; its remote connector is the provider-isolated tool/UI route, and each Claude surface is claimed only after acceptance |
 | Reusable instructions | OpenAI plugin contains its reviewed Skill | Preferred Claude plugin contains a Claude-specific Skill and the same remote MCP server |
-| Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | First-party `https://skillpilot.com/lernen/claude` creates a fresh opaque `spc_` session valid for exactly 24 hours; the permanent ID never leaves SkillPilot |
+| Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | The same first-party web start visibly selects the SkillPilot ID, curriculum, Personal Curriculum and provider; choosing Claude creates a fresh opaque `spc_` session valid for exactly 24 hours, while the permanent ID never leaves SkillPilot |
 | Minimum age for this integration | SkillPilot launch self-confirmation: at least 13, any higher local limit, and guardian permission under 18 | Claude account holder: 18+ |
 | SkillPilot price | EUR 0 additional; eligible OpenAI account/workspace is external | EUR 0 additional; eligible Claude account/workspace is external |
 
@@ -175,7 +175,7 @@ is safe only when its lack of effect on those surfaces is concretely proven.
 | Existing Claude beta | already present in the shared artifact, conditional on `skillpilot.claude.enabled` | Keep it disabled; do not turn a beta route into the directory contract |
 | Existing Claude OAuth chains | `@Order(1)` and `@Order(2)` when the beta is enabled | New v1 and beta must be mutually exclusive at startup; v1 needs disjoint matchers after the OpenAI chains at `@Order(3)` and `@Order(4)` |
 | `application.yml` | protected file | No new connector configuration belongs here |
-| `SessionSetup.tsx` and `claudeCoach.ts` | frozen caller plus dormant beta utility | Leave untouched; the directory flow must not depend on either |
+| `SessionSetup.tsx` and `claudeCoach.ts` | frozen shared setup plus provider adapter | Keep `SessionSetup.tsx` byte-identical; the explicit Claude alias may enable its already-present provider choice and the Claude-only adapter may call the isolated v1 launch contract without changing default ChatGPT behaviour |
 | Legal and privacy copy | protected files | A new provider must not make the frozen statements incomplete or inaccurate |
 | OpenAI nginx templates | protected files | Do not add Claude hosts or locations to them |
 | Main Liquibase changelog | executed by the shared application | Any additive schema need changes shared startup and is therefore a freeze/release gate |
@@ -443,9 +443,12 @@ separate:
    `offline_access` scope may keep it connected, but contains and selects no
    learner identity.
 3. For every learning session the user opens
-   `https://skillpilot.com/lernen/claude` in the first-party SkillPilot WebGUI.
-4. SkillPilot selects the learner internally and creates a fresh opaque token
-   beginning with `spc_` that is valid for exactly 24 hours.
+   `https://skillpilot.com/lernen/claude`, which enters the shared first-party
+   SkillPilot web start.
+4. The user visibly selects or loads the SkillPilot ID, confirms curriculum
+   and Personal Curriculum, and explicitly chooses Claude. Only then does
+   SkillPilot create a fresh opaque token beginning with `spc_` that is valid
+   for exactly 24 hours.
 5. Every one of the twelve tools requires that unchanged
    `learningSessionId`, including the app-only memory-review tool.
 6. On expiry, the user starts again in SkillPilot. OAuth refresh cannot mint,

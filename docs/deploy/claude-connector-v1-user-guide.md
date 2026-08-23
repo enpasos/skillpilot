@@ -25,8 +25,12 @@ learning session.
 ## Start learning every time
 
 1. Open [skillpilot.com/lernen/claude](https://skillpilot.com/lernen/claude).
-2. Choose your learning profile inside SkillPilot and select **Start learning**.
-3. SkillPilot opens a new Claude chat with a prepared message.
+   The link enters the shared SkillPilot web start.
+2. Visibly choose or load your SkillPilot ID there and confirm the curriculum
+   and Personal Curriculum.
+3. Explicitly choose **Start with Claude** in the final step. You can choose
+   again between ChatGPT and Claude at every start.
+4. SkillPilot opens a new Claude chat with a prepared message.
 
 This creates a fresh opaque value beginning with `spc_`. It is valid for
 exactly 24 hours. Claude uses it only for SkillPilot calls; it must not repeat

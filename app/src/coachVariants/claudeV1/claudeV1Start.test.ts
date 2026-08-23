@@ -98,6 +98,8 @@ assert.equal(
 )
 assert(!String(calls[0]?.init?.body).includes(LEARNER_ID), 'permanent ID stays out of the body')
 assert.deepEqual(launch, responsePayload())
+assert(!launch.prompt.toLowerCase().includes(LEARNER_ID.toLowerCase()), 'permanent ID stays out of the Claude prompt')
+assert(!launch.webUrl.includes(LEARNER_ID), 'permanent ID stays out of the Claude URL')
 
 const englishCalls: RequestInit[] = []
 await requestClaudeV1Start({

@@ -18,8 +18,10 @@ Claude Desktop and Claude Cowork.
 3. Connect the bundled connector once through the normal OAuth flow. The
    `offline_access` scope keeps this technical plugin connection available; it
    contains no learner identity and selects no SkillPilot learning profile.
-4. Open <https://skillpilot.com/lernen/claude> in the first-party SkillPilot WebGUI
-   and choose **Lernen starten**. SkillPilot creates a fresh opaque `spc_...`
+4. Open <https://skillpilot.com/lernen/claude> in the first-party SkillPilot
+   WebGUI. In the shared web start, visibly choose or load the SkillPilot ID,
+   confirm the curriculum and Personal Curriculum, then explicitly choose
+   **Mit Claude starten**. SkillPilot creates a fresh opaque `spc_...`
    learning-session value that is valid for exactly 24 hours and prepares the
    Claude start prompt. The permanent SkillPilot ID remains inside SkillPilot.
 5. Open the prepared Claude chat and start with its generated prompt, for example:

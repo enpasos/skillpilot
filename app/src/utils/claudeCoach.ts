@@ -1,4 +1,5 @@
 import { sanitizeSkillpilotId } from './skillpilotId'
+import { requestClaudeV1Start } from '../coachVariants/claudeV1/request'
 
 export interface ClaudeCoachStartInput {
   skillpilotId: string
@@ -25,140 +26,89 @@ export interface ClaudeConnectionStatusResponse {
   connected: boolean
 }
 
-interface RawClaudeResponse {
-  installUrl?: unknown
-  prompt?: unknown
-  desktopUrl?: unknown
-  webUrl?: unknown
-  expiresAt?: unknown
-  expiry?: unknown
-  connected?: unknown
+const CLAUDE_V1_CONNECTOR_URL = 'https://mcp-claude-v1.skillpilot.com/mcp'
+const CLAUDE_V1_READY_STORAGE_KEY = 'skillpilot_claude_v1_setup_opened'
+
+export const isClaudeV1WebStartRequested = (
+  search = typeof window === 'undefined' ? '' : window.location.search,
+) => {
+  const requestedCoaches = new URLSearchParams(search).getAll('coach')
+  return requestedCoaches.length === 1 && requestedCoaches[0] === 'claude'
 }
 
-// Keep the Claude integration available in code, but do not offer it as a
-// learner-facing coach option while the beta is paused.
-export const CLAUDE_COACH_BETA_ENABLED = false
+// The submitted ChatGPT root remains unchanged. Only the explicit Claude
+// alias enables the additional provider choice in the shared setup flow.
+export const CLAUDE_COACH_BETA_ENABLED = isClaudeV1WebStartRequested()
 
-const getApiUrl = (skillpilotId: string, action: 'connect-start' | 'launch') => {
+const requireSkillpilotId = (skillpilotId: string) => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)
   if (!sanitizedId) {
     throw new Error('Missing SkillPilot ID')
   }
-
-  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-  const path = `/api/ui/learners/${encodeURIComponent(sanitizedId)}/claude/${action}`
-  return apiBase ? `${apiBase}${path}` : path
+  return sanitizedId
 }
 
-const getStatusApiUrl = (skillpilotId: string) => {
-  const sanitizedId = sanitizeSkillpilotId(skillpilotId)
-  if (!sanitizedId) {
-    throw new Error('Missing SkillPilot ID')
+const buildClaudeConnectorInstallUrl = () => {
+  const url = new URL('https://claude.ai/customize/connectors')
+  url.searchParams.set('modal', 'add-custom-connector')
+  url.searchParams.set('connectorName', 'SkillPilot')
+  url.searchParams.set('connectorUrl', CLAUDE_V1_CONNECTOR_URL)
+  return url.toString()
+}
+
+const markClaudeSetupOpened = (opened: boolean) => {
+  if (typeof window === 'undefined') return
+  if (opened) {
+    window.localStorage.setItem(CLAUDE_V1_READY_STORAGE_KEY, 'true')
+  } else {
+    window.localStorage.removeItem(CLAUDE_V1_READY_STORAGE_KEY)
   }
-  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-  const path = `/api/ui/learners/${encodeURIComponent(sanitizedId)}/claude/status`
-  return apiBase ? `${apiBase}${path}` : path
-}
-
-const getConnectionApiUrl = (skillpilotId: string) => {
-  const sanitizedId = sanitizeSkillpilotId(skillpilotId)
-  if (!sanitizedId) {
-    throw new Error('Missing SkillPilot ID')
-  }
-  const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-  const path = `/api/ui/learners/${encodeURIComponent(sanitizedId)}/claude/connection`
-  return apiBase ? `${apiBase}${path}` : path
-}
-
-const readRequiredString = (value: unknown, field: string): string => {
-  if (typeof value !== 'string' || !value.trim()) {
-    throw new Error(`Claude response is missing ${field}`)
-  }
-  return value.trim()
-}
-
-const readExpiry = (response: RawClaudeResponse): string => {
-  return readRequiredString(response.expiresAt ?? response.expiry, 'expiresAt')
-}
-
-const requestClaudeStart = async (
-  action: 'connect-start' | 'launch',
-  {
-    skillpilotId,
-    language,
-    selectedCurriculum,
-    promptContext,
-    client = 'web',
-  }: ClaudeCoachStartInput,
-): Promise<RawClaudeResponse> => {
-  const res = await fetch(getApiUrl(skillpilotId, action), {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      language,
-      client,
-      selectedCurriculum: selectedCurriculum || undefined,
-      promptContext: promptContext || undefined,
-    }),
-  })
-
-  if (!res.ok) {
-    const message = (await res.text()).trim()
-    throw new Error(message || `Failed to prepare Claude (${res.status})`)
-  }
-
-  return await res.json() as RawClaudeResponse
 }
 
 export const requestClaudeConnectStart = async (
   input: ClaudeCoachStartInput,
 ): Promise<ClaudeConnectStartResponse> => {
-  const response = await requestClaudeStart('connect-start', input)
+  requireSkillpilotId(input.skillpilotId)
+  markClaudeSetupOpened(true)
   return {
-    installUrl: readRequiredString(response.installUrl, 'installUrl'),
-    expiresAt: readExpiry(response),
-    connected: response.connected === true,
+    installUrl: buildClaudeConnectorInstallUrl(),
+    expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+    connected: false,
   }
 }
 
 export const requestClaudeLaunch = async (
   input: ClaudeCoachStartInput,
 ): Promise<ClaudeLaunchResponse> => {
-  const response = await requestClaudeStart('launch', input)
+  const response = await requestClaudeV1Start({
+    skillpilotId: requireSkillpilotId(input.skillpilotId),
+    language: input.language,
+    client: 'web-start',
+  })
   return {
-    prompt: readRequiredString(response.prompt, 'prompt'),
-    desktopUrl: readRequiredString(response.desktopUrl, 'desktopUrl'),
-    webUrl: readRequiredString(response.webUrl, 'webUrl'),
-    expiresAt: readExpiry(response),
+    prompt: response.prompt,
+    desktopUrl: 'claude://claude.ai/new',
+    webUrl: response.webUrl,
+    expiresAt: response.expiresAt,
   }
 }
 
 export const requestClaudeConnectionStatus = async (
   skillpilotId: string,
 ): Promise<ClaudeConnectionStatusResponse> => {
-  const res = await fetch(getStatusApiUrl(skillpilotId), { credentials: 'include' })
-  if (!res.ok) {
-    const message = (await res.text()).trim()
-    throw new Error(message || `Failed to read Claude connection status (${res.status})`)
+  requireSkillpilotId(skillpilotId)
+  return {
+    connected: typeof window !== 'undefined'
+      && window.localStorage.getItem(CLAUDE_V1_READY_STORAGE_KEY) === 'true',
   }
-  const response = await res.json() as { connected?: unknown }
-  return { connected: response.connected === true }
 }
 
 export const requestClaudeDisconnect = async (
   skillpilotId: string,
 ): Promise<ClaudeConnectionStatusResponse> => {
-  const res = await fetch(getConnectionApiUrl(skillpilotId), {
-    method: 'DELETE',
-    credentials: 'include',
-  })
-  if (!res.ok) {
-    const message = (await res.text()).trim()
-    throw new Error(message || `Failed to disconnect Claude (${res.status})`)
-  }
-  const response = await res.json() as { connected?: unknown }
-  return { connected: response.connected === true }
+  requireSkillpilotId(skillpilotId)
+  markClaudeSetupOpened(false)
+  return { connected: false }
 }
 
 const isClaudeHostname = (hostname: string) => {
