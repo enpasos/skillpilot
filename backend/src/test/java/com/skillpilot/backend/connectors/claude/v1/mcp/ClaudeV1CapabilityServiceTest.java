@@ -2,6 +2,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
@@ -16,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ClaudeV1CapabilityServiceTest {
 
-    private static final String CONNECTION_ID = "conn_claude_v1_a";
-    private static final String OTHER_CONNECTION_ID = "conn_claude_v1_b";
+    private static final String CONNECTION_ID = "spc_" + "A".repeat(43);
+    private static final String OTHER_CONNECTION_ID = "spc_" + "B".repeat(43);
     private static final String GOAL_ID = "goal_abc";
     private static final List<String> CARDS = List.of("card_1", "card_2", "card_3");
     private static final int CONFIGURED_BATCH_SIZE = 20;
@@ -52,7 +53,7 @@ class ClaudeV1CapabilityServiceTest {
 
         ClaudeV1CapabilityService.RecallBatchClaim claim =
                 capabilityService.verifyRecallBatchCapability(capability, CONNECTION_ID, GOAL_ID);
-        assertEquals(CONNECTION_ID, claim.connectionId());
+        assertEquals(sessionBinding(CONNECTION_ID), claim.sessionBinding());
         assertEquals(GOAL_ID, claim.goalId());
         assertEquals(CARDS, claim.cardIds());
         assertEquals(CONFIGURED_BATCH_SIZE, claim.configuredBatchSize());
@@ -88,7 +89,7 @@ class ClaudeV1CapabilityServiceTest {
                         GOAL_ID,
                         "card_1",
                         5L);
-        assertEquals(CONNECTION_ID, claim.connectionId());
+        assertEquals(sessionBinding(CONNECTION_ID), claim.sessionBinding());
         assertEquals(GOAL_ID, claim.goalId());
         assertEquals("card_1", claim.cardId());
         assertEquals(5L, claim.issuedStateVersion());
@@ -278,8 +279,13 @@ class ClaudeV1CapabilityServiceTest {
 
         ClaudeV1CapabilityService.ExamEvaluationClaim claim =
                 capabilityService.verifyExamEvaluationCapability(capability, CONNECTION_ID, "exam_xyz");
-        assertEquals(CONNECTION_ID, claim.connectionId());
+        assertEquals(sessionBinding(CONNECTION_ID), claim.sessionBinding());
         assertEquals("exam_xyz", claim.goalId());
         assertEquals(3L, claim.stateVersion());
+    }
+
+    private String sessionBinding(String learningSessionId) {
+        return new ClaudeV1SessionTokenCodec(properties(ClaudeV1TestProperties.CAPABILITY_SECRET_VALUE))
+                .hash(learningSessionId);
     }
 }

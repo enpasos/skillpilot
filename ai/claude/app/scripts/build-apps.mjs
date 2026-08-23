@@ -84,7 +84,7 @@ const manifest = {
   schemaVersion: 1,
   provider: "claude",
   contractMajor: 1,
-  identityBoundary: "oauth-connection",
+  identityBoundary: "temporary-learning-session",
   mimeType,
   widgetDomain,
   tools: {

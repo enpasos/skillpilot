@@ -12,7 +12,7 @@
   "listing": {
     "name": "SkillPilot",
     "tagline": "Personal learning paths and progress with Claude",
-    "description": "SkillPilot lets Claude work with your personal learning path without showing your permanent SkillPilot ID. Claude can load your curriculum and current goal, suggest next steps, coach you through exercises, and record completed goals. Dedicated components can display an approved learning-goal image and run private normal flashcard practice; strict Verified Recall and exam workflows remain separate. Create or resume your profile at skillpilot.com, then connect it with your encrypted .skillpilot file. SkillPilot receives only the connector requests needed for these actions, not your entire Claude chat or Claude memory. Corrections or withdrawals of completion for ordinary goals remain available in the SkillPilot Cockpit. Claude is instructed to wait for your complete answer before requesting protected answers or evaluation. For adults aged 18 or older.",
+    "description": "SkillPilot lets Claude work with your personal learning path without receiving your permanent SkillPilot ID. Claude can load your curriculum and current goal, suggest next steps, coach you through exercises, and record completed goals. Dedicated components can display an approved learning-goal image and run private normal flashcard practice; strict Verified Recall and exam workflows remain separate. Install the SkillPilot plugin once, then start every learning session at https://skillpilot.com/lernen/claude. SkillPilot creates an opaque session beginning with spc_ that is valid for exactly 24 hours; the permanent ID remains inside SkillPilot. Connector OAuth may keep the technical connection active but neither contains nor selects learner identity. SkillPilot receives only the connector requests needed for these actions, not your entire Claude chat or Claude memory. Corrections or withdrawals of completion for ordinary goals remain available in the SkillPilot Cockpit. Claude is instructed to wait for your complete answer before requesting protected answers or evaluation. For adults aged 18 or older.",
     "categories": [
       "Education"
     ],
@@ -43,7 +43,7 @@
   "prerequisites": [
     "A Claude account that can use connectors",
     "An existing SkillPilot learning profile",
-    "The encrypted .skillpilot ID file and its password",
+    "A fresh learning session started at https://skillpilot.com/lernen/claude",
     "Age 18 or older"
   ],
   "authentication": {
@@ -55,6 +55,14 @@
       "skillpilot.write",
       "offline_access"
     ]
+  },
+  "learnerSession": {
+    "startUrl": "https://skillpilot.com/lernen/claude",
+    "tokenPrefix": "spc_",
+    "lifetimeHours": 24,
+    "permanentIdShared": false,
+    "idFileRequired": false,
+    "oauthTransportIndependent": true
   },
   "dataHandling": {
     "apiOwnership": "first_party",
@@ -76,7 +84,7 @@
     "name": "enpasos - Enterprise Patterns & Solutions GmbH",
     "website": "https://skillpilot.com"
   },
-  "sourceReviewDate": "2026-08-21",
+  "sourceReviewDate": "2026-08-23",
   "sourceUrls": [
     "https://claude.com/docs/connectors/building/submission",
     "https://claude.com/docs/connectors/building/review-criteria",

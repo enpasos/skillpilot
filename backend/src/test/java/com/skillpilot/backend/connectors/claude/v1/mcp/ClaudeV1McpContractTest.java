@@ -3,6 +3,7 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.nio.charset.StandardCharsets;
@@ -125,7 +126,26 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
-    void memoryReviewSchemaIsAppOnlyAndAcceptsNoSessionIdentifier() {
+    void everyToolRequiresLearningSessionIdIncludingAppOnlyMemoryReview() {
+        assertEquals(12, ClaudeV1Contract.ALL_TOOL_NAMES.size());
+        assertTrue(ClaudeV1Contract.ALL_TOOL_NAMES.contains(
+                ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD));
+        for (String toolName : ClaudeV1Contract.ALL_TOOL_NAMES) {
+            assertTrue(requiredOf(toolName).contains("learningSessionId"),
+                    () -> toolName + " must require learningSessionId");
+            @SuppressWarnings("unchecked")
+            Map<String, Object> properties = (Map<String, Object>) schemaOf(toolName).get("properties");
+            @SuppressWarnings("unchecked")
+            Map<String, Object> sessionSchema =
+                    (Map<String, Object>) properties.get("learningSessionId");
+            assertNotNull(sessionSchema, () -> toolName + " must publish learningSessionId");
+            assertEquals("string", sessionSchema.get("type"));
+            assertEquals(ClaudeV1SessionTokenCodec.TOKEN_PATTERN.pattern(), sessionSchema.get("pattern"));
+        }
+    }
+
+    @Test
+    void memoryReviewSchemaIsAppOnlyAndStillRequiresTheCurrentLearningSession() {
         McpSchema.Tool review = tool(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD);
         assertEquals(
                 Map.of("ui", Map.of("visibility", List.of("app"))),
@@ -137,7 +157,8 @@ class ClaudeV1McpContractTest {
                         "reviewCapability",
                         "rating",
                         "expectedStateVersion",
-                        "clientRequestId"),
+                        "clientRequestId",
+                        "learningSessionId"),
                 Set.copyOf(requiredOf(ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD)));
         @SuppressWarnings("unchecked")
         Map<String, Object> properties = (Map<String, Object>) schemaOf(
@@ -150,9 +171,9 @@ class ClaudeV1McpContractTest {
                         "rating",
                         "expectedStateVersion",
                         "clientRequestId",
-                        "language"),
+                        "language",
+                        "learningSessionId"),
                 properties.keySet());
-        assertFalse(properties.containsKey("learningSessionId"));
         @SuppressWarnings("unchecked")
         Map<String, Object> capabilitySchema =
                 (Map<String, Object>) properties.get("reviewCapability");
@@ -256,7 +277,9 @@ class ClaudeV1McpContractTest {
                 (Map<String, Object>) schemaOf(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL).get("properties");
         assertFalse(properties.containsKey("goalId"), "The server chooses the recall goal");
         assertFalse(properties.containsKey("batchSize"), "The server chooses the complete batch size");
-        assertEquals(List.of(), requiredOf(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL));
+        assertEquals(
+                List.of("learningSessionId"),
+                requiredOf(ClaudeV1Contract.TOOL_START_VERIFIED_RECALL));
     }
 
     @Test

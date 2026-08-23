@@ -14,6 +14,7 @@ import {
 } from "../src/memory-card-practice.js";
 
 const CAPABILITY = "A".repeat(640);
+const LEARNING_SESSION = `spc_${"S".repeat(43)}`;
 
 test("goal visualization accepts only bounded SkillPilot HTTPS URLs", () => {
   const valid = goalVisualizationFromStructuredContent({
@@ -56,7 +57,7 @@ test("private cards are parsed only from result _meta", () => {
   assert.equal(fromMetadata?.expectedStateVersion, 8);
   assert.equal(fromMetadata?.cardBatch.cards[0].front, "Was ist 2 + 2?");
   assert.equal(fromMetadata?.cardBatch.hasMore, false);
-  assert.equal("learningSessionId" in fromMetadata, false);
+  assert.equal(fromMetadata?.learningSessionId, LEARNING_SESSION);
 
   assert.equal(memoryCardPracticeFromToolResult({
     structuredContent: {
@@ -96,7 +97,7 @@ test("Claude review capabilities are bounded opaque base64url tokens", () => {
   }))), undefined);
 });
 
-test("review and continuation arguments use OAuth connection identity implicitly", () => {
+test("review and continuation arguments carry only the private temporary learner session", () => {
   const practice = memoryCardPracticeFromToolResult(toolResult(projection()));
   assert.ok(practice);
   const card = practice.cardBatch.cards[0];
@@ -107,6 +108,7 @@ test("review and continuation arguments use OAuth connection identity implicitly
     "request-123"
   );
   assert.deepEqual(review, {
+    learningSessionId: LEARNING_SESSION,
     goalId: "MATH_MEMORY_1",
     cardId: "card-1",
     reviewCapability: CAPABILITY,
@@ -115,8 +117,8 @@ test("review and continuation arguments use OAuth connection identity implicitly
     clientRequestId: "request-123",
     language: "de"
   });
-  assert.equal("learningSessionId" in review, false);
   assert.deepEqual(createMemoryCardStartArguments(practice), {
+    learningSessionId: LEARNING_SESSION,
     goalId: "MATH_MEMORY_1",
     expectedStateVersion: 8,
     language: "de"
@@ -128,6 +130,35 @@ test("review and continuation arguments use OAuth connection identity implicitly
     "known",
     "request"
   ), undefined);
+});
+
+test("temporary learner sessions are accepted only from unambiguous private metadata", () => {
+  const privateProjection = projection();
+  assert.equal(memoryCardPracticeFromToolResult({
+    structuredContent: {
+      stateVersion: 8,
+      learningSessionId: LEARNING_SESSION,
+      skillpilotMemoryCard: privateProjection
+    }
+  }), undefined);
+
+  assert.equal(memoryCardPracticeFromToolResult(toolResult({
+    ...privateProjection,
+    learningSessionId: "spc_too-short"
+  })), undefined);
+  assert.equal(memoryCardPracticeFromToolResult(toolResult({
+    ...privateProjection,
+    learningSessionId: undefined
+  })), undefined);
+  assert.equal(memoryCardPracticeFromToolResult({
+    result: toolResult(privateProjection),
+    _meta: {
+      skillpilotMemoryCard: {
+        ...privateProjection,
+        learningSessionId: `spc_${"F".repeat(43)}`
+      }
+    }
+  }), undefined);
 });
 
 test("card batches reject duplicates and inconsistent due-card bounds", () => {
@@ -193,6 +224,7 @@ function toolResult(privateProjection) {
 
 function projection({ reviewCapability = CAPABILITY } = {}) {
   return {
+    learningSessionId: LEARNING_SESSION,
     communicationLocale: "de-DE",
     goalId: "MATH_MEMORY_1",
     goalTitle: "Grundwissen wiederholen",

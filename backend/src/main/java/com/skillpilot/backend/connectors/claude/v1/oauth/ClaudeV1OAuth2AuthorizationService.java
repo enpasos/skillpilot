@@ -1,8 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.oauth;
 
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1Connection;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
 import java.util.Objects;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
@@ -20,21 +18,18 @@ final class ClaudeV1OAuth2AuthorizationService implements OAuth2AuthorizationSer
 
     private final OAuth2AuthorizationService delegate;
     private final RegisteredClientRepository registeredClients;
-    private final ClaudeV1ConnectionRepository connections;
 
     ClaudeV1OAuth2AuthorizationService(
             OAuth2AuthorizationService delegate,
-            RegisteredClientRepository registeredClients,
-            ClaudeV1ConnectionRepository connections) {
+            RegisteredClientRepository registeredClients) {
         this.delegate = Objects.requireNonNull(delegate, "delegate");
         this.registeredClients = Objects.requireNonNull(registeredClients, "registeredClients");
-        this.connections = Objects.requireNonNull(connections, "connections");
     }
 
     @Override
     public void save(OAuth2Authorization authorization) {
         Objects.requireNonNull(authorization, "authorization");
-        requireClaudeClientAndConnection(authorization, true);
+        requireClaudeClientAndAppPrincipal(authorization, true);
         Object marker = authorization.getAttribute(PROVIDER_ATTRIBUTE);
         if (marker != null && !ClaudeV1Contract.PROVIDER_ID.equals(marker)) {
             throw new IllegalArgumentException("OAuth authorization carries a foreign provider marker.");
@@ -70,7 +65,7 @@ final class ClaudeV1OAuth2AuthorizationService implements OAuth2AuthorizationSer
         if (candidate == null || !hasClaudeV1Marker(candidate)) {
             return null;
         }
-        return requireClaudeClientAndConnection(candidate, false) ? candidate : null;
+        return requireClaudeClientAndAppPrincipal(candidate, false) ? candidate : null;
     }
 
     private boolean hasClaudeV1Marker(OAuth2Authorization authorization) {
@@ -81,17 +76,14 @@ final class ClaudeV1OAuth2AuthorizationService implements OAuth2AuthorizationSer
         return registeredClients.findById(authorization.getRegisteredClientId()) != null;
     }
 
-    private boolean requireClaudeClientAndConnection(OAuth2Authorization authorization, boolean throwOnFailure) {
+    private boolean requireClaudeClientAndAppPrincipal(OAuth2Authorization authorization, boolean throwOnFailure) {
         RegisteredClient client = registeredClients.findById(authorization.getRegisteredClientId());
-        ClaudeV1Connection connection = connections
-                .findActiveConnectionById(authorization.getPrincipalName())
-                .orElse(null);
         boolean valid = client != null
-                && connection != null
-                && client.getClientId().equals(connection.registeredClientId());
+                && authorization.getPrincipalName() != null
+                && authorization.getPrincipalName().startsWith(ClaudeV1AppAuthenticationFilter.APP_SUBJECT_PREFIX);
         if (!valid && throwOnFailure) {
             throw new IllegalArgumentException(
-                    "OAuth authorization is not bound to an active Claude v1 client connection.");
+                    "OAuth authorization is not bound to a Claude v1 app principal.");
         }
         return valid;
     }

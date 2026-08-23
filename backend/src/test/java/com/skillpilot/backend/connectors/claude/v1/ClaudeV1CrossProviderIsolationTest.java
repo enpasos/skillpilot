@@ -1,6 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1;
 
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinator;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -45,7 +45,7 @@ class ClaudeV1CrossProviderIsolationTest {
     private ClaudeV1SessionCoordinator sessionCoordinator;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -142,10 +142,10 @@ class ClaudeV1CrossProviderIsolationTest {
     }
 
     @Test
-    void revokingAClaudeConnectionDoesNotTouchLearnerStateOrOtherLanes() {
+    void expiringAClaudeLearningSessionDoesNotTouchLearnerStateOrOtherLanes() {
         long revisionBefore = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
 
-        connectionRepository.revokeConnection(connectionId);
+        connectionRepository.deleteExpired(java.time.Instant.MAX);
 
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         assertEquals(revisionBefore, learner.getCoachStateRevision());

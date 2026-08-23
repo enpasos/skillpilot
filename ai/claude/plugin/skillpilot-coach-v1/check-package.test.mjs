@@ -22,10 +22,30 @@ test("rejects a provider-foreign MCP endpoint", () => {
   });
 });
 
-test("rejects a foreign session selector concept", () => {
+test("rejects loss of the required first-party learning session", () => {
   withPackageCopy((root) => {
-    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => `${value}\n${["learning", "Session", "Id"].join("")}\n`);
-    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /foreign session selector/u);
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replaceAll(
+      "learningSessionId",
+      "temporaryLearningReference",
+    ));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /learningSessionId/u);
+  });
+});
+
+test("rejects the retired encrypted ID-file flow", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => `${value}\nUpload the encrypted .skillpilot ID-file.\n`);
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /retired encrypted ID-file/u);
+  });
+});
+
+test("rejects loss of the OAuth and learner-session separation", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replaceAll(
+      "no learner identity",
+      "the learner identity",
+    ));
+    assert.match(validateClaudePluginPackage(root).errors.join("\n"), /offline OAuth transport/u);
   });
 });
 

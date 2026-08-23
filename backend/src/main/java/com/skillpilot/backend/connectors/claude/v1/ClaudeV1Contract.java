@@ -42,7 +42,6 @@ public final class ClaudeV1Contract {
     public static final String PUBLIC_PATH_AUTHORIZE = "/oauth2/authorize";
     public static final String PUBLIC_PATH_TOKEN = "/oauth2/token";
     public static final String PUBLIC_PATH_REVOKE = "/oauth2/revoke";
-    public static final String PUBLIC_PATH_CONNECT = "/connect";
     public static final String PUBLIC_PATH_PRIVACY = "/privacy";
 
     public static final String INTERNAL_BASE_PATH = "/internal/connectors/claude/v1";
@@ -54,14 +53,7 @@ public final class ClaudeV1Contract {
     public static final String INTERNAL_AUTHORIZE_PATH = INTERNAL_BASE_PATH + "/oauth2/authorize";
     public static final String INTERNAL_TOKEN_PATH = INTERNAL_BASE_PATH + "/oauth2/token";
     public static final String INTERNAL_REVOKE_PATH = INTERNAL_BASE_PATH + "/oauth2/revoke";
-    public static final String INTERNAL_CONNECT_PATH = INTERNAL_BASE_PATH + "/connect";
-    public static final String INTERNAL_CONNECT_ANT_PATH = INTERNAL_BASE_PATH + "/connect/**";
     public static final String INTERNAL_PRIVACY_PATH = INTERNAL_BASE_PATH + "/privacy";
-
-    /** Host-only, server-issued CSRF cookie used by the browser binding flow. */
-    public static final String CSRF_COOKIE_NAME = "__Host-SkillPilot-Claude-CSRF";
-    public static final String CSRF_HEADER_NAME = "X-SkillPilot-Claude-CSRF";
-    public static final String CSRF_PARAMETER_NAME = "_skillpilot_claude_csrf";
 
     public static final String SCOPE_READ = "skillpilot.read";
     public static final String SCOPE_WRITE = "skillpilot.write";

@@ -55,11 +55,7 @@ class ClaudeV1McpOriginFilterTest {
 
     @Test
     void nonMcpPathsAreNotOriginFilteredEvenWithABrowserOrigin() throws Exception {
-        // The browser-facing binding page runs on the connector origin, which is deliberately not
-        // an allowed MCP origin. Only the MCP path may be Origin-checked, otherwise /connect breaks.
         for (String path : new String[] {
-                ClaudeV1Contract.INTERNAL_CONNECT_PATH,
-                ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/bind",
                 ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH,
                 ClaudeV1Contract.INTERNAL_TOKEN_PATH}) {
             MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
@@ -75,12 +71,12 @@ class ClaudeV1McpOriginFilterTest {
     @Test
     void anUnresolvableRawUriDoesNotTurnTheFilterOnForEveryPath() throws Exception {
         // When wrapper depth defeats raw-URI resolution the filter must fall back to the container
-        // URI. Filtering everything would reject the same-origin /connect flow with 403.
-        MockHttpServletRequest connect =
-                new MockHttpServletRequest("POST", ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/bind");
-        connect.addHeader("Origin", ClaudeV1Contract.DEFAULT_PUBLIC_BASE_URL);
+        // URI. Filtering everything would reject the OAuth endpoints with 403.
+        MockHttpServletRequest authorize =
+                new MockHttpServletRequest("GET", ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH);
+        authorize.addHeader("Origin", ClaudeV1Contract.DEFAULT_PUBLIC_BASE_URL);
 
-        Result result = filterWrapped(connect);
+        Result result = filterWrapped(authorize);
 
         assertEquals(200, result.response().getStatus());
         assertTrue(result.chainInvoked());

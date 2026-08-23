@@ -26,6 +26,8 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
 import com.skillpilot.backend.connectors.claude.v1.observability.ClaudeV1Telemetry;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionException;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.io.IOException;
@@ -58,12 +60,13 @@ import org.springframework.web.server.ResponseStatusException;
  * projection. Every mutating tool demands {@code expectedStateVersion} and {@code clientRequestId}
  * and additionally requires the write scope; read tools require the read scope. Solution material
  * — recall answers and exam rubrics — is released only against an authenticated capability that binds
- * connection, goal, card order and issue time.</p>
+ * learning session, goal, card order and issue time.</p>
  */
 @Component
 @ConditionalOnClaudeV1Enabled
 public class ClaudeV1McpContractAdapter {
 
+    private static final String ARG_LEARNING_SESSION_ID = "learningSessionId";
     private static final String ARG_LANGUAGE = "language";
     private static final String ARG_GOAL_ID = "goalId";
     private static final String ARG_GOAL_IDS = "goalIds";
@@ -197,6 +200,15 @@ public class ClaudeV1McpContractAdapter {
     public String serverInstructions() {
         return """
                 You are SkillPilot Coach for Claude, a curriculum-grounded learning coach.
+
+                Learner access is separate from the technical app authorization. Before every
+                SkillPilot tool call, require the current learningSessionId created by "Lernen
+                starten" on skillpilot.com and pass it unchanged as learningSessionId. If no
+                current learning session is available or it has expired, direct the learner to
+                skillpilot.com and ask them to choose "Lernen starten" again. Never ask for or
+                accept a permanent SkillPilot ID, an ID file, an ID-file password, a PIN or OAuth
+                credentials in Claude. Never repeat a learningSessionId in ordinary learner-facing
+                prose.
 
                 Ground every turn in the learner's active learning goal and canonical curriculum
                 state. Load context before coaching, and reload it after any conflict.
@@ -500,7 +512,7 @@ public class ClaudeV1McpContractAdapter {
         McpSchema.Tool tool = McpSchema.Tool.builder(name)
                 .title(title)
                 .description(description)
-                .inputSchema(inputSchema)
+                .inputSchema(withLearningSessionSchema(inputSchema))
                 // Real MCP annotations, not _meta: clients read hints from this field.
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
@@ -533,7 +545,7 @@ public class ClaudeV1McpContractAdapter {
         McpSchema.Tool descriptor = McpSchema.Tool.builder(name)
                 .title(title)
                 .description(description)
-                .inputSchema(inputSchema)
+                .inputSchema(withLearningSessionSchema(inputSchema))
                 .outputSchema(outputSchema)
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
@@ -796,9 +808,9 @@ public class ClaudeV1McpContractAdapter {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if (authentication == null || !authentication.isAuthenticated()) {
-                return error(ClaudeV1ErrorCode.UNAUTHORIZED, "No active Claude connection.");
+                return error(ClaudeV1ErrorCode.UNAUTHORIZED, "No active Claude app authorization.");
             }
-            String connectionId = authentication.getName();
+            String appSubject = authentication.getName();
 
             Set<String> authorities = authoritiesOf(authentication);
             if (!authorities.contains("SCOPE_" + ClaudeV1Contract.SCOPE_READ)) {
@@ -809,18 +821,20 @@ public class ClaudeV1McpContractAdapter {
                 // shared MCP endpoint.
                 return error(ClaudeV1ErrorCode.UNAUTHORIZED, "The presented token lacks the write scope.");
             }
-            if (!rateLimiter.tryAcquire(connectionId, properties.getMaxToolCallsPerConnectionPerMinute())) {
+            if (!rateLimiter.tryAcquire(appSubject, properties.getMaxToolCallsPerConnectionPerMinute())) {
                 return error(ClaudeV1ErrorCode.RATE_LIMITED, "Too many tool calls; retry shortly.");
             }
 
             Map<String, Object> arguments =
                     request != null && request.arguments() != null ? request.arguments() : Map.of();
             Set<String> allowedArguments = ALLOWED_ARGUMENTS.getOrDefault(toolName, Set.of());
-            if (!allowedArguments.containsAll(arguments.keySet())) {
+            if (arguments.keySet().stream().anyMatch(argument ->
+                    !ARG_LEARNING_SESSION_ID.equals(argument) && !allowedArguments.contains(argument))) {
                 throw new ToolInputException("The request contains an unsupported argument.");
             }
+            String learningSessionId = requiredLearningSessionId(arguments);
 
-            McpSchema.CallToolResult result = handler.execute(connectionId, arguments);
+            McpSchema.CallToolResult result = handler.execute(learningSessionId, arguments);
             success = !Boolean.TRUE.equals(result.isError());
             return result;
 
@@ -837,6 +851,13 @@ public class ClaudeV1McpContractAdapter {
             return error(
                     ClaudeV1ErrorCode.CAPABILITY_MISMATCH,
                     "The supplied capability is missing, expired or does not belong to this context.");
+        } catch (ClaudeV1LearningSessionException e) {
+            ClaudeV1ErrorCode code = e.reason() == ClaudeV1LearningSessionException.Reason.EXPIRED
+                    ? ClaudeV1ErrorCode.SESSION_EXPIRED
+                    : ClaudeV1ErrorCode.LEARNING_SESSION_REQUIRED;
+            return error(
+                    code,
+                    "Open skillpilot.com and choose Lernen starten to create a new 24-hour learning session.");
         } catch (ToolInputException e) {
             return error(ClaudeV1ErrorCode.INVALID_INPUT, e.getMessage());
         } catch (ToolConflictException e) {
@@ -957,6 +978,7 @@ public class ClaudeV1McpContractAdapter {
         Map<String, Object> progress = (Map<String, Object>) receipt.get("progress");
         Map<String, Object> componentData = new LinkedHashMap<>();
         componentData.put("communicationLocale", language);
+        componentData.put(ARG_LEARNING_SESSION_ID, connectionId);
         componentData.put("goalId", receipt.get("goalId"));
         componentData.put("goalTitle", receipt.get("goalTitle"));
         componentData.put("expectedStateVersion", outcome.stateVersion());
@@ -1708,6 +1730,7 @@ public class ClaudeV1McpContractAdapter {
 
         Map<String, Object> componentData = new LinkedHashMap<>();
         componentData.put("communicationLocale", language);
+        componentData.put(ARG_LEARNING_SESSION_ID, connectionId);
         componentData.put("goalId", response.goalId());
         componentData.put("goalTitle", response.goalTitle());
         componentData.put("expectedStateVersion", stateVersion);
@@ -2029,6 +2052,36 @@ public class ClaudeV1McpContractAdapter {
         }
         schema.put("additionalProperties", false);
         return schema;
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Object> withLearningSessionSchema(Map<String, Object> inputSchema) {
+        Map<String, Object> schema = new LinkedHashMap<>(inputSchema);
+        Map<String, Object> propertiesSchema = new LinkedHashMap<>((Map<String, Object>)
+                inputSchema.getOrDefault("properties", Map.of()));
+        propertiesSchema.put(ARG_LEARNING_SESSION_ID, Map.of(
+                "type", "string",
+                "pattern", ClaudeV1SessionTokenCodec.TOKEN_PATTERN.pattern(),
+                "description", "The current 24-hour SkillPilot learning session from Lernen starten."));
+        schema.put("properties", Map.copyOf(propertiesSchema));
+
+        List<String> required = new ArrayList<>((List<String>)
+                inputSchema.getOrDefault("required", List.of()));
+        if (!required.contains(ARG_LEARNING_SESSION_ID)) {
+            required.add(ARG_LEARNING_SESSION_ID);
+        }
+        schema.put("required", List.copyOf(required));
+        return Map.copyOf(schema);
+    }
+
+    private String requiredLearningSessionId(Map<String, Object> arguments) {
+        Object raw = arguments.get(ARG_LEARNING_SESSION_ID);
+        if (!(raw instanceof String value)
+                || !ClaudeV1SessionTokenCodec.TOKEN_PATTERN.matcher(value).matches()) {
+            throw new ClaudeV1LearningSessionException(
+                    ClaudeV1LearningSessionException.Reason.REQUIRED);
+        }
+        return value;
     }
 
     private Map<String, Object> languageSchema() {

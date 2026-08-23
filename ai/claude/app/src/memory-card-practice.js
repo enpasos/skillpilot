@@ -50,6 +50,9 @@ export function memoryCardPracticeFromToolResult(
   value,
   { stateVersionSource, allowMetadataStateVersion = true } = {}
 ) {
+  const privateLearningSessionId = learningSessionIdFromToolResult(value);
+  if (!privateLearningSessionId) return undefined;
+
   const authoritativeStateVersion = stateVersionFromToolOutput(stateVersionSource)
     ?? stateVersionFromToolOutput(value);
   if (authoritativeStateVersion === undefined && !allowMetadataStateVersion) {
@@ -64,7 +67,7 @@ export function memoryCardPracticeFromToolResult(
       metadata,
       authoritativeStateVersion ?? metadataStateVersion
     );
-    if (practice) return practice;
+    if (practice?.learningSessionId === privateLearningSessionId) return practice;
   }
   return undefined;
 }
@@ -73,6 +76,7 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
   const candidate = record(record(value)?.skillpilotMemoryCard);
   if (!candidate) return undefined;
 
+  const learningSessionId = opaqueLearningSessionId(candidate.learningSessionId);
   const communicationLocale = locale(candidate.communicationLocale);
   const goalId = boundedText(candidate.goalId, 300);
   const goalTitle = boundedText(candidate.goalTitle, 1_000);
@@ -86,7 +90,8 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
   const explicitCompleted = candidate.completed;
 
   if (
-    !communicationLocale
+    !learningSessionId
+    || !communicationLocale
     || !goalId
     || !goalTitle
     || expectedStateVersion === undefined
@@ -106,6 +111,7 @@ export function memoryCardPracticeFromMetadata(value, stateVersion) {
   if (completed !== (cardBatch.cards.length === 0)) return undefined;
 
   return {
+    learningSessionId,
     communicationLocale,
     goalId,
     goalTitle,
@@ -151,6 +157,7 @@ export function createMemoryCardReviewArguments(
     return undefined;
   }
   return {
+    learningSessionId: practice.learningSessionId,
     goalId: practice.goalId,
     cardId: card.id,
     reviewCapability: card.reviewCapability,
@@ -163,10 +170,29 @@ export function createMemoryCardReviewArguments(
 
 export function createMemoryCardStartArguments(practice) {
   return {
+    learningSessionId: practice.learningSessionId,
     goalId: practice.goalId,
     expectedStateVersion: practice.expectedStateVersion,
     language: practice.communicationLocale
   };
+}
+
+/**
+ * Read the short-lived learner session only from private result metadata.
+ * This is used to bind component-local follow-up calls to the same learner
+ * session without copying the value into model-visible content or the DOM.
+ */
+export function learningSessionIdFromToolResult(value) {
+  const sessions = new Set();
+  let invalid = false;
+  for (const metadata of metadataCandidates(value)) {
+    const privatePractice = record(metadata.skillpilotMemoryCard);
+    if (!privatePractice || privatePractice.learningSessionId === undefined) continue;
+    const session = opaqueLearningSessionId(privatePractice.learningSessionId);
+    if (!session) invalid = true;
+    else sessions.add(session);
+  }
+  return !invalid && sessions.size === 1 ? [...sessions][0] : undefined;
 }
 
 export class MemoryCardSubmissionGate {
@@ -283,6 +309,13 @@ function memoryCard(value) {
 function opaqueReviewCapability(value) {
   const candidate = boundedText(value, 16_384);
   return candidate && /^[A-Za-z0-9_-]+$/.test(candidate)
+    ? candidate
+    : undefined;
+}
+
+function opaqueLearningSessionId(value) {
+  const candidate = boundedText(value, 47);
+  return candidate && /^spc_[A-Za-z0-9_-]{43}$/.test(candidate)
     ? candidate
     : undefined;
 }

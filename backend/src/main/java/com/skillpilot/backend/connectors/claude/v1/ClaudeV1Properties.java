@@ -25,7 +25,6 @@ public class ClaudeV1Properties {
     private String capabilitySecret;
     private Duration accessTokenTtl = Duration.ofHours(1);
     private Duration refreshTokenTtl = Duration.ofDays(30);
-    private Duration bindingTransactionTtl = Duration.ofMinutes(5);
     private Duration capabilityTtl = Duration.ofMinutes(5);
     private Duration idempotencyTtl = Duration.ofHours(24);
     private Duration requestTimeout = Duration.ofSeconds(30);
@@ -36,7 +35,7 @@ public class ClaudeV1Properties {
     private int maxResponseBytes = 262144;
     private int maxToolCallsPerConnectionPerMinute = 60;
     /**
-     * Abuse budget for the OAuth and connect endpoints, counted per calling peer rather than per
+     * Abuse budget for the OAuth endpoints, counted per calling peer rather than per
      * OAuth client: the allowed CIMD client identities are shared by every learner, so a per-client
      * budget would be a single global bucket. See {@code ClaudeV1OAuthBoundaryFilter}.
      */
@@ -123,10 +122,6 @@ public class ClaudeV1Properties {
         return origin == null ? path : origin + path;
     }
 
-    public String getPublicConnectUrl() {
-        return publicUrl(ClaudeV1Contract.PUBLIC_PATH_CONNECT);
-    }
-
     public String getPublicAuthorizeUrl() {
         return publicUrl(ClaudeV1Contract.PUBLIC_PATH_AUTHORIZE);
     }
@@ -189,14 +184,6 @@ public class ClaudeV1Properties {
 
     public void setRefreshTokenTtl(Duration refreshTokenTtl) {
         this.refreshTokenTtl = refreshTokenTtl;
-    }
-
-    public Duration getBindingTransactionTtl() {
-        return bindingTransactionTtl;
-    }
-
-    public void setBindingTransactionTtl(Duration bindingTransactionTtl) {
-        this.bindingTransactionTtl = bindingTransactionTtl;
     }
 
     public Duration getCapabilityTtl() {

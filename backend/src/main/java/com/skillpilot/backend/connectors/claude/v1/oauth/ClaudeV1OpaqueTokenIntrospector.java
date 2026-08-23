@@ -1,8 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.oauth;
 
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1Connection;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -18,6 +16,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.resource.introspection.BadOpaqueTokenException;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
@@ -26,20 +26,20 @@ import org.springframework.security.oauth2.server.resource.introspection.OpaqueT
  *
  * <p>Four independent conditions must hold: the token resolves inside the Claude v1 provider
  * boundary, it is still active, its audience is exactly the Claude v1 MCP resource identifier, and
- * the connection it was issued for is still active. Anything else is a bad token.</p>
+ * it belongs to the technical Claude app principal. Anything else is a bad token.</p>
  */
 public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
     private final OAuth2AuthorizationService authorizationService;
-    private final ClaudeV1ConnectionRepository connectionRepository;
+    private final RegisteredClientRepository registeredClients;
     private final ClaudeV1Properties properties;
 
     public ClaudeV1OpaqueTokenIntrospector(
             OAuth2AuthorizationService authorizationService,
-            ClaudeV1ConnectionRepository connectionRepository,
+            RegisteredClientRepository registeredClients,
             ClaudeV1Properties properties) {
         this.authorizationService = Objects.requireNonNull(authorizationService, "authorizationService");
-        this.connectionRepository = Objects.requireNonNull(connectionRepository, "connectionRepository");
+        this.registeredClients = Objects.requireNonNull(registeredClients, "registeredClients");
         this.properties = Objects.requireNonNull(properties, "properties");
     }
 
@@ -64,9 +64,13 @@ public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector 
         if (principalName == null || principalName.isBlank()) {
             throw new BadOpaqueTokenException("Authorization is missing its principal name.");
         }
-
-        ClaudeV1Connection connection = connectionRepository.findActiveConnectionById(principalName)
-                .orElseThrow(() -> new BadOpaqueTokenException("Bound connection is not active or has been revoked."));
+        if (!principalName.startsWith(ClaudeV1AppAuthenticationFilter.APP_SUBJECT_PREFIX)) {
+            throw new BadOpaqueTokenException("Authorization does not use a Claude v1 app principal.");
+        }
+        RegisteredClient client = registeredClients.findById(authorization.getRegisteredClientId());
+        if (client == null) {
+            throw new BadOpaqueTokenException("OAuth client is not registered for Claude v1.");
+        }
 
         Set<String> scopes = accessToken.getToken().getScopes();
         if (scopes == null
@@ -78,16 +82,14 @@ public class ClaudeV1OpaqueTokenIntrospector implements OpaqueTokenIntrospector 
                 .map(scope -> (GrantedAuthority) new SimpleGrantedAuthority("SCOPE_" + scope))
                 .collect(Collectors.toSet());
 
-        // Attributes carry the opaque connection id only. The permanent SkillPilot id never leaves
-        // the server side of this boundary.
+        // The OAuth subject is technical and deliberately has no learner mapping.
         Map<String, Object> attributes = new LinkedHashMap<>();
-        attributes.put("sub", connection.id());
-        attributes.put("connection_id", connection.id());
-        attributes.put("client_id", connection.registeredClientId());
+        attributes.put("sub", principalName);
+        attributes.put("client_id", client.getClientId());
         attributes.put("aud", List.of(properties.getPublicMcpUrl()));
         attributes.put("scope", scopes);
 
-        return new DefaultOAuth2AuthenticatedPrincipal(connection.id(), attributes, authorities);
+        return new DefaultOAuth2AuthenticatedPrincipal(principalName, attributes, authorities);
     }
 
     private void requireClaudeV1Audience(OAuth2Authorization.Token<OAuth2AccessToken> accessToken) {

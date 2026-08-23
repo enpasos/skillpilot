@@ -4,7 +4,8 @@ import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.repository.LearnerRepository;
 import java.util.List;
@@ -50,10 +51,13 @@ class ClaudeV1ExamContractTest {
     private ClaudeV1McpContractAdapter contractAdapter;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
 
     @Autowired
     private LearnerRepository learnerRepository;
+
+    @Autowired
+    private ClaudeV1SessionTokenCodec sessionTokens;
 
     private String connectionId;
     private String otherConnectionId;
@@ -114,18 +118,18 @@ class ClaudeV1ExamContractTest {
     }
 
     @Test
-    void theEvaluationCapabilityIsBoundToConnectionGoalAndRevision() {
+    void theEvaluationCapabilityIsBoundToSessionGoalAndRevision() {
         String capability = capabilityService.mintExamEvaluationCapability(connectionId, EXAM_GOAL_ID, 2L);
 
         ClaudeV1CapabilityService.ExamEvaluationClaim claim =
                 capabilityService.verifyExamEvaluationCapability(capability, connectionId, EXAM_GOAL_ID);
-        assertEquals(connectionId, claim.connectionId());
+        assertEquals(sessionTokens.hash(connectionId), claim.sessionBinding());
         assertEquals(EXAM_GOAL_ID, claim.goalId());
         assertEquals(2L, claim.stateVersion());
     }
 
     @Test
-    void anEvaluationCapabilityFromAnotherConnectionCannotSaveMastery() {
+    void anEvaluationCapabilityFromAnotherSessionCannotSaveMastery() {
         String foreignCapability =
                 capabilityService.mintExamEvaluationCapability(otherConnectionId, EXAM_GOAL_ID, 2L);
 

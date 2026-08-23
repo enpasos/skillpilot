@@ -6,7 +6,7 @@ import com.skillpilot.backend.api.VerifiedRecallBatchAnswerCard;
 import com.skillpilot.backend.api.VerifiedRecallBatchAnswerResponse;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import java.time.Instant;
 import java.util.List;
@@ -55,7 +55,7 @@ class ClaudeV1VerifiedRecallContractTest {
     private ClaudeV1McpContractAdapter contractAdapter;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
 
     @Autowired
     private LearnerRepository learnerRepository;

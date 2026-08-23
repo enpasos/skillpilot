@@ -3,6 +3,8 @@ package com.skillpilot.backend.connectors.claude.v1.mcp;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1RuntimeValidation;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -14,16 +16,17 @@ import java.util.Objects;
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * Mints and cryptographically validates short-lived capabilities for normal memory practice,
  * Verified Recall and Exam Evaluation.
  *
- * <p>Every capability binds provider, connection, learning goal, the exact card or ordered card
+ * <p>Every capability binds provider, learning-session HMAC, learning goal, the exact card or ordered card
  * list relevant to its purpose, the learner state revision it was issued against, and an expiry.
  * The payload is authenticated and
- * encrypted: Claude can copy it unchanged but cannot read the OAuth subject embedded in it.
+ * encrypted: Claude can copy it unchanged but cannot read the session binding embedded in it.
  * Verification is fail-closed: an unparsable, unauthenticated, expired or mismatched capability
  * throws rather than degrading to a weaker check.</p>
  */
@@ -56,7 +59,7 @@ public class ClaudeV1CapabilityService {
     }
 
     public record RecallBatchClaim(
-            String connectionId,
+            String sessionBinding,
             String goalId,
             List<String> cardIds,
             int configuredBatchSize,
@@ -65,24 +68,45 @@ public class ClaudeV1CapabilityService {
             Instant expiresAt) {}
 
     public record ExamEvaluationClaim(
-            String connectionId,
+            String sessionBinding,
             String goalId,
             long stateVersion,
             Instant expiresAt) {}
 
     public record MemoryPracticeReviewClaim(
-            String connectionId,
+            String sessionBinding,
             String goalId,
             String cardId,
             long issuedStateVersion,
             Instant expiresAt) {}
 
     private final ClaudeV1Properties properties;
+    private final ClaudeV1SessionTokenCodec sessionTokens;
+    private final ClaudeV1LearningSessionRepository sessions;
     private final SecretKeySpec capabilityKey;
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public ClaudeV1CapabilityService(ClaudeV1Properties properties) {
+    @Autowired
+    public ClaudeV1CapabilityService(
+            ClaudeV1Properties properties,
+            ClaudeV1LearningSessionRepository sessions) {
+        this(properties, sessions, true);
+    }
+
+    /** Test-only constructor for cryptographic unit tests without JDBC persistence. */
+    ClaudeV1CapabilityService(ClaudeV1Properties properties) {
+        this(properties, null, false);
+    }
+
+    private ClaudeV1CapabilityService(
+            ClaudeV1Properties properties,
+            ClaudeV1LearningSessionRepository sessions,
+            boolean requireSessionRepository) {
         this.properties = Objects.requireNonNull(properties, "properties");
+        this.sessionTokens = new ClaudeV1SessionTokenCodec(properties);
+        this.sessions = requireSessionRepository
+                ? Objects.requireNonNull(sessions, "sessions")
+                : sessions;
         String secret = properties.getCapabilitySecret();
         if (!ClaudeV1RuntimeValidation.isValidSecret(secret)) {
             // No default key: a capability encrypted with a value shipped in the source tree would be
@@ -103,7 +127,7 @@ public class ClaudeV1CapabilityService {
     }
 
     public String mintRecallBatchCapability(
-            String connectionId,
+            String learningSessionId,
             String goalId,
             List<String> cardIds,
             int configuredBatchSize,
@@ -111,7 +135,7 @@ public class ClaudeV1CapabilityService {
             Instant issuedAt) {
         return mintRecallCapability(
                 KIND_RECALL_BATCH,
-                connectionId,
+                learningSessionId,
                 goalId,
                 cardIds,
                 configuredBatchSize,
@@ -120,7 +144,7 @@ public class ClaudeV1CapabilityService {
     }
 
     public String mintRecallGradingCapability(
-            String connectionId,
+            String learningSessionId,
             String goalId,
             List<String> cardIds,
             int configuredBatchSize,
@@ -128,7 +152,7 @@ public class ClaudeV1CapabilityService {
             Instant issuedAt) {
         return mintRecallCapability(
                 KIND_RECALL_GRADING,
-                connectionId,
+                learningSessionId,
                 goalId,
                 cardIds,
                 configuredBatchSize,
@@ -138,45 +162,45 @@ public class ClaudeV1CapabilityService {
 
     public RecallBatchClaim verifyRecallBatchCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId) {
-        return verifyRecallBatchCapability(capability, expectedConnectionId, expectedGoalId, null);
+        return verifyRecallBatchCapability(capability, expectedLearningSessionId, expectedGoalId, null);
     }
 
     public RecallBatchClaim verifyRecallBatchCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
         return verifyRecallCapability(
-                KIND_RECALL_BATCH, capability, expectedConnectionId, expectedGoalId, expectedStateVersion);
+                KIND_RECALL_BATCH, capability, expectedLearningSessionId, expectedGoalId, expectedStateVersion);
     }
 
     public RecallBatchClaim verifyRecallGradingCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId) {
-        return verifyRecallGradingCapability(capability, expectedConnectionId, expectedGoalId, null);
+        return verifyRecallGradingCapability(capability, expectedLearningSessionId, expectedGoalId, null);
     }
 
     public RecallBatchClaim verifyRecallGradingCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
         return verifyRecallCapability(
-                KIND_RECALL_GRADING, capability, expectedConnectionId, expectedGoalId, expectedStateVersion);
+                KIND_RECALL_GRADING, capability, expectedLearningSessionId, expectedGoalId, expectedStateVersion);
     }
 
-    public String mintExamEvaluationCapability(String connectionId, String goalId, long stateVersion) {
-        requireBindingValue(connectionId, "connectionId");
+    public String mintExamEvaluationCapability(String learningSessionId, String goalId, long stateVersion) {
+        String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         requireStateVersion(stateVersion);
-        Instant expiresAt = Instant.now().plus(properties.getCapabilityTtl());
+        Instant expiresAt = capabilityExpiresAt(learningSessionId);
         String payload = String.join(
                 FIELD_SEPARATOR,
                 KIND_EXAM_EVALUATION,
-                connectionId,
+                sessionBinding,
                 goalId,
                 Long.toString(stateVersion),
                 Long.toString(expiresAt.toEpochMilli()));
@@ -190,19 +214,19 @@ public class ClaudeV1CapabilityService {
      * content.
      */
     public String mintMemoryPracticeReviewCapability(
-            String connectionId,
+            String learningSessionId,
             String goalId,
             String cardId,
             long issuedStateVersion) {
-        requireBindingValue(connectionId, "connectionId");
+        String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         requireBindingValue(cardId, "cardId");
         requireStateVersion(issuedStateVersion);
-        Instant expiresAt = Instant.now().plus(properties.getCapabilityTtl());
+        Instant expiresAt = capabilityExpiresAt(learningSessionId);
         String payload = String.join(
                 FIELD_SEPARATOR,
                 KIND_MEMORY_PRACTICE_REVIEW,
-                connectionId,
+                sessionBinding,
                 goalId,
                 cardId,
                 Long.toString(issuedStateVersion),
@@ -220,19 +244,19 @@ public class ClaudeV1CapabilityService {
      */
     public MemoryPracticeReviewClaim verifyMemoryPracticeReviewCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId,
             String expectedCardId,
             long currentStateVersion) {
         String[] parts = verifyAndSplit(capability, KIND_MEMORY_PRACTICE_REVIEW, 6);
-        String connectionId = parts[1];
+        String sessionBinding = parts[1];
         String goalId = parts[2];
         String cardId = parts[3];
         long issuedStateVersion = parseLong(parts[4]);
         Instant expiresAt = parseInstant(parts[5]);
 
         requireNotExpired(expiresAt);
-        requireBinding(expectedConnectionId, connectionId, "connection");
+        requireBinding(sessionBinding(expectedLearningSessionId), sessionBinding, "learning session");
         requireBinding(expectedGoalId, goalId, "goal");
         requireBinding(expectedCardId, cardId, "card");
         requireStateVersion(currentStateVersion);
@@ -241,7 +265,7 @@ public class ClaudeV1CapabilityService {
             throw new CapabilityException("Capability was issued for a newer learner state.");
         }
         return new MemoryPracticeReviewClaim(
-                connectionId,
+                sessionBinding,
                 goalId,
                 cardId,
                 issuedStateVersion,
@@ -250,39 +274,39 @@ public class ClaudeV1CapabilityService {
 
     public ExamEvaluationClaim verifyExamEvaluationCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId) {
-        return verifyExamEvaluationCapability(capability, expectedConnectionId, expectedGoalId, null);
+        return verifyExamEvaluationCapability(capability, expectedLearningSessionId, expectedGoalId, null);
     }
 
     public ExamEvaluationClaim verifyExamEvaluationCapability(
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
         String[] parts = verifyAndSplit(capability, KIND_EXAM_EVALUATION, 5);
-        String connectionId = parts[1];
+        String sessionBinding = parts[1];
         String goalId = parts[2];
         long stateVersion = parseLong(parts[3]);
         Instant expiresAt = parseInstant(parts[4]);
 
         requireNotExpired(expiresAt);
-        requireBinding(expectedConnectionId, connectionId, "connection");
+        requireBinding(sessionBinding(expectedLearningSessionId), sessionBinding, "learning session");
         requireBinding(expectedGoalId, goalId, "goal");
         requireStateBinding(expectedStateVersion, stateVersion);
 
-        return new ExamEvaluationClaim(connectionId, goalId, stateVersion, expiresAt);
+        return new ExamEvaluationClaim(sessionBinding, goalId, stateVersion, expiresAt);
     }
 
     private String mintRecallCapability(
             String kind,
-            String connectionId,
+            String learningSessionId,
             String goalId,
             List<String> cardIds,
             int configuredBatchSize,
             long stateVersion,
             Instant issuedAt) {
-        requireBindingValue(connectionId, "connectionId");
+        String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         Objects.requireNonNull(cardIds, "cardIds");
         Objects.requireNonNull(issuedAt, "issuedAt");
@@ -293,11 +317,11 @@ public class ClaudeV1CapabilityService {
         validateRecallCardIds(cardIds);
         validateConfiguredBatchSize(configuredBatchSize, cardIds.size());
 
-        Instant expiresAt = Instant.now().plus(properties.getCapabilityTtl());
+        Instant expiresAt = capabilityExpiresAt(learningSessionId);
         String payload = String.join(
                 FIELD_SEPARATOR,
                 kind,
-                connectionId,
+                sessionBinding,
                 goalId,
                 String.join(CARD_SEPARATOR, cardIds),
                 Integer.toString(configuredBatchSize),
@@ -310,11 +334,11 @@ public class ClaudeV1CapabilityService {
     private RecallBatchClaim verifyRecallCapability(
             String kind,
             String capability,
-            String expectedConnectionId,
+            String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
         String[] parts = verifyAndSplit(capability, kind, 8);
-        String connectionId = parts[1];
+        String sessionBinding = parts[1];
         String goalId = parts[2];
         List<String> cardIds = List.of(parts[3].split(CARD_SEPARATOR, -1));
         int configuredBatchSize = parseInt(parts[4]);
@@ -328,12 +352,12 @@ public class ClaudeV1CapabilityService {
             throw new CapabilityException("Capability contains an invalid issue interval.");
         }
         requireNotExpired(expiresAt);
-        requireBinding(expectedConnectionId, connectionId, "connection");
+        requireBinding(sessionBinding(expectedLearningSessionId), sessionBinding, "learning session");
         requireBinding(expectedGoalId, goalId, "goal");
         requireStateBinding(expectedStateVersion, stateVersion);
 
         return new RecallBatchClaim(
-                connectionId,
+                sessionBinding,
                 goalId,
                 cardIds,
                 configuredBatchSize,
@@ -352,6 +376,27 @@ public class ClaudeV1CapabilityService {
         if (expected != null && !expected.equals(actual)) {
             throw new CapabilityException("Capability does not match the active " + what + ".");
         }
+    }
+
+    private String sessionBinding(String learningSessionId) {
+        String binding = sessionTokens.hash(learningSessionId);
+        requireBindingValue(binding, "sessionBinding");
+        return binding;
+    }
+
+    private Instant capabilityExpiresAt(String learningSessionId) {
+        Instant configuredExpiry = Instant.now().plus(properties.getCapabilityTtl());
+        if (sessions == null) {
+            return configuredExpiry;
+        }
+        String tokenHash = sessionBinding(learningSessionId);
+        Instant sessionExpiry = sessions.findByTokenHash(tokenHash)
+                .orElseThrow(() -> new CapabilityException("Learning session is not active."))
+                .expiresAt();
+        if (!Instant.now().isBefore(sessionExpiry)) {
+            throw new CapabilityException("Learning session has expired.");
+        }
+        return configuredExpiry.isBefore(sessionExpiry) ? configuredExpiry : sessionExpiry;
     }
 
     private void requireBindingValue(String value, String name) {

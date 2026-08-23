@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import {
   existsSync,
   lstatSync,
@@ -8,7 +9,6 @@ import {
 import { dirname, isAbsolute, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
-  sha256Tree,
   verifyOpenAiPluginReviewFreeze,
 } from "./check_openai_plugin_review_freeze.mjs";
 
@@ -25,6 +25,7 @@ const expectedBaseUrl = "https://mcp-claude-v1.skillpilot.com";
 const expectedDocumentationUrl =
   "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/";
 const expectedPrivacyUrl = `${expectedBaseUrl}/privacy`;
+const expectedLearnerStartUrl = "https://skillpilot.com/lernen/claude";
 const expectedTools = [
   "get_skillpilot_coach_context",
   "render_skillpilot_goal_visualization",
@@ -51,6 +52,9 @@ const expectedRequiredGates = [
   "mcp-inspector-all-twelve-tools-two-resources",
   "hosted-claude-all-twelve-tools-two-apps",
   "negative-and-replay-cases",
+  "first-party-24h-learning-session",
+  "permanent-id-and-id-file-nondisclosure",
+  "oauth-session-separation",
   "reviewer-account-and-reset",
   "privacy-and-legal-approval",
   "support-and-security-owner",
@@ -69,6 +73,9 @@ const expectedOptionalGates = [
 ];
 
 const expectedContractTrees = [
+  "ai/claude/app",
+  "ai/claude/plugin/skillpilot-coach-v1",
+  "app/src/coachVariants/claudeV1",
   "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1",
   "backend/src/main/resources/claude-connector-v1",
 ];
@@ -77,7 +84,15 @@ const expectedContractFiles = [
   "ai/claude/connector-v1/assets/icon-512.png",
   "ai/claude/connector-v1/directory-listing.json",
   "ai/claude/connector-v1/reviewer-test-plan.md",
+  "app/package.json",
+  "app/scripts/testClaudeV1StartUi.tsx",
+  "app/scripts/testRootRoutePolicy.ts",
+  "app/src/App.tsx",
+  "app/src/utils/rootRoutePolicy.ts",
+  "app/src/views/ClaudeV1StartView.tsx",
   "backend/src/main/resources/db/changelog/changes/023-add-claude-connector-v1.yaml",
+  "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
+  "backend/src/main/resources/db/changelog/db.changelog-master.yaml",
   "deploy/nginx/skillpilot-claude-acme.conf",
   "deploy/nginx/skillpilot-claude-connector-v1.conf",
   "docs/deploy/claude-connector-v1-release.md",
@@ -219,6 +234,35 @@ export function verifyClaudeConnectorV1Release({
       "offline_access",
     ]),
     "OAuth scopes must match the Claude v1 contract.",
+  );
+  check(
+    listing.learnerSession?.startUrl === expectedLearnerStartUrl,
+    "Learner sessions must start at the first-party Claude launch URL.",
+  );
+  check(
+    listing.learnerSession?.tokenPrefix === "spc_",
+    "Learner sessions must use the opaque spc_ prefix.",
+  );
+  check(
+    listing.learnerSession?.lifetimeHours === 24,
+    "Learner sessions must expire after exactly 24 hours.",
+  );
+  check(
+    listing.learnerSession?.permanentIdShared === false
+      && listing.learnerSession?.idFileRequired === false,
+    "Permanent learner ID and ID-file material must remain inside SkillPilot.",
+  );
+  check(
+    listing.learnerSession?.oauthTransportIndependent === true,
+    "Connector OAuth must remain independent from the learner session.",
+  );
+  check(
+    listingCopy.description.includes(expectedLearnerStartUrl)
+      && listingCopy.description.includes("spc_")
+      && /exactly 24 hours/u.test(listingCopy.description)
+      && /Connector OAuth/u.test(listingCopy.description)
+      && /technical connection/u.test(listingCopy.description),
+    "Listing copy must explain the first-party 24-hour session and transport-only OAuth.",
   );
   check(listing.dataHandling?.readsUserData === true, "Listing must disclose readsUserData.");
   check(listing.dataHandling?.writesUserData === true, "Listing must disclose writesUserData.");
@@ -413,6 +457,28 @@ export function validateClaudeReleaseState({
     "Lifecycle major-v1 endpoint must match the public connector.",
   );
   check(
+    lifecycle?.productOwnerUnfreeze?.approvedAt === "2026-08-23"
+      && lifecycle?.productOwnerUnfreeze?.approvedBy === "product-owner"
+      && /Claude Connector v1/u.test(lifecycle?.productOwnerUnfreeze?.scope ?? "")
+      && Array.isArray(lifecycle?.productOwnerUnfreeze?.excludes)
+      && lifecycle.productOwnerUnfreeze.excludes.some((entry) => /OpenAI/u.test(entry))
+      && lifecycle.productOwnerUnfreeze.excludes.some((entry) => /major line 2/u.test(entry)),
+    "Lifecycle must record the 2026-08-23 Claude-v1-only Product Owner unfreeze.",
+  );
+  check(
+    lifecycle?.breakingChangeProcessAppliesAfter
+      === "final_submission_freeze_or_publication",
+    "Breaking-change process must begin only after final submission freeze or publication.",
+  );
+  check(
+    [
+      "pre_submission_candidate_rebuild",
+      "frozen_for_submission",
+      "published",
+    ].includes(lifecycle?.majorLines?.[0]?.status),
+    "Lifecycle major-v1 status is invalid.",
+  );
+  check(
     lifecycle?.majorLines?.[1]?.status === "unallocated",
     "The future v2 line must remain unallocated.",
   );
@@ -436,6 +502,10 @@ export function validateClaudeReleaseState({
       baseline?.state === "PRE_SUBMISSION_CANDIDATE",
       "PRE_SUBMISSION must use a PRE_SUBMISSION_CANDIDATE baseline.",
     );
+    check(
+      lifecycle?.majorLines?.[0]?.status === "pre_submission_candidate_rebuild",
+      "PRE_SUBMISSION Claude v1 must remain marked as a candidate rebuild.",
+    );
   } else if (["READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(state)) {
     check(gates?.submissionReady === true, `${state} requires submissionReady=true.`);
     check(requiredPending.length === 0, `${state} requires every required gate to pass.`);
@@ -444,6 +514,11 @@ export function validateClaudeReleaseState({
       `${state} requires a FROZEN_FOR_SUBMISSION contract baseline.`,
     );
     check(lifecycle?.directoryIdentity?.slugApproved === true, `${state} requires slugApproved=true.`);
+    check(
+      lifecycle?.majorLines?.[0]?.status
+        === (state === "PUBLISHED" ? "published" : "frozen_for_submission"),
+      `${state} requires the matching immutable major-v1 status.`,
+    );
   }
 
   if (["SUBMITTED", "PUBLISHED"].includes(state)) {
@@ -567,6 +642,28 @@ function verifyRepositoryEvidence(repositoryRoot, evidence, check) {
 }
 
 function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
+  for (const retiredResource of [
+    "backend/src/main/resources/claude-connector-v1/connect.html",
+    "backend/src/main/resources/claude-connector-v1/connect.js",
+    "backend/src/main/resources/claude-connector-v1/id-decrypt.js",
+  ]) {
+    check(
+      !existsSync(safeRepositoryPath(repositoryRoot, retiredResource)),
+      `Retired Claude learner-binding resource must be absent: ${retiredResource}`,
+    );
+  }
+  const firstPartyStartRequest = readText(
+    repositoryRoot,
+    "app/src/coachVariants/claudeV1/request.ts",
+  );
+  const firstPartyStartCopy = readText(
+    repositoryRoot,
+    "app/src/coachVariants/claudeV1/copy.ts",
+  );
+  const firstPartyStartTest = readText(
+    repositoryRoot,
+    "app/src/coachVariants/claudeV1/claudeV1Start.test.ts",
+  );
   const contract = readText(
     repositoryRoot,
     "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1Contract.java",
@@ -602,6 +699,82 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   const appBuildTest = readText(
     repositoryRoot,
     "ai/claude/app/test/build.test.mjs",
+  );
+  const learningSessionService = readText(
+    repositoryRoot,
+    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/session/ClaudeV1LearningSessionService.java",
+  );
+  const sessionTokenCodec = readText(
+    repositoryRoot,
+    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/session/ClaudeV1SessionTokenCodec.java",
+  );
+  const firstPartyStartController = readText(
+    repositoryRoot,
+    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/web/ClaudeV1CoachUiController.java",
+  );
+  const learningSessionMigration = readText(
+    repositoryRoot,
+    "backend/src/main/resources/db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
+  );
+
+  for (const fragment of [
+    "const LEARNING_SESSION_PATTERN = /^spc_[A-Za-z0-9_-]{43}$/u",
+    "const FOREIGN_SESSION_IN_PROMPT_PATTERN = /sps_[A-Za-z0-9_-]{43}/u",
+    "/api/ui/learners/${encodeURIComponent(sanitizedId)}/claude/v1/launch",
+    "communicationLocale: normalizeConversationLanguage(input.language)",
+    "client: input.client ?? 'web-start'",
+    "url.origin !== 'https://claude.ai'",
+    "prompt.toLowerCase().includes(sanitizedId.toLowerCase())",
+  ]) {
+    check(
+      firstPartyStartRequest.includes(fragment),
+      `Claude first-party start request is missing guard: ${fragment}`,
+    );
+  }
+  check(
+    /genau 24 Stunden/u.test(firstPartyStartCopy)
+      && /exactly 24 hours/u.test(firstPartyStartCopy)
+      && !/höchstens 24 Stunden|no more than 24 hours/iu.test(firstPartyStartCopy),
+    "Claude start copy must promise the exact 24-hour learner-session lifetime.",
+  );
+  for (const fragment of [
+    "permanent ID stays out of the body",
+    "https://claude.ai/new?session=secret",
+    "responsePayload({ learningSessionId: SESSION_B })",
+    "responsePayload({ prompt: `${promptWithSession()}\\n${LEARNER_ID}` })",
+  ]) {
+    check(
+      firstPartyStartTest.includes(fragment),
+      `Claude first-party start test is missing guard: ${fragment}`,
+    );
+  }
+  check(
+    learningSessionService.includes("public static final Duration SESSION_TTL = Duration.ofHours(24);")
+      && learningSessionService.includes("Instant expiresAt = startedAt.plus(SESSION_TTL);")
+      && learningSessionService.includes('!"web-start".equals(request.client())')
+      && learningSessionService.includes('learningSessionId: " + learningSessionId'),
+    "Claude learning-session service must implement the exact first-party 24-hour launch contract.",
+  );
+  check(
+    sessionTokenCodec.includes('public static final String TOKEN_PREFIX = "spc_";')
+      && sessionTokenCodec.includes('Pattern.compile("^spc_[A-Za-z0-9_-]{43}$")')
+      && sessionTokenCodec.includes('"SkillPilot\\0ClaudeConnector\\0LearningSession\\0v1\\0"')
+      && sessionTokenCodec.includes("HmacSHA256"),
+    "Claude learner-session tokens must retain their provider-specific format and HMAC boundary.",
+  );
+  check(
+    firstPartyStartController.includes('@RequestMapping("/api/ui/learners/{skillpilotId}/claude/v1")')
+      && firstPartyStartController.includes('@PostMapping("/launch")')
+      && firstPartyStartController.includes("CacheControl.noStore()"),
+    "Claude first-party launch controller must expose only the no-store launch POST.",
+  );
+  check(
+    learningSessionMigration.includes("id: 024-replace-claude-v1-binding-with-learning-sessions")
+      && learningSessionMigration.includes("tableName: claude_v1_learning_session")
+      && learningSessionMigration.includes("tableName: claude_v1_session_idempotency")
+      && learningSessionMigration.includes("DELETE FROM oauth2_authorization_consent")
+      && learningSessionMigration.includes("value: REVOKED"),
+    "Claude migration 024 must replace durable learner bindings with revocable 24-hour sessions.",
   );
 
   const actualTools = [...contract.matchAll(
@@ -646,7 +819,7 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
     "solutionReleasingToolsRequireACapability",
     'schemaOf(toolName).get("additionalProperties")',
     "publishesTwoActiveByteAddressedClaudeResourcesWithHostOnlyUiDomainAndPassiveRetention",
-    "memoryReviewSchemaIsAppOnlyAndAcceptsNoSessionIdentifier",
+    "everyToolRequiresLearningSessionIdIncludingAppOnlyMemoryReview",
   ]) {
     check(contractTest.includes(fragment), `MCP contract test is missing guard: ${fragment}`);
   }
@@ -709,6 +882,12 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
     ),
     "Liquibase master changelog must include the Claude-v1 migration.",
   );
+  check(
+    changelogMaster.includes(
+      "file: db/changelog/changes/024-replace-claude-v1-binding-with-learning-sessions.yaml",
+    ),
+    "Liquibase master changelog must include the additive Claude-v1 learning-session migration.",
+  );
   return actualTools.length;
 }
 
@@ -718,6 +897,11 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
   const guide = readText(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.md");
   const guideDe = readText(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.de.md");
   const runbook = readText(repositoryRoot, "docs/deploy/claude-connector-v1-release.md");
+  const concept = readText(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md");
+  const implementationPlan = readText(
+    repositoryRoot,
+    "docs/deploy/claude-connector-v1-implementation-plan.md",
+  );
   const tls = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf");
   const acme = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-acme.conf");
   for (const path of [
@@ -729,11 +913,51 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     check(mkdocs.includes(`deploy/${path}`), `MkDocs navigation must include ${path}.`);
   }
   for (const text of [guide, guideDe]) {
-    check(text.includes(expectedEndpoint), "User guides must publish the exact MCP endpoint.");
-    check(text.includes(".skillpilot"), "User guides must explain the encrypted ID file.");
+    check(text.includes(expectedLearnerStartUrl), "User guides must publish the first-party Claude launch URL.");
+    check(text.includes("spc_"), "User guides must explain the opaque learner session.");
+    check(/24 (?:hours|Stunden)/u.test(text), "User guides must explain the exact 24-hour lifetime.");
+    check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
+    check(/plugin/iu.test(text), "User guides must name the preferred plugin installation.");
+    check(/MCP Apps|interaktiven Oberflächen|interactive UIs/u.test(text), "User guides must explain that the connector supplies both UIs.");
+    check(
+      !/(?:select|upload|choose|wähl|hochlad)[^\n]{0,120}\.skillpilot|Lokal entschlüsseln/iu.test(text),
+      "User guides must not instruct learners to use the retired ID-file flow.",
+    );
   }
   check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
   check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
+  check(
+    ["`/connect`", "`/connect/`", "`/connect/details`", "`/connect/bind`"].every(
+      (route) => runbook.includes(route),
+    ) && /return HTTP 404/u.test(runbook),
+    "Release runbook must verify that every retired public binding route returns 404.",
+  );
+  check(
+    concept.includes(expectedLearnerStartUrl)
+      && concept.includes("spc_")
+      && /exactly 24 hours/u.test(concept)
+      && /OAuth contains no learner binding page/u.test(concept)
+      && /offline_access/u.test(concept),
+    "Claude concept must describe the learner-free OAuth and exact 24-hour first-party session target.",
+  );
+  check(
+    implementationPlan.includes(expectedLearnerStartUrl)
+      && implementationPlan.includes("spc_")
+      && /exakt 24 Stunden/u.test(implementationPlan)
+      && /ID-Datei-\/Binding-Seite ist vollständig verworfen/u.test(implementationPlan)
+      && /offline_access/u.test(implementationPlan),
+    "Claude implementation plan must supersede the retired binding flow with the exact 24-hour target.",
+  );
+  for (const [name, text] of [
+    ["concept", concept],
+    ["implementation plan", implementationPlan],
+  ]) {
+    check(
+      !/(?:^|[`\s])\/connect(?:\/|\*|\{|`)/mu.test(text)
+        && !/Consent and learner binding/iu.test(text),
+      `Claude ${name} must not publish the retired learner-binding route as an active contract.`,
+    );
+  }
   for (const text of [tls, acme]) {
     check(
       /server_name\s+mcp-claude-v1\.skillpilot\.com;/u.test(text),
@@ -744,6 +968,11 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
   check(
     tls.includes("/internal/connectors/claude/v1/mcp"),
     "TLS vhost must proxy only to the internal Claude-v1 route.",
+  );
+  check(
+    !/location\s+(?:=|\^~)\s+\/connect\/?\s*\{/u.test(tls)
+      && !tls.includes("/internal/connectors/claude/v1/connect"),
+    "Claude vhost must not proxy the retired learner-binding surface.",
   );
   check(!tls.includes("mcp-coach-v1"), "Claude vhost must not alias the frozen OpenAI origin.");
 }
@@ -770,7 +999,10 @@ function verifyBaseline(repositoryRoot, baseline, check) {
       const path = safeRepositoryPath(repositoryRoot, entry.path);
       const stat = lstatSync(path);
       check(stat.isDirectory() && !stat.isSymbolicLink(), `Baseline tree is not a directory: ${entry.path}`);
-      check(sha256Tree(path) === entry.sha256, `Claude v1 candidate tree changed: ${entry.path}`);
+      check(
+        sha256ContractTree(repositoryRoot, entry.path) === entry.sha256,
+        `Claude v1 candidate tree changed: ${entry.path}`,
+      );
     } catch (error) {
       check(false, `Cannot verify baseline tree ${entry?.path ?? "UNKNOWN"}: ${error instanceof Error ? error.message : String(error)}`);
     }
@@ -875,6 +1107,62 @@ function sameSet(actual, expected) {
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+/**
+ * Hashes the repository-relevant files below a Claude contract tree.
+ *
+ * <p>Contract trees contain local dependency and build directories while they are being tested.
+ * Those ignored bytes are neither candidate sources nor reproducible across workstations. Git's
+ * cached-plus-untracked inventory includes every candidate source before and after commit while
+ * excluding ignored node_modules and generated dist directories.
+ */
+export function sha256ContractTree(repositoryRoot, treePath) {
+  const tree = safeRepositoryPath(repositoryRoot, treePath);
+  const treeStat = lstatSync(tree);
+  if (!treeStat.isDirectory() || treeStat.isSymbolicLink()) {
+    throw new Error(`Contract tree is not a directory: ${treePath}`);
+  }
+
+  const inventory = execFileSync(
+    "git",
+    [
+      "-C",
+      resolve(repositoryRoot),
+      "ls-files",
+      "-z",
+      "--cached",
+      "--others",
+      "--exclude-standard",
+      "--",
+      treePath,
+    ],
+  )
+    .toString("utf8")
+    .split("\0")
+    .filter(Boolean)
+    // The index still lists tracked files deleted by this candidate. Their absence is part of
+    // the new tree digest, so only bytes that exist in the working tree contribute records.
+    .filter((path) => existsSync(safeRepositoryPath(repositoryRoot, path)))
+    .sort((left, right) => left.localeCompare(right));
+
+  if (inventory.length === 0) {
+    throw new Error(`Contract tree contains no repository files: ${treePath}`);
+  }
+
+  const prefix = `${treePath}/`;
+  const records = inventory.map((path) => {
+    if (!path.startsWith(prefix)) {
+      throw new Error(`Contract inventory escaped tree ${treePath}: ${path}`);
+    }
+    const absolute = safeRepositoryPath(repositoryRoot, path);
+    const stat = lstatSync(absolute);
+    if (!stat.isFile() || stat.isSymbolicLink()) {
+      throw new Error(`Contract tree contains non-file: ${path}`);
+    }
+    return `${path.slice(prefix.length)}\0${stat.size}\0${sha256(readFileSync(absolute))}\n`;
+  });
+  return sha256(Buffer.from(records.join(""), "utf8"));
 }
 
 export function calculateCandidateContractSha256(

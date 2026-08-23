@@ -48,6 +48,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
+  '/lernen/claude',
   ...(IS_PACKAGE_CONSUMER_BUILD ? [] : ['/lernzielbuch', '/lernziel-feedback', ...REPOSITORY_AUTHORING_PATHS]),
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
@@ -60,6 +61,7 @@ const TrainerView = lazy(() => import('./views/TrainerView').then((module) => ({
 const LegalView = lazy(() => import('./views/LegalView').then((module) => ({ default: module.LegalView })))
 const FaqView = lazy(() => import('./views/FaqView').then((module) => ({ default: module.FaqView })))
 const CoachProviderMatrixView = lazy(() => import('./views/CoachProviderMatrixView').then((module) => ({ default: module.CoachProviderMatrixView })))
+const ClaudeV1StartView = lazy(() => import('./views/ClaudeV1StartView').then((module) => ({ default: module.ClaudeV1StartView })))
 const PrivacyView = lazy(() => import('./views/PrivacyView').then((module) => ({ default: module.PrivacyView })))
 const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({ default: module.ImprintView })))
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
@@ -710,6 +712,7 @@ const App: React.FC = () => {
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
             <Route path="/faq" element={<FaqView />} />
             <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
+            <Route path="/lernen/claude" element={<ClaudeV1StartView />} />
             <Route path="/legal" element={<LegalView />} />
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />
@@ -942,6 +945,7 @@ const App: React.FC = () => {
         <Route path="/legal" element={<LegalView />} />
         <Route path="/faq" element={<FaqView />} />
         <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
+        <Route path="/lernen/claude" element={<ClaudeV1StartView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />

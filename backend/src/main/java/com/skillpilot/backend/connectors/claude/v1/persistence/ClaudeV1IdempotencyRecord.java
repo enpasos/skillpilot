@@ -12,9 +12,9 @@ import java.util.Objects;
  * version the original call did.</p>
  */
 public record ClaudeV1IdempotencyRecord(
-        String id,
-        String connectionId,
+        String tokenHash,
         String clientRequestId,
+        String toolName,
         String requestHash,
         String responsePayload,
         long stateVersion,
@@ -22,9 +22,9 @@ public record ClaudeV1IdempotencyRecord(
         Instant expiresAt) {
 
     public ClaudeV1IdempotencyRecord {
-        Objects.requireNonNull(id, "id");
-        Objects.requireNonNull(connectionId, "connectionId");
+        Objects.requireNonNull(tokenHash, "tokenHash");
         Objects.requireNonNull(clientRequestId, "clientRequestId");
+        Objects.requireNonNull(toolName, "toolName");
         Objects.requireNonNull(requestHash, "requestHash");
         Objects.requireNonNull(createdAt, "createdAt");
         Objects.requireNonNull(expiresAt, "expiresAt");

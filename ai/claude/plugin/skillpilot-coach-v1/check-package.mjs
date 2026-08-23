@@ -96,15 +96,27 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const publishedText = [...text.values()].join("\n");
-  const foreignSessionPatterns = [
-    ["learning", "Session", "Id"].join(""),
-    ["learning", "_session", "_id"].join(""),
-    ["learning", "-session", "-id"].join(""),
-    ["learning session", " id"].join(""),
-  ];
-  for (const pattern of foreignSessionPatterns) {
-    check(!publishedText.toLowerCase().includes(pattern.toLowerCase()), "Package must not depend on a foreign session selector.");
-  }
+  check(
+    normalizedSkillText.includes("`learningSessionId`")
+      && normalizedSkillText.includes("every SkillPilot tool call"),
+    "SKILL.md must require the first-party learningSessionId on every SkillPilot tool call.",
+  );
+  check(
+    publishedText.includes("https://skillpilot.com/lernen/claude")
+      && publishedText.includes("spc_")
+      && /exact(?:ly|e) 24(?:-hour| hours| Stunden)/iu.test(publishedText),
+    "Package must document the exact 24-hour first-party spc_ start flow.",
+  );
+  check(
+    !/encrypted\s+\.skillpilot|\.skillpilot\s+(?:ID[- ]?)?file|ID[- ]file|ID-Datei/iu.test(publishedText),
+    "Package must not use the retired encrypted ID-file flow.",
+  );
+  check(
+    /offline_access/u.test(setupText)
+      && /technical (?:plugin )?connection|technical connector transport/iu.test(setupText)
+      && /no learner identity/iu.test(setupText),
+    "SETUP.md must separate offline OAuth transport persistence from learner identity.",
+  );
   check(!publishedText.includes("https://mcp-coach-v1.skillpilot.com"), "Package must not reference the frozen provider endpoint.");
   check(!publishedText.includes("get_skillpilot_context"), "Package must not use the provider-foreign context tool.");
   check(skillText.includes("do not narrate tool calls"), "SKILL.md must enforce the learner presentation boundary.");
@@ -120,6 +132,11 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(
     normalizedSetupText.includes("Do not enable the bundled and standalone variants at the same time"),
     "SETUP.md must prevent duplicate bundled and standalone installations.",
+  );
+  check(
+    normalizedSetupText.includes("preferred installation path")
+      && normalizedSetupText.includes("MCP tools and both interactive MCP Apps"),
+    "SETUP.md must prefer the integrated plugin and attribute MCP Apps to the connector.",
   );
 
   return { errors, toolCount: expectedTools.length };

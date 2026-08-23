@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /** Enforces the Streamable HTTP Origin check before bearer-token processing. */
@@ -16,9 +17,8 @@ final class ClaudeV1McpOriginFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         // The raw URI is preferred because framework wrappers can rewrite the path. When it cannot
-        // be resolved, fall back to the container URI rather than filtering every request: the
-        // browser-facing /connect flow carries a normal same-origin Origin header that is not an
-        // allowed MCP origin, and would otherwise be rejected here.
+        // be resolved, fall back to the container URI rather than filtering every request. This
+        // filter is deliberately limited to the one MCP transport endpoint.
         String rawUri = RawHttpServletRequest.requestUri(request);
         String uri = rawUri != null ? rawUri : request.getRequestURI();
         return !ClaudeV1Contract.INTERNAL_MCP_PATH.equals(uri);
@@ -50,6 +50,7 @@ final class ClaudeV1McpOriginFilter extends OncePerRequestFilter {
             return;
         }
 
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
 }

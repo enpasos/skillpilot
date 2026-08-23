@@ -1,21 +1,22 @@
 package com.skillpilot.backend.connectors.claude.v1;
 
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1BindingService;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1Connection;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSession;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
 import java.time.Instant;
 import java.util.UUID;
 
-/** Shared setup for Claude v1 integration tests: one learner plus one bound connection. */
+/** Shared setup for Claude v1 integration tests: one learner plus one 24-hour session. */
 public final class ClaudeV1TestFixtures {
 
     public record BoundLearner(String learnerId, String connectionId) {}
 
     public static BoundLearner createBoundLearner(
             LearnerRepository learnerRepository,
-            ClaudeV1ConnectionRepository connectionRepository,
+            ClaudeV1LearningSessionRepository sessionRepository,
             long initialRevision) {
 
         String learnerId = UUID.randomUUID().toString();
@@ -25,15 +26,18 @@ public final class ClaudeV1TestFixtures {
         learner.setCoachStateRevision(initialRevision);
         learnerRepository.save(learner);
 
-        String connectionId = "conn_claude_v1_" + UUID.randomUUID().toString().replace("-", "");
-        connectionRepository.insertConnection(new ClaudeV1Connection(
-                connectionId,
+        ClaudeV1Properties properties = new ClaudeV1Properties();
+        properties.setSigningSecret(ClaudeV1TestProperties.SIGNING_SECRET_VALUE);
+        ClaudeV1SessionTokenCodec tokenCodec = new ClaudeV1SessionTokenCodec(properties);
+        String connectionId = tokenCodec.issue();
+        Instant startedAt = Instant.now();
+        sessionRepository.insert(new ClaudeV1LearningSession(
+                tokenCodec.hash(connectionId),
                 learnerId,
-                ClaudeV1BindingService.sha256Hex(learnerId),
-                ClaudeV1Contract.CIMD_HOSTED_CLAUDE_CLIENT_ID,
-                ClaudeV1Connection.STATUS_ACTIVE,
-                Instant.now(),
-                Instant.now()));
+                startedAt,
+                startedAt.plus(ClaudeV1LearningSessionService.SESSION_TTL),
+                "de",
+                initialRevision));
 
         return new BoundLearner(learnerId, connectionId);
     }

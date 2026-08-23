@@ -1,6 +1,16 @@
 {
   "schemaVersion": 1,
   "state": "PRE_SUBMISSION",
+  "productOwnerUnfreeze": {
+    "approvedAt": "2026-08-23",
+    "approvedBy": "product-owner",
+    "reason": "Rebuild the pre-submission Claude v1 candidate around first-party 24-hour learner sessions.",
+    "scope": "Claude Connector v1 package, connector contract, implementation, tests and release dossier only.",
+    "excludes": [
+      "Submitted OpenAI SkillPilot Coach v1.0.0 and every effect covered by its active review freeze",
+      "Any allocation or implementation of Claude major line 2"
+    ]
+  },
   "externalStateEvidence": {
     "submissionEvidenceId": null,
     "publicationEvidenceId": null
@@ -15,8 +25,8 @@
     {
       "major": 1,
       "endpoint": "https://mcp-claude-v1.skillpilot.com/mcp",
-      "status": "active_custom_connector",
-      "compatibilityPolicy": "Only backward-compatible, re-tested fixes and additions are deployed on the v1 line."
+      "status": "pre_submission_candidate_rebuild",
+      "compatibilityPolicy": "The Product Owner may still change the pre-submission v1 candidate. After final submission freeze and publication, only backward-compatible, re-tested fixes and additions remain on the v1 line."
     },
     {
       "major": 2,
@@ -25,6 +35,7 @@
       "compatibilityPolicy": "This endpoint is created only by a future Product Owner decision for a breaking protocol, identity, OAuth or state-semantics change."
     }
   ],
+  "breakingChangeProcessAppliesAfter": "final_submission_freeze_or_publication",
   "breakingChangeProcess": [
     "Open a new major-line design and threat review without changing v1.",
     "Use a separate DNS name, OAuth audience, secrets, test fixtures and acceptance evidence.",
@@ -34,7 +45,7 @@
     "Retire v1 only after documented migration, rollback and Product Owner approval."
   ],
   "anthropicCurrentBehavior": {
-    "checkedAt": "2026-08-21",
+    "checkedAt": "2026-08-23",
     "source": "https://claude.com/docs/connectors/building/after-publishing",
     "toolSurfaceUpdates": "Anthropic currently says remote MCP tool changes are deployed to the live server without resubmission and are picked up on the next connection.",
     "semverDisclaimer": "Anthropic does not define a SemVer or major-upgrade protocol for remote MCP connectors.",

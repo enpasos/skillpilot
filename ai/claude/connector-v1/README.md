@@ -7,10 +7,14 @@ values.
 
 ## Current state
 
-The connector is deployed and has passed an initial real-Claude custom-
-connector smoke test, but this dossier is intentionally marked
-`PRE_SUBMISSION`. It is **not submission-ready** until every required item in
-`release-gates.json` is `pass` and the strict readiness check succeeds.
+The previously deployed custom-connector candidate passed an initial
+real-Claude smoke test. On 23 August 2026 the Product Owner explicitly
+unfroze **Claude v1 only** so the still-pre-submission candidate can be rebuilt
+around first-party 24-hour learner sessions. Old ID-file evidence is historical
+and cannot approve the rebuilt candidate. This dossier remains
+`PRE_SUBMISSION`; it is not submission-ready until every required item in
+`release-gates.json` is `pass` against the final candidate and the strict
+readiness check succeeds.
 
 The current candidate deliberately claims Claude.ai only. Claude Code support
 exists in the implementation but is outside the directory claim until that
@@ -22,6 +26,17 @@ client has its own recorded acceptance run.
   `https://mcp-claude-v1.skillpilot.com/mcp`
 - Transport: Streamable HTTP
 - Authentication: OAuth 2.0 with Client ID Metadata Documents and PKCE S256
+- OAuth is the long-lived technical connector transport. `offline_access` may
+  keep the plugin connected, but contains and selects no learner identity and
+  cannot mint, renew or extend a learner session.
+- Every learner session starts at
+  `https://skillpilot.com/lernen/claude`, uses only an opaque `spc_` value and
+  expires after exactly 24 hours. The permanent SkillPilot ID remains inside
+  SkillPilot; no ID file or password is used.
+- The plugin is the preferred one-time installation because it bundles the
+  coaching Skill and connector. Both MCP Apps UIs are supplied by that
+  connector. Separate Skill-plus-connector installation is only a fallback and
+  provides no additional capability.
 - Public documentation:
   `https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/`
 - Connector privacy policy:
@@ -112,9 +127,10 @@ manual test as passed.
 6. Update the evidence ledger truthfully and run the strict readiness check.
 7. Submit through **Claude.ai > Organization settings > Directory**.
 
-No test credential, `.skillpilot` file, ID-file password, OAuth value, learner
+No test credential, OAuth value, `spc_` learner session, permanent learner
 identifier, capability or exam solution belongs in Git, a PR, CI output or a
-screen recording.
+screen recording. A permanent SkillPilot ID or encrypted ID file must never be
+supplied to Claude, the plugin, the connector or the reviewer.
 
 ## Later updates and major changes
 
@@ -122,7 +138,11 @@ Anthropic treats a remote MCP server as a live API: tool changes are picked up
 on the next connection and do not currently require a new directory submission.
 The permanent slug is independent of that tool surface.
 
-SkillPilot nevertheless keeps a stricter compatibility policy:
+Before final submission, Claude v1 remains a mutable candidate only within the
+Product Owner's recorded Claude-only unfreeze. The OpenAI V1 review candidate
+remains frozen and Claude major line 2 remains unallocated. After the final
+Claude-v1 submission freeze or publication, SkillPilot applies this stricter
+compatibility policy:
 
 - compatible fixes stay on `mcp-claude-v1.skillpilot.com`;
 - a breaking protocol, identity, OAuth or state-semantics change is developed

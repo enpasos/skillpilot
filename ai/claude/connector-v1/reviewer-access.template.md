@@ -2,7 +2,7 @@
 
 Complete this template only in the approved secure handoff channel used for the
 Anthropic submission. Do not fill it in inside the repository, a pull request,
-an issue, CI output, email without approved encryption, or a screen recording.
+an issue, CI output, unapproved email or a screen recording.
 
 ## Public connection information
 
@@ -13,20 +13,22 @@ an issue, CI output, email without approved encryption, or a screen recording.
 - Custom headers: none
 - Minimum age: 18+
 
-## Secure reviewer package
+## Secure reviewer fixture
 
-Provide all of the following through the approved secret channel:
+Provide only the following through the approved secret channel:
 
-- encrypted reviewer `.skillpilot` file;
-- password for that file, through a separate secret channel where practical;
 - confirmation that the profile contains synthetic or authorized adult test
   data only;
-- one-time package expiry or revocation date;
-- reset contact and escalation contact;
-- the private fixture appendix for recall and exam cases.
+- the first-party procedure for choosing that profile and starting a fresh
+  24-hour learner session;
+- fixture expiry or revocation date;
+- reset and escalation contacts;
+- the private fixture appendix for Recall and exam cases.
 
-Never provide the raw permanent SkillPilot ID as a separate credential. The
-reviewer should use the normal browser-local ID-file flow.
+Never provide the permanent SkillPilot ID, an encrypted ID file, an ID-file
+password or a pre-generated `spc_` value. The reviewer starts each learner
+session at `https://skillpilot.com/lernen/claude`; SkillPilot creates the opaque
+`spc_` session and keeps permanent identity inside the first-party system.
 
 ## Reviewer profile checklist
 
@@ -39,29 +41,37 @@ The profile is usable only when it contains:
 - one active memory goal with a complete due-card batch;
 - one active exam goal with a deterministic task and scoring rubric;
 - enough existing progress to return non-empty context and progress summaries;
-- a documented initial `stateVersion` and a resettable canonical baseline;
-- both German and English cases without personal or real learner data.
+- a documented initial state and a resettable canonical baseline;
+- German and English cases without personal or real learner data.
 
-## Connection steps for the reviewer
+## Connection and start steps
 
-1. In Claude, open **Customize > Connectors > Add custom connector**.
-2. Enter the MCP URL above and choose authentication **Always required**.
-3. Keep **Anthropic-hosted client metadata** selected. Add no headers.
-4. Start the OAuth connection.
-5. On the SkillPilot page, verify the client, callback host and requested
-   `skillpilot.read`, `skillpilot.write` and optional `offline_access` scopes.
-6. Select the supplied encrypted `.skillpilot` file and enter its password.
-7. Choose **Lokal entschlüsseln & verbinden**. The password stays in the
-   browser page and must never be pasted into Claude.
-8. Return to Claude, start a fresh chat and enable only SkillPilot.
-9. Follow `reviewer-test-plan.md` and record evidence without secrets.
+1. Install the SkillPilot plugin once. This is the preferred path because it
+   supplies both the Skill and connector; the connector supplies both MCP Apps
+   UIs.
+2. Connect the SkillPilot connector through OAuth. Verify the client, callback
+   host and requested `skillpilot.read`, `skillpilot.write` and optional
+   `offline_access` scopes.
+3. Confirm that `offline_access` keeps only the technical connector transport
+   connected. It must not contain, select, mint, renew or extend learner
+   identity or a learner session.
+4. Add no custom headers and never enter a permanent SkillPilot ID.
+5. Open `https://skillpilot.com/lernen/claude`, choose the prepared reviewer
+   profile and start learning.
+6. Confirm the launch creates a fresh opaque value beginning with `spc_`, valid
+   for exactly 24 hours, and opens a fresh Claude chat without displaying that
+   value in normal learner-facing prose.
+7. Enable only SkillPilot and follow `reviewer-test-plan.md`.
+8. Record evidence without credentials, OAuth values, `spc_` values, permanent
+   IDs, learner data or protected answers.
 
 ## Reset procedure
 
 Before each destructive or replay-sensitive block, the named operator restores
 the reviewer profile to its documented baseline through the approved SkillPilot
-fixture/reset procedure. The reset must not reuse an old OAuth code, capability
-or `clientRequestId`, and must not affect another learner or provider.
+fixture/reset procedure. The reset must not reuse an old OAuth code,
+`learningSessionId`, capability or `clientRequestId`, and must not affect
+another learner or provider.
 
 Record in the secure handoff:
 
@@ -69,14 +79,15 @@ Record in the secure handoff:
 - reset owner and contact;
 - expected baseline state summary;
 - UTC reset time;
-- connection revocation and reissue steps;
-- expiry and deletion plan for the reviewer package.
+- connector revocation and reconnection steps;
+- learner-session expiry and fresh-start steps;
+- expiry and deletion plan for the reviewer fixture.
 
 ## Fields completed only in the portal
 
 - Organization owner or delegated Directory manager
 - Primary review contact name and email
-- Test-account credential/file handoff location
+- Test-account fixture handoff location
 - Reset contact
 - Security escalation contact
 - Product, Legal, Security and Operations approval references

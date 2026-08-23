@@ -46,27 +46,6 @@ class ClaudeV1OAuthBoundaryFilterTest {
         assertEquals(1, claudeCode.get(), "A second client identity must have its own budget");
     }
 
-    @Test
-    void connectEndpointsWithoutAClientIdFallBackToThePeerAddress() throws Exception {
-        ClaudeV1OAuthBoundaryFilter filter = filter();
-        AtomicInteger passed = new AtomicInteger();
-
-        for (int attempt = 0; attempt < BUDGET + 2; attempt++) {
-            MockHttpServletRequest request =
-                    new MockHttpServletRequest("GET", ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/csrf");
-            request.setRemoteAddr("198.51.100.7");
-            call(filter, request, passed);
-        }
-        assertEquals(BUDGET, passed.get());
-
-        AtomicInteger otherCaller = new AtomicInteger();
-        MockHttpServletRequest request =
-                new MockHttpServletRequest("GET", ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/csrf");
-        request.setRemoteAddr("203.0.113.9");
-        call(filter, request, otherCaller);
-        assertEquals(1, otherCaller.get());
-    }
-
     private static ClaudeV1OAuthBoundaryFilter filter() {
         ClaudeV1Properties properties = new ClaudeV1Properties();
         properties.setMaxOAuthRequestsPerCallerPerMinute(BUDGET);

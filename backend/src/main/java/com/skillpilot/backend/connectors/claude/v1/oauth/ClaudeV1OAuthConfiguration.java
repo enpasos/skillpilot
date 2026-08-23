@@ -4,8 +4,6 @@ import com.skillpilot.backend.config.RawHttpServletRequest;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1BindingService;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +36,8 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.context.SecurityContextHolderFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 /**
@@ -136,16 +135,14 @@ public class ClaudeV1OAuthConfiguration {
     @Bean(name = "claudeV1AuthorizationService")
     public OAuth2AuthorizationService claudeV1AuthorizationService(
             JdbcOperations jdbcOperations,
-            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients,
-            ClaudeV1ConnectionRepository connectionRepository) {
+            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients) {
         // The JDBC service deliberately reads through an unscoped repository so it can deserialize
         // any row; the provider wrapper then applies the Claude v1 boundary after deserialization.
         return new ClaudeV1OAuth2AuthorizationService(
                 new JdbcOAuth2AuthorizationService(
                         jdbcOperations,
                         new JdbcRegisteredClientRepository(jdbcOperations)),
-                registeredClients,
-                connectionRepository);
+                registeredClients);
     }
 
     @Bean(name = "claudeV1AuthorizationServerSettings")
@@ -181,9 +178,22 @@ public class ClaudeV1OAuthConfiguration {
     @Bean(name = "claudeV1OpaqueTokenIntrospector")
     public OpaqueTokenIntrospector claudeV1OpaqueTokenIntrospector(
             @Qualifier("claudeV1AuthorizationService") OAuth2AuthorizationService authorizationService,
-            ClaudeV1ConnectionRepository connectionRepository,
+            @Qualifier("claudeV1RegisteredClientRepository") RegisteredClientRepository registeredClients,
             ClaudeV1Properties properties) {
-        return new ClaudeV1OpaqueTokenIntrospector(authorizationService, connectionRepository, properties);
+        return new ClaudeV1OpaqueTokenIntrospector(authorizationService, registeredClients, properties);
+    }
+
+    @Bean(name = "claudeV1SecurityContextRepository")
+    public SecurityContextRepository claudeV1SecurityContextRepository() {
+        HttpSessionSecurityContextRepository repository = new HttpSessionSecurityContextRepository();
+        repository.setSpringSecurityContextKey("SKILLPILOT_CLAUDE_CONNECTOR_V1_SECURITY_CONTEXT");
+        return repository;
+    }
+
+    @Bean(name = "claudeV1AppAuthenticationFilter")
+    public ClaudeV1AppAuthenticationFilter claudeV1AppAuthenticationFilter(
+            @Qualifier("claudeV1SecurityContextRepository") SecurityContextRepository contextRepository) {
+        return new ClaudeV1AppAuthenticationFilter(contextRepository);
     }
 
     @Bean(name = "claudeV1AuthorizationServerSecurityFilterChain")
@@ -194,7 +204,8 @@ public class ClaudeV1OAuthConfiguration {
             @Qualifier("claudeV1AuthorizationService") OAuth2AuthorizationService authorizationService,
             @Qualifier("claudeV1AuthorizationServerSettings") AuthorizationServerSettings authorizationServerSettings,
             @Qualifier("claudeV1TokenGenerator") OAuth2TokenGenerator<?> tokenGenerator,
-            ClaudeV1BindingService bindingService,
+            @Qualifier("claudeV1AppAuthenticationFilter") ClaudeV1AppAuthenticationFilter appAuthenticationFilter,
+            @Qualifier("claudeV1SecurityContextRepository") SecurityContextRepository contextRepository,
             ClaudeV1CimdMetadataValidator cimdValidator,
             ClaudeV1TokenLifecycleService tokenLifecycleService,
             ClaudeV1Properties properties) throws Exception {
@@ -209,9 +220,7 @@ public class ClaudeV1OAuthConfiguration {
                 return false;
             }
             String uri = connectorRequestUri(request);
-            boolean claudeV1Path = uri.equals(ClaudeV1Contract.INTERNAL_CONNECT_PATH)
-                    || uri.startsWith(ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/")
-                    || uri.equals(ClaudeV1Contract.INTERNAL_PRIVACY_PATH)
+            boolean claudeV1Path = uri.equals(ClaudeV1Contract.INTERNAL_PRIVACY_PATH)
                     || uri.equals(ClaudeV1Contract.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH)
                     || uri.equals(ClaudeV1Contract.INTERNAL_AUTH_SERVER_METADATA_PATH)
                     || uri.equals(ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH)
@@ -252,24 +261,21 @@ public class ClaudeV1OAuthConfiguration {
                                 codeProvider.setAuthenticationValidator(redirectUriValidator);
                             }
                         }))))
-        // Disabled only for the machine-to-machine OAuth endpoints below; the browser-facing bind
-        // endpoint keeps CSRF protection through its own chain rules.
         .csrf(csrf -> csrf
-                .csrfTokenRepository(claudeV1CsrfTokenRepository())
                 .ignoringRequestMatchers(
+                        ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH,
                         ClaudeV1Contract.INTERNAL_TOKEN_PATH,
                         ClaudeV1Contract.INTERNAL_REVOKE_PATH))
+        .securityContext(context -> context.securityContextRepository(contextRepository))
         .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                        ClaudeV1Contract.INTERNAL_CONNECT_ANT_PATH,
-                        ClaudeV1Contract.INTERNAL_CONNECT_PATH,
                         ClaudeV1Contract.INTERNAL_PRIVACY_PATH,
                         ClaudeV1Contract.INTERNAL_PROTECTED_RESOURCE_METADATA_PATH,
                         ClaudeV1Contract.INTERNAL_AUTH_SERVER_METADATA_PATH,
                         ClaudeV1Contract.INTERNAL_TOKEN_PATH,
                         ClaudeV1Contract.INTERNAL_REVOKE_PATH).permitAll()
                 .anyRequest().authenticated())
-        // The host check runs first; the binding filter runs directly after the security context
+        // The host check runs first; the app filter runs directly after the security context
         // is loaded, which is well before the authorization endpoint filter reads it.
         .addFilterBefore(new ClaudeV1HostBoundaryFilter(properties), SecurityContextHolderFilter.class)
         .addFilterAfter(new ClaudeV1RequestSizeFilter(properties), ClaudeV1HostBoundaryFilter.class)
@@ -278,7 +284,7 @@ public class ClaudeV1OAuthConfiguration {
                 new ClaudeV1OAuthResourceValidationFilter(properties.getPublicMcpUrl()),
                 ClaudeV1OAuthBoundaryFilter.class)
         .addFilterAfter(
-                new ClaudeV1BindingAuthenticationFilter(bindingService, cimdValidator, properties),
+                appAuthenticationFilter,
                 ClaudeV1OAuthResourceValidationFilter.class);
 
         return http.build();
@@ -325,20 +331,6 @@ public class ClaudeV1OAuthConfiguration {
                     }));
 
         return http.build();
-    }
-
-    private static CookieCsrfTokenRepository claudeV1CsrfTokenRepository() {
-        CookieCsrfTokenRepository repository = new CookieCsrfTokenRepository();
-        repository.setCookieName(ClaudeV1Contract.CSRF_COOKIE_NAME);
-        repository.setHeaderName(ClaudeV1Contract.CSRF_HEADER_NAME);
-        repository.setParameterName(ClaudeV1Contract.CSRF_PARAMETER_NAME);
-        repository.setCookiePath("/");
-        repository.setCookieCustomizer(cookie -> cookie
-                .path("/")
-                .secure(true)
-                .httpOnly(true)
-                .sameSite("Strict"));
-        return repository;
     }
 
     private static String connectorRequestUri(jakarta.servlet.http.HttpServletRequest request) {

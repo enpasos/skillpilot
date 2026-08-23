@@ -34,7 +34,8 @@ class RequestLoggingFilterTest {
                 "/api/claude/oauth2/token",
                 "/api/openai/v1/oauth2/token",
                 "/api/openai/v1/oauth2/revoke",
-                "/api/ui/learners/learner-42/openai/v1/launch"
+                "/api/ui/learners/learner-42/openai/v1/launch",
+                "/api/ui/learners/learner-42/claude/v1/launch"
         }) {
             MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
             request.setContentType("application/x-www-form-urlencoded");
