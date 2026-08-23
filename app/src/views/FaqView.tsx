@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 
 import { LanguageToggle } from '../components/LanguageToggle'
+import { CoachProviderMatrix } from '../components/CoachProviderMatrix'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -61,9 +62,11 @@ export const FaqView: React.FC = () => {
         />
         <p className="mb-8 text-sm text-text-secondary">{copy.reviewedLabel}</p>
 
+        <CoachProviderMatrix language={language === 'en' ? 'en' : 'de'} />
+
         <section
           aria-labelledby="faq-recommendation-title"
-          className="rounded-3xl border border-emerald-300 bg-emerald-50/90 p-6 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/30 sm:p-8"
+          className="mt-12 rounded-3xl border border-emerald-300 bg-emerald-50/90 p-6 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/30 sm:p-8"
         >
           <div className="flex gap-4">
             <CheckCircle2

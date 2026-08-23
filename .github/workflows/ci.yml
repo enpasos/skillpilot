@@ -130,10 +130,11 @@ jobs:
             backend/src/main/resources/claude-connector-v1/mcp-apps
       - name: Audit Claude MCP App dependencies
         run: npm --prefix ai/claude/app audit --audit-level=moderate
-      - name: Validate optional Claude plugin package
+      - name: Validate Claude plugin package
         run: |
           node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+          node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
       - name: Validate Claude Connector V1 release dossier
         run: |
           node scripts/check_claude_connector_v1_release.mjs

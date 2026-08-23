@@ -59,9 +59,9 @@ export interface FaqViewCopy {
 
 const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
-  title: 'SkillPilot Coach mit ChatGPT verwenden',
-  subtitle: 'So nutzt du den Lerncoach zuverlässig auf Computer, Tablet und Smartphone.',
-  reviewedLabel: 'Kompatibilitätsstand: 7. August 2026',
+  title: 'SkillPilot Coach: passende Variante wählen',
+  subtitle: 'Vergleiche ChatGPT und Claude – und nutze anschließend den für dich freigegebenen Weg.',
+  reviewedLabel: 'Kompatibilitätsstand: 23. August 2026',
   recommendation: {
     eyebrow: 'Empfohlener Weg',
     title: 'ChatGPT im Browser verwenden – auf allen Geräten',
@@ -88,8 +88,8 @@ const germanCopy: FaqViewCopy = {
     recoveryClosing: 'Arbeite nicht einfach im bisherigen Chat weiter.',
   },
   compatibility: {
-    title: 'Kompatibilität auf einen Blick',
-    intro: 'Die Angaben beschreiben die von SkillPilot derzeit getesteten und empfohlenen Kombinationen.',
+    title: 'ChatGPT-Gerätekompatibilität auf einen Blick',
+    intro: 'Die Angaben beschreiben die von SkillPilot derzeit getesteten und empfohlenen ChatGPT-Kombinationen.',
     featureHeading: 'Funktion',
     statusHeading: 'Status',
     recommendationHeading: 'Empfehlung',
@@ -267,9 +267,9 @@ const germanCopy: FaqViewCopy = {
 
 const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
-  title: 'Using SkillPilot Coach with ChatGPT',
-  subtitle: 'How to use the learning coach reliably on a computer, tablet, or smartphone.',
-  reviewedLabel: 'Compatibility status: August 7, 2026',
+  title: 'SkillPilot Coach: choose the right setup',
+  subtitle: 'Compare ChatGPT and Claude, then use the path currently enabled for you.',
+  reviewedLabel: 'Compatibility status: August 23, 2026',
   recommendation: {
     eyebrow: 'Recommended setup',
     title: 'Use ChatGPT in a browser – on every device',
@@ -296,8 +296,8 @@ const englishCopy: FaqViewCopy = {
     recoveryClosing: 'Do not simply continue working in the previous chat.',
   },
   compatibility: {
-    title: 'Compatibility at a glance',
-    intro: 'This table describes the combinations currently tested and recommended by SkillPilot.',
+    title: 'ChatGPT device compatibility at a glance',
+    intro: 'This table describes the ChatGPT combinations currently tested and recommended by SkillPilot.',
     featureHeading: 'Feature',
     statusHeading: 'Status',
     recommendationHeading: 'Recommendation',
