@@ -145,7 +145,7 @@ class ClaudeV1CrossProviderIsolationTest {
     void expiringAClaudeLearningSessionDoesNotTouchLearnerStateOrOtherLanes() {
         long revisionBefore = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
 
-        connectionRepository.deleteExpired(java.time.Instant.MAX);
+        connectionRepository.deleteExpired(java.time.Instant.now().plus(java.time.Duration.ofHours(25)));
 
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         assertEquals(revisionBefore, learner.getCoachStateRevision());
