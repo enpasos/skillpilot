@@ -18,7 +18,7 @@ const expectedTools = [
   "record_skillpilot_verified_recall_results",
   "get_skillpilot_exam_evaluation",
 ];
-const publicationFiles = [
+export const publicationFiles = [
   ".claude-plugin/plugin.json",
   ".mcp.json",
   "SETUP.md",
@@ -79,7 +79,9 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const skillText = text.get("skills/skillpilot-coach-v1/SKILL.md");
+  const setupText = text.get("SETUP.md");
   const normalizedSkillText = skillText.replace(/\s+/gu, " ");
+  const normalizedSetupText = setupText.replace(/\s+/gu, " ");
   const frontmatter = parseFrontmatter(skillText);
   check(frontmatter !== null, "SKILL.md must start with YAML frontmatter.");
   if (frontmatter) {
@@ -114,6 +116,11 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(normalizedSkillText.includes("private MCP App"), "SKILL.md must keep normal memory-card content inside the private app.");
   check(normalizedSkillText.includes("must never call `review_skillpilot_memory_practice_card`"), "SKILL.md must keep card review app-only.");
   check(normalizedSkillText.includes("does not establish mastery"), "SKILL.md must separate normal memory practice from mastery.");
+  check(normalizedSetupText.includes("skillpilot-coach-v1.plugin"), "SETUP.md must document the integrated .plugin upload.");
+  check(
+    normalizedSetupText.includes("Do not enable the bundled and standalone variants at the same time"),
+    "SETUP.md must prevent duplicate bundled and standalone installations.",
+  );
 
   return { errors, toolCount: expectedTools.length };
 }

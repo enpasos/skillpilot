@@ -1,42 +1,37 @@
 # Set up SkillPilot Coach
 
-## Simplest start for everyone
+## Recommended integrated install
 
-Use the **SkillPilot** connector from Claude's Connectors Directory. The remote
-connector is the universal distribution route for Claude.ai, Desktop, Mobile,
-Cowork and Claude Code, subject to Anthropic's current product and workspace
-availability.
+The **SkillPilot Coach** plugin bundles this coaching Skill and the remote
+SkillPilot connector into one installation. Anthropic currently documents
+plugins for paid Claude plans in web Chat, the Chat tab in Claude Desktop and
+Claude Cowork.
 
-1. Connect **SkillPilot** from the Connectors Directory.
-2. Start a new chat and ask Claude to use SkillPilot.
-3. Complete the SkillPilot sign-in page when Claude opens it. Select the encrypted
+1. If a separately uploaded SkillPilot Skill or custom SkillPilot connector is
+   already active, disable it before installing the plugin. Do not enable the
+   bundled and standalone variants at the same time.
+2. Until the public directory entry is available, open **Customize > Plugins**
+   and upload `skillpilot-coach-v1.plugin`. After publication, browse for
+   **SkillPilot Coach** there and select **Install** instead.
+3. Start a new chat and ask Claude to use SkillPilot.
+4. Complete the SkillPilot sign-in page when Claude opens it. Select the encrypted
    `.skillpilot` file there and enter its password there. Never paste the file,
    password, authorization code, or token into the chat.
-4. Start with:
+5. Start with:
 
    > Lade mit SkillPilot meinen aktuellen Lernkontext. Fasse mein aktives
    > Lernziel zusammen und schlage den nächsten sinnvollen Schritt vor.
 
 The connection always requires OAuth. It needs no custom request headers and no
-manually registered client ID.
+manually registered client ID. A personally uploaded plugin may remain local to
+the Claude client that imported it; public cross-client availability is a
+separate directory-publication gate.
 
-## Optional plugin for Claude Code and Cowork
+## Standalone fallback
 
-The **SkillPilot Coach** plugin adds the reusable coaching Skill from this
-package and points at the same remote connector. It is an optional companion for
-Claude Code and Cowork, not the installation route for Claude.ai, Desktop or
-Mobile. When both the Directory connector and the plugin are available, they
-address the same MCP server and must not be presented as two independent
-SkillPilot tool sets.
-
-After the plugin is published, install **SkillPilot Coach** from the plugin
-directory, start a fresh Claude Code or Cowork conversation, and complete the
-same OAuth flow when prompted.
-
-## Manual connector fallback
-
-Until the Connector Directory entry is available, or when diagnosing installation,
-open **Customize > Connectors > Add custom connector** and use:
+On a Claude plan or surface where plugin installation is unavailable, install
+the standalone Skill ZIP and open **Customize > Connectors > Add custom
+connector** with:
 
 - URL: `https://mcp-claude-v1.skillpilot.com/mcp`
 - Authentication: **Always required**
@@ -46,9 +41,11 @@ open **Customize > Connectors > Add custom connector** and use:
 Complete the same browser-based SkillPilot connection flow. The file password
 stays on that SkillPilot page and is not a chat credential.
 
-The connector currently targets adult users aged 18 or older. Availability of
-custom connectors and plugins on a particular Claude surface or plan is governed
-by Anthropic.
+Do not additionally install this fallback when the full plugin is active. The
+connector currently targets adult users aged 18 or older. Availability of custom
+connectors, Skills and plugins on a particular Claude surface or plan is
+governed by Anthropic. This package does not claim native mobile-plugin support;
+use only a route that the current client actually offers.
 
 ## If no learning context is available
 
@@ -65,13 +62,15 @@ Run the repository-local structural check and tests:
 ```bash
 node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
 node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
+node ai/claude/plugin/skillpilot-coach-v1/build-package.mjs
 ```
 
 Before publication, also run the official Anthropic check in an environment with
 the Claude CLI installed:
 
 ```bash
-claude plugin validate ai/claude/plugin/skillpilot-coach-v1
+claude plugin validate ai/claude/plugin/skillpilot-coach-v1 --strict
 ```
 
 The local check does not replace that external release gate or a real Claude OAuth

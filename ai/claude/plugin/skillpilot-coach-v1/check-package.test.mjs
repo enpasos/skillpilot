@@ -49,6 +49,19 @@ test("rejects incomplete coverage of the twelve-tool contract", () => {
   });
 });
 
+test("rejects loss of the duplicate-installation boundary", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replace(
+      /Do not enable the\s+bundled and standalone variants at the same time/u,
+      "Both variants may be enabled at the same time",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /duplicate bundled and standalone installations/u,
+    );
+  });
+});
+
 function withPackageCopy(callback) {
   const root = mkdtempSync(resolve(tmpdir(), "skillpilot-claude-plugin-"));
   try {
