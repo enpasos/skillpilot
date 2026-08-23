@@ -80,6 +80,16 @@ assert(
   'Claude Free is not presented as plugin-capable',
 )
 assert(
+  row(de, 'single-bundle').cells['claude-free'].status === 'planned'
+    && row(de, 'single-bundle').cells['claude-free'].value.includes('Custom Connector'),
+  'Claude Free shows the separate skill plus one custom connector route after SkillPilot approval',
+)
+assert(
+  row(de, 'single-bundle').cells['claude-pro-max'].value.includes('Plugin bevorzugt')
+    && row(de, 'single-bundle').cells['claude-team-enterprise'].value.includes('Plugin bevorzugt'),
+  'paid Claude plans prefer the integrated plugin route',
+)
+assert(
   row(de, 'minimum-age').cells['chatgpt-plus-pro'].value.includes('13')
     && row(de, 'minimum-age').cells['chatgpt-plus-pro'].note?.includes('18'),
   'the ChatGPT consumer age and guardian-consent boundary is visible',
@@ -89,9 +99,10 @@ assert(
   'the Claude account age boundary is visible',
 )
 assert(
-  row(de, 'rollout-status').cells['claude-pro-max'].status === 'planned'
+  row(de, 'rollout-status').cells['claude-free'].status === 'planned'
+    && row(de, 'rollout-status').cells['claude-pro-max'].status === 'planned'
     && row(de, 'rollout-status').cells['claude-team-enterprise'].status === 'planned',
-  'paid Claude plans remain a paused SkillPilot rollout',
+  'every Claude setup route remains a paused SkillPilot rollout',
 )
 assert(
   row(de, 'permanent-id-boundary').cells['chatgpt-plus-pro'].status === 'tested'
@@ -99,9 +110,16 @@ assert(
   'the tested ChatGPT path keeps the permanent ID at SkillPilot and uses an absolute session',
 )
 assert(
-  row(de, 'permanent-id-boundary').cells['claude-pro-max'].status === 'planned'
+  row(de, 'permanent-id-boundary').cells['claude-free'].status === 'planned'
+    && row(de, 'permanent-id-boundary').cells['claude-pro-max'].status === 'planned'
     && row(de, 'absolute-session').cells['claude-pro-max'].status === 'planned',
   'the secure Claude identity and session boundary is not shown as released',
+)
+assert(
+  row(de, 'learning-context').cells['claude-free'].status === 'planned'
+    && row(de, 'goal-visualization').cells['claude-free'].status === 'planned'
+    && row(de, 'memory-practice-ui').cells['claude-free'].status === 'planned',
+  'Claude Free learning and connector UI features are planned rather than incorrectly blocked by plugin availability',
 )
 assert(
   row(de, 'mobile-browser').cells['claude-pro-max'].status === 'planned'
@@ -128,6 +146,17 @@ assert(
 for (const copy of [de, en]) {
   assert(copy.asOf.includes('23') && copy.asOf.includes('2026'), 'the matrix has an explicit review date')
   assert(copy.sources.length >= 6, 'the matrix links provider feature and minimum-age sources')
+  assert(
+    copy.sources.some(source => source.id === 'anthropic-skills')
+      && copy.sources.some(source => source.id === 'anthropic-custom-connectors')
+      && copy.sources.some(source => source.id === 'anthropic-org-plugins'),
+    'the matrix cites the official Claude skill, custom connector, and organization plugin rules',
+  )
+  assert(
+    copy.bundleText.toLowerCase().includes('plugin')
+      && copy.bundleText.toLowerCase().includes('connector'),
+    'the setup guidance presents the plugin as standard and the connector as the UI provider',
+  )
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
       && (source.href.includes('openai.com') || source.href.includes('claude.com'))),
