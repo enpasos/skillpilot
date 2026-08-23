@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowLeft,
+  ArrowRight,
   Check,
   CheckCircle2,
   ChevronDown,
@@ -11,7 +12,6 @@ import {
 } from 'lucide-react'
 
 import { LanguageToggle } from '../components/LanguageToggle'
-import { CoachProviderMatrix } from '../components/CoachProviderMatrix'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -62,8 +62,6 @@ export const FaqView: React.FC = () => {
         />
         <p className="mb-8 text-sm text-text-secondary">{copy.reviewedLabel}</p>
 
-        <CoachProviderMatrix language={language === 'en' ? 'en' : 'de'} />
-
         <section
           aria-labelledby="faq-recommendation-title"
           className="mt-12 rounded-3xl border border-emerald-300 bg-emerald-50/90 p-6 shadow-sm dark:border-emerald-800 dark:bg-emerald-950/30 sm:p-8"
@@ -86,6 +84,13 @@ export const FaqView: React.FC = () => {
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
+              <Link
+                to="/"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 font-semibold text-white transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:focus-visible:ring-offset-emerald-950"
+              >
+                {copy.recommendation.actionLabel}
+                <ArrowRight size={18} aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </section>
@@ -209,6 +214,15 @@ export const FaqView: React.FC = () => {
                     <ul className="list-disc space-y-2 pl-5">
                       {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
                     </ul>
+                  )}
+                  {item.link && (
+                    <Link
+                      to={item.link.href}
+                      className="inline-flex items-center gap-2 rounded-lg font-semibold text-sky-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-chat-bg dark:text-sky-400"
+                    >
+                      {item.link.label}
+                      <ArrowRight size={18} aria-hidden="true" />
+                    </Link>
                   )}
                 </div>
               </details>

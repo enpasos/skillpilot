@@ -40,6 +40,11 @@ assert(
   'both languages tell learners to recover in a new SkillPilot chat',
 )
 assert(
+  de.recommendation.actionLabel.includes('SkillPilot')
+    && en.recommendation.actionLabel.includes('SkillPilot'),
+  'both languages provide a direct learner-facing return to SkillPilot',
+)
+assert(
   de.compatibility.rows.find(row => row.id === 'browser-mobile')?.status === 'recommended'
     && en.compatibility.rows.find(row => row.id === 'browser-mobile')?.status === 'recommended',
   'both languages recommend the mobile browser',
@@ -53,13 +58,73 @@ const deContinueOnPhone = de.questions.find(question => question.id === 'continu
 const enContinueOnPhone = en.questions.find(question => question.id === 'continue-on-phone')
 assert(
   deContinueOnPhone?.paragraphs.some(paragraph => paragraph.includes('denselben bestehenden Chat'))
-    && deContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('Lernsession-ID')),
-  'German copy keeps the existing chat and its learning session ID when moving to a phone',
+    && deContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('24 Stunden')),
+  'German copy keeps the same chat within the 24-hour learning session when moving to a phone',
 )
 assert(
   enContinueOnPhone?.paragraphs.some(paragraph => paragraph.includes('same existing chat'))
-    && enContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('learning session ID')),
-  'English copy keeps the existing chat and its learning session ID when moving to a phone',
+    && enContinueOnPhone.paragraphs.some(paragraph => paragraph.includes('24 hours')),
+  'English copy keeps the same chat within the 24-hour learning session when moving to a phone',
+)
+
+const deProviderOptions = de.questions.find(question => question.id === 'provider-options')
+const enProviderOptions = en.questions.find(question => question.id === 'provider-options')
+assert(
+  deProviderOptions?.link?.href === '/faq/coach-setup'
+    && enProviderOptions?.link?.href === '/faq/coach-setup',
+  'both languages link the setup question to the learner-facing detail page',
+)
+assert(
+  Boolean(deProviderOptions?.link?.label) && Boolean(enProviderOptions?.link?.label),
+  'the setup detail link has a learner-facing label in both languages',
+)
+
+const deSession = de.questions.find(question => question.id === 'session-duration')
+const enSession = en.questions.find(question => question.id === 'session-duration')
+assert(
+  deSession?.paragraphs.some(paragraph => paragraph.includes('24 Stunden'))
+    && deSession.paragraphs.some(paragraph => paragraph.includes('nicht mit anderen')),
+  'German FAQ explains the session duration and that the learner should not share access',
+)
+assert(
+  enSession?.paragraphs.some(paragraph => paragraph.includes('24 hours'))
+    && enSession.paragraphs.some(paragraph => paragraph.includes('not share')),
+  'English FAQ explains the session duration and that the learner should not share access',
+)
+
+const dePhotoUpload = de.questions.find(question => question.id === 'photo-upload')
+const enPhotoUpload = en.questions.find(question => question.id === 'photo-upload')
+assert(
+  dePhotoUpload?.paragraphs.some(paragraph => paragraph.includes('persönliche Angaben'))
+    && enPhotoUpload?.paragraphs.some(paragraph => paragraph.includes('personal information')),
+  'both languages tell learners to remove personal information before uploading a photo',
+)
+
+for (const copy of [de, en]) {
+  const serialized = JSON.stringify(copy).toLowerCase()
+  for (const forbidden of [
+    'skillpilot-id',
+    'skillpilotid',
+    'session id',
+    'session-id',
+    'stateversion',
+    'oauth',
+    'mcp',
+    'connector',
+    'workspace',
+    'anbieter-konto',
+    'provider account',
+    'eingebettete',
+    'embedded',
+  ]) {
+    assert(!serialized.includes(forbidden), `learner FAQ does not expose ${forbidden}`)
+  }
+}
+
+assert(
+  !JSON.stringify(de).includes('Der Inhalt ist dadurch nicht falsch')
+    && !JSON.stringify(en).includes('The content is not wrong'),
+  'formula-display guidance does not guarantee that the mathematical content is correct',
 )
 
 console.log('FAQ view copy tests passed')

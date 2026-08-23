@@ -59,7 +59,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
   return (
     <section
       aria-labelledby="coach-provider-matrix-title"
-      className="relative left-1/2 mt-12 w-[calc(100vw-2rem)] max-w-[1800px] -translate-x-1/2 sm:w-[calc(100vw-3rem)] lg:w-[calc(100vw-5rem)]"
+      className="mt-8 w-full"
     >
       <div className="rounded-3xl border border-border-color bg-white/60 p-5 shadow-sm dark:bg-slate-900/40 sm:p-7">
         <div className="max-w-4xl">
@@ -85,12 +85,12 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
 
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           <aside className="rounded-2xl border border-sky-200 bg-sky-50/80 p-5 dark:border-sky-800 dark:bg-sky-950/30">
-            <h3 className="font-semibold text-sky-900 dark:text-sky-200">{copy.bundleTitle}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">{copy.bundleText}</p>
+            <h3 className="font-semibold text-sky-900 dark:text-sky-200">{copy.startTitle}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">{copy.startText}</p>
           </aside>
           <aside className="rounded-2xl border border-amber-300 bg-amber-50/90 p-5 dark:border-amber-700 dark:bg-amber-950/30">
-            <h3 className="font-semibold text-amber-900 dark:text-amber-200">{copy.rolloutTitle}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">{copy.rolloutText}</p>
+            <h3 className="font-semibold text-amber-900 dark:text-amber-200">{copy.privacyTitle}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">{copy.privacyText}</p>
           </aside>
         </div>
 
@@ -112,6 +112,7 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
                     value={provider}
                     checked={isSelected}
                     onChange={() => setSelectedProvider(provider)}
+                    aria-controls="coach-provider-results"
                     className="peer sr-only"
                   />
                   <span
@@ -127,8 +128,9 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
           </div>
         </fieldset>
 
-        <div className="mt-6 space-y-3 sm:hidden">
-          {visibleVariants.map((variant) => (
+        <div id="coach-provider-results">
+          <div className="mt-6 space-y-3 sm:hidden">
+            {visibleVariants.map((variant) => (
             <details
               key={variant.id}
               className={`group rounded-2xl border bg-white/80 shadow-sm dark:bg-slate-950/40 ${variant.badge ? 'border-emerald-400 dark:border-emerald-700' : 'border-border-color'}`}
@@ -173,13 +175,18 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
                 ))}
               </div>
             </details>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="mt-6 hidden overflow-x-auto rounded-2xl border border-border-color bg-white dark:bg-slate-950/50 sm:block">
-          <table
-            className={`${selectedProvider === 'ChatGPT' ? 'min-w-[1260px]' : 'min-w-[1020px]'} w-full border-collapse text-left`}
+          <div
+            className="mt-6 hidden overflow-x-auto rounded-2xl border border-border-color bg-white dark:bg-slate-950/50 sm:block"
+            role="region"
+            aria-label={`${copy.title}: ${selectedProvider}`}
+            tabIndex={0}
           >
+            <table
+              className={`${selectedProvider === 'ChatGPT' ? 'min-w-[1260px]' : 'min-w-[1020px]'} w-full border-collapse text-left`}
+            >
             <caption className="sr-only">{copy.title}</caption>
             <thead>
               <tr>
@@ -239,7 +246,8 @@ export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ lan
                 </React.Fragment>
               ))}
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
 
         <p className="mt-5 max-w-5xl text-sm leading-relaxed text-text-secondary">{copy.caveat}</p>

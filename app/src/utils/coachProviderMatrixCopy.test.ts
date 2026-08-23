@@ -21,12 +21,12 @@ assert(new Set(variantIds).size === variantIds.length, 'provider variant IDs are
 assert(
   de.variants.filter(variant => variant.provider === 'ChatGPT').length === 4
     && en.variants.filter(variant => variant.provider === 'ChatGPT').length === 4,
-  'the ChatGPT provider view contains exactly four plan variants in both languages',
+  'the ChatGPT view contains the four plan labels learners may see',
 )
 assert(
   de.variants.filter(variant => variant.provider === 'Claude').length === 3
     && en.variants.filter(variant => variant.provider === 'Claude').length === 3,
-  'the Claude provider view contains exactly three plan variants in both languages',
+  'the Claude view contains the three plan labels learners may see',
 )
 assert(
   JSON.stringify(ids(de.groups)) === JSON.stringify(ids(en.groups)),
@@ -57,6 +57,8 @@ for (let index = 0; index < deRows.length; index += 1) {
       deRow.cells[variantId].status === enRow.cells[variantId].status,
       `status parity holds for ${deRow.id}/${variantId}`,
     )
+    assert(Boolean(deRow.cells[variantId].value), `German cell ${deRow.id}/${variantId} is not empty`)
+    assert(Boolean(enRow.cells[variantId].value), `English cell ${deRow.id}/${variantId} is not empty`)
   }
 }
 
@@ -69,62 +71,48 @@ const row = (copy: typeof de, id: string) => {
 assert(
   de.variants.find(variant => variant.id === 'chatgpt-plus-pro')?.badge
     && en.variants.find(variant => variant.id === 'chatgpt-plus-pro')?.badge,
-  'ChatGPT Plus/Pro is visibly recommended for individuals in both languages',
+  'ChatGPT Plus/Pro remains visibly recommended for an individual learner',
+)
+assert(
+  variantIds.every(variantId => row(de, 'current-access').cells[variantId].status === 'planned'),
+  'no account variant is presented as publicly released for new learners',
 )
 assert(
   row(de, 'provider-plan').cells['chatgpt-free-go'].status === 'conditional',
-  'ChatGPT Free/Go availability is not presented as guaranteed',
+  'ChatGPT Free/Go is not presented as guaranteed',
 )
 assert(
-  row(de, 'provider-plan').cells['claude-free'].status === 'unavailable',
-  'Claude Free is not presented as plugin-capable',
-)
-assert(
-  row(de, 'single-bundle').cells['claude-free'].status === 'planned'
-    && row(de, 'single-bundle').cells['claude-free'].value.includes('Custom Connector'),
-  'Claude Free shows the separate skill plus one custom connector route after SkillPilot approval',
-)
-assert(
-  row(de, 'single-bundle').cells['claude-pro-max'].value.includes('Plugin bevorzugt')
-    && row(de, 'single-bundle').cells['claude-team-enterprise'].value.includes('Plugin bevorzugt'),
-  'paid Claude plans prefer the integrated plugin route',
+  row(de, 'provider-plan').cells['claude-free'].status === 'planned',
+  'Claude Free remains an undecided future option without exposing deployment architecture',
 )
 assert(
   row(de, 'minimum-age').cells['chatgpt-plus-pro'].value.includes('13')
     && row(de, 'minimum-age').cells['chatgpt-plus-pro'].note?.includes('18'),
-  'the ChatGPT consumer age and guardian-consent boundary is visible',
+  'the ChatGPT learner age and guardian-permission boundary is visible',
 )
 assert(
   row(de, 'minimum-age').cells['claude-pro-max'].value.includes('18'),
-  'the Claude account age boundary is visible',
+  'the Claude learner age boundary is visible',
 )
 assert(
-  row(de, 'rollout-status').cells['claude-free'].status === 'planned'
-    && row(de, 'rollout-status').cells['claude-pro-max'].status === 'planned'
-    && row(de, 'rollout-status').cells['claude-team-enterprise'].status === 'planned',
-  'every Claude setup route remains a paused SkillPilot rollout',
+  row(de, 'minimum-age').cells['chatgpt-business'].status === 'admin'
+    && row(de, 'minimum-age').cells['chatgpt-enterprise-edu'].status === 'admin',
+  'managed ChatGPT accounts point learners to their school or organisation rules',
 )
 assert(
-  row(de, 'permanent-id-boundary').cells['chatgpt-plus-pro'].status === 'tested'
-    && row(de, 'absolute-session').cells['chatgpt-plus-pro'].status === 'tested',
-  'the tested ChatGPT path keeps the permanent ID at SkillPilot and uses an absolute session',
+  row(de, 'start-path').cells['chatgpt-plus-pro'].value.includes('Lernen starten')
+    && row(en, 'start-path').cells['chatgpt-plus-pro'].value.includes('Start Learning'),
+  'both languages direct learners to the first-party start action',
 )
 assert(
-  row(de, 'permanent-id-boundary').cells['claude-free'].status === 'planned'
-    && row(de, 'permanent-id-boundary').cells['claude-pro-max'].status === 'planned'
-    && row(de, 'absolute-session').cells['claude-pro-max'].status === 'planned',
-  'the secure Claude identity and session boundary is not shown as released',
+  row(de, 'session-duration').cells['chatgpt-plus-pro'].value.includes('24 Stunden')
+    && row(en, 'session-duration').cells['chatgpt-plus-pro'].value.includes('24 hours'),
+  'the absolute 24-hour learning-session boundary is visible',
 )
 assert(
-  row(de, 'learning-context').cells['claude-free'].status === 'planned'
-    && row(de, 'goal-visualization').cells['claude-free'].status === 'planned'
-    && row(de, 'memory-practice-ui').cells['claude-free'].status === 'planned',
-  'Claude Free learning and connector UI features are planned rather than incorrectly blocked by plugin availability',
-)
-assert(
-  row(de, 'mobile-browser').cells['claude-pro-max'].status === 'planned'
-    && row(de, 'mobile-browser').cells['claude-pro-max'].value.includes('Vorläufer'),
-  'the manual Claude mobile test is caveated as predecessor evidence, not a release',
+  row(de, 'privacy-boundary').cells['chatgpt-plus-pro'].note?.includes('nicht mit anderen')
+    && row(en, 'privacy-boundary').cells['chatgpt-plus-pro'].note?.includes('not share'),
+  'the matrix tells learners not to share their prepared start or chat',
 )
 assert(
   variantIds.every(variantId => row(de, 'native-mobile-app').cells[variantId].status === 'unavailable'),
@@ -134,37 +122,68 @@ assert(
   variantIds.every(variantId => row(de, 'voice-mode').cells[variantId].status === 'unavailable'),
   'continuous voice mode is not advertised as a supported SkillPilot path',
 )
-assert(
-  deRows.every(matrixRow => matrixRow.cells['chatgpt-business'].status !== 'tested'),
-  'personal ChatGPT evidence is not presented as a plan-specific Business test',
-)
-assert(
-  deRows.every(matrixRow => matrixRow.cells['chatgpt-enterprise-edu'].status !== 'tested'),
-  'personal ChatGPT evidence is not presented as a plan-specific Enterprise/Edu test',
-)
+for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
+  assert(
+    deRows.every(matrixRow => matrixRow.cells[managedVariant].status !== 'tested')
+      && enRows.every(matrixRow => matrixRow.cells[managedVariant].status !== 'tested'),
+    `${managedVariant} does not inherit evidence from a personal ChatGPT account`,
+  )
+}
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('23') && copy.asOf.includes('2026'), 'the matrix has an explicit review date')
-  assert(copy.sources.length >= 6, 'the matrix links provider feature and minimum-age sources')
-  assert(
-    copy.sources.some(source => source.id === 'anthropic-skills')
-      && copy.sources.some(source => source.id === 'anthropic-custom-connectors')
-      && copy.sources.some(source => source.id === 'anthropic-org-plugins'),
-    'the matrix cites the official Claude skill, custom connector, and organization plugin rules',
-  )
-  assert(
-    copy.bundleText.toLowerCase().includes('plugin')
-      && copy.bundleText.toLowerCase().includes('connector'),
-    'the setup guidance presents the plugin as standard and the connector as the UI provider',
-  )
+  assert(copy.asOf.includes('23') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
+  assert(copy.sources.length === 4, 'the matrix links only learner-relevant access and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
       && (source.href.includes('openai.com') || source.href.includes('claude.com'))),
     'every matrix source is an official HTTPS provider URL',
   )
-  const serialized = JSON.stringify(copy)
-  for (const forbidden of ['skillpilotId', 'stateVersion', 'expectedStateVersion', 'clientRequestId']) {
-    assert(!serialized.includes(forbidden), `learner-facing matrix copy does not expose ${forbidden}`)
+  const visibleText = [
+    copy.title,
+    copy.intro,
+    copy.asOf,
+    copy.featureHeading,
+    copy.mobileFeatureHeading,
+    copy.providerFilterLabel,
+    copy.providerFilterHint,
+    copy.legendLabel,
+    copy.startTitle,
+    copy.startText,
+    copy.privacyTitle,
+    copy.privacyText,
+    copy.caveat,
+    copy.sourcesTitle,
+    copy.sourcesNote,
+    ...Object.values(copy.statusLabels),
+    ...copy.variants.flatMap(variant => [variant.provider, variant.plan, variant.badge, variant.summary]),
+    ...copy.groups.flatMap(group => [
+      group.title,
+      ...group.rows.flatMap(matrixRow => [
+        matrixRow.feature,
+        ...Object.values(matrixRow.cells).flatMap(matrixCell => [matrixCell.value, matrixCell.note]),
+      ]),
+    ]),
+    ...copy.sources.map(source => source.label),
+  ].filter(Boolean).join('\n').toLowerCase()
+  for (const forbidden of [
+    'review',
+    'rollout',
+    'evidence',
+    'connector',
+    'mcp',
+    'workspace',
+    'operator',
+    'betreiber',
+    'oauth',
+    'stateversion',
+    'expectedstateversion',
+    'clientrequestid',
+    'skillpilotid',
+    'directory-eintrag',
+    'codeausführung',
+    'code execution',
+  ]) {
+    assert(!visibleText.includes(forbidden), `learner-facing matrix copy does not expose ${forbidden}`)
   }
 }
 

@@ -39,6 +39,7 @@ const REPOSITORY_AUTHORING_PATHS = [
 const PUBLIC_PATHS = new Set([
   '/curricula',
   '/faq',
+  '/faq/coach-setup',
   '/privacy',
   '/imprint',
   '/legal',
@@ -58,6 +59,7 @@ const LearnerView = lazy(() => import('./views/LearnerView').then((module) => ({
 const TrainerView = lazy(() => import('./views/TrainerView').then((module) => ({ default: module.TrainerView })))
 const LegalView = lazy(() => import('./views/LegalView').then((module) => ({ default: module.LegalView })))
 const FaqView = lazy(() => import('./views/FaqView').then((module) => ({ default: module.FaqView })))
+const CoachProviderMatrixView = lazy(() => import('./views/CoachProviderMatrixView').then((module) => ({ default: module.CoachProviderMatrixView })))
 const PrivacyView = lazy(() => import('./views/PrivacyView').then((module) => ({ default: module.PrivacyView })))
 const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({ default: module.ImprintView })))
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
@@ -496,6 +498,10 @@ const App: React.FC = () => {
       language === 'en'
         ? 'Recommended devices, supported ChatGPT modes, and troubleshooting for SkillPilot Coach.'
         : 'Empfohlene Geräte, unterstützte ChatGPT-Modi und Problemlösungen für SkillPilot Coach.'
+    const coachSetupDescription =
+      language === 'en'
+        ? 'Learner-focused comparison of SkillPilot access options, age limits, safe starting, and supported devices.'
+        : 'Lernendengerechter Vergleich von SkillPilot-Zugängen, Altersgrenzen, sicherem Start und unterstützten Geräten.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -589,6 +595,9 @@ const App: React.FC = () => {
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
+      } else if (path === '/faq/coach-setup') {
+        title = `${language === 'en' ? 'Access options' : 'Zugang und Varianten'} | ${baseTitle}`
+        description = coachSetupDescription
       } else if (path === '/faq') {
         title = `${t.startPage.links.faq} | ${baseTitle}`
         description = faqDescription
@@ -700,6 +709,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
             <Route path="/faq" element={<FaqView />} />
+            <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
             <Route path="/legal" element={<LegalView />} />
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />
@@ -931,6 +941,7 @@ const App: React.FC = () => {
         />
         <Route path="/legal" element={<LegalView />} />
         <Route path="/faq" element={<FaqView />} />
+        <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />

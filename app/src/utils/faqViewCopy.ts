@@ -14,6 +14,10 @@ export interface FaqQuestionCopy {
   question: string
   paragraphs: string[]
   bullets?: string[]
+  link?: {
+    href: string
+    label: string
+  }
 }
 
 export interface FaqViewCopy {
@@ -25,6 +29,7 @@ export interface FaqViewCopy {
     eyebrow: string
     title: string
     paragraphs: string[]
+    actionLabel: string
   }
   warning: {
     eyebrow: string
@@ -59,17 +64,18 @@ export interface FaqViewCopy {
 
 const germanCopy: FaqViewCopy = {
   backToApp: 'Zurück zu SkillPilot',
-  title: 'SkillPilot Coach: passende Variante wählen',
-  subtitle: 'Vergleiche ChatGPT und Claude – und nutze anschließend den für dich freigegebenen Weg.',
-  reviewedLabel: 'Kompatibilitätsstand: 23. August 2026',
+  title: 'Häufige Fragen zu SkillPilot',
+  subtitle: 'So startest du eine Lernsession, lernst auf verschiedenen Geräten und löst typische Probleme.',
+  reviewedLabel: 'Stand: 23. August 2026',
   recommendation: {
     eyebrow: 'Empfohlener Weg',
     title: 'ChatGPT im Browser verwenden – auf allen Geräten',
     paragraphs: [
       'Öffne den SkillPilot Coach in ChatGPT im Browser. Das ist der von SkillPilot getestete und empfohlene Weg auf PC, Mac, Tablet und Smartphone.',
-      'Starte den Coach über „Lernen starten“ in SkillPilot. Dabei wird ein neuer Chat vorbereitet und die zugehörige SkillPilot-Lernsession-ID an den Chat übergeben.',
+      'Starte den Coach über „Lernen starten“ in SkillPilot. Dabei wird ein neuer Chat mit einer Lernsession vorbereitet, die 24 Stunden gültig ist.',
       'Auf Smartphones und Tablets kannst du ChatGPT zusätzlich auf dem Startbildschirm speichern, sofern dein Browser diese Funktion anbietet. Du erhältst dann ein eigenes Symbol und verwendest weiterhin die empfohlene Browser-Version.',
     ],
+    actionLabel: 'Jetzt in SkillPilot lernen',
   },
   warning: {
     eyebrow: 'Wichtige Einschränkung',
@@ -163,8 +169,20 @@ const germanCopy: FaqViewCopy = {
     ],
   },
   faqTitle: 'Häufige Fragen',
-  faqIntro: 'Antworten zur Nutzung von SkillPilot mit ChatGPT auf unterschiedlichen Geräten.',
+  faqIntro: 'Antworten zum Start, zum Lernen auf verschiedenen Geräten und zu typischen Problemen.',
   questions: [
+    {
+      id: 'provider-options',
+      question: 'Welches ChatGPT- oder Claude-Konto brauche ich?',
+      paragraphs: [
+        'Für dein tägliches Lernen musst du keine Tariftabelle lesen. Diese Frage ist nur wichtig, wenn du SkillPilot zum ersten Mal einrichtest oder dein ChatGPT- oder Claude-Konto wechselst.',
+        'Die Detailübersicht zeigt dir in verständlicher Sprache, welche Konten grundsätzlich infrage kommen, welche Altersgrenzen gelten und welche Wege SkillPilot bereits freigegeben hat.',
+      ],
+      link: {
+        href: '/faq/coach-setup',
+        label: 'Zugang und Varianten vergleichen',
+      },
+    },
     {
       id: 'smartphone',
       question: 'Kann ich SkillPilot Coach auf meinem Smartphone verwenden?',
@@ -177,8 +195,16 @@ const germanCopy: FaqViewCopy = {
       id: 'continue-on-phone',
       question: 'Kann ich einen auf dem Computer begonnenen Chat am Handy fortsetzen?',
       paragraphs: [
-        'Ja. Öffne auf dem Smartphone denselben bestehenden Chat in ChatGPT im Browser oder in der vom Browser gespeicherten Web-App. Der Chat enthält bereits die SkillPilot-Lernsession-ID, die beim Start über „Lernen starten“ übergeben wurde.',
+        'Ja. Öffne auf dem Smartphone denselben bestehenden Chat in ChatGPT im Browser oder in der vom Browser gespeicherten Web-App. Das funktioniert innerhalb der 24 Stunden, für die deine Lernsession gültig ist.',
         'Das ist beispielsweise praktisch, wenn du am Computer lernst und anschließend mit der Handykamera ein Foto deiner Lösung hochladen möchtest. Öffne den Chat dafür nicht in der nativen ChatGPT-App.',
+      ],
+    },
+    {
+      id: 'session-duration',
+      question: 'Wie lange kann ich einen SkillPilot-Chat verwenden?',
+      paragraphs: [
+        'Eine über „Lernen starten“ erzeugte Lernsession ist 24 Stunden gültig. Danach kannst du den bisherigen Chat weiterhin lesen, aber SkillPilot kann dort nicht mehr zuverlässig auf deinen aktuellen Lernstand zugreifen.',
+        'Wähle dann in SkillPilot erneut „Lernen starten“ und beginne einen neuen Chat. Teile die vorbereitete Startnachricht und deinen Lernchat nicht mit anderen Personen.',
       ],
     },
     {
@@ -194,7 +220,8 @@ const germanCopy: FaqViewCopy = {
       question: 'Kann ich eine handschriftliche Aufgabe fotografieren?',
       paragraphs: [
         'Ja. Wenn ChatGPT in deinem normalen Textchat einen Upload anbietet, kannst du eine Rechnung, ein Diagramm oder einen handschriftlichen Lösungsweg fotografieren und das Bild hochladen. Der Coach kann es dann in die weitere Unterhaltung einbeziehen.',
-        'Wenn der Chat auf deinem Computer läuft, öffne genau diesen Chat auf dem Smartphone im Browser oder in der Browser-Web-App und lade das Foto dort hoch. So verwendest du dieselbe bereits übergebene SkillPilot-Lernsession-ID weiter. Ein größerer Bildschirm kann anschließend für längere Texte, Formeln und Visualisierungen angenehmer sein.',
+        'Schneide Namen, Adressen und andere persönliche Angaben vorher aus dem Bild heraus oder verdecke sie. Lade keine Zeugnisse, Passwörter oder vertraulichen Unterlagen hoch.',
+        'Wenn der Chat auf deinem Computer läuft, öffne genau diesen Chat innerhalb der gültigen Lernsession auf dem Smartphone im Browser oder in der Browser-Web-App und lade das Foto dort hoch. Ein größerer Bildschirm kann anschließend für längere Texte, Formeln und Visualisierungen angenehmer sein.',
       ],
     },
     {
@@ -216,8 +243,8 @@ const germanCopy: FaqViewCopy = {
       id: 'formula-looks-broken',
       question: 'Eine Formel erscheint als merkwürdiger Text mit Zeichen wie \\[ oder \\cdot. Was bedeutet das?',
       paragraphs: [
-        'Das ist ein Anzeigefehler im Chat. Formeln werden in einer Schreibweise übermittelt, die ChatGPT normalerweise in eine gesetzte Formel umwandelt – an dieser Stelle hat die Umwandlung nicht funktioniert. Der Inhalt ist dadurch nicht falsch, nur schlecht lesbar.',
-        'Du musst das nicht entziffern und du hast nichts falsch gemacht. Bitte den Coach einfach, die Formel neu zu schreiben, zum Beispiel: „Die Formel ist bei mir nicht lesbar. Schreib sie bitte noch einmal im Fließtext.“ Danach erscheint sie in aller Regel korrekt.',
+        'Meist ist das ein Darstellungsfehler im Chat. Formeln werden in einer Schreibweise übermittelt, die ChatGPT normalerweise in eine gesetzte Formel umwandelt – an dieser Stelle hat die Umwandlung nicht richtig funktioniert.',
+        'Du musst das nicht entziffern und du hast nichts falsch gemacht. Bitte den Coach, die Formel noch einmal im Fließtext oder schrittweise zu schreiben. Vergleiche danach kurz, ob Zahlen, Vorzeichen und Rechenschritte unverändert geblieben sind.',
         'Wenn es im selben Chat mehrfach vorkommt, hilft ein Satz für den Rest der Sitzung: „Bitte schreib Formeln in diesem Chat immer im Fließtext.“',
       ],
     },
@@ -243,8 +270,8 @@ const germanCopy: FaqViewCopy = {
       id: 'native-app',
       question: 'Warum empfehlen wir derzeit nicht die native ChatGPT-App?',
       paragraphs: [
-        'SkillPilot nutzt ChatGPT-Funktionen, die nicht in jeder Kombination aus Gerät, Client und Modus gleich zuverlässig zur Verfügung stehen. Insbesondere eingebettete SkillPilot-Komponenten funktionieren in der nativen App derzeit nicht durchgehend zuverlässig.',
-        'Diese Probleme wurden an OpenAI gemeldet. Bis sie behoben sind, empfehlen wir den von SkillPilot getesteten Weg: ChatGPT im Browser auf PC, Mac, Tablet oder Smartphone.',
+        'In der nativen ChatGPT-App werden SkillPilot-Bilder, Kartenübungen und andere Lernansichten derzeit nicht immer zuverlässig angezeigt.',
+        'Nutze deshalb ChatGPT im Browser auf PC, Mac, Tablet oder Smartphone. Dort stehen dir die von SkillPilot erprobten Lernfunktionen zur Verfügung.',
       ],
     },
     {
@@ -267,17 +294,18 @@ const germanCopy: FaqViewCopy = {
 
 const englishCopy: FaqViewCopy = {
   backToApp: 'Back to SkillPilot',
-  title: 'SkillPilot Coach: choose the right setup',
-  subtitle: 'Compare ChatGPT and Claude, then use the path currently enabled for you.',
-  reviewedLabel: 'Compatibility status: August 23, 2026',
+  title: 'Frequently asked questions about SkillPilot',
+  subtitle: 'Learn how to start a learning session, use different devices, and solve common problems.',
+  reviewedLabel: 'Status: August 23, 2026',
   recommendation: {
     eyebrow: 'Recommended setup',
     title: 'Use ChatGPT in a browser – on every device',
     paragraphs: [
       'Open SkillPilot Coach in ChatGPT in your browser. This is the setup currently tested and recommended by SkillPilot on PCs, Macs, tablets, and smartphones.',
-      'Start the coach by selecting “Start Learning” in SkillPilot. This prepares a new chat and passes the corresponding SkillPilot learning session ID to it.',
+      'Start the coach by selecting “Start Learning” in SkillPilot. This prepares a new chat with a learning session that is valid for 24 hours.',
       'On a smartphone or tablet, you can also save ChatGPT to your home screen if your browser offers that option. You then get a dedicated icon while continuing to use the recommended browser version.',
     ],
+    actionLabel: 'Start learning in SkillPilot',
   },
   warning: {
     eyebrow: 'Important limitation',
@@ -371,8 +399,20 @@ const englishCopy: FaqViewCopy = {
     ],
   },
   faqTitle: 'Frequently asked questions',
-  faqIntro: 'Answers about using SkillPilot with ChatGPT on different devices.',
+  faqIntro: 'Answers about getting started, learning on different devices, and solving common problems.',
   questions: [
+    {
+      id: 'provider-options',
+      question: 'Which ChatGPT or Claude account do I need?',
+      paragraphs: [
+        'You do not need to read a plan comparison for everyday learning. This only matters when you set up SkillPilot for the first time or change your ChatGPT or Claude account.',
+        'The detailed overview explains which accounts are eligible in principle, which age limits apply, and which routes SkillPilot has already enabled.',
+      ],
+      link: {
+        href: '/faq/coach-setup',
+        label: 'Compare access options',
+      },
+    },
     {
       id: 'smartphone',
       question: 'Can I use SkillPilot Coach on my smartphone?',
@@ -385,8 +425,16 @@ const englishCopy: FaqViewCopy = {
       id: 'continue-on-phone',
       question: 'Can I continue a chat from my computer on my phone?',
       paragraphs: [
-        'Yes. On your smartphone, open the same existing chat in ChatGPT in a browser or in the web app saved by your browser. The chat already contains the SkillPilot learning session ID passed to it when you selected “Start Learning”.',
+        'Yes. On your smartphone, open the same existing chat in ChatGPT in a browser or in the web app saved by your browser. This works during the 24 hours for which your learning session is valid.',
         'This is useful, for example, when you are learning on a computer and then want to upload a photo of your work with the phone camera. Do not open the chat in the native ChatGPT app for this.',
+      ],
+    },
+    {
+      id: 'session-duration',
+      question: 'How long can I use a SkillPilot chat?',
+      paragraphs: [
+        'A learning session created through “Start Learning” is valid for 24 hours. After that, you can still read the old chat, but SkillPilot can no longer reliably access your current learning record there.',
+        'Select “Start Learning” in SkillPilot again and begin a new chat. Do not share the prepared start message or your learning chat with other people.',
       ],
     },
     {
@@ -402,7 +450,8 @@ const englishCopy: FaqViewCopy = {
       question: 'Can I photograph a handwritten task?',
       paragraphs: [
         'Yes. If ChatGPT offers uploads in your normal text chat, you can photograph a calculation, diagram, or handwritten solution and upload the image. The coach can then include it in the conversation.',
-        'If the chat is running on your computer, open that exact chat on your smartphone in a browser or browser web app and upload the photo there. This keeps using the same SkillPilot learning session ID that was already passed to the chat. A larger screen may then be more comfortable again for longer text, formulas, and visualizations.',
+        'Crop out or cover names, addresses, and other personal information first. Do not upload report cards, passwords, or confidential documents.',
+        'If the chat is running on your computer, open that exact chat during the valid learning session on your smartphone in a browser or browser web app and upload the photo there. A larger screen may then be more comfortable again for longer text, formulas, and visualizations.',
       ],
     },
     {
@@ -424,8 +473,8 @@ const englishCopy: FaqViewCopy = {
       id: 'formula-looks-broken',
       question: 'A formula shows up as odd text with characters like \\[ or \\cdot. What does that mean?',
       paragraphs: [
-        'That is a display glitch in the chat. Formulas are sent in a notation that ChatGPT normally turns into typeset mathematics, and here that conversion did not happen. The content is not wrong, just hard to read.',
-        'You do not need to decipher it, and you did nothing wrong. Just ask the coach to write it again, for example: “That formula is unreadable for me. Please write it again as running text.” It usually comes out correctly afterwards.',
+        'This is usually a display problem in the chat. Formulas are sent in a notation that ChatGPT normally turns into typeset mathematics, and here that conversion did not work correctly.',
+        'You do not need to decipher it, and you did nothing wrong. Ask the coach to write the formula again as running text or step by step. Then briefly compare whether the numbers, signs, and calculation steps stayed the same.',
         'If it happens repeatedly in the same chat, one sentence covers the rest of the session: “Please always write formulas as running text in this chat.”',
       ],
     },
@@ -451,8 +500,8 @@ const englishCopy: FaqViewCopy = {
       id: 'native-app',
       question: 'Why do we currently not recommend the native ChatGPT app?',
       paragraphs: [
-        'SkillPilot uses ChatGPT features that are not equally reliable in every combination of device, client, and mode. In particular, embedded SkillPilot components do not currently work reliably throughout the native app.',
-        'These issues have been reported to OpenAI. Until they are resolved, we recommend the setup tested by SkillPilot: use ChatGPT in a browser on a PC, Mac, tablet, or smartphone.',
+        'In the native ChatGPT app, SkillPilot images, card practice, and other learning views are not always displayed reliably yet.',
+        'Use ChatGPT in a browser on a PC, Mac, tablet, or smartphone instead. That is where the learning features tested by SkillPilot are available.',
       ],
     },
     {
