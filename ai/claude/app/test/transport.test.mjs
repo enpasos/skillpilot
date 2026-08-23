@@ -11,6 +11,7 @@ import {
 test("silent transport validates trusted messages without logging private payloads", async () => {
   const privateText = "PRIVATE_CARD_FRONT";
   const privateCapability = "PRIVATE_REVIEW_CAPABILITY";
+  const privateLearningSession = `spc_${"S".repeat(43)}`;
   const view = new FakeMessageTarget();
   const parent = new FakePostMessageTarget();
   const transport = new SilentPostMessageTransport(parent, parent, view);
@@ -53,7 +54,12 @@ test("silent transport validates trusted messages without logging private payloa
       jsonrpc: "2.0",
       id: 1,
       method: "tools/call",
-      params: { arguments: { reviewCapability: privateCapability } }
+      params: {
+        arguments: {
+          learningSessionId: privateLearningSession,
+          reviewCapability: privateCapability
+        }
+      }
     });
 
     assert.deepEqual(received, [{
@@ -69,7 +75,12 @@ test("silent transport validates trusted messages without logging private payloa
         jsonrpc: "2.0",
         id: 1,
         method: "tools/call",
-        params: { arguments: { reviewCapability: privateCapability } }
+        params: {
+          arguments: {
+            learningSessionId: privateLearningSession,
+            reviewCapability: privateCapability
+          }
+        }
       },
       targetOrigin: "*"
     }]);

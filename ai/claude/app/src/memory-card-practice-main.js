@@ -6,6 +6,7 @@ import {
   MemoryCardSubmissionGate,
   createMemoryCardReviewArguments,
   createMemoryCardStartArguments,
+  learningSessionIdFromToolResult,
   memoryCardPracticeFromToolResult,
   memoryCardReviewReceiptFromToolResult
 } from "./memory-card-practice.js";
@@ -207,9 +208,11 @@ async function submitReview(args, copy) {
     if (result.isError === true) throw new Error("review-failed");
     const receipt = memoryCardReviewReceiptFromToolResult(result);
     const current = practice;
+    const resultLearningSessionId = learningSessionIdFromToolResult(result);
     if (
       !receipt
       || !current
+      || resultLearningSessionId !== current.learningSessionId
       || receipt.goalId !== current.goalId
       || receipt.expectedStateVersion <= current.expectedStateVersion
     ) {

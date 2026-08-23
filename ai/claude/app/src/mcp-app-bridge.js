@@ -79,8 +79,9 @@ export class SilentPostMessageTransport {
 /**
  * Small standards-only bridge shared by the Claude MCP Apps.
  *
- * No provider compatibility globals are read and OAuth connection identity
- * never enters the iframe.
+ * No provider compatibility globals are read. Learner identity is represented
+ * only by the short-lived session received in private tool-result metadata and
+ * returned in component-local tool arguments.
  */
 export class SkillPilotMcpAppBridge {
   #app;

@@ -51,6 +51,16 @@ assert.equal(
   'the feedback-pilot placeholder must not issue learner or mastery requests',
 )
 assert.equal(
+  shouldRunApplicationCore('/lernen/claude'),
+  false,
+  'the first-party Claude start page must not issue catalog, profile, or mastery requests',
+)
+assert.equal(
+  shouldSyncRouteStateToUrl('/lernen/claude/'),
+  false,
+  'the Claude start page must not synchronize permanent learner state into its URL',
+)
+assert.equal(
   shouldRenderSessionSetup({
     pathname: '/learner',
     hasActiveSession: true,
@@ -121,4 +131,4 @@ assert.match(
   'App core must not synchronize stored route state into the root URL',
 )
 
-console.log('Root route policy passed: 17 guarantees.')
+console.log('Root route policy passed: 19 guarantees.')

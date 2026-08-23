@@ -45,6 +45,10 @@ final class ClaudeV1RequestSizeFilter extends OncePerRequestFilter {
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
+        // Every Claude-v1 response may describe authorization or learner state. Apply the
+        // cache boundary before dispatch so it also covers successful MCP responses and
+        // authentication failures produced by later filters.
+        response.setHeader(HttpHeaders.CACHE_CONTROL, "no-store");
         if (request.getContentLengthLong() > maxBytes) {
             reject(response);
             return;
@@ -75,8 +79,6 @@ final class ClaudeV1RequestSizeFilter extends OncePerRequestFilter {
         }
         String uri = request.getRequestURI();
         return ClaudeV1Contract.INTERNAL_MCP_PATH.equals(uri)
-                || (ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/details").equals(uri)
-                || (ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/bind").equals(uri)
                 || ClaudeV1Contract.INTERNAL_TOKEN_PATH.equals(uri)
                 || ClaudeV1Contract.INTERNAL_REVOKE_PATH.equals(uri);
     }

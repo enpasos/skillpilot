@@ -1,162 +1,84 @@
-# SkillPilot Claude Connector
+# SkillPilot with Claude
 
-[Deutsche Anleitung](claude-connector-v1-user-guide.de.md)
+SkillPilot connects your personal learning path with Claude. Your permanent
+SkillPilot ID remains entirely inside SkillPilot. Claude receives neither an ID
+file nor its password.
 
-The SkillPilot Claude Connector links Claude to an existing pseudonymous
-SkillPilot learning profile. It lets Claude read the learner's selected
-curriculum, current focus, next learning goals and progress, and it can update
-focus and progress when the learner explicitly asks it to do so.
+> **Status:** Claude v1 is still being prepared for public release. After
+> approval, the plugin is the recommended installation path.
 
-The connector is intended for adults aged 18 or older and uses OAuth. In
-addition to normal chat coaching, it can show an approved learning-goal image
-and open a private component for normal flashcard practice. Claude does not
-receive the permanent SkillPilot ID or the ID-file password. SkillPilot does
-not receive Claude memory or the complete chat history, but it does process the
-explicit MCP tool requests and arguments needed to read or update the learning
-state.
+## Install once
 
-## Start in five steps
+1. Open **Plugins** in Claude and install **SkillPilot coach v1**.
+2. Select **Connect** for its SkillPilot connector.
+3. Approve the OAuth connection.
 
-1. Open [SkillPilot](https://skillpilot.com), create or resume a learning
-   profile, and select the curriculum you want to use.
-2. Download the encrypted `.skillpilot` ID file and keep its password private.
-   Do not paste either the file contents or the password into a Claude chat.
-3. In Claude, open **Customize > Connectors**. Choose **SkillPilot** from the
-   directory when it is available. During the pre-publication test period,
-   choose **Add custom connector** and enter exactly:
+The plugin installs the Skill and connector together. The connector also
+provides both interactive UIs for learning-goal images and flashcard practice.
+Installing the Skill and connector separately is only a technical fallback and
+adds no capability.
 
-   ```text
-   https://mcp-claude-v1.skillpilot.com/mcp
-   ```
+OAuth keeps only the technical connector transport available. Optional
+`offline_access` contains no learner identity and neither starts nor extends a
+learning session.
 
-4. Keep authentication required and use Claude's detected hosted client
-   metadata. Do not add custom request headers. Start the connection, inspect
-   the displayed `skillpilot.read` and `skillpilot.write` permissions, then
-   select the encrypted `.skillpilot` file on the SkillPilot authorization page
-   and enter its password. Decryption happens locally in that browser page; the
-   password is not sent to SkillPilot or Claude.
-5. Open a fresh Claude chat, enable the SkillPilot connector if Claude asks, and
-   start with a request such as:
+## Start learning every time
 
-   ```text
-   Use SkillPilot to load my current learning context and help me choose the
-   next sensible learning goal.
-   ```
+1. Open [skillpilot.com/lernen/claude](https://skillpilot.com/lernen/claude).
+2. Choose your learning profile inside SkillPilot and select **Start learning**.
+3. SkillPilot opens a new Claude chat with a prepared message.
 
-The authorization page currently labels the file selector **SkillPilot-ID-Datei
-(.skillpilot)**, the password field **Passwort der ID-Datei**, and the connect
-button **Lokal entschlüsseln & verbinden**.
+This creates a fresh opaque value beginning with `spc_`. It is valid for
+exactly 24 hours. Claude uses it only for SkillPilot calls; it must not repeat
+or share it in the chat. After expiry, start a new session on the same page.
+The connector does not need to be reconnected.
 
-## What you can ask
+## What you can do
 
-- "What should I learn next in my current SkillPilot focus?"
-- "Show me my available focus choices and help me choose one."
-- "Explain my active goal, then check my understanding without giving away the
-  answer."
-- "Show me the approved visualization for my active learning goal."
-- "Practise the flashcards due today with me."
-- "Start verified recall for my active memory goal."
-- "Give me the active exam task and evaluate my complete answer afterwards."
+- load your current learning context;
+- choose a sensible next learning goal;
+- display an approved learning-goal image;
+- practise normal flashcards in the interactive UI;
+- receive coaching for the active goal;
+- run Verified Recall or an exam task;
+- record a completion supported by suitable evidence.
 
-SkillPilot supports German and English coaching. Claude should answer in the
-language used by the learner.
+Normal flashcard practice does not complete a learning goal. Only the dedicated
+verified check can provide completion evidence for a memory goal.
 
-Claude is instructed to keep normal coaching responses centred on the learner:
-the learning goal, feedback and next step should appear in plain language.
-Claude should discuss internal fields, security mechanisms or test details only
-when you explicitly ask a developer or diagnostic question, and it must never
-reveal secret values.
+## Example start
 
-## Flashcards, recall and exam timing
+> I want to continue learning with SkillPilot on my current learning goal.
 
-Normal flashcard practice runs in a dedicated private component. Card fronts,
-backs and the authorization for each review stay inside that component instead
-of being copied into the chat. A card review changes only its repetition
-schedule. Finishing the cards due today does not complete the learning goal and
-does not replace **Verified Recall**, which is the separate no-help workflow for
-reliable recall evidence.
-
-Claude is instructed to present every returned recall prompt or the complete
-exam task and wait for your complete answer before requesting protected answers,
-solutions or scoring criteria. The connector does not send the complete Claude
-conversation to SkillPilot, so SkillPilot cannot technically prove that Claude
-waited. Later recall and exam steps still remain bound to the current authorized
-learning state through short-lived security proofs.
-
-## Read and write access
-
-The connector can read the current learning context and the navigation options
-published by SkillPilot. With write access, it can also save a selected
-focus, active goal, verified progress and recall results. It cannot change the
-learner's base curriculum or personal-curriculum configuration.
-
-SkillPilot receives each explicit tool request and the arguments required to
-perform it, including learner feedback submitted for a requested progress
-write. It stores the resulting canonical learning-state changes and the
-short-lived security records described in the connector privacy policy. It
-does not ingest the complete Claude transcript.
-
-Claude is instructed to record completion only after suitable visible evidence.
-SkillPilot stores only “completed” or “not completed”; this is not a grade. To
-correct or withdraw completion for an
-ordinary learning goal, open the learner profile in the
-[SkillPilot Cockpit](https://skillpilot.com/) instead of asking Claude to invent
-a lower score. Orientation and memory goals use their own completion rules.
-
-If another SkillPilot application changed the learning state in the meantime,
-Claude must reload the current context instead of overwriting the newer state
-or applying a change twice.
-
-## Disconnect or reconnect
-
-Disconnect SkillPilot from Claude's connector settings when you no longer want
-Claude to access the learning profile. The connector's OAuth revocation flow
-invalidates the Claude connection without deleting the SkillPilot learning
-profile or connections belonging to another provider.
-
-To reconnect, add or enable SkillPilot again and repeat the OAuth flow with the
-encrypted `.skillpilot` file. Use a fresh chat after reconnecting so Claude
-loads the current tool catalogue and learning state.
+Claude should use learner-friendly language and keep technical fields, internal
+IDs, tool names and state versions out of ordinary learning responses.
 
 ## Troubleshooting
 
-- **Claude cannot find SkillPilot tools:** open a fresh chat and enable
-  SkillPilot in the chat's connector menu.
-- **The authorization expired:** start the connection again; pending binding
-  transactions are intentionally short-lived.
-- **A write reports stale state:** ask Claude to reload the SkillPilot context
-  before continuing.
-- **The ID file does not open:** verify that the selected file is the encrypted
-  `.skillpilot` file and that its password is correct. Never send the file or
-  password to support by email.
-- **The problem persists:** contact
-  [support@skillpilot.com](mailto:support@skillpilot.com) without including
-  credentials, OAuth codes, tokens, the permanent SkillPilot ID or learner
-  answers.
+- **SkillPilot is not available:** Check that the plugin is enabled and its
+  connector is connected.
+- **The session expired:** Open
+  [Start learning](https://skillpilot.com/lernen/claude) again. OAuth never
+  extends the 24-hour learner session.
+- **The wrong person or learning profile appears:** Stop using the chat and
+  start a new session from the correct profile in SkillPilot.
+- **Claude displays an internal value:** Do not share it. Report the incident
+  to `support@skillpilot.com`.
+- **Recorded progress needs correction:** Use the SkillPilot Cockpit.
 
-## Privacy and service information
+## Privacy and access
 
-Read the connector-specific
-[privacy policy](https://mcp-claude-v1.skillpilot.com/privacy) before connecting.
-The policy explains the pseudonymous binding, data sent to Claude, retention and
-revocation. Anthropic separately processes prompts, responses and Claude chat
-history under its own terms and privacy policy.
+SkillPilot receives only the connector requests you explicitly make, not your
+complete Claude chat or Claude Memory. The permanent SkillPilot ID remains in
+SkillPilot. Anthropic's account, plan, regional and age requirements also
+apply; the planned Directory listing is for adults aged 18 or older.
 
-SkillPilot is operated by enpasos - Enterprise Patterns & Solutions GmbH. The
-connector uses SkillPilot's own first-party API and does not contain sponsored
-content or transfer financial assets.
+- [SkillPilot](https://skillpilot.com)
+- [Connector privacy policy](https://mcp-claude-v1.skillpilot.com/privacy)
+- Support: `support@skillpilot.com`
 
-## Version and later updates
+## Version
 
-The public endpoint above is the stable SkillPilot Claude Connector v1
-endpoint. Compatible fixes can be deployed there. A breaking protocol or
-identity change is developed on a separate versioned endpoint first, so the
-existing connector can remain available while users migrate.
-
-The Directory connector is the simplest and broadest installation route. An
-optional SkillPilot Coach plugin can additionally bundle the same connector
-with reusable coaching instructions for Claude Code and Cowork. Installing both
-does not create a second SkillPilot service or a second learning profile. The
-plugin has its own semantic version: compatible instruction improvements can
-ship independently, while a breaking MCP, OAuth, identity or state change still
-requires a separately reviewed connector major and endpoint.
+The Directory slug `skillpilot` stays version-neutral. After final submission,
+the v1 line remains compatible; a future breaking contract would require a
+separate product decision and major line. Claude v2 is currently unallocated.

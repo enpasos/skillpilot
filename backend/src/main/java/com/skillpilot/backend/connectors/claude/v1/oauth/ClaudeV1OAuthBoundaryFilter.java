@@ -38,10 +38,7 @@ final class ClaudeV1OAuthBoundaryFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
         return !ClaudeV1Contract.INTERNAL_AUTHORIZE_PATH.equals(uri)
                 && !ClaudeV1Contract.INTERNAL_TOKEN_PATH.equals(uri)
-                && !ClaudeV1Contract.INTERNAL_REVOKE_PATH.equals(uri)
-                && !(ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/csrf").equals(uri)
-                && !(ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/details").equals(uri)
-                && !(ClaudeV1Contract.INTERNAL_CONNECT_PATH + "/bind").equals(uri);
+                && !ClaudeV1Contract.INTERNAL_REVOKE_PATH.equals(uri);
     }
 
     @Override
@@ -73,8 +70,7 @@ final class ClaudeV1OAuthBoundaryFilter extends OncePerRequestFilter {
      * <p>The two allowed CIMD client identities are shared by the whole user base, so keying on
      * {@code client_id} alone would put every learner into one bucket. The peer address is the only
      * pre-authentication identifier that separates callers, so it stays in the key and
-     * {@code client_id} only separates the Claude lanes from each other. The connect endpoints
-     * carry no {@code client_id} and fall back to the address alone.
+     * {@code client_id} only separates the Claude lanes from each other.
      *
      * <p>Reading the parameter here is safe: {@link ClaudeV1RequestSizeFilter} runs first and
      * replaces form POSTs with a cached-body request, so the body stays readable downstream.

@@ -18,13 +18,14 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
@@ -60,12 +61,13 @@ class ClaudeV1MemoryPracticeContractTest {
     private LearnerRepository learnerRepository;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
 
     @MockitoBean
     private CoachToolFacade coachToolFacade;
 
     private String learnerId;
+    private String learningSessionId;
 
     @BeforeEach
     void setUp() {
@@ -74,6 +76,7 @@ class ClaudeV1MemoryPracticeContractTest {
                 connectionRepository,
                 INITIAL_STATE_VERSION);
         learnerId = bound.learnerId();
+        learningSessionId = bound.connectionId();
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
                 bound.connectionId(),
                 "unused",
@@ -114,13 +117,15 @@ class ClaudeV1MemoryPracticeContractTest {
         Map<String, Object> privatePractice = map(result.meta().get("skillpilotMemoryCard"));
         assertThat(privatePractice)
                 .containsEntry("communicationLocale", "de")
+                .containsEntry("learningSessionId", learningSessionId)
                 .containsEntry("goalId", GOAL_ID)
                 .containsEntry("expectedStateVersion", INITIAL_STATE_VERSION)
-                .doesNotContainKeys("learningSessionId", "cockpitUrl");
+                .doesNotContainKey("cockpitUrl");
         assertThat(privatePractice.keySet()).containsExactlyInAnyOrder(
                 "communicationLocale",
                 "goalId",
                 "goalTitle",
+                "learningSessionId",
                 "expectedStateVersion",
                 "progress",
                 "completed",
@@ -170,7 +175,8 @@ class ClaudeV1MemoryPracticeContractTest {
                 .doesNotContain("card-1", "card-2", "Vorderseite", "Rückseite", capability);
         assertThat(map(reviewed.meta().get("skillpilotMemoryCard")))
                 .containsEntry("expectedStateVersion", 11L)
-                .doesNotContainKeys("cardBatch", "learningSessionId");
+                .containsEntry("learningSessionId", learningSessionId)
+                .doesNotContainKey("cardBatch");
         verify(coachToolFacade).reviewMemoryPracticeCard(
                 learnerId,
                 "de",
@@ -243,13 +249,15 @@ class ClaudeV1MemoryPracticeContractTest {
     }
 
     private McpSchema.CallToolResult call(String toolName, Map<String, Object> arguments) {
+        Map<String, Object> sessionArguments = new LinkedHashMap<>(arguments);
+        sessionArguments.put("learningSessionId", learningSessionId);
         McpStatelessServerFeatures.SyncToolSpecification specification = contractAdapter.toolSpecifications().stream()
                 .filter(candidate -> toolName.equals(candidate.tool().name()))
                 .findFirst()
                 .orElseThrow();
         return specification.callHandler().apply(
                 McpTransportContext.EMPTY,
-                new McpSchema.CallToolRequest(toolName, arguments));
+                new McpSchema.CallToolRequest(toolName, sessionArguments));
     }
 
     @SuppressWarnings("unchecked")

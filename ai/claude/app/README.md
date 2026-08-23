@@ -12,9 +12,12 @@ artifacts or identity assumptions.
 
 ## Identity and privacy boundary
 
-Claude identity is the authenticated OAuth connection. These apps therefore
-never receive, persist, construct, or submit an OpenAI-style
-`learningSessionId`.
+Connector OAuth authenticates the transport but neither contains nor selects
+the learner. SkillPilot learner identity is represented only by the opaque
+`spc_...` `learningSessionId` created by the first-party start flow. The app
+receives that value only in private result `_meta`, keeps it in memory, and
+returns it only in component-local review or continuation tool arguments. It
+never reads a permanent SkillPilot ID.
 
 Flashcard fronts, backs, card IDs, and review capabilities are accepted only
 from result `_meta.skillpilotMemoryCard`. They are never read from
@@ -42,10 +45,11 @@ Resource metadata uses Claude's endpoint-derived sandbox domain
 scheme). CSP is declared only on each resource and uses only the standard MCP
 Apps fields.
 
-The flashcard app calls the review tool with `goalId`, `cardId`,
-`reviewCapability`, `rating`, `expectedStateVersion`, `clientRequestId`, and
-`language`. Loading a further private batch calls the start tool with `goalId`,
-`expectedStateVersion`, and `language`. OAuth supplies the connection identity.
+The flashcard app calls the review tool with `learningSessionId`, `goalId`,
+`cardId`, `reviewCapability`, `rating`, `expectedStateVersion`,
+`clientRequestId`, and `language`. Loading a further private batch calls the
+start tool with `learningSessionId`, `goalId`, `expectedStateVersion`, and
+`language`. The temporary session is never rendered or logged.
 
 ## Build and test
 

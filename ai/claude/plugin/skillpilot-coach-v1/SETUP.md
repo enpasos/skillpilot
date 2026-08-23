@@ -3,9 +3,11 @@
 ## Recommended integrated install
 
 The **SkillPilot Coach** plugin bundles this coaching Skill and the remote
-SkillPilot connector into one installation. Anthropic currently documents
-plugins for paid Claude plans in web Chat, the Chat tab in Claude Desktop and
-Claude Cowork.
+SkillPilot connector into one installation. The connector supplies the MCP
+tools and both interactive MCP Apps. This plugin is therefore the preferred
+installation path whenever Plugins are available for the account. Anthropic
+currently documents plugins for paid Claude plans in web Chat, the Chat tab in
+Claude Desktop and Claude Cowork.
 
 1. If a separately uploaded SkillPilot Skill or custom SkillPilot connector is
    already active, disable it before installing the plugin. Do not enable the
@@ -13,19 +15,28 @@ Claude Cowork.
 2. Until the public directory entry is available, open **Customize > Plugins**
    and upload `skillpilot-coach-v1.plugin`. After publication, browse for
    **SkillPilot Coach** there and select **Install** instead.
-3. Start a new chat and ask Claude to use SkillPilot.
-4. Complete the SkillPilot sign-in page when Claude opens it. Select the encrypted
-   `.skillpilot` file there and enter its password there. Never paste the file,
-   password, authorization code, or token into the chat.
-5. Start with:
+3. Connect the bundled connector once through the normal OAuth flow. The
+   `offline_access` scope keeps this technical plugin connection available; it
+   contains no learner identity and selects no SkillPilot learning profile.
+4. Open <https://skillpilot.com/lernen/claude> in the first-party SkillPilot WebGUI
+   and choose **Lernen starten**. SkillPilot creates a fresh opaque `spc_...`
+   learning-session value that is valid for exactly 24 hours and prepares the
+   Claude start prompt. The permanent SkillPilot ID remains inside SkillPilot.
+5. Open the prepared Claude chat and start with its generated prompt, for example:
 
    > Lade mit SkillPilot meinen aktuellen Lernkontext. Fasse mein aktives
    > Lernziel zusammen und schlage den nächsten sinnvollen Schritt vor.
 
-The connection always requires OAuth. It needs no custom request headers and no
-manually registered client ID. A personally uploaded plugin may remain local to
-the Claude client that imported it; public cross-client availability is a
-separate directory-publication gate.
+Every SkillPilot tool call in that chat uses the generated `learningSessionId`.
+Do not copy the value into other chats, publish it, or ask the learner to type it
+separately. When the 24 hours have elapsed, return to the first-party start page
+and create a new session. Reconnecting the plugin is normally unnecessary.
+
+The connector always requires OAuth. It needs no custom request headers and no
+manually registered client ID. OAuth authorizes only the technical connector
+transport; the separate 24-hour `spc_...` session authorizes learner access. A
+personally uploaded plugin may remain local to the Claude client that imported
+it; public cross-client availability is a separate directory-publication gate.
 
 ## Standalone fallback
 
@@ -38,8 +49,10 @@ connector** with:
 - OAuth client: **Anthropic-hosted client metadata**
 - Additional request headers: none
 
-Complete the same browser-based SkillPilot connection flow. The file password
-stays on that SkillPilot page and is not a chat credential.
+Complete the same transport-only OAuth connection, then always start learning at
+<https://skillpilot.com/lernen/claude>. The standalone installation has no
+learning-session or UI advantage over the plugin; it exists only for accounts or
+surfaces where the integrated plugin cannot be installed.
 
 Do not additionally install this fallback when the full plugin is active. The
 connector currently targets adult users aged 18 or older. Availability of custom
@@ -51,9 +64,10 @@ use only a route that the current client actually offers.
 
 Create or resume the learning profile at <https://skillpilot.com>. Choose the
 personal curriculum and learning scope there, then return to Claude and reconnect
-or retry. Claude may coach and update the selected learning path, but the
-first-party SkillPilot site owns curriculum setup and later corrections or
-withdrawals of ordinary completion.
+or, preferably, create a fresh start at
+<https://skillpilot.com/lernen/claude>. Claude may coach and update the selected
+learning path, but the first-party SkillPilot site owns curriculum setup and
+later corrections or withdrawals of ordinary completion.
 
 ## Maintainer validation and updates
 

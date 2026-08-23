@@ -1,0 +1,72 @@
+export const claudeV1StartCopy = {
+  de: {
+    back: 'Zurück zu SkillPilot',
+    title: 'Mit Claude lernen',
+    subtitle: 'Starte deinen aktuellen SkillPilot-Lernweg in einem neuen Claude-Chat.',
+    privacyTitle: 'Deine dauerhafte SkillPilot-ID bleibt bei SkillPilot.',
+    privacyBody: 'Claude erhält nur einen temporären Startschlüssel. Er gilt genau 24 Stunden und wird danach unbrauchbar.',
+    setupTitle: 'Einmalig einrichten',
+    setupBody: 'Installiere das SkillPilot-Plugin in Claude und verbinde den enthaltenen SkillPilot-Connector.',
+    setupLink: 'Einrichtung ansehen',
+    startTitle: 'Lernsession starten',
+    startBody: 'SkillPilot erstellt einen neuen Schlüssel für genau 24 Stunden, kopiert den Starttext und öffnet einen neuen Claude-Chat.',
+    start: 'Mit Claude lernen',
+    starting: 'Lernsession wird vorbereitet …',
+    missingTitle: 'Noch kein Lernprofil in diesem Browser',
+    missingBody: 'Lege zuerst auf SkillPilot ein Lernprofil an oder lade dein vorhandenes Profil. Kehre danach hierher zurück.',
+    missingAction: 'Lernen starten',
+    readyTitle: 'Deine Lernsession ist bereit.',
+    copiedAndOpened: 'Der Starttext wurde kopiert und Claude wurde geöffnet. Füge den Text dort in den neuen Chat ein.',
+    copiedOnly: 'Der Starttext wurde kopiert. Öffne Claude und füge ihn dort in einen neuen Chat ein.',
+    openOnly: 'Claude wurde geöffnet. Kopiere den Starttext hier und füge ihn dort in den neuen Chat ein.',
+    manualReady: 'Die Lernsession ist bereit. Kopiere den Starttext und öffne damit einen neuen Claude-Chat.',
+    fallback: 'Falls das automatische Öffnen oder Kopieren auf deinem Gerät blockiert wurde, nutze diese beiden Schaltflächen.',
+    copyPrompt: 'Starttext kopieren',
+    copied: 'Starttext kopiert',
+    openClaude: 'Claude öffnen',
+    expires: 'Diese Lernsession endet genau 24 Stunden nach ihrem Start, am',
+    errorTitle: 'Der Start hat noch nicht geklappt.',
+    errorBody: 'Bitte versuche es erneut. Dein SkillPilot-Lernstand wurde dabei nicht verändert.',
+  },
+  en: {
+    back: 'Back to SkillPilot',
+    title: 'Learn with Claude',
+    subtitle: 'Continue your current SkillPilot learning path in a new Claude chat.',
+    privacyTitle: 'Your permanent SkillPilot ID stays with SkillPilot.',
+    privacyBody: 'Claude receives only a temporary start key. It is valid for exactly 24 hours and cannot be used afterwards.',
+    setupTitle: 'Set up once',
+    setupBody: 'Install the SkillPilot plugin in Claude and connect the included SkillPilot connector.',
+    setupLink: 'View setup guide',
+    startTitle: 'Start a learning session',
+    startBody: 'SkillPilot creates a new key valid for exactly 24 hours, copies the start text, and opens a new Claude chat.',
+    start: 'Learn with Claude',
+    starting: 'Preparing your learning session …',
+    missingTitle: 'No learning profile is loaded in this browser',
+    missingBody: 'First create a SkillPilot learning profile or load your existing profile. Then return to this page.',
+    missingAction: 'Start learning',
+    readyTitle: 'Your learning session is ready.',
+    copiedAndOpened: 'The start text was copied and Claude was opened. Paste the text into the new chat.',
+    copiedOnly: 'The start text was copied. Open Claude and paste it into a new chat.',
+    openOnly: 'Claude was opened. Copy the start text here and paste it into the new chat.',
+    manualReady: 'The learning session is ready. Copy the start text and use it in a new Claude chat.',
+    fallback: 'If automatic opening or copying was blocked on your device, use these two buttons.',
+    copyPrompt: 'Copy start text',
+    copied: 'Start text copied',
+    openClaude: 'Open Claude',
+    expires: 'This learning session ends exactly 24 hours after it starts, at',
+    errorTitle: 'The session has not started yet.',
+    errorBody: 'Please try again. Your SkillPilot learning progress was not changed.',
+  },
+} as const
+
+export const getClaudeV1ReadyMessage = (
+  language: keyof typeof claudeV1StartCopy,
+  copied: boolean,
+  opened: boolean,
+) => {
+  const copy = claudeV1StartCopy[language]
+  if (copied && opened) return copy.copiedAndOpened
+  if (copied) return copy.copiedOnly
+  if (opened) return copy.openOnly
+  return copy.manualReady
+}

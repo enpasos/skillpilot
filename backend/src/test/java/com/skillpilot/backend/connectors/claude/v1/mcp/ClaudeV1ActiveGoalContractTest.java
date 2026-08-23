@@ -18,7 +18,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.repository.LearnerRepository;
 import io.modelcontextprotocol.common.McpTransportContext;
@@ -66,7 +66,7 @@ class ClaudeV1ActiveGoalContractTest {
     private LearnerRepository learnerRepository;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -311,6 +311,7 @@ class ClaudeV1ActiveGoalContractTest {
             boolean redirect,
             String requestId) {
         Map<String, Object> arguments = new LinkedHashMap<>();
+        arguments.put("learningSessionId", connectionId);
         arguments.put("goalId", goalId);
         arguments.put("redirect", redirect);
         arguments.put("expectedStateVersion", INITIAL_STATE_VERSION);

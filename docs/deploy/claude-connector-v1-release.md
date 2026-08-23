@@ -5,6 +5,12 @@ reproducible. It does not authorize a production change. Run production steps
 only in an explicitly approved release window and never edit the frozen OpenAI
 v1 vhost or deny include as a side effect.
 
+The Product Owner unfroze only the pre-submission Claude v1 candidate on
+23 August 2026 so it can be rebuilt around first-party 24-hour learner
+sessions. OpenAI V1 remains frozen. Claude v2 remains unallocated. Do not update
+the Claude contract baseline until the rebuilt candidate and all focused tests
+pass.
+
 ## 1. Repository preflight
 
 Start from the exact reviewed revision with a clean worktree and the declared
@@ -47,9 +53,11 @@ characters, different from each other and stored only in the root-owned mode
 `0600` environment file. Never print them into CI or release evidence.
 
 Before activation, create and validate a restorable PostgreSQL backup. Confirm
-Liquibase change `023-add-claude-connector-v1` is `EXECUTED` and the three
-provider tables exist. Do not drop the additive tables during ordinary
-rollback.
+Liquibase changes `023-add-claude-connector-v1` and
+`024-replace-claude-v1-binding-with-learning-sessions` are `EXECUTED`. The
+additive 024 migration replaces the retired ID-file binding model with
+first-party learner-session persistence. Never edit the already executed 023
+migration and do not drop provider tables during ordinary rollback.
 
 ## 3. Dedicated HTTP-01 and certificate
 
@@ -116,8 +124,18 @@ sanitized evidence:
 - authorization-server metadata advertises PKCE S256 and CIMD;
 - privacy and documentation URLs return HTTPS 200;
 - unauthenticated MCP returns HTTP 401 plus `WWW-Authenticate`;
+- connector OAuth, including optional `offline_access`, remains transport-only
+  and cannot access a learner without a current `learningSessionId`;
+- `https://skillpilot.com/lernen/claude` creates a fresh opaque `spc_` session
+  that expires after exactly 24 hours;
+- expired, altered and foreign sessions fail closed while OAuth can remain
+  connected; OAuth refresh never mints, renews or extends a learner session;
+- no permanent SkillPilot ID, ID file or ID-file password crosses the
+  SkillPilot first-party boundary or appears in logs and visible Claude output;
 - untrusted Origin returns HTTP 403;
-- unknown, legacy, trailing-slash, internal-prefix and main-origin aliases
+- the retired `/connect`, `/connect/`, `/connect/details` and `/connect/bind`
+  routes return HTTP 404 at the public edge;
+- other unknown, legacy, trailing-slash, internal-prefix and main-origin aliases
   return HTTP 404;
 - production readiness remains `UP`;
 - every frozen OpenAI v1 edge/runtime check still passes.
@@ -141,7 +159,10 @@ edge.
 Follow the repository test plan at
 `ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all twelve tools and
 both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
-fresh Claude.ai custom connector. Confirm that the normal flashcard component
+fresh Claude.ai plugin session started only through
+`https://skillpilot.com/lernen/claude`. Confirm that every tool, including the
+app-only card-review tool, requires the same current `learningSessionId` and
+that the normal flashcard component
 keeps cards and review capabilities out of model-visible content, that its
 app-only review changes only scheduling, and that neither normal practice nor a
 single review changes mastery. Claude Code is not part of the current Directory
@@ -154,7 +175,7 @@ Before submission, practically verify this order:
 1. remove or disable the Claude TLS vhost include and reload nginx;
 2. set `SKILLPILOT_CLAUDE_CONNECTOR_V1_ENABLED=false`;
 3. restart the existing SkillPilot service and wait for readiness;
-4. revoke or expire Claude v1 tokens and pending binding transactions according
+4. revoke or expire Claude v1 transport tokens and learner sessions according
    to the incident procedure;
 5. repeat all frozen OpenAI v1 checks;
 6. restore the known-good shared artifact only if the artifact itself is faulty.
@@ -184,24 +205,29 @@ Submission, review status and publication are external Anthropic actions. Do
 not mark this repository `PUBLISHED` until the actual directory state has been
 verified and recorded by the Product Owner.
 
-## 10. Optional plugin publication
+## 10. Preferred plugin publication
 
-The remote Directory connector is the universal product entry point. The
-optional package at `ai/claude/plugin/skillpilot-coach-v1/` adds the reusable
-SkillPilot coaching Skill for Claude Code and Cowork while pointing to the same
-remote MCP endpoint. It is published as a separate plugin lane and must not
-delay or replace the connector submission.
+The package at `ai/claude/plugin/skillpilot-coach-v1/` is the preferred
+one-time installation. It bundles the reusable SkillPilot coaching Skill and
+the remote connector; the connector supplies both MCP Apps UIs. Installing the
+Skill and connector separately remains a fallback only and provides no
+additional learner capability.
 
 Before submitting the plugin:
 
 1. run the repository-local package checker and tests from Section 1;
 2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` with the
    current Claude CLI;
-3. test install, OAuth, all twelve tools and both MCP Apps in fresh Claude Code
-   and Cowork environments where those capabilities are supported;
-4. verify that installing both the plugin and Directory connector does not
-   expose duplicate SkillPilot tool sets; and
-5. submit the public repository or package through Anthropic's plugin workflow
+3. test upload/install, OAuth, first-party start, all twelve tools and both MCP
+   Apps in a fresh claimed Claude.ai environment; test Claude Code and Cowork
+   separately before claiming either additional surface;
+4. verify that the plugin exposes exactly one Skill and one SkillPilot connector
+   and that both MCP Apps are available through that connector;
+5. verify that each new learner session still starts only at
+   `https://skillpilot.com/lernen/claude`, while OAuth may remain connected;
+6. verify that installing any supported fallback combination does not expose
+   duplicate SkillPilot tool sets; and
+7. submit the public repository or package through Anthropic's plugin workflow
    with its own sanitized evidence.
 
 Compatible Skill-only improvements increment the plugin SemVer independently.

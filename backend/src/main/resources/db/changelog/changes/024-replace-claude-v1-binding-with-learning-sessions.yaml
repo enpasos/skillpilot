@@ -1,0 +1,165 @@
+databaseChangeLog:
+  - changeSet:
+      id: 024-replace-claude-v1-binding-with-learning-sessions
+      author: skillpilot
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - tableExists:
+            tableName: claude_v1_connection
+        - tableExists:
+            tableName: claude_v1_binding_transaction
+        - tableExists:
+            tableName: claude_v1_idempotency
+        - not:
+            - tableExists:
+                tableName: claude_v1_learning_session
+        - not:
+            - tableExists:
+                tableName: claude_v1_session_idempotency
+      changes:
+        # The clear spc_ token is returned once to the authenticated first-party
+        # WebGUI. Only its provider-specific HMAC is persisted.
+        - createTable:
+            tableName: claude_v1_learning_session
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_learning_session
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: started_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: communication_locale
+                  type: VARCHAR(35)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: claude_v1_learning_session
+            baseColumnNames: learner_id
+            constraintName: fk_claude_v1_learning_session_learner
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            onDelete: CASCADE
+        - createIndex:
+            tableName: claude_v1_learning_session
+            indexName: idx_claude_v1_session_learner
+            columns:
+              - column:
+                  name: learner_id
+        - createIndex:
+            tableName: claude_v1_learning_session
+            indexName: idx_claude_v1_session_expires
+            columns:
+              - column:
+                  name: expires_at
+
+        # Exact-once mutation receipts are scoped to one learning session, not
+        # to the reusable technical OAuth installation.
+        - createTable:
+            tableName: claude_v1_session_idempotency
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_session_idempotency
+              - column:
+                  name: client_request_id
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_claude_v1_session_idempotency
+              - column:
+                  name: tool_name
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: request_hash
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: response_payload
+                  type: CLOB
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state_version
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: claude_v1_session_idempotency
+            baseColumnNames: token_hash
+            constraintName: fk_claude_v1_session_idempotency_session
+            referencedTableName: claude_v1_learning_session
+            referencedColumnNames: token_hash
+            onDelete: CASCADE
+        - createIndex:
+            tableName: claude_v1_session_idempotency
+            indexName: idx_claude_v1_session_idempotency_expires
+            columns:
+              - column:
+                  name: expires_at
+
+        # Existing durable learner bindings cannot be converted into clear,
+        # independently issued 24-hour secrets. Revoke their OAuth grants and
+        # scrub the permanent identifiers; affected chats must start again via
+        # the first-party "Lernen starten" flow.
+        - sql:
+            sql: >-
+              DELETE FROM oauth2_authorization_consent
+              WHERE principal_name IN (SELECT id FROM claude_v1_connection)
+        - sql:
+            sql: >-
+              DELETE FROM oauth2_authorization
+              WHERE principal_name IN (SELECT id FROM claude_v1_connection)
+        - delete:
+            tableName: claude_v1_idempotency
+        - delete:
+            tableName: claude_v1_binding_transaction
+        - update:
+            tableName: claude_v1_connection
+            columns:
+              - column: { name: skillpilot_id, value: null }
+              - column: { name: learner_id_hash, value: null }
+              - column: { name: status, value: REVOKED }
+              - column: { name: last_activity_at, valueComputed: CURRENT_TIMESTAMP }
+

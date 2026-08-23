@@ -1,7 +1,5 @@
 package com.skillpilot.backend.connectors.claude.v1;
 
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1BindingService;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
 import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityService;
 import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractAdapter;
 import com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinator;
@@ -10,7 +8,9 @@ import com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1CimdMetadataVal
 import com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1OAuthMetadataController;
 import com.skillpilot.backend.connectors.claude.v1.oauth.ClaudeV1TokenLifecycleService;
 import com.skillpilot.backend.connectors.claude.v1.persistence.ClaudeV1IdempotencyRepository;
-import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1ConnectionController;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService;
+import com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1CoachUiController;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -49,10 +49,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ClaudeV1DisabledContextTest {
 
     private static final List<Class<?>> CLAUDE_V1_BEAN_TYPES = List.of(
-            ClaudeV1ConnectionController.class,
+            ClaudeV1CoachUiController.class,
             ClaudeV1OAuthMetadataController.class,
-            ClaudeV1BindingService.class,
-            ClaudeV1ConnectionRepository.class,
+            ClaudeV1LearningSessionRepository.class,
+            ClaudeV1LearningSessionService.class,
             ClaudeV1IdempotencyRepository.class,
             ClaudeV1CapabilityService.class,
             ClaudeV1SessionCoordinator.class,

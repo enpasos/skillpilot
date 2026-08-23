@@ -14,7 +14,7 @@ const expectedDomain = "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com";
 test("manifest pins Claude MCP Apps security and tool metadata", async () => {
   const manifest = await readManifest();
   assert.equal(manifest.provider, "claude");
-  assert.equal(manifest.identityBoundary, "oauth-connection");
+  assert.equal(manifest.identityBoundary, "temporary-learning-session");
   assert.equal(manifest.widgetDomain, expectedDomain);
   assert.equal(manifest.widgetDomain.includes("://"), false);
   assert.ok(Array.isArray(manifest.retainedResources));
@@ -79,7 +79,12 @@ test("dist resources are content-addressed and byte-identical to stable classpat
 
     const html = distBytes.toString("utf8");
     assert.match(html, /^<!doctype html>/);
-    assert.doesNotMatch(html, /learningSessionId|window\.openai|openai\/|openai:set_globals|toolResponseMetadata/);
+    if (resource.name === "skillpilot-claude-memory-card-practice-v1") {
+      assert.match(html, /learningSessionId/);
+    } else {
+      assert.doesNotMatch(html, /learningSessionId/);
+    }
+    assert.doesNotMatch(html, /skillpilotId|learnerId|window\.openai|openai\/|openai:set_globals|toolResponseMetadata/);
     assert.doesNotMatch(html, /<script[^>]+src=|<link[^>]+rel=["']stylesheet/i);
   }
 });

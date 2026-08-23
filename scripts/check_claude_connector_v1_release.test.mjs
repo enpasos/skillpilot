@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
   copyFileSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -19,6 +20,31 @@ import {
 
 const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 
+test("retired Claude learner-binding edge and static resources stay absent", () => {
+  for (const path of [
+    "backend/src/main/resources/claude-connector-v1/connect.html",
+    "backend/src/main/resources/claude-connector-v1/connect.js",
+    "backend/src/main/resources/claude-connector-v1/id-decrypt.js",
+  ]) {
+    assert.equal(existsSync(resolve(repositoryRoot, path)), false, path);
+  }
+
+  const vhost = readFileSync(
+    resolve(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf"),
+    "utf8",
+  );
+  assert.doesNotMatch(vhost, /location\s+(?:=|\^~)\s+\/connect\/?\s*\{/u);
+  assert.doesNotMatch(vhost, /\/internal\/connectors\/claude\/v1\/connect/u);
+
+  const runbook = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-release.md"),
+    "utf8",
+  );
+  for (const route of ["`/connect`", "`/connect/`", "`/connect/details`", "`/connect/bind`"]) {
+    assert.ok(runbook.includes(route), `runbook must require HTTP 404 for ${route}`);
+  }
+});
+
 test("Claude v1 dossier is a structurally valid pre-submission candidate", () => {
   const result = verifyClaudeConnectorV1Release({ repositoryRoot });
 
@@ -29,7 +55,7 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
     ),
   );
   assert.equal(result.toolCount, 12);
-  assert.equal(result.requiredGateCount, 19);
+  assert.equal(result.requiredGateCount, 22);
   assert.equal(result.blockers.length, result.requiredPendingCount);
 });
 
@@ -102,6 +128,7 @@ test("submitted and published fixtures require approved Anthropic state evidence
 
   const published = structuredClone(submitted);
   published.lifecycle.state = "PUBLISHED";
+  published.lifecycle.majorLines[0].status = "published";
   result = validateClaudeReleaseState(published);
   assert.ok(result.errors.some((message) => message.includes("publicationEvidenceId")));
 
@@ -127,6 +154,23 @@ test("passing gates reject missing, unapproved and wrong-candidate evidence", ()
   wrongCandidate.evidence.entries[0].candidateContractSha256 = "f".repeat(64);
   result = validateClaudeReleaseState({ ...wrongCandidate, submissionReady: true });
   assert.ok(result.errors.some((message) => message.includes("different candidate")));
+});
+
+test("lifecycle rejects a widened or missing Claude-v1-only unfreeze", () => {
+  const missing = readyFixture();
+  delete missing.lifecycle.productOwnerUnfreeze;
+  let result = validateClaudeReleaseState(missing);
+  assert.ok(result.errors.some((message) => message.includes("Claude-v1-only")));
+
+  const widened = readyFixture();
+  widened.lifecycle.productOwnerUnfreeze.excludes = [];
+  result = validateClaudeReleaseState(widened);
+  assert.ok(result.errors.some((message) => message.includes("Claude-v1-only")));
+
+  const allocatedV2 = readyFixture();
+  allocatedV2.lifecycle.majorLines[1].status = "planned";
+  result = validateClaudeReleaseState(allocatedV2);
+  assert.ok(result.errors.some((message) => message.includes("future v2 line")));
 });
 
 test("candidate contract digest changes when a pinned file digest changes", () => {
@@ -172,6 +216,7 @@ function readyFixture() {
   );
 
   lifecycle.state = "READY_FOR_SUBMISSION";
+  lifecycle.majorLines[0].status = "frozen_for_submission";
   lifecycle.directoryIdentity.slugApproved = true;
   baseline.state = "FROZEN_FOR_SUBMISSION";
   gates.submissionReady = true;
@@ -188,7 +233,7 @@ function readyFixture() {
     evidenceEntries.push({
       id: evidenceId,
       status: "approved",
-      observedAt: "2026-08-21",
+      observedAt: "2026-08-23",
       scope: `Synthetic unit-test evidence for ${gate.id}`,
       gateIds: [gate.id],
       candidateContractSha256: baseline.candidateContractSha256,
@@ -196,7 +241,7 @@ function readyFixture() {
       externalEvidenceId: `test-fixture:${gate.id}`,
       sha256: "a".repeat(64),
       approvedBy: "unit-test",
-      approvedAt: "2026-08-21T12:00:00Z",
+      approvedAt: "2026-08-23T12:00:00Z",
     });
   }
   const evidence = {
@@ -212,7 +257,7 @@ function addLifecycleEvidence(fixture, id, lifecycleState) {
   fixture.evidence.entries.push({
     id,
     status: "approved",
-    observedAt: "2026-08-21",
+    observedAt: "2026-08-23",
     scope: `Synthetic ${lifecycleState} evidence`,
     gateIds: [],
     lifecycleStates: [lifecycleState],
@@ -221,7 +266,7 @@ function addLifecycleEvidence(fixture, id, lifecycleState) {
     externalEvidenceId: `test-fixture:${id}`,
     sha256: "c".repeat(64),
     approvedBy: "unit-test",
-    approvedAt: "2026-08-21T12:00:00Z",
+    approvedAt: "2026-08-23T12:00:00Z",
   });
 }
 

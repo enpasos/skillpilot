@@ -4,7 +4,9 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestFixtures;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1TestProperties;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Properties;
-import com.skillpilot.backend.connectors.claude.v1.identity.ClaudeV1ConnectionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionException;
+import com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.connectors.claude.v1.persistence.ClaudeV1IdempotencyRecord;
 import com.skillpilot.backend.connectors.claude.v1.persistence.ClaudeV1IdempotencyRepository;
@@ -21,6 +23,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
@@ -44,7 +47,13 @@ class ClaudeV1SessionCoordinatorTest {
     private ClaudeV1SessionCoordinator sessionCoordinator;
 
     @Autowired
-    private ClaudeV1ConnectionRepository connectionRepository;
+    private ClaudeV1LearningSessionRepository connectionRepository;
+
+    @Autowired
+    private ClaudeV1SessionTokenCodec sessionTokens;
+
+    @Autowired
+    private JdbcOperations jdbc;
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -275,9 +284,9 @@ class ClaudeV1SessionCoordinatorTest {
         String requestId = UUID.randomUUID().toString();
         Instant expired = Instant.now().minusSeconds(30);
         idempotencyRepository.save(new ClaudeV1IdempotencyRecord(
-                UUID.randomUUID().toString(),
-                connectionId,
+                sessionTokens.hash(connectionId),
                 requestId,
+                "test_mutation",
                 "expired-hash",
                 "{}",
                 9L,
@@ -302,9 +311,14 @@ class ClaudeV1SessionCoordinatorTest {
                 Map.of("op", "recall"),
                 ctx -> advanceRevision(ctx.skillpilotId(), "recall"));
 
-        assertTrue(idempotencyRepository.findLive(connectionId, requestId, Instant.now()).isPresent());
+        String tokenHash = sessionTokens.hash(connectionId);
+        ClaudeV1IdempotencyRecord replay = idempotencyRepository
+                .findLive(tokenHash, requestId, Instant.now())
+                .orElseThrow();
+        Instant sessionExpiry = connectionRepository.findByTokenHash(tokenHash).orElseThrow().expiresAt();
+        assertTrue(!replay.expiresAt().isAfter(sessionExpiry));
         assertTrue(idempotencyRepository.findLive(
-                        connectionId,
+                        tokenHash,
                         requestId,
                         Instant.now().plus(properties.getCapabilityTtl()).plusSeconds(1))
                 .isEmpty());
@@ -357,31 +371,46 @@ class ClaudeV1SessionCoordinatorTest {
     }
 
     @Test
-    void aRevokedConnectionCanNeitherReadNorWrite() {
-        connectionRepository.revokeConnection(connectionId);
+    void anExpiredLearningSessionCanNeitherReadNorWrite() {
+        expireCurrentSession();
 
-        assertThrows(IllegalStateException.class, () ->
+        ClaudeV1LearningSessionException readError = assertThrows(ClaudeV1LearningSessionException.class, () ->
                 sessionCoordinator.read(connectionId, ctx -> Map.<String, Object>of()));
-        assertThrows(IllegalStateException.class, () -> sessionCoordinator.mutate(
+        assertEquals(ClaudeV1LearningSessionException.Reason.EXPIRED, readError.reason());
+        ClaudeV1LearningSessionException writeError = assertThrows(ClaudeV1LearningSessionException.class, () -> sessionCoordinator.mutate(
                 connectionId, "test_mutation", UUID.randomUUID().toString(), 10L, Map.of(),
                 ctx -> advanceRevision(ctx.skillpilotId(), "x")));
+        assertEquals(ClaudeV1LearningSessionException.Reason.EXPIRED, writeError.reason());
     }
 
     @Test
-    void anUnknownConnectionIsRefused() {
-        assertThrows(IllegalStateException.class, () ->
-                sessionCoordinator.read("conn_claude_v1_missing", ctx -> Map.<String, Object>of()));
-        assertThrows(IllegalArgumentException.class, () ->
+    void anUnknownOrMalformedLearningSessionIsRefused() {
+        assertThrows(ClaudeV1LearningSessionException.class, () ->
+                sessionCoordinator.read("spc_" + "Z".repeat(43), ctx -> Map.<String, Object>of()));
+        assertThrows(ClaudeV1LearningSessionException.class, () ->
                 sessionCoordinator.read("  ", ctx -> Map.<String, Object>of()));
     }
 
     @Test
-    void revocationRemovesTheLearnerReferenceFromTheConnection() {
-        connectionRepository.revokeConnection(connectionId);
+    void expiredSessionCleanupCascadesIdempotencyButPreservesTheLearner() {
+        String requestId = UUID.randomUUID().toString();
+        sessionCoordinator.mutate(
+                connectionId, "test_mutation", requestId, 10L, Map.of("op", "cleanup"),
+                ctx -> advanceRevision(ctx.skillpilotId(), "cleanup"));
+        String tokenHash = sessionTokens.hash(connectionId);
+        assertTrue(idempotencyRepository.findLive(tokenHash, requestId, Instant.now()).isPresent());
 
-        var connection = connectionRepository.findConnectionById(connectionId).orElseThrow();
-        assertTrue(connection.skillpilotId().isBlank());
-        // The learner itself survives: revoking Claude must not touch canonical state.
+        expireCurrentSession();
+        assertTrue(connectionRepository.deleteExpired(Instant.now()) >= 1);
+        assertTrue(connectionRepository.findByTokenHash(tokenHash).isEmpty());
+        assertTrue(idempotencyRepository.findLive(tokenHash, requestId, Instant.now()).isEmpty());
         assertTrue(learnerRepository.findById(learnerId).isPresent());
+    }
+
+    private void expireCurrentSession() {
+        jdbc.update(
+                "UPDATE claude_v1_learning_session SET expires_at = ? WHERE token_hash = ?",
+                java.sql.Timestamp.from(Instant.now().minusSeconds(1)),
+                sessionTokens.hash(connectionId));
     }
 }

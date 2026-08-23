@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-21",
+  "updatedAt": "2026-08-23",
   "submissionReady": false,
   "statusSemantics": {
     "pass": "Every named evidence ID resolves to an approved manifest record bound to this candidateContractSha256.",
@@ -84,6 +84,33 @@
       "required": true,
       "status": "pending",
       "evidence": []
+    },
+    {
+      "id": "first-party-24h-learning-session",
+      "owner": "Backend/Product/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "first-party-session-final-candidate"
+      ]
+    },
+    {
+      "id": "permanent-id-and-id-file-nondisclosure",
+      "owner": "Security/Product/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "permanent-id-nondisclosure-final-candidate"
+      ]
+    },
+    {
+      "id": "oauth-session-separation",
+      "owner": "Security/Backend/QA",
+      "required": true,
+      "status": "pending",
+      "evidence": [
+        "oauth-session-separation-final-candidate"
+      ]
     },
     {
       "id": "reviewer-account-and-reset",

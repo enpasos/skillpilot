@@ -12,8 +12,14 @@ that only the other client can observe.
 ## Rules
 
 - Use only the dedicated adult reviewer profile from the secure handoff.
-- Never record the `.skillpilot` file, its password, OAuth codes or tokens,
-  permanent IDs, opaque capabilities, protected answers or raw learner data.
+- Install the plugin once, connect its connector through OAuth and start every
+  independent learner session at `https://skillpilot.com/lernen/claude`.
+- Never record OAuth codes or tokens, `spc_` learner sessions, permanent IDs,
+  opaque capabilities, protected answers or raw learner data. No ID file or
+  ID-file password belongs in this flow.
+- Treat connector OAuth and learner access as separate contracts. The optional
+  `offline_access` scope may keep the technical connector connected but must
+  not contain, select, mint, renew or extend a learner session.
 - Use a fresh Claude chat for each independent block and enable only SkillPilot.
 - Record exact UTC time, visible Claude model and surface, deployed Git revision,
   tool sequence, result classification and sanitized screenshots.
@@ -39,8 +45,12 @@ that only the other client can observe.
 1. Connect to `https://mcp-claude-v1.skillpilot.com/mcp` using Streamable HTTP.
 2. Confirm unauthenticated MCP requests receive HTTP 401 with the protected-
    resource metadata challenge.
-3. Complete OAuth through the normal encrypted ID-file page.
-4. Confirm `tools/list` publishes exactly these twelve tools and no prompt:
+3. Connect the plugin's connector through OAuth. Confirm that the connection
+   alone cannot select or access a learner.
+4. Open `https://skillpilot.com/lernen/claude` and start a fresh learner
+   session. Confirm an opaque `spc_` value is created, expires after exactly
+   24 hours and is never displayed in normal Claude prose.
+5. Confirm `tools/list` publishes exactly these twelve tools and no prompt:
 
    - `get_skillpilot_coach_context`
    - `render_skillpilot_goal_visualization`
@@ -55,22 +65,23 @@ that only the other client can observe.
    - `record_skillpilot_verified_recall_results`
    - `get_skillpilot_exam_evaluation`
 
-5. Confirm `resources/list` publishes exactly the content-addressed goal-
+6. Confirm `resources/list` publishes exactly the content-addressed goal-
    visualization and memory-card-practice resources, and `resources/read`
    returns each resource with its declared MCP App MIME type and exact URI.
    For the initial candidate, confirm no prompt or third resource is published.
    On a later compatible UI update, also confirm each older advertised hash URI
    remains passively readable byte-identically and no tool binds to it.
-6. Confirm every tool has a non-empty title, a narrow description, a closed
-   input schema and the applicable read/write annotations.
+7. Confirm every tool has a non-empty title, a narrow description, a closed
+   input schema, required `learningSessionId` and the applicable read/write
+   annotations. This includes the app-only card-review tool.
 
 ## Evidence lanes
 
 ### MCP Inspector
 
 Use Inspector to validate OAuth scopes, closed schemas, exact tool arguments,
-connection/goal/state binding, capability purpose and expiry, complete batch
-order, optimistic concurrency and exact replay. Inspector has no learner
+learner-session/goal/state binding, capability purpose and expiry,
+complete batch order, optimistic concurrency and exact replay. Inspector has no learner
 conversation to inspect. A direct call to an answer- or solution-releasing tool
 with a valid current capability is therefore not expected to fail merely
 because the operator has not typed a learner answer elsewhere. Record this as a
@@ -86,6 +97,10 @@ embedded in live SkillPilot content never override server/tool rules.
 
 ## Valid tool cases
 
+Every call below passes the unchanged current `learningSessionId` obtained from
+the first-party launch. Never paste or display that value in the learner-facing
+conversation or evidence.
+
 | Tool | Prepared fixture and call | Required evidence |
 | --- | --- | --- |
 | `get_skillpilot_coach_context` | Load the reset profile in DE and EN. | Inspector sees the bounded current curriculum/state payload without permanent ID, token, answer key or unrestricted state dump. Hosted Claude summarizes the active learning goal and next step without exposing internal field names. |
@@ -97,7 +112,7 @@ embedded in live SkillPilot content never override server/tool rules.
 | `set_skillpilot_active_goal` | Activate one eligible atomic goal returned by the current state machine. | Exactly one revision advance and the following context shows the canonical active goal. Hosted Claude starts the goal without naming internal node fields. |
 | `set_skillpilot_mastery` | In Hosted Claude, complete the prepared ordinary exercise with visible evidence, then let Claude send specific work/outcome feedback and the current revision. In Inspector, exercise the closed schema and canonical write independently. | Hosted Claude records completion only after it has semantically checked suitable evidence. Inspector proves that both bounded feedback fields are required, no model-selected numeric mastery is accepted, and one valid write advances once and is visible after reload. The returned `1.0` is a binary completion marker, not a grade; visible feedback stays learner-friendly. |
 | `start_skillpilot_verified_recall` | Reset to the prepared active memory goal and start recall without supplying goal ID or batch size. | The server chooses one complete ordered batch and returns only prompt cards plus an opaque batch capability. |
-| `get_skillpilot_verified_recall_answers` | Hosted Claude first waits for every returned card answer, then passes the unchanged batch capability once. Inspector exercises valid, altered, expired, wrong-purpose and cross-connection capabilities independently of chat timing. | The valid capability releases the matching ordered answers and one grading capability. Hosted evidence proves Claude's waiting discipline; Inspector evidence proves capability and state binding, not a submission receipt. |
+| `get_skillpilot_verified_recall_answers` | Hosted Claude first waits for every returned card answer, then passes the unchanged batch capability once. Inspector exercises valid, altered, expired, wrong-purpose and cross-session capabilities independently of chat timing. | The valid capability releases the matching ordered answers and one grading capability. Hosted evidence proves Claude's waiting discipline; Inspector evidence proves capability and state binding, not a submission receipt. |
 | `record_skillpilot_verified_recall_results` | Submit exactly one ordered result for every graded card, current revision and a fresh request ID. | One atomic write, no partial scheduling update, correct next continuation and no separate memory-mastery write. Hosted Claude follows the continuation without exposing capabilities or state fields. |
 | `get_skillpilot_exam_evaluation` | Hosted Claude presents the prepared exam and waits for the complete visible submission before requesting evaluation. Inspector tests active-goal binding and the state binding of the subsequently minted evaluation capability. | The valid call returns the active exam's bounded solution/rubric and the capability required for an exam mastery write. Hosted evidence proves timing discipline; it is not a server-verifiable submission receipt. |
 
@@ -139,6 +154,14 @@ opaque credential or learner identifier.
 ## Required adversarial and failure cases
 
 - unauthenticated request and token with wrong resource/audience;
+- connected OAuth transport without `learningSessionId`: no learner access;
+- missing, malformed, altered, expired or foreign `spc_` learner session;
+- session expires exactly 24 hours after issuance even while OAuth and
+  `offline_access` remain valid;
+- OAuth refresh cannot mint, renew or extend a learner session; a fresh start
+  at `https://skillpilot.com/lernen/claude` is required;
+- permanent SkillPilot ID and legacy ID-file material are rejected as learner
+  selectors and absent from connector, MCP, logs and visible Claude output;
 - missing read scope and missing write scope;
 - untrusted or absent browser Origin where the endpoint requires it;
 - unknown argument, overlong string, invalid UUID and oversized body;
@@ -147,7 +170,7 @@ opaque credential or learner identifier.
 - exact replay of one successful write with the same request ID and payload:
   same result, no second mutation;
 - same request ID reused with a different payload or tool: actionable rejection;
-- missing, expired, altered, cross-connection or wrong-purpose capability;
+- missing, expired, altered, cross-session or wrong-purpose capability;
 - model attempt to call the app-only card-review tool, altered card capability,
   foreign goal/card binding or stale card-review revision;
 - card front, back or review capability present in model-visible content;
@@ -198,8 +221,13 @@ commit recordings or screenshots containing learner data.
 
 ## Pass condition
 
-The gate passes only when all twelve tools and both resources work with valid
-input in their applicable clients, both MCP Apps preserve the private-versus-
+The gate passes only when the preferred one-time plugin installation supplies
+its Skill, connector and both connector-provided MCP Apps; all twelve tools and
+both resources work with valid input in their applicable clients; every tool
+requires the same current `learningSessionId`; a fresh first-party `spc_`
+session expires exactly after 24 hours without being extended by connector
+OAuth; permanent ID and ID-file material never cross the SkillPilot boundary;
+both MCP Apps preserve the private-versus-
 model-visible data boundary, ordinary Hosted-Claude responses are learner-
 friendly in German and English, every adversarial live-content fixture remains
 data rather than instruction authority, Hosted Claude observes answer-before-

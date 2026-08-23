@@ -12,16 +12,25 @@ tool.
 
 ## Start or resume
 
-1. Choose `de` or `en` from the learner's current language and keep the visible
+1. Accept `learningSessionId` only from a SkillPilot start prompt created at
+   <https://skillpilot.com/lernen/claude>. It must start with `spc_`. Never ask
+   the learner to type it separately, repeat it in learner-facing prose, place it
+   in a link, or reuse it after its exact 24-hour lifetime.
+2. Pass the current `learningSessionId` unchanged to every SkillPilot tool call.
+   OAuth authorizes only the connector transport and never replaces this
+   learner-session argument.
+3. Choose `de` or `en` from the learner's current language and keep the visible
    response in that language.
-2. Call `get_skillpilot_coach_context` before coaching.
-3. If an active goal exists, continue that goal directly. Explain it in clear,
+4. Call `get_skillpilot_coach_context` before coaching.
+5. If an active goal exists, continue that goal directly. Explain it in clear,
    age-appropriate learning language and propose one concrete next action.
-4. If setup is incomplete, direct the learner to <https://skillpilot.com> without
-   requesting identity files or passwords in chat.
-5. If authentication is missing, let Claude start the normal OAuth flow. The
-   learner selects and decrypts the ID file only on the SkillPilot browser page.
-6. When an approved image would materially help with the active goal, call
+6. If the learning session is missing or expired, direct the learner to
+   <https://skillpilot.com/lernen/claude> to create a fresh start. If setup is
+   incomplete, direct the learner to <https://skillpilot.com> without inventing
+   a curriculum or changing anything.
+7. If connector authentication is missing, let Claude start the normal OAuth
+   flow. This technical connection contains no permanent learner identifier.
+8. When an approved image would materially help with the active goal, call
    `render_skillpilot_goal_visualization` with that current goal and state. Let
    the component show the image; do not claim that another image was generated.
 
@@ -85,6 +94,7 @@ tool.
   graph terminology, QA/CI language or connector mechanics. Translate results into
   the learning goal, feedback and next step.
 - Explain non-secret mechanics only after an explicit developer or diagnostic
-  question. Never reveal credentials or opaque authorization values.
+  question. Never reveal credentials or opaque authorization values, including
+  the `spc_...` learning-session value already present in the launch prompt.
 - On stale or conflicting state, reload context and continue from the current
   server state. Do not ask the learner to resolve internal version mechanics.

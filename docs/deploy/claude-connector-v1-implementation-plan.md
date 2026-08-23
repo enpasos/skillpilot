@@ -1,9 +1,10 @@
 # SkillPilot Claude Connector v1 — Umsetzungsplan
 
-**Status:** Lokaler Pre-Submission-Kandidat; externe Abnahme, Merge und
-Veröffentlichung nicht freigegeben
+**Status:** Claude-v1-only Product-Owner-Unfreeze vom 23. August 2026;
+Pre-Submission-Kandidat wird auf First-Party-24h-Lernsessions umgebaut;
+externe Abnahme und Veröffentlichung nicht freigegeben
 
-**Stand:** 21. August 2026
+**Stand:** 23. August 2026
 
 **Repository-Basis:** `main` bei `f405abce61a3`
 
@@ -16,6 +17,13 @@ Veröffentlichung nicht freigegeben
 Dieser Plan übersetzt das beschlossene Claude-Konzept in ausführbare
 Arbeitspakete. Er ersetzt keine Product-Owner-, Security-, Legal- oder
 Release-Freigabe.
+
+> **Ablösung des alten Plans:** Die bis 21. August beschriebene verschlüsselte
+> ID-Datei-/Binding-Seite ist vollständig verworfen. Verbindlich ist nur die in
+> dieser Revision beschriebene Zielstruktur: lernendenfreies Connector-OAuth,
+> First-Party-Start unter `https://skillpilot.com/lernen/claude`, eine opake
+> `spc_`-Lernsession für exakt 24 Stunden und die permanente ID ausschließlich
+> innerhalb SkillPilots. Widersprechende ältere Evidenz ist nicht wiederverwendbar.
 
 > **Unverhandelbare Abgrenzung:** Die bestehende OpenAI App wird weiter
 > genutzt. `ai/openai app/**`, der eingereichte OpenAI-Plugin-Kandidat und sein
@@ -49,8 +57,14 @@ Claude mit folgenden Eigenschaften:
 - zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
   normale Karteikartenübung; Kartenbewertungen ändern nur den
   Wiederholungsplan, niemals Mastery;
-- ein optionales Claude-Code-/Cowork-Plugin mit demselben Remote-MCP-Server und
-  einer wiederverwendbaren Claude-spezifischen Skill-Anweisung;
+- das Claude-Plugin als bevorzugte Einmal-Installation mit Skill und demselben
+  Remote-MCP-Server; beide MCP Apps kommen über den Connector, eine getrennte
+  Installation bleibt nur Fallback ohne Funktionsvorteil;
+- jede Lernsitzung startet ausschließlich über
+  `https://skillpilot.com/lernen/claude`, verwendet nur eine opake `spc_`-
+  Kennung und endet exakt 24 Stunden nach Ausstellung;
+- dauerhaftes Connector-OAuth einschließlich `offline_access` bleibt reiner
+  Transport und enthält oder wählt keine Lernendenidentität;
 - der alte Claude-Beta-Endpunkt bleibt deaktiviert und ist weder Grundlage
   noch Fallback des neuen Connectors.
 
@@ -136,8 +150,10 @@ eskaliert, wenn mindestens eine dieser Bedingungen eintritt:
   Provider-Lane;
 - eine Schreiboperation kann `expectedStateVersion` und Idempotenz nicht vor
   der Mutation prüfen;
-- ID-Datei oder Passwort müssten zur Entschlüsselung an den Server gesendet
-  werden;
+- eine permanente SkillPilot-ID, ID-Datei oder ein ID-Datei-Passwort müsste
+  Claude, OAuth, MCP oder Logs erreichen;
+- OAuth oder Refresh könnte eine Lernsession auswählen, erzeugen, erneuern oder
+  über die exakt 24 Stunden hinaus verlängern;
 - Prüfungs- oder Recall-Lösungen würden im normalen Coach-Kontext sichtbar;
 - ein erforderlicher Security-Matcher fällt auf die aktuell permissive
   Default-`SecurityFilterChain` zurück;
@@ -157,17 +173,17 @@ Zustimmung.
 | A | Branch-/Merge-Regel während des OpenAI-Reviews | Product Owner/Release | Merge in einen deploybaren Branch |
 | B | Exakter Effekt auf den gemeinsamen Backend-Build und Behandlung des laufenden OpenAI-Reviews | Product Owner/Release | jedes Produktionsdeployment |
 | C | OAuth-CIMD-Policy für Hosted Claude und Claude Code | Security | OAuth-Implementierung |
-| D | Lokale ID-Datei-Entschlüsselung und Binding-Threat-Model | Security/Product | öffentlicher OAuth-Flow |
+| D | First-Party-Start, exakt 24h `spc_`, all-tool session binding und OAuth/Session-Trennung | Security/Product | öffentlicher Lernzugriff |
 | E | Claude-spezifische Datenschutzerklärung, Retention und Mindestalter | Legal/Product | Real-User-Test und Veröffentlichung |
 | F | Numerisches RAM-, Thread-, Pool- und Latenzbudget | Operations | Lasttest und Aktivierung |
 | G | Publisher-Organisation und Directory-Berechtigung | Product/Operations | Directory-Einreichung |
 | H | Reviewer-Testkonto mit realistischem, aber wegwerfbarem Lernzustand | Product/QA | Directory-Einreichung |
 
-Während der aktiven OpenAI-Review-Sperre darf eine isolierte
-Implementierungs-Branch vorbereitet und lokal getestet werden, wenn die
-Branch-Regel aus Gate A dies ausdrücklich erlaubt. Sie darf nicht automatisch
-in das Produktionsartefakt gelangen. Die Freigabe von Gate A ist keine
-Freigabe für Gate B.
+Die Product-Owner-Entscheidung vom 23. August 2026 gibt ausschließlich den
+providerisolierten Umbau des noch nicht eingereichten Claude-v1-Kandidaten frei.
+Sie hebt die OpenAI-Review-Sperre nicht auf und ist keine automatische Merge-,
+Produktions-, Restart- oder Portal-Freigabe. Diese Wirkungen bleiben über Gate
+B und das Release-Runbook separat zu entscheiden.
 
 ---
 
@@ -185,7 +201,6 @@ festgeschrieben. Discovery-Dokumente und Redirects nennen ausschließlich die
 | `/oauth2/authorize` | `/internal/connectors/claude/v1/oauth2/authorize` |
 | `/oauth2/token` | `/internal/connectors/claude/v1/oauth2/token` |
 | `/oauth2/revoke` | `/internal/connectors/claude/v1/oauth2/revoke` |
-| `/connect/**` | `/internal/connectors/claude/v1/connect/**` |
 | `/privacy` | `/internal/connectors/claude/v1/privacy` |
 
 Zusätzliche Regeln:
@@ -216,23 +231,21 @@ connectors/claude/v1/
 ├── ClaudeV1Properties.java
 ├── ClaudeV1Configuration.java
 ├── ClaudeV1RuntimeValidation.java
-├── identity/
-│   ├── ClaudeV1Connection.java
-│   ├── ClaudeV1BindingTransaction.java
-│   ├── ClaudeV1ConnectionRepository.java
-│   └── ClaudeV1BindingService.java
+├── session/
+│   ├── ClaudeV1LearningSession.java
+│   ├── ClaudeV1LearningSessionRepository.java
+│   ├── ClaudeV1LearningSessionService.java
+│   └── ClaudeV1SessionTokenCodec.java
 ├── oauth/
 │   ├── ClaudeV1OAuthConfiguration.java
 │   ├── ClaudeV1OAuthMetadataController.java
 │   ├── ClaudeV1CimdMetadataValidator.java
-│   ├── ClaudeV1BindingAuthenticationFilter.java
 │   ├── ClaudeV1OpaqueTokenIntrospector.java
 │   └── ClaudeV1TokenLifecycleService.java
 ├── mcp/
 │   ├── ClaudeV1McpServerConfiguration.java
 │   ├── ClaudeV1McpContractAdapter.java
 │   ├── ClaudeV1CoachContextProjector.java
-│   ├── ClaudeV1SessionCoordinator.java
 │   └── ClaudeV1CapabilityService.java
 ├── persistence/
 │   ├── ClaudeV1IdempotencyRecord.java
@@ -240,7 +253,9 @@ connectors/claude/v1/
 ├── observability/
 │   └── ClaudeV1Telemetry.java
 └── web/
-    └── ClaudeV1ConnectionController.java
+    ├── ClaudeV1CoachUiController.java
+    ├── ClaudeV1CoachStartRequest.java
+    └── ClaudeV1LaunchResponse.java
 ```
 
 Keine v1-Klasse importiert eine Klasse aus
@@ -386,49 +401,42 @@ Resource gebunden.
 
 **Aufwand:** 5–8 Personentage plus Security Review.
 
-### WP4 — Bestehenden Learner sicher binden
+### WP4 — First-Party-Lernsitzung sicher ausstellen
 
-**Zweck:** Eine Claude-Verbindung an einen vorhandenen pseudonymen
-SkillPilot-Lernzustand binden, ohne neues Accountsystem.
+**Zweck:** Einen vorhandenen pseudonymen SkillPilot-Lernzustand für höchstens
+24 Stunden freigeben, ohne die permanente ID an Claude oder OAuth zu geben.
 
 **Aufgaben:**
 
-1. Eine connector-eigene, statische Binding-Seite unter dem Claude-v1-Origin
-   bereitstellen; keine Änderung an der WebGUI und kein Import ihres Bundles.
-2. Nur den Entschlüsselungsteil des bestehenden ID-Dateiformats als kleines
-   browsernatives ES-Modul unter
-   `backend/src/main/resources/claude-connector-v1/` implementieren.
-3. PBKDF2-SHA-256 mit 600.000 Iterationen, AES-256-GCM, AAD, Längen- und
-   Exact-key-Prüfungen bytekompatibel zum bestehenden Format halten.
-4. Die Datei und ihr Passwort ausschließlich im Browser verarbeiten. Nur die
-   entschlüsselte, validierte UUID darf im TLS-geschützten Binding-POST
-   übertragen werden.
-5. Kein ID-Wert in URL, Redirect, Referrer, Cookie, Titel, Browser Storage,
-   Analytics oder Logs.
-6. Binding-Transaktion mit OAuth-State, PKCE-Anfrage, Client-ID und Redirect
-   verbinden; Handle kurzlebig, zufällig, gehasht und einmalig nutzbar.
-7. CSRF, Session Fixation, Open Redirects und Wiederholung abgefangener
-   Binding-POSTs abwehren.
-8. Nach erfolgreicher Prüfung ein neues opakes Claude-v1-Subject erzeugen. Das
-   permanente SkillPilot-ID-Feld wird weder OAuth-Subject noch Toolargument.
-9. Nutzer ohne bestehende ID-Datei zur normalen SkillPilot-WebGUI verweisen und
-   den OAuth-Vorgang anschließend neu starten lassen; keine automatische
-   Learner-Erzeugung.
-10. CSP ohne Inline-Script und ohne Drittanbieter-Netzzugriff setzen.
+1. Eine isolierte First-Party-Route
+   `https://skillpilot.com/lernen/claude` bereitstellen; bestehende
+   ChatGPT-Startbytes und -Semantik nicht ändern.
+2. Der First-Party-POST
+   `/api/ui/learners/{skillpilotId}/claude/v1/launch` wählt den Learner nur
+   innerhalb der SkillPilot-WebGUI und gibt niemals die permanente ID an
+   Claude zurück.
+3. `ClaudeV1SessionTokenCodec` erzeugt eine opake `spc_`-Kennung mit 43
+   Base64url-Zeichen und HMAC-Integrität.
+4. `ClaudeV1LearningSessionService` setzt `SESSION_TTL` exakt auf 24 Stunden;
+   Nutzung verschiebt das Ende nicht.
+5. Jede der zwölf Tool-Schemas verlangt `learningSessionId`; das gilt explizit
+   auch für `review_skillpilot_memory_practice_card`.
+6. Toolaufrufe prüfen Learner-Session und Connector-OAuth getrennt. OAuth und
+   `offline_access` dürfen keine Lernsession auswählen, ausstellen, erneuern
+   oder verlängern.
+7. Fehlende, manipulierte, abgelaufene und fremde Sessions scheitern
+   fail-closed; ein neuer First-Party-Start ist die einzige Erneuerung.
+8. Keine Session, permanente ID oder OAuth-Zugangsdaten in URL, Referrer,
+   Analytics, Logs, Toolergebnissen oder normalem Claude-Text.
 
-Die ES-Modul-Duplizierung ist bewusst eng auf **Decrypt-only** begrenzt. Ein
-Kompatibilitätstest mit festen, nicht realen Testvektoren verhindert Drift zum
-eingefrorenen WebGUI-Dateiformat. Nach Ende der Freeze-Situation kann eine
-gemeinsame neutrale Browserbibliothek separat bewertet werden; sie ist keine
-Voraussetzung für v1.
+**Tests:** Tokenformat und HMAC, exakt 24h mit kontrollierter Uhr, fehlende und
+abgelaufene Session, Cross-Learner/Session, all-tool Schema-Guard, app-only
+Review-Guard, OAuth-Refresh bei abgelaufener Session und Log-Redaktion.
 
-**Tests:** Browser-Test mit Test-ID-Datei, falschem Passwort, manipuliertem
-Envelope, zu großer Datei, Replay, CSRF und Netzwerk-Mitschnitt. Der Mitschnitt
-darf weder Dateiinhalt noch Passwort enthalten.
-
-**Abnahme:** Eine bestehende Testperson kann verbinden; Server und Logs sehen
-nie Passwort oder verschlüsselten Dateiinhalt; Claude sieht nie die permanente
-ID.
+**Abnahme:** Eine bestehende Testperson startet über SkillPilot; alle zwölf
+Tools funktionieren nur mit der aktuellen Session; nach exakt 24 Stunden ist
+ein neuer Start nötig, während der Connector verbunden bleiben darf; Claude
+sieht nie die permanente ID.
 
 **Aufwand:** 3–5 Personentage plus Threat-Model Review.
 
@@ -443,16 +451,16 @@ Lernzustand herstellen.
    `RegisteredClientRepository` und den provider-scoped Wrapper ansprechen.
 2. Nicht auf `claude_connection`, `claude_binding_grant` oder
    `claude_pending_launch` zugreifen.
-3. Falls erforderlich, genau eine additive Migration
-   `023-add-claude-connector-v1.yaml` anlegen mit mindestens:
-   `claude_v1_connection`, `claude_v1_binding_transaction` und
-   `claude_v1_idempotency`.
+3. Die bereits produktiv ausgeführte Migration
+   `023-add-claude-connector-v1.yaml` niemals ändern. Den Modellwechsel nur
+   additiv über `024-replace-claude-v1-binding-with-learning-sessions.yaml`
+   durchführen.
 4. IDs und One-time-Handles nur gehasht speichern, soweit ein späterer
    Klartextvergleich nicht nötig ist. Keine Tokens, Passwörter, Prompts,
    Antworten oder Lösungen im Audit.
-5. Einen Claude-eigenen `ClaudeV1SessionCoordinator` implementieren. Er darf
-   keine OpenAI-Klasse importieren, übernimmt aber dieselben kanonischen
-   Garantien:
+5. Sessionauflösung und Idempotenz in den providerisolierten Services halten.
+   Sie dürfen keine OpenAI-Klasse importieren, übernehmen aber dieselben
+   kanonischen Garantien:
    Learner-Lock, Vergleich von `expectedStateVersion`, UUID-
    `clientRequestId`, Request-Hash, atomare Mutation und deterministischer
    Replay des begrenzten Ergebnisses.
@@ -563,7 +571,7 @@ freigeben.
 - Normaler Coach-Kontext enthält Aufgabe und höchstens Maximalpunktzahl, nie
   Lösung, Passing Points oder Rubrik.
 - Evaluation-Tool prüft aktives Exam, Zustand und Claude-v1-Verbindung und
-  mintet eine kurze provider-/connection-/goal-/revisiongebundene
+  mintet eine kurze provider-/learner-session-/goal-/revisiongebundene
   Evaluation-Capability.
 - Exam-Mastery verlangt diese Capability, endliche `earnedPoints`, konkrete
   Rückmeldung und mindestens `passingPoints`.
@@ -603,9 +611,9 @@ anzufassen.
    ändern.
 5. Connector-spezifische Privacy-Seite mit Datenerhebung, Zweck, Speicherung,
    Retention, Drittweitergabe, Kontakt und Revocation bereitstellen.
-6. Request-/Response-Body-Logging für OAuth, Binding, MCP, Recall und Exam
-   ausschließen; permanente IDs und Token zusätzlich in strukturierten Logs
-   redigieren.
+6. Request-/Response-Body-Logging für OAuth, First-Party-Launch, MCP, Recall und
+   Exam ausschließen; permanente IDs, `spc_`-Sessions und Token zusätzlich in
+   strukturierten Logs redigieren.
 7. Provider-Telemetrie auf Zähler, Statusklasse, Latenz, begrenzte
    Fehlerkategorie, Heap/Pool und Revocation beschränken.
 8. Keinen globalen `HealthIndicator` registrieren, der Claude-Fehler in die
@@ -633,12 +641,13 @@ Veröffentlichung belegen.
 - `ClaudeV1SecurityChainIntegrationTest`;
 - `ClaudeV1OAuthFlowIntegrationTest`;
 - `ClaudeV1CimdMetadataValidatorTest`;
-- `ClaudeV1BindingBrowserTest`;
+- `ClaudeV1LearningSessionServiceTest`;
+- `ClaudeV1SessionTokenCodecTest`;
 - `ClaudeV1McpContractTest`;
 - `ClaudeV1MemoryPracticeContractTest`;
 - `ClaudeV1VerifiedRecallContractTest`;
 - `ClaudeV1ExamContractTest`;
-- `ClaudeV1SessionCoordinatorTest`;
+- `ClaudeV1CoachUiControllerTest`;
 - `ClaudeV1CrossProviderIsolationTest`;
 - `ClaudeV1OpenAiDifferentialContractTest`.
 
@@ -656,11 +665,15 @@ Veröffentlichung belegen.
 **Real-Client-Abnahme:**
 
 - alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
-- eine reale Hosted-Claude-Verbindung als Custom Connector testen;
+- eine reale Hosted-Claude-Plugin-Installation testen; den Remote-Connector
+  zusätzlich separat als Custom Connector prüfen, soweit dies für die
+  Directory-Abnahme erforderlich ist;
 - beide MCP Apps in Hosted Claude mit privaten Kartenmetadaten und app-only
   Review testen;
-- die optionale Plugin-Lane getrennt in Claude Code und Cowork mit offizieller
-  Plugin-Validierung testen;
+- den bevorzugten Plugin-Installationsweg mit Skill, genau einem Connector und
+  beiden connectorgelieferten MCP Apps testen;
+- Claude Code und Cowork nur dann separat testen und beanspruchen, wenn diese
+  Oberflächen veröffentlicht werden sollen;
 - DE- und EN-Coaching, Konflikt, Recall, Exam, Revocation und Reconnect testen;
 - mit vollständig bestücktem, wegwerfbarem Erwachsenen-Testlearner testen;
 - keine echten Lernenden- oder Produktiv-Credentials im Mitschnitt verwenden.
@@ -710,7 +723,7 @@ Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit.
 1. Claude-v1-vhost deaktivieren;
 2. v1-Master-Schalter auf `false` setzen;
 3. bestehenden Dienst kontrolliert neu starten;
-4. Claude-v1-Token und offene Binding-Transaktionen widerrufen;
+4. Claude-v1-Transporttoken und offene Lernsessionen widerrufen;
 5. OpenAI-Smokes wiederholen;
 6. bei Artefakt- oder Migrationsfehler auf das gesicherte gemeinsame Artefakt
    zurückrollen; additive v1-Tabellen nicht destruktiv entfernen.
@@ -732,9 +745,9 @@ WP0 ──> WP1 ──> WP2 ──> WP3 ──> WP4
                                       └──> WP8/WP9 ──> WP10
 ```
 
-Der kritische Pfad liegt in OAuth/CIMD, lokalem Learner-Binding,
+Der kritische Pfad liegt in OAuth/CIMD, First-Party-Sessionausstellung,
 Revision/Idempotenz und Real-Claude-Abnahme. WP6 und WP7 dürfen erst gegen
-Mock-Identity entwickelt werden, sobald deren Capability- und
+Mock-Sessions entwickelt werden, sobald deren Capability- und
 State-Version-Vertrag feststeht.
 
 Grobe Gesamtschätzung für einen mit Spring Security und MCP vertrauten
@@ -799,8 +812,14 @@ wenn alle folgenden Punkte erfüllt sind:
 - öffentliche und interne Pfade, OAuth-Issuer und Resource-Identifier sind
   exakt versioniert und isoliert;
 - Claude.ai besteht OAuth mit PKCE S256;
-- ID-Datei und Passwort werden ausschließlich lokal im Browser verarbeitet;
-- Claude erhält nie die permanente SkillPilot-ID;
+- jede Lernsitzung startet über `https://skillpilot.com/lernen/claude` und
+  erhält ausschließlich eine opake `spc_`-Kennung für exakt 24 Stunden;
+- alle zwölf Tools einschließlich des app-only Review-Tools verlangen dieselbe
+  aktuelle `learningSessionId`;
+- OAuth und `offline_access` bleiben reiner Connectortransport und können keine
+  Lernsitzung auswählen, erzeugen, erneuern oder verlängern;
+- Claude erhält nie die permanente SkillPilot-ID, eine ID-Datei oder deren
+  Passwort;
 - alle zwölf freigegebenen Tools haben genaue Schemas, Titel und korrekte
   Anthropic-Annotationen;
 - beide content-addressed MCP Apps sind deterministisch gebaut; private
@@ -808,7 +827,7 @@ wenn alle folgenden Punkte erfüllt sind:
 - normale Karteikartenpraxis ändert nur Wiederholungsplanung und nie Mastery;
 - Level 2 ist nicht schreibbar; Level 3 und Lernzustandsmutationen verwenden
   kanonische Regeln, Revision und Idempotenz;
-- Recall- und Exam-Capabilities sind provider-, learner-, connection-, goal-,
+- Recall- und Exam-Capabilities sind provider-, learner-, learner-session-, goal-,
   state- und zeitgebunden;
 - Cross-Provider-Konflikt-, Token-, Revocation- und Fault-Tests sind grün;
 - RAM-, Thread-, Pool- und OpenAI-Latenzbudgets sind numerisch erfüllt;
@@ -820,18 +839,23 @@ wenn alle folgenden Punkte erfüllt sind:
 - Product Owner hat die konkrete Produktionsaktivierung ausdrücklich
   freigegeben.
 
-### 9.1 Separate Definition of Done der optionalen Plugin-Lane
+### 9.1 Definition of Done des bevorzugten Plugin-Wegs
 
-Claude Code und Cowork sind nicht Teil des aktuellen Directory-v1-Claims und
-blockieren dessen Einreichung nicht. Das optionale Plugin darf erst separat
-veröffentlicht oder als kompatibel beworben werden, wenn zusätzlich:
+Das Plugin ist der bevorzugte Einmal-Installationsweg für den Claude.ai-
+Kandidaten. Claude Code und Cowork sind zusätzliche Oberflächen und nicht Teil
+des aktuellen Directory-v1-Claims. Das Plugin darf erst veröffentlicht werden,
+wenn:
 
 - der lokale Paketcheck und die offizielle Prüfung mit
   `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
-- Installation, OAuth, alle zwölf Tools und beide MCP Apps jeweils in einer
-  frischen Claude-Code- und Cowork-Umgebung getestet wurden;
-- eine gleichzeitige Installation von Directory-Connector und Plugin kein
-  doppeltes oder abweichendes SkillPilot-Toolset erzeugt;
+- Installation, OAuth, First-Party-Start, alle zwölf Tools und beide MCP Apps
+  in einer frischen beanspruchten Claude.ai-Umgebung getestet wurden;
+- Skill und Connector genau einmal installiert sind und die beiden MCP Apps
+  über den Connector bereitstehen;
+- eine unterstützte Fallback-Installation kein doppeltes oder abweichendes
+  SkillPilot-Toolset erzeugt;
+- Claude Code und Cowork jeweils separat vollständig getestet wurden, bevor die
+  Plugin-Dokumentation diese Oberflächen beansprucht;
 - die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und
   Funktionen beansprucht.
 
@@ -839,7 +863,7 @@ veröffentlicht oder als kompatibel beworben werden, wenn zusätzlich:
 
 ## 10. Aktuelle externe Referenzen
 
-Technische Anforderungen wurden am 18. August 2026 gegen die aktuellen
+Technische Anforderungen wurden zuletzt am 23. August 2026 gegen die aktuellen
 Primärquellen geprüft:
 
 - [Anthropic: Authentication for connectors](https://claude.com/docs/connectors/building/authentication)

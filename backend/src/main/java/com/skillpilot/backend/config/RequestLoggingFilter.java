@@ -89,7 +89,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 // intent. It is not a credential, but it is still learner data and
                 // therefore stays out of the generic request-body log.
                 || (requestUri.startsWith("/api/ui/learners/")
-                        && requestUri.contains("/openai/v1/"))) {
+                        && (requestUri.contains("/openai/v1/")
+                                || requestUri.contains("/claude/v1/")))) {
             filterChain.doFilter(request, response);
             return;
         }

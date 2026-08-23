@@ -19,7 +19,6 @@ public final class ClaudeV1RuntimeValidation {
     public static final int MINIMUM_SECRET_LENGTH = 32;
     private static final Duration MAX_ACCESS_TOKEN_TTL = Duration.ofHours(1);
     private static final Duration MAX_REFRESH_TOKEN_TTL = Duration.ofDays(30);
-    private static final Duration MAX_BINDING_TTL = Duration.ofMinutes(10);
     private static final Duration MAX_CAPABILITY_TTL = Duration.ofMinutes(10);
     private static final Duration MAX_IDEMPOTENCY_TTL = Duration.ofHours(24);
 
@@ -119,7 +118,6 @@ public final class ClaudeV1RuntimeValidation {
     private static void validateTtls(ClaudeV1Properties properties, List<String> violations) {
         requireRange(properties.getAccessTokenTtl(), "accessTokenTtl", Duration.ofMinutes(1), MAX_ACCESS_TOKEN_TTL, violations);
         requireRange(properties.getRefreshTokenTtl(), "refreshTokenTtl", Duration.ofHours(1), MAX_REFRESH_TOKEN_TTL, violations);
-        requireRange(properties.getBindingTransactionTtl(), "bindingTransactionTtl", Duration.ofMinutes(1), MAX_BINDING_TTL, violations);
         requireRange(properties.getCapabilityTtl(), "capabilityTtl", Duration.ofSeconds(30), MAX_CAPABILITY_TTL, violations);
         requireRange(properties.getIdempotencyTtl(), "idempotencyTtl", Duration.ofMinutes(1), MAX_IDEMPOTENCY_TTL, violations);
         requireRange(properties.getRequestTimeout(), "requestTimeout", Duration.ofSeconds(1), Duration.ofSeconds(60), violations);

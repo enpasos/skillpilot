@@ -16,7 +16,7 @@
       "sha256": null,
       "approvedBy": null,
       "approvedAt": null,
-      "note": "The operator supplied a passing terminal transcript in the working session. It is not durable release evidence until an external evidence ID, content hash and approver are recorded."
+      "note": "The operator supplied a passing terminal transcript for the retired ID-file candidate. It is historical only and must be rerun against the final first-party 24-hour-session candidate before it can become release evidence."
     },
     {
       "id": "operator-openai-differential-2026-08-21",
@@ -48,23 +48,71 @@
       "sha256": null,
       "approvedBy": null,
       "approvedAt": null,
-      "note": "The Product Owner reported a successful real-Claude smoke test. It does not cover all twelve tools and both UI resources and is not release evidence until the complete reviewer plan is run against the final candidate."
+      "note": "The Product Owner reported a successful real-Claude smoke test for the retired ID-file candidate. It is historical only and does not cover the final first-party 24-hour-session candidate, all twelve tools and both UI resources."
     },
     {
       "id": "candidate-icon-provenance",
-      "status": "recorded",
+      "status": "reference_required",
       "observedAt": "2026-08-21",
       "scope": "Technical source and digest of the 512x512 portal icon candidate",
       "gateIds": [
         "icon-rights-and-portal-asset"
       ],
-      "candidateContractSha256": "223b2344f5a15541977a48e15f0a2a54acc3812a7eaacf35ac2c7cbefbf05664",
+      "candidateContractSha256": null,
       "candidateRevision": null,
-      "externalEvidenceId": "repository:ai/claude/connector-v1/assets/PROVENANCE.md",
-      "sha256": "c240e1c355f85ec2603c685e07da59415b9d09c795001a423eedea04e5f510aa",
+      "externalEvidenceId": null,
+      "sha256": null,
       "approvedBy": null,
       "approvedAt": null,
-      "note": "Technical provenance is recorded. Trademark rights and portal rendering still require explicit Product Owner and Legal approval."
+      "note": "Technical provenance remains in the repository, but the final candidate digest, portal rendering, trademark rights and explicit Product Owner and Legal approval must be recorded after the candidate is tested."
+    },
+    {
+      "id": "first-party-session-final-candidate",
+      "status": "reference_required",
+      "observedAt": null,
+      "scope": "First-party Claude launch creates one opaque spc_ learner session valid for exactly 24 hours; missing, expired and replayed sessions fail closed",
+      "gateIds": [
+        "first-party-24h-learning-session"
+      ],
+      "candidateContractSha256": null,
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "note": "Run and approve this evidence only against the final tested candidate."
+    },
+    {
+      "id": "permanent-id-nondisclosure-final-candidate",
+      "status": "reference_required",
+      "observedAt": null,
+      "scope": "Plugin, OAuth, MCP, logs and hosted-Claude output contain neither permanent SkillPilot ID nor encrypted ID-file material",
+      "gateIds": [
+        "permanent-id-and-id-file-nondisclosure"
+      ],
+      "candidateContractSha256": null,
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "note": "Run and approve this evidence only against the final tested candidate."
+    },
+    {
+      "id": "oauth-session-separation-final-candidate",
+      "status": "reference_required",
+      "observedAt": null,
+      "scope": "Long-lived connector OAuth and offline_access remain transport-only and cannot contain, select, mint, renew or extend a learner session",
+      "gateIds": [
+        "oauth-session-separation"
+      ],
+      "candidateContractSha256": null,
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "note": "Run and approve this evidence only against the final tested candidate."
     }
   ]
 }

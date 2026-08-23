@@ -193,6 +193,8 @@ jobs:
         run: npm run test:runtime-curriculum-catalog
       - name: Test root route policy
         run: npm run test:root-route-policy
+      - name: Test Claude v1 first-party start flow
+        run: npm run test:claude-v1-start
       - name: Test service-worker navigation policy
         run: npm run test:service-worker-navigation-policy
       - name: Test learning-goal book contracts and publication
