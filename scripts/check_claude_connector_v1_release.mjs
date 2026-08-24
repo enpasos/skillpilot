@@ -84,6 +84,7 @@ const expectedContractTrees = [
 ];
 
 const expectedContractFiles = [
+  "ai/claude/connector-v1/README.md",
   "ai/claude/connector-v1/assets/icon-512.png",
   "ai/claude/connector-v1/directory-listing.json",
   "ai/claude/connector-v1/reviewer-test-plan.md",
@@ -137,6 +138,65 @@ const forbiddenDistributionClaimPatterns = [
     ],
   },
 ];
+const forbiddenPluginSurfaceClaims = [
+  {
+    label: "Claude Desktop Chat plugin support",
+    surfacePattern: /\b(?:Claude\s+)?Desktop(?:\s+|[-‐‑–—]\s*)Chat\b/iu,
+  },
+  {
+    label: "Claude Cowork plugin support",
+    surfacePattern: /\b(?:Claude\s+)?Cowork\b/iu,
+  },
+  {
+    label: "public Claude Code plugin support",
+    surfacePattern: /\b(?:public\s+|öffentlich(?:es|en|er|e)\s+)?Claude Code\b/iu,
+  },
+];
+const pluginClaimSubjectPattern = /\b(?:(?:the|das|der|die)\s+(?:(?:public|öffentlich(?:e|en|er|es)?)\s+)?(?:SkillPilot[-\s]+)?plugin(?:[-\s]+(?:package|shell|Paket))?|(?:public|öffentlich(?:e|en|er|es)?)\s+(?:SkillPilot[-\s]+)?plugin(?:[-\s]+(?:package|shell|Paket))?|SkillPilot[-\s]+(?:plugin(?:[-\s]+(?:package|shell|Paket))?|coach(?:ing)?(?:[-\s]+v1)?[-\s]+skill|coaching[-\s]+skill|coach[-\s]+v1))\b/iu;
+const positivePluginClaimPattern = /\b(?:supports?|provides?|offers?|includes?|works?|runs?|enables?|covers?|ships?|bundles?|can|may|will|would|could|(?:is|are)\s+(?:not\s+)?(?:now\s+)?(?:available|supported|usable|compatible|intended)|(?:is\s+)?(?:the\s+)?preferred\s+complete\s+installation|unterstützt|bietet|liefert|enthält|funktioniert|läuft|ermöglicht|deckt|kann|könnte|wird|soll|ist\s+(?:nicht\s+)?(?:jetzt\s+)?(?:verfügbar|unterstützt|nutzbar|kompatibel|vorgesehen)|(?:ist\s+)?(?:die\s+)?bevorzugte\s+vollständige\s+Installation)\b/iu;
+const explicitClaimNegationPattern = /\b(?:not|no|neither|nor|without|never|(?:does|do|is|are|can|will|would|should|must)n['’]t|nicht|kein(?:e|en|em|er|es)?|weder|noch|ohne|niemals)\b/iu;
+const nonNegatingExpansionPattern = /\b(?:not\s+only|nicht\s+nur)\b/iu;
+const explicitNegativeClaimPattern = /\b(?:makes?|has)\s+no\s+claim\b|\bdoes\s+not\s+claim\b|\bclaims?\s+neither\b|\b(?:macht|enthält|erhebt)\s+kein(?:e|en|em|er|es)?\s+(?:Aussage|Behauptung|Anspruch)\b|\bbeansprucht\s+(?:nicht|weder)\b|\bsagt\s+kein(?:e|en|em|er|es)?\b[^.!?;]{0,40}\bzu\b/iu;
+const claimClauseBoundaryPattern = /\s+(?:but|however|whereas|yet|aber|jedoch|hingegen|sondern)\s+/iu;
+
+function containsPositivePluginSurfaceClaim(text, surfacePattern) {
+  const normalizedText = text.replace(/\s+/gu, " ");
+  const sentences = normalizedText.split(/(?<=[.!?;])\s+/u);
+
+  for (const sentence of sentences) {
+    const sentenceHasSubject = pluginClaimSubjectPattern.test(sentence);
+    for (const clause of sentence.split(claimClauseBoundaryPattern)) {
+      if (!sentenceHasSubject && !pluginClaimSubjectPattern.test(clause)) continue;
+      const predicates = allMatches(positivePluginClaimPattern, clause);
+      if (predicates.length === 0) continue;
+
+      for (const surface of allMatches(surfacePattern, clause)) {
+        if (explicitNegativeClaimPattern.test(clause.slice(0, surface.index))) continue;
+        const predicate = predicates.reduce((nearest, candidate) => (
+          Math.abs(candidate.index - surface.index) < Math.abs(nearest.index - surface.index)
+            ? candidate
+            : nearest
+        ));
+        const claimStart = Math.max(0, Math.min(predicate.index, surface.index) - 18);
+        const claimEnd = Math.max(
+          predicate.index + predicate[0].length,
+          surface.index + surface[0].length,
+        );
+        const claimFragment = clause.slice(claimStart, claimEnd);
+        const isNegated = explicitClaimNegationPattern.test(claimFragment)
+          && !nonNegatingExpansionPattern.test(claimFragment);
+        if (!isNegated) return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+function allMatches(pattern, value) {
+  const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`;
+  return [...value.matchAll(new RegExp(pattern.source, flags))];
+}
 
 export function verifyClaudeConnectorV1Release({
   repositoryRoot = defaultRepositoryRoot,
@@ -1161,6 +1221,13 @@ export function validateClaudeDistributionClaimSafety(...documents) {
       );
     }
   }
+  for (const { label, surfacePattern } of forbiddenPluginSurfaceClaims) {
+    if (containsPositivePluginSurfaceClaim(publishedText, surfacePattern)) {
+      errors.push(
+        `Claude distribution documentation contains a forbidden contradictory claim: ${label}.`,
+      );
+    }
+  }
 
   return errors;
 }
@@ -1174,12 +1241,12 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
   errors.push(...validateClaudeDistributionClaimSafety(concept, implementationPlan));
 
   check(
-    concept.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users."),
-    "Claude concept must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
+    concept.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat users."),
+    "Claude concept must define the public plugin as the preferred complete paid Claude Web installation.",
   );
   check(
-    implementationPlan.includes("Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork."),
-    "Claude implementation plan must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
+    implementationPlan.includes("Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat."),
+    "Claude implementation plan must define the public plugin as the preferred complete paid Claude Web installation.",
   );
   check(
     concept.includes("The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission."),
@@ -1190,8 +1257,9 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
     "Claude implementation plan must preserve the independent connector-only Directory lane and its separate submission gate.",
   );
   check(
-    /coaching Skill works on all three supported surfaces/u.test(concept)
+    /coaching Skill is scoped only to that publication surface/u.test(concept)
       && /contains no hooks or subagents|has no hooks or subagents/u.test(concept)
+      && /does not claim Desktop Chat or\s+Cowork plugin support/u.test(concept)
       && /Native mobile plugin support is not claimed/u.test(concept)
       && /remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI/u.test(concept),
     "Claude concept must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
@@ -1202,8 +1270,9 @@ export function validateClaudeDistributionDocumentation(concept, implementationP
     "Claude concept must allow same-server plugin and Directory coexistence while avoiding a redundant manual Custom Connector.",
   );
   check(
-    /Coaching-Skill funktioniert auf allen drei unterstützten Oberflächen/u.test(implementationPlan)
+    /Coaching-Skill ist nur für diese Web-Oberfläche im V1-Veröffentlichungsumfang/u.test(implementationPlan)
       && /keine Hooks oder Subagents/u.test(implementationPlan)
+      && /keine Behauptung von Desktop-Chat- oder\s+Cowork-Plugin-Unterstützung/u.test(implementationPlan)
       && /keine Behauptung nativer mobiler Plugin-Unterstützung/u.test(implementationPlan)
       && /Remote-Connector besitzt OAuth, MCP, alle zwölf\s+Tools und beide MCP Apps UI-Ressourcen/u.test(implementationPlan),
     "Claude implementation plan must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
@@ -1512,6 +1581,7 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
 }
 
 function verifyDocumentationAndEdge(repositoryRoot, check) {
+  const connectorReadme = readText(repositoryRoot, "ai/claude/connector-v1/README.md");
   const docsIndex = readText(repositoryRoot, "docs/deploy/index.md");
   const mkdocs = readText(repositoryRoot, "mkdocs.yml");
   const guide = readText(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.md");
@@ -1532,7 +1602,12 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
   );
   const tls = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf");
   const acme = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-acme.conf");
-  for (const error of validateClaudeDistributionClaimSafety(guide, guideDe, runbook)) {
+  for (const error of validateClaudeDistributionClaimSafety(
+    connectorReadme,
+    guide,
+    guideDe,
+    runbook,
+  )) {
     check(false, error);
   }
   for (const error of validateClaudeWebStartReviewEvidence(
@@ -1555,7 +1630,7 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     check(/24 (?:hours|Stunden)/u.test(text), "User guides must explain the exact 24-hour lifetime.");
     check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
     check(/public SkillPilot plugin|öffentliche SkillPilot-Plugin/u.test(text), "User guides must name the public plugin as the complete installation path.");
-    check(/paid Claude Web chat, Desktop Chat and Cowork|bezahlten Claude-Angebote Web-Chat, Desktop-Chat und Cowork/u.test(text), "User guides must scope the plugin to eligible paid Web/Desktop/Cowork users.");
+    check(/eligible paid Claude Web chat users|bezahlten Claude-Angebote im Web-Chat/u.test(text), "User guides must scope the plugin to eligible paid Claude Web users.");
     check(/separate connector-only route|unabhängiger Weg nur für den Konnektor/u.test(text), "User guides must preserve the separate connector-only Directory route.");
     check(
       /MCP Apps|interaktiven\s+Oberflächen|interactive\s+UIs/u.test(text),
@@ -1584,8 +1659,10 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
   );
   check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
   check(
-    runbook.includes("## 10. Preferred public plugin publication")
-      && /public SkillPilot plugin is the preferred complete installation for\s+eligible paid Claude Web chat, Desktop Chat and Cowork users/u.test(runbook)
+    runbook.includes("## 10. Web-only plugin pilot and public-distribution qualification")
+      && /working direct-install pilot proves the paid Claude Web product flow, not\s+the reach of Anthropic's official distribution/u.test(runbook)
+      && /Submission stays blocked until Anthropic explicitly\s+confirms that official plugin distribution reaches eligible paid Claude Web\s+chat/u.test(runbook)
+      && /does not claim Claude Desktop Chat or Cowork\s+support/u.test(runbook)
       && /neither\s+contains the coaching Skill nor gates plugin submission/u.test(runbook)
       && /two routes may\s+be submitted in either order/u.test(runbook)
       && /Developer, Admin or Owner/u.test(runbook)

@@ -15,7 +15,7 @@ that only the other client can observe.
 - Open the SkillPilot Connectors Directory candidate in Claude Web, connect it
   through OAuth and start every independent learner session at
   `https://skillpilot.com/`. The separate public SkillPilot plugin and its
-  paid Web/Desktop/Cowork acceptance are outside this connector-review lane.
+  paid Claude Web acceptance are outside this connector-review lane.
 - Never record OAuth codes or tokens, `spc_` learner sessions, permanent IDs,
   opaque capabilities, protected answers or raw learner data. No ID file or
   ID-file password belongs in this flow.

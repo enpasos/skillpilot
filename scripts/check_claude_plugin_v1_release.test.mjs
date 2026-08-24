@@ -26,9 +26,9 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.lifecycleState, "PRE_SUBMISSION");
-  assert.equal(result.requiredGateCount, 16);
-  assert.equal(result.requiredPendingCount, 16);
-  assert.equal(result.blockers.length, 16);
+  assert.equal(result.requiredGateCount, 15);
+  assert.equal(result.requiredPendingCount, 15);
+  assert.equal(result.blockers.length, 15);
 
   const gates = readJson(repositoryRoot, `${releasePath}/release-gates.json`);
   assert.equal(gates.submissionReady, false);
@@ -147,6 +147,10 @@ test("recorded gate evidence rejects another 40-character candidate revision", (
 });
 
 for (const [gateId, evidenceId] of [
+  [
+    "anthropic-paid-web-distribution-confirmation",
+    "anthropic-paid-web-distribution-confirmation-final-candidate",
+  ],
   ["public-github-source-sanitization", "public-github-source-final-plugin-candidate"],
   ["anthropic-console-submitter-role", "anthropic-console-submitter-role-final-candidate"],
 ]) {
@@ -173,16 +177,26 @@ for (const [gateId, evidenceId] of [
   });
 }
 
-test("public-source and submitter-role gates require their dedicated evidence kinds", (t) => {
+test("submission-prerequisite gates require their dedicated evidence kinds", (t) => {
   const fixture = createFixture(t);
   const gates = readJson(fixture, `${releasePath}/release-gates.json`);
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
+  const distributionGate = gates.gates.find(
+    ({ id }) => id === "anthropic-paid-web-distribution-confirmation",
+  );
+  const distributionEvidence = evidence.entries.find(
+    ({ id }) => id === "anthropic-paid-web-distribution-confirmation-final-candidate",
+  );
   const sourceGate = gates.gates.find(({ id }) => id === "public-github-source-sanitization");
   const sourceEvidence = evidence.entries.find(
     ({ id }) => id === "public-github-source-final-plugin-candidate",
   );
+  assert.ok(distributionGate);
+  assert.ok(distributionEvidence);
   assert.ok(sourceGate);
   assert.ok(sourceEvidence);
+  distributionGate.evidence = ["public-github-source-final-plugin-candidate"];
+  distributionEvidence.kind = "approval-record";
   sourceGate.evidence = ["anthropic-console-submitter-role-final-candidate"];
   sourceEvidence.kind = "approval-record";
   writeJson(fixture, `${releasePath}/release-gates.json`, gates);
@@ -192,11 +206,35 @@ test("public-source and submitter-role gates require their dedicated evidence ki
 
   assert.match(
     result.errors.join("\n"),
+    /anthropic-paid-web-distribution-confirmation must use its dedicated evidence record/u,
+  );
+  assert.match(
+    result.errors.join("\n"),
+    /must have kind anthropic-distribution-confirmation-record/u,
+  );
+  assert.match(
+    result.errors.join("\n"),
     /public-github-source-sanitization must use its dedicated evidence record/u,
   );
   assert.match(
     result.errors.join("\n"),
     /must have kind public-source-security-review/u,
+  );
+});
+
+test("a successful direct-install Web pilot cannot replace official paid-Web distribution confirmation", (t) => {
+  const fixture = createFixture(t);
+  promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
+  const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
+  lifecycle.distributionQualification.paidWebChatOfficialDistribution = "unconfirmed";
+  lifecycle.distributionQualification.confirmationEvidenceId = null;
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+
+  assert.match(
+    result.errors.join("\n"),
+    /requires explicit lifecycle confirmation that official plugin distribution reaches eligible paid Claude Web chat/u,
   );
 });
 
@@ -324,6 +362,9 @@ function promoteAllPluginGates(repository, lifecycleState) {
   lifecycle.releaseLine.status = lifecycleState === "PUBLISHED"
     ? "published"
     : "frozen_for_submission";
+  lifecycle.distributionQualification.paidWebChatOfficialDistribution = "confirmed";
+  lifecycle.distributionQualification.confirmationEvidenceId =
+    "anthropic-paid-web-distribution-confirmation-final-candidate";
 
   for (const entry of evidence.entries.filter(({ gateIds }) => gateIds.length > 0)) {
     approve(entry, baseline);

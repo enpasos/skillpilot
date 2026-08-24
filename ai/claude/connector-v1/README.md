@@ -40,9 +40,10 @@ Directory claim until that client has its own recorded acceptance run.
   through exactly one `q` parameter; the learner reviews and sends the message
   explicitly. There is no automatic send or desktop launch route.
 - The public SkillPilot plugin is the preferred complete installation for
-  eligible paid Claude Web chat, Desktop Chat and Cowork users. It bundles the
-  coaching Skill with a declaration for this same remote connector; the
-  connector continues to own the twelve SkillPilot tools and both MCP Apps UIs.
+  eligible paid Claude Web chat users. It bundles the coaching Skill with a
+  declaration for this same remote connector; the connector continues to own
+  the twelve SkillPilot tools and both MCP Apps UIs. This v1 plugin makes no
+  claim of Claude Desktop Chat or Cowork support.
 - The Connectors Directory entry is an independent connector-only distribution
   route. It provides the same twelve tools and two UIs after OAuth, but not the
   coaching Skill. Its Team/Enterprise publisher gate does not apply to plugin

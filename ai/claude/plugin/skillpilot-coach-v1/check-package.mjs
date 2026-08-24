@@ -36,9 +36,67 @@ const forbiddenDistributionClaimPatterns = [
     pattern: /(?:^|[.!?]\s+)\s*(?:The\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+shell)?\s+(?:owns|supplies|implements|duplicates|provides)\b[^.\n]{0,120}\b(?:MCP\s+)?(?:tools?|Apps?|UIs?|UI resources?)\b/imu,
   },
 ];
+const forbiddenPluginSurfaceClaims = [
+  {
+    label: "Claude Desktop Chat plugin support",
+    surfacePattern: /\b(?:Claude\s+)?Desktop Chat\b/iu,
+  },
+  {
+    label: "Claude Cowork plugin support",
+    surfacePattern: /\b(?:Claude\s+)?Cowork\b/iu,
+  },
+  {
+    label: "public Claude Code plugin support",
+    surfacePattern: /\b(?:public\s+)?Claude Code\b/iu,
+  },
+];
+const pluginClaimSubjectPattern = /\b(?:(?:the|das|der|die)\s+(?:(?:public|öffentlich(?:e|en|er|es)?)\s+)?(?:SkillPilot[-\s]+)?plugin(?:[-\s]+(?:package|shell|Paket))?|(?:public|öffentlich(?:e|en|er|es)?)\s+(?:SkillPilot[-\s]+)?plugin(?:[-\s]+(?:package|shell|Paket))?|SkillPilot[-\s]+(?:plugin(?:[-\s]+(?:package|shell|Paket))?|coach(?:ing)?(?:[-\s]+v1)?[-\s]+skill|coaching[-\s]+skill|coach[-\s]+v1))\b/iu;
+const positivePluginClaimPattern = /\b(?:supports?|provides?|offers?|includes?|works?|runs?|enables?|covers?|ships?|bundles?|can|may|will|would|could|(?:is|are)\s+(?:not\s+)?(?:now\s+)?(?:available|supported|usable|compatible|intended)|(?:is\s+)?(?:the\s+)?preferred\s+complete\s+installation|unterstützt|bietet|liefert|enthält|funktioniert|läuft|ermöglicht|deckt|kann|könnte|wird|soll|ist\s+(?:nicht\s+)?(?:jetzt\s+)?(?:verfügbar|unterstützt|nutzbar|kompatibel|vorgesehen)|(?:ist\s+)?(?:die\s+)?bevorzugte\s+vollständige\s+Installation)\b/iu;
+const explicitClaimNegationPattern = /\b(?:not|no|neither|nor|without|never|(?:does|do|is|are|can|will|would|should|must)n['’]t|nicht|kein(?:e|en|em|er|es)?|weder|noch|ohne|niemals)\b/iu;
+const explicitNegativeClaimPattern = /\b(?:makes?|has)\s+no\s+claim\b|\bdoes\s+not\s+claim\b|\bclaims?\s+neither\b|\b(?:macht|enthält|erhebt)\s+kein(?:e|en|em|er|es)?\s+(?:Aussage|Behauptung|Anspruch)\b|\bbeansprucht\s+(?:nicht|weder)\b|\bsagt\s+kein(?:e|en|em|er|es)?\b[^.!?;]{0,40}\bzu\b/iu;
+const claimClauseBoundaryPattern = /\s+(?:but|however|whereas|yet|aber|jedoch|hingegen|sondern)\s+/iu;
+
+function containsPositivePluginSurfaceClaim(text, surfacePattern) {
+  const normalizedText = text.replace(/\s+/gu, " ");
+  const sentences = normalizedText.split(/(?<=[.!?;])\s+/u);
+
+  for (const sentence of sentences) {
+    const sentenceHasSubject = pluginClaimSubjectPattern.test(sentence);
+    for (const clause of sentence.split(claimClauseBoundaryPattern)) {
+      if (!sentenceHasSubject && !pluginClaimSubjectPattern.test(clause)) continue;
+
+      const predicates = allMatches(positivePluginClaimPattern, clause);
+      if (predicates.length === 0) continue;
+
+      for (const surface of allMatches(surfacePattern, clause)) {
+        if (explicitNegativeClaimPattern.test(clause.slice(0, surface.index))) continue;
+        const predicate = predicates.reduce((nearest, candidate) => (
+          Math.abs(candidate.index - surface.index) < Math.abs(nearest.index - surface.index)
+            ? candidate
+            : nearest
+        ));
+        const claimStart = Math.max(0, Math.min(predicate.index, surface.index) - 18);
+        const claimEnd = Math.max(
+          predicate.index + predicate[0].length,
+          surface.index + surface[0].length,
+        );
+        const claimSpan = clause.slice(claimStart, claimEnd);
+        if (!explicitClaimNegationPattern.test(claimSpan)) return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+function allMatches(pattern, value) {
+  const flags = pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`;
+  return [...value.matchAll(new RegExp(pattern.source, flags))];
+}
 export const publicationFiles = [
   ".claude-plugin/plugin.json",
   ".mcp.json",
+  "README.md",
   "SETUP.md",
   "skills/skillpilot-coach-v1/SKILL.md",
   "skills/skillpilot-coach-v1/references/coaching-policy.md",
@@ -97,8 +155,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const skillText = text.get("skills/skillpilot-coach-v1/SKILL.md");
+  const readmeText = text.get("README.md");
   const setupText = text.get("SETUP.md");
   const normalizedSkillText = skillText.replace(/\s+/gu, " ");
+  const normalizedReadmeText = readmeText.replace(/\s+/gu, " ");
   const normalizedSetupText = setupText.replace(/\s+/gu, " ");
   const frontmatter = parseFrontmatter(skillText);
   check(frontmatter !== null, "SKILL.md must start with YAML frontmatter.");
@@ -117,6 +177,12 @@ export function validateClaudePluginPackage(root = packageRoot) {
   for (const { label, pattern } of forbiddenDistributionClaimPatterns) {
     check(
       !pattern.test(publishedText),
+      `Package contains a forbidden contradictory Claude distribution claim: ${label}.`,
+    );
+  }
+  for (const { label, surfacePattern } of forbiddenPluginSurfaceClaims) {
+    check(
+      !containsPositivePluginSurfaceClaim(publishedText, surfacePattern),
       `Package contains a forbidden contradictory Claude distribution claim: ${label}.`,
     );
   }
@@ -162,14 +228,14 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must allow same-server plugin and Directory coexistence while preventing redundant manual custom connections.",
   );
   check(
-    normalizedSetupText.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users"),
-    "SETUP.md must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
+    normalizedSetupText.includes("This observed pilot is the preferred complete test installation, but it is not proof of availability through Anthropic's official plugin distribution")
+      && normalizedSetupText.includes("Official plugin submission stays fail-closed until Anthropic provides explicit written or authenticated Console confirmation"),
+    "SETUP.md must distinguish the paid-Web direct-install pilot from confirmed official distribution and keep submission fail-closed.",
   );
   check(
-    normalizedSetupText.includes("The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and Cowork")
-      && normalizedSetupText.includes("SkillPilot Coach v1 contains no hooks or subagents")
-      && normalizedSetupText.includes("those capabilities are Cowork-only"),
-    "SETUP.md must keep the Skill on paid Web/Desktop/Cowork and future hooks or subagents Cowork-only.",
+    normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Web chat")
+      && normalizedSetupText.includes("does not claim Claude Desktop Chat or Cowork support"),
+    "SETUP.md must keep the v1 publication scope limited to eligible paid Claude Web chat.",
   );
   check(
     normalizedSetupText.includes("The plugin is not available on Claude Free")
@@ -186,6 +252,16 @@ export function validateClaudePluginPackage(root = packageRoot) {
       && normalizedSetupText.includes("The Skill provides coaching instructions only")
       && normalizedSetupText.includes("without copying their schemas, resources or UI bytes into the plugin package"),
     "SETUP.md must attribute all tools and interactive UIs to the connector without duplicating them in the plugin.",
+  );
+  check(
+    normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Web chat")
+      && normalizedReadmeText.includes("A direct-install pilot has demonstrated the package in paid Claude Web chat")
+      && normalizedReadmeText.includes("Official submission therefore remains blocked until Anthropic explicitly confirms")
+      && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
+      && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")
+      && normalizedReadmeText.includes("https://skillpilot.com/legal")
+      && normalizedReadmeText.includes("support@skillpilot.com"),
+    "README.md must state the Web-only direct-install pilot, official-distribution blocker, first-party identity boundary, setup route and public support links.",
   );
 
   return { errors, toolCount: expectedTools.length };

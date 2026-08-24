@@ -232,7 +232,7 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
   }
 });
 
-test("Claude distribution prefers the complete paid-surface plugin and keeps Directory independent", () => {
+test("Claude distribution prefers the complete paid Web plugin and keeps Directory independent", () => {
   const concept = readFileSync(
     resolve(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md"),
     "utf8",
@@ -248,12 +248,12 @@ test("Claude distribution prefers the complete paid-surface plugin and keeps Dir
   );
 
   const missingPreferredPlugin = concept.replace(
-    "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users.",
+    "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat users.",
     "The public SkillPilot plugin is an optional Cowork-only package.",
   );
   assert.ok(
     validateClaudeDistributionDocumentation(missingPreferredPlugin, implementationPlan)
-      .some((error) => error.includes("preferred complete paid Web/Desktop/Cowork")),
+      .some((error) => error.includes("preferred complete paid Claude Web")),
   );
 
   const conflatedDirectoryPlan = implementationPlan.replace(
@@ -313,6 +313,21 @@ test("Claude distribution validators reject append-only contradictory claims", (
     ["Claude Free DE", "Das SkillPilot-Plugin ist in Claude Free verfügbar."],
     ["native mobile EN", "The SkillPilot plugin supports native-mobile plugin support."],
     ["native mobile DE", "Das SkillPilot-Plugin bietet native Plugin-Unterstützung auf Mobilgeräten."],
+    ["Desktop EN", "The SkillPilot plugin supports Claude Desktop Chat."],
+    ["Desktop DE", "Das SkillPilot-Plugin unterstützt Claude Desktop Chat."],
+    ["hyphenated Desktop DE", "Das SkillPilot-Plugin unterstützt Claude Desktop-Chat."],
+    ["expanding Desktop EN", "The SkillPilot plugin supports not only Claude Desktop Chat."],
+    ["expanding Desktop DE", "Das SkillPilot-Plugin unterstützt nicht nur Claude Desktop Chat."],
+    ["Cowork EN", "The SkillPilot plugin supports Claude Cowork."],
+    ["Cowork DE", "Das SkillPilot-Plugin unterstützt Claude Cowork."],
+    ["historical surfaces EN", "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users."],
+    ["historical surfaces DE", "Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork."],
+    ["Skill subject EN", "The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and Cowork."],
+    ["Skill subject DE", "Der SkillPilot-Coaching-Skill funktioniert in Claude Desktop Chat und Cowork."],
+    ["Markdown line wrap", "The SkillPilot plugin supports\nClaude Desktop Chat."],
+    ["passive modal DE", "Das SkillPilot-Plugin kann in Claude Cowork verwendet werden."],
+    ["public Claude Code EN", "The SkillPilot plugin supports public Claude Code."],
+    ["public Claude Code DE", "Das SkillPilot-Plugin unterstützt öffentliches Claude Code."],
     ["coexistence EN", "Plugin and Directory installations must never coexist."],
     ["coexistence DE", "Plugin und Directory-Installationen dürfen niemals koexistieren."],
     ["plugin ownership EN", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
@@ -328,6 +343,23 @@ test("Claude distribution validators reject append-only contradictory claims", (
     assert.ok(
       errors.some((error) => error.includes("forbidden contradictory claim")),
       `${name} append-only contradiction must be rejected`,
+    );
+  }
+
+  for (const claim of [
+    "The SkillPilot plugin provides no support for Claude Desktop Chat.",
+    "The SkillPilot plugin includes no Claude Cowork support.",
+    "The SkillPilot plugin supports neither Claude Desktop Chat nor Cowork.",
+    "The SkillPilot plugin supports paid Web chat only, not Claude Desktop Chat.",
+    "Das SkillPilot-Plugin bietet keine Unterstützung für Claude Desktop Chat.",
+    "Das SkillPilot-Plugin enthält keine Unterstützung für Claude Cowork.",
+    "Das SkillPilot-Plugin unterstützt weder Claude Desktop Chat noch Cowork.",
+    "Das SkillPilot-Plugin unterstützt nur Claude Web Chat, nicht Claude Desktop Chat.",
+  ]) {
+    assert.deepEqual(
+      validateClaudeDistributionClaimSafety(claim),
+      [],
+      `explicit negative boundary must be allowed: ${claim}`,
     );
   }
 });

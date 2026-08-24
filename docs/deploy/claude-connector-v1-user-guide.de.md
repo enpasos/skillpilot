@@ -7,7 +7,7 @@ ID-Datei noch ihr Passwort.
 > **Stand:** Claude v1 wird noch für die öffentliche Veröffentlichung
 > vorbereitet. Nach der Freigabe ist das öffentliche SkillPilot-Plugin das
 > bevorzugte vollständige Paket für berechtigte Nutzerinnen und Nutzer der
-> bezahlten Claude-Angebote Web-Chat, Desktop-Chat und Cowork.
+> bezahlten Claude-Angebote im Web-Chat.
 
 ## Einmal installieren
 
@@ -20,12 +20,12 @@ ID-Datei noch ihr Passwort.
    URL keinen weiteren manuellen benutzerdefinierten Konnektor an.
 
 Das Plugin stellt den wiederverwendbaren SkillPilot-Coaching-Skill bereit und
-deklariert denselben entfernten Konnektor für bezahlten Claude Web-Chat,
-Desktop-Chat und Cowork. Der entfernte Konnektor liefert alle zwölf
+deklariert denselben entfernten Konnektor für bezahlten Claude Web-Chat. Der
+entfernte Konnektor liefert alle zwölf
 SkillPilot-Werkzeuge und beide interaktiven Oberflächen für Lernzielbilder und
-Karteikarten. SkillPilot Coach v1 enthält keine Hooks oder Subagents. Künftige
-Hooks oder Subagents wären Cowork vorbehalten, solange Anthropic sie nicht auch
-auf anderen Oberflächen unterstützt und SkillPilot diese separat geprüft hat.
+Karteikarten. SkillPilot Coach v1 enthält keine Hooks oder Subagents und sagt
+keine Plugin-Unterstützung für Desktop-Chat oder Cowork zu. Zusätzliche
+Oberflächen benötigen eigene Abnahmebelege und eine später geprüfte Version.
 
 Das Connectors Directory bleibt ein unabhängiger Weg nur für den Konnektor mit
 eigenem Team-/Enterprise-Gate auf Herausgeberseite. Es ist keine Voraussetzung

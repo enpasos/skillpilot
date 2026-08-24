@@ -51,8 +51,7 @@ const expectedRequiredGates = [
   "reproducible-plugin-archive",
   "remote-mcp-contract-twelve-tools-two-apps",
   "paid-web-chat-real-client",
-  "paid-desktop-chat-real-client",
-  "paid-cowork-real-client",
+  "anthropic-paid-web-distribution-confirmation",
   "first-party-24h-learning-session",
   "oauth-learner-session-separation",
   "permanent-id-nondisclosure",
@@ -63,6 +62,11 @@ const expectedRequiredGates = [
   "anthropic-console-submitter-role",
 ];
 const expectedSubmissionPrerequisiteEvidence = [
+  {
+    gateId: "anthropic-paid-web-distribution-confirmation",
+    evidenceId: "anthropic-paid-web-distribution-confirmation-final-candidate",
+    kind: "anthropic-distribution-confirmation-record",
+  },
   {
     gateId: "public-github-source-sanitization",
     evidenceId: "public-github-source-final-plugin-candidate",
@@ -150,19 +154,33 @@ export function verifyClaudePluginV1Release({
   check(
     sameSet(lifecycle?.supportedSurfaces, [
       "paid_claude_web_chat",
-      "paid_claude_desktop_chat",
-      "paid_claude_cowork",
     ]),
-    "Plugin lifecycle must scope v1 to eligible paid Web Chat, Desktop Chat and Cowork.",
+    "Plugin lifecycle must scope v1 to eligible paid Claude Web chat.",
+  );
+  check(
+    lifecycle?.distributionQualification?.directInstallPilot
+        === "observed_paid_claude_web_chat"
+      && lifecycle?.distributionQualification?.officialPluginDirectoryDocumentation
+        === "cowork_and_claude_code_only"
+      && ["unconfirmed", "confirmed"].includes(
+        lifecycle?.distributionQualification?.paidWebChatOfficialDistribution,
+      )
+      && [null, "anthropic-paid-web-distribution-confirmation-final-candidate"].includes(
+        lifecycle?.distributionQualification?.confirmationEvidenceId,
+      ),
+    "Plugin lifecycle must distinguish the observed paid-Web direct-install pilot from the officially documented Cowork and Claude Code plugin directory, and track paid-Web distribution confirmation explicitly.",
   );
   check(
     sameSet(lifecycle?.excludedClaims, [
       "claude_free",
       "native_mobile_plugin",
+      "claude_desktop_chat",
+      "claude_cowork",
+      "public_claude_code",
       "hooks",
       "subagents",
     ]),
-    "Plugin lifecycle must exclude Claude Free, native mobile, hooks and subagent claims.",
+    "Plugin lifecycle must exclude Claude Free, native mobile, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
     lifecycle?.productOwnerAuthorization?.approvedAt === "2026-08-24"
@@ -320,6 +338,12 @@ export function verifyClaudePluginV1Release({
       lifecycle?.releaseLine?.status === "pre_submission_candidate",
       "PRE_SUBMISSION must keep the plugin release line pre_submission_candidate.",
     );
+    check(
+      lifecycle?.distributionQualification?.paidWebChatOfficialDistribution
+          === "unconfirmed"
+        && lifecycle?.distributionQualification?.confirmationEvidenceId === null,
+      "PRE_SUBMISSION must keep official paid-Web plugin distribution unconfirmed and without confirmation evidence.",
+    );
   } else if (["READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(state)) {
     check(gates?.submissionReady === true, `${state} requires submissionReady=true.`);
     check(requiredPending.length === 0, `${state} requires every plugin gate to pass.`);
@@ -331,6 +355,23 @@ export function verifyClaudePluginV1Release({
       lifecycle?.releaseLine?.status
         === (state === "PUBLISHED" ? "published" : "frozen_for_submission"),
       `${state} requires the matching immutable plugin release-line status.`,
+    );
+    const distributionEvidenceId =
+      "anthropic-paid-web-distribution-confirmation-final-candidate";
+    const distributionEvidence = evidenceById.get(distributionEvidenceId);
+    check(
+      lifecycle?.distributionQualification?.paidWebChatOfficialDistribution
+          === "confirmed"
+        && lifecycle?.distributionQualification?.confirmationEvidenceId
+          === distributionEvidenceId,
+      `${state} requires explicit lifecycle confirmation that official plugin distribution reaches eligible paid Claude Web chat.`,
+    );
+    check(
+      distributionEvidence?.status === "approved"
+        && distributionEvidence?.candidateContractSha256
+          === baseline?.candidateContractSha256
+        && distributionEvidence?.candidateRevision === baseline?.baseRevision,
+      `${state} requires approved current-candidate Anthropic paid-Web distribution confirmation evidence.`,
     );
   }
 
