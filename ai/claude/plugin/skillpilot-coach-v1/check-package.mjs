@@ -18,6 +18,24 @@ const expectedTools = [
   "record_skillpilot_verified_recall_results",
   "get_skillpilot_exam_evaluation",
 ];
+const forbiddenDistributionClaimPatterns = [
+  {
+    label: "Claude Free availability",
+    pattern: /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:is|will be)\s+(?:now\s+)?available\s+(?:on|in|for)\s+Claude Free\b/iu,
+  },
+  {
+    label: "native-mobile plugin support",
+    pattern: /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:claims|supports|provides|offers|includes)\b[^.\n]{0,80}\bnative[- ]mobile(?:[- ]plugin)? support\b/iu,
+  },
+  {
+    label: "prohibition of same-server plugin and Directory coexistence",
+    pattern: /\bPlugin and Directory(?:\s+(?:connector\s+)?installations?|\s+entries?)?\s+(?:must|can|may)\s+never\s+(?:coexist|be enabled together)\b/iu,
+  },
+  {
+    label: "plugin ownership of connector tools or UI",
+    pattern: /(?:^|[.!?]\s+)\s*(?:The\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+shell)?\s+(?:owns|supplies|implements|duplicates|provides)\b[^.\n]{0,120}\b(?:MCP\s+)?(?:tools?|Apps?|UIs?|UI resources?)\b/imu,
+  },
+];
 export const publicationFiles = [
   ".claude-plugin/plugin.json",
   ".mcp.json",
@@ -96,6 +114,12 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const publishedText = [...text.values()].join("\n");
+  for (const { label, pattern } of forbiddenDistributionClaimPatterns) {
+    check(
+      !pattern.test(publishedText),
+      `Package contains a forbidden contradictory Claude distribution claim: ${label}.`,
+    );
+  }
   check(
     normalizedSkillText.includes("`learningSessionId`")
       && normalizedSkillText.includes("every SkillPilot tool call"),
@@ -117,7 +141,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   );
   check(
     /offline_access/u.test(setupText)
-      && /technical (?:plugin )?connection|technical connector transport/iu.test(setupText)
+      && /technical (?:plugin )?connection|technical connector (?:connection|transport)/iu.test(setupText)
       && /no learner identity/iu.test(setupText),
     "SETUP.md must separate offline OAuth transport persistence from learner identity.",
   );
@@ -132,22 +156,30 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(normalizedSkillText.includes("private MCP App"), "SKILL.md must keep normal memory-card content inside the private app.");
   check(normalizedSkillText.includes("must never call `review_skillpilot_memory_practice_card`"), "SKILL.md must keep card review app-only.");
   check(normalizedSkillText.includes("does not establish mastery"), "SKILL.md must separate normal memory practice from mastery.");
-  check(normalizedSetupText.includes("skillpilot-coach-v1.plugin"), "SETUP.md must document the Cowork and Claude Code .plugin package.");
   check(
-    normalizedSetupText.includes("Never enable a Directory, custom and plugin-bundled SkillPilot connector together in the same Claude surface or workspace")
-      && normalizedSetupText.includes("Do not enable the bundled and standalone variants at the same time"),
-    "SETUP.md must prevent duplicate Directory, custom and plugin-bundled connector installations.",
+    normalizedSetupText.includes("A plugin and Directory installation that reference this exact remote MCP URL may coexist; Claude exposes one set of tools for the shared server")
+      && normalizedSetupText.includes("Do not add a second manual custom SkillPilot connector with the same URL when the plugin or Directory connection already supplies it"),
+    "SETUP.md must allow same-server plugin and Directory coexistence while preventing redundant manual custom connections.",
   );
   check(
-    normalizedSetupText.includes("Normal Claude Web")
-      && normalizedSetupText.includes("Connectors Directory")
-      && normalizedSetupText.includes("Do not upload or install this plugin package in normal Claude Web"),
-    "SETUP.md must route normal Claude Web through the Connectors Directory instead of the plugin package.",
+    normalizedSetupText.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users"),
+    "SETUP.md must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
   );
   check(
-    normalizedSetupText.includes("plugin package is scoped to Claude Cowork and Claude Code")
-      && normalizedSetupText.includes("This package is not the normal Claude Web installation artifact"),
-    "SETUP.md must scope the plugin package to Claude Cowork and Claude Code.",
+    normalizedSetupText.includes("The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and Cowork")
+      && normalizedSetupText.includes("SkillPilot Coach v1 contains no hooks or subagents")
+      && normalizedSetupText.includes("those capabilities are Cowork-only"),
+    "SETUP.md must keep the Skill on paid Web/Desktop/Cowork and future hooks or subagents Cowork-only.",
+  );
+  check(
+    normalizedSetupText.includes("The plugin is not available on Claude Free")
+      && normalizedSetupText.includes("does not claim native mobile plugin support"),
+    "SETUP.md must reject Claude Free and native-mobile plugin claims.",
+  );
+  check(
+    normalizedSetupText.includes("The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission")
+      && normalizedSetupText.includes("Its Team/Enterprise publisher gate applies only to Directory submission and does not gate public plugin submission"),
+    "SETUP.md must preserve the independent Connector Directory lane without gating plugin submission.",
   );
   check(
     normalizedSetupText.includes("All twelve MCP tools and both interactive MCP Apps come from the remote SkillPilot connector")

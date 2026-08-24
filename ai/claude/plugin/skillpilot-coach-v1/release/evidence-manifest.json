@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
+  "pluginIdentity": "skillpilot-coach-v1",
+  "pluginVersion": "1.0.0",
+  "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+  "candidateRevision": "1e5687c442c9a87daeb94ee0c8f9bc5c91a8c5ce",
+  "policy": "Store only non-secret evidence references and SHA-256 digests. A recorded or approved entry must bind to this exact plugin candidate digest and revision; plugin submission and publication remain fail-closed until the required external records are approved.",
+  "entries": [
+    {
+      "id": "openai-review-freeze-final-plugin-candidate",
+      "kind": "automated-check-record",
+      "status": "reference_required",
+      "description": "Final OpenAI review-freeze differential for the exact Claude plugin candidate.",
+      "gateIds": [
+        "openai-review-freeze"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "plugin-package-structural-final-candidate",
+      "kind": "automated-check-record",
+      "status": "reference_required",
+      "description": "Structural package validation for the exact public plugin archive inputs.",
+      "gateIds": [
+        "plugin-package-structural-check"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "anthropic-plugin-cli-validation-final-candidate",
+      "kind": "anthropic-cli-record",
+      "status": "reference_required",
+      "description": "Strict Anthropic plugin CLI validation for the exact public plugin candidate.",
+      "gateIds": [
+        "anthropic-plugin-cli-validation"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "reproducible-plugin-archive-final-candidate",
+      "kind": "artifact-reproducibility-record",
+      "status": "reference_required",
+      "description": "Two independent builds proving byte-identical deterministic plugin archives.",
+      "gateIds": [
+        "reproducible-plugin-archive"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "remote-mcp-contract-final-plugin-candidate",
+      "kind": "remote-contract-acceptance-record",
+      "status": "reference_required",
+      "description": "Remote SkillPilot MCP contract acceptance for twelve tools and both MCP Apps.",
+      "gateIds": [
+        "remote-mcp-contract-twelve-tools-two-apps"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "paid-web-chat-real-client-final-candidate",
+      "kind": "real-client-acceptance-record",
+      "status": "reference_required",
+      "description": "Eligible paid Claude Web Chat installation and end-to-end learning-flow acceptance.",
+      "gateIds": [
+        "paid-web-chat-real-client"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "paid-desktop-chat-real-client-final-candidate",
+      "kind": "real-client-acceptance-record",
+      "status": "reference_required",
+      "description": "Eligible paid Claude Desktop Chat installation and end-to-end learning-flow acceptance.",
+      "gateIds": [
+        "paid-desktop-chat-real-client"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "paid-cowork-real-client-final-candidate",
+      "kind": "real-client-acceptance-record",
+      "status": "reference_required",
+      "description": "Eligible paid Claude Cowork installation and end-to-end learning-flow acceptance without hooks or subagents.",
+      "gateIds": [
+        "paid-cowork-real-client"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "first-party-session-final-plugin-candidate",
+      "kind": "security-acceptance-record",
+      "status": "reference_required",
+      "description": "First-party 24-hour learning-session creation, expiry and learner-control acceptance.",
+      "gateIds": [
+        "first-party-24h-learning-session"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "oauth-session-separation-final-plugin-candidate",
+      "kind": "security-acceptance-record",
+      "status": "reference_required",
+      "description": "OAuth transport identity and first-party learner-session separation acceptance.",
+      "gateIds": [
+        "oauth-learner-session-separation"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "permanent-id-nondisclosure-final-plugin-candidate",
+      "kind": "security-acceptance-record",
+      "status": "reference_required",
+      "description": "Permanent SkillPilot-ID and retired ID-file nondisclosure acceptance.",
+      "gateIds": [
+        "permanent-id-nondisclosure"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "negative-replay-origin-redaction-final-plugin-candidate",
+      "kind": "adversarial-security-record",
+      "status": "reference_required",
+      "description": "Negative, replay, origin-enforcement, secret-redaction and log-redaction acceptance.",
+      "gateIds": [
+        "negative-replay-origin-redaction"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "privacy-legal-support-final-plugin-candidate",
+      "kind": "approval-record",
+      "status": "reference_required",
+      "description": "Privacy, legal, support-owner and security-owner approval for public plugin distribution.",
+      "gateIds": [
+        "privacy-legal-support-approval"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "anthropic-plugin-submission-metadata-final-candidate",
+      "kind": "submission-metadata-approval",
+      "status": "reference_required",
+      "description": "Approved public plugin-console name, description, surfaces, legal URLs and candidate archive metadata.",
+      "gateIds": [
+        "anthropic-plugin-submission-metadata"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "public-github-source-final-plugin-candidate",
+      "kind": "public-source-security-review",
+      "status": "reference_required",
+      "description": "Approved public GitHub repository URL and candidate path, with a sanitized review proving that the submitted source contains no credentials, learner sessions, learner data or protected answers.",
+      "gateIds": [
+        "public-github-source-sanitization"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "anthropic-console-submitter-role-final-candidate",
+      "kind": "submitter-authorization-record",
+      "status": "reference_required",
+      "description": "Sanitized authorization evidence that the submitting Anthropic Console organization member has the Developer, Admin or Owner role required for plugin submission.",
+      "gateIds": [
+        "anthropic-console-submitter-role"
+      ],
+      "lifecycleStates": [],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "anthropic-plugin-submission-receipt",
+      "kind": "external-lifecycle-record",
+      "status": "reference_required",
+      "description": "Anthropic plugin-console receipt proving submission of this exact frozen plugin candidate.",
+      "gateIds": [],
+      "lifecycleStates": [
+        "SUBMITTED"
+      ],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    },
+    {
+      "id": "anthropic-plugin-publication-verification",
+      "kind": "external-lifecycle-record",
+      "status": "reference_required",
+      "description": "Public listing or installation verification proving publication of this exact frozen plugin candidate.",
+      "gateIds": [],
+      "lifecycleStates": [
+        "PUBLISHED"
+      ],
+      "candidateContractSha256": "3adbae2ae6bd7d056fa574a01e69ed189412f3860d46668fc22ee8f43da34ff9",
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null
+    }
+  ]
+}

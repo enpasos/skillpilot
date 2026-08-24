@@ -5,21 +5,33 @@ SkillPilot ID remains entirely inside SkillPilot. Claude receives neither an ID
 file nor its password.
 
 > **Status:** Claude v1 is still being prepared for public release. After
-> approval, the Connectors Directory entry is the normal installation path for
-> Claude Web.
+> approval, the public SkillPilot plugin is the preferred complete installation
+> for eligible paid Claude Web chat, Desktop Chat and Cowork users.
 
 ## Install once
 
-1. Open **Connectors** in Claude Web and find **SkillPilot** in the Connectors
-   Directory.
-2. Select **Connect** for SkillPilot.
-3. Approve the OAuth connection.
+1. On an eligible paid Claude account, open **Plugins** and install or enable
+   **SkillPilot Coach v1**.
+2. Open the plugin's **Connectors** tab and connect the included **SkillPilot**
+   connector.
+3. Approve the OAuth connection. A published Directory connection may remain
+   active when it references the same SkillPilot MCP URL. Do not add another
+   manual custom connector for that URL.
 
-The Directory connector provides the SkillPilot tools and both interactive UIs
-for learning-goal images and flashcard practice in Claude Web. A separately
-published plugin may bundle the reusable coaching Skill with the same remote
-connector for Cowork and Claude Code. That plugin is optional and is not
-required for Claude Web.
+The plugin provides the reusable SkillPilot coaching Skill and declares the same
+remote connector on paid Claude Web chat, Desktop Chat and Cowork. The remote
+connector supplies all twelve SkillPilot tools and both interactive UIs for
+learning-goal images and flashcard practice. SkillPilot Coach v1 contains no
+hooks or subagents. Future hooks or subagents would be Cowork-only unless
+Anthropic supports them elsewhere and SkillPilot validates those surfaces
+separately.
+
+The Connectors Directory remains a separate connector-only route with its own
+Team/Enterprise publisher gate. It is not a prerequisite for plugin submission
+and does not add the coaching Skill. The plugin and Directory entry may coexist
+when both reference `https://mcp-claude-v1.skillpilot.com/mcp`; Claude exposes
+one SkillPilot tool set for that shared server. Do not add a separate manual
+custom connector with the same URL when either route already supplies it.
 
 OAuth keeps only the technical connector transport available. Optional
 `offline_access` contains no learner identity and neither starts nor extends a
@@ -69,8 +81,10 @@ IDs, tool names and state versions out of ordinary learning responses.
 
 ## Troubleshooting
 
-- **SkillPilot is not available:** Check that the SkillPilot connector is
-  connected in Claude Web.
+- **SkillPilot is not available:** Check that SkillPilot Coach v1 is enabled and
+  that its included connector is connected. Verify that any published Directory
+  connection references the exact same SkillPilot MCP URL, and remove only an
+  additional manually created custom connector for that same URL.
 - **The session expired:** Open
   [Start learning](https://skillpilot.com/) again. OAuth never
   extends the 24-hour learner session.
@@ -84,8 +98,10 @@ IDs, tool names and state versions out of ordinary learning responses.
 
 SkillPilot receives only the connector requests you explicitly make, not your
 complete Claude chat or Claude Memory. The permanent SkillPilot ID remains in
-SkillPilot. Anthropic's account, plan, regional and age requirements also
-apply; the planned Directory listing is for adults aged 18 or older.
+SkillPilot. Anthropic's account, paid-plan, regional and workspace requirements
+also apply. The plugin is not available on Claude Free. SkillPilot's Claude
+integration is for adults aged 18 or older. It makes no claim of native
+mobile-plugin support.
 
 - [SkillPilot](https://skillpilot.com)
 - [Connector privacy policy](https://mcp-claude-v1.skillpilot.com/privacy)
@@ -93,6 +109,8 @@ apply; the planned Directory listing is for adults aged 18 or older.
 
 ## Version
 
-The Directory slug `skillpilot` stays version-neutral. After final submission,
-the v1 line remains compatible; a future breaking contract would require a
-separate product decision and major line. Claude v2 is currently unallocated.
+The plugin and connector have separate publication lifecycles. Compatible
+plugin improvements increment the plugin SemVer; the Directory slug
+`skillpilot` stays version-neutral. A future breaking connector contract would
+require a separate product decision and major line. Claude v2 is currently
+unallocated.

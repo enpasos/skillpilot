@@ -12,8 +12,8 @@ external acceptance and publication pending
 **Developer handoff:**
 [SkillPilot Claude Connector v1 — Umsetzungsplan](claude-connector-v1-implementation-plan.md)
 
-This document specifies the provider-isolated SkillPilot connector for the
-Anthropic Connectors Directory. Its purpose is to make SkillPilot available in
+This document specifies the provider-isolated SkillPilot remote connector and
+its Claude distribution routes. Its purpose is to make SkillPilot available in
 Claude without silently widening the submitted ChatGPT/OpenAI V1 contract.
 
 The production host cannot carry another JVM within its RAM budget. Claude v1
@@ -47,11 +47,17 @@ The following decisions are part of this concept:
   private normal flashcard practice.
 - Normal flashcard practice changes only the reviewed card's repetition
   schedule. It is not mastery and remains separate from strict Verified Recall.
-- The Connectors Directory is the preferred one-time installation for Claude
-  Web. The remote connector supplies all twelve tools and both MCP Apps.
-- The separate Claude plugin is an optional companion for Claude Code and
-  Cowork. It adds the coaching Skill and references the same remote connector;
-  it is not required for the Claude Web Directory candidate.
+- The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users.
+  Its coaching Skill works on all three supported surfaces and declares the
+  same public remote connector.
+- Claude v1 contains no hooks or subagents. If they are added in a later
+  version, they are Cowork-only capabilities and require their own acceptance
+  evidence.
+- The remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI
+  resources. The plugin contributes the reusable coaching Skill and connector
+  declaration; it does not duplicate the tool or UI implementation.
+- The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission.
+- Native mobile plugin support is not claimed by Claude v1.
 - Claude v1 carries over current SkillPilot learning, recall, assessment,
   privacy, and identity invariants. It does not carry over the obsolete beta
   tool API merely because that code already exists.
@@ -95,7 +101,7 @@ Current list-price orientation for end users, checked on 17 August 2026:
 
 | Claude plan | Current Anthropic price, excluding tax | Practical v1 fit | Additional SkillPilot price |
 | --- | --- | --- | --- |
-| Free | USD 0 | Occasional use; before directory publication the account is currently limited to one custom connector | EUR 0 |
+| Free | USD 0 | Connector-only custom-MCP evaluation where available; not eligible for the complete public-plugin route | EUR 0 |
 | Pro | USD 20 monthly, or USD 200 paid annually (advertised as USD 17/month) | Regular individual learning | EUR 0 |
 | Max 5x / 20x | USD 100 / USD 200 monthly | Individuals needing substantially more Claude usage | EUR 0 |
 | Team Standard | USD 25 per seat monthly, or USD 20 per seat/month billed annually | Managed teams of 2–150 users | EUR 0; no SkillPilot team SLA in v1 |
@@ -104,11 +110,13 @@ Current list-price orientation for end users, checked on 17 August 2026:
 | Education | No public list price; institution-wide offer from Anthropic | Universities buying access for students, faculty and staff | No v1 institutional contract or SLA; separate offer required |
 
 Anthropic currently documents custom remote MCP connectors for Free, Pro, Max,
-Team and Enterprise plans; Free is limited to one custom connector. Directory
-publication requires a Team or Enterprise organization with directory
-management rights from the **publisher**, but that is not an end-user plan
-requirement. Prices, taxes, plan availability, usage quotas and provider
-eligibility can change and are not promised by SkillPilot.
+Team and Enterprise plans; Free is limited to one custom connector. The public
+plugin is the complete SkillPilot installation only for eligible paid users.
+Directory publication requires a Team or Enterprise organization with
+directory management rights from the **publisher**, but that gate is neither
+an end-user plan requirement nor a prerequisite for plugin submission. Prices,
+taxes, plan availability, usage quotas and provider eligibility can change and
+are not promised by SkillPilot.
 
 The commercial v1 decision is therefore:
 
@@ -131,8 +139,8 @@ The commercial v1 decision is therefore:
 | Public tool surface | Exactly 12 tools | Exactly 12 provider-isolated tools with the same learning responsibilities |
 | Learning-goal visualization | Prominent MCP Apps image component | Dedicated content-addressed MCP App for the approved active-goal image |
 | Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
-| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | The Connectors Directory is the preferred Claude Web installation; its remote connector is the provider-isolated tool/UI route, and each Claude surface is claimed only after acceptance |
-| Reusable instructions | OpenAI plugin contains its reviewed Skill | Optional Claude Code/Cowork plugin contains a Claude-specific Skill and references the same remote MCP server |
+| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Public plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users; the declared remote connector owns the provider-isolated tools and MCP Apps UI |
+| Reusable instructions | OpenAI plugin contains its reviewed Skill | Public Claude plugin contains a Claude-specific Skill for Web chat, Desktop Chat and Cowork and declares the same remote MCP server; v1 has no hooks or subagents |
 | Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | The same first-party web start visibly selects the SkillPilot ID, curriculum, Personal Curriculum and provider; choosing Claude creates a fresh opaque `spc_` session valid for exactly 24 hours, while the permanent ID never leaves SkillPilot |
 | Minimum age for this integration | SkillPilot launch self-confirmation: at least 13, any higher local limit, and guardian permission under 18 | Claude account holder: 18+ |
 | SkillPilot price | EUR 0 additional; eligible OpenAI account/workspace is external | EUR 0 additional; eligible Claude account/workspace is external |
@@ -744,7 +752,12 @@ This is a product boundary, not merely a disclaimer to add after submission.
 
 ---
 
-## 11. Submission prerequisites
+## 11. Connector Directory submission prerequisites
+
+This section applies only to the independent connector-only Directory route.
+It does not govern or block public plugin submission. The plugin follows its
+own Anthropic Console submission flow and does not require a Team or Enterprise
+publisher organization.
 
 - **Organization access:** Team or Enterprise organization plus Directory
   management rights. A Console organization is not a substitute.
@@ -769,27 +782,28 @@ the production endpoint and reviewer state already exist and have been tested.
 
 ### 11.1 Connector versus plugin
 
-The Directory connector is the remote-MCP distribution route that may be
-usable across Claude.ai, Desktop, Mobile, Claude Code and Cowork when the
-current product, workspace and OAuth flow support it. Compatibility is claimed
-only after fresh client evidence. The current Directory-v1 candidate
-deliberately claims Claude.ai only; the other clients are not submission gates
-for that candidate.
+The public SkillPilot plugin is the preferred complete installation for
+eligible paid Claude Web chat, Desktop Chat and Cowork users. The package under
+`ai/claude/plugin/skillpilot-coach-v1/` supplies the reusable Claude-specific
+coaching Skill and declares the same public remote MCP server on all three
+surfaces. Claude v1 has no hooks or subagents; any later hooks or subagents are
+Cowork-only and require a separately versioned and accepted change. Native
+mobile plugin support is not part of this claim.
 
-For Claude Web, the Connectors Directory is the preferred one-time
-installation. It installs the public remote MCP server that provides all twelve
-tools and both MCP Apps UIs. A manually added Custom Connector is the
-pre-publication and testing route for that same server, not a separate
-capability tier.
+The remote connector remains the single owner of OAuth, MCP, all twelve tools
+and both MCP Apps UIs. The plugin must not copy those implementations. A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server. An additional manually configured Custom Connector for that same URL is unnecessary and should be avoided.
 
-The package under `ai/claude/plugin/skillpilot-coach-v1/` is an optional
-companion for Claude Code and Cowork. It adds the reusable Claude-specific
-coaching Skill and references the same public MCP server. It is neither
-required for the Claude Web Directory candidate nor a fallback needed to reach
-its tools or MCP Apps. If connector and plugin coexist, they must expose one
-SkillPilot tool set. The plugin has independent SemVer for compatible
-instruction changes; it cannot conceal a breaking server contract, which after
-final submission requires a new Product Owner decision.
+The Connectors Directory remains a separate connector-only distribution route
+with its own Team/Enterprise submission gate and is not a prerequisite for
+plugin submission. A manually added Custom Connector is the pre-publication
+and testing route for that same connector-only server. Directory and custom
+connector compatibility may be claimed across additional Claude clients only
+after fresh client evidence; those claims neither widen nor block the public
+plugin scope.
+
+The plugin has independent SemVer for compatible instruction changes; it
+cannot conceal a breaking remote-connector contract, which after final
+submission requires a new Product Owner decision.
 
 ---
 
@@ -881,11 +895,12 @@ Until that decision, dormant code is safer than an unauthorized cleanup.
 - The populated reviewer account can exercise every submitted tool and be reset
   without affecting another learner.
 
-Claude Code and Cowork are additional plugin surfaces, not part of the current
-Claude.ai Directory claim. Before either client is claimed as supported, local and official
-package validation, fresh installation, OAuth, twelve-tool and two-MCP-App
-tests must pass separately. Those plugin results do not replace, weaken or
-block the Claude.ai Directory gate above.
+The public plugin has an independent acceptance lane for eligible paid Claude
+Web chat, Desktop Chat and Cowork users. Local and official package validation,
+fresh installation, OAuth, First-Party start, twelve-tool and two-MCP-App tests
+must pass on each claimed surface. The coaching Skill must work on all three;
+v1 must expose no hooks or subagents. These plugin results do not replace,
+weaken or block the independent connector-only Directory gate above.
 
 ### 13.3 Rollback gate
 
@@ -941,10 +956,15 @@ The following decisions are already made by this revision:
   institutional SLA;
 - future v2-v9 hosts are not published or certificate-reserved without a
   versioning decision;
-- the Connectors Directory is the preferred Claude Web installation and the
-  connector supplies all twelve tools and both MCP Apps;
-- the separate plugin is optional for Claude Code and Cowork, references the
-  same connector and is not a prerequisite of the Claude Web candidate;
+- the public SkillPilot plugin is the preferred complete installation for
+  eligible paid Claude Web chat, Desktop Chat and Cowork users;
+- the plugin Skill works on all three supported surfaces, declares the same
+  remote connector and exposes no v1 hooks or subagents;
+- the remote connector owns OAuth, MCP, all twelve tools and both MCP Apps;
+- the Connectors Directory remains an independent connector-only route with
+  its own Team/Enterprise submission gate and is not a prerequisite for plugin
+  submission;
+- native mobile plugin support is not claimed;
 - beta removal is separate and never triggered automatically by portal status.
 
 ---
@@ -993,6 +1013,8 @@ the implementation must stop and the concept must be updated before deployment.
   <https://claude.com/docs/connectors/building/what-to-build>
 - Anthropic, plugin submission:
   <https://claude.com/docs/plugins/submit>
+- Anthropic, using plugins in Claude:
+  <https://support.claude.com/en/articles/13837440-use-plugins-in-claude>
 - Anthropic, MCP Apps cross-compatibility:
   <https://claude.com/docs/connectors/building/mcp-apps/cross-compatibility>
 - Anthropic, custom remote connector availability by plan:

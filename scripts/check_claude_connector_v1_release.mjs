@@ -107,6 +107,37 @@ const expectedContractFiles = [
   "scripts/capture_claude_mcp_app_carousel.mjs",
 ];
 
+const forbiddenDistributionClaimPatterns = [
+  {
+    label: "Claude Free availability",
+    patterns: [
+      /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:is|will be)\s+(?:now\s+)?available\s+(?:on|in|for)\s+Claude Free\b/iu,
+      /\b(?:Das\s+)?(?:öffentliche\s+)?(?:SkillPilot-)?Plugin(?:-Paket)?\s+(?:ist|wird)\s+(?:jetzt\s+)?(?:in|auf|für)\s+Claude Free\s+(?:verfügbar|unterstützt|nutzbar)\b/iu,
+    ],
+  },
+  {
+    label: "native-mobile plugin support",
+    patterns: [
+      /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:claims|supports|provides|offers|includes)\b[^.\n]{0,80}\bnative[- ]mobile(?:[- ]plugin)? support\b/iu,
+      /\b(?:Das\s+)?(?:öffentliche\s+)?(?:SkillPilot-)?Plugin(?:-Paket)?\s+(?:beansprucht|unterstützt|bietet)\b[^.\n]{0,80}\bnative(?:[- ]mobile)?(?:\s+Plugin-Unterstützung|[- ]Plugin-Unterstützung|\s+Nutzung des Plugins auf Mobilgeräten)\b/iu,
+    ],
+  },
+  {
+    label: "prohibition of same-server plugin and Directory coexistence",
+    patterns: [
+      /\bPlugin and Directory(?:\s+(?:connector\s+)?installations?|\s+entries?)?\s+(?:must|can|may)\s+never\s+(?:coexist|be enabled together)\b/iu,
+      /\bPlugin und Directory(?:-Installation|-Eintrag)?(?:en)?\s+dürfen\s+niemals\s+(?:koexistieren|gleichzeitig bestehen|gemeinsam aktiviert werden)\b/iu,
+    ],
+  },
+  {
+    label: "plugin ownership of connector tools or UI",
+    patterns: [
+      /(?:^|[.!?]\s+)\s*(?:The\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+shell)?\s+(?:owns|supplies|implements|duplicates|provides)\b[^.\n]{0,120}\b(?:MCP\s+)?(?:tools?|Apps?|UIs?|UI resources?)\b/imu,
+      /(?:^|[.!?]\s+)\s*(?:Das|Die)\s+(?:öffentliche\s+)?(?:SkillPilot-)?Plugin(?:-Shell)?\s+(?:besitzt|liefert|implementiert|dupliziert|stellt)\b[^.\n]{0,120}\b(?:Tools?|Werkzeuge|MCP Apps?|UIs?|UI-Ressourcen|Oberflächen)\b/imu,
+    ],
+  },
+];
+
 export function verifyClaudeConnectorV1Release({
   repositoryRoot = defaultRepositoryRoot,
   submissionReady = false,
@@ -1117,43 +1148,71 @@ export function validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerA
   return errors;
 }
 
+export function validateClaudeDistributionClaimSafety(...documents) {
+  const publishedText = documents
+    .filter((document) => typeof document === "string")
+    .join("\n");
+  const errors = [];
+
+  for (const { label, patterns } of forbiddenDistributionClaimPatterns) {
+    if (patterns.some((pattern) => pattern.test(publishedText))) {
+      errors.push(
+        `Claude distribution documentation contains a forbidden contradictory claim: ${label}.`,
+      );
+    }
+  }
+
+  return errors;
+}
+
 export function validateClaudeDistributionDocumentation(concept, implementationPlan) {
   const errors = [];
   const check = (condition, message) => {
     if (!condition) errors.push(message);
   };
 
-  check(
-    /The Connectors Directory is the preferred one-time installation for Claude\s+Web/u.test(
-      concept,
-    )
-      && /optional companion for Claude Code and\s+Cowork/u.test(concept)
-      && /not required for the Claude Web Directory candidate/u.test(concept),
-    "Claude concept must define Directory-first Web distribution and the optional Code/Cowork plugin.",
-  );
-  check(
-    /Connectors-Directory-Eintrag als bevorzugte Einmal-Installation für\s+Claude Web/u.test(
-      implementationPlan,
-    )
-      && /optionalen Begleiter für Claude Code und\s+Cowork/u.test(implementationPlan)
-      && /keine\s+Voraussetzung des Claude-Web-Kandidaten/u.test(implementationPlan),
-    "Claude implementation plan must define Directory-first Web distribution and the optional Code/Cowork plugin.",
-  );
+  errors.push(...validateClaudeDistributionClaimSafety(concept, implementationPlan));
 
-  for (const [name, text] of [
-    ["concept", concept],
-    ["implementation plan", implementationPlan],
-  ]) {
-    check(
-      !/plugin is the preferred one-time installation|Claude plugin is the preferred|plugin is the preferred installation/iu.test(
-        text,
-      )
-        && !/Claude-Plugin als bevorzugte Einmal-Installation|Plugin ist der bevorzugte Einmal-Installationsweg|bevorzugten Plugin-Installationsweg/iu.test(
-          text,
-        ),
-      `Claude ${name} must not describe the optional plugin as the preferred Web installation.`,
-    );
-  }
+  check(
+    concept.includes("The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users."),
+    "Claude concept must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
+  );
+  check(
+    implementationPlan.includes("Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork."),
+    "Claude implementation plan must define the public plugin as the preferred complete paid Web/Desktop/Cowork installation.",
+  );
+  check(
+    concept.includes("The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission."),
+    "Claude concept must preserve the independent connector-only Directory lane and its separate submission gate.",
+  );
+  check(
+    implementationPlan.includes("Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung."),
+    "Claude implementation plan must preserve the independent connector-only Directory lane and its separate submission gate.",
+  );
+  check(
+    /coaching Skill works on all three supported surfaces/u.test(concept)
+      && /contains no hooks or subagents|has no hooks or subagents/u.test(concept)
+      && /Native mobile plugin support is not claimed/u.test(concept)
+      && /remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI/u.test(concept),
+    "Claude concept must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
+  );
+  check(
+    concept.includes("A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server.")
+      && /additional manually configured Custom Connector for that same URL is unnecessary and should be avoided/u.test(concept),
+    "Claude concept must allow same-server plugin and Directory coexistence while avoiding a redundant manual Custom Connector.",
+  );
+  check(
+    /Coaching-Skill funktioniert auf allen drei unterstützten Oberflächen/u.test(implementationPlan)
+      && /keine Hooks oder Subagents/u.test(implementationPlan)
+      && /keine Behauptung nativer mobiler Plugin-Unterstützung/u.test(implementationPlan)
+      && /Remote-Connector besitzt OAuth, MCP, alle zwölf\s+Tools und beide MCP Apps UI-Ressourcen/u.test(implementationPlan),
+    "Claude implementation plan must keep Skill support, capability, mobile-claim and remote-connector ownership boundaries explicit.",
+  );
+  check(
+    implementationPlan.includes("Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit.")
+      && /keinen zusätzlichen manuellen Custom Connector für dieselbe Remote-MCP-URL/u.test(implementationPlan),
+    "Claude implementation plan must allow same-server plugin and Directory coexistence while avoiding a redundant manual Custom Connector.",
+  );
 
   return errors;
 }
@@ -1473,6 +1532,9 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
   );
   const tls = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-connector-v1.conf");
   const acme = readText(repositoryRoot, "deploy/nginx/skillpilot-claude-acme.conf");
+  for (const error of validateClaudeDistributionClaimSafety(guide, guideDe, runbook)) {
+    check(false, error);
+  }
   for (const error of validateClaudeWebStartReviewEvidence(
     reviewerTestPlan,
     reviewerAccess,
@@ -1492,10 +1554,9 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     check(text.includes("spc_"), "User guides must explain the opaque learner session.");
     check(/24 (?:hours|Stunden)/u.test(text), "User guides must explain the exact 24-hour lifetime.");
     check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
-    check(
-      /Connectors Directory/u.test(text),
-      "User guides must name the Connectors Directory as the Claude Web installation path.",
-    );
+    check(/public SkillPilot plugin|öffentliche SkillPilot-Plugin/u.test(text), "User guides must name the public plugin as the complete installation path.");
+    check(/paid Claude Web chat, Desktop Chat and Cowork|bezahlten Claude-Angebote Web-Chat, Desktop-Chat und Cowork/u.test(text), "User guides must scope the plugin to eligible paid Web/Desktop/Cowork users.");
+    check(/separate connector-only route|unabhängiger Weg nur für den Konnektor/u.test(text), "User guides must preserve the separate connector-only Directory route.");
     check(
       /MCP Apps|interaktiven\s+Oberflächen|interactive\s+UIs/u.test(text),
       "User guides must explain that the connector supplies both UIs.",
@@ -1506,14 +1567,32 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     );
   }
   check(
-    /not\s+required for Claude Web/u.test(guide),
-    "English user guide must state that the optional plugin is not required for Claude Web.",
+    /Team\/Enterprise publisher gate/u.test(guide)
+      && /not a prerequisite for plugin submission/u.test(guide)
+      && /plugin and Directory entry may coexist/u.test(guide)
+      && /Do not add a separate manual\s+custom connector with the same URL/u.test(guide)
+      && /makes no claim of native\s+mobile-plugin support/u.test(guide),
+    "English user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
   );
   check(
-    /für Claude Web nicht erforderlich/u.test(guideDe),
-    "German user guide must state that the optional plugin is not required for Claude Web.",
+    /Team-\/Enterprise-Gate/u.test(guideDe)
+      && /keine Voraussetzung\s+für die Plugin-Einreichung/u.test(guideDe)
+      && /Plugin und\s+Directory-Eintrag dürfen gleichzeitig bestehen/u.test(guideDe)
+      && /keinen zusätzlichen\s+manuellen benutzerdefinierten Konnektor/u.test(guideDe)
+      && /native Nutzung des Plugins auf Mobilgeräten wird\s+nicht zugesagt/u.test(guideDe),
+    "German user guide must separate Directory submission, document same-server coexistence and avoid unsupported claims.",
   );
   check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
+  check(
+    runbook.includes("## 10. Preferred public plugin publication")
+      && /public SkillPilot plugin is the preferred complete installation for\s+eligible paid Claude Web chat, Desktop Chat and Cowork users/u.test(runbook)
+      && /neither\s+contains the coaching Skill nor gates plugin submission/u.test(runbook)
+      && /two routes may\s+be submitted in either order/u.test(runbook)
+      && /Developer, Admin or Owner/u.test(runbook)
+      && /plugin and Directory installations referencing\s+`https:\/\/mcp-claude-v1\.skillpilot\.com\/mcp` may coexist/u.test(runbook)
+      && /no additional manual\s+custom connector is configured for that same URL/u.test(runbook),
+    "Release runbook must define the independent Anthropic Console plugin publication lane.",
+  );
   check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
   check(
     ["`/connect`", "`/connect/`", "`/connect/details`", "`/connect/bind`"].every(

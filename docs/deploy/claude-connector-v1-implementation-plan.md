@@ -57,11 +57,15 @@ Claude mit folgenden Eigenschaften:
 - zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
   normale Karteikartenübung; Kartenbewertungen ändern nur den
   Wiederholungsplan, niemals Mastery;
-- den Connectors-Directory-Eintrag als bevorzugte Einmal-Installation für
-  Claude Web; der Remote-MCP-Server liefert alle zwölf Tools und beide MCP Apps;
-- das separate Claude-Plugin als optionalen Begleiter für Claude Code und
-  Cowork; es ergänzt den Skill, verweist auf denselben Connector und ist keine
-  Voraussetzung des Claude-Web-Kandidaten;
+- Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork.
+- der Coaching-Skill funktioniert auf allen drei unterstützten Oberflächen;
+- in v1 keine Hooks oder Subagents; spätere Hooks oder Subagents sind
+  Cowork-only und benötigen eigene Abnahme- und Versionsentscheidungen;
+- der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle zwölf
+  Tools und beide MCP Apps UI-Ressourcen; das Plugin dupliziert diese
+  Implementierungen nicht;
+- Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.
+- keine Behauptung nativer mobiler Plugin-Unterstützung;
 - jede Lernsitzung startet ausschließlich über
   `https://skillpilot.com/` im gemeinsamen SkillPilot-Webstart;
   die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
@@ -180,8 +184,8 @@ Zustimmung.
 | D | First-Party-Start, exakt 24h `spc_`, all-tool session binding und OAuth/Session-Trennung | Security/Product | öffentlicher Lernzugriff |
 | E | Claude-spezifische Datenschutzerklärung, Retention und Mindestalter | Legal/Product | Real-User-Test und Veröffentlichung |
 | F | Numerisches RAM-, Thread-, Pool- und Latenzbudget | Operations | Lasttest und Aktivierung |
-| G | Publisher-Organisation und Directory-Berechtigung | Product/Operations | Directory-Einreichung |
-| H | Reviewer-Testkonto mit realistischem, aber wegwerfbarem Lernzustand | Product/QA | Directory-Einreichung |
+| G | Publisher-Organisation und Directory-Berechtigung | Product/Operations | ausschließlich Directory-Einreichung, nicht Plugin-Einreichung |
+| H | Reviewer-Testkonto mit realistischem, aber wegwerfbarem Lernzustand | Product/QA | Veröffentlichung und Real-Client-Abnahme |
 
 Die Product-Owner-Entscheidung vom 23. August 2026 gibt ausschließlich den
 providerisolierten Umbau des noch nicht eingereichten Claude-v1-Kandidaten frei.
@@ -676,15 +680,21 @@ Veröffentlichung belegen.
 **Real-Client-Abnahme:**
 
 - alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
-- den finalen Remote-Connector in einer realen Hosted-Claude-Web-Umgebung über
-  den Custom-Connector-Weg prüfen; nach Verfügbarkeit zusätzlich den
-  Directory-Eintrag gegen denselben Endpoint testen;
-- beide MCP Apps in Hosted Claude mit privaten Kartenmetadaten und app-only
-  Review testen;
-- sicherstellen, dass Claude Web mit genau einem Connector alle zwölf Tools und
-  beide connectorgelieferten MCP Apps erreicht und kein Plugin voraussetzt;
-- das optionale Plugin in Claude Code und Cowork nur dann separat testen und
-  beanspruchen, wenn diese Oberflächen veröffentlicht werden sollen;
+- das öffentliche Plugin frisch in Claude Web Chat, Desktop Chat und Cowork
+  installieren und auf jeder beanspruchten Oberfläche separat prüfen;
+- prüfen, dass der Coaching-Skill auf allen drei Oberflächen greift, während
+  OAuth, alle zwölf Tools und beide MCP Apps ausschließlich aus dem einmal
+  verbundenen Remote-Connector stammen;
+- beide MCP Apps mit privaten Kartenmetadaten und app-only Review testen;
+- nachweisen, dass v1 keine Hooks oder Subagents enthält; spätere Hooks oder
+  Subagents dürfen ausschließlich für Cowork beansprucht werden;
+- den finalen Remote-Connector unabhängig über den Custom-Connector-Weg
+  prüfen; nach Verfügbarkeit den Connector-only-Directory-Eintrag gegen
+  denselben Endpoint testen;
+- nachweisen: Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit.
+- keinen zusätzlichen manuellen Custom Connector für dieselbe Remote-MCP-URL
+  einrichten;
+- keine native mobile Plugin-Unterstützung beanspruchen;
 - DE- und EN-Coaching, Konflikt, Recall, Exam, Revocation und Reconnect testen;
 - mit vollständig bestücktem, wegwerfbarem Erwachsenen-Testlearner testen;
 - keine echten Lernenden- oder Produktiv-Credentials im Mitschnitt verwenden.
@@ -721,13 +731,19 @@ aktivieren.
    Negativtests ausführen.
 8. Erneut OpenAI-Smokes und RAM/Pool/Latenz prüfen.
 9. Real-Claude-Custom-Connector-Abnahme wiederholen.
-10. Erst danach mit Dokumentations-URL, Privacy-URL, Icon,
-    Test-Credentials und Setup-Anleitung im Anthropic-Portal einreichen.
+10. Öffentliche Plugin-Abnahme in Claude Web Chat, Desktop Chat und Cowork
+    wiederholen und das Plugin anschließend über den unabhängigen Anthropic-
+    Console-Prozess einreichen.
+11. Den Connector-only-Directory-Eintrag erst nach seinem eigenen Gate mit
+    Dokumentations-URL, Privacy-URL, Icon, Test-Credentials und Setup-Anleitung
+    einreichen.
 
 Für die Directory-Einreichung braucht der Publisher nach aktuellem
 Anthropic-Verfahren eine Team- oder Enterprise-Organisation und
 Directory-Management-Rechte. Der Connector selbst wird zuvor mit einem Custom
-Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit.
+Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit. Dieses
+Gate gilt ausschließlich für den unabhängigen Connector-only-Directory-Weg
+und ist keine Voraussetzung für die Plugin-Einreichung.
 
 **Rollback:**
 
@@ -739,8 +755,9 @@ Connector getestet; diese Laufzeit entspricht der Directory-Laufzeit.
 6. bei Artefakt- oder Migrationsfehler auf das gesicherte gemeinsame Artefakt
    zurückrollen; additive v1-Tabellen nicht destruktiv entfernen.
 
-**Abnahme:** Rollback ist vor Aktivierung praktisch geprobt; Submission erfolgt
-erst nach einem stabilen öffentlichen Custom-Connector-Test.
+**Abnahme:** Rollback ist vor Aktivierung praktisch geprobt; Plugin- und
+Directory-Submission folgen erst nach den jeweils eigenen stabilen
+Real-Client- und Veröffentlichungs-Gates.
 
 **Aufwand:** 2–4 Personentage plus Review-Wartezeit.
 
@@ -850,24 +867,30 @@ wenn alle folgenden Punkte erfüllt sind:
 - Product Owner hat die konkrete Produktionsaktivierung ausdrücklich
   freigegeben.
 
-### 9.1 Definition of Done des optionalen Plugin-Wegs
+### 9.1 Definition of Done des bevorzugten Plugin-Wegs
 
-Der Connectors-Directory-Eintrag ist der bevorzugte Einmal-Installationsweg für
-Claude Web. Das Plugin ist davon unabhängig und nur ein optionaler Begleiter
-für Claude Code und Cowork. Es ist weder Voraussetzung noch Release-Gate des
-aktuellen Directory-v1-Kandidaten. Das Plugin darf für diese zusätzlichen
-Oberflächen erst veröffentlicht werden, wenn:
+Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation
+für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork.
+Der Coaching-Skill funktioniert auf allen drei Oberflächen; OAuth, MCP, alle
+zwölf Tools und beide MCP Apps bleiben Eigentum des einmal verbundenen Remote-
+Connectors. V1 enthält keine Hooks oder Subagents. Spätere Hooks oder Subagents
+sind Cowork-only und benötigen eine eigene Version und Abnahme. Native mobile
+Plugin-Unterstützung wird nicht beansprucht.
+
+Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-
+Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine
+Voraussetzung der Plugin-Einreichung. Das Plugin darf veröffentlicht werden,
+wenn:
 
 - der lokale Paketcheck und die offizielle Prüfung mit
   `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
 - Installation, OAuth, First-Party-Start, alle zwölf Tools und beide MCP Apps
-  in jeder tatsächlich beanspruchten Plugin-Oberfläche getestet wurden;
-- Skill und Connector genau einmal installiert sind und die beiden MCP Apps
-  über den Connector bereitstehen;
-- die parallele Installation zum Directory-Connector kein doppeltes oder
-  abweichendes SkillPilot-Toolset erzeugt;
-- Claude Code und Cowork jeweils separat vollständig getestet wurden, bevor die
-  Plugin-Dokumentation diese Oberflächen beansprucht;
+  in Claude Web Chat, Desktop Chat und Cowork getestet wurden;
+- der Skill genau einmal wirksam ist. Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit. Die beiden MCP Apps stammen weiterhin aus dem Remote-Connector;
+- kein zusätzlicher manueller Custom Connector für dieselbe Remote-MCP-URL
+  eingerichtet wird;
+- der Skill auf Web Chat, Desktop Chat und Cowork nachweislich greift und v1
+  keine Hooks oder Subagents enthält;
 - die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und
   Funktionen beansprucht.
 
@@ -882,6 +905,8 @@ Primärquellen geprüft:
 - [Anthropic: Testing your connector](https://claude.com/docs/connectors/building/testing)
 - [Anthropic: Pre-submission checklist](https://claude.com/docs/connectors/building/review-criteria)
 - [Anthropic: Submitting to the Connectors Directory](https://claude.com/docs/connectors/building/submission)
+- [Anthropic: Submit a plugin](https://claude.com/docs/plugins/submit)
+- [Anthropic: Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 - [Model Context Protocol: Authorization](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
 
 Da Anthropic Connector-, OAuth- und Directory-Anforderungen ändern kann, sind

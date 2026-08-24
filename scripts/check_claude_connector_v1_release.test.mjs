@@ -18,6 +18,7 @@ import {
   calculateCandidateContractSha256,
   validateClaudeWebStartImplementation,
   validateClaudeWebStartReviewEvidence,
+  validateClaudeDistributionClaimSafety,
   validateClaudeDistributionDocumentation,
   validateMcpAppCarousel,
   validateClaudeReleaseState,
@@ -231,7 +232,7 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
   }
 });
 
-test("Claude Web distribution stays Directory-first and keeps the plugin optional", () => {
+test("Claude distribution prefers the complete paid-surface plugin and keeps Directory independent", () => {
   const concept = readFileSync(
     resolve(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md"),
     "utf8",
@@ -246,17 +247,89 @@ test("Claude Web distribution stays Directory-first and keeps the plugin optiona
     [],
   );
 
-  const legacyConcept = `${concept}\nThe Claude plugin is the preferred one-time installation for Claude Web.\n`;
+  const missingPreferredPlugin = concept.replace(
+    "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users.",
+    "The public SkillPilot plugin is an optional Cowork-only package.",
+  );
   assert.ok(
-    validateClaudeDistributionDocumentation(legacyConcept, implementationPlan)
-      .some((error) => error.includes("preferred Web installation")),
+    validateClaudeDistributionDocumentation(missingPreferredPlugin, implementationPlan)
+      .some((error) => error.includes("preferred complete paid Web/Desktop/Cowork")),
   );
 
-  const legacyPlan = `${implementationPlan}\nDas Claude-Plugin als bevorzugte Einmal-Installation für Claude Web.\n`;
-  assert.ok(
-    validateClaudeDistributionDocumentation(concept, legacyPlan)
-      .some((error) => error.includes("preferred Web installation")),
+  const conflatedDirectoryPlan = implementationPlan.replace(
+    "Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine Voraussetzung für die Plugin-Einreichung.",
+    "Der Connectors-Directory-Eintrag ist eine Voraussetzung für die Plugin-Einreichung.",
   );
+  assert.ok(
+    validateClaudeDistributionDocumentation(concept, conflatedDirectoryPlan)
+      .some((error) => error.includes("independent connector-only Directory lane")),
+  );
+
+  const prohibitedCoexistence = concept.replace(
+    "A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server.",
+    "Plugin and Directory installations must never coexist.",
+  );
+  assert.ok(
+    validateClaudeDistributionDocumentation(prohibitedCoexistence, implementationPlan)
+      .some((error) => error.includes("same-server plugin and Directory coexistence")),
+  );
+});
+
+test("Claude distribution validators reject append-only contradictory claims", () => {
+  const concept = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md"),
+    "utf8",
+  );
+  const implementationPlan = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-implementation-plan.md"),
+    "utf8",
+  );
+  const guide = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.md"),
+    "utf8",
+  );
+  const guideDe = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-user-guide.de.md"),
+    "utf8",
+  );
+  const runbook = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-release.md"),
+    "utf8",
+  );
+
+  assert.deepEqual(
+    validateClaudeDistributionClaimSafety(
+      concept,
+      implementationPlan,
+      guide,
+      guideDe,
+      runbook,
+    ),
+    [],
+  );
+
+  for (const [name, appendedClaim] of [
+    ["Claude Free EN", "The SkillPilot plugin is available on Claude Free."],
+    ["Claude Free DE", "Das SkillPilot-Plugin ist in Claude Free verfügbar."],
+    ["native mobile EN", "The SkillPilot plugin supports native-mobile plugin support."],
+    ["native mobile DE", "Das SkillPilot-Plugin bietet native Plugin-Unterstützung auf Mobilgeräten."],
+    ["coexistence EN", "Plugin and Directory installations must never coexist."],
+    ["coexistence DE", "Plugin und Directory-Installationen dürfen niemals koexistieren."],
+    ["plugin ownership EN", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
+    ["plugin ownership DE", "Die Plugin-Shell besitzt alle zwölf Tools und beide MCP Apps UI-Ressourcen."],
+  ]) {
+    const errors = validateClaudeDistributionClaimSafety(
+      concept,
+      implementationPlan,
+      guide,
+      guideDe,
+      `${runbook}\n${appendedClaim}\n`,
+    );
+    assert.ok(
+      errors.some((error) => error.includes("forbidden contradictory claim")),
+      `${name} append-only contradiction must be rejected`,
+    );
+  }
 });
 
 test("Claude v1 dossier is a structurally valid pre-submission candidate", () => {
