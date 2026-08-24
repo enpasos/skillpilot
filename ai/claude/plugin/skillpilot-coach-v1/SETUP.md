@@ -18,7 +18,7 @@ Claude Desktop and Claude Cowork.
 3. Connect the bundled connector once through the normal OAuth flow. The
    `offline_access` scope keeps this technical plugin connection available; it
    contains no learner identity and selects no SkillPilot learning profile.
-4. Open <https://skillpilot.com/?coach=claude> in the first-party SkillPilot
+4. Open <https://skillpilot.com/> in the first-party SkillPilot
    WebGUI. In the shared web start, visibly choose or load the SkillPilot ID,
    confirm the curriculum and Personal Curriculum, then explicitly choose
    **Mit Claude starten**. SkillPilot creates a fresh opaque `spc_...`
@@ -57,7 +57,7 @@ connector** with:
 - Additional request headers: none
 
 Complete the same transport-only OAuth connection, then always start learning at
-<https://skillpilot.com/?coach=claude>. The standalone installation has no
+<https://skillpilot.com/>. The standalone installation has no
 learning-session or UI advantage over the plugin; it exists only for accounts or
 surfaces where the integrated plugin cannot be installed.
 
@@ -72,7 +72,7 @@ use only a route that the current client actually offers.
 Create or resume the learning profile at <https://skillpilot.com>. Choose the
 personal curriculum and learning scope there, then return to Claude and reconnect
 or, preferably, create a fresh start at
-<https://skillpilot.com/?coach=claude>. Claude may coach and update the selected
+<https://skillpilot.com/>. Claude may coach and update the selected
 learning path, but the first-party SkillPilot site owns curriculum setup and
 later corrections or withdrawals of ordinary completion.
 

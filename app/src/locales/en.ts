@@ -155,7 +155,8 @@ export const en = {
             }
         },
         banner: {
-            text: "**Free.** You only need a ChatGPT account. Please use the normal ChatGPT text chat."
+            text: "**SkillPilot is free.** ChatGPT and Claude each have provider-specific account, plan, and age requirements.",
+            linkLabel: "Compare access options"
         },
         links: {
             faq: "FAQ",

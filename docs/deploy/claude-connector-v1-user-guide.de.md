@@ -24,7 +24,7 @@ Lernsitzung.
 
 ## Jedes Mal Lernen starten
 
-1. Öffne [Lernen starten](https://skillpilot.com/?coach=claude) bei SkillPilot.
+1. Öffne [Lernen starten](https://skillpilot.com/) bei SkillPilot.
    Der Link führt in den gemeinsamen SkillPilot-Webstart.
 2. Wähle oder lade dort sichtbar deine SkillPilot-ID und bestätige Curriculum
    und persönliches Curriculum.
@@ -70,7 +70,7 @@ Toolnamen oder Zustandsversionen nicht in normale Lernantworten mischen.
 - **SkillPilot wird nicht gefunden:** Prüfe, ob das Plugin eingeschaltet und
   sein Konnektor verbunden ist.
 - **Die Sitzung ist abgelaufen:** Öffne
-  [Lernen starten](https://skillpilot.com/?coach=claude) erneut. Eine
+  [Lernen starten](https://skillpilot.com/) erneut. Eine
   24-Stunden-Sitzung wird nie durch OAuth verlängert.
 - **Die falsche Person oder der falsche Lernstand erscheint:** Verwende den Chat
   nicht weiter. Starte in SkillPilot eine neue Sitzung mit dem richtigen

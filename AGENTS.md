@@ -42,6 +42,16 @@ actual V1 flow or expand its browser/platform, privacy, retention, OAuth,
 session, locale, or tool claims. If impact is uncertain, treat the change as
 frozen and ask the product owner before writing.
 
+The Product Owner clarified on **24 August 2026** that the shared first-party
+WebGUI may present the independently isolated Claude v1 coach next to the
+unchanged ChatGPT v1 start choice on the normal root route. This narrowly
+approved WebGUI exception also covers provider-neutral account guidance and
+removal of the former hidden `?coach=claude` gate. It does **not** authorize any
+change to the submitted ChatGPT launch handler, prepared-message/session
+semantics, package, MCP/OAuth/tools/schemas, MCP Apps UI, review cases, portal
+values, fixtures, or review artifacts. The exact source and regression hashes
+remain fail-closed in the review-freeze record.
+
 Approval, rejection, or a security incident does not silently remove this
 stop. An unfreeze requires an explicit product-owner decision naming the
 reason, exact scope, and target version. After actual publication, `1.0.0`

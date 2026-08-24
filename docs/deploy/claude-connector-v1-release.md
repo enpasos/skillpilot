@@ -126,7 +126,7 @@ sanitized evidence:
 - unauthenticated MCP returns HTTP 401 plus `WWW-Authenticate`;
 - connector OAuth, including optional `offline_access`, remains transport-only
   and cannot access a learner without a current `learningSessionId`;
-- `https://skillpilot.com/?coach=claude` enters the shared SkillPilot web
+- `https://skillpilot.com/` enters the shared SkillPilot web
   start; it visibly requires the learner to select or load the SkillPilot ID,
   confirm curriculum and Personal Curriculum, and choose Claude before it
   creates a fresh opaque `spc_` session that expires after exactly 24 hours;
@@ -167,7 +167,7 @@ Follow the repository test plan at
 `ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all twelve tools and
 both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
 fresh Claude.ai plugin session started only through
-`https://skillpilot.com/?coach=claude`. Confirm that every tool, including the
+`https://skillpilot.com/`. Confirm that every tool, including the
 app-only card-review tool, requires the same current `learningSessionId` and
 that the normal flashcard component
 keeps cards and review capabilities out of model-visible content, that its
@@ -231,7 +231,7 @@ Before submitting the plugin:
 4. verify that the plugin exposes exactly one Skill and one SkillPilot connector
    and that both MCP Apps are available through that connector;
 5. verify that each new learner session still starts only at
-   `https://skillpilot.com/?coach=claude`, while OAuth may remain connected;
+   `https://skillpilot.com/`, while OAuth may remain connected;
 6. verify that installing any supported fallback combination does not expose
    duplicate SkillPilot tool sets; and
 7. submit the public repository or package through Anthropic's plugin workflow

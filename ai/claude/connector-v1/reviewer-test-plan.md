@@ -13,7 +13,7 @@ that only the other client can observe.
 
 - Use only the dedicated adult reviewer profile from the secure handoff.
 - Install the plugin once, connect its connector through OAuth and start every
-  independent learner session at `https://skillpilot.com/?coach=claude`.
+  independent learner session at `https://skillpilot.com/`.
 - Never record OAuth codes or tokens, `spc_` learner sessions, permanent IDs,
   opaque capabilities, protected answers or raw learner data. No ID file or
   ID-file password belongs in this flow.
@@ -47,7 +47,7 @@ that only the other client can observe.
    resource metadata challenge.
 3. Connect the plugin's connector through OAuth. Confirm that the connection
    alone cannot select or access a learner.
-4. Open `https://skillpilot.com/?coach=claude`. Confirm it enters the shared
+4. Open `https://skillpilot.com/`. Confirm it enters the shared
    SkillPilot web start, requires visible selection or loading of the reviewer
    SkillPilot ID, shows the curriculum and Personal Curriculum, and offers
    separate ChatGPT and Claude decisions. Choose Claude explicitly and confirm
@@ -169,7 +169,7 @@ opaque credential or learner identifier.
 - session expires exactly 24 hours after issuance even while OAuth and
   `offline_access` remain valid;
 - OAuth refresh cannot mint, renew or extend a learner session; a fresh start
-  at `https://skillpilot.com/?coach=claude` is required;
+  at `https://skillpilot.com/` is required;
 - permanent SkillPilot ID and legacy ID-file material are rejected as learner
   selectors and absent from connector, MCP, logs and visible Claude output;
 - missing read scope and missing write scope;

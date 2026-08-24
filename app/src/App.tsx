@@ -530,8 +530,8 @@ const App: React.FC = () => {
           ? `Start SkillPilot in 5 Steps | ${baseTitle}`
           : `SkillPilot in 5 Schritten starten | ${baseTitle}`
         description = metadataLanguage === 'en'
-          ? 'Configure your learning context in SkillPilot and learn with SkillPilot Coach in ChatGPT in a browser.'
-          : 'Lernkontext in SkillPilot einrichten und mit SkillPilot Coach in ChatGPT im Browser lernen.'
+          ? 'Configure your learning context in SkillPilot and choose ChatGPT or Claude as your browser-based learning coach.'
+          : 'Lernkontext in SkillPilot einrichten und ChatGPT oder Claude als Lerncoach im Browser wählen.'
       } else if (path === '/users') {
         const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`

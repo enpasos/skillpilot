@@ -443,7 +443,7 @@ separate:
    `offline_access` scope may keep it connected, but contains and selects no
    learner identity.
 3. For every learning session the user opens
-   `https://skillpilot.com/?coach=claude`, which enters the shared first-party
+   `https://skillpilot.com/`, which enters the shared first-party
    SkillPilot web start.
 4. The user visibly selects or loads the SkillPilot ID, confirms curriculum
    and Personal Curriculum, and explicitly chooses Claude. Only then does

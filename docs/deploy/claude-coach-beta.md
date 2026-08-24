@@ -1,7 +1,13 @@
-# Claude-Coach: pausierte Beta, Test und spätere Reaktivierung
+# Historischer Claude-Coach-Beta-Pfad (abgelöst)
 
-Status: erhaltene, deaktivierte Implementierung in Entwicklung; derzeit nicht
-lernendenseitig sichtbar und nicht produktionsreif.
+Status: archivierte Beschreibung des früheren Shared-Origin-Betapfads. Sie ist
+keine operative Anleitung für den aktuellen Claude-v1-Rollout.
+
+Der aktuelle, dedizierte Claude-v1-Connector ist unter
+[`claude-connector-v1-release.md`](claude-connector-v1-release.md) beschrieben.
+Seit der ausdrücklichen Product-Owner-Entscheidung vom 24. August 2026 wird er
+im normalen gemeinsamen Webstart neben ChatGPT angeboten; der alte versteckte
+Providerparameter und der damalige Source-Level-Schalter sind entfallen.
 
 Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
 [mehrsprachigen OpenAI-MCP-Coach](openai-mcp-coach-v1.md). Der
@@ -13,12 +19,10 @@ Werkzeug- und Darstellungsgrenzen. Der ChatGPT-Pfad bleibt
 unabhängig und muss auch bei vollständig deaktiviertem Claude unverändert
 funktionieren.
 
-> **Aktuelle UI-Pause (seit 21. Juli 2026):** Die Claude-Option ist im Frontend
-> zusätzlich durch den konstanten Release-Gate
-> `CLAUDE_COACH_BETA_ENABLED = false` verborgen. Ein gesetztes
-> `VITE_CLAUDE_BETA_ENABLED` kann sie während dieser Pause nicht einblenden.
-> Backend-, OAuth- und MCP-Sourcen bleiben erhalten. Die spätere Reaktivierung
-> ist eine bewusste Code- und Deploymententscheidung.
+> **Historischer Hinweis:** Die in diesem Dokument beschriebene UI-Pause und
+> der damalige Source-Level-Schalter gelten nicht für den dedizierten
+> Claude-v1-Connector. Aktuelle Start-, Sicherheits- und Releaseentscheidungen
+> stehen ausschließlich im Claude-v1-Dossier.
 
 Die zuvor offenen gemeinsamen Codepunkte sind geschlossen:
 
@@ -85,12 +89,11 @@ Bei einer kontrollierten Aktivierung exponierte Endpunkte:
 
 ## Feature-Flags und Konfiguration
 
-Es gibt derzeit kein wirksames Frontend-Build-Flag. Die UI ist durch den
-Source-Level-Release-Gate `CLAUDE_COACH_BETA_ENABLED = false` fest verborgen und
-kann nur durch eine bewusste Codeänderung plus Neubau reaktiviert werden. Die
-Backend-Werte sind Spring-Boot-Runtime-Konfiguration und gehören für einen
-kontrollierten Test in das `systemd`-Environment beziehungsweise dessen
-`EnvironmentFile`.
+Dieser Abschnitt beschreibt ausschließlich die historische, inzwischen
+abgelöste Shared-Origin-Beta. Der aktuelle dedizierte Claude-v1-Connector hat
+keinen versteckten Frontend-Query- oder Source-Level-Schalter. Seine
+Backend-Werte bleiben Spring-Boot-Runtime-Konfiguration und gehören in das
+`systemd`-Environment beziehungsweise dessen `EnvironmentFile`.
 
 | Variable | Sicherer aktueller Wert | Bedeutung |
 | --- | --- | --- |

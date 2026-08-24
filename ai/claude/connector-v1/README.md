@@ -30,7 +30,7 @@ client has its own recorded acceptance run.
   keep the plugin connected, but contains and selects no learner identity and
   cannot mint, renew or extend a learner session.
 - Every learner session starts at
-  `https://skillpilot.com/?coach=claude`. The shared first-party web start
+  `https://skillpilot.com/`. The shared first-party web start
   visibly selects the SkillPilot ID, curriculum, Personal Curriculum and
   provider. Only an explicit Claude choice creates an opaque `spc_` value,
   which expires after exactly 24 hours. The permanent SkillPilot ID remains

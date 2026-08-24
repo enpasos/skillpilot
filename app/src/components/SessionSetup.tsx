@@ -49,7 +49,6 @@ import {
   OpenAiMcpEligibilityDeclinedError,
 } from '../coachVariants/openAiMcp/providerEligibility'
 import {
-  CLAUDE_COACH_BETA_ENABLED,
   getSafeClaudeInstallUrl,
   getSafeClaudeWebUrl,
   requestClaudeConnectionStatus,
@@ -1052,36 +1051,44 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         <div className="w-full space-y-5">
           {!showLogin ? (
             <div className="w-full space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
-              {/* Primary start: shared ID flow for Cockpit and ChatGPT */}
-              <button
-                type="button"
-                onClick={openLearnerStart}
-                aria-label={t.startPage.cards.gpt.cta}
-                className="group relative block w-full overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 text-left transition-all duration-300 hover:border-sky-300/70 hover:shadow-md dark:bg-slate-800/50 dark:hover:border-sky-500/40"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="min-w-0 flex-1">
-                    <h3 className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400">
-                      {t.startPage.cards.gpt.title}
-                      <MessageCircle size={18} className="text-sky-500" />
-                    </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-text-secondary">
-                      {t.startPage.cards.gpt.description}
-                    </p>
-                    {t.startPage.banner && (
-                      <div className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-text-secondary">
-                        <ShieldCheck className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-300" size={16} />
-                        <div className="whitespace-pre-line">
-                          {t.startPage.banner.text.split('**').map((part, i) =>
-                            i % 2 === 1 ? <span key={i} className="font-bold text-text-primary">{part}</span> : part
-                          )}
-                        </div>
-                      </div>
-                    )}
+              {/* Primary start: one shared ID and curriculum flow, followed by an explicit coach choice. */}
+              <div className="relative w-full overflow-hidden rounded-xl border border-border-color bg-white/50 transition-all duration-300 hover:border-sky-300/70 hover:shadow-md dark:bg-slate-800/50 dark:hover:border-sky-500/40">
+                <button
+                  type="button"
+                  onClick={openLearnerStart}
+                  aria-label={t.startPage.cards.gpt.cta}
+                  className="group block w-full p-5 text-left"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="flex items-center gap-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-sky-600 dark:group-hover:text-sky-400">
+                        {t.startPage.cards.gpt.title}
+                        <MessageCircle size={18} className="text-sky-500" />
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-text-secondary">
+                        {t.startPage.cards.gpt.description}
+                      </p>
+                    </div>
+                    <ArrowRight className="shrink-0 text-text-secondary transition-all group-hover:translate-x-1 group-hover:text-sky-500" />
                   </div>
-                  <ArrowRight className="shrink-0 text-text-secondary transition-all group-hover:translate-x-1 group-hover:text-sky-500" />
-                </div>
-              </button>
+                </button>
+                {t.startPage.banner && (
+                  <div className="mx-5 mb-4 flex flex-wrap items-start gap-x-2 gap-y-1 border-t border-border-color pt-3 text-xs leading-relaxed text-text-secondary">
+                    <ShieldCheck className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-300" size={16} />
+                    <div className="min-w-0 flex-1 whitespace-pre-line">
+                      {t.startPage.banner.text.split('**').map((part, i) =>
+                        i % 2 === 1 ? <span key={i} className="font-bold text-text-primary">{part}</span> : part
+                      )}{' '}
+                      <Link
+                        to="/faq/coach-setup"
+                        className="font-semibold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-600 dark:text-sky-300 dark:hover:text-sky-200"
+                      >
+                        {t.startPage.banner.linkLabel}
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="w-full">
                 <AudioPlayer key={language} compact />
@@ -1478,9 +1485,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       <div>
                         <h2 className="text-base font-bold text-text-primary">{t.startPage.login.startStepTitle}</h2>
                         <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-                          {CLAUDE_COACH_BETA_ENABLED
-                            ? t.startPage.login.startStepTextWithClaude
-                            : t.startPage.login.startStepText}
+                          {t.startPage.login.startStepTextWithClaude}
                         </p>
                       </div>
                     </div>
@@ -1512,15 +1517,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <MessageCircle size={16} />
-                        {CLAUDE_COACH_BETA_ENABLED
-                          ? t.startPage.login.openChatGptProvider
-                          : openAiMcpCoachActive
-                            ? t.startPage.login.openAiMcpStart
-                            : t.startPage.login.openChatGpt}
+                        {t.startPage.login.openChatGptProvider}
                         <ExternalLink size={14} />
                       </button>
-                      {CLAUDE_COACH_BETA_ENABLED && (
-                        <div className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20">
+                      <div
+                        data-testid="claude-v1-start-options"
+                        className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20"
+                      >
                           <div className="flex items-start justify-between gap-3">
                             <div>
                               <div className="flex items-center gap-2">
@@ -1612,7 +1615,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             )}
                           </div>
                         </div>
-                      )}
                       <div>
                         <a
                           href={personalCurriculumReady ? learnerCockpitHref : undefined}

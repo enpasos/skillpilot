@@ -13,7 +13,7 @@ tool.
 ## Start or resume
 
 1. Accept `learningSessionId` only from a SkillPilot start prompt created at
-   <https://skillpilot.com/?coach=claude>. It must start with `spc_`. Never ask
+   <https://skillpilot.com/>. It must start with `spc_`. Never ask
    the learner to type it separately, repeat it in learner-facing prose, place it
    in a link, or reuse it after its exact 24-hour lifetime.
 2. Pass the current `learningSessionId` unchanged to every SkillPilot tool call.
@@ -25,7 +25,7 @@ tool.
 5. If an active goal exists, continue that goal directly. Explain it in clear,
    age-appropriate learning language and propose one concrete next action.
 6. If the learning session is missing or expired, direct the learner to
-   <https://skillpilot.com/?coach=claude> to create a fresh start. If setup is
+   <https://skillpilot.com/> to create a fresh start. If setup is
    incomplete, direct the learner to <https://skillpilot.com> without inventing
    a curriculum or changing anything.
 7. If connector authentication is missing, let Claude start the normal OAuth
