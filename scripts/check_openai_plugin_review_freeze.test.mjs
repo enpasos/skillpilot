@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import {
   assertOpenAiPluginReleaseMutationAllowed,
   loadOpenAiPluginReviewFreeze,
+  resolveAuthorizedRuntimeExceptionChains,
   sha256Tree,
   verifyOpenAiPluginReviewFreeze,
 } from "./check_openai_plugin_review_freeze.mjs";
@@ -60,7 +61,7 @@ test("submitted OpenAI V1 review baseline remains exact", () => {
   });
 });
 
-test("review exception keeps the submitted hash and pins the Workbench-only runtime", () => {
+test("review exceptions keep the submitted hash and pin authorized runtimes", () => {
   const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
   assert.deepEqual(freeze.authorizedRuntimeExceptions, [
     {
@@ -91,7 +92,56 @@ test("review exception keeps the submitted hash and pins the Workbench-only runt
           "b1f26f19e72a5bf698c88289b502ffab669c0a330356e1549049d38437c60869",
       },
     },
+    {
+      id: "2026-08-23-claude-web-start-remove-manual-fallback",
+      approvedAt: "2026-08-23",
+      approvedBy: "product-owner",
+      reason:
+        "Remove the redundant Claude-only clipboard and manual start-prompt fallback after the q-prefilled Web launch.",
+      scope:
+        "Within the explicitly query-gated Claude provider controls, require the click-time popup, " +
+        "navigate it only to the validated q-prefilled Claude Web URL, fail closed otherwise, and " +
+        "remove clipboard, raw-prompt, copy, Web-fallback and Desktop-fallback UI; preserve the " +
+        "default ChatGPT and submitted OpenAI launch behaviour.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-query-gated-claude-only-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "3834b8c813719e21dffb767b9e5fe60890845769e188b49a239da57f4577b9a4",
+        authorizedSha256:
+          "fbab3a4833b534059a8b9ad2c97a293cb670d848d92bd93caac25ed9d96787ad",
+      },
+      evidenceFile: {
+        path: "app/scripts/testClaudeV1StartUi.tsx",
+        sha256:
+          "f02ab916f7e501cb7b50eee477c5237c054caf36f90bee1c5cf1da075a82e8bf",
+      },
+    },
   ]);
+});
+
+test("review exception chains preserve every prior authorized SessionSetup hash", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  const latestByPath = resolveAuthorizedRuntimeExceptionChains(
+    freeze.protectedFiles,
+    freeze.authorizedRuntimeExceptions,
+  );
+  assert.equal(
+    latestByPath.get("app/src/components/SessionSetup.tsx")?.protectedFile.authorizedSha256,
+    "fbab3a4833b534059a8b9ad2c97a293cb670d848d92bd93caac25ed9d96787ad",
+  );
+
+  const broken = structuredClone(freeze.authorizedRuntimeExceptions);
+  broken[1].protectedFile.priorAuthorizedSha256 = "0".repeat(64);
+  assert.throws(
+    () => resolveAuthorizedRuntimeExceptionChains(freeze.protectedFiles, broken),
+    /exception chain is discontinuous/u,
+  );
 });
 
 test("protected tree digest changes for changed, added, or removed files", () => {

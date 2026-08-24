@@ -31,6 +31,10 @@ test("Claude v1 Web q launch and evidence contract reject weakened sources", () 
     resolve(repositoryRoot, "app/scripts/testClaudeV1StartUi.tsx"),
     "utf8",
   );
+  const sessionSetup = readFileSync(
+    resolve(repositoryRoot, "app/src/components/SessionSetup.tsx"),
+    "utf8",
+  );
   const reviewerTestPlan = readFileSync(
     resolve(repositoryRoot, "ai/claude/connector-v1/reviewer-test-plan.md"),
     "utf8",
@@ -40,7 +44,10 @@ test("Claude v1 Web q launch and evidence contract reject weakened sources", () 
     "utf8",
   );
 
-  assert.deepEqual(validateClaudeWebStartImplementation(adapter, uiTest), []);
+  assert.deepEqual(
+    validateClaudeWebStartImplementation(adapter, uiTest, sessionSetup),
+    [],
+  );
   assert.deepEqual(
     validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerAccess),
     [],
@@ -52,12 +59,14 @@ test("Claude v1 Web q launch and evidence contract reject weakened sources", () 
       "const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/chat'",
     ),
     uiTest,
+    sessionSetup,
   );
   assert.ok(wrongRouteErrors.some((error) => error.includes("pin exactly")));
 
   const duplicateQueryErrors = validateClaudeWebStartImplementation(
     adapter.replace("return keys.length === 1", "return keys.length >= 1"),
     uiTest,
+    sessionSetup,
   );
   assert.ok(
     duplicateQueryErrors.some((error) => error.includes("exactly one non-empty q")),
@@ -66,8 +75,103 @@ test("Claude v1 Web q launch and evidence contract reject weakened sources", () 
   const desktopRouteErrors = validateClaudeWebStartImplementation(
     adapter.replace("desktopUrl: ''", "desktopUrl: 'claude://claude.ai/new'"),
     uiTest,
+    sessionSetup,
   );
   assert.ok(desktopRouteErrors.some((error) => error.includes("Web-only")));
+
+  const unvalidatedUiErrors = validateClaudeWebStartImplementation(
+    adapter,
+    uiTest,
+    sessionSetup.replace(
+      "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
+      "const webUrl = result.webUrl",
+    ),
+  );
+  assert.ok(
+    unvalidatedUiErrors.some((error) => error.includes("validated q-prefilled")),
+  );
+
+  const bareChatFallbackErrors = validateClaudeWebStartImplementation(
+    adapter,
+    uiTest,
+    sessionSetup.replace(
+      "const webUrl = getSafeClaudeWebUrl(result.webUrl)\n      if (!webUrl) throw new Error('Invalid Claude Web launch URL')",
+      "const webUrl = getSafeClaudeWebUrl(result.webUrl) ?? 'https://claude.ai/new'",
+    ),
+  );
+  assert.ok(
+    bareChatFallbackErrors.some((error) => error.includes("bare Claude chat")),
+  );
+
+  const popupBypassErrors = validateClaudeWebStartImplementation(
+    adapter,
+    uiTest,
+    sessionSetup.replace(
+      "if (!claudeWindow) {\n      setClaudeActionState('failed')\n      return\n    }",
+      "if (!claudeWindow) return",
+    ),
+  );
+  assert.ok(
+    popupBypassErrors.some((error) => error.includes("click-time popup")),
+  );
+
+  for (const [name, weakenedSource] of [
+    [
+      "clipboard copy",
+      sessionSetup.replace(
+        "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
+        "await navigator.clipboard.writeText(result.prompt)\n      const webUrl = getSafeClaudeWebUrl(result.webUrl)",
+      ),
+    ],
+    [
+      "textarea copy surface",
+      sessionSetup.replace(
+        "{claudeActionState === 'failed' && (",
+        "<textarea readOnly value={result.prompt} />\n                            {claudeActionState === 'failed' && (",
+      ),
+    ],
+    [
+      "Desktop fallback",
+      sessionSetup.replace(
+        "const webUrl = getSafeClaudeWebUrl(result.webUrl)",
+        "const desktopUrl = result.desktopUrl\n      const webUrl = getSafeClaudeWebUrl(result.webUrl)",
+      ),
+    ],
+    [
+      "manual second launch",
+      sessionSetup.replace(
+        "claudeWindow.location.href = webUrl",
+        "window.open(webUrl, '_blank', 'noopener,noreferrer')",
+      ),
+    ],
+    [
+      "manual launch link",
+      sessionSetup.replace(
+        "{claudeActionState === 'failed' && (",
+        "<a href={manualClaudeUrl}>Open Claude manually</a>\n                            {claudeActionState === 'failed' && (",
+      ),
+    ],
+  ]) {
+    const errors = validateClaudeWebStartImplementation(
+      adapter,
+      uiTest,
+      weakenedSource,
+    );
+    assert.ok(
+      errors.some((error) => error.includes("must not expose")),
+      `${name} must be rejected`,
+    );
+  }
+
+  const chatGptOnlyCopy = sessionSetup.replace(
+    "const handleOpenChatGpt = async () => {",
+    "const handleOpenChatGpt = async () => {\n    await navigator.clipboard.writeText('ChatGPT-only')",
+  );
+  assert.deepEqual(
+    validateClaudeWebStartImplementation(adapter, uiTest, chatGptOnlyCopy),
+    [],
+    "Claude guards must not constrain the separate ChatGPT/OpenAI launch handler",
+  );
 
   const unredactedEvidenceErrors = validateClaudeWebStartReviewEvidence(
     reviewerTestPlan,
