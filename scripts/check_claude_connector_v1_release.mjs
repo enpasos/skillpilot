@@ -1741,7 +1741,7 @@ function verifyBaseline(repositoryRoot, baseline, check) {
     "Contract baseline tree inventory is incomplete.",
   );
   check(
-    JSON.stringify(treePaths) === JSON.stringify([...treePaths].sort((left, right) => left.localeCompare(right))),
+    JSON.stringify(treePaths) === JSON.stringify([...treePaths].sort(compareCodeUnits)),
     "Contract baseline tree paths must be sorted.",
   );
   for (const entry of baseline.trees ?? []) {
@@ -1766,7 +1766,7 @@ function verifyBaseline(repositoryRoot, baseline, check) {
     "Contract baseline file inventory is incomplete.",
   );
   check(
-    JSON.stringify(paths) === JSON.stringify([...paths].sort((left, right) => left.localeCompare(right))),
+    JSON.stringify(paths) === JSON.stringify([...paths].sort(compareCodeUnits)),
     "Contract baseline paths must be sorted.",
   );
   check(
@@ -2016,7 +2016,7 @@ export function sha256ContractTree(repositoryRoot, treePath) {
     // The index still lists tracked files deleted by this candidate. Their absence is part of
     // the new tree digest, so only bytes that exist in the working tree contribute records.
     .filter((path) => existsSync(safeRepositoryPath(repositoryRoot, path)))
-    .sort((left, right) => left.localeCompare(right));
+    .sort(compareCodeUnits);
 
   if (inventory.length === 0) {
     throw new Error(`Contract tree contains no repository files: ${treePath}`);
@@ -2050,9 +2050,13 @@ export function calculateCandidateContractSha256(
     .map((entry) => typeof entry === "string"
       ? entry
       : `${entry.kind}:${entry.path}\0${entry.sha256}\n`)
-    .sort((left, right) => left.localeCompare(right))
+    .sort(compareCodeUnits)
     .join("");
   return sha256(Buffer.from(records, "utf8"));
+}
+
+function compareCodeUnits(left, right) {
+  return left < right ? -1 : left > right ? 1 : 0;
 }
 
 const invokedPath = process.argv[1]
