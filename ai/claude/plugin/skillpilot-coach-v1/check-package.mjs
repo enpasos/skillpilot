@@ -24,10 +24,6 @@ const forbiddenDistributionClaimPatterns = [
     pattern: /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:is|will be)\s+(?:now\s+)?available\s+(?:on|in|for)\s+Claude Free\b/iu,
   },
   {
-    label: "native-mobile plugin support",
-    pattern: /\b(?:the\s+)?(?:public\s+)?(?:SkillPilot\s+)?plugin(?:\s+package)?\s+(?:claims|supports|provides|offers|includes)\b[^.\n]{0,80}\bnative[- ]mobile(?:[- ]plugin)? support\b/iu,
-  },
-  {
     label: "prohibition of same-server plugin and Directory coexistence",
     pattern: /\bPlugin and Directory(?:\s+(?:connector\s+)?installations?|\s+entries?)?\s+(?:must|can|may)\s+never\s+(?:coexist|be enabled together)\b/iu,
   },
@@ -37,6 +33,14 @@ const forbiddenDistributionClaimPatterns = [
   },
 ];
 const forbiddenPluginSurfaceClaims = [
+  {
+    label: "unqualified native-mobile plugin support",
+    surfacePattern: /\bnative[- ]mobile(?:[- ]plugin)?(?:\s+support)?\b/iu,
+  },
+  {
+    label: "unverified iOS plugin support",
+    surfacePattern: /\b(?:native\s+)?(?:Claude\s+)?(?:iOS|iPhone|iPad)(?:\s+Chat)?\b/iu,
+  },
   {
     label: "Claude Desktop Chat plugin support",
     surfacePattern: /\b(?:Claude\s+)?Desktop Chat\b/iu,
@@ -228,19 +232,20 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must allow same-server plugin and Directory coexistence while preventing redundant manual custom connections.",
   );
   check(
-    normalizedSetupText.includes("This observed pilot is the preferred complete test installation, but it is not proof of availability through Anthropic's official plugin distribution")
-      && normalizedSetupText.includes("Official plugin submission stays fail-closed until Anthropic provides explicit written or authenticated Console confirmation"),
-    "SETUP.md must distinguish the paid-Web direct-install pilot from confirmed official distribution and keep submission fail-closed.",
+    normalizedSetupText.includes("The package has been observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
+      && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
+    "SETUP.md must distinguish the Web-and-Android direct-install pilot from post-publication listing verification.",
   );
   check(
-    normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Web chat")
+    normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
       && normalizedSetupText.includes("does not claim Claude Desktop Chat or Cowork support"),
-    "SETUP.md must keep the v1 publication scope limited to eligible paid Claude Web chat.",
+    "SETUP.md must keep the v1 publication scope limited to eligible paid Claude Web and verified native Android chat.",
   );
   check(
     normalizedSetupText.includes("The plugin is not available on Claude Free")
-      && normalizedSetupText.includes("does not claim native mobile plugin support"),
-    "SETUP.md must reject Claude Free and native-mobile plugin claims.",
+      && normalizedSetupText.includes("does not claim iOS plugin support")
+      && normalizedSetupText.includes("installation from inside the Android app"),
+    "SETUP.md must reject Claude Free, iOS and Android in-app installation claims.",
   );
   check(
     normalizedSetupText.includes("The Connectors Directory remains a separate connector-only distribution route with its own Team/Enterprise submission gate and is not a prerequisite for plugin submission")
@@ -254,14 +259,15 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must attribute all tools and interactive UIs to the connector without duplicating them in the plugin.",
   );
   check(
-    normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Web chat")
+    normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
       && normalizedReadmeText.includes("A direct-install pilot has demonstrated the package in paid Claude Web chat")
-      && normalizedReadmeText.includes("Official submission therefore remains blocked until Anthropic explicitly confirms")
+      && normalizedReadmeText.includes("The Product Owner has also used the account-level direct installation with a Claude Pro account in the native Claude app on Android")
+      && normalizedReadmeText.includes("Public-listing reach on Android is a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")
       && normalizedReadmeText.includes("https://skillpilot.com/legal")
       && normalizedReadmeText.includes("support@skillpilot.com"),
-    "README.md must state the Web-only direct-install pilot, official-distribution blocker, first-party identity boundary, setup route and public support links.",
+    "README.md must state the Web-and-Android direct-install boundary, post-publication listing verification, first-party identity boundary, setup route and public support links.",
   );
 
   return { errors, toolCount: expectedTools.length };

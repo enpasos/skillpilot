@@ -148,8 +148,8 @@ test("recorded gate evidence rejects another 40-character candidate revision", (
 
 for (const [gateId, evidenceId] of [
   [
-    "anthropic-paid-web-distribution-confirmation",
-    "anthropic-paid-web-distribution-confirmation-final-candidate",
+    "android-direct-install-real-client",
+    "android-direct-install-real-client-final-candidate",
   ],
   ["public-github-source-sanitization", "public-github-source-final-plugin-candidate"],
   ["anthropic-console-submitter-role", "anthropic-console-submitter-role-final-candidate"],
@@ -181,22 +181,22 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
   const fixture = createFixture(t);
   const gates = readJson(fixture, `${releasePath}/release-gates.json`);
   const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
-  const distributionGate = gates.gates.find(
-    ({ id }) => id === "anthropic-paid-web-distribution-confirmation",
+  const androidGate = gates.gates.find(
+    ({ id }) => id === "android-direct-install-real-client",
   );
-  const distributionEvidence = evidence.entries.find(
-    ({ id }) => id === "anthropic-paid-web-distribution-confirmation-final-candidate",
+  const androidEvidence = evidence.entries.find(
+    ({ id }) => id === "android-direct-install-real-client-final-candidate",
   );
   const sourceGate = gates.gates.find(({ id }) => id === "public-github-source-sanitization");
   const sourceEvidence = evidence.entries.find(
     ({ id }) => id === "public-github-source-final-plugin-candidate",
   );
-  assert.ok(distributionGate);
-  assert.ok(distributionEvidence);
+  assert.ok(androidGate);
+  assert.ok(androidEvidence);
   assert.ok(sourceGate);
   assert.ok(sourceEvidence);
-  distributionGate.evidence = ["public-github-source-final-plugin-candidate"];
-  distributionEvidence.kind = "approval-record";
+  androidGate.evidence = ["public-github-source-final-plugin-candidate"];
+  androidEvidence.kind = "approval-record";
   sourceGate.evidence = ["anthropic-console-submitter-role-final-candidate"];
   sourceEvidence.kind = "approval-record";
   writeJson(fixture, `${releasePath}/release-gates.json`, gates);
@@ -206,11 +206,11 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
 
   assert.match(
     result.errors.join("\n"),
-    /anthropic-paid-web-distribution-confirmation must use its dedicated evidence record/u,
+    /android-direct-install-real-client must use its dedicated evidence record/u,
   );
   assert.match(
     result.errors.join("\n"),
-    /must have kind anthropic-distribution-confirmation-record/u,
+    /must have kind android-real-client-acceptance-record/u,
   );
   assert.match(
     result.errors.join("\n"),
@@ -222,19 +222,19 @@ test("submission-prerequisite gates require their dedicated evidence kinds", (t)
   );
 });
 
-test("a successful direct-install Web pilot cannot replace official paid-Web distribution confirmation", (t) => {
+test("an observed Android pilot cannot replace approved exact-candidate Android acceptance", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
   const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
-  lifecycle.distributionQualification.paidWebChatOfficialDistribution = "unconfirmed";
-  lifecycle.distributionQualification.confirmationEvidenceId = null;
+  lifecycle.distributionQualification.androidDirectInstallAcceptance = "pending";
+  lifecycle.distributionQualification.androidDirectInstallEvidenceId = null;
   writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
 
   const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
 
   assert.match(
     result.errors.join("\n"),
-    /requires explicit lifecycle confirmation that official plugin distribution reaches eligible paid Claude Web chat/u,
+    /requires approved exact-candidate Claude Pro Android acceptance after account-level direct installation/u,
   );
 });
 
@@ -286,8 +286,25 @@ test("PUBLISHED requires approved submission and publication evidence for one fr
   approveLifecycleEvidence(
     fixture,
     "publicationEvidenceId",
-    "anthropic-plugin-publication-verification",
+    "anthropic-plugin-android-public-listing-verification",
   );
+
+  const evidence = readJson(fixture, `${releasePath}/evidence-manifest.json`);
+  const publication = evidence.entries.find(
+    ({ id }) => id === "anthropic-plugin-android-public-listing-verification",
+  );
+  assert.ok(publication);
+  publication.kind = "external-lifecycle-record";
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+
+  const wrongKind = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(
+    wrongKind.errors.join("\n"),
+    /PUBLISHED requires approved exact-candidate Android public-listing acceptance evidence/u,
+  );
+
+  publication.kind = "android-public-listing-acceptance-record";
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
   const published = verifyClaudePluginV1Release({
     repositoryRoot: fixture,
     expectedState: "PUBLISHED",
@@ -362,9 +379,11 @@ function promoteAllPluginGates(repository, lifecycleState) {
   lifecycle.releaseLine.status = lifecycleState === "PUBLISHED"
     ? "published"
     : "frozen_for_submission";
-  lifecycle.distributionQualification.paidWebChatOfficialDistribution = "confirmed";
-  lifecycle.distributionQualification.confirmationEvidenceId =
-    "anthropic-paid-web-distribution-confirmation-final-candidate";
+  lifecycle.distributionQualification.androidDirectInstallAcceptance = "approved";
+  lifecycle.distributionQualification.androidDirectInstallEvidenceId =
+    "android-direct-install-real-client-final-candidate";
+  lifecycle.distributionQualification.androidPublicListingVerification = "not_verified";
+  lifecycle.distributionQualification.androidPublicListingEvidenceId = null;
 
   for (const entry of evidence.entries.filter(({ gateIds }) => gateIds.length > 0)) {
     approve(entry, baseline);
@@ -384,6 +403,10 @@ function approveLifecycleEvidence(repository, field, evidenceId) {
   assert.ok(entry, `Missing lifecycle evidence fixture ${evidenceId}`);
   approve(entry, baseline);
   lifecycle.externalStateEvidence[field] = evidenceId;
+  if (field === "publicationEvidenceId") {
+    lifecycle.distributionQualification.androidPublicListingVerification = "verified";
+    lifecycle.distributionQualification.androidPublicListingEvidenceId = evidenceId;
+  }
   writeJson(repository, `${releasePath}/lifecycle.json`, lifecycle);
   writeJson(repository, `${releasePath}/evidence-manifest.json`, evidence);
 }

@@ -4,25 +4,25 @@
 
 SkillPilot has two deliberately separate Claude package routes:
 
-- **Current direct-install Web pilot:** install the supplied **SkillPilot Coach
-  v1** package in eligible paid Claude Web chat. It contains the coaching Skill
-  and one declaration for the same remote SkillPilot connector. This observed
-  pilot is the preferred complete test installation, but it is not proof of
-  availability through Anthropic's official plugin distribution.
+- **Current direct-install Web and Android pilot:** install the supplied
+  **SkillPilot Coach v1** package for an eligible paid Claude account. It
+  contains the coaching Skill and one declaration for the same remote
+  SkillPilot connector. The package has been observed in paid Claude Web chat
+  and, after account-level direct installation on Claude Pro, in the native
+  Claude app on Android. These observations are not proof of availability
+  through Anthropic's official plugin distribution.
 - **Separate connector-only installation:** use the published **SkillPilot**
   entry in the **Connectors Directory** only when a connector without the
   coaching Skill is deliberately required. The Connectors Directory remains a
   separate connector-only distribution route with its own Team/Enterprise
   submission gate and is not a prerequisite for plugin submission.
 
-As of 24 August 2026, Anthropic's public plugin documentation describes the
-Plugins Directory for Cowork and Claude Code, not paid Claude Web chat.
-SkillPilot Coach v1 does not broaden its support scope to either documented
-surface. Official plugin submission stays fail-closed until Anthropic provides
-explicit written or authenticated Console confirmation that its official
-distribution makes this package installable and usable in eligible paid Claude
-Web chat. Only after that confirmation may the public listing replace the
-direct-install pilot as the preferred installation route.
+SkillPilot Coach v1 does not broaden its support scope to Claude Desktop Chat,
+Cowork or public Claude Code. The observed Android use does not establish
+installation from inside Android or availability through a future public
+listing. Official submission requires exact-candidate Web and Android
+real-client acceptance. Fresh public-listing installation and Android use are
+verified after publication and do not form a circular pre-submission gate.
 
 A plugin and Directory installation that reference this exact remote MCP URL may coexist; Claude exposes one set of tools for the shared server.
 Do not add a second manual custom SkillPilot connector with the same URL when the plugin or Directory connection already supplies it.
@@ -31,11 +31,12 @@ All twelve MCP tools and both interactive MCP Apps come from the remote
 SkillPilot connector. The Skill provides coaching instructions only. Neither
 the Skill nor the plugin shell implements or duplicates the tools or UIs.
 
-## Current direct-install Web pilot
+## Current direct-install Web and Android pilot
 
 1. On an eligible paid Claude account, open **Plugins**, upload the approved
    **SkillPilot Coach v1** pilot package and enable it. Do not describe this
-   direct installation as an official Directory publication.
+   account-level direct installation as an official Directory publication or
+   as installation from inside Android.
 2. In the plugin's **Connectors** tab, connect the included **SkillPilot**
    connector. An existing published Directory connection may remain active
    when it references the same remote MCP URL; do not add another manual custom
@@ -57,6 +58,13 @@ the Skill nor the plugin shell implements or duplicates the tools or UIs.
    > Lade mit SkillPilot meinen aktuellen Lernkontext. Fasse mein aktives
    > Lernziel zusammen und schlage den nächsten sinnvollen Schritt vor.
 
+After the account-level installation, the Product Owner has successfully used
+the plugin with Claude Pro in the native Claude app on Android. Exact-candidate
+Android acceptance must still exercise the bundled connector, OAuth, intended
+SkillPilot learning flow and both interactive MCP Apps. The current SkillPilot
+handoff remains the reviewed `https://claude.ai/new` Web URL; Android support
+does not add or claim a native deep-link contract.
+
 Every SkillPilot tool call in that chat uses the generated `learningSessionId`.
 The Web handoff places it transiently in the exact `q` parameter of
 `https://claude.ai/new`; do not share that address, copy the value into other
@@ -71,11 +79,11 @@ transport; the separate 24-hour `spc_...` session authorizes learner access.
 
 ## Supported plugin surfaces
 
-The v1 publication scope is limited to eligible paid Claude Web chat. This v1
-package does not claim Claude Desktop Chat or Cowork support and
-contains no hooks or subagents. Each additional surface requires separate
-acceptance evidence and a later reviewed release before SkillPilot advertises
-it.
+The v1 publication scope is limited to eligible paid Claude Chat on the Web and
+the native Android app after account-level installation. This v1 package does
+not claim Claude Desktop Chat or Cowork support and contains no hooks or
+subagents. Each additional surface requires separate acceptance evidence and a
+later reviewed release before SkillPilot advertises it.
 
 The plugin uses the connector-owned tools and MCP Apps without copying their
 schemas, resources or UI bytes into the plugin package. The current SkillPilot
@@ -83,13 +91,14 @@ first-party launch handoff opens Claude Web. Availability of the
 plugin on a particular eligible paid plan, region or managed workspace is
 governed by Anthropic.
 
-The direct-install pilot demonstrates this product surface but does not settle
-whether Anthropic's official plugin distribution serves it. That external
-channel qualification is a separate required release gate.
+The direct-install pilot demonstrates the Web surface and a native Android use
+on Claude Pro, but it does not settle whether Anthropic's official plugin
+distribution serves either surface. Public-listing reach is verified after
+publication against the exact frozen candidate.
 
 The plugin is not available on Claude Free. SkillPilot's Claude integration
-targets adults aged 18 or older. This package does not claim native mobile
-plugin support or public Claude Code support.
+targets adults aged 18 or older. This package does not claim iOS plugin support,
+installation from inside the Android app or public Claude Code support.
 
 ## Independent Connectors Directory route
 
@@ -132,10 +141,9 @@ the Claude CLI installed:
 claude plugin validate ai/claude/plugin/skillpilot-coach-v1 --strict
 ```
 
-The local check does not replace that external release gate or a real Claude OAuth
-and tool-flow acceptance run. Neither validation nor a successful direct upload
-replaces explicit Anthropic confirmation that official distribution reaches
-eligible paid Claude Web chat.
+The local check does not replace the exact-candidate Claude OAuth and tool-flow
+acceptance runs on Web and Android. Neither validation nor a successful direct
+upload proves public-listing availability; that is verified after publication.
 
 Compatible package improvements increment the plugin's semantic version while the
 Claude v1 connector contract remains compatible. A breaking instruction package

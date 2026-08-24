@@ -104,12 +104,12 @@
       "approvedAt": null
     },
     {
-      "id": "anthropic-paid-web-distribution-confirmation-final-candidate",
-      "kind": "anthropic-distribution-confirmation-record",
+      "id": "android-direct-install-real-client-final-candidate",
+      "kind": "android-real-client-acceptance-record",
       "status": "reference_required",
-      "description": "Explicit written Anthropic or authenticated Anthropic Console confirmation that official plugin distribution makes this package installable and usable in eligible paid Claude Web chat, rather than only in the currently documented Cowork and Claude Code plugin surfaces.",
+      "description": "Exact-candidate acceptance proving account-level direct installation on Claude Pro, connector OAuth, and the intended SkillPilot learning flow in the native Claude Android app. This does not prove installation from Android, public-listing reach or iOS support.",
       "gateIds": [
-        "anthropic-paid-web-distribution-confirmation"
+        "android-direct-install-real-client"
       ],
       "lifecycleStates": [],
       "candidateContractSha256": "37ec15f57f43a2154bb0609a567fc0ccb611a830e7e60a585e47bb10404dd91e",
@@ -203,7 +203,7 @@
       "id": "anthropic-plugin-submission-metadata-final-candidate",
       "kind": "submission-metadata-approval",
       "status": "reference_required",
-      "description": "Approved public plugin-console name, description, surfaces, legal URLs and candidate archive metadata.",
+      "description": "Approved public plugin-console name, description, paid Web and verified Android surfaces, legal URLs and candidate archive metadata.",
       "gateIds": [
         "anthropic-plugin-submission-metadata"
       ],
@@ -264,10 +264,10 @@
       "approvedAt": null
     },
     {
-      "id": "anthropic-plugin-publication-verification",
-      "kind": "external-lifecycle-record",
+      "id": "anthropic-plugin-android-public-listing-verification",
+      "kind": "android-public-listing-acceptance-record",
       "status": "reference_required",
-      "description": "Public listing or installation verification proving publication of this exact frozen plugin candidate.",
+      "description": "Fresh installation from the actual public listing, not a retained direct installation, plus successful native Android end-to-end use of this exact frozen plugin candidate.",
       "gateIds": [],
       "lifecycleStates": [
         "PUBLISHED"
