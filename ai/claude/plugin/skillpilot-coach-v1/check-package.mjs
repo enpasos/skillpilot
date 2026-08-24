@@ -102,10 +102,14 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SKILL.md must require the first-party learningSessionId on every SkillPilot tool call.",
   );
   check(
-    publishedText.includes("https://skillpilot.com/?coach=claude")
+    publishedText.includes("https://skillpilot.com/")
       && publishedText.includes("spc_")
       && /exact(?:ly|e) 24(?:-hour| hours| Stunden)/iu.test(publishedText),
     "Package must document the exact 24-hour first-party spc_ start flow.",
+  );
+  check(
+    !publishedText.includes("?coach=claude"),
+    "Package must use the standard SkillPilot start and must not restore the retired Claude query gate.",
   );
   check(
     !/encrypted\s+\.skillpilot|\.skillpilot\s+(?:ID[- ]?)?file|ID[- ]file|ID-Datei/iu.test(publishedText),

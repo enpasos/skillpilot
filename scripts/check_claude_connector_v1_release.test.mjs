@@ -208,7 +208,7 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
   ));
   assert.equal(
     listing.learnerSession.startUrl,
-    "https://skillpilot.com/?coach=claude",
+    "https://skillpilot.com/",
   );
 
   const vhost = readFileSync(
@@ -237,7 +237,7 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
     ),
   );
   assert.equal(result.toolCount, 12);
-  assert.equal(result.requiredGateCount, 22);
+  assert.equal(result.requiredGateCount, 23);
   assert.equal(result.blockers.length, result.requiredPendingCount);
 });
 

@@ -25,7 +25,7 @@ const expectedBaseUrl = "https://mcp-claude-v1.skillpilot.com";
 const expectedDocumentationUrl =
   "https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/";
 const expectedPrivacyUrl = `${expectedBaseUrl}/privacy`;
-const expectedLearnerStartUrl = "https://skillpilot.com/?coach=claude";
+const expectedLearnerStartUrl = "https://skillpilot.com/";
 const expectedTools = [
   "get_skillpilot_coach_context",
   "render_skillpilot_goal_visualization",
@@ -62,13 +62,13 @@ const expectedRequiredGates = [
   "rollback-drill",
   "listing-and-permanent-slug-approval",
   "icon-rights-and-portal-asset",
+  "mcp-app-carousel",
   "team-enterprise-directory-access",
   "portal-compliance-acknowledgements",
 ];
 
 const expectedOptionalGates = [
   "claude-code-client",
-  "mcp-app-carousel",
   "allowed-link-uris",
 ];
 
@@ -969,12 +969,12 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   );
   check(
     unifiedWebStartTest.includes(
-      "assert.equal(isClaudeV1WebStartRequested('?coach=claude'), true)",
+      "the shared standard start must not depend on a hidden provider query",
     )
       && unifiedWebStartTest.includes(
         "the retired standalone Claude URL must not remain in the application router",
       ),
-    "Claude Web-start tests must pin the shared provider-selected root and retired-route absence.",
+    "Claude Web-start tests must pin the shared standard root and retired-route absence.",
   );
 
   for (const fragment of [
@@ -1339,7 +1339,7 @@ function uniqueSourceRegion(source, startMarker, endMarker) {
 function uniqueClaudeUiRegion(source) {
   const region = uniqueSourceRegion(
     source,
-    "{CLAUDE_COACH_BETA_ENABLED && (",
+    "data-testid=\"claude-v1-start-options\"",
     "{chatLaunchIssue !== 'none' && (",
   );
   if (region === null) return null;

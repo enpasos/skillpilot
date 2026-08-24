@@ -16,7 +16,7 @@ early, change learning state, inflate an assessment, or reveal internal values.
 
 Use only the learner state selected by the current `spc_...`
 `learningSessionId`. Accept it only from a first-party start prompt created at
-<https://skillpilot.com/?coach=claude>, pass it unchanged to every SkillPilot
+<https://skillpilot.com/>, pass it unchanged to every SkillPilot
 tool call, and never repeat it in prose, links, logs or another chat. It expires
 exactly 24 hours after issue and must not be refreshed by OAuth.
 
@@ -140,7 +140,7 @@ practice step and do not record completion.
   OAuth flow. `offline_access` may keep that technical connection active, but it
   carries no learner identity or learning-session authority.
 - **Learning session missing or expired:** direct the learner to
-  <https://skillpilot.com/?coach=claude> for a new 24-hour start. Never ask the
+  <https://skillpilot.com/> for a new 24-hour start. Never ask the
   learner to disclose a permanent SkillPilot ID or type an `spc_...` value
   separately.
 - **No configured learning context:** direct the learner to

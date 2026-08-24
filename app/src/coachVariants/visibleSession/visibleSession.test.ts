@@ -12,7 +12,6 @@ import { buildVisibleSessionStartUrl } from './startUrl'
 import { getVisibleSessionLaunchCopy } from './copy'
 import { buildVisibleSessionVerifiedRecallInstruction } from './verifiedRecallPrompt'
 import { resolveCoachVariant } from '../versionSelector'
-import { CLAUDE_COACH_BETA_ENABLED } from '../../utils/claudeCoach'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -62,11 +61,6 @@ assertEqual(
 )
 
 const visibleVariant = resolveCoachVariant('de', {})
-assertEqual(
-  CLAUDE_COACH_BETA_ENABLED,
-  false,
-  'keeps the Claude beta hidden and unavailable in the learner coach UI',
-)
 assertEqual(
   visibleVariant.version,
   'visible-session',

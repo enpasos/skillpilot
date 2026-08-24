@@ -155,7 +155,8 @@ export const de = {
             }
         },
         banner: {
-            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account. Bitte nutze den normalen ChatGPT-Textchat."
+            text: "**SkillPilot ist kostenlos.** Für ChatGPT und Claude gelten die Konto-, Tarif- und Altersvoraussetzungen des jeweiligen Anbieters.",
+            linkLabel: "Zugänge vergleichen"
         },
         links: {
             faq: "FAQ",

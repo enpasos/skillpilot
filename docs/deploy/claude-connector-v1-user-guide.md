@@ -24,7 +24,7 @@ learning session.
 
 ## Start learning every time
 
-1. Open [Start learning](https://skillpilot.com/?coach=claude) at SkillPilot.
+1. Open [Start learning](https://skillpilot.com/) at SkillPilot.
    The link enters the shared SkillPilot web start.
 2. Visibly choose or load your SkillPilot ID there and confirm the curriculum
    and Personal Curriculum.
@@ -69,7 +69,7 @@ IDs, tool names and state versions out of ordinary learning responses.
 - **SkillPilot is not available:** Check that the plugin is enabled and its
   connector is connected.
 - **The session expired:** Open
-  [Start learning](https://skillpilot.com/?coach=claude) again. OAuth never
+  [Start learning](https://skillpilot.com/) again. OAuth never
   extends the 24-hour learner session.
 - **The wrong person or learning profile appears:** Stop using the chat and
   start a new session from the correct profile in SkillPilot.

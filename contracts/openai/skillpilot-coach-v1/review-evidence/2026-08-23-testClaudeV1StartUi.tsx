@@ -3,19 +3,19 @@ import { existsSync, readFileSync } from 'node:fs'
 
 import {
   buildClaudeWebPromptUrl,
+  CLAUDE_COACH_BETA_ENABLED,
   getSafeClaudeDesktopUrl,
   getSafeClaudeWebUrl,
+  isClaudeV1WebStartRequested,
   requestClaudeLaunch,
 } from '../src/utils/claudeCoach'
 
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
 const sessionSetupSource = readFileSync(new URL('../src/components/SessionSetup.tsx', import.meta.url), 'utf8')
 const claudeAdapterSource = readFileSync(new URL('../src/utils/claudeCoach.ts', import.meta.url), 'utf8')
-const germanLocaleSource = readFileSync(new URL('../src/locales/de.ts', import.meta.url), 'utf8')
-const englishLocaleSource = readFileSync(new URL('../src/locales/en.ts', import.meta.url), 'utf8')
 const claudeHandlerStart = sessionSetupSource.indexOf('const handleLaunchClaude = async () => {')
 const claudeHandlerEnd = sessionSetupSource.indexOf('const handleDisconnectClaude = async () => {', claudeHandlerStart)
-const claudeUiStart = sessionSetupSource.indexOf('data-testid="claude-v1-start-options"')
+const claudeUiStart = sessionSetupSource.indexOf('{CLAUDE_COACH_BETA_ENABLED && (')
 const learnerCockpitHref = 'href={personalCurriculumReady ? learnerCockpitHref : undefined}'
 const learnerCockpitHrefIndex = sessionSetupSource.indexOf(learnerCockpitHref, claudeUiStart)
 const claudeUiEnd = sessionSetupSource.lastIndexOf('<a', learnerCockpitHrefIndex)
@@ -36,12 +36,16 @@ assert.equal(
   'the retired standalone Claude start view must be absent',
 )
 
-assert.match(sessionSetupSource, /data-testid="claude-v1-start-options"/u)
-assert.doesNotMatch(
-  claudeAdapterSource,
-  /isClaudeV1WebStartRequested|URLSearchParams|window\.location\.search/u,
-  'the shared standard start must not depend on a hidden provider query',
-)
+assert.equal(CLAUDE_COACH_BETA_ENABLED, false, 'the provider-neutral root defaults to ChatGPT only')
+for (const search of ['', '?coach=chatgpt', '?coach=Claude', '?coach=unknown', '?other=claude']) {
+  assert.equal(isClaudeV1WebStartRequested(search), false, `Claude stays disabled for ${search || 'empty query'}`)
+}
+assert.equal(isClaudeV1WebStartRequested('?coach=claude'), true)
+assert.equal(isClaudeV1WebStartRequested('?other=1&coach=claude'), true)
+assert.equal(isClaudeV1WebStartRequested('?coach=claude&coach=chatgpt'), false)
+assert.equal(isClaudeV1WebStartRequested('?coach=claude&coach=claude'), false)
+
+assert.match(sessionSetupSource, /\{CLAUDE_COACH_BETA_ENABLED && \(/u)
 assert.match(sessionSetupSource, /<PersonalCurriculumEditor/u)
 assert.match(sessionSetupSource, /sanitizeSkillpilotId\(skillpilotId\)/u)
 assert.match(sessionSetupSource, /onClick=\{handleOpenChatGpt\}/u)
@@ -93,15 +97,8 @@ assert.doesNotMatch(
 assert(
   sessionSetupSource.indexOf('onClick={handleOpenChatGpt}')
     < sessionSetupSource.indexOf('onClick={handleLaunchClaude}'),
-  'the standard shared final step must present distinct ChatGPT and Claude decisions',
+  'the shared final step must present distinct ChatGPT and Claude decisions',
 )
-assert.match(sessionSetupSource, /to="\/faq\/coach-setup"/u)
-assert.match(germanLocaleSource, /\*\*SkillPilot ist kostenlos\.\*\*/u)
-assert.match(germanLocaleSource, /linkLabel: "Zugänge vergleichen"/u)
-assert.doesNotMatch(germanLocaleSource, /nur einen ChatGPT-Account/u)
-assert.match(englishLocaleSource, /\*\*SkillPilot is free\.\*\*/u)
-assert.match(englishLocaleSource, /linkLabel: "Compare access options"/u)
-assert.doesNotMatch(englishLocaleSource, /only need a ChatGPT account/u)
 
 assert.match(claudeAdapterSource, /requestClaudeV1Start\(\{/u)
 assert.match(claudeAdapterSource, /client: 'web-start'/u)

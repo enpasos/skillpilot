@@ -27,7 +27,7 @@ Provide only the following through the approved secret channel:
 
 Never provide the permanent SkillPilot ID, an encrypted ID file, an ID-file
 password or a pre-generated `spc_` value. The reviewer starts each learner
-session at `https://skillpilot.com/?coach=claude`; SkillPilot creates the opaque
+session at `https://skillpilot.com/`; SkillPilot creates the opaque
 `spc_` session and keeps permanent identity inside the first-party system.
 
 ## Reviewer profile checklist
@@ -56,7 +56,7 @@ The profile is usable only when it contains:
    connected. It must not contain, select, mint, renew or extend learner
    identity or a learner session.
 4. Add no custom headers and never enter a permanent SkillPilot ID.
-5. Open `https://skillpilot.com/?coach=claude`. In the shared SkillPilot web
+5. Open `https://skillpilot.com/`. In the shared SkillPilot web
    start, visibly select or load the prepared reviewer ID, confirm its
    curriculum and Personal Curriculum, and explicitly choose Claude.
 6. Confirm only that explicit Claude launch creates a fresh opaque value

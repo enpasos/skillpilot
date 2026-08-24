@@ -21,7 +21,7 @@ Release-Freigabe.
 > **Ablösung des alten Plans:** Die bis 21. August beschriebene verschlüsselte
 > ID-Datei-/Binding-Seite ist vollständig verworfen. Verbindlich ist nur die in
 > dieser Revision beschriebene Zielstruktur: lernendenfreies Connector-OAuth,
-> First-Party-Start unter `https://skillpilot.com/?coach=claude`, eine opake
+> First-Party-Start unter `https://skillpilot.com/`, eine opake
 > `spc_`-Lernsession für exakt 24 Stunden und die permanente ID ausschließlich
 > innerhalb SkillPilots. Widersprechende ältere Evidenz ist nicht wiederverwendbar.
 
@@ -61,7 +61,7 @@ Claude mit folgenden Eigenschaften:
   Remote-MCP-Server; beide MCP Apps kommen über den Connector, eine getrennte
   Installation bleibt nur Fallback ohne Funktionsvorteil;
 - jede Lernsitzung startet ausschließlich über
-  `https://skillpilot.com/?coach=claude` im gemeinsamen SkillPilot-Webstart;
+  `https://skillpilot.com/` im gemeinsamen SkillPilot-Webstart;
   die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
   Curriculum und Claude, bevor eine opake `spc_`-Kennung ausgestellt wird, die
   exakt 24 Stunden nach Ausstellung endet;
@@ -411,7 +411,7 @@ Resource gebunden.
 **Aufgaben:**
 
 1. Eine isolierte First-Party-Route
-   `https://skillpilot.com/?coach=claude` bereitstellen; bestehende
+   `https://skillpilot.com/` bereitstellen; bestehende
    ChatGPT-Startbytes und -Semantik nicht ändern.
 2. Der First-Party-POST
    `/api/ui/learners/{skillpilotId}/claude/v1/launch` wählt den Learner nur
@@ -821,7 +821,7 @@ wenn alle folgenden Punkte erfüllt sind:
 - öffentliche und interne Pfade, OAuth-Issuer und Resource-Identifier sind
   exakt versioniert und isoliert;
 - Claude.ai besteht OAuth mit PKCE S256;
-- jede Lernsitzung startet über `https://skillpilot.com/?coach=claude` und
+- jede Lernsitzung startet über `https://skillpilot.com/` und
   erhält ausschließlich eine opake `spc_`-Kennung für exakt 24 Stunden;
 - alle zwölf Tools einschließlich des app-only Review-Tools verlangen dieselbe
   aktuelle `learningSessionId`;

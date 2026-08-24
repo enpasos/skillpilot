@@ -30,17 +30,6 @@ const CLAUDE_V1_CONNECTOR_URL = 'https://mcp-claude-v1.skillpilot.com/mcp'
 const CLAUDE_V1_READY_STORAGE_KEY = 'skillpilot_claude_v1_setup_opened'
 const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'
 
-export const isClaudeV1WebStartRequested = (
-  search = typeof window === 'undefined' ? '' : window.location.search,
-) => {
-  const requestedCoaches = new URLSearchParams(search).getAll('coach')
-  return requestedCoaches.length === 1 && requestedCoaches[0] === 'claude'
-}
-
-// The submitted ChatGPT root remains unchanged. Only an explicit provider
-// selection enables Claude inside the same shared setup flow.
-export const CLAUDE_COACH_BETA_ENABLED = isClaudeV1WebStartRequested()
-
 const requireSkillpilotId = (skillpilotId: string) => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)
   if (!sanitizedId) {

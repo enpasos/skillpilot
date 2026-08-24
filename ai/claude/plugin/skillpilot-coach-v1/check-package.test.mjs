@@ -32,6 +32,16 @@ test("rejects loss of the required first-party learning session", () => {
   });
 });
 
+test("rejects restoration of the retired Claude query-gated start", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => `${value}\nOpen https://skillpilot.com/?coach=claude to start.\n`);
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /retired Claude query gate/u,
+    );
+  });
+});
+
 test("rejects the retired encrypted ID-file flow", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => `${value}\nUpload the encrypted .skillpilot ID-file.\n`);

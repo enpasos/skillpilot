@@ -1,6 +1,6 @@
 # SkillPilot Coach v1.0.0: aktive OpenAI-Review-Sperre
 
-**Stand:** 17. August 2026
+**Stand:** 24. August 2026
 
 **Portalstatus:** `Review`
 
@@ -66,8 +66,9 @@ insbesondere:
   Callback, Scopes, PKCE, mTLS-Edge, Domain-Challenge und Fail-closed-Routen;
 - 24-Stunden-Lernsession, Identitäts-, Locale-, Zustands-, Mastery-,
   Navigation-, Memory-, Recall- und Prüfungssemantik;
-- der First-Party-Ablauf WebGUI-Konfiguration → **Lernen starten** → frische
-  vorbereitete Chatnachricht sowie alle dafür sichtbaren Texte und URLs;
+- der ChatGPT-spezifische First-Party-Ablauf WebGUI-Konfiguration → **Lernen
+  starten** → frische vorbereitete Chatnachricht sowie seine sichtbaren Texte
+  und URLs;
 - Portalwerte: Beschreibungen und Übersetzungen, Starter Prompt,
   Länderfreigabe, Tool-Begründungen, exakt fünf positive und drei negative
   Testfälle, Testzugang, Attestierungen und Domain-Verifikation;
@@ -126,7 +127,9 @@ Quickstart-Texte, Screenshots und reine Story-Darstellung dürfen aktualisiert
 werden. Sie dürfen aber nur den eingefrorenen Ablauf dokumentieren. Änderungen
 an `SessionSetup`, Coach-Launch, Plugin-Namen, Browsergrenze, Sessiondauer,
 Datenschutzversprechen oder Providerverhalten sind keine Quickstart-Arbeit und
-bleiben gesperrt.
+bleiben ohne eine exakte, hashgebundene Product-Owner-Ausnahme gesperrt. Die in
+Abschnitt 6.3 dokumentierte additive Auswahl eines unabhängigen Claude-v1-
+Coaches gibt keinen Bestandteil des eingereichten ChatGPT-V1-Vertrags frei.
 
 ## 5. Pflichtprüfung vor Änderung und Deployment
 
@@ -185,14 +188,14 @@ zusätzlich in `review-freeze.json` hinterlegt und werden vom Freeze-Checker
 gegen eine fest codierte Ausnahmeliste geprüft. Andere Änderungen an diesen
 Dateien bleiben fail-closed gesperrt.
 
-### 6.2 Eng begrenzte Ausnahme: Claude-Webstart ohne manuellen Fallback
+### 6.2 Historische zweite Ausnahme: Claude-Webstart ohne manuellen Fallback
 
 Der Product Owner hat am 23. August 2026 für das aktuelle
 Produktions-Webfrontend eine zweite, ausschließlich Claude-spezifische
-Runtime-Ausnahme freigegeben. Sie gilt nur, wenn die gemeinsame Startseite mit
-dem exakten Providerparameter `?coach=claude` geöffnet wurde. Der normale
-Root-Aufruf und der eingereichte ChatGPT-/OpenAI-Ablauf aktivieren diesen Zweig
-nicht.
+Runtime-Ausnahme freigegeben. Sie galt damals nur für den versteckt
+providerselektierten Claude-Zweig; der normale Root-Aufruf aktivierte ihn noch
+nicht. Diese historische Abgrenzung bleibt Teil der Hashkette, wurde aber am
+24. August 2026 durch die ausdrückliche Entscheidung in Abschnitt 6.3 ersetzt.
 
 Freigegeben ist ausschließlich:
 
@@ -221,10 +224,51 @@ nicht überschrieben:
    `fbab3a4833b534059a8b9ad2c97a293cb670d848d92bd93caac25ed9d96787ad`.
 
 Als zusätzliche Evidenz ist
-`app/scripts/testClaudeV1StartUi.tsx` mit SHA-256
+`contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-23-testClaudeV1StartUi.tsx`
+als unveränderlicher historischer Snapshot mit SHA-256
 `f02ab916f7e501cb7b50eee477c5237c054caf36f90bee1c5cf1da075a82e8bf`
 gepinnt. Der Freeze-Checker validiert sowohl die lückenlose Reihenfolge der
 Ausnahmen als auch ausschließlich den letzten autorisierten Runtime-Hash.
+
+### 6.3 Eng begrenzte Ausnahme: gemeinsame Standardauswahl ChatGPT oder Claude
+
+Der Product Owner hat am 24. August 2026 entschieden, dass SkillPilot genau
+einen normalen Webstart verwendet und die lernende Person dort bei jedem Start
+sichtbar zwischen ChatGPT und dem unabhängig isolierten Claude-v1-Connector
+wählt. Ein versteckter Providerparameter ist nicht mehr Teil des Produktwegs.
+
+Freigegeben ist ausschließlich:
+
+- auf dem normalen Root-Aufruf in Schritt 4 die getrennt beschrifteten
+  ChatGPT- und Claude-v1-Optionen gleichzeitig anzuzeigen;
+- den früheren versteckten Claude-Query-Gate aus dem Webadapter zu entfernen;
+- den ChatGPT-only-Kontohinweis der öffentlichen Startseite durch die korrekte
+  Aussage „SkillPilot ist kostenlos“ plus einen Link auf die lernendenseitige
+  Vergleichsmatrix `/faq/coach-setup` zu ersetzen;
+- die bereits vorhandenen Claude-v1-Setup- und Webstart-Handler aus dieser
+  sichtbaren Auswahl aufzurufen.
+
+Unverändert und weiterhin eingefroren bleiben insbesondere der ChatGPT-
+Startbutton und sein Handler, die vorbereitete ChatGPT-Nachricht, die
+24-Stunden-Sessionsemantik, das OpenAI-Paket, MCP/OAuth, Tools, Schemas,
+MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und Reviewartefakte. Daher ist
+weder ein Zurückziehen noch ein erneutes Einreichen des laufenden
+OpenAI-Portalreviews erforderlich.
+
+Die Hashkette von `SessionSetup.tsx` wird fortgesetzt, nicht neu begonnen:
+
+4. gemeinsame Standardauswahl:
+   `1919c46dfe9e1f70ecdf177f2dd48654400c9eb8debd47ddaf0576d9e4fdd61f`.
+
+Die aktuelle Regressionsevidenz
+`app/scripts/testClaudeV1StartUi.tsx` ist mit
+`60ac516f664da7a61c7ce2a53ad2736adc7ae7d67fb10391c549b073b331a5e4`
+gepinnt. Sie belegt die sichtbare Standardauswahl, die Abwesenheit eines
+versteckten Query-Gates, den providerneutralen Startseitenhinweis samt
+Vergleichslink und die getrennten Providerhandler. Zusätzlich ist der
+Claude-Webadapter `app/src/utils/claudeCoach.ts` mit
+`fc451b8780889e45fe7a848353e1415d52d4eb1b6a7f8ed35b266a4dd5d512f0`
+gepinnt.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
