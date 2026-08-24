@@ -62,6 +62,23 @@ test("READY_FOR_SUBMISSION is independent of Directory gates and needs approved 
   assert.deepEqual(result.blockers, []);
 });
 
+test("pre-submission states reject premature external lifecycle evidence", (t) => {
+  for (const state of ["PRE_SUBMISSION", "READY_FOR_SUBMISSION"]) {
+    const fixture = createFixture(t);
+    if (state === "READY_FOR_SUBMISSION") promoteAllPluginGates(fixture, state);
+    const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
+    lifecycle.externalStateEvidence.submissionEvidenceId =
+      "anthropic-plugin-submission-receipt";
+    writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+
+    const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+    assert.match(
+      result.errors.join("\n"),
+      new RegExp(`${state} must not record submission or publication evidence`, "u"),
+    );
+  }
+});
+
 test("Directory and Team or Enterprise gates cannot enter plugin readiness", (t) => {
   const fixture = createFixture(t);
   promoteAllPluginGates(fixture, "READY_FOR_SUBMISSION");
@@ -250,6 +267,19 @@ test("SUBMITTED requires an approved plugin-console receipt for the frozen candi
     "submissionEvidenceId",
     "anthropic-plugin-submission-receipt",
   );
+
+  const lifecycle = readJson(fixture, `${releasePath}/lifecycle.json`);
+  lifecycle.externalStateEvidence.publicationEvidenceId =
+    "anthropic-plugin-android-public-listing-verification";
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+  const prematurePublication = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(
+    prematurePublication.errors.join("\n"),
+    /SUBMITTED must not record publication evidence before publication occurs/u,
+  );
+  lifecycle.externalStateEvidence.publicationEvidenceId = null;
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+
   const withReceipt = verifyClaudePluginV1Release({
     repositoryRoot: fixture,
     expectedState: "SUBMITTED",
@@ -261,7 +291,35 @@ test("SUBMITTED requires an approved plugin-console receipt for the frozen candi
     ({ id }) => id === "anthropic-plugin-submission-receipt",
   );
   assert.ok(receipt);
+
+  receipt.kind = "approval-record";
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+  const wrongKind = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(
+    wrongKind.errors.join("\n"),
+    /submissionEvidenceId plugin evidence must have kind external-lifecycle-record/u,
+  );
+  receipt.kind = "external-lifecycle-record";
+
+  const alternateReceipt = {
+    ...receipt,
+    id: "alternate-submission-receipt",
+    externalEvidenceId: "test-evidence:alternate-submission-receipt",
+  };
+  evidence.entries.push(alternateReceipt);
+  lifecycle.externalStateEvidence.submissionEvidenceId = alternateReceipt.id;
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
+  writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
+  const wrongId = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(
+    wrongId.errors.join("\n"),
+    /SUBMITTED requires submissionEvidenceId to use anthropic-plugin-submission-receipt/u,
+  );
+  lifecycle.externalStateEvidence.submissionEvidenceId = receipt.id;
+  evidence.entries.pop();
+
   receipt.candidateRevision = "f".repeat(40);
+  writeJson(fixture, `${releasePath}/lifecycle.json`, lifecycle);
   writeJson(fixture, `${releasePath}/evidence-manifest.json`, evidence);
 
   const wrongRevision = verifyClaudePluginV1Release({ repositoryRoot: fixture });
