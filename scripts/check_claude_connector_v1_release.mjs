@@ -644,7 +644,11 @@ function verifyRepositoryEvidence(repositoryRoot, evidence, check) {
   }
 }
 
-export function validateClaudeWebStartImplementation(adapterSource, uiTestSource) {
+export function validateClaudeWebStartImplementation(
+  adapterSource,
+  uiTestSource,
+  sessionSetupSource,
+) {
   const errors = [];
   const check = (condition, message) => {
     if (!condition) errors.push(message);
@@ -690,6 +694,99 @@ export function validateClaudeWebStartImplementation(adapterSource, uiTestSource
       ),
     "Claude v1 start must remain Web-only with no Desktop route.",
   );
+
+  const activeLaunchSource = uniqueFunctionSource(
+    sessionSetupSource,
+    "const handleLaunchClaude = async () => {",
+  );
+  const activeClaudeUiSource = uniqueClaudeUiRegion(sessionSetupSource);
+  check(
+    activeLaunchSource !== null && activeClaudeUiSource !== null,
+    "Active Claude Web-start handler and UI must remain uniquely identifiable.",
+  );
+
+  if (activeLaunchSource !== null && activeClaudeUiSource !== null) {
+    const popupOpen = "const claudeWindow = window.open('', '_blank')";
+    const popupFailure = [
+      "if (!claudeWindow) {",
+      "setClaudeActionState('failed')",
+      "return",
+    ];
+    const launchRequest = "const result = await requestClaudeLaunch({";
+    const validatedUrl = "const webUrl = getSafeClaudeWebUrl(result.webUrl)";
+    const invalidUrlFailure =
+      "if (!webUrl) throw new Error('Invalid Claude Web launch URL')";
+    const validatedNavigation = "claudeWindow.location.href = webUrl";
+    const popupOpenIndex = activeLaunchSource.indexOf(popupOpen);
+    const launchRequestIndex = activeLaunchSource.indexOf(launchRequest);
+    const validatedUrlIndex = activeLaunchSource.indexOf(validatedUrl);
+    const invalidUrlFailureIndex = activeLaunchSource.indexOf(invalidUrlFailure);
+    const validatedNavigationIndex = activeLaunchSource.indexOf(validatedNavigation);
+    const firstAwaitIndex = activeLaunchSource.indexOf("await ");
+    const popupGuardPattern = /const claudeWindow = window\.open\('', '_blank'\)\s*if \(!claudeWindow\) \{\s*setClaudeActionState\('failed'\)\s*return\s*\}\s*try \{/u;
+    const installNavigationPattern = /if \(!installUrl\) throw new Error\('Invalid Claude connector install URL'\)\s*claudeWindow\.opener = null\s*claudeWindow\.location\.href = installUrl\s*setClaudeActionState\('install-opened'\)\s*return/u;
+    const webNavigationPattern = /const webUrl = getSafeClaudeWebUrl\(result\.webUrl\)\s*if \(!webUrl\) throw new Error\('Invalid Claude Web launch URL'\)\s*claudeWindow\.opener = null\s*claudeWindow\.location\.href = webUrl\s*setClaudeActionState\('launched'\)/u;
+    const closeOnFailurePattern = /\}\s*catch \{\s*claudeWindow\?\.close\(\)\s*setClaudeActionState\('failed'\)\s*\}\s*\}/u;
+    const navigationSinks = [
+      ...(activeLaunchSource.match(/\bwindow\.open\s*\(/gu) ?? []),
+      ...(activeLaunchSource.match(/\b[A-Za-z_$][\w$]*\.location(?:\.href)?\s*=/gu) ?? []),
+      ...(activeLaunchSource.match(/\b[A-Za-z_$][\w$]*\.location\.(?:assign|replace)\s*\(/gu) ?? []),
+    ];
+
+    check(
+      popupOpenIndex >= 0
+        && countOccurrences(activeLaunchSource, "window.open(") === 1
+        && popupFailure.every((fragment) => activeLaunchSource.includes(fragment))
+        && popupGuardPattern.test(activeLaunchSource)
+        && (firstAwaitIndex < 0 || popupOpenIndex < firstAwaitIndex),
+      "Active Claude Web start must fail closed when its click-time popup is blocked.",
+    );
+    check(
+      launchRequestIndex >= 0
+        && validatedUrlIndex > launchRequestIndex
+        && invalidUrlFailureIndex > validatedUrlIndex
+        && validatedNavigationIndex > invalidUrlFailureIndex,
+      "Active Claude UI start must navigate only with the validated q-prefilled Web URL.",
+    );
+    check(
+      navigationSinks.length === 3
+        && countOccurrences(activeLaunchSource, "claudeWindow.location.href = installUrl") === 1
+        && countOccurrences(activeLaunchSource, validatedNavigation) === 1
+        && countOccurrences(activeLaunchSource, "result.webUrl") === 1
+        && countOccurrences(activeLaunchSource, "claudeWindow.opener = null") === 2
+        && installNavigationPattern.test(activeLaunchSource)
+        && webNavigationPattern.test(activeLaunchSource)
+        && closeOnFailurePattern.test(activeLaunchSource),
+      "Active Claude Web start must keep its only navigation sinks terminal, opener-isolated and close-on-failure.",
+    );
+    check(
+      !activeLaunchSource.includes("https://claude.ai/new")
+        && !/(?:\?\?|\|\|)\s*['"]https:\/\/claude\.ai\/new['"]/u.test(
+          activeLaunchSource,
+        ),
+      "Active Claude UI start must not degrade an invalid q URL to a bare Claude chat.",
+    );
+
+    const activeClaudeSurface = `${activeLaunchSource}\n${activeClaudeUiSource}`;
+    const forbiddenActiveFallbacks = [
+      /navigator\.clipboard|clipboard\.writeText/iu,
+      /copyClaudePrompt|handleCopyClaudeFallback|claudePromptCopied/iu,
+      /claudeLaunchFallback|fallback-copied/iu,
+      /getSafeClaudeDesktopUrl|\.desktopUrl|claude:\/\//iu,
+      /<textarea\b|<Copy\b|claudeCopyPrompt/iu,
+      /claudeOpenWeb|claudeOpenApp|claudeFallbackHint|claudeClipboardFallbackHint/iu,
+      /window\.open\s*\(\s*webUrl/iu,
+      /href=\{[^}]*webUrl[^}]*\}/iu,
+      /result\s*(?:\.\s*prompt|\[\s*['"]prompt['"]\s*\])/iu,
+    ];
+    check(
+      !activeClaudeSurface.includes("https://claude.ai/new")
+        && countOccurrences(activeClaudeUiSource, "<a") === 1
+        && activeClaudeUiSource.includes("href={claudeInstallFallbackUrl}")
+        && forbiddenActiveFallbacks.every((pattern) => !pattern.test(activeClaudeSurface)),
+      "Active Claude UI start must not expose clipboard, textarea, copy, Desktop or manual launch fallbacks.",
+    );
+  }
 
   for (const fragment of [
     "assert.equal(promptUrl, `https://claude.ai/new?q=${encodeURIComponent(startPrompt)}`)",
@@ -791,6 +888,10 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
     repositoryRoot,
     "app/scripts/testClaudeV1StartUi.tsx",
   );
+  const sharedSessionSetup = readText(
+    repositoryRoot,
+    "app/src/components/SessionSetup.tsx",
+  );
   const sharedStartApp = readText(repositoryRoot, "app/src/App.tsx");
   const rootRoutePolicy = readText(
     repositoryRoot,
@@ -852,6 +953,7 @@ function verifyImplementation(repositoryRoot, retainedResourceIndex, check) {
   for (const error of validateClaudeWebStartImplementation(
     unifiedWebStartAdapter,
     unifiedWebStartTest,
+    sharedSessionSetup,
   )) {
     check(false, error);
   }
@@ -1220,6 +1322,111 @@ function readJson(repositoryRoot, path) {
     return JSON.parse(readText(repositoryRoot, path));
   } catch (error) {
     throw new Error(`Cannot parse ${path}: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
+function uniqueSourceRegion(source, startMarker, endMarker) {
+  if (typeof source !== "string") return null;
+  const start = source.indexOf(startMarker);
+  if (start < 0 || source.indexOf(startMarker, start + startMarker.length) >= 0) {
+    return null;
+  }
+  const end = source.indexOf(endMarker, start + startMarker.length);
+  if (end < 0 || source.indexOf(endMarker, end + endMarker.length) >= 0) return null;
+  return source.slice(start, end);
+}
+
+function uniqueClaudeUiRegion(source) {
+  const region = uniqueSourceRegion(
+    source,
+    "{CLAUDE_COACH_BETA_ENABLED && (",
+    "{chatLaunchIssue !== 'none' && (",
+  );
+  if (region === null) return null;
+  const cockpitHref = "href={personalCurriculumReady ? learnerCockpitHref : undefined}";
+  const cockpitHrefIndex = region.indexOf(cockpitHref);
+  if (
+    cockpitHrefIndex < 0
+    || region.indexOf(cockpitHref, cockpitHrefIndex + cockpitHref.length) >= 0
+  ) {
+    return null;
+  }
+  const cockpitAnchorIndex = region.lastIndexOf("<a", cockpitHrefIndex);
+  return cockpitAnchorIndex >= 0 ? region.slice(0, cockpitAnchorIndex) : null;
+}
+
+function uniqueFunctionSource(source, declaration) {
+  if (typeof source !== "string") return null;
+  const code = maskStringsAndComments(source);
+  const start = code.indexOf(declaration);
+  if (start < 0 || code.indexOf(declaration, start + declaration.length) >= 0) {
+    return null;
+  }
+  const openingBrace = code.indexOf("{", start);
+  if (openingBrace < 0) return null;
+  let depth = 0;
+  for (let index = openingBrace; index < code.length; index += 1) {
+    if (code[index] === "{") depth += 1;
+    if (code[index] === "}") depth -= 1;
+    if (depth === 0) return source.slice(start, index + 1);
+  }
+  return null;
+}
+
+function maskStringsAndComments(source) {
+  const masked = source.split("");
+  let state = "code";
+  for (let index = 0; index < source.length; index += 1) {
+    const char = source[index];
+    const next = source[index + 1];
+    if (state === "code") {
+      if (char === "/" && next === "/") {
+        masked[index] = masked[index + 1] = " ";
+        index += 1;
+        state = "line-comment";
+      } else if (char === "/" && next === "*") {
+        masked[index] = masked[index + 1] = " ";
+        index += 1;
+        state = "block-comment";
+      } else if (char === "'" || char === '"' || char === "`") {
+        masked[index] = " ";
+        state = char;
+      }
+    } else if (state === "line-comment") {
+      if (char === "\n") {
+        state = "code";
+      } else {
+        masked[index] = " ";
+      }
+    } else if (state === "block-comment") {
+      masked[index] = " ";
+      if (char === "*" && next === "/") {
+        masked[index + 1] = " ";
+        index += 1;
+        state = "code";
+      }
+    } else {
+      masked[index] = " ";
+      if (char === "\\") {
+        if (index + 1 < source.length) masked[index + 1] = " ";
+        index += 1;
+      } else if (char === state) {
+        state = "code";
+      }
+    }
+  }
+  return masked.join("");
+}
+
+function countOccurrences(source, fragment) {
+  if (!fragment) return 0;
+  let count = 0;
+  let offset = 0;
+  while (true) {
+    const index = source.indexOf(fragment, offset);
+    if (index < 0) return count;
+    count += 1;
+    offset = index + fragment.length;
   }
 }
 

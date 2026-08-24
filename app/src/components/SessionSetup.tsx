@@ -8,23 +8,17 @@ import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, Copy, FileDown, FileUp, Database } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
-type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
+type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
 // Keep the review pilot discoverable only from the local Workbench for now.
 // Re-enable this deliberately when the learning-goal book is ready for public promotion.
 const PUBLIC_GOAL_BOOK_PROMOTION_ENABLED = false
-
-interface ClaudeLaunchFallback {
-  prompt: string
-  webUrl: string
-  desktopUrl: string | null
-}
 
 interface SessionSetupProps {
   role: Role | null
@@ -56,7 +50,6 @@ import {
 } from '../coachVariants/openAiMcp/providerEligibility'
 import {
   CLAUDE_COACH_BETA_ENABLED,
-  getSafeClaudeDesktopUrl,
   getSafeClaudeInstallUrl,
   getSafeClaudeWebUrl,
   requestClaudeConnectionStatus,
@@ -186,8 +179,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const chatStartInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
-  const [claudeLaunchFallback, setClaudeLaunchFallback] = useState<ClaudeLaunchFallback | null>(null)
-  const [claudePromptCopied, setClaudePromptCopied] = useState(false)
   const claudeActionLoading = claudeActionState === 'connecting'
     || claudeActionState === 'launching'
     || claudeActionState === 'disconnecting'
@@ -361,8 +352,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setChatStartLoading(false)
     setClaudeActionState('idle')
     setClaudeInstallFallbackUrl(null)
-    setClaudeLaunchFallback(null)
-    setClaudePromptCopied(false)
     setSkillpilotIdFileStatus('idle')
     setSkillpilotIdFileDialogMode(null)
     setSkillpilotIdFileDialogBusy(false)
@@ -878,8 +867,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const connectWindow = window.open('', '_blank')
     setClaudeActionState('connecting')
     setClaudeInstallFallbackUrl(null)
-    setClaudeLaunchFallback(null)
-    setClaudePromptCopied(false)
     try {
       const result = await requestClaudeConnectStart({
         skillpilotId: context.effectiveId,
@@ -913,25 +900,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
-  const copyClaudePrompt = async (prompt: string) => {
-    if (!navigator.clipboard?.writeText) return false
-    try {
-      await navigator.clipboard.writeText(prompt)
-      return true
-    } catch {
-      return false
-    }
-  }
-
   const handleLaunchClaude = async () => {
     const context = getClaudeStartContext()
     if (!context) return
 
-    const claudeWindow = window.open('', '_blank')
     setClaudeActionState('launching')
     setClaudeInstallFallbackUrl(null)
-    setClaudeLaunchFallback(null)
-    setClaudePromptCopied(false)
+    const claudeWindow = window.open('', '_blank')
+    if (!claudeWindow) {
+      setClaudeActionState('failed')
+      return
+    }
     try {
       const status = await requestClaudeConnectionStatus(context.effectiveId)
       if (!status.connected) {
@@ -943,14 +922,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         })
         const installUrl = getSafeClaudeInstallUrl(connection.installUrl)
         if (!installUrl) throw new Error('Invalid Claude connector install URL')
-        if (claudeWindow) {
-          claudeWindow.opener = null
-          claudeWindow.location.href = installUrl
-          setClaudeActionState('install-opened')
-        } else {
-          setClaudeInstallFallbackUrl(installUrl)
-          setClaudeActionState('fallback')
-        }
+        claudeWindow.opener = null
+        claudeWindow.location.href = installUrl
+        setClaudeActionState('install-opened')
         return
       }
 
@@ -960,26 +934,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         selectedCurriculum: context.normalizedLandscapeId,
         client: 'web-start',
       })
-      const webUrl = getSafeClaudeWebUrl(result.webUrl) ?? 'https://claude.ai/new'
-      const desktopUrl = getSafeClaudeDesktopUrl(result.desktopUrl)
-      setClaudeLaunchFallback({ prompt: result.prompt, webUrl, desktopUrl })
-      const promptCopied = await copyClaudePrompt(result.prompt)
-      setClaudePromptCopied(promptCopied)
+      const webUrl = getSafeClaudeWebUrl(result.webUrl)
+      if (!webUrl) throw new Error('Invalid Claude Web launch URL')
 
-      if (claudeWindow) {
-        claudeWindow.opener = null
-        claudeWindow.location.href = webUrl
-        setClaudeActionState('launched')
-        return
-      }
-
-      const openedWindow = window.open(webUrl, '_blank', 'noopener,noreferrer')
-      if (openedWindow) {
-        setClaudeActionState('launched')
-        return
-      }
-
-      setClaudeActionState(promptCopied ? 'fallback-copied' : 'fallback')
+      claudeWindow.opener = null
+      claudeWindow.location.href = webUrl
+      setClaudeActionState('launched')
     } catch {
       claudeWindow?.close()
       setClaudeActionState('failed')
@@ -991,22 +951,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!effectiveId) return
     setClaudeActionState('disconnecting')
     setClaudeInstallFallbackUrl(null)
-    setClaudeLaunchFallback(null)
-    setClaudePromptCopied(false)
     try {
       await requestClaudeDisconnect(effectiveId)
       setClaudeActionState('disconnected')
     } catch {
       setClaudeActionState('failed')
     }
-  }
-
-  const handleCopyClaudeFallback = async () => {
-    if (!claudeLaunchFallback) return
-    const launchWindowWasOpened = claudeActionState === 'launched'
-    const copied = await copyClaudePrompt(claudeLaunchFallback.prompt)
-    setClaudePromptCopied(copied)
-    setClaudeActionState(launchWindowWasOpened ? 'launched' : copied ? 'fallback-copied' : 'fallback')
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -1636,9 +1586,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             )}
                             {claudeActionState === 'launched' && (
                               <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
-                                {claudePromptCopied
-                                  ? t.startPage.login.claudeLaunched
-                                  : t.startPage.login.claudeLaunchedCopyFailed}
+                                {t.startPage.login.claudeLaunched}
                               </p>
                             )}
                             {claudeActionState === 'disconnected' && (
@@ -1656,59 +1604,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                                 {t.startPage.login.claudeInstallFallback}
                                 <ExternalLink size={12} />
                               </a>
-                            )}
-                            {claudeLaunchFallback && (
-                              claudeActionState === 'fallback'
-                              || claudeActionState === 'fallback-copied'
-                              || (claudeActionState === 'launched' && !claudePromptCopied)
-                            ) && (
-                              <div className="space-y-2 rounded-lg border border-violet-200 bg-white/80 p-3 dark:border-violet-800 dark:bg-slate-950/60">
-                                <p className="text-xs leading-relaxed text-text-secondary">
-                                  {claudeActionState === 'launched'
-                                    ? t.startPage.login.claudeClipboardFallbackHint
-                                    : t.startPage.login.claudeFallbackHint}
-                                </p>
-                                <textarea
-                                  readOnly
-                                  value={claudeLaunchFallback.prompt}
-                                  onFocus={event => event.currentTarget.select()}
-                                  aria-label={t.startPage.login.claudeCopyPrompt}
-                                  className="min-h-20 w-full resize-y rounded-lg border border-border-color bg-slate-50 p-2 text-xs text-text-primary dark:bg-slate-900"
-                                />
-                                <div className="flex flex-wrap gap-2">
-                                  <button
-                                    type="button"
-                                    onClick={handleCopyClaudeFallback}
-                                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
-                                  >
-                                    <Copy size={13} />
-                                    {t.startPage.login.claudeCopyPrompt}
-                                  </button>
-                                  <a
-                                    href={claudeLaunchFallback.webUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
-                                  >
-                                    {t.startPage.login.claudeOpenWeb}
-                                    <ExternalLink size={12} />
-                                  </a>
-                                  {claudeLaunchFallback.desktopUrl && (
-                                    <a
-                                      href={claudeLaunchFallback.desktopUrl}
-                                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
-                                    >
-                                      {t.startPage.login.claudeOpenApp}
-                                      <ExternalLink size={12} />
-                                    </a>
-                                  )}
-                                </div>
-                                {claudeActionState === 'fallback-copied' && (
-                                  <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-                                    {t.startPage.login.claudePromptCopied}
-                                  </p>
-                                )}
-                              </div>
                             )}
                             {claudeActionState === 'failed' && (
                               <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">

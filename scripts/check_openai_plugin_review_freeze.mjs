@@ -47,7 +47,98 @@ const expectedAuthorizedRuntimeExceptions = [
         "b1f26f19e72a5bf698c88289b502ffab669c0a330356e1549049d38437c60869",
     },
   },
+  {
+    id: "2026-08-23-claude-web-start-remove-manual-fallback",
+    approvedAt: "2026-08-23",
+    approvedBy: "product-owner",
+    reason:
+      "Remove the redundant Claude-only clipboard and manual start-prompt fallback after the q-prefilled Web launch.",
+    scope:
+      "Within the explicitly query-gated Claude provider controls, require the click-time popup, " +
+      "navigate it only to the validated q-prefilled Claude Web URL, fail closed otherwise, and " +
+      "remove clipboard, raw-prompt, copy, Web-fallback and Desktop-fallback UI; preserve the " +
+      "default ChatGPT and submitted OpenAI launch behaviour.",
+    target: "current-production-web-frontend",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-query-gated-claude-only-no-submitted-openai-contract-or-review-flow-effect",
+    protectedFile: {
+      path: "app/src/components/SessionSetup.tsx",
+      submittedSha256:
+        "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+      priorAuthorizedSha256:
+        "3834b8c813719e21dffb767b9e5fe60890845769e188b49a239da57f4577b9a4",
+      authorizedSha256:
+        "fbab3a4833b534059a8b9ad2c97a293cb670d848d92bd93caac25ed9d96787ad",
+    },
+    evidenceFile: {
+      path: "app/scripts/testClaudeV1StartUi.tsx",
+      sha256:
+        "f02ab916f7e501cb7b50eee477c5237c054caf36f90bee1c5cf1da075a82e8bf",
+    },
+  },
 ];
+
+export function resolveAuthorizedRuntimeExceptionChains(
+  protectedFiles,
+  authorizedRuntimeExceptions,
+) {
+  assert.equal(Array.isArray(protectedFiles), true, "Protected files must be an array.");
+  assert.equal(
+    Array.isArray(authorizedRuntimeExceptions),
+    true,
+    "Authorized runtime exceptions must be an array.",
+  );
+  const protectedByPath = new Map(
+    protectedFiles.map((entry) => [entry.path, entry]),
+  );
+  const latestByPath = new Map();
+  const exceptionIds = new Set();
+
+  for (const exception of authorizedRuntimeExceptions) {
+    assert.equal(
+      exceptionIds.has(exception.id),
+      false,
+      `Duplicate authorized runtime exception id: ${exception.id}`,
+    );
+    exceptionIds.add(exception.id);
+
+    const protectedFile = exception.protectedFile;
+    const submittedFile = protectedByPath.get(protectedFile?.path);
+    assert.ok(
+      submittedFile,
+      `Authorized runtime exception targets an unprotected file: ${protectedFile?.path}`,
+    );
+    assert.equal(
+      protectedFile.submittedSha256,
+      submittedFile.sha256,
+      `Authorized runtime exception changed the submitted baseline: ${protectedFile.path}`,
+    );
+    assert.match(
+      protectedFile.authorizedSha256,
+      /^[0-9a-f]{64}$/u,
+      `Authorized runtime exception has an invalid digest: ${exception.id}`,
+    );
+
+    const priorException = latestByPath.get(protectedFile.path);
+    if (priorException) {
+      assert.equal(
+        protectedFile.priorAuthorizedSha256,
+        priorException.protectedFile.authorizedSha256,
+        `Authorized runtime exception chain is discontinuous: ${exception.id}`,
+      );
+    } else {
+      assert.equal(
+        Object.hasOwn(protectedFile, "priorAuthorizedSha256"),
+        false,
+        `First authorized runtime exception must start at the submitted baseline: ${exception.id}`,
+      );
+    }
+    latestByPath.set(protectedFile.path, exception);
+  }
+
+  return latestByPath;
+}
 
 export function loadOpenAiPluginReviewFreeze(
   repositoryRoot = defaultRepositoryRoot,
@@ -118,11 +209,35 @@ export function verifyOpenAiPluginReviewFreeze({
   assert.equal(Array.isArray(freeze.protectedTrees), true);
   assert.equal(Array.isArray(freeze.protectedFiles), true);
 
+  const latestAuthorizedExceptionByPath = resolveAuthorizedRuntimeExceptionChains(
+    freeze.protectedFiles,
+    expectedAuthorizedRuntimeExceptions,
+  );
+
   for (const exception of expectedAuthorizedRuntimeExceptions) {
-    assertFileSha256(
-      safeRepositoryPath(repositoryRoot, exception.additionalFile.path),
-      exception.additionalFile.authorizedSha256,
-      `Authorized review exception changed: ${exception.additionalFile.path}`,
+    let supplementalFileCount = 0;
+    const evidenceFile = exception.evidenceFile;
+    if (evidenceFile) {
+      supplementalFileCount += 1;
+      assertFileSha256(
+        safeRepositoryPath(repositoryRoot, evidenceFile.path),
+        evidenceFile.sha256,
+        `Authorized review evidence changed: ${evidenceFile.path}`,
+      );
+    }
+    const additionalFile = exception.additionalFile;
+    if (additionalFile) {
+      supplementalFileCount += 1;
+      assertFileSha256(
+        safeRepositoryPath(repositoryRoot, additionalFile.path),
+        additionalFile.authorizedSha256,
+        `Authorized review exception changed: ${additionalFile.path}`,
+      );
+    }
+    assert.equal(
+      supplementalFileCount > 0,
+      true,
+      `Authorized review exception lacks pinned supplemental evidence: ${exception.id}`,
     );
   }
 
@@ -199,9 +314,7 @@ export function verifyOpenAiPluginReviewFreeze({
   }
   for (const protectedFile of freeze.protectedFiles) {
     assert.match(protectedFile.sha256, /^[0-9a-f]{64}$/u);
-    const authorizedException = expectedAuthorizedRuntimeExceptions.find(
-      (entry) => entry.protectedFile.path === protectedFile.path,
-    );
+    const authorizedException = latestAuthorizedExceptionByPath.get(protectedFile.path);
     if (authorizedException) {
       assert.equal(
         protectedFile.sha256,

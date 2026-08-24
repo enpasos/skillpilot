@@ -185,6 +185,47 @@ zusätzlich in `review-freeze.json` hinterlegt und werden vom Freeze-Checker
 gegen eine fest codierte Ausnahmeliste geprüft. Andere Änderungen an diesen
 Dateien bleiben fail-closed gesperrt.
 
+### 6.2 Eng begrenzte Ausnahme: Claude-Webstart ohne manuellen Fallback
+
+Der Product Owner hat am 23. August 2026 für das aktuelle
+Produktions-Webfrontend eine zweite, ausschließlich Claude-spezifische
+Runtime-Ausnahme freigegeben. Sie gilt nur, wenn die gemeinsame Startseite mit
+dem exakten Providerparameter `?coach=claude` geöffnet wurde. Der normale
+Root-Aufruf und der eingereichte ChatGPT-/OpenAI-Ablauf aktivieren diesen Zweig
+nicht.
+
+Freigegeben ist ausschließlich:
+
+- das beim Klick synchron geöffnete Claude-Fenster nur mit der validierten,
+  `q`-vorausgefüllten Claude-Web-URL weiterzuleiten;
+- bei blockiertem Popup oder ungültiger URL fail-closed abzubrechen;
+- die redundante Clipboard-Kopie sowie den rohen Startprompt, Copy-, Web- und
+  Desktop-Fallback aus dem Claude-Zweig zu entfernen;
+- den fokussierten Regressionstest für genau diese Abgrenzung zu aktualisieren.
+
+Nicht freigegeben sind Änderungen am Root-/ChatGPT-Default, am OpenAI-Paket,
+MCP/OAuth, an Tools, Schemas, Reviewfällen, Portalwerten, Fixtures oder
+Reviewartefakten. Der Product Owner hat deshalb entschieden, dass der laufende
+OpenAI-Portalreview weder zurückgezogen noch neu eingereicht wird: Der
+eingereichte OpenAI-Vertrag und sein beobachtbarer Reviewablauf bleiben
+unverändert.
+
+Die Hashhistorie von `SessionSetup.tsx` bleibt ausdrücklich eine Kette und wird
+nicht überschrieben:
+
+1. eingereicht:
+   `081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506`;
+2. erste autorisierte Goalbook-Ausnahme:
+   `3834b8c813719e21dffb767b9e5fe60890845769e188b49a239da57f4577b9a4`;
+3. zweite autorisierte Claude-only-Ausnahme:
+   `fbab3a4833b534059a8b9ad2c97a293cb670d848d92bd93caac25ed9d96787ad`.
+
+Als zusätzliche Evidenz ist
+`app/scripts/testClaudeV1StartUi.tsx` mit SHA-256
+`f02ab916f7e501cb7b50eee477c5237c054caf36f90bee1c5cf1da075a82e8bf`
+gepinnt. Der Freeze-Checker validiert sowohl die lückenlose Reihenfolge der
+Ausnahmen als auch ausschließlich den letzten autorisierten Runtime-Hash.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

@@ -13,6 +13,17 @@ import {
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
 const sessionSetupSource = readFileSync(new URL('../src/components/SessionSetup.tsx', import.meta.url), 'utf8')
 const claudeAdapterSource = readFileSync(new URL('../src/utils/claudeCoach.ts', import.meta.url), 'utf8')
+const claudeHandlerStart = sessionSetupSource.indexOf('const handleLaunchClaude = async () => {')
+const claudeHandlerEnd = sessionSetupSource.indexOf('const handleDisconnectClaude = async () => {', claudeHandlerStart)
+const claudeUiStart = sessionSetupSource.indexOf('{CLAUDE_COACH_BETA_ENABLED && (')
+const learnerCockpitHref = 'href={personalCurriculumReady ? learnerCockpitHref : undefined}'
+const learnerCockpitHrefIndex = sessionSetupSource.indexOf(learnerCockpitHref, claudeUiStart)
+const claudeUiEnd = sessionSetupSource.lastIndexOf('<a', learnerCockpitHrefIndex)
+assert(claudeHandlerStart >= 0 && claudeHandlerEnd > claudeHandlerStart)
+assert(claudeUiStart >= 0 && claudeUiEnd > claudeUiStart)
+const activeClaudeHandlerSource = sessionSetupSource.slice(claudeHandlerStart, claudeHandlerEnd)
+const activeClaudeUiSource = sessionSetupSource.slice(claudeUiStart, claudeUiEnd)
+const activeClaudeStartSource = `${activeClaudeHandlerSource}\n${activeClaudeUiSource}`
 
 assert.doesNotMatch(
   appSource,
@@ -41,6 +52,48 @@ assert.match(sessionSetupSource, /onClick=\{handleOpenChatGpt\}/u)
 assert.match(sessionSetupSource, /onClick=\{handleLaunchClaude\}/u)
 assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| chatStartLoading\}/u)
 assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| claudeActionLoading\}/u)
+assert.match(
+  activeClaudeHandlerSource,
+  /const claudeWindow = window\.open\('', '_blank'\)[\s\S]*if \(!claudeWindow\) \{[\s\S]*setClaudeActionState\('failed'\)[\s\S]*return[\s\S]*\}/u,
+  'the Claude Web start must fail clearly when the click-time popup is blocked',
+)
+assert.match(
+  activeClaudeHandlerSource,
+  /const webUrl = getSafeClaudeWebUrl\(result\.webUrl\)[\s\S]*if \(!webUrl\) throw new Error\('Invalid Claude Web launch URL'\)[\s\S]*claudeWindow\.location\.href = webUrl/u,
+  'the prepared Claude window must receive only the validated q-prefilled Web URL',
+)
+const popupOpenIndex = activeClaudeHandlerSource.indexOf("const claudeWindow = window.open('', '_blank')")
+assert.doesNotMatch(
+  activeClaudeHandlerSource.slice(0, popupOpenIndex),
+  /\bawait\b/u,
+  'the Claude popup must be opened synchronously before the first await',
+)
+assert.deepEqual(
+  [...activeClaudeHandlerSource.matchAll(/claudeWindow\.location\.href\s*=\s*([A-Za-z]+)/gu)]
+    .map(match => match[1]),
+  ['installUrl', 'webUrl'],
+  'the Claude handler may navigate only to its validated install and q-prefilled Web URLs',
+)
+assert.equal(
+  [...activeClaudeHandlerSource.matchAll(/claudeWindow\.opener\s*=\s*null/gu)].length,
+  2,
+  'both allowed Claude navigations must detach the opener',
+)
+assert.match(
+  activeClaudeHandlerSource,
+  /claudeWindow\?\.close\(\)[\s\S]*setClaudeActionState\('failed'\)/u,
+  'a failed asynchronous Claude start must close the prepared blank window',
+)
+assert.doesNotMatch(
+  activeClaudeStartSource,
+  /navigator\.clipboard|copyClaudePrompt|handleCopyClaudeFallback|claudeLaunchFallback|claudePromptCopied|fallback-copied|result\s*(?:\.prompt|\[\s*['"]prompt['"]\s*\])|<textarea\b|claudeCopyPrompt|claudeOpenWeb|claudeOpenApp/u,
+  'the unified Claude Web start must not copy or expose a manual prompt fallback',
+)
+assert.doesNotMatch(
+  activeClaudeHandlerSource,
+  /getSafeClaudeWebUrl\(result\.webUrl\)\s*\?\?\s*['"]https:\/\/claude\.ai\/new['"]/u,
+  'an invalid q-prefilled launch URL must not degrade to an empty Claude chat',
+)
 assert(
   sessionSetupSource.indexOf('onClick={handleOpenChatGpt}')
     < sessionSetupSource.indexOf('onClick={handleLaunchClaude}'),
