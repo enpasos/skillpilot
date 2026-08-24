@@ -135,6 +135,10 @@ jobs:
           node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
+      - name: Validate Claude plugin release dossier
+        run: |
+          node scripts/check_claude_plugin_v1_release.mjs
+          node --test scripts/check_claude_plugin_v1_release.test.mjs
       - name: Validate Claude Connector V1 release dossier
         run: |
           node scripts/check_claude_connector_v1_release.mjs
