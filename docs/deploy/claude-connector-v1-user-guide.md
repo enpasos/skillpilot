@@ -6,7 +6,7 @@ file nor its password.
 
 > **Status:** Claude v1 is still being prepared for public release. After
 > approval, the public SkillPilot plugin is the preferred complete installation
-> for eligible paid Claude Web chat, Desktop Chat and Cowork users.
+> for eligible paid Claude Web chat users.
 
 ## Install once
 
@@ -19,12 +19,12 @@ file nor its password.
    manual custom connector for that URL.
 
 The plugin provides the reusable SkillPilot coaching Skill and declares the same
-remote connector on paid Claude Web chat, Desktop Chat and Cowork. The remote
+remote connector in paid Claude Web chat. The remote
 connector supplies all twelve SkillPilot tools and both interactive UIs for
 learning-goal images and flashcard practice. SkillPilot Coach v1 contains no
-hooks or subagents. Future hooks or subagents would be Cowork-only unless
-Anthropic supports them elsewhere and SkillPilot validates those surfaces
-separately.
+hooks or subagents and makes no claim of Desktop Chat or Cowork plugin support.
+Additional surfaces require separate acceptance evidence and a later reviewed
+release.
 
 The Connectors Directory remains a separate connector-only route with its own
 Team/Enterprise publisher gate. It is not a prerequisite for plugin submission

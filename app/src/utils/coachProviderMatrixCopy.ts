@@ -128,13 +128,13 @@ const germanVariants: CoachMatrixVariant[] = [
     id: 'claude-pro-max',
     provider: 'Claude',
     plan: 'Pro / Max',
-    summary: 'Das vollständige Plugin ist für geeignete bezahlte Claude-Konten auf Web, Desktop und Cowork vorgesehen; SkillPilot ist für neue Lernende aber noch nicht freigegeben.',
+    summary: 'Das vollständige Plugin ist für geeignete bezahlte Claude-Konten im Web vorgesehen; SkillPilot ist für neue Lernende aber noch nicht freigegeben.',
   },
   {
     id: 'claude-team-enterprise',
     provider: 'Claude',
     plan: 'Team / Enterprise',
-    summary: 'Das vollständige Plugin ist auf Web, Desktop und Cowork vorgesehen; für ein Organisationskonto kann zusätzlich eine Freigabe nötig sein.',
+    summary: 'Das vollständige Plugin ist im Web vorgesehen; für ein Organisationskonto kann zusätzlich eine Freigabe nötig sein.',
   },
 ]
 
@@ -174,13 +174,13 @@ const englishVariants: CoachMatrixVariant[] = [
     id: 'claude-pro-max',
     provider: 'Claude',
     plan: 'Pro / Max',
-    summary: 'The complete plugin is intended for eligible paid Claude accounts on Web, Desktop, and Cowork, but SkillPilot has not yet been released for new learners.',
+    summary: 'The complete plugin is intended for eligible paid Claude accounts on the web, but SkillPilot has not yet been released for new learners.',
   },
   {
     id: 'claude-team-enterprise',
     provider: 'Claude',
     plan: 'Team / Enterprise',
-    summary: 'The complete plugin is intended for Web, Desktop, and Cowork; an organisation account may also require approval.',
+    summary: 'The complete plugin is intended for the web; an organisation account may also require approval.',
   },
 ]
 
@@ -327,8 +327,8 @@ const germanGroups: CoachMatrixGroup[] = [
           'chatgpt-business': cell('admin', 'Browser auf Computer, Tablet oder Smartphone nach Freigabe'),
           'chatgpt-enterprise-edu': cell('admin', 'Browser auf Computer, Tablet oder Smartphone nach Freigabe'),
           'claude-free': cell('unavailable', 'Kein vollständiger Plugin-Zugang', 'Der separate Custom Connector enthält keinen Coaching-Skill.'),
-          'claude-pro-max': cell('planned', 'Browser auf Computer, Tablet oder Smartphone nach Freigabe'),
-          'claude-team-enterprise': cell('admin', 'Browser auf Computer, Tablet oder Smartphone nach Freigabe'),
+          'claude-pro-max': cell('planned', 'Claude Web im Browser nach Freigabe'),
+          'claude-team-enterprise': cell('admin', 'Claude Web im Browser nach Freigabe'),
         },
       },
       {
@@ -507,8 +507,8 @@ const englishGroups: CoachMatrixGroup[] = [
           'chatgpt-business': cell('admin', 'A browser on a computer, tablet, or smartphone after approval'),
           'chatgpt-enterprise-edu': cell('admin', 'A browser on a computer, tablet, or smartphone after approval'),
           'claude-free': cell('unavailable', 'No complete plugin access', 'The separate Custom Connector does not include the coaching Skill.'),
-          'claude-pro-max': cell('planned', 'A browser on a computer, tablet, or smartphone after release'),
-          'claude-team-enterprise': cell('admin', 'A browser on a computer, tablet, or smartphone after approval'),
+          'claude-pro-max': cell('planned', 'Claude Web in a browser after release'),
+          'claude-team-enterprise': cell('admin', 'Claude Web in a browser after approval'),
         },
       },
       {

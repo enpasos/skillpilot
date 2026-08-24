@@ -92,28 +92,41 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects loss of the paid Web, Desktop and Cowork plugin contract", () => {
+test("rejects conflation of the direct-install Web pilot with official distribution", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /The public SkillPilot plugin is the preferred complete\s+installation for eligible paid Claude Web chat, Desktop Chat and Cowork\s+users/u,
-      "The public SkillPilot plugin is optional for a few unspecified Claude users",
+      /This observed\s+pilot is the preferred complete test installation, but it is not proof of\s+availability through Anthropic's official plugin distribution/u,
+      "The direct-install pilot proves official public distribution",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /preferred complete paid Web\/Desktop\/Cowork installation/u,
+      /distinguish the paid-Web direct-install pilot from confirmed official distribution/u,
     );
   });
 });
 
-test("rejects loss of the Skill surface and Cowork-only capability boundary", () => {
+test("rejects expansion beyond the Claude Web publication scope", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and\s+Cowork/u,
-      "The SkillPilot coaching Skill works only in Cowork",
+      /The v1 publication scope is limited to eligible paid Claude Web chat/u,
+      "SkillPilot Coach v1 is supported everywhere",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /Skill on paid Web\/Desktop\/Cowork/u,
+      /v1 publication scope limited to eligible paid Claude Web chat/u,
+    );
+  });
+});
+
+test("rejects loss of the public README release boundary", () => {
+  withPackageCopy((root) => {
+    mutate(root, "README.md", (value) => value.replace(
+      /Its product scope is limited to eligible paid\s+Claude Web chat/u,
+      "available on every Claude surface",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /README.md must state the Web-only direct-install pilot/u,
     );
   });
 });
@@ -160,6 +173,13 @@ test("rejects appended contradictory Claude distribution claims", () => {
   for (const [name, appendedClaim] of [
     ["Claude Free", "The SkillPilot plugin is available on Claude Free."],
     ["native mobile", "The SkillPilot plugin supports native-mobile plugin support."],
+    ["Claude Desktop Chat", "The SkillPilot plugin supports Claude Desktop Chat."],
+    ["Claude Cowork", "The SkillPilot plugin supports Claude Cowork."],
+    ["public Claude Code", "The SkillPilot plugin supports public Claude Code."],
+    ["historical Desktop/Cowork claim", "The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users."],
+    ["Skill subject", "The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and Cowork."],
+    ["Markdown line wrap", "The SkillPilot plugin supports\nClaude Desktop Chat."],
+    ["passive modal", "The SkillPilot plugin can be used in Claude Cowork."],
     ["coexistence prohibition", "Plugin and Directory installations must never coexist."],
     ["plugin tool ownership", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
   ]) {
@@ -170,6 +190,25 @@ test("rejects appended contradictory Claude distribution claims", () => {
           error.includes("forbidden contradictory Claude distribution claim")
         )),
         `${name} append-only contradiction must be rejected`,
+      );
+    });
+  }
+});
+
+test("allows explicit negative Claude surface boundaries", () => {
+  for (const claim of [
+    "The SkillPilot plugin provides no support for Claude Desktop Chat.",
+    "The SkillPilot plugin includes no Claude Cowork support.",
+    "The SkillPilot plugin supports neither Claude Desktop Chat nor Cowork.",
+    "The SkillPilot plugin supports paid Web chat only, not Claude Desktop Chat.",
+  ]) {
+    withPackageCopy((root) => {
+      mutate(root, "SETUP.md", (value) => `${value}\n${claim}\n`);
+      assert.ok(
+        !validateClaudePluginPackage(root).errors.some((error) => (
+          error.includes("forbidden contradictory Claude distribution claim")
+        )),
+        `explicit negative boundary must be allowed: ${claim}`,
       );
     });
   }

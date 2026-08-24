@@ -47,12 +47,12 @@ The following decisions are part of this concept:
   private normal flashcard practice.
 - Normal flashcard practice changes only the reviewed card's repetition
   schedule. It is not mastery and remains separate from strict Verified Recall.
-- The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users.
-  Its coaching Skill works on all three supported surfaces and declares the
-  same public remote connector.
-- Claude v1 contains no hooks or subagents. If they are added in a later
-  version, they are Cowork-only capabilities and require their own acceptance
-  evidence.
+- The public SkillPilot plugin is the preferred complete installation for eligible paid Claude Web chat users.
+  Its coaching Skill is scoped only to that publication surface and declares
+  the same public remote connector.
+- Claude v1 contains no hooks or subagents and does not claim Desktop Chat or
+  Cowork plugin support. Additional surfaces require their own acceptance
+  evidence and a later reviewed release.
 - The remote connector owns OAuth, MCP, all twelve tools and both MCP Apps UI
   resources. The plugin contributes the reusable coaching Skill and connector
   declaration; it does not duplicate the tool or UI implementation.
@@ -139,8 +139,8 @@ The commercial v1 decision is therefore:
 | Public tool surface | Exactly 12 tools | Exactly 12 provider-isolated tools with the same learning responsibilities |
 | Learning-goal visualization | Prominent MCP Apps image component | Dedicated content-addressed MCP App for the approved active-goal image |
 | Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
-| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Public plugin is the preferred complete installation for eligible paid Claude Web chat, Desktop Chat and Cowork users; the declared remote connector owns the provider-isolated tools and MCP Apps UI |
-| Reusable instructions | OpenAI plugin contains its reviewed Skill | Public Claude plugin contains a Claude-specific Skill for Web chat, Desktop Chat and Cowork and declares the same remote MCP server; v1 has no hooks or subagents |
+| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | Public plugin is the preferred complete installation for eligible paid Claude Web chat users; the declared remote connector owns the provider-isolated tools and MCP Apps UI |
+| Reusable instructions | OpenAI plugin contains its reviewed Skill | Public Claude plugin contains a Claude-specific Skill scoped to Web chat and declares the same remote MCP server; v1 claims neither Desktop Chat nor Cowork support and has no hooks or subagents |
 | Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | The same first-party web start visibly selects the SkillPilot ID, curriculum, Personal Curriculum and provider; choosing Claude creates a fresh opaque `spc_` session valid for exactly 24 hours, while the permanent ID never leaves SkillPilot |
 | Minimum age for this integration | SkillPilot launch self-confirmation: at least 13, any higher local limit, and guardian permission under 18 | Claude account holder: 18+ |
 | SkillPilot price | EUR 0 additional; eligible OpenAI account/workspace is external | EUR 0 additional; eligible Claude account/workspace is external |
@@ -783,12 +783,12 @@ the production endpoint and reviewer state already exist and have been tested.
 ### 11.1 Connector versus plugin
 
 The public SkillPilot plugin is the preferred complete installation for
-eligible paid Claude Web chat, Desktop Chat and Cowork users. The package under
+eligible paid Claude Web chat users. The package under
 `ai/claude/plugin/skillpilot-coach-v1/` supplies the reusable Claude-specific
-coaching Skill and declares the same public remote MCP server on all three
-surfaces. Claude v1 has no hooks or subagents; any later hooks or subagents are
-Cowork-only and require a separately versioned and accepted change. Native
-mobile plugin support is not part of this claim.
+coaching Skill and declares the same public remote MCP server on that surface.
+Claude v1 has no hooks or subagents and claims neither Desktop Chat nor Cowork
+plugin support. Each additional surface requires a separately versioned and
+accepted change. Native mobile plugin support is not part of this claim.
 
 The remote connector remains the single owner of OAuth, MCP, all twelve tools
 and both MCP Apps UIs. The plugin must not copy those implementations. A plugin and Directory installation that reference the same remote MCP URL may coexist; Claude exposes one tool set for the shared server. An additional manually configured Custom Connector for that same URL is unnecessary and should be avoided.
@@ -896,11 +896,11 @@ Until that decision, dormant code is safer than an unauthorized cleanup.
   without affecting another learner.
 
 The public plugin has an independent acceptance lane for eligible paid Claude
-Web chat, Desktop Chat and Cowork users. Local and official package validation,
-fresh installation, OAuth, First-Party start, twelve-tool and two-MCP-App tests
-must pass on each claimed surface. The coaching Skill must work on all three;
-v1 must expose no hooks or subagents. These plugin results do not replace,
-weaken or block the independent connector-only Directory gate above.
+Web chat users. Local and official package validation, fresh installation,
+OAuth, First-Party start, twelve-tool and two-MCP-App tests must pass on that
+claimed surface. V1 claims neither Desktop Chat nor Cowork plugin support and
+must expose no hooks or subagents. These plugin results do not replace, weaken
+or block the independent connector-only Directory gate above.
 
 ### 13.3 Rollback gate
 
@@ -957,9 +957,10 @@ The following decisions are already made by this revision:
 - future v2-v9 hosts are not published or certificate-reserved without a
   versioning decision;
 - the public SkillPilot plugin is the preferred complete installation for
-  eligible paid Claude Web chat, Desktop Chat and Cowork users;
-- the plugin Skill works on all three supported surfaces, declares the same
-  remote connector and exposes no v1 hooks or subagents;
+  eligible paid Claude Web chat users;
+- the plugin Skill is scoped to that Web surface, declares the same remote
+  connector, exposes no v1 hooks or subagents and claims neither Desktop Chat
+  nor Cowork support;
 - the remote connector owns OAuth, MCP, all twelve tools and both MCP Apps;
 - the Connectors Directory remains an independent connector-only route with
   its own Team/Enterprise submission gate and is not a prerequisite for plugin

@@ -7,13 +7,20 @@
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
   "supportedSurfaces": [
-    "paid_claude_web_chat",
-    "paid_claude_desktop_chat",
-    "paid_claude_cowork"
+    "paid_claude_web_chat"
   ],
+  "distributionQualification": {
+    "directInstallPilot": "observed_paid_claude_web_chat",
+    "officialPluginDirectoryDocumentation": "cowork_and_claude_code_only",
+    "paidWebChatOfficialDistribution": "unconfirmed",
+    "confirmationEvidenceId": null
+  },
   "excludedClaims": [
     "claude_free",
     "native_mobile_plugin",
+    "claude_desktop_chat",
+    "claude_cowork",
+    "public_claude_code",
     "hooks",
     "subagents"
   ],
@@ -40,7 +47,7 @@
     {
       "from": "PRE_SUBMISSION",
       "to": "READY_FOR_SUBMISSION",
-      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including the sanitized public GitHub source and authorized Anthropic Console submitter role."
+      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including explicit Anthropic confirmation that official plugin distribution reaches eligible paid Claude Web chat, the sanitized public GitHub source and authorized Anthropic Console submitter role."
     },
     {
       "from": "READY_FOR_SUBMISSION",

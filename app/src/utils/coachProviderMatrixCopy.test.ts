@@ -97,9 +97,20 @@ assert(
     && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('Custom Connector')
     && de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('höchstens ein')
     && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('At most one')
-    && de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Web, Desktop und Cowork')
-    && en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Web, Desktop, and Cowork'),
-  'Claude variants separate the Free custom-connector fact from the paid complete plugin surfaces',
+    && de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('im Web')
+    && en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('on the web')
+    && !de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Desktop')
+    && !en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Cowork'),
+  'Claude variants separate the Free custom-connector fact from the paid Web plugin publication scope',
+)
+assert(
+  !row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Smartphone')
+    && !row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Tablet')
+    && !row(en, 'browser-devices').cells['claude-pro-max'].value.includes('smartphone')
+    && !row(en, 'browser-devices').cells['claude-pro-max'].value.includes('tablet')
+    && row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web')
+    && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web'),
+  'Claude Web publication copy does not overclaim unrecorded device classes',
 )
 for (const fullPluginRow of ['current-access', 'provider-plan', 'cost', 'start-path', 'session-duration', 'learning-features', 'photo-upload', 'browser-devices', 'dictation']) {
   assert(

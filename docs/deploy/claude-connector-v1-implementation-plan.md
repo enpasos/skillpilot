@@ -57,10 +57,11 @@ Claude mit folgenden Eigenschaften:
 - zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
   normale Karteikartenübung; Kartenbewertungen ändern nur den
   Wiederholungsplan, niemals Mastery;
-- Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork.
-- der Coaching-Skill funktioniert auf allen drei unterstützten Oberflächen;
-- in v1 keine Hooks oder Subagents; spätere Hooks oder Subagents sind
-  Cowork-only und benötigen eigene Abnahme- und Versionsentscheidungen;
+- Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation für berechtigte bezahlte Nutzer von Claude Web Chat.
+- der Coaching-Skill ist nur für diese Web-Oberfläche im V1-Veröffentlichungsumfang;
+- in v1 keine Hooks oder Subagents und keine Behauptung von Desktop-Chat- oder
+  Cowork-Plugin-Unterstützung; zusätzliche Oberflächen benötigen eigene
+  Abnahme- und Versionsentscheidungen;
 - der im Plugin deklarierte Remote-Connector besitzt OAuth, MCP, alle zwölf
   Tools und beide MCP Apps UI-Ressourcen; das Plugin dupliziert diese
   Implementierungen nicht;
@@ -680,14 +681,14 @@ Veröffentlichung belegen.
 **Real-Client-Abnahme:**
 
 - alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
-- das öffentliche Plugin frisch in Claude Web Chat, Desktop Chat und Cowork
-  installieren und auf jeder beanspruchten Oberfläche separat prüfen;
-- prüfen, dass der Coaching-Skill auf allen drei Oberflächen greift, während
+- das öffentliche Plugin frisch in Claude Web Chat installieren und dort
+  separat prüfen;
+- prüfen, dass der Coaching-Skill auf der Web-Oberfläche greift, während
   OAuth, alle zwölf Tools und beide MCP Apps ausschließlich aus dem einmal
   verbundenen Remote-Connector stammen;
 - beide MCP Apps mit privaten Kartenmetadaten und app-only Review testen;
-- nachweisen, dass v1 keine Hooks oder Subagents enthält; spätere Hooks oder
-  Subagents dürfen ausschließlich für Cowork beansprucht werden;
+- nachweisen, dass v1 keine Hooks oder Subagents enthält und weder Desktop Chat
+  noch Cowork als unterstützte Plugin-Oberfläche beansprucht;
 - den finalen Remote-Connector unabhängig über den Custom-Connector-Weg
   prüfen; nach Verfügbarkeit den Connector-only-Directory-Eintrag gegen
   denselben Endpoint testen;
@@ -731,9 +732,8 @@ aktivieren.
    Negativtests ausführen.
 8. Erneut OpenAI-Smokes und RAM/Pool/Latenz prüfen.
 9. Real-Claude-Custom-Connector-Abnahme wiederholen.
-10. Öffentliche Plugin-Abnahme in Claude Web Chat, Desktop Chat und Cowork
-    wiederholen und das Plugin anschließend über den unabhängigen Anthropic-
-    Console-Prozess einreichen.
+10. Öffentliche Plugin-Abnahme in Claude Web Chat wiederholen und das Plugin
+    anschließend über den unabhängigen Anthropic-Console-Prozess einreichen.
 11. Den Connector-only-Directory-Eintrag erst nach seinem eigenen Gate mit
     Dokumentations-URL, Privacy-URL, Icon, Test-Credentials und Setup-Anleitung
     einreichen.
@@ -870,12 +870,13 @@ wenn alle folgenden Punkte erfüllt sind:
 ### 9.1 Definition of Done des bevorzugten Plugin-Wegs
 
 Das öffentliche SkillPilot-Plugin ist die bevorzugte vollständige Installation
-für berechtigte bezahlte Nutzer von Claude Web Chat, Desktop Chat und Cowork.
-Der Coaching-Skill funktioniert auf allen drei Oberflächen; OAuth, MCP, alle
-zwölf Tools und beide MCP Apps bleiben Eigentum des einmal verbundenen Remote-
-Connectors. V1 enthält keine Hooks oder Subagents. Spätere Hooks oder Subagents
-sind Cowork-only und benötigen eine eigene Version und Abnahme. Native mobile
-Plugin-Unterstützung wird nicht beansprucht.
+für berechtigte bezahlte Nutzer von Claude Web Chat. Der Coaching-Skill ist nur
+für diese Web-Oberfläche im V1-Veröffentlichungsumfang; OAuth, MCP, alle zwölf
+Tools und beide MCP Apps bleiben Eigentum des einmal verbundenen
+Remote-Connectors. V1 enthält
+keine Hooks oder Subagents und beansprucht weder Desktop Chat noch Cowork als
+unterstützte Plugin-Oberfläche. Native mobile Plugin-Unterstützung wird nicht
+beansprucht.
 
 Der Connectors-Directory-Eintrag bleibt ein unabhängiger Connector-only-
 Veröffentlichungsweg mit eigenem Team-/Enterprise-Gate und ist keine
@@ -885,12 +886,12 @@ wenn:
 - der lokale Paketcheck und die offizielle Prüfung mit
   `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
 - Installation, OAuth, First-Party-Start, alle zwölf Tools und beide MCP Apps
-  in Claude Web Chat, Desktop Chat und Cowork getestet wurden;
+  in Claude Web Chat getestet wurden;
 - der Skill genau einmal wirksam ist. Plugin und Directory-Installation dürfen bei derselben Remote-MCP-URL koexistieren; Claude stellt für den gemeinsamen Server genau einen Tool-Satz bereit. Die beiden MCP Apps stammen weiterhin aus dem Remote-Connector;
 - kein zusätzlicher manueller Custom Connector für dieselbe Remote-MCP-URL
   eingerichtet wird;
-- der Skill auf Web Chat, Desktop Chat und Cowork nachweislich greift und v1
-  keine Hooks oder Subagents enthält;
+- der Skill auf Web Chat nachweislich greift, v1 keine Hooks oder Subagents
+  enthält und keine Unterstützung für Desktop Chat oder Cowork behauptet;
 - die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und
   Funktionen beansprucht.
 
