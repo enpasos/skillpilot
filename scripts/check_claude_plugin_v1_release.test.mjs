@@ -23,14 +23,16 @@ const connectorBaselinePath = "ai/claude/connector-v1/release/contract-baseline.
 
 test("checked-in public plugin lane is structurally valid but fail-closed PRE_SUBMISSION", () => {
   const result = verifyClaudePluginV1Release({ repositoryRoot });
+  const gates = readJson(repositoryRoot, `${releasePath}/release-gates.json`);
+  const pendingGateCount = gates.gates.filter(({ status }) => status !== "pass").length;
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.lifecycleState, "PRE_SUBMISSION");
   assert.equal(result.requiredGateCount, 15);
-  assert.equal(result.requiredPendingCount, 15);
-  assert.equal(result.blockers.length, 15);
+  assert.equal(result.requiredPendingCount, pendingGateCount);
+  assert.equal(result.blockers.length, pendingGateCount);
+  assert.ok(pendingGateCount > 0);
 
-  const gates = readJson(repositoryRoot, `${releasePath}/release-gates.json`);
   assert.equal(gates.submissionReady, false);
   assert.equal(gates.connectorDirectoryDependency, "none");
   assert.equal(
