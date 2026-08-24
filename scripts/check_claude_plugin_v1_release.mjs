@@ -51,7 +51,7 @@ const expectedRequiredGates = [
   "reproducible-plugin-archive",
   "remote-mcp-contract-twelve-tools-two-apps",
   "paid-web-chat-real-client",
-  "anthropic-paid-web-distribution-confirmation",
+  "android-direct-install-real-client",
   "first-party-24h-learning-session",
   "oauth-learner-session-separation",
   "permanent-id-nondisclosure",
@@ -63,9 +63,9 @@ const expectedRequiredGates = [
 ];
 const expectedSubmissionPrerequisiteEvidence = [
   {
-    gateId: "anthropic-paid-web-distribution-confirmation",
-    evidenceId: "anthropic-paid-web-distribution-confirmation-final-candidate",
-    kind: "anthropic-distribution-confirmation-record",
+    gateId: "android-direct-install-real-client",
+    evidenceId: "android-direct-install-real-client-final-candidate",
+    kind: "android-real-client-acceptance-record",
   },
   {
     gateId: "public-github-source-sanitization",
@@ -154,33 +154,39 @@ export function verifyClaudePluginV1Release({
   check(
     sameSet(lifecycle?.supportedSurfaces, [
       "paid_claude_web_chat",
+      "claude_pro_android_chat",
     ]),
-    "Plugin lifecycle must scope v1 to eligible paid Claude Web chat.",
+    "Plugin lifecycle must scope v1 to eligible paid Claude Web chat and verified Claude Pro Android use after account-level installation.",
   );
   check(
     lifecycle?.distributionQualification?.directInstallPilot
-        === "observed_paid_claude_web_chat"
-      && lifecycle?.distributionQualification?.officialPluginDirectoryDocumentation
-        === "cowork_and_claude_code_only"
-      && ["unconfirmed", "confirmed"].includes(
-        lifecycle?.distributionQualification?.paidWebChatOfficialDistribution,
+        === "observed_paid_web_and_claude_pro_account_direct_install_then_native_android_chat"
+      && ["pending", "approved"].includes(
+        lifecycle?.distributionQualification?.androidDirectInstallAcceptance,
       )
-      && [null, "anthropic-paid-web-distribution-confirmation-final-candidate"].includes(
-        lifecycle?.distributionQualification?.confirmationEvidenceId,
+      && [null, "android-direct-install-real-client-final-candidate"].includes(
+        lifecycle?.distributionQualification?.androidDirectInstallEvidenceId,
+      )
+      && ["not_verified", "verified"].includes(
+        lifecycle?.distributionQualification?.androidPublicListingVerification,
+      )
+      && [null, "anthropic-plugin-android-public-listing-verification"].includes(
+        lifecycle?.distributionQualification?.androidPublicListingEvidenceId,
       ),
-    "Plugin lifecycle must distinguish the observed paid-Web direct-install pilot from the officially documented Cowork and Claude Code plugin directory, and track paid-Web distribution confirmation explicitly.",
+    "Plugin lifecycle must distinguish observed paid Web and Claude Pro Android direct-install use from exact-candidate acceptance and post-publication Android listing verification.",
   );
   check(
     sameSet(lifecycle?.excludedClaims, [
       "claude_free",
-      "native_mobile_plugin",
+      "claude_ios_chat",
+      "android_in_app_plugin_installation",
       "claude_desktop_chat",
       "claude_cowork",
       "public_claude_code",
       "hooks",
       "subagents",
     ]),
-    "Plugin lifecycle must exclude Claude Free, native mobile, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
+    "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
     lifecycle?.productOwnerAuthorization?.approvedAt === "2026-08-24"
@@ -339,10 +345,12 @@ export function verifyClaudePluginV1Release({
       "PRE_SUBMISSION must keep the plugin release line pre_submission_candidate.",
     );
     check(
-      lifecycle?.distributionQualification?.paidWebChatOfficialDistribution
-          === "unconfirmed"
-        && lifecycle?.distributionQualification?.confirmationEvidenceId === null,
-      "PRE_SUBMISSION must keep official paid-Web plugin distribution unconfirmed and without confirmation evidence.",
+      lifecycle?.distributionQualification?.androidDirectInstallAcceptance === "pending"
+        && lifecycle?.distributionQualification?.androidDirectInstallEvidenceId === null
+        && lifecycle?.distributionQualification?.androidPublicListingVerification
+          === "not_verified"
+        && lifecycle?.distributionQualification?.androidPublicListingEvidenceId === null,
+      "PRE_SUBMISSION must keep exact-candidate Android acceptance pending and public-listing Android reach unverified.",
     );
   } else if (["READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(state)) {
     check(gates?.submissionReady === true, `${state} requires submissionReady=true.`);
@@ -356,23 +364,30 @@ export function verifyClaudePluginV1Release({
         === (state === "PUBLISHED" ? "published" : "frozen_for_submission"),
       `${state} requires the matching immutable plugin release-line status.`,
     );
-    const distributionEvidenceId =
-      "anthropic-paid-web-distribution-confirmation-final-candidate";
-    const distributionEvidence = evidenceById.get(distributionEvidenceId);
+    const androidEvidenceId = "android-direct-install-real-client-final-candidate";
+    const androidEvidence = evidenceById.get(androidEvidenceId);
     check(
-      lifecycle?.distributionQualification?.paidWebChatOfficialDistribution
-          === "confirmed"
-        && lifecycle?.distributionQualification?.confirmationEvidenceId
-          === distributionEvidenceId,
-      `${state} requires explicit lifecycle confirmation that official plugin distribution reaches eligible paid Claude Web chat.`,
+      lifecycle?.distributionQualification?.androidDirectInstallAcceptance === "approved"
+        && lifecycle?.distributionQualification?.androidDirectInstallEvidenceId
+          === androidEvidenceId,
+      `${state} requires approved exact-candidate Claude Pro Android acceptance after account-level direct installation.`,
     );
     check(
-      distributionEvidence?.status === "approved"
-        && distributionEvidence?.candidateContractSha256
+      androidEvidence?.kind === "android-real-client-acceptance-record"
+        && androidEvidence?.status === "approved"
+        && androidEvidence?.candidateContractSha256
           === baseline?.candidateContractSha256
-        && distributionEvidence?.candidateRevision === baseline?.baseRevision,
-      `${state} requires approved current-candidate Anthropic paid-Web distribution confirmation evidence.`,
+        && androidEvidence?.candidateRevision === baseline?.baseRevision,
+      `${state} requires approved current-candidate Android real-client evidence.`,
     );
+    if (["READY_FOR_SUBMISSION", "SUBMITTED"].includes(state)) {
+      check(
+        lifecycle?.distributionQualification?.androidPublicListingVerification
+            === "not_verified"
+          && lifecycle?.distributionQualification?.androidPublicListingEvidenceId === null,
+        `${state} must defer Android public-listing verification until publication.`,
+      );
+    }
   }
 
   if (["SUBMITTED", "PUBLISHED"].includes(state)) {
@@ -394,6 +409,24 @@ export function verifyClaudePluginV1Release({
       baseline,
       check,
     });
+    const publicationEvidenceId = "anthropic-plugin-android-public-listing-verification";
+    const publicationEvidence = evidenceById.get(publicationEvidenceId);
+    check(
+      lifecycle?.externalStateEvidence?.publicationEvidenceId === publicationEvidenceId
+        && lifecycle?.distributionQualification?.androidPublicListingVerification
+          === "verified"
+        && lifecycle?.distributionQualification?.androidPublicListingEvidenceId
+          === publicationEvidenceId,
+      "PUBLISHED requires the dedicated Android public-listing verification evidence ID.",
+    );
+    check(
+      publicationEvidence?.kind === "android-public-listing-acceptance-record"
+        && publicationEvidence?.status === "approved"
+        && publicationEvidence?.candidateContractSha256
+          === baseline?.candidateContractSha256
+        && publicationEvidence?.candidateRevision === baseline?.baseRevision,
+      "PUBLISHED requires approved exact-candidate Android public-listing acceptance evidence.",
+    );
   }
 
   return {

@@ -92,28 +92,28 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of the direct-install Web pilot with official distribution", () => {
+test("rejects conflation of the Web-and-Android direct-install pilot with public listing", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /This observed\s+pilot is the preferred complete test installation, but it is not proof of\s+availability through Anthropic's official plugin distribution/u,
+      /The package has been observed in paid Claude Web chat\s+and, after account-level direct installation on Claude Pro, in the native\s+Claude app on Android/u,
       "The direct-install pilot proves official public distribution",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish the paid-Web direct-install pilot from confirmed official distribution/u,
+      /distinguish the Web-and-Android direct-install pilot from post-publication listing verification/u,
     );
   });
 });
 
-test("rejects expansion beyond the Claude Web publication scope", () => {
+test("rejects expansion beyond the Claude Web and Android publication scope", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /The v1 publication scope is limited to eligible paid Claude Web chat/u,
+      /The v1 publication scope is limited to eligible paid Claude Chat on the Web and\s+the native Android app after account-level installation/u,
       "SkillPilot Coach v1 is supported everywhere",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /v1 publication scope limited to eligible paid Claude Web chat/u,
+      /v1 publication scope limited to eligible paid Claude Web and verified native Android chat/u,
     );
   });
 });
@@ -121,12 +121,12 @@ test("rejects expansion beyond the Claude Web publication scope", () => {
 test("rejects loss of the public README release boundary", () => {
   withPackageCopy((root) => {
     mutate(root, "README.md", (value) => value.replace(
-      /Its product scope is limited to eligible paid\s+Claude Web chat/u,
+      /Its product scope is limited to eligible paid\s+Claude Chat on the Web and the native Android app/u,
       "available on every Claude surface",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /README.md must state the Web-only direct-install pilot/u,
+      /README.md must state the Web-and-Android direct-install boundary/u,
     );
   });
 });
@@ -144,14 +144,15 @@ test("rejects loss of the independent Connector Directory lane", () => {
   });
 });
 
-test("rejects Claude Free or native-mobile plugin claims", () => {
+test("rejects Claude Free, iOS or Android in-app installation claims", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value
       .replace("The plugin is not available on Claude Free", "The plugin is available on Claude Free")
-      .replace("does not claim native mobile plugin support", "claims native mobile plugin support"));
+      .replace("does not claim iOS plugin support", "claims iOS plugin support")
+      .replace("installation from inside the Android app", "installation nowhere"));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /reject Claude Free and native-mobile plugin claims/u,
+      /reject Claude Free, iOS and Android in-app installation claims/u,
     );
   });
 });
@@ -172,7 +173,8 @@ test("rejects attribution of connector tools or UIs to the plugin shell", () => 
 test("rejects appended contradictory Claude distribution claims", () => {
   for (const [name, appendedClaim] of [
     ["Claude Free", "The SkillPilot plugin is available on Claude Free."],
-    ["native mobile", "The SkillPilot plugin supports native-mobile plugin support."],
+    ["unqualified native mobile", "The SkillPilot plugin supports native-mobile plugin support."],
+    ["iOS", "The SkillPilot plugin supports native Claude iOS Chat."],
     ["Claude Desktop Chat", "The SkillPilot plugin supports Claude Desktop Chat."],
     ["Claude Cowork", "The SkillPilot plugin supports Claude Cowork."],
     ["public Claude Code", "The SkillPilot plugin supports public Claude Code."],
@@ -200,7 +202,8 @@ test("allows explicit negative Claude surface boundaries", () => {
     "The SkillPilot plugin provides no support for Claude Desktop Chat.",
     "The SkillPilot plugin includes no Claude Cowork support.",
     "The SkillPilot plugin supports neither Claude Desktop Chat nor Cowork.",
-    "The SkillPilot plugin supports paid Web chat only, not Claude Desktop Chat.",
+    "The SkillPilot plugin supports paid Web and Android chat, not Claude Desktop Chat.",
+    "The SkillPilot plugin provides no support for Claude iOS Chat.",
   ]) {
     withPackageCopy((root) => {
       mutate(root, "SETUP.md", (value) => `${value}\n${claim}\n`);

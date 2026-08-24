@@ -7,17 +7,20 @@
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
   "supportedSurfaces": [
-    "paid_claude_web_chat"
+    "paid_claude_web_chat",
+    "claude_pro_android_chat"
   ],
   "distributionQualification": {
-    "directInstallPilot": "observed_paid_claude_web_chat",
-    "officialPluginDirectoryDocumentation": "cowork_and_claude_code_only",
-    "paidWebChatOfficialDistribution": "unconfirmed",
-    "confirmationEvidenceId": null
+    "directInstallPilot": "observed_paid_web_and_claude_pro_account_direct_install_then_native_android_chat",
+    "androidDirectInstallAcceptance": "pending",
+    "androidDirectInstallEvidenceId": null,
+    "androidPublicListingVerification": "not_verified",
+    "androidPublicListingEvidenceId": null
   },
   "excludedClaims": [
     "claude_free",
-    "native_mobile_plugin",
+    "claude_ios_chat",
+    "android_in_app_plugin_installation",
     "claude_desktop_chat",
     "claude_cowork",
     "public_claude_code",
@@ -27,7 +30,7 @@
   "productOwnerAuthorization": {
     "approvedAt": "2026-08-24",
     "approvedBy": "product-owner",
-    "scope": "Claude public plugin v1 package, independent release lane, validation and Anthropic plugin-console submission.",
+    "scope": "Claude public plugin v1 package for eligible paid Web chat and verified Claude Pro Android use after account-level direct installation, independent release lane, validation and Anthropic plugin-console submission.",
     "excludes": [
       "Submitted OpenAI SkillPilot Coach v1.0.0 and every effect covered by its active review freeze",
       "Connector Directory lifecycle, gates and Team/Enterprise submission access"
@@ -47,7 +50,7 @@
     {
       "from": "PRE_SUBMISSION",
       "to": "READY_FOR_SUBMISSION",
-      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including explicit Anthropic confirmation that official plugin distribution reaches eligible paid Claude Web chat, the sanitized public GitHub source and authorized Anthropic Console submitter role."
+      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including exact-candidate Web acceptance, Claude Pro Android acceptance after account-level direct installation, the sanitized public GitHub source and an authorized Anthropic Console submitter role. Public-listing Android reach is deliberately verified only after publication."
     },
     {
       "from": "READY_FOR_SUBMISSION",
@@ -57,7 +60,7 @@
     {
       "from": "SUBMITTED",
       "to": "PUBLISHED",
-      "requires": "An approved public-plugin publication verification bound to the same frozen plugin candidate digest and exact candidate revision."
+      "requires": "An approved public-listing installation and native Android end-to-end verification bound to the same frozen plugin candidate digest and exact candidate revision."
     }
   ],
   "breakingChangePolicy": "After submission or publication, preserve the released v1 package and remote contract. Breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate."
