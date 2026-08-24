@@ -34,7 +34,12 @@ for (const language of ['de', 'en'] as const) {
   assert(html.includes('target="_blank"'), `${language}: official provider sources open separately`)
   assert(!html.includes('skillpilotId'), `${language}: no internal permanent-ID field name is rendered`)
   assert(!html.includes('stateVersion'), `${language}: no internal state field is rendered`)
-  assert(!html.includes('Custom Connector'), `${language}: no deployment architecture is rendered for learners`)
+  assert(
+    language === 'de'
+      ? html.includes('Claude: separater Custom Connector')
+      : html.includes('Claude: separate Custom Connector'),
+    `${language}: the learner-facing matrix links the separate Custom Connector fact to its official source`,
+  )
   assert(!html.includes('OpenAI-Review'), `${language}: no provider review process is rendered for learners`)
 }
 

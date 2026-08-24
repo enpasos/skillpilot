@@ -74,17 +74,40 @@ assert(
   'ChatGPT Plus/Pro remains visibly recommended for an individual learner',
 )
 assert(
-  variantIds.every(variantId => row(de, 'current-access').cells[variantId].status === 'planned'),
-  'no account variant is presented as publicly released for new learners',
+  variantIds.filter(variantId => variantId !== 'claude-free')
+    .every(variantId => row(de, 'current-access').cells[variantId].status === 'planned')
+    && row(de, 'current-access').cells['claude-free'].status === 'unavailable',
+  'no account variant is presented as publicly released and Claude Free rejects complete plugin access',
 )
 assert(
   row(de, 'provider-plan').cells['chatgpt-free-go'].status === 'conditional',
   'ChatGPT Free/Go is not presented as guaranteed',
 )
 assert(
-  row(de, 'provider-plan').cells['claude-free'].status === 'planned',
-  'Claude Free remains an undecided future option without exposing deployment architecture',
+  row(de, 'provider-plan').cells['claude-free'].status === 'unavailable'
+    && row(de, 'provider-plan').cells['claude-free'].value.includes('Plugin-Zugang')
+    && row(de, 'provider-plan').cells['claude-free'].note?.includes('Custom Connector')
+    && row(en, 'provider-plan').cells['claude-free'].status === 'unavailable'
+    && row(en, 'provider-plan').cells['claude-free'].value.includes('plugin access')
+    && row(en, 'provider-plan').cells['claude-free'].note?.includes('Custom Connector'),
+  'Claude Free is connector-only and never presented as complete plugin access',
 )
+assert(
+  de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('Custom Connector')
+    && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('Custom Connector')
+    && de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('höchstens ein')
+    && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('At most one')
+    && de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Web, Desktop und Cowork')
+    && en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Web, Desktop, and Cowork'),
+  'Claude variants separate the Free custom-connector fact from the paid complete plugin surfaces',
+)
+for (const fullPluginRow of ['current-access', 'provider-plan', 'cost', 'start-path', 'session-duration', 'learning-features', 'photo-upload', 'browser-devices', 'dictation']) {
+  assert(
+    row(de, fullPluginRow).cells['claude-free'].status === 'unavailable'
+      && row(en, fullPluginRow).cells['claude-free'].status === 'unavailable',
+    `${fullPluginRow} does not advertise the complete plugin on Claude Free`,
+  )
+}
 assert(
   row(de, 'minimum-age').cells['chatgpt-plus-pro'].value.includes('13')
     && row(de, 'minimum-age').cells['chatgpt-plus-pro'].note?.includes('18'),
@@ -131,8 +154,8 @@ for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as c
 }
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('23') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
-  assert(copy.sources.length === 4, 'the matrix links only learner-relevant access and age sources')
+  assert(copy.asOf.includes('24') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
+  assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, custom-connector and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
       && (source.href.includes('openai.com') || source.href.includes('claude.com'))),
@@ -169,7 +192,6 @@ for (const copy of [de, en]) {
     'review',
     'rollout',
     'evidence',
-    'connector',
     'mcp',
     'workspace',
     'operator',

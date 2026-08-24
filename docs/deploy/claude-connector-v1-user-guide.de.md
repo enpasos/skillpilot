@@ -5,21 +5,36 @@ SkillPilot-ID bleibt dabei vollständig in SkillPilot. Claude erhält weder eine
 ID-Datei noch ihr Passwort.
 
 > **Stand:** Claude v1 wird noch für die öffentliche Veröffentlichung
-> vorbereitet. Nach der Freigabe ist der Eintrag im Connectors Directory der
-> normale Installationsweg für Claude Web.
+> vorbereitet. Nach der Freigabe ist das öffentliche SkillPilot-Plugin das
+> bevorzugte vollständige Paket für berechtigte Nutzerinnen und Nutzer der
+> bezahlten Claude-Angebote Web-Chat, Desktop-Chat und Cowork.
 
 ## Einmal installieren
 
-1. Öffne in Claude Web **Konnektoren** und suche im Connectors Directory nach
-   **SkillPilot**.
-2. Wähle bei SkillPilot **Verbinden**.
-3. Bestätige den OAuth-Zugriff.
+1. Öffne mit einem berechtigten bezahlten Claude-Konto **Plugins** und
+   installiere oder aktiviere **SkillPilot Coach v1**.
+2. Öffne im Plugin den Bereich **Konnektoren** und verbinde den enthaltenen
+   Konnektor **SkillPilot**.
+3. Bestätige den OAuth-Zugriff. Eine veröffentlichte Directory-Verbindung darf
+   aktiv bleiben, wenn sie dieselbe SkillPilot-MCP-URL verwendet. Lege für diese
+   URL keinen weiteren manuellen benutzerdefinierten Konnektor an.
 
-Der Directory-Konnektor stellt die SkillPilot-Werkzeuge und beide interaktiven
-Oberflächen für Lernzielbilder und Karteikarten in Claude Web bereit. Ein
-separat veröffentlichtes Plugin kann den wiederverwendbaren Coaching-Skill mit
-demselben entfernten Konnektor für Cowork und Claude Code bündeln. Dieses Plugin
-ist optional und für Claude Web nicht erforderlich.
+Das Plugin stellt den wiederverwendbaren SkillPilot-Coaching-Skill bereit und
+deklariert denselben entfernten Konnektor für bezahlten Claude Web-Chat,
+Desktop-Chat und Cowork. Der entfernte Konnektor liefert alle zwölf
+SkillPilot-Werkzeuge und beide interaktiven Oberflächen für Lernzielbilder und
+Karteikarten. SkillPilot Coach v1 enthält keine Hooks oder Subagents. Künftige
+Hooks oder Subagents wären Cowork vorbehalten, solange Anthropic sie nicht auch
+auf anderen Oberflächen unterstützt und SkillPilot diese separat geprüft hat.
+
+Das Connectors Directory bleibt ein unabhängiger Weg nur für den Konnektor mit
+eigenem Team-/Enterprise-Gate auf Herausgeberseite. Es ist keine Voraussetzung
+für die Plugin-Einreichung und enthält nicht den Coaching-Skill. Plugin und
+Directory-Eintrag dürfen gleichzeitig bestehen, wenn beide
+`https://mcp-claude-v1.skillpilot.com/mcp` verwenden; Claude zeigt für diesen
+gemeinsamen Server einen SkillPilot-Werkzeugsatz. Lege keinen zusätzlichen
+manuellen benutzerdefinierten Konnektor mit derselben URL an, wenn bereits eine
+der beiden Verbindungen besteht.
 
 OAuth hält lediglich die technische Verbindung bereit. Der optionale Zugriff
 `offline_access` enthält keine Lernenden-ID und startet oder verlängert keine
@@ -70,8 +85,11 @@ Toolnamen oder Zustandsversionen nicht in normale Lernantworten mischen.
 
 ## Wenn etwas nicht funktioniert
 
-- **SkillPilot wird nicht gefunden:** Prüfe, ob der SkillPilot-Konnektor in
-  Claude Web verbunden ist.
+- **SkillPilot wird nicht gefunden:** Prüfe, ob SkillPilot Coach v1 aktiviert
+  und der darin enthaltene Konnektor verbunden ist. Prüfe, ob ein veröffentlichter
+  Directory-Eintrag exakt dieselbe SkillPilot-MCP-URL verwendet, und entferne
+  nur einen zusätzlich manuell angelegten benutzerdefinierten Konnektor für
+  dieselbe URL.
 - **Die Sitzung ist abgelaufen:** Öffne
   [Lernen starten](https://skillpilot.com/) erneut. Eine
   24-Stunden-Sitzung wird nie durch OAuth verlängert.
@@ -86,9 +104,11 @@ Toolnamen oder Zustandsversionen nicht in normale Lernantworten mischen.
 
 SkillPilot erhält nur die ausdrücklich ausgeführten Konnektor-Anfragen, nicht
 deinen gesamten Claude-Chat oder Claude Memory. Die dauerhafte SkillPilot-ID
-bleibt in SkillPilot. Für Claude gelten zusätzlich die Konto-, Tarif-, Regions-
-und Altersregeln von Anthropic; der geplante Directory-Eintrag richtet sich an
-Erwachsene ab 18 Jahren.
+bleibt in SkillPilot. Für Claude gelten zusätzlich die Konto-, Bezahlplan-,
+Regions- und Workspace-Regeln von Anthropic. Das Plugin ist in Claude Free
+nicht verfügbar. Die Claude-Integration von SkillPilot richtet sich an
+Erwachsene ab 18 Jahren. Eine native Nutzung des Plugins auf Mobilgeräten wird
+nicht zugesagt.
 
 - [SkillPilot](https://skillpilot.com)
 - [Datenschutzerklärung des Konnektors](https://mcp-claude-v1.skillpilot.com/privacy)
@@ -96,7 +116,8 @@ Erwachsene ab 18 Jahren.
 
 ## Version
 
-Der Directory-Slug `skillpilot` bleibt versionsneutral. Nach der endgültigen
-Einreichung bleibt die v1-Linie kompatibel; ein späterer echter Vertragsbruch
-würde nur nach eigener Produktentscheidung in einer neuen Hauptversion
-entwickelt. Claude v2 ist derzeit nicht vergeben.
+Plugin und Konnektor haben getrennte Veröffentlichungszyklen. Kompatible
+Plugin-Verbesserungen erhöhen die SemVer-Version des Plugins; der
+Directory-Slug `skillpilot` bleibt versionsneutral. Ein späterer echter Bruch
+des Konnektorvertrags würde nur nach eigener Produktentscheidung in einer neuen
+Hauptversion entwickelt. Claude v2 ist derzeit nicht vergeben.

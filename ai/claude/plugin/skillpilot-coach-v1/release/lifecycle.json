@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
+  "pluginIdentity": "skillpilot-coach-v1",
+  "pluginVersion": "1.0.0",
+  "state": "PRE_SUBMISSION",
+  "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
+  "connectorDirectoryDependency": "none",
+  "supportedSurfaces": [
+    "paid_claude_web_chat",
+    "paid_claude_desktop_chat",
+    "paid_claude_cowork"
+  ],
+  "excludedClaims": [
+    "claude_free",
+    "native_mobile_plugin",
+    "hooks",
+    "subagents"
+  ],
+  "productOwnerAuthorization": {
+    "approvedAt": "2026-08-24",
+    "approvedBy": "product-owner",
+    "scope": "Claude public plugin v1 package, independent release lane, validation and Anthropic plugin-console submission.",
+    "excludes": [
+      "Submitted OpenAI SkillPilot Coach v1.0.0 and every effect covered by its active review freeze",
+      "Connector Directory lifecycle, gates and Team/Enterprise submission access"
+    ]
+  },
+  "externalStateEvidence": {
+    "submissionEvidenceId": null,
+    "publicationEvidenceId": null
+  },
+  "releaseLine": {
+    "major": 1,
+    "version": "1.0.0",
+    "status": "pre_submission_candidate",
+    "compatibilityPolicy": "The pre-submission candidate may still change under Product Owner control. Submission freezes the exact candidate digest; publication makes 1.0.0 immutable and later breaking work starts on a new major line."
+  },
+  "stateTransitions": [
+    {
+      "from": "PRE_SUBMISSION",
+      "to": "READY_FOR_SUBMISSION",
+      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including the sanitized public GitHub source and authorized Anthropic Console submitter role."
+    },
+    {
+      "from": "READY_FOR_SUBMISSION",
+      "to": "SUBMITTED",
+      "requires": "An approved Anthropic plugin-console submission receipt bound to the frozen plugin candidate digest and exact candidate revision."
+    },
+    {
+      "from": "SUBMITTED",
+      "to": "PUBLISHED",
+      "requires": "An approved public-plugin publication verification bound to the same frozen plugin candidate digest and exact candidate revision."
+    }
+  ],
+  "breakingChangePolicy": "After submission or publication, preserve the released v1 package and remote contract. Breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate."
+}

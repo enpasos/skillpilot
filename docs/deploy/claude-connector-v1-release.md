@@ -232,33 +232,59 @@ Submission, review status and publication are external Anthropic actions. Do
 not mark this repository `PUBLISHED` until the actual directory state has been
 verified and recorded by the Product Owner.
 
-## 10. Separate optional plugin publication
+## 10. Preferred public plugin publication
 
-The Connectors Directory entry is the normal installation path for Claude Web
-and is submitted independently in Section 9. The package at
-`ai/claude/plugin/skillpilot-coach-v1/` is a separate optional distribution for
-Cowork and Claude Code. It bundles the reusable SkillPilot coaching Skill and
-the same remote connector; the connector supplies both MCP Apps UIs. Plugin
-publication is not a prerequisite for Claude Web and does not gate the
-Connectors Directory submission.
+The public SkillPilot plugin is the preferred complete installation for
+eligible paid Claude Web chat, Desktop Chat and Cowork users. The package at
+`ai/claude/plugin/skillpilot-coach-v1/` bundles the reusable SkillPilot coaching
+Skill with one declaration for the same remote connector; the connector remains
+the sole owner of all twelve tools and both MCP Apps UIs. SkillPilot Coach v1
+contains no hooks or subagents. Any future hooks or subagents are Cowork-only
+unless Anthropic supports them elsewhere and SkillPilot records separate
+acceptance evidence.
+
+The Connectors Directory submission in Section 9 remains an independent
+connector-only route with its own Team/Enterprise publisher gate. It neither
+contains the coaching Skill nor gates plugin submission, and the two routes may
+be submitted in either order. Plugin submission through the Anthropic Console
+requires the documented Console organization role, not a Team or Enterprise
+Claude plan. The published plugin is not available on Claude Free. SkillPilot
+claims neither native mobile-plugin support nor public Claude Code support for
+v1 and targets adults aged 18 or older.
 
 Before submitting the plugin:
 
 1. run `node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs` and
    `node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs`;
-2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` with the
-   current Claude CLI;
+2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1 --strict`
+   with the current Claude CLI;
 3. test upload/install, OAuth, first-party start, all twelve tools and both MCP
-   Apps separately on every Cowork or Claude Code surface that will be claimed;
+   Apps separately on paid Claude Web chat, Desktop Chat and Cowork before
+   claiming those surfaces;
 4. verify that the plugin exposes exactly one Skill and one SkillPilot connector
    and that both MCP Apps are available through that connector;
 5. verify that each new learner session still starts only at
    `https://skillpilot.com/`, while OAuth may remain connected;
-6. verify that the plugin-bundled connector and a separately connected
-   SkillPilot Directory connector are not enabled together and do not expose
-   duplicate SkillPilot tool sets; and
-7. submit the public repository or package through Anthropic's plugin workflow
-   with its own sanitized evidence.
+6. verify that plugin and Directory installations referencing
+   `https://mcp-claude-v1.skillpilot.com/mcp` may coexist while Claude exposes
+   one SkillPilot tool set for the shared server, and that no additional manual
+   custom connector is configured for that same URL;
+7. publish the plugin source in the approved public GitHub repository and
+   confirm that the submitted repository path contains no credentials, learner
+   sessions, learner data or protected answers; and
+8. submit that public GitHub source through the Anthropic Console plugin
+   workflow as a Developer, Admin or Owner of the submitting Console
+   organization, with its own sanitized evidence.
+
+Plugin review, approval and publication are external Anthropic actions. Do not
+mark the plugin public merely because local checks or upload tests pass. After
+publication, compatible GitHub updates remain subject to Anthropic's screening
+and the plugin's own SemVer policy.
+
+Authoritative plugin references:
+
+- [Submit a plugin](https://claude.com/docs/plugins/submit)
+- [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 
 Compatible Skill-only improvements increment the plugin SemVer independently.
 A breaking MCP, OAuth, identity or state contract still requires a separately

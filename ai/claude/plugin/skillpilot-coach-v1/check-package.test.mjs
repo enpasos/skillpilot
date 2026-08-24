@@ -79,41 +79,66 @@ test("rejects incomplete coverage of the twelve-tool contract", () => {
   });
 });
 
-test("rejects loss of the duplicate-installation boundary", () => {
+test("rejects loss of same-server coexistence and custom-connector boundaries", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /Never enable a\s+Directory, custom and plugin-bundled SkillPilot connector together in the same\s+Claude surface or workspace/u,
-      "Enable every available SkillPilot connector together in the same Claude workspace",
+      /A plugin and Directory installation that reference this exact remote MCP URL may coexist;\s+Claude exposes one set of tools for the shared server/u,
+      "Plugin and Directory installations can never coexist",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /duplicate Directory, custom and plugin-bundled connector installations/u,
+      /same-server plugin and Directory coexistence/u,
     );
   });
 });
 
-test("rejects routing normal Claude Web through the plugin package", () => {
+test("rejects loss of the paid Web, Desktop and Cowork plugin contract", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      "Do not upload or install this plugin package in normal Claude Web",
-      "Install this plugin package in normal Claude Web",
+      /The public SkillPilot plugin is the preferred complete\s+installation for eligible paid Claude Web chat, Desktop Chat and Cowork\s+users/u,
+      "The public SkillPilot plugin is optional for a few unspecified Claude users",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /normal Claude Web through the Connectors Directory/u,
+      /preferred complete paid Web\/Desktop\/Cowork installation/u,
     );
   });
 });
 
-test("rejects loss of the Cowork and Claude Code plugin scope", () => {
+test("rejects loss of the Skill surface and Cowork-only capability boundary", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      "plugin package is scoped to Claude Cowork and Claude Code",
-      "plugin package is scoped to every Claude surface",
+      /The SkillPilot coaching Skill works in paid Claude Web chat, Desktop Chat and\s+Cowork/u,
+      "The SkillPilot coaching Skill works only in Cowork",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /scope the plugin package to Claude Cowork and Claude Code/u,
+      /Skill on paid Web\/Desktop\/Cowork/u,
+    );
+  });
+});
+
+test("rejects loss of the independent Connector Directory lane", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replace(
+      /The Connectors Directory remains a\s+separate connector-only distribution route with its own Team\/Enterprise\s+submission gate and is not a prerequisite for plugin submission/u,
+      "The Connectors Directory submission is required before plugin submission",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /independent Connector Directory lane/u,
+    );
+  });
+});
+
+test("rejects Claude Free or native-mobile plugin claims", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value
+      .replace("The plugin is not available on Claude Free", "The plugin is available on Claude Free")
+      .replace("does not claim native mobile plugin support", "claims native mobile plugin support"));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /reject Claude Free and native-mobile plugin claims/u,
     );
   });
 });
@@ -129,6 +154,25 @@ test("rejects attribution of connector tools or UIs to the plugin shell", () => 
       /attribute all tools and interactive UIs to the connector/u,
     );
   });
+});
+
+test("rejects appended contradictory Claude distribution claims", () => {
+  for (const [name, appendedClaim] of [
+    ["Claude Free", "The SkillPilot plugin is available on Claude Free."],
+    ["native mobile", "The SkillPilot plugin supports native-mobile plugin support."],
+    ["coexistence prohibition", "Plugin and Directory installations must never coexist."],
+    ["plugin tool ownership", "The plugin shell owns all twelve tools and both MCP Apps UIs."],
+  ]) {
+    withPackageCopy((root) => {
+      mutate(root, "SETUP.md", (value) => `${value}\n${appendedClaim}\n`);
+      assert.ok(
+        validateClaudePluginPackage(root).errors.some((error) => (
+          error.includes("forbidden contradictory Claude distribution claim")
+        )),
+        `${name} append-only contradiction must be rejected`,
+      );
+    });
+  }
 });
 
 function withPackageCopy(callback) {

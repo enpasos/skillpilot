@@ -1,9 +1,10 @@
 # SkillPilot Claude Connector v1 release dossier
 
-This directory is the source of truth for the SkillPilot remote-MCP submission
-to the Claude Connectors Directory. It is provider-specific and must not change
-the submitted OpenAI V1 package, runtime contract, reviewer fixtures or portal
-values.
+This directory is the source of truth for the independent SkillPilot remote-MCP
+submission to the Claude Connectors Directory. That connector-only publication
+lane is separate from the public SkillPilot plugin. It is provider-specific and
+must not change the submitted OpenAI V1 package, runtime contract, reviewer
+fixtures or portal values.
 
 ## Current state
 
@@ -16,9 +17,9 @@ and cannot approve the rebuilt candidate. This dossier remains
 `release-gates.json` is `pass` against the final candidate and the strict
 readiness check succeeds.
 
-The current candidate deliberately claims Claude.ai only. Claude Code support
-exists in the implementation but is outside the directory claim until that
-client has its own recorded acceptance run.
+The current connector-only Directory candidate deliberately claims Claude.ai
+only. Claude Code support exists in the implementation but is outside that
+Directory claim until that client has its own recorded acceptance run.
 
 ## Stable decisions
 
@@ -38,12 +39,20 @@ client has its own recorded acceptance run.
 - The selected Claude start opens only Claude Web. Its composer is prefilled
   through exactly one `q` parameter; the learner reviews and sends the message
   explicitly. There is no automatic send or desktop launch route.
-- The Connectors Directory entry is the normal installation path for Claude
-  Web. It provides the twelve SkillPilot tools and both connector-supplied MCP
-  Apps UIs after OAuth connection.
-- A separately published optional plugin may bundle the coaching Skill with the
-  same remote connector for Cowork and Claude Code. It is not required for
-  Claude Web and does not gate the Connectors Directory submission.
+- The public SkillPilot plugin is the preferred complete installation for
+  eligible paid Claude Web chat, Desktop Chat and Cowork users. It bundles the
+  coaching Skill with a declaration for this same remote connector; the
+  connector continues to own the twelve SkillPilot tools and both MCP Apps UIs.
+- The Connectors Directory entry is an independent connector-only distribution
+  route. It provides the same twelve tools and two UIs after OAuth, but not the
+  coaching Skill. Its Team/Enterprise publisher gate does not apply to plugin
+  submission, and Directory publication is not a prerequisite for the plugin.
+- The plugin and published Directory entry may coexist when both reference
+  `https://mcp-claude-v1.skillpilot.com/mcp`; Claude exposes one SkillPilot tool
+  set for that shared server. Do not add a separate manual custom SkillPilot
+  connector with the same URL when either route already supplies it.
+- SkillPilot's Claude integration targets adults aged 18 or older. The plugin
+  is not available on Claude Free and makes no native mobile-plugin claim.
 - Public documentation:
   `https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/`
 - Connector privacy policy:
@@ -164,6 +173,8 @@ or enforces MCP SemVer.
 
 ## Authoritative external references
 
+- [Plugin submission](https://claude.com/docs/plugins/submit)
+- [Using plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
 - [Directory submission](https://claude.com/docs/connectors/building/submission)
 - [Pre-submission criteria](https://claude.com/docs/connectors/building/review-criteria)
 - [Connector testing](https://claude.com/docs/connectors/building/testing)
