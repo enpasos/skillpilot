@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
   copyFileSync,
@@ -16,6 +17,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   calculateCandidateContractSha256,
+  sha256ContractTree,
   validateClaudeWebStartImplementation,
   validateClaudeWebStartReviewEvidence,
   validateClaudeDistributionClaimSafety,
@@ -666,6 +668,57 @@ test("candidate contract digest changes when a pinned file digest changes", () =
     ),
     baseline.candidateContractSha256,
   );
+});
+
+test("candidate contract digest uses deterministic code-unit ordering", () => {
+  const baseRevision = "1".repeat(40);
+  const files = [
+    { path: "ai/claude/app/a.md", sha256: "a".repeat(64) },
+    { path: "ai/claude/app/README.md", sha256: "b".repeat(64) },
+  ];
+  const trees = [
+    { path: "ai/claude/app/z", sha256: "c".repeat(64) },
+    { path: "ai/claude/app/Assets", sha256: "d".repeat(64) },
+  ];
+  const expectedRecords = [
+    `base:${baseRevision}\n`,
+    `file:ai/claude/app/README.md\0${"b".repeat(64)}\n`,
+    `file:ai/claude/app/a.md\0${"a".repeat(64)}\n`,
+    `tree:ai/claude/app/Assets\0${"d".repeat(64)}\n`,
+    `tree:ai/claude/app/z\0${"c".repeat(64)}\n`,
+  ].join("");
+
+  assert.equal(
+    calculateCandidateContractSha256(files, trees, baseRevision),
+    sha256(expectedRecords),
+  );
+});
+
+test("contract tree digest uses deterministic code-unit ordering", () => {
+  const fixtureRoot = mkdtempSync(resolve(tmpdir(), "skillpilot-claude-tree-order-"));
+  try {
+    execFileSync("git", ["init", "--quiet"], { cwd: fixtureRoot });
+    const treePath = "ai/claude/app";
+    const absoluteTree = resolve(fixtureRoot, treePath);
+    mkdirSync(absoluteTree, { recursive: true });
+    writeFileSync(resolve(absoluteTree, "a.md"), "lowercase\n", "utf8");
+    writeFileSync(resolve(absoluteTree, "README.md"), "uppercase\n", "utf8");
+    execFileSync("git", ["add", "--", treePath], { cwd: fixtureRoot });
+
+    const expectedRecords = ["README.md", "a.md"]
+      .map((path) => {
+        const bytes = readFileSync(resolve(absoluteTree, path));
+        return `${path}\0${bytes.length}\0${sha256(bytes)}\n`;
+      })
+      .join("");
+
+    assert.equal(
+      sha256ContractTree(fixtureRoot, treePath),
+      sha256(expectedRecords),
+    );
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
 });
 
 function readyFixture() {
