@@ -5,18 +5,21 @@ SkillPilot-ID bleibt dabei vollständig in SkillPilot. Claude erhält weder eine
 ID-Datei noch ihr Passwort.
 
 > **Stand:** Claude v1 wird noch für die öffentliche Veröffentlichung
-> vorbereitet. Nach der Freigabe ist das Plugin der empfohlene Installationsweg.
+> vorbereitet. Nach der Freigabe ist der Eintrag im Connectors Directory der
+> normale Installationsweg für Claude Web.
 
 ## Einmal installieren
 
-1. Öffne in Claude **Plugins** und installiere **SkillPilot coach v1**.
-2. Wähle beim SkillPilot-Konnektor **Verbinden**.
+1. Öffne in Claude Web **Konnektoren** und suche im Connectors Directory nach
+   **SkillPilot**.
+2. Wähle bei SkillPilot **Verbinden**.
 3. Bestätige den OAuth-Zugriff.
 
-Das Plugin installiert Skill und Konnektor gemeinsam. Der Konnektor stellt auch
-die beiden interaktiven Oberflächen für Lernzielbilder und Karteikarten bereit.
-Eine getrennte Installation von Skill und Konnektor ist nur ein technischer
-Ersatzweg und bietet keine zusätzlichen Funktionen.
+Der Directory-Konnektor stellt die SkillPilot-Werkzeuge und beide interaktiven
+Oberflächen für Lernzielbilder und Karteikarten in Claude Web bereit. Ein
+separat veröffentlichtes Plugin kann den wiederverwendbaren Coaching-Skill mit
+demselben entfernten Konnektor für Cowork und Claude Code bündeln. Dieses Plugin
+ist optional und für Claude Web nicht erforderlich.
 
 OAuth hält lediglich die technische Verbindung bereit. Der optionale Zugriff
 `offline_access` enthält keine Lernenden-ID und startet oder verlängert keine
@@ -67,8 +70,8 @@ Toolnamen oder Zustandsversionen nicht in normale Lernantworten mischen.
 
 ## Wenn etwas nicht funktioniert
 
-- **SkillPilot wird nicht gefunden:** Prüfe, ob das Plugin eingeschaltet und
-  sein Konnektor verbunden ist.
+- **SkillPilot wird nicht gefunden:** Prüfe, ob der SkillPilot-Konnektor in
+  Claude Web verbunden ist.
 - **Die Sitzung ist abgelaufen:** Öffne
   [Lernen starten](https://skillpilot.com/) erneut. Eine
   24-Stunden-Sitzung wird nie durch OAuth verlängert.

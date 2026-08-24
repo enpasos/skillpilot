@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Submission carousel for the two real SkillPilot Claude MCP Apps. The PNGs contain synthetic fixture data and only the rendered app response.",
+  "generatedBy": "scripts/capture_claude_mcp_app_carousel.mjs",
+  "captureHost": "local-standards-compatible-mcp-app-host",
+  "targetSurface": "Claude.ai",
+  "sourceRevision": "8e05feb4c6480edd7a17a42ac85e990bb3c430bd",
+  "sourceDate": "2026-08-24",
+  "sourceAppManifest": "ai/claude/connector-v1/assets/carousel/source-app-manifest.json",
+  "sourceAppManifestSha256": "2f3de1952dd6ce71d5d652c052d44e6799b5c495643ba115eb9d057d6d539846",
+  "assets": [
+    {
+      "id": "goal-visualization-de",
+      "path": "ai/claude/connector-v1/assets/carousel/01-goal-visualization.png",
+      "sha256": "cb205879df80ad518173295f1ad19cd99509c51c9cbc3a9ad9a146a6505d053c",
+      "width": 1200,
+      "height": 380,
+      "format": "PNG",
+      "locale": "de-DE",
+      "surface": "Claude.ai",
+      "toolName": "render_skillpilot_goal_visualization",
+      "resourceName": "skillpilot-claude-goal-visualization-v1",
+      "resourceUri": "ui://skillpilot/claude/connector/v1/sha256-80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4/goal-visualization.html",
+      "sourceResourceSha256": "80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4",
+      "pairedPrompt": "Nutze SkillPilot, lade meinen aktuellen Lernkontext und zeige mir die freigegebene Lernzielvisualisierung für mein aktives Ziel. Ändere nichts.",
+      "interaction": "initial MCP App response",
+      "fixture": "synthetic-authorized-adult-release-fixture",
+      "attestations": {
+        "appResponseOnly": true,
+        "promptExcluded": true,
+        "browserChromeExcluded": true,
+        "temporaryLearningSessionExcluded": true,
+        "permanentLearnerIdExcluded": true,
+        "learnerDataExcluded": true,
+        "oauthValuesExcluded": true,
+        "protectedAnswersExcluded": true
+      },
+      "approvals": {
+        "product": "pending",
+        "qa": "pending",
+        "legal": "pending"
+      }
+    },
+    {
+      "id": "memory-practice-question-de",
+      "path": "ai/claude/connector-v1/assets/carousel/02-memory-practice-question.png",
+      "sha256": "1605a61ced2c5d6f895baf5b7588c78c7f7ce37cb3864f771f01754173148cac",
+      "width": 1200,
+      "height": 447,
+      "format": "PNG",
+      "locale": "de-DE",
+      "surface": "Claude.ai",
+      "toolName": "start_skillpilot_memory_practice",
+      "resourceName": "skillpilot-claude-memory-card-practice-v1",
+      "resourceUri": "ui://skillpilot/claude/connector/v1/sha256-2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f/memory-card-practice.html",
+      "sourceResourceSha256": "2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f",
+      "pairedPrompt": "Starte die normale SkillPilot-Karteikartenübung für mein aktives Lernkartenziel. Verwende keinen Verified Recall und ändere keine Meisterung.",
+      "interaction": "initial MCP App response",
+      "fixture": "synthetic-authorized-adult-release-fixture",
+      "attestations": {
+        "appResponseOnly": true,
+        "promptExcluded": true,
+        "browserChromeExcluded": true,
+        "temporaryLearningSessionExcluded": true,
+        "permanentLearnerIdExcluded": true,
+        "learnerDataExcluded": true,
+        "oauthValuesExcluded": true,
+        "protectedAnswersExcluded": true
+      },
+      "approvals": {
+        "product": "pending",
+        "qa": "pending",
+        "legal": "pending"
+      }
+    },
+    {
+      "id": "memory-practice-answer-de",
+      "path": "ai/claude/connector-v1/assets/carousel/03-memory-practice-answer.png",
+      "sha256": "171319f54907e458ac85224ca410f30c5a6b41150c4caae8a7f676f6b69a09c5",
+      "width": 1200,
+      "height": 447,
+      "format": "PNG",
+      "locale": "de-DE",
+      "surface": "Claude.ai",
+      "toolName": "start_skillpilot_memory_practice",
+      "resourceName": "skillpilot-claude-memory-card-practice-v1",
+      "resourceUri": "ui://skillpilot/claude/connector/v1/sha256-2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f/memory-card-practice.html",
+      "sourceResourceSha256": "2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f",
+      "pairedPrompt": "Starte die normale SkillPilot-Karteikartenübung für mein aktives Lernkartenziel. Verwende keinen Verified Recall und ändere keine Meisterung.",
+      "interaction": "learner selected Antwort zeigen inside the MCP App",
+      "fixture": "synthetic-authorized-adult-release-fixture",
+      "attestations": {
+        "appResponseOnly": true,
+        "promptExcluded": true,
+        "browserChromeExcluded": true,
+        "temporaryLearningSessionExcluded": true,
+        "permanentLearnerIdExcluded": true,
+        "learnerDataExcluded": true,
+        "oauthValuesExcluded": true,
+        "protectedAnswersExcluded": true
+      },
+      "approvals": {
+        "product": "pending",
+        "qa": "pending",
+        "legal": "pending"
+      }
+    }
+  ]
+}

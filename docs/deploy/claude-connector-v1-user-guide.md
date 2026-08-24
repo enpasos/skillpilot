@@ -5,18 +5,21 @@ SkillPilot ID remains entirely inside SkillPilot. Claude receives neither an ID
 file nor its password.
 
 > **Status:** Claude v1 is still being prepared for public release. After
-> approval, the plugin is the recommended installation path.
+> approval, the Connectors Directory entry is the normal installation path for
+> Claude Web.
 
 ## Install once
 
-1. Open **Plugins** in Claude and install **SkillPilot coach v1**.
-2. Select **Connect** for its SkillPilot connector.
+1. Open **Connectors** in Claude Web and find **SkillPilot** in the Connectors
+   Directory.
+2. Select **Connect** for SkillPilot.
 3. Approve the OAuth connection.
 
-The plugin installs the Skill and connector together. The connector also
-provides both interactive UIs for learning-goal images and flashcard practice.
-Installing the Skill and connector separately is only a technical fallback and
-adds no capability.
+The Directory connector provides the SkillPilot tools and both interactive UIs
+for learning-goal images and flashcard practice in Claude Web. A separately
+published plugin may bundle the reusable coaching Skill with the same remote
+connector for Cowork and Claude Code. That plugin is optional and is not
+required for Claude Web.
 
 OAuth keeps only the technical connector transport available. Optional
 `offline_access` contains no learner identity and neither starts nor extends a
@@ -66,8 +69,8 @@ IDs, tool names and state versions out of ordinary learning responses.
 
 ## Troubleshooting
 
-- **SkillPilot is not available:** Check that the plugin is enabled and its
-  connector is connected.
+- **SkillPilot is not available:** Check that the SkillPilot connector is
+  connected in Claude Web.
 - **The session expired:** Open
   [Start learning](https://skillpilot.com/) again. OAuth never
   extends the 24-hour learner session.

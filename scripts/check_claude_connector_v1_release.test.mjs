@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   copyFileSync,
   existsSync,
@@ -6,6 +7,7 @@ import {
   mkdtempSync,
   readFileSync,
   rmSync,
+  symlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -16,6 +18,8 @@ import {
   calculateCandidateContractSha256,
   validateClaudeWebStartImplementation,
   validateClaudeWebStartReviewEvidence,
+  validateClaudeDistributionDocumentation,
+  validateMcpAppCarousel,
   validateClaudeReleaseState,
   verifyClaudeConnectorV1Release,
 } from "./check_claude_connector_v1_release.mjs";
@@ -227,6 +231,34 @@ test("retired Claude learner-binding and standalone-start surfaces stay absent",
   }
 });
 
+test("Claude Web distribution stays Directory-first and keeps the plugin optional", () => {
+  const concept = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-concept.md"),
+    "utf8",
+  );
+  const implementationPlan = readFileSync(
+    resolve(repositoryRoot, "docs/deploy/claude-connector-v1-implementation-plan.md"),
+    "utf8",
+  );
+
+  assert.deepEqual(
+    validateClaudeDistributionDocumentation(concept, implementationPlan),
+    [],
+  );
+
+  const legacyConcept = `${concept}\nThe Claude plugin is the preferred one-time installation for Claude Web.\n`;
+  assert.ok(
+    validateClaudeDistributionDocumentation(legacyConcept, implementationPlan)
+      .some((error) => error.includes("preferred Web installation")),
+  );
+
+  const legacyPlan = `${implementationPlan}\nDas Claude-Plugin als bevorzugte Einmal-Installation für Claude Web.\n`;
+  assert.ok(
+    validateClaudeDistributionDocumentation(concept, legacyPlan)
+      .some((error) => error.includes("preferred Web installation")),
+  );
+});
+
 test("Claude v1 dossier is a structurally valid pre-submission candidate", () => {
   const result = verifyClaudeConnectorV1Release({ repositoryRoot });
 
@@ -239,6 +271,148 @@ test("Claude v1 dossier is a structurally valid pre-submission candidate", () =>
   assert.equal(result.toolCount, 12);
   assert.equal(result.requiredGateCount, 23);
   assert.equal(result.blockers.length, result.requiredPendingCount);
+});
+
+test("Claude MCP App carousel is reproducible, private and approval-gated", () => {
+  const manifest = readJson(
+    "ai/claude/connector-v1/assets/carousel/manifest.json",
+  );
+  const appManifest = readJson(manifest.sourceAppManifest);
+
+  assert.deepEqual(validateMcpAppCarousel({
+    repositoryRoot,
+    manifest,
+    appManifest,
+  }), []);
+  assert.ok(validateMcpAppCarousel({
+    repositoryRoot,
+    manifest,
+    appManifest,
+    submissionReady: true,
+  }).some((error) => error.includes("Product, QA and Legal approval")));
+
+  const approved = structuredClone(manifest);
+  for (const asset of approved.assets) {
+    asset.approvals = { product: "approved", qa: "approved", legal: "approved" };
+  }
+  assert.deepEqual(validateMcpAppCarousel({
+    repositoryRoot,
+    manifest: approved,
+    appManifest,
+    submissionReady: true,
+  }), []);
+
+  for (const [name, mutate, expected] of [
+    [
+      "too few assets",
+      (fixture) => fixture.assets.splice(2),
+      "between 3 and 5",
+    ],
+    [
+      "path traversal",
+      (fixture) => { fixture.assets[0].path = "ai/claude/connector-v1/assets/carousel/../icon-512.png"; },
+      "direct PNG child",
+    ],
+    [
+      "digest mismatch",
+      (fixture) => { fixture.assets[0].sha256 = "0".repeat(64); },
+      "hash differs",
+    ],
+    [
+      "dimension mismatch",
+      (fixture) => { fixture.assets[0].width += 1; },
+      "dimensions differ",
+    ],
+    [
+      "blank prompt",
+      (fixture) => { fixture.assets[0].pairedPrompt = " "; },
+      "paired prompt",
+    ],
+    [
+      "private session marker",
+      (fixture) => { fixture.assets[0].pairedPrompt += " spc_secret"; },
+      "forbidden private value",
+    ],
+    [
+      "false attestation",
+      (fixture) => { fixture.assets[0].attestations.learnerDataExcluded = false; },
+      "privacy attestation",
+    ],
+    [
+      "only one MCP App",
+      (fixture) => {
+        for (const asset of fixture.assets) {
+          asset.toolName = "start_skillpilot_memory_practice";
+          asset.resourceName = fixture.assets[1].resourceName;
+          asset.resourceUri = fixture.assets[1].resourceUri;
+          asset.sourceResourceSha256 = fixture.assets[1].sourceResourceSha256;
+        }
+      },
+      "both active SkillPilot MCP Apps",
+    ],
+  ]) {
+    const fixture = structuredClone(manifest);
+    mutate(fixture);
+    const errors = validateMcpAppCarousel({
+      repositoryRoot,
+      manifest: fixture,
+      appManifest,
+    });
+    assert.ok(
+      errors.some((error) => error.includes(expected)),
+      `${name} must be rejected: ${errors.join(" | ")}`,
+    );
+  }
+
+  const fixtureRoot = createCarouselFixture(manifest, appManifest);
+  try {
+    assert.equal(
+      existsSync(resolve(fixtureRoot, "ai/claude/app/dist/manifest.json")),
+      false,
+      "clean-checkout carousel validation must not depend on ignored dist files",
+    );
+    assert.deepEqual(validateMcpAppCarousel({
+      repositoryRoot: fixtureRoot,
+      manifest,
+      appManifest,
+    }), []);
+
+    const wrongClasspathManifest = structuredClone(appManifest);
+    wrongClasspathManifest.resources[0].classpathPath =
+      "backend/src/main/resources/claude-connector-v1/mcp-apps/wrong.html";
+    assert.ok(validateMcpAppCarousel({
+      repositoryRoot: fixtureRoot,
+      manifest,
+      appManifest: wrongClasspathManifest,
+    }).some((error) => error.includes("wrong deployed MCP App resource")));
+
+    const narrow = structuredClone(manifest);
+    const narrowPath = resolve(fixtureRoot, narrow.assets[0].path);
+    const narrowBytes = readFileSync(narrowPath);
+    narrowBytes.writeUInt32BE(999, 16);
+    writeFileSync(narrowPath, narrowBytes);
+    narrow.assets[0].width = 999;
+    narrow.assets[0].sha256 = sha256(narrowBytes);
+    assert.ok(validateMcpAppCarousel({
+      repositoryRoot: fixtureRoot,
+      manifest: narrow,
+      appManifest,
+    }).some((error) => error.includes("at least 1000 pixels wide")));
+
+    copyFileSync(
+      resolve(repositoryRoot, manifest.assets[0].path),
+      narrowPath,
+    );
+    rmSync(narrowPath);
+    symlinkSync(resolve(repositoryRoot, manifest.assets[0].path), narrowPath);
+    assert.ok(validateMcpAppCarousel({
+      repositoryRoot: fixtureRoot,
+      manifest,
+      appManifest,
+    }).some((error) => error.includes("non-symlink")));
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
 });
 
 test("malformed retained-resource JSON is reported as a structured failure", () => {
@@ -450,6 +624,27 @@ function addLifecycleEvidence(fixture, id, lifecycleState) {
     approvedBy: "unit-test",
     approvedAt: "2026-08-23T12:00:00Z",
   });
+}
+
+function createCarouselFixture(manifest, appManifest) {
+  const fixtureRoot = mkdtempSync(
+    resolve(tmpdir(), "skillpilot-claude-carousel-"),
+  );
+  const paths = [
+    manifest.sourceAppManifest,
+    ...manifest.assets.map((asset) => asset.path),
+    ...appManifest.resources.map((resource) => resource.classpathPath),
+  ];
+  for (const path of new Set(paths)) {
+    const destination = resolve(fixtureRoot, path);
+    mkdirSync(dirname(destination), { recursive: true });
+    copyFileSync(resolve(repositoryRoot, path), destination);
+  }
+  return fixtureRoot;
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 function readJson(path) {

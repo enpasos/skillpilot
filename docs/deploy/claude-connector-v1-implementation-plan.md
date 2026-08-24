@@ -57,9 +57,11 @@ Claude mit folgenden Eigenschaften:
 - zwei content-addressed MCP Apps für das freigegebene Lernzielbild und private
   normale Karteikartenübung; Kartenbewertungen ändern nur den
   Wiederholungsplan, niemals Mastery;
-- das Claude-Plugin als bevorzugte Einmal-Installation mit Skill und demselben
-  Remote-MCP-Server; beide MCP Apps kommen über den Connector, eine getrennte
-  Installation bleibt nur Fallback ohne Funktionsvorteil;
+- den Connectors-Directory-Eintrag als bevorzugte Einmal-Installation für
+  Claude Web; der Remote-MCP-Server liefert alle zwölf Tools und beide MCP Apps;
+- das separate Claude-Plugin als optionalen Begleiter für Claude Code und
+  Cowork; es ergänzt den Skill, verweist auf denselben Connector und ist keine
+  Voraussetzung des Claude-Web-Kandidaten;
 - jede Lernsitzung startet ausschließlich über
   `https://skillpilot.com/` im gemeinsamen SkillPilot-Webstart;
   die lernende Person wählt dort sichtbar ID, Curriculum, persönliches
@@ -674,15 +676,15 @@ Veröffentlichung belegen.
 **Real-Client-Abnahme:**
 
 - alle zwölf Toolpfade und beide Ressourcen mit MCP Inspector prüfen;
-- eine reale Hosted-Claude-Plugin-Installation testen; den Remote-Connector
-  zusätzlich separat als Custom Connector prüfen, soweit dies für die
-  Directory-Abnahme erforderlich ist;
+- den finalen Remote-Connector in einer realen Hosted-Claude-Web-Umgebung über
+  den Custom-Connector-Weg prüfen; nach Verfügbarkeit zusätzlich den
+  Directory-Eintrag gegen denselben Endpoint testen;
 - beide MCP Apps in Hosted Claude mit privaten Kartenmetadaten und app-only
   Review testen;
-- den bevorzugten Plugin-Installationsweg mit Skill, genau einem Connector und
-  beiden connectorgelieferten MCP Apps testen;
-- Claude Code und Cowork nur dann separat testen und beanspruchen, wenn diese
-  Oberflächen veröffentlicht werden sollen;
+- sicherstellen, dass Claude Web mit genau einem Connector alle zwölf Tools und
+  beide connectorgelieferten MCP Apps erreicht und kein Plugin voraussetzt;
+- das optionale Plugin in Claude Code und Cowork nur dann separat testen und
+  beanspruchen, wenn diese Oberflächen veröffentlicht werden sollen;
 - DE- und EN-Coaching, Konflikt, Recall, Exam, Revocation und Reconnect testen;
 - mit vollständig bestücktem, wegwerfbarem Erwachsenen-Testlearner testen;
 - keine echten Lernenden- oder Produktiv-Credentials im Mitschnitt verwenden.
@@ -848,21 +850,22 @@ wenn alle folgenden Punkte erfüllt sind:
 - Product Owner hat die konkrete Produktionsaktivierung ausdrücklich
   freigegeben.
 
-### 9.1 Definition of Done des bevorzugten Plugin-Wegs
+### 9.1 Definition of Done des optionalen Plugin-Wegs
 
-Das Plugin ist der bevorzugte Einmal-Installationsweg für den Claude.ai-
-Kandidaten. Claude Code und Cowork sind zusätzliche Oberflächen und nicht Teil
-des aktuellen Directory-v1-Claims. Das Plugin darf erst veröffentlicht werden,
-wenn:
+Der Connectors-Directory-Eintrag ist der bevorzugte Einmal-Installationsweg für
+Claude Web. Das Plugin ist davon unabhängig und nur ein optionaler Begleiter
+für Claude Code und Cowork. Es ist weder Voraussetzung noch Release-Gate des
+aktuellen Directory-v1-Kandidaten. Das Plugin darf für diese zusätzlichen
+Oberflächen erst veröffentlicht werden, wenn:
 
 - der lokale Paketcheck und die offizielle Prüfung mit
   `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` bestehen;
 - Installation, OAuth, First-Party-Start, alle zwölf Tools und beide MCP Apps
-  in einer frischen beanspruchten Claude.ai-Umgebung getestet wurden;
+  in jeder tatsächlich beanspruchten Plugin-Oberfläche getestet wurden;
 - Skill und Connector genau einmal installiert sind und die beiden MCP Apps
   über den Connector bereitstehen;
-- eine unterstützte Fallback-Installation kein doppeltes oder abweichendes
-  SkillPilot-Toolset erzeugt;
+- die parallele Installation zum Directory-Connector kein doppeltes oder
+  abweichendes SkillPilot-Toolset erzeugt;
 - Claude Code und Cowork jeweils separat vollständig getestet wurden, bevor die
   Plugin-Dokumentation diese Oberflächen beansprucht;
 - die Plugin-Dokumentation ausschließlich die tatsächlich belegten Clients und

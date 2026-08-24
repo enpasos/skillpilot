@@ -27,7 +27,7 @@ client has its own recorded acceptance run.
 - Transport: Streamable HTTP
 - Authentication: OAuth 2.0 with Client ID Metadata Documents and PKCE S256
 - OAuth is the long-lived technical connector transport. `offline_access` may
-  keep the plugin connected, but contains and selects no learner identity and
+  keep the connector connected, but contains and selects no learner identity and
   cannot mint, renew or extend a learner session.
 - Every learner session starts at
   `https://skillpilot.com/`. The shared first-party web start
@@ -38,10 +38,12 @@ client has its own recorded acceptance run.
 - The selected Claude start opens only Claude Web. Its composer is prefilled
   through exactly one `q` parameter; the learner reviews and sends the message
   explicitly. There is no automatic send or desktop launch route.
-- The plugin is the preferred one-time installation because it bundles the
-  coaching Skill and connector. Both MCP Apps UIs are supplied by that
-  connector. Separate Skill-plus-connector installation is only a fallback and
-  provides no additional capability.
+- The Connectors Directory entry is the normal installation path for Claude
+  Web. It provides the twelve SkillPilot tools and both connector-supplied MCP
+  Apps UIs after OAuth connection.
+- A separately published optional plugin may bundle the coaching Skill with the
+  same remote connector for Cowork and Claude Code. It is not required for
+  Claude Web and does not gate the Connectors Directory submission.
 - Public documentation:
   `https://enpasos.github.io/skillpilot/deploy/claude-connector-v1-user-guide/`
 - Connector privacy policy:
@@ -62,7 +64,7 @@ current endpoint.
 ## Files
 
 - `directory-listing.json` contains the copy and structured answers for the
-  portal.
+  portal and points to the sanitized carousel manifest under `assets/carousel/`.
 - `release-gates.json` records automated, operational, legal and external
   acceptance gates.
 - `release/contract-baseline.json` pins the reviewed candidate bytes and fails
@@ -120,8 +122,8 @@ manual test as passed.
 
 1. Confirm Team or Enterprise organization access and Directory-management
    rights.
-2. Re-run every tool in the pinned MCP Inspector and in a fresh Claude custom
-   connector using the final public endpoint.
+2. Re-run every tool in the pinned MCP Inspector and in a fresh Claude Web
+   Directory connector candidate using the final public endpoint.
 3. Complete the reviewer account and reset procedure through the secure
    handoff described in `reviewer-access.template.md`.
 4. Obtain Product, Legal, Security and Operations approval. In particular,

@@ -1,30 +1,40 @@
 # Set up SkillPilot Coach
 
-## Recommended integrated install
+## Choose exactly one connector route
 
-The **SkillPilot Coach** plugin bundles this coaching Skill and the remote
-SkillPilot connector into one installation. The connector supplies the MCP
-tools and both interactive MCP Apps. This plugin is therefore the preferred
-installation path whenever Plugins are available for the account. Anthropic
-currently documents plugins for paid Claude plans in web Chat, the Chat tab in
-Claude Desktop and Claude Cowork.
+SkillPilot has two deliberately separate Claude installation routes:
 
-1. If a separately uploaded SkillPilot Skill or custom SkillPilot connector is
-   already active, disable it before installing the plugin. Do not enable the
-   bundled and standalone variants at the same time.
-2. Until the public directory entry is available, open **Customize > Plugins**
-   and upload `skillpilot-coach-v1.plugin`. After publication, browse for
-   **SkillPilot Coach** there and select **Install** instead.
-3. Connect the bundled connector once through the normal OAuth flow. The
-   `offline_access` scope keeps this technical plugin connection available; it
-   contains no learner identity and selects no SkillPilot learning profile.
-4. Open <https://skillpilot.com/> in the first-party SkillPilot
-   WebGUI. In the shared web start, visibly choose or load the SkillPilot ID,
-   confirm the curriculum and Personal Curriculum, then explicitly choose
-   **Mit Claude starten**. SkillPilot creates a fresh opaque `spc_...`
-   learning-session value that is valid for exactly 24 hours and prepares the
-   Claude start prompt. The permanent SkillPilot ID remains inside SkillPilot.
-5. SkillPilot opens Claude Web with its generated start prompt already filled
+- **Normal Claude Web:** use the published **SkillPilot** entry in the
+  **Connectors Directory**. This is the normal learner-facing browser route.
+  Do not upload or install this plugin package in normal Claude Web.
+- **Claude Cowork and Claude Code:** use `skillpilot-coach-v1.plugin`. The
+  plugin package is scoped to Claude Cowork and Claude Code; it contains the
+  coaching Skill and one declaration for the remote SkillPilot connector.
+
+The routes are alternatives, not cumulative installation steps. Never enable a
+Directory, custom and plugin-bundled SkillPilot connector together in the same
+Claude surface or workspace. If Anthropic already exposes an existing
+SkillPilot connector there, use that connection or disable it before installing
+the plugin. Do not enable the bundled and standalone variants at the same time.
+
+All twelve MCP tools and both interactive MCP Apps come from the remote
+SkillPilot connector. The Skill provides coaching instructions only. Neither
+the Skill nor the plugin shell implements or duplicates the tools or UIs.
+
+## Normal Claude Web through the Connectors Directory
+
+1. In Claude Web, open **Customize > Connectors**, find the published
+   **SkillPilot** entry in the Connectors Directory and select **Connect**.
+2. Complete the normal OAuth flow. The `offline_access` scope keeps this
+   technical connector connection available; it contains no learner identity
+   and selects no SkillPilot learning profile.
+3. Open <https://skillpilot.com/> in the first-party SkillPilot WebGUI. In the
+   shared web start, visibly choose or load the SkillPilot ID, confirm the
+   curriculum and Personal Curriculum, then explicitly choose **Mit Claude
+   starten**. SkillPilot creates a fresh opaque `spc_...` learning-session value
+   that is valid for exactly 24 hours and prepares the Claude start prompt. The
+   permanent SkillPilot ID remains inside SkillPilot.
+4. SkillPilot opens Claude Web with its generated start prompt already filled
    into the composer. Review it and select **Send**; do not manually transport
    the prompt. Claude may show its warning for externally supplied input. For
    example, the learning request begins with:
@@ -36,36 +46,35 @@ Every SkillPilot tool call in that chat uses the generated `learningSessionId`.
 The Web handoff places it transiently in the exact `q` parameter of
 `https://claude.ai/new`; do not share that address, copy the value into other
 chats, publish it, or ask the learner to type it separately. When the 24 hours
-have elapsed, return to the first-party start page
-and create a new session. Reconnecting the plugin is normally unnecessary.
+have elapsed, return to the first-party start page and create a new session.
+Reconnect the Directory connector only if Claude reports that its technical
+OAuth connection is no longer active.
 
 The connector always requires OAuth. It needs no custom request headers and no
 manually registered client ID. OAuth authorizes only the technical connector
-transport; the separate 24-hour `spc_...` session authorizes learner access. A
-personally uploaded plugin may remain local to the Claude client that imported
-it; public cross-client availability is a separate directory-publication gate.
+transport; the separate 24-hour `spc_...` session authorizes learner access.
 
-## Standalone fallback
+## Plugin package for Claude Cowork and Claude Code
 
-On a Claude plan or surface where plugin installation is unavailable, install
-the standalone Skill ZIP and open **Customize > Connectors > Add custom
-connector** with:
+1. Confirm that no Directory or custom SkillPilot connector is active in the
+   target Cowork or Claude Code workspace. The package must not create a second
+   SkillPilot tool set beside an existing connection.
+2. Install `skillpilot-coach-v1.plugin` with the plugin installation flow
+   offered by Cowork or Claude Code. This package is not the normal Claude Web
+   installation artifact.
+3. Complete OAuth for the one bundled remote connector. The same separation
+   applies: OAuth persists only the technical connection and never chooses a
+   learner identity or Personal Curriculum.
 
-- URL: `https://mcp-claude-v1.skillpilot.com/mcp`
-- Authentication: **Always required**
-- OAuth client: **Anthropic-hosted client metadata**
-- Additional request headers: none
+The plugin contributes the coaching Skill to these two plugin-capable surfaces.
+It uses the connector-owned tools and MCP Apps without copying their schemas,
+resources or UI bytes into the plugin package. Public availability in normal
+Claude Web is provided independently by the Connectors Directory entry.
 
-Complete the same transport-only OAuth connection, then always start learning at
-<https://skillpilot.com/>. The standalone installation has no
-learning-session or UI advantage over the plugin; it exists only for accounts or
-surfaces where the integrated plugin cannot be installed.
-
-Do not additionally install this fallback when the full plugin is active. The
-connector currently targets adult users aged 18 or older. Availability of custom
-connectors, Skills and plugins on a particular Claude surface or plan is
-governed by Anthropic. This package does not claim native mobile-plugin support;
-use only a route that the current client actually offers.
+The connector currently targets adult users aged 18 or older. Availability of
+Connectors Directory entries, Cowork and Claude Code plugins on a particular
+plan or workspace is governed by Anthropic. This package does not claim native
+mobile-plugin support.
 
 ## If no learning context is available
 

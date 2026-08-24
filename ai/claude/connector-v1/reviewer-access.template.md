@@ -46,9 +46,9 @@ The profile is usable only when it contains:
 
 ## Connection and start steps
 
-1. Install the SkillPilot plugin once. This is the preferred path because it
-   supplies both the Skill and connector; the connector supplies both MCP Apps
-   UIs.
+1. Open the SkillPilot Connectors Directory candidate in Claude Web. This
+   connector-review flow does not require the separate Cowork/Claude Code
+   plugin.
 2. Connect the SkillPilot connector through OAuth. Verify the client, callback
    host and requested `skillpilot.read`, `skillpilot.write` and optional
    `offline_access` scopes.
