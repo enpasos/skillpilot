@@ -173,6 +173,7 @@ test("rejects attribution of connector tools or UIs to the plugin shell", () => 
 test("rejects appended contradictory Claude distribution claims", () => {
   for (const [name, appendedClaim] of [
     ["Claude Free", "The SkillPilot plugin is available on Claude Free."],
+    ["Android in-app installation", "The SkillPilot plugin can be installed from inside the Android app."],
     ["unqualified native mobile", "The SkillPilot plugin supports native-mobile plugin support."],
     ["iOS", "The SkillPilot plugin supports native Claude iOS Chat."],
     ["Claude Desktop Chat", "The SkillPilot plugin supports Claude Desktop Chat."],
@@ -203,6 +204,7 @@ test("allows explicit negative Claude surface boundaries", () => {
     "The SkillPilot plugin includes no Claude Cowork support.",
     "The SkillPilot plugin supports neither Claude Desktop Chat nor Cowork.",
     "The SkillPilot plugin supports paid Web and Android chat, not Claude Desktop Chat.",
+    "The SkillPilot plugin does not claim installation from inside the Android app.",
     "The SkillPilot plugin provides no support for Claude iOS Chat.",
   ]) {
     withPackageCopy((root) => {

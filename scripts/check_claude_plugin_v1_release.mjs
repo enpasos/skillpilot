@@ -334,6 +334,20 @@ export function verifyClaudePluginV1Release({
   blockers.push(...requiredPending.map((gate) => `${gate.id}: ${gate.status}`));
 
   const state = lifecycle?.state;
+  const submissionEvidenceId = lifecycle?.externalStateEvidence?.submissionEvidenceId;
+  const publicationEvidenceId = lifecycle?.externalStateEvidence?.publicationEvidenceId;
+  if (["PRE_SUBMISSION", "READY_FOR_SUBMISSION"].includes(state)) {
+    check(
+      submissionEvidenceId === null && publicationEvidenceId === null,
+      `${state} must not record submission or publication evidence before those external states occur.`,
+    );
+  } else if (state === "SUBMITTED") {
+    check(
+      publicationEvidenceId === null,
+      "SUBMITTED must not record publication evidence before publication occurs.",
+    );
+  }
+
   if (state === "PRE_SUBMISSION") {
     check(gates?.submissionReady === false, "PRE_SUBMISSION must keep submissionReady=false.");
     check(
@@ -394,6 +408,8 @@ export function verifyClaudePluginV1Release({
     verifyLifecycleEvidence({
       field: "submissionEvidenceId",
       state: "SUBMITTED",
+      expectedEvidenceId: "anthropic-plugin-submission-receipt",
+      expectedKind: "external-lifecycle-record",
       lifecycle,
       evidenceById,
       baseline,
@@ -404,6 +420,8 @@ export function verifyClaudePluginV1Release({
     verifyLifecycleEvidence({
       field: "publicationEvidenceId",
       state: "PUBLISHED",
+      expectedEvidenceId: "anthropic-plugin-android-public-listing-verification",
+      expectedKind: "android-public-listing-acceptance-record",
       lifecycle,
       evidenceById,
       baseline,
@@ -597,6 +615,8 @@ function validateEvidence({ entries, gateIds, baseline, check }) {
 function verifyLifecycleEvidence({
   field,
   state,
+  expectedEvidenceId,
+  expectedKind,
   lifecycle,
   evidenceById,
   baseline,
@@ -604,9 +624,14 @@ function verifyLifecycleEvidence({
 }) {
   const evidenceId = lifecycle?.externalStateEvidence?.[field];
   check(nonBlankWithin(evidenceId, 200), `${state} requires ${field}.`);
+  check(
+    evidenceId === expectedEvidenceId,
+    `${state} requires ${field} to use ${expectedEvidenceId}.`,
+  );
   const entry = evidenceById.get(evidenceId);
   check(Boolean(entry), `${field} references unknown plugin evidence ${String(evidenceId)}.`);
   if (!entry) return;
+  check(entry.kind === expectedKind, `${field} plugin evidence must have kind ${expectedKind}.`);
   check(entry.status === "approved", `${field} plugin evidence must be approved.`);
   check(
     entry.candidateContractSha256 === baseline?.candidateContractSha256,
