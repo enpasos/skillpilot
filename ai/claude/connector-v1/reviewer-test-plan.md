@@ -12,8 +12,10 @@ that only the other client can observe.
 ## Rules
 
 - Use only the dedicated adult reviewer profile from the secure handoff.
-- Install the plugin once, connect its connector through OAuth and start every
-  independent learner session at `https://skillpilot.com/`.
+- Open the SkillPilot Connectors Directory candidate in Claude Web, connect it
+  through OAuth and start every independent learner session at
+  `https://skillpilot.com/`. The separate Cowork/Claude Code plugin is outside
+  this connector-review lane.
 - Never record OAuth codes or tokens, `spc_` learner sessions, permanent IDs,
   opaque capabilities, protected answers or raw learner data. No ID file or
   ID-file password belongs in this flow.
@@ -24,7 +26,7 @@ that only the other client can observe.
 - Record exact UTC time, visible Claude model and surface, deployed Git revision,
   tool sequence, result classification and sanitized screenshots.
 - Run every valid tool once in the pinned MCP Inspector and once through the
-  real Claude custom connector.
+  Claude Web Directory connector candidate.
 - A generic HTTP 500/400, partial write or silent acceptance of invalid input is
   a failure.
 - Treat every live curriculum field, orientation path, card prompt/category,
@@ -45,8 +47,8 @@ that only the other client can observe.
 1. Connect to `https://mcp-claude-v1.skillpilot.com/mcp` using Streamable HTTP.
 2. Confirm unauthenticated MCP requests receive HTTP 401 with the protected-
    resource metadata challenge.
-3. Connect the plugin's connector through OAuth. Confirm that the connection
-   alone cannot select or access a learner.
+3. Connect the SkillPilot Directory connector candidate through OAuth. Confirm
+   that the connection alone cannot select or access a learner.
 4. Open `https://skillpilot.com/`. Confirm it enters the shared
    SkillPilot web start, requires visible selection or loading of the reviewer
    SkillPilot ID, shows the curriculum and Personal Curriculum, and offers
@@ -227,13 +229,13 @@ commit recordings or screenshots containing learner data.
 | Run | Client | Language | Tool/case | Valid/invalid | Result | Evidence reference |
 | --- | --- | --- | --- | --- | --- | --- |
 |  | MCP Inspector |  |  |  |  |  |
-|  | Claude.ai custom connector |  |  |  |  |  |
+|  | Claude.ai Directory connector candidate |  |  |  |  |  |
 
 ## Pass condition
 
-The gate passes only when the preferred one-time plugin installation supplies
-its Skill, connector and both connector-provided MCP Apps; all twelve tools and
-both resources work with valid input in their applicable clients; every tool
+The gate passes only when the SkillPilot Directory connector candidate supplies
+both connector-provided MCP Apps; all twelve tools and both resources work with
+valid input in their applicable clients; every tool
 requires the same current `learningSessionId`; a fresh first-party `spc_`
 session expires exactly after 24 hours without being extended by connector
 OAuth; permanent ID and ID-file material never cross the SkillPilot boundary;

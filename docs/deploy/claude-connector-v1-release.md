@@ -23,15 +23,12 @@ node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/openai_plugin_release.mjs verify
 node scripts/check_skillpilot_coach_plugin.mjs
 node scripts/check_openai_plugin_versioning.mjs
-node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
-node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
 npm --prefix ai/claude/app test
 node scripts/check_claude_connector_v1_release.mjs
 ```
 
 The strict `--submission-ready` mode is expected to fail while manual gates are
-open. The repository-local plugin check does not replace the official
-`claude plugin validate` command. Do not weaken either gate.
+open. Do not weaken the connector gate or any OpenAI differential check.
 
 ## 2. Configuration and database
 
@@ -163,10 +160,30 @@ edge.
 
 ## 7. Real-client acceptance
 
+Rebuild and capture the Directory carousel from the same generated MCP App
+resources that are deployed by the backend:
+
+```bash
+npm --prefix app ci
+npm --prefix ai/claude/app ci
+npm --prefix ai/claude/app test
+./app/node_modules/.bin/playwright install chromium
+node scripts/capture_claude_mcp_app_carousel.mjs
+node scripts/check_claude_connector_v1_release.mjs
+```
+
+The capture command verifies that each generated resource and its committed
+backend classpath copy are byte-identical, then records a tracked snapshot of
+the exact generated MCP App manifest. This lets the release checker reproduce
+the evidence binding in a clean CI checkout without relying on ignored
+`dist/` files. Review the resulting three PNGs and manifest before recording
+the separate Product, QA and Legal approvals; a successful script run does not
+replace those approvals.
+
 Follow the repository test plan at
 `ai/claude/connector-v1/reviewer-test-plan.md`. Exercise all twelve tools and
 both content-addressed MCP Apps resources in the pinned MCP Inspector and in a
-fresh Claude.ai plugin session started only through
+fresh Claude.ai connector session started only through
 `https://skillpilot.com/`. Confirm that every tool, including the
 app-only card-review tool, requires the same current `learningSessionId` and
 that the normal flashcard component
@@ -196,8 +213,11 @@ in the external evidence store.
 Only after `node scripts/check_claude_connector_v1_release.mjs
 --submission-ready` passes:
 
-1. sign in as a Team/Enterprise owner or delegated Directory manager;
-2. open **Claude.ai > Organization settings > Directory**;
+1. sign in to the submitting Team or Enterprise organization as an Owner,
+   Primary Owner or delegated member with Anthropic Directory-management
+   access;
+2. open the **Remote MCP submission portal** in that organization's Claude.ai
+   settings and record the submission owner;
 3. connect the final public Streamable HTTP server;
 4. compare the live tool catalogue with the contract baseline;
 5. copy the reviewed listing and use-case values from
@@ -212,27 +232,30 @@ Submission, review status and publication are external Anthropic actions. Do
 not mark this repository `PUBLISHED` until the actual directory state has been
 verified and recorded by the Product Owner.
 
-## 10. Preferred plugin publication
+## 10. Separate optional plugin publication
 
-The package at `ai/claude/plugin/skillpilot-coach-v1/` is the preferred
-one-time installation. It bundles the reusable SkillPilot coaching Skill and
-the remote connector; the connector supplies both MCP Apps UIs. Installing the
-Skill and connector separately remains a fallback only and provides no
-additional learner capability.
+The Connectors Directory entry is the normal installation path for Claude Web
+and is submitted independently in Section 9. The package at
+`ai/claude/plugin/skillpilot-coach-v1/` is a separate optional distribution for
+Cowork and Claude Code. It bundles the reusable SkillPilot coaching Skill and
+the same remote connector; the connector supplies both MCP Apps UIs. Plugin
+publication is not a prerequisite for Claude Web and does not gate the
+Connectors Directory submission.
 
 Before submitting the plugin:
 
-1. run the repository-local package checker and tests from Section 1;
+1. run `node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs` and
+   `node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs`;
 2. run `claude plugin validate ai/claude/plugin/skillpilot-coach-v1` with the
    current Claude CLI;
 3. test upload/install, OAuth, first-party start, all twelve tools and both MCP
-   Apps in a fresh claimed Claude.ai environment; test Claude Code and Cowork
-   separately before claiming either additional surface;
+   Apps separately on every Cowork or Claude Code surface that will be claimed;
 4. verify that the plugin exposes exactly one Skill and one SkillPilot connector
    and that both MCP Apps are available through that connector;
 5. verify that each new learner session still starts only at
    `https://skillpilot.com/`, while OAuth may remain connected;
-6. verify that installing any supported fallback combination does not expose
+6. verify that the plugin-bundled connector and a separately connected
+   SkillPilot Directory connector are not enabled together and do not expose
    duplicate SkillPilot tool sets; and
 7. submit the public repository or package through Anthropic's plugin workflow
    with its own sanitized evidence.

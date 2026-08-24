@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "provider": "claude",
+  "contractMajor": 1,
+  "identityBoundary": "temporary-learning-session",
+  "mimeType": "text/html;profile=mcp-app",
+  "widgetDomain": "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com",
+  "tools": {
+    "render_skillpilot_goal_visualization": {
+      "readOnly": true,
+      "resourceUri": "ui://skillpilot/claude/connector/v1/sha256-80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4/goal-visualization.html"
+    },
+    "start_skillpilot_memory_practice": {
+      "readOnly": true,
+      "resourceUri": "ui://skillpilot/claude/connector/v1/sha256-2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f/memory-card-practice.html"
+    },
+    "review_skillpilot_memory_practice_card": {
+      "readOnly": false,
+      "visibility": [
+        "app"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "name": "skillpilot-claude-goal-visualization-v1",
+      "title": "SkillPilot learning-goal image",
+      "description": "Displays the approved image for the active atomic learning goal.",
+      "mimeType": "text/html;profile=mcp-app",
+      "uri": "ui://skillpilot/claude/connector/v1/sha256-80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4/goal-visualization.html",
+      "path": "sha256-80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4/goal-visualization.html",
+      "sha256": "80fb9261fda4ed41e9e87572051ce18d761c79f555447a42b8d26f13c2b349d4",
+      "bytes": 411226,
+      "classpathPath": "backend/src/main/resources/claude-connector-v1/mcp-apps/goal-visualization.html",
+      "ui": {
+        "domain": "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com",
+        "prefersBorder": false,
+        "csp": {
+          "connectDomains": [],
+          "resourceDomains": [
+            "https://skillpilot.com"
+          ],
+          "frameDomains": [],
+          "baseUriDomains": []
+        }
+      }
+    },
+    {
+      "name": "skillpilot-claude-memory-card-practice-v1",
+      "title": "SkillPilot flashcard learning",
+      "description": "Interactive private flashcard practice for the active memory goal.",
+      "mimeType": "text/html;profile=mcp-app",
+      "uri": "ui://skillpilot/claude/connector/v1/sha256-2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f/memory-card-practice.html",
+      "path": "sha256-2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f/memory-card-practice.html",
+      "sha256": "2995994b12b2bef4c1e67607a492fbc28af43f353647fe372e1988671604746f",
+      "bytes": 700077,
+      "classpathPath": "backend/src/main/resources/claude-connector-v1/mcp-apps/memory-card-practice.html",
+      "ui": {
+        "domain": "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com",
+        "prefersBorder": true,
+        "csp": {
+          "connectDomains": [],
+          "resourceDomains": [],
+          "frameDomains": [],
+          "baseUriDomains": []
+        }
+      }
+    }
+  ],
+  "retainedResources": [
+    {
+      "name": "skillpilot-claude-memory-card-practice-v1-retained-a037ccfb8a43",
+      "title": "SkillPilot flashcard learning",
+      "description": "Interactive private flashcard practice for the active memory goal.",
+      "mimeType": "text/html;profile=mcp-app",
+      "uri": "ui://skillpilot/claude/connector/v1/sha256-a037ccfb8a43999247eb675926a0c8c1cdf7f723e404dc2c9ec7ecc93002c765/memory-card-practice.html",
+      "path": "sha256-a037ccfb8a43999247eb675926a0c8c1cdf7f723e404dc2c9ec7ecc93002c765/memory-card-practice.html",
+      "sha256": "a037ccfb8a43999247eb675926a0c8c1cdf7f723e404dc2c9ec7ecc93002c765",
+      "bytes": 699571,
+      "classpathPath": "backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-a037ccfb8a43999247eb675926a0c8c1cdf7f723e404dc2c9ec7ecc93002c765/memory-card-practice.html",
+      "ui": {
+        "domain": "ee8f5203b9b3d186c660c802e340f19c.claudemcpcontent.com",
+        "prefersBorder": true,
+        "csp": {
+          "connectDomains": [],
+          "resourceDomains": [],
+          "frameDomains": [],
+          "baseUriDomains": []
+        }
+      }
+    }
+  ]
+}

@@ -18,6 +18,9 @@ const defaultRepositoryRoot = resolve(
 );
 
 const dossierRoot = "ai/claude/connector-v1";
+const carouselRoot = `${dossierRoot}/assets/carousel`;
+const carouselManifestPath = `${carouselRoot}/manifest.json`;
+const claudeAppManifestPath = `${carouselRoot}/source-app-manifest.json`;
 const retainedResourceIndexPath =
   "backend/src/main/resources/claude-connector-v1/mcp-apps/retained-resources.json";
 const expectedEndpoint = "https://mcp-claude-v1.skillpilot.com/mcp";
@@ -74,7 +77,7 @@ const expectedOptionalGates = [
 
 const expectedContractTrees = [
   "ai/claude/app",
-  "ai/claude/plugin/skillpilot-coach-v1",
+  "ai/claude/connector-v1/assets/carousel",
   "app/src/coachVariants/claudeV1",
   "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1",
   "backend/src/main/resources/claude-connector-v1",
@@ -101,6 +104,7 @@ const expectedContractFiles = [
   "docs/deploy/claude-connector-v1-release.md",
   "docs/deploy/claude-connector-v1-user-guide.de.md",
   "docs/deploy/claude-connector-v1-user-guide.md",
+  "scripts/capture_claude_mcp_app_carousel.mjs",
 ];
 
 export function verifyClaudeConnectorV1Release({
@@ -121,6 +125,8 @@ export function verifyClaudeConnectorV1Release({
   let evidence;
   let baseline;
   let retainedResourceIndex;
+  let carouselManifest;
+  let claudeAppManifest;
   try {
     listing = readJson(repositoryRoot, `${dossierRoot}/directory-listing.json`);
     gates = readJson(repositoryRoot, `${dossierRoot}/release-gates.json`);
@@ -131,6 +137,8 @@ export function verifyClaudeConnectorV1Release({
       `${dossierRoot}/release/contract-baseline.json`,
     );
     retainedResourceIndex = readJson(repositoryRoot, retainedResourceIndexPath);
+    carouselManifest = readJson(repositoryRoot, carouselManifestPath);
+    claudeAppManifest = readJson(repositoryRoot, claudeAppManifestPath);
     verifyOpenAiPluginReviewFreeze({ repositoryRoot });
   } catch (error) {
     return {
@@ -149,6 +157,7 @@ export function verifyClaudeConnectorV1Release({
   check(lifecycle.schemaVersion === 1, "Unsupported lifecycle schemaVersion.");
   check(evidence.schemaVersion === 1, "Unsupported evidence schemaVersion.");
   check(baseline.schemaVersion === 1, "Unsupported contract-baseline schemaVersion.");
+  check(carouselManifest.schemaVersion === 1, "Unsupported carousel schemaVersion.");
 
   check(
     ["PRE_SUBMISSION", "READY_FOR_SUBMISSION", "SUBMITTED", "PUBLISHED"].includes(
@@ -200,6 +209,10 @@ export function verifyClaudeConnectorV1Release({
   check(
     listingCopy.iconPath === `${dossierRoot}/assets/icon-512.png`,
     "Listing must use the release-owned icon asset.",
+  );
+  check(
+    listingCopy.carouselManifestPath === carouselManifestPath,
+    "Listing must reference the release-owned MCP App carousel manifest.",
   );
   check(
     /^[0-9a-f]{64}$/u.test(listingCopy.iconSha256 ?? ""),
@@ -297,6 +310,12 @@ export function verifyClaudeConnectorV1Release({
   check(sameSet(listing.surfacesClaimed, ["Claude.ai"]), "Only Claude.ai may be claimed.");
 
   verifyIcon(repositoryRoot, listingCopy, check);
+  errors.push(...validateMcpAppCarousel({
+    repositoryRoot,
+    manifest: carouselManifest,
+    appManifest: claudeAppManifest,
+    submissionReady,
+  }));
   const toolCount = verifyImplementation(repositoryRoot, retainedResourceIndex, check);
   verifyDocumentationAndEdge(repositoryRoot, check);
   verifyBaseline(repositoryRoot, baseline, check);
@@ -591,6 +610,247 @@ function verifyLifecycleEvidence(
   );
 }
 
+export function validateMcpAppCarousel({
+  repositoryRoot = defaultRepositoryRoot,
+  manifest,
+  appManifest,
+  submissionReady = false,
+} = {}) {
+  const errors = [];
+  const check = (condition, message) => {
+    if (!condition) errors.push(message);
+  };
+  const expectedFixture = "synthetic-authorized-adult-release-fixture";
+  const expectedAttestations = [
+    "appResponseOnly",
+    "browserChromeExcluded",
+    "learnerDataExcluded",
+    "oauthValuesExcluded",
+    "permanentLearnerIdExcluded",
+    "promptExcluded",
+    "protectedAnswersExcluded",
+    "temporaryLearningSessionExcluded",
+  ];
+  const expectedApprovals = ["legal", "product", "qa"];
+  const expectedApps = new Map([
+    [
+      "render_skillpilot_goal_visualization",
+      "goal-visualization.html",
+    ],
+    [
+      "start_skillpilot_memory_practice",
+      "memory-card-practice.html",
+    ],
+  ]);
+
+  check(manifest?.schemaVersion === 1, "Carousel manifest must use schemaVersion 1.");
+  check(appManifest?.schemaVersion === 1, "Claude MCP App manifest must use schemaVersion 1.");
+  check(appManifest?.provider === "claude", "Carousel must target the Claude MCP Apps.");
+  check(
+    manifest?.generatedBy === "scripts/capture_claude_mcp_app_carousel.mjs",
+    "Carousel manifest must name the reproducible capture script.",
+  );
+  check(
+    manifest?.captureHost === "local-standards-compatible-mcp-app-host"
+      && manifest?.targetSurface === "Claude.ai",
+    "Carousel must disclose its reproducible capture host and Claude.ai target surface.",
+  );
+  check(nonBlankWithin(manifest?.purpose, 1_000), "Carousel manifest needs a purpose.");
+  check(
+    /^[0-9a-f]{40}$/u.test(manifest?.sourceRevision ?? ""),
+    "Carousel manifest needs a full sourceRevision.",
+  );
+  check(
+    /^\d{4}-\d{2}-\d{2}$/u.test(manifest?.sourceDate ?? ""),
+    "Carousel manifest needs a sourceDate.",
+  );
+  check(
+    manifest?.sourceAppManifest === claudeAppManifestPath,
+    "Carousel must reference the active Claude MCP App manifest.",
+  );
+  try {
+    check(
+      sha256(readFileSync(safeRepositoryPath(repositoryRoot, claudeAppManifestPath)))
+        === manifest?.sourceAppManifestSha256,
+      "Carousel source MCP App manifest hash changed.",
+    );
+  } catch (error) {
+    check(
+      false,
+      `Cannot verify carousel source MCP App manifest: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  }
+
+  const serializedManifest = JSON.stringify(manifest ?? {});
+  for (const forbidden of ["spc_", "learningSessionId", "reviewCapability"]) {
+    check(
+      !serializedManifest.includes(forbidden),
+      `Carousel manifest exposes forbidden private value marker: ${forbidden}.`,
+    );
+  }
+
+  const assets = Array.isArray(manifest?.assets) ? manifest.assets : [];
+  check(
+    assets.length >= 3 && assets.length <= 5,
+    "Carousel must contain between 3 and 5 screenshots.",
+  );
+  const ids = assets.map((asset) => asset?.id);
+  const paths = assets.map((asset) => asset?.path);
+  check(
+    ids.every((id) => nonBlankWithin(id, 120))
+      && new Set(ids).size === ids.length,
+    "Carousel asset IDs must be non-empty and unique.",
+  );
+  check(
+    paths.every((path) => typeof path === "string")
+      && new Set(paths).size === paths.length,
+    "Carousel asset paths must be unique.",
+  );
+
+  const coveredTools = new Set();
+  for (const asset of assets) {
+    const label = asset?.id ?? "UNKNOWN";
+    check(
+      typeof asset?.path === "string"
+        && /^ai\/claude\/connector-v1\/assets\/carousel\/[^/]+\.png$/u.test(
+          asset.path,
+        ),
+      `Carousel asset ${label} must be a direct PNG child of the carousel directory.`,
+    );
+    check(asset?.format === "PNG", `Carousel asset ${label} must declare PNG format.`);
+    check(nonBlankWithin(asset?.locale, 40), `Carousel asset ${label} needs a locale.`);
+    check(
+      asset?.surface === "Claude.ai",
+      `Carousel asset ${label} must show the Claude.ai surface.`,
+    );
+    check(
+      nonBlankWithin(asset?.pairedPrompt, 1_000),
+      `Carousel asset ${label} needs a paired prompt of at most 1000 characters.`,
+    );
+    check(
+      nonBlankWithin(asset?.interaction, 300),
+      `Carousel asset ${label} needs an interaction description.`,
+    );
+    check(
+      asset?.fixture === expectedFixture,
+      `Carousel asset ${label} must use the approved synthetic fixture.`,
+    );
+
+    const attestationKeys = Object.keys(asset?.attestations ?? {});
+    check(
+      sameSet(attestationKeys, expectedAttestations)
+        && expectedAttestations.every((key) => asset.attestations[key] === true),
+      `Carousel asset ${label} needs every exact privacy attestation set to true.`,
+    );
+    const approvalKeys = Object.keys(asset?.approvals ?? {});
+    const allowedApprovalStates = submissionReady
+      ? ["approved"]
+      : ["pending", "approved"];
+    check(
+      sameSet(approvalKeys, expectedApprovals)
+        && expectedApprovals.every((key) => allowedApprovalStates.includes(
+          asset.approvals[key],
+        )),
+      submissionReady
+        ? `Carousel asset ${label} needs Product, QA and Legal approval.`
+        : `Carousel asset ${label} needs exact Product, QA and Legal approval states.`,
+    );
+
+    let bytes;
+    try {
+      const absolute = safeRepositoryPath(repositoryRoot, asset.path);
+      const stat = lstatSync(absolute);
+      check(
+        stat.isFile() && !stat.isSymbolicLink(),
+        `Carousel asset ${label} must be a regular non-symlink file.`,
+      );
+      bytes = readFileSync(absolute);
+    } catch (error) {
+      check(
+        false,
+        `Cannot read carousel asset ${label}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+    }
+    if (bytes) {
+      const dimensions = pngDimensions(bytes);
+      check(Boolean(dimensions), `Carousel asset ${label} is not a valid PNG.`);
+      if (dimensions) {
+        check(
+          dimensions.width >= 1_000,
+          `Carousel asset ${label} must be at least 1000 pixels wide.`,
+        );
+        check(
+          asset?.width === dimensions.width && asset?.height === dimensions.height,
+          `Carousel asset ${label} dimensions differ from its manifest.`,
+        );
+      }
+      check(
+        sha256(bytes) === asset?.sha256,
+        `Carousel asset ${label} hash differs from its manifest.`,
+      );
+    }
+
+    const expectedFileName = expectedApps.get(asset?.toolName);
+    check(Boolean(expectedFileName), `Carousel asset ${label} names an unknown MCP App tool.`);
+    if (!expectedFileName) continue;
+    coveredTools.add(asset.toolName);
+    const expectedUri = appManifest?.tools?.[asset.toolName]?.resourceUri;
+    const resource = appManifest?.resources?.find(
+      (candidate) => candidate?.uri === expectedUri,
+    );
+    check(Boolean(resource), `Carousel asset ${label} has no active MCP App resource.`);
+    if (!resource) continue;
+    const expectedResourcePath = `sha256-${resource.sha256}/${expectedFileName}`;
+    const expectedClasspathPath =
+      `backend/src/main/resources/claude-connector-v1/mcp-apps/${expectedFileName}`;
+    check(
+      resource.path === expectedResourcePath,
+      `Carousel asset ${label} targets the wrong MCP App file.`,
+    );
+    check(
+      resource.classpathPath === expectedClasspathPath,
+      `Carousel asset ${label} targets the wrong deployed MCP App resource.`,
+    );
+    check(
+      asset?.resourceName === resource.name
+        && asset?.resourceUri === resource.uri
+        && asset?.sourceResourceSha256 === resource.sha256,
+      `Carousel asset ${label} is not bound to the active MCP App resource.`,
+    );
+    check(
+      resource.uri.includes(`/sha256-${resource.sha256}/${expectedFileName}`),
+      `Carousel asset ${label} resource URI is not content-addressed.`,
+    );
+    try {
+      const resourceBytes = readFileSync(safeRepositoryPath(
+        repositoryRoot,
+        expectedClasspathPath,
+      ));
+      check(
+        sha256(resourceBytes) === resource.sha256,
+        `Carousel source resource changed for ${label}.`,
+      );
+    } catch (error) {
+      check(
+        false,
+        `Cannot verify carousel source resource ${label}: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+    }
+  }
+
+  check(
+    sameSet([...coveredTools], [...expectedApps.keys()]),
+    "Carousel must cover both active SkillPilot MCP Apps.",
+  );
+  return errors;
+}
+
 function verifyIcon(repositoryRoot, listing, check) {
   let bytes;
   try {
@@ -853,6 +1113,47 @@ export function validateClaudeWebStartReviewEvidence(reviewerTestPlan, reviewerA
       && reviewerAccess.includes("redact the entire browser address bar"),
     "Reviewer evidence must treat the complete q URL, including spc_, as a redacted secret.",
   );
+
+  return errors;
+}
+
+export function validateClaudeDistributionDocumentation(concept, implementationPlan) {
+  const errors = [];
+  const check = (condition, message) => {
+    if (!condition) errors.push(message);
+  };
+
+  check(
+    /The Connectors Directory is the preferred one-time installation for Claude\s+Web/u.test(
+      concept,
+    )
+      && /optional companion for Claude Code and\s+Cowork/u.test(concept)
+      && /not required for the Claude Web Directory candidate/u.test(concept),
+    "Claude concept must define Directory-first Web distribution and the optional Code/Cowork plugin.",
+  );
+  check(
+    /Connectors-Directory-Eintrag als bevorzugte Einmal-Installation für\s+Claude Web/u.test(
+      implementationPlan,
+    )
+      && /optionalen Begleiter für Claude Code und\s+Cowork/u.test(implementationPlan)
+      && /keine\s+Voraussetzung des Claude-Web-Kandidaten/u.test(implementationPlan),
+    "Claude implementation plan must define Directory-first Web distribution and the optional Code/Cowork plugin.",
+  );
+
+  for (const [name, text] of [
+    ["concept", concept],
+    ["implementation plan", implementationPlan],
+  ]) {
+    check(
+      !/plugin is the preferred one-time installation|Claude plugin is the preferred|plugin is the preferred installation/iu.test(
+        text,
+      )
+        && !/Claude-Plugin als bevorzugte Einmal-Installation|Plugin ist der bevorzugte Einmal-Installationsweg|bevorzugten Plugin-Installationsweg/iu.test(
+          text,
+        ),
+      `Claude ${name} must not describe the optional plugin as the preferred Web installation.`,
+    );
+  }
 
   return errors;
 }
@@ -1191,13 +1492,27 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
     check(text.includes("spc_"), "User guides must explain the opaque learner session.");
     check(/24 (?:hours|Stunden)/u.test(text), "User guides must explain the exact 24-hour lifetime.");
     check(/offline_access/u.test(text), "User guides must separate transport OAuth from learner access.");
-    check(/plugin/iu.test(text), "User guides must name the preferred plugin installation.");
-    check(/MCP Apps|interaktiven Oberflächen|interactive UIs/u.test(text), "User guides must explain that the connector supplies both UIs.");
+    check(
+      /Connectors Directory/u.test(text),
+      "User guides must name the Connectors Directory as the Claude Web installation path.",
+    );
+    check(
+      /MCP Apps|interaktiven\s+Oberflächen|interactive\s+UIs/u.test(text),
+      "User guides must explain that the connector supplies both UIs.",
+    );
     check(
       !/(?:select|upload|choose|wähl|hochlad)[^\n]{0,120}\.skillpilot|Lokal entschlüsseln/iu.test(text),
       "User guides must not instruct learners to use the retired ID-file flow.",
     );
   }
+  check(
+    /not\s+required for Claude Web/u.test(guide),
+    "English user guide must state that the optional plugin is not required for Claude Web.",
+  );
+  check(
+    /für Claude Web nicht erforderlich/u.test(guideDe),
+    "German user guide must state that the optional plugin is not required for Claude Web.",
+  );
   check(runbook.includes("--submission-ready"), "Release runbook must include the strict gate.");
   check(runbook.includes("rollback"), "Release runbook must include rollback guidance.");
   check(
@@ -1222,6 +1537,12 @@ function verifyDocumentationAndEdge(repositoryRoot, check) {
       && /offline_access/u.test(implementationPlan),
     "Claude implementation plan must supersede the retired binding flow with the exact 24-hour target.",
   );
+  for (const error of validateClaudeDistributionDocumentation(
+    concept,
+    implementationPlan,
+  )) {
+    check(false, error);
+  }
   for (const [name, text] of [
     ["concept", concept],
     ["implementation plan", implementationPlan],
@@ -1482,6 +1803,22 @@ function sameSet(actual, expected) {
     && actual.length === expected.length
     && new Set(actual).size === actual.length
     && expected.every((entry) => actual.includes(entry));
+}
+
+function pngDimensions(bytes) {
+  const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+  if (
+    !Buffer.isBuffer(bytes)
+    || bytes.length < 24
+    || !bytes.subarray(0, 8).equals(signature)
+    || bytes.toString("ascii", 12, 16) !== "IHDR"
+  ) {
+    return null;
+  }
+  return {
+    width: bytes.readUInt32BE(16),
+    height: bytes.readUInt32BE(20),
+  };
 }
 
 function sha256(value) {

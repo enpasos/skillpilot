@@ -47,10 +47,11 @@ The following decisions are part of this concept:
   private normal flashcard practice.
 - Normal flashcard practice changes only the reviewed card's repetition
   schedule. It is not mastery and remains separate from strict Verified Recall.
-- The Claude plugin is the preferred one-time installation. It bundles the
-  coaching Skill and remote connector; the connector supplies both MCP Apps.
-  Separate Skill-plus-connector installation is a fallback without additional
-  learner capability.
+- The Connectors Directory is the preferred one-time installation for Claude
+  Web. The remote connector supplies all twelve tools and both MCP Apps.
+- The separate Claude plugin is an optional companion for Claude Code and
+  Cowork. It adds the coaching Skill and references the same remote connector;
+  it is not required for the Claude Web Directory candidate.
 - Claude v1 carries over current SkillPilot learning, recall, assessment,
   privacy, and identity invariants. It does not carry over the obsolete beta
   tool API merely because that code already exists.
@@ -130,8 +131,8 @@ The commercial v1 decision is therefore:
 | Public tool surface | Exactly 12 tools | Exactly 12 provider-isolated tools with the same learning responsibilities |
 | Learning-goal visualization | Prominent MCP Apps image component | Dedicated content-addressed MCP App for the approved active-goal image |
 | Normal flashcard practice | Interactive MCP Apps component with private card data and app-only ratings | Dedicated private MCP App; reviews update only scheduling, never mastery; Verified Recall remains separate |
-| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | The plugin is the preferred installation; its remote connector is the provider-isolated tool/UI route, and each Claude surface is claimed only after acceptance |
-| Reusable instructions | OpenAI plugin contains its reviewed Skill | Preferred Claude plugin contains a Claude-specific Skill and the same remote MCP server |
+| Provider UI support | Submitted SkillPilot scope is ChatGPT Web | The Connectors Directory is the preferred Claude Web installation; its remote connector is the provider-isolated tool/UI route, and each Claude surface is claimed only after acceptance |
+| Reusable instructions | OpenAI plugin contains its reviewed Skill | Optional Claude Code/Cowork plugin contains a Claude-specific Skill and references the same remote MCP server |
 | Start and identity | First-party `Start learning` creates a fresh 24-hour session and opens a new ChatGPT web chat | The same first-party web start visibly selects the SkillPilot ID, curriculum, Personal Curriculum and provider; choosing Claude creates a fresh opaque `spc_` session valid for exactly 24 hours, while the permanent ID never leaves SkillPilot |
 | Minimum age for this integration | SkillPilot launch self-confirmation: at least 13, any higher local limit, and guardian permission under 18 | Claude account holder: 18+ |
 | SkillPilot price | EUR 0 additional; eligible OpenAI account/workspace is external | EUR 0 additional; eligible Claude account/workspace is external |
@@ -775,13 +776,20 @@ only after fresh client evidence. The current Directory-v1 candidate
 deliberately claims Claude.ai only; the other clients are not submission gates
 for that candidate.
 
-The package under `ai/claude/plugin/skillpilot-coach-v1/` is the preferred
-one-time installation. It adds the reusable Claude-specific coaching Skill and
-the same public MCP server. The connector provides the MCP Apps UIs. Separate
-Skill-plus-connector setup remains only a fallback, must expose one SkillPilot
-tool set and has no functional advantage. The plugin has independent SemVer
-for compatible instruction changes; it cannot conceal a breaking server
-contract, which after final submission requires a new Product Owner decision.
+For Claude Web, the Connectors Directory is the preferred one-time
+installation. It installs the public remote MCP server that provides all twelve
+tools and both MCP Apps UIs. A manually added Custom Connector is the
+pre-publication and testing route for that same server, not a separate
+capability tier.
+
+The package under `ai/claude/plugin/skillpilot-coach-v1/` is an optional
+companion for Claude Code and Cowork. It adds the reusable Claude-specific
+coaching Skill and references the same public MCP server. It is neither
+required for the Claude Web Directory candidate nor a fallback needed to reach
+its tools or MCP Apps. If connector and plugin coexist, they must expose one
+SkillPilot tool set. The plugin has independent SemVer for compatible
+instruction changes; it cannot conceal a breaking server contract, which after
+final submission requires a new Product Owner decision.
 
 ---
 
@@ -933,9 +941,10 @@ The following decisions are already made by this revision:
   institutional SLA;
 - future v2-v9 hosts are not published or certificate-reserved without a
   versioning decision;
-- the plugin is the preferred one-time installation and bundles the Skill and
-  connector; the connector supplies both MCP Apps, while separate installation
-  is only a fallback without an added capability;
+- the Connectors Directory is the preferred Claude Web installation and the
+  connector supplies all twelve tools and both MCP Apps;
+- the separate plugin is optional for Claude Code and Cowork, references the
+  same connector and is not a prerequisite of the Claude Web candidate;
 - beta removal is separate and never triggered automatically by portal status.
 
 ---

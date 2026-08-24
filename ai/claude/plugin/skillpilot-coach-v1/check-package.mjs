@@ -132,15 +132,28 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(normalizedSkillText.includes("private MCP App"), "SKILL.md must keep normal memory-card content inside the private app.");
   check(normalizedSkillText.includes("must never call `review_skillpilot_memory_practice_card`"), "SKILL.md must keep card review app-only.");
   check(normalizedSkillText.includes("does not establish mastery"), "SKILL.md must separate normal memory practice from mastery.");
-  check(normalizedSetupText.includes("skillpilot-coach-v1.plugin"), "SETUP.md must document the integrated .plugin upload.");
+  check(normalizedSetupText.includes("skillpilot-coach-v1.plugin"), "SETUP.md must document the Cowork and Claude Code .plugin package.");
   check(
-    normalizedSetupText.includes("Do not enable the bundled and standalone variants at the same time"),
-    "SETUP.md must prevent duplicate bundled and standalone installations.",
+    normalizedSetupText.includes("Never enable a Directory, custom and plugin-bundled SkillPilot connector together in the same Claude surface or workspace")
+      && normalizedSetupText.includes("Do not enable the bundled and standalone variants at the same time"),
+    "SETUP.md must prevent duplicate Directory, custom and plugin-bundled connector installations.",
   );
   check(
-    normalizedSetupText.includes("preferred installation path")
-      && normalizedSetupText.includes("MCP tools and both interactive MCP Apps"),
-    "SETUP.md must prefer the integrated plugin and attribute MCP Apps to the connector.",
+    normalizedSetupText.includes("Normal Claude Web")
+      && normalizedSetupText.includes("Connectors Directory")
+      && normalizedSetupText.includes("Do not upload or install this plugin package in normal Claude Web"),
+    "SETUP.md must route normal Claude Web through the Connectors Directory instead of the plugin package.",
+  );
+  check(
+    normalizedSetupText.includes("plugin package is scoped to Claude Cowork and Claude Code")
+      && normalizedSetupText.includes("This package is not the normal Claude Web installation artifact"),
+    "SETUP.md must scope the plugin package to Claude Cowork and Claude Code.",
+  );
+  check(
+    normalizedSetupText.includes("All twelve MCP tools and both interactive MCP Apps come from the remote SkillPilot connector")
+      && normalizedSetupText.includes("The Skill provides coaching instructions only")
+      && normalizedSetupText.includes("without copying their schemas, resources or UI bytes into the plugin package"),
+    "SETUP.md must attribute all tools and interactive UIs to the connector without duplicating them in the plugin.",
   );
 
   return { errors, toolCount: expectedTools.length };

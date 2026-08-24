@@ -82,12 +82,51 @@ test("rejects incomplete coverage of the twelve-tool contract", () => {
 test("rejects loss of the duplicate-installation boundary", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
-      /Do not enable the\s+bundled and standalone variants at the same time/u,
-      "Both variants may be enabled at the same time",
+      /Never enable a\s+Directory, custom and plugin-bundled SkillPilot connector together in the same\s+Claude surface or workspace/u,
+      "Enable every available SkillPilot connector together in the same Claude workspace",
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /duplicate bundled and standalone installations/u,
+      /duplicate Directory, custom and plugin-bundled connector installations/u,
+    );
+  });
+});
+
+test("rejects routing normal Claude Web through the plugin package", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replace(
+      "Do not upload or install this plugin package in normal Claude Web",
+      "Install this plugin package in normal Claude Web",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /normal Claude Web through the Connectors Directory/u,
+    );
+  });
+});
+
+test("rejects loss of the Cowork and Claude Code plugin scope", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replace(
+      "plugin package is scoped to Claude Cowork and Claude Code",
+      "plugin package is scoped to every Claude surface",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /scope the plugin package to Claude Cowork and Claude Code/u,
+    );
+  });
+});
+
+test("rejects attribution of connector tools or UIs to the plugin shell", () => {
+  withPackageCopy((root) => {
+    mutate(root, "SETUP.md", (value) => value.replace(
+      /All twelve MCP tools and both interactive MCP Apps come from the remote\s+SkillPilot connector/u,
+      "The plugin shell supplies the MCP tools and interactive MCP Apps",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /attribute all tools and interactive UIs to the connector/u,
     );
   });
 });

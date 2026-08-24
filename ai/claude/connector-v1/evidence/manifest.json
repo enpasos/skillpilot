@@ -86,7 +86,7 @@
       "id": "permanent-id-nondisclosure-final-candidate",
       "status": "reference_required",
       "observedAt": null,
-      "scope": "Plugin, OAuth, MCP, logs and hosted-Claude output contain neither permanent SkillPilot ID nor encrypted ID-file material",
+      "scope": "Connector OAuth, MCP, first-party Web launch, logs and hosted-Claude output contain neither permanent SkillPilot ID nor encrypted ID-file material",
       "gateIds": [
         "permanent-id-and-id-file-nondisclosure"
       ],
@@ -113,6 +113,22 @@
       "approvedBy": null,
       "approvedAt": null,
       "note": "Run and approve this evidence only against the final tested candidate."
+    },
+    {
+      "id": "mcp-app-carousel-final-candidate",
+      "status": "reference_required",
+      "observedAt": null,
+      "scope": "Three to five sanitized PNG carousel images from the real SkillPilot Claude MCP Apps, each at least 1000 pixels wide, paired with its prompt and approved by Product, QA and Legal",
+      "gateIds": [
+        "mcp-app-carousel"
+      ],
+      "candidateContractSha256": null,
+      "candidateRevision": null,
+      "externalEvidenceId": null,
+      "sha256": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "note": "The repository carousel is reproducible from synthetic authorized-adult fixture data. Product, QA and Legal must approve the final candidate images and bind durable evidence to the frozen submission candidate before this gate can pass."
     }
   ]
 }
