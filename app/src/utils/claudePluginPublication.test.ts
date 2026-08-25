@@ -186,4 +186,26 @@ assert.equal(productionIndex.plugins.length, 1)
 assert.equal(productionIndex.plugins[0]?.id, 'skillpilot-coach-v1')
 assert.equal(productionIndex.plugins[0]?.requirements.plan, 'claude-pro')
 
+const pluginCatalogSource = readFileSync(
+  resolve(
+    dirname(fileURLToPath(import.meta.url)),
+    '../views/PluginCatalogView.tsx',
+  ),
+  'utf8',
+)
+const downloadStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-download"')
+const uploadStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-upload"')
+const returnStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-return"')
+assert.match(pluginCatalogSource, /data-testid="claude-plugin-install-guide"/u)
+assert(downloadStepIndex >= 0 && downloadStepIndex < uploadStepIndex && uploadStepIndex < returnStepIndex)
+assert.match(pluginCatalogSource, /download=\{plugin\.filename\}/u)
+assert.match(pluginCatalogSource, /href="https:\/\/claude\.ai"/u)
+assert.match(pluginCatalogSource, /Customize.*Plugins/u)
+assert.match(pluginCatalogSource, /to="\/"/u)
+assert.match(pluginCatalogSource, /Claude Pro/u)
+assert.match(pluginCatalogSource, /Android/u)
+assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)
+assert.match(pluginCatalogSource, /<details/u)
+assert.doesNotMatch(pluginCatalogSource, /Connector|Konnektor|OAuth/u)
+
 console.log('Claude plugin publication index tests passed')

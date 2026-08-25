@@ -88,11 +88,15 @@ assert(
 assert(
   row(de, 'provider-plan').cells['claude-free'].status === 'unavailable'
     && row(de, 'provider-plan').cells['claude-free'].value.includes('Plugin-Zugang')
-    && row(de, 'provider-plan').cells['claude-free'].note?.includes('Custom Connector')
+    && row(de, 'provider-plan').cells['claude-free'].note?.includes('Claude Pro')
     && row(en, 'provider-plan').cells['claude-free'].status === 'unavailable'
     && row(en, 'provider-plan').cells['claude-free'].value.includes('plugin access')
-    && row(en, 'provider-plan').cells['claude-free'].note?.includes('Custom Connector'),
-  'Claude Free is connector-only and never presented as complete plugin access',
+    && row(en, 'provider-plan').cells['claude-free'].note?.includes('Claude Pro'),
+  'Claude Free is never presented as complete plugin access and the supported Pro requirement is explicit',
+)
+assert(
+  !/Connector|Konnektor|OAuth/u.test(JSON.stringify({ de, en })),
+  'the learner-facing setup matrix stays focused on the plugin route without connector terminology',
 )
 assert(
   de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('bezahlten')
@@ -174,7 +178,7 @@ for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as c
 
 for (const copy of [de, en]) {
   assert(copy.asOf.includes('25') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
-  assert(copy.sources.length === 6, 'the matrix links only learner-relevant access, voice, interactive-connector and age sources')
+  assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, voice, and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
       && (source.href.includes('openai.com') || source.href.includes('claude.com'))),
