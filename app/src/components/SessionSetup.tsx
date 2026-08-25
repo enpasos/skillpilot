@@ -8,11 +8,11 @@ import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Trash2, Bot, FileDown, FileUp, Database } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
-type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'failed'
+type ClaudeActionState = 'idle' | 'opening-setup' | 'setup-opened' | 'launching' | 'launched' | 'fallback' | 'failed'
 type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 type SkillpilotIdFileStatus = 'idle' | 'loading' | 'loaded' | 'saved' | 'load-failed' | 'save-failed'
 
@@ -49,12 +49,10 @@ import {
   OpenAiMcpEligibilityDeclinedError,
 } from '../coachVariants/openAiMcp/providerEligibility'
 import {
-  getSafeClaudeInstallUrl,
+  getSafeClaudePluginSetupUrl,
   getSafeClaudeWebUrl,
-  requestClaudeConnectionStatus,
-  requestClaudeConnectStart,
-  requestClaudeDisconnect,
   requestClaudeLaunch,
+  requestClaudePluginSetupStart,
 } from '../utils/claudeCoach'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import {
@@ -178,9 +176,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const chatStartInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
-  const claudeActionLoading = claudeActionState === 'connecting'
+  const claudeActionLoading = claudeActionState === 'opening-setup'
     || claudeActionState === 'launching'
-    || claudeActionState === 'disconnecting'
   const sanitizedLearnerId = sanitizeSkillpilotId(skillpilotId)
   const normalizedSelectedLearnerLandscapeId = normalizeLearnerLandscapeId(selectedLandscapeId)
   const personalCurriculumEditorEnabled =
@@ -859,42 +856,42 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     return { effectiveId, normalizedLandscapeId }
   }
 
-  const handleConnectClaude = async () => {
+  const handleOpenClaudePluginSetup = async () => {
     const context = getClaudeStartContext()
     if (!context) return
 
-    const connectWindow = window.open('', '_blank')
-    setClaudeActionState('connecting')
+    const setupWindow = window.open('', '_blank')
+    setClaudeActionState('opening-setup')
     setClaudeInstallFallbackUrl(null)
     try {
-      const result = await requestClaudeConnectStart({
+      const result = await requestClaudePluginSetupStart({
         skillpilotId: context.effectiveId,
         language,
         selectedCurriculum: context.normalizedLandscapeId,
         client: 'web-start',
       })
 
-      const installUrl = getSafeClaudeInstallUrl(result.installUrl)
-      if (!installUrl) {
-        throw new Error('Invalid Claude connector install URL')
+      const setupUrl = getSafeClaudePluginSetupUrl(result.setupUrl)
+      if (!setupUrl) {
+        throw new Error('Invalid Claude plugin setup URL')
       }
 
-      if (connectWindow) {
-        connectWindow.opener = null
-        connectWindow.location.href = installUrl
-        setClaudeActionState('install-opened')
+      if (setupWindow) {
+        setupWindow.opener = null
+        setupWindow.location.href = setupUrl
+        setClaudeActionState('setup-opened')
         return
       }
 
-      const openedWindow = window.open(installUrl, '_blank', 'noopener,noreferrer')
+      const openedWindow = window.open(setupUrl, '_blank', 'noopener,noreferrer')
       if (openedWindow) {
-        setClaudeActionState('install-opened')
+        setClaudeActionState('setup-opened')
       } else {
-        setClaudeInstallFallbackUrl(installUrl)
+        setClaudeInstallFallbackUrl(setupUrl)
         setClaudeActionState('fallback')
       }
     } catch {
-      connectWindow?.close()
+      setupWindow?.close()
       setClaudeActionState('failed')
     }
   }
@@ -911,22 +908,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       return
     }
     try {
-      const status = await requestClaudeConnectionStatus(context.effectiveId)
-      if (!status.connected) {
-        const connection = await requestClaudeConnectStart({
-          skillpilotId: context.effectiveId,
-          language,
-          selectedCurriculum: context.normalizedLandscapeId,
-          client: 'web-start',
-        })
-        const installUrl = getSafeClaudeInstallUrl(connection.installUrl)
-        if (!installUrl) throw new Error('Invalid Claude connector install URL')
-        claudeWindow.opener = null
-        claudeWindow.location.href = installUrl
-        setClaudeActionState('install-opened')
-        return
-      }
-
       const result = await requestClaudeLaunch({
         skillpilotId: context.effectiveId,
         language,
@@ -941,19 +922,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       setClaudeActionState('launched')
     } catch {
       claudeWindow?.close()
-      setClaudeActionState('failed')
-    }
-  }
-
-  const handleDisconnectClaude = async () => {
-    const effectiveId = sanitizeSkillpilotId(skillpilotId)
-    if (!effectiveId) return
-    setClaudeActionState('disconnecting')
-    setClaudeInstallFallbackUrl(null)
-    try {
-      await requestClaudeDisconnect(effectiveId)
-      setClaudeActionState('disconnected')
-    } catch {
       setClaudeActionState('failed')
     }
   }
@@ -1544,19 +1512,51 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             </div>
                           </div>
 
+                          <section
+                            data-testid="claude-plugin-setup-guide"
+                            aria-labelledby="claude-plugin-setup-title"
+                            className="rounded-lg border border-violet-200 bg-white/80 p-3 dark:border-violet-800 dark:bg-slate-950/35"
+                          >
+                            <p id="claude-plugin-setup-title" className="text-xs font-bold text-text-primary">
+                              {t.startPage.login.claudeSetupTitle}
+                            </p>
+                            <ol className="mt-2 space-y-2">
+                              <li
+                                data-testid="claude-plugin-setup-step-1"
+                                className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
+                              >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-600 text-[10px] font-bold text-white">
+                                  1
+                                </span>
+                                <span>{t.startPage.login.claudeSetupStepOne}</span>
+                              </li>
+                              <li
+                                data-testid="claude-plugin-setup-step-2"
+                                className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
+                              >
+                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-600 text-[10px] font-bold text-white">
+                                  2
+                                </span>
+                                <span>{t.startPage.login.claudeSetupStepTwo}</span>
+                              </li>
+                            </ol>
+                          </section>
+
                           <div className="grid gap-2 sm:grid-cols-2">
                             <button
+                              data-testid="claude-plugin-setup-open"
                               type="button"
-                              onClick={handleConnectClaude}
+                              onClick={handleOpenClaudePluginSetup}
                               disabled={!personalCurriculumReady || claudeActionLoading}
                               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-400 bg-white px-3 py-2 text-xs font-semibold text-violet-800 transition-colors hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-violet-200 dark:hover:bg-violet-950"
                             >
                               <KeyRound size={14} />
-                              {claudeActionState === 'connecting'
+                              {claudeActionState === 'opening-setup'
                                 ? t.startPage.login.claudeConnecting
                                 : t.startPage.login.claudeConnect}
                             </button>
                             <button
+                              data-testid="claude-plugin-start"
                               type="button"
                               onClick={handleLaunchClaude}
                               disabled={!personalCurriculumReady || claudeActionLoading}
@@ -1569,20 +1569,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                               <ExternalLink size={12} />
                             </button>
                           </div>
-                          <button
-                            type="button"
-                            onClick={handleDisconnectClaude}
-                            disabled={!sanitizeSkillpilotId(skillpilotId) || claudeActionLoading}
-                            className="inline-flex min-h-8 items-center gap-1.5 text-[11px] font-semibold text-violet-800 underline decoration-violet-300 underline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-violet-200"
-                          >
-                            <Trash2 size={12} />
-                            {claudeActionState === 'disconnecting'
-                              ? t.startPage.login.claudeDisconnecting
-                              : t.startPage.login.claudeDisconnect}
-                          </button>
 
                           <div aria-live="polite" className="space-y-2">
-                            {claudeActionState === 'install-opened' && (
+                            {claudeActionState === 'setup-opened' && (
                               <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
                                 {t.startPage.login.claudeInstallOpened}
                               </p>
@@ -1590,11 +1579,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             {claudeActionState === 'launched' && (
                               <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
                                 {t.startPage.login.claudeLaunched}
-                              </p>
-                            )}
-                            {claudeActionState === 'disconnected' && (
-                              <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-                                {t.startPage.login.claudeDisconnected}
                               </p>
                             )}
                             {claudeInstallFallbackUrl && (

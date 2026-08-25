@@ -27,15 +27,26 @@ const copy = {
   de: {
     back: 'Zurück zur Startseite',
     title: 'SkillPilot-Plugins',
-    subtitle: 'Kontrollierter Direkt-Download für eingeladene Testpersonen des SkillPilot Claude Coach.',
+    subtitle: 'Geführte Beta-Einrichtung des SkillPilot Claude Coach mit Claude Pro.',
     betaNotice: 'Beta-Download',
-    betaDescription: 'Nutze diesen Weg nur, wenn SkillPilot dir den Link für den kontrollierten Beta-Test bereitgestellt hat. Dies ist kein offizieller Anthropic-Marktplatz.',
+    betaDescription: 'Dieser Direkt-Download ist der aktuell von SkillPilot unterstützte Beta-Weg. Das Plugin ist nicht im offiziellen Anthropic-Marktplatz veröffentlicht.',
     loading: 'Aktuelle Plugin-Version wird geladen …',
     loadErrorTitle: 'Die Plugin-Version konnte nicht geladen werden.',
     loadErrorText: 'Bitte versuche es später erneut. Aus Sicherheitsgründen bieten wir ohne einen gültigen Veröffentlichungsindex keinen Download an.',
     retry: 'Erneut versuchen',
     emptyTitle: 'Derzeit steht kein Beta-Plugin zum Download bereit.',
     emptyText: 'Sobald eine geprüfte Version veröffentlicht ist, erscheint sie hier.',
+    guideTitle: 'Plugin in drei Schritten einrichten',
+    guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe die Einrichtung hier einmalig in Claude Web durch.',
+    stepDownloadTitle: 'Plugin-Datei herunterladen',
+    stepDownloadBody: 'Lade die unten angebotene, von SkillPilot geprüfte Version herunter.',
+    stepInstallTitle: 'In Claude Web hochladen',
+    stepInstallBody: 'Öffne Claude Web und wähle Customize („Anpassen“) → Plugins. Lade dort die heruntergeladene .plugin-Datei hoch.',
+    openClaudeWeb: 'Claude Web öffnen',
+    stepReturnTitle: 'Zu SkillPilot zurückkehren',
+    stepReturnBody: 'Wechsle zurück zum ursprünglichen SkillPilot-Tab und wähle „Schritt 2: Mit Claude starten“. Beim ersten Zugriff führt Claude dich bei Bedarf durch die einmalige SkillPilot-Anmeldung.',
+    returnToSkillPilot: 'Zurück zu SkillPilot',
+    technicalDetails: 'Version und technische Prüfdaten',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -50,7 +61,7 @@ const copy = {
     plan: 'Claude Pro ist der von SkillPilot unterstützte und getestete Beta-Pfad.',
     planDetail: 'Andere bezahlte Claude-Tarife können Plugins technisch ebenfalls unterstützen, gehören aber nicht zu diesem SkillPilot-Beta-Supportpfad.',
     install: 'Öffne in Claude Web Customize → Plugins und lade dort die benutzerdefinierte .plugin-Datei hoch.',
-    connectAndStart: 'Verbinde danach den enthaltenen SkillPilot-Connector und schließe die OAuth-Verbindung ab. Jede Lernsession startest du anschließend zuerst auf SkillPilot.com.',
+    connectAndStart: 'Nach dem Upload ist SkillPilot im Plugin verfügbar. Beim ersten Lernstart führt Claude dich bei Bedarf durch die einmalige SkillPilot-Anmeldung. Jede weitere Lernsession startest du wieder auf SkillPilot.com.',
     android: 'Die anschließende Nutzung in Claude für Android wurde mit demselben Claude-Konto getestet. Interaktive UI-Komponenten können dabei je nach Client oder Turn fehlen; Aufgaben bleiben über Text oder Sprache vollständig lösbar.',
     voiceTested: 'Der Voice Mode wurde von SkillPilot im Beta-Test erprobt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
     voiceUntested: 'Der Voice Mode gehört nicht zum getesteten Umfang dieser Version.',
@@ -71,15 +82,26 @@ const copy = {
   en: {
     back: 'Back to the home page',
     title: 'SkillPilot plugins',
-    subtitle: 'Controlled direct download for invited testers of the SkillPilot Claude Coach.',
+    subtitle: 'Guided beta setup for the SkillPilot Claude Coach with Claude Pro.',
     betaNotice: 'Beta download',
-    betaDescription: 'Use this route only if SkillPilot provided you with the link for the controlled beta test. This is not an official Anthropic marketplace.',
+    betaDescription: 'This direct download is the beta route currently supported by SkillPilot. The plugin is not published in the official Anthropic marketplace.',
     loading: 'Loading the current plugin version …',
     loadErrorTitle: 'The plugin version could not be loaded.',
     loadErrorText: 'Please try again later. For security reasons, no download is offered without a valid publication index.',
     retry: 'Try again',
     emptyTitle: 'There is currently no beta plugin available for download.',
     emptyText: 'A reviewed version will appear here as soon as it is published.',
+    guideTitle: 'Set up the plugin in three steps',
+    guideIntro: 'Keep your original SkillPilot tab open and complete this one-time setup in Claude Web.',
+    stepDownloadTitle: 'Download the plugin file',
+    stepDownloadBody: 'Download the SkillPilot-verified version offered below.',
+    stepInstallTitle: 'Upload it in Claude Web',
+    stepInstallBody: 'Open Claude Web and choose Customize → Plugins. Upload the downloaded .plugin file there.',
+    openClaudeWeb: 'Open Claude Web',
+    stepReturnTitle: 'Return to SkillPilot',
+    stepReturnBody: 'Return to your original SkillPilot tab and select “Step 2: Start with Claude.” On first access, Claude will guide you through the one-time SkillPilot sign-in if needed.',
+    returnToSkillPilot: 'Return to SkillPilot',
+    technicalDetails: 'Version and technical verification details',
     status: 'Status',
     betaStatus: 'Beta',
     version: 'Version',
@@ -94,7 +116,7 @@ const copy = {
     plan: 'Claude Pro is the beta route supported and tested by SkillPilot.',
     planDetail: 'Other paid Claude plans may technically support plugins as well, but they are outside this SkillPilot beta support route.',
     install: 'In Claude Web, open Customize → Plugins and upload the custom .plugin file there.',
-    connectAndStart: 'Then connect the included SkillPilot connector and complete OAuth. After that, always start each learning session on SkillPilot.com first.',
+    connectAndStart: 'After the upload, SkillPilot is available in the plugin. On your first learning start, Claude will guide you through the one-time SkillPilot sign-in if needed. Start every later learning session on SkillPilot.com again.',
     android: 'Subsequent use in Claude for Android was tested with the same Claude account. Interactive UI components may be absent depending on the client or turn; tasks remain fully solvable through text or speech.',
     voiceTested: 'Voice mode was exercised in SkillPilot beta testing. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
     voiceUntested: 'Voice mode is outside the tested scope of this version.',
@@ -199,42 +221,101 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
       </div>
 
       <div className="space-y-8 p-6 sm:p-8">
-        <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.status}</dt>
-            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">
-              {plugin.status === 'beta' ? text.betaStatus : plugin.status}
-            </dd>
-          </div>
-          <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.version}</dt>
-            <dd className="mt-1 font-mono font-semibold text-slate-900 dark:text-white">{plugin.version}</dd>
-          </div>
-          <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.preparedAt}</dt>
-            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPreparedAt(preparedAt, language)}</dd>
-          </div>
-          <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.fileSize}</dt>
-            <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatBytes(plugin.bytes, language)}</dd>
-          </div>
-        </dl>
-
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.checksum}</p>
-          <code className="mt-2 block break-all rounded-xl border border-border-color bg-slate-950 px-4 py-3 text-xs leading-relaxed text-emerald-300 sm:text-sm">
-            {plugin.sha256}
-          </code>
-        </div>
-
-        <a
-          href={plugin.downloadUrl}
-          download={plugin.filename}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sky-700 px-5 py-3.5 font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-sky-600 dark:hover:bg-sky-500 dark:focus-visible:ring-offset-slate-900 sm:w-auto"
+        <section
+          data-testid="claude-plugin-install-guide"
+          aria-labelledby={`${plugin.id}-install-guide`}
+          className="rounded-3xl border-2 border-sky-300 bg-sky-50/70 p-5 dark:border-sky-800 dark:bg-sky-950/25 sm:p-6"
         >
-          <Download size={20} aria-hidden="true" />
-          {text.download}
-        </a>
+          <h3 id={`${plugin.id}-install-guide`} className="text-xl font-semibold text-slate-900 dark:text-white">
+            {text.guideTitle}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.guideIntro}</p>
+          <ol className="mt-5 grid gap-4 lg:grid-cols-3">
+            <li data-testid="claude-plugin-install-step-download" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">1</span>
+                <div>
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepDownloadTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepDownloadBody}</p>
+                </div>
+              </div>
+              <a
+                href={plugin.downloadUrl}
+                download={plugin.filename}
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-sky-600 dark:hover:bg-sky-500 dark:focus-visible:ring-offset-slate-900"
+              >
+                <Download size={18} aria-hidden="true" />
+                {text.download}
+              </a>
+            </li>
+            <li data-testid="claude-plugin-install-step-upload" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">2</span>
+                <div>
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepInstallTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepInstallBody}</p>
+                </div>
+              </div>
+              <a
+                href="https://claude.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950/50"
+              >
+                {text.openClaudeWeb}
+                <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            </li>
+            <li data-testid="claude-plugin-install-step-return" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">3</span>
+                <div>
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepReturnTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepReturnBody}</p>
+                </div>
+              </div>
+              <Link
+                to="/"
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950/50"
+              >
+                <ArrowLeft size={16} aria-hidden="true" />
+                {text.returnToSkillPilot}
+              </Link>
+            </li>
+          </ol>
+        </section>
+
+        <details className="rounded-2xl border border-border-color bg-slate-50 p-4 dark:bg-slate-950/35">
+          <summary className="cursor-pointer font-semibold text-slate-900 dark:text-white">
+            {text.technicalDetails}
+          </summary>
+          <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.status}</dt>
+              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">
+                {plugin.status === 'beta' ? text.betaStatus : plugin.status}
+              </dd>
+            </div>
+            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.version}</dt>
+              <dd className="mt-1 font-mono font-semibold text-slate-900 dark:text-white">{plugin.version}</dd>
+            </div>
+            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.preparedAt}</dt>
+              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatPreparedAt(preparedAt, language)}</dd>
+            </div>
+            <div className="rounded-2xl bg-slate-100/80 p-4 dark:bg-slate-800/70">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.fileSize}</dt>
+              <dd className="mt-1 font-semibold text-slate-900 dark:text-white">{formatBytes(plugin.bytes, language)}</dd>
+            </div>
+          </dl>
+          <div className="mt-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{text.checksum}</p>
+            <code className="mt-2 block break-all rounded-xl border border-border-color bg-slate-950 px-4 py-3 text-xs leading-relaxed text-emerald-300 sm:text-sm">
+              {plugin.sha256}
+            </code>
+          </div>
+        </details>
 
         <section aria-labelledby={`${plugin.id}-requirements`}>
           <h3 id={`${plugin.id}-requirements`} className="text-xl font-semibold text-slate-900 dark:text-white">

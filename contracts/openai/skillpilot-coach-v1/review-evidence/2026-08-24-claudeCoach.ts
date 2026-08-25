@@ -9,9 +9,10 @@ export interface ClaudeCoachStartInput {
   client?: string
 }
 
-export interface ClaudePluginSetupStartResponse {
-  setupUrl: string
+export interface ClaudeConnectStartResponse {
+  installUrl: string
   expiresAt: string
+  connected: boolean
 }
 
 export interface ClaudeLaunchResponse {
@@ -21,7 +22,12 @@ export interface ClaudeLaunchResponse {
   expiresAt: string
 }
 
-const CLAUDE_PLUGIN_SETUP_PATH = '/plugins'
+export interface ClaudeConnectionStatusResponse {
+  connected: boolean
+}
+
+const CLAUDE_V1_CONNECTOR_URL = 'https://mcp-claude-v1.skillpilot.com/mcp'
+const CLAUDE_V1_READY_STORAGE_KEY = 'skillpilot_claude_v1_setup_opened'
 const CLAUDE_V1_WEB_CHAT_URL = 'https://claude.ai/new'
 
 const requireSkillpilotId = (skillpilotId: string) => {
@@ -32,13 +38,32 @@ const requireSkillpilotId = (skillpilotId: string) => {
   return sanitizedId
 }
 
-export const requestClaudePluginSetupStart = async (
+const buildClaudeConnectorInstallUrl = () => {
+  const url = new URL('https://claude.ai/customize/connectors')
+  url.searchParams.set('modal', 'add-custom-connector')
+  url.searchParams.set('connectorName', 'SkillPilot')
+  url.searchParams.set('connectorUrl', CLAUDE_V1_CONNECTOR_URL)
+  return url.toString()
+}
+
+const markClaudeSetupOpened = (opened: boolean) => {
+  if (typeof window === 'undefined') return
+  if (opened) {
+    window.localStorage.setItem(CLAUDE_V1_READY_STORAGE_KEY, 'true')
+  } else {
+    window.localStorage.removeItem(CLAUDE_V1_READY_STORAGE_KEY)
+  }
+}
+
+export const requestClaudeConnectStart = async (
   input: ClaudeCoachStartInput,
-): Promise<ClaudePluginSetupStartResponse> => {
+): Promise<ClaudeConnectStartResponse> => {
   requireSkillpilotId(input.skillpilotId)
+  markClaudeSetupOpened(true)
   return {
-    setupUrl: CLAUDE_PLUGIN_SETUP_PATH,
+    installUrl: buildClaudeConnectorInstallUrl(),
     expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+    connected: false,
   }
 }
 
@@ -58,6 +83,24 @@ export const requestClaudeLaunch = async (
   }
 }
 
+export const requestClaudeConnectionStatus = async (
+  skillpilotId: string,
+): Promise<ClaudeConnectionStatusResponse> => {
+  requireSkillpilotId(skillpilotId)
+  return {
+    connected: typeof window !== 'undefined'
+      && window.localStorage.getItem(CLAUDE_V1_READY_STORAGE_KEY) === 'true',
+  }
+}
+
+export const requestClaudeDisconnect = async (
+  skillpilotId: string,
+): Promise<ClaudeConnectionStatusResponse> => {
+  requireSkillpilotId(skillpilotId)
+  markClaudeSetupOpened(false)
+  return { connected: false }
+}
+
 export const buildClaudeWebPromptUrl = (prompt: string) => {
   if (!prompt.trim()) throw new Error('Missing Claude start prompt')
   return `${CLAUDE_V1_WEB_CHAT_URL}?q=${encodeURIComponent(prompt)}`
@@ -71,9 +114,28 @@ const hasExactlyOnePromptQuery = (url: URL) => {
     && Boolean(url.searchParams.get('q')?.trim())
 }
 
-export const getSafeClaudePluginSetupUrl = (value: string): string | null => (
-  value === CLAUDE_PLUGIN_SETUP_PATH ? value : null
-)
+export const getSafeClaudeInstallUrl = (value: string): string | null => {
+  try {
+    const url = new URL(value)
+    if (
+      url.protocol !== 'https:'
+      || url.hostname !== 'claude.ai'
+      || url.pathname !== '/customize/connectors'
+      || url.searchParams.get('modal') !== 'add-custom-connector'
+      || !url.searchParams.get('connectorName')?.trim()
+    ) {
+      return null
+    }
+
+    const connectorUrl = new URL(url.searchParams.get('connectorUrl') ?? '')
+    if (connectorUrl.protocol !== 'https:') {
+      return null
+    }
+    return url.toString()
+  } catch {
+    return null
+  }
+}
 
 export const getSafeClaudeWebUrl = (value: string): string | null => {
   try {

@@ -28,6 +28,7 @@ const expectedDownloadBasePath = "/api/public/claude/plugins";
 const expectedControlledEvidence = new Map([
   ["local-package-structural-and-unit-validation", "local_validation"],
   ["local-reproducible-plugin-archive", "local_validation"],
+  ["first-party-guided-plugin-setup", "local_validation"],
   ["real-client-claude-pro-web-direct-install", "real_client"],
   ["real-client-claude-pro-android-account-use", "real_client"],
   ["real-client-claude-pro-android-voice-mode", "real_client"],
@@ -110,7 +111,7 @@ export function validateDirectInstallBetaLane(lane) {
   );
   assertEqual(
     lane.publication.accessModel,
-    "unlisted_direct_link",
+    "first_party_guided_beta",
     "lane.publication.accessModel",
   );
 
@@ -181,6 +182,7 @@ export function validateDirectInstallBetaLane(lane) {
     lane.readiness,
     [
       "controlledBetaReady",
+      "guidedFirstPartyBetaReady",
       "openPublicBetaReady",
       "controlledBetaEvidence",
       "openPublicBetaBlockers",
@@ -190,6 +192,10 @@ export function validateDirectInstallBetaLane(lane) {
   assertBoolean(
     lane.readiness.controlledBetaReady,
     "lane.readiness.controlledBetaReady",
+  );
+  assertBoolean(
+    lane.readiness.guidedFirstPartyBetaReady,
+    "lane.readiness.guidedFirstPartyBetaReady",
   );
   assertBoolean(
     lane.readiness.openPublicBetaReady,
@@ -235,6 +241,12 @@ export function validateDirectInstallBetaLane(lane) {
     lane.readiness.controlledBetaReady,
     derivedControlledBetaReady,
     "lane.readiness.controlledBetaReady must be derived from every named local and real-client evidence",
+  );
+  assertEqual(
+    lane.readiness.guidedFirstPartyBetaReady,
+    derivedControlledBetaReady
+      && lane.publication.accessModel === "first_party_guided_beta",
+    "lane.readiness.guidedFirstPartyBetaReady must require the complete controlled evidence set and first-party guided access model",
   );
 
   const openPublicBlockers = lane.readiness.openPublicBetaBlockers;

@@ -4,10 +4,8 @@ import { existsSync, readFileSync } from 'node:fs'
 import {
   buildClaudeWebPromptUrl,
   getSafeClaudeDesktopUrl,
-  getSafeClaudePluginSetupUrl,
   getSafeClaudeWebUrl,
   requestClaudeLaunch,
-  requestClaudePluginSetupStart,
 } from '../src/utils/claudeCoach'
 
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
@@ -15,18 +13,15 @@ const sessionSetupSource = readFileSync(new URL('../src/components/SessionSetup.
 const claudeAdapterSource = readFileSync(new URL('../src/utils/claudeCoach.ts', import.meta.url), 'utf8')
 const germanLocaleSource = readFileSync(new URL('../src/locales/de.ts', import.meta.url), 'utf8')
 const englishLocaleSource = readFileSync(new URL('../src/locales/en.ts', import.meta.url), 'utf8')
-const claudeSetupHandlerStart = sessionSetupSource.indexOf('const handleOpenClaudePluginSetup = async () => {')
 const claudeHandlerStart = sessionSetupSource.indexOf('const handleLaunchClaude = async () => {')
-const claudeHandlerEnd = sessionSetupSource.indexOf('const handleSubmit = async', claudeHandlerStart)
+const claudeHandlerEnd = sessionSetupSource.indexOf('const handleDisconnectClaude = async () => {', claudeHandlerStart)
 const claudeUiStart = sessionSetupSource.indexOf('data-testid="claude-v1-start-options"')
 const learnerCockpitHref = 'href={personalCurriculumReady ? learnerCockpitHref : undefined}'
 const learnerCockpitHrefIndex = sessionSetupSource.indexOf(learnerCockpitHref, claudeUiStart)
 const claudeUiEnd = sessionSetupSource.lastIndexOf('<a', learnerCockpitHrefIndex)
 assert(claudeHandlerStart >= 0 && claudeHandlerEnd > claudeHandlerStart)
-assert(claudeSetupHandlerStart >= 0 && claudeHandlerStart > claudeSetupHandlerStart)
 assert(claudeUiStart >= 0 && claudeUiEnd > claudeUiStart)
 const activeClaudeHandlerSource = sessionSetupSource.slice(claudeHandlerStart, claudeHandlerEnd)
-const activeClaudeSetupHandlerSource = sessionSetupSource.slice(claudeSetupHandlerStart, claudeHandlerStart)
 const activeClaudeUiSource = sessionSetupSource.slice(claudeUiStart, claudeUiEnd)
 const activeClaudeStartSource = `${activeClaudeHandlerSource}\n${activeClaudeUiSource}`
 
@@ -50,7 +45,6 @@ assert.doesNotMatch(
 assert.match(sessionSetupSource, /<PersonalCurriculumEditor/u)
 assert.match(sessionSetupSource, /sanitizeSkillpilotId\(skillpilotId\)/u)
 assert.match(sessionSetupSource, /onClick=\{handleOpenChatGpt\}/u)
-assert.match(sessionSetupSource, /onClick=\{handleOpenClaudePluginSetup\}/u)
 assert.match(sessionSetupSource, /onClick=\{handleLaunchClaude\}/u)
 assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| chatStartLoading\}/u)
 assert.match(sessionSetupSource, /disabled=\{!personalCurriculumReady \|\| claudeActionLoading\}/u)
@@ -73,28 +67,18 @@ assert.doesNotMatch(
 assert.deepEqual(
   [...activeClaudeHandlerSource.matchAll(/claudeWindow\.location\.href\s*=\s*([A-Za-z]+)/gu)]
     .map(match => match[1]),
-  ['webUrl'],
-  'the Claude start handler may navigate only to its validated q-prefilled Web URL',
+  ['installUrl', 'webUrl'],
+  'the Claude handler may navigate only to its validated install and q-prefilled Web URLs',
 )
 assert.equal(
   [...activeClaudeHandlerSource.matchAll(/claudeWindow\.opener\s*=\s*null/gu)].length,
-  1,
-  'the Claude Web navigation must detach the opener',
+  2,
+  'both allowed Claude navigations must detach the opener',
 )
 assert.match(
   activeClaudeHandlerSource,
   /claudeWindow\?\.close\(\)[\s\S]*setClaudeActionState\('failed'\)/u,
   'a failed asynchronous Claude start must close the prepared blank window',
-)
-assert.match(
-  activeClaudeSetupHandlerSource,
-  /requestClaudePluginSetupStart\([\s\S]*getSafeClaudePluginSetupUrl\(result\.setupUrl\)[\s\S]*setupWindow\.location\.href = setupUrl/u,
-  'the one-time setup action must open only the validated first-party plugin guide',
-)
-assert.doesNotMatch(
-  activeClaudeHandlerSource,
-  /requestClaudePluginSetupStart|requestClaudePluginSetupStatus|getSafeClaudePluginSetupUrl|setupUrl/u,
-  'starting Claude must never divert back into setup or a connection-status check',
 )
 assert.doesNotMatch(
   activeClaudeStartSource,
@@ -111,14 +95,6 @@ assert(
     < sessionSetupSource.indexOf('onClick={handleLaunchClaude}'),
   'the standard shared final step must present distinct ChatGPT and Claude decisions',
 )
-assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-guide"/u)
-assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-step-1"/u)
-assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-step-2"/u)
-assert(
-  activeClaudeUiSource.indexOf('data-testid="claude-plugin-setup-open"')
-    < activeClaudeUiSource.indexOf('data-testid="claude-plugin-start"'),
-  'the one-time plugin setup action is presented before the everyday Claude start',
-)
 assert.match(sessionSetupSource, /to="\/faq\/coach-setup"/u)
 assert.match(germanLocaleSource, /\*\*SkillPilot ist kostenlos\.\*\*/u)
 assert.match(germanLocaleSource, /linkLabel: "Zugänge vergleichen"/u)
@@ -134,26 +110,6 @@ assert.doesNotMatch(
   /\/api\/ui\/learners\/\$\{[^}]+\}\/claude\/(?:connect-start|launch|status|connection)/u,
   'the shared start must not fall back to the retired Claude beta endpoints',
 )
-assert.doesNotMatch(
-  claudeAdapterSource,
-  /customize\/connectors|add-custom-connector|skillpilot_claude_v1_setup_opened|requestClaudeConnectionStatus|requestClaudeDisconnect/u,
-  'the direct-plugin path must not retain the retired manual connector setup or fake local connection state',
-)
-
-const germanClaudeCopy = germanLocaleSource.slice(
-  germanLocaleSource.indexOf('claudeBetaTitle:'),
-  germanLocaleSource.indexOf('dashboardButton:', germanLocaleSource.indexOf('claudeBetaTitle:')),
-)
-const englishClaudeCopy = englishLocaleSource.slice(
-  englishLocaleSource.indexOf('claudeBetaTitle:'),
-  englishLocaleSource.indexOf('dashboardButton:', englishLocaleSource.indexOf('claudeBetaTitle:')),
-)
-assert.doesNotMatch(germanClaudeCopy, /Connector|Konnektor|OAuth/u)
-assert.doesNotMatch(englishClaudeCopy, /Connector|Konnektor|OAuth/u)
-assert.match(germanClaudeCopy, /Schritt 1: Plugin einrichten/u)
-assert.match(germanClaudeCopy, /Schritt 2: Mit Claude starten/u)
-assert.match(englishClaudeCopy, /Step 1: Set up plugin/u)
-assert.match(englishClaudeCopy, /Step 2: Start with Claude/u)
 
 const SESSION = `spc_${'A'.repeat(43)}`
 const LEARNER_ID = 'c709883e-bf21-4482-9f68-eb6fe921a619'
@@ -184,20 +140,6 @@ assert(!startPrompt.includes('sps_'))
 assert(!promptUrl.toLowerCase().includes(LEARNER_ID.toLowerCase()))
 assert(!promptUrl.includes(encodeURIComponent(LEARNER_ID)))
 assert.throws(() => buildClaudeWebPromptUrl(' \n\t '), /Missing Claude start prompt/u)
-
-assert.equal(getSafeClaudePluginSetupUrl('/plugins'), '/plugins')
-for (const unsafeSetupUrl of [
-  'https://skillpilot.com/plugins',
-  '//evil.example/plugins',
-  '/plugins?next=evil',
-  '/plugins#fragment',
-  '/faq/coach-setup',
-]) {
-  assert.equal(getSafeClaudePluginSetupUrl(unsafeSetupUrl), null)
-}
-const pluginSetup = await requestClaudePluginSetupStart({ skillpilotId: LEARNER_ID, language: 'de' })
-assert.equal(pluginSetup.setupUrl, '/plugins')
-assert(Number.isFinite(new Date(pluginSetup.expiresAt).getTime()))
 
 const encodedTextUrl = 'https://claude.ai/new?q=valid%26next%3Dhttps%3A%2F%2Fevil.example%2F%2B%25'
 assert.equal(getSafeClaudeWebUrl(encodedTextUrl), encodedTextUrl)

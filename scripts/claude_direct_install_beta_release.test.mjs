@@ -46,7 +46,7 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
   assert.deepEqual(canonicalLane.publication, {
     resourceRoot: publicationRelativeRoot,
     downloadBasePath: "/api/public/claude/plugins",
-    accessModel: "unlisted_direct_link",
+    accessModel: "first_party_guided_beta",
   });
   assert.deepEqual(canonicalLane.candidate, {
     version: "1.0.2",
@@ -64,6 +64,7 @@ test("production direct-install lane has the isolated, fail-closed beta semantic
     voiceMode: true,
   });
   assert.equal(canonicalLane.readiness.controlledBetaReady, true);
+  assert.equal(canonicalLane.readiness.guidedFirstPartyBetaReady, true);
   assert.equal(canonicalLane.readiness.openPublicBetaReady, false);
 });
 
@@ -76,6 +77,8 @@ test("public verification checks the SPA route, exact index, immutable headers a
     const baseUrl = "http://127.0.0.1:43127";
     const indexBytes = readFileSync(resolve(publicationRoot, "index.json"));
     const index = JSON.parse(indexBytes.toString("utf8"));
+    assert.equal(Object.hasOwn(index, "accessModel"), false);
+    assert.equal(Object.hasOwn(index, "readiness"), false);
     const plugin = index.plugins[0];
     const artifactPath = resolve(
       publicationRoot,
@@ -442,7 +445,7 @@ test("verify rejects physical entries outside the closed one-plugin registry", (
   });
 });
 
-test("lane readiness is derived from all named controlled and open-public evidence", () => {
+test("lane readiness distinguishes the guided first-party beta from open-public readiness", () => {
   const controlledPending = clone(canonicalLane);
   controlledPending.readiness.controlledBetaEvidence[0].status = "pending";
   assert.throws(
@@ -450,7 +453,15 @@ test("lane readiness is derived from all named controlled and open-public eviden
     /controlledBetaReady must be derived/u,
   );
   controlledPending.readiness.controlledBetaReady = false;
+  controlledPending.readiness.guidedFirstPartyBetaReady = false;
   validateDirectInstallBetaLane(controlledPending);
+
+  const dishonestGuidedClaim = clone(controlledPending);
+  dishonestGuidedClaim.readiness.guidedFirstPartyBetaReady = true;
+  assert.throws(
+    () => validateDirectInstallBetaLane(dishonestGuidedClaim),
+    /guidedFirstPartyBetaReady must require/u,
+  );
 
   const publicClaimWithoutEvidence = clone(canonicalLane);
   publicClaimWithoutEvidence.readiness.openPublicBetaReady = true;

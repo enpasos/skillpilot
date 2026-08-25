@@ -128,8 +128,9 @@ werden. Sie dürfen aber nur den eingefrorenen Ablauf dokumentieren. Änderungen
 an `SessionSetup`, Coach-Launch, Plugin-Namen, Browsergrenze, Sessiondauer,
 Datenschutzversprechen oder Providerverhalten sind keine Quickstart-Arbeit und
 bleiben ohne eine exakte, hashgebundene Product-Owner-Ausnahme gesperrt. Die in
-Abschnitt 6.3 dokumentierte additive Auswahl eines unabhängigen Claude-v1-
-Coaches gibt keinen Bestandteil des eingereichten ChatGPT-V1-Vertrags frei.
+den Abschnitten 6.3 und 6.4 dokumentierte additive Auswahl und geführte
+Einrichtung eines unabhängigen Claude-v1-Coaches gibt keinen Bestandteil des
+eingereichten ChatGPT-V1-Vertrags frei.
 
 ## 5. Pflichtprüfung vor Änderung und Deployment
 
@@ -260,14 +261,72 @@ Die Hashkette von `SessionSetup.tsx` wird fortgesetzt, nicht neu begonnen:
 4. gemeinsame Standardauswahl:
    `1919c46dfe9e1f70ecdf177f2dd48654400c9eb8debd47ddaf0576d9e4fdd61f`.
 
-Die aktuelle Regressionsevidenz
-`app/scripts/testClaudeV1StartUi.tsx` ist mit
+Die Regressionsevidenz wurde vor der nächsten autorisierten Änderung als
+`contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-24-testClaudeV1StartUi.tsx`
+archiviert und ist mit
 `60ac516f664da7a61c7ce2a53ad2736adc7ae7d67fb10391c549b073b331a5e4`
 gepinnt. Sie belegt die sichtbare Standardauswahl, die Abwesenheit eines
 versteckten Query-Gates, den providerneutralen Startseitenhinweis samt
-Vergleichslink und die getrennten Providerhandler. Zusätzlich ist der
-Claude-Webadapter `app/src/utils/claudeCoach.ts` mit
+Vergleichslink und die getrennten Providerhandler. Zusätzlich ist der damalige
+Claude-Webadapter als
+`contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-24-claudeCoach.ts`
+mit
 `fc451b8780889e45fe7a848353e1415d52d4eb1b6a7f8ed35b266a4dd5d512f0`
+gepinnt.
+
+### 6.4 Eng begrenzte Ausnahme: geführte Claude-Pro-Plugin-Einrichtung
+
+Der Product Owner hat am 25. August 2026 nach dem realen Rollout entschieden,
+den veralteten lernendenseitigen manuellen Connector-Schritt durch den
+geführten, direkt installierten Claude-Pro-Betaweg zu ersetzen. Das bisherige
+Browser-Flag belegte lediglich, dass die Connector-Seite einmal geöffnet
+worden war; es konnte weder eine Plugin-Installation noch einen
+geräteübergreifenden Zustand zuverlässig erkennen.
+
+Freigegeben ist ausschließlich:
+
+- im getrennt gebrandeten Claude-v1-Bereich Schritt 1 auf die
+  SkillPilot-eigene Installationsanleitung `/plugins` zu führen;
+- dort Download, einmaligen Upload in Claude Web und Rückkehr zu SkillPilot
+  nummeriert zu erklären;
+- den lernendenseitigen manuellen Connector-Status sowie die wirkungslose
+  lokale Zurücksetzen-Aktion zu entfernen;
+- in Schritt 2 ohne vorgeschaltete Connector-Prüfung die bereits validierte,
+  `q`-vorausgefüllte Claude-Web-Lernsession zu öffnen;
+- die getrennte Claude-Pro-Beta in öffentlichen Hilfetexten als geführten
+  First-Party-Weg zu beschreiben, weiterhin ohne Behauptung einer offiziellen
+  Anthropic-Marktplatzveröffentlichung.
+
+Dieser geführte First-Party-Betaweg wird erst nach einem abgeschlossenen
+SkillPilot-Lernenden-Setup angeboten. Die Installationsroute bleibt `noindex`
+und wird weder als offene öffentliche Beta noch als offizieller Marktplatzweg
+beworben. Ihre eigene Readiness ist in der Direct-Install-Lane getrennt von
+`openPublicBetaReady` belegt; die offenen Legal-, Support- und
+Public-Beta-Gates bleiben dadurch unverändert fail-closed. Interne
+Distributions- und Readiness-Felder werden nicht in den bewusst minimalen
+öffentlichen Downloadindex kopiert.
+
+Die im Plugin enthaltene technische MCP-Konfiguration bleibt unverändert. Der
+eingereichte ChatGPT-Startbutton und sein Handler, die vorbereitete
+ChatGPT-Nachricht, die 24-Stunden-Sessionsemantik, das OpenAI-Paket, MCP/OAuth,
+Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte bleiben unverändert und eingefroren. Weder ein Zurückziehen
+noch ein erneutes Einreichen des laufenden OpenAI-Portalreviews ist dadurch
+erforderlich.
+
+Die Hashkette von `SessionSetup.tsx` wird erneut fortgesetzt:
+
+5. geführte Claude-Pro-Plugin-Einrichtung:
+   `b56c60fbdf44021c92c9477602207409911ef1049d5a313cc99702f9424e9031`.
+
+Die aktuelle Regressionsevidenz
+`app/scripts/testClaudeV1StartUi.tsx` ist mit
+`5e833c8525919254db82e3e6d127c00911ec4a8d10408f8216a51d109f66fc8f`
+gepinnt. Sie belegt den nummerierten Claude-only-Ablauf, den direkten
+Claude-Webstart, die Abwesenheit eines simulierten Verbindungsstatus und die
+unveränderte Trennung vom ChatGPT-Handler. Der aktuelle Claude-Webadapter
+`app/src/utils/claudeCoach.ts` ist mit
+`ac57943f16a0cd7cb1c6ce4fd9665821abfd8c3c586877713221cc6220456030`
 gepinnt.
 
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die

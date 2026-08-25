@@ -1075,7 +1075,6 @@ export function validateClaudeWebStartImplementation(
     const validatedNavigationIndex = activeLaunchSource.indexOf(validatedNavigation);
     const firstAwaitIndex = activeLaunchSource.indexOf("await ");
     const popupGuardPattern = /const claudeWindow = window\.open\('', '_blank'\)\s*if \(!claudeWindow\) \{\s*setClaudeActionState\('failed'\)\s*return\s*\}\s*try \{/u;
-    const installNavigationPattern = /if \(!installUrl\) throw new Error\('Invalid Claude connector install URL'\)\s*claudeWindow\.opener = null\s*claudeWindow\.location\.href = installUrl\s*setClaudeActionState\('install-opened'\)\s*return/u;
     const webNavigationPattern = /const webUrl = getSafeClaudeWebUrl\(result\.webUrl\)\s*if \(!webUrl\) throw new Error\('Invalid Claude Web launch URL'\)\s*claudeWindow\.opener = null\s*claudeWindow\.location\.href = webUrl\s*setClaudeActionState\('launched'\)/u;
     const closeOnFailurePattern = /\}\s*catch \{\s*claudeWindow\?\.close\(\)\s*setClaudeActionState\('failed'\)\s*\}\s*\}/u;
     const navigationSinks = [
@@ -1100,12 +1099,12 @@ export function validateClaudeWebStartImplementation(
       "Active Claude UI start must navigate only with the validated q-prefilled Web URL.",
     );
     check(
-      navigationSinks.length === 3
-        && countOccurrences(activeLaunchSource, "claudeWindow.location.href = installUrl") === 1
+      navigationSinks.length === 2
         && countOccurrences(activeLaunchSource, validatedNavigation) === 1
         && countOccurrences(activeLaunchSource, "result.webUrl") === 1
-        && countOccurrences(activeLaunchSource, "claudeWindow.opener = null") === 2
-        && installNavigationPattern.test(activeLaunchSource)
+        && countOccurrences(activeLaunchSource, "claudeWindow.opener = null") === 1
+        && !activeLaunchSource.includes("installUrl")
+        && !activeLaunchSource.includes("setupUrl")
         && webNavigationPattern.test(activeLaunchSource)
         && closeOnFailurePattern.test(activeLaunchSource),
       "Active Claude Web start must keep its only navigation sinks terminal, opener-isolated and close-on-failure.",

@@ -9,7 +9,7 @@
   "publication": {
     "resourceRoot": "backend/src/main/resources/claude-plugin-publication",
     "downloadBasePath": "/api/public/claude/plugins",
-    "accessModel": "unlisted_direct_link"
+    "accessModel": "first_party_guided_beta"
   },
   "candidate": {
     "version": "1.0.2",
@@ -40,6 +40,7 @@
   },
   "readiness": {
     "controlledBetaReady": true,
+    "guidedFirstPartyBetaReady": true,
     "openPublicBetaReady": false,
     "controlledBetaEvidence": [
       {
@@ -53,6 +54,12 @@
         "kind": "local_validation",
         "status": "pass",
         "evidenceRef": "byte-identical-buildClaudePluginPackage-runs"
+      },
+      {
+        "id": "first-party-guided-plugin-setup",
+        "kind": "local_validation",
+        "status": "pass",
+        "evidenceRef": "testClaudeV1StartUi-and-claudePluginPublication"
       },
       {
         "id": "real-client-claude-pro-web-direct-install",

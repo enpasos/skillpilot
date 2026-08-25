@@ -122,6 +122,19 @@ test("Claude v1 Web q launch and evidence contract reject weakened sources", () 
     popupBypassErrors.some((error) => error.includes("click-time popup")),
   );
 
+  const setupDiversionErrors = validateClaudeWebStartImplementation(
+    adapter,
+    uiTest,
+    sessionSetup.replace(
+      "const result = await requestClaudeLaunch({",
+      "const installUrl = '/plugins'\n      claudeWindow.location.href = installUrl\n      const result = await requestClaudeLaunch({",
+    ),
+  );
+  assert.ok(
+    setupDiversionErrors.some((error) => error.includes("navigation sinks")),
+    "the everyday Claude start must not navigate back into plugin setup",
+  );
+
   for (const [name, weakenedSource] of [
     [
       "clipboard copy",

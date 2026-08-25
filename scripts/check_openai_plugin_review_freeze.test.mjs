@@ -149,16 +149,56 @@ test("review exceptions keep the submitted hash and pin authorized runtimes", ()
           "1919c46dfe9e1f70ecdf177f2dd48654400c9eb8debd47ddaf0576d9e4fdd61f",
       },
       evidenceFile: {
-        path: "app/scripts/testClaudeV1StartUi.tsx",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-24-testClaudeV1StartUi.tsx",
         sha256:
           "60ac516f664da7a61c7ce2a53ad2736adc7ae7d67fb10391c549b073b331a5e4",
       },
       additionalFile: {
-        path: "app/src/utils/claudeCoach.ts",
+        path:
+          "contracts/openai/skillpilot-coach-v1/review-evidence/2026-08-24-claudeCoach.ts",
         priorSha256:
           "817c855aeca7406cd923dc7ce56538c2b8f67ec90b7750b064b873f1976a539d",
         authorizedSha256:
           "fc451b8780889e45fe7a848353e1415d52d4eb1b6a7f8ed35b266a4dd5d512f0",
+      },
+    },
+    {
+      id: "2026-08-25-claude-direct-plugin-guided-start",
+      approvedAt: "2026-08-25",
+      approvedBy: "product-owner",
+      reason:
+        "Replace the obsolete learner-facing manual Connector setup with the approved guided Claude Pro direct-plugin beta path.",
+      scope:
+        "Within the separately branded Claude v1 controls, guide learners to the first-party /plugins download " +
+        "and Claude Web upload, remove the fake browser-local connection status and reset action, and launch " +
+        "the validated q-prefilled Claude Web session directly; preserve the submitted ChatGPT handler, " +
+        "prepared-message and session semantics, OpenAI package, MCP/OAuth/tool/schema/UI contract, review " +
+        "cases, portal values, fixtures and review artifacts.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-claude-only-guided-direct-plugin-setup-no-submitted-openai-contract-or-review-flow-effect",
+      protectedFile: {
+        path: "app/src/components/SessionSetup.tsx",
+        submittedSha256:
+          "081a467439a7506d2334003912d7bc8784991d9b95cfd0783196bff3ec8aa506",
+        priorAuthorizedSha256:
+          "1919c46dfe9e1f70ecdf177f2dd48654400c9eb8debd47ddaf0576d9e4fdd61f",
+        authorizedSha256:
+          "b56c60fbdf44021c92c9477602207409911ef1049d5a313cc99702f9424e9031",
+      },
+      evidenceFile: {
+        path: "app/scripts/testClaudeV1StartUi.tsx",
+        sha256:
+          "5e833c8525919254db82e3e6d127c00911ec4a8d10408f8216a51d109f66fc8f",
+      },
+      additionalFile: {
+        path: "app/src/utils/claudeCoach.ts",
+        priorSha256:
+          "fc451b8780889e45fe7a848353e1415d52d4eb1b6a7f8ed35b266a4dd5d512f0",
+        authorizedSha256:
+          "ac57943f16a0cd7cb1c6ce4fd9665821abfd8c3c586877713221cc6220456030",
       },
     },
   ]);
@@ -172,7 +212,7 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
   );
   assert.equal(
     latestByPath.get("app/src/components/SessionSetup.tsx")?.protectedFile.authorizedSha256,
-    "1919c46dfe9e1f70ecdf177f2dd48654400c9eb8debd47ddaf0576d9e4fdd61f",
+    "b56c60fbdf44021c92c9477602207409911ef1049d5a313cc99702f9424e9031",
   );
 
   const broken = structuredClone(freeze.authorizedRuntimeExceptions);
