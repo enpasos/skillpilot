@@ -246,6 +246,39 @@ export function validateClaudePluginPackage(root = packageRoot) {
       && !normalizedSkillText.includes("would materially help with the active goal"),
     "The Skill and coaching policy must require one immediate goal-visualization render per unseen goal/state pair after context reload without claiming host display.",
   );
+  const modalityPolicyTexts = [normalizedSkillText, normalizedCoachingPolicyText];
+  check(
+    modalityPolicyTexts.every((value) => (
+      value.includes("Use only the current interaction mode already known to Claude")
+        && value.includes("Never infer, request or depend on a Web, Android, iOS, browser, app, device or other client type")
+        && value.includes("branch coaching or SkillPilot tool behavior on")
+        && value.includes("In voice mode, do not create or request Claude-generated images")
+        && value.includes("Keep every coach-authored explanation, question and task in speech or text")
+        && value.includes("never authorizes reproducing content that a protected workflow keeps inside a private component")
+        && value.includes("server-approved `goalVisualization` is not Claude-generated")
+        && value.includes("including voice mode")
+        && value.includes("fully understandable and solvable from its spoken or written wording alone")
+        && value.includes("Never ask what the learner sees in a visual")
+        && value.includes("every axis intercept within those ranges or explicitly that none occurs")
+        && value.includes("at least two concrete plotted points")
+        && value.includes("any additional shape information needed to solve the task")
+        && value.includes("Never ask the learner to recover a value already supplied for accessibility")
+        && value.includes("do not use a voice-only substitute to establish completion")
+        && value.includes("authoritative SkillPilot task or exam data is not self-contained without a visual")
+        && value.includes("do not invent missing points or disclose assessment answers")
+        && value.includes("Do not use that task as evidence or record completion")
+        && value.includes("For an active exam, pause without hints or alternative practice")
+        && value.includes("Only outside an active exam may you offer a text-equivalent practice path")
+    )),
+    "The Skill and coaching policy must separate Claude-known interaction mode from client type, suppress Claude-generated visuals in voice mode, preserve approved goal rendering, and keep every task text-complete.",
+  );
+  check(
+    normalizedSkillText.includes("learner work present in the current conversation, including spoken or written responses")
+      && normalizedCoachingPolicyText.includes("learner work present in the current conversation, including spoken or written responses")
+      && normalizedCoachingPolicyText.includes("every learner answer is present in the current conversation, including any spoken or written responses")
+      && normalizedCoachingPolicyText.includes("one complete learner submission present in the current conversation, including any spoken or written response"),
+    "The Skill and coaching policy must treat spoken and written learner evidence equally without weakening completion gates.",
+  );
   check(normalizedSkillText.includes("private MCP App"), "SKILL.md must keep normal memory-card content inside the private app.");
   check(normalizedSkillText.includes("must never call `review_skillpilot_memory_practice_card`"), "SKILL.md must keep card review app-only.");
   check(normalizedSkillText.includes("does not establish mastery"), "SKILL.md must separate normal memory practice from mastery.");

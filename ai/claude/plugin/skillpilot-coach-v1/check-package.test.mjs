@@ -92,6 +92,110 @@ test("rejects loss of the mandatory post-reload goal-visualization render", () =
   });
 });
 
+test("rejects client-type inference as a substitute for Claude-known modality", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "Use only the current interaction mode already known to Claude.",
+      "Infer interaction mode from the connected client type.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /separate Claude-known interaction mode from client type/u,
+    );
+  });
+});
+
+test("rejects Claude-generated visuals in voice mode", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      "In voice mode, do not create or request Claude-generated images",
+      "In voice mode, create Claude-generated images",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /suppress Claude-generated visuals in voice mode/u,
+    );
+  });
+});
+
+test("rejects suppressing approved goal rendering in voice mode", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /A server-approved\s+`goalVisualization` is not Claude-generated/u,
+      "A server-approved `goalVisualization` follows the same suppression rule",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /preserve approved goal rendering/u,
+    );
+  });
+});
+
+test("rejects image-dependent coaching tasks or incomplete graph wording", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      /fully understandable and solvable\s+from its spoken or written wording alone/u,
+      "understandable after inspecting the visual",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /keep every task text-complete/u,
+    );
+  });
+});
+
+test("rejects visual-only learner evidence in voice mode", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      /every learner answer is present in the current conversation,\s+including any spoken or written responses/u,
+      "every answer is visibly displayed",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /spoken and written learner evidence equally/u,
+    );
+  });
+});
+
+test("rejects leaking protected component content into voice dialogue", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /This never authorizes reproducing content that a\s+protected workflow keeps inside a private component\./u,
+      "Read every private component aloud.",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /suppress Claude-generated visuals in voice mode/u,
+    );
+  });
+});
+
+test("rejects counting accessibility graph givens as mastery evidence", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/references/coaching-policy.md", (value) => value.replace(
+      "Never ask the learner to recover a value already supplied for",
+      "Ask the learner to repeat every value already supplied for",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /keep every task text-complete/u,
+    );
+  });
+});
+
+test("rejects alternative-practice scaffolding during an active exam", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      "For an active exam, pause without",
+      "For an active exam, immediately offer practice with",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /keep every task text-complete/u,
+    );
+  });
+});
+
 test("rejects loss of same-server coexistence and custom-connector boundaries", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
