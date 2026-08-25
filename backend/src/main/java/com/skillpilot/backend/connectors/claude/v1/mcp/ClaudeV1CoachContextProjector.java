@@ -34,6 +34,16 @@ import org.springframework.stereotype.Component;
 @ConditionalOnClaudeV1Enabled
 public class ClaudeV1CoachContextProjector {
 
+    static final String GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION =
+            "Required presentation: form the pair from goalVisualization.goalId and this result's "
+                    + "top-level stateVersion. For every previously unseen pair in this conversation, "
+                    + "call render_skillpilot_goal_visualization exactly once as the immediate next "
+                    + "SkillPilot tool, before any learner-facing response, copying the pair to goalId "
+                    + "and expectedStateVersion. Do this even if a different pair was rendered earlier. "
+                    + "A repeated pair creates no automatic call. If the learner explicitly asks to show "
+                    + "the current image again, reload the current context once and allow one new one-shot "
+                    + "call if it still qualifies. Do not retry automatically or claim that the host "
+                    + "displayed the component.";
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
     private static final Set<String> CURATED_GOAL_VISUALIZATION_STATUSES = Set.of(
@@ -92,6 +102,9 @@ public class ClaudeV1CoachContextProjector {
                     projectedState.curriculum(), activeGoal, language);
             if (goalVisualization != null) {
                 context.put("goalVisualization", goalVisualization);
+                context.put(
+                        "presentationInstruction",
+                        GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION);
             }
         }
 

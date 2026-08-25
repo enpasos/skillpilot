@@ -79,6 +79,19 @@ test("rejects incomplete coverage of the twelve-tool contract", () => {
   });
 });
 
+test("rejects loss of the mandatory post-reload goal-visualization render", () => {
+  withPackageCopy((root) => {
+    mutate(root, "skills/skillpilot-coach-v1/SKILL.md", (value) => value.replace(
+      /immediate next\s+SkillPilot tool/u,
+      "optional later SkillPilot tool",
+    ));
+    assert.match(
+      validateClaudePluginPackage(root).errors.join("\n"),
+      /one immediate goal-visualization render per unseen goal\/state pair/u,
+    );
+  });
+});
+
 test("rejects loss of same-server coexistence and custom-connector boundaries", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(

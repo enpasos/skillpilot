@@ -163,9 +163,11 @@ export function validateClaudePluginPackage(root = packageRoot) {
   }
 
   const skillText = text.get("skills/skillpilot-coach-v1/SKILL.md");
+  const coachingPolicyText = text.get("skills/skillpilot-coach-v1/references/coaching-policy.md");
   const readmeText = text.get("README.md");
   const setupText = text.get("SETUP.md");
   const normalizedSkillText = skillText.replace(/\s+/gu, " ");
+  const normalizedCoachingPolicyText = coachingPolicyText.replace(/\s+/gu, " ");
   const normalizedReadmeText = readmeText.replace(/\s+/gu, " ");
   const normalizedSetupText = setupText.replace(/\s+/gu, " ");
   const frontmatter = parseFrontmatter(skillText);
@@ -227,6 +229,23 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(skillText.includes("two independent checks") && skillText.includes("multi-step"), "SKILL.md must require concrete ordinary-goal evidence.");
   check(skillText.includes("wait for answers to the complete batch"), "SKILL.md must preserve recall answer-release timing.");
   check(skillText.includes("Wait for the complete submission"), "SKILL.md must preserve exam answer-release timing.");
+  check(
+    normalizedSkillText.includes("After a successful focus, active-goal or mastery write")
+      && normalizedSkillText.includes("previously unseen pair")
+      && normalizedSkillText.includes("immediate next SkillPilot tool")
+      && normalizedSkillText.includes("before any learner-facing response")
+      && normalizedSkillText.includes("A repeated pair creates no automatic call")
+      && normalizedSkillText.includes("Do not retry automatically after success or error")
+      && normalizedSkillText.includes("reload the current context exactly once")
+      && normalizedSkillText.includes("only a UI receipt")
+      && normalizedSkillText.includes("never claim that the host displayed it")
+      && normalizedCoachingPolicyText.includes("After a successful focus, active-goal or completion write")
+      && normalizedCoachingPolicyText.includes("immediate next SkillPilot tool")
+      && normalizedCoachingPolicyText.includes("A repeated pair creates no automatic call")
+      && normalizedCoachingPolicyText.includes("reload the current context exactly once")
+      && !normalizedSkillText.includes("would materially help with the active goal"),
+    "The Skill and coaching policy must require one immediate goal-visualization render per unseen goal/state pair after context reload without claiming host display.",
+  );
   check(normalizedSkillText.includes("private MCP App"), "SKILL.md must keep normal memory-card content inside the private app.");
   check(normalizedSkillText.includes("must never call `review_skillpilot_memory_practice_card`"), "SKILL.md must keep card review app-only.");
   check(normalizedSkillText.includes("does not establish mastery"), "SKILL.md must separate normal memory practice from mastery.");

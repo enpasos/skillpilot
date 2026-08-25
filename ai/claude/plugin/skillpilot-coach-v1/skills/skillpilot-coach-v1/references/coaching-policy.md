@@ -48,7 +48,18 @@ authorization code, token or opaque capability.
 Load context at the start and after a conflict. Every state-changing call uses the
 latest server-provided expected revision plus a fresh UUID request identifier.
 Never guess either value. After a successful focus, active-goal or completion
-write, follow the returned instruction and reload before continuing.
+write, follow the returned instruction and reload before continuing. When that
+newest context contains `goalVisualization`, form the pair from
+`goalVisualization.goalId` and its top-level `stateVersion`. For every previously
+unseen pair in the conversation, call `render_skillpilot_goal_visualization`
+exactly once as the immediate next SkillPilot tool before any learner-facing
+response, even when another pair was rendered earlier. Copy the pair unchanged to
+`goalId` and `expectedStateVersion`. A repeated pair creates no automatic call.
+Do not retry automatically after success or error. If the learner explicitly
+asks to show the current image again, reload the current context exactly once
+and, if it still contains `goalVisualization`, make one fresh-pair one-shot call.
+Treat the result only as a UI receipt: never claim host display, invent image
+details or expose image URLs or metadata.
 
 The learner chooses changes:
 

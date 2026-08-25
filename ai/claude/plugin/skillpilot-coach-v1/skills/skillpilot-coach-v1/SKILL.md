@@ -30,9 +30,18 @@ tool.
    a curriculum or changing anything.
 7. If connector authentication is missing, let Claude start the normal OAuth
    flow. This technical connection contains no permanent learner identifier.
-8. When an approved image would materially help with the active goal, call
-   `render_skillpilot_goal_visualization` with that current goal and state. Let
-   the component show the image; do not claim that another image was generated.
+8. Whenever the newest successful `get_skillpilot_coach_context` result contains
+   `goalVisualization`, form the pair from its `goalVisualization.goalId` and
+   top-level `stateVersion`. For every previously unseen pair in this
+   conversation, even if a different pair was rendered earlier, call
+   `render_skillpilot_goal_visualization` exactly once as the immediate next
+   SkillPilot tool before any learner-facing response. Copy that pair to `goalId`
+   and `expectedStateVersion`. A repeated pair creates no automatic call. Do not
+   retry automatically after success or error. If the learner explicitly asks to
+   show the current image again, reload the current context exactly once and, if
+   it still contains `goalVisualization`, make one new one-shot render call with
+   that fresh pair. The renderer result is only a UI receipt: never claim that the
+   host displayed it, invent image details or expose image URLs or metadata.
 
 ## Choose without taking control
 
@@ -44,8 +53,10 @@ tool.
 - Activate only a currently eligible atomic goal with
   `set_skillpilot_active_goal`. If another goal is active, redirect only after the
   learner explicitly asks to leave it.
-- After a successful write, follow the returned instruction and reload context
-  before continuing.
+- After a successful focus, active-goal or mastery write, follow the returned
+  instruction and reload context before continuing. If that newest context
+  contains `goalVisualization`, apply step 8 before any learner-facing coaching
+  response.
 
 ## Coach and record completion
 

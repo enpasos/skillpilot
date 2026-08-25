@@ -108,11 +108,16 @@ public class ClaudeV1McpContractAdapter {
     private static final String MEMORY_PRACTICE_RESOURCE_FILENAME =
             "memory-card-practice.html";
     private static final int MAX_SCORING_STEPS = 100;
+    static final String POST_WRITE_RELOAD_INSTRUCTION =
+            "Reload coach context now. If the newest result contains goalVisualization, follow "
+                    + "that result's presentationInstruction before any learner-facing response.";
     static final String MASTERY_CONTINUATION_INSTRUCTION =
-            "Give the learner one concise, natural response that explains what went well, what still "
-                    + "needs practice, and the next learning step. Do not display feedback field names, "
-                    + "completion markers, state revisions or other technical metadata. Then reload coach "
-                    + "context and follow the active goal or next learning step returned after reload.";
+            "Reload coach context now. If the newest result contains goalVisualization, follow that "
+                    + "result's presentationInstruction before any learner-facing response. Then give the "
+                    + "learner one concise, natural response that explains what went well, what still needs "
+                    + "practice, and the active goal or next learning step returned after reload. Do not "
+                    + "display feedback field names, completion markers, state revisions or other technical "
+                    + "metadata.";
     private static final Map<String, Set<String>> ALLOWED_ARGUMENTS = Map.ofEntries(
             Map.entry(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Set.of(ARG_LANGUAGE)),
             Map.entry(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION,
@@ -245,10 +250,19 @@ public class ClaudeV1McpContractAdapter {
                 new version; never guess a version. After a successful focus, active-goal or mastery
                 write, follow its instruction and reload context before continuing to coach.
 
-                Goal images: when a newly loaded context contains goalVisualization, call
-                render_skillpilot_goal_visualization exactly once for that goalId and stateVersion.
-                The dedicated component displays the approved image. Do not restate its image URL,
-                opaque identifiers or component metadata in ordinary learner-facing prose.
+                Goal images: whenever the newest successful coach-context result contains
+                goalVisualization, form the pair from goalVisualization.goalId and that result's
+                top-level stateVersion. For every previously unseen pair in this conversation, even
+                if a different pair was rendered earlier, call render_skillpilot_goal_visualization
+                exactly once as the immediate next SkillPilot tool before any learner-facing response,
+                copying the pair to goalId and expectedStateVersion. A repeated pair creates no
+                automatic call. After a successful focus, active-goal or mastery write, reload context
+                first and apply this rule to the new result. If the learner explicitly asks to show
+                the current image again, reload the current context exactly once and, if it still
+                contains goalVisualization, make one new one-shot render call with that fresh pair;
+                never retry otherwise. The renderer result is only a UI receipt and does not prove
+                that the host displayed the component. Never invent image details or restate its
+                image URL, opaque identifiers or component metadata in ordinary learner-facing prose.
 
                 Normal flashcard practice is separate from Verified Recall. When the learner asks
                 to practise the confirmed active memory goal, call start_skillpilot_memory_practice
@@ -295,8 +309,11 @@ public class ClaudeV1McpContractAdapter {
         tools.add(uiTool(
                 ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION,
                 "Display the learning-goal image",
-                "Displays the approved image for the exact active atomic learning goal and state revision "
-                        + "published by the newest coach context. Reads only and never changes learner state.",
+                "Required immediate presentation step for every previously unseen goalVisualization.goalId "
+                        + "and top-level stateVersion pair published by the newest coach context. Copy that pair "
+                        + "to goalId and expectedStateVersion before any learner-facing response. A repeated pair "
+                        + "creates no automatic call. The result is only a UI receipt and does not prove host "
+                        + "display. Reads only and never changes learner state.",
                 objectSchema(
                         List.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION),
                         Map.of(
@@ -1143,7 +1160,10 @@ public class ClaudeV1McpContractAdapter {
                 });
 
         Map<String, Object> response = successResponse(outcome.stateVersion());
-        response.put("instruction", "Reload coach context before continuing with the new focus.");
+        String continuation = POST_WRITE_RELOAD_INSTRUCTION
+                + " Then continue with the new learning focus.";
+        response.put("instruction", continuation);
+        response.put("presentationInstruction", continuation);
         return response;
     }
 
@@ -1210,7 +1230,10 @@ public class ClaudeV1McpContractAdapter {
 
         Map<String, Object> response = successResponse(outcome.stateVersion());
         response.putAll(outcome.value());
-        response.put("instruction", "Reload coach context before teaching the active goal.");
+        String continuation = POST_WRITE_RELOAD_INSTRUCTION
+                + " Then teach the active goal.";
+        response.put("instruction", continuation);
+        response.put("presentationInstruction", continuation);
         return response;
     }
 
