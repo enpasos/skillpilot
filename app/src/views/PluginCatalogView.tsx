@@ -36,15 +36,39 @@ const copy = {
     retry: 'Erneut versuchen',
     emptyTitle: 'Derzeit steht kein Beta-Plugin zum Download bereit.',
     emptyText: 'Sobald eine geprüfte Version veröffentlicht ist, erscheint sie hier.',
-    guideTitle: 'Plugin in drei Schritten einrichten',
-    guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe die Einrichtung hier einmalig in Claude Web durch.',
+    guideTitle: 'Plugin vollständig einrichten',
+    guideIntro: 'Lass deinen ursprünglichen SkillPilot-Tab geöffnet und führe alle fünf Schritte in dieser Reihenfolge in Claude Web durch.',
+    stepCleanupTitle: 'Alte SkillPilot-Plugins entfernen',
+    stepCleanupBody: 'Öffne jetzt Claude Web und gehe zur Plugin-Liste:',
+    stepCleanupActions: [
+      'Klicke unten links auf deinen Namen bzw. dein Profil und öffne „Einstellungen“. Falls „Anpassen“ (Customize) bereits direkt in der Hauptseitenleiste erscheint, kannst du es dort unmittelbar öffnen.',
+      'Wähle links unter „Anpassen“ den Punkt „Plugins“.',
+      'Suche in der Liste nach vorhandenen Plugin-Einträgen mit „SkillPilot“ im Namen.',
+      'Öffne bei jedem alten SkillPilot-Plugin das Menü und wähle „Entfernen“ bzw. das Papierkorb-Symbol. Entferne dabei keine anderen Plugins und keine separat vorhandenen Konnektoren. Wenn kein alter Eintrag vorhanden ist, gehe direkt zu Schritt 3.',
+    ],
+    stepCleanupCheck: 'Bevor du fortfährst, darf kein älteres SkillPilot-Plugin mehr in der Liste stehen.',
     stepDownloadTitle: 'Plugin-Datei herunterladen',
     stepDownloadBody: 'Lade die unten angebotene, von SkillPilot geprüfte Version herunter.',
-    stepInstallTitle: 'In Claude Web hochladen',
-    stepInstallBody: 'Öffne Claude Web und wähle Customize („Anpassen“) → Plugins. Lade dort die heruntergeladene .plugin-Datei hoch.',
+    stepInstallTitle: 'Aktuelle Plugin-Datei hinzufügen',
+    stepInstallBody: 'Bleibe in der Claude-Plugin-Liste und installiere jetzt nur die aktuelle Datei:',
+    stepInstallActions: [
+      'Klicke oben rechts auf „Hinzufügen“ und wähle die Option zum Hochladen einer benutzerdefinierten Plugin-Datei.',
+      'Wähle die soeben heruntergeladene .plugin-Datei aus und bestätige den Upload.',
+      'Falls Claude beim neuen Eintrag einen Schalter zum Aktivieren zeigt, aktiviere das Plugin.',
+    ],
+    stepInstallCheck: 'Du bist richtig, wenn im Fenster oben „Plugins“ und rechts „Hinzufügen“ steht. Nach dem Upload erscheint „SkillPilot Coach v1“ genau einmal in der Liste.',
+    stepConnectorTitle: 'Enthaltenen SkillPilot-Konnektor verbinden',
+    stepConnectorBody: 'Der Datei-Upload allein reicht noch nicht. Aktiviere anschließend den im Plugin enthaltenen Konnektor:',
+    stepConnectorActions: [
+      'Öffne den neu installierten Eintrag „SkillPilot Coach v1“.',
+      'Öffne innerhalb des Plugins den Tab „Konnektoren“ (Connectors).',
+      'Wähle den enthaltenen Konnektor „SkillPilot“ und klicke auf „Verbinden“ (Connect).',
+      'Folge der angezeigten Anmeldung und Freigabe bis Claude den Konnektor als verbunden anzeigt.',
+    ],
+    stepConnectorCheck: 'Verwende ausschließlich den im Plugin enthaltenen SkillPilot-Konnektor. Füge keinen zweiten manuellen SkillPilot-Konnektor hinzu und trage keine MCP-URL ein.',
     openClaudeWeb: 'Claude Web öffnen',
     stepReturnTitle: 'Zu SkillPilot zurückkehren',
-    stepReturnBody: 'Wechsle zurück zum ursprünglichen SkillPilot-Tab und wähle „Schritt 2: Mit Claude starten“. Beim ersten Zugriff führt Claude dich bei Bedarf durch die einmalige SkillPilot-Anmeldung.',
+    stepReturnBody: 'Wechsle zurück zum ursprünglichen SkillPilot-Tab. Prüfe dort dein Lernprofil und Curriculum und wähle anschließend „Schritt 2: Mit Claude starten“.',
     returnToSkillPilot: 'Zurück zu SkillPilot',
     technicalDetails: 'Version und technische Prüfdaten',
     status: 'Status',
@@ -60,8 +84,8 @@ const copy = {
     age: (minimumAge: number) => `Nur für Personen ab ${minimumAge} Jahren.`,
     plan: 'Claude Pro ist der von SkillPilot unterstützte und getestete Beta-Pfad.',
     planDetail: 'Andere bezahlte Claude-Tarife können Plugins technisch ebenfalls unterstützen, gehören aber nicht zu diesem SkillPilot-Beta-Supportpfad.',
-    install: 'Öffne in Claude Web Customize → Plugins und lade dort die benutzerdefinierte .plugin-Datei hoch.',
-    connectAndStart: 'Nach dem Upload ist SkillPilot im Plugin verfügbar. Beim ersten Lernstart führt Claude dich bei Bedarf durch die einmalige SkillPilot-Anmeldung. Jede weitere Lernsession startest du wieder auf SkillPilot.com.',
+    install: 'Claude Web: alte SkillPilot-Plugins entfernen → aktuelle .plugin-Datei hochladen → im neuen Plugin den enthaltenen SkillPilot-Konnektor verbinden.',
+    connectAndStart: 'Erst wenn „SkillPilot Coach v1“ installiert und sein enthaltener SkillPilot-Konnektor verbunden ist, ist die Einrichtung abgeschlossen. Jede Lernsession startest du anschließend wieder auf SkillPilot.com.',
     android: 'Die anschließende Nutzung in Claude für Android wurde mit demselben Claude-Konto getestet. Interaktive UI-Komponenten können dabei je nach Client oder Turn fehlen; Aufgaben bleiben über Text oder Sprache vollständig lösbar.',
     voiceTested: 'Der Voice Mode wurde von SkillPilot im Beta-Test erprobt. Interaktive UI-Komponenten werden darin nicht durchgängig garantiert. Das ist keine Funktionsgarantie von Anthropic.',
     voiceUntested: 'Der Voice Mode gehört nicht zum getesteten Umfang dieser Version.',
@@ -91,15 +115,39 @@ const copy = {
     retry: 'Try again',
     emptyTitle: 'There is currently no beta plugin available for download.',
     emptyText: 'A reviewed version will appear here as soon as it is published.',
-    guideTitle: 'Set up the plugin in three steps',
-    guideIntro: 'Keep your original SkillPilot tab open and complete this one-time setup in Claude Web.',
+    guideTitle: 'Complete the plugin setup',
+    guideIntro: 'Keep your original SkillPilot tab open and complete all five steps in this order in Claude Web.',
+    stepCleanupTitle: 'Remove old SkillPilot plugins',
+    stepCleanupBody: 'Now open Claude Web and go to the plugin list:',
+    stepCleanupActions: [
+      'Click your name or profile in the lower-left corner and open Settings. If Customize already appears in the main sidebar, you can open it there directly.',
+      'Under Customize on the left, select Plugins.',
+      'Look through the list for existing plugin entries with “SkillPilot” in their name.',
+      'Open the menu for every old SkillPilot plugin and select Remove or the trash icon. Do not remove unrelated plugins or separately existing connectors. If there is no old entry, continue directly with step 3.',
+    ],
+    stepCleanupCheck: 'Before continuing, make sure no older SkillPilot plugin remains in the list.',
     stepDownloadTitle: 'Download the plugin file',
     stepDownloadBody: 'Download the SkillPilot-verified version offered below.',
-    stepInstallTitle: 'Upload it in Claude Web',
-    stepInstallBody: 'Open Claude Web and choose Customize → Plugins. Upload the downloaded .plugin file there.',
+    stepInstallTitle: 'Add the current plugin file',
+    stepInstallBody: 'Stay in Claude’s plugin list and install only the current file:',
+    stepInstallActions: [
+      'Click Add in the upper-right corner and choose the option to upload a custom plugin file.',
+      'Select the .plugin file you just downloaded and confirm the upload.',
+      'If Claude shows an enable switch on the new entry, enable the plugin.',
+    ],
+    stepInstallCheck: 'You are in the right place when the window says “Plugins” at the top and shows “Add” on the right. After upload, “SkillPilot Coach v1” appears exactly once in the list.',
+    stepConnectorTitle: 'Connect the bundled SkillPilot connector',
+    stepConnectorBody: 'Uploading the file is not enough. Next, activate the connector included in the plugin:',
+    stepConnectorActions: [
+      'Open the newly installed “SkillPilot Coach v1” entry.',
+      'Inside the plugin, open the Connectors tab.',
+      'Select the included “SkillPilot” connector and click Connect.',
+      'Complete the displayed sign-in and approval flow until Claude shows the connector as connected.',
+    ],
+    stepConnectorCheck: 'Use only the SkillPilot connector bundled with the plugin. Do not add a second manual SkillPilot connector or enter an MCP URL.',
     openClaudeWeb: 'Open Claude Web',
     stepReturnTitle: 'Return to SkillPilot',
-    stepReturnBody: 'Return to your original SkillPilot tab and select “Step 2: Start with Claude.” On first access, Claude will guide you through the one-time SkillPilot sign-in if needed.',
+    stepReturnBody: 'Return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Step 2: Start with Claude.”',
     returnToSkillPilot: 'Return to SkillPilot',
     technicalDetails: 'Version and technical verification details',
     status: 'Status',
@@ -115,8 +163,8 @@ const copy = {
     age: (minimumAge: number) => `Only for people aged ${minimumAge} or older.`,
     plan: 'Claude Pro is the beta route supported and tested by SkillPilot.',
     planDetail: 'Other paid Claude plans may technically support plugins as well, but they are outside this SkillPilot beta support route.',
-    install: 'In Claude Web, open Customize → Plugins and upload the custom .plugin file there.',
-    connectAndStart: 'After the upload, SkillPilot is available in the plugin. On your first learning start, Claude will guide you through the one-time SkillPilot sign-in if needed. Start every later learning session on SkillPilot.com again.',
+    install: 'Claude Web: remove old SkillPilot plugins → upload the current .plugin file → connect the bundled SkillPilot connector inside the new plugin.',
+    connectAndStart: 'Setup is complete only after “SkillPilot Coach v1” is installed and its bundled SkillPilot connector is connected. Start every learning session on SkillPilot.com afterwards.',
     android: 'Subsequent use in Claude for Android was tested with the same Claude account. Interactive UI components may be absent depending on the client or turn; tasks remain fully solvable through text or speech.',
     voiceTested: 'Voice mode was exercised in SkillPilot beta testing. Interactive UI components are not guaranteed consistently there. This is not a functionality guarantee from Anthropic.',
     voiceUntested: 'Voice mode is outside the tested scope of this version.',
@@ -187,6 +235,27 @@ interface PublicationCardProps {
   language: SupportedLanguage
 }
 
+interface InstructionActionsProps {
+  actions: readonly string[]
+  testId: string
+}
+
+const InstructionActions: React.FC<InstructionActionsProps> = ({ actions, testId }) => (
+  <ol
+    data-testid={testId}
+    className="mt-3 space-y-2 text-sm leading-relaxed text-text-secondary"
+  >
+    {actions.map((action, actionIndex) => (
+      <li key={action} className="flex gap-2">
+        <span className="font-semibold text-sky-800 dark:text-sky-300" aria-hidden="true">
+          {actionIndex + 1}.
+        </span>
+        <span>{action}</span>
+      </li>
+    ))}
+  </ol>
+)
+
 const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, language }) => {
   const text = copy[language]
   const supportHref = `mailto:${plugin.supportEmail}`
@@ -230,7 +299,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
             {text.guideTitle}
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-text-secondary">{text.guideIntro}</p>
-          <ol className="mt-5 grid gap-4 lg:grid-cols-3">
+          <ol className="mt-5 space-y-4">
             <li data-testid="claude-plugin-install-step-download" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
               <div className="flex items-start gap-3">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">1</span>
@@ -248,27 +317,66 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ plugin, preparedAt, l
                 {text.download}
               </a>
             </li>
-            <li data-testid="claude-plugin-install-step-upload" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+            <li data-testid="claude-plugin-install-step-cleanup" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
               <div className="flex items-start gap-3">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">2</span>
-                <div>
-                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepInstallTitle}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepInstallBody}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepCleanupTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepCleanupBody}</p>
+                  <InstructionActions
+                    actions={text.stepCleanupActions}
+                    testId="claude-plugin-cleanup-navigation"
+                  />
+                  <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs font-medium leading-relaxed text-amber-950 dark:bg-amber-950/50 dark:text-amber-100">
+                    {text.stepCleanupCheck}
+                  </p>
                 </div>
               </div>
               <a
                 href="https://claude.ai"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950/50"
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-sky-500 px-4 py-2.5 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950/50 sm:w-auto"
               >
                 {text.openClaudeWeb}
                 <ExternalLink size={16} aria-hidden="true" />
               </a>
             </li>
-            <li data-testid="claude-plugin-install-step-return" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+            <li data-testid="claude-plugin-install-step-upload" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
               <div className="flex items-start gap-3">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">3</span>
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepInstallTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepInstallBody}</p>
+                  <InstructionActions
+                    actions={text.stepInstallActions}
+                    testId="claude-plugin-upload-navigation"
+                  />
+                  <p className="mt-3 rounded-xl bg-sky-100 px-3 py-2 text-xs font-medium leading-relaxed text-sky-950 dark:bg-sky-950/70 dark:text-sky-100">
+                    {text.stepInstallCheck}
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li data-testid="claude-plugin-install-step-connector" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">4</span>
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900 dark:text-white">{text.stepConnectorTitle}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepConnectorBody}</p>
+                  <InstructionActions
+                    actions={text.stepConnectorActions}
+                    testId="claude-plugin-connector-navigation"
+                  />
+                  <p className="mt-3 rounded-xl bg-emerald-50 px-3 py-2 text-xs font-medium leading-relaxed text-emerald-950 dark:bg-emerald-950/50 dark:text-emerald-100">
+                    {text.stepConnectorCheck}
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li data-testid="claude-plugin-install-step-return" className="flex flex-col rounded-2xl border border-sky-200 bg-white p-4 dark:border-sky-900 dark:bg-slate-900/70">
+              <div className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-700 text-sm font-bold text-white">5</span>
                 <div>
                   <p className="font-semibold text-slate-900 dark:text-white">{text.stepReturnTitle}</p>
                   <p className="mt-1 text-sm leading-relaxed text-text-secondary">{text.stepReturnBody}</p>

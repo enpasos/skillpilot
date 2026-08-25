@@ -110,6 +110,8 @@ assert.equal(
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
 const appCoreSource = readFileSync(new URL('../src/hooks/useAppCore.ts', import.meta.url), 'utf8')
 const coachSetupSource = readFileSync(new URL('../src/views/CoachProviderMatrixView.tsx', import.meta.url), 'utf8')
+const germanLocaleSource = readFileSync(new URL('../src/locales/de.ts', import.meta.url), 'utf8')
+const englishLocaleSource = readFileSync(new URL('../src/locales/en.ts', import.meta.url), 'utf8')
 
 assert.match(
   appSource,
@@ -132,6 +134,16 @@ assert.doesNotMatch(
   'the controlled plugin beta route must not be promoted from the public account comparison',
 )
 assert.match(
+  germanLocaleSource,
+  /nur die Claude-Beta.*kostenpflichtiger Claude-Tarif erforderlich.*unterstützt und getestet ist derzeit Claude Pro.*ChatGPT-Zugang wartet noch auf Freigabe.*kann derzeit nicht genutzt werden/u,
+  'the German start banner must state that only the Claude Pro beta works while ChatGPT awaits approval',
+)
+assert.match(
+  englishLocaleSource,
+  /only the Claude beta is available.*paid Claude plan is required.*Claude Pro is the plan currently supported and tested.*ChatGPT access is awaiting approval.*cannot currently be used/u,
+  'the English start banner must state that only the Claude Pro beta works while ChatGPT awaits approval',
+)
+assert.match(
   appSource,
   /if \(isRootRoute\(normalizedPath\)\) \{\s*return sessionSetupElement\s*\}/u,
   'App must render setup directly for the root route',
@@ -147,4 +159,4 @@ assert.match(
   'App core must not synchronize stored route state into the root URL',
 )
 
-console.log('Root route policy passed: 22 guarantees.')
+console.log('Root route policy passed: 24 guarantees.')

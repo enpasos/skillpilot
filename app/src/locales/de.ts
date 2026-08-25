@@ -155,7 +155,7 @@ export const de = {
             }
         },
         banner: {
-            text: "**SkillPilot ist kostenlos.** Für ChatGPT und Claude gelten die Konto-, Tarif- und Altersvoraussetzungen des jeweiligen Anbieters.",
+            text: "**SkillPilot ist kostenlos.** Aktuell nutzbar ist nur die Claude-Beta. Dafür ist ein kostenpflichtiger Claude-Tarif erforderlich; unterstützt und getestet ist derzeit Claude Pro. Der ChatGPT-Zugang wartet noch auf Freigabe und kann derzeit nicht genutzt werden.",
             linkLabel: "Zugänge vergleichen"
         },
         links: {
