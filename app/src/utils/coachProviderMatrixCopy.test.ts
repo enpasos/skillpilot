@@ -74,10 +74,12 @@ assert(
   'ChatGPT Plus/Pro remains visibly recommended for an individual learner',
 )
 assert(
-  variantIds.filter(variantId => variantId !== 'claude-free')
+  (['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const)
     .every(variantId => row(de, 'current-access').cells[variantId].status === 'planned')
-    && row(de, 'current-access').cells['claude-free'].status === 'unavailable',
-  'no account variant is presented as publicly released and Claude Free rejects complete plugin access',
+    && row(de, 'current-access').cells['claude-free'].status === 'unavailable'
+    && row(de, 'current-access').cells['claude-pro-max'].status === 'tested'
+    && row(de, 'current-access').cells['claude-team-enterprise'].status === 'planned',
+  'only the controlled Claude Pro direct-install beta is presented as currently tested',
 )
 assert(
   row(de, 'provider-plan').cells['chatgpt-free-go'].status === 'conditional',
@@ -93,15 +95,13 @@ assert(
   'Claude Free is connector-only and never presented as complete plugin access',
 )
 assert(
-  de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('Custom Connector')
-    && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('Custom Connector')
-    && de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('höchstens ein')
-    && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('At most one')
-    && de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('im Web')
-    && en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('on the web')
-    && !de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Desktop')
-    && !en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Cowork'),
-  'Claude variants separate the Free custom-connector fact from the paid Web plugin publication scope',
+  de.variants.find(variant => variant.id === 'claude-free')?.summary.includes('bezahlten')
+    && en.variants.find(variant => variant.id === 'claude-free')?.summary.includes('paid')
+    && de.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Claude Web')
+    && en.variants.find(variant => variant.id === 'claude-pro-max')?.summary.includes('Claude Web')
+    && de.variants.find(variant => variant.id === 'claude-pro-max')?.badge?.includes('Beta')
+    && en.variants.find(variant => variant.id === 'claude-pro-max')?.badge?.includes('beta'),
+  'Claude variants distinguish the paid-plan requirement from the supported Claude Pro beta route',
 )
 assert(
   !row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Smartphone')
@@ -109,8 +109,10 @@ assert(
     && !row(en, 'browser-devices').cells['claude-pro-max'].value.includes('smartphone')
     && !row(en, 'browser-devices').cells['claude-pro-max'].value.includes('tablet')
     && row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web')
-    && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web'),
-  'Claude Web publication copy does not overclaim unrecorded device classes',
+    && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Claude Web')
+    && row(de, 'browser-devices').cells['claude-pro-max'].value.includes('Android')
+    && row(en, 'browser-devices').cells['claude-pro-max'].value.includes('Android'),
+  'Claude device copy states only the tested Web and Android route',
 )
 for (const fullPluginRow of ['current-access', 'provider-plan', 'cost', 'start-path', 'session-duration', 'learning-features', 'photo-upload', 'browser-devices', 'dictation']) {
   assert(
@@ -149,12 +151,18 @@ assert(
   'the matrix tells learners not to share their prepared start or chat',
 )
 assert(
-  variantIds.every(variantId => row(de, 'native-mobile-app').cells[variantId].status === 'unavailable'),
-  'native mobile apps are not advertised as a supported SkillPilot path',
+  row(de, 'native-mobile-app').cells['claude-pro-max'].status === 'tested'
+    && row(en, 'native-mobile-app').cells['claude-pro-max'].status === 'tested'
+    && row(de, 'native-mobile-app').cells['claude-pro-max'].note?.includes('keine Installation direkt')
+    && row(en, 'native-mobile-app').cells['claude-pro-max'].note?.includes('no installation from inside'),
+  'the native Android route is limited to the observed post-Web-install beta path',
 )
 assert(
-  variantIds.every(variantId => row(de, 'voice-mode').cells[variantId].status === 'unavailable'),
-  'continuous voice mode is not advertised as a supported SkillPilot path',
+  row(de, 'voice-mode').cells['claude-pro-max'].status === 'tested'
+    && row(en, 'voice-mode').cells['claude-pro-max'].status === 'tested'
+    && row(de, 'voice-mode').cells['claude-pro-max'].note?.includes('nicht garantiert')
+    && row(en, 'voice-mode').cells['claude-pro-max'].note?.includes('not guaranteed'),
+  'Claude Pro voice mode is presented as beta-tested without a UI-display guarantee',
 )
 for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   assert(
@@ -165,8 +173,8 @@ for (const managedVariant of ['chatgpt-business', 'chatgpt-enterprise-edu'] as c
 }
 
 for (const copy of [de, en]) {
-  assert(copy.asOf.includes('24') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
-  assert(copy.sources.length === 5, 'the matrix links only learner-relevant access, custom-connector and age sources')
+  assert(copy.asOf.includes('25') && copy.asOf.includes('2026'), 'the matrix has an explicit status date')
+  assert(copy.sources.length === 6, 'the matrix links only learner-relevant access, voice, interactive-connector and age sources')
   assert(
     copy.sources.every(source => source.href.startsWith('https://')
       && (source.href.includes('openai.com') || source.href.includes('claude.com'))),

@@ -257,6 +257,9 @@ fi
 echo "Prüfe unveränderten OpenAI-Plugin-V1-Release-/Draft-Snapshot..."
 node scripts/openai_plugin_release.mjs verify
 
+echo "Prüfe die vorbereitete Claude-Direct-Install-Beta..."
+node scripts/claude_direct_install_beta_release.mjs verify
+
 echo "Deploying Vocabulary Decks..."
 # Führt das Python-Skript aus, um die Decks von curricula/../json nach app/public/data zu kopieren
 python3 scripts/deploy_decks.py
@@ -334,6 +337,10 @@ else
 fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
+
+echo "Prüfe die öffentlich ausgelieferte Claude-Direct-Install-Beta..."
+node scripts/claude_direct_install_beta_release.mjs \
+  verify-public "${SMOKE_BASE_URL}"
 
 echo "Prüfe öffentliches OpenAI-Reviewvideo..."
 node scripts/verify_openai_review_video.mjs \

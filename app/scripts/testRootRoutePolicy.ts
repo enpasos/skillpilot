@@ -51,6 +51,16 @@ assert.equal(
   'the feedback-pilot placeholder must not issue learner or mastery requests',
 )
 assert.equal(
+  shouldRunApplicationCore('/plugins'),
+  false,
+  'the public plugin download must not issue catalog, profile, or mastery requests',
+)
+assert.equal(
+  shouldSyncRouteStateToUrl('/plugins/'),
+  false,
+  'the public plugin download must not synchronize stored learner state into its URL',
+)
+assert.equal(
   shouldRenderSessionSetup({
     pathname: '/learner',
     hasActiveSession: true,
@@ -99,11 +109,27 @@ assert.equal(
 
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
 const appCoreSource = readFileSync(new URL('../src/hooks/useAppCore.ts', import.meta.url), 'utf8')
+const coachSetupSource = readFileSync(new URL('../src/views/CoachProviderMatrixView.tsx', import.meta.url), 'utf8')
 
 assert.match(
   appSource,
   /enabled:\s*shouldRunApplicationCore\(normalizedPath\)/u,
   'App must disable its core through the tested root-route policy',
+)
+assert.equal(
+  (appSource.match(/<Route path="\/plugins" element=\{<PluginCatalogView \/>\} \/>/gu) ?? []).length,
+  2,
+  'App must expose the lazy plugin catalog in both public and authenticated router branches',
+)
+assert.match(
+  appSource,
+  /path === '\/plugins'\s*\? 'noindex, nofollow'/u,
+  'the controlled plugin beta route must remain excluded from search indexing',
+)
+assert.doesNotMatch(
+  coachSetupSource,
+  /to="\/plugins"/u,
+  'the controlled plugin beta route must not be promoted from the public account comparison',
 )
 assert.match(
   appSource,
@@ -121,4 +147,4 @@ assert.match(
   'App core must not synchronize stored route state into the root URL',
 )
 
-console.log('Root route policy passed: 17 guarantees.')
+console.log('Root route policy passed: 22 guarantees.')

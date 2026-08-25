@@ -26,6 +26,13 @@ class SpaControllerTest {
     }
 
     @Test
+    void pluginCatalogForwardsToSpaIndex() throws Exception {
+        mockMvc.perform(get("/plugins"))
+                .andExpect(status().isOk())
+                .andExpect(forwardedUrl("/index.html"));
+    }
+
+    @Test
     void learningGoalBookForwardsToSpaIndex() throws Exception {
         mockMvc.perform(get("/lernzielbuch"))
                 .andExpect(status().isOk())

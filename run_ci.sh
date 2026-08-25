@@ -468,6 +468,7 @@ run_backend_ci() {
   ./gradlew clean check --no-daemon --no-watch-fs
   cd "${PROJECT_ROOT}"
   node scripts/openai_plugin_release.mjs verify
+  node scripts/claude_direct_install_beta_release.mjs verify
   cd "${PROJECT_ROOT}/backend"
   rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
   cd "${PROJECT_ROOT}"

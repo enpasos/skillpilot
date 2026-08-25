@@ -40,6 +40,7 @@ const PUBLIC_PATHS = new Set([
   '/curricula',
   '/faq',
   '/faq/coach-setup',
+  '/plugins',
   '/privacy',
   '/imprint',
   '/legal',
@@ -60,6 +61,7 @@ const TrainerView = lazy(() => import('./views/TrainerView').then((module) => ({
 const LegalView = lazy(() => import('./views/LegalView').then((module) => ({ default: module.LegalView })))
 const FaqView = lazy(() => import('./views/FaqView').then((module) => ({ default: module.FaqView })))
 const CoachProviderMatrixView = lazy(() => import('./views/CoachProviderMatrixView').then((module) => ({ default: module.CoachProviderMatrixView })))
+const PluginCatalogView = lazy(() => import('./views/PluginCatalogView').then((module) => ({ default: module.PluginCatalogView })))
 const PrivacyView = lazy(() => import('./views/PrivacyView').then((module) => ({ default: module.PrivacyView })))
 const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({ default: module.ImprintView })))
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
@@ -502,6 +504,10 @@ const App: React.FC = () => {
       language === 'en'
         ? 'Learner-focused comparison of SkillPilot access options, age limits, safe starting, and supported devices.'
         : 'Lernendengerechter Vergleich von SkillPilot-Zugängen, Altersgrenzen, sicherem Start und unterstützten Geräten.'
+    const pluginCatalogDescription =
+      language === 'en'
+        ? 'Controlled direct download of the current SkillPilot Claude Coach beta plugin with version and integrity details.'
+        : 'Kontrollierter Direkt-Download des aktuellen SkillPilot-Claude-Coach-Beta-Plugins mit Versions- und Integritätsangaben.'
 
     let title = baseTitle
     let description = defaultDescription
@@ -598,6 +604,9 @@ const App: React.FC = () => {
       } else if (path === '/faq/coach-setup') {
         title = `${language === 'en' ? 'Access options' : 'Zugang und Varianten'} | ${baseTitle}`
         description = coachSetupDescription
+      } else if (path === '/plugins') {
+        title = `${language === 'en' ? 'Plugin beta download' : 'Plugin-Beta-Download'} | ${baseTitle}`
+        description = pluginCatalogDescription
       } else if (path === '/faq') {
         title = `${t.startPage.links.faq} | ${baseTitle}`
         description = faqDescription
@@ -624,7 +633,11 @@ const App: React.FC = () => {
         : path
     const canonicalUrl = `${window.location.origin}${canonicalPath}`
     const finalDescription = trimDescription(description) || defaultDescription
-    const robots = !hasAccess ? 'noindex, follow' : 'index, follow'
+    const robots = !hasAccess
+      ? 'noindex, follow'
+      : path === '/plugins'
+        ? 'noindex, nofollow'
+        : 'index, follow'
     const imageUrl = `${window.location.origin}/favicon/web-app-manifest-512x512.png`
 
     document.title = title
@@ -710,6 +723,7 @@ const App: React.FC = () => {
             <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
             <Route path="/faq" element={<FaqView />} />
             <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
+            <Route path="/plugins" element={<PluginCatalogView />} />
             <Route path="/legal" element={<LegalView />} />
             <Route path="/privacy" element={<PrivacyView />} />
             <Route path="/imprint" element={<ImprintView />} />
@@ -942,6 +956,7 @@ const App: React.FC = () => {
         <Route path="/legal" element={<LegalView />} />
         <Route path="/faq" element={<FaqView />} />
         <Route path="/faq/coach-setup" element={<CoachProviderMatrixView />} />
+        <Route path="/plugins" element={<PluginCatalogView />} />
         <Route path="/privacy" element={<PrivacyView />} />
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
