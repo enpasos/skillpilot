@@ -81,6 +81,22 @@ assert(
     && row(de, 'current-access').cells['claude-team-enterprise'].status === 'planned',
   'only the controlled Claude Pro direct-install beta is presented as currently tested',
 )
+for (const chatGptVariant of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
+  const deCurrentAccess = row(de, 'current-access').cells[chatGptVariant]
+  const enCurrentAccess = row(en, 'current-access').cells[chatGptVariant]
+  assert(
+    deCurrentAccess.value.includes('Freigabe ausstehend')
+      && deCurrentAccess.note?.includes('funktioniert derzeit noch nicht')
+      && enCurrentAccess.value.includes('approval pending')
+      && enCurrentAccess.note?.includes('does not currently work'),
+    `${chatGptVariant} states that ChatGPT approval is pending and access does not work yet`,
+  )
+}
+assert(
+  !JSON.stringify({ de, en }).includes('freigeschaltete Testpersonen')
+    && !JSON.stringify({ de, en }).includes('already have test access'),
+  'the current-access matrix does not imply that a working ChatGPT test route already exists',
+)
 assert(
   row(de, 'provider-plan').cells['chatgpt-free-go'].status === 'conditional',
   'ChatGPT Free/Go is not presented as guaranteed',

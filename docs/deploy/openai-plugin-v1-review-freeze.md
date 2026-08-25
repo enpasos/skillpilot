@@ -329,6 +329,81 @@ unveränderte Trennung vom ChatGPT-Handler. Der aktuelle Claude-Webadapter
 `ac57943f16a0cd7cb1c6ce4fd9665821abfd8c3c586877713221cc6220456030`
 gepinnt.
 
+### 6.5 Eng begrenzte Klarstellung: aktuell nutzbarer Coach-Zugang
+
+Der Product Owner hat am 25. August 2026 klargestellt, dass die öffentlichen
+Start- und Vergleichshinweise den realen Freigabestatus unmissverständlich
+nennen müssen: Aktuell funktioniert der SkillPilot-Lerncoach ausschließlich
+über den Claude-Betaweg. Dafür ist ein kostenpflichtiger Claude-Tarif
+erforderlich; unterstützt und getestet ist derzeit Claude Pro. ChatGPT wartet
+weiterhin auf die Freigabe und ist für Lernende derzeit nicht nutzbar.
+
+Freigegeben ist ausschließlich, diese Aussage im deutschen und englischen
+Startseitenbanner und in der vorhandenen Zugangsvergleichsansicht zu ersetzen
+und mit Regressionen zu belegen. Der Vergleichslink bleibt bestehen. Beide
+Providerhandler, vorbereitete Nachrichten, Sessionsemantik, Pakete, MCP/OAuth,
+Tools, Schemas, MCP-Apps-UI, Reviewfälle, Portalwerte, Fixtures und
+Reviewartefakte bleiben unverändert. Insbesondere wird weder eine
+ChatGPT-Freigabe behauptet noch der eingereichte ChatGPT-Handler verändert.
+
+Die Klarstellung ist separat hashgebunden:
+
+- `app/src/locales/de.ts`:
+  `e1f30f7e1673c0993871edb238691e71d144455812a7ac975402b77d039eeef0`;
+- `app/src/locales/en.ts`:
+  `241e349c71816a76d4d3754a56791ea6a18b6391fe9f972c27de32fafa353da6`;
+- `app/scripts/testRootRoutePolicy.ts`:
+  `b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4`;
+- `app/src/utils/coachProviderMatrixCopy.ts`:
+  `2c24a78b60d0556e194799e5c531f319d4419f68f7ca7b0945b311f551f6da2c`;
+- `app/src/utils/coachProviderMatrixCopy.test.ts`:
+  `3dfc8be12202ddb545eec44b0e5860e5d2d8008f1fce27060e7f9ed6a19fb1e1`.
+
+Der Freeze-Checker validiert diese fünf Dateien über
+`authorizedCopyClarifications`. Die Klarstellung erfordert weder ein
+Zurückziehen noch eine erneute Einreichung im OpenAI-Portal, weil sie den
+laufenden Reviewstatus wahrheitsgemäß beschreibt und keinen eingereichten
+Vertrag oder Reviewablauf verändert.
+
+### 6.6 Eng begrenzte Klarstellung: vollständige Claude-Plugin-Einrichtung
+
+Der Product Owner hat am 25. August 2026 festgestellt, dass die bisherige
+Kurzangabe „Anpassen → Plugins“ und das Ende der Anleitung direkt nach dem
+Datei-Upload praktische Einrichtungsblocker darstellen. In der real
+beobachteten deutschen Claude-Weboberfläche führt der Weg über das Profil
+unten links zu „Einstellungen“, dort links unter „Anpassen“ zu „Plugins“ und
+anschließend oben rechts über „Hinzufügen“ zum Upload einer benutzerdefinierten
+Plugin-Datei. Die offizielle Anthropic-Hilfe beschreibt daneben den direkten
+Einstieg über „Customize → Plugins“, der je nach Oberflächenvariante bereits
+in der Hauptseitenleiste sichtbar sein kann.
+
+Freigegeben ist ausschließlich, im deutschen und englischen `/plugins`-
+Leitfaden den vollständigen Ablauf als fünf eng begrenzte Schritte
+darzustellen: die aktuelle Datei zuerst herunterladen, ausschließlich alte
+SkillPilot-Plugin-Einträge entfernen, die aktuelle Datei hochladen und bei
+Bedarf aktivieren, im neuen Plugin den enthaltenen SkillPilot-Konnektor
+verbinden und dessen Claude-Freigabe abschließen sowie danach zu SkillPilot
+zurückkehren. Andere Plugins und separat vorhandene Konnektoren bleiben
+unangetastet; ein zweiter manueller SkillPilot-Konnektor oder die manuelle
+Eingabe einer MCP-URL werden ausdrücklich ausgeschlossen.
+
+Der Downloadindex, das Pluginarchiv, die Download-URL, die gebündelte
+Konnektordeklaration und ihr Endpunkt, Providerhandler, vorbereitete
+Nachrichten, Sessionsemantik, Pakete, MCP/OAuth, Tools, Schemas, MCP-Apps-UI,
+Reviewfälle, Portalwerte, Fixtures und Reviewartefakte bleiben unverändert.
+
+Die Klarstellung ist separat hashgebunden:
+
+- `app/src/views/PluginCatalogView.tsx`:
+  `548aa480c96d76d1a2f9403c4631a74d6d891565c62a0b5197fd59e4092a8e5a`;
+- `app/src/utils/claudePluginPublication.test.ts`:
+  `f6efd1d17ff352bbd4943d967577eab475a636515949d159505b066a7936a6c2`.
+
+Der Freeze-Checker validiert beide Dateien als zweiten Eintrag in
+`authorizedCopyClarifications`. Die Änderung betrifft ausschließlich die
+Claude-spezifische First-Party-Installationshilfe und erfordert daher weder ein
+Zurückziehen noch eine erneute Einreichung des unveränderten OpenAI-V1-Vertrags.
+
 Ein Sicherheits- oder Verfügbarkeitsnotfall wird sofort gemeldet, hebt die
 Sperre aber nicht automatisch auf. Rejection und Withdrawal erlauben nur den
 ausdrücklich freigegebenen Remediation-Satz. Approval allein ist noch keine

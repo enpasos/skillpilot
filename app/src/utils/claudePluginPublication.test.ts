@@ -194,18 +194,69 @@ const pluginCatalogSource = readFileSync(
   'utf8',
 )
 const downloadStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-download"')
+const cleanupStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-cleanup"')
 const uploadStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-upload"')
+const connectorStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-connector"')
 const returnStepIndex = pluginCatalogSource.indexOf('data-testid="claude-plugin-install-step-return"')
 assert.match(pluginCatalogSource, /data-testid="claude-plugin-install-guide"/u)
-assert(downloadStepIndex >= 0 && downloadStepIndex < uploadStepIndex && uploadStepIndex < returnStepIndex)
+assert(
+  downloadStepIndex >= 0
+    && downloadStepIndex < cleanupStepIndex
+    && cleanupStepIndex < uploadStepIndex
+    && uploadStepIndex < connectorStepIndex
+    && connectorStepIndex < returnStepIndex,
+  'the complete guide orders download, scoped cleanup, upload, bundled connector activation, and return',
+)
 assert.match(pluginCatalogSource, /download=\{plugin\.filename\}/u)
 assert.match(pluginCatalogSource, /href="https:\/\/claude\.ai"/u)
-assert.match(pluginCatalogSource, /Customize.*Plugins/u)
+assert.match(pluginCatalogSource, /testId="claude-plugin-cleanup-navigation"/u)
+assert.match(pluginCatalogSource, /testId="claude-plugin-upload-navigation"/u)
+assert.match(pluginCatalogSource, /testId="claude-plugin-connector-navigation"/u)
+for (const requiredNavigationCopy of [
+  'alle fünf Schritte in dieser Reihenfolge',
+  'Alte SkillPilot-Plugins entfernen',
+  'unten links auf deinen Namen bzw. dein Profil',
+  'öffne „Einstellungen“',
+  'unter „Anpassen“ den Punkt „Plugins“',
+  'Entferne dabei keine anderen Plugins und keine separat vorhandenen Konnektoren',
+  'darf kein älteres SkillPilot-Plugin mehr in der Liste stehen',
+  'oben rechts auf „Hinzufügen“',
+  'benutzerdefinierten Plugin-Datei',
+  'Enthaltenen SkillPilot-Konnektor verbinden',
+  'Tab „Konnektoren“ (Connectors)',
+  'klicke auf „Verbinden“ (Connect)',
+  'Anmeldung und Freigabe',
+  'keinen zweiten manuellen SkillPilot-Konnektor',
+  'keine MCP-URL',
+  'all five steps in this order',
+  'Remove old SkillPilot plugins',
+  'Click your name or profile in the lower-left corner and open Settings',
+  'Under Customize on the left, select Plugins',
+  'Do not remove unrelated plugins or separately existing connectors',
+  'no older SkillPilot plugin remains in the list',
+  'Click Add in the upper-right corner',
+  'upload a custom plugin file',
+  'Connect the bundled SkillPilot connector',
+  'Inside the plugin, open the Connectors tab',
+  'click Connect',
+  'sign-in and approval flow',
+  'Do not add a second manual SkillPilot connector',
+  'enter an MCP URL',
+  'window says “Plugins” at the top',
+  'shows “Add” on the right',
+  '“SkillPilot Coach v1” appears exactly once in the list',
+]) {
+  assert(
+    pluginCatalogSource.includes(requiredNavigationCopy),
+    `plugin guide contains the required Claude Web navigation copy: ${requiredNavigationCopy}`,
+  )
+}
 assert.match(pluginCatalogSource, /to="\/"/u)
 assert.match(pluginCatalogSource, /Claude Pro/u)
 assert.match(pluginCatalogSource, /Android/u)
 assert.match(pluginCatalogSource, /Voice Mode|Voice mode/u)
 assert.match(pluginCatalogSource, /<details/u)
-assert.doesNotMatch(pluginCatalogSource, /Connector|Konnektor|OAuth/u)
+assert.doesNotMatch(pluginCatalogSource, /mcp-claude-v1\.skillpilot\.com/u)
+assert.doesNotMatch(pluginCatalogSource, /benutzerdefinierten Konnektor hinzufügen|Add custom connector/u)
 
 console.log('Claude plugin publication index tests passed')

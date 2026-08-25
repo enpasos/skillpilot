@@ -223,6 +223,86 @@ test("review exception chains preserve every prior authorized SessionSetup hash"
   );
 });
 
+test("review copy clarification pins the truthful current coach availability banner", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  assert.equal(freeze.authorizedCopyClarifications.length, 2);
+  assert.deepEqual(freeze.authorizedCopyClarifications[0],
+    {
+      id: "2026-08-25-coach-access-availability-banner",
+      approvedAt: "2026-08-25",
+      approvedBy: "product-owner",
+      reason:
+        "State the currently usable coach access truthfully in the public start and comparison guidance: only the Claude beta is available, a paid Claude plan is required, Claude Pro is currently supported and tested, and ChatGPT still awaits approval and is not usable.",
+      scope:
+        "Change only the German and English provider-availability copy on the public start page and access comparison plus their regression evidence; " +
+        "preserve both provider handlers, prepared messages, session semantics, packages, MCP/OAuth/tools/schemas/UI, " +
+        "review cases, portal values, fixtures and review artifacts.",
+      target: "current-production-web-frontend",
+      frozenPluginVersion: "1.0.0",
+      portalReviewAction:
+        "none-required-truthful-current-availability-copy-no-submitted-openai-contract-or-review-flow-effect",
+      files: [
+        {
+          path: "app/src/locales/de.ts",
+          sha256:
+            "e1f30f7e1673c0993871edb238691e71d144455812a7ac975402b77d039eeef0",
+        },
+        {
+          path: "app/src/locales/en.ts",
+          sha256:
+            "241e349c71816a76d4d3754a56791ea6a18b6391fe9f972c27de32fafa353da6",
+        },
+        {
+          path: "app/scripts/testRootRoutePolicy.ts",
+          sha256:
+            "b9d399e5bf42a8b8ba4a48cffd7d89edeb16bde52b7d89a5e9747ee8e2d666e4",
+        },
+        {
+          path: "app/src/utils/coachProviderMatrixCopy.ts",
+          sha256:
+            "2c24a78b60d0556e194799e5c531f319d4419f68f7ca7b0945b311f551f6da2c",
+        },
+        {
+          path: "app/src/utils/coachProviderMatrixCopy.test.ts",
+          sha256:
+            "3dfc8be12202ddb545eec44b0e5860e5d2d8008f1fce27060e7f9ed6a19fb1e1",
+        },
+      ],
+    },
+  );
+});
+
+test("review copy clarification pins the complete guided Claude plugin setup", () => {
+  const freeze = loadOpenAiPluginReviewFreeze(repositoryRoot);
+  assert.deepEqual(freeze.authorizedCopyClarifications[1], {
+    id: "2026-08-25-claude-plugin-complete-setup-guidance",
+    approvedAt: "2026-08-25",
+    approvedBy: "product-owner",
+    reason:
+      "Remove practical setup blockers by documenting the complete supported Claude Web update path: download the current file, remove only old SkillPilot plugin entries, upload and enable the current package, connect the bundled SkillPilot connector through Claude's authorization flow, and return to SkillPilot.",
+    scope:
+      "Change only the German and English complete-setup copy and its presentation on the first-party /plugins guide plus the focused publication regression; " +
+      "preserve the plugin archive/index/download URL, bundled connector declaration and endpoint, Claude/OpenAI handlers, prepared messages, session semantics, packages, " +
+      "MCP/OAuth/tools/schemas/MCP-Apps-UI, review cases, portal values, fixtures and review artifacts.",
+    target: "current-production-web-frontend",
+    frozenPluginVersion: "1.0.0",
+    portalReviewAction:
+      "none-required-claude-only-complete-installation-guidance-no-submitted-openai-contract-or-review-flow-effect",
+    files: [
+      {
+        path: "app/src/views/PluginCatalogView.tsx",
+        sha256:
+          "548aa480c96d76d1a2f9403c4631a74d6d891565c62a0b5197fd59e4092a8e5a",
+      },
+      {
+        path: "app/src/utils/claudePluginPublication.test.ts",
+        sha256:
+          "f6efd1d17ff352bbd4943d967577eab475a636515949d159505b066a7936a6c2",
+      },
+    ],
+  });
+});
+
 test("protected tree digest changes for changed, added, or removed files", () => {
   const root = mkdtempSync(resolve(tmpdir(), "skillpilot-v1-review-freeze-"));
   try {

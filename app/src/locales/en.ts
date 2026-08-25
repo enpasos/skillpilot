@@ -155,7 +155,7 @@ export const en = {
             }
         },
         banner: {
-            text: "**SkillPilot is free.** ChatGPT and Claude each have provider-specific account, plan, and age requirements.",
+            text: "**SkillPilot is free.** Currently, only the Claude beta is available. A paid Claude plan is required; Claude Pro is the plan currently supported and tested. ChatGPT access is awaiting approval and cannot currently be used.",
             linkLabel: "Compare access options"
         },
         links: {
