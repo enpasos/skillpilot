@@ -2,7 +2,7 @@ name: Docs Checks
 
 # The main CI workflow deliberately skips docs-only changes, so its documentation
 # gates never run for exactly the changes they are meant to protect. This workflow
-# runs the documentation checks and the structural Claude release-dossier guard
+# runs the documentation checks and the Claude direct-install publication guard
 # for documentation- or dossier-only pushes and pull requests.
 on:
   push:
@@ -18,10 +18,13 @@ on:
       - 'ai/claude/plugin/**'
       - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'backend/src/main/resources/claude-connector-v1/**'
+      - 'backend/src/main/resources/claude-plugin-publication/**'
       - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'deploy/nginx/skillpilot-claude-*.conf'
       - 'scripts/check_claude_connector_v1_release.mjs'
       - 'scripts/check_claude_connector_v1_release.test.mjs'
+      - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'scripts/claude_direct_install_beta_release.test.mjs'
       - '.github/workflows/docs_checks.yml'
   pull_request:
     branches: [ main ]
@@ -36,10 +39,13 @@ on:
       - 'ai/claude/plugin/**'
       - 'backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'backend/src/main/resources/claude-connector-v1/**'
+      - 'backend/src/main/resources/claude-plugin-publication/**'
       - 'backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/**'
       - 'deploy/nginx/skillpilot-claude-*.conf'
       - 'scripts/check_claude_connector_v1_release.mjs'
       - 'scripts/check_claude_connector_v1_release.test.mjs'
+      - 'scripts/claude_direct_install_beta_release.mjs'
+      - 'scripts/claude_direct_install_beta_release.test.mjs'
       - '.github/workflows/docs_checks.yml'
 
 permissions:
@@ -67,12 +73,12 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Check Claude Connector v1 release dossier
+      - name: Test Claude direct-install beta release guard
         working-directory: .
-        run: node scripts/check_claude_connector_v1_release.mjs
-      - name: Test Claude Connector v1 release gate
+        run: node --test scripts/claude_direct_install_beta_release.test.mjs
+      - name: Verify Claude direct-install beta publication
         working-directory: .
-        run: node --test scripts/check_claude_connector_v1_release.test.mjs
+        run: node scripts/claude_direct_install_beta_release.mjs verify
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry

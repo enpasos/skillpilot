@@ -2,12 +2,27 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { CoachProviderMatrix } from '../src/components/CoachProviderMatrix'
+import {
+  getCoachProviderMatrixCopy,
+  getVisibleCoachVariants,
+} from '../src/utils/coachProviderMatrixCopy'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
 }
 
 for (const language of ['de', 'en'] as const) {
+  const matrixCopy = getCoachProviderMatrixCopy(language)
+  const visibleClaudeVariants = getVisibleCoachVariants(matrixCopy.variants, 'Claude')
+  assert(
+    visibleClaudeVariants.length === 1 && visibleClaudeVariants[0]?.id === 'claude-pro-max',
+    `${language}: the Claude view exposes only the SkillPilot-supported Pro beta route`,
+  )
+  assert(
+    matrixCopy.variants.filter(variant => variant.provider === 'Claude').length === 3,
+    `${language}: non-beta Claude plan data remains available in the underlying matrix model`,
+  )
+
   const html = renderToStaticMarkup(<CoachProviderMatrix language={language} />)
 
   assert(html.includes('<table'), `${language}: desktop matrix table is rendered`)
@@ -36,9 +51,9 @@ for (const language of ['de', 'en'] as const) {
   assert(!html.includes('stateVersion'), `${language}: no internal state field is rendered`)
   assert(
     language === 'de'
-      ? html.includes('Claude: separater Custom Connector')
-      : html.includes('Claude: separate Custom Connector'),
-    `${language}: the learner-facing matrix links the separate Custom Connector fact to its official source`,
+      ? html.includes('Claude: Voice Mode')
+      : html.includes('Claude: voice mode'),
+    `${language}: the learner-facing matrix links the voice-mode claim to its official source`,
   )
   assert(!html.includes('OpenAI-Review'), `${language}: no provider review process is rendered for learners`)
 }

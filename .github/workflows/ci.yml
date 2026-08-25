@@ -135,14 +135,10 @@ jobs:
           node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
           node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
-      - name: Validate Claude plugin release dossier
+      - name: Verify Claude direct-install beta publication
         run: |
-          node scripts/check_claude_plugin_v1_release.mjs
-          node --test scripts/check_claude_plugin_v1_release.test.mjs
-      - name: Validate Claude Connector V1 release dossier
-        run: |
-          node scripts/check_claude_connector_v1_release.mjs
-          node --test scripts/check_claude_connector_v1_release.test.mjs
+          node --test scripts/claude_direct_install_beta_release.test.mjs
+          node scripts/claude_direct_install_beta_release.mjs verify
       - name: Verify submitted OpenAI V1 review freeze
         run: node scripts/check_openai_plugin_review_freeze.mjs
 
@@ -199,6 +195,8 @@ jobs:
         run: npm run test:root-route-policy
       - name: Test Claude v1 first-party start flow
         run: npm run test:claude-v1-start
+      - name: Test Claude plugin publication consumer
+        run: npm run test:claude-plugin-publication
       - name: Test service-worker navigation policy
         run: npm run test:service-worker-navigation-policy
       - name: Test learning-goal book contracts and publication
@@ -475,8 +473,6 @@ jobs:
       - name: Verify OpenAI V1 release or draft snapshot
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify
-      - name: Check Claude Connector v1 release dossier
+      - name: Verify Claude direct-install beta publication
         working-directory: .
-        run: |
-          node scripts/check_claude_connector_v1_release.mjs
-          node --test scripts/check_claude_connector_v1_release.test.mjs
+        run: node scripts/claude_direct_install_beta_release.mjs verify

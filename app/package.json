@@ -15,6 +15,7 @@
     "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
     "test:coach-variants": "tsx src/coachVariants/visibleSession/visibleSession.test.ts && tsx src/coachVariants/openAiMcp/providerEligibility.test.ts && tsx src/coachVariants/openAiMcp/openAiMcp.test.ts && tsx src/utils/synchronousInFlightGuard.test.ts && tsx src/utils/privacyViewCopy.test.ts",
     "test:claude-v1-start": "tsx src/coachVariants/claudeV1/claudeV1Start.test.ts && tsx scripts/testClaudeV1StartUi.tsx",
+    "test:claude-plugin-publication": "tsx src/utils/claudePluginPublication.test.ts",
     "test:ai-transparency-ui": "tsx scripts/testAiTransparencyUi.tsx",
     "test:legal-terms": "tsx src/utils/legalTermsAcceptance.test.ts && tsx src/utils/legalViewCopy.test.ts && tsx src/utils/privacyViewCopy.test.ts",
     "test:ai-transparency-artifact": "node ../scripts/verify_ai_transparency_artifact.test.mjs",

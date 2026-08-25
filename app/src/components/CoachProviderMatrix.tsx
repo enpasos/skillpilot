@@ -11,6 +11,7 @@ import {
 import type { LabelLanguage } from '../utils/filterLabels'
 import {
   getCoachProviderMatrixCopy,
+  getVisibleCoachVariants,
   type CoachMatrixCell,
   type CoachMatrixProvider,
   type CoachMatrixStatus,
@@ -54,7 +55,7 @@ const MatrixCell: React.FC<{
 export const CoachProviderMatrix: React.FC<{ language: LabelLanguage }> = ({ language }) => {
   const copy = getCoachProviderMatrixCopy(language)
   const [selectedProvider, setSelectedProvider] = React.useState<CoachMatrixProvider>('ChatGPT')
-  const visibleVariants = copy.variants.filter(variant => variant.provider === selectedProvider)
+  const visibleVariants = getVisibleCoachVariants(copy.variants, selectedProvider)
 
   return (
     <section
