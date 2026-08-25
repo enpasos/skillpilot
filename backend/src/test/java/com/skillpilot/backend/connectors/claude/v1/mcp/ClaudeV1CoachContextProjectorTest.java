@@ -133,6 +133,11 @@ class ClaudeV1CoachContextProjectorTest {
         assertTrue(instruction.contains("reload the current context once"));
         assertTrue(instruction.contains("Do not retry automatically"));
         assertTrue(instruction.contains("claim that the host displayed"));
+        assertTrue(instruction.contains("including voice mode"));
+        assertTrue(instruction.contains("never make it carry a task"));
+        assertTrue(instruction.contains("assume it is visible"));
+        assertTrue(instruction.contains("question that requires inspecting it"));
+        assertTrue(instruction.contains("Never infer or request a client type"));
     }
 
     @Test

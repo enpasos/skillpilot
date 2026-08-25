@@ -106,6 +106,33 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
+    void toolSchemasRemainClientAndModalityBlind() {
+        Set<String> forbiddenSignals = Set.of(
+                "clientType",
+                "clientPlatform",
+                "deviceType",
+                "operatingSystem",
+                "userAgent",
+                "voiceMode",
+                "modality");
+
+        for (McpStatelessServerFeatures.SyncToolSpecification specification :
+                contractAdapter.toolSpecifications()) {
+            Map<String, Object> properties = (Map<String, Object>)
+                    schemaOf(specification.tool().name()).get("properties");
+            assertNotNull(properties);
+            assertTrue(
+                    java.util.Collections.disjoint(properties.keySet(), forbiddenSignals),
+                    () -> "client or modality signal leaked into " + specification.tool().name());
+        }
+
+        Map<String, Object> contextProperties = (Map<String, Object>)
+                schemaOf(ClaudeV1Contract.TOOL_GET_COACH_CONTEXT).get("properties");
+        assertEquals(Set.of("learningSessionId", "language"), contextProperties.keySet());
+    }
+
+    @Test
     void readAndWriteToolSetsCoverTheWholeCatalogue() {
         Set<String> classified = new java.util.HashSet<>(ClaudeV1Contract.READ_TOOL_NAMES);
         classified.addAll(ClaudeV1Contract.WRITE_TOOL_NAMES);
@@ -369,6 +396,62 @@ class ClaudeV1McpContractTest {
         assertTrue(renderDescription.contains("previously unseen goalVisualization.goalId"));
         assertTrue(renderDescription.contains("A repeated pair creates no automatic call"));
         assertTrue(renderDescription.contains("only a UI receipt and does not prove host display"));
+    }
+
+    @Test
+    void serverInstructionsSeparateKnownModalityFromUnknownClientSurface() {
+        String normalizedInstructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+
+        assertTrue(normalizedInstructions.contains(
+                "use only the current interaction mode already known to Claude"));
+        assertTrue(normalizedInstructions.contains(
+                "The connector does not provide a Web, Android, iOS, browser, app, device or other client type"));
+        assertTrue(normalizedInstructions.contains(
+                "Never infer or request one from dialogue, headers or MCP data"));
+        assertTrue(normalizedInstructions.contains(
+                "never branch coaching or SkillPilot tool behavior on client type"));
+        assertTrue(normalizedInstructions.contains(
+                "In voice mode, do not create or request Claude-generated images"));
+        assertTrue(normalizedInstructions.contains(
+                "Keep every coach-authored explanation, question and task in speech or text"));
+        assertTrue(normalizedInstructions.contains(
+                "never authorizes reproducing content that a protected workflow keeps inside a private component"));
+        assertTrue(normalizedInstructions.contains(
+                "A server-approved goalVisualization is not Claude-generated"));
+        assertTrue(normalizedInstructions.contains(
+                "mandatory Goal images rule in every interaction mode, including voice mode"));
+        assertTrue(normalizedInstructions.contains(
+                "fully understandable and solvable from its spoken or written wording alone"));
+        assertTrue(normalizedInstructions.contains(
+                "Never ask what the learner sees in a visual"));
+        assertTrue(normalizedInstructions.contains(
+                "every axis intercept within those ranges or explicitly that none occurs"));
+        assertTrue(normalizedInstructions.contains("at least two concrete plotted points"));
+        assertTrue(normalizedInstructions.contains(
+                "Never ask the learner to recover a value already supplied for accessibility"));
+        assertTrue(normalizedInstructions.contains(
+                "do not use a voice-only substitute to establish completion"));
+        assertTrue(normalizedInstructions.contains(
+                "authoritative SkillPilot task or exam data is not self-contained without a visual"));
+        assertTrue(normalizedInstructions.contains(
+                "Do not use that task as evidence or record completion"));
+        assertTrue(normalizedInstructions.contains(
+                "For an active exam, pause without hints or alternative practice"));
+        assertTrue(normalizedInstructions.contains(
+                "Only outside an active exam may you offer a text-equivalent practice path"));
+        assertTrue(normalizedInstructions.contains(
+                "learner evidence in the current conversation, including spoken or written responses"));
+        assertTrue(normalizedInstructions.contains(
+                "complete learner submission present in the current conversation, including any spoken or written response"));
+        assertFalse(normalizedInstructions.contains("provide visible evidence"));
+
+        String toolContract = contractAdapter.toolSpecifications().stream()
+                .map(specification -> specification.tool().description()
+                        + "\n" + specification.tool().inputSchema())
+                .collect(Collectors.joining("\n"));
+        assertFalse(toolContract.contains("visible work"));
+        assertFalse(toolContract.contains("visibly answered"));
+        assertFalse(toolContract.contains("complete visible submission"));
     }
 
     @Test

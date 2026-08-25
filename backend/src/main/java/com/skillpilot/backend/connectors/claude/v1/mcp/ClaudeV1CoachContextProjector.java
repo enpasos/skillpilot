@@ -43,7 +43,10 @@ public class ClaudeV1CoachContextProjector {
                     + "A repeated pair creates no automatic call. If the learner explicitly asks to show "
                     + "the current image again, reload the current context once and allow one new one-shot "
                     + "call if it still qualifies. Do not retry automatically or claim that the host "
-                    + "displayed the component.";
+                    + "displayed the component. This server-approved image remains a supplementary "
+                    + "presentation step in every interaction mode, including voice mode: never make it "
+                    + "carry a task, assume it is visible or ask a question that requires inspecting it. "
+                    + "Never infer or request a client type.";
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
     private static final Set<String> CURATED_GOAL_VISUALIZATION_STATUSES = Set.of(
