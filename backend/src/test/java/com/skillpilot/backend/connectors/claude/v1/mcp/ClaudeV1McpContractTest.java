@@ -346,6 +346,7 @@ class ClaudeV1McpContractTest {
     void serverInstructionsCarryTheCoachingRulesNotTheToolDescriptions() {
         String instructions = contractAdapter.serverInstructions();
         assertNotNull(instructions);
+        String normalizedInstructions = instructions.replaceAll("\\s+", " ");
         assertTrue(instructions.contains("SkillPilot Coach for Claude"));
         assertTrue(instructions.contains("expectedStateVersion"));
         assertTrue(instructions.contains("earnedPoints"));
@@ -354,7 +355,20 @@ class ClaudeV1McpContractTest {
         assertTrue(instructions.contains("follow the returned next continuation immediately"));
         assertTrue(instructions.contains("Normal flashcard practice is separate from Verified Recall"));
         assertTrue(instructions.contains("Ordinary coach dialogue must never"));
-        assertTrue(instructions.contains("render_skillpilot_goal_visualization exactly once"));
+        assertTrue(normalizedInstructions.contains("render_skillpilot_goal_visualization exactly once"));
+        assertTrue(normalizedInstructions.contains("For every previously unseen pair in this conversation"));
+        assertTrue(normalizedInstructions.contains("immediate next SkillPilot tool before any learner-facing response"));
+        assertTrue(normalizedInstructions.contains("A repeated pair creates no automatic call"));
+        assertTrue(normalizedInstructions.contains("After a successful focus, active-goal or mastery write"));
+        assertTrue(normalizedInstructions.contains("learner explicitly asks to show the current image again"));
+        assertTrue(normalizedInstructions.contains("reload the current context exactly once"));
+        assertTrue(normalizedInstructions.contains("only a UI receipt and does not prove"));
+
+        String renderDescription = tool(ClaudeV1Contract.TOOL_RENDER_GOAL_VISUALIZATION).description();
+        assertTrue(renderDescription.contains("Required immediate presentation step"));
+        assertTrue(renderDescription.contains("previously unseen goalVisualization.goalId"));
+        assertTrue(renderDescription.contains("A repeated pair creates no automatic call"));
+        assertTrue(renderDescription.contains("only a UI receipt and does not prove host display"));
     }
 
     @Test
@@ -383,7 +397,13 @@ class ClaudeV1McpContractTest {
         assertTrue(activeGoalDescription.contains("fresh request for the already-active goal returns a conflict"));
         assertTrue(activeGoalDescription.contains("exact replay"));
         assertTrue(activeGoalDescription.contains("remains idempotent"));
+        assertTrue(ClaudeV1McpContractAdapter.POST_WRITE_RELOAD_INSTRUCTION.contains("Reload coach context now"));
+        assertTrue(ClaudeV1McpContractAdapter.POST_WRITE_RELOAD_INSTRUCTION.contains("goalVisualization"));
+        assertTrue(ClaudeV1McpContractAdapter.POST_WRITE_RELOAD_INSTRUCTION.contains("presentationInstruction"));
+        assertTrue(ClaudeV1McpContractAdapter.POST_WRITE_RELOAD_INSTRUCTION.contains("before any learner-facing response"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("after reload"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("Reload coach context now"));
+        assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("presentationInstruction"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("active goal or next learning step"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("one concise, natural response"));
         assertTrue(ClaudeV1McpContractAdapter.MASTERY_CONTINUATION_INSTRUCTION.contains("Do not display feedback field names"));

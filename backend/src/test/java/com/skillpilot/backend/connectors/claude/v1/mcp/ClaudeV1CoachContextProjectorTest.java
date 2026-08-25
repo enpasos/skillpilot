@@ -85,6 +85,54 @@ class ClaudeV1CoachContextProjectorTest {
         assertFalse(visibleProjection.contains("filters"));
         assertFalse(visibleProjection.contains("compatibility"));
         assertFalse(visibleProjection.contains("subject=Mathematik"));
+        assertFalse(context.containsKey("presentationInstruction"));
+    }
+
+    @Test
+    void everyFreshVisualContextPublishesTheMandatoryPairBasedPresentationInstruction() {
+        CoachStateProjection stateProjection = mock(CoachStateProjection.class);
+        CoachToolFacade toolFacade = mock(CoachToolFacade.class);
+        ClaudeV1CoachContextProjector projector =
+                new ClaudeV1CoachContextProjector(stateProjection, toolFacade);
+
+        FrontierGoal activeGoal = goalWithLinks(List.of(visualizationLink(
+                "/assets/goal-visualizations/goal-1.png", "primary", "approved")));
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                "permanent-skillpilot-id",
+                curriculum(),
+                List.of(activeGoal),
+                new LearnerGoals(List.of(activeGoal), 1, 1, null, null, false),
+                List.of(),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeGoal,
+                null);
+        when(toolFacade.getLearnerState("internal-learner")).thenReturn(rawState);
+        when(stateProjection.project(rawState)).thenReturn(rawState);
+        when(toolFacade.getPersonalizationPlan("internal-learner"))
+                .thenReturn(PersonalizationPlan.complete(List.of()));
+        when(toolFacade.showGoalVisualizationsInChat("internal-learner")).thenReturn(true);
+
+        Map<String, Object> first = projector.projectContext("internal-learner", 41, "de");
+        Map<String, Object> afterWrite = projector.projectContext("internal-learner", 42, "de");
+
+        assertEquals(41L, first.get("stateVersion"));
+        assertEquals(42L, afterWrite.get("stateVersion"));
+        assertEquals(first.get("goalVisualization"), afterWrite.get("goalVisualization"));
+        assertEquals(
+                ClaudeV1CoachContextProjector.GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION,
+                first.get("presentationInstruction"));
+        assertEquals(
+                ClaudeV1CoachContextProjector.GOAL_VISUALIZATION_PRESENTATION_INSTRUCTION,
+                afterWrite.get("presentationInstruction"));
+        String instruction = (String) afterWrite.get("presentationInstruction");
+        assertTrue(instruction.contains("previously unseen pair"));
+        assertTrue(instruction.contains("immediate next SkillPilot tool"));
+        assertTrue(instruction.contains("A repeated pair creates no automatic call"));
+        assertTrue(instruction.contains("reload the current context once"));
+        assertTrue(instruction.contains("Do not retry automatically"));
+        assertTrue(instruction.contains("claim that the host displayed"));
     }
 
     @Test

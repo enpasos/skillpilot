@@ -142,7 +142,21 @@ class ClaudeV1ActiveGoalContractTest {
                 .containsEntry("stateVersion", 11)
                 .containsEntry("activatedGoalId", NEXT_GOAL_ID)
                 .containsEntry("redirectApplied", true)
-                .containsEntry("displacedGoalId", CURRENT_GOAL_ID);
+                .containsEntry("displacedGoalId", CURRENT_GOAL_ID)
+                .hasEntrySatisfying(
+                        "instruction",
+                        instruction -> assertThat(instruction.toString())
+                                .contains(
+                                        "Reload coach context now",
+                                        "presentationInstruction",
+                                        "before any learner-facing response"))
+                .hasEntrySatisfying(
+                        "presentationInstruction",
+                        instruction -> assertThat(instruction.toString())
+                                .contains(
+                                        "Reload coach context now",
+                                        "goalVisualization",
+                                        "before any learner-facing response"));
         assertThat(currentStateVersion()).isEqualTo(11L);
         verify(coachToolFacade).setActiveGoal(
                 learnerId,
