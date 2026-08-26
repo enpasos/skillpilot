@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json",
+  "title": "SkillPilot bilingual learning-goal description review input v3",
+  "description": "Normalized bilingual text, selected canonical semantic context, and the complete bound GoalBook page and evidence-profile context for every goal. The fingerprint covers the complete ordered goal array.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "bundleFingerprint",
+    "bookDigest",
+    "goalCount",
+    "goals",
+    "reviewInputFingerprint"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v3/goal-description-review-input.schema.json"
+    },
+    "schemaVersion": { "const": 3 },
+    "bundleFingerprint": { "$ref": "#/$defs/digest" },
+    "bookDigest": { "$ref": "#/$defs/digest" },
+    "goalCount": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/goal" }
+    },
+    "reviewInputFingerprint": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "reviewContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["page", "evidenceProfile"],
+      "properties": {
+        "page": {
+          "$ref": "https://skillpilot.com/schemas/goal-book/v1/goal-book-model.schema.json#/$defs/page"
+        },
+        "evidenceProfile": {
+          "oneOf": [
+            {
+              "$ref": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-profile.schema.json"
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "goalFingerprint",
+        "pageFingerprint",
+        "currentTitleDe",
+        "currentTitleEn",
+        "currentDescriptionDe",
+        "currentDescriptionEn",
+        "canonicalContext",
+        "reviewContext"
+      ],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "goalFingerprint": { "$ref": "#/$defs/digest" },
+        "pageFingerprint": { "$ref": "#/$defs/digest" },
+        "currentTitleDe": { "$ref": "#/$defs/nonBlank" },
+        "currentTitleEn": { "$ref": "#/$defs/nonBlank" },
+        "currentDescriptionDe": { "$ref": "#/$defs/longText" },
+        "currentDescriptionEn": { "$ref": "#/$defs/longText" },
+        "canonicalContext": { "$ref": "#/$defs/canonicalContext" },
+        "reviewContext": { "$ref": "#/$defs/reviewContext" }
+      }
+    },
+    "canonicalContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shortKey",
+        "phase",
+        "core",
+        "weight",
+        "tags",
+        "competencyRefs",
+        "sourceRef",
+        "dimensionTags",
+        "applicability",
+        "type",
+        "nodeKind",
+        "semanticAtomic",
+        "semanticKind",
+        "applicabilitySemantics",
+        "requires",
+        "contains",
+        "examples"
+      ],
+      "properties": {
+        "shortKey": {
+          "oneOf": [{ "$ref": "#/$defs/nonBlank" }, { "type": "null" }]
+        },
+        "phase": {
+          "oneOf": [{ "$ref": "#/$defs/nonBlank" }, { "type": "null" }]
+        },
+        "core": {
+          "oneOf": [{ "type": "boolean" }, { "type": "null" }]
+        },
+        "weight": { "type": "number", "minimum": 0 },
+        "tags": { "$ref": "#/$defs/stringArray" },
+        "competencyRefs": { "$ref": "#/$defs/idArray" },
+        "sourceRef": {
+          "oneOf": [{ "$ref": "#/$defs/longText" }, { "type": "null" }]
+        },
+        "dimensionTags": { "$ref": "#/$defs/dimensionTags" },
+        "applicability": {
+          "oneOf": [{ "$ref": "#/$defs/applicability" }, { "type": "null" }]
+        },
+        "type": {
+          "oneOf": [{ "enum": ["atomic", "cluster"] }, { "type": "null" }]
+        },
+        "nodeKind": {
+          "oneOf": [{ "enum": ["exam", "tutor", "memory"] }, { "type": "null" }]
+        },
+        "semanticAtomic": {
+          "oneOf": [{ "type": "boolean" }, { "type": "null" }]
+        },
+        "semanticKind": {
+          "oneOf": [
+            {
+              "enum": [
+                "orientation",
+                "curricularAtomic",
+                "curricularArea",
+                "practiceAssessment",
+                "memory",
+                "programStructure",
+                "runtimeSupport"
+              ]
+            },
+            { "type": "null" }
+          ]
+        },
+        "applicabilitySemantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fromRequires", "mappingInheritance", "projection"],
+          "properties": {
+            "fromRequires": {
+              "oneOf": [{ "type": "boolean" }, { "type": "null" }]
+            },
+            "mappingInheritance": {
+              "oneOf": [{ "$ref": "#/$defs/nonBlank" }, { "type": "null" }]
+            },
+            "projection": {
+              "oneOf": [{ "$ref": "#/$defs/nonBlank" }, { "type": "null" }]
+            }
+          }
+        },
+        "requires": { "$ref": "#/$defs/idArray" },
+        "contains": { "$ref": "#/$defs/idArray" },
+        "examples": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "dimensionTags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["framework", "demandLevel", "processCompetencies", "guidingIdeas", "phase"],
+      "properties": {
+        "framework": { "$ref": "#/$defs/nonBlank" },
+        "demandLevel": { "enum": ["AB1", "AB2", "AB3"] },
+        "processCompetencies": { "$ref": "#/$defs/stringArray" },
+        "guidingIdeas": { "$ref": "#/$defs/stringArray" },
+        "phase": { "$ref": "#/$defs/nonBlank" },
+        "area": { "$ref": "#/$defs/nonBlank" },
+        "topicCode": { "$ref": "#/$defs/nonBlank" }
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/$defs/nonBlank" },
+      "additionalProperties": { "$ref": "#/$defs/stringArray" }
+    },
+    "stringArray": {
+      "type": "array",
+      "maxItems": 500,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonBlank" }
+    },
+    "idArray": {
+      "type": "array",
+      "maxItems": 500,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stableId" }
+    }
+  }
+}

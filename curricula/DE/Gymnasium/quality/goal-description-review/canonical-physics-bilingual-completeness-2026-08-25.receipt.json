@@ -1,0 +1,91 @@
+{
+  "receiptId": "canonical-physics-bilingual-completeness-20260825-v1",
+  "createdAt": "2026-08-25",
+  "status": "accepted_and_applied",
+  "scope": {
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "subject": "Physik",
+    "changeKind": "missing-descriptionEn-only",
+    "goalCount": 2
+  },
+  "authority": {
+    "authority": "product_owner",
+    "instructionLanguage": "de",
+    "instructionVerbatim": [
+      "Mir ist sehr daran gelegen sowohl für Physik als auch Mathematik, systhematisch KI getrieben, sicherzustellen, dass die Beschreibungen der Lernziele, den SkillPilot-Coach befähigen und anhalten wirkliches tiefes Verständnis zu vermitteln und schließlich abzuprüfen.",
+      "könntest Du nicht wagen das selbstständig durchzuziehen und nur in Fällen, wo Du dir unsicher bist, mich zu Rate zu ziehen?",
+      "So würde ich es auch an einen fähigen menschlichen Kollegen delegieren."
+    ],
+    "interpretationDe": "Die Delegation autorisiert eindeutige, semantisch deckungsgleiche Ergänzungen fehlender englischer Lernzielbeschreibungen und ihre notwendige fachliche Nachprüfung. Sie autorisiert keine automatische Freigabe von KI-Evidenzprofilen und keine Änderung des eingefrorenen Coach-, MCP-, Mastery- oder Session-Vertrags."
+  },
+  "changes": [
+    {
+      "goalId": "37b33812-d428-5953-852e-57a53a4347fe",
+      "titleDe": "Kinetische Gastheorie & Temperatur",
+      "descriptionDe": "Die lernende Person kann den Zusammenhang zwischen absoluter Temperatur und der mittleren kinetischen Energie der Teilchen erklären (mikroskopisches Modell).",
+      "descriptionEn": "The learner can explain the relationship between absolute temperature and the mean kinetic energy of particles using a microscopic model.",
+      "semanticReview": {
+        "deEnParity": true,
+        "semanticKind": "curricularAtomic",
+        "semanticAtomicity": "atomic",
+        "memoryCardDecision": "no_memory_needed"
+      }
+    },
+    {
+      "goalId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+      "titleDe": "Adiabatische Zustandsänderungen",
+      "descriptionDe": "Die lernende Person kann adiabatische Prozesse (ohne Wärmeaustausch) beschreiben, im p-V-Diagramm skizzieren und qualitativ von isothermen Prozessen abgrenzen.",
+      "descriptionEn": "The learner can describe adiabatic processes (without heat exchange), sketch them in a p-V diagram, and distinguish them qualitatively from isothermal processes.",
+      "semanticReview": {
+        "deEnParity": true,
+        "semanticKind": "curricularAtomic",
+        "semanticAtomicity": "atomic",
+        "memoryCardDecision": "memory_required",
+        "memoryScopeUnchanged": true
+      }
+    }
+  ],
+  "dependentReview": {
+    "reviewMethod": "fresh-goal-by-goal-content-review-not-hash-refresh",
+    "reviewer": "codex-bilingual-completeness-review-20260825",
+    "reviewedAt": "2026-08-25",
+    "updatedLanes": [
+      "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl"
+    ]
+  },
+  "verification": [
+    {
+      "command": "npm --prefix app run test:physics-goal-book-inputs",
+      "result": "passed; 426 curricularAtomic goals have complete bilingual text"
+    },
+    {
+      "command": "npm --prefix app run quality:semantic-atomicity:check -- --config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json",
+      "result": "passed; 426 current atomic decisions"
+    },
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check -- --config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "result": "passed; no missing, stale, or obsolete goal/card records"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa",
+      "result": "passed; visualization QA ledgers remain current"
+    },
+    {
+      "command": "npm --prefix app run build:goal-book-model -- scripts/config/goal-books/de-gym-physics-national-atlas.json",
+      "result": "passed; 426 pages"
+    },
+    {
+      "command": "npm --prefix app run quality:curriculum-status:check",
+      "result": "passed; protected curriculum maturity floors remain satisfied"
+    }
+  ],
+  "freezeBoundary": {
+    "layerAOnly": true,
+    "coachRuntimeChanged": false,
+    "masterySemanticsChanged": false,
+    "openAiV1ContractChanged": false
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a1708e7217ac5729b60b29249bd61838741b76a9299cfa56b66d16471e34d02b",
+  "reviewInputFingerprint": "sha256:68beb339a62ac8623a7bef656f22841ab5093b2b5e9e80c7772b5399d6e18bae",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-a",
+      "roundId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-independent-a",
+      "runIds": [
+        "physik-colors-current-v2-round-a-codex-gpt-5.6-sol-20260826"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::codex-gpt-5.6-sol-physics-colors-current-round-a::gpt-5.6-sol"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b",
+      "roundId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-independent-b",
+      "runIds": [
+        "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::codex-gpt-5.6-terra-physics-colors-current-round-b::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "a4681378-ade4-4f20-bf77-fb020469510f",
+      "firstRecordId": "physik-colors-current-v2-round-a-record-001",
+      "secondRecordId": "physik-colors-current-v2-round-b.record-001",
+      "firstRunId": "physik-colors-current-v2-round-a-codex-gpt-5.6-sol-20260826",
+      "secondRunId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "split_review",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+      "firstRecordId": "physik-colors-current-v2-round-a-record-002",
+      "secondRecordId": "physik-colors-current-v2-round-b.record-002",
+      "firstRunId": "physik-colors-current-v2-round-a-codex-gpt-5.6-sol-20260826",
+      "secondRunId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+      "firstRecordId": "physik-colors-current-v2-round-a-record-003",
+      "secondRecordId": "physik-colors-current-v2-round-b.record-003",
+      "firstRunId": "physik-colors-current-v2-round-a-codex-gpt-5.6-sol-20260826",
+      "secondRunId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
+      "firstRecordId": "physik-colors-current-v2-round-a-record-004",
+      "secondRecordId": "physik-colors-current-v2-round-b.record-004",
+      "firstRunId": "physik-colors-current-v2-round-a-codex-gpt-5.6-sol-20260826",
+      "secondRunId": "physik-rollout-v1-batch-005-colors-4-current-v2-20260826-b.codex-gpt-5.6-terra-physics-colors-current-round-b.run-001",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

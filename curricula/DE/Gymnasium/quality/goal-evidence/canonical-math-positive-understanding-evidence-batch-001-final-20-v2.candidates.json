@@ -1,0 +1,1245 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "canonical-math-positive-understanding-evidence-batch-001-final-20-v2",
+  "reviewedAt": "2026-08-25T23:47:02.000Z",
+  "reviewer": "codex-math-batch-001-final-20-v2-profile-author-candidate-2026-08-26",
+  "goals": [
+    {
+      "goalId": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "reason": "AI-authored current-fingerprint candidate for Natürliche Zahlen ordnen und vergleichen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Natürliche Zahlen besitzen eine eindeutige Größenordnung: Auf dem Zahlenstrahl liegt die größere Zahl weiter rechts; in der Dezimalschreibweise entscheiden zunächst die Anzahl der Stellen und dann die erste unterschiedliche Stelle von links. Die Zeichen <, > und = drücken dieselbe Beziehung gerichtet aus.",
+            "essentialUnderstandingEn": "Natural numbers have a unique order: the greater number lies farther to the right on the number line; in decimal notation, the number of places and then the first differing place from the left determine the comparison. The symbols <, >, and = express the same directed relation.",
+            "observablePerformanceDe": "Die lernende Person vergleicht und ordnet selbstständig mehrere natürliche Zahlen, notiert jede Beziehung mit dem richtigen Relationszeichen und begründet sie anhand von Stellenwerten oder der Lage auf einem passend skalierten Zahlenstrahl.",
+            "observablePerformanceEn": "The learner independently compares and orders several natural numbers, records each relation with the correct symbol, and justifies it using place values or positions on an appropriately scaled number line."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "number-notation",
+            "textDe": "Ziffernschreibweise, Zahlwort, Stellenwerttafel oder markierter Punkt",
+            "textEn": "Numeral notation, number words, place-value table, or marked point"
+          },
+          {
+            "id": "shared-prefix-and-scale",
+            "textDe": "Unterschiedliche Stellenzahl, lange gleiche Anfangsfolge und veränderte Zahlenstrahlskala",
+            "textEn": "Different digit counts, a long common prefix, and a changed number-line scale"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "mixed-notation-order",
+            "taskDemandDe": "Die Zahlen 405070, „vierhundertfünftausendsiebenhundert“ und 450070 sind der Größe nach zu ordnen; jede Nachbarbeziehung ist mit einem Relationszeichen und einem Stellenwertargument zu begründen.",
+            "taskDemandEn": "The numbers 405070, “four hundred five thousand seven hundred,” and 450070 must be ordered; each adjacent relationship must be justified with a relation sign and a place-value argument.",
+            "expectedPerformanceDe": "Die lernende Person übersetzt das Zahlwort zu 405700, vergleicht von links an der ersten unterschiedlichen Stelle, erhält 405070 < 405700 < 450070 und liest die Zeichen in der gewählten Richtung korrekt.",
+            "expectedPerformanceEn": "The learner translates the number words to 405700, compares from the left at the first differing place, obtains 405070 < 405700 < 450070, and reads the signs correctly in the chosen direction.",
+            "understandingFocusDe": "Die Ordnung folgt dem Stellenwert und nicht der Ziffernsumme oder der zuletzt betrachteten Ziffer.",
+            "understandingFocusEn": "The order follows place value, not digit sum or the last digit inspected."
+          },
+          {
+            "id": "rescaled-number-line",
+            "taskDemandDe": "Auf einem Zahlenstrahl sind 998000 und 1002000 beschriftet und vier gleich große Intervalle dazwischen markiert. Vorgegebene Zahlen sind einzutragen und anschließend durch Relationszeichen zu vergleichen.",
+            "taskDemandEn": "A number line labels 998000 and 1002000 with four equal intervals between them. Given numbers must be plotted and then compared using relation signs.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt 1000 als Intervallbreite, verortet die Zahlen aus der Skala statt durch bloßes Zählen der Striche und begründet, warum weiter rechts größere natürliche Zahlen liegen.",
+            "expectedPerformanceEn": "The learner determines 1000 as the interval width, locates the numbers from the scale rather than merely counting ticks, and justifies why larger natural numbers lie farther right.",
+            "understandingFocusDe": "Stellenwertordnung und Skalierung müssen dieselbe Größenbeziehung ergeben.",
+            "understandingFocusEn": "Place-value order and scale interpretation must yield the same magnitude relationship."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "reason": "AI-authored current-fingerprint candidate for Vier Grundrechenarten mit natürlichen Zahlen in Sachsituationen auswählen und prüfen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Die Wahl der Grundrechenart folgt der Beziehung zwischen den Größen, nicht einzelnen Schlüsselwörtern: Addition verbindet, Subtraktion bestimmt Rest oder Unterschied, Multiplikation erfasst gleich große Gruppen oder Skalierung und Division verteilt oder bestimmt die Anzahl gleich großer Gruppen. Ein Überschlag prüft die Größenordnung, nicht die exakte Gleichheit.",
+            "essentialUnderstandingEn": "The choice of arithmetic operation follows the relationship between the quantities rather than isolated keywords: addition combines, subtraction finds a remainder or difference, multiplication represents equal groups or scaling, and division distributes or finds the number of equal groups. An estimate checks the order of magnitude, not exact equality.",
+            "observablePerformanceDe": "Die lernende Person entnimmt einer überschaubaren Situation die relevanten Größen, wählt selbstständig eine passende Grundrechenart, begründet den Zusammenhang, führt die Rechnung aus, deutet das Ergebnis und vergleicht seine Größenordnung mit einem eigenen Überschlag.",
+            "observablePerformanceEn": "The learner independently extracts the relevant quantities from a straightforward situation, selects a suitable arithmetic operation, justifies the relationship, carries out the calculation, interprets the result, and compares its order of magnitude with an estimate of their own."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 4,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "quantity-relation",
+            "textDe": "Zusammenfassen, Rest oder Unterschied, gleich große Gruppen und Anzahl von Gruppen",
+            "textEn": "Combining, remainder or difference, equal groups, and number of groups"
+          },
+          {
+            "id": "surface-representation",
+            "textDe": "Text, Tabelle oder Skizze bei gleicher oder veränderter Größenbeziehung",
+            "textEn": "Text, table, or sketch with the same or a changed relationship among quantities"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "combine-addition",
+            "taskDemandDe": "Eine Bibliothek besitzt 1285 Sachbücher und erhält 760 weitere. Operation, Rechenweg, Ergebnisdeutung und ein eigener Überschlag sind anzugeben.",
+            "taskDemandEn": "A library has 1285 nonfiction books and receives 760 more. The operation, calculation, interpretation, and an independently chosen estimate must be provided.",
+            "expectedPerformanceDe": "Die lernende Person begründet das Zusammenfassen als Addition, berechnet 2045 Bücher und bestätigt die Größenordnung etwa mit 1300 + 800 ≈ 2100.",
+            "expectedPerformanceEn": "The learner justifies combining as addition, calculates 2045 books, and confirms the magnitude, for example with 1300 + 800 ≈ 2100.",
+            "understandingFocusDe": "Die Operation folgt der Beziehung der Bestände; der Überschlag prüft nur die Größenordnung.",
+            "understandingFocusEn": "The operation follows the relationship between the stocks; the estimate checks magnitude rather than exact equality."
+          },
+          {
+            "id": "remaining-subtraction",
+            "taskDemandDe": "Von 2500 Sitzplätzen sind 1837 belegt. Die Zahl freier Plätze ist mit begründeter Operation und Überschlag zu bestimmen.",
+            "taskDemandEn": "Of 2500 seats, 1837 are occupied. The number of free seats must be determined with a justified operation and estimate.",
+            "expectedPerformanceDe": "Die lernende Person deutet die gesuchte Restmenge als Subtraktion, berechnet 663 und prüft mit 2500 − 1800 ≈ 700.",
+            "expectedPerformanceEn": "The learner interprets the unknown remainder as subtraction, calculates 663, and checks with 2500 − 1800 ≈ 700.",
+            "understandingFocusDe": "Ein Schlüsselwort wird nicht isoliert benutzt; Ausgangsmenge, Teilmenge und Rest werden relationiert.",
+            "understandingFocusEn": "No isolated keyword is used; total, part, and remainder are related."
+          },
+          {
+            "id": "equal-groups-multiplication",
+            "taskDemandDe": "18 Kisten enthalten jeweils 24 Flaschen. Gesamtzahl und Größenordnung sind zu bestimmen und die Wahl der Rechenart ist zu begründen.",
+            "taskDemandEn": "Eighteen crates each contain 24 bottles. The total and its magnitude must be determined, and the operation choice justified.",
+            "expectedPerformanceDe": "Die lernende Person erkennt gleich große Gruppen, berechnet 18 · 24 = 432 und prüft etwa mit 20 · 20 = 400.",
+            "expectedPerformanceEn": "The learner identifies equal groups, calculates 18 × 24 = 432, and checks, for example, with 20 × 20 = 400.",
+            "understandingFocusDe": "Multiplikation wird aus der Gruppenstruktur und nicht aus der bloßen Anwesenheit zweier Zahlen gewählt.",
+            "understandingFocusEn": "Multiplication is chosen from the group structure, not merely from the presence of two numbers."
+          },
+          {
+            "id": "group-count-division",
+            "taskDemandDe": "432 Flaschen werden in Kisten zu je 18 Flaschen gepackt. Die benötigte Kistenzahl ist mit Operation, Deutung und Überschlag zu bestimmen.",
+            "taskDemandEn": "A total of 432 bottles are packed into crates of 18 bottles each. The required number of crates must be determined with operation, interpretation, and estimate.",
+            "expectedPerformanceDe": "Die lernende Person erkennt die gesuchte Anzahl gleich großer Gruppen, berechnet 432 : 18 = 24 und prüft durch 24 · 18 = 432 sowie einen passenden Überschlag.",
+            "expectedPerformanceEn": "The learner recognizes that the number of equal groups is unknown, calculates 432 ÷ 18 = 24, and checks using 24 × 18 = 432 and a suitable estimate.",
+            "understandingFocusDe": "Gruppieren wird von Verteilen unterschieden und Division als inverse Beziehung zur Multiplikation genutzt.",
+            "understandingFocusEn": "Grouping is distinguished from sharing, and division is used as the inverse relationship to multiplication."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "reason": "AI-authored current-fingerprint candidate for Rechnungen mit Umkehroperationen überprüfen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Addition und Subtraktion sowie Multiplikation und Division sind paarweise Umkehroperationen. Eine korrekt gewählte Probe stellt die Ausgangsbeziehung wieder her; eine Abweichung zeigt, dass Ergebnis oder Rechenweg nicht konsistent ist, benennt aber nicht ohne weitere Prüfung automatisch die Fehlerstelle.",
+            "essentialUnderstandingEn": "Addition and subtraction, and multiplication and division, are pairs of inverse operations. A correctly chosen check restores the original relationship; a discrepancy shows that the result or calculation path is inconsistent but does not automatically identify the erroneous step without further examination.",
+            "observablePerformanceDe": "Die lernende Person wählt zu einer einfachen Rechnung selbstständig die passende Umkehroperation, führt die Probe aus, vergleicht beide Beziehungen und kennzeichnet in einem kurzen fehlerhaften Rechenweg die erste nicht konsistente Stelle mit Begründung.",
+            "observablePerformanceEn": "The learner independently selects the suitable inverse operation for a simple calculation, performs the check, compares the two relationships, and identifies the first inconsistent step in a short erroneous calculation path with justification."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "operation-pair",
+            "textDe": "Addition und Subtraktion oder Multiplikation und Division",
+            "textEn": "Addition and subtraction or multiplication and division"
+          },
+          {
+            "id": "error-location",
+            "textDe": "Falsches Endergebnis oder plausibles falsches Zwischenergebnis",
+            "textEn": "Incorrect final result or plausible incorrect intermediate result"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "subtraction-check",
+            "taskDemandDe": "Das Ergebnis 683 − 247 = 436 ist ohne Wiederholung desselben Rechenwegs durch eine Umkehroperation zu prüfen.",
+            "taskDemandEn": "The result 683 − 247 = 436 must be checked with an inverse operation without repeating the same calculation route.",
+            "expectedPerformanceDe": "Die lernende Person formuliert 436 + 247 = 683, führt die Probe aus und erklärt, warum die wiederhergestellte Ausgangszahl die Subtraktion bestätigt.",
+            "expectedPerformanceEn": "The learner formulates 436 + 247 = 683, performs the check, and explains why restoring the starting number confirms the subtraction.",
+            "understandingFocusDe": "Die Probe stellt die Ausgangsbeziehung her und ist keine bloße Neuberechnung in derselben Richtung.",
+            "understandingFocusEn": "The check restores the original relationship rather than merely recalculating in the same direction."
+          },
+          {
+            "id": "multiplication-error-trace",
+            "taskDemandDe": "Ein Rechenweg behauptet 47 · 18 = 746 und zeigt 47 · 10 = 470, 47 · 8 = 276, 470 + 276 = 746. Das Ergebnis ist durch Division zu prüfen und die erste fehlerhafte Stelle zu bestimmen.",
+            "taskDemandEn": "A calculation claims 47 × 18 = 746 and shows 47 × 10 = 470, 47 × 8 = 276, 470 + 276 = 746. The result must be checked by division and the first erroneous step identified.",
+            "expectedPerformanceDe": "Die lernende Person zeigt, dass 746 : 47 nicht 18 ergibt, prüft die Teilprodukte und kennzeichnet 47 · 8 = 276 als erste inkonsistente Stelle; korrekt sind 376 und insgesamt 846.",
+            "expectedPerformanceEn": "The learner shows that 746 ÷ 47 is not 18, checks the partial products, and identifies 47 × 8 = 276 as the first inconsistent step; the correct values are 376 and 846 overall.",
+            "understandingFocusDe": "Eine gescheiterte Umkehrprobe weist auf Inkonsistenz hin; die konkrete Fehlerstelle erfordert danach eine gezielte Prüfung der Schritte.",
+            "understandingFocusEn": "A failed inverse check signals inconsistency; locating the actual error then requires targeted inspection of the steps."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "reason": "AI-authored current-fingerprint candidate for Ganze Zahlen ordnen und an der Zahlengeraden darstellen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Die lernende Person versteht, dass jede ganze Zahl einschließlich null auf einer gleichmäßig skalierten Zahlengeraden eine bestimmte Position hat, dass weiter rechts liegende Zahlen größer sind und dass null positive von negativen Zahlen trennt; in einer Sachsituation bestimmt der Bezugswert, was das Vorzeichen bedeutet.",
+            "essentialUnderstandingEn": "The learner understands that every integer, including zero, has a specific position on an evenly scaled number line, that numbers farther to the right are greater, and that zero separates positive from negative numbers; in a context, the reference value determines what the sign means.",
+            "observablePerformanceDe": "Die lernende Person trägt vorgegebene ganze Zahlen selbstständig an einer passend skalierten Zahlengeraden ein, vergleicht sie anhand ihrer Positionen und ordnet Werte aus einer alltagsnahen Situation, wobei sie die Reihenfolge mit Nullpunkt, Richtung und Bedeutung der Vorzeichen begründet.",
+            "observablePerformanceEn": "The learner independently plots given integers on an appropriately scaled number line, compares them from their positions, and orders values from an everyday context, justifying the order through the zero point, direction, and meaning of the signs."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "context-reference",
+            "textDe": "Temperatur, Höhenlage oder Kontostand mit unterschiedlichem Bezugswert",
+            "textEn": "Temperature, elevation, or account balance with different reference values"
+          },
+          {
+            "id": "scale-and-magnitude",
+            "textDe": "Veränderte Skalierung und negative Zahlen mit unterschiedlichem Betrag",
+            "textEn": "Changed scaling and negative numbers with different absolute values"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "temperature-number-line",
+            "taskDemandDe": "Die Temperaturen −12 °C, −3 °C, 0 °C und 7 °C sind auf einer selbst skalierten Zahlengeraden einzutragen und vom kleinsten zum größten Wert zu ordnen.",
+            "taskDemandEn": "The temperatures −12 °C, −3 °C, 0 °C, and 7 °C must be plotted on a self-scaled number line and ordered from least to greatest.",
+            "expectedPerformanceDe": "Die lernende Person setzt einen gleichmäßigen Maßstab, trägt null ausdrücklich ein und begründet −12 < −3 < 0 < 7 über die Lage von links nach rechts.",
+            "expectedPerformanceEn": "The learner uses an even scale, explicitly includes zero, and justifies −12 < −3 < 0 < 7 by position from left to right.",
+            "understandingFocusDe": "Null trennt positive und negative Werte; bei negativen Zahlen bedeutet größerer Betrag einen kleineren Zahlenwert.",
+            "understandingFocusEn": "Zero separates positive and negative values; among negative numbers, a larger absolute value means a smaller number."
+          },
+          {
+            "id": "depth-and-elevation-transfer",
+            "taskDemandDe": "Orte liegen relativ zum Meeresspiegel bei −120 m, −35 m, 0 m und 18 m. Die Angaben sind auf einer anders skalierten Zahlengeraden darzustellen und als Höhen zu vergleichen.",
+            "taskDemandEn": "Locations lie at −120 m, −35 m, 0 m, and 18 m relative to sea level. The values must be represented on a differently scaled number line and compared as elevations.",
+            "expectedPerformanceDe": "Die lernende Person ordnet −120 < −35 < 0 < 18 und erklärt, dass −35 m höher als −120 m liegt, obwohl 120 der größere Betrag ist.",
+            "expectedPerformanceEn": "The learner orders −120 < −35 < 0 < 18 and explains that −35 m is higher than −120 m even though 120 has the larger absolute value.",
+            "understandingFocusDe": "Die kontextuelle Reihenfolge muss mit der ganzzahligen Ordnung am festgelegten Bezugspunkt übereinstimmen.",
+            "understandingFocusEn": "The contextual order must agree with integer order around the defined reference point."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "reason": "AI-authored current-fingerprint candidate for Ganze Zahlen addieren. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Die Addition ganzer Zahlen verbindet gerichtete Größen oder Änderungen. Auf der Zahlengeraden entsprechen positive Summanden Bewegungen nach rechts und negative Summanden Bewegungen nach links; Vorzeichen und Beträge bestimmen gemeinsam Lage und Größe der Summe.",
+            "essentialUnderstandingEn": "Adding integers combines directed quantities or changes. On the number line, positive addends correspond to moves to the right and negative addends to moves to the left; signs and absolute values jointly determine the position and size of the sum.",
+            "observablePerformanceDe": "Die lernende Person berechnet selbstständig Summen ganzer Zahlen mit gleichen und verschiedenen Vorzeichen, erklärt den Rechenweg über gerichtete Änderungen oder eine Zahlengeradendarstellung und prüft, ob das Ergebnis zum Sachzusammenhang passt.",
+            "observablePerformanceEn": "The learner independently calculates sums of integers with like and unlike signs, explains the calculation through directed changes or a number-line representation, and checks whether the result fits the context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "sign-combination",
+            "textDe": "Gleiche Vorzeichen, verschiedene Vorzeichen oder nahezu vollständige Aufhebung",
+            "textEn": "Equal signs, different signs, or near cancellation"
+          },
+          {
+            "id": "representation-direction",
+            "textDe": "Term, gerichtete Zahlengeradenbewegung oder Sachänderung",
+            "textEn": "Expression, directed number-line movement, or contextual change"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "opposite-sign-sum",
+            "taskDemandDe": "Die Summe −8 + 13 ist zu berechnen, als gerichtete Bewegung auf der Zahlengeraden darzustellen und hinsichtlich ihres Vorzeichens zu begründen.",
+            "taskDemandEn": "The sum −8 + 13 must be calculated, represented as directed movement on the number line, and justified with respect to its sign.",
+            "expectedPerformanceDe": "Die lernende Person startet bei −8, bewegt sich 13 Einheiten nach rechts, erhält 5 und erklärt, dass der positive Summand den größeren Betrag hat.",
+            "expectedPerformanceEn": "The learner starts at −8, moves 13 units right, obtains 5, and explains that the positive addend has the larger absolute value.",
+            "understandingFocusDe": "Bei verschiedenen Vorzeichen werden nicht blind Beträge addiert; Richtung und Betragsdifferenz bestimmen die Summe.",
+            "understandingFocusEn": "With different signs, absolute values are not blindly added; direction and the difference in magnitudes determine the sum."
+          },
+          {
+            "id": "account-balance-transfer",
+            "taskDemandDe": "Ein Kontostand von −45 Euro verändert sich durch eine Gutschrift von 30 Euro. Term, Ergebnis und Sachbedeutung sind anzugeben und zu prüfen.",
+            "taskDemandEn": "An account balance of −45 euros changes by a credit of 30 euros. The expression, result, and contextual meaning must be stated and checked.",
+            "expectedPerformanceDe": "Die lernende Person modelliert −45 + 30 = −15 und erklärt, dass die Gutschrift die Schuld verringert, aber nicht vollständig ausgleicht.",
+            "expectedPerformanceEn": "The learner models −45 + 30 = −15 and explains that the credit reduces but does not fully cancel the debt.",
+            "understandingFocusDe": "Die Ergebnisrichtung wird aus Ausgangslage und gerichteter Änderung statt aus einem Merksatz ohne Bedeutung abgeleitet.",
+            "understandingFocusEn": "The result direction is derived from starting state and directed change rather than a meaning-free mnemonic."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "reason": "AI-authored current-fingerprint candidate for Ganze Zahlen subtrahieren. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Eine Subtraktion bestimmt eine gerichtete Differenz und kann als Addition der Gegenzahl verstanden werden: a−b=a+(−b). Deshalb kehrt das Subtrahieren einer negativen Zahl die Bewegungsrichtung um; die zugehörige Addition dient als Umkehrprobe.",
+            "essentialUnderstandingEn": "Subtraction determines a directed difference and can be understood as adding the opposite: a−b=a+(−b). Therefore, subtracting a negative number reverses the direction of movement; the corresponding addition serves as an inverse check.",
+            "observablePerformanceDe": "Die lernende Person löst selbstständig Subtraktionen ganzer Zahlen mit unterschiedlichen Vorzeichenlagen, erklärt die Änderung an der Zahlengeraden oder als Addition der Gegenzahl und kontrolliert das Ergebnis durch die passende Addition oder den Sachkontext.",
+            "observablePerformanceEn": "The learner independently solves integer subtractions with different sign configurations, explains the change on the number line or as addition of the opposite, and checks the result using the corresponding addition or the context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "subtrahend-sign",
+            "textDe": "Positiver oder negativer Subtrahend",
+            "textEn": "Positive or negative subtrahend"
+          },
+          {
+            "id": "contextual-change",
+            "textDe": "Zahlengerade, Temperatur oder Aufhebung einer Schuld",
+            "textEn": "Number line, temperature, or cancellation of a debt"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "subtract-negative",
+            "taskDemandDe": "Der Term −3 − (−8) ist als Addition der Gegenzahl umzuformen, zu berechnen und an der Zahlengeraden zu erklären.",
+            "taskDemandEn": "The expression −3 − (−8) must be rewritten as addition of the opposite, calculated, and explained on the number line.",
+            "expectedPerformanceDe": "Die lernende Person schreibt −3 + 8, bewegt sich von −3 acht Einheiten nach rechts, erhält 5 und prüft 5 + (−8) = −3.",
+            "expectedPerformanceEn": "The learner writes −3 + 8, moves eight units right from −3, obtains 5, and checks 5 + (−8) = −3.",
+            "understandingFocusDe": "Das Subtrahieren einer negativen Zahl kehrt die Bewegungsrichtung um; es ist nicht bloß mechanisches Entfernen zweier Minuszeichen.",
+            "understandingFocusEn": "Subtracting a negative reverses the direction of movement; it is not merely mechanical deletion of two minus signs."
+          },
+          {
+            "id": "cancelled-debt-transfer",
+            "taskDemandDe": "Ein Saldo von −20 Euro wird dadurch verändert, dass eine Schuld von 35 Euro aufgehoben wird. Die Situation ist als Subtraktion zu modellieren und das Ergebnis zu deuten.",
+            "taskDemandEn": "A balance of −20 euros changes because a debt of 35 euros is cancelled. The situation must be modeled as subtraction and the result interpreted.",
+            "expectedPerformanceDe": "Die lernende Person formuliert −20 − (−35) = 15 und erklärt die Verbesserung um 35 Euro sowie den nun positiven Saldo.",
+            "expectedPerformanceEn": "The learner formulates −20 − (−35) = 15 and explains the improvement by 35 euros and the now positive balance.",
+            "understandingFocusDe": "Die sprachliche Form „Wegnahme eines Verlusts“ wird als Subtraktion einer negativen gerichteten Größe verstanden.",
+            "understandingFocusEn": "The phrase “removal of a loss” is understood as subtracting a negative directed quantity."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "reason": "AI-authored current-fingerprint candidate for Dezimalsystem als Stellenwertsystem erklären und vergleichen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Im Dezimalsystem erhält jede Stelle ein Zehnfaches des Werts der rechts benachbarten Stelle; der Beitrag einer Ziffer ist daher Ziffer mal Stellenwert, und null kann eine unbesetzte Stelle kennzeichnen. Der Vergleich mit einem gegebenen Zahlensystem richtet sich nach Basis, Symbolvorrat und der Frage, ob die Position den Symbolwert verändert.",
+            "essentialUnderstandingEn": "In the decimal system, each place has ten times the value of the place to its right; a digit's contribution is therefore the digit multiplied by its place value, and zero can mark an unoccupied place. Comparison with a given numeral system is based on its base, symbol set, and whether position changes a symbol's value.",
+            "observablePerformanceDe": "Die lernende Person zerlegt selbstständig eine natürliche Zahl in Ziffernbeiträge, erklärt den unterschiedlichen Wert derselben Ziffer an verschiedenen Stellen und vergleicht anhand vorgegebener Regeln die Struktur des Dezimalsystems mit der eines anderen Zahlensystems.",
+            "observablePerformanceEn": "The learner independently decomposes a natural number into digit contributions, explains the different values of the same digit in different positions, and uses supplied rules to compare the structure of the decimal system with another numeral system."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "digit-position",
+            "textDe": "Gleiche Ziffer an verschiedenen Stellen einschließlich innerer Null",
+            "textEn": "The same digit in different positions, including an internal zero"
+          },
+          {
+            "id": "system-rule",
+            "textDe": "Dezimalbasis oder ein neu vorgegebenes positionsabhängiges Bündelungssystem",
+            "textEn": "Decimal base or a newly specified positional grouping system"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "decimal-decomposition",
+            "taskDemandDe": "Die Zahl 507040 ist in Ziffernbeiträge zu zerlegen; die Rollen der 5, der 7 und der beiden Nullen sind zu erklären, und eine Wertänderung beim Verschieben der 7 um eine Stelle ist vorherzusagen.",
+            "taskDemandEn": "The number 507040 must be decomposed into digit contributions; the roles of 5, 7, and the two zeros must be explained, and the value change when moving the 7 by one place must be predicted.",
+            "expectedPerformanceDe": "Die lernende Person schreibt 5·100000 + 7·1000 + 4·10, erläutert null als Platzhalter unbesetzter Stellen und begründet den Faktor zehn bei einer Stellenverschiebung.",
+            "expectedPerformanceEn": "The learner writes 5×100000 + 7×1000 + 4×10, explains zero as a placeholder for unoccupied positions, and justifies the factor of ten when shifting one place.",
+            "understandingFocusDe": "Der Zahlenwert entsteht aus Ziffer mal Stellenwert; eine Ziffer besitzt keinen festen Beitrag unabhängig von ihrer Position.",
+            "understandingFocusEn": "The number value arises from digit times place value; a digit does not make a fixed contribution independent of position."
+          },
+          {
+            "id": "base-five-transfer",
+            "taskDemandDe": "Für ein vorgegebenes Stellenwertsystem zur Basis fünf mit den Ziffern 0 bis 4 ist 203₅ zu deuten und die Struktur mit dem Dezimalsystem zu vergleichen.",
+            "taskDemandEn": "For a supplied base-five place-value system using digits 0 through 4, 203₅ must be interpreted and its structure compared with the decimal system.",
+            "expectedPerformanceDe": "Die lernende Person bestimmt 2·25 + 0·5 + 3 = 53, erklärt den Faktor fünf zwischen benachbarten Stellen und vergleicht Basis, Symbolvorrat, Positionsabhängigkeit und Nullfunktion mit dem Dezimalsystem.",
+            "expectedPerformanceEn": "The learner determines 2×25 + 0×5 + 3 = 53, explains the factor of five between adjacent positions, and compares base, symbol set, positional dependence, and the role of zero with the decimal system.",
+            "understandingFocusDe": "Die Dezimalregeln werden nicht ungeprüft übertragen; die gemeinsame Stellenwertstruktur und die andere Bündelungsbasis werden getrennt erkannt.",
+            "understandingFocusEn": "Decimal rules are not transferred blindly; the shared place-value structure and different grouping base are distinguished."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+      "reason": "AI-authored current-fingerprint candidate for Natürliche Zahlen runden. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Beim Runden wird eine genaue natürliche Zahl durch einen nahe gelegenen Vielfachen des gewählten Stellenwerts ersetzt. Der Näherungswert steht für einen Bereich möglicher Ausgangswerte; die passende Rundungsstelle hängt davon ab, welche Genauigkeit der Sachzusammenhang sinnvoll trägt.",
+            "essentialUnderstandingEn": "Rounding replaces an exact natural number with a nearby multiple of the chosen place value. The approximate value represents a range of possible original values; the appropriate rounding place depends on the precision that is meaningful in the context.",
+            "observablePerformanceDe": "Die lernende Person bestimmt selbstständig die benachbarten Vielfachen einer vorgegebenen oder begründet gewählten Stelle, rundet korrekt und erläutert, welche Genauigkeit verloren geht und warum der Näherungswert im Sachzusammenhang geeignet ist.",
+            "observablePerformanceEn": "The learner independently identifies the neighboring multiples for a given or justifiably chosen place, rounds correctly, and explains what precision is lost and why the approximate value is suitable in the context."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "rounding-place",
+            "textDe": "Vorgegebene oder sachlich gewählte Einer-, Hunderter-, Tausender- oder Zehntausenderstelle",
+            "textEn": "Specified or contextually chosen units, hundreds, thousands, or ten-thousands place"
+          },
+          {
+            "id": "boundary-and-purpose",
+            "textDe": "Wert nahe einer Rundungsgrenze und veränderter Genauigkeitsbedarf",
+            "textEn": "Value near a rounding boundary and changed accuracy needs"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "round-and-recover-interval",
+            "taskDemandDe": "48749 ist auf Hunderter zu runden. Zusätzlich ist der Bereich natürlicher Ausgangswerte anzugeben, die bei derselben Regel zu 48700 gerundet würden.",
+            "taskDemandEn": "The number 48749 must be rounded to the nearest hundred. The range of natural-number inputs that would round to 48700 under the same rule must also be stated.",
+            "expectedPerformanceDe": "Die lernende Person erhält 48700, nennt 48650 bis 48749 als zugehörigen Bereich und erklärt, warum der Näherungswert die letzten beiden Stellen nicht mehr festlegt.",
+            "expectedPerformanceEn": "The learner obtains 48700, states 48650 through 48749 as the associated range, and explains why the approximation no longer determines the final two digits.",
+            "understandingFocusDe": "Runden erzeugt einen Näherungswert mit bestimmter Genauigkeit und Informationsverlust, nicht bloß eine Ziffernregel.",
+            "understandingFocusEn": "Rounding creates an approximation with defined precision and information loss, not merely a digit rule."
+          },
+          {
+            "id": "purpose-dependent-rounding",
+            "taskDemandDe": "Die Einwohnerzahl 2483917 soll einmal für eine grobe Presseübersicht und einmal für eine Kapazitätsplanung dargestellt werden. Für beide Zwecke ist eine sinnvolle Rundungsstelle zu wählen und zu begründen.",
+            "taskDemandEn": "A population of 2483917 must be presented once for a rough press overview and once for capacity planning. A sensible rounding place must be chosen and justified for each purpose.",
+            "expectedPerformanceDe": "Die lernende Person wählt für die Übersicht etwa Zehntausender und für die Planung eine feinere Stelle oder den genauen Wert, rundet korrekt und benennt die jeweils verlorene Information und mögliche Entscheidungsauswirkung.",
+            "expectedPerformanceEn": "The learner chooses, for example, ten-thousands for the overview and a finer place or exact value for planning, rounds correctly, and identifies the information lost and possible effect on decisions.",
+            "understandingFocusDe": "Die passende Genauigkeit hängt vom Verwendungszweck ab; derselbe Näherungswert ist nicht für jede Aussage gleich geeignet.",
+            "understandingFocusEn": "Appropriate precision depends on purpose; the same approximation is not equally suitable for every claim."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "reason": "AI-authored current-fingerprint candidate for Unbegrenztheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Zu jeder natürlichen Zahl n gehört mit n+1 wieder eine natürliche Zahl, die größer ist. Deshalb scheitert jeder Vorschlag für eine größte natürliche Zahl an seinem Nachfolger; eine endliche Beispielreihe allein beweist diese allgemeine Aussage nicht.",
+            "essentialUnderstandingEn": "For every natural number n, n+1 is again a natural number and is greater. Therefore every proposed greatest natural number is defeated by its successor; a finite list of examples alone does not prove this general statement.",
+            "observablePerformanceDe": "Die lernende Person nimmt eine beliebig vorgegebene natürliche Zahl als möglichen Höchstwert, konstruiert ihren Nachfolger und formuliert daraus ein allgemeines Argument, das erklärt, warum kein konkreter Kandidat die größte natürliche Zahl sein kann.",
+            "observablePerformanceEn": "The learner takes any given natural number as a proposed maximum, constructs its successor, and turns this into a general argument explaining why no specific candidate can be the greatest natural number."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "candidate-form",
+            "textDe": "Konkrete große Zahl, Zahlwort oder symbolischer Ausdruck",
+            "textEn": "Concrete large number, number words, or symbolic expression"
+          },
+          {
+            "id": "argument-level",
+            "textDe": "Einzelbeispiel, endliche Aufzählung oder allgemeines Nachfolgerargument",
+            "textEn": "Single example, finite list, or general successor argument"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "googol-candidate",
+            "taskDemandDe": "Die Behauptung „10¹⁰⁰ ist die größte natürliche Zahl“ ist zu prüfen und mit einem Argument zu widerlegen, das nicht von einer langen Aufzählung abhängt.",
+            "taskDemandEn": "The claim “10¹⁰⁰ is the largest natural number” must be assessed and refuted with an argument that does not depend on a long enumeration.",
+            "expectedPerformanceDe": "Die lernende Person bildet 10¹⁰⁰ + 1, zeigt, dass dies wieder eine natürliche und größere Zahl ist, und erklärt, warum damit genau dieser Höchstkandidat scheitert.",
+            "expectedPerformanceEn": "The learner forms 10¹⁰⁰ + 1, shows that it is again a natural number and larger, and explains why this defeats that proposed maximum.",
+            "understandingFocusDe": "Nicht die Größe des Beispiels, sondern die Nachfolgerstruktur widerlegt jeden vorgeschlagenen größten Wert.",
+            "understandingFocusEn": "It is the successor structure, not the size of the example, that defeats every proposed greatest value."
+          },
+          {
+            "id": "general-successor-proof",
+            "taskDemandDe": "Für einen beliebig mit N bezeichneten angeblich größten natürlichen Wert ist allgemein zu begründen, warum es keinen größten Wert gibt; anschließend ist zu erklären, warum „immer weiter zählen“ allein kein vollständiges Argument ist.",
+            "taskDemandEn": "For an arbitrary value N claimed to be the greatest natural number, it must be shown generally why no greatest value exists; the learner must then explain why “keep counting” alone is not a complete argument.",
+            "expectedPerformanceDe": "Die lernende Person quantifiziert den Kandidaten beliebig, konstruiert N+1 als natürliche Zahl mit N+1>N und schließt, dass jeder Kandidat widerlegt wird.",
+            "expectedPerformanceEn": "The learner treats the candidate as arbitrary, constructs N+1 as a natural number with N+1>N, and concludes that every candidate is defeated.",
+            "understandingFocusDe": "Das allgemeine Argument gilt für jeden Kandidaten zugleich und ist stärker als endlich viele bestätigende Fortsetzungen.",
+            "understandingFocusEn": "The general argument applies to every candidate at once and is stronger than finitely many continued examples."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "reason": "AI-authored current-fingerprint candidate for Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "proof",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Eine allgemeine Aussage über ganze Zahlen ist nur wahr, wenn sie für alle zugelassenen Fälle gilt. Ein einziges Gegenbeispiel, das Voraussetzungen und Zahlenbereich erfüllt, widerlegt sie; mehrere bestätigende Beispiele sind dagegen noch keine allgemeine Begründung.",
+            "essentialUnderstandingEn": "A general statement about integers is true only if it holds for every allowed case. A single counterexample that satisfies the assumptions and number domain refutes it, whereas several confirming examples do not yet constitute a general justification.",
+            "observablePerformanceDe": "Die lernende Person bestimmt selbstständig Zahlenbereich und Aussagekern, entscheidet über die Wahrheit, begründet eine wahre Aussage allgemein oder gibt zu einer falschen Aussage ein passendes Gegenbeispiel an und erklärt, warum dieses die Aussage trifft.",
+            "observablePerformanceEn": "The learner independently identifies the number domain and core claim, decides its truth, justifies a true statement generally or supplies a suitable counterexample to a false statement, and explains why that example addresses the claim."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "truth-status",
+            "textDe": "Wahre Allaussage oder falsche Allaussage",
+            "textEn": "True universal statement or false universal statement"
+          },
+          {
+            "id": "statement-structure",
+            "textDe": "Ordnung, Vorzeichen, Parität oder Rechenoperation",
+            "textEn": "Order, sign, parity, or arithmetic operation"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-greater-counterexample",
+            "taskDemandDe": "Die Aussage „Für jede ganze Zahl z gilt z² > z“ ist zu prüfen. Bei Falschheit ist ein Gegenbeispiel zu wählen und sein Widerspruch zur Aussage vollständig zu erklären.",
+            "taskDemandEn": "The statement “For every integer z, z² > z” must be assessed. If false, a counterexample must be chosen and its contradiction of the statement fully explained.",
+            "expectedPerformanceDe": "Die lernende Person verwendet etwa z=0 oder z=1, zeigt z²=z statt z²>z und erklärt, dass der zulässige Einzelfall die Allaussage widerlegt.",
+            "expectedPerformanceEn": "The learner uses, for example, z=0 or z=1, shows z²=z rather than z²>z, and explains that this admissible single case refutes the universal statement.",
+            "understandingFocusDe": "Ein Gegenbeispiel muss Zahlenbereich und Voraussetzung erfüllen und genau die behauptete Folgerung verletzen.",
+            "understandingFocusEn": "A counterexample must satisfy the domain and premise and violate precisely the claimed conclusion."
+          },
+          {
+            "id": "consecutive-sum-proof",
+            "taskDemandDe": "Die Aussage „Die Summe zweier aufeinanderfolgender ganzer Zahlen ist ungerade“ ist allgemein zu begründen, ohne sich auf mehrere Zahlenbeispiele zu beschränken.",
+            "taskDemandEn": "The statement “The sum of two consecutive integers is odd” must be justified generally without relying on several numerical examples.",
+            "expectedPerformanceDe": "Die lernende Person setzt die Zahlen als n und n+1 an, formt n+(n+1)=2n+1 und erklärt, warum dies für jedes ganze n ungerade ist.",
+            "expectedPerformanceEn": "The learner represents the numbers as n and n+1, transforms n+(n+1)=2n+1, and explains why this is odd for every integer n.",
+            "understandingFocusDe": "Bestätigende Beispiele werden von einer allgemeinen Begründung für alle zulässigen Fälle unterschieden.",
+            "understandingFocusEn": "Confirming examples are distinguished from a general justification covering all admissible cases."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "191c67db-44a8-4f63-994a-d85e8e301194",
+      "reason": "AI-authored current-fingerprint candidate for Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Kommutativgesetz und Assoziativgesetz erlauben bei Addition und Multiplikation, Summanden beziehungsweise Faktoren zu vertauschen und neu zu gruppieren, ohne den Wert zu ändern. Für Subtraktion und Division als solche gelten diese Freiheiten nicht; eine bequeme Umformung muss daher die Operationsstruktur erhalten.",
+            "essentialUnderstandingEn": "The commutative and associative laws allow addends or factors in addition and multiplication to be reordered and regrouped without changing the value. These freedoms do not apply to subtraction and division as such, so a convenient rearrangement must preserve the operation structure.",
+            "observablePerformanceDe": "Die lernende Person erkennt selbstständig in Summen und Produkten ganzer Zahlen günstige Gruppen, formt den Term unter Nennung des verwendeten Gesetzes wertgleich um, berechnet ihn und weist bei einer vorgeschlagenen unzulässigen Umordnung den verletzten Zusammenhang nach.",
+            "observablePerformanceEn": "The learner independently identifies convenient groups in sums and products of integers, rewrites the expression equivalently while naming the law used, evaluates it, and shows which relationship is violated by a proposed invalid rearrangement."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "operation-structure",
+            "textDe": "Reine Summe, reines Produkt oder nicht kommutative Subtraktion beziehungsweise Division",
+            "textEn": "Pure sum, pure product, or noncommutative subtraction or division"
+          },
+          {
+            "id": "sign-and-parentheses",
+            "textDe": "Negative Zahlen und veränderte Klammerung",
+            "textEn": "Negative numbers and changed grouping"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "advantageous-sum",
+            "taskDemandDe": "Die Summe (−37) + 125 + 37 ist durch eine begründete wertgleiche Umformung möglichst vorteilhaft zu berechnen.",
+            "taskDemandEn": "The sum (−37) + 125 + 37 must be calculated efficiently using a justified value-preserving transformation.",
+            "expectedPerformanceDe": "Die lernende Person vertauscht und gruppiert die Summanden als ((−37)+37)+125, nennt Kommutativ- und Assoziativgesetz und erhält 125.",
+            "expectedPerformanceEn": "The learner reorders and groups the addends as ((−37)+37)+125, names the commutative and associative laws, and obtains 125.",
+            "understandingFocusDe": "Die Umformung nutzt eine echte Summenstruktur und erhält den Wert; günstige Gegenzahlen werden gezielt gepaart.",
+            "understandingFocusEn": "The transformation uses a genuine sum structure and preserves value; additive inverses are paired deliberately."
+          },
+          {
+            "id": "advantageous-product",
+            "taskDemandDe": "Das Produkt (−4) · 25 · (−3) ist ohne unnötige Zwischenrechnung durch passende Gesetze umzuformen und zu berechnen.",
+            "taskDemandEn": "The product (−4) × 25 × (−3) must be transformed and calculated using suitable laws without unnecessary intermediate work.",
+            "expectedPerformanceDe": "Die lernende Person gruppiert etwa ((−4)·25)·(−3), begründet die Umgruppierung und berechnet (−100)·(−3)=300 mit korrektem Vorzeichen.",
+            "expectedPerformanceEn": "The learner groups, for example, ((−4)×25)×(−3), justifies the regrouping, and calculates (−100)×(−3)=300 with the correct sign.",
+            "understandingFocusDe": "Faktoren dürfen in Produkten vertauscht und gruppiert werden; Vorzeichen bleiben Bestandteile der Faktoren.",
+            "understandingFocusEn": "Factors may be reordered and regrouped in products; signs remain parts of the factors."
+          },
+          {
+            "id": "reject-false-regrouping",
+            "taskDemandDe": "Die vorgeschlagenen Gleichheiten (40−18)−8 = 40−(18−8) und (48:6):2 = 48:(6:2) sind zu prüfen und die Anwendbarkeit der Rechengesetze zu begründen.",
+            "taskDemandEn": "The proposed equalities (40−18)−8 = 40−(18−8) and (48÷6)÷2 = 48÷(6÷2) must be checked, and the applicability of the arithmetic laws justified.",
+            "expectedPerformanceDe": "Die lernende Person berechnet unterschiedliche Werte, weist nach, dass Subtraktion und Division als solche nicht assoziativ sind, und lehnt die Umgruppierung trotz ähnlicher Schreibform ab.",
+            "expectedPerformanceEn": "The learner calculates different values, demonstrates that subtraction and division themselves are not associative, and rejects the regrouping despite the similar notation.",
+            "understandingFocusDe": "Ein Rechenvorteil ist nur zulässig, wenn die tatsächliche Operationsstruktur das verwendete Gesetz trägt.",
+            "understandingFocusEn": "A computational shortcut is valid only when the actual operation structure supports the law used."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "reason": "AI-authored current-fingerprint candidate for Einfache additive Gleichungen durch Umkehraufgaben lösen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Eine Gleichung behauptet die Gleichheit beider Seiten; gesucht ist ein Wert, der diese Aussage erfüllt. Welche Umkehroperation den unbekannten Wert freilegt, hängt von seiner Stellung ab, insbesondere sind x−a=b und a−x=b wegen der Nichtvertauschbarkeit der Subtraktion verschieden.",
+            "essentialUnderstandingEn": "An equation states that its two sides are equal; the unknown is a value that makes this statement true. The inverse operation that reveals the unknown depends on its position, and in particular x−a=b and a−x=b differ because subtraction is not commutative.",
+            "observablePerformanceDe": "Die lernende Person löst selbstständig Gleichungen der drei genannten Formen mit einem passenden Verfahren, erklärt den Rückwärtsschritt beziehungsweise die Umkehraufgabe und zeigt durch Einsetzen in die Ausgangsgleichung, dass der gefundene Wert sie erfüllt.",
+            "observablePerformanceEn": "The learner independently solves equations of the three stated forms using a suitable method, explains the backward step or inverse operation, and shows by substitution into the original equation that the value found satisfies it."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 3,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "unknown-position",
+            "textDe": "Unbekannte als Summand, Minuend oder Subtrahend",
+            "textEn": "Unknown as addend, minuend, or subtrahend"
+          },
+          {
+            "id": "problem-form",
+            "textDe": "Symbolische Gleichung oder kurze Sachsituation",
+            "textEn": "Symbolic equation or short contextual problem"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unknown-addend",
+            "taskDemandDe": "Die Gleichung 18 + x = 52 ist durch eine passende Umkehraufgabe zu lösen und durch Einsetzen zu prüfen.",
+            "taskDemandEn": "The equation 18 + x = 52 must be solved using an appropriate inverse problem and checked by substitution.",
+            "expectedPerformanceDe": "Die lernende Person verwendet x=52−18, erhält 34 und prüft 18+34=52.",
+            "expectedPerformanceEn": "The learner uses x=52−18, obtains 34, and checks 18+34=52.",
+            "understandingFocusDe": "Die Umkehroperation macht die Addition rückgängig und der gefundene Wert muss die ursprüngliche Gleichheit erfüllen.",
+            "understandingFocusEn": "The inverse operation undoes the addition, and the found value must satisfy the original equality."
+          },
+          {
+            "id": "unknown-minuend",
+            "taskDemandDe": "Die Gleichung x − 17 = 26 ist durch Rückwärtsarbeiten zu lösen; der Rückwärtsschritt ist zu erklären und das Ergebnis einzusetzen.",
+            "taskDemandEn": "The equation x − 17 = 26 must be solved by working backward; the reverse step must be explained and the result substituted.",
+            "expectedPerformanceDe": "Die lernende Person addiert 17 zu 26, erhält x=43 und bestätigt 43−17=26.",
+            "expectedPerformanceEn": "The learner adds 17 to 26, obtains x=43, and confirms 43−17=26.",
+            "understandingFocusDe": "Die Stellung von x bestimmt, welche gerichtete Operation rückgängig gemacht wird.",
+            "understandingFocusEn": "The position of x determines which directed operation is undone."
+          },
+          {
+            "id": "unknown-subtrahend-context",
+            "taskDemandDe": "Von 54 Gegenständen wird eine unbekannte Anzahl entnommen; 19 bleiben. Die Situation ist als Gleichung zu schreiben, zu lösen und zu prüfen.",
+            "taskDemandEn": "An unknown number of objects is removed from 54, leaving 19. The situation must be written as an equation, solved, and checked.",
+            "expectedPerformanceDe": "Die lernende Person modelliert 54−x=19, bestimmt x=54−19=35 und prüft 54−35=19.",
+            "expectedPerformanceEn": "The learner models 54−x=19, determines x=54−19=35, and checks 54−35=19.",
+            "understandingFocusDe": "a−x=b darf wegen der Stellung der Unbekannten nicht mit x−a=b gleichbehandelt werden.",
+            "understandingFocusEn": "Because of the unknown’s position, a−x=b must not be treated like x−a=b."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "reason": "AI-authored current-fingerprint candidate for Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Ein geordnetes Koordinatenpaar legt durch x- und y-Achse sowie deren Skalierung genau eine Punktlage fest. Eine Strecke ist durch ihre Endpunkte begrenzt, während die durch passende Punkte bestimmte Gerade in beide Richtungen unbegrenzt weiterläuft; die Zeichnung muss diese Objektart sichtbar unterscheiden.",
+            "essentialUnderstandingEn": "An ordered coordinate pair, together with the x- and y-axes and their scales, determines exactly one point position. A line segment is bounded by its endpoints, whereas the line determined by suitable points extends without bound in both directions; the drawing must visibly distinguish these object types.",
+            "observablePerformanceDe": "Die lernende Person wählt selbstständig eine passende Skalierung, trägt vorgegebene Punkte mit korrekter Koordinatenreihenfolge ein, zeichnet die verlangte Strecke oder Gerade und begründet anhand von Endpunkten beziehungsweise Fortsetzungspfeilen deren Ausdehnung.",
+            "observablePerformanceEn": "The learner independently chooses a suitable scale, plots given points in the correct coordinate order, draws the requested segment or line, and justifies its extent using endpoints or continuation arrows respectively."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "axis-scale-and-coordinate-order",
+            "textDe": "Veränderte Achsenskalierung und vertauschungsanfällige Koordinatenreihenfolge",
+            "textEn": "Changed axis scaling and easily confused coordinate order"
+          },
+          {
+            "id": "linear-object-type",
+            "textDe": "Begrenzte Strecke oder beidseitig unbegrenzte Gerade",
+            "textEn": "Bounded segment or line unbounded in both directions"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "points-and-segment",
+            "taskDemandDe": "In einem Koordinatensystem mit Zweierschritten sind A(2|6) und B(8|2) einzutragen und durch die Strecke AB zu verbinden; die Objektart ist zu begründen.",
+            "taskDemandEn": "In a coordinate system scaled in steps of two, A(2,6) and B(8,2) must be plotted and connected by segment AB; the object type must be justified.",
+            "expectedPerformanceDe": "Die lernende Person liest zuerst x und dann y, nutzt die Skala korrekt, markiert beide Endpunkte und zeichnet nur den zwischen A und B liegenden begrenzten Teil.",
+            "expectedPerformanceEn": "The learner reads x first and then y, uses the scale correctly, marks both endpoints, and draws only the bounded part between A and B.",
+            "understandingFocusDe": "Koordinaten bestimmen Punktlagen; die Endpunkte gehören zur Definition der Strecke und begrenzen ihre Ausdehnung.",
+            "understandingFocusEn": "Coordinates determine point locations; the endpoints belong to the definition of the segment and bound its extent."
+          },
+          {
+            "id": "points-and-line-transfer",
+            "taskDemandDe": "In einem neu skalierten Koordinatensystem sind C(1|4) und D(5|7) einzutragen und die durch beide Punkte bestimmte Gerade darzustellen.",
+            "taskDemandEn": "In a newly scaled coordinate system, C(1,4) and D(5,7) must be plotted and the line determined by both points represented.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die eindeutige Gerade durch C und D, verlängert sie sichtbar über beide Punkte mit Fortsetzungspfeilen und erklärt, dass die Punkte keine Endpunkte der Geraden sind.",
+            "expectedPerformanceEn": "The learner constructs the unique line through C and D, visibly extends it beyond both points with continuation arrows, and explains that the points are not endpoints of the line.",
+            "understandingFocusDe": "Die neue Lage wird aus Koordinaten rekonstruiert; Strecke und Gerade werden nicht nach demselben Bildschema gezeichnet.",
+            "understandingFocusEn": "The new location is reconstructed from coordinates; segment and line are not drawn using the same visual template."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "reason": "AI-authored current-fingerprint candidate for Kreise aus Mittelpunkt und Radius zeichnen und begründen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Ein Kreis ist die Menge aller Punkte mit genau dem Radiusabstand von seinem Mittelpunkt; der Zirkel hält diesen Abstand beim Zeichnen konstant. Kreislinie und ausgefüllte Kreisfläche sind deshalb zu unterscheiden.",
+            "essentialUnderstandingEn": "A circle is the set of all points at exactly the radius distance from its centre; a compass keeps this distance constant while drawing. The circumference and the filled circular region must therefore be distinguished.",
+            "observablePerformanceDe": "Die lernende Person stellt den Zirkel auf den gegebenen Radius ein, zeichnet um den Mittelpunkt eine geschlossene Kreislinie, überprüft an mehreren Punkten den konstanten Abstand und erklärt, warum Punkte mit kleinerem oder größerem Abstand nicht auf der Kreislinie liegen.",
+            "observablePerformanceEn": "The learner sets the compass to the given radius, draws a closed circumference around the centre, checks the constant distance at several points, and explains why points at a smaller or greater distance are not on the circumference."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "radius-given-form",
+            "textDe": "Numerische Länge, vorgegebene Strecke oder Rastermaß",
+            "textEn": "Numerical length, supplied segment, or grid measure"
+          },
+          {
+            "id": "point-distance",
+            "textDe": "Punkt auf, innerhalb oder außerhalb der Kreislinie",
+            "textEn": "Point on, inside, or outside the circle line"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "construct-and-verify-circle",
+            "taskDemandDe": "Um den Punkt M ist mit Radius 3,2 cm ein Kreis zu zeichnen. An mehreren Punkten ist die Konstruktion zu prüfen und Kreislinie von Kreisfläche abzugrenzen.",
+            "taskDemandEn": "A circle of radius 3.2 cm must be drawn around point M. The construction must be checked at several points, and the circle line distinguished from the filled disk.",
+            "expectedPerformanceDe": "Die lernende Person stellt den Zirkel auf 3,2 cm ein, zeichnet eine geschlossene Linie, misst an mehreren Linienpunkten denselben Abstand und erklärt, dass innere Punkte nicht zur Kreislinie gehören.",
+            "expectedPerformanceEn": "The learner sets the compass to 3.2 cm, draws a closed line, measures the same distance at several line points, and explains that interior points do not belong to the circle line.",
+            "understandingFocusDe": "Der Zirkel realisiert die Ortsbedingung „Abstand genau r“; eine ausgefüllte Fläche wäre ein anderes Objekt.",
+            "understandingFocusEn": "The compass realizes the locus condition “distance exactly r”; a filled region would be a different object."
+          },
+          {
+            "id": "segment-radius-transfer",
+            "taskDemandDe": "Der Radius ist nur als Strecke AB gegeben. Diese Länge ist auf den Zirkel zu übertragen, um einen Kreis um N zu zeichnen; drei Testpunkte sind anhand ihres Abstands als auf, innen oder außen einzuordnen.",
+            "taskDemandEn": "The radius is supplied only as segment AB. This length must be transferred to the compass to draw a circle about N; three test points must be classified by distance as on, inside, or outside.",
+            "expectedPerformanceDe": "Die lernende Person übernimmt die Länge ohne Maßstabswechsel, konstruiert den Kreis und vergleicht jeden Punktabstand mit AB, statt die Lage nur nach Augenschein zu beurteilen.",
+            "expectedPerformanceEn": "The learner transfers the length without changing scale, constructs the circle, and compares each point’s distance with AB rather than judging by appearance alone.",
+            "understandingFocusDe": "Die Kreisdefinition bleibt bei anderer Radiusdarstellung und neuer Lage invariant.",
+            "understandingFocusEn": "The circle definition remains invariant under a different radius representation and new location."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "reason": "AI-authored current-fingerprint candidate for Parallele und senkrechte Lagebeziehungen erkennen und begründen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Parallele Geraden haben dieselbe Richtung und schneiden sich in der Ebene nicht; senkrechte Geraden bilden einen rechten Winkel. Bei Strecken entscheidet die Lage ihrer zugrunde liegenden Geraden, und beide Beziehungen bleiben unter Verschieben oder Drehen erhalten, auch wenn nichts waagerecht oder senkrecht zum Blattrand liegt.",
+            "essentialUnderstandingEn": "Parallel lines have the same direction and do not intersect in the plane; perpendicular lines form a right angle. For segments, the relation is determined by their supporting lines, and both relations are preserved by translation or rotation even when nothing is horizontal or vertical relative to the page.",
+            "observablePerformanceDe": "Die lernende Person klassifiziert selbstständig Strecken- oder Geradenpaare in verschieden ausgerichteten Zeichnungen, beschreibt die Beziehung fachsprachlich und begründet sie mit Richtung, Schnittverhalten oder einem rechten Winkel statt nur nach dem Augenschein.",
+            "observablePerformanceEn": "The learner independently classifies pairs of segments or lines in differently oriented diagrams, describes the relation using mathematical language, and justifies it using direction, intersection behavior, or a right angle rather than visual appearance alone."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "drawing-orientation",
+            "textDe": "Gedrehte, verkleinerte oder nur ausschnittweise sichtbare Konfiguration",
+            "textEn": "Rotated, reduced, or only partially visible configuration"
+          },
+          {
+            "id": "object-and-evidence",
+            "textDe": "Strecken oder Geraden mit Richtungs- beziehungsweise Rechtwinkelmarkierung",
+            "textEn": "Segments or lines with direction or right-angle markings"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rotated-relations",
+            "taskDemandDe": "Mehrere gedrehte Strecken- und Geradenpaare sind als parallel, senkrecht oder keines von beidem zu klassifizieren; Markierungen und geometrische Bedingungen sind in der Begründung zu verwenden.",
+            "taskDemandEn": "Several rotated pairs of segments and lines must be classified as parallel, perpendicular, or neither; markings and geometric conditions must be used in the justification.",
+            "expectedPerformanceDe": "Die lernende Person nutzt gleiche Richtung für Parallelität und den rechten Winkel für Senkrechtlage, beschreibt die Beziehungen fachsprachlich und ignoriert die Orientierung zum Blattrand.",
+            "expectedPerformanceEn": "The learner uses equal direction for parallelism and a right angle for perpendicularity, describes the relationships precisely, and ignores orientation relative to the page edge.",
+            "understandingFocusDe": "Parallel und senkrecht sind lageinvariante Beziehungen und keine Synonyme für waagerecht und lotrecht auf dem Blatt.",
+            "understandingFocusEn": "Parallel and perpendicular are position-invariant relationships, not synonyms for horizontal and vertical on the page."
+          },
+          {
+            "id": "supporting-lines-transfer",
+            "taskDemandDe": "Zwei kurze Strecken schneiden sich im sichtbaren Ausschnitt nicht, ihre tragenden Geraden besitzen aber unterschiedliche Richtungen; ein weiteres Paar bildet erst nach Verlängerung einen rechten Winkel. Beide Beziehungen sind zu beurteilen.",
+            "taskDemandEn": "Two short segments do not meet in the visible excerpt, but their supporting lines have different directions; another pair forms a right angle only after extension. Both relationships must be assessed.",
+            "expectedPerformanceDe": "Die lernende Person lehnt beim ersten Paar Parallelität trotz fehlenden sichtbaren Schnittpunkts ab und erkennt beim zweiten Senkrechtlage über den rechten Winkel der tragenden Geraden.",
+            "expectedPerformanceEn": "The learner rejects parallelism for the first pair despite no visible intersection and recognizes perpendicularity in the second from the right angle of the supporting lines.",
+            "understandingFocusDe": "Bei Strecken entscheidet die Beziehung der zugrunde liegenden Geraden, nicht nur das aktuell sichtbare Schnittverhalten.",
+            "understandingFocusEn": "For segments, the relationship of the supporting lines is decisive, not merely the currently visible intersection behavior."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+      "reason": "AI-authored current-fingerprint candidate for Punktmengen zu Abstandsbedingungen darstellen und begründen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Eine Abstandsbedingung beschreibt die vollständige Menge aller zulässigen Punkte, nicht nur einzelne Beispiele. Bei festem Abstand von einem Punkt entsteht eine Kreislinie; bei festem Abstand von einer Geraden liegen die Punkte auf zwei parallelen Geraden auf beiden Seiten, sofern die Aufgabe nicht zusätzlich einschränkt.",
+            "essentialUnderstandingEn": "A distance condition describes the complete set of all admissible points, not merely isolated examples. A fixed distance from a point gives a circumference; a fixed distance from a line gives two parallel lines, one on each side, unless the task adds a further restriction.",
+            "observablePerformanceDe": "Die lernende Person konstruiert oder kennzeichnet selbstständig die vollständige Punktmenge zu einer vorgegebenen Abstandsbedingung, prüft repräsentative enthaltene und nicht enthaltene Punkte und begründet eine einfache Sachentscheidung aus genau dieser Bedingung.",
+            "observablePerformanceEn": "The learner independently constructs or marks the complete point set for a given distance condition, checks representative included and excluded points, and justifies a simple real-world decision from that exact condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "reference-object",
+            "textDe": "Fester Abstand von einem Punkt oder von einer Geraden",
+            "textEn": "Fixed distance from a point or from a line"
+          },
+          {
+            "id": "context-and-scale",
+            "textDe": "Reine Konstruktion oder Ortsentscheidung in verändertem Maßstab",
+            "textEn": "Pure construction or location decision at a changed scale"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "fixed-distance-from-point",
+            "taskDemandDe": "Die vollständige Menge aller Punkte mit genau 4 cm Abstand von A ist darzustellen. Zwei enthaltene und zwei nicht enthaltene Testpunkte sind zu begründen.",
+            "taskDemandEn": "The complete set of all points exactly 4 cm from A must be represented. Two included and two excluded test points must be justified.",
+            "expectedPerformanceDe": "Die lernende Person konstruiert die Kreislinie um A mit Radius 4 cm und entscheidet jeden Testpunkt durch Abstandsmessung; innere Punkte werden trotz kleinerem Abstand ausgeschlossen.",
+            "expectedPerformanceEn": "The learner constructs the circle line about A with radius 4 cm and decides each test point by measuring distance; interior points are excluded despite having smaller distance.",
+            "understandingFocusDe": "Die Bedingung „genau 4 cm“ beschreibt die vollständige Punktmenge und nicht die Kreisfläche oder einzelne Beispiele.",
+            "understandingFocusEn": "The condition “exactly 4 cm” describes the complete point set, not the disk or isolated examples."
+          },
+          {
+            "id": "fixed-distance-from-line-transfer",
+            "taskDemandDe": "In einem Lageplan sollen alle Orte markiert werden, die genau 200 m von einer geraden Straße g entfernt liegen; der Maßstab ist gegeben. Die vollständige Menge und die Unzulässigkeit der Straßenlinie selbst sind zu begründen.",
+            "taskDemandEn": "On a map, all locations exactly 200 m from a straight road g must be marked using a supplied scale. The complete set and the exclusion of the road line itself must be justified.",
+            "expectedPerformanceDe": "Die lernende Person überträgt 200 m in den Planmaßstab und zeichnet zwei zu g parallele Geraden im passenden Abstand auf beiden Seiten; sie prüft repräsentative Punkte senkrecht zu g.",
+            "expectedPerformanceEn": "The learner converts 200 m to the map scale and draws two lines parallel to g at the correct distance on both sides; representative points are checked using perpendicular distance to g.",
+            "understandingFocusDe": "Der Wechsel des Bezugsobjekts ändert die Form der Ortslinie; eine vertraute Kreisform darf nicht kopiert werden.",
+            "understandingFocusEn": "Changing the reference object changes the locus shape; a familiar circle shape must not be copied."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "reason": "AI-authored current-fingerprint candidate for Winkelzeichnungen und Gradmaße ineinander überführen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Die lernende Person versteht das Gradmaß als Maß für die Winkelöffnung beziehungsweise Drehung: Lage und Schenkellängen einer Zeichnung ändern die Winkelgröße nicht, Messen und Zeichnen sind gegenläufige Übersetzungen zwischen Bild und Maßzahl, und die Winkelart folgt aus dem Größenbereich des Gradmaßes.",
+            "essentialUnderstandingEn": "The learner understands degree measure as a measure of angle opening or rotation: the orientation and arm lengths in a drawing do not change the angle size, measuring and drawing are inverse translations between diagram and numerical measure, and the angle type follows from the degree measure's range.",
+            "observablePerformanceDe": "Die lernende Person misst einen gezeichneten Winkel bis 360 Grad selbstständig mit dem Geodreieck, liest beziehungsweise ermittelt das passende Gradmaß, benennt die Winkelart und zeichnet zu einem vorgegebenen Gradmaß einen Winkel, dessen Größe sie anschließend überprüft.",
+            "observablePerformanceEn": "The learner independently uses a protractor to measure a drawn angle up to 360 degrees, reads or determines the appropriate degree measure, names the angle type, and draws an angle for a given degree measure whose size they then check."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "translation-direction",
+            "textDe": "Winkelzeichnung zu Gradmaß oder Gradmaß zu Winkelzeichnung",
+            "textEn": "Angle diagram to degree measure or degree measure to angle diagram"
+          },
+          {
+            "id": "orientation-and-size-range",
+            "textDe": "Gedrehte Ausgangshalbgerade, Klassifikationsgrenze oder Winkel über 180 Grad",
+            "textEn": "Rotated initial ray, classification boundary, or angle above 180 degrees"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "measure-rotated-angle",
+            "taskDemandDe": "Ein um 37 Grad gegen den Blattrand gedrehter Winkel ist mit dem Geodreieck zu messen, als Gradmaß anzugeben und fachsprachlich einzuordnen; die Schenkellängen sind verschieden.",
+            "taskDemandEn": "An angle rotated 37 degrees relative to the page edge must be measured with a protractor, stated in degrees, and classified precisely; its arms have different lengths.",
+            "expectedPerformanceDe": "Die lernende Person richtet Mittelpunkt und Nullrichtung am Scheitel und Ausgangsschenkel aus, liest die zur markierten Öffnung passende Skala, erhält das richtige Maß und klassifiziert unabhängig von Lage und Schenkellänge.",
+            "expectedPerformanceEn": "The learner aligns center and zero direction with the vertex and initial ray, reads the scale matching the marked opening, obtains the correct measure, and classifies independently of orientation and arm length.",
+            "understandingFocusDe": "Das Gradmaß beschreibt die markierte Öffnung; Blattlage, Schenkellänge und die falsche Gegenskala dürfen das Ergebnis nicht bestimmen.",
+            "understandingFocusEn": "Degree measure describes the marked opening; page orientation, arm length, and the wrong opposite scale must not determine the result."
+          },
+          {
+            "id": "construct-reflex-angle-transfer",
+            "taskDemandDe": "Von einer frei liegenden Ausgangshalbgeraden aus ist ein Winkel von 235 Grad zu zeichnen, anschließend zu kontrollieren und als Winkelart zu benennen.",
+            "taskDemandEn": "Starting from a freely oriented initial ray, an angle of 235 degrees must be drawn, then checked and classified.",
+            "expectedPerformanceDe": "Die lernende Person nutzt eine konsistente Drehrichtung, konstruiert beispielsweise den Ergänzungswinkel 125 Grad zur Vollumdrehung, markiert eindeutig die größere Öffnung, prüft 360−125=235 und benennt einen überstumpfen Winkel.",
+            "expectedPerformanceEn": "The learner uses a consistent rotation direction, constructs, for example, the 125-degree complement to a full turn, clearly marks the larger opening, checks 360−125=235, and names a reflex angle.",
+            "understandingFocusDe": "Messen und Zeichnen sind gegenläufige Übersetzungen; bei Winkeln über 180 Grad muss die gemeinte Öffnung ausdrücklich erhalten bleiben.",
+            "understandingFocusEn": "Measuring and drawing are inverse translations; for angles above 180 degrees, the intended opening must remain explicit."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "reason": "AI-authored current-fingerprint candidate for Vierecke anhand ihrer Eigenschaften einordnen und begründen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Vierecksklassen werden durch notwendige und hinreichende Seiten-, Winkel- und Parallelitätseigenschaften bestimmt und bilden eine Einschlusshierarchie. Daher kann ein Viereck mehrere Bezeichnungen tragen; insbesondere ist bei inklusiver Definition jedes Viereck mit mindestens einem Paar paralleler Gegenseiten ein Trapez.",
+            "essentialUnderstandingEn": "Quadrilateral classes are determined by necessary and sufficient properties of sides, angles, and parallelism and form an inclusion hierarchy. A quadrilateral can therefore have several valid labels; in particular, under the inclusive definition, every quadrilateral with at least one pair of opposite parallel sides is a trapezoid.",
+            "observablePerformanceDe": "Die lernende Person ordnet selbstständig Vierecke aus Zeichnungen oder Eigenschaftslisten allen passenden Klassen zu, fertigt eine Darstellung zu vorgegebenen Eigenschaften an und begründet Mehrfachzuordnungen durch konkrete Eigenschaftsimplikationen statt durch das Aussehen.",
+            "observablePerformanceEn": "The learner independently assigns quadrilaterals from diagrams or property lists to every applicable class, constructs a representation from given properties, and justifies multiple classifications through specific implications among properties rather than appearance."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "input-form",
+            "textDe": "Zeichnung, symbolische Markierungen oder Eigenschaftsliste",
+            "textEn": "Diagram, symbolic markings, or property list"
+          },
+          {
+            "id": "prototype-distortion",
+            "textDe": "Gedrehte oder untypisch proportionierte Vierecke",
+            "textEn": "Rotated or atypically proportioned quadrilaterals"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "square-multiple-membership",
+            "taskDemandDe": "Ein Viereck besitzt vier gleich lange Seiten und vier rechte Winkel. Es ist allen zutreffenden Klassen aus Quadrat, Rechteck, Parallelogramm, Raute, Drachenviereck und Trapez zuzuordnen; jede Inklusion ist über Eigenschaften zu begründen.",
+            "taskDemandEn": "A quadrilateral has four equal sides and four right angles. It must be assigned to every applicable class among square, rectangle, parallelogram, rhombus, kite, and trapezoid; each inclusion must be justified through properties.",
+            "expectedPerformanceDe": "Die lernende Person erkennt alle sechs Zuordnungen, leitet Parallelität und benachbarte gleich lange Seiten aus den Quadratmerkmalen ab und nutzt beim Trapez ausdrücklich mindestens ein Paar paralleler Gegenseiten.",
+            "expectedPerformanceEn": "The learner identifies all six memberships, derives parallelism and adjacent equal sides from the square properties, and explicitly uses at least one pair of opposite parallel sides for trapezoid membership.",
+            "understandingFocusDe": "Klassen sind inklusiv und können sich überlappen; eine speziellere Bezeichnung schließt allgemeinere zutreffende Bezeichnungen nicht aus.",
+            "understandingFocusEn": "Classes are inclusive and may overlap; a more specific name does not exclude other applicable general names."
+          },
+          {
+            "id": "exactly-one-parallel-pair",
+            "taskDemandDe": "Ein gedrehtes Viereck besitzt genau ein Paar paralleler Gegenseiten; die anderen Gegenseiten sind nicht parallel und weitere Gleichheitsmarkierungen fehlen. Zutreffende und nicht gesicherte Klassen sind zu begründen.",
+            "taskDemandEn": "A rotated quadrilateral has exactly one pair of opposite parallel sides; the other opposite sides are not parallel, and no further equality markings are given. Applicable and unsupported classes must be justified.",
+            "expectedPerformanceDe": "Die lernende Person ordnet das Viereck nach inklusiver Definition als Trapez ein, lehnt Parallelogramm, Rechteck, Raute und Quadrat wegen fehlender Bedingungen ab und behauptet ohne Seitenmarkierungen kein Drachenviereck.",
+            "expectedPerformanceEn": "Under the inclusive definition, the learner classifies the quadrilateral as a trapezoid, rejects parallelogram, rectangle, rhombus, and square because conditions are missing, and does not claim kite membership without side markings.",
+            "understandingFocusDe": "Aussehen und Prototypen werden durch notwendige und hinreichende Eigenschaften sowie bewusstes Fehlen von Evidenz ersetzt.",
+            "understandingFocusEn": "Appearance and prototypes are replaced by necessary and sufficient properties and explicit attention to missing evidence."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "reason": "AI-authored current-fingerprint candidate for Multiplikation und ganzzahlige Division als Umkehroperationen nutzen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Die lernende Person versteht, dass Multiplikation und exakte ganzzahlige Division Umkehroperationen sind: Aus einem Produkt und einem von null verschiedenen Faktor lässt sich der andere Faktor durch Division bestimmen. Die Vorzeichenregeln müssen in beiden Richtungen zusammenpassen; durch null kann nicht dividiert werden, und eine Division ist in diesem Ziel nur zulässig, wenn der Quotient ganzzahlig ist.",
+            "essentialUnderstandingEn": "The learner understands that multiplication and exact integer division are inverse operations: from a product and a nonzero factor, the other factor can be determined by division. The sign rules must agree in both directions; division by zero is impossible, and a division is admissible for this goal only when its quotient is an integer.",
+            "observablePerformanceDe": "Die lernende Person berechnet selbstständig Produkte und zulässige ganzzahlige Quotienten, bestimmt und begründet das Vorzeichen, prüft vor einer Division den von null verschiedenen Divisor und den ganzzahligen Quotienten und bestätigt das Ergebnis, indem sie mit der Umkehroperation zum Ausgangswert zurückkehrt.",
+            "observablePerformanceEn": "The learner independently calculates products and admissible integer quotients, determines and justifies the sign, checks before division that the divisor is nonzero and the quotient is an integer, and confirms the result by using the inverse operation to return to the original value."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "operation-direction",
+            "textDe": "Produkt berechnen, fehlenden Faktor bestimmen oder Ergebnis durch Umkehroperation prüfen",
+            "textEn": "Calculate a product, determine a missing factor, or check using the inverse operation"
+          },
+          {
+            "id": "sign-and-domain",
+            "textDe": "Veränderte Vorzeichen, Nullfall und ganzzahliger oder nicht ganzzahliger Quotient",
+            "textEn": "Changed signs, zero case, and integer or noninteger quotient"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "signed-inverse-family",
+            "taskDemandDe": "Aus (−12)·7 ist das Produkt zu bestimmen; anschließend sind die beiden zugehörigen ganzzahligen Divisionsgleichungen zu formulieren und zur Prüfung zu nutzen.",
+            "taskDemandEn": "The product of (−12)×7 must be determined; the two associated integer division equations must then be formulated and used for checking.",
+            "expectedPerformanceDe": "Die lernende Person erhält −84, begründet das negative Vorzeichen und formuliert (−84):7=−12 sowie (−84):(−12)=7 mit jeweils von null verschiedenem Divisor.",
+            "expectedPerformanceEn": "The learner obtains −84, justifies the negative sign, and formulates (−84)÷7=−12 and (−84)÷(−12)=7, each with a nonzero divisor.",
+            "understandingFocusDe": "Multiplikation und ganzzahlige Division beschreiben dieselbe Faktorenbeziehung in umgekehrter Richtung; die Vorzeichen müssen in beiden Richtungen kohärent bleiben.",
+            "understandingFocusEn": "Multiplication and integer division describe the same factor relationship in opposite directions; signs must remain coherent in both directions."
+          },
+          {
+            "id": "division-admissibility-transfer",
+            "taskDemandDe": "Die Ausdrücke 45:(−6), 0:(−7) und 12:0 sind für den Zahlenbereich der ganzen Zahlen auf Zulässigkeit zu prüfen und jeweils zu begründen.",
+            "taskDemandEn": "The expressions 45÷(−6), 0÷(−7), and 12÷0 must each be assessed for admissibility in the integers and justified.",
+            "expectedPerformanceDe": "Die lernende Person verwirft 45:(−6) wegen nicht ganzzahligem Quotienten, erkennt 0:(−7)=0 als zulässig und lehnt 12:0 als nicht definiert ab; passende Multiplikationsprüfungen stützen die Entscheidungen.",
+            "expectedPerformanceEn": "The learner rejects 45÷(−6) because the quotient is not an integer, recognizes 0÷(−7)=0 as admissible, and rejects 12÷0 as undefined; corresponding multiplication checks support the decisions.",
+            "understandingFocusDe": "Null im Dividend ist zulässig, null als Divisor nicht; außerdem begrenzt der vereinbarte Zahlenbereich die zulässigen Quotienten.",
+            "understandingFocusEn": "Zero as dividend is admissible, zero as divisor is not; the stipulated number domain also limits admissible quotients."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
+      "reason": "AI-authored current-fingerprint candidate for Einfache multiplikative Gleichungen unter Bereichsbedingungen lösen. It binds content-specific observable understanding to changed cases and independent transfer; it claims neither human approval nor a dedicated profile-review run.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "deep-understanding",
+            "essentialUnderstandingDe": "Eine multiplikative Gleichung verlangt einen Wert, der die Gleichheit im vorgegebenen Zahlenbereich erfüllt. Die passende Umkehroperation hängt davon ab, ob x Faktor, Dividend oder Divisor ist; Division durch null ist nicht definiert, und Teilbarkeit sowie Zahlenbereich können einen rechnerischen Kandidaten ausschließen oder zeigen, dass keine zulässige Lösung vorliegt.",
+            "essentialUnderstandingEn": "A multiplicative equation requires a value that satisfies the equality in the specified number domain. The suitable inverse operation depends on whether x is a factor, dividend, or divisor; division by zero is undefined, and divisibility and the number domain can exclude a numerical candidate or show that no admissible solution exists.",
+            "observablePerformanceDe": "Die lernende Person löst selbstständig Gleichungen aller drei genannten Formen, nennt und prüft die jeweils erforderlichen Null-, Teilbarkeits- und Bereichsbedingungen, wählt ein passendes Verfahren und kontrolliert jeden zulässigen Lösungswert durch Einsetzen in die Ausgangsgleichung.",
+            "observablePerformanceEn": "The learner independently solves equations of all three stated forms, states and checks the required zero, divisibility, and domain conditions in each case, chooses a suitable method, and verifies every admissible solution value by substitution into the original equation."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "deep-understanding"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "unknown-role",
+            "textDe": "Unbekannte als Faktor, Dividend oder Divisor",
+            "textEn": "Unknown as factor, dividend, or divisor"
+          },
+          {
+            "id": "domain-and-zero-case",
+            "textDe": "Ganze oder rationale Zahlen sowie eindeutige, fehlende oder mehrere Lösungen",
+            "textEn": "Integer or rational domain and unique, absent, or multiple solutions"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "three-unknown-positions",
+            "taskDemandDe": "Im Bereich der ganzen Zahlen sind 6·x=−42, x:(−4)=6 und 24:x=−6 zu lösen. Vor jedem Umkehrschritt sind Stellung von x und Nullbedingung zu prüfen; jede Lösung ist einzusetzen.",
+            "taskDemandEn": "Within the integers, 6×x=−42, x÷(−4)=6, and 24÷x=−6 must be solved. Before each inverse step, the position of x and the zero condition must be checked; every solution must be substituted.",
+            "expectedPerformanceDe": "Die lernende Person erhält x=−7, x=−24 und x=−4, wählt je nach Rolle die passende Umkehroperation, bestätigt x≠0 im Divisorfall und prüft alle drei Ausgangsgleichungen.",
+            "expectedPerformanceEn": "The learner obtains x=−7, x=−24, and x=−4, chooses the appropriate inverse operation for each role, confirms x≠0 in the divisor case, and checks all three original equations.",
+            "understandingFocusDe": "Eine einheitliche schematische Division reicht nicht; Faktor, Dividend und Divisor verlangen unterschiedliche Rückwärtsschritte und Bedingungen.",
+            "understandingFocusEn": "A single routine division step is insufficient; factor, dividend, and divisor require different reverse steps and conditions."
+          },
+          {
+            "id": "domain-and-degenerate-transfer",
+            "taskDemandDe": "Die Gleichung 3·x=2 ist einmal in den ganzen und einmal in den rationalen Zahlen zu lösen; zusätzlich ist 0·x=0 im Bereich der ganzen Zahlen zu untersuchen.",
+            "taskDemandEn": "The equation 3×x=2 must be solved once over the integers and once over the rationals; additionally, 0×x=0 must be investigated over the integers.",
+            "expectedPerformanceDe": "Die lernende Person begründet, dass 3·x=2 keine ganzzahlige, aber die rationale Lösung x=2/3 besitzt, und erkennt bei 0·x=0 alle ganzen Zahlen als Lösungen statt unzulässig durch null zu dividieren.",
+            "expectedPerformanceEn": "The learner justifies that 3×x=2 has no integer solution but has the rational solution x=2/3, and recognizes every integer as a solution of 0×x=0 instead of dividing illegally by zero.",
+            "understandingFocusDe": "Zahlenbereich und Nullkoeffizient entscheiden über Lösungsmenge; ein rechnerischer Kandidat ist nur gültig, wenn Gleichung und Bereich erfüllt sind.",
+            "understandingFocusEn": "The number domain and zero coefficient determine the solution set; a calculated candidate is valid only if it satisfies both equation and domain."
+          }
+        ]
+      }
+    }
+  ]
+}

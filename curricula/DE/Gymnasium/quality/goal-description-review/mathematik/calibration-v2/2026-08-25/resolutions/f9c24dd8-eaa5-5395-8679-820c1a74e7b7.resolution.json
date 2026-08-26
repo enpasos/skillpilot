@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+  "goal": {
+    "goalId": "f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:bc5c37ff36e6d56c17069af31704955c8b6bcddf8a1ff58a5ecd7f510b8da32b",
+    "pageFingerprint": "sha256:98dff62f0db3fcdcae1a4ca7dafe8a6fd0b71e3f43bbfd6a7ad77e8ab4c7cfb4",
+    "goalReviewContextFingerprint": "sha256:0dcd04647ce30446ae37f0712efd45638cbf5ab9f39e6499cb005d3242c0939d",
+    "finalText": {
+      "titleDe": "Strategien nach Kriterien vergleichen (LK)",
+      "titleEn": "Compare strategies by criteria (advanced course)",
+      "descriptionDe": "Die lernende Person kann zwei Lösungsstrategien anhand konkreter Kriterien wie Aufwand, Genauigkeit und Robustheit vergleichen und begründen, welche für den vorliegenden Fall geeigneter ist.",
+      "descriptionEn": "The learner can compare two solution strategies using concrete criteria such as effort, accuracy, and robustness and justify which is more suitable for the case at hand."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:0dcd04647ce30446ae37f0712efd45638cbf5ab9f39e6499cb005d3242c0939d",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-20",
+      "recordDigest": "sha256:d294d1fe50449fbe478bd529fdef5caf179123e359f0b4401c0fdf3ea4245ecd"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:0dcd04647ce30446ae37f0712efd45638cbf5ab9f39e6499cb005d3242c0939d",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-020",
+      "recordDigest": "sha256:ae55b526cb3fd70648fce9feaac53d1066ab48550d39d6731efabb3a8eee9779"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Strategien nach Kriterien vergleichen (LK)“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Compare strategies by criteria (advanced course)” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Die Eignung einer Lösungsstrategie ist relativ zur Struktur, den Anforderungen und den verfügbaren Informationen eines Problems; Aufwand, Genauigkeit und Robustheit können zu begründeten Zielkonflikten führen, statt eine Strategie allgemein überlegen zu machen.",
+      "essentialUnderstandingEn": "The suitability of a solution strategy is relative to a problem's structure, requirements, and available information; effort, accuracy, and robustness can create reasoned trade-offs rather than making one strategy universally superior.",
+      "observablePerformanceDe": "Die lernende Person wendet auf zwei plausible Strategien für denselben mathematischen Fall selbstständig konkrete Kriterien an, belegt Unterschiede an den jeweiligen Schritten oder Ergebnissen und begründet eine fallbezogene Auswahl einschließlich eines relevanten Zielkonflikts.",
+      "observablePerformanceEn": "The learner independently applies concrete criteria to two plausible strategies for the same mathematical case, supports the differences using their steps or results, and justifies a case-specific choice including a relevant trade-off.",
+      "transferExpectationDe": "Wenn sich Datenstruktur, Genauigkeitsanforderung oder verfügbare Hilfsmittel ändern, vergleicht die lernende Person die Strategien neu und erklärt, warum sich ihre Rangfolge gegebenenfalls ändert.",
+      "transferExpectationEn": "When the data structure, accuracy requirement, or available tools change, the learner compares the strategies again and explains why their ranking may change."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:bb3665efbb840408fd12f8df40179eae6e9acd200fc13e1956077f85f1860c55"
+}

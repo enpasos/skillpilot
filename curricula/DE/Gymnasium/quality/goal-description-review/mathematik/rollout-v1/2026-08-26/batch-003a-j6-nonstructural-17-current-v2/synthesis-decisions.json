@@ -1,0 +1,524 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T08:48:38.900Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826",
+    "batchManifestDigest": "sha256:bf7d2c9f130c413c80f6cbd97515cd658eb5a17fb175d328abd46a0a25acb193",
+    "configDigest": "sha256:adc2ba397c3cf84d77a80700ec4595a6175ee4c10f83195ce48a3f26c1b51acf",
+    "bundleFingerprint": "sha256:7435bfdd90589d8f34d111710b6fb8bdc5b7ac7e6a498ddd3d906f48a09eff8c",
+    "bookDigest": "sha256:da559d820c8c47d7296887198a4d926abb4a4eeec755f3f039c69ca9006b4865",
+    "reviewInputFingerprint": "sha256:83749b45feec70ad6adfc1017056d0f605f152a875ef25a51d1a99df47b3468b",
+    "dualSummaryDigest": "sha256:4c392a0156c786e34d02a311f722f0c2a112d139b90a977cba667e7b2122d258",
+    "canonicalLandscapeDigest": "sha256:bb9132e20d084efa22af4983e24595fe64a94ea603e2d7ca6b381bcdc117c589"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-a",
+      "campaignDigest": "sha256:7ee3759903a0bc1d1c77a95363b33ff2ba282a4d2de20860d3b6a8c1711024da",
+      "roundId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:83749b45feec70ad6adfc1017056d0f605f152a875ef25a51d1a99df47b3468b",
+      "batchId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9371b3fbaa0832f18edcec73591945942eb834ea3978633f72fa24c16db7889f",
+      "runId": "math-b003a-j6-ra-openai-codex-gpt5-20260826-083835z",
+      "runManifestDigest": "sha256:28aef9fdc8da330bb6664703b4a8a11d6c8c237912f827be6572703982454cb1",
+      "resultsDigest": "sha256:245d8ce5972c4a85942c637eda139cb9f555d994ea91818c5c6345a9e7b3691e"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-b",
+      "campaignDigest": "sha256:4a385e8907bcdc2c8439a3edc87290217ce5bddc3853acc7b9c6c1875c998142",
+      "roundId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:83749b45feec70ad6adfc1017056d0f605f152a875ef25a51d1a99df47b3468b",
+      "batchId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:14d7d700a7a4b253f7d7cd8d65669cd156184846808aefe387fb81b786a8b27d",
+      "runId": "mathematik-b003a-j6-round-b-gpt5-subject-review-20260826t084038z",
+      "runManifestDigest": "sha256:49d5adc7b4285a1ab409476bbc26b405948afc219a2882781d78031547c8a706",
+      "resultsDigest": "sha256:b0bbb1b473e6e083dc9e99c9e1fcb8416e96620f480bd2748aaa774605b74bd2"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-001",
+      "goalId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4290061605b62177a6fb6f375eca911903c1012d83c33bfae5c44c4a7d5a3eee",
+      "pageFingerprint": "sha256:49b21a6fe5de26898240b61cf3280a5f159150742f596c608b933d46b780febb",
+      "goalReviewContextFingerprint": "sha256:dc3db397f65357962d7b57b0e333e03ae2f454500fccd79d807c18f856a458a7",
+      "finalText": {
+        "titleDe": "Rationale Zahlen multiplizieren und dividieren",
+        "titleEn": "Multiply and divide rational numbers",
+        "descriptionDe": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, in verschiedenen Darstellungsformen multiplizieren und dividieren, dabei tragfähige Operationsvorstellungen nutzen und Rechenvorteile gezielt einsetzen.",
+        "descriptionEn": "The learner can multiply and divide non-integer rational numbers, especially fractions and decimals, in different representations, use solid operation concepts, and apply calculation advantages purposefully."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g01-ee48e811-codexgpt5-20260826",
+          "recordDigest": "sha256:e9f570fd5c8bd097d2056a7993db9bfef2b580f4a2e2d0288d7536123f24531b"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-001-ee48e811",
+          "recordDigest": "sha256:f0d60e7b20e67336e3780396f22dbcd0e10b40577f839c478f1bbf876c975e00"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen den aktuellen bilingualen Wortlaut als kohärente Kompetenz zu Multiplikation und Division nicht ganzer rationaler Zahlen. Die Evidence-Fassung der zweiten Runde wird gewählt, weil sie die im Ziel verlangten tragfähigen Operationsvorstellungen vollständiger trennt: Multiplikation als Skalieren beziehungsweise Anteil-von-Anteil, Division als Umkehroperation sowie als Aufteilen oder Messen, bei wertgleichen Bruch- und Dezimaldarstellungen. Sie macht außerdem Darstellungswahl, Kehrwertbezug, Vorzeichen, zulässigen Divisor und gezielte Rechenvorteile in einer veränderten Produkt- oder Quotientenstruktur beobachtbar. Die erste Fassung ist fachlich tragfähig und prüft Ergebnisplausibilität, fasst Division im wesentlichen Verständnis aber enger nur als Umkehroperation; die zweite deckt deshalb den gebundenen Operationsvorstellungs-Scope trennschärfer ab, ohne ihn zu erweitern.",
+      "rationaleEn": "Both independent KEEP reviews confirm the current bilingual wording as a coherent competence for multiplying and dividing non-integer rational numbers. The second round's evidence formulation is selected because it distinguishes the operation concepts required by the goal more completely: multiplication as scaling or taking a fraction of a fraction, and division as an inverse operation as well as sharing or measuring, while fractions and decimals remain equivalent representations of the same value. It also makes representation choice, the reciprocal relation, signs, a permissible divisor, and purposeful calculation advantages observable in a changed product or quotient structure. The first formulation is mathematically sound and includes a plausibility check, but its essential understanding treats division more narrowly as an inverse operation only; the second therefore covers the bound operation-concept scope more precisely without widening it."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-002",
+      "goalId": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0f7973c5c7a6447486a275eacd4810a792a293e3430d23a3745dffdba4498af4",
+      "pageFingerprint": "sha256:a438fd2c938459b26cbf79720343b120cfb677adee821288add49347b5530be1",
+      "goalReviewContextFingerprint": "sha256:e7ff8f14875ed7eb1f18d8da825eb2cd36a7accddff2887a76b4014e67a79cb2",
+      "finalText": {
+        "titleDe": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+        "titleEn": "Interpret and compute powers with rational bases and negative exponents",
+        "descriptionDe": "Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.",
+        "descriptionEn": "The learner can compute powers with rational bases, interpret negative integer exponents as reciprocal forms, and interpret representations of very small quantities using negative powers of ten in contextual situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g02-26f668a0-codexgpt5-20260826",
+          "recordDigest": "sha256:15f3356bed7de295a05abd9f0a215f21c3458f7f456b7a2bc43ccfd9bcbf3e32"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-002-26f668a0",
+          "recordDigest": "sha256:bb70e271603e16558f4ec631b950820a0b5dcd2a0934b473e539ba62a4154f16"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Berechnen, Kehrwertdeutung und Sachdeutung negativer Zehnerpotenzen als zusammenhängendes Lernziel. Die Evidence-Fassung der ersten Runde bleibt besonders eng an diesen drei kanonischen Facetten: Sie nennt die notwendige von null verschiedene rationale Basis, bindet negative Exponenten exakt an den Kehrwert der positiven Potenz und deutet negative Zehnerpotenzen über die Stellenwertstruktur sehr kleiner positiver Größen. Ihr Transfer wechselt gezielt zwischen Potenz-, Bruch- und Dezimalschreibweise. Die zweite Fassung ist ebenfalls fachlich korrekt, führt aber zusätzlich die allgemeine Wiederholungsmultiplikation positiver Exponenten und einen Einheitenwechsel im Transfer ein; diese sind plausible Voraussetzungen beziehungsweise Fälle, für die Evidenz des gebundenen Atoms jedoch nicht erforderlich. Daher wird die engere erste Fassung gewählt.",
+      "rationaleEn": "Both independent KEEP reviews confirm computation, reciprocal interpretation, and contextual interpretation of negative powers of ten as one connected goal. The first round's evidence formulation stays especially close to these three canonical facets: it states the required nonzero rational base, binds negative exponents exactly to the reciprocal of the corresponding positive power, and interprets negative powers of ten through the place-value structure of very small positive quantities. Its transfer deliberately moves among power, fraction, and decimal notation. The second formulation is also mathematically correct, but it additionally introduces the general repeated-multiplication meaning of positive exponents and a unit change in transfer; these are plausible prerequisites or cases but are not needed as evidence for the bound atom. The tighter first formulation is therefore selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-003",
+      "goalId": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:400ddd6c4ef24696f88e73d21fc1d7c91c6fc91104b8cef9411a4f0b0990321b",
+      "pageFingerprint": "sha256:4f25a60104998e7464cee3744ba01359996640c647931c220238b3c224b4fc8f",
+      "goalReviewContextFingerprint": "sha256:e2ad849ca0a7c75fbee66c506eb38bc31326c5eee2469d8f7e78871e03b1ed6d",
+      "finalText": {
+        "titleDe": "Terme mit rationalen Zahlen strukturiert auswerten",
+        "titleEn": "Evaluate expressions with rational numbers in a structured way",
+        "descriptionDe": "Die lernende Person kann die durch Grundrechenarten und Klammern bestimmte Struktur von Termen mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, erkennen und fachsprachlich beschreiben, diese Terme strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.",
+        "descriptionEn": "The learner can recognise and describe in appropriate mathematical language the structure of expressions with non-integer rational numbers, especially fractions and decimals, as determined by basic operations and brackets, evaluate these expressions systematically, and record the calculation steps clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g03-0a6dab2e-codexgpt5-20260826",
+          "recordDigest": "sha256:9531a82506061b1f81b784e50efa7cf087d0933f578c333dfeeea2b55ac70721"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-003-0a6dab2e",
+          "recordDigest": "sha256:c3286d055da5f1d91b2c75032d533f466fce5d70b58e16a4e59ea15a7095a072"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen die aktuelle Verbindung von Strukturerkennung, fachsprachlicher Beschreibung, Auswertung und nachvollziehbarer Notation. Die Evidence-Fassung der zweiten Runde ist trennschärfer, weil sie Terme ausdrücklich in Hauptoperation und Teilterme gliedert und verlangt, dass Vorzeichen, Klammern und Darstellungswechsel in wertgleichen Zwischenschritten überprüfbar bleiben. Der Transfer mit anders verschachtelten Klammern diagnostiziert gezielt das mechanische Abarbeiten der sichtbaren Zeichenfolge. Die erste Fassung ist inhaltlich richtig, beschreibt den Term jedoch allgemeiner als gegliederte Operationsfolge und benennt diese typische Fehlstrategie nicht so klar. Die zweite Fassung bleibt vollständig innerhalb des aktuellen Termauswertungs-Scope.",
+      "rationaleEn": "Both independent KEEP reviews confirm the current connection among structural recognition, mathematical description, evaluation, and traceable notation. The second round's evidence formulation is more discriminating because it explicitly decomposes an expression into its main operation and subexpressions and requires signs, brackets, and representation changes to remain checkable across equivalent intermediate steps. Transfer to differently nested brackets directly diagnoses mechanical left-to-right processing of the visible symbol sequence. The first formulation is substantively correct but describes the expression more generally as a structured sequence of operations and does not identify this common failure mode as clearly. The second remains wholly within the current expression-evaluation scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-004",
+      "goalId": "05012547-7263-5bfa-9e7c-df970745a011",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:15c06b33ab0050998b9f17878821714f7cd4bec7440fbc9c16bfa8b811875986",
+      "pageFingerprint": "sha256:e9ec1c5aba5548045da73568487eb57dd8eef8b82d36399b63b5f487c709e622",
+      "goalReviewContextFingerprint": "sha256:20460a33ed08f4aeea59a91371cebfb15bcb727501afe54313a634a51e5a449e",
+      "finalText": {
+        "titleDe": "Rechengesetze bei rationalen Zahlen nutzen",
+        "titleEn": "Use arithmetic laws with rational numbers",
+        "descriptionDe": "Die lernende Person kann Rechengesetze bei rationalen Zahlen gezielt einsetzen, um Terme zu vereinfachen, Rechenvorteile zu nutzen und Umformungen zu begründen.",
+        "descriptionEn": "The learner can purposefully use arithmetic laws with rational numbers to simplify expressions, exploit calculation advantages, and justify transformations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g04-05012547-codexgpt5-20260826",
+          "recordDigest": "sha256:e38ec6a2770d404ae243c849a92d40b40f389107b306be5cff393b05e1dca33d"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-004-05012547",
+          "recordDigest": "sha256:5593c0de3cec5b664fd32e6787d9c25d2a02090f9968a52cc49ef9e8feab77ea"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen den gezielten und begründeten Einsatz von Kommutativ-, Assoziativ- und Distributivgesetz bei rationalen Zahlen. Die Evidence-Fassung der ersten Runde verbindet jede zulässige Umordnung, Gruppierung oder Verteilung unmittelbar mit Werterhalt und einem dadurch sichtbar werdenden Rechenvorteil; im Transfer muss das passende Gesetz bei veränderten Vorzeichen, Bruchdarstellungen oder Operationsanordnungen neu gewählt werden. Die zweite Fassung ist ebenfalls tragfähig und konkretisiert Ausmultiplizieren beziehungsweise Ausklammern, ergänzt aber eine Kontrolle durch Einsetzen oder einen zweiten Rechenweg, die nicht zum Kern des gebundenen Atoms gehört und bei rein numerischen Termen nicht immer passend ist. Die erste Fassung ist deshalb enger und methodisch sauberer.",
+      "rationaleEn": "Both independent KEEP reviews confirm the purposeful and justified use of the commutative, associative, and distributive laws with rational numbers. The first round's evidence formulation directly connects each permissible reordering, regrouping, or distribution with preservation of value and the resulting calculation advantage; in transfer, the learner must choose the appropriate law anew when signs, fraction representations, or operation arrangements change. The second formulation is also robust and usefully specifies expansion and factorisation, but it adds verification by substitution or a second method, which is not central to the bound atom and is not always appropriate for purely numerical expressions. The first formulation is therefore tighter and methodologically cleaner."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-005",
+      "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f2fa89cbb0583a1f34a411199ec0f46b9e01e66df126f8e4499c82194b02c4af",
+      "pageFingerprint": "sha256:463e9234fcde4ca5da11ddeaaf48045defac9cd8ad0d5a075d8abad45cdcc2ee",
+      "goalReviewContextFingerprint": "sha256:01c850c80fe0e4c90353110f23a6162320b0df16db0b09435361268c458c5ccf",
+      "finalText": {
+        "titleDe": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+        "titleEn": "Model fraction context problems with rational numbers",
+        "descriptionDe": "Die lernende Person kann Sachprobleme mit Anteilen oder Anteilen von Anteilen in Terme oder Rechenwege mit rationalen Zahlen übersetzen und Ergebnisse im Kontext deuten.",
+        "descriptionEn": "The learner can translate contextual problems involving fractions or fractions of fractions into expressions or calculation paths with rational numbers and interpret the results in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g05-b41cb496-codexgpt5-20260826",
+          "recordDigest": "sha256:9a89fe5c17b41f22cdfeda870c520da0a6fb25d4f2c7ebd39ebdb1f1fc9b59c1"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-005-b41cb496",
+          "recordDigest": "sha256:1c404b5a3efa2c3636276ee7c54fa972872465ac1d556400b1fcbdfde166d10b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen, dass Anteile und Anteile von Anteilen über denselben Modellierungszyklus aus Bezug, Term oder Rechenweg und Kontextdeutung verbunden sind. Die Evidence-Fassung der zweiten Runde macht den entscheidenden Bezugsgrößenwechsel besonders klar: Ganzes, Teil, Rest oder zweiter Bezugsanteil werden identifiziert, das rechnerische Ergebnis wird mit Einheit oder Bezugsgröße zurückübersetzt und auf Plausibilität geprüft. Im Transfer bezieht sich der zweite Anteil gezielt einmal auf einen Rest oder bereits bestimmten Teil statt auf das ursprüngliche Ganze; dadurch wird echtes Modellverständnis statt Schemaübernahme sichtbar. Die erste Fassung ist fachlich korrekt, formuliert die veränderte Reihenfolge verschachtelter Anteile jedoch weniger eindeutig. Die zweite bleibt genau im kanonischen Anteil-vom-Anteil-Scope.",
+      "rationaleEn": "Both independent KEEP reviews confirm that fractions and fractions of fractions are connected through the same modelling cycle of reference quantity, expression or calculation path, and contextual interpretation. The second round's evidence formulation makes the decisive change of reference especially clear: whole, part, remainder, or second reference fraction are identified, and the numerical result is translated back with its unit or reference quantity and checked for plausibility. In transfer, the second fraction deliberately refers to a remainder or an already determined part rather than to the original whole, revealing genuine modelling understanding instead of template use. The first formulation is mathematically correct but describes the changed order of nested fractions less unambiguously. The second remains exactly within the canonical fraction-of-a-fraction scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-006",
+      "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:254d72c79932b4599114743c43c194f0f7ef83b59aa5ab224c7db5e861ca7dd8",
+      "pageFingerprint": "sha256:6d48d6d2b0d8e150b8c049470d25a69811441d7a5dd6aa1b359f6c2e3f970873",
+      "goalReviewContextFingerprint": "sha256:c58f39e1b88bc4fac942a86b9e35600a6546263e98500b5718b4b8ada4416c90",
+      "finalText": {
+        "titleDe": "Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten",
+        "titleEn": "Derive area formulas of plane figures by decomposition and completion",
+        "descriptionDe": "Die lernende Person kann die Flächenformeln für Parallelogramm, Dreieck und Trapez ausgehend vom Rechteck mithilfe von Zerlegen und Ergänzen herleiten und begründen.",
+        "descriptionEn": "The learner can derive and justify the area formulas for parallelograms, triangles, and trapezoids from the rectangle using decomposition and completion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g06-491e0858-codexgpt5-20260826",
+          "recordDigest": "sha256:f4e8d509f8e4f9abbdc1ee8b8beebaa13123defbb75c803bce675af01d0a8872"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-006-491e0858",
+          "recordDigest": "sha256:f0f95c054b0ad5633a8ed899c6494bf99610a66ee240f4e0997f920d18f5d244"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen flächenerhaltendes Zerlegen und Ergänzen vom Rechteck aus als gemeinsame Herleitungsstruktur für Parallelogramm, Dreieck und Trapez. Die Evidence-Fassung der zweiten Runde sichert die vollständige Figurenliste ab, ordnet Grundseite beziehungsweise parallele Seiten und senkrechte Höhe zu und macht den Faktor ein Halb bei Dreieck und Trapez in der Herleitung ausdrücklich sichtbar. Der Transfer variiert Lage und Schnitt- oder Ergänzungslinie, ohne die Formelkenntnis auf weitere Figuren auszudehnen. Die erste Fassung erklärt denselben Flächenerhalt fachlich überzeugend, lässt die beobachtbare Leistung aber alternativ nur an einer der genannten Figuren genügen. Die zweite prüft daher das kanonisch beanspruchte Atom vollständiger und zugleich enger.",
+      "rationaleEn": "Both independent KEEP reviews confirm area-preserving decomposition and completion from the rectangle as the shared derivation structure for parallelograms, triangles, and trapezoids. The second round's evidence formulation secures coverage of the complete figure list, identifies the base or parallel sides and perpendicular height, and makes the factor one half explicit in the derivations for triangles and trapezoids. Transfer varies orientation and the cut or completion line without extending formula knowledge to additional figures. The first formulation explains the same area preservation convincingly, but its observable performance can be satisfied on only one of the named figures. The second therefore assesses the canonically claimed atom more completely and precisely."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-007",
+      "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:88237eac531a9161dee73727a4cb9e55ea105243a0b8c062e291ff8168df46cf",
+      "pageFingerprint": "sha256:5406d5c478feb2875e266019a281dac6ffd7e72869eae2778e10587f88be37ed",
+      "goalReviewContextFingerprint": "sha256:fddbce5d284085026089e5a66e707f28f3eb6d5dc23b2fb15b4ddc138af2b514",
+      "finalText": {
+        "titleDe": "Flächeninhalte ebener Figuren berechnen",
+        "titleEn": "Calculate areas of plane figures",
+        "descriptionDe": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+        "descriptionEn": "The learner can calculate the areas of parallelograms, triangles, trapezoids, and composite figures, use decomposition strategies, and interpret results using appropriate units."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g07-87c55be5-codexgpt5-20260826",
+          "recordDigest": "sha256:61617475dc21390d8d5cefbc1f9ef3089769fc5e27a84f0ccdd958d2b34db94d"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-007-87c55be5",
+          "recordDigest": "sha256:9041387b717a70f8114224e7fb8feecf6e2f5bba3952afb04f33c7e14e508bb8"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Formelauswahl, Zerlegung und Einheitendeutung als eine kohärente Flächenberechnungskompetenz. Die Evidence-Fassung der zweiten Runde präzisiert für Parallelogramm, Dreieck und Trapez die zusammengehörigen Grundseiten, parallelen Seiten und senkrechten Höhen und lässt zusammengesetzte Flächen sowohl additiv als auch durch Ergänzen und Subtrahieren bestimmen. Gedrehte Lage, Aussparung oder nicht eingezeichnete Höhe verändern im Transfer die geometrische Konfiguration, während Lücken, Doppelzählung und falsche Flächeneinheiten gezielt diagnostizierbar bleiben. Die erste Fassung ist ebenfalls korrekt und methodenneutral, fokussiert im Transfer aber stärker auf eine optionale zweite Zerlegung. Die zweite liefert innerhalb derselben Figuren- und Berechnungsscope die trennschärfere Evidenz.",
+      "rationaleEn": "Both independent KEEP reviews confirm formula selection, decomposition, and interpretation of units as one coherent area-calculation competence. The second round's evidence formulation specifies the matching bases, parallel sides, and perpendicular heights for parallelograms, triangles, and trapezoids and permits composite areas to be found either additively or by completion and subtraction. A rotated orientation, a cut-out, or an unmarked height changes the geometric configuration in transfer while making gaps, double counting, and incorrect area units directly diagnosable. The first formulation is also correct and method-neutral, but its transfer focuses more on an optional second decomposition. Within the same figure and calculation scope, the second provides the more discriminating evidence."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-008",
+      "goalId": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:067d7408c30f81ee69a8d3538f357ccdd2068233ca72f7e1e348a00f99ec2b0f",
+      "pageFingerprint": "sha256:e35dadc8c280d80229accc3606a46885a2a3c87ad470261089709add7a6fa302",
+      "goalReviewContextFingerprint": "sha256:e8e090d8007c8f1380dd4c19b661f9082aad2b9eb2389c1a7fa763d1e6962fa7",
+      "finalText": {
+        "titleDe": "Volumenformel des Quaders mit Einheitswürfeln plausibilisieren",
+        "titleEn": "Explain why the cuboid volume formula is plausible using unit cubes",
+        "descriptionDe": "Die lernende Person kann die Volumenformel des Quaders mithilfe von Einheitswürfeln oder Messvorstellungen plausibilisieren.",
+        "descriptionEn": "The learner can explain why the cuboid volume formula is plausible using unit cubes or measurement concepts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g08-b44f038c-codexgpt5-20260826",
+          "recordDigest": "sha256:8cdc4849726d40cce7022f2cff3e96bbece1a6ae59da3456be7d98594d032c3d"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-008-b44f038c",
+          "recordDigest": "sha256:2ab4b2196661a9638c941a0dc8b193242d5b3410c4177c58faf928a01dcee904"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen das Schichtmodell aus Einheitswürfeln als tragfähige Plausibilisierung der Quaderformel. Die Evidence-Fassung der zweiten Runde führt präzise von der Würfelzahl je Schicht über die Grundfläche und die Schichtzahl zum Produkt aus Länge, Breite und Höhe und macht den Übergang von Längen- über Flächen- zu Volumeneinheiten beobachtbar. Eine teilweise verdeckte Würfelstruktur verlangt im Transfer die Rekonstruktion genau dieses Modells. Die erste Fassung ist fachlich richtig, verlagert ihren Transfer mit einer anderen Größe der Einheitswürfel jedoch teilweise in die benachbarte Umrechnung von Volumeneinheiten. Die zweite bleibt deshalb enger bei der Plausibilisierung der Formel selbst.",
+      "rationaleEn": "Both independent KEEP reviews confirm the layer model of unit cubes as a sound explanation of why the cuboid volume formula is plausible. The second round's evidence formulation moves precisely from cubes per layer through base area and number of layers to the product of length, width, and height and makes the transition from length through area to volume units observable. A partly hidden cube structure requires reconstruction of exactly this model in transfer. The first formulation is mathematically correct, but changing the size of the unit cubes shifts part of its transfer toward the neighbouring competence of converting volume units. The second therefore stays closer to explaining the formula itself."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-009",
+      "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:22d4e16bf92a39cb15301cf3b0f4f35b34e2cc065b75e4aea3430af2f7f34d1f",
+      "pageFingerprint": "sha256:8418d72c8c593719c0c5ad5aed421fcc968e797f1b563fc87b62174d7e5bdd38",
+      "goalReviewContextFingerprint": "sha256:58dde0238288399263d344d6ca5cb74fb14c3fec2a0bb287f165d550f49da487",
+      "finalText": {
+        "titleDe": "Volumeneinheiten deuten und umrechnen",
+        "titleEn": "Interpret and convert volume units",
+        "descriptionDe": "Die lernende Person kann Volumeneinheiten, auch Liter und Milliliter, mithilfe von Einheitswürfeln oder Größenbezügen deuten, sicher umrechnen und ihr Vorgehen begründen.",
+        "descriptionEn": "The learner can interpret volume units, including litres and millilitres, using unit cubes or quantity references, convert them reliably, and justify the process."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g09-57fbbf31-codexgpt5-20260826",
+          "recordDigest": "sha256:d46f3253a1491a7428aa973f3edb0e8ead782ed2183b34885ef90b72d6f82cff"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-009-57fbbf31",
+          "recordDigest": "sha256:8ef430b9a5aedc3f9bbae91b655fe56291458f5acef6999666fcc7d8000c7cfc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Deuten, Umrechnen und Begründen einschließlich Liter und Milliliter als geschlossene Volumeneinheitenkompetenz. Die Evidence-Fassung der ersten Runde erklärt die Einheiten unmittelbar als Volumen passender Einheitswürfel, leitet die Kubierung eines linearen Umrechnungsfaktors aus den drei Raumrichtungen ab und bindet Kubikdezimeter an Liter sowie Kubikzentimeter an Milliliter. Der Transfer zwischen Rauminhalt und Fassungsvermögen prüft diese Struktur, ohne einen linearen Faktor schematisch zu übernehmen. Die zweite Fassung ist ebenfalls korrekt, fügt aber Dezimalzahlen und nicht benachbarte Einheiten als zusätzliche Aufgabenmerkmale hinzu; die erste Evidenzkette bleibt fachlich grundlegender und näher am gebundenen Deutungsatom.",
+      "rationaleEn": "Both independent KEEP reviews confirm interpretation, conversion, and justification, including litres and millilitres, as one coherent volume-unit competence. The first round's evidence formulation directly interprets units as the volumes of corresponding unit cubes, derives the cubing of a linear conversion factor from the three spatial dimensions, and connects cubic decimetres with litres and cubic centimetres with millilitres. Transfer between geometric volume and capacity tests this structure without mechanically applying a linear factor. The second formulation is also correct but adds decimal inputs and non-adjacent units as extra task features; the first evidence chain remains more foundational and closer to the bound interpretation atom."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-010",
+      "goalId": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:24fa9a64003b61079479863f1a4e9b5689b5dcb178af80965362ae23844e1573",
+      "pageFingerprint": "sha256:6aab6ecb0667571b72c4b5d86ac6f0194c4acabb1d708889cc8d7ed5bf619676",
+      "goalReviewContextFingerprint": "sha256:9864565d6b7bf553d1cb0d897bc2de670a769e3c6151690c79d56d099e89ff5a",
+      "finalText": {
+        "titleDe": "Grundaufgaben der Prozentrechnung lösen",
+        "titleEn": "Solve basic percentage problems",
+        "descriptionDe": "Die lernende Person kann Grundaufgaben der Prozentrechnung in einfachen Sachzusammenhängen lösen und dabei insbesondere Grundgleichung, Schlussrechnung sowie typische Anwendungen wie Rabatt und Zins nachvollziehbar einsetzen.",
+        "descriptionEn": "The learner can solve basic percentage problems in simple real-world contexts and apply the basic percentage equation, rule-of-three reasoning and common applications such as discounts and interest in a comprehensible way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g10-71d43fcc-codexgpt5-20260826",
+          "recordDigest": "sha256:1a289eb396d5d6a6c38f717aebc4a77514749a637c9cab2ffb9eaf4387b8b962"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-010-71d43fcc",
+          "recordDigest": "sha256:86fc47e75846073dd900632d86cecce58ea6d85d3dc77c8a5bfeda044f2785d5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Grundwert, Prozentwert und Prozentsatz als gemeinsame Größenbeziehung und lassen Grundgleichung, Schlussrechnung sowie gleichwertige Wege zu. Die Evidence-Fassung der ersten Runde fokussiert die drei Grundaufgaben besonders genau: Die gesuchte Größe wechselt im Transfer zwischen Prozentwert, Grundwert und Prozentsatz, der Rechenweg wird entsprechend angepasst und das Ergebnis im einfachen Rabatt- oder Zinskontext plausibilisiert. Die zweite Fassung ist fachlich ebenfalls stark und nennt die Grundgleichung explizit, nimmt im Transfer aber zusätzlich anders formulierte Prozentinformationen auf, die bereits zum benachbarten Ziel der Prozenttextanalyse gehören. Die erste bleibt daher enger bei der eigentlichen Grundaufgabenkompetenz.",
+      "rationaleEn": "Both independent KEEP reviews confirm base value, percentage value, and percentage rate as one shared quantitative relationship and allow the basic percentage equation, rule-of-three reasoning, and equivalent methods. The first round's evidence formulation focuses particularly closely on the three basic problem types: transfer changes the unknown among percentage value, base value, and percentage rate, the calculation path is adapted accordingly, and the result is checked for plausibility in a simple discount or interest context. The second formulation is also mathematically strong and states the basic equation explicitly, but its transfer additionally introduces differently worded percentage information, which belongs to the neighbouring percentage-text interpretation goal. The first therefore remains closer to the basic percentage-problem competence itself."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-011",
+      "goalId": "72b6bfa5-8e34-4029-8f85-0277207c485e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d17bb9c064b69fdbf229ad73aea306435b87db301ce3c81871a6b8e50b480526",
+      "pageFingerprint": "sha256:a09039ea72545b6828eba128f43430df071c35c0034898cda53acc453a1e592f",
+      "goalReviewContextFingerprint": "sha256:1c3037b3ca3ae644316fa905f4b5303073ed4ec7947aa9478311cf28e4883cbf",
+      "finalText": {
+        "titleDe": "Prozentangaben in Texten deuten und prüfen",
+        "titleEn": "Interpret and check percentage statements in texts",
+        "descriptionDe": "Die lernende Person kann Prozentangaben in einfachen Texten erschließen, mathematisch relevante Informationen herausarbeiten, zwischen Prozent und Prozentpunkten unterscheiden und gebräuchliche alternative Darstellungen wie \"jeder Siebte\" oder \"drei von fünf\" kritisch prüfen.",
+        "descriptionEn": "The learner can interpret percentage statements in simple texts, extract the mathematically relevant information, distinguish between percent and percentage points and critically check common alternative phrasings such as \"one in seven\" or \"three out of five\"."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g11-72b6bfa5-codexgpt5-20260826",
+          "recordDigest": "sha256:237b6fd9f63d342d3d62a0672324a7f4fdc0279c0e6f5c6ba4a13e06f4396741"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-011-72b6bfa5",
+          "recordDigest": "sha256:d4c5c03d3c37b260d896d25eb3a4ce9ba079e5dca0d8689520af8fc51d838feb"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen die kritische Texterschließung von Prozentangaben einschließlich Bezugsgröße, alternativer Anteilsformulierungen und der Unterscheidung von Prozent und Prozentpunkten. Die Evidence-Fassung der ersten Runde fasst Prozentpunkte exakt als absolute Differenz zweier Prozentsätze und grenzt sie von einer relativen prozentualen Veränderung ab; beobachtbar werden Ausgangsmenge, Teilmenge, Vergleichsgrößen und die mathematische Tragfähigkeit der Aussage. Der Transfer variiert Bezugsgruppe, Anteilsformulierung und Vorher-nachher-Vergleich, ohne zusätzliche Textmerkmale vorauszusetzen. Die zweite Fassung ist ebenfalls korrekt und der Fall eines fehlenden Nenners ist diagnostisch nützlich, ergänzt aber den Zeitraum als weiteres obligatorisches Extraktionsmerkmal. Die erste ist deshalb die engere vollständige Evidenzkette.",
+      "rationaleEn": "Both independent KEEP reviews confirm critical interpretation of percentage statements, including the reference quantity, alternative fraction language, and the distinction between percent and percentage points. The first round's evidence formulation defines percentage points exactly as the absolute difference between two percentage rates and distinguishes this from a relative percentage change; the initial quantity, subset, comparison quantities, and mathematical validity of the claim all become observable. Transfer varies the reference group, fraction wording, and before-and-after comparison without requiring extra textual features. The second formulation is also correct, and its missing-denominator case is diagnostically useful, but it adds the time period as another mandatory extraction feature. The first is therefore the tighter complete evidence chain."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-012",
+      "goalId": "91571d3f-3651-4477-ba21-320fc4077453",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3334492e4c208a75287683ef424e016c8e8e6341d6ec956d2ee7b779d5480746",
+      "pageFingerprint": "sha256:ebf5dda1f2d0ec08b52f06f855cf50a614ff2a709b704f286dbce7396c01858a",
+      "goalReviewContextFingerprint": "sha256:f9f1145234ec4a726d8e6d36ebb97456392e04e79a53a9e9cb3f5b12551e44bc",
+      "finalText": {
+        "titleDe": "Absolute und relative Häufigkeiten bestimmen und darstellen",
+        "titleEn": "Determine and represent absolute and relative frequencies",
+        "descriptionDe": "Die lernende Person kann zu statistischen Erhebungen absolute und relative Häufigkeiten bestimmen, flexibel zwischen Bruch, Dezimalbruch und Prozentsatz wechseln und die Daten tabellarisch oder grafisch in geeigneter Form darstellen.",
+        "descriptionEn": "The learner can determine absolute and relative frequencies for statistical data, switch flexibly between fractions, decimals and percentages, and represent the data in suitable tabular or graphical form."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g12-91571d3f-codexgpt5-20260826",
+          "recordDigest": "sha256:41b0f923fb546fa57c08ce10a0de23ba7785fbe16ec41b65cf514ee4a61be99e"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-012-91571d3f",
+          "recordDigest": "sha256:d62a247899828af30b7d5230f6d798effc863b0c34b174bdb1d377297cb70b45"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen die Verbindung von absoluten und relativen Häufigkeiten, wertgleichen Anteilsdarstellungen sowie geeigneten Tabellen und Grafiken. Die Evidence-Fassung der zweiten Runde bindet Anzahl und Anteil an die Gesamtzahl, verlangt unverfälschte Repräsentation und kontrolliert die Ergebnisse über Gesamtzahl und Summe der relativen Häufigkeiten. Im Transfer werden fehlende Häufigkeiten aus einer ausschließlich grafisch oder tabellarisch gegebenen Darstellung rekonstruiert und die klarste Darstellungsform begründet gewählt. Die erste Fassung ist ebenfalls vollständig und prüft Skalierung und Beschriftung, verändert im Transfer aber vor allem Datensatz und Kategorien. Die zweite macht den geforderten flexiblen Darstellungswechsel trennschärfer sichtbar, ohne den Scope auszuweiten.",
+      "rationaleEn": "Both independent KEEP reviews confirm the connection among absolute and relative frequencies, equivalent fraction representations, and suitable tables and graphs. The second round's evidence formulation ties count and proportion to the total, requires an undistorted representation, and checks results against both the total count and the sum of relative frequencies. In transfer, missing frequencies are reconstructed from a representation given only as a graph or table, and the clearest representation is selected with justification. The first formulation is also complete and assesses scaling and labelling, but its transfer mainly changes the data set and categories. The second makes the required flexible representation change more discriminatingly observable without widening the scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-013",
+      "goalId": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:34bbf11383db959579fe53bc2ef564f01ea86e9dd1a7bfe4b34e8087bbc08c26",
+      "pageFingerprint": "sha256:8bdc53b94d95188b3721728f0f7b0801bb94afa368a2e49d4e765e92b36bb78b",
+      "goalReviewContextFingerprint": "sha256:d281860c750626f54fd3675dcfd0aee842de7544755e8507cd1d7ba579846bb6",
+      "finalText": {
+        "titleDe": "Diagramme kritisch interpretieren",
+        "titleEn": "Interpret diagrams critically",
+        "descriptionDe": "Die lernende Person kann zu Diagrammen sinnvolle Fragen formulieren, begründete Aussagen treffen, manipulative Darstellungen erkennen und die Aussagekraft verschiedener Visualisierungen altersangemessen diskutieren.",
+        "descriptionEn": "The learner can formulate sensible questions about diagrams, make justified statements, detect manipulative representations and discuss the explanatory power of different visualisations in an age-appropriate way."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g13-acbb7e26-codexgpt5-20260826",
+          "recordDigest": "sha256:c6cfbd3e50249c9066a934f5f79d2f0a0e28446fb96af25f02f0f7ab774d7c69"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-013-acbb7e26",
+          "recordDigest": "sha256:905e111a36854deeb86ce325fe6f6a7e680df7ce94a303e3886292773c701eb3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Fragen, datengestützte Aussagen, Manipulationserkennung und die Diskussion der Aussagekraft als zusammenhängende kritische Diagrammkompetenz. Die Evidence-Fassung der ersten Runde bindet zulässige Schlüsse eng an Datengrundlage, Beschriftung, Skala, Achsenbeginn und Darstellungsform und lässt dieselben oder andere Daten unter veränderter Skalierung, Diagrammart oder Wertauswahl vergleichen. So wird die Wirkung der Visualisierung beurteilt, ohne eine neue Darstellung produzieren zu müssen. Die zweite Fassung ist fachlich sehr tragfähig und trennt Datenbefund von Bewertung besonders klar, verlangt im Transfer aber zusätzlich den Entwurf einer sachgerechteren Darstellung. Weil das kanonische Atom Interpretieren und Diskutieren, nicht Neugestalten fordert, wird die engere erste Fassung gewählt.",
+      "rationaleEn": "Both independent KEEP reviews confirm questions, data-supported statements, detection of manipulation, and discussion of explanatory power as one critical diagram-reading competence. The first round's evidence formulation tightly links permissible conclusions to the data basis, labels, scale, axis origin, and representation type and compares the same or different data under changed scaling, diagram type, or value selection. It therefore assesses the effect of a visualisation without requiring production of a new one. The second formulation is mathematically robust and separates data findings from evaluation especially clearly, but its transfer additionally requires proposing a more appropriate display. Because the canonical atom asks learners to interpret and discuss rather than redesign diagrams, the tighter first formulation is selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-014",
+      "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:87741913df06976dddd2ebf399cf0ea8cefa14b3c3d1d68a2d98309c213abf99",
+      "pageFingerprint": "sha256:6b7e7f1ed4e2a61cd61552f032e0423f9902e41062a4d325333ca7076e04d34d",
+      "goalReviewContextFingerprint": "sha256:7b0faeca10742c876d5dfceccc32ab6c762168032b2c9d9ca09211045fef3e06",
+      "finalText": {
+        "titleDe": "Arithmetisches Mittel bestimmen und deuten",
+        "titleEn": "Determine and interpret the arithmetic mean",
+        "descriptionDe": "Die lernende Person kann das arithmetische Mittel aus Daten bestimmen, auch mit einem Tabellenkalkulationsprogramm berechnen, und seine Bedeutung bei der Interpretation von Daten im Kontext erläutern.",
+        "descriptionEn": "The learner can determine the arithmetic mean from data, calculate it with a spreadsheet when appropriate and explain its role in interpreting data in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g14-15505229-codexgpt5-20260826",
+          "recordDigest": "sha256:8830297ab13a3f1d6d373e1cbbd2470d4796629bfa5e68af0870c7c637465c40"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-014-15505229",
+          "recordDigest": "sha256:0fb6e4710534d1d11aa9fad8150921859d378a53c8d43aa62721035a5d56902c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Berechnung, optionalen Tabellenkalkulationseinsatz und Kontextdeutung als eine kohärente Mittelwertkompetenz. Die Evidence-Fassung der zweiten Runde verbindet Summe-geteilt-durch-Anzahl mit der Ausgleichsvorstellung, erhält die Einheit und grenzt den Mittelwert ausdrücklich von einem notwendig tatsächlich beobachteten Einzelwert ab. Im Transfer verändern Wiederholungen oder ein geänderter Datenwert Summe beziehungsweise Anzahl, sodass die Wirkung auf den Mittelwert begründet werden muss. Die erste Fassung ist fachlich korrekt und der Vergleich verschiedener Verteilungen bei gleicher Summe und Anzahl ist sinnvoll; die zweite diagnostiziert die kontextuelle Bedeutung und die Abhängigkeit von den Daten jedoch unmittelbarer, ohne weitere Lage- oder Streuungsmaße einzuführen.",
+      "rationaleEn": "Both independent KEEP reviews confirm calculation, optional spreadsheet use, and contextual interpretation as one coherent mean competence. The second round's evidence formulation connects sum divided by count with the equal-sharing interpretation, preserves the unit, and explicitly distinguishes the mean from a value that must actually occur in the data. In transfer, repetitions or a changed data value alter the sum or count, so their effect on the mean must be explained. The first formulation is mathematically correct, and comparing different distributions with equal sum and count is useful; the second diagnoses contextual meaning and dependence on the data more directly without introducing any additional measure of centre or spread."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-015",
+      "goalId": "8a691345-3216-522c-a898-d65e8e94db28",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7d2c803035aa204eb2b68bc8553a61a3f8b55914bb1f904de8a10ff273ffcc3d",
+      "pageFingerprint": "sha256:e0fa4e874eb588b19ab1ee5bd877bbe714374a1c59a7f51b81d509bf17ac6624",
+      "goalReviewContextFingerprint": "sha256:1d92df478ee1f499ded164ea7bb52afe8a3d3877912c7c446e88c306292e6ccf",
+      "finalText": {
+        "titleDe": "Zahl Pi als Verhältnis am Kreis erklären",
+        "titleEn": "Explain pi as a circle ratio",
+        "descriptionDe": "Die lernende Person kann die Zahl Pi als Verhältnis von Umfang und Durchmesser eines Kreises erklären und dieses Verhältnis an Kreisbeispielen deuten.",
+        "descriptionEn": "The learner can explain pi as the ratio of a circle circumference to its diameter and interpret this ratio using circle examples."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g15-8a691345-codexgpt5-20260826",
+          "recordDigest": "sha256:84bc1f2e52d527d7a8de3781c35f123863b93b77ffc428d29e1221de2a828659"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-015-8a691345",
+          "recordDigest": "sha256:30c00b140acbdace5fab48be19a435750bb9965cdbe65da4190fee3dbb6c331d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Pi als konstantes Verhältnis von Umfang und Durchmesser verschieden großer Kreise. Die Evidence-Fassung der ersten Runde bleibt genau bei dieser Verhältnisdeutung: Sie lässt Umfang und Durchmesser an mehreren Beispielen bestimmen und vergleichen, berücksichtigt Messungenauigkeit und überträgt die Invarianz auf eine andere Kreisgröße oder Messdarstellung. Die zweite Fassung ist mathematisch richtig und formuliert auch U gleich Pi mal d, fordert im Transfer jedoch zusätzlich, aus gegebenem Radius eine fehlende Größe zu berechnen. Das führt bereits in die Anwendung der Kreisumfangsformel, während das gebundene Atom Erklärung und Deutung des Verhältnisses verlangt. Deshalb wird die enger abgegrenzte erste Fassung gewählt.",
+      "rationaleEn": "Both independent KEEP reviews confirm pi as the constant ratio of circumference to diameter across circles of different sizes. The first round's evidence formulation stays exactly with this ratio interpretation: circumference and diameter are determined and compared across several examples, measurement uncertainty is considered, and invariance is transferred to a different circle size or measurement representation. The second formulation is mathematically correct and also states U equals pi times d, but its transfer additionally requires calculating a missing quantity from a given radius. That moves into application of the circumference formula, whereas the bound atom asks for explanation and interpretation of the ratio. The more tightly bounded first formulation is therefore selected."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-016",
+      "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b707b40798133eac6a7f1e04c1f10bc9f65eb6f25d1beeaa5faecfe184a1da95",
+      "pageFingerprint": "sha256:9106d5ce8a04751d278de9dddee694340e4550be5f01896ae9885764cf8c8557",
+      "goalReviewContextFingerprint": "sha256:ec431513bd4f0f9a1d5fafabb8272506bf7f4c9eee35fecd5b4c7e2df6002748",
+      "finalText": {
+        "titleDe": "Elementare Körper erkennen und benennen",
+        "titleEn": "Identify and name elementary solids",
+        "descriptionDe": "Die lernende Person kann Quader, Würfel, Prisma, Zylinder, Pyramide, Kegel und Kugel in Darstellungen oder Modellen erkennen und fachsprachlich benennen.",
+        "descriptionEn": "The learner can identify cuboids, cubes, prisms, cylinders, pyramids, cones, and spheres in representations or models and name them using appropriate terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g16-c823b5a2-codexgpt5-20260826",
+          "recordDigest": "sha256:5f9a864d34debe5dd1a2d49b4b2d519c5bc791682ac21e926c6fa86c0f2a56d4"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-016-c823b5a2",
+          "recordDigest": "sha256:0b233845e9c768dfd0b8fcbbc10e61879e6cf6fc3eb69c494a129c612476d949"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen das Erkennen und fachsprachliche Benennen der vollständig aufgezählten elementaren Körper als eine Klassifikationskompetenz. Die Evidence-Fassung der ersten Runde stützt die Zuordnung auf charakteristische Flächen, parallele Flächen, Spitzen oder gekrümmte Begrenzungen und prüft die Invarianz gegenüber Blickrichtung, Größe und Alltagsgestaltung. Für die beobachtbare Leistung genügt neben dem korrekten Fachnamen ein entscheidendes sichtbares Merkmal. Die zweite Fassung ist fachlich ebenfalls gut und differenziert ähnliche Körper genauer, erhebt aber die ausführliche Begründung mehrerer Verwechslungsmöglichkeiten zur Leistung. Da das kanonische Atom primär Erkennen und Benennen beansprucht, bleibt die erste Fassung näher an dessen engerem Anspruch.",
+      "rationaleEn": "Both independent KEEP reviews confirm identifying and naming the complete stated set of elementary solids as one classification competence. The first round's evidence formulation bases classification on characteristic faces, parallel faces, vertices, or curved boundaries and tests invariance under viewpoint, size, and everyday appearance. For observable performance, the correct technical name is supported by one decisive visible feature. The second formulation is also mathematically strong and distinguishes similar solids in more detail, but it makes an extended justification of several possible confusions part of the performance. Because the canonical atom primarily claims identification and naming, the first formulation remains closer to its narrower demand."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-003a-j6-nonstructural-17-current-v2-20260826-synthesis-decision-017",
+      "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9ecfd94df4f5b2c8e8e8f00c417a54b47b158b451725bb81a6b73b67776895dd",
+      "pageFingerprint": "sha256:25d6cb40c59efa3c277d39e87148b8f5051e14c89ef61cbd9f2e49ca6610a803",
+      "goalReviewContextFingerprint": "sha256:12fad58005b0c5358c17bcb466eb0c0f8f62cbf8af2951b32081e5c17c6fd3c0",
+      "finalText": {
+        "titleDe": "Darstellungsformen gerader Körper verknüpfen",
+        "titleEn": "Connect representation forms of right solids",
+        "descriptionDe": "Die lernende Person kann Zusammenhänge zwischen Netz, Schrägbild und Modell bei geraden Körpern herstellen und fachsprachlich erläutern.",
+        "descriptionEn": "The learner can connect nets, oblique drawings, and models of right solids and explain the relationships using appropriate terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-b003a-ra-g17-11c88ea2-codexgpt5-20260826",
+          "recordDigest": "sha256:6998fb7e2226faab775c051aebc7e5816889d0bceb176d27cd647c362b2f504b"
+        },
+        "second": {
+          "recordId": "gdr-b003a-rb-017-11c88ea2",
+          "recordDigest": "sha256:b892687ee35bab6b3ee399be727040734b51608447dc4c0411817ee6f752843d"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen KEEP-Reviews bestätigen Netz, Schrägbild und Modell als notwendige Darstellungen derselben Kompetenz bei geraden Körpern. Die Evidence-Fassung der zweiten Runde beschreibt die erhaltenen Flächen-, Kanten-, Ecken- und Nachbarschaftsbeziehungen besonders präzise und grenzt sie von Verkürzungen oder Verzerrungen im Schrägbild sowie dem Aufklappen im Netz ab. Das Zuordnen zusammenfallender Netzkanten und verdeckter Elemente macht die fachsprachliche Verknüpfung unabhängig beobachtbar; der Transfer verändert nur Netzanordnung oder Blickrichtung. Die erste Fassung ist ebenfalls korrekt und prüft Flächen- und Kantenzuordnungen, bleibt bei Darstellungsverzerrung und Faltbeziehungen aber weniger trennscharf. Die zweite vertieft damit genau das kanonische Repräsentationsatom, ohne weitere Körperkonstruktionen zu fordern.",
+      "rationaleEn": "Both independent KEEP reviews confirm nets, oblique drawings, and models as necessary representations within the same competence for right solids. The second round's evidence formulation describes the preserved relationships among faces, edges, vertices, and adjacency especially precisely and distinguishes them from shortening or distortion in an oblique drawing and unfolding in a net. Matching net edges that meet when folded and explaining hidden elements make the representational connection independently observable; transfer changes only the net arrangement or viewpoint. The first formulation is also correct and assesses face and edge correspondences, but it is less discriminating about representation distortion and folding relationships. The second thus deepens exactly the canonical representation atom without requiring additional solid construction."
+    }
+  ],
+  "manifestFingerprint": "sha256:11b052e9d06196f04abf7ea8a92f67e34aa56f58c52056ba8f6b9353e2d10ef4"
+}

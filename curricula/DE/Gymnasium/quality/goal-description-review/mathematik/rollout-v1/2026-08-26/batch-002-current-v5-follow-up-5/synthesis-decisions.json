@@ -1,0 +1,188 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T07:23:50.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826",
+    "batchManifestDigest": "sha256:967d9ed7733b3756200a8b814db2b0d704b6554295540fe5de9134158bce8ae6",
+    "configDigest": "sha256:f17c68e6c01594be3786ebfd9125dcd7d4eb01061ae255051fb34ae5c9c6de02",
+    "bundleFingerprint": "sha256:e69ba0cef443c3ca2a41b24a0d6751a67cb14b75d7c41e5a20215dfb00bd88da",
+    "bookDigest": "sha256:e66bd7a577fe433ee57d303eebebf90d43b30c625c0c40ba588dc8fc16c9fd35",
+    "reviewInputFingerprint": "sha256:bb91e113790ae69bba51d363e1b9ce1be18316b47eba814d765ea05b33cf81f0",
+    "dualSummaryDigest": "sha256:644bbd82ee8f44d72ff4cd88aaa415a76f1e6e0c243a04a4eb056d52fdff8812",
+    "canonicalLandscapeDigest": "sha256:67fcfec83299dd8e90593f266397c676c742fbd8d81018ab21c211d521369b02"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-a",
+      "campaignDigest": "sha256:411b2fbf4d7c1bdc9d956c46fcf9246b4951f9a69c074ea7641e7970f0b43e50",
+      "roundId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:bb91e113790ae69bba51d363e1b9ce1be18316b47eba814d765ea05b33cf81f0",
+      "batchId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:cf34fe99e4864b5ec689fb06d0a4c253eae057e2d3722b91c0ef0449bfce0fce",
+      "runId": "codex-math-current-v5-followup5-round-a-20260826",
+      "runManifestDigest": "sha256:1a152ad28063997fd6b0b6d6cf1cbfe0c5475732d2c01acf9ecc13723ebed6be",
+      "resultsDigest": "sha256:f51fa2e1c62bb0b5ec826b36ca638be295a7ef0776b1835a3654c5fd5097a02c"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-b",
+      "campaignDigest": "sha256:8d0c69af93fd7c661db6c036fe4a18c1d59d56b9aecf423750acd43cc658fdc9",
+      "roundId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:bb91e113790ae69bba51d363e1b9ce1be18316b47eba814d765ea05b33cf81f0",
+      "batchId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a113668eedbcce8e75387a2045feef22ef496830d816f72adcf9c805057e9133",
+      "runId": "math-current-v5-follow-up-5-round-b-gpt5-20260826",
+      "runManifestDigest": "sha256:cbc9bcf2c3c3d49a81c18c4c53206e4989771e7c5e550326ff1b5f15c607f878",
+      "resultsDigest": "sha256:342e83b1b0b7a3c378d7d51410aac8f448800eac2542b74242087219ce268ec6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis-decision-001",
+      "goalId": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a1b167c6e56f126457b78a65ddb7adfbae71aac16d15d4b296e18f6f66467f8",
+      "pageFingerprint": "sha256:64453db3af8d440f27aea8cce7d0e7e4fab84530ba809e52e9e24ed658b97ec1",
+      "goalReviewContextFingerprint": "sha256:a9070648b377502db5d9b847ae3c8c66cb57bde72292e24334a76b1128149648",
+      "finalText": {
+        "titleDe": "Bruchdarstellungen verwenden und wechseln",
+        "titleEn": "Use and switch between fraction representations",
+        "descriptionDe": "Die lernende Person kann denselben Bruchwert bildlich, verbal, geometrisch und algebraisch darstellen, Informationen zwischen diesen Darstellungen übertragen und begründen, warum der Wert beim Wechsel erhalten bleibt.",
+        "descriptionEn": "The learner can represent the same fractional value visually, verbally, geometrically, and algebraically, transfer information between these representations, and justify why the value is preserved when switching."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v5-followup5-round-a-20260826.r01",
+          "recordDigest": "sha256:840bf4e92c0e70c88b424171e3b848e3bc35ea1a8e959af73b7004975d737ee0"
+        },
+        "second": {
+          "recordId": "math-v5-follow-round-b-001",
+          "recordDigest": "sha256:98e8e197893cde778b8f7d04222d0a2467f5dbf10dc481237bd734690878f6e3"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP. Die erste Evidence-Fassung ist stärker und bleibt enger an den vier ausdrücklich beanspruchten Darstellungen: Sie verlangt das eigenständige Erzeugen bildlicher, verbaler, geometrischer und algebraischer Darstellungen, ordnet Zähler, Nenner, Ganzes und Lagebezug einander zu und macht den wertgleichen Wechsel zwischen Figurenanteil und Zahlengeradenlage als frische Transferleistung sichtbar, ohne eine zusätzliche Rechenkompetenz einzuführen.",
+      "rationaleEn": "Both rounds confirm KEEP. The first evidence formulation is stronger and stays closer to the four explicitly claimed representations: it requires independent construction of visual, verbal, geometric, and algebraic representations, relates numerator, denominator, whole, and position, and makes the value-preserving change between a part of a figure and a number-line position visible as fresh transfer without introducing an additional calculation competence."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis-decision-002",
+      "goalId": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:abf2e68b068bc4c0fc7b8f20e305623ee821a46a7d6b0da2fb681c12963ee8a1",
+      "pageFingerprint": "sha256:25579ec73dae7be377418d7cebc2a72cb2af5af1790de71219fa6d4adbff1523",
+      "goalReviewContextFingerprint": "sha256:24a17d4b3db4a33019b64f7c45b6b2695b2a8356cab825f299625453dad88cb8",
+      "finalText": {
+        "titleDe": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+        "titleEn": "Represent decimal numbers on the number line, in place value form, and as fractions",
+        "descriptionDe": "Die lernende Person kann Dezimalzahlen auf einer passend skalierten Zahlengeraden, im Stellenwertsystem und als wertgleichen Bruch darstellen, die entsprechenden Stellen und Anteile zuordnen und begründet zwischen den Darstellungen wechseln.",
+        "descriptionEn": "The learner can represent decimal numbers on a suitably scaled number line, in the place-value system, and as equivalent fractions, relate the corresponding places and parts, and justify changes between the representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v5-followup5-round-a-20260826.r02",
+          "recordDigest": "sha256:f6e05e8981906f22273208790c4d9797922f2dd661a5dc9e0aa30152ab43b3c5"
+        },
+        "second": {
+          "recordId": "math-v5-follow-round-b-002",
+          "recordDigest": "sha256:c8e1d809428fd785f1ded9d3c2fae30703ac5543ee9aea19d14a9420d1355a73"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP. Die erste Evidence-Fassung bindet Stellenwertanteile, Brüche mit Zehnerpotenz-Nennern und denselben Punkt auf der Zahlengeraden besonders präzise zusammen; ihre beobachtbare Leistung umfasst Stellenwertzerlegung, geeignete Skalierung, Eintragen und Begründung. Nullen in der Dezimalschreibweise und eine feinere Skala liefern eine frische Variation innerhalb genau dieser drei Darstellungen und erweitern das Ziel nicht um Rechenoperationen.",
+      "rationaleEn": "Both rounds confirm KEEP. The first evidence formulation connects place-value parts, fractions with power-of-ten denominators, and the same point on the number line especially precisely; its observable performance covers place-value decomposition, selection of a suitable scale, plotting, and justification. Zeros in decimal notation and a finer scale provide fresh variation within exactly these three representations and do not expand the goal to calculation operations."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis-decision-003",
+      "goalId": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:988da6f9e756fc279e21f24ff7915771618cf80e60b293dc9b19a2cd5de9e6c2",
+      "pageFingerprint": "sha256:771d117363375b0a6d107acd159fe431f5fbb6cf046bb6f7a913a4e0cf795405",
+      "goalReviewContextFingerprint": "sha256:96d3d1ac27451d73dfebdb57502987cd6c84f3a155f0bb6e8b44c98637c143c4",
+      "finalText": {
+        "titleDe": "Positive und negative Zahlen an der Zahlengeraden veranschaulichen",
+        "titleEn": "Illustrate positive and negative numbers on the number line",
+        "descriptionDe": "Die lernende Person kann positive und negative Zahlen auf einer passend skalierten Zahlengeraden verorten, ihre Lage relativ zu 0 deuten und Zahlen anhand der Links-rechts-Ordnung begründet vergleichen.",
+        "descriptionEn": "The learner can locate positive and negative numbers on a suitably scaled number line, interpret their positions relative to 0, and justify comparisons using left-to-right order."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v5-followup5-round-a-20260826.r03",
+          "recordDigest": "sha256:8f8cbba09f82f458ddf0ccfd48bd72ab2486dac0daa418c3b8dd841b9f1258c5"
+        },
+        "second": {
+          "recordId": "math-v5-follow-round-b-003",
+          "recordDigest": "sha256:c99de4ef6da02343971e217ed30010ee610ac77b9813d5c0314f4b9f595dd9c1"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP. Die erste Evidence-Fassung erfasst den vollständigen kanonischen Zusammenhang aus passender Skalierung, 0 als Bezugspunkt und Links-rechts-Ordnung und fordert bei fehlenden Zwischenbeschriftungen die eigenständige Rekonstruktion der Skala. Der ausdrücklich begründete Vergleich zweier negativer Zahlen ist eine starke neue Anwendung derselben Zahlengeradenbedeutung; Betrag oder weitere Rechenregeln werden nicht vorweggenommen.",
+      "rationaleEn": "Both rounds confirm KEEP. The first evidence formulation captures the full canonical relationship among suitable scaling, zero as reference point, and left-to-right order, and requires independent reconstruction of the scale when intermediate labels are missing. The explicitly justified comparison of two negative numbers is a strong new application of the same number-line meaning; it does not anticipate absolute value or further calculation rules."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis-decision-004",
+      "goalId": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:46dd2d909a4798eb7d97b28a4d546cce9df9b004abb775155cec5abec58c515d",
+      "pageFingerprint": "sha256:13b2addac8d883d4ea7c87fb80e53150472c185aac668e536c7ef9a9cb5913c0",
+      "goalReviewContextFingerprint": "sha256:b7c11fc708deab7e723d4cc4f15b76bf8c93f8a62898ab8cda0924bbc9d10c15",
+      "finalText": {
+        "titleDe": "Betrag einer Zahl angeben",
+        "titleEn": "State the absolute value of a number",
+        "descriptionDe": "Die lernende Person kann den Betrag einer Zahl bestimmen und ihn als Abstand der Zahl von 0 auf der Zahlengeraden deuten.",
+        "descriptionEn": "The learner can determine the absolute value of a number and interpret it as the distance of the number from 0 on the number line."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v5-followup5-round-a-20260826.r04",
+          "recordDigest": "sha256:7c50d034a23ab4852df8f2c7415af16ff179afe899b1193db489845d78eb8c40"
+        },
+        "second": {
+          "recordId": "math-v5-follow-round-b-004",
+          "recordDigest": "sha256:6d46ca1592e5e4b8df65ffc8c12a0a6caa6dfb1bfea8995c4d0e1fdc8bf2094b"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP. Die zweite Evidence-Fassung hält Betrag, nichtnegativen Abstand von 0 und gleiche Beträge entgegengesetzter Zahlen durchgehend bilingual konsistent zusammen und prüft dies durch Bestimmen, Darstellen und Erklären. Ihr Transfer über mögliche Zahlen zu einer neuen Entfernung beziehungsweise die Beurteilung einer Betragsaussage bleibt innerhalb der Zahlengeraden-Deutung; zugleich vermeidet sie den Widerspruch der ersten deutschen Fassung, die zunächst einen positiven Abstand voraussetzt und anschließend den Abstand 0 einschließt.",
+      "rationaleEn": "Both rounds confirm KEEP. The second evidence formulation keeps absolute value, non-negative distance from zero, and equal absolute values of opposite numbers consistently aligned in both languages and tests this through determining, representing, and explaining. Its transfer through possible numbers for a new distance or judgment of an absolute-value statement remains within the number-line interpretation; it also avoids the contradiction in the first German formulation, which initially assumes a positive distance and then includes distance zero."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v5-follow-up-5-20260826-synthesis-decision-005",
+      "goalId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f98fe0085f13b1db9a64df093a3f2b71c4de562eeb6eba2ba5d69c13d17284f5",
+      "pageFingerprint": "sha256:052606308e96cebf0724bb1c62b59bc06c3dc9fd6ef4b7bd3b38b98b02eeab34",
+      "goalReviewContextFingerprint": "sha256:9f747ff18d6f68a0573d26760e8bad8b458aaff9822a134ddc6f1c8f0b0aaf48",
+      "finalText": {
+        "titleDe": "Rationale Zahlen addieren und subtrahieren",
+        "titleEn": "Add and subtract rational numbers",
+        "descriptionDe": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, wertgleich in eine für Addition oder Subtraktion geeignete Darstellung überführen, Additionen und Subtraktionen sicher ausführen, dabei Rechenvorteile nutzen und Ergebnisse durch Überschlag plausibilisieren.",
+        "descriptionEn": "The learner can transform non-integer rational numbers, especially fractions and decimals, into an equivalent representation suitable for addition or subtraction, carry out additions and subtractions reliably, use advantageous calculation structures, and check results for plausibility by estimation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v5-followup5-round-a-20260826.r05",
+          "recordDigest": "sha256:c561d53df5d29aa8c4c94884d138e79161a4a33440f36355a9fc02fd6ac15eec"
+        },
+        "second": {
+          "recordId": "math-v5-follow-round-b-005",
+          "recordDigest": "sha256:6dc4f8b0131d1d9ae5bb1b4c86bf414ef5d9187fb706f20bb0f15c2d156cceba"
+        }
+      },
+      "rationaleDe": "Beide Runden bestätigen KEEP. Die zweite Evidence-Fassung bindet die Darstellungswahl konkret an gleichartige Einheiten, gemeinsame Nenner und passende Dezimalformen und beobachtet genau die beanspruchte Kette aus wertgleichem Umformen, Addieren oder Subtrahieren, Rechenvereinfachung und Überschlag. Gemischte Bruch- und Dezimaldarstellung sowie anders günstig angeordnete Summanden variieren diesen Scope frisch, ohne ihn wie die umgekehrte Fragestellung der ersten Fassung über die aktuelle Beschreibung hinaus auszudehnen.",
+      "rationaleEn": "Both rounds confirm KEEP. The second evidence formulation ties representation choice concretely to like units, common denominators, and suitable decimal forms and observes exactly the claimed sequence of equivalent transformation, addition or subtraction, calculation simplification, and estimation. Mixed fraction and decimal forms and differently arranged terms vary this scope freshly without extending it beyond the current description as the first formulation's reversed question would."
+    }
+  ],
+  "manifestFingerprint": "sha256:4e7d0a90805f42dbd20efa73771fec6ccdd191d897bed2caffb7eb5a41c1e71b"
+}

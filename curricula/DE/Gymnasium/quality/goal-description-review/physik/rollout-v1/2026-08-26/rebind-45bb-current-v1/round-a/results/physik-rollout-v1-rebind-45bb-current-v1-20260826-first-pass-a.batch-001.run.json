@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a.codex-blind-a49",
+  "campaignId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-a",
+  "roundId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a",
+  "batchId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:539dc71bb20dd7437c5314a0b2a88ca389ec62dc77c33f7ff76cc77dd297b697",
+  "bundleFingerprint": "sha256:7787a80cfefe0dfd8b228f1fcbc766fcbb4237e9513baa9339e18d8ce112eb9e",
+  "bookDigest": "sha256:0870d9e5d03e886c7f0b8d4107c08755b8e231a92ca69f27a5e3bf8c1d814fd4",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:c2c92a14e2711ace042fbe23fd87392f3b0cd05b04d3e8560981861e37d5125c",
+  "independenceGroupId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:539dc71bb20dd7437c5314a0b2a88ca389ec62dc77c33f7ff76cc77dd297b697"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T03:15:14.268Z",
+  "completedAt": "2026-08-26T03:15:14.268Z",
+  "status": "completed",
+  "outputDigest": "sha256:539abc21a02fcaf926a55a62ab9dde0a177024d7e67756fb4c97295fe9c4f3cf",
+  "toolchainVersion": "goal-description-review-v1"
+}

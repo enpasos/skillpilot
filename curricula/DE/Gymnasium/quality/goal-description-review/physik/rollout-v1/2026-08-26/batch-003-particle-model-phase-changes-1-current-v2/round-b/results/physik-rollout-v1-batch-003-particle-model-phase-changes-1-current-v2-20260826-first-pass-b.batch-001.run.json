@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-b003-phase-changes-round-b-20260826",
+  "campaignId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-b",
+  "roundId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:2b50be40630f4a5ff33eb6e4f0d5cc9fcd7c96fc784458a135b9e5ee261a467e",
+  "bundleFingerprint": "sha256:da8b2a24a886ff79ac5c54022c47790d5e328bfcdf30a7cfe71faac093eae3ba",
+  "bookDigest": "sha256:0b9ac321a466c888cd9ac624f824f11ded6e0632c8a9eec823941c0ca0094621",
+  "provider": "OpenAI",
+  "model": "GPT-5 Codex",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4aec9d6b31b653eeb1267411678d89423e825cf91f668a3b74a0a5e8a82a8635",
+  "independenceGroupId": "physik-rollout-v1-batch-003-particle-model-phase-changes-1-current-v2-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "873c6371-4ffb-582b-8d8d-3f45f968ba08"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:54a8baa5d35b3c048cf40bf376b703f143ecb1f58feb8879b129f6654efb3ea1"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2b50be40630f4a5ff33eb6e4f0d5cc9fcd7c96fc784458a135b9e5ee261a467e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    }
+  ],
+  "startedAt": "2026-08-26T07:13:32.000Z",
+  "completedAt": "2026-08-26T07:14:06.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:6884abdb56bc17e330fe040e2ffbbe93fa634f409d69b00130bb83c62dffdb36",
+  "toolchainVersion": "goal-description-review-v1"
+}

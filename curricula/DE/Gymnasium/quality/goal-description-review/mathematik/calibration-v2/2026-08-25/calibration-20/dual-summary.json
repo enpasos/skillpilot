@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:73c2a0fb294e695fcb664adda59c7ac055811764a095f64c61c0fdd1ca37081e",
+  "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "runIds": [
+        "math-final-calibration-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "runIds": [
+        "math-final-b-codex-heliotrope-20260825-01"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "cf474eab-1379-4877-907e-58b0892ce734",
+      "firstRecordId": "math-final-calibration-a-001-01",
+      "secondRecordId": "math-final-b-heliotrope-001",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "firstRecordId": "math-final-calibration-a-001-02",
+      "secondRecordId": "math-final-b-heliotrope-002",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+      "firstRecordId": "math-final-calibration-a-001-03",
+      "secondRecordId": "math-final-b-heliotrope-003",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8dd9f210-2683-5902-acab-e3be22725232",
+      "firstRecordId": "math-final-calibration-a-001-04",
+      "secondRecordId": "math-final-b-heliotrope-004",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e09072f9-67d9-412c-b872-24ecbf329232",
+      "firstRecordId": "math-final-calibration-a-001-05",
+      "secondRecordId": "math-final-b-heliotrope-005",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "570d5931-f126-5bb4-8b7f-db236d6b727f",
+      "firstRecordId": "math-final-calibration-a-001-06",
+      "secondRecordId": "math-final-b-heliotrope-006",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "743e5470-ff39-551e-9aba-529656418c66",
+      "firstRecordId": "math-final-calibration-a-001-07",
+      "secondRecordId": "math-final-b-heliotrope-007",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "firstRecordId": "math-final-calibration-a-001-08",
+      "secondRecordId": "math-final-b-heliotrope-008",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "firstRecordId": "math-final-calibration-a-001-09",
+      "secondRecordId": "math-final-b-heliotrope-009",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+      "firstRecordId": "math-final-calibration-a-001-10",
+      "secondRecordId": "math-final-b-heliotrope-010",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+      "firstRecordId": "math-final-calibration-a-001-11",
+      "secondRecordId": "math-final-b-heliotrope-011",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+      "firstRecordId": "math-final-calibration-a-001-12",
+      "secondRecordId": "math-final-b-heliotrope-012",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6481fc23-d923-5ffc-ba49-f499328f43b8",
+      "firstRecordId": "math-final-calibration-a-001-13",
+      "secondRecordId": "math-final-b-heliotrope-013",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+      "firstRecordId": "math-final-calibration-a-001-14",
+      "secondRecordId": "math-final-b-heliotrope-014",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+      "firstRecordId": "math-final-calibration-a-001-15",
+      "secondRecordId": "math-final-b-heliotrope-015",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "508292f2-671b-4fd3-acbf-53d705e44693",
+      "firstRecordId": "math-final-calibration-a-001-16",
+      "secondRecordId": "math-final-b-heliotrope-016",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+      "firstRecordId": "math-final-calibration-a-001-17",
+      "secondRecordId": "math-final-b-heliotrope-017",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+      "firstRecordId": "math-final-calibration-a-001-18",
+      "secondRecordId": "math-final-b-heliotrope-018",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+      "firstRecordId": "math-final-calibration-a-001-19",
+      "secondRecordId": "math-final-b-heliotrope-019",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+      "firstRecordId": "math-final-calibration-a-001-20",
+      "secondRecordId": "math-final-b-heliotrope-020",
+      "firstRunId": "math-final-calibration-a-run-001",
+      "secondRunId": "math-final-b-codex-heliotrope-20260825-01",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

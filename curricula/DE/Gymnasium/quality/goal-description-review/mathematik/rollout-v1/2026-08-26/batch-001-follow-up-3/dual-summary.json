@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c1b4e48f3da8adf41db0fe7e2dc83bdfc009256f39162d22e7d8184b65f912b3",
+  "reviewInputFingerprint": "sha256:053ccc2e4a52d82549c2e962b89521fc2276da61b2b128ded71dddb396124733",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-a",
+      "roundId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-independent-a",
+      "runIds": [
+        "mathematik-b001-follow-up-3-20260826-a-openai-gpt5-subject-review"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-b",
+      "roundId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-independent-b",
+      "runIds": [
+        "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "firstRecordId": "mathematik-b001-follow-up-3-a-openai-gpt5-d07ef7b1",
+      "secondRecordId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer-record-001",
+      "firstRunId": "mathematik-b001-follow-up-3-20260826-a-openai-gpt5-subject-review",
+      "secondRunId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "firstRecordId": "mathematik-b001-follow-up-3-a-openai-gpt5-2331caf2",
+      "secondRecordId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer-record-002",
+      "firstRunId": "mathematik-b001-follow-up-3-20260826-a-openai-gpt5-subject-review",
+      "secondRunId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "firstRecordId": "mathematik-b001-follow-up-3-a-openai-gpt5-cafd6520",
+      "secondRecordId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer-record-003",
+      "firstRunId": "mathematik-b001-follow-up-3-20260826-a-openai-gpt5-subject-review",
+      "secondRunId": "mathematik-rollout-v1-batch-001-follow-up-3-20260826-first-pass-b-openai-gpt5-subject-reviewer",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

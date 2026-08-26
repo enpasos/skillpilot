@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-001-current-v3-follow-up-5-20260826-first-pass-b.codex-blind-run",
+  "campaignId": "physik-rollout-v1-batch-001-current-v3-follow-up-5-20260826-b",
+  "roundId": "physik-rollout-v1-batch-001-current-v3-follow-up-5-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-001-current-v3-follow-up-5-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:8db148d092d26b21b7b0eb5620fe8b710a05768b017418b71df0d2953f018a76",
+  "bundleFingerprint": "sha256:42d70d29d006e7ac08ab0ec81200212a8d7fbc4eb2fdc0f641f7f00a3d6ff6a4",
+  "bookDigest": "sha256:7e35b584359bb132805d324335162f495da8f5e4fa552033d555c1ee5628d2b0",
+  "provider": "OpenAI",
+  "model": "gpt-5.6-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:4e5cf0d27db1a681d2406c441b7dc52197addcf1d2551551cd7e43e5aba9560a",
+  "independenceGroupId": "physik-rollout-v1-batch-001-current-v3-follow-up-5-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+    "b60f63b6-e70b-5557-9f54-86d42fa80325",
+    "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+    "fbe0faae-7fba-482b-888e-341f926770f3",
+    "5a3716dd-ec67-5c48-ba3d-1a29f05ba2ce"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8db148d092d26b21b7b0eb5620fe8b710a05768b017418b71df0d2953f018a76"
+    }
+  ],
+  "startedAt": "2026-08-26T03:10:33.862Z",
+  "completedAt": "2026-08-26T03:10:33.862Z",
+  "status": "completed",
+  "outputDigest": "sha256:b22f310540201741c36d52f4ef38aef1838fec329528cc41e472a3f2dff51797",
+  "toolchainVersion": "codex-blind-review-2026-08-26"
+}

@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:421cad7c10737b10ce9cc430e273152353e5e24cbaca161069a8c373a8fb7c0f",
+  "reviewInputFingerprint": "sha256:1c97c80ddff8872b8bc976e04ccc3642dd625bfcaa37daf93e362d4ea5485aa6",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-calibration-v2-final-20-rereview-20260826-a",
+      "roundId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-a",
+      "independenceGroupId": "physics-calibration-v2-final-20-rereview-20260826-independent-a",
+      "runIds": [
+        "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-calibration-v2-final-20-rereview-20260826-b",
+      "roundId": "physics-calibration-v2-final-20-rereview-20260826-first-pass-b",
+      "independenceGroupId": "physics-calibration-v2-final-20-rereview-20260826-independent-b",
+      "runIds": [
+        "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-001",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-001",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-002",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-002",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-003",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-003",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-004",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-004",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-005",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-005",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-006",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-006",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-007",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-007",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-008",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-008",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-009",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-009",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-010",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-010",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-011",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-011",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-012",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-012",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-013",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-013",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-014",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-014",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-015",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-015",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5476480f-7ff2-529f-aade-968198c782a9",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-016",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-016",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c5413852-abae-566b-b435-f9939209ca63",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-017",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-017",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-018",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-018",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-019",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-019",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "firstRecordId": "physics-calibration-v2-final20-a-subject-a-020",
+      "secondRecordId": "physics-calibration-v2-final-20-rereview-20260826-b.subject-reviewer.record-020",
+      "firstRunId": "physics-calibration-v2-final-20-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-final-20-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

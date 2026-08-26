@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001.openai-gpt5",
+  "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-b",
+  "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b",
+  "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e7bb9ed1fda20e732f422d5622678383765d112991fc237057760681ab1dba8a",
+  "bundleFingerprint": "sha256:300d26479e8287ed9701b350acfadcca1876fe1239a90b79ad948639d8e2c37c",
+  "bookDigest": "sha256:8f8720d09ae2619628a985e8bcff35619c0256de4b34f3dd8d3c78cda5cd9b20",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "modelVersion": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-follow-up-8-20260826-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "33e3417c-e062-5f4a-8df9-3195dca50089",
+    "f0046ae8-cbfc-526b-8414-04e3595b6075",
+    "9a9e2085-5ab6-534f-b622-83774d51f36b",
+    "51de4fd9-6827-5b3d-b2ca-5e27ba961a7f",
+    "b60f63b6-e70b-5557-9f54-86d42fa80325",
+    "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+    "fbe0faae-7fba-482b-888e-341f926770f3",
+    "5a3716dd-ec67-5c48-ba3d-1a29f05ba2ce"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e7bb9ed1fda20e732f422d5622678383765d112991fc237057760681ab1dba8a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-26T13:30:28Z",
+  "completedAt": "2026-08-26T13:40:54Z",
+  "status": "completed",
+  "outputDigest": "sha256:67db7e6c0facebf02f2805d87d1df530c8f2ce0203ce1be77b1fbb104f0f32dd",
+  "toolchainVersion": "codex-gpt5-2026-08-26"
+}

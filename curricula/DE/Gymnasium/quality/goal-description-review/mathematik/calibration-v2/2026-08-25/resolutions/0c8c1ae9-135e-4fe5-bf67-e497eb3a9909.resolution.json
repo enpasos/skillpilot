@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+  "goal": {
+    "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:d7a32df4fc4e502c16ece9ecd2cdaf19e9d1f92d7f196c6ac7bd6ebcadf1dbb1",
+    "pageFingerprint": "sha256:30cfb61a529d19ee848347398046f199dae9d559fd1ea583c5c05428b886ea08",
+    "goalReviewContextFingerprint": "sha256:2c27afe1922e5a161463f8883b344c53cbd0362e3ebaa44572fcd7dbe8991a42",
+    "finalText": {
+      "titleDe": "Sinussatz herleiten",
+      "titleEn": "Derive the sine law",
+      "descriptionDe": "Die lernende Person kann den Sinussatz für ein allgemeines Dreieck aus bekannten geometrischen Beziehungen herleiten und jeden Schritt der Seiten-Winkel-Beziehung begründen.",
+      "descriptionEn": "The learner can derive the sine law for a general triangle from known geometric relationships and justify each step in the side-angle relationship."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:2c27afe1922e5a161463f8883b344c53cbd0362e3ebaa44572fcd7dbe8991a42",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-08",
+      "recordDigest": "sha256:5be8e30bca10c5ca614690da795879edb07ece58cdbfd05fc4a659e30a8a622f"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:2c27afe1922e5a161463f8883b344c53cbd0362e3ebaa44572fcd7dbe8991a42",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-008",
+      "recordDigest": "sha256:22f882c56316a9ba7cbf422d4429d88003eb1def205d46b9a23b1a9977d20fcb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Sinussatz herleiten“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Derive the sine law” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Im allgemeinen Dreieck ist jede Seitenlänge mit dem Sinus ihres gegenüberliegenden Winkels verknüpft; eine geeignete Hilfskonstruktion oder Flächenbeziehung macht den gemeinsamen Verhältniswert sichtbar.",
+      "essentialUnderstandingEn": "In a general triangle, each side length is linked to the sine of its opposite angle; a suitable auxiliary construction or area relationship reveals the common ratio.",
+      "observablePerformanceDe": "Die lernende Person wählt für ein allgemein beschriftetes Dreieck selbstständig einen gültigen geometrischen Ausgangspunkt, leitet daraus die Gleichheit der Seiten-Sinus-Verhältnisse her und begründet jeden geometrischen und algebraischen Schritt statt nur Zahlen einzusetzen.",
+      "observablePerformanceEn": "For a generally labelled triangle, the learner independently chooses a valid geometric starting point, derives the equality of the side-to-sine ratios, and justifies every geometric and algebraic step rather than merely substituting numbers.",
+      "transferExpectationDe": "Für ein anders beschriftetes oder stumpfwinkliges Dreieck passt die lernende Person ihre Hilfskonstruktion beziehungsweise Flächenbeziehung an und gewinnt den Sinussatz erneut als allgemeinen Zusammenhang.",
+      "transferExpectationEn": "For a differently labelled or obtuse triangle, the learner adapts the auxiliary construction or area relationship and derives the sine law again as a general relationship."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:a1a098018844c75d31fc5e25257d9d008aa95944fbb6f28e5ef509ca4c2f6728"
+}

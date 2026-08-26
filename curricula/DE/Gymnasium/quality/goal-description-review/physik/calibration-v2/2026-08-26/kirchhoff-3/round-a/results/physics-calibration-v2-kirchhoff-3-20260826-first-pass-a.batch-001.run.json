@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-kirchhoff3-20260826-round-a-gpt5-subject-reviewer",
+  "campaignId": "physics-calibration-v2-kirchhoff-3-20260826-a",
+  "roundId": "physics-calibration-v2-kirchhoff-3-20260826-first-pass-a",
+  "batchId": "physics-calibration-v2-kirchhoff-3-20260826-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:aacbee833aa4f9b995b812dfa6ab3f91ff0149fd5d1ecb870f30f56e3aec269d",
+  "bundleFingerprint": "sha256:b08ae2a21fe9a67fdab502e2a83ff2e2ea4ffea549bde9f590e69f22dae38185",
+  "bookDigest": "sha256:bdf6f37a8cbf69230d8570b00c537e57f0dc1a17ea043c76e9be2a4d7adc2c9f",
+  "provider": "OpenAI",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "independenceGroupId": "physics-calibration-v2-kirchhoff-3-20260826-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "8f833b36-4126-52db-b210-79fb0023c7d9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:aacbee833aa4f9b995b812dfa6ab3f91ff0149fd5d1ecb870f30f56e3aec269d"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-08-25T22:37:31Z",
+  "completedAt": "2026-08-25T22:38:43Z",
+  "status": "completed",
+  "outputDigest": "sha256:41dcd36a8b9dc825887450af23020948cfa0bc5dfc5def9fe901caf9d1b1260a",
+  "toolchainVersion": "codex-review-v1"
+}

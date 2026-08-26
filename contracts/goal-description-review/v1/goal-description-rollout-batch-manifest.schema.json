@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "title": "SkillPilot standalone goal-description rollout batch manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "validationContract",
+    "batchId",
+    "subject",
+    "subjectLabel",
+    "configPath",
+    "configDigest",
+    "goalIds",
+    "curriculumAtomicDenominatorAtPreparation",
+    "source",
+    "artifacts",
+    "reviewPolicy"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "validationContract": { "const": "goal-description-rollout-batch-v1" },
+    "batchId": { "$ref": "#/$defs/stableId" },
+    "subject": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "subjectLabel": { "$ref": "#/$defs/nonBlank" },
+    "configPath": { "$ref": "#/$defs/repoPath" },
+    "configDigest": { "$ref": "#/$defs/digest" },
+    "goalIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stableId" }
+    },
+    "curriculumAtomicDenominatorAtPreparation": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseGoalBookConfigPath",
+        "landscapePath",
+        "landscapeId",
+        "baseBookDigest"
+      ],
+      "properties": {
+        "baseGoalBookConfigPath": { "$ref": "#/$defs/repoPath" },
+        "landscapePath": { "$ref": "#/$defs/repoPath" },
+        "landscapeId": { "$ref": "#/$defs/stableId" },
+        "baseBookDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundleDirectory",
+        "bookModelPath",
+        "bookModelDigest",
+        "bundleManifestPath",
+        "bundleFingerprint",
+        "reviewInputFingerprint",
+        "rounds"
+      ],
+      "properties": {
+        "bundleDirectory": { "$ref": "#/$defs/relativeArtifactPath" },
+        "bookModelPath": { "$ref": "#/$defs/relativeArtifactPath" },
+        "bookModelDigest": { "$ref": "#/$defs/digest" },
+        "bundleManifestPath": { "$ref": "#/$defs/relativeArtifactPath" },
+        "bundleFingerprint": { "$ref": "#/$defs/digest" },
+        "reviewInputFingerprint": { "$ref": "#/$defs/digest" },
+        "rounds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["first", "second"],
+          "properties": {
+            "first": { "$ref": "#/$defs/round" },
+            "second": { "$ref": "#/$defs/round" }
+          }
+        }
+      }
+    },
+    "reviewPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "oneBatchPerRound",
+        "blindIndependentFirstPass",
+        "aiRecordsAreCandidatesOnly",
+        "automaticAcceptance"
+      ],
+      "properties": {
+        "oneBatchPerRound": { "const": true },
+        "blindIndependentFirstPass": { "const": true },
+        "aiRecordsAreCandidatesOnly": { "const": true },
+        "automaticAcceptance": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "nonBlank": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "relativeArtifactPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "round": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "directory",
+        "campaignId",
+        "campaignDigest",
+        "roundId",
+        "independenceGroupId",
+        "batchId",
+        "batchInputFingerprint"
+      ],
+      "properties": {
+        "directory": { "$ref": "#/$defs/relativeArtifactPath" },
+        "campaignId": { "$ref": "#/$defs/stableId" },
+        "campaignDigest": { "$ref": "#/$defs/digest" },
+        "roundId": { "$ref": "#/$defs/stableId" },
+        "independenceGroupId": { "$ref": "#/$defs/stableId" },
+        "batchId": { "$ref": "#/$defs/stableId" },
+        "batchInputFingerprint": { "$ref": "#/$defs/digest" }
+      }
+    }
+  }
+}

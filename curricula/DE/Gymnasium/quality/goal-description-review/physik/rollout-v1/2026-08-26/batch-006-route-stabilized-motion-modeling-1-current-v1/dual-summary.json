@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8ee0c96967fd8bcd5144ee36149eb0d9d209e2406bcfcaa608666e6e19e41f74",
+  "reviewInputFingerprint": "sha256:ba1e528c03c419ae7274934b5df69932aa0e44dee569ecef3b51dba4b354a93c",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-a",
+      "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-a",
+      "runIds": [
+        "gdr-physik-b006-round-a-run-a"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::codex-gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-b",
+      "roundId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-006-route-stabilized-motion-modeling-1-current-v1-20260826-independent-b",
+      "runIds": [
+        "physik-gdr-b006-round-b-run-001"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "firstRecordId": "gdr-physik-b006-round-a-d6dc0e02",
+      "secondRecordId": "physik-gdr-b006-b-d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "firstRunId": "gdr-physik-b006-round-a-run-a",
+      "secondRunId": "physik-gdr-b006-round-b-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T13:40:55.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826",
+    "batchManifestDigest": "sha256:a70344d18e04c2fd51062b5ac26c6343c99e026790dfac6336ea7f359a5695a5",
+    "configDigest": "sha256:9b30342832a3013f47b2bfe69e2c2e496e738b644d270b7864e31528ece99bfa",
+    "bundleFingerprint": "sha256:a6adb7eb5e299a79547024320b7720f650e1e7ce9d7f06fc52d4a078a1e18631",
+    "bookDigest": "sha256:64c31a8c66f634a74830b9d1162883efe058321e23f02ef7cd47fff7feba2725",
+    "reviewInputFingerprint": "sha256:d9ccb53fd722b6281f7026ac83e965089c4072b387508f2a77b94cf9a753d795",
+    "dualSummaryDigest": "sha256:47e3b389415d9df71e30deae995ed865538658bf58e275a8b07b7bde79e1bf2d",
+    "canonicalLandscapeDigest": "sha256:be2d31bccfc228b92b74bc3f67edc7416d786ab29d84704050b52aa900cc5c29"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-a",
+      "campaignDigest": "sha256:84a01018384cc4cc1512585138c7cb37f73d11fc5eb619481734269e114c6990",
+      "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:d9ccb53fd722b6281f7026ac83e965089c4072b387508f2a77b94cf9a753d795",
+      "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:f3463b81989709d14a4c4fe68baed767661bb49058a2557f19389baad7ab1853",
+      "runId": "physik-v8-checkpoint-main-20-round-a-openai-gpt5-20260826T1314Z",
+      "runManifestDigest": "sha256:29ad2af5d134b829cbf9f10c8d274095e523afd7afa5ac97eb9f8df90adb6266",
+      "resultsDigest": "sha256:a831707238f34532a47107fcbe481b19ff1b5aa78910e5d26731666bac79f502"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-b",
+      "campaignDigest": "sha256:267c34f5ca5055d2e23319d456c85d51ad47e7c50bfdcfe95f3c63454acdf7c1",
+      "roundId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:d9ccb53fd722b6281f7026ac83e965089c4072b387508f2a77b94cf9a753d795",
+      "batchId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:23dc7723d5239363469599e3117f7a458c6036c1b71098ee5291f29f02ed491e",
+      "runId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5",
+      "runManifestDigest": "sha256:f561df2039e513d9b845433c2710c9b15c728f569a87c71bdc14f454e2b673e1",
+      "resultsDigest": "sha256:dd30a36887e596bec095eabb67e6ea24ccdede6baa097c6fbf69d0d8cf88bbf9"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-001",
+      "goalId": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0cf2862a6562dfd58658f56d6a33bc472fbb7e4504bd3bb272c884bfc67d275a",
+      "pageFingerprint": "sha256:6ce0381f6001d5f7db191c17f769757564908a07235222158e0dda9fb52cb9d1",
+      "goalReviewContextFingerprint": "sha256:dded5bea0f727cce323aa49db2a8ad952d1ae0480108e11ac7f5d871c4839337",
+      "finalText": {
+        "titleDe": "Bewegungen mit Weg-Zeit-Diagrammen beschreiben",
+        "titleEn": "Describe motions using distance-time diagrams",
+        "descriptionDe": "Die lernende Person kann in Weg-Zeit-Diagrammen Ruhe, gleichförmige Bewegung und qualitative Geschwindigkeitsänderungen anhand des Verlaufs und seiner Steigung unterscheiden und passende Bewegungen beschreiben.",
+        "descriptionEn": "The learner can distinguish rest, uniform motion, and qualitative changes in speed in distance-time diagrams from the graph's shape and slope and describe the corresponding motions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-001",
+          "recordDigest": "sha256:954122f36fe98a3e1325f8bc0a82da2c76a303c57b80539a9852443ff69415f9"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-001",
+          "recordDigest": "sha256:fd6de98bdd66b5c5b7d8419008c3cf49159eccd390c85d5f4345dab15104b12c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den aktuellen Wortlaut. Die erste Evidence-Fassung verbindet Verlauf und Steigung zusätzlich mit Achsen und Maßstab, verlangt auch die umgekehrte Leistung einer eigenen Diagrammskizze und prüft bei veränderter Skalierung, dass nicht bloß Diagrammhöhen verglichen werden.",
+      "rationaleEn": "Both independent reviews confirm the current wording. The first evidence formulation additionally links shape and slope to axes and scale, requires the inverse performance of producing a graph, and checks under changed scaling that learners do not merely compare graph heights."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-002",
+      "goalId": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c5722fac43531d048f5a08f817db18df51aedef01e9f8949f92921486339dae5",
+      "pageFingerprint": "sha256:1ba2c43b62426f354ee62c5a8afcfd1091e4cefc4beee88dcbd3f45fc9384653",
+      "goalReviewContextFingerprint": "sha256:e8b08bad4dadb58c41e1c5244369dfd725fad8b42166200966d82e2fec8ee575",
+      "finalText": {
+        "titleDe": "Kräfte und Trägheit qualitativ erklären",
+        "titleEn": "Explain forces and inertia qualitatively",
+        "descriptionDe": "Die lernende Person kann Bewegungsänderungen auf eine resultierende Kraft zurückführen und mit dem Trägheitsprinzip erklären, warum ein Körper bei verschwindender resultierender Kraft seinen Bewegungszustand beibehält.",
+        "descriptionEn": "The learner can attribute changes in motion to a net force and use the principle of inertia to explain why an object maintains its state of motion when the net force is zero."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-002",
+          "recordDigest": "sha256:94d0fbd628fc82cb3fb5ee05a6c2073f806c91665aef4919c7f4d8f1588853cc"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-002",
+          "recordDigest": "sha256:510f7e39140ccbb3ed9eea326170a3a12678a4311414908bd8f771ffcf935ae6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen resultierende Kraft und Trägheitsprinzip. Die zweite Evidence-Fassung diagnostiziert besonders klar die Fehlvorstellung, eine vorhandene Einzelkraft müsse trotz verschwindender Resultierender die Bewegung ändern, und überträgt anschließend auf Brems- und Seitenkräfte mit Änderungen von Betrag oder Richtung der Geschwindigkeit.",
+      "rationaleEn": "Both independent reviews confirm net force and the principle of inertia. The second evidence formulation especially clearly diagnoses the misconception that an individual force must change motion even when the net force is zero, then transfers to braking and lateral forces that change the magnitude or direction of velocity."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-003",
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87",
+      "pageFingerprint": "sha256:e17fe2f2c7cc7add578d98f5df498b9af381aab9512193bea68d19a518a11cfb",
+      "goalReviewContextFingerprint": "sha256:3f0d091a8ace4de24eea42bc1bb1d204522d4815cf5f594179b6b134335d3c4e",
+      "finalText": {
+        "titleDe": "Kräfte vektoriell zusammensetzen und Resultierende bestimmen",
+        "titleEn": "Combine Forces Vectorially and Determine the Resultant",
+        "descriptionDe": "Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.",
+        "descriptionEn": "The learner can represent several forces acting on an object as vectors to scale, combine them graphically into a resultant force, and interpret its magnitude and direction in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-003",
+          "recordDigest": "sha256:63f7893ee797fc6ea261f3d4c146f180064d33ae4b82e547585edb0ff56d3ba6"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-003",
+          "recordDigest": "sha256:d5ba1e9791c14c828f5475c890fecd5f41b23c62a1e4aabff58f3aa017e06f00"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen maßstäbliche Vektordarstellung, grafische Addition und Kontextdeutung. Die erste Evidence-Fassung prüft sowohl Kräftepolygon oder Parallelogramm als auch veränderte Winkel, entgegengesetzte Richtungen und den diagnostisch wichtigen Grenzfall ausgeglichener Kräfte.",
+      "rationaleEn": "Both independent reviews confirm scaled vector representation, graphical addition, and contextual interpretation. The first evidence formulation assesses both force polygon or parallelogram and changed angles, opposing directions, and the diagnostically important limiting case of balanced forces."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-004",
+      "goalId": "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:12251968347859f9afa724038e46767619e9d79c8b939b2afc3a6297b0f9416b",
+      "pageFingerprint": "sha256:3d5ec17c796943c8c5cd03ff6919119825945555e1a2b91f7086cbc28cef5e2a",
+      "goalReviewContextFingerprint": "sha256:5b7df8c90a86b008e97f87c45dd14addd7579e112cd80fa718f014924f19ba2c",
+      "finalText": {
+        "titleDe": "Angriffspunkt, Wirkungslinie und Schwerpunkt deuten",
+        "titleEn": "Interpret Point of Application, Line of Action, and Center of Gravity",
+        "descriptionDe": "Die lernende Person kann an starren Körpern Angriffspunkt und Wirkungslinie einer Kraft kennzeichnen, in einem näherungsweise homogenen Gravitationsfeld die Gewichtskraft als am Schwerpunkt angreifend modellieren und daraus qualitative Folgen für Gleichgewicht oder Drehwirkung ableiten.",
+        "descriptionEn": "For rigid bodies, the learner can identify a force's point of application and line of action, model weight as acting at the center of gravity in an approximately uniform gravitational field, and infer qualitative consequences for equilibrium or rotational effect."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-004",
+          "recordDigest": "sha256:33414872cdfca550cbc2a19d29ca33c629d431bb7f9191983e08db8f11296faf"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-004",
+          "recordDigest": "sha256:7ca2b7c35bc49c38ca88abe32352982c97aba5907eed6308efc80d2199c05685"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Angriffspunkt, Wirkungslinie, Schwerpunkt und Drehwirkung im aktuellen Wortlaut. Die erste Evidence-Fassung hält die entscheidende Näherung ausdrücklich fest: Nur im näherungsweise homogenen Gravitationsfeld wird die verteilte Gewichtswirkung durch eine Kraft am Schwerpunkt ersetzt; verschobene Wirkungslinie, Lastverteilung und Auflage prüfen die Modellanwendung im Transfer.",
+      "rationaleEn": "Both independent reviews confirm point of application, line of action, center of gravity, and turning effect in the current wording. The first evidence formulation explicitly preserves the decisive approximation: only in an approximately uniform gravitational field is distributed weight replaced by a force at the center of gravity; shifting the line of action, load distribution, and support assesses application of the model in transfer."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-005",
+      "goalId": "581c0766-b84b-54cb-b8b6-375310329a41",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0da527126449fd0f810e03791955d7af7f560739bf4b998c165795aa65ddc99c",
+      "pageFingerprint": "sha256:5edeeaf9d26564f4cd400b68ad110ed70e2f11864cdd263005a615b08bc432f5",
+      "goalReviewContextFingerprint": "sha256:b611795de6768b8c8b9c21d8f0a0f4b252569d294c371456acd5f0a67f36f231",
+      "finalText": {
+        "titleDe": "Reibung als Kontaktkraft deuten",
+        "titleEn": "Interpret friction as a contact force",
+        "descriptionDe": "Die lernende Person kann Reibung als Kontaktkraft deuten, die einer relativen oder drohenden Bewegung zwischen Kontaktflächen entgegenwirkt, und erklären, wie sie etwa beim Gehen die Fortbewegung ermöglicht oder eine Relativbewegung abbremst.",
+        "descriptionEn": "The learner can interpret friction as a contact force that opposes relative or impending motion between contact surfaces and explain how it enables locomotion, for example when walking, or slows relative motion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-005",
+          "recordDigest": "sha256:360bb04bffde193876df59f126e0828e9b81b9d5b45ab294aeca95b95a886e26"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-005",
+          "recordDigest": "sha256:bef1998354f76b1d6937b78e8c8cd367f0f8135635ae1bea6917d628cd90169b"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews leiten die Reibungsrichtung aus relativer oder drohender Relativbewegung ab. Die erste Evidence-Fassung trennt Haft- und Gleitreibung, prüft Antreiben, Halten und Bremsen mit Kraftpfeilen und verhindert im Transfer die Fehlregel, Reibung wirke stets entgegen der Bewegung des gesamten Körpers.",
+      "rationaleEn": "Both independent reviews derive the direction of friction from relative or impending relative motion. The first evidence formulation distinguishes static and sliding friction, assesses propulsion, holding, and braking with force arrows, and prevents the false transfer rule that friction always opposes the motion of the whole body."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-006",
+      "goalId": "327302e3-5b36-46f8-9c16-73f24583b0eb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c4a4aa52a3db904de0caae95f65ecfabf4288dc471e59e7217fec95e595f1172",
+      "pageFingerprint": "sha256:0dda94ffc3a884a5afad27fcf70114637247c7777837bf0af5b7d2beb17d234c",
+      "goalReviewContextFingerprint": "sha256:34d7d97d25cf74e85dd011404d9dda2a4a8882ef9aaf1a6909f3186e63cafd15",
+      "finalText": {
+        "titleDe": "Arbeit und einfache Maschinen qualitativ deuten",
+        "titleEn": "Interpret work and simple machines qualitatively",
+        "descriptionDe": "Die lernende Person kann einfache Maschinen wie Hebel, Rollen und Räder als Kraftwandler beschreiben und erklären, warum eine kleinere Kraft idealerweise mit einem längeren Weg verbunden ist, ohne mechanische Arbeit einzusparen.",
+        "descriptionEn": "The learner can describe simple machines such as levers, pulleys, and wheels as force converters and explain why a smaller force is ideally associated with a longer distance without reducing the mechanical work required."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-006",
+          "recordDigest": "sha256:4de3fd615e427d761c070c290ddf0704e8571b0f1be633fc4e572055bae4c9fc"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-006",
+          "recordDigest": "sha256:b61e5ceb8c1080c22bcab52a94e84e76cd121e520c21d7f77336682775396857"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen den idealen Kraft-Weg-Ausgleich einfacher Maschinen. Die erste Evidence-Fassung verbindet Ein- und Ausgangsgrößen mit dem Produkt aus Kraft und Weg und trennt bei veränderten Hebelarmen oder Rollenordnungen die ideale Arbeitserhaltung ausdrücklich von zusätzlichem Aufwand durch reale Reibung.",
+      "rationaleEn": "Both independent reviews confirm the ideal force-distance trade-off in simple machines. The first evidence formulation links input and output quantities through the force-distance product and, for changed lever arms or pulley arrangements, explicitly separates ideal work conservation from additional effort caused by real friction."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-007",
+      "goalId": "722857cf-f327-5740-8151-64eb92195ec8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:1ae9f28d6c82c78a74c6163d9cc273775d692d63e19e096b1b982bb58f34be76",
+      "pageFingerprint": "sha256:c0d49aafe6c77c97e526f2cb588f5044c839b0cb849c32da0f7926188ed1f105",
+      "goalReviewContextFingerprint": "sha256:3d36256e211a992a89ed6dd25bc52d961f6e2d7e6904b5aaf06c75338a19cd45",
+      "finalText": {
+        "titleDe": "Mechanische Energieformen qualitativ unterscheiden",
+        "titleEn": "Distinguish mechanical forms of energy qualitatively",
+        "descriptionDe": "Die lernende Person kann mechanische Energieformen wie Bewegungs-, Lage- und Spannenergie anhand des Zustands eines Systems unterscheiden und bei einfachen Vorgängen qualitativ beschreiben, welche Energieform ab- und welche zunimmt.",
+        "descriptionEn": "The learner can distinguish mechanical forms of energy such as kinetic, gravitational potential, and elastic energy from the state of a system and qualitatively describe which form decreases and which increases in simple processes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-007",
+          "recordDigest": "sha256:1d72e904cd5e73961782fa2e41d166985557d806ecba6577ef894d323313a17b"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-007",
+          "recordDigest": "sha256:26916067a25349155cfcecd22e4b2e0e49e3b1dc033da9b7ecc51ae07897392e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die zustandsbezogene Unterscheidung von Bewegungs-, Lage- und Spannenergie. Die erste Evidence-Fassung ist diagnostisch tiefer, weil sie Bezugshöhe und Systemgrenze explizit macht und bei Reibung eine Energieabgabe an die Umgebung statt eines vermeintlichen Energieverlusts verlangt.",
+      "rationaleEn": "Both independent reviews confirm the state-based distinction among kinetic, gravitational potential, and elastic energy. The first evidence formulation is diagnostically deeper because it makes reference height and system boundary explicit and, with friction, requires an energy transfer to the surroundings rather than an alleged loss of energy."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-008",
+      "goalId": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6c53a8e5f7c70d49e52f63ae0f02beca01fa9de688299c110028135a182b6808",
+      "pageFingerprint": "sha256:02fab799af9d24167dafa61cc17c56a7f20bf07e268f2edcc4475101bb91a74b",
+      "goalReviewContextFingerprint": "sha256:5718ec3930c8f7d58aa7db6d4cec76d28109731e700347da946580555f680bff",
+      "finalText": {
+        "titleDe": "Temperatur und Wärme unterscheiden",
+        "titleEn": "Distinguish Temperature and Heat",
+        "descriptionDe": "Die lernende Person kann Temperatur als messbare Zustandsgröße von Wärme als Energieübertragung aufgrund eines Temperaturunterschieds und vom subjektiven Wärmeempfinden unterscheiden.",
+        "descriptionEn": "The learner can distinguish temperature as a measurable state variable from heat as energy transfer caused by a temperature difference and from the subjective sensation of warmth."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-008",
+          "recordDigest": "sha256:7e0147795cf49c8d54067e4eaeafdbba33a7fe275893489b5bf720421b0495c3"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-008",
+          "recordDigest": "sha256:42d99df05936a277a50e02762b2ddb8c3333afcd2b7427ae90515f42bdafe520"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews trennen Temperatur, Wärmeübertragung und subjektives Wärmeempfinden. Die erste Evidence-Fassung erklärt verschiedenes Empfinden gleich temperierter Materialien über Art und Geschwindigkeit des Energieaustauschs mit der Haut und prüft bei umgekehrtem Temperaturgefälle die Übertragungsrichtung unabhängig von Messwert und Eindruck.",
+      "rationaleEn": "Both independent reviews distinguish temperature, heat transfer, and subjective thermal sensation. The first evidence formulation explains why equally tempered materials feel different through the type and rate of energy exchange with the skin and, with a reversed temperature gradient, assesses transfer direction independently of measured value and sensation."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-009",
+      "goalId": "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:97d4f435401bba112e324ec83bcf7bf70be1d836793fe5062937a23a6cae5a3c",
+      "pageFingerprint": "sha256:a6e0d4b9819d8801cf16c088c46e778eacd8e2c93375ca6523329802f569cc0c",
+      "goalReviewContextFingerprint": "sha256:af166051ecfb0f785f920d437f021edfc377ab60820222b64504161165213b54",
+      "finalText": {
+        "titleDe": "Wärmeübertragung und Energiebilanzen qualitativ erklären",
+        "titleEn": "Explain heat transfer and energy balances qualitatively",
+        "descriptionDe": "Die lernende Person kann Wärme als Energieübertragung aufgrund eines Temperaturunterschieds von gespeicherter innerer Energie und mechanischer Arbeit unterscheiden, ein betrachtetes System abgrenzen und einfache Energiebilanzen qualitativ erläutern.",
+        "descriptionEn": "The learner can distinguish heat as energy transfer caused by a temperature difference from stored internal energy and mechanical work, define the system under consideration, and qualitatively explain simple energy balances."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-009",
+          "recordDigest": "sha256:c6825aa9a1079a094078bd39265267c74ac8e60698256f27db19773647c7e35f"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-009",
+          "recordDigest": "sha256:8d180de4edc24f75b1fdd96dbd83175cb0b26213e1b3184a1113ade72caa3a05"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews unterscheiden gespeicherte innere Energie von Wärme- und Arbeitsübertragungen über eine festgelegte Systemgrenze. Die erste Evidence-Fassung prüft eine vollständige qualitative Bilanz und variiert Dämmung, mechanische Arbeit und Systemgrenze, sodass Änderungen der inneren Energie kausal statt nur begrifflich erklärt werden müssen.",
+      "rationaleEn": "Both independent reviews distinguish stored internal energy from heat and work transfers across a specified system boundary. The first evidence formulation assesses a complete qualitative balance and varies insulation, mechanical work, and the system boundary, requiring changes in internal energy to be explained causally rather than only named."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-010",
+      "goalId": "30a936ec-e427-57fe-bf3e-4abd64b1f0c1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0a6a05330f90cebdfd0f293016118bf71d998328b08262798b01f79cae750824",
+      "pageFingerprint": "sha256:2f74a9aa4b6b81b87a0eef3efd0bef9d5cc3713be7333f505e04df81b2e12cbb",
+      "goalReviewContextFingerprint": "sha256:0c02102f4386bf06401b18faaf0d72a28039bdd35b1426a4a7b120f255cf24dc",
+      "finalText": {
+        "titleDe": "Energieversorgung mit Energieübertragungsketten beschreiben",
+        "titleEn": "Describe energy supply using energy transfer chains",
+        "descriptionDe": "Die lernende Person kann Energieversorgungssysteme wie Wasser-, Wind-, Kohle- oder Solarkraftwerke als Ketten von Energieformen, Energieträgern und Übertragungs- beziehungsweise Umwandlungsschritten bis zur Nutzung einschließlich Energieabgaben an die Umgebung qualitativ beschreiben.",
+        "descriptionEn": "The learner can qualitatively describe energy-supply systems such as hydro, wind, coal, or solar power plants as chains of energy forms, energy carriers, and transfer or transformation steps through to use, including energy released to the surroundings."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-010",
+          "recordDigest": "sha256:c0312eee8cdbb87db260b84a4becac7b646507630ddf42d8c01b8f3932b3bde0"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-010",
+          "recordDigest": "sha256:490364425f96c28d0022c46afff4c5de81867dd4f0de97ad4af87b358c7ca3a5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die Kette von Quelle beziehungsweise Energieträger über Übertragungen und Umwandlungen bis zu Nutzung und Umgebungsabgaben. Die erste Evidence-Fassung unterscheidet Quelle, Träger und Energieform ausdrücklich, hält die Energiebilanz fest und erweitert den Transfer auf Speicher und veränderte Systemgrenzen.",
+      "rationaleEn": "Both independent reviews confirm the chain from source or energy carrier through transfers and conversions to use and releases to the surroundings. The first evidence formulation explicitly distinguishes source, carrier, and energy form, preserves the energy balance, and extends transfer to storage and changed system boundaries."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-011",
+      "goalId": "b92827a7-5d62-5fdb-a6f5-ac44461f4a7b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:97cdb2555a80b1c50b949babfc59ddadb021f0dc769d121b34a39434e7aa19f8",
+      "pageFingerprint": "sha256:bd46d318d0263b7b4cc00cde64893c3246dffb01b3329d7b1480e4026014602b",
+      "goalReviewContextFingerprint": "sha256:ea903c2bdb42495eea54e9362c6bc9656a911722655a7f8136b4f7118c74eac3",
+      "finalText": {
+        "titleDe": "Leistung als Energie pro Zeit bestimmen und deuten",
+        "titleEn": "Determine and Interpret Power as Energy per Unit Time",
+        "descriptionDe": "Die lernende Person kann Leistung als übertragene oder umgewandelte Energie pro Zeit bestimmen, passende Einheiten verwenden und bei gleicher Energie erklären, warum eine kürzere Dauer einer größeren Leistung entspricht.",
+        "descriptionEn": "The learner can determine power as energy transferred or converted per unit time, use appropriate units, and explain why, for the same energy, a shorter duration corresponds to greater power."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-011",
+          "recordDigest": "sha256:565f63ebe8016093a94804214f88a8487788552b58340d1be6b54b65a178aa5b"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-011",
+          "recordDigest": "sha256:60ca9bcfe0bd998c2f0a38c76459e970855bda478aab38b9664dc30106d01cf5"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Leistung als Energieübertragungs- oder Umwandlungsrate und nicht als Energiemenge allein. Die zweite Evidence-Fassung verlangt eine erklärende Quotientendeutung und prüft den Transfer über die Steigung einer neuen Energie-Zeit-Darstellung statt über gleichartig formulierte Textdaten.",
+      "rationaleEn": "Both independent reviews confirm power as a rate of energy transfer or conversion rather than an energy amount alone. The second evidence formulation requires an explanatory interpretation of the quotient and assesses transfer through the slope of a new energy-time representation instead of similarly worded text data."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-012",
+      "goalId": "f7f2c254-1663-5861-bed7-a32c00495b19",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a54a9234aa4e1a1adc289218aec3cb0957047dd6e3c903c382e168927ee6bd3e",
+      "pageFingerprint": "sha256:10c1cceba86358dedb0641b0874c3c3dc79a842bff93fefa8a2df39375c05390",
+      "goalReviewContextFingerprint": "sha256:747fc54a96e1f3ecd1d07a60cdc8ea245402c2c4ba1fe0de45b05fd8a1949962",
+      "finalText": {
+        "titleDe": "Wirkungsgrad als Verhältnis nutzbarer und zugeführter Energie deuten",
+        "titleEn": "Interpret Efficiency as the Ratio of Useful to Input Energy",
+        "descriptionDe": "Die lernende Person kann den Wirkungsgrad als Verhältnis nutzbarer zu zugeführter Energie bestimmen, Energieanteile in einem einfachen System bilanzieren und begründen, warum ein Wirkungsgrad nicht größer als eins sein kann.",
+        "descriptionEn": "The learner can determine efficiency as the ratio of useful to input energy, balance energy shares in a simple system, and justify why efficiency cannot exceed one."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-012",
+          "recordDigest": "sha256:58ce1dc89e88a5b888fdff3494330e971ce2b76a08400f46785c18cd7be3807a"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-012",
+          "recordDigest": "sha256:a8d73a6adff5e371e352a82f85e417a6bc2bf69691779f8124eab5531622c0c9"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Zweckbezug, Systemgrenze, Energiebilanz und den Wertebereich des Wirkungsgrads. Die erste Evidence-Fassung geht im Transfer über einen Einzelvergleich hinaus, indem sie neben geändertem Nutzen oder geänderter Grenze auch zwei hintereinandergeschaltete Umwandlungsstufen beurteilen lässt.",
+      "rationaleEn": "Both independent reviews confirm purpose dependence, system boundary, energy balance, and the allowed range of efficiency. The first evidence formulation goes beyond a single-device comparison by assessing not only a changed purpose or boundary but also two conversion stages in series."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-013",
+      "goalId": "dd7cdcea-0950-461b-96ac-ce49989fca47",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8d181cefcd2c049ac31873c1fb7f812e48f2d939b6906c8a058a3defac90cc9f",
+      "pageFingerprint": "sha256:439529f3f6727a41f6445d699bcbadfba03dc20138123eb190fc60424a464214",
+      "goalReviewContextFingerprint": "sha256:99f996032246916a1c32e367c9d458e04f500e5c907439c26cec2e29df6f4a7b",
+      "finalText": {
+        "titleDe": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
+        "titleEn": "Describe light, shadows, and rectilinear propagation",
+        "descriptionDe": "Die lernende Person kann Beobachtungen zu Licht und Schatten mit der geradlinigen Ausbreitung von Licht in einem homogenen transparenten Medium und der Geometrie von Lichtquelle, Objekt und Schirm fachlich beschreiben.",
+        "descriptionEn": "The learner can appropriately describe observations of light and shadows using the rectilinear propagation of light in a homogeneous transparent medium and the geometry of the light source, object, and screen."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-013",
+          "recordDigest": "sha256:bb2d0c30509c461fb05f950dfc6f412654e55cddce26dc1bab21b81d6e5046b3"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-013",
+          "recordDigest": "sha256:87c4790d7488611eab117b564b099add7f5f25e9c8e4b3563fb5111321f58799"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen geradlinige Lichtwege und die Quelle-Objekt-Schirm-Geometrie. Die erste Evidence-Fassung macht die Bedingung des homogenen transparenten Mediums und den Modellcharakter der Strahlen explizit und prüft beim Wechsel von punktförmiger zu ausgedehnter Quelle eine gehaltvolle Änderung der Schattenkonstruktion.",
+      "rationaleEn": "Both independent reviews confirm rectilinear light paths and source-object-screen geometry. The first evidence formulation makes the homogeneous transparent-medium condition and the model nature of rays explicit and assesses a substantive change in shadow construction when moving from a point to an extended source."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-014",
+      "goalId": "af0e2efb-f634-5f2d-abea-b2e1a67a2894",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a0089f4ce5f1e646d19c6c6ce835f1e411aa4d98566ad5a6f5abbf053b74bee5",
+      "pageFingerprint": "sha256:71679492a3340a49fd1db90e6df6189f27bbec30d6521fbafbcc1a07133ebe72",
+      "goalReviewContextFingerprint": "sha256:aa9b1e44a1f98ec40342205595bcad851d466be25c56ac9a47bd9e86b7c1841c",
+      "finalText": {
+        "titleDe": "Masse von Körpern messen und vergleichen",
+        "titleEn": "Measure and Compare the Mass of Objects",
+        "descriptionDe": "Die lernende Person kann für Messbereich und benötigte Auflösung eine geeignete Waage auswählen, ihren Nullpunkt kontrollieren, die Masse eines Körpers messen und mit Einheit und angemessener Genauigkeit angeben sowie Massen vergleichen, ohne Form oder Volumen eines Körpers mit seiner Masse gleichzusetzen.",
+        "descriptionEn": "The learner can select a balance suited to the measurement range and required resolution, check its zero point, measure an object's mass and report it with a unit and appropriate precision, and compare masses without equating an object's shape or volume with its mass."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-014",
+          "recordDigest": "sha256:fa33d6fbe9dd6acd51ce780dbb6ca4bfffe071b2cdc5b436160a5d946e1e359f"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-014",
+          "recordDigest": "sha256:d927491fe899fce599ab232b52248a76c3c8426caaa8ef6dc69bee4dd10a84a0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Gerätewahl, Nullpunktkontrolle, Messung und Ergebnisangabe. Die erste Evidence-Fassung prüft die behobene begriffliche Schwäche am direktesten: Masse wird weder aus Form noch Volumen abgeleitet; ein umgeformter Körper und gleich große Körper aus verschiedenen Stoffen müssen anhand der Messwerte verglichen werden.",
+      "rationaleEn": "Both independent reviews confirm instrument selection, zero checking, measurement, and reporting. The first evidence formulation assesses the corrected conceptual weakness most directly: mass is inferred from neither shape nor volume; a reshaped body and equally sized bodies made of different materials must be compared from measurements."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-015",
+      "goalId": "f827b00f-af7f-52de-84aa-2a2bbaa035bd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:abb79783347c78419a43e8b4b012a57f470e3bd6d4afe508ca9eec2f0151610e",
+      "pageFingerprint": "sha256:073c8b284023e1915f45ba9e212bd534b8874641fac777a0d856df06927c001d",
+      "goalReviewContextFingerprint": "sha256:1a6f2aea70fb5f119c4b7acd7e2257e7d039e369ae8d335c427b1a07f62117f2",
+      "finalText": {
+        "titleDe": "Volumen regelmäßiger Körper geometrisch bestimmen",
+        "titleEn": "Determine the volume of regular objects geometrically",
+        "descriptionDe": "Die lernende Person kann die benötigten Abmessungen eines einfachen regelmäßigen Körpers messen, daraus sein Volumen mit einer passenden geometrischen Beziehung bestimmen und Ergebnis sowie Volumeneinheit auf Plausibilität prüfen.",
+        "descriptionEn": "The learner can measure the dimensions needed for a simple regular object, use an appropriate geometric relationship to determine its volume, and check the plausibility of the result and volume unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-015",
+          "recordDigest": "sha256:928c9ec531246bab1af2865260d1b201aeb62c99220ab75c366b63cca11f4833"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-015",
+          "recordDigest": "sha256:a69dc2111fb2d6496255dc7edc36ae98ce0fa5dea184cd1f953e8651ba8a036e"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen formgerechte Auswahl und Messung der nötigen Abmessungen sowie eine Plausibilitätsprüfung. Die zweite Evidence-Fassung verlangt beim Wechsel vom Quader zum Zylinder selbstständig eine neue geometrische Beziehung und verbindet sie mit korrekter potenzierter Volumeneinheit und Größenordnung.",
+      "rationaleEn": "Both independent reviews confirm shape-appropriate selection and measurement of the required dimensions and a plausibility check. The second evidence formulation requires learners to choose a new geometric relation independently when moving from a cuboid to a cylinder and links it to the correct powered volume unit and order of magnitude."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-016",
+      "goalId": "f92b5b8a-327f-50d2-8313-6a142399ebf0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:979191d899b8181ca1e7c225c1e132d134d0f682c71d38021637942a053522f1",
+      "pageFingerprint": "sha256:44e231daa5722051d590bd973fe21c45dfd181e16e04a072230bb28acce85d0e",
+      "goalReviewContextFingerprint": "sha256:f405459c87ada6df56abffc149f09834da42e05c170601637db7011af69197da",
+      "finalText": {
+        "titleDe": "Volumen unregelmäßiger Körper durch Flüssigkeitsverdrängung bestimmen",
+        "titleEn": "Determine the volume of irregular objects by liquid displacement",
+        "descriptionDe": "Die lernende Person kann das Volumen eines vollständig eintauchbaren unregelmäßigen festen Körpers aus dem Flüssigkeitsstand vor und nach dem Eintauchen bestimmen, die Differenz mit passender Volumeneinheit angeben und Ablese- oder Luftblasenfehler beurteilen.",
+        "descriptionEn": "The learner can determine the volume of a fully submersible irregular solid object from the liquid levels before and after immersion, state the difference with an appropriate volume unit, and assess reading errors or errors caused by air bubbles."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-016",
+          "recordDigest": "sha256:e0d3a7e8ecd7668b1d272b8ed13eeaf6ce00f855ced40c4527cedcd7ef871318"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-016",
+          "recordDigest": "sha256:6ef925686e81ca02d14f6244c771f6dd924cf037d25ce65bbba415bc996fae42"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Verdrängungsprinzip, Differenzbildung und fachgerechte Ablesung. Die zweite Evidence-Fassung lässt zusätzlich Richtung und Bedeutung von Meniskus-, Parallaxen- und insbesondere Luftblasenfehlern beurteilen und passt bei anderer Skalenteilung Genauigkeit und Einheit neu an.",
+      "rationaleEn": "Both independent reviews confirm the displacement principle, subtraction of readings, and proper reading technique. The second evidence formulation additionally requires the direction and significance of meniscus, parallax, and especially trapped-air errors to be judged and readjusts precision and unit for a different scale division."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-017",
+      "goalId": "c2d6bdf1-8077-50fb-a8b5-2f0b7e3493f0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:35b2f09f11b02172818efcd4e0c6ec8ee296329a6e648c4846aeef07f55418a7",
+      "pageFingerprint": "sha256:d55a6e958e9045b5d41e00f4ab87f947081fa841778c805e6d6429483bfa2e40",
+      "goalReviewContextFingerprint": "sha256:20abae550fd07b5805c2da5690eb5e77dc63c1455d7f83a6a2f0d52100e4f1d8",
+      "finalText": {
+        "titleDe": "Dichte aus Masse und Volumen bestimmen und deuten",
+        "titleEn": "Determine and Interpret Density from Mass and Volume",
+        "descriptionDe": "Die lernende Person kann Dichte als Quotient aus Masse und Volumen bestimmen, passende Einheiten verwenden und Dichtewerte nutzen, um Stoffe oder gleich große beziehungsweise gleich schwere Körper zu vergleichen.",
+        "descriptionEn": "The learner can determine density as the quotient of mass and volume, use appropriate units, and use density values to compare materials or objects of equal volume or equal mass."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-017",
+          "recordDigest": "sha256:cf7127cf02c069112ac285e4a6fc307515e8b96b7bdea483779687f3fd02b0a6"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-017",
+          "recordDigest": "sha256:04963b1f0cdfbaf938db3b4aa3993c8d512d1700dce3313d2adb477923d883f0"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Dichte als Verhältnis von Masse und Volumen. Die zweite Evidence-Fassung ist konzeptuell stärker, weil sie bei vertauschter Bedingung von gleichen Volumina zu gleichen Massen die neue Größenordnung ohne bloßen Zahlenvergleich herleiten und anschließend mit der Dichtebeziehung prüfen lässt.",
+      "rationaleEn": "Both independent reviews confirm density as the ratio of mass to volume. The second evidence formulation is conceptually stronger because, when the condition changes from equal volumes to equal masses, it requires the new ordering to be derived without mere numerical comparison and then checked with the density relation."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-018",
+      "goalId": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3a14e778f2a310ebc0abc066dec0c9d6d6466e17c2876494c87b9006ceef0c03",
+      "pageFingerprint": "sha256:fea769b8483c568f49ca2a93debd53073eed685927d8f3377886423bba9ac3fb",
+      "goalReviewContextFingerprint": "sha256:938d1c026f94d5131c5c46719fe64f1d82f71c2428c2b52cb6722bdb8be1a783",
+      "finalText": {
+        "titleDe": "Masse und Gewichtskraft unterscheiden",
+        "titleEn": "Distinguish mass and weight force",
+        "descriptionDe": "Die lernende Person kann Masse als ortsunabhängige Eigenschaft eines Körpers von der Gewichtskraft als vom Gravitationsfeld abhängiger Kraft unterscheiden, beide mit passenden Einheiten angeben und alltagssprachliche Verwechslungen fachlich korrigieren.",
+        "descriptionEn": "The learner can distinguish mass as a location-independent property of an object from weight as a force that depends on the gravitational field, state both in appropriate units, and correct everyday-language confusions using scientific terminology."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-018",
+          "recordDigest": "sha256:9c23a47b4022c39bf6821bc1392747609078a2dc2bf7a2ca1a7ca68a4a67c675"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-018",
+          "recordDigest": "sha256:46a23cccca27a8537cc76514d3b93f5a6f1299e1f6274994417e2ac08b4a19e6"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Ortsunabhängigkeit und Einheit der Masse sowie Feldabhängigkeit und Einheit der Gewichtskraft. Die erste Evidence-Fassung erfasst Gewichtskraft zusätzlich als gerichtete Kraft und verlangt im Erde-Mond-Transfer neben der Vorhersage eine fachliche Korrektur alltagssprachlicher Verwechslungen.",
+      "rationaleEn": "Both independent reviews confirm the location independence and unit of mass and the field dependence and unit of weight force. The first evidence formulation additionally treats weight as a directed force and, in Earth-Moon transfer, requires both a prediction and a scientific correction of everyday-language confusion."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-019",
+      "goalId": "3c8e5510-a12d-5770-8a01-e5fe741b259c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:616eba5d2f0c8d41045eb2ebc9a2700f90fb3a587c3820d59ed8c7398586b25a",
+      "pageFingerprint": "sha256:95d06e2114ba71d3b41ea7ffbe3626d234f6ab353ff80ef70b7eca5a637a6bb5",
+      "goalReviewContextFingerprint": "sha256:16a4ba6a454c6c731135518dfb93c40e815615d635392b494c171ca24a1b0c09",
+      "finalText": {
+        "titleDe": "Reflexionsgesetz experimentell prüfen",
+        "titleEn": "Test the law of reflection experimentally",
+        "descriptionDe": "Die lernende Person kann bei der Reflexion an einer ebenen glatten Fläche Einfalls- und Reflexionswinkel jeweils zum Lot messen, die Messwerte samt Ablese- und Ausrichtungsunsicherheiten vergleichen, daraus das Reflexionsgesetz formulieren und beurteilen, ob Abweichungen mit diesen Unsicherheiten vereinbar sind.",
+        "descriptionEn": "The learner can measure the angles of incidence and reflection relative to the normal at a flat, smooth surface, compare the measurements including reading and alignment uncertainties, formulate the law of reflection from them, and judge whether deviations are consistent with those uncertainties."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-019",
+          "recordDigest": "sha256:b09436d4edb84eac4579256e8aed62b83f5cde5b754a091dc9e419ab558c51f8"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-019",
+          "recordDigest": "sha256:a5e9b393d393e9df6002160571570277019b2f4861145c54a033aa9735dc240f"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen Winkelmessung zum Lot, Messreihe, Unsicherheiten und Gesetzesprüfung. Die erste Evidence-Fassung variiert Spiegelorientierung, Einfallswinkel und Skalenauflösung und verlangt, das Unsicherheitsurteil jeweils an die neue Messqualität anzupassen, statt Abweichungen vorschnell als Widerlegung zu deuten.",
+      "rationaleEn": "Both independent reviews confirm angle measurement from the normal, repeated measurements, uncertainties, and testing of the law. The first evidence formulation varies mirror orientation, incidence angle, and scale resolution and requires the uncertainty judgment to be adapted to the new measurement quality rather than treating deviations prematurely as a refutation."
+    },
+    {
+      "decisionId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-synthesis-decision-020",
+      "goalId": "b57427c9-1af5-5daa-8c65-b84a4cc20785",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e62900daa49bb33a2730998ec3d910e50c00d089c94d8137ee9cb64affad0271",
+      "pageFingerprint": "sha256:f8038324507307c54604d9ea17438b8ed8b3f06605e86f84559ac42778fbaec4",
+      "goalReviewContextFingerprint": "sha256:f01076bbbe85b73f557d5bed4590c6f40652d9be5dcc8ebc0c41a9c16a602315",
+      "finalText": {
+        "titleDe": "Spiegelbilder am ebenen Spiegel mit dem Strahlenmodell erklären",
+        "titleEn": "Explain plane-mirror images using the ray model",
+        "descriptionDe": "Die lernende Person kann reflektierte Lichtwege rückwärts verlängern, damit Lage und Größe des virtuellen Bildes am ebenen Spiegel konstruieren und erklären, warum das Bild hinter dem Spiegel erscheint und nicht auf einem Schirm aufgefangen werden kann.",
+        "descriptionEn": "The learner can extend reflected light paths backwards, use them to construct the position and size of the virtual image in a plane mirror, and explain why the image appears behind the mirror and cannot be projected onto a screen."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-v8-main-a-020",
+          "recordDigest": "sha256:e7d83028498674826333001e59e9a028470c5e315479b5734795ef5f3b9265f9"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-001-current-v8-checkpoint-main-20-20260826-first-pass-b.batch-001.openai-gpt5.record-020",
+          "recordDigest": "sha256:66fefeb371d6f7fb603b92aeb29101aeea960b4ef06ceca31078a4f0089a4c22"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen reale reflektierte Lichtwege, rückwärtige Modellverlängerungen und die virtuelle Bildlage. Die erste Evidence-Fassung prüft im Transfer besonders tief, dass eine geänderte Beobachtungsposition zwar das sichtbare Strahlenbündel, nicht aber die geometrische Bildlage verändert.",
+      "rationaleEn": "Both independent reviews confirm real reflected light paths, backward model extensions, and the virtual image location. The first evidence formulation assesses especially deeply in transfer that changing the viewing position changes the visible ray bundle but not the geometric image location."
+    }
+  ],
+  "manifestFingerprint": "sha256:8443773956f3f1ebbaf2c3a75f74f2b6dd0de7b45b6c932e8d48c87b231d926a"
+}

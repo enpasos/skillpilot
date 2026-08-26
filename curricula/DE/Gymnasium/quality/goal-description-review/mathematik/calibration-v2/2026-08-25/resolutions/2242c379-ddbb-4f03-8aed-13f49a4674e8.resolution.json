@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-calibration-v2-20260825-resolution-2242c379-ddbb-4f03-8aed-13f49a4674e8",
+  "goal": {
+    "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:1c76dda01bd509d5c102611a6b978f987beecb946c9904e77a873787ab807871",
+    "pageFingerprint": "sha256:dcd15925027e459287ec9d0e22b77424f58b937c0b3568081b20f023420e08e4",
+    "goalReviewContextFingerprint": "sha256:beebbbcc93b4f2536a19022cfc2b82505f8c16dc4efd86745661fa44d645c6f9",
+    "finalText": {
+      "titleDe": "Median bestimmen und mit dem arithmetischen Mittel vergleichen",
+      "titleEn": "Determine the median and compare it with the arithmetic mean",
+      "descriptionDe": "Die lernende Person kann zu Datensätzen den Median bestimmen, ihn als weiteren Lagewert neben dem arithmetischen Mittel deuten und die Aussagekraft beider Kenngrößen in Sachzusammenhängen kritisch vergleichen.",
+      "descriptionEn": "The learner can determine the median for data sets, interpret it as another measure of central tendency alongside the arithmetic mean and critically compare the explanatory power of both indicators in context."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "math-final-calibration-20260825-a",
+      "campaignDigest": "sha256:ba967cfca3a8077ba7cf61316fe85021a7b7dcdce1cfec3ddeedb2a20ba07047",
+      "roundId": "math-final-calibration-round-a",
+      "independenceGroupId": "math-final-calibration-independent-a",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:beebbbcc93b4f2536a19022cfc2b82505f8c16dc4efd86745661fa44d645c6f9",
+      "batchId": "math-final-calibration-round-a.batch-001",
+      "runId": "math-final-calibration-a-run-001",
+      "runManifestDigest": "sha256:42c805df326e88a210044246fd075a62aec6d7742fd74ccf2591682902d80116",
+      "resultsDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+      "recordId": "math-final-calibration-a-001-03",
+      "recordDigest": "sha256:1823c9c439862718e26428e10d7f648bdbc015d203d6005705a2b74dedb736ca"
+    },
+    "second": {
+      "campaignId": "math-final-calibration-20260825-b",
+      "campaignDigest": "sha256:cc69793bae519bd8a78d5c5b6de026df4bee3f999bb64528a6c448cace402462",
+      "roundId": "math-final-calibration-round-b",
+      "independenceGroupId": "math-final-calibration-independent-b",
+      "reviewInputFingerprint": "sha256:4059773281a459c1e4f57a1221f62e8339935d78a8dc9c4f47e15276b0d304ce",
+      "goalReviewContextFingerprint": "sha256:beebbbcc93b4f2536a19022cfc2b82505f8c16dc4efd86745661fa44d645c6f9",
+      "batchId": "math-final-calibration-round-b.batch-001",
+      "runId": "math-final-b-codex-heliotrope-20260825-01",
+      "runManifestDigest": "sha256:1d4a7535b6d21a2f1c365cce29e6a914bfccee353dcb316a91863b2b439f544f",
+      "resultsDigest": "sha256:b4914f3ae37017633315892f32e3a0ee2d1cf2844dc58cc3d97f966d32776317",
+      "recordId": "math-final-b-heliotrope-003",
+      "recordDigest": "sha256:fd088f79c75b19ebf6f10f3bb6a24761205b4dfbc44a6076711804dd15b359ca"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:f512c2810248d3df148d61ce684d04cf178a31263b2e52bb3f27f9cbaf7f24ad"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-calibration-v2-20260825-synthesis-2242c379-ddbb-4f03-8aed-13f49a4674e8",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis",
+    "synthesizedAt": "2026-08-25T20:56:20.000Z",
+    "rationaleDe": "Beide unabhängigen Reviews bestätigen die aktuelle zweisprachige Beschreibung „Median bestimmen und mit dem arithmetischen Mittel vergleichen“ mit keep. Die Synthese übernimmt die fachlich konkretere, unmittelbar prüfbare Evidenzfassung aus der zweiten Runde; die andere Runde ist damit vereinbar und erweitert lediglich Akzentuierung oder Detailtiefe.",
+    "rationaleEn": "Both independent reviews confirm the current bilingual description “Determine the median and compare it with the arithmetic mean” with keep. The synthesis adopts the more concrete and directly assessable evidence formulation from the second round; the other round is compatible and differs only in emphasis or level of detail.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Median teilt die geordneten Daten nach ihrer Position, während das arithmetische Mittel alle Werte als Ausgleichswert einbezieht; deshalb reagieren beide Lagewerte unterschiedlich auf Schiefe und Ausreißer.",
+      "essentialUnderstandingEn": "The median divides ordered data by position, whereas the arithmetic mean includes every value as a balancing value; therefore the two measures of centre respond differently to skewness and outliers.",
+      "observablePerformanceDe": "Die lernende Person ordnet einen Datensatz, bestimmt Median und arithmetisches Mittel korrekt und erklärt anhand der Verteilung und möglicher Ausreißer, welcher Lagewert die typische Situation im gegebenen Kontext aussagekräftiger beschreibt.",
+      "observablePerformanceEn": "The learner orders a data set, correctly determines its median and arithmetic mean, and uses the distribution and any outliers to explain which measure more meaningfully describes the typical situation in context.",
+      "transferExpectationDe": "Bei einem Datensatz mit veränderter Schiefe, einem hinzugefügten Extremwert oder anderer gerader beziehungsweise ungerader Anzahl von Werten berechnet und vergleicht die lernende Person beide Lagewerte erneut und passt die Kontextaussage an.",
+      "transferExpectationEn": "For a data set with changed skewness, an added extreme value, or a different even or odd number of values, the learner recalculates and compares both measures and adjusts the contextual conclusion."
+    },
+    "dissent": [
+      {
+        "dissentId": "review-emphasis-2242c379-ddbb-4f03-8aed-13f49a4674e8",
+        "source": "both",
+        "textDe": "Die beiden Reviews formulieren understandingEvidence, rationale unterschiedlich, vertreten aber keine fachlich gegensätzlichen Positionen zur Angemessenheit des aktuellen Lernziels.",
+        "textEn": "The two reviews formulate understandingEvidence, rationale differently but do not take conflicting subject-matter positions on the adequacy of the current learning goal.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:fb7294e7a2562d85d156fc2bf1f769ce4a5c1ee101f4b85df1370f7ff5ee2b2c"
+}

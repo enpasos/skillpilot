@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-final-calibration-a-run-001",
+  "campaignId": "math-final-calibration-20260825-a",
+  "roundId": "math-final-calibration-round-a",
+  "batchId": "math-final-calibration-round-a.batch-001",
+  "batchInputFingerprint": "sha256:ecc9b84025049984c156166393575c4cc8b40652374788a027dcc1c9b0daeb30",
+  "bundleFingerprint": "sha256:73c2a0fb294e695fcb664adda59c7ac055811764a095f64c61c0fdd1ca37081e",
+  "bookDigest": "sha256:f4d0ab5af84bb47eaedcbc66e10eae650f25f3b11e0085500143301402ea2e73",
+  "provider": "OpenAI",
+  "model": "GPT-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:71c3a9fffefc10fbb3bbeb39a4acf8d97df721dfae2fc96b778e1eaca33e1b15",
+  "independenceGroupId": "math-final-calibration-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cf474eab-1379-4877-907e-58b0892ce734",
+    "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+    "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+    "8dd9f210-2683-5902-acab-e3be22725232",
+    "e09072f9-67d9-412c-b872-24ecbf329232",
+    "570d5931-f126-5bb4-8b7f-db236d6b727f",
+    "743e5470-ff39-551e-9aba-529656418c66",
+    "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+    "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+    "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+    "3bfc2747-03e2-57db-b13f-01f78835eefd",
+    "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+    "6481fc23-d923-5ffc-ba49-f499328f43b8",
+    "10a33d93-dc20-5edd-ae3b-32338d05407c",
+    "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+    "508292f2-671b-4fd3-acbf-53d705e44693",
+    "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+    "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+    "e2bf726a-126c-5c66-9fbb-6e04c129bb0f",
+    "f9c24dd8-eaa5-5395-8679-820c1a74e7b7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ecc9b84025049984c156166393575c4cc8b40652374788a027dcc1c9b0daeb30"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-08-25T19:42:26.000Z",
+  "completedAt": "2026-08-25T20:02:26.000Z",
+  "status": "completed",
+  "outputDigest": "sha256:95fcc40dccf02d0ec23022283badd5c7bfdc77beb3cc540fb223d01f753c0570",
+  "toolchainVersion": "goal-description-review-v1"
+}

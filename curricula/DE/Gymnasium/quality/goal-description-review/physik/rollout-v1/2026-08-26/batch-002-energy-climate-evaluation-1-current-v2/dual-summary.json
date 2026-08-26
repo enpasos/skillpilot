@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:119d943088443c3207eef68c0a1e5083f91694136f1ef306b1fade085bb48b50",
+  "reviewInputFingerprint": "sha256:8ce9452de8047c1bc5a4a21d7a791d550036dcd33bbf283cc4398095daa1eea3",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-a",
+      "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-a",
+      "runIds": [
+        "gdr-physik-20260826-a-energy-climate-5be98160"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-b",
+      "roundId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-002-energy-climate-evaluation-1-current-v2-20260826-independent-b",
+      "runIds": [
+        "physik-energy-climate-evaluation-round-b-20260826-gpt-5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5be98160-5189-58aa-8183-1df1c400cc8c",
+      "firstRecordId": "gdr-physik-20260826-a-5be98160-5189-58aa-8183-1df1c400cc8c",
+      "secondRecordId": "physik-energy-climate-evaluation-round-b-20260826-5be98160",
+      "firstRunId": "gdr-physik-20260826-a-energy-climate-5be98160",
+      "secondRunId": "physik-energy-climate-evaluation-round-b-20260826-gpt-5",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

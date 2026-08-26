@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex GPT-5",
+  "synthesizedAt": "2026-08-26T07:23:50.000Z",
+  "batch": {
+    "batchId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826",
+    "batchManifestDigest": "sha256:9572e5fb8b2c154e68386e38c6d21c92b4113957de4ecaeb39761f59e5462213",
+    "configDigest": "sha256:ecdf0ea9277559df02a652addfa526ac43e4e2c951d5cad02f8a4d38bdd5ea60",
+    "bundleFingerprint": "sha256:e9829c7699522583687c132bcd50f3433b38700b924ef2017f4db9f89f86910f",
+    "bookDigest": "sha256:7da20e89b794f0613920c9863174a746c7cc8dab22eb6224c5596a056a88c31b",
+    "reviewInputFingerprint": "sha256:bc2d94c90e9dc38f5a5868d7d2f429fac5fe86b62e82076532fab0afa4edd6c9",
+    "dualSummaryDigest": "sha256:2a201d75512355251ad4b9550601a8cbdf8ff5a2d60748221042122da5f53fb2",
+    "canonicalLandscapeDigest": "sha256:67fcfec83299dd8e90593f266397c676c742fbd8d81018ab21c211d521369b02"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-a",
+      "campaignDigest": "sha256:4ed00d7140da25090116821a1c843c95f7e86b5257659c1e5208e44718e5f6de",
+      "roundId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-first-pass-a",
+      "independenceGroupId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:bc2d94c90e9dc38f5a5868d7d2f429fac5fe86b62e82076532fab0afa4edd6c9",
+      "batchId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9b6c8d86c8a6789b05197e5571e96f12e05291420db599e993f8316e7c5ed0b6",
+      "runId": "codex-math-current-v7-main20-round-a-20260826",
+      "runManifestDigest": "sha256:82830ee558860d3528cd6b3ff786ba7908245222c7a4da3cd43a196ce9d86dcc",
+      "resultsDigest": "sha256:e4c0d27338fc6ff940cbd86b15cd6f86fb3f029769b4abb278035b95d882d4cf"
+    },
+    "second": {
+      "campaignId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-b",
+      "campaignDigest": "sha256:9e4dabcfc4bbb2c91adfaf1e07057b32bfc4c50ffbda4839f2c37f41828791e5",
+      "roundId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-first-pass-b",
+      "independenceGroupId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:bc2d94c90e9dc38f5a5868d7d2f429fac5fe86b62e82076532fab0afa4edd6c9",
+      "batchId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c2191022e9abc5feb91416e7bab538b69b113d2fa28dbdbcda52a6cde89586d7",
+      "runId": "math-current-v7-sixth-pass-main-20-round-b-gpt5-20260826",
+      "runManifestDigest": "sha256:d56fad152cf951c298ae986f8d1db9615515a9b2f0a3e6b9a5a7c5070941dbed",
+      "resultsDigest": "sha256:90278af7d1d80875ccdad790be83ff8316819ea9d48289c9cac231ef6e3d02b4"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-001",
+      "goalId": "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6db794bc8790b62f52e0aa142fe002505bf891852434975ca4e6ef0224db2998",
+      "pageFingerprint": "sha256:a0550674b2c4d753a09dbd5c15db410b0aab1f568007fe52a78dce92c928c6be",
+      "goalReviewContextFingerprint": "sha256:c466004af7aab48baae5ef32f2965397c187aca3fbd04dc4380e7c2352be954f",
+      "finalText": {
+        "titleDe": "Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen",
+        "titleEn": "Test and justify divisibility by 2, 3, 5, and 10",
+        "descriptionDe": "Die lernende Person kann aus der Stellenwertstruktur natürlicher Zahlen begründen, warum die Endziffernregeln die Teilbarkeit durch 2, 5 und 10 und die Quersummenregel die Teilbarkeit durch 3 anzeigen, und damit begründete Teilbarkeitsentscheidungen treffen.",
+        "descriptionEn": "The learner can use the place-value structure of natural numbers to justify why last-digit rules indicate divisibility by 2, 5, and 10 and why the digit-sum rule indicates divisibility by 3, and use these rules to make justified divisibility decisions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r01",
+          "recordDigest": "sha256:f19b3720fc7283d2350fb63e167c5e1600285537d48c756b650c9fadd14de1ce"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-001",
+          "recordDigest": "sha256:cad9a747679f4927167d2f76764a0cf875855e5540a998afd9df8d112dd21b48"
+        }
+      },
+      "rationaleDe": "Runde A wird übernommen, weil sie Endziffern- und Quersummenregeln ausdrücklich aus Stellenwerten und Resten begründet und mit der fehlenden Ziffer eine echte Verknüpfung mehrerer Teilbarkeitsbedingungen fordert; der Umfang bleibt genau auf 2, 3, 5 und 10 begrenzt.",
+      "rationaleEn": "Round A is selected because it explicitly derives the final-digit and digit-sum rules from place value and remainders and uses a missing digit to require genuine coordination of several divisibility conditions; the scope remains exactly 2, 3, 5, and 10."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-002",
+      "goalId": "a4c2b831-02f0-5d55-a300-7823a71352c4",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cc89e9933dc110e3d858a6da5e970bfe8e96a44209d5ecb7454b0db51b8184ea",
+      "pageFingerprint": "sha256:008c277a11a3fa112cfa3fcba4d23625e914414543387dfc9190c9eebe68b463",
+      "goalReviewContextFingerprint": "sha256:a00f73c743097b94b755784a409644209a833a3d8c7dcf454c851296968fcb2c",
+      "finalText": {
+        "titleDe": "Natürliche Zahlen in Primfaktoren zerlegen",
+        "titleEn": "Factor natural numbers into primes",
+        "descriptionDe": "Die lernende Person kann natürliche Zahlen größer als 1 schrittweise in Primfaktoren zerlegen, die vollständige Zerlegung angeben und durch Rückmultiplikation prüfen.",
+        "descriptionEn": "The learner can factor natural numbers greater than 1 step by step into prime factors, state the complete prime factorization, and check it by multiplying the factors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r02",
+          "recordDigest": "sha256:96a1273a42448e777cf46cb1fe821c7e3a23e406eeb2c245d37d617af700b411"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-002",
+          "recordDigest": "sha256:65cf63a9ab114be4d9b2b4fa4c539bbf908531b43a756fa93e0eab7fd656310e"
+        }
+      },
+      "rationaleDe": "Runde A ist fachlich stärker, weil sie Primzahlen als unzerlegbare multiplikative Bausteine, die Vollständigkeit der Zerlegung und die Übereinstimmung verschiedener Zerlegungswege gemeinsam absichert; sie bleibt bei der Primfaktorzerlegung natürlicher Zahlen größer als 1.",
+      "rationaleEn": "Round A is mathematically stronger because it connects primes as irreducible multiplicative building blocks with completeness and the convergence of different factorization paths; it remains limited to prime factorization of natural numbers greater than 1."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-003",
+      "goalId": "d658e26a-e351-4bca-824e-f346deaa87c5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f44fb0074ab40b7dcf48ae18260cacc78203682c5286ffa7f1efe3d217050db0",
+      "pageFingerprint": "sha256:09b13505ecd3f979da9a35b5c9817f5873df2bae932550b44438fc37b46378da",
+      "goalReviewContextFingerprint": "sha256:6db98b0cc2a79c92922b32375b79c7a88a67d908084ee080a237ebdc5eb81a27",
+      "finalText": {
+        "titleDe": "Potenzen mit natürlichen Exponenten deuten und berechnen",
+        "titleEn": "Interpret and compute powers with natural exponents",
+        "descriptionDe": "Die lernende Person kann für eine Potenz a^n mit natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als wiederholte Multiplikation von n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
+        "descriptionEn": "For a power a^n with natural exponent n ≥ 1, the learner can distinguish base and exponent, interpret a^n as repeated multiplication of n equal factors, calculate its value, and check the result against the factor structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r03",
+          "recordDigest": "sha256:640a7d65149b9ecfb8341b3b56fdefe7ecc49dd7c130856627eaa90a2ca0b8ad"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-003",
+          "recordDigest": "sha256:14f14cac2de853c03217a4136d5950ca86e87609167371de3c013d4a2eab3135"
+        }
+      },
+      "rationaleDe": "Runde A wird gewählt, weil sie Basis und Exponent über die Faktorstruktur deutet und den Transfer zwischen verbaler, bildlicher, Produkt- und Potenzdarstellung einschließlich vertauschter Angaben prüft; Potenzgesetze oder andere weiterführende Inhalte werden nicht ergänzt.",
+      "rationaleEn": "Round A is selected because it interprets base and exponent through factor structure and tests transfer among verbal, visual, product, and power representations, including swapped entries; it adds no exponent laws or other advanced content."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-004",
+      "goalId": "e331a425-e9c6-46eb-89cb-dedf72857974",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6c0a4dc26ccbe67b05c87de0c4407233c539ad95b59e19b7f3f8cf4bb1e1b10b",
+      "pageFingerprint": "sha256:f941a5bbefeeb25f1dd842c6ac693459b191c36116ae1b32d4b8073d1ac554db",
+      "goalReviewContextFingerprint": "sha256:12c101079840b41feb93677d705b8ef19a08be18c76b9306f6584e1e956545b0",
+      "finalText": {
+        "titleDe": "Große Zahlen mit Zehnerpotenzen darstellen und deuten",
+        "titleEn": "Represent and interpret large numbers using powers of ten",
+        "descriptionDe": "Die lernende Person kann große natürliche Zahlen mithilfe der Stellenwertstruktur zwischen Dezimalschreibweise und Darstellungen durch Zehnerpotenzen mit nichtnegativen Exponenten wechseln, ihre Größenordnung am Exponenten der größten Zehnerpotenz deuten, die die Zahl nicht überschreitet, und die Darstellung in einfachen Sachzusammenhängen auf Plausibilität prüfen.",
+        "descriptionEn": "The learner can use place-value structure to switch large natural numbers between decimal notation and representations using powers of ten with non-negative exponents, interpret their order of magnitude from the exponent of the greatest power of ten that does not exceed the number, and check the representation for plausibility in simple contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r04",
+          "recordDigest": "sha256:a69cb6617e24676b158fdb4d5d18fb7edaebaeee61db6fddb75c8d6fe788c0c2"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-004",
+          "recordDigest": "sha256:5ee2ef0b657183f0db3f2ebfbf92ba73f96e6e4875a503ee760386ed35e1a88a"
+        }
+      },
+      "rationaleDe": "Runde A ist stärker, weil sie die Größenordnung durch die exakte Einschließung zwischen benachbarten Zehnerpotenzen fasst und Stellenwertzerlegung, Rückdarstellung sowie Vergleich auch bei inneren Nullen verbindet; sie weitet den Scope nicht auf wissenschaftliche Notation aus.",
+      "rationaleEn": "Round A is stronger because it defines order of magnitude by exact bounds between adjacent powers of ten and connects place-value decomposition, reconstruction, and comparison even with internal zeros; it does not expand the scope to scientific notation."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-005",
+      "goalId": "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ba6f2238326d89f5a641dd124d22f2dd3e7dbdaf70bbd71cfd1b0e3e343a9e99",
+      "pageFingerprint": "sha256:48257bd78732ffe9dcc6730147b54ced1beda773bfab2e8a00d397fab53ecb8d",
+      "goalReviewContextFingerprint": "sha256:6ca60bf46a041e48e3d8ce1086bb92383e68140dfd1d4f02dd6c619d28d275e4",
+      "finalText": {
+        "titleDe": "Klammerterme und Rechenreihenfolge sicher auswerten",
+        "titleEn": "Evaluate bracketed expressions and order of operations reliably",
+        "descriptionDe": "Die lernende Person kann Terme mit Grundrechenarten anhand ihrer Operationsstruktur gliedern, die Vorrangwirkung von Klammern und Rechenregeln begründen und den Term schrittweise korrekt auswerten.",
+        "descriptionEn": "The learner can parse expressions with basic operations by their operation structure, justify the precedence created by brackets and operation rules, and evaluate the expression correctly step by step."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r05",
+          "recordDigest": "sha256:6281360039a846596309efb385825cd0924b9a260a71482f283deb31df2b051c"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-005",
+          "recordDigest": "sha256:230da60ae16e2c2f5768eb542cd92fb401b4df6595c4b7f739a040cfa6604a50"
+        }
+      },
+      "rationaleDe": "Runde A wird übernommen, weil sie Rechenreihenfolge als verschachtelte Operationsstruktur erklärt und durch den Vergleich unterschiedlich geklammerter Terme ein begründetes Strukturverständnis sichtbar macht; verlangt wird weiterhin nur das sichere Auswerten von Termen.",
+      "rationaleEn": "Round A is selected because it explains evaluation order as a nested operation structure and makes structural understanding observable by comparing differently bracketed expressions; the requirement remains only the reliable evaluation of expressions."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-006",
+      "goalId": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:46976116baf5ba877436626be9d5adb86163b85f8bf178b662c53e7e9a693755",
+      "pageFingerprint": "sha256:6a570953b95a82d90f9c5ee11e44e758f7fe46fe28ade33b3c8c8a8ede6a1a7e",
+      "goalReviewContextFingerprint": "sha256:851944ef4e2f5842d9fa1076ef48827fe0718afad3ea06d54fffcf82e41fae39",
+      "finalText": {
+        "titleDe": "Einfache Zählprinzipien in Sachsituationen anwenden",
+        "titleEn": "Apply basic counting principles in contextual situations",
+        "descriptionDe": "Die lernende Person kann in einfachen realitätsnahen Situationen Möglichkeiten vollständig und ohne Doppelzählung systematisch erfassen, eine passende Zählstrategie wählen und die ermittelte Anzahl nachvollziehbar begründen.",
+        "descriptionEn": "The learner can systematically account for all possibilities in simple real-world situations without double counting, choose a suitable counting strategy, and justify the resulting count clearly."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r06",
+          "recordDigest": "sha256:bbe2475672ac6ea0e4f20a138174bad9301179b6dda8661bfbff020dfd0c4f8e"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-006",
+          "recordDigest": "sha256:4698ffe7eec87ed66445230791ab6ab7e7f759e6f40f765c252b01e4e97868db"
+        }
+      },
+      "rationaleDe": "Runde A ist fachlich stärker, weil sie Vollständigkeit und Überschneidungsfreiheit mit dem Unterschied zwischen aufeinanderfolgenden Wahlstufen und getrennten Fällen verbindet und Änderungen von Reihenfolge, Wiederholung oder Bedingung gezielt übertragen lässt; die Situationen bleiben einfach.",
+      "rationaleEn": "Round A is mathematically stronger because it connects completeness and non-overlap with the distinction between successive choices and separate cases and deliberately transfers changes in order, repetition, or constraints; the contexts remain simple."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-007",
+      "goalId": "b5de0574-93ed-409c-80ee-312211420cd6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6e769875f2aff91408e2d9bd4234b27ec348663c00d1840f76fa893e4cff9ed1",
+      "pageFingerprint": "sha256:99ddf1864cef191a006acdf23d5d14628610254fca79f188982d37576aab5887",
+      "goalReviewContextFingerprint": "sha256:eb3cccca8972267a31a78c92794caa4885cc032b499ffcb6616b83579a11bdd5",
+      "finalText": {
+        "titleDe": "Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren",
+        "titleEn": "Solve integer problems heuristically and document solution paths",
+        "descriptionDe": "Die lernende Person kann Problemstellungen mit ganzen Zahlen strukturieren, eine passende heuristische Strategie und geeignete Rechenschritte begründet auswählen, den Lösungsweg nachvollziehbar dokumentieren und das Ergebnis im Sachzusammenhang prüfen.",
+        "descriptionEn": "The learner can structure problems involving integers, justify the choice of a suitable heuristic strategy and calculation steps, document the solution path clearly, and check the result in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r07",
+          "recordDigest": "sha256:b21840ba616078e740d87f9e05a52409df25fb6d2471bbbd1496c6e64f1c8acf"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-007",
+          "recordDigest": "sha256:90045ec433f942917cee1f9c3d20864a7e7247f6ff1e575f61ea8fc82704bb4b"
+        }
+      },
+      "rationaleDe": "Runde A wird gewählt, weil sie die Heuristikwahl aus Bedingungen, gesuchter Größe und verfügbaren Informationen ableitet, die Lösung am Sachzusammenhang prüft und bei veränderter Nebenbedingung eine begründete Strategieanpassung verlangt; keine einzelne Methode wird vorgeschrieben.",
+      "rationaleEn": "Round A is selected because it derives the heuristic choice from constraints, the unknown, and available information, checks the solution against context, and requires justified strategy adaptation when a constraint changes; no single method is prescribed."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-008",
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23041be80ac0e2a1a6e140e7c061e62fd364e856734c0cb0872bbb93c6c7192c",
+      "pageFingerprint": "sha256:95c345e3d1f50b73735a607cc4aece52ee7a54d1428abb457adb3fb2e7c5a88b",
+      "goalReviewContextFingerprint": "sha256:6affd512565ec96b5e6694b5a3a630ab3b214ffd3c5ee07f6fb2d961e5915525",
+      "finalText": {
+        "titleDe": "Größen und Einheiten vergleichen und umrechnen",
+        "titleEn": "Compare and convert quantities and units",
+        "descriptionDe": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+        "descriptionEn": "The learner can choose suitable units for everyday quantities, reliably convert measurements into equivalent units, justify the unchanged quantity from the relationship between the units, and compare measurement results meaningfully in a common unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r08",
+          "recordDigest": "sha256:cee6734359c5ab0730675cd65cf6ba514ec3329f07dda8a420c9ee6d67de7c04"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-008",
+          "recordDigest": "sha256:0e367f64d842b7066843c673338e4c1a5d5e7ce7df8fafd2e19e8f3cb39a7939"
+        }
+      },
+      "rationaleDe": "Runde B wird übernommen, weil sie die Erhaltung der Größe beim Einheitenwechsel, die gegenläufige Änderung des Zahlenwerts und den Vergleich nur gleichartiger Größen präzise verbindet und dies durch mehrstufige Umrechnung sowie Fehlererkennung transferiert; sie bleibt bei Größen und Einheiten.",
+      "rationaleEn": "Round B is selected because it precisely connects preservation of the quantity under unit conversion, the inverse change of numerical value, and comparison only among like quantities, then transfers this through multi-step conversion and error detection; it remains within quantities and units."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-009",
+      "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8fd9cb87671c6a30a6e30ac97458e961a8e755b9e27feb128658be82a31d35c8",
+      "pageFingerprint": "sha256:8baff713ed48701bff91b47a2be259d2a87f63246793c49063b7f063b982534a",
+      "goalReviewContextFingerprint": "sha256:6fe18d211b4d4a437b77bf62141297db67d5a491ced045eda6bea127def2143f",
+      "finalText": {
+        "titleDe": "Mit Größen einheitengerecht rechnen und Ergebnisse deuten",
+        "titleEn": "Calculate with quantities using consistent units and interpret results",
+        "descriptionDe": "Die lernende Person kann in einer Sachsituation anhand der beteiligten Größen entscheiden, welche Rechenoperation sinnvoll ist, beim Addieren und Subtrahieren nur gleichartige Größen in einer gemeinsamen Einheit verknüpfen, eine Größe mit einer Zahl vervielfachen oder teilen und Ergebnis sowie Einheit im Kontext auf Plausibilität prüfen.",
+        "descriptionEn": "The learner can decide which arithmetic operation is appropriate in a context based on the quantities involved, combine only like quantities expressed in a common unit when adding or subtracting, multiply or divide a quantity by a number, and check both the result and its unit for plausibility in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r09",
+          "recordDigest": "sha256:2933326c0d42615b679374f2cf7b3fb7e5fb5425a9e9d56fe81a669e8e3c313b"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-009",
+          "recordDigest": "sha256:43b542f0b6830926789109d7cb7f2a53a8b11fed2c7ac3afb53c28ca22b0a9a3"
+        }
+      },
+      "rationaleDe": "Runde A ist stärker, weil sie Addieren und Subtrahieren gleichartiger Größen klar von Vervielfachen und Aufteilen mit reinen Zahlen unterscheidet und bei umgekehrter Frage auch unzulässige Verknüpfungen ausschließen lässt; der Scope bleibt einheitengerechtes Rechnen in Sachsituationen.",
+      "rationaleEn": "Round A is stronger because it clearly distinguishes adding and subtracting like quantities from scaling and sharing with pure numbers and, under a reversed question, also requires invalid combinations to be rejected; the scope remains unit-consistent calculation in contexts."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-010",
+      "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b8117685646a096a7763c9dbe0f5fcc2f583c8ff2f18cea2a6e2dcaafbc10bb4",
+      "pageFingerprint": "sha256:e4fb6603b18e524041ca4e6c605162122d3f8453e6733afbd2016f138f5e4b8a",
+      "goalReviewContextFingerprint": "sha256:3bc86792684e90ab4aa2b433342871922ccb50e1f29d675c12c467fc101aefdd",
+      "finalText": {
+        "titleDe": "Einfache proportionale Sachaufgaben mit Dreisatz lösen",
+        "titleEn": "Solve simple proportional contextual tasks using the rule of three",
+        "descriptionDe": "Die lernende Person kann in einfachen Sachsituationen eine proportionale Zuordnung an einem gleichbleibenden Verhältnis erkennen, einen gesuchten Wert durch Zurückführen auf 1 und Vervielfachen bestimmen und diesen Rechenweg begründen.",
+        "descriptionEn": "In simple contexts, the learner can recognize a proportional relationship by its constant ratio, determine an unknown value by reducing to one unit and scaling up, and justify this calculation path."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r10",
+          "recordDigest": "sha256:e8e068abd6567372c727f77af056263453dfb102012133c6df278297aac9e53a"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-010",
+          "recordDigest": "sha256:4fffa775167a2222e41b9fdea2da451099e2d891e58ae229d5f63f9b4ac30e90"
+        }
+      },
+      "rationaleDe": "Runde A wird gewählt, weil sie den Dreisatz aus dem konstanten Verhältnis und dem Wert einer Einheit begründet und bei umgekehrter Suchrichtung einen Neuaufbau mit Verhältnisprüfung fordert; sie bleibt ausdrücklich bei einfachen proportionalen Sachaufgaben.",
+      "rationaleEn": "Round A is selected because it grounds the rule of three in a constant ratio and the value of one unit and requires rebuilding and checking the ratio when the unknown direction is reversed; it remains explicitly limited to simple proportional contexts."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-011",
+      "goalId": "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d84164883895f74b57a9297ddc4bfb9c8b30afda93fde2799c7a0ab3cb681c73",
+      "pageFingerprint": "sha256:5756959e50430ab7843b3ed863233542e0c8194f1109e0645e04838e11275414",
+      "goalReviewContextFingerprint": "sha256:9dbd09847fd13e813509a5bab4cb80c1e2d7819ec9668a51e0656602da0c54bc",
+      "finalText": {
+        "titleDe": "Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen",
+        "titleEn": "Solve scale problems using equivalent length units",
+        "descriptionDe": "Die lernende Person kann in Karten-, Plan- oder Modellsituationen einen Maßstab als Verhältnis von dargestellter zu realer Länge deuten, beide Längen in eine gemeinsame Einheit umrechnen und eine gesuchte dargestellte oder reale Länge bestimmen.",
+        "descriptionEn": "In map, plan, or model contexts, the learner can interpret a scale as the ratio of represented length to real length, express both lengths in a common unit, and determine an unknown represented or real length."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r11",
+          "recordDigest": "sha256:2d85a039a0030e8ec007a448fb1a0957d38a51e1517ed30f41ece4bf55c38b2e"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-011",
+          "recordDigest": "sha256:06da53a70d01f48d5e4bbff8415a855ada767c5936c81f7a0168877b8f6f7f6b"
+        }
+      },
+      "rationaleDe": "Runde A ist fachlich stärker, weil sie den Maßstab als konstantes Verhältnis nach Vereinheitlichung der Längeneinheiten erklärt und den inversen Einsatz desselben Faktors bei umgekehrter Suchrichtung begründen lässt; Karten-, Plan- und Modellbeispiele bleiben innerhalb desselben Maßstabs-Scope.",
+      "rationaleEn": "Round A is mathematically stronger because it explains scale as a constant ratio after harmonizing length units and requires justification of the inverse use of the same factor when the unknown direction is reversed; map, plan, and model examples remain within the same scale scope."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-012",
+      "goalId": "03a87896-088d-4b21-a37b-d0604d784540",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:87be2dc1c3b1a08173511339a5cd019f1ff16e519611cfcfc30405c0b503f11f",
+      "pageFingerprint": "sha256:56a23f97052648b3e696c3c756bf91e30e8704fe86951f9c6f9a91605091afd2",
+      "goalReviewContextFingerprint": "sha256:336d194b7a62ed466a70d1e5e1fb5f3a82944a775a5714bb3c490f50ba493230",
+      "finalText": {
+        "titleDe": "Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen",
+        "titleEn": "Estimate quantities in contextual situations using benchmarks",
+        "descriptionDe": "Die lernende Person kann Größen in Sachsituationen mithilfe geeigneter Bezugsgrößen aus der Erfahrungswelt abschätzen und die Plausibilität ihrer Schätzungen begründen.",
+        "descriptionEn": "The learner can estimate quantities in contextual situations using suitable real-world benchmarks and justify the plausibility of the estimates."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r12",
+          "recordDigest": "sha256:79c570af5fc47cc7e7eefc501c06ccea6ad6133321c919430dd6591f03e1c4b1"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-012",
+          "recordDigest": "sha256:468951605b6e7f55ba80c272b7b1043d9cd948280eb75d962d93d08234bd1e0d"
+        }
+      },
+      "rationaleDe": "Runde A wird übernommen, weil sie eine Bezugsgröße über passende Einheit und Größenordnung bestimmt, Skalieren, Unterteilen oder Eingrenzen zulässt und bei verändertem Kontext die Eignung der Bezugsgröße neu prüfen lässt; dies bleibt eng auf begründetes Schätzen beschränkt.",
+      "rationaleEn": "Round A is selected because it characterizes a benchmark through suitable unit and magnitude, allows scaling, partitioning, or bounding, and requires reassessing the benchmark when the context changes; this remains tightly limited to reasoned estimation."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-013",
+      "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a4bd2461a0ed2c9a0b9e535d914585a49d67fe70eccd1f2385b1fa8ca03ef1c0",
+      "pageFingerprint": "sha256:35294f06bb35233871401606f32a8d42889c4979d107aa7051830d491ff8e1e6",
+      "goalReviewContextFingerprint": "sha256:79ed08f87e6480b86f56c27adbda6a2fc49628f05eb89beb98be82a23471bc42",
+      "finalText": {
+        "titleDe": "Umfang und Flächeninhalt unterscheiden und anwenden",
+        "titleEn": "Distinguish and apply perimeter and area",
+        "descriptionDe": "Die lernende Person kann Umfang als Länge des Randes und Flächeninhalt als Maß der bedeckten Fläche unterscheiden, in einfachen Sachsituationen die passende Größe und Formel wählen und Ergebnisse mit geeigneten Einheiten deuten.",
+        "descriptionEn": "The learner can distinguish perimeter as the length of a boundary from area as the measure of a covered region, choose the appropriate quantity and formula in simple contexts, and interpret results using suitable units."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r13",
+          "recordDigest": "sha256:91f425a6bf178d3e07ddfab94f39568c9b4f1056cb05adc01a0479776ac62c59"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-013",
+          "recordDigest": "sha256:6364d34a0a61044fa0ae0a072fda72f6c19a50a24b5417c1e400957874fcac18"
+        }
+      },
+      "rationaleDe": "Runde A ist stärker, weil sie Umfang als eindimensionales Randmaß und Flächeninhalt als zweidimensionales Regionsmaß mit Formel- und Einheitenwahl verbindet und unterschiedliche Wachstumsfaktoren bei geänderten Maßen erklären lässt; sie bleibt bei einfachen Figuren und Sachfragen.",
+      "rationaleEn": "Round A is stronger because it connects perimeter as a one-dimensional boundary measure and area as a two-dimensional region measure with formula and unit choice, then asks learners to explain differing growth factors under changed dimensions; it remains within simple figures and contexts."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-014",
+      "goalId": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ce35178e6307071a3e002c79b4df0ed804257ba87e3f00787837cc2d4ce2bbf5",
+      "pageFingerprint": "sha256:7f38405a592b445f7d5b880df20b28569886806f9849f61efaa983567e4ef92b",
+      "goalReviewContextFingerprint": "sha256:d2d5fcb4a15039d88e0d9f64ad7dff5f136acdadfa999b29bb52bfd3f6e90f4c",
+      "finalText": {
+        "titleDe": "Rechteckflächenformel aus dem Messprinzip erklären",
+        "titleEn": "Explain the rectangle area formula from the measuring principle",
+        "descriptionDe": "Die lernende Person kann die Formel für den Flächeninhalt eines Rechtecks aus dem Grundprinzip des Messens mit Einheitsquadraten erklären.",
+        "descriptionEn": "The learner can explain the formula for the area of a rectangle from the measuring principle using unit squares."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r14",
+          "recordDigest": "sha256:39d3158a1e6257262cd898ae451c4219e9e499c69b2d8fd444a2ba63a551a2d6"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-014",
+          "recordDigest": "sha256:db37d2c680d82bea68dd4a379962edf7b4468698b3ff854d39540acf50d73a70"
+        }
+      },
+      "rationaleDe": "Runde A wird gewählt, weil sie die Rechteckflächenformel aus der lückenlosen Bedeckung durch Einheitsquadrate und der Produktstruktur von Reihen und Spalten herleitet und das Messprinzip bei geändertem Raster oder geänderter Flächeneinheit erhält; andere Flächenformeln werden nicht einbezogen.",
+      "rationaleEn": "Round A is selected because it derives the rectangle area formula from gapless coverage by unit squares and the row-column product structure and preserves the measurement principle under a changed grid or square unit; no other area formulas are introduced."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-015",
+      "goalId": "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4929daab54c17f4727d115c7a90de127fae028687970ab2354d240c699eec5b4",
+      "pageFingerprint": "sha256:ae03bf4d9a8150a0d3d2b713b96d56824f2e236f170a0ee31471d71e07b5bcd2",
+      "goalReviewContextFingerprint": "sha256:c0cdac7fb913e4d1971c6b73eb3dfe6290e7c93637a8db9f778473102f839213",
+      "finalText": {
+        "titleDe": "Brüche erweitern und kürzen",
+        "titleEn": "Expand and reduce fractions",
+        "descriptionDe": "Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.",
+        "descriptionEn": "The learner can multiply the numerator and denominator by the same positive integer factor or divide them by the same common divisor, produce equivalent fractions, and explain why the fraction's value is preserved."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r15",
+          "recordDigest": "sha256:cfc0e13f6515dbfa9f50b6d84452e36aac628b7a8fc229d661896e327acd4f64"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-015",
+          "recordDigest": "sha256:8c7e798143ee1a4b1c7303b6222e4cda8312e7cf08d8a624c2f0f3d3c1c9e78f"
+        }
+      },
+      "rationaleDe": "Runde A ist fachlich stärker, weil sie Erweitern als Multiplikation mit k/k und Kürzen als inverse gemeinsame Division auf denselben Werterhalt zurückführt und bei fehlendem Zähler oder Nenner einseitiges Verändern begründet ausschließt; der Scope bleibt die Bruchwertgleichheit.",
+      "rationaleEn": "Round A is mathematically stronger because it reduces expansion as multiplication by k/k and reduction as inverse common division to the same preservation of value and uses a missing numerator or denominator to reject one-sided changes with justification; the scope remains fraction equivalence."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-016",
+      "goalId": "02013455-72a0-5213-9509-ed77f7ede62b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:03d8ddb9154cb8426ac22c0f98eb29edefea908c633885cd7b63020592f172d3",
+      "pageFingerprint": "sha256:885373a6294cf9d30d901932946d6aa5c73b90f525a1610041255976f0e70fef",
+      "goalReviewContextFingerprint": "sha256:0d8f77141095697632915350fd31b69958721bae25790e6bc640eda6dcad23cf",
+      "finalText": {
+        "titleDe": "Brüche mit geeigneten Strategien vergleichen",
+        "titleEn": "Compare fractions using suitable strategies",
+        "descriptionDe": "Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.",
+        "descriptionEn": "The learner can compare fractions using common denominators or numerators, suitable benchmark fractions, or equivalent forms, choose an appropriate strategy in each case, and justify the ordering."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r16",
+          "recordDigest": "sha256:0b9a9ace20c5997e2796502daea14e4093fc612653497c0cfc143be0eb07a3d4"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-016",
+          "recordDigest": "sha256:d4523372f0078c8e8828ffd5943a92e01677a5ec78914afaada1b50c95ba9684"
+        }
+      },
+      "rationaleDe": "Runde B wird übernommen, weil sie die Voraussetzung desselben Ganzen ausdrücklich nennt und gemeinsamen Nenner, gemeinsamen Zähler, Bezugsbruch und wertgleiche Form jeweils über ihre mathematische Vergleichsbedeutung erklärt; der Strategie-Wechsel bleibt genau auf das Vergleichen von Brüchen begrenzt.",
+      "rationaleEn": "Round B is selected because it explicitly states the same-whole condition and explains common denominators, common numerators, benchmark fractions, and equivalent forms through their mathematical comparison meaning; strategy switching remains exactly limited to comparing fractions."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-017",
+      "goalId": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:330f9af91613b7beced4d8b05d31a0e78cf93a529b7955104e344f74f4d106f6",
+      "pageFingerprint": "sha256:996688ea3a720fe5f649df6dee2ad7ad29aa5be606ba2cedd512cebebc100e81",
+      "goalReviewContextFingerprint": "sha256:a75c7c1bebbc909e19a3772155193bf328cfc412c8a78a18fcd15034dcdc0254",
+      "finalText": {
+        "titleDe": "Brüche und Dezimalbrüche ineinander umwandeln",
+        "titleEn": "Convert between fractions and decimal numbers",
+        "descriptionDe": "Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.",
+        "descriptionEn": "The learner can convert fractions into terminating or repeating decimals, represent terminating and simple repeating decimals as fractions, and justify chosen representation changes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r17",
+          "recordDigest": "sha256:c32e59d9d4fa0e18e7ca99a934b8565b1e920b4d0d4c660d0ad0f3e25b631e10"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-017",
+          "recordDigest": "sha256:c934a8e789558dcd297f7c0f5022eb5f49812f5ad5f9fec3658c0e851574860b"
+        }
+      },
+      "rationaleDe": "Runde A ist stärker, weil sie Bruch- und Dezimalschreibweise als wertgleiche Darstellungen verbindet, endliche und periodische Entwicklungen in beide Richtungen berücksichtigt und vor der Rechnung eine begründete Erwartung sowie Darstellungswahl verlangt; der Scope bleibt die Umwandlung rationaler Darstellungen.",
+      "rationaleEn": "Round A is stronger because it connects fraction and decimal notation as equivalent representations, covers terminating and repeating expansions in both directions, and requires a justified expectation and representation choice before calculation; the scope remains conversion of rational representations."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-018",
+      "goalId": "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:69e2c3571bc072e5b84b3b6c761f5f1ae968b6540815b5b50fc25bd19cbb51ac",
+      "pageFingerprint": "sha256:61e4838ca80604fc86c908c3806a434a199520df6d6e3a769479154418eca384",
+      "goalReviewContextFingerprint": "sha256:6ff6d9bcfb3df925c62b9fa053ca8026966b03f9de9be49de3001d33834e2204",
+      "finalText": {
+        "titleDe": "Rationale Zahlen an der Zahlengeraden darstellen und ordnen",
+        "titleEn": "Represent and order rational numbers on the number line",
+        "descriptionDe": "Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.",
+        "descriptionEn": "The learner can represent positive and negative non-integer rational numbers, especially fractions and decimals, on a suitably scaled number line, order them with justification, and assign equivalent representations to the same point."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r18",
+          "recordDigest": "sha256:4f16fba0e558f18754b475ea366abe7eaf0956d307559c47922a38b53cf19aaf"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-018",
+          "recordDigest": "sha256:37d25d006990ce9b9e85a4a5ba0365d4f8110b927e52818b0415b275daf1adc4"
+        }
+      },
+      "rationaleDe": "Runde B wird gewählt, weil sie die Zahlengerade mathematisch präzise über gleiche Abstände, gleiche Zahlendifferenzen und die Rechtsordnung beschreibt und wertgleiche Darstellungen ausdrücklich auch links von 0 zusammenführt; der Transfer bleibt bei Skalierung, Vorzeichen und rationalen Darstellungen.",
+      "rationaleEn": "Round B is selected because it describes the number line precisely through equal distances, equal numerical differences, and rightward order and explicitly unifies equivalent representations also to the left of zero; transfer remains within scale, signs, and rational representations."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-019",
+      "goalId": "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:97aae78f88b14402688a3ee438556a21327038ae0e3d145f00fb127281cb963f",
+      "pageFingerprint": "sha256:1753c3d84fff027fddc548be3dd6a26fdae106e6ff3bc17afb5a4c8417323db9",
+      "goalReviewContextFingerprint": "sha256:5020f9b3fb6abab9c2512cac3c73c220b1d2424b585203b36f931ca35d5dbe63",
+      "finalText": {
+        "titleDe": "Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern",
+        "titleEn": "Explain relationships between natural numbers, integers, and rational numbers",
+        "descriptionDe": "Die lernende Person kann Zahlen passenden Zahlmengen zuordnen, anhand der Definitionen begründen, dass jede natürliche Zahl ganz und jede ganze Zahl rational ist, und mit Gegenbeispielen zeigen, dass die jeweiligen Umkehrungen nicht gelten.",
+        "descriptionEn": "The learner can classify numbers into suitable number sets, use the definitions to justify that every natural number is an integer and every integer is rational, and use counterexamples to show that the respective converses do not hold."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r19",
+          "recordDigest": "sha256:02eca1e8ad1ad694b9e1077626a34c5b5a9f383e01718a0c6c7352faf1197081"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-019",
+          "recordDigest": "sha256:51d11070fceda2c0b1f768cea66fa2111966880ed809d12cff7e70de5668522a"
+        }
+      },
+      "rationaleDe": "Runde B ist fachlich stärker und enger, weil sie die echte Inklusionskette aus den Definitionen ableitet und Vorwärts- und Umkehrrichtung mit Gegenbeispielen getrennt prüfen lässt; zusätzliche Zahlmengen oder weiterführende Mengenlehre werden nicht eingeführt.",
+      "rationaleEn": "Round B is mathematically stronger and tighter because it derives the proper inclusion chain from definitions and tests forward and converse directions separately with counterexamples; it introduces neither additional number sets nor advanced set theory."
+    },
+    {
+      "decisionId": "mathematik-rollout-v1-batch-002-current-v7-sixth-pass-main-20-20260826-ai-synthesis-decision-020",
+      "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:979e19bb3a910f93c208c7d2102e9436b9b7084d05358c35de7650bd962852a3",
+      "pageFingerprint": "sha256:911a0f612dc93883ecf49b1d0278970e498023ce59cd0f5469ab95326959c358",
+      "goalReviewContextFingerprint": "sha256:9b2f4024841fbd9b99403f1a827e498c45b36455a0c0ccdcc043d94fea4d5483",
+      "finalText": {
+        "titleDe": "Dichtheit der rationalen Zahlen erläutern",
+        "titleEn": "Explain the density of rational numbers",
+        "descriptionDe": "Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.",
+        "descriptionEn": "The learner can explain that further rational numbers always lie between any two distinct rational numbers, construct arbitrarily many of them by repeatedly taking midpoints, and thereby justify density."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "codex-math-current-v7-main20-round-a-20260826.r20",
+          "recordDigest": "sha256:af176f26b5e710ba397530f5272d7e1914cd9dbf0b22672ba8a03ce257359081"
+        },
+        "second": {
+          "recordId": "math-v7-round-b-020",
+          "recordDigest": "sha256:13dd15ffeaa3815c652f54eb828edc34cf4035ca95d7e14f85e27bdda978a519"
+        }
+      },
+      "rationaleDe": "Runde B wird übernommen, weil sie aus der rationalen, strikt dazwischenliegenden Mitte durch Wiederholung beliebig viele Zwischenwerte und damit das Fehlen benachbarter rationaler Zahlen folgert und dies auf enge Intervalle mit verschiedenen Darstellungen überträgt; sie bleibt beim konstruktiven Dichtheitsargument.",
+      "rationaleEn": "Round B is selected because it uses the rational midpoint lying strictly between two values to generate arbitrarily many intermediates and infer that no adjacent rationals exist, then transfers this to narrow intervals with mixed representations; it remains within the constructive density argument."
+    }
+  ],
+  "manifestFingerprint": "sha256:7b9e1186f79fdbac4d69d4ec82e0814f827c1c12a2b02979c9585b5923fbfe00"
+}

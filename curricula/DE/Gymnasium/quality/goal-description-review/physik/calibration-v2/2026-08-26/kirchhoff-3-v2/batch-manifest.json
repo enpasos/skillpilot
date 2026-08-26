@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-calibration-v2-kirchhoff-3-rereview-20260826",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/calibration-v2/2026-08-26/kirchhoff-3-v2.config.json",
+  "configDigest": "sha256:8f2922d9504b6d2ae82618940228921620004e626a5dee2fdd2c6ee84cf130f4",
+  "goalIds": [
+    "8a84de16-2fde-58ec-827a-f803e2ce8564",
+    "267170bd-f880-56a7-9719-ffb9751872c5",
+    "8f833b36-4126-52db-b210-79fb0023c7d9"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 430,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-physics-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:be665d5d599a28f45d7b66ee5c1d8b1e7b30a20050e86ba342d2acd0bb944fa7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6ec2b2bf9dd7f4b285da66bc60266224f633f3d099dde43ac974fa0a18e4abe2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:23e82e915fe96f9b414ca2286af72da2ed63ae49a85fbf0b4df300b8aa75ce03",
+    "reviewInputFingerprint": "sha256:a5a279d4946303f2820df0ef28a062c95ec35a51aa649bafb10852ab8fc3201a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a",
+        "campaignDigest": "sha256:8ae2bd8df5267e7bc8e110ef9b5de04c3c3c67e1bac05fa0d9932e7aad221bed",
+        "roundId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-a",
+        "independenceGroupId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-independent-a",
+        "batchId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5243a50c43489c6940546d20c9ab8d07680d7dc54e22d8b838a81b0fef7e3b55"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b",
+        "campaignDigest": "sha256:410444f7c17a79d10cff398933f3bd64f89fd896776fd2b5e32ccf4ab37fdd3a",
+        "roundId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-b",
+        "independenceGroupId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-independent-b",
+        "batchId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:35c4ce4cce72846971fff655ad7525bf3f2cebba22cb688b17a1075d61573fdc"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

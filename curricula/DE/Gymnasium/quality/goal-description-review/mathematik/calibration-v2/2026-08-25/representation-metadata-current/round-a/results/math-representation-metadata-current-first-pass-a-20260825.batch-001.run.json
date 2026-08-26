@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "reviewer-a-98238c5f-f9f0-47ca-9006-d5e2fc92c8ca:run-342fba28-a547-4aad-a19a-6703332e1d8a",
+  "campaignId": "math-representation-metadata-current-20260825-a",
+  "roundId": "math-representation-metadata-current-first-pass-a-20260825",
+  "batchId": "math-representation-metadata-current-first-pass-a-20260825.batch-001",
+  "batchInputFingerprint": "sha256:528f910080cc8f72a17dccfe144e19b5a79ecdfca0c5df57bced85a4b83b0669",
+  "bundleFingerprint": "sha256:baa5798a73c48fe2940323ae935d39a1cc46c9ebce4178d09b94fe596db8a853",
+  "bookDigest": "sha256:071d9292e2f9bd2788297074e1419b4bf90295fe473b428f0dd34a6e68b32b79",
+  "provider": "openai",
+  "model": "gpt-5",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:ac56d9575bb0d664bc054688d5a665405a9f7ff35b4c1b3176170ac23b66665c",
+  "independenceGroupId": "math-representation-metadata-current-independent-a-20260825",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8dd9f210-2683-5902-acab-e3be22725232"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:528f910080cc8f72a17dccfe144e19b5a79ecdfca0c5df57bced85a4b83b0669"
+    }
+  ],
+  "startedAt": "2026-08-25T21:12:41.903Z",
+  "completedAt": "2026-08-25T21:13:22.821Z",
+  "status": "completed",
+  "outputDigest": "sha256:9a8bc4df342cd77370c765a2b30bee07f6c78bfd496d53644fe0c36945f86789",
+  "toolchainVersion": "codex-manual-review-v1"
+}

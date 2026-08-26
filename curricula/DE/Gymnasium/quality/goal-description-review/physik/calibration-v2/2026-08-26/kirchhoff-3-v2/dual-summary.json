@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:23e82e915fe96f9b414ca2286af72da2ed63ae49a85fbf0b4df300b8aa75ce03",
+  "reviewInputFingerprint": "sha256:a5a279d4946303f2820df0ef28a062c95ec35a51aa649bafb10852ab8fc3201a",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a",
+      "roundId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-a",
+      "independenceGroupId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-independent-a",
+      "runIds": [
+        "physics-calibration-v2-kirchhoff-3-rereview-20260826-a-subject-reviewer-a-gpt5"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b",
+      "roundId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-first-pass-b",
+      "independenceGroupId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-independent-b",
+      "runIds": [
+        "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.gpt-5.subject-reviewer.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "8a84de16-2fde-58ec-827a-f803e2ce8564",
+      "firstRecordId": "physics-calibration-v2-kirchhoff3-a-subject-a-001",
+      "secondRecordId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.subject-reviewer.record-001",
+      "firstRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "267170bd-f880-56a7-9719-ffb9751872c5",
+      "firstRecordId": "physics-calibration-v2-kirchhoff3-a-subject-a-002",
+      "secondRecordId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.subject-reviewer.record-002",
+      "firstRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8f833b36-4126-52db-b210-79fb0023c7d9",
+      "firstRecordId": "physics-calibration-v2-kirchhoff3-a-subject-a-003",
+      "secondRecordId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.subject-reviewer.record-003",
+      "firstRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-a-subject-reviewer-a-gpt5",
+      "secondRunId": "physics-calibration-v2-kirchhoff-3-rereview-20260826-b.gpt-5.subject-reviewer.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

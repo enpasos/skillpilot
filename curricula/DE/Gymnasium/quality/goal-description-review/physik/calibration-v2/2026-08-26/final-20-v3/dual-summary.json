@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:c7bb0f4f77cbba495642eba49e9be567c4187de0ffd0ac6e29a008a501a9575b",
+  "reviewInputFingerprint": "sha256:dc14ff5b73a337d4482307a598ca9a83061156f5e5c9657f1e914aa134eed3c5",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-calibration-v2-final-20-current-rereview-20260826-a",
+      "roundId": "physics-calibration-v2-final-20-current-rereview-20260826-first-pass-a",
+      "independenceGroupId": "physics-calibration-v2-final-20-current-rereview-20260826-independent-a",
+      "runIds": [
+        "physics-calibration-v2-final20-v3-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-calibration-v2-final-20-current-rereview-20260826-b",
+      "roundId": "physics-calibration-v2-final-20-current-rereview-20260826-first-pass-b",
+      "independenceGroupId": "physics-calibration-v2-final-20-current-rereview-20260826-independent-b",
+      "runIds": [
+        "physics-calibration-v2-final20-v3-round-b-20260826"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-5::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::Codex GPT-5::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "5355fee0-0477-5570-a234-561477bf77ba",
+      "firstRecordId": "physics-final20-v3-a.001.5355fee0",
+      "secondRecordId": "physics-final20-v3-round-b.5355fee0-0477-5570-a234-561477bf77ba",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "firstRecordId": "physics-final20-v3-a.002.45bbdf6b",
+      "secondRecordId": "physics-final20-v3-round-b.45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "firstRecordId": "physics-final20-v3-a.003.79cb1695",
+      "secondRecordId": "physics-final20-v3-round-b.79cb1695-f985-443a-b93e-27b57ab474b7",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "firstRecordId": "physics-final20-v3-a.004.3c82510a",
+      "secondRecordId": "physics-final20-v3-round-b.3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "firstRecordId": "physics-final20-v3-a.005.a24c41ce",
+      "secondRecordId": "physics-final20-v3-round-b.a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "firstRecordId": "physics-final20-v3-a.006.01bebdfc",
+      "secondRecordId": "physics-final20-v3-round-b.01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "firstRecordId": "physics-final20-v3-a.007.7d78da7f",
+      "secondRecordId": "physics-final20-v3-round-b.7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "firstRecordId": "physics-final20-v3-a.008.72effc66",
+      "secondRecordId": "physics-final20-v3-round-b.72effc66-87f4-5f5e-8d36-1547677365fb",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "firstRecordId": "physics-final20-v3-a.009.d6dc0e02",
+      "secondRecordId": "physics-final20-v3-round-b.d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "firstRecordId": "physics-final20-v3-a.010.a0aaedcb",
+      "secondRecordId": "physics-final20-v3-round-b.a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
+      "firstRecordId": "physics-final20-v3-a.011.be921c3b",
+      "secondRecordId": "physics-final20-v3-round-b.be921c3b-7db9-50b5-a110-92f31673fc62",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "firstRecordId": "physics-final20-v3-a.012.0f6b798b",
+      "secondRecordId": "physics-final20-v3-round-b.0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "firstRecordId": "physics-final20-v3-a.013.8c9394cb",
+      "secondRecordId": "physics-final20-v3-round-b.8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "firstRecordId": "physics-final20-v3-a.014.966782e5",
+      "secondRecordId": "physics-final20-v3-round-b.966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "firstRecordId": "physics-final20-v3-a.015.3efa0cda",
+      "secondRecordId": "physics-final20-v3-round-b.3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5476480f-7ff2-529f-aade-968198c782a9",
+      "firstRecordId": "physics-final20-v3-a.016.5476480f",
+      "secondRecordId": "physics-final20-v3-round-b.5476480f-7ff2-529f-aade-968198c782a9",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c5413852-abae-566b-b435-f9939209ca63",
+      "firstRecordId": "physics-final20-v3-a.017.c5413852",
+      "secondRecordId": "physics-final20-v3-round-b.c5413852-abae-566b-b435-f9939209ca63",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a08e33db-d821-457b-86dd-870e7648c5f4",
+      "firstRecordId": "physics-final20-v3-a.018.a08e33db",
+      "secondRecordId": "physics-final20-v3-round-b.a08e33db-d821-457b-86dd-870e7648c5f4",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "firstRecordId": "physics-final20-v3-a.019.bb5c5eab",
+      "secondRecordId": "physics-final20-v3-round-b.bb5c5eab-2fc1-5336-b8cf-14d147695487",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "firstRecordId": "physics-final20-v3-a.020.79da5c34",
+      "secondRecordId": "physics-final20-v3-round-b.79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "firstRunId": "physics-calibration-v2-final20-v3-a-run-001",
+      "secondRunId": "physics-calibration-v2-final20-v3-round-b-20260826",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

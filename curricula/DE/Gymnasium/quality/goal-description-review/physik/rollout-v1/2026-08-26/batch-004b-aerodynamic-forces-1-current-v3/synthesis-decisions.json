@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex AI synthesis",
+  "synthesizedAt": "2026-08-26T08:52:53.000Z",
+  "batch": {
+    "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826",
+    "batchManifestDigest": "sha256:fd937796a9ce41d6c77d5936ad5be5c772ecfaa52d3ee1810fc73392cd7d081e",
+    "configDigest": "sha256:a703af759895894725e8776879a112af1abcb63cf1d3137cb9a95f58aa16c2e9",
+    "bundleFingerprint": "sha256:44aa8c6109b2c19ef429b8d40071d9a41aa507fa0418b675bae93f027806fba3",
+    "bookDigest": "sha256:49837053a94d2eb2465a678c2ba414e49aedd47fe2c92a622efcd7b40afdc081",
+    "reviewInputFingerprint": "sha256:f2f11262f9c485251bb0b69d7d74fd66a5ee62648cdaf2e67e477ed6dea4db97",
+    "dualSummaryDigest": "sha256:a62d6acdbbcb7f82400fe3358a8ef119a14ec1178191408810478ef1caae8b87",
+    "canonicalLandscapeDigest": "sha256:87c9cba5172b024af21e05767faa4cc263b0c0c342e499611b487205585628f2"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-a",
+      "campaignDigest": "sha256:d1becaac84c046ba773c4ce9bd2f51b27a456f6adb36322651aa021df7cdd96a",
+      "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-a",
+      "reviewInputFingerprint": "sha256:f2f11262f9c485251bb0b69d7d74fd66a5ee62648cdaf2e67e477ed6dea4db97",
+      "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:aaf023dee1daae2eeaf2b73d9ff851365bec9fa47d2d2870efba00be4dae1094",
+      "runId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5",
+      "runManifestDigest": "sha256:e4e77697fa4058fad93bbc1d417eb82f621cbd210f2be287073376f8cada3d3a",
+      "resultsDigest": "sha256:9d87ba66a3bbe87bca45032fa0070db95fc3fae3037a66812a62a37cc45fa2f7"
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-b",
+      "campaignDigest": "sha256:dd9d4951d76815fe0852990a03df1e99454b090826026d1f79b84a5264b9a7fb",
+      "roundId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-independent-b",
+      "reviewInputFingerprint": "sha256:f2f11262f9c485251bb0b69d7d74fd66a5ee62648cdaf2e67e477ed6dea4db97",
+      "batchId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0bff9d8a0b010ae140b5c318808c04a83cef11aaba2e278c9c60b36c76b632ae",
+      "runId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001.gpt5-subject-review",
+      "runManifestDigest": "sha256:6c78c897062547572b5889b29dadacf0ec83307f95a222947039105be5b64a46",
+      "resultsDigest": "sha256:583187c79def738b3f7c41797f46474cfb64c3125bf046a210c8c5f0e57aa9ce"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-synthesis-decision-001",
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9fdc5b1b62f08efff49ecc3fb0d4045c0e99cd93f509897e0afa2f5f571a1f03",
+      "pageFingerprint": "sha256:9e0374a728bdc212436de863a1653783a629a1d2b9536588b9141431abd91f28",
+      "goalReviewContextFingerprint": "sha256:7e20558067499eae8935aba44b5cd4caddfc336f1511386b962f286b0d371f15",
+      "finalText": {
+        "titleDe": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen",
+        "titleEn": "Qualitatively Classify Lift on Airfoils and Air Resistance",
+        "descriptionDe": "Die lernende Person kann Auftrieb an Tragflächen und Luftwiderstand qualitativ beschreiben und in einfachen Anwendungssituationen einordnen.",
+        "descriptionEn": "The learner can qualitatively describe lift on airfoils and air resistance and classify them in simple application contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-a-codex-gpt5.24b4686a-e8a6-4583-8952-33e6f653c2a3",
+          "recordDigest": "sha256:2bd41bbda6eaed5d16c025dfc931577466403b809f12087ed5afdcf013d604ef"
+        },
+        "second": {
+          "recordId": "physik-rollout-v1-batch-004b-aerodynamic-forces-1-current-v3-20260826-first-pass-b.batch-001.goal-24b4686a",
+          "recordDigest": "sha256:7c1baa03000a974f9914a3e5403f7f72ef98da0a7a701531dfe106ec17f317fb"
+        }
+      },
+      "rationaleDe": "Beide voneinander unabhängigen KI-Reviews bestätigen den aktuellen bilingualen Wortlaut ausdrücklich als ein integriertes qualitatives Aerodynamikziel. Die amtliche Hessen-Quelle führt Auftrieb an Tragflügeln und Luftwiderstand gemeinsam unter der Leitfrage, warum Flugzeuge fliegen; ein Split allein aufgrund der Konjunktion wäre daher nicht fachlich begründet. Die Evidence-Fassung der zweiten Runde wird gewählt, weil sie Auftrieb und Widerstand präzise als quer beziehungsweise entgegen der relativen Anströmung gerichtete Komponenten der aerodynamischen Kraft unterscheidet, feste Bildrichtungen als Fehlvorstellung ausschließt und mit dem amtlich genannten umgekehrt wirkenden Pkw-Spoiler einen echten Transfer innerhalb desselben Anwendungsrahmens prüft. Die erste Fassung ist ebenfalls fachlich richtig und nutzt einen anders angestellten Papierflieger; die zweite ist jedoch begrifflich trennschärfer und enger an die gebundene Quelle angeschlossen, ohne den Scope zu erweitern.",
+      "rationaleEn": "Both independent AI reviews explicitly confirm the current bilingual wording as one integrated qualitative aerodynamics goal. The official Hessian source presents lift on airfoils and air resistance together under the guiding question of why aircraft fly, so splitting merely because of the conjunction would not be scientifically justified. The second round's evidence formulation is selected because it precisely distinguishes lift and drag as components of the aerodynamic force directed transverse to and against the relative airflow, rules out fixed page directions as a misconception, and assesses genuine transfer through the officially referenced case of an oppositely acting car spoiler within the same application framework. The first formulation is also scientifically sound and uses a paper aircraft at a different angle; however, the second is conceptually more discriminating and more closely tied to the bound source without widening the scope."
+    }
+  ],
+  "manifestFingerprint": "sha256:45929a939486de5f2e2dd1e5b1d60ea2628f6158d75696c552b914414dd49464"
+}

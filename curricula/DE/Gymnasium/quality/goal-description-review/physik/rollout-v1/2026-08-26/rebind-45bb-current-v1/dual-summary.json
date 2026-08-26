@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7787a80cfefe0dfd8b228f1fcbc766fcbb4237e9513baa9339e18d8ce112eb9e",
+  "reviewInputFingerprint": "sha256:7c6f16613bc0ecc4be76e230e50934f148eed3d59f18c2fd8e6066563bd0104f",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-a",
+      "roundId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a",
+      "independenceGroupId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-independent-a",
+      "runIds": [
+        "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a.codex-blind-a49"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-5 Codex::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-b",
+      "roundId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b",
+      "independenceGroupId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-independent-b",
+      "runIds": [
+        "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b.codex-blind-run"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-5.6-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+      "firstRecordId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a.record-001",
+      "secondRecordId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b.record-001",
+      "firstRunId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-a.codex-blind-a49",
+      "secondRunId": "physik-rollout-v1-rebind-45bb-current-v1-20260826-first-pass-b.codex-blind-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
